@@ -30,31 +30,29 @@ class QUrlQuery;
 
 class Q_DECL_EXPORT SnapJob : public QObject
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    SnapJob(const QByteArray& request, QObject* parent = nullptr);
+    SnapJob(QObject* parent = nullptr);
 
     QJsonValue result() const { return m_data.value(QLatin1String("result")); }
     int statusCode() const { return m_data.value(QLatin1String("status-code")).toInt(); }
     QString status() const { return m_data.value(QLatin1String("status")).toString(); }
     QString type() const { return m_data.value(QLatin1String("type")).toString(); }
-
-    bool exec();
-
     bool isSuccessful() const { return statusCode()==200; }
+
+    virtual bool exec() = 0;
 
 Q_SIGNALS:
     void finished(SnapJob* job);
 
-private:
-    void processReply();
+protected:
+    void processReply(QIODevice* device);
 
-    QLocalSocket * const m_socket;
     QJsonObject m_data;
 };
 
 /**
- * https://developer.ubuntu.com/en/snappy/guides/rest/
+ * https://github.com/snapcore/snapd/blob/master/docs/rest.md
  */
 
 class Q_DECL_EXPORT SnapSocket : public QObject

@@ -24,6 +24,34 @@
 #include <QUrlQuery>
 #include <QRegularExpression>
 
+class LocalSnapJob : public SnapJob
+{
+public:
+    LocalSnapJob(const QByteArray& request, QObject* parent = nullptr)
+        : SnapJob(parent)
+        , m_socket(new QLocalSocket(this))
+    {
+        connect(m_socket, &QLocalSocket::connected, this, [this, request](){
+    //         qDebug() << "connected";
+            m_socket->write(request);
+        });
+        connect(m_socket, &QLocalSocket::disconnected, this, [](){ qDebug() << "disconnected :("; });
+        connect(m_socket, static_cast<void(QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), this, [](QLocalSocket::LocalSocketError socketError){ qDebug() << "error!" << socketError; });
+        connect(m_socket, &QLocalSocket::readyRead, this, [this](){ processReply(m_socket); });
+
+        m_socket->connectToServer(QStringLiteral("/run/snapd.socket"), QIODevice::ReadWrite);
+    }
+
+    bool exec() override
+    {
+        m_socket->waitForReadyRead();
+        return isSuccessful();
+    }
+
+private:
+    QLocalSocket * const m_socket;
+};
+
 SnapSocket::SnapSocket(QObject* parent)
     : QObject(parent)
 {
@@ -69,19 +97,19 @@ QByteArray SnapSocket::createRequest(const QByteArray &method, const QByteArray 
 
 SnapJob* SnapSocket::snaps()
 {
-    return new SnapJob(createRequest("GET", "/v2/snaps"), this);
+    return new LocalSnapJob(createRequest("GET", "/v2/snaps"), this);
 }
 
 SnapJob* SnapSocket::snapByName(const QString& name)
 {
-    return new SnapJob(createRequest("GET", "/v2/snaps/"+name.toUtf8()), this);
+    return new LocalSnapJob(createRequest("GET", "/v2/snaps/"+name.toUtf8()), this);
 }
 
 SnapJob* SnapSocket::find(const QString& query)
 {
     QUrlQuery uq;
     uq.addQueryItem(QStringLiteral("q"), query);
-    return new SnapJob(createRequest("GET", "/v2/find", uq), this);
+    return new LocalSnapJob(createRequest("GET", "/v2/find", uq), this);
 }
 
 SnapJob* SnapSocket::findByName(const QString& name)
@@ -107,37 +135,36 @@ SnapJob * SnapSocket::snapAction(const QString& name, SnapSocket::SnapAction act
     if (!channel.isEmpty())
         uq.addQueryItem(QStringLiteral("channel"), channel);
 
-    return new SnapJob(createRequest("POST", "/v2/snaps/"+name.toUtf8(), uq), this);
+    return new LocalSnapJob(createRequest("POST", "/v2/snaps/"+name.toUtf8(), uq), this);
+}
+
+void SnapSocket::login(const QString& username, const QString& password, const QString& otp)
+{
+    QJsonObject obj = { { QStringLiteral("username"), username}, { QStringLiteral("password"), password } };
+    if (!otp.isEmpty())
+        obj.insert(QStringLiteral("obj"), obj);
+
+    auto job = new LocalSnapJob(createRequest("POST", "/v2/login", QJsonDocument(obj).toJson()), this);
+    connect(job, &SnapJob::finished, this, &SnapSocket::includeCredentials);
+}
+
+void SnapSocket::includeCredentials(SnapJob* job)
+{
+    const auto result = job->result().toObject();
+    m_macaroon = result[QStringLiteral("macaroon")].toString().toUtf8();
+    m_discharges = result[QStringLiteral("discharges")].toArray();
 }
 
 /////////////
 
-SnapJob::SnapJob(const QByteArray& request, QObject* parent)
+SnapJob::SnapJob(QObject* parent)
     : QObject(parent)
-    , m_socket(new QLocalSocket(this))
 {
     connect(this, &SnapJob::finished, this, &QObject::deleteLater);
-
-    connect(m_socket, &QLocalSocket::connected, this, [this, request](){
-//         qDebug() << "connected";
-        m_socket->write(request);
-    });
-    connect(m_socket, &QLocalSocket::disconnected, this, [](){ qDebug() << "disconnected :("; });
-    connect(m_socket, static_cast<void(QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), this, [](QLocalSocket::LocalSocketError socketError){ qDebug() << "error!" << socketError; });
-
-    m_socket->connectToServer(QStringLiteral("/run/snapd.socket"), QIODevice::ReadWrite);
 }
 
-bool SnapJob::exec()
+void SnapJob::processReply(QIODevice* device)
 {
-    m_socket->waitForReadyRead();
-    processReply();
-    return isSuccessful();
-}
-
-void SnapJob::processReply()
-{
-    auto device = m_socket;
     {
         const QByteArray line = device->readLine().trimmed();
         if (!line.endsWith("OK"))
