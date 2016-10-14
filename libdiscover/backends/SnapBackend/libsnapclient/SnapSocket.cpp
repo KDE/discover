@@ -72,9 +72,9 @@ SnapJob* SnapSocket::snaps()
     return new SnapJob(createRequest("GET", "/v2/snaps"), this);
 }
 
-SnapJob* SnapSocket::snapByName(const QByteArray& name)
+SnapJob* SnapSocket::snapByName(const QString& name)
 {
-    return new SnapJob(createRequest("GET", "/v2/snaps/"+name), this);
+    return new SnapJob(createRequest("GET", "/v2/snaps/"+name.toUtf8()), this);
 }
 
 SnapJob* SnapSocket::find(const QString& query)

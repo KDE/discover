@@ -71,7 +71,7 @@ public:
     SnapJob* snaps();
 
     /// GET /v2/snaps/@p name
-    SnapJob* snapByName(const QByteArray& name);
+    SnapJob* snapByName(const QString& name);
 
     /// GET /v2/find query
     SnapJob* find(const QString &query);
