@@ -44,7 +44,7 @@ public:
     bool isSuccessful() const { return statusCode()==200; }
 
 Q_SIGNALS:
-    void finished();
+    void finished(SnapJob* job);
 
 private:
     void processReply();
