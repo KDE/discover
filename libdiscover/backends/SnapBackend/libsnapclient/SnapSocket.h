@@ -28,7 +28,7 @@
 
 class QUrlQuery;
 
-class SnapJob : public QObject
+class Q_DECL_EXPORT SnapJob : public QObject
 {
     Q_OBJECT
 public:
@@ -57,7 +57,7 @@ private:
  * https://developer.ubuntu.com/en/snappy/guides/rest/
  */
 
-class SnapSocket : public QObject
+class Q_DECL_EXPORT SnapSocket : public QObject
 {
     Q_OBJECT
 //     Q_PROPERTY(bool isConnected READ isConnected NOTIFY connectedChanged)

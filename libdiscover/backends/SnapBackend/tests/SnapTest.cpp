@@ -28,7 +28,7 @@
 #include <Transaction/TransactionModel.h>
 #include <ReviewsBackend/ReviewsModel.h>
 #include <ScreenshotsModel.h>
-#include "../SnapSocket.h"
+#include "../libsnapclient/SnapSocket.h"
 
 #include <QtTest>
 #include <QAction>
@@ -63,12 +63,18 @@ public:
 
 private Q_SLOTS:
 
+    QJsonValue jobResult(SnapJob* job) {
+        const bool success = job->exec();
+        if (!success)
+            qWarning() << "non succesful job" << job->result();
+        Q_ASSERT(success);
+        return job->result();
+    }
+
     void listing()
     {
         //Need to have installed snaps for this test to do something
-        const auto snapJob = socket.snaps();
-        QVERIFY(snapJob->exec());
-        const auto snaps = snapJob->result().toArray();
+        const auto snaps = jobResult(socket.snaps()).toArray();
 
         for(const auto &snapValue : snaps) {
             QVERIFY(snapValue.isObject());
@@ -76,9 +82,8 @@ private Q_SLOTS:
             QVERIFY(snap.contains(QLatin1String("name") ));
             QVERIFY(snap.contains(QLatin1String("developer")));
 
-            const auto requestedSnapJob = socket.snapByName(snap.value(QLatin1String("name")).toString().toUtf8());
-            QVERIFY(requestedSnapJob->exec());
-            auto requestedSnap = requestedSnapJob->result().toObject();
+            const auto name = snap.value(QLatin1String("name")).toString();
+            auto requestedSnap = jobResult(socket.snapByName(name)).toObject();
 
             //should treat these separately becauase they're randomly delivered in different order
             //just make sure they're the same number, for now
@@ -98,9 +103,7 @@ private Q_SLOTS:
 
     void find()
     {
-        const auto findJob = socket.find(QStringLiteral("editor"));
-        QVERIFY(findJob->exec());
-        const auto snaps = findJob->result().toArray();
+        const auto snaps = jobResult(socket.find(QStringLiteral("editor"))).toArray();
         QVERIFY(snaps.count() > 1);
         for(const auto &snapValue : snaps) {
             QVERIFY(snapValue.isObject());
@@ -108,6 +111,32 @@ private Q_SLOTS:
             QVERIFY(snap.contains(QLatin1String("name") ));
             QVERIFY(snap.contains(QLatin1String("developer")));
         }
+    }
+
+    void install()
+    {
+//         QSignalSpy spy(&socket, &SnapSocket::loginChanged);
+//         socket.login(QStringLiteral("aleixpol@kde.org"), QStringLiteral("holaktal"));
+//         QVERIFY(socket.isLoggedIn() || spy.wait());
+
+        const QString snap = QStringLiteral("nano-editor");
+        auto job = socket.snapByName(snap);
+        QVERIFY(!job->exec() && job->statusCode() == 404);
+        {
+            const auto job = socket.snapAction(snap, SnapSocket::Install);
+            QVERIFY(job && job->exec());
+            qDebug() << "installed" << job->result();
+        }
+
+        QCOMPARE(jobResult(socket.snapByName(snap)).toObject().value(QStringLiteral("name")).toString(), snap);
+
+        {
+            const auto job = socket.snapAction(snap, SnapSocket::Remove);
+            QVERIFY(job && job->exec());
+            qDebug() << "uninstalled" << job->result();
+        }
+
+        QVERIFY(!socket.snapByName(snap)->exec());
     }
 
 private:
