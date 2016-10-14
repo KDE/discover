@@ -58,12 +58,15 @@ protected:
 class Q_DECL_EXPORT SnapSocket : public QObject
 {
     Q_OBJECT
-//     Q_PROPERTY(bool isConnected READ isConnected NOTIFY connectedChanged)
+    Q_PROPERTY(bool isLoggedIn READ isLoggedIn NOTIFY loginChanged)
 public:
     SnapSocket(QObject* parent = nullptr);
     ~SnapSocket();
 
-//     bool isConnected() const;
+    bool isLoggedIn() const { return !m_macaroon.isEmpty(); }
+
+    /// POST /v2/login
+    void login(const QString &username, const QString &password, const QString &otp = {});
 
     /// GET /v2/snaps
     SnapJob* snaps();
@@ -79,14 +82,19 @@ public:
 
     enum SnapAction { Install, Refresh, Remove, Revert, Enable, Disable };
 
-    /// POST /v2/snaps/@p name
-    /// stable is the default channel
+    /**
+     * POST /v2/snaps/@p name
+     * stable is the default channel
+     *
+     *
+     */
     SnapJob* snapAction(const QString &name, SnapAction action, const QString &channel = {});
 
-// Q_SIGNALS:
-//     bool connectedChanged(bool connected);
+Q_SIGNALS:
+    void loginChanged(bool isLoggedIn);
 
 private:
+    void includeCredentials(SnapJob* job);
     QByteArray createRequest(const QByteArray &method, const QByteArray &path, const QUrlQuery &content) const;
     QByteArray createRequest(const QByteArray &method, const QByteArray &path, const QByteArray &content = {}) const;
 
