@@ -1,11 +1,10 @@
 add_library(SnapClient SnapSocket.cpp)
-target_link_libraries(SnapClient PUBLIC Qt5::Core Qt5::Network)
+target_link_libraries(SnapClient PUBLIC Qt5::Network KF5::Auth)
 add_library(Snap::Client ALIAS SnapClient)
 
-add_executable(libsnappy_helper SnapAuthHelper.cpp)
-target_link_libraries(libsnappy_helper Qt5::Core KF5::Auth)
+add_executable(libsnap_helper SnapAuthHelper.cpp)
+target_link_libraries(libsnap_helper Qt5::Network KF5::Auth)
+install(TARGETS libsnap_helper DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
 
-install(TARGETS libsnappy_helper DESTINATION ${LIBEXEC_INSTALL_DIR})
-kauth_install_actions(org.kde.discover.libsnapclient org.kde.discover.libsnapclient.action)
-kauth_install_helper_files(libsnappy_helper org.kde.discover.libsnapclient root)
-
+kauth_install_actions(org.kde.discover.libsnapclient org.kde.discover.libsnapclient.actions)
+kauth_install_helper_files(libsnap_helper org.kde.discover.libsnapclient root)
