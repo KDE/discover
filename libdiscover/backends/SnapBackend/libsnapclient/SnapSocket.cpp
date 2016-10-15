@@ -218,7 +218,7 @@ void SnapJob::processReply(QIODevice* device)
     }
 
     QHash<QByteArray, QByteArray> headers;
-    for(; true; ) {
+    for(; device->canReadLine(); ) {
         const QByteArray line = device->readLine();
         if (line == "\r\n") {
             break;
@@ -228,16 +228,16 @@ void SnapJob::processReply(QIODevice* device)
         if (idx<=0) {
             qWarning() << "error: wrong header" << line;
         }
-        const auto id = line.left(idx);
+        const auto id = line.left(idx).toLower();
         const auto val = line.mid(idx+2).trimmed();
         headers[id] = val;
     }
 
-    const auto transferEncoding = headers.value("Transfer-Encoding");
+    const auto transferEncoding = headers.value("transfer-encoding");
     const bool chunked = transferEncoding == "chunked";
     qint64 length = 0;
     if (!chunked) {
-        const auto numberStr = headers.value("Content-Length");
+        const auto numberStr = headers.value("content-length");
         if (numberStr.isEmpty()) {
             qWarning() << "no content length" << headers;
             return;
