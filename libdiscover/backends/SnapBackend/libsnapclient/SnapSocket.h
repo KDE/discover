@@ -26,8 +26,6 @@
 #include <QJsonArray>
 #include <QLocalSocket>
 
-class QUrlQuery;
-
 class Q_DECL_EXPORT SnapJob : public QObject
 {
 Q_OBJECT
@@ -95,7 +93,7 @@ Q_SIGNALS:
 
 private:
     void includeCredentials(SnapJob* job);
-    QByteArray createRequest(const QByteArray &method, const QByteArray &path, const QUrlQuery &content) const;
+    QByteArray createRequest(const QByteArray &method, const QByteArray &path, const QJsonObject &content) const;
     QByteArray createRequest(const QByteArray &method, const QByteArray &path, const QByteArray &content = {}) const;
 
     QByteArray m_macaroon;

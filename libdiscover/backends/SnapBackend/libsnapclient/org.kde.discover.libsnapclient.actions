@@ -1,0 +1,5 @@
+[org.kde.discover.libsnapclient.modify]
+Name=Snappy remote actions
+Description=Modifying the system-wide font configuration requires privileges.
+Policy=auth_self
+Persistence=session

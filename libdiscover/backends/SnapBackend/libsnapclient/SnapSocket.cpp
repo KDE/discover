@@ -22,7 +22,9 @@
 #include <QDebug>
 #include <QJsonDocument>
 #include <QUrlQuery>
+#include <QBuffer>
 #include <QRegularExpression>
+#include <kauthexecutejob.h>
 
 class LocalSnapJob : public SnapJob
 {
@@ -52,6 +54,50 @@ private:
     QLocalSocket * const m_socket;
 };
 
+class AuthSnapJob : public SnapJob
+{
+public:
+    AuthSnapJob(const QByteArray& request, QObject* parent = nullptr)
+        : SnapJob(parent)
+    {
+        KAuth::Action snapAction(QStringLiteral("org.kde.discover.libsnapclient.modify"));
+        snapAction.setHelperId(QStringLiteral("org.kde.discover.libsnapclient"));
+        qDebug() << "requesting through kauth" << request;
+        snapAction.setArguments({ { QStringLiteral("request"), request } });
+        Q_ASSERT(snapAction.isValid());
+        m_reply = snapAction.execute();
+//         m_reply->start();
+
+        connect(m_reply, &KAuth::ExecuteJob::finished, this, &AuthSnapJob::authJobFinished);
+    }
+
+    bool exec() override
+    {
+        m_reply->exec();
+        return isSuccessful();
+    }
+
+private:
+    void authJobFinished()
+    {
+        if (m_reply->error() == KJob::NoError) {
+            const auto reply = m_reply->data()[QStringLiteral("reply")].toByteArray();
+            QBuffer buffer;
+            buffer.setData(reply);
+            qDebug() << "replied!" << reply;
+
+            bool b = buffer.open(QIODevice::ReadOnly);
+            Q_ASSERT(b);
+            processReply(&buffer);
+        } else {
+            qDebug() << "kauth error" << m_reply->error() << m_reply->errorString();
+            Q_EMIT finished(this);
+        }
+    }
+
+    KAuth::ExecuteJob* m_reply = nullptr;
+};
+
 SnapSocket::SnapSocket(QObject* parent)
     : QObject(parent)
 {
@@ -61,14 +107,18 @@ SnapSocket::~SnapSocket()
 {
 }
 
-QByteArray SnapSocket::createRequest(const QByteArray& method, const QByteArray& path, const QUrlQuery& content) const
+QByteArray SnapSocket::createRequest(const QByteArray& method, const QByteArray& path, const QJsonObject& content) const
 {
     QByteArray ret;
-    const auto query = content.toString().toUtf8();
-    if (method == "GET")
+    if (method == "GET") {
+        QUrlQuery uq;
+        for(auto it = content.constBegin(), itEnd = content.constEnd(); it!=itEnd; ++it) {
+            uq.addQueryItem(it.key(), it.value().toString());
+        }
+        const auto query = uq.toString().toUtf8();
         ret = createRequest(method, path+'?'+query, QByteArray());
-    else if(method == "POST")
-        ret = createRequest(method, path, query);
+    } else if(method == "POST")
+        ret = createRequest(method, path, QJsonDocument(content).toJson());
     else
         qWarning() << "unknown method" << method;
     return ret;
@@ -107,9 +157,7 @@ SnapJob* SnapSocket::snapByName(const QString& name)
 
 SnapJob* SnapSocket::find(const QString& query)
 {
-    QUrlQuery uq;
-    uq.addQueryItem(QStringLiteral("q"), query);
-    return new LocalSnapJob(createRequest("GET", "/v2/find", uq), this);
+    return new LocalSnapJob(createRequest("GET", "/v2/find", {{ QStringLiteral("q"), query }}), this);
 }
 
 SnapJob* SnapSocket::findByName(const QString& name)
@@ -130,12 +178,10 @@ SnapJob * SnapSocket::snapAction(const QString& name, SnapSocket::SnapAction act
         default:
             Q_UNREACHABLE();
     }
-    QUrlQuery uq;
-    uq.addQueryItem(QStringLiteral("action"), actionStr);
+    QJsonObject query = {{ QStringLiteral("action"), actionStr }};
     if (!channel.isEmpty())
-        uq.addQueryItem(QStringLiteral("channel"), channel);
-
-    return new LocalSnapJob(createRequest("POST", "/v2/snaps/"+name.toUtf8(), uq), this);
+        query.insert(QStringLiteral("channel"), channel);
+    return new AuthSnapJob(createRequest("POST", "/v2/snaps/"+name.toUtf8(), query), this);
 }
 
 void SnapSocket::login(const QString& username, const QString& password, const QString& otp)
@@ -144,7 +190,7 @@ void SnapSocket::login(const QString& username, const QString& password, const Q
     if (!otp.isEmpty())
         obj.insert(QStringLiteral("obj"), obj);
 
-    auto job = new LocalSnapJob(createRequest("POST", "/v2/login", QJsonDocument(obj).toJson()), this);
+    auto job = new LocalSnapJob(createRequest("POST", "/v2/login", obj), this);
     connect(job, &SnapJob::finished, this, &SnapSocket::includeCredentials);
 }
 
