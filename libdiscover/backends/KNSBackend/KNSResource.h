@@ -56,6 +56,8 @@ public:
     void fetchChangelog() override;
     QStringList extends() const override;
 
+    KNSBackend* knsBackend() const;
+
     void setEntry(const KNS3::Entry& entry);
     KNS3::Entry entry() const;
 

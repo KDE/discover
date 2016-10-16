@@ -143,35 +143,70 @@ void KNSBackend::statusChanged(const KNS3::Entry& entry)
         qWarning() << "unknown entry changed" << entry.id() << entry.name();
 }
 
-class LambdaTransaction : public Transaction
+class KNSTransaction : public Transaction
 {
 public:
-    LambdaTransaction(QObject* parent, AbstractResource* res, Transaction::Role role)
+    KNSTransaction(QObject* parent, KNSResource* res, Transaction::Role role)
         : Transaction(parent, res, role)
+        , m_id(res->entry().id())
     {
+        auto manager = res->knsBackend()->downloadManager();
+
+        switch(role) {
+            case RemoveRole:
+                manager->uninstallEntry(res->entry());
+                break;
+            case InstallRole:
+                manager->installEntry(res->entry());
+                break;
+            default:
+                Q_UNREACHABLE();
+        }
         setCancellable(false);
         TransactionModel::global()->addTransaction(this);
+
+        connect(manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSTransaction::anEntryChanged);
     }
 
-    ~LambdaTransaction() override {
+    void anEntryChanged(const KNS3::Entry& entry) {
+        if (entry.id() == m_id) {
+            switch (entry.status()) {
+                case KNS3::Entry::Invalid:
+                    qWarning() << "invalid status for" << entry.id() << entry.status();
+                    break;
+                case KNS3::Entry::Installing:
+                case KNS3::Entry::Updating:
+                    setStatus(CommittingStatus);
+                    break;
+                case KNS3::Entry::Downloadable:
+                case KNS3::Entry::Installed:
+                case KNS3::Entry::Deleted:
+                case KNS3::Entry::Updateable:
+                    setStatus(DoneStatus);
+                    TransactionModel::global()->removeTransaction(this);
+                    break;
+            }
+        }
+    }
+
+    ~KNSTransaction() override {
         TransactionModel::global()->removeTransaction(this);
     }
 
     void cancel() override {}
+
+private:
+    const QString m_id;
 };
 
 void KNSBackend::removeApplication(AbstractResource* app)
 {
-    QScopedPointer<Transaction> t(new LambdaTransaction(this, app, Transaction::RemoveRole));
-    KNSResource* r = qobject_cast<KNSResource*>(app);
-    m_manager->uninstallEntry(r->entry());
+    new KNSTransaction(this, qobject_cast<KNSResource*>(app), Transaction::RemoveRole);
 }
 
 void KNSBackend::installApplication(AbstractResource* app)
 {
-    QScopedPointer<Transaction> t(new LambdaTransaction(this, app, Transaction::InstallRole));
-    KNSResource* r = qobject_cast<KNSResource*>(app);
-    m_manager->installEntry(r->entry());
+    new KNSTransaction(this, qobject_cast<KNSResource*>(app), Transaction::InstallRole);
 }
 
 void KNSBackend::installApplication(AbstractResource* app, const AddonList& /*addons*/)

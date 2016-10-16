@@ -52,9 +52,14 @@ AbstractResource::State KNSResource::state()
     return None;
 }
 
+KNSBackend * KNSResource::knsBackend() const
+{
+    return qobject_cast<KNSBackend*>(parent());
+}
+
 QVariant KNSResource::icon() const
 {
-    return qobject_cast<KNSBackend*>(parent())->iconName();
+    return knsBackend()->iconName();
 }
 
 QString KNSResource::comment()
@@ -176,5 +181,5 @@ void KNSResource::fetchChangelog()
 
 QStringList KNSResource::extends() const
 {
-    return qobject_cast<KNSBackend*>(parent())->extends();
+    return knsBackend()->extends();
 }

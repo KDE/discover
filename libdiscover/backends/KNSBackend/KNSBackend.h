@@ -62,6 +62,8 @@ public:
 
     QString iconName() const { return m_iconName; }
 
+    KNS3::DownloadManager* downloadManager() const { return m_manager; }
+
 public Q_SLOTS:
     void receivedEntries(const KNS3::Entry::List& entries);
     void statusChanged(const KNS3::Entry& entry);
