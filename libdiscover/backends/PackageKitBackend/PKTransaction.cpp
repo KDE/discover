@@ -26,6 +26,7 @@
 #include <Transaction/TransactionModel.h>
 #include <QDebug>
 #include <QMessageBox>
+#include <QTimer>
 #include <KLocalizedString>
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
@@ -40,6 +41,9 @@ PKTransaction::PKTransaction(const QVector<AbstractResource*>& apps, Transaction
         PackageKitResource* res = qobject_cast<PackageKitResource*>(r);
         m_pkgnames.unite(res->allPackageNames().toSet());
     }
+
+    TransactionModel::global()->addTransaction(this);
+    QTimer::singleShot(0, this, &PKTransaction::start);
 }
 
 static QStringList packageIds(const QVector<AbstractResource*>& res, std::function<QString(PackageKitResource*)> func)
@@ -109,8 +113,7 @@ void PKTransaction::cancellableChanged()
 void PKTransaction::cancel()
 {
     if (!m_trans) {
-        const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
-        backend->transactionCanceled(this);
+        TransactionModel::global()->cancelTransaction(this);
     } else if (m_trans->allowCancel()) {
         m_trans->cancel();
     } else {
@@ -164,9 +167,9 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     this->submitResolve();
     setStatus(Transaction::DoneStatus);
     if (cancel)
-        backend->transactionCanceled(this);
+        TransactionModel::global()->cancelTransaction(this);
     else
-        backend->removeTransaction(this);
+        TransactionModel::global()->removeTransaction(this);
     backend->fetchUpdates();
 }
 

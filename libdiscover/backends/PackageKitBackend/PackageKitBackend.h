@@ -66,8 +66,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void resolvePackages(const QStringList &packageNames);
 
     public Q_SLOTS:
-        void transactionCanceled(Transaction* t);
-        void removeTransaction(Transaction* t);
         void reloadPackageList();
         void refreshDatabase();
 
@@ -87,13 +85,11 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         template <typename T>
         T resourcesByPackageNames(const QStringList& names) const;
 
-        void addTransaction(PKTransaction* trans);
         void checkDaemonRunning();
         void acquireFetching(bool f);
         void includePackagesToAdd();
 
         Appstream::Database m_appdata;
-        QList<Transaction*> m_transactions;
         PackageKitUpdater* m_updater;
         QPointer<PackageKit::Transaction> m_refresher;
         int m_isFetching;

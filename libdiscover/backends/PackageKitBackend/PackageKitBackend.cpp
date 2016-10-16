@@ -342,31 +342,6 @@ int PackageKitBackend::updatesCount() const
     return m_updatesPackageId.count();
 }
 
-void PackageKitBackend::transactionCanceled(Transaction* t)
-{
-    qDebug() << "Cancel transaction:" << t->resource()->packageName() << "with" << m_transactions.size() << "transactions running";
-    int count = m_transactions.removeAll(t);
-    Q_ASSERT(count==1);
-    Q_UNUSED(count)
-    TransactionModel::global()->cancelTransaction(t);
-}
-
-void PackageKitBackend::removeTransaction(Transaction* t)
-{
-    qDebug() << "Remove transaction:" << t->resource()->packageName() << "with" << m_transactions.size() << "transactions running";
-    int count = m_transactions.removeAll(t);
-    Q_ASSERT(count==1);
-    Q_UNUSED(count)
-    TransactionModel::global()->removeTransaction(t);
-}
-
-void PackageKitBackend::addTransaction(PKTransaction* t)
-{
-    m_transactions.append(t);
-    TransactionModel::global()->addTransaction(t);
-    t->start();
-}
-
 void PackageKitBackend::installApplication(AbstractResource* app, const AddonList& addons)
 {
     if(!addons.addonsToInstall().isEmpty())
@@ -380,7 +355,7 @@ void PackageKitBackend::installApplication(AbstractResource* app, const AddonLis
             appsToInstall += m_packages.packages.value(toInstall);
             Q_ASSERT(appsToInstall.last());
         }
-        addTransaction(new PKTransaction(appsToInstall, Transaction::ChangeAddonsRole));
+        new PKTransaction(appsToInstall, Transaction::ChangeAddonsRole);
     }
 
     if (!addons.addonsToRemove().isEmpty()) {
@@ -388,19 +363,19 @@ void PackageKitBackend::installApplication(AbstractResource* app, const AddonLis
         foreach(const QString& toRemove, addons.addonsToRemove()) {
             appsToRemove += m_packages.packages.value(toRemove);
         }
-        addTransaction(new PKTransaction(appsToRemove, Transaction::RemoveRole));
+        new PKTransaction(appsToRemove, Transaction::RemoveRole);
     }
 }
 
 void PackageKitBackend::installApplication(AbstractResource* app)
 {
-    addTransaction(new PKTransaction({app}, Transaction::InstallRole));
+    new PKTransaction({app}, Transaction::InstallRole);
 }
 
 void PackageKitBackend::removeApplication(AbstractResource* app)
 {
     Q_ASSERT(!isFetching());
-    addTransaction(new PKTransaction({app}, Transaction::RemoveRole));
+    new PKTransaction({app}, Transaction::RemoveRole);
 }
 
 QSet<AbstractResource*> PackageKitBackend::upgradeablePackages() const
