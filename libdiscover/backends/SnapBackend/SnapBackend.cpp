@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "SnapBackend.h"
+#include "SnapTransaction.h"
 #include "SnapResource.h"
 #include "SnapReviewsBackend.h"
 #include <resources/StandardBackendUpdater.h>
@@ -127,20 +128,24 @@ AbstractReviewsBackend* SnapBackend::reviewsBackend() const
 
 void SnapBackend::installApplication(AbstractResource* app, const AddonList& addons)
 {
-//     TransactionModel *transModel = TransactionModel::global();
-//     transModel->addTransaction(new SnapTransaction(qobject_cast<SnapResource*>(app), addons, Transaction::InstallRole));
+    Q_ASSERT(addons.isEmpty());
+    installApplication(app);
 }
 
-void SnapBackend::installApplication(AbstractResource* app)
+void SnapBackend::installApplication(AbstractResource* _app)
 {
-// 	TransactionModel *transModel = TransactionModel::global();
-// 	transModel->addTransaction(new SnapTransaction(qobject_cast<SnapResource*>(app), Transaction::InstallRole));
+	TransactionModel *transModel = TransactionModel::global();
+    auto app = qobject_cast<SnapResource*>(_app);
+    auto job = m_socket.snapAction(app->packageName(), SnapSocket::Install);
+	transModel->addTransaction(new SnapTransaction(app, job, Transaction::InstallRole));
 }
 
-void SnapBackend::removeApplication(AbstractResource* app)
+void SnapBackend::removeApplication(AbstractResource* _app)
 {
-// 	TransactionModel *transModel = TransactionModel::global();
-// 	transModel->addTransaction(new SnapTransaction(qobject_cast<SnapResource*>(app), Transaction::RemoveRole));
+	TransactionModel *transModel = TransactionModel::global();
+    auto app = qobject_cast<SnapResource*>(_app);
+    auto job = m_socket.snapAction(app->packageName(), SnapSocket::Install);
+	transModel->addTransaction(new SnapTransaction(app, job, Transaction::RemoveRole));
 }
 
 #include "SnapBackend.moc"
