@@ -246,8 +246,10 @@ Category* ResourcesProxyModel::filteredCategory() const
 
 void ResourcesProxyModel::setSortByRelevancy(bool sort)
 {
-    m_sortByRelevancy = sort;
-    invalidate();
+    if (sort != m_sortByRelevancy) {
+        m_sortByRelevancy = sort;
+        invalidate();
+    }
 }
 
 bool ResourcesProxyModel::sortingByRelevancy() const
@@ -257,9 +259,11 @@ bool ResourcesProxyModel::sortingByRelevancy() const
 
 void ResourcesProxyModel::setStateFilter(AbstractResource::State s)
 {
-    m_stateFilter = s;
-    invalidateFilter();
-    emit stateFilterChanged();
+    if (s != m_stateFilter) {
+        m_stateFilter = s;
+        invalidateFilter();
+        emit stateFilterChanged();
+    }
 }
 
 AbstractResource::State ResourcesProxyModel::stateFilter() const
@@ -274,8 +278,10 @@ QString ResourcesProxyModel::mimeTypeFilter() const
 
 void ResourcesProxyModel::setMimeTypeFilter(const QString& mime)
 {
-    m_filteredMimeType = mime;
-    invalidateFilter();
+    if (m_filteredMimeType != mime) {
+        m_filteredMimeType = mime;
+        invalidateFilter();
+    }
 }
 
 QString ResourcesProxyModel::extends() const
@@ -283,10 +289,10 @@ QString ResourcesProxyModel::extends() const
     return m_extends;
 }
 
-
-
 void ResourcesProxyModel::setExtends(const QString& extends)
 {
-    m_extends = extends;
-    invalidateFilter();
+    if (m_extends != extends) {
+        m_extends = extends;
+        invalidateFilter();
+    }
 }
