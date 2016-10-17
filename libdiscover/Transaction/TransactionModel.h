@@ -60,6 +60,7 @@ public:
     void cancelTransaction(Transaction *trans);
     void removeTransaction(Transaction *trans);
 
+    bool contains(Transaction* transaction) const { return m_transactions.contains(transaction); }
     int progress() const;
 
 private:

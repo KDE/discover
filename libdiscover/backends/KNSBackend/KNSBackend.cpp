@@ -150,6 +150,7 @@ public:
         : Transaction(parent, res, role)
         , m_id(res->entry().id())
     {
+        TransactionModel::global()->addTransaction(this);
         auto manager = res->knsBackend()->downloadManager();
 
         switch(role) {
@@ -163,7 +164,6 @@ public:
                 Q_UNREACHABLE();
         }
         setCancellable(false);
-        TransactionModel::global()->addTransaction(this);
 
         connect(manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSTransaction::anEntryChanged);
     }
@@ -190,7 +190,10 @@ public:
     }
 
     ~KNSTransaction() override {
-        TransactionModel::global()->removeTransaction(this);
+        if (TransactionModel::global()->contains(this)) {
+            qWarning() << "deleting Transaction before it's done";
+                TransactionModel::global()->removeTransaction(this);
+        }
     }
 
     void cancel() override {}

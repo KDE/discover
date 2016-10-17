@@ -180,15 +180,19 @@ void TransactionModel::cancelTransaction(Transaction *trans)
 void TransactionModel::removeTransaction(Transaction *trans)
 {
     Q_ASSERT(trans);
-    int r = indexOf(trans).row();
+    int r = m_transactions.indexOf(trans);
     Q_ASSERT(r>=0);
+
+    disconnect(trans, nullptr, this, nullptr);
 
     beginRemoveRows(QModelIndex(), r, r);
     m_transactions.removeAt(r);
     endRemoveRows();
+
     emit transactionRemoved(trans);
     if (m_transactions.isEmpty())
-        emit lastTransactionFinished(); 
+        emit lastTransactionFinished();
+    trans->deleteLater();
 }
 
 void TransactionModel::transactionChanged(int role)
