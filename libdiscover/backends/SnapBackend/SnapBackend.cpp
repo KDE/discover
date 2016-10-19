@@ -46,6 +46,7 @@ SnapBackend::SnapBackend(QObject* parent)
 {
     connect(m_reviews, &SnapReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
+    populate(m_socket.find(SnapSocket::SelectRefresh), AbstractResource::Upgradeable);
     populate(m_socket.snaps(), AbstractResource::Installed);
 }
 
@@ -69,9 +70,9 @@ AbstractResource* SnapBackend::resourceByPackageName(const QString& name) const
     return m_resources.value(name);
 }
 
-QList<AbstractResource*> SnapBackend::searchPackageName(const QString& searchText)
+QList<AbstractResource*> SnapBackend::searchPackageName(const QString& name)
 {
-    return populate(m_socket.find(searchText), AbstractResource::None);
+    return populate(m_socket.findByName(name), AbstractResource::None);
 }
 
 QList<AbstractResource*> SnapBackend::populate(SnapJob* job, AbstractResource::State state)
