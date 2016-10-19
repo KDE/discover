@@ -22,9 +22,8 @@ import QtQuick.Controls 1.2
 import "navigation.js" as Navigation
 
 Action {
-    property string overlay
     property Component component
-    checkable: true
+    checkable: window.currentTopLevel==component
     checked: window.currentTopLevel==component
     enabled: window.navigationEnabled
     exclusiveGroup: appTabs
