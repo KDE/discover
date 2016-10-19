@@ -63,11 +63,13 @@ Item
     function waitForSignal(object, name, timeout) {
         if (!timeout) timeout = 5000;
 
+        spy.clear();
         spy.signalName = ""
         spy.target = object;
         spy.signalName = name;
         verify(spy);
         verify(spy.valid);
+        verify(spy.count == 0);
 
         try {
             spy.wait(timeout);
