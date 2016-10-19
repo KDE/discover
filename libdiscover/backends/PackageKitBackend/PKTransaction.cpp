@@ -138,7 +138,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         QSet<AbstractResource*> removedResources;
         while (i.hasNext()) {
             const auto pkgname = PackageKit::Daemon::packageName(i.next());
-            removedResources.unite(backend->searchPackageName(pkgname).toSet());
+            removedResources.unite(backend->resourcesByPackageName(pkgname));
 
             if (m_pkgnames.contains(pkgname)) {
                 i.remove();

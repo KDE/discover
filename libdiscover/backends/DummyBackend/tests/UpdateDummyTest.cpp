@@ -53,8 +53,6 @@ public:
     UpdateDummyTest(QObject* parent = nullptr): QObject(parent)
     {
         m_model = new ResourcesModel(QStringLiteral("dummy-backend"), this);
-        new ModelTest(m_model, m_model);
-
         m_appBackend = backendByName(m_model, QStringLiteral("DummyBackend"));
     }
 
@@ -78,6 +76,8 @@ private Q_SLOTS:
         m->setBackend(rum);
 
         rum->prepare();
+        QSignalSpy spySetup(m_appBackend->backendUpdater(), &AbstractBackendUpdater::progressingChanged);
+        QVERIFY(!m_appBackend->backendUpdater()->isProgressing() || spySetup.wait());
         QCOMPARE(m_appBackend->updatesCount(), m_appBackend->property("startElements").toInt()*2/3);
         QCOMPARE(m->hasUpdates(), true);
 

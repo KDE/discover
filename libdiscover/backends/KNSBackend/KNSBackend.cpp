@@ -211,11 +211,6 @@ void KNSBackend::installApplication(AbstractResource* app, const AddonList& /*ad
     installApplication(app);
 }
 
-AbstractResource* KNSBackend::resourceByPackageName(const QString& name) const
-{
-    return m_resourcesByName[name];
-}
-
 int KNSBackend::updatesCount() const
 {
     return m_updater->updatesCount();
@@ -226,19 +221,22 @@ AbstractReviewsBackend* KNSBackend::reviewsBackend() const
     return m_reviews;
 }
 
-QList<AbstractResource*> KNSBackend::searchPackageName(const QString& searchText)
+ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    QList<AbstractResource*> ret;
+    QVector<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resourcesByName) {
-        if(r->name().contains(searchText, Qt::CaseInsensitive) || r->comment().contains(searchText, Qt::CaseInsensitive))
+        if(r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
             ret += r;
     }
-    return ret;
+    auto fu = ret.count();
+    filter.filterJustInCase(ret);
+    return new ResultsStream(QStringLiteral("KNS"), ret);
 }
 
-QVector<AbstractResource*> KNSBackend::allResources() const
+ResultsStream * KNSBackend::findResourceByPackageName(const QString& search)
 {
-    return containerValues<QVector<AbstractResource*>>(m_resourcesByName);
+    auto pkg = m_resourcesByName.value(search);
+    return new ResultsStream(QStringLiteral("KNS"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
 }
 
 bool KNSBackend::isFetching() const

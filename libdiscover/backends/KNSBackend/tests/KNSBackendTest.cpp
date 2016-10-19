@@ -61,15 +61,24 @@ void KNSBackendTest::wrongBackend()
     QVERIFY(!b->isValid());
 }
 
+QVector<AbstractResource*> KNSBackendTest::getAllResources(AbstractResourcesBackend* backend)
+{
+    AbstractResourcesBackend::Filters f;
+    auto stream = backend->search(f);
+    QSignalSpy spyResources(stream, &ResultsStream::destroyed);
+    QVector<AbstractResource*> resources;
+    connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QVector<AbstractResource*>& res) { resources += res; });
+    Q_ASSERT(spyResources.wait());
+    Q_ASSERT(!resources.isEmpty());
+    return resources;
+}
+
 void KNSBackendTest::testRetrieval()
 {
-    ResourcesModel* model = ResourcesModel::global();
-    QVector<AbstractResource*> resources = m_backend->allResources();
-    QVERIFY(!resources.isEmpty());
-    QCOMPARE(resources.count(), model->rowCount());
     QVERIFY(m_backend->backendUpdater());
     QCOMPARE(m_backend->updatesCount(), m_backend->backendUpdater()->toUpdate().count());
-    
+
+    const auto resources = getAllResources(m_backend);
     foreach(AbstractResource* res, resources) {
         QVERIFY(!res->name().isEmpty());
         QVERIFY(!res->categories().isEmpty());
@@ -96,7 +105,7 @@ void KNSBackendTest::testRetrieval()
 
 void KNSBackendTest::testReviews()
 {
-    QVector<AbstractResource*> resources = m_backend->allResources();
+    const QVector<AbstractResource*> resources = getAllResources(m_backend);
     AbstractReviewsBackend* rev = m_backend->reviewsBackend();
     QVERIFY(!rev->hasCredentials());
     foreach(AbstractResource* res, resources) {

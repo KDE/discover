@@ -21,7 +21,8 @@ function(makekns knsfile iconName category)
     install(FILES ${backend}-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 endfunction()
 
-add_library(kns-backend MODULE KNSBackend.cpp
+add_library(kns-backend MODULE
+    KNSBackend.cpp
     KNSResource.cpp
     KNSReviews.cpp)
 

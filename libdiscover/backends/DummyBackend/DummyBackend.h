@@ -36,12 +36,12 @@ public:
     explicit DummyBackend(QObject* parent = nullptr);
 
     void setMetaData(const QString& path) override;
-    AbstractResource* resourceByPackageName(const QString& name) const override;
     int updatesCount() const override;
     AbstractBackendUpdater* backendUpdater() const override;
     AbstractReviewsBackend* reviewsBackend() const override;
-    QList<AbstractResource*> searchPackageName(const QString& searchText) override;
-    QVector<AbstractResource*> allResources() const override;
+    ResultsStream* search(const AbstractResourcesBackend::Filters & search) override;
+    ResultsStream * findResourceByPackageName(const QString & search) override;
+    QHash<QString, DummyResource*> resources() const { return m_resources; }
     bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
     QList<QAction*> messageActions() const override { return m_messageActions; }
 

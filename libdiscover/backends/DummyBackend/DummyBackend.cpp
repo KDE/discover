@@ -49,6 +49,7 @@ DummyBackend::DummyBackend(QObject* parent)
 {
     QTimer::singleShot(500, this, &DummyBackend::toggleFetching);
     connect(m_reviews, &DummyReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
+    connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &DummyBackend::updatesCountChanged);
 }
 
 void DummyBackend::setMetaData(const QString& path)
@@ -118,35 +119,29 @@ void DummyBackend::toggleFetching()
         m_reviews->initialize();
 }
 
-QVector<AbstractResource*> DummyBackend::allResources() const
-{
-    Q_ASSERT(!m_fetching);
-    QVector<AbstractResource*> ret;
-    ret.reserve(m_resources.size());
-    foreach(AbstractResource* res, m_resources) {
-        ret += res;
-    }
-    return ret;
-}
-
 int DummyBackend::updatesCount() const
 {
     return m_updater->updatesCount();
 }
 
-AbstractResource* DummyBackend::resourceByPackageName(const QString& name) const
+ResultsStream* DummyBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    return m_resources.value(name);
-}
-
-QList<AbstractResource*> DummyBackend::searchPackageName(const QString& searchText)
-{
-    QList<AbstractResource*> ret;
+    QVector<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resources) {
-        if(r->name().contains(searchText, Qt::CaseInsensitive) || r->comment().contains(searchText, Qt::CaseInsensitive))
+        if(r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
             ret += r;
     }
-    return ret;
+    filter.filterJustInCase(ret);
+    return new ResultsStream(QStringLiteral("DummyStream"), ret);
+}
+
+ResultsStream * DummyBackend::findResourceByPackageName(const QString& search)
+{
+    auto res = m_resources.value(search);
+    if (!res) {
+        return new ResultsStream(QStringLiteral("DummyStream"), {});
+    } else
+        return new ResultsStream(QStringLiteral("DummyStream"), { res });
 }
 
 AbstractBackendUpdater* DummyBackend::backendUpdater() const

@@ -33,6 +33,11 @@
 
 Q_GLOBAL_STATIC(QStringList, s_requestedBackends)
 
+void DiscoverBackendsFactory::setRequestedBackends(const QStringList& backends)
+{
+    *s_requestedBackends = backends;
+}
+
 DiscoverBackendsFactory::DiscoverBackendsFactory()
 {}
 
@@ -75,9 +80,9 @@ AbstractResourcesBackend* DiscoverBackendsFactory::backendForFile(const QString&
 QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist) const
 {
     if (whitelist) {
-        QStringList whitelist = *s_requestedBackends;
-        if (!whitelist.isEmpty())
-            return whitelist;
+        QStringList whitelistNames = *s_requestedBackends;
+        if (!whitelistNames.isEmpty())
+            return whitelistNames;
     }
 
     QStringList ret;

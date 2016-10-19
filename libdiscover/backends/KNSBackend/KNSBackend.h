@@ -47,14 +47,13 @@ public:
     void removeApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app, const AddonList& addons) override;
-    AbstractResource* resourceByPackageName(const QString& name) const override;
     int updatesCount() const override;
     AbstractReviewsBackend* reviewsBackend() const override;
-    QList<AbstractResource*> searchPackageName(const QString& searchText) override;
-    QVector< AbstractResource* > allResources() const override;
     AbstractBackendUpdater* backendUpdater() const override;
     bool isFetching() const override;
     QList<QAction*> messageActions() const override { return QList<QAction*>(); }
+    ResultsStream* search(const AbstractResourcesBackend::Filters & filter) override;
+    ResultsStream* findResourceByPackageName(const QString & search) override;
 
     bool isValid() const override;
 

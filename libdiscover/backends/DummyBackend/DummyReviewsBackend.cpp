@@ -20,6 +20,7 @@
 
 #include "DummyReviewsBackend.h"
 #include "DummyBackend.h"
+#include "DummyResource.h"
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/Rating.h>
 #include <resources/AbstractResource.h>
@@ -51,7 +52,7 @@ Rating* DummyReviewsBackend::ratingForApplication(AbstractResource* app) const
 void DummyReviewsBackend::initialize()
 {
     DummyBackend* b = qobject_cast<DummyBackend*>(parent());
-    foreach(AbstractResource* app, b->allResources()) {
+    foreach(DummyResource* app, b->resources()) {
         if (m_ratings.contains(app))
             continue;
         auto randomRating = qrand()%10;

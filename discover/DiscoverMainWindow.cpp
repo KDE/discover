@@ -51,6 +51,7 @@
 
 // DiscoverCommon includes
 #include <MuonDataSources.h>
+#include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 #include <Category/Category.h>
 #include <Category/CategoryModel.h>
@@ -151,7 +152,7 @@ void DiscoverMainWindow::openApplication(const QString& app)
         rootObject()->setProperty("defaultStartup", false);
 
         if (ResourcesModel::global()->isFetching() || ResourcesModel::global()->backends().isEmpty()) {
-            connect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &DiscoverMainWindow::triggerOpenApplication);
+            connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &DiscoverMainWindow::triggerOpenApplication);
             connect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &DiscoverMainWindow::triggerOpenApplication);
         } else {
             triggerOpenApplication();
@@ -161,20 +162,20 @@ void DiscoverMainWindow::openApplication(const QString& app)
 
 void DiscoverMainWindow::triggerOpenApplication()
 {
-    AbstractResource* app = ResourcesModel::global()->resourceByPackageName(m_appToBeOpened);
-    if(app) {
-        emit openApplicationInternal(app);
+    auto stream = ResourcesModel::global()->findResourceByPackageName(m_appToBeOpened);
+    connect(stream, &ResultsStream::resourcesFound, this, [this](const QVector<AbstractResource*> & res){
+        Q_ASSERT(!res.isEmpty());
+
+        emit openApplicationInternal(res.first());
         m_appToBeOpened.clear();
-        disconnect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &DiscoverMainWindow::triggerOpenApplication);
-        disconnect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &DiscoverMainWindow::triggerOpenApplication);
-    } else {
-        qDebug() << "couldn't find" << m_appToBeOpened;
-        if (!ResourcesModel::global()->isFetching()) {
+    });
+
+    connect(stream, &ResultsStream::destroyed, this, [this]() {
+        if (!m_appToBeOpened.isEmpty())
             Q_EMIT unableToFind(m_appToBeOpened);
-            disconnect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &DiscoverMainWindow::triggerOpenApplication);
-            disconnect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &DiscoverMainWindow::triggerOpenApplication);
-        }
-    }
+        disconnect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &DiscoverMainWindow::triggerOpenApplication);
+        disconnect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &DiscoverMainWindow::triggerOpenApplication);
+    });
 }
 
 QUrl DiscoverMainWindow::featuredSource() const

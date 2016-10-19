@@ -45,10 +45,10 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         
         AbstractBackendUpdater* backendUpdater() const override;
         AbstractReviewsBackend* reviewsBackend() const override;
-        
-        QVector< AbstractResource* > allResources() const override;
-        AbstractResource* resourceByPackageName(const QString& name) const override;
-        QList<AbstractResource*> searchPackageName(const QString& searchText) override;
+        QSet<AbstractResource*> resourcesByPackageName(const QString& name) const;
+
+        ResultsStream* search(const AbstractResourcesBackend::Filters & search) override;
+        ResultsStream* findResourceByPackageName(const QString & search) override;
         int updatesCount() const override;
         
         void installApplication(AbstractResource* app) override;
@@ -84,7 +84,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint);
 
     private:
-        QSet<AbstractResource*> resourcesByPackageName(const QString& name) const;
         template <typename T>
         T resourcesByPackageNames(const QStringList& names) const;
 
