@@ -257,22 +257,30 @@ void SnapJob::processReply(QIODevice* device)
             for (;;) {
                 bool ok;
                 const auto numberString = device->readLine().trimmed();
-                const auto number = numberString.toInt(&ok, 16);
+                auto number = numberString.toInt(&ok, 16);
 
                 if (number == 0)
                     break;
-                rest += device->read(number);
+
+                for (; number > 0; ) {
+                    auto fu = device->read(number);
+                    rest += fu;
+                    number -= fu.size();
+                     //TODO: split: payload retrieval and json processing so we don't block
+                    if (number>0)
+                        device->waitForReadyRead(5);
+                }
                 device->read(2);
             }
-            device->read(2);
         } else {
             rest = device->read(length);
+            Q_ASSERT(rest.size() == length);
         }
         QJsonParseError error;
         const auto doc = QJsonDocument::fromJson(rest, &error);
         if (error.error)
-            qWarning() << "error parsing json" << error.errorString();
-        if (!doc.isObject())
+            qWarning() << "error parsing json" << error.errorString() << device->bytesAvailable() << "..." << rest.right(10);
+        else if (!doc.isObject())
             qWarning() << "wrong object type" << rest;
         m_data = doc.object();
     }
