@@ -11,6 +11,7 @@ ApplicationsListPage {
 
     title: i18n("Installed")
     compact: true
+    canNavigate: false
 
     header: PageHeader {
         width: parent.width

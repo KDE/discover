@@ -41,6 +41,7 @@ DiscoverPage {
     property alias count: apps.count
     property alias header: apps.header
     property bool compact: false
+    property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories
     title: category ? category.name : ""
 
