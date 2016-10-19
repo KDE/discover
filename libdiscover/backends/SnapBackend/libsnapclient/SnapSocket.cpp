@@ -155,6 +155,11 @@ SnapJob* SnapSocket::snapByName(const QString& name)
     return new LocalSnapJob(createRequest("GET", "/v2/snaps/"+name.toUtf8()), this);
 }
 
+SnapJob * SnapSocket::find(SnapSocket::Select select)
+{
+    return new LocalSnapJob(createRequest("GET", "/v2/find", {{ QStringLiteral("select"), select==SelectRefresh ? QStringLiteral("refresh") : QStringLiteral("private") }}), this);
+}
+
 SnapJob* SnapSocket::find(const QString& query)
 {
     return new LocalSnapJob(createRequest("GET", "/v2/find", {{ QStringLiteral("q"), query }}), this);
@@ -162,7 +167,7 @@ SnapJob* SnapSocket::find(const QString& query)
 
 SnapJob* SnapSocket::findByName(const QString& name)
 {
-    return {};
+    return new LocalSnapJob(createRequest("GET", "/v2/find", {{ QStringLiteral("name"), name }}), this);
 }
 
 SnapJob * SnapSocket::snapAction(const QString& name, SnapSocket::SnapAction action, const QString& channel)

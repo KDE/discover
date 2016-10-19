@@ -72,8 +72,13 @@ public:
     /// GET /v2/snaps/@p name
     SnapJob* snapByName(const QString& name);
 
-    /// GET /v2/find query
+    /// GET /v2/find with a @p query
     SnapJob* find(const QString &query);
+
+    enum Select { SelectRefresh, SelectPrivate };
+
+    /// GET /v2/find query
+    SnapJob* find(Select select);
 
     /// GET /v2/find query
     SnapJob* findByName(const QString &name);
