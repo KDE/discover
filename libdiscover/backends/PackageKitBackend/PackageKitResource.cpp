@@ -177,9 +177,7 @@ void PackageKitResource::fetchDetails()
         return;
     m_details.insert(QStringLiteral("fetching"), true);//we add an entry so it's not re-fetched.
 
-    PackageKit::Transaction* t = PackageKit::Daemon::getDetails(pkgid);
-    connect(t, &PackageKit::Transaction::details, this, &PackageKitResource::setDetails);
-    connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
+    backend()->fetchDetails(pkgid);
 }
 
 void PackageKitResource::failedFetchingDetails(PackageKit::Transaction::Error, const QString& msg)
