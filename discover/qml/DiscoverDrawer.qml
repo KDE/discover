@@ -65,6 +65,7 @@ Kirigami.GlobalDrawer {
             sequence: "Ctrl+F"
             onActivated: {
                 searchField.forceActiveFocus()
+                searchField.selectAll()
             }
         }
 
