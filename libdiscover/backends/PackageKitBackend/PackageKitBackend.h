@@ -25,7 +25,8 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 #include <QStringList>
-#include <qpointer.h>
+#include <QPointer>
+#include <QTimer>
 #include <QSet>
 #include <PackageKit/Transaction>
 #include <AppstreamQt/database.h>
@@ -64,6 +65,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void fetchUpdates();
 
         void resolvePackages(const QStringList &packageNames);
+        void fetchDetails(const QString& pkgid);
 
     public Q_SLOTS:
         void reloadPackageList();
@@ -88,6 +90,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void checkDaemonRunning();
         void acquireFetching(bool f);
         void includePackagesToAdd();
+        void performDetailsFetch();
 
         Appstream::Database m_appdata;
         PackageKitUpdater* m_updater;
@@ -105,6 +108,8 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
             void clear() { *this = {}; }
         };
 
+        QTimer m_delayedDetailsFetch;
+        QSet<QString> m_packageNamesToFetchDetails;
         Packages m_packages;
         AppstreamReviews* const m_reviews;
 };

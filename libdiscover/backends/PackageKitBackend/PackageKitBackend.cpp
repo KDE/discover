@@ -72,6 +72,10 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     t->setSingleShot(false);
     t->start();
 
+    m_delayedDetailsFetch.setSingleShot(true);
+    m_delayedDetailsFetch.setInterval(0);
+    connect(&m_delayedDetailsFetch, &QTimer::timeout, this, &PackageKitBackend::performDetailsFetch);
+
     QAction* updateAction = new QAction(this);
     updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
@@ -436,6 +440,21 @@ QString PackageKitBackend::upgradeablePackageId(const PackageKitResource* res) c
             return pkgid;
     }
     return QString();
+}
+
+void PackageKitBackend::fetchDetails(const QString& pkgid)
+{
+    if (m_delayedDetailsFetch.isActive())
+        m_delayedDetailsFetch.start();
+
+    m_packageNamesToFetchDetails += pkgid;
+}
+
+void PackageKitBackend::performDetailsFetch()
+{
+    PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(m_packageNamesToFetchDetails.toList());
+    connect(transaction, &PackageKit::Transaction::details, this, &PackageKitBackend::packageDetails);
+    connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
 }
 
 void PackageKitBackend::checkDaemonRunning()

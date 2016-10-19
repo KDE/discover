@@ -109,7 +109,7 @@ QAbstractItemModel * PackageKitSourcesBackend::sources()
     return m_sources;
 }
 
-bool PackageKitSourcesBackend::addSource(const QString& id)
+bool PackageKitSourcesBackend::addSource(const QString& /*id*/)
 {
     return false;
 }
