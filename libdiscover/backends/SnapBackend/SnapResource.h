@@ -29,7 +29,7 @@ class SnapResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit SnapResource(QJsonObject data, AbstractResourcesBackend* parent);
+    explicit SnapResource(QJsonObject data, AbstractResource::State state, AbstractResourcesBackend* parent);
 
     QString section() override;
     QString origin() const override;
@@ -55,6 +55,7 @@ public:
     QList<PackageState> addonsInformation() override { return {}; }
 
 public:
+    AbstractResource::State m_state;
     QJsonObject m_data;
 };
 

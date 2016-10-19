@@ -22,8 +22,9 @@
 #include <QDebug>
 #include <QProcess>
 
-SnapResource::SnapResource(QJsonObject data, AbstractResourcesBackend* parent)
+SnapResource::SnapResource(QJsonObject data, AbstractResource::State state, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
+    , m_state(state)
     , m_data(std::move(data))
 {
 }
@@ -105,7 +106,7 @@ QString SnapResource::section()
 
 AbstractResource::State SnapResource::state()
 {
-    return Installed;
+    return m_state;
 }
 
 void SnapResource::fetchChangelog()

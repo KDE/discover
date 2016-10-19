@@ -46,7 +46,7 @@ SnapBackend::SnapBackend(QObject* parent)
 {
     connect(m_reviews, &SnapReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
-    populate(m_socket.snaps());
+    populate(m_socket.snaps(), AbstractResource::Installed);
 }
 
 QVector<AbstractResource*> SnapBackend::allResources() const
@@ -71,10 +71,10 @@ AbstractResource* SnapBackend::resourceByPackageName(const QString& name) const
 
 QList<AbstractResource*> SnapBackend::searchPackageName(const QString& searchText)
 {
-    return populate(m_socket.find(searchText));
+    return populate(m_socket.find(searchText), AbstractResource::None);
 }
 
-QList<AbstractResource*> SnapBackend::populate(SnapJob* job)
+QList<AbstractResource*> SnapBackend::populate(SnapJob* job, AbstractResource::State state)
 {
     if (!job->exec()) {
         qWarning() << "job failed" << job;
@@ -90,7 +90,7 @@ QList<AbstractResource*> SnapBackend::populate(SnapJob* job)
         const auto snapid = snapObj.value(QLatin1String("id")).toString();
         SnapResource* res = m_resources.value(snapid);
         if (!res) {
-            res = new SnapResource(snapObj, this);
+            res = new SnapResource(snapObj, state, this);
             Q_ASSERT(res->packageName() == snapid);
             resources += res;
         }

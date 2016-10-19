@@ -21,6 +21,7 @@
 #ifndef SNAPBACKEND_H
 #define SNAPBACKEND_H
 
+#include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 #include "SnapSocket.h"
@@ -51,7 +52,7 @@ public:
 
 private:
     void setFetching(bool fetching);
-    QList<AbstractResource*> populate(SnapJob* snaps);
+    QList<AbstractResource*> populate(SnapJob* snaps, AbstractResource::State state);
 
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;
