@@ -55,7 +55,6 @@ DiscoverTest
             verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         var listPage = appRoot.stack.currentItem
         compare(listPage.count, 0)
-        verify(waitForSignal(listPage, "searchChanged"))
         compare(listPage.search, "cocacola")
         searchField.text = "dummy"
         verify(waitForSignal(listPage, "searchChanged"))
