@@ -42,11 +42,6 @@ Kirigami.ApplicationWindow
             showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
     }
 
-    function clearSearch() {
-        if (loader.item)
-            loader.item.clearSearch();
-    }
-
     Component {
         id: loadingComponent
         Kirigami.Page {

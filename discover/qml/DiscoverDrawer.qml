@@ -40,6 +40,10 @@ Kirigami.GlobalDrawer {
         Navigation.openHome();
     }
 
+    function clearSearch() {
+        searchField.text = ""
+    }
+
     onCurrentSubMenuChanged: {
         if (currentSubMenu)
             currentSubMenu.trigger()
@@ -65,18 +69,21 @@ Kirigami.GlobalDrawer {
             sequence: "Ctrl+F"
             onActivated: {
                 searchField.forceActiveFocus()
+                searchField.selectAll()
             }
         }
 
         placeholderText: (!enabled || window.leftPage.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
-        onTextChanged: searchTimer.running = true
+        onTextChanged: {
+            if(window.stack.depth > 0)
+                searchTimer.running = true
+        }
 
         Connections {
             ignoreUnknownSignals: true
             target: window.leftPage
             onClearSearch: {
-                searchField.text = ""
-//                 console.log("search cleared")
+                drawer.clearSearch()
             }
         }
 
