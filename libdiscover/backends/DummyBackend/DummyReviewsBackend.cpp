@@ -51,12 +51,13 @@ Rating* DummyReviewsBackend::ratingForApplication(AbstractResource* app) const
 
 void DummyReviewsBackend::initialize()
 {
+    int i = 11;
     DummyBackend* b = qobject_cast<DummyBackend*>(parent());
     foreach(DummyResource* app, b->resources()) {
         if (m_ratings.contains(app))
             continue;
         auto randomRating = qrand()%10;
-        Rating* rating = new Rating(app->packageName(), 15, randomRating, QStringLiteral("\"0, 0, 0, 4, %1\"").arg(randomRating));
+        Rating* rating = new Rating(app->packageName(), ++i, randomRating, QStringLiteral("\"0, 0, 0, 4, %1\"").arg(randomRating));
         rating->setParent(this);
         m_ratings.insert(app, rating);
     }
