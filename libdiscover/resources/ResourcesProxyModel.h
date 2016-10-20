@@ -89,7 +89,6 @@ public:
 
     bool isBusy() const { return m_currentStream != nullptr; }
 
-    //TO FIGURE OUT
     bool lessThan(AbstractResource* rl, AbstractResource* rr) const;
     void invalidateFilter();
     void invalidateSorting();
@@ -103,12 +102,14 @@ Q_SIGNALS:
     void busyChanged(bool isBusy);
 
 private:
+    QVariant roleToValue(AbstractResource* res, int role) const;
+
     QVector<int> propertiesToRoles(const QVector<QByteArray>& properties) const;
     void addResources(const QVector<AbstractResource*> &res);
     void fetchSubcategories();
 
-    int m_sortRole = Qt::DisplayRole;
-    Qt::SortOrder m_sortOrder = Qt::AscendingOrder;
+    int m_sortRole;
+    Qt::SortOrder m_sortOrder;
 
     bool m_sortByRelevancy;
     bool m_filterBySearch;

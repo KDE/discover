@@ -34,10 +34,11 @@
 
 ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     : QAbstractListModel(parent)
+    , m_sortRole(ResourcesModel::NameRole)
+    , m_sortOrder(Qt::AscendingOrder)
     , m_sortByRelevancy(false)
     , m_filterBySearch(false)
-//     , m_filters({nullptr, AbstractResource::Broken, QString(), QString() })
-    , m_roles(QAbstractItemModel::roleNames().unite({
+    , m_roles({
         { ResourcesModel::NameRole, "name" },
         { ResourcesModel::IconRole, "icon" },
         { ResourcesModel::CommentRole, "comment" },
@@ -129,7 +130,17 @@ void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& res)
 
     beginResetModel();
     m_displayedResources += res;
-    std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
+    qSort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
+    endResetModel();
+}
+
+void ResourcesProxyModel::invalidateSorting()
+{
+    if (m_displayedResources.isEmpty())
+        return;
+
+    beginResetModel();
+    qSort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
     endResetModel();
 }
 
@@ -238,13 +249,6 @@ void ResourcesProxyModel::invalidateFilter()
     Q_EMIT busyChanged(true);
 }
 
-void ResourcesProxyModel::invalidateSorting()
-{
-    beginResetModel();
-    std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
-    endResetModel();
-}
-
 int ResourcesProxyModel::rowCount(const QModelIndex& parent) const
 {
     return parent.isValid() ? 0 : m_displayedResources.count();
@@ -263,29 +267,30 @@ bool ResourcesProxyModel::lessThan(AbstractResource* leftPackage, AbstractResour
         Q_UNREACHABLE();
     }
 
-    auto propertyName = roleNames()[sortRole()];
-    bool invert = false;
+    auto role = m_sortRole;
+    Qt::SortOrder order = m_sortOrder;
+    QVariant leftValue;
+    QVariant rightValue;
     //if we're comparing two equal values, we want the model sorted by application name
-    if(propertyName != "name") {
-        QVariant leftValue = leftPackage->property(propertyName.constData());
-        QVariant rightValue = rightPackage->property(propertyName.constData());
+    if(role != ResourcesModel::NameRole) {
+        leftValue = roleToValue(leftPackage, role);
+        rightValue = roleToValue(rightPackage, role);
+
         if (leftValue == rightValue) {
-            propertyName = "name";
-            invert = (m_sortOrder==Qt::DescendingOrder);
+            role = ResourcesModel::NameRole;
+            order = Qt::DescendingOrder;
         }
     }
 
-    if(propertyName == "name") {
-        return (leftPackage->nameSortKey().compare(rightPackage->nameSortKey())<0) ^ invert;
-    } else if(propertyName == "canUpgrade") {
-        QVariant leftValue = leftPackage->property(propertyName.constData());
-        return leftValue.toBool();
+    bool ret;
+    if(role == ResourcesModel::NameRole) {
+        ret = leftPackage->nameSortKey().compare(rightPackage->nameSortKey()) < 0;
+    } else if(role == ResourcesModel::CanUpgrade) {
+        ret = leftValue.toBool();
     } else {
-        QVariant leftValue = leftPackage->property(propertyName.constData());
-        QVariant rightValue = rightPackage->property(propertyName.constData());
-
-        return (leftValue < rightValue) ^ invert;
+        ret = leftValue < rightValue;
     }
+    return ret != (order == Qt::AscendingOrder);
 }
 
 Category* ResourcesProxyModel::filteredCategory() const
@@ -353,6 +358,11 @@ QVariant ResourcesProxyModel::data(const QModelIndex& index, int role) const
     }
 
     AbstractResource* const resource = m_displayedResources[index.row()];
+    return roleToValue(resource, role);
+}
+
+QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) const
+{
     switch(role) {
         case ResourcesModel::ActiveRole:
             return TransactionModel::global()->transactionFromResource(resource) != nullptr;
@@ -363,12 +373,14 @@ QVariant ResourcesProxyModel::data(const QModelIndex& index, int role) const
         case ResourcesModel::RatingCountRole:
         case ResourcesModel::SortableRatingRole: {
             Rating* const rating = resource->rating();
+            const int idx = Rating::staticMetaObject.indexOfProperty(roleNames().value(role).constData());
+            Q_ASSERT(idx >= 0);
+            auto prop = Rating::staticMetaObject.property(idx);
             if (rating)
-                return rating->property(roleNames().value(role).constData());
+                return prop.read(rating);
             else {
-                const int idx = Rating::staticMetaObject.indexOfProperty(roleNames().value(role).constData());
-                QVariant val = QVariant(0);
-                val.convert(Rating::staticMetaObject.property(idx).type());
+                QVariant val(0);
+                val.convert(prop.type());
                 return val;
             }
         }
@@ -379,7 +391,11 @@ QVariant ResourcesProxyModel::data(const QModelIndex& index, int role) const
             return QVariant();
         default: {
             QByteArray roleText = roleNames().value(role);
-            const QMetaObject* m = resource->metaObject();
+            if(Q_UNLIKELY(roleText.isEmpty())) {
+                qDebug() << "unsupported role" << role;
+                return {};
+            }
+            static const QMetaObject* m = &AbstractResource::staticMetaObject;
             int propidx = roleText.isEmpty() ? -1 : m->indexOfProperty(roleText.constData());
 
             if(Q_UNLIKELY(propidx < 0)) {
