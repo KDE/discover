@@ -60,11 +60,14 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
         { ResourcesModel::LongDescriptionRole, "longDescription" },
         { ResourcesModel::SizeRole, "size" }
         })
-    )
     , m_currentStream(nullptr)
 {
+//     new ModelTest(this, this);
+
     connect(ResourcesModel::global(), &ResourcesModel::searchInvalidated, this, &ResourcesProxyModel::refreshSearch);
     connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &ResourcesProxyModel::invalidateFilter);
+    connect(ResourcesModel::global(), &ResourcesModel::backendDataChanged, this, &ResourcesProxyModel::refreshBackend);
+    connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &ResourcesProxyModel::refreshResource);
 
     connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &ResourcesProxyModel::resourceChangedByTransaction);
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &ResourcesProxyModel::resourceChangedByTransaction);
@@ -399,9 +402,20 @@ void ResourcesProxyModel::refreshResource(AbstractResource* resource, const QVec
 
 void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties)
 {
-//     TODO
     auto roles = propertiesToRoles(properties);
-//     for() for() Q_EMIT dataChanged();
+    const int count = m_displayedResources.count();
+
+    for(int i = 0; i<count; ++i) {
+        if (backend != m_displayedResources[i]->backend())
+            continue;
+
+        int j = i+1;
+        for(; j<count && backend == m_displayedResources[j]->backend(); ++j)
+        {}
+
+        Q_EMIT dataChanged(index(i, 0), index(j-1, 0), roles);
+        i = j;
+    }
 }
 
 void ResourcesProxyModel::resourceChangedByTransaction(Transaction* t)
