@@ -80,6 +80,8 @@ QHash<int, QByteArray> ResourcesProxyModel::roleNames() const
 void ResourcesProxyModel::setSortRole(int sortRole)
 {
     if (sortRole != m_sortRole) {
+        Q_ASSERT(roleNames().contains(sortRole));
+
         m_sortRole = sortRole;
         Q_EMIT sortRoleChanged(sortRole);
         invalidateSorting();
@@ -124,7 +126,7 @@ void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& res)
 
     beginResetModel();
     m_displayedResources += res;
-//     std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
+    std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
     endResetModel();
 }
 
@@ -174,7 +176,7 @@ void ResourcesProxyModel::fetchSubcategories()
     const int count = rowCount();
     QSet<Category*> done;
     for (int i=0; i<count; ++i) {
-        AbstractResource* res = qobject_cast<AbstractResource*>(index(i, 0).data(ResourcesModel::ApplicationRole).value<QObject*>());
+        AbstractResource* res = m_displayedResources[i];
         done.unite(res->categoryObjects());
     }
     QVariantList ret;
@@ -255,28 +257,29 @@ bool ResourcesProxyModel::lessThan(AbstractResource* leftPackage, AbstractResour
             else if(res == rightPackage)
                 return false;
         }
+        Q_UNREACHABLE();
     }
 
-    int numSortRole = sortRole();
+    auto propertyName = roleNames()[sortRole()];
     bool invert = false;
     //if we're comparing two equal values, we want the model sorted by application name
-    if(numSortRole != ResourcesModel::NameRole) {
-        QVariant leftValue = leftPackage->property(roleNames()[sortRole()].constData());
-        QVariant rightValue = rightPackage->property(roleNames()[sortRole()].constData());
+    if(propertyName != "name") {
+        QVariant leftValue = leftPackage->property(propertyName.constData());
+        QVariant rightValue = rightPackage->property(propertyName.constData());
         if (leftValue == rightValue) {
-            numSortRole = ResourcesModel::NameRole;
+            propertyName = "name";
             invert = (m_sortOrder==Qt::DescendingOrder);
         }
     }
-    
-    if(numSortRole == ResourcesModel::NameRole) {
+
+    if(propertyName == "name") {
         return (leftPackage->nameSortKey().compare(rightPackage->nameSortKey())<0) ^ invert;
-    } else if(numSortRole == ResourcesModel::CanUpgrade) {
-        QVariant leftValue = leftPackage->property(roleNames()[sortRole()].constData());
+    } else if(propertyName == "canUpgrade") {
+        QVariant leftValue = leftPackage->property(propertyName.constData());
         return leftValue.toBool();
     } else {
-        QVariant leftValue = leftPackage->property(roleNames()[sortRole()].constData());
-        QVariant rightValue = rightPackage->property(roleNames()[sortRole()].constData());
+        QVariant leftValue = leftPackage->property(propertyName.constData());
+        QVariant rightValue = rightPackage->property(propertyName.constData());
 
         return (leftValue < rightValue) ^ invert;
     }
