@@ -413,13 +413,19 @@ void ResourcesProxyModel::refreshResource(AbstractResource* resource, const QVec
     if (!idx.isValid())
         return;
 
-    emit dataChanged(idx, idx, propertiesToRoles(properties));
+    const auto roles = propertiesToRoles(properties);
+    if (roles.contains(m_sortRole))
+        invalidateSorting();
+    else
+        emit dataChanged(idx, idx, roles);
 }
 
 void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties)
 {
     auto roles = propertiesToRoles(properties);
     const int count = m_displayedResources.count();
+
+    bool found = false;
 
     for(int i = 0; i<count; ++i) {
         if (backend != m_displayedResources[i]->backend())
@@ -431,6 +437,11 @@ void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend* backend, cons
 
         Q_EMIT dataChanged(index(i, 0), index(j-1, 0), roles);
         i = j;
+        found = true;
+    }
+
+    if (found) {
+        invalidateSorting();
     }
 }
 
@@ -442,7 +453,11 @@ void ResourcesProxyModel::resourceChangedByTransaction(Transaction* t)
     Q_ASSERT(!t->resource()->backend()->isFetching());
     const QModelIndex idx = index(m_displayedResources.indexOf(t->resource()), 0);
     if(idx.isValid())
-        emit dataChanged(idx, idx);
+        emit dataChanged(idx, idx, {
+            ResourcesModel::StateRole, ResourcesModel::ActiveRole,
+            ResourcesModel::InstalledRole, ResourcesModel::CanUpgrade,
+            ResourcesModel::SizeRole
+        });
 }
 
 QVector<int> ResourcesProxyModel::propertiesToRoles(const QVector<QByteArray>& properties) const
