@@ -9,6 +9,7 @@ ApplicationsListPage {
     id: page
     stateFilter: 2
     sortRole: "size"
+    sortOrder: Qt.DescendingOrder
 
     title: i18n("Installed")
     compact: true
