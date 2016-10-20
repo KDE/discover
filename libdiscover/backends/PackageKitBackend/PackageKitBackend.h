@@ -64,6 +64,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QVector<AppPackageKitResource*> extendedBy(const QString& id) const;
         void fetchUpdates();
 
+        void clearPackages(const QStringList &packageNames);
         void resolvePackages(const QStringList &packageNames);
         void fetchDetails(const QString& pkgid);
 

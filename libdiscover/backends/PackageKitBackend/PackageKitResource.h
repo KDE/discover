@@ -58,6 +58,8 @@ class PackageKitResource : public AbstractResource
         QString installedPackageId() const;
         QString availablePackageId() const;
 
+        void clearPackageIds() { m_packages.clear(); }
+
         QMap<PackageKit::Transaction::Info, QStringList> packages() const { return m_packages; }
 
         PackageKitBackend* backend() const;
