@@ -444,14 +444,16 @@ QString PackageKitBackend::upgradeablePackageId(const PackageKitResource* res) c
 
 void PackageKitBackend::fetchDetails(const QString& pkgid)
 {
-    if (m_delayedDetailsFetch.isActive())
+    if (!m_delayedDetailsFetch.isActive()) {
         m_delayedDetailsFetch.start();
+    }
 
     m_packageNamesToFetchDetails += pkgid;
 }
 
 void PackageKitBackend::performDetailsFetch()
 {
+    Q_ASSERT(!m_packageNamesToFetchDetails.isEmpty());
     PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(m_packageNamesToFetchDetails.toList());
     connect(transaction, &PackageKit::Transaction::details, this, &PackageKitBackend::packageDetails);
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
