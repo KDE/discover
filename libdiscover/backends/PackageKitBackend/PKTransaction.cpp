@@ -170,7 +170,6 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         TransactionModel::global()->cancelTransaction(this);
     else
         TransactionModel::global()->removeTransaction(this);
-    backend->fetchUpdates();
 }
 
 void PKTransaction::proceed()
@@ -191,6 +190,8 @@ void PKTransaction::submitResolve()
         needResolving += PackageKit::Daemon::packageName(pkgid);
     }
     const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
+
+    backend->clearPackages(needResolving);
     backend->resolvePackages(needResolving);
 }
 
