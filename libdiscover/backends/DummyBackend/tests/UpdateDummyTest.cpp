@@ -87,7 +87,6 @@ private Q_SLOTS:
 
             AbstractResource* res = qobject_cast<AbstractResource*>(resourceIdx.data(UpdateModel::ResourceRole).value<QObject*>());
             QVERIFY(res);
-            QCOMPARE(resourceIdx.data(UpdateModel::SizeRole).toString(), QStringLiteral("123 B"));
 
             QCOMPARE(Qt::CheckState(resourceIdx.data(Qt::CheckStateRole).toInt()), Qt::Checked);
             QVERIFY(m->setData(resourceIdx, int(Qt::Unchecked), Qt::CheckStateRole));

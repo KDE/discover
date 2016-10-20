@@ -53,6 +53,7 @@ public:
     void fetchChangelog() override;
     void fetchScreenshots() override;
     void setState(State state);
+    void setSize(int size) { m_size = size; }
     void setAddons(const AddonList& addons);
 
     void setAddonInstalled(const QString& addon, bool installed);
@@ -65,6 +66,7 @@ public:
     QString m_iconName;
     QList<PackageState> m_addons;
     bool m_isTechnical;
+    int m_size;
 };
 
 #endif // DUMMYRESOURCE_H

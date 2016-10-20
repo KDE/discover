@@ -96,6 +96,7 @@ void DummyBackend::populate(const QString& n)
     for(int i=start; i<start+m_startElements; i++) {
         const QString name = n+QLatin1Char(' ')+QString::number(i);
         DummyResource* res = new DummyResource(name, false, this);
+        res->setSize(100+(m_startElements-i));
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);
         connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
@@ -105,6 +106,7 @@ void DummyBackend::populate(const QString& n)
         const QString name = QStringLiteral("techie")+QString::number(i);
         DummyResource* res = new DummyResource(name, true, this);
         res->setState(AbstractResource::State(1+(i%3)));
+        res->setSize(300+(m_startElements-i));
         m_resources.insert(name, res);
         connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
     }
