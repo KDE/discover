@@ -78,6 +78,7 @@ void SnapTransaction::cancel()
 
 void SnapTransaction::finishTransaction()
 {
+    delete m_timer;
     m_app->refreshState();
     setStatus(DoneStatus);
     TransactionModel::global()->removeTransaction(this);

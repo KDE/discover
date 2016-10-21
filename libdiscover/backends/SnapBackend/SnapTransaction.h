@@ -22,6 +22,7 @@
 #define SNAPTRANSACTION_H
 
 #include <Transaction/Transaction.h>
+#include <QPointer>
 
 class QTimer;
 class SnapJob;
@@ -45,7 +46,7 @@ class SnapTransaction : public Transaction
         SnapResource * const m_app;
         SnapSocket * m_socket;
         QString m_changeId;
-        QTimer* m_timer;
+        QPointer<QTimer> m_timer;
 };
 
 #endif // SNAPTRANSACTION_H
