@@ -21,6 +21,7 @@
 #include "TransactionModel.h"
 
 // Qt includes
+#include <QtCore/QDebug>
 #include <QtCore/QMetaProperty>
 #include <KLocalizedString>
 
@@ -181,7 +182,10 @@ void TransactionModel::removeTransaction(Transaction *trans)
 {
     Q_ASSERT(trans);
     int r = m_transactions.indexOf(trans);
-    Q_ASSERT(r>=0);
+    if (r<0) {
+        qWarning() << "transaction not part of the model already" << trans;
+        return;
+    }
 
     disconnect(trans, nullptr, this, nullptr);
 
