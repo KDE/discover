@@ -23,21 +23,29 @@
 
 #include <Transaction/Transaction.h>
 
+class QTimer;
 class SnapJob;
+class SnapSocket;
 class SnapResource;
+
 class SnapTransaction : public Transaction
 {
     Q_OBJECT
     public:
-        SnapTransaction(SnapResource* app, SnapJob* job, Role role);
+        SnapTransaction(SnapResource* app, SnapJob* job, SnapSocket* socket, Role role);
 
         void cancel() override;
 
     private Q_SLOTS:
+        void transactionStarted(SnapJob* job);
+        void iterateTransaction(SnapJob* job);
         void finishTransaction();
 
     private:
-        SnapResource const * m_app;
+        SnapResource * const m_app;
+        SnapSocket * m_socket;
+        QString m_changeId;
+        QTimer* m_timer;
 };
 
 #endif // SNAPTRANSACTION_H

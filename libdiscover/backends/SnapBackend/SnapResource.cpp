@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "SnapResource.h"
+#include "SnapBackend.h"
 #include <QDebug>
 #include <QProcess>
 
@@ -128,4 +129,16 @@ void SnapResource::invokeApplication() const
 bool SnapResource::isTechnical() const
 {
     return m_data.value(QLatin1String("type")) == QLatin1String("os") || m_data.value(QLatin1String("private")).toBool();
+}
+
+void SnapResource::refreshState()
+{
+    auto b = qobject_cast<SnapBackend*>(backend());
+    SnapSocket* socket = b->socket();
+    auto job = socket->snapByName(packageName());
+    connect(job, &SnapJob::finished, this, [this](SnapJob* job){
+        m_state = job->isSuccessful() ? AbstractResource::Installed : AbstractResource::None;
+        Q_EMIT stateChanged();
+        qDebug() << "refreshed!!" << job->result() << job->statusCode() << m_state;
+    });
 }

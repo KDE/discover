@@ -137,15 +137,15 @@ void SnapBackend::installApplication(AbstractResource* _app)
 	TransactionModel *transModel = TransactionModel::global();
     auto app = qobject_cast<SnapResource*>(_app);
     auto job = m_socket.snapAction(app->packageName(), SnapSocket::Install);
-	transModel->addTransaction(new SnapTransaction(app, job, Transaction::InstallRole));
+	transModel->addTransaction(new SnapTransaction(app, job, &m_socket, Transaction::InstallRole));
 }
 
 void SnapBackend::removeApplication(AbstractResource* _app)
 {
 	TransactionModel *transModel = TransactionModel::global();
     auto app = qobject_cast<SnapResource*>(_app);
-    auto job = m_socket.snapAction(app->packageName(), SnapSocket::Install);
-	transModel->addTransaction(new SnapTransaction(app, job, Transaction::RemoveRole));
+    auto job = m_socket.snapAction(app->packageName(), SnapSocket::Remove);
+	transModel->addTransaction(new SnapTransaction(app, job, &m_socket, Transaction::RemoveRole));
 }
 
 #include "SnapBackend.moc"

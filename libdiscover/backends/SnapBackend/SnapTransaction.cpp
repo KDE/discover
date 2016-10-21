@@ -21,15 +21,54 @@
 #include "SnapTransaction.h"
 #include "SnapBackend.h"
 #include "SnapResource.h"
+#include "SnapSocket.h"
 #include <Transaction/TransactionModel.h>
+#include <QTimer>
 
-SnapTransaction::SnapTransaction(SnapResource* app, SnapJob* job, Role role)
+SnapTransaction::SnapTransaction(SnapResource* app, SnapJob* job, SnapSocket* socket, Role role)
     : Transaction(app, app, role)
     , m_app(app)
+    , m_socket(socket)
 {
     setStatus(DownloadingStatus);
     setCancellable(false);
-    connect(job, &SnapJob::finished, this, &SnapTransaction::finishTransaction);
+    connect(job, &SnapJob::finished, this, &SnapTransaction::transactionStarted);
+    setStatus(SetupStatus);
+
+    // Only needed until /v2/events is fixed upstream
+    m_timer = new QTimer(this);
+    m_timer->setInterval(50);
+    connect(m_timer, &QTimer::timeout, this, [this](){
+        auto job = m_socket->changes(m_changeId);
+        connect(job, &SnapJob::finished, this, &SnapTransaction::iterateTransaction);
+    });
+}
+
+void SnapTransaction::transactionStarted(SnapJob* job)
+{
+    Q_ASSERT(m_changeId.isEmpty());
+
+    if (!job->isSuccessful()) {
+        qWarning() << "non-successful transaction" << job->statusCode();
+        TransactionModel::global()->removeTransaction(this);
+        return;
+    }
+
+    auto data = job->data();
+
+    m_changeId = data.value(QLatin1String("change")).toString();
+
+    setStatus(DownloadingStatus);
+    m_timer->start();
+}
+
+void SnapTransaction::iterateTransaction(SnapJob* job)
+{
+    auto res = job->result().toObject();
+
+    if (res.value(QLatin1String("ready")).toBool()) {
+        finishTransaction();
+    }
 }
 
 void SnapTransaction::cancel()
@@ -39,7 +78,7 @@ void SnapTransaction::cancel()
 
 void SnapTransaction::finishTransaction()
 {
+    m_app->refreshState();
     setStatus(DoneStatus);
     TransactionModel::global()->removeTransaction(this);
-    deleteLater();
 }

@@ -49,6 +49,7 @@ public:
     void installApplication(AbstractResource* app, const AddonList& addons) override;
     void removeApplication(AbstractResource* app) override;
     bool isFetching() const override { return m_fetching; }
+    SnapSocket* socket() { return &m_socket; }
 
 private:
     void setFetching(bool fetching);

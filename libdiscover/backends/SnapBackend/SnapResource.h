@@ -54,6 +54,8 @@ public:
     void fetchScreenshots() override;
     QList<PackageState> addonsInformation() override { return {}; }
 
+    void refreshState();
+
 public:
     AbstractResource::State m_state;
     QJsonObject m_data;
