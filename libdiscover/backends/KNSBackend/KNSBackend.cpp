@@ -228,8 +228,6 @@ ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filte
         if(r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
             ret += r;
     }
-    auto fu = ret.count();
-    filter.filterJustInCase(ret);
     return new ResultsStream(QStringLiteral("KNS"), ret);
 }
 

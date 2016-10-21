@@ -133,7 +133,6 @@ ResultsStream* DummyBackend::search(const AbstractResourcesBackend::Filters& fil
         if(r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
             ret += r;
     }
-    filter.filterJustInCase(ret);
     return new ResultsStream(QStringLiteral("DummyStream"), ret);
 }
 

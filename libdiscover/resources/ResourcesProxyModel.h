@@ -98,9 +98,6 @@ private Q_SLOTS:
     void refreshBackend(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties);
     void refreshResource(AbstractResource* resource, const QVector<QByteArray>& properties);
 
-Q_SIGNALS:
-    void busyChanged(bool isBusy);
-
 private:
     QVariant roleToValue(AbstractResource* res, int role) const;
 
@@ -122,6 +119,7 @@ private:
     AggregatedResultsStream* m_currentStream;
 
 Q_SIGNALS:
+    void busyChanged(bool isBusy);
     void sortRoleChanged(int sortRole);
     void sortOrderChanged(Qt::SortOrder order);
     void categoryChanged();

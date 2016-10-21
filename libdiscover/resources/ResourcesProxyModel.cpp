@@ -124,9 +124,13 @@ void ResourcesProxyModel::setSearch(const QString &searchText)
     }
 }
 
-void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& res)
+void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& _res)
 {
-    Q_ASSERT(!res.isEmpty());
+    auto res = _res;
+    m_filters.filterJustInCase(res);
+
+    if (res.isEmpty())
+        return;
 
     beginResetModel();
     m_displayedResources += res;
@@ -409,10 +413,30 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) 
 
 void ResourcesProxyModel::refreshResource(AbstractResource* resource, const QVector<QByteArray>& properties)
 {
-    const QModelIndex idx = index(m_displayedResources.indexOf(resource), 0);
-    if (!idx.isValid())
-        return;
+    const auto residx = m_displayedResources.indexOf(resource);
+    auto include = m_filters.shouldFilter(resource);
+    if (residx<0) {
+        if (include) {
+            const auto finder = [this, resource](AbstractResource* res){ return lessThan(res, resource); };
+            const auto it = std::find_if(m_displayedResources.constBegin(), m_displayedResources.constEnd(), finder);
+            auto newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());
 
+            beginInsertRows({}, newIdx, newIdx);
+            m_displayedResources.insert(newIdx, resource);
+            endInsertRows();
+        }
+        return;
+    }
+
+    if (!m_filters.shouldFilter(resource)) {
+        beginRemoveRows({}, residx, residx);
+        m_displayedResources.removeAt(residx);
+        endRemoveRows();
+        return;
+    }
+
+    const QModelIndex idx = index(residx, 0);
+    Q_ASSERT(idx.isValid());
     const auto roles = propertiesToRoles(properties);
     if (roles.contains(m_sortRole))
         invalidateSorting();
