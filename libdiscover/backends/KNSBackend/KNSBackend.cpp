@@ -151,20 +151,10 @@ public:
         , m_id(res->entry().id())
     {
         TransactionModel::global()->addTransaction(this);
-        auto manager = res->knsBackend()->downloadManager();
 
-        switch(role) {
-            case RemoveRole:
-                manager->uninstallEntry(res->entry());
-                break;
-            case InstallRole:
-                manager->installEntry(res->entry());
-                break;
-            default:
-                Q_UNREACHABLE();
-        }
         setCancellable(false);
 
+        auto manager = res->knsBackend()->downloadManager();
         connect(manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSTransaction::anEntryChanged);
     }
 
@@ -204,12 +194,16 @@ private:
 
 void KNSBackend::removeApplication(AbstractResource* app)
 {
-    new KNSTransaction(this, qobject_cast<KNSResource*>(app), Transaction::RemoveRole);
+    auto res = qobject_cast<KNSResource*>(app);
+    m_manager->uninstallEntry(res->entry());
+    new KNSTransaction(this, res, Transaction::RemoveRole);
 }
 
 void KNSBackend::installApplication(AbstractResource* app)
 {
-    new KNSTransaction(this, qobject_cast<KNSResource*>(app), Transaction::InstallRole);
+    auto res = qobject_cast<KNSResource*>(app);
+    m_manager->installEntry(res->entry());
+    new KNSTransaction(this, res, Transaction::InstallRole);
 }
 
 void KNSBackend::installApplication(AbstractResource* app, const AddonList& /*addons*/)
