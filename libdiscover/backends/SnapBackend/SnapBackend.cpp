@@ -71,7 +71,7 @@ AbstractResource* SnapBackend::resourceByPackageName(const QString& name) const
 
 QList<AbstractResource*> SnapBackend::searchPackageName(const QString& name)
 {
-    return populate(m_socket.findByName(name), AbstractResource::None);
+    return populate(m_socket.find(name), AbstractResource::None);
 }
 
 QList<AbstractResource*> SnapBackend::populate(SnapJob* job, AbstractResource::State state)
@@ -87,7 +87,7 @@ QList<AbstractResource*> SnapBackend::populate(SnapJob* job, AbstractResource::S
     QSet<SnapResource*> resources;
     for(const auto& snap: snaps) {
         const auto snapObj = snap.toObject();
-        const auto snapid = snapObj.value(QLatin1String("id")).toString();
+        const auto snapid = snapObj.value(QLatin1String("name")).toString();
         SnapResource* res = m_resources.value(snapid);
         if (!res) {
             res = new SnapResource(snapObj, state, this);

@@ -87,7 +87,7 @@ QString SnapResource::origin() const
 
 QString SnapResource::packageName() const
 {
-    return m_data.value(QLatin1String("id")).toString();
+    return m_data.value(QLatin1String("name")).toString();
 }
 
 QUrl SnapResource::screenshotUrl()
