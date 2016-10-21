@@ -46,7 +46,6 @@ SnapBackend::SnapBackend(QObject* parent)
 {
     connect(m_reviews, &SnapReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
-    populate(m_socket.find(SnapSocket::SelectRefresh), AbstractResource::Upgradeable);
     populate(m_socket.snaps(), AbstractResource::Installed);
 }
 
