@@ -34,7 +34,7 @@ public:
         , m_socket(new QLocalSocket(this))
     {
         connect(m_socket, &QLocalSocket::connected, this, [this, request](){
-    //         qDebug() << "connected";
+//             qDebug() << "connected" << request;
             m_socket->write(request);
         });
         connect(m_socket, &QLocalSocket::disconnected, this, [](){ qDebug() << "disconnected :("; });
@@ -66,14 +66,15 @@ public:
         snapAction.setArguments({ { QStringLiteral("request"), request } });
         Q_ASSERT(snapAction.isValid());
         m_reply = snapAction.execute();
-//         m_reply->start();
+        m_reply->start();
 
         connect(m_reply, &KAuth::ExecuteJob::finished, this, &AuthSnapJob::authJobFinished);
     }
 
     bool exec() override
     {
-        m_reply->exec();
+        Q_UNIMPLEMENTED();
+//         m_reply->exec();
         return isSuccessful();
     }
 
@@ -170,6 +171,12 @@ SnapJob* SnapSocket::findByName(const QString& name)
     return new LocalSnapJob(createRequest("GET", "/v2/find", {{ QStringLiteral("name"), name }}), this);
 }
 
+SnapJob * SnapSocket::changes(const QString& id)
+{
+    Q_ASSERT(!id.isEmpty());
+    return new LocalSnapJob(createRequest("GET", "/v2/changes/"+id.toUtf8()), this);
+}
+
 SnapJob * SnapSocket::snapAction(const QString& name, SnapSocket::SnapAction action, const QString& channel)
 {
     QString actionStr;
@@ -218,7 +225,7 @@ void SnapJob::processReply(QIODevice* device)
 {
     {
         const QByteArray line = device->readLine().trimmed();
-        if (!line.endsWith("OK"))
+        if (!line.endsWith("OK") && !line.endsWith("Accepted"))
             qWarning() << "error" << line;
     }
 

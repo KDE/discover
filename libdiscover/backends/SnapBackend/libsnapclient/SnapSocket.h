@@ -36,7 +36,8 @@ public:
     int statusCode() const { return m_data.value(QLatin1String("status-code")).toInt(); }
     QString status() const { return m_data.value(QLatin1String("status")).toString(); }
     QString type() const { return m_data.value(QLatin1String("type")).toString(); }
-    bool isSuccessful() const { return statusCode()==200; }
+    bool isSuccessful() const { return statusCode()>=200 && statusCode()<300; }
+    QJsonObject data() const { return m_data; }
 
     virtual bool exec() = 0;
 
@@ -88,10 +89,11 @@ public:
     /**
      * POST /v2/snaps/@p name
      * stable is the default channel
-     *
-     *
      */
     SnapJob* snapAction(const QString &name, SnapAction action, const QString &channel = {});
+
+    /// GET /v2/changes/@p id
+    SnapJob* changes(const QString &id);
 
 Q_SIGNALS:
     void loginChanged(bool isLoggedIn);
