@@ -16,6 +16,7 @@
   <name xml:lang="gl">Discover</name>
   <name xml:lang="id">Discover</name>
   <name xml:lang="it">Discover</name>
+  <name xml:lang="ko">발견</name>
   <name xml:lang="nl">Ontdekken</name>
   <name xml:lang="nn">Oppdag</name>
   <name xml:lang="pl">Odkrywca</name>
@@ -46,6 +47,7 @@
   <summary xml:lang="gl">Discover</summary>
   <summary xml:lang="id">Discover</summary>
   <summary xml:lang="it">Discover</summary>
+  <summary xml:lang="ko">발견</summary>
   <summary xml:lang="nl">Ontdekken</summary>
   <summary xml:lang="nn">Oppdag</summary>
   <summary xml:lang="pl">Odkrywca</summary>
@@ -74,6 +76,7 @@
     <p xml:lang="gl">Nunca lle pasou que atopou unha ferramenta perfecta para o que necesitaba, pero que para atopala tivo que pasar un bo anaco buscando en internet? Á hora de instalar un programa, non se pregunta ás veces se paga a pena? Ou se realmente é o programa que está a buscar?</p>
     <p xml:lang="id">Apakah kamu tidak pernah menemukan sebuah alat yang sempurna untuk kebutuhanmu, tetapi hanya kamu yang menemukannya setelah beberapa waktu tersandung atas itu di internet? Ketika mempertimbangkan untuk memasang aplikasi, tidakkah kamu bertanya-tanya kadang-kadang apakah itu benar-benar layak? Atau jika itu benar demikian apa yang kamu cari?</p>
     <p xml:lang="it">Non hai mai trovato uno strumento che fosse perfetto per le tue esigenze, ma lo hai trovato solo dopo esserci incappato in Internet? Quando decidi se installare un'applicazione, non ti chiedi a volte se ne valga davvero la pena? O se è effettivamente ciò che stai cercando?</p>
+    <p xml:lang="ko">인터넷을 오랫동안 검색한 결과 끝에 필요한 도구가 무엇인지 찾은 적이 있었습니까? 프로그램을 설치할 때 이 프로그램이 유용한지 알고 싶은 적이 있었습니까? 아니면 목적에 맞는 프로그램인지 생각해 본 적이 있었습니까?</p>
     <p xml:lang="nl">Hebt u niet ooit een hulpmiddel gevonden dat perfect was voor uw behoefte maar dat u alleen na enige tijd toevallig vond op het internet? Bij de overweging om een toepassing te installeren, hebt u uzelf dan soms niet afgevraagd of het dat werkelijk waard was? Of of het echt was waarnaar u op zoek was?</p>
     <p xml:lang="nn">Har du nokon gong funne eit program som var midt i blinken for deg, men berre etter ein lengre ekspedisjon på nettet? Når du vurderer å installera eit program, lurer du nokon gong på om det er verdt det? Eller på om det eigentleg er programmet du treng?</p>
     <p xml:lang="pl">Czy miałeś kiedyś tak, że znalazłeś idealne narzędzie, jednak na jego poszukiwania spędziłeś wiele czasu w sieci? Czy przy wgrywaniu programu na swój komputer, zastanawiasz się czasami czy jest on tego warty, albo czy jest to to czego właśnie szukasz?</p>
@@ -100,6 +103,7 @@
     <p xml:lang="gl">Discover permite atopar programas e ferramentas de maneira fácil e rápida. Atope rapidamente programas que se axustan ás súas necesidades explorando a biblioteca de software mediante buscas, categorías de software, e listas de programas máis usados con información detallada dos programas, incluíndo capturas de pantalla e opinións de usuarios.</p>
     <p xml:lang="id">Discover membantu pengguna dengan mudah dan cepat menemukan aplikasi atau alat-alat. Oleh karena itu memungkinkan untuk menavigasi sebuah perpustakaan software dengan menelusuri, kategori software, daftar-daftar atas bersama dengan informasi aplikasi terinci yang meliputi cuplikan layar dan ulasan, pengguna bisa lebih cepat menemukan aplikasi yang sesuai dengan kebutuhan mereka.</p>
     <p xml:lang="it">Discover aiuta gli utenti a trovare in modo semplice e rapido applicazioni o strumenti. Permettendo di navigare una raccolta di software tramite ricerca, categorie di software, liste preferite oltre alle informazioni dettagliate sulle applicazioni che includono schermate e recensioni, gli utenti possono trovare più rapidamente applicazioni che si adattano alle loro esigenze.</p>
+    <p xml:lang="ko">발견을 통하여 프로그램과 도구를 쉽고 빠르게 발견할 수 있습니다. 소프트웨어 라이브러리를 직접 검색하거나, 분류별 및 상위 목록으로 볼 수 있으며 스크린샷과 리뷰를 포함한 소프트웨어 정보를 통해서 필요한 프로그램을 찾을 수 있습니다.</p>
     <p xml:lang="nl">Discover helpt gebruikers om gemakkelijk en snel een toepassing of hulpmiddel te vinden. Door navigatie te bieden in een softwarebibliotheek door zoeken in softwarecategorieën, lijsten met toppers, samen met gedetailleerde informatie over toepassingen die schermafdrukken en reviews bevatten, kunnen gebruikers sneller toepassingen vinden die in hun behoeften voorzien.</p>
     <p xml:lang="nn">Men Oppdag vert det lettare å finna program og verktøy. Du kan søkja etter program eller sjå gjennom programkategoriar og lister over populære program, og du får detaljert informasjon om kvart program, med bilete og brukaromtalar.</p>
     <p xml:lang="pl">Odkrywca pomaga użytkownikowi w szybkim i łatwym wyszukiwaniu potrzebnych aplikacji i narzędzi. Umożliwia on przeglądanie biblioteki oprogramowania poprzez wyszukiwania, kategorie oprogramowania, listy najlepszych aplikacji wraz ze szczegółami takimi jak zrzuty ekranu i recenzje. W ten sposób użytkownicy znajdują szybciej to czego szukają.</p>
@@ -126,6 +130,7 @@
     <p xml:lang="gl">Ademais, Discover permitiralle xestionar as distintas fontes de software de que dispón e xestionar os programas que ten instalados pero que xa non lle interesan.</p>
     <p xml:lang="id">Selanjutnya, Discover akan membiarkan kamu mengelola sumber software yang berbeda-beda yang kamu miliki dan mengelola aplikasi yang sudah kamu pasang di masa lalu tetapi kamu tidak menginginkan lagi.</p>
     <p xml:lang="it">Inoltre, Discover ti consentirà di gestire le diverse fonti del software disponibili e gestire le applicazioni che hai già installato in passato, ma che non ti servono più.</p>
+    <p xml:lang="ko">발견을 통하여 여러 소프트웨어 저장소를 관리하고 이전에 설치했지만 필요하지 않은 프로그램을 관리할 수 있습니다.</p>
     <p xml:lang="nl">Verder laat Discover u de verschillende bronnen van software die u hebt beheren, evenals de al eerder geïnstalleerde toepassingen maar die u niet meer wilt.</p>
     <p xml:lang="nn">Du får òg kontroll over dei ulike programvarekjeldene du har, og kan lett avinstallera program du tidlegare har installert men som du ikkje lenger treng.</p>
     <p xml:lang="pl">Dodatkowo, Odkrywca umożliwia zarządzanie wieloma źródłami oprogramowania i oprogramowaniem, które jest już na twoim komputerze i którego chcesz się pozbyć.</p>
