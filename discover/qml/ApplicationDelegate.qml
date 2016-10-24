@@ -52,7 +52,7 @@ Kirigami.AbstractListItem
             id: resourceIcon
             icon: application.icon
 
-            readonly property real contHeight: Math.max(delegateArea.height * 0.8, 128)
+            readonly property real contHeight: lowLayout.height * 0.8
             width: contHeight
             height: contHeight
             anchors.verticalCenter: parent.verticalCenter
