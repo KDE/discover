@@ -27,6 +27,21 @@
 #include <QDebug>
 #include <QTimer>
 
+QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters& filters)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "Filters(";
+    if (filters.category) debug.nospace() << "category: " << filters.category << ',';
+    if (filters.state) debug.nospace() << "state: " << filters.state << ',';
+    if (!filters.mimetype.isEmpty()) debug.nospace() << "mimetype: " << filters.mimetype << ',';
+    if (!filters.search.isEmpty()) debug.nospace() << "search: " << filters.search << ',';
+    if (!filters.extends.isEmpty()) debug.nospace() << "extends:" << filters.extends << ',';
+    if (!filters.roles.isEmpty()) debug.nospace() << "roles:" << filters.roles << ',';
+    debug.nospace() << ')';
+
+    return debug;
+}
+
 ResultsStream::ResultsStream(const QString &objectName, const QVector<AbstractResource*>& resources)
     : ResultsStream(objectName)
 {

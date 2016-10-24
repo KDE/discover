@@ -231,6 +231,8 @@ static T containerValues(const W& container)
     return ret;
 }
 
+DISCOVERCOMMON_EXPORT QDebug operator<<(QDebug dbg, const AbstractResourcesBackend::Filters& filters);
+
 /**
  * @internal Workaround because QPluginLoader enforces 1 instance per plugin
  */
