@@ -229,20 +229,21 @@ AbstractReviewsBackend* KNSBackend::reviewsBackend() const
 
 ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    if (filter.category && filter.category->matchesCategoryName(m_categories.first())) {
-        m_manager->setSearchTerm(filter.search);
-        return searchStream();
-    } else if (filter.state >= AbstractResource::Installed) {
+    if (filter.state >= AbstractResource::Installed) {
         QVector<AbstractResource*> ret;
         foreach(AbstractResource* r, m_resourcesByName) {
             if(r->state()>=filter.state && (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)))
                 ret += r;
         }
         return new ResultsStream(QStringLiteral("KNS-installed"), ret);
-    } else {
+    } else if (filter.category && filter.category->matchesCategoryName(m_categories.first())) {
+        m_manager->setSearchTerm(filter.search);
+        return searchStream();
+    } else if (!filter.search.isEmpty()) {
         m_manager->setSearchTerm(filter.search);
         return searchStream();
     }
+    return new ResultsStream(QStringLiteral("KNS-void"), {});
 }
 
 ResultsStream * KNSBackend::searchStream()
