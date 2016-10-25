@@ -210,6 +210,15 @@ QVariantList Category::subCategoriesVariant() const
     return ret;
 }
 
+bool Category::matchesCategoryName(const QString& name) const
+{
+    for(const auto &filter: m_orFilters) {
+        if (filter.first == CategoryFilter && filter.second == name)
+            return true;
+    }
+    return false;
+}
+
 bool Category::contains(Category* cat) const
 {
     const bool ret = cat == this || (cat && contains(qobject_cast<Category*>(cat->parent())));

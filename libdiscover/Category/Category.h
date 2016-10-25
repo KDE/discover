@@ -67,6 +67,7 @@ public:
     bool blacklistPlugins(const QSet<QString>& pluginName);
     bool isAddons() const { return m_isAddons; }
     QUrl decoration() const;
+    bool matchesCategoryName(const QString &name) const;
 
     Q_SCRIPTABLE bool contains(Category* cat) const;
     Q_SCRIPTABLE bool contains(const QVariantList &cats) const;
