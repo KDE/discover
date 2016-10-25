@@ -27,6 +27,7 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/Rating.h>
+#include <Category/Category.h>
 #include <DiscoverBackendsFactory.h>
 #include <QStandardPaths>
 
@@ -38,6 +39,7 @@ QTEST_MAIN( KNSBackendTest )
 KNSBackendTest::KNSBackendTest(QObject* parent)
     : QObject(parent)
     , m_r(nullptr)
+    , m_cat(new Category(QLatin1String("knscorrect"), { { CategoryFilter, QLatin1String("testplasmoids.knsrc")} }))
 {
     QStandardPaths::setTestModeEnabled(true);
     ResourcesModel* model = new ResourcesModel(QFINDTESTDATA("knscorrect-backend.desktop"), this);
@@ -64,7 +66,9 @@ void KNSBackendTest::wrongBackend()
 QVector<AbstractResource*> KNSBackendTest::getAllResources(AbstractResourcesBackend* backend)
 {
     AbstractResourcesBackend::Filters f;
+    f.category = m_cat;
     auto stream = backend->search(f);
+    Q_ASSERT(stream->objectName() != QLatin1String("KNS-void"));
     QSignalSpy spyResources(stream, &ResultsStream::destroyed);
     QVector<AbstractResource*> resources;
     connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QVector<AbstractResource*>& res) { resources += res; });

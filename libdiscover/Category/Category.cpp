@@ -27,11 +27,17 @@
 #include <QStandardPaths>
 #include <QDebug>
 
-Category::Category(QSet<QString>  pluginName, QObject* parent)
+Category::Category(QSet<QString> pluginName, QObject* parent)
         : QObject(parent)
         , m_iconString(QStringLiteral("applications-other"))
         , m_showTechnical(false)
         , m_plugins(std::move(pluginName))
+{}
+
+Category::Category(const QString& name, const QVector<QPair<FilterType, QString> >& orFilters)
+    : QObject(nullptr)
+    , m_name(name)
+    , m_orFilters(orFilters)
 {}
 
 Category::~Category() = default;
