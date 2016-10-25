@@ -23,9 +23,9 @@
 #include <QRegularExpression>
 #include <knewstuff_version.h>
 
-KNSResource::KNSResource(const KNS3::Entry& entry, QString category, KNSBackend* parent)
+KNSResource::KNSResource(const KNS3::Entry& entry, QStringList categories, KNSBackend* parent)
     : AbstractResource(parent)
-    , m_category(std::move(category))
+    , m_categories(std::move(categories))
     , m_entry(entry)
 {
     connect(this, &KNSResource::stateChanged, parent, &KNSBackend::updatesCountChanged);
@@ -104,7 +104,7 @@ QString KNSResource::packageName() const
 
 QStringList KNSResource::categories()
 {
-    return QStringList(m_category);
+    return m_categories;
 }
 
 QUrl KNSResource::homepage()

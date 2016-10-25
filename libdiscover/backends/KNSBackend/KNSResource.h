@@ -32,7 +32,7 @@ class DISCOVERCOMMON_EXPORT KNSResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit KNSResource(const KNS3::Entry& c, QString category, KNSBackend* parent);
+    explicit KNSResource(const KNS3::Entry& c, QStringList categories, KNSBackend* parent);
     ~KNSResource() override;
 
     AbstractResource::State state() override;
@@ -62,7 +62,7 @@ public:
     KNS3::Entry entry() const;
 
 private:
-    const QString m_category;
+    const QStringList m_categories;
     KNS3::Entry m_entry;
 };
 

@@ -90,6 +90,8 @@ void KNSBackend::setMetaData(const QString& path)
         return;
     }
 
+    m_categories = QStringList{ QFileInfo(m_name).fileName() };
+
     const KConfigGroup group = conf.group("KNewStuff3");
     m_extends = group.readEntry("Extends", QStringList());
     m_reviews->setProviderUrl(QUrl(group.readEntry("ProvidersUrl", QString())));
@@ -125,9 +127,8 @@ void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
         return;
     }
 
-    const QString filename = QFileInfo(m_name).fileName();
     foreach(const KNS3::Entry& entry, entries) {
-        KNSResource* r = new KNSResource(entry, filename, this);
+        KNSResource* r = new KNSResource(entry, m_categories, this);
         m_resourcesByName.insert(entry.id(), r);
     }
     ++m_page;
