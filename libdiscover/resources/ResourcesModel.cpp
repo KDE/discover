@@ -232,13 +232,12 @@ bool ResourcesModel::isBusy() const
 
 bool ResourcesModel::isExtended(const QString& id)
 {
-    bool ret = false;
-//     auto resourceExtends = [id](AbstractResource* res) {return res->extends().contains(id); };
-//     foreach (const QVector<AbstractResource*> & backend, m_resources) {
-//         ret = std::find_if(backend.cbegin(), backend.cend(), resourceExtends) != backend.cend();
-//         if (ret)
-//             break;
-//     }
+    bool ret = true;
+    foreach (AbstractResourcesBackend* backend, m_backends) {
+        ret = backend->extends().contains(id);
+        if (ret)
+            break;
+    }
     return ret;
 }
 

@@ -150,6 +150,11 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          */
         virtual QList<QAction*> messageActions() const = 0;
 
+        /**
+         * @returns the appstream ids that this backend extends
+         */
+        virtual QStringList extends() const;
+
         /** @returns the plugin's name */
         QString name() const;
 

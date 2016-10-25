@@ -127,3 +127,8 @@ void AbstractResourcesBackend::Filters::filterJustInCase(QVector<AbstractResourc
             it = input.erase(it);
     }
 }
+
+QStringList AbstractResourcesBackend::extends() const
+{
+    return {};
+}

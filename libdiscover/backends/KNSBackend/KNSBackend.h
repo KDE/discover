@@ -57,7 +57,7 @@ public:
 
     bool isValid() const override;
 
-    QStringList extends() const { return m_extends; }
+    QStringList extends() const override { return m_extends; }
 
     QString iconName() const { return m_iconName; }
 
