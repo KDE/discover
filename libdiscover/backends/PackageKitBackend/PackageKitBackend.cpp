@@ -262,7 +262,9 @@ void PackageKitBackend::includePackagesToAdd()
     foreach(PackageKitResource* res, m_packagesToDelete) {
         const auto pkgs = m_packages.packageToApp.value(res->packageName(), {res->packageName()});
         foreach(const auto &pkg, pkgs) {
-            m_packages.packages.take(pkg)->deleteLater();
+            auto res = m_packages.packages.take(pkg);
+            emit resourceRemoved(res);
+            res->deleteLater();
         }
     }
     m_packagesToAdd.clear();

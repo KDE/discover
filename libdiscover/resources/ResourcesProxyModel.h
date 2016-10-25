@@ -97,7 +97,7 @@ private Q_SLOTS:
     void refreshSearch();
     void refreshBackend(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties);
     void refreshResource(AbstractResource* resource, const QVector<QByteArray>& properties);
-
+    void removeResource(AbstractResource* resource);
 private:
     QVariant roleToValue(AbstractResource* res, int role) const;
 

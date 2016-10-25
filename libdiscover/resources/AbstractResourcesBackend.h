@@ -215,6 +215,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * Allows to notify some @p properties in @p resource have changed
          */
         void resourcesChanged(AbstractResource* resource, const QVector<QByteArray> &properties);
+        void resourceRemoved(AbstractResource* resource);
 
     private:
         QString m_name;

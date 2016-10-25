@@ -69,6 +69,7 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &ResourcesProxyModel::invalidateFilter);
     connect(ResourcesModel::global(), &ResourcesModel::backendDataChanged, this, &ResourcesProxyModel::refreshBackend);
     connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &ResourcesProxyModel::refreshResource);
+    connect(ResourcesModel::global(), &ResourcesModel::resourceRemoved, this, &ResourcesProxyModel::removeResource);
 
     connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &ResourcesProxyModel::resourceChangedByTransaction);
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &ResourcesProxyModel::resourceChangedByTransaction);
@@ -442,6 +443,16 @@ void ResourcesProxyModel::refreshResource(AbstractResource* resource, const QVec
         invalidateSorting();
     else
         emit dataChanged(idx, idx, roles);
+}
+
+void ResourcesProxyModel::removeResource(AbstractResource* resource)
+{
+    const auto residx = m_displayedResources.indexOf(resource);
+    if (residx < 0)
+        return;
+    beginRemoveRows({}, residx, residx);
+    m_displayedResources.removeAt(residx);
+    endRemoveRows();
 }
 
 void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties)
