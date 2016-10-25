@@ -68,11 +68,9 @@ void AppstreamReviews::readRatings()
     if (!dev->open(QIODevice::ReadOnly)) {
         qWarning() << "couldn't open popcon file" << dev->errorString();
     } else {
-        foreach(Rating* res, m_ratings) {
-            res->deleteLater();
-        }
-        m_ratings = PopConParser::parsePopcon(this, dev.data());
-        Q_EMIT ratingsReady();
+        auto changed = PopConParser::parsePopcon(this, dev.data(), m_ratings);
+        if (!changed.isEmpty())
+            Q_EMIT ratingsReady();
     }
 }
 

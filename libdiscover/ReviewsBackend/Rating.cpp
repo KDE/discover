@@ -102,7 +102,7 @@ Rating::Rating(const QVariantMap &data)
 {
 }
 
-Rating::Rating(QString packageName, int inst, int /*vote*/, int /*old*/, int /*recent*/)
+Rating::Rating(QString packageName, int inst)
     : QObject()
     , m_packageName(std::move(packageName))
     , m_ratingCount(inst)

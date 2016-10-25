@@ -23,9 +23,11 @@
 #include <QDebug>
 #include <QRegularExpression>
 
-QHash<QString, Rating *> PopConParser::parsePopcon(QObject* parent, QIODevice* dev)
+QSet<QString> PopConParser::parsePopcon(QObject* parent, QIODevice* dev, QHash<QString, Rating *>& ratings)
 {
-    QHash<QString, Rating *> ratings;
+    QSet<QString> ret;
+    auto keys = ratings.keys().toSet();
+
     QRegularExpression rx(QStringLiteral("^Package: ([^ ]+) +(\\d+) +(\\d+) +(\\d+) +(\\d+)\\s*$"));
     QString buff;
     buff.resize(512);
@@ -38,19 +40,36 @@ QHash<QString, Rating *> PopConParser::parsePopcon(QObject* parent, QIODevice* d
         const QString pkgName = match.captured(1);
 
         //according to popcon spec
-        const int inst = match.capturedRef(2).toInt();
-        const int vote = match.capturedRef(3).toInt();
-        const int old = match.capturedRef(4).toInt();
-        const int recent = match.capturedRef(5).toInt();
+        const quint64 inst = match.capturedRef(2).toInt();
+//         const int vote = match.capturedRef(3).toInt();
+//         const int old = match.capturedRef(4).toInt();
+//         const int recent = match.capturedRef(5).toInt();
 
-        Rating *rating = new Rating(pkgName, inst, vote, old, recent);
-        if (!rating->ratingCount()) {
-            delete rating;
-            continue;
+        Rating *rating = ratings.take(pkgName);
+        if (rating && (rating->ratingCount() != inst || !inst)) {
+            rating->deleteLater();
+
+            if (!inst) {
+                ret.insert(pkgName);
+                continue;
+            }
+
+            rating = nullptr;
         }
-        rating->setParent(parent);
-        ratings[rating->packageName()] = rating;
+
+        if (!rating) {
+            rating = new Rating(pkgName, inst);
+            rating->setParent(parent);
+            ret.insert(pkgName);
+        }
+
+        ratings[pkgName] = rating;
+        keys.remove(pkgName);
     }
 
-    return ratings;
+    foreach(const auto &pkgName, keys) {
+        ratings.take(pkgName)->deleteLater();
+        ret.insert(pkgName);
+    }
+    return ret;
 }
