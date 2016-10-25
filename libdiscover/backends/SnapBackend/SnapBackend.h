@@ -53,7 +53,7 @@ public:
 
 private:
     void setFetching(bool fetching);
-    QVector<AbstractResource*> populate(SnapJob* snaps, AbstractResource::State state);
+    ResultsStream* populate(SnapJob* snaps, AbstractResource::State state);
 
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;

@@ -45,8 +45,6 @@ SnapBackend::SnapBackend(QObject* parent)
     , m_reviews(new SnapReviewsBackend(this))
 {
     connect(m_reviews, &SnapReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
-
-    populate(m_socket.snaps(), AbstractResource::Installed);
 }
 
 int SnapBackend::updatesCount() const
@@ -57,50 +55,47 @@ int SnapBackend::updatesCount() const
 ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& filters)
 {
     if (filters.state >= AbstractResource::Installed) {
-        return new ResultsStream(QStringLiteral("Snap-installed"), containerValues<QVector<AbstractResource*>>(m_resources.values()));
+        return populate(m_socket.snaps(), AbstractResource::Installed);
     } else {
-        auto res = populate(m_socket.find(filters.search), AbstractResource::None);
-        return new ResultsStream(QStringLiteral("Snap-find"), res);
+        return populate(m_socket.find(filters.search), AbstractResource::None);
     }
     return new ResultsStream(QStringLiteral("Snap-void"), {});
 }
 
 ResultsStream * SnapBackend::findResourceByPackageName(const QString& search)
 {
-    auto pkg = m_resources.value(search);
-    return new ResultsStream(QStringLiteral("SnapPkg"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
+    return populate(m_socket.snapByName(search), AbstractResource::Installed);
 }
 
-QVector<AbstractResource*> SnapBackend::populate(SnapJob* job, AbstractResource::State state)
+ResultsStream* SnapBackend::populate(SnapJob* job, AbstractResource::State state)
 {
-    if (!job->exec()) {
-        qWarning() << "job failed" << job;
-        return {};
-    }
+    auto stream = new ResultsStream(QStringLiteral("Snap-populate"));
 
-    const auto snaps = job->result().toArray();
+    connect(job, &SnapJob::finished, stream, &QObject::deleteLater);
+    connect(job, &SnapJob::finished, stream, [stream, this, state](SnapJob* job) {
+        const auto snaps = job->result().toArray();
 
-    QVector<AbstractResource*> ret;
-    QSet<SnapResource*> resources;
-    for(const auto& snap: snaps) {
-        const auto snapObj = snap.toObject();
-        const auto snapid = snapObj.value(QLatin1String("name")).toString();
-        SnapResource* res = m_resources.value(snapid);
-        if (!res) {
-            res = new SnapResource(snapObj, state, this);
-            Q_ASSERT(res->packageName() == snapid);
-            resources += res;
+        QVector<AbstractResource*> ret;
+        QSet<SnapResource*> resources;
+        for(const auto& snap: snaps) {
+            const auto snapObj = snap.toObject();
+            const auto snapid = snapObj.value(QLatin1String("name")).toString();
+            SnapResource* res = m_resources.value(snapid);
+            if (!res) {
+                res = new SnapResource(snapObj, state, this);
+                Q_ASSERT(res->packageName() == snapid);
+                resources += res;
+            }
+            ret += res;
         }
-        ret += res;
-    }
 
-    if (!resources.isEmpty()) {
-        setFetching(true);
-        foreach(SnapResource* res, resources)
-            m_resources[res->packageName()] = res;
-        setFetching(false);
-    }
-    return ret;
+        if (!resources.isEmpty()) {
+            foreach(SnapResource* res, resources)
+                m_resources[res->packageName()] = res;
+        }
+        stream->resourcesFound(ret);
+    });
+    return stream;
 }
 
 void SnapBackend::setFetching(bool fetching)
