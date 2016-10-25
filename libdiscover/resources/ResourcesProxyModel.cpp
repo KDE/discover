@@ -47,7 +47,6 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
         { ResourcesModel::RatingPointsRole, "ratingPoints" },
         { ResourcesModel::RatingCountRole, "ratingCount" },
         { ResourcesModel::SortableRatingRole, "sortableRating" },
-        { ResourcesModel::ActiveRole, "active" },
         { ResourcesModel::InstalledRole, "isInstalled" },
         { ResourcesModel::ApplicationRole, "application" },
         { ResourcesModel::OriginRole, "origin" },
@@ -70,9 +69,6 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     connect(ResourcesModel::global(), &ResourcesModel::backendDataChanged, this, &ResourcesProxyModel::refreshBackend);
     connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &ResourcesProxyModel::refreshResource);
     connect(ResourcesModel::global(), &ResourcesModel::resourceRemoved, this, &ResourcesProxyModel::removeResource);
-
-    connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &ResourcesProxyModel::resourceChangedByTransaction);
-    connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &ResourcesProxyModel::resourceChangedByTransaction);
 
     setShouldShowTechnical(false);
 }
@@ -369,8 +365,6 @@ QVariant ResourcesProxyModel::data(const QModelIndex& index, int role) const
 QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) const
 {
     switch(role) {
-        case ResourcesModel::ActiveRole:
-            return TransactionModel::global()->transactionFromResource(resource) != nullptr;
         case ResourcesModel::ApplicationRole:
             return qVariantFromValue<QObject*>(resource);
         case ResourcesModel::RatingPointsRole:
@@ -486,21 +480,6 @@ void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend* backend, cons
     if (found && properties.contains(m_roles.value(m_sortRole))) {
         invalidateSorting();
     }
-}
-
-void ResourcesProxyModel::resourceChangedByTransaction(Transaction* t)
-{
-    if (!t->resource())
-        return;
-
-    Q_ASSERT(!t->resource()->backend()->isFetching());
-    const QModelIndex idx = index(m_displayedResources.indexOf(t->resource()), 0);
-    if(idx.isValid())
-        emit dataChanged(idx, idx, {
-            ResourcesModel::StateRole, ResourcesModel::ActiveRole,
-            ResourcesModel::InstalledRole, ResourcesModel::CanUpgrade,
-            ResourcesModel::SizeRole
-        });
 }
 
 QVector<int> ResourcesProxyModel::propertiesToRoles(const QVector<QByteArray>& properties) const

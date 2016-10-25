@@ -61,7 +61,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
             RatingPointsRole,
             RatingCountRole,
             SortableRatingRole,
-            ActiveRole,
             InstalledRole,
             ApplicationRole,
             OriginRole,

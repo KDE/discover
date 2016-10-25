@@ -85,8 +85,6 @@ public:
     QVariant data(const QModelIndex & index, int role) const override;
     int rowCount(const QModelIndex & parent = {}) const override;
 
-    void resourceChangedByTransaction(Transaction* t);
-
     bool isBusy() const { return m_currentStream != nullptr; }
 
     bool lessThan(AbstractResource* rl, AbstractResource* rr) const;
