@@ -25,27 +25,31 @@
 #include <QtCore/QPair>
 #include <QtCore/QVector>
 
+#include "AbstractResource.h"
 #include "Transaction/AddonList.h"
 
 #include "discovercommon_export.h"
 
 class QAction;
 class Transaction;
+class Category;
 class AbstractReviewsBackend;
-class AbstractResource;
 class AbstractBackendUpdater;
 class KActionCollection;
 
-template <typename T, typename W>
-static T containerValues(const W& container)
+class DISCOVERCOMMON_EXPORT ResultsStream : public QObject
 {
-    T ret;
-    ret.reserve(container.size());
-    for(auto a : container) {
-        ret.push_back(a);
-    }
-    return ret;
-}
+    Q_OBJECT
+    public:
+        ResultsStream(const QString &objectName);
+
+        /// assumes all the information is in @p resources
+        ResultsStream(const QString &objectName, const QVector<AbstractResource*>& resources);
+        ~ResultsStream() override;
+
+    Q_SIGNALS:
+        void resourcesFound(const QVector<AbstractResource*>& resources);
+};
 
 /**
  * \class AbstractResourcesBackend  AbstractResourcesBackend.h "AbstractResourcesBackend.h"
@@ -84,17 +88,25 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          */
         virtual bool isValid() const = 0;
         
+        struct Filters {
+            Category* category = nullptr;
+            AbstractResource::State state = AbstractResource::Broken;
+            QString mimetype;
+            QString search;
+            QString extends;
+            QHash<QByteArray, QVariant> roles;
+
+            bool shouldFilter(AbstractResource* res) const;
+            void filterJustInCase(QVector<AbstractResource*>& input) const;
+        };
+
         /**
-         * @returns all resources of the backend
+         * @returns a stream that will provide elements that match the search
          */
-        virtual QVector<AbstractResource*> allResources() const = 0;
-        
-        /**
-         * In this method the backend should search in each resources name if it complies
-         * to the searchText and return those AbstractResources.
-         * @returns the list of resources whose name contains searchText
-         */
-        virtual QList<AbstractResource*> searchPackageName(const QString &searchText) = 0;//FIXME: Probably provide a standard implementation?!
+
+        virtual ResultsStream* search(const Filters &search) = 0;//FIXME: Probably provide a standard implementation?!
+
+        virtual ResultsStream* findResourceByPackageName(const QString &search) = 0;//FIXME: Probably provide a standard implementation?!
         
         /**
          * @returns the reviews backend of this AbstractResourcesBackend (which handles all ratings and reviews of resources)
@@ -111,14 +123,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * @returns the number of resources for which an update is available, it should only count technical packages
          */
         virtual int updatesCount() const = 0;//FIXME: Probably provide a standard implementation?!
-        
-        /**
-         * Gets a resource identified by the name
-         * @param name the name to search for
-         * @returns the resource with the provided name
-         */
-        virtual AbstractResource* resourceByPackageName(const QString& name) const = 0;//FIXME: Even this could get a standard impl
-        
+
         /**
          * This method gets called while initializing the GUI, in case the backend needs to
          * integrate actions in the action collection.
@@ -144,6 +149,11 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          *  to the advanced menu.
          */
         virtual QList<QAction*> messageActions() const = 0;
+
+        /**
+         * @returns the appstream ids that this backend extends
+         */
+        virtual QStringList extends() const;
 
         /** @returns the plugin's name */
         QString name() const;
@@ -210,11 +220,24 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * Allows to notify some @p properties in @p resource have changed
          */
         void resourcesChanged(AbstractResource* resource, const QVector<QByteArray> &properties);
+        void resourceRemoved(AbstractResource* resource);
 
     private:
         QString m_name;
 };
 
+template <typename T, typename W>
+static T containerValues(const W& container)
+{
+    T ret;
+    ret.reserve(container.size());
+    for(auto a : container) {
+        ret.push_back(a);
+    }
+    return ret;
+}
+
+DISCOVERCOMMON_EXPORT QDebug operator<<(QDebug dbg, const AbstractResourcesBackend::Filters& filters);
 
 /**
  * @internal Workaround because QPluginLoader enforces 1 instance per plugin

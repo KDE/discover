@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "DummyTest.h"
+#include "DiscoverBackendsFactory.h"
 #include <resources/ResourcesUpdatesModel.h>
 #include <UpdateModel/UpdateModel.h>
 #include <tests/modeltest.h>
@@ -29,6 +30,7 @@
 #include <Transaction/TransactionModel.h>
 #include <ReviewsBackend/ReviewsModel.h>
 #include <ScreenshotsModel.h>
+#include <Category/CategoryModel.h>
 #include <qtest.h>
 
 #include <QtTest>
@@ -49,9 +51,9 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 
 DummyTest::DummyTest(QObject* parent): QObject(parent)
 {
-    m_model = new ResourcesModel(QStringLiteral("dummy-backend"), this);
-    new ModelTest(m_model, m_model);
+    DiscoverBackendsFactory::setRequestedBackends({ QStringLiteral("dummy-backend") });
 
+    m_model = new ResourcesModel(QStringLiteral("dummy-backend"), this);
     m_appBackend = backendByName(m_model, QStringLiteral("DummyBackend"));
 }
 
@@ -64,13 +66,23 @@ void DummyTest::initTestCase()
     }
 }
 
+QVector<AbstractResource*> fetchResources(ResultsStream* stream)
+{
+    QVector<AbstractResource*> ret;
+    QObject::connect(stream, &ResultsStream::resourcesFound, stream, [&ret](const QVector<AbstractResource*>& res) { ret += res; });
+    QSignalSpy spy(stream, &ResultsStream::destroyed);
+    Q_ASSERT(spy.wait());
+    return ret;
+}
+
 void DummyTest::testReadData()
 {
-    QCOMPARE(m_appBackend->property("startElements").toInt()*2, m_model->rowCount());
+    const auto resources = fetchResources(m_appBackend->search({}));
+
+    QCOMPARE(m_appBackend->property("startElements").toInt()*2, resources.size());
     QBENCHMARK {
-        for(int i=0, c=m_model->rowCount(); i<c; i++) {
-            QModelIndex idx = m_model->index(i, 0);
-            QVERIFY(!m_model->data(idx, ResourcesModel::NameRole).isNull());
+        for(AbstractResource* res: resources) {
+            QVERIFY(!res->name().isEmpty());
         }
     }
 }
@@ -78,28 +90,46 @@ void DummyTest::testReadData()
 void DummyTest::testProxy()
 {
     ResourcesProxyModel pm;
-    QVERIFY(pm.sourceModel());
+    QSignalSpy spy(&pm, &ResourcesProxyModel::busyChanged);
+    QVERIFY(spy.wait());
+    QVERIFY(!pm.isBusy());
+
+    pm.setFiltersFromCategory(CategoryModel::rootCategories().first());
+    QVERIFY(pm.isBusy());
+    QVERIFY(spy.wait());
+    QVERIFY(!pm.isBusy());
+
     QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
     pm.setShouldShowTechnical(true);
+    QVERIFY(pm.isBusy());
+    QVERIFY(spy.wait());
+    QVERIFY(!pm.isBusy());
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
     pm.setSearch(QStringLiteral("techie"));
+    QVERIFY(pm.isBusy());
+    QVERIFY(spy.wait());
+    QVERIFY(!pm.isBusy());
     QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
     pm.setSearch(QString());
+    QVERIFY(pm.isBusy());
+    QVERIFY(spy.wait());
+    QVERIFY(!pm.isBusy());
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
 }
 
 void DummyTest::testFetch()
 {
-    QCOMPARE(m_appBackend->property("startElements").toInt()*2, m_model->rowCount());
+    const auto resources = fetchResources(m_appBackend->search({}));
+    QCOMPARE(m_appBackend->property("startElements").toInt()*2, resources.count());
 
     //fetches updates, adds new things
     m_appBackend->messageActions().at(0)->trigger();
-    QCOMPARE(m_model->rowCount(), 0);
     QCOMPARE(m_model->isFetching(), true);
     QSignalSpy spy(m_model, SIGNAL(allInitialized()));
     QVERIFY(spy.wait(80000));
     QCOMPARE(m_model->isFetching(), false);
-    QCOMPARE(m_appBackend->property("startElements").toInt()*4, m_model->rowCount());
+    auto resources2 = fetchResources(m_appBackend->search({}));
+    QCOMPARE(m_appBackend->property("startElements").toInt()*4, resources2.count());
 }
 
 void DummyTest::testSort()
@@ -109,9 +139,7 @@ void DummyTest::testSort()
     QCollator c;
     QBENCHMARK_ONCE {
         pm.setSortRole(ResourcesModel::NameRole);
-        pm.setDynamicSortFilter(true);
         pm.sort(0);
-        QCOMPARE(pm.sortColumn(), 0);
         QCOMPARE(pm.sortOrder(), Qt::AscendingOrder);
         QString last;
         for(int i = 0, count = pm.rowCount(); i<count; ++i) {
@@ -136,7 +164,9 @@ void DummyTest::testSort()
 
 void DummyTest::testInstallAddons()
 {
-    AbstractResource* res = m_model->resourceByPackageName(QStringLiteral("Dummy 1"));
+    const auto resources = fetchResources(m_appBackend->findResourceByPackageName(QStringLiteral("Dummy 1")));
+    QCOMPARE(resources.count(), 1);
+    AbstractResource* res = resources.first();
     QVERIFY(res);
 
     ApplicationAddonsModel m;
@@ -171,7 +201,9 @@ void DummyTest::testInstallAddons()
 
 void DummyTest::testReviewsModel()
 {
-    AbstractResource* res = m_model->resourceByPackageName(QStringLiteral("Dummy 1"));
+    const auto resources = fetchResources(m_appBackend->findResourceByPackageName(QStringLiteral("Dummy 1")));
+    QCOMPARE(resources.count(), 1);
+    AbstractResource* res = resources.first();
     QVERIFY(res);
 
     ReviewsModel m;
@@ -187,7 +219,9 @@ void DummyTest::testReviewsModel()
     m.markUseful(0, false);
     QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::No);
 
-    res = m_model->resourceByPackageName(QStringLiteral("Dummy 2"));
+    const auto resources2 = fetchResources(m_appBackend->findResourceByPackageName(QStringLiteral("Dummy 1")));
+    QCOMPARE(resources2.count(), 1);
+    res = resources2.first();
     m.setResource(res);
     m.fetchMore();
 
@@ -214,7 +248,10 @@ void DummyTest::testScreenshotsModel()
     ScreenshotsModel m;
     new ModelTest(&m, &m);
 
-    AbstractResource* res = m_model->resourceByPackageName(QStringLiteral("Dummy 1"));
+    const auto resources = fetchResources(m_appBackend->findResourceByPackageName(QStringLiteral("Dummy 1")));
+    QCOMPARE(resources.count(), 1);
+    AbstractResource* res = resources.first();
+    QVERIFY(res);
     m.setResource(res);
     QCOMPARE(res, m.resource());
 

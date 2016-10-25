@@ -44,7 +44,9 @@ private Q_SLOTS:
 
         QScopedPointer<QIODevice> dev(new KCompressionDevice(&buffer, false, KCompressionDevice::GZip));
         QVERIFY(dev->open(QIODevice::ReadOnly));
-        auto m_ratings = PopConParser::parsePopcon(this, dev.data());
+
+        QHash<QString, Rating *> m_ratings;
+        PopConParser::parsePopcon(this, dev.data(), m_ratings);
         for(auto it = m_ratings.constBegin(), itEnd = m_ratings.constEnd(); it!=itEnd; ++it) {
             QVERIFY(!it.key().isEmpty());
             Rating * r = it.value();

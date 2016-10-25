@@ -21,7 +21,7 @@
 #ifndef RESOURCESMODEL_H
 #define RESOURCESMODEL_H
 
-#include <QtCore/QModelIndex>
+#include <QSet>
 #include <QVector>
 
 #include "discovercommon_export.h"
@@ -30,7 +30,23 @@
 class AbstractResource;
 class AbstractResourcesBackend;
 
-class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
+class AggregatedResultsStream : public ResultsStream
+{
+Q_OBJECT
+public:
+    AggregatedResultsStream(const QSet<ResultsStream*>& streams);
+
+Q_SIGNALS:
+    void finished();
+
+private:
+    void destruction(QObject* obj);
+
+    QSet<QObject*> m_streams;
+    QVector<AbstractResource*> m_results;
+};
+
+class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
@@ -45,7 +61,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
             RatingPointsRole,
             RatingCountRole,
             SortableRatingRole,
-            ActiveRole,
             InstalledRole,
             ApplicationRole,
             OriginRole,
@@ -66,26 +81,19 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         static ResourcesModel* global();
         ~ResourcesModel() override;
         
-        QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
-        int rowCount(const QModelIndex& parent = QModelIndex()) const override;
-        
-        AbstractResource* resourceAt(int row) const;
-        QModelIndex resourceIndex(AbstractResource* res) const;
         QVector< AbstractResourcesBackend* > backends() const;
         int updatesCount() const;
-        QMap< int, QVariant > itemData(const QModelIndex& index) const override;
         
-        Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
-
         void integrateActions(KActionCollection* w);
         
         bool isBusy() const;
         bool isFetching() const;
         QList<QAction*> messageActions() const;
         
-        QHash<int, QByteArray> roleNames() const override;
-
         Q_SCRIPTABLE bool isExtended(const QString &id);
+
+        AggregatedResultsStream* findResourceByPackageName(const QString & search);
+        AggregatedResultsStream* search(const AbstractResourcesBackend::Filters &search);
 
     public Q_SLOTS:
         void installApplication(AbstractResource* app, const AddonList& addons);
@@ -98,19 +106,17 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         void backendsChanged();
         void updatesCountChanged();
         void searchInvalidated();
+        void backendDataChanged(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties);
+        void resourceDataChanged(AbstractResource* resource, const QVector<QByteArray>& properties);
+        void resourceRemoved(AbstractResource* resource);
 
     private Q_SLOTS:
-        void resetBackend(AbstractResourcesBackend* backend);
-        void cleanBackend(AbstractResourcesBackend* backend);
         void callerFetchingChanged();
         void updateCaller(const QVector<QByteArray>& properties);
         void registerAllBackends();
-        void resourceChangedByTransaction(Transaction* t);
-        void emitResourceChanges(AbstractResource* res, const QVector<QByteArray> &properties);
 
     private:
         QVector<int> propertiesToRoles(const QVector<QByteArray>& propertyNames) const;
-        int rowsBeforeBackend(AbstractResourcesBackend* backend, QVector<QVector<AbstractResource*>>::iterator& backendsResources);
 
         ///@p initialize tells if all backends load will be triggered on construction
         explicit ResourcesModel(QObject* parent=nullptr, bool load = true);
@@ -119,10 +125,8 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         void registerBackendByName(const QString& name);
 
         QVector< AbstractResourcesBackend* > m_backends;
-        QVector< QVector<AbstractResource*> > m_resources;
         int m_initializingBackends;
         KActionCollection* m_actionCollection;
-        const QHash<int, QByteArray> m_roles;
 
         static ResourcesModel* s_self;
 };

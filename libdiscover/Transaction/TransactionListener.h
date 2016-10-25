@@ -34,7 +34,7 @@ class DISCOVERCOMMON_EXPORT TransactionListener : public QObject
     Q_OBJECT
     Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(bool isCancellable READ isCancellable NOTIFY cancellableChanged)
-    Q_PROPERTY(bool isActive READ isActive NOTIFY runningChanged)
+    Q_PROPERTY(bool isActive READ isActive NOTIFY isActiveChanged)
     Q_PROPERTY(QString statusText READ statusText NOTIFY statusTextChanged)
     Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
 public:
@@ -65,7 +65,7 @@ private Q_SLOTS:
 Q_SIGNALS:
     void resourceChanged();
     void cancellableChanged();
-    void runningChanged();
+    void isActiveChanged();
     void statusTextChanged();
     void cancelled();
     void progressChanged();

@@ -30,17 +30,16 @@
 
 #include "discovercommon_export.h"
 #include "AbstractResource.h"
+#include "AbstractResourcesBackend.h"
 
-namespace QApt {
-    class Backend;
-}
+class Transaction;
+class AggregatedResultsStream;
 
-class Application;
-
-class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
+class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(QAbstractItemModel* sourceModel READ sourceModel CONSTANT)
+    Q_PROPERTY(int sortRole READ sortRole WRITE setSortRole NOTIFY sortRoleChanged)
+    Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder NOTIFY sortOrderChanged)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical WRITE setShouldShowTechnical NOTIFY showTechnicalChanged)
     Q_PROPERTY(Category* filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
     Q_PROPERTY(QString originFilter READ originFilter WRITE setOriginFilter)
@@ -51,8 +50,9 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(QString search READ lastSearch WRITE setSearch NOTIFY searchChanged)
     Q_PROPERTY(QString extends READ extends WRITE setExtends)
     Q_PROPERTY(QVariantList subcategories READ subcategories NOTIFY subcategoriesChanged)
+    Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
 public:
-    explicit ResourcesProxyModel(QObject *parent=nullptr);
+    explicit ResourcesProxyModel(QObject* parent = nullptr);
 
     QHash<int, QByteArray> roleNames() const override;
 
@@ -67,8 +67,11 @@ public:
     bool sortingByRelevancy() const;
     void setStateFilter(AbstractResource::State s);
     AbstractResource::State stateFilter() const;
+    void setSortRole(int sortRole);
+    int sortRole() const { return m_sortRole; }
+    void setSortOrder(Qt::SortOrder sortOrder);
+    Qt::SortOrder sortOrder() const { return m_sortOrder; }
 
-    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
     Category* filteredCategory() const;
     
     QString mimeTypeFilter() const;
@@ -79,31 +82,45 @@ public:
 
     QVariantList subcategories() const;
 
-protected:
-    bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
+    QVariant data(const QModelIndex & index, int role) const override;
+    int rowCount(const QModelIndex & parent = {}) const override;
+
+    bool isBusy() const { return m_currentStream != nullptr; }
+
+    bool lessThan(AbstractResource* rl, AbstractResource* rr) const;
+    void invalidateFilter();
+    void invalidateSorting();
 
 private Q_SLOTS:
     void refreshSearch();
-
+    void refreshBackend(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties);
+    void refreshResource(AbstractResource* resource, const QVector<QByteArray>& properties);
+    void removeResource(AbstractResource* resource);
 private:
+    void sortedInsertion(AbstractResource* res);
+    QVariant roleToValue(AbstractResource* res, int role) const;
+
+    QVector<int> propertiesToRoles(const QVector<QByteArray>& properties) const;
+    void addResources(const QVector<AbstractResource*> &res);
     void fetchSubcategories();
-    void setSourceModel(QAbstractItemModel *sourceModel) override;
 
-    QString m_lastSearch;
-    QList<AbstractResource*> m_searchResults;
-
-    typedef QPair<FilterType, QString> FilterPair;
-    QHash<QByteArray, QVariant> m_roleFilters;
+    int m_sortRole;
+    Qt::SortOrder m_sortOrder;
 
     bool m_sortByRelevancy;
     bool m_filterBySearch;
-    Category* m_filteredCategory;
-    AbstractResource::State m_stateFilter;
-    QString m_filteredMimeType;
-    QString m_extends;
+
+    AbstractResourcesBackend::Filters m_filters;
     QVariantList m_subcategories;
 
+    QVector<AbstractResource*> m_displayedResources;
+    const QHash<int, QByteArray> m_roles;
+    AggregatedResultsStream* m_currentStream;
+
 Q_SIGNALS:
+    void busyChanged(bool isBusy);
+    void sortRoleChanged(int sortRole);
+    void sortOrderChanged(Qt::SortOrder order);
     void categoryChanged();
     void stateFilterChanged();
     void showTechnicalChanged();

@@ -68,7 +68,7 @@ QString DummyResource::comment()
 
 int DummyResource::size()
 {
-    return 123;
+    return m_size;
 }
 
 QUrl DummyResource::homepage()

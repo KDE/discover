@@ -7,6 +7,8 @@ DiscoverTest
     function test_openResource() {
         var resourceName = "Dummy 1";
         app.openApplication(resourceName);
+        compare(appRoot.stack.currentItem.title, "Loading...", "same title");
+        verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         verify(appRoot.stack.currentItem, "has a page");
         compare(appRoot.stack.currentItem.title, resourceName, "same title");
 
@@ -26,6 +28,7 @@ DiscoverTest
     function test_cancel() {
         var resourceName = "Dummy 2";
         app.openApplication(resourceName);
+        verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         verify(appRoot.stack.currentItem, "has a page");
         compare(appRoot.stack.currentItem.title, resourceName, "same title");
 

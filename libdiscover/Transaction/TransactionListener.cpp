@@ -142,9 +142,6 @@ void TransactionListener::transactionStatusChanged(Transaction::Status status)
     case Transaction::DoneStatus:
         setTransaction(nullptr);
         break;
-    case Transaction::QueuedStatus:
-        emit runningChanged();
-        break;
     default:
         break;
     }

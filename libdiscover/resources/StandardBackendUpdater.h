@@ -31,6 +31,7 @@ class AbstractResourcesBackend;
 class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
 {
     Q_OBJECT
+    Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     public:
         explicit StandardBackendUpdater(AbstractResourcesBackend* parent = nullptr);
 
@@ -53,6 +54,9 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         void setStatusDetail(const QString& message);
         void setProgress(qreal p);
         int updatesCount() const;
+
+    Q_SIGNALS:
+        void updatesCountChanged(int updatesCount);
 
     public Q_SLOTS:
         void transactionRemoved(Transaction* t);

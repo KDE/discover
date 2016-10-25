@@ -51,6 +51,9 @@ public:
     Q_PROPERTY(QUrl decoration READ decoration CONSTANT)
     Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant CONSTANT)
     explicit Category(QSet<QString>  pluginNames, QObject* parent = nullptr);
+
+    ///only used for tests
+    explicit Category(const QString &name, const QVector<QPair<FilterType, QString>>& orFilters);
     ~Category() override;
 
     QString name() const;
@@ -67,6 +70,7 @@ public:
     bool blacklistPlugins(const QSet<QString>& pluginName);
     bool isAddons() const { return m_isAddons; }
     QUrl decoration() const;
+    bool matchesCategoryName(const QString &name) const;
 
     Q_SCRIPTABLE bool contains(Category* cat) const;
     Q_SCRIPTABLE bool contains(const QVariantList &cats) const;

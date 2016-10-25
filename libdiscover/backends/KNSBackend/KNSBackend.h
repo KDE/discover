@@ -47,22 +47,25 @@ public:
     void removeApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app, const AddonList& addons) override;
-    AbstractResource* resourceByPackageName(const QString& name) const override;
     int updatesCount() const override;
     AbstractReviewsBackend* reviewsBackend() const override;
-    QList<AbstractResource*> searchPackageName(const QString& searchText) override;
-    QVector< AbstractResource* > allResources() const override;
     AbstractBackendUpdater* backendUpdater() const override;
     bool isFetching() const override;
     QList<QAction*> messageActions() const override { return QList<QAction*>(); }
+    ResultsStream* search(const AbstractResourcesBackend::Filters & filter) override;
+    ResultsStream* findResourceByPackageName(const QString & search) override;
 
     bool isValid() const override;
 
-    QStringList extends() const { return m_extends; }
+    QStringList extends() const override { return m_extends; }
 
     QString iconName() const { return m_iconName; }
 
     KNS3::DownloadManager* downloadManager() const { return m_manager; }
+
+Q_SIGNALS:
+    void receivedResources(const QVector<AbstractResource*> &resources);
+    void searchFinished();
 
 public Q_SLOTS:
     void receivedEntries(const KNS3::Entry::List& entries);
@@ -71,6 +74,7 @@ public Q_SLOTS:
 private:
     void setFetching(bool f);
     void markInvalid(const QString &message);
+    ResultsStream* searchStream();
     
     bool m_fetching;
     bool m_isValid;
@@ -82,6 +86,7 @@ private:
     QString m_iconName;
     StandardBackendUpdater* const m_updater;
     QStringList m_extends;
+    QStringList m_categories;
 };
 
 #endif // KNSBACKEND_H

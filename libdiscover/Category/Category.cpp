@@ -27,11 +27,17 @@
 #include <QStandardPaths>
 #include <QDebug>
 
-Category::Category(QSet<QString>  pluginName, QObject* parent)
+Category::Category(QSet<QString> pluginName, QObject* parent)
         : QObject(parent)
         , m_iconString(QStringLiteral("applications-other"))
         , m_showTechnical(false)
         , m_plugins(std::move(pluginName))
+{}
+
+Category::Category(const QString& name, const QVector<QPair<FilterType, QString> >& orFilters)
+    : QObject(nullptr)
+    , m_name(name)
+    , m_orFilters(orFilters)
 {}
 
 Category::~Category() = default;
@@ -208,6 +214,15 @@ QVariantList Category::subCategoriesVariant() const
         ret.append(QVariant::fromValue<QObject*>(cat));
     }
     return ret;
+}
+
+bool Category::matchesCategoryName(const QString& name) const
+{
+    for(const auto &filter: m_orFilters) {
+        if (filter.first == CategoryFilter && filter.second == name)
+            return true;
+    }
+    return false;
 }
 
 bool Category::contains(Category* cat) const

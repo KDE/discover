@@ -262,7 +262,9 @@ void PackageKitBackend::includePackagesToAdd()
     foreach(PackageKitResource* res, m_packagesToDelete) {
         const auto pkgs = m_packages.packageToApp.value(res->packageName(), {res->packageName()});
         foreach(const auto &pkg, pkgs) {
-            m_packages.packages.take(pkg)->deleteLater();
+            auto res = m_packages.packages.take(pkg);
+            emit resourceRemoved(res);
+            res->deleteLater();
         }
     }
     m_packagesToAdd.clear();
@@ -288,15 +290,7 @@ void PackageKitBackend::packageDetails(const PackageKit::Details& details)
 
 QSet<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QString& name) const
 {
-    const QStringList names = m_packages.packageToApp.value(name, QStringList(name));
-    QSet<AbstractResource*> ret;
-    ret.reserve(names.size());
-    foreach(const QString& name, names) {
-        AbstractResource* res = m_packages.packages.value(name);
-        if (res)
-            ret += res;
-    }
-    return ret;
+    return resourcesByPackageNames<QSet<AbstractResource*>>({name});
 }
 
 template <typename T>
@@ -330,23 +324,21 @@ void PackageKitBackend::refreshDatabase()
     }
 }
 
-QVector<AbstractResource*> PackageKitBackend::allResources() const
+ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    return containerValues<QVector<AbstractResource*>>(m_packages.packages);
+    if (filter.search.isEmpty()) {
+        return new ResultsStream(QStringLiteral("PackageKitStream"), m_packages.packages.values().toVector());
+    } else {
+        const QList<Appstream::Component> components = m_appdata.findComponentsByString(filter.search, {});
+        const QStringList ids = kTransform<QStringList>(components, [](const Appstream::Component& comp) { return comp.id(); });
+        return new ResultsStream(QStringLiteral("PackageKitStream"), resourcesByPackageNames<QVector<AbstractResource*>>(ids));
+    }
 }
 
-AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) const
+ResultsStream * PackageKitBackend::findResourceByPackageName(const QString& search)
 {
-    const QStringList ids = m_packages.packageToApp.value(name, QStringList(name));
-    return ids.isEmpty() ? nullptr : m_packages.packages[ids.first()];
-}
-
-QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
-{
-    const QList<Appstream::Component> components = m_appdata.findComponentsByString(searchText, {});
-    const QStringList ids = kTransform<QStringList>(components, [](const Appstream::Component& comp) { return comp.id(); });
-
-    return resourcesByPackageNames<QList<AbstractResource*>>(ids);
+    auto pkg = m_packages.packages.value(search);
+    return new ResultsStream(QStringLiteral("PackageKitStream"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
 }
 
 int PackageKitBackend::updatesCount() const

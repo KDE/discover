@@ -29,7 +29,7 @@ class Rating;
 
 namespace PopConParser
 {
-    DISCOVERCOMMON_EXPORT QHash<QString, Rating *> parsePopcon(QObject* parent, QIODevice* device);
+    DISCOVERCOMMON_EXPORT QSet<QString> parsePopcon(QObject* parent, QIODevice* dev, QHash<QString, Rating *>& ratings);
 }
 
 #endif

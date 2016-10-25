@@ -36,6 +36,7 @@
 // DiscoverCommon includes
 #include "Transaction/Transaction.h"
 #include "Transaction/TransactionModel.h"
+#include "Category/Category.h"
 
 // Own includes
 #include "KNSBackend.h"
@@ -90,6 +91,8 @@ void KNSBackend::setMetaData(const QString& path)
         return;
     }
 
+    m_categories = QStringList{ QFileInfo(m_name).fileName() };
+
     const KConfigGroup group = conf.group("KNewStuff3");
     m_extends = group.readEntry("Extends", QStringList());
     m_reviews->setProviderUrl(QUrl(group.readEntry("ProvidersUrl", QString())));
@@ -97,12 +100,11 @@ void KNSBackend::setMetaData(const QString& path)
     setFetching(true);
 
     m_manager = new KNS3::DownloadManager(m_name, this);
-    connect(m_manager, &KNS3::DownloadManager::errorFound, this, &KNSBackend::markInvalid);
+    connect(m_manager, &KNS3::DownloadManager::errorFound, this, [](const QString &error) { qWarning() << "kns error" << error; });
     connect(m_manager, &KNS3::DownloadManager::searchResult, this, &KNSBackend::receivedEntries);
     connect(m_manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSBackend::statusChanged);
-
     m_page = 0;
-    m_manager->search(m_page);
+    m_manager->checkForInstalled();
 }
 
 void KNSBackend::setFetching(bool f)
@@ -121,15 +123,19 @@ bool KNSBackend::isValid() const
 void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
 {
     if(entries.isEmpty()) {
+        Q_EMIT searchFinished();
         setFetching(false);
         return;
     }
 
-    const QString filename = QFileInfo(m_name).fileName();
+    QVector<AbstractResource*> resources;
+    resources.reserve(entries.count());
     foreach(const KNS3::Entry& entry, entries) {
-        KNSResource* r = new KNSResource(entry, filename, this);
+        KNSResource* r = new KNSResource(entry, m_categories, this);
         m_resourcesByName.insert(entry.id(), r);
+        resources += r;
     }
+    Q_EMIT receivedResources(resources);
     ++m_page;
     m_manager->search(m_page);
 }
@@ -151,20 +157,10 @@ public:
         , m_id(res->entry().id())
     {
         TransactionModel::global()->addTransaction(this);
-        auto manager = res->knsBackend()->downloadManager();
 
-        switch(role) {
-            case RemoveRole:
-                manager->uninstallEntry(res->entry());
-                break;
-            case InstallRole:
-                manager->installEntry(res->entry());
-                break;
-            default:
-                Q_UNREACHABLE();
-        }
         setCancellable(false);
 
+        auto manager = res->knsBackend()->downloadManager();
         connect(manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSTransaction::anEntryChanged);
     }
 
@@ -204,22 +200,21 @@ private:
 
 void KNSBackend::removeApplication(AbstractResource* app)
 {
-    new KNSTransaction(this, qobject_cast<KNSResource*>(app), Transaction::RemoveRole);
+    auto res = qobject_cast<KNSResource*>(app);
+    m_manager->uninstallEntry(res->entry());
+    new KNSTransaction(this, res, Transaction::RemoveRole);
 }
 
 void KNSBackend::installApplication(AbstractResource* app)
 {
-    new KNSTransaction(this, qobject_cast<KNSResource*>(app), Transaction::InstallRole);
+    auto res = qobject_cast<KNSResource*>(app);
+    m_manager->installEntry(res->entry());
+    new KNSTransaction(this, res, Transaction::InstallRole);
 }
 
 void KNSBackend::installApplication(AbstractResource* app, const AddonList& /*addons*/)
 {
     installApplication(app);
-}
-
-AbstractResource* KNSBackend::resourceByPackageName(const QString& name) const
-{
-    return m_resourcesByName[name];
 }
 
 int KNSBackend::updatesCount() const
@@ -232,19 +227,39 @@ AbstractReviewsBackend* KNSBackend::reviewsBackend() const
     return m_reviews;
 }
 
-QList<AbstractResource*> KNSBackend::searchPackageName(const QString& searchText)
+ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    QList<AbstractResource*> ret;
-    foreach(AbstractResource* r, m_resourcesByName) {
-        if(r->name().contains(searchText, Qt::CaseInsensitive) || r->comment().contains(searchText, Qt::CaseInsensitive))
-            ret += r;
+    if (filter.state >= AbstractResource::Installed) {
+        QVector<AbstractResource*> ret;
+        foreach(AbstractResource* r, m_resourcesByName) {
+            if(r->state()>=filter.state && (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)))
+                ret += r;
+        }
+        return new ResultsStream(QStringLiteral("KNS-installed"), ret);
+    } else if (filter.category && filter.category->matchesCategoryName(m_categories.first())) {
+        m_manager->setSearchTerm(filter.search);
+        return searchStream();
+    } else if (!filter.search.isEmpty()) {
+        m_manager->setSearchTerm(filter.search);
+        return searchStream();
     }
-    return ret;
+    return new ResultsStream(QStringLiteral("KNS-void"), {});
 }
 
-QVector<AbstractResource*> KNSBackend::allResources() const
+ResultsStream * KNSBackend::searchStream()
 {
-    return containerValues<QVector<AbstractResource*>>(m_resourcesByName);
+    m_manager->search(0);
+    m_page = 0;
+    auto stream = new ResultsStream(QStringLiteral("KNS-search"));
+    connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
+    connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::deleteLater);
+    return stream;
+}
+
+ResultsStream * KNSBackend::findResourceByPackageName(const QString& search)
+{
+    auto pkg = m_resourcesByName.value(search);
+    return new ResultsStream(QStringLiteral("KNS"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
 }
 
 bool KNSBackend::isFetching() const

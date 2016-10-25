@@ -77,8 +77,6 @@ DiscoverPage {
             stringSortRole: "ratingPoints"
             sortOrder: Qt.DescendingOrder
             isShowingTechnical: category && category.shouldShowTechnical
-
-            Component.onCompleted: sortModel()
         }
         spacing: Kirigami.Units.gridUnit
         delegate: ApplicationDelegate {

@@ -19,7 +19,48 @@
  ***************************************************************************/
 
 #include "AbstractResourcesBackend.h"
+#include "AbstractResource.h"
+#include "Category/Category.h"
 #include <QHash>
+#include <QMetaObject>
+#include <QMetaProperty>
+#include <QDebug>
+#include <QTimer>
+
+QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters& filters)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "Filters(";
+    if (filters.category) debug.nospace() << "category: " << filters.category << ',';
+    if (filters.state) debug.nospace() << "state: " << filters.state << ',';
+    if (!filters.mimetype.isEmpty()) debug.nospace() << "mimetype: " << filters.mimetype << ',';
+    if (!filters.search.isEmpty()) debug.nospace() << "search: " << filters.search << ',';
+    if (!filters.extends.isEmpty()) debug.nospace() << "extends:" << filters.extends << ',';
+    if (!filters.roles.isEmpty()) debug.nospace() << "roles:" << filters.roles << ',';
+    debug.nospace() << ')';
+
+    return debug;
+}
+
+ResultsStream::ResultsStream(const QString &objectName, const QVector<AbstractResource*>& resources)
+    : ResultsStream(objectName)
+{
+    QTimer::singleShot(0, this, [resources, this] () {
+        if (!resources.isEmpty())
+            Q_EMIT resourcesFound(resources);
+        deleteLater();
+    });
+}
+
+ResultsStream::ResultsStream(const QString &objectName)
+{
+    setObjectName(objectName);
+    QTimer::singleShot(5000, this, [objectName]() { qDebug() << "stream took really long" << objectName; });
+}
+
+ResultsStream::~ResultsStream()
+{
+}
 
 AbstractResourcesBackend::AbstractResourcesBackend(QObject* parent)
     : QObject(parent)
@@ -49,5 +90,45 @@ QString AbstractResourcesBackend::name() const
 
 void AbstractResourcesBackend::emitRatingsReady()
 {
-    emit allDataChanged({ "rating", "ratingPoints", "ratingCount" });
+    emit allDataChanged({ "rating", "ratingPoints", "ratingCount", "sortableRating" });
+}
+
+bool AbstractResourcesBackend::Filters::shouldFilter(AbstractResource* res) const
+{
+    Q_ASSERT(res);
+
+    if(!extends.isEmpty() && !res->extends().contains(extends)) {
+        return false;
+    }
+
+    for(QHash<QByteArray, QVariant>::const_iterator it=roles.constBegin(), itEnd=roles.constEnd(); it!=itEnd; ++it) {
+        Q_ASSERT(AbstractResource::staticMetaObject.indexOfProperty(it.key().constData())>=0);
+        if(res->property(it.key().constData()) != it.value()) {
+            return false;
+        }
+    }
+
+    if(res->state() < state)
+        return false;
+
+    if(!mimetype.isEmpty() && !res->mimetypes().contains(mimetype)) {
+        return false;
+    }
+
+    return !category || res->categoryMatches(category);
+}
+
+void AbstractResourcesBackend::Filters::filterJustInCase(QVector<AbstractResource *>& input) const
+{
+    for(auto it = input.begin(); it != input.end();) {
+        if (shouldFilter(*it))
+            ++it;
+        else
+            it = input.erase(it);
+    }
+}
+
+QStringList AbstractResourcesBackend::extends() const
+{
+    return {};
 }

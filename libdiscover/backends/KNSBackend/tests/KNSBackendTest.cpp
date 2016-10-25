@@ -27,6 +27,7 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/Rating.h>
+#include <Category/Category.h>
 #include <DiscoverBackendsFactory.h>
 #include <QStandardPaths>
 
@@ -38,6 +39,7 @@ QTEST_MAIN( KNSBackendTest )
 KNSBackendTest::KNSBackendTest(QObject* parent)
     : QObject(parent)
     , m_r(nullptr)
+    , m_cat(new Category(QLatin1String("knscorrect"), { { CategoryFilter, QLatin1String("testplasmoids.knsrc")} }))
 {
     QStandardPaths::setTestModeEnabled(true);
     ResourcesModel* model = new ResourcesModel(QFINDTESTDATA("knscorrect-backend.desktop"), this);
@@ -61,15 +63,26 @@ void KNSBackendTest::wrongBackend()
     QVERIFY(!b->isValid());
 }
 
+QVector<AbstractResource*> KNSBackendTest::getAllResources(AbstractResourcesBackend* backend)
+{
+    AbstractResourcesBackend::Filters f;
+    f.category = m_cat;
+    auto stream = backend->search(f);
+    Q_ASSERT(stream->objectName() != QLatin1String("KNS-void"));
+    QSignalSpy spyResources(stream, &ResultsStream::destroyed);
+    QVector<AbstractResource*> resources;
+    connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QVector<AbstractResource*>& res) { resources += res; });
+    Q_ASSERT(spyResources.wait());
+    Q_ASSERT(!resources.isEmpty());
+    return resources;
+}
+
 void KNSBackendTest::testRetrieval()
 {
-    ResourcesModel* model = ResourcesModel::global();
-    QVector<AbstractResource*> resources = m_backend->allResources();
-    QVERIFY(!resources.isEmpty());
-    QCOMPARE(resources.count(), model->rowCount());
     QVERIFY(m_backend->backendUpdater());
     QCOMPARE(m_backend->updatesCount(), m_backend->backendUpdater()->toUpdate().count());
-    
+
+    const auto resources = getAllResources(m_backend);
     foreach(AbstractResource* res, resources) {
         QVERIFY(!res->name().isEmpty());
         QVERIFY(!res->categories().isEmpty());
@@ -96,7 +109,7 @@ void KNSBackendTest::testRetrieval()
 
 void KNSBackendTest::testReviews()
 {
-    QVector<AbstractResource*> resources = m_backend->allResources();
+    const QVector<AbstractResource*> resources = getAllResources(m_backend);
     AbstractReviewsBackend* rev = m_backend->reviewsBackend();
     QVERIFY(!rev->hasCredentials());
     foreach(AbstractResource* res, resources) {

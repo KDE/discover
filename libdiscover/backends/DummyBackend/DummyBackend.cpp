@@ -49,6 +49,7 @@ DummyBackend::DummyBackend(QObject* parent)
 {
     QTimer::singleShot(500, this, &DummyBackend::toggleFetching);
     connect(m_reviews, &DummyReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
+    connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &DummyBackend::updatesCountChanged);
 }
 
 void DummyBackend::setMetaData(const QString& path)
@@ -95,6 +96,7 @@ void DummyBackend::populate(const QString& n)
     for(int i=start; i<start+m_startElements; i++) {
         const QString name = n+QLatin1Char(' ')+QString::number(i);
         DummyResource* res = new DummyResource(name, false, this);
+        res->setSize(100+(m_startElements-i));
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);
         connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
@@ -104,6 +106,7 @@ void DummyBackend::populate(const QString& n)
         const QString name = QStringLiteral("techie")+QString::number(i);
         DummyResource* res = new DummyResource(name, true, this);
         res->setState(AbstractResource::State(1+(i%3)));
+        res->setSize(300+(m_startElements-i));
         m_resources.insert(name, res);
         connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
     }
@@ -118,35 +121,28 @@ void DummyBackend::toggleFetching()
         m_reviews->initialize();
 }
 
-QVector<AbstractResource*> DummyBackend::allResources() const
-{
-    Q_ASSERT(!m_fetching);
-    QVector<AbstractResource*> ret;
-    ret.reserve(m_resources.size());
-    foreach(AbstractResource* res, m_resources) {
-        ret += res;
-    }
-    return ret;
-}
-
 int DummyBackend::updatesCount() const
 {
     return m_updater->updatesCount();
 }
 
-AbstractResource* DummyBackend::resourceByPackageName(const QString& name) const
+ResultsStream* DummyBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    return m_resources.value(name);
-}
-
-QList<AbstractResource*> DummyBackend::searchPackageName(const QString& searchText)
-{
-    QList<AbstractResource*> ret;
+    QVector<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resources) {
-        if(r->name().contains(searchText, Qt::CaseInsensitive) || r->comment().contains(searchText, Qt::CaseInsensitive))
+        if(r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
             ret += r;
     }
-    return ret;
+    return new ResultsStream(QStringLiteral("DummyStream"), ret);
+}
+
+ResultsStream * DummyBackend::findResourceByPackageName(const QString& search)
+{
+    auto res = m_resources.value(search);
+    if (!res) {
+        return new ResultsStream(QStringLiteral("DummyStream"), {});
+    } else
+        return new ResultsStream(QStringLiteral("DummyStream"), { res });
 }
 
 AbstractBackendUpdater* DummyBackend::backendUpdater() const

@@ -24,7 +24,6 @@
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ResourcesProxyModel(parent)
 {
-    setDynamicSortFilter(false);
 }
 
 void ApplicationProxyModelHelper::componentComplete()
@@ -32,14 +31,9 @@ void ApplicationProxyModelHelper::componentComplete()
     if(!m_sortRoleString.isEmpty())
         setStringSortRole_hack(m_sortRoleString);
 
-    setSearch(lastSearch());
-    setDynamicSortFilter(true);
-    sortModel();
-}
+    connect(this, &ResourcesProxyModel::sortRoleChanged, this, &ApplicationProxyModelHelper::sortRoleStringChanged);
 
-void ApplicationProxyModelHelper::sortModel()
-{
-    QSortFilterProxyModel::sort(0, sortOrder());
+    setSearch(lastSearch());
 }
 
 int ApplicationProxyModelHelper::stringToRole(const QByteArray& strRole) const
@@ -52,23 +46,9 @@ QByteArray ApplicationProxyModelHelper::roleToString(int role) const
     return roleNames().value(role);
 }
 
-void ApplicationProxyModelHelper::setSortRole_hack(int role)
-{
-    if (role != sortRole()) {
-        setSortRole(role);
-        emit sortRoleChanged();
-    }
-}
-
-void ApplicationProxyModelHelper::setSortOrder_hack(Qt::SortOrder order)
-{
-    sort(0, order);
-    emit sortOrderChanged();
-}
-
 void ApplicationProxyModelHelper::setStringSortRole_hack(const QString& role)
 {
-    setSortRole_hack(stringToRole(role.toUtf8()));
+    setSortRole(stringToRole(role.toUtf8()));
     m_sortRoleString = role;
 }
 

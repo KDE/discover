@@ -112,13 +112,22 @@ void StandardBackendUpdater::refreshUpdateable()
         return;
     }
 
-    QSet<AbstractResource*> upgradeable;
-    foreach(AbstractResource* r, m_backend->allResources()) {
-        if(r->state()==AbstractResource::Upgradeable)
-            upgradeable += r;
-    }
-
-    m_upgradeable = upgradeable;
+    m_settingUp = true;
+    Q_EMIT progressingChanged(true);
+    AbstractResourcesBackend::Filters f;
+    f.state = AbstractResource::Upgradeable;
+    m_upgradeable.clear();
+    auto r = m_backend->search(f);
+    connect(r, &ResultsStream::resourcesFound, this, [this](const QVector<AbstractResource*> &resources){
+        for(auto res : resources)
+            if (res->state() == AbstractResource::Upgradeable)
+                m_upgradeable.insert(res);
+    });
+    connect(r, &ResultsStream::destroyed, this, [this](){
+        m_settingUp = false;
+        Q_EMIT progressingChanged(false);
+        Q_EMIT updatesCountChanged(updatesCount());
+    });
 }
 
 qreal StandardBackendUpdater::progress() const

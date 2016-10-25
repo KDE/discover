@@ -26,6 +26,7 @@
 class AbstractResourcesBackend;
 class AbstractResource;
 class Review;
+class Category;
 
 class KNSBackendTest : public QObject
 {
@@ -42,8 +43,10 @@ class KNSBackendTest : public QObject
         void reviewsArrived(AbstractResource *r, const QList<Review *>& revs);
 
     private:
+        QVector<AbstractResource*> getAllResources(AbstractResourcesBackend* backend);
         AbstractResourcesBackend* m_backend;
         AbstractResource* m_r;
+        Category* m_cat;
         QList<Review*> m_revs;
 };
 
