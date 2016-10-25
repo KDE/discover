@@ -326,9 +326,13 @@ void PackageKitBackend::refreshDatabase()
 
 ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    const QList<Appstream::Component> components = m_appdata.findComponentsByString(filter.search, {});
-    const QStringList ids = kTransform<QStringList>(components, [](const Appstream::Component& comp) { return comp.id(); });
-    return new ResultsStream(QStringLiteral("PackageKitStream"), resourcesByPackageNames<QVector<AbstractResource*>>(ids));
+    if (filter.search.isEmpty()) {
+        return new ResultsStream(QStringLiteral("PackageKitStream"), m_packages.packages.values().toVector());
+    } else {
+        const QList<Appstream::Component> components = m_appdata.findComponentsByString(filter.search, {});
+        const QStringList ids = kTransform<QStringList>(components, [](const Appstream::Component& comp) { return comp.id(); });
+        return new ResultsStream(QStringLiteral("PackageKitStream"), resourcesByPackageNames<QVector<AbstractResource*>>(ids));
+    }
 }
 
 ResultsStream * PackageKitBackend::findResourceByPackageName(const QString& search)
