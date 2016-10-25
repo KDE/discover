@@ -412,19 +412,23 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) 
     }
 }
 
+void ResourcesProxyModel::sortedInsertion(AbstractResource* resource)
+{
+    const auto finder = [this, resource](AbstractResource* res){ return lessThan(res, resource); };
+    const auto it = std::find_if(m_displayedResources.constBegin(), m_displayedResources.constEnd(), finder);
+    const auto newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());
+
+    beginInsertRows({}, newIdx, newIdx);
+    m_displayedResources.insert(newIdx, resource);
+    endInsertRows();
+}
+
 void ResourcesProxyModel::refreshResource(AbstractResource* resource, const QVector<QByteArray>& properties)
 {
     const auto residx = m_displayedResources.indexOf(resource);
-    auto include = m_filters.shouldFilter(resource);
     if (residx<0) {
-        if (include) {
-            const auto finder = [this, resource](AbstractResource* res){ return lessThan(res, resource); };
-            const auto it = std::find_if(m_displayedResources.constBegin(), m_displayedResources.constEnd(), finder);
-            auto newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());
-
-            beginInsertRows({}, newIdx, newIdx);
-            m_displayedResources.insert(newIdx, resource);
-            endInsertRows();
+        if (m_filters.shouldFilter(resource)) {
+            sortedInsertion(resource);
         }
         return;
     }
@@ -439,9 +443,13 @@ void ResourcesProxyModel::refreshResource(AbstractResource* resource, const QVec
     const QModelIndex idx = index(residx, 0);
     Q_ASSERT(idx.isValid());
     const auto roles = propertiesToRoles(properties);
-    if (roles.contains(m_sortRole))
-        invalidateSorting();
-    else
+    if (roles.contains(m_sortRole)) {
+        beginRemoveRows({}, residx, residx);
+        m_displayedResources.removeAt(residx);
+        endRemoveRows();
+
+        sortedInsertion(resource);
+    } else
         emit dataChanged(idx, idx, roles);
 }
 

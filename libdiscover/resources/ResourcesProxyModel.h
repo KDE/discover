@@ -99,6 +99,7 @@ private Q_SLOTS:
     void refreshResource(AbstractResource* resource, const QVector<QByteArray>& properties);
     void removeResource(AbstractResource* resource);
 private:
+    void sortedInsertion(AbstractResource* res);
     QVariant roleToValue(AbstractResource* res, int role) const;
 
     QVector<int> propertiesToRoles(const QVector<QByteArray>& properties) const;
