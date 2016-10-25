@@ -49,32 +49,29 @@ SnapBackend::SnapBackend(QObject* parent)
     populate(m_socket.snaps(), AbstractResource::Installed);
 }
 
-QVector<AbstractResource*> SnapBackend::allResources() const
-{
-    QVector<AbstractResource*> ret;
-    ret.reserve(m_resources.size());
-    foreach(AbstractResource* res, m_resources) {
-        ret += res;
-    }
-    return ret;
-}
-
 int SnapBackend::updatesCount() const
 {
     return m_updater->updatesCount();
 }
 
-AbstractResource* SnapBackend::resourceByPackageName(const QString& name) const
+ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& filters)
 {
-    return m_resources.value(name);
+    if (filters.state >= AbstractResource::Installed) {
+        return new ResultsStream(QStringLiteral("Snap-installed"), containerValues<QVector<AbstractResource*>>(m_resources.values()));
+    } else {
+        auto res = populate(m_socket.find(filters.search), AbstractResource::None);
+        return new ResultsStream(QStringLiteral("Snap-find"), res);
+    }
+    return new ResultsStream(QStringLiteral("Snap-void"), {});
 }
 
-QList<AbstractResource*> SnapBackend::searchPackageName(const QString& name)
+ResultsStream * SnapBackend::findResourceByPackageName(const QString& search)
 {
-    return populate(m_socket.find(name), AbstractResource::None);
+    auto pkg = m_resources.value(search);
+    return new ResultsStream(QStringLiteral("SnapPkg"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
 }
 
-QList<AbstractResource*> SnapBackend::populate(SnapJob* job, AbstractResource::State state)
+QVector<AbstractResource*> SnapBackend::populate(SnapJob* job, AbstractResource::State state)
 {
     if (!job->exec()) {
         qWarning() << "job failed" << job;
@@ -83,7 +80,7 @@ QList<AbstractResource*> SnapBackend::populate(SnapJob* job, AbstractResource::S
 
     const auto snaps = job->result().toArray();
 
-    QList<AbstractResource*> ret;
+    QVector<AbstractResource*> ret;
     QSet<SnapResource*> resources;
     for(const auto& snap: snaps) {
         const auto snapObj = snap.toObject();

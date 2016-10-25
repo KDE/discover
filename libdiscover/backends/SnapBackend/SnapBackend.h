@@ -36,12 +36,12 @@ Q_OBJECT
 public:
     explicit SnapBackend(QObject* parent = nullptr);
 
-    AbstractResource* resourceByPackageName(const QString& name) const override;
+    ResultsStream * search(const AbstractResourcesBackend::Filters & search) override;
+    ResultsStream * findResourceByPackageName(const QString & search) override;
+
     int updatesCount() const override;
     AbstractBackendUpdater* backendUpdater() const override;
     AbstractReviewsBackend* reviewsBackend() const override;
-    QList<AbstractResource*> searchPackageName(const QString& searchText) override;
-    QVector<AbstractResource*> allResources() const override;
     bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
     QList<QAction*> messageActions() const override { return {}; }
 
@@ -53,7 +53,7 @@ public:
 
 private:
     void setFetching(bool fetching);
-    QList<AbstractResource*> populate(SnapJob* snaps, AbstractResource::State state);
+    QVector<AbstractResource*> populate(SnapJob* snaps, AbstractResource::State state);
 
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;
