@@ -36,6 +36,7 @@
 // DiscoverCommon includes
 #include "Transaction/Transaction.h"
 #include "Transaction/TransactionModel.h"
+#include "Category/Category.h"
 
 // Own includes
 #include "KNSBackend.h"
@@ -99,12 +100,11 @@ void KNSBackend::setMetaData(const QString& path)
     setFetching(true);
 
     m_manager = new KNS3::DownloadManager(m_name, this);
-    connect(m_manager, &KNS3::DownloadManager::errorFound, this, &KNSBackend::markInvalid);
+    connect(m_manager, &KNS3::DownloadManager::errorFound, this, [](const QString &error) { qWarning() << "kns error" << error; });
     connect(m_manager, &KNS3::DownloadManager::searchResult, this, &KNSBackend::receivedEntries);
     connect(m_manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSBackend::statusChanged);
-
     m_page = 0;
-    m_manager->search(m_page);
+    m_manager->checkForInstalled();
 }
 
 void KNSBackend::setFetching(bool f)
@@ -123,14 +123,19 @@ bool KNSBackend::isValid() const
 void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
 {
     if(entries.isEmpty()) {
+        Q_EMIT searchFinished();
         setFetching(false);
         return;
     }
 
+    QVector<AbstractResource*> resources;
+    resources.reserve(entries.count());
     foreach(const KNS3::Entry& entry, entries) {
         KNSResource* r = new KNSResource(entry, m_categories, this);
         m_resourcesByName.insert(entry.id(), r);
+        resources += r;
     }
+    Q_EMIT receivedResources(resources);
     ++m_page;
     m_manager->search(m_page);
 }
@@ -224,12 +229,30 @@ AbstractReviewsBackend* KNSBackend::reviewsBackend() const
 
 ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    QVector<AbstractResource*> ret;
-    foreach(AbstractResource* r, m_resourcesByName) {
-        if(r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
-            ret += r;
+    if (filter.category && filter.category->matchesCategoryName(m_categories.first())) {
+        m_manager->setSearchTerm(filter.search);
+        return searchStream();
+    } else if (filter.state >= AbstractResource::Installed) {
+        QVector<AbstractResource*> ret;
+        foreach(AbstractResource* r, m_resourcesByName) {
+            if(r->state()>=filter.state && (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)))
+                ret += r;
+        }
+        return new ResultsStream(QStringLiteral("KNS-installed"), ret);
+    } else {
+        m_manager->setSearchTerm(filter.search);
+        return searchStream();
     }
-    return new ResultsStream(QStringLiteral("KNS"), ret);
+}
+
+ResultsStream * KNSBackend::searchStream()
+{
+    m_manager->search(0);
+    m_page = 0;
+    auto stream = new ResultsStream(QStringLiteral("KNS-search"));
+    connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
+    connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::deleteLater);
+    return stream;
 }
 
 ResultsStream * KNSBackend::findResourceByPackageName(const QString& search)

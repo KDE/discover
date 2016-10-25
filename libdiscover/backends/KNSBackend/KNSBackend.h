@@ -63,6 +63,10 @@ public:
 
     KNS3::DownloadManager* downloadManager() const { return m_manager; }
 
+Q_SIGNALS:
+    void receivedResources(const QVector<AbstractResource*> &resources);
+    void searchFinished();
+
 public Q_SLOTS:
     void receivedEntries(const KNS3::Entry::List& entries);
     void statusChanged(const KNS3::Entry& entry);
@@ -70,6 +74,7 @@ public Q_SLOTS:
 private:
     void setFetching(bool f);
     void markInvalid(const QString &message);
+    ResultsStream* searchStream();
     
     bool m_fetching;
     bool m_isValid;
@@ -81,6 +86,7 @@ private:
     QString m_iconName;
     StandardBackendUpdater* const m_updater;
     QStringList m_extends;
+    QStringList m_categories;
 };
 
 #endif // KNSBACKEND_H
