@@ -119,7 +119,9 @@ void StandardBackendUpdater::refreshUpdateable()
     m_upgradeable.clear();
     auto r = m_backend->search(f);
     connect(r, &ResultsStream::resourcesFound, this, [this](const QVector<AbstractResource*> &resources){
-        m_upgradeable.unite(resources.toList().toSet());
+        for(auto res : resources)
+            if (res->state() == AbstractResource::Upgradeable)
+                m_upgradeable.insert(res);
     });
     connect(r, &ResultsStream::destroyed, this, [this](){
         m_settingUp = false;
