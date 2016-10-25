@@ -464,7 +464,7 @@ void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend* backend, cons
         found = true;
     }
 
-    if (found) {
+    if (found && properties.contains(m_roles.value(m_sortRole))) {
         invalidateSorting();
     }
 }
