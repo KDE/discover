@@ -34,7 +34,7 @@
 #include <QStringList>
 #include <QDebug>
 #include <QTimer>
-#include <QTimerEvent>
+#include <QStandardPaths>
 
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
@@ -126,27 +126,58 @@ void PackageKitBackend::reloadPackageList()
     QStringList neededPackages;
     neededPackages.reserve(components.size());
     foreach(const Appstream::Component& component, components) {
-        if (component.packageNames().isEmpty()) {
+        const auto pkgNames = component.packageNames();
+        if (pkgNames.isEmpty()) {
+            if (component.kind() == Appstream::Component::KindDesktop) {
+                QString file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("applications/")+component.desktopId());
+                if (!file.isEmpty()) {
+                    auto trans = PackageKit::Daemon::searchFiles(file);
+                    connect(trans, &PackageKit::Transaction::package, this, [trans](PackageKit::Transaction::Info info, const QString &packageID){
+                        if (info == PackageKit::Transaction::InfoInstalled)
+                            trans->setProperty("installedPackage", packageID);
+                    });
+                    connect(trans, &PackageKit::Transaction::finished, this, [this, trans, component](PackageKit::Transaction::Exit status) {
+                        const auto pkgidVal = trans->property("installedPackage");
+                        if (status == PackageKit::Transaction::ExitSuccess && !pkgidVal.isNull()) {
+                            const auto pkgid = pkgidVal.toString();
+                            acquireFetching(true);
+                            auto res = addComponent(component, {PackageKit::Daemon::packageName(pkgid)});
+                            res->addPackageId(PackageKit::Transaction::InfoInstalled, pkgid, true);
+                            acquireFetching(false);
+                        }
+                    });
+                    continue;
+                }
+            }
+
             qDebug() << "no packages for" << component.name();
             continue;
         }
-        neededPackages += component.packageNames();
+        neededPackages += pkgNames;
 
-        const auto res = new AppPackageKitResource(component, this);
-        m_packages.packages[component.id()] = res;
-        foreach (const QString& pkg, component.packageNames()) {
-            m_packages.packageToApp[pkg] += component.id();
-        }
-
-        foreach (const QString& pkg, component.extends()) {
-            m_packages.extendedBy[pkg] += res;
-        }
+        addComponent(component, pkgNames);
     }
+
     acquireFetching(false);
     neededPackages.removeDuplicates();
-
-    qDebug() << "needed..." << neededPackages.count();
     resolvePackages(neededPackages);
+}
+
+AppPackageKitResource* PackageKitBackend::addComponent(const Appstream::Component& component, const QStringList& pkgNames)
+{
+    Q_ASSERT(isFetching());
+    Q_ASSERT(!pkgNames.isEmpty());
+
+    const auto res = new AppPackageKitResource(component, pkgNames.at(0), this);
+    m_packages.packages[component.id()] = res;
+    foreach (const QString& pkg, pkgNames) {
+        m_packages.packageToApp[pkg] += component.id();
+    }
+
+    foreach (const QString& pkg, component.extends()) {
+        m_packages.extendedBy[pkg] += res;
+    }
+    return res;
 }
 
 class TransactionSet : public QObject

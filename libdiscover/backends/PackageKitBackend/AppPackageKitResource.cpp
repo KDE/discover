@@ -28,8 +28,8 @@
 #include <QProcess>
 #include <QDebug>
 
-AppPackageKitResource::AppPackageKitResource(const Appstream::Component& data, PackageKitBackend* parent)
-    : PackageKitResource(data.packageNames().at(0), QString(), parent)
+AppPackageKitResource::AppPackageKitResource(const Appstream::Component& data, const QString &packageName, PackageKitBackend* parent)
+    : PackageKitResource(packageName, QString(), parent)
     , m_appdata(data)
 {
     Q_ASSERT(data.isValid());

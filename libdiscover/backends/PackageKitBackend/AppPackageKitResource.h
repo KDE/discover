@@ -28,7 +28,7 @@ class AppPackageKitResource : public PackageKitResource
 {
     Q_OBJECT
     public:
-        explicit AppPackageKitResource(const Appstream::Component& data, PackageKitBackend* parent);
+        explicit AppPackageKitResource(const Appstream::Component& data, const QString &packageName, PackageKitBackend* parent);
 
         QString appstreamId() const override;
 
