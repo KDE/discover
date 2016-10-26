@@ -48,6 +48,7 @@ Kirigami.ScrollablePage
                 right: parent.right
                 rightMargin: root.flickable ? root.width - root.contentItem.width : 0
             }
+            visible: y>-height
 
             Behavior on y {
                 NumberAnimation {
