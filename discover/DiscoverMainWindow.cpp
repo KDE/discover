@@ -195,8 +195,10 @@ void DiscoverMainWindow::integrateObject(QObject* object)
     KConfigGroup window(KSharedConfig::openConfig(), "Window");
     if (window.hasKey("geometry"))
         rootObject()->setGeometry(window.readEntry("geometry", QRect()));
-    if (window.hasKey("visibility"))
-        rootObject()->setVisibility(QWindow::Visibility(window.readEntry<int>("visibility", QWindow::Windowed)));
+    if (window.hasKey("visibility")) {
+        QWindow::Visibility visibility(QWindow::Visibility(window.readEntry<int>("visibility", QWindow::Windowed)));
+        rootObject()->setVisibility(qMax(visibility, QQuickView::AutomaticVisibility));
+    }
 
     object->installEventFilter(this);
 }

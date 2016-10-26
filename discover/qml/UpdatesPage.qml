@@ -82,6 +82,8 @@ DiscoverPage
                 Item { Layout.fillWidth: true}
                 Button {
                     id: startButton
+                    Layout.minimumWidth: Kirigami.Units.gridUnit * 6
+                    Layout.rightMargin: Kirigami.Units.smallSpacing
                     text: unselectedItem.visible ? i18n("Update Selected") : i18n("Update All")
                     enabled: !resourcesUpdatesModel.isProgressing
                     onClicked: page.start()

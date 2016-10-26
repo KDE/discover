@@ -31,11 +31,8 @@ DummySourcesBackend::DummySourcesBackend(QObject* parent)
     roles.insert(Qt::CheckStateRole, "checked");
     m_sources->setItemRoleNames(roles);
 
-    addSource(QStringLiteral("DummySource1"));
-    addSource(QStringLiteral("DummySource2"));
-    addSource(QStringLiteral("DummySource3"));
-    addSource(QStringLiteral("DummySource4"));
-    addSource(QStringLiteral("DummySource5"));
+    for (int i = 0; i<10; ++i)
+        addSource(QStringLiteral("DummySource%1").arg(i));
 
     connect(m_testAction, &QAction::triggered, [](){ qDebug() << "action triggered!"; });
 }
