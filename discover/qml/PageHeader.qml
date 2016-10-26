@@ -50,13 +50,19 @@ ColumnLayout {
         Item {
             height: layout.implicitHeight
             DropShadow {
-                anchors.fill: bg
-                source: bg
+                anchors.fill: source
+                source: backgroundColor.visible ? backgroundColor : bg
                 horizontalOffset: 0
                 verticalOffset: 3
                 radius: 8.0
                 samples: 17
                 color: "gray"
+            }
+            Rectangle {
+                id: backgroundColor
+                anchors.fill: parent
+                color: Kirigami.Theme.highlightColor
+                visible: bg.status != Image.Ready
             }
             Image {
                 id: bg
