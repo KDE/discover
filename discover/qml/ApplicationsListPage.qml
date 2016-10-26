@@ -73,7 +73,6 @@ DiscoverPage {
         }
         model: ApplicationProxyModel {
             id: appsModel
-            isSortingByRelevancy: true
             stringSortRole: "ratingPoints"
             sortOrder: Qt.DescendingOrder
             isShowingTechnical: category && category.shouldShowTechnical

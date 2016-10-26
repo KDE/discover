@@ -294,19 +294,6 @@ Category* ResourcesProxyModel::filteredCategory() const
     return m_filters.category;
 }
 
-void ResourcesProxyModel::setSortByRelevancy(bool sort)
-{
-    if (sort != m_sortByRelevancy) {
-        m_sortByRelevancy = sort;
-        invalidateSorting();
-    }
-}
-
-bool ResourcesProxyModel::sortingByRelevancy() const
-{
-    return m_sortByRelevancy;
-}
-
 void ResourcesProxyModel::setStateFilter(AbstractResource::State s)
 {
     if (s != m_filters.state) {

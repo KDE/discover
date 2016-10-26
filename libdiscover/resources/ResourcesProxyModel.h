@@ -44,7 +44,6 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel
     Q_PROPERTY(Category* filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
     Q_PROPERTY(QString originFilter READ originFilter WRITE setOriginFilter)
     Q_PROPERTY(bool isShowingTechnical READ shouldShowTechnical WRITE setShouldShowTechnical NOTIFY showTechnicalChanged)
-    Q_PROPERTY(bool isSortingByRelevancy READ sortingByRelevancy WRITE setSortByRelevancy)
     Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter NOTIFY stateFilterChanged)
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
     Q_PROPERTY(QString search READ lastSearch WRITE setSearch NOTIFY searchChanged)
@@ -63,8 +62,6 @@ public:
     void setFiltersFromCategory(Category *category);
     void setShouldShowTechnical(bool show);
     bool shouldShowTechnical() const;
-    void setSortByRelevancy(bool sort);
-    bool sortingByRelevancy() const;
     void setStateFilter(AbstractResource::State s);
     AbstractResource::State stateFilter() const;
     void setSortRole(int sortRole);
