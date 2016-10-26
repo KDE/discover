@@ -126,10 +126,17 @@ void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& _res)
     if (res.isEmpty())
         return;
 
-    beginResetModel();
-    m_displayedResources += res;
-    qSort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
-    endResetModel();
+    if (m_sortByRelevancy) {
+        int rows = rowCount();
+        beginInsertRows({}, rows, rows+res.count()-1);
+        m_displayedResources += res;
+        endInsertRows();
+    } else {
+        beginResetModel();
+        m_displayedResources += res;
+        qSort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
+        endResetModel();
+    }
 }
 
 void ResourcesProxyModel::invalidateSorting()
@@ -137,9 +144,11 @@ void ResourcesProxyModel::invalidateSorting()
     if (m_displayedResources.isEmpty())
         return;
 
-    beginResetModel();
-    qSort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
-    endResetModel();
+    if (!m_sortByRelevancy) {
+        beginResetModel();
+        qSort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
+        endResetModel();
+    }
 }
 
 QString ResourcesProxyModel::lastSearch() const
@@ -254,17 +263,6 @@ int ResourcesProxyModel::rowCount(const QModelIndex& parent) const
 
 bool ResourcesProxyModel::lessThan(AbstractResource* leftPackage, AbstractResource* rightPackage) const
 {
-    if (m_sortByRelevancy) {
-        //TODO: look into how to merge different sources
-        Q_FOREACH (AbstractResource* res, m_displayedResources) {
-            if(res == leftPackage)
-                return true;
-            else if(res == rightPackage)
-                return false;
-        }
-        Q_UNREACHABLE();
-    }
-
     auto role = m_sortRole;
     Qt::SortOrder order = m_sortOrder;
     QVariant leftValue;
@@ -405,9 +403,14 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) 
 
 void ResourcesProxyModel::sortedInsertion(AbstractResource* resource)
 {
-    const auto finder = [this, resource](AbstractResource* res){ return lessThan(res, resource); };
-    const auto it = std::find_if(m_displayedResources.constBegin(), m_displayedResources.constEnd(), finder);
-    const auto newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());
+    int newIdx;
+    if (m_sortByRelevancy)
+        newIdx = m_displayedResources.count();
+    else {
+        const auto finder = [this, resource](AbstractResource* res){ return lessThan(res, resource); };
+        const auto it = std::find_if(m_displayedResources.constBegin(), m_displayedResources.constEnd(), finder);
+        newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());
+    }
 
     beginInsertRows({}, newIdx, newIdx);
     m_displayedResources.insert(newIdx, resource);
