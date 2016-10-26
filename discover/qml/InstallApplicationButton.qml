@@ -26,14 +26,13 @@ ConditionalLoader
 
     condition: listener.isActive
     componentTrue: RowLayout {
-        Label {
-            Layout.fillHeight: true
+        LabelBackground {
             Layout.fillWidth: true
             text: listener.statusText
-            verticalAlignment: Text.AlignVCenter
+            progress: listener.progress/100
         }
 
-        Button {
+        ToolButton {
             Layout.fillHeight: true
             iconName: "dialog-cancel"
             enabled: listener.isCancellable
