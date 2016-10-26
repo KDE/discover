@@ -108,7 +108,6 @@ private:
     Qt::SortOrder m_sortOrder;
 
     bool m_sortByRelevancy;
-    bool m_filterBySearch;
 
     AbstractResourcesBackend::Filters m_filters;
     QVariantList m_subcategories;

@@ -37,7 +37,6 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     , m_sortRole(ResourcesModel::NameRole)
     , m_sortOrder(Qt::AscendingOrder)
     , m_sortByRelevancy(false)
-    , m_filterBySearch(false)
     , m_roles({
         { ResourcesModel::NameRole, "name" },
         { ResourcesModel::IconRole, "icon" },
@@ -108,9 +107,7 @@ void ResourcesProxyModel::setSearch(const QString &searchText)
     // 1-character searches are painfully slow. >= 2 chars are fine, though
     if (searchText.size() > 1) {
         m_sortByRelevancy = true;
-        m_filterBySearch = true;
     } else {
-        m_filterBySearch = false;
         m_sortByRelevancy = false;
     }
     invalidateFilter();
