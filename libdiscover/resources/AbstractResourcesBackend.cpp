@@ -45,6 +45,7 @@ QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters& filters
 ResultsStream::ResultsStream(const QString &objectName, const QVector<AbstractResource*>& resources)
     : ResultsStream(objectName)
 {
+    Q_ASSERT(!resources.contains(nullptr));
     QTimer::singleShot(0, this, [resources, this] () {
         if (!resources.isEmpty())
             Q_EMIT resourcesFound(resources);
