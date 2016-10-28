@@ -20,6 +20,7 @@
 
 #include "AppPackageKitResource.h"
 #include <AppStreamQt/screenshot.h>
+#include <AppStreamQt/icon.h>
 #include <AppStreamQt/image.h>
 #include <AppStreamQt/release.h>
 #include <KLocalizedString>
@@ -50,10 +51,21 @@ QString AppPackageKitResource::longDescription()
 
 QVariant AppPackageKitResource::icon() const
 {
-    QIcon ret = m_appdata.icon();
-
-    if (ret.isNull()) {
+    QIcon ret;
+    const auto icons = m_appdata.icons();
+    if (icons.isEmpty()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+    } else foreach(const AppStream::Icon &icon, icons) {
+        switch(icon.kind()) {
+            case AppStream::Icon::KindLocal:
+                ret.addFile(icon.url().toLocalFile(), icon.size());
+                break;
+            case AppStream::Icon::KindCached:
+                ret.addFile(icon.url().toLocalFile(), icon.size());
+                break;
+            default:
+                break;
+        }
     }
 
     return ret;
@@ -139,13 +151,13 @@ static QUrl screenshot(const AppStream::Component& comp, AppStream::Image::Kind 
 
 QUrl AppPackageKitResource::screenshotUrl()
 {
-    return screenshot(m_appdata, AppStream::Image::Source);
+    return screenshot(m_appdata, AppStream::Image::KindSource);
 
 }
 
 QUrl AppPackageKitResource::thumbnailUrl()
 {
-    return screenshot(m_appdata, AppStream::Image::Thumbnail);
+    return screenshot(m_appdata, AppStream::Image::KindThumbnail);
 }
 
 void AppPackageKitResource::fetchScreenshots()
@@ -153,8 +165,8 @@ void AppPackageKitResource::fetchScreenshots()
     QList<QUrl> thumbnails, screenshots;
 
     Q_FOREACH (const AppStream::Screenshot &s, m_appdata.screenshots()) {
-        const QUrl thumbnail = imageOfKind(s.images(), AppStream::Image::Thumbnail);
-        const QUrl plain = imageOfKind(s.images(), AppStream::Image::Source);
+        const QUrl thumbnail = imageOfKind(s.images(), AppStream::Image::KindThumbnail);
+        const QUrl plain = imageOfKind(s.images(), AppStream::Image::KindSource);
         if (plain.isEmpty())
             qWarning() << "invalid screenshot for" << name();
 
