@@ -28,7 +28,7 @@ class AppPackageKitResource : public PackageKitResource
 {
     Q_OBJECT
     public:
-        explicit AppPackageKitResource(const Appstream::Component& data, const QString &packageName, PackageKitBackend* parent);
+        explicit AppPackageKitResource(const AppStream::Component& data, const QString &packageName, PackageKitBackend* parent);
 
         QString appstreamId() const override;
 
@@ -53,9 +53,9 @@ class AppPackageKitResource : public PackageKitResource
         void fetchChangelog() override;
 
     private:
-        QStringList findProvides(Appstream::Provides::Kind kind) const;
+        QStringList findProvides(AppStream::Provided::Kind kind) const;
 
-        const Appstream::Component m_appdata;
+        const AppStream::Component m_appdata;
 };
 
 #endif // APPPACKAGEKITRESOURCE_H

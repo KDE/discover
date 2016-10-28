@@ -29,7 +29,7 @@
 #include <QTimer>
 #include <QSet>
 #include <PackageKit/Transaction>
-#include <AppstreamQt/database.h>
+#include <AppStreamQt/pool.h>
 
 class AppstreamReviews;
 class AppPackageKitResource;
@@ -91,9 +91,9 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void acquireFetching(bool f);
         void includePackagesToAdd();
         void performDetailsFetch();
-        AppPackageKitResource* addComponent(const Appstream::Component& component, const QStringList& pkgNames);
+        AppPackageKitResource* addComponent(const AppStream::Component& component, const QStringList& pkgNames);
 
-        Appstream::Database m_appdata;
+        AppStream::Pool m_appdata;
         PackageKitUpdater* m_updater;
         QPointer<PackageKit::Transaction> m_refresher;
         int m_isFetching;

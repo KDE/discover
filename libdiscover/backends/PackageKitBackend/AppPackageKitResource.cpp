@@ -19,20 +19,19 @@
  ***************************************************************************/
 
 #include "AppPackageKitResource.h"
-#include <AppstreamQt/screenshot.h>
-#include <AppstreamQt/image.h>
-// #include <AppstreamQt/release.h>
+#include <AppStreamQt/screenshot.h>
+#include <AppStreamQt/image.h>
+#include <AppStreamQt/release.h>
 #include <KLocalizedString>
 #include <KToolInvocation>
 #include <QIcon>
 #include <QProcess>
 #include <QDebug>
 
-AppPackageKitResource::AppPackageKitResource(const Appstream::Component& data, const QString &packageName, PackageKitBackend* parent)
+AppPackageKitResource::AppPackageKitResource(const AppStream::Component& data, const QString &packageName, PackageKitBackend* parent)
     : PackageKitResource(packageName, QString(), parent)
     , m_appdata(data)
 {
-    Q_ASSERT(data.isValid());
 }
 
 QString AppPackageKitResource::name()
@@ -51,17 +50,7 @@ QString AppPackageKitResource::longDescription()
 
 QVariant AppPackageKitResource::icon() const
 {
-    QIcon ret;
-
-    const auto icons = m_appdata.iconUrls();
-    if (icons.isEmpty())
-        return m_appdata.name();
-    else {
-        for (auto it = icons.constBegin(), itEnd = icons.constEnd(); it!=itEnd; ++it) {
-            if (it->isLocalFile())
-                ret.addFile(it->toLocalFile(), it.key());
-        }
-    }
+    QIcon ret = m_appdata.icon();
 
     if (ret.isNull()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
@@ -78,13 +67,13 @@ QString AppPackageKitResource::license()
 
 QStringList AppPackageKitResource::mimetypes() const
 {
-    return findProvides(Appstream::Provides::KindMimetype);
+    return findProvides(AppStream::Provided::KindMimetype);
 }
 
 QStringList AppPackageKitResource::categories()
 {
     auto cats = m_appdata.categories();
-    if (m_appdata.kind() != Appstream::Component::KindAddon)
+    if (m_appdata.kind() != AppStream::Component::KindAddon)
         cats.append(QStringLiteral("Application"));
     return cats;
 }
@@ -105,7 +94,7 @@ QString AppPackageKitResource::appstreamId() const
 
 QUrl AppPackageKitResource::homepage()
 {
-    return m_appdata.urls().value(Appstream::Component::UrlKindHomepage);
+    return m_appdata.url(AppStream::Component::UrlKindHomepage);
 }
 
 bool AppPackageKitResource::isTechnical() const
@@ -115,7 +104,7 @@ bool AppPackageKitResource::isTechnical() const
 
 QStringList AppPackageKitResource::executables() const
 {
-    return findProvides(Appstream::Provides::KindBinary);
+    return findProvides(AppStream::Provided::KindBinary);
 }
 
 void AppPackageKitResource::invokeApplication() const
@@ -125,10 +114,10 @@ void AppPackageKitResource::invokeApplication() const
         QProcess::startDetached(exes.first());
 }
 
-static QUrl imageOfKind(const QList<Appstream::Image>& images, Appstream::Image::Kind kind)
+static QUrl imageOfKind(const QList<AppStream::Image>& images, AppStream::Image::Kind kind)
 {
     QUrl ret;
-    Q_FOREACH (const Appstream::Image &i, images) {
+    Q_FOREACH (const AppStream::Image &i, images) {
         if (i.kind() == kind) {
             ret = i.url();
             break;
@@ -137,10 +126,10 @@ static QUrl imageOfKind(const QList<Appstream::Image>& images, Appstream::Image:
     return ret;
 }
 
-static QUrl screenshot(const Appstream::Component& comp, Appstream::Image::Kind kind)
+static QUrl screenshot(const AppStream::Component& comp, AppStream::Image::Kind kind)
 {
     QUrl ret;
-    Q_FOREACH (const Appstream::Screenshot &s, comp.screenshots()) {
+    Q_FOREACH (const AppStream::Screenshot &s, comp.screenshots()) {
         ret = imageOfKind(s.images(), kind);
         if (s.isDefault() && !ret.isEmpty())
             break;
@@ -150,22 +139,22 @@ static QUrl screenshot(const Appstream::Component& comp, Appstream::Image::Kind 
 
 QUrl AppPackageKitResource::screenshotUrl()
 {
-    return screenshot(m_appdata, Appstream::Image::Plain);
+    return screenshot(m_appdata, AppStream::Image::Source);
 
 }
 
 QUrl AppPackageKitResource::thumbnailUrl()
 {
-    return screenshot(m_appdata, Appstream::Image::Thumbnail);
+    return screenshot(m_appdata, AppStream::Image::Thumbnail);
 }
 
 void AppPackageKitResource::fetchScreenshots()
 {
     QList<QUrl> thumbnails, screenshots;
 
-    Q_FOREACH (const Appstream::Screenshot &s, m_appdata.screenshots()) {
-        const QUrl thumbnail = imageOfKind(s.images(), Appstream::Image::Thumbnail);
-        const QUrl plain = imageOfKind(s.images(), Appstream::Image::Plain);
+    Q_FOREACH (const AppStream::Screenshot &s, m_appdata.screenshots()) {
+        const QUrl thumbnail = imageOfKind(s.images(), AppStream::Image::Thumbnail);
+        const QUrl plain = imageOfKind(s.images(), AppStream::Image::Source);
         if (plain.isEmpty())
             qWarning() << "invalid screenshot for" << name();
 
@@ -181,12 +170,12 @@ bool AppPackageKitResource::canExecute() const
     return !executables().isEmpty();
 }
 
-QStringList AppPackageKitResource::findProvides(Appstream::Provides::Kind kind) const
+QStringList AppPackageKitResource::findProvides(AppStream::Provided::Kind kind) const
 {
     QStringList ret;
-    Q_FOREACH (Appstream::Provides p, m_appdata.provides())
+    Q_FOREACH (AppStream::Provided p, m_appdata.provided())
         if (p.kind() == kind)
-            ret += p.value();
+            ret += p.items();
     return ret;
 }
 
@@ -214,12 +203,10 @@ QStringList AppPackageKitResource::extends() const
 
 void AppPackageKitResource::fetchChangelog()
 {
-    PackageKitResource::fetchChangelog();
-    //TODO: uncomment when the API is publicly released
-//     QString changelog;
-//     for(const auto& rel: m_appdata.releases()) {
-//         changelog += QStringLiteral("<h3>") + rel.version() + QStringLiteral("</h3>");
-//         changelog += QStringLiteral("<p>") + rel.description() + QStringLiteral("</p>");
-//     }
-//     emit changelogFetched(changelog);
+    QString changelog;
+    for(const auto& rel: m_appdata.releases()) {
+        changelog += QStringLiteral("<h3>") + rel.version() + QStringLiteral("</h3>");
+        changelog += QStringLiteral("<p>") + rel.description() + QStringLiteral("</p>");
+    }
+    emit changelogFetched(changelog);
 }

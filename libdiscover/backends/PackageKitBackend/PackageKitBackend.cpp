@@ -54,9 +54,9 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     , m_isFetching(0)
     , m_reviews(new AppstreamReviews(this))
 {
-    bool b = m_appdata.open();
+    bool b = m_appdata.load();
     if (!b) {
-        qWarning() << "Couldn't open the AppStream database";
+        qWarning() << "Couldn't load the AppStream database";
 
         auto msg = new QAction(i18n("Got it"), this);
         msg->setWhatsThis(i18n("Please make sure that Appstream is properly set up on your system"));
@@ -122,13 +122,13 @@ void PackageKitBackend::reloadPackageList()
         disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
     }
 
-    const auto components = m_appdata.allComponents();
+    const auto components = m_appdata.components();
     QStringList neededPackages;
     neededPackages.reserve(components.size());
-    foreach(const Appstream::Component& component, components) {
+    foreach(const AppStream::Component& component, components) {
         const auto pkgNames = component.packageNames();
         if (pkgNames.isEmpty()) {
-            if (component.kind() == Appstream::Component::KindDesktop) {
+            if (component.kind() == AppStream::Component::KindDesktopApp) {
                 QString file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("applications/")+component.desktopId());
                 if (!file.isEmpty()) {
                     auto trans = PackageKit::Daemon::searchFiles(file);
@@ -163,7 +163,7 @@ void PackageKitBackend::reloadPackageList()
     resolvePackages(neededPackages);
 }
 
-AppPackageKitResource* PackageKitBackend::addComponent(const Appstream::Component& component, const QStringList& pkgNames)
+AppPackageKitResource* PackageKitBackend::addComponent(const AppStream::Component& component, const QStringList& pkgNames)
 {
     Q_ASSERT(isFetching());
     Q_ASSERT(!pkgNames.isEmpty());
@@ -360,8 +360,8 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
     if (filter.search.isEmpty()) {
         return new ResultsStream(QStringLiteral("PackageKitStream"), m_packages.packages.values().toVector());
     } else {
-        const QList<Appstream::Component> components = m_appdata.findComponentsByString(filter.search, {});
-        const QStringList ids = kTransform<QStringList>(components, [](const Appstream::Component& comp) { return comp.id(); });
+        const QList<AppStream::Component> components = m_appdata.search(filter.search);
+        const QStringList ids = kTransform<QStringList>(components, [](const AppStream::Component& comp) { return comp.id(); });
         return new ResultsStream(QStringLiteral("PackageKitStream"), resourcesByPackageNames<QVector<AbstractResource*>>(ids));
     }
 }

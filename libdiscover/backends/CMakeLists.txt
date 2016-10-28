@@ -12,7 +12,7 @@ if(KF5Attica_FOUND AND KF5NewStuff_FOUND)
     add_subdirectory(KNSBackend)
 endif()
 
-if(packagekitqt5_FOUND AND AppstreamQt_FOUND)
+if(packagekitqt5_FOUND AND AppStreamQt_FOUND)
     add_subdirectory(PackageKitBackend)
 endif()
 

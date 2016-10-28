@@ -21,7 +21,7 @@ find_package(KF5 5.24 REQUIRED CoreAddons Config Crash DBusAddons I18n Archive D
 find_package(KF5Kirigami 1.1)
 
 find_package(packagekitqt5)
-find_package(AppstreamQt 0.10)
+find_package(AppStreamQt 0.10)
 find_package(KF5Attica 5.23)
 find_package(KF5NewStuff 5.23)
 
@@ -64,7 +64,7 @@ set_package_properties(packagekitqt5 PROPERTIES
     URL "http://www.packagekit.org"
     PURPOSE "Required to build the PackageKit backend"
     TYPE OPTIONAL)
-set_package_properties(AppstreamQt PROPERTIES
+set_package_properties(AppStreamQt PROPERTIES
     DESCRIPTION "Library that lists Appstream resources"
     URL "http://www.freedesktop.org"
     PURPOSE "Required to build the PackageKit backend"
