@@ -56,7 +56,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 {
     bool b = m_appdata.open();
     if (!b) {
-        qWarning() << "Couldn't open the AppStream database";
+        qWarning() << "Could not open the AppStream metadata pool";
 
         auto msg = new QAction(i18n("Got it"), this);
         msg->setWhatsThis(i18n("Please make sure that Appstream is properly set up on your system"));
