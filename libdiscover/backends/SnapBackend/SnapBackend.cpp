@@ -93,7 +93,8 @@ ResultsStream* SnapBackend::populate(SnapJob* job, AbstractResource::State state
             foreach(SnapResource* res, resources)
                 m_resources[res->packageName()] = res;
         }
-        stream->resourcesFound(ret);
+        if (!ret.isEmpty())
+            stream->resourcesFound(ret);
     });
     return stream;
 }
