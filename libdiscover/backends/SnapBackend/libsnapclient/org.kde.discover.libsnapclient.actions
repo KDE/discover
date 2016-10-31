@@ -1,6 +1,7 @@
 [org.kde.discover.libsnapclient.modify]
 Name=Snappy remote actions
 Name[ca]=Accions remotes de l'Snappy
+Name[en_GB]=Snappy remote actions
 Name[es]=Acciones remotas de Snappy
 Name[it]=Azioni remote di Snappy
 Name[nl]=Acties van Snappy op afstand
@@ -11,8 +12,10 @@ Name[uk]=Віддалені дії Snappy
 Name[x-test]=xxSnappy remote actionsxx
 Description=Modifying the system-wide font configuration requires privileges.
 Description[ca]=La modificació de la configuració dels tipus de lletra del sistema requereix privilegis.
+Description[en_GB]=Modifying the system-wide font configuration requires privileges.
 Description[es]=La modificación de la configuración de los tipos de letra del sistema necesita privilegios.
 Description[it]=La modifica della configurazione dei caratteri di sistema richiede permessi.
+Description[nb]=Privileger trengs for å endre systemoppsettet for skrifter.
 Description[nl]=Wijzigen van de systeembrede lettertypen vereist rechten.
 Description[nn]=Du treng utvida løyve for å kunna endra innstillingane for skriftene på heile systemet.
 Description[pl]=Zmiana ustawień czcionek ogólnosystemowych wymaga uprawnień.
