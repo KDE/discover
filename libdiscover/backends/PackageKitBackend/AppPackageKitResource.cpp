@@ -33,6 +33,7 @@ AppPackageKitResource::AppPackageKitResource(const AppStream::Component& data, c
     : PackageKitResource(packageName, QString(), parent)
     , m_appdata(data)
 {
+    Q_ASSERT(data.isValid());
 }
 
 QString AppPackageKitResource::name()
