@@ -21,6 +21,9 @@
 #include "AppPackageKitResource.h"
 #include <AppstreamQt/screenshot.h>
 #include <AppstreamQt/image.h>
+#ifdef NEWAPPSTREAM
+#include <AppStreamQt/icon.h>
+#endif
 // #include <AppstreamQt/release.h>
 #include <KLocalizedString>
 #include <KToolInvocation>
@@ -52,7 +55,23 @@ QString AppPackageKitResource::longDescription()
 QVariant AppPackageKitResource::icon() const
 {
     QIcon ret;
-
+#ifdef NEWAPPSTREAM
+    const auto icons = m_appdata.icons();
+    if (icons.isEmpty()) {
+        ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+    } else foreach(const AppStream::Icon &icon, icons) {
+        switch(icon.kind()) {
+            case AppStream::Icon::KindLocal:
+                ret.addFile(icon.url().toLocalFile(), icon.size());
+                break;
+            case AppStream::Icon::KindCached:
+                ret.addFile(icon.url().toLocalFile(), icon.size());
+                break;
+            default:
+                break;
+        }
+    }
+#else
     const auto icons = m_appdata.iconUrls();
     if (icons.isEmpty())
         return m_appdata.name();
@@ -66,7 +85,7 @@ QVariant AppPackageKitResource::icon() const
     if (ret.isNull()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     }
-
+#endif
     return ret;
 }
 
@@ -105,7 +124,11 @@ QString AppPackageKitResource::appstreamId() const
 
 QUrl AppPackageKitResource::homepage()
 {
+#ifdef NEWAPPSTREAM
+    return m_appdata.url(Appstream::Component::UrlKindHomepage);
+#else
     return m_appdata.urls().value(Appstream::Component::UrlKindHomepage);
+#endif
 }
 
 bool AppPackageKitResource::isTechnical() const
@@ -183,11 +206,15 @@ bool AppPackageKitResource::canExecute() const
 
 QStringList AppPackageKitResource::findProvides(Appstream::Provides::Kind kind) const
 {
+#ifdef NEWAPPSTREAM
+    return m_appdata.provided(kind).items();
+#else
     QStringList ret;
     Q_FOREACH (Appstream::Provides p, m_appdata.provides())
         if (p.kind() == kind)
             ret += p.value();
     return ret;
+#endif
 }
 
 QStringList AppPackageKitResource::allPackageNames() const

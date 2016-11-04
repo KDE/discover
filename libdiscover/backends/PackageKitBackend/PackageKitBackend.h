@@ -29,7 +29,18 @@
 #include <QTimer>
 #include <QSet>
 #include <PackageKit/Transaction>
+
+#ifdef NEWAPPSTREAM
+#include <AppstreamQt/pool.h>
+#include <AppstreamQt/provided.h>
+namespace AppStream {
+    typedef Provided Provides;
+    typedef Pool Database;
+}
+namespace Appstream = AppStream;
+#else
 #include <AppstreamQt/database.h>
+#endif
 
 class AppstreamReviews;
 class AppPackageKitResource;

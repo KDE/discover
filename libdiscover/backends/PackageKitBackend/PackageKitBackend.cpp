@@ -54,7 +54,11 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     , m_isFetching(0)
     , m_reviews(new AppstreamReviews(this))
 {
+#ifdef NEWAPPSTREAM
+    bool b = m_appdata.load();
+#else
     bool b = m_appdata.open();
+#endif
     if (!b) {
         qWarning() << "Could not open the AppStream metadata pool";
 
@@ -122,7 +126,11 @@ void PackageKitBackend::reloadPackageList()
         disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
     }
 
+#ifdef NEWAPPSTREAM
+    const auto components = m_appdata.components();
+#else
     const auto components = m_appdata.allComponents();
+#endif
     QStringList neededPackages;
     neededPackages.reserve(components.size());
     foreach(const Appstream::Component& component, components) {
@@ -343,7 +351,11 @@ AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) 
 
 QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
 {
+#ifdef NEWAPPSTREAM
+    const QList<Appstream::Component> components = m_appdata.search(searchText);
+#else
     const QList<Appstream::Component> components = m_appdata.findComponentsByString(searchText, {});
+#endif
     const QStringList ids = kTransform<QStringList>(components, [](const Appstream::Component& comp) { return comp.id(); });
 
     return resourcesByPackageNames<QList<AbstractResource*>>(ids);
