@@ -19,10 +19,13 @@
  ***************************************************************************/
 
 #include "AppPackageKitResource.h"
-#include <AppstreamQt/screenshot.h>
-#include <AppstreamQt/image.h>
 #ifdef NEWAPPSTREAM
 #include <AppStreamQt/icon.h>
+#include <AppStreamQt/screenshot.h>
+#include <AppStreamQt/image.h>
+#else
+#include <AppstreamQt/screenshot.h>
+#include <AppstreamQt/image.h>
 #endif
 // #include <AppstreamQt/release.h>
 #include <KLocalizedString>
@@ -173,13 +176,20 @@ static QUrl screenshot(const Appstream::Component& comp, Appstream::Image::Kind 
 
 QUrl AppPackageKitResource::screenshotUrl()
 {
+#ifdef NEWAPPSTREAM
+    return screenshot(m_appdata, Appstream::Image::KindSource);
+#else
     return screenshot(m_appdata, Appstream::Image::Plain);
-
+#endif
 }
 
 QUrl AppPackageKitResource::thumbnailUrl()
 {
-    return screenshot(m_appdata, Appstream::Image::Thumbnail);
+#ifdef NEWAPPSTREAM
+    return screenshot(m_appdata, Appstream::Image::KindThumbnail);
+#else
+     return screenshot(m_appdata, Appstream::Image::Thumbnail);
+#endif
 }
 
 void AppPackageKitResource::fetchScreenshots()
@@ -187,8 +197,13 @@ void AppPackageKitResource::fetchScreenshots()
     QList<QUrl> thumbnails, screenshots;
 
     Q_FOREACH (const Appstream::Screenshot &s, m_appdata.screenshots()) {
-        const QUrl thumbnail = imageOfKind(s.images(), Appstream::Image::Thumbnail);
-        const QUrl plain = imageOfKind(s.images(), Appstream::Image::Plain);
+#ifdef NEWAPPSTREAM
+        const QUrl thumbnail = imageOfKind(s.images(), Appstream::Image::KindThumbnail);
+        const QUrl plain = imageOfKind(s.images(), Appstream::Image::KindSource);
+#else
+         const QUrl thumbnail = imageOfKind(s.images(), Appstream::Image::Thumbnail);
+         const QUrl plain = imageOfKind(s.images(), Appstream::Image::Plain);
+#endif
         if (plain.isEmpty())
             qWarning() << "invalid screenshot for" << name();
 

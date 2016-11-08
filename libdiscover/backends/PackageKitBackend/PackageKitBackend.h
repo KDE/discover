@@ -31,8 +31,8 @@
 #include <PackageKit/Transaction>
 
 #ifdef NEWAPPSTREAM
-#include <AppstreamQt/pool.h>
-#include <AppstreamQt/provided.h>
+#include <AppStreamQt/pool.h>
+#include <AppStreamQt/provided.h>
 namespace AppStream {
     typedef Provided Provides;
     typedef Pool Database;
