@@ -32,7 +32,7 @@ Flow {
 
     readonly property real side: Kirigami.Units.gridUnit * 8
     property QtObject page
-    visible: screenshotsModel.count>1
+    visible: screenshotsModel.count>0
 
     readonly property var fu: Kirigami.OverlaySheet {
         id: overlay

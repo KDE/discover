@@ -151,12 +151,9 @@ DiscoverPage {
                             }
                         }
                         Label {
-                            text: model.display
-                        }
-                        Label {
-                            Layout.fillWidth: true
-                            text: model.toolTip
+                            text: model.display + " - <i>" + model.toolTip + "</i>"
                             elide: Text.ElideRight
+                            Layout.fillWidth: true
                         }
                     }
                 }

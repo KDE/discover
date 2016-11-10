@@ -68,7 +68,6 @@ QVariant AppPackageKitResource::icon() const
                 break;
         }
     }
-
     return ret;
 }
 
@@ -80,7 +79,7 @@ QString AppPackageKitResource::license()
 
 QStringList AppPackageKitResource::mimetypes() const
 {
-    return findProvides(AppStream::Provided::KindMimetype);
+    return m_appdata.provided(AppStream::Provided::KindMimetype).items();
 }
 
 QStringList AppPackageKitResource::categories()
@@ -117,7 +116,7 @@ bool AppPackageKitResource::isTechnical() const
 
 QStringList AppPackageKitResource::executables() const
 {
-    return findProvides(AppStream::Provided::KindBinary);
+    return m_appdata.provided(AppStream::Provided::KindBinary).items();
 }
 
 void AppPackageKitResource::invokeApplication() const
@@ -153,7 +152,6 @@ static QUrl screenshot(const AppStream::Component& comp, AppStream::Image::Kind 
 QUrl AppPackageKitResource::screenshotUrl()
 {
     return screenshot(m_appdata, AppStream::Image::KindSource);
-
 }
 
 QUrl AppPackageKitResource::thumbnailUrl()
@@ -181,15 +179,6 @@ void AppPackageKitResource::fetchScreenshots()
 bool AppPackageKitResource::canExecute() const
 {
     return !executables().isEmpty();
-}
-
-QStringList AppPackageKitResource::findProvides(AppStream::Provided::Kind kind) const
-{
-    QStringList ret;
-    Q_FOREACH (AppStream::Provided p, m_appdata.provided())
-        if (p.kind() == kind)
-            ret += p.items();
-    return ret;
 }
 
 QStringList AppPackageKitResource::allPackageNames() const
