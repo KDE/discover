@@ -20,7 +20,7 @@ if(BODEGA_FOUND)
     add_subdirectory(BodegaBackend)
 endif()
 
-if(packagekitqt5_FOUND AND AppstreamQt_FOUND)
+if(packagekitqt5_FOUND AND (AppstreamQt_FOUND OR AppStreamQt_FOUND))
     add_subdirectory(PackageKitBackend)
 endif()
 

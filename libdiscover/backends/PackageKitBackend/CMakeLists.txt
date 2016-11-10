@@ -12,7 +12,7 @@ add_library(packagekit-backend MODULE PackageKitBackend.cpp
 )
 
 set(AppstreamTarget "AppstreamQt")
-if (${AppstreamQt_VERSION} VERSION_GREATER 0.10.3)
+if (AppStreamQt_FOUND)
     target_compile_definitions(packagekit-backend PRIVATE -DNEWAPPSTREAM=0)
     set(AppstreamTarget "AppStreamQt")
 endif()
