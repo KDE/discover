@@ -127,7 +127,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     m_transaction = nullptr;
 
     if (!cancel && simulate) {
-        int ret = m_packagesRemoved.isEmpty() ? QMessageBox::Yes : QMessageBox::question(nullptr, PackageKitMessages::statusMessage(PackageKit::Transaction::StatusRemove), PackageKitResource::joinPackages(m_packagesRemoved), QMessageBox::Yes, QMessageBox::No);
+        int ret = m_packagesRemoved.isEmpty() ? QMessageBox::Yes : QMessageBox::question(nullptr, i18n("Packages to remove"), i18n("The following packages will be removed by the update:\n%1", PackageKitResource::joinPackages(m_packagesRemoved)), QMessageBox::Yes, QMessageBox::No);
         if (ret == QMessageBox::Yes) {
             setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
             return;
