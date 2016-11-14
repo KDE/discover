@@ -161,6 +161,11 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          */
         virtual void start() = 0;
 
+        /**
+         * Answers a proceed request
+         */
+        virtual void proceed() {}
+
     Q_SIGNALS:
         /**
          * The AbstractBackendUpdater should emit this signal when the progress changed.
@@ -204,6 +209,15 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
         void resourceProgressed(AbstractResource* resource, qreal progress);
 
         void passiveMessage(const QString &message);
+
+        /**
+         * Provides a message to be shown to the user
+         *
+         * The user gets to acknowledge and proceed or cancel the transaction.
+         *
+         * @sa proceed(), cancel()
+         */
+        void proceedRequest(const QString &title, const QString &description);
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H

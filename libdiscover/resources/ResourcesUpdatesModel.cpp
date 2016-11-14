@@ -134,16 +134,31 @@ public:
             setCancellable(m_updater->isCancelable());
         });
 
-        foreach(auto updater, parent->updaters())
+        foreach(auto updater, parent->updaters()) {
             connect(updater, &AbstractBackendUpdater::passiveMessage, this, &Transaction::passiveMessage);
+            connect(updater, &AbstractBackendUpdater::proceedRequest, this, &UpdateTransaction::processProceedRequest);
+        }
+    }
+
+    void processProceedRequest(const QString &title, const QString& message) {
+        m_updatersWaitingForFeedback += qobject_cast<AbstractBackendUpdater*>(sender());
+        Q_EMIT proceedRequest(title, message);
     }
 
     void cancel() override {
+        foreach(auto updater, m_updatersWaitingForFeedback) {
+            updater->cancel();
+        }
         m_updater->cancel();
+    }
+
+    void proceed() override {
+        m_updatersWaitingForFeedback.takeFirst()->proceed();
     }
 
 private:
     ResourcesUpdatesModel* m_updater;
+    QVector<AbstractBackendUpdater*> m_updatersWaitingForFeedback;
 };
 
 void ResourcesUpdatesModel::updateAll()

@@ -22,7 +22,6 @@
 
 #include <PackageKit/Daemon>
 #include <QDebug>
-#include <QMessageBox>
 #include <QAction>
 #include <QSet>
 
@@ -107,6 +106,16 @@ QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource*>&
     return packageIds;
 }
 
+void PackageKitUpdater::proceed()
+{
+    if (!m_requiredEula.isEmpty()) {
+        PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(m_requiredEula.takeFirst());
+        connect(t, &PackageKit::Transaction::finished, this, &PackageKitUpdater::start);
+        return;
+    }
+    setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
+}
+
 void PackageKitUpdater::start()
 {
     Q_ASSERT(!isProgressing());
@@ -127,11 +136,8 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     m_transaction = nullptr;
 
     if (!cancel && simulate) {
-        int ret = m_packagesRemoved.isEmpty() ? QMessageBox::Yes : QMessageBox::question(nullptr, i18n("Packages to remove"), i18n("The following packages will be removed by the update:\n%1", PackageKitResource::joinPackages(m_packagesRemoved)), QMessageBox::Yes, QMessageBox::No);
-        if (ret == QMessageBox::Yes) {
-            setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
-            return;
-        }
+        Q_EMIT proceedRequest(i18n("Packages to remove"), i18n("The following packages will be removed by the update:\n%1", PackageKitResource::joinPackages(m_packagesRemoved)));
+        return;
     }
 
     setProgressing(false);
@@ -283,15 +289,9 @@ void PackageKitUpdater::requireRestart(PackageKit::Transaction::Restart restart,
 
 void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
-    QString packageName = PackageKit::Daemon::packageName(packageID);
-    int ret = QMessageBox::question(nullptr, i18n("%1 requires user to accept its license", packageName), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
-                                                 packageName, vendor, licenseAgreement), QMessageBox::Yes, QMessageBox::No);
-    if (ret == QMessageBox::Yes) {
-        PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(eulaID);
-        connect(t, &PackageKit::Transaction::finished, this, &PackageKitUpdater::start);
-    } else {
-        finished(PackageKit::Transaction::ExitCancelled, 0);
-    }
+    m_requiredEula += eulaID;
+    Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
+                                                 PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement));
 }
 
 void PackageKitUpdater::setProgressing(bool progressing)

@@ -53,6 +53,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         QString statusMessage() const override;
         QString statusDetail() const override;
         quint64 downloadSpeed() const override;
+        void proceed() override;
 
     public Q_SLOTS:
         ///must be implemented if ever isCancelable is true
@@ -98,6 +99,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         uint m_percentage;
         QDateTime m_lastUpdate;
         QStringList m_packagesRemoved;
+        QVector<QString> m_requiredEula;
 };
 
 
