@@ -21,6 +21,8 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <functional>
+
 template <typename T, typename Q, typename _UnaryOperation>
 static T kTransform(const Q &input, _UnaryOperation op)
 {
@@ -28,6 +30,17 @@ static T kTransform(const Q &input, _UnaryOperation op)
     ret.reserve(input.size());
     for(const auto& v : input) {
         ret += op(v);
+    }
+    return ret;
+}
+
+template <typename T, typename Q, typename _UnaryOperation>
+static T kFilter(const Q &input, _UnaryOperation op)
+{
+    T ret;
+    for(const auto& v : input) {
+        if (op(v))
+            ret += v;
     }
     return ret;
 }

@@ -68,8 +68,6 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     connect(ResourcesModel::global(), &ResourcesModel::backendDataChanged, this, &ResourcesProxyModel::refreshBackend);
     connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &ResourcesProxyModel::refreshResource);
     connect(ResourcesModel::global(), &ResourcesModel::resourceRemoved, this, &ResourcesProxyModel::removeResource);
-
-    setShouldShowTechnical(false);
 }
 
 QHash<int, QByteArray> ResourcesProxyModel::roleNames() const
@@ -213,24 +211,6 @@ void ResourcesProxyModel::fetchSubcategories()
 QVariantList ResourcesProxyModel::subcategories() const
 {
     return m_subcategories;
-}
-
-void ResourcesProxyModel::setShouldShowTechnical(bool show)
-{
-    if (shouldShowTechnical() == show)
-        return;
-
-    if(!show)
-        m_filters.roles.insert("isTechnical", false);
-    else
-        m_filters.roles.remove("isTechnical");
-    emit showTechnicalChanged();
-    invalidateFilter();
-}
-
-bool ResourcesProxyModel::shouldShowTechnical() const
-{
-    return !m_filters.roles.contains("isTechnical");
 }
 
 void ResourcesProxyModel::invalidateFilter()
@@ -394,7 +374,7 @@ void ResourcesProxyModel::sortedInsertion(AbstractResource* resource)
     if (m_sortByRelevancy)
         newIdx = m_displayedResources.count();
     else {
-        const auto finder = [this, resource](AbstractResource* res){ return lessThan(res, resource); };
+        const auto finder = [this, resource](AbstractResource* res){ return lessThan(resource, res); };
         const auto it = std::find_if(m_displayedResources.constBegin(), m_displayedResources.constEnd(), finder);
         newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());
     }

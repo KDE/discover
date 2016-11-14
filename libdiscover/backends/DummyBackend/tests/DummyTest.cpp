@@ -91,7 +91,7 @@ void DummyTest::testProxy()
 {
     ResourcesProxyModel pm;
     QSignalSpy spy(&pm, &ResourcesProxyModel::busyChanged);
-    QVERIFY(spy.wait());
+//     QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
 
     pm.setFiltersFromCategory(CategoryModel::rootCategories().first());
@@ -99,11 +99,6 @@ void DummyTest::testProxy()
     QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
 
-    QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
-    pm.setShouldShowTechnical(true);
-    QVERIFY(pm.isBusy());
-    QVERIFY(spy.wait());
-    QVERIFY(!pm.isBusy());
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
     pm.setSearch(QStringLiteral("techie"));
     QVERIFY(pm.isBusy());

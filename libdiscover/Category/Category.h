@@ -46,7 +46,6 @@ Q_OBJECT
 public:
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString icon READ icon CONSTANT)
-    Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
     Q_PROPERTY(QObject* parent READ parent CONSTANT)
     Q_PROPERTY(QUrl decoration READ decoration CONSTANT)
     Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant CONSTANT)
@@ -61,7 +60,6 @@ public:
     QVector<QPair<FilterType, QString> > andFilters() const;
     QVector<QPair<FilterType, QString> > orFilters() const;
     QVector<QPair<FilterType, QString> > notFilters() const;
-    bool shouldShowTechnical() const;
     QVector<Category *> subCategories() const;
     QVariantList subCategoriesVariant() const;
 
@@ -82,7 +80,6 @@ private:
     QVector<QPair<FilterType, QString> > m_andFilters;
     QVector<QPair<FilterType, QString> > m_orFilters;
     QVector<QPair<FilterType, QString> > m_notFilters;
-    bool m_showTechnical;
     QVector<Category *> m_subCategories;
 
     QVector<QPair<FilterType, QString> > parseIncludes(const QDomNode &data);

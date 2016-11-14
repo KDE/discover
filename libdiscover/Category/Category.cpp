@@ -30,7 +30,6 @@
 Category::Category(QSet<QString> pluginName, QObject* parent)
         : QObject(parent)
         , m_iconString(QStringLiteral("applications-other"))
-        , m_showTechnical(false)
         , m_plugins(std::move(pluginName))
 {}
 
@@ -69,8 +68,6 @@ void Category::parseData(const QString& path, const QDomNode& data)
             m_isAddons = true;
         } else if (tempElement.tagName() == QLatin1String("Icon") && tempElement.hasChildNodes()) {
             m_iconString = tempElement.text();
-        } else if (tempElement.tagName() == QLatin1String("ShowTechnical")) {
-            m_showTechnical = true;
         } else if (tempElement.tagName() == QLatin1String("Include")) { //previous muon format
             parseIncludes(tempElement);
         } else if (tempElement.tagName() == QLatin1String("Categories")) { //as provided by appstream
@@ -138,11 +135,6 @@ QVector<QPair<FilterType, QString> > Category::notFilters() const
     return m_notFilters;
 }
 
-bool Category::shouldShowTechnical() const
-{
-    return m_showTechnical;
-}
-
 QVector<Category *> Category::subCategories() const
 {
     return m_subCategories;
@@ -154,14 +146,12 @@ void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
     Q_FOREACH (Category* c, list) {
         if(c->name() == newcat->name()) {
             if(c->icon() != newcat->icon()
-                || c->shouldShowTechnical() != newcat->shouldShowTechnical()
                 || c->m_andFilters != newcat->m_andFilters
                 || c->m_isAddons != newcat->m_isAddons
             )
             {
                 qWarning() << "the following categories seem to be the same but they're not entirely"
                     << c->name() << newcat->name() << "--"
-                    << c->shouldShowTechnical() << newcat->shouldShowTechnical() << "--"
                     << c->andFilters() << newcat->andFilters() << "--"
                     << c->isAddons() << newcat->isAddons();
                 break;

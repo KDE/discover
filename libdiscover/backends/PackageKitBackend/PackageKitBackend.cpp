@@ -358,7 +358,7 @@ void PackageKitBackend::refreshDatabase()
 ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
     if (filter.search.isEmpty()) {
-        return new ResultsStream(QStringLiteral("PackageKitStream"), m_packages.packages.values().toVector());
+        return new ResultsStream(QStringLiteral("PackageKitStream"), kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return !res->isTechnical(); }));
     } else {
         const QList<AppStream::Component> components = m_appdata.search(filter.search);
         const QStringList ids = kTransform<QStringList>(components, [](const AppStream::Component& comp) { return comp.id(); });

@@ -40,10 +40,8 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(int sortRole READ sortRole WRITE setSortRole NOTIFY sortRoleChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder NOTIFY sortOrderChanged)
-    Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical WRITE setShouldShowTechnical NOTIFY showTechnicalChanged)
     Q_PROPERTY(Category* filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
     Q_PROPERTY(QString originFilter READ originFilter WRITE setOriginFilter)
-    Q_PROPERTY(bool isShowingTechnical READ shouldShowTechnical WRITE setShouldShowTechnical NOTIFY showTechnicalChanged)
     Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter NOTIFY stateFilterChanged)
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
     Q_PROPERTY(QString search READ lastSearch WRITE setSearch NOTIFY searchChanged)
@@ -60,8 +58,6 @@ public:
     void setOriginFilter(const QString &origin);
     QString originFilter() const;
     void setFiltersFromCategory(Category *category);
-    void setShouldShowTechnical(bool show);
-    bool shouldShowTechnical() const;
     void setStateFilter(AbstractResource::State s);
     AbstractResource::State stateFilter() const;
     void setSortRole(int sortRole);
@@ -119,7 +115,6 @@ Q_SIGNALS:
     void sortOrderChanged(Qt::SortOrder order);
     void categoryChanged();
     void stateFilterChanged();
-    void showTechnicalChanged();
     void searchChanged(const QString &search);
     void subcategoriesChanged(const QVariantList &subcategories);
 };

@@ -37,7 +37,6 @@ DiscoverPage {
     property alias stateFilter: appsModel.stateFilter
     property alias extend: appsModel.extends
     property alias search: appsModel.search
-    property alias shouldShowTechnical: appsModel.isShowingTechnical
     property alias count: apps.count
     property alias header: apps.header
     property bool compact: false
@@ -75,7 +74,6 @@ DiscoverPage {
             id: appsModel
             stringSortRole: "ratingPoints"
             sortOrder: Qt.DescendingOrder
-            isShowingTechnical: category && category.shouldShowTechnical
         }
         spacing: Kirigami.Units.gridUnit
         delegate: ApplicationDelegate {

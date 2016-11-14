@@ -8,7 +8,7 @@ import org.kde.kirigami 1.0 as Kirigami
 ApplicationsListPage {
     id: page
     stateFilter: 2
-    sortRole: "size"
+    sortRole: "ratingCount"
     sortOrder: Qt.DescendingOrder
 
     title: i18n("Installed")

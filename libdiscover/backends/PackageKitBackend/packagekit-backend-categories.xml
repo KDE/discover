@@ -489,7 +489,6 @@
       <Name>Fonts</Name>
       <Image>pkcategories/fontcrop.jpg</Image>
       <Icon>preferences-desktop-font</Icon>
-      <ShowTechnical>true</ShowTechnical>
       <Include>
         <And>
             <Category>Fonts</Category>
