@@ -54,6 +54,7 @@ class PKTransaction : public Transaction
         QPointer<PackageKit::Transaction> m_trans;
         const QVector<AbstractResource*> m_apps;
         QSet<QString> m_pkgnames;
+        QVector<QString> m_requiredEula;
 
         QMap<PackageKit::Transaction::Info, QStringList> m_newPackageStates;
 };

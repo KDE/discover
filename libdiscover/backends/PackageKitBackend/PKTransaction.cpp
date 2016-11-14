@@ -26,7 +26,6 @@
 #include <resources/AbstractResource.h>
 #include <Transaction/TransactionModel.h>
 #include <QDebug>
-#include <QMessageBox>
 #include <QTimer>
 #include <KLocalizedString>
 #include <PackageKit/Transaction>
@@ -172,6 +171,11 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 
 void PKTransaction::proceed()
 {
+    if (!m_requiredEula.isEmpty()) {
+        PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(m_requiredEula.takeFirst());
+        connect(t, &PackageKit::Transaction::finished, this, &PKTransaction::start);
+        return;
+    }
     trigger(PackageKit::Transaction::TransactionFlagOnlyTrusted);
 }
 
@@ -200,14 +204,9 @@ PackageKit::Transaction* PKTransaction::transaction()
 
 void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
-    int ret = QMessageBox::question(nullptr, i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
+    m_requiredEula += eulaID;
+    Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement));
-    if (ret == QMessageBox::Yes) {
-        PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(eulaID);
-        connect(t, &PackageKit::Transaction::finished, this, &PKTransaction::start);
-    } else {
-        cleanup(PackageKit::Transaction::ExitCancelled, 0);
-    }
 }
 
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
