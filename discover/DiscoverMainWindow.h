@@ -25,12 +25,8 @@
 #include <QQuickView>
 #include <KActionCollection>
 
-class QQmlEngine;
-class QLineEdit;
-class QAptIntegration;
 class AbstractResource;
 class Category;
-class QQuickWidget;
 class QWindow;
 class QQmlApplicationEngine;
 

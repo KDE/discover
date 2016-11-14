@@ -37,11 +37,6 @@ if(WITH_NOTIFIER)
     add_subdirectory(notifier)
 endif()
 
-set_package_properties(QApt PROPERTIES
-    DESCRIPTION "Qt wrapper around the libapt-pkg library"
-    PURPOSE "Used to support apt-based distribution systems"
-    TYPE OPTIONAL)
-
 set_package_properties(KF5Attica PROPERTIES
     DESCRIPTION "KDE Framework that implements the Open Collaboration Services API"
     PURPOSE "Required to build the KNewStuff3 backend"
