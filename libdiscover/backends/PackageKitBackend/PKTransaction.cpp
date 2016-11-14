@@ -155,7 +155,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         }
 
         if (!msg.isEmpty()) {
-            Q_EMIT proceedRequest(PackageKitMessages::statusMessage(PackageKit::Transaction::StatusRemove), msg);
+            Q_EMIT proceedRequest(i18n("Confirm..."), i18np("To proceed with this action, the following package needs removal:\n%2", "To proceed with this action, the following packages need removal:\n%1", packagesToRemove.count(), msg));
         } else {
             proceed();
         }
