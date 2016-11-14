@@ -388,7 +388,7 @@ void ResourcesProxyModel::refreshResource(AbstractResource* resource, const QVec
 {
     const auto residx = m_displayedResources.indexOf(resource);
     if (residx<0) {
-        if (m_filters.shouldFilter(resource)) {
+        if (!m_sortByRelevancy && m_filters.shouldFilter(resource)) {
             sortedInsertion(resource);
         }
         return;
