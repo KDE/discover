@@ -34,6 +34,7 @@
 #include <qqml.h>
 #include <QPointer>
 #include <QGuiApplication>
+#include <QTimer>
 
 // KDE includes
 #include <KAboutApplicationDialog>
@@ -366,4 +367,11 @@ void DiscoverMainWindow::loadTest(const QUrl& url)
 QWindow* DiscoverMainWindow::rootObject() const
 {
     return qobject_cast<QWindow*>(m_engine->rootObjects().at(0));
+}
+
+void DiscoverMainWindow::showPassiveNotification(const QString& msg)
+{
+    QTimer::singleShot(100, this, [this, msg](){
+        QMetaObject::invokeMethod(rootObject(), "showPassiveNotification", Qt::QueuedConnection, Q_ARG(QVariant, msg), Q_ARG(QVariant, {}), Q_ARG(QVariant, {}), Q_ARG(QVariant, {}));
+    });
 }
