@@ -22,6 +22,7 @@
 #include "PackageKitBackend.h"
 #include "PackageKitResource.h"
 #include "PackageKitMessages.h"
+#include "utils.h"
 #include <resources/AbstractResource.h>
 #include <Transaction/TransactionModel.h>
 #include <QDebug>
@@ -148,10 +149,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 
         QString msg = PackageKitResource::joinPackages(packagesToRemove);
         if (!removedResources.isEmpty()) {
-            QStringList removedResourcesStr;
-            removedResourcesStr.reserve(removedResources.size());
-            foreach(AbstractResource* res, removedResources)
-                removedResourcesStr.append(res->name());
+            const QStringList removedResourcesStr = kTransform<QStringList>(removedResources, [](AbstractResource* a) { return a->name(); });
             msg += QLatin1Char('\n');
             msg += removedResourcesStr.join(QStringLiteral(", "));
         }
