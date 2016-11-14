@@ -61,7 +61,7 @@ QCommandLineParser* createParser()
     return parser;
 }
 
-bool processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
+void processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
 {
     if(parser->isSet(QStringLiteral("application")))
         mainWindow->openApplication(parser->value(QStringLiteral("application")));
@@ -82,11 +82,11 @@ bool processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
             else
                 mainWindow->openApplication(url.host());
         } else {
-            QTextStream(stdout) << "unrecognized url" << url.toDisplayString() << '\n';
-            return true;
+            const QString msg = i18n("Unrecognized url: %1", url.toDisplayString());
+            QTextStream(stdout) << msg << '\n';
+            mainWindow->showPassiveNotification(msg);
         }
     }
-    return false;
 }
 
 int main(int argc, char** argv)
@@ -128,8 +128,7 @@ int main(int argc, char** argv)
             processArgs(parser.data(), mainWindow);
         });
 
-        if (processArgs(parser.data(), mainWindow))
-            return 1;
+        processArgs(parser.data(), mainWindow);
 
         if(parser->isSet(QStringLiteral("listmodes"))) {
             QTextStream(stdout) << i18n("Available modes:\n");

@@ -66,6 +66,7 @@ class DiscoverMainWindow : public QObject
 
         static bool isRoot();
         QWindow* rootObject() const;
+        void showPassiveNotification(const QString &msg);
 
     public Q_SLOTS:
         void openApplication(const QString& app);
