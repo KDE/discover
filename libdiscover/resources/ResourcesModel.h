@@ -109,6 +109,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         void backendDataChanged(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties);
         void resourceDataChanged(AbstractResource* resource, const QVector<QByteArray>& properties);
         void resourceRemoved(AbstractResource* resource);
+        void passiveMessage(const QString &message);
 
     private Q_SLOTS:
         void callerFetchingChanged();

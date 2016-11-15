@@ -222,6 +222,8 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
         void resourcesChanged(AbstractResource* resource, const QVector<QByteArray> &properties);
         void resourceRemoved(AbstractResource* resource);
 
+        void passiveMessage(const QString &message);
+
     private:
         QString m_name;
 };

@@ -120,6 +120,11 @@ Kirigami.ApplicationWindow
         }
     }
 
+    Connections {
+        target: ResourcesModel
+        onPassiveMessage: showPassiveNotification(message, 3000)
+    }
+
     Component {
         id: proceedDialog
         Kirigami.OverlaySheet {

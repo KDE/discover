@@ -306,6 +306,7 @@ void PackageKitBackend::includePackagesToAdd()
 void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const QString& message)
 {
     qWarning() << "Transaction error: " << message << sender();
+    Q_EMIT passiveMessage(message);
 }
 
 void PackageKitBackend::packageDetails(const PackageKit::Details& details)
