@@ -136,7 +136,12 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     m_transaction = nullptr;
 
     if (!cancel && simulate) {
-        Q_EMIT proceedRequest(i18n("Packages to remove"), i18n("The following packages will be removed by the update:\n%1", PackageKitResource::joinPackages(m_packagesRemoved)));
+        if (!m_packagesRemoved.isEmpty())
+            Q_EMIT proceedRequest(i18n("Packages to remove"), i18n("The following packages will be removed by the update:\n%1", PackageKitResource::joinPackages(m_packagesRemoved)));
+        else {
+            Q_ASSERT(m_requiredEula.isEmpty());
+            proceed();
+        }
         return;
     }
 
@@ -259,7 +264,10 @@ quint64 PackageKitUpdater::downloadSpeed() const
 
 void PackageKitUpdater::cancel()
 {
-    m_transaction->cancel();
+    if (m_transaction)
+        m_transaction->cancel();
+    else
+        setProgressing(false);
 }
 
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString& error)
