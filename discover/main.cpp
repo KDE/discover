@@ -32,16 +32,12 @@
 #include <QTextStream>
 #include <QStandardPaths>
 
-DiscoverMainWindow::CompactMode decodeCompactMode(const QString &str)
-{
-    if (str == QLatin1String("auto"))
-        return DiscoverMainWindow::Auto;
-    else if (str == QLatin1String("compact"))
-        return DiscoverMainWindow::Compact;
-    else if (str == QLatin1String("full"))
-        return DiscoverMainWindow::Full;
-    return DiscoverMainWindow::Full;
-}
+typedef QHash<QString, DiscoverMainWindow::CompactMode> StringCompactMode;
+Q_GLOBAL_STATIC_WITH_ARGS(StringCompactMode, s_decodeCompactMode, (StringCompactMode {
+    { QLatin1String("auto"), DiscoverMainWindow::Auto },
+    { QLatin1String("compact"), DiscoverMainWindow::Compact },
+    { QLatin1String("full"), DiscoverMainWindow::Full }
+}))
 
 QCommandLineParser* createParser()
 {
@@ -114,7 +110,7 @@ int main(int argc, char** argv)
 
         KDBusService* service = new KDBusService(KDBusService::Unique, &app);
 
-        mainWindow = new DiscoverMainWindow(decodeCompactMode(parser->value(QStringLiteral("compact"))));
+        mainWindow = new DiscoverMainWindow(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverMainWindow::Full));
         QObject::connect(&app, &QApplication::aboutToQuit, mainWindow, &DiscoverMainWindow::deleteLater);
         QObject::connect(service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList &arguments, const QString &/*workingDirectory*/){
             mainWindow->rootObject()->raise();
