@@ -166,6 +166,8 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          */
         void emitRatingsReady();
 
+        virtual AbstractResource* resourceForFile(const QUrl &/*url*/) { return nullptr; }
+
     public Q_SLOTS:
         /**
          * This gets called when the backend should install an application.

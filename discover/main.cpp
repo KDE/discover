@@ -48,6 +48,7 @@ QCommandLineParser* createParser()
     parser->addOption(QCommandLineOption(QStringLiteral("mode"), i18n("Open Discover in a said mode. Modes correspond to the toolbar buttons."), QStringLiteral("name")));
     parser->addOption(QCommandLineOption(QStringLiteral("listmodes"), i18n("List all the available modes.")));
     parser->addOption(QCommandLineOption(QStringLiteral("compact"), i18n("Compact Mode (auto/compact/full)."), QStringLiteral("mode"), QStringLiteral("auto")));
+    parser->addOption(QCommandLineOption(QStringLiteral("local-filename"), i18n("Local package file to install"), QStringLiteral("package")));
     parser->addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Test file"), QStringLiteral("file.qml")));
     parser->addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
     DiscoverBackendsFactory::setupCommandLine(parser);
@@ -68,6 +69,9 @@ void processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
 
     if(parser->isSet(QStringLiteral("mode")))
         mainWindow->openMode(parser->value(QStringLiteral("mode")));
+
+    if(parser->isSet(QStringLiteral("local-filename")))
+        mainWindow->openLocalPackage(QUrl::fromUserInput(parser->value(QStringLiteral("local-filename")), {}, QUrl::AssumeLocalFile));
 
     foreach(const QString &arg, parser->positionalArguments()) {
         QUrl url(arg);

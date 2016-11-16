@@ -57,6 +57,7 @@
 #include <Category/Category.h>
 #include <Category/CategoryModel.h>
 
+#include <functional>
 #include <cmath>
 #include <unistd.h>
 
@@ -144,6 +145,41 @@ void DiscoverMainWindow::openCategory(const QString& category)
     Category* cat = CategoryModel::findCategoryByName(category);
     Q_ASSERT(cat);
     emit listCategoryInternal(cat);
+}
+
+class OneTimeAction : public QObject
+{
+public:
+    OneTimeAction(std::function<void()> func, QObject* parent) : QObject(parent), m_function(func) {}
+
+    void trigger() {
+        m_function();
+        deleteLater();
+    }
+
+private:
+    std::function<void()> m_function;
+};
+
+void DiscoverMainWindow::openLocalPackage(const QUrl& localfile)
+{
+    rootObject()->setProperty("defaultStartup", false);
+    auto action = new OneTimeAction(
+        [this, localfile]() {
+            auto res = ResourcesModel::global()->resourceForFile(localfile);
+            qDebug() << "all initialized..." << res;
+            if (res) {
+                emit openApplicationInternal(res);
+            } else
+                showPassiveNotification(i18n("Couldn't open %1", localfile.toDisplayString()));
+        }
+        , this);
+
+    if (ResourcesModel::global()->backends().isEmpty()) {
+        connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
+    } else {
+        action->trigger();
+    }
 }
 
 void DiscoverMainWindow::openApplication(const QString& app)

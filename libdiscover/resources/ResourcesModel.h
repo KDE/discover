@@ -94,6 +94,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
 
         AggregatedResultsStream* findResourceByPackageName(const QString & search);
         AggregatedResultsStream* search(const AbstractResourcesBackend::Filters &search);
+        AbstractResource* resourceForFile(const QUrl &/*url*/);
 
     public Q_SLOTS:
         void installApplication(AbstractResource* app, const AddonList& addons);

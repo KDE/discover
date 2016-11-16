@@ -167,7 +167,7 @@ QStringList PackageKitResource::categories()
 
 bool PackageKitResource::isTechnical() const
 {
-    return true;//!m_availablePackageId.startsWith("flash");
+    return true;
 }
 
 void PackageKitResource::fetchDetails()

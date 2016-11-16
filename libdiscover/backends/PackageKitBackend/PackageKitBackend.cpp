@@ -25,6 +25,7 @@
 #include "PackageKitUpdater.h"
 #include "AppPackageKitResource.h"
 #include "PKTransaction.h"
+#include "LocalFilePKResource.h"
 #include "AppstreamReviews.h"
 #include <resources/AbstractResource.h>
 #include <resources/StandardBackendUpdater.h>
@@ -418,10 +419,7 @@ void PackageKitBackend::installApplication(AbstractResource* app, const AddonLis
     }
 
     if (!addons.addonsToRemove().isEmpty()) {
-        QVector<AbstractResource*> appsToRemove;
-        foreach(const QString& toRemove, addons.addonsToRemove()) {
-            appsToRemove += m_packages.packages.value(toRemove);
-        }
+        QVector<AbstractResource*> appsToRemove = kTransform<QVector<AbstractResource*>>(addons.addonsToRemove(), [this](const QString& toRemove){ return m_packages.packages.value(toRemove); });
         new PKTransaction(appsToRemove, Transaction::RemoveRole);
     }
 }
@@ -540,5 +538,11 @@ AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const
 {
     return m_reviews;
 }
+
+AbstractResource * PackageKitBackend::resourceForFile(const QUrl& file)
+{
+    return new LocalFilePKResource(file, this);
+}
+
 
 #include "PackageKitBackend.moc"

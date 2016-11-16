@@ -182,4 +182,14 @@ void DummyBackend::checkForUpdates()
     QTimer::singleShot(500, this, &DummyBackend::toggleFetching);
 }
 
+AbstractResource * DummyBackend::resourceForFile(const QUrl& path)
+{
+    DummyResource* res = new DummyResource(path.fileName(), true, this);
+    res->setSize(666);
+    res->setState(AbstractResource::None);
+    m_resources.insert(res->packageName(), res);
+    connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
+    return res;
+}
+
 #include "DummyBackend.moc"

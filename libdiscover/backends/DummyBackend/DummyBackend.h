@@ -49,6 +49,7 @@ public:
     void installApplication(AbstractResource* app, const AddonList& addons) override;
     void removeApplication(AbstractResource* app) override;
     bool isFetching() const override { return m_fetching; }
+    AbstractResource * resourceForFile(const QUrl & ) override;
 
 public Q_SLOTS:
     void checkForUpdates();

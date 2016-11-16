@@ -69,6 +69,7 @@ class DiscoverMainWindow : public QObject
         void openMimeType(const QString& mime);
         void openCategory(const QString& category);
         void openMode(const QString& mode);
+        void openLocalPackage(const QUrl &localfile);
 
     private Q_SLOTS:
         void triggerOpenApplication();

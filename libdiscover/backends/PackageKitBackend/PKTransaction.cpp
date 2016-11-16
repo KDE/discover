@@ -23,6 +23,7 @@
 #include "PackageKitResource.h"
 #include "PackageKitMessages.h"
 #include "utils.h"
+#include "LocalFilePKResource.h"
 #include <resources/AbstractResource.h>
 #include <Transaction/TransactionModel.h>
 #include <QDebug>
@@ -67,7 +68,9 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
         m_trans->deleteLater();
     m_newPackageStates.clear();
 
-    switch (role()) {
+    if (m_apps.size() == 1 && qobject_cast<LocalFilePKResource*>(m_apps.at(0))) {
+        m_trans = PackageKit::Daemon::installFile(QUrl(m_apps.at(0)->packageName()).toLocalFile(), flags);
+    } else switch (role()) {
         case Transaction::ChangeAddonsRole:
         case Transaction::InstallRole:
             m_trans = PackageKit::Daemon::installPackages(packageIds(m_apps, [](PackageKitResource* r){return r->availablePackageId(); }), flags);
@@ -193,8 +196,10 @@ void PKTransaction::submitResolve()
     }
     const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
 
-    backend->clearPackages(needResolving);
-    backend->resolvePackages(needResolving);
+    if (!needResolving.isEmpty()) {
+        backend->clearPackages(needResolving);
+        backend->resolvePackages(needResolving);
+    }
 }
 
 PackageKit::Transaction* PKTransaction::transaction()
