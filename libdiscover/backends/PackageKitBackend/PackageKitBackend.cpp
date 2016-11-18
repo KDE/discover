@@ -59,11 +59,9 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     if (!b) {
         qWarning() << "Could not open the AppStream metadata pool";
 
-        auto msg = new QAction(i18n("Got it"), this);
-        msg->setWhatsThis(i18n("Please make sure that Appstream is properly set up on your system"));
-        msg->setPriority(QAction::HighPriority);
-        connect(msg, &QAction::triggered, msg, [msg](){ msg->setVisible(false); });
-        m_messageActions << msg;
+        QTimer::singleShot(0, this, [this]() {
+            Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
+        });
     }
     reloadPackageList();
 
@@ -422,6 +420,9 @@ void PackageKitBackend::installApplication(AbstractResource* app, const AddonLis
         QVector<AbstractResource*> appsToRemove = kTransform<QVector<AbstractResource*>>(addons.addonsToRemove(), [this](const QString& toRemove){ return m_packages.packages.value(toRemove); });
         new PKTransaction(appsToRemove, Transaction::RemoveRole);
     }
+
+    if (!app->isInstalled())
+        installApplication(app);
 }
 
 void PackageKitBackend::installApplication(AbstractResource* app)
