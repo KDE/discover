@@ -100,6 +100,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     connect(backend, &AbstractResourcesBackend::updatesCountChanged, this, &ResourcesModel::updatesCountChanged);
     connect(backend, &AbstractResourcesBackend::searchInvalidated, this, &ResourcesModel::searchInvalidated);
     connect(backend, &AbstractResourcesBackend::resourceRemoved, this, &ResourcesModel::resourceRemoved);
+    connect(backend, &AbstractResourcesBackend::passiveMessage, this, &ResourcesModel::passiveMessage);
 
     emit backendsChanged();
 
