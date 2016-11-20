@@ -375,13 +375,12 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
         connect(tArch, &PackageKit::Transaction::package, this, [tArch](PackageKit::Transaction::Info /*info*/, const QString &packageId){
             tArch->setProperty("packageId", packageId);
         });
-        connect(tArch, &PackageKit::Transaction::finished, this, [stream, tArch, this]() {
+        connect(tArch, &PackageKit::Transaction::finished, this, [stream, tArch, ids, this]() {
             getPackagesFinished();
             const auto packageId = tArch->property("packageId");
             if (!packageId.isNull()) {
-                auto res = m_packages.packages[PackageKit::Daemon::packageName(packageId.toString())];
-                Q_ASSERT(res);
-                stream->resourcesFound({res});
+                const auto res = resourcesByPackageNames<QVector<AbstractResource*>>({PackageKit::Daemon::packageName(packageId.toString())});
+                stream->resourcesFound(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
             }
             stream->deleteLater();
         });
