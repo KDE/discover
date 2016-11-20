@@ -198,10 +198,8 @@ void ResourcesProxyModel::fetchSubcategories()
         AbstractResource* res = m_displayedResources[i];
         done.unite(res->categoryObjects());
     }
-    QVariantList ret;
-    foreach (Category* cat, done)
-        ret += QVariant::fromValue<QObject*>(cat);
 
+    const QVariantList ret = kTransform<QVariantList>(done, [](Category* cat) { return QVariant::fromValue<QObject*>(cat); });
     if (ret != m_subcategories) {
         m_subcategories = ret;
         Q_EMIT subcategoriesChanged(m_subcategories);
