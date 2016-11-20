@@ -105,6 +105,7 @@ void DummyTest::testProxy()
     QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
     QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
+    QCOMPARE(pm.subcategories().count(), 7);
     pm.setSearch(QString());
     QVERIFY(pm.isBusy());
     QVERIFY(spy.wait());

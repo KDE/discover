@@ -112,7 +112,6 @@ void ResourcesProxyModel::setSearch(const QString &searchText)
 
     if (diff) {
         Q_EMIT searchChanged(m_filters.search);
-        fetchSubcategories();
     }
 }
 
@@ -135,6 +134,8 @@ void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& _res)
         qSort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
         endResetModel();
     }
+
+    fetchSubcategories();
 }
 
 void ResourcesProxyModel::invalidateSorting()
@@ -185,7 +186,6 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
     m_filters.category = category;
     invalidateFilter();
     emit categoryChanged();
-    fetchSubcategories();
 }
 
 void ResourcesProxyModel::fetchSubcategories()
