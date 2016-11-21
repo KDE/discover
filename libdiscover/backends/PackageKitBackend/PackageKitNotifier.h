@@ -21,6 +21,7 @@
 #define PACKAGEKITNOTIFIER_H
 
 #include <BackendNotifierModule.h>
+#include <QPointer>
 #include <QVariantList>
 #include <PackageKit/Transaction>
 
@@ -45,6 +46,7 @@ public:
     uint securityUpdatesCount() final;
     uint updatesCount() final;
     void recheckSystemUpdateNeeded() final;
+    void refreshDatabase();
 
 private Q_SLOTS:
     void package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary);
@@ -54,6 +56,7 @@ private:
     Update m_update;
     uint m_securityUpdates;
     uint m_normalUpdates;
+    QPointer<PackageKit::Transaction> m_refresher;
 };
 
 #endif

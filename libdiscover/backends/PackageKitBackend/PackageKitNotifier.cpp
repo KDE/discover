@@ -30,12 +30,19 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     , m_securityUpdates(0)
     , m_normalUpdates(0)
 {
-if (PackageKit::Daemon::global()->isRunning()) {
+    if (PackageKit::Daemon::global()->isRunning()) {
         recheckSystemUpdateNeeded();
     }
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::networkStateChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
+
+    //Check if there's packages after 5'
+    QTimer::singleShot(5 * 60 * 1000, this, &PackageKitNotifier::refreshDatabase);
+
+    QTimer *dailyCheck = new QTimer(this);
+    dailyCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
+    connect(dailyCheck, &QTimer::timeout, this, &PackageKitNotifier::refreshDatabase);
 }
 
 PackageKitNotifier::~PackageKitNotifier()
@@ -106,3 +113,13 @@ uint PackageKitNotifier::updatesCount()
     return m_normalUpdates;
 }
 
+void PackageKitNotifier::refreshDatabase()
+{
+    if (!m_refresher) {
+        m_refresher = PackageKit::Daemon::refreshCache(false);
+        connect(m_refresher.data(), &PackageKit::Transaction::finished, this, [this]() {
+            recheckSystemUpdateNeeded();
+            delete m_refresher;
+        });
+    }
+}
