@@ -32,6 +32,7 @@
 #include <resources/SourcesModel.h>
 #include <Transaction/TransactionModel.h>
 
+#include <QProcess>
 #include <QStringList>
 #include <QDebug>
 #include <QTimer>
@@ -41,12 +42,19 @@
 #include <PackageKit/Daemon>
 #include <PackageKit/Details>
 
+#include <KDesktopFile>
 #include <KLocalizedString>
 #include <QAction>
 
 #include "utils.h"
+#include "config-paths.h"
 
 MUON_BACKEND_PLUGIN(PackageKitBackend)
+
+static QString locateService(const QString &filename)
+{
+    return QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("applications/")+filename);
+}
 
 PackageKitBackend::PackageKitBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
@@ -85,6 +93,10 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     connect(updateAction, &QAction::triggered, this, &PackageKitBackend::refreshDatabase);
     m_messageActions += updateAction;
 
+    const auto service = locateService(QStringLiteral("software-properties-kde.desktop"));
+    if (!service.isEmpty())
+        m_messageActions += createActionForService(service);
+
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
     connect(m_reviews, &AppstreamReviews::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
@@ -94,6 +106,20 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 
 PackageKitBackend::~PackageKitBackend()
 {
+}
+
+QAction* PackageKitBackend::createActionForService(const QString &servicePath)
+{
+    QAction* action = new QAction(this);
+    KDesktopFile parser(servicePath);
+    action->setIcon(QIcon::fromTheme(parser.readIcon()));
+    action->setText(parser.readName());
+    connect(action, &QAction::triggered, action, [servicePath, this](){
+        bool b = QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {servicePath});
+        if (!b)
+            qWarning() << "Could not start" << servicePath;
+    });
+    return action;
 }
 
 bool PackageKitBackend::isFetching() const

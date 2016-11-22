@@ -94,6 +94,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void includePackagesToAdd();
         void performDetailsFetch();
         AppPackageKitResource* addComponent(const AppStream::Component& component, const QStringList& pkgNames);
+        QAction* createActionForService(const QString &filename);
 
         AppStream::Pool m_appdata;
         PackageKitUpdater* m_updater;

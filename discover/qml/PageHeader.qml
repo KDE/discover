@@ -134,6 +134,7 @@ ColumnLayout {
             color: root.shadow ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.linkColor
             horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignBottom
+            elide: Text.ElideRight
         }
 
         DropShadow {

@@ -71,8 +71,10 @@ Kirigami.AbstractListItem
             RowLayout {
                 Layout.fillWidth: true
                 Heading {
+                    Layout.fillWidth: true
                     elide: Text.ElideRight
                     text: name
+                    maximumLineCount: 1
                 }
                 Label {
                     Layout.fillWidth: true
@@ -80,6 +82,7 @@ Kirigami.AbstractListItem
                     horizontalAlignment: Text.AlignRight
                     text: categoryDisplay
                     color: Kirigami.Theme.linkColor
+                    visible: parent.width > implicitWidth
                 }
             }
 
