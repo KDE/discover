@@ -71,8 +71,12 @@ ResultsStream* SnapBackend::populate(SnapJob* job, AbstractResource::State state
 {
     auto stream = new ResultsStream(QStringLiteral("Snap-populate"));
 
-    connect(job, &SnapJob::finished, stream, &QObject::deleteLater);
     connect(job, &SnapJob::finished, stream, [stream, this, state](SnapJob* job) {
+        if (!job->isSuccessful()) {
+            stream->deleteLater();
+            return;
+        }
+
         const auto snaps = job->result().toArray();
 
         QVector<AbstractResource*> ret;
@@ -95,6 +99,7 @@ ResultsStream* SnapBackend::populate(SnapJob* job, AbstractResource::State state
         }
         if (!ret.isEmpty())
             stream->resourcesFound(ret);
+        stream->deleteLater();
     });
     return stream;
 }
