@@ -106,6 +106,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void acquireFetching(bool f);
         void includePackagesToAdd();
         void performDetailsFetch();
+        QAction* createActionForService(const QString &filename);
 
         Appstream::Database m_appdata;
         QList<Transaction*> m_transactions;
