@@ -76,8 +76,11 @@ bool processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
     foreach(const QString &arg, parser->positionalArguments()) {
         QUrl url(arg);
         if (url.scheme() == QLatin1String("appstream")) {
-            QTextStream(stdout) << "opening appstream resource" << url.host() << '\n';
-            mainWindow->openApplication(url.host());
+            QTextStream(stdout) << "opening appstream resource" << url.host() << "from" << url.toString() << '\n';
+            if (url.host().isEmpty())
+                mainWindow->showPassiveNotification(i18n("Malformed url '%1'", url.toDisplayString()));
+            else
+                mainWindow->openApplication(url.host());
         } else {
             QTextStream(stdout) << "unrecognized url" << url.toDisplayString() << '\n';
             return true;
