@@ -154,7 +154,7 @@ void PackageKitBackend::reloadPackageList()
         const auto pkgNames = component.packageNames();
         if (pkgNames.isEmpty()) {
             if (component.kind() == AppStream::Component::KindDesktopApp) {
-                QString file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("applications/")+component.desktopId());
+                const QString file = locateService(component.desktopId());
                 if (!file.isEmpty()) {
                     auto trans = PackageKit::Daemon::searchFiles(file);
                     connect(trans, &PackageKit::Transaction::package, this, [trans](PackageKit::Transaction::Info info, const QString &packageID){
