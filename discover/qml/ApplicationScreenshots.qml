@@ -40,6 +40,7 @@ Flow {
         Image {
             id: overlayImage
             fillMode: Image.PreserveAspectFit
+            smooth: true
         }
     }
 
