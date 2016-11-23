@@ -42,6 +42,7 @@ SnapTransaction::SnapTransaction(SnapResource* app, SnapJob* job, SnapSocket* so
         auto job = m_socket->changes(m_changeId);
         connect(job, &SnapJob::finished, this, &SnapTransaction::iterateTransaction);
     });
+    job->start();
 }
 
 void SnapTransaction::transactionStarted(SnapJob* job)

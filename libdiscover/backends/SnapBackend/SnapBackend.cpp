@@ -101,6 +101,7 @@ ResultsStream* SnapBackend::populate(SnapJob* job, AbstractResource::State state
             stream->resourcesFound(ret);
         stream->deleteLater();
     });
+    job->start();
     return stream;
 }
 

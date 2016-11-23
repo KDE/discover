@@ -214,6 +214,7 @@ QVariantList ResourcesProxyModel::subcategories() const
 void ResourcesProxyModel::invalidateFilter()
 {
     if (m_currentStream) {
+        qWarning() << "last stream isn't over yet";
         connect(this, &ResourcesProxyModel::busyChanged, this, &ResourcesProxyModel::invalidateFilter);
         return;
     }

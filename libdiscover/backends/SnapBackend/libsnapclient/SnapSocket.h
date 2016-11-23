@@ -39,6 +39,7 @@ public:
     bool isSuccessful() const { return statusCode()>=200 && statusCode()<300; }
     QJsonObject data() const { return m_data; }
 
+    virtual void start() = 0;
     virtual bool exec() = 0;
 
 Q_SIGNALS:

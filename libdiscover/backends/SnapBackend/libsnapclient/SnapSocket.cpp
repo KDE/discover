@@ -38,14 +38,21 @@ public:
             m_socket->write(request);
         });
         connect(m_socket, &QLocalSocket::disconnected, this, [](){ qDebug() << "disconnected :("; });
-        connect(m_socket, static_cast<void(QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), this, [](QLocalSocket::LocalSocketError socketError){ qDebug() << "error!" << socketError; });
+        connect(m_socket, static_cast<void(QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), this, [this](QLocalSocket::LocalSocketError socketError){
+            qDebug() << "error!" << socketError;
+            Q_EMIT finished(this);
+        });
         connect(m_socket, &QLocalSocket::readyRead, this, [this](){ processReply(m_socket); });
+    }
 
+    void start() override
+    {
         m_socket->connectToServer(QStringLiteral("/run/snapd.socket"), QIODevice::ReadWrite);
     }
 
     bool exec() override
     {
+        start();
         m_socket->waitForReadyRead();
         return isSuccessful();
     }
@@ -66,9 +73,13 @@ public:
         snapAction.setArguments({ { QStringLiteral("request"), request } });
         Q_ASSERT(snapAction.isValid());
         m_reply = snapAction.execute();
-        m_reply->start();
 
         connect(m_reply, &KAuth::ExecuteJob::finished, this, &AuthSnapJob::authJobFinished);
+    }
+
+    void start() override
+    {
+        m_reply->start();
     }
 
     bool exec() override
