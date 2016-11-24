@@ -57,6 +57,7 @@ QVariant AppPackageKitResource::icon() const
     if (icons.isEmpty()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     } else foreach(const AppStream::Icon &icon, icons) {
+        QStringList stock;
         switch(icon.kind()) {
             case AppStream::Icon::KindLocal:
                 ret.addFile(icon.url().toLocalFile(), icon.size());
@@ -64,8 +65,14 @@ QVariant AppPackageKitResource::icon() const
             case AppStream::Icon::KindCached:
                 ret.addFile(icon.url().toLocalFile(), icon.size());
                 break;
+            case AppStream::Icon::KindStock:
+                stock += icon.name();
+                break;
             default:
                 break;
+        }
+        if (ret.isNull() && !stock.isEmpty()) {
+            ret = QIcon::fromTheme(stock.first());
         }
     }
     return ret;
