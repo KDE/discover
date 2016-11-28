@@ -61,7 +61,7 @@ DiscoverPage
                 Layout.topMargin: Kirigami.Units.smallSpacing
                 Layout.bottomMargin: Kirigami.Units.smallSpacing
 
-                visible: resourcesUpdatesModel.isProgressing || updateModel.hasUpdates
+                visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
 
                 LabelBackground {
                     text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
@@ -236,6 +236,7 @@ DiscoverPage
         State {
             name: "uptodate"
             PropertyChanges { target: page; title: i18nc("@info", "The system is up to date") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "No updates") }
         },
         State {
             name: "medium"
