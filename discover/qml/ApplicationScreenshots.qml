@@ -55,9 +55,15 @@ Flow {
             width: root.side
             fillMode: Image.PreserveAspectCrop
             smooth: true
-            opacity: mouse.containsMouse? 0.7 : 1
+            opacity: mouse.containsMouse? 0.5 : 1
 
-            Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
+            Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 200 } }
+
+            BusyIndicator {
+                visible: running
+                running: parent.status == Image.Loading
+                anchors.centerIn: parent
+            }
 
             MouseArea {
                 id: mouse
