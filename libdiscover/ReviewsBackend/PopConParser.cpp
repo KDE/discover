@@ -68,7 +68,9 @@ QSet<QString> PopConParser::parsePopcon(QObject* parent, QIODevice* dev, QHash<Q
     }
 
     foreach(const auto &pkgName, keys) {
-        ratings.take(pkgName)->deleteLater();
+        auto rating = ratings.take(pkgName);
+        if (rating)
+            rating->deleteLater();
         ret.insert(pkgName);
     }
     return ret;
