@@ -46,7 +46,7 @@ DiscoverTest
 
     function test_search() {
         app.openMode("Browsing");
-        var searchField = findChild(appRoot.globalDrawer, "TextField");
+        var searchField = findChild(appRoot.globalDrawer.topContent[0], "TextField");
         verify(searchField);
         searchField.text = "cocacola"
         verify(waitForSignal(appRoot.stack, "currentItemChanged"))

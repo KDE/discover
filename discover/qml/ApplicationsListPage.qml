@@ -24,7 +24,7 @@ import QtQuick.Window 2.2
 import "navigation.js" as Navigation
 import org.kde.discover.app 1.0
 import org.kde.discover 1.0
-import org.kde.kirigami 1.0 as Kirigami
+import org.kde.kirigami 2.0 as Kirigami
 
 DiscoverPage {
     id: page
@@ -38,7 +38,7 @@ DiscoverPage {
     property alias extend: appsModel.extends
     property alias search: appsModel.search
     property alias count: apps.count
-    property alias header: apps.header
+    property alias listHeader: apps.header
     property bool compact: false
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories

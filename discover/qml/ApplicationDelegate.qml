@@ -25,7 +25,7 @@ import org.kde.discover.app 1.0
 import QtQuick.Window 2.1
 import org.kde.kcoreaddons 1.0
 import "navigation.js" as Navigation
-import org.kde.kirigami 1.0 as Kirigami
+import org.kde.kirigami 2.0 as Kirigami
 
 Kirigami.AbstractListItem
 {
@@ -38,6 +38,7 @@ Kirigami.AbstractListItem
             ListView.view.currentIndex = index
         Navigation.openApplication(application)
     }
+    implicitHeight: Kirigami.Units.gridUnit * (compact ? 7 : 10)
 
     Item {
         id: lowLayout
@@ -47,7 +48,6 @@ Kirigami.AbstractListItem
             margins: Kirigami.Units.largeSpacing
         }
 
-        height: Kirigami.Units.gridUnit * (compact ? 7 : 10)
         QIconItem {
             id: resourceIcon
             icon: application.icon

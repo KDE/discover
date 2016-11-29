@@ -1,6 +1,6 @@
 import QtQuick 2.2
 import QtGraphicalEffects 1.0
-import org.kde.kirigami 1.0
+import org.kde.kirigami 2.0
 
 Text {
     id: control

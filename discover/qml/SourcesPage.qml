@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
-import org.kde.kirigami 1.0 as Kirigami
+import org.kde.kirigami 2.0 as Kirigami
 import "navigation.js" as Navigation
 
 DiscoverPage {
@@ -120,6 +120,7 @@ DiscoverPage {
                 model: sourceBackend.sources
 
                 delegate: Kirigami.SwipeListItem {
+                    Layout.fillWidth: true
                     enabled: display.length>0
                     onClicked: Navigation.openApplicationListSource(model.display)
 
@@ -138,10 +139,6 @@ DiscoverPage {
                     ]
 
                     RowLayout {
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                         CheckBox {
                             id: enabledBox
                             checked: model.checked != Qt.Unchecked

@@ -23,7 +23,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 1.0 as Kirigami
+import org.kde.kirigami 2.0 as Kirigami
 import "navigation.js" as Navigation
 
 Kirigami.GlobalDrawer {
@@ -148,6 +148,14 @@ Kirigami.GlobalDrawer {
 
             backgroundColor: enabled ? "orange" : Kirigami.Theme.viewBackgroundColor
         }
+
+        states: [
+            State {
+                name: "full"
+                when: !Helpers.isCompact
+                PropertyChanges { target: drawer; drawerOpen: true }
+            }
+        ]
     }
 
     function rootCategory(cat) {
@@ -206,12 +214,4 @@ Kirigami.GlobalDrawer {
 
     modal: Helpers.isCompact
     handleVisible: Helpers.isCompact
-
-    states: [
-        State {
-            name: "full"
-            when: !Helpers.isCompact
-            PropertyChanges { target: drawer; opened: true }
-        }
-    ]
 }

@@ -22,7 +22,7 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.2
 import QtGraphicalEffects 1.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 1.0 as Kirigami
+import org.kde.kirigami 2.0 as Kirigami
 
 ColumnLayout {
     id: root
