@@ -4,14 +4,11 @@
     <file>qml/TopLevelPageData.qml</file>
     <file>qml/CategoryDisplay.qml</file>
     <file>qml/ApplicationsTop.qml</file>
-    <file>qml/FeaturedBanner.qml</file>
     <file>qml/ApplicationsListPage.qml</file>
     <file>qml/ApplicationPage.qml</file>
     <file>qml/ReviewsPage.qml</file>
     <file>qml/AddonsView.qml</file>
     <file>qml/ApplicationDelegate.qml</file>
-    <file>qml/Breadcrumbs.qml</file>
-    <file>qml/CategoryBreadcrumbs.qml</file>
     <file>qml/InstallApplicationButton.qml</file>
     <file>qml/Rating.qml</file>
     <file>qml/UpdatesPage.qml</file>
@@ -21,9 +18,6 @@
     <file>qml/InstalledPage.qml</file>
     <file>qml/Information.qml</file>
     <file>qml/SourcesPage.qml</file>
-    <file>qml/FeaturedModel.qml</file>
-    <file>qml/DefaultBanner.qml</file>
-    <file>qml/FeaturedImage.qml</file>
     <file>qml/ReviewDelegate.qml</file>
     <file>qml/Heading.qml</file>
     <file>qml/AddSourceDialog.qml</file>
@@ -32,8 +26,6 @@
     <file>qml/ConditionalLoader.qml</file>
     <file>qml/LinkButton.qml</file>
     <file>qml/ApplicationScreenshots.qml</file>
-    <file>qml/ApplicationIndicator.qml</file>
-    <file>qml/ApplicationHeader.qml</file>
     <file>qml/LabelBackground.qml</file>
     <file>qml/PageHeader.qml</file>
     <file>qml/ActionBridge.qml</file>
