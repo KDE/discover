@@ -98,6 +98,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         void backendsChanged();
         void updatesCountChanged();
         void searchInvalidated();
+        void resourceDataChanged(AbstractResource* res, const QVector<QByteArray> &properties);
 
     private Q_SLOTS:
         void resetBackend(AbstractResourcesBackend* backend);

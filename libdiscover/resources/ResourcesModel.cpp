@@ -330,6 +330,8 @@ QVector<int> ResourcesModel::propertiesToRoles(const QVector<QByteArray>& proper
 
 void ResourcesModel::emitResourceChanges(AbstractResource* resource, const QVector<QByteArray> &properties)
 {
+    resourceDataChanged(resource, properties);
+
     const QModelIndex idx = resourceIndex(resource);
     if (!idx.isValid())
         return;
