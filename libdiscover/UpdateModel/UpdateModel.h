@@ -83,6 +83,7 @@ Q_SIGNALS:
     void toUpdateChanged();
 
 private:
+    void resourceDataChanged(AbstractResource* res, const QVector<QByteArray> &properties);
     void integrateChangelog(const QString &changelog);
     QModelIndex indexFromItem(UpdateItem* item) const;
     UpdateItem* itemFromResource(AbstractResource* res);

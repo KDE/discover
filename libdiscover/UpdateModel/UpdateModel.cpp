@@ -41,6 +41,7 @@ UpdateModel::UpdateModel(QObject *parent)
 
     connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &UpdateModel::activityChanged);
     connect(ResourcesModel::global(), &ResourcesModel::updatesCountChanged, this, &UpdateModel::activityChanged);
+    connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &UpdateModel::resourceDataChanged);
 }
 
 UpdateModel::~UpdateModel() = default;
@@ -272,4 +273,15 @@ QModelIndex UpdateModel::indexFromItem(UpdateItem* item) const
 UpdateItem * UpdateModel::itemFromIndex(const QModelIndex& index) const
 {
     return m_updateItems[index.row()];
+}
+
+void UpdateModel::resourceDataChanged(AbstractResource* res, const QVector<QByteArray>& properties)
+{
+    auto item = itemFromResource(res);
+    if (!item)
+        return;
+
+    const auto index = indexFromItem(item);
+    if (properties.contains("state"))
+        dataChanged(index, index, {SizeRole, VersionRole});
 }
