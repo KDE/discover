@@ -36,6 +36,8 @@ Kirigami.ScrollablePage
         parent: root
         anchors.fill: parent
 
+        z: 500
+
         Loader {
             id: overlayLoader
             anchors.fill: parent
