@@ -118,7 +118,7 @@ int main(int argc, char** argv)
         KDBusService* service = new KDBusService(KDBusService::Unique, &app);
 
         mainWindow = new DiscoverMainWindow(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverMainWindow::Full));
-        QObject::connect(&app, &QApplication::aboutToQuit, mainWindow, &DiscoverMainWindow::deleteLater);
+        QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverMainWindow::deleteLater);
         QObject::connect(service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList &arguments, const QString &/*workingDirectory*/){
             mainWindow->rootObject()->raise();
             if (arguments.isEmpty())
