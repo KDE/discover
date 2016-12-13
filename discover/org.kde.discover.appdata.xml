@@ -5,6 +5,7 @@
   <project_license>GPL-2.0+</project_license>
   <name>Discover</name>
   <name xml:lang="ar">استكشف</name>
+  <name xml:lang="ast">Discover</name>
   <name xml:lang="ca">Discover</name>
   <name xml:lang="ca-valencia">Discover</name>
   <name xml:lang="cs">Discover</name>
@@ -37,6 +38,7 @@
   <name xml:lang="zh-TW">Discover</name>
   <summary>Discover</summary>
   <summary xml:lang="ar">استكشف</summary>
+  <summary xml:lang="ast">Discover</summary>
   <summary xml:lang="ca">Discover</summary>
   <summary xml:lang="ca-valencia">Discover</summary>
   <summary xml:lang="cs">Discover</summary>
