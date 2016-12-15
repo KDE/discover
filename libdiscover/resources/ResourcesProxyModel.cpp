@@ -103,6 +103,7 @@ void ResourcesProxyModel::setSearch(const QString &_searchText)
     const bool diff = searchText != m_filters.search;
 
     if (diff) {
+        m_filters.search = searchText;
         m_sortByRelevancy = !searchText.isEmpty();
         invalidateFilter();
         Q_EMIT searchChanged(m_filters.search);
