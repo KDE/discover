@@ -200,11 +200,9 @@ QVariantList ResourcesProxyModel::subcategories() const
 void ResourcesProxyModel::invalidateFilter()
 {
     if (m_currentStream) {
-        qWarning() << "last stream isn't over yet";
-        connect(this, &ResourcesProxyModel::busyChanged, this, &ResourcesProxyModel::invalidateFilter);
-        return;
+        qWarning() << "last stream isn't over yet" << m_filters;
+        delete m_currentStream;
     }
-    disconnect(this, &ResourcesProxyModel::busyChanged, this, &ResourcesProxyModel::invalidateFilter);
 
     m_currentStream = ResourcesModel::global()->search(m_filters);
     beginResetModel();
@@ -355,6 +353,7 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) 
 
 void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & resources)
 {
+    Q_ASSERT(!resources.isEmpty());
     if (m_sortByRelevancy) {
         int rows = rowCount();
         beginInsertRows({}, rows, rows+resources.count()-1);
