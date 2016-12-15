@@ -23,6 +23,7 @@
 
 #include <QSet>
 #include <QVector>
+#include <QTimer>
 
 #include "discovercommon_export.h"
 #include "AbstractResourcesBackend.h"
@@ -40,10 +41,13 @@ Q_SIGNALS:
     void finished();
 
 private:
+    void addResults(const QVector<AbstractResource*>& res);
+    void emitResults();
     void destruction(QObject* obj);
 
     QSet<QObject*> m_streams;
     QVector<AbstractResource*> m_results;
+    QTimer m_delayedEmission;
 };
 
 class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
