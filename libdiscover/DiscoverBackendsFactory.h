@@ -34,8 +34,7 @@ class DISCOVERCOMMON_EXPORT DiscoverBackendsFactory
 public:
     DiscoverBackendsFactory();
     
-    AbstractResourcesBackend* backendForFile(const QString& path, const QString& name) const;
-    AbstractResourcesBackend* backend(const QString& name) const;
+    QVector<AbstractResourcesBackend*> backend(const QString& name) const;
     QList<AbstractResourcesBackend*> allBackends() const;
     QStringList allBackendNames(bool whitelist = true) const;
     int backendsCount() const;
@@ -43,6 +42,9 @@ public:
     static void setupCommandLine(QCommandLineParser* parser);
     static void processCommandLine(QCommandLineParser* parser, bool test);
     static void setRequestedBackends(const QStringList &backends);
+
+private:
+    QVector<AbstractResourcesBackend*> backendForFile(const QString& path, const QString& name) const;
 };
 
 #endif // MUONBACKENDSFACTORY_H

@@ -42,8 +42,9 @@ Q_OBJECT
 public:
     explicit KNSBackend(QObject* parent = nullptr);
     ~KNSBackend() override;
+
+    void setMetaData(const QString& iconName, const QString &knsrc);
     
-    void setMetaData(const QString& path) override;
     void removeApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app, const AddonList& addons) override;
@@ -54,6 +55,8 @@ public:
     QList<QAction*> messageActions() const override { return QList<QAction*>(); }
     ResultsStream* search(const AbstractResourcesBackend::Filters & filter) override;
     ResultsStream* findResourceByPackageName(const QString & search) override;
+
+    QVector<Category*> category() const override { return m_rootCategories; }
 
     bool isValid() const override;
 
@@ -87,6 +90,7 @@ private:
     StandardBackendUpdater* const m_updater;
     QStringList m_extends;
     QStringList m_categories;
+    QVector<Category*> m_rootCategories;
 };
 
 #endif // KNSBACKEND_H

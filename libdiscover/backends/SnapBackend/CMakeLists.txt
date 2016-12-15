@@ -5,7 +5,6 @@ add_library(snap-backend MODULE SnapResource.cpp SnapBackend.cpp SnapReviewsBack
 target_link_libraries(snap-backend Qt5::Core KF5::CoreAddons KF5::ConfigCore Discover::Common Snap::Client)
 
 install(TARGETS snap-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
-install(FILES snap-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
 install(FILES snap-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 
 # add_library(SnapNotifier MODULE SnapNotifier.cpp)

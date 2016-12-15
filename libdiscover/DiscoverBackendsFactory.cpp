@@ -21,11 +21,13 @@
 #include "DiscoverBackendsFactory.h"
 #include "resources/AbstractResourcesBackend.h"
 #include "resources/ResourcesModel.h"
-#include <QPluginLoader>
+#include "utils.h"
 #include <QDebug>
 #include <QStandardPaths>
 #include <QDir>
 #include <QCommandLineParser>
+#include <QPluginLoader>
+#include <QDirIterator>
 #include <KSharedConfig>
 #include <KConfigGroup>
 #include <KDesktopFile>
@@ -41,40 +43,34 @@ void DiscoverBackendsFactory::setRequestedBackends(const QStringList& backends)
 DiscoverBackendsFactory::DiscoverBackendsFactory()
 {}
 
-AbstractResourcesBackend* DiscoverBackendsFactory::backend(const QString& name) const
+QVector<AbstractResourcesBackend*> DiscoverBackendsFactory::backend(const QString& name) const
 {
     if (QDir::isAbsolutePath(name) && QStandardPaths::isTestModeEnabled()) {
-        QString path = name;
-        return backendForFile(path, QFileInfo(name).fileName());
+        return backendForFile(name, QFileInfo(name).fileName());
     } else {
-        QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libdiscover/backends/%1.desktop").arg(name));
-        return backendForFile(path, name);
+        return backendForFile(name, name);
     }
 }
 
-AbstractResourcesBackend* DiscoverBackendsFactory::backendForFile(const QString& path, const QString& name) const
+QVector<AbstractResourcesBackend*> DiscoverBackendsFactory::backendForFile(const QString& libname, const QString& name) const
 {
-    Q_ASSERT(!path.isEmpty());
-    KDesktopFile cfg(path);
-    KConfigGroup group = cfg.group("Desktop Entry");
-    QString libname = group.readEntry("X-KDE-Library", QString());
     QPluginLoader* loader = new QPluginLoader(QStringLiteral("discover/") + libname, ResourcesModel::global());
 
     //     qDebug() << "trying to load plugin:" << loader->fileName();
     AbstractResourcesBackendFactory* f = qobject_cast<AbstractResourcesBackendFactory*>(loader->instance());
     if(!f) {
-        qWarning() << "error loading" << path << loader->errorString() << loader->metaData();
-        return nullptr;
+        qWarning() << "error loading" << libname << loader->errorString() << loader->metaData();
+        return {};
     }
-    AbstractResourcesBackend* instance = f->newInstance(ResourcesModel::global());
-    if(!instance) {
-        qWarning() << "Couldn't find the backend: " << path << "among" << allBackendNames(false) << "because" << loader->errorString();
-        return instance;
+    auto instances = f->newInstance(ResourcesModel::global());
+    if(instances.isEmpty()) {
+        qWarning() << "Couldn't find the backend: " << libname << "among" << allBackendNames(false) << "because" << loader->errorString();
+        return instances;
     }
-    instance->setName(name);
-    instance->setMetaData(path);
+    for(auto instance: instances)
+        instance->setName(name);
 
-    return instance;
+    return instances;
 }
 
 QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist) const
@@ -85,23 +81,23 @@ QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist) const
             return whitelistNames;
     }
 
-    QStringList ret;
-    QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("libdiscover/backends/"), QStandardPaths::LocateDirectory);
-    foreach (const QString& dir, dirs) {
-        QDir d(dir);
-        foreach(const QFileInfo& file, d.entryInfoList(QDir::Files)) {
-            if (file.baseName()!= QLatin1String("dummy-backend")) {
-                ret.append(file.baseName());
+    QStringList pluginNames;
+    foreach (const QString &dir, QCoreApplication::libraryPaths()) {
+        QDirIterator it(dir + QStringLiteral("/discover"), QDir::Files);
+        while (it.hasNext()) {
+            it.next();
+            if (QLibrary::isLibrary(it.fileName())) {
+                pluginNames += it.fileInfo().baseName();
             }
         }
     }
 
-    return ret;
+    return pluginNames;
 }
 
 QList<AbstractResourcesBackend*> DiscoverBackendsFactory::allBackends() const
 {
-    QList<AbstractResourcesBackend*> ret;
+    QVector<AbstractResourcesBackend*> ret;
     QStringList names = allBackendNames();
     foreach(const QString& name, names)
         ret += backend(name);
@@ -110,7 +106,7 @@ QList<AbstractResourcesBackend*> DiscoverBackendsFactory::allBackends() const
 
     if(ret.isEmpty())
         qWarning() << "Didn't find any Discover backend!";
-    return ret;
+    return ret.toList();
 }
 
 int DiscoverBackendsFactory::backendsCount() const

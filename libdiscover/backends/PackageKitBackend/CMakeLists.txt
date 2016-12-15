@@ -18,7 +18,6 @@ add_library(packagekit-backend MODULE PackageKitBackend.cpp
 target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt5::Core PK::packagekitqt5 KF5::ConfigGui KF5::KIOCore KF5::Archive AppStreamQt)
 
 install(TARGETS packagekit-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
-install(FILES packagekit-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
 
 #notifier
 add_library(DiscoverPackageKitNotifier MODULE PackageKitNotifier.cpp)

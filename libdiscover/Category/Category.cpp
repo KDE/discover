@@ -33,10 +33,15 @@ Category::Category(QSet<QString> pluginName, QObject* parent)
         , m_plugins(std::move(pluginName))
 {}
 
-Category::Category(const QString& name, const QVector<QPair<FilterType, QString> >& orFilters)
+Category::Category(const QString& name, const QString& iconName, const QVector<QPair<FilterType, QString> >& orFilters, const QSet<QString> &pluginName, const QVector<Category *>& subCategories, const QUrl& decoration, bool isAddons)
     : QObject(nullptr)
     , m_name(name)
+    , m_iconString(iconName)
+    , m_decoration(decoration)
     , m_orFilters(orFilters)
+    , m_subCategories(subCategories)
+    , m_plugins(pluginName)
+    , m_isAddons(isAddons)
 {}
 
 Category::~Category() = default;

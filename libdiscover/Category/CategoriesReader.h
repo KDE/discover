@@ -25,6 +25,7 @@
 #include "discovercommon_export.h"
 
 class Category;
+class AbstractResourcesBackend;
 class DISCOVERCOMMON_EXPORT CategoriesReader
 {
     public:
@@ -34,7 +35,7 @@ class DISCOVERCOMMON_EXPORT CategoriesReader
         static bool categoryLessThan(Category *c1, const Category *c2);
 
     private:
-        QVector<Category*> loadCategoriesFile(const QString& path);
+        QVector<Category*> loadCategoriesFile(AbstractResourcesBackend* backend);
 };
 
 #endif // CATEGORIESREADER_H

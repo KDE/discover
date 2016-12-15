@@ -22,6 +22,8 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileInfo>
+#include <QStandardPaths>
+#include <QDirIterator>
 
 // Attica includes
 #include <attica/content.h>
@@ -44,7 +46,29 @@
 #include "KNSReviews.h"
 #include <resources/StandardBackendUpdater.h>
 
-MUON_BACKEND_PLUGIN(KNSBackend)
+class KNSBackendFactory : public AbstractResourcesBackendFactory {
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.muon.AbstractResourcesBackendFactory")
+    Q_INTERFACES(AbstractResourcesBackendFactory)
+    public:
+        QVector<AbstractResourcesBackend*> newInstance(QObject* parent) const override {
+            QVector<AbstractResourcesBackend*> ret;
+            for (const QString &path: QStandardPaths::standardLocations(QStandardPaths::GenericConfigLocation)) {
+                QDirIterator dirIt(path, {QStringLiteral("*.knsrc")}, QDir::Files);
+                for(; dirIt.hasNext(); ) {
+                    dirIt.next();
+
+                    if (QStandardPaths::isTestModeEnabled() && dirIt.fileName() != QLatin1String("discover_ktexteditor_codesnippets_core.knsrc"))
+                        continue;
+
+                    auto bk = new KNSBackend(parent);
+                    bk->setMetaData(QStringLiteral("plasma"), dirIt.filePath());
+                    ret += bk;
+                }
+            }
+            return ret;
+        }
+};
 
 KNSBackend::KNSBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
@@ -64,21 +88,12 @@ void KNSBackend::markInvalid(const QString &message)
     setFetching(false);
 }
 
-void KNSBackend::setMetaData(const QString& path)
+void KNSBackend::setMetaData(const QString& iconName, const QString &knsrc)
 {
-    KDesktopFile cfg(path);
-    KConfigGroup service = cfg.group("Desktop Entry");
+    setObjectName(knsrc);
+    m_iconName = iconName;
 
-    m_iconName = service.readEntry("Icon", QString());
-
-    const QString knsrc = service.readEntry("X-Muon-Arguments", QString());
-    m_name = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, knsrc);
-    if (m_name.isEmpty()) {
-        QString p = QFileInfo(path).dir().filePath(knsrc);
-        if (QFile::exists(p))
-            m_name = p;
-
-    }
+    m_name = knsrc;
 
     if (m_name.isEmpty()) {
         markInvalid(QStringLiteral("Couldn't find knsrc file: ") + knsrc);
@@ -91,7 +106,8 @@ void KNSBackend::setMetaData(const QString& path)
         return;
     }
 
-    m_categories = QStringList{ QFileInfo(m_name).fileName() };
+    const QString fileName = QFileInfo(m_name).fileName();
+    m_categories = QStringList{ fileName };
 
     const KConfigGroup group = conf.group("KNewStuff3");
     m_extends = group.readEntry("Extends", QStringList());
@@ -100,11 +116,28 @@ void KNSBackend::setMetaData(const QString& path)
     setFetching(true);
 
     m_manager = new KNS3::DownloadManager(m_name, this);
-    connect(m_manager, &KNS3::DownloadManager::errorFound, this, [](const QString &error) { qWarning() << "kns error" << error; });
+    connect(m_manager, &KNS3::DownloadManager::errorFound, this, [this](const QString &error) { qWarning() << "kns error" << this << error; });
     connect(m_manager, &KNS3::DownloadManager::searchResult, this, &KNSBackend::receivedEntries);
     connect(m_manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSBackend::statusChanged);
-    m_page = 0;
+    m_page = -1;
     m_manager->checkForInstalled();
+
+    const QVector<QPair<FilterType, QString>> filters = { {CategoryFilter, fileName } };
+    const QSet<QString> potatoe = { QStringLiteral("potatoe") };
+
+    static const QSet<QString> knsrcPlasma = {
+        QStringLiteral("aurorae.knsrc"), QStringLiteral("icons.knsrc"), QStringLiteral("kfontinst.knsrc"), QStringLiteral("lookandfeel.knsrc"), QStringLiteral("plasma-themes.knsrc"), QStringLiteral("plasmoids.knsrc"),
+        QStringLiteral("wallpaper.knsrc"), QStringLiteral("xcursor.knsrc"),
+
+        QStringLiteral("cgcgtk3.knsrc"), QStringLiteral("cgcicon.knsrc"), QStringLiteral("cgctheme.knsrc"), //GTK integration
+        QStringLiteral("kwinswitcher.knsrc"), QStringLiteral("kwineffect.knsrc"), QStringLiteral("kwinscripts.knsrc") //KWin
+    };
+    auto actualCategory = new Category(fileName.mid(0, fileName.indexOf(QLatin1Char('.'))), QStringLiteral("plasma"), filters, potatoe, {}, QUrl(), true);
+
+    const auto topLevelName = knsrcPlasma.contains(fileName)? i18n("Plasma Addons") : i18n("Application Addons");
+    const QUrl decoration(knsrcPlasma.contains(fileName)? QStringLiteral("https://c2.staticflickr.com/4/3148/3042248532_20bd2e38f4_b.jpg") : QStringLiteral("https://c2.staticflickr.com/8/7067/6847903539_d9324dcd19_o.jpg"));
+    auto addonsCategory = new Category(topLevelName, QStringLiteral("plasma"), filters, potatoe, {actualCategory}, decoration, true);
+    m_rootCategories = { addonsCategory };
 }
 
 void KNSBackend::setFetching(bool f)
@@ -131,13 +164,19 @@ void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
     QVector<AbstractResource*> resources;
     resources.reserve(entries.count());
     foreach(const KNS3::Entry& entry, entries) {
-        KNSResource* r = new KNSResource(entry, m_categories, this);
-        m_resourcesByName.insert(entry.id(), r);
+        auto r = m_resourcesByName.value(entry.id());
+        if (!r) {
+            r = new KNSResource(entry, m_categories, this);
+            m_resourcesByName.insert(entry.id(), r);
+        }
         resources += r;
     }
+    qDebug() << "received" << this << m_resourcesByName.count();
     Q_EMIT receivedResources(resources);
-    ++m_page;
-    m_manager->search(m_page);
+    if (m_page >= 0) {
+        ++m_page;
+        m_manager->search(m_page);
+    }
 }
 
 void KNSBackend::statusChanged(const KNS3::Entry& entry)

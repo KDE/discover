@@ -39,10 +39,9 @@ QTEST_MAIN( KNSBackendTest )
 KNSBackendTest::KNSBackendTest(QObject* parent)
     : QObject(parent)
     , m_r(nullptr)
-    , m_cat(new Category(QLatin1String("knscorrect"), { { CategoryFilter, QLatin1String("testplasmoids.knsrc")} }))
 {
     QStandardPaths::setTestModeEnabled(true);
-    ResourcesModel* model = new ResourcesModel(QFINDTESTDATA("knscorrect-backend.desktop"), this);
+    ResourcesModel* model = new ResourcesModel(QLatin1String("kns-backend"), this);
     Q_ASSERT(!model->backends().isEmpty());
     m_backend = model->backends().at(0);
 
@@ -56,17 +55,10 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     connect(m_backend->reviewsBackend(), &AbstractReviewsBackend::reviewsReady, this, &KNSBackendTest::reviewsArrived);
 }
 
-void KNSBackendTest::wrongBackend()
-{
-    DiscoverBackendsFactory f;
-    AbstractResourcesBackend* b = f.backendForFile(QFINDTESTDATA("knswrong-backend.desktop"), QStringLiteral("knswrong-backend"));
-    QVERIFY(!b->isValid());
-}
-
 QVector<AbstractResource*> KNSBackendTest::getAllResources(AbstractResourcesBackend* backend)
 {
     AbstractResourcesBackend::Filters f;
-    f.category = m_cat;
+    f.category = backend->category().first();
     auto stream = backend->search(f);
     Q_ASSERT(stream->objectName() != QLatin1String("KNS-void"));
     QSignalSpy spyResources(stream, &ResultsStream::destroyed);
@@ -88,7 +80,7 @@ void KNSBackendTest::testRetrieval()
         QVERIFY(!res->categories().isEmpty());
         QVERIFY(!res->origin().isEmpty());
         QVERIFY(!res->icon().isNull());
-        QVERIFY(!res->comment().isEmpty());
+//         QVERIFY(!res->comment().isEmpty());
 //         QVERIFY(!res->longDescription().isEmpty());
 //         QVERIFY(!res->license().isEmpty());
         QVERIFY(res->homepage().isValid() && !res->homepage().isEmpty());

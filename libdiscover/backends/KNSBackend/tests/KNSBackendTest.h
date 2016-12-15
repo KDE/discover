@@ -35,7 +35,6 @@ class KNSBackendTest : public QObject
         explicit KNSBackendTest(QObject* parent = nullptr);
 
     private Q_SLOTS:
-        void wrongBackend();
         void testRetrieval();
         void testReviews();
 
@@ -46,7 +45,6 @@ class KNSBackendTest : public QObject
         QVector<AbstractResource*> getAllResources(AbstractResourcesBackend* backend);
         AbstractResourcesBackend* m_backend;
         AbstractResource* m_r;
-        Category* m_cat;
         QList<Review*> m_revs;
 };
 

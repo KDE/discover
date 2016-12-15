@@ -194,7 +194,8 @@ void ResourcesModel::registerAllBackends()
 void ResourcesModel::registerBackendByName(const QString& name)
 {
     DiscoverBackendsFactory f;
-    addResourcesBackend(f.backend(name));
+    for(auto b : f.backend(name))
+        addResourcesBackend(b);
 }
 
 void ResourcesModel::integrateActions(KActionCollection* w)

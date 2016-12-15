@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Service
-Icon=face-smile-big
-X-KDE-Library=kns-backend
-X-KDE-PluginInfo-Name=knscomic-backend
-X-Muon-Arguments=comic.knsrc

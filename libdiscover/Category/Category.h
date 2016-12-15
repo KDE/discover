@@ -51,8 +51,7 @@ public:
     Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant CONSTANT)
     explicit Category(QSet<QString>  pluginNames, QObject* parent = nullptr);
 
-    ///only used for tests
-    explicit Category(const QString &name, const QVector<QPair<FilterType, QString>>& orFilters);
+    Category(const QString& name, const QString& iconName, const QVector< QPair< FilterType, QString > >& orFilters, const QSet<QString> &pluginName, const QVector<Category *>& subCategories, const QUrl& decoration, bool isAddons);
     ~Category() override;
 
     QString name() const;

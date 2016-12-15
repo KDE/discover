@@ -76,9 +76,6 @@ void AbstractResourcesBackend::installApplication(AbstractResource* app)
 void AbstractResourcesBackend::integrateActions(KActionCollection*)
 {}
 
-void AbstractResourcesBackend::setMetaData(const QString&)
-{}
-
 void AbstractResourcesBackend::setName(const QString& name)
 {
     m_name = name;

@@ -137,11 +137,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
         virtual bool isFetching() const = 0;
 
         /**
-         * Receives a path with the plugin's desktop file
-         */
-        virtual void setMetaData(const QString& path);
-
-        /**
          *  This method is used to integrate advanced functions into the Muon GUI.
          *
          *  In plasma-discover-updater, actions with HighPriority will be shown in a KMessageWidget,
@@ -167,6 +162,11 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
         void emitRatingsReady();
 
         virtual AbstractResource* resourceForFile(const QUrl &/*url*/) { return nullptr; }
+
+        /**
+         * @returns the root category tree
+         */
+        virtual QVector<Category*> category() const { return {}; }
 
     public Q_SLOTS:
         /**
@@ -250,7 +250,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackendFactory : public QObject
 {
     Q_OBJECT
 public:
-    virtual AbstractResourcesBackend* newInstance(QObject* parent) const = 0;
+    virtual QVector<AbstractResourcesBackend*> newInstance(QObject* parent) const = 0;
 };
 
 #define MUON_BACKEND_PLUGIN(ClassName)\
@@ -259,7 +259,7 @@ public:
         Q_PLUGIN_METADATA(IID "org.kde.muon.AbstractResourcesBackendFactory")\
         Q_INTERFACES(AbstractResourcesBackendFactory)\
         public:\
-            virtual AbstractResourcesBackend* newInstance(QObject* parent) const override { return new ClassName(parent); }\
+            QVector<AbstractResourcesBackend*> newInstance(QObject* parent) const override { return {new ClassName(parent)}; }\
     };
 
 Q_DECLARE_INTERFACE( AbstractResourcesBackendFactory, "org.kde.muon.AbstractResourcesBackendFactory" )
