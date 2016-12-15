@@ -86,7 +86,7 @@ QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist) const
         QDirIterator it(dir + QStringLiteral("/discover"), QDir::Files);
         while (it.hasNext()) {
             it.next();
-            if (QLibrary::isLibrary(it.fileName())) {
+            if (QLibrary::isLibrary(it.fileName()) && it.fileName() != QLatin1String("dummy-backend.so")) {
                 pluginNames += it.fileInfo().baseName();
             }
         }
@@ -97,11 +97,8 @@ QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist) const
 
 QVector<AbstractResourcesBackend*> DiscoverBackendsFactory::allBackends() const
 {
-    QVector<AbstractResourcesBackend*> ret;
     QStringList names = allBackendNames();
-    foreach(const QString& name, names)
-        ret += backend(name);
-
+    auto ret = kTransform<QVector<AbstractResourcesBackend*>>(names, [this](const QString& name) { return backend(name); });
     ret.removeAll(nullptr);
 
     if(ret.isEmpty())
