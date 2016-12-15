@@ -50,15 +50,8 @@ DummyBackend::DummyBackend(QObject* parent)
     QTimer::singleShot(500, this, &DummyBackend::toggleFetching);
     connect(m_reviews, &DummyReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &DummyBackend::updatesCountChanged);
-}
 
-void DummyBackend::setMetaData(const QString& path)
-{
-    Q_ASSERT(!path.isEmpty());
-    KSharedConfig::Ptr cfg = KSharedConfig::openConfig(path);
-    KConfigGroup metadata = cfg->group(QStringLiteral("Desktop Entry"));
-
-    populate(metadata.readEntry("Name", QString()));
+    populate(QStringLiteral("Dummy"));
     if (!m_fetching)
         m_reviews->initialize();
 

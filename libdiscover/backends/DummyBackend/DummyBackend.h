@@ -35,7 +35,6 @@ Q_PROPERTY(int startElements MEMBER m_startElements)
 public:
     explicit DummyBackend(QObject* parent = nullptr);
 
-    void setMetaData(const QString& path) override;
     int updatesCount() const override;
     AbstractBackendUpdater* backendUpdater() const override;
     AbstractReviewsBackend* reviewsBackend() const override;
