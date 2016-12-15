@@ -95,22 +95,16 @@ void ResourcesProxyModel::setSortOrder(Qt::SortOrder sortOrder)
     }
 }
 
-void ResourcesProxyModel::setSearch(const QString &searchText)
+void ResourcesProxyModel::setSearch(const QString &_searchText)
 {
+    // 1-character searches are painfully slow. >= 2 chars are fine, though
+    const QString searchText = _searchText.count() <= 1 ? QString() : _searchText;
+
     const bool diff = searchText != m_filters.search;
 
-    m_displayedResources.clear();
-    m_filters.search = searchText;
-
-    // 1-character searches are painfully slow. >= 2 chars are fine, though
-    if (searchText.size() > 1) {
-        m_sortByRelevancy = true;
-    } else {
-        m_sortByRelevancy = false;
-    }
-    invalidateFilter();
-
     if (diff) {
+        m_sortByRelevancy = !searchText.isEmpty();
+        invalidateFilter();
         Q_EMIT searchChanged(m_filters.search);
     }
 }
