@@ -204,8 +204,7 @@ DiscoverPage
     }
 
     readonly property var secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
-    state: ( ResourcesModel.isFetching                   ? "fetching"
-            : updateModel.hasUpdates                     ? "has-updates"
+    state:  ( updateModel.hasUpdates                     ? "has-updates"
             : resourcesUpdatesModel.isProgressing        ? "progressing"
             : secSinceUpdate < 0                         ? "unknown"
             : secSinceUpdate === 0                       ? "now-uptodate"
@@ -215,10 +214,6 @@ DiscoverPage
             )
 
     states: [
-        State {
-            name: "fetching"
-            PropertyChanges { target: page; title: i18nc("@info", "Loading...") }
-        },
         State {
             name: "progressing"
             PropertyChanges { target: page; title: i18nc("@info", "Updating...") }
