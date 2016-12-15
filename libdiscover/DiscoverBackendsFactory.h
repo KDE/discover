@@ -35,7 +35,7 @@ public:
     DiscoverBackendsFactory();
     
     QVector<AbstractResourcesBackend*> backend(const QString& name) const;
-    QList<AbstractResourcesBackend*> allBackends() const;
+    QVector<AbstractResourcesBackend*> allBackends() const;
     QStringList allBackendNames(bool whitelist = true) const;
     int backendsCount() const;
     

@@ -95,7 +95,7 @@ QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist) const
     return pluginNames;
 }
 
-QList<AbstractResourcesBackend*> DiscoverBackendsFactory::allBackends() const
+QVector<AbstractResourcesBackend*> DiscoverBackendsFactory::allBackends() const
 {
     QVector<AbstractResourcesBackend*> ret;
     QStringList names = allBackendNames();
@@ -106,7 +106,7 @@ QList<AbstractResourcesBackend*> DiscoverBackendsFactory::allBackends() const
 
     if(ret.isEmpty())
         qWarning() << "Didn't find any Discover backend!";
-    return ret.toList();
+    return ret;
 }
 
 int DiscoverBackendsFactory::backendsCount() const

@@ -180,7 +180,7 @@ void ResourcesModel::removeApplication(AbstractResource* app)
 void ResourcesModel::registerAllBackends()
 {
     DiscoverBackendsFactory f;
-    QList<AbstractResourcesBackend*> backends = f.allBackends();
+    const auto backends = f.allBackends();
     if(m_initializingBackends==0 && backends.isEmpty()) {
         qWarning() << "Couldn't find any backends";
         emit allInitialized();
