@@ -273,7 +273,7 @@ void AggregatedResultsStream::emitResults()
         Q_EMIT resourcesFound(m_results);
         m_results.clear();
     }
-    m_delayedEmission.setInterval(200);
+    m_delayedEmission.setInterval(m_delayedEmission.interval() + 100);
     m_delayedEmission.stop();
 }
 
