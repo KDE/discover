@@ -45,15 +45,28 @@ Item
         return obj && obj.toString().indexOf(typename+"_QMLTYPE_") == 0
     }
 
-    function findChild(obj, typename) {
-        if (isType(obj, typename))
-            return obj;
-        for(var v in obj.data) {
-            var v = findChild(obj.data[v], typename)
-            if (v)
-                return v
+    function chooseChild(obj, validator) {
+        if (validator(obj))
+            return true;
+        var children = obj.data ? obj.data : obj.contentData
+        for(var v in children) {
+            var stop = chooseChild(children[v], validator)
+            if (stop)
+                return true
         }
-        return null
+        return false
+    }
+
+    function findChild(obj, typename) {
+        var ret = null;
+        chooseChild(obj, function(o) {
+            var found = isType(o, typename);
+            if (found) {
+                ret = o;
+            }
+            return found
+        })
+        return ret;
     }
 
     SignalSpy {
