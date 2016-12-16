@@ -85,6 +85,8 @@ void UpdateModel::resourceHasProgressed(AbstractResource* res, qreal progress)
 
 void UpdateModel::activityChanged()
 {
+    if (m_updates->isProgressing())
+        return;
     m_updates->prepare();
     setResources(m_updates->toUpdate());
 }
