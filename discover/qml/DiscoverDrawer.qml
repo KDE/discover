@@ -121,8 +121,8 @@ Kirigami.GlobalDrawer {
             label: installedAction.text
             separatorVisible: false
             onClicked: {
-                installedAction.trigger()
                 drawer.resetMenu()
+                installedAction.trigger()
             }
         }
         Kirigami.BasicListItem {
@@ -131,19 +131,20 @@ Kirigami.GlobalDrawer {
             label: settingsAction.text
             separatorVisible: false
             onClicked: {
-                settingsAction.trigger()
                 drawer.resetMenu()
+                settingsAction.trigger()
             }
         }
         Kirigami.BasicListItem {
+            objectName: "updateButton"
             enabled: updateAction.enabled
             checked: updateAction.checked
             icon: updateAction.iconName
             label: updateAction.text
             separatorVisible: false
             onClicked: {
-                updateAction.trigger()
                 drawer.resetMenu()
+                updateAction.trigger()
             }
 
             backgroundColor: enabled ? "orange" : Kirigami.Theme.viewBackgroundColor

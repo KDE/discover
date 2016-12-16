@@ -40,6 +40,33 @@ DiscoverTest
         compare(drawer.currentSubMenu, null)
     }
 
+    function test_navigateThenUpdate() {
+        var drawer = appRoot.globalDrawer;
+        var firstitem;
+        chooseChild(drawer, function(object) {
+            if (object.hasOwnProperty("label") && object.label.indexOf("ummy")>0) {
+                firstitem = object;
+                return true
+            }
+            return false;
+        });
+        var updateButton;
+        chooseChild(drawer, function(object) {
+            if (object.objectName == "updateButton") {
+                updateButton = object;
+                return true
+            }
+            return false;
+        });
+
+        firstitem.clicked()
+        verify(waitForRendering())
+        updateButton.clicked()
+        verify(waitForRendering())
+
+        compare(appRoot.currentTopLevel, appRoot.topUpdateComp, "correct component, updates");
+    }
+
     function test_update() {
         app.openMode("Update");
 
