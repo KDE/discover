@@ -22,6 +22,24 @@ DiscoverTest
         verify(waitForRendering())
     }
 
+    function test_openHome() {
+        var drawer = appRoot.globalDrawer;
+        var firstitem;
+        chooseChild(drawer, function(object) {
+            if (object.hasOwnProperty("label") && object.label.indexOf("ummy")>0) {
+                firstitem = object;
+                return true
+            }
+            return false;
+        });
+        var categoryName = "dummy 3";
+        firstitem.clicked()
+
+        drawer.bannerClicked()
+        compare(appRoot.stack.currentItem.title, "Home", "same title");
+        compare(drawer.currentSubMenu, null)
+    }
+
     function test_update() {
         app.openMode("Update");
 
