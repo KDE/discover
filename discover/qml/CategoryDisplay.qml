@@ -30,7 +30,7 @@ PageHeader {
     id: header
     property QtObject category: null
     Layout.fillWidth: true
-    background: category.decoration
+    background: category ? category.decoration : ""
 
     Item {
         Layout.fillWidth: true
