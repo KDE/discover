@@ -48,7 +48,7 @@ Kirigami.ScrollablePage
             anchors {
                 left: parent.left
                 right: parent.right
-                rightMargin: root.flickable ? root.width - root.contentItem.width : 0
+                rightMargin: root.flickable ? root.width - (root.contentItem.x + root.contentItem.width) : 0
             }
             visible: y>-height
 
