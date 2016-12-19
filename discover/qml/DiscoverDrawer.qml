@@ -115,37 +115,15 @@ Kirigami.GlobalDrawer {
             separatorVisible: false
         }
 
-        Kirigami.BasicListItem {
-            checked: installedAction.checked
-            icon: installedAction.iconName
-            label: installedAction.text
-            separatorVisible: false
-            onClicked: {
-                drawer.resetMenu()
-                installedAction.trigger()
-            }
+        ActionListItem {
+            action: installedAction
         }
-        Kirigami.BasicListItem {
-            checked: settingsAction.checked
-            icon: settingsAction.iconName
-            label: settingsAction.text
-            separatorVisible: false
-            onClicked: {
-                drawer.resetMenu()
-                settingsAction.trigger()
-            }
+        ActionListItem {
+            action: settingsAction
         }
-        Kirigami.BasicListItem {
+        ActionListItem {
             objectName: "updateButton"
-            enabled: updateAction.enabled
-            checked: updateAction.checked
-            icon: updateAction.iconName
-            label: updateAction.text
-            separatorVisible: false
-            onClicked: {
-                drawer.resetMenu()
-                updateAction.trigger()
-            }
+            action: updateAction
 
             backgroundColor: enabled ? "orange" : Kirigami.Theme.viewBackgroundColor
         }
