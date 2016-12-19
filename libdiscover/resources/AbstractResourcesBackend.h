@@ -212,11 +212,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * a signal in the model to show the view that all data of a certain backend changed.
          */
         void allDataChanged(const QVector<QByteArray> &propertyNames);
-        /**
-         * This should be emitted whenever there are new search results available, other than the ones returned previously,
-         * or the data set in which the backend searched changed.
-         */
-        void searchInvalidated();
 
         /**
          * Allows to notify some @p properties in @p resource have changed

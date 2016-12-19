@@ -63,7 +63,6 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
 {
 //     new ModelTest(this, this);
 
-    connect(ResourcesModel::global(), &ResourcesModel::searchInvalidated, this, &ResourcesProxyModel::refreshSearch);
     connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &ResourcesProxyModel::invalidateFilter);
     connect(ResourcesModel::global(), &ResourcesModel::backendDataChanged, this, &ResourcesProxyModel::refreshBackend);
     connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &ResourcesProxyModel::refreshResource);
@@ -145,11 +144,6 @@ void ResourcesProxyModel::invalidateSorting()
 QString ResourcesProxyModel::lastSearch() const
 {
     return m_filters.search;
-}
-
-void ResourcesProxyModel::refreshSearch()
-{
-    setSearch(lastSearch());
 }
 
 void ResourcesProxyModel::setOriginFilter(const QString &origin)

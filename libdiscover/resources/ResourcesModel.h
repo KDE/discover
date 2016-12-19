@@ -88,7 +88,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         void allInitialized();
         void backendsChanged();
         void updatesCountChanged();
-        void searchInvalidated();
         void backendDataChanged(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties);
         void resourceDataChanged(AbstractResource* resource, const QVector<QByteArray>& properties);
         void resourceRemoved(AbstractResource* resource);

@@ -113,7 +113,6 @@ public:
     void componentComplete() override;
 
 private Q_SLOTS:
-    void refreshSearch();
     void refreshBackend(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties);
     void refreshResource(AbstractResource* resource, const QVector<QByteArray>& properties);
     void removeResource(AbstractResource* resource);
