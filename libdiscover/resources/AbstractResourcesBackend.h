@@ -245,7 +245,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackendFactory : public QObject
 {
     Q_OBJECT
 public:
-    virtual QVector<AbstractResourcesBackend*> newInstance(QObject* parent) const = 0;
+    virtual QVector<AbstractResourcesBackend*> newInstance(QObject* parent, const QString &name) const = 0;
 };
 
 #define MUON_BACKEND_PLUGIN(ClassName)\
@@ -254,7 +254,11 @@ public:
         Q_PLUGIN_METADATA(IID "org.kde.muon.AbstractResourcesBackendFactory")\
         Q_INTERFACES(AbstractResourcesBackendFactory)\
         public:\
-            QVector<AbstractResourcesBackend*> newInstance(QObject* parent) const override { return {new ClassName(parent)}; }\
+            QVector<AbstractResourcesBackend*> newInstance(QObject* parent, const QString &name) const override {\
+                auto c = new ClassName(parent);\
+                c->setName(name);\
+                return {c};\
+            }\
     };
 
 Q_DECLARE_INTERFACE( AbstractResourcesBackendFactory, "org.kde.muon.AbstractResourcesBackendFactory" )

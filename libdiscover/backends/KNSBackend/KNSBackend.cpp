@@ -51,7 +51,7 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
     Q_PLUGIN_METADATA(IID "org.kde.muon.AbstractResourcesBackendFactory")
     Q_INTERFACES(AbstractResourcesBackendFactory)
     public:
-        QVector<AbstractResourcesBackend*> newInstance(QObject* parent) const override {
+        QVector<AbstractResourcesBackend*> newInstance(QObject* parent, const QString &/*name*/) const override {
             QVector<AbstractResourcesBackend*> ret;
             for (const QString &path: QStandardPaths::standardLocations(QStandardPaths::GenericConfigLocation)) {
                 QDirIterator dirIt(path, {QStringLiteral("*.knsrc")}, QDir::Files);
@@ -62,6 +62,7 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
                         continue;
 
                     auto bk = new KNSBackend(parent);
+                    bk->setName(dirIt.fileName());
                     bk->setMetaData(QStringLiteral("plasma"), dirIt.filePath());
                     ret += bk;
                 }
@@ -123,7 +124,7 @@ void KNSBackend::setMetaData(const QString& iconName, const QString &knsrc)
     m_manager->checkForInstalled();
 
     const QVector<QPair<FilterType, QString>> filters = { {CategoryFilter, fileName } };
-    const QSet<QString> potatoe = { QStringLiteral("potatoe") };
+    const QSet<QString> backendName = { name() };
     QString displayName = group.readEntry("Name", QString());
     if (displayName.isEmpty()) {
         displayName = fileName.mid(0, fileName.indexOf(QLatin1Char('.')));
@@ -137,11 +138,11 @@ void KNSBackend::setMetaData(const QString& iconName, const QString &knsrc)
         QStringLiteral("cgcgtk3.knsrc"), QStringLiteral("cgcicon.knsrc"), QStringLiteral("cgctheme.knsrc"), //GTK integration
         QStringLiteral("kwinswitcher.knsrc"), QStringLiteral("kwineffect.knsrc"), QStringLiteral("kwinscripts.knsrc") //KWin
     };
-    auto actualCategory = new Category(displayName, QStringLiteral("plasma"), filters, potatoe, {}, QUrl(), true);
+    auto actualCategory = new Category(displayName, QStringLiteral("plasma"), filters, backendName, {}, QUrl(), true);
 
     const auto topLevelName = knsrcPlasma.contains(fileName)? i18n("Plasma Addons") : i18n("Application Addons");
     const QUrl decoration(knsrcPlasma.contains(fileName)? QStringLiteral("https://c2.staticflickr.com/4/3148/3042248532_20bd2e38f4_b.jpg") : QStringLiteral("https://c2.staticflickr.com/8/7067/6847903539_d9324dcd19_o.jpg"));
-    auto addonsCategory = new Category(topLevelName, QStringLiteral("plasma"), filters, potatoe, {actualCategory}, decoration, true);
+    auto addonsCategory = new Category(topLevelName, QStringLiteral("plasma"), filters, backendName, {actualCategory}, decoration, true);
     m_rootCategories = { addonsCategory };
 }
 

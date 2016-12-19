@@ -62,13 +62,11 @@ QVector<AbstractResourcesBackend*> DiscoverBackendsFactory::backendForFile(const
         qWarning() << "error loading" << libname << loader->errorString() << loader->metaData();
         return {};
     }
-    auto instances = f->newInstance(ResourcesModel::global());
+    auto instances = f->newInstance(ResourcesModel::global(), name);
     if(instances.isEmpty()) {
         qWarning() << "Couldn't find the backend: " << libname << "among" << allBackendNames(false) << "because" << loader->errorString();
         return instances;
     }
-    for(auto instance: instances)
-        instance->setName(name);
 
     return instances;
 }
