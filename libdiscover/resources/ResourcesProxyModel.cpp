@@ -199,7 +199,7 @@ QVariantList ResourcesProxyModel::subcategories() const
 
 void ResourcesProxyModel::invalidateFilter()
 {
-    if (!m_setup) {
+    if (!m_setup || ResourcesModel::global()->backends().isEmpty()) {
         return;
     }
 
