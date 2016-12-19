@@ -227,6 +227,14 @@ QUrl DiscoverMainWindow::prioritaryFeaturedSource() const
 
 void DiscoverMainWindow::integrateObject(QObject* object)
 {
+    if (!object) {
+        qWarning() << "Errors when loading the GUI";
+        QTimer::singleShot(0, QCoreApplication::instance(), [](){
+            QCoreApplication::instance()->exit(1);
+        });
+        return;
+    }
+
     Q_ASSERT(object == rootObject());
 
     KConfigGroup window(KSharedConfig::openConfig(), "Window");
