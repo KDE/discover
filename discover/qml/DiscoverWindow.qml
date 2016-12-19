@@ -55,8 +55,6 @@ Kirigami.ApplicationWindow
         }
     }
 
-    ExclusiveGroup { id: appTabs }
-
     property list<Action> awesome: [
         TopLevelPageData {
             iconName: "tools-wizard"

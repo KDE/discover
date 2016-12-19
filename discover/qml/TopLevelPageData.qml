@@ -26,7 +26,6 @@ Action {
     checkable: window.currentTopLevel==component
     checked: window.currentTopLevel==component
     enabled: window.navigationEnabled
-    exclusiveGroup: appTabs
 
     onTriggered: {
         if(window.currentTopLevel!=component)
