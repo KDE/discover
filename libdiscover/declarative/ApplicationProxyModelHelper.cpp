@@ -34,6 +34,7 @@ void ApplicationProxyModelHelper::componentComplete()
     connect(this, &ResourcesProxyModel::sortRoleChanged, this, &ApplicationProxyModelHelper::sortRoleStringChanged);
 
     setSearch(lastSearch());
+    invalidateFilter();
 }
 
 int ApplicationProxyModelHelper::stringToRole(const QByteArray& strRole) const
