@@ -51,7 +51,6 @@ DiscoverPage
             Layout.rightMargin: Kirigami.Units.gridUnit
             sortRole: "ratingCount"
             title: i18n("Most Popular")
-            extended: true
         }
     }
 }

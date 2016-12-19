@@ -30,14 +30,12 @@ ColumnLayout {
     id: topView
     property alias sortRole: appsModel.stringSortRole
     property alias filteredCategory: appsModel.filteredCategory
-    property string title: ""
-    property bool extended: false
-    readonly property alias titleHeight: title.height
+    property alias title: titleItem.text
+    readonly property alias titleHeight: titleItem.height
 
     spacing: Kirigami.Units.gridUnit
     Label {
-        id: title
-        text: topView.title
+        id: titleItem
         Layout.fillWidth: true
         font.weight: Font.Bold
         Layout.minimumHeight: paintedHeight*1.5
