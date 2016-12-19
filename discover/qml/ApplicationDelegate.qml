@@ -82,7 +82,7 @@ Kirigami.AbstractListItem
                     horizontalAlignment: Text.AlignRight
                     text: categoryDisplay
                     color: Kirigami.Theme.linkColor
-                    visible: parent.width > implicitWidth
+                    visible: conts.width > implicitWidth
                 }
             }
 
