@@ -72,6 +72,7 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
 
 void ResourcesProxyModel::componentComplete()
 {
+    m_setup = true;
     invalidateFilter();
 }
 
@@ -204,6 +205,10 @@ QVariantList ResourcesProxyModel::subcategories() const
 
 void ResourcesProxyModel::invalidateFilter()
 {
+    if (!m_setup) {
+        return;
+    }
+
     if (m_currentStream) {
         qWarning() << "last stream isn't over yet" << m_filters << this;
         delete m_currentStream;
