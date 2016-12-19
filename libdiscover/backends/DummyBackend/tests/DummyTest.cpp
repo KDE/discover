@@ -55,6 +55,8 @@ DummyTest::DummyTest(QObject* parent): QObject(parent)
 
     m_model = new ResourcesModel(QStringLiteral("dummy-backend"), this);
     m_appBackend = backendByName(m_model, QStringLiteral("DummyBackend"));
+
+    CategoryModel::global()->populateCategories();
 }
 
 void DummyTest::initTestCase()
@@ -95,6 +97,7 @@ void DummyTest::testProxy()
     QVERIFY(!pm.isBusy());
 
     pm.setFiltersFromCategory(CategoryModel::global()->rootCategories().first());
+    pm.componentComplete();
     QVERIFY(pm.isBusy());
     QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());

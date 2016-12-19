@@ -40,12 +40,12 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QObject
         void blacklistPlugin(const QString& name);
         QVector<Category*> rootCategories() const { return m_rootCategories; }
         QVariantList rootCategoriesVL() const;
+        void populateCategories();
 
     Q_SIGNALS:
         void rootCategoriesChanged();
 
     private:
-        void populateCategories();
         QVector<Category*> m_rootCategories;
 };
 
