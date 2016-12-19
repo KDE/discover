@@ -61,6 +61,20 @@
 #include <cmath>
 #include <unistd.h>
 
+class OneTimeAction : public QObject
+{
+public:
+    OneTimeAction(std::function<void()> func, QObject* parent) : QObject(parent), m_function(func) {}
+
+    void trigger() {
+        m_function();
+        deleteLater();
+    }
+
+private:
+    std::function<void()> m_function;
+};
+
 DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     : QObject()
     , m_collection(this)
@@ -142,24 +156,25 @@ void DiscoverMainWindow::openMimeType(const QString& mime)
 
 void DiscoverMainWindow::openCategory(const QString& category)
 {
-    Category* cat = CategoryModel::global()->findCategoryByName(category);
-    Q_ASSERT(cat);
-    emit listCategoryInternal(cat);
-}
+    rootObject()->setProperty("defaultStartup", false);
+    auto action = new OneTimeAction(
+        [this, category]() {
+            Category* cat = CategoryModel::global()->findCategoryByName(category);
+            if (!cat) {
+                showPassiveNotification(i18n("Could not find category '%1'", category));
+                return;
+            }
 
-class OneTimeAction : public QObject
-{
-public:
-    OneTimeAction(std::function<void()> func, QObject* parent) : QObject(parent), m_function(func) {}
+            emit listCategoryInternal(cat);
+        }
+        , this);
 
-    void trigger() {
-        m_function();
-        deleteLater();
+    if (ResourcesModel::global()->backends().isEmpty()) {
+        connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
+    } else {
+        action->trigger();
     }
-
-private:
-    std::function<void()> m_function;
-};
+}
 
 void DiscoverMainWindow::openLocalPackage(const QUrl& localfile)
 {
