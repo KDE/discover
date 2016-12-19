@@ -101,8 +101,6 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     connect(backend, &AbstractResourcesBackend::resourceRemoved, this, &ResourcesModel::resourceRemoved);
     connect(backend, &AbstractResourcesBackend::passiveMessage, this, &ResourcesModel::passiveMessage);
 
-    emit backendsChanged();
-
     if(m_initializingBackends==0)
         emit allInitialized();
     else
@@ -187,6 +185,7 @@ void ResourcesModel::registerAllBackends()
         foreach(AbstractResourcesBackend* b, backends) {
             addResourcesBackend(b);
         }
+        emit backendsChanged();
     }
 }
 
@@ -195,6 +194,8 @@ void ResourcesModel::registerBackendByName(const QString& name)
     DiscoverBackendsFactory f;
     for(auto b : f.backend(name))
         addResourcesBackend(b);
+
+    emit backendsChanged();
 }
 
 void ResourcesModel::integrateActions(KActionCollection* w)
