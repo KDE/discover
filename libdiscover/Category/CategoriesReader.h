@@ -29,13 +29,10 @@ class AbstractResourcesBackend;
 class DISCOVERCOMMON_EXPORT CategoriesReader
 {
     public:
-        QVector<Category*> populateCategories();
         QVector<Category*> loadCategoriesPath(const QString& path);
+        QVector<Category*> loadCategoriesFile(AbstractResourcesBackend* backend);
 
         static bool categoryLessThan(Category *c1, const Category *c2);
-
-    private:
-        QVector<Category*> loadCategoriesFile(AbstractResourcesBackend* backend);
 };
 
 #endif // CATEGORIESREADER_H

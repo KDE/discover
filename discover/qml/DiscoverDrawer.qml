@@ -171,24 +171,18 @@ Kirigami.GlobalDrawer {
         }
     }
 
-    function createCategoryActions(parent, categories) {
+    function createCategoryActions(categories) {
         var actions = []
         for(var i in categories) {
             var cat = categories[i];
-            var catAction = categoryActionComponent.createObject(parent, {category: cat});
-            catAction.children = createCategoryActions(catAction, cat.subcategories);
+            var catAction = categoryActionComponent.createObject(drawer, {category: cat});
+            catAction.children = createCategoryActions(cat.subcategories);
             actions.push(catAction)
         }
         return actions;
     }
 
-    CategoryModel {
-        id: rootCategories
-        Component.onCompleted: {
-            resetCategories();
-            drawer.actions = createCategoryActions(rootCategories, rootCategories.categories)
-        }
-    }
+    actions: createCategoryActions(CategoryModel.rootCategories)
 
     modal: Helpers.isCompact
     handleVisible: Helpers.isCompact

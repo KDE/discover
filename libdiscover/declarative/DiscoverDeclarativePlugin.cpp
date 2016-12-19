@@ -46,12 +46,12 @@ void DiscoverDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char*
     engine->rootContext()->setContextProperty(QStringLiteral("ResourcesModel"), ResourcesModel::global());
     engine->rootContext()->setContextProperty(QStringLiteral("TransactionModel"), TransactionModel::global());
     engine->rootContext()->setContextProperty(QStringLiteral("SourcesModel"), SourcesModel::global());
+    engine->rootContext()->setContextProperty(QStringLiteral("CategoryModel"), CategoryModel::global());
     QQmlExtensionPlugin::initializeEngine(engine, uri);
 }
 
 void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
 {
-    qmlRegisterType<CategoryModel>("org.kde.discover", 1, 0, "CategoryModel");
     qmlRegisterType<TransactionListener>("org.kde.discover", 1, 0, "TransactionListener");
     qmlRegisterType<TransactionModel>();
     qmlRegisterType<ResourcesUpdatesModel>("org.kde.discover", 1, 0, "ResourcesUpdatesModel");

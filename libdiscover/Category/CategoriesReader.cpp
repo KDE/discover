@@ -76,23 +76,3 @@ bool CategoriesReader::categoryLessThan(Category *c1, const Category *c2)
 {
     return (QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
-
-QVector<Category*> CategoriesReader::populateCategories()
-{
-    DiscoverBackendsFactory f;
-    const auto backends = f.allBackends();
-
-    QVector<Category*> ret;
-    Q_FOREACH (const auto backend, backends) {
-        const QVector<Category*> cats = loadCategoriesFile(backend);
-
-        if(ret.isEmpty()) {
-            ret = cats;
-        } else {
-            Q_FOREACH (Category* c, cats)
-                Category::addSubcategory(ret, c);
-        }
-    }
-    qSort(ret.begin(), ret.end(), categoryLessThan);
-    return ret;
-}

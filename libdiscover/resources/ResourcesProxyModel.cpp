@@ -176,7 +176,7 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 
 void ResourcesProxyModel::fetchSubcategories()
 {
-    const auto cats = m_filters.category ? m_filters.category->subCategories().toList() : CategoryModel::rootCategories();
+    const auto cats = m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories();
 
     const int count = rowCount();
     QSet<Category*> done;

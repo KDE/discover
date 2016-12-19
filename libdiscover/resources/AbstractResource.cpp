@@ -210,7 +210,7 @@ static QSet<Category*> walkCategories(AbstractResource* res, const QVector<Categ
 
 QSet<Category*> AbstractResource::categoryObjects() const
 {
-    return walkCategories(const_cast<AbstractResource*>(this), CategoryModel::rootCategories().toVector());
+    return walkCategories(const_cast<AbstractResource*>(this), CategoryModel::global()->rootCategories());
 }
 
 QString AbstractResource::categoryDisplay() const

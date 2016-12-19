@@ -27,40 +27,26 @@
 
 #include "discovercommon_export.h"
 
-class DISCOVERCOMMON_EXPORT CategoryModel : public QAbstractListModel
+class DISCOVERCOMMON_EXPORT CategoryModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariantList categories READ categories WRITE setCategories NOTIFY categoryChanged)
+    Q_PROPERTY(QVariantList rootCategories READ rootCategoriesVL NOTIFY rootCategoriesChanged)
     public:
-        enum CategoryModelRole {
-            CategoryRole = Qt::UserRole + 1
-        };
-
         explicit CategoryModel(QObject* parent = nullptr);
 
-        Category* categoryForRow(int row);
+        static CategoryModel* global();
 
-        QHash< int, QByteArray > roleNames() const override;
-
-        Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
-        static void blacklistPlugin(const QString& name);
-        static QList<Category*> rootCategories();
-
-        void setCategories(const QList<Category *> &categoryList);
-        void setCategories(const QVariantList &categoryList);
-        QVariantList categories() const;
-        Q_SCRIPTABLE void resetCategories();
-
-        QVariant data(const QModelIndex & index, int role) const override;
-        int rowCount(const QModelIndex & parent) const override;
+        Q_SCRIPTABLE Category* findCategoryByName(const QString& name) const;
+        void blacklistPlugin(const QString& name);
+        QVector<Category*> rootCategories() const { return m_rootCategories; }
+        QVariantList rootCategoriesVL() const;
 
     Q_SIGNALS:
-        void categoryChanged();
+        void rootCategoriesChanged();
 
     private:
-        void categoryDeleted(QObject* cat);
-
-        QList<Category*> m_categories;
+        void populateCategories();
+        QVector<Category*> m_rootCategories;
 };
 
 #endif // CATEGORYMODEL_H

@@ -94,7 +94,7 @@ void DummyTest::testProxy()
 //     QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
 
-    pm.setFiltersFromCategory(CategoryModel::rootCategories().first());
+    pm.setFiltersFromCategory(CategoryModel::global()->rootCategories().first());
     QVERIFY(pm.isBusy());
     QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
