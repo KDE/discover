@@ -33,8 +33,10 @@ QVector<Category*> CategoriesReader::loadCategoriesFile(AbstractResourcesBackend
     QVector<Category *> ret;
     QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libdiscover/categories/")+backend->name()+QStringLiteral("-categories.xml"));
     if (path.isEmpty()) {
-        qWarning() << "Couldn't find a category for " << backend->name();
-        return backend->category();
+        auto cat = backend->category();
+        if (cat.isEmpty())
+            qWarning() << "Couldn't find a category for " << backend->name();
+        return cat;
     }
     return loadCategoriesPath(path);
 }
