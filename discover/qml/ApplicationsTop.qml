@@ -45,7 +45,7 @@ ColumnLayout {
         model: PaginateModel {
             pageSize: 5
             staticRowCount: true
-            sourceModel: ApplicationProxyModel {
+            sourceModel: ResourcesProxyModel {
                 id: appsModel
                 sortOrder: Qt.DescendingOrder
 //                 onRowsInserted: sortModel()

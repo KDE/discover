@@ -30,7 +30,7 @@ DiscoverPage {
     id: page
     readonly property var model: appsModel
     property alias category: appsModel.filteredCategory
-    property alias sortRole: appsModel.stringSortRole
+    property alias sortRole: appsModel.sortRole
     property alias sortOrder: appsModel.sortOrder
     property alias originFilter: appsModel.originFilter
     property alias mimeTypeFilter: appsModel.mimeTypeFilter
@@ -70,9 +70,9 @@ DiscoverPage {
             }
             z: 5000
         }
-        model: ApplicationProxyModel {
+        model: ResourcesProxyModel {
             id: appsModel
-            stringSortRole: "ratingPoints"
+            sortRole: ResourcesProxyModel.RatingCountRole
             sortOrder: Qt.DescendingOrder
         }
         spacing: Kirigami.Units.gridUnit

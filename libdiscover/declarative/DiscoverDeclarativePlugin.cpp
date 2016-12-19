@@ -18,7 +18,6 @@
  */
 
 #include "DiscoverDeclarativePlugin.h"
-#include "ApplicationProxyModelHelper.h"
 #include <Category/CategoryModel.h>
 #include <Category/Category.h>
 #include <Transaction/TransactionListener.h>
@@ -29,6 +28,7 @@
 #include <resources/ResourcesModel.h>
 #include <resources/SourcesModel.h>
 #include <resources/AbstractSourcesBackend.h>
+#include <resources/ResourcesProxyModel.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/ReviewsModel.h>
@@ -55,17 +55,16 @@ void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
     qmlRegisterType<TransactionListener>("org.kde.discover", 1, 0, "TransactionListener");
     qmlRegisterType<TransactionModel>();
     qmlRegisterType<ResourcesUpdatesModel>("org.kde.discover", 1, 0, "ResourcesUpdatesModel");
-    
+    qmlRegisterType<ResourcesProxyModel>("org.kde.discover", 1, 0, "ResourcesProxyModel");
+
     qmlRegisterType<ReviewsModel>("org.kde.discover", 1, 0, "ReviewsModel");
     qmlRegisterType<ApplicationAddonsModel>("org.kde.discover", 1, 0, "ApplicationAddonsModel");
     qmlRegisterType<ScreenshotsModel>("org.kde.discover", 1, 0, "ScreenshotsModel");
-    qmlRegisterType<ApplicationProxyModelHelper>("org.kde.discover", 1, 0, "ApplicationProxyModel");
     qmlRegisterType<MessageActionsModel>("org.kde.discover", 1, 0, "MessageActionsModel");
     qmlRegisterType<UpdateModel>("org.kde.discover", 1, 0, "UpdateModel");
-    
+
     qmlRegisterUncreatableType<QAction>("org.kde.discover", 1, 0, "QAction", QStringLiteral("Use QQC Action"));
     qmlRegisterUncreatableType<AbstractResource>("org.kde.discover", 1, 0, "AbstractResource", QStringLiteral("should come from the ResourcesModel"));
-    qmlRegisterUncreatableType<ResourcesProxyModel>("org.kde.discover", 1, 0, "ResourcesProxyModel", QStringLiteral("should come from the ApplicationProxyModel"));
     qmlRegisterType<Rating>();
     qmlRegisterType<AbstractSourcesBackend>();
     qmlRegisterType<AbstractResourcesBackend>();

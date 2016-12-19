@@ -56,28 +56,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
     public:
-        enum Roles {
-            NameRole = Qt::UserRole,
-            IconRole,
-            CommentRole,
-            StateRole,
-            RatingRole,
-            RatingPointsRole,
-            RatingCountRole,
-            SortableRatingRole,
-            InstalledRole,
-            ApplicationRole,
-            OriginRole,
-            CanUpgrade,
-            PackageNameRole,
-            IsTechnicalRole,
-            CategoryRole,
-            CategoryDisplayRole,
-            SectionRole,
-            MimeTypes,
-            SizeRole,
-            LongDescriptionRole
-        };
         /** This constructor should be only used by unit tests.
          *  @p backendName defines what backend will be loaded when the backend is constructed.
          */

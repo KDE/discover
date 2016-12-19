@@ -134,7 +134,7 @@ void DummyTest::testSort()
 
     QCollator c;
     QBENCHMARK_ONCE {
-        pm.setSortRole(ResourcesModel::NameRole);
+        pm.setSortRole(ResourcesProxyModel::NameRole);
         pm.sort(0);
         QCOMPARE(pm.sortOrder(), Qt::AscendingOrder);
         QString last;
@@ -148,7 +148,7 @@ void DummyTest::testSort()
     }
 
     QBENCHMARK_ONCE {
-        pm.setSortRole(ResourcesModel::SortableRatingRole);
+        pm.setSortRole(ResourcesProxyModel::SortableRatingRole);
         int last=-1;
         for(int i = 0, count = pm.rowCount(); i<count; ++i) {
             const int current = pm.index(i, 0).data(pm.sortRole()).toInt();

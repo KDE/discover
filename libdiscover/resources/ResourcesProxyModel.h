@@ -25,6 +25,7 @@
 #include <QtCore/QSortFilterProxyModel>
 #include <QtCore/QString>
 #include <QStringList>
+#include <QQmlParserStatus>
 
 #include <Category/Category.h>
 
@@ -35,9 +36,10 @@
 class Transaction;
 class AggregatedResultsStream;
 
-class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel
+class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, public QQmlParserStatus
 {
     Q_OBJECT
+    Q_INTERFACES(QQmlParserStatus)
     Q_PROPERTY(int sortRole READ sortRole WRITE setSortRole NOTIFY sortRoleChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder NOTIFY sortOrderChanged)
     Q_PROPERTY(Category* filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
@@ -50,6 +52,29 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel
     Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
 public:
     explicit ResourcesProxyModel(QObject* parent = nullptr);
+    enum Roles {
+        NameRole = Qt::UserRole,
+        IconRole,
+        CommentRole,
+        StateRole,
+        RatingRole,
+        RatingPointsRole,
+        RatingCountRole,
+        SortableRatingRole,
+        InstalledRole,
+        ApplicationRole,
+        OriginRole,
+        CanUpgrade,
+        PackageNameRole,
+        IsTechnicalRole,
+        CategoryRole,
+        CategoryDisplayRole,
+        SectionRole,
+        MimeTypes,
+        SizeRole,
+        LongDescriptionRole
+    };
+    Q_ENUM(Roles)
 
     QHash<int, QByteArray> roleNames() const override;
 
@@ -83,6 +108,9 @@ public:
     bool lessThan(AbstractResource* rl, AbstractResource* rr) const;
     void invalidateFilter();
     void invalidateSorting();
+
+    void classBegin() override {}
+    void componentComplete() override;
 
 private Q_SLOTS:
     void refreshSearch();

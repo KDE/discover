@@ -7,8 +7,8 @@ import org.kde.kirigami 2.0 as Kirigami
 
 ApplicationsListPage {
     id: page
-    stateFilter: 2
-    sortRole: "ratingCount"
+    stateFilter: AbstractResource.Installed
+    sortRole: ResourcesProxyModel.RatingCountRole
     sortOrder: Qt.DescendingOrder
 
     title: i18n("Installed")

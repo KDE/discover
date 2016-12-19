@@ -34,30 +34,30 @@
 
 ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     : QAbstractListModel(parent)
-    , m_sortRole(ResourcesModel::NameRole)
+    , m_sortRole(NameRole)
     , m_sortOrder(Qt::AscendingOrder)
     , m_sortByRelevancy(false)
     , m_roles({
-        { ResourcesModel::NameRole, "name" },
-        { ResourcesModel::IconRole, "icon" },
-        { ResourcesModel::CommentRole, "comment" },
-        { ResourcesModel::StateRole, "state" },
-        { ResourcesModel::RatingRole, "rating" },
-        { ResourcesModel::RatingPointsRole, "ratingPoints" },
-        { ResourcesModel::RatingCountRole, "ratingCount" },
-        { ResourcesModel::SortableRatingRole, "sortableRating" },
-        { ResourcesModel::InstalledRole, "isInstalled" },
-        { ResourcesModel::ApplicationRole, "application" },
-        { ResourcesModel::OriginRole, "origin" },
-        { ResourcesModel::CanUpgrade, "canUpgrade" },
-        { ResourcesModel::PackageNameRole, "packageName" },
-        { ResourcesModel::IsTechnicalRole, "isTechnical" },
-        { ResourcesModel::CategoryRole, "category" },
-        { ResourcesModel::CategoryDisplayRole, "categoryDisplay" },
-        { ResourcesModel::SectionRole, "section" },
-        { ResourcesModel::MimeTypes, "mimetypes" },
-        { ResourcesModel::LongDescriptionRole, "longDescription" },
-        { ResourcesModel::SizeRole, "size" }
+        { NameRole, "name" },
+        { IconRole, "icon" },
+        { CommentRole, "comment" },
+        { StateRole, "state" },
+        { RatingRole, "rating" },
+        { RatingPointsRole, "ratingPoints" },
+        { RatingCountRole, "ratingCount" },
+        { SortableRatingRole, "sortableRating" },
+        { InstalledRole, "isInstalled" },
+        { ApplicationRole, "application" },
+        { OriginRole, "origin" },
+        { CanUpgrade, "canUpgrade" },
+        { PackageNameRole, "packageName" },
+        { IsTechnicalRole, "isTechnical" },
+        { CategoryRole, "category" },
+        { CategoryDisplayRole, "categoryDisplay" },
+        { SectionRole, "section" },
+        { MimeTypes, "mimetypes" },
+        { LongDescriptionRole, "longDescription" },
+        { SizeRole, "size" }
         })
     , m_currentStream(nullptr)
 {
@@ -68,6 +68,11 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     connect(ResourcesModel::global(), &ResourcesModel::backendDataChanged, this, &ResourcesProxyModel::refreshBackend);
     connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &ResourcesProxyModel::refreshResource);
     connect(ResourcesModel::global(), &ResourcesModel::resourceRemoved, this, &ResourcesProxyModel::removeResource);
+}
+
+void ResourcesProxyModel::componentComplete()
+{
+    invalidateFilter();
 }
 
 QHash<int, QByteArray> ResourcesProxyModel::roleNames() const
@@ -200,7 +205,7 @@ QVariantList ResourcesProxyModel::subcategories() const
 void ResourcesProxyModel::invalidateFilter()
 {
     if (m_currentStream) {
-        qWarning() << "last stream isn't over yet" << m_filters;
+        qWarning() << "last stream isn't over yet" << m_filters << this;
         delete m_currentStream;
     }
 
@@ -231,20 +236,20 @@ bool ResourcesProxyModel::lessThan(AbstractResource* leftPackage, AbstractResour
     QVariant leftValue;
     QVariant rightValue;
     //if we're comparing two equal values, we want the model sorted by application name
-    if(role != ResourcesModel::NameRole) {
+    if(role != NameRole) {
         leftValue = roleToValue(leftPackage, role);
         rightValue = roleToValue(rightPackage, role);
 
         if (leftValue == rightValue) {
-            role = ResourcesModel::NameRole;
+            role = NameRole;
             order = Qt::DescendingOrder;
         }
     }
 
     bool ret;
-    if(role == ResourcesModel::NameRole) {
+    if(role == NameRole) {
         ret = leftPackage->nameSortKey().compare(rightPackage->nameSortKey()) < 0;
-    } else if(role == ResourcesModel::CanUpgrade) {
+    } else if(role == CanUpgrade) {
         ret = leftValue.toBool();
     } else {
         ret = leftValue < rightValue;
@@ -310,12 +315,12 @@ QVariant ResourcesProxyModel::data(const QModelIndex& index, int role) const
 QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) const
 {
     switch(role) {
-        case ResourcesModel::ApplicationRole:
+        case ApplicationRole:
             return qVariantFromValue<QObject*>(resource);
-        case ResourcesModel::RatingPointsRole:
-        case ResourcesModel::RatingRole:
-        case ResourcesModel::RatingCountRole:
-        case ResourcesModel::SortableRatingRole: {
+        case RatingPointsRole:
+        case RatingRole:
+        case RatingCountRole:
+        case SortableRatingRole: {
             Rating* const rating = resource->rating();
             const int idx = Rating::staticMetaObject.indexOfProperty(roleNames().value(role).constData());
             Q_ASSERT(idx >= 0);
