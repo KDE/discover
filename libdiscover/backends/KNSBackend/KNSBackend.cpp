@@ -61,9 +61,7 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
                     if (QStandardPaths::isTestModeEnabled() && dirIt.fileName() != QLatin1String("discover_ktexteditor_codesnippets_core.knsrc"))
                         continue;
 
-                    auto bk = new KNSBackend(parent);
-                    bk->setName(dirIt.fileName());
-                    bk->setMetaData(QStringLiteral("plasma"), dirIt.filePath());
+                    auto bk = new KNSBackend(parent, QStringLiteral("plasma"), dirIt.filePath());
                     ret += bk;
                 }
             }
@@ -71,35 +69,19 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
         }
 };
 
-KNSBackend::KNSBackend(QObject* parent)
+KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &knsrc)
     : AbstractResourcesBackend(parent)
     , m_fetching(false)
     , m_isValid(true)
     , m_page(0)
     , m_reviews(new KNSReviews(this))
+    , m_name(knsrc)
+    , m_iconName(iconName)
     , m_updater(new StandardBackendUpdater(this))
-{}
-
-KNSBackend::~KNSBackend() = default;
-
-void KNSBackend::markInvalid(const QString &message)
 {
-    qWarning() << "invalid kns backend!" << m_name << "because:" << message;
-    m_isValid = false;
-    setFetching(false);
-}
-
-void KNSBackend::setMetaData(const QString& iconName, const QString &knsrc)
-{
+    const QString fileName = QFileInfo(m_name).fileName();
+    setName(fileName);
     setObjectName(knsrc);
-    m_iconName = iconName;
-
-    m_name = knsrc;
-
-    if (m_name.isEmpty()) {
-        markInvalid(QStringLiteral("Couldn't find knsrc file: ") + knsrc);
-        return;
-    }
 
     const KConfig conf(m_name);
     if (!conf.hasGroup("KNewStuff3")) {
@@ -107,7 +89,6 @@ void KNSBackend::setMetaData(const QString& iconName, const QString &knsrc)
         return;
     }
 
-    const QString fileName = QFileInfo(m_name).fileName();
     m_categories = QStringList{ fileName };
 
     const KConfigGroup group = conf.group("KNewStuff3");
@@ -146,6 +127,15 @@ void KNSBackend::setMetaData(const QString& iconName, const QString &knsrc)
     m_rootCategories = { addonsCategory };
 }
 
+KNSBackend::~KNSBackend() = default;
+
+void KNSBackend::markInvalid(const QString &message)
+{
+    qWarning() << "invalid kns backend!" << m_name << "because:" << message;
+    m_isValid = false;
+    setFetching(false);
+}
+
 void KNSBackend::setFetching(bool f)
 {
     if(m_fetching!=f) {
@@ -177,7 +167,7 @@ void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
         }
         resources += r;
     }
-    qDebug() << "received" << this << m_resourcesByName.count();
+//     qDebug() << "received" << this << m_resourcesByName.count();
     Q_EMIT receivedResources(resources);
     if (m_page >= 0) {
         ++m_page;

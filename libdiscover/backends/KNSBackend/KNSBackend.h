@@ -40,11 +40,9 @@ class DISCOVERCOMMON_EXPORT KNSBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 public:
-    explicit KNSBackend(QObject* parent = nullptr);
+    explicit KNSBackend(QObject* parent, const QString& iconName, const QString &knsrc);
     ~KNSBackend() override;
 
-    void setMetaData(const QString& iconName, const QString &knsrc);
-    
     void removeApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app, const AddonList& addons) override;
