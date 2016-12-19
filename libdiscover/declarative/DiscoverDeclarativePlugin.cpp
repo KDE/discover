@@ -65,6 +65,7 @@ void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
     
     qmlRegisterUncreatableType<QAction>("org.kde.discover", 1, 0, "QAction", QStringLiteral("Use QQC Action"));
     qmlRegisterUncreatableType<AbstractResource>("org.kde.discover", 1, 0, "AbstractResource", QStringLiteral("should come from the ResourcesModel"));
+    qmlRegisterUncreatableType<ResourcesProxyModel>("org.kde.discover", 1, 0, "ResourcesProxyModel", QStringLiteral("should come from the ApplicationProxyModel"));
     qmlRegisterType<Rating>();
     qmlRegisterType<AbstractSourcesBackend>();
     qmlRegisterType<AbstractResourcesBackend>();

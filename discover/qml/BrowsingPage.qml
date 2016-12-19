@@ -22,7 +22,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
 import org.kde.kquickcontrolsaddons 2.0
-import org.kde.discover.app 1.0
+import org.kde.discover 1.0
 import "navigation.js" as Navigation
 import org.kde.kirigami 2.0 as Kirigami
 
@@ -49,7 +49,7 @@ DiscoverPage
             Layout.fillWidth: true
             Layout.leftMargin: Kirigami.Units.gridUnit
             Layout.rightMargin: Kirigami.Units.gridUnit
-            sortRole: "ratingCount"
+            sortRole: ResourcesProxyModel.RatingCountRole
             title: i18n("Most Popular")
         }
     }

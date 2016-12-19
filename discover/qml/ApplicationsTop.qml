@@ -28,7 +28,7 @@ import org.kde.kirigami 2.0 as Kirigami
 
 ColumnLayout {
     id: topView
-    property alias sortRole: appsModel.stringSortRole
+    property alias sortRole: appsModel.sortRole
     property alias filteredCategory: appsModel.filteredCategory
     property alias title: titleItem.text
     readonly property alias titleHeight: titleItem.height
