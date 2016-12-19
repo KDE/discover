@@ -1,4 +1,6 @@
 [KNewStuff3]
+Name=Kate Snippets
+
 #ProvidersUrl=http://.../provider.xml
 ProvidersUrl=http://download.kde.org/ocs/providers.xml
 Categories=KTextEditor Snippet

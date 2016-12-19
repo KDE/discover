@@ -124,6 +124,11 @@ void KNSBackend::setMetaData(const QString& iconName, const QString &knsrc)
 
     const QVector<QPair<FilterType, QString>> filters = { {CategoryFilter, fileName } };
     const QSet<QString> potatoe = { QStringLiteral("potatoe") };
+    QString displayName = group.readEntry("Name", QString());
+    if (displayName.isEmpty()) {
+        displayName = fileName.mid(0, fileName.indexOf(QLatin1Char('.')));
+        displayName[0] = displayName[0].toUpper();
+    }
 
     static const QSet<QString> knsrcPlasma = {
         QStringLiteral("aurorae.knsrc"), QStringLiteral("icons.knsrc"), QStringLiteral("kfontinst.knsrc"), QStringLiteral("lookandfeel.knsrc"), QStringLiteral("plasma-themes.knsrc"), QStringLiteral("plasmoids.knsrc"),
@@ -132,7 +137,7 @@ void KNSBackend::setMetaData(const QString& iconName, const QString &knsrc)
         QStringLiteral("cgcgtk3.knsrc"), QStringLiteral("cgcicon.knsrc"), QStringLiteral("cgctheme.knsrc"), //GTK integration
         QStringLiteral("kwinswitcher.knsrc"), QStringLiteral("kwineffect.knsrc"), QStringLiteral("kwinscripts.knsrc") //KWin
     };
-    auto actualCategory = new Category(fileName.mid(0, fileName.indexOf(QLatin1Char('.'))), QStringLiteral("plasma"), filters, potatoe, {}, QUrl(), true);
+    auto actualCategory = new Category(displayName, QStringLiteral("plasma"), filters, potatoe, {}, QUrl(), true);
 
     const auto topLevelName = knsrcPlasma.contains(fileName)? i18n("Plasma Addons") : i18n("Application Addons");
     const QUrl decoration(knsrcPlasma.contains(fileName)? QStringLiteral("https://c2.staticflickr.com/4/3148/3042248532_20bd2e38f4_b.jpg") : QStringLiteral("https://c2.staticflickr.com/8/7067/6847903539_d9324dcd19_o.jpg"));
