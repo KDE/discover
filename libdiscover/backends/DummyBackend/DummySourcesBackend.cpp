@@ -46,6 +46,7 @@ bool DummySourcesBackend::addSource(const QString& id)
 {
     QStandardItem* it = new QStandardItem(id);
     it->setData(QVariant(id + QLatin1Char(' ') + id), Qt::ToolTipRole);
+    it->setData(name(), AbstractSourcesBackend::SectionRole);
     m_sources->appendRow(it);
     return true;
 }

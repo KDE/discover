@@ -93,11 +93,11 @@ void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QSt
     QStandardItem* item = findItemForId(id);
 
     if (!item) {
-        item = new QStandardItem;
-        item->setText(id);
+        item = new QStandardItem(id);
         add = true;
     }
     item->setData(description, Qt::ToolTipRole);
+    item->setData(name(), AbstractSourcesBackend::SectionRole);
     item->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
 
     if (add)

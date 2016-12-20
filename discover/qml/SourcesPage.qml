@@ -12,10 +12,60 @@ DiscoverPage {
     clip: true
     title: i18n("Settings")
 
-    ListView {
+    Instantiator {
         model: SourcesModel
+        delegate: QtObject {
+            readonly property var sourcesModel: sourceBackend.sources
+
+            readonly property var a: Connections {
+                target: sourceBackend
+                onPassiveMessage: window.showPassiveNotification(message)
+            }
+            readonly property var b: AddSourceDialog {
+                id: addSourceDialog
+                source: sourceBackend
+            }
+
+            readonly property var c: MenuItem {
+                id: menuItem
+                text: sourceBackend.name
+                onTriggered: {
+                    try {
+                        addSourceDialog.open()
+                        addSourceDialog.visible = true
+                    } catch (e) {
+                        console.log("error loading dialog:", e)
+                    }
+                }
+            }
+
+            Component.onCompleted: {
+                sourcesMenu.insertItem(0, menuItem)
+            }
+        }
+        onObjectAdded: {
+            everySourceModel.addSourceModel(object.sourcesModel)
+        }
+        onObjectRemoved: {
+            everySourceModel.removeSourceModel(object.sourcesModel)
+        }
+    }
+
+    ListView {
+        id: sources
+        model: KConcatenateRowsProxyModel {
+            id: everySourceModel
+        }
+        currentIndex: -1
 
         Menu { id: sourcesMenu }
+
+        section {
+            property: "statusTip"
+            delegate: Kirigami.Heading {
+                text: section
+            }
+        }
 
         header: PageHeader {
             anchors {
@@ -72,87 +122,40 @@ DiscoverPage {
             }
         }
 
-        delegate: ColumnLayout {
-            id: sourceDelegate
-            anchors {
-                left: parent.left
-                right: parent.right
-                leftMargin: Kirigami.Units.largeSpacing
-                rightMargin: Kirigami.Units.largeSpacing
-            }
+        delegate: Kirigami.SwipeListItem {
+            Layout.fillWidth: true
+            enabled: display.length>0
+            checked: ListView.isCurrentItem
+            onClicked: Navigation.openApplicationListSource(model.display)
+            readonly property string backendName: model.statusTip
 
-            readonly property QtObject sourceBackend: model.sourceBackend
+            actions: [
+                Kirigami.Action {
+                    enabled: display.length>0
+                    iconName: "view-filter"
+                    tooltip: i18n("Browse the origin's resources")
+                    onTriggered: Navigation.openApplicationListSource(model.display)
+                },
+                Kirigami.Action {
+                    iconName: "edit-delete"
+                    tooltip: i18n("Delete the origin")
+                    onTriggered: sourceDelegate.sourceBackend.removeSource(model.display)
+                }
+            ]
 
-            Connections {
-                target: sourceDelegate.sourceBackend
-                onPassiveMessage: window.showPassiveNotification(message)
-            }
-            AddSourceDialog {
-                id: addSourceDialog
-                source: sourceDelegate.sourceBackend
-            }
-
-            MenuItem {
-                id: menuItem
-                text: model.display
-                onTriggered: {
-                    try {
-                        addSourceDialog.open()
-                        addSourceDialog.visible = true
-                    } catch (e) {
-                        console.log("error loading dialog:", e)
+            RowLayout {
+                CheckBox {
+                    id: enabledBox
+                    checked: model.checked != Qt.Unchecked
+                    enabled: model.checked !== undefined
+                    onClicked: {
+                        model.checked = checkedState
                     }
                 }
-            }
-
-            Component.onCompleted: {
-                sourcesMenu.insertItem(0, menuItem)
-            }
-
-
-            Kirigami.Heading {
-                Layout.topMargin: Kirigami.Units.largeSpacing
-                Layout.bottomMargin: Kirigami.Units.smallSpacing
-                text: sourceBackend.name
-            }
-            spacing: 0
-            Repeater {
-                model: sourceBackend.sources
-
-                delegate: Kirigami.SwipeListItem {
+                Label {
+                    text: model.display + " - <i>" + model.toolTip + "</i>"
+                    elide: Text.ElideRight
                     Layout.fillWidth: true
-                    enabled: display.length>0
-                    onClicked: Navigation.openApplicationListSource(model.display)
-
-                    actions: [
-                        Kirigami.Action {
-                            enabled: display.length>0
-                            iconName: "view-filter"
-                            tooltip: i18n("Browse the origin's resources")
-                            onTriggered: Navigation.openApplicationListSource(model.display)
-                        },
-                        Kirigami.Action {
-                            iconName: "edit-delete"
-                            tooltip: i18n("Delete the origin")
-                            onTriggered: sourceDelegate.sourceBackend.removeSource(model.display)
-                        }
-                    ]
-
-                    RowLayout {
-                        CheckBox {
-                            id: enabledBox
-                            checked: model.checked != Qt.Unchecked
-                            enabled: model.checked !== undefined
-                            onClicked: {
-                                model.checked = checkedState
-                            }
-                        }
-                        Label {
-                            text: model.display + " - <i>" + model.toolTip + "</i>"
-                            elide: Text.ElideRight
-                            Layout.fillWidth: true
-                        }
-                    }
                 }
             }
         }

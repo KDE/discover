@@ -34,9 +34,7 @@ SourcesModel::~SourcesModel() = default;
 
 QHash<int, QByteArray> SourcesModel::roleNames() const
 {
-    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
-    roles[SourceBackend] = "sourceBackend";
-    return roles;
+    return { {SourceBackend, "sourceBackend"} };
 }
 
 SourcesModel* SourcesModel::global()
@@ -61,8 +59,6 @@ QVariant SourcesModel::data(const QModelIndex& index, int role) const
         return QVariant();
     }
     switch(role) {
-        case Qt::DisplayRole:
-            return m_sources[index.row()]->name();
         case SourceBackend:
             return QVariant::fromValue<QObject*>(m_sources[index.row()]);
     }
@@ -73,11 +69,6 @@ QVariant SourcesModel::data(const QModelIndex& index, int role) const
 int SourcesModel::rowCount(const QModelIndex& parent) const
 {
     return parent.isValid() ? 0 : m_sources.count();
-}
-
-QVariant SourcesModel::get(int row, const QByteArray& roleName)
-{
-    return data(index(row), roleNames().key(roleName));
 }
 
 QList<QObject*> SourcesModel::actions() const

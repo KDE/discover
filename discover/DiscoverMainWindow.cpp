@@ -48,6 +48,7 @@
 #include <KAboutData>
 #include <KHelpMenu>
 #include <KShortcutsDialog>
+#include <KConcatenateRowsProxyModel>
 // #include <KSwitchLanguageDialog>
 
 // DiscoverCommon includes
@@ -92,6 +93,8 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     qmlRegisterType<UnityLauncher>("org.kde.discover.app", 1, 0, "UnityLauncher");
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
     qmlRegisterType<IconColors>("org.kde.discover.app", 1, 0, "IconColors");
+    qmlRegisterType<KConcatenateRowsProxyModel>("org.kde.discover.app", 1, 0, "KConcatenateRowsProxyModel");
+
     qmlRegisterSingletonType<SystemFonts>("org.kde.discover.app", 1, 0, "SystemFonts", ([](QQmlEngine*, QJSEngine*) -> QObject* { return new SystemFonts; }));
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/DiscoverSystemPalette.qml")), "org.kde.discover.app", 1, 0, "DiscoverSystemPalette");
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/Helpers.qml")), "org.kde.discover.app", 1, 0, "Helpers");

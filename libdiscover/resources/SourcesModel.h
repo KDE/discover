@@ -48,7 +48,6 @@ class DISCOVERCOMMON_EXPORT SourcesModel : public QAbstractListModel
         QHash<int, QByteArray> roleNames() const override;
 
         QList<QObject*> actions() const;
-        Q_SCRIPTABLE QVariant get(int row, const QByteArray& roleName);
 
     Q_SIGNALS:
         void sourcesChanged();

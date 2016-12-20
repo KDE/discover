@@ -36,6 +36,11 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
         explicit AbstractSourcesBackend(QObject* parent);
         ~AbstractSourcesBackend() override;
 
+        enum Roles {
+            SectionRole = Qt::StatusTipRole
+        };
+        Q_ENUM(Roles)
+
         virtual QString name() const = 0;
         virtual QString idDescription() = 0;
 
