@@ -40,7 +40,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
 {
     Q_OBJECT
     Q_INTERFACES(QQmlParserStatus)
-    Q_PROPERTY(int sortRole READ sortRole WRITE setSortRole NOTIFY sortRoleChanged)
+    Q_PROPERTY(Roles sortRole READ sortRole WRITE setSortRole NOTIFY sortRoleChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder NOTIFY sortOrderChanged)
     Q_PROPERTY(Category* filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
     Q_PROPERTY(QString originFilter READ originFilter WRITE setOriginFilter)
@@ -85,8 +85,8 @@ public:
     void setFiltersFromCategory(Category *category);
     void setStateFilter(AbstractResource::State s);
     AbstractResource::State stateFilter() const;
-    void setSortRole(int sortRole);
-    int sortRole() const { return m_sortRole; }
+    void setSortRole(Roles sortRole);
+    Roles sortRole() const { return m_sortRole; }
     void setSortOrder(Qt::SortOrder sortOrder);
     Qt::SortOrder sortOrder() const { return m_sortOrder; }
 
@@ -124,7 +124,7 @@ private:
     void addResources(const QVector<AbstractResource*> &res);
     void fetchSubcategories();
 
-    int m_sortRole;
+    Roles m_sortRole;
     Qt::SortOrder m_sortOrder;
 
     bool m_sortByRelevancy;

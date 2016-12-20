@@ -80,7 +80,7 @@ QHash<int, QByteArray> ResourcesProxyModel::roleNames() const
     return m_roles;
 }
 
-void ResourcesProxyModel::setSortRole(int sortRole)
+void ResourcesProxyModel::setSortRole(Roles sortRole)
 {
     if (sortRole != m_sortRole) {
         Q_ASSERT(roleNames().contains(sortRole));
