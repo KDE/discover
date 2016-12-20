@@ -12,6 +12,10 @@ DiscoverPage {
     clip: true
     title: i18n("Settings")
 
+    Keys.onUpPressed: sources.decrementCurrentIndex()
+    Keys.onDownPressed: sources.incrementCurrentIndex()
+    Keys.forwardTo: [ sources.currentItem ]
+
     Instantiator {
         model: SourcesModel
         delegate: QtObject {
@@ -122,6 +126,7 @@ DiscoverPage {
             }
         }
 
+
         delegate: Kirigami.SwipeListItem {
             Layout.fillWidth: true
             enabled: display.length>0
@@ -129,6 +134,7 @@ DiscoverPage {
             onClicked: Navigation.openApplicationListSource(model.display)
             readonly property string backendName: model.statusTip
 
+            Keys.onReturnPressed: clicked()
             actions: [
                 Kirigami.Action {
                     enabled: display.length>0

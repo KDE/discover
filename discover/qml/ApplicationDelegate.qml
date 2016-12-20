@@ -33,11 +33,14 @@ Kirigami.AbstractListItem
     property alias application: installButton.application
     property bool compact: false
 
-    onClicked: {
+    function trigger() {
         if (ListView.view)
             ListView.view.currentIndex = index
         Navigation.openApplication(application)
     }
+    checked: ListView.isCurrentItem
+    Keys.onReturnPressed: trigger()
+    onClicked: trigger()
     implicitHeight: Kirigami.Units.gridUnit * (compact ? 7 : 10)
 
     Item {

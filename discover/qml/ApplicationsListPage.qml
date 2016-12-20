@@ -51,6 +51,10 @@ DiscoverPage {
     }
     signal clearSearch()
 
+    Keys.onUpPressed: apps.decrementCurrentIndex()
+    Keys.onDownPressed: apps.incrementCurrentIndex()
+    Keys.forwardTo: [ apps.currentItem ]
+
     ListView {
         id: apps
         section.delegate: Label {
@@ -75,6 +79,7 @@ DiscoverPage {
             sortOrder: Qt.DescendingOrder
         }
         spacing: Kirigami.Units.gridUnit
+        currentIndex: -1
         delegate: ApplicationDelegate {
             x: Kirigami.Units.gridUnit
             width: ListView.view.width - Kirigami.Units.gridUnit*2

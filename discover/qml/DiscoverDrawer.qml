@@ -61,6 +61,7 @@ Kirigami.GlobalDrawer {
         Layout.rightMargin: Kirigami.Units.smallSpacing
 
         enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
+        Keys.forwardTo: [window.pageStack]
 
         Component.onCompleted: {
             searchField.forceActiveFocus()

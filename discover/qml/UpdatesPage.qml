@@ -20,6 +20,9 @@ DiscoverPage
     property string footerLabel: ""
 
     //TODO: use supportsRefreshing to fetch updates
+    Keys.onUpPressed: updatesView.decrementCurrentIndex()
+    Keys.onDownPressed: updatesView.incrementCurrentIndex()
+    Keys.forwardTo: [ updatesView.currentItem ]
 
     ListView
     {
@@ -132,8 +135,13 @@ DiscoverPage
         delegate: Kirigami.AbstractListItem {
             x: Kirigami.Units.gridUnit
             width: ListView.view.width - Kirigami.Units.gridUnit * 2
+            checked: ListView.isCurrentItem
             onEnabledChanged: if (!enabled) {
                 layout.extended = false;
+            }
+
+            Keys.onReturnPressed: {
+                itemChecked.clicked()
             }
 
             ColumnLayout {
@@ -148,6 +156,7 @@ DiscoverPage
                     Layout.fillHeight: true
 
                     CheckBox {
+                        id: itemChecked
                         anchors.verticalCenter: parent.verticalCenter
                         checked: model.checked == Qt.Checked
                         onClicked: model.checked = (model.checked==Qt.Checked ? Qt.Unchecked : Qt.Checked)
