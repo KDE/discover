@@ -23,6 +23,7 @@ import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover 1.0
+import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 import org.kde.kirigami 2.0 as Kirigami
 
@@ -39,18 +40,32 @@ DiscoverPage
             return;
         Navigation.openCategory(null, "")
     }
-    pageHeader: Item {}
-    CategoryDisplay {
-        category: null
-        width: parent.width
-        background: "https://c2.staticflickr.com/8/7193/6900377481_76367f973a_o.jpg"
 
-        ApplicationsTop {
-            Layout.fillWidth: true
-            Layout.leftMargin: Kirigami.Units.gridUnit
-            Layout.rightMargin: Kirigami.Units.gridUnit
-            sortRole: ResourcesProxyModel.RatingCountRole
-            title: i18n("Most Popular")
+    ListView {
+        id: apps
+
+        header: CategoryDisplay {
+            anchors {
+                left: parent.left
+                right: parent.right
+            }
+            category: null
+            background: "https://c2.staticflickr.com/8/7193/6900377481_76367f973a_o.jpg"
+        }
+        model: PaginateModel {
+            pageSize: 5
+            sourceModel: ResourcesProxyModel {
+                id: appsModel
+                sortOrder: Qt.DescendingOrder
+                sortRole: ResourcesProxyModel.RatingCountRole
+//                 onRowsInserted: sortModel()
+            }
+        }
+        spacing: Kirigami.Units.gridUnit
+        delegate: ApplicationDelegate {
+            x: Kirigami.Units.gridUnit
+            width: ListView.view.width - Kirigami.Units.gridUnit*2
+            application: model.application
         }
     }
 }

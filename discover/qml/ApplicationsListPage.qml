@@ -53,7 +53,6 @@ DiscoverPage {
 
     ListView {
         id: apps
-        anchors.fill: parent
         section.delegate: Label {
             text: section
             anchors {
