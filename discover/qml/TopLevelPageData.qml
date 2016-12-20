@@ -18,12 +18,11 @@
  */
 
 import QtQuick 2.1
-import QtQuick.Controls 1.2
+import org.kde.kirigami 2.0
 import "navigation.js" as Navigation
 
 Action {
     property Component component
-    checkable: window.currentTopLevel==component
     checked: window.currentTopLevel==component
     enabled: window.navigationEnabled
 

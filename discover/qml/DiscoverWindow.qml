@@ -55,15 +55,13 @@ Kirigami.ApplicationWindow
         }
     }
 
-    property list<Action> awesome: [
-        TopLevelPageData {
-            iconName: "tools-wizard"
-            text: i18n("Discover")
-            component: topBrowsingComp
-            objectName: "discover"
-            shortcut: "Alt+D"
-        }
-    ]
+    TopLevelPageData {
+        iconName: "tools-wizard"
+        text: i18n("Discover")
+        component: topBrowsingComp
+        objectName: "discover"
+        shortcut: "Alt+D"
+    }
     TopLevelPageData {
         id: installedAction
         text: TransactionModel.count == 0 ? i18n("Installed") : i18n("Installing...")
@@ -87,13 +85,6 @@ Kirigami.ApplicationWindow
         component: topSourcesComp
         objectName: "settings"
         shortcut: "Alt+S"
-    }
-    TopLevelPageData {
-        id: sources
-        text: i18n("Configure Sources...")
-        iconName: "repository"
-        shortcut: "Alt+S"
-        component: topSourcesComp
     }
 
     Connections {
