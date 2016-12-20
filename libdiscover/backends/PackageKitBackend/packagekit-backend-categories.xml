@@ -477,6 +477,7 @@
     <Menu>
       <Name>Plasma Desktop Widgets</Name>
       <Icon>plasma</Icon>
+      <Addons />
       <Include>
         <Or>
             <AppstreamIdWildcard>org.kde.plasma.*</AppstreamIdWildcard>

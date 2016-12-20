@@ -72,6 +72,8 @@ public:
     Q_SCRIPTABLE bool contains(Category* cat) const;
     Q_SCRIPTABLE bool contains(const QVariantList &cats) const;
 
+    static bool categoryLessThan(Category *c1, const Category *c2);
+
 private:
     QString m_name;
     QString m_iconString;

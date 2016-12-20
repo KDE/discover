@@ -71,8 +71,3 @@ QVector<Category*> CategoriesReader::loadCategoriesPath(const QString& path)
     }
     return ret;
 }
-
-bool CategoriesReader::categoryLessThan(Category *c1, const Category *c2)
-{
-    return (QString::localeAwareCompare(c1->name(), c2->name()) < 0);
-}

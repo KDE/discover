@@ -31,8 +31,6 @@ class DISCOVERCOMMON_EXPORT CategoriesReader
     public:
         QVector<Category*> loadCategoriesPath(const QString& path);
         QVector<Category*> loadCategoriesFile(AbstractResourcesBackend* backend);
-
-        static bool categoryLessThan(Category *c1, const Category *c2);
 };
 
 #endif // CATEGORIESREADER_H

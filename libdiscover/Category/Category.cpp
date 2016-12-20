@@ -145,6 +145,11 @@ QVector<Category *> Category::subCategories() const
     return m_subCategories;
 }
 
+bool Category::categoryLessThan(Category *c1, const Category *c2)
+{
+    return (!c1->isAddons() && c2->isAddons()) || (c1->isAddons()==c2->isAddons() && QString::localeAwareCompare(c1->name(), c2->name()) < 0);
+}
+
 //TODO: maybe it would be interesting to apply some rules to a said backend...
 void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
 {
@@ -171,6 +176,12 @@ void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
                 delete newcat;
                 return;
             }
+        }
+    }
+    for(auto it = list.begin(), itEnd = list.end(); it!=itEnd; ++it) {
+        if (!categoryLessThan(*it, newcat)) {
+            list.insert(it, newcat);
+            return;
         }
     }
     list << newcat;
