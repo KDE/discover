@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Discover
 Name[ar]=استكشف
+Name[ast]=Discover
 Name[ca]=Discover
 Name[ca@valencia]=Discover
 Name[da]=Opdagelse
@@ -42,7 +43,6 @@ X-DocPath=plasma-discover/index.html
 InitialPreference=5
 GenericName=Software Center
 GenericName[ar]=مركز برمجيّات
-GenericName[ast]=Centru de software
 GenericName[ca]=Centre de programari
 GenericName[ca@valencia]=Centre de programari
 GenericName[cs]=Centrum softwaru

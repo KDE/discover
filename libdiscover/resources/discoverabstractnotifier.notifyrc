@@ -37,7 +37,6 @@ Comment[zh_TW]=探詢
 [Event/Update]
 Name=Updates Are Available
 Name[ar]=التّحديثات متوفّرة
-Name[ast]=Tan disponibles anovamientos
 Name[ca]=Hi ha actualitzacions disponibles
 Name[ca@valencia]=Hi ha actualitzacions disponibles
 Name[cs]=Jsou dostupné aktualizace
@@ -75,7 +74,6 @@ Name[zh_CN]=更新可用
 Name[zh_TW]=有可用的更新
 Comment=Updates Available
 Comment[ar]=التّحديثات متوفّرة
-Comment[ast]=Anovamientos disponibles
 Comment[ca]=Actualitzacions disponibles
 Comment[ca@valencia]=Actualitzacions disponibles
 Comment[cs]=Jsou dostupné aktualizace
