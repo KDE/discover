@@ -51,7 +51,8 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
     Q_PLUGIN_METADATA(IID "org.kde.muon.AbstractResourcesBackendFactory")
     Q_INTERFACES(AbstractResourcesBackendFactory)
     public:
-        QVector<AbstractResourcesBackend*> newInstance(QObject* parent, const QString &/*name*/) const override {
+        QVector<AbstractResourcesBackend*> newInstance(QObject* parent, const QString &/*name*/) const override
+        {
             QVector<AbstractResourcesBackend*> ret;
             for (const QString &path: QStandardPaths::standardLocations(QStandardPaths::GenericConfigLocation)) {
                 QDirIterator dirIt(path, {QStringLiteral("*.knsrc")}, QDir::Files);
