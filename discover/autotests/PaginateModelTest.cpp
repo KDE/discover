@@ -96,6 +96,23 @@ private Q_SLOTS:
         QCOMPARE(spy.count(), 4);
     }
 
+    void testItemAddBeginning() {
+        QStandardItemModel smallerModel;
+
+        PaginateModel pm;
+        new ModelTest(&pm, &pm);
+        pm.setSourceModel(&smallerModel);
+        pm.setPageSize(5);
+        QCOMPARE(pm.pageCount(), 1);
+        QCOMPARE(pm.rowCount(), 0);
+        smallerModel.insertRow(0, new QStandardItem(QStringLiteral("just one")));
+        QCOMPARE(pm.pageCount(), 1);
+        QCOMPARE(pm.rowCount(), 1);
+        smallerModel.removeRow(0);
+        QCOMPARE(pm.pageCount(), 1);
+        QCOMPARE(pm.rowCount(), 0);
+    }
+
     void testItemRemoved() {
         PaginateModel pm;
         new ModelTest(&pm, &pm);

@@ -189,8 +189,9 @@ int PaginateModel::pageCount() const
 {
     if(!m_sourceModel)
         return 0;
-    const int r = (m_sourceModel->rowCount()%m_pageSize == 0) ? 1 : 0;
-    return qCeil(float(m_sourceModel->rowCount())/m_pageSize) - r;
+    const int rc = m_sourceModel->rowCount();
+    const int r = (rc%m_pageSize == 0) ? 1 : 0;
+    return qMax(qCeil(float(rc)/m_pageSize) - r, 1);
 }
 
 bool PaginateModel::hasStaticRowCount() const
