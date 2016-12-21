@@ -136,7 +136,7 @@ DiscoverPage
         delegate: Kirigami.AbstractListItem {
             x: Kirigami.Units.gridUnit
             width: ListView.view.width - Kirigami.Units.gridUnit * 2
-            checked: ListView.isCurrentItem
+            highlighted: ListView.isCurrentItem
             onEnabledChanged: if (!enabled) {
                 layout.extended = false;
             }

@@ -130,7 +130,7 @@ DiscoverPage {
         delegate: Kirigami.SwipeListItem {
             Layout.fillWidth: true
             enabled: display.length>0
-            checked: ListView.isCurrentItem
+            highlighted: ListView.isCurrentItem
             onClicked: Navigation.openApplicationListSource(model.display)
             readonly property string backendName: model.statusTip
 

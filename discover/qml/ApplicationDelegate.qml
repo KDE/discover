@@ -38,7 +38,7 @@ Kirigami.AbstractListItem
             ListView.view.currentIndex = index
         Navigation.openApplication(application)
     }
-    checked: ListView.isCurrentItem
+    highlighted: ListView.isCurrentItem
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
     implicitHeight: Kirigami.Units.gridUnit * (compact ? 7 : 10)
