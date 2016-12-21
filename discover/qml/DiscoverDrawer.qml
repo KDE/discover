@@ -167,7 +167,6 @@ Kirigami.GlobalDrawer {
                     window.leftPage.category = category
                     pageStack.currentIndex = 0
                 }
-                checked = Qt.binding(function () { return itsMe });
             }
         }
     }
