@@ -27,6 +27,7 @@ DiscoverPage
     ListView
     {
         id: updatesView
+        currentIndex: -1
         ResourcesUpdatesModel {
             id: resourcesUpdatesModel
             onIsProgressingChanged: {
