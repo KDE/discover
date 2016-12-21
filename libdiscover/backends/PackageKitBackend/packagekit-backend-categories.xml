@@ -475,7 +475,7 @@
     </Include>
 
     <Menu>
-      <Name>Plasma Desktop Widgets</Name>
+      <Name>Plasma Widgets</Name>
       <Icon>plasma</Icon>
       <Addons />
       <Include>
