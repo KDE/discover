@@ -253,7 +253,7 @@ bool ResourcesProxyModel::lessThan(AbstractResource* leftPackage, AbstractResour
     } else {
         ret = leftValue < rightValue;
     }
-    return ret != (order == Qt::AscendingOrder);
+    return ret != (order != Qt::AscendingOrder);
 }
 
 Category* ResourcesProxyModel::filteredCategory() const

@@ -37,6 +37,7 @@ private Q_SLOTS:
 
     void testReadData();
     void testProxy();
+    void testProxySorting();
     void testFetch();
     void testSort();
     void testInstallAddons();

@@ -116,6 +116,31 @@ void DummyTest::testProxy()
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
 }
 
+void DummyTest::testProxySorting()
+{
+    ResourcesProxyModel pm;
+    QSignalSpy spy(&pm, &ResourcesProxyModel::busyChanged);
+//     QVERIFY(spy.wait());
+    QVERIFY(!pm.isBusy());
+
+    pm.setFiltersFromCategory(CategoryModel::global()->rootCategories().first());
+    pm.setSortOrder(Qt::DescendingOrder);
+    pm.setSortRole(ResourcesProxyModel::RatingCountRole);
+    pm.componentComplete();
+    QVERIFY(pm.isBusy());
+    QVERIFY(spy.wait());
+    QVERIFY(!pm.isBusy());
+
+    QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
+    int lastRatingCount;
+    for(int i=0, rc=pm.rowCount(); i<rc; ++i) {
+        const QModelIndex mi = pm.index(i, 0);
+
+        const auto value = mi.data(pm.sortRole());
+        QVERIFY(i==0 || value <= lastRatingCount);
+    }
+}
+
 void DummyTest::testFetch()
 {
     const auto resources = fetchResources(m_appBackend->search({}));
