@@ -74,6 +74,14 @@ Kirigami.ScrollablePage
         }
     }
 
+    Keys.onUpPressed: if (root.flickable.decrementCurrentIndex) {
+        root.flickable.decrementCurrentIndex()
+    }
+    Keys.onDownPressed: if (root.flickable.incrementCurrentIndex) {
+        root.flickable.incrementCurrentIndex()
+    }
+    Keys.forwardTo: ("currentItem" in root.flickable) ? [ root.flickable.currentItem ] : []
+
     readonly property var s1: Shortcut {
         sequence: StandardKey.MoveToNextPage
         enabled: pageStack.currentItem == root

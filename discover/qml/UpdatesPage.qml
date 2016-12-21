@@ -20,10 +20,6 @@ DiscoverPage
     property string footerLabel: ""
 
     //TODO: use supportsRefreshing to fetch updates
-    Keys.onUpPressed: updatesView.decrementCurrentIndex()
-    Keys.onDownPressed: updatesView.incrementCurrentIndex()
-    Keys.forwardTo: [ updatesView.currentItem ]
-
     ListView
     {
         id: updatesView

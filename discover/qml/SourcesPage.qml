@@ -12,11 +12,7 @@ DiscoverPage {
     clip: true
     title: i18n("Settings")
 
-    Keys.onUpPressed: sources.decrementCurrentIndex()
-    Keys.onDownPressed: sources.incrementCurrentIndex()
-    Keys.forwardTo: [ sources.currentItem ]
-
-    Instantiator {
+    readonly property var fu: Instantiator {
         model: SourcesModel
         delegate: QtObject {
             readonly property var sourcesModel: sourceBackend.sources
@@ -55,8 +51,7 @@ DiscoverPage {
         }
     }
 
-    ListView {
-        id: sources
+    mainItem: ListView {
         model: KConcatenateRowsProxyModel {
             id: everySourceModel
         }

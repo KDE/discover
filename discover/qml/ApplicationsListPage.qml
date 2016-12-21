@@ -51,10 +51,6 @@ DiscoverPage {
     }
     signal clearSearch()
 
-    Keys.onUpPressed: apps.decrementCurrentIndex()
-    Keys.onDownPressed: apps.incrementCurrentIndex()
-    Keys.forwardTo: [ apps.currentItem ]
-
     ListView {
         id: apps
         section.delegate: Label {
