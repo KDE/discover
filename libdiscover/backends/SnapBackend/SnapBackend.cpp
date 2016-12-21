@@ -24,6 +24,7 @@
 #include "SnapReviewsBackend.h"
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
+#include <Category/Category.h>
 #include <Transaction/Transaction.h>
 #include <Transaction/TransactionModel.h>
 
@@ -54,6 +55,8 @@ int SnapBackend::updatesCount() const
 
 ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& filters)
 {
+    if (filters.category && filters.category->isAddons())
+        return new ResultsStream(QStringLiteral("Snap-void"), {});
     if (filters.state >= AbstractResource::Installed) {
         return populate(m_socket.snaps(), AbstractResource::Installed);
     } else {
