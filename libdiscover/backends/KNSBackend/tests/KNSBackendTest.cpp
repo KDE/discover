@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "KNSBackendTest.h"
+#include "utils.h"
 #include <KNSBackend.h>
 #include <KXmlGuiWindow>
 #include <resources/AbstractBackendUpdater.h>
@@ -28,6 +29,7 @@
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/Rating.h>
 #include <Category/Category.h>
+#include <Category/CategoryModel.h>
 #include <DiscoverBackendsFactory.h>
 #include <QStandardPaths>
 
@@ -43,22 +45,23 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     QStandardPaths::setTestModeEnabled(true);
     ResourcesModel* model = new ResourcesModel(QLatin1String("kns-backend"), this);
     Q_ASSERT(!model->backends().isEmpty());
-    m_backend = model->backends().at(0);
+    auto findTestBackend = [](AbstractResourcesBackend* backend) {
+        return backend->name() == QLatin1String("discover_ktexteditor_codesnippets_core.knsrc");
+    };
+    m_backend = kFilter<QVector<AbstractResourcesBackend*>>(model->backends(), findTestBackend).at(0);
 
     if (!m_backend->isValid()) {
         qWarning() << "couldn't run the test";
         exit(0);
     }
 
-    QSignalSpy s(model, SIGNAL(allInitialized()));
-    Q_ASSERT(s.wait(50000));
     connect(m_backend->reviewsBackend(), &AbstractReviewsBackend::reviewsReady, this, &KNSBackendTest::reviewsArrived);
 }
 
 QVector<AbstractResource*> KNSBackendTest::getAllResources(AbstractResourcesBackend* backend)
 {
     AbstractResourcesBackend::Filters f;
-    f.category = backend->category().first();
+    f.category = CategoryModel::global()->rootCategories().first();
     auto stream = backend->search(f);
     Q_ASSERT(stream->objectName() != QLatin1String("KNS-void"));
     QSignalSpy spyResources(stream, &ResultsStream::destroyed);

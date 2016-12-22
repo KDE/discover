@@ -60,9 +60,6 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
                 for(; dirIt.hasNext(); ) {
                     dirIt.next();
 
-                    if (QStandardPaths::isTestModeEnabled() && dirIt.fileName() != QLatin1String("discover_ktexteditor_codesnippets_core.knsrc"))
-                        continue;
-
                     auto bk = new KNSBackend(parent, QStringLiteral("plasma"), dirIt.filePath());
                     ret += bk;
                 }

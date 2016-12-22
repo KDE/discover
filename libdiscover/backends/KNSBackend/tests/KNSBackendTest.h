@@ -22,6 +22,7 @@
 #define KNSBACKENDTEST_H
 
 #include <QtCore/QObject>
+#include <QtCore/QPointer>
 
 class AbstractResourcesBackend;
 class AbstractResource;
@@ -43,8 +44,8 @@ class KNSBackendTest : public QObject
 
     private:
         QVector<AbstractResource*> getAllResources(AbstractResourcesBackend* backend);
-        AbstractResourcesBackend* m_backend;
-        AbstractResource* m_r;
+        QPointer<AbstractResourcesBackend> m_backend;
+        QPointer<AbstractResource> m_r;
         QList<Review*> m_revs;
 };
 
