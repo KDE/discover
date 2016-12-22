@@ -23,6 +23,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QStandardPaths>
+#include <QTimer>
 #include <QDirIterator>
 
 // Attica includes
@@ -104,6 +105,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     connect(m_manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSBackend::statusChanged);
     m_page = -1;
     m_manager->checkForInstalled();
+    m_responsePending = true;
 
     const QVector<QPair<FilterType, QString>> filters = { {CategoryFilter, fileName } };
     const QSet<QString> backendName = { name() };
@@ -152,6 +154,9 @@ bool KNSBackend::isValid() const
 
 void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
 {
+    m_responsePending = false;
+    QTimer::singleShot(0, this, &KNSBackend::availableForQueries);
+
     if(entries.isEmpty()) {
         Q_EMIT searchFinished();
         setFetching(false);
@@ -173,6 +178,7 @@ void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
     if (m_page >= 0) {
         ++m_page;
         m_manager->search(m_page);
+        m_responsePending = true;
     }
 }
 
@@ -273,22 +279,32 @@ ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filte
         }
         return new ResultsStream(QStringLiteral("KNS-installed"), ret);
     } else if (filter.category && filter.category->matchesCategoryName(m_categories.first())) {
-        m_manager->setSearchTerm(filter.search);
-        return searchStream();
+        return searchStream(filter.search);
     } else if (!filter.search.isEmpty()) {
-        m_manager->setSearchTerm(filter.search);
-        return searchStream();
+        return searchStream(filter.search);
     }
     return new ResultsStream(QStringLiteral("KNS-void"), {});
 }
 
-ResultsStream * KNSBackend::searchStream()
+ResultsStream * KNSBackend::searchStream(const QString &searchText)
 {
-    m_manager->search(0);
-    m_page = 0;
-    auto stream = new ResultsStream(QStringLiteral("KNS-search"));
-    connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
-    connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::deleteLater);
+    Q_EMIT startingSearch();
+
+    auto stream = new ResultsStream(QStringLiteral("KNS-search-")+name());
+    auto start = [this, stream, searchText]() {
+        m_manager->setSearchTerm(searchText);
+        m_manager->search(0);
+        m_responsePending = true;
+        m_page = 0;
+        connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
+        connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::deleteLater);
+        connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::deleteLater);
+    };
+    if (m_responsePending) {
+        connect(this, &KNSBackend::availableForQueries, stream, start);
+    } else {
+        start();
+    }
     return stream;
 }
 

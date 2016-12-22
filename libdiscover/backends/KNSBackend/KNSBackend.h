@@ -67,6 +67,8 @@ public:
 Q_SIGNALS:
     void receivedResources(const QVector<AbstractResource*> &resources);
     void searchFinished();
+    void startingSearch();
+    void availableForQueries();
 
 public Q_SLOTS:
     void receivedEntries(const KNS3::Entry::List& entries);
@@ -75,8 +77,9 @@ public Q_SLOTS:
 private:
     void setFetching(bool f);
     void markInvalid(const QString &message);
-    ResultsStream* searchStream();
+    ResultsStream* searchStream(const QString &searchText);
     
+    bool m_responsePending = false;
     bool m_fetching;
     bool m_isValid;
     KNS3::DownloadManager* m_manager;
