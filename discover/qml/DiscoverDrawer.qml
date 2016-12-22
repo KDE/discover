@@ -60,7 +60,7 @@ Kirigami.GlobalDrawer {
         Layout.leftMargin: Kirigami.Units.smallSpacing
         Layout.rightMargin: Kirigami.Units.smallSpacing
 
-        enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
+//         enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
         Keys.forwardTo: [window.pageStack]
 
         Component.onCompleted: {
@@ -74,7 +74,7 @@ Kirigami.GlobalDrawer {
             }
         }
 
-        placeholderText: (!enabled || window.leftPage.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
+        placeholderText: (!enabled || !window.leftPage || window.leftPage.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
         onTextChanged: {
             if(window.stack.depth > 0)
                 searchTimer.running = true

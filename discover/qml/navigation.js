@@ -19,7 +19,7 @@
 
 function clearStack()
 {
-    window.currentTopLevel=null
+    window.currentTopLevel = ""
     window.stack.clear();
 }
 

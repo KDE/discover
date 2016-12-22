@@ -9,17 +9,17 @@ import "navigation.js" as Navigation
 Kirigami.ApplicationWindow
 {
     id: window
-    readonly property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
-    readonly property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
-    readonly property Component reviewsComp: Qt.createComponent("qrc:/qml/ReviewsPage.qml")
+    readonly property string applicationListComp: ("qrc:/qml/ApplicationsListPage.qml")
+    readonly property string applicationComp: ("qrc:/qml/ApplicationPage.qml")
+    readonly property string reviewsComp: ("qrc:/qml/ReviewsPage.qml")
 
     //toplevels
-    readonly property Component topBrowsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
-    readonly property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
-    readonly property Component topUpdateComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
-    readonly property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
+    readonly property string topBrowsingComp: ("qrc:/qml/BrowsingPage.qml")
+    readonly property string topInstalledComp: ("qrc:/qml/InstalledPage.qml")
+    readonly property string topUpdateComp: ("qrc:/qml/UpdatesPage.qml")
+    readonly property string topSourcesComp: ("qrc:/qml/SourcesPage.qml")
     readonly property QtObject stack: window.pageStack
-    property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
+    property string currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
     property bool navigationEnabled: true
 
@@ -168,13 +168,8 @@ Kirigami.ApplicationWindow
     globalDrawer: DiscoverDrawer {}
 
     onCurrentTopLevelChanged: {
-        if(currentTopLevel && currentTopLevel.status==Component.Error) {
-            console.log("status error: "+currentTopLevel.errorString())
-        }
-        var stackView = window.pageStack;
-        stackView.clear()
-        if (currentTopLevel)
-            stackView.push(currentTopLevel, {}, window.status!=Component.Ready)
+        window.pageStack.clear()
+        window.pageStack.push(currentTopLevel, {}, window.status!=Component.Ready)
     }
 
     Menu {

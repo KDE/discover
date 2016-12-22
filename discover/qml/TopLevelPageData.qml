@@ -22,7 +22,7 @@ import org.kde.kirigami 2.0
 import "navigation.js" as Navigation
 
 Action {
-    property Component component
+    property string component
     checked: window.currentTopLevel==component
     enabled: window.navigationEnabled
 
