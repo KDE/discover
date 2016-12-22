@@ -17,10 +17,11 @@ DiscoverPage
         resourcesUpdatesModel.updateAll()
     }
 
+    property string search: ""
     property string footerLabel: ""
 
     //TODO: use supportsRefreshing to fetch updates
-    ListView
+    mainItem: ListView
     {
         id: updatesView
         currentIndex: -1
@@ -132,7 +133,7 @@ DiscoverPage
         delegate: Kirigami.AbstractListItem {
             x: Kirigami.Units.gridUnit
             width: ListView.view.width - Kirigami.Units.gridUnit * 2
-            highlighted: ListView.isCurrentItem
+            highlighted: ListView.isCurrentItem || (page.search.length>0 && display.indexOf(page.search)>=0)
             onEnabledChanged: if (!enabled) {
                 layout.extended = false;
             }

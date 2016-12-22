@@ -60,7 +60,7 @@ Kirigami.GlobalDrawer {
         Layout.leftMargin: Kirigami.Units.smallSpacing
         Layout.rightMargin: Kirigami.Units.smallSpacing
 
-//         enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
+        enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
         Keys.forwardTo: [window.pageStack]
 
         Component.onCompleted: {

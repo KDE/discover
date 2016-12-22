@@ -11,6 +11,7 @@ DiscoverPage {
     id: page
     clip: true
     title: i18n("Settings")
+    property string search: ""
 
     readonly property var fu: Instantiator {
         model: SourcesModel
@@ -52,8 +53,11 @@ DiscoverPage {
     }
 
     mainItem: ListView {
-        model: KConcatenateRowsProxyModel {
-            id: everySourceModel
+        model: QSortFilterProxyModel{
+            filterRegExp: new RegExp(page.search)
+            sourceModel: KConcatenateRowsProxyModel {
+                id: everySourceModel
+            }
         }
         currentIndex: -1
 
