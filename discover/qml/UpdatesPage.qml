@@ -141,14 +141,15 @@ DiscoverPage
             Keys.onReturnPressed: {
                 itemChecked.clicked()
             }
+            Keys.onPressed: if (event.key===Qt.Key_Alt) layout.extended = true
+            Keys.onReleased: if (event.key===Qt.Key_Alt)  layout.extended = false
 
             ColumnLayout {
                 id: layout
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
                 property bool extended: false
+                onExtendedChanged: if (extended) {
+                    updateModel.fetchChangelog(index)
+                }
                 RowLayout {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
@@ -204,7 +205,6 @@ DiscoverPage
             }
 
             onClicked: {
-                updateModel.fetchChangelog(index)
                 layout.extended = !layout.extended
             }
         }
