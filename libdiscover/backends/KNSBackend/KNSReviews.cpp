@@ -169,7 +169,7 @@ QString KNSReviews::userName() const
 void KNSReviews::setProviderUrl(const QUrl& url)
 {
     m_providerUrl = url;
-    if(!s_shared->atticaManager.providerFiles().contains(url)) {
+    if(!m_providerUrl.isEmpty() && !s_shared->atticaManager.providerFiles().contains(url)) {
         s_shared->atticaManager.addProviderFile(url);
     }
 }
