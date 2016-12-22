@@ -209,7 +209,7 @@ DiscoverPage
         }
     }
 
-    readonly property var secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
+    readonly property alias secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
     state:  ( updateModel.hasUpdates                     ? "has-updates"
             : resourcesUpdatesModel.isProgressing        ? "progressing"
             : secSinceUpdate < 0                         ? "unknown"
