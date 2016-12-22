@@ -50,7 +50,7 @@ DiscoverPage
                 right: parent.right
             }
             category: null
-            background: "https://c2.staticflickr.com/8/7193/6900377481_76367f973a_o.jpg"
+            background: "qrc:/banners/coffee.jpg"
         }
         model: PaginateModel {
             pageSize: 5
