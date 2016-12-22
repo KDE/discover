@@ -22,6 +22,8 @@
 #define UTILS_H
 
 #include <functional>
+#include <QString>
+#include <QElapsedTimer>
 
 template <typename T, typename Q, typename _UnaryOperation>
 static T kTransform(const Q &input, _UnaryOperation op)
@@ -44,5 +46,13 @@ static T kFilter(const Q &input, _UnaryOperation op)
     }
     return ret;
 }
+
+class ElapsedDebug : private QElapsedTimer
+{
+public:
+    ElapsedDebug(const QString &name = QStringLiteral("<unnamed>")) : m_name(name) { start(); }
+    ~ElapsedDebug() { qDebug("elapsed %s: %lld!", m_name.toUtf8().constData(), elapsed()); }
+    QString m_name;
+};
 
 #endif
