@@ -56,7 +56,7 @@ ColumnLayout {
                 verticalOffset: 3
                 radius: 8.0
                 samples: 17
-                color: "gray"
+                color: rect.color
             }
             Rectangle {
                 id: backgroundColor
@@ -149,7 +149,8 @@ ColumnLayout {
         }
     }
     Rectangle {
-        color: Kirigami.Theme.linkColor
+        id: rect
+        color: root._page.isCurrentPage ? Kirigami.Theme.linkColor : "gray"
         Layout.fillWidth: true
         height: 3
     }
