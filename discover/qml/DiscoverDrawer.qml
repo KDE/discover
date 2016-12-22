@@ -28,7 +28,7 @@ import "navigation.js" as Navigation
 
 Kirigami.GlobalDrawer {
     id: drawer
-    bannerImageSource: "qrc:/icons/banner.svg"
+    bannerImageSource: "qrc:/banners/banner.svg"
     topPadding: -50
     leftPadding: 0
     rightPadding: 0

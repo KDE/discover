@@ -53,7 +53,7 @@ DiscoverPage
                 left: parent.left
                 right: parent.right
             }
-            background: "qrc:/icons/updatescrop.jpg"
+            background: "qrc:/banners/updatescrop.jpg"
 
             RowLayout {
                 Layout.fillWidth: true

@@ -37,8 +37,8 @@
 
     <file>qml/navigation.js</file>
 
-    <file>icons/banner.svg</file>
-    <file>icons/installedcrop.jpg</file>
-    <file>icons/updatescrop.jpg</file>
+    <file>banners/banner.svg</file>
+    <file>banners/installedcrop.jpg</file>
+    <file>banners/updatescrop.jpg</file>
  </qresource>
 </RCC>

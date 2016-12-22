@@ -17,7 +17,7 @@ ApplicationsListPage {
 
     listHeader: PageHeader {
         width: parent.width
-        background: "qrc:/icons/installedcrop.jpg"
+        background: "qrc:/banners/installedcrop.jpg"
 
         Item {
             Layout.fillWidth: true
