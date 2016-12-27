@@ -96,6 +96,9 @@ void ResourcesUpdatesModel::slotProgressingChanged()
 
 qreal ResourcesUpdatesModel::progress() const
 {
+    if (m_updaters.isEmpty())
+        return -1;
+
     qreal total = 0;
     foreach(AbstractBackendUpdater* updater, m_updaters) {
         total += updater->progress();
@@ -213,6 +216,9 @@ bool ResourcesUpdatesModel::isCancelable() const
 
 bool ResourcesUpdatesModel::isProgressing() const
 {
+    if (m_updaters.isEmpty())
+        return true;
+
     bool progressing = false;
     foreach(AbstractBackendUpdater* upd, m_updaters) {
         progressing |= upd->isProgressing();

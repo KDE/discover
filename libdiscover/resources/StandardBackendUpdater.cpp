@@ -58,6 +58,8 @@ void StandardBackendUpdater::start()
     m_settingUp = true;
     emit progressingChanged(true);
     setProgress(-1);
+    Q_EMIT progressingChanged(true);
+
     foreach(AbstractResource* res, m_toUpgrade) {
         m_pendingResources += res;
         m_backend->installApplication(res);
