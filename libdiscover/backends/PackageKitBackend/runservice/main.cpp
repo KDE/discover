@@ -39,5 +39,7 @@ int main(int argc, char** argv)
     QTextStream cerr(stderr);
     KIO::DesktopExecParser execParser(_service, {});
 
-    return !QProcess::startDetached(KIO::DesktopExecParser::executableName(_service.exec()), execParser.resultingArguments());
+    auto args = execParser.resultingArguments();
+    const auto execName = args.takeFirst();
+    return !QProcess::startDetached(execName, args);
 }
