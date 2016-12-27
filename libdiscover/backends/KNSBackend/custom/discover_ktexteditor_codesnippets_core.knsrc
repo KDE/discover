@@ -1,11 +1,17 @@
 [KNewStuff3]
 Name=Kate Snippets
 Name[ca]=Retalls del Kate
+Name[en_GB]=Kate Snippets
 Name[es]=Fragmentos de código de Kate
 Name[it]=Frammenti di Kate
 Name[nl]=Kate-fragmenten
 Name[pl]=Wstawki Kate
 Name[pt]=Excertos do Kate
+Name[sk]=Úryvky Kate
+Name[sr]=Кејтини исечци
+Name[sr@ijekavian]=Кејтини исјечци
+Name[sr@ijekavianlatin]=Kateini isječci
+Name[sr@latin]=Kateini isečci
 Name[sv]=Kate-textsnuttar
 Name[uk]=Фрагменти Kate
 Name[x-test]=xxKate Snippetsxx
