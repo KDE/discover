@@ -93,7 +93,13 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     connect(updateAction, &QAction::triggered, this, &PackageKitBackend::refreshDatabase);
     m_messageActions += updateAction;
 
-    const auto service = locateService(QStringLiteral("software-properties-kde.desktop"));
+    // Kubuntu-based
+    auto service = locateService(QStringLiteral("software-properties-kde.desktop"));
+    if (!service.isEmpty())
+        m_messageActions += createActionForService(service);
+
+    // openSUSE-based
+    service = locateService(QStringLiteral("YaST2/sw_source.desktop"));
     if (!service.isEmpty())
         m_messageActions += createActionForService(service);
 
