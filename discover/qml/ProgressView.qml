@@ -7,9 +7,21 @@ import org.kde.kirigami 2.0 as Kirigami
 import "navigation.js" as Navigation
 
 Kirigami.BasicListItem {
-    id: page
+    id: listItem
     label: TransactionModel.count ? i18n("Tasks (%1%)", TransactionModel.progress) : i18n("Tasks")
     visible: progressModel.count > 0
+
+    background: Item {
+
+        Rectangle {
+            anchors {
+                fill: parent
+                rightMargin: TransactionModel.count>=1 ? listItem.width*(1-TransactionModel.progress/100) : 0
+            }
+            color: TransactionModel.count>=1 || listItem.hovered || listItem.highlighted || listItem.pressed || listItem.checked ? listItem.activeBackgroundColor : listItem.backgroundColor
+            opacity: listItem.hovered || listItem.highlighted ? 0.2 : 1
+        }
+    }
 
     onClicked: {
         sheet.open()
@@ -18,7 +30,7 @@ Kirigami.BasicListItem {
     readonly property var v1: Connections {
         target: TransactionModel
         onTransactionAdded: {
-            if(page.enabled && trans.resource && progressModel.appAt(trans.resource)<0)
+            if(listItem.enabled && trans.resource && progressModel.appAt(trans.resource)<0)
                 progressModel.append({app: trans.resource})
         }
 
