@@ -75,13 +75,6 @@ Kirigami.ScrollablePage
     }
 
     readonly property bool isCurrentPage: pageStack.currentItem == root
-    Keys.onUpPressed: if (root.flickable.decrementCurrentIndex) {
-        root.flickable.decrementCurrentIndex()
-    }
-    Keys.onDownPressed: if (root.flickable.incrementCurrentIndex) {
-        root.flickable.incrementCurrentIndex()
-    }
-    Keys.forwardTo: ("currentItem" in root.flickable) ? [ root.flickable.currentItem ] : []
 
     readonly property var s1: Shortcut {
         sequence: StandardKey.MoveToNextPage
