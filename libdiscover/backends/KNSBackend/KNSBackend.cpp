@@ -217,8 +217,10 @@ public:
                 case KNS3::Entry::Installed:
                 case KNS3::Entry::Deleted:
                 case KNS3::Entry::Updateable:
-                    setStatus(DoneStatus);
-                    TransactionModel::global()->removeTransaction(this);
+                    if (status() != DoneStatus) {
+                        setStatus(DoneStatus);
+                        TransactionModel::global()->removeTransaction(this);
+                    }
                     break;
             }
         }
@@ -240,8 +242,8 @@ private:
 void KNSBackend::removeApplication(AbstractResource* app)
 {
     auto res = qobject_cast<KNSResource*>(app);
-    m_manager->uninstallEntry(res->entry());
     new KNSTransaction(this, res, Transaction::RemoveRole);
+    m_manager->uninstallEntry(res->entry());
 }
 
 void KNSBackend::installApplication(AbstractResource* app)
