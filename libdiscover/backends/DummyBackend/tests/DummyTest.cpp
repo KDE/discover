@@ -132,12 +132,13 @@ void DummyTest::testProxySorting()
     QVERIFY(!pm.isBusy());
 
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
-    int lastRatingCount;
+    QVariant lastRatingCount;
     for(int i=0, rc=pm.rowCount(); i<rc; ++i) {
         const QModelIndex mi = pm.index(i, 0);
 
         const auto value = mi.data(pm.sortRole());
         QVERIFY(i==0 || value <= lastRatingCount);
+        lastRatingCount = value;
     }
 }
 
