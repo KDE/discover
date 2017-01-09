@@ -25,6 +25,7 @@
 #include <QUrl>
 #include <QStringList>
 #include <QScopedPointer>
+#include <QVector>
 #include <QCollatorSortKey>
 
 #include "discovercommon_export.h"
@@ -202,5 +203,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
 //         TODO: make it std::optional or make QCollatorSortKey()
         QScopedPointer<QCollatorSortKey> m_collatorKey;
 };
+
+Q_DECLARE_METATYPE(QVector<AbstractResource*>);
 
 #endif // ABSTRACTRESOURCE_H

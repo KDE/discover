@@ -28,10 +28,7 @@
 #include "discovercommon_export.h"
 #include "AbstractResourcesBackend.h"
 
-class AbstractResource;
-class AbstractResourcesBackend;
-
-class AggregatedResultsStream : public ResultsStream
+class DISCOVERCOMMON_EXPORT AggregatedResultsStream : public ResultsStream
 {
 Q_OBJECT
 public:
