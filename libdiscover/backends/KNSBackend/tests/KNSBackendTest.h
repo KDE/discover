@@ -26,6 +26,7 @@
 
 class AbstractResourcesBackend;
 class AbstractResource;
+class ResultsStream;
 class Review;
 class Category;
 
@@ -38,6 +39,7 @@ class KNSBackendTest : public QObject
     private Q_SLOTS:
         void testRetrieval();
         void testReviews();
+        void testResourceByUrl();
 
     public Q_SLOTS:
         void reviewsArrived(AbstractResource *r, const QList<Review *>& revs);

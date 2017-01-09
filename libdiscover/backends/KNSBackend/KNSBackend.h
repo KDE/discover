@@ -21,20 +21,18 @@
 #ifndef KNSBACKEND_H
 #define KNSBACKEND_H
 
-// KDE includes
-#include <KNewStuff3/kns3/entry.h>
+#include <KNSCore/EntryInternal>
 
-// DiscoverCommon includes
 #include <resources/AbstractResourcesBackend.h>
 #include "Transaction/AddonList.h"
-
 #include "discovercommon_export.h"
 
 class KConfigGroup;
 class KNSReviews;
+class KNSResource;
 class StandardBackendUpdater;
 
-namespace KNS3 { class DownloadManager; }
+namespace KNSCore { class Engine; }
 
 class DISCOVERCOMMON_EXPORT KNSBackend : public AbstractResourcesBackend
 {
@@ -62,7 +60,7 @@ public:
 
     QString iconName() const { return m_iconName; }
 
-    KNS3::DownloadManager* downloadManager() const { return m_manager; }
+    KNSCore::Engine* downloadManager() const { return m_engine; }
 
 Q_SIGNALS:
     void receivedResources(const QVector<AbstractResource*> &resources);
@@ -71,10 +69,11 @@ Q_SIGNALS:
     void availableForQueries();
 
 public Q_SLOTS:
-    void receivedEntries(const KNS3::Entry::List& entries);
-    void statusChanged(const KNS3::Entry& entry);
+    void receivedEntries(const KNSCore::EntryInternal::List& entries);
+    void statusChanged(const KNSCore::EntryInternal& entry);
 
 private:
+    KNSResource* resourceForEntry(const KNSCore::EntryInternal& entry);
     void setFetching(bool f);
     void markInvalid(const QString &message);
     ResultsStream* searchStream(const QString &searchText);
@@ -82,7 +81,7 @@ private:
     bool m_responsePending = false;
     bool m_fetching;
     bool m_isValid;
-    KNS3::DownloadManager* m_manager;
+    KNSCore::Engine* m_engine;
     QHash<QString, AbstractResource*> m_resourcesByName;
     int m_page;
     KNSReviews* const m_reviews;

@@ -23,7 +23,7 @@
 #include <QRegularExpression>
 #include <knewstuff_version.h>
 
-KNSResource::KNSResource(const KNS3::Entry& entry, QStringList categories, KNSBackend* parent)
+KNSResource::KNSResource(const KNSCore::EntryInternal& entry, QStringList categories, KNSBackend* parent)
     : AbstractResource(parent)
     , m_categories(std::move(categories))
     , m_entry(entry)
@@ -99,7 +99,7 @@ QString KNSResource::name()
 
 QString KNSResource::packageName() const
 {
-    return m_entry.id();
+    return m_entry.uniqueId();
 }
 
 QStringList KNSResource::categories()
@@ -109,32 +109,26 @@ QStringList KNSResource::categories()
 
 QUrl KNSResource::homepage()
 {
-    return m_entry.url();
-}
-
-template <class T>
-static T firstIfExists(const QList<T> &list)
-{
-    return list.isEmpty() ? T() : list.at(0);
+    return m_entry.homepage();
 }
 
 QUrl KNSResource::thumbnailUrl()
 {
-    return firstIfExists(m_entry.previewThumbnails());
+    return QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1));
 }
 
 QUrl KNSResource::screenshotUrl()
 {
-    return firstIfExists(m_entry.previewImages());
-}
+    return QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig1));
 
-void KNSResource::setEntry(const KNS3::Entry& entry)
+}
+void KNSResource::setEntry(const KNSCore::EntryInternal& entry)
 {
     m_entry = entry;
     Q_EMIT stateChanged();
 }
 
-KNS3::Entry KNSResource::entry() const
+KNSCore::EntryInternal KNSResource::entry() const
 {
     return m_entry;
 }
@@ -146,7 +140,8 @@ QString KNSResource::license()
 
 int KNSResource::size()
 {
-    return m_entry.size();
+    const auto downloadInfo = m_entry.downloadLinkInformationList();
+    return downloadInfo.isEmpty() ? 0 : downloadInfo.at(0).size;
 }
 
 QString KNSResource::installedVersion() const
@@ -169,9 +164,25 @@ QString KNSResource::section()
     return m_entry.category();
 }
 
+static void appendIfValid(QList<QUrl>& list, const QUrl &value)
+{
+    if (value.isValid() && !value.isEmpty())
+        list << value;
+}
+
 void KNSResource::fetchScreenshots()
 {
-    emit screenshotsFetched(m_entry.previewThumbnails(), m_entry.previewImages());
+    QList<QUrl> preview;
+    appendIfValid(preview, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1)));
+    appendIfValid(preview, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall2)));
+    appendIfValid(preview, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall3)));
+
+    QList<QUrl> screenshots;
+    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig1)));
+    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig2)));
+    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig3)));
+
+    emit screenshotsFetched(preview, screenshots);
 }
 
 void KNSResource::fetchChangelog()

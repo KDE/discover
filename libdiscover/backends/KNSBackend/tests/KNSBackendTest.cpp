@@ -130,3 +130,10 @@ void KNSBackendTest::reviewsArrived(AbstractResource* r, const QList< Review* >&
     m_r = r;
     m_revs = revs;
 }
+
+void KNSBackendTest::testResourceByUrl()
+{
+    const auto res = getResources(ResourcesModel::global()->findResourceByPackageName(QUrl(QStringLiteral("kns://plasma-themes.knsrc/api.kde-look.org/1136471"))));
+    QCOMPARE(res.count(), 1);
+}
+

@@ -31,7 +31,7 @@
 #include <attica/providermanager.h>
 
 // KDE includes
-#include <kns3/downloadmanager.h>
+#include <KNSCore/Engine>
 #include <KConfigGroup>
 #include <KDesktopFile>
 #include <KLocalizedString>
@@ -96,12 +96,14 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
 
     setFetching(true);
 
-    m_manager = new KNS3::DownloadManager(m_name, this);
-    connect(m_manager, &KNS3::DownloadManager::errorFound, this, [this](const QString &error) { qWarning() << "kns error" << this << error; });
-    connect(m_manager, &KNS3::DownloadManager::searchResult, this, &KNSBackend::receivedEntries);
-    connect(m_manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSBackend::statusChanged);
+    m_engine = new KNSCore::Engine(this);
+    m_engine->init(m_name);
+    connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &error) { qWarning() << "kns error" << this << error; });
+    connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries);
+    connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged);
+    connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
     m_page = -1;
-    m_manager->checkForInstalled();
+    connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, m_engine, &KNSCore::Engine::checkForInstalled);
     m_responsePending = true;
 
     const QVector<QPair<FilterType, QString>> filters = { {CategoryFilter, fileName } };
@@ -149,7 +151,19 @@ bool KNSBackend::isValid() const
     return m_isValid;
 }
 
-void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
+KNSResource* KNSBackend::resourceForEntry(const KNSCore::EntryInternal& entry)
+{
+    KNSResource* r = static_cast<KNSResource*>(m_resourcesByName.value(entry.uniqueId()));
+    if (!r) {
+        r = new KNSResource(entry, m_categories, this);
+        m_resourcesByName.insert(entry.uniqueId(), r);
+    } else {
+        r->setEntry(entry);
+    }
+    return r;
+}
+
+void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
 {
     m_responsePending = false;
     QTimer::singleShot(0, this, &KNSBackend::availableForQueries);
@@ -162,30 +176,21 @@ void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
 
     QVector<AbstractResource*> resources;
     resources.reserve(entries.count());
-    foreach(const KNS3::Entry& entry, entries) {
-        auto r = m_resourcesByName.value(entry.id());
-        if (!r) {
-            r = new KNSResource(entry, m_categories, this);
-            m_resourcesByName.insert(entry.id(), r);
-        }
-        resources += r;
+    foreach(const KNSCore::EntryInternal& entry, entries) {
+        resources += resourceForEntry(entry);
     }
 //     qDebug() << "received" << this << m_resourcesByName.count();
     Q_EMIT receivedResources(resources);
     if (m_page >= 0) {
         ++m_page;
-        m_manager->search(m_page);
+        m_engine->requestData(m_page, 100);
         m_responsePending = true;
     }
 }
 
-void KNSBackend::statusChanged(const KNS3::Entry& entry)
+void KNSBackend::statusChanged(const KNSCore::EntryInternal& entry)
 {
-    KNSResource* r = qobject_cast<KNSResource*>(m_resourcesByName.value(entry.id()));
-    if(r)
-        r->setEntry(entry);
-    else
-        qWarning() << "unknown entry changed" << entry.id() << entry.name();
+    resourceForEntry(entry);
 }
 
 class KNSTransaction : public Transaction
@@ -193,21 +198,21 @@ class KNSTransaction : public Transaction
 public:
     KNSTransaction(QObject* parent, KNSResource* res, Transaction::Role role)
         : Transaction(parent, res, role)
-        , m_id(res->entry().id())
+        , m_id(res->entry().uniqueId())
     {
         TransactionModel::global()->addTransaction(this);
 
         setCancellable(false);
 
         auto manager = res->knsBackend()->downloadManager();
-        connect(manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSTransaction::anEntryChanged);
+        connect(manager, &KNSCore::Engine::signalEntryChanged, this, &KNSTransaction::anEntryChanged);
     }
 
-    void anEntryChanged(const KNS3::Entry& entry) {
-        if (entry.id() == m_id) {
+    void anEntryChanged(const KNSCore::EntryInternal& entry) {
+        if (entry.uniqueId() == m_id) {
             switch (entry.status()) {
                 case KNS3::Entry::Invalid:
-                    qWarning() << "invalid status for" << entry.id() << entry.status();
+                    qWarning() << "invalid status for" << entry.uniqueId() << entry.status();
                     break;
                 case KNS3::Entry::Installing:
                 case KNS3::Entry::Updating:
@@ -243,13 +248,13 @@ void KNSBackend::removeApplication(AbstractResource* app)
 {
     auto res = qobject_cast<KNSResource*>(app);
     new KNSTransaction(this, res, Transaction::RemoveRole);
-    m_manager->uninstallEntry(res->entry());
+    m_engine->uninstall(res->entry());
 }
 
 void KNSBackend::installApplication(AbstractResource* app)
 {
     auto res = qobject_cast<KNSResource*>(app);
-    m_manager->installEntry(res->entry());
+    m_engine->install(res->entry());
     new KNSTransaction(this, res, Transaction::InstallRole);
 }
 
@@ -296,8 +301,8 @@ ResultsStream * KNSBackend::searchStream(const QString &searchText)
 
     auto stream = new ResultsStream(QStringLiteral("KNS-search-")+name());
     auto start = [this, stream, searchText]() {
-        m_manager->setSearchTerm(searchText);
-        m_manager->search(0);
+        m_engine->setSearchTerm(searchText);
+        m_engine->requestData(0, 100);
         m_responsePending = true;
         m_page = 0;
         connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
@@ -326,14 +331,18 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
     const auto entryid = pathParts.at(1);
 
     auto stream = new ResultsStream(QStringLiteral("KNS-byname-")+entryid);
-    auto start = [this, stream, entryid]() {
-        qDebug() << "stststst";
-        m_manager->fetchEntryById(entryid);
+
+    auto start = [this, entryid, stream]() {
         m_responsePending = true;
-        m_page = 0;
-        connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
-        connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::deleteLater);
-        connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::deleteLater);
+        m_engine->fetchEntryById(entryid);
+        connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, stream, [this, stream, entryid](const KNSCore::EntryInternal &entry) {
+            if (entry.uniqueId() == entryid) {
+                stream->resourcesFound({resourceForEntry(entry)});
+            }
+            m_responsePending = false;
+            QTimer::singleShot(0, this, &KNSBackend::availableForQueries);
+            stream->deleteLater();
+        });
     };
     if (m_responsePending) {
         connect(this, &KNSBackend::availableForQueries, stream, start);

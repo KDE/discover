@@ -22,7 +22,7 @@
 #define KNSRESOURCE_H
 
 #include <resources/AbstractResource.h>
-#include <kns3/entry.h>
+#include <KNSCore/EntryInternal>
 #include <attica/content.h>
 
 #include "discovercommon_export.h"
@@ -32,7 +32,7 @@ class DISCOVERCOMMON_EXPORT KNSResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit KNSResource(const KNS3::Entry& c, QStringList categories, KNSBackend* parent);
+    explicit KNSResource(const KNSCore::EntryInternal & c, QStringList categories, KNSBackend* parent);
     ~KNSResource() override;
 
     AbstractResource::State state() override;
@@ -58,12 +58,12 @@ public:
 
     KNSBackend* knsBackend() const;
 
-    void setEntry(const KNS3::Entry& entry);
-    KNS3::Entry entry() const;
+    void setEntry(const KNSCore::EntryInternal& entry);
+    KNSCore::EntryInternal entry() const;
 
 private:
     const QStringList m_categories;
-    KNS3::Entry m_entry;
+    KNSCore::EntryInternal m_entry;
 };
 
 #endif // KNSRESOURCE_H
