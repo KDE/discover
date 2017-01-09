@@ -72,7 +72,6 @@ class DiscoverMainWindow : public QObject
         void openLocalPackage(const QUrl &localfile);
 
     private Q_SLOTS:
-        void triggerOpenApplication();
         void appHelpActivated();
         void reportBug();
         void switchApplicationLanguage();
@@ -94,7 +93,6 @@ class DiscoverMainWindow : public QObject
 
         KActionCollection* actionCollection() { return &m_collection; }
 
-        QUrl m_appToBeOpened;
         KActionCollection m_collection;
         QQmlApplicationEngine * const m_engine;
 

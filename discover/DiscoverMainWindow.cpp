@@ -204,35 +204,31 @@ void DiscoverMainWindow::openLocalPackage(const QUrl& localfile)
 
 void DiscoverMainWindow::openApplication(const QUrl& app)
 {
-    m_appToBeOpened = app;
-    if(!m_appToBeOpened.isEmpty()) {
-        rootObject()->setProperty("defaultStartup", false);
-
-        if (ResourcesModel::global()->isFetching() || ResourcesModel::global()->backends().isEmpty()) {
-            connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &DiscoverMainWindow::triggerOpenApplication);
-            connect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &DiscoverMainWindow::triggerOpenApplication);
-        } else {
-            triggerOpenApplication();
+    Q_ASSERT(!app.isEmpty());
+    rootObject()->setProperty("defaultStartup", false);
+    auto action = new OneTimeAction(
+        [this, app]() {
+            auto stream = ResourcesModel::global()->findResourceByPackageName(app);
+            connect(stream, &AggregatedResultsStream::resourcesFound, stream, [this, stream](const QVector<AbstractResource*>& resources) {
+                stream->setProperty("resources", QVariant::fromValue<QVector<AbstractResource*>>(resources));
+            });
+            connect(stream, &AggregatedResultsStream::finished, stream, [this, stream, app]() {
+                const auto resources = stream->property("resources").value<QVector<AbstractResource*>>();
+                if (!resources.isEmpty()) {
+                    if (resources.size() > 1)
+                        qWarning() << "many resources found for" << app;
+                    emit openApplicationInternal(resources.first());
+                } else
+                    showPassiveNotification(i18n("Couldn't open %1", app.toDisplayString()));
+            });
         }
+        , this);
+
+    if (ResourcesModel::global()->backends().isEmpty()) {
+        connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
+    } else {
+        action->trigger();
     }
-}
-
-void DiscoverMainWindow::triggerOpenApplication()
-{
-    auto stream = ResourcesModel::global()->findResourceByPackageName(m_appToBeOpened);
-    connect(stream, &ResultsStream::resourcesFound, this, [this](const QVector<AbstractResource*> & res){
-        Q_ASSERT(!res.isEmpty());
-
-        emit openApplicationInternal(res.first());
-        m_appToBeOpened.clear();
-    });
-
-    connect(stream, &ResultsStream::destroyed, this, [this]() {
-        if (!m_appToBeOpened.isEmpty())
-            Q_EMIT unableToFind(m_appToBeOpened.toDisplayString());
-        disconnect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &DiscoverMainWindow::triggerOpenApplication);
-        disconnect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &DiscoverMainWindow::triggerOpenApplication);
-    });
 }
 
 QUrl DiscoverMainWindow::featuredSource() const
