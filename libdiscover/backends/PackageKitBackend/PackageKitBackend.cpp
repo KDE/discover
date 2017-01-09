@@ -422,10 +422,8 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
 
 ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
 {
-    QTextStream(stdout) << "opening appstream resource" << url.host() << "from" << url.toString() << '\n';
-
     AbstractResource* pkg = nullptr;
-    if (url.scheme() == QLatin1String("apptream")) {
+    if (url.scheme() == QLatin1String("appstream")) {
         if (url.host().isEmpty())
             passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else
