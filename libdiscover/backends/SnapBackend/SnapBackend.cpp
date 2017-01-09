@@ -53,21 +53,23 @@ int SnapBackend::updatesCount() const
     return m_updater->updatesCount();
 }
 
+static ResultsStream* voidStream() { return new ResultsStream(QStringLiteral("Snap-void"), {}); }
+
 ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& filters)
 {
     if (filters.category && filters.category->isAddons())
-        return new ResultsStream(QStringLiteral("Snap-void"), {});
+        return voidStream();
     if (filters.state >= AbstractResource::Installed) {
         return populate(m_socket.snaps(), AbstractResource::Installed);
     } else {
         return populate(m_socket.find(filters.search), AbstractResource::None);
     }
-    return new ResultsStream(QStringLiteral("Snap-void"), {});
+    return voidStream();
 }
 
-ResultsStream * SnapBackend::findResourceByPackageName(const QString& search)
+ResultsStream * SnapBackend::findResourceByPackageName(const QUrl& search)
 {
-    return populate(m_socket.snapByName(search), AbstractResource::Installed);
+    return search.scheme() == QLatin1String("snap") ? populate(m_socket.snapByName(search.host()), AbstractResource::Installed) : voidStream();
 }
 
 ResultsStream* SnapBackend::populate(SnapJob* job, AbstractResource::State state)

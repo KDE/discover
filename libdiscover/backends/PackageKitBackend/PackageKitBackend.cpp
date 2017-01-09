@@ -420,9 +420,17 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
     }
 }
 
-ResultsStream * PackageKitBackend::findResourceByPackageName(const QString& search)
+ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
 {
-    auto pkg = m_packages.packages.value(search);
+    QTextStream(stdout) << "opening appstream resource" << url.host() << "from" << url.toString() << '\n';
+
+    AbstractResource* pkg = nullptr;
+    if (url.scheme() == QLatin1String("apptream")) {
+        if (url.host().isEmpty())
+            passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
+        else
+            pkg = m_packages.packages.value(url.host());
+    }
     return new ResultsStream(QStringLiteral("PackageKitStream"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
 }
 

@@ -65,7 +65,7 @@ class DiscoverMainWindow : public QObject
         void showPassiveNotification(const QString &msg);
 
     public Q_SLOTS:
-        void openApplication(const QString& app);
+        void openApplication(const QUrl& app);
         void openMimeType(const QString& mime);
         void openCategory(const QString& category);
         void openMode(const QString& mode);
@@ -94,7 +94,7 @@ class DiscoverMainWindow : public QObject
 
         KActionCollection* actionCollection() { return &m_collection; }
 
-        QString m_appToBeOpened;
+        QUrl m_appToBeOpened;
         KActionCollection m_collection;
         QQmlApplicationEngine * const m_engine;
 

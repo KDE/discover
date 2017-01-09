@@ -58,11 +58,9 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     connect(m_backend->reviewsBackend(), &AbstractReviewsBackend::reviewsReady, this, &KNSBackendTest::reviewsArrived);
 }
 
-QVector<AbstractResource*> KNSBackendTest::getAllResources(AbstractResourcesBackend* backend)
+QVector<AbstractResource*> KNSBackendTest::getResources(ResultsStream* stream)
 {
-    AbstractResourcesBackend::Filters f;
-    f.category = CategoryModel::global()->rootCategories().first();
-    auto stream = backend->search(f);
+    Q_ASSERT(stream);
     Q_ASSERT(stream->objectName() != QLatin1String("KNS-void"));
     QSignalSpy spyResources(stream, &ResultsStream::destroyed);
     QVector<AbstractResource*> resources;
@@ -70,6 +68,13 @@ QVector<AbstractResource*> KNSBackendTest::getAllResources(AbstractResourcesBack
     Q_ASSERT(spyResources.wait());
     Q_ASSERT(!resources.isEmpty());
     return resources;
+}
+
+QVector<AbstractResource*> KNSBackendTest::getAllResources(AbstractResourcesBackend* backend)
+{
+    AbstractResourcesBackend::Filters f;
+    f.category = CategoryModel::global()->rootCategories().first();
+    return getResources(backend->search(f));
 }
 
 void KNSBackendTest::testRetrieval()

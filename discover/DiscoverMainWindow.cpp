@@ -202,7 +202,7 @@ void DiscoverMainWindow::openLocalPackage(const QUrl& localfile)
     }
 }
 
-void DiscoverMainWindow::openApplication(const QString& app)
+void DiscoverMainWindow::openApplication(const QUrl& app)
 {
     m_appToBeOpened = app;
     if(!m_appToBeOpened.isEmpty()) {
@@ -229,7 +229,7 @@ void DiscoverMainWindow::triggerOpenApplication()
 
     connect(stream, &ResultsStream::destroyed, this, [this]() {
         if (!m_appToBeOpened.isEmpty())
-            Q_EMIT unableToFind(m_appToBeOpened);
+            Q_EMIT unableToFind(m_appToBeOpened.toDisplayString());
         disconnect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &DiscoverMainWindow::triggerOpenApplication);
         disconnect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &DiscoverMainWindow::triggerOpenApplication);
     });

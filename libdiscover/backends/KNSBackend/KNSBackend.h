@@ -52,7 +52,7 @@ public:
     bool isFetching() const override;
     QList<QAction*> messageActions() const override { return QList<QAction*>(); }
     ResultsStream* search(const AbstractResourcesBackend::Filters & filter) override;
-    ResultsStream* findResourceByPackageName(const QString & search) override;
+    ResultsStream* findResourceByPackageName(const QUrl & search) override;
 
     QVector<Category*> category() const override { return m_rootCategories; }
 

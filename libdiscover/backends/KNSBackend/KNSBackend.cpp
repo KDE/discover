@@ -268,6 +268,11 @@ AbstractReviewsBackend* KNSBackend::reviewsBackend() const
     return m_reviews;
 }
 
+static ResultsStream* voidStream()
+{
+    return new ResultsStream(QStringLiteral("KNS-void"), {});
+}
+
 ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
     if (filter.state >= AbstractResource::Installed) {
@@ -282,7 +287,7 @@ ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filte
     } else if (!filter.search.isEmpty()) {
         return searchStream(filter.search);
     }
-    return new ResultsStream(QStringLiteral("KNS-void"), {});
+    return voidStream();
 }
 
 ResultsStream * KNSBackend::searchStream(const QString &searchText)
@@ -307,10 +312,35 @@ ResultsStream * KNSBackend::searchStream(const QString &searchText)
     return stream;
 }
 
-ResultsStream * KNSBackend::findResourceByPackageName(const QString& search)
+ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
 {
-    auto pkg = m_resourcesByName.value(search);
-    return new ResultsStream(QStringLiteral("KNS"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
+    if (search.scheme() != QLatin1String("kns") || search.host() != name())
+        return voidStream();
+
+    const auto pathParts = search.path().split(QLatin1Char('/'), QString::SkipEmptyParts);
+    if (pathParts.size() != 2) {
+        passiveMessage(i18n("Wrong KNewStuff URI: %1", search.toString()));
+        return voidStream();
+    }
+    const auto providerid = pathParts.at(0);
+    const auto entryid = pathParts.at(1);
+
+    auto stream = new ResultsStream(QStringLiteral("KNS-byname-")+entryid);
+    auto start = [this, stream, entryid]() {
+        qDebug() << "stststst";
+        m_manager->fetchEntryById(entryid);
+        m_responsePending = true;
+        m_page = 0;
+        connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
+        connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::deleteLater);
+        connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::deleteLater);
+    };
+    if (m_responsePending) {
+        connect(this, &KNSBackend::availableForQueries, stream, start);
+    } else {
+        start();
+    }
+    return stream;
 }
 
 bool KNSBackend::isFetching() const

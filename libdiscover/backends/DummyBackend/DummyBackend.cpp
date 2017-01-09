@@ -91,7 +91,7 @@ void DummyBackend::populate(const QString& n)
         DummyResource* res = new DummyResource(name, false, this);
         res->setSize(100+(m_startElements-i));
         res->setState(AbstractResource::State(1+(i%3)));
-        m_resources.insert(name, res);
+        m_resources.insert(name.toLower(), res);
         connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
     }
 
@@ -129,9 +129,9 @@ ResultsStream* DummyBackend::search(const AbstractResourcesBackend::Filters& fil
     return new ResultsStream(QStringLiteral("DummyStream"), ret);
 }
 
-ResultsStream * DummyBackend::findResourceByPackageName(const QString& search)
+ResultsStream * DummyBackend::findResourceByPackageName(const QUrl& search)
 {
-    auto res = m_resources.value(search);
+    auto res = search.scheme() == QLatin1String("dummy") ? m_resources.value(search.host().replace(QLatin1Char('.'), QLatin1Char(' '))) : nullptr;
     if (!res) {
         return new ResultsStream(QStringLiteral("DummyStream"), {});
     } else

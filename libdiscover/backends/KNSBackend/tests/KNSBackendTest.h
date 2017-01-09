@@ -43,6 +43,7 @@ class KNSBackendTest : public QObject
         void reviewsArrived(AbstractResource *r, const QList<Review *>& revs);
 
     private:
+        QVector<AbstractResource*> getResources(ResultsStream* stream);
         QVector<AbstractResource*> getAllResources(AbstractResourcesBackend* backend);
         QPointer<AbstractResourcesBackend> m_backend;
         QPointer<AbstractResource> m_r;

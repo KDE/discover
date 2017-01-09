@@ -37,7 +37,7 @@ public:
     explicit SnapBackend(QObject* parent = nullptr);
 
     ResultsStream * search(const AbstractResourcesBackend::Filters & search) override;
-    ResultsStream * findResourceByPackageName(const QString & search) override;
+    ResultsStream * findResourceByPackageName(const QUrl& search) override;
 
     int updatesCount() const override;
     AbstractBackendUpdater* backendUpdater() const override;

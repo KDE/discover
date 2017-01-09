@@ -39,7 +39,7 @@ public:
     AbstractBackendUpdater* backendUpdater() const override;
     AbstractReviewsBackend* reviewsBackend() const override;
     ResultsStream* search(const AbstractResourcesBackend::Filters & search) override;
-    ResultsStream * findResourceByPackageName(const QString & search) override;
+    ResultsStream * findResourceByPackageName(const QUrl& search) override;
     QHash<QString, DummyResource*> resources() const { return m_resources; }
     bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
     QList<QAction*> messageActions() const override { return m_messageActions; }

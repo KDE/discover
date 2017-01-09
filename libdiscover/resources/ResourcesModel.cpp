@@ -243,6 +243,7 @@ bool ResourcesModel::isExtended(const QString& id)
 AggregatedResultsStream::AggregatedResultsStream(const QSet<ResultsStream*>& streams)
     : ResultsStream(QStringLiteral("AggregatedResultsStream"))
 {
+    Q_ASSERT(!streams.contains(nullptr));
     if (streams.isEmpty()) {
         qWarning() << "no streams to aggregate!!";
         destruction(nullptr);
@@ -285,7 +286,7 @@ void AggregatedResultsStream::destruction(QObject* obj)
     }
 }
 
-AggregatedResultsStream * ResourcesModel::findResourceByPackageName(const QString& search)
+AggregatedResultsStream * ResourcesModel::findResourceByPackageName(const QUrl& search)
 {
     QSet<ResultsStream*> streams;
     foreach(auto backend, m_backends) {

@@ -61,7 +61,7 @@ QCommandLineParser* createParser()
 void processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
 {
     if(parser->isSet(QStringLiteral("application")))
-        mainWindow->openApplication(parser->value(QStringLiteral("application")));
+        mainWindow->openApplication(QUrl(parser->value(QStringLiteral("application"))));
     else if(parser->isSet(QStringLiteral("mime")))
         mainWindow->openMimeType(parser->value(QStringLiteral("mime")));
     else if(parser->isSet(QStringLiteral("category")))
@@ -74,18 +74,7 @@ void processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
         mainWindow->openLocalPackage(QUrl::fromUserInput(parser->value(QStringLiteral("local-filename")), {}, QUrl::AssumeLocalFile));
 
     foreach(const QString &arg, parser->positionalArguments()) {
-        QUrl url(arg);
-        if (url.scheme() == QLatin1String("appstream")) {
-            QTextStream(stdout) << "opening appstream resource" << url.host() << "from" << url.toString() << '\n';
-            if (url.host().isEmpty())
-                mainWindow->showPassiveNotification(i18n("Malformed url '%1'", url.toDisplayString()));
-            else
-                mainWindow->openApplication(url.host());
-        } else {
-            const QString msg = i18n("Unrecognized url: %1", url.toDisplayString());
-            QTextStream(stdout) << msg << '\n';
-            mainWindow->showPassiveNotification(msg);
-        }
+        mainWindow->openApplication(QUrl(arg));
     }
 }
 
