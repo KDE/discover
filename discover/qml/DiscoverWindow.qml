@@ -157,7 +157,8 @@ Kirigami.ApplicationWindow
 
     onCurrentTopLevelChanged: {
         window.pageStack.clear()
-        window.pageStack.push(currentTopLevel, {}, window.status!=Component.Ready)
+        if (currentTopLevel)
+            window.pageStack.push(currentTopLevel, {}, window.status!=Component.Ready)
     }
 
     Menu {
