@@ -5,12 +5,11 @@ import QtTest 1.1
 DiscoverTest
 {
     function test_openResource() {
-        var resourceName = "Dummy 1";
-        app.openApplication(resourceName);
+        app.openApplication("dummy://dummy.1");
         compare(appRoot.stack.currentItem.title, "Loading...", "same title");
         verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         verify(appRoot.stack.currentItem, "has a page");
-        compare(appRoot.stack.currentItem.title, resourceName, "same title");
+        compare(appRoot.stack.currentItem.title, "Dummy 1", "same title");
 
         var button = findChild(appRoot.stack.currentItem, "InstallApplicationButton")
         verify(!button.isActive)
@@ -26,11 +25,10 @@ DiscoverTest
         signalName: "transactionCancelled"
     }
     function test_cancel() {
-        var resourceName = "Dummy 2";
-        app.openApplication(resourceName);
+        app.openApplication("dummy://dummy.2");
         verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         verify(appRoot.stack.currentItem, "has a page");
-        compare(appRoot.stack.currentItem.title, resourceName, "same title");
+        compare(appRoot.stack.currentItem.title, "Dummy 2", "same title");
 
         var button = findChild(appRoot.stack.currentItem, "InstallApplicationButton")
         verify(!button.isActive)
