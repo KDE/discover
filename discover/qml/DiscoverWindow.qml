@@ -18,6 +18,7 @@ Kirigami.ApplicationWindow
     readonly property string topInstalledComp: ("qrc:/qml/InstalledPage.qml")
     readonly property string topUpdateComp: ("qrc:/qml/UpdatesPage.qml")
     readonly property string topSourcesComp: ("qrc:/qml/SourcesPage.qml")
+    readonly property string loadingComponent: ("qrc:/qml/LoadingPage.qml")
     readonly property QtObject stack: window.pageStack
     property string currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
@@ -40,19 +41,6 @@ Kirigami.ApplicationWindow
         Helpers.mainWindow = window
         if (app.isRoot)
             showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
-    }
-
-    Component {
-        id: loadingComponent
-        Kirigami.Page {
-            title: label.text
-            Label {
-                id: label
-                text: i18n("Loading...")
-                font.pointSize: 52
-                anchors.centerIn: parent
-            }
-        }
     }
 
     TopLevelPageData {
