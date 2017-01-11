@@ -50,10 +50,10 @@ QString AppPackageKitResource::longDescription()
     return PackageKitResource::longDescription();
 }
 
-QVariant AppPackageKitResource::icon() const
+static QIcon componentIcon(const AppStream::Component &comp)
 {
     QIcon ret;
-    const auto icons = m_appdata.icons();
+    const auto icons = comp.icons();
     if (icons.isEmpty()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     } else foreach(const AppStream::Icon &icon, icons) {
@@ -76,6 +76,11 @@ QVariant AppPackageKitResource::icon() const
         }
     }
     return ret;
+}
+
+QVariant AppPackageKitResource::icon() const
+{
+    return componentIcon(m_appdata);
 }
 
 QString AppPackageKitResource::license()
