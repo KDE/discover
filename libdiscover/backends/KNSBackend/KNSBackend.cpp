@@ -32,6 +32,7 @@
 
 // KDE includes
 #include <KNSCore/Engine>
+#include <KNSCore/QuestionManager>
 #include <KConfigGroup>
 #include <KDesktopFile>
 #include <KLocalizedString>
@@ -52,6 +53,13 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
     Q_PLUGIN_METADATA(IID "org.kde.muon.AbstractResourcesBackendFactory")
     Q_INTERFACES(AbstractResourcesBackendFactory)
     public:
+        KNSBackendFactory() {
+            connect(KNSCore::QuestionManager::instance(), &KNSCore::QuestionManager::askQuestion, this, [](KNSCore::Question* q) {
+                qWarning() << q->question() << q->questionType();
+                q->setResponse(KNSCore::Question::InvalidResponse);
+            });
+        }
+
         QVector<AbstractResourcesBackend*> newInstance(QObject* parent, const QString &/*name*/) const override
         {
             QVector<AbstractResourcesBackend*> ret;
