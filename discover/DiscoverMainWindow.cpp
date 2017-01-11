@@ -165,12 +165,12 @@ void DiscoverMainWindow::openCategory(const QString& category)
     auto action = new OneTimeAction(
         [this, category]() {
             Category* cat = CategoryModel::global()->findCategoryByName(category);
-            if (!cat) {
+            if (cat) {
+                emit listCategoryInternal(cat);
+            } else {
                 showPassiveNotification(i18n("Could not find category '%1'", category));
-                return;
+                rootObject()->setProperty("defaultStartup", false);
             }
-
-            emit listCategoryInternal(cat);
         }
         , this);
 
@@ -190,8 +190,10 @@ void DiscoverMainWindow::openLocalPackage(const QUrl& localfile)
             qDebug() << "all initialized..." << res;
             if (res) {
                 emit openApplicationInternal(res);
-            } else
+            } else {
+                rootObject()->setProperty("defaultStartup", true);
                 showPassiveNotification(i18n("Couldn't open %1", localfile.toDisplayString()));
+            }
         }
         , this);
 
@@ -218,8 +220,10 @@ void DiscoverMainWindow::openApplication(const QUrl& app)
                     if (resources.size() > 1)
                         qWarning() << "many resources found for" << app;
                     emit openApplicationInternal(resources.first());
-                } else
+                } else {
+                    rootObject()->setProperty("defaultStartup", true);
                     showPassiveNotification(i18n("Couldn't open %1", app.toDisplayString()));
+                }
             });
         }
         , this);
