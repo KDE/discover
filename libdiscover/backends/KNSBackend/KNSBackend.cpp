@@ -106,7 +106,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
 
     m_engine = new KNSCore::Engine(this);
     m_engine->init(m_name);
-    connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &error) { qWarning() << "kns error" << this << error; });
+    connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &error) { qWarning() << "kns error" << objectName() << error; });
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged);
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
@@ -174,10 +174,10 @@ KNSResource* KNSBackend::resourceForEntry(const KNSCore::EntryInternal& entry)
 void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
 {
     m_responsePending = false;
-    QTimer::singleShot(0, this, &KNSBackend::availableForQueries);
 
     if(entries.isEmpty()) {
         Q_EMIT searchFinished();
+        Q_EMIT availableForQueries();
         setFetching(false);
         return;
     }
@@ -187,12 +187,14 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
     foreach(const KNSCore::EntryInternal& entry, entries) {
         resources += resourceForEntry(entry);
     }
-//     qDebug() << "received" << this << m_resourcesByName.count();
+//     qDebug() << "received" << this << m_page << m_resourcesByName.count();
     Q_EMIT receivedResources(resources);
-    if (m_page >= 0) {
+    if (m_page >= 0 && !m_responsePending) {
         ++m_page;
         m_engine->requestData(m_page, 100);
         m_responsePending = true;
+    } else {
+        Q_EMIT availableForQueries();
     }
 }
 
