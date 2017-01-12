@@ -76,14 +76,14 @@ Kirigami.AbstractListItem
                 Heading {
                     Layout.fillWidth: true
                     elide: Text.ElideRight
-                    text: name
+                    text: delegateArea.application.name
                     maximumLineCount: 1
                 }
                 Label {
                     Layout.fillWidth: true
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignRight
-                    text: categoryDisplay
+                    text: delegateArea.application.categoryDisplay
                     color: Kirigami.Theme.linkColor
                     visible: conts.width > implicitWidth
                 }
@@ -99,7 +99,7 @@ Kirigami.AbstractListItem
                 Layout.fillWidth: true
 
                 elide: Text.ElideRight
-                text: comment
+                text: delegateArea.application.comment
                 maximumLineCount: 1
                 font: SystemFonts.titleFont
             }
@@ -112,7 +112,7 @@ Kirigami.AbstractListItem
                 wrapMode: Text.WordWrap
                 elide: Text.ElideRight
                 textFormat: Text.StyledText
-                text: longDescription
+                text: delegateArea.application.longDescription
             }
         }
         InstallApplicationButton {

@@ -42,8 +42,6 @@ DiscoverPage
     }
 
     ListView {
-        id: apps
-
         header: CategoryDisplay {
             anchors {
                 left: parent.left
@@ -52,15 +50,7 @@ DiscoverPage
             category: null
             background: "qrc:/banners/coffee.jpg"
         }
-        model: PaginateModel {
-            pageSize: 5
-            sourceModel: ResourcesProxyModel {
-                id: appsModel
-                sortOrder: Qt.DescendingOrder
-                sortRole: ResourcesProxyModel.RatingCountRole
-//                 onRowsInserted: sortModel()
-            }
-        }
+        model: FeaturedModel {}
         spacing: Kirigami.Units.gridUnit
         currentIndex: -1
         delegate: ApplicationDelegate {
