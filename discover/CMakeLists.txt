@@ -7,6 +7,7 @@ set(plasma_discover_SRCS
     main.cpp
     DiscoverMainWindow.cpp
 
+    FeaturedModel.cpp
     PaginateModel.cpp
     SystemFonts.cpp
     IconColors.cpp
@@ -26,6 +27,7 @@ target_link_libraries(plasma-discover LINK_PUBLIC
                                      KF5::XmlGui
                                      KF5::Declarative
                                      KF5::ItemModels
+                                     KF5::KIOCore
                                      Qt5::Quick
                                      Discover::Common
 )
@@ -33,6 +35,5 @@ target_link_libraries(plasma-discover LINK_PUBLIC
 install(TARGETS plasma-discover ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 install(PROGRAMS org.kde.discover.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
-install(FILES featured.json DESTINATION ${DATA_INSTALL_DIR}/plasmadiscover)
 install(FILES plasmadiscoverui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/plasmadiscover)
 install( FILES org.kde.discover.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )

@@ -1,4 +1,3 @@
-find_package(KF5KIO REQUIRED)
 find_package(KF5Archive REQUIRED)
 
 add_subdirectory(runservice)
