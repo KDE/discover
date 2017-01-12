@@ -27,6 +27,8 @@
 #include <QTimer>
 #include <QMetaProperty>
 #include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
 
 MuonExporter::MuonExporter()
     : QObject(nullptr)
@@ -42,9 +44,9 @@ void MuonExporter::setExportPath(const QUrl& url)
     m_path = url;
 }
 
-QVariantMap itemDataToMap(const AbstractResource* res, const QSet<QByteArray>& excluded)
+QJsonObject itemDataToMap(const AbstractResource* res, const QSet<QByteArray>& excluded)
 {
-    QVariantMap ret;
+    QJsonObject ret;
     int propsCount = res->metaObject()->propertyCount();
     for(int i = 0; i<propsCount; i++) {
         QMetaProperty prop = res->metaObject()->property(i);
@@ -55,7 +57,7 @@ QVariantMap itemDataToMap(const AbstractResource* res, const QSet<QByteArray>& e
         if(val.isNull())
             continue;
         
-        ret.insert(QString::fromLatin1(prop.name()), val);
+        ret.insert(QLatin1String(prop.name()), QJsonValue::fromVariant(val));
     }
     return ret;
 }
@@ -74,12 +76,12 @@ void MuonExporter::fetchResources()
 
 void MuonExporter::exportResources(QVector<AbstractResource*>& resources)
 {
-    QVariantList data;
+    QJsonArray data;
     foreach(auto res, resources) {
         data += itemDataToMap(res, m_exculdedProperties);
     }
 
-    QJsonDocument doc = QJsonDocument::fromVariant(data);
+    QJsonDocument doc = QJsonDocument(data);
     if(doc.isNull()) {
         qWarning() << "Could not completely export the data to " << m_path;
         return;
