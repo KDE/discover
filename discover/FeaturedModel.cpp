@@ -29,25 +29,7 @@
 #include <KIO/FileCopyJob>
 
 #include <resources/ResourcesModel.h>
-
-class StoredResultsStream : public AggregatedResultsStream
-{
-public:
-    StoredResultsStream(const QSet<ResultsStream*>& streams)
-        : AggregatedResultsStream(streams)
-    {
-        connect(this, &ResultsStream::resourcesFound, this, [this](const QVector<AbstractResource*>& resources) {
-            m_resources += resources;
-        });
-    }
-
-    QVector<AbstractResource*> resources() const {
-        return m_resources;
-    }
-
-private:
-    QVector<AbstractResource*> m_resources;
-};
+#include <resources/StoredResultsStream.h>
 
 Q_GLOBAL_STATIC(QString, featuredCache)
 

@@ -24,7 +24,7 @@
 #include <QIcon>
 #include "MuonExporter.h"
 #include <DiscoverBackendsFactory.h>
-#include "DiscoverVersion.h"
+#include "../DiscoverVersion.h"
 
 int main(int argc, char** argv)
 {
