@@ -37,7 +37,7 @@ class MuonExporter : public QObject
 
     public Q_SLOTS:
         void fetchResources();
-        void exportResources(QVector<AbstractResource*>& resources);
+        void exportResources(const QVector<AbstractResource*>& resources);
 
     Q_SIGNALS:
         void exportDone();
