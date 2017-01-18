@@ -32,7 +32,7 @@ public:
     QVector<AbstractResource*> resources() const;
 
 Q_SIGNALS:
-    void finishedResources(QVector<AbstractResource*>& resources);
+    void finishedResources(const QVector<AbstractResource*>& resources);
 
 private:
     QVector<AbstractResource*> m_resources;

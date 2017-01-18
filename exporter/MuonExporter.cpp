@@ -74,7 +74,7 @@ void MuonExporter::fetchResources()
     QTimer::singleShot(15000, stream, &AggregatedResultsStream::finished);
 }
 
-void MuonExporter::exportResources(QVector<AbstractResource*>& resources)
+void MuonExporter::exportResources(const QVector<AbstractResource*>& resources)
 {
     QJsonArray data;
     foreach(auto res, resources) {

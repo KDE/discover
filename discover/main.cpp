@@ -74,7 +74,11 @@ void processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
         mainWindow->openLocalPackage(QUrl::fromUserInput(parser->value(QStringLiteral("local-filename")), {}, QUrl::AssumeLocalFile));
 
     foreach(const QString &arg, parser->positionalArguments()) {
-        mainWindow->openApplication(QUrl(arg));
+        const QUrl url = QUrl::fromUserInput(arg, {}, QUrl::AssumeLocalFile);
+        if (url.isLocalFile())
+            mainWindow->openLocalPackage(url);
+        else
+            mainWindow->openApplication(url);
     }
 }
 
