@@ -69,9 +69,7 @@ void FeaturedModel::refresh()
         }
     }
     auto stream = new StoredResultsStream(streams);
-    connect(stream, &AggregatedResultsStream::finished, stream, [this, stream] () {
-        setResources(stream->resources());
-    });
+    connect(stream, &StoredResultsStream::finishedResources, this, &FeaturedModel::setResources);
 }
 
 void FeaturedModel::setResources(const QVector<AbstractResource *>& resources)
