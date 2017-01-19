@@ -204,6 +204,6 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         QScopedPointer<QCollatorSortKey> m_collatorKey;
 };
 
-Q_DECLARE_METATYPE(QVector<AbstractResource*>);
+Q_DECLARE_METATYPE(QVector<AbstractResource*>)
 
 #endif // ABSTRACTRESOURCE_H
