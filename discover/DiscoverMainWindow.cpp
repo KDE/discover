@@ -185,6 +185,11 @@ void DiscoverMainWindow::openCategory(const QString& category)
 
 void DiscoverMainWindow::openLocalPackage(const QUrl& localfile)
 {
+    if (!QFile::exists(localfile.toLocalFile())) {
+//         showPassiveNotification(i18n("Trying to open unexisting file '%1'", localfile.toString()));
+        qWarning() << "Trying to open unexisting file" << localfile;
+        return;
+    }
     rootObject()->setProperty("defaultStartup", false);
     auto action = new OneTimeAction(
         [this, localfile]() {
