@@ -23,6 +23,7 @@ Name[sv]=Kate-textsnuttar
 Name[uk]=Фрагменти Kate
 Name[x-test]=xxKate Snippetsxx
 Name[zh_CN]=Kate 代码片断
+Name[zh_TW]=Kate 片段
 
 #ProvidersUrl=http://.../provider.xml
 ProvidersUrl=http://download.kde.org/ocs/providers.xml
