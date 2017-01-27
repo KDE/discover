@@ -63,6 +63,7 @@
 #include <functional>
 #include <cmath>
 #include <unistd.h>
+#include <resources/StoredResultsStream.h>
 
 class OneTimeAction : public QObject
 {
@@ -217,12 +218,8 @@ void DiscoverMainWindow::openApplication(const QUrl& app)
     rootObject()->setProperty("defaultStartup", false);
     auto action = new OneTimeAction(
         [this, app]() {
-            auto stream = ResourcesModel::global()->findResourceByPackageName(app);
-            connect(stream, &AggregatedResultsStream::resourcesFound, stream, [this, stream](const QVector<AbstractResource*>& resources) {
-                stream->setProperty("resources", QVariant::fromValue<QVector<AbstractResource*>>(resources));
-            });
-            connect(stream, &AggregatedResultsStream::finished, stream, [this, stream, app]() {
-                const auto resources = stream->property("resources").value<QVector<AbstractResource*>>();
+            StoredResultsStream* stream = new StoredResultsStream({ResourcesModel::global()->findResourceByPackageName(app)});
+            connect(stream, &StoredResultsStream::finishedResources, stream, [this, stream, app](const QVector<AbstractResource*> &resources) {
                 if (!resources.isEmpty()) {
                     if (resources.size() > 1)
                         qWarning() << "many resources found for" << app;
