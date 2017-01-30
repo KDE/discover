@@ -17,6 +17,8 @@ include(ECMMarkAsTest)
 include(ECMAddTests)
 include(GenerateExportHeader)
 
+find_package(PkgConfig REQUIRED)
+
 find_package(KF5 5.29 REQUIRED CoreAddons Config Crash DBusAddons I18n Archive Declarative XmlGui ItemModels KIO)
 find_package(KF5Kirigami2)
 
@@ -24,6 +26,9 @@ find_package(packagekitqt5)
 find_package(AppStreamQt 0.10)
 find_package(KF5Attica 5.23)
 find_package(KF5NewStuff 5.23)
+
+pkg_check_modules(FLATPAK  flatpak>=0.6.12)
+pkg_check_modules(APPSTREAM_GLIB appstream-glib)
 
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)
 
