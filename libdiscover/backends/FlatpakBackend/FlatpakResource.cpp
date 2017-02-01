@@ -69,6 +69,15 @@ QString FlatpakResource::arch() const
     return m_arch;
 }
 
+QString FlatpakResource::branch() const
+{
+    if (m_branch.isEmpty()) {
+        return QString::fromUtf8(as_app_get_branch(m_app));
+    }
+
+    return m_branch;
+}
+
 bool FlatpakResource::canExecute() const
 {
     AsAppState appState = as_app_get_state(m_app);
@@ -166,7 +175,18 @@ QUrl FlatpakResource::homepage()
 
 QString FlatpakResource::flatpakName() const
 {
+    // If the flatpak name is not known (known only for installed apps), then use
+    // appstream id instead;
+    if (m_flatpakName.isEmpty()) {
+        return QString::fromUtf8(as_app_get_id(m_app));
+    }
+
     return m_flatpakName;
+}
+
+FlatpakRefKind FlatpakResource::flatpakRefKind() const
+{
+    return m_flatpakRefKind;
 }
 
 QString FlatpakResource::license()
@@ -197,6 +217,11 @@ QString FlatpakResource::origin() const
 QString FlatpakResource::packageName() const
 {
     return QString::fromUtf8(as_app_get_pkgname_default(m_app));
+}
+
+QString FlatpakResource::runtime() const
+{
+    return m_runtime;
 }
 
 static QUrl imageOfKind(AsScreenshot *screenshot, AsImageKind imageKind)
@@ -327,6 +352,11 @@ void FlatpakResource::setArch(const QString &arch)
     m_arch = arch;
 }
 
+void FlatpakResource::setBranch(const QString &branch)
+{
+    m_branch = branch;
+}
+
 void FlatpakResource::setCommit(const QString &commit)
 {
     m_commit = commit;
@@ -335,6 +365,16 @@ void FlatpakResource::setCommit(const QString &commit)
 void FlatpakResource::setFlatpakName(const QString &name)
 {
     m_flatpakName = name;
+}
+
+void FlatpakResource::setRuntime(const QString &runtime)
+{
+    m_runtime = runtime;
+}
+
+void FlatpakResource::setFlatpakRefKind(FlatpakRefKind kind)
+{
+    m_flatpakRefKind = kind;
 }
 
 void FlatpakResource::setState(AbstractResource::State state)

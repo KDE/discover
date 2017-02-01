@@ -43,6 +43,7 @@ public:
     QString availableVersion() const override;
     QString appstreamId() const override;
     QString arch() const;
+    QString branch() const;
     bool canExecute() const override;
     QStringList categories() override;
     QString comment() override;
@@ -53,11 +54,13 @@ public:
     bool isTechnical() const override;
     QUrl homepage() override;
     QString flatpakName() const;
+    FlatpakRefKind flatpakRefKind() const;
     QString license() override;
     QString longDescription() override;
     QString name() override;
     QString origin() const override;
     QString packageName() const override;
+    QString runtime() const;
     QUrl screenshotUrl() override;
     QString section() override;
     int size() override;
@@ -69,22 +72,28 @@ public:
     void fetchChangelog() override;
     void fetchScreenshots() override;
 
+    void setAppstreamRuntime(AsApp *runtime);
     void setArch(const QString &arch);
+    void setBranch(const QString &branch);
     void setCommit(const QString &commit);
     void setFlatpakName(const QString &name);
+    void setFlatpakRefKind(FlatpakRefKind refKind);
     void setState(State state);
     void setSize(int size);
+    void setRuntime(const QString &runtime);
 //     void setAddons(const AddonList& addons);
 //     void setAddonInstalled(const QString& addon, bool installed);
 
 public:
     QList<PackageState> m_addons;
     AsApp *m_app;
+    FlatpakRefKind m_flatpakRefKind;
     QString m_arch;
+    QString m_branch;
     QString m_commit;
     QString m_flatpakName;
+    QString m_runtime;
     int m_size;
-
 };
 
 #endif // FLATPAKRESOURCE_H
