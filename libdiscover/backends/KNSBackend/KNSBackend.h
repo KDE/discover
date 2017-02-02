@@ -60,7 +60,7 @@ public:
 
     QString iconName() const { return m_iconName; }
 
-    KNSCore::Engine* downloadManager() const { return m_engine; }
+    KNSCore::Engine* engine() const { return m_engine; }
 
 Q_SIGNALS:
     void receivedResources(const QVector<AbstractResource*> &resources);

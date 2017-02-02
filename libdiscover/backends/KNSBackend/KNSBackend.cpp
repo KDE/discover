@@ -214,7 +214,7 @@ public:
 
         setCancellable(false);
 
-        auto manager = res->knsBackend()->downloadManager();
+        auto manager = res->knsBackend()->engine();
         connect(manager, &KNSCore::Engine::signalEntryChanged, this, &KNSTransaction::anEntryChanged);
     }
 
