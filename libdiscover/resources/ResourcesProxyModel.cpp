@@ -123,7 +123,8 @@ void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& _res)
     if (res.isEmpty())
         return;
 
-    qSort(res.begin(), res.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
+    if (!m_sortByRelevancy)
+        qSort(res.begin(), res.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
 
     sortedInsertion(res);
     fetchSubcategories();
