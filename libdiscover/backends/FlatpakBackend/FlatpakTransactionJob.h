@@ -1,5 +1,4 @@
 /***************************************************************************
- *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *   Copyright © 2017 Jan Grulich <jgrulich@redhat.com>                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
@@ -19,10 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef FLATPAKTRANSACTION_H
-#define FLATPAKTRANSACTION_H
-
-#include <Transaction/Transaction.h>
+#ifndef FLATPAKTRANSACTIONJOB_H
+#define FLATPAKTRANSACTIONJOB_H
 
 extern "C" {
 #include <flatpak.h>
@@ -30,28 +27,29 @@ extern "C" {
 #include <glib.h>
 }
 
+#include <Transaction/Transaction.h>
+#include <QThread>
+
 class FlatpakResource;
-class FlatpakTransactionJob;
-class FlatpakTransaction : public Transaction
+class FlatpakTransactionJob : public QThread
 {
 Q_OBJECT
 public:
-    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, Role role);
-    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, const AddonList &list, Role role);
-    ~FlatpakTransaction();
+    FlatpakTransactionJob(FlatpakInstallation *installation, FlatpakResource *app, Transaction::Role role);
 
-    void cancel() override;
+    void cancel();
+    void run() override;
 
-public Q_SLOTS:
-    void onJobFinished(bool success);
-    void onJobProgressChanged(int progress);
-    void finishTransaction();
-    void start();
+Q_SIGNALS:
+    void jobFinished(bool success);
+    void progressChanged(int progress);
 
 private:
-    FlatpakResource* m_app;
+    g_autoptr(GCancellable) m_cancellable;
+    FlatpakResource *m_app;
     FlatpakInstallation *m_installation;
-    FlatpakTransactionJob *m_job;
+    Transaction::Role m_role;
 };
 
-#endif // FLATPAKTRANSACTION_H
+#endif // FLATPAKTRANSACTIONJOB_H
+

@@ -96,7 +96,8 @@ FlatpakRef * FlatpakBackend::createFakeRef(FlatpakResource *resource)
     FlatpakRef *ref = nullptr;
     g_autoptr(GError) localError = nullptr;
 
-    const QString id = QString::fromUtf8("app/%2/%3/%4").arg(resource->flatpakName()).arg(resource->arch()).arg(resource->branch());
+    const QString id = QString::fromUtf8("%1/%2/%3/%4").arg(resource->flatpakRefKind() == FLATPAK_REF_KIND_APP ? QLatin1String("app") : QLatin1String("runtime"))
+                                                       .arg(resource->flatpakName()).arg(resource->arch()).arg(resource->branch());
     ref = flatpak_ref_parse(id.toStdString().c_str(), &localError);
 
     if (!ref) {
@@ -628,6 +629,9 @@ void FlatpakBackend::updateAppState(FlatpakInstallation *flatpakInstallation, Fl
     if (ref) {
         // If the app is installed, we can set information about commit, arch etc.
         updateAppInstalledMetadata(ref, resource);
+    } else {
+        // TODO check if the app is actuall still available
+        resource->setState(AbstractResource::None);
     }
 }
 
@@ -675,22 +679,31 @@ FlatpakInstallation * FlatpakBackend::flatpakInstallationForAppScope(AsAppScope 
     }
 }
 
-void FlatpakBackend::installApplication(AbstractResource* app, const AddonList &addons)
+void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &addons)
 {
-    TransactionModel *transModel = TransactionModel::global();
-    transModel->addTransaction(new FlatpakTransaction(qobject_cast<FlatpakResource*>(app), addons, Transaction::InstallRole));
+    FlatpakResource *resource = qobject_cast<FlatpakResource*>(app);
+    FlatpakInstallation *installation = as_app_get_scope(resource->appstreamApp()) == AS_APP_SCOPE_SYSTEM ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
+
+    // TODO: Check if the runtime needed by the application is installed
+
+    FlatpakTransaction *transaction = new FlatpakTransaction(installation, resource, addons, Transaction::InstallRole);
+    connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
+        if (status == Transaction::Status::DoneStatus) {
+            updateAppState(installation, resource, nullptr);
+        }
+    });
 }
 
-void FlatpakBackend::installApplication(AbstractResource* app)
+void FlatpakBackend::installApplication(AbstractResource *app)
 {
-    TransactionModel *transModel = TransactionModel::global();
-    transModel->addTransaction(new FlatpakTransaction(qobject_cast<FlatpakResource*>(app), Transaction::InstallRole));
+    installApplication(app, {});
 }
 
-void FlatpakBackend::removeApplication(AbstractResource* app)
+void FlatpakBackend::removeApplication(AbstractResource *app)
 {
-    TransactionModel *transModel = TransactionModel::global();
-    transModel->addTransaction(new FlatpakTransaction(qobject_cast<FlatpakResource*>(app), Transaction::RemoveRole));
+    FlatpakResource *resource = qobject_cast<FlatpakResource*>(app);
+    FlatpakInstallation *installation = as_app_get_scope(resource->appstreamApp()) == AS_APP_SCOPE_SYSTEM ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
+    FlatpakTransaction *transaction = new FlatpakTransaction(installation, resource, Transaction::RemoveRole);
 }
 
 void FlatpakBackend::checkForUpdates()

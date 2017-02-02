@@ -22,41 +22,59 @@
 #include "FlatpakTransaction.h"
 #include "FlatpakBackend.h"
 #include "FlatpakResource.h"
-#include <Transaction/TransactionModel.h>
-#include <QTimer>
-#include <QDebug>
-#include <KRandom>
+#include "FlatpakTransactionJob.h"
 
-FlatpakTransaction::FlatpakTransaction(FlatpakResource* app, Role role)
-    : FlatpakTransaction(app, {}, role)
+#include <Transaction/TransactionModel.h>
+
+#include <QDebug>
+#include <QTimer>
+
+FlatpakTransaction::FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, Role role)
+    : FlatpakTransaction(installation, app, {}, role)
 {
 }
 
-FlatpakTransaction::FlatpakTransaction(FlatpakResource* app, const AddonList& addons, Transaction::Role role)
+FlatpakTransaction::FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, const AddonList &addons, Transaction::Role role)
     : Transaction(app->backend(), app, role, addons)
     , m_app(app)
+    , m_installation(installation)
 {
     setCancellable(true);
-    iterateTransaction();
+
+    TransactionModel::global()->addTransaction(this);
+
+    QTimer::singleShot(0, this, &FlatpakTransaction::start);
 }
 
-void FlatpakTransaction::iterateTransaction()
+FlatpakTransaction::~FlatpakTransaction()
 {
-    if (!m_iterate)
-        return;
-
-    setStatus(CommittingStatus);
-    if(progress()<100) {
-        setProgress(qBound(0, progress()+(KRandom::random()%30), 100));
-        QTimer::singleShot(/*KRandom::random()%*/100, this, &FlatpakTransaction::iterateTransaction);
-    } else
-        finishTransaction();
+    delete m_job;
 }
 
 void FlatpakTransaction::cancel()
 {
-    m_iterate = false;
+    m_job->cancel();
     TransactionModel::global()->cancelTransaction(this);
+}
+
+void FlatpakTransaction::start()
+{
+    m_job = new FlatpakTransactionJob(m_installation, m_app, role());
+    connect(m_job, &FlatpakTransactionJob::jobFinished, this, &FlatpakTransaction::onJobFinished);
+    connect(m_job, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
+    m_job->start();
+}
+
+void FlatpakTransaction::onJobFinished(bool success)
+{
+    if (success) {
+        finishTransaction();
+    }
+}
+
+void FlatpakTransaction::onJobProgressChanged(int progress)
+{
+    setProgress(progress);
 }
 
 void FlatpakTransaction::finishTransaction()

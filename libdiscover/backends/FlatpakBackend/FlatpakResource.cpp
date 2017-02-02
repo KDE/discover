@@ -313,7 +313,7 @@ void FlatpakResource::invokeApplication() const
                                      m_flatpakName.toStdString().c_str(),
                                      m_arch.toStdString().c_str(),
                                      as_app_get_branch(m_app),
-                                     m_commit.toStdString().c_str(),
+                                     nullptr,
                                      cancellable,
                                      &localError)) {
         qWarning() << "Failed to launch " << as_app_get_name(m_app, nullptr) << ": " << localError->message;
