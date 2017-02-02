@@ -99,7 +99,10 @@ Kirigami.ApplicationWindow
 
     Connections {
         target: ResourcesModel
-        onPassiveMessage: showPassiveNotification(message, 3000)
+        onPassiveMessage: {
+            showPassiveNotification(message, 3000)
+            console.log("message:", message)
+        }
     }
 
     Component {
