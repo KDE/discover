@@ -47,6 +47,7 @@
 #include "KNSResource.h"
 #include "KNSReviews.h"
 #include <resources/StandardBackendUpdater.h>
+#include "utils.h"
 
 class KNSBackendFactory : public AbstractResourcesBackendFactory {
     Q_OBJECT
@@ -175,21 +176,19 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
 {
     m_responsePending = false;
 
-    if(entries.isEmpty()) {
+    const auto resources = kTransform<QVector<AbstractResource*>>(entries, [this](const KNSCore::EntryInternal& entry){ return resourceForEntry(entry); });
+    if (!resources.isEmpty()) {
+        Q_EMIT receivedResources(resources);
+    }
+
+    if(resources.isEmpty() || m_page < 0) {
         Q_EMIT searchFinished();
         Q_EMIT availableForQueries();
         setFetching(false);
         return;
     }
-
-    QVector<AbstractResource*> resources;
-    resources.reserve(entries.count());
-    foreach(const KNSCore::EntryInternal& entry, entries) {
-        resources += resourceForEntry(entry);
-    }
 //     qDebug() << "received" << this << m_page << m_resourcesByName.count();
-    Q_EMIT receivedResources(resources);
-    if (m_page >= 0 && !m_responsePending) {
+    if (!m_responsePending) {
         ++m_page;
         m_engine->requestData(m_page, 100);
         m_responsePending = true;
@@ -345,6 +344,7 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
     auto start = [this, entryid, stream]() {
         m_responsePending = true;
         m_engine->fetchEntryById(entryid);
+        connect(m_engine, &KNSCore::Engine::signalError, stream, &QObject::deleteLater);
         connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, stream, [this, stream, entryid](const KNSCore::EntryInternal &entry) {
             if (entry.uniqueId() == entryid) {
                 stream->resourcesFound({resourceForEntry(entry)});
