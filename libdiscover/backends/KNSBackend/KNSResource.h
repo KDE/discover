@@ -61,6 +61,8 @@ public:
     void setEntry(const KNSCore::EntryInternal& entry);
     KNSCore::EntryInternal entry() const;
 
+    QStringList executables() const override;
+
 private:
     const QStringList m_categories;
     KNSCore::EntryInternal m_entry;

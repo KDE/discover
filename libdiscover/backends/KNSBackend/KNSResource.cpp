@@ -20,6 +20,7 @@
 
 #include "KNSResource.h"
 #include "KNSBackend.h"
+#include <KNSCore/Engine>
 #include <QRegularExpression>
 #include <knewstuff_version.h>
 
@@ -195,4 +196,12 @@ void KNSResource::fetchChangelog()
 QStringList KNSResource::extends() const
 {
     return knsBackend()->extends();
+}
+
+QStringList KNSResource::executables() const
+{
+    if (knsBackend()->engine()->hasAdoptionCommand())
+        return {knsBackend()->engine()->adoptionCommand(m_entry)};
+    else
+        return {};
 }
