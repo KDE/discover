@@ -131,13 +131,6 @@ QStringList AppPackageKitResource::executables() const
     return m_appdata.provided(AppStream::Provided::KindBinary).items();
 }
 
-void AppPackageKitResource::invokeApplication() const
-{
-    QStringList exes = executables();
-    if(!exes.isEmpty())
-        QProcess::startDetached(exes.first());
-}
-
 static QUrl imageOfKind(const QList<AppStream::Image>& images, AppStream::Image::Kind kind)
 {
     QUrl ret;
@@ -186,11 +179,6 @@ void AppPackageKitResource::fetchScreenshots()
     }
 
     Q_EMIT screenshotsFetched(thumbnails, screenshots);
-}
-
-bool AppPackageKitResource::canExecute() const
-{
-    return !executables().isEmpty();
 }
 
 QStringList AppPackageKitResource::allPackageNames() const

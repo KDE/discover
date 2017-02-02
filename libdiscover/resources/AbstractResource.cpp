@@ -24,7 +24,9 @@
 #include <Category/CategoryModel.h>
 #include <KLocalizedString>
 #include <KFormat>
+#include <KShell>
 #include <QList>
+#include <QProcess>
 #include <QDebug>
 
 AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
@@ -35,11 +37,18 @@ AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
 
 bool AbstractResource::canExecute() const
 {
-    return false;
+    return !executables().isEmpty();
 }
 
 void AbstractResource::invokeApplication() const
-{}
+{
+    QStringList exes = executables();
+    if(!exes.isEmpty()) {
+        const QString exe = exes.at(0);
+        auto args = KShell::splitArgs(exe);
+        QProcess::startDetached(args.takeFirst(), args);
+    }
+}
 
 bool AbstractResource::isTechnical() const
 {

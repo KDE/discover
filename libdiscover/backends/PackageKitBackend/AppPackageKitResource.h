@@ -39,9 +39,7 @@ class AppPackageKitResource : public PackageKitResource
         QStringList categories() override;
         QString longDescription() override;
         QUrl homepage() override;
-        bool canExecute() const override;
         QStringList executables() const override;
-        void invokeApplication() const override;
         QString comment() override;
         QString license() override;
         QUrl screenshotUrl() override;
