@@ -63,6 +63,7 @@
 #include <functional>
 #include <cmath>
 #include <unistd.h>
+#include <resources/StoredResultsStream.h>
 
 class OneTimeAction : public QObject
 {
@@ -97,6 +98,7 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     qmlRegisterType<IconColors>("org.kde.discover.app", 1, 0, "IconColors");
     qmlRegisterType<KConcatenateRowsProxyModel>("org.kde.discover.app", 1, 0, "KConcatenateRowsProxyModel");
     qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
+    qmlRegisterType<QSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
 
     qmlRegisterSingletonType<SystemFonts>("org.kde.discover.app", 1, 0, "SystemFonts", ([](QQmlEngine*, QJSEngine*) -> QObject* { return new SystemFonts; }));
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/DiscoverSystemPalette.qml")), "org.kde.discover.app", 1, 0, "DiscoverSystemPalette");
@@ -184,6 +186,11 @@ void DiscoverMainWindow::openCategory(const QString& category)
 
 void DiscoverMainWindow::openLocalPackage(const QUrl& localfile)
 {
+    if (!QFile::exists(localfile.toLocalFile())) {
+//         showPassiveNotification(i18n("Trying to open unexisting file '%1'", localfile.toString()));
+        qWarning() << "Trying to open unexisting file" << localfile;
+        return;
+    }
     rootObject()->setProperty("defaultStartup", false);
     auto action = new OneTimeAction(
         [this, localfile]() {
@@ -211,12 +218,8 @@ void DiscoverMainWindow::openApplication(const QUrl& app)
     rootObject()->setProperty("defaultStartup", false);
     auto action = new OneTimeAction(
         [this, app]() {
-            auto stream = ResourcesModel::global()->findResourceByPackageName(app);
-            connect(stream, &AggregatedResultsStream::resourcesFound, stream, [this, stream](const QVector<AbstractResource*>& resources) {
-                stream->setProperty("resources", QVariant::fromValue<QVector<AbstractResource*>>(resources));
-            });
-            connect(stream, &AggregatedResultsStream::finished, stream, [this, stream, app]() {
-                const auto resources = stream->property("resources").value<QVector<AbstractResource*>>();
+            StoredResultsStream* stream = new StoredResultsStream({ResourcesModel::global()->findResourceByPackageName(app)});
+            connect(stream, &StoredResultsStream::finishedResources, stream, [this, stream, app](const QVector<AbstractResource*> &resources) {
                 if (!resources.isEmpty()) {
                     if (resources.size() > 1)
                         qWarning() << "many resources found for" << app;

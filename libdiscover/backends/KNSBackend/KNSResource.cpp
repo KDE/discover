@@ -124,8 +124,10 @@ QUrl KNSResource::screenshotUrl()
 }
 void KNSResource::setEntry(const KNSCore::EntryInternal& entry)
 {
+    const bool diff = entry.status() != m_entry.status();
     m_entry = entry;
-    Q_EMIT stateChanged();
+    if (diff)
+        Q_EMIT stateChanged();
 }
 
 KNSCore::EntryInternal KNSResource::entry() const

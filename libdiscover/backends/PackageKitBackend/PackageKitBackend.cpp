@@ -325,8 +325,10 @@ void PackageKitBackend::includePackagesToAdd()
         const auto pkgs = m_packages.packageToApp.value(res->packageName(), {res->packageName()});
         foreach(const auto &pkg, pkgs) {
             auto res = m_packages.packages.take(pkg);
-            emit resourceRemoved(res);
-            res->deleteLater();
+            if (res) {
+                emit resourceRemoved(res);
+                res->deleteLater();
+            }
         }
     }
     m_packagesToAdd.clear();

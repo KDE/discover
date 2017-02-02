@@ -33,14 +33,14 @@ class PackageKitSourcesBackend : public AbstractSourcesBackend
     public:
         PackageKitSourcesBackend(QObject* parent);
 
-        QString name() const;
-        QString idDescription();
+        QString name() const override;
+        QString idDescription() override;
 
-        bool addSource(const QString& id);
-        bool removeSource(const QString& id);
+        bool addSource(const QString& id) override;
+        bool removeSource(const QString& id) override;
 
-        QAbstractItemModel* sources();
-        QList<QAction*> actions() const;
+        QAbstractItemModel* sources() override;
+        QList<QAction*> actions() const override;
 
         void transactionError(PackageKit::Transaction::Error, const QString& message);
 
