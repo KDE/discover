@@ -640,10 +640,14 @@ int FlatpakBackend::updatesCount() const
     return m_updater->updatesCount();
 }
 
-ResultsStream* FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
+ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     QVector<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resources) {
+        if (qobject_cast<FlatpakResource*>(r)->flatpakRefKind() != FLATPAK_REF_KIND_APP) {
+            continue;
+        }
+
         if(r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
             ret += r;
     }

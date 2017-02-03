@@ -44,9 +44,9 @@ public:
     ~FlatpakBackend();
 
     int updatesCount() const override;
-    AbstractBackendUpdater* backendUpdater() const override;
-    AbstractReviewsBackend* reviewsBackend() const override;
-    ResultsStream* search(const AbstractResourcesBackend::Filters & search) override;
+    AbstractBackendUpdater * backendUpdater() const override;
+    AbstractReviewsBackend * reviewsBackend() const override;
+    ResultsStream * search(const AbstractResourcesBackend::Filters & search) override;
     ResultsStream * findResourceByPackageName(const QUrl &search) override;
     QHash<QString, FlatpakResource*> resources() const { return m_resources; }
     bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
@@ -63,8 +63,8 @@ public Q_SLOTS:
     void checkForUpdates();
 
 private:
-    FlatpakRef *createFakeRef(FlatpakResource *resource);
-    FlatpakInstalledRef *getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, GCancellable *cancellable);
+    FlatpakRef * createFakeRef(FlatpakResource *resource);
+    FlatpakInstalledRef * getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, GCancellable *cancellable);
     FlatpakResource * getRuntimeForApp(FlatpakResource *resource);
     bool compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref);
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation, GCancellable *cancellable);
@@ -78,7 +78,6 @@ private:
     void updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, GCancellable *cancellable);
 
     QHash<QString, FlatpakResource*> m_resources;
-    QHash<QString, FlatpakResource*> m_runtimes;
     StandardBackendUpdater  *m_updater;
     FlatpakReviewsBackend *m_reviews;
     bool m_fetching;
