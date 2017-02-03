@@ -403,7 +403,6 @@ void FlatpakBackend::reloadPackageList(GCancellable *cancellable)
         // TODO maybe not to store AsApp internally and set every info in FlatpakResource properties
         FlatpakResource *resource = new FlatpakResource(app, this);
 
-        AsAppState appState = as_app_get_state(app);
         AsAppScope appScope = as_app_get_scope(app);
 
         if (!parseMetadataFromAppBundle(resource)) {
@@ -533,7 +532,6 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
 
 bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, GCancellable *cancellable)
 {
-    int size;
     guint64 downloadSize = 0;
     guint64 installedSize = 0;
 
@@ -707,7 +705,7 @@ void FlatpakBackend::removeApplication(AbstractResource *app)
 {
     FlatpakResource *resource = qobject_cast<FlatpakResource*>(app);
     FlatpakInstallation *installation = as_app_get_scope(resource->appstreamApp()) == AS_APP_SCOPE_SYSTEM ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
-    FlatpakTransaction *transaction = new FlatpakTransaction(installation, resource, Transaction::RemoveRole);
+    new FlatpakTransaction(installation, resource, Transaction::RemoveRole);
 }
 
 void FlatpakBackend::checkForUpdates()

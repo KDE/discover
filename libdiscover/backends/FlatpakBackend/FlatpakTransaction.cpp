@@ -80,7 +80,7 @@ void FlatpakTransaction::onJobProgressChanged(int progress)
 void FlatpakTransaction::finishTransaction()
 {
     setStatus(DoneStatus);
-    AbstractResource::State newState;
+    AbstractResource::State newState = AbstractResource::None;
     switch(role()) {
     case InstallRole:
     case ChangeAddonsRole:

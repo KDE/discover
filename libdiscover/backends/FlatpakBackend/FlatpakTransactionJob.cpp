@@ -45,6 +45,11 @@ FlatpakTransactionJob::FlatpakTransactionJob(FlatpakInstallation *installation, 
     m_cancellable = g_cancellable_new();
 }
 
+FlatpakTransactionJob::~FlatpakTransactionJob()
+{
+    g_object_unref(m_cancellable);
+}
+
 void FlatpakTransactionJob::cancel()
 {
     g_cancellable_cancel(m_cancellable);

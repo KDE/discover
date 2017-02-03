@@ -36,6 +36,7 @@ class FlatpakTransactionJob : public QThread
 Q_OBJECT
 public:
     FlatpakTransactionJob(FlatpakInstallation *installation, FlatpakResource *app, Transaction::Role role);
+    ~FlatpakTransactionJob();
 
     void cancel();
     void run() override;
@@ -45,7 +46,7 @@ Q_SIGNALS:
     void progressChanged(int progress);
 
 private:
-    g_autoptr(GCancellable) m_cancellable;
+    GCancellable *m_cancellable;
     FlatpakResource *m_app;
     FlatpakInstallation *m_installation;
     Transaction::Role m_role;
