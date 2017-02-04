@@ -32,7 +32,7 @@ SnapResource::SnapResource(QJsonObject data, AbstractResource::State state, Abst
 
 QString SnapResource::availableVersion() const
 {
-    return {};
+    return installedVersion();
 }
 
 QStringList SnapResource::categories()
@@ -57,7 +57,7 @@ QUrl SnapResource::homepage()
 
 QVariant SnapResource::icon() const
 {
-    return {};
+    return QUrl(m_data.value(QLatin1String("icon")).toString());
 }
 
 QString SnapResource::installedVersion() const
