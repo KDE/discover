@@ -2,15 +2,15 @@
 <Menu>
 
   <Menu>
-    <Name>Flatpak Applications</Name>
+    <Name>Applications</Name>
     <Icon>applications-internet</Icon>
     <Image>pkcategories/applicationcrop.jpg</Image>
-<!--    <Include>
+    <Include>
         <And>
             <Category>Application</Category>
         </And>
-    </Include>-->
-<!--    <Menu>
+    </Include>
+    <Menu>
       <Name>Accessories</Name>
       <Icon>applications-utilities</Icon>
       <Image>pkcategories/accessoriescrop.jpg</Image>
@@ -460,7 +460,7 @@
           <Category>System</Category>
         </Or>
       </Include>
-    </Menu>-->
+    </Menu>
   </Menu>
 
 </Menu>

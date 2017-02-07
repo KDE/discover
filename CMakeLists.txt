@@ -28,7 +28,7 @@ find_package(KF5Attica 5.23)
 find_package(KF5NewStuff 5.23)
 
 pkg_check_modules(FLATPAK  flatpak>=0.6.12)
-pkg_check_modules(APPSTREAM_GLIB appstream-glib)
+pkg_check_modules(APPSTREAM appstream)
 
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)
 

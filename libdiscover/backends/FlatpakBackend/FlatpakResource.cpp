@@ -20,8 +20,13 @@
  ***************************************************************************/
 
 #include "FlatpakResource.h"
+#include "FlatpakBackend.h"
 
 #include <Transaction/AddonList.h>
+
+#include <AppStreamQt/icon.h>
+#include <AppStreamQt/image.h>
+#include <AppStreamQt/screenshot.h>
 
 #include <KLocalizedString>
 
@@ -31,16 +36,19 @@
 #include <QStringList>
 #include <QTimer>
 
-FlatpakResource::FlatpakResource(AsApp *app, FlatpakBackend *parent)
+FlatpakResource::FlatpakResource(AppStream::Component *component, FlatpakBackend *parent)
     : AbstractResource(parent)
-    , m_app(app)
+    , m_appdata(component)
+    , m_scope(FlatpakResource::System)
     , m_size(0)
+    , m_state(AbstractResource::None)
+    , m_type(FlatpakResource::DesktopApp)
 {
 }
 
-AsApp * FlatpakResource::appstreamApp() const
+AppStream::Component *FlatpakResource::appstreamComponent() const
 {
-    return m_app;
+    return m_appdata;
 }
 
 QList<PackageState> FlatpakResource::addonsInformation()
@@ -51,7 +59,7 @@ QList<PackageState> FlatpakResource::addonsInformation()
 QString FlatpakResource::availableVersion() const
 {
     // TODO check if there is actually version available
-    QString version = QString::fromUtf8(as_app_get_branch(m_app));
+    QString version = branch();
     if (version.isEmpty()) {
         version = i18n("Unknown");
     }
@@ -61,7 +69,7 @@ QString FlatpakResource::availableVersion() const
 
 QString FlatpakResource::appstreamId() const
 {
-    return QString::fromUtf8(as_app_get_id(m_app));
+    return m_appdata->id();
 }
 
 QString FlatpakResource::arch() const
@@ -71,36 +79,30 @@ QString FlatpakResource::arch() const
 
 QString FlatpakResource::branch() const
 {
-    if (m_branch.isEmpty()) {
-        return QString::fromUtf8(as_app_get_branch(m_app));
-    }
-
     return m_branch;
 }
 
 bool FlatpakResource::canExecute() const
 {
-    AsAppState appState = as_app_get_state(m_app);
-    return (appState == AS_APP_STATE_INSTALLED || appState == AS_APP_STATE_UPDATABLE || appState == AS_APP_STATE_UPDATABLE_LIVE);
+    return (m_state == AbstractResource::Installed || m_state == AbstractResource::Upgradeable);
 }
 
 QStringList FlatpakResource::categories()
 {
-    QStringList categoriesList;
-    GPtrArray *categories = as_app_get_categories(m_app);
-    for (uint i = 0; i < categories->len; i++) {
-        const char * category = reinterpret_cast<char*>(g_ptr_array_index(categories, i));
-        categoriesList += QString::fromUtf8(category);
-    }
-
-    qWarning() << categoriesList;
-
-    return categoriesList;
+    auto cats = m_appdata->categories();
+    if (m_appdata->kind() != AppStream::Component::KindAddon)
+        cats.append(QStringLiteral("Application"));
+    return cats;
 }
 
 QString FlatpakResource::comment()
 {
-    return QString::fromUtf8(as_app_get_comment(m_app, nullptr));
+    const auto summary = m_appdata->summary();
+    if (!summary.isEmpty()) {
+        return summary;
+    }
+
+    return QString();
 }
 
 QString FlatpakResource::commit() const
@@ -110,39 +112,34 @@ QString FlatpakResource::commit() const
 
 QStringList FlatpakResource::executables() const
 {
-//     return m_appdata.provided(AppStream::Provided::KindBinary).items();
+//     return m_appdata->provided(AppStream::Provided::KindBinary).items();
     return QStringList();
 }
 
 QVariant FlatpakResource::icon() const
 {
     QIcon ret;
-    GPtrArray *icons = as_app_get_icons(m_app);
+    const auto icons = m_appdata->icons();
 
-    if (!icons) {
+    if (icons.isEmpty()) {
+        qWarning() << "empty";
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
-    } else {
+    } else foreach(const AppStream::Icon &icon, icons) {
         QStringList stock;
-        for (uint i = 0; i < icons->len; i++) {
-            AsIcon *icon = AS_ICON(g_ptr_array_index(icons, i));
-            AsIconKind iconKind = as_icon_get_kind(icon);
-            if (iconKind == AS_ICON_KIND_LOCAL) {
-                QString url = QString::fromUtf8(as_icon_get_url(icon));
-                // Attempt to contruct the icon url
-                if (url.isEmpty()) {
-                    url = QString(QLatin1String("%1/icons%2x%3/%4")).arg(QString::fromUtf8(as_app_get_icon_path(m_app))).arg(as_icon_get_width(icon)).arg(as_icon_get_height(icon)).arg(QString::fromUtf8(as_icon_get_name(icon)));
-                }
+        QString url = QString::fromUtf8("%1/icons/").arg(m_iconPath);
+
+        switch (icon.kind()) {
+            case AppStream::Icon::KindLocal:
+                url += icon.url().toLocalFile();
                 ret.addFile(url);
-            } else if (iconKind == AS_ICON_KIND_CACHED) {
-                QString url = QString::fromUtf8(as_icon_get_url(icon));
-                // Attempt to contruct the icon url
-                if (url.isEmpty()) {
-                    url = QString(QLatin1String("%1/icons/%2x%3/%4")).arg(QString::fromUtf8(as_app_get_icon_path(m_app))).arg(as_icon_get_width(icon)).arg(as_icon_get_height(icon)).arg(QString::fromUtf8(as_icon_get_name(icon)));
-                }
+                break;
+            case AppStream::Icon::KindCached:
+                url += icon.url().toLocalFile();
                 ret.addFile(url);
-            } else if (iconKind == AS_ICON_KIND_STOCK) {
-                stock += QString::fromUtf8(as_icon_get_name(icon));
-            }
+                break;
+            case AppStream::Icon::KindStock:
+                stock += icon.name();
+                break;
         }
 
         if (ret.isNull() && !stock.isEmpty()) {
@@ -155,7 +152,7 @@ QVariant FlatpakResource::icon() const
 QString FlatpakResource::installedVersion() const
 {
     // TODO check if there is actually version available
-    QString version = QString::fromUtf8(as_app_get_branch(m_app));
+    QString version = branch();
     if (version.isEmpty()) {
         version = i18n("Unknown");
     }
@@ -170,7 +167,7 @@ bool FlatpakResource::isTechnical() const
 
 QUrl FlatpakResource::homepage()
 {
-    return QUrl(QString::fromUtf8(as_app_get_url_item(m_app, AS_URL_KIND_HOMEPAGE)));
+    return m_appdata->url(AppStream::Component::UrlKindHomepage);
 }
 
 QString FlatpakResource::flatpakName() const
@@ -178,32 +175,27 @@ QString FlatpakResource::flatpakName() const
     // If the flatpak name is not known (known only for installed apps), then use
     // appstream id instead;
     if (m_flatpakName.isEmpty()) {
-        return QString::fromUtf8(as_app_get_id(m_app));
+        return m_appdata->id();
     }
 
     return m_flatpakName;
 }
 
-FlatpakRefKind FlatpakResource::flatpakRefKind() const
-{
-    return m_flatpakRefKind;
-}
-
 QString FlatpakResource::license()
 {
-    return QString::fromUtf8(as_app_get_project_license(m_app));
+    return m_appdata->projectLicense();
 }
 
 QString FlatpakResource::longDescription()
 {
-    return QString::fromUtf8(as_app_get_description(m_app, nullptr));
+    return m_appdata->description();
 }
 
 QString FlatpakResource::name()
 {
-    QString name = QString::fromUtf8(as_app_get_name(m_app, nullptr));
+    QString name = m_appdata->name();
     if (name.isEmpty()) {
-        name = QString::fromUtf8(as_app_get_id(m_app));
+        name = m_appdata->id();
     }
 
     return name;
@@ -211,12 +203,12 @@ QString FlatpakResource::name()
 
 QString FlatpakResource::origin() const
 {
-    return QString::fromUtf8(as_app_get_origin(m_app));
+    return m_origin;
 }
 
 QString FlatpakResource::packageName() const
 {
-    return QString::fromUtf8(as_app_get_pkgname_default(m_app));
+    return m_appdata->name();
 }
 
 QString FlatpakResource::runtime() const
@@ -224,39 +216,42 @@ QString FlatpakResource::runtime() const
     return m_runtime;
 }
 
-static QUrl imageOfKind(AsScreenshot *screenshot, AsImageKind imageKind)
+static QUrl imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind)
 {
     QUrl ret;
-    GPtrArray *images = as_screenshot_get_images(screenshot);
-
-    for (uint i = 0; i < images->len; i++) {
-        AsImage *image = AS_IMAGE(g_ptr_array_index(images, i));
-        if (as_image_get_kind(image) == imageKind) {
-            ret = QUrl(QString::fromUtf8(as_image_get_url(image)));
+    Q_FOREACH (const AppStream::Image &i, images) {
+        if (i.kind() == kind) {
+            ret = i.url();
             break;
         }
     }
     return ret;
 }
 
-static QUrl screenshot(AsApp *app, AsImageKind imageKind)
+static QUrl screenshot(AppStream::Component *comp, AppStream::Image::Kind kind)
 {
     QUrl ret;
-    GPtrArray *screenshotsArray = as_app_get_screenshots(app);
-
-    for (uint i = 0; i < screenshotsArray->len; i++) {
-        AsScreenshot *screenshot = AS_SCREENSHOT(g_ptr_array_index(screenshotsArray, i));
-        ret = imageOfKind(screenshot, imageKind);
-        if ((as_screenshot_get_kind(screenshot) == AS_SCREENSHOT_KIND_DEFAULT) && !ret.isEmpty()) {
+    Q_FOREACH (const AppStream::Screenshot &s, comp->screenshots()) {
+        ret = imageOfKind(s.images(), kind);
+        if (s.isDefault() && !ret.isEmpty())
             break;
-        }
     }
     return ret;
+}
+
+FlatpakResource::Scope FlatpakResource::scope() const
+{
+    return m_scope;
+}
+
+QString FlatpakResource::scopeAsString() const
+{
+    return m_scope == System ? QLatin1String("system") : QLatin1String("user");
 }
 
 QUrl FlatpakResource::screenshotUrl()
 {
-    return screenshot(m_app, AS_IMAGE_KIND_SOURCE);
+    return screenshot(m_appdata, AppStream::Image::KindSource);
 }
 
 QString FlatpakResource::section()
@@ -271,35 +266,43 @@ int FlatpakResource::size()
 
 AbstractResource::State FlatpakResource::state()
 {
-    AsAppState appState = as_app_get_state(m_app);
-    if (appState == AS_APP_STATE_INSTALLED) {
-        return AbstractResource::Installed;
-    } else if (appState == AS_APP_STATE_UPDATABLE || appState == AS_APP_STATE_UPDATABLE_LIVE) {
-        return AbstractResource::Upgradeable;
-    } else {
-        return AbstractResource::None;
-    }
+    return m_state;
 }
 
 QUrl FlatpakResource::thumbnailUrl()
 {
-    return screenshot(m_app, AS_IMAGE_KIND_THUMBNAIL);
+    return screenshot(m_appdata, AppStream::Image::KindThumbnail);
+}
+
+FlatpakResource::ResourceType FlatpakResource::type() const
+{
+    return m_type;
+}
+
+QString FlatpakResource::typeAsString() const
+{
+    switch (m_type) {
+        case FlatpakResource::DesktopApp:
+            return QLatin1String("app");
+            break;
+        case FlatpakResource::Runtime:
+            return QLatin1String("runtime");
+            break;
+    }
+
+    return QLatin1String("app");
 }
 
 QString FlatpakResource::uniqueId() const
 {
-    // Build uniqueId if the bundle kind is not known
-    if (!as_app_get_bundle_default(m_app)) {
-        return QString::fromUtf8(as_utils_unique_id_build(as_app_get_scope(m_app),
-                                                          AS_BUNDLE_KIND_FLATPAK, // Bundle kind should be flatpak for flatpak apps
-                                                          as_app_get_origin(m_app),
-                                                          as_app_get_kind(m_app),
-                                                          as_app_get_id(m_app),
-                                                          as_app_get_branch(m_app)));
-    }
-
-    // Otherwise the id should have all the necessary information and not use "*" for unknown stuff
-    return QString::fromUtf8(as_app_get_unique_id(m_app));
+    // Build uniqueId
+    const QString scope = m_scope == System ? QLatin1String("system") : QLatin1String("user");
+    return QString::fromUtf8("%1/%2/%3/%4/%5/%6").arg(scope)
+                                                 .arg(QLatin1String("flatpak"))
+                                                 .arg(origin())
+                                                 .arg(typeAsString())
+                                                 .arg(m_appdata->id())
+                                                 .arg(branch());
 }
 
 void FlatpakResource::invokeApplication() const
@@ -309,14 +312,14 @@ void FlatpakResource::invokeApplication() const
 
     const FlatpakBackend *p = static_cast<FlatpakBackend*>(parent());
 
-    if (!flatpak_installation_launch(p->flatpakInstallationForAppScope(as_app_get_scope(m_app)),
-                                     m_flatpakName.toStdString().c_str(),
-                                     m_arch.toStdString().c_str(),
-                                     as_app_get_branch(m_app),
+    if (!flatpak_installation_launch(p->flatpakInstallationForAppScope(scope()),
+                                     flatpakName().toStdString().c_str(),
+                                     arch().toStdString().c_str(),
+                                     branch().toStdString().c_str(),
                                      nullptr,
                                      cancellable,
                                      &localError)) {
-        qWarning() << "Failed to launch " << as_app_get_name(m_app, nullptr) << ": " << localError->message;
+        qWarning() << "Failed to launch " << m_appdata->name() << ": " << localError->message;
     }
 }
 
@@ -330,13 +333,11 @@ void FlatpakResource::fetchChangelog()
 
 void FlatpakResource::fetchScreenshots()
 {
-    GPtrArray *screenshotsArray = as_app_get_screenshots(m_app);
     QList<QUrl> thumbnails, screenshots;
 
-    for (uint i = 0; i < screenshotsArray->len; i++) {
-        AsScreenshot *screenshot = AS_SCREENSHOT(g_ptr_array_index(screenshotsArray, i));
-        const QUrl thumbnail = imageOfKind(screenshot, AS_IMAGE_KIND_THUMBNAIL);
-        const QUrl plain = imageOfKind(screenshot, AS_IMAGE_KIND_SOURCE);
+    Q_FOREACH (const AppStream::Screenshot &s, m_appdata->screenshots()) {
+        const QUrl thumbnail = imageOfKind(s.images(), AppStream::Image::KindThumbnail);
+        const QUrl plain = imageOfKind(s.images(), AppStream::Image::KindSource);
         if (plain.isEmpty())
             qWarning() << "invalid screenshot for" << name();
 
@@ -367,25 +368,29 @@ void FlatpakResource::setFlatpakName(const QString &name)
     m_flatpakName = name;
 }
 
+void FlatpakResource::setIconPath(const QString &path)
+{
+    m_iconPath = path;
+}
+
+void FlatpakResource::setOrigin(const QString &origin)
+{
+    m_origin = origin;
+}
+
 void FlatpakResource::setRuntime(const QString &runtime)
 {
     m_runtime = runtime;
 }
 
-void FlatpakResource::setFlatpakRefKind(FlatpakRefKind kind)
+void FlatpakResource::setScope(FlatpakResource::Scope scope)
 {
-    m_flatpakRefKind = kind;
+    m_scope = scope;
 }
 
 void FlatpakResource::setState(AbstractResource::State state)
 {
-    if (state == AbstractResource::None) {
-        as_app_set_state(m_app, AS_APP_STATE_AVAILABLE);
-    } else if (state == AbstractResource::Installed) {
-        as_app_set_state(m_app, AS_APP_STATE_INSTALLED);
-    } else if (state == AbstractResource::Upgradeable) {
-        as_app_set_state(m_app, AS_APP_STATE_UPDATABLE);
-    }
+    m_state = state;
 
     emit stateChanged();
 }
@@ -393,6 +398,11 @@ void FlatpakResource::setState(AbstractResource::State state)
 void FlatpakResource::setSize(int size)
 {
     m_size = size;
+}
+
+void FlatpakResource::setType(FlatpakResource::ResourceType type)
+{
+    m_type = type;
 }
 
 // void FlatpakResource::setAddons(const AddonList& addons)

@@ -22,23 +22,49 @@
 #ifndef FLATPAKRESOURCE_H
 #define FLATPAKRESOURCE_H
 
-#include <FlatpakBackend.h>
+#include <resources/AbstractResource.h>
 
 extern "C" {
-#include <libappstream-glib/appstream-glib.h>
 #include <flatpak.h>
-#include <gio/gio.h>
-#include <glib.h>
 }
 
+#include <AppStreamQt/component.h>
+
 class AddonList;
+class FlatpakBackend;
 class FlatpakResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit FlatpakResource(AsApp *app, FlatpakBackend *parent);
+    explicit FlatpakResource(AppStream::Component *component, FlatpakBackend *parent);
 
-    AsApp *appstreamApp() const;
+    enum ResourceType {
+        DesktopApp = 0,
+        Runtime
+    };
+
+    enum Scope {
+        System = 0,
+        User
+    };
+
+    Q_ENUM(Scope)
+
+    static QString typeAsString(ResourceType type) {
+        if (type == DesktopApp) {
+            return QLatin1String("app");
+        }
+        return QLatin1String("runtime");
+    }
+
+    static QString scopeAsString(Scope scope) {
+        if (scope == System) {
+            return QLatin1String("system");
+        }
+        return QLatin1String("user");
+    }
+
+    AppStream::Component *appstreamComponent() const;
     QList<PackageState> addonsInformation() override;
     QString availableVersion() const override;
     QString appstreamId() const override;
@@ -54,7 +80,6 @@ public:
     bool isTechnical() const override;
     QUrl homepage() override;
     QString flatpakName() const;
-    FlatpakRefKind flatpakRefKind() const;
     QString license() override;
     QString longDescription() override;
     QString name() override;
@@ -62,38 +87,49 @@ public:
     QString packageName() const override;
     QString runtime() const;
     QUrl screenshotUrl() override;
+    Scope scope() const;
+    QString scopeAsString() const;
     QString section() override;
     int size() override;
     AbstractResource::State state() override;
     QUrl thumbnailUrl() override;
+    ResourceType type() const;
+    QString typeAsString() const;
     QString uniqueId() const;
 
     void invokeApplication() const override;
     void fetchChangelog() override;
     void fetchScreenshots() override;
 
-    void setAppstreamRuntime(AsApp *runtime);
     void setArch(const QString &arch);
     void setBranch(const QString &branch);
     void setCommit(const QString &commit);
+    void setIconPath(const QString &path);
     void setFlatpakName(const QString &name);
-    void setFlatpakRefKind(FlatpakRefKind refKind);
+    void setOrigin(const QString &origin);
+    void setRuntime(const QString &runtime);
+    void setScope(Scope scope);
     void setState(State state);
     void setSize(int size);
-    void setRuntime(const QString &runtime);
+    void setType(ResourceType type);
 //     void setAddons(const AddonList& addons);
 //     void setAddonInstalled(const QString& addon, bool installed);
 
 public:
     QList<PackageState> m_addons;
-    AsApp *m_app;
+    AppStream::Component *m_appdata;
     FlatpakRefKind m_flatpakRefKind;
     QString m_arch;
     QString m_branch;
     QString m_commit;
     QString m_flatpakName;
+    QString m_iconPath;
+    QString m_origin;
     QString m_runtime;
+    Scope m_scope;
     int m_size;
+    AbstractResource::State m_state;
+    ResourceType m_type;
 };
 
 #endif // FLATPAKRESOURCE_H

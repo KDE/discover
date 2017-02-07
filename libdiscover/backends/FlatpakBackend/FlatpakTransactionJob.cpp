@@ -64,7 +64,7 @@ void FlatpakTransactionJob::run()
     if (m_role == Transaction::Role::InstallRole) {
         ref = flatpak_installation_install(m_installation,
                                            m_app->origin().toStdString().c_str(),
-                                           m_app->flatpakRefKind(),
+                                           m_app->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
                                            m_app->flatpakName().toStdString().c_str(),
                                            m_app->arch().toStdString().c_str(),
                                            m_app->branch().toStdString().c_str(),
@@ -77,7 +77,7 @@ void FlatpakTransactionJob::run()
         }
     } else if (m_role == Transaction::Role::RemoveRole) {
         if (!flatpak_installation_uninstall(m_installation,
-                                            m_app->flatpakRefKind(),
+                                            m_app->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
                                             m_app->flatpakName().toStdString().c_str(),
                                             m_app->arch().toStdString().c_str(),
                                             m_app->branch().toStdString().c_str(),
