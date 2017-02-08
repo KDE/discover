@@ -48,7 +48,7 @@ public:
     AbstractReviewsBackend * reviewsBackend() const override;
     ResultsStream * search(const AbstractResourcesBackend::Filters & search) override;
     ResultsStream * findResourceByPackageName(const QUrl &search) override;
-    QHash<QString, FlatpakResource*> resources() const { return m_resources; }
+    QList<FlatpakResource*> resources() const { return m_resources.values(); }
     bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
     QList<QAction*> messageActions() const override { return m_messageActions; }
 

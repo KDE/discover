@@ -161,21 +161,20 @@ FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *fla
         }
     }
 
-    return 0;
+    return nullptr;
 }
 
 FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource)
 {
     FlatpakResource *runtime = nullptr;
-    const QStringList ids = m_resources.keys();
-    const QStringList runtimeInfo = resource->runtime().split(QLatin1Char('/'));
+    const auto runtimeInfo = resource->runtime().splitRef(QLatin1Char('/'));
 
     if (runtimeInfo.count() != 3) {
         return runtime;
     }
 
     const QString runtimeId = QString::fromUtf8("runtime/%1/%2").arg(runtimeInfo.at(0)).arg(runtimeInfo.at(2));
-    foreach (const QString &id, ids) {
+    foreach (const QString &id, m_resources.keys()) {
         if (id.endsWith(runtimeId)) {
             runtime = m_resources.value(id);
             break;
@@ -194,15 +193,16 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
         qWarning() << "Failed to parse metadata from app bundle for " << resource->name();
     }
 
-    updateAppState(resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser, resource);
+    auto installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
+    updateAppState(installation, resource);
 
     if (resource->type() == FlatpakResource::DesktopApp) {
-        if (!updateAppMetadata(resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser, resource)) {
-            qWarning() << "Failed to update " << resource->name() << " with installed metadata";
+        if (!updateAppMetadata(installation, resource)) {
+            qWarning() << "Failed to update" << resource->name() << "with installed metadata";
         }
     }
 
-    updateAppSize(resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser, resource);
+    updateAppSize(installation, resource);
 
     connect(resource, &FlatpakResource::stateChanged, this, &FlatpakBackend::updatesCountChanged);
 
@@ -415,16 +415,14 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
     }
 
     for (uint i = 0; i < refs->len; i++) {
-        const gchar *commit = nullptr;
-        const gchar *latestCommit = nullptr;
         FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+        const gchar *latestCommit = flatpak_installed_ref_get_latest_commit(ref);
 
-        commit = flatpak_ref_get_commit(FLATPAK_REF(ref));
-        latestCommit = flatpak_installed_ref_get_latest_commit(ref);
         if (!latestCommit) {
             qWarning() << "Couldn'g get latest commit for " << flatpak_ref_get_name(FLATPAK_REF(ref));
         }
 
+        const gchar *commit = flatpak_ref_get_commit(FLATPAK_REF(ref));
         if (g_strcmp0(commit, latestCommit) == 0) {
             continue;
         }
@@ -761,13 +759,9 @@ void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &
     FlatpakInstallation *installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
 
     FlatpakResource *runtime = getRuntimeForApp(resource);
-    if (runtime) {
-        if (!runtime->isInstalled()) {
-            transaction = new FlatpakTransaction(installation, resource, runtime, addons, Transaction::InstallRole);
-        }
-    }
-
-    if (!transaction) {
+    if (runtime && !runtime->isInstalled()) {
+        transaction = new FlatpakTransaction(installation, resource, runtime, addons, Transaction::InstallRole);
+    } else {
         transaction = new FlatpakTransaction(installation, resource, addons, Transaction::InstallRole);
     }
 
