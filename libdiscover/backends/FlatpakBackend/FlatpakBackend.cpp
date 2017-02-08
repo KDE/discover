@@ -717,14 +717,20 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
     return new ResultsStream(QStringLiteral("FlatpakStream"), ret);
 }
 
-ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &search)
+ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
 {
-    auto res = search.scheme() == QLatin1String("flatpak") ? m_resources.value(search.host().replace(QLatin1Char('.'), QLatin1Char(' '))) : nullptr;
-    if (!res) {
-        return new ResultsStream(QStringLiteral("FlatpakStream"), {});
-    } else {
-        return new ResultsStream(QStringLiteral("FlatpakStream"), { res });
+    QVector<AbstractResource*> resources;
+    if (url.scheme() == QLatin1String("appstream")) {
+        if (url.host().isEmpty())
+            passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
+        else {
+            foreach(FlatpakResource* res, m_resources) {
+                if (res->appstreamId() == url.host())
+                    resources << res;
+            }
+        }
     }
+    return new ResultsStream(QStringLiteral("FlatpakStream"), resources);
 }
 
 AbstractBackendUpdater * FlatpakBackend::backendUpdater() const
