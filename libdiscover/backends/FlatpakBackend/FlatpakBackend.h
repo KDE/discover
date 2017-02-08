@@ -57,12 +57,13 @@ public:
     void installApplication(AbstractResource* app, const AddonList& addons) override;
     void removeApplication(AbstractResource* app) override;
     bool isFetching() const override { return m_fetching; }
-//     AbstractResource * resourceForFile(const QUrl & ) override;
+    AbstractResource * resourceForFile(const QUrl & ) override;
 
 public Q_SLOTS:
     void checkForUpdates();
 
 private:
+    void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     FlatpakRef * createFakeRef(FlatpakResource *resource);
     FlatpakInstalledRef * getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     FlatpakResource * getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref);
@@ -80,6 +81,8 @@ private:
     bool updateAppMetadata(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     bool updateAppSize(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     void updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
+
+    FlatpakRemote* flatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
 
     void setFetching(bool fetching);
 

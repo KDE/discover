@@ -44,11 +44,14 @@
 #include <QDebug>
 #include <QDir>
 #include <QFile>
+#include <QMessageBox>
 #include <QSettings>
 #include <QThread>
 #include <QTimer>
 #include <QTextStream>
 #include <QTemporaryFile>
+
+#include <glib.h>
 
 MUON_BACKEND_PLUGIN(FlatpakBackend)
 
@@ -242,69 +245,88 @@ bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallati
     return (resource->flatpakName() == QString::fromUtf8(appId) || resource->flatpakName() == QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(ref))));
 }
 
-bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation)
+class FlatpakSource
 {
-    g_autoptr(GPtrArray) remotes = nullptr;
+public:
+    FlatpakSource(FlatpakRemote* remote) : m_remote(remote) {}
 
-    if (!flatpakInstallation) {
-        return false;
+    bool isEnabled() const
+    {
+        return !flatpak_remote_get_disabled(m_remote);
     }
 
-    remotes = flatpak_installation_list_remotes(flatpakInstallation, m_cancellable, nullptr);
+    QString appstreamDir() const
+    {
+        g_autoptr(GFile) appstreamDir = flatpak_remote_get_appstream_dir(m_remote, nullptr);
+        if (!appstreamDir) {
+            qWarning() << "No appstream dir for " << flatpak_remote_get_name(m_remote);
+            return {};
+        }
+        return QString::fromUtf8(g_file_get_path(appstreamDir));
+    }
+
+    QString name() const
+    {
+        return QString::fromUtf8(flatpak_remote_get_name(m_remote));
+    }
+
+private:
+    FlatpakRemote* m_remote;
+};
+
+bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation)
+{
+    Q_ASSERT(flatpakInstallation);
+
+    g_autoptr(GPtrArray) remotes = flatpak_installation_list_remotes(flatpakInstallation, m_cancellable, nullptr);
     if (!remotes) {
         return false;
     }
 
     for (uint i = 0; i < remotes->len; i++) {
-        GPtrArray *components;
-        g_autoptr(GFile) appstreamDir = nullptr;
-        g_autoptr(AsMetadata) metadata = as_metadata_new();
-        g_autoptr(GFile) file = nullptr;
-        g_autoptr(GError) localError = nullptr;
-
         FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
-        if (flatpak_remote_get_disabled(remote)) {
-            continue;
-        }
-
-        appstreamDir = flatpak_remote_get_appstream_dir(remote, nullptr);
-        if (!appstreamDir) {
-            qWarning() << "No appstream dir for " << flatpak_remote_get_name(remote);
-            continue;
-        }
-
-        QString appDirFileName = QString::fromUtf8(g_file_get_path(appstreamDir));
-        appDirFileName += QLatin1String("/appstream.xml.gz");
-        if (!QFile::exists(appDirFileName)) {
-            qWarning() << "No " << appDirFileName << " appstream metadata found for " << flatpak_remote_get_name(remote);
-            continue;
-        }
-
-        file = g_file_new_for_path(appDirFileName.toStdString().c_str());
-        as_metadata_set_format_style (metadata, AS_FORMAT_STYLE_COLLECTION);
-        as_metadata_parse_file(metadata, file, AS_FORMAT_KIND_XML, &localError);
-        if (localError) {
-            qWarning() << "Failed to parse appstream metadata " << localError->message;
-            continue;
-        }
-
-        components = as_metadata_get_components(metadata);
-        for (uint i = 0; i < components->len; i++) {
-            AsComponent *component = AS_COMPONENT(g_ptr_array_index(components, i));
-            AppStream::Component *appstreamComponent = new AppStream::Component(component);
-            FlatpakResource *resource = new FlatpakResource(appstreamComponent, this);
-            if (flatpak_installation_get_is_user(flatpakInstallation)) {
-                resource->setScope(FlatpakResource::User);
-            } else {
-                resource->setScope(FlatpakResource::System);
-            }
-            resource->setIconPath(QString::fromUtf8(g_file_get_path(appstreamDir)));
-            resource->setOrigin(QString::fromUtf8(flatpak_remote_get_name(remote)));
-            addResource(resource);
-        }
+        integrateRemote(flatpakInstallation, remote);
     }
 
     return true;
+}
+
+void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)
+{
+    g_autoptr(GError) localError = nullptr;
+
+    FlatpakSource source(remote);
+    if (!source.isEnabled() || flatpak_remote_get_noenumerate(remote)) {
+        return;
+    }
+
+    const QString appstreamDirPath = source.appstreamDir();
+    const QString appDirFileName = appstreamDirPath + QLatin1String("/appstream.xml.gz");
+    if (!QFile::exists(appDirFileName)) {
+        qWarning() << "No " << appDirFileName << " appstream metadata found for " << source.name();
+        return;
+    }
+
+    g_autoptr(AsMetadata) metadata = as_metadata_new();
+    g_autoptr(GFile) file = g_file_new_for_path(appDirFileName.toStdString().c_str());
+    as_metadata_set_format_style (metadata, AS_FORMAT_STYLE_COLLECTION);
+    as_metadata_parse_file(metadata, file, AS_FORMAT_KIND_XML, &localError);
+    if (localError) {
+        qWarning() << "Failed to parse appstream metadata " << localError->message;
+        return;
+    }
+
+    g_autoptr(GPtrArray) components = as_metadata_get_components(metadata);
+    const FlatpakResource::Scope scope = flatpak_installation_get_is_user(flatpakInstallation) ? FlatpakResource::User : FlatpakResource::System;
+    for (uint i = 0; i < components->len; i++) {
+        AsComponent *component = AS_COMPONENT(g_ptr_array_index(components, i));
+        AppStream::Component *appstreamComponent = new AppStream::Component(component);
+        FlatpakResource *resource = new FlatpakResource(appstreamComponent, this);
+        resource->setScope(scope);
+        resource->setIconPath(appstreamDirPath);
+        resource->setOrigin(source.name());
+        addResource(resource);
+    }
 }
 
 bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
@@ -773,14 +795,74 @@ void FlatpakBackend::checkForUpdates()
     loadRemoteUpdates(m_flatpakInstallationUser);
 }
 
-// AbstractResource * FlatpakBackend::resourceForFile(const QUrl &path)
-// {
-//     FlatpakResource* res = new FlatpakResource(path.fileName(), true, this);
-//     res->setSize(666);
-//     res->setState(AbstractResource::None);
-//     m_resources.insert(res->packageName(), res);
-//     connect(res, &FlatpakResource::stateChanged, this, &FlatpakBackend::updatesCountChanged);
-//     return res;
-// }
+FlatpakRemote * FlatpakBackend::flatpakRemoteByUrl(const QString& url, FlatpakInstallation* installation) const
+{
+    auto remotes = flatpak_installation_list_remotes(installation, m_cancellable, nullptr);
+    if (!remotes) {
+        return nullptr;
+    }
+
+    const QByteArray comparableUrl = url.toUtf8();
+    for (uint i = 0; i < remotes->len; i++) {
+        FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
+
+        if (comparableUrl == flatpak_remote_get_url(remote)) {
+            return remote;
+        }
+    }
+    return nullptr;
+}
+
+AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
+{
+    if (!url.path().endsWith(QLatin1String(".flatpakref")) || !url.isLocalFile())
+        return nullptr;
+
+    auto installation = m_flatpakInstallationSystem;
+    QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
+    const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
+    FlatpakRemote* remote = flatpakRemoteByUrl(refurl, installation);
+
+    if (!remote) {
+        const auto res = QMessageBox::question(nullptr, i18n("Add Remote"),
+                                            i18n("Would you like to add remote '%1'?\n\nFrom: %2\nWith GPG key=%3...",
+                                                    settings.value(QStringLiteral("Flatpak Ref/Title")).toString(),
+                                                    refurl,
+                                                    settings.value(QStringLiteral("Flatpak Ref/GPGKey")).toString().left(23)),
+                                            QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No));
+        if (res != QMessageBox::Yes) {
+            return nullptr;
+        }
+    }
+
+    g_autoptr(GError) error = NULL;
+    g_autoptr(FlatpakRemoteRef) remoteRef = nullptr;
+    {
+        QFile f(url.toLocalFile());
+        if (!f.open(QFile::ReadOnly | QFile::Text))
+            return nullptr;
+
+        QByteArray contents = f.readAll();
+
+        g_autoptr(GBytes) bytes = g_bytes_new (contents.data(), contents.size());
+
+        remoteRef = flatpak_installation_install_ref_file (installation, bytes, m_cancellable, &error);
+        if (!remoteRef)
+            return nullptr;
+    }
+
+    const auto remoteName = flatpak_remote_ref_get_remote_name(remoteRef);
+    remote = flatpak_installation_get_remote_by_name(installation, remoteName, m_cancellable, &error);
+
+    auto ref = FLATPAK_REF(remoteRef);
+
+    auto c = new AppStream::Component();
+    c->setName(QString::fromUtf8(flatpak_ref_get_name(ref)));
+    auto resource = new FlatpakResource(c, this);
+    resource->updateFromRef(ref);
+    resource->setOrigin(QString::fromUtf8(remoteName));
+    addResource(resource);
+    return resource;
+}
 
 #include "FlatpakBackend.moc"
