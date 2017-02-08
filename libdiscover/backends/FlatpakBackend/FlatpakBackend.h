@@ -65,11 +65,14 @@ public Q_SLOTS:
 private:
     FlatpakRef * createFakeRef(FlatpakResource *resource);
     FlatpakInstalledRef * getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
+    FlatpakResource * getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref);
     FlatpakResource * getRuntimeForApp(FlatpakResource *resource);
     void addResource(FlatpakResource *resource);
     bool compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref);
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);
     bool loadInstalledApps(FlatpakInstallation *flatpakInstallation);
+    void loadLocalUpdates(FlatpakInstallation *flatpakInstallation);
+    void loadRemoteUpdates(FlatpakInstallation *flatpakInstallation);
     bool parseMetadataFromAppBundle(FlatpakResource *resource);
     void reloadPackageList();
     bool setupFlatpakInstallations(GError **error);

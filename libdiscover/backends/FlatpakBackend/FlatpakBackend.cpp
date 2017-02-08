@@ -61,11 +61,15 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     g_autoptr(GError) error = nullptr;
     m_cancellable = g_cancellable_new();
 
+    connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FlatpakBackend::updatesCountChanged);
+
     // Load flatpak installation
     if (!setupFlatpakInstallations(&error)) {
         qWarning() << "Failed to setup flatpak installations: " << error->message;
     } else {
         reloadPackageList();
+
+        checkForUpdates();
     }
 
     QAction* updateAction = new QAction(this);
@@ -146,6 +150,17 @@ FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakInstallation 
     return ref;
 }
 
+FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref)
+{
+    foreach (FlatpakResource *resource, m_resources) {
+        if (compareAppFlatpakRef(flatpakInstallation, resource, ref)) {
+            return resource;
+        }
+    }
+
+    return 0;
+}
+
 FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource)
 {
     FlatpakResource *runtime = nullptr;
@@ -185,6 +200,8 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
     }
 
     updateAppSize(resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser, resource);
+
+    connect(resource, &FlatpakResource::stateChanged, this, &FlatpakBackend::updatesCountChanged);
 
     m_resources.insert(resource->uniqueId(), resource);
 }
@@ -360,6 +377,59 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
     }
 
     return true;
+}
+
+void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
+{
+    g_autoptr(GError) localError = nullptr;
+    g_autoptr(GPtrArray) refs = nullptr;
+
+    refs = flatpak_installation_list_installed_refs(flatpakInstallation, m_cancellable, &localError);
+    if (!refs) {
+        qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
+        return;
+    }
+
+    for (uint i = 0; i < refs->len; i++) {
+        const gchar *commit = nullptr;
+        const gchar *latestCommit = nullptr;
+        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+
+        commit = flatpak_ref_get_commit(FLATPAK_REF(ref));
+        latestCommit = flatpak_installed_ref_get_latest_commit(ref);
+        if (!latestCommit) {
+            qWarning() << "Couldn'g get latest commit for " << flatpak_ref_get_name(FLATPAK_REF(ref));
+        }
+
+        if (g_strcmp0(commit, latestCommit) == 0) {
+            continue;
+        }
+
+        FlatpakResource *resource = getAppForInstalledRef(flatpakInstallation, ref);
+        if (resource) {
+            resource->setState(AbstractResource::Upgradeable);
+        }
+    }
+}
+
+void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation *flatpakInstallation)
+{
+    g_autoptr(GError) localError = nullptr;
+    g_autoptr(GPtrArray) refs = nullptr;
+
+    refs = flatpak_installation_list_installed_refs_for_update(flatpakInstallation, m_cancellable, &localError);
+    if (!refs) {
+        qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
+        return;
+    }
+
+    for (uint i = 0; i < refs->len; i++) {
+        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+        FlatpakResource *resource = getAppForInstalledRef(flatpakInstallation, ref);
+        if (resource) {
+            resource->setState(AbstractResource::Upgradeable);
+        }
+    }
 }
 
 bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
@@ -620,12 +690,13 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
 {
     QVector<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resources) {
-        if (qobject_cast<FlatpakResource*>(r)->type() != FlatpakResource::DesktopApp) {
+        if (qobject_cast<FlatpakResource*>(r)->type() == FlatpakResource::Runtime && filter.state != AbstractResource::Upgradeable) {
             continue;
         }
 
-        if(r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
+        if (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)) {
             ret += r;
+        }
     }
     return new ResultsStream(QStringLiteral("FlatpakStream"), ret);
 }
@@ -697,11 +768,15 @@ void FlatpakBackend::removeApplication(AbstractResource *app)
 
 void FlatpakBackend::checkForUpdates()
 {
-//     if(m_fetching)
-//         return;
-//     toggleFetching();
-//     populate(QStringLiteral("Moar"));
-//     QTimer::singleShot(500, this, &FlatpakBackend::toggleFetching);
+    // TODO update size
+
+    // Load local updates, comparing current and latest commit
+    loadLocalUpdates(m_flatpakInstallationSystem);
+    loadLocalUpdates(m_flatpakInstallationUser);
+
+    // Load updates from remote repositories
+    loadRemoteUpdates(m_flatpakInstallationSystem);
+    loadRemoteUpdates(m_flatpakInstallationUser);
 }
 
 // AbstractResource * FlatpakBackend::resourceForFile(const QUrl &path)
