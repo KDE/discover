@@ -78,6 +78,8 @@ private:
     bool updateAppSize(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     void updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
 
+    void setFetching(bool fetching);
+
     QHash<QString, FlatpakResource*> m_resources;
     StandardBackendUpdater  *m_updater;
     FlatpakReviewsBackend *m_reviews;

@@ -56,7 +56,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(new FlatpakReviewsBackend(this))
-    , m_fetching(true)
+    , m_fetching(false)
 {
     g_autoptr(GError) error = nullptr;
     m_cancellable = g_cancellable_new();
@@ -387,6 +387,8 @@ bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
 
 void FlatpakBackend::reloadPackageList()
 {
+    setFetching(true);
+
     // Load applications from appstream metadata
     if (!loadAppsFromAppstreamData(m_flatpakInstallationSystem)) {
         qWarning() << "Failed to load packages from appstream data from system installation";
@@ -404,6 +406,8 @@ void FlatpakBackend::reloadPackageList()
     if (!loadInstalledApps(m_flatpakInstallationUser)) {
         qWarning() << "Failed to load installed packages from user installation";
     }
+
+    setFetching(false);
 }
 
 bool FlatpakBackend::setupFlatpakInstallations(GError **error)
@@ -596,6 +600,14 @@ void FlatpakBackend::updateAppState(FlatpakInstallation *flatpakInstallation, Fl
     } else {
         // TODO check if the app is actuall still available
         resource->setState(AbstractResource::None);
+    }
+}
+
+void FlatpakBackend::setFetching(bool fetching)
+{
+    if (m_fetching != fetching) {
+        m_fetching = fetching;
+        emit fetchingChanged();
     }
 }
 
