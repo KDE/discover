@@ -23,6 +23,7 @@
 #define FLATPAKTRANSACTION_H
 
 #include <Transaction/Transaction.h>
+#include <QPointer>
 
 extern "C" {
 #include <flatpak.h>
@@ -60,11 +61,11 @@ private:
     bool m_runtimeJobFinished;
     int m_appJobProgress;
     int m_runtimeJobProgress;
-    FlatpakResource *m_app;
-    FlatpakResource *m_runtime;
+    QPointer<FlatpakResource> m_app;
+    QPointer<FlatpakResource> m_runtime;
     FlatpakInstallation *m_installation;
-    FlatpakTransactionJob *m_appJob;
-    FlatpakTransactionJob *m_runtimeJob;
+    QPointer<FlatpakTransactionJob> m_appJob;
+    QPointer<FlatpakTransactionJob> m_runtimeJob;
 };
 
 #endif // FLATPAKTRANSACTION_H
