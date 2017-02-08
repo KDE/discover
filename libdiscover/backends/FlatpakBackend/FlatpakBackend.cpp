@@ -525,9 +525,7 @@ void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRe
 
 bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation, FlatpakResource *resource)
 {
-    QString metadataContent;
-    QString path;
-    gsize len = 0;
+    QByteArray metadataContent;
     g_autoptr(GBytes) data = nullptr;
     g_autoptr(GFile) installationPath = nullptr;
     g_autoptr(GError) localError = nullptr;
@@ -537,14 +535,12 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
     }
 
     installationPath = flatpak_installation_get_path(flatpakInstallation);
-    path = QString::fromUtf8(g_file_get_path(installationPath));
-    path += QString::fromUtf8("/app/%1/%2/%3/active/metadata").arg(resource->flatpakName()).arg(resource->arch()).arg(resource->branch());
+    const QString path = QString::fromUtf8(g_file_get_path(installationPath)) + QString::fromUtf8("/app/%1/%2/%3/active/metadata").arg(resource->flatpakName()).arg(resource->arch()).arg(resource->branch());
 
     if (QFile::exists(path)) {
         QFile file(path);
         if (file.open(QFile::ReadOnly | QFile::Text)) {
-            QTextStream stream(&file);
-            metadataContent = stream.readAll();
+            metadataContent = file.readAll();
         }
     } else {
         g_autoptr(FlatpakRef) fakeRef = nullptr;
@@ -561,7 +557,8 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
 
         data = flatpak_installation_fetch_remote_metadata_sync(flatpakInstallation, resource->origin().toStdString().c_str(), fakeRef, m_cancellable, &localError);
         if (data) {
-            metadataContent = QString::fromUtf8((char *)g_bytes_get_data(data, &len));
+            gsize len = 0;
+            metadataContent = QByteArray((char *)g_bytes_get_data(data, &len), len);
         } else {
             qWarning() << "Failed to get metadata file: " << localError->message;
             return false;
@@ -581,7 +578,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
         return false;
     }
 
-    tempFile.write(metadataContent.toUtf8());
+    tempFile.write(metadataContent);
     tempFile.close();
 
     // Parse the temporary file
