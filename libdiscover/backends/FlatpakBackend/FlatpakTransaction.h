@@ -37,21 +37,34 @@ class FlatpakTransaction : public Transaction
 Q_OBJECT
 public:
     FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, Role role);
+    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, FlatpakResource *runtime, Role role);
+    // TODO will be these two ever needed?
     FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, const AddonList &list, Role role);
+    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, FlatpakResource *runtime, const AddonList &list, Role role);
     ~FlatpakTransaction();
 
     void cancel() override;
 
 public Q_SLOTS:
-    void onJobFinished(bool success);
-    void onJobProgressChanged(int progress);
+    void onAppJobFinished(bool success);
+    void onAppJobProgressChanged(int progress);
+    void onRuntimeJobFinished(bool success);
+    void onRuntimeJobProgressChanged(int progress);
     void finishTransaction();
     void start();
 
 private:
-    FlatpakResource* m_app;
+    void updateProgress();
+
+    bool m_appJobFinished;
+    bool m_runtimeJobFinished;
+    int m_appJobProgress;
+    int m_runtimeJobProgress;
+    FlatpakResource *m_app;
+    FlatpakResource *m_runtime;
     FlatpakInstallation *m_installation;
-    FlatpakTransactionJob *m_job;
+    FlatpakTransactionJob *m_appJob;
+    FlatpakTransactionJob *m_runtimeJob;
 };
 
 #endif // FLATPAKTRANSACTION_H

@@ -661,12 +661,21 @@ FlatpakInstallation * FlatpakBackend::flatpakInstallationForAppScope(FlatpakReso
 
 void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &addons)
 {
+    FlatpakTransaction *transaction = nullptr;
     FlatpakResource *resource = qobject_cast<FlatpakResource*>(app);
     FlatpakInstallation *installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
 
-    // TODO: Check if the runtime needed by the application is installed
+    FlatpakResource *runtime = getRuntimeForApp(resource);
+    if (runtime) {
+        if (!runtime->isInstalled()) {
+            transaction = new FlatpakTransaction(installation, resource, runtime, addons, Transaction::InstallRole);
+        }
+    }
 
-    FlatpakTransaction *transaction = new FlatpakTransaction(installation, resource, addons, Transaction::InstallRole);
+    if (!transaction) {
+        transaction = new FlatpakTransaction(installation, resource, addons, Transaction::InstallRole);
+    }
+
     connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
             updateAppState(installation, resource);
