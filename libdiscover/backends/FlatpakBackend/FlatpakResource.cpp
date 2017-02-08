@@ -122,7 +122,6 @@ QVariant FlatpakResource::icon() const
     const auto icons = m_appdata->icons();
 
     if (icons.isEmpty()) {
-        qWarning() << "empty";
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     } else foreach(const AppStream::Icon &icon, icons) {
         QStringList stock;

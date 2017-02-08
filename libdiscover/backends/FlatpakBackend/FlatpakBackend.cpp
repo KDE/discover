@@ -222,7 +222,7 @@ bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallati
         return resource->arch() == arch && resource->branch() == branch && resource->flatpakName() == QString::fromUtf8(appId);
     }
 
-    return resource->flatpakName() == QString::fromUtf8(appId);
+    return (resource->flatpakName() == QString::fromUtf8(appId) || resource->flatpakName() == QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(ref))));
 }
 
 bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation)
@@ -283,7 +283,6 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
             }
             resource->setIconPath(QString::fromUtf8(g_file_get_path(appstreamDir)));
             resource->setOrigin(QString::fromUtf8(flatpak_remote_get_name(remote)));
-
             addResource(resource);
         }
     }
@@ -342,9 +341,21 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
             resource->setType(FlatpakResource::DesktopApp);
             resource->setState(AbstractResource::Installed);
 
-            // TODO try to find existing item and update it
+            // Go through apps we already know about from appstream metadata
+            bool resourceExists = false;
+            foreach (FlatpakResource *res, m_resources) {
+                // Compare the only information we have
+                if (res->appstreamId() == QString::fromUtf8("%1.desktop").arg(resource->appstreamId()) && res->name() == resource->name()) {
+                    resourceExists = true;
+                    res->setScope(resource->scope());
+                    res->setState(resource->state());
+                    break;
+                }
+            }
 
-            addResource(resource);
+            if (!resourceExists) {
+                addResource(resource);
+            }
         }
     }
 
@@ -376,8 +387,6 @@ bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
 
 void FlatpakBackend::reloadPackageList()
 {
-//     GPtrArray *apps;
-
     // Load applications from appstream metadata
     if (!loadAppsFromAppstreamData(m_flatpakInstallationSystem)) {
         qWarning() << "Failed to load packages from appstream data from system installation";
@@ -388,13 +397,13 @@ void FlatpakBackend::reloadPackageList()
     }
 
     // Load installed applications and update existing resources with info from installed application
-    // if (!loadInstalledApps(m_flatpakInstallationSystem)) {
-    //     qWarning() << "Failed to load installed packages from system installation";
-    // }
+    if (!loadInstalledApps(m_flatpakInstallationSystem)) {
+        qWarning() << "Failed to load installed packages from system installation";
+    }
 
-    // if (!loadInstalledApps(m_flatpakInstallationUser)) {
-    //     qWarning() << "Failed to load installed packages from user installation";
-    // }
+    if (!loadInstalledApps(m_flatpakInstallationUser)) {
+        qWarning() << "Failed to load installed packages from user installation";
+    }
 }
 
 bool FlatpakBackend::setupFlatpakInstallations(GError **error)
