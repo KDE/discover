@@ -445,10 +445,7 @@ bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
             qWarning() << "Failed to parse " << bundle.id() << localError->message;
             return false;
         } else {
-            resource->setArch(QString::fromUtf8(flatpak_ref_get_arch(ref)));
-            resource->setBranch(QString::fromUtf8(flatpak_ref_get_branch(ref)));
-            resource->setFlatpakName(QString::fromUtf8(flatpak_ref_get_name(ref)));
-            resource->setType(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime);
+            resource->updateFromRef(ref);
         }
     }
 
@@ -498,11 +495,8 @@ bool FlatpakBackend::setupFlatpakInstallations(GError **error)
 void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRef, FlatpakResource *resource)
 {
     // Update the rest
-    resource->setArch(QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(installedRef))));
-    resource->setBranch(QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(installedRef))));
-    resource->setCommit(QString::fromUtf8(flatpak_ref_get_commit(FLATPAK_REF(installedRef))));
+    resource->updateFromRef(FLATPAK_REF(installedRef));
     resource->setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(installedRef)));
-    resource->setFlatpakName(QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(installedRef))));
     resource->setSize(flatpak_installed_ref_get_installed_size(installedRef));
     resource->setState(AbstractResource::Installed);
 }

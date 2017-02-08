@@ -87,6 +87,15 @@ bool FlatpakResource::canExecute() const
     return (m_state == AbstractResource::Installed || m_state == AbstractResource::Upgradeable);
 }
 
+void FlatpakResource::updateFromRef(FlatpakRef* ref)
+{
+    setArch(QString::fromUtf8(flatpak_ref_get_arch(ref)));
+    setBranch(QString::fromUtf8(flatpak_ref_get_branch(ref)));
+    setCommit(QString::fromUtf8(flatpak_ref_get_commit(ref)));
+    setFlatpakName(QString::fromUtf8(flatpak_ref_get_name(ref)));
+    setType(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime);
+}
+
 QStringList FlatpakResource::categories()
 {
     auto cats = m_appdata->categories();

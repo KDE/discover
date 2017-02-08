@@ -115,6 +115,8 @@ public:
 //     void setAddons(const AddonList& addons);
 //     void setAddonInstalled(const QString& addon, bool installed);
 
+    void updateFromRef(FlatpakRef* ref);
+
 public:
     QList<PackageState> m_addons;
     AppStream::Component *m_appdata;
