@@ -51,7 +51,7 @@ public Q_SLOTS:
     void onAppJobProgressChanged(int progress);
     void onRuntimeJobFinished(bool success);
     void onRuntimeJobProgressChanged(int progress);
-    void finishTransaction();
+    void finishTransaction(bool success);
     void start();
 
 private:

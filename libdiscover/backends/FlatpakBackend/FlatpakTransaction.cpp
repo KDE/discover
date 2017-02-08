@@ -64,9 +64,7 @@ FlatpakTransaction::FlatpakTransaction(FlatpakInstallation* installation, Flatpa
 FlatpakTransaction::~FlatpakTransaction()
 {
     delete m_appJob;
-    if (m_runtimeJob) {
-        delete m_runtimeJob;
-    }
+    delete m_runtimeJob;
 }
 
 void FlatpakTransaction::cancel()
@@ -102,8 +100,8 @@ void FlatpakTransaction::onAppJobFinished(bool success)
     m_appJobFinished = true;
     m_appJobProgress = 100;
 
-    if (success && m_runtimeJobFinished) {
-        finishTransaction();
+    if (m_runtimeJobFinished) {
+        finishTransaction(success);
     }
 }
 
@@ -119,8 +117,8 @@ void FlatpakTransaction::onRuntimeJobFinished(bool success)
     m_runtimeJobFinished = true;
     m_runtimeJobProgress = 100;
 
-    if (success && m_appJobFinished) {
-        finishTransaction();
+    if (m_appJobFinished) {
+        finishTransaction(success);
     }
 }
 
@@ -140,24 +138,24 @@ void FlatpakTransaction::updateProgress()
     }
 }
 
-void FlatpakTransaction::finishTransaction()
+void FlatpakTransaction::finishTransaction(bool success)
 {
     setStatus(DoneStatus);
-    AbstractResource::State newState = AbstractResource::None;
-    switch(role()) {
-    case InstallRole:
-    case ChangeAddonsRole:
-        newState = AbstractResource::Installed;
-        break;
-    case RemoveRole:
-        newState = AbstractResource::None;
-        break;
+    if (success) {
+        AbstractResource::State newState = AbstractResource::None;
+        switch(role()) {
+        case InstallRole:
+        case ChangeAddonsRole:
+            newState = AbstractResource::Installed;
+            break;
+        case RemoveRole:
+            newState = AbstractResource::None;
+            break;
+        }
+        m_app->setState(newState);
+        if (m_runtime && role() == InstallRole) {
+            m_runtime->setState(newState);
+        }
     }
-    m_app->setState(newState);
-    if (m_runtime && role() == InstallRole) {
-        m_runtime->setState(newState);
-    }
-    // m_app->setAddons(addons());
     TransactionModel::global()->removeTransaction(this);
-    deleteLater();
 }
