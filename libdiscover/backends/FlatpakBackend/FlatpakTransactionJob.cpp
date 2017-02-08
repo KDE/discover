@@ -74,6 +74,7 @@ void FlatpakTransactionJob::run()
         if (!ref) {
             qWarning() << "Failed to install " << m_app->name() << " :"<< localError->message;
             Q_EMIT jobFinished(false);
+            return;
         }
     } else if (m_role == Transaction::Role::RemoveRole) {
         if (!flatpak_installation_uninstall(m_installation,
@@ -86,6 +87,7 @@ void FlatpakTransactionJob::run()
                                             cancellable, &localError)) {
             qWarning() << "Failed to uninstall " << m_app->name() << " :" << localError->message;
             Q_EMIT jobFinished(false);
+            return;
         }
     }
 
