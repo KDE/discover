@@ -394,6 +394,8 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
 
             if (!resourceExists) {
                 addResource(resource);
+            } else {
+                resource->deleteLater();
             }
         }
     }
