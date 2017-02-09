@@ -167,7 +167,7 @@ FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *fla
 FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource)
 {
     FlatpakResource *runtime = nullptr;
-    const auto runtimeInfo = resource->runtime().splitRef(QLatin1Char('/'));
+    const auto runtimeInfo = resource->runtime().split(QLatin1Char('/'));
 
     if (runtimeInfo.count() != 3) {
         return runtime;
@@ -558,7 +558,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
         data = flatpak_installation_fetch_remote_metadata_sync(flatpakInstallation, resource->origin().toStdString().c_str(), fakeRef, m_cancellable, &localError);
         if (data) {
             gsize len = 0;
-            metadataContent = QByteArray((char *)g_bytes_get_data(data, &len), len);
+            metadataContent = QByteArray((char *)g_bytes_get_data(data, &len));
         } else {
             qWarning() << "Failed to get metadata file: " << localError->message;
             return false;
