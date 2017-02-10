@@ -81,7 +81,7 @@ void FlatpakTransaction::start()
     if (m_runtime) {
         m_runtimeJob = new FlatpakTransactionJob(m_installation, m_runtime, role());
         connect(m_runtimeJob, &FlatpakTransactionJob::jobFinished, this, &FlatpakTransaction::onRuntimeJobFinished);
-        connect(m_runtimeJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onAppJobProgressChanged);
+        connect(m_runtimeJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onRuntimeJobProgressChanged);
         m_runtimeJob->start();
     } else {
         // We can mark runtime job as finished as we don't need to start it
@@ -91,7 +91,7 @@ void FlatpakTransaction::start()
     // App job will be started everytime
     m_appJob = new FlatpakTransactionJob(m_installation, m_app, role());
     connect(m_appJob, &FlatpakTransactionJob::jobFinished, this, &FlatpakTransaction::onAppJobFinished);
-    connect(m_appJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onRuntimeJobProgressChanged);
+    connect(m_appJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onAppJobProgressChanged);
     m_appJob->start();
 }
 
