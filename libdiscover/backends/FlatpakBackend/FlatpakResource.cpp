@@ -39,8 +39,9 @@
 FlatpakResource::FlatpakResource(AppStream::Component *component, FlatpakBackend *parent)
     : AbstractResource(parent)
     , m_appdata(component)
+    , m_downloadSize(0)
+    , m_installedSize(0)
     , m_scope(FlatpakResource::System)
-    , m_size(0)
     , m_state(AbstractResource::None)
     , m_type(FlatpakResource::DesktopApp)
 {
@@ -119,6 +120,11 @@ QString FlatpakResource::commit() const
     return m_commit;
 }
 
+int FlatpakResource::downloadSize() const
+{
+    return m_downloadSize;
+}
+
 QStringList FlatpakResource::executables() const
 {
 //     return m_appdata->provided(AppStream::Provided::KindBinary).items();
@@ -166,6 +172,11 @@ QString FlatpakResource::installedVersion() const
     }
 
     return version;
+}
+
+int FlatpakResource::installedSize() const
+{
+    return m_installedSize;
 }
 
 bool FlatpakResource::isTechnical() const
@@ -269,7 +280,11 @@ QString FlatpakResource::section()
 
 int FlatpakResource::size()
 {
-    return m_size;
+    if (m_state == Installed) {
+        return m_installedSize;
+    } else {
+        return m_downloadSize;
+    }
 }
 
 AbstractResource::State FlatpakResource::state()
@@ -371,6 +386,11 @@ void FlatpakResource::setCommit(const QString &commit)
     m_commit = commit;
 }
 
+void FlatpakResource::setDownloadSize(int size)
+{
+    m_downloadSize = size;
+}
+
 void FlatpakResource::setFlatpakName(const QString &name)
 {
     m_flatpakName = name;
@@ -379,6 +399,11 @@ void FlatpakResource::setFlatpakName(const QString &name)
 void FlatpakResource::setIconPath(const QString &path)
 {
     m_iconPath = path;
+}
+
+void FlatpakResource::setInstalledSize(int size)
+{
+    m_installedSize = size;
 }
 
 void FlatpakResource::setOrigin(const QString &origin)
@@ -401,11 +426,6 @@ void FlatpakResource::setState(AbstractResource::State state)
     m_state = state;
 
     emit stateChanged();
-}
-
-void FlatpakResource::setSize(int size)
-{
-    m_size = size;
 }
 
 void FlatpakResource::setType(FlatpakResource::ResourceType type)

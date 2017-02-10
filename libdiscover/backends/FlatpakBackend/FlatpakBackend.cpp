@@ -430,6 +430,7 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
         FlatpakResource *resource = getAppForInstalledRef(flatpakInstallation, ref);
         if (resource) {
             resource->setState(AbstractResource::Upgradeable);
+            updateAppSize(flatpakInstallation, resource);
         }
     }
 }
@@ -450,6 +451,7 @@ void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation *flatpakInstallation)
         FlatpakResource *resource = getAppForInstalledRef(flatpakInstallation, ref);
         if (resource) {
             resource->setState(AbstractResource::Upgradeable);
+            updateAppSize(flatpakInstallation, resource);
         }
     }
 }
@@ -519,7 +521,7 @@ void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRe
     // Update the rest
     resource->updateFromRef(FLATPAK_REF(installedRef));
     resource->setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(installedRef)));
-    resource->setSize(flatpak_installed_ref_get_installed_size(installedRef));
+    resource->setInstalledSize(flatpak_installed_ref_get_installed_size(installedRef));
     resource->setState(AbstractResource::Installed);
 }
 
@@ -602,14 +604,16 @@ bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, Fla
     // right now it doesn't matter whether we get size for installed or not installed app, but if we
     // start making difference then for not installed app check download and install size separately
 
-    // if (resource->isInstalled()) {
+    if (resource->state() == AbstractResource::Installed) {
         // The size appears to be already set (from updateAppInstalledMetadata() apparently)
-        if (resource->size() > 0) {
+        if (resource->installedSize() > 0) {
             return true;
         }
-    // } else {
-    //  TODO check download and installed size separately
-    // }
+    } else {
+        if (resource->installedSize() > 0 && resource->downloadSize() > 0) {
+            return true;
+        }
+    }
 
     // Check if we know the needed runtime which is needed for calculating the size
     if (resource->runtime().isEmpty()) {
@@ -636,14 +640,14 @@ bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, Fla
         }
     }
 
-    if (resource->isInstalled()) {
+    if (resource->state() == AbstractResource::Installed) {
         g_autoptr(FlatpakInstalledRef) ref = nullptr;
         ref = getInstalledRefForApp(flatpakInstallation, resource);
         if (!ref) {
             qWarning() << "Failed to get installed size of " << resource->name();
             return false;
         }
-        resource->setSize(flatpak_installed_ref_get_installed_size(ref));
+        resource->setInstalledSize(flatpak_installed_ref_get_installed_size(ref));
     } else {
         g_autoptr(FlatpakRef) ref = nullptr;
         g_autoptr(GError) localError = nullptr;
@@ -665,9 +669,11 @@ bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, Fla
 
         // TODO: What size do we want to show (installed vs download)? Do we want to show app size + runtime size if runtime is not installed?
         if (runtime && !runtime->isInstalled()) {
-            resource->setSize(runtime->size() + installedSize);
+            resource->setDownloadSize(runtime->downloadSize() + downloadSize);
+            resource->setInstalledSize(runtime->installedSize() + installedSize);
         } else {
-            resource->setSize(installedSize);
+            resource->setDownloadSize(downloadSize);
+            resource->setInstalledSize(installedSize);
         }
     }
 
