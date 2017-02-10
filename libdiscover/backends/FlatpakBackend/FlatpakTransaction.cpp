@@ -63,8 +63,6 @@ FlatpakTransaction::FlatpakTransaction(FlatpakInstallation* installation, Flatpa
 
 FlatpakTransaction::~FlatpakTransaction()
 {
-    delete m_appJob;
-    delete m_runtimeJob;
 }
 
 void FlatpakTransaction::cancel()
@@ -80,6 +78,7 @@ void FlatpakTransaction::start()
 {
     if (m_runtime) {
         m_runtimeJob = new FlatpakTransactionJob(m_installation, m_runtime, role());
+        connect(m_runtimeJob, &FlatpakTransactionJob::finished, m_runtimeJob, &FlatpakTransactionJob::deleteLater);
         connect(m_runtimeJob, &FlatpakTransactionJob::jobFinished, this, &FlatpakTransaction::onRuntimeJobFinished);
         connect(m_runtimeJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onRuntimeJobProgressChanged);
         m_runtimeJob->start();
@@ -90,6 +89,7 @@ void FlatpakTransaction::start()
 
     // App job will be started everytime
     m_appJob = new FlatpakTransactionJob(m_installation, m_app, role());
+    connect(m_appJob, &FlatpakTransactionJob::finished, m_appJob, &FlatpakTransactionJob::deleteLater);
     connect(m_appJob, &FlatpakTransactionJob::jobFinished, this, &FlatpakTransaction::onAppJobFinished);
     connect(m_appJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onAppJobProgressChanged);
     m_appJob->start();
