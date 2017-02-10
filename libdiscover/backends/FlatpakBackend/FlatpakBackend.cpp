@@ -22,8 +22,8 @@
 #include "FlatpakBackend.h"
 #include "FlatpakResource.h"
 #include "FlatpakReviewsBackend.h"
-#include "FlatpakTransaction.h"
 #include "FlatpakSourcesBackend.h"
+#include "FlatpakTransaction.h"
 
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>

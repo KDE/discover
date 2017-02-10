@@ -6,9 +6,9 @@ set(flatpak-backend_SRCS
     FlatpakResource.cpp
     FlatpakBackend.cpp
     FlatpakReviewsBackend.cpp
+    FlatpakSourcesBackend.cpp
     FlatpakTransaction.cpp
     FlatpakTransactionJob.cpp
-    FlatpakSourcesBackend.cpp
 )
 
 add_library(flatpak-backend MODULE ${flatpak-backend_SRCS})

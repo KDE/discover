@@ -62,15 +62,28 @@ void FlatpakTransactionJob::run()
     g_autoptr(FlatpakInstalledRef) ref = nullptr;
 
     if (m_role == Transaction::Role::InstallRole) {
-        ref = flatpak_installation_install(m_installation,
-                                           m_app->origin().toStdString().c_str(),
-                                           m_app->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
-                                           m_app->flatpakName().toStdString().c_str(),
-                                           m_app->arch().toStdString().c_str(),
-                                           m_app->branch().toStdString().c_str(),
-                                           flatpakInstallationProgressCallback,
-                                           this,
-                                           cancellable, &localError);
+        if (m_app->state() == AbstractResource::Upgradeable) {
+            ref = flatpak_installation_update(m_installation,
+                                              FLATPAK_UPDATE_FLAGS_NONE,
+                                              m_app->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
+                                              m_app->flatpakName().toStdString().c_str(),
+                                              m_app->arch().toStdString().c_str(),
+                                              m_app->branch().toStdString().c_str(),
+                                              flatpakInstallationProgressCallback,
+                                              this,
+                                              cancellable, &localError);
+        } else {
+            ref = flatpak_installation_install(m_installation,
+                                               m_app->origin().toStdString().c_str(),
+                                               m_app->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
+                                               m_app->flatpakName().toStdString().c_str(),
+                                               m_app->arch().toStdString().c_str(),
+                                               m_app->branch().toStdString().c_str(),
+                                               flatpakInstallationProgressCallback,
+                                               this,
+                                               cancellable, &localError);
+        }
+
         if (!ref) {
             qWarning() << "Failed to install " << m_app->name() << " :"<< localError->message;
             Q_EMIT jobFinished(false);
