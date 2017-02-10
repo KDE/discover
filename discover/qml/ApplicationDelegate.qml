@@ -41,35 +41,30 @@ Kirigami.AbstractListItem
     highlighted: ListView.isCurrentItem
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
-    implicitHeight: Kirigami.Units.gridUnit * (compact ? 7 : 10)
 
-    Item {
+    RowLayout {
         id: lowLayout
         anchors {
             left: parent.left
             right: parent.right
             margins: Kirigami.Units.largeSpacing
         }
+        implicitHeight: conts.implicitHeight
 
         QIconItem {
             id: resourceIcon
+            Layout.fillHeight: true
             icon: application.icon
 
             readonly property real contHeight: lowLayout.height * 0.8
-            width: contHeight
+            Layout.minimumWidth: contHeight
             height: contHeight
             anchors.verticalCenter: parent.verticalCenter
         }
 
         ColumnLayout {
             id: conts
-            anchors {
-                leftMargin: Kirigami.Units.largeSpacing
-                left: resourceIcon.right
-                bottom: installButton.top
-                top: parent.top
-                right: parent.right
-            }
+            Layout.fillWidth: true
 
             RowLayout {
                 Layout.fillWidth: true
@@ -106,22 +101,19 @@ Kirigami.AbstractListItem
 
             Label {
                 Layout.fillWidth: true
-                Layout.maximumHeight: parent.height/2
 
                 horizontalAlignment: Text.AlignJustify
                 wrapMode: Text.WordWrap
                 elide: Text.ElideRight
                 textFormat: Text.StyledText
                 text: delegateArea.application.longDescription
+                maximumLineCount: delegateArea.compact ? 1 : 3
             }
-        }
-        InstallApplicationButton {
-            id: installButton
-            anchors {
-                right: parent.right
-                bottom: parent.bottom
+            InstallApplicationButton {
+                id: installButton
+                Layout.alignment: Qt.AlignRight
+                canUpgrade: false
             }
-            canUpgrade: false
         }
     }
 }
