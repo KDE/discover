@@ -33,3 +33,14 @@ int LocalFilePKResource::size()
     const QFileInfo info(m_path.toLocalFile());
     return info.size();
 }
+
+QString LocalFilePKResource::name()
+{
+    const QFileInfo info(m_path.toLocalFile());
+    return info.baseName();
+}
+
+QString LocalFilePKResource::comment()
+{
+    return m_path.toLocalFile();
+}
