@@ -140,7 +140,6 @@ void FlatpakTransaction::updateProgress()
 
 void FlatpakTransaction::finishTransaction(bool success)
 {
-    setStatus(DoneStatus);
     if (success) {
         AbstractResource::State newState = AbstractResource::None;
         switch(role()) {
@@ -157,5 +156,8 @@ void FlatpakTransaction::finishTransaction(bool success)
             m_runtime->setState(newState);
         }
     }
+
+    setStatus(DoneStatus);
+
     TransactionModel::global()->removeTransaction(this);
 }

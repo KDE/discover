@@ -784,7 +784,13 @@ void FlatpakBackend::removeApplication(AbstractResource *app)
 {
     FlatpakResource *resource = qobject_cast<FlatpakResource*>(app);
     FlatpakInstallation *installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
-    new FlatpakTransaction(installation, resource, Transaction::RemoveRole);
+    FlatpakTransaction *transaction = new FlatpakTransaction(installation, resource, Transaction::RemoveRole);
+
+    connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
+        if (status == Transaction::Status::DoneStatus) {
+            updateAppSize(installation, resource);
+        }
+    });
 }
 
 void FlatpakBackend::checkForUpdates()
