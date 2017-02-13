@@ -826,8 +826,9 @@ FlatpakRemote * FlatpakBackend::flatpakRemoteByUrl(const QString& url, FlatpakIn
 
 AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
 {
-    if (!url.path().endsWith(QLatin1String(".flatpakref")) || !url.isLocalFile())
+    if (!url.path().endsWith(QLatin1String(".flatpakref")) || !url.isLocalFile()) {
         return nullptr;
+    }
 
     auto installation = m_flatpakInstallationSystem;
     QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
@@ -850,16 +851,18 @@ AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
     g_autoptr(FlatpakRemoteRef) remoteRef = nullptr;
     {
         QFile f(url.toLocalFile());
-        if (!f.open(QFile::ReadOnly | QFile::Text))
+        if (!f.open(QFile::ReadOnly | QFile::Text)) {
             return nullptr;
+        }
 
         QByteArray contents = f.readAll();
 
         g_autoptr(GBytes) bytes = g_bytes_new (contents.data(), contents.size());
 
         remoteRef = flatpak_installation_install_ref_file (installation, bytes, m_cancellable, &error);
-        if (!remoteRef)
+        if (!remoteRef) {
             return nullptr;
+        }
     }
 
     const auto remoteName = flatpak_remote_ref_get_remote_name(remoteRef);
@@ -867,9 +870,21 @@ AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
 
     auto ref = FLATPAK_REF(remoteRef);
 
-    auto c = new AppStream::Component();
-    c->setName(QString::fromUtf8(flatpak_ref_get_name(ref)));
-    auto resource = new FlatpakResource(c, this);
+    AsComponent *component = as_component_new();
+    as_component_add_url(component, AS_URL_KIND_HOMEPAGE, settings.value(QStringLiteral("Flatpak Ref/Homepage")).toString().toStdString().c_str());
+    as_component_set_description(component, settings.value(QStringLiteral("Flatpak Ref/Description")).toString().toStdString().c_str(), nullptr);
+    as_component_set_name(component, settings.value(QStringLiteral("Flatpak Ref/Title")).toString().toStdString().c_str(), nullptr);
+    as_component_set_summary(component, settings.value(QStringLiteral("Flatpak Ref/Comment")).toString().toStdString().c_str(), nullptr);
+    const QString iconUrl = settings.value(QStringLiteral("Flatpak Ref/Icon")).toString();
+    if (!iconUrl.isEmpty()) {
+        AsIcon *icon = as_icon_new();
+        as_icon_set_kind(icon, AS_ICON_KIND_REMOTE);
+        as_icon_set_url(icon, iconUrl.toStdString().c_str());
+        as_component_add_icon(component, icon);
+    }
+
+    AppStream::Component *asComponent = new AppStream::Component(component);
+    auto resource = new FlatpakResource(asComponent, this);
     resource->updateFromRef(ref);
     resource->setOrigin(QString::fromUtf8(remoteName));
     addResource(resource);

@@ -154,6 +154,10 @@ QVariant FlatpakResource::icon() const
             case AppStream::Icon::KindStock:
                 stock += icon.name();
                 break;
+            case AppStream::Icon::KindRemote:
+                // TODO fetch remote icon
+                ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+                break;
         }
 
         if (ret.isNull() && !stock.isEmpty()) {
