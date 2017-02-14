@@ -64,14 +64,15 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     , m_reviews(new AppstreamReviews(this))
 {
     bool b = m_appdata.load();
-    if (!b) {
+    reloadPackageList();
+
+    if (!b && m_packages.packages.isEmpty()) {
         qWarning() << "Could not open the AppStream metadata pool";
 
         QTimer::singleShot(0, this, [this]() {
             Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
         });
     }
-    reloadPackageList();
 
     QTimer* t = new QTimer(this);
     connect(t, &QTimer::timeout, this, &PackageKitBackend::refreshDatabase);
