@@ -244,9 +244,13 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
             return nullptr;
         }
 
+        gsize len = 0;
+        gconstpointer data = g_bytes_get_data(appstream, &len);
+        g_autofree gchar *appstreamContent = g_strndup((char*)data, len);
+
         g_autoptr(AsMetadata) metadata = as_metadata_new();
         as_metadata_set_format_style(metadata, AS_FORMAT_STYLE_COLLECTION);
-        as_metadata_parse(metadata, (char *)g_bytes_get_data(appstream, nullptr), AS_FORMAT_KIND_XML, &localError);
+        as_metadata_parse(metadata, appstreamContent, AS_FORMAT_KIND_XML, &localError);
         if (localError) {
             qWarning() << "Failed to parse appstream metadata: " << localError->message;
             return nullptr;
