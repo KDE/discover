@@ -53,7 +53,6 @@ Kirigami.AbstractListItem
 
         QIconItem {
             id: resourceIcon
-            Layout.fillHeight: true
             icon: application.icon
 
             readonly property real contHeight: lowLayout.height * 0.8
