@@ -65,9 +65,13 @@ public Q_SLOTS:
 private:
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     FlatpakRef * createFakeRef(FlatpakResource *resource);
+    FlatpakRemote * getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
     FlatpakInstalledRef * getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     FlatpakResource * getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref);
     FlatpakResource * getRuntimeForApp(FlatpakResource *resource);
+
+    FlatpakResource * addAppFromFlatpakBundle(const QUrl &url);
+    FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
     void addResource(FlatpakResource *resource);
     bool compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref);
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);
@@ -79,10 +83,9 @@ private:
     bool setupFlatpakInstallations(GError **error);
     void updateAppInstalledMetadata(FlatpakInstalledRef *installedRef, FlatpakResource *resource);
     bool updateAppMetadata(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
+    bool updateAppMetadata(FlatpakResource *resource, const QByteArray &data);
     bool updateAppSize(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     void updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
-
-    FlatpakRemote* flatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
 
     void setFetching(bool fetching);
 

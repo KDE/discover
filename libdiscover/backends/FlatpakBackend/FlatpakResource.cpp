@@ -33,6 +33,7 @@
 #include <QDebug>
 #include <QDesktopServices>
 #include <QIcon>
+#include <QFileInfo>
 #include <QStringList>
 #include <QTimer>
 
@@ -136,7 +137,9 @@ QVariant FlatpakResource::icon() const
     QIcon ret;
     const auto icons = m_appdata->icons();
 
-    if (icons.isEmpty()) {
+    if (!m_bundledIcon.isNull()) {
+        ret = QIcon(m_bundledIcon);
+    } else if (icons.isEmpty()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     } else foreach(const AppStream::Icon &icon, icons) {
         QStringList stock;
@@ -144,12 +147,13 @@ QVariant FlatpakResource::icon() const
 
         switch (icon.kind()) {
             case AppStream::Icon::KindLocal:
-                url += icon.url().toLocalFile();
-                ret.addFile(url);
-                break;
             case AppStream::Icon::KindCached:
                 url += icon.url().toLocalFile();
-                ret.addFile(url);
+                if (QFileInfo::exists(url)) {
+                    ret.addFile(url);
+                } else {
+                    ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+                }
                 break;
             case AppStream::Icon::KindStock:
                 stock += icon.name();
@@ -193,6 +197,11 @@ QUrl FlatpakResource::homepage()
     return m_appdata->url(AppStream::Component::UrlKindHomepage);
 }
 
+QString FlatpakResource::flatpakFileType() const
+{
+    return m_flatpakFileType;
+}
+
 QString FlatpakResource::flatpakName() const
 {
     // If the flatpak name is not known (known only for installed apps), then use
@@ -232,6 +241,11 @@ QString FlatpakResource::origin() const
 QString FlatpakResource::packageName() const
 {
     return m_appdata->name();
+}
+
+QUrl FlatpakResource::resourceFile() const
+{
+    return m_resourceFile;
 }
 
 QString FlatpakResource::runtime() const
@@ -385,6 +399,11 @@ void FlatpakResource::setBranch(const QString &branch)
     m_branch = branch;
 }
 
+void FlatpakResource::setBundledIcon(const QPixmap &pixmap)
+{
+    m_bundledIcon = pixmap;
+}
+
 void FlatpakResource::setCommit(const QString &commit)
 {
     m_commit = commit;
@@ -393,6 +412,11 @@ void FlatpakResource::setCommit(const QString &commit)
 void FlatpakResource::setDownloadSize(int size)
 {
     m_downloadSize = size;
+}
+
+void FlatpakResource::setFlatpakFileType(const QString &fileType)
+{
+    m_flatpakFileType = fileType;
 }
 
 void FlatpakResource::setFlatpakName(const QString &name)
@@ -413,6 +437,11 @@ void FlatpakResource::setInstalledSize(int size)
 void FlatpakResource::setOrigin(const QString &origin)
 {
     m_origin = origin;
+}
+
+void FlatpakResource::setResourceFile(const QUrl &url)
+{
+    m_resourceFile = url;
 }
 
 void FlatpakResource::setRuntime(const QString &runtime)

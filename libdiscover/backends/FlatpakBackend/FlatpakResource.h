@@ -30,6 +30,8 @@ extern "C" {
 
 #include <AppStreamQt/component.h>
 
+#include <QPixmap>
+
 class AddonList;
 class FlatpakBackend;
 class FlatpakResource : public AbstractResource
@@ -81,12 +83,14 @@ public:
     int installedSize() const;
     bool isTechnical() const override;
     QUrl homepage() override;
+    QString flatpakFileType() const;
     QString flatpakName() const;
     QString license() override;
     QString longDescription() override;
     QString name() override;
     QString origin() const override;
     QString packageName() const override;
+    QUrl resourceFile() const;
     QString runtime() const;
     QUrl screenshotUrl() override;
     Scope scope() const;
@@ -105,12 +109,15 @@ public:
 
     void setArch(const QString &arch);
     void setBranch(const QString &branch);
+    void setBundledIcon(const QPixmap &pixmap);
     void setCommit(const QString &commit);
     void setDownloadSize(int size);
     void setIconPath(const QString &path);
     void setInstalledSize(int size);
+    void setFlatpakFileType(const QString &fileType);
     void setFlatpakName(const QString &name);
     void setOrigin(const QString &origin);
+    void setResourceFile(const QUrl &url);
     void setRuntime(const QString &runtime);
     void setScope(Scope scope);
     void setState(State state);
@@ -126,12 +133,15 @@ public:
     FlatpakRefKind m_flatpakRefKind;
     QString m_arch;
     QString m_branch;
+    QPixmap m_bundledIcon;
     QString m_commit;
     int m_downloadSize;
+    QString m_flatpakFileType;
     QString m_flatpakName;
     QString m_iconPath;
     int m_installedSize;
     QString m_origin;
+    QUrl m_resourceFile;
     QString m_runtime;
     Scope m_scope;
     AbstractResource::State m_state;

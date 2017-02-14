@@ -32,6 +32,7 @@
 
 #include <AppStreamQt/bundle.h>
 #include <AppStreamQt/component.h>
+#include <AppStreamQt/icon.h>
 #include <AppStream/appstream.h>
 
 #include <KAboutData>
@@ -106,6 +107,24 @@ FlatpakRef * FlatpakBackend::createFakeRef(FlatpakResource *resource)
     }
 
     return ref;
+}
+
+FlatpakRemote * FlatpakBackend::getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const
+{
+    auto remotes = flatpak_installation_list_remotes(installation, m_cancellable, nullptr);
+    if (!remotes) {
+        return nullptr;
+    }
+
+    const QByteArray comparableUrl = url.toUtf8();
+    for (uint i = 0; i < remotes->len; i++) {
+        FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
+
+        if (comparableUrl == flatpak_remote_get_url(remote)) {
+            return remote;
+        }
+    }
+    return nullptr;
 }
 
 FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
@@ -184,6 +203,167 @@ FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource)
     // TODO if runtime wasn't found, create a new one from available info
 
     return runtime;
+}
+
+FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
+{
+    g_autoptr(GBytes) appstreamGz = nullptr;
+    g_autoptr(GError) localError = nullptr;
+    g_autoptr(GFile) file = nullptr;
+    g_autoptr(FlatpakBundleRef) bundleRef = nullptr;
+    AppStream::Component *asComponent = nullptr;
+
+
+    file = g_file_new_for_path(url.toLocalFile().toStdString().c_str());
+    bundleRef = flatpak_bundle_ref_new(file, &localError);
+
+    if (!bundleRef) {
+        qWarning() << "Failed to load bundle: " << localError->message;
+        return nullptr;
+    }
+
+    appstreamGz = flatpak_bundle_ref_get_appstream(bundleRef);
+    if (appstreamGz) {
+        g_autoptr(GZlibDecompressor) decompressor = nullptr;
+        g_autoptr(GInputStream) streamGz = nullptr;
+        g_autoptr(GInputStream) streamData = nullptr;
+        g_autoptr(GBytes) appstream = nullptr;
+
+        /* decompress data */
+        decompressor = g_zlib_decompressor_new (G_ZLIB_COMPRESSOR_FORMAT_GZIP);
+        streamGz = g_memory_input_stream_new_from_bytes (appstreamGz);
+        if (!streamGz) {
+            return nullptr;
+        }
+
+        streamData = g_converter_input_stream_new (streamGz, G_CONVERTER (decompressor));
+
+        appstream = g_input_stream_read_bytes (streamData, 0x100000, m_cancellable, &localError);
+        if (!appstream) {
+            qWarning() << "Failed to extract appstream metadata from bundle: " << localError->message;
+            return nullptr;
+        }
+
+        g_autoptr(AsMetadata) metadata = as_metadata_new();
+        as_metadata_set_format_style(metadata, AS_FORMAT_STYLE_COLLECTION);
+        as_metadata_parse(metadata, (char *)g_bytes_get_data(appstream, nullptr), AS_FORMAT_KIND_XML, &localError);
+        if (localError) {
+            qWarning() << "Failed to parse appstream metadata: " << localError->message;
+            return nullptr;
+        }
+
+        g_autoptr(GPtrArray) components = as_metadata_get_components(metadata);
+        if (g_ptr_array_index(components, 0)) {
+            asComponent = new AppStream::Component(AS_COMPONENT(g_ptr_array_index(components, 0)));
+        } else {
+            qWarning() << "Failed to parse appstream metadata";
+            return nullptr;
+        }
+    } else {
+        AsComponent *component = as_component_new();
+        asComponent = new AppStream::Component(component);
+        qWarning() << "No appstream metadata in bundle";
+    }
+
+    gsize len = 0;
+    g_autoptr(GBytes) iconData = nullptr;
+    g_autoptr(GBytes) metadata = nullptr;
+    FlatpakResource *resource = new FlatpakResource(asComponent, this);
+
+    metadata = flatpak_bundle_ref_get_metadata(bundleRef);
+    QByteArray metadataContent = QByteArray((char *)g_bytes_get_data(metadata, &len));
+    if (!updateAppMetadata(resource, metadataContent)) {
+        qWarning() << "Failed to update metadata from app bundle";
+        return nullptr;
+    }
+
+    iconData = flatpak_bundle_ref_get_icon(bundleRef, 128);
+    if (!iconData) {
+        iconData = flatpak_bundle_ref_get_icon(bundleRef, 64);
+    }
+
+    if (iconData) {
+        gsize len = 0;
+        QPixmap pixmap;
+        char * data = (char *)g_bytes_get_data(iconData, &len);
+        QByteArray icon = QByteArray(data, len);
+        pixmap.loadFromData(icon, "PNG");
+        resource->setBundledIcon(pixmap);
+    }
+
+    resource->setInstalledSize(flatpak_bundle_ref_get_installed_size(bundleRef));
+    resource->setFlatpakFileType(QStringLiteral("flatpak"));
+    resource->setOrigin(QString::fromUtf8(flatpak_bundle_ref_get_origin(bundleRef)));
+    resource->setResourceFile(url);
+    resource->setState(FlatpakResource::None);
+    resource->setType(FlatpakResource::DesktopApp);
+
+    addResource(resource);
+    return resource;
+}
+
+FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
+{
+    auto installation = m_flatpakInstallationSystem;
+    QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
+    const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
+    FlatpakRemote* remote = getFlatpakRemoteByUrl(refurl, installation);
+
+    if (!remote) {
+        const auto res = QMessageBox::question(nullptr, i18n("Add Remote"),
+                                            i18n("Would you like to add remote '%1'?\n\nFrom: %2\nWith GPG key=%3...",
+                                                    settings.value(QStringLiteral("Flatpak Ref/Title")).toString(),
+                                                    refurl,
+                                                    settings.value(QStringLiteral("Flatpak Ref/GPGKey")).toString().left(23)),
+                                            QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No));
+        if (res != QMessageBox::Yes) {
+            return nullptr;
+        }
+    }
+
+    g_autoptr(GError) error = NULL;
+    g_autoptr(FlatpakRemoteRef) remoteRef = nullptr;
+    {
+        QFile f(url.toLocalFile());
+        if (!f.open(QFile::ReadOnly | QFile::Text)) {
+            return nullptr;
+        }
+
+        QByteArray contents = f.readAll();
+
+        g_autoptr(GBytes) bytes = g_bytes_new (contents.data(), contents.size());
+
+        remoteRef = flatpak_installation_install_ref_file (installation, bytes, m_cancellable, &error);
+        if (!remoteRef) {
+            return nullptr;
+        }
+    }
+
+    const auto remoteName = flatpak_remote_ref_get_remote_name(remoteRef);
+    remote = flatpak_installation_get_remote_by_name(installation, remoteName, m_cancellable, &error);
+
+    auto ref = FLATPAK_REF(remoteRef);
+
+    AsComponent *component = as_component_new();
+    as_component_add_url(component, AS_URL_KIND_HOMEPAGE, settings.value(QStringLiteral("Flatpak Ref/Homepage")).toString().toStdString().c_str());
+    as_component_set_description(component, settings.value(QStringLiteral("Flatpak Ref/Description")).toString().toStdString().c_str(), nullptr);
+    as_component_set_name(component, settings.value(QStringLiteral("Flatpak Ref/Title")).toString().toStdString().c_str(), nullptr);
+    as_component_set_summary(component, settings.value(QStringLiteral("Flatpak Ref/Comment")).toString().toStdString().c_str(), nullptr);
+    const QString iconUrl = settings.value(QStringLiteral("Flatpak Ref/Icon")).toString();
+    if (!iconUrl.isEmpty()) {
+        AsIcon *icon = as_icon_new();
+        as_icon_set_kind(icon, AS_ICON_KIND_REMOTE);
+        as_icon_set_url(icon, iconUrl.toStdString().c_str());
+        as_component_add_icon(component, icon);
+    }
+
+    AppStream::Component *asComponent = new AppStream::Component(component);
+    auto resource = new FlatpakResource(asComponent, this);
+    resource->setFlatpakFileType(QStringLiteral("flatpakref"));
+    resource->setOrigin(QString::fromUtf8(remoteName));
+    resource->updateFromRef(ref);
+    addResource(resource);
+    return resource;
 }
 
 void FlatpakBackend::addResource(FlatpakResource *resource)
@@ -572,6 +752,11 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
         return false;
     }
 
+    return updateAppMetadata(resource, metadataContent);
+}
+
+bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QByteArray &data)
+{
     // Save the content to temporary file
     QTemporaryFile tempFile;
     tempFile.setAutoRemove(false);
@@ -580,7 +765,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
         return false;
     }
 
-    tempFile.write(metadataContent);
+    tempFile.write(data);
     tempFile.close();
 
     // Parse the temporary file
@@ -636,6 +821,9 @@ bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, Fla
                     qWarning() << "Failed to get runtime size needed for total size of " << resource->name();
                     return false;
                 }
+                // Set required download size to include runtime size even now, in case we fail to
+                // get the app size (e.g. when installing bundles where download size is 0)
+                resource->setDownloadSize(runtime->downloadSize());
             }
         }
     }
@@ -654,6 +842,7 @@ bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, Fla
 
         if (resource->origin().isEmpty()) {
             qWarning() << "Failed to get size of " << resource->name() << " because of missing origin";
+            return false;
         }
 
         ref = createFakeRef(resource);
@@ -670,7 +859,7 @@ bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, Fla
         // TODO: What size do we want to show (installed vs download)? Do we want to show app size + runtime size if runtime is not installed?
         if (runtime && !runtime->isInstalled()) {
             resource->setDownloadSize(runtime->downloadSize() + downloadSize);
-            resource->setInstalledSize(runtime->installedSize() + installedSize);
+            resource->setInstalledSize(installedSize);
         } else {
             resource->setDownloadSize(downloadSize);
             resource->setInstalledSize(installedSize);
@@ -806,89 +995,23 @@ void FlatpakBackend::checkForUpdates()
     loadRemoteUpdates(m_flatpakInstallationUser);
 }
 
-FlatpakRemote * FlatpakBackend::flatpakRemoteByUrl(const QString& url, FlatpakInstallation* installation) const
-{
-    auto remotes = flatpak_installation_list_remotes(installation, m_cancellable, nullptr);
-    if (!remotes) {
-        return nullptr;
-    }
-
-    const QByteArray comparableUrl = url.toUtf8();
-    for (uint i = 0; i < remotes->len; i++) {
-        FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
-
-        if (comparableUrl == flatpak_remote_get_url(remote)) {
-            return remote;
-        }
-    }
-    return nullptr;
-}
-
 AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
 {
-    if (!url.path().endsWith(QLatin1String(".flatpakref")) || !url.isLocalFile()) {
+    if ((!url.path().endsWith(QLatin1String(".flatpakref")) && !url.path().endsWith(QLatin1String(".flatpak"))) || !url.isLocalFile()) {
         return nullptr;
     }
 
-    auto installation = m_flatpakInstallationSystem;
-    QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
-    const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
-    FlatpakRemote* remote = flatpakRemoteByUrl(refurl, installation);
-
-    if (!remote) {
-        const auto res = QMessageBox::question(nullptr, i18n("Add Remote"),
-                                            i18n("Would you like to add remote '%1'?\n\nFrom: %2\nWith GPG key=%3...",
-                                                    settings.value(QStringLiteral("Flatpak Ref/Title")).toString(),
-                                                    refurl,
-                                                    settings.value(QStringLiteral("Flatpak Ref/GPGKey")).toString().left(23)),
-                                            QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No));
-        if (res != QMessageBox::Yes) {
-            return nullptr;
-        }
+    FlatpakResource *resource = nullptr;
+    if (url.path().endsWith(QLatin1String(".flatpak"))) {
+        resource = addAppFromFlatpakBundle(url);
+    } else if (url.path().endsWith(QLatin1String(".flatpakref"))) {
+        resource = addAppFromFlatpakRef(url);
+    } else {
+        // TODO .flatpakrepo
     }
 
-    g_autoptr(GError) error = NULL;
-    g_autoptr(FlatpakRemoteRef) remoteRef = nullptr;
-    {
-        QFile f(url.toLocalFile());
-        if (!f.open(QFile::ReadOnly | QFile::Text)) {
-            return nullptr;
-        }
-
-        QByteArray contents = f.readAll();
-
-        g_autoptr(GBytes) bytes = g_bytes_new (contents.data(), contents.size());
-
-        remoteRef = flatpak_installation_install_ref_file (installation, bytes, m_cancellable, &error);
-        if (!remoteRef) {
-            return nullptr;
-        }
-    }
-
-    const auto remoteName = flatpak_remote_ref_get_remote_name(remoteRef);
-    remote = flatpak_installation_get_remote_by_name(installation, remoteName, m_cancellable, &error);
-
-    auto ref = FLATPAK_REF(remoteRef);
-
-    AsComponent *component = as_component_new();
-    as_component_add_url(component, AS_URL_KIND_HOMEPAGE, settings.value(QStringLiteral("Flatpak Ref/Homepage")).toString().toStdString().c_str());
-    as_component_set_description(component, settings.value(QStringLiteral("Flatpak Ref/Description")).toString().toStdString().c_str(), nullptr);
-    as_component_set_name(component, settings.value(QStringLiteral("Flatpak Ref/Title")).toString().toStdString().c_str(), nullptr);
-    as_component_set_summary(component, settings.value(QStringLiteral("Flatpak Ref/Comment")).toString().toStdString().c_str(), nullptr);
-    const QString iconUrl = settings.value(QStringLiteral("Flatpak Ref/Icon")).toString();
-    if (!iconUrl.isEmpty()) {
-        AsIcon *icon = as_icon_new();
-        as_icon_set_kind(icon, AS_ICON_KIND_REMOTE);
-        as_icon_set_url(icon, iconUrl.toStdString().c_str());
-        as_component_add_icon(component, icon);
-    }
-
-    AppStream::Component *asComponent = new AppStream::Component(component);
-    auto resource = new FlatpakResource(asComponent, this);
-    resource->updateFromRef(ref);
-    resource->setOrigin(QString::fromUtf8(remoteName));
-    addResource(resource);
     return resource;
+
 }
 
 #include "FlatpakBackend.moc"
