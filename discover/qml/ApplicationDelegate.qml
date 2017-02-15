@@ -41,14 +41,10 @@ Kirigami.AbstractListItem
     highlighted: ListView.isCurrentItem
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
+    rightPadding: Kirigami.Units.largeSpacing
 
     RowLayout {
         id: lowLayout
-        anchors {
-            left: parent.left
-            right: parent.right
-            margins: Kirigami.Units.largeSpacing
-        }
         implicitHeight: conts.implicitHeight
 
         QIconItem {
