@@ -423,7 +423,8 @@ bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallati
     // Check if we have information about architecture and branch, otherwise compare names only
     // Happens with apps which don't have appstream metadata bug got here thanks to installed desktop file
     if (!resource->arch().isEmpty() && !resource->branch().isEmpty()) {
-        return resource->arch() == arch && resource->branch() == branch && resource->flatpakName() == QString::fromUtf8(appId);
+        return resource->arch() == arch && resource->branch() == branch && (resource->flatpakName() == QString::fromUtf8(appId) ||
+                                                                            resource->flatpakName() == QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(ref))));
     }
 
     return (resource->flatpakName() == QString::fromUtf8(appId) || resource->flatpakName() == QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(ref))));
@@ -704,8 +705,8 @@ void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRe
 {
     // Update the rest
     resource->updateFromRef(FLATPAK_REF(installedRef));
-    resource->setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(installedRef)));
     resource->setInstalledSize(flatpak_installed_ref_get_installed_size(installedRef));
+    resource->setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(installedRef)));
     resource->setState(AbstractResource::Installed);
 }
 
