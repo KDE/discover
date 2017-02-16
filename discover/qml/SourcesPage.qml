@@ -1,4 +1,4 @@
-import QtQuick 2.1
+import QtQuick 2.4
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
@@ -53,6 +53,7 @@ DiscoverPage {
     }
 
     mainItem: ListView {
+        id: sourcesView
         model: QSortFilterProxyModel{
             filterRegExp: new RegExp(page.search)
             sourceModel: KConcatenateRowsProxyModel {
@@ -70,18 +71,15 @@ DiscoverPage {
             }
         }
 
+        headerPositioning: ListView.OverlayHeader
         header: PageHeader {
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
+            view: sourcesView
 
-            RowLayout {
-                Layout.fillWidth: true
-                Layout.leftMargin: Kirigami.Units.gridUnit
-                Layout.rightMargin: Kirigami.Units.gridUnit
-                Layout.topMargin: Kirigami.Units.smallSpacing
-                Layout.bottomMargin: Kirigami.Units.smallSpacing
+            extra: RowLayout {
+                anchors {
+                    topMargin: Kirigami.Units.smallSpacing
+                    bottomMargin: Kirigami.Units.smallSpacing
+                }
                 ToolButton {
 //                         iconName: "list-add"
                     text: i18n("Add Source")
@@ -121,6 +119,9 @@ DiscoverPage {
                         MenuItem { action: ActionBridge { action: app.action("help_about_app") } }
                         MenuItem { action: ActionBridge { action: app.action("help_report_bug") } }
                     }
+                }
+                Item {
+                    Layout.fillWidth: true
                 }
             }
         }

@@ -41,6 +41,7 @@ DiscoverPage {
     property alias listHeader: apps.header
     property bool compact: false
     property bool canNavigate: true
+    readonly property Item view: apps
     readonly property alias subcategories: appsModel.subcategories
     title: category ? category.name : ""
 
@@ -60,14 +61,11 @@ DiscoverPage {
             }
         }
 
+        headerPositioning: ListView.OverlayHeader
         header: CategoryDisplay {
             category: appsModel.filteredCategory
             search: appsModel.search
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
-            z: 5000
+            view: apps
         }
         model: ResourcesProxyModel {
             id: appsModel

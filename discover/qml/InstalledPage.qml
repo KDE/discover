@@ -16,12 +16,7 @@ ApplicationsListPage {
     canNavigate: false
 
     listHeader: PageHeader {
-        width: parent.width
         background: "qrc:/banners/installedcrop.jpg"
-
-        Item {
-            Layout.fillWidth: true
-            height: Kirigami.Units.largeSpacing
-        }
+        view: page.view
     }
 }

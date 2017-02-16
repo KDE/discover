@@ -24,12 +24,15 @@ import QtGraphicalEffects 1.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 2.0 as Kirigami
 
-ColumnLayout {
+Rectangle {
     id: root
     readonly property QtObject _page: findPage()
     property string background
     property string search: ""
-    readonly property bool shadow: background.length > 0 && decorationImage.status !== Image.Error
+    property Flickable view: null
+    color: Kirigami.Theme.backgroundColor
+
+    property alias extra: extraLoader.sourceComponent
 
     function findPage() {
         var obj = root;
@@ -38,86 +41,33 @@ ColumnLayout {
         }
         return obj;
     }
-    spacing: 0
+    z: 500
+    readonly property real initialHeight: decorationImage.Layout.preferredHeight + rect.height + bottomPadding
 
-    Component.onCompleted: {
-        if (!root._page.pageHeader)
-            root._page.pageHeader = tinyHeader
+    function boundHeight(min, scrolledDistance, max) {
+        return Math.max(max-Math.max(0, scrolledDistance), min)
     }
 
-    Component {
-        id: tinyHeader
-        Item {
-            height: layout.implicitHeight
-            DropShadow {
-                anchors.fill: source
-                source: backgroundColor.visible ? backgroundColor : bg
-                horizontalOffset: 0
-                verticalOffset: 3
-                radius: 8.0
-                samples: 17
-                color: rect.color
-            }
-            Rectangle {
-                id: backgroundColor
-                anchors.fill: parent
-                color: Kirigami.Theme.highlightColor
-                visible: bg.status != Image.Ready
-            }
-            Image {
-                id: bg
-                anchors.fill: parent
-                source: root.background
-                fillMode: Image.PreserveAspectCrop
-            }
+    height: view ? boundHeight(Kirigami.Units.largeSpacing*2, view.contentY/2, initialHeight) : 0
 
-            RowLayout {
-                id: layout
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    rightMargin: Kirigami.Units.largeSpacing
-                }
-                Item {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                }
-                Item {
-                    Layout.topMargin: Kirigami.Units.smallSpacing*2
-                    Layout.bottomMargin: Kirigami.Units.smallSpacing*2
-                    Layout.preferredHeight: title.paintedHeight
-                    Layout.preferredWidth: title.paintedWidth
-                    LinkButton {
-                        id: title
-                        text: titleLabel.text
-                        font: SystemFonts.titleFont
-                        color: Kirigami.Theme.highlightedTextColor
-                        onClicked: {
-                            var flic = root._page.flickable
-                            if (flic.positionViewAtBeginning)
-                                flic.positionViewAtBeginning();
-                            else
-                                flic.contentY = 0;
-                        }
-                    }
-                    DropShadow {
-                        horizontalOffset: 2
-                        verticalOffset: 2
-                        radius: 8.0
-                        samples: 17
-                        color: "#f0000000"
-                        source: title
-                        anchors.fill: title
-                    }
-                }
-            }
-        }
+    anchors {
+        left: parent.left
+        right: parent.right
     }
 
     Image {
         id: decorationImage
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+            bottom: rect.top
+        }
+        z: 501
+        readonly property bool shadow: background.length > 0 && decorationImage.status !== Image.Error
         fillMode: Image.PreserveAspectCrop
-        Layout.preferredHeight: root.shadow ? titleLabel.paintedHeight * 4 : titleLabel.paintedHeight * 2
+        Layout.minimumHeight: Kirigami.Units.largeSpacing
+        Layout.preferredHeight: (decorationImage.shadow ? 10 : 6) * Kirigami.Units.largeSpacing
         Layout.fillWidth: true
         source: root.background
 
@@ -125,16 +75,17 @@ ColumnLayout {
             id: titleLabel
             anchors {
                 fill: parent
-                margins: Kirigami.Units.gridUnit
+                rightMargin: Kirigami.Units.gridUnit
             }
-            font.pointSize: SystemFonts.titleFont.pointSize * 3
             text: root.search.length>0 && root._page.title.length>0 ? i18n("Search: %1 + %2", root.search, root._page.title)
                 : root.search.length>0 ? i18n("Search: %1", root.search)
                 : root._page.title
-            color: root.shadow ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.linkColor
+            color: decorationImage.shadow ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.linkColor
             horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignBottom
             elide: Text.ElideRight
+
+            font.pixelSize: Math.min(SystemFonts.titleFont.pixelSize * 3, root.height/2)
         }
 
         DropShadow {
@@ -145,13 +96,33 @@ ColumnLayout {
             color: "#80000000"
             source: titleLabel
             anchors.fill: titleLabel
-            visible: root.shadow
+            visible: decorationImage.shadow
         }
     }
     Rectangle {
         id: rect
-        color: root._page.isCurrentPage ? Kirigami.Theme.linkColor : "gray"
-        Layout.fillWidth: true
+        color: root._page.isCurrentPage ? Kirigami.Theme.linkColor : Kirigami.Theme.disabledTextColor
         height: 3
+        z: 501
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+            bottomMargin: extraLoader.item ? Math.max(0, extraLoader.item.height + extraLoader.item.anchors.topMargin + extraLoader.item.anchors.bottomMargin - Math.max(0, view.contentY/2)) : 0
+        }
+    }
+
+    Loader {
+        id: extraLoader
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+
+            leftMargin: item ? item.anchors.leftMargin : 0
+            rightMargin: item ? item.anchors.rightMargin : 0
+            bottomMargin: item ? item.anchors.bottomMargin : 0
+        }
+        sourceComponent: root.extra
     }
 }

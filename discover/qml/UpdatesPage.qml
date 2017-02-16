@@ -1,6 +1,6 @@
 import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.1
-import QtQuick 2.1
+import QtQuick 2.4
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
@@ -47,24 +47,20 @@ DiscoverPage
             backend: resourcesUpdatesModel
         }
 
+        headerPositioning: ListView.OverlayHeader
         header: PageHeader {
-            id: header
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
             background: "qrc:/banners/updatescrop.jpg"
+            view: updatesView
 
-            RowLayout {
+            extra: RowLayout {
+                id: updateControls
+
                 Layout.fillWidth: true
-                Layout.leftMargin: Kirigami.Units.gridUnit
-                Layout.rightMargin: Kirigami.Units.gridUnit
-                Layout.topMargin: Kirigami.Units.smallSpacing
-                Layout.bottomMargin: Kirigami.Units.smallSpacing
 
                 visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
 
                 LabelBackground {
+                    Layout.leftMargin: Kirigami.Units.gridUnit
                     text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
                 }
                 Label {
@@ -82,9 +78,8 @@ DiscoverPage
                 }
                 Item { Layout.fillWidth: true}
                 Button {
-                    id: startButton
                     Layout.minimumWidth: Kirigami.Units.gridUnit * 6
-                    Layout.rightMargin: Kirigami.Units.smallSpacing
+                    Layout.rightMargin: Kirigami.Units.gridUnit
                     text: unselectedItem.visible ? i18n("Update Selected") : i18n("Update All")
                     enabled: !resourcesUpdatesModel.isProgressing
                     onClicked: page.start()
