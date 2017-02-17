@@ -25,10 +25,11 @@ import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.1 as Kirigami
 
 DiscoverPage
 {
+    id: page
     title: i18n("Home")
     leftPadding: 0
     rightPadding: 0
@@ -45,9 +46,9 @@ DiscoverPage
         id: browsingView
 
         headerPositioning: ListView.OverlayHeader
-        header: PageHeader {
-            background: "qrc:/banners/coffee.jpg"
-            view: browsingView
+        header: Kirigami.ItemViewHeader {
+            backgroundImage.source: "qrc:/banners/coffee.jpg"
+            title: page.title
         }
         model: FeaturedModel {}
         spacing: Kirigami.Units.gridUnit

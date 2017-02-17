@@ -41,7 +41,6 @@ DiscoverPage {
     property alias listHeader: apps.header
     property bool compact: false
     property bool canNavigate: true
-    readonly property Item view: apps
     readonly property alias subcategories: appsModel.subcategories
     title: category ? category.name : ""
 
@@ -65,7 +64,6 @@ DiscoverPage {
         header: CategoryDisplay {
             category: appsModel.filteredCategory
             search: appsModel.search
-            view: apps
         }
         model: ResourcesProxyModel {
             id: appsModel

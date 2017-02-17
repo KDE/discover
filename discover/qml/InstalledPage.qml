@@ -16,7 +16,6 @@ ApplicationsListPage {
     canNavigate: false
 
     listHeader: PageHeader {
-        background: "qrc:/banners/installedcrop.jpg"
-        view: page.view
+        backgroundImage.source: "qrc:/banners/installedcrop.jpg"
     }
 }

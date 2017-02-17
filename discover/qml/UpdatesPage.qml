@@ -49,8 +49,7 @@ DiscoverPage
 
         headerPositioning: ListView.OverlayHeader
         header: PageHeader {
-            background: "qrc:/banners/updatescrop.jpg"
-            view: updatesView
+            backgroundImage.source: "qrc:/banners/updatescrop.jpg"
 
             extra: RowLayout {
                 id: updateControls

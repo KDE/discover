@@ -67,14 +67,13 @@ DiscoverPage {
         section {
             property: "statusTip"
             delegate: Kirigami.Heading {
+                leftPadding: Kirigami.Units.largeSpacing
                 text: section
             }
         }
 
         headerPositioning: ListView.OverlayHeader
         header: PageHeader {
-            view: sourcesView
-
             extra: RowLayout {
                 anchors {
                     topMargin: Kirigami.Units.smallSpacing
