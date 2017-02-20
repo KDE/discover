@@ -100,6 +100,8 @@ void FlatpakTransaction::onAppJobFinished(bool success)
     m_appJobFinished = true;
     m_appJobProgress = 100;
 
+    updateProgress();
+
     if (m_runtimeJobFinished) {
         finishTransaction(success);
     }
@@ -116,6 +118,8 @@ void FlatpakTransaction::onRuntimeJobFinished(bool success)
 {
     m_runtimeJobFinished = true;
     m_runtimeJobProgress = 100;
+
+    updateProgress();
 
     if (m_appJobFinished) {
         finishTransaction(success);
