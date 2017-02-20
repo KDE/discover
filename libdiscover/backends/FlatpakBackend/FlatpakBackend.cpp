@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "FlatpakBackend.h"
+#include "FlatpakFetchDataJob.h"
 #include "FlatpakResource.h"
 #include "FlatpakReviewsBackend.h"
 #include "FlatpakSourcesBackend.h"
@@ -212,7 +213,6 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
     g_autoptr(GFile) file = nullptr;
     g_autoptr(FlatpakBundleRef) bundleRef = nullptr;
     AppStream::Component *asComponent = nullptr;
-
 
     file = g_file_new_for_path(url.toLocalFile().toStdString().c_str());
     bundleRef = flatpak_bundle_ref_new(file, &localError);
@@ -622,17 +622,18 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
 
 void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation *flatpakInstallation)
 {
-    g_autoptr(GError) localError = nullptr;
-    g_autoptr(GPtrArray) refs = nullptr;
+    FlatpakFetchDataJob *job = new FlatpakFetchDataJob(flatpakInstallation, FlatpakFetchDataJob::FetchUpdates);
+    connect(job, &FlatpakFetchDataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
+    connect(job, &FlatpakFetchDataJob::jobFetchUpdatesFinished, this, &FlatpakBackend::onFetchUpdatesFinished);
+    job->start();
+}
 
-    refs = flatpak_installation_list_installed_refs_for_update(flatpakInstallation, m_cancellable, &localError);
-    if (!refs) {
-        qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
-        return;
-    }
+void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates)
+{
+    g_autoptr(GPtrArray) fetchedUpdates = updates;
 
-    for (uint i = 0; i < refs->len; i++) {
-        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+    for (uint i = 0; i < fetchedUpdates->len; i++) {
+        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(fetchedUpdates, i));
         FlatpakResource *resource = getAppForInstalledRef(flatpakInstallation, ref);
         if (resource) {
             resource->setState(AbstractResource::Upgradeable);
@@ -787,9 +788,6 @@ bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QByteArr
 
 bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
 {
-    guint64 downloadSize = 0;
-    guint64 installedSize = 0;
-
     // Check if the size is already set, we should also distiguish between download and installed size,
     // right now it doesn't matter whether we get size for installed or not installed app, but if we
     // start making difference then for not installed app check download and install size separately
@@ -842,36 +840,34 @@ bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, Fla
         }
         resource->setInstalledSize(flatpak_installed_ref_get_installed_size(ref));
     } else {
-        g_autoptr(FlatpakRef) ref = nullptr;
-        g_autoptr(GError) localError = nullptr;
-
         if (resource->origin().isEmpty()) {
             qWarning() << "Failed to get size of " << resource->name() << " because of missing origin";
             return false;
         }
 
-        ref = createFakeRef(resource);
-        if (!ref) {
-            return false;
-        }
-
-        if (!flatpak_installation_fetch_remote_size_sync(flatpakInstallation, resource->origin().toStdString().c_str(),
-                                                         ref, &downloadSize, &installedSize, m_cancellable, &localError)) {
-            qWarning() << "Failed to get remote size of " << resource->name() << ": " << localError->message;
-            return false;
-        }
-
-        // TODO: What size do we want to show (installed vs download)? Do we want to show app size + runtime size if runtime is not installed?
-        if (runtime && !runtime->isInstalled()) {
-            resource->setDownloadSize(runtime->downloadSize() + downloadSize);
-            resource->setInstalledSize(installedSize);
-        } else {
-            resource->setDownloadSize(downloadSize);
-            resource->setInstalledSize(installedSize);
-        }
+        FlatpakFetchDataJob *job = new FlatpakFetchDataJob(flatpakInstallation, resource, FlatpakFetchDataJob::FetchSize);
+        connect(job, &FlatpakFetchDataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
+        connect(job, &FlatpakFetchDataJob::jobFetchSizeFinished, this, &FlatpakBackend::onFetchSizeFinished);
+        job->start();
     }
 
     return true;
+}
+
+void FlatpakBackend::onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize)
+{
+    FlatpakResource *runtime = nullptr;
+    if (resource->state() == AbstractResource::None && resource->type() == FlatpakResource::DesktopApp) {
+        runtime = getRuntimeForApp(resource);
+    }
+
+    if (runtime && !runtime->isInstalled()) {
+        resource->setDownloadSize(runtime->downloadSize() + downloadSize);
+        resource->setInstalledSize(installedSize);
+    } else {
+        resource->setDownloadSize(downloadSize);
+        resource->setInstalledSize(installedSize);
+    }
 }
 
 void FlatpakBackend::updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
@@ -989,8 +985,6 @@ void FlatpakBackend::removeApplication(AbstractResource *app)
 
 void FlatpakBackend::checkForUpdates()
 {
-    // TODO update size
-
     // Load local updates, comparing current and latest commit
     loadLocalUpdates(m_flatpakInstallationSystem);
     loadLocalUpdates(m_flatpakInstallationUser);
@@ -1016,7 +1010,6 @@ AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
     }
 
     return resource;
-
 }
 
 #include "FlatpakBackend.moc"

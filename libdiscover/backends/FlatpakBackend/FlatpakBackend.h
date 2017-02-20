@@ -61,9 +61,13 @@ public:
 
 public Q_SLOTS:
     void checkForUpdates();
+private Q_SLOTS:
+    void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);
+    void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
 
 private:
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
+    // TODO needed for fetching metadata and size, remove once both are moved to separated job
     FlatpakRef * createFakeRef(FlatpakResource *resource);
     FlatpakRemote * getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
     FlatpakInstalledRef * getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
