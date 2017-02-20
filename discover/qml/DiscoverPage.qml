@@ -74,8 +74,6 @@ Kirigami.ScrollablePage
         }
     }
 
-    readonly property bool isCurrentPage: pageStack.currentItem == root
-
     readonly property var s1: Shortcut {
         sequence: StandardKey.MoveToNextPage
         enabled: root.isCurrentPage
