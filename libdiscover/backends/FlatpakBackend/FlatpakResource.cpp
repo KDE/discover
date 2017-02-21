@@ -230,6 +230,10 @@ QString FlatpakResource::name()
         name = m_appdata->id();
     }
 
+    if (name.startsWith(QLatin1String("(Nightly) "))) {
+        return name.mid(10);
+    }
+
     return name;
 }
 
