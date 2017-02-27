@@ -25,19 +25,25 @@
 #include <resources/AbstractSourcesBackend.h>
 #include <QStandardItemModel>
 
+extern "C" {
+#include <flatpak.h>
+}
+
 class FlatpakSourcesBackend : public AbstractSourcesBackend
 {
 public:
-    explicit FlatpakSourcesBackend(QObject* parent);
+    explicit FlatpakSourcesBackend(FlatpakInstallation *systemInstallation, FlatpakInstallation *userInstallation, QObject *parent);
 
     QAbstractItemModel* sources() override;
-    bool addSource(const QString& id) override;
-    bool removeSource(const QString& id) override;
+    bool addSource(const QString &id) override;
+    bool removeSource(const QString &id) override;
     QString name() const override { return QStringLiteral("Flatpak"); }
-    QString idDescription() override { return QStringLiteral("Random weird text"); }
+    QString idDescription() override { return QStringLiteral("Flatpak remote repositories"); }
     QList<QAction*> actions() const override;
 
 private:
+    bool listRepositories(FlatpakInstallation *installation);
+
     QStandardItemModel* m_sources;
     QAction* m_testAction;
 };

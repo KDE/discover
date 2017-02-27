@@ -85,7 +85,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 
     m_messageActions = QList<QAction*>() << updateAction;
 
-    SourcesModel::global()->addSourcesBackend(new FlatpakSourcesBackend(this));
+    SourcesModel::global()->addSourcesBackend(new FlatpakSourcesBackend(m_flatpakInstallationSystem, m_flatpakInstallationUser, this));
 }
 
 FlatpakBackend::~FlatpakBackend()

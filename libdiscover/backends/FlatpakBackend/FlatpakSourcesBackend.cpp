@@ -20,22 +20,38 @@
  ***************************************************************************/
 
 #include "FlatpakSourcesBackend.h"
-#include <QDebug>
-#include <QAction>
 
-FlatpakSourcesBackend::FlatpakSourcesBackend(QObject* parent)
+#include <QDebug>
+
+#include <glib.h>
+
+class FlatpakSourceItem : public QStandardItem
+{
+public:
+    FlatpakSourceItem(const QString &text) : QStandardItem(text) { }
+    void setFlatpakInstallation(FlatpakInstallation *installation) { m_installation = installation; }
+    FlatpakInstallation *flatpakInstallation() const { return m_installation; }
+
+private:
+    FlatpakInstallation *m_installation;
+};
+
+FlatpakSourcesBackend::FlatpakSourcesBackend(FlatpakInstallation *systemInstallation, FlatpakInstallation *userInstallation, QObject* parent)
     : AbstractSourcesBackend(parent)
     , m_sources(new QStandardItemModel(this))
-    , m_testAction(new QAction(QIcon::fromTheme(QStringLiteral("kalgebra")), QStringLiteral("FlatpakAction"), this))
 {
     QHash<int, QByteArray> roles = m_sources->roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
+    roles.insert(Qt::UserRole, "flatpakInstallation");
     m_sources->setItemRoleNames(roles);
 
-    for (int i = 0; i<10; ++i)
-        addSource(QStringLiteral("FlatpakSource%1").arg(i));
+    if (!listRepositories(systemInstallation)) {
+        qWarning() << "Failed to list repositories from system installation";
+    }
 
-    connect(m_testAction, &QAction::triggered, [](){ qDebug() << "action triggered!"; });
+    if (!listRepositories(userInstallation)) {
+        qWarning() << "Failed to list repositories from user installation";
+    }
 }
 
 QAbstractItemModel* FlatpakSourcesBackend::sources()
@@ -43,28 +59,63 @@ QAbstractItemModel* FlatpakSourcesBackend::sources()
     return m_sources;
 }
 
-bool FlatpakSourcesBackend::addSource(const QString& id)
+bool FlatpakSourcesBackend::addSource(const QString &id)
 {
-    QStandardItem* it = new QStandardItem(id);
-    it->setData(QVariant(id + QLatin1Char(' ') + id), Qt::ToolTipRole);
-    it->setData(name(), AbstractSourcesBackend::SectionRole);
-    m_sources->appendRow(it);
-    return true;
+    Q_UNUSED(id);
+    return false;
 }
 
-bool FlatpakSourcesBackend::removeSource(const QString& id)
+bool FlatpakSourcesBackend::removeSource(const QString &id)
 {
     QList<QStandardItem*> items = m_sources->findItems(id);
-    if (items.count()==1) {
-        m_sources->removeRow(items.first()->row());
+    if (items.count() == 1) {
+        FlatpakSourceItem *sourceItem = static_cast<FlatpakSourceItem*>(items.first());
+        g_autoptr(GCancellable) cancellable = g_cancellable_new();
+        if (flatpak_installation_remove_remote(sourceItem->flatpakInstallation(), id.toStdString().c_str(), cancellable, nullptr)) {
+            m_sources->removeRow(sourceItem->row());
+            return true;
+        } else {
+            qWarning() << "Failed to remove " << id << " remote repository";
+            return false;
+        }
     } else {
         qWarning() << "couldn't find " << id  << items;
+        return false;
     }
-    return items.count()==1;
+
+    return false;
 }
 
 QList<QAction*> FlatpakSourcesBackend::actions() const
 {
-    return QList<QAction*>() << m_testAction;
+    return {};
 }
 
+bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
+{
+    Q_ASSERT(installation);
+
+    g_autoptr(GCancellable) cancellable = g_cancellable_new();
+    g_autoptr(GPtrArray) remotes = flatpak_installation_list_remotes(installation, cancellable, nullptr);
+
+    if (!remotes) {
+        return false;
+    }
+
+    for (uint i = 0; i < remotes->len; i++) {
+        FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
+
+        const QString id = QString::fromUtf8(flatpak_remote_get_name(remote));
+        const QString title = QString::fromUtf8(flatpak_remote_get_title(remote));
+
+        FlatpakSourceItem *it = new FlatpakSourceItem(id);
+        it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
+        it->setData(title.isEmpty() ? id : title, Qt::ToolTipRole);
+        it->setData(name(), AbstractSourcesBackend::SectionRole);
+        it->setFlatpakInstallation(installation);
+
+        m_sources->appendRow(it);
+    }
+
+    return true;
+}
