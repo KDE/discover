@@ -35,8 +35,16 @@ public:
     QHash<int, QByteArray> roleNames() const override
     {
         auto roles = QStandardItemModel::roleNames();
+        roles[AbstractSourcesBackend::SourcesBackend] = "sourcesBackend";
         roles[Qt::CheckStateRole] = "checked";
         return roles;
+    }
+
+    QVariant data(const QModelIndex & index, int role) const override {
+        if (role == AbstractSourcesBackend::SourcesBackend)
+            return QVariant::fromValue<QObject*>(m_backend);
+        else
+            return QStandardItemModel::data(index, role);
     }
 
     bool setData(const QModelIndex & index, const QVariant & value, int role) override {

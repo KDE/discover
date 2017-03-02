@@ -28,6 +28,7 @@ DummySourcesBackend::DummySourcesBackend(QObject* parent)
     , m_testAction(new QAction(QIcon::fromTheme(QStringLiteral("kalgebra")), QStringLiteral("DummyAction"), this))
 {
     QHash<int, QByteArray> roles = m_sources->roleNames();
+    roles.insert(AbstractSourcesBackend::SourcesBackend, "sourcesBackend");
     roles.insert(Qt::CheckStateRole, "checked");
     m_sources->setItemRoleNames(roles);
 
@@ -47,6 +48,7 @@ bool DummySourcesBackend::addSource(const QString& id)
     QStandardItem* it = new QStandardItem(id);
     it->setData(QVariant(id + QLatin1Char(' ') + id), Qt::ToolTipRole);
     it->setData(name(), AbstractSourcesBackend::SectionRole);
+    it->setData(QVariant::fromValue<QObject*>(this), AbstractSourcesBackend::SourcesBackend);
     m_sources->appendRow(it);
     return true;
 }
