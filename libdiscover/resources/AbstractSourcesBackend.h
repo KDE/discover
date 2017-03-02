@@ -37,7 +37,8 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
         ~AbstractSourcesBackend() override;
 
         enum Roles {
-            SectionRole = Qt::StatusTipRole
+            SectionRole = Qt::StatusTipRole,
+            SourcesBackend
         };
         Q_ENUM(Roles)
 

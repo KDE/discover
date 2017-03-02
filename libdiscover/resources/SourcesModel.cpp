@@ -42,10 +42,22 @@ SourcesModel* SourcesModel::global()
     return s_sources;
 }
 
+static bool ensureModel(const QList<QByteArray> &roles)
+{
+    static QList<QByteArray> required = {"sourcesBackend", "display", "checked"};
+    for (const auto &role: roles) {
+        if (!roles.contains(role))
+            return false;
+    }
+    return true;
+}
+
 void SourcesModel::addSourcesBackend(AbstractSourcesBackend* sources)
 {
     if (m_sources.contains(sources))
         return;
+
+    Q_ASSERT(ensureModel(sources->sources()->roleNames().values()));
 
     beginInsertRows(QModelIndex(), m_sources.size(), m_sources.size());
     m_sources += sources;

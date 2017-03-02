@@ -144,7 +144,11 @@ DiscoverPage {
                 Kirigami.Action {
                     iconName: "edit-delete"
                     tooltip: i18n("Delete the origin")
-                    onTriggered: sourceDelegate.sourceBackend.removeSource(model.display)
+                    onTriggered: {
+                        var idx = sourcesView.model.index(model.index, 0)
+                        var backend = sourcesView.model.data(idx, AbstractSourcesBackend.SourcesBackend)
+                        backend.removeSource(model.display)
+                    }
                 }
             ]
 
