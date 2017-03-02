@@ -112,6 +112,7 @@ bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
         it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
         it->setData(title.isEmpty() ? id : title, Qt::ToolTipRole);
         it->setData(name(), AbstractSourcesBackend::SectionRole);
+        it->setData(QVariant::fromValue<QObject*>(this), AbstractSourcesBackend::SourcesBackend);
         it->setFlatpakInstallation(installation);
 
         m_sources->appendRow(it);
