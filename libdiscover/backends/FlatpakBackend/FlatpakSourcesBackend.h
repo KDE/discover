@@ -29,6 +29,7 @@ extern "C" {
 #include <flatpak.h>
 }
 
+class FlatpakResource;
 class FlatpakSourcesBackend : public AbstractSourcesBackend
 {
 public:
@@ -41,9 +42,11 @@ public:
     QString idDescription() override { return QStringLiteral("Flatpak remote repositories"); }
     QList<QAction*> actions() const override;
 
+    FlatpakRemote * installSource(FlatpakResource *resource);
 private:
     bool listRepositories(FlatpakInstallation *installation);
 
+    FlatpakInstallation *m_systemInstallation;
     QStandardItemModel* m_sources;
     QAction* m_testAction;
 };

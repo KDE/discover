@@ -86,7 +86,7 @@ QString FlatpakResource::branch() const
 
 bool FlatpakResource::canExecute() const
 {
-    return (m_state == AbstractResource::Installed || m_state == AbstractResource::Upgradeable);
+    return (m_type == DesktopApp && (m_state == AbstractResource::Installed || m_state == AbstractResource::Upgradeable));
 }
 
 void FlatpakResource::updateFromRef(FlatpakRef* ref)
@@ -235,6 +235,11 @@ QString FlatpakResource::name()
     }
 
     return name;
+}
+
+QVariant FlatpakResource::metadata(const QString &key)
+{
+    return m_metadata.value(key);
 }
 
 QString FlatpakResource::origin() const
@@ -391,6 +396,11 @@ void FlatpakResource::fetchScreenshots()
     }
 
     Q_EMIT screenshotsFetched(thumbnails, screenshots);
+}
+
+void FlatpakResource::addMetadata(const QString &key, const QVariant &value)
+{
+    m_metadata.insert(key, value);
 }
 
 void FlatpakResource::setArch(const QString &arch)

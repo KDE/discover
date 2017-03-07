@@ -85,7 +85,8 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 
     m_messageActions = QList<QAction*>() << updateAction;
 
-    SourcesModel::global()->addSourcesBackend(new FlatpakSourcesBackend(m_flatpakInstallationSystem, m_flatpakInstallationUser, this));
+    m_sources = new FlatpakSourcesBackend(m_flatpakInstallationSystem, m_flatpakInstallationUser, this);
+    SourcesModel::global()->addSourcesBackend(m_sources);
 }
 
 FlatpakBackend::~FlatpakBackend()
@@ -367,6 +368,54 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     resource->setOrigin(QString::fromUtf8(remoteName));
     resource->updateFromRef(ref);
     addResource(resource);
+    return resource;
+}
+
+FlatpakResource * FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
+{
+    QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
+
+    const QString gpgKey = settings.value(QStringLiteral("Flatpak Repo/GPGKey")).toString();
+    const QString title = settings.value(QStringLiteral("Flatpak Repo/Title")).toString();
+    const QString repoUrl = settings.value(QStringLiteral("Flatpak Repo/Url")).toString();
+
+    if (gpgKey.isEmpty() || title.isEmpty() || repoUrl.isEmpty()) {
+        return nullptr;
+    }
+
+    if (gpgKey.startsWith(QStringLiteral("http://")) || gpgKey.startsWith(QStringLiteral("https://"))) {
+        return nullptr;
+    }
+
+    AsComponent *component = as_component_new();
+    as_component_add_url(component, AS_URL_KIND_HOMEPAGE, settings.value(QStringLiteral("Flatpak Repo/Homepage")).toString().toStdString().c_str());
+    as_component_set_summary(component, settings.value(QStringLiteral("Flatpak Repo/Comment")).toString().toStdString().c_str(), nullptr);
+    as_component_set_description(component, settings.value(QStringLiteral("Flatpak Repo/Description")).toString().toStdString().c_str(), nullptr);
+    as_component_set_name(component, title.toStdString().c_str(), nullptr);
+    const QString iconUrl = settings.value(QStringLiteral("Flatpak Ref/Icon")).toString();
+    if (!iconUrl.isEmpty()) {
+        AsIcon *icon = as_icon_new();
+        as_icon_set_kind(icon, AS_ICON_KIND_REMOTE);
+        as_icon_set_url(icon, iconUrl.toStdString().c_str());
+        as_component_add_icon(component, icon);
+    }
+
+    AppStream::Component *asComponent = new AppStream::Component(component);
+    auto resource = new FlatpakResource(asComponent, this);
+    // Use metadata only for stuff which are not common for all resources
+    resource->addMetadata(QStringLiteral("gpg-key"), gpgKey);
+    resource->addMetadata(QStringLiteral("repo-url"), repoUrl);
+    resource->setBranch(settings.value(QStringLiteral("Flatpak Repo/DefaultBranch")).toString());
+    resource->setFlatpakName(url.fileName().remove(QStringLiteral(".flatpakrepo")));
+    resource->setType(FlatpakResource::Source);
+
+    auto repo = flatpak_installation_get_remote_by_name(m_flatpakInstallationSystem, resource->flatpakName().toStdString().c_str(), m_cancellable, nullptr);
+    if (!repo) {
+        resource->setState(AbstractResource::State::None);
+    } else {
+        resource->setState(AbstractResource::State::Installed);
+    }
+
     return resource;
 }
 
@@ -947,8 +996,19 @@ FlatpakInstallation * FlatpakBackend::flatpakInstallationForAppScope(FlatpakReso
 
 void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &addons)
 {
-    FlatpakTransaction *transaction = nullptr;
     FlatpakResource *resource = qobject_cast<FlatpakResource*>(app);
+
+    if (resource->type() == FlatpakResource::Source) {
+        // Let source backend handle this
+        FlatpakRemote *remote = m_sources->installSource(resource);
+        if (remote) {
+            resource->setState(AbstractResource::Installed);
+            integrateRemote(m_flatpakInstallationSystem, remote);
+        }
+        return;
+    }
+
+    FlatpakTransaction *transaction = nullptr;
     FlatpakInstallation *installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
 
     FlatpakResource *runtime = getRuntimeForApp(resource);
@@ -973,6 +1033,15 @@ void FlatpakBackend::installApplication(AbstractResource *app)
 void FlatpakBackend::removeApplication(AbstractResource *app)
 {
     FlatpakResource *resource = qobject_cast<FlatpakResource*>(app);
+
+    if (resource->type() == FlatpakResource::Source) {
+        // Let source backend handle this
+        if (m_sources->removeSource(resource->flatpakName())) {
+            resource->setState(AbstractResource::None);
+        }
+        return;
+    }
+
     FlatpakInstallation *installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
     FlatpakTransaction *transaction = new FlatpakTransaction(installation, resource, Transaction::RemoveRole);
 
@@ -996,7 +1065,7 @@ void FlatpakBackend::checkForUpdates()
 
 AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
 {
-    if ((!url.path().endsWith(QLatin1String(".flatpakref")) && !url.path().endsWith(QLatin1String(".flatpak"))) || !url.isLocalFile()) {
+    if ((!url.path().endsWith(QLatin1String(".flatpakref")) && !url.path().endsWith(QLatin1String(".flatpak")) && !url.path().endsWith(QLatin1String(".flatpakrepo"))) || !url.isLocalFile()) {
         return nullptr;
     }
 
@@ -1006,7 +1075,7 @@ AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
     } else if (url.path().endsWith(QLatin1String(".flatpakref"))) {
         resource = addAppFromFlatpakRef(url);
     } else {
-        // TODO .flatpakrepo
+        resource = addSourceFromFlatpakRepo(url);
     }
 
     return resource;

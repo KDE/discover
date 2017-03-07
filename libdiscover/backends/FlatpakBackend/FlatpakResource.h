@@ -42,7 +42,8 @@ public:
 
     enum ResourceType {
         DesktopApp = 0,
-        Runtime
+        Runtime,
+        Source
     };
 
     enum Scope {
@@ -88,6 +89,7 @@ public:
     QString license() override;
     QString longDescription() override;
     QString name() override;
+    QVariant metadata(const QString &key);
     QString origin() const override;
     QString packageName() const override;
     QUrl resourceFile() const;
@@ -107,6 +109,7 @@ public:
     void fetchChangelog() override;
     void fetchScreenshots() override;
 
+    void addMetadata(const QString &key, const QVariant &value);
     void setArch(const QString &arch);
     void setBranch(const QString &branch);
     void setBundledIcon(const QPixmap &pixmap);
@@ -140,6 +143,7 @@ public:
     QString m_flatpakName;
     QString m_iconPath;
     int m_installedSize;
+    QVariantMap m_metadata;
     QString m_origin;
     QUrl m_resourceFile;
     QString m_runtime;

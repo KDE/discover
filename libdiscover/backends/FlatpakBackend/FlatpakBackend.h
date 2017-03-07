@@ -34,6 +34,7 @@ extern "C" {
 }
 
 class QAction;
+class FlatpakSourcesBackend;
 class FlatpakReviewsBackend;
 class StandardBackendUpdater;
 class FlatpakBackend : public AbstractResourcesBackend
@@ -76,6 +77,7 @@ private:
 
     FlatpakResource * addAppFromFlatpakBundle(const QUrl &url);
     FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
+    FlatpakResource * addSourceFromFlatpakRepo(const QUrl &url);
     void addResource(FlatpakResource *resource);
     bool compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref);
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);
@@ -95,6 +97,7 @@ private:
 
     QHash<QString, FlatpakResource*> m_resources;
     StandardBackendUpdater  *m_updater;
+    FlatpakSourcesBackend *m_sources;
     FlatpakReviewsBackend *m_reviews;
     bool m_fetching;
     QList<QAction*> m_messageActions;

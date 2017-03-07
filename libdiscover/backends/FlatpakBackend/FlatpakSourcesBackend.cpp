@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "FlatpakSourcesBackend.h"
+#include "FlatpakResource.h"
 
 #include <QDebug>
 
@@ -38,6 +39,7 @@ private:
 
 FlatpakSourcesBackend::FlatpakSourcesBackend(FlatpakInstallation *systemInstallation, FlatpakInstallation *userInstallation, QObject* parent)
     : AbstractSourcesBackend(parent)
+    , m_systemInstallation(systemInstallation)
     , m_sources(new QStandardItemModel(this))
 {
     QHash<int, QByteArray> roles = m_sources->roleNames();
@@ -119,4 +121,53 @@ bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
     }
 
     return true;
+}
+
+FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
+{
+    g_autoptr(GCancellable) cancellable = g_cancellable_new();
+
+    auto remote = flatpak_installation_get_remote_by_name(m_systemInstallation, resource->flatpakName().toStdString().c_str(), cancellable, nullptr);
+    if (remote) {
+        qWarning() << "Source " << resource->flatpakName() << " already exists";
+        return nullptr;
+    }
+
+    remote = flatpak_remote_new(resource->flatpakName().toStdString().c_str());
+    flatpak_remote_set_url(remote, resource->metadata(QStringLiteral("repo-url")).toString().toStdString().c_str());
+    flatpak_remote_set_noenumerate(remote, false);
+    flatpak_remote_set_title(remote, resource->comment().toStdString().c_str());
+
+    const QString gpgKey = resource->metadata(QStringLiteral("gpg-key")).toString();
+    if (!gpgKey.isEmpty()) {
+        gsize dataLen = 0;
+        g_autofree guchar *data = nullptr;
+        g_autoptr(GBytes) bytes = nullptr;
+        data = g_base64_decode(gpgKey.toStdString().c_str(), &dataLen);
+        bytes = g_bytes_new(data, dataLen);
+        flatpak_remote_set_gpg_verify(remote, true);
+        flatpak_remote_set_gpg_key(remote, bytes);
+    } else {
+        flatpak_remote_set_gpg_verify(remote, false);
+    }
+
+    if (!resource->branch().isEmpty()) {
+        flatpak_remote_set_default_branch(remote, resource->branch().toStdString().c_str());
+    }
+
+    if (!flatpak_installation_modify_remote(m_systemInstallation, remote, cancellable, nullptr)) {
+        qWarning() << "Failed to add source " << resource->flatpakName();
+        return nullptr;
+    }
+
+    FlatpakSourceItem *it = new FlatpakSourceItem(resource->flatpakName());
+    it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
+    it->setData(resource->comment().isEmpty() ? resource->flatpakName() : resource->comment(), Qt::ToolTipRole);
+    it->setData(name(), AbstractSourcesBackend::SectionRole);
+    it->setData(QVariant::fromValue<QObject*>(this), AbstractSourcesBackend::SourcesBackend);
+    it->setFlatpakInstallation(m_systemInstallation);
+
+    m_sources->appendRow(it);
+
+    return remote;
 }
