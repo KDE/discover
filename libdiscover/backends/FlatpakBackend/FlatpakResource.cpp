@@ -28,6 +28,7 @@
 #include <AppStreamQt/image.h>
 #include <AppStreamQt/screenshot.h>
 
+#include <KFormat>
 #include <KLocalizedString>
 
 #include <QDebug>
@@ -311,6 +312,16 @@ int FlatpakResource::size()
         return m_installedSize;
     } else {
         return m_downloadSize;
+    }
+}
+
+QString FlatpakResource::sizeDescription()
+{
+    KFormat f;
+    if (!isInstalled() || canUpgrade()) {
+        return i18nc("@info app size", "%1 to download, %2 on disk", f.formatByteSize(downloadSize()), f.formatByteSize(installedSize()));
+    } else {
+        return i18nc("@info app size", "%1 on disk", f.formatByteSize(installedSize()));
     }
 }
 

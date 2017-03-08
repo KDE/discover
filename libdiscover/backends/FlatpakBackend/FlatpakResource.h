@@ -99,6 +99,7 @@ public:
     QString scopeAsString() const;
     QString section() override;
     int size() override;
+    QString sizeDescription() override;
     AbstractResource::State state() override;
     QUrl thumbnailUrl() override;
     ResourceType type() const;
