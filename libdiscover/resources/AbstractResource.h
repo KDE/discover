@@ -39,7 +39,7 @@ class AbstractResourcesBackend;
  * \class AbstractResource  AbstractResource.h "AbstractResource.h"
  *
  * \brief This is the base class of all resources.
- * 
+ *
  * Each backend must reimplement its own resource class which needs to derive from this one.
  */
 class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
@@ -62,8 +62,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString license READ license CONSTANT)
     Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
     Q_PROPERTY(QString origin READ origin CONSTANT)
-    Q_PROPERTY(int size READ size NOTIFY stateChanged)
-    Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY stateChanged)
+    Q_PROPERTY(int size READ size NOTIFY sizeChanged)
+    Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY sizeChanged)
     Q_PROPERTY(QString installedVersion READ installedVersion NOTIFY stateChanged)
     Q_PROPERTY(QString availableVersion READ availableVersion NOTIFY stateChanged)
     Q_PROPERTY(QString section READ section CONSTANT)
@@ -164,7 +164,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         AbstractResourcesBackend* backend() const;
 
         /**
-         * @returns a name sort key for faster sorting 
+         * @returns a name sort key for faster sorting
          */
         QCollatorSortKey nameSortKey();
 
@@ -189,6 +189,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual void fetchChangelog() = 0;
 
     Q_SIGNALS:
+        void sizeChanged();
         void stateChanged();
         void ratingFetched();
 

@@ -437,6 +437,7 @@ void FlatpakResource::setCommit(const QString &commit)
 void FlatpakResource::setDownloadSize(int size)
 {
     m_downloadSize = size;
+    Q_EMIT sizeChanged();
 }
 
 void FlatpakResource::setFlatpakFileType(const QString &fileType)
@@ -457,6 +458,7 @@ void FlatpakResource::setIconPath(const QString &path)
 void FlatpakResource::setInstalledSize(int size)
 {
     m_installedSize = size;
+    Q_EMIT sizeChanged();
 }
 
 void FlatpakResource::setOrigin(const QString &origin)
