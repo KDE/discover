@@ -35,6 +35,9 @@
 #include <QDesktopServices>
 #include <QIcon>
 #include <QFileInfo>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
 #include <QStringList>
 #include <QTimer>
 
@@ -47,6 +50,32 @@ FlatpakResource::FlatpakResource(AppStream::Component *component, FlatpakBackend
     , m_state(AbstractResource::None)
     , m_type(FlatpakResource::DesktopApp)
 {
+    // Start fetching remote icons during initialization
+    const auto icons = m_appdata->icons();
+    if (!icons.isEmpty()) {
+        foreach (const AppStream::Icon &icon, icons) {
+            if (icon.kind() == AppStream::Icon::KindRemote) {
+                const QString fileName = QStringLiteral("%1/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation))
+                                                                .arg(icon.url().fileName());
+                if (!QFileInfo::exists(fileName)) {
+                    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+                    connect(manager, &QNetworkAccessManager::finished, [this, icon, fileName, manager] (QNetworkReply *reply) {
+                        if (reply->error() == QNetworkReply::NoError) {
+                            QByteArray iconData = reply->readAll();
+                            QFile file(fileName);
+                            if (file.open(QIODevice::WriteOnly)) {
+                                file.write(iconData);
+                            }
+                            file.close();
+                            Q_EMIT iconChanged();
+                        }
+                        manager->deleteLater();
+                    });
+                    manager->get(QNetworkRequest(icon.url()));
+                }
+            }
+        }
+    }
 }
 
 AppStream::Component *FlatpakResource::appstreamComponent() const
@@ -160,9 +189,14 @@ QVariant FlatpakResource::icon() const
                 stock += icon.name();
                 break;
             case AppStream::Icon::KindRemote:
-                // TODO fetch remote icon
-                ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
-                break;
+                const QString fileName = QStringLiteral("%1/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation))
+                                                                .arg(icon.url().fileName());
+                if (QFileInfo::exists(fileName)) {
+                    ret.addFile(fileName);
+                } else {
+                    ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+                    break;
+                }
         }
 
         if (ret.isNull() && !stock.isEmpty()) {

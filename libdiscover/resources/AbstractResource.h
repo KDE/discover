@@ -48,7 +48,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString packageName READ packageName CONSTANT)
     Q_PROPERTY(QString comment READ comment CONSTANT)
-    Q_PROPERTY(QVariant icon READ icon CONSTANT)
+    Q_PROPERTY(QVariant icon READ icon NOTIFY iconChanged)
     Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(QString status READ status NOTIFY stateChanged)
@@ -189,6 +189,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual void fetchChangelog() = 0;
 
     Q_SIGNALS:
+        void iconChanged();
         void sizeChanged();
         void stateChanged();
         void ratingFetched();

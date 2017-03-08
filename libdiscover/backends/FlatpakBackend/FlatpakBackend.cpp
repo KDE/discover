@@ -378,7 +378,7 @@ FlatpakResource * FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
     as_component_set_summary(component, settings.value(QStringLiteral("Flatpak Repo/Comment")).toString().toStdString().c_str(), nullptr);
     as_component_set_description(component, settings.value(QStringLiteral("Flatpak Repo/Description")).toString().toStdString().c_str(), nullptr);
     as_component_set_name(component, title.toStdString().c_str(), nullptr);
-    const QString iconUrl = settings.value(QStringLiteral("Flatpak Ref/Icon")).toString();
+    const QString iconUrl = settings.value(QStringLiteral("Flatpak Repo/Icon")).toString();
     if (!iconUrl.isEmpty()) {
         AsIcon *icon = as_icon_new();
         as_icon_set_kind(icon, AS_ICON_KIND_REMOTE);
