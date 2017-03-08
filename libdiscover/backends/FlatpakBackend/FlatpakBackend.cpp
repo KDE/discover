@@ -314,18 +314,6 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
     FlatpakRemote* remote = getFlatpakRemoteByUrl(refurl, installation);
 
-    if (!remote) {
-        const auto res = QMessageBox::question(nullptr, i18n("Add Remote"),
-                                            i18n("Would you like to add remote '%1'?\n\nFrom: %2\nWith GPG key=%3...",
-                                                    settings.value(QStringLiteral("Flatpak Ref/Title")).toString(),
-                                                    refurl,
-                                                    settings.value(QStringLiteral("Flatpak Ref/GPGKey")).toString().left(23)),
-                                            QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No));
-        if (res != QMessageBox::Yes) {
-            return nullptr;
-        }
-    }
-
     g_autoptr(GError) error = NULL;
     g_autoptr(FlatpakRemoteRef) remoteRef = nullptr;
     {
