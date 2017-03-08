@@ -107,6 +107,10 @@ bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
     for (uint i = 0; i < remotes->len; i++) {
         FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
 
+        if (flatpak_remote_get_noenumerate(remote)) {
+            continue;
+        }
+
         const QString id = QString::fromUtf8(flatpak_remote_get_name(remote));
         const QString title = QString::fromUtf8(flatpak_remote_get_title(remote));
 
