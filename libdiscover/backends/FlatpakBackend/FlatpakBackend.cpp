@@ -312,7 +312,6 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     auto installation = m_flatpakInstallationSystem;
     QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
     const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
-    FlatpakRemote* remote = getFlatpakRemoteByUrl(refurl, installation);
 
     g_autoptr(GError) error = NULL;
     g_autoptr(FlatpakRemoteRef) remoteRef = nullptr;
@@ -333,7 +332,6 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     }
 
     const auto remoteName = flatpak_remote_ref_get_remote_name(remoteRef);
-    remote = flatpak_installation_get_remote_by_name(installation, remoteName, m_cancellable, &error);
 
     auto ref = FLATPAK_REF(remoteRef);
 
