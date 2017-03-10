@@ -91,4 +91,12 @@ Kirigami.ScrollablePage
             root.flickable.returnToBounds()
         }
     }
+
+    readonly property var sClose: Shortcut {
+        sequence: StandardKey.Cancel
+        enabled: root.isCurrentPage && applicationWindow().pageStack.depth>=1
+        onActivated: {
+            applicationWindow().pageStack.pop()
+        }
+    }
 }
