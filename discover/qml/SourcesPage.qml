@@ -132,6 +132,7 @@ DiscoverPage {
             highlighted: ListView.isCurrentItem
             onClicked: Navigation.openApplicationListSource(model.display)
             readonly property string backendName: model.statusTip
+            readonly property variant modelIndex: sourcesView.model.index(model.index, 0)
 
             Keys.onReturnPressed: clicked()
             actions: [
@@ -145,8 +146,7 @@ DiscoverPage {
                     iconName: "edit-delete"
                     tooltip: i18n("Delete the origin")
                     onTriggered: {
-                        var idx = sourcesView.model.index(model.index, 0)
-                        var backend = sourcesView.model.data(idx, AbstractSourcesBackend.SourcesBackend)
+                        var backend = sourcesView.model.data(modelIndex, AbstractSourcesBackend.SourcesBackend)
                         backend.removeSource(model.display)
                     }
                 }
@@ -155,8 +155,10 @@ DiscoverPage {
             RowLayout {
                 CheckBox {
                     id: enabledBox
-                    checked: model.checked != Qt.Unchecked
-                    enabled: model.checked !== undefined
+
+                    readonly property variant modelChecked: sourcesView.model.data(modelIndex, Qt.CheckStateRole)
+                    checked: modelChecked != Qt.Unchecked
+                    enabled: modelChecked !== undefined
                     onClicked: {
                         model.checked = checkedState
                     }
