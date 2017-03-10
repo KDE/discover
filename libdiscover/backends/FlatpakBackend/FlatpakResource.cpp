@@ -224,7 +224,7 @@ int FlatpakResource::installedSize() const
 
 bool FlatpakResource::isTechnical() const
 {
-    return false;
+    return m_type == FlatpakResource::Runtime;
 }
 
 QUrl FlatpakResource::homepage()
