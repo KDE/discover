@@ -78,6 +78,10 @@ void KNSReviews::fetchReviews(AbstractResource* app, int page)
 {
     Attica::ListJob< Attica::Comment >* job =
         provider().requestComments(Attica::Comment::ContentComment, app->packageName(), QStringLiteral("0"), page, 10);
+    if (!job) {
+        emit reviewsReady(app, {});
+        return;
+    }
     job->setProperty("app", qVariantFromValue<AbstractResource*>(app));
     connect(job, &Attica::BaseJob::finished, this, &KNSReviews::commentsReceived);
     job->start();
