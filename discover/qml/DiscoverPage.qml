@@ -24,12 +24,6 @@ Kirigami.ScrollablePage
 {
     id: root
 
-    /**
-     * pageHeader: Component
-     * Places an item on top of the view when the user scrolls, so that we can
-     * have some UI available at all time.
-     */
-    property alias pageHeader: pageHeaderLoader.sourceComponent
     property alias pageOverlay: overlayLoader.sourceComponent
 
     readonly property Item overlay: Item {
@@ -41,36 +35,6 @@ Kirigami.ScrollablePage
         Loader {
             id: overlayLoader
             anchors.fill: parent
-        }
-
-        Loader {
-            id: pageHeaderLoader
-            anchors {
-                left: parent.left
-                right: parent.right
-                rightMargin: root.flickable ? root.width - (root.contentItem.x + root.contentItem.width) : 0
-            }
-            visible: y>-height
-
-            Behavior on y {
-                NumberAnimation {
-                    duration: Kirigami.Units.longDuration
-                    easing.type: Easing.InOutQuad
-                }
-            }
-
-            states: [
-                State {
-                    name: "top"
-                    when: root.flickable.contentY > 0
-                    PropertyChanges { target: pageHeaderLoader; y: 0 }
-                },
-                State {
-                    name: "scrolled"
-                    when: root.flickable.contentY <= 0
-                    PropertyChanges { target: pageHeaderLoader; y: -height }
-                }
-            ]
         }
     }
 
