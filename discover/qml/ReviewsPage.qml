@@ -39,7 +39,6 @@ Kirigami.OverlaySheet {
 
     ListView {
         id: reviewsView
-        implicitWidth: page.width*2/3
 
         clip: true
         spacing: 5
@@ -51,7 +50,10 @@ Kirigami.OverlaySheet {
         }
 
         delegate: ReviewDelegate {
-            width: reviewsView.width
+            anchors {
+                left: parent.left
+                right: parent.right
+            }
             onMarkUseful: page.model.markUseful(index, useful)
         }
     }
