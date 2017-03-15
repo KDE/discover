@@ -51,7 +51,7 @@ Kirigami.OverlaySheet {
         }
 
         delegate: ReviewDelegate {
-            width: reviewsView.implicitWidth
+            width: reviewsView.width
             onMarkUseful: page.reviewsModel.markUseful(index, useful)
         }
     }
