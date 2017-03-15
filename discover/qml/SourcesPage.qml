@@ -53,6 +53,7 @@ DiscoverPage {
     }
 
     mainItem: ListView {
+        id: sourcesView
         model: QSortFilterProxyModel{
             filterRegExp: new RegExp(page.search)
             sourceModel: KConcatenateRowsProxyModel {
