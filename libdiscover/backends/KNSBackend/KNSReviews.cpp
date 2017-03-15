@@ -102,7 +102,7 @@ void KNSReviews::commentsReceived(Attica::BaseJob* j)
         reviews += r;
     }
 
-    emit reviewsReady(app, reviews, reviews.isEmpty());
+    emit reviewsReady(app, reviews, !reviews.isEmpty());
 }
 
 bool KNSReviews::isFetching() const
