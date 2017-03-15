@@ -47,7 +47,7 @@ Kirigami.OverlaySheet {
         header: Button {
             visible: page.reviewsBackend != null && page.resource.isInstalled
             text: i18n("Review")
-            onClicked: reviewDialog.opened = true
+            onClicked: reviewDialog.sheetOpen = true
         }
 
         delegate: ReviewDelegate {

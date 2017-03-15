@@ -170,7 +170,7 @@ DiscoverPage {
             id: addonsButton
             text: i18n("Addons")
             visible: addonsView.containsAddons
-            onClicked: addonsView.opened = true
+            onClicked: addonsView.sheetOpen = true
         }
 
         LinkButton {
