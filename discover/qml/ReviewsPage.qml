@@ -47,12 +47,12 @@ Kirigami.OverlaySheet {
         header: Button {
             visible: page.reviewsBackend != null && page.resource.isInstalled
             text: i18n("Review")
-            onClicked: reviewDialog.opened = true
+            onClicked: reviewDialog.sheetOpen = true
         }
 
         delegate: ReviewDelegate {
-            width: reviewsView.implicitWidth
-            onMarkUseful: page.reviewsModel.markUseful(index, useful)
+            width: reviewsView.width
+            onMarkUseful: page.model.markUseful(index, useful)
         }
     }
 }

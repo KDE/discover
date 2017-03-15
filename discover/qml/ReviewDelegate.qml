@@ -26,7 +26,7 @@ AbstractListItem
 {
     id: item
     visible: model.shouldShow
-    height: Math.max(layout.implicitHeight, 0) + 2*Units.smallSpacing
+    height: Math.max(layout.implicitHeight, 0) + 3 * Units.smallSpacing
 
     signal markUseful(bool useful)
 
@@ -50,7 +50,7 @@ AbstractListItem
             Label {
                 id: content
                 Layout.fillWidth: true
-                text: i18n("<b>%1</b> by %2", summary, reviewer)
+                text: i18n("<b>%1</b> by %2", summary, reviewer ? reviewer : i18n("unknown reviewer"))
             }
             Rating {
                 id: rating

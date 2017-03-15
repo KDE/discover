@@ -410,7 +410,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
         connect(tArch, &PackageKit::Transaction::package, this, [tArch](PackageKit::Transaction::Info /*info*/, const QString &packageId){
             tArch->setProperty("packageId", packageId);
         });
-        connect(tArch, &PackageKit::Transaction::finished, this, [stream, tArch, ids, this]() {
+        connect(tArch, &PackageKit::Transaction::finished, stream, [stream, tArch, ids, this]() {
             getPackagesFinished();
             const auto packageId = tArch->property("packageId");
             if (!packageId.isNull()) {
