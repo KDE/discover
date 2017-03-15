@@ -69,7 +69,7 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
         void markUseful(int row, bool useful);
 
     private Q_SLOTS:
-        void addReviews(AbstractResource* app, const QList<Review*>& reviews);
+        void addReviews(AbstractResource* app, const QList<Review*>& reviews, bool canFetchMore);
         void restartFetching();
 
     Q_SIGNALS:

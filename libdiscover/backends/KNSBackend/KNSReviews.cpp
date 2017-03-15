@@ -79,7 +79,7 @@ void KNSReviews::fetchReviews(AbstractResource* app, int page)
     Attica::ListJob< Attica::Comment >* job =
         provider().requestComments(Attica::Comment::ContentComment, app->packageName(), QStringLiteral("0"), page, 10);
     if (!job) {
-        emit reviewsReady(app, {});
+        emit reviewsReady(app, {}, false);
         return;
     }
     job->setProperty("app", qVariantFromValue<AbstractResource*>(app));
@@ -91,7 +91,7 @@ void KNSReviews::commentsReceived(Attica::BaseJob* j)
 {
     Attica::ListJob<Attica::Comment>* job = static_cast<Attica::ListJob<Attica::Comment>*>(j);
     Attica::Comment::List comments = job->itemList();
-    
+
     QList<Review*> reviews;
     AbstractResource* app = job->property("app").value<AbstractResource*>();
     foreach(const Attica::Comment& comment, comments) {
@@ -101,8 +101,8 @@ void KNSReviews::commentsReceived(Attica::BaseJob* j)
         );
         reviews += r;
     }
-    
-    emit reviewsReady(app, reviews);
+
+    emit reviewsReady(app, reviews, reviews.isEmpty());
 }
 
 bool KNSReviews::isFetching() const

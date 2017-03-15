@@ -26,11 +26,11 @@
 #include "AppPackageKitResource.h"
 #include "PKTransaction.h"
 #include "LocalFilePKResource.h"
-#include "AppstreamReviews.h"
 #include <resources/AbstractResource.h>
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
 #include <Transaction/TransactionModel.h>
+#include <ReviewsBackend/OdrsReviewsBackend.h>
 
 #include <QProcess>
 #include <QStringList>
@@ -61,7 +61,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     , m_updater(new PackageKitUpdater(this))
     , m_refresher(nullptr)
     , m_isFetching(0)
-    , m_reviews(new AppstreamReviews(this))
+    , m_reviews(new OdrsReviewsBackend(this))
 {
     bool b = m_appdata.load();
     reloadPackageList();
@@ -106,7 +106,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
-    connect(m_reviews, &AppstreamReviews::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
+    connect(m_reviews, &OdrsReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
     SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
 }

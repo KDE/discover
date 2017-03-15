@@ -31,18 +31,17 @@
 #include <PackageKit/Transaction>
 #include <AppStreamQt/pool.h>
 
-class AppstreamReviews;
 class AppPackageKitResource;
 class PackageKitUpdater;
 class PKTransaction;
-
+class OdrsReviewsBackend;
 class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
     public:
         explicit PackageKitBackend(QObject* parent = nullptr);
         ~PackageKitBackend() override;
-        
+
         AbstractBackendUpdater* backendUpdater() const override;
         AbstractReviewsBackend* reviewsBackend() const override;
         QSet<AbstractResource*> resourcesByPackageName(const QString& name) const;
@@ -50,7 +49,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         ResultsStream* search(const AbstractResourcesBackend::Filters & search) override;
         ResultsStream* findResourceByPackageName(const QUrl& search) override;
         int updatesCount() const override;
-        
+
         void installApplication(AbstractResource* app) override;
         void installApplication(AbstractResource* app, const AddonList& addons) override;
         void removeApplication(AbstractResource* app) override;
@@ -115,7 +114,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QTimer m_delayedDetailsFetch;
         QSet<QString> m_packageNamesToFetchDetails;
         Packages m_packages;
-        AppstreamReviews* const m_reviews;
+        OdrsReviewsBackend* const m_reviews;
 };
 
 #endif // PACKAGEKITBACKEND_H

@@ -22,7 +22,6 @@
 #include "FlatpakBackend.h"
 #include "FlatpakFetchDataJob.h"
 #include "FlatpakResource.h"
-#include "FlatpakReviewsBackend.h"
 #include "FlatpakSourcesBackend.h"
 #include "FlatpakTransaction.h"
 
@@ -30,6 +29,7 @@
 #include <resources/SourcesModel.h>
 #include <Transaction/Transaction.h>
 #include <Transaction/TransactionModel.h>
+#include <ReviewsBackend/OdrsReviewsBackend.h>
 
 #include <AppStreamQt/bundle.h>
 #include <AppStreamQt/component.h>
@@ -60,7 +60,7 @@ MUON_BACKEND_PLUGIN(FlatpakBackend)
 FlatpakBackend::FlatpakBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
-    , m_reviews(new FlatpakReviewsBackend(this))
+    , m_reviews(new OdrsReviewsBackend(this))
     , m_fetching(false)
 {
     g_autoptr(GError) error = nullptr;
@@ -87,6 +87,8 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 
     m_sources = new FlatpakSourcesBackend(m_flatpakInstallationSystem, m_flatpakInstallationUser, this);
     SourcesModel::global()->addSourcesBackend(m_sources);
+
+    connect(m_reviews, &OdrsReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 }
 
 FlatpakBackend::~FlatpakBackend()

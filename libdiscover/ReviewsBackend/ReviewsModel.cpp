@@ -142,14 +142,14 @@ void ReviewsModel::fetchMore(const QModelIndex& parent)
 //     qDebug() << "fetching reviews... " << m_lastPage;
 }
 
-void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& reviews)
+void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& reviews, bool canFetchMore)
 {
     if(app!=m_app)
         return;
-    
-    m_canFetchMore=!reviews.isEmpty();
+
+    m_canFetchMore = canFetchMore;
 //     qDebug() << "reviews arrived..." << m_lastPage << reviews.size();
-    
+
     if(!reviews.isEmpty()) {
         beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size()-1);
         m_reviews += reviews;

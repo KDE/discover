@@ -13,8 +13,8 @@ set(discovercommon_SRCS
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
     ReviewsBackend/AbstractLoginBackend.cpp
+    ReviewsBackend/OdrsReviewsBackend.cpp
     ReviewsBackend/ReviewsModel.cpp
-    ReviewsBackend/PopConParser.cpp
     Transaction/AddonList.cpp
     Transaction/Transaction.cpp
     Transaction/TransactionListener.cpp
@@ -50,6 +50,7 @@ LINK_PUBLIC
 LINK_PRIVATE
     Qt5::Xml
     KF5::XmlGui
+    KF5::KIOCore
     KF5::CoreAddons
 )
 add_library(Discover::Common ALIAS DiscoverCommon)

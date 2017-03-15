@@ -19,41 +19,51 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef FLATPAKREVIEWSBACKEND_H
-#define FLATPAKREVIEWSBACKEND_H
+#ifndef ODRSREVIEWSBACKEND_H
+#define ODRSREVIEWSBACKEND_H
 
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/ReviewsModel.h>
+
+#include <QJsonDocument>
+#include <QNetworkReply>
 #include <QMap>
 
-class FlatpakBackend;
-class FlatpakReviewsBackend : public AbstractReviewsBackend
+class KJob;
+class AbstractResourcesBackend;
+class DISCOVERCOMMON_EXPORT OdrsReviewsBackend : public AbstractReviewsBackend
 {
 Q_OBJECT
 public:
-    explicit FlatpakReviewsBackend(FlatpakBackend* parent = nullptr);
+    explicit OdrsReviewsBackend(AbstractResourcesBackend *parent = nullptr);
 
-    QString userName() const override { return QStringLiteral("flatpak"); }
+    QString userName() const override { return {}; }
     void login() override {}
     void logout() override {}
     void registerAndLogin() override {}
 
-    Rating* ratingForApplication(AbstractResource* app) const override;
+    Rating * ratingForApplication(AbstractResource *app) const override;
     bool hasCredentials() const override { return false; }
-    void deleteReview(Review*) override {}
-    void fetchReviews(AbstractResource* app, int page = 1) override;
-    bool isFetching() const override { return false; }
-    void submitReview(AbstractResource*, const QString&, const QString&, const QString&) override;
-    void flagReview(Review*, const QString&, const QString&) override {}
-    void submitUsefulness(Review*, bool) override;
+    void deleteReview(Review *) override {}
+    void fetchReviews(AbstractResource *app, int page = 1) override;
+    bool isFetching() const override { return m_isFetching; }
+    void submitReview(AbstractResource *, const QString &, const QString &, const QString &) override;
+    void flagReview(Review *, const QString &, const QString &) override {}
+    void submitUsefulness(Review *, bool) override;
 
-    void initialize();
-
+private Q_SLOTS:
+    void ratingsFetched(KJob *job);
+    void reviewsFetched(QNetworkReply *reply);
 Q_SIGNALS:
     void ratingsReady();
 
 private:
-    QHash<AbstractResource*, Rating*> m_ratings;
+    void parseRatings();
+    void parseReviews(const QJsonDocument &document, AbstractResource *resource);
+
+    QHash<QString, Rating*> m_ratings;
+    bool m_isFetching;
 };
 
-#endif // FLATPAKREVIEWSBACKEND_H
+#endif // ODRSREVIEWSBACKEND_H
+

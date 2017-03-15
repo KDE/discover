@@ -284,7 +284,7 @@ QString FlatpakResource::origin() const
 
 QString FlatpakResource::packageName() const
 {
-    return m_appdata->name();
+    return flatpakName();
 }
 
 QUrl FlatpakResource::resourceFile() const
