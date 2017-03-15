@@ -33,6 +33,7 @@
   <name xml:lang="sr-ijekavian">Oткривач</name>
   <name xml:lang="sr-ijekavianlatin">Otkrivač</name>
   <name xml:lang="sv">Discover</name>
+  <name xml:lang="tr">Keşfet</name>
   <name xml:lang="uk">Discover</name>
   <name xml:lang="x-test">xxDiscoverxx</name>
   <name xml:lang="zh-CN">发现</name>
@@ -67,6 +68,7 @@
   <summary xml:lang="sr-ijekavian">Oткривач</summary>
   <summary xml:lang="sr-ijekavianlatin">Otkrivač</summary>
   <summary xml:lang="sv">Discover</summary>
+  <summary xml:lang="tr">Keşfet</summary>
   <summary xml:lang="uk">Discover</summary>
   <summary xml:lang="x-test">xxDiscoverxx</summary>
   <summary xml:lang="zh-CN">发现</summary>
@@ -97,6 +99,7 @@
     <p xml:lang="sr-ijekavian">Зар нисте бар једном нашли алатку која савршено пристаје вашим потребама, али тако што сте на њу случајно натрапали на Интернету? Када размишљате да ли да инсталирате неки програм, зар се не питате да ли је вредно труда? И да ли заиста одговара ономе што сте тражили?</p>
     <p xml:lang="sr-ijekavianlatin">Zar niste bar jednom našli alatku koja savršeno pristaje vašim potrebama, ali tako što ste na nju slučajno natrapali na Internetu? Kada razmišljate da li da instalirate neki program, zar se ne pitate da li je vredno truda? I da li zaista odgovara onome što ste tražili?</p>
     <p xml:lang="sv">Har du aldrig hittat ett verktyg som är perfekt för dina behov, men bara efter att ha stött på det på nätet av en slump? När du funderar på att installera ett program, undrar du inte ibland om det verkligen är värt att göra? Eller om det verkligen är vad du behöver?</p>
+    <p xml:lang="tr">Tam ihtiyacınız olan aracı internette uzun süre araştırmadan sonra bulmadınız mı? Uygulama yüklendikten sonra bazen gerçekten buna değip değmediğini düşünmüyorsunuz? Ya da gerçekten aradığınız şey olup olmadığını?</p>
     <p xml:lang="uk">Чи траплялося вам знаходити програму, яка повністю задовольняє ваші потреби, після довгих пошуків у інтернеті? Чи не кортіло вам дізнатися про те, чи варто встановлювати програму, ще до її встановлення? Чи хотіли б ви наперед знати, чи та це програма, яка вам потрібна?</p>
     <p xml:lang="x-test">xxHaven’t you ever found a tool that was perfect for your need but you only found it after some time stumbling upon it on the net? When considering to install an application, don’t you wonder sometimes if it’s really worth it? Or if it’s actually what you’re looking for?xx</p>
     <p xml:lang="zh-CN">您是否只网络上搜索之后才找到一个完美符合需求的工具？当安装一个程序时，您没有想过知道是否真的值得安装吗？或者它确实是您想要找的目标？</p>
@@ -126,6 +129,7 @@
     <p xml:lang="sr-ijekavian">Oткривач помаже корисницима да лако и брзо налазе програме и алатке. Кретањем кроз библиотеку софтвера путем претраге, категорија, топ‑листа, праћеним детаљним описима програма, снимцима екрана и рецензијама, корисник може брзо да пронађе програм према својим потребама.</p>
     <p xml:lang="sr-ijekavianlatin">Otkrivač pomaže korisnicima da lako i brzo nalaze programe i alatke. Kretanjem kroz biblioteku softvera putem pretrage, kategorija, top‑lista, praćenim detaljnim opisima programa, snimcima ekrana i recenzijama, korisnik može brzo da pronađe program prema svojim potrebama.</p>
     <p xml:lang="sv">Discover hjälper användare att enkelt och snabbt hitta program eller verktyg. Genom att göra det möjligt att gå igenom ett programvarubibliotek via sökning, enligt programvarukategorier och i topplistor tillsammans med detaljerad programinformation som innehåller skärmbilder och recensioner, kan användare snabbare hitta program som passar deras behov.</p>
+    <p xml:lang="tr">Keşfet, kullanıcıların hızlıca araç ve uygulamaları bulmalaraını sağlar. Bir yazılım kütüphanesinde arama, kategorilere göre veya en çok indirilen listesi ile birlikte, ekran görüntüleri ve değerlendirmeleri göstererek, kullanıcılar ihtiyaçları olan uygulamaları daha hızlı bulabilirler.</p>
     <p xml:lang="uk">Discover допомагає користувачам просто і швидко знаходити програми або інструменти. Користувач може просто мандрувати бібліотекою програмного забезпечення, шукаючи програми, передивляючись списки категорій програм, найкращих програм, та ознайомлюючись із докладною інформацією щодо програм, знімками вікон та відгуками інших користувачів. Знайти потрібну програму у такий спосіб можна набагато швидше.</p>
     <p xml:lang="x-test">xxDiscover helps users easily and quickly find applications or tools. By allowing to navigate a software library by search, software categories, top lists along with detailed application information that includes screenshots and reviews, users can more quickly find applications that suit their needs.xx</p>
     <p xml:lang="zh-CN">发现能够帮助用户简单快捷的找到程序或者工具。通过对软件库的搜索，软件分类，热门列表和包括截图和评论的细节的程序信息，用户可以更快的找到符合要求的程序。</p>
@@ -155,6 +159,7 @@
     <p xml:lang="sr-ijekavian">Затим, Oткривач вам омогућава да управљате различитим изворима софтвера, као и програмима које сте инсталирали раније али их више не желите.</p>
     <p xml:lang="sr-ijekavianlatin">Zatim, Otkrivač vam omogućava da upravljate različitim izvorima softvera, kao i programima koje ste instalirali ranije ali ih više ne želite.</p>
     <p xml:lang="sv">Dessutom låter Discover dig hantera olika programvarukällor du använder och hantera program som du redan tidigare har installerat men inte lägre vill ha.</p>
+    <p xml:lang="tr">Dahası, Keşfet, geçmişte yüklediğiniz fakat artık ihtiyacınız olmayan uygulamaları yönetmenize de olanak sağlar.</p>
     <p xml:lang="uk">Крім того, Discover надасть вам змогу керувати різними джерелами програмного забезпечення та вилучати програми, у яких уже немає потреби.</p>
     <p xml:lang="x-test">xxFurthermore, Discover will let you manage the different sources of software you have and manage the applications you’ve already installed in the past but you don’t want anymore.xx</p>
     <p xml:lang="zh-CN">进一步，发现还可以管理多个不同软件源并且管理过去已安装但不再需要的程序。</p>
