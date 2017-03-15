@@ -42,7 +42,7 @@ Kirigami.OverlaySheet
             text: i18n("Accept")
             onClicked: {
                 reviewDialog.accepted()
-                reviewDialog.opened = false
+                reviewDialog.sheetOpen = false
             }
         }
     }
