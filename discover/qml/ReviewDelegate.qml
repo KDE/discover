@@ -40,6 +40,7 @@ ColumnLayout
         Label {
             id: content
             Layout.fillWidth: true
+            elide: Text.ElideRight
             text: i18n("<b>%1</b> by %2", summary, reviewer ? reviewer : i18n("unknown reviewer"))
         }
         Rating {
