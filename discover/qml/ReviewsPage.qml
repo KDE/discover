@@ -37,6 +37,10 @@ Kirigami.OverlaySheet {
         onAccepted: page.reviewsBackend.submitReview(resource, summary, review, rating)
     }
 
+    function openReviewDialog() {
+        reviewDialog.sheetOpen = true
+    }
+
     ListView {
         id: reviewsView
 
@@ -47,7 +51,7 @@ Kirigami.OverlaySheet {
         header: Button {
             visible: page.reviewsBackend != null && page.resource.isInstalled
             text: i18n("Review")
-            onClicked: reviewDialog.sheetOpen = true
+            onClicked: page.openReviewDialog()
         }
 
         delegate: ReviewDelegate {

@@ -174,6 +174,12 @@ DiscoverPage {
         }
 
         LinkButton {
+            text: i18n("Review")
+            onClicked: reviewsSheet.openReviewDialog()
+            visible: !commentsButton.visible
+        }
+        LinkButton {
+            id: commentsButton
             readonly property QtObject rating: appInfo.application.rating
             visible: rating && rating.ratingCount>0 && reviewsModel.count
             text: i18n("Show comments (%1)...", rating ? reviewsModel.count : 0)
