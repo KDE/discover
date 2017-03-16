@@ -41,7 +41,7 @@ void DummyReviewsBackend::fetchReviews(AbstractResource* app, int page)
         review += new Review(app->name(), app->packageName(), QStringLiteral("en_US"), QStringLiteral("good morning"), QStringLiteral("the morning is very good"), QStringLiteral("dummy"),
                              QDateTime(), true, page+i, i%5, 1, 1, app->packageName());
     }
-    emit reviewsReady(app, review);
+    emit reviewsReady(app, review, false);
 }
 
 Rating* DummyReviewsBackend::ratingForApplication(AbstractResource* app) const
