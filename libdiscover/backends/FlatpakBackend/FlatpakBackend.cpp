@@ -967,7 +967,7 @@ ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
             passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
             foreach(FlatpakResource* res, m_resources) {
-                if (res->appstreamId() == url.host())
+                if (QString::compare(res->appstreamId(), url.host(), Qt::CaseInsensitive)==0)
                     resources << res;
             }
         }
