@@ -88,7 +88,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     m_sources = new FlatpakSourcesBackend(m_flatpakInstallationSystem, m_flatpakInstallationUser, this);
     SourcesModel::global()->addSourcesBackend(m_sources);
 
-    connect(m_reviews, &OdrsReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
+    connect(m_reviews, &OdrsReviewsBackend::ratingsReady, this, &FlatpakBackend::announceRatingsReady);
 }
 
 FlatpakBackend::~FlatpakBackend()
@@ -96,6 +96,18 @@ FlatpakBackend::~FlatpakBackend()
     g_object_unref(m_flatpakInstallationSystem);
     g_object_unref(m_flatpakInstallationUser);
     g_object_unref(m_cancellable);
+}
+
+void FlatpakBackend::announceRatingsReady()
+{
+    emitRatingsReady();
+
+    const auto ids = m_reviews->appstreamIds().toSet();
+    foreach(AbstractResource* res, m_resources) {
+        if (ids.contains(res->appstreamId())) {
+            res->ratingFetched();
+        }
+    }
 }
 
 FlatpakRef * FlatpakBackend::createFakeRef(FlatpakResource *resource)

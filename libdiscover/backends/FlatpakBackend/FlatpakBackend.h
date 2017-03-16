@@ -67,6 +67,7 @@ private Q_SLOTS:
     void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
 
 private:
+    void announceRatingsReady();
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     // TODO needed for fetching metadata and size, remove once both are moved to separated job
     FlatpakRef * createFakeRef(FlatpakResource *resource);
