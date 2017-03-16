@@ -42,7 +42,7 @@ Kirigami.OverlaySheet {
 
         clip: true
         spacing: Kirigami.Units.smallSpacing
-        cacheBuffer: contentHeight
+        cacheBuffer: Math.max(0, contentHeight)
 
         header: Button {
             visible: page.reviewsBackend != null && page.resource.isInstalled
