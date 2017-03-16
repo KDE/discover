@@ -96,9 +96,16 @@ double dampenedRating(const QVector<int> &ratings, double power = 0.1)
     return sum_scores + 3;
 }
 
-Rating::Rating(const QVariantMap &data)
-    : Rating(data.value(QStringLiteral("package_name")).toString(),
-         data.value(QStringLiteral("ratings_total")).toULongLong(), data.value(QStringLiteral("ratings_average")).toDouble() * 2, data.value(QStringLiteral("histogram")).toString())
+Rating::Rating(const QString &packageName, quint64 ratingCount, const QVariantMap &data)
+    : QObject()
+    , m_packageName(packageName)
+    , m_ratingCount(ratingCount)
+    // TODO consider storing this and present in UI
+    , m_rating(((data.value(QStringLiteral("star1")).toInt() + (data.value(QStringLiteral("star2")).toInt() * 2) +
+                (data.value(QStringLiteral("star3")).toInt() * 3) + (data.value(QStringLiteral("star4")).toInt() * 4) +
+                (data.value(QStringLiteral("star5")).toInt() * 5)) * 2) / (float) ratingCount)
+    , m_ratingPoints(0)
+    , m_sortableRating(0)
 {
 }
 
@@ -112,7 +119,7 @@ Rating::Rating(QString packageName, int inst)
 {
 }
 
-Rating::Rating(const QString& packageName, quint64 ratingCount, int rating, const QString& histogram)
+Rating::Rating(const QString &packageName, quint64 ratingCount, double rating, const QString &histogram)
     : QObject()
     , m_packageName(packageName)
     , m_ratingCount(ratingCount)
@@ -147,7 +154,7 @@ quint64 Rating::ratingCount() const
     return m_ratingCount;
 }
 
-int Rating::rating() const
+float Rating::rating() const
 {
     return m_rating;
 }

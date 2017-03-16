@@ -35,8 +35,8 @@ extern "C" {
 
 class QAction;
 class FlatpakSourcesBackend;
-class FlatpakReviewsBackend;
 class StandardBackendUpdater;
+class OdrsReviewsBackend;
 class FlatpakBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
@@ -98,7 +98,7 @@ private:
     QHash<QString, FlatpakResource*> m_resources;
     StandardBackendUpdater  *m_updater;
     FlatpakSourcesBackend *m_sources;
-    FlatpakReviewsBackend *m_reviews;
+    OdrsReviewsBackend *m_reviews;
     bool m_fetching;
     QList<QAction*> m_messageActions;
 

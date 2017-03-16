@@ -6,7 +6,6 @@ set(flatpak-backend_SRCS
     FlatpakResource.cpp
     FlatpakBackend.cpp
     FlatpakFetchDataJob.cpp
-    FlatpakReviewsBackend.cpp
     FlatpakSourcesBackend.cpp
     FlatpakTransaction.cpp
     FlatpakTransactionJob.cpp

@@ -1,0 +1,270 @@
+/***************************************************************************
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2017 Jan Grulich <jgrulich@redhat.com>                    *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or         *
+ *   modify it under the terms of the GNU General Public License as        *
+ *   published by the Free Software Foundation; either version 2 of        *
+ *   the License or (at your option) version 3 or any later version        *
+ *   accepted by the membership of KDE e.V. (or its successor approved     *
+ *   by the membership of KDE e.V.), which shall act as a proxy            *
+ *   defined in Section 14 of version 3 of the license.                    *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
+ ***************************************************************************/
+
+#include "OdrsReviewsBackend.h"
+
+#include <ReviewsBackend/Review.h>
+#include <ReviewsBackend/Rating.h>
+
+#include <resources/AbstractResource.h>
+#include <resources/AbstractResourcesBackend.h>
+
+#include <KIO/FileCopyJob>
+#include <KUser>
+
+#include <QCryptographicHash>
+#include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QFile>
+#include <QFileInfo>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+#include <QStandardPaths>
+
+OdrsReviewsBackend::OdrsReviewsBackend(AbstractResourcesBackend *parent)
+    : AbstractReviewsBackend(parent)
+    , m_isFetching(false)
+{
+    bool fetchRatings = false;
+    const QUrl ratingsUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/ratings"));
+    const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings"));
+
+    if (QFileInfo::exists(fileUrl.toLocalFile())) {
+        QFileInfo file(fileUrl.toLocalFile());
+        // Refresh the cached ratings if they are older than 30 minutes
+        if (file.lastModified().msecsTo(QDateTime::currentDateTime()) < 1000 * 60 * 30) {
+            fetchRatings = true;
+        }
+    } else {
+        fetchRatings = true;
+    }
+
+    if (fetchRatings) {
+        m_isFetching = true;
+        KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl, fileUrl, -1, KIO::Overwrite | KIO::HideProgressInfo);
+        connect(getJob, &KIO::FileCopyJob::result, this, &OdrsReviewsBackend::ratingsFetched);
+    } else {
+        parseRatings();
+    }
+}
+
+void OdrsReviewsBackend::ratingsFetched(KJob *job)
+{
+    m_isFetching = false;
+    if (job->error()) {
+        qWarning() << "Failed to fetch ratings " << job->errorString();
+    } else {
+        parseRatings();
+    }
+}
+
+static QString osName()
+{
+    QString osReleaseFilename;
+    if (QFileInfo::exists(QStringLiteral("/etc/os-release"))) {
+        osReleaseFilename = QStringLiteral("/etc/os-release");
+    } else if (QFileInfo::exists(QStringLiteral("/usr/lib/os-release"))) {
+        osReleaseFilename = QStringLiteral("/usr/lib/os-release");
+    }
+
+    if (osReleaseFilename.isEmpty()) {
+        return QStringLiteral("Unknown");
+    }
+
+    QFile osReleaseFile(osReleaseFilename);
+    if (osReleaseFile.open(QIODevice::ReadOnly)) {
+        QString line = QString::fromUtf8(osReleaseFile.readLine());
+        while (!line.isEmpty()) {
+            if (line.startsWith(QStringLiteral("NAME"))) {
+                osReleaseFile.close();
+                return line.mid(5).remove(QStringLiteral("\n"));
+            }
+            line = QString::fromUtf8(osReleaseFile.readLine());
+        }
+        osReleaseFile.close();
+    }
+
+    return QStringLiteral("Unknown");
+}
+
+static QString userHash()
+{
+    QString machineId;
+    QFile file(QStringLiteral("/etc/machine-id"));
+    if (file.open(QIODevice::ReadOnly)) {
+        machineId = QString::fromUtf8(file.readAll());
+        file.close();
+    }
+
+    if (machineId.isEmpty()) {
+        return QString();
+    }
+
+    QString salted = QStringLiteral("gnome-software[%1:%2]").arg(KUser().loginName()).arg(machineId);
+    return QString::fromUtf8(QCryptographicHash::hash(salted.toUtf8(), QCryptographicHash::Sha1).toHex());
+}
+
+void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
+{
+    m_isFetching = true;
+
+    // Check cached reviews
+    const QString fileName = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/reviews/%1.json").arg(app->appstreamId());
+    if (QFileInfo::exists(fileName)) {
+        QFileInfo file(fileName);
+        // Check if the reviews are not older than a week               msecs * secs * hours * days
+        if (file.lastModified().msecsTo(QDateTime::currentDateTime()) < 1000 * 60 * 60 * 24 * 7 ) {
+            QFile reviewFile(fileName);
+            if (reviewFile.open(QIODevice::ReadOnly)) {
+                QByteArray reviews = reviewFile.readAll();
+                QJsonDocument document = QJsonDocument::fromJson(reviews);
+                parseReviews(document, app);
+                return;
+            }
+        }
+    }
+
+    QVariantMap map {{QStringLiteral("app_id"), app->appstreamId()},
+                     {QStringLiteral("distro"), osName()},
+                     {QStringLiteral("user_hash"), userHash()},
+                     {QStringLiteral("version"), app->isInstalled() ? app->installedVersion() : app->availableVersion()},
+                     {QStringLiteral("locale"), QLocale::system().name()},
+                     {QStringLiteral("limit"), 0}};
+
+    QJsonDocument document(QJsonObject::fromVariantMap(map));
+
+    QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
+    QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/fetch")));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
+    request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
+    // Store reference to the app for which we request reviews
+    request.setOriginatingObject(app);
+
+    accessManager->post(request, document.toJson());
+    connect(accessManager, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::reviewsFetched);
+}
+
+void OdrsReviewsBackend::reviewsFetched(QNetworkReply *reply)
+{
+    if (reply->error() == QNetworkReply::NoError) {
+        QByteArray data = reply->readAll();
+        QJsonDocument document = QJsonDocument::fromJson(data);
+        AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
+        parseReviews(document, resource);
+
+        // Store reviews to cache so we don't need to download them all the time
+        if (document.array().isEmpty()) {
+            return;
+        }
+
+        QJsonObject jsonObject = document.array().first().toObject();
+        if (jsonObject.isEmpty()) {
+            return;
+        }
+
+        QFile file(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/reviews/%1.json").arg(jsonObject.value(QStringLiteral("app_id")).toString()));
+        if (file.open(QIODevice::WriteOnly)) {
+            file.write(document.toJson());
+            file.close();
+        }
+    } else {
+        m_isFetching = false;
+    }
+}
+
+Rating * OdrsReviewsBackend::ratingForApplication(AbstractResource *app) const
+{
+    if (app->isTechnical()) {
+        return nullptr;
+    }
+
+    return m_ratings[app->appstreamId()];
+}
+
+void OdrsReviewsBackend::submitUsefulness(Review *r, bool useful)
+{
+    // TODO
+}
+
+void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &a, const QString &b, const QString &c)
+{
+    // TODO
+}
+
+void OdrsReviewsBackend::parseRatings()
+{
+    QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings"));
+    if (ratingsDocument.open(QIODevice::ReadOnly)) {
+        QJsonDocument jsonDocument = QJsonDocument::fromJson(ratingsDocument.readAll());
+        QJsonObject jsonObject = jsonDocument.object();
+        for (auto it = jsonObject.begin(); it != jsonObject.end(); it++) {
+            QJsonObject appJsonObject = it.value().toObject();
+
+            const int ratingCount =  appJsonObject.value(QLatin1String("total")).toInt();
+            QVariantMap ratingMap = { { QStringLiteral("star0"), appJsonObject.value(QLatin1String("star0")).toInt() },
+                                      { QStringLiteral("star1"), appJsonObject.value(QLatin1String("star1")).toInt() },
+                                      { QStringLiteral("star2"), appJsonObject.value(QLatin1String("star2")).toInt() },
+                                      { QStringLiteral("star3"), appJsonObject.value(QLatin1String("star3")).toInt() },
+                                      { QStringLiteral("star4"), appJsonObject.value(QLatin1String("star4")).toInt() },
+                                      { QStringLiteral("star5"), appJsonObject.value(QLatin1String("star5")).toInt() } };
+
+            Rating *rating = new Rating(it.key(), ratingCount, ratingMap);
+            m_ratings.insert(it.key(), rating);
+        }
+        ratingsDocument.close();
+
+        Q_EMIT ratingsReady();
+    }
+}
+
+void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractResource *resource)
+{
+    m_isFetching = false;
+
+    QJsonArray reviews = document.array();
+    if (!reviews.isEmpty()) {
+        QList<Review*> reviewList;
+        for (auto it = reviews.begin(); it != reviews.end(); it++) {
+            QJsonObject review = it->toObject();
+            if (!review.isEmpty()) {
+                const int usefulFavorable = review.value(QStringLiteral("karma_up")).toInt();
+                const int usefulTotal = review.value(QStringLiteral("karma_down")).toInt() + usefulFavorable;
+                QDateTime dateTime;
+                dateTime.setTime_t(review.value(QStringLiteral("date_created")).toInt());
+                Review *r = new Review(review.value(QStringLiteral("app_name")).toString(), resource->packageName(),
+                                       review.value(QStringLiteral("locale")).toString(), review.value(QStringLiteral("summary")).toString(),
+                                       review.value(QStringLiteral("description")).toString(), review.value(QStringLiteral("user_display")).toString(),
+                                       dateTime, true, review.value(QStringLiteral("review_id")).toInt(),
+                                       review.value(QStringLiteral("rating")).toInt() / 10, usefulTotal, usefulFavorable,
+                                       review.value(QStringLiteral("version")).toString());
+                // We can also receive just a json with app name and user info so filter these out as there is no review
+                if (r->id() && !r->summary().isEmpty() && !r->reviewText().isEmpty()) {
+                    reviewList << r;
+                }
+            }
+        }
+
+        Q_EMIT reviewsReady(resource, reviewList, false);
+    }
+}
