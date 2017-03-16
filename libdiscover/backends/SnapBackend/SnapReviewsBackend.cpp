@@ -32,7 +32,7 @@ SnapReviewsBackend::SnapReviewsBackend(SnapBackend* parent)
 
 void SnapReviewsBackend::fetchReviews(AbstractResource* app, int page)
 {
-    emit reviewsReady({}, {});
+    emit reviewsReady({}, {}, false);
 }
 
 Rating* SnapReviewsBackend::ratingForApplication(AbstractResource* app) const
