@@ -56,6 +56,16 @@ bool AbstractResource::isTechnical() const
     return false;
 }
 
+void AbstractResource::addMetadata(const QString &key, const QVariant &value)
+{
+    m_metadata.insert(key, value);
+}
+
+QVariant AbstractResource::getMetadata(const QString &key)
+{
+    return m_metadata.value(key);
+}
+
 bool AbstractResource::canUpgrade()
 {
     return state() == Upgradeable;

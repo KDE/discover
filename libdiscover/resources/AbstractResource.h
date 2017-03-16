@@ -154,6 +154,9 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
 
         virtual QString appstreamId() const;
 
+        void addMetadata(const QString &key, const QVariant &value);
+        QVariant getMetadata(const QString &key);
+
         bool canUpgrade();
         bool isInstalled();
 
@@ -204,6 +207,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
 
 //         TODO: make it std::optional or make QCollatorSortKey()
         QScopedPointer<QCollatorSortKey> m_collatorKey;
+        QVariantMap m_metadata;
 };
 
 Q_DECLARE_METATYPE(QVector<AbstractResource*>)

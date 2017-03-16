@@ -138,11 +138,11 @@ FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
     }
 
     remote = flatpak_remote_new(resource->flatpakName().toStdString().c_str());
-    flatpak_remote_set_url(remote, resource->metadata(QStringLiteral("repo-url")).toString().toStdString().c_str());
+    flatpak_remote_set_url(remote, resource->getMetadata(QStringLiteral("repo-url")).toString().toStdString().c_str());
     flatpak_remote_set_noenumerate(remote, false);
     flatpak_remote_set_title(remote, resource->comment().toStdString().c_str());
 
-    const QString gpgKey = resource->metadata(QStringLiteral("gpg-key")).toString();
+    const QString gpgKey = resource->getMetadata(QStringLiteral("gpg-key")).toString();
     if (!gpgKey.isEmpty()) {
         gsize dataLen = 0;
         g_autofree guchar *data = nullptr;

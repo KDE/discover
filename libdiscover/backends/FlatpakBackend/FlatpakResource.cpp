@@ -272,11 +272,6 @@ QString FlatpakResource::name()
     return name;
 }
 
-QVariant FlatpakResource::metadata(const QString &key)
-{
-    return m_metadata.value(key);
-}
-
 QString FlatpakResource::origin() const
 {
     return m_origin;
@@ -441,11 +436,6 @@ void FlatpakResource::fetchScreenshots()
     }
 
     Q_EMIT screenshotsFetched(thumbnails, screenshots);
-}
-
-void FlatpakResource::addMetadata(const QString &key, const QVariant &value)
-{
-    m_metadata.insert(key, value);
 }
 
 void FlatpakResource::setArch(const QString &arch)

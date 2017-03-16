@@ -127,6 +127,7 @@ static QString userHash()
 
 void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
 {
+    Q_UNUSED(page)
     m_isFetching = true;
 
     // Check cached reviews
@@ -204,12 +205,55 @@ Rating * OdrsReviewsBackend::ratingForApplication(AbstractResource *app) const
 
 void OdrsReviewsBackend::submitUsefulness(Review *r, bool useful)
 {
-    // TODO
+    Q_UNUSED(r)
+    Q_UNUSED(useful)
 }
 
-void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &a, const QString &b, const QString &c)
+void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summary, const QString &description, const QString &rating)
 {
-    // TODO
+    QVariantMap map {{QStringLiteral("app_id"), res->appstreamId()},
+                     {QStringLiteral("user_skey"), res->getMetadata(QStringLiteral("ODRS::user_skey")).toString()},
+                     {QStringLiteral("user_hash"), userHash()},
+                     {QStringLiteral("version"), res->isInstalled() ? res->installedVersion() : res->availableVersion()},
+                     {QStringLiteral("locale"), QLocale::system().name()},
+                     {QStringLiteral("distro"), osName()},
+                     {QStringLiteral("user_display"), KUser().property(KUser::FullName)},
+                     {QStringLiteral("summary"), summary},
+                     {QStringLiteral("description"), description},
+                     {QStringLiteral("rating"), rating.toInt() * 10}};
+
+    QJsonDocument document(QJsonObject::fromVariantMap(map));
+    qWarning() << document.toJson();
+
+    QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
+    QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/submit")));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
+    request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
+
+    // Store what we need so we can immediately show our review once it is submitted
+    // Use review_id 0 for now as odrs starts numbering from 1 and once reviews are re-downloaded we get correct id
+    map.insert(QStringLiteral("review_id"), 0);
+    res->addMetadata(QStringLiteral("ODRS::review_map"), map);
+    request.setOriginatingObject(res);
+
+    accessManager->post(request, document.toJson());
+    connect(accessManager, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::reviewSubmitted);
+}
+
+void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
+{
+    if (reply->error() == QNetworkReply::NoError) {
+        qWarning() << "Review submitted";
+        AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
+        QJsonArray array = QJsonArray::fromVariantList({resource->getMetadata(QStringLiteral("ODRS::review_map")).toMap()});
+        QJsonDocument document = QJsonDocument(array);
+        // Remove local file with reviews so we can re-download it next time to get our review
+        QFile file(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/reviews/%1.json").arg(array.first().toObject().value(QStringLiteral("app_id")).toString()));
+        file.remove();
+        parseReviews(document, resource);
+    } else {
+        qWarning() << "Failed to submit review: " << reply->errorString();
+    }
 }
 
 void OdrsReviewsBackend::parseRatings()
@@ -259,9 +303,12 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                                        review.value(QStringLiteral("rating")).toInt() / 10, usefulTotal, usefulFavorable,
                                        review.value(QStringLiteral("version")).toString());
                 // We can also receive just a json with app name and user info so filter these out as there is no review
-                if (r->id() && !r->summary().isEmpty() && !r->reviewText().isEmpty()) {
+                if (!r->summary().isEmpty() && !r->reviewText().isEmpty()) {
                     reviewList << r;
                 }
+
+                // We should get at least user_skey needed for posting reviews
+                resource->addMetadata(QStringLiteral("ODRS::user_skey"), review.value(QStringLiteral("user_skey")).toString());
             }
         }
 

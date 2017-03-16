@@ -47,13 +47,14 @@ public:
     void deleteReview(Review *) override {}
     void fetchReviews(AbstractResource *app, int page = 1) override;
     bool isFetching() const override { return m_isFetching; }
-    void submitReview(AbstractResource *, const QString &, const QString &, const QString &) override;
+    void submitReview(AbstractResource *, const QString &summary, const QString &description, const QString &rating) override;
     void flagReview(Review *, const QString &, const QString &) override {}
     void submitUsefulness(Review *, bool) override;
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
     void reviewsFetched(QNetworkReply *reply);
+    void reviewSubmitted(QNetworkReply *reply);
 Q_SIGNALS:
     void ratingsReady();
 
