@@ -190,13 +190,13 @@ FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *fla
 FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource)
 {
     FlatpakResource *runtime = nullptr;
-    const auto runtimeInfo = resource->runtime().split(QLatin1Char('/'));
+    const auto runtimeInfo = resource->runtime().splitRef(QLatin1Char('/'));
 
     if (runtimeInfo.count() != 3) {
         return runtime;
     }
 
-    const QString runtimeId = QString::fromUtf8("runtime/%1/%2").arg(runtimeInfo.at(0)).arg(runtimeInfo.at(2));
+    const QString runtimeId = QStringLiteral("runtime/") + runtimeInfo.at(0) + QLatin1Char('/') + runtimeInfo.at(2);
     foreach (const QString &id, m_resources.keys()) {
         if (id.endsWith(runtimeId)) {
             runtime = m_resources.value(id);
