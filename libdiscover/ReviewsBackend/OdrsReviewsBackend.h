@@ -50,6 +50,7 @@ public:
     void submitReview(AbstractResource *, const QString &summary, const QString &description, const QString &rating) override;
     void flagReview(Review *, const QString &, const QString &) override {}
     void submitUsefulness(Review *, bool) override;
+    QStringList appstreamIds() const { return m_ratings.keys(); }
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
