@@ -41,7 +41,7 @@ Kirigami.OverlaySheet {
         id: reviewsView
 
         clip: true
-        spacing: 5
+        spacing: Kirigami.Units.smallSpacing
         cacheBuffer: contentHeight
 
         header: Button {
