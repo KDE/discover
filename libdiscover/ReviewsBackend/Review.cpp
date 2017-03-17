@@ -126,3 +126,13 @@ void Review::setUsefulChoice(ReviewsModel::UserChoice useful)
 {
     m_usefulChoice = useful;
 }
+
+void Review::addMetadata(const QString &key, const QVariant &value)
+{
+    m_metadata.insert(key, value);
+}
+
+QVariant Review::getMetadata(const QString &key)
+{
+    return m_metadata.value(key);
+}

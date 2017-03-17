@@ -203,10 +203,32 @@ Rating * OdrsReviewsBackend::ratingForApplication(AbstractResource *app) const
     return m_ratings[app->appstreamId()];
 }
 
-void OdrsReviewsBackend::submitUsefulness(Review *r, bool useful)
+void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
 {
-    Q_UNUSED(r)
-    Q_UNUSED(useful)
+    QVariantMap map {{QStringLiteral("app_id"), review->applicationName()},
+                     {QStringLiteral("user_skey"), review->getMetadata(QStringLiteral("ODRS::user_skey")).toString()},
+                     {QStringLiteral("user_hash"), userHash()},
+                     {QStringLiteral("distro"), osName()},
+                     {QStringLiteral("review_id"), review->id()}};
+
+    QJsonDocument document(QJsonObject::fromVariantMap(map));
+
+    QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
+    QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/%1").arg(useful ? QStringLiteral("upvote") : QStringLiteral("downvote"))));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
+    request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
+
+    accessManager->post(request, document.toJson());
+    connect(accessManager, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::usefulnessSubmitted);
+}
+
+void OdrsReviewsBackend::usefulnessSubmitted(QNetworkReply *reply)
+{
+    if (reply->error() == QNetworkReply::NoError) {
+        qWarning() << "Usefullness submitted";
+    } else {
+        qWarning() << "Failed to submit usefulness: " << reply->errorString();
+    }
 }
 
 void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summary, const QString &description, const QString &rating)
@@ -223,7 +245,6 @@ void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summ
                      {QStringLiteral("rating"), rating.toInt() * 10}};
 
     QJsonDocument document(QJsonObject::fromVariantMap(map));
-    qWarning() << document.toJson();
 
     QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
     QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/submit")));
@@ -296,7 +317,7 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                 const int usefulTotal = review.value(QStringLiteral("karma_down")).toInt() + usefulFavorable;
                 QDateTime dateTime;
                 dateTime.setTime_t(review.value(QStringLiteral("date_created")).toInt());
-                Review *r = new Review(review.value(QStringLiteral("app_name")).toString(), resource->packageName(),
+                Review *r = new Review(review.value(QStringLiteral("app_id")).toString(), resource->packageName(),
                                        review.value(QStringLiteral("locale")).toString(), review.value(QStringLiteral("summary")).toString(),
                                        review.value(QStringLiteral("description")).toString(), review.value(QStringLiteral("user_display")).toString(),
                                        dateTime, true, review.value(QStringLiteral("review_id")).toInt(),
@@ -305,6 +326,8 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                 // We can also receive just a json with app name and user info so filter these out as there is no review
                 if (!r->summary().isEmpty() && !r->reviewText().isEmpty()) {
                     reviewList << r;
+                    // Needed for submitting usefulness
+                    r->addMetadata(QStringLiteral("ODRS::user_skey"), review.value(QStringLiteral("user_skey")).toString());
                 }
 
                 // We should get at least user_skey needed for posting reviews

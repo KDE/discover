@@ -49,13 +49,15 @@ public:
     bool isFetching() const override { return m_isFetching; }
     void submitReview(AbstractResource *, const QString &summary, const QString &description, const QString &rating) override;
     void flagReview(Review *, const QString &, const QString &) override {}
-    void submitUsefulness(Review *, bool) override;
+    void submitUsefulness(Review *review, bool useful) override;
     QStringList appstreamIds() const { return m_ratings.keys(); }
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
     void reviewsFetched(QNetworkReply *reply);
     void reviewSubmitted(QNetworkReply *reply);
+    void usefulnessSubmitted(QNetworkReply *reply);
+
 Q_SIGNALS:
     void ratingsReady();
 
