@@ -60,7 +60,7 @@ Kirigami.ApplicationWindow
     TopLevelPageData {
         id: updateAction
         iconName: enabled ? "update-low" : "update-none"
-        text: !enabled ? i18n("No Updates") : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
+        text: !enabled ? (ResourcesModel.isFetching ? i18n("Checking for updates...") : i18n("No Updates") ) : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
         enabled: ResourcesModel.updatesCount>0
         component: topUpdateComp
         objectName: "update"

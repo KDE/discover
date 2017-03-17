@@ -22,6 +22,7 @@
 
 #include "AbstractResource.h"
 #include "resources/AbstractResourcesBackend.h"
+#include "resources/AbstractBackendUpdater.h"
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/Transaction.h>
@@ -100,6 +101,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     connect(backend, &AbstractResourcesBackend::updatesCountChanged, this, &ResourcesModel::updatesCountChanged);
     connect(backend, &AbstractResourcesBackend::resourceRemoved, this, &ResourcesModel::resourceRemoved);
     connect(backend, &AbstractResourcesBackend::passiveMessage, this, &ResourcesModel::passiveMessage);
+    connect(backend->backendUpdater(), &AbstractBackendUpdater::progressingChanged, this, &ResourcesModel::fetchingChanged);
 
     if(m_initializingBackends==0)
         emit allInitialized();
@@ -208,8 +210,13 @@ void ResourcesModel::integrateActions(KActionCollection* w)
 bool ResourcesModel::isFetching() const
 {
     foreach(AbstractResourcesBackend* b, m_backends) {
-        if(b->isFetching())
+        // isFetching should sort of be enough. However, sometimes the backend itself
+        // will still be operating on things, which from a model point of view would
+        // still mean something going on. So, interpret that as fetching as well, for
+        // the purposes of this property.
+        if(b->isFetching() || (b->backendUpdater() && b->backendUpdater()->isProgressing())) {
             return true;
+        }
     }
     return false;
 }

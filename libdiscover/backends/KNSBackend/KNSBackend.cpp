@@ -107,7 +107,8 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
 
     m_engine = new KNSCore::Engine(this);
     m_engine->init(m_name);
-    connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &error) { qWarning() << "kns error" << objectName() << error; });
+    // Setting setFetching to false when we get an error ensures we don't end up in an eternally-fetching state
+    connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &error) { this->setFetching(false); qWarning() << "kns error" << objectName() << error; });
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged);
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
