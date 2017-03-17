@@ -44,3 +44,9 @@ QString LocalFilePKResource::comment()
 {
     return m_path.toLocalFile();
 }
+
+void LocalFilePKResource::markInstalled()
+{
+    m_state = AbstractResource::Installed;
+    Q_EMIT stateChanged();
+}

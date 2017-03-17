@@ -69,7 +69,13 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
     m_newPackageStates.clear();
 
     if (m_apps.size() == 1 && qobject_cast<LocalFilePKResource*>(m_apps.at(0))) {
-        m_trans = PackageKit::Daemon::installFile(QUrl(m_apps.at(0)->packageName()).toLocalFile(), flags);
+        auto app = qobject_cast<LocalFilePKResource*>(m_apps.at(0));
+        m_trans = PackageKit::Daemon::installFile(QUrl(app->packageName()).toLocalFile(), flags);
+        connect(m_trans.data(), &PackageKit::Transaction::finished, this, [app](PackageKit::Transaction::Exit status) {
+            if (status == PackageKit::Transaction::ExitSuccess) {
+                app->markInstalled();
+            }
+        });
     } else switch (role()) {
         case Transaction::ChangeAddonsRole:
         case Transaction::InstallRole:
