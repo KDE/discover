@@ -63,14 +63,13 @@ public:
 public Q_SLOTS:
     void checkForUpdates();
 private Q_SLOTS:
+    void onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata);
     void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);
     void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
 
 private:
     void announceRatingsReady();
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
-    // TODO needed for fetching metadata and size, remove once both are moved to separated job
-    FlatpakRef * createFakeRef(FlatpakResource *resource);
     FlatpakRemote * getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
     FlatpakInstalledRef * getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     FlatpakResource * getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref);
@@ -92,6 +91,7 @@ private:
     bool updateAppMetadata(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     bool updateAppMetadata(FlatpakResource *resource, const QByteArray &data);
     bool updateAppSize(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
+    bool updateAppSizeFromRemote(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     void updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
 
     void setFetching(bool fetching);

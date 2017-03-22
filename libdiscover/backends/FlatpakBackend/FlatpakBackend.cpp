@@ -110,21 +110,6 @@ void FlatpakBackend::announceRatingsReady()
     }
 }
 
-FlatpakRef * FlatpakBackend::createFakeRef(FlatpakResource *resource)
-{
-    FlatpakRef *ref = nullptr;
-    g_autoptr(GError) localError = nullptr;
-
-    const QString id = QString::fromUtf8("%1/%2/%3/%4").arg(resource->typeAsString()).arg(resource->flatpakName()).arg(resource->arch()).arg(resource->branch());
-    ref = flatpak_ref_parse(id.toStdString().c_str(), &localError);
-
-    if (!ref) {
-        qWarning() << "Failed to create fake ref: " << localError->message;
-    }
-
-    return ref;
-}
-
 FlatpakRemote * FlatpakBackend::getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const
 {
     auto remotes = flatpak_installation_list_remotes(installation, m_cancellable, nullptr);
@@ -429,12 +414,7 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
     auto installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
     updateAppState(installation, resource);
 
-    if (resource->type() == FlatpakResource::DesktopApp) {
-        if (!updateAppMetadata(installation, resource)) {
-            qWarning() << "Failed to update" << resource->name() << "with installed metadata";
-        }
-    }
-
+    // This will update also metadata (required runtime)
     updateAppSize(installation, resource);
 
     connect(resource, &FlatpakResource::stateChanged, this, &FlatpakBackend::updatesCountChanged);
@@ -763,7 +743,6 @@ void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRe
 bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation, FlatpakResource *resource)
 {
     QByteArray metadataContent;
-    g_autoptr(GBytes) data = nullptr;
     g_autoptr(GFile) installationPath = nullptr;
     g_autoptr(GError) localError = nullptr;
 
@@ -779,35 +758,31 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
         if (file.open(QFile::ReadOnly | QFile::Text)) {
             metadataContent = file.readAll();
         }
+
+        if (metadataContent.isEmpty()) {
+            qWarning() << "Failed to get metadata file";
+            return false;
+        }
+
+        return updateAppMetadata(resource, metadataContent);
     } else {
-        g_autoptr(FlatpakRef) fakeRef = nullptr;
-
-        if (resource->origin().isEmpty()) {
-            qWarning() << "Failed to get metadata file because of missing origin";
-            return false;
-        }
-
-        fakeRef = createFakeRef(resource);
-        if (!fakeRef) {
-            return false;
-        }
-
-        data = flatpak_installation_fetch_remote_metadata_sync(flatpakInstallation, resource->origin().toStdString().c_str(), fakeRef, m_cancellable, &localError);
-        if (data) {
-            gsize len = 0;
-            metadataContent = QByteArray((char *)g_bytes_get_data(data, &len));
-        } else {
-            qWarning() << "Failed to get metadata file: " << localError->message;
-            return false;
-        }
-    }
-
-    if (metadataContent.isEmpty()) {
-        qWarning() << "Failed to get metadata file";
+        FlatpakFetchDataJob *job = new FlatpakFetchDataJob(flatpakInstallation, resource, FlatpakFetchDataJob::FetchMetadata);
+        connect(job, &FlatpakFetchDataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
+        connect(job, &FlatpakFetchDataJob::jobFetchMetadataFinished, this, &FlatpakBackend::onFetchMetadataFinished);
+        job->start();
+        // Return false to indicate we cannot continue (right now used only in updateAppSize())
         return false;
     }
+}
 
-    return updateAppMetadata(resource, metadataContent);
+void FlatpakBackend::onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata)
+{
+    updateAppMetadata(resource, metadata);
+
+    // Right now we attempt to update metadata for calculating the size so call updateSizeFromRemote()
+    // as it's what we want. In future if there are other reason to update metadata we will need to somehow
+    // distinguish betwen these calls
+    updateAppSizeFromRemote(flatpakInstallation, resource);
 }
 
 bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QByteArray &data)
@@ -855,11 +830,15 @@ bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, Fla
     // Check if we know the needed runtime which is needed for calculating the size
     if (resource->runtime().isEmpty()) {
         if (!updateAppMetadata(flatpakInstallation, resource)) {
-            qWarning() << "Failed to get runtime for " << resource->name() << " needed for calculating of size";
             return false;
         }
     }
 
+    return updateAppSizeFromRemote(flatpakInstallation, resource);
+}
+
+bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
+{
     // Calculate the runtime size
     FlatpakResource *runtime = nullptr;
     if (resource->state() == AbstractResource::None && resource->type() == FlatpakResource::DesktopApp) {

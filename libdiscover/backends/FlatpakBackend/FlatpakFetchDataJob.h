@@ -48,6 +48,7 @@ public:
     void run() override;
 
 Q_SIGNALS:
+    void jobFetchMetadataFinished(FlatpakInstallation *installation, FlatpakResource *resource, const QByteArray &metadata);
     void jobFetchSizeFinished(FlatpakResource *resource, int downloadSize, int installedSize);
     void jobFetchUpdatesFinished(FlatpakInstallation *installation, GPtrArray *updates);
 

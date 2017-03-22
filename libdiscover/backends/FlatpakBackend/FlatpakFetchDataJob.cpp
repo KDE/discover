@@ -52,7 +52,35 @@ void FlatpakFetchDataJob::run()
     g_autoptr(GError) localError = nullptr;
 
     if (m_kind == FetchMetadata) {
-        // TODO
+        QByteArray metadataContent;
+        g_autoptr(GBytes) data = nullptr;
+        g_autoptr(FlatpakRef) fakeRef = nullptr;
+
+        if (m_app->origin().isEmpty()) {
+            qWarning() << "Failed to get metadata file because of missing origin";
+            return;
+        }
+
+        fakeRef = createFakeRef(m_app);
+        if (!fakeRef) {
+            return;
+        }
+
+        data = flatpak_installation_fetch_remote_metadata_sync(m_installation, m_app->origin().toStdString().c_str(), fakeRef, m_cancellable, &localError);
+        if (data) {
+            gsize len = 0;
+            metadataContent = QByteArray((char *)g_bytes_get_data(data, &len));
+        } else {
+            qWarning() << "Failed to get metadata file: " << localError->message;
+            return;
+        }
+
+        if (metadataContent.isEmpty()) {
+            qWarning() << "Failed to get metadata file: empty metadata";
+            return;
+        }
+
+        Q_EMIT jobFetchMetadataFinished(m_installation, m_app, metadataContent);
     } else if (m_kind == FetchSize) {
         guint64 downloadSize = 0;
         guint64 installedSize = 0;
