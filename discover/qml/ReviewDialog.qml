@@ -29,16 +29,24 @@ Kirigami.OverlaySheet
             id: summaryInput
             Layout.fillWidth: true
             placeholderText: i18n("Short summary...")
+            validator: RegExpValidator { regExp: /.{3,70}/ }
         }
 
         TextArea {
             id: reviewInput
+            property bool acceptableInput: false
             Layout.fillWidth: true
             Layout.fillHeight: true
+
+            onLengthChanged: {
+                acceptableInput = length >= 15 && length < 3000
+            }
         }
 
         Button {
+            id: acceptButton
             Layout.alignment: Qt.AlignRight
+            enabled: summaryInput.acceptableInput && reviewInput.acceptableInput
             text: i18n("Accept")
             onClicked: {
                 reviewDialog.accepted()
