@@ -57,8 +57,8 @@ OdrsReviewsBackend::OdrsReviewsBackend(AbstractResourcesBackend *parent)
 
     if (QFileInfo::exists(fileUrl.toLocalFile())) {
         QFileInfo file(fileUrl.toLocalFile());
-        // Refresh the cached ratings if they are older than 30 minutes
-        if (file.lastModified().msecsTo(QDateTime::currentDateTime()) < 1000 * 60 * 30) {
+        // Refresh the cached ratings if they are older than one day
+        if (file.lastModified().msecsTo(QDateTime::currentDateTime()) > 1000 * 60 * 60 * 24) {
             fetchRatings = true;
         }
     } else {
