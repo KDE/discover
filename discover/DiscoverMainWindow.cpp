@@ -23,6 +23,7 @@
 #include "IconColors.h"
 #include "UnityLauncher.h"
 #include "FeaturedModel.h"
+#include "CachedNetworkAccessManager.h"
 
 // Qt includes
 #include <QAction>
@@ -92,7 +93,7 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     KDeclarative::KDeclarative kdeclarative;
     kdeclarative.setDeclarativeEngine(m_engine);
     kdeclarative.setupBindings();
-    
+
     qmlRegisterType<UnityLauncher>("org.kde.discover.app", 1, 0, "UnityLauncher");
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
     qmlRegisterType<IconColors>("org.kde.discover.app", 1, 0, "IconColors");
@@ -108,8 +109,10 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     qmlRegisterType<QAction>();
     qmlRegisterUncreatableType<DiscoverMainWindow>("org.kde.discover.app", 1, 0, "DiscoverMainWindow", QStringLiteral("don't do that"));
     setupActions();
-    
+
     //Here we set up a cache for the screenshots
+    CachedNetworkAccessManagerFactory *networkAccessManagerFactory = new CachedNetworkAccessManagerFactory;
+    m_engine->setNetworkAccessManagerFactory(networkAccessManagerFactory);
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
 
     connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverMainWindow::integrateObject);
@@ -144,7 +147,7 @@ void DiscoverMainWindow::openMode(const QString& _mode)
 {
     if(!modes().contains(_mode))
         qWarning() << "unknown mode" << _mode;
-    
+
     QString mode = _mode;
     mode[0] = mode[0].toUpper();
 
