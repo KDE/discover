@@ -108,7 +108,16 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     m_engine = new KNSCore::Engine(this);
     m_engine->init(m_name);
     // Setting setFetching to false when we get an error ensures we don't end up in an eternally-fetching state
-    connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &error) { this->setFetching(false); qWarning() << "kns error" << objectName() << error; });
+    connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &error) {
+        if(error == QLatin1Literal("All categories are missing")) {
+            markInvalid(error);
+        }
+        m_responsePending = false;
+        Q_EMIT searchFinished();
+        Q_EMIT availableForQueries();
+        this->setFetching(false);
+        qWarning() << "kns error" << objectName() << error;
+    });
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged);
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
@@ -188,7 +197,7 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
         setFetching(false);
         return;
     }
-//     qDebug() << "received" << this << m_page << m_resourcesByName.count();
+//     qDebug() << "received" << objectName() << this << m_page << m_resourcesByName.count();
     if (!m_responsePending) {
         ++m_page;
         m_engine->requestData(m_page, 100);
