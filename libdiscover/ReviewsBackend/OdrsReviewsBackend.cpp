@@ -31,6 +31,7 @@
 #include <KUser>
 
 #include <QCryptographicHash>
+#include <QDir>
 #include <QDebug>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -48,7 +49,11 @@ OdrsReviewsBackend::OdrsReviewsBackend(AbstractResourcesBackend *parent)
 {
     bool fetchRatings = false;
     const QUrl ratingsUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/ratings"));
-    const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings"));
+    const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings/ratings"));
+    const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
+
+    // Create $HOME/.cache/discover/ratings folder
+    cacheDir.mkdir(QStringLiteral("ratings"));
 
     if (QFileInfo::exists(fileUrl.toLocalFile())) {
         QFileInfo file(fileUrl.toLocalFile());
@@ -279,7 +284,7 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
 
 void OdrsReviewsBackend::parseRatings()
 {
-    QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings"));
+    QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings/ratings"));
     if (ratingsDocument.open(QIODevice::ReadOnly)) {
         QJsonDocument jsonDocument = QJsonDocument::fromJson(ratingsDocument.readAll());
         QJsonObject jsonObject = jsonDocument.object();
