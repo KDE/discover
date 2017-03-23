@@ -31,6 +31,7 @@
 #include <KFormat>
 #include <KLocalizedString>
 
+#include <QDir>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QIcon>
@@ -55,9 +56,12 @@ FlatpakResource::FlatpakResource(AppStream::Component *component, FlatpakBackend
     if (!icons.isEmpty()) {
         foreach (const AppStream::Icon &icon, icons) {
             if (icon.kind() == AppStream::Icon::KindRemote) {
-                const QString fileName = QStringLiteral("%1/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation))
-                                                                .arg(icon.url().fileName());
+                const QString fileName = QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation))
+                                                                      .arg(icon.url().fileName());
                 if (!QFileInfo::exists(fileName)) {
+                    const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
+                    // Create $HOME/.cache/discover/icons folder
+                    cacheDir.mkdir(QStringLiteral("icons"));
                     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
                     connect(manager, &QNetworkAccessManager::finished, [this, icon, fileName, manager] (QNetworkReply *reply) {
                         if (reply->error() == QNetworkReply::NoError) {
@@ -189,7 +193,7 @@ QVariant FlatpakResource::icon() const
                 stock += icon.name();
                 break;
             case AppStream::Icon::KindRemote:
-                const QString fileName = QStringLiteral("%1/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation))
+                const QString fileName = QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation))
                                                                 .arg(icon.url().fileName());
                 if (QFileInfo::exists(fileName)) {
                     ret.addFile(fileName);
