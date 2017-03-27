@@ -1,5 +1,4 @@
 /***************************************************************************
- *   Copyright © 2013 Lukas Appelhans <l.appelhans@gmx.de>                 *
  *   Copyright © 2017 Jan Grulich <jgrulich@redhat.com>                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
@@ -18,42 +17,39 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
-#ifndef FLATPAKNOTIFIER_H
-#define FLATPAKNOTIFIER_H
 
-#include <BackendNotifierModule.h>
+#include "FlatpakFetchUpdatesJob.h"
 
-extern "C" {
-#include <flatpak.h>
+#include <QDebug>
+
+FlatpakFetchUpdatesJob::FlatpakFetchUpdatesJob(FlatpakInstallation *installation)
+    : QThread()
+    , m_installation(installation)
+{
+    m_cancellable = g_cancellable_new();
 }
 
-class FlatpakNotifier : public BackendNotifierModule
+FlatpakFetchUpdatesJob::~FlatpakFetchUpdatesJob()
 {
-Q_OBJECT
-Q_PLUGIN_METADATA(IID "org.kde.discover.BackendNotifierModule")
-Q_INTERFACES(BackendNotifierModule)
-public:
-    explicit FlatpakNotifier(QObject* parent = nullptr);
-    ~FlatpakNotifier() override;
+    g_object_unref(m_cancellable);
+}
 
-    bool isSystemUpToDate() const override;
-    void recheckSystemUpdateNeeded() override;
-    uint securityUpdatesCount() override;
-    uint updatesCount() override;
+void FlatpakFetchUpdatesJob::cancel()
+{
+    g_cancellable_cancel(m_cancellable);
+}
 
-private Q_SLOTS:
-    void doDailyCheck();
-    void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
+void FlatpakFetchUpdatesJob::run()
+{
+    g_autoptr(GError) localError = nullptr;
 
-private:
-    void loadRemoteUpdates(FlatpakInstallation *flatpakInstallation);
-    bool setupFlatpakInstallations(GError **error);
+    GPtrArray *refs = nullptr;
+    refs = flatpak_installation_list_installed_refs_for_update(m_installation, m_cancellable, &localError);
+    if (!refs) {
+        qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
+        return;
+    }
 
-    uint m_userInstallationUpdates;
-    uint m_systemInstallationUpdates;
-    GCancellable *m_cancellable;
-    FlatpakInstallation *m_flatpakInstallationUser = nullptr;
-    FlatpakInstallation *m_flatpakInstallationSystem = nullptr;
-};
+    Q_EMIT jobFetchUpdatesFinished(m_installation, refs);
+}
 
-#endif

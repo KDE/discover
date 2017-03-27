@@ -1,5 +1,4 @@
 /***************************************************************************
- *   Copyright © 2013 Lukas Appelhans <l.appelhans@gmx.de>                 *
  *   Copyright © 2017 Jan Grulich <jgrulich@redhat.com>                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
@@ -18,42 +17,36 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
-#ifndef FLATPAKNOTIFIER_H
-#define FLATPAKNOTIFIER_H
 
-#include <BackendNotifierModule.h>
+#ifndef FLATPAKFETCHUPDATESJOB_H
+#define FLATPAKFETCHUPDATESJOB_H
 
 extern "C" {
 #include <flatpak.h>
+#include <gio/gio.h>
+#include <glib.h>
 }
 
-class FlatpakNotifier : public BackendNotifierModule
+#include <QThread>
+
+class FlatpakFetchUpdatesJob : public QThread
 {
-Q_OBJECT
-Q_PLUGIN_METADATA(IID "org.kde.discover.BackendNotifierModule")
-Q_INTERFACES(BackendNotifierModule)
+    Q_OBJECT
 public:
-    explicit FlatpakNotifier(QObject* parent = nullptr);
-    ~FlatpakNotifier() override;
+    FlatpakFetchUpdatesJob(FlatpakInstallation *installation);
+    ~FlatpakFetchUpdatesJob();
 
-    bool isSystemUpToDate() const override;
-    void recheckSystemUpdateNeeded() override;
-    uint securityUpdatesCount() override;
-    uint updatesCount() override;
+    void cancel();
+    void run() override;
 
-private Q_SLOTS:
-    void doDailyCheck();
-    void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
+Q_SIGNALS:
+    void jobFetchUpdatesFinished(FlatpakInstallation *installation, GPtrArray *updates);
 
 private:
-    void loadRemoteUpdates(FlatpakInstallation *flatpakInstallation);
-    bool setupFlatpakInstallations(GError **error);
-
-    uint m_userInstallationUpdates;
-    uint m_systemInstallationUpdates;
     GCancellable *m_cancellable;
-    FlatpakInstallation *m_flatpakInstallationUser = nullptr;
-    FlatpakInstallation *m_flatpakInstallationSystem = nullptr;
+    FlatpakInstallation *m_installation;
 };
 
-#endif
+#endif // FLATPAKFETCHUPDATESJOB_H
+
+

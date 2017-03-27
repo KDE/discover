@@ -21,6 +21,7 @@
 
 #include "FlatpakBackend.h"
 #include "FlatpakFetchDataJob.h"
+#include "FlatpakFetchUpdatesJob.h"
 #include "FlatpakResource.h"
 #include "FlatpakSourcesBackend.h"
 #include "FlatpakTransaction.h"
@@ -651,9 +652,9 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
 
 void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation *flatpakInstallation)
 {
-    FlatpakFetchDataJob *job = new FlatpakFetchDataJob(flatpakInstallation, FlatpakFetchDataJob::FetchUpdates);
-    connect(job, &FlatpakFetchDataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
-    connect(job, &FlatpakFetchDataJob::jobFetchUpdatesFinished, this, &FlatpakBackend::onFetchUpdatesFinished);
+    FlatpakFetchUpdatesJob *job = new FlatpakFetchUpdatesJob(flatpakInstallation);
+    connect(job, &FlatpakFetchUpdatesJob::finished, job, &FlatpakFetchUpdatesJob::deleteLater);
+    connect(job, &FlatpakFetchUpdatesJob::jobFetchUpdatesFinished, this, &FlatpakBackend::onFetchUpdatesFinished);
     job->start();
 }
 

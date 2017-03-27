@@ -23,11 +23,6 @@
 
 #include <QDebug>
 
-FlatpakFetchDataJob::FlatpakFetchDataJob(FlatpakInstallation *installation, FlatpakFetchDataJob::DataKind kind)
-    : FlatpakFetchDataJob(installation, nullptr, kind)
-{
-}
-
 FlatpakFetchDataJob::FlatpakFetchDataJob(FlatpakInstallation *installation, FlatpakResource *app, FlatpakFetchDataJob::DataKind kind)
     : QThread()
     , m_app(app)
@@ -98,15 +93,6 @@ void FlatpakFetchDataJob::run()
         }
 
         Q_EMIT jobFetchSizeFinished(m_app, downloadSize, installedSize);
-    } else if (m_kind == FetchUpdates) {
-        GPtrArray *refs = nullptr;
-        refs = flatpak_installation_list_installed_refs_for_update(m_installation, m_cancellable, &localError);
-        if (!refs) {
-            qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
-            return;
-        }
-
-        Q_EMIT jobFetchUpdatesFinished(m_installation, refs);
     }
 }
 

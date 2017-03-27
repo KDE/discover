@@ -37,10 +37,8 @@ public:
     enum DataKind {
         FetchMetadata = 0,
         FetchSize = 1,
-        FetchUpdates = 2
     };
 
-    FlatpakFetchDataJob(FlatpakInstallation *installation, DataKind kind);
     FlatpakFetchDataJob(FlatpakInstallation *installation, FlatpakResource *app, DataKind kind);
     ~FlatpakFetchDataJob();
 
@@ -50,7 +48,6 @@ public:
 Q_SIGNALS:
     void jobFetchMetadataFinished(FlatpakInstallation *installation, FlatpakResource *resource, const QByteArray &metadata);
     void jobFetchSizeFinished(FlatpakResource *resource, int downloadSize, int installedSize);
-    void jobFetchUpdatesFinished(FlatpakInstallation *installation, GPtrArray *updates);
 
 private:
     FlatpakRef * createFakeRef(FlatpakResource *resource);
