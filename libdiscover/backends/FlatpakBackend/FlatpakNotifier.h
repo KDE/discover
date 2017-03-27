@@ -41,8 +41,8 @@ public:
     uint securityUpdatesCount() override;
     uint updatesCount() override;
 
-private Q_SLOTS:
-    void doDailyCheck();
+public Q_SLOTS:
+    void checkUpdates();
     void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
 
 private:
@@ -52,6 +52,8 @@ private:
     uint m_userInstallationUpdates;
     uint m_systemInstallationUpdates;
     GCancellable *m_cancellable;
+    GFileMonitor *m_userInstallationMonitor = nullptr;
+    GFileMonitor *m_systemInstallationMonitor = nullptr;
     FlatpakInstallation *m_flatpakInstallationUser = nullptr;
     FlatpakInstallation *m_flatpakInstallationSystem = nullptr;
 };

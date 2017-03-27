@@ -27,6 +27,21 @@
 #include <QDebug>
 #include <QTimer>
 
+static void installationChanged(GFileMonitor *monitor, GFile *child, GFile *other_file, GFileMonitorEvent event_type, gpointer self)
+{
+    Q_UNUSED(monitor);
+    Q_UNUSED(child);
+    Q_UNUSED(other_file);
+    Q_UNUSED(event_type);
+
+    FlatpakNotifier *notifier = (FlatpakNotifier*)self;
+    if (!notifier) {
+        return;
+    }
+
+    notifier->checkUpdates();
+}
+
 FlatpakNotifier::FlatpakNotifier(QObject* parent)
     : BackendNotifierModule(parent)
     , m_userInstallationUpdates(0)
@@ -34,18 +49,17 @@ FlatpakNotifier::FlatpakNotifier(QObject* parent)
 {
     m_cancellable = g_cancellable_new();
 
-    doDailyCheck();
+    checkUpdates();
 
     QTimer *dailyCheck = new QTimer(this);
     dailyCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
-    connect(dailyCheck, &QTimer::timeout, this, &FlatpakNotifier::doDailyCheck);
-
-    // TODO install GFileMonitor and watch every change in flatpak installations so we re-check
-    // updates on app removal etc.
+    connect(dailyCheck, &QTimer::timeout, this, &FlatpakNotifier::checkUpdates);
 }
 
 FlatpakNotifier::~FlatpakNotifier()
 {
+    g_object_unref(m_userInstallationMonitor);
+    g_object_unref(m_systemInstallationMonitor);
     g_object_unref(m_flatpakInstallationSystem);
     g_object_unref(m_flatpakInstallationUser);
     g_object_unref(m_cancellable);
@@ -53,9 +67,7 @@ FlatpakNotifier::~FlatpakNotifier()
 
 void FlatpakNotifier::recheckSystemUpdateNeeded()
 {
-    // Load updates from remote repositories
-    loadRemoteUpdates(m_flatpakInstallationSystem);
-    loadRemoteUpdates(m_flatpakInstallationUser);
+    checkUpdates();
 }
 
 bool FlatpakNotifier::isSystemUpToDate() const
@@ -73,7 +85,7 @@ uint FlatpakNotifier::updatesCount()
     return m_systemInstallationUpdates + m_userInstallationUpdates;
 }
 
-void FlatpakNotifier::doDailyCheck()
+void FlatpakNotifier::checkUpdates()
 {
     g_autoptr(GError) error = nullptr;
 
@@ -81,7 +93,9 @@ void FlatpakNotifier::doDailyCheck()
     if (!setupFlatpakInstallations(&error)) {
         qWarning() << "Failed to setup flatpak installations: " << error->message;
     } else {
-        recheckSystemUpdateNeeded();
+        // Load updates from remote repositories
+        loadRemoteUpdates(m_flatpakInstallationSystem);
+        loadRemoteUpdates(m_flatpakInstallationUser);
     }
 }
 
@@ -139,6 +153,24 @@ bool FlatpakNotifier::setupFlatpakInstallations(GError **error)
         if (!m_flatpakInstallationUser) {
             return false;
         }
+    }
+
+    if (!m_systemInstallationMonitor) {
+        m_systemInstallationMonitor = flatpak_installation_create_monitor(m_flatpakInstallationSystem, m_cancellable, error);
+        if (!m_systemInstallationMonitor) {
+            return false;
+        }
+
+        g_signal_connect(m_systemInstallationMonitor, "changed", G_CALLBACK(installationChanged), this);
+    }
+
+    if (!m_userInstallationMonitor) {
+        m_userInstallationMonitor = flatpak_installation_create_monitor(m_flatpakInstallationUser, m_cancellable, error);
+        if (!m_userInstallationMonitor) {
+            return false;
+        }
+
+        g_signal_connect(m_userInstallationMonitor, "changed", G_CALLBACK(installationChanged), this);
     }
 
     return true;
