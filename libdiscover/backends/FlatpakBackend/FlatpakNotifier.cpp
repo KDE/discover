@@ -70,8 +70,6 @@ uint FlatpakNotifier::securityUpdatesCount()
 
 uint FlatpakNotifier::updatesCount()
 {
-    qWarning() << "Updates: ";
-    qWarning() << m_systemInstallationUpdates << " - " << m_userInstallationUpdates;
     return m_systemInstallationUpdates + m_userInstallationUpdates;
 }
 

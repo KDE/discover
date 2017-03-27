@@ -195,6 +195,7 @@ FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource)
     }
 
     const QString runtimeId = QStringLiteral("runtime/") + runtimeInfo.at(0) + QLatin1Char('/') + runtimeInfo.at(2);
+
     foreach (const QString &id, m_resources.keys()) {
         if (id.endsWith(runtimeId)) {
             runtime = m_resources.value(id);
