@@ -21,7 +21,7 @@ if(BUILD_DummyBackend)
     add_subdirectory(DummyBackend)
 endif()
 
-option(BUILD_FlatpakBackend "Build Flatpak support. Still a proof of concept" "OFF")
+option(BUILD_FlatpakBackend "Build Flatpak support. Still a proof of concept" "ON")
 if(FLATPAK_FOUND AND AppStreamQt_FOUND AND APPSTREAM_FOUND AND BUILD_FlatpakBackend)
     add_subdirectory(FlatpakBackend)
 endif()
