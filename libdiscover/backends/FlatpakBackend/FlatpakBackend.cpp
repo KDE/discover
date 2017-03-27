@@ -188,7 +188,7 @@ FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *fla
 FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource)
 {
     FlatpakResource *runtime = nullptr;
-    const auto runtimeInfo = resource->runtime().splitRef(QLatin1Char('/'));
+    const auto runtimeInfo = resource->runtime().split(QLatin1Char('/'));
 
     if (runtimeInfo.count() != 3) {
         return runtime;
