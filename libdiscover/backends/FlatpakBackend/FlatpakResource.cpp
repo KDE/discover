@@ -511,9 +511,11 @@ void FlatpakResource::setScope(FlatpakResource::Scope scope)
 
 void FlatpakResource::setState(AbstractResource::State state)
 {
-    m_state = state;
+    if (m_state != state) {
+        m_state = state;
 
-    emit stateChanged();
+        Q_EMIT stateChanged();
+    }
 }
 
 void FlatpakResource::setType(FlatpakResource::ResourceType type)
