@@ -878,6 +878,10 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
         FlatpakFetchDataJob *job = new FlatpakFetchDataJob(flatpakInstallation, resource, FlatpakFetchDataJob::FetchSize);
         connect(job, &FlatpakFetchDataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
         connect(job, &FlatpakFetchDataJob::jobFetchSizeFinished, this, &FlatpakBackend::onFetchSizeFinished);
+        connect(job, &FlatpakFetchDataJob::jobFetchSizeFailed, [resource] () {
+            resource->setDownloadSize(-2);
+            resource->setInstalledSize(-2);
+        });
         job->start();
     }
 
@@ -928,6 +932,7 @@ int FlatpakBackend::updatesCount() const
 ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     QVector<AbstractResource*> ret;
+
     foreach(AbstractResource* r, m_resources) {
         if (qobject_cast<FlatpakResource*>(r)->type() == FlatpakResource::Runtime && filter.state != AbstractResource::Upgradeable) {
             continue;

@@ -45,8 +45,8 @@
 FlatpakResource::FlatpakResource(AppStream::Component *component, FlatpakBackend *parent)
     : AbstractResource(parent)
     , m_appdata(component)
-    , m_downloadSize(0)
-    , m_installedSize(0)
+    , m_downloadSize(-1)
+    , m_installedSize(-1)
     , m_scope(FlatpakResource::System)
     , m_state(AbstractResource::None)
     , m_type(FlatpakResource::DesktopApp)
@@ -352,9 +352,21 @@ QString FlatpakResource::sizeDescription()
 {
     KFormat f;
     if (!isInstalled() || canUpgrade()) {
-        return i18nc("@info app size", "%1 to download, %2 on disk", f.formatByteSize(downloadSize()), f.formatByteSize(installedSize()));
+        if (downloadSize() == -1 || installedSize() == -1) {
+            return i18n("Retrieving size information");
+        } else if (downloadSize() == -2 || installedSize() == -2) {
+            return i18n("Unknown size");
+        } else {
+            return i18nc("@info app size", "%1 to download, %2 on disk", f.formatByteSize(downloadSize()), f.formatByteSize(installedSize()));
+        }
     } else {
-        return i18nc("@info app size", "%1 on disk", f.formatByteSize(installedSize()));
+        if (installedSize() == -1) {
+            return i18n("Retrieving size information");
+        } else if (installedSize() == -2) {
+            return i18n("Unknown size");
+        } else {
+            return i18nc("@info app size", "%1 on disk", f.formatByteSize(installedSize()));
+        }
     }
 }
 

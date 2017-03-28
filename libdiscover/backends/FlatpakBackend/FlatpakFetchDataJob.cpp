@@ -53,11 +53,13 @@ void FlatpakFetchDataJob::run()
 
         if (m_app->origin().isEmpty()) {
             qWarning() << "Failed to get metadata file because of missing origin";
+            Q_EMIT jobFetchMetadataFailed();
             return;
         }
 
         fakeRef = createFakeRef(m_app);
         if (!fakeRef) {
+            Q_EMIT jobFetchMetadataFailed();
             return;
         }
 
@@ -67,11 +69,13 @@ void FlatpakFetchDataJob::run()
             metadataContent = QByteArray((char *)g_bytes_get_data(data, &len));
         } else {
             qWarning() << "Failed to get metadata file: " << localError->message;
+            Q_EMIT jobFetchMetadataFailed();
             return;
         }
 
         if (metadataContent.isEmpty()) {
             qWarning() << "Failed to get metadata file: empty metadata";
+            Q_EMIT jobFetchMetadataFailed();
             return;
         }
 
@@ -83,12 +87,14 @@ void FlatpakFetchDataJob::run()
 
         ref = createFakeRef(m_app);
         if (!ref) {
+            Q_EMIT jobFetchSizeFailed();
             return;
         }
 
         if (!flatpak_installation_fetch_remote_size_sync(m_installation, m_app->origin().toStdString().c_str(),
                                                          ref, &downloadSize, &installedSize, m_cancellable, &localError)) {
             qWarning() << "Failed to get remote size of " << m_app->name() << ": " << localError->message;
+            Q_EMIT jobFetchSizeFailed();
             return;
         }
 
