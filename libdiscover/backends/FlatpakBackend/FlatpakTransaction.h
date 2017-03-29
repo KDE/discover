@@ -37,14 +37,14 @@ class FlatpakTransaction : public Transaction
 {
 Q_OBJECT
 public:
-    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, Role role);
-    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, FlatpakResource *runtime, Role role);
-    // TODO will be these two ever needed?
-    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, const AddonList &list, Role role);
-    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, FlatpakResource *runtime, const AddonList &list, Role role);
+    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, Role role, bool delayStart = false);
+    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, FlatpakResource *runtime, Role role, bool delayStart = false);
+    // FIXME ignore addons, they are not used in flatpak world (yet)
+
     ~FlatpakTransaction();
 
     void cancel() override;
+    void setRuntime(FlatpakResource *runtime);
 
 public Q_SLOTS:
     void onAppJobFinished(bool success);

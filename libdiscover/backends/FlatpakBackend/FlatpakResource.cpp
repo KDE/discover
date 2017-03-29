@@ -45,8 +45,9 @@
 FlatpakResource::FlatpakResource(AppStream::Component *component, FlatpakBackend *parent)
     : AbstractResource(parent)
     , m_appdata(component)
-    , m_downloadSize(-1)
-    , m_installedSize(-1)
+    , m_downloadSize(0)
+    , m_installedSize(0)
+    , m_propertyStates({{DownloadSize, NotKnownYet}, {InstalledSize, NotKnownYet},{RequiredRuntime, NotKnownYet}})
     , m_scope(FlatpakResource::System)
     , m_state(AbstractResource::None)
     , m_type(FlatpakResource::DesktopApp)
@@ -286,6 +287,11 @@ QString FlatpakResource::packageName() const
     return flatpakName();
 }
 
+FlatpakResource::PropertyState FlatpakResource::propertyState(FlatpakResource::PropertyKind kind) const
+{
+    return m_propertyStates[kind];
+}
+
 QUrl FlatpakResource::resourceFile() const
 {
     return m_resourceFile;
@@ -352,17 +358,17 @@ QString FlatpakResource::sizeDescription()
 {
     KFormat f;
     if (!isInstalled() || canUpgrade()) {
-        if (downloadSize() == -1 || installedSize() == -1) {
+        if (propertyState(DownloadSize) == NotKnownYet || propertyState(InstalledSize) == NotKnownYet) {
             return i18n("Retrieving size information");
-        } else if (downloadSize() == -2 || installedSize() == -2) {
+        } else if (propertyState(DownloadSize) == UnknownOrFailed || propertyState(InstalledSize) == UnknownOrFailed) {
             return i18n("Unknown size");
         } else {
             return i18nc("@info app size", "%1 to download, %2 on disk", f.formatByteSize(downloadSize()), f.formatByteSize(installedSize()));
         }
     } else {
-        if (installedSize() == -1) {
+        if (propertyState(InstalledSize) == NotKnownYet) {
             return i18n("Retrieving size information");
-        } else if (installedSize() == -2) {
+        } else if (propertyState(InstalledSize) == UnknownOrFailed) {
             return i18n("Unknown size");
         } else {
             return i18nc("@info app size", "%1 on disk", f.formatByteSize(installedSize()));
@@ -477,6 +483,9 @@ void FlatpakResource::setCommit(const QString &commit)
 void FlatpakResource::setDownloadSize(int size)
 {
     m_downloadSize = size;
+
+    setPropertyState(DownloadSize, AlreadyKnown);
+
     Q_EMIT sizeChanged();
 }
 
@@ -498,12 +507,22 @@ void FlatpakResource::setIconPath(const QString &path)
 void FlatpakResource::setInstalledSize(int size)
 {
     m_installedSize = size;
+
+    setPropertyState(InstalledSize, AlreadyKnown);
+
     Q_EMIT sizeChanged();
 }
 
 void FlatpakResource::setOrigin(const QString &origin)
 {
     m_origin = origin;
+}
+
+void FlatpakResource::setPropertyState(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state)
+{
+    m_propertyStates[kind] = state;
+
+    Q_EMIT propertyStateChanged(kind, state);
 }
 
 void FlatpakResource::setResourceFile(const QUrl &url)
@@ -514,6 +533,8 @@ void FlatpakResource::setResourceFile(const QUrl &url)
 void FlatpakResource::setRuntime(const QString &runtime)
 {
     m_runtime = runtime;
+
+    setPropertyState(RequiredRuntime, AlreadyKnown);
 }
 
 void FlatpakResource::setScope(FlatpakResource::Scope scope)

@@ -879,8 +879,8 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
         connect(job, &FlatpakFetchDataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
         connect(job, &FlatpakFetchDataJob::jobFetchSizeFinished, this, &FlatpakBackend::onFetchSizeFinished);
         connect(job, &FlatpakFetchDataJob::jobFetchSizeFailed, [resource] () {
-            resource->setDownloadSize(-2);
-            resource->setInstalledSize(-2);
+            resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::UnknownOrFailed);
+            resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::UnknownOrFailed);
         });
         job->start();
     }
@@ -982,6 +982,8 @@ FlatpakInstallation * FlatpakBackend::flatpakInstallationForAppScope(FlatpakReso
 
 void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &addons)
 {
+    Q_UNUSED(addons);
+
     FlatpakResource *resource = qobject_cast<FlatpakResource*>(app);
 
     if (resource->type() == FlatpakResource::Source) {
@@ -997,11 +999,28 @@ void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &
     FlatpakTransaction *transaction = nullptr;
     FlatpakInstallation *installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
 
-    FlatpakResource *runtime = getRuntimeForApp(resource);
-    if (runtime && !runtime->isInstalled()) {
-        transaction = new FlatpakTransaction(installation, resource, runtime, addons, Transaction::InstallRole);
+    if (resource->propertyState(FlatpakResource::RequiredRuntime) == FlatpakResource::NotKnownYet) {
+        transaction = new FlatpakTransaction(installation, resource, Transaction::InstallRole, true);
+        connect(resource, &FlatpakResource::propertyStateChanged, [resource, transaction, this] (FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state) {
+            if (kind != FlatpakResource::RequiredRuntime) {
+                return;
+            }
+
+            if (state == FlatpakResource::AlreadyKnown) {
+                FlatpakResource *runtime = getRuntimeForApp(resource);
+                if (runtime && !runtime->isInstalled()) {
+                    transaction->setRuntime(runtime);
+                }
+            }
+            transaction->start();
+        });
     } else {
-        transaction = new FlatpakTransaction(installation, resource, addons, Transaction::InstallRole);
+        FlatpakResource *runtime = getRuntimeForApp(resource);
+        if (runtime && !runtime->isInstalled()) {
+            transaction = new FlatpakTransaction(installation, resource, runtime, Transaction::InstallRole);
+        } else {
+            transaction = new FlatpakTransaction(installation, resource, Transaction::InstallRole);
+        }
     }
 
     connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {

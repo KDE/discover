@@ -29,23 +29,13 @@
 #include <QDebug>
 #include <QTimer>
 
-FlatpakTransaction::FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, Role role)
-    : FlatpakTransaction(installation, app, nullptr, {}, role)
+FlatpakTransaction::FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, Role role, bool delayStart)
+    : FlatpakTransaction(installation, app, nullptr, role, delayStart)
 {
 }
 
-FlatpakTransaction::FlatpakTransaction(FlatpakInstallation* installation, FlatpakResource *app, FlatpakResource *runtime, Transaction::Role role)
-    : FlatpakTransaction(installation, app, runtime, {}, role)
-{
-}
-
-FlatpakTransaction::FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, const AddonList &addons, Transaction::Role role)
-    : FlatpakTransaction(installation, app, nullptr, addons, role)
-{
-}
-
-FlatpakTransaction::FlatpakTransaction(FlatpakInstallation* installation, FlatpakResource *app, FlatpakResource *runtime, const AddonList &list, Transaction::Role role)
-    : Transaction(app->backend(), app, role, list)
+FlatpakTransaction::FlatpakTransaction(FlatpakInstallation* installation, FlatpakResource *app, FlatpakResource *runtime, Transaction::Role role, bool delayStart)
+    : Transaction(app->backend(), app, role, {})
     , m_appJobFinished(false)
     , m_runtimeJobFinished(false)
     , m_appJobProgress(0)
@@ -58,7 +48,9 @@ FlatpakTransaction::FlatpakTransaction(FlatpakInstallation* installation, Flatpa
 
     TransactionModel::global()->addTransaction(this);
 
-    QTimer::singleShot(0, this, &FlatpakTransaction::start);
+    if (!delayStart) {
+        QTimer::singleShot(0, this, &FlatpakTransaction::start);
+    }
 }
 
 FlatpakTransaction::~FlatpakTransaction()
@@ -72,6 +64,11 @@ void FlatpakTransaction::cancel()
         m_runtimeJob->cancel();
     }
     TransactionModel::global()->cancelTransaction(this);
+}
+
+void FlatpakTransaction::setRuntime(FlatpakResource *runtime)
+{
+    m_runtime = runtime;
 }
 
 void FlatpakTransaction::start()

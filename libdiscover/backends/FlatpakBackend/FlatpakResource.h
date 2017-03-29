@@ -40,6 +40,18 @@ Q_OBJECT
 public:
     explicit FlatpakResource(AppStream::Component *component, FlatpakBackend *parent);
 
+    enum PropertyKind {
+        DownloadSize = 0,
+        InstalledSize,
+        RequiredRuntime
+    };
+
+    enum PropertyState {
+        NotKnownYet = 0,
+        AlreadyKnown,
+        UnknownOrFailed,
+    };
+
     enum ResourceType {
         DesktopApp = 0,
         Runtime,
@@ -91,6 +103,7 @@ public:
     QString name() override;
     QString origin() const override;
     QString packageName() const override;
+    PropertyState propertyState(PropertyKind kind) const;
     QUrl resourceFile() const;
     QString runtime() const;
     QUrl screenshotUrl() override;
@@ -119,6 +132,7 @@ public:
     void setFlatpakFileType(const QString &fileType);
     void setFlatpakName(const QString &name);
     void setOrigin(const QString &origin);
+    void setPropertyState(PropertyKind kind, PropertyState state);
     void setResourceFile(const QUrl &url);
     void setRuntime(const QString &runtime);
     void setScope(Scope scope);
@@ -128,6 +142,9 @@ public:
 //     void setAddonInstalled(const QString& addon, bool installed);
 
     void updateFromRef(FlatpakRef* ref);
+
+Q_SIGNALS:
+    void propertyStateChanged(PropertyKind kind, PropertyState state);
 
 public:
     QList<PackageState> m_addons;
@@ -143,6 +160,7 @@ public:
     QString m_iconPath;
     int m_installedSize;
     QString m_origin;
+    QHash<PropertyKind, PropertyState> m_propertyStates;
     QUrl m_resourceFile;
     QString m_runtime;
     Scope m_scope;
