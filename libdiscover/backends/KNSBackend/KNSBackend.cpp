@@ -200,8 +200,11 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
 //     qDebug() << "received" << objectName() << this << m_page << m_resourcesByName.count();
     if (!m_responsePending) {
         ++m_page;
-        m_engine->requestData(m_page, 100);
+        // We _have_ to set this first. If we do not, we may run into a situation where the
+        // data request will conclude immediately, causing m_responsePending to remain true
+        // for perpetuity as the slots will be called before the function returns.
         m_responsePending = true;
+        m_engine->requestData(m_page, 100);
     } else {
         Q_EMIT availableForQueries();
     }
