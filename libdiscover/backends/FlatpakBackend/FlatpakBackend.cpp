@@ -999,7 +999,7 @@ void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &
     FlatpakTransaction *transaction = nullptr;
     FlatpakInstallation *installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
 
-    if (resource->propertyState(FlatpakResource::RequiredRuntime) == FlatpakResource::NotKnownYet) {
+    if (resource->propertyState(FlatpakResource::RequiredRuntime) == FlatpakResource::NotKnownYet && resource->type() == FlatpakResource::DesktopApp) {
         transaction = new FlatpakTransaction(installation, resource, Transaction::InstallRole, true);
         connect(resource, &FlatpakResource::propertyStateChanged, [resource, transaction, this] (FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state) {
             if (kind != FlatpakResource::RequiredRuntime) {
