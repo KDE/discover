@@ -2,6 +2,7 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
+import org.kde.kirigami 2.0 as Kirigami
 
 ConditionalLoader
 {
@@ -11,8 +12,6 @@ ConditionalLoader
     readonly property alias progress: listener.progress
     readonly property alias listener: listener
     property Component additionalItem: null
-    property bool canUpgrade: true
-    property bool fill: false
 
     TransactionListener {
         id: listener
@@ -40,32 +39,18 @@ ConditionalLoader
         }
     }
 
-    componentFalse: RowLayout {
+    componentFalse: ToolButton {
+        id: button
         function click() { button.clicked(); }
 
-        Loader {
-            Layout.fillWidth: root.fill
-            Component {
-                id: updateButton
-                Button {
-                    text: i18n("Update")
-                    onClicked: ResourcesModel.installApplication(application)
-                }
-            }
-            sourceComponent: (root.canUpgrade && application.canUpgrade) ? updateButton : root.additionalItem
-        }
-        Button {
-            id: button
-            enabled: application.state != AbstractResource.Broken
-            text: !application.isInstalled ? i18n("Install") : i18n("Remove")
-            Layout.fillWidth: root.fill
+        enabled: application.state != AbstractResource.Broken
+        text: !application.isInstalled ? i18n("Install") : i18n("Remove")
 
-            onClicked: {
-                if(application.isInstalled)
-                    ResourcesModel.removeApplication(application);
-                else
-                    ResourcesModel.installApplication(application);
-            }
+        onClicked: {
+            if(application.isInstalled)
+                ResourcesModel.removeApplication(application);
+            else
+                ResourcesModel.installApplication(application);
         }
     }
 }

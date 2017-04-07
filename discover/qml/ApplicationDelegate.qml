@@ -107,7 +107,6 @@ Kirigami.AbstractListItem
             InstallApplicationButton {
                 id: installButton
                 Layout.alignment: Qt.AlignRight
-                canUpgrade: false
             }
         }
     }

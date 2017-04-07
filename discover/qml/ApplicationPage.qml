@@ -43,34 +43,51 @@ DiscoverPage {
     }
 
     pageOverlay: Item {
-        InstallApplicationButton {
-            id: button
+        Rectangle {
+            id: bg
+            color: Kirigami.Theme.viewBackgroundColor
+            anchors.fill: layo
+        }
+        RowLayout {
+            Binding {
+                target: appInfo
+                property: "bottomPadding"
+                value: layo.height + Kirigami.Units.largeSpacing
+            }
+            id: layo
             anchors {
+                left: parent.left
                 right: parent.right
                 bottom: parent.bottom
-                bottomMargin: Kirigami.Units.gridUnit
-                rightMargin: appInfo.width - appInfo.flickable.width
+            }
+            ToolButton {
+                iconName: "draw-arrow-forward"
+                enabled: appInfo.sClose.enabled
+                onClicked: appInfo.sClose.activated()
+            }
+            Label {
+                enabled: appInfo.sClose.enabled
+                text: i18n("Close Description")
             }
 
-            Layout.alignment: Qt.AlignRight
-            application: appInfo.application
-            fill: true
-            additionalItem: Button {
+            Item {
                 Layout.fillWidth: true
-                visible: application.isInstalled && application.canExecute
-                text: i18n("Launch")
-                onClicked: application.invokeApplication()
+            }
+
+            spacing: 0
+
+            InstallApplicationButton {
+                application: appInfo.application
+                Layout.minimumWidth: Kirigami.Units.gridUnit * 10
             }
         }
-
-        DropShadow {
-            anchors.fill: button
-            source: button
-            horizontalOffset: 3
-            verticalOffset: 3
-            radius: 8
-            samples: 10
-            color: "#000000"
+        Kirigami.Separator {
+            anchors {
+                left: bg.left
+                right: bg.right
+                top: bg.top
+            }
+            z: 4000
         }
     }
 
