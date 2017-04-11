@@ -7,6 +7,6 @@ DiscoverTest
         verify(appRoot.stack.currentItem, "has a page");
         while (appRoot.stack.currentItem.title === "Loading...")
             waitForRendering();
-        compare(appRoot.stack.currentItem.title, "something", "same title");
+        compare(appRoot.stack.currentItem.title, "CMakeLists.txt", "same title");
     }
 }
