@@ -58,7 +58,7 @@ Kirigami.ScrollablePage
 
     readonly property var sClose: Shortcut {
         sequence: StandardKey.Cancel
-        enabled: root.isCurrentPage && applicationWindow().pageStack.depth>=1
+        enabled: root.isCurrentPage && applicationWindow().pageStack.depth>1
         onActivated: {
             applicationWindow().pageStack.goBack()
         }
