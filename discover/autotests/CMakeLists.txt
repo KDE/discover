@@ -11,5 +11,6 @@ if(BUILD_DummyBackend)
     add_test(NAME apparg COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/appstreamUrl.qml" --application "dummy://techie1")
     add_test(NAME categoryarg COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/categoryArg.qml" --category "dummy 2.1")
     add_test(NAME wrongInput COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/wrongInput.qml" "CMakeLists.txt")
-    add_test(NAME packageArgument COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/packageArgument.qml" --local-filename "something")
+    add_test(NAME packageArgument COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/packageArgument.qml"
+                                                           --local-filename "${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt")
 endif()
