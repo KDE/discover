@@ -39,7 +39,7 @@ ConditionalLoader
         }
     }
 
-    componentFalse: ToolButton {
+    componentFalse: Button {
         id: button
         function click() { button.clicked(); }
 
