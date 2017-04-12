@@ -22,6 +22,7 @@
 #define REVIEWSMODEL_H
 
 #include <QModelIndex>
+#include <QSharedPointer>
 #include "discovercommon_export.h"
 
 class Review;
