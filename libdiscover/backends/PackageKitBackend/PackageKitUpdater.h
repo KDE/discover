@@ -28,7 +28,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
 {
     Q_OBJECT
     public:
-        PackageKitUpdater(PackageKitBackend * parent = nullptr);
+        explicit PackageKitUpdater(PackageKitBackend * parent = nullptr);
         ~PackageKitUpdater() override;
         
         void prepare() override;

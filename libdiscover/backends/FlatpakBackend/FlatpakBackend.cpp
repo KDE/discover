@@ -750,7 +750,6 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
 {
     QByteArray metadataContent;
     g_autoptr(GFile) installationPath = nullptr;
-    g_autoptr(GError) localError = nullptr;
 
     if (resource->type() != FlatpakResource::DesktopApp) {
         return true;
@@ -846,9 +845,8 @@ bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, Fla
 bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
 {
     // Calculate the runtime size
-    FlatpakResource *runtime = nullptr;
     if (resource->state() == AbstractResource::None && resource->type() == FlatpakResource::DesktopApp) {
-        runtime = getRuntimeForApp(resource);
+        auto runtime = getRuntimeForApp(resource);
         if (runtime) {
             // Re-check runtime state if case a new one was created
             updateAppState(flatpakInstallation, runtime);

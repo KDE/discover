@@ -20,7 +20,6 @@
 #include "DiscoverMainWindow.h"
 #include "PaginateModel.h"
 #include "SystemFonts.h"
-#include "IconColors.h"
 #include "UnityLauncher.h"
 #include "FeaturedModel.h"
 #include "CachedNetworkAccessManager.h"
@@ -96,7 +95,6 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
 
     qmlRegisterType<UnityLauncher>("org.kde.discover.app", 1, 0, "UnityLauncher");
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
-    qmlRegisterType<IconColors>("org.kde.discover.app", 1, 0, "IconColors");
     qmlRegisterType<KConcatenateRowsProxyModel>("org.kde.discover.app", 1, 0, "KConcatenateRowsProxyModel");
     qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
     qmlRegisterType<QSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");

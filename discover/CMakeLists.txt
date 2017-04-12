@@ -10,7 +10,6 @@ set(plasma_discover_SRCS
     FeaturedModel.cpp
     PaginateModel.cpp
     SystemFonts.cpp
-    IconColors.cpp
     UnityLauncher.cpp
 )
 

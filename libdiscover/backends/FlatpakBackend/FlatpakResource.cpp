@@ -193,15 +193,18 @@ QVariant FlatpakResource::icon() const
             case AppStream::Icon::KindStock:
                 stock += icon.name();
                 break;
-            case AppStream::Icon::KindRemote:
+            case AppStream::Icon::KindRemote: {
                 const QString fileName = QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation))
                                                                 .arg(icon.url().fileName());
                 if (QFileInfo::exists(fileName)) {
                     ret.addFile(fileName);
                 } else {
                     ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
-                    break;
                 }
+                break;
+            }
+            case AppStream::Icon::KindUnknown:
+                break;
         }
 
         if (ret.isNull() && !stock.isEmpty()) {
@@ -395,14 +398,11 @@ QString FlatpakResource::typeAsString() const
 {
     switch (m_type) {
         case FlatpakResource::DesktopApp:
+        case FlatpakResource::Source:
             return QLatin1String("app");
-            break;
         case FlatpakResource::Runtime:
             return QLatin1String("runtime");
-            break;
     }
-
-    return QLatin1String("app");
 }
 
 QString FlatpakResource::uniqueId() const

@@ -48,7 +48,6 @@ private:
 
     FlatpakInstallation *m_systemInstallation;
     QStandardItemModel* m_sources;
-    QAction* m_testAction;
 };
 
 #endif // FLATPAKSOURCESBACKEND_H
