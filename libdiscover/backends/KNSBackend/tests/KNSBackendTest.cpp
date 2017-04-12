@@ -73,7 +73,9 @@ QVector<AbstractResource*> KNSBackendTest::getResources(ResultsStream* stream)
 QVector<AbstractResource*> KNSBackendTest::getAllResources(AbstractResourcesBackend* backend)
 {
     AbstractResourcesBackend::Filters f;
-    f.category = CategoryModel::global()->rootCategories().first();
+    if (CategoryModel::global()->rootCategories().isEmpty())
+        CategoryModel::global()->populateCategories();
+    f.category = CategoryModel::global()->rootCategories().constFirst();
     return getResources(backend->search(f));
 }
 
