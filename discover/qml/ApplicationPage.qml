@@ -76,6 +76,13 @@ DiscoverPage {
 
             spacing: 0
 
+            ToolButton {
+                Layout.minimumWidth: Kirigami.Units.gridUnit * 10
+                visible: application.isInstalled && application.canExecute
+                text: i18n("Launch")
+                onClicked: application.invokeApplication()
+            }
+
             InstallApplicationButton {
                 application: appInfo.application
                 Layout.minimumWidth: Kirigami.Units.gridUnit * 10
