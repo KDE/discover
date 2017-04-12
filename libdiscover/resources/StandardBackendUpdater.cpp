@@ -127,8 +127,8 @@ void StandardBackendUpdater::refreshUpdateable()
     });
     connect(r, &ResultsStream::destroyed, this, [this](){
         m_settingUp = false;
-        Q_EMIT progressingChanged(false);
         Q_EMIT updatesCountChanged(updatesCount());
+        Q_EMIT progressingChanged(false);
     });
 }
 
