@@ -42,10 +42,10 @@ public:
     explicit PackageKitNotifier(QObject* parent = nullptr);
     ~PackageKitNotifier() override;
 
-    bool isSystemUpToDate() const final;
-    uint securityUpdatesCount() final;
-    uint updatesCount() final;
-    void recheckSystemUpdateNeeded() final;
+    bool isSystemUpToDate() const override;
+    uint securityUpdatesCount() override;
+    uint updatesCount() override;
+    void recheckSystemUpdateNeeded() override;
     void refreshDatabase();
 
 private Q_SLOTS:
