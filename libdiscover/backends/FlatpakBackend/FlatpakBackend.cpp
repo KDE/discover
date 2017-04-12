@@ -297,7 +297,10 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
         resource->setBundledIcon(pixmap);
     }
 
+    resource->setDownloadSize(0);
     resource->setInstalledSize(flatpak_bundle_ref_get_installed_size(bundleRef));
+    resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::AlreadyKnown);
+    resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::AlreadyKnown);
     resource->setFlatpakFileType(QStringLiteral("flatpak"));
     resource->setOrigin(QString::fromUtf8(flatpak_bundle_ref_get_origin(bundleRef)));
     resource->setResourceFile(url);
