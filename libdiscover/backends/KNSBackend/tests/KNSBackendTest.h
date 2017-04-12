@@ -23,11 +23,11 @@
 
 #include <QtCore/QObject>
 #include <QtCore/QPointer>
+#include "ReviewsBackend/ReviewsModel.h"
 
 class AbstractResourcesBackend;
 class AbstractResource;
 class ResultsStream;
-class Review;
 class Category;
 
 class KNSBackendTest : public QObject
@@ -42,14 +42,14 @@ class KNSBackendTest : public QObject
         void testResourceByUrl();
 
     public Q_SLOTS:
-        void reviewsArrived(AbstractResource *r, const QList<Review *>& revs);
+        void reviewsArrived(AbstractResource *r, const QVector<ReviewPtr>& revs);
 
     private:
         QVector<AbstractResource*> getResources(ResultsStream* stream);
         QVector<AbstractResource*> getAllResources(AbstractResourcesBackend* backend);
         QPointer<AbstractResourcesBackend> m_backend;
         QPointer<AbstractResource> m_r;
-        QList<Review*> m_revs;
+        QVector<ReviewPtr> m_revs;
 };
 
 #endif // KNSBACKENDTEST_H

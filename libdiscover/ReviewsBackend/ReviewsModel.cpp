@@ -34,10 +34,7 @@ ReviewsModel::ReviewsModel(QObject* parent)
     , m_canFetchMore(true)
 {}
 
-ReviewsModel::~ReviewsModel()
-{
-    qDeleteAll(m_reviews);
-}
+ReviewsModel::~ReviewsModel() = default;
 
 QHash< int, QByteArray > ReviewsModel::roleNames() const
 {
@@ -101,7 +98,6 @@ void ReviewsModel::setResource(AbstractResource* app)
 {
     if(m_app!=app) {
         beginResetModel();
-        qDeleteAll(m_reviews);
         m_reviews.clear();
         m_lastPage = 0;
         endResetModel();
@@ -142,7 +138,7 @@ void ReviewsModel::fetchMore(const QModelIndex& parent)
 //     qDebug() << "fetching reviews... " << m_lastPage;
 }
 
-void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& reviews)
+void ReviewsModel::addReviews(AbstractResource* app, const QVector<ReviewPtr>& reviews)
 {
     if(app!=m_app)
         return;
@@ -165,7 +161,7 @@ bool ReviewsModel::canFetchMore(const QModelIndex& /*parent*/) const
 
 void ReviewsModel::markUseful(int row, bool useful)
 {
-    Review* r = m_reviews[row];
+    Review* r = m_reviews[row].data();
     r->setUsefulChoice(useful ? Yes : No);
 //     qDebug() << "submitting usefulness" << r->applicationName() << r->id() << useful;
     m_backend->submitUsefulness(r, useful);
@@ -175,12 +171,12 @@ void ReviewsModel::markUseful(int row, bool useful)
 
 void ReviewsModel::deleteReview(int row)
 {
-    Review* r = m_reviews[row];
+    Review* r = m_reviews[row].data();
     m_backend->deleteReview(r);
 }
 
 void ReviewsModel::flagReview(int row, const QString& reason, const QString& text)
 {
-    Review* r = m_reviews[row];
+    Review* r = m_reviews[row].data();
     m_backend->flagReview(r, reason, text);
 }

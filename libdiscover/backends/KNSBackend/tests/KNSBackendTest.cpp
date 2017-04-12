@@ -125,7 +125,7 @@ void KNSBackendTest::testReviews()
     QVERIFY(spy.count() || spy.wait());
 }
 
-void KNSBackendTest::reviewsArrived(AbstractResource* r, const QList< Review* >& revs)
+void KNSBackendTest::reviewsArrived(AbstractResource* r, const QVector<ReviewPtr>& revs)
 {
     m_r = r;
     m_revs = revs;
