@@ -85,6 +85,7 @@ DiscoverPage {
 
             InstallApplicationButton {
                 application: appInfo.application
+                flat: true
                 Layout.minimumWidth: Kirigami.Units.gridUnit * 10
             }
         }

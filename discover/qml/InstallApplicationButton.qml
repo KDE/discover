@@ -11,7 +11,9 @@ ConditionalLoader
     readonly property alias isActive: listener.isActive
     readonly property alias progress: listener.progress
     readonly property alias listener: listener
+    readonly property string text: !application.isInstalled ? i18n("Install") : i18n("Remove")
     property Component additionalItem: null
+    property bool flat: false
 
     TransactionListener {
         id: listener
@@ -19,7 +21,10 @@ ConditionalLoader
 
     function click() {
         if (!isActive) {
-            item.click();
+            if(application.isInstalled)
+                ResourcesModel.removeApplication(application);
+            else
+                ResourcesModel.installApplication(application);
         }
     }
 
@@ -39,18 +44,25 @@ ConditionalLoader
         }
     }
 
-    componentFalse: Button {
-        id: button
-        function click() { button.clicked(); }
+    Component {
+        id: flatButton
+        ToolButton {
+            enabled: application.state != AbstractResource.Broken
+            text: root.text
 
-        enabled: application.state != AbstractResource.Broken
-        text: !application.isInstalled ? i18n("Install") : i18n("Remove")
-
-        onClicked: {
-            if(application.isInstalled)
-                ResourcesModel.removeApplication(application);
-            else
-                ResourcesModel.installApplication(application);
+            onClicked: root.click()
         }
     }
+
+    Component {
+        id: fullButton
+        Button {
+            enabled: application.state != AbstractResource.Broken
+            text: root.text
+
+            onClicked: root.click()
+        }
+    }
+
+    componentFalse: root.flat ? flatButton : fullButton
 }
