@@ -104,7 +104,7 @@ Item
         target: ResourcesModel
         property bool done: false
         onIsFetchingChanged: {
-            if (ResourcesModel.isFetching)
+            if (ResourcesModel.isFetching || done)
                 return;
 
             done = true;
