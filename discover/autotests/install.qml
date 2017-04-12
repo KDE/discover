@@ -6,7 +6,6 @@ DiscoverTest
 {
     function test_openResource() {
         app.openApplication("dummy://dummy.1");
-        compare(appRoot.stack.currentItem.title, "Loading...", "same title");
         verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         verify(appRoot.stack.currentItem, "has a page");
         compare(appRoot.stack.currentItem.title, "Dummy 1", "same title");

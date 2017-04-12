@@ -60,9 +60,8 @@ DiscoverTest
         });
 
         firstitem.clicked()
-        verify(waitForRendering())
+        verify(updateButton.enabled)
         updateButton.clicked()
-        verify(waitForRendering())
 
         compare(appRoot.currentTopLevel, appRoot.topUpdateComp, "correct component, updates");
     }
