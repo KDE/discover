@@ -313,6 +313,7 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
     m_isFetching = false;
 
     QJsonArray reviews = document.array();
+    if (!reviews.isEmpty()) {
         QVector<ReviewPtr> reviewList;
         for (auto it = reviews.begin(); it != reviews.end(); it++) {
             QJsonObject review = it->toObject();
@@ -339,7 +340,6 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
             }
         }
 
-    if (!reviewList.isEmpty()) {
         Q_EMIT reviewsReady(resource, reviewList, false);
     }
 }
