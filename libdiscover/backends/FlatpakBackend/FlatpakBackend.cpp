@@ -331,6 +331,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 
         remoteRef = flatpak_installation_install_ref_file (installation, bytes, m_cancellable, &error);
         if (!remoteRef) {
+            qWarning() << "Failed to install ref file: " << error->message;
             return nullptr;
         }
     }
