@@ -25,6 +25,8 @@
 #include "discovercommon_export.h"
 
 class Review;
+typedef QSharedPointer<Review> ReviewPtr;
+
 class AbstractResource;
 class AbstractReviewsBackend;
 class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
@@ -69,7 +71,7 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
         void markUseful(int row, bool useful);
 
     private Q_SLOTS:
-        void addReviews(AbstractResource* app, const QList<Review*>& reviews, bool canFetchMore);
+        void addReviews(AbstractResource* app, const QVector<ReviewPtr>& reviews, bool canFetchMore);
         void restartFetching();
 
     Q_SIGNALS:
@@ -79,7 +81,7 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
     private:
         AbstractResource* m_app;
         AbstractReviewsBackend* m_backend;
-        QList<Review*> m_reviews;
+        QVector<ReviewPtr> m_reviews;
         int m_lastPage;
         bool m_canFetchMore;
 };

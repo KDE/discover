@@ -314,7 +314,7 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
 
     QJsonArray reviews = document.array();
     if (!reviews.isEmpty()) {
-        QList<Review*> reviewList;
+        QVector<ReviewPtr> reviewList;
         for (auto it = reviews.begin(); it != reviews.end(); it++) {
             QJsonObject review = it->toObject();
             if (!review.isEmpty()) {
@@ -322,12 +322,12 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                 const int usefulTotal = review.value(QStringLiteral("karma_down")).toInt() + usefulFavorable;
                 QDateTime dateTime;
                 dateTime.setTime_t(review.value(QStringLiteral("date_created")).toInt());
-                Review *r = new Review(review.value(QStringLiteral("app_id")).toString(), resource->packageName(),
+                ReviewPtr r(new Review(review.value(QStringLiteral("app_id")).toString(), resource->packageName(),
                                        review.value(QStringLiteral("locale")).toString(), review.value(QStringLiteral("summary")).toString(),
                                        review.value(QStringLiteral("description")).toString(), review.value(QStringLiteral("user_display")).toString(),
                                        dateTime, true, review.value(QStringLiteral("review_id")).toInt(),
                                        review.value(QStringLiteral("rating")).toInt() / 10, usefulTotal, usefulFavorable,
-                                       review.value(QStringLiteral("version")).toString());
+                                       review.value(QStringLiteral("version")).toString()));
                 // We can also receive just a json with app name and user info so filter these out as there is no review
                 if (!r->summary().isEmpty() && !r->reviewText().isEmpty()) {
                     reviewList << r;

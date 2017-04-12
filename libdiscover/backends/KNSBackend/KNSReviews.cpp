@@ -92,13 +92,13 @@ void KNSReviews::commentsReceived(Attica::BaseJob* j)
     Attica::ListJob<Attica::Comment>* job = static_cast<Attica::ListJob<Attica::Comment>*>(j);
     Attica::Comment::List comments = job->itemList();
 
-    QList<Review*> reviews;
+    QVector<ReviewPtr> reviews;
     AbstractResource* app = job->property("app").value<AbstractResource*>();
     foreach(const Attica::Comment& comment, comments) {
         //TODO: language lookup?
-        Review* r = new Review(app->name(), app->packageName(), QStringLiteral("en"), comment.subject(), comment.text(), comment.user(),
+        ReviewPtr r(new Review(app->name(), app->packageName(), QStringLiteral("en"), comment.subject(), comment.text(), comment.user(),
             comment.date(), true, comment.id().toInt(), comment.score()/10, 0, 0, QString()
-        );
+        ));
         reviews += r;
     }
 

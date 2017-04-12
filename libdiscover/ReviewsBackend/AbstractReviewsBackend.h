@@ -23,11 +23,10 @@
 
 #include <QObject>
 
-#include "discovercommon_export.h"
+#include "ReviewsModel.h"
 
 class Rating;
 class AbstractResource;
-class Review;
 
 class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
 {
@@ -57,7 +56,7 @@ class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
         virtual bool isReviewable() const;
 
     Q_SIGNALS:
-        void reviewsReady(AbstractResource *app, const QList<Review *> &, bool canFetchMore);
+        void reviewsReady(AbstractResource *app, const QVector<ReviewPtr> &, bool canFetchMore);
         void loginStateChanged();
 };
 

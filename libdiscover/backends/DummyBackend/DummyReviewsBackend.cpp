@@ -36,10 +36,10 @@ void DummyReviewsBackend::fetchReviews(AbstractResource* app, int page)
     if (page>=5)
         return;
 
-    QList<Review*> review;
+    QVector<ReviewPtr> review;
     for(int i=0; i<33; i++) {
-        review += new Review(app->name(), app->packageName(), QStringLiteral("en_US"), QStringLiteral("good morning"), QStringLiteral("the morning is very good"), QStringLiteral("dummy"),
-                             QDateTime(), true, page+i, i%5, 1, 1, app->packageName());
+        review += ReviewPtr(new Review(app->name(), app->packageName(), QStringLiteral("en_US"), QStringLiteral("good morning"), QStringLiteral("the morning is very good"), QStringLiteral("dummy"),
+                             QDateTime(), true, page+i, i%5, 1, 1, app->packageName()));
     }
     emit reviewsReady(app, review, false);
 }
