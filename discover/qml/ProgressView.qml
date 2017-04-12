@@ -74,7 +74,7 @@ Kirigami.BasicListItem {
                         TransactionListener {
                             id: listener
                             resource: model.app
-                            onCancelled: model.remove(index)
+                            onCancelled: progressModel.remove(index)
                         }
 
                         RowLayout {
