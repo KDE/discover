@@ -60,6 +60,13 @@ T2.Control
             rightMargin: item ? item.anchors.rightMargin : 0
             bottomMargin: item ? item.anchors.bottomMargin : 0
         }
+        Rectangle {
+            color: Kirigami.Theme.backgroundColor
+            anchors {
+                fill: parent
+                margins: -5
+            }
+        }
         sourceComponent: root.extra
     }
 }
