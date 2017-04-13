@@ -402,6 +402,8 @@ QString FlatpakResource::typeAsString() const
             return QLatin1String("app");
         case FlatpakResource::Runtime:
             return QLatin1String("runtime");
+        default:
+            return QLatin1String("app");
     }
 }
 
