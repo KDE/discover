@@ -28,6 +28,7 @@
 #include <QDir>
 #include <KIO/FileCopyJob>
 
+#include <utils.h>
 #include <resources/ResourcesModel.h>
 #include <resources/StoredResultsStream.h>
 
@@ -45,12 +46,13 @@ FeaturedModel::FeaturedModel()
     const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover/featured-5.9.json"));
     KIO::FileCopyJob *getJob = KIO::file_copy(featuredUrl, QUrl::fromLocalFile(*featuredCache), -1, KIO::Overwrite | KIO::HideProgressInfo);
     connect(getJob, &KIO::FileCopyJob::result, this, &FeaturedModel::refresh);
+
+    if (QFile::exists(*featuredCache))
+        refresh();
 }
 
 void FeaturedModel::refresh()
 {
-    QSet<ResultsStream*> streams;
-
     QFile f(*featuredCache);
     if (!f.open(QIODevice::ReadOnly)) {
         qWarning() << "couldn't open file" << *featuredCache;
@@ -63,7 +65,17 @@ void FeaturedModel::refresh()
         return;
     }
 
-    foreach(const QJsonValue &uri, array) {
+    const auto uris = kTransform<QVector<QUrl>>(array, [](const QJsonValue& uri) { return QUrl(uri.toString()); });
+    setUris(uris);
+}
+
+void FeaturedModel::setUris(const QVector<QUrl>& uris)
+{
+    if (uris == m_uris)
+        return;
+
+    QSet<ResultsStream*> streams;
+    foreach(const auto &uri, uris) {
         foreach(auto backend, ResourcesModel::global()->backends()) {
             streams << backend->findResourceByPackageName(QUrl(uri.toString()));
         }
@@ -72,8 +84,34 @@ void FeaturedModel::refresh()
     connect(stream, &StoredResultsStream::finishedResources, this, &FeaturedModel::setResources);
 }
 
-void FeaturedModel::setResources(const QVector<AbstractResource *>& resources)
+static void filterDupes(QVector<AbstractResource *> &resources)
 {
+    QSet<QString> uri, dupeUri;
+    for(auto res: qAsConst(resources)) {
+        const auto id = res->appstreamId();
+        if (uri.contains(id))
+            dupeUri += id;
+        else
+            uri += id;
+    }
+
+    for(auto it = resources.begin(); it != resources.end(); ) {
+        const auto name = (*it)->backend()->metaObject()->className();
+        if (qstrcmp(name, "PackageKitBackend")!=0 && dupeUri.contains((*it)->appstreamId()))
+            it = resources.erase(it);
+        else
+            ++it;
+    }
+}
+
+void FeaturedModel::setResources(const QVector<AbstractResource *>& _resources)
+{
+    auto resources = _resources;
+    filterDupes(resources);
+
+    if (m_resources == resources)
+        return;
+
     //TODO: sort like in the json files
 
     beginResetModel();

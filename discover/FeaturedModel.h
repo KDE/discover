@@ -37,9 +37,11 @@ class FeaturedModel : public QAbstractListModel
         QHash<int, QByteArray> roleNames() const override;
 
     private:
+        void setUris(const QVector<QUrl> &uris);
         void refresh();
         void removeResource(AbstractResource* resource);
 
+        QVector<QUrl> m_uris;
         QVector<AbstractResource*> m_resources;
 };
 
