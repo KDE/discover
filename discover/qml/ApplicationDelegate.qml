@@ -43,23 +43,30 @@ Kirigami.AbstractListItem
     onClicked: trigger()
     rightPadding: Kirigami.Units.largeSpacing
 
-    RowLayout {
-        id: lowLayout
-        implicitHeight: conts.implicitHeight
+    Item {
+        implicitHeight: Math.max(conts.implicitHeight, resourceIcon.height)
 
         QIconItem {
             id: resourceIcon
             icon: application.icon
 
-            readonly property real contHeight: lowLayout.height * 0.8
-            Layout.minimumWidth: contHeight
+            readonly property real contHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 4 : Kirigami.Units.gridUnit * 7
             height: contHeight
-            anchors.verticalCenter: parent.verticalCenter
+            width: contHeight
+            anchors {
+                verticalCenter: parent.verticalCenter
+                left: parent.left
+                leftMargin: Kirigami.Units.smallSpacing
+            }
         }
 
         ColumnLayout {
             id: conts
-            Layout.fillWidth: true
+            anchors {
+                right: parent.right
+                left: resourceIcon.right
+                leftMargin: Kirigami.Units.largeSpacing
+            }
 
             RowLayout {
                 Layout.fillWidth: true
