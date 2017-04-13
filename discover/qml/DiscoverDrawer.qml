@@ -158,7 +158,7 @@ Kirigami.GlobalDrawer {
                    || !window.leftPage.subcategories
                    || window.leftPage.subcategories === undefined
                    || searchField.text.length === 0
-                   || category.contains(window.leftPage.subcategories)
+                   || (category && category.contains(window.leftPage.subcategories))
                      )
             onTriggered: {
                 if (!window.leftPage.canNavigate)
