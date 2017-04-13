@@ -60,7 +60,7 @@ Kirigami.ScrollablePage
         sequence: StandardKey.Cancel
         enabled: root.isCurrentPage && applicationWindow().pageStack.depth>1
         onActivated: {
-            applicationWindow().pageStack.goBack()
+            applicationWindow().pageStack.pop()
         }
     }
 }
