@@ -118,7 +118,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         this->setFetching(false);
         qWarning() << "kns error" << objectName() << error;
     });
-    connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries);
+    connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged);
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
     m_page = -1;
@@ -332,7 +332,7 @@ ResultsStream * KNSBackend::searchStream(const QString &searchText)
         connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::deleteLater);
     };
     if (m_responsePending) {
-        connect(this, &KNSBackend::availableForQueries, stream, start);
+        connect(this, &KNSBackend::availableForQueries, stream, start, Qt::QueuedConnection);
     } else {
         start();
     }
