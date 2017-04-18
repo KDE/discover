@@ -448,7 +448,7 @@ bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallati
         appId = g_strdup(flatpak_ref_get_name(FLATPAK_REF(ref)));
     }
 
-    const QString uniqueId = QString::fromUtf8("%1/%2/%3/%4/%5/%6").arg(FlatpakResource::scopeAsString(appScope))
+    const QString uniqueId = QStringLiteral("%1/%2/%3/%4/%5/%6").arg(FlatpakResource::scopeAsString(appScope))
                                                                    .arg(QLatin1String("flatpak"))
                                                                    .arg(QString::fromUtf8(flatpak_installed_ref_get_origin(ref)))
                                                                    .arg(FlatpakResource::typeAsString(appType))
@@ -463,11 +463,11 @@ bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallati
     // Check if we have information about architecture and branch, otherwise compare names only
     // Happens with apps which don't have appstream metadata bug got here thanks to installed desktop file
     if (!resource->arch().isEmpty() && !resource->branch().isEmpty()) {
-        return resource->arch() == arch && resource->branch() == branch && (resource->flatpakName() == QString::fromUtf8(appId) ||
-                                                                            resource->flatpakName() == QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(ref))));
+        return resource->arch() == arch && resource->branch() == branch && (resource->flatpakName() == QLatin1String(appId) ||
+                                                                            resource->flatpakName() == QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))));
     }
 
-    return (resource->flatpakName() == QString::fromUtf8(appId) || resource->flatpakName() == QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(ref))));
+    return (resource->flatpakName() == QLatin1String(appId) || resource->flatpakName() == QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))));
 }
 
 class FlatpakSource
@@ -609,7 +609,7 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
             bool resourceExists = false;
             foreach (FlatpakResource *res, m_resources) {
                 // Compare the only information we have
-                if (res->appstreamId() == QString::fromUtf8("%1.desktop").arg(resource->appstreamId()) && res->name() == resource->name()) {
+                if (res->appstreamId() == QStringLiteral("%1.desktop").arg(resource->appstreamId()) && res->name() == resource->name()) {
                     resourceExists = true;
                     res->setScope(resource->scope());
                     res->setState(resource->state());
@@ -761,7 +761,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
     }
 
     installationPath = flatpak_installation_get_path(flatpakInstallation);
-    const QString path = QString::fromUtf8(g_file_get_path(installationPath)) + QString::fromUtf8("/app/%1/%2/%3/active/metadata").arg(resource->flatpakName()).arg(resource->arch()).arg(resource->branch());
+    const QString path = QString::fromUtf8(g_file_get_path(installationPath)) + QStringLiteral("/app/%1/%2/%3/active/metadata").arg(resource->flatpakName()).arg(resource->arch()).arg(resource->branch());
 
     if (QFile::exists(path)) {
         QFile file(path);
