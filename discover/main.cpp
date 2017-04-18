@@ -49,6 +49,7 @@ QCommandLineParser* createParser()
     parser->addOption(QCommandLineOption(QStringLiteral("listmodes"), i18n("List all the available modes.")));
     parser->addOption(QCommandLineOption(QStringLiteral("compact"), i18n("Compact Mode (auto/compact/full)."), QStringLiteral("mode"), QStringLiteral("auto")));
     parser->addOption(QCommandLineOption(QStringLiteral("local-filename"), i18n("Local package file to install"), QStringLiteral("package")));
+    parser->addOption(QCommandLineOption(QStringLiteral("listbackends"), i18n("List all the available backends.")));
     parser->addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Test file"), QStringLiteral("file.qml")));
     parser->addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
     DiscoverBackendsFactory::setupCommandLine(parser);
@@ -104,6 +105,14 @@ int main(int argc, char** argv)
         about.processCommandLine(parser.data());
         DiscoverBackendsFactory::processCommandLine(parser.data(), parser->isSet(QStringLiteral("test")));
 
+        if(parser->isSet(QStringLiteral("listbackends"))) {
+            QTextStream(stdout) << i18n("Available backends:\n");
+            DiscoverBackendsFactory f;
+            foreach(const QString& name, f.allBackendNames(false, true))
+                QTextStream(stdout) << " * " << name << '\n';
+            return 0;
+        }
+
         if (parser->isSet(QStringLiteral("test"))) {
             QStandardPaths::setTestModeEnabled(true);
         }
@@ -127,6 +136,7 @@ int main(int argc, char** argv)
             QTextStream(stdout) << i18n("Available modes:\n");
             foreach(const QString& mode, mainWindow->modes())
                 QTextStream(stdout) << " * " << mode << '\n';
+            delete mainWindow;
             return 0;
         }
 
