@@ -50,7 +50,7 @@ public:
     ResultsStream * search(const AbstractResourcesBackend::Filters & search) override;
     ResultsStream * findResourceByPackageName(const QUrl &search) override;
     QList<FlatpakResource*> resources() const { return m_resources.values(); }
-    bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
+    bool isValid() const override;
     QList<QAction*> messageActions() const override { return m_messageActions; }
 
     FlatpakInstallation *flatpakInstallationForAppScope(FlatpakResource::Scope appScope) const;
@@ -98,7 +98,7 @@ private:
 
     QHash<QString, FlatpakResource*> m_resources;
     StandardBackendUpdater  *m_updater;
-    FlatpakSourcesBackend *m_sources;
+    FlatpakSourcesBackend *m_sources = nullptr;
     OdrsReviewsBackend *m_reviews;
     bool m_fetching;
     QList<QAction*> m_messageActions;

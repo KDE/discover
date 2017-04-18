@@ -76,6 +76,9 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
         reloadPackageList();
 
         checkForUpdates();
+
+        m_sources = new FlatpakSourcesBackend(m_flatpakInstallationSystem, m_flatpakInstallationUser, this);
+        SourcesModel::global()->addSourcesBackend(m_sources);
     }
 
     QAction* updateAction = new QAction(this);
@@ -86,9 +89,6 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 
     m_messageActions = QList<QAction*>() << updateAction;
 
-    m_sources = new FlatpakSourcesBackend(m_flatpakInstallationSystem, m_flatpakInstallationUser, this);
-    SourcesModel::global()->addSourcesBackend(m_sources);
-
     connect(m_reviews, &OdrsReviewsBackend::ratingsReady, this, &FlatpakBackend::announceRatingsReady);
 }
 
@@ -97,6 +97,11 @@ FlatpakBackend::~FlatpakBackend()
     g_object_unref(m_flatpakInstallationSystem);
     g_object_unref(m_flatpakInstallationUser);
     g_object_unref(m_cancellable);
+}
+
+bool FlatpakBackend::isValid() const
+{
+    return m_sources && m_flatpakInstallationUser && m_flatpakInstallationSystem;
 }
 
 void FlatpakBackend::announceRatingsReady()
