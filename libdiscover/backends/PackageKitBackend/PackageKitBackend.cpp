@@ -45,6 +45,7 @@
 #include <KDesktopFile>
 #include <KLocalizedString>
 #include <QAction>
+#include <QMimeDatabase>
 
 #include "utils.h"
 #include "config-paths.h"
@@ -582,7 +583,16 @@ AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const
 
 AbstractResource * PackageKitBackend::resourceForFile(const QUrl& file)
 {
-    return new LocalFilePKResource(file, this);
+    QMimeDatabase db;
+    const auto mime = db.mimeTypeForUrl(file);
+    if (    mime.inherits(QLatin1String("application/vnd.debian.binary-package"))
+         || mime.inherits(QLatin1String("application/x-rpm"))
+         || mime.inherits(QLatin1String("application/x-tar"))
+         || mime.inherits(QLatin1String("application/x-xz-compressed-tar"))
+    ) {
+        return new LocalFilePKResource(file, this);
+    }
+    return nullptr;
 }
 
 
