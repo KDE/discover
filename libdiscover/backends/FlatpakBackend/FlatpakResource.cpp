@@ -547,6 +547,6 @@ QString FlatpakResource::installationPath() const
 
 QString FlatpakResource::installationPath(FlatpakInstallation* flatpakInstallation)
 {
-    g_autoptr(GFile) path = flatpak_installation_get_path(flatpakInstallation);
-    return QString::fromUtf8(g_file_get_path(path));
+    g_autoptr(GFile) file = flatpak_installation_get_path(flatpakInstallation);
+    return QString::fromUtf8(g_file_get_path(file));
 }
