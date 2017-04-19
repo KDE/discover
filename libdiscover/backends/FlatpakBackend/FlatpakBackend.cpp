@@ -710,9 +710,9 @@ void FlatpakBackend::reloadPackageList()
 
 bool FlatpakBackend::setupFlatpakInstallations(GError **error)
 {
-    auto system = flatpak_installation_new_system(m_cancellable, error);
-    if (system) {
-        m_installations << system;
+    GPtrArray *installations = flatpak_get_system_installations(m_cancellable, error);
+    for (uint i = 0; i < installations->len; i++) {
+        m_installations << FLATPAK_INSTALLATION(g_ptr_array_index(installations, i));
     }
 
     auto user = flatpak_installation_new_user(m_cancellable, error);
