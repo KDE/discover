@@ -53,7 +53,6 @@ public:
     bool isValid() const override;
     QList<QAction*> messageActions() const override { return m_messageActions; }
 
-    FlatpakInstallation *flatpakInstallationForAppScope(FlatpakResource::Scope appScope) const;
     void installApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app, const AddonList& addons) override;
     void removeApplication(AbstractResource* app) override;

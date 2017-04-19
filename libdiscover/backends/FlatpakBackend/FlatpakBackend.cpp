@@ -280,7 +280,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
     gsize len = 0;
     g_autoptr(GBytes) iconData = nullptr;
     g_autoptr(GBytes) metadata = nullptr;
-    FlatpakResource *resource = new FlatpakResource(asComponent, this);
+    FlatpakResource *resource = new FlatpakResource(asComponent, preferredInstallation(), this);
 
     metadata = flatpak_bundle_ref_get_metadata(bundleRef);
     QByteArray metadataContent = QByteArray((char *)g_bytes_get_data(metadata, &len));
@@ -359,7 +359,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     }
 
     AppStream::Component *asComponent = new AppStream::Component(component);
-    auto resource = new FlatpakResource(asComponent, this);
+    auto resource = new FlatpakResource(asComponent, preferredInstallation(), this);
     resource->setFlatpakFileType(QStringLiteral("flatpakref"));
     resource->setOrigin(QString::fromUtf8(remoteName));
     resource->updateFromRef(ref);
@@ -397,7 +397,7 @@ FlatpakResource * FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
     }
 
     AppStream::Component *asComponent = new AppStream::Component(component);
-    auto resource = new FlatpakResource(asComponent, this);
+    auto resource = new FlatpakResource(asComponent, preferredInstallation(), this);
     // Use metadata only for stuff which are not common for all resources
     resource->addMetadata(QStringLiteral("gpg-key"), gpgKey);
     resource->addMetadata(QStringLiteral("repo-url"), repoUrl);
@@ -422,7 +422,7 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
         qWarning() << "Failed to parse metadata from app bundle for " << resource->name();
     }
 
-    auto installation = flatpakInstallationForAppScope(resource->scope());
+    auto installation = resource->installation();
     updateAppState(installation, resource);
 
     // This will update also metadata (required runtime)
@@ -438,7 +438,6 @@ bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallati
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
     FlatpakResource::ResourceType appType = flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime;
-    FlatpakResource::Scope appScope = flatpak_installation_get_is_user(flatpakInstallation) ? FlatpakResource::User : FlatpakResource::System;
 
     g_autofree gchar *appId = nullptr;
 
@@ -448,7 +447,7 @@ bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallati
         appId = g_strdup(flatpak_ref_get_name(FLATPAK_REF(ref)));
     }
 
-    const QString uniqueId = QStringLiteral("%1/%2/%3/%4/%5/%6").arg(FlatpakResource::scopeAsString(appScope))
+    const QString uniqueId = QStringLiteral("%1/%2/%3/%4/%5/%6").arg(FlatpakResource::installationPath(flatpakInstallation))
                                                                    .arg(QLatin1String("flatpak"))
                                                                    .arg(QString::fromUtf8(flatpak_installed_ref_get_origin(ref)))
                                                                    .arg(FlatpakResource::typeAsString(appType))
@@ -542,12 +541,10 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
     }
 
     g_autoptr(GPtrArray) components = as_metadata_get_components(metadata);
-    const FlatpakResource::Scope scope = flatpak_installation_get_is_user(flatpakInstallation) ? FlatpakResource::User : FlatpakResource::System;
     for (uint i = 0; i < components->len; i++) {
         AsComponent *component = AS_COMPONENT(g_ptr_array_index(components, i));
         AppStream::Component *appstreamComponent = new AppStream::Component(component);
-        FlatpakResource *resource = new FlatpakResource(appstreamComponent, this);
-        resource->setScope(scope);
+        FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
         resource->setIconPath(appstreamDirPath);
         resource->setOrigin(source.name());
         addResource(resource);
@@ -556,12 +553,11 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
 
 bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
 {
-    Q_ASSERT(flatpakInstallation)
+    Q_ASSERT(flatpakInstallation);
 
     // List installed applications from installed desktop files
-    g_autoptr(GFile) path = flatpak_installation_get_path(flatpakInstallation);
-    const auto pathExports = QString::fromUtf8(g_file_get_path(path)) + QLatin1String("/exports/");
-    const auto pathApps = pathExports + QLatin1String("share/applications/");
+    const QString pathExports = FlatpakResource::installationPath(flatpakInstallation) + QLatin1String("/exports/");
+    const QString pathApps = pathExports + QLatin1String("share/applications/");
 
     const QDir dir(pathApps);
     if (dir.exists()) {
@@ -591,9 +587,8 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
 
             component = as_metadata_get_component(metadata);
             AppStream::Component *appstreamComponent = new AppStream::Component(component);
-            FlatpakResource *resource = new FlatpakResource(appstreamComponent, this);
+            FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
 
-            resource->setScope(flatpak_installation_get_is_user(flatpakInstallation) ? FlatpakResource::User : FlatpakResource::System);
             resource->setIconPath(pathExports);
             resource->setType(FlatpakResource::DesktopApp);
             resource->setState(AbstractResource::Installed);
@@ -604,7 +599,6 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
                 // Compare the only information we have
                 if (res->appstreamId() == QStringLiteral("%1.desktop").arg(resource->appstreamId()) && res->name() == resource->name()) {
                     resourceExists = true;
-                    res->setScope(resource->scope());
                     res->setState(resource->state());
                     break;
                 }
@@ -965,15 +959,6 @@ AbstractReviewsBackend * FlatpakBackend::reviewsBackend() const
     return m_reviews;
 }
 
-FlatpakInstallation * FlatpakBackend::flatpakInstallationForAppScope(FlatpakResource::Scope appScope) const
-{
-    if (appScope == FlatpakResource::Scope::System) {
-        return preferredInstallation();
-    } else {
-        return m_installations.last();
-    }
-}
-
 void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &addons)
 {
     Q_UNUSED(addons);
@@ -991,7 +976,7 @@ void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &
     }
 
     FlatpakTransaction *transaction = nullptr;
-    FlatpakInstallation *installation = flatpakInstallationForAppScope(resource->scope());
+    FlatpakInstallation *installation = resource->installation();
 
     if (resource->propertyState(FlatpakResource::RequiredRuntime) == FlatpakResource::NotKnownYet && resource->type() == FlatpakResource::DesktopApp) {
         transaction = new FlatpakTransaction(installation, resource, Transaction::InstallRole, true);
@@ -1041,7 +1026,7 @@ void FlatpakBackend::removeApplication(AbstractResource *app)
         return;
     }
 
-    FlatpakInstallation *installation = flatpakInstallationForAppScope(resource->scope());
+    FlatpakInstallation *installation = resource->installation();
     FlatpakTransaction *transaction = new FlatpakTransaction(installation, resource, Transaction::RemoveRole);
 
     connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {

@@ -38,7 +38,7 @@ class FlatpakResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit FlatpakResource(AppStream::Component *component, FlatpakBackend *parent);
+    explicit FlatpakResource(AppStream::Component *component, FlatpakInstallation* installation, FlatpakBackend *parent);
 
     enum PropertyKind {
         DownloadSize = 0,
@@ -58,13 +58,6 @@ public:
         Source
     };
 
-    enum Scope {
-        System = 0,
-        User
-    };
-
-    Q_ENUM(Scope)
-
     static QString typeAsString(ResourceType type) {
         if (type == DesktopApp) {
             return QLatin1String("app");
@@ -72,12 +65,8 @@ public:
         return QLatin1String("runtime");
     }
 
-    static QString scopeAsString(Scope scope) {
-        if (scope == System) {
-            return QLatin1String("system");
-        }
-        return QLatin1String("user");
-    }
+    QString installationPath() const;
+    static QString installationPath(FlatpakInstallation* installation);
 
     AppStream::Component *appstreamComponent() const;
     QList<PackageState> addonsInformation() override;
@@ -107,7 +96,6 @@ public:
     QUrl resourceFile() const;
     QString runtime() const;
     QUrl screenshotUrl() override;
-    Scope scope() const;
     QString scopeAsString() const;
     QString section() override;
     int size() override;
@@ -117,6 +105,8 @@ public:
     ResourceType type() const;
     QString typeAsString() const;
     QString uniqueId() const;
+
+    FlatpakInstallation* installation() const { return m_installation; }
 
     void invokeApplication() const override;
     void fetchChangelog() override;
@@ -135,7 +125,6 @@ public:
     void setPropertyState(PropertyKind kind, PropertyState state);
     void setResourceFile(const QUrl &url);
     void setRuntime(const QString &runtime);
-    void setScope(Scope scope);
     void setState(State state);
     void setType(ResourceType type);
 //     void setAddons(const AddonList& addons);
@@ -163,7 +152,7 @@ public:
     QHash<PropertyKind, PropertyState> m_propertyStates;
     QUrl m_resourceFile;
     QString m_runtime;
-    Scope m_scope;
+    FlatpakInstallation* const m_installation;
     AbstractResource::State m_state;
     ResourceType m_type;
 };

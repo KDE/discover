@@ -42,13 +42,13 @@
 #include <QStringList>
 #include <QTimer>
 
-FlatpakResource::FlatpakResource(AppStream::Component *component, FlatpakBackend *parent)
+FlatpakResource::FlatpakResource(AppStream::Component *component, FlatpakInstallation* installation, FlatpakBackend *parent)
     : AbstractResource(parent)
     , m_appdata(component)
     , m_downloadSize(0)
     , m_installedSize(0)
     , m_propertyStates({{DownloadSize, NotKnownYet}, {InstalledSize, NotKnownYet},{RequiredRuntime, NotKnownYet}})
-    , m_scope(FlatpakResource::System)
+    , m_installation(installation)
     , m_state(AbstractResource::None)
     , m_type(FlatpakResource::DesktopApp)
 {
@@ -328,16 +328,6 @@ static QUrl screenshot(AppStream::Component *comp, AppStream::Image::Kind kind)
     return ret;
 }
 
-FlatpakResource::Scope FlatpakResource::scope() const
-{
-    return m_scope;
-}
-
-QString FlatpakResource::scopeAsString() const
-{
-    return m_scope == System ? QLatin1String("system") : QLatin1String("user");
-}
-
 QUrl FlatpakResource::screenshotUrl()
 {
     return screenshot(m_appdata, AppStream::Image::KindSource);
@@ -410,8 +400,7 @@ QString FlatpakResource::typeAsString() const
 QString FlatpakResource::uniqueId() const
 {
     // Build uniqueId
-    const QString scope = m_scope == System ? QLatin1String("system") : QLatin1String("user");
-    return QString::fromUtf8("%1/%2/%3/%4/%5/%6").arg(scope)
+    return QString::fromUtf8("%1/%2/%3/%4/%5/%6").arg(installationPath())
                                                  .arg(QLatin1String("flatpak"))
                                                  .arg(origin())
                                                  .arg(typeAsString())
@@ -424,9 +413,7 @@ void FlatpakResource::invokeApplication() const
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) localError = nullptr;
 
-    const FlatpakBackend *p = static_cast<FlatpakBackend*>(parent());
-
-    if (!flatpak_installation_launch(p->flatpakInstallationForAppScope(scope()),
+    if (!flatpak_installation_launch(m_installation,
                                      flatpakName().toStdString().c_str(),
                                      arch().toStdString().c_str(),
                                      branch().toStdString().c_str(),
@@ -539,11 +526,6 @@ void FlatpakResource::setRuntime(const QString &runtime)
     setPropertyState(RequiredRuntime, AlreadyKnown);
 }
 
-void FlatpakResource::setScope(FlatpakResource::Scope scope)
-{
-    m_scope = scope;
-}
-
 void FlatpakResource::setState(AbstractResource::State state)
 {
     if (m_state != state) {
@@ -558,21 +540,13 @@ void FlatpakResource::setType(FlatpakResource::ResourceType type)
     m_type = type;
 }
 
-// void FlatpakResource::setAddons(const AddonList& addons)
-// {
-//     Q_FOREACH (const QString& toInstall, addons.addonsToInstall()) {
-//         setAddonInstalled(toInstall, true);
-//     }
-//     Q_FOREACH (const QString& toRemove, addons.addonsToRemove()) {
-//         setAddonInstalled(toRemove, false);
-//     }
-// }
+QString FlatpakResource::installationPath() const
+{
+    return installationPath(m_installation);
+}
 
-// void FlatpakResource::setAddonInstalled(const QString& addon, bool installed)
-// {
-//     for(auto & elem : m_addons) {
-//         if(elem.name() == addon) {
-//             elem.setInstalled(installed);
-//         }
-//     }
-// }
+QString FlatpakResource::installationPath(FlatpakInstallation* flatpakInstallation)
+{
+    g_autoptr(GFile) path = flatpak_installation_get_path(flatpakInstallation);
+    return QString::fromUtf8(g_file_get_path(path));
+}
