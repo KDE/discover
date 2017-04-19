@@ -422,7 +422,7 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
         qWarning() << "Failed to parse metadata from app bundle for " << resource->name();
     }
 
-    auto installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
+    auto installation = flatpakInstallationForAppScope(resource->scope());
     updateAppState(installation, resource);
 
     // This will update also metadata (required runtime)
@@ -1004,7 +1004,7 @@ void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &
     }
 
     FlatpakTransaction *transaction = nullptr;
-    FlatpakInstallation *installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
+    FlatpakInstallation *installation = flatpakInstallationForAppScope(resource->scope());
 
     if (resource->propertyState(FlatpakResource::RequiredRuntime) == FlatpakResource::NotKnownYet && resource->type() == FlatpakResource::DesktopApp) {
         transaction = new FlatpakTransaction(installation, resource, Transaction::InstallRole, true);
@@ -1054,7 +1054,7 @@ void FlatpakBackend::removeApplication(AbstractResource *app)
         return;
     }
 
-    FlatpakInstallation *installation = resource->scope() == FlatpakResource::System ? m_flatpakInstallationSystem : m_flatpakInstallationUser;
+    FlatpakInstallation *installation = flatpakInstallationForAppScope(resource->scope());
     FlatpakTransaction *transaction = new FlatpakTransaction(installation, resource, Transaction::RemoveRole);
 
     connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
