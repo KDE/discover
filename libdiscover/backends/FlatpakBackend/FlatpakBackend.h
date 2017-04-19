@@ -69,6 +69,7 @@ private Q_SLOTS:
 
 private:
     void announceRatingsReady();
+    FlatpakInstallation * preferredInstallation() const { return m_installations.constFirst(); }
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     FlatpakRemote * getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
     FlatpakInstalledRef * getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
@@ -104,8 +105,7 @@ private:
     QList<QAction*> m_messageActions;
 
     GCancellable *m_cancellable;
-    FlatpakInstallation *m_flatpakInstallationUser = nullptr;
-    FlatpakInstallation *m_flatpakInstallationSystem = nullptr;
+    QVector<FlatpakInstallation *> m_installations;
 };
 
 #endif // FLATPAKBACKEND_H

@@ -37,9 +37,9 @@ private:
     FlatpakInstallation *m_installation;
 };
 
-FlatpakSourcesBackend::FlatpakSourcesBackend(FlatpakInstallation *systemInstallation, FlatpakInstallation *userInstallation, QObject* parent)
+FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *> &installations, QObject* parent)
     : AbstractSourcesBackend(parent)
-    , m_systemInstallation(systemInstallation)
+    , m_preferredInstallation(installations.constFirst())
     , m_sources(new QStandardItemModel(this))
 {
     QHash<int, QByteArray> roles = m_sources->roleNames();
@@ -47,12 +47,10 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(FlatpakInstallation *systemInstalla
     roles.insert(Qt::UserRole, "flatpakInstallation");
     m_sources->setItemRoleNames(roles);
 
-    if (!listRepositories(systemInstallation)) {
-        qWarning() << "Failed to list repositories from system installation";
-    }
-
-    if (!listRepositories(userInstallation)) {
-        qWarning() << "Failed to list repositories from user installation";
+    for (auto installation : installations) {
+        if (!listRepositories(installation)) {
+            qWarning() << "Failed to list repositories from installation" << installation;
+        }
     }
 }
 
@@ -131,7 +129,7 @@ FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
 {
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
 
-    auto remote = flatpak_installation_get_remote_by_name(m_systemInstallation, resource->flatpakName().toStdString().c_str(), cancellable, nullptr);
+    auto remote = flatpak_installation_get_remote_by_name(m_preferredInstallation, resource->flatpakName().toStdString().c_str(), cancellable, nullptr);
     if (remote) {
         qWarning() << "Source " << resource->flatpakName() << " already exists";
         return nullptr;
@@ -159,7 +157,7 @@ FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
         flatpak_remote_set_default_branch(remote, resource->branch().toStdString().c_str());
     }
 
-    if (!flatpak_installation_modify_remote(m_systemInstallation, remote, cancellable, nullptr)) {
+    if (!flatpak_installation_modify_remote(m_preferredInstallation, remote, cancellable, nullptr)) {
         qWarning() << "Failed to add source " << resource->flatpakName();
         return nullptr;
     }
@@ -169,7 +167,7 @@ FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
     it->setData(resource->comment().isEmpty() ? resource->flatpakName() : resource->comment(), Qt::ToolTipRole);
     it->setData(name(), AbstractSourcesBackend::SectionRole);
     it->setData(QVariant::fromValue<QObject*>(this), AbstractSourcesBackend::SourcesBackend);
-    it->setFlatpakInstallation(m_systemInstallation);
+    it->setFlatpakInstallation(m_preferredInstallation);
 
     m_sources->appendRow(it);
 

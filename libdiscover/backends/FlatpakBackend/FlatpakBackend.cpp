@@ -77,7 +77,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 
         checkForUpdates();
 
-        m_sources = new FlatpakSourcesBackend(m_flatpakInstallationSystem, m_flatpakInstallationUser, this);
+        m_sources = new FlatpakSourcesBackend(m_installations, this);
         SourcesModel::global()->addSourcesBackend(m_sources);
     }
 
@@ -94,14 +94,15 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 
 FlatpakBackend::~FlatpakBackend()
 {
-    g_object_unref(m_flatpakInstallationSystem);
-    g_object_unref(m_flatpakInstallationUser);
+    for(auto inst : m_installations)
+        g_object_unref(inst);
+
     g_object_unref(m_cancellable);
 }
 
 bool FlatpakBackend::isValid() const
 {
-    return m_sources && m_flatpakInstallationUser && m_flatpakInstallationSystem;
+    return m_sources && !m_installations.isEmpty();
 }
 
 void FlatpakBackend::announceRatingsReady()
@@ -318,7 +319,6 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
 
 FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 {
-    auto installation = m_flatpakInstallationSystem;
     QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
     const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
 
@@ -334,7 +334,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 
         g_autoptr(GBytes) bytes = g_bytes_new (contents.data(), contents.size());
 
-        remoteRef = flatpak_installation_install_ref_file (installation, bytes, m_cancellable, &error);
+        remoteRef = flatpak_installation_install_ref_file (preferredInstallation(), bytes, m_cancellable, &error);
         if (!remoteRef) {
             qWarning() << "Failed to install ref file: " << error->message;
             return nullptr;
@@ -405,7 +405,7 @@ FlatpakResource * FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
     resource->setFlatpakName(url.fileName().remove(QStringLiteral(".flatpakrepo")));
     resource->setType(FlatpakResource::Source);
 
-    auto repo = flatpak_installation_get_remote_by_name(m_flatpakInstallationSystem, resource->flatpakName().toStdString().c_str(), m_cancellable, nullptr);
+    auto repo = flatpak_installation_get_remote_by_name(preferredInstallation(), resource->flatpakName().toStdString().c_str(), m_cancellable, nullptr);
     if (!repo) {
         resource->setState(AbstractResource::State::None);
     } else {
@@ -556,21 +556,14 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
 
 bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
 {
-    QDir dir;
-    QString pathExports;
-    QString pathApps;
-    g_autoptr(GFile) path = nullptr;
-
-    if (!flatpakInstallation) {
-        return false;
-    }
+    Q_ASSERT(flatpakInstallation)
 
     // List installed applications from installed desktop files
-    path = flatpak_installation_get_path(flatpakInstallation);
-    pathExports = QString::fromUtf8(g_file_get_path(path)) + QLatin1String("/exports/");
-    pathApps = pathExports + QLatin1String("share/applications/");
+    g_autoptr(GFile) path = flatpak_installation_get_path(flatpakInstallation);
+    const auto pathExports = QString::fromUtf8(g_file_get_path(path)) + QLatin1String("/exports/");
+    const auto pathApps = pathExports + QLatin1String("share/applications/");
 
-    dir = QDir(pathApps);
+    const QDir dir(pathApps);
     if (dir.exists()) {
         foreach (const QString &file, dir.entryList(QDir::NoDotAndDotDot | QDir::Files)) {
             QString fnDesktop;
@@ -706,22 +699,16 @@ void FlatpakBackend::reloadPackageList()
 {
     setFetching(true);
 
-    // Load applications from appstream metadata
-    if (!loadAppsFromAppstreamData(m_flatpakInstallationSystem)) {
-        qWarning() << "Failed to load packages from appstream data from system installation";
-    }
+    for (auto installation : qAsConst(m_installations)) {
+        // Load applications from appstream metadata
+        if (!loadAppsFromAppstreamData(installation)) {
+            qWarning() << "Failed to load packages from appstream data from installation" << installation;
+        }
 
-    if (!loadAppsFromAppstreamData(m_flatpakInstallationUser)) {
-        qWarning() << "Failed to load packages from appstream data from user installation";
-    }
-
-    // Load installed applications and update existing resources with info from installed application
-    if (!loadInstalledApps(m_flatpakInstallationSystem)) {
-        qWarning() << "Failed to load installed packages from system installation";
-    }
-
-    if (!loadInstalledApps(m_flatpakInstallationUser)) {
-        qWarning() << "Failed to load installed packages from user installation";
+        // Load installed applications and update existing resources with info from installed application
+        if (!loadInstalledApps(installation)) {
+            qWarning() << "Failed to load installed packages from installation" << installation;
+        }
     }
 
     setFetching(false);
@@ -729,17 +716,17 @@ void FlatpakBackend::reloadPackageList()
 
 bool FlatpakBackend::setupFlatpakInstallations(GError **error)
 {
-    m_flatpakInstallationSystem = flatpak_installation_new_system(m_cancellable, error);
-    if (!m_flatpakInstallationSystem) {
-        return false;
+    auto system = flatpak_installation_new_system(m_cancellable, error);
+    if (system) {
+        m_installations << system;
     }
 
-    m_flatpakInstallationUser = flatpak_installation_new_user(m_cancellable, error);
-    if (!m_flatpakInstallationUser) {
-        return false;
+    auto user = flatpak_installation_new_user(m_cancellable, error);
+    if (user) {
+        m_installations << user;
     }
 
-    return true;
+    return !m_installations.isEmpty();
 }
 
 void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRef, FlatpakResource *resource)
@@ -981,9 +968,9 @@ AbstractReviewsBackend * FlatpakBackend::reviewsBackend() const
 FlatpakInstallation * FlatpakBackend::flatpakInstallationForAppScope(FlatpakResource::Scope appScope) const
 {
     if (appScope == FlatpakResource::Scope::System) {
-        return m_flatpakInstallationSystem;
+        return preferredInstallation();
     } else {
-        return m_flatpakInstallationUser;
+        return m_installations.last();
     }
 }
 
@@ -998,7 +985,7 @@ void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &
         FlatpakRemote *remote = m_sources->installSource(resource);
         if (remote) {
             resource->setState(AbstractResource::Installed);
-            integrateRemote(m_flatpakInstallationSystem, remote);
+            integrateRemote(preferredInstallation(), remote);
         }
         return;
     }
@@ -1066,13 +1053,13 @@ void FlatpakBackend::removeApplication(AbstractResource *app)
 
 void FlatpakBackend::checkForUpdates()
 {
-    // Load local updates, comparing current and latest commit
-    loadLocalUpdates(m_flatpakInstallationSystem);
-    loadLocalUpdates(m_flatpakInstallationUser);
+    for (auto installation : qAsConst(m_installations)) {
+        // Load local updates, comparing current and latest commit
+        loadLocalUpdates(installation);
 
-    // Load updates from remote repositories
-    loadRemoteUpdates(m_flatpakInstallationSystem);
-    loadRemoteUpdates(m_flatpakInstallationUser);
+        // Load updates from remote repositories
+        loadRemoteUpdates(installation);
+    }
 }
 
 AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)

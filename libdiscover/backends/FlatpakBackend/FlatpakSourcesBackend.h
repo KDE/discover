@@ -33,7 +33,7 @@ class FlatpakResource;
 class FlatpakSourcesBackend : public AbstractSourcesBackend
 {
 public:
-    explicit FlatpakSourcesBackend(FlatpakInstallation *systemInstallation, FlatpakInstallation *userInstallation, QObject *parent);
+    explicit FlatpakSourcesBackend(const QVector<FlatpakInstallation *>& installations, QObject *parent);
 
     QAbstractItemModel* sources() override;
     bool addSource(const QString &id) override;
@@ -46,7 +46,7 @@ public:
 private:
     bool listRepositories(FlatpakInstallation *installation);
 
-    FlatpakInstallation *m_systemInstallation;
+    FlatpakInstallation *m_preferredInstallation;
     QStandardItemModel* m_sources;
 };
 
