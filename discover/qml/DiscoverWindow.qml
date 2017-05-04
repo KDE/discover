@@ -156,7 +156,9 @@ Kirigami.ApplicationWindow
         }
     }
 
-    globalDrawer: DiscoverDrawer {}
+    globalDrawer: DiscoverDrawer {
+        focus: true
+    }
 
     onCurrentTopLevelChanged: {
         window.pageStack.clear()
