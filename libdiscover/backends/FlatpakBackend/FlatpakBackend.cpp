@@ -437,22 +437,19 @@ bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallati
 {
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
-    FlatpakResource::ResourceType appType = flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime;
+    const FlatpakResource::ResourceType appType = flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime;
 
-    g_autofree gchar *appId = nullptr;
-
-    if (appType == FlatpakResource::DesktopApp) {
-        appId = g_strdup_printf("%s.desktop", flatpak_ref_get_name(FLATPAK_REF(ref)));
-    } else {
-        appId = g_strdup(flatpak_ref_get_name(FLATPAK_REF(ref)));
-    }
+    const QString name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
+    const QString appId = appType == FlatpakResource::DesktopApp ?
+            QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))) + QStringLiteral(".desktop") :
+            name;
 
     const QString uniqueId = QStringLiteral("%1/%2/%3/%4/%5/%6").arg(FlatpakResource::installationPath(flatpakInstallation))
                                                                    .arg(QLatin1String("flatpak"))
                                                                    .arg(QString::fromUtf8(flatpak_installed_ref_get_origin(ref)))
                                                                    .arg(FlatpakResource::typeAsString(appType))
-                                                                   .arg(QString::fromUtf8(appId))
-                                                                   .arg(QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref))));
+                                                                   .arg(appId)
+                                                                   .arg(branch);
 
     // Compare uniqueId first then attempt to compare what we have
     if (resource->uniqueId() == uniqueId) {
@@ -462,11 +459,11 @@ bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallati
     // Check if we have information about architecture and branch, otherwise compare names only
     // Happens with apps which don't have appstream metadata bug got here thanks to installed desktop file
     if (!resource->arch().isEmpty() && !resource->branch().isEmpty()) {
-        return resource->arch() == arch && resource->branch() == branch && (resource->flatpakName() == QLatin1String(appId) ||
-                                                                            resource->flatpakName() == QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))));
+        return resource->arch() == arch && resource->branch() == branch && (resource->flatpakName() == appId ||
+                                                                            resource->flatpakName() == name);
     }
 
-    return (resource->flatpakName() == QLatin1String(appId) || resource->flatpakName() == QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))));
+    return resource->flatpakName() == appId || resource->flatpakName() == name;
 }
 
 class FlatpakSource
