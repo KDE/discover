@@ -997,6 +997,7 @@ void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &
         } else {
             transaction = new FlatpakTransaction(installation, resource, Transaction::InstallRole);
         }
+        transaction->start();
     }
 
     connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {

@@ -59,6 +59,7 @@ FlatpakTransaction::~FlatpakTransaction()
 
 void FlatpakTransaction::cancel()
 {
+    Q_ASSERT(m_appJob);
     m_appJob->cancel();
     if (m_runtime) {
         m_runtimeJob->cancel();
