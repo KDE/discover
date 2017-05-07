@@ -76,7 +76,7 @@ void FlatpakTransactionJob::run()
             if (m_app->flatpakFileType() == QStringLiteral("flatpak")) {
                 g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toStdString().c_str());
                 if (!file) {
-                    qWarning() << "Failed to install bundled application " << m_app->name();
+                    qWarning() << "Failed to install bundled application" << m_app->name();
                 }
                 ref = flatpak_installation_install_bundle(m_installation, file, flatpakInstallationProgressCallback, this, m_cancellable, &localError);
             } else {
@@ -93,7 +93,7 @@ void FlatpakTransactionJob::run()
         }
 
         if (!ref) {
-            qWarning() << "Failed to install " << m_app->name() << " :"<< localError->message;
+            qWarning() << "Failed to install" << m_app->name() << ':' << localError->message;
             Q_EMIT jobFinished(false);
             return;
         }
@@ -106,7 +106,7 @@ void FlatpakTransactionJob::run()
                                             flatpakInstallationProgressCallback,
                                             this,
                                             cancellable, &localError)) {
-            qWarning() << "Failed to uninstall " << m_app->name() << " :" << localError->message;
+            qWarning() << "Failed to uninstall" << m_app->name() << ':' << localError->message;
             Q_EMIT jobFinished(false);
             return;
         }
