@@ -19,8 +19,8 @@ include(GenerateExportHeader)
 
 find_package(PkgConfig REQUIRED)
 
-find_package(KF5 5.29 REQUIRED CoreAddons Config Crash DBusAddons I18n Archive Declarative XmlGui ItemModels KIO)
-find_package(KF5Kirigami2)
+find_package(KF5 5.34 REQUIRED CoreAddons Config Crash DBusAddons I18n Archive Declarative XmlGui ItemModels KIO)
+find_package(KF5Kirigami2 2.1.0)
 
 find_package(packagekitqt5)
 find_package(AppStreamQt 0.10)
