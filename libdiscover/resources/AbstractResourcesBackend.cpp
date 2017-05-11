@@ -49,7 +49,7 @@ ResultsStream::ResultsStream(const QString &objectName, const QVector<AbstractRe
     QTimer::singleShot(0, this, [resources, this] () {
         if (!resources.isEmpty())
             Q_EMIT resourcesFound(resources);
-        deleteLater();
+        finish();
     });
 }
 
@@ -61,6 +61,11 @@ ResultsStream::ResultsStream(const QString &objectName)
 
 ResultsStream::~ResultsStream()
 {
+}
+
+void ResultsStream::finish()
+{
+    deleteLater();
 }
 
 AbstractResourcesBackend::AbstractResourcesBackend(QObject* parent)

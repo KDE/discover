@@ -418,7 +418,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 const auto res = resourcesByPackageNames<QVector<AbstractResource*>>({PackageKit::Daemon::packageName(packageId.toString())});
                 stream->resourcesFound(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
             }
-            stream->deleteLater();
+            stream->finish();
         }, Qt::QueuedConnection);
         return stream;
     }

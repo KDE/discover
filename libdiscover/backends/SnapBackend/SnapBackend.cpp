@@ -78,7 +78,7 @@ ResultsStream* SnapBackend::populate(SnapJob* job, AbstractResource::State state
 
     connect(job, &SnapJob::finished, stream, [stream, this, state](SnapJob* job) {
         if (!job->isSuccessful()) {
-            stream->deleteLater();
+            stream->finish();
             return;
         }
 
@@ -104,7 +104,7 @@ ResultsStream* SnapBackend::populate(SnapJob* job, AbstractResource::State state
         }
         if (!ret.isEmpty())
             stream->resourcesFound(ret);
-        stream->deleteLater();
+        stream->finis();
     });
     job->start();
     return stream;

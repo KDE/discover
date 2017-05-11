@@ -217,7 +217,7 @@ void ResourcesProxyModel::invalidateFilter()
     connect(m_currentStream, &AggregatedResultsStream::resourcesFound, this, [this](const QVector<AbstractResource*>& resources) {
         addResources(resources);
     });
-    connect(m_currentStream, &AggregatedResultsStream::destroyed, this, [this]() {
+    connect(m_currentStream, &AggregatedResultsStream::finished, this, [this]() {
         m_currentStream = nullptr;
         Q_EMIT busyChanged(false);
     });

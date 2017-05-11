@@ -328,8 +328,8 @@ ResultsStream * KNSBackend::searchStream(const QString &searchText)
         m_responsePending = true;
         m_page = 0;
         connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
-        connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::deleteLater);
-        connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::deleteLater);
+        connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::finish);
+        connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::finish);
     };
     if (m_responsePending) {
         connect(this, &KNSBackend::availableForQueries, stream, start, Qt::QueuedConnection);
@@ -357,14 +357,14 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
     auto start = [this, entryid, stream]() {
         m_responsePending = true;
         m_engine->fetchEntryById(entryid);
-        connect(m_engine, &KNSCore::Engine::signalError, stream, &QObject::deleteLater);
+        connect(m_engine, &KNSCore::Engine::signalError, stream, &ResultsStream::finish);
         connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, stream, [this, stream, entryid](const KNSCore::EntryInternal &entry) {
             if (entry.uniqueId() == entryid) {
                 stream->resourcesFound({resourceForEntry(entry)});
             }
             m_responsePending = false;
             QTimer::singleShot(0, this, &KNSBackend::availableForQueries);
-            stream->deleteLater();
+            stream->finish();
         });
     };
     if (m_responsePending) {
