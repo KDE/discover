@@ -46,10 +46,9 @@ Kirigami.AbstractListItem
     Item {
         implicitHeight: Math.max(conts.implicitHeight, resourceIcon.height)
 
-        QIconItem {
+        Kirigami.Icon {
             id: resourceIcon
-            icon: application.icon
-
+            source: application.icon
             readonly property real contHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 4 : Kirigami.Units.gridUnit * 7
             height: contHeight
             width: contHeight

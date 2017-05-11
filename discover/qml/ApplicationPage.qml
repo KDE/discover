@@ -103,11 +103,11 @@ DiscoverPage {
         RowLayout {
             Layout.fillWidth: true
             spacing: Kirigami.Units.gridUnit
-            QIconItem {
+            Kirigami.Icon {
                 Layout.preferredHeight: 128
                 Layout.preferredWidth: 128
 
-                icon: appInfo.application.icon
+                source: appInfo.application.icon
                 Layout.alignment: Qt.AlignVCenter
             }
             ColumnLayout {

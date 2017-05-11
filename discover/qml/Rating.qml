@@ -21,6 +21,7 @@ import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover.app 1.0
+import org.kde.kirigami 2.0 as Kirigami
 
 RowLayout
 {
@@ -38,14 +39,14 @@ RowLayout
     Repeater {
         id: theRepeater
         model: view.rating>0 ? 5 : 0
-        delegate: QIconItem {
+        delegate: Kirigami.Icon {
             Layout.minimumWidth: view.starSize
             Layout.minimumHeight: view.starSize
             Layout.preferredWidth: view.starSize
             Layout.preferredHeight: view.starSize
 
             width: height
-            icon: "rating"
+            source: "rating"
             opacity: (view.editable && mouse.item.containsMouse ? 0.7
                         : index>=view.ratingIndex ? 0.2
                         : 1)

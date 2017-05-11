@@ -80,10 +80,10 @@ Kirigami.BasicListItem {
                         RowLayout {
                             Layout.fillWidth: true
 
-                            QIconItem {
+                            Kirigami.Icon {
                                 Layout.fillHeight: true
                                 Layout.minimumWidth: height
-                                icon: model.app.icon
+                                source: model.app.icon
                             }
                             Label {
                                 anchors.verticalCenter: parent.verticalCenter

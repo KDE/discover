@@ -96,10 +96,10 @@ DiscoverPage
                 visible: page.footerLabel !== ""
                 text: page.footerLabel
             }
-            QIconItem {
+            Kirigami.Icon {
                 Layout.alignment: Qt.AlignHCenter
                 visible: page.footerLabel !== ""
-                icon: "update-none"
+                source: "update-none"
                 opacity: 0.3
                 width: 200
                 height: 200
@@ -155,10 +155,10 @@ DiscoverPage
                         onClicked: model.checked = (model.checked==Qt.Checked ? Qt.Unchecked : Qt.Checked)
                     }
 
-                    QIconItem {
+                    Kirigami.Icon {
                         Layout.fillHeight: true
                         Layout.preferredWidth: height
-                        icon: decoration
+                        source: decoration
                     }
 
                     Label {

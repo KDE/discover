@@ -37,8 +37,8 @@ Kirigami.OverlaySheet
                     checked: model.checked
                     onClicked: addonsModel.changeState(packageName, checked)
                 }
-                QIconItem {
-                    icon: "applications-other"
+                Kirigami.Icon {
+                    source: "applications-other"
                     smooth: true
                     Layout.minimumWidth: content.implicitHeight
                     Layout.minimumHeight: content.implicitHeight

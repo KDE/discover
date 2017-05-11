@@ -91,8 +91,8 @@ DiscoverPage {
                     model: SourcesModel.actions
 
                     delegate: RowLayout {
-                        QIconItem {
-                            icon: modelData.icon
+                        Kirigami.Icon {
+                            source: modelData.icon
                         }
                         ToolButton {
                             height: parent.height
