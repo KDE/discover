@@ -44,5 +44,6 @@ Icon=plasmadiscover
 Type=Application
 X-DocPath=plasma-discover/index.html
 Categories=Qt;KDE;System;
+NoDisplay=true
 
 MimeType=application/vnd.flatpak.ref;application/vnd.flatpak;application/vnd.flatpak.repo
