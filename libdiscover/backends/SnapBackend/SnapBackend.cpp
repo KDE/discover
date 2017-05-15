@@ -104,7 +104,7 @@ ResultsStream* SnapBackend::populate(SnapJob* job, AbstractResource::State state
         }
         if (!ret.isEmpty())
             stream->resourcesFound(ret);
-        stream->finis();
+        stream->finish();
     });
     job->start();
     return stream;
