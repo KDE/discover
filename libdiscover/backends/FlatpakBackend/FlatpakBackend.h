@@ -26,6 +26,7 @@
 
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
+#include <QSharedPointer>
 
 #include <AppStreamQt/component.h>
 
@@ -99,7 +100,7 @@ private:
     QHash<QString, FlatpakResource*> m_resources;
     StandardBackendUpdater  *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;
-    OdrsReviewsBackend *m_reviews;
+    QSharedPointer<OdrsReviewsBackend> m_reviews;
     bool m_fetching;
     QList<QAction*> m_messageActions;
 

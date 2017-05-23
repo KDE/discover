@@ -28,6 +28,7 @@
 #include <QPointer>
 #include <QTimer>
 #include <QSet>
+#include <QSharedPointer>
 #include <PackageKit/Transaction>
 #include <AppStreamQt/pool.h>
 
@@ -114,7 +115,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QTimer m_delayedDetailsFetch;
         QSet<QString> m_packageNamesToFetchDetails;
         Packages m_packages;
-        OdrsReviewsBackend* const m_reviews;
+        QSharedPointer<OdrsReviewsBackend> m_reviews;
 };
 
 #endif // PACKAGEKITBACKEND_H

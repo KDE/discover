@@ -30,7 +30,8 @@
 #include <resources/SourcesModel.h>
 #include <Transaction/Transaction.h>
 #include <Transaction/TransactionModel.h>
-#include <ReviewsBackend/OdrsReviewsBackend.h>
+#include <appstream/OdrsReviewsBackend.h>
+#include <appstream/AppStreamIntegration.h>
 
 #include <AppStreamQt/bundle.h>
 #include <AppStreamQt/component.h>
@@ -61,7 +62,7 @@ MUON_BACKEND_PLUGIN(FlatpakBackend)
 FlatpakBackend::FlatpakBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
-    , m_reviews(new OdrsReviewsBackend(this))
+    , m_reviews(AppStreamIntegration::global()->reviews())
     , m_fetching(false)
 {
     g_autoptr(GError) error = nullptr;
@@ -87,9 +88,9 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(updateAction, &QAction::triggered, this, &FlatpakBackend::checkForUpdates);
 
-    m_messageActions = QList<QAction*>() << updateAction;
+    m_messageActions = { updateAction };
 
-    connect(m_reviews, &OdrsReviewsBackend::ratingsReady, this, &FlatpakBackend::announceRatingsReady);
+    connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, &FlatpakBackend::announceRatingsReady);
 }
 
 FlatpakBackend::~FlatpakBackend()
@@ -953,7 +954,7 @@ AbstractBackendUpdater * FlatpakBackend::backendUpdater() const
 
 AbstractReviewsBackend * FlatpakBackend::reviewsBackend() const
 {
-    return m_reviews;
+    return m_reviews.data();
 }
 
 void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &addons)

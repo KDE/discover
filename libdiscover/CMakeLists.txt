@@ -13,7 +13,6 @@ set(discovercommon_SRCS
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
     ReviewsBackend/AbstractLoginBackend.cpp
-    ReviewsBackend/OdrsReviewsBackend.cpp
     ReviewsBackend/ReviewsModel.cpp
     Transaction/AddonList.cpp
     Transaction/Transaction.cpp
@@ -38,6 +37,13 @@ set(discovercommon_SRCS
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp
 )
+
+if(AppStreamQt_FOUND)
+    set(discovercommon_SRCS ${discovercommon_SRCS}
+        appstream/OdrsReviewsBackend.cpp
+        appstream/AppStreamIntegration.cpp
+    )
+endif()
 
 kconfig_add_kcfg_files(discovercommon_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 add_library(DiscoverCommon ${discovercommon_SRCS})
