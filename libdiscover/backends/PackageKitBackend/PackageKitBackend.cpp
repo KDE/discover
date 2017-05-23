@@ -30,7 +30,8 @@
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
 #include <Transaction/TransactionModel.h>
-#include <ReviewsBackend/OdrsReviewsBackend.h>
+#include <appstream/OdrsReviewsBackend.h>
+#include <appstream/AppStreamIntegration.h>
 
 #include <QProcess>
 #include <QStringList>
@@ -62,7 +63,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     , m_updater(new PackageKitUpdater(this))
     , m_refresher(nullptr)
     , m_isFetching(0)
-    , m_reviews(new OdrsReviewsBackend(this))
+    , m_reviews(AppStreamIntegration::global()->reviews())
 {
     bool b = m_appdata.load();
     reloadPackageList();
@@ -107,7 +108,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
-    connect(m_reviews, &OdrsReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
+    connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
     SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
 }
@@ -578,7 +579,7 @@ QVector<AppPackageKitResource*> PackageKitBackend::extendedBy(const QString& id)
 
 AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const
 {
-    return m_reviews;
+    return m_reviews.data();
 }
 
 AbstractResource * PackageKitBackend::resourceForFile(const QUrl& file)
