@@ -55,7 +55,6 @@ Kirigami.BasicListItem {
     
     readonly property var v3: Kirigami.OverlaySheet {
         id: sheet
-        parent: pageStack
 
         contentItem: ColumnLayout {
             spacing: 0
