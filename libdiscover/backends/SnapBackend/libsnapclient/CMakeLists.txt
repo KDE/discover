@@ -1,7 +1,7 @@
-add_library(SnapClient SnapSocket.cpp)
-target_link_libraries(SnapClient PUBLIC Qt5::Network KF5::Auth)
-add_library(Snap::Client ALIAS SnapClient)
-install(TARGETS SnapClient DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
+add_library(DiscoverSnapClient SnapSocket.cpp)
+target_link_libraries(DiscoverSnapClient PUBLIC Qt5::Network KF5::Auth)
+add_library(Discover::SnapClient ALIAS DiscoverSnapClient)
+install(TARGETS DiscoverSnapClient DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 add_executable(libsnap_helper SnapAuthHelper.cpp)
 target_link_libraries(libsnap_helper Qt5::Network KF5::Auth)
