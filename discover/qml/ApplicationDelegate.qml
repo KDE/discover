@@ -73,6 +73,7 @@ Kirigami.AbstractListItem
                     Layout.fillWidth: true
                     elide: Text.ElideRight
                     text: delegateArea.application.name
+                    Layout.minimumWidth: implicitWidth
                     maximumLineCount: 1
                 }
                 Label {
