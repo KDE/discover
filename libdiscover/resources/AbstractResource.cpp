@@ -56,12 +56,12 @@ bool AbstractResource::isTechnical() const
     return false;
 }
 
-void AbstractResource::addMetadata(const QString &key, const QVariant &value)
+void AbstractResource::addMetadata(const QString &key, const QJsonValue &value)
 {
     m_metadata.insert(key, value);
 }
 
-QVariant AbstractResource::getMetadata(const QString &key)
+QJsonValue AbstractResource::getMetadata(const QString &key)
 {
     return m_metadata.value(key);
 }

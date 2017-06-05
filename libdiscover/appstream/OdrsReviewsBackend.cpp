@@ -151,14 +151,14 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
         }
     }
 
-    QVariantMap map {{QStringLiteral("app_id"), app->appstreamId()},
-                     {QStringLiteral("distro"), osName()},
-                     {QStringLiteral("user_hash"), userHash()},
-                     {QStringLiteral("version"), app->isInstalled() ? app->installedVersion() : app->availableVersion()},
-                     {QStringLiteral("locale"), QLocale::system().name()},
-                     {QStringLiteral("limit"), 0}};
-
-    QJsonDocument document(QJsonObject::fromVariantMap(map));
+    const QJsonDocument document(QJsonObject{
+            {QStringLiteral("app_id"), app->appstreamId()},
+            {QStringLiteral("distro"), osName()},
+            {QStringLiteral("user_hash"), userHash()},
+            {QStringLiteral("version"), app->isInstalled() ? app->installedVersion() : app->availableVersion()},
+            {QStringLiteral("locale"), QLocale::system().name()},
+            {QStringLiteral("limit"), 0}
+    });
 
     QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
     QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/fetch")));
@@ -175,7 +175,7 @@ void OdrsReviewsBackend::reviewsFetched(QNetworkReply *reply)
 {
     if (reply->error() == QNetworkReply::NoError) {
         QByteArray data = reply->readAll();
-        QJsonDocument document = QJsonDocument::fromJson(data);
+        const QJsonDocument document = QJsonDocument::fromJson(data);
         AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
         parseReviews(document, resource);
 
@@ -210,13 +210,13 @@ Rating * OdrsReviewsBackend::ratingForApplication(AbstractResource *app) const
 
 void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
 {
-    QVariantMap map {{QStringLiteral("app_id"), review->applicationName()},
+    const QJsonDocument document(QJsonObject{
+                     {QStringLiteral("app_id"), review->applicationName()},
                      {QStringLiteral("user_skey"), review->getMetadata(QStringLiteral("ODRS::user_skey")).toString()},
                      {QStringLiteral("user_hash"), userHash()},
                      {QStringLiteral("distro"), osName()},
-                     {QStringLiteral("review_id"), review->id()}};
-
-    QJsonDocument document(QJsonObject::fromVariantMap(map));
+                     {QStringLiteral("review_id"), QJsonValue(double(review->id()))} //if we really need uint64 we should get it in QJsonValue
+    });
 
     QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
     QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/%1").arg(useful ? QStringLiteral("upvote") : QStringLiteral("downvote"))));
@@ -238,18 +238,18 @@ void OdrsReviewsBackend::usefulnessSubmitted(QNetworkReply *reply)
 
 void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summary, const QString &description, const QString &rating)
 {
-    QVariantMap map {{QStringLiteral("app_id"), res->appstreamId()},
+    QJsonObject map = {{QStringLiteral("app_id"), res->appstreamId()},
                      {QStringLiteral("user_skey"), res->getMetadata(QStringLiteral("ODRS::user_skey")).toString()},
                      {QStringLiteral("user_hash"), userHash()},
                      {QStringLiteral("version"), res->isInstalled() ? res->installedVersion() : res->availableVersion()},
                      {QStringLiteral("locale"), QLocale::system().name()},
                      {QStringLiteral("distro"), osName()},
-                     {QStringLiteral("user_display"), KUser().property(KUser::FullName)},
+                     {QStringLiteral("user_display"), QJsonValue::fromVariant(KUser().property(KUser::FullName))},
                      {QStringLiteral("summary"), summary},
                      {QStringLiteral("description"), description},
                      {QStringLiteral("rating"), rating.toInt() * 10}};
 
-    QJsonDocument document(QJsonObject::fromVariantMap(map));
+    const QJsonDocument document(map);
 
     QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
     QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/submit")));
@@ -271,7 +271,7 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
     if (reply->error() == QNetworkReply::NoError) {
         qWarning() << "Review submitted";
         AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
-        QJsonArray array = QJsonArray::fromVariantList({resource->getMetadata(QStringLiteral("ODRS::review_map")).toMap()});
+        const QJsonArray array = {resource->getMetadata(QStringLiteral("ODRS::review_map")).toObject()};
         QJsonDocument document = QJsonDocument(array);
         // Remove local file with reviews so we can re-download it next time to get our review
         QFile file(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/reviews/%1.json").arg(array.first().toObject().value(QStringLiteral("app_id")).toString()));

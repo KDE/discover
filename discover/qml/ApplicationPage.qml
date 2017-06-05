@@ -44,7 +44,6 @@ DiscoverPage {
 
     pageOverlay: Item {
         Rectangle {
-            id: bg
             color: Kirigami.Theme.viewBackgroundColor
             anchors.fill: layo
         }
@@ -60,14 +59,14 @@ DiscoverPage {
                 right: parent.right
                 bottom: parent.bottom
             }
-            ToolButton {
-                iconName: "draw-arrow-forward"
+            Kirigami.BasicListItem {
+                implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
+                separatorVisible: false
+                Layout.fillWidth: false
+                icon: "draw-arrow-forward"
+                label: i18n("Close Description")
                 enabled: appInfo.sClose.enabled
                 onClicked: appInfo.sClose.activated()
-            }
-            Label {
-                enabled: appInfo.sClose.enabled
-                text: i18n("Close Description")
             }
 
             Item {
@@ -91,9 +90,9 @@ DiscoverPage {
         }
         Kirigami.Separator {
             anchors {
-                left: bg.left
-                right: bg.right
-                top: bg.top
+                left: layo.left
+                right: layo.right
+                top: layo.top
             }
             z: 4000
         }

@@ -1,2 +1,2 @@
-set(EXTRA_LIBS Snap::Client)
+set(EXTRA_LIBS Discover::SnapClient)
 add_unit_test(snaptest SnapTest.cpp)
