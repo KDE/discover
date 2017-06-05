@@ -60,7 +60,8 @@ KNSBackend * KNSResource::knsBackend() const
 
 QVariant KNSResource::icon() const
 {
-    return knsBackend()->iconName();
+    const QString thumbnail = m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1);
+    return thumbnail.isEmpty() ? knsBackend()->iconName() : m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1);
 }
 
 QString KNSResource::comment()
