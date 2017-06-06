@@ -8,7 +8,7 @@ find_package(ECM REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} "${CMAKE_SOURCE_DIR}/cmake")
 
-find_package(Qt5 5.2.0 REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick)
+find_package(Qt5 5.7.0 REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
@@ -47,7 +47,7 @@ set_package_properties(KF5Attica PROPERTIES
     PURPOSE "Required to build the KNewStuff3 backend"
     TYPE OPTIONAL)
 set_package_properties(KF5Kirigami2 PROPERTIES
-    DESCRIPTION "KDE’s lightweight user interface framework for mobile and convergent applications"
+    DESCRIPTION "KDE's lightweight user interface framework for mobile and convergent applications"
     URL "https://techbase.kde.org/Kirigami"
     PURPOSE "Required by discover qml components"
     TYPE RUNTIME)
