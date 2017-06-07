@@ -37,7 +37,7 @@ DummyResource::DummyResource(QString name, bool isTechnical, AbstractResourcesBa
 {
     const int nofScreenshots = KRandom::random() % 5;
     m_screenshots = QList<QUrl>{
-        QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_large.png")),
+        QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/000/014/863/large.png")),
         QUrl(QStringLiteral("https://c2.staticflickr.com/6/5656/21772158034_dc84382527_o.jpg")),
         QUrl(QStringLiteral("https://c1.staticflickr.com/9/8479/8166397343_b78106f353_k.jpg")),
         QUrl(QStringLiteral("https://c2.staticflickr.com/4/3685/9954407993_dad10a6943_k.jpg")),
