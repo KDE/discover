@@ -29,6 +29,7 @@ class AbstractResource;
 class Category;
 class QWindow;
 class QQmlApplicationEngine;
+class CachedNetworkAccessManagerFactory;
 
 class DiscoverMainWindow : public QObject
 {
@@ -97,6 +98,7 @@ class DiscoverMainWindow : public QObject
         QQmlApplicationEngine * const m_engine;
 
         CompactMode m_mode;
+        QScopedPointer<CachedNetworkAccessManagerFactory> m_networkAccessManagerFactory;
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H
