@@ -84,6 +84,7 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     , m_collection(this)
     , m_engine(new QQmlApplicationEngine)
     , m_mode(mode)
+    , m_networkAccessManagerFactory(new CachedNetworkAccessManagerFactory)
 {
     ResourcesModel *m = ResourcesModel::global();
     m->integrateActions(actionCollection());
@@ -109,8 +110,8 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     setupActions();
 
     //Here we set up a cache for the screenshots
-    CachedNetworkAccessManagerFactory *networkAccessManagerFactory = new CachedNetworkAccessManagerFactory;
-    m_engine->setNetworkAccessManagerFactory(networkAccessManagerFactory);
+    delete m_engine->networkAccessManagerFactory();
+    m_engine->setNetworkAccessManagerFactory(m_networkAccessManagerFactory.data());
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
 
     connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverMainWindow::integrateObject);
