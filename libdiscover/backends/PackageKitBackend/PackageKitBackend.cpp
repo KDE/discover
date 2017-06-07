@@ -412,12 +412,14 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
         connect(tArch, &PackageKit::Transaction::package, this, [tArch](PackageKit::Transaction::Info /*info*/, const QString &packageId){
             tArch->setProperty("packageId", packageId);
         });
-        connect(tArch, &PackageKit::Transaction::finished, stream, [stream, tArch, ids, this]() {
+        connect(tArch, &PackageKit::Transaction::finished, stream, [stream, tArch, ids, this](PackageKit::Transaction::Exit status) {
             getPackagesFinished();
-            const auto packageId = tArch->property("packageId");
-            if (!packageId.isNull()) {
-                const auto res = resourcesByPackageNames<QVector<AbstractResource*>>({PackageKit::Daemon::packageName(packageId.toString())});
-                stream->resourcesFound(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
+            if (status == PackageKit::Transaction::Exit::ExitSuccess) {
+                const auto packageId = tArch->property("packageId");
+                if (!packageId.isNull()) {
+                    const auto res = resourcesByPackageNames<QVector<AbstractResource*>>({PackageKit::Daemon::packageName(packageId.toString())});
+                    stream->resourcesFound(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
+                }
             }
             stream->finish();
         }, Qt::QueuedConnection);
