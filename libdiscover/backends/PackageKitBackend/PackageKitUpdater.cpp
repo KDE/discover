@@ -34,6 +34,7 @@ PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
     m_backend(parent),
     m_isCancelable(false),
     m_isProgressing(false),
+    m_status(PackageKit::Transaction::Status::StatusUnknown),
     m_speed(0),
     m_remainingTime(0),
     m_percentage(0),
@@ -59,6 +60,7 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     m_packagesRemoved.clear();
     m_transaction = PackageKit::Daemon::updatePackages(involvedPackages(m_toUpgrade).toList(), flags);
     m_isCancelable = m_transaction->allowCancel();
+    m_status = PackageKit::Transaction::Status::StatusUnknown;
 
     connect(m_transaction.data(), &PackageKit::Transaction::finished, this, &PackageKitUpdater::finished);
     connect(m_transaction.data(), &PackageKit::Transaction::package, this, &PackageKitUpdater::packageResolved);
