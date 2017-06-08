@@ -63,6 +63,8 @@ public:
 
     QStringList executables() const override;
 
+    QUrl knsUrl() const;
+
 private:
     const QStringList m_categories;
     KNSCore::EntryInternal m_entry;

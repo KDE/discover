@@ -206,3 +206,8 @@ QStringList KNSResource::executables() const
     else
         return {};
 }
+
+QUrl KNSResource::knsUrl() const
+{
+    return QUrl(QStringLiteral("kns://")+knsBackend()->name() + QLatin1Char('/') + QUrl(m_entry.providerId()).host() + QLatin1Char('/') + m_entry.uniqueId());
+}
