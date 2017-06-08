@@ -35,6 +35,7 @@
 #include <QThread>
 #include <QAction>
 #include <QMetaProperty>
+#include <KLocalizedString>
 
 ResourcesModel *ResourcesModel::s_self = nullptr;
 
@@ -61,6 +62,18 @@ void ResourcesModel::init(bool load)
 
     if(load)
         QMetaObject::invokeMethod(this, "registerAllBackends", Qt::QueuedConnection);
+
+
+    QAction* updateAction = new QAction(this);
+    updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
+    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    connect(this, &ResourcesModel::fetchingChanged, updateAction, [updateAction, this](){
+        updateAction->setEnabled(!isFetching());
+    });
+    connect(updateAction, &QAction::triggered, this, &ResourcesModel::checkForUpdates);
+
+    m_ownActions += updateAction;
 }
 
 ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
@@ -223,7 +236,7 @@ bool ResourcesModel::isFetching() const
 
 QList<QAction*> ResourcesModel::messageActions() const
 {
-    QList<QAction*> ret;
+    QList<QAction*> ret = m_ownActions;
     foreach(AbstractResourcesBackend* b, m_backends) {
         ret += b->messageActions();
     }
@@ -320,4 +333,10 @@ AbstractResource* ResourcesModel::resourceForFile(const QUrl& file)
             break;
     }
     return ret;
+}
+
+void ResourcesModel::checkForUpdates()
+{
+    for(auto backend: qAsConst(m_backends))
+        backend->checkForUpdates();
 }

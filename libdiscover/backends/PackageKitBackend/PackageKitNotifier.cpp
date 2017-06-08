@@ -22,6 +22,11 @@
 #include "PackageKitNotifier.h"
 
 #include <QTimer>
+#include <QStandardPaths>
+#include <QRegularExpression>
+#include <QProcess>
+#include <QTextStream>
+#include <QDebug>
 #include <PackageKit/Daemon>
 
 PackageKitNotifier::PackageKitNotifier(QObject* parent)
@@ -40,9 +45,24 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     //Check if there's packages after 5'
     QTimer::singleShot(5 * 60 * 1000, this, &PackageKitNotifier::refreshDatabase);
 
-    QTimer *dailyCheck = new QTimer(this);
-    dailyCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
-    connect(dailyCheck, &QTimer::timeout, this, &PackageKitNotifier::refreshDatabase);
+    int interval = 24 * 60 * 60 * 1000;
+    QTimer *regularCheck = new QTimer(this);
+    regularCheck->setInterval(interval); //refresh at least once every day
+    connect(regularCheck, &QTimer::timeout, this, &PackageKitNotifier::refreshDatabase);
+
+    const QString aptconfig = QStandardPaths::findExecutable(QStringLiteral("apt-config"));
+    if (!aptconfig.isEmpty()) {
+        auto process = checkAptVariable(aptconfig, QLatin1String("Apt::Periodic::Update-Package-Lists"), [regularCheck](const QStringRef& value) {
+            bool ok;
+            int time = value.toInt(&ok);
+            if (ok && time > 0)
+                regularCheck->setInterval(time * 60 * 60 * 1000);
+            else
+                qWarning() << "couldn't understand value for timer:" << value;
+        });
+        connect(process, static_cast<void(QProcess::*)(int)>(&QProcess::finished), regularCheck, static_cast<void(QTimer::*)()>(&QTimer::start));
+    } else
+        regularCheck->start();
 }
 
 PackageKitNotifier::~PackageKitNotifier()
@@ -122,4 +142,26 @@ void PackageKitNotifier::refreshDatabase()
             delete m_refresher;
         });
     }
+}
+
+QProcess* PackageKitNotifier::checkAptVariable(const QString &aptconfig, const QLatin1String& varname, std::function<void(const QStringRef& val)> func)
+{
+    QProcess* process = new QProcess;
+    process->start(aptconfig, {QStringLiteral("dump")});
+    connect(process, static_cast<void(QProcess::*)(int)>(&QProcess::finished), this, [func, process, varname](int code) {
+        if (code != 0)
+            return;
+
+        QRegularExpression rx(QLatin1Char('^') + varname + QStringLiteral(" \"(.*?)\"$"));
+        QTextStream stream(process);
+        QString line;
+        while (stream.readLineInto(&line)) {
+            const auto match = rx.match(line);
+            if (match.hasMatch()) {
+                func(match.capturedRef(1));
+            }
+        }
+    });
+    connect(process, static_cast<void(QProcess::*)(int)>(&QProcess::finished), process, &QObject::deleteLater);
+    return process;
 }

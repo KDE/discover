@@ -86,16 +86,6 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     m_delayedDetailsFetch.setInterval(0);
     connect(&m_delayedDetailsFetch, &QTimer::timeout, this, &PackageKitBackend::performDetailsFetch);
 
-    QAction* updateAction = new QAction(this);
-    updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
-    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
-    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(this, &PackageKitBackend::fetchingChanged, updateAction, [updateAction, this](){
-        updateAction->setEnabled(!isFetching());
-    });
-    connect(updateAction, &QAction::triggered, this, &PackageKitBackend::refreshDatabase);
-    m_messageActions += updateAction;
-
     // Kubuntu-based
     auto service = locateService(QStringLiteral("software-properties-kde.desktop"));
     if (!service.isEmpty())
@@ -377,6 +367,11 @@ T PackageKitBackend::resourcesByPackageNames(const QStringList &pkgnames) const
     return ret;
 }
 
+void PackageKitBackend::checkForUpdates()
+{
+    refreshDatabase();
+}
+
 void PackageKitBackend::refreshDatabase()
 {
     if (!m_refresher) {
@@ -412,12 +407,14 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
         connect(tArch, &PackageKit::Transaction::package, this, [tArch](PackageKit::Transaction::Info /*info*/, const QString &packageId){
             tArch->setProperty("packageId", packageId);
         });
-        connect(tArch, &PackageKit::Transaction::finished, stream, [stream, tArch, ids, this]() {
+        connect(tArch, &PackageKit::Transaction::finished, stream, [stream, tArch, ids, this](PackageKit::Transaction::Exit status) {
             getPackagesFinished();
-            const auto packageId = tArch->property("packageId");
-            if (!packageId.isNull()) {
-                const auto res = resourcesByPackageNames<QVector<AbstractResource*>>({PackageKit::Daemon::packageName(packageId.toString())});
-                stream->resourcesFound(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
+            if (status == PackageKit::Transaction::Exit::ExitSuccess) {
+                const auto packageId = tArch->property("packageId");
+                if (!packageId.isNull()) {
+                    const auto res = resourcesByPackageNames<QVector<AbstractResource*>>({PackageKit::Daemon::packageName(packageId.toString())});
+                    stream->resourcesFound(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
+                }
             }
             stream->finish();
         }, Qt::QueuedConnection);

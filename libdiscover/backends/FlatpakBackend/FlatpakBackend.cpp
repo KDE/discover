@@ -82,14 +82,6 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
         SourcesModel::global()->addSourcesBackend(m_sources);
     }
 
-    QAction* updateAction = new QAction(this);
-    updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
-    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
-    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(updateAction, &QAction::triggered, this, &FlatpakBackend::checkForUpdates);
-
-    m_messageActions = { updateAction };
-
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, &FlatpakBackend::announceRatingsReady);
 }
 

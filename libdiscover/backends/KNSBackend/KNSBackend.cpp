@@ -354,12 +354,12 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
 
     auto stream = new ResultsStream(QStringLiteral("KNS-byname-")+entryid);
 
-    auto start = [this, entryid, stream]() {
+    auto start = [this, entryid, stream, providerid]() {
         m_responsePending = true;
         m_engine->fetchEntryById(entryid);
         connect(m_engine, &KNSCore::Engine::signalError, stream, &ResultsStream::finish);
-        connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, stream, [this, stream, entryid](const KNSCore::EntryInternal &entry) {
-            if (entry.uniqueId() == entryid) {
+        connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, stream, [this, stream, entryid, providerid](const KNSCore::EntryInternal &entry) {
+            if (entry.uniqueId() == entryid && providerid == QUrl(entry.providerId()).host()) {
                 stream->resourcesFound({resourceForEntry(entry)});
             }
             m_responsePending = false;

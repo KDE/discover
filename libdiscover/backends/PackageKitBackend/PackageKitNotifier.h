@@ -25,7 +25,7 @@
 #include <QVariantList>
 #include <PackageKit/Transaction>
 
-class QTimer;
+class QProcess;
 
 class PackageKitNotifier : public BackendNotifierModule
 {
@@ -53,6 +53,8 @@ private Q_SLOTS:
     void finished(PackageKit::Transaction::Exit exit, uint);
     
 private:
+    QProcess* checkAptVariable(const QString &aptconfig, const QLatin1String& varname, std::function<void(const QStringRef& val)> func);
+
     Update m_update;
     uint m_securityUpdates;
     uint m_normalUpdates;

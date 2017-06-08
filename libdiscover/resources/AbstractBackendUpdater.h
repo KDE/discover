@@ -24,7 +24,6 @@
 #include <QObject>
 #include "discovercommon_export.h"
 
-class QAction;
 class QDateTime;
 class QIcon;
 class AbstractResource;

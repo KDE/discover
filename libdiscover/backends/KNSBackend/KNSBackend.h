@@ -62,7 +62,7 @@ public:
 
     KNSCore::Engine* engine() const { return m_engine; }
 
-    QString adoptionCommand() const;
+    void checkForUpdates() override {}
 
 Q_SIGNALS:
     void receivedResources(const QVector<AbstractResource*> &resources);

@@ -74,6 +74,7 @@ DiscoverPage {
 
         headerPositioning: ListView.OverlayHeader
         header: PageHeader {
+            backgroundImage.source: "qrc:/banners/syssettingscrop.jpg"
             extra: RowLayout {
                 anchors {
                     topMargin: Kirigami.Units.smallSpacing

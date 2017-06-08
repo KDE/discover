@@ -199,6 +199,11 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          */
         virtual void removeApplication(AbstractResource *app) = 0;
 
+        /**
+         * Notifies the backend that the user wants the information to be up to date
+         */
+        virtual void checkForUpdates() = 0;
+
     Q_SIGNALS:
         /**
          * Notify of a change in the backend

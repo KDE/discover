@@ -20,6 +20,7 @@
 
 #include "MessageActionsModel.h"
 #include "resources/ResourcesModel.h"
+#include "utils.h"
 #include <QAction>
 
 MessageActionsModel::MessageActionsModel(QObject* parent)
@@ -53,14 +54,10 @@ void MessageActionsModel::reload()
         return;
 
     beginResetModel();
-    m_actions = actions;
     if (m_priority>=0) {
-        for(auto it=m_actions.begin(); it!=m_actions.end(); ) {
-            if ((*it)->priority() == m_priority) {
-                ++it;
-            } else
-                it = m_actions.erase(it);
-        }
+        m_actions = kFilter<QList<QAction*>>(actions, [this](QAction* action){ return action->priority() == m_priority; });
+    } else {
+        m_actions = actions;
     }
     endResetModel();
 }
