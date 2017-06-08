@@ -55,8 +55,8 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
         auto process = checkAptVariable(aptconfig, QLatin1String("Apt::Periodic::Update-Package-Lists"), [regularCheck](const QStringRef& value) {
             bool ok;
             int time = value.toInt(&ok);
-            if (ok)
-                regularCheck->setInterval(time);
+            if (ok && time > 0)
+                regularCheck->setInterval(time * 60 * 60 * 1000);
             else
                 qWarning() << "couldn't understand value for timer:" << value;
         });
