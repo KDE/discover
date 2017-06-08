@@ -74,6 +74,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         AggregatedResultsStream* findResourceByPackageName(const QUrl& search);
         AggregatedResultsStream* search(const AbstractResourcesBackend::Filters &search);
         AbstractResource* resourceForFile(const QUrl &/*url*/);
+        void checkForUpdates();
 
     public Q_SLOTS:
         void installApplication(AbstractResource* app, const AddonList& addons);
@@ -96,8 +97,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         void registerAllBackends();
 
     private:
-        QVector<int> propertiesToRoles(const QVector<QByteArray>& propertyNames) const;
-
         ///@p initialize tells if all backends load will be triggered on construction
         explicit ResourcesModel(QObject* parent=nullptr, bool load = true);
         void init(bool load);
@@ -107,6 +106,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         QVector< AbstractResourcesBackend* > m_backends;
         int m_initializingBackends;
         KActionCollection* m_actionCollection;
+        QList<QAction*> m_ownActions;
 
         static ResourcesModel* s_self;
 };

@@ -62,6 +62,8 @@ public:
 
     KNSCore::Engine* engine() const { return m_engine; }
 
+    void checkForUpdates() override {}
+
 Q_SIGNALS:
     void receivedResources(const QVector<AbstractResource*> &resources);
     void searchFinished();

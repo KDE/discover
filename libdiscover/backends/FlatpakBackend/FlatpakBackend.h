@@ -52,16 +52,15 @@ public:
     ResultsStream * findResourceByPackageName(const QUrl &search) override;
     QList<FlatpakResource*> resources() const { return m_resources.values(); }
     bool isValid() const override;
-    QList<QAction*> messageActions() const override { return m_messageActions; }
+    QList<QAction*> messageActions() const override { return {}; }
 
     void installApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app, const AddonList& addons) override;
     void removeApplication(AbstractResource* app) override;
     bool isFetching() const override { return m_fetching; }
     AbstractResource * resourceForFile(const QUrl & ) override;
+    void checkForUpdates() override;
 
-public Q_SLOTS:
-    void checkForUpdates();
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata);
     void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);
@@ -102,7 +101,6 @@ private:
     FlatpakSourcesBackend *m_sources = nullptr;
     QSharedPointer<OdrsReviewsBackend> m_reviews;
     bool m_fetching;
-    QList<QAction*> m_messageActions;
 
     GCancellable *m_cancellable;
     QVector<FlatpakInstallation *> m_installations;

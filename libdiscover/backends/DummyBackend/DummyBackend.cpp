@@ -55,12 +55,6 @@ DummyBackend::DummyBackend(QObject* parent)
     if (!m_fetching)
         m_reviews->initialize();
 
-    QAction* updateAction = new QAction(this);
-    updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
-    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
-    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(updateAction, &QAction::triggered, this, &DummyBackend::checkForUpdates);
-
     QAction* randomAction = new QAction(this);
     randomAction->setIcon(QIcon::fromTheme(QStringLiteral("kalarm")));
     randomAction->setText(QStringLiteral("test bla bla"));
@@ -78,7 +72,7 @@ DummyBackend::DummyBackend(QObject* parent)
 //         qDebug() << "important action triggered";
 //     });
 
-    m_messageActions = QList<QAction*>() << updateAction << randomAction /*<< importantAction*/;
+    m_messageActions = QList<QAction*>() << randomAction /*<< importantAction*/;
 
     SourcesModel::global()->addSourcesBackend(new DummySourcesBackend(this));
 }

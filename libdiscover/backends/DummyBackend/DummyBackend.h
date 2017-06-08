@@ -49,9 +49,9 @@ public:
     void removeApplication(AbstractResource* app) override;
     bool isFetching() const override { return m_fetching; }
     AbstractResource * resourceForFile(const QUrl & ) override;
+    void checkForUpdates() override;
 
 public Q_SLOTS:
-    void checkForUpdates();
     void toggleFetching();
 
 private:
