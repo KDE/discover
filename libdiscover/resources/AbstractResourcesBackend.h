@@ -74,6 +74,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(QString displayName READ displayName CONSTANT)
     Q_PROPERTY(AbstractReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
@@ -157,6 +158,8 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
 
         /** @internal only to be used by the factory */
         void setName(const QString& name);
+
+        virtual QString displayName() const = 0;
 
         /**
          * emits a change for all rating properties

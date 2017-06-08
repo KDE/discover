@@ -60,6 +60,7 @@ public:
     bool isFetching() const override { return m_fetching; }
     AbstractResource * resourceForFile(const QUrl & ) override;
     void checkForUpdates() override;
+    QString displayName() const override;
 
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata);

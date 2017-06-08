@@ -50,6 +50,7 @@ public:
     bool isFetching() const override { return m_fetching; }
     AbstractResource * resourceForFile(const QUrl & ) override;
     void checkForUpdates() override;
+    QString displayName() const override;
 
 public Q_SLOTS:
     void toggleFetching();

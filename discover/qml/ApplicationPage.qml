@@ -154,6 +154,9 @@ DiscoverPage {
                     text: i18n("Size: %1", appInfo.application.sizeDescription)
                 }
                 Label {
+                    text: i18n("Origin: %1 (%2)", appInfo.application.origin, appInfo.application.backend.displayName)
+                }
+                Label {
                     visible: text.length>0
                     text: appInfo.application.license ? i18n("License: %1", appInfo.application.license) : ""
                 }

@@ -1056,4 +1056,9 @@ AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
     return resource;
 }
 
+QString FlatpakBackend::displayName() const
+{
+    return QStringLiteral("Flatpak");
+}
+
 #include "FlatpakBackend.moc"

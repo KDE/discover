@@ -69,6 +69,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
         AbstractResource * resourceForFile(const QUrl & ) override;
         void checkForUpdates() override;
+        QString displayName() const override;
 
     public Q_SLOTS:
         void reloadPackageList();

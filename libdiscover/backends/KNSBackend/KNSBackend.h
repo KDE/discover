@@ -64,6 +64,8 @@ public:
 
     void checkForUpdates() override {}
 
+    QString displayName() const override;
+
 Q_SIGNALS:
     void receivedResources(const QVector<AbstractResource*> &resources);
     void searchFinished();

@@ -593,5 +593,22 @@ AbstractResource * PackageKitBackend::resourceForFile(const QUrl& file)
     return nullptr;
 }
 
+static QString readDistroName()
+{
+    QProcess process;
+    process.setEnvironment({QStringLiteral("LC_ALL=C")});
+    process.start(QStringLiteral("lsb_release"), {QStringLiteral("-sd")});
+    process.waitForFinished();
+    auto output = process.readAll().trimmed();
+    if (output.startsWith('\"') && output.endsWith('\"'))
+        output = output.mid(1, output.length()-2);
+    return QString::fromLocal8Bit(output);
+}
+
+QString PackageKitBackend::displayName() const
+{
+    static const QString distro = readDistroName();
+    return distro;
+}
 
 #include "PackageKitBackend.moc"

@@ -152,4 +152,9 @@ void SnapBackend::removeApplication(AbstractResource* _app)
 	transModel->addTransaction(new SnapTransaction(app, job, &m_socket, Transaction::RemoveRole));
 }
 
+QString SnapBackend::displayName() const
+{
+    return QStringLiteral("Snap");
+}
+
 #include "SnapBackend.moc"

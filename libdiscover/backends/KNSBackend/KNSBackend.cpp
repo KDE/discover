@@ -385,4 +385,9 @@ AbstractBackendUpdater* KNSBackend::backendUpdater() const
     return m_updater;
 }
 
+QString KNSBackend::displayName() const
+{
+    return QStringLiteral("KNewStuff");
+}
+
 #include "KNSBackend.moc"

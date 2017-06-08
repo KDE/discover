@@ -179,4 +179,9 @@ AbstractResource * DummyBackend::resourceForFile(const QUrl& path)
     return res;
 }
 
+QString DummyBackend::displayName() const
+{
+    return QStringLiteral("Dummy");
+}
+
 #include "DummyBackend.moc"
