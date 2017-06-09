@@ -35,7 +35,7 @@ T2.Control
         left: parent.left
         right: parent.right
     }
-    implicitHeight: actualHeader.implicitHeight + bottomPadding
+    implicitHeight: actualHeader.implicitHeight + extraLoader.actualHeight
     z: actualHeader.z
 
     contentItem: Kirigami.ItemViewHeader {
@@ -46,8 +46,7 @@ T2.Control
                                                              : page.title
     }
 
-
-    bottomPadding: extraLoader.item ? Math.max(0, extraLoader.item.height + extraLoader.item.anchors.topMargin + extraLoader.item.anchors.bottomMargin - Math.max(0, actualHeader.view.contentY/2)) : 0
+    bottomPadding: extraLoader.actualHeight
 
     Loader {
         id: extraLoader
@@ -58,9 +57,15 @@ T2.Control
 
             leftMargin: item ? item.anchors.leftMargin : 0
             rightMargin: item ? item.anchors.rightMargin : 0
-            bottomMargin: item ? item.anchors.bottomMargin : 0
+            bottomMargin: item ? item.anchors.bottomMargin + distance : 0
         }
-        visible: item
+        property real distance: root.ListView.view.atYBeginning ? 0 : actualHeight
+        Behavior on distance {
+            PropertyAnimation {}
+        }
+
+        readonly property real actualHeight: item ? item.height + item.anchors.topMargin + item.anchors.bottomMargin : 0
+        visible: item && distance<actualHeight
         Rectangle {
             color: Kirigami.Theme.backgroundColor
             anchors {
