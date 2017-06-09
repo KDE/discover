@@ -54,6 +54,7 @@ DiscoverPage
             extra: RowLayout {
                 id: updateControls
 
+                anchors.topMargin: Kirigami.Units.smallSpacing
                 Layout.fillWidth: true
 
                 visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
