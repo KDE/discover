@@ -49,16 +49,15 @@ int MessageActionsModel::rowCount(const QModelIndex& parent) const
 
 void MessageActionsModel::reload()
 {
-    const auto actions = ResourcesModel::global()->messageActions();
+    auto actions = ResourcesModel::global()->messageActions();
+    if (m_priority>=0) {
+        actions = kFilter<QList<QAction*>>(actions, [this](QAction* action){ return action->priority() == m_priority; });
+    }
     if (actions == m_actions)
         return;
 
     beginResetModel();
-    if (m_priority>=0) {
-        m_actions = kFilter<QList<QAction*>>(actions, [this](QAction* action){ return action->priority() == m_priority; });
-    } else {
-        m_actions = actions;
-    }
+    m_actions = actions;
     endResetModel();
 }
 
@@ -73,4 +72,9 @@ void MessageActionsModel::setFilterPriority(int p)
         m_priority = p;
         reload();
     }
+}
+
+void MessageActionsModel::componentComplete()
+{
+    reload();
 }

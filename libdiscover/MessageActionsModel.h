@@ -22,13 +22,15 @@
 #define MESSAGEACTIONSMODEL_H
 
 #include <QAbstractListModel>
+#include <QQmlParserStatus>
 #include "discovercommon_export.h"
 
 class QAction;
 
-class DISCOVERCOMMON_EXPORT MessageActionsModel : public QAbstractListModel
+class DISCOVERCOMMON_EXPORT MessageActionsModel : public QAbstractListModel, public QQmlParserStatus
 {
     Q_OBJECT
+    Q_INTERFACES(QQmlParserStatus)
     Q_PROPERTY(int filterPriority READ filterPriority WRITE setFilterPriority)
     public:
         explicit MessageActionsModel(QObject* parent = nullptr);
@@ -39,6 +41,9 @@ class DISCOVERCOMMON_EXPORT MessageActionsModel : public QAbstractListModel
 
         void setFilterPriority(int p);
         int filterPriority() const;
+
+        void classBegin() override {}
+        void componentComplete() override;
 
     private:
         void reload();

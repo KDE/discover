@@ -109,8 +109,23 @@ DiscoverPage {
 
                 ToolButton {
                     text: i18n("More...")
-                    menu: actionsMenu
-                    enabled: actionsMenu.items.length>0
+                    menu: Menu {
+                        id: actionsMenu
+                    }
+                    enabled: menu.items.length>0
+
+                    Instantiator {
+                        model: MessageActionsModel {}
+                        delegate: MenuItem {
+                            action: ActionBridge { action: model.action }
+                        }
+                        onObjectAdded: {
+                            actionsMenu.insertItem(index, object)
+                        }
+                        onObjectRemoved: {
+                            object.destroy()
+                        }
+                    }
                 }
 
                 ToolButton {

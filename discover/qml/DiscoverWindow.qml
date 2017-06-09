@@ -166,23 +166,6 @@ Kirigami.ApplicationWindow
             window.pageStack.push(currentTopLevel, {}, window.status!=Component.Ready)
     }
 
-    Menu {
-        id: actionsMenu
-    }
-
-    Instantiator {
-        model: MessageActionsModel {}
-        delegate: MenuItem {
-            action: ActionBridge { action: model.action }
-        }
-        onObjectAdded: {
-            actionsMenu.insertItem(index, object)
-        }
-        onObjectRemoved: {
-            object.destroy()
-        }
-    }
-
     UnityLauncher {
         launcherId: "org.kde.discover.desktop"
         progressVisible: TransactionModel.count > 0
