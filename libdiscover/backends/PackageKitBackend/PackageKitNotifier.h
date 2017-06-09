@@ -24,6 +24,7 @@
 #include <QPointer>
 #include <QVariantList>
 #include <PackageKit/Transaction>
+#include <functional>
 
 class QProcess;
 
