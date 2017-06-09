@@ -39,7 +39,7 @@ DiscoverPage {
     property alias search: appsModel.search
     property alias count: apps.count
     property alias listHeader: apps.header
-    property bool compact: page.width < 500 || Helper.isCompact
+    property bool compact: page.width < 500 || Helpers.isCompact
 
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories
