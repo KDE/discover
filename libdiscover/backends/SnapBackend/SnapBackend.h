@@ -52,6 +52,7 @@ public:
     bool isFetching() const override { return m_fetching; }
     SnapSocket* socket() { return &m_socket; }
     void checkForUpdates() override {}
+    bool hasApplications() const override { return true; }
 
 private:
     void setFetching(bool fetching);

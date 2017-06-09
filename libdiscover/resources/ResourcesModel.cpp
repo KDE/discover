@@ -30,12 +30,15 @@
 #include <KActionCollection>
 #include "Transaction/TransactionModel.h"
 #include "Category/CategoryModel.h"
+#include "utils.h"
 #include <QDebug>
 #include <QCoreApplication>
 #include <QThread>
 #include <QAction>
 #include <QMetaProperty>
 #include <KLocalizedString>
+#include <KSharedConfig>
+#include <KConfigGroup>
 
 ResourcesModel *ResourcesModel::s_self = nullptr;
 
@@ -53,6 +56,7 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
 {
     init(load);
     connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::fetchingChanged);
+    connect(this, &ResourcesModel::backendsChanged, this, &ResourcesModel::initApplicationsBackend);
 }
 
 void ResourcesModel::init(bool load)
@@ -131,6 +135,7 @@ void ResourcesModel::callerFetchingChanged()
         int idx = m_backends.indexOf(backend);
         Q_ASSERT(idx>=0);
         m_backends.removeAt(idx);
+//         Q_EMIT backendsChanged();
         CategoryModel::global()->blacklistPlugin(backend->name());
         backend->deleteLater();
         return;
@@ -318,8 +323,11 @@ AggregatedResultsStream * ResourcesModel::findResourceByPackageName(const QUrl& 
 AggregatedResultsStream* ResourcesModel::search(const AbstractResourcesBackend::Filters& search)
 {
     QSet<ResultsStream*> streams;
+
+    const bool allBackends = search.roles.contains("origin");
     foreach(auto backend, m_backends) {
-        streams << backend->search(search);
+        if (!backend->hasApplications() || ResourcesModel::global()->currentApplicationBackend() == backend || allBackends)
+            streams << backend->search(search);
     }
     return new AggregatedResultsStream(streams);
 }
@@ -339,4 +347,44 @@ void ResourcesModel::checkForUpdates()
 {
     for(auto backend: qAsConst(m_backends))
         backend->checkForUpdates();
+}
+
+QVector<AbstractResourcesBackend *> ResourcesModel::applicationBackends() const
+{
+    return kFilter<QVector<AbstractResourcesBackend*>>(m_backends, [](AbstractResourcesBackend* b){ return b->hasApplications(); });
+}
+
+QVariantList ResourcesModel::applicationBackendsVariant() const
+{
+    return kTransform<QVariantList>(applicationBackends(), [](AbstractResourcesBackend* b) {return QVariant::fromValue<QObject*>(b);});
+}
+
+AbstractResourcesBackend* ResourcesModel::currentApplicationBackend() const
+{
+    return m_currentApplicationBackend;
+}
+
+void ResourcesModel::setCurrentApplicationBackend(AbstractResourcesBackend* backend)
+{
+    if (backend != m_currentApplicationBackend) {
+        KConfigGroup settings(KSharedConfig::openConfig(), "ResourcesModel");
+        if (backend)
+            settings.writeEntry("currentApplicationBackend", backend->name());
+        else
+            settings.deleteEntry("currentApplicationBackend");
+
+        qDebug() << "setting currentApplicationBackend" << backend;
+        m_currentApplicationBackend = backend;
+        Q_EMIT currentApplicationBackendChanged(backend);
+    }
+}
+
+void ResourcesModel::initApplicationsBackend()
+{
+    KConfigGroup settings(KSharedConfig::openConfig(), "ResourcesModel");
+    const QString name = settings.readEntry<QString>("currentApplicationBackend", QStringLiteral("packagekit-backend"));
+
+    const auto backends = applicationBackends();
+    auto idx = kIndexOf(backends, [name](AbstractResourcesBackend* b) { return b->name() == name; });
+    setCurrentApplicationBackend(backends.value(idx, nullptr));
 }

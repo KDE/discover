@@ -71,6 +71,8 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void checkForUpdates() override;
         QString displayName() const override;
 
+        bool hasApplications() const override { return true; }
+
     public Q_SLOTS:
         void reloadPackageList();
         void refreshDatabase();

@@ -129,6 +129,30 @@ DiscoverPage {
                 }
 
                 ToolButton {
+                    text: i18n("Application Sources")
+                    menu: Menu {
+                        id: backendsMenu
+                    }
+                    enabled: menu.items.length>0
+
+                    Instantiator {
+                        model: ResourcesModel.applicationBackends
+                        delegate: MenuItem {
+                            text: modelData.displayName
+                            checkable: true
+                            checked: ResourcesModel.currentApplicationBackend == modelData
+                            onTriggered: ResourcesModel.currentApplicationBackend = modelData
+                        }
+                        onObjectAdded: {
+                            backendsMenu.insertItem(index, object)
+                        }
+                        onObjectRemoved: {
+                            object.destroy()
+                        }
+                    }
+                }
+
+                ToolButton {
                     text: i18n("Help...")
                     menu: Menu {
                         MenuItem { action: ActionBridge { action: app.action("help_about_app") } }

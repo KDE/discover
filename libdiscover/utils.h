@@ -47,6 +47,18 @@ static T kFilter(const Q &input, _UnaryOperation op)
     return ret;
 }
 
+template <typename Q, typename W>
+static int kIndexOf(const Q& list, W func)
+{
+    int i = 0;
+    for (auto it = list.constBegin(), itEnd = list.constEnd(); it!=itEnd; ++it) {
+        if (func(*it))
+            return i;
+        ++i;
+    }
+    return -1;
+}
+
 class ElapsedDebug : private QElapsedTimer
 {
 public:

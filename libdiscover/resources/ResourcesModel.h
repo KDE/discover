@@ -52,6 +52,8 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_OBJECT
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
+    Q_PROPERTY(QVariantList applicationBackends READ applicationBackendsVariant NOTIFY backendsChanged)
+    Q_PROPERTY(AbstractResourcesBackend* currentApplicationBackend READ currentApplicationBackend WRITE setCurrentApplicationBackend NOTIFY currentApplicationBackendChanged)
     public:
         /** This constructor should be only used by unit tests.
          *  @p backendName defines what backend will be loaded when the backend is constructed.
@@ -76,6 +78,11 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         AbstractResource* resourceForFile(const QUrl &/*url*/);
         void checkForUpdates();
 
+        QVariantList applicationBackendsVariant() const;
+        QVector<AbstractResourcesBackend*> applicationBackends() const;
+        void setCurrentApplicationBackend(AbstractResourcesBackend* backend);
+        AbstractResourcesBackend* currentApplicationBackend() const;
+
     public Q_SLOTS:
         void installApplication(AbstractResource* app, const AddonList& addons);
         void installApplication(AbstractResource* app);
@@ -90,6 +97,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         void resourceDataChanged(AbstractResource* resource, const QVector<QByteArray>& properties);
         void resourceRemoved(AbstractResource* resource);
         void passiveMessage(const QString &message);
+        void currentApplicationBackendChanged(AbstractResourcesBackend* currentApplicationBackend);
 
     private Q_SLOTS:
         void callerFetchingChanged();
@@ -102,11 +110,13 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         void init(bool load);
         void addResourcesBackend(AbstractResourcesBackend* backend);
         void registerBackendByName(const QString& name);
+        void initApplicationsBackend();
 
         QVector< AbstractResourcesBackend* > m_backends;
         int m_initializingBackends;
         KActionCollection* m_actionCollection;
         QList<QAction*> m_ownActions;
+        AbstractResourcesBackend* m_currentApplicationBackend;
 
         static ResourcesModel* s_self;
 };

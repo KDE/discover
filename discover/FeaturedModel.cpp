@@ -96,8 +96,8 @@ static void filterDupes(QVector<AbstractResource *> &resources)
     }
 
     for(auto it = resources.begin(); it != resources.end(); ) {
-        const auto name = (*it)->backend()->metaObject()->className();
-        if (qstrcmp(name, "PackageKitBackend")!=0 && dupeUri.contains((*it)->appstreamId()))
+        const auto backend = (*it)->backend();
+        if (backend != ResourcesModel::global()->currentApplicationBackend() && dupeUri.contains((*it)->appstreamId()))
             it = resources.erase(it);
         else
             ++it;

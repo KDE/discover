@@ -173,6 +173,8 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          */
         virtual QVector<Category*> category() const { return {}; }
 
+        virtual bool hasApplications() const { return false; }
+
     public Q_SLOTS:
         /**
          * This gets called when the backend should install an application.
