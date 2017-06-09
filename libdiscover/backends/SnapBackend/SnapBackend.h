@@ -52,6 +52,7 @@ public:
     void removeApplication(AbstractResource* app) override;
     bool isFetching() const override { return m_fetching; }
     SnapSocket* socket() { return &m_socket; }
+    void checkForUpdates() override {}
 
 private:
     void setFetching(bool fetching);

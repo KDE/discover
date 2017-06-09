@@ -274,7 +274,6 @@ void PackageKitUpdater::cancel()
 
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
-    Q_UNUSED(error);
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
     Q_EMIT passiveMessage(QStringLiteral("%1\n%2").arg(PackageKitMessages::errorMessage(err), error));

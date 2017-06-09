@@ -14,6 +14,7 @@ set(plasma_discover_SRCS
 )
 
 qt5_add_resources(plasma_discover_SRCS resources.qrc)
+qt5_add_resources(plasma_discover_SRCS assets.qrc)
 
 add_executable(plasma-discover ${plasma_discover_SRCS})
 add_executable(Plasma::Discover ALIAS plasma-discover)

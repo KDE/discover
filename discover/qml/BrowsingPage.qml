@@ -42,6 +42,8 @@ DiscoverPage
         Navigation.openCategory(null, "")
     }
 
+    property bool compact: page.width < 500 || Helpers.isCompact
+
     ListView {
         id: browsingView
 
@@ -57,6 +59,7 @@ DiscoverPage
             x: Kirigami.Units.gridUnit
             width: ListView.view.width - Kirigami.Units.gridUnit*2
             application: model.application
+            compact: page.compact
         }
     }
 }
