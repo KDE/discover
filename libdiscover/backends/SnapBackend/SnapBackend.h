@@ -45,7 +45,6 @@ public:
     AbstractReviewsBackend* reviewsBackend() const override;
     bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
     QList<QAction*> messageActions() const override { return {}; }
-    void checkForUpdates() override {}
 
     void installApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app, const AddonList& addons) override;
