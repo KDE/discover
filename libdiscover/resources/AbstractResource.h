@@ -73,6 +73,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(Rating* rating READ rating NOTIFY ratingFetched)
     Q_PROPERTY(QString appstreamId READ appstreamId CONSTANT)
     Q_PROPERTY(QString categoryDisplay READ categoryDisplay CONSTANT)
+    Q_PROPERTY(QUrl url READ url CONSTANT)
     public:
         /**
          * This describes the state of the resource
@@ -187,6 +188,11 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         bool categoryMatches(Category* cat);
 
         QSet<Category*> categoryObjects() const;
+
+        /**
+         * @returns a url that uniquely identifies the application
+         */
+        virtual QUrl url() const;
 
     public Q_SLOTS:
         virtual void fetchScreenshots();

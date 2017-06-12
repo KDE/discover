@@ -63,7 +63,7 @@ public:
 
     QStringList executables() const override;
 
-    QUrl knsUrl() const;
+    QUrl url() const override;
 
 private:
     const QStringList m_categories;

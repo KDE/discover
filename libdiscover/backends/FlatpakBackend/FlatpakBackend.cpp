@@ -909,14 +909,19 @@ int FlatpakBackend::updatesCount() const
 
 ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
-    QVector<AbstractResource*> ret;
+    if (!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() != QLatin1String("appstream"))
+        return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
 
+    QVector<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resources) {
-        if (qobject_cast<FlatpakResource*>(r)->type() == FlatpakResource::Runtime && filter.state != AbstractResource::Upgradeable) {
+        if (r->isTechnical() && filter.state != AbstractResource::Upgradeable) {
             continue;
         }
 
-        if (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)) {
+        if (!filter.resourceUrl.isEmpty() && r->appstreamId() != filter.resourceUrl.host())
+            continue;
+
+        if (filter.search.isEmpty() || (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))) {
             ret += r;
         }
     }

@@ -57,6 +57,7 @@
 #include <MuonDataSources.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
+#include <resources/ResourcesProxyModel.h>
 #include <Category/Category.h>
 #include <Category/CategoryModel.h>
 
@@ -214,31 +215,10 @@ void DiscoverMainWindow::openLocalPackage(const QUrl& localfile)
     }
 }
 
-void DiscoverMainWindow::openApplication(const QUrl& app)
+void DiscoverMainWindow::openApplication(const QUrl& url)
 {
-    Q_ASSERT(!app.isEmpty());
-    rootObject()->setProperty("defaultStartup", false);
-    auto action = new OneTimeAction(
-        [this, app]() {
-            StoredResultsStream* stream = new StoredResultsStream({ResourcesModel::global()->findResourceByPackageName(app)});
-            connect(stream, &StoredResultsStream::finishedResources, stream, [this, stream, app](const QVector<AbstractResource*> &resources) {
-                if (!resources.isEmpty()) {
-                    if (resources.size() > 1)
-                        qWarning() << "many resources found for" << app;
-                    emit openApplicationInternal(resources.first());
-                } else {
-                    rootObject()->setProperty("defaultStartup", true);
-                    showPassiveNotification(i18n("Couldn't open %1", app.toDisplayString()));
-                }
-            });
-        }
-        , this);
-
-    if (ResourcesModel::global()->backends().isEmpty()) {
-        connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
-    } else {
-        action->trigger();
-    }
+    Q_ASSERT(!url.isEmpty());
+    Q_EMIT openUrl(url);
 }
 
 QUrl DiscoverMainWindow::featuredSource() const

@@ -243,3 +243,9 @@ QString AbstractResource::categoryDisplay() const
     ret.sort();
     return ret.join(QStringLiteral(", "));
 }
+
+QUrl AbstractResource::url() const
+{
+    const QString asid = appstreamId();
+    return asid.isEmpty() ? QUrl() : QUrl(QStringLiteral("appstream://") + asid);
+}

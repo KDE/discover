@@ -286,9 +286,9 @@ AggregatedResultsStream::AggregatedResultsStream(const QSet<ResultsStream*>& str
 
 void AggregatedResultsStream::addResults(const QVector<AbstractResource *>& res)
 {
-     m_results += res;
+    m_results += res;
 
-     m_delayedEmission.start();
+    m_delayedEmission.start();
 }
 
 void AggregatedResultsStream::emitResults()
@@ -324,7 +324,7 @@ AggregatedResultsStream* ResourcesModel::search(const AbstractResourcesBackend::
 {
     QSet<ResultsStream*> streams;
 
-    const bool allBackends = search.roles.contains("origin");
+    const bool allBackends = search.roles.contains("origin") || !search.resourceUrl.isEmpty();
     foreach(auto backend, m_backends) {
         if (!backend->hasApplications() || ResourcesModel::global()->currentApplicationBackend() == backend || allBackends)
             streams << backend->search(search);

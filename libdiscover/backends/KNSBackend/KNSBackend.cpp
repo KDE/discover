@@ -302,7 +302,12 @@ static ResultsStream* voidStream()
 
 ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    if (filter.state >= AbstractResource::Installed) {
+    if ((!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() != QLatin1String("kns")) || !filter.mimetype.isEmpty())
+        return voidStream();
+
+    if (filter.resourceUrl.scheme() == QLatin1String("kns")) {
+        return findResourceByPackageName(filter.resourceUrl);
+    } else if (filter.state >= AbstractResource::Installed) {
         QVector<AbstractResource*> ret;
         foreach(AbstractResource* r, m_resourcesByName) {
             if(r->state()>=filter.state && (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)))
@@ -353,7 +358,6 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
     const auto entryid = pathParts.at(1);
 
     auto stream = new ResultsStream(QStringLiteral("KNS-byname-")+entryid);
-
     auto start = [this, entryid, stream, providerid]() {
         m_responsePending = true;
         m_engine->fetchEntryById(entryid);

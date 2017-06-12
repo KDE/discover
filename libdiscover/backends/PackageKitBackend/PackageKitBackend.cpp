@@ -389,12 +389,14 @@ void PackageKitBackend::refreshDatabase()
 
 ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    if (filter.search.isEmpty()) {
-        return new ResultsStream(QStringLiteral("PackageKitStream"), kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return !res->isTechnical(); }));
+    if (!filter.resourceUrl.isEmpty()) {
+        return findResourceByPackageName(filter.resourceUrl);
+    } else if (filter.search.isEmpty()) {
+        return new ResultsStream(QStringLiteral("PackageKitStream-all"), kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return !res->isTechnical(); }));
     } else {
         const QList<AppStream::Component> components = m_appdata.search(filter.search);
         const QStringList ids = kTransform<QStringList>(components, [](const AppStream::Component& comp) { return comp.id(); });
-        auto stream = new ResultsStream(QStringLiteral("PackageKitStream"));
+        auto stream = new ResultsStream(QStringLiteral("PackageKitStream-search"));
         if (!ids.isEmpty()) {
             const auto resources = resourcesByPackageNames<QVector<AbstractResource*>>(ids);
             QTimer::singleShot(0, this, [stream, resources, this] () {
@@ -431,7 +433,7 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
         else
             pkg = m_packages.packages.value(url.host());
     }
-    return new ResultsStream(QStringLiteral("PackageKitStream"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
+    return new ResultsStream(QStringLiteral("PackageKitStream-url"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
 }
 
 int PackageKitBackend::updatesCount() const

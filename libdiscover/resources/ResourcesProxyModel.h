@@ -47,6 +47,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter NOTIFY stateFilterChanged)
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
     Q_PROPERTY(QString search READ lastSearch WRITE setSearch NOTIFY searchChanged)
+    Q_PROPERTY(QUrl resourcesUrl READ resourcesUrl WRITE setResourcesUrl NOTIFY resourcesUrlChanged)
     Q_PROPERTY(QString extends READ extends WRITE setExtends)
     Q_PROPERTY(QVariantList subcategories READ subcategories NOTIFY subcategoriesChanged)
     Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
@@ -98,6 +99,9 @@ public:
     QString extends() const;
     void setExtends(const QString &extends);
 
+    QUrl resourcesUrl() const;
+    void setResourcesUrl(const QUrl& resourcesUrl);
+
     QVariantList subcategories() const;
 
     QVariant data(const QModelIndex & index, int role) const override;
@@ -145,6 +149,7 @@ Q_SIGNALS:
     void stateFilterChanged();
     void searchChanged(const QString &search);
     void subcategoriesChanged(const QVariantList &subcategories);
+    void resourcesUrlChanged(const QUrl &url);
 };
 
 #endif

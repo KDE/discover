@@ -302,6 +302,19 @@ void ResourcesProxyModel::setExtends(const QString& extends)
     }
 }
 
+QUrl ResourcesProxyModel::resourcesUrl() const
+{
+    return m_filters.resourceUrl;
+}
+
+void ResourcesProxyModel::setResourcesUrl(const QUrl& resourcesUrl)
+{
+    if (m_filters.resourceUrl != resourcesUrl) {
+        m_filters.resourceUrl = resourcesUrl;
+        invalidateFilter();
+    }
+}
+
 QVariant ResourcesProxyModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid()) {

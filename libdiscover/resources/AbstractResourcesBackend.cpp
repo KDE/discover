@@ -103,6 +103,9 @@ bool AbstractResourcesBackend::Filters::shouldFilter(AbstractResource* res) cons
     if(!extends.isEmpty() && !res->extends().contains(extends)) {
         return false;
     }
+    if(!resourceUrl.isEmpty() && res->url() != resourceUrl) {
+        return false;
+    }
 
     for(QHash<QByteArray, QVariant>::const_iterator it=roles.constBegin(), itEnd=roles.constEnd(); it!=itEnd; ++it) {
         Q_ASSERT(AbstractResource::staticMetaObject.indexOfProperty(it.key().constData())>=0);

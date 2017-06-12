@@ -27,9 +27,14 @@ function openApplicationListSource(origin) {
     openApplicationList({ originFilter: origin, title: origin })
 }
 
+function openUrlResources(uri) {
+    clearStack()
+    openApplicationList({ resourcesUrl: uri, title: uri })
+}
+
 function openApplicationMime(mime) {
     clearStack()
-    openApplicationList({ mimeTypeFilter: mime , title: i18n("Resources for '%1'", mime) })
+    openApplicationList({ mimeTypeFilter: mime, title: i18n("Resources for '%1'", mime) })
 }
 
 function openApplicationList(props) {

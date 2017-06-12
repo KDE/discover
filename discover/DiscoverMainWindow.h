@@ -30,6 +30,7 @@ class Category;
 class QWindow;
 class QQmlApplicationEngine;
 class CachedNetworkAccessManagerFactory;
+class ResourcesProxyModel;
 
 class DiscoverMainWindow : public QObject
 {
@@ -81,6 +82,7 @@ class DiscoverMainWindow : public QObject
 
     Q_SIGNALS:
         void openApplicationInternal(AbstractResource* app);
+        void openUrl(const QUrl& url);
         void listMimeInternal(const QString& mime);
         void listCategoryInternal(Category* cat);
 
