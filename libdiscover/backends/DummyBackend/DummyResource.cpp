@@ -183,3 +183,8 @@ void DummyResource::invokeApplication() const
     QDesktopServices d;
     d.openUrl(QUrl(QStringLiteral("https://projects.kde.org/projects/extragear/sysadmin/muon")));
 }
+
+QUrl DummyResource::url() const
+{
+    return QUrl(QLatin1String("dummy://") + packageName().replace(QLatin1Char(' '), QLatin1Char('.')));
+}

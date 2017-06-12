@@ -52,6 +52,7 @@ public:
     void invokeApplication() const override;
     void fetchChangelog() override;
     void fetchScreenshots() override;
+    QUrl url() const override;
     void setState(State state);
     void setSize(int size) { m_size = size; }
     void setAddons(const AddonList& addons);

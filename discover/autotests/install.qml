@@ -6,7 +6,13 @@ DiscoverTest
 {
     function test_openResource() {
         app.openApplication("dummy://dummy.1");
-        verify(waitForSignal(appRoot.stack, "currentItemChanged"))
+        compare(appRoot.stack.currentItem.title, "dummy://dummy.1", "same title");
+        compare(appRoot.stack.currentItem.isBusy, true, "same title");
+        verify(waitForSignal(appRoot.stack.currentItem, "isBusyChanged"))
+
+        var item = appRoot.stack.currentItem.flickable.itemAt(100, 100)
+        verify(item)
+        item.clicked()
         verify(appRoot.stack.currentItem, "has a page");
         compare(appRoot.stack.currentItem.title, "Dummy 1", "same title");
 
@@ -25,7 +31,13 @@ DiscoverTest
     }
     function test_cancel() {
         app.openApplication("dummy://dummy.2");
-        verify(waitForSignal(appRoot.stack, "currentItemChanged"))
+        compare(appRoot.stack.currentItem.title, "dummy://dummy.2", "same title");
+        compare(appRoot.stack.currentItem.isBusy, true, "same title");
+        verify(waitForSignal(appRoot.stack.currentItem, "isBusyChanged"))
+
+        var item = appRoot.stack.currentItem.flickable.itemAt(100, 100)
+        verify(item)
+        item.clicked()
         verify(appRoot.stack.currentItem, "has a page");
         compare(appRoot.stack.currentItem.title, "Dummy 2", "same title");
 
