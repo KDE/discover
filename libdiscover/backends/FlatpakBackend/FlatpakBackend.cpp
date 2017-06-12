@@ -72,7 +72,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 
     // Load flatpak installation
     if (!setupFlatpakInstallations(&error)) {
-        qWarning() << "Failed to setup flatpak installations: " << error->message;
+        qWarning() << "Failed to setup flatpak installations:" << error->message;
     } else {
         reloadPackageList();
 
@@ -219,7 +219,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
     bundleRef = flatpak_bundle_ref_new(file, &localError);
 
     if (!bundleRef) {
-        qWarning() << "Failed to load bundle: " << localError->message;
+        qWarning() << "Failed to load bundle:" << localError->message;
         return nullptr;
     }
 
@@ -241,7 +241,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
 
         appstream = g_input_stream_read_bytes (streamData, 0x100000, m_cancellable, &localError);
         if (!appstream) {
-            qWarning() << "Failed to extract appstream metadata from bundle: " << localError->message;
+            qWarning() << "Failed to extract appstream metadata from bundle:" << localError->message;
             return nullptr;
         }
 
@@ -253,7 +253,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
         as_metadata_set_format_style(metadata, AS_FORMAT_STYLE_COLLECTION);
         as_metadata_parse(metadata, appstreamContent, AS_FORMAT_KIND_XML, &localError);
         if (localError) {
-            qWarning() << "Failed to parse appstream metadata: " << localError->message;
+            qWarning() << "Failed to parse appstream metadata:" << localError->message;
             return nullptr;
         }
 
@@ -329,7 +329,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 
         remoteRef = flatpak_installation_install_ref_file (preferredInstallation(), bytes, m_cancellable, &error);
         if (!remoteRef) {
-            qWarning() << "Failed to install ref file: " << error->message;
+            qWarning() << "Failed to install ref file:" << error->message;
             return nullptr;
         }
     }
@@ -412,7 +412,7 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
 {
     // Update app with all possible information we have
     if (!parseMetadataFromAppBundle(resource)) {
-        qWarning() << "Failed to parse metadata from app bundle for " << resource->name();
+        qWarning() << "Failed to parse metadata from app bundle for" << resource->name();
     }
 
     auto installation = resource->installation();
@@ -473,7 +473,7 @@ public:
     {
         g_autoptr(GFile) appstreamDir = flatpak_remote_get_appstream_dir(m_remote, nullptr);
         if (!appstreamDir) {
-            qWarning() << "No appstream dir for " << flatpak_remote_get_name(m_remote);
+            qWarning() << "No appstream dir for" << flatpak_remote_get_name(m_remote);
             return {};
         }
         return QString::fromUtf8(g_file_get_path(appstreamDir));
@@ -517,7 +517,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
     const QString appstreamDirPath = source.appstreamDir();
     const QString appDirFileName = appstreamDirPath + QLatin1String("/appstream.xml.gz");
     if (!QFile::exists(appDirFileName)) {
-        qWarning() << "No " << appDirFileName << " appstream metadata found for " << source.name();
+        qWarning() << "No" << appDirFileName << "appstream metadata found for" << source.name();
         return;
     }
 
@@ -526,7 +526,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
     as_metadata_set_format_style (metadata, AS_FORMAT_STYLE_COLLECTION);
     as_metadata_parse_file(metadata, file, AS_FORMAT_KIND_XML, &localError);
     if (localError) {
-        qWarning() << "Failed to parse appstream metadata " << localError->message;
+        qWarning() << "Failed to parse appstream metadata" << localError->message;
         return;
     }
 
@@ -565,13 +565,13 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
             fnDesktop = pathApps + file;
             desktopFile = g_file_new_for_path(fnDesktop.toStdString().c_str());
             if (!desktopFile) {
-                qWarning() << "Couldn't open " << fnDesktop << " :" << localError->message;
+                qWarning() << "Couldn't open" << fnDesktop << " :" << localError->message;
                 continue;
             }
 
             as_metadata_parse_file(metadata, desktopFile, AS_FORMAT_KIND_DESKTOP_ENTRY, &localError);
             if (localError) {
-                qWarning() << "Failed to parse appstream metadata " << localError->message;
+                qWarning() << "Failed to parse appstream metadata" << localError->message;
                 continue;
             }
 
@@ -612,7 +612,7 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
 
     refs = flatpak_installation_list_installed_refs(flatpakInstallation, m_cancellable, &localError);
     if (!refs) {
-        qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
+        qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
         return;
     }
 
@@ -621,7 +621,7 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
         const gchar *latestCommit = flatpak_installed_ref_get_latest_commit(ref);
 
         if (!latestCommit) {
-            qWarning() << "Couldn'g get latest commit for " << flatpak_ref_get_name(FLATPAK_REF(ref));
+            qWarning() << "Couldn't get latest commit for" << flatpak_ref_get_name(FLATPAK_REF(ref));
         }
 
         const gchar *commit = flatpak_ref_get_commit(FLATPAK_REF(ref));
@@ -669,7 +669,7 @@ bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
     if (!bundle.isEmpty()) {
         ref = flatpak_ref_parse(bundle.id().toStdString().c_str(), &localError);
         if (!ref) {
-            qWarning() << "Failed to parse " << bundle.id() << localError->message;
+            qWarning() << "Failed to parse" << bundle.id() << localError->message;
             return false;
         } else {
             resource->updateFromRef(ref);
@@ -825,7 +825,7 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
 
             if (!runtime->isInstalled()) {
                 if (!updateAppSize(flatpakInstallation, runtime)) {
-                    qWarning() << "Failed to get runtime size needed for total size of " << resource->name();
+                    qWarning() << "Failed to get runtime size needed for total size of" << resource->name();
                     return false;
                 }
                 // Set required download size to include runtime size even now, in case we fail to
@@ -839,13 +839,13 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
         g_autoptr(FlatpakInstalledRef) ref = nullptr;
         ref = getInstalledRefForApp(flatpakInstallation, resource);
         if (!ref) {
-            qWarning() << "Failed to get installed size of " << resource->name();
+            qWarning() << "Failed to get installed size of" << resource->name();
             return false;
         }
         resource->setInstalledSize(flatpak_installed_ref_get_installed_size(ref));
     } else {
         if (resource->origin().isEmpty()) {
-            qWarning() << "Failed to get size of " << resource->name() << " because of missing origin";
+            qWarning() << "Failed to get size of" << resource->name() << " because of missing origin";
             return false;
         }
 
