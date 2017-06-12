@@ -47,7 +47,7 @@ FeaturedModel::FeaturedModel()
     KIO::FileCopyJob *getJob = KIO::file_copy(featuredUrl, QUrl::fromLocalFile(*featuredCache), -1, KIO::Overwrite | KIO::HideProgressInfo);
     connect(getJob, &KIO::FileCopyJob::result, this, &FeaturedModel::refresh);
 
-    if (QFile::exists(*featuredCache))
+    if (!ResourcesModel::global()->backends().isEmpty() && QFile::exists(*featuredCache))
         refresh();
 }
 
