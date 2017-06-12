@@ -735,17 +735,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
     const QString path = QString::fromUtf8(g_file_get_path(installationPath)) + QStringLiteral("/app/%1/%2/%3/active/metadata").arg(resource->flatpakName()).arg(resource->arch()).arg(resource->branch());
 
     if (QFile::exists(path)) {
-        QFile file(path);
-        if (file.open(QFile::ReadOnly | QFile::Text)) {
-            metadataContent = file.readAll();
-        }
-
-        if (metadataContent.isEmpty()) {
-            qWarning() << "Failed to get metadata file";
-            return false;
-        }
-
-        return updateAppMetadata(resource, metadataContent);
+        return updateAppMetadata(resource, path);
     } else {
         FlatpakFetchDataJob *job = new FlatpakFetchDataJob(flatpakInstallation, resource, FlatpakFetchDataJob::FetchMetadata);
         connect(job, &FlatpakFetchDataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
@@ -766,6 +756,17 @@ void FlatpakBackend::onFetchMetadataFinished(FlatpakInstallation *flatpakInstall
     updateAppSizeFromRemote(flatpakInstallation, resource);
 }
 
+bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QString &path)
+{
+    // Parse the temporary file
+    QSettings setting(path, QSettings::NativeFormat);
+    setting.beginGroup(QLatin1String("Application"));
+    // Set the runtime in form of name/arch/version which can be later easily parsed
+    resource->setRuntime(setting.value(QLatin1String("runtime")).toString());
+    // TODO get more information?
+    return true;
+}
+
 bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QByteArray &data)
 {
     // Save the content to temporary file
@@ -779,12 +780,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QByteArr
     tempFile.write(data);
     tempFile.close();
 
-    // Parse the temporary file
-    QSettings setting(tempFile.fileName(), QSettings::NativeFormat);
-    setting.beginGroup(QLatin1String("Application"));
-    // Set the runtime in form of name/arch/version which can be later easily parsed
-    resource->setRuntime(setting.value(QLatin1String("runtime")).toString());
-    // TODO get more information?
+    updateAppMetadata(resource, tempFile.fileName());
 
     tempFile.remove();
 

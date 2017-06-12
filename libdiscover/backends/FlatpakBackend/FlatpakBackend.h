@@ -90,6 +90,7 @@ private:
     void updateAppInstalledMetadata(FlatpakInstalledRef *installedRef, FlatpakResource *resource);
     bool updateAppMetadata(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     bool updateAppMetadata(FlatpakResource *resource, const QByteArray &data);
+    bool updateAppMetadata(FlatpakResource *resource, const QString &path);
     bool updateAppSize(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     bool updateAppSizeFromRemote(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     void updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
