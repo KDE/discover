@@ -65,6 +65,7 @@ public:
         InstalledRole,
         ApplicationRole,
         OriginRole,
+        DisplayOriginRole,
         CanUpgrade,
         PackageNameRole,
         IsTechnicalRole,
@@ -106,6 +107,9 @@ public:
 
     QVariant data(const QModelIndex & index, int role) const override;
     int rowCount(const QModelIndex & parent = {}) const override;
+
+    Q_SCRIPTABLE int indexOf(AbstractResource* res);
+    Q_SCRIPTABLE AbstractResource* resourceAt(int row) const;
 
     bool isBusy() const { return m_currentStream != nullptr; }
 

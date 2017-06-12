@@ -49,6 +49,7 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
         { InstalledRole, "isInstalled" },
         { ApplicationRole, "application" },
         { OriginRole, "origin" },
+        { DisplayOriginRole, "displayOrigin" },
         { CanUpgrade, "canUpgrade" },
         { PackageNameRole, "packageName" },
         { IsTechnicalRole, "isTechnical" },
@@ -462,4 +463,14 @@ QVector<int> ResourcesProxyModel::propertiesToRoles(const QVector<QByteArray>& p
     QVector<int> roles = kTransform<QVector<int>>(properties, [this](const QByteArray& arr) { return roleNames().key(arr, -1); });
     roles.removeAll(-1);
     return roles;
+}
+
+int ResourcesProxyModel::indexOf(AbstractResource* res)
+{
+    return m_displayedResources.indexOf(res);
+}
+
+AbstractResource * ResourcesProxyModel::resourceAt(int row) const
+{
+    return m_displayedResources[row];
 }

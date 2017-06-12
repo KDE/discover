@@ -63,6 +63,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString license READ license CONSTANT)
     Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
     Q_PROPERTY(QString origin READ origin CONSTANT)
+    Q_PROPERTY(QString displayOrigin READ displayOrigin CONSTANT)
     Q_PROPERTY(int size READ size NOTIFY sizeChanged)
     Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY sizeChanged)
     Q_PROPERTY(QString installedVersion READ installedVersion NOTIFY stateChanged)
@@ -142,6 +143,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual QString longDescription() = 0;
 
         virtual QString origin() const = 0;
+        QString displayOrigin() const;
         virtual QString section() = 0;
 
         ///@returns what kind of mime types the resource can consume

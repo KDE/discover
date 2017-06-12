@@ -154,11 +154,24 @@ DiscoverPage {
                     text: i18n("Size: %1", appInfo.application.sizeDescription)
                 }
                 Label {
-                    text: i18n("Origin: %1 (%2)", appInfo.application.origin, appInfo.application.backend.displayName)
-                }
-                Label {
                     visible: text.length>0
                     text: appInfo.application.license ? i18n("License: %1", appInfo.application.license) : ""
+                }
+                ComboBox {
+                    id: sourcesCombo
+                    model: ResourcesProxyModel {
+                        onIsBusyChanged: if (!isBusy) {
+                            sourcesCombo.currentIndex = indexOf(appInfo.application)
+                        }
+                        resourcesUrl: appInfo.application.url
+                    }
+                    onActivated: if(index>=0) {
+                        var res = model.resourceAt(index)
+                        console.assert(res)
+                        window.stack.pop()
+                        Navigation.openApplication(res)
+                    }
+                    textRole: "displayOrigin"
                 }
             }
         }

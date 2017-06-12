@@ -249,3 +249,8 @@ QUrl AbstractResource::url() const
     const QString asid = appstreamId();
     return asid.isEmpty() ? QUrl() : QUrl(QStringLiteral("appstream://") + asid);
 }
+
+QString AbstractResource::displayOrigin() const
+{
+    return i18nc("origin (backend name)", "%1 (%2)", origin(), backend()->displayName());
+}
