@@ -10,7 +10,8 @@ DiscoverTest
         compare(appRoot.stack.currentItem.isBusy, true, "same title");
         verify(waitForSignal(appRoot.stack.currentItem, "isBusyChanged"))
 
-        var item = appRoot.stack.currentItem.flickable.itemAt(100, 100)
+        appRoot.stack.currentItem.flickable.currentIndex = 0
+        var item = appRoot.stack.currentItem.flickable.currentItem
         verify(item)
         item.clicked()
         verify(appRoot.stack.currentItem, "has a page");
@@ -35,7 +36,8 @@ DiscoverTest
         compare(appRoot.stack.currentItem.isBusy, true, "same title");
         verify(waitForSignal(appRoot.stack.currentItem, "isBusyChanged"))
 
-        var item = appRoot.stack.currentItem.flickable.itemAt(100, 100)
+        appRoot.stack.currentItem.flickable.currentIndex = 0
+        var item = appRoot.stack.currentItem.flickable.currentItem
         verify(item)
         item.clicked()
         verify(appRoot.stack.currentItem, "has a page");
