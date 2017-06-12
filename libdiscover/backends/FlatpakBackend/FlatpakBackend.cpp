@@ -908,7 +908,7 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
     QVector<AbstractResource*> ret;
 
     foreach(AbstractResource* r, m_resources) {
-        if (r->isTechnical() == FlatpakResource::Runtime && filter.state != AbstractResource::Upgradeable) {
+        if (r->isTechnical() && filter.state != AbstractResource::Upgradeable) {
             continue;
         }
 
