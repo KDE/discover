@@ -908,11 +908,14 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
     QVector<AbstractResource*> ret;
 
     foreach(AbstractResource* r, m_resources) {
-        if (qobject_cast<FlatpakResource*>(r)->type() == FlatpakResource::Runtime && filter.state != AbstractResource::Upgradeable) {
+        if (r->isTechnical() == FlatpakResource::Runtime && filter.state != AbstractResource::Upgradeable) {
             continue;
         }
 
-        if (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)) {
+        if (r->state()<filter.state)
+            continue;
+
+        if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)) {
             ret += r;
         }
     }
