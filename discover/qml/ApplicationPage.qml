@@ -102,7 +102,26 @@ DiscoverPage {
         id: originsOverlay
         bottomPadding: Kirigami.Units.largeSpacing
         topPadding: Kirigami.Units.largeSpacing
+        readonly property alias model: view.model
+        function listBackends() {
+            var first = true;
+            var ret = "";
+            var m = view.model;
+            for(var i=0, count=m.rowCount(); i<count; ++i) {
+                var res = m.resourceAt(i)
+                if (res != appInfo.application) {
+                    if (!first) {
+                        ret += ", "
+                        first = false
+                    }
+                    ret += "<a href='" + i + "'>" + res.displayOrigin + "</a>"
+                }
+            }
+            return ret
+        }
+        readonly property string sentence: view.count <= 1 ? "" : i18n("\nAlso available in %1", listBackends())
         ListView {
+            id: view
             model: ResourcesProxyModel {
                 allBackends: true
                 resourcesUrl: appInfo.application.url
@@ -203,11 +222,16 @@ DiscoverPage {
             Layout.fillWidth: true
             visible: appInfo.application.longDescription.length > 0
         }
-        Label {
+        Kirigami.Label {
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignJustify
             wrapMode: Text.WordWrap
-            text: appInfo.application.longDescription
+            text: appInfo.application.longDescription + originsOverlay.sentence
+            onLinkActivated: {
+                var idx = parseInt(link, 10)
+                var res = originsOverlay.model.resourceAt(idx)
+                window.stack.pop()
+                Navigation.openApplication(res) }
         }
 
         RowLayout {
