@@ -135,6 +135,10 @@ DiscoverPage {
                     }
                     enabled: menu.items.length>0
 
+                    ExclusiveGroup {
+                        id: select
+                    }
+
                     Instantiator {
                         model: ResourcesModel.applicationBackends
                         delegate: MenuItem {
@@ -142,6 +146,7 @@ DiscoverPage {
                             checkable: true
                             checked: ResourcesModel.currentApplicationBackend == modelData
                             onTriggered: ResourcesModel.currentApplicationBackend = modelData
+                            exclusiveGroup: select
                         }
                         onObjectAdded: {
                             backendsMenu.insertItem(index, object)
