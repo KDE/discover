@@ -36,7 +36,6 @@ Flow {
 
     readonly property var fu: Kirigami.OverlaySheet {
         id: overlay
-        parent: root.page
         Image {
             id: overlayImage
             fillMode: Image.PreserveAspectFit
