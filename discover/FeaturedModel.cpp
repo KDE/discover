@@ -76,9 +76,9 @@ void FeaturedModel::setUris(const QVector<QUrl>& uris)
 
     QSet<ResultsStream*> streams;
     foreach(const auto &uri, uris) {
-        foreach(auto backend, ResourcesModel::global()->backends()) {
-            streams << backend->findResourceByPackageName(QUrl(uri.toString()));
-        }
+        AbstractResourcesBackend::Filters filter;
+        filter.resourceUrl = uri;
+        streams << ResourcesModel::global()->search(filter);
     }
     auto stream = new StoredResultsStream(streams);
     connect(stream, &StoredResultsStream::finishedResources, this, &FeaturedModel::setResources);
