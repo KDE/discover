@@ -329,10 +329,11 @@ AggregatedResultsStream* ResourcesModel::search(const AbstractResourcesBackend::
 {
     QSet<ResultsStream*> streams;
 
-    const bool allBackends = search.roles.contains("origin") || !search.resourceUrl.isEmpty();
+    const bool allBackends = search.allBackends;
     foreach(auto backend, m_backends) {
-        if (!backend->hasApplications() || ResourcesModel::global()->currentApplicationBackend() == backend || allBackends)
+        if (!backend->hasApplications() || ResourcesModel::global()->currentApplicationBackend() == backend || allBackends) {
             streams << backend->search(search);
+        }
     }
     return new AggregatedResultsStream(streams);
 }

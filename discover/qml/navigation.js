@@ -24,12 +24,12 @@ function clearStack()
 }
 
 function openApplicationListSource(origin) {
-    openApplicationList({ originFilter: origin, title: origin })
+    openApplicationList({ originFilter: origin, title: origin, allBackends: true })
 }
 
 function openUrlResources(uri) {
     clearStack()
-    openApplicationList({ resourcesUrl: uri, title: uri })
+    openApplicationList({ resourcesUrl: uri, title: uri, allBackends: true })
 }
 
 function openApplicationMime(mime) {

@@ -160,6 +160,7 @@ DiscoverPage {
                 ComboBox {
                     id: sourcesCombo
                     model: ResourcesProxyModel {
+                        allBackends: true
                         onIsBusyChanged: if (!isBusy) {
                             sourcesCombo.currentIndex = indexOf(appInfo.application)
                         }

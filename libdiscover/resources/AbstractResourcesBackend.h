@@ -99,6 +99,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
             QString extends;
             QUrl resourceUrl;
             QHash<QByteArray, QVariant> roles;
+            bool allBackends = false;
 
             bool shouldFilter(AbstractResource* res) const;
             void filterJustInCase(QVector<AbstractResource*>& input) const;

@@ -39,6 +39,7 @@ DiscoverPage {
     property alias search: appsModel.search
     property alias resourcesUrl: appsModel.resourcesUrl
     property alias isBusy: appsModel.isBusy
+    property alias allBackends: appsModel.allBackends
     property alias count: apps.count
     property alias listHeader: apps.header
     property bool compact: page.width < 500 || Helpers.isCompact

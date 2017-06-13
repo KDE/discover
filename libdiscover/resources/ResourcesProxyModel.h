@@ -49,6 +49,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_PROPERTY(QString search READ lastSearch WRITE setSearch NOTIFY searchChanged)
     Q_PROPERTY(QUrl resourcesUrl READ resourcesUrl WRITE setResourcesUrl NOTIFY resourcesUrlChanged)
     Q_PROPERTY(QString extends READ extends WRITE setExtends)
+    Q_PROPERTY(bool allBackends READ allBackends WRITE setAllBackends)
     Q_PROPERTY(QVariantList subcategories READ subcategories NOTIFY subcategoriesChanged)
     Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
 public:
@@ -102,6 +103,9 @@ public:
 
     QUrl resourcesUrl() const;
     void setResourcesUrl(const QUrl& resourcesUrl);
+
+    bool allBackends() const;
+    void setAllBackends(bool allBackends);
 
     QVariantList subcategories() const;
 

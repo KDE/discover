@@ -316,6 +316,16 @@ void ResourcesProxyModel::setResourcesUrl(const QUrl& resourcesUrl)
     }
 }
 
+bool ResourcesProxyModel::allBackends() const
+{
+    return m_filters.allBackends;
+}
+
+void ResourcesProxyModel::setAllBackends(bool allBackends)
+{
+    m_filters.allBackends = allBackends;
+}
+
 QVariant ResourcesProxyModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid()) {
