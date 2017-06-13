@@ -10,6 +10,7 @@ ApplicationsListPage {
     stateFilter: AbstractResource.Installed
     sortRole: ResourcesProxyModel.RatingCountRole
     sortOrder: Qt.DescendingOrder
+    allBackends: true
 
     title: i18n("Installed")
     compact: true
