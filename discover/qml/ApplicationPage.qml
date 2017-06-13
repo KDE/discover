@@ -178,7 +178,7 @@ DiscoverPage {
                 }
                 RowLayout {
                     Label {
-                        text: i18n("Source: ")
+                        text: i18n("Source:")
                     }
                     LinkButton {
                         text: appInfo.application.displayOrigin
