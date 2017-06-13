@@ -271,7 +271,7 @@ AggregatedResultsStream::AggregatedResultsStream(const QSet<ResultsStream*>& str
     Q_ASSERT(!streams.contains(nullptr));
     if (streams.isEmpty()) {
         qWarning() << "no streams to aggregate!!";
-        destruction(nullptr);
+        QTimer::singleShot(0, this, &AggregatedResultsStream::clear);
     }
 
     for (auto stream: streams) {
@@ -304,6 +304,11 @@ void AggregatedResultsStream::emitResults()
 void AggregatedResultsStream::destruction(QObject* obj)
 {
     m_streams.remove(obj);
+    clear();
+}
+
+void AggregatedResultsStream::clear()
+{
     if (m_streams.isEmpty()) {
         emitResults();
         Q_EMIT finished();

@@ -41,6 +41,7 @@ private:
     void addResults(const QVector<AbstractResource*>& res);
     void emitResults();
     void destruction(QObject* obj);
+    void clear();
 
     QSet<QObject*> m_streams;
     QVector<AbstractResource*> m_results;
