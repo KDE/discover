@@ -98,6 +98,29 @@ DiscoverPage {
         }
     }
 
+    Kirigami.OverlaySheet {
+        id: originsOverlay
+        bottomPadding: Kirigami.Units.largeSpacing
+        topPadding: Kirigami.Units.largeSpacing
+        ListView {
+            model: ResourcesProxyModel {
+                allBackends: true
+                resourcesUrl: appInfo.application.url
+            }
+            delegate: Kirigami.BasicListItem {
+                label: displayOrigin
+                checkable: checked
+                checked: appInfo.application == model.application
+                onClicked: if(index>=0) {
+                    var res = model.application
+                    console.assert(res)
+                    window.stack.pop()
+                    Navigation.openApplication(res)
+                }
+            }
+        }
+    }
+
     ColumnLayout {
         RowLayout {
             Layout.fillWidth: true
@@ -153,26 +176,18 @@ DiscoverPage {
                 Label {
                     text: i18n("Size: %1", appInfo.application.sizeDescription)
                 }
+                RowLayout {
+                    Label {
+                        text: i18n("Source: ")
+                    }
+                    LinkButton {
+                        text: appInfo.application.displayOrigin
+                        onClicked: originsOverlay.open()
+                    }
+                }
                 Label {
                     visible: text.length>0
                     text: appInfo.application.license ? i18n("License: %1", appInfo.application.license) : ""
-                }
-                ComboBox {
-                    id: sourcesCombo
-                    model: ResourcesProxyModel {
-                        allBackends: true
-                        onIsBusyChanged: if (!isBusy) {
-                            sourcesCombo.currentIndex = indexOf(appInfo.application)
-                        }
-                        resourcesUrl: appInfo.application.url
-                    }
-                    onActivated: if(index>=0) {
-                        var res = model.resourceAt(index)
-                        console.assert(res)
-                        window.stack.pop()
-                        Navigation.openApplication(res)
-                    }
-                    textRole: "displayOrigin"
                 }
             }
         }
