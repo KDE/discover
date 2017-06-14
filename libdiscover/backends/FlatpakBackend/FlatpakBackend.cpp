@@ -1046,7 +1046,7 @@ void FlatpakBackend::checkForUpdates()
 
 AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
 {
-    if ((!url.path().endsWith(QLatin1String(".flatpakref")) && !url.path().endsWith(QLatin1String(".flatpak")) && !url.path().endsWith(QLatin1String(".flatpakrepo"))) || !url.isLocalFile()) {
+    if (!url.isLocalFile()) {
         return nullptr;
     }
 
@@ -1055,7 +1055,7 @@ AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
         resource = addAppFromFlatpakBundle(url);
     } else if (url.path().endsWith(QLatin1String(".flatpakref"))) {
         resource = addAppFromFlatpakRef(url);
-    } else {
+    } else if (url.path().endsWith(QLatin1String(".flatpakrepo"))) {
         resource = addSourceFromFlatpakRepo(url);
     }
 
