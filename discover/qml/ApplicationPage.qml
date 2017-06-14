@@ -128,7 +128,6 @@ DiscoverPage {
             }
             delegate: Kirigami.BasicListItem {
                 label: displayOrigin
-                checkable: checked
                 checked: appInfo.application == model.application
                 onClicked: if(index>=0) {
                     var res = model.application
