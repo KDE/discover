@@ -343,6 +343,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     as_component_set_description(component, settings.value(QStringLiteral("Flatpak Ref/Description")).toString().toStdString().c_str(), nullptr);
     as_component_set_name(component, settings.value(QStringLiteral("Flatpak Ref/Title")).toString().toStdString().c_str(), nullptr);
     as_component_set_summary(component, settings.value(QStringLiteral("Flatpak Ref/Comment")).toString().toStdString().c_str(), nullptr);
+    as_component_set_id(component, settings.value(QStringLiteral("Flatpak Ref/Name")).toString().toStdString().c_str());
     const QString iconUrl = settings.value(QStringLiteral("Flatpak Ref/Icon")).toString();
     if (!iconUrl.isEmpty()) {
         AsIcon *icon = as_icon_new();
@@ -381,6 +382,7 @@ FlatpakResource * FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
     as_component_set_summary(component, settings.value(QStringLiteral("Flatpak Repo/Comment")).toString().toStdString().c_str(), nullptr);
     as_component_set_description(component, settings.value(QStringLiteral("Flatpak Repo/Description")).toString().toStdString().c_str(), nullptr);
     as_component_set_name(component, title.toStdString().c_str(), nullptr);
+    as_component_set_id(component, settings.value(QStringLiteral("Flatpak Ref/Name")).toString().toStdString().c_str());
     const QString iconUrl = settings.value(QStringLiteral("Flatpak Repo/Icon")).toString();
     if (!iconUrl.isEmpty()) {
         AsIcon *icon = as_icon_new();
