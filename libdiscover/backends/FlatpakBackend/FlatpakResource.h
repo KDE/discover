@@ -96,7 +96,6 @@ public:
     QUrl resourceFile() const;
     QString runtime() const;
     QUrl screenshotUrl() override;
-    QString scopeAsString() const;
     QString section() override;
     int size() override;
     QString sizeDescription() override;
