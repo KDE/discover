@@ -85,7 +85,6 @@ private:
     bool m_isValid;
     KNSCore::Engine* m_engine;
     QHash<QString, AbstractResource*> m_resourcesByName;
-    int m_page;
     KNSReviews* const m_reviews;
     QString m_name;
     QString m_iconName;

@@ -31,6 +31,7 @@
 #include <attica/providermanager.h>
 
 // KDE includes
+#include <knewstuffcore_version.h>
 #include <KNSCore/Engine>
 #include <KNSCore/QuestionManager>
 #include <KConfigGroup>
@@ -81,7 +82,6 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     : AbstractResourcesBackend(parent)
     , m_fetching(false)
     , m_isValid(true)
-    , m_page(0)
     , m_reviews(new KNSReviews(this))
     , m_name(knsrc)
     , m_iconName(iconName)
@@ -107,6 +107,9 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
 
     m_engine = new KNSCore::Engine(this);
     m_engine->init(m_name);
+#if KNEWSTUFFCORE_VERSION_MAJOR==5 && KNEWSTUFFCORE_VERSION_MAJOR>=36
+    m_engine->setPageSize(100);
+#endif
     // Setting setFetching to false when we get an error ensures we don't end up in an eternally-fetching state
     connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &error) {
         if(error == QLatin1Literal("All categories are missing")) {
@@ -121,8 +124,17 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged);
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
-    m_page = -1;
     connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, m_engine, &KNSCore::Engine::checkForInstalled);
+    connect(m_engine, &KNSCore::Engine::signalResetView, this, [this](){
+        // If KNS tells us we should reset the view, what that means here is to remove
+        // references to all the resources we've already told the agregator model about
+        // from the model, as they will be added again...
+        foreach(AbstractResource* res, m_resourcesByName.values()) {
+            resourceRemoved(res);
+            res->deleteLater();
+        }
+        m_resourcesByName.clear();
+    });
     m_responsePending = true;
 
     const QVector<QPair<FilterType, QString>> filters = { {CategoryFilter, fileName } };
@@ -191,20 +203,19 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
         Q_EMIT receivedResources(resources);
     }
 
-    if(resources.isEmpty() || m_page < 0) {
+    if(resources.isEmpty()) {
         Q_EMIT searchFinished();
         Q_EMIT availableForQueries();
         setFetching(false);
         return;
     }
-//     qDebug() << "received" << objectName() << this << m_page << m_resourcesByName.count();
+//     qDebug() << "received" << objectName() << this << m_resourcesByName.count();
     if (!m_responsePending) {
-        ++m_page;
         // We _have_ to set this first. If we do not, we may run into a situation where the
         // data request will conclude immediately, causing m_responsePending to remain true
         // for perpetuity as the slots will be called before the function returns.
         m_responsePending = true;
-        m_engine->requestData(m_page, 100);
+        m_engine->requestMoreData();
     } else {
         Q_EMIT availableForQueries();
     }
@@ -322,14 +333,13 @@ ResultsStream * KNSBackend::searchStream(const QString &searchText)
     Q_EMIT startingSearch();
 
     auto stream = new ResultsStream(QStringLiteral("KNS-search-")+name());
-    auto start = [this, stream, searchText]() {
+    connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
+    connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::finish);
+    connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::finish);
+    auto start = [this, searchText]() {
+        // No need to explicitly launch a search, setting the search term already does that for us
         m_engine->setSearchTerm(searchText);
-        m_engine->requestData(0, 100);
         m_responsePending = true;
-        m_page = 0;
-        connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
-        connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::finish);
-        connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::finish);
     };
     if (m_responsePending) {
         connect(this, &KNSBackend::availableForQueries, stream, start, Qt::QueuedConnection);
