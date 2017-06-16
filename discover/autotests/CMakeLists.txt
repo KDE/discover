@@ -12,6 +12,7 @@ if(BUILD_DummyBackend)
     add_test(NAME wrongInput COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/wrongInput.qml" "CMakeLists.txt")
     add_test(NAME packageArgument COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/packageArgument.qml"
                                                            --local-filename "${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt")
+    add_test(NAME updateandinstall COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/updateandinstall.qml")
 
 #   Just make sure they exit successfully
     add_test(NAME listbackends COMMAND Plasma::Discover --listbackends)

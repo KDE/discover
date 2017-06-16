@@ -109,6 +109,15 @@ private Q_SLOTS:
         rum->updateAll();
         QVERIFY(spy.wait());
         QCOMPARE(rum->isProgressing(), true);
+
+        QTest::qWait(20);
+        QScopedPointer<ResourcesUpdatesModel> rum2(new ResourcesUpdatesModel(this));
+        new ModelTest(rum2.data(), rum2.data());
+
+        QScopedPointer<UpdateModel> m2(new UpdateModel(this));
+        new ModelTest(m2.data(), m2.data());
+        m->setBackend(rum2.data());
+
         QVERIFY(spy.wait());
         QCOMPARE(rum->isProgressing(), false);
 
