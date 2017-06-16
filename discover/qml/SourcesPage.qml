@@ -80,6 +80,37 @@ DiscoverPage {
                     topMargin: Kirigami.Units.smallSpacing
                     bottomMargin: Kirigami.Units.smallSpacing
                 }
+
+                ToolButton {
+                    text: i18n("Application Sources")
+                    tooltip: i18n("Allows to choose the source that will be used for browsing applications")
+                    menu: Menu {
+                        id: backendsMenu
+                    }
+                    enabled: menu.items.length>0
+
+                    ExclusiveGroup {
+                        id: select
+                    }
+
+                    Instantiator {
+                        model: ResourcesModel.applicationBackends
+                        delegate: MenuItem {
+                            text: modelData.displayName
+                            checkable: true
+                            checked: ResourcesModel.currentApplicationBackend == modelData
+                            onTriggered: ResourcesModel.currentApplicationBackend = modelData
+                            exclusiveGroup: select
+                        }
+                        onObjectAdded: {
+                            backendsMenu.insertItem(index, object)
+                        }
+                        onObjectRemoved: {
+                            object.destroy()
+                        }
+                    }
+                }
+
                 ToolButton {
 //                         iconName: "list-add"
                     text: i18n("Add Source")
@@ -121,35 +152,6 @@ DiscoverPage {
                         }
                         onObjectAdded: {
                             actionsMenu.insertItem(index, object)
-                        }
-                        onObjectRemoved: {
-                            object.destroy()
-                        }
-                    }
-                }
-
-                ToolButton {
-                    text: i18n("Application Sources")
-                    menu: Menu {
-                        id: backendsMenu
-                    }
-                    enabled: menu.items.length>0
-
-                    ExclusiveGroup {
-                        id: select
-                    }
-
-                    Instantiator {
-                        model: ResourcesModel.applicationBackends
-                        delegate: MenuItem {
-                            text: modelData.displayName
-                            checkable: true
-                            checked: ResourcesModel.currentApplicationBackend == modelData
-                            onTriggered: ResourcesModel.currentApplicationBackend = modelData
-                            exclusiveGroup: select
-                        }
-                        onObjectAdded: {
-                            backendsMenu.insertItem(index, object)
                         }
                         onObjectRemoved: {
                             object.destroy()
