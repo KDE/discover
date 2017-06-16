@@ -71,7 +71,7 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    Transaction *trans = transactionFromIndex(index);
+    Transaction *trans = m_transactions[index.row()];
     switch (role) {
     case TransactionRoleRole:
         return trans->role();
@@ -110,16 +110,6 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
     }
 
     return QVariant();
-}
-
-Transaction *TransactionModel::transactionFromIndex(const QModelIndex &index) const
-{
-    Transaction *trans = nullptr;
-
-    if (index.isValid() && index.row() < m_transactions.size())
-        trans = m_transactions.at(index.row());
-
-    return trans;
 }
 
 Transaction *TransactionModel::transactionFromResource(AbstractResource *resource) const

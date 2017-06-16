@@ -51,7 +51,6 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
 
-    Transaction *transactionFromIndex(const QModelIndex &index) const;
     Q_SCRIPTABLE Transaction *transactionFromResource(AbstractResource *resource) const;
     QModelIndex indexOf(Transaction *trans) const;
     QModelIndex indexOf(AbstractResource *res) const;
