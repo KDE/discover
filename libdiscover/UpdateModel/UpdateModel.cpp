@@ -76,7 +76,8 @@ void UpdateModel::setBackend(ResourcesUpdatesModel* updates)
 void UpdateModel::resourceHasProgressed(AbstractResource* res, qreal progress)
 {
     UpdateItem* item = itemFromResource(res);
-    Q_ASSERT(item);
+    if (!item)
+        return;
     item->setProgress(progress);
 
     const QModelIndex idx = indexFromItem(item);
@@ -85,7 +86,7 @@ void UpdateModel::resourceHasProgressed(AbstractResource* res, qreal progress)
 
 void UpdateModel::activityChanged()
 {
-    if (m_updates->isProgressing())
+    if (!m_updates || m_updates->isProgressing())
         return;
     m_updates->prepare();
     setResources(m_updates->toUpdate());
