@@ -42,7 +42,7 @@
 #include <QStringList>
 #include <QTimer>
 
-FlatpakResource::FlatpakResource(AppStream::Component *component, FlatpakInstallation* installation, FlatpakBackend *parent)
+FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation* installation, FlatpakBackend *parent)
     : AbstractResource(parent)
     , m_appdata(component)
     , m_downloadSize(0)
@@ -53,7 +53,7 @@ FlatpakResource::FlatpakResource(AppStream::Component *component, FlatpakInstall
     , m_type(FlatpakResource::DesktopApp)
 {
     // Start fetching remote icons during initialization
-    const auto icons = m_appdata->icons();
+    const auto icons = m_appdata.icons();
     if (!icons.isEmpty()) {
         foreach (const AppStream::Icon &icon, icons) {
             if (icon.kind() == AppStream::Icon::KindRemote) {
@@ -83,7 +83,7 @@ FlatpakResource::FlatpakResource(AppStream::Component *component, FlatpakInstall
     }
 }
 
-AppStream::Component *FlatpakResource::appstreamComponent() const
+AppStream::Component FlatpakResource::appstreamComponent() const
 {
     return m_appdata;
 }
@@ -106,7 +106,7 @@ QString FlatpakResource::availableVersion() const
 
 QString FlatpakResource::appstreamId() const
 {
-    return m_appdata->id();
+    return m_appdata.id();
 }
 
 QString FlatpakResource::arch() const
@@ -135,15 +135,15 @@ void FlatpakResource::updateFromRef(FlatpakRef* ref)
 
 QStringList FlatpakResource::categories()
 {
-    auto cats = m_appdata->categories();
-    if (m_appdata->kind() != AppStream::Component::KindAddon)
+    auto cats = m_appdata.categories();
+    if (m_appdata.kind() != AppStream::Component::KindAddon)
         cats.append(QStringLiteral("Application"));
     return cats;
 }
 
 QString FlatpakResource::comment()
 {
-    const auto summary = m_appdata->summary();
+    const auto summary = m_appdata.summary();
     if (!summary.isEmpty()) {
         return summary;
     }
@@ -163,14 +163,14 @@ int FlatpakResource::downloadSize() const
 
 QStringList FlatpakResource::executables() const
 {
-//     return m_appdata->provided(AppStream::Provided::KindBinary).items();
+//     return m_appdata.provided(AppStream::Provided::KindBinary).items();
     return QStringList();
 }
 
 QVariant FlatpakResource::icon() const
 {
     QIcon ret;
-    const auto icons = m_appdata->icons();
+    const auto icons = m_appdata.icons();
 
     if (!m_bundledIcon.isNull()) {
         ret = QIcon(m_bundledIcon);
@@ -237,7 +237,7 @@ bool FlatpakResource::isTechnical() const
 
 QUrl FlatpakResource::homepage()
 {
-    return m_appdata->url(AppStream::Component::UrlKindHomepage);
+    return m_appdata.url(AppStream::Component::UrlKindHomepage);
 }
 
 QString FlatpakResource::flatpakFileType() const
@@ -250,7 +250,7 @@ QString FlatpakResource::flatpakName() const
     // If the flatpak name is not known (known only for installed apps), then use
     // appstream id instead;
     if (m_flatpakName.isEmpty()) {
-        return m_appdata->id();
+        return m_appdata.id();
     }
 
     return m_flatpakName;
@@ -258,19 +258,19 @@ QString FlatpakResource::flatpakName() const
 
 QString FlatpakResource::license()
 {
-    return m_appdata->projectLicense();
+    return m_appdata.projectLicense();
 }
 
 QString FlatpakResource::longDescription()
 {
-    return m_appdata->description();
+    return m_appdata.description();
 }
 
 QString FlatpakResource::name()
 {
-    QString name = m_appdata->name();
+    QString name = m_appdata.name();
     if (name.isEmpty()) {
-        name = m_appdata->id();
+        name = m_appdata.id();
     }
 
     if (name.startsWith(QLatin1String("(Nightly) "))) {
@@ -317,10 +317,10 @@ static QUrl imageOfKind(const QList<AppStream::Image> &images, AppStream::Image:
     return ret;
 }
 
-static QUrl screenshot(AppStream::Component *comp, AppStream::Image::Kind kind)
+static QUrl screenshot(AppStream::Component comp, AppStream::Image::Kind kind)
 {
     QUrl ret;
-    Q_FOREACH (const AppStream::Screenshot &s, comp->screenshots()) {
+    Q_FOREACH (const AppStream::Screenshot &s, comp.screenshots()) {
         ret = imageOfKind(s.images(), kind);
         if (s.isDefault() && !ret.isEmpty())
             break;
@@ -404,7 +404,7 @@ QString FlatpakResource::uniqueId() const
                                                  .arg(QLatin1String("flatpak"))
                                                  .arg(origin())
                                                  .arg(typeAsString())
-                                                 .arg(m_appdata->id())
+                                                 .arg(m_appdata.id())
                                                  .arg(branch());
 }
 
@@ -420,7 +420,7 @@ void FlatpakResource::invokeApplication() const
                                      nullptr,
                                      cancellable,
                                      &localError)) {
-        qWarning() << "Failed to launch " << m_appdata->name() << ": " << localError->message;
+        qWarning() << "Failed to launch " << m_appdata.name() << ": " << localError->message;
     }
 }
 
@@ -436,7 +436,7 @@ void FlatpakResource::fetchScreenshots()
 {
     QList<QUrl> thumbnails, screenshots;
 
-    Q_FOREACH (const AppStream::Screenshot &s, m_appdata->screenshots()) {
+    Q_FOREACH (const AppStream::Screenshot &s, m_appdata.screenshots()) {
         const QUrl thumbnail = imageOfKind(s.images(), AppStream::Image::KindThumbnail);
         const QUrl plain = imageOfKind(s.images(), AppStream::Image::KindSource);
         if (plain.isEmpty())
