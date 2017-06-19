@@ -53,10 +53,8 @@ void ResourcesUpdatesModel::init()
         if(updater && !m_updaters.contains(updater)) {
             connect(updater, &AbstractBackendUpdater::progressingChanged, this, &ResourcesUpdatesModel::slotProgressingChanged);
             connect(updater, &AbstractBackendUpdater::progressChanged, this, &ResourcesUpdatesModel::progressChanged);
-            connect(updater, &AbstractBackendUpdater::statusMessageChanged, this, &ResourcesUpdatesModel::statusMessageChanged);
             connect(updater, &AbstractBackendUpdater::statusMessageChanged, this, &ResourcesUpdatesModel::message);
             connect(updater, &AbstractBackendUpdater::statusDetailChanged, this, &ResourcesUpdatesModel::message);
-            connect(updater, &AbstractBackendUpdater::statusDetailChanged, this, &ResourcesUpdatesModel::statusDetailChanged);
             connect(updater, &AbstractBackendUpdater::remainingTimeChanged, this, &ResourcesUpdatesModel::etaChanged);
             connect(updater, &AbstractBackendUpdater::downloadSpeedChanged, this, &ResourcesUpdatesModel::downloadSpeedChanged);
             connect(updater, &AbstractBackendUpdater::cancelableChanged, this, &ResourcesUpdatesModel::cancelableChanged);
@@ -194,15 +192,6 @@ QString ResourcesUpdatesModel::remainingTime() const
         return i18nc("@item:intext Unknown remaining time", "Updating...");
     else
         return i18nc("@item:intext Remaining time", "%1 remaining", KFormat().formatDuration(maxEta));
-}
-
-quint64 ResourcesUpdatesModel::downloadSpeed() const
-{
-    quint64 ret = 0;
-    foreach(AbstractBackendUpdater* upd, m_updaters) {
-        ret += upd->downloadSpeed();
-    }
-    return ret;
 }
 
 bool ResourcesUpdatesModel::isCancelable() const

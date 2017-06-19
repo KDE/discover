@@ -39,7 +39,6 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     Q_OBJECT
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(QString remainingTime READ remainingTime NOTIFY etaChanged)
-    Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
     Q_PROPERTY(bool isCancelable READ isCancelable NOTIFY cancelableChanged)
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
     Q_PROPERTY(QDateTime lastUpdate READ lastUpdate NOTIFY progressingChanged)
@@ -69,8 +68,6 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void etaChanged();
         void cancelableChanged();
         void progressingChanged(bool progressing);
-        void statusMessageChanged(const QString& message);
-        void statusDetailChanged(const QString& msg);
         void finished();
         void resourceProgressed(AbstractResource* resource, qreal progress);
 

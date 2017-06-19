@@ -65,7 +65,6 @@ void StandardBackendUpdater::start()
         m_backend->installApplication(res);
     }
     m_settingUp = false;
-    emit statusMessageChanged(statusMessage());
 
     if(m_pendingResources.isEmpty()) {
         cleanup();
@@ -98,7 +97,6 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
     const bool found = fromOurBackend && m_pendingResources.remove(t->resource());
 
     if(found && !m_settingUp) {
-        setStatusDetail(i18n("%1 has been updated", t->resource()->name()));
         qreal p = 1-(qreal(m_pendingResources.size())/m_toUpgrade.size());
         setProgress(100*p);
         if(m_pendingResources.isEmpty()) {
@@ -205,30 +203,4 @@ bool StandardBackendUpdater::isCancelable() const
 bool StandardBackendUpdater::isProgressing() const
 {
     return m_settingUp || !m_pendingResources.isEmpty();
-}
-
-QString StandardBackendUpdater::statusDetail() const
-{
-    return m_statusDetail;
-}
-
-void StandardBackendUpdater::setStatusDetail(const QString& msg)
-{
-    if (m_statusDetail != msg) {
-        m_statusDetail = msg;
-        emit statusDetailChanged(msg);
-    }
-}
-
-QString StandardBackendUpdater::statusMessage() const
-{
-    if(m_settingUp)
-        return i18n("Setting up for install...");
-    else
-        return i18n("Installing...");
-}
-
-quint64 StandardBackendUpdater::downloadSpeed() const
-{
-    return 0;
 }
