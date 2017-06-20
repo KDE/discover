@@ -36,8 +36,6 @@ FlatpakTransaction::FlatpakTransaction(FlatpakInstallation *installation, Flatpa
 
 FlatpakTransaction::FlatpakTransaction(FlatpakInstallation* installation, FlatpakResource *app, FlatpakResource *runtime, Transaction::Role role, bool delayStart)
     : Transaction(app->backend(), app, role, {})
-    , m_appJobFinished(false)
-    , m_runtimeJobFinished(false)
     , m_appJobProgress(0)
     , m_runtimeJobProgress(0)
     , m_app(app)
@@ -75,37 +73,31 @@ void FlatpakTransaction::setRuntime(FlatpakResource *runtime)
 void FlatpakTransaction::start()
 {
     if (m_runtime) {
-        m_runtimeJob = new FlatpakTransactionJob(m_installation, m_runtime, role());
-        connect(m_runtimeJob, &FlatpakTransactionJob::finished, m_runtimeJob, &FlatpakTransactionJob::deleteLater);
-        connect(m_runtimeJob, &FlatpakTransactionJob::jobFinished, this, &FlatpakTransaction::onRuntimeJobFinished);
+        m_runtimeJob = new FlatpakTransactionJob(m_installation, m_runtime, role(), this);
+        connect(m_runtimeJob, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onRuntimeJobFinished);
         connect(m_runtimeJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onRuntimeJobProgressChanged);
         m_runtimeJob->start();
-    } else {
-        // We can mark runtime job as finished as we don't need to start it
-        m_runtimeJobFinished = true;
     }
 
     // App job will be started everytime
-    m_appJob = new FlatpakTransactionJob(m_installation, m_app, role());
-    connect(m_appJob, &FlatpakTransactionJob::finished, m_appJob, &FlatpakTransactionJob::deleteLater);
-    connect(m_appJob, &FlatpakTransactionJob::jobFinished, this, &FlatpakTransaction::onAppJobFinished);
+    m_appJob = new FlatpakTransactionJob(m_installation, m_app, role(), this);
+    connect(m_appJob, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onAppJobFinished);
     connect(m_appJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onAppJobProgressChanged);
     m_appJob->start();
 }
 
-void FlatpakTransaction::onAppJobFinished(bool success,  const QString &errorMessage)
+void FlatpakTransaction::onAppJobFinished()
 {
-    m_appJobFinished = true;
     m_appJobProgress = 100;
 
     updateProgress();
 
-    if (!success) {
-        Q_EMIT passiveMessage(errorMessage);
+    if (!m_appJob->result()) {
+        Q_EMIT passiveMessage(m_appJob->errorMessage());
     }
 
-    if (m_runtimeJobFinished) {
-        finishTransaction(success);
+    if ((m_runtimeJob && m_runtimeJob->isFinished()) || !m_runtimeJob) {
+        finishTransaction();
     }
 }
 
@@ -116,19 +108,23 @@ void FlatpakTransaction::onAppJobProgressChanged(int progress)
     updateProgress();
 }
 
-void FlatpakTransaction::onRuntimeJobFinished(bool success,  const QString &errorMessage)
+void FlatpakTransaction::onRuntimeJobFinished()
 {
-    m_runtimeJobFinished = true;
     m_runtimeJobProgress = 100;
 
     updateProgress();
 
-    if (!success) {
-        Q_EMIT passiveMessage(errorMessage);
+    if (!m_runtimeJob->result()) {
+        Q_EMIT passiveMessage(m_runtimeJob->errorMessage());
+    } else {
+        // This should be the only case when runtime is automatically installed, but better to check
+        if (role() == InstallRole) {
+            m_runtime->setState(AbstractResource::Installed);
+        }
     }
 
-    if (m_appJobFinished) {
-        finishTransaction(success);
+    if (m_appJob->isFinished()) {
+        finishTransaction();
     }
 }
 
@@ -148,9 +144,9 @@ void FlatpakTransaction::updateProgress()
     }
 }
 
-void FlatpakTransaction::finishTransaction(bool success)
+void FlatpakTransaction::finishTransaction()
 {
-    if (success) {
+    if (m_appJob->result()) {
         AbstractResource::State newState = AbstractResource::None;
         switch(role()) {
         case InstallRole:
@@ -161,13 +157,13 @@ void FlatpakTransaction::finishTransaction(bool success)
             newState = AbstractResource::None;
             break;
         }
-        m_app->setState(newState);
-        if (m_runtime && role() == InstallRole) {
-            m_runtime->setState(newState);
-        }
-    }
 
-    setStatus(DoneStatus);
+        m_app->setState(newState);
+
+        setStatus(DoneStatus);
+    } else {
+        setStatus(DoneWithErrorStatus);
+    }
 
     TransactionModel::global()->removeTransaction(this);
 }

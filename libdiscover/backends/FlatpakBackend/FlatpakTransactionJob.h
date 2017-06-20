@@ -35,18 +35,21 @@ class FlatpakTransactionJob : public QThread
 {
 Q_OBJECT
 public:
-    FlatpakTransactionJob(FlatpakInstallation *installation, FlatpakResource *app, Transaction::Role role);
+    FlatpakTransactionJob(FlatpakInstallation *installation, FlatpakResource *app, Transaction::Role role, QObject *parent = nullptr);
     ~FlatpakTransactionJob();
 
     void cancel();
     void run() override;
+
     QString errorMessage() const;
+    bool result() const;
 
 Q_SIGNALS:
-    void jobFinished(bool success, const QString& errorMessage);
     void progressChanged(int progress);
 
 private:
+    bool m_result;
+    QString m_errorMessage;
     GCancellable *m_cancellable;
     FlatpakResource *m_app;
     FlatpakInstallation *m_installation;

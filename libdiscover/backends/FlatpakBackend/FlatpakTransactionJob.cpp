@@ -36,8 +36,9 @@ static void flatpakInstallationProgressCallback(const gchar *stats, guint progre
     Q_EMIT transactionJob->progressChanged(progress);
 }
 
-FlatpakTransactionJob::FlatpakTransactionJob(FlatpakInstallation *installation, FlatpakResource *app, Transaction::Role role)
-    : QThread()
+FlatpakTransactionJob::FlatpakTransactionJob(FlatpakInstallation *installation, FlatpakResource *app, Transaction::Role role, QObject *parent)
+    : QThread(parent)
+    , m_result(false)
     , m_app(app)
     , m_installation(installation)
     , m_role(role)
@@ -58,7 +59,6 @@ void FlatpakTransactionJob::cancel()
 void FlatpakTransactionJob::run()
 {
     g_autoptr(GError) localError = nullptr;
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(FlatpakInstalledRef) ref = nullptr;
 
     if (m_role == Transaction::Role::InstallRole) {
@@ -71,7 +71,7 @@ void FlatpakTransactionJob::run()
                                               m_app->branch().toStdString().c_str(),
                                               flatpakInstallationProgressCallback,
                                               this,
-                                              cancellable, &localError);
+                                              m_cancellable, &localError);
         } else {
             if (m_app->flatpakFileType() == QStringLiteral("flatpak")) {
                 g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toStdString().c_str());
@@ -88,13 +88,14 @@ void FlatpakTransactionJob::run()
                                                 m_app->branch().toStdString().c_str(),
                                                 flatpakInstallationProgressCallback,
                                                 this,
-                                                cancellable, &localError);
+                                                m_cancellable, &localError);
             }
         }
 
         if (!ref) {
-            qWarning() << "Failed to install" << m_app->name() << ':' << localError->message;
-            Q_EMIT jobFinished(false, QString::fromUtf8(localError->message));
+            m_result = false;
+            m_errorMessage = QString::fromUtf8(localError->message);
+            qWarning() << "Failed to install" << m_app->name() << ':' << m_errorMessage;
             return;
         }
     } else if (m_role == Transaction::Role::RemoveRole) {
@@ -105,12 +106,24 @@ void FlatpakTransactionJob::run()
                                             m_app->branch().toStdString().c_str(),
                                             flatpakInstallationProgressCallback,
                                             this,
-                                            cancellable, &localError)) {
-            qWarning() << "Failed to uninstall" << m_app->name() << ':' << localError->message;
-            Q_EMIT jobFinished(false, QString::fromUtf8(localError->message));
+                                            m_cancellable, &localError)) {
+            m_result = false;
+            m_errorMessage = QString::fromUtf8(localError->message);
+            qWarning() << "Failed to uninstall" << m_app->name() << ':' << m_errorMessage;
             return;
         }
     }
 
-    Q_EMIT jobFinished(true, QString());
+    m_result = true;
 }
+
+QString FlatpakTransactionJob::errorMessage() const
+{
+    return m_errorMessage;
+}
+
+bool FlatpakTransactionJob::result() const
+{
+    return m_result;
+}
+
