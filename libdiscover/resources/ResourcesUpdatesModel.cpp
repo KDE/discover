@@ -34,6 +34,71 @@
 #include <KLocalizedString>
 #include <KFormat>
 
+class UpdateTransaction : public Transaction
+{
+    Q_OBJECT
+public:
+    UpdateTransaction(ResourcesUpdatesModel* parent)
+        : Transaction(nullptr, nullptr, Transaction::InstallRole)
+        , m_allUpdaters(parent->updaters())
+    {
+        bool cancelable = false;
+        foreach(auto updater, parent->updaters()) {
+            connect(updater, &AbstractBackendUpdater::progressingChanged, this, &UpdateTransaction::slotProgressingChanged);
+            connect(updater, &AbstractBackendUpdater::passiveMessage, this, &Transaction::passiveMessage);
+            connect(updater, &AbstractBackendUpdater::proceedRequest, this, &UpdateTransaction::processProceedRequest);
+            cancelable |= updater->isCancelable();
+        }
+        setCancellable(cancelable);
+    }
+
+    void processProceedRequest(const QString &title, const QString& message) {
+        m_updatersWaitingForFeedback += qobject_cast<AbstractBackendUpdater*>(sender());
+        Q_EMIT proceedRequest(title, message);
+    }
+
+    void cancel() override {
+        QVector<AbstractBackendUpdater*> toCancel = m_updatersWaitingForFeedback.isEmpty() ? m_allUpdaters : m_updatersWaitingForFeedback;
+
+        foreach(auto updater, m_updatersWaitingForFeedback) {
+            updater->cancel();
+        }
+    }
+
+    void proceed() override {
+        m_updatersWaitingForFeedback.takeFirst()->proceed();
+    }
+
+    bool isProgressing() const
+    {
+        bool progressing = false;
+        foreach(AbstractBackendUpdater* upd, m_allUpdaters) {
+            progressing |= upd->isProgressing();
+        }
+        return progressing;
+    }
+
+    void slotProgressingChanged()
+    {
+        if (status() < DoneStatus && !isProgressing()) {
+            setStatus(Transaction::DoneStatus);
+            Q_EMIT finished();
+            qDebug() << "finished!" << this << sender();
+            deleteLater();
+        }
+    }
+
+    QVariant icon() const override { return QStringLiteral("update-low"); }
+    QString name() const override { return i18n("Update"); }
+
+Q_SIGNALS:
+    void finished();
+
+private:
+    QVector<AbstractBackendUpdater*> m_updatersWaitingForFeedback;
+    const QVector<AbstractBackendUpdater*> m_allUpdaters;
+};
+
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
     , m_lastIsProgressing(false)
@@ -51,13 +116,11 @@ void ResourcesUpdatesModel::init()
     foreach(AbstractResourcesBackend* b, backends) {
         AbstractBackendUpdater* updater = b->backendUpdater();
         if(updater && !m_updaters.contains(updater)) {
-            connect(updater, &AbstractBackendUpdater::progressingChanged, this, &ResourcesUpdatesModel::slotProgressingChanged);
             connect(updater, &AbstractBackendUpdater::progressChanged, this, &ResourcesUpdatesModel::progressChanged);
             connect(updater, &AbstractBackendUpdater::statusMessageChanged, this, &ResourcesUpdatesModel::message);
             connect(updater, &AbstractBackendUpdater::statusDetailChanged, this, &ResourcesUpdatesModel::message);
             connect(updater, &AbstractBackendUpdater::remainingTimeChanged, this, &ResourcesUpdatesModel::etaChanged);
             connect(updater, &AbstractBackendUpdater::downloadSpeedChanged, this, &ResourcesUpdatesModel::downloadSpeedChanged);
-            connect(updater, &AbstractBackendUpdater::cancelableChanged, this, &ResourcesUpdatesModel::cancelableChanged);
             connect(updater, &AbstractBackendUpdater::resourceProgressed, this, &ResourcesUpdatesModel::resourceProgressed);
             connect(updater, &AbstractBackendUpdater::destroyed, this, &ResourcesUpdatesModel::updaterDestroyed);
             m_updaters += updater;
@@ -65,31 +128,19 @@ void ResourcesUpdatesModel::init()
             m_lastIsProgressing |= updater->isProgressing();
         }
     }
+
+    auto tm = TransactionModel::global();
+    foreach(auto t, tm->transactions()) {
+        auto updateTransaction = qobject_cast<UpdateTransaction*>(t);
+        if (updateTransaction) {
+            setTransaction(updateTransaction);
+        }
+    }
 }
 
 void ResourcesUpdatesModel::updaterDestroyed(QObject* obj)
 {
     m_updaters.removeAll(static_cast<AbstractBackendUpdater*>(obj));
-}
-
-void ResourcesUpdatesModel::slotProgressingChanged()
-{
-    const bool newProgressing = isProgressing();
-    if (newProgressing != m_lastIsProgressing) {
-        m_lastIsProgressing = newProgressing;
-
-
-        if (!newProgressing && m_transaction) {
-            m_transaction->setStatus(Transaction::DoneStatus);
-            m_transaction->deleteLater();
-        }
-
-        emit progressingChanged(newProgressing);
-
-        if (!newProgressing) {
-            Q_EMIT finished();
-        }
-    }
 }
 
 qreal ResourcesUpdatesModel::progress() const
@@ -123,52 +174,12 @@ void ResourcesUpdatesModel::prepare()
     }
 }
 
-class UpdateTransaction : public Transaction
-{
-public:
-    UpdateTransaction(ResourcesUpdatesModel* parent)
-        : Transaction(parent, nullptr, Transaction::InstallRole)
-        , m_updater(parent)
-    {
-        setCancellable(m_updater->isCancelable());
-        connect(m_updater, &ResourcesUpdatesModel::cancelableChanged, this, [this]() {
-            setCancellable(m_updater->isCancelable());
-        });
-
-        foreach(auto updater, parent->updaters()) {
-            connect(updater, &AbstractBackendUpdater::passiveMessage, this, &Transaction::passiveMessage);
-            connect(updater, &AbstractBackendUpdater::proceedRequest, this, &UpdateTransaction::processProceedRequest);
-        }
-    }
-
-    void processProceedRequest(const QString &title, const QString& message) {
-        m_updatersWaitingForFeedback += qobject_cast<AbstractBackendUpdater*>(sender());
-        Q_EMIT proceedRequest(title, message);
-    }
-
-    void cancel() override {
-        foreach(auto updater, m_updatersWaitingForFeedback) {
-            updater->cancel();
-        }
-        m_updater->cancel();
-    }
-
-    void proceed() override {
-        m_updatersWaitingForFeedback.takeFirst()->proceed();
-    }
-
-private:
-    ResourcesUpdatesModel* m_updater;
-    QVector<AbstractBackendUpdater*> m_updatersWaitingForFeedback;
-};
-
 void ResourcesUpdatesModel::updateAll()
 {
-    if(m_updaters.isEmpty())
-        slotProgressingChanged();
-    else {
+    if (!m_updaters.isEmpty()) {
         delete m_transaction;
         m_transaction = new UpdateTransaction(this);
+        setTransaction(m_transaction);
         TransactionModel::global()->addTransaction(m_transaction);
         Q_FOREACH (AbstractBackendUpdater* upd, m_updaters) {
             if (upd->hasUpdates())
@@ -194,25 +205,9 @@ QString ResourcesUpdatesModel::remainingTime() const
         return i18nc("@item:intext Remaining time", "%1 remaining", KFormat().formatDuration(maxEta));
 }
 
-bool ResourcesUpdatesModel::isCancelable() const
-{
-    bool cancelable = false;
-    foreach(AbstractBackendUpdater* upd, m_updaters) {
-        cancelable |= upd->isCancelable();
-    }
-    return cancelable;
-}
-
 bool ResourcesUpdatesModel::isProgressing() const
 {
-    if (m_updaters.isEmpty())
-        return true;
-
-    bool progressing = false;
-    foreach(AbstractBackendUpdater* upd, m_updaters) {
-        progressing |= upd->isProgressing();
-    }
-    return progressing;
+    return m_transaction && m_transaction->status()<Transaction::DoneStatus;
 }
 
 QList<AbstractResource*> ResourcesUpdatesModel::toUpdate() const
@@ -260,17 +255,18 @@ QDateTime ResourcesUpdatesModel::lastUpdate() const
     return ret;
 }
 
-void ResourcesUpdatesModel::cancel()
-{
-    foreach(AbstractBackendUpdater* upd, m_updaters) {
-        if(upd->isCancelable())
-            upd->cancel();
-        else
-            qWarning() << "tried to cancel " << upd->metaObject()->className() << "which is not cancelable";
-    }
-}
-
 qint64 ResourcesUpdatesModel::secsToLastUpdate() const
 {
     return lastUpdate().secsTo(QDateTime::currentDateTime());
 }
+
+void ResourcesUpdatesModel::setTransaction(UpdateTransaction* transaction)
+{
+    m_transaction = transaction;
+    connect(m_transaction, &UpdateTransaction::finished, this, &ResourcesUpdatesModel::finished);
+    connect(m_transaction, &UpdateTransaction::finished, this, &ResourcesUpdatesModel::progressingChanged);
+
+    Q_EMIT progressingChanged();
+}
+
+#include "ResourcesUpdatesModel.moc"

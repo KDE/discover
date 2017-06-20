@@ -30,13 +30,14 @@ Kirigami.BasicListItem {
     readonly property var v1: Connections {
         target: TransactionModel
         onTransactionAdded: {
-            if(listItem.enabled && trans.resource && progressModel.appAt(trans.resource)<0)
-                progressModel.append({app: trans.resource})
+            if(listItem.enabled && progressModel.applicationAt(trans.resource)<0) {
+                progressModel.append({ transaction: trans })
+            }
         }
 
         onTransactionRemoved: {
-            if (trans.status == Transaction.CancelledStatus) {
-                var id = progressModel.appAt(trans.resource)
+            if (trans.status == Transaction.CancelledStatus || !trans.resource) {
+                var id = progressModel.applicationAt(trans.resource)
                 if(id>=0)
                     progressModel.remove(id)
             }
@@ -45,38 +46,43 @@ Kirigami.BasicListItem {
     
     readonly property var v2: ListModel {
         id: progressModel
-        function appAt(app) {
+        function applicationAt(app) {
             for(var i=0; i<progressModel.count; i++) {
-                if(progressModel.get(i).app==app) {
+                if(progressModel.get(i).application==app) {
                     return i
                 }
             }
             return -1
         }
     }
-    
+
     readonly property var v3: Kirigami.OverlaySheet {
         id: sheet
 
         contentItem: ColumnLayout {
             spacing: 0
+
+            Component {
+                id: listenerComp
+                TransactionListener {
+                    onCancelled: progressModel.remove(index)
+                }
+            }
+
             Repeater {
                 model: progressModel
 
                 delegate: Kirigami.AbstractListItem {
+                    id: del
                     separatorVisible: false
                     onClicked: {
                         Navigation.clearStack()
-                        Navigation.openApplication(model.app)
+                        Navigation.openApplication(model.application)
                     }
+                    readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource} : {transaction: model.transaction}))
 
                     ColumnLayout {
                         width: parent.width
-                        TransactionListener {
-                            id: listener
-                            resource: model.app
-                            onCancelled: progressModel.remove(index)
-                        }
 
                         RowLayout {
                             Layout.fillWidth: true
@@ -84,13 +90,14 @@ Kirigami.BasicListItem {
                             Kirigami.Icon {
                                 Layout.fillHeight: true
                                 Layout.minimumWidth: height
-                                source: model.app.icon
+                                source: model.transaction.icon
                             }
+
                             Label {
                                 anchors.verticalCenter: parent.verticalCenter
                                 Layout.fillWidth: true
                                 elide: Text.ElideRight
-                                text: model.app.name + (listener.isActive ? " "+listener.statusText : "")
+                                text: model.transaction.name + (listener.isActive ? " "+listener.statusText : "")
                             }
                             ToolButton {
                                 iconName: "dialog-cancel"
@@ -99,9 +106,9 @@ Kirigami.BasicListItem {
                             }
                             ToolButton {
                                 iconName: "system-run"
-                                visible: model.app.isInstalled && !listener.isActive && model.app.canExecute
+                                visible: model.application != undefined && model.application.isInstalled && !listener.isActive && model.application.canExecute
                                 onClicked: {
-                                    model.app.invokeApplication()
+                                    model.application.invokeApplication()
                                     model.remove(index)
                                 }
                             }

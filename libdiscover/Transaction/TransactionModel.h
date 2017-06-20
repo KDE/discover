@@ -60,6 +60,7 @@ public:
 
     bool contains(Transaction* transaction) const { return m_transactions.contains(transaction); }
     int progress() const;
+    QVector<Transaction *> transactions() const { return m_transactions; }
 
 private:
     QVector<Transaction *> m_transactions;

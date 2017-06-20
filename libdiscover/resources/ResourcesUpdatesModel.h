@@ -32,14 +32,13 @@ class QAction;
 class AbstractBackendUpdater;
 class ResourcesModel;
 class QDBusInterface;
-class Transaction;
+class UpdateTransaction;
 
 class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
     Q_OBJECT
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(QString remainingTime READ remainingTime NOTIFY etaChanged)
-    Q_PROPERTY(bool isCancelable READ isCancelable NOTIFY cancelableChanged)
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
     Q_PROPERTY(QDateTime lastUpdate READ lastUpdate NOTIFY progressingChanged)
     Q_PROPERTY(qint64 secsToLastUpdate READ secsToLastUpdate NOTIFY progressingChanged)
@@ -51,8 +50,6 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         quint64 downloadSpeed() const;
         Q_SCRIPTABLE void prepare();
 
-        ///checks if any of them is cancelable
-        bool isCancelable() const;
         bool isProgressing() const;
         QList<AbstractResource*> toUpdate() const;
         QDateTime lastUpdate() const;
@@ -66,27 +63,25 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void downloadSpeedChanged();
         void progressChanged();
         void etaChanged();
-        void cancelableChanged();
-        void progressingChanged(bool progressing);
+        void progressingChanged();
         void finished();
         void resourceProgressed(AbstractResource* resource, qreal progress);
 
     public Q_SLOTS:
-        void cancel();
         void updateAll();
 
     private Q_SLOTS:
         void updaterDestroyed(QObject* obj);
         void message(const QString& msg);
-        void slotProgressingChanged();
 
     private:
         void init();
         void updateFinished();
+        void setTransaction(UpdateTransaction* transaction);
 
         QVector<AbstractBackendUpdater*> m_updaters;
         bool m_lastIsProgressing;
-        QPointer<Transaction> m_transaction;
+        QPointer<UpdateTransaction> m_transaction;
 };
 
 #endif // RESOURCESUPDATESMODEL_H

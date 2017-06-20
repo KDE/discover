@@ -36,15 +36,9 @@ TransactionListener::TransactionListener(QObject *parent)
 void TransactionListener::cancel()
 {
     if(!isCancellable()) {
-        qWarning() << "cannot cancel the transaction" << m_transaction;
         return;
     }
     m_transaction->cancel();
-}
-
-AbstractResource *TransactionListener::resource() const
-{
-    return m_resource;
 }
 
 bool TransactionListener::isCancellable() const
@@ -66,14 +60,17 @@ QString TransactionListener::statusText() const
 
 void TransactionListener::setResource(AbstractResource *resource)
 {
+    setResourceInternal(resource);
+    // Catch already-started transactions
+    setTransaction(TransactionModel::global()->transactionFromResource(resource));
+}
+
+void TransactionListener::setResourceInternal(AbstractResource* resource)
+{
     if (m_resource == resource)
         return;
 
     m_resource = resource;
-
-    // Catch already-started transactions
-    setTransaction(TransactionModel::global()->transactionFromResource(resource));
-
     emit resourceChanged();
 }
 
@@ -112,7 +109,6 @@ private:
 
 void TransactionListener::setTransaction(Transaction* trans)
 {
-    Q_ASSERT(!trans || trans->resource()==m_resource);
     if (m_transaction == trans) {
         return;
     }
@@ -131,7 +127,9 @@ void TransactionListener::setTransaction(Transaction* trans)
         connect(m_transaction, &Transaction::cancellableChanged, this, &TransactionListener::cancellableChanged);
         connect(m_transaction, &Transaction::statusChanged, this, &TransactionListener::transactionStatusChanged);
         connect(m_transaction, &Transaction::progressChanged, this, &TransactionListener::progressChanged);
+        setResourceInternal(trans->resource());
     }
+    Q_EMIT transactionChanged(trans);
 }
 
 void TransactionListener::transactionStatusChanged(Transaction::Status status)

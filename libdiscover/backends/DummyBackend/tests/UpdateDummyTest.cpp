@@ -105,8 +105,10 @@ private Q_SLOTS:
         QCOMPARE(m->hasUpdates(), true);
 
         rum->prepare();
+
+        spy.clear();
         rum->updateAll();
-        QVERIFY(spy.wait());
+        QVERIFY(spy.count() || spy.wait());
         QCOMPARE(rum->isProgressing(), true);
 
         QTest::qWait(20);

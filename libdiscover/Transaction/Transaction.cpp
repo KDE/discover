@@ -20,6 +20,7 @@
 
 #include "Transaction.h"
 
+#include <resources/AbstractResource.h>
 #include "TransactionModel.h"
 #include <QDebug>
 
@@ -106,4 +107,14 @@ void Transaction::setProgress(int progress)
 bool Transaction::isActive() const
 {
     return m_status == DownloadingStatus || m_status == CommittingStatus;
+}
+
+QString Transaction::name() const
+{
+    return m_resource->name();
+}
+
+QVariant Transaction::icon() const
+{
+    return m_resource->icon();
 }

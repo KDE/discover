@@ -43,6 +43,8 @@ class DISCOVERCOMMON_EXPORT Transaction : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(QVariant icon READ icon CONSTANT)
     Q_PROPERTY(AbstractResource* resource READ resource CONSTANT)
     Q_PROPERTY(Role role READ role CONSTANT)
     Q_PROPERTY(Status status READ status NOTIFY statusChanged)
@@ -135,6 +137,12 @@ public:
     bool isActive() const;
 
     Q_SCRIPTABLE virtual void proceed() {}
+
+    /** @returns a name that identifies the transaction */
+    virtual QString name() const;
+
+    /** @returns an icon that describes the transaction */
+    virtual QVariant icon() const;
 
 private:
     AbstractResource * const m_resource;

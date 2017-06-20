@@ -203,7 +203,7 @@ void DummyTest::testInstallAddons()
     QVERIFY(m.hasChanges());
 
     m.applyChanges();
-    QSignalSpy sR(TransactionModel::global(), SIGNAL(transactionRemoved(Transaction* )));
+    QSignalSpy sR(TransactionModel::global(), &TransactionModel::transactionRemoved);
     QVERIFY(sR.wait());
     QVERIFY(!m.hasChanges());
 
