@@ -80,7 +80,7 @@ void ResourcesUpdatesModel::slotProgressingChanged()
 
 
         if (!newProgressing && m_transaction) {
-            TransactionModel::global()->removeTransaction(m_transaction);
+            m_transaction->setStatus(Transaction::DoneStatus);
             m_transaction->deleteLater();
         }
 

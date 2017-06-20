@@ -51,9 +51,9 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         ResultsStream* findResourceByPackageName(const QUrl& search) override;
         int updatesCount() const override;
 
-        void installApplication(AbstractResource* app) override;
-        void installApplication(AbstractResource* app, const AddonList& addons) override;
-        void removeApplication(AbstractResource* app) override;
+        Transaction* installApplication(AbstractResource* app) override;
+        Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;
+        Transaction* removeApplication(AbstractResource* app) override;
         bool isValid() const override { return true; }
         QSet<AbstractResource*> upgradeablePackages() const;
         bool isFetching() const override;

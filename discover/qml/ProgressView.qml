@@ -34,10 +34,12 @@ Kirigami.BasicListItem {
                 progressModel.append({app: trans.resource})
         }
 
-        onTransactionCancelled: {
-            var id = progressModel.appAt(trans.resource)
-            if(id>=0)
-                progressModel.remove(id)
+        onTransactionRemoved: {
+            if (trans.status == Transaction.CancelledStatus) {
+                var id = progressModel.appAt(trans.resource)
+                if(id>=0)
+                    progressModel.remove(id)
+            }
         }
     }
     

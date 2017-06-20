@@ -25,7 +25,6 @@
 #include <resources/ResourcesProxyModel.h>
 #include <resources/AbstractBackendUpdater.h>
 #include <ApplicationAddonsModel.h>
-#include <Transaction/TransactionModel.h>
 #include <ReviewsBackend/ReviewsModel.h>
 #include <ScreenshotsModel.h>
 #include "../libsnapclient/SnapSocket.h"

@@ -180,31 +180,29 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
     public Q_SLOTS:
         /**
          * This gets called when the backend should install an application.
-         * The AbstractResourcesBackend should create a Transaction object, which
-         * will provide Muon with information like the status and progress of a transaction,
-         * and add it to the TransactionModel with the following line:
-         * \code
-         * TransactionModel::global()->addTransaction(transaction);
-         * \endcode
-         * where transaction is the newly created Transaction.
+         * The AbstractResourcesBackend should create a Transaction object, is returned and
+         * will be included in the TransactionModel
          * @param app the application to be installed
          * @param addons the addons which should be installed with the application
+         * @returns the Transaction that keeps track of the installation process
          */
-        virtual void installApplication(AbstractResource *app, const AddonList& addons) = 0;
+        virtual Transaction* installApplication(AbstractResource *app, const AddonList& addons) = 0;
         
         /**
          * Overloaded function, which simply does the same, except not installing any addons.
          */
-        virtual void installApplication(AbstractResource *app);
+        virtual Transaction* installApplication(AbstractResource *app);
         
         /**
          * This gets called when the backend should remove an application.
-         * Like in the installApplication() method, the AbstractResourcesBackend should
-         * create a Transaction object and add it to the TransactionModel.
+         * Like in the installApplication() method, we'll return the Transaction
+         * responsible for the removal.
+         *
          * @see installApplication
          * @param app the application to be removed
+         * @returns the Transaction that keeps track of the removal process
          */
-        virtual void removeApplication(AbstractResource *app) = 0;
+        virtual Transaction* removeApplication(AbstractResource *app) = 0;
 
         /**
          * Notifies the backend that the user wants the information to be up to date

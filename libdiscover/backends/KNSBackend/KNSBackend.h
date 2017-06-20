@@ -41,9 +41,9 @@ public:
     explicit KNSBackend(QObject* parent, const QString& iconName, const QString &knsrc);
     ~KNSBackend() override;
 
-    void removeApplication(AbstractResource* app) override;
-    void installApplication(AbstractResource* app) override;
-    void installApplication(AbstractResource* app, const AddonList& addons) override;
+    Transaction* removeApplication(AbstractResource* app) override;
+    Transaction* installApplication(AbstractResource* app) override;
+    Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;
     int updatesCount() const override;
     AbstractReviewsBackend* reviewsBackend() const override;
     AbstractBackendUpdater* backendUpdater() const override;

@@ -35,6 +35,11 @@ Transaction::Transaction(QObject *parent, AbstractResource *resource,
 {
 }
 
+Transaction::~Transaction()
+{
+    Q_ASSERT(!TransactionModel::global()->contains(this));
+}
+
 AbstractResource *Transaction::resource() const
 {
     return m_resource;
@@ -71,8 +76,10 @@ void Transaction::setStatus(Status status)
         m_status = status;
         emit statusChanged(m_status);
 
-        if (m_status == DoneStatus) {
+        if (m_status == DoneStatus || m_status == CancelledStatus || m_status == DoneWithErrorStatus) {
             setCancellable(false);
+
+            TransactionModel::global()->removeTransaction(this);
         }
     }
 }

@@ -29,7 +29,6 @@
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
 #include <Transaction/Transaction.h>
-#include <Transaction/TransactionModel.h>
 #include <appstream/OdrsReviewsBackend.h>
 #include <appstream/AppStreamIntegration.h>
 
@@ -955,7 +954,7 @@ AbstractReviewsBackend * FlatpakBackend::reviewsBackend() const
     return m_reviews.data();
 }
 
-void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &addons)
+Transaction* FlatpakBackend::installApplication(AbstractResource *app, const AddonList &addons)
 {
     Q_UNUSED(addons);
 
@@ -968,7 +967,7 @@ void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &
             resource->setState(AbstractResource::Installed);
             integrateRemote(preferredInstallation(), remote);
         }
-        return;
+        return nullptr;
     }
 
     FlatpakTransaction *transaction = nullptr;
@@ -1003,14 +1002,15 @@ void FlatpakBackend::installApplication(AbstractResource *app, const AddonList &
             updateAppState(installation, resource);
         }
     });
+    return transaction;
 }
 
-void FlatpakBackend::installApplication(AbstractResource *app)
+Transaction* FlatpakBackend::installApplication(AbstractResource *app)
 {
-    installApplication(app, {});
+    return installApplication(app, {});
 }
 
-void FlatpakBackend::removeApplication(AbstractResource *app)
+Transaction* FlatpakBackend::removeApplication(AbstractResource *app)
 {
     FlatpakResource *resource = qobject_cast<FlatpakResource*>(app);
 
@@ -1019,7 +1019,7 @@ void FlatpakBackend::removeApplication(AbstractResource *app)
         if (m_sources->removeSource(resource->flatpakName())) {
             resource->setState(AbstractResource::None);
         }
-        return;
+        return nullptr;
     }
 
     FlatpakInstallation *installation = resource->installation();
@@ -1030,6 +1030,7 @@ void FlatpakBackend::removeApplication(AbstractResource *app)
             updateAppSize(installation, resource);
         }
     });
+    return transaction;
 }
 
 void FlatpakBackend::checkForUpdates()

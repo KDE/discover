@@ -25,7 +25,6 @@
 #include "utils.h"
 #include "LocalFilePKResource.h"
 #include <resources/AbstractResource.h>
-#include <Transaction/TransactionModel.h>
 #include <QDebug>
 #include <QTimer>
 #include <KLocalizedString>
@@ -43,7 +42,6 @@ PKTransaction::PKTransaction(const QVector<AbstractResource*>& apps, Transaction
         m_pkgnames.unite(res->allPackageNames().toSet());
     }
 
-    TransactionModel::global()->addTransaction(this);
     QTimer::singleShot(0, this, &PKTransaction::start);
 }
 
@@ -122,7 +120,7 @@ void PKTransaction::cancellableChanged()
 void PKTransaction::cancel()
 {
     if (!m_trans) {
-        TransactionModel::global()->cancelTransaction(this);
+        setStatus(CancelledStatus);
     } else if (m_trans->allowCancel()) {
         m_trans->cancel();
     } else {
@@ -171,11 +169,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     }
 
     this->submitResolve();
-    setStatus(Transaction::DoneStatus);
-    if (cancel)
-        TransactionModel::global()->cancelTransaction(this);
-    else
-        TransactionModel::global()->removeTransaction(this);
+    setStatus(Transaction::CancelledStatus);
 }
 
 void PKTransaction::proceed()

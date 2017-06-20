@@ -26,7 +26,6 @@
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
 #include <Transaction/Transaction.h>
-#include <Transaction/TransactionModel.h>
 
 #include <KAboutData>
 #include <KLocalizedString>
@@ -144,22 +143,19 @@ AbstractReviewsBackend* DummyBackend::reviewsBackend() const
     return m_reviews;
 }
 
-void DummyBackend::installApplication(AbstractResource* app, const AddonList& addons)
+Transaction* DummyBackend::installApplication(AbstractResource* app, const AddonList& addons)
 {
-    TransactionModel *transModel = TransactionModel::global();
-    transModel->addTransaction(new DummyTransaction(qobject_cast<DummyResource*>(app), addons, Transaction::InstallRole));
+    return new DummyTransaction(qobject_cast<DummyResource*>(app), addons, Transaction::InstallRole);
 }
 
-void DummyBackend::installApplication(AbstractResource* app)
+Transaction* DummyBackend::installApplication(AbstractResource* app)
 {
-	TransactionModel *transModel = TransactionModel::global();
-	transModel->addTransaction(new DummyTransaction(qobject_cast<DummyResource*>(app), Transaction::InstallRole));
+	return new DummyTransaction(qobject_cast<DummyResource*>(app), Transaction::InstallRole);
 }
 
-void DummyBackend::removeApplication(AbstractResource* app)
+Transaction* DummyBackend::removeApplication(AbstractResource* app)
 {
-	TransactionModel *transModel = TransactionModel::global();
-	transModel->addTransaction(new DummyTransaction(qobject_cast<DummyResource*>(app), Transaction::RemoveRole));
+	return new DummyTransaction(qobject_cast<DummyResource*>(app), Transaction::RemoveRole);
 }
 
 void DummyBackend::checkForUpdates()

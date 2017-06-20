@@ -31,8 +31,6 @@ TransactionListener::TransactionListener(QObject *parent)
     , m_transaction(nullptr)
 {
     connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &TransactionListener::transactionAdded);
-    connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &TransactionListener::transactionRemoved);
-    connect(TransactionModel::global(), &TransactionModel::transactionCancelled, this, &TransactionListener::transactionCancelled);
 }
 
 void TransactionListener::cancel()
@@ -139,6 +137,10 @@ void TransactionListener::setTransaction(Transaction* trans)
 void TransactionListener::transactionStatusChanged(Transaction::Status status)
 {
     switch (status) {
+    case Transaction::CancelledStatus:
+        setTransaction(nullptr);
+        emit cancelled();
+        break;
     case Transaction::DoneStatus:
         setTransaction(nullptr);
         break;
@@ -147,21 +149,6 @@ void TransactionListener::transactionStatusChanged(Transaction::Status status)
     }
 
     emit statusTextChanged();
-}
-
-void TransactionListener::transactionRemoved(Transaction* trans)
-{
-    if(m_transaction == trans) {
-        setTransaction(nullptr);
-    }
-}
-
-void TransactionListener::transactionCancelled(Transaction* trans)
-{
-    if(m_transaction == trans) {
-        setTransaction(nullptr);
-    }
-    emit cancelled();
 }
 
 int TransactionListener::progress() const

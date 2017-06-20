@@ -62,7 +62,9 @@ public:
         /// Transaction is done
         DoneStatus,
         /// Transaction is done, but there was an error during transaction
-        DoneWithErrorStatus
+        DoneWithErrorStatus,
+        /// Transaction was cancelled
+        CancelledStatus
     };
     Q_ENUM(Status)
 
@@ -78,6 +80,8 @@ public:
 
     Transaction(QObject *parent, AbstractResource *resource,
                  Transaction::Role role, const AddonList &addons = {});
+
+    ~Transaction() override;
 
     /**
      * @returns the AbstractResource which this transaction works with

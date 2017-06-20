@@ -73,9 +73,9 @@ AbstractResourcesBackend::AbstractResourcesBackend(QObject* parent)
 {
 }
 
-void AbstractResourcesBackend::installApplication(AbstractResource* app)
+Transaction* AbstractResourcesBackend::installApplication(AbstractResource* app)
 {
-    installApplication(app, AddonList());
+    return installApplication(app, AddonList());
 }
 
 void AbstractResourcesBackend::integrateActions(KActionCollection*)

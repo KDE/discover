@@ -66,7 +66,7 @@ void StandardBackendUpdater::start()
 
     foreach(AbstractResource* res, m_toUpgrade) {
         m_pendingResources += res;
-        m_backend->installApplication(res);
+        TransactionModel::global()->addTransaction(m_backend->installApplication(res));
     }
     m_settingUp = false;
 

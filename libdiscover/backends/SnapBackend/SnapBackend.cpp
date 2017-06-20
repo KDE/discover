@@ -26,7 +26,6 @@
 #include <resources/SourcesModel.h>
 #include <Category/Category.h>
 #include <Transaction/Transaction.h>
-#include <Transaction/TransactionModel.h>
 
 #include <KAboutData>
 #include <KLocalizedString>
@@ -130,26 +129,24 @@ AbstractReviewsBackend* SnapBackend::reviewsBackend() const
     return m_reviews;
 }
 
-void SnapBackend::installApplication(AbstractResource* app, const AddonList& addons)
+Transaction* SnapBackend::installApplication(AbstractResource* app, const AddonList& addons)
 {
     Q_ASSERT(addons.isEmpty());
-    installApplication(app);
+    return installApplication(app);
 }
 
-void SnapBackend::installApplication(AbstractResource* _app)
+Transaction* SnapBackend::installApplication(AbstractResource* _app)
 {
-	TransactionModel *transModel = TransactionModel::global();
     auto app = qobject_cast<SnapResource*>(_app);
     auto job = m_socket.snapAction(app->packageName(), SnapSocket::Install);
-	transModel->addTransaction(new SnapTransaction(app, job, &m_socket, Transaction::InstallRole));
+	return new SnapTransaction(app, job, &m_socket, Transaction::InstallRole);
 }
 
-void SnapBackend::removeApplication(AbstractResource* _app)
+Transaction* SnapBackend::removeApplication(AbstractResource* _app)
 {
-	TransactionModel *transModel = TransactionModel::global();
     auto app = qobject_cast<SnapResource*>(_app);
     auto job = m_socket.snapAction(app->packageName(), SnapSocket::Remove);
-	transModel->addTransaction(new SnapTransaction(app, job, &m_socket, Transaction::RemoveRole));
+	return new SnapTransaction(app, job, &m_socket, Transaction::RemoveRole);
 }
 
 QString SnapBackend::displayName() const

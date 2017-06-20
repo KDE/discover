@@ -24,8 +24,6 @@
 #include "FlatpakResource.h"
 #include "FlatpakTransactionJob.h"
 
-#include <Transaction/TransactionModel.h>
-
 #include <QDebug>
 #include <QTimer>
 
@@ -44,8 +42,6 @@ FlatpakTransaction::FlatpakTransaction(FlatpakInstallation* installation, Flatpa
 {
     setCancellable(true);
 
-    TransactionModel::global()->addTransaction(this);
-
     if (!delayStart) {
         QTimer::singleShot(0, this, &FlatpakTransaction::start);
     }
@@ -62,7 +58,7 @@ void FlatpakTransaction::cancel()
     if (m_runtime) {
         m_runtimeJob->cancel();
     }
-    TransactionModel::global()->cancelTransaction(this);
+    setStatus(CancelledStatus);
 }
 
 void FlatpakTransaction::setRuntime(FlatpakResource *runtime)
@@ -164,6 +160,4 @@ void FlatpakTransaction::finishTransaction()
     } else {
         setStatus(DoneWithErrorStatus);
     }
-
-    TransactionModel::global()->removeTransaction(this);
 }

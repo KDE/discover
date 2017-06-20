@@ -101,6 +101,8 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
             break;
         case Transaction::DoneStatus:
             return i18nc("@info:status", "Done");
+        case Transaction::CancelledStatus:
+            return i18nc("@info:status", "Cancelled");
         }
         break;
     case TransactionRole:
@@ -160,13 +162,6 @@ void TransactionModel::addTransaction(Transaction *trans)
     connect(trans, &QObject::destroyed, this, [this, trans](){ removeTransaction(trans); });
 
     emit transactionAdded(trans);
-}
-
-void TransactionModel::cancelTransaction(Transaction *trans)
-{
-    removeTransaction(trans);
-
-    emit transactionCancelled(trans);
 }
 
 void TransactionModel::removeTransaction(Transaction *trans)

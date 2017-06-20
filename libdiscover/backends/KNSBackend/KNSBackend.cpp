@@ -40,7 +40,6 @@
 
 // DiscoverCommon includes
 #include "Transaction/Transaction.h"
-#include "Transaction/TransactionModel.h"
 #include "Category/Category.h"
 
 // Own includes
@@ -233,8 +232,6 @@ public:
         : Transaction(parent, res, role)
         , m_id(res->entry().uniqueId())
     {
-        TransactionModel::global()->addTransaction(this);
-
         setCancellable(false);
 
         auto manager = res->knsBackend()->engine();
@@ -257,17 +254,9 @@ public:
                 case KNS3::Entry::Updateable:
                     if (status() != DoneStatus) {
                         setStatus(DoneStatus);
-                        TransactionModel::global()->removeTransaction(this);
                     }
                     break;
             }
-        }
-    }
-
-    ~KNSTransaction() override {
-        if (TransactionModel::global()->contains(this)) {
-            qWarning() << "deleting Transaction before it's done";
-                TransactionModel::global()->removeTransaction(this);
         }
     }
 
@@ -277,23 +266,24 @@ private:
     const QString m_id;
 };
 
-void KNSBackend::removeApplication(AbstractResource* app)
+Transaction* KNSBackend::removeApplication(AbstractResource* app)
 {
     auto res = qobject_cast<KNSResource*>(app);
-    new KNSTransaction(this, res, Transaction::RemoveRole);
+    auto t = new KNSTransaction(this, res, Transaction::RemoveRole);
     m_engine->uninstall(res->entry());
+    return t;
 }
 
-void KNSBackend::installApplication(AbstractResource* app)
+Transaction* KNSBackend::installApplication(AbstractResource* app)
 {
     auto res = qobject_cast<KNSResource*>(app);
     m_engine->install(res->entry());
-    new KNSTransaction(this, res, Transaction::InstallRole);
+    return new KNSTransaction(this, res, Transaction::InstallRole);
 }
 
-void KNSBackend::installApplication(AbstractResource* app, const AddonList& /*addons*/)
+Transaction* KNSBackend::installApplication(AbstractResource* app, const AddonList& /*addons*/)
 {
-    installApplication(app);
+    return installApplication(app);
 }
 
 int KNSBackend::updatesCount() const

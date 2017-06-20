@@ -29,7 +29,6 @@
 #include <resources/AbstractResource.h>
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
-#include <Transaction/TransactionModel.h>
 #include <appstream/OdrsReviewsBackend.h>
 #include <appstream/AppStreamIntegration.h>
 
@@ -441,8 +440,9 @@ int PackageKitBackend::updatesCount() const
     return m_updatesPackageId.count();
 }
 
-void PackageKitBackend::installApplication(AbstractResource* app, const AddonList& addons)
+Transaction* PackageKitBackend::installApplication(AbstractResource* app, const AddonList& addons)
 {
+    Transaction* t = nullptr;
     if(!addons.addonsToInstall().isEmpty())
     {
         QVector<AbstractResource*> appsToInstall;
@@ -454,27 +454,29 @@ void PackageKitBackend::installApplication(AbstractResource* app, const AddonLis
             appsToInstall += m_packages.packages.value(toInstall);
             Q_ASSERT(appsToInstall.last());
         }
-        new PKTransaction(appsToInstall, Transaction::ChangeAddonsRole);
+        t = new PKTransaction(appsToInstall, Transaction::ChangeAddonsRole);
     }
 
     if (!addons.addonsToRemove().isEmpty()) {
         QVector<AbstractResource*> appsToRemove = kTransform<QVector<AbstractResource*>>(addons.addonsToRemove(), [this](const QString& toRemove){ return m_packages.packages.value(toRemove); });
-        new PKTransaction(appsToRemove, Transaction::RemoveRole);
+        t = new PKTransaction(appsToRemove, Transaction::RemoveRole);
     }
 
     if (!app->isInstalled())
-        installApplication(app);
+        t = installApplication(app);
+
+    return t;
 }
 
-void PackageKitBackend::installApplication(AbstractResource* app)
+Transaction* PackageKitBackend::installApplication(AbstractResource* app)
 {
-    new PKTransaction({app}, Transaction::InstallRole);
+    return new PKTransaction({app}, Transaction::InstallRole);
 }
 
-void PackageKitBackend::removeApplication(AbstractResource* app)
+Transaction* PackageKitBackend::removeApplication(AbstractResource* app)
 {
     Q_ASSERT(!isFetching());
-    new PKTransaction({app}, Transaction::RemoveRole);
+    return new PKTransaction({app}, Transaction::RemoveRole);
 }
 
 QSet<AbstractResource*> PackageKitBackend::upgradeablePackages() const

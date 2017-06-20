@@ -56,7 +56,6 @@ public:
     QModelIndex indexOf(AbstractResource *res) const;
 
     void addTransaction(Transaction *trans);
-    void cancelTransaction(Transaction *trans);
     void removeTransaction(Transaction *trans);
 
     bool contains(Transaction* transaction) const { return m_transactions.contains(transaction); }
@@ -69,7 +68,6 @@ Q_SIGNALS:
     void startingFirstTransaction();
     void lastTransactionFinished();
     void transactionAdded(Transaction *trans);
-    void transactionCancelled(Transaction *trans);
     void transactionRemoved(Transaction* trans);
     void countChanged();
     void progressChanged();

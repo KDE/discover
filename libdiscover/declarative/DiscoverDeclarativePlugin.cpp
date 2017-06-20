@@ -66,10 +66,10 @@ void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
     qmlRegisterUncreatableType<QAction>("org.kde.discover", 1, 0, "QAction", QStringLiteral("Use QQC Action"));
     qmlRegisterUncreatableType<AbstractResource>("org.kde.discover", 1, 0, "AbstractResource", QStringLiteral("should come from the ResourcesModel"));
     qmlRegisterUncreatableType<AbstractSourcesBackend>("org.kde.discover", 1, 0, "AbstractSourcesBackend", QStringLiteral("should come from the SourcesModel"));
+    qmlRegisterUncreatableType<Transaction>("org.kde.discover", 1, 0, "Transaction", QStringLiteral("should come from the backends"));
     qmlRegisterType<Rating>();
     qmlRegisterType<AbstractResourcesBackend>();
     qmlRegisterType<AbstractReviewsBackend>();
     qmlRegisterType<Category>();
     qmlRegisterType<ResourcesModel>();
-    qmlRegisterType<Transaction>();
 }

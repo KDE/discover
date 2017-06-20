@@ -46,9 +46,9 @@ public:
     bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
     QList<QAction*> messageActions() const override { return {}; }
 
-    void installApplication(AbstractResource* app) override;
-    void installApplication(AbstractResource* app, const AddonList& addons) override;
-    void removeApplication(AbstractResource* app) override;
+    Transaction* installApplication(AbstractResource* app) override;
+    Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;
+    Transaction* removeApplication(AbstractResource* app) override;
     bool isFetching() const override { return m_fetching; }
     SnapSocket* socket() { return &m_socket; }
     void checkForUpdates() override {}

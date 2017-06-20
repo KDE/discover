@@ -178,17 +178,17 @@ int ResourcesModel::updatesCount() const
 
 void ResourcesModel::installApplication(AbstractResource* app)
 {
-    app->backend()->installApplication(app);
+    TransactionModel::global()->addTransaction(app->backend()->installApplication(app));
 }
 
 void ResourcesModel::installApplication(AbstractResource* app, const AddonList& addons)
 {
-    app->backend()->installApplication(app, addons);
+    TransactionModel::global()->addTransaction(app->backend()->installApplication(app, addons));
 }
 
 void ResourcesModel::removeApplication(AbstractResource* app)
 {
-    app->backend()->removeApplication(app);
+    TransactionModel::global()->addTransaction(app->backend()->removeApplication(app));
 }
 
 void ResourcesModel::registerAllBackends()

@@ -22,7 +22,6 @@
 #include "SnapBackend.h"
 #include "SnapResource.h"
 #include "SnapSocket.h"
-#include <Transaction/TransactionModel.h>
 #include <QTimer>
 
 SnapTransaction::SnapTransaction(SnapResource* app, SnapJob* job, SnapSocket* socket, Role role)
@@ -51,7 +50,7 @@ void SnapTransaction::transactionStarted(SnapJob* job)
 
     if (!job->isSuccessful()) {
         qWarning() << "non-successful transaction" << job->statusCode();
-        TransactionModel::global()->removeTransaction(this);
+        setStatus(DoneStatus);
         return;
     }
 
@@ -82,5 +81,4 @@ void SnapTransaction::finishTransaction()
     delete m_timer;
     m_app->refreshState();
     setStatus(DoneStatus);
-    TransactionModel::global()->removeTransaction(this);
 }

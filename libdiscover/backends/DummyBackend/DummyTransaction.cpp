@@ -21,7 +21,6 @@
 #include "DummyTransaction.h"
 #include "DummyBackend.h"
 #include "DummyResource.h"
-#include <Transaction/TransactionModel.h>
 #include <QTimer>
 #include <QDebug>
 #include <KRandom>
@@ -55,7 +54,8 @@ void DummyTransaction::iterateTransaction()
 void DummyTransaction::cancel()
 {
     m_iterate = false;
-    TransactionModel::global()->cancelTransaction(this);
+
+    setStatus(CancelledStatus);
 }
 
 void DummyTransaction::finishTransaction()
@@ -71,8 +71,7 @@ void DummyTransaction::finishTransaction()
         newState = AbstractResource::None;
         break;
     }
-    m_app->setState(newState);
     m_app->setAddons(addons());
-    TransactionModel::global()->removeTransaction(this);
+    m_app->setState(newState);
     deleteLater();
 }
