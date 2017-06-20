@@ -40,9 +40,10 @@ public:
 
     void cancel();
     void run() override;
+    QString errorMessage() const;
 
 Q_SIGNALS:
-    void jobFinished(bool success);
+    void jobFinished(bool success, const QString& errorMessage);
     void progressChanged(int progress);
 
 private:

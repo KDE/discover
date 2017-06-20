@@ -93,12 +93,16 @@ void FlatpakTransaction::start()
     m_appJob->start();
 }
 
-void FlatpakTransaction::onAppJobFinished(bool success)
+void FlatpakTransaction::onAppJobFinished(bool success,  const QString &errorMessage)
 {
     m_appJobFinished = true;
     m_appJobProgress = 100;
 
     updateProgress();
+
+    if (!success) {
+        Q_EMIT passiveMessage(errorMessage);
+    }
 
     if (m_runtimeJobFinished) {
         finishTransaction(success);
@@ -112,12 +116,16 @@ void FlatpakTransaction::onAppJobProgressChanged(int progress)
     updateProgress();
 }
 
-void FlatpakTransaction::onRuntimeJobFinished(bool success)
+void FlatpakTransaction::onRuntimeJobFinished(bool success,  const QString &errorMessage)
 {
     m_runtimeJobFinished = true;
     m_runtimeJobProgress = 100;
 
     updateProgress();
+
+    if (!success) {
+        Q_EMIT passiveMessage(errorMessage);
+    }
 
     if (m_appJobFinished) {
         finishTransaction(success);
