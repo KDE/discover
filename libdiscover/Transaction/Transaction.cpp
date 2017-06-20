@@ -37,7 +37,9 @@ Transaction::Transaction(QObject *parent, AbstractResource *resource,
 
 Transaction::~Transaction()
 {
-    Q_ASSERT(!TransactionModel::global()->contains(this));
+    if(status()<DoneStatus || TransactionModel::global()->contains(this)) {
+        qWarning() << "destroying Transaction before it's over" << this;
+    }
 }
 
 AbstractResource *Transaction::resource() const
