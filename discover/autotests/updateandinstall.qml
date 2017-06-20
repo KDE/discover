@@ -39,10 +39,9 @@ DiscoverTest
             compare(updatePage.state, "progressing", "to update")
             var button = findChild(updatePage, "Button")
             verify(!button.isActive)
-
-            while(updatePage.state != "now-uptodate")
-                waitForSignal(updatePage, "stateChanged")
-            appRoot.close()
         }
+
+        while(updatePage.state != "now-uptodate")
+            waitForSignal(updatePage, "stateChanged")
     }
 }

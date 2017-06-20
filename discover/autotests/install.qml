@@ -28,7 +28,7 @@ DiscoverTest
     SignalSpy {
         id: cancelSpy
         target: TransactionModel
-        signalName: "transactionCancelled"
+        signalName: "transactionRemoved"
     }
     function test_cancel() {
         app.openApplication("dummy://dummy.2");
