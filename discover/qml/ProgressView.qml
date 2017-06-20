@@ -30,7 +30,7 @@ Kirigami.BasicListItem {
     readonly property var v1: Connections {
         target: TransactionModel
         onTransactionAdded: {
-            if(listItem.enabled && progressModel.applicationAt(trans.resource)<0) {
+            if(listItem.enabled && trans.visible && progressModel.applicationAt(trans.resource)<0) {
                 progressModel.append({ transaction: trans })
             }
         }

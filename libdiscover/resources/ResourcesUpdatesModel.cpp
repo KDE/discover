@@ -45,6 +45,7 @@ public:
         bool cancelable = false;
         foreach(auto updater, parent->updaters()) {
             connect(updater, &AbstractBackendUpdater::progressingChanged, this, &UpdateTransaction::slotProgressingChanged);
+            connect(updater, &AbstractBackendUpdater::progressChanged, this, &UpdateTransaction::slotUpdateProgress);
             connect(updater, &AbstractBackendUpdater::passiveMessage, this, &Transaction::passiveMessage);
             connect(updater, &AbstractBackendUpdater::proceedRequest, this, &UpdateTransaction::processProceedRequest);
             cancelable |= updater->isCancelable();
@@ -88,6 +89,15 @@ public:
         }
     }
 
+    void slotUpdateProgress()
+    {
+        qreal total = 0;
+        foreach(AbstractBackendUpdater* updater, m_allUpdaters) {
+            total += updater->progress();
+        }
+        setProgress(total / m_allUpdaters.count());
+    }
+
     QVariant icon() const override { return QStringLiteral("update-low"); }
     QString name() const override { return i18n("Update"); }
 
@@ -116,7 +126,6 @@ void ResourcesUpdatesModel::init()
     foreach(AbstractResourcesBackend* b, backends) {
         AbstractBackendUpdater* updater = b->backendUpdater();
         if(updater && !m_updaters.contains(updater)) {
-            connect(updater, &AbstractBackendUpdater::progressChanged, this, &ResourcesUpdatesModel::progressChanged);
             connect(updater, &AbstractBackendUpdater::statusMessageChanged, this, &ResourcesUpdatesModel::message);
             connect(updater, &AbstractBackendUpdater::statusDetailChanged, this, &ResourcesUpdatesModel::message);
             connect(updater, &AbstractBackendUpdater::remainingTimeChanged, this, &ResourcesUpdatesModel::etaChanged);
@@ -141,18 +150,6 @@ void ResourcesUpdatesModel::init()
 void ResourcesUpdatesModel::updaterDestroyed(QObject* obj)
 {
     m_updaters.removeAll(static_cast<AbstractBackendUpdater*>(obj));
-}
-
-qreal ResourcesUpdatesModel::progress() const
-{
-    if (m_updaters.isEmpty())
-        return -1;
-
-    qreal total = 0;
-    foreach(AbstractBackendUpdater* updater, m_updaters) {
-        total += updater->progress();
-    }
-    return total / m_updaters.count();
 }
 
 void ResourcesUpdatesModel::message(const QString& msg)
@@ -207,7 +204,7 @@ QString ResourcesUpdatesModel::remainingTime() const
 
 bool ResourcesUpdatesModel::isProgressing() const
 {
-    return m_transaction && m_transaction->status()<Transaction::DoneStatus;
+    return m_transaction && m_transaction->status() < Transaction::DoneStatus;
 }
 
 QList<AbstractResource*> ResourcesUpdatesModel::toUpdate() const

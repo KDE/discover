@@ -118,3 +118,16 @@ QVariant Transaction::icon() const
 {
     return m_resource->icon();
 }
+
+bool Transaction::isVisible() const
+{
+    return m_visible;
+}
+
+void Transaction::setVisible(bool visible)
+{
+    if (m_visible != visible) {
+        m_visible = visible;
+        Q_EMIT visibleChanged(visible);
+    }
+}

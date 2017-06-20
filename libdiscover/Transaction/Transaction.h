@@ -50,6 +50,7 @@ class DISCOVERCOMMON_EXPORT Transaction : public QObject
     Q_PROPERTY(Status status READ status NOTIFY statusChanged)
     Q_PROPERTY(bool isCancellable READ isCancellable NOTIFY cancellableChanged)
     Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
+    Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
 
 public:
     enum Status {
@@ -144,6 +145,9 @@ public:
     /** @returns an icon that describes the transaction */
     virtual QVariant icon() const;
 
+    bool isVisible() const;
+    void setVisible(bool v);
+
 private:
     AbstractResource * const m_resource;
     const Role m_role;
@@ -151,6 +155,7 @@ private:
     const AddonList m_addons;
     bool m_isCancellable;
     int m_progress;
+    bool m_visible = true;
 
 Q_SIGNALS:
     /**
@@ -176,6 +181,8 @@ Q_SIGNALS:
     void proceedRequest(const QString &title, const QString &description);
 
     void passiveMessage(const QString &message);
+
+    void visibleChanged(bool visible);
 };
 
 #endif // TRANSACTION_H

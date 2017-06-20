@@ -61,12 +61,13 @@ void StandardBackendUpdater::start()
 {
     m_settingUp = true;
     emit progressingChanged(true);
-    setProgress(-1);
-    Q_EMIT progressingChanged(true);
+    setProgress(0);
 
     foreach(AbstractResource* res, m_toUpgrade) {
         m_pendingResources += res;
-        TransactionModel::global()->addTransaction(m_backend->installApplication(res));
+        auto t = m_backend->installApplication(res);
+        t->setVisible(false);
+        TransactionModel::global()->addTransaction(t);
     }
     m_settingUp = false;
 
