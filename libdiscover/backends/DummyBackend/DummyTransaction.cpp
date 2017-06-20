@@ -60,7 +60,6 @@ void DummyTransaction::cancel()
 
 void DummyTransaction::finishTransaction()
 {
-    setStatus(DoneStatus);
     AbstractResource::State newState;
     switch(role()) {
     case InstallRole:
@@ -73,5 +72,6 @@ void DummyTransaction::finishTransaction()
     }
     m_app->setAddons(addons());
     m_app->setState(newState);
+    setStatus(DoneStatus);
     deleteLater();
 }
