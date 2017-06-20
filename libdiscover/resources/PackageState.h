@@ -49,4 +49,6 @@ class DISCOVERCOMMON_EXPORT PackageState
         bool m_installed;
 };
 
+DISCOVERCOMMON_EXPORT QDebug operator<<(QDebug dbg, const PackageState &state);
+
 #endif // PACKAGESTATE_H

@@ -51,4 +51,6 @@ private:
     QStringList m_toRemove;
 };
 
+DISCOVERCOMMON_EXPORT QDebug operator<<(QDebug dbg, const AddonList& addons);
+
 #endif // ADDONLIST_H

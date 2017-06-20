@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "AddonList.h"
+#include <QDebug>
 
 AddonList::AddonList()
 {}
@@ -69,4 +70,14 @@ AddonList::State AddonList::addonState(const QString& addonName) const
         return ToRemove;
     else
         return None;
+}
+
+QDebug operator<<(QDebug debug, const AddonList& addons)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "AddonsList(";
+    debug.nospace() << "install:" << addons.addonsToInstall() << ',';
+    debug.nospace() << "remove:" << addons.addonsToRemove() << ',';
+    debug.nospace() << ')';
+    return debug;
 }

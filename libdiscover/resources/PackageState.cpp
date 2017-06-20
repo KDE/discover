@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "PackageState.h"
+#include <QDebug>
 
 PackageState::PackageState(QString name, QString description, bool installed)
     : PackageState(name, name, description, installed)
@@ -54,4 +55,14 @@ bool PackageState::isInstalled() const
 void PackageState::setInstalled(bool installed)
 {
     m_installed = installed;
+}
+
+QDebug operator<<(QDebug debug, const PackageState& state)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "PackageState(";
+    debug.nospace() << state.name() << ':';
+    debug.nospace() << "installed: " << state.isInstalled() << ',';
+    debug.nospace() << ')';
+    return debug;
 }
