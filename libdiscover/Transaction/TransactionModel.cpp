@@ -101,6 +101,8 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
             break;
         case Transaction::DoneStatus:
             return i18nc("@info:status", "Done");
+        case Transaction::DoneWithErrorStatus:
+            return i18nc("@info:status", "Failed");
         case Transaction::CancelledStatus:
             return i18nc("@info:status", "Cancelled");
         }
