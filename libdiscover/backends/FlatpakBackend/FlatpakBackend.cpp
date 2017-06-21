@@ -915,10 +915,10 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
             continue;
         }
 
-        if (!filter.resourceUrl.isEmpty() && r->appstreamId() != filter.resourceUrl.host())
+        if (!filter.resourceUrl.isEmpty() && filter.resourceUrl.host().compare(r->appstreamId(), Qt::CaseInsensitive) != 0)
             continue;
 
-        if (r->state()<filter.state)
+        if (r->state() < filter.state)
             continue;
 
         if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)) {
