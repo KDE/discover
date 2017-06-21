@@ -618,10 +618,12 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
 
     for (uint i = 0; i < refs->len; i++) {
         FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+
         const gchar *latestCommit = flatpak_installed_ref_get_latest_commit(ref);
 
         if (!latestCommit) {
             qWarning() << "Couldn't get latest commit for" << flatpak_ref_get_name(FLATPAK_REF(ref));
+            continue;
         }
 
         const gchar *commit = flatpak_ref_get_commit(FLATPAK_REF(ref));
