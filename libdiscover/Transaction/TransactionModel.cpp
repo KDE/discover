@@ -199,7 +199,7 @@ int TransactionModel::progress() const
     int sum = 0;
     int count = 0;
     foreach(Transaction* t, m_transactions) {
-        if (t->isActive()) {
+        if (t->isActive() && t->isVisible()) {
             sum += t->progress();
             ++count;
         }

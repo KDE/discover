@@ -84,7 +84,6 @@ public:
         if (status() < DoneStatus && !isProgressing()) {
             setStatus(Transaction::DoneStatus);
             Q_EMIT finished();
-            qDebug() << "finished!" << this << sender();
             deleteLater();
         }
     }

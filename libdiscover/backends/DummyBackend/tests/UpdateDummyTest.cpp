@@ -28,6 +28,7 @@
 #include <ReviewsBackend/ReviewsModel.h>
 #include <UpdateModel/UpdateModel.h>
 #include <resources/ResourcesUpdatesModel.h>
+#include <Transaction/TransactionModel.h>
 
 #include <qtest.h>
 #include <QtTest>
@@ -107,9 +108,18 @@ private Q_SLOTS:
         rum->prepare();
 
         spy.clear();
+        QCOMPARE(rum->isProgressing(), false);
         rum->updateAll();
         QVERIFY(spy.count() || spy.wait());
         QCOMPARE(rum->isProgressing(), true);
+
+        QCOMPARE(TransactionModel::global()->rowCount(), 1);
+        connect(TransactionModel::global(), &TransactionModel::progressChanged, this, []() {
+            const int progress = TransactionModel::global()->progress();
+            static int lastProgress = -1;
+            Q_ASSERT(progress >= lastProgress || (TransactionModel::global()->rowCount() == 0 && progress == 0));
+            lastProgress = progress;
+        });
 
         QTest::qWait(20);
         QScopedPointer<ResourcesUpdatesModel> rum2(new ResourcesUpdatesModel(this));
@@ -119,6 +129,7 @@ private Q_SLOTS:
         new ModelTest(m2.data(), m2.data());
         m->setBackend(rum2.data());
 
+        QCOMPARE(rum->isProgressing(), true);
         QVERIFY(spy.wait());
         QCOMPARE(rum->isProgressing(), false);
 

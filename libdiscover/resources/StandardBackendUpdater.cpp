@@ -113,7 +113,7 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
 
 void StandardBackendUpdater::refreshUpdateable()
 {
-    if (m_backend->isFetching()) {
+    if (m_backend->isFetching() || isProgressing()) {
         return;
     }
 
@@ -181,6 +181,8 @@ void StandardBackendUpdater::cleanup()
 {
     m_lastUpdate = QDateTime::currentDateTime();
     m_toUpgrade.clear();
+
+    refreshUpdateable();
     emit progressingChanged(false);
 }
 
