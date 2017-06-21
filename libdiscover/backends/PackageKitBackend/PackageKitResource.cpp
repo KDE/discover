@@ -210,7 +210,7 @@ void PackageKitResource::fetchChangelog()
 static void addIfNotEmpty(const QString& title, const QString& content, QString& where)
 {
     if (!content.isEmpty())
-        where += QStringLiteral("<p><b>") + title + QStringLiteral("</b>&nbsp;") + content + QStringLiteral("</p>");
+        where += QStringLiteral("<p><b>") + title + QStringLiteral("</b>&nbsp;") + QString(content).replace(QStringLiteral("\n"), QStringLiteral("<br />")) + QStringLiteral("</p>");
 }
 
 QString PackageKitResource::joinPackages(const QStringList& pkgids)

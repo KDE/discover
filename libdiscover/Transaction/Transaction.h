@@ -60,7 +60,9 @@ public:
         /// Transaction is doing an installation/removal
         CommittingStatus,
         /// Transaction is done
-        DoneStatus
+        DoneStatus,
+        /// Transaction is done, but there was an error during transaction
+        DoneWithErrorStatus
     };
     Q_ENUM(Status)
 

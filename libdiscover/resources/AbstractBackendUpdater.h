@@ -56,9 +56,6 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(bool isCancelable READ isCancelable NOTIFY cancelableChanged)
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
-    Q_PROPERTY(QString statusMessage READ statusMessage NOTIFY statusMessageChanged)
-    Q_PROPERTY(QString statusDetail READ statusDetail NOTIFY statusDetailChanged)
-    Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
     public:
         /**
          * Constructs an AbstractBackendUpdater
@@ -118,19 +115,6 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          * @see progressingChanged
          */
         virtual bool isProgressing() const = 0;
-        
-        /**
-         * @returns the string about the current status of the update
-         */
-        virtual QString statusMessage() const = 0;
-        /**
-         * @returns a more detailled description of what is currently happening with the update
-         */
-        virtual QString statusDetail() const = 0;
-        /**
-         * @returns the overall download speed during the downloading phase of the update
-         */
-        virtual quint64 downloadSpeed() const = 0;
 
         /**
          * @returns whether @p res is marked for update

@@ -47,18 +47,16 @@ public:
     void setRuntime(FlatpakResource *runtime);
 
 public Q_SLOTS:
-    void onAppJobFinished(bool success);
+    void onAppJobFinished();
     void onAppJobProgressChanged(int progress);
-    void onRuntimeJobFinished(bool success);
+    void onRuntimeJobFinished();
     void onRuntimeJobProgressChanged(int progress);
-    void finishTransaction(bool success);
+    void finishTransaction();
     void start();
 
 private:
     void updateProgress();
 
-    bool m_appJobFinished;
-    bool m_runtimeJobFinished;
     int m_appJobProgress;
     int m_runtimeJobProgress;
     QPointer<FlatpakResource> m_app;

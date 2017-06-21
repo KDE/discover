@@ -50,9 +50,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         bool isProgressing() const override;
         void fetchChangelog() const override;
 
-        QString statusMessage() const override;
-        QString statusDetail() const override;
-        quint64 downloadSpeed() const override;
         void proceed() override;
 
     public Q_SLOTS:
@@ -67,7 +64,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
         void finished(PackageKit::Transaction::Exit exit, uint);
         void statusChanged();
-        void speedChanged();
         void cancellableChanged();
         void remainingTimeChanged();
         void percentageChanged();
@@ -92,9 +88,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         bool m_isCancelable;
         bool m_isProgressing;
         PackageKit::Transaction::Status m_status;
-        QString m_statusMessage;
-        QString m_statusDetail;
-        quint64 m_speed;
         long unsigned int m_remainingTime;
         uint m_percentage;
         QDateTime m_lastUpdate;

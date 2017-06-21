@@ -35,7 +35,6 @@ PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
     m_isCancelable(false),
     m_isProgressing(false),
     m_status(PackageKit::Transaction::Status::StatusUnknown),
-    m_speed(0),
     m_remainingTime(0),
     m_percentage(0),
     m_lastUpdate()
@@ -70,7 +69,6 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     connect(m_transaction.data(), &PackageKit::Transaction::requireRestart, this, &PackageKitUpdater::requireRestart);
     connect(m_transaction.data(), &PackageKit::Transaction::eulaRequired, this, &PackageKitUpdater::eulaRequired);
     connect(m_transaction.data(), &PackageKit::Transaction::statusChanged, this, &PackageKitUpdater::statusChanged);
-    connect(m_transaction.data(), &PackageKit::Transaction::speedChanged, this, &PackageKitUpdater::speedChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::allowCancelChanged, this, &PackageKitUpdater::cancellableChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::remainingTimeChanged, this, &PackageKitUpdater::remainingTimeChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::percentageChanged, this, &PackageKitUpdater::percentageChanged);
@@ -176,23 +174,10 @@ void PackageKitUpdater::remainingTimeChanged()
     }
 }
 
-void PackageKitUpdater::speedChanged()
-{
-    if (m_speed != m_transaction->speed()) {
-        m_speed = m_transaction->speed();
-        emit downloadSpeedChanged(m_speed);
-    }
-}
-
 void PackageKitUpdater::statusChanged()
 {
     if (m_status != m_transaction->status()) {
         m_status = m_transaction->status();
-        m_statusMessage = PackageKitMessages::statusMessage(m_status);
-        m_statusDetail = PackageKitMessages::statusDetail(m_status);
-
-        emit statusMessageChanged(m_statusMessage);
-        emit statusDetailChanged(m_statusDetail);
     }
 }
 
@@ -247,21 +232,6 @@ bool PackageKitUpdater::isCancelable() const
 bool PackageKitUpdater::isProgressing() const
 {
     return m_isProgressing;
-}
-
-QString PackageKitUpdater::statusMessage() const
-{
-    return m_statusMessage;
-}
-
-QString PackageKitUpdater::statusDetail() const
-{
-    return m_statusDetail;
-}
-
-quint64 PackageKitUpdater::downloadSpeed() const
-{
-    return m_speed;
 }
 
 void PackageKitUpdater::cancel()

@@ -47,11 +47,7 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         QDateTime lastUpdate() const override;
         bool isCancelable() const override;
         bool isProgressing() const override;
-        QString statusDetail() const override;
-        QString statusMessage() const override;
-        quint64 downloadSpeed() const override;
         bool isMarked(AbstractResource* res) const override;
-        void setStatusDetail(const QString& message);
         void setProgress(qreal p);
         int updatesCount() const;
 
@@ -73,7 +69,6 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         AbstractResourcesBackend * const m_backend;
         QSet<AbstractResource*> m_pendingResources;
         bool m_settingUp;
-        QString m_statusDetail;
         qreal m_progress;
         QDateTime m_lastUpdate;
 };
