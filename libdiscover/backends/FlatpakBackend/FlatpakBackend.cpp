@@ -35,7 +35,7 @@
 #include <AppStreamQt/bundle.h>
 #include <AppStreamQt/component.h>
 #include <AppStreamQt/icon.h>
-#include <AppStreamQt/metadata.h>
+#include <AppStream/appstream.h>
 
 #include <KAboutData>
 #include <KLocalizedString>
@@ -129,8 +129,8 @@ FlatpakRemote * FlatpakBackend::getFlatpakRemoteByUrl(const QString &url, Flatpa
 
 FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
 {
-    AppStream::Component component = resource->appstreamComponent();
-    AppStream::Component::Kind appKind = component.kind();
+    AppStream::Component *component = resource->appstreamComponent();
+    AppStream::Component::Kind appKind = component->kind();
     FlatpakInstalledRef *ref = nullptr;
     GPtrArray *installedApps = nullptr;
     g_autoptr(GError) localError = nullptr;
@@ -212,7 +212,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
     g_autoptr(GError) localError = nullptr;
     g_autoptr(GFile) file = nullptr;
     g_autoptr(FlatpakBundleRef) bundleRef = nullptr;
-    AppStream::Component asComponent;
+    AppStream::Component *asComponent = nullptr;
 
     file = g_file_new_for_path(url.toLocalFile().toStdString().c_str());
     bundleRef = flatpak_bundle_ref_new(file, &localError);
@@ -248,23 +248,24 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
         gconstpointer data = g_bytes_get_data(appstream, &len);
         g_autofree gchar *appstreamContent = g_strndup((char*)data, len);
 
-        AppStream::Metadata metadata;
-        metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
-        AppStream::Metadata::MetadataError error = metadata.parse(QString::fromUtf8(appstreamContent), AppStream::Metadata::FormatKindXml);
-        if (error != AppStream::Metadata::MetadataErrorNoError) {
-            qWarning() << "Failed to parse appstream metadata: " << error;
+        g_autoptr(AsMetadata) metadata = as_metadata_new();
+        as_metadata_set_format_style(metadata, AS_FORMAT_STYLE_COLLECTION);
+        as_metadata_parse(metadata, appstreamContent, AS_FORMAT_KIND_XML, &localError);
+        if (localError) {
+            qWarning() << "Failed to parse appstream metadata:" << localError->message;
             return nullptr;
         }
 
-        QList<AppStream::Component> components = metadata.components();
-        if (components.size()) {
-            asComponent = AppStream::Component(components.first());
+        g_autoptr(GPtrArray) components = as_metadata_get_components(metadata);
+        if (g_ptr_array_index(components, 0)) {
+            asComponent = new AppStream::Component(AS_COMPONENT(g_ptr_array_index(components, 0)));
         } else {
             qWarning() << "Failed to parse appstream metadata";
             return nullptr;
         }
     } else {
-        asComponent = AppStream::Component();
+        AsComponent *component = as_component_new();
+        asComponent = new AppStream::Component(component);
         qWarning() << "No appstream metadata in bundle";
     }
 
@@ -338,21 +339,21 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 
     auto ref = FLATPAK_REF(remoteRef);
 
-    AppStream::Component asComponent;
-    asComponent.addUrl(AppStream::Component::UrlKindHomepage, settings.value(QStringLiteral("Flatpak Ref/Homepage")).toString());
-    asComponent.setDescription(settings.value(QStringLiteral("Flatpak Ref/Description")).toString());
-    asComponent.setName(settings.value(QStringLiteral("Flatpak Ref/Title")).toString());
-    asComponent.setSummary(settings.value(QStringLiteral("Flatpak Ref/Comment")).toString());
-    asComponent.setId(settings.value(QStringLiteral("Flatpak Ref/Name")).toString());
-
+    AsComponent *component = as_component_new();
+    as_component_add_url(component, AS_URL_KIND_HOMEPAGE, settings.value(QStringLiteral("Flatpak Ref/Homepage")).toString().toStdString().c_str());
+    as_component_set_description(component, settings.value(QStringLiteral("Flatpak Ref/Description")).toString().toStdString().c_str(), nullptr);
+    as_component_set_name(component, settings.value(QStringLiteral("Flatpak Ref/Title")).toString().toStdString().c_str(), nullptr);
+    as_component_set_summary(component, settings.value(QStringLiteral("Flatpak Ref/Comment")).toString().toStdString().c_str(), nullptr);
+    as_component_set_id(component, settings.value(QStringLiteral("Flatpak Ref/Name")).toString().toStdString().c_str());
     const QString iconUrl = settings.value(QStringLiteral("Flatpak Ref/Icon")).toString();
     if (!iconUrl.isEmpty()) {
-        AppStream::Icon icon;
-        icon.setKind(AppStream::Icon::KindRemote);
-        icon.setUrl(QUrl(iconUrl));
-        asComponent.addIcon(icon);
+        AsIcon *icon = as_icon_new();
+        as_icon_set_kind(icon, AS_ICON_KIND_REMOTE);
+        as_icon_set_url(icon, iconUrl.toStdString().c_str());
+        as_component_add_icon(component, icon);
     }
 
+    AppStream::Component *asComponent = new AppStream::Component(component);
     auto resource = new FlatpakResource(asComponent, preferredInstallation(), this);
     resource->setFlatpakFileType(QStringLiteral("flatpakref"));
     resource->setOrigin(QString::fromUtf8(remoteName));
@@ -377,21 +378,21 @@ FlatpakResource * FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
         return nullptr;
     }
 
-    AppStream::Component asComponent;
-    asComponent.addUrl(AppStream::Component::UrlKindHomepage, settings.value(QStringLiteral("Flatpak Repo/Homepage")).toString());
-    asComponent.setSummary(settings.value(QStringLiteral("Flatpak Repo/Comment")).toString());
-    asComponent.setDescription(settings.value(QStringLiteral("Flatpak Repo/Description")).toString());
-    asComponent.setName(title);
-    asComponent.setId(settings.value(QStringLiteral("Flatpak Ref/Name")).toString());
-
+    AsComponent *component = as_component_new();
+    as_component_add_url(component, AS_URL_KIND_HOMEPAGE, settings.value(QStringLiteral("Flatpak Repo/Homepage")).toString().toStdString().c_str());
+    as_component_set_summary(component, settings.value(QStringLiteral("Flatpak Repo/Comment")).toString().toStdString().c_str(), nullptr);
+    as_component_set_description(component, settings.value(QStringLiteral("Flatpak Repo/Description")).toString().toStdString().c_str(), nullptr);
+    as_component_set_name(component, title.toStdString().c_str(), nullptr);
+    as_component_set_id(component, settings.value(QStringLiteral("Flatpak Ref/Name")).toString().toStdString().c_str());
     const QString iconUrl = settings.value(QStringLiteral("Flatpak Repo/Icon")).toString();
     if (!iconUrl.isEmpty()) {
-        AppStream::Icon icon;
-        icon.setKind(AppStream::Icon::KindRemote);
-        icon.setUrl(QUrl(iconUrl));
-        asComponent.addIcon(icon);
+        AsIcon *icon = as_icon_new();
+        as_icon_set_kind(icon, AS_ICON_KIND_REMOTE);
+        as_icon_set_url(icon, iconUrl.toStdString().c_str());
+        as_component_add_icon(component, icon);
     }
 
+    AppStream::Component *asComponent = new AppStream::Component(component);
     auto resource = new FlatpakResource(asComponent, preferredInstallation(), this);
     // Use metadata only for stuff which are not common for all resources
     resource->addMetadata(QStringLiteral("gpg-key"), gpgKey);
@@ -509,6 +510,8 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
 
 void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)
 {
+    g_autoptr(GError) localError = nullptr;
+
     FlatpakSource source(remote);
     if (!source.isEnabled() || flatpak_remote_get_noenumerate(remote)) {
         return;
@@ -521,17 +524,19 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
         return;
     }
 
-    AppStream::Metadata metadata;
-    metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
-    AppStream::Metadata::MetadataError error = metadata.parseFile(appDirFileName, AppStream::Metadata::FormatKindXml);
-    if (error != AppStream::Metadata::MetadataErrorNoError) {
-        qWarning() << "Failed to parse appstream metadata: " << error;
+    g_autoptr(AsMetadata) metadata = as_metadata_new();
+    g_autoptr(GFile) file = g_file_new_for_path(appDirFileName.toStdString().c_str());
+    as_metadata_set_format_style (metadata, AS_FORMAT_STYLE_COLLECTION);
+    as_metadata_parse_file(metadata, file, AS_FORMAT_KIND_XML, &localError);
+    if (localError) {
+        qWarning() << "Failed to parse appstream metadata" << localError->message;
         return;
     }
 
-    QList<AppStream::Component> components = metadata.components();
-    foreach (const AppStream::Component& component, components) {
-        AppStream::Component appstreamComponent(component);
+    g_autoptr(GPtrArray) components = as_metadata_get_components(metadata);
+    for (uint i = 0; i < components->len; i++) {
+        AsComponent *component = AS_COMPONENT(g_ptr_array_index(components, i));
+        AppStream::Component *appstreamComponent = new AppStream::Component(component);
         FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
         resource->setIconPath(appstreamDirPath);
         resource->setOrigin(source.name());
@@ -551,21 +556,30 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
     if (dir.exists()) {
         foreach (const QString &file, dir.entryList(QDir::NoDotAndDotDot | QDir::Files)) {
             QString fnDesktop;
+            AsComponent *component;
+            g_autoptr(GError) localError = nullptr;
+            g_autoptr(GFile) desktopFile = nullptr;
+            g_autoptr(AsMetadata) metadata = as_metadata_new();
 
             if (file == QLatin1String("mimeinfo.cache")) {
                 continue;
             }
 
             fnDesktop = pathApps + file;
-
-            AppStream::Metadata metadata;
-            AppStream::Metadata::MetadataError error = metadata.parseFile(fnDesktop, AppStream::Metadata::FormatKindDesktopEntry);
-            if (error != AppStream::Metadata::MetadataErrorNoError) {
-                qWarning() << "Failed to parse appstream metadata: " << error;
+            desktopFile = g_file_new_for_path(fnDesktop.toStdString().c_str());
+            if (!desktopFile) {
+                qWarning() << "Couldn't open" << fnDesktop << " :" << localError->message;
                 continue;
             }
 
-            AppStream::Component appstreamComponent(metadata.component());
+            as_metadata_parse_file(metadata, desktopFile, AS_FORMAT_KIND_DESKTOP_ENTRY, &localError);
+            if (localError) {
+                qWarning() << "Failed to parse appstream metadata" << localError->message;
+                continue;
+            }
+
+            component = as_metadata_get_component(metadata);
+            AppStream::Component *appstreamComponent = new AppStream::Component(component);
             FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
 
             resource->setIconPath(pathExports);
@@ -652,7 +666,7 @@ bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
 {
     g_autoptr(FlatpakRef) ref = nullptr;
     g_autoptr(GError) localError = nullptr;
-    AppStream::Bundle bundle = resource->appstreamComponent().bundle(AppStream::Bundle::KindFlatpak);
+    AppStream::Bundle bundle = resource->appstreamComponent()->bundle(AppStream::Bundle::KindFlatpak);
 
     // Get arch/branch/commit/name from FlatpakRef
     if (!bundle.isEmpty()) {

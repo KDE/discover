@@ -38,7 +38,7 @@ class FlatpakResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit FlatpakResource(const AppStream::Component &component, FlatpakInstallation* installation, FlatpakBackend *parent);
+    explicit FlatpakResource(AppStream::Component *component, FlatpakInstallation* installation, FlatpakBackend *parent);
 
     enum PropertyKind {
         DownloadSize = 0,
@@ -68,7 +68,7 @@ public:
     QString installationPath() const;
     static QString installationPath(FlatpakInstallation* installation);
 
-    AppStream::Component appstreamComponent() const;
+    AppStream::Component *appstreamComponent() const;
     QList<PackageState> addonsInformation() override;
     QString availableVersion() const override;
     QString appstreamId() const override;
@@ -136,7 +136,7 @@ Q_SIGNALS:
 
 public:
     QList<PackageState> m_addons;
-    AppStream::Component m_appdata;
+    AppStream::Component *m_appdata;
     FlatpakRefKind m_flatpakRefKind;
     QString m_arch;
     QString m_branch;

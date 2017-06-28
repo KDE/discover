@@ -9,7 +9,7 @@ function(add_unit_test name)
 endfunction()
 
 if(KF5Attica_FOUND AND KF5NewStuff_FOUND)
-   add_subdirectory(KNSBackend)
+    add_subdirectory(KNSBackend)
 endif()
 
 if(packagekitqt5_FOUND AND AppStreamQt_FOUND)
@@ -22,7 +22,7 @@ if(BUILD_DummyBackend)
 endif()
 
 option(BUILD_FlatpakBackend "Build Flatpak support" "ON")
-if(FLATPAK_FOUND AND AppStreamQt_FOUND AND BUILD_FlatpakBackend)
+if(FLATPAK_FOUND AND AppStreamQt_FOUND AND APPSTREAM_FOUND AND BUILD_FlatpakBackend)
     add_subdirectory(FlatpakBackend)
 endif()
 
