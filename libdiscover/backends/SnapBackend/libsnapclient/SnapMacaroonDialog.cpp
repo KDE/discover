@@ -24,8 +24,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QTextStream>
 #include <KAuthExecuteJob>
-#include <Snapd/Client>
 #include "ui_SnapMacaroonDialog.h"
 
 class MacaroonDialog : public QDialog
@@ -34,11 +34,6 @@ public:
     MacaroonDialog()
         : QDialog()
     {
-        {
-            auto request = m_client.connect();
-            request->runSync();
-        }
-
         m_ui.setupUi(this);
         connect(this, &QDialog::accepted, this, &MacaroonDialog::startLogin);
         connect(this, &QDialog::rejected, this, []() {
@@ -94,7 +89,6 @@ public:
     }
 
     Ui::SnapMacaroonDialog m_ui;
-    QSnapdClient m_client;
 };
 
 
