@@ -26,7 +26,6 @@
 #include <QSet>
 
 #include <KLocalizedString>
-#include <QIcon>
 
 PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
   : AbstractBackendUpdater(parent),
