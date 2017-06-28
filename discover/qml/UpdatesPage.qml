@@ -188,6 +188,7 @@ DiscoverPage
                         text: changelog
                         textFormat: Text.RichText
                         wrapMode: Text.WordWrap
+                        onLinkActivated: Qt.openUrlExternally(link)
                     }
                 }
 
