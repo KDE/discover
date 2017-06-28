@@ -23,10 +23,10 @@
 #include <QDebug>
 #include <QProcess>
 
-SnapResource::SnapResource(QJsonObject data, AbstractResource::State state, AbstractResourcesBackend* parent)
+SnapResource::SnapResource(QSnapdSnap* snap, AbstractResource::State state, SnapBackend* parent)
     : AbstractResource(parent)
     , m_state(state)
-    , m_data(std::move(data))
+    , m_snap(snap)
 {
 }
 
@@ -42,12 +42,12 @@ QStringList SnapResource::categories()
 
 QString SnapResource::comment()
 {
-    return m_data.value(QLatin1String("summary")).toString();
+    return m_snap->summary();
 }
 
 int SnapResource::size()
 {
-    return m_data.value(QLatin1String("installed-size")).toInt();
+    return m_snap->installedSize();
 }
 
 QUrl SnapResource::homepage()
@@ -57,12 +57,12 @@ QUrl SnapResource::homepage()
 
 QVariant SnapResource::icon() const
 {
-    return QUrl(m_data.value(QLatin1String("icon")).toString());
+    return QUrl(m_snap->icon());
 }
 
 QString SnapResource::installedVersion() const
 {
-    return m_data.value(QLatin1String("version")).toString();
+    return m_snap->version();
 }
 
 QString SnapResource::license()
@@ -72,22 +72,22 @@ QString SnapResource::license()
 
 QString SnapResource::longDescription()
 {
-    return m_data.value(QLatin1String("description")).toString();
+    return m_snap->description();
 }
 
 QString SnapResource::name()
 {
-    return m_data.value(QLatin1String("name")).toString();
+    return m_snap->name();
 }
 
 QString SnapResource::origin() const
 {
-    return QStringLiteral("snappy:") + m_data.value(QLatin1String("channel")).toString();
+    return QStringLiteral("snappy:") + m_snap->channel();
 }
 
 QString SnapResource::packageName() const
 {
-    return m_data.value(QLatin1String("name")).toString();
+    return m_snap->name();
 }
 
 QUrl SnapResource::screenshotUrl()
@@ -110,6 +110,14 @@ AbstractResource::State SnapResource::state()
     return m_state;
 }
 
+void SnapResource::setState(AbstractResource::State state)
+{
+    if (m_state != state) {
+        m_state = state;
+        Q_EMIT stateChanged();
+    }
+}
+
 void SnapResource::fetchChangelog()
 {
     QString log;
@@ -123,22 +131,10 @@ void SnapResource::fetchScreenshots()
 
 void SnapResource::invokeApplication() const
 {
-    QProcess::startDetached(m_data[QLatin1String("resource")].toString());
+//     QProcess::startDetached(m_snap->price());
 }
 
 bool SnapResource::isTechnical() const
 {
-    return m_data.value(QLatin1String("type")) == QLatin1String("os") || m_data.value(QLatin1String("private")).toBool();
-}
-
-void SnapResource::refreshState()
-{
-    auto b = qobject_cast<SnapBackend*>(backend());
-    SnapSocket* socket = b->socket();
-    auto job = socket->snapByName(packageName());
-    connect(job, &SnapJob::finished, this, [this](SnapJob* job){
-        m_state = job->isSuccessful() ? AbstractResource::Installed : AbstractResource::None;
-        Q_EMIT stateChanged();
-        qDebug() << "refreshed!!" << job->result() << job->statusCode() << m_state;
-    });
+    return m_snap->snapType() == QLatin1String("os") || m_snap->isPrivate();
 }

@@ -24,7 +24,7 @@
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
-#include "SnapSocket.h"
+#include <Snapd/Client>
 
 class QAction;
 class SnapReviewsBackend;
@@ -50,20 +50,22 @@ public:
     Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;
     Transaction* removeApplication(AbstractResource* app) override;
     bool isFetching() const override { return m_fetching; }
-    SnapSocket* socket() { return &m_socket; }
     void checkForUpdates() override {}
     bool hasApplications() const override { return true; }
+    QSnapdClient* client() { return &m_client; }
+    void refreshStates();
 
 private:
     void setFetching(bool fetching);
-    ResultsStream* populate(SnapJob* snaps, AbstractResource::State state);
+    template <class T>
+    ResultsStream* populate(T* snaps, AbstractResource::State state);
 
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;
     SnapReviewsBackend* m_reviews;
 
-    SnapSocket m_socket;
     bool m_fetching = false;
+    QSnapdClient m_client;
 };
 
 #endif // SNAPBACKEND_H

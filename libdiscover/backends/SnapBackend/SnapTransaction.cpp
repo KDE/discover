@@ -21,64 +21,69 @@
 #include "SnapTransaction.h"
 #include "SnapBackend.h"
 #include "SnapResource.h"
-#include "SnapSocket.h"
+#include <Snapd/Request>
 #include <QTimer>
+#include <QProcess>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include "libsnapclient/config-paths.h"
+#include "utils.h"
 
-SnapTransaction::SnapTransaction(SnapResource* app, SnapJob* job, SnapSocket* socket, Role role)
+SnapTransaction::SnapTransaction(SnapResource* app, QSnapdRequest* request, Role role)
     : Transaction(app, app, role)
     , m_app(app)
-    , m_socket(socket)
+    , m_request(request)
 {
     setStatus(DownloadingStatus);
     setCancellable(false);
-    connect(job, &SnapJob::finished, this, &SnapTransaction::transactionStarted);
+    connect(request, &QSnapdRequest::progress, this, &SnapTransaction::progressed);
+    connect(request, &QSnapdRequest::complete, this, &SnapTransaction::finishTransaction);
     setStatus(SetupStatus);
 
-    // Only needed until /v2/events is fixed upstream
-    m_timer = new QTimer(this);
-    m_timer->setInterval(50);
-    connect(m_timer, &QTimer::timeout, this, [this](){
-        auto job = m_socket->changes(m_changeId);
-        connect(job, &SnapJob::finished, this, &SnapTransaction::iterateTransaction);
-    });
-    job->start();
-}
-
-void SnapTransaction::transactionStarted(SnapJob* job)
-{
-    Q_ASSERT(m_changeId.isEmpty());
-
-    if (!job->isSuccessful()) {
-        qWarning() << "non-successful transaction" << job->statusCode();
-        setStatus(DoneStatus);
-        return;
-    }
-
-    auto data = job->data();
-
-    m_changeId = data.value(QLatin1String("change")).toString();
-
-    setStatus(DownloadingStatus);
-    m_timer->start();
-}
-
-void SnapTransaction::iterateTransaction(SnapJob* job)
-{
-    auto res = job->result().toObject();
-
-    if (res.value(QLatin1String("ready")).toBool()) {
-        finishTransaction();
-    }
+    request->runAsync();
 }
 
 void SnapTransaction::cancel()
 {
-    Q_UNREACHABLE();
+    m_request->cancel();
 }
 
 void SnapTransaction::finishTransaction()
 {
-    delete m_timer;
-    m_app->refreshState();
+    switch(m_request->error()) {
+        case QSnapdRequest::NoError:
+            static_cast<SnapBackend*>(m_app->backend())->refreshStates();
+            break;
+        case QSnapdRequest::AuthDataRequired: {
+            QProcess* p = new QProcess;
+            p->setProgram(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR "/discover/SnapMacaroonDialog"));
+            p->start();
+
+            connect(p, static_cast<void(QProcess::*)(int)>(&QProcess::finished), this, [this, p] (int code) {
+                p->deleteLater();
+                if (code != 0) {
+                    qWarning() << "login failed..." << p->readAll();
+                    Q_EMIT passiveMessage(m_request->errorString());
+                    return;
+                }
+                const auto doc = QJsonDocument::fromJson(p->readAllStandardOutput());
+                const auto result = doc.object();
+
+                const auto macaroon = result[QStringLiteral("macaroon")].toString();
+                const auto discharges = kTransform<QStringList>(result[QStringLiteral("discharges")].toArray(), [](const QJsonValue& val) { return val.toString(); });
+                static_cast<SnapBackend*>(m_app->backend())->client()->setAuthData(new QSnapdAuthData(macaroon, discharges));
+                m_request->runAsync();
+            });
+        }   return;
+        default:
+            Q_EMIT passiveMessage(m_request->errorString());
+            break;
+    }
+
     setStatus(DoneStatus);
+}
+
+void SnapTransaction::progressed()
+{
+//     setProgress(m_request->change()->???);
 }

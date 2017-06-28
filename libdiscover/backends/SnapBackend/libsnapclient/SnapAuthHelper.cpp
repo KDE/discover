@@ -20,32 +20,52 @@
 
 #include <QProcess>
 #include <QDebug>
-#include <QLocalSocket>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 #include <unistd.h>
 #include <stdlib.h>
 #include <kauthhelpersupport.h>
 #include <kauthactionreply.h>
+#include <Snapd/Client>
 
 using namespace KAuth;
 
 class SnapAuthHelper : public QObject
 {
     Q_OBJECT
+    QSnapdClient m_client;
+public:
+    SnapAuthHelper() {
+        m_client.connect()->runAsync();
+    }
+
 public Q_SLOTS:
     ActionReply modify(const QVariantMap &args)
     {
-        QLocalSocket socket;
-        socket.connectToServer(QStringLiteral("/run/snapd.socket"), QIODevice::ReadWrite);
-        const bool b = socket.waitForConnected();
-        Q_ASSERT(b);
+        const QString user = args[QStringLiteral("user")].toString()
+                    , pass = args[QStringLiteral("password")].toString()
+                    , otp  = args[QStringLiteral("otp")].toString();
 
-        const QByteArray request = args[QStringLiteral("request")].toByteArray();
-        socket.write(request);
-        socket.waitForReadyRead();
-        const auto replyData = socket.readAll();
+        QSnapdLoginRequest* req = otp.isEmpty() ? m_client.login(user, pass)
+                                                : m_client.login(user, pass, otp);
 
-        ActionReply reply = ActionReply::SuccessReply();
-        reply.setData({ { QStringLiteral("reply"), replyData } });
+        req->runSync();
+
+        auto auth = req->authData();
+        const QByteArray replyData = QJsonDocument(QJsonObject{
+                {QStringLiteral("macaroon"), auth->macaroon()},
+                {QStringLiteral("discharges"), QJsonArray::fromStringList(auth->discharges())}
+            }).toJson();
+        ActionReply reply = req->error() == QSnapdRequest::NoError ? ActionReply::SuccessReply() : ActionReply::InvalidActionReply();
+
+        bool otpMode = req->error() == QSnapdConnectRequest::TwoFactorRequired;
+
+        reply.setData({
+            { QStringLiteral("reply"), replyData },
+            { QStringLiteral("errorString"), req->errorString() },
+            { QStringLiteral("otpMode"), otpMode }
+        });
         return reply;
     }
 };

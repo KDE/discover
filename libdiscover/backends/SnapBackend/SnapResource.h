@@ -23,13 +23,15 @@
 
 #include <resources/AbstractResource.h>
 #include <QJsonObject>
+#include <Snapd/Snap>
 
-class AddonList;
+class SnapBackend;
+
 class SnapResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit SnapResource(QJsonObject data, AbstractResource::State state, AbstractResourcesBackend* parent);
+    explicit SnapResource(QSnapdSnap* snap, AbstractResource::State state, SnapBackend* parent);
 
     QString section() override;
     QString origin() const override;
@@ -54,11 +56,12 @@ public:
     void fetchScreenshots() override;
     QList<PackageState> addonsInformation() override { return {}; }
 
-    void refreshState();
+    void setState(AbstractResource::State state);
 
 public:
     AbstractResource::State m_state;
-    QJsonObject m_data;
+
+    QSnapdSnap* m_snap;
 };
 
 #endif // SNAPRESOURCE_H
