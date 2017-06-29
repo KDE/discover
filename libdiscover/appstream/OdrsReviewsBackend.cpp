@@ -103,7 +103,10 @@ static QString osName()
         while (!line.isEmpty()) {
             if (line.startsWith(QStringLiteral("NAME"))) {
                 osReleaseFile.close();
-                return line.mid(5).remove(QStringLiteral("\n"));
+                QStringRef name = line.midRef(5).trimmed();
+                if (name.startsWith(QLatin1Char('\"')) && name.endsWith(QLatin1Char('\"')))
+                    name = name.mid(1, name.size()-2);
+                return name.toString();
             }
             line = QString::fromUtf8(osReleaseFile.readLine());
         }
