@@ -30,8 +30,6 @@ find_package(KF5NewStuff 5.23)
 pkg_check_modules(FLATPAK  flatpak>=0.6.12)
 pkg_check_modules(APPSTREAM appstream)
 
-find_package(Snapd)
-
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)
 
 add_subdirectory(libdiscover)
@@ -70,11 +68,6 @@ set_package_properties(AppStreamQt PROPERTIES
     DESCRIPTION "Library that lists Appstream resources"
     URL "http://www.freedesktop.org"
     PURPOSE "Required to build the PackageKit backend"
-    TYPE OPTIONAL)
-set_package_properties(Snapd PROPERTIES
-    DESCRIPTION "Library that exposes Snapd"
-    URL "http://www.snapcraft.io"
-    PURPOSE "Required to build the Snap backend"
     TYPE OPTIONAL)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

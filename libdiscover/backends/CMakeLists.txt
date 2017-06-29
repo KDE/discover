@@ -28,5 +28,12 @@ endif()
 
 option(BUILD_SnapBackend "Build Snap support. Still a proof of concept" "OFF")
 if(BUILD_SnapBackend)
+    find_package(Snapd)
+    set_package_properties(Snapd PROPERTIES
+        DESCRIPTION "Library that exposes Snapd"
+        URL "http://www.snapcraft.io"
+        PURPOSE "Required to build the Snap backend"
+        TYPE OPTIONAL)
+
     add_subdirectory(SnapBackend)
 endif()
