@@ -47,6 +47,10 @@ SnapBackend::SnapBackend(QObject* parent)
     {
         auto request = m_client.connect();
         request->runSync();
+        m_valid = request->error() == QSnapdRequest::NoError;
+        if (!m_valid) {
+            qWarning() << "snap problem at initialize:" << request->errorString();
+        }
     }
     connect(m_reviews, &SnapReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 }
