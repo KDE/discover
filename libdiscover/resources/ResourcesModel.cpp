@@ -370,14 +370,16 @@ AbstractResourcesBackend* ResourcesModel::currentApplicationBackend() const
     return m_currentApplicationBackend;
 }
 
-void ResourcesModel::setCurrentApplicationBackend(AbstractResourcesBackend* backend)
+void ResourcesModel::setCurrentApplicationBackend(AbstractResourcesBackend* backend, bool write)
 {
     if (backend != m_currentApplicationBackend) {
-        KConfigGroup settings(KSharedConfig::openConfig(), "ResourcesModel");
-        if (backend)
-            settings.writeEntry("currentApplicationBackend", backend->name());
-        else
-            settings.deleteEntry("currentApplicationBackend");
+        if (write) {
+            KConfigGroup settings(KSharedConfig::openConfig(), "ResourcesModel");
+            if (backend)
+                settings.writeEntry("currentApplicationBackend", backend->name());
+            else
+                settings.deleteEntry("currentApplicationBackend");
+        }
 
         qDebug() << "setting currentApplicationBackend" << backend;
         m_currentApplicationBackend = backend;
@@ -392,5 +394,9 @@ void ResourcesModel::initApplicationsBackend()
 
     const auto backends = applicationBackends();
     auto idx = kIndexOf(backends, [name](AbstractResourcesBackend* b) { return b->name() == name; });
-    setCurrentApplicationBackend(backends.value(idx, nullptr));
+    if (idx<0) {
+        idx = kIndexOf(backends, [](AbstractResourcesBackend* b) { return b->hasApplications(); });
+        qDebug() << "falling back applications backend to" << idx;
+    }
+    setCurrentApplicationBackend(backends.value(idx, nullptr), false);
 }

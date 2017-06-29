@@ -81,7 +81,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
 
         QVariantList applicationBackendsVariant() const;
         QVector<AbstractResourcesBackend*> applicationBackends() const;
-        void setCurrentApplicationBackend(AbstractResourcesBackend* backend);
+        void setCurrentApplicationBackend(AbstractResourcesBackend* backend, bool writeConfig = true);
         AbstractResourcesBackend* currentApplicationBackend() const;
 
     public Q_SLOTS:
