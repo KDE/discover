@@ -37,6 +37,8 @@
 #include <QTimer>
 #include <QAction>
 
+#include "utils.h"
+
 MUON_BACKEND_PLUGIN(SnapBackend)
 
 SnapBackend::SnapBackend(QObject* parent)
@@ -87,13 +89,7 @@ ResultsStream* SnapBackend::populate(T* job, AbstractResource::State state)
     auto stream = new ResultsStream(QStringLiteral("Snap-populate"));
 
     connect(job, &QSnapdFindRequest::complete, stream, [stream, this, state, job]() {
-        QSet<SnapResource*> higher;
-        if (state == AbstractResource::Installed) {
-            for(auto res: m_resources) {
-                if (res->state()>=state)
-                    higher += res;
-            }
-        }
+        QSet<SnapResource*> higher = kFilter<QSet<SnapResource*>>(m_resources, [state](AbstractResource* res){ return res->state()>=state; });
 
         QVector<AbstractResource*> ret;
         QSet<SnapResource*> resources;
