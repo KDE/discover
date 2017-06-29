@@ -136,5 +136,5 @@ void SnapResource::invokeApplication() const
 
 bool SnapResource::isTechnical() const
 {
-    return m_snap->snapType() == QLatin1String("os") || m_snap->isPrivate();
+    return m_snap->snapType() != QLatin1String("app");
 }
