@@ -64,9 +64,11 @@ static ResultsStream* voidStream() { return new ResultsStream(QStringLiteral("Sn
 
 ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& filters)
 {
-    if (filters.category && filters.category->isAddons())
+    if ((filters.category && filters.category->isAddons()) || filters.resourceUrl.scheme() != QLatin1String("snap"))
         return voidStream();
-    if (filters.state >= AbstractResource::Installed) {
+    if (!filters.resourceUrl.isEmpty()) {
+        return findResourceByPackageName(filters.resourceUrl);
+    } else if (filters.state >= AbstractResource::Installed) {
         return populate(m_client.list(), AbstractResource::Installed);
     } else {
         return populate(m_client.find(QSnapdClient::FindFlag::None, filters.search), AbstractResource::None);
