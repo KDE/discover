@@ -99,15 +99,16 @@ static QString osName()
 
     QFile osReleaseFile(osReleaseFilename);
     if (osReleaseFile.open(QIODevice::ReadOnly)) {
-        QString line = QString::fromUtf8(osReleaseFile.readLine());
-        while (!line.isEmpty()) {
+        QString line;
+        QTextStream stream(&osReleaseFile);
+        while (stream.readLineInto(&line)) {
             if (line.startsWith(QStringLiteral("NAME"))) {
-                osReleaseFile.close();
-                return line.mid(5).remove(QStringLiteral("\n"));
+                QStringRef name = line.midRef(5).trimmed();
+                if (name.startsWith(QLatin1Char('\"')) && name.endsWith(QLatin1Char('\"')))
+                    name = name.mid(1, name.size()-2);
+                return name.toString();
             }
-            line = QString::fromUtf8(osReleaseFile.readLine());
         }
-        osReleaseFile.close();
     }
 
     return QStringLiteral("Unknown");
