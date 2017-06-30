@@ -22,6 +22,8 @@
 #include "SnapBackend.h"
 #include <QDebug>
 #include <QProcess>
+#include <QBuffer>
+#include <QImageReader>
 
 SnapResource::SnapResource(QSnapdSnap* snap, AbstractResource::State state, SnapBackend* parent)
     : AbstractResource(parent)
@@ -57,7 +59,29 @@ QUrl SnapResource::homepage()
 
 QVariant SnapResource::icon() const
 {
-    return QUrl(m_snap->icon());
+    const auto iconPath = m_snap->icon();
+    if (iconPath.isEmpty())
+        return QStringLiteral("package-x-generic");
+
+    if (!iconPath.startsWith(QLatin1Char('/')))
+        return QUrl(iconPath);
+
+    auto backend = qobject_cast<SnapBackend*>(parent());
+    auto req = backend->client()->getIcon(iconPath);
+    req->runSync();
+
+    if (req->error()) {
+        qWarning() << "icon error" << req->errorString() << iconPath;
+        return {};
+    }
+
+    auto icon = req->icon();
+
+    QBuffer buffer;
+    buffer.setData(icon->data());
+    QImageReader reader(&buffer);
+
+    return QVariant::fromValue<QImage>(reader.read());
 }
 
 QString SnapResource::installedVersion() const
