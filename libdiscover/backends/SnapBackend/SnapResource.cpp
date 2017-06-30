@@ -140,7 +140,12 @@ void SnapResource::fetchChangelog()
 
 void SnapResource::fetchScreenshots()
 {
-    Q_EMIT screenshotsFetched({}, {});
+    QList<QUrl> screenshots;
+    for(int i = 0, c = m_snap->screenshotCount(); i<c; ++i) {
+        QScopedPointer<QSnapdScreenshot> screenshot(m_snap->screenshot(i));
+        screenshots << QUrl(screenshot->url());
+    }
+    Q_EMIT screenshotsFetched(screenshots, screenshots);
 }
 
 void SnapResource::invokeApplication() const
