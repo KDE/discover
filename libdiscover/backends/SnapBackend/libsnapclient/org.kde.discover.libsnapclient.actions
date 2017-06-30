@@ -1,5 +1,21 @@
 [org.kde.discover.libsnapclient.login]
 Name=Snap login action
+Name[ca]=Accions de connexió de l'Snap
+Name[es]=Acciones de inicio de sesión en Snap
+Name[nl]=Actie voor aanmelden van snap
+Name[pt]=Acção de autenticação do Snap
+Name[sv]=Snap inloggningsåtgärd
+Name[uk]=Дія з входу Snap
+Name[x-test]=xxSnap login actionxx
+Name[zh_TW]=Snap 登入動作
 Description=Allows snap front-ends to log in
+Description[ca]=Permet que els frontals de l'Snap es connectin
+Description[es]=Permite que las interfaces de Snap inicien sesión
+Description[nl]=Front-ends van snap toestaan zich aan te melden
+Description[pt]=Permitir a autenticação da interfaces do 'snap'
+Description[sv]=Möjliggör för snap-gränssnitt att logga in
+Description[uk]=Надає змогу входити до системи оболонкам snap
+Description[x-test]=xxAllows snap front-ends to log inxx
+Description[zh_TW]=允許 snap 前端登入
 Policy=auth_self
 Persistence=session
