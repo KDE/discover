@@ -129,16 +129,6 @@ QString PackageKitResource::section()
     return QString();
 }
 
-QUrl PackageKitResource::screenshotUrl()
-{
-    return {};
-}
-
-QUrl PackageKitResource::thumbnailUrl()
-{
-    return {};
-}
-
 AbstractResource::State PackageKitResource::state()
 {
     if (backend()->isPackageNameUpgradeable(this))

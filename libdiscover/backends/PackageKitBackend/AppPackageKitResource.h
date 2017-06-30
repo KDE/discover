@@ -42,8 +42,6 @@ class AppPackageKitResource : public PackageKitResource
         QStringList executables() const override;
         QString comment() override;
         QString license() override;
-        QUrl screenshotUrl() override;
-        QUrl thumbnailUrl() override;
         QStringList allPackageNames() const override;
         QList<PackageState> addonsInformation() override;
         QStringList extends() const override;

@@ -42,8 +42,6 @@ public:
     QString packageName() const override;
     QStringList categories() override;
     QUrl homepage() override;
-    QUrl thumbnailUrl() override;
-    QUrl screenshotUrl() override;
     QString license() override;
     QString longDescription() override;
     QList<PackageState> addonsInformation() override { return QList<PackageState>(); }

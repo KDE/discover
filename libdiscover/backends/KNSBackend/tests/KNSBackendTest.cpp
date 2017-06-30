@@ -96,8 +96,6 @@ void KNSBackendTest::testRetrieval()
         QVERIFY(res->homepage().isValid() && !res->homepage().isEmpty());
         QVERIFY(res->state() > AbstractResource::Broken);
         QVERIFY(res->addonsInformation().isEmpty());
-        QVERIFY(res->thumbnailUrl().isValid() || res->thumbnailUrl().isEmpty());
-        QVERIFY(res->screenshotUrl().isValid() || res->screenshotUrl().isEmpty());
 
         QSignalSpy spy(res, &AbstractResource::screenshotsFetched);
         res->fetchScreenshots();

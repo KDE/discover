@@ -95,12 +95,10 @@ public:
     PropertyState propertyState(PropertyKind kind) const;
     QUrl resourceFile() const;
     QString runtime() const;
-    QUrl screenshotUrl() override;
     QString section() override;
     int size() override;
     QString sizeDescription() override;
     AbstractResource::State state() override;
-    QUrl thumbnailUrl() override;
     ResourceType type() const;
     QString typeAsString() const;
     QString uniqueId() const;

@@ -154,16 +154,6 @@ static QUrl screenshot(const AppStream::Component& comp, AppStream::Image::Kind 
     return ret;
 }
 
-QUrl AppPackageKitResource::screenshotUrl()
-{
-    return screenshot(m_appdata, AppStream::Image::KindSource);
-}
-
-QUrl AppPackageKitResource::thumbnailUrl()
-{
-    return screenshot(m_appdata, AppStream::Image::KindThumbnail);
-}
-
 void AppPackageKitResource::fetchScreenshots()
 {
     QList<QUrl> thumbnails, screenshots;

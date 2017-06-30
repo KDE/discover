@@ -119,16 +119,6 @@ QString DummyResource::packageName() const
     return m_name;
 }
 
-QUrl DummyResource::screenshotUrl()
-{
-    return m_screenshots.at(0);
-}
-
-QUrl DummyResource::thumbnailUrl()
-{
-    return m_screenshotThumbnails.at(0);
-}
-
 QString DummyResource::section()
 {
     return QStringLiteral("dummy");

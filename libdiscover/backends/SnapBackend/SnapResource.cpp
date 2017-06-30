@@ -114,16 +114,6 @@ QString SnapResource::packageName() const
     return m_snap->name();
 }
 
-QUrl SnapResource::screenshotUrl()
-{
-    return {};
-}
-
-QUrl SnapResource::thumbnailUrl()
-{
-    return {};
-}
-
 QString SnapResource::section()
 {
     return QStringLiteral("snap");

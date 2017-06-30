@@ -328,11 +328,6 @@ static QUrl screenshot(AppStream::Component *comp, AppStream::Image::Kind kind)
     return ret;
 }
 
-QUrl FlatpakResource::screenshotUrl()
-{
-    return screenshot(m_appdata, AppStream::Image::KindSource);
-}
-
 QString FlatpakResource::section()
 {
     return QString();
@@ -372,11 +367,6 @@ QString FlatpakResource::sizeDescription()
 AbstractResource::State FlatpakResource::state()
 {
     return m_state;
-}
-
-QUrl FlatpakResource::thumbnailUrl()
-{
-    return screenshot(m_appdata, AppStream::Image::KindThumbnail);
 }
 
 FlatpakResource::ResourceType FlatpakResource::type() const

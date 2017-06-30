@@ -38,8 +38,6 @@ public:
     QString installedVersion() const override;
     QString license() override;
     int size() override;
-    QUrl screenshotUrl() override;
-    QUrl thumbnailUrl() override;
     QUrl homepage() override;
     QStringList categories() override;
     AbstractResource::State state() override;

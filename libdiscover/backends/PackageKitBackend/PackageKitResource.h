@@ -49,9 +49,6 @@ class PackageKitResource : public AbstractResource
         QList<PackageState> addonsInformation() override;
         State state() override;
         
-        QUrl screenshotUrl() override;
-        QUrl thumbnailUrl() override;
-        
         QString installedVersion() const override;
         QString availableVersion() const override;
         virtual QStringList allPackageNames() const;

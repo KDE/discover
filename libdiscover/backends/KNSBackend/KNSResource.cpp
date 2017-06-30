@@ -114,16 +114,6 @@ QUrl KNSResource::homepage()
     return m_entry.homepage();
 }
 
-QUrl KNSResource::thumbnailUrl()
-{
-    return QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1));
-}
-
-QUrl KNSResource::screenshotUrl()
-{
-    return QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig1));
-
-}
 void KNSResource::setEntry(const KNSCore::EntryInternal& entry)
 {
     const bool diff = entry.status() != m_entry.status();
