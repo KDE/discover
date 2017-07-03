@@ -1,17 +1,16 @@
 import QtQuick 2.2
-import QtGraphicalEffects 1.0
-import org.kde.kirigami 2.0
+import org.kde.kirigami 2.0 as Kirigami
 
-Text {
+Kirigami.Label {
     id: control
 
-    property Action action: null
+    property Kirigami.Action action: null
     text: action ? action.text : ""
     enabled: !action || action.enabled
     onClicked: if (action) action.trigger()
 
     font: control.font
-    color: control.shadow ? Theme.highlightedTextColor : Theme.linkColor
+    color: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter
 

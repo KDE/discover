@@ -21,7 +21,6 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
-import QtGraphicalEffects 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
@@ -102,11 +101,11 @@ DiscoverPage {
         id: originsOverlay
         bottomPadding: Kirigami.Units.largeSpacing
         topPadding: Kirigami.Units.largeSpacing
-        readonly property alias model: view.model
+        readonly property alias model: alternativeResourcesView.model
         function listBackends() {
             var first = true;
             var ret = "";
-            var m = view.model;
+            var m = alternativeResourcesView.model;
             for(var i=0, count=m.rowCount(); i<count; ++i) {
                 var res = m.resourceAt(i)
                 if (res != appInfo.application) {
@@ -119,9 +118,9 @@ DiscoverPage {
             }
             return ret
         }
-        readonly property string sentence: view.count <= 1 ? "" : i18n("\nAlso available in %1", listBackends())
+        readonly property string sentence: alternativeResourcesView.count <= 1 ? "" : i18n("\nAlso available in %1", listBackends())
         ListView {
-            id: view
+            id: alternativeResourcesView
             model: ResourcesProxyModel {
                 allBackends: true
                 resourcesUrl: appInfo.application.url
@@ -199,6 +198,7 @@ DiscoverPage {
                         text: i18n("Source:")
                     }
                     LinkButton {
+                        enabled: alternativeResourcesView.count > 1
                         text: appInfo.application.displayOrigin
                         onClicked: originsOverlay.open()
                     }
