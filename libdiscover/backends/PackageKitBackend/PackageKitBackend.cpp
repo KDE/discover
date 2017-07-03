@@ -149,6 +149,9 @@ void PackageKitBackend::reloadPackageList()
     QStringList neededPackages;
     neededPackages.reserve(components.size());
     foreach(const AppStream::Component& component, components) {
+        if (component.kind() == AppStream::Component::KindFirmware)
+            continue;
+
         const auto pkgNames = component.packageNames();
         if (pkgNames.isEmpty()) {
             if (component.kind() == AppStream::Component::KindDesktopApp) {
