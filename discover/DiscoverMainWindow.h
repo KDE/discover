@@ -35,8 +35,6 @@ class ResourcesProxyModel;
 class DiscoverMainWindow : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QUrl prioritaryFeaturedSource READ prioritaryFeaturedSource CONSTANT)
-    Q_PROPERTY(QUrl featuredSource READ featuredSource CONSTANT)
     Q_PROPERTY(CompactMode compactMode READ compactMode WRITE setCompactMode NOTIFY compactModeChanged)
     Q_PROPERTY(bool isRoot READ isRoot CONSTANT)
     public:
@@ -48,9 +46,6 @@ class DiscoverMainWindow : public QObject
 
         QStringList modes() const;
         void setupActions();
-
-        QUrl prioritaryFeaturedSource() const;
-        QUrl featuredSource() const;
 
         CompactMode compactMode() const { return m_mode; }
         void setCompactMode(CompactMode mode);

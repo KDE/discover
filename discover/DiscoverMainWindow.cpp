@@ -52,10 +52,11 @@
 #include <KHelpMenu>
 #include <KShortcutsDialog>
 #include <KConcatenateRowsProxyModel>
+#include <KSharedConfig>
+#include <KConfigGroup>
 // #include <KSwitchLanguageDialog>
 
 // DiscoverCommon includes
-#include <MuonDataSources.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
@@ -226,16 +227,6 @@ void DiscoverMainWindow::openApplication(const QUrl& url)
 {
     Q_ASSERT(!url.isEmpty());
     Q_EMIT openUrl(url);
-}
-
-QUrl DiscoverMainWindow::featuredSource() const
-{
-    return MuonDataSources::featuredSource();
-}
-
-QUrl DiscoverMainWindow::prioritaryFeaturedSource() const
-{
-    return QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("plasmadiscover/featured.json")));
 }
 
 void DiscoverMainWindow::integrateObject(QObject* object)

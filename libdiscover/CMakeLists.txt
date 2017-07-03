@@ -44,7 +44,6 @@ if(AppStreamQt_FOUND)
     )
 endif()
 
-kconfig_add_kcfg_files(discovercommon_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 add_library(DiscoverCommon ${discovercommon_SRCS})
 
 target_link_libraries(DiscoverCommon

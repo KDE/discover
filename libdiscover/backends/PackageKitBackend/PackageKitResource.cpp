@@ -22,10 +22,10 @@
 #include "PackageKitResource.h"
 #include "PackageKitBackend.h"
 #include "PackageKitMessages.h"
-#include <MuonDataSources.h>
 #include <KLocalizedString>
 #include <PackageKit/Details>
 #include <PackageKit/Daemon>
+#include <QDebug>
 
 PackageKitResource::PackageKitResource(QString packageName, QString summary, PackageKitBackend* parent)
     : AbstractResource(parent)
