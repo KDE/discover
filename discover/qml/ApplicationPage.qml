@@ -236,7 +236,8 @@ DiscoverPage {
                 var idx = parseInt(link, 10)
                 var res = originsOverlay.model.resourceAt(idx)
                 window.stack.pop()
-                Navigation.openApplication(res) }
+                Navigation.openApplication(res)
+            }
         }
 
         RowLayout {
