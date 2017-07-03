@@ -44,6 +44,8 @@ T2.Control
         title: root.search.length>0 && page.title.length>0 ? i18n("Search: %1 + %2", root.search, page.title)
                                                              : root.search.length>0 ? i18n("Search: %1", root.search)
                                                              : page.title
+
+        backgroundImage.asynchronous: false
     }
 
     bottomPadding: extraLoader.actualHeight
