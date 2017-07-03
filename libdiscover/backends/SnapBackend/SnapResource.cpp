@@ -67,7 +67,7 @@ QVariant SnapResource::icon() const
         return QUrl(iconPath);
 
     auto backend = qobject_cast<SnapBackend*>(parent());
-    auto req = backend->client()->getIcon(iconPath);
+    auto req = backend->client()->getIcon(packageName());
     req->runSync();
 
     if (req->error()) {
