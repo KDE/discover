@@ -1,7 +1,6 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"libdiscover\")
 
 add_subdirectory(backends)
-add_subdirectory(declarative)
 add_subdirectory(notifiers)
 add_subdirectory(tests)
 
