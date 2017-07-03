@@ -317,7 +317,7 @@ ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filte
         return new ResultsStream(QStringLiteral("KNS-installed"), ret);
     } else if (filter.category && filter.category->matchesCategoryName(m_categories.constFirst())) {
         return searchStream(filter.search);
-    } else if (!filter.search.isEmpty()) {
+    } else if (!filter.category && !filter.search.isEmpty()) {
         return searchStream(filter.search);
     }
     return voidStream();
