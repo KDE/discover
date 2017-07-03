@@ -3,20 +3,19 @@ add_subdirectory(autotests)
 
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
 
-set(plasma_discover_SRCS
+qt5_add_resources(plasma_discover_SRCS resources.qrc)
+qt5_add_resources(plasma_discover_SRCS assets.qrc)
+
+add_executable(plasma-discover ${plasma_discover_SRCS}
     main.cpp
     DiscoverMainWindow.cpp
+    DiscoverDeclarativePlugin.cpp
 
     FeaturedModel.cpp
     PaginateModel.cpp
     SystemFonts.cpp
     UnityLauncher.cpp
 )
-
-qt5_add_resources(plasma_discover_SRCS resources.qrc)
-qt5_add_resources(plasma_discover_SRCS assets.qrc)
-
-add_executable(plasma-discover ${plasma_discover_SRCS})
 add_executable(Plasma::Discover ALIAS plasma-discover)
 set_target_properties(plasma-discover PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 

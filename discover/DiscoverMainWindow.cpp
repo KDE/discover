@@ -23,6 +23,7 @@
 #include "UnityLauncher.h"
 #include "FeaturedModel.h"
 #include "CachedNetworkAccessManager.h"
+#include "DiscoverDeclarativePlugin.h"
 
 // Qt includes
 #include <QAction>
@@ -117,6 +118,12 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
 
     connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverMainWindow::integrateObject);
     m_engine->load(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
+
+    auto uri = "org.kde.discover";
+    DiscoverDeclarativePlugin* plugin = new DiscoverDeclarativePlugin;
+    plugin->setParent(this);
+    plugin->initializeEngine(m_engine, uri);
+    plugin->registerTypes(uri);
 }
 
 DiscoverMainWindow::~DiscoverMainWindow()
