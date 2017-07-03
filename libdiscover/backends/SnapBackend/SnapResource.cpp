@@ -39,7 +39,7 @@ QString SnapResource::availableVersion() const
 
 QStringList SnapResource::categories()
 {
-    return {};
+    return { QStringLiteral("Application") };
 }
 
 QString SnapResource::comment()
