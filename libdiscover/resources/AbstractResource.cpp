@@ -241,7 +241,7 @@ QString AbstractResource::categoryDisplay() const
 QUrl AbstractResource::url() const
 {
     const QString asid = appstreamId();
-    return asid.isEmpty() ? QUrl() : QUrl(QStringLiteral("appstream://") + asid);
+    return asid.isEmpty() ? QUrl(backend()->name() + QStringLiteral("://") + packageName()) : QUrl(QStringLiteral("appstream://") + asid);
 }
 
 QString AbstractResource::displayOrigin() const
