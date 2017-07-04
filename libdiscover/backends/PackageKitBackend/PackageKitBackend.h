@@ -89,6 +89,8 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint);
 
     private:
+        void delayedInit();
+
         template <typename T>
         T resourcesByPackageNames(const QStringList& names) const;
         void fetchUpdates();

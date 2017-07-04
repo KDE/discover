@@ -64,17 +64,6 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     , m_isFetching(0)
     , m_reviews(AppStreamIntegration::global()->reviews())
 {
-    bool b = m_appdata.load();
-    reloadPackageList();
-
-    if (!b && m_packages.packages.isEmpty()) {
-        qWarning() << "Could not open the AppStream metadata pool";
-
-        QTimer::singleShot(0, this, [this]() {
-            Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
-        });
-    }
-
     QTimer* t = new QTimer(this);
     connect(t, &QTimer::timeout, this, &PackageKitBackend::refreshDatabase);
     t->setInterval(60 * 60 * 1000);
@@ -100,10 +89,26 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
     SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
+
+    QTimer::singleShot(0, this, &PackageKitBackend::delayedInit);
 }
 
 PackageKitBackend::~PackageKitBackend()
 {
+}
+
+void PackageKitBackend::delayedInit()
+{
+    const bool b = m_appdata.load();
+    reloadPackageList();
+
+    if (!b && m_packages.packages.isEmpty()) {
+        qWarning() << "Could not open the AppStream metadata pool";
+
+        QTimer::singleShot(0, this, [this]() {
+            Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
+        });
+    }
 }
 
 QAction* PackageKitBackend::createActionForService(const QString &servicePath)
