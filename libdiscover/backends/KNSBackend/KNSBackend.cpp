@@ -124,7 +124,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged);
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
-    connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, m_engine, &KNSCore::Engine::checkForInstalled);
+    connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
     connect(m_engine, &KNSCore::Engine::signalResetView, this, [this](){
         // If KNS tells us we should reset the view, what that means here is to remove
         // references to all the resources we've already told the agregator model about
@@ -210,7 +210,7 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
         return;
     }
 //     qDebug() << "received" << objectName() << this << m_resourcesByName.count();
-    if (!m_responsePending) {
+    if (!m_responsePending && !m_onePage) {
         // We _have_ to set this first. If we do not, we may run into a situation where the
         // data request will conclude immediately, causing m_responsePending to remain true
         // for perpetuity as the slots will be called before the function returns.
@@ -328,7 +328,7 @@ ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filte
     return voidStream();
 }
 
-ResultsStream * KNSBackend::searchStream(const QString &searchText)
+ResultsStream* KNSBackend::searchStream(const QString &searchText)
 {
     Q_EMIT startingSearch();
 
@@ -339,6 +339,7 @@ ResultsStream * KNSBackend::searchStream(const QString &searchText)
     auto start = [this, searchText]() {
         // No need to explicitly launch a search, setting the search term already does that for us
         m_engine->setSearchTerm(searchText);
+        m_onePage = false;
         m_responsePending = true;
     };
     if (m_responsePending) {
@@ -367,6 +368,7 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
     auto start = [this, entryid, stream, providerid]() {
         m_responsePending = true;
         m_engine->fetchEntryById(entryid);
+        m_onePage = false;
         connect(m_engine, &KNSCore::Engine::signalError, stream, &ResultsStream::finish);
         connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, stream, [this, stream, entryid, providerid](const KNSCore::EntryInternal &entry) {
             if (entry.uniqueId() == entryid && providerid == QUrl(entry.providerId()).host()) {
@@ -383,6 +385,12 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
         start();
     }
     return stream;
+}
+
+void KNSBackend::fetchInstalled()
+{
+    m_engine->checkForInstalled();
+    m_onePage = true;
 }
 
 bool KNSBackend::isFetching() const

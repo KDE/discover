@@ -75,11 +75,13 @@ public Q_SLOTS:
     void statusChanged(const KNSCore::EntryInternal& entry);
 
 private:
+    void fetchInstalled();
     KNSResource* resourceForEntry(const KNSCore::EntryInternal& entry);
     void setFetching(bool f);
     void markInvalid(const QString &message);
     ResultsStream* searchStream(const QString &searchText);
     
+    bool m_onePage = false;
     bool m_responsePending = false;
     bool m_fetching;
     bool m_isValid;
