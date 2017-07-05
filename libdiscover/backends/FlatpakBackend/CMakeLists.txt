@@ -13,7 +13,7 @@ set(flatpak-backend_SRCS
 )
 
 add_library(flatpak-backend MODULE ${flatpak-backend_SRCS})
-target_link_libraries(flatpak-backend Qt5::Core Qt5::Widgets KF5::CoreAddons KF5::ConfigCore Discover::Common AppStreamQt ${APPSTREAM_LIBRARIES} ${FLATPAK_LIBRARIES})
+target_link_libraries(flatpak-backend Qt5::Core Qt5::Widgets KF5::CoreAddons KF5::ConfigCore Discover::Common AppStreamQt ${FLATPAK_LIBRARIES})
 
 install(TARGETS flatpak-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
 install(FILES flatpak-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
