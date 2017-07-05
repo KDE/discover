@@ -26,9 +26,16 @@
 #include <QStandardPaths>
 #include <QStorageInfo>
 
-CachedNetworkAccessManager::CachedNetworkAccessManager(QObject *parent)
+CachedNetworkAccessManager::CachedNetworkAccessManager(const QString &path, QObject *parent)
     : QNetworkAccessManager(parent)
-{ }
+{
+    const QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1Char('/') + path;
+    QNetworkDiskCache *cache = new QNetworkDiskCache(this);
+    QStorageInfo storageInfo(cacheDir);
+    cache->setCacheDirectory(cacheDir);
+    cache->setMaximumCacheSize(storageInfo.bytesTotal() / 1000);
+    setCache(cache);
+}
 
 QNetworkReply * CachedNetworkAccessManager::createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData)
 {
@@ -39,13 +46,6 @@ QNetworkReply * CachedNetworkAccessManager::createRequest(Operation op, const QN
 
 QNetworkAccessManager * CachedNetworkAccessManagerFactory::create(QObject *parent)
 {
-    const QString cacheDir = QStringLiteral("%1/images").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
-    CachedNetworkAccessManager *ret = new CachedNetworkAccessManager(parent);
-    QNetworkDiskCache *cache = new QNetworkDiskCache(ret);
-    QStorageInfo storageInfo(cacheDir);
-    cache->setCacheDirectory(cacheDir);
-    cache->setMaximumCacheSize(storageInfo.bytesTotal() / 1000);
-    ret->setCache(cache);
-    return ret;
+    return new CachedNetworkAccessManager(QStringLiteral("images"), parent);
 }
 
