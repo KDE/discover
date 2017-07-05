@@ -549,14 +549,12 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
 
     const QDir dir(pathApps);
     if (dir.exists()) {
-        foreach (const QString &file, dir.entryList(QDir::NoDotAndDotDot | QDir::Files)) {
-            QString fnDesktop;
-
-            if (file == QLatin1String("mimeinfo.cache")) {
+        foreach (const auto &file, dir.entryInfoList( QDir::Files)) {
+            if (file.fileName() == QLatin1String("mimeinfo.cache")) {
                 continue;
             }
 
-            fnDesktop = pathApps + file;
+            const QString fnDesktop = file.absolutePath();
 
             AppStream::Metadata metadata;
             AppStream::Metadata::MetadataError error = metadata.parseFile(fnDesktop, AppStream::Metadata::FormatKindDesktopEntry);
