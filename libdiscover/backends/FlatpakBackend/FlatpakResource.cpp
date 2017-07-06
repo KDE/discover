@@ -25,8 +25,8 @@
 #include <Transaction/AddonList.h>
 
 #include <AppStreamQt/icon.h>
-#include <AppStreamQt/image.h>
 #include <AppStreamQt/screenshot.h>
+#include <appstream/AppStreamUtils.h>
 
 #include <KFormat>
 #include <KLocalizedString>
@@ -305,29 +305,6 @@ QString FlatpakResource::runtime() const
     return m_runtime;
 }
 
-static QUrl imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind)
-{
-    QUrl ret;
-    Q_FOREACH (const AppStream::Image &i, images) {
-        if (i.kind() == kind) {
-            ret = i.url();
-            break;
-        }
-    }
-    return ret;
-}
-
-static QUrl screenshot(AppStream::Component comp, AppStream::Image::Kind kind)
-{
-    QUrl ret;
-    Q_FOREACH (const AppStream::Screenshot &s, comp.screenshots()) {
-        ret = imageOfKind(s.images(), kind);
-        if (s.isDefault() && !ret.isEmpty())
-            break;
-    }
-    return ret;
-}
-
 QString FlatpakResource::section()
 {
     return QString();
@@ -427,8 +404,8 @@ void FlatpakResource::fetchScreenshots()
     QList<QUrl> thumbnails, screenshots;
 
     Q_FOREACH (const AppStream::Screenshot &s, m_appdata.screenshots()) {
-        const QUrl thumbnail = imageOfKind(s.images(), AppStream::Image::KindThumbnail);
-        const QUrl plain = imageOfKind(s.images(), AppStream::Image::KindSource);
+        const QUrl thumbnail = AppStreamUtils::imageOfKind(s.images(), AppStream::Image::KindThumbnail);
+        const QUrl plain = AppStreamUtils::imageOfKind(s.images(), AppStream::Image::KindSource);
         if (plain.isEmpty())
             qWarning() << "invalid screenshot for" << name();
 
