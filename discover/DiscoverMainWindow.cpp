@@ -112,6 +112,12 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     qmlRegisterUncreatableType<DiscoverMainWindow>("org.kde.discover.app", 1, 0, "DiscoverMainWindow", QStringLiteral("don't do that"));
     setupActions();
 
+    auto uri = "org.kde.discover";
+    DiscoverDeclarativePlugin* plugin = new DiscoverDeclarativePlugin;
+    plugin->setParent(this);
+    plugin->initializeEngine(m_engine, uri);
+    plugin->registerTypes(uri);
+
     //Here we set up a cache for the screenshots
     delete m_engine->networkAccessManagerFactory();
     m_engine->setNetworkAccessManagerFactory(m_networkAccessManagerFactory.data());
@@ -119,12 +125,6 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
 
     connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverMainWindow::integrateObject);
     m_engine->load(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
-
-    auto uri = "org.kde.discover";
-    DiscoverDeclarativePlugin* plugin = new DiscoverDeclarativePlugin;
-    plugin->setParent(this);
-    plugin->initializeEngine(m_engine, uri);
-    plugin->registerTypes(uri);
 }
 
 DiscoverMainWindow::~DiscoverMainWindow()
