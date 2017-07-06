@@ -404,9 +404,9 @@ void FlatpakResource::invokeApplication() const
     g_autoptr(GError) localError = nullptr;
 
     if (!flatpak_installation_launch(m_installation,
-                                     flatpakName().toStdString().c_str(),
-                                     arch().toStdString().c_str(),
-                                     branch().toStdString().c_str(),
+                                     flatpakName().toUtf8().constData(),
+                                     arch().toUtf8().constData(),
+                                     branch().toUtf8().constData(),
                                      nullptr,
                                      cancellable,
                                      &localError)) {

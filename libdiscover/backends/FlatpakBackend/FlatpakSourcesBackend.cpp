@@ -71,7 +71,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
     if (items.count() == 1) {
         FlatpakSourceItem *sourceItem = static_cast<FlatpakSourceItem*>(items.first());
         g_autoptr(GCancellable) cancellable = g_cancellable_new();
-        if (flatpak_installation_remove_remote(sourceItem->flatpakInstallation(), id.toStdString().c_str(), cancellable, nullptr)) {
+        if (flatpak_installation_remove_remote(sourceItem->flatpakInstallation(), id.toUtf8().constData(), cancellable, nullptr)) {
             m_sources->removeRow(sourceItem->row());
             return true;
         } else {
@@ -129,23 +129,23 @@ FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
 {
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
 
-    auto remote = flatpak_installation_get_remote_by_name(m_preferredInstallation, resource->flatpakName().toStdString().c_str(), cancellable, nullptr);
+    auto remote = flatpak_installation_get_remote_by_name(m_preferredInstallation, resource->flatpakName().toUtf8().constData(), cancellable, nullptr);
     if (remote) {
         qWarning() << "Source " << resource->flatpakName() << " already exists";
         return nullptr;
     }
 
-    remote = flatpak_remote_new(resource->flatpakName().toStdString().c_str());
-    flatpak_remote_set_url(remote, resource->getMetadata(QStringLiteral("repo-url")).toString().toStdString().c_str());
+    remote = flatpak_remote_new(resource->flatpakName().toUtf8().constData());
+    flatpak_remote_set_url(remote, resource->getMetadata(QStringLiteral("repo-url")).toString().toUtf8().constData());
     flatpak_remote_set_noenumerate(remote, false);
-    flatpak_remote_set_title(remote, resource->comment().toStdString().c_str());
+    flatpak_remote_set_title(remote, resource->comment().toUtf8().constData());
 
     const QString gpgKey = resource->getMetadata(QStringLiteral("gpg-key")).toString();
     if (!gpgKey.isEmpty()) {
         gsize dataLen = 0;
         g_autofree guchar *data = nullptr;
         g_autoptr(GBytes) bytes = nullptr;
-        data = g_base64_decode(gpgKey.toStdString().c_str(), &dataLen);
+        data = g_base64_decode(gpgKey.toUtf8().constData(), &dataLen);
         bytes = g_bytes_new(data, dataLen);
         flatpak_remote_set_gpg_verify(remote, true);
         flatpak_remote_set_gpg_key(remote, bytes);
@@ -154,7 +154,7 @@ FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
     }
 
     if (!resource->branch().isEmpty()) {
-        flatpak_remote_set_default_branch(remote, resource->branch().toStdString().c_str());
+        flatpak_remote_set_default_branch(remote, resource->branch().toUtf8().constData());
     }
 
     if (!flatpak_installation_modify_remote(m_preferredInstallation, remote, cancellable, nullptr)) {

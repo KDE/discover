@@ -141,9 +141,9 @@ FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakInstallation 
 
     ref = flatpak_installation_get_installed_ref(flatpakInstallation,
                                                  resource->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
-                                                 resource->flatpakName().toStdString().c_str(),
-                                                 resource->arch().toStdString().c_str(),
-                                                 resource->branch().toStdString().c_str(),
+                                                 resource->flatpakName().toUtf8().constData(),
+                                                 resource->arch().toUtf8().constData(),
+                                                 resource->branch().toUtf8().constData(),
                                                  m_cancellable, &localError);
 
     // If we found installed ref this way, we can return it
@@ -214,7 +214,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
     g_autoptr(FlatpakBundleRef) bundleRef = nullptr;
     AppStream::Component asComponent;
 
-    file = g_file_new_for_path(url.toLocalFile().toStdString().c_str());
+    file = g_file_new_for_path(url.toLocalFile().toUtf8().constData());
     bundleRef = flatpak_bundle_ref_new(file, &localError);
 
     if (!bundleRef) {
@@ -400,7 +400,7 @@ FlatpakResource * FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
     resource->setFlatpakName(url.fileName().remove(QStringLiteral(".flatpakrepo")));
     resource->setType(FlatpakResource::Source);
 
-    auto repo = flatpak_installation_get_remote_by_name(preferredInstallation(), resource->flatpakName().toStdString().c_str(), m_cancellable, nullptr);
+    auto repo = flatpak_installation_get_remote_by_name(preferredInstallation(), resource->flatpakName().toUtf8().constData(), m_cancellable, nullptr);
     if (!repo) {
         resource->setState(AbstractResource::State::None);
     } else {
@@ -656,7 +656,7 @@ bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
 
     // Get arch/branch/commit/name from FlatpakRef
     if (!bundle.isEmpty()) {
-        ref = flatpak_ref_parse(bundle.id().toStdString().c_str(), &localError);
+        ref = flatpak_ref_parse(bundle.id().toUtf8().constData(), &localError);
         if (!ref) {
             qWarning() << "Failed to parse" << bundle.id() << localError->message;
             return false;

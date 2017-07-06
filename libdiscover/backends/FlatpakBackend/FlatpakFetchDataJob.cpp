@@ -63,7 +63,7 @@ void FlatpakFetchDataJob::run()
             return;
         }
 
-        data = flatpak_installation_fetch_remote_metadata_sync(m_installation, m_app->origin().toStdString().c_str(), fakeRef, m_cancellable, &localError);
+        data = flatpak_installation_fetch_remote_metadata_sync(m_installation, m_app->origin().toUtf8().constData(), fakeRef, m_cancellable, &localError);
         if (data) {
             gsize len = 0;
             metadataContent = QByteArray((char *)g_bytes_get_data(data, &len));
@@ -91,7 +91,7 @@ void FlatpakFetchDataJob::run()
             return;
         }
 
-        if (!flatpak_installation_fetch_remote_size_sync(m_installation, m_app->origin().toStdString().c_str(),
+        if (!flatpak_installation_fetch_remote_size_sync(m_installation, m_app->origin().toUtf8().constData(),
                                                          ref, &downloadSize, &installedSize, m_cancellable, &localError)) {
             qWarning() << "Failed to get remote size of " << m_app->name() << ": " << localError->message;
             Q_EMIT jobFetchSizeFailed();
@@ -108,7 +108,7 @@ FlatpakRef * FlatpakFetchDataJob::createFakeRef(FlatpakResource *resource)
     g_autoptr(GError) localError = nullptr;
 
     const QString id = QString::fromUtf8("%1/%2/%3/%4").arg(resource->typeAsString()).arg(resource->flatpakName()).arg(resource->arch()).arg(resource->branch());
-    ref = flatpak_ref_parse(id.toStdString().c_str(), &localError);
+    ref = flatpak_ref_parse(id.toUtf8().constData(), &localError);
 
     if (!ref) {
         qWarning() << "Failed to create fake ref: " << localError->message;

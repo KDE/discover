@@ -66,26 +66,26 @@ void FlatpakTransactionJob::run()
             ref = flatpak_installation_update(m_installation,
                                               FLATPAK_UPDATE_FLAGS_NONE,
                                               m_app->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
-                                              m_app->flatpakName().toStdString().c_str(),
-                                              m_app->arch().toStdString().c_str(),
-                                              m_app->branch().toStdString().c_str(),
+                                              m_app->flatpakName().toUtf8().constData(),
+                                              m_app->arch().toUtf8().constData(),
+                                              m_app->branch().toUtf8().constData(),
                                               flatpakInstallationProgressCallback,
                                               this,
                                               m_cancellable, &localError);
         } else {
             if (m_app->flatpakFileType() == QStringLiteral("flatpak")) {
-                g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toStdString().c_str());
+                g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
                 if (!file) {
                     qWarning() << "Failed to install bundled application" << m_app->name();
                 }
                 ref = flatpak_installation_install_bundle(m_installation, file, flatpakInstallationProgressCallback, this, m_cancellable, &localError);
             } else {
                 ref = flatpak_installation_install(m_installation,
-                                                m_app->origin().toStdString().c_str(),
+                                                m_app->origin().toUtf8().constData(),
                                                 m_app->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
-                                                m_app->flatpakName().toStdString().c_str(),
-                                                m_app->arch().toStdString().c_str(),
-                                                m_app->branch().toStdString().c_str(),
+                                                m_app->flatpakName().toUtf8().constData(),
+                                                m_app->arch().toUtf8().constData(),
+                                                m_app->branch().toUtf8().constData(),
                                                 flatpakInstallationProgressCallback,
                                                 this,
                                                 m_cancellable, &localError);
@@ -101,9 +101,9 @@ void FlatpakTransactionJob::run()
     } else if (m_role == Transaction::Role::RemoveRole) {
         if (!flatpak_installation_uninstall(m_installation,
                                             m_app->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
-                                            m_app->flatpakName().toStdString().c_str(),
-                                            m_app->arch().toStdString().c_str(),
-                                            m_app->branch().toStdString().c_str(),
+                                            m_app->flatpakName().toUtf8().constData(),
+                                            m_app->arch().toUtf8().constData(),
+                                            m_app->branch().toUtf8().constData(),
                                             flatpakInstallationProgressCallback,
                                             this,
                                             m_cancellable, &localError)) {
