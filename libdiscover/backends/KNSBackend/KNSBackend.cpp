@@ -169,6 +169,22 @@ void KNSBackend::markInvalid(const QString &message)
     setFetching(false);
 }
 
+void KNSBackend::fetchInstalled()
+{
+    auto search = new OneTimeAction([this]() {
+        Q_EMIT startingSearch();
+        m_onePage = true;
+        m_responsePending = true;
+        m_engine->checkForInstalled();
+    }, this);
+
+    if (m_responsePending) {
+        connect(this, &KNSBackend::availableForQueries, search, &OneTimeAction::trigger, Qt::QueuedConnection);
+    } else {
+        search->trigger();
+    }
+}
+
 void KNSBackend::setFetching(bool f)
 {
     if(m_fetching!=f) {
@@ -385,12 +401,6 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
         start();
     }
     return stream;
-}
-
-void KNSBackend::fetchInstalled()
-{
-    m_engine->checkForInstalled();
-    m_onePage = true;
 }
 
 bool KNSBackend::isFetching() const
