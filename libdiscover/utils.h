@@ -25,6 +25,20 @@
 #include <QString>
 #include <QElapsedTimer>
 
+class OneTimeAction : public QObject
+{
+public:
+    OneTimeAction(std::function<void()> func, QObject* parent) : QObject(parent), m_function(func) {}
+
+    void trigger() {
+        m_function();
+        deleteLater();
+    }
+
+private:
+    std::function<void()> m_function;
+};
+
 template <typename T, typename Q, typename _UnaryOperation>
 static T kTransform(const Q &input, _UnaryOperation op)
 {

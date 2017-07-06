@@ -134,7 +134,6 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         }
         m_resourcesByName.clear();
     });
-    m_responsePending = true;
 
     const QVector<QPair<FilterType, QString>> filters = { {CategoryFilter, fileName } };
     const QSet<QString> backendName = { name() };
@@ -166,6 +165,22 @@ void KNSBackend::markInvalid(const QString &message)
     qWarning() << "invalid kns backend!" << m_name << "because:" << message;
     m_isValid = false;
     setFetching(false);
+}
+
+void KNSBackend::fetchInstalled()
+{
+    auto search = new OneTimeAction([this]() {
+        Q_EMIT startingSearch();
+        m_onePage = true;
+        m_responsePending = true;
+        m_engine->checkForInstalled();
+    }, this);
+
+    if (m_responsePending) {
+        connect(this, &KNSBackend::availableForQueries, search, &OneTimeAction::trigger, Qt::QueuedConnection);
+    } else {
+        search->trigger();
+    }
 }
 
 void KNSBackend::setFetching(bool f)
@@ -328,15 +343,17 @@ ResultsStream* KNSBackend::searchStream(const QString &searchText)
     Q_EMIT startingSearch();
 
     auto stream = new ResultsStream(QStringLiteral("KNS-search-")+name());
-    connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
-    connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::finish);
-    connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::finish);
-    auto start = [this, searchText]() {
+    auto start = [this, stream, searchText]() {
         // No need to explicitly launch a search, setting the search term already does that for us
         m_engine->setSearchTerm(searchText);
         m_onePage = false;
         m_responsePending = true;
+
+        connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
+        connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::finish);
+        connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::finish);
     };
+
     if (m_responsePending) {
         connect(this, &KNSBackend::availableForQueries, stream, start, Qt::QueuedConnection);
     } else {

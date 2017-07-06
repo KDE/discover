@@ -67,20 +67,7 @@
 #include <cmath>
 #include <unistd.h>
 #include <resources/StoredResultsStream.h>
-
-class OneTimeAction : public QObject
-{
-public:
-    OneTimeAction(std::function<void()> func, QObject* parent) : QObject(parent), m_function(func) {}
-
-    void trigger() {
-        m_function();
-        deleteLater();
-    }
-
-private:
-    std::function<void()> m_function;
-};
+#include <utils.h>
 
 DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     : QObject()
