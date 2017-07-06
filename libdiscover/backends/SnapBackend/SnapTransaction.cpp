@@ -64,6 +64,7 @@ void SnapTransaction::finishTransaction()
                 if (code != 0) {
                     qWarning() << "login failed..." << p->readAll();
                     Q_EMIT passiveMessage(m_request->errorString());
+                    setStatus(DoneStatus);
                     return;
                 }
                 const auto doc = QJsonDocument::fromJson(p->readAllStandardOutput());

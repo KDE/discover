@@ -25,7 +25,7 @@
 #include <QBuffer>
 #include <QImageReader>
 
-SnapResource::SnapResource(QSnapdSnap* snap, AbstractResource::State state, SnapBackend* parent)
+SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend* parent)
     : AbstractResource(parent)
     , m_state(state)
     , m_snap(snap)

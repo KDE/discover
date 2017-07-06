@@ -24,6 +24,7 @@
 #include <resources/AbstractResource.h>
 #include <QJsonObject>
 #include <Snapd/Snap>
+#include <QSharedPointer>
 
 class SnapBackend;
 
@@ -31,7 +32,8 @@ class SnapResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit SnapResource(QSnapdSnap* snap, AbstractResource::State state, SnapBackend* parent);
+    explicit SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend* parent);
+    ~SnapResource() override = default;
 
     QString section() override;
     QString origin() const override;
@@ -59,7 +61,7 @@ public:
 public:
     AbstractResource::State m_state;
 
-    QSnapdSnap* m_snap;
+    QSharedPointer<QSnapdSnap> m_snap;
 };
 
 #endif // SNAPRESOURCE_H

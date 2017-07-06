@@ -94,7 +94,7 @@ ResultsStream* SnapBackend::populate(T* job, AbstractResource::State state)
         QVector<AbstractResource*> ret;
         QSet<SnapResource*> resources;
         for (int i=0, c=job->snapCount(); i<c; ++i) {
-            const auto snap = job->snap(i);
+            QSharedPointer<QSnapdSnap> snap(job->snap(i));
             const auto snapname = snap->name();
             SnapResource* res = m_resources.value(snapname);
             if (!res) {

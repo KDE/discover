@@ -42,7 +42,7 @@ class SnapTransaction : public Transaction
         void progressed();
 
         SnapResource * const m_app;
-        QSnapdRequest* const m_request;
+        const QScopedPointer<QSnapdRequest> m_request;
 };
 
 #endif // SNAPTRANSACTION_H
