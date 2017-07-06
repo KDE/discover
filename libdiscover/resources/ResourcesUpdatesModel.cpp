@@ -55,7 +55,6 @@ void ResourcesUpdatesModel::init()
             connect(updater, &AbstractBackendUpdater::progressChanged, this, &ResourcesUpdatesModel::progressChanged);
             connect(updater, &AbstractBackendUpdater::statusMessageChanged, this, &ResourcesUpdatesModel::message);
             connect(updater, &AbstractBackendUpdater::statusDetailChanged, this, &ResourcesUpdatesModel::message);
-            connect(updater, &AbstractBackendUpdater::remainingTimeChanged, this, &ResourcesUpdatesModel::etaChanged);
             connect(updater, &AbstractBackendUpdater::downloadSpeedChanged, this, &ResourcesUpdatesModel::downloadSpeedChanged);
             connect(updater, &AbstractBackendUpdater::cancelableChanged, this, &ResourcesUpdatesModel::cancelableChanged);
             connect(updater, &AbstractBackendUpdater::resourceProgressed, this, &ResourcesUpdatesModel::resourceProgressed);
@@ -175,23 +174,6 @@ void ResourcesUpdatesModel::updateAll()
                 QMetaObject::invokeMethod(upd, "start", Qt::QueuedConnection);
         }
     }
-}
-
-
-QString ResourcesUpdatesModel::remainingTime() const
-{
-    long unsigned int maxEta = 0;
-    foreach(AbstractBackendUpdater* upd, m_updaters) {
-        maxEta = qMax(maxEta, upd->remainingTime());
-    }
-
-    // Ignore ETA if it's larger than 2 days.
-    if(maxEta > 2 * 24 * 60 * 60)
-        return QString();
-    else if(maxEta==0)
-        return i18nc("@item:intext Unknown remaining time", "Updating...");
-    else
-        return i18nc("@item:intext Remaining time", "%1 remaining", KFormat().formatDuration(maxEta));
 }
 
 bool ResourcesUpdatesModel::isCancelable() const

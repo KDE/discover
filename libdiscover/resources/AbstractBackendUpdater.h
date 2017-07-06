@@ -77,11 +77,6 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          */
         virtual qreal progress() const = 0;
         
-        /** 
-         * @returns the proposed ETA in milliseconds 
-         */
-        virtual long unsigned int remainingTime() const = 0;
-        
         /**
          * This method is used to remove resources from the list of packages
          * marked to be upgraded. It will potentially be called before \start.
@@ -155,11 +150,6 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          * @see progress
          */
         void progressChanged(qreal progress);
-        /**
-         * The AbstractBackendUpdater should emit this signal when the remaining time changed.
-         * @see remainingTime
-         */
-        void remainingTimeChanged();//FIXME: API inconsistency here!!
         /**
          * The AbstractBackendUpdater should emit this signal when the cancelable property changed.
          * @see isCancelable

@@ -35,7 +35,6 @@ PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
     m_isCancelable(false),
     m_isProgressing(false),
     m_status(PackageKit::Transaction::Status::StatusUnknown),
-    m_remainingTime(0),
     m_percentage(0),
     m_lastUpdate()
 {
@@ -70,7 +69,6 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     connect(m_transaction.data(), &PackageKit::Transaction::eulaRequired, this, &PackageKitUpdater::eulaRequired);
     connect(m_transaction.data(), &PackageKit::Transaction::statusChanged, this, &PackageKitUpdater::statusChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::allowCancelChanged, this, &PackageKitUpdater::cancellableChanged);
-    connect(m_transaction.data(), &PackageKit::Transaction::remainingTimeChanged, this, &PackageKitUpdater::remainingTimeChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::percentageChanged, this, &PackageKitUpdater::percentageChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::itemProgress, this, &PackageKitUpdater::itemProgress);
 }
@@ -166,14 +164,6 @@ void PackageKitUpdater::percentageChanged()
     }
 }
 
-void PackageKitUpdater::remainingTimeChanged()
-{
-    if (m_remainingTime != m_transaction->remainingTime()) {
-        m_remainingTime = m_transaction->remainingTime();
-        emit remainingTimeChanged();
-    }
-}
-
 void PackageKitUpdater::statusChanged()
 {
     if (m_status != m_transaction->status()) {
@@ -189,12 +179,6 @@ bool PackageKitUpdater::hasUpdates() const
 qreal PackageKitUpdater::progress() const
 {
     return m_percentage;
-}
-
-/** proposed ETA in milliseconds */
-long unsigned int PackageKitUpdater::remainingTime() const
-{
-    return m_remainingTime;
 }
 
 void PackageKitUpdater::removeResources(const QList<AbstractResource*>& apps)
