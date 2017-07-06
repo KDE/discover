@@ -4,7 +4,7 @@ import org.kde.kirigami 2.0 as Kirigami
 Kirigami.Label {
     id: control
 
-    property Kirigami.Action action: null
+    property QtObject action: null //some older Qt versions don't support the namespacing in Kirigami.Action
     text: action ? action.text : ""
     enabled: !action || action.enabled
     onClicked: if (action) action.trigger()
