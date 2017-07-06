@@ -134,12 +134,12 @@ void KNSBackendTest::reviewsArrived(AbstractResource* r, const QVector<ReviewPtr
 void KNSBackendTest::testResourceByUrl()
 {
     const QUrl url(QStringLiteral("kns://") + m_backend->name() + QStringLiteral("/api.kde-look.org/1136471"));
-    const auto res = getResources(m_backend->findResourceByPackageName(url));
+    const QVector<QUrl> res = kTransform<QVector<QUrl>>(getResources(m_backend->findResourceByPackageName(url)), [](AbstractResource* res){ return res->url(); });
     QCOMPARE(res.count(), 1);
-    QCOMPARE(url, res[0]->url());
+    QCOMPARE(url, res.constFirst());
 
     AbstractResourcesBackend::Filters f;
     f.resourceUrl = url;
-    const auto res2 = getResources(m_backend->search(f));
+    const QVector<QUrl> res2 = kTransform<QVector<QUrl>>(getResources(m_backend->search(f)), [](AbstractResource* res){ return res->url(); });
     QCOMPARE(res, res2);
 }
