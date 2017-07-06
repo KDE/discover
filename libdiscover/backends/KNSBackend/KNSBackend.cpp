@@ -398,12 +398,6 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
     return stream;
 }
 
-void KNSBackend::fetchInstalled()
-{
-    m_engine->checkForInstalled();
-    m_onePage = true;
-}
-
 bool KNSBackend::isFetching() const
 {
     return m_fetching;
