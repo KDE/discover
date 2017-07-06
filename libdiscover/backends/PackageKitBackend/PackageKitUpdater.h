@@ -38,9 +38,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
 
         void setProgressing(bool progressing);
         
-        /** proposed ETA in milliseconds */
-        long unsigned int remainingTime() const override;
-        
         void removeResources(const QList<AbstractResource*>& apps) override;
         void addResources(const QList<AbstractResource*>& apps) override;
         QList<AbstractResource*> toUpdate() const override;
@@ -65,7 +62,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void finished(PackageKit::Transaction::Exit exit, uint);
         void statusChanged();
         void cancellableChanged();
-        void remainingTimeChanged();
         void percentageChanged();
         void printMessage(PackageKit::Transaction::Message type, const QString &message);
         void updateDetail(const QString& packageID, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
@@ -88,7 +84,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         bool m_isCancelable;
         bool m_isProgressing;
         PackageKit::Transaction::Status m_status;
-        long unsigned int m_remainingTime;
         uint m_percentage;
         QDateTime m_lastUpdate;
         QStringList m_packagesRemoved;

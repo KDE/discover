@@ -37,14 +37,12 @@ class UpdateTransaction;
 class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(QString remainingTime READ remainingTime NOTIFY etaChanged)
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
     Q_PROPERTY(QDateTime lastUpdate READ lastUpdate NOTIFY progressingChanged)
     Q_PROPERTY(qint64 secsToLastUpdate READ secsToLastUpdate NOTIFY progressingChanged)
     public:
         explicit ResourcesUpdatesModel(QObject* parent = nullptr);
-        
-        QString remainingTime() const;
+
         quint64 downloadSpeed() const;
         Q_SCRIPTABLE void prepare();
 
@@ -59,7 +57,6 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
     Q_SIGNALS:
         void downloadSpeedChanged();
-        void etaChanged();
         void progressingChanged();
         void finished();
         void resourceProgressed(AbstractResource* resource, qreal progress);

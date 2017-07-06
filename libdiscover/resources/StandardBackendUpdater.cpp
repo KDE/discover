@@ -148,11 +148,6 @@ void StandardBackendUpdater::setProgress(qreal p)
     }
 }
 
-long unsigned int StandardBackendUpdater::remainingTime() const
-{
-    return 0;
-}
-
 void StandardBackendUpdater::prepare()
 {
     m_lastUpdate = QDateTime::currentDateTime();

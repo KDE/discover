@@ -38,7 +38,6 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         bool hasUpdates() const override;
         qreal progress() const override;
         void start() override;
-        long unsigned int remainingTime() const override;
         
         QList<AbstractResource*> toUpdate() const override;
         void addResources(const QList<AbstractResource*>& apps) override;
