@@ -41,29 +41,36 @@ public:
     }
 
 public Q_SLOTS:
-    ActionReply modify(const QVariantMap &args)
+    ActionReply login(const QVariantMap &args)
     {
         const QString user = args[QStringLiteral("user")].toString()
                     , pass = args[QStringLiteral("password")].toString()
                     , otp  = args[QStringLiteral("otp")].toString();
 
-        QSnapdLoginRequest* req = otp.isEmpty() ? m_client.login(user, pass)
-                                                : m_client.login(user, pass, otp);
+        QScopedPointer<QSnapdLoginRequest> req(otp.isEmpty() ? m_client.login(user, pass)
+                                                             : m_client.login(user, pass, otp));
 
         req->runSync();
 
-        auto auth = req->authData();
-        const QByteArray replyData = QJsonDocument(QJsonObject{
-                {QStringLiteral("macaroon"), auth->macaroon()},
-                {QStringLiteral("discharges"), QJsonArray::fromStringList(auth->discharges())}
-            }).toJson();
-        ActionReply reply = req->error() == QSnapdRequest::NoError ? ActionReply::SuccessReply() : ActionReply::InvalidActionReply();
+        ActionReply reply;
+        bool otpMode = false;
+        QByteArray replyData;
 
-        bool otpMode = req->error() == QSnapdConnectRequest::TwoFactorRequired;
+        if (req->error() == QSnapdRequest::NoError) {
+            const auto auth = req->authData();
+            replyData = QJsonDocument(QJsonObject{
+                    {QStringLiteral("macaroon"), auth->macaroon()},
+                    {QStringLiteral("discharges"), QJsonArray::fromStringList(auth->discharges())}
+                }).toJson();
 
+            reply = ActionReply::SuccessReply();
+        } else {
+            otpMode = req->error() == QSnapdConnectRequest::TwoFactorRequired;
+            reply = ActionReply::InvalidActionReply();
+            reply.setErrorDescription(req->errorString());
+        }
         reply.setData({
             { QStringLiteral("reply"), replyData },
-            { QStringLiteral("errorString"), req->errorString() },
             { QStringLiteral("otpMode"), otpMode }
         });
         return reply;

@@ -26,6 +26,7 @@
 #include <QJsonArray>
 #include <QTextStream>
 #include <KAuthExecuteJob>
+#include <QDebug>
 #include "ui_SnapMacaroonDialog.h"
 
 class MacaroonDialog : public QDialog
@@ -57,11 +58,11 @@ public:
             { QStringLiteral("password"), password },
             { QStringLiteral("otp"), otp }
         });
-//         qDebug() << "snap" << snapAction.isValid() << snapAction.status();
         Q_ASSERT(snapAction.isValid());
 
         KAuth::ExecuteJob *reply = snapAction.execute();
-        connect(reply, &KAuth::ExecuteJob::finished, this, &MacaroonDialog::replied);
+        connect(reply, &KAuth::ExecuteJob::result, this, &MacaroonDialog::replied);
+        reply->start();
     }
 
     void setOtpMode(bool enabled)
@@ -74,14 +75,13 @@ public:
     void replied(KJob* job)
     {
         KAuth::ExecuteJob* reply = static_cast<KAuth::ExecuteJob*>(job);
+        const QVariantMap replyData = reply->data();
         if (reply->error() == 0) {
-
-            QTextStream(stdout) << reply->data()[QLatin1String("reply")].toString();
+            QTextStream(stdout) << replyData[QLatin1String("reply")].toString();
             QCoreApplication::instance()->exit(0);
         } else {
-            const QString message = reply->data()[QLatin1String("errorString")].toString();
-            const auto otpMode = reply->data()[QLatin1String("otpMode")].toBool();
-            setOtpMode(otpMode);
+            const QString message = replyData.value(QLatin1String("errorString"), reply->errorString()).toString();
+            setOtpMode(replyData[QLatin1String("otpMode")].toBool());
 
             m_ui.errorMessage->setText(message);
             show();

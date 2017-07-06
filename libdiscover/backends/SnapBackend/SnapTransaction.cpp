@@ -62,7 +62,7 @@ void SnapTransaction::finishTransaction()
             connect(p, static_cast<void(QProcess::*)(int)>(&QProcess::finished), this, [this, p] (int code) {
                 p->deleteLater();
                 if (code != 0) {
-                    qWarning() << "login failed..." << p->readAll();
+                    qWarning() << "login failed... code:" << code << p->readAll();
                     Q_EMIT passiveMessage(m_request->errorString());
                     setStatus(DoneStatus);
                     return;
