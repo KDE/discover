@@ -185,7 +185,7 @@ QVariant FlatpakResource::icon() const
             case AppStream::Icon::KindCached:
                 url += icon.url().toLocalFile();
                 if (QFileInfo::exists(url)) {
-                    ret.addFile(url);
+                    ret.addFile(url, icon.size());
                 } else {
                     ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
                 }
@@ -197,7 +197,7 @@ QVariant FlatpakResource::icon() const
                 const QString fileName = QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation))
                                                                 .arg(icon.url().fileName());
                 if (QFileInfo::exists(fileName)) {
-                    ret.addFile(fileName);
+                    ret.addFile(url, icon.size());
                 } else {
                     ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
                 }
