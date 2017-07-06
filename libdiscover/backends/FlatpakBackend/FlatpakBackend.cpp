@@ -690,7 +690,10 @@ void FlatpakBackend::reloadPackageList()
 bool FlatpakBackend::setupFlatpakInstallations(GError **error)
 {
     GPtrArray *installations = flatpak_get_system_installations(m_cancellable, error);
-    for (uint i = 0; i < installations->len; i++) {
+    if (*error) {
+        qWarning() << "Failed to call flatpak_get_system_installations:" << (*error)->message;
+    }
+    for (uint i = 0; installations && i < installations->len; i++) {
         m_installations << FLATPAK_INSTALLATION(g_ptr_array_index(installations, i));
     }
 
