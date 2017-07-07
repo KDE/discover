@@ -515,6 +515,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
     }
 
     const QString appstreamDirPath = source.appstreamDir();
+    const QString appstreamIconsPath = source.appstreamDir() + QLatin1String("/icons/");
     const QString appDirFileName = appstreamDirPath + QLatin1String("/appstream.xml.gz");
     if (!QFile::exists(appDirFileName)) {
         qWarning() << "No" << appDirFileName << "appstream metadata found for" << source.name();
@@ -533,7 +534,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
     foreach (const AppStream::Component& component, components) {
         AppStream::Component appstreamComponent(component);
         FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
-        resource->setIconPath(appstreamDirPath);
+        resource->setIconPath(appstreamIconsPath);
         resource->setOrigin(source.name());
         addResource(resource);
     }

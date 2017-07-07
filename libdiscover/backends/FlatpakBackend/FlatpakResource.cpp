@@ -42,6 +42,12 @@
 #include <QStringList>
 #include <QTimer>
 
+static QString iconCachePath(const AppStream::Icon &icon)
+{
+    Q_ASSERT(icon.kind() == AppStream::Icon::KindRemote);
+    return QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation)).arg(icon.url().fileName());
+}
+
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation* installation, FlatpakBackend *parent)
     : AbstractResource(parent)
     , m_appdata(component)
@@ -57,8 +63,7 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
     if (!icons.isEmpty()) {
         foreach (const AppStream::Icon &icon, icons) {
             if (icon.kind() == AppStream::Icon::KindRemote) {
-                const QString fileName = QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation))
-                                                                      .arg(icon.url().fileName());
+                const QString fileName = iconCachePath(icon);
                 if (!QFileInfo::exists(fileName)) {
                     const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
                     // Create $HOME/.cache/discover/icons folder
@@ -178,28 +183,22 @@ QVariant FlatpakResource::icon() const
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     } else foreach(const AppStream::Icon &icon, icons) {
         QStringList stock;
-        QString url = QString::fromUtf8("%1/icons/").arg(m_iconPath);
 
         switch (icon.kind()) {
             case AppStream::Icon::KindLocal:
-            case AppStream::Icon::KindCached:
-                url += icon.url().toLocalFile();
-                if (QFileInfo::exists(url)) {
-                    ret.addFile(url, icon.size());
-                } else {
-                    ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+            case AppStream::Icon::KindCached: {
+                const QString path = m_iconPath + icon.url().path();
+                if (QFileInfo::exists(path)) {
+                    ret.addFile(path, icon.size());
                 }
-                break;
+            }   break;
             case AppStream::Icon::KindStock:
                 stock += icon.name();
                 break;
             case AppStream::Icon::KindRemote: {
-                const QString fileName = QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation))
-                                                                .arg(icon.url().fileName());
+                const QString fileName = iconCachePath(icon);
                 if (QFileInfo::exists(fileName)) {
-                    ret.addFile(url, icon.size());
-                } else {
-                    ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+                    ret.addFile(fileName, icon.size());
                 }
                 break;
             }
