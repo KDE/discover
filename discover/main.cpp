@@ -126,7 +126,7 @@ int main(int argc, char** argv)
             if (arguments.isEmpty())
                 return;
             QScopedPointer<QCommandLineParser> parser(createParser());
-            parser->process(arguments);
+            parser->parse(arguments);
             processArgs(parser.data(), mainWindow);
         });
 
