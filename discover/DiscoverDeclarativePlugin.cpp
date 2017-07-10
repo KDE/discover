@@ -52,21 +52,21 @@ void DiscoverDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char*
 
 void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
 {
-    qmlRegisterType<TransactionListener>("org.kde.discover", 1, 0, "TransactionListener");
+    qmlRegisterType<TransactionListener>("org.kde.discover", 2, 0, "TransactionListener");
     qmlRegisterType<TransactionModel>();
-    qmlRegisterType<ResourcesUpdatesModel>("org.kde.discover", 1, 0, "ResourcesUpdatesModel");
-    qmlRegisterType<ResourcesProxyModel>("org.kde.discover", 1, 0, "ResourcesProxyModel");
+    qmlRegisterType<ResourcesUpdatesModel>("org.kde.discover", 2, 0, "ResourcesUpdatesModel");
+    qmlRegisterType<ResourcesProxyModel>("org.kde.discover", 2, 0, "ResourcesProxyModel");
 
-    qmlRegisterType<ReviewsModel>("org.kde.discover", 1, 0, "ReviewsModel");
-    qmlRegisterType<ApplicationAddonsModel>("org.kde.discover", 1, 0, "ApplicationAddonsModel");
-    qmlRegisterType<ScreenshotsModel>("org.kde.discover", 1, 0, "ScreenshotsModel");
-    qmlRegisterType<MessageActionsModel>("org.kde.discover", 1, 0, "MessageActionsModel");
-    qmlRegisterType<UpdateModel>("org.kde.discover", 1, 0, "UpdateModel");
+    qmlRegisterType<ReviewsModel>("org.kde.discover", 2, 0, "ReviewsModel");
+    qmlRegisterType<ApplicationAddonsModel>("org.kde.discover", 2, 0, "ApplicationAddonsModel");
+    qmlRegisterType<ScreenshotsModel>("org.kde.discover", 2, 0, "ScreenshotsModel");
+    qmlRegisterType<MessageActionsModel>("org.kde.discover", 2, 0, "MessageActionsModel");
+    qmlRegisterType<UpdateModel>("org.kde.discover", 2, 0, "UpdateModel");
 
-    qmlRegisterUncreatableType<QAction>("org.kde.discover", 1, 0, "QAction", QStringLiteral("Use QQC Action"));
-    qmlRegisterUncreatableType<AbstractResource>("org.kde.discover", 1, 0, "AbstractResource", QStringLiteral("should come from the ResourcesModel"));
-    qmlRegisterUncreatableType<AbstractSourcesBackend>("org.kde.discover", 1, 0, "AbstractSourcesBackend", QStringLiteral("should come from the SourcesModel"));
-    qmlRegisterUncreatableType<Transaction>("org.kde.discover", 1, 0, "Transaction", QStringLiteral("should come from the backends"));
+    qmlRegisterUncreatableType<QAction>("org.kde.discover", 2, 0, "QAction", QStringLiteral("Use QQC Action"));
+    qmlRegisterUncreatableType<AbstractResource>("org.kde.discover", 2, 0, "AbstractResource", QStringLiteral("should come from the ResourcesModel"));
+    qmlRegisterUncreatableType<AbstractSourcesBackend>("org.kde.discover", 2, 0, "AbstractSourcesBackend", QStringLiteral("should come from the SourcesModel"));
+    qmlRegisterUncreatableType<Transaction>("org.kde.discover", 2, 0, "Transaction", QStringLiteral("should come from the backends"));
     qmlRegisterType<Rating>();
     qmlRegisterType<AbstractResourcesBackend>();
     qmlRegisterType<AbstractReviewsBackend>();

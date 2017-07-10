@@ -1,7 +1,7 @@
 import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.1
 import QtQuick 2.4
-import org.kde.discover 1.0
+import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.kcoreaddons 1.0
