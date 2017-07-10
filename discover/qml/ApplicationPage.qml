@@ -268,7 +268,7 @@ DiscoverPage {
             id: commentsButton
             readonly property QtObject rating: appInfo.application.rating
             visible: rating && rating.ratingCount>0 && reviewsModel.count
-            text: i18n("Show comments (%1)...", rating ? reviewsModel.count : 0)
+            text: i18n("Show reviews (%1)...", rating ? reviewsModel.count : 0)
 
             ReviewsModel {
                 id: reviewsModel
