@@ -29,9 +29,8 @@ import "navigation.js" as Navigation
 Kirigami.GlobalDrawer {
     id: drawer
     bannerImageSource: "qrc:/banners/banner.svg"
-    topPadding: -50
-    leftPadding: 0
-    rightPadding: 0
+    //make the left and bottom margins for search field the same
+    topPadding: -searchField.height - leftPadding
     bottomPadding: 0
 
     resetMenuOnTriggered: false
@@ -57,8 +56,6 @@ Kirigami.GlobalDrawer {
     topContent: TextField {
         id: searchField
         Layout.fillWidth: true
-        Layout.leftMargin: Kirigami.Units.smallSpacing
-        Layout.rightMargin: Kirigami.Units.smallSpacing
 
         enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
         Keys.forwardTo: [window.pageStack]
@@ -107,6 +104,8 @@ Kirigami.GlobalDrawer {
     ColumnLayout {
         spacing: 0
         Layout.fillWidth: true
+        Layout.leftMargin: -drawer.leftPadding
+        Layout.rightMargin: -drawer.rightPadding
 
         Kirigami.Separator {
             Layout.fillWidth: true
