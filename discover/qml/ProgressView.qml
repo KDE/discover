@@ -26,6 +26,9 @@ Kirigami.BasicListItem {
     onClicked: {
         sheet.open()
     }
+    onVisibleChanged: if (!visible) {
+        sheet.close()
+    }
 
     readonly property var v1: Connections {
         target: TransactionModel
