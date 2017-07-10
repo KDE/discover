@@ -133,6 +133,11 @@ Kirigami.GlobalDrawer {
                 name: "full"
                 when: !Helpers.isCompact
                 PropertyChanges { target: drawer; drawerOpen: true }
+            },
+            State {
+                name: "compact"
+                when: Helpers.isCompact
+                PropertyChanges { target: drawer; drawerOpen: false }
             }
         ]
     }
