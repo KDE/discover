@@ -72,4 +72,5 @@ void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
     qmlRegisterType<AbstractReviewsBackend>();
     qmlRegisterType<Category>();
     qmlRegisterType<ResourcesModel>();
+    qmlProtectModule("org.kde.discover", 2);
 }
