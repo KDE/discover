@@ -554,7 +554,7 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
                 continue;
             }
 
-            const QString fnDesktop = file.absolutePath();
+            const QString fnDesktop = QStringLiteral("%1/%2").arg(file.absolutePath()).arg(file.fileName());
 
             AppStream::Metadata metadata;
             AppStream::Metadata::MetadataError error = metadata.parseFile(fnDesktop, AppStream::Metadata::FormatKindDesktopEntry);
