@@ -27,7 +27,9 @@
 #include <KToolInvocation>
 #include <QIcon>
 #include <QProcess>
+#include <QStandardPaths>
 #include <QDebug>
+#include "config-paths.h"
 
 AppPackageKitResource::AppPackageKitResource(const AppStream::Component& data, const QString &packageName, PackageKitBackend* parent)
     : PackageKitResource(packageName, QString(), parent)
@@ -126,11 +128,6 @@ bool AppPackageKitResource::isTechnical() const
     return false;
 }
 
-QStringList AppPackageKitResource::executables() const
-{
-    return m_appdata.provided(AppStream::Provided::KindBinary).items();
-}
-
 static QUrl imageOfKind(const QList<AppStream::Image>& images, AppStream::Image::Kind kind)
 {
     QUrl ret;
@@ -162,6 +159,17 @@ QUrl AppPackageKitResource::screenshotUrl()
 QUrl AppPackageKitResource::thumbnailUrl()
 {
     return screenshot(m_appdata, AppStream::Image::KindThumbnail);
+}
+
+void AppPackageKitResource::invokeApplication() const
+{
+    const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
+    if (exes.isEmpty()) {
+        const auto servicePath = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, m_appdata.id());
+        QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {servicePath});
+    } else {
+        QProcess::startDetached(exes.constFirst());
+    }
 }
 
 void AppPackageKitResource::fetchScreenshots()

@@ -116,10 +116,10 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
 
         ///@returns whether invokeApplication makes something
         /// false if not overridden
-        virtual bool canExecute() const;
+        virtual bool canExecute() const = 0;
 
         ///executes the resource, if applies.
-        Q_SCRIPTABLE virtual void invokeApplication() const;
+        Q_SCRIPTABLE virtual void invokeApplication() const = 0;
 
         virtual State state() = 0;
 
@@ -148,8 +148,6 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
 
         virtual QList<PackageState> addonsInformation() = 0;
         bool isFromSecureOrigin() const;
-
-        virtual QStringList executables() const;
 
         virtual QStringList extends() const;
 

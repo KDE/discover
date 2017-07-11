@@ -21,6 +21,8 @@
 #include "KNSResource.h"
 #include "KNSBackend.h"
 #include <KNSCore/Engine>
+#include <KShell>
+#include <QProcess>
 #include <QRegularExpression>
 #include <knewstuff_version.h>
 
@@ -204,4 +206,16 @@ QStringList KNSResource::executables() const
         return {knsBackend()->engine()->adoptionCommand(m_entry)};
     else
         return {};
+}
+
+void KNSResource::invokeApplication() const
+{
+    QStringList exes = executables();
+    if(!exes.isEmpty()) {
+        const QString exe = exes.constFirst();
+        auto args = KShell::splitArgs(exe);
+        QProcess::startDetached(args.takeFirst(), args);
+    } else {
+        qWarning() << "cannot execute" << packageName();
+    }
 }

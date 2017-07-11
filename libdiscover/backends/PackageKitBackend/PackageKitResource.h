@@ -66,6 +66,9 @@ class PackageKitResource : public AbstractResource
 
         static QString joinPackages(const QStringList& pkgids);
 
+        void invokeApplication() const override {}
+        bool canExecute() const override { return false; }
+
     public Q_SLOTS:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch);
         void setDetails(const PackageKit::Details& details);

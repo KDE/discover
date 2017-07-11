@@ -79,7 +79,6 @@ public:
     QString comment() override;
     QString commit() const;
     int downloadSize() const;
-    QStringList executables() const override;
     QVariant icon() const override;
     QString installedVersion() const override;
     int installedSize() const;
