@@ -38,7 +38,6 @@ UpdateModel::UpdateModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_updates(nullptr)
 {
-
     connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &UpdateModel::activityChanged);
     connect(ResourcesModel::global(), &ResourcesModel::updatesCountChanged, this, &UpdateModel::activityChanged);
     connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &UpdateModel::resourceDataChanged);
@@ -198,16 +197,13 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     const QString importantUpdatesSection = i18nc("@item:inlistbox", "Important Security Updates");
     const QString appUpdatesSection = i18nc("@item:inlistbox", "Application Updates");
     const QString systemUpdateSection = i18nc("@item:inlistbox", "System Updates");
-    QVector<UpdateItem*> securityItems, appItems, systemItems;
+    QVector<UpdateItem*> appItems, systemItems;
     foreach(AbstractResource* res, resources) {
         connect(res, &AbstractResource::changelogFetched, this, &UpdateModel::integrateChangelog, Qt::UniqueConnection);
 
         UpdateItem *updateItem = new UpdateItem(res);
 
-        if (res->isFromSecureOrigin()) {
-            updateItem->setSection(importantUpdatesSection);
-            securityItems += updateItem;
-        } else if(!res->isTechnical()) {
+        if(!res->isTechnical()) {
             updateItem->setSection(appUpdatesSection);
             appItems += updateItem;
         } else {
@@ -216,10 +212,9 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
         }
     }
     const auto sortUpdateItems = [](UpdateItem *a, UpdateItem *b) { return a->name() < b->name(); };
-    qSort(securityItems.begin(), securityItems.end(), sortUpdateItems);
     qSort(appItems.begin(), appItems.end(), sortUpdateItems);
     qSort(systemItems.begin(), systemItems.end(), sortUpdateItems);
-    m_updateItems = (QVector<UpdateItem*>() << securityItems << appItems << systemItems);
+    m_updateItems = (QVector<UpdateItem*>() << appItems << systemItems);
     endResetModel();
 
     Q_EMIT hasUpdatesChanged(!resources.isEmpty());

@@ -107,11 +107,6 @@ QString AbstractResource::status()
     return QString();
 }
 
-bool AbstractResource::isFromSecureOrigin() const
-{
-    return false;
-}
-
 QString AbstractResource::sizeDescription()
 {
     return KFormat().formatByteSize(size());

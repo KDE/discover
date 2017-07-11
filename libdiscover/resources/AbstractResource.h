@@ -145,7 +145,6 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual QStringList mimetypes() const;
 
         virtual QList<PackageState> addonsInformation() = 0;
-        bool isFromSecureOrigin() const;
 
         virtual QStringList executables() const;
 
