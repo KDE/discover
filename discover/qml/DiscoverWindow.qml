@@ -52,7 +52,7 @@ Kirigami.ApplicationWindow
     }
     TopLevelPageData {
         id: installedAction
-        text: TransactionModel.count == 0 ? i18n("Installed") : i18n("Installing...")
+        text: i18n("Installed")
         component: topInstalledComp
         objectName: "installed"
         shortcut: "Alt+I"
