@@ -21,6 +21,8 @@
 #include "KNSResource.h"
 #include "KNSBackend.h"
 #include <KNSCore/Engine>
+#include <KShell>
+#include <QProcess>
 #include <QRegularExpression>
 #include <knewstuff_version.h>
 
@@ -200,4 +202,16 @@ QStringList KNSResource::executables() const
 QUrl KNSResource::url() const
 {
     return QUrl(QStringLiteral("kns://")+knsBackend()->name() + QLatin1Char('/') + QUrl(m_entry.providerId()).host() + QLatin1Char('/') + m_entry.uniqueId());
+}
+
+void KNSResource::invokeApplication() const
+{
+    QStringList exes = executables();
+    if(!exes.isEmpty()) {
+        const QString exe = exes.constFirst();
+        auto args = KShell::splitArgs(exe);
+        QProcess::startDetached(args.takeFirst(), args);
+    } else {
+        qWarning() << "cannot execute" << packageName();
+    }
 }

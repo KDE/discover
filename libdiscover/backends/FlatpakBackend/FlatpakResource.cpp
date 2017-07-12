@@ -166,12 +166,6 @@ int FlatpakResource::downloadSize() const
     return m_downloadSize;
 }
 
-QStringList FlatpakResource::executables() const
-{
-//     return m_appdata.provided(AppStream::Provided::KindBinary).items();
-    return QStringList();
-}
-
 QVariant FlatpakResource::icon() const
 {
     QIcon ret;

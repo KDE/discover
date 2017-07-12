@@ -28,7 +28,9 @@
 #include <KToolInvocation>
 #include <QIcon>
 #include <QProcess>
+#include <QStandardPaths>
 #include <QDebug>
+#include "config-paths.h"
 
 AppPackageKitResource::AppPackageKitResource(const AppStream::Component& data, const QString &packageName, PackageKitBackend* parent)
     : PackageKitResource(packageName, QString(), parent)
@@ -125,11 +127,6 @@ QUrl AppPackageKitResource::homepage()
 bool AppPackageKitResource::isTechnical() const
 {
     return false;
-}
-
-QStringList AppPackageKitResource::executables() const
-{
-    return m_appdata.provided(AppStream::Provided::KindBinary).items();
 }
 
 void AppPackageKitResource::fetchScreenshots()

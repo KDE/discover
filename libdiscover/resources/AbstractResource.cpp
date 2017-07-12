@@ -36,21 +36,6 @@ AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     connect(this, &AbstractResource::stateChanged, this, &AbstractResource::reportNewState);
 }
 
-bool AbstractResource::canExecute() const
-{
-    return !executables().isEmpty();
-}
-
-void AbstractResource::invokeApplication() const
-{
-    QStringList exes = executables();
-    if(!exes.isEmpty()) {
-        const QString exe = exes.at(0);
-        auto args = KShell::splitArgs(exe);
-        QProcess::startDetached(args.takeFirst(), args);
-    }
-}
-
 bool AbstractResource::isTechnical() const
 {
     return false;
@@ -82,11 +67,6 @@ void AbstractResource::fetchScreenshots()
 }
 
 QStringList AbstractResource::mimetypes() const
-{
-    return QStringList();
-}
-
-QStringList AbstractResource::executables() const
 {
     return QStringList();
 }

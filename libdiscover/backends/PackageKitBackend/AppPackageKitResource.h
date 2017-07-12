@@ -39,7 +39,6 @@ class AppPackageKitResource : public PackageKitResource
         QStringList categories() override;
         QString longDescription() override;
         QUrl homepage() override;
-        QStringList executables() const override;
         QString comment() override;
         QString license() override;
         QStringList allPackageNames() const override;
@@ -47,10 +46,10 @@ class AppPackageKitResource : public PackageKitResource
         QStringList extends() const override;
         void fetchScreenshots() override;
         void fetchChangelog() override;
+        void invokeApplication() const override;
+        bool canExecute() const override { return true; }
 
     private:
-        QStringList findProvides(AppStream::Provided::Kind kind) const;
-
         const AppStream::Component m_appdata;
 };
 
