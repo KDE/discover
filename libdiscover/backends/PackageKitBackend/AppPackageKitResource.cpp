@@ -177,3 +177,15 @@ void AppPackageKitResource::fetchChangelog()
     }
     emit changelogFetched(changelog);
 }
+
+void AppPackageKitResource::invokeApplication() const
+{
+    const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
+    if (exes.isEmpty()) {
+        const auto servicePath = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, m_appdata.id());
+        QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {servicePath});
+    } else {
+        QProcess::startDetached(exes.constFirst());
+    }
+}
+
