@@ -33,14 +33,18 @@ static void flatpakInstallationProgressCallback(const gchar *stats, guint progre
         return;
     }
 
+    transactionJob->setProgress(progress);
+
     Q_EMIT transactionJob->progressChanged(progress);
 }
 
-FlatpakTransactionJob::FlatpakTransactionJob(FlatpakInstallation *installation, FlatpakResource *app, Transaction::Role role, QObject *parent)
+FlatpakTransactionJob::FlatpakTransactionJob(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role, QObject *parent)
     : QThread(parent)
     , m_result(false)
+    , m_progress(0)
+    , m_relatedRef(relatedRef.first)
+    , m_relatedRefKind(relatedRef.second)
     , m_app(app)
-    , m_installation(installation)
     , m_role(role)
 {
     m_cancellable = g_cancellable_new();
@@ -61,12 +65,15 @@ void FlatpakTransactionJob::run()
     g_autoptr(GError) localError = nullptr;
     g_autoptr(FlatpakInstalledRef) ref = nullptr;
 
+    const QString refName = m_relatedRef.isEmpty() ? m_app->flatpakName() : m_relatedRef;
+    const uint kind = m_relatedRef.isEmpty() ? (uint)m_app->type() : m_relatedRefKind;
+
     if (m_role == Transaction::Role::InstallRole) {
         if (m_app->state() == AbstractResource::Upgradeable) {
-            ref = flatpak_installation_update(m_installation,
+            ref = flatpak_installation_update(m_app->installation(),
                                               FLATPAK_UPDATE_FLAGS_NONE,
-                                              m_app->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
-                                              m_app->flatpakName().toUtf8().constData(),
+                                              kind == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
+                                              refName.toUtf8().constData(),
                                               m_app->arch().toUtf8().constData(),
                                               m_app->branch().toUtf8().constData(),
                                               flatpakInstallationProgressCallback,
@@ -76,32 +83,34 @@ void FlatpakTransactionJob::run()
             if (m_app->flatpakFileType() == QStringLiteral("flatpak")) {
                 g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
                 if (!file) {
-                    qWarning() << "Failed to install bundled application" << m_app->name();
+                    qWarning() << "Failed to install bundled application" << refName;
                 }
-                ref = flatpak_installation_install_bundle(m_installation, file, flatpakInstallationProgressCallback, this, m_cancellable, &localError);
+                ref = flatpak_installation_install_bundle(m_app->installation(), file, flatpakInstallationProgressCallback, this, m_cancellable, &localError);
             } else {
-                ref = flatpak_installation_install(m_installation,
-                                                m_app->origin().toUtf8().constData(),
-                                                m_app->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
-                                                m_app->flatpakName().toUtf8().constData(),
-                                                m_app->arch().toUtf8().constData(),
-                                                m_app->branch().toUtf8().constData(),
-                                                flatpakInstallationProgressCallback,
-                                                this,
-                                                m_cancellable, &localError);
+                ref = flatpak_installation_install(m_app->installation(),
+                                                   m_app->origin().toUtf8().constData(),
+                                                   kind == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
+                                                   refName.toUtf8().constData(),
+                                                   m_app->arch().toUtf8().constData(),
+                                                   m_app->branch().toUtf8().constData(),
+                                                   flatpakInstallationProgressCallback,
+                                                   this,
+                                                   m_cancellable, &localError);
             }
         }
 
         if (!ref) {
             m_result = false;
             m_errorMessage = QString::fromUtf8(localError->message);
-            qWarning() << "Failed to install" << m_app->name() << ':' << m_errorMessage;
+            // We are done so we can set the progress to 100
+            m_progress = 100;
+            qWarning() << "Failed to install" << refName << ':' << m_errorMessage;
             return;
         }
     } else if (m_role == Transaction::Role::RemoveRole) {
-        if (!flatpak_installation_uninstall(m_installation,
-                                            m_app->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
-                                            m_app->flatpakName().toUtf8().constData(),
+        if (!flatpak_installation_uninstall(m_app->installation(),
+                                            kind == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
+                                            refName.toUtf8().constData(),
                                             m_app->arch().toUtf8().constData(),
                                             m_app->branch().toUtf8().constData(),
                                             flatpakInstallationProgressCallback,
@@ -109,12 +118,38 @@ void FlatpakTransactionJob::run()
                                             m_cancellable, &localError)) {
             m_result = false;
             m_errorMessage = QString::fromUtf8(localError->message);
-            qWarning() << "Failed to uninstall" << m_app->name() << ':' << m_errorMessage;
+            // We are done so we can set the progress to 100
+            m_progress = 100;
+            qWarning() << "Failed to uninstall" << refName << ':' << m_errorMessage;
             return;
         }
     }
 
+    // We are done so we can set the progress to 100
+    m_progress = 100;
     m_result = true;
+
+    Q_EMIT progressChanged(m_progress);
+}
+
+FlatpakResource * FlatpakTransactionJob::app() const
+{
+    return m_app;
+}
+
+bool FlatpakTransactionJob::isRelated() const
+{
+    return !m_relatedRef.isEmpty();
+}
+
+int FlatpakTransactionJob::progress() const
+{
+    return m_progress;
+}
+
+void FlatpakTransactionJob::setProgress(int progress)
+{
+    m_progress = progress;
 }
 
 QString FlatpakTransactionJob::errorMessage() const

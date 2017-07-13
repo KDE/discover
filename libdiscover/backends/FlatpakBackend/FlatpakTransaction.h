@@ -37,9 +37,8 @@ class FlatpakTransaction : public Transaction
 {
 Q_OBJECT
 public:
-    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, Role role, bool delayStart = false);
-    FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, FlatpakResource *runtime, Role role, bool delayStart = false);
-    // FIXME ignore addons, they are not used in flatpak world (yet)
+    FlatpakTransaction(FlatpakResource *app, Role role, bool delayStart = false);
+    FlatpakTransaction(FlatpakResource *app, FlatpakResource *runtime, Role role, bool delayStart = false);
 
     ~FlatpakTransaction();
 
@@ -47,23 +46,19 @@ public:
     void setRuntime(FlatpakResource *runtime);
 
 public Q_SLOTS:
-    void onAppJobFinished();
-    void onAppJobProgressChanged(int progress);
-    void onRuntimeJobFinished();
-    void onRuntimeJobProgressChanged(int progress);
+    void onJobFinished();
+    void onJobProgressChanged(int progress);
     void finishTransaction();
     void start();
 
 private:
+    void processRelatedRefs(FlatpakResource *resource);
     void updateProgress();
 
-    int m_appJobProgress;
-    int m_runtimeJobProgress;
     QPointer<FlatpakResource> m_app;
     QPointer<FlatpakResource> m_runtime;
-    FlatpakInstallation *m_installation;
     QPointer<FlatpakTransactionJob> m_appJob;
-    QPointer<FlatpakTransactionJob> m_runtimeJob;
+    QList<QPointer<FlatpakTransactionJob> > m_jobs;
 };
 
 #endif // FLATPAKTRANSACTION_H

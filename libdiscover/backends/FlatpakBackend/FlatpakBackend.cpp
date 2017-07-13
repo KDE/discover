@@ -966,7 +966,7 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
     FlatpakInstallation *installation = resource->installation();
 
     if (resource->propertyState(FlatpakResource::RequiredRuntime) == FlatpakResource::NotKnownYet && resource->type() == FlatpakResource::DesktopApp) {
-        transaction = new FlatpakTransaction(installation, resource, Transaction::InstallRole, true);
+        transaction = new FlatpakTransaction(resource, Transaction::InstallRole, true);
         connect(resource, &FlatpakResource::propertyStateChanged, [resource, transaction, this] (FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state) {
             if (kind != FlatpakResource::RequiredRuntime) {
                 return;
@@ -983,9 +983,9 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
     } else {
         FlatpakResource *runtime = getRuntimeForApp(resource);
         if (runtime && !runtime->isInstalled()) {
-            transaction = new FlatpakTransaction(installation, resource, runtime, Transaction::InstallRole);
+            transaction = new FlatpakTransaction(resource, runtime, Transaction::InstallRole);
         } else {
-            transaction = new FlatpakTransaction(installation, resource, Transaction::InstallRole);
+            transaction = new FlatpakTransaction(resource, Transaction::InstallRole);
         }
     }
 
@@ -1015,7 +1015,7 @@ Transaction* FlatpakBackend::removeApplication(AbstractResource *app)
     }
 
     FlatpakInstallation *installation = resource->installation();
-    FlatpakTransaction *transaction = new FlatpakTransaction(installation, resource, Transaction::RemoveRole);
+    FlatpakTransaction *transaction = new FlatpakTransaction(resource, Transaction::RemoveRole);
 
     connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {

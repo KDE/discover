@@ -27,18 +27,21 @@
 #include <QDebug>
 #include <QTimer>
 
-FlatpakTransaction::FlatpakTransaction(FlatpakInstallation *installation, FlatpakResource *app, Role role, bool delayStart)
-    : FlatpakTransaction(installation, app, nullptr, role, delayStart)
+extern "C" {
+#include <flatpak.h>
+#include <gio/gio.h>
+#include <glib.h>
+}
+
+FlatpakTransaction::FlatpakTransaction(FlatpakResource *app, Role role, bool delayStart)
+    : FlatpakTransaction(app, nullptr, role, delayStart)
 {
 }
 
-FlatpakTransaction::FlatpakTransaction(FlatpakInstallation* installation, FlatpakResource *app, FlatpakResource *runtime, Transaction::Role role, bool delayStart)
+FlatpakTransaction::FlatpakTransaction(FlatpakResource *app, FlatpakResource *runtime, Transaction::Role role, bool delayStart)
     : Transaction(app->backend(), app, role, {})
-    , m_appJobProgress(0)
-    , m_runtimeJobProgress(0)
     , m_app(app)
     , m_runtime(runtime)
-    , m_installation(installation)
 {
     setCancellable(true);
 
@@ -54,9 +57,8 @@ FlatpakTransaction::~FlatpakTransaction()
 void FlatpakTransaction::cancel()
 {
     Q_ASSERT(m_appJob);
-    m_appJob->cancel();
-    if (m_runtime) {
-        m_runtimeJob->cancel();
+    foreach (const QPointer<FlatpakTransactionJob> &job, m_jobs) {
+        job->cancel();
     }
     setStatus(CancelledStatus);
 }
@@ -69,75 +71,115 @@ void FlatpakTransaction::setRuntime(FlatpakResource *runtime)
 void FlatpakTransaction::start()
 {
     if (m_runtime) {
-        m_runtimeJob = new FlatpakTransactionJob(m_installation, m_runtime, role(), this);
-        connect(m_runtimeJob, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onRuntimeJobFinished);
-        connect(m_runtimeJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onRuntimeJobProgressChanged);
-        m_runtimeJob->start();
+        QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(m_runtime, QPair<QString, uint>(), role(), this);
+        connect(job, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
+        connect(job, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
+        m_jobs << job;
+
+        processRelatedRefs(m_runtime);
     }
 
-    // App job will be started everytime
-    m_appJob = new FlatpakTransactionJob(m_installation, m_app, role(), this);
-    connect(m_appJob, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onAppJobFinished);
-    connect(m_appJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onAppJobProgressChanged);
-    m_appJob->start();
-}
+    // App job will be added everytime
+    m_appJob = new FlatpakTransactionJob(m_app, QPair<QString, uint>(), role(), this);
+    connect(m_appJob, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
+    connect(m_appJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
+    m_jobs << m_appJob;
 
-void FlatpakTransaction::onAppJobFinished()
-{
-    m_appJobProgress = 100;
+    processRelatedRefs(m_app);
 
-    updateProgress();
 
-    if (!m_appJob->result()) {
-        Q_EMIT passiveMessage(m_appJob->errorMessage());
-    }
-
-    if ((m_runtimeJob && m_runtimeJob->isFinished()) || !m_runtimeJob) {
-        finishTransaction();
+    // Now start all the jobs together
+    foreach (const QPointer<FlatpakTransactionJob> &job, m_jobs) {
+        job->start();
     }
 }
 
-void FlatpakTransaction::onAppJobProgressChanged(int progress)
+void FlatpakTransaction::processRelatedRefs(FlatpakResource* resource)
 {
-    m_appJobProgress = progress;
+    g_autoptr(GPtrArray) refs = nullptr;
+    g_autoptr(GError) error = nullptr;
+    g_autoptr(GCancellable) cancellable = g_cancellable_new();;
+    QList<FlatpakResource> additionalResources;
 
-    updateProgress();
-}
+    g_autofree gchar *ref = nullptr;
+    ref = g_strdup_printf ("%s/%s/%s/%s",
+                           resource->typeAsString().toUtf8().constData(),
+                           resource->flatpakName().toUtf8().constData(),
+                           resource->arch().toUtf8().constData(),
+                           resource->branch().toUtf8().constData());
 
-void FlatpakTransaction::onRuntimeJobFinished()
-{
-    m_runtimeJobProgress = 100;
-
-    updateProgress();
-
-    if (!m_runtimeJob->result()) {
-        Q_EMIT passiveMessage(m_runtimeJob->errorMessage());
-    } else {
-        // This should be the only case when runtime is automatically installed, but better to check
-        if (role() == InstallRole) {
-            m_runtime->setState(AbstractResource::Installed);
+    if (role() == Transaction::Role::InstallRole) {
+        if (resource->state() == AbstractResource::Upgradeable) {
+            refs = flatpak_installation_list_installed_related_refs_sync(resource->installation(), resource->origin().toUtf8().constData(), ref, cancellable, &error);
+            if (error) {
+                qWarning() << "Failed to list installed related refs for update: " << error->message;
+            }
+        } else {
+            refs = flatpak_installation_list_remote_related_refs_sync(resource->installation(), resource->origin().toUtf8().constData(), ref, cancellable, &error);
+            if (error) {
+                qWarning() << "Failed to list related refs for installation: " << error->message;
+            }
+        }
+    } else if (role() == Transaction::Role::RemoveRole) {
+        refs = flatpak_installation_list_installed_related_refs_sync(resource->installation(), resource->origin().toUtf8().constData(), ref, cancellable, &error);
+        if (error) {
+            qWarning() << "Failed to list installed related refs for removal: " << error->message;
         }
     }
 
-    if (m_appJob->isFinished()) {
-        finishTransaction();
+    if (refs) {
+        for (uint i = 0; i < refs->len; i++) {
+            FlatpakRef *flatpakRef = FLATPAK_REF(g_ptr_array_index(refs, i));
+            if (flatpak_related_ref_should_download(FLATPAK_RELATED_REF(flatpakRef))) {
+                QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(resource, QPair<QString, uint>(QString::fromUtf8(flatpak_ref_get_name(flatpakRef)), flatpak_ref_get_kind(flatpakRef)), role(), this);
+                connect(job, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
+                connect(job, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
+                // Add to the list of all jobs
+                m_jobs << job;
+            }
+        }
     }
 }
 
-void FlatpakTransaction::onRuntimeJobProgressChanged(int progress)
+void FlatpakTransaction::onJobFinished()
 {
-    m_runtimeJobProgress = progress;
+    FlatpakTransactionJob *job = static_cast<FlatpakTransactionJob*>(sender());
 
-    updateProgress();
+    if (job != m_appJob) {
+        if (!job->result()) {
+            Q_EMIT passiveMessage(job->errorMessage());
+        }
+
+        // Mark runtime as installed
+        if (m_runtime && job->app()->flatpakName() == m_runtime->flatpakName() && !job->isRelated() && role() != Transaction::Role::RemoveRole) {
+            if (job->result()) {
+                m_runtime->setState(AbstractResource::Installed);
+            }
+        }
+    }
+
+    foreach (const QPointer<FlatpakTransactionJob> &job, m_jobs) {
+        if (job->isRunning()) {
+            return;
+        }
+    }
+
+    // No other job is running → finish transaction
+    finishTransaction();
 }
 
-void FlatpakTransaction::updateProgress()
+void FlatpakTransaction::onJobProgressChanged(int progress)
 {
-    if (m_runtime) {
-        setProgress((m_appJobProgress + m_runtimeJobProgress) / 2);
-    } else {
-        setProgress(m_appJobProgress);
+    Q_UNUSED(progress);
+
+    int total = 0;
+
+    // Count progress from all the jobs
+    foreach (const QPointer<FlatpakTransactionJob> &job, m_jobs) {
+        total += job->progress();
     }
+
+    setProgress(total / m_jobs.count());
 }
 
 void FlatpakTransaction::finishTransaction()
