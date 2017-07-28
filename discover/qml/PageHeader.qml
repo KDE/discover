@@ -39,10 +39,20 @@ T2.Control
     z: actualHeader.z
 
     contentItem: Kirigami.ItemViewHeader {
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
         id: actualHeader
         view: root.ListView.view
-        title: root.search.length>0 && page.title.length>0 ? i18n("Search: %1 + %2", root.search, page.title)
-                                                             : root.search.length>0 ? i18n("Search: %1", root.search)
+        title: root.search.length>0 && page.title.length>0 ? i18n("Search: %1 + %2", escapeHtml(root.search), page.title)
+                                                             : root.search.length>0 ? i18n("Search: %1", escapeHtml(root.search))
                                                              : page.title
     }
 
