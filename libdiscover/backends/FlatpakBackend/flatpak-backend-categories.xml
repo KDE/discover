@@ -117,7 +117,7 @@
 
 
     <Menu>
-      <Name>Science Engineering</Name>
+      <Name>Science and Engineering</Name>
       <Image>pkcategories/sciencecrop.jpg</Image>
       <Icon>applications-science</Icon>
       <Include>
@@ -152,7 +152,7 @@
         </Include>
       </Menu>
       <Menu>
-        <Name>Computer Science Robotics</Name>
+        <Name>Computer Science and Robotics</Name>
         <Icon>computer</Icon>
         <Include>
           <Or>
@@ -326,7 +326,7 @@
         </Include>
       </Menu>
       <Menu>
-        <Name>Painting Editing</Name>
+        <Name>Painting and Editing</Name>
         <Icon>draw-brush</Icon>
         <Include>
           <And>
@@ -357,7 +357,7 @@
         </Include>
       </Menu>
       <Menu>
-        <Name>Scanning OCR</Name>
+        <Name>Scanning and OCR</Name>
         <Icon>scanner</Icon>
         <Include>
           <Or>
