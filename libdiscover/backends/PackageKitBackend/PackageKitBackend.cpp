@@ -99,11 +99,12 @@ PackageKitBackend::~PackageKitBackend()
 
 void PackageKitBackend::delayedInit()
 {
-    const bool b = m_appdata.load();
+    QString error;
+    const bool b = m_appdata.load(&error);
     reloadPackageList();
 
     if (!b && m_packages.packages.isEmpty()) {
-        qWarning() << "Could not open the AppStream metadata pool";
+        qWarning() << "Could not open the AppStream metadata pool" << error;
 
         QTimer::singleShot(0, this, [this]() {
             Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
