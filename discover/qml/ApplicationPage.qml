@@ -202,7 +202,7 @@ DiscoverPage {
         LinkButton {
             text: i18n("Review")
             onClicked: reviewsSheet.openReviewDialog()
-            visible: !commentsButton.visible
+            visible: !commentsButton.visible && reviewsModel.backend.isResourceSupported(appInfo.application)
         }
         LinkButton {
             id: commentsButton

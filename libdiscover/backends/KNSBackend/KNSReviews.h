@@ -51,6 +51,7 @@ class KNSReviews : public AbstractReviewsBackend
         QString userName() const override;
 
         void setProviderUrl(const QUrl &url);
+        bool isResourceSupported(AbstractResource * res) const override;
 
     private Q_SLOTS:
         void commentsReceived(Attica::BaseJob* job);

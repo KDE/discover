@@ -183,4 +183,9 @@ Attica::Provider KNSReviews::provider() const
     return s_shared->atticaManager.providerFor(m_providerUrl);
 }
 
+bool KNSReviews::isResourceSupported(AbstractResource* res) const
+{
+    return qobject_cast<KNSResource*>(res);
+}
+
 #include "KNSReviews.moc"

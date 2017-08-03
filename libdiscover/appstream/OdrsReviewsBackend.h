@@ -51,6 +51,7 @@ public:
     void flagReview(Review *, const QString &, const QString &) override {}
     void submitUsefulness(Review *review, bool useful) override;
     QStringList appstreamIds() const { return m_ratings.keys(); }
+    bool isResourceSupported(AbstractResource * res) const override;
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);

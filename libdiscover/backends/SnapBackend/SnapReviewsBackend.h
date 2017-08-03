@@ -45,6 +45,7 @@ public:
     void submitReview(AbstractResource*, const QString&, const QString&, const QString&) override;
     void flagReview(Review*, const QString&, const QString&) override {}
     void submitUsefulness(Review*, bool) override;
+    bool isResourceSupported(AbstractResource * res) const override;
 
 Q_SIGNALS:
     void ratingsReady();

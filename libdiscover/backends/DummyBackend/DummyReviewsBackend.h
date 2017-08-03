@@ -47,6 +47,7 @@ public:
     void submitUsefulness(Review*, bool) override;
 
     void initialize();
+    bool isResourceSupported(AbstractResource * res) const override;
 
 Q_SIGNALS:
     void ratingsReady();
