@@ -39,7 +39,7 @@ public:
     bool addSource(const QString &id) override;
     bool removeSource(const QString &id) override;
     QString name() const override { return QStringLiteral("Flatpak"); }
-    QString idDescription() override { return QStringLiteral("Flatpak remote repositories"); }
+    QString idDescription() override;
     QList<QAction*> actions() const override;
 
     FlatpakRemote * installSource(FlatpakResource *resource);

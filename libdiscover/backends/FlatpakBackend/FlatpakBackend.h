@@ -62,6 +62,7 @@ public:
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override { return true; }
+    FlatpakResource * addSourceFromFlatpakRepo(const QUrl &url);
 
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata);
@@ -79,7 +80,6 @@ private:
 
     FlatpakResource * addAppFromFlatpakBundle(const QUrl &url);
     FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
-    FlatpakResource * addSourceFromFlatpakRepo(const QUrl &url);
     void addResource(FlatpakResource *resource);
     bool compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref);
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);

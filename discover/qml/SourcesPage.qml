@@ -115,7 +115,6 @@ DiscoverPage {
 //                         iconName: "list-add"
                     text: i18n("Add Source")
 
-                    visible: sourcesMenu.items.count > 0
                     tooltip: text
                     menu: sourcesMenu
                 }
