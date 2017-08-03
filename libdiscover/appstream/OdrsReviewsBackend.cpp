@@ -344,3 +344,8 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
         Q_EMIT reviewsReady(resource, reviewList, false);
     }
 }
+
+bool OdrsReviewsBackend::isResourceSupported(AbstractResource* res) const
+{
+    return !res->appstreamId().isEmpty();
+}

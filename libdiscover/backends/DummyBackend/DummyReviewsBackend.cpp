@@ -75,3 +75,8 @@ void DummyReviewsBackend::submitReview(AbstractResource* res, const QString& a, 
 {
     qDebug() << "dummy submit review" << res->name() << a << b << c;
 }
+
+bool DummyReviewsBackend::isResourceSupported(AbstractResource* res) const
+{
+    return true;
+}

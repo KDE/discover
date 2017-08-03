@@ -47,3 +47,8 @@ void SnapReviewsBackend::submitUsefulness(Review* r, bool useful)
 void SnapReviewsBackend::submitReview(AbstractResource* res, const QString& a, const QString& b, const QString& c)
 {
 }
+
+bool SnapReviewsBackend::isResourceSupported(AbstractResource* res) const
+{
+    return true;
+}

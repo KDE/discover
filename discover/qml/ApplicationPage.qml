@@ -188,7 +188,9 @@ DiscoverPage {
                     Layout.fillHeight: true
                 }
                 Label {
-                    text: i18n("Version: %1", appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion)
+                    readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
+                    visible: version.length > 0
+                    text: version ? i18n("Version: %1", version) : ""
                 }
                 Label {
                     text: i18n("Size: %1", appInfo.application.sizeDescription)
@@ -262,7 +264,7 @@ DiscoverPage {
         LinkButton {
             text: i18n("Review")
             onClicked: reviewsSheet.openReviewDialog()
-            visible: !commentsButton.visible
+            visible: !commentsButton.visible && reviewsModel.backend.isResourceSupported(appInfo.application)
         }
         LinkButton {
             id: commentsButton
