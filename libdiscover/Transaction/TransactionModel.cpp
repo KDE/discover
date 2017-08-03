@@ -153,6 +153,9 @@ QModelIndex TransactionModel::indexOf(AbstractResource *res) const
 
 void TransactionModel::addTransaction(Transaction *trans)
 {
+    if(!trans)
+        return;
+
     if (m_transactions.contains(trans))
         return;
 
