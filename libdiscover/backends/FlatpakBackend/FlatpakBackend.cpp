@@ -276,6 +276,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
     metadata = flatpak_bundle_ref_get_metadata(bundleRef);
     QByteArray metadataContent = QByteArray((char *)g_bytes_get_data(metadata, &len));
     if (!updateAppMetadata(resource, metadataContent)) {
+        delete resource;
         qWarning() << "Failed to update metadata from app bundle";
         return nullptr;
     }
