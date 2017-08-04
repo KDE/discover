@@ -53,6 +53,7 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
     : QObject(parent)
     , m_initializingBackends(0)
     , m_actionCollection(nullptr)
+    , m_currentApplicationBackend(nullptr)
 {
     init(load);
     connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::fetchingChanged);
