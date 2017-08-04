@@ -536,6 +536,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
         return;
     }
 
+    setFetching(true);
     QList<AppStream::Component> components = metadata.components();
     foreach (const AppStream::Component& component, components) {
         AppStream::Component appstreamComponent(component);
@@ -544,6 +545,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
         resource->setOrigin(source.name());
         addResource(resource);
     }
+    setFetching(false);
 }
 
 bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)

@@ -37,6 +37,8 @@ Q_GLOBAL_STATIC(QString, featuredCache)
 FeaturedModel::FeaturedModel()
 {
     connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &FeaturedModel::refresh);
+    connect(ResourcesModel::global(), &ResourcesModel::currentApplicationBackendChanged, this, &FeaturedModel::refresh);
+    connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &FeaturedModel::refresh);
     connect(ResourcesModel::global(), &ResourcesModel::resourceRemoved, this, &FeaturedModel::removeResource);
 
     const QString dir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
@@ -71,14 +73,15 @@ void FeaturedModel::refresh()
 
 void FeaturedModel::setUris(const QVector<QUrl>& uris)
 {
-    if (uris == m_uris)
+    auto backend = ResourcesModel::global()->currentApplicationBackend();
+    if (uris == m_uris || !backend || backend->isFetching())
         return;
 
     QSet<ResultsStream*> streams;
     foreach(const auto &uri, uris) {
         AbstractResourcesBackend::Filters filter;
         filter.resourceUrl = uri;
-        streams << ResourcesModel::global()->search(filter);
+        streams << backend->search(filter);
     }
     auto stream = new StoredResultsStream(streams);
     connect(stream, &StoredResultsStream::finishedResources, this, &FeaturedModel::setResources);
@@ -95,9 +98,10 @@ static void filterDupes(QVector<AbstractResource *> &resources)
             uri += id;
     }
 
+    const auto appBackend = ResourcesModel::global()->currentApplicationBackend();
     for(auto it = resources.begin(); it != resources.end(); ) {
         const auto backend = (*it)->backend();
-        if (backend != ResourcesModel::global()->currentApplicationBackend() && dupeUri.contains((*it)->appstreamId()))
+        if (backend != appBackend && dupeUri.contains((*it)->appstreamId()))
             it = resources.erase(it);
         else
             ++it;
@@ -107,6 +111,7 @@ static void filterDupes(QVector<AbstractResource *> &resources)
 void FeaturedModel::setResources(const QVector<AbstractResource *>& _resources)
 {
     auto resources = _resources;
+    qDebug() << "mup" << resources;
     filterDupes(resources);
 
     if (m_resources == resources)
