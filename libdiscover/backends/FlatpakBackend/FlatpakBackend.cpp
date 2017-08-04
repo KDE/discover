@@ -497,14 +497,17 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
 {
     Q_ASSERT(flatpakInstallation);
 
-    g_autoptr(GPtrArray) remotes = flatpak_installation_list_remotes(flatpakInstallation, m_cancellable, nullptr);
+    GPtrArray *remotes = flatpak_installation_list_remotes(flatpakInstallation, m_cancellable, nullptr);
     if (!remotes) {
         return false;
     }
 
     for (uint i = 0; i < remotes->len; i++) {
         FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
-        integrateRemote(flatpakInstallation, remote);
+
+        // Refresh appstream metadata first, otherwise we won't be able to list new application or any application
+        // at all for newly added repository
+        refreshAppstreamMetadata(flatpakInstallation, remote);
     }
 
     return true;
@@ -670,6 +673,76 @@ bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
     }
 
     return true;
+}
+
+class FlatpakRefreshAppstreamMetadataJob : public QThread
+{
+    Q_OBJECT
+public:
+    FlatpakRefreshAppstreamMetadataJob(FlatpakInstallation *installation, FlatpakRemote *remote)
+        : QThread()
+        , m_installation(installation)
+        , m_remote(remote)
+    {
+        m_cancellable = g_cancellable_new();
+    }
+
+    ~FlatpakRefreshAppstreamMetadataJob()
+    {
+        g_object_unref(m_cancellable);
+    }
+
+    void cancel()
+    {
+        g_cancellable_cancel(m_cancellable);
+    }
+
+    void run() override
+    {
+        g_autoptr(GError) localError = nullptr;
+
+#if FLATPAK_CHECK_VERSION(0,9,4)
+        // With Flatpak 0.9.4 we can use flatpak_installation_update_appstream_full_sync() providing progress reporting which we don't use at this moment, but still
+        // better to use newer function in case the previous one gets deprecated
+        if (!flatpak_installation_update_appstream_full_sync(m_installation, flatpak_remote_get_name(m_remote), nullptr, nullptr, nullptr, nullptr, m_cancellable, &localError)) {
+            qWarning() << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << localError->message;
+            Q_EMIT jobRefreshAppstreamMetadataFailed();
+            return;
+        }
+
+        Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
+#else
+        if (!flatpak_installation_update_appstream_sync(m_installation, flatpak_remote_get_name(m_remote), nullptr, nullptr, m_cancellable, &localError)) {
+            qWarning() << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << localError->message;
+            Q_EMIT jobRefreshAppstreamMetadataFailed();
+            return;
+        }
+
+        Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
+#endif
+    }
+
+Q_SIGNALS:
+    void jobRefreshAppstreamMetadataFailed();
+    void jobRefreshAppstreamMetadataFinished(FlatpakInstallation *installation, FlatpakRemote *remote);
+
+private:
+    GCancellable *m_cancellable;
+    FlatpakInstallation *m_installation;
+    FlatpakRemote *m_remote;
+};
+
+void FlatpakBackend::refreshAppstreamMetadata(FlatpakInstallation *installation, FlatpakRemote *remote)
+{
+    FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::onRefreshAppstreamMetadataFinished);
+    job->start();
+}
+
+void FlatpakBackend::onRefreshAppstreamMetadataFinished(FlatpakInstallation* flatpakInstallation, FlatpakRemote* remote)
+{
+    integrateRemote(flatpakInstallation, remote);
 }
 
 void FlatpakBackend::reloadPackageList()
