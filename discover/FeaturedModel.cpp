@@ -111,7 +111,6 @@ static void filterDupes(QVector<AbstractResource *> &resources)
 void FeaturedModel::setResources(const QVector<AbstractResource *>& _resources)
 {
     auto resources = _resources;
-    qDebug() << "mup" << resources;
     filterDupes(resources);
 
     if (m_resources == resources)
