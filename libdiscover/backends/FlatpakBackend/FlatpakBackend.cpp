@@ -707,21 +707,14 @@ public:
         // With Flatpak 0.9.4 we can use flatpak_installation_update_appstream_full_sync() providing progress reporting which we don't use at this moment, but still
         // better to use newer function in case the previous one gets deprecated
         if (!flatpak_installation_update_appstream_full_sync(m_installation, flatpak_remote_get_name(m_remote), nullptr, nullptr, nullptr, nullptr, m_cancellable, &localError)) {
-            qWarning() << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << (localError ? localError->message : "<no error>");
-            Q_EMIT jobRefreshAppstreamMetadataFailed();
-            return;
-        }
-
-        Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
 #else
         if (!flatpak_installation_update_appstream_sync(m_installation, flatpak_remote_get_name(m_remote), nullptr, nullptr, m_cancellable, &localError)) {
+#endif
             qWarning() << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << (localError ? localError->message : "<no error>");
             Q_EMIT jobRefreshAppstreamMetadataFailed();
-            return;
+        } else  {
+            Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
         }
-
-        Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
-#endif
     }
 
 Q_SIGNALS:
@@ -738,13 +731,8 @@ void FlatpakBackend::refreshAppstreamMetadata(FlatpakInstallation *installation,
 {
     FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
     connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
-    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::onRefreshAppstreamMetadataFinished);
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
     job->start();
-}
-
-void FlatpakBackend::onRefreshAppstreamMetadataFinished(FlatpakInstallation* flatpakInstallation, FlatpakRemote* remote)
-{
-    integrateRemote(flatpakInstallation, remote);
 }
 
 void FlatpakBackend::reloadPackageList()

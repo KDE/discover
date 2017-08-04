@@ -68,7 +68,6 @@ private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata);
     void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);
     void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
-    void onRefreshAppstreamMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
 
 private:
     void announceRatingsReady();
