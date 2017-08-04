@@ -30,6 +30,7 @@
 #include <glib.h>
 #include <QTemporaryFile>
 #include <QStandardPaths>
+#include <resources/StoredResultsStream.h>
 
 class FlatpakSourceItem : public QStandardItem
 {
@@ -64,39 +65,29 @@ QAbstractItemModel* FlatpakSourcesBackend::sources()
     return m_sources;
 }
 
-static void addRepo(FlatpakBackend* backend, const QUrl &fileUrl)
-{
-    Q_ASSERT(backend);
-    auto res = backend->addSourceFromFlatpakRepo(fileUrl);
-    if (!res) {
-        qWarning() << "Couldn't add" << fileUrl;
-        return;
-    }
-    backend->installApplication(res);
-}
-
 bool FlatpakSourcesBackend::addSource(const QString &id)
 {
     FlatpakBackend* backend = qobject_cast<FlatpakBackend*>(parent());
 
     const QUrl flatpakrepoUrl = QUrl::fromUserInput(id);
     if (flatpakrepoUrl.isLocalFile()) {
-        addRepo(backend, flatpakrepoUrl);
+        auto res = backend->addSourceFromFlatpakRepo(flatpakrepoUrl);
+        if (res)
+            backend->installApplication(res);
+        else
+            backend->passiveMessage(i18n("Could not add the source %1", flatpakrepoUrl.toDisplayString()));
     } else {
-        const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1Char('/') + flatpakrepoUrl.fileName());
-
-        QNetworkAccessManager* manager = new QNetworkAccessManager(this);
-        auto replyGet = manager->get(QNetworkRequest(flatpakrepoUrl));
-
-        connect(replyGet, &QNetworkReply::finished, this, [this, manager, replyGet, fileUrl, backend] {
-            if (replyGet->error() != QNetworkReply::NoError)
-                return;
-
-            auto replyPut = manager->put(QNetworkRequest(fileUrl), replyGet->readAll());
-            connect(replyPut, &QNetworkReply::finished, this, [fileUrl, backend, manager]() {
-                addRepo(backend, fileUrl);
-                delete manager;
-            });
+        AbstractResourcesBackend::Filters filter;
+        filter.resourceUrl = flatpakrepoUrl;
+        auto stream = new StoredResultsStream ({backend->search(filter)});
+        connect(stream, &StoredResultsStream::finished, this, [backend, stream, flatpakrepoUrl]() {
+            const auto res = stream->resources();
+            if (!res.isEmpty()) {
+                Q_ASSERT(res.count() == 1);
+                backend->installApplication(res.first());
+            } else {
+                backend->passiveMessage(i18n("Could not add the source %1", flatpakrepoUrl.toDisplayString()));
+            }
         });
     }
     return true;

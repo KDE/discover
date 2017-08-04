@@ -101,6 +101,7 @@ public:
     ResourceType type() const;
     QString typeAsString() const;
     QString uniqueId() const;
+    QUrl url() const override;
 
     FlatpakInstallation* installation() const { return m_installation; }
 

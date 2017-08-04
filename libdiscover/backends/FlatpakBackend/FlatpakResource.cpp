@@ -510,3 +510,8 @@ QString FlatpakResource::installationPath(FlatpakInstallation* flatpakInstallati
     g_autoptr(GFile) path = flatpak_installation_get_path(flatpakInstallation);
     return QString::fromUtf8(g_file_get_path(path));
 }
+
+QUrl FlatpakResource::url() const
+{
+    return m_resourceFile.isEmpty() ? QUrl(QStringLiteral("appstream://") + appstreamId()) : m_resourceFile;
+}

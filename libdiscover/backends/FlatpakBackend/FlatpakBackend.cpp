@@ -53,6 +53,7 @@
 #include <QTimer>
 #include <QTextStream>
 #include <QTemporaryFile>
+#include <QNetworkAccessManager>
 
 #include <glib.h>
 
@@ -364,6 +365,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 
 FlatpakResource * FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
 {
+    Q_ASSERT(url.isLocalFile());
     QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
 
     const QString gpgKey = settings.value(QStringLiteral("Flatpak Repo/GPGKey")).toString();
@@ -899,7 +901,39 @@ int FlatpakBackend::updatesCount() const
 
 ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
-    if (!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() != QLatin1String("appstream"))
+    if (filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakrepo")) || filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakref"))) {
+        auto stream = new ResultsStream(QStringLiteral("FlatpakStream-http-")+filter.resourceUrl.fileName());
+
+        QNetworkAccessManager* manager = new QNetworkAccessManager;
+        auto replyGet = manager->get(QNetworkRequest(filter.resourceUrl));
+
+        connect(replyGet, &QNetworkReply::finished, this, [this, manager, replyGet, stream] {
+            const QUrl originalUrl = replyGet->request().url();
+            if (replyGet->error() != QNetworkReply::NoError) {
+                qWarning() << "couldn't download" << originalUrl << replyGet->errorString();
+                stream->finish();
+                return;
+            }
+
+            const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1Char('/') + originalUrl.fileName());
+            auto replyPut = manager->put(QNetworkRequest(fileUrl), replyGet->readAll());
+            connect(replyPut, &QNetworkReply::finished, this, [this, originalUrl, fileUrl, replyPut, stream, manager]() {
+                if (replyPut->error() == QNetworkReply::NoError) {
+                    auto res = resourceForFile(fileUrl);
+                    if (res) {
+                        FlatpakResource* fres = qobject_cast<FlatpakResource*>(res);
+                        fres->setResourceFile(originalUrl);
+                        stream->resourcesFound({ res });
+                    } else {
+                        qWarning() << "couldn't download" << originalUrl << "into" << fileUrl << replyPut->errorString();
+                    }
+                }
+                stream->finish();
+                manager->deleteLater();
+            });
+        });
+        return stream;
+    } else if (!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() != QLatin1String("appstream"))
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
 
     QVector<AbstractResource*> ret;
