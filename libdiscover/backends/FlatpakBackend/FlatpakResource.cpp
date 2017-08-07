@@ -205,8 +205,8 @@ QVariant FlatpakResource::icon() const
                 break;
         }
 
-        if (ret.isNull() && !stock.isEmpty()) {
-            ret = QIcon::fromTheme(stock.first(), QIcon::fromTheme(QStringLiteral("package-x-generic")));
+        if (ret.isNull()) {
+            ret = QIcon::fromTheme(stock.value(0), QIcon::fromTheme(QStringLiteral("package-x-generic")));
         }
     }
     return ret;
