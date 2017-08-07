@@ -504,10 +504,15 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
 
     for (uint i = 0; i < remotes->len; i++) {
         FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
+        g_autoptr(GFile) fileTimestamp = flatpak_remote_get_appstream_timestamp(remote, nullptr);
 
-        // Refresh appstream metadata first, otherwise we won't be able to list new application or any application
-        // at all for newly added repository
-        refreshAppstreamMetadata(flatpakInstallation, remote);
+        QFileInfo fileInfo = QFileInfo(QString::fromUtf8(g_file_get_path(fileTimestamp)));
+        // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
+        if (!fileInfo.exists() || fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
+            refreshAppstreamMetadata(flatpakInstallation, remote);
+        } else {
+            integrateRemote(flatpakInstallation, remote);
+        }
     }
 
     return true;
