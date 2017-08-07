@@ -184,6 +184,11 @@ QVariant FlatpakResource::icon() const
                 const QString path = m_iconPath + icon.url().path();
                 if (QFileInfo::exists(path)) {
                     ret.addFile(path, icon.size());
+                } else {
+                    const QString altPath = m_iconPath + QStringLiteral("%1x%2/").arg(icon.size().width()).arg(icon.size().height()) + icon.url().path();
+                    if (QFileInfo::exists(altPath)) {
+                        ret.addFile(altPath, icon.size());
+                    }
                 }
             }   break;
             case AppStream::Icon::KindStock:
