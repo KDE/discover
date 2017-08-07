@@ -119,6 +119,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         Q_EMIT availableForQueries();
         this->setFetching(false);
         qWarning() << "kns error" << objectName() << error;
+        passiveMessage(i18n("%1: %2", name(), error));
     });
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged);
