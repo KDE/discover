@@ -116,6 +116,58 @@ void ResourcesProxyModel::setSearch(const QString &_searchText)
     }
 }
 
+void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *>& resources)
+{
+    const auto cab = ResourcesModel::global()->currentApplicationBackend();
+    QHash<QString, QVector<AbstractResource *>::iterator> storedIds;
+    for(auto it = m_displayedResources.begin(); it != m_displayedResources.end(); )
+    {
+        const auto appstreamid = (*it)->appstreamId();
+        if (appstreamid.isEmpty()) {
+            ++it;
+            continue;
+        }
+        auto at = storedIds.find(appstreamid);
+        if (at == storedIds.end()) {
+            storedIds[appstreamid] = it;
+            ++it;
+        } else {
+            qWarning() << "We should have sanitized the displayed resources. There is a bug";
+            Q_UNREACHABLE();
+        }
+    }
+
+    QHash<QString, QVector<AbstractResource *>::iterator> ids;
+    for(auto it = resources.begin(); it != resources.end(); )
+    {
+        const auto appstreamid = (*it)->appstreamId();
+        if (appstreamid.isEmpty()) {
+            ++it;
+            continue;
+        }
+        auto at = storedIds.find(appstreamid);
+        if (at == storedIds.end()) {
+            auto at = ids.find(appstreamid);
+            if (at == ids.end()) {
+                ids[appstreamid] = it;
+                ++it;
+            } else {
+                if ((*it)->backend() == cab) {
+                    qSwap(*it, **at);
+                }
+                it = resources.erase(it);
+            }
+        } else {
+            if ((*it)->backend() == cab) {
+                **at = *it;
+                auto pos = index(*at - m_displayedResources.begin(), 0);
+                dataChanged(pos, pos);
+            }
+            it = resources.erase(it);
+        }
+    }
+}
+
 void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& _res)
 {
     auto res = _res;
@@ -124,11 +176,15 @@ void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& _res)
     if (res.isEmpty())
         return;
 
+    if (!m_filters.allBackends) {
+        removeDuplicates(res);
+    }
     if (!m_sortByRelevancy)
         qSort(res.begin(), res.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
 
     sortedInsertion(res);
     fetchSubcategories();
+
 }
 
 void ResourcesProxyModel::invalidateSorting()
@@ -391,8 +447,8 @@ void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & res
         return;
     }
 
-    int newIdx = 0;
     for(auto resource: resources) {
+        int newIdx = 0;
         const auto finder = [this, resource](AbstractResource* res){ return lessThan(resource, res); };
         const auto it = std::find_if(m_displayedResources.constBegin() + newIdx, m_displayedResources.constEnd(), finder);
         newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());

@@ -135,6 +135,7 @@ private:
     QVector<int> propertiesToRoles(const QVector<QByteArray>& properties) const;
     void addResources(const QVector<AbstractResource*> &res);
     void fetchSubcategories();
+    void removeDuplicates(QVector<AbstractResource *>& newResources);
 
     Roles m_sortRole;
     Qt::SortOrder m_sortOrder;
