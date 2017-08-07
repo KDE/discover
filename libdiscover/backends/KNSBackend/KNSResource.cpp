@@ -169,10 +169,12 @@ QString KNSResource::section()
     return m_entry.category();
 }
 
-static void appendIfValid(QList<QUrl>& list, const QUrl &value)
+static void appendIfValid(QList<QUrl>& list, const QUrl &value, const QUrl &fallback = {})
 {
     if (value.isValid() && !value.isEmpty())
         list << value;
+    else if (!fallback.isEmpty())
+        appendIfValid(list, fallback);
 }
 
 void KNSResource::fetchScreenshots()
@@ -183,9 +185,9 @@ void KNSResource::fetchScreenshots()
     appendIfValid(preview, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall3)));
 
     QList<QUrl> screenshots;
-    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig1)));
-    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig2)));
-    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig3)));
+    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig1)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1)));
+    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig2)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall2)));
+    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig3)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall3)));
 
     emit screenshotsFetched(preview, screenshots);
 }
