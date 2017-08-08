@@ -110,6 +110,55 @@ void FlatpakBackend::announceRatingsReady()
     }
 }
 
+class FlatpakFetchRemoteResourceJob : public QNetworkAccessManager
+{
+Q_OBJECT
+public:
+    FlatpakFetchRemoteResourceJob(const QUrl &url, FlatpakBackend *backend)
+        : QNetworkAccessManager(backend)
+        , m_backend(backend)
+        , m_url(url)
+    {
+    }
+
+    void start()
+    {
+        auto replyGet = get(QNetworkRequest(m_url));
+
+        connect(replyGet, &QNetworkReply::finished, this, [this, replyGet] {
+            const QUrl originalUrl = replyGet->request().url();
+            if (replyGet->error() != QNetworkReply::NoError) {
+                qWarning() << "couldn't download" << originalUrl << replyGet->errorString();
+                Q_EMIT jobFinished(false, nullptr);
+                return;
+            }
+
+            const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1Char('/') + originalUrl.fileName());
+            auto replyPut = put(QNetworkRequest(fileUrl), replyGet->readAll());
+            connect(replyPut, &QNetworkReply::finished, this, [this, originalUrl, fileUrl, replyPut]() {
+                if (replyPut->error() == QNetworkReply::NoError) {
+                    auto res = m_backend->resourceForFile(fileUrl);
+                    if (res) {
+                        FlatpakResource *resource = qobject_cast<FlatpakResource*>(res);
+                        resource->setResourceFile(originalUrl);
+                        Q_EMIT jobFinished(true, resource);
+                    } else {
+                        qWarning() << "couldn't download" << originalUrl << "into" << fileUrl << replyPut->errorString();
+                        Q_EMIT jobFinished(false, nullptr);
+                    }
+                }
+            });
+        });
+    }
+
+Q_SIGNALS:
+    void jobFinished(bool success, FlatpakResource *resource);
+
+private:
+    FlatpakBackend *m_backend;
+    QUrl m_url;
+};
+
 FlatpakRemote * FlatpakBackend::getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const
 {
     auto remotes = flatpak_installation_list_remotes(installation, m_cancellable, nullptr);
@@ -359,7 +408,41 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     resource->setFlatpakFileType(QStringLiteral("flatpakref"));
     resource->setOrigin(QString::fromUtf8(remoteName));
     resource->updateFromRef(ref);
-    addResource(resource);
+
+    QUrl runtimeUrl = QUrl(settings.value(QStringLiteral("Flatpak Ref/RuntimeRepo")).toString());
+    if (!runtimeUrl.isEmpty()) {
+        // We need to fetch metadata to find information about required runtime
+        FlatpakFetchDataJob *job = new FlatpakFetchDataJob(preferredInstallation(), resource, FlatpakFetchDataJob::FetchMetadata);
+        connect(job, &FlatpakFetchDataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
+        connect(job, &FlatpakFetchDataJob::jobFetchMetadataFailed, this, [this, resource] {
+            // Even when we failed to fetch information about runtime we still want to show the application
+            addResource(resource);
+        });
+        connect(job, &FlatpakFetchDataJob::jobFetchMetadataFinished, this, [this, runtimeUrl] (FlatpakInstallation *installation, FlatpakResource *resource, const QByteArray &metadata) {
+            Q_UNUSED(installation);
+
+            updateAppMetadata(resource, metadata);
+
+            auto runtime = getRuntimeForApp(resource);
+            if (!runtime || (runtime && !runtime->isInstalled())) {
+                FlatpakFetchRemoteResourceJob *fetchRemoteResource = new FlatpakFetchRemoteResourceJob(runtimeUrl, this);
+                connect(fetchRemoteResource, &FlatpakFetchRemoteResourceJob::jobFinished, this, [this, resource] (bool success, FlatpakResource *repoResource) {
+                    if (success) {
+                        installApplication(repoResource);
+                    }
+                    addResource(resource);
+                });
+                fetchRemoteResource->start();
+                return;
+            } else {
+                addResource(resource);
+            }
+        });
+        job->start();
+    } else {
+        addResource(resource);
+    }
+
     return resource;
 }
 
@@ -972,34 +1055,15 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
     if (filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakrepo")) || filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakref"))) {
         auto stream = new ResultsStream(QStringLiteral("FlatpakStream-http-")+filter.resourceUrl.fileName());
 
-        QNetworkAccessManager* manager = new QNetworkAccessManager;
-        auto replyGet = manager->get(QNetworkRequest(filter.resourceUrl));
-
-        connect(replyGet, &QNetworkReply::finished, this, [this, manager, replyGet, stream] {
-            const QUrl originalUrl = replyGet->request().url();
-            if (replyGet->error() != QNetworkReply::NoError) {
-                qWarning() << "couldn't download" << originalUrl << replyGet->errorString();
-                stream->finish();
-                return;
+        FlatpakFetchRemoteResourceJob *fetchResourceJob = new FlatpakFetchRemoteResourceJob(filter.resourceUrl, this);
+        connect(fetchResourceJob, &FlatpakFetchRemoteResourceJob::jobFinished, this, [fetchResourceJob, stream] (bool success, FlatpakResource *resource) {
+            if (success) {
+                stream->resourcesFound({resource});
             }
-
-            const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1Char('/') + originalUrl.fileName());
-            auto replyPut = manager->put(QNetworkRequest(fileUrl), replyGet->readAll());
-            connect(replyPut, &QNetworkReply::finished, this, [this, originalUrl, fileUrl, replyPut, stream, manager]() {
-                if (replyPut->error() == QNetworkReply::NoError) {
-                    auto res = resourceForFile(fileUrl);
-                    if (res) {
-                        FlatpakResource* fres = qobject_cast<FlatpakResource*>(res);
-                        fres->setResourceFile(originalUrl);
-                        stream->resourcesFound({ res });
-                    } else {
-                        qWarning() << "couldn't download" << originalUrl << "into" << fileUrl << replyPut->errorString();
-                    }
-                }
-                stream->finish();
-                manager->deleteLater();
-            });
+            stream->finish();
+            fetchResourceJob->deleteLater();
         });
+
         return stream;
     } else if (!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() != QLatin1String("appstream"))
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
@@ -1060,7 +1124,9 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
         FlatpakRemote *remote = m_sources->installSource(resource);
         if (remote) {
             resource->setState(AbstractResource::Installed);
-            integrateRemote(preferredInstallation(), remote);
+            // Make sure we update appstream metadata first
+            // FIXME we have to let flatpak to return the remote as the one created by FlatpakSourcesBackend will not have appstream directory
+            refreshAppstreamMetadata(preferredInstallation(), flatpak_installation_get_remote_by_name(preferredInstallation(), flatpak_remote_get_name(remote), nullptr, nullptr));
         }
         return nullptr;
     }
