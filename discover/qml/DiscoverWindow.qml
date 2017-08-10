@@ -60,8 +60,7 @@ Kirigami.ApplicationWindow
     TopLevelPageData {
         id: updateAction
         iconName: enabled ? "update-low" : "update-none"
-        text: !enabled ? (ResourcesModel.isFetching ? i18n("Checking for updates...") : i18n("No Updates") ) : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
-        enabled: ResourcesModel.updatesCount>0
+        text: ResourcesModel.updatesCount<=0 ? (ResourcesModel.isFetching ? i18n("Checking for updates...") : i18n("No Updates") ) : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
         component: topUpdateComp
         objectName: "update"
         shortcut: "Alt+U"

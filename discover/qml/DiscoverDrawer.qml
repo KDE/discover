@@ -125,7 +125,7 @@ Kirigami.GlobalDrawer {
             objectName: "updateButton"
             action: updateAction
 
-            backgroundColor: action.enabled ? "orange" : Kirigami.Theme.viewBackgroundColor
+            backgroundColor: ResourcesModel.updatesCount>0 ? "orange" : Kirigami.Theme.viewBackgroundColor
         }
 
         states: [
