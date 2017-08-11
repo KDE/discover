@@ -28,8 +28,6 @@ DiscoverPage
         ResourcesUpdatesModel {
             id: resourcesUpdatesModel
             onIsProgressingChanged: {
-                window.navigationEnabled = !isProgressing
-
                 if (!isProgressing) {
                     resourcesUpdatesModel.prepare()
                 }
