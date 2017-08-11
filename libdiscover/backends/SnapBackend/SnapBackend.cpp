@@ -55,6 +55,9 @@ SnapBackend::SnapBackend(QObject* parent)
         }
     }
     connect(m_reviews, &SnapReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
+
+    //make sure we populate the installed resources first
+    populate(m_client.list(), AbstractResource::Installed);
 }
 
 int SnapBackend::updatesCount() const
