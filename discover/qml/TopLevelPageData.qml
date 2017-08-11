@@ -24,7 +24,6 @@ import "navigation.js" as Navigation
 Action {
     property string component
     checked: window.currentTopLevel==component
-    enabled: window.navigationEnabled
 
     onTriggered: {
         if(window.currentTopLevel!=component)
