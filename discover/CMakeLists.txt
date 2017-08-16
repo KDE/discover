@@ -34,6 +34,19 @@ target_link_libraries(plasma-discover LINK_PUBLIC
 
 install(TARGETS plasma-discover ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
-install(PROGRAMS org.kde.discover.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+# Standard desktop file accepts local files as input.
+set(DesktopNoDisplay "false")
+set(DesktopMimeType "application/vnd.debian.binary-package;application/x-rpm;")
+set(DesktopExec "plasma-discover %F")
+configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.desktop)
+install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+
+# URL handler accepts URLs as input but is only used to handle appstream://
+set(DesktopNoDisplay "true")
+set(DesktopMimeType "x-scheme-handler/appstream;")
+set(DesktopExec "plasma-discover %U")
+configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.urlhandler.desktop)
+install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.urlhandler.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+
 install(FILES plasmadiscoverui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/plasmadiscover)
 install( FILES org.kde.discover.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
