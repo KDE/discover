@@ -36,7 +36,7 @@
 #include <AppStreamQt/bundle.h>
 #include <AppStreamQt/component.h>
 #include <AppStreamQt/icon.h>
-#include <AppStream/appstream.h>
+#include <appstream.h>
 
 #include <KAboutData>
 #include <KLocalizedString>
