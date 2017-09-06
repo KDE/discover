@@ -84,7 +84,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         bool m_isCancelable;
         bool m_isProgressing;
         PackageKit::Transaction::Status m_status;
-        uint m_percentage;
+        int m_percentage;
         QDateTime m_lastUpdate;
         QStringList m_packagesRemoved;
         QVector<QString> m_requiredEula;

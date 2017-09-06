@@ -27,6 +27,21 @@
 
 #include <KLocalizedString>
 
+static int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage)
+{
+    if (status != PackageKit::Transaction::StatusUnknown) {
+        static QVector<PackageKit::Transaction::Status> statuses = {PackageKit::Transaction::Status::StatusDownload, PackageKit::Transaction::Status::StatusUpdate};
+        const auto idx = statuses.indexOf(status);
+        if (idx < 0) {
+            qDebug() << "Status not present" << status << percentage;
+            return -1;
+        }
+        percentage = (idx * 100 + percentage) / statuses.count();
+    }
+    qDebug() << "reporing progress:" << status << percentage;
+    return percentage;
+}
+
 PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
   : AbstractBackendUpdater(parent),
     m_transaction(nullptr),
@@ -157,8 +172,9 @@ void PackageKitUpdater::cancellableChanged()
 
 void PackageKitUpdater::percentageChanged()
 {
-    if (m_percentage != m_transaction->percentage()) {
-        m_percentage = m_transaction->percentage();
+    const auto actualPercentage = percentageWithStatus(m_transaction->status(), m_transaction->percentage());
+    if (actualPercentage >= 0 && m_percentage != actualPercentage) {
+        m_percentage = actualPercentage;
         emit progressChanged(m_percentage);
     }
 }
@@ -282,12 +298,16 @@ void PackageKitUpdater::lastUpdateTimeReceived(QDBusPendingCallWatcher* w)
     w->deleteLater();
 }
 
-void PackageKitUpdater::itemProgress(const QString& itemID, PackageKit::Transaction::Status /*status*/, uint percentage)
+void PackageKitUpdater::itemProgress(const QString& itemID, PackageKit::Transaction::Status status, uint percentage)
 {
     auto res = packagesForPackageId({itemID});
 
+    const auto actualPercentage = percentageWithStatus(status, percentage);
+    if (actualPercentage<0)
+        return;
+
     foreach(auto r, res) {
-        Q_EMIT resourceProgressed(r, percentage);
+        Q_EMIT resourceProgressed(r, actualPercentage);
     }
 }
 
