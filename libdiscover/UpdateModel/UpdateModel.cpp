@@ -85,10 +85,12 @@ void UpdateModel::resourceHasProgressed(AbstractResource* res, qreal progress)
 
 void UpdateModel::activityChanged()
 {
-    if (m_updates && !m_updates->isProgressing()) {
-        m_updates->prepare();
+    if (m_updates) {
+        if (!m_updates->isProgressing()) {
+            m_updates->prepare();
+        }
+        setResources(m_updates->toUpdate());
     }
-    setResources(m_updates->toUpdate());
 }
 
 QVariant UpdateModel::data(const QModelIndex &index, int role) const
