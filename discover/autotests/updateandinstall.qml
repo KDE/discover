@@ -36,7 +36,7 @@ DiscoverTest
         {
             var updatePage = appRoot.stack.currentItem;
             compare(typeName(updatePage), "UpdatesPage")
-            compare(updatePage.state, "progressing", "to update")
+            compare(updatePage.state, "has-updates", "to update")
             var button = findChild(updatePage, "Button")
             verify(!button.isActive)
         }

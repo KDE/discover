@@ -83,8 +83,8 @@ DiscoverTest
         appRoot.close()
         verify(appRoot.visible);
 
-        verify(waitForSignal(updatePage, "stateChanged"))
-        compare(updatePage.state, "now-uptodate", "update finished")
+        while(updatePage.state !== "now-uptodate")
+            waitForSignal(updatePage, "stateChanged")
         compare(ResourcesModel.updatesCount, 0, "should be up to date")
     }
 
