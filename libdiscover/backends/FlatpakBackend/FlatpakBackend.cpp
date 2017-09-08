@@ -342,8 +342,12 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     AsComponent *component = as_component_new();
     as_component_add_url(component, AS_URL_KIND_HOMEPAGE, settings.value(QStringLiteral("Flatpak Ref/Homepage")).toString().toStdString().c_str());
     as_component_set_description(component, settings.value(QStringLiteral("Flatpak Ref/Description")).toString().toStdString().c_str(), nullptr);
-    as_component_set_name(component, settings.value(QStringLiteral("Flatpak Ref/Title")).toString().toStdString().c_str(), nullptr);
     as_component_set_summary(component, settings.value(QStringLiteral("Flatpak Ref/Comment")).toString().toStdString().c_str(), nullptr);
+    if (settings.contains(QStringLiteral("Flatpak Ref/Title")))
+        as_component_set_name(component, settings.value(QStringLiteral("Flatpak Ref/Title")).toString().toStdString().c_str(), nullptr);
+    else if (settings.contains(QStringLiteral("Flatpak Ref/Name")))
+        as_component_set_name(component, settings.value(QStringLiteral("Flatpak Ref/Name")).toString().toStdString().c_str(), nullptr);
+
     const QString iconUrl = settings.value(QStringLiteral("Flatpak Ref/Icon")).toString();
     if (!iconUrl.isEmpty()) {
         AsIcon *icon = as_icon_new();
