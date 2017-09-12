@@ -21,44 +21,26 @@
 #ifndef FLATPAKFETCHDATAJOB_H
 #define FLATPAKFETCHDATAJOB_H
 
+#include <QByteArray>
 extern "C" {
 #include <flatpak.h>
-#include <gio/gio.h>
 #include <glib.h>
 }
 
-#include <QThread>
-
 class FlatpakResource;
-class FlatpakFetchDataJob : public QThread
+
+namespace FlatpakRunnables
 {
-    Q_OBJECT
-public:
-    enum DataKind {
-        FetchMetadata = 0,
-        FetchSize = 1,
+    struct SizeInformation {
+        bool valid = false;
+        guint64 downloadSize;
+        guint64 installedSize;
     };
 
-    FlatpakFetchDataJob(FlatpakInstallation *installation, FlatpakResource *app, DataKind kind);
-    ~FlatpakFetchDataJob();
+    SizeInformation fetchFlatpakSize(FlatpakInstallation *installation, FlatpakResource *app);
 
-    void cancel();
-    void run() override;
-
-Q_SIGNALS:
-    void jobFetchMetadataFailed();
-    void jobFetchMetadataFinished(FlatpakInstallation *installation, FlatpakResource *resource, const QByteArray &metadata);
-    void jobFetchSizeFailed();
-    void jobFetchSizeFinished(FlatpakResource *resource, int downloadSize, int installedSize);
-
-private:
-    FlatpakRef * createFakeRef(FlatpakResource *resource);
-
-    GCancellable *m_cancellable;
-    FlatpakResource *m_app;
-    FlatpakInstallation *m_installation;
-    DataKind m_kind;
-};
+    QByteArray fetchMetadata(FlatpakInstallation *installation, FlatpakResource *app);
+}
 
 #endif // FLATPAKFETCHDATAJOB_H
 

@@ -21,7 +21,6 @@
 
 #include "FlatpakBackend.h"
 #include "FlatpakFetchDataJob.h"
-#include "FlatpakFetchUpdatesJob.h"
 #include "FlatpakResource.h"
 #include "FlatpakSourcesBackend.h"
 #include "FlatpakTransaction.h"
@@ -44,9 +43,11 @@
 #include <KSharedConfig>
 
 #include <QAction>
+#include <QtConcurrentRun>
 #include <QDebug>
 #include <QDir>
 #include <QFile>
+#include <QFutureWatcher>
 #include <QMessageBox>
 #include <QSettings>
 #include <QThread>
@@ -64,6 +65,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(AppStreamIntegration::global()->reviews())
     , m_fetching(false)
+    , m_threadPool(new QThreadPool(this))
 {
     g_autoptr(GError) error = nullptr;
     m_cancellable = g_cancellable_new();
@@ -87,6 +89,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 
 FlatpakBackend::~FlatpakBackend()
 {
+    m_threadPool.clear();
     for(auto inst : m_installations)
         g_object_unref(inst);
 
@@ -411,34 +414,35 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 
     QUrl runtimeUrl = QUrl(settings.value(QStringLiteral("Flatpak Ref/RuntimeRepo")).toString());
     if (!runtimeUrl.isEmpty()) {
+        auto installation = preferredInstallation();
         // We need to fetch metadata to find information about required runtime
-        FlatpakFetchDataJob *job = new FlatpakFetchDataJob(preferredInstallation(), resource, FlatpakFetchDataJob::FetchMetadata);
-        connect(job, &FlatpakFetchDataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
-        connect(job, &FlatpakFetchDataJob::jobFetchMetadataFailed, this, [this, resource] {
+        auto fw = new QFutureWatcher<QByteArray>(this);
+        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, installation, resource));
+        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, installation, resource, fw, runtimeUrl]() {
+            const auto metadata = fw->result();
             // Even when we failed to fetch information about runtime we still want to show the application
-            addResource(resource);
-        });
-        connect(job, &FlatpakFetchDataJob::jobFetchMetadataFinished, this, [this, runtimeUrl] (FlatpakInstallation *installation, FlatpakResource *resource, const QByteArray &metadata) {
-            Q_UNUSED(installation);
-
-            updateAppMetadata(resource, metadata);
-
-            auto runtime = getRuntimeForApp(resource);
-            if (!runtime || (runtime && !runtime->isInstalled())) {
-                FlatpakFetchRemoteResourceJob *fetchRemoteResource = new FlatpakFetchRemoteResourceJob(runtimeUrl, this);
-                connect(fetchRemoteResource, &FlatpakFetchRemoteResourceJob::jobFinished, this, [this, resource] (bool success, FlatpakResource *repoResource) {
-                    if (success) {
-                        installApplication(repoResource);
-                    }
-                    addResource(resource);
-                });
-                fetchRemoteResource->start();
-                return;
+            if (metadata.isEmpty()) {
+                onFetchMetadataFinished(installation, resource, metadata);
             } else {
-                addResource(resource);
+                updateAppMetadata(resource, metadata);
+
+                auto runtime = getRuntimeForApp(resource);
+                if (!runtime || (runtime && !runtime->isInstalled())) {
+                    FlatpakFetchRemoteResourceJob *fetchRemoteResource = new FlatpakFetchRemoteResourceJob(runtimeUrl, this);
+                    connect(fetchRemoteResource, &FlatpakFetchRemoteResourceJob::jobFinished, this, [this, resource] (bool success, FlatpakResource *repoResource) {
+                        if (success) {
+                            installApplication(repoResource);
+                        }
+                        addResource(resource);
+                    });
+                    fetchRemoteResource->start();
+                    return;
+                } else {
+                    addResource(resource);
+                }
             }
+            fw->deleteLater();
         });
-        job->start();
     } else {
         addResource(resource);
     }
@@ -723,12 +727,23 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
     }
 }
 
-void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation *flatpakInstallation)
+void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation* installation)
 {
-    FlatpakFetchUpdatesJob *job = new FlatpakFetchUpdatesJob(flatpakInstallation);
-    connect(job, &FlatpakFetchUpdatesJob::finished, job, &FlatpakFetchUpdatesJob::deleteLater);
-    connect(job, &FlatpakFetchUpdatesJob::jobFetchUpdatesFinished, this, &FlatpakBackend::onFetchUpdatesFinished);
-    job->start();
+    auto fw = new QFutureWatcher<GPtrArray *>(this);
+    fw->setFuture(QtConcurrent::run(&m_threadPool, [installation]() -> GPtrArray * {
+        g_autoptr(GCancellable) cancellable = g_cancellable_new();
+        g_autoptr(GError) localError = nullptr;
+        GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
+        if (!refs) {
+            qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
+        }
+        return refs;
+    }));
+    connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw](){
+        auto refs = fw->result();
+        onFetchUpdatesFinished(installation, refs);
+        fw->deleteLater();
+    });
 }
 
 void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates)
@@ -771,10 +786,11 @@ class FlatpakRefreshAppstreamMetadataJob : public QThread
 public:
     FlatpakRefreshAppstreamMetadataJob(FlatpakInstallation *installation, FlatpakRemote *remote)
         : QThread()
+        , m_cancellable(g_cancellable_new())
         , m_installation(installation)
         , m_remote(remote)
     {
-        m_cancellable = g_cancellable_new();
+        connect(this, &FlatpakRefreshAppstreamMetadataJob::finished, this, &QObject::deleteLater);
     }
 
     ~FlatpakRefreshAppstreamMetadataJob()
@@ -818,7 +834,6 @@ private:
 void FlatpakBackend::refreshAppstreamMetadata(FlatpakInstallation *installation, FlatpakRemote *remote)
 {
     FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
-    connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
     connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
     job->start();
 }
@@ -884,10 +899,15 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
     if (QFile::exists(path)) {
         return updateAppMetadata(resource, path);
     } else {
-        FlatpakFetchDataJob *job = new FlatpakFetchDataJob(flatpakInstallation, resource, FlatpakFetchDataJob::FetchMetadata);
-        connect(job, &FlatpakFetchDataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
-        connect(job, &FlatpakFetchDataJob::jobFetchMetadataFinished, this, &FlatpakBackend::onFetchMetadataFinished);
-        job->start();
+        auto fw = new QFutureWatcher<QByteArray>(this);
+        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, flatpakInstallation, resource));
+        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, flatpakInstallation, resource, fw]() {
+            const auto metadata = fw->result();
+            if (!metadata.isEmpty())
+                onFetchMetadataFinished(flatpakInstallation, resource, metadata);
+            fw->deleteLater();
+        });
+
         // Return false to indicate we cannot continue (right now used only in updateAppSize())
         return false;
     }
@@ -996,14 +1016,18 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
             return false;
         }
 
-        FlatpakFetchDataJob *job = new FlatpakFetchDataJob(flatpakInstallation, resource, FlatpakFetchDataJob::FetchSize);
-        connect(job, &FlatpakFetchDataJob::finished, job, &FlatpakFetchDataJob::deleteLater);
-        connect(job, &FlatpakFetchDataJob::jobFetchSizeFinished, this, &FlatpakBackend::onFetchSizeFinished);
-        connect(job, &FlatpakFetchDataJob::jobFetchSizeFailed, [resource] () {
-            resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::UnknownOrFailed);
-            resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::UnknownOrFailed);
+        auto futureWatcher = new QFutureWatcher<FlatpakRunnables::SizeInformation>(this);
+        futureWatcher->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchFlatpakSize, flatpakInstallation, resource));
+        connect(futureWatcher, &QFutureWatcher<FlatpakRunnables::SizeInformation>::finished, this, [this, resource, futureWatcher]() {
+            auto value = futureWatcher->result();
+            if (value.valid) {
+                onFetchSizeFinished(resource, value.downloadSize, value.installedSize);
+            } else {
+                resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::UnknownOrFailed);
+                resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::UnknownOrFailed);
+            }
+            futureWatcher->deleteLater();
         });
-        job->start();
     }
 
     return true;

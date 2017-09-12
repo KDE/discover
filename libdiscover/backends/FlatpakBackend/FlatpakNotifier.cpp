@@ -20,12 +20,13 @@
  ***************************************************************************/
 
 #include "FlatpakNotifier.h"
-#include "FlatpakFetchUpdatesJob.h"
 
 #include <glib.h>
 
 #include <QDebug>
 #include <QTimer>
+#include <QtConcurrentRun>
+#include <QFutureWatcher>
 
 static void installationChanged(GFileMonitor *monitor, GFile *child, GFile *other_file, GFileMonitorEvent event_type, gpointer self)
 {
@@ -131,12 +132,23 @@ void FlatpakNotifier::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstall
     }
 }
 
-void FlatpakNotifier::loadRemoteUpdates(FlatpakInstallation *flatpakInstallation)
+void FlatpakNotifier::loadRemoteUpdates(FlatpakInstallation *installation)
 {
-    FlatpakFetchUpdatesJob *job = new FlatpakFetchUpdatesJob(flatpakInstallation);
-    connect(job, &FlatpakFetchUpdatesJob::finished, job, &FlatpakFetchUpdatesJob::deleteLater);
-    connect(job, &FlatpakFetchUpdatesJob::jobFetchUpdatesFinished, this, &FlatpakNotifier::onFetchUpdatesFinished);
-    job->start();
+    auto fw = new QFutureWatcher<GPtrArray *>(this);
+    fw->setFuture(QtConcurrent::run( [installation]() -> GPtrArray * {
+        g_autoptr(GCancellable) cancellable = g_cancellable_new();
+        g_autoptr(GError) localError = nullptr;
+        GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
+        if (!refs) {
+            qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
+        }
+        return refs;
+    }));
+    connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw](){
+        auto refs = fw->result();
+        onFetchUpdatesFinished(installation, refs);
+        fw->deleteLater();
+    });
 }
 
 bool FlatpakNotifier::setupFlatpakInstallations(GError **error)

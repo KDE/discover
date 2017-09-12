@@ -6,20 +6,19 @@ set(flatpak-backend_SRCS
     FlatpakResource.cpp
     FlatpakBackend.cpp
     FlatpakFetchDataJob.cpp
-    FlatpakFetchUpdatesJob.cpp
     FlatpakSourcesBackend.cpp
     FlatpakTransaction.cpp
     FlatpakTransactionJob.cpp
 )
 
 add_library(flatpak-backend MODULE ${flatpak-backend_SRCS})
-target_link_libraries(flatpak-backend Qt5::Core Qt5::Widgets KF5::CoreAddons KF5::ConfigCore Discover::Common AppStreamQt ${FLATPAK_LIBRARIES})
+target_link_libraries(flatpak-backend Qt5::Core Qt5::Widgets Qt5::Concurrent KF5::CoreAddons KF5::ConfigCore Discover::Common AppStreamQt ${FLATPAK_LIBRARIES})
 
 install(TARGETS flatpak-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
 install(FILES flatpak-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 
-add_library(FlatpakNotifier MODULE FlatpakNotifier.cpp FlatpakFetchUpdatesJob.cpp)
-target_link_libraries(FlatpakNotifier Discover::Notifiers ${FLATPAK_LIBRARIES})
+add_library(FlatpakNotifier MODULE FlatpakNotifier.cpp)
+target_link_libraries(FlatpakNotifier Discover::Notifiers Qt5::Concurrent ${FLATPAK_LIBRARIES})
 set_target_properties(FlatpakNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 install(TARGETS FlatpakNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)

@@ -27,6 +27,7 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 #include <QSharedPointer>
+#include <QThreadPool>
 
 #include <AppStreamQt/component.h>
 
@@ -108,6 +109,7 @@ private:
 
     GCancellable *m_cancellable;
     QVector<FlatpakInstallation *> m_installations;
+    QThreadPool m_threadPool;
 };
 
 #endif // FLATPAKBACKEND_H
