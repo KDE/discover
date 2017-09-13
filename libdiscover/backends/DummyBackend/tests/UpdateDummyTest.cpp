@@ -66,6 +66,30 @@ private Q_SLOTS:
         }
     }
 
+    void testInformation()
+    {
+        ResourcesUpdatesModel* rum = new ResourcesUpdatesModel(this);
+        new ModelTest(rum, rum);
+
+        UpdateModel* m = new UpdateModel(this);
+        new ModelTest(m, m);
+        m->setBackend(rum);
+
+        rum->prepare();
+        QSignalSpy spySetup(m_appBackend->backendUpdater(), &AbstractBackendUpdater::progressingChanged);
+        QVERIFY(!m_appBackend->backendUpdater()->isProgressing() || spySetup.wait());
+        QCOMPARE(m_appBackend->updatesCount(), m_appBackend->property("startElements").toInt()*2/3);
+        QCOMPARE(m->hasUpdates(), true);
+
+        QCOMPARE(m->index(0,0).data(UpdateModel::ChangelogRole).toString(), {});
+
+        QSignalSpy spy(m, &QAbstractItemModel::dataChanged);
+        m->fetchChangelog(0);
+        QVERIFY(spy.count() || spy.wait());
+        QCOMPARE(spy.count(), 1);
+        delete m;
+    }
+
     void testUpdate()
     {
         ResourcesUpdatesModel* rum = new ResourcesUpdatesModel(this);
