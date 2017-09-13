@@ -60,6 +60,19 @@
 
 MUON_BACKEND_PLUGIN(FlatpakBackend)
 
+static QString idForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref)
+{
+    const FlatpakResource::ResourceType appType = flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime;
+    const QString name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
+    const QString appId = appType == FlatpakResource::DesktopApp ? QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))) + QStringLiteral(".desktop") : name;
+
+    const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
+    const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
+
+    return QStringLiteral("%1/%2/%3/%4/%5/%6").arg(FlatpakResource::installationPath(installation), QLatin1String("flatpak"), QString::fromUtf8(flatpak_installed_ref_get_origin(ref)),
+                                                   FlatpakResource::typeAsString(appType), appId, branch);
+}
+
 FlatpakBackend::FlatpakBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
@@ -182,58 +195,26 @@ FlatpakRemote * FlatpakBackend::getFlatpakRemoteByUrl(const QString &url, Flatpa
 
 FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource) const
 {
-    AppStream::Component component = resource->appstreamComponent();
-    AppStream::Component::Kind appKind = component.kind();
     FlatpakInstalledRef *ref = nullptr;
-    GPtrArray *installedApps = nullptr;
     g_autoptr(GError) localError = nullptr;
 
     if (!flatpakInstallation) {
         return ref;
     }
 
-    ref = flatpak_installation_get_installed_ref(flatpakInstallation,
-                                                 resource->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
+    const auto type = resource->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME;
+
+    return flatpak_installation_get_installed_ref(flatpakInstallation,
+                                                 type,
                                                  resource->flatpakName().toUtf8().constData(),
                                                  resource->arch().toUtf8().constData(),
                                                  resource->branch().toUtf8().constData(),
                                                  m_cancellable, &localError);
-
-    // If we found installed ref this way, we can return it
-    if (ref) {
-        return ref;
-    }
-
-    // Otherwise go through all installed apps and try to match info we have
-    installedApps = flatpak_installation_list_installed_refs_by_kind(flatpakInstallation,
-                                                                     appKind == AppStream::Component::KindDesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
-                                                                     m_cancellable, &localError);
-    if (!installedApps) {
-        return ref;
-    }
-
-    for (uint i = 0; i < installedApps->len; i++) {
-        FlatpakInstalledRef *installedRef = FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i));
-
-        // Check if the installed_reference and app_id are the same and update the app with installed metadata
-        if (compareAppFlatpakRef(flatpakInstallation, resource, installedRef)) {
-            return installedRef;
-        }
-    }
-
-    // We found nothing, return nullptr
-    return ref;
 }
 
 FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const
 {
-    foreach (FlatpakResource *resource, m_resources) {
-        if (compareAppFlatpakRef(flatpakInstallation, resource, ref)) {
-            return resource;
-        }
-    }
-
-    return nullptr;
+    return m_resources.value(idForInstalledRef(flatpakInstallation, ref));
 }
 
 FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) const
@@ -299,11 +280,10 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
 
         gsize len = 0;
         gconstpointer data = g_bytes_get_data(appstream, &len);
-        g_autofree gchar *appstreamContent = g_strndup((char*)data, len);
 
         AppStream::Metadata metadata;
         metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
-        AppStream::Metadata::MetadataError error = metadata.parse(QString::fromUtf8(appstreamContent), AppStream::Metadata::FormatKindXml);
+        AppStream::Metadata::MetadataError error = metadata.parse(QString::fromUtf8((char*)data, len), AppStream::Metadata::FormatKindXml);
         if (error != AppStream::Metadata::MetadataErrorNoError) {
             qWarning() << "Failed to parse appstream metadata: " << error;
             return nullptr;
@@ -520,35 +500,7 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
 
 bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref) const
 {
-    const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
-    const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
-    const FlatpakResource::ResourceType appType = flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime;
-
-    const QString name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
-    const QString appId = appType == FlatpakResource::DesktopApp ?
-            QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))) + QStringLiteral(".desktop") :
-            name;
-
-    const QString uniqueId = QStringLiteral("%1/%2/%3/%4/%5/%6").arg(FlatpakResource::installationPath(flatpakInstallation))
-                                                                   .arg(QLatin1String("flatpak"))
-                                                                   .arg(QString::fromUtf8(flatpak_installed_ref_get_origin(ref)))
-                                                                   .arg(FlatpakResource::typeAsString(appType))
-                                                                   .arg(appId)
-                                                                   .arg(branch);
-
-    // Compare uniqueId first then attempt to compare what we have
-    if (resource->uniqueId() == uniqueId) {
-        return true;
-    }
-
-    // Check if we have information about architecture and branch, otherwise compare names only
-    // Happens with apps which don't have appstream metadata bug got here thanks to installed desktop file
-    if (!resource->arch().isEmpty() && !resource->branch().isEmpty()) {
-        return resource->arch() == arch && resource->branch() == branch && (resource->flatpakName() == appId ||
-                                                                            resource->flatpakName() == name);
-    }
-
-    return resource->flatpakName() == appId || resource->flatpakName() == name;
+    return resource->uniqueId() == idForInstalledRef(flatpakInstallation, ref);
 }
 
 class FlatpakSource
@@ -630,8 +582,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
 
     setFetching(true);
     QList<AppStream::Component> components = metadata.components();
-    foreach (const AppStream::Component& component, components) {
-        AppStream::Component appstreamComponent(component);
+    foreach (const AppStream::Component& appstreamComponent, components) {
         FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
         resource->setIconPath(appstreamIconsPath);
         resource->setOrigin(source.name());
@@ -644,49 +595,64 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
 {
     Q_ASSERT(flatpakInstallation);
 
-    // List installed applications from installed desktop files
+    g_autoptr(GError) localError = nullptr;
+    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(flatpakInstallation, m_cancellable, &localError);
+    if (!refs) {
+        qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
+        return false;
+    }
+
     const QString pathExports = FlatpakResource::installationPath(flatpakInstallation) + QLatin1String("/exports/");
     const QString pathApps = pathExports + QLatin1String("share/applications/");
 
-    const QDir dir(pathApps);
-    if (dir.exists()) {
-        foreach (const auto &file, dir.entryInfoList( QDir::Files)) {
-            if (file.fileName() == QLatin1String("mimeinfo.cache")) {
-                continue;
+
+    for (uint i = 0; i < refs->len; i++) {
+        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+
+        const auto name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
+        const QString fnDesktop = pathApps + name + QLatin1String(".desktop");
+
+
+        g_autoptr(GError) gerror = nullptr;
+        auto md = flatpak_installed_ref_load_metadata(ref, m_cancellable, &gerror);
+        if (!md) {
+            qDebug() << "error message" << gerror->message;
+            continue;
+        }
+
+        gsize len = 0;
+        gconstpointer data = g_bytes_get_data(md, &len);
+
+        AppStream::Metadata metadata;
+        AppStream::Metadata::MetadataError error = metadata.parseDesktopData(QString::fromUtf8((const char*) data, len), name);
+        if (error != AppStream::Metadata::MetadataErrorNoError) {
+            qWarning() << "Failed to parse appstream metadata: " << error << fnDesktop;
+            continue;
+        }
+
+        AppStream::Component appstreamComponent(metadata.component());
+        FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
+
+        resource->setIconPath(pathExports);
+        resource->setState(AbstractResource::Installed);
+        resource->setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(ref)));
+        resource->updateFromRef(FLATPAK_REF(ref));
+
+        // Go through apps we already know about from appstream metadata
+        bool resourceExists = false;
+        foreach (FlatpakResource *res, m_resources) {
+            // Compare the only information we have
+            if (res->appstreamId() == QStringLiteral("%1.desktop").arg(resource->appstreamId()) && res->name() == resource->name()) {
+                resourceExists = true;
+                res->setState(resource->state());
+                break;
             }
+        }
 
-            const QString fnDesktop = file.absoluteFilePath();
-
-            AppStream::Metadata metadata;
-            AppStream::Metadata::MetadataError error = metadata.parseFile(fnDesktop, AppStream::Metadata::FormatKindDesktopEntry);
-            if (error != AppStream::Metadata::MetadataErrorNoError) {
-                qWarning() << "Failed to parse appstream metadata: " << error;
-                continue;
-            }
-
-            AppStream::Component appstreamComponent(metadata.component());
-            FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
-
-            resource->setIconPath(pathExports);
-            resource->setType(FlatpakResource::DesktopApp);
-            resource->setState(AbstractResource::Installed);
-
-            // Go through apps we already know about from appstream metadata
-            bool resourceExists = false;
-            foreach (FlatpakResource *res, m_resources) {
-                // Compare the only information we have
-                if (res->appstreamId() == QStringLiteral("%1.desktop").arg(resource->appstreamId()) && res->name() == resource->name()) {
-                    resourceExists = true;
-                    res->setState(resource->state());
-                    break;
-                }
-            }
-
-            if (!resourceExists) {
-                addResource(resource);
-            } else {
-                resource->deleteLater();
-            }
+        if (!resourceExists) {
+            addResource(resource);
+        } else {
+            resource->deleteLater();
         }
     }
 
