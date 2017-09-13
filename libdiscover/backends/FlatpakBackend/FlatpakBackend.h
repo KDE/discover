@@ -75,14 +75,14 @@ private:
     FlatpakInstallation * preferredInstallation() const { return m_installations.constFirst(); }
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     FlatpakRemote * getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
-    FlatpakInstalledRef * getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
-    FlatpakResource * getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref);
-    FlatpakResource * getRuntimeForApp(FlatpakResource *resource);
+    FlatpakInstalledRef * getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource) const;
+    FlatpakResource * getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const;
+    FlatpakResource * getRuntimeForApp(FlatpakResource *resource) const;
 
     FlatpakResource * addAppFromFlatpakBundle(const QUrl &url);
     FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
     void addResource(FlatpakResource *resource);
-    bool compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref);
+    bool compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref) const;
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);
     bool loadInstalledApps(FlatpakInstallation *flatpakInstallation);
     void loadLocalUpdates(FlatpakInstallation *flatpakInstallation);

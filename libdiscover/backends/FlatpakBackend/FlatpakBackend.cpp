@@ -180,7 +180,7 @@ FlatpakRemote * FlatpakBackend::getFlatpakRemoteByUrl(const QString &url, Flatpa
     return nullptr;
 }
 
-FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
+FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource) const
 {
     AppStream::Component component = resource->appstreamComponent();
     AppStream::Component::Kind appKind = component.kind();
@@ -225,7 +225,7 @@ FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakInstallation 
     return ref;
 }
 
-FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref)
+FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const
 {
     foreach (FlatpakResource *resource, m_resources) {
         if (compareAppFlatpakRef(flatpakInstallation, resource, ref)) {
@@ -236,7 +236,7 @@ FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *fla
     return nullptr;
 }
 
-FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource)
+FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) const
 {
     FlatpakResource *runtime = nullptr;
     const auto runtimeInfo = resource->runtime().split(QLatin1Char('/'));
@@ -518,7 +518,7 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
     m_resources.insert(resource->uniqueId(), resource);
 }
 
-bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref)
+bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref) const
 {
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
