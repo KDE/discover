@@ -184,7 +184,6 @@ void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& _res)
 
     sortedInsertion(res);
     fetchSubcategories();
-
 }
 
 void ResourcesProxyModel::invalidateSorting()
