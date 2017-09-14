@@ -78,7 +78,7 @@ class ElapsedDebug : private QElapsedTimer
 public:
     ElapsedDebug(const QString &name = QStringLiteral("<unnamed>")) : m_name(name) { start(); }
     ~ElapsedDebug() { qDebug("elapsed %s: %lld!", m_name.toUtf8().constData(), elapsed()); }
-    void step(const QString &step) { qDebug("step(%s) %s: %lld!", qPrintable(step), m_name.toUtf8().constData(), elapsed()); }
+    void step(const QString &step) { qDebug("step %s(%s): %lld!", m_name.toUtf8().constData(), qPrintable(step), elapsed()); }
 
     QString m_name;
 };
