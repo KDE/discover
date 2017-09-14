@@ -197,14 +197,14 @@ static QSet<Category*> walkCategories(AbstractResource* res, const QVector<Categ
     return ret;
 }
 
-QSet<Category*> AbstractResource::categoryObjects() const
+QSet<Category*> AbstractResource::categoryObjects(const QVector<Category*>& cats) const
 {
-    return walkCategories(const_cast<AbstractResource*>(this), CategoryModel::global()->rootCategories());
+    return walkCategories(const_cast<AbstractResource*>(this), cats);
 }
 
 QString AbstractResource::categoryDisplay() const
 {
-    const auto matchedCategories = categoryObjects();
+    const auto matchedCategories = categoryObjects(CategoryModel::global()->rootCategories());
     QStringList ret;
     foreach(auto cat, matchedCategories) {
         ret.append(cat->name());

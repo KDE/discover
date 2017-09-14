@@ -234,13 +234,15 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 
 void ResourcesProxyModel::fetchSubcategories()
 {
-    const auto cats = m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories();
+    auto cats = (m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories()).toList().toSet();
 
     const int count = rowCount();
     QSet<Category*> done;
-    for (int i=0; i<count; ++i) {
+    for (int i=0; i<count && !cats.isEmpty(); ++i) {
         AbstractResource* res = m_displayedResources[i];
-        done.unite(res->categoryObjects());
+        const auto found = res->categoryObjects(cats.toList().toVector());
+        done.unite(found);
+        cats.subtract(found);
     }
 
     const QVariantList ret = kTransform<QVariantList>(done, [](Category* cat) { return QVariant::fromValue<QObject*>(cat); });

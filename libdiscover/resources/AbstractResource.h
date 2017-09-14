@@ -181,7 +181,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
 
         bool categoryMatches(Category* cat);
 
-        QSet<Category*> categoryObjects() const;
+        QSet<Category*> categoryObjects(const QVector<Category*>& cats) const;
 
         /**
          * @returns a url that uniquely identifies the application
