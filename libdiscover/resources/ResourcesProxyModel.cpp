@@ -269,9 +269,12 @@ void ResourcesProxyModel::invalidateFilter()
     }
 
     m_currentStream = ResourcesModel::global()->search(m_filters);
-    beginResetModel();
-    m_displayedResources.clear();
-    endResetModel();
+
+    if (!m_displayedResources.isEmpty()) {
+        beginResetModel();
+        m_displayedResources.clear();
+        endResetModel();
+    }
 
     connect(m_currentStream, &AggregatedResultsStream::resourcesFound, this, [this](const QVector<AbstractResource*>& resources) {
         addResources(resources);
@@ -441,7 +444,7 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) 
 void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & resources)
 {
     Q_ASSERT(!resources.isEmpty());
-    if (m_sortByRelevancy) {
+    if (m_sortByRelevancy || m_displayedResources.isEmpty()) {
         int rows = rowCount();
         beginInsertRows({}, rows, rows+resources.count()-1);
         m_displayedResources += resources;
