@@ -42,7 +42,7 @@ DiscoverPage
         Navigation.openCategory(null, "")
     }
 
-    property bool compact: page.width < 500 || Helpers.isCompact
+    readonly property bool compact: page.width < 500 || !applicationWindow().wideScreen
 
     ListView {
         id: browsingView

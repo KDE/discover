@@ -37,7 +37,6 @@ Kirigami.ApplicationWindow
     readonly property var leftPage: window.stack.depth>0 ? window.stack.get(0) : null
 
     Component.onCompleted: {
-        Helpers.mainWindow = window
         if (app.isRoot)
             showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
     }
@@ -159,6 +158,7 @@ Kirigami.ApplicationWindow
     }
 
     globalDrawer: DiscoverDrawer {
+        wideScreen: window.wideScreen
         focus: true
     }
 
