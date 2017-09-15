@@ -28,6 +28,7 @@ import "navigation.js" as Navigation
 
 Kirigami.GlobalDrawer {
     id: drawer
+    property bool wideScreen: false
     bannerImageSource: "qrc:/banners/banner.svg"
     //make the left and bottom margins for search field the same
     topPadding: -searchField.height - leftPadding
@@ -131,12 +132,12 @@ Kirigami.GlobalDrawer {
         states: [
             State {
                 name: "full"
-                when: !Helpers.isCompact
+                when: drawer.wideScreen
                 PropertyChanges { target: drawer; drawerOpen: true }
             },
             State {
                 name: "compact"
-                when: Helpers.isCompact
+                when: !drawer.wideScreen
                 PropertyChanges { target: drawer; drawerOpen: false }
             }
         ]
@@ -188,6 +189,6 @@ Kirigami.GlobalDrawer {
 
     actions: createCategoryActions(CategoryModel.rootCategories)
 
-    modal: Helpers.isCompact
-    handleVisible: Helpers.isCompact
+    modal: !drawer.wideScreen
+    handleVisible: !drawer.wideScreen
 }

@@ -42,7 +42,7 @@ DiscoverPage {
     property alias allBackends: appsModel.allBackends
     property alias count: apps.count
     property alias listHeader: apps.header
-    property bool compact: page.width < 500 || Helpers.isCompact
+    property bool compact: page.width < 500 || !applicationWindow().wideScreen
 
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories
