@@ -184,7 +184,6 @@ void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& _res)
 
     sortedInsertion(res);
     fetchSubcategories();
-
 }
 
 void ResourcesProxyModel::invalidateSorting()
@@ -234,13 +233,15 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 
 void ResourcesProxyModel::fetchSubcategories()
 {
-    const auto cats = m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories();
+    auto cats = (m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories()).toList().toSet();
 
     const int count = rowCount();
     QSet<Category*> done;
-    for (int i=0; i<count; ++i) {
+    for (int i=0; i<count && !cats.isEmpty(); ++i) {
         AbstractResource* res = m_displayedResources[i];
-        done.unite(res->categoryObjects());
+        const auto found = res->categoryObjects(cats.toList().toVector());
+        done.unite(found);
+        cats.subtract(found);
     }
 
     const QVariantList ret = kTransform<QVariantList>(done, [](Category* cat) { return QVariant::fromValue<QObject*>(cat); });
@@ -267,9 +268,12 @@ void ResourcesProxyModel::invalidateFilter()
     }
 
     m_currentStream = ResourcesModel::global()->search(m_filters);
-    beginResetModel();
-    m_displayedResources.clear();
-    endResetModel();
+
+    if (!m_displayedResources.isEmpty()) {
+        beginResetModel();
+        m_displayedResources.clear();
+        endResetModel();
+    }
 
     connect(m_currentStream, &AggregatedResultsStream::resourcesFound, this, [this](const QVector<AbstractResource*>& resources) {
         addResources(resources);
@@ -439,7 +443,7 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) 
 void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & resources)
 {
     Q_ASSERT(!resources.isEmpty());
-    if (m_sortByRelevancy) {
+    if (m_sortByRelevancy || m_displayedResources.isEmpty()) {
         int rows = rowCount();
         beginInsertRows({}, rows, rows+resources.count()-1);
         m_displayedResources += resources;

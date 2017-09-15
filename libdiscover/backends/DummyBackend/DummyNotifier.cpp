@@ -49,5 +49,3 @@ uint DummyNotifier::updatesCount()
 {
     return 0;
 }
-
-#include "DummyNotifier.moc"

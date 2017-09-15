@@ -187,5 +187,3 @@ bool FlatpakNotifier::setupFlatpakInstallations(GError **error)
 
     return true;
 }
-
-#include "FlatpakNotifier.moc"
