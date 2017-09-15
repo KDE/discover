@@ -20,8 +20,6 @@
     <file>qml/ReviewDelegate.qml</file>
     <file>qml/Heading.qml</file>
     <file>qml/AddSourceDialog.qml</file>
-    <file>qml/MessageAction.qml</file>
-    <file>qml/JustMessageAction.qml</file>
     <file>qml/ConditionalLoader.qml</file>
     <file>qml/LinkButton.qml</file>
     <file>qml/ApplicationScreenshots.qml</file>
