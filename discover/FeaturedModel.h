@@ -30,6 +30,7 @@ class FeaturedModel : public QAbstractListModel
     Q_OBJECT
     public:
         FeaturedModel();
+        ~FeaturedModel() override {}
 
         void setResources(const QVector<AbstractResource*>& resources);
         QVariant data(const QModelIndex & index, int role) const override;
