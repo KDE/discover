@@ -31,7 +31,7 @@ Kirigami.GlobalDrawer {
     property bool wideScreen: false
     bannerImageSource: "qrc:/banners/banner.svg"
     //make the left and bottom margins for search field the same
-    topPadding: -searchField.height - leftPadding
+    topPadding: searchField.visible ? -searchField.height - leftPadding : 0
     bottomPadding: 0
 
     resetMenuOnTriggered: false
@@ -54,9 +54,11 @@ Kirigami.GlobalDrawer {
 
     }
 
-    topContent: TextField {
+    topContent: drawer.wideScreen ? searchField : null
+    TextField {
         id: searchField
         Layout.fillWidth: true
+        visible: drawer.wideScreen
 
         enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
         Keys.forwardTo: [window.pageStack]
@@ -116,6 +118,9 @@ Kirigami.GlobalDrawer {
             separatorVisible: false
         }
 
+        ActionListItem {
+            action: searchAction
+        }
         ActionListItem {
             action: installedAction
         }

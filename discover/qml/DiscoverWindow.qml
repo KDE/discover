@@ -16,6 +16,7 @@ Kirigami.ApplicationWindow
     //toplevels
     readonly property string topBrowsingComp: ("qrc:/qml/BrowsingPage.qml")
     readonly property string topInstalledComp: ("qrc:/qml/InstalledPage.qml")
+    readonly property string topSearchComp: ("qrc:/qml/SearchPage.qml")
     readonly property string topUpdateComp: ("qrc:/qml/UpdatesPage.qml")
     readonly property string topSourcesComp: ("qrc:/qml/SourcesPage.qml")
     readonly property string loadingComponent: ("qrc:/qml/LoadingPage.qml")
@@ -47,6 +48,16 @@ Kirigami.ApplicationWindow
         component: topBrowsingComp
         objectName: "discover"
         shortcut: "Alt+D"
+    }
+
+    TopLevelPageData {
+        id: searchAction
+        enabled: !window.wideScreen
+        iconName: "search"
+        text: i18n("Search")
+        component: topSearchComp
+        objectName: "discover"
+        shortcut: "Ctrl+F"
     }
     TopLevelPageData {
         id: installedAction

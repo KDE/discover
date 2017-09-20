@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2015 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2017 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,19 +18,14 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-import QtQml 2.0
-import QtQuick.Controls 2.0
-import org.kde.kirigami 2.0 as Kirigami
+import QtQuick.Controls 1.1
+import org.kde.discover 2.0
 
-Kirigami.BasicListItem {
-    property QtObject action: null
-    checked: action.checked
-    icon: action.iconName
-    label: action.text
-    separatorVisible: false
-    visible: action.enabled
-    onClicked: {
-        drawer.resetMenu()
-        action.trigger()
+ApplicationsListPage {
+    id: page
+
+    listHeaderExtra: TextField {
+        focus: true
+        onTextChanged: page.search = text
     }
 }
