@@ -17,14 +17,14 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.1
+import QtQuick 2.5
 import QtQuick.Controls 1.1
 import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.1 as Kirigami
 import "navigation.js" as Navigation
 
 DiscoverPage {
@@ -38,62 +38,9 @@ DiscoverPage {
 
     ReviewsPage {
         id: reviewsSheet
-        model: reviewsModel
-    }
-
-    pageOverlay: Item {
-        Rectangle {
-            color: Kirigami.Theme.viewBackgroundColor
-            anchors.fill: layo
-        }
-        RowLayout {
-            Binding {
-                target: appInfo
-                property: "bottomPadding"
-                value: layo.height + Kirigami.Units.largeSpacing
-            }
-            id: layo
-            anchors {
-                left: parent.left
-                right: parent.right
-                bottom: parent.bottom
-            }
-            Kirigami.BasicListItem {
-                implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
-                separatorVisible: false
-                Layout.fillWidth: false
-                icon: "draw-arrow-forward"
-                label: i18n("Close Description")
-                enabled: appInfo.sClose.enabled
-                onClicked: appInfo.sClose.activated()
-            }
-
-            Item {
-                Layout.fillWidth: true
-            }
-
-            spacing: 0
-
-            ToolButton {
-                Layout.minimumWidth: Kirigami.Units.gridUnit * 10
-                visible: application.isInstalled && application.canExecute
-                text: i18n("Launch")
-                onClicked: application.invokeApplication()
-            }
-
-            InstallApplicationButton {
-                application: appInfo.application
-                flat: true
-                Layout.minimumWidth: Kirigami.Units.gridUnit * 10
-            }
-        }
-        Kirigami.Separator {
-            anchors {
-                left: layo.left
-                right: layo.right
-                top: layo.top
-            }
-            z: 4000
+        model: ReviewsModel {
+            id: reviewsModel
+            resource: appInfo.application
         }
     }
 
@@ -138,153 +85,176 @@ DiscoverPage {
         }
     }
 
-    ColumnLayout {
-        RowLayout {
-            Layout.fillWidth: true
-            spacing: Kirigami.Units.gridUnit
-            Kirigami.Icon {
-                Layout.preferredHeight: 128
-                Layout.preferredWidth: 128
+    ListView {
+        headerPositioning: ListView.OverlayHeader
+        header: Kirigami.ItemViewHeader {
+            maximumHeight: minimumHeight
 
-                source: appInfo.application.icon
-                Layout.alignment: Qt.AlignVCenter
+            contentItem: Item {
+                RowLayout {
+                    anchors.fill: parent
+                    spacing: 0
+
+                    ToolButton {
+                        iconName: "draw-arrow-back"
+                        tooltip: i18n("Close Description")
+                        enabled: appInfo.sClose.enabled
+                        onClicked: appInfo.sClose.activated()
+                    }
+                    Kirigami.Icon {
+                        Layout.preferredHeight: Kirigami.Units.gridUnit * 2
+                        Layout.preferredWidth: Kirigami.Units.gridUnit * 2
+
+                        source: appInfo.application.icon
+                        Layout.alignment: Qt.AlignVCenter
+                    }
+                    Heading {
+                        id: title
+                        text: appInfo.application.name
+                        Layout.fillWidth: true
+                        elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignHCenter
+                    }
+
+                    InstallApplicationButton {
+                        application: appInfo.application
+                    }
+
+                    ToolButton {
+                        anchors.right: parent.right
+                        iconName: "preferences-other"
+                        visible: application.isInstalled && application.canExecute
+                        menu: Menu {
+                            MenuItem {
+                                text: i18n("Launch")
+                                onTriggered: application.invokeApplication()
+                            }
+                        }
+                    }
+                }
             }
-            ColumnLayout {
-                id: conts
+        }
 
+        model: 1
+        delegate: ColumnLayout {
+            x: Kirigami.Units.gridUnit
+            y: Kirigami.Units.gridUnit
+            width: ListView.view.width - Kirigami.Units.gridUnit * 2
+            spacing: 0
+
+            Label {
+                Layout.topMargin: Kirigami.Units.largeSpacing
+                Layout.fillWidth: true
+                text: appInfo.application.comment
+                wrapMode: Text.WordWrap
+                elide: Text.ElideRight
+                maximumLineCount: 1
+            }
+            Label {
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                text: appInfo.application.categoryDisplay
+                color: Kirigami.Theme.linkColor
+            }
+
+            Item {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.topMargin: Kirigami.Units.largeSpacing
-                Layout.bottomMargin: Kirigami.Units.largeSpacing
-                spacing: 0
-
-                Heading {
-                    id: title
-                    text: appInfo.application.name
-                    Layout.fillWidth: true
-                    elide: Text.ElideRight
-                }
-                Rectangle {
-                    color: Kirigami.Theme.linkColor
-                    Layout.fillWidth: true
-                    height: 1
-                }
-                Label {
-                    Layout.fillWidth: true
-                    text: appInfo.application.comment
-                    wrapMode: Text.WordWrap
-                    elide: Text.ElideRight
-                    maximumLineCount: 1
-                }
-                Label {
-                    Layout.fillWidth: true
-                    elide: Text.ElideRight
-                    text: appInfo.application.categoryDisplay
-                    color: Kirigami.Theme.linkColor
-                }
-
-                Item {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                }
-                Label {
-                    readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
-                    visible: version.length > 0
-                    text: version ? i18n("Version: %1", version) : ""
-                }
-                Label {
-                    text: i18n("Size: %1", appInfo.application.sizeDescription)
-                }
-                RowLayout {
-                    Label {
-                        text: i18n("Source:")
-                    }
-                    LinkButton {
-                        enabled: alternativeResourcesView.count > 1
-                        text: appInfo.application.displayOrigin
-                        onClicked: originsOverlay.open()
-                    }
-                }
-                RowLayout {
-                    Label {
-                        text: i18n("License:")
-                    }
-                    LinkButton {
-                        text: appInfo.application.license
-//                         tooltip: i18n("See full license terms")
-                        onClicked: Qt.openUrlExternally("https://spdx.org/licenses/" + appInfo.application.license + ".html#licenseText")
-                    }
-                }
             }
-        }
-
-        ApplicationScreenshots {
-            Layout.fillWidth: true
-            resource: appInfo.application
-            page: appInfo
-        }
-
-        Heading {
-            text: i18n("Description")
-            Layout.fillWidth: true
-            visible: appInfo.application.longDescription.length > 0
-        }
-        Kirigami.Label {
-            Layout.fillWidth: true
-            horizontalAlignment: Text.AlignJustify
-            wrapMode: Text.WordWrap
-            text: appInfo.application.longDescription + originsOverlay.sentence
-            onLinkActivated: {
-                var idx = parseInt(link, 10)
-                var res = originsOverlay.model.resourceAt(idx)
-                window.stack.pop()
-                Navigation.openApplication(res)
-            }
-        }
-
-        RowLayout {
-            visible: button.text.length > 0
             Label {
-                text: i18n("Homepage: ")
+                readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
+                visible: version.length > 0
+                text: version ? i18n("Version: %1", version) : ""
+            }
+            Label {
+                text: i18n("Size: %1", appInfo.application.sizeDescription)
+            }
+            RowLayout {
+                Label {
+                    text: i18n("Source:")
+                }
+                LinkButton {
+                    enabled: alternativeResourcesView.count > 1
+                    text: appInfo.application.displayOrigin
+                    onClicked: originsOverlay.open()
+                }
+            }
+            RowLayout {
+                Label {
+                    text: i18n("License:")
+                }
+                LinkButton {
+                    text: appInfo.application.license
+//                         tooltip: i18n("See full license terms")
+                    onClicked: Qt.openUrlExternally("https://spdx.org/licenses/" + appInfo.application.license + ".html#licenseText")
+                }
+            }
+
+            ApplicationScreenshots {
+                Layout.topMargin: Kirigami.Units.largeSpacing
+                Layout.fillWidth: true
+                resource: appInfo.application
+                page: appInfo
+            }
+
+            Heading {
+                Layout.topMargin: Kirigami.Units.largeSpacing
+                text: i18n("Description")
+                Layout.fillWidth: true
+                visible: appInfo.application.longDescription.length > 0
+            }
+            Kirigami.Label {
+                Layout.fillWidth: true
+                horizontalAlignment: Text.AlignJustify
+                wrapMode: Text.WordWrap
+                text: appInfo.application.longDescription + originsOverlay.sentence
+                onLinkActivated: {
+                    var idx = parseInt(link, 10)
+                    var res = originsOverlay.model.resourceAt(idx)
+                    window.stack.pop()
+                    Navigation.openApplication(res)
+                }
+            }
+
+            RowLayout {
+                visible: button.text.length > 0
+                Label {
+                    text: i18n("Homepage: ")
+                }
+                LinkButton {
+                    id: button
+                    text: application.homepage
+                    onClicked: Qt.openUrlExternally(application.homepage)
+                }
+            }
+
+            LinkButton {
+                id: addonsButton
+                text: i18n("Addons")
+                visible: addonsView.containsAddons
+                onClicked: addonsView.sheetOpen = true
+            }
+
+            LinkButton {
+                text: i18n("Review")
+                onClicked: reviewsSheet.openReviewDialog()
+                visible: !commentsButton.visible && reviewsModel.backend.isResourceSupported(appInfo.application)
             }
             LinkButton {
-                id: button
-                text: application.homepage
-                onClicked: Qt.openUrlExternally(application.homepage)
-            }
-        }
+                id: commentsButton
+                readonly property QtObject rating: appInfo.application.rating
+                visible: rating && rating.ratingCount>0 && reviewsModel.count
+                text: i18n("Show reviews (%1)...", rating ? reviewsModel.count : 0)
 
-        LinkButton {
-            id: addonsButton
-            text: i18n("Addons")
-            visible: addonsView.containsAddons
-            onClicked: addonsView.sheetOpen = true
-        }
-
-        LinkButton {
-            text: i18n("Review")
-            onClicked: reviewsSheet.openReviewDialog()
-            visible: !commentsButton.visible && reviewsModel.backend.isResourceSupported(appInfo.application)
-        }
-        LinkButton {
-            id: commentsButton
-            readonly property QtObject rating: appInfo.application.rating
-            visible: rating && rating.ratingCount>0 && reviewsModel.count
-            text: i18n("Show reviews (%1)...", rating ? reviewsModel.count : 0)
-
-            ReviewsModel {
-                id: reviewsModel
-                resource: appInfo.application
+                onClicked: {
+                    reviewsSheet.open()
+                }
             }
 
-            onClicked: {
-                reviewsSheet.open()
+            Item {
+                height: addonsButton.height
+                width: 5
             }
-        }
-
-        Item {
-            height: addonsButton.height
-            width: 5
         }
     }
 
