@@ -120,16 +120,11 @@ DiscoverPage {
                         application: appInfo.application
                     }
 
-                    ToolButton {
+                    Button {
                         anchors.right: parent.right
-                        iconName: "preferences-other"
                         visible: application.isInstalled && application.canExecute
-                        menu: Menu {
-                            MenuItem {
-                                text: i18n("Launch")
-                                onTriggered: application.invokeApplication()
-                            }
-                        }
+                        text: i18n("Launch")
+                        onClicked: application.invokeApplication()
                     }
                 }
             }
