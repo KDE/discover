@@ -97,7 +97,7 @@ DiscoverPage {
 
                     ToolButton {
                         iconName: "draw-arrow-back"
-                        tooltip: i18n("Close Description")
+                        tooltip: i18n("Back")
                         enabled: appInfo.sClose.enabled
                         onClicked: appInfo.sClose.activated()
                     }
