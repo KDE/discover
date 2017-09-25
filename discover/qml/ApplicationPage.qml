@@ -111,6 +111,7 @@ DiscoverPage {
                     Heading {
                         id: title
                         text: appInfo.application.name
+                        maximumLineCount: 1
                         Layout.fillWidth: true
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignHCenter
