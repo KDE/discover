@@ -94,7 +94,7 @@ Item
     }
 
     function waitForRendering() {
-        return waitForSignal(Helpers.mainWindow, "frameSwapped")
+        return waitForSignal(appRoot, "frameSwapped")
     }
 
     property string currentTest: "<null>"
