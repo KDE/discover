@@ -19,7 +19,6 @@
 
 #include "DiscoverMainWindow.h"
 #include "PaginateModel.h"
-#include "SystemFonts.h"
 #include "UnityLauncher.h"
 #include "FeaturedModel.h"
 #include "CachedNetworkAccessManager.h"
@@ -90,7 +89,6 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
     qmlRegisterType<QSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
 
-    qmlRegisterSingletonType<SystemFonts>("org.kde.discover.app", 1, 0, "SystemFonts", ([](QQmlEngine*, QJSEngine*) -> QObject* { return new SystemFonts; }));
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/DiscoverSystemPalette.qml")), "org.kde.discover.app", 1, 0, "DiscoverSystemPalette");
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/Helpers.qml")), "org.kde.discover.app", 1, 0, "Helpers");
     qmlRegisterType<QQuickView>();

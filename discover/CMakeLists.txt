@@ -13,7 +13,6 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
 
     FeaturedModel.cpp
     PaginateModel.cpp
-    SystemFonts.cpp
     UnityLauncher.cpp
 )
 add_executable(Plasma::Discover ALIAS plasma-discover)

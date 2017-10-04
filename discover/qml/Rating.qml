@@ -20,7 +20,6 @@
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
-import org.kde.discover.app 1.0
 import org.kde.kirigami 2.0 as Kirigami
 
 RowLayout
@@ -29,7 +28,7 @@ RowLayout
     property bool editable: false
     property int max: 10
     property int rating: 2
-    property real starSize: SystemFonts.generalFont.pointSize*2
+    property real starSize: Kirigami.Units.gridUnit
 
     clip: true
     spacing: 0
