@@ -1,4 +1,5 @@
 import QtQuick.Controls 1.2
+import QtQuick.Controls 2.1 as QQC2
 import QtQuick.Layouts 1.1
 import QtQuick 2.4
 import org.kde.discover 2.0
@@ -61,7 +62,7 @@ DiscoverPage
                     Layout.leftMargin: Kirigami.Units.gridUnit
                     text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
                 }
-                Label {
+                QQC2.Label {
                     text: i18n("updates selected")
                 }
                 LabelBackground {
@@ -70,7 +71,7 @@ DiscoverPage
                     text: unselected
                     visible: unselected>0
                 }
-                Label {
+                QQC2.Label {
                     text: i18n("updates not selected")
                     visible: unselectedItem.visible
                 }
@@ -160,7 +161,7 @@ DiscoverPage
                         source: decoration
                     }
 
-                    Label {
+                    QQC2.Label {
                         Layout.fillWidth: true
                         text: i18n("%1 (%2)", display, version)
                         elide: Text.ElideRight
@@ -181,7 +182,7 @@ DiscoverPage
                     frameVisible: true
                     visible: layout.extended && changelog.length>0
 
-                    Label {
+                    QQC2.Label {
                         width: view.viewport.width
                         text: changelog
                         textFormat: Text.RichText

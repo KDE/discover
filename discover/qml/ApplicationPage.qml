@@ -19,6 +19,7 @@
 
 import QtQuick 2.5
 import QtQuick.Controls 1.1
+import QtQuick.Controls 2.1 as QQC2
 import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
@@ -138,7 +139,7 @@ DiscoverPage {
             width: ListView.view.width - Kirigami.Units.gridUnit * 2
             spacing: 0
 
-            Label {
+            QQC2.Label {
                 Layout.topMargin: Kirigami.Units.largeSpacing
                 Layout.fillWidth: true
                 text: appInfo.application.comment
@@ -146,7 +147,7 @@ DiscoverPage {
                 elide: Text.ElideRight
                 maximumLineCount: 1
             }
-            Label {
+            QQC2.Label {
                 Layout.fillWidth: true
                 elide: Text.ElideRight
                 text: appInfo.application.categoryDisplay
@@ -157,16 +158,16 @@ DiscoverPage {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
-            Label {
+            QQC2.Label {
                 readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
                 visible: version.length > 0
                 text: version ? i18n("Version: %1", version) : ""
             }
-            Label {
+            QQC2.Label {
                 text: i18n("Size: %1", appInfo.application.sizeDescription)
             }
             RowLayout {
-                Label {
+                QQC2.Label {
                     text: i18n("Source:")
                 }
                 LinkButton {
@@ -176,7 +177,7 @@ DiscoverPage {
                 }
             }
             RowLayout {
-                Label {
+                QQC2.Label {
                     text: i18n("License:")
                 }
                 LinkButton {
@@ -199,7 +200,7 @@ DiscoverPage {
                 Layout.fillWidth: true
                 visible: appInfo.application.longDescription.length > 0
             }
-            Kirigami.Label {
+            QQC2.Label {
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignJustify
                 wrapMode: Text.WordWrap
@@ -214,7 +215,7 @@ DiscoverPage {
 
             RowLayout {
                 visible: button.text.length > 0
-                Label {
+                QQC2.Label {
                     text: i18n("Homepage: ")
                 }
                 LinkButton {

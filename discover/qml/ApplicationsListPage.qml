@@ -19,6 +19,7 @@
 
 import QtQuick 2.5
 import QtQuick.Controls 1.1
+import QtQuick.Controls 2.1 as QQC2
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
 import "navigation.js" as Navigation
@@ -58,7 +59,7 @@ DiscoverPage {
 
     ListView {
         id: apps
-        section.delegate: Label {
+        section.delegate: QQC2.Label {
             text: section
             anchors {
                 right: parent.right
@@ -86,7 +87,7 @@ DiscoverPage {
             compact: page.compact
         }
 
-        Kirigami.Label {
+        QQC2.Label {
             anchors.centerIn: parent
             opacity: apps.count == 0 && !appsModel.isBusy ? 0.3 : 0
             Behavior on opacity { PropertyAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad; } }
@@ -131,7 +132,7 @@ DiscoverPage {
                     }
                 }
             ]
-            Kirigami.Label {
+            QQC2.Label {
                 id: busyLabel
                 anchors {
                     horizontalCenter: parent.horizontalCenter

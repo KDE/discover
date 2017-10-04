@@ -19,6 +19,7 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Controls 2.1 as QQC2
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover.app 1.0
@@ -76,7 +77,7 @@ Kirigami.AbstractListItem
                     Layout.minimumWidth: Math.min(implicitWidth, conts.width)
                     maximumLineCount: 1
                 }
-                Label {
+                QQC2.Label {
                     Layout.fillWidth: true
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignRight
@@ -92,7 +93,7 @@ Kirigami.AbstractListItem
                 height: Kirigami.Units.devicePixelRatio
             }
 
-            Label {
+            QQC2.Label {
                 Layout.fillWidth: true
 
                 elide: Text.ElideRight
@@ -101,7 +102,7 @@ Kirigami.AbstractListItem
                 font: SystemFonts.titleFont
             }
 
-            Label {
+            QQC2.Label {
                 Layout.fillWidth: true
 
                 horizontalAlignment: Text.AlignJustify

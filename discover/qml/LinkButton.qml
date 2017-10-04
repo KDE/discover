@@ -1,7 +1,8 @@
 import QtQuick 2.2
 import org.kde.kirigami 2.0 as Kirigami
+import QtQuick.Controls 2.1 as QQC2
 
-Kirigami.Label {
+QQC2.Label {
     id: control
 
     property QtObject action: null //some older Qt versions don't support the namespacing in Kirigami.Action
