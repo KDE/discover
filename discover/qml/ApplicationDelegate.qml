@@ -70,7 +70,8 @@ Kirigami.AbstractListItem
 
             RowLayout {
                 Layout.fillWidth: true
-                Heading {
+                Kirigami.Heading {
+                    level: 3
                     Layout.fillWidth: true
                     elide: Text.ElideRight
                     text: delegateArea.application.name

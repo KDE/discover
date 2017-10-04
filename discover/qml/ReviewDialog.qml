@@ -17,7 +17,7 @@ Kirigami.OverlaySheet
     signal accepted()
 
     ColumnLayout {
-        Heading { text: i18n("Reviewing '%1'", application.name) }
+        Kirigami.Heading { level: 3; text: i18n("Reviewing '%1'", application.name) }
         Label { text: i18n("Rating:") }
         Rating {
             id: ratingInput

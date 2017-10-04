@@ -109,8 +109,8 @@ DiscoverPage {
                         source: appInfo.application.icon
                         Layout.alignment: Qt.AlignVCenter
                     }
-                    Heading {
-                        id: title
+                    Kirigami.Heading {
+                        level: 3
                         text: appInfo.application.name
                         maximumLineCount: 1
                         Layout.fillWidth: true
@@ -194,7 +194,8 @@ DiscoverPage {
                 page: appInfo
             }
 
-            Heading {
+            Kirigami.Heading {
+                level: 3
                 Layout.topMargin: Kirigami.Units.largeSpacing
                 text: i18n("Description")
                 Layout.fillWidth: true

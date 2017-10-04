@@ -20,7 +20,8 @@ Kirigami.OverlaySheet
         enabled: !addonsView.isInstalling
         spacing: 5
 
-        Heading {
+        Kirigami.Heading {
+            level: 3
             text: i18n("Addons")
         }
 
