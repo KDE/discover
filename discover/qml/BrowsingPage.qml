@@ -42,6 +42,8 @@ DiscoverPage
         Navigation.openCategory(null, "")
     }
 
+    signal clearSearch()
+
     readonly property bool compact: page.width < 500 || !applicationWindow().wideScreen
 
     ListView {

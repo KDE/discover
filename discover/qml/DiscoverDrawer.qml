@@ -31,7 +31,7 @@ Kirigami.GlobalDrawer {
     property bool wideScreen: false
     bannerImageSource: "qrc:/banners/banner.svg"
     //make the left and bottom margins for search field the same
-    topPadding: searchField.visible ? -searchField.height - leftPadding : 0
+    topPadding: drawer.wideScreen ? -toploader.height - leftPadding : 0
     bottomPadding: 0
 
     resetMenuOnTriggered: false
@@ -40,69 +40,76 @@ Kirigami.GlobalDrawer {
         Navigation.openHome();
     }
 
+    property string currentSearchText
+
     onCurrentSubMenuChanged: {
         if (currentSubMenu)
             currentSubMenu.trigger()
-        else if (searchField.text !== "")
+        else if (currentSearchText.length >= 0)
             window.leftPage.category = null
         else
             Navigation.openHome()
 
     }
 
-    topContent: drawer.wideScreen ? searchField : null
-    TextField {
-        id: searchField
+    topContent: ConditionalLoader {
+        id: toploader
+        condition: drawer.wideScreen
         Layout.fillWidth: true
-        visible: drawer.wideScreen
+        componentTrue: TextField {
+            id: searchField
+            visible: drawer.wideScreen
 
-        enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
-        Keys.forwardTo: [window.pageStack]
+            enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
+            Keys.forwardTo: [window.pageStack]
 
-        Component.onCompleted: {
-            searchField.forceActiveFocus()
-        }
-        Shortcut {
-            sequence: "Ctrl+F"
-            onActivated: {
+            Component.onCompleted: {
                 searchField.forceActiveFocus()
-                searchField.selectAll()
             }
-        }
-
-        placeholderText: (!enabled || !window.leftPage || window.leftPage.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
-        onTextChanged: {
-            if(window.stack.depth > 0)
-                searchTimer.running = true
-        }
-
-        Connections {
-            ignoreUnknownSignals: true
-            target: window.leftPage
-            onClearSearch: {
-                searchField.text = ""
+            Shortcut {
+                sequence: "Ctrl+F"
+                onActivated: {
+                    searchField.forceActiveFocus()
+                    searchField.selectAll()
+                }
             }
-        }
 
-        Connections {
-            target: window
-            onLeftPageChanged: {
-                searchField.text = ""
+            placeholderText: (!enabled || !window.leftPage || window.leftPage.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
+            onTextChanged: {
+                if(window.stack.depth > 0)
+                    searchTimer.running = true
+                drawer.currentSearchText = text
             }
-        }
 
-        Timer {
-            id: searchTimer
-            running: false
-            repeat: false
-            interval: 200
-            onTriggered: {
-                var curr = window.leftPage;
-                if (!curr.hasOwnProperty("search")) {
-                    Navigation.clearStack()
-                    Navigation.openApplicationList( { search: parent.text })
-                } else
-                    curr.search = parent.text;
+            Connections {
+                ignoreUnknownSignals: true
+                target: window.leftPage
+                onClearSearch: {
+                    searchField.text = ""
+                }
+            }
+
+            Connections {
+                target: window
+                onCurrentTopLevelChanged: {
+                    if (window.currentTopLevel.length > 0)
+                        searchField.text = ""
+                }
+            }
+
+            Timer {
+                id: searchTimer
+                running: false
+                repeat: false
+                interval: 200
+                onTriggered: {
+                    var curr = window.leftPage;
+                    if (!curr.hasOwnProperty("search")) {
+                        Navigation.clearStack()
+                        Navigation.openApplicationList( { search: parent.text })
+                    } else
+                        curr.search = parent.text;
+                }
             }
         }
     }
@@ -170,12 +177,12 @@ Kirigami.GlobalDrawer {
             visible: (!window.leftPage
                    || !window.leftPage.subcategories
                    || window.leftPage.subcategories === undefined
-                   || searchField.text.length === 0
+                   || currentSearchText.length === 0
                    || (category && category.contains(window.leftPage.subcategories))
                      )
             onTriggered: {
                 if (!window.leftPage.canNavigate)
-                    Navigation.openCategory(category, searchField.text)
+                    Navigation.openCategory(category, currentSearchText)
                 else {
                     window.leftPage.category = category
                     pageStack.currentIndex = 0

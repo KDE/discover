@@ -38,9 +38,9 @@ function openApplicationMime(mime) {
 }
 
 function openApplicationList(props) {
-    window.stack.push(applicationListComp, props)
+    var page = window.stack.push(applicationListComp, props)
     if (props.search === "")
-        window.globalDrawer.clearSearch();
+        page.clearSearch();
 }
 
 function openCategory(cat, search) {
@@ -64,5 +64,6 @@ function openHome() {
     if (window.globalDrawer.currentSubMenu)
         window.globalDrawer.resetMenu();
     clearStack()
-    window.stack.push(topBrowsingComp)
+    var page = window.stack.push(topBrowsingComp)
+    page.clearSearch()
 }
