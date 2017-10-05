@@ -40,10 +40,6 @@ Kirigami.GlobalDrawer {
         Navigation.openHome();
     }
 
-    function clearSearch() {
-        searchField.text = ""
-    }
-
     onCurrentSubMenuChanged: {
         if (currentSubMenu)
             currentSubMenu.trigger()
@@ -84,7 +80,14 @@ Kirigami.GlobalDrawer {
             ignoreUnknownSignals: true
             target: window.leftPage
             onClearSearch: {
-                drawer.clearSearch()
+                searchField.text = ""
+            }
+        }
+
+        Connections {
+            target: window
+            onLeftPageChanged: {
+                searchField.text = ""
             }
         }
 
