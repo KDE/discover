@@ -51,8 +51,6 @@ DiscoverPage {
     title: category ? category.name : ""
 
     onSearchChanged: {
-        if (search.length === 0)
-            Navigation.openHome()
         appsModel.sortOrder = Qt.AscendingOrder
     }
     signal clearSearch()

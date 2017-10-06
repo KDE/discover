@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 import QtQuick 2.1
+import QtQuick.Layouts 1.1
 
 Loader
 {
@@ -28,5 +29,6 @@ Loader
     property Component componentFalse
     property bool condition
 
+    Layout.minimumHeight: item && item.Layout ? item.Layout.minimumHeight : 0
     sourceComponent: condition ? componentTrue : componentFalse
 }

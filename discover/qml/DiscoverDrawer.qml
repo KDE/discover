@@ -56,59 +56,28 @@ Kirigami.GlobalDrawer {
         id: toploader
         condition: drawer.wideScreen
         Layout.fillWidth: true
-        componentTrue: TextField {
+        componentFalse: Item {
+            Layout.minimumHeight: 1
+            Keys.forwardTo: [window.pageStack]
+        }
+        componentTrue: SearchField {
             id: searchField
-            visible: drawer.wideScreen
 
             enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
             Keys.forwardTo: [window.pageStack]
 
-            Component.onCompleted: {
-                searchField.forceActiveFocus()
-            }
-            Shortcut {
-                sequence: "Ctrl+F"
-                onActivated: {
-                    searchField.forceActiveFocus()
-                    searchField.selectAll()
-                }
-            }
+            page: window.leftPage
 
-            placeholderText: (!enabled || !window.leftPage || window.leftPage.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
-            onTextChanged: {
-                if(window.stack.depth > 0)
-                    searchTimer.running = true
-                drawer.currentSearchText = text
-            }
+            onCurrentSearchTextChanged: {
+                if (currentSearchText.length === 0)
+                    Navigation.openHome()
 
-            Connections {
-                ignoreUnknownSignals: true
-                target: window.leftPage
-                onClearSearch: {
-                    searchField.text = ""
-                }
-            }
-
-            Connections {
-                target: window
-                onCurrentTopLevelChanged: {
-                    if (window.currentTopLevel.length > 0)
-                        searchField.text = ""
-                }
-            }
-
-            Timer {
-                id: searchTimer
-                running: false
-                repeat: false
-                interval: 200
-                onTriggered: {
-                    var curr = window.leftPage;
-                    if (!curr.hasOwnProperty("search")) {
-                        Navigation.clearStack()
-                        Navigation.openApplicationList( { search: parent.text })
-                    } else
-                        curr.search = parent.text;
+                var curr = window.leftPage;
+                if (!curr.hasOwnProperty("search")) {
+                    Navigation.clearStack()
+                    Navigation.openApplicationList( { search: currentSearchText })
+                } else {
+                    curr.search = currentSearchText;
                 }
             }
         }

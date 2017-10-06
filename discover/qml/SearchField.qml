@@ -19,33 +19,51 @@
  ***************************************************************************/
 
 import QtQuick 2.5
+import QtQuick.Controls 2.1
 
-ApplicationsListPage {
-    id: searchPage
+TextField
+{
+    property QtObject page
+    property string currentSearchText
 
-    signal shown()
-    Timer {
-        interval: 0
-        running: true
-        onTriggered: {
-            searchPage.shown()
+    placeholderText: (!enabled || !page || page.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
+
+    Shortcut {
+        sequence: "Ctrl+F"
+        onActivated: {
+            searchField.forceActiveFocus()
+            searchField.selectAll()
+        }
+    }
+    onTextChanged: {
+        if (applicationWindow().stack.depth > 0)
+            searchTimer.running = true
+    }
+    Component.onCompleted: forceActiveFocus()
+
+    Connections {
+        ignoreUnknownSignals: true
+        target: page
+        onClearSearch: {
+            searchField.text = ""
         }
     }
 
-    listHeaderExtra: SearchField {
-        id: searchField
-        focus: true
-
-        Connections {
-            ignoreUnknownSignals: true
-            target: searchPage
-            onShown: {
-                searchField.forceActiveFocus()
-            }
+    Connections {
+        target: applicationWindow()
+        onCurrentTopLevelChanged: {
+            if (applicationWindow().currentTopLevel.length > 0)
+                searchField.text = ""
         }
+    }
 
-        onCurrentSearchTextChanged: {
-            searchPage.search = currentSearchText
+    Timer {
+        id: searchTimer
+        running: false
+        repeat: false
+        interval: 200
+        onTriggered: {
+            currentSearchText = parent.text
         }
     }
 }
