@@ -70,7 +70,7 @@ Kirigami.AbstractListItem
             RowLayout {
                 Layout.fillWidth: true
                 Kirigami.Heading {
-                    level: 3
+                    level: 4
                     Layout.fillWidth: true
                     elide: Text.ElideRight
                     text: delegateArea.application.name
@@ -90,10 +90,11 @@ Kirigami.AbstractListItem
             Rectangle {
                 color: Kirigami.Theme.linkColor
                 Layout.fillWidth: true
-                height: Kirigami.Units.devicePixelRatio
+                height: Kirigami.Units.devicePixelRatio / 2
             }
 
-            QQC2.Label {
+            Kirigami.Heading {
+                level: 5
                 Layout.fillWidth: true
 
                 elide: Text.ElideRight
