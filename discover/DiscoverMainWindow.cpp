@@ -90,7 +90,6 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     qmlRegisterType<QSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
 
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/DiscoverSystemPalette.qml")), "org.kde.discover.app", 1, 0, "DiscoverSystemPalette");
-    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/Helpers.qml")), "org.kde.discover.app", 1, 0, "Helpers");
     qmlRegisterType<QQuickView>();
     qmlRegisterType<QActionGroup>();
     qmlRegisterType<QAction>();
