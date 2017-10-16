@@ -59,9 +59,9 @@ DiscoverPage {
                 if (res != appInfo.application) {
                     if (!first) {
                         ret += ", "
-                        first = false
                     }
                     ret += "<a href='" + i + "'>" + res.displayOrigin + "</a>"
+                    first = false
                 }
             }
             return ret

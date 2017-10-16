@@ -110,7 +110,8 @@ Kirigami.AbstractListItem
                 elide: Text.ElideRight
                 textFormat: Text.StyledText
                 text: delegateArea.application.longDescription
-                maximumLineCount: delegateArea.compact ? 1 : 3
+                maximumLineCount: 3
+                visible: !delegateArea.compact
             }
             InstallApplicationButton {
                 id: installButton
