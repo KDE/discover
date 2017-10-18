@@ -125,7 +125,10 @@ void PackageKitUpdater::proceed()
         connect(t, &PackageKit::Transaction::finished, this, &PackageKitUpdater::start);
         return;
     }
-    setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
+    if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
+        setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted | PackageKit::Transaction::TransactionFlagOnlyDownload);
+    else
+        setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
 }
 
 void PackageKitUpdater::start()
@@ -160,6 +163,9 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     setProgressing(false);
     m_backend->refreshDatabase();
     fetchLastUpdateTime();
+
+    if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
+        PackageKit::Daemon::global()->offlineTrigger(PackageKit::Daemon::ActionReboot);
 }
 
 void PackageKitUpdater::cancellableChanged()
