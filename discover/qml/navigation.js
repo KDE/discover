@@ -49,6 +49,7 @@ function openCategory(cat, search) {
 }
 
 function openApplication(app) {
+    console.assert(app)
     window.stack.push(applicationComp, { application: app })
 }
 

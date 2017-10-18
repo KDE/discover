@@ -79,8 +79,10 @@ Kirigami.BasicListItem {
                     id: del
                     separatorVisible: false
                     onClicked: {
-                        Navigation.clearStack()
-                        Navigation.openApplication(model.application)
+                        if (model.application) {
+                            Navigation.clearStack()
+                            Navigation.openApplication(model.application)
+                        }
                     }
                     readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource} : {transaction: model.transaction}))
 
