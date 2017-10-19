@@ -21,6 +21,7 @@
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
+import QtQuick.Controls 2.1 as QQC2
 import org.kde.discover 2.0
 import org.kde.kirigami 2.0 as Kirigami
 
@@ -34,10 +35,19 @@ Flow {
     property QtObject page
     visible: screenshotsModel.count>0
 
-    readonly property var fu: Kirigami.OverlaySheet {
+    QQC2.Popup {
         id: overlay
+        parent: applicationWindow().overlay
+        modal: true
+
+        x: (parent.width - width)/2
+        y: (parent.height - height)/2
+        height: Math.min(parent.height * 0.9, overlayImage.sourceSize.height)
+        width: Math.min(parent.width * 0.9, overlayImage.sourceSize.width)
+
         Image {
             id: overlayImage
+            anchors.fill: parent
             fillMode: Image.PreserveAspectFit
             smooth: true
         }
