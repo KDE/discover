@@ -42,6 +42,7 @@ Kirigami.AbstractListItem
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
     rightPadding: Kirigami.Units.largeSpacing
+    backgroundColor: Kirigami.Theme.viewBackgroundColor
 
     Item {
         implicitHeight: Math.max(conts.implicitHeight, resourceIcon.height)
