@@ -1053,6 +1053,7 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
             stream->finish();
             fetchResourceJob->deleteLater();
         });
+        fetchResourceJob->start();
 
         return stream;
     } else if (!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() != QLatin1String("appstream"))
