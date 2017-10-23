@@ -125,9 +125,11 @@ DiscoverPage {
                         Kirigami.Icon {
                             source: modelData.icon
                         }
+                        visible: theAction.action && theAction.action.visible
                         ToolButton {
                             height: parent.height
                             action: Action {
+                                id: theAction
                                 readonly property QtObject action: modelData
                                 text: action.text
                                 onTriggered: action.trigger()

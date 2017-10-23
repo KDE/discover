@@ -47,17 +47,23 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
     : AbstractSourcesBackend(parent)
     , m_preferredInstallation(installations.constFirst())
     , m_sources(new QStandardItemModel(this))
+    , m_flathubAction(new QAction(i18n("Add Flathub"), this))
 {
     QHash<int, QByteArray> roles = m_sources->roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
     roles.insert(Qt::UserRole, "flatpakInstallation");
     m_sources->setItemRoleNames(roles);
 
+    m_flathubAction->setToolTip(QStringLiteral("flathub"));
+    connect(m_flathubAction, &QAction::triggered, this, [this](){
+        addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
+    });
     for (auto installation : installations) {
         if (!listRepositories(installation)) {
             qWarning() << "Failed to list repositories from installation" << installation;
         }
     }
+
 }
 
 QAbstractItemModel* FlatpakSourcesBackend::sources()
@@ -116,7 +122,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
 
 QList<QAction*> FlatpakSourcesBackend::actions() const
 {
-    return {};
+    return { m_flathubAction };
 }
 
 bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
@@ -130,6 +136,7 @@ bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
         return false;
     }
 
+    const auto actions = this->actions();
     for (uint i = 0; i < remotes->len; i++) {
         FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
 
@@ -139,6 +146,13 @@ bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
 
         const QString id = QString::fromUtf8(flatpak_remote_get_name(remote));
         const QString title = QString::fromUtf8(flatpak_remote_get_title(remote));
+
+        for(QAction *action: actions) {
+            if (action->toolTip() == id) {
+                action->setEnabled(false);
+                action->setVisible(false);
+            }
+        }
 
         FlatpakSourceItem *it = new FlatpakSourceItem(id);
         it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
