@@ -146,8 +146,8 @@ bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
         }
 
         const QString id = QString::fromUtf8(flatpak_remote_get_name(remote));
-        const QString title = i18nc("description (url)", "%1 (%2)", QString::fromUtf8(flatpak_remote_get_title(remote)), remoteUrl);
         const QString remoteUrl = QString::fromUtf8(flatpak_remote_get_url(remote));
+        const QString title = i18nc("description (url)", "%1 (%2)", QString::fromUtf8(flatpak_remote_get_title(remote)), remoteUrl);
 
         for(QAction *action: actions) {
             if (action->toolTip() == id) {
