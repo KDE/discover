@@ -111,7 +111,7 @@ int DiscoverBackendsFactory::backendsCount() const
 
 void DiscoverBackendsFactory::setupCommandLine(QCommandLineParser* parser)
 {
-    parser->addOption(QCommandLineOption(QStringLiteral("backends"), i18n("List all the backends we'll want to have loaded, separated by coma ','."), QStringLiteral("names")));
+    parser->addOption(QCommandLineOption(QStringLiteral("backends"), i18n("List all the backends we'll want to have loaded, separated by comma ','."), QStringLiteral("names")));
 }
 
 void DiscoverBackendsFactory::processCommandLine(QCommandLineParser* parser, bool test)
