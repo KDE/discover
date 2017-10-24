@@ -101,10 +101,11 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
 
 void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::Status status, uint percentage)
 {
-    Q_UNUSED(percentage);
     PackageKitResource * res = qobject_cast<PackageKitResource*>(resource());
     if (!res->allPackageNames().contains(PackageKit::Daemon::packageName(id)))
         return;
+
+    setProgress(percentage);
 
     if (status == PackageKit::Transaction::StatusDownload)
         setStatus(Transaction::DownloadingStatus);
