@@ -24,6 +24,7 @@
 #include "ResourcesModel.h"
 #include "AbstractBackendUpdater.h"
 #include "AbstractResource.h"
+#include "utils.h"
 #include <QDateTime>
 #include <QDBusConnection>
 #include <QDBusInterface>
@@ -38,12 +39,12 @@ class UpdateTransaction : public Transaction
 {
     Q_OBJECT
 public:
-    UpdateTransaction(ResourcesUpdatesModel* parent)
+    UpdateTransaction(ResourcesUpdatesModel* parent, const QVector<AbstractBackendUpdater*> &updaters)
         : Transaction(nullptr, nullptr, Transaction::InstallRole)
-        , m_allUpdaters(parent->updaters())
+        , m_allUpdaters(updaters)
     {
         bool cancelable = false;
-        foreach(auto updater, parent->updaters()) {
+        foreach(auto updater, m_allUpdaters) {
             connect(updater, &AbstractBackendUpdater::progressingChanged, this, &UpdateTransaction::slotProgressingChanged);
             connect(updater, &AbstractBackendUpdater::progressChanged, this, &UpdateTransaction::slotUpdateProgress);
             connect(updater, &AbstractBackendUpdater::passiveMessage, this, &Transaction::passiveMessage);
@@ -173,12 +174,14 @@ void ResourcesUpdatesModel::updateAll()
 {
     if (!m_updaters.isEmpty()) {
         delete m_transaction;
-        m_transaction = new UpdateTransaction(this);
+
+        const auto updaters = kFilter<QVector<AbstractBackendUpdater*>>(m_updaters, [](AbstractBackendUpdater* u) {return u->hasUpdates(); });
+
+        m_transaction = new UpdateTransaction(this, updaters);
         setTransaction(m_transaction);
         TransactionModel::global()->addTransaction(m_transaction);
-        Q_FOREACH (AbstractBackendUpdater* upd, m_updaters) {
-            if (upd->hasUpdates())
-                QMetaObject::invokeMethod(upd, "start", Qt::QueuedConnection);
+        Q_FOREACH (AbstractBackendUpdater* upd, updaters) {
+            QMetaObject::invokeMethod(upd, "start", Qt::QueuedConnection);
         }
     }
 }

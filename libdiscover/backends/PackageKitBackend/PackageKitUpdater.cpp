@@ -30,15 +30,19 @@
 static int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage)
 {
     if (status != PackageKit::Transaction::StatusUnknown) {
-        static QVector<PackageKit::Transaction::Status> statuses = {PackageKit::Transaction::Status::StatusDownload, PackageKit::Transaction::Status::StatusUpdate};
-        const auto idx = statuses.indexOf(status);
+        static const QMap<PackageKit::Transaction::Status, int> statuses = {
+            { PackageKit::Transaction::Status::StatusDownload, 0 },
+            { PackageKit::Transaction::Status::StatusInstall, 1},
+            { PackageKit::Transaction::Status::StatusUpdate, 1}
+        };
+        const auto idx = statuses.value(status, -1);
         if (idx < 0) {
-            qDebug() << "Status not present" << status << percentage;
+            qDebug() << "Status not present" << status << "among" << statuses   .keys() << percentage;
             return -1;
         }
-        percentage = (idx * 100 + percentage) / statuses.count();
+        percentage = (idx * 100 + percentage) / 2 /*the maximum in statuses*/;
     }
-    qDebug() << "reporing progress:" << status << percentage;
+    qDebug() << "reporing progress with status:" << status << percentage;
     return percentage;
 }
 

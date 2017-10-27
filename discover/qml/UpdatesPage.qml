@@ -125,6 +125,7 @@ DiscoverPage
         spacing: Kirigami.Units.smallSpacing
 
         delegate: Kirigami.AbstractListItem {
+            backgroundColor: Kirigami.Theme.viewBackgroundColor
             x: Kirigami.Units.gridUnit
             width: ListView.view.width - Kirigami.Units.gridUnit * 2
             highlighted: ListView.isCurrentItem || (page.search.length>0 && display.indexOf(page.search)>=0)
