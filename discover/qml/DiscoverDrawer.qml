@@ -38,6 +38,8 @@ Kirigami.GlobalDrawer {
 
     onBannerClicked: {
         Navigation.openHome();
+        if (modal)
+            drawerOpen = false
     }
 
     property string currentSearchText
@@ -49,7 +51,6 @@ Kirigami.GlobalDrawer {
             window.leftPage.category = null
         else
             Navigation.openHome()
-
     }
 
     topContent: ConditionalLoader {
