@@ -123,8 +123,16 @@ DiscoverPage {
                         Layout.fillWidth: true
                     }
 
+                    Binding {
+                        target: appInfo.actions
+                        property: "main"
+                        value: appbutton.action
+                    }
+
                     InstallApplicationButton {
+                        id: appbutton
                         application: appInfo.application
+                        visible: applicationWindow().wideScreen
                     }
 
                     Button {

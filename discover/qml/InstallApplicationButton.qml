@@ -19,12 +19,21 @@ ConditionalLoader
         id: listener
     }
 
+    property QtObject action: Kirigami.Action {
+        text: root.text
+        iconName: application.isInstalled ? "kalgebra" : "system-software-install"
+        visible: !listener.isActive && !applicationWindow().wideScreen
+        onTriggered: root.click()
+    }
+
     function click() {
         if (!isActive) {
             if(application.isInstalled)
                 ResourcesModel.removeApplication(application);
             else
                 ResourcesModel.installApplication(application);
+        } else {
+            console.warn("trying to un/install but resouce still active", application.name)
         }
     }
 
