@@ -385,6 +385,7 @@ void PackageKitBackend::refreshDatabase()
     if (!m_refresher) {
         acquireFetching(true);
         m_refresher = PackageKit::Daemon::refreshCache(false);
+        connect(m_refresher.data(), &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, [this]() {
             reloadPackageList();
             acquireFetching(false);
