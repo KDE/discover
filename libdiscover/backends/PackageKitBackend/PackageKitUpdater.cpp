@@ -165,7 +165,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     fetchLastUpdateTime();
 
     if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
-        PackageKit::Daemon::global()->offlineTrigger(PackageKit::Daemon::ActionReboot);
+        PackageKit::Daemon::global()->offlineTrigger(PackageKit::Daemon::OfflineActionReboot);
 }
 
 void PackageKitUpdater::cancellableChanged()
