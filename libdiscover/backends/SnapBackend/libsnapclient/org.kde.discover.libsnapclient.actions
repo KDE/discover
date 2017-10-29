@@ -2,6 +2,7 @@
 Name=Snap login action
 Name[ca]=Accions de connexió de l'Snap
 Name[ca@valencia]=Accions de connexió de l'Snap
+Name[da]=Snap login-handling
 Name[el]=Ενέργεια εισόδου snap
 Name[es]=Acciones de inicio de sesión en Snap
 Name[eu]=Snap saioa hasteko ekintza
@@ -25,6 +26,7 @@ Name[zh_TW]=Snap 登入動作
 Description=Allows snap front-ends to log in
 Description[ca]=Permet que els frontals de l'Snap es connectin
 Description[ca@valencia]=Permet que els frontals de l'Snap es connecten
+Description[da]=Tillader snap-frontends at logge ind
 Description[el]=Επιτρέπεται η σύνδεση στα περιβάλλοντα διεπαφής snap
 Description[es]=Permite que las interfaces de Snap inicien sesión
 Description[eu]=Baimendu snap aurrealdekoei saioa hastea
