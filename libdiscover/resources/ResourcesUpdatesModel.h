@@ -32,6 +32,7 @@ class QAction;
 class AbstractBackendUpdater;
 class ResourcesModel;
 class QDBusInterface;
+class Transaction;
 class UpdateTransaction;
 
 class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
@@ -40,6 +41,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
     Q_PROPERTY(QDateTime lastUpdate READ lastUpdate NOTIFY progressingChanged)
     Q_PROPERTY(qint64 secsToLastUpdate READ secsToLastUpdate NOTIFY progressingChanged)
+    Q_PROPERTY(Transaction* transaction READ transaction NOTIFY progressingChanged)
     public:
         explicit ResourcesUpdatesModel(QObject* parent = nullptr);
 
@@ -54,6 +56,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
         qint64 secsToLastUpdate() const;
         QVector<AbstractBackendUpdater*> updaters() const { return m_updaters; }
+        Transaction* transaction() const;
 
     Q_SIGNALS:
         void downloadSpeedChanged();

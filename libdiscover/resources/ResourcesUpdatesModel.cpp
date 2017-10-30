@@ -250,4 +250,9 @@ void ResourcesUpdatesModel::setTransaction(UpdateTransaction* transaction)
     Q_EMIT progressingChanged();
 }
 
+Transaction* ResourcesUpdatesModel::transaction() const
+{
+    return m_transaction.data();
+}
+
 #include "ResourcesUpdatesModel.moc"

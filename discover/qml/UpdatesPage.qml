@@ -80,8 +80,17 @@ DiscoverPage
                     Layout.minimumWidth: Kirigami.Units.gridUnit * 6
                     Layout.rightMargin: Kirigami.Units.gridUnit
                     text: unselectedItem.visible ? i18n("Update Selected") : i18n("Update All")
-                    enabled: !resourcesUpdatesModel.isProgressing
+                    visible: !resourcesUpdatesModel.isProgressing
                     onClicked: page.start()
+                }
+                Button {
+                    Layout.minimumWidth: Kirigami.Units.gridUnit * 6
+                    Layout.rightMargin: Kirigami.Units.gridUnit
+                    iconName: "dialog-cancel"
+                    text: i18n("Cancel")
+                    enabled: resourcesUpdatesModel.transaction && resourcesUpdatesModel.transaction.isCancellable
+                    visible: resourcesUpdatesModel.isProgressing
+                    onClicked: resourcesUpdatesModel.transaction.cancel()
                 }
             }
         }
