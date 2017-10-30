@@ -68,6 +68,7 @@ private:
 
     QHash<QString, Rating*> m_ratings;
     bool m_isFetching;
+    QNetworkAccessManager* const m_nam;
 };
 
 #endif // ODRSREVIEWSBACKEND_H

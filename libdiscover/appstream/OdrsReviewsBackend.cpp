@@ -46,6 +46,7 @@
 OdrsReviewsBackend::OdrsReviewsBackend(AbstractResourcesBackend *parent)
     : AbstractReviewsBackend(parent)
     , m_isFetching(false)
+    , m_nam(new QNetworkAccessManager(this))
 {
     bool fetchRatings = false;
     const QUrl ratingsUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/ratings"));
@@ -161,15 +162,14 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
             {QStringLiteral("limit"), 0}
     });
 
-    QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
     QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/fetch")));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
     // Store reference to the app for which we request reviews
     request.setOriginatingObject(app);
 
-    accessManager->post(request, document.toJson());
-    connect(accessManager, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::reviewsFetched);
+    m_nam->post(request, document.toJson());
+    connect(m_nam, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::reviewsFetched);
 }
 
 void OdrsReviewsBackend::reviewsFetched(QNetworkReply *reply)
@@ -219,13 +219,12 @@ void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
                      {QStringLiteral("review_id"), QJsonValue(double(review->id()))} //if we really need uint64 we should get it in QJsonValue
     });
 
-    QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
     QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/%1").arg(useful ? QStringLiteral("upvote") : QStringLiteral("downvote"))));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
 
-    accessManager->post(request, document.toJson());
-    connect(accessManager, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::usefulnessSubmitted);
+    m_nam->post(request, document.toJson());
+    connect(m_nam, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::usefulnessSubmitted);
 }
 
 void OdrsReviewsBackend::usefulnessSubmitted(QNetworkReply *reply)
