@@ -94,13 +94,16 @@ DiscoverPage {
             contentItem: Item {
                 RowLayout {
                     anchors.fill: parent
-                    spacing: 0
+                    spacing: Kirigami.Units.largeSpacing
 
                     ToolButton {
                         iconName: "draw-arrow-back"
                         tooltip: i18n("Back")
                         enabled: appInfo.sClose.enabled
                         onClicked: appInfo.sClose.activated()
+                    }
+                    Item {
+                        Layout.fillWidth: true
                     }
                     Kirigami.Icon {
                         Layout.preferredHeight: Kirigami.Units.gridUnit * 2
@@ -113,9 +116,11 @@ DiscoverPage {
                         level: 3
                         text: appInfo.application.name
                         maximumLineCount: 1
-                        Layout.fillWidth: true
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignHCenter
+                    }
+                    Item {
+                        Layout.fillWidth: true
                     }
 
                     InstallApplicationButton {
