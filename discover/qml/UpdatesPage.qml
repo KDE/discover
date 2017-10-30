@@ -14,12 +14,31 @@ DiscoverPage
     id: page
     title: i18n("Updates")
 
-    function start() {
-        resourcesUpdatesModel.updateAll()
-    }
-
     property string search: ""
     property string footerLabel: ""
+
+    Kirigami.Action
+    {
+        id: updateAction
+        text: page.unselected>0 ? i18n("Update Selected") : i18n("Update All")
+        visible: updateModel.toUpdateCount
+        iconName: "update-none"
+        enabled: !resourcesUpdatesModel.isProgressing
+        onTriggered: resourcesUpdatesModel.updateAll()
+    }
+
+    Kirigami.Action
+    {
+        id: cancelUpdateAction
+        iconName: "dialog-cancel"
+        text: i18n("Cancel")
+        enabled: resourcesUpdatesModel.transaction && resourcesUpdatesModel.transaction.isCancellable
+        onTriggered: resourcesUpdatesModel.transaction.cancel()
+    }
+
+    readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
+    readonly property QtObject currentAction: resourcesUpdatesModel.isProgressing ? cancelUpdateAction : updateAction
+    actions.main: applicationWindow().wideScreen ? null : currentAction
 
     //TODO: use supportsRefreshing to fetch updates
     mainItem: ListView
@@ -67,9 +86,8 @@ DiscoverPage
                 }
                 LabelBackground {
                     id: unselectedItem
-                    readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
-                    text: unselected
-                    visible: unselected>0
+                    text: page.unselected
+                    visible: page.unselected>0
                 }
                 QQC2.Label {
                     text: i18n("updates not selected")
@@ -79,18 +97,9 @@ DiscoverPage
                 Button {
                     Layout.minimumWidth: Kirigami.Units.gridUnit * 6
                     Layout.rightMargin: Kirigami.Units.gridUnit
-                    text: unselectedItem.visible ? i18n("Update Selected") : i18n("Update All")
-                    visible: !resourcesUpdatesModel.isProgressing
-                    onClicked: page.start()
-                }
-                Button {
-                    Layout.minimumWidth: Kirigami.Units.gridUnit * 6
-                    Layout.rightMargin: Kirigami.Units.gridUnit
-                    iconName: "dialog-cancel"
-                    text: i18n("Cancel")
-                    enabled: resourcesUpdatesModel.transaction && resourcesUpdatesModel.transaction.isCancellable
-                    visible: resourcesUpdatesModel.isProgressing
-                    onClicked: resourcesUpdatesModel.transaction.cancel()
+                    text: page.currentAction.text
+                    visible: !page.actions.main
+                    onClicked: page.currentAction.trigger()
                 }
             }
         }
