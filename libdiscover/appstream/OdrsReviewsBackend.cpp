@@ -46,6 +46,7 @@
 OdrsReviewsBackend::OdrsReviewsBackend(AbstractResourcesBackend *parent)
     : AbstractReviewsBackend(parent)
     , m_isFetching(false)
+    , m_nam(new QNetworkAccessManager(this))
 {
     bool fetchRatings = false;
     const QUrl ratingsUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/ratings"));
@@ -161,23 +162,25 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
             {QStringLiteral("limit"), 0}
     });
 
-    QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
     QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/fetch")));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
     // Store reference to the app for which we request reviews
     request.setOriginatingObject(app);
 
-    accessManager->post(request, document.toJson());
-    connect(accessManager, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::reviewsFetched);
+    auto reply = m_nam->post(request, document.toJson());
+    connect(reply, &QNetworkReply::finished, this, &OdrsReviewsBackend::reviewsFetched);
 }
 
-void OdrsReviewsBackend::reviewsFetched(QNetworkReply *reply)
+void OdrsReviewsBackend::reviewsFetched()
 {
+    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
+
     if (reply->error() == QNetworkReply::NoError) {
         QByteArray data = reply->readAll();
         const QJsonDocument document = QJsonDocument::fromJson(data);
         AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
+        Q_ASSERT(resource);
         parseReviews(document, resource);
 
         // Store reviews to cache so we don't need to download them all the time
@@ -219,17 +222,18 @@ void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
                      {QStringLiteral("review_id"), QJsonValue(double(review->id()))} //if we really need uint64 we should get it in QJsonValue
     });
 
-    QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
     QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/%1").arg(useful ? QStringLiteral("upvote") : QStringLiteral("downvote"))));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
 
-    accessManager->post(request, document.toJson());
-    connect(accessManager, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::usefulnessSubmitted);
+    auto reply = m_nam->post(request, document.toJson());
+    connect(reply, &QNetworkReply::finished, this, &OdrsReviewsBackend::usefulnessSubmitted);
 }
 
-void OdrsReviewsBackend::usefulnessSubmitted(QNetworkReply *reply)
+void OdrsReviewsBackend::usefulnessSubmitted()
 {
+    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
+
     if (reply->error() == QNetworkReply::NoError) {
         qWarning() << "Usefullness submitted";
     } else {

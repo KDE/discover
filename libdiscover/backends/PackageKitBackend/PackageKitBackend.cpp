@@ -408,7 +408,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
         auto stream = new ResultsStream(QStringLiteral("PackageKitStream-search"));
         if (!ids.isEmpty()) {
             const auto resources = resourcesByPackageNames<QVector<AbstractResource*>>(ids);
-            QTimer::singleShot(0, this, [stream, resources, this] () {
+            QTimer::singleShot(0, this, [stream, resources] () {
                 stream->resourcesFound(resources);
             });
         }

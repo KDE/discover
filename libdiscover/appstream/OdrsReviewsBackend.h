@@ -55,9 +55,9 @@ public:
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
-    void reviewsFetched(QNetworkReply *reply);
+    void reviewsFetched();
     void reviewSubmitted(QNetworkReply *reply);
-    void usefulnessSubmitted(QNetworkReply *reply);
+    void usefulnessSubmitted();
 
 Q_SIGNALS:
     void ratingsReady();
@@ -68,6 +68,7 @@ private:
 
     QHash<QString, Rating*> m_ratings;
     bool m_isFetching;
+    QNetworkAccessManager* const m_nam;
 };
 
 #endif // ODRSREVIEWSBACKEND_H
