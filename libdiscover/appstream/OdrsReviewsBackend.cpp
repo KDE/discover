@@ -178,6 +178,7 @@ void OdrsReviewsBackend::reviewsFetched(QNetworkReply *reply)
         QByteArray data = reply->readAll();
         const QJsonDocument document = QJsonDocument::fromJson(data);
         AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
+        Q_ASSERT(resource);
         parseReviews(document, resource);
 
         // Store reviews to cache so we don't need to download them all the time
