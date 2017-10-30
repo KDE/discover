@@ -168,12 +168,14 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
     // Store reference to the app for which we request reviews
     request.setOriginatingObject(app);
 
-    m_nam->post(request, document.toJson());
-    connect(m_nam, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::reviewsFetched);
+    auto reply = m_nam->post(request, document.toJson());
+    connect(reply, &QNetworkReply::finished, this, &OdrsReviewsBackend::reviewsFetched);
 }
 
-void OdrsReviewsBackend::reviewsFetched(QNetworkReply *reply)
+void OdrsReviewsBackend::reviewsFetched()
 {
+    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
+
     if (reply->error() == QNetworkReply::NoError) {
         QByteArray data = reply->readAll();
         const QJsonDocument document = QJsonDocument::fromJson(data);
@@ -224,12 +226,14 @@ void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
 
-    m_nam->post(request, document.toJson());
-    connect(m_nam, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::usefulnessSubmitted);
+    auto reply = m_nam->post(request, document.toJson());
+    connect(reply, &QNetworkReply::finished, this, &OdrsReviewsBackend::usefulnessSubmitted);
 }
 
-void OdrsReviewsBackend::usefulnessSubmitted(QNetworkReply *reply)
+void OdrsReviewsBackend::usefulnessSubmitted()
 {
+    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
+
     if (reply->error() == QNetworkReply::NoError) {
         qWarning() << "Usefullness submitted";
     } else {

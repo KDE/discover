@@ -55,9 +55,9 @@ public:
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
-    void reviewsFetched(QNetworkReply *reply);
+    void reviewsFetched();
     void reviewSubmitted(QNetworkReply *reply);
-    void usefulnessSubmitted(QNetworkReply *reply);
+    void usefulnessSubmitted();
 
 Q_SIGNALS:
     void ratingsReady();
