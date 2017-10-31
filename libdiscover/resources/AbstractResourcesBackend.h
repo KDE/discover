@@ -130,13 +130,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
         virtual int updatesCount() const = 0;//FIXME: Probably provide a standard implementation?!
 
         /**
-         * This method gets called while initializing the GUI, in case the backend needs to
-         * integrate actions in the action collection.
-         * @param w the KActionCollection the backend should integrate to
-         */
-        virtual void integrateActions(KActionCollection* w);
-
-        /**
          * Tells whether the backend is fetching resources
          */
         virtual bool isFetching() const = 0;

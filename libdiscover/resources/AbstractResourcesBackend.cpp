@@ -78,9 +78,6 @@ Transaction* AbstractResourcesBackend::installApplication(AbstractResource* app)
     return installApplication(app, AddonList());
 }
 
-void AbstractResourcesBackend::integrateActions(KActionCollection*)
-{}
-
 void AbstractResourcesBackend::setName(const QString& name)
 {
     m_name = name;

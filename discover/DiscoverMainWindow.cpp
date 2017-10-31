@@ -76,9 +76,6 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     , m_mode(mode)
     , m_networkAccessManagerFactory(new CachedNetworkAccessManagerFactory)
 {
-    ResourcesModel *m = ResourcesModel::global();
-    m->integrateActions(actionCollection());
-
     setObjectName(QStringLiteral("DiscoverMain"));
     KDeclarative::KDeclarative kdeclarative;
     kdeclarative.setDeclarativeEngine(m_engine);

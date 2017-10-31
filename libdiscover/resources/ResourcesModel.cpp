@@ -52,7 +52,6 @@ ResourcesModel *ResourcesModel::global()
 ResourcesModel::ResourcesModel(QObject* parent, bool load)
     : QObject(parent)
     , m_initializingBackends(0)
-    , m_actionCollection(nullptr)
     , m_currentApplicationBackend(nullptr)
 {
     init(load);
@@ -110,8 +109,6 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     } else {
         m_initializingBackends++;
     }
-    if(m_actionCollection)
-        backend->integrateActions(m_actionCollection);
 
     connect(backend, &AbstractResourcesBackend::fetchingChanged, this, &ResourcesModel::callerFetchingChanged);
     connect(backend, &AbstractResourcesBackend::allDataChanged, this, &ResourcesModel::updateCaller);
@@ -214,16 +211,6 @@ void ResourcesModel::registerBackendByName(const QString& name)
         addResourcesBackend(b);
 
     emit backendsChanged();
-}
-
-void ResourcesModel::integrateActions(KActionCollection* w)
-{
-    Q_ASSERT(w->thread()==thread());
-    m_actionCollection = w;
-    setParent(w);
-    foreach(AbstractResourcesBackend* b, m_backends) {
-        b->integrateActions(w);
-    }
 }
 
 bool ResourcesModel::isFetching() const
