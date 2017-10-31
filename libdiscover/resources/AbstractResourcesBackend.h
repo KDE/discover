@@ -35,7 +35,6 @@ class Transaction;
 class Category;
 class AbstractReviewsBackend;
 class AbstractBackendUpdater;
-class KActionCollection;
 
 class DISCOVERCOMMON_EXPORT ResultsStream : public QObject
 {

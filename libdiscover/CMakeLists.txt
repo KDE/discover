@@ -54,7 +54,7 @@ LINK_PUBLIC
     KF5::I18n
 LINK_PRIVATE
     Qt5::Xml
-    KF5::XmlGui
+    Qt5::DBus
     KF5::KIOCore
     KF5::CoreAddons
 )

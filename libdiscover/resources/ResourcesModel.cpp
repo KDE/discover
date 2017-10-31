@@ -27,7 +27,6 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/Transaction.h>
 #include <DiscoverBackendsFactory.h>
-#include <KActionCollection>
 #include "Transaction/TransactionModel.h"
 #include "Category/CategoryModel.h"
 #include "utils.h"
