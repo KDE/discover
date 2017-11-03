@@ -99,7 +99,6 @@ void ReviewsModel::setResource(AbstractResource* app)
         beginResetModel();
         m_reviews.clear();
         m_lastPage = 0;
-        endResetModel();
 
         if(m_backend) {
             disconnect(m_backend, &AbstractReviewsBackend::reviewsReady, this, &ReviewsModel::addReviews);
@@ -111,6 +110,7 @@ void ReviewsModel::setResource(AbstractResource* app)
 
             QMetaObject::invokeMethod(this, "restartFetching", Qt::QueuedConnection);
         }
+        endResetModel();
         emit rowsChanged();
         emit resourceChanged();
     }
