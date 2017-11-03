@@ -66,8 +66,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         QVector< AbstractResourcesBackend* > backends() const;
         int updatesCount() const;
         
-        void integrateActions(KActionCollection* w);
-        
         bool isBusy() const;
         bool isFetching() const;
         QList<QAction*> messageActions() const;
@@ -115,7 +113,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
 
         QVector< AbstractResourcesBackend* > m_backends;
         int m_initializingBackends;
-        KActionCollection* m_actionCollection;
         QList<QAction*> m_ownActions;
         AbstractResourcesBackend* m_currentApplicationBackend;
 

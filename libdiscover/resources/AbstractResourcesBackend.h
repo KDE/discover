@@ -35,7 +35,6 @@ class Transaction;
 class Category;
 class AbstractReviewsBackend;
 class AbstractBackendUpdater;
-class KActionCollection;
 
 class DISCOVERCOMMON_EXPORT ResultsStream : public QObject
 {
@@ -128,13 +127,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * @returns the number of resources for which an update is available, it should only count technical packages
          */
         virtual int updatesCount() const = 0;//FIXME: Probably provide a standard implementation?!
-
-        /**
-         * This method gets called while initializing the GUI, in case the backend needs to
-         * integrate actions in the action collection.
-         * @param w the KActionCollection the backend should integrate to
-         */
-        virtual void integrateActions(KActionCollection* w);
 
         /**
          * Tells whether the backend is fetching resources
