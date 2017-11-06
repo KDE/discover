@@ -125,16 +125,6 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged);
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
     connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
-    connect(m_engine, &KNSCore::Engine::signalResetView, this, [this](){
-        // If KNS tells us we should reset the view, what that means here is to remove
-        // references to all the resources we've already told the agregator model about
-        // from the model, as they will be added again...
-        foreach(AbstractResource* res, m_resourcesByName.values()) {
-            resourceRemoved(res);
-            res->deleteLater();
-        }
-        m_resourcesByName.clear();
-    });
 
     const QVector<QPair<FilterType, QString>> filters = { {CategoryFilter, fileName } };
     const QSet<QString> backendName = { name() };
