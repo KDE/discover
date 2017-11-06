@@ -21,7 +21,7 @@ ConditionalLoader
 
     property QtObject action: Kirigami.Action {
         text: root.text
-        iconName: application.isInstalled ? "kalgebra" : "system-software-install"
+        iconName: application.isInstalled ? "package-remove" : "package-install"
         visible: !listener.isActive && !applicationWindow().wideScreen
         onTriggered: root.click()
     }
