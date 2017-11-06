@@ -11,7 +11,6 @@ set(discovercommon_SRCS
     ReviewsBackend/AbstractReviewsBackend.cpp
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
-    ReviewsBackend/AbstractLoginBackend.cpp
     ReviewsBackend/ReviewsModel.cpp
     Transaction/AddonList.cpp
     Transaction/Transaction.cpp
