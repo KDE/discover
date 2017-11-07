@@ -113,7 +113,7 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
 
 void StandardBackendUpdater::refreshUpdateable()
 {
-    if (m_backend->isFetching() || isProgressing()) {
+    if (m_backend->isFetching() || !m_backend->isValid() || isProgressing()) {
         return;
     }
 
