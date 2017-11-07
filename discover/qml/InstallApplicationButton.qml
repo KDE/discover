@@ -21,7 +21,10 @@ ConditionalLoader
 
     property QtObject action: Kirigami.Action {
         text: root.text
-        iconName: application.isInstalled ? "uninstall" : "install"
+        icon {
+            name: application.isInstalled ? "uninstall" : "install"
+            color: application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor
+        }
         visible: !listener.isActive && !applicationWindow().wideScreen
         onTriggered: root.click()
     }
