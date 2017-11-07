@@ -309,6 +309,8 @@ static ResultsStream* voidStream()
 
 ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
+    Q_ASSERT(isValid());
+
     if ((!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() != QLatin1String("kns")) || !filter.mimetype.isEmpty())
         return voidStream();
 
