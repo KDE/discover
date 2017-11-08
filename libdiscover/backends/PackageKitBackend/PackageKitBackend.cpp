@@ -269,6 +269,9 @@ void PackageKitBackend::resolvePackages(const QStringList &packageNames)
 
 void PackageKitBackend::fetchUpdates()
 {
+    if (m_updater->isProgressing())
+        return;
+
     PackageKit::Transaction * tUpdates = PackageKit::Daemon::getUpdates();
     connect(tUpdates, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesFinished);
     connect(tUpdates, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
