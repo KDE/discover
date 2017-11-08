@@ -26,7 +26,6 @@
 #include <KLocalizedString>
 #include <KNotification>
 #include <KPluginFactory>
-#include <QMenu>
 
 DiscoverNotifier::DiscoverNotifier(QObject * parent)
     : QObject(parent)
@@ -40,7 +39,7 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
     }
     connect(&m_timer, &QTimer::timeout, this, &DiscoverNotifier::showUpdatesNotification);
     m_timer.setSingleShot(true);
-    m_timer.setInterval(180000);
+    m_timer.setInterval(1000);
     updateStatusNotifier();
 }
 
