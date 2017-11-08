@@ -233,6 +233,7 @@ void DiscoverMainWindow::integrateObject(QObject* object)
     }
 
     object->installEventFilter(this);
+    connect(object, &QObject::destroyed, qGuiApp, &QCoreApplication::quit);
 }
 
 bool DiscoverMainWindow::eventFilter(QObject * object, QEvent * event)
