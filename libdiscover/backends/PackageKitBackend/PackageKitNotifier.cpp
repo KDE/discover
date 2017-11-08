@@ -31,7 +31,6 @@
 
 PackageKitNotifier::PackageKitNotifier(QObject* parent)
     : BackendNotifierModule(parent)
-    , m_update(NoUpdate)
     , m_securityUpdates(0)
     , m_normalUpdates(0)
 {
@@ -75,7 +74,6 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
         PackageKit::Transaction * trans = PackageKit::Daemon::getUpdates();
         trans->setProperty("normalUpdates", 0);
         trans->setProperty("securityUpdates", 0);
-        trans->setProperty("update", NoUpdate);
         connect(trans, &PackageKit::Transaction::package, this, &PackageKitNotifier::package);
         connect(trans, &PackageKit::Transaction::finished, this, &PackageKitNotifier::finished);
     }
@@ -89,11 +87,9 @@ void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QStri
         case PackageKit::Transaction::InfoBlocked:
             break; //skip, we ignore blocked updates
         case PackageKit::Transaction::InfoSecurity:
-            trans->setProperty("update", qMax<int>(Security, trans->property("update").toInt()));
             trans->setProperty("securityUpdates", trans->property("securityUpdates").toInt()+1);
             break;
         default:
-            trans->setProperty("update", qMax<int>(Normal, trans->property("update").toInt()));
             trans->setProperty("normalUpdates", trans->property("normalUpdates").toInt()+1);
             break;
     }
@@ -105,13 +101,10 @@ void PackageKitNotifier::finished(PackageKit::Transaction::Exit /*exit*/, uint)
 
     const uint normalUpdates = trans->property("normalUpdates").toInt();
     const uint securityUpdates = trans->property("securityUpdates").toInt();
-    const Update update = Update(trans->property("update").toInt());
-
-    const bool changed = update != m_update || normalUpdates != m_normalUpdates || securityUpdates != m_securityUpdates;
+    const bool changed = normalUpdates != m_normalUpdates || securityUpdates != m_securityUpdates;
 
     m_normalUpdates = normalUpdates;
     m_securityUpdates = securityUpdates;
-    m_update = update;
 
     if (changed) {
         Q_EMIT foundUpdates();
@@ -120,7 +113,7 @@ void PackageKitNotifier::finished(PackageKit::Transaction::Exit /*exit*/, uint)
 
 bool PackageKitNotifier::isSystemUpToDate() const
 {
-    return m_update == NoUpdate;
+    return m_securityUpdates == 0 && m_normalUpdates == 0;
 }
 
 uint PackageKitNotifier::securityUpdatesCount()

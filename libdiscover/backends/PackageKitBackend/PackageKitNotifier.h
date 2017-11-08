@@ -34,12 +34,6 @@ Q_OBJECT
 Q_PLUGIN_METADATA(IID "org.kde.discover.BackendNotifierModule")
 Q_INTERFACES(BackendNotifierModule)
 public:
-    enum Update {
-        NoUpdate,
-        Security,
-        Normal
-    };
-    Q_ENUM(Update)
     explicit PackageKitNotifier(QObject* parent = nullptr);
     ~PackageKitNotifier() override;
 
@@ -56,7 +50,6 @@ private Q_SLOTS:
 private:
     QProcess* checkAptVariable(const QString &aptconfig, const QLatin1String& varname, std::function<void(const QStringRef& val)> func);
 
-    Update m_update;
     uint m_securityUpdates;
     uint m_normalUpdates;
     QPointer<PackageKit::Transaction> m_refresher;
