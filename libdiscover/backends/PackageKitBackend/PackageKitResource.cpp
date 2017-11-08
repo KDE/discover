@@ -31,6 +31,7 @@ PackageKitResource::PackageKitResource(QString packageName, QString summary, Pac
     : AbstractResource(parent)
     , m_summary(std::move(summary))
     , m_name(std::move(packageName))
+    , m_dependenciesCount(0)
 {
     setObjectName(m_name);
 }
@@ -168,6 +169,18 @@ void PackageKitResource::fetchDetails()
     m_details.insert(QStringLiteral("fetching"), true);//we add an entry so it's not re-fetched.
 
     backend()->fetchDetails(pkgid);
+
+    auto trans = PackageKit::Daemon::installPackages({ pkgid }, PackageKit::Transaction::TransactionFlagSimulate);
+    connect(trans, &PackageKit::Transaction::package, this, [trans](PackageKit::Transaction::Info info, const QString &packageID, const QString &summary) {
+        trans->setProperty("dependencies", trans->property("dependencies").toUInt() + 1);
+    });
+    connect(trans, &PackageKit::Transaction::finished, this, [this, trans](PackageKit::Transaction::Exit status) {
+        auto deps = trans->property("dependencies").toUInt();
+        if (deps != m_dependenciesCount) {
+            m_dependenciesCount = deps;
+            Q_EMIT sizeChanged();
+        }
+    });
 }
 
 void PackageKitResource::failedFetchingDetails(PackageKit::Transaction::Error, const QString& msg)
@@ -243,3 +256,10 @@ PackageKitBackend* PackageKitResource::backend() const
     return qobject_cast<PackageKitBackend*>(parent());
 }
 
+QString PackageKitResource::sizeDescription()
+{
+    if (m_dependenciesCount == 0)
+        return AbstractResource::sizeDescription();
+    else
+        return i18np("%2 (plus %1 dependency)", "%2 (plus %1 dependencies)", m_dependenciesCount, AbstractResource::sizeDescription());
+}

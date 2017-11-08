@@ -66,6 +66,8 @@ class PackageKitResource : public AbstractResource
         void invokeApplication() const override {}
         bool canExecute() const override { return false; }
 
+        QString sizeDescription() override;
+
     public Q_SLOTS:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch);
         void setDetails(const PackageKit::Details& details);
@@ -94,6 +96,7 @@ class PackageKitResource : public AbstractResource
         const QString m_summary;
         const QString m_name;
         PackageKit::Details m_details;
+        uint m_dependenciesCount;
 };
 
 #endif // PACKAGEKITRESOURCE_H
