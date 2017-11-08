@@ -91,56 +91,53 @@ DiscoverPage {
         header: Kirigami.ItemViewHeader {
             maximumHeight: minimumHeight
 
-            contentItem: Item {
-                RowLayout {
-                    anchors.fill: parent
-                    spacing: Kirigami.Units.largeSpacing
+            contentItem: RowLayout {
+                spacing: Kirigami.Units.smallSpacing
 
-                    ToolButton {
-                        iconName: "draw-arrow-back"
-                        tooltip: i18n("Back")
-                        enabled: appInfo.sClose.enabled
-                        onClicked: appInfo.sClose.activated()
-                    }
-                    Item {
-                        Layout.fillWidth: true
-                    }
-                    Kirigami.Icon {
-                        Layout.preferredHeight: Kirigami.Units.gridUnit * 2
-                        Layout.preferredWidth: Kirigami.Units.gridUnit * 2
+                ToolButton {
+                    iconName: "draw-arrow-back"
+                    tooltip: i18n("Back")
+                    enabled: appInfo.sClose.enabled
+                    onClicked: appInfo.sClose.activated()
+                }
+                Item {
+                    Layout.fillWidth: true
+                }
+                Kirigami.Icon {
+                    Layout.preferredHeight: Kirigami.Units.gridUnit * 2
+                    Layout.preferredWidth: Kirigami.Units.gridUnit * 2
 
-                        source: appInfo.application.icon
-                        Layout.alignment: Qt.AlignVCenter
-                    }
-                    Kirigami.Heading {
-                        level: 3
-                        text: appInfo.application.name
-                        maximumLineCount: 1
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-                    Item {
-                        Layout.fillWidth: true
-                    }
+                    source: appInfo.application.icon
+                    Layout.alignment: Qt.AlignVCenter
+                }
+                Kirigami.Heading {
+                    level: 3
+                    Layout.maximumWidth: parent.width/2
+                    text: appInfo.application.name
+                    maximumLineCount: 1
+                    elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                Item {
+                    Layout.fillWidth: true
+                }
 
-                    Binding {
-                        target: appInfo.actions
-                        property: "main"
-                        value: appbutton.action
-                    }
+                Binding {
+                    target: appInfo.actions
+                    property: "main"
+                    value: appbutton.action
+                }
 
-                    InstallApplicationButton {
-                        id: appbutton
-                        application: appInfo.application
-                        visible: applicationWindow().wideScreen
-                    }
+                InstallApplicationButton {
+                    id: appbutton
+                    application: appInfo.application
+                    visible: applicationWindow().wideScreen
+                }
 
-                    Button {
-                        anchors.right: parent.right
-                        visible: application.isInstalled && application.canExecute
-                        text: i18n("Launch")
-                        onClicked: application.invokeApplication()
-                    }
+                Button {
+                    visible: application.isInstalled && application.canExecute
+                    text: i18n("Launch")
+                    onClicked: application.invokeApplication()
                 }
             }
         }
