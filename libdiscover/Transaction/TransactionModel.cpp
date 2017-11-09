@@ -166,7 +166,11 @@ void TransactionModel::addTransaction(Transaction *trans)
     connect(trans, &Transaction::statusChanged, this, [this](){ transactionChanged(StatusTextRole); });
     connect(trans, &Transaction::cancellableChanged, this, [this](){ transactionChanged(CancellableRole); });
     connect(trans, &Transaction::progressChanged, this, [this](){ transactionChanged(ProgressRole); Q_EMIT progressChanged(); });
-    connect(trans, &QObject::destroyed, this, [this, trans](){ removeTransaction(trans); });
+    connect(trans, &QObject::destroyed, this, [this, trans](){
+        if (!m_transactions.contains(trans))
+            return;
+        removeTransaction(trans);
+    });
 
     emit transactionAdded(trans);
 }
