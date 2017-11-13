@@ -69,7 +69,23 @@ void FlatpakTransactionJob::run()
     const uint kind = m_relatedRef.isEmpty() ? (uint)m_app->type() : m_relatedRefKind;
 
     if (m_role == Transaction::Role::InstallRole) {
-        if (m_app->state() == AbstractResource::Upgradeable) {
+        bool installRelatedRef = false;
+        // Before we attempt to upgrade related refs we should verify whether they are installed in first place
+        if (m_app->state() == AbstractResource::Upgradeable && !m_relatedRef.isEmpty()) {
+            g_autoptr(GError) installedRefError = nullptr;
+            FlatpakInstalledRef *installedRef = flatpak_installation_get_installed_ref(m_app->installation(),
+                                                                                       kind == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
+                                                                                       refName.toUtf8().constData(),
+                                                                                       m_app->arch().toUtf8().constData(),
+                                                                                       m_app->branch().toUtf8().constData(),
+                                                                                       m_cancellable, &installedRefError);
+            if (installedRefError) {
+                qWarning() << "Failed to check whether related ref is installed: " << installedRefError;
+            }
+            installRelatedRef = installedRef == nullptr;
+        }
+
+        if (m_app->state() == AbstractResource::Upgradeable && !installRelatedRef) {
             ref = flatpak_installation_update(m_app->installation(),
                                               FLATPAK_UPDATE_FLAGS_NONE,
                                               kind == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
