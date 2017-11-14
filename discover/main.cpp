@@ -122,6 +122,9 @@ int main(int argc, char** argv)
         mainWindow = new DiscoverMainWindow(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverMainWindow::Full));
         QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverMainWindow::deleteLater);
         QObject::connect(service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList &arguments, const QString &/*workingDirectory*/){
+            if (!mainWindow->rootObject())
+                QCoreApplication::instance()->quit();
+
             mainWindow->rootObject()->raise();
             if (arguments.isEmpty())
                 return;
