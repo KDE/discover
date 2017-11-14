@@ -226,6 +226,7 @@ DiscoverPage
 
     readonly property alias secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
     state:  ( updateModel.hasUpdates                     ? "has-updates"
+            : ResourcesModel.isFetching                  ? "fetching"
             : resourcesUpdatesModel.isProgressing        ? "progressing"
             : secSinceUpdate < 0                         ? "unknown"
             : secSinceUpdate === 0                       ? "now-uptodate"
@@ -235,6 +236,11 @@ DiscoverPage
             )
 
     states: [
+        State {
+            name: "fetching"
+            PropertyChanges { target: page; title: i18nc("@info", "Fetching...") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Looking for updates") }
+        },
         State {
             name: "progressing"
             PropertyChanges { target: page; title: i18nc("@info", "Updating...") }
