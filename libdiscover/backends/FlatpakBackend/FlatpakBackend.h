@@ -83,13 +83,15 @@ private:
     FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
     void addResource(FlatpakResource *resource);
     bool compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref) const;
+    void finishInitialization();
+    void loadAppsFromAppstreamData();
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);
+    void loadInstalledApps();
     bool loadInstalledApps(FlatpakInstallation *flatpakInstallation);
     void loadLocalUpdates(FlatpakInstallation *flatpakInstallation);
     void loadRemoteUpdates(FlatpakInstallation *flatpakInstallation);
     bool parseMetadataFromAppBundle(FlatpakResource *resource);
     void refreshAppstreamMetadata(FlatpakInstallation *installation, FlatpakRemote *remote);
-    void reloadPackageList();
     bool setupFlatpakInstallations(GError **error);
     void updateAppInstalledMetadata(FlatpakInstalledRef *installedRef, FlatpakResource *resource);
     bool updateAppMetadata(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
@@ -106,6 +108,7 @@ private:
     FlatpakSourcesBackend *m_sources = nullptr;
     QSharedPointer<OdrsReviewsBackend> m_reviews;
     bool m_fetching;
+    uint m_refreshAppstreamMetadataJobs;
 
     GCancellable *m_cancellable;
     QVector<FlatpakInstallation *> m_installations;

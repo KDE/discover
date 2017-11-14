@@ -47,6 +47,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QFutureWatcher>
 #include <QMessageBox>
 #include <QSettings>
@@ -78,6 +79,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(AppStreamIntegration::global()->reviews())
     , m_fetching(false)
+    , m_refreshAppstreamMetadataJobs(0)
     , m_threadPool(new QThreadPool(this))
 {
     g_autoptr(GError) error = nullptr;
@@ -89,9 +91,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     if (!setupFlatpakInstallations(&error)) {
         qWarning() << "Failed to setup flatpak installations:" << error->message;
     } else {
-        reloadPackageList();
-
-        checkForUpdates();
+        loadAppsFromAppstreamData();
 
         m_sources = new FlatpakSourcesBackend(m_installations, this);
         SourcesModel::global()->addSourcesBackend(m_sources);
@@ -532,6 +532,22 @@ private:
     FlatpakRemote* m_remote;
 };
 
+void FlatpakBackend::finishInitialization()
+{
+    loadInstalledApps();
+    checkForUpdates();
+}
+
+void FlatpakBackend::loadAppsFromAppstreamData()
+{
+    for (auto installation : qAsConst(m_installations)) {
+        // Load applications from appstream metadata
+        if (!loadAppsFromAppstreamData(installation)) {
+            qWarning() << "Failed to load packages from appstream data from installation" << installation;
+        }
+    }
+}
+
 bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation)
 {
     Q_ASSERT(flatpakInstallation);
@@ -540,6 +556,8 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
     if (!remotes) {
         return false;
     }
+
+    m_refreshAppstreamMetadataJobs += remotes->len;
 
     for (uint i = 0; i < remotes->len; i++) {
         FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
@@ -559,6 +577,8 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
 
 void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)
 {
+    m_refreshAppstreamMetadataJobs--;
+
     FlatpakSource source(remote);
     if (!source.isEnabled() || flatpak_remote_get_noenumerate(remote)) {
         return;
@@ -580,7 +600,6 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
         return;
     }
 
-    setFetching(true);
     QList<AppStream::Component> components = metadata.components();
     foreach (const AppStream::Component& appstreamComponent, components) {
         FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
@@ -588,7 +607,21 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
         resource->setOrigin(source.name());
         addResource(resource);
     }
-    setFetching(false);
+
+    // Not ideal calling it from here but given that everything is asynchronous then it's a bit complicated
+    if (!m_refreshAppstreamMetadataJobs) {
+        finishInitialization();
+    }
+}
+
+void FlatpakBackend::loadInstalledApps()
+{
+    for (auto installation : qAsConst(m_installations)) {
+        // Load installed applications and update existing resources with info from installed application
+        if (!loadInstalledApps(installation)) {
+            qWarning() << "Failed to load installed packages from installation" << installation;
+        }
+    }
 }
 
 bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
@@ -605,26 +638,22 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
     const QString pathExports = FlatpakResource::installationPath(flatpakInstallation) + QLatin1String("/exports/");
     const QString pathApps = pathExports + QLatin1String("share/applications/");
 
-
     for (uint i = 0; i < refs->len; i++) {
         FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+
+        if (flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_RUNTIME) {
+            continue;
+        }
 
         const auto name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
         const QString fnDesktop = pathApps + name + QLatin1String(".desktop");
 
-
-        g_autoptr(GError) gerror = nullptr;
-        auto md = flatpak_installed_ref_load_metadata(ref, m_cancellable, &gerror);
-        if (!md) {
-            qDebug() << "error message" << gerror->message;
+        if (!QFileInfo::exists(fnDesktop)) {
             continue;
         }
 
-        gsize len = 0;
-        gconstpointer data = g_bytes_get_data(md, &len);
-
         AppStream::Metadata metadata;
-        AppStream::Metadata::MetadataError error = metadata.parseDesktopData(QString::fromUtf8((const char*) data, len), name);
+        AppStream::Metadata::MetadataError error = metadata.parseFile(fnDesktop, AppStream::Metadata::FormatKindDesktopEntry);
         if (error != AppStream::Metadata::MetadataErrorNoError) {
             qWarning() << "Failed to parse appstream metadata: " << error << fnDesktop;
             continue;
@@ -800,27 +829,11 @@ private:
 void FlatpakBackend::refreshAppstreamMetadata(FlatpakInstallation *installation, FlatpakRemote *remote)
 {
     FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, [this] () {
+        m_refreshAppstreamMetadataJobs--;
+    });
     connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
     job->start();
-}
-
-void FlatpakBackend::reloadPackageList()
-{
-    setFetching(true);
-
-    for (auto installation : qAsConst(m_installations)) {
-        // Load applications from appstream metadata
-        if (!loadAppsFromAppstreamData(installation)) {
-            qWarning() << "Failed to load packages from appstream data from installation" << installation;
-        }
-
-        // Load installed applications and update existing resources with info from installed application
-        if (!loadInstalledApps(installation)) {
-            qWarning() << "Failed to load installed packages from installation" << installation;
-        }
-    }
-
-    setFetching(false);
 }
 
 bool FlatpakBackend::setupFlatpakInstallations(GError **error)
