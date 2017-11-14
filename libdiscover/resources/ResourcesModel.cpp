@@ -54,7 +54,7 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
     , m_currentApplicationBackend(nullptr)
 {
     init(load);
-    connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::fetchingChanged);
+    connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::slotFetching);
     connect(this, &ResourcesModel::backendsChanged, this, &ResourcesModel::initApplicationsBackend);
 }
 
@@ -71,8 +71,8 @@ void ResourcesModel::init(bool load)
     updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(this, &ResourcesModel::fetchingChanged, updateAction, [updateAction, this](){
-        updateAction->setEnabled(!isFetching());
+    connect(this, &ResourcesModel::fetchingChanged, updateAction, [updateAction](bool fetching) {
+        updateAction->setEnabled(!fetching);
     });
     connect(updateAction, &QAction::triggered, this, &ResourcesModel::checkForUpdates);
 
@@ -115,12 +115,12 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     connect(backend, &AbstractResourcesBackend::updatesCountChanged, this, &ResourcesModel::updatesCountChanged);
     connect(backend, &AbstractResourcesBackend::resourceRemoved, this, &ResourcesModel::resourceRemoved);
     connect(backend, &AbstractResourcesBackend::passiveMessage, this, &ResourcesModel::passiveMessage);
-    connect(backend->backendUpdater(), &AbstractBackendUpdater::progressingChanged, this, &ResourcesModel::fetchingChanged);
+    connect(backend->backendUpdater(), &AbstractBackendUpdater::progressingChanged, this, &ResourcesModel::slotFetching);
 
     if(m_initializingBackends==0)
         emit allInitialized();
     else
-        emit fetchingChanged();
+        slotFetching();
 }
 
 void ResourcesModel::callerFetchingChanged()
@@ -140,13 +140,13 @@ void ResourcesModel::callerFetchingChanged()
 
     if(backend->isFetching()) {
         m_initializingBackends++;
-        emit fetchingChanged();
+        slotFetching();
     } else {
         m_initializingBackends--;
         if(m_initializingBackends==0)
             emit allInitialized();
         else
-            emit fetchingChanged();
+            slotFetching();
     }
 }
 
@@ -214,16 +214,26 @@ void ResourcesModel::registerBackendByName(const QString& name)
 
 bool ResourcesModel::isFetching() const
 {
+    return m_isFetching;
+}
+
+void ResourcesModel::slotFetching()
+{
+    bool newFetching = false;
     foreach(AbstractResourcesBackend* b, m_backends) {
         // isFetching should sort of be enough. However, sometimes the backend itself
         // will still be operating on things, which from a model point of view would
         // still mean something going on. So, interpret that as fetching as well, for
         // the purposes of this property.
         if(b->isFetching() || (b->backendUpdater() && b->backendUpdater()->isProgressing())) {
-            return true;
+            newFetching = true;
+            break;
         }
     }
-    return false;
+    if (newFetching != m_isFetching) {
+        m_isFetching = newFetching;
+        Q_EMIT fetchingChanged(m_isFetching);
+    }
 }
 
 QList<QAction*> ResourcesModel::messageActions() const

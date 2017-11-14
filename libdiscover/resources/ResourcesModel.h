@@ -88,7 +88,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         void removeApplication(AbstractResource* app);
 
     Q_SIGNALS:
-        void fetchingChanged();
+        void fetchingChanged(bool isFetching);
         void allInitialized();
         void backendsChanged();
         void updatesCountChanged();
@@ -110,7 +110,9 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         void addResourcesBackend(AbstractResourcesBackend* backend);
         void registerBackendByName(const QString& name);
         void initApplicationsBackend();
+        void slotFetching();
 
+        bool m_isFetching;
         QVector< AbstractResourcesBackend* > m_backends;
         int m_initializingBackends;
         QList<QAction*> m_ownActions;
