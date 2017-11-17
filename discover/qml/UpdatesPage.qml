@@ -194,15 +194,12 @@ DiscoverPage
                     }
                 }
 
-                ScrollView {
-                    id: view
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    frameVisible: true
+                QQC2.Frame {
                     visible: layout.extended && changelog.length>0
-
                     QQC2.Label {
-                        width: view.viewport.width
+                        id: view
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
                         text: changelog
                         textFormat: Text.RichText
                         wrapMode: Text.WordWrap
@@ -211,7 +208,7 @@ DiscoverPage
                 }
 
                 Button {
-                    text: i18n("Open")
+                    text: i18n("More Information...")
                     visible: layout.extended
                     enabled: !resourcesUpdatesModel.isProgressing
                     onClicked: Navigation.openApplication(resource)
