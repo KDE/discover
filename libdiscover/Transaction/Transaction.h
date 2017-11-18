@@ -77,6 +77,8 @@ public:
     Transaction(QObject *parent, AbstractResource *resource,
                  Transaction::Role role, const AddonList &addons = {});
 
+    ~Transaction() override;
+
     /**
      * @returns the AbstractResource which this transaction works with
      */

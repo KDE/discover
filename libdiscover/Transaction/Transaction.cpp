@@ -35,6 +35,14 @@ Transaction::Transaction(QObject *parent, AbstractResource *resource,
 {
 }
 
+Transaction::~Transaction()
+{
+    TransactionModel* tm = TransactionModel::global();
+    if (tm->indexOf(this).isValid()) {
+        tm->removeTransaction(this);
+    }
+}
+
 AbstractResource *Transaction::resource() const
 {
     return m_resource;
