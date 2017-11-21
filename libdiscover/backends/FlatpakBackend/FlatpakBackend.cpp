@@ -493,8 +493,6 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
     // This will update also metadata (required runtime)
     updateAppSize(installation, resource);
 
-    connect(resource, &FlatpakResource::stateChanged, this, &FlatpakBackend::updatesCountChanged);
-
     m_resources.insert(resource->uniqueId(), resource);
 }
 
