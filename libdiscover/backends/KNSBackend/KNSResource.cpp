@@ -76,6 +76,7 @@ QString KNSResource::comment()
             ret=ret.left(newLine);
         }
         ret = ret.replace(QRegularExpression(QStringLiteral("\\[/?[a-z]*\\]")), QString());
+        ret = ret.remove(QRegularExpression(QStringLiteral("<[^>]*>")));
     }
     return ret;
 }
