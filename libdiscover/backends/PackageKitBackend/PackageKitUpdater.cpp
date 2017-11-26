@@ -52,7 +52,6 @@ PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
     m_backend(parent),
     m_isCancelable(false),
     m_isProgressing(false),
-    m_status(PackageKit::Transaction::Status::StatusUnknown),
     m_percentage(0),
     m_lastUpdate()
 {
@@ -76,7 +75,6 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     m_packagesRemoved.clear();
     m_transaction = PackageKit::Daemon::updatePackages(involvedPackages(m_toUpgrade).toList(), flags);
     m_isCancelable = m_transaction->allowCancel();
-    m_status = PackageKit::Transaction::Status::StatusUnknown;
 
     connect(m_transaction.data(), &PackageKit::Transaction::finished, this, &PackageKitUpdater::finished);
     connect(m_transaction.data(), &PackageKit::Transaction::package, this, &PackageKitUpdater::packageResolved);
@@ -85,7 +83,6 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     connect(m_transaction.data(), &PackageKit::Transaction::mediaChangeRequired, this, &PackageKitUpdater::mediaChange);
     connect(m_transaction.data(), &PackageKit::Transaction::requireRestart, this, &PackageKitUpdater::requireRestart);
     connect(m_transaction.data(), &PackageKit::Transaction::eulaRequired, this, &PackageKitUpdater::eulaRequired);
-    connect(m_transaction.data(), &PackageKit::Transaction::statusChanged, this, &PackageKitUpdater::statusChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::allowCancelChanged, this, &PackageKitUpdater::cancellableChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::percentageChanged, this, &PackageKitUpdater::percentageChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::itemProgress, this, &PackageKitUpdater::itemProgress);
@@ -180,13 +177,6 @@ void PackageKitUpdater::percentageChanged()
     if (actualPercentage >= 0 && m_percentage != actualPercentage) {
         m_percentage = actualPercentage;
         emit progressChanged(m_percentage);
-    }
-}
-
-void PackageKitUpdater::statusChanged()
-{
-    if (m_status != m_transaction->status()) {
-        m_status = m_transaction->status();
     }
 }
 
