@@ -27,6 +27,7 @@ DiscoverPage
         currentIndex: -1
         ResourcesUpdatesModel {
             id: resourcesUpdatesModel
+            onPassiveMessage: window.showPassiveNotification(message)
             onIsProgressingChanged: {
                 if (!isProgressing) {
                     resourcesUpdatesModel.prepare()
