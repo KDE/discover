@@ -844,7 +844,8 @@ void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRe
     resource->updateFromRef(FLATPAK_REF(installedRef));
     resource->setInstalledSize(flatpak_installed_ref_get_installed_size(installedRef));
     resource->setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(installedRef)));
-    resource->setState(AbstractResource::Installed);
+    if (resource->state() < AbstractResource::Installed)
+        resource->setState(AbstractResource::Installed);
 }
 
 bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation, FlatpakResource *resource)
