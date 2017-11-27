@@ -44,12 +44,16 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     });
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &StandardBackendUpdater::transactionRemoved);
     connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &StandardBackendUpdater::transactionAdded);
+
+    m_timer.setSingleShot(true);
+    m_timer.setInterval(10);
+    connect(&m_timer, &QTimer::timeout, this, &StandardBackendUpdater::refreshUpdateable);
 }
 
 void StandardBackendUpdater::resourcesChanged(AbstractResource* res, const QVector<QByteArray>& props)
 {
     if (props.contains("state") && (res->state() == AbstractResource::Upgradeable || m_upgradeable.contains(res)))
-        refreshUpdateable();
+        m_timer.start();
 }
 
 bool StandardBackendUpdater::hasUpdates() const

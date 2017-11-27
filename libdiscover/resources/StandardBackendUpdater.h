@@ -25,6 +25,7 @@
 #include "AbstractResourcesBackend.h"
 #include <QSet>
 #include <QDateTime>
+#include <QTimer>
 
 class AbstractResourcesBackend;
 
@@ -70,6 +71,7 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         bool m_settingUp;
         qreal m_progress;
         QDateTime m_lastUpdate;
+        QTimer m_timer;
 };
 
 #endif // STANDARDBACKENDUPDATER_H
