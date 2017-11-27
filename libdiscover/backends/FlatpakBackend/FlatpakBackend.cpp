@@ -608,8 +608,6 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
         FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
 
         const auto name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
-        const QString fnDesktop = pathApps + name + QLatin1String(".desktop");
-
 
         g_autoptr(GError) gerror = nullptr;
         auto md = flatpak_installed_ref_load_metadata(ref, m_cancellable, &gerror);
@@ -624,6 +622,7 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
         AppStream::Metadata metadata;
         AppStream::Metadata::MetadataError error = metadata.parseDesktopData(QString::fromUtf8((const char*) data, len), name);
         if (error != AppStream::Metadata::MetadataErrorNoError) {
+            const QString fnDesktop = pathApps + name + QLatin1String(".desktop");
             qWarning() << "Failed to parse appstream metadata: " << error << fnDesktop;
             continue;
         }
