@@ -46,9 +46,9 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &StandardBackendUpdater::transactionAdded);
 }
 
-void StandardBackendUpdater::resourcesChanged(AbstractResource* /*res*/, const QVector<QByteArray>& props)
+void StandardBackendUpdater::resourcesChanged(AbstractResource* res, const QVector<QByteArray>& props)
 {
-    if (props.contains("state"))
+    if (props.contains("state") && (res->state() == AbstractResource::Upgradeable || m_upgradeable.contains(res)))
         refreshUpdateable();
 }
 
