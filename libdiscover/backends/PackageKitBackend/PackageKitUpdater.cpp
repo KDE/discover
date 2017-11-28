@@ -85,6 +85,7 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     connect(m_transaction.data(), &PackageKit::Transaction::mediaChangeRequired, this, &PackageKitUpdater::mediaChange);
     connect(m_transaction.data(), &PackageKit::Transaction::requireRestart, this, &PackageKitUpdater::requireRestart);
     connect(m_transaction.data(), &PackageKit::Transaction::eulaRequired, this, &PackageKitUpdater::eulaRequired);
+    connect(m_transaction.data(), &PackageKit::Transaction::repoSignatureRequired, this, &PackageKitUpdater::repoSignatureRequired);
     connect(m_transaction.data(), &PackageKit::Transaction::statusChanged, this, &PackageKitUpdater::statusChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::allowCancelChanged, this, &PackageKitUpdater::cancellableChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::percentageChanged, this, &PackageKitUpdater::percentageChanged);
@@ -361,4 +362,17 @@ void PackageKitUpdater::packageResolved(PackageKit::Transaction::Info info, cons
 {
     if (info == PackageKit::Transaction::InfoRemoving)
         m_packagesRemoved << packageId;
+}
+
+void PackageKitUpdater::repoSignatureRequired(const QString& packageID, const QString& repoName, const QString& keyUrl,
+                                              const QString& keyUserid, const QString& keyId, const QString& keyFingerprint,
+                                              const QString& keyTimestamp, PackageKit::Transaction::SigType type)
+{
+    Q_EMIT proceedRequest(i18n("Missing signature for %1 in %2", packageID, repoName),
+                          i18n("Do you trust the following key?\n\nUrl: %1\nUser: %2\nKey: %3\nFingerprint: %4\nTimestamp: %4\n",
+                               keyUrl, keyUserid, keyFingerprint, keyTimestamp));
+
+    m_proceedFunctions << [type, keyId, packageID](){
+        return PackageKit::Daemon::installSignature(type, keyId, packageID);
+    };
 }

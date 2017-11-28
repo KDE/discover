@@ -92,6 +92,7 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
     connect(m_trans.data(), &PackageKit::Transaction::errorCode, this, &PKTransaction::errorFound);
     connect(m_trans.data(), &PackageKit::Transaction::mediaChangeRequired, this, &PKTransaction::mediaChange);
     connect(m_trans.data(), &PackageKit::Transaction::requireRestart, this, &PKTransaction::requireRestart);
+    connect(m_trans.data(), &PackageKit::Transaction::repoSignatureRequired, this, &PKTransaction::repoSignatureRequired);
     connect(m_trans.data(), &PackageKit::Transaction::itemProgress, this, &PKTransaction::progressChanged);
     connect(m_trans.data(), &PackageKit::Transaction::eulaRequired, this, &PKTransaction::eulaRequired);
     connect(m_trans.data(), &PackageKit::Transaction::allowCancelChanged, this, &PKTransaction::cancellableChanged);
@@ -252,4 +253,17 @@ void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const 
 void PKTransaction::requireRestart(PackageKit::Transaction::Restart restart, const QString& pkgid)
 {
     Q_EMIT passiveMessage(PackageKitMessages::restartMessage(restart, pkgid));
+}
+
+void PKTransaction::repoSignatureRequired(const QString& packageID, const QString& repoName, const QString& keyUrl,
+                                          const QString& keyUserid, const QString& keyId, const QString& keyFingerprint,
+                                          const QString& keyTimestamp, PackageKit::Transaction::SigType type)
+{
+    Q_EMIT proceedRequest(i18n("Missing signature for %1 in %2", packageID, repoName),
+                          i18n("Do you trust the following key?\n\nUrl: %1\nUser: %2\nKey: %3\nFingerprint: %4\nTimestamp: %4\n",
+                               keyUrl, keyUserid, keyFingerprint, keyTimestamp));
+
+    m_proceedFunctions << [type, keyId, packageID](){
+        return PackageKit::Daemon::installSignature(type, keyId, packageID);
+    };
 }

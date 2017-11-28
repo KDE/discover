@@ -51,6 +51,14 @@ class PKTransaction : public Transaction
         void cancellableChanged();
         void packageResolved(PackageKit::Transaction::Info info, const QString& packageId);
         void submitResolve();
+        void repoSignatureRequired(const QString &packageID,
+                                    const QString &repoName,
+                                    const QString &keyUrl,
+                                    const QString &keyUserid,
+                                    const QString &keyId,
+                                    const QString &keyFingerprint,
+                                    const QString &keyTimestamp,
+                                    PackageKit::Transaction::SigType type);
 
         void trigger(PackageKit::Transaction::TransactionFlags flags);
         QPointer<PackageKit::Transaction> m_trans;
