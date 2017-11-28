@@ -133,7 +133,7 @@ void PKTransaction::cancel()
 void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
     Q_UNUSED(runtime)
-    const bool cancel = exit == PackageKit::Transaction::ExitEulaRequired || exit == PackageKit::Transaction::ExitCancelled;
+    const bool cancel = !m_proceedFunctions.isEmpty() || exit == PackageKit::Transaction::ExitCancelled;
     const bool simulate = m_trans->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
 
     disconnect(m_trans, nullptr, this, nullptr);

@@ -161,7 +161,7 @@ void PackageKitUpdater::start()
 void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time*/)
 {
 //     qDebug() << "update finished!" << exit << time;
-    if (exit == PackageKit::Transaction::ExitEulaRequired)
+    if (!m_proceedFunctions.isEmpty())
         return;
     const bool cancel = exit == PackageKit::Transaction::ExitCancelled;
     const bool simulate = m_transaction->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
