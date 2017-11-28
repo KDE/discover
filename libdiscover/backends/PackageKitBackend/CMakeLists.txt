@@ -12,6 +12,7 @@ add_library(packagekit-backend MODULE PackageKitBackend.cpp
     PackageKitMessages.cpp
     PackageKitSourcesBackend.cpp
     LocalFilePKResource.cpp
+    TransactionSet.cpp
 )
 target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt5::Core PK::packagekitqt5 KF5::ConfigGui KF5::KIOCore KF5::Archive AppStreamQt)
 

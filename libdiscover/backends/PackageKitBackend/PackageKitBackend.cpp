@@ -26,6 +26,7 @@
 #include "AppPackageKitResource.h"
 #include "PKTransaction.h"
 #include "LocalFilePKResource.h"
+#include "TransactionSet.h"
 #include <resources/AbstractResource.h>
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
@@ -211,38 +212,6 @@ AppPackageKitResource* PackageKitBackend::addComponent(const AppStream::Componen
     }
     return res;
 }
-
-class TransactionSet : public QObject
-{
-    Q_OBJECT
-    public:
-        TransactionSet(const QVector<PackageKit::Transaction*> &transactions)
-            : m_transactions(transactions)
-        {
-            foreach(PackageKit::Transaction* t, transactions) {
-                connect(t, &PackageKit::Transaction::finished, this, &TransactionSet::transactionFinished);
-            }
-        }
-
-        void transactionFinished(PackageKit::Transaction::Exit exit) {
-            PackageKit::Transaction* t = qobject_cast<PackageKit::Transaction*>(sender());
-            if (exit != PackageKit::Transaction::ExitSuccess) {
-                qWarning() << "failed" << exit << t;
-            }
-
-            m_transactions.removeAll(t);
-            if (m_transactions.isEmpty()) {
-                Q_EMIT allFinished();
-            }
-        }
-
-    Q_SIGNALS:
-        void allFinished();
-
-    private:
-        QVector<PackageKit::Transaction*> m_transactions;
-
-};
 
 void PackageKitBackend::clearPackages(const QStringList& packageNames)
 {
