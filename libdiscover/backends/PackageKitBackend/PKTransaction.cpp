@@ -173,14 +173,31 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     setStatus(Transaction::CancelledStatus);
 }
 
+void PKTransaction::processProceedFunction()
+{
+    auto t = m_proceedFunctions.takeFirst()();
+    connect(t, &PackageKit::Transaction::finished, this, [this](PackageKit::Transaction::Exit status) {
+        if (status != PackageKit::Transaction::Exit::ExitSuccess) {
+            qWarning() << "transaction failed" << sender() << status;
+            cancel();
+            return;
+        }
+
+        if (!m_proceedFunctions.isEmpty()) {
+            processProceedFunction();
+        } else {
+            start();
+        }
+    });
+}
+
 void PKTransaction::proceed()
 {
-    if (!m_requiredEula.isEmpty()) {
-        PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(m_requiredEula.takeFirst());
-        connect(t, &PackageKit::Transaction::finished, this, &PKTransaction::start);
-        return;
+    if (!m_proceedFunctions.isEmpty()) {
+        processProceedFunction();
+    } else {
+        trigger(PackageKit::Transaction::TransactionFlagOnlyTrusted);
     }
-    trigger(PackageKit::Transaction::TransactionFlagOnlyTrusted);
 }
 
 void PKTransaction::packageResolved(PackageKit::Transaction::Info info, const QString& packageId)
@@ -210,7 +227,10 @@ PackageKit::Transaction* PKTransaction::transaction()
 
 void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
-    m_requiredEula += eulaID;
+    m_proceedFunctions << [eulaID](){
+        return PackageKit::Daemon::acceptEula(eulaID);
+    };
+
     Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement));
 }

@@ -122,14 +122,31 @@ QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource*>&
     return packageIds;
 }
 
+void PackageKitUpdater::processProceedFunction()
+{
+    auto t = m_proceedFunctions.takeFirst()();
+    connect(t, &PackageKit::Transaction::finished, this, [this](PackageKit::Transaction::Exit status) {
+        if (status != PackageKit::Transaction::Exit::ExitSuccess) {
+            qWarning() << "transaction failed" << sender() << status;
+            cancel();
+            return;
+        }
+
+        if (!m_proceedFunctions.isEmpty()) {
+            processProceedFunction();
+        } else {
+            start();
+        }
+    });
+}
+
 void PackageKitUpdater::proceed()
 {
-    if (!m_requiredEula.isEmpty()) {
-        PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(m_requiredEula.takeFirst());
-        connect(t, &PackageKit::Transaction::finished, this, &PackageKitUpdater::start);
-        return;
+    if (!m_proceedFunctions.isEmpty()) {
+        processProceedFunction();
+    } else {
+        setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
     }
-    setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
 }
 
 void PackageKitUpdater::start()
@@ -155,7 +172,6 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
         if (!m_packagesRemoved.isEmpty())
             Q_EMIT proceedRequest(i18n("Packages to remove"), i18n("The following packages will be removed by the update:\n%1", PackageKitResource::joinPackages(m_packagesRemoved)));
         else {
-            Q_ASSERT(m_requiredEula.isEmpty());
             proceed();
         }
         return;
@@ -271,7 +287,9 @@ void PackageKitUpdater::requireRestart(PackageKit::Transaction::Restart restart,
 
 void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
-    m_requiredEula += eulaID;
+    m_proceedFunctions << [eulaID](){
+        return PackageKit::Daemon::acceptEula(eulaID);
+    };
     Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement));
 }

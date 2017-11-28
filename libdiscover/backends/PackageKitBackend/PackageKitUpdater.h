@@ -70,6 +70,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void packageResolved(PackageKit::Transaction::Info info, const QString& packageId);
 
     private:
+        void processProceedFunction();
         void itemProgress(const QString &itemID, PackageKit::Transaction::Status status, uint percentage);
         void fetchLastUpdateTime();
         void lastUpdateTimeReceived(QDBusPendingCallWatcher* w);
@@ -87,7 +88,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         int m_percentage;
         QDateTime m_lastUpdate;
         QStringList m_packagesRemoved;
-        QVector<QString> m_requiredEula;
+        QVector<std::function<PackageKit::Transaction*()>> m_proceedFunctions;
 };
 
 

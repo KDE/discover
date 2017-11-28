@@ -40,6 +40,8 @@ class PKTransaction : public Transaction
         void start();
 
     private:
+        void processProceedFunction();
+
         void cleanup(PackageKit::Transaction::Exit, uint);
         void errorFound(PackageKit::Transaction::Error err, const QString& error);
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
@@ -54,7 +56,7 @@ class PKTransaction : public Transaction
         QPointer<PackageKit::Transaction> m_trans;
         const QVector<AbstractResource*> m_apps;
         QSet<QString> m_pkgnames;
-        QVector<QString> m_requiredEula;
+        QVector<std::function<PackageKit::Transaction*()>> m_proceedFunctions;
 
         QMap<PackageKit::Transaction::Info, QStringList> m_newPackageStates;
 };
