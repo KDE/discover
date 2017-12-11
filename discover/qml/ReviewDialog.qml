@@ -34,20 +34,19 @@ Kirigami.OverlaySheet
 
         TextArea {
             id: reviewInput
-            property bool acceptableInput: false
+            readonly property bool acceptableInput: inputIssue.count === 0
+            readonly property string inputIssue: length < 15 ? i18n("Comment too short") :
+                                                 length > 3000 ? i18n("Comment too long") : ""
             Layout.fillWidth: true
             Layout.fillHeight: true
-
-            onLengthChanged: {
-                acceptableInput = length >= 15 && length < 3000
-            }
         }
 
         Button {
             id: acceptButton
             Layout.alignment: Qt.AlignRight
             enabled: summaryInput.acceptableInput && reviewInput.acceptableInput
-            text: i18n("Accept")
+            text: summaryInput.acceptableInput && reviewInput.acceptableInput ? i18n("Accept")
+                : !summaryInput.acceptableInput ? i18n("Improve summary") : reviewInput.inputIssue
             onClicked: {
                 reviewDialog.accepted()
                 reviewDialog.sheetOpen = false
