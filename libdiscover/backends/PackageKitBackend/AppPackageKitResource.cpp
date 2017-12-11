@@ -127,7 +127,8 @@ QUrl AppPackageKitResource::homepage()
 bool AppPackageKitResource::isTechnical() const
 {
     static QString desktop = QString::fromUtf8(qgetenv("XDG_CURRENT_DESKTOP"));
-    return !m_appdata.compulsoryForDesktops().contains(desktop);
+    const auto desktops = m_appdata.compulsoryForDesktops();
+    return !desktops.isEmpty() && !desktops.contains(desktop);
 }
 
 void AppPackageKitResource::fetchScreenshots()
