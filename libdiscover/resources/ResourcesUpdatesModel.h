@@ -51,6 +51,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         bool isProgressing() const;
         QList<AbstractResource*> toUpdate() const;
         QDateTime lastUpdate() const;
+        double updateSize() const;
         void addResources(const QList<AbstractResource*>& resources);
         void removeResources(const QList<AbstractResource*>& resources);
 

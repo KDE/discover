@@ -236,6 +236,15 @@ QDateTime ResourcesUpdatesModel::lastUpdate() const
     return ret;
 }
 
+double ResourcesUpdatesModel::updateSize() const
+{
+    double ret;
+    for(AbstractBackendUpdater* upd: m_updaters) {
+        ret += upd->updateSize();
+    }
+    return ret;
+}
+
 qint64 ResourcesUpdatesModel::secsToLastUpdate() const
 {
     return lastUpdate().secsTo(QDateTime::currentDateTime());

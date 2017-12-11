@@ -47,6 +47,7 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         bool isCancelable() const override;
         bool isProgressing() const override;
         bool isMarked(AbstractResource* res) const override;
+        double updateSize() const override;
         void setProgress(qreal p);
         int updatesCount() const;
 

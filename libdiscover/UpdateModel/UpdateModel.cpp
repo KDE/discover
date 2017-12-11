@@ -253,12 +253,7 @@ UpdateItem * UpdateModel::itemFromResource(AbstractResource* res)
 
 QString UpdateModel::updateSize() const
 {
-    double ret = 0;
-    foreach (UpdateItem* item, m_updateItems) {
-        if (item->checked() == Qt::Checked)
-            ret += item->size();
-    }
-    return KFormat().formatByteSize(ret);
+    return KFormat().formatByteSize(m_updates->updateSize());
 }
 
 QModelIndex UpdateModel::indexFromItem(UpdateItem* item) const

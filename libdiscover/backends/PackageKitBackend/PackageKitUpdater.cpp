@@ -376,3 +376,18 @@ void PackageKitUpdater::repoSignatureRequired(const QString& packageID, const QS
         return PackageKit::Daemon::installSignature(type, keyId, packageID);
     };
 }
+
+double PackageKitUpdater::updateSize() const
+{
+    double ret = 0.;
+    QSet<QString> donePkgs;
+    for (AbstractResource * res : m_toUpgrade) {
+        PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
+        QString pkgid = m_backend->upgradeablePackageId(app);
+        if (!donePkgs.contains(pkgid)) {
+            donePkgs.insert(pkgid);
+            ret += app->size();
+        }
+    }
+    return ret;
+}

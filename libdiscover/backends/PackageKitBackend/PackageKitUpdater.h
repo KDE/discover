@@ -46,6 +46,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         bool isCancelable() const override;
         bool isProgressing() const override;
         void fetchChangelog() const override;
+        double updateSize() const override;
 
         void proceed() override;
 

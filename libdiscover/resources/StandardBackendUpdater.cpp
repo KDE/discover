@@ -206,3 +206,12 @@ bool StandardBackendUpdater::isProgressing() const
 {
     return m_settingUp || !m_pendingResources.isEmpty();
 }
+
+double StandardBackendUpdater::updateSize() const
+{
+    double ret = 0.;
+    for(AbstractResource* res: m_toUpgrade) {
+        ret += res->size();
+    }
+    return ret;
+}

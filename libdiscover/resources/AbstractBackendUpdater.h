@@ -118,6 +118,11 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
 
         virtual void fetchChangelog() const;
 
+        /**
+         * @returns the size of all the packages set to update combined
+         */
+        virtual double updateSize() const = 0;
+
     public Q_SLOTS:
         /**
          * If \isCancelable is true during the transaction, this method has
