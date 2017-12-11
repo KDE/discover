@@ -195,7 +195,9 @@ DiscoverPage {
                     tooltip: i18n("Delete the origin")
                     onTriggered: {
                         var backend = sourcesView.model.data(modelIndex, AbstractSourcesBackend.SourcesBackend)
-                        backend.removeSource(model.display)
+                        if (!backend.removeSource(model.display)) {
+                            window.showPassiveNotification(i18n("Failed to remove the source '%1'", model.display))
+                        }
                     }
                 }
             ]
