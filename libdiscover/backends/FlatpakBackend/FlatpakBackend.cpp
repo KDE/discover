@@ -493,8 +493,6 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
     // This will update also metadata (required runtime)
     updateAppSize(installation, resource);
 
-    connect(resource, &FlatpakResource::stateChanged, this, &FlatpakBackend::updatesCountChanged);
-
     m_resources.insert(resource->uniqueId(), resource);
 }
 
@@ -646,13 +644,8 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
         }
 
         const auto name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
-        const QString fnDesktop = pathApps + name + QLatin1String(".desktop");
-
-        if (!QFileInfo::exists(fnDesktop)) {
-            continue;
-        }
-
         AppStream::Metadata metadata;
+        const QString fnDesktop = pathApps + name + QLatin1String(".desktop");
         AppStream::Metadata::MetadataError error = metadata.parseFile(fnDesktop, AppStream::Metadata::FormatKindDesktopEntry);
         if (error != AppStream::Metadata::MetadataErrorNoError) {
             qWarning() << "Failed to parse appstream metadata: " << error << fnDesktop;
@@ -860,7 +853,8 @@ void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRe
     resource->updateFromRef(FLATPAK_REF(installedRef));
     resource->setInstalledSize(flatpak_installed_ref_get_installed_size(installedRef));
     resource->setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(installedRef)));
-    resource->setState(AbstractResource::Installed);
+    if (resource->state() < AbstractResource::Installed)
+        resource->setState(AbstractResource::Installed);
 }
 
 bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation, FlatpakResource *resource)

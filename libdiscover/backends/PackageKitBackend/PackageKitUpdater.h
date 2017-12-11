@@ -61,7 +61,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void requireRestart(PackageKit::Transaction::Restart restart, const QString& p);
         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
         void finished(PackageKit::Transaction::Exit exit, uint);
-        void statusChanged();
         void cancellableChanged();
         void percentageChanged();
         void printMessage(PackageKit::Transaction::Message type, const QString &message);
@@ -93,7 +92,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         QSet<AbstractResource*> m_allUpgradeable;
         bool m_isCancelable;
         bool m_isProgressing;
-        PackageKit::Transaction::Status m_status;
         int m_percentage;
         QDateTime m_lastUpdate;
         QStringList m_packagesRemoved;

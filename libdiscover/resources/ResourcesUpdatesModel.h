@@ -64,6 +64,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void progressingChanged();
         void finished();
         void resourceProgressed(AbstractResource* resource, qreal progress);
+        void passiveMessage(const QString &message);
 
     public Q_SLOTS:
         void updateAll();

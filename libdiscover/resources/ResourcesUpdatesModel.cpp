@@ -47,7 +47,6 @@ public:
         foreach(auto updater, m_allUpdaters) {
             connect(updater, &AbstractBackendUpdater::progressingChanged, this, &UpdateTransaction::slotProgressingChanged);
             connect(updater, &AbstractBackendUpdater::progressChanged, this, &UpdateTransaction::slotUpdateProgress);
-            connect(updater, &AbstractBackendUpdater::passiveMessage, this, &Transaction::passiveMessage);
             connect(updater, &AbstractBackendUpdater::proceedRequest, this, &UpdateTransaction::processProceedRequest);
             cancelable |= updater->isCancelable();
         }
@@ -130,6 +129,7 @@ void ResourcesUpdatesModel::init()
             connect(updater, &AbstractBackendUpdater::statusDetailChanged, this, &ResourcesUpdatesModel::message);
             connect(updater, &AbstractBackendUpdater::downloadSpeedChanged, this, &ResourcesUpdatesModel::downloadSpeedChanged);
             connect(updater, &AbstractBackendUpdater::resourceProgressed, this, &ResourcesUpdatesModel::resourceProgressed);
+            connect(updater, &AbstractBackendUpdater::passiveMessage, this, &ResourcesUpdatesModel::passiveMessage);
             connect(updater, &AbstractBackendUpdater::destroyed, this, &ResourcesUpdatesModel::updaterDestroyed);
             m_updaters += updater;
 

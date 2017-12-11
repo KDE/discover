@@ -120,17 +120,15 @@ void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *>& resource
 {
     const auto cab = ResourcesModel::global()->currentApplicationBackend();
     QHash<QString, QVector<AbstractResource *>::iterator> storedIds;
-    for(auto it = m_displayedResources.begin(); it != m_displayedResources.end(); )
+    for(auto it = m_displayedResources.begin(); it != m_displayedResources.end(); ++it)
     {
         const auto appstreamid = (*it)->appstreamId();
         if (appstreamid.isEmpty()) {
-            ++it;
             continue;
         }
         auto at = storedIds.find(appstreamid);
         if (at == storedIds.end()) {
             storedIds[appstreamid] = it;
-            ++it;
         } else {
             qWarning() << "We should have sanitized the displayed resources. There is a bug";
             Q_UNREACHABLE();
@@ -275,9 +273,7 @@ void ResourcesProxyModel::invalidateFilter()
         endResetModel();
     }
 
-    connect(m_currentStream, &AggregatedResultsStream::resourcesFound, this, [this](const QVector<AbstractResource*>& resources) {
-        addResources(resources);
-    });
+    connect(m_currentStream, &AggregatedResultsStream::resourcesFound, this, &ResourcesProxyModel::addResources);
     connect(m_currentStream, &AggregatedResultsStream::finished, this, [this]() {
         m_currentStream = nullptr;
         Q_EMIT busyChanged(false);

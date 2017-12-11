@@ -101,6 +101,7 @@ Kirigami.AbstractListItem
                 elide: Text.ElideRight
                 text: delegateArea.application.comment
                 maximumLineCount: 1
+                textFormat: Text.PlainText
             }
 
             QQC2.Label {
