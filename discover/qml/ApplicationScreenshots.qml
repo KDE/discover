@@ -35,6 +35,9 @@ Flow {
     property QtObject page
     visible: screenshotsModel.count>0
 
+    property int currentIndex: -1
+    readonly property Item currentItem: root.currentIndex >= 0 ? rep.itemAt(root.currentIndex) : null
+
     QQC2.Popup {
         id: overlay
         parent: applicationWindow().overlay
@@ -48,12 +51,46 @@ Flow {
         Image {
             id: overlayImage
             anchors.fill: parent
+            source: root.currentItem ? root.currentItem.imageSource : ""
             fillMode: Image.PreserveAspectFit
             smooth: true
+        }
+
+        Button {
+            anchors {
+                right: parent.left
+                verticalCenter: parent.verticalCenter
+            }
+            iconName: leftAction.iconName
+            onClicked: leftAction.triggered(null)
+        }
+
+        Button {
+            anchors {
+                left: parent.right
+                verticalCenter: parent.verticalCenter
+            }
+            iconName: rightAction.iconName
+            onClicked: rightAction.triggered(null)
+        }
+
+        Kirigami.Action {
+            id: leftAction
+            iconName: "arrow-left"
+            enabled: overlay.visible
+            onTriggered: root.currentIndex = (root.currentIndex-1 < 0) ? 0 : root.currentIndex-1
+        }
+
+        Kirigami.Action {
+            id: rightAction
+            iconName: "arrow-right"
+            enabled: overlay.visible
+            onTriggered: root.currentIndex = (root.currentIndex+1 >= rep.count) ? rep.count-1 : root.currentIndex+1
         }
     }
 
     Repeater {
+        id: rep
         model: ScreenshotsModel {
             id: screenshotsModel
         }
@@ -65,6 +102,7 @@ Flow {
             fillMode: Image.PreserveAspectCrop
             smooth: true
             opacity: mouse.containsMouse? 0.5 : 1
+            readonly property url imageSource: large_image_url
 
             Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 200 } }
 
@@ -79,7 +117,7 @@ Flow {
                 anchors.fill: parent
                 hoverEnabled: true
                 onClicked: {
-                    overlayImage.source = large_image_url
+                    root.currentIndex = index
                     overlay.open()
                 }
             }

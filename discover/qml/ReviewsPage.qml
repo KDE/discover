@@ -39,6 +39,7 @@ Kirigami.OverlaySheet {
 
     function openReviewDialog() {
         reviewDialog.sheetOpen = true
+        page.sheetOpen = false
     }
 
     ListView {
