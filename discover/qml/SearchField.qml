@@ -35,10 +35,8 @@ TextField
             searchField.selectAll()
         }
     }
-    onTextChanged: {
-        if (applicationWindow().stack.depth > 0)
-            searchTimer.running = true
-    }
+    onAccepted: currentSearchText = text
+
     Component.onCompleted: forceActiveFocus()
 
     Connections {
@@ -54,16 +52,6 @@ TextField
         onCurrentTopLevelChanged: {
             if (applicationWindow().currentTopLevel.length > 0)
                 searchField.text = ""
-        }
-    }
-
-    Timer {
-        id: searchTimer
-        running: false
-        repeat: false
-        interval: 200
-        onTriggered: {
-            currentSearchText = parent.text
         }
     }
 }
