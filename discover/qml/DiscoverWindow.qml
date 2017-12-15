@@ -135,13 +135,24 @@ Kirigami.ApplicationWindow
                     Layout.fillWidth: true
                     wrapMode: Text.WordWrap
                 }
-                Button {
+                RowLayout {
                     Layout.alignment: Qt.AlignRight
-                    iconName: "dialog-ok"
-                    onClicked: {
-                        transaction.proceed()
-                        sheet.acted = true
-                        sheet.close()
+                    Button {
+                        iconName: "dialog-ok"
+                        onClicked: {
+                            transaction.proceed()
+                            sheet.acted = true
+                            sheet.close()
+                        }
+                    }
+                    Button {
+                        Layout.alignment: Qt.AlignRight
+                        iconName: "dialog-cancel"
+                        onClicked: {
+                            transaction.cancel()
+                            sheet.acted = true
+                            sheet.close()
+                        }
                     }
                 }
             }
