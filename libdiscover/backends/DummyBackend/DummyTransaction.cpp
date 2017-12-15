@@ -25,6 +25,8 @@
 #include <QDebug>
 #include <KRandom>
 
+// #define TEST_PROCEED
+
 DummyTransaction::DummyTransaction(DummyResource* app, Role role)
     : DummyTransaction(app, {}, role)
 {
@@ -48,7 +50,16 @@ void DummyTransaction::iterateTransaction()
         setProgress(qBound(0, progress()+(KRandom::random()%30), 100));
         QTimer::singleShot(/*KRandom::random()%*/100, this, &DummyTransaction::iterateTransaction);
     } else
+#ifdef TEST_PROCEED
+        Q_EMIT proceedRequest(QStringLiteral("yadda yadda"), QStringLiteral("Biii BOooo<ul><li>A</li><li>A</li><li>A</li><li>A</li></ul>"));
+#else
         finishTransaction();
+#endif
+}
+
+void DummyTransaction::proceed()
+{
+    finishTransaction();
 }
 
 void DummyTransaction::cancel()

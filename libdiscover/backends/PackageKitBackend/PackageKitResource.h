@@ -61,7 +61,7 @@ class PackageKitResource : public AbstractResource
 
         PackageKitBackend* backend() const;
 
-        static QString joinPackages(const QStringList& pkgids);
+        static QString joinPackages(const QStringList& pkgids, const QString &_sep = {});
 
         void invokeApplication() const override {}
         bool canExecute() const override { return false; }

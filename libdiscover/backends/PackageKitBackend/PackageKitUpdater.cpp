@@ -168,7 +168,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
 
     if (!cancel && simulate) {
         if (!m_packagesRemoved.isEmpty())
-            Q_EMIT proceedRequest(i18n("Packages to remove"), i18n("The following packages will be removed by the update:\n%1", PackageKitResource::joinPackages(m_packagesRemoved)));
+            Q_EMIT proceedRequest(i18n("Packages to remove"), i18n("The following packages will be removed by the update:\n<ul><li>%1</li></ul>", PackageKitResource::joinPackages(m_packagesRemoved, QStringLiteral("</li><li>"))));
         else {
             proceed();
         }

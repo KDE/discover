@@ -216,13 +216,14 @@ static void addIfNotEmpty(const QString& title, const QString& content, QString&
         where += QStringLiteral("<p><b>") + title + QStringLiteral("</b>&nbsp;") + QString(content).replace(QStringLiteral("\n"), QStringLiteral("<br />")) + QStringLiteral("</p>");
 }
 
-QString PackageKitResource::joinPackages(const QStringList& pkgids)
+QString PackageKitResource::joinPackages(const QStringList& pkgids, const QString &_sep)
 {
     QStringList ret;
     foreach(const QString& pkgid, pkgids) {
         ret += i18nc("package-name (version)", "%1 (%2)", PackageKit::Daemon::packageName(pkgid), PackageKit::Daemon::packageVersion(pkgid));
     }
-    return ret.join(i18nc("comma separating package names", ", "));
+    const QString sep = _sep.isEmpty() ? i18nc("comma separating package names", ", ") : _sep;
+    return ret.join(sep);
 }
 
 static QStringList urlToLinks(const QStringList& urls)
