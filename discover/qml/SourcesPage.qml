@@ -1,10 +1,11 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.1
+import QtQuick.Controls 2.1 as QQC2
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.1 as Kirigami
 import "navigation.js" as Navigation
 
 DiscoverPage {
@@ -73,12 +74,20 @@ DiscoverPage {
         }
 
         headerPositioning: ListView.OverlayHeader
-        header: PageHeader {
-            backgroundImage.source: "qrc:/banners/syssettingscrop.jpg"
-            extra: RowLayout {
+        header: QQC2.ToolBar {
+            anchors {
+                right: parent.right
+                left: parent.left
+            }
+
+            contentItem: RowLayout {
                 anchors {
                     topMargin: Kirigami.Units.smallSpacing
                     bottomMargin: Kirigami.Units.smallSpacing
+                }
+
+                Item {
+                    Layout.fillWidth: true
                 }
 
                 ToolButton {
@@ -167,9 +176,6 @@ DiscoverPage {
                         MenuItem { action: ActionBridge { action: app.action("help_report_bug") } }
                     }
                 }
-                Item {
-                    Layout.fillWidth: true
-                }
             }
         }
 
@@ -213,7 +219,7 @@ DiscoverPage {
                         model.checked = checkedState
                     }
                 }
-                Label {
+                QQC2.Label {
                     text: model.display + " - <i>" + model.toolTip + "</i>"
                     elide: Text.ElideRight
                     Layout.fillWidth: true

@@ -3,7 +3,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.1 as Kirigami
 
 ApplicationsListPage {
     id: page
@@ -16,7 +16,7 @@ ApplicationsListPage {
     compact: true
     canNavigate: false
 
-    listHeader: PageHeader {
-        backgroundImage.source: "qrc:/banners/installedcrop.jpg"
+    listHeader: Kirigami.ItemViewHeader {
+        maximumHeight: minimumHeight
     }
 }

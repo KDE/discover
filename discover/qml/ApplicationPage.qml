@@ -86,183 +86,181 @@ DiscoverPage {
         }
     }
 
-    ListView {
-        headerPositioning: ListView.OverlayHeader
-        header: Kirigami.ItemViewHeader {
-            maximumHeight: minimumHeight
+    header: QQC2.ToolBar {
+        anchors {
+            right: parent.right
+            left: parent.left
+        }
 
-            contentItem: RowLayout {
-                spacing: Kirigami.Units.smallSpacing
+        contentItem: RowLayout {
+            spacing: Kirigami.Units.smallSpacing
 
-                ToolButton {
-                    iconName: "draw-arrow-back"
-                    tooltip: i18n("Back")
-                    enabled: appInfo.sClose.enabled
-                    onClicked: appInfo.sClose.activated()
-                }
-                Item {
-                    Layout.fillWidth: true
-                }
-                Kirigami.Icon {
-                    Layout.preferredHeight: Kirigami.Units.gridUnit * 2
-                    Layout.preferredWidth: Kirigami.Units.gridUnit * 2
+            ToolButton {
+                iconName: "draw-arrow-back"
+                tooltip: i18n("Back")
+                enabled: appInfo.sClose.enabled
+                onClicked: appInfo.sClose.activated()
+            }
+            Item {
+                Layout.fillWidth: true
+            }
+            Kirigami.Icon {
+                Layout.preferredHeight: Kirigami.Units.gridUnit * 2
+                Layout.preferredWidth: Kirigami.Units.gridUnit * 2
 
-                    source: appInfo.application.icon
-                    Layout.alignment: Qt.AlignVCenter
-                }
-                Kirigami.Heading {
-                    level: 3
-                    Layout.maximumWidth: parent.width/2
-                    text: appInfo.application.name
-                    maximumLineCount: 1
-                    elide: Text.ElideRight
-                    horizontalAlignment: Text.AlignHCenter
-                }
-                Item {
-                    Layout.fillWidth: true
-                }
+                source: appInfo.application.icon
+                Layout.alignment: Qt.AlignVCenter
+            }
+            Kirigami.Heading {
+                level: 3
+                Layout.maximumWidth: parent.width/2
+                text: appInfo.application.name
+                maximumLineCount: 1
+                elide: Text.ElideRight
+                horizontalAlignment: Text.AlignHCenter
+            }
+            Item {
+                Layout.fillWidth: true
+            }
 
-                Binding {
-                    target: appInfo.actions
-                    property: "main"
-                    value: appbutton.action
-                }
+            Binding {
+                target: appInfo.actions
+                property: "main"
+                value: appbutton.action
+            }
 
-                InstallApplicationButton {
-                    id: appbutton
-                    application: appInfo.application
-                    visible: applicationWindow().wideScreen
-                }
+            InstallApplicationButton {
+                id: appbutton
+                application: appInfo.application
+                visible: applicationWindow().wideScreen
+            }
 
-                Button {
-                    visible: application.isInstalled && application.canExecute
-                    text: i18n("Launch")
-                    onClicked: application.invokeApplication()
-                }
+            Button {
+                visible: application.isInstalled && application.canExecute
+                text: i18n("Launch")
+                onClicked: application.invokeApplication()
+            }
+        }
+    }
+
+    ColumnLayout {
+        x: Kirigami.Units.gridUnit
+        y: Kirigami.Units.gridUnit
+        width: ListView.view.width - Kirigami.Units.gridUnit * 2
+        spacing: 0
+
+        QQC2.Label {
+            Layout.fillWidth: true
+            text: appInfo.application.comment
+            wrapMode: Text.WordWrap
+            elide: Text.ElideRight
+            maximumLineCount: 1
+        }
+        QQC2.Label {
+            Layout.fillWidth: true
+            elide: Text.ElideRight
+            text: appInfo.application.categoryDisplay
+            color: Kirigami.Theme.linkColor
+        }
+
+        Item {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+        }
+        QQC2.Label {
+            readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
+            visible: version.length > 0
+            text: version ? i18n("Version: %1", version) : ""
+        }
+        QQC2.Label {
+            text: i18n("Size: %1", appInfo.application.sizeDescription)
+        }
+        RowLayout {
+            QQC2.Label {
+                text: i18n("Source:")
+            }
+            LinkButton {
+                enabled: alternativeResourcesView.count > 1
+                text: appInfo.application.displayOrigin
+                onClicked: originsOverlay.open()
+            }
+        }
+        RowLayout {
+            QQC2.Label {
+                text: i18n("License:")
+            }
+            LinkButton {
+                text: appInfo.application.license
+//                         tooltip: i18n("See full license terms")
+                onClicked: Qt.openUrlExternally("https://spdx.org/licenses/" + appInfo.application.license + ".html#licenseText")
             }
         }
 
-        model: 1
-        delegate: ColumnLayout {
-            x: Kirigami.Units.gridUnit
-            y: Kirigami.Units.gridUnit
-            width: ListView.view.width - Kirigami.Units.gridUnit * 2
-            spacing: 0
+        ApplicationScreenshots {
+            Layout.topMargin: Kirigami.Units.largeSpacing
+            Layout.fillWidth: true
+            resource: appInfo.application
+            page: appInfo
+        }
 
+        Kirigami.Heading {
+            level: 3
+            Layout.topMargin: Kirigami.Units.largeSpacing
+            text: i18n("Description")
+            Layout.fillWidth: true
+            visible: appInfo.application.longDescription.length > 0
+        }
+        QQC2.Label {
+            Layout.fillWidth: true
+            horizontalAlignment: Text.AlignJustify
+            wrapMode: Text.WordWrap
+            text: appInfo.application.longDescription + originsOverlay.sentence
+            onLinkActivated: {
+                var idx = parseInt(link, 10)
+                var res = originsOverlay.model.resourceAt(idx)
+                window.stack.pop()
+                Navigation.openApplication(res)
+            }
+        }
+
+        RowLayout {
+            visible: button.text.length > 0
             QQC2.Label {
-                Layout.topMargin: Kirigami.Units.largeSpacing
-                Layout.fillWidth: true
-                text: appInfo.application.comment
-                wrapMode: Text.WordWrap
-                elide: Text.ElideRight
-                maximumLineCount: 1
-            }
-            QQC2.Label {
-                Layout.fillWidth: true
-                elide: Text.ElideRight
-                text: appInfo.application.categoryDisplay
-                color: Kirigami.Theme.linkColor
-            }
-
-            Item {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-            }
-            QQC2.Label {
-                readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
-                visible: version.length > 0
-                text: version ? i18n("Version: %1", version) : ""
-            }
-            QQC2.Label {
-                text: i18n("Size: %1", appInfo.application.sizeDescription)
-            }
-            RowLayout {
-                QQC2.Label {
-                    text: i18n("Source:")
-                }
-                LinkButton {
-                    enabled: alternativeResourcesView.count > 1
-                    text: appInfo.application.displayOrigin
-                    onClicked: originsOverlay.open()
-                }
-            }
-            RowLayout {
-                QQC2.Label {
-                    text: i18n("License:")
-                }
-                LinkButton {
-                    text: appInfo.application.license
-//                         tooltip: i18n("See full license terms")
-                    onClicked: Qt.openUrlExternally("https://spdx.org/licenses/" + appInfo.application.license + ".html#licenseText")
-                }
-            }
-
-            ApplicationScreenshots {
-                Layout.topMargin: Kirigami.Units.largeSpacing
-                Layout.fillWidth: true
-                resource: appInfo.application
-                page: appInfo
-            }
-
-            Kirigami.Heading {
-                level: 3
-                Layout.topMargin: Kirigami.Units.largeSpacing
-                text: i18n("Description")
-                Layout.fillWidth: true
-                visible: appInfo.application.longDescription.length > 0
-            }
-            QQC2.Label {
-                Layout.fillWidth: true
-                horizontalAlignment: Text.AlignJustify
-                wrapMode: Text.WordWrap
-                text: appInfo.application.longDescription + originsOverlay.sentence
-                onLinkActivated: {
-                    var idx = parseInt(link, 10)
-                    var res = originsOverlay.model.resourceAt(idx)
-                    window.stack.pop()
-                    Navigation.openApplication(res)
-                }
-            }
-
-            RowLayout {
-                visible: button.text.length > 0
-                QQC2.Label {
-                    text: i18n("Homepage: ")
-                }
-                LinkButton {
-                    id: button
-                    text: application.homepage
-                    onClicked: Qt.openUrlExternally(application.homepage)
-                }
-            }
-
-            LinkButton {
-                id: addonsButton
-                text: i18n("Addons")
-                visible: addonsView.containsAddons
-                onClicked: addonsView.sheetOpen = true
-            }
-
-            LinkButton {
-                text: i18n("Review")
-                onClicked: reviewsSheet.openReviewDialog()
-                visible: !commentsButton.visible && reviewsModel.backend.isResourceSupported(appInfo.application)
+                text: i18n("Homepage: ")
             }
             LinkButton {
-                id: commentsButton
-                readonly property QtObject rating: appInfo.application.rating
-                visible: rating && rating.ratingCount>0 && reviewsModel.count
-                text: i18n("Show reviews (%1)...", rating ? reviewsModel.count : 0)
-
-                onClicked: {
-                    reviewsSheet.open()
-                }
+                id: button
+                text: application.homepage
+                onClicked: Qt.openUrlExternally(application.homepage)
             }
+        }
 
-            Item {
-                height: addonsButton.height
-                width: 5
+        LinkButton {
+            id: addonsButton
+            text: i18n("Addons")
+            visible: addonsView.containsAddons
+            onClicked: addonsView.sheetOpen = true
+        }
+
+        LinkButton {
+            text: i18n("Review")
+            onClicked: reviewsSheet.openReviewDialog()
+            visible: !commentsButton.visible && reviewsModel.backend.isResourceSupported(appInfo.application)
+        }
+        LinkButton {
+            id: commentsButton
+            readonly property QtObject rating: appInfo.application.rating
+            visible: rating && rating.ratingCount>0 && reviewsModel.count
+            text: i18n("Show reviews (%1)...", rating ? reviewsModel.count : 0)
+
+            onClicked: {
+                reviewsSheet.open()
             }
+        }
+
+        Item {
+            height: addonsButton.height
+            width: 5
         }
     }
 

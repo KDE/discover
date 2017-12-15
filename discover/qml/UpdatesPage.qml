@@ -7,7 +7,7 @@ import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.kcoreaddons 1.0
 import "navigation.js" as Navigation
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.1 as Kirigami
 
 DiscoverPage
 {
@@ -67,17 +67,14 @@ DiscoverPage
         }
 
         headerPositioning: ListView.OverlayHeader
-        header: PageHeader {
-            backgroundImage.source: "qrc:/banners/updatescrop.jpg"
+        header: QQC2.ToolBar {
+            anchors {
+                right: parent.right
+                left: parent.left
+            }
+            visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
 
-            extra: RowLayout {
-                id: updateControls
-
-                anchors.topMargin: Kirigami.Units.smallSpacing
-                Layout.fillWidth: true
-
-                visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
-
+            contentItem: RowLayout {
                 LabelBackground {
                     Layout.leftMargin: Kirigami.Units.gridUnit
                     text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
@@ -94,7 +91,11 @@ DiscoverPage
                     text: i18n("updates not selected")
                     visible: unselectedItem.visible
                 }
-                Item { Layout.fillWidth: true}
+
+                Item {
+                    Layout.fillWidth: true
+                }
+
                 Button {
                     Layout.minimumWidth: Kirigami.Units.gridUnit * 6
                     Layout.rightMargin: Kirigami.Units.gridUnit
