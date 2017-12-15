@@ -138,6 +138,7 @@ Kirigami.ApplicationWindow
                 RowLayout {
                     Layout.alignment: Qt.AlignRight
                     Button {
+                        text: i18n("Proceed")
                         iconName: "dialog-ok"
                         onClicked: {
                             transaction.proceed()
@@ -147,6 +148,7 @@ Kirigami.ApplicationWindow
                     }
                     Button {
                         Layout.alignment: Qt.AlignRight
+                        text: i18n("Cancel")
                         iconName: "dialog-cancel"
                         onClicked: {
                             transaction.cancel()
