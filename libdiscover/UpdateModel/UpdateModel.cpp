@@ -41,6 +41,7 @@ UpdateModel::UpdateModel(QObject *parent)
     connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &UpdateModel::activityChanged);
     connect(ResourcesModel::global(), &ResourcesModel::updatesCountChanged, this, &UpdateModel::activityChanged);
     connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &UpdateModel::resourceDataChanged);
+    connect(this, &UpdateModel::toUpdateChanged, this, &UpdateModel::updateSizeChanged);
 }
 
 UpdateModel::~UpdateModel() = default;
@@ -275,4 +276,8 @@ void UpdateModel::resourceDataChanged(AbstractResource* res, const QVector<QByte
     const auto index = indexFromItem(item);
     if (properties.contains("state"))
         dataChanged(index, index, {SizeRole, VersionRole});
+    else if (properties.contains("size")) {
+        dataChanged(index, index, {SizeRole});
+        Q_EMIT updateSizeChanged();
+    }
 }

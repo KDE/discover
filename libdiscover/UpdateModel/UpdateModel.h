@@ -35,7 +35,7 @@ class DISCOVERCOMMON_EXPORT UpdateModel : public QAbstractListModel
     Q_PROPERTY(bool hasUpdates READ hasUpdates NOTIFY hasUpdatesChanged)
     Q_PROPERTY(int toUpdateCount READ toUpdateCount NOTIFY toUpdateChanged)
     Q_PROPERTY(int totalUpdatesCount READ totalUpdatesCount NOTIFY hasUpdatesChanged)
-    Q_PROPERTY(QString updateSize READ updateSize NOTIFY toUpdateChanged)
+    Q_PROPERTY(QString updateSize READ updateSize NOTIFY updateSizeChanged)
 public:
 
     enum Roles {
@@ -81,6 +81,7 @@ public Q_SLOTS:
 Q_SIGNALS:
     void hasUpdatesChanged(bool hasUpdates);
     void toUpdateChanged();
+    void updateSizeChanged();
 
 private:
     void resourceDataChanged(AbstractResource* res, const QVector<QByteArray> &properties);
