@@ -238,7 +238,7 @@ QDateTime ResourcesUpdatesModel::lastUpdate() const
 
 double ResourcesUpdatesModel::updateSize() const
 {
-    double ret;
+    double ret = 0.;
     for(AbstractBackendUpdater* upd: m_updaters) {
         ret += upd->updateSize();
     }
