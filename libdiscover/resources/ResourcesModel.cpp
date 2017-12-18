@@ -50,8 +50,8 @@ ResourcesModel *ResourcesModel::global()
 
 ResourcesModel::ResourcesModel(QObject* parent, bool load)
     : QObject(parent)
-    , m_initializingBackends(0)
     , m_isFetching(false)
+    , m_initializingBackends(0)
     , m_currentApplicationBackend(nullptr)
 {
     init(load);
