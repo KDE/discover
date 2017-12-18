@@ -52,7 +52,6 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
     : QObject(parent)
     , m_initializingBackends(0)
     , m_currentApplicationBackend(nullptr)
-    , m_isFetching(false)
 {
     init(load);
     connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::slotFetching);
