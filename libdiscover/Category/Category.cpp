@@ -26,6 +26,7 @@
 #include <QFile>
 #include <QStandardPaths>
 #include <QDebug>
+#include <utils.h>
 
 Category::Category(QSet<QString> pluginName, QObject* parent)
         : QObject(parent)
@@ -220,12 +221,7 @@ QUrl Category::decoration() const
 
 QVariantList Category::subCategoriesVariant() const
 {
-    QVariantList ret;
-    ret.reserve(m_subCategories.count());
-    for(Category* cat : m_subCategories) {
-        ret.append(QVariant::fromValue<QObject*>(cat));
-    }
-    return ret;
+    return kTransform<QVariantList>(m_subCategories, [](Category* cat){ return QVariant::fromValue<QObject*>(cat); });
 }
 
 bool Category::matchesCategoryName(const QString& name) const
