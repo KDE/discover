@@ -73,6 +73,7 @@ public:
     Q_SCRIPTABLE bool contains(const QVariantList &cats) const;
 
     static bool categoryLessThan(Category *c1, const Category *c2);
+    static void blacklistPluginsInVector(const QSet<QString>& pluginNames, QVector<Category *>& subCategories);
 
 private:
     QString m_name;
