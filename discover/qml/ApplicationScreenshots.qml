@@ -38,6 +38,10 @@ Flow {
     property int currentIndex: -1
     readonly property Item currentItem: root.currentIndex >= 0 ? rep.itemAt(root.currentIndex) : null
 
+    Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
+    Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
+    focus: true
+
     QQC2.Popup {
         id: overlay
         parent: applicationWindow().overlay
@@ -61,6 +65,7 @@ Flow {
                 right: parent.left
                 verticalCenter: parent.verticalCenter
             }
+            visible: leftAction.visible
             iconName: leftAction.iconName
             onClicked: leftAction.triggered(null)
         }
@@ -70,6 +75,7 @@ Flow {
                 left: parent.right
                 verticalCenter: parent.verticalCenter
             }
+            visible: rightAction.visible
             iconName: rightAction.iconName
             onClicked: rightAction.triggered(null)
         }
@@ -77,15 +83,17 @@ Flow {
         Kirigami.Action {
             id: leftAction
             iconName: "arrow-left"
-            enabled: overlay.visible
-            onTriggered: root.currentIndex = (root.currentIndex-1 < 0) ? 0 : root.currentIndex-1
+            enabled: overlay.visible && visible
+            visible: root.currentIndex >= 1
+            onTriggered: root.currentIndex -= 1
         }
 
         Kirigami.Action {
             id: rightAction
             iconName: "arrow-right"
-            enabled: overlay.visible
-            onTriggered: root.currentIndex = (root.currentIndex+1 >= rep.count) ? rep.count-1 : root.currentIndex+1
+            enabled: overlay.visible && visible
+            visible: root.currentIndex < (rep.count - 1)
+            onTriggered: root.currentIndex += 1
         }
     }
 
