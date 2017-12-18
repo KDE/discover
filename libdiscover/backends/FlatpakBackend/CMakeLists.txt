@@ -1,6 +1,6 @@
 # add_subdirectory(tests)
 
-include_directories(${FLATPAK_INCLUDE_DIRS} ${APPSTREAM_INCLUDE_DIRS})
+include_directories(${FLATPAK_INCLUDE_DIRS})
 
 set(flatpak-backend_SRCS
     FlatpakResource.cpp
