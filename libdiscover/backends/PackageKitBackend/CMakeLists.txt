@@ -1,4 +1,4 @@
-find_package(KF5Archive REQUIRED)
+find_package(KF5 REQUIRED Notifications)
 
 add_subdirectory(runservice)
 
@@ -25,7 +25,7 @@ install(TARGETS packagekit-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
 
 #notifier
 add_library(DiscoverPackageKitNotifier MODULE PackageKitNotifier.cpp)
-target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt5 Discover::Notifiers)
+target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt5 Discover::Notifiers KF5::I18n KF5::Notifications)
 set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 install(TARGETS DiscoverPackageKitNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)

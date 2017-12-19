@@ -27,7 +27,10 @@
 #include <QProcess>
 #include <QTextStream>
 #include <QDebug>
+#include <KNotification>
 #include <PackageKit/Daemon>
+#include <QDBusInterface>
+#include <KLocalizedString>
 
 PackageKitNotifier::PackageKitNotifier(QObject* parent)
     : BackendNotifierModule(parent)
@@ -40,13 +43,13 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::networkStateChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
+    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::transactionListChanged, this, &PackageKitNotifier::transactionListChanged);
 
     //Check if there's packages after 5'
     QTimer::singleShot(5 * 60 * 1000, this, &PackageKitNotifier::refreshDatabase);
 
-    int interval = 24 * 60 * 60 * 1000;
     QTimer *regularCheck = new QTimer(this);
-    regularCheck->setInterval(interval); //refresh at least once every day
+    regularCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
     connect(regularCheck, &QTimer::timeout, this, &PackageKitNotifier::refreshDatabase);
 
     const QString aptconfig = QStandardPaths::findExecutable(QStringLiteral("apt-config"));
@@ -157,4 +160,50 @@ QProcess* PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
     });
     connect(process, static_cast<void(QProcess::*)(int)>(&QProcess::finished), process, &QObject::deleteLater);
     return process;
+}
+
+void PackageKitNotifier::transactionListChanged(const QStringList& tids)
+{
+    for (const auto &tid: tids) {
+        if (m_transactions.contains(tid))
+            continue;
+
+        auto t = new PackageKit::Transaction(QDBusObjectPath(tid));
+        connect(t, &PackageKit::Transaction::requireRestart, this, &PackageKitNotifier::onRequireRestart);
+        connect(t, &PackageKit::Transaction::finished, this, [this, t](){
+            m_transactions.remove(t->tid().path());
+            t->deleteLater();
+        });
+        m_transactions.insert(tid, t);
+    }
+}
+
+void PackageKitNotifier::onRequireRestart(PackageKit::Transaction::Restart type, const QString &packageID)
+{
+    if (type == PackageKit::Transaction::RestartSystem || type == PackageKit::Transaction::RestartSession) {
+        KNotification *notification = new KNotification(QLatin1String("notification"), KNotification::Persistent | KNotification::DefaultEvent);
+        notification->setIconName(QStringLiteral("system-software-update"));
+        if (type == PackageKit::Transaction::RestartSystem) {
+            notification->setActions(QStringList{QLatin1String("Restart")});
+            notification->setTitle(i18n("Restart is required"));
+            notification->setText(i18n("The computer will have to be restarted after the update for the changes to take effect."));
+        } else {
+            notification->setActions(QStringList{QLatin1String("Logout")});
+            notification->setTitle(i18n("Session restart is required"));
+            notification->setText(i18n("You will need to log out and back in after the update for the changes to take effect."));
+        }
+
+        connect(notification, &KNotification::action1Activated, this, [type] () {
+            QDBusInterface interface(QStringLiteral("org.kde.ksmserver"), QStringLiteral("/KSMServer"), QStringLiteral("org.kde.KSMServerInterface"), QDBusConnection::sessionBus());
+            if (type == PackageKit::Transaction::RestartSystem) {
+                interface.asyncCall(QStringLiteral("logout"), 0, 1, 2); // Options: do not ask again | reboot | force
+            } else {
+                interface.asyncCall(QStringLiteral("logout"), 0, 0, 2); // Options: do not ask again | logout | force
+            }
+        });
+
+        notification->sendEvent();
+    }
+
+    qDebug() << "RESTART" << type << "is required for package" << packageID;
 }
