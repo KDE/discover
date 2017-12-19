@@ -162,7 +162,7 @@ void PackageKitNotifier::refreshDatabase()
         });
     }
 
-    if (m_distUpgrades) {
+    if (!m_distUpgrades && (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleUpgradeSystem)) {
         m_distUpgrades = PackageKit::Daemon::getDistroUpgrades();
         connect(m_distUpgrades, &PackageKit::Transaction::distroUpgrade, this, &PackageKitNotifier::onDistroUpgrade);
         connect(m_distUpgrades.data(), &PackageKit::Transaction::finished, this, [this]() {
