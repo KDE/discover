@@ -48,6 +48,7 @@ private Q_SLOTS:
     void finished(PackageKit::Transaction::Exit exit, uint);
     void onRequireRestart(PackageKit::Transaction::Restart type, const QString &packageID);
     void transactionListChanged(const QStringList &tids);
+    void onDistroUpgrade(PackageKit::Transaction::DistroUpgrade type, const QString &name, const QString &description);
 
 private:
     QProcess* checkAptVariable(const QString &aptconfig, const QLatin1String& varname, std::function<void(const QStringRef& val)> func);
@@ -55,6 +56,7 @@ private:
     uint m_securityUpdates;
     uint m_normalUpdates;
     QPointer<PackageKit::Transaction> m_refresher;
+    QPointer<PackageKit::Transaction> m_distUpgrades;
 
     QHash<QString, PackageKit::Transaction*> m_transactions;
 };

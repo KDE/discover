@@ -129,6 +129,29 @@ uint PackageKitNotifier::updatesCount()
     return m_normalUpdates;
 }
 
+void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade type, const QString& name, const QString& description)
+{
+    KNotification *notification = new KNotification(QLatin1String("distupgrade-notification"), KNotification::Persistent | KNotification::DefaultEvent);
+    notification->setIconName(QStringLiteral("system-software-update"));
+    notification->setActions(QStringList{QLatin1String("Upgrade")});
+    notification->setTitle(i18n("Upgrade available"));
+    switch(type) {
+        case PackageKit::Transaction::DistroUpgradeUnknown:
+        case PackageKit::Transaction::DistroUpgradeUnstable:
+            notification->setText(i18n("New unstable version: %1", description));
+            break;
+        case PackageKit::Transaction::DistroUpgradeStable:
+            notification->setText(i18n("New version: %1", description));
+            break;
+    }
+
+    connect(notification, &KNotification::action1Activated, this, [name] () {
+        PackageKit::Daemon::upgradeSystem(name, PackageKit::Transaction::UpgradeKindDefault);
+    });
+
+    notification->sendEvent();
+}
+
 void PackageKitNotifier::refreshDatabase()
 {
     if (!m_refresher) {
@@ -136,6 +159,15 @@ void PackageKitNotifier::refreshDatabase()
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, [this]() {
             recheckSystemUpdateNeeded();
             delete m_refresher;
+        });
+    }
+
+    if (m_distUpgrades) {
+        m_distUpgrades = PackageKit::Daemon::getDistroUpgrades();
+        connect(m_distUpgrades, &PackageKit::Transaction::distroUpgrade, this, &PackageKitNotifier::onDistroUpgrade);
+        connect(m_distUpgrades.data(), &PackageKit::Transaction::finished, this, [this]() {
+            recheckSystemUpdateNeeded();
+            delete m_distUpgrades;
         });
     }
 }
