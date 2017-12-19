@@ -140,10 +140,12 @@ void PackageKitUpdater::processProceedFunction()
 
 void PackageKitUpdater::proceed()
 {
-    if (!m_proceedFunctions.isEmpty()) {
+    if (!m_proceedFunctions.isEmpty())
         processProceedFunction();
-    } else if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
+#ifdef HAS_OFFLINE_UPDATES
+    else if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
         setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted | PackageKit::Transaction::TransactionFlagOnlyDownload);
+#endif
     else
         setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
 }
@@ -181,7 +183,11 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     fetchLastUpdateTime();
 
     if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
+#ifdef HAS_OFFLINE_UPDATES
         PackageKit::Daemon::global()->offlineTrigger(PackageKit::Daemon::ActionReboot);
+#else
+        qWarning() << "PK_OFFLINE_UPDATE is set but discover was built against an old version of PackageKitQt that didn't support offline updates";
+#endif
 }
 
 void PackageKitUpdater::cancellableChanged()
