@@ -186,23 +186,28 @@ void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
     list << newcat;
 }
 
-void Category::blacklistPluginsInVector(const QSet<QString>& pluginNames, QVector<Category *>& subCategories)
+bool Category::blacklistPluginsInVector(const QSet<QString>& pluginNames, QVector<Category *>& subCategories)
 {
+    bool ret = false;
     for(QVector<Category*>::iterator it = subCategories.begin(), itEnd = subCategories.end(); it!=itEnd; ) {
         if ((*it)->blacklistPlugins(pluginNames)) {
             delete *it;
             it = subCategories.erase(it);
+            ret = true;
         } else
             ++it;
     }
+    return ret;
 }
 
 bool Category::blacklistPlugins(const QSet<QString>& pluginNames)
 {
-    if (m_plugins.subtract(pluginNames).isEmpty())
+    if (m_plugins.subtract(pluginNames).isEmpty()) {
         return true;
+    }
 
-    blacklistPluginsInVector(pluginNames, m_subCategories);
+    if (blacklistPluginsInVector(pluginNames, m_subCategories))
+        Q_EMIT subCategoriesChanged();
     return false;
 }
 

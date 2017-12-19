@@ -48,7 +48,7 @@ public:
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(QObject* parent READ parent CONSTANT)
     Q_PROPERTY(QUrl decoration READ decoration CONSTANT)
-    Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant CONSTANT)
+    Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant NOTIFY subCategoriesChanged)
     explicit Category(QSet<QString>  pluginNames, QObject* parent = nullptr);
 
     Category(const QString& name, const QString& iconName, const QVector< QPair< FilterType, QString > >& orFilters, const QSet<QString> &pluginName, const QVector<Category *>& subCategories, const QUrl& decoration, bool isAddons);
@@ -73,7 +73,10 @@ public:
     Q_SCRIPTABLE bool contains(const QVariantList &cats) const;
 
     static bool categoryLessThan(Category *c1, const Category *c2);
-    static void blacklistPluginsInVector(const QSet<QString>& pluginNames, QVector<Category *>& subCategories);
+    static bool blacklistPluginsInVector(const QSet<QString>& pluginNames, QVector<Category *>& subCategories);
+
+Q_SIGNALS:
+    void subCategoriesChanged();
 
 private:
     QString m_name;
