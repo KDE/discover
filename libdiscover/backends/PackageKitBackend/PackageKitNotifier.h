@@ -51,6 +51,7 @@ private Q_SLOTS:
     void onDistroUpgrade(PackageKit::Transaction::DistroUpgrade type, const QString &name, const QString &description);
 
 private:
+    void requireRestartNotification(PackageKit::Transaction::Restart type);
     QProcess* checkAptVariable(const QString &aptconfig, const QLatin1String& varname, std::function<void(const QStringRef& val)> func);
 
     uint m_securityUpdates;
