@@ -151,39 +151,37 @@ bool Category::categoryLessThan(Category *c1, const Category *c2)
     return (!c1->isAddons() && c2->isAddons()) || (c1->isAddons()==c2->isAddons() && QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
 
-//TODO: maybe it would be interesting to apply some rules to a said backend...
 void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
 {
-    Q_FOREACH (Category* c, list) {
-        if(c->name() == newcat->name()) {
-            if(c->icon() != newcat->icon()
-                || c->m_andFilters != newcat->m_andFilters
-                || c->m_isAddons != newcat->m_isAddons
-            )
-            {
-                qWarning() << "the following categories seem to be the same but they're not entirely"
-                    << c->name() << newcat->name() << "--"
-                    << c->andFilters() << newcat->andFilters() << "--"
-                    << c->isAddons() << newcat->isAddons();
-                break;
-            } else {
-                c->m_orFilters += newcat->orFilters();
-                c->m_notFilters += newcat->notFilters();
-                c->m_plugins.unite(newcat->m_plugins);
-                Q_FOREACH (Category* nc, newcat->subCategories()) {
-                    addSubcategory(c->m_subCategories, nc);
-                }
-                return;
-            }
-        }
+    auto it = std::lower_bound(list.begin(), list.end(), newcat, &categoryLessThan);
+    if (it == list.end()) {
+        list << newcat;
+        return;
     }
-    for(auto it = list.begin(), itEnd = list.end(); it!=itEnd; ++it) {
-        if (!categoryLessThan(*it, newcat)) {
-            list.insert(it, newcat);
+
+    auto c = *it;
+    if(c->name() == newcat->name()) {
+        if(c->icon() != newcat->icon()
+            || c->m_andFilters != newcat->m_andFilters
+            || c->m_isAddons != newcat->m_isAddons
+        )
+        {
+            qWarning() << "the following categories seem to be the same but they're not entirely"
+                << c->name() << newcat->name() << "--"
+                << c->andFilters() << newcat->andFilters() << "--"
+                << c->isAddons() << newcat->isAddons();
+        } else {
+            c->m_orFilters += newcat->orFilters();
+            c->m_notFilters += newcat->notFilters();
+            c->m_plugins.unite(newcat->m_plugins);
+            Q_FOREACH (Category* nc, newcat->subCategories()) {
+                addSubcategory(c->m_subCategories, nc);
+            }
             return;
         }
     }
-    list << newcat;
+
+    list.insert(it, newcat);
 }
 
 bool Category::blacklistPluginsInVector(const QSet<QString>& pluginNames, QVector<Category *>& subCategories)

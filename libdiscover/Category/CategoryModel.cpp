@@ -58,7 +58,6 @@ void CategoryModel::populateCategories()
                 Category::addSubcategory(ret, c);
         }
     }
-    qSort(ret.begin(), ret.end(), Category::categoryLessThan);
     if (m_rootCategories != ret) {
         m_rootCategories = ret;
         Q_EMIT rootCategoriesChanged();
