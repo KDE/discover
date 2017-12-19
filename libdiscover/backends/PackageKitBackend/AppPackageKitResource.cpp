@@ -128,7 +128,7 @@ bool AppPackageKitResource::isTechnical() const
 {
     static QString desktop = QString::fromUtf8(qgetenv("XDG_CURRENT_DESKTOP"));
     const auto desktops = m_appdata.compulsoryForDesktops();
-    return !desktops.isEmpty() && !desktops.contains(desktop);
+    return (!desktops.isEmpty() && !desktops.contains(desktop)) || m_appdata.kind() == AppStream::Component::KindAddon;
 }
 
 void AppPackageKitResource::fetchScreenshots()
