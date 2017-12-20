@@ -15,10 +15,6 @@ add_library(packagekit-backend MODULE PackageKitBackend.cpp
     TransactionSet.cpp
 )
 
-if(packagekitqt5_VERSION VERSION_GREATER 0.9.7)
-    target_compile_definitions(packagekit-backend -DHAS_OFFLINE_UPDATES)
-endif()
-
 target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt5::Core PK::packagekitqt5 KF5::ConfigGui KF5::KIOCore KF5::Archive AppStreamQt)
 
 install(TARGETS packagekit-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
@@ -32,3 +28,8 @@ install(TARGETS DiscoverPackageKitNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/dis
 
 install(FILES packagekit-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 add_subdirectory(categoryimages)
+
+if(packagekitqt5_VERSION VERSION_GREATER 0.9.7)
+    target_compile_definitions(packagekit-backend -DPKQT_0_10)
+    target_compile_definitions(DiscoverPackageKitNotifier -DPKQT_0_10)
+endif()

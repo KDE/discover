@@ -131,6 +131,7 @@ uint PackageKitNotifier::updatesCount()
 
 void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade type, const QString& name, const QString& description)
 {
+#ifdef PKQT_0_10
     KNotification *notification = new KNotification(QLatin1String("distupgrade-notification"), KNotification::Persistent | KNotification::DefaultEvent);
     notification->setIconName(QStringLiteral("system-software-update"));
     notification->setActions(QStringList{QLatin1String("Upgrade")});
@@ -150,6 +151,7 @@ void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade 
     });
 
     notification->sendEvent();
+#endif
 }
 
 void PackageKitNotifier::refreshDatabase()
@@ -162,6 +164,7 @@ void PackageKitNotifier::refreshDatabase()
         });
     }
 
+#ifdef PKQT_0_10
     if (!m_distUpgrades && (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleUpgradeSystem)) {
         m_distUpgrades = PackageKit::Daemon::getDistroUpgrades();
         connect(m_distUpgrades, &PackageKit::Transaction::distroUpgrade, this, &PackageKitNotifier::onDistroUpgrade);
@@ -170,6 +173,7 @@ void PackageKitNotifier::refreshDatabase()
             delete m_distUpgrades;
         });
     }
+#endif
 }
 
 QProcess* PackageKitNotifier::checkAptVariable(const QString &aptconfig, const QLatin1String& varname, std::function<void(const QStringRef& val)> func)
