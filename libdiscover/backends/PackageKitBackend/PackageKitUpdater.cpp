@@ -184,7 +184,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
 
     if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
 #ifdef PKQT_0_10
-        PackageKit::Daemon::global()->offlineTrigger(PackageKit::Daemon::ActionReboot);
+        PackageKit::Daemon::global()->offlineTrigger(PackageKit::Daemon::OfflineActionReboot);
 #else
         qWarning() << "PK_OFFLINE_UPDATE is set but discover was built against an old version of PackageKitQt that didn't support offline updates";
 #endif
