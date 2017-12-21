@@ -30,7 +30,12 @@
 #include <KNotification>
 #include <PackageKit/Daemon>
 #include <QDBusInterface>
+#include <QFile>
 #include <KLocalizedString>
+#include <KDesktopFile>
+#include <KConfigGroup>
+
+#include "pk-offline-private.h"
 
 PackageKitNotifier::PackageKitNotifier(QObject* parent)
     : BackendNotifierModule(parent)
@@ -65,10 +70,54 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
         connect(process, static_cast<void(QProcess::*)(int)>(&QProcess::finished), regularCheck, static_cast<void(QTimer::*)()>(&QTimer::start));
     } else
         regularCheck->start();
+
+	QTimer::singleShot(3000, this, &PackageKitNotifier::checkOfflineUpdates);
 }
 
 PackageKitNotifier::~PackageKitNotifier()
 {
+}
+
+void PackageKitNotifier::checkOfflineUpdates()
+{
+    if (!QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
+        return;
+    }
+    qDebug() << "found offline update results at " << PK_OFFLINE_RESULTS_FILENAME;
+
+    KDesktopFile file(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME));
+    KConfigGroup group(&file, PK_OFFLINE_RESULTS_GROUP);
+
+    const bool success = group.readEntry("Success", false);
+    const QString packagesJoined = group.readEntry("Packages");
+    const auto packages = packagesJoined.splitRef(QLatin1Char(','));
+    if (!success) {
+        const QString errorDetails = group.readEntry("ErrorDetails");
+
+        KNotification *notification = new KNotification(QLatin1String("offlineupdate-failed"), KNotification::Persistent | KNotification::DefaultEvent);
+        notification->setIconName(QStringLiteral("error"));
+        notification->setText(i18n("Offline Updates"));
+        notification->setText(i18n("Failed to update %1 packages\n%2", packages.count(), errorDetails));
+        notification->setActions(QStringList{QLatin1String("Open Discover")});
+
+        connect(notification, &KNotification::action1Activated, this, [] () {
+            QProcess::startDetached(QStringLiteral("plasma-discover"));
+        });
+
+        notification->sendEvent();
+    } else {
+        KNotification *notification = new KNotification(QLatin1String("offlineupdate-successful"));
+        notification->setIconName(QStringLiteral("system-software-update"));
+        notification->setTitle(i18n("Offline Updates"));
+        notification->setText(i18n("Successfully updated %1 packages", packages.count()));
+        notification->setActions(QStringList{QLatin1String("Open Discover")});
+
+        connect(notification, &KNotification::action1Activated, this, [] () {
+            QProcess::startDetached(QStringLiteral("plasma-discover"));
+        });
+
+        notification->sendEvent();
+    }
 }
 
 void PackageKitNotifier::recheckSystemUpdateNeeded()

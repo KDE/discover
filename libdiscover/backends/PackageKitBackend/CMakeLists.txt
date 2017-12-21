@@ -21,7 +21,7 @@ install(TARGETS packagekit-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
 
 #notifier
 add_library(DiscoverPackageKitNotifier MODULE PackageKitNotifier.cpp)
-target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt5 Discover::Notifiers KF5::I18n KF5::Notifications)
+target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt5 Discover::Notifiers KF5::I18n KF5::Notifications KF5::ConfigCore)
 set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 install(TARGETS DiscoverPackageKitNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
@@ -30,6 +30,6 @@ install(FILES packagekit-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/
 add_subdirectory(categoryimages)
 
 if(packagekitqt5_VERSION VERSION_GREATER 0.9.7)
-    target_compile_definitions(packagekit-backend -DPKQT_0_10)
-    target_compile_definitions(DiscoverPackageKitNotifier -DPKQT_0_10)
+    target_compile_definitions(packagekit-backend PUBLIC -DPKQT_0_10)
+    target_compile_definitions(DiscoverPackageKitNotifier PUBLIC -DPKQT_0_10)
 endif()
