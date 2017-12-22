@@ -82,7 +82,7 @@ QString PackageKitSourcesBackend::name() const
 
 QString PackageKitSourcesBackend::idDescription()
 {
-    return i18n("Repository description:");
+    return i18n("Repository URL:");
 }
 
 QStandardItem* PackageKitSourcesBackend::findItemForId(const QString &id) const
