@@ -24,20 +24,6 @@ Kirigami.ScrollablePage
 {
     id: root
 
-    property alias pageOverlay: overlayLoader.sourceComponent
-
-    readonly property Item overlay: Item {
-        parent: root
-        anchors.fill: parent
-
-        z: 500
-
-        Loader {
-            id: overlayLoader
-            anchors.fill: parent
-        }
-    }
-
     readonly property var s1: Shortcut {
         sequence: StandardKey.MoveToNextPage
         enabled: root.isCurrentPage
