@@ -133,6 +133,7 @@ Kirigami.ApplicationWindow
                 QQC2.Label {
                     id: desc
                     Layout.fillWidth: true
+                    textFormat: Text.StyledText
                     wrapMode: Text.WordWrap
                 }
                 RowLayout {
