@@ -155,15 +155,15 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         }
         removedResources.subtract(m_apps.toList().toSet());
 
-        QString msg = QStringLiteral("<ul><li>") + PackageKitResource::joinPackages(packagesToRemove, QStringLiteral("</li><li>"));
-        if (!removedResources.isEmpty()) {
-            const QStringList removedResourcesStr = kTransform<QStringList>(removedResources, [](AbstractResource* a) { return a->name(); });
-            msg += QLatin1Char('\n');
-            msg += removedResourcesStr.join(QStringLiteral("</li><li>"));
-        }
-        msg += QStringLiteral("</li></ul>");
+        if (!packagesToRemove.isEmpty() || !removedResources.isEmpty()) {
+            QString msg = QStringLiteral("<ul><li>") + PackageKitResource::joinPackages(packagesToRemove, QStringLiteral("</li><li>"));
+            if (!removedResources.isEmpty()) {
+                const QStringList removedResourcesStr = kTransform<QStringList>(removedResources, [](AbstractResource* a) { return a->name(); });
+                msg += QLatin1Char('\n');
+                msg += removedResourcesStr.join(QStringLiteral("</li><li>"));
+            }
+            msg += QStringLiteral("</li></ul>");
 
-        if (!msg.isEmpty()) {
             Q_EMIT proceedRequest(i18n("Confirm..."), i18np("To proceed with this action, the following package needs removal:\n%2", "To proceed with this action, the following packages need removal:\n%2", packagesToRemove.count(), msg));
         } else {
             proceed();
