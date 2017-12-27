@@ -134,7 +134,9 @@ void KNSBackendTest::reviewsArrived(AbstractResource* r, const QVector<ReviewPtr
 void KNSBackendTest::testResourceByUrl()
 {
     const QUrl url(QStringLiteral("kns://") + m_backend->name() + QStringLiteral("/api.kde-look.org/1136471"));
-    const QVector<QUrl> res = kTransform<QVector<QUrl>>(getResources(m_backend->findResourceByPackageName(url)), [](AbstractResource* res){ return res->url(); });
+
+    auto resources = getResources(m_backend->findResourceByPackageName(url));
+    const QVector<QUrl> res = kTransform<QVector<QUrl>>(resources, [](AbstractResource* res){ return res->url(); });
     QCOMPARE(res.count(), 1);
     QCOMPARE(url, res.constFirst());
 
@@ -142,4 +144,16 @@ void KNSBackendTest::testResourceByUrl()
     f.resourceUrl = url;
     const QVector<QUrl> res2 = kTransform<QVector<QUrl>>(getResources(m_backend->search(f)), [](AbstractResource* res){ return res->url(); });
     QCOMPARE(res, res2);
+
+    auto resource = resources.constFirst();
+    QVERIFY(!resource->isInstalled()); //Make sure .qttest is clean before running the test
+
+    QSignalSpy spy(resource, &AbstractResource::stateChanged);
+    auto b = resource->backend();
+    b->installApplication(resource);
+    QVERIFY(spy.wait());
+    b->removeApplication(resource);
+    QVERIFY(spy.wait());
+    QCOMPARE(spy.count(), 2);
+    QVERIFY(!resource->isInstalled());
 }

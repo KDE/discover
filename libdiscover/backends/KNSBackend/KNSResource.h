@@ -68,6 +68,7 @@ public:
 private:
     const QStringList m_categories;
     KNSCore::EntryInternal m_entry;
+    KNS3::Entry::Status m_lastStatus;
 };
 
 #endif // KNSRESOURCE_H

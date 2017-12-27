@@ -40,6 +40,7 @@
 
 // DiscoverCommon includes
 #include "Transaction/Transaction.h"
+#include "Transaction/TransactionModel.h"
 #include "Category/Category.h"
 
 // Own includes
@@ -76,6 +77,8 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
             return ret;
         }
 };
+
+Q_DECLARE_METATYPE(KNSCore::EntryInternal);
 
 KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &knsrc)
     : AbstractResourcesBackend(parent)
@@ -122,7 +125,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         passiveMessage(i18n("%1: %2", name(), error));
     });
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
-    connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged);
+    connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
     connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
 
@@ -242,6 +245,7 @@ public:
 
         auto manager = res->knsBackend()->engine();
         connect(manager, &KNSCore::Engine::signalEntryChanged, this, &KNSTransaction::anEntryChanged);
+        TransactionModel::global()->addTransaction(this);
     }
 
     void anEntryChanged(const KNSCore::EntryInternal& entry) {
