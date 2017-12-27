@@ -24,6 +24,7 @@
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
 #include <QDebug>
+#include <resources/AbstractResourcesBackend.h>
 
 class PKSourcesModel : public QStandardItemModel
 {
@@ -67,7 +68,7 @@ private:
     PackageKitSourcesBackend* m_backend;
 };
 
-PackageKitSourcesBackend::PackageKitSourcesBackend(QObject* parent)
+PackageKitSourcesBackend::PackageKitSourcesBackend(AbstractResourcesBackend* parent)
     : AbstractSourcesBackend(parent)
     , m_sources(new PKSourcesModel(this))
 {
@@ -77,7 +78,7 @@ PackageKitSourcesBackend::PackageKitSourcesBackend(QObject* parent)
 
 QString PackageKitSourcesBackend::name() const
 {
-    return i18n("Software Management");
+    return resourcesBackend()->displayName();
 }
 
 QString PackageKitSourcesBackend::idDescription()

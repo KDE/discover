@@ -22,7 +22,7 @@
 #include <QDebug>
 #include <QAction>
 
-DummySourcesBackend::DummySourcesBackend(QObject* parent)
+DummySourcesBackend::DummySourcesBackend(AbstractResourcesBackend * parent)
     : AbstractSourcesBackend(parent)
     , m_sources(new QStandardItemModel(this))
     , m_testAction(new QAction(QIcon::fromTheme(QStringLiteral("kalgebra")), QStringLiteral("DummyAction"), this))

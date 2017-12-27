@@ -35,7 +35,7 @@
 #include <UpdateModel/UpdateModel.h>
 #include <ScreenshotsModel.h>
 #include <ApplicationAddonsModel.h>
-#include <MessageActionsModel.h>
+#include <ActionsModel.h>
 #include <qqml.h>
 #include <QQmlEngine>
 #include <QQmlContext>
@@ -60,7 +60,7 @@ void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
     qmlRegisterType<ReviewsModel>("org.kde.discover", 2, 0, "ReviewsModel");
     qmlRegisterType<ApplicationAddonsModel>("org.kde.discover", 2, 0, "ApplicationAddonsModel");
     qmlRegisterType<ScreenshotsModel>("org.kde.discover", 2, 0, "ScreenshotsModel");
-    qmlRegisterType<MessageActionsModel>("org.kde.discover", 2, 0, "MessageActionsModel");
+    qmlRegisterType<ActionsModel>("org.kde.discover", 2, 0, "ActionsModel");
     qmlRegisterType<UpdateModel>("org.kde.discover", 2, 0, "UpdateModel");
 
     qmlRegisterUncreatableType<QAction>("org.kde.discover", 2, 0, "QAction", QStringLiteral("Use QQC Action"));
@@ -73,4 +73,5 @@ void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
     qmlRegisterType<Category>();
     qmlRegisterType<ResourcesModel>();
     qmlProtectModule("org.kde.discover", 2);
+    qRegisterMetaType<QList<QAction*>>();
 }

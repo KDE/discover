@@ -83,12 +83,14 @@ int SourcesModel::rowCount(const QModelIndex& parent) const
     return parent.isValid() ? 0 : m_sources.count();
 }
 
-QList<QObject*> SourcesModel::actions() const
+QObject * SourcesModel::backendForSection(const QString& status) const
 {
-    QList<QObject*> ret;
+    AbstractSourcesBackend* ret = nullptr;
     for(AbstractSourcesBackend* b: m_sources) {
-        foreach(QAction* action, b->actions())
-            ret.append(action);
+        if (b->name() == status) {
+            ret = b;
+            break;
+        }
     }
     return ret;
 }

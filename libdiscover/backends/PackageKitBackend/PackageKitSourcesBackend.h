@@ -31,7 +31,7 @@ class PackageKitSourcesBackend : public AbstractSourcesBackend
 {
     Q_OBJECT
     public:
-        PackageKitSourcesBackend(QObject* parent);
+        PackageKitSourcesBackend(AbstractResourcesBackend* parent);
 
         QString name() const override;
         QString idDescription() override;

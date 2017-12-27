@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MESSAGEACTIONSMODEL_H
-#define MESSAGEACTIONSMODEL_H
+#ifndef ACTIONSMODEL_H
+#define ACTIONSMODEL_H
 
 #include <QAbstractListModel>
 #include <QQmlParserStatus>
@@ -27,13 +27,13 @@
 
 class QAction;
 
-class DISCOVERCOMMON_EXPORT MessageActionsModel : public QAbstractListModel, public QQmlParserStatus
+class DISCOVERCOMMON_EXPORT ActionsModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_INTERFACES(QQmlParserStatus)
+    Q_PROPERTY(QList<QAction*> actions READ actions WRITE setActions NOTIFY actionsChanged)
     Q_PROPERTY(int filterPriority READ filterPriority WRITE setFilterPriority)
     public:
-        explicit MessageActionsModel(QObject* parent = nullptr);
+        explicit ActionsModel(QObject* parent = nullptr);
 
         QHash<int, QByteArray> roleNames() const override;
         QVariant data(const QModelIndex& index, int role) const override;
@@ -42,13 +42,17 @@ class DISCOVERCOMMON_EXPORT MessageActionsModel : public QAbstractListModel, pub
         void setFilterPriority(int p);
         int filterPriority() const;
 
-        void classBegin() override {}
-        void componentComplete() override;
+        void setActions(const QList<QAction*>& actions);
+        QList<QAction*> actions() const { return m_actions; }
+
+    Q_SIGNALS:
+        void actionsChanged(const QList<QAction*>& actions);
 
     private:
         void reload();
 
         QList<QAction*> m_actions;
+        QList<QAction*> m_filteredActions;
         int m_priority;
 };
 

@@ -19,9 +19,16 @@
  ***************************************************************************/
 
 #include "AbstractSourcesBackend.h"
+#include "AbstractResourcesBackend.h"
 
-AbstractSourcesBackend::AbstractSourcesBackend(QObject* parent)
+AbstractSourcesBackend::AbstractSourcesBackend(AbstractResourcesBackend* parent)
     : QObject(parent)
 {}
 
 AbstractSourcesBackend::~AbstractSourcesBackend() = default;
+
+AbstractResourcesBackend * AbstractSourcesBackend::resourcesBackend() const
+{
+    return dynamic_cast<AbstractResourcesBackend*>(parent());
+}
+

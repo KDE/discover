@@ -23,27 +23,6 @@ DiscoverPage {
                 target: sourceBackend
                 onPassiveMessage: window.showPassiveNotification(message)
             }
-            readonly property var b: AddSourceDialog {
-                id: addSourceDialog
-                source: sourceBackend
-            }
-
-            readonly property var c: MenuItem {
-                id: menuItem
-                text: sourceBackend.name
-                onTriggered: {
-                    try {
-                        addSourceDialog.open()
-                        addSourceDialog.visible = true
-                    } catch (e) {
-                        console.log("error loading dialog:", e)
-                    }
-                }
-            }
-
-            Component.onCompleted: {
-                sourcesMenu.insertItem(0, menuItem)
-            }
         }
         onObjectAdded: {
             everySourceModel.addSourceModel(object.sourcesModel)
@@ -63,13 +42,84 @@ DiscoverPage {
         }
         currentIndex: -1
 
-        Menu { id: sourcesMenu }
-
         section {
             property: "statusTip"
-            delegate: Kirigami.Heading {
-                leftPadding: Kirigami.Units.largeSpacing
-                text: section
+            delegate: RowLayout {
+                anchors {
+                    right: parent.right
+                    left: parent.left
+                }
+                Kirigami.Heading {
+                    Layout.fillWidth: true
+                    leftPadding: Kirigami.Units.largeSpacing
+                    text: settingsButton.isDefault ? i18n("%1 (Default)", section) : section
+                }
+                ToolButton {
+                    id: settingsButton
+                    iconName: "preferences-other"
+                    readonly property QtObject backend: SourcesModel.backendForSection(section)
+                    readonly property bool isDefault: ResourcesModel.currentApplicationBackend == settingsButton.backend.resourcesBackend
+                    visible: backend
+                    AddSourceDialog {
+                        id: addSourceDialog
+                        source: settingsButton.backend
+                    }
+
+                    menu: Menu {
+                        id: settingsMenu
+                        MenuItem {
+                            enabled: !settingsButton.isDefault
+                            text: i18n("Make default")
+                            onTriggered: ResourcesModel.currentApplicationBackend = settingsButton.backend.resourcesBackend
+                        }
+
+                        MenuItem {
+                            text: i18n("Add Source")
+
+                            onTriggered: addSourceDialog.open()
+                        }
+
+                        MenuSeparator {
+                            visible: messageActionsInst.count>0
+                        }
+
+                        Instantiator {
+                            id: messageActionsInst
+                            model: ActionsModel {
+                                actions: settingsButton.backend ? settingsButton.backend.resourcesBackend.messageActions : null
+                            }
+                            delegate: MenuItem {
+                                action: ActionBridge { action: model.action }
+                            }
+                            onObjectAdded: {
+                                settingsMenu.insertItem(index, object)
+                            }
+                            onObjectRemoved: {
+                                object.destroy()
+                            }
+                        }
+
+                        MenuSeparator {
+                            visible: backendActionsInst.count>0
+                        }
+
+                        Instantiator {
+                            id: backendActionsInst
+                            model: ActionsModel {
+                                actions: settingsButton.backend ? settingsButton.backend.actions : null
+                            }
+                            delegate: MenuItem {
+                                action: ActionBridge { action: model.action }
+                            }
+                            onObjectAdded: {
+                                settingsMenu.insertItem(index, object)
+                            }
+                            onObjectRemoved: {
+                                object.destroy()
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -90,43 +140,6 @@ DiscoverPage {
                     Layout.fillWidth: true
                 }
 
-                ToolButton {
-                    text: i18n("Application Sources")
-                    tooltip: i18n("Allows to choose the source that will be used for browsing applications")
-                    menu: Menu {
-                        id: backendsMenu
-                    }
-                    enabled: menu.items.length>0
-
-                    ExclusiveGroup {
-                        id: select
-                    }
-
-                    Instantiator {
-                        model: ResourcesModel.applicationBackends
-                        delegate: MenuItem {
-                            text: modelData.displayName
-                            checkable: true
-                            checked: ResourcesModel.currentApplicationBackend == modelData
-                            onTriggered: ResourcesModel.currentApplicationBackend = modelData
-                            exclusiveGroup: select
-                        }
-                        onObjectAdded: {
-                            backendsMenu.insertItem(index, object)
-                        }
-                        onObjectRemoved: {
-                            object.destroy()
-                        }
-                    }
-                }
-
-                ToolButton {
-//                         iconName: "list-add"
-                    text: i18n("Add Source")
-
-                    tooltip: text
-                    menu: sourcesMenu
-                }
                 Repeater {
                     model: SourcesModel.actions
 
@@ -144,27 +157,6 @@ DiscoverPage {
                                 onTriggered: action.trigger()
                                 enabled: action.enabled
                             }
-                        }
-                    }
-                }
-
-                ToolButton {
-                    text: i18n("More...")
-                    menu: Menu {
-                        id: actionsMenu
-                    }
-                    enabled: menu.items.length>0
-
-                    Instantiator {
-                        model: MessageActionsModel {}
-                        delegate: MenuItem {
-                            action: ActionBridge { action: model.action }
-                        }
-                        onObjectAdded: {
-                            actionsMenu.insertItem(index, object)
-                        }
-                        onObjectRemoved: {
-                            object.destroy()
                         }
                     }
                 }

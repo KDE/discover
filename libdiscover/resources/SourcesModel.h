@@ -32,7 +32,6 @@ class DISCOVERCOMMON_EXPORT SourcesModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(int count READ rowCount NOTIFY sourcesChanged)
-    Q_PROPERTY(QList<QObject*> actions READ actions NOTIFY sourcesChanged)
     public:
         enum Roles {
             SourceBackend = Qt::UserRole+1
@@ -47,7 +46,8 @@ class DISCOVERCOMMON_EXPORT SourcesModel : public QAbstractListModel
         void addSourcesBackend(AbstractSourcesBackend* sources);
         QHash<int, QByteArray> roleNames() const override;
 
-        QList<QObject*> actions() const;
+    public Q_SLOTS:
+        QObject* backendForSection(const QString &status) const;
 
     Q_SIGNALS:
         void sourcesChanged();

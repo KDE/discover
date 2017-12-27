@@ -18,41 +18,52 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "MessageActionsModel.h"
+#include "ActionsModel.h"
 #include "resources/ResourcesModel.h"
 #include "utils.h"
 #include <QAction>
 
-MessageActionsModel::MessageActionsModel(QObject* parent)
+ActionsModel::ActionsModel(QObject* parent)
     : QAbstractListModel(parent)
     , m_priority(-1)
 {
-    connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &MessageActionsModel::reload);
+    connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &ActionsModel::reload);
 }
 
-QHash< int, QByteArray > MessageActionsModel::roleNames() const
+QHash< int, QByteArray > ActionsModel::roleNames() const
 {
     return { { Qt::UserRole, "action" }};
 }
 
-QVariant MessageActionsModel::data(const QModelIndex& index, int role) const
+QVariant ActionsModel::data(const QModelIndex& index, int role) const
 {
     if(!index.isValid() || role!=Qt::UserRole)
         return QVariant();
     return QVariant::fromValue<QObject*>(m_actions[index.row()]);
 }
 
-int MessageActionsModel::rowCount(const QModelIndex& parent) const
+int ActionsModel::rowCount(const QModelIndex& parent) const
 {
     return parent.isValid() ? 0 : m_actions.count();
 }
 
-void MessageActionsModel::reload()
+void ActionsModel::setActions(const QList<QAction *>& actions)
 {
-    auto actions = ResourcesModel::global()->messageActions();
+    if (m_actions == actions) {
+        return;
+    }
+
+    reload();
+    Q_EMIT actionsChanged(m_actions);
+}
+
+void ActionsModel::reload()
+{
+    auto actions = m_filteredActions;
     if (m_priority>=0) {
         actions = kFilter<QList<QAction*>>(actions, [this](QAction* action){ return action->priority() == m_priority; });
     }
+    actions = kFilter<QList<QAction*>>(actions, [](QAction* action){ return action->isVisible(); });
     if (actions == m_actions)
         return;
 
@@ -61,20 +72,15 @@ void MessageActionsModel::reload()
     endResetModel();
 }
 
-int MessageActionsModel::filterPriority() const
+int ActionsModel::filterPriority() const
 {
     return m_priority;
 }
 
-void MessageActionsModel::setFilterPriority(int p)
+void ActionsModel::setFilterPriority(int p)
 {
     if (m_priority != p) {
         m_priority = p;
         reload();
     }
-}
-
-void MessageActionsModel::componentComplete()
-{
-    reload();
 }
