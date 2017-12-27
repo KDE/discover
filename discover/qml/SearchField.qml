@@ -19,10 +19,12 @@
  ***************************************************************************/
 
 import QtQuick 2.5
+import QtQuick.Controls 1.1 as QQC1
 import QtQuick.Controls 2.1
 
 TextField
 {
+    id: searchField
     property QtObject page
     property string currentSearchText
 
@@ -38,6 +40,20 @@ TextField
     onAccepted: currentSearchText = text
 
     Component.onCompleted: forceActiveFocus()
+
+    QQC1.ToolButton {
+        anchors {
+            top: parent.top
+            right: parent.right
+            bottom: parent.bottom
+            margins: Kirigami.Units.smallSpacing
+        }
+        iconName: "edit-clear"
+        onClicked: {
+            searchField.text = ""
+            searchField.accepted()
+        }
+    }
 
     Connections {
         ignoreUnknownSignals: true
