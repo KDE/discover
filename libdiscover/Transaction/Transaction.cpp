@@ -40,8 +40,8 @@ Transaction::~Transaction()
 {
     if(status()<DoneStatus || TransactionModel::global()->contains(this)) {
         qWarning() << "destroying Transaction before it's over" << this;
+        TransactionModel::global()->removeTransaction(this);
     }
-    TransactionModel::global()->removeTransaction(this);
 }
 
 AbstractResource *Transaction::resource() const

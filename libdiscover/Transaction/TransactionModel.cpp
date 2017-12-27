@@ -171,9 +171,10 @@ void TransactionModel::addTransaction(Transaction *trans)
 void TransactionModel::removeTransaction(Transaction *trans)
 {
     Q_ASSERT(trans);
+    trans->deleteLater();
     int r = m_transactions.indexOf(trans);
     if (r<0) {
-        qWarning() << "transaction not part of the model already" << trans;
+        qWarning() << "transaction not part of the model" << trans;
         return;
     }
 
@@ -186,7 +187,6 @@ void TransactionModel::removeTransaction(Transaction *trans)
     emit transactionRemoved(trans);
     if (m_transactions.isEmpty())
         emit lastTransactionFinished();
-    trans->deleteLater();
 }
 
 void TransactionModel::transactionChanged(int role)
