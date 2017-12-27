@@ -117,7 +117,7 @@
 
 
     <Menu>
-      <Name>Science &amp; Engineering</Name>
+      <Name>Science and Engineering</Name>
       <Image>pkcategories/sciencecrop.jpg</Image>
       <Icon>applications-science</Icon>
       <Include>
@@ -152,7 +152,7 @@
         </Include>
       </Menu>
       <Menu>
-        <Name>Computer Science &amp; Robotics</Name>
+        <Name>Computer Science and Robotics</Name>
         <Icon>computer</Icon>
         <Include>
           <Or>
@@ -326,7 +326,7 @@
         </Include>
       </Menu>
       <Menu>
-        <Name>Painting &amp; Editing</Name>
+        <Name>Painting and Editing</Name>
         <Icon>draw-brush</Icon>
         <Include>
           <And>
@@ -357,7 +357,7 @@
         </Include>
       </Menu>
       <Menu>
-        <Name>Scanning &amp; OCR</Name>
+        <Name>Scanning and OCR</Name>
         <Icon>scanner</Icon>
         <Include>
           <Or>
@@ -451,7 +451,7 @@
     </Menu>
 
     <Menu>
-      <Name>System &amp; Settings</Name>
+      <Name>System Settings</Name>
       <Image>pkcategories/settingscrop.jpg</Image>
       <Icon>preferences-system</Icon>
       <Include>
