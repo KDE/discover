@@ -30,6 +30,7 @@ KNSResource::KNSResource(const KNSCore::EntryInternal& entry, QStringList catego
     : AbstractResource(parent)
     , m_categories(std::move(categories))
     , m_entry(entry)
+    , m_lastStatus(entry.status())
 {
     connect(this, &KNSResource::stateChanged, parent, &KNSBackend::updatesCountChanged);
 }
@@ -119,10 +120,12 @@ QUrl KNSResource::homepage()
 
 void KNSResource::setEntry(const KNSCore::EntryInternal& entry)
 {
-    const bool diff = entry.status() != m_entry.status();
+    const bool diff = entry.status() != m_lastStatus;
     m_entry = entry;
-    if (diff)
+    if (diff) {
+        m_lastStatus = entry.status();
         Q_EMIT stateChanged();
+    }
 }
 
 KNSCore::EntryInternal KNSResource::entry() const
