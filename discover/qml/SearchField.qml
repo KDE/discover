@@ -21,6 +21,7 @@
 import QtQuick 2.5
 import QtQuick.Controls 1.1 as QQC1
 import QtQuick.Controls 2.1
+import org.kde.kirigami 2.1 as Kirigami
 
 TextField
 {
