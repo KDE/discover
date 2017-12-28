@@ -50,6 +50,7 @@ TextField
             margins: Kirigami.Units.smallSpacing
         }
         iconName: "edit-clear"
+        visible: searchField.text != ""
         onClicked: {
             searchField.text = ""
             searchField.accepted()
