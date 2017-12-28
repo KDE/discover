@@ -147,9 +147,6 @@ DiscoverPage {
     }
 
     ColumnLayout {
-        x: Kirigami.Units.gridUnit
-        y: Kirigami.Units.gridUnit
-        width: ListView.view.width - Kirigami.Units.gridUnit * 2
         spacing: 0
 
         QQC2.Label {
