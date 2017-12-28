@@ -96,6 +96,7 @@ private:
     QStringList m_extends;
     QStringList m_categories;
     QVector<Category*> m_rootCategories;
+    QString m_displayName;
 };
 
 #endif // KNSBACKEND_H

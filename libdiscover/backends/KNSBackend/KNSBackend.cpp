@@ -113,9 +113,11 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     m_engine->setPageSize(100);
 #endif
     // Setting setFetching to false when we get an error ensures we don't end up in an eternally-fetching state
-    connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &error) {
+    connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &_error) {
+        QString error = _error;
         if(error == QLatin1Literal("All categories are missing")) {
             markInvalid(error);
+            error = i18n("Invalid %1 backend, contact your distributor.", m_displayName);
         }
         m_responsePending = false;
         Q_EMIT searchFinished();
@@ -131,10 +133,10 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
 
     const QVector<QPair<FilterType, QString>> filters = { {CategoryFilter, fileName } };
     const QSet<QString> backendName = { name() };
-    QString displayName = group.readEntry("Name", QString());
-    if (displayName.isEmpty()) {
-        displayName = fileName.mid(0, fileName.indexOf(QLatin1Char('.')));
-        displayName[0] = displayName[0].toUpper();
+    m_displayName = group.readEntry("Name", QString());
+    if (m_displayName.isEmpty()) {
+        m_displayName = fileName.mid(0, fileName.indexOf(QLatin1Char('.')));
+        m_displayName[0] = m_displayName[0].toUpper();
     }
 
     static const QSet<QString> knsrcPlasma = {
@@ -144,7 +146,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         QStringLiteral("cgcgtk3.knsrc"), QStringLiteral("cgcicon.knsrc"), QStringLiteral("cgctheme.knsrc"), //GTK integration
         QStringLiteral("kwinswitcher.knsrc"), QStringLiteral("kwineffect.knsrc"), QStringLiteral("kwinscripts.knsrc") //KWin
     };
-    auto actualCategory = new Category(displayName, QStringLiteral("plasma"), filters, backendName, {}, QUrl(), true);
+    auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, {}, QUrl(), true);
 
     const auto topLevelName = knsrcPlasma.contains(fileName)? i18n("Plasma Addons") : i18n("Application Addons");
     const QUrl decoration(knsrcPlasma.contains(fileName)? QStringLiteral("https://c2.staticflickr.com/4/3148/3042248532_20bd2e38f4_b.jpg") : QStringLiteral("https://c2.staticflickr.com/8/7067/6847903539_d9324dcd19_o.jpg"));
