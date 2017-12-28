@@ -96,6 +96,7 @@ DiscoverPage {
             spacing: Kirigami.Units.smallSpacing
 
             ToolButton {
+                Layout.leftMargin: Kirigami.Units.smallSpacing
                 iconName: "draw-arrow-back"
                 tooltip: i18n("Back")
                 enabled: appInfo.sClose.enabled
@@ -105,8 +106,8 @@ DiscoverPage {
                 Layout.fillWidth: true
             }
             Kirigami.Icon {
-                Layout.preferredHeight: Kirigami.Units.gridUnit * 2
-                Layout.preferredWidth: Kirigami.Units.gridUnit * 2
+                Layout.preferredHeight: parent.implicitHeight
+                Layout.preferredWidth: Layout.preferredHeight
 
                 source: appInfo.application.icon
                 Layout.alignment: Qt.AlignVCenter
@@ -131,11 +132,13 @@ DiscoverPage {
 
             InstallApplicationButton {
                 id: appbutton
+                Layout.rightMargin: Kirigami.Units.smallSpacing
                 application: appInfo.application
                 visible: applicationWindow().wideScreen
             }
 
             Button {
+                Layout.rightMargin: Kirigami.Units.smallSpacing
                 visible: application.isInstalled && application.canExecute
                 text: i18n("Launch")
                 onClicked: application.invokeApplication()
