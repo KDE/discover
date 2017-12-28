@@ -54,10 +54,6 @@ set_package_properties(KF5NewStuff PROPERTIES
     DESCRIPTION "Qt library that allows to interact with KNewStuff implementations"
     PURPOSE "Required to build the KNS backend"
     TYPE OPTIONAL)
-set_package_properties(Bodega PROPERTIES
-    DESCRIPTION "Library that exposes Bodega resources"
-    PURPOSE "Required to build the Bodega backend"
-    TYPE OPTIONAL)
 set_package_properties(packagekitqt5 PROPERTIES
     DESCRIPTION "Library that exposes PackageKit resources"
     URL "http://www.packagekit.org"
