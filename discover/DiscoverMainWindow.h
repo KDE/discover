@@ -76,6 +76,7 @@ class DiscoverMainWindow : public QObject
         void configureShortcuts();
 
     Q_SIGNALS:
+        void openSearch(const QString &search);
         void openApplicationInternal(AbstractResource* app);
         void openUrl(const QUrl& url);
         void listMimeInternal(const QString& mime);

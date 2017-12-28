@@ -103,6 +103,11 @@ Kirigami.ApplicationWindow
             Navigation.openCategory(cat, "")
         }
 
+        onOpenSearch: {
+            Navigation.clearStack()
+            Navigation.openApplicationList({search: search})
+        }
+
         onPreventedClose: showPassiveNotification(i18n("Could not close the application, there are tasks that need to be done."), 3000)
         onUnableToFind: {
             showPassiveNotification(i18n("Unable to find resource: %1", resid));

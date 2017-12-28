@@ -78,6 +78,8 @@ void processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
         const QUrl url = QUrl::fromUserInput(arg, {}, QUrl::AssumeLocalFile);
         if (url.isLocalFile())
             mainWindow->openLocalPackage(url);
+        else if (url.scheme() == QLatin1String("apt"))
+            mainWindow->openSearch(url.host());
         else
             mainWindow->openApplication(url);
     }
