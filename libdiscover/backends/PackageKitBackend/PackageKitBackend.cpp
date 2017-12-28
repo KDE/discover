@@ -278,7 +278,7 @@ void PackageKitBackend::getPackagesFinished()
     for(auto it = m_packages.packages.cbegin(); it != m_packages.packages.cend(); ++it) {
         auto pkr = qobject_cast<PackageKitResource*>(it.value());
         if (pkr->packages().isEmpty()) {
-            qWarning() << "Failed to find package for" << it.key();
+//             qWarning() << "Failed to find package for" << it.key();
             m_packagesToDelete += pkr;
         }
     }
