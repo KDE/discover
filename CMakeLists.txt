@@ -64,5 +64,10 @@ set_package_properties(AppStreamQt PROPERTIES
     URL "http://www.freedesktop.org"
     PURPOSE "Required to build the PackageKit backend"
     TYPE OPTIONAL)
+set_package_properties(FLATPAK PROPERTIES
+    DESCRIPTION "Library that exposes flatpak repositories"
+    URL "http://www.freedesktop.org"
+    PURPOSE "Required to build the Flatpak backend"
+    TYPE OPTIONAL)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

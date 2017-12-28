@@ -24,6 +24,8 @@ endif()
 option(BUILD_FlatpakBackend "Build Flatpak support" "ON")
 if(FLATPAK_FOUND AND AppStreamQt_FOUND AND BUILD_FlatpakBackend)
     add_subdirectory(FlatpakBackend)
+elseif(BUILD_FlatpakBackend)
+    message(WARNING "BUILD_FlatpakBackend enabled but Flatpak=${FLATPAK_FOUND} or AppStreamQt=${AppStreamQt_FOUND} not found")
 endif()
 
 option(BUILD_SnapBackend "Build Snap support. Still a proof of concept" "OFF")
