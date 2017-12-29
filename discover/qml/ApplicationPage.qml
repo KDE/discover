@@ -148,40 +148,58 @@ DiscoverPage {
 
     ColumnLayout {
         spacing: 0
-
-        QQC2.Label {
-            Layout.fillWidth: true
+        Kirigami.Heading {
             text: appInfo.application.comment
-            wrapMode: Text.WordWrap
-            elide: Text.ElideRight
-            maximumLineCount: 1
-        }
-        QQC2.Label {
+            level: 4
             Layout.fillWidth: true
             elide: Text.ElideRight
-            text: appInfo.application.categoryDisplay
-            color: Kirigami.Theme.linkColor
+            bottomPadding: Kirigami.Units.largeSpacing
         }
 
-        Item {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-        }
-        QQC2.Label {
-            Layout.fillWidth: true
-            elide: Text.ElideRight
-            readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
-            visible: version.length > 0
-            text: version ? i18n("Version: %1", version) : ""
-        }
-        QQC2.Label {
-            Layout.fillWidth: true
-            elide: Text.ElideRight
-            text: i18n("Size: %1", appInfo.application.sizeDescription)
-        }
-        RowLayout {
-            Layout.fillWidth: true
+        GridLayout {
+            rowSpacing: 0
+            columns: 2
+
+            // Category row
             QQC2.Label {
+                Layout.alignment: Qt.AlignRight
+                text: i18n("Category:")
+            }
+            QQC2.Label {
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                text: appInfo.application.categoryDisplay
+            }
+
+            // Version row
+            QQC2.Label {
+                readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
+                visible: version.length > 0
+                Layout.alignment: Qt.AlignRight
+                text: i18n("Version:")
+            }
+            QQC2.Label {
+                readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
+                visible: version.length > 0
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                text: version ? version : ""
+            }
+
+            // Size row
+            QQC2.Label {
+                Layout.alignment: Qt.AlignRight
+                text: i18n("Size:")
+            }
+            QQC2.Label {
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                text: i18n("%1", appInfo.application.sizeDescription)
+            }
+
+            // Source row
+            QQC2.Label {
+                Layout.alignment: Qt.AlignRight
                 text: i18n("Source:")
             }
             LinkButton {
@@ -189,19 +207,39 @@ DiscoverPage {
                 horizontalAlignment: Text.AlignLeft
                 enabled: alternativeResourcesView.count > 1
                 text: appInfo.application.displayOrigin
+                elide: Text.ElideRight
                 onClicked: originsOverlay.open()
             }
-        }
-        RowLayout {
+
+            // License row
             QQC2.Label {
+                Layout.alignment: Qt.AlignRight
                 text: i18n("License:")
             }
             LinkButton {
+                elide: Text.ElideRight
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
                 text: appInfo.application.license
 //                         tooltip: i18n("See full license terms")
                 onClicked: Qt.openUrlExternally("https://spdx.org/licenses/" + appInfo.application.license + ".html#licenseText")
+            }
+
+            // Homepage row
+            QQC2.Label {
+                readonly property string homepage: application.homepage
+                visible: homepage.length > 0
+                Layout.alignment: Qt.AlignRight
+                text: i18n("Homepage:")
+            }
+            LinkButton {
+                readonly property string homepage: application.homepage
+                visible: homepage.length > 0
+                text: homepage
+                onClicked: Qt.openUrlExternally(application.homepage)
+                elide: Text.ElideRight
+                Layout.fillWidth: true
+                horizontalAlignment: Text.AlignLeft
             }
         }
 
@@ -229,18 +267,6 @@ DiscoverPage {
                 var res = originsOverlay.model.resourceAt(idx)
                 window.stack.pop()
                 Navigation.openApplication(res)
-            }
-        }
-
-        RowLayout {
-            visible: button.text.length > 0
-            QQC2.Label {
-                text: i18n("Homepage: ")
-            }
-            LinkButton {
-                id: button
-                text: application.homepage
-                onClicked: Qt.openUrlExternally(application.homepage)
             }
         }
 
