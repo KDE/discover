@@ -168,11 +168,15 @@ DiscoverPage {
             Layout.fillHeight: true
         }
         QQC2.Label {
+            Layout.fillWidth: true
+            elide: Text.ElideRight
             readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
             visible: version.length > 0
             text: version ? i18n("Version: %1", version) : ""
         }
         QQC2.Label {
+            Layout.fillWidth: true
+            elide: Text.ElideRight
             text: i18n("Size: %1", appInfo.application.sizeDescription)
         }
         RowLayout {
@@ -182,6 +186,7 @@ DiscoverPage {
             }
             LinkButton {
                 Layout.fillWidth: true
+                horizontalAlignment: Text.AlignLeft
                 enabled: alternativeResourcesView.count > 1
                 text: appInfo.application.displayOrigin
                 onClicked: originsOverlay.open()
@@ -192,6 +197,8 @@ DiscoverPage {
                 text: i18n("License:")
             }
             LinkButton {
+                Layout.fillWidth: true
+                horizontalAlignment: Text.AlignLeft
                 text: appInfo.application.license
 //                         tooltip: i18n("See full license terms")
                 onClicked: Qt.openUrlExternally("https://spdx.org/licenses/" + appInfo.application.license + ".html#licenseText")
