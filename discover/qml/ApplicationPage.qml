@@ -176,10 +176,12 @@ DiscoverPage {
             text: i18n("Size: %1", appInfo.application.sizeDescription)
         }
         RowLayout {
+            Layout.fillWidth: true
             QQC2.Label {
                 text: i18n("Source:")
             }
             LinkButton {
+                Layout.fillWidth: true
                 enabled: alternativeResourcesView.count > 1
                 text: appInfo.application.displayOrigin
                 onClicked: originsOverlay.open()

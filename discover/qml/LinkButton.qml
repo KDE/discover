@@ -14,6 +14,7 @@ QQC2.Label {
     color: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter
+    elide: Text.ElideRight
 
     signal clicked()
     MouseArea {
