@@ -49,8 +49,9 @@ Flow {
 
         x: (parent.width - width)/2
         y: (parent.height - height)/2
+        readonly property real proportion: overlayImage.sourceSize.height/overlayImage.sourceSize.width
         height: Math.min(parent.height * 0.9, overlayImage.sourceSize.height)
-        width: Math.min(parent.width * 0.9, overlayImage.sourceSize.width)
+        width: height/proportion
 
         Image {
             id: overlayImage
