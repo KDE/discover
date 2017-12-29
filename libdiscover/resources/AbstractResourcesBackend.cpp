@@ -36,7 +36,7 @@ QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters& filters
     if (!filters.mimetype.isEmpty()) debug.nospace() << "mimetype: " << filters.mimetype << ',';
     if (!filters.search.isEmpty()) debug.nospace() << "search: " << filters.search << ',';
     if (!filters.extends.isEmpty()) debug.nospace() << "extends:" << filters.extends << ',';
-    if (!filters.roles.isEmpty()) debug.nospace() << "roles:" << filters.roles << ',';
+    if (!filters.origin.isEmpty()) debug.nospace() << "origin:" << filters.origin << ',';
     debug.nospace() << ')';
 
     return debug;
@@ -104,11 +104,8 @@ bool AbstractResourcesBackend::Filters::shouldFilter(AbstractResource* res) cons
         return false;
     }
 
-    for(QHash<QByteArray, QVariant>::const_iterator it=roles.constBegin(), itEnd=roles.constEnd(); it!=itEnd; ++it) {
-        Q_ASSERT(AbstractResource::staticMetaObject.indexOfProperty(it.key().constData())>=0);
-        if(res->property(it.key().constData()) != it.value()) {
-            return false;
-        }
+    if(!origin.isEmpty() && res->origin() != origin) {
+        return false;
     }
 
     if(res->state() < state)

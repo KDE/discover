@@ -203,20 +203,17 @@ QString ResourcesProxyModel::lastSearch() const
 
 void ResourcesProxyModel::setOriginFilter(const QString &origin)
 {
-    if (origin == originFilter())
+    if (origin == m_filters.origin)
         return;
 
-    if(origin.isEmpty())
-        m_filters.roles.remove("origin");
-    else
-        m_filters.roles.insert("origin", origin);
+    m_filters.origin = origin;
 
     invalidateFilter();
 }
 
 QString ResourcesProxyModel::originFilter() const
 {
-    return m_filters.roles.value("origin").toString();
+    return m_filters.origin;
 }
 
 void ResourcesProxyModel::setFiltersFromCategory(Category *category)
