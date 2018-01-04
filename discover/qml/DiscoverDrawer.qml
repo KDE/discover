@@ -47,7 +47,7 @@ Kirigami.GlobalDrawer {
     onCurrentSubMenuChanged: {
         if (currentSubMenu)
             currentSubMenu.trigger()
-        else if (currentSearchText.length >= 0)
+        else if (currentSearchText.length > 0)
             window.leftPage.category = null
         else
             Navigation.openHome()
