@@ -46,6 +46,7 @@ Type=Application
 X-DocPath=plasma-discover/index.html
 InitialPreference=5
 NoDisplay=@DesktopNoDisplay@
+Actions=Updates;
 GenericName=Software Center
 GenericName[ar]=مركز برمجيّات
 GenericName[ca]=Centre de programari
@@ -126,3 +127,8 @@ Keywords[uk]=program;software;repository;package;install;remove;update;app;apps;
 Keywords[x-test]=xxprogramxx;xxsoftwarexx;xxrepositoryxx;xxpackagexx;xxinstallxx;xxremovexx;xxupdatexx;xxappsxx;xxapplicationsxx;
 Keywords[zh_CN]=program;software;repository;package;install;remove;update;apps;applications;程序;软件;软件源;包;安装;移除;更新;应用程序;应用;
 Keywords[zh_TW]=program;software;repository;package;install;remove;update;apps;applications;
+
+[Desktop Action Updates]
+Name=Updates
+Icon=system-software-update
+Exec=@DesktopExec@ --mode update
