@@ -316,19 +316,13 @@ void AggregatedResultsStream::clear()
 
 AggregatedResultsStream * ResourcesModel::findResourceByPackageName(const QUrl& search)
 {
-    QSet<ResultsStream*> streams;
-    foreach(auto backend, m_backends) {
-        streams << backend->findResourceByPackageName(search);
-    }
+    auto streams = kTransform<QSet<ResultsStream*>>(m_backends, [search](AbstractResourcesBackend* backend){ return backend->findResourceByPackageName(search); });
     return new AggregatedResultsStream(streams);
 }
 
 AggregatedResultsStream* ResourcesModel::search(const AbstractResourcesBackend::Filters& search)
 {
-    QSet<ResultsStream*> streams;
-    foreach(auto backend, m_backends) {
-        streams << backend->search(search);
-    }
+    auto streams = kTransform<QSet<ResultsStream*>>(m_backends, [search](AbstractResourcesBackend* backend){ return backend->search(search); });
     return new AggregatedResultsStream(streams);
 }
 
