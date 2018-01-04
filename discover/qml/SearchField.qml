@@ -29,7 +29,7 @@ TextField
     property QtObject page
     property string currentSearchText
 
-    placeholderText: (!enabled || !page || page.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
+    placeholderText: (!enabled || !page || page.hasOwnProperty("isHome") || page.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
 
     Shortcut {
         sequence: "Ctrl+F"

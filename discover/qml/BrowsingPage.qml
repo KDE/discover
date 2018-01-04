@@ -36,6 +36,8 @@ DiscoverPage
     topPadding: 0
     bottomPadding: 0
 
+    readonly property bool isHome: true
+
     function searchFor(text) {
         if (text.length === 0)
             return;
