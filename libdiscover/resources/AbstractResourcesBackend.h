@@ -101,6 +101,8 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
             QString origin;
             bool allBackends = false;
 
+            bool isEmpty() const { return !category && state == AbstractResource::Broken && mimetype.isEmpty() && search.isEmpty() && extends.isEmpty() && resourceUrl.isEmpty() && origin.isEmpty(); }
+
             bool shouldFilter(AbstractResource* res) const;
             void filterJustInCase(QVector<AbstractResource*>& input) const;
         };
