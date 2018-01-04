@@ -90,10 +90,10 @@ DiscoverTest
 
     function test_search() {
         app.openMode("Browsing");
-        var searchField = findChild(appRoot.globalDrawer.topContent[0], "TextField");
+        var searchField = findChild(appRoot.globalDrawer.topContent[0], "SearchField");
         verify(searchField);
         searchField.text = "cocacola"
-        verify(waitForSignal(appRoot.stack, "currentItemChanged"))
+        searchField.accepted()
         while(!isType(appRoot.stack.currentItem, "ApplicationsListPage"))
             verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         var listPage = appRoot.stack.currentItem
@@ -102,7 +102,7 @@ DiscoverTest
         compare(listPage.count, 0)
         compare(listPage.search, "cocacola")
         searchField.text = "dummy"
-        verify(waitForSignal(listPage, "searchChanged"))
+        searchField.accepted()
         compare(listPage.search, searchField.text)
 //         compare(listPage.count, ResourcesModel.rowCount()/2)
     }
