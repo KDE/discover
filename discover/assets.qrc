@@ -2,9 +2,6 @@
 <RCC version="1.0">
  <qresource>
     <file>banners/banner.svg</file>
-    <file>banners/installedcrop.jpg</file>
-    <file>banners/updatescrop.jpg</file>
-    <file>banners/syssettingscrop.jpg</file>
     <file>banners/coffee.jpg</file>
  </qresource>
 </RCC>
