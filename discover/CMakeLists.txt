@@ -32,6 +32,10 @@ target_link_libraries(plasma-discover LINK_PUBLIC
 
 install(TARGETS plasma-discover ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
+if (BUILD_DummyBackend)
+    target_compile_definitions(plasma-discover PRIVATE $<$<CONFIG:Debug>:QT_QML_DEBUG=1>)
+endif()
+
 # Standard desktop file accepts local files as input.
 set(DesktopNoDisplay "false")
 set(DesktopMimeType "application/vnd.debian.binary-package;application/x-rpm;")
