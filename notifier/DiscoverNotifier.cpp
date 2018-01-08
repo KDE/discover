@@ -80,7 +80,7 @@ void DiscoverNotifier::showUpdatesNotification()
         msg += QLatin1Char(' ') + extendedMessage();
     }
 
-    KNotification::event(QStringLiteral("Update"), i18n("System update available"), msg, QStringLiteral("system-software-update"), nullptr, KNotification::CloseOnTimeout, QStringLiteral("muonabstractnotifier"));
+    KNotification::event(QStringLiteral("Update"), i18n("System update available"), msg, QStringLiteral("system-software-update"), nullptr, KNotification::CloseOnTimeout, QStringLiteral("discoverabstractnotifier"));
 }
 
 void DiscoverNotifier::updateStatusNotifier()
