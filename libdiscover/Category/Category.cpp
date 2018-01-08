@@ -43,7 +43,9 @@ Category::Category(const QString& name, const QString& iconName, const QVector<Q
     , m_subCategories(subCategories)
     , m_plugins(pluginName)
     , m_isAddons(isAddons)
-{}
+{
+    setObjectName(m_name);
+}
 
 Category::~Category() = default;
 
@@ -60,6 +62,7 @@ void Category::parseData(const QString& path, const QDomNode& data)
 
         if (tempElement.tagName() == QLatin1String("Name")) {
             m_name = i18nc("Category", tempElement.text().toUtf8().constData());
+            setObjectName(m_name);
         } else if (tempElement.tagName() == QLatin1String("Menu")) {
             m_subCategories << new Category(m_plugins, this);
             m_subCategories.last()->parseData(path, node);
