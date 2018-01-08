@@ -26,6 +26,7 @@
 #include <PackageKit/Transaction>
 #include <functional>
 
+class QTimer;
 class QProcess;
 
 class PackageKitNotifier : public BackendNotifierModule
@@ -51,14 +52,17 @@ private Q_SLOTS:
     void onDistroUpgrade(PackageKit::Transaction::DistroUpgrade type, const QString &name, const QString &description);
 
 private:
+    void recheckSystemUpdate();
     void checkOfflineUpdates();
     void requireRestartNotification(PackageKit::Transaction::Restart type);
+    void setupGetUpdatesTransaction(PackageKit::Transaction* transaction);
     QProcess* checkAptVariable(const QString &aptconfig, const QLatin1String& varname, std::function<void(const QStringRef& val)> func);
 
     uint m_securityUpdates;
     uint m_normalUpdates;
     QPointer<PackageKit::Transaction> m_refresher;
     QPointer<PackageKit::Transaction> m_distUpgrades;
+    QTimer* m_recheckTimer;
 
     QHash<QString, PackageKit::Transaction*> m_transactions;
 };

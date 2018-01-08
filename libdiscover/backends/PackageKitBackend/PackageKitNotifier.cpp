@@ -72,6 +72,11 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
         regularCheck->start();
 
 	QTimer::singleShot(3000, this, &PackageKitNotifier::checkOfflineUpdates);
+
+    m_recheckTimer = new QTimer(this);
+    m_recheckTimer->setInterval(200);
+    m_recheckTimer->setSingleShot(true);
+    connect(m_recheckTimer, &QTimer::timeout, this, &PackageKitNotifier::recheckSystemUpdate);
 }
 
 PackageKitNotifier::~PackageKitNotifier()
@@ -122,13 +127,24 @@ void PackageKitNotifier::checkOfflineUpdates()
 
 void PackageKitNotifier::recheckSystemUpdateNeeded()
 {
+    m_recheckTimer->start();
+}
+
+void PackageKitNotifier::recheckSystemUpdate()
+{
     if (PackageKit::Daemon::global()->isRunning()) {
-        PackageKit::Transaction * trans = PackageKit::Daemon::getUpdates();
-        trans->setProperty("normalUpdates", 0);
-        trans->setProperty("securityUpdates", 0);
-        connect(trans, &PackageKit::Transaction::package, this, &PackageKitNotifier::package);
-        connect(trans, &PackageKit::Transaction::finished, this, &PackageKitNotifier::finished);
+        PackageKit::Daemon::getUpdates();
     }
+}
+
+void PackageKitNotifier::setupGetUpdatesTransaction(PackageKit::Transaction* trans)
+{
+    qDebug() << "using..." << trans << trans->tid().path();
+
+    trans->setProperty("normalUpdates", 0);
+    trans->setProperty("securityUpdates", 0);
+    connect(trans, &PackageKit::Transaction::package, this, &PackageKitNotifier::package);
+    connect(trans, &PackageKit::Transaction::finished, this, &PackageKitNotifier::finished);
 }
 
 void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QString &/*packageID*/, const QString &/*summary*/)
@@ -253,6 +269,12 @@ void PackageKitNotifier::transactionListChanged(const QStringList& tids)
             continue;
 
         auto t = new PackageKit::Transaction(QDBusObjectPath(tid));
+
+        connect(t, &PackageKit::Transaction::roleChanged, this, [this, t]() {
+            if (t->role() == PackageKit::Transaction::RoleGetUpdates) {
+                setupGetUpdatesTransaction(t);
+            }
+        });
         connect(t, &PackageKit::Transaction::requireRestart, this, &PackageKitNotifier::onRequireRestart);
         connect(t, &PackageKit::Transaction::finished, this, [this, t](){
             auto restart = t->property("requireRestart");
