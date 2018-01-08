@@ -218,7 +218,6 @@ void PackageKitNotifier::refreshDatabase()
         m_distUpgrades = PackageKit::Daemon::getDistroUpgrades();
         connect(m_distUpgrades, &PackageKit::Transaction::distroUpgrade, this, &PackageKitNotifier::onDistroUpgrade);
         connect(m_distUpgrades.data(), &PackageKit::Transaction::finished, this, [this]() {
-            recheckSystemUpdateNeeded();
             delete m_distUpgrades;
         });
     }
