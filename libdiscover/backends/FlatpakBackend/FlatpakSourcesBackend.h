@@ -45,6 +45,7 @@ public:
     FlatpakRemote * installSource(FlatpakResource *resource);
 private:
     bool listRepositories(FlatpakInstallation *installation);
+    void addRemote(FlatpakRemote *remote, FlatpakInstallation *installation);
 
     FlatpakInstallation *m_preferredInstallation;
     QStandardItemModel* m_sources;

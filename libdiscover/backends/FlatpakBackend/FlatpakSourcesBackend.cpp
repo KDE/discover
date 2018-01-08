@@ -137,7 +137,6 @@ bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
         return false;
     }
 
-    const auto actions = this->actions();
     for (uint i = 0; i < remotes->len; i++) {
         FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
 
@@ -145,25 +144,7 @@ bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
             continue;
         }
 
-        const QString id = QString::fromUtf8(flatpak_remote_get_name(remote));
-        const QString remoteUrl = QString::fromUtf8(flatpak_remote_get_url(remote));
-        const QString title = i18nc("description (url)", "%1 (%2)", QString::fromUtf8(flatpak_remote_get_title(remote)), remoteUrl);
-
-        for(QAction *action: actions) {
-            if (action->toolTip() == id) {
-                action->setEnabled(false);
-                action->setVisible(false);
-            }
-        }
-
-        FlatpakSourceItem *it = new FlatpakSourceItem(id);
-        it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
-        it->setData(title.isEmpty() ? id : title, Qt::ToolTipRole);
-        it->setData(name(), AbstractSourcesBackend::SectionRole);
-        it->setData(QVariant::fromValue<QObject*>(this), AbstractSourcesBackend::SourcesBackend);
-        it->setFlatpakInstallation(installation);
-
-        m_sources->appendRow(it);
+        addRemote(remote, installation);
     }
 
     return true;
@@ -206,16 +187,32 @@ FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
         return nullptr;
     }
 
-    FlatpakSourceItem *it = new FlatpakSourceItem(resource->flatpakName());
-    it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
-    it->setData(resource->comment().isEmpty() ? resource->flatpakName() : resource->comment(), Qt::ToolTipRole);
-    it->setData(name(), AbstractSourcesBackend::SectionRole);
-    it->setData(QVariant::fromValue<QObject*>(this), AbstractSourcesBackend::SourcesBackend);
-    it->setFlatpakInstallation(m_preferredInstallation);
-
-    m_sources->appendRow(it);
+    addRemote(remote, m_preferredInstallation);
 
     return remote;
+}
+
+void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation *installation)
+{
+    const QString id = QString::fromUtf8(flatpak_remote_get_name(remote));
+    const QString remoteUrl = QString::fromUtf8(flatpak_remote_get_url(remote));
+    const QString title = i18nc("description (url)", "%1 (%2)", QString::fromUtf8(flatpak_remote_get_title(remote)), remoteUrl);
+
+    for(QAction *action: actions()) {
+        if (action->toolTip() == id) {
+            action->setEnabled(false);
+            action->setVisible(false);
+        }
+    }
+
+    FlatpakSourceItem *it = new FlatpakSourceItem(id);
+    it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
+    it->setData(title.isEmpty() ? id : title, Qt::ToolTipRole);
+    it->setData(name(), AbstractSourcesBackend::SectionRole);
+    it->setData(QVariant::fromValue<QObject*>(this), AbstractSourcesBackend::SourcesBackend);
+    it->setFlatpakInstallation(installation);
+
+    m_sources->appendRow(it);
 }
 
 QString FlatpakSourcesBackend::idDescription()
