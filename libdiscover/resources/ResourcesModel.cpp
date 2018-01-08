@@ -322,7 +322,9 @@ AggregatedResultsStream * ResourcesModel::findResourceByPackageName(const QUrl& 
 
 AggregatedResultsStream* ResourcesModel::search(const AbstractResourcesBackend::Filters& search)
 {
-    Q_ASSERT(!search.isEmpty());
+    if (search.isEmpty()) {
+        return new AggregatedResultsStream ({new ResultsStream(QStringLiteral("emptysearch"), {})});
+    }
 
     auto streams = kTransform<QSet<ResultsStream*>>(m_backends, [search](AbstractResourcesBackend* backend){ return backend->search(search); });
     return new AggregatedResultsStream(streams);
