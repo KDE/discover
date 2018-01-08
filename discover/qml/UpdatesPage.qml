@@ -16,6 +16,27 @@ DiscoverPage
 
     property string footerLabel: ""
 
+    ResourcesUpdatesModel {
+        id: resourcesUpdatesModel
+        onPassiveMessage: window.showPassiveNotification(message)
+        onIsProgressingChanged: {
+            if (!isProgressing) {
+                resourcesUpdatesModel.prepare()
+            }
+        }
+
+        Component.onCompleted: {
+            if (!isProgressing) {
+                resourcesUpdatesModel.prepare()
+            }
+        }
+    }
+
+    UpdateModel {
+        id: updateModel
+        backend: resourcesUpdatesModel
+    }
+
     Kirigami.Action
     {
         id: updateAction
@@ -39,71 +60,47 @@ DiscoverPage
     readonly property QtObject currentAction: resourcesUpdatesModel.isProgressing ? cancelUpdateAction : updateAction
     actions.main: applicationWindow().wideScreen ? null : currentAction
 
+    header: QQC2.ToolBar {
+        visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
+
+        RowLayout {
+            anchors.fill: parent
+            LabelBackground {
+                Layout.leftMargin: Kirigami.Units.gridUnit
+                text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
+            }
+            QQC2.Label {
+                text: i18n("updates selected")
+            }
+            LabelBackground {
+                id: unselectedItem
+                text: page.unselected
+                visible: page.unselected>0
+            }
+            QQC2.Label {
+                text: i18n("updates not selected")
+                visible: unselectedItem.visible
+            }
+
+            Item {
+                Layout.fillWidth: true
+            }
+
+            Button {
+                Layout.minimumWidth: Kirigami.Units.gridUnit * 6
+                Layout.rightMargin: Kirigami.Units.gridUnit
+                text: page.currentAction.text
+                visible: !page.actions.main
+                onClicked: page.currentAction.trigger()
+            }
+        }
+    }
+
     //TODO: use supportsRefreshing to fetch updates
-    mainItem: ListView
+    ListView
     {
         id: updatesView
         currentIndex: -1
-        ResourcesUpdatesModel {
-            id: resourcesUpdatesModel
-            onPassiveMessage: window.showPassiveNotification(message)
-            onIsProgressingChanged: {
-                if (!isProgressing) {
-                    resourcesUpdatesModel.prepare()
-                }
-            }
-
-            Component.onCompleted: {
-                if (!isProgressing) {
-                    resourcesUpdatesModel.prepare()
-                }
-            }
-        }
-
-        UpdateModel {
-            id: updateModel
-            backend: resourcesUpdatesModel
-        }
-
-        headerPositioning: ListView.OverlayHeader
-        header: QQC2.ToolBar {
-            anchors {
-                right: parent.right
-                left: parent.left
-            }
-            visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
-
-            contentItem: RowLayout {
-                LabelBackground {
-                    Layout.leftMargin: Kirigami.Units.gridUnit
-                    text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
-                }
-                QQC2.Label {
-                    text: i18n("updates selected")
-                }
-                LabelBackground {
-                    id: unselectedItem
-                    text: page.unselected
-                    visible: page.unselected>0
-                }
-                QQC2.Label {
-                    text: i18n("updates not selected")
-                    visible: unselectedItem.visible
-                }
-
-                Item {
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    Layout.minimumWidth: Kirigami.Units.gridUnit * 6
-                    Layout.rightMargin: Kirigami.Units.gridUnit
-                    text: page.currentAction.text
-                    visible: !page.actions.main
-                    onClicked: page.currentAction.trigger()
-                }
-            }
-        }
 
         footer: ColumnLayout {
             anchors.right: parent.right
