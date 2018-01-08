@@ -14,7 +14,6 @@ DiscoverPage
     id: page
     title: i18n("Updates")
 
-    property string search: ""
     property string footerLabel: ""
 
     Kirigami.Action
@@ -148,7 +147,7 @@ DiscoverPage
             backgroundColor: Kirigami.Theme.viewBackgroundColor
             x: Kirigami.Units.gridUnit
             width: ListView.view.width - Kirigami.Units.gridUnit * 2
-            highlighted: ListView.isCurrentItem || (page.search.length>0 && display.indexOf(page.search)>=0)
+            highlighted: ListView.isCurrentItem
             onEnabledChanged: if (!enabled) {
                 layout.extended = false;
             }

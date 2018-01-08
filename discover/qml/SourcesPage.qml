@@ -35,7 +35,7 @@ DiscoverPage {
     mainItem: ListView {
         id: sourcesView
         model: QSortFilterProxyModel{
-            filterRegExp: new RegExp(page.search)
+            filterRegExp: new RegExp(page.search, 'i')
             sourceModel: KConcatenateRowsProxyModel {
                 id: everySourceModel
             }

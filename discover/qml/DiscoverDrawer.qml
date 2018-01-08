@@ -64,15 +64,12 @@ Kirigami.GlobalDrawer {
         componentTrue: SearchField {
             id: searchField
 
-            enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
+            visible: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
             Keys.forwardTo: [window.pageStack]
 
             page: window.leftPage
 
             onCurrentSearchTextChanged: {
-                if (currentSearchText.length === 0)
-                    Navigation.openHome()
-
                 var curr = window.leftPage;
                 if (!curr.hasOwnProperty("search")) {
                     Navigation.clearStack()
