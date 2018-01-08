@@ -76,6 +76,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
     Q_PROPERTY(QString displayName READ displayName CONSTANT)
     Q_PROPERTY(AbstractReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
+    Q_PROPERTY(bool hasSecurityUpdates READ hasSecurityUpdates NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
     Q_PROPERTY(QList<QAction*> messageActions READ messageActions CONSTANT)
     public:
@@ -130,6 +131,11 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * @returns the number of resources for which an update is available, it should only count technical packages
          */
         virtual int updatesCount() const = 0;//FIXME: Probably provide a standard implementation?!
+
+        /**
+         * @returns whether either of the updates contains a security fix
+         */
+        virtual bool hasSecurityUpdates() const { return false; }
 
         /**
          * Tells whether the backend is fetching resources

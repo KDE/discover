@@ -50,6 +50,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         ResultsStream* search(const AbstractResourcesBackend::Filters & search) override;
         ResultsStream* findResourceByPackageName(const QUrl& search) override;
         int updatesCount() const override;
+        bool hasSecurityUpdates() const override;
 
         Transaction* installApplication(AbstractResource* app) override;
         Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;
@@ -107,6 +108,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QPointer<PackageKit::Transaction> m_refresher;
         int m_isFetching;
         QSet<QString> m_updatesPackageId;
+        bool m_hasSecurityUpdates = false;
         QSet<PackageKitResource*> m_packagesToAdd;
         QSet<PackageKitResource*> m_packagesToDelete;
         QList<QAction*> m_messageActions;

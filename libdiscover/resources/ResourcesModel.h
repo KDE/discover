@@ -52,6 +52,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
+    Q_PROPERTY(bool hasSecurityUpdates READ hasSecurityUpdates NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
     Q_PROPERTY(QVariantList applicationBackends READ applicationBackendsVariant NOTIFY backendsChanged)
     Q_PROPERTY(AbstractResourcesBackend* currentApplicationBackend READ currentApplicationBackend WRITE setCurrentApplicationBackend NOTIFY currentApplicationBackendChanged)
@@ -65,6 +66,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         
         QVector< AbstractResourcesBackend* > backends() const;
         int updatesCount() const;
+        bool hasSecurityUpdates() const;
         
         bool isBusy() const;
         bool isFetching() const;

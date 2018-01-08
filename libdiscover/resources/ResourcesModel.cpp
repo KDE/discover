@@ -174,6 +174,17 @@ int ResourcesModel::updatesCount() const
     return ret;
 }
 
+bool ResourcesModel::hasSecurityUpdates() const
+{
+    bool ret = false;
+
+    foreach(AbstractResourcesBackend* backend, m_backends) {
+        ret |= backend->hasSecurityUpdates();
+    }
+
+    return ret;
+}
+
 void ResourcesModel::installApplication(AbstractResource* app)
 {
     TransactionModel::global()->addTransaction(app->backend()->installApplication(app));

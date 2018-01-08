@@ -246,6 +246,7 @@ void PackageKitBackend::fetchUpdates()
     connect(tUpdates, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
     connect(tUpdates, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
     m_updatesPackageId.clear();
+    m_hasSecurityUpdates = false;
 
     m_updater->setProgressing(true);
 }
@@ -417,6 +418,11 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
     return new ResultsStream(QStringLiteral("PackageKitStream-url"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
 }
 
+bool PackageKitBackend::hasSecurityUpdates() const
+{
+    return m_hasSecurityUpdates;
+}
+
 int PackageKitBackend::updatesCount() const
 {
     return m_updatesPackageId.count();
@@ -478,10 +484,15 @@ QSet<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 
 void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, const QString& packageId, const QString& summary)
 {
-    if (info != PackageKit::Transaction::InfoBlocked) {
-        m_updatesPackageId += packageId;
-        addPackage(info, packageId, summary, true);
+    if (info == PackageKit::Transaction::InfoBlocked) {
+        return;
     }
+
+    if (info == PackageKit::Transaction::InfoSecurity)
+        m_hasSecurityUpdates = true;
+
+    m_updatesPackageId += packageId;
+    addPackage(info, packageId, summary, true);
 }
 
 void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
