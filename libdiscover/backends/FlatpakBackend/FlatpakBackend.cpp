@@ -590,26 +590,32 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
         return;
     }
 
-    AppStream::Metadata metadata;
-    metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
-    AppStream::Metadata::MetadataError error = metadata.parseFile(appDirFileName, AppStream::Metadata::FormatKindXml);
-    if (error != AppStream::Metadata::MetadataErrorNoError) {
-        qWarning() << "Failed to parse appstream metadata: " << error;
-        return;
-    }
+    auto fw = new QFutureWatcher<QList<AppStream::Component>>(this);
+    fw->setFuture(QtConcurrent::run(&m_threadPool, [appDirFileName]() -> QList<AppStream::Component> {
+        AppStream::Metadata metadata;
+        metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
+        AppStream::Metadata::MetadataError error = metadata.parseFile(appDirFileName, AppStream::Metadata::FormatKindXml);
+        if (error != AppStream::Metadata::MetadataErrorNoError) {
+            qWarning() << "Failed to parse appstream metadata: " << error;
+            return {};
+        }
 
-    QList<AppStream::Component> components = metadata.components();
-    foreach (const AppStream::Component& appstreamComponent, components) {
-        FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
-        resource->setIconPath(appstreamIconsPath);
-        resource->setOrigin(source.name());
-        addResource(resource);
-    }
-
-    // Not ideal calling it from here but given that everything is asynchronous then it's a bit complicated
-    if (!m_refreshAppstreamMetadataJobs) {
-        finishInitialization();
-    }
+        return metadata.components();
+    }));
+    const auto sourceName = source.name();
+    connect(fw, &QFutureWatcher<QList<AppStream::Component>>::finished, this, [this, fw, flatpakInstallation, appstreamIconsPath, sourceName]() {
+        const auto components = fw->result();
+        foreach (const AppStream::Component& appstreamComponent, components) {
+            FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
+            resource->setIconPath(appstreamIconsPath);
+            resource->setOrigin(sourceName);
+            addResource(resource);
+        }
+        if (!m_refreshAppstreamMetadataJobs) {
+            finishInitialization();
+        }
+        fw->deleteLater();
+    });
 }
 
 void FlatpakBackend::loadInstalledApps()
