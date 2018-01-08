@@ -78,7 +78,7 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
         }
 };
 
-Q_DECLARE_METATYPE(KNSCore::EntryInternal);
+Q_DECLARE_METATYPE(KNSCore::EntryInternal)
 
 KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &knsrc)
     : AbstractResourcesBackend(parent)
