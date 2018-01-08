@@ -70,6 +70,10 @@ void ActionsModel::reload()
     beginResetModel();
     m_actions = actions;
     endResetModel();
+
+    for(auto a : qAsConst(m_filteredActions)) {
+        connect(a, &QAction::changed, this, &ActionsModel::reload, Qt::UniqueConnection);
+    }
 }
 
 int ActionsModel::filterPriority() const
