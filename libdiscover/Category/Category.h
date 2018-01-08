@@ -62,7 +62,8 @@ public:
     QVector<Category *> subCategories() const;
     QVariantList subCategoriesVariant() const;
 
-    static void addSubcategory(QVector<Category*>& list, Category* cat);
+    static void sortCategories(QVector<Category*>& cats);
+    static void addSubcategory(QVector<Category*>& cats, Category* cat);
     void parseData(const QString& path, const QDomNode& data);
     bool blacklistPlugins(const QSet<QString>& pluginName);
     bool isAddons() const { return m_isAddons; }

@@ -154,8 +154,30 @@ bool Category::categoryLessThan(Category *c1, const Category *c2)
     return (!c1->isAddons() && c2->isAddons()) || (c1->isAddons()==c2->isAddons() && QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
 
+static bool isSorted(const QVector<Category*>& vector)
+{
+    Category *last = nullptr;
+    for(auto a: vector) {
+        if (last && !Category::categoryLessThan(last, a))
+            return false;
+        last = a;
+    }
+    return true;
+}
+
+void Category::sortCategories(QVector<Category *>& cats)
+{
+    std::sort(cats.begin(), cats.end(), &categoryLessThan);
+    for(auto cat: cats) {
+        sortCategories(cat->m_subCategories);
+    }
+    Q_ASSERT(isSorted(cats));
+}
+
 void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
 {
+    Q_ASSERT(isSorted(list));
+
     auto it = std::lower_bound(list.begin(), list.end(), newcat, &categoryLessThan);
     if (it == list.end()) {
         list << newcat;
@@ -185,6 +207,7 @@ void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
     }
 
     list.insert(it, newcat);
+    Q_ASSERT(isSorted(list));
 }
 
 bool Category::blacklistPluginsInVector(const QSet<QString>& pluginNames, QVector<Category *>& subCategories)
