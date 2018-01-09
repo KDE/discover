@@ -269,11 +269,6 @@ void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QSt
     qWarning() << "Error happened" << err << error;
 }
 
-void PackageKitUpdater::printMessage(PackageKit::Transaction::Message type, const QString &message)
-{
-    qDebug() << "message" << type << message;
-}
-
 void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
 {
     Q_UNUSED(media)

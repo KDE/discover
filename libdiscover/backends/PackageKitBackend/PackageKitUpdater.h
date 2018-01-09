@@ -63,7 +63,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void finished(PackageKit::Transaction::Exit exit, uint);
         void cancellableChanged();
         void percentageChanged();
-        void printMessage(PackageKit::Transaction::Message type, const QString &message);
         void updateDetail(const QString& packageID, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
                                       const QStringList& bugzillaUrls, const QStringList& cveUrls, PackageKit::Transaction::Restart restart, const QString& updateText,
                                       const QString& changelog, PackageKit::Transaction::UpdateState state, const QDateTime& issued, const QDateTime& updated);
