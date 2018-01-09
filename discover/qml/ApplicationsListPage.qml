@@ -36,7 +36,7 @@ DiscoverPage {
     property alias originFilter: appsModel.originFilter
     property alias mimeTypeFilter: appsModel.mimeTypeFilter
     property alias stateFilter: appsModel.stateFilter
-    property alias extend: appsModel.extends
+    property alias extending: appsModel.extending
     property alias search: appsModel.search
     property alias resourcesUrl: appsModel.resourcesUrl
     property alias isBusy: appsModel.isBusy

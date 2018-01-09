@@ -58,7 +58,7 @@ function openReviews(model) {
 }
 
 function openExtends(ext) {
-    window.stack.push(applicationListComp, { extend: ext, title: i18n("Extensions...") })
+    window.stack.push(applicationListComp, { extending: ext, title: i18n("Extensions...") })
 }
 
 function openHome() {
