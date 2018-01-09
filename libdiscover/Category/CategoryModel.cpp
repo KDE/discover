@@ -53,7 +53,6 @@ void CategoryModel::populateCategories()
 
         if(ret.isEmpty()) {
             ret = cats;
-            Category::sortCategories(ret);
         } else {
             Q_FOREACH (Category* c, cats)
                 Category::addSubcategory(ret, c);

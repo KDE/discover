@@ -35,6 +35,8 @@ QVector<Category*> CategoriesReader::loadCategoriesFile(AbstractResourcesBackend
         auto cat = backend->category();
         if (cat.isEmpty())
             qWarning() << "Couldn't find a category for " << backend->name();
+
+        Category::sortCategories(cat);
         return cat;
     }
     return loadCategoriesPath(path);
@@ -68,5 +70,6 @@ QVector<Category*> CategoriesReader::loadCategoriesPath(const QString& path)
 
         node = node.nextSibling();
     }
+    Category::sortCategories(ret);
     return ret;
 }
