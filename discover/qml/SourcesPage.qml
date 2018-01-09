@@ -218,5 +218,30 @@ DiscoverPage {
                 }
             }
         }
+
+        footer: ColumnLayout {
+            id: foot
+            anchors {
+                right: parent.right
+                left: parent.left
+                margins: Kirigami.Units.smallSpacing
+            }
+            Repeater {
+                id: back
+                model: ResourcesProxyModel {
+                    extending: "org.kde.discover.desktop"
+                }
+                delegate: RowLayout {
+                    visible: !model.application.isInstalled
+                    QQC2.Label {
+                        Layout.fillWidth: true
+                        text: name
+                    }
+                    InstallApplicationButton {
+                        application: model.application
+                    }
+                }
+            }
+        }
     }
 }
