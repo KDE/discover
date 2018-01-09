@@ -23,3 +23,4 @@ set_target_properties(FlatpakNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_F
 
 install(TARGETS FlatpakNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
 install(PROGRAMS org.kde.discover-flatpak.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+install( FILES org.kde.discover.flatpak.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )

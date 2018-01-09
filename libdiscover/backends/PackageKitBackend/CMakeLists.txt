@@ -33,3 +33,5 @@ if(packagekitqt5_VERSION VERSION_GREATER 0.9.7)
     target_compile_definitions(packagekit-backend PUBLIC -DPKQT_0_10)
     target_compile_definitions(DiscoverPackageKitNotifier PUBLIC -DPKQT_0_10)
 endif()
+
+install( FILES org.kde.discover.packagekit.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
