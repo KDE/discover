@@ -6,6 +6,7 @@ cmake_minimum_required(VERSION 2.8.12)
 
 find_package(ECM REQUIRED NO_MODULE)
 
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} "${CMAKE_SOURCE_DIR}/cmake")
 
 find_package(Qt5 5.7.0 REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick)

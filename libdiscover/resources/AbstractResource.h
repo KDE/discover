@@ -24,10 +24,10 @@
 #include <QtCore/QObject>
 #include <QUrl>
 #include <QStringList>
-#include <QScopedPointer>
 #include <QVector>
 #include <QCollatorSortKey>
 #include <QJsonObject>
+#include <optional>
 
 #include "discovercommon_export.h"
 #include "PackageState.h"
@@ -101,6 +101,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
          * Constructs the AbstractResource with its corresponding backend
          */
         explicit AbstractResource(AbstractResourcesBackend* parent);
+
+        virtual ~AbstractResource() = default;
 
         ///used as internal identification of a resource
         virtual QString packageName() const = 0;
@@ -206,8 +208,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     private:
         void reportNewState();
 
-//         TODO: make it std::optional or make QCollatorSortKey()
-        QScopedPointer<QCollatorSortKey> m_collatorKey;
+        std::optional<QCollatorSortKey> m_collatorKey;
         QJsonObject m_metadata;
 };
 

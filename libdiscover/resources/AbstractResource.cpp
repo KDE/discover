@@ -95,7 +95,7 @@ QString AbstractResource::sizeDescription()
 QCollatorSortKey AbstractResource::nameSortKey()
 {
     if (!m_collatorKey) {
-        m_collatorKey.reset(new QCollatorSortKey(QCollator().sortKey(name())));
+        m_collatorKey = QCollator().sortKey(name());
     }
     return *m_collatorKey;
 }
