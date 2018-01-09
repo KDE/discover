@@ -54,8 +54,9 @@ DiscoverPage {
                     leftPadding: Kirigami.Units.largeSpacing
                     text: settingsButton.isDefault ? i18n("%1 (Default)", section) : section
                 }
-                ToolButton {
+                Button {
                     id: settingsButton
+                    Layout.rightMargin: Kirigami.Units.smallSpacing
                     iconName: "preferences-other"
                     readonly property QtObject backend: SourcesModel.backendForSection(section)
                     readonly property bool isDefault: ResourcesModel.currentApplicationBackend == settingsButton.backend.resourcesBackend
