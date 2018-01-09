@@ -46,6 +46,15 @@ SnapBackend::SnapBackend(QObject* parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(new SnapReviewsBackend(this))
 {
+    {
+        auto request = m_client.connect();
+        request->runSync();
+        m_valid = request->error() == QSnapdRequest::NoError;
+        if (!m_valid) {
+            qWarning() << "snap problem at initialize:" << request->errorString();
+            return;
+        }
+    }
     connect(m_reviews, &SnapReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
     //make sure we populate the installed resources first
@@ -67,7 +76,7 @@ ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& fil
         return voidStream();
     } else if (filters.state >= AbstractResource::Installed) {
         return populate(m_client.list(), AbstractResource::Installed);
-    } else if (!filters.search.isEmpty()) {
+    } else {
         return populate(m_client.find(QSnapdClient::FindFlag::None, filters.search), AbstractResource::None);
     }
     return voidStream();
@@ -84,7 +93,6 @@ ResultsStream* SnapBackend::populate(T* job, AbstractResource::State state)
     auto stream = new ResultsStream(QStringLiteral("Snap-populate"));
 
     connect(job, &QSnapdFindRequest::complete, stream, [stream, this, state, job]() {
-        static_assert(std::is_base_of<QSnapdRequest, T>::value, "we can only populate QSnapdRequest");
         QSet<SnapResource*> higher = kFilter<QSet<SnapResource*>>(m_resources, [state](AbstractResource* res){ return res->state()>=state; });
 
         QVector<AbstractResource*> ret;

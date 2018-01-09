@@ -43,7 +43,7 @@ public:
     int updatesCount() const override;
     AbstractBackendUpdater* backendUpdater() const override;
     AbstractReviewsBackend* reviewsBackend() const override;
-    bool isValid() const override { return true; }
+    bool isValid() const override { return m_valid; }
     QList<QAction*> messageActions() const override { return {}; }
 
     Transaction* installApplication(AbstractResource* app) override;
@@ -64,6 +64,7 @@ private:
     StandardBackendUpdater* m_updater;
     SnapReviewsBackend* m_reviews;
 
+    bool m_valid = true;
     bool m_fetching = false;
     QSnapdClient m_client;
 };
