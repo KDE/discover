@@ -225,7 +225,6 @@ void PackageKitNotifier::refreshDatabase()
         m_refresher = PackageKit::Daemon::refreshCache(false);
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, [this]() {
             recheckSystemUpdateNeeded();
-            delete m_refresher;
         });
     }
 
@@ -233,9 +232,6 @@ void PackageKitNotifier::refreshDatabase()
     if (!m_distUpgrades && (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleUpgradeSystem)) {
         m_distUpgrades = PackageKit::Daemon::getDistroUpgrades();
         connect(m_distUpgrades, &PackageKit::Transaction::distroUpgrade, this, &PackageKitNotifier::onDistroUpgrade);
-        connect(m_distUpgrades.data(), &PackageKit::Transaction::finished, this, [this]() {
-            delete m_distUpgrades;
-        });
     }
 #endif
 }
