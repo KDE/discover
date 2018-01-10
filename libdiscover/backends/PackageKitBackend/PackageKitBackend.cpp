@@ -50,7 +50,7 @@
 #include "utils.h"
 #include "config-paths.h"
 
-MUON_BACKEND_PLUGIN(PackageKitBackend)
+DISCOVER_BACKEND_PLUGIN(PackageKitBackend)
 
 QString PackageKitBackend::locateService(const QString &filename)
 {

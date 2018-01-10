@@ -59,7 +59,7 @@
 
 #include <glib.h>
 
-MUON_BACKEND_PLUGIN(FlatpakBackend)
+DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
 
 static QString idForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref)
 {

@@ -39,7 +39,7 @@
 
 #include "utils.h"
 
-MUON_BACKEND_PLUGIN(SnapBackend)
+DISCOVER_BACKEND_PLUGIN(SnapBackend)
 
 SnapBackend::SnapBackend(QObject* parent)
     : AbstractResourcesBackend(parent)

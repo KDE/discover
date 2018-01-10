@@ -37,7 +37,7 @@
 #include <QTimer>
 #include <QAction>
 
-MUON_BACKEND_PLUGIN(DummyBackend)
+DISCOVER_BACKEND_PLUGIN(DummyBackend)
 
 DummyBackend::DummyBackend(QObject* parent)
     : AbstractResourcesBackend(parent)

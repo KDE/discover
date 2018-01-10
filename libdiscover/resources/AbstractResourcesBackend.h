@@ -239,7 +239,7 @@ public:
     virtual QVector<AbstractResourcesBackend*> newInstance(QObject* parent, const QString &name) const = 0;
 };
 
-#define MUON_BACKEND_PLUGIN(ClassName)\
+#define DISCOVER_BACKEND_PLUGIN(ClassName)\
     class ClassName##Factory : public AbstractResourcesBackendFactory {\
         Q_OBJECT\
         Q_PLUGIN_METADATA(IID "org.kde.muon.AbstractResourcesBackendFactory")\

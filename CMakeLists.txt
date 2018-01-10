@@ -29,6 +29,12 @@ find_package(KF5NewStuff 5.23)
 
 pkg_check_modules(FLATPAK  flatpak>=0.6.12)
 
+if(NOT CMAKE_VERSION VERSION_LESS "3.10.0")
+  # CMake 3.9+ warns about automoc on files without Q_OBJECT, and doesn't know about other macros.
+  # 3.10+ lets us provide more macro names that require automoc.
+  list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
+endif()
+
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)
 
 add_subdirectory(libdiscover)
