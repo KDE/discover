@@ -81,26 +81,6 @@ DiscoverPage {
                         }
 
                         MenuSeparator {
-                            visible: messageActionsInst.count>0
-                        }
-
-                        Instantiator {
-                            id: messageActionsInst
-                            model: ActionsModel {
-                                actions: settingsButton.backend ? settingsButton.backend.resourcesBackend.messageActions : null
-                            }
-                            delegate: MenuItem {
-                                action: ActionBridge { action: model.action }
-                            }
-                            onObjectAdded: {
-                                settingsMenu.insertItem(index, object)
-                            }
-                            onObjectRemoved: {
-                                object.destroy()
-                            }
-                        }
-
-                        MenuSeparator {
                             visible: backendActionsInst.count>0
                         }
 

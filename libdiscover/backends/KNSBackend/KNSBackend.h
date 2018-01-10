@@ -48,7 +48,6 @@ public:
     AbstractReviewsBackend* reviewsBackend() const override;
     AbstractBackendUpdater* backendUpdater() const override;
     bool isFetching() const override;
-    QList<QAction*> messageActions() const override { return QList<QAction*>(); }
     ResultsStream* search(const AbstractResourcesBackend::Filters & filter) override;
     ResultsStream* findResourceByPackageName(const QUrl & search) override;
 

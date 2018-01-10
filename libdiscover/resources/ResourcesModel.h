@@ -70,7 +70,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         
         bool isBusy() const;
         bool isFetching() const;
-        QList<QAction*> messageActions() const;
         
         Q_SCRIPTABLE bool isExtended(const QString &id);
 

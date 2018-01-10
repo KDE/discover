@@ -58,7 +58,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         bool isValid() const override { return true; }
         QSet<AbstractResource*> upgradeablePackages() const;
         bool isFetching() const override;
-        QList<QAction*> messageActions() const override;
 
         bool isPackageNameUpgradeable(const PackageKitResource* res) const;
         QString upgradeablePackageId(const PackageKitResource* res) const;
@@ -73,6 +72,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QString displayName() const override;
 
         bool hasApplications() const override { return true; }
+        static QString locateService(const QString &filename);
 
     public Q_SLOTS:
         void reloadPackageList();
@@ -101,7 +101,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void includePackagesToAdd();
         void performDetailsFetch();
         AppPackageKitResource* addComponent(const AppStream::Component& component, const QStringList& pkgNames);
-        QAction* createActionForService(const QString &filename);
 
         AppStream::Pool m_appdata;
         PackageKitUpdater* m_updater;
@@ -111,7 +110,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         bool m_hasSecurityUpdates = false;
         QSet<PackageKitResource*> m_packagesToAdd;
         QSet<PackageKitResource*> m_packagesToDelete;
-        QList<QAction*> m_messageActions;
 
         struct Packages {
             QHash<QString, AbstractResource*> packages;

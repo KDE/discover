@@ -53,7 +53,6 @@ public:
     ResultsStream * findResourceByPackageName(const QUrl &search) override;
     QList<FlatpakResource*> resources() const { return m_resources.values(); }
     bool isValid() const override;
-    QList<QAction*> messageActions() const override { return {}; }
 
     Transaction* installApplication(AbstractResource* app) override;
     Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;

@@ -30,7 +30,6 @@
 
 #include "discovercommon_export.h"
 
-class QAction;
 class Transaction;
 class Category;
 class AbstractReviewsBackend;
@@ -78,7 +77,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(bool hasSecurityUpdates READ hasSecurityUpdates NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
-    Q_PROPERTY(QList<QAction*> messageActions READ messageActions CONSTANT)
     public:
         /**
          * Constructs an AbstractResourcesBackend
@@ -141,15 +139,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * Tells whether the backend is fetching resources
          */
         virtual bool isFetching() const = 0;
-
-        /**
-         *  This method is used to integrate advanced functions into the Muon GUI.
-         *
-         *  In plasma-discover-updater, actions with HighPriority will be shown in a KMessageWidget,
-         *  normal priority will go right on top of the more menu, low priority will go
-         *  to the advanced menu.
-         */
-        virtual QList<QAction*> messageActions() const = 0;
 
         /**
          * @returns the appstream ids that this backend extends
@@ -237,17 +226,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
     private:
         QString m_name;
 };
-
-template <typename T, typename W>
-static T containerValues(const W& container)
-{
-    T ret;
-    ret.reserve(container.size());
-    for(auto a : container) {
-        ret.push_back(a);
-    }
-    return ret;
-}
 
 DISCOVERCOMMON_EXPORT QDebug operator<<(QDebug dbg, const AbstractResourcesBackend::Filters& filters);
 

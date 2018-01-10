@@ -44,7 +44,6 @@ public:
     AbstractBackendUpdater* backendUpdater() const override;
     AbstractReviewsBackend* reviewsBackend() const override;
     bool isValid() const override { return m_valid; }
-    QList<QAction*> messageActions() const override { return {}; }
 
     Transaction* installApplication(AbstractResource* app) override;
     Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;

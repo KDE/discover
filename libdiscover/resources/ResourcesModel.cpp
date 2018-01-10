@@ -248,16 +248,6 @@ void ResourcesModel::slotFetching()
     }
 }
 
-QList<QAction*> ResourcesModel::messageActions() const
-{
-    QList<QAction*> ret = m_ownActions;
-    foreach(AbstractResourcesBackend* b, m_backends) {
-        ret += b->messageActions();
-    }
-    Q_ASSERT(!ret.contains(nullptr));
-    return ret;
-}
-
 bool ResourcesModel::isBusy() const
 {
     return TransactionModel::global()->rowCount() > 0;

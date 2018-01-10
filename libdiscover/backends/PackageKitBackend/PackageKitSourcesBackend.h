@@ -50,6 +50,7 @@ class PackageKitSourcesBackend : public AbstractSourcesBackend
         QStandardItem* findItemForId(const QString &id) const;
 
         PKSourcesModel* m_sources;
+        QList<QAction*> m_actions;
 };
 
 #endif // PACKAGEKITSOURCESBACKEND_H

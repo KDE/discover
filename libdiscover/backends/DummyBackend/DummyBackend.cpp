@@ -54,25 +54,6 @@ DummyBackend::DummyBackend(QObject* parent)
     if (!m_fetching)
         m_reviews->initialize();
 
-    QAction* randomAction = new QAction(this);
-    randomAction->setIcon(QIcon::fromTheme(QStringLiteral("kalarm")));
-    randomAction->setText(QStringLiteral("test bla bla"));
-    randomAction->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_T));
-    randomAction->setPriority(QAction::LowPriority);
-    connect(randomAction, &QAction::triggered, this, [](){ qDebug() << "random action triggered"; });
-
-//     QAction* importantAction = new QAction(this);
-//     importantAction->setIcon(QIcon::fromTheme(QStringLiteral("kalarm"));
-//     importantAction->setText(QStringLiteral("Amaze!"));
-//     importantAction->setWhatsThis(QStringLiteral("Wo Wo I'm so important"));
-//     importantAction->setPriority(QAction::HighPriority);
-//     connect(importantAction, &QAction::triggered, this, [importantAction](){
-//         importantAction->setEnabled(false);
-//         qDebug() << "important action triggered";
-//     });
-
-    m_messageActions = QList<QAction*>() << randomAction /*<< importantAction*/;
-
     SourcesModel::global()->addSourcesBackend(new DummySourcesBackend(this));
 }
 

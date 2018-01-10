@@ -21,10 +21,15 @@
 #include "PackageKitSourcesBackend.h"
 #include <QStandardItemModel>
 #include <KLocalizedString>
+#include <KDesktopFile>
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
+#include <QAction>
+#include <QProcess>
 #include <QDebug>
 #include <resources/AbstractResourcesBackend.h>
+#include "PackageKitBackend.h"
+#include "config-paths.h"
 
 class PKSourcesModel : public QStandardItemModel
 {
@@ -68,12 +73,36 @@ private:
     PackageKitSourcesBackend* m_backend;
 };
 
+static QAction* createActionForService(const QString &servicePath, QObject* parent)
+{
+    QAction* action = new QAction(parent);
+    KDesktopFile parser(servicePath);
+    action->setIcon(QIcon::fromTheme(parser.readIcon()));
+    action->setText(parser.readName());
+    QObject::connect(action, &QAction::triggered, action, [servicePath](){
+        bool b = QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {servicePath});
+        if (!b)
+            qWarning() << "Could not start" << servicePath;
+    });
+    return action;
+}
+
 PackageKitSourcesBackend::PackageKitSourcesBackend(AbstractResourcesBackend* parent)
     : AbstractSourcesBackend(parent)
     , m_sources(new PKSourcesModel(this))
 {
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::repoListChanged, this, &PackageKitSourcesBackend::resetSources);
     resetSources();
+
+    // Kubuntu-based
+    auto service = PackageKitBackend::locateService(QStringLiteral("software-properties-kde.desktop"));
+    if (!service.isEmpty())
+        m_actions += createActionForService(service, this);
+
+    // openSUSE-based
+    service = PackageKitBackend::locateService(QStringLiteral("YaST2/sw_source.desktop"));
+    if (!service.isEmpty())
+        m_actions += createActionForService(service, this);
 }
 
 QString PackageKitSourcesBackend::name() const
@@ -132,7 +161,7 @@ bool PackageKitSourcesBackend::removeSource(const QString& id)
 
 QList<QAction *> PackageKitSourcesBackend::actions() const
 {
-    return {};
+    return m_actions;
 }
 
 void PackageKitSourcesBackend::resetSources()

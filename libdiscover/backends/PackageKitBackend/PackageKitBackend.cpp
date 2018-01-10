@@ -43,7 +43,6 @@
 #include <PackageKit/Daemon>
 #include <PackageKit/Details>
 
-#include <KDesktopFile>
 #include <KLocalizedString>
 #include <QAction>
 #include <QMimeDatabase>
@@ -53,7 +52,7 @@
 
 MUON_BACKEND_PLUGIN(PackageKitBackend)
 
-static QString locateService(const QString &filename)
+QString PackageKitBackend::locateService(const QString &filename)
 {
     return QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("applications/")+filename);
 }
@@ -74,16 +73,6 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     m_delayedDetailsFetch.setSingleShot(true);
     m_delayedDetailsFetch.setInterval(0);
     connect(&m_delayedDetailsFetch, &QTimer::timeout, this, &PackageKitBackend::performDetailsFetch);
-
-    // Kubuntu-based
-    auto service = locateService(QStringLiteral("software-properties-kde.desktop"));
-    if (!service.isEmpty())
-        m_messageActions += createActionForService(service);
-
-    // openSUSE-based
-    service = locateService(QStringLiteral("YaST2/sw_source.desktop"));
-    if (!service.isEmpty())
-        m_messageActions += createActionForService(service);
 
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
@@ -111,20 +100,6 @@ void PackageKitBackend::delayedInit()
             Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
         });
     }
-}
-
-QAction* PackageKitBackend::createActionForService(const QString &servicePath)
-{
-    QAction* action = new QAction(this);
-    KDesktopFile parser(servicePath);
-    action->setIcon(QIcon::fromTheme(parser.readIcon()));
-    action->setText(parser.readName());
-    connect(action, &QAction::triggered, action, [servicePath, this](){
-        bool b = QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {servicePath});
-        if (!b)
-            qWarning() << "Could not start" << servicePath;
-    });
-    return action;
 }
 
 bool PackageKitBackend::isFetching() const
@@ -562,11 +537,6 @@ void PackageKitBackend::checkDaemonRunning()
 AbstractBackendUpdater* PackageKitBackend::backendUpdater() const
 {
     return m_updater;
-}
-
-QList<QAction*> PackageKitBackend::messageActions() const
-{
-    return m_messageActions;
 }
 
 QVector<AppPackageKitResource*> PackageKitBackend::extendedBy(const QString& id) const

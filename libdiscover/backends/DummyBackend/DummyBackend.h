@@ -42,7 +42,6 @@ public:
     ResultsStream * findResourceByPackageName(const QUrl& search) override;
     QHash<QString, DummyResource*> resources() const { return m_resources; }
     bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
-    QList<QAction*> messageActions() const override { return m_messageActions; }
 
     Transaction* installApplication(AbstractResource* app) override;
     Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;
@@ -63,7 +62,6 @@ private:
     DummyReviewsBackend* m_reviews;
     bool m_fetching;
     int m_startElements;
-    QList<QAction*> m_messageActions;
 };
 
 #endif // DUMMYBACKEND_H
