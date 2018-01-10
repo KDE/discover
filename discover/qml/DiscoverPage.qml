@@ -31,8 +31,11 @@ Kirigami.ScrollablePage
             if (root.flickable.atYEnd)
                 return;
 
-            root.flickable.contentY += root.flickable.height
-            root.flickable.returnToBounds()
+            if (root.flickable.contentY + root.flickable.height > root.flickable.contentHeight) {
+                root.flickable.contentY += root.flickable.height
+            } else {
+                root.flickable.contentY = root.flickable.contentHeight - root.flickable.height
+            }
         }
     }
 
@@ -43,8 +46,11 @@ Kirigami.ScrollablePage
             if (root.flickable.atYBeginning)
                 return;
 
-            root.flickable.contentY -= root.flickable.height
-            root.flickable.returnToBounds()
+            if (root.flickable.contentY > root.flickable.height) {
+                root.flickable.contentY -= root.flickable.height
+            } else {
+                root.flickable.contentY = 0
+            }
         }
     }
 
