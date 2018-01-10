@@ -28,6 +28,9 @@ Kirigami.ScrollablePage
         sequence: StandardKey.MoveToNextPage
         enabled: root.isCurrentPage
         onActivated: {
+            if (root.flickable.atYEnd)
+                return;
+
             root.flickable.contentY += root.flickable.height
             root.flickable.returnToBounds()
         }
@@ -37,6 +40,9 @@ Kirigami.ScrollablePage
         sequence: StandardKey.MoveToPreviousPage
         enabled: root.isCurrentPage
         onActivated: {
+            if (root.flickable.atYBeginning)
+                return;
+
             root.flickable.contentY -= root.flickable.height
             root.flickable.returnToBounds()
         }
