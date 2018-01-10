@@ -122,7 +122,9 @@ DiscoverPage {
                 }
 
                 Repeater {
-                    model: SourcesModel.actions
+                    model: ActionsModel {
+                        actions: ResourcesModel.actions
+                    }
 
                     delegate: RowLayout {
                         Kirigami.Icon {

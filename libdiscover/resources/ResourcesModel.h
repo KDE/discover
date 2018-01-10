@@ -28,6 +28,8 @@
 #include "discovercommon_export.h"
 #include "AbstractResourcesBackend.h"
 
+class QAction;
+
 class DISCOVERCOMMON_EXPORT AggregatedResultsStream : public ResultsStream
 {
 Q_OBJECT
@@ -56,6 +58,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
     Q_PROPERTY(QVariantList applicationBackends READ applicationBackendsVariant NOTIFY backendsChanged)
     Q_PROPERTY(AbstractResourcesBackend* currentApplicationBackend READ currentApplicationBackend WRITE setCurrentApplicationBackend NOTIFY currentApplicationBackendChanged)
+    Q_PROPERTY(QList<QAction*> actions READ actions CONSTANT)
     public:
         /** This constructor should be only used by unit tests.
          *  @p backendName defines what backend will be loaded when the backend is constructed.
@@ -82,6 +85,8 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         QVector<AbstractResourcesBackend*> applicationBackends() const;
         void setCurrentApplicationBackend(AbstractResourcesBackend* backend, bool writeConfig = true);
         AbstractResourcesBackend* currentApplicationBackend() const;
+
+        QList<QAction*> actions() const { return m_ownActions; }
 
     public Q_SLOTS:
         void installApplication(AbstractResource* app, const AddonList& addons);
