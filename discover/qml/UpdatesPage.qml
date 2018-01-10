@@ -193,19 +193,24 @@ DiscoverPage
                 }
 
                 QQC2.Frame {
+                    Layout.fillWidth: true
+                    Layout.minimumHeight: view.contentHeight
                     visible: layout.extended && changelog.length>0
                     QQC2.Label {
                         id: view
-                        Layout.fillHeight: true
-                        Layout.fillWidth: true
+                        anchors {
+                            right: parent.right
+                            left: parent.left
+                        }
                         text: changelog
-                        textFormat: Text.RichText
+                        textFormat: Text.StyledText
                         wrapMode: Text.WordWrap
                         onLinkActivated: Qt.openUrlExternally(link)
                     }
                 }
 
                 Button {
+                    Layout.alignment: Qt.AlignRight
                     text: i18n("More Information...")
                     visible: layout.extended
                     enabled: !resourcesUpdatesModel.isProgressing
