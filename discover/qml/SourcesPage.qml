@@ -32,6 +32,55 @@ DiscoverPage {
         }
     }
 
+    header: QQC2.ToolBar {
+        anchors {
+            right: parent.right
+            left: parent.left
+        }
+
+        contentItem: RowLayout {
+            anchors {
+                topMargin: Kirigami.Units.smallSpacing
+                bottomMargin: Kirigami.Units.smallSpacing
+            }
+
+            Item {
+                Layout.fillWidth: true
+            }
+
+            Repeater {
+                model: ActionsModel {
+                    actions: ResourcesModel.actions
+                }
+
+                delegate: RowLayout {
+                    Kirigami.Icon {
+                        source: modelData.icon
+                    }
+                    visible: theAction.action && theAction.action.visible
+                    ToolButton {
+                        height: parent.height
+                        action: Action {
+                            id: theAction
+                            readonly property QtObject action: modelData
+                            text: action.text
+                            onTriggered: action.trigger()
+                            enabled: action.enabled
+                        }
+                    }
+                }
+            }
+
+            ToolButton {
+                text: i18n("Help...")
+                menu: Menu {
+                    MenuItem { action: ActionBridge { action: app.action("help_about_app") } }
+                    MenuItem { action: ActionBridge { action: app.action("help_report_bug") } }
+                }
+            }
+        }
+    }
+
     mainItem: ListView {
         id: sourcesView
         model: QSortFilterProxyModel{
@@ -103,57 +152,6 @@ DiscoverPage {
                 }
             }
         }
-
-        headerPositioning: ListView.OverlayHeader
-        header: QQC2.ToolBar {
-            anchors {
-                right: parent.right
-                left: parent.left
-            }
-
-            contentItem: RowLayout {
-                anchors {
-                    topMargin: Kirigami.Units.smallSpacing
-                    bottomMargin: Kirigami.Units.smallSpacing
-                }
-
-                Item {
-                    Layout.fillWidth: true
-                }
-
-                Repeater {
-                    model: ActionsModel {
-                        actions: ResourcesModel.actions
-                    }
-
-                    delegate: RowLayout {
-                        Kirigami.Icon {
-                            source: modelData.icon
-                        }
-                        visible: theAction.action && theAction.action.visible
-                        ToolButton {
-                            height: parent.height
-                            action: Action {
-                                id: theAction
-                                readonly property QtObject action: modelData
-                                text: action.text
-                                onTriggered: action.trigger()
-                                enabled: action.enabled
-                            }
-                        }
-                    }
-                }
-
-                ToolButton {
-                    text: i18n("Help...")
-                    menu: Menu {
-                        MenuItem { action: ActionBridge { action: app.action("help_about_app") } }
-                        MenuItem { action: ActionBridge { action: app.action("help_report_bug") } }
-                    }
-                }
-            }
-        }
-
 
         delegate: Kirigami.SwipeListItem {
             Layout.fillWidth: true
