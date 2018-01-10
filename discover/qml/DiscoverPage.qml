@@ -28,14 +28,8 @@ Kirigami.ScrollablePage
         sequence: StandardKey.MoveToNextPage
         enabled: root.isCurrentPage
         onActivated: {
-            if (root.flickable.atYEnd)
-                return;
-
-            if (root.flickable.contentY + root.flickable.height > root.flickable.contentHeight) {
-                root.flickable.contentY += root.flickable.height
-            } else {
-                root.flickable.contentY = root.flickable.contentHeight - root.flickable.height
-            }
+            root.flickable.contentY = Math.min(root.flickable.contentHeight - root.flickable.height,
+                                               root.flickable.contentY + root.flickable.height);
         }
     }
 
@@ -43,14 +37,7 @@ Kirigami.ScrollablePage
         sequence: StandardKey.MoveToPreviousPage
         enabled: root.isCurrentPage
         onActivated: {
-            if (root.flickable.atYBeginning)
-                return;
-
-            if (root.flickable.contentY > root.flickable.height) {
-                root.flickable.contentY -= root.flickable.height
-            } else {
-                root.flickable.contentY = 0
-            }
+            root.flickable.contentY = Math.max(0, root.flickable.contentY - root.flickable.height);
         }
     }
 
