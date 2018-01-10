@@ -171,10 +171,10 @@ void PackageKitResource::fetchDetails()
     backend()->fetchDetails(pkgid);
 
     auto trans = PackageKit::Daemon::installPackages({ pkgid }, PackageKit::Transaction::TransactionFlagSimulate);
-    connect(trans, &PackageKit::Transaction::package, this, [trans](PackageKit::Transaction::Info info, const QString &packageID, const QString &summary) {
+    connect(trans, &PackageKit::Transaction::package, this, [trans](PackageKit::Transaction::Info /*info*/, const QString &/*packageID*/, const QString &/*summary*/) {
         trans->setProperty("dependencies", trans->property("dependencies").toUInt() + 1);
     });
-    connect(trans, &PackageKit::Transaction::finished, this, [this, trans](PackageKit::Transaction::Exit status) {
+    connect(trans, &PackageKit::Transaction::finished, this, [this, trans](PackageKit::Transaction::Exit /*status*/) {
         auto deps = trans->property("dependencies").toUInt();
         if (deps != m_dependenciesCount) {
             m_dependenciesCount = deps;

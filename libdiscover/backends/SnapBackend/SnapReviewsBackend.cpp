@@ -30,25 +30,25 @@ SnapReviewsBackend::SnapReviewsBackend(SnapBackend* parent)
     : AbstractReviewsBackend(parent)
 {}
 
-void SnapReviewsBackend::fetchReviews(AbstractResource* app, int page)
+void SnapReviewsBackend::fetchReviews(AbstractResource* /*app*/, int /*page*/)
 {
     emit reviewsReady({}, {}, false);
 }
 
-Rating* SnapReviewsBackend::ratingForApplication(AbstractResource* app) const
+Rating* SnapReviewsBackend::ratingForApplication(AbstractResource* /*app*/) const
 {
     return nullptr;
 }
 
-void SnapReviewsBackend::submitUsefulness(Review* r, bool useful)
+void SnapReviewsBackend::submitUsefulness(Review* /*r*/, bool /*useful*/)
 {
 }
 
-void SnapReviewsBackend::submitReview(AbstractResource* res, const QString& a, const QString& b, const QString& c)
+void SnapReviewsBackend::submitReview(AbstractResource* /*res*/, const QString& /*a*/, const QString& /*b*/, const QString& /*c*/)
 {
 }
 
-bool SnapReviewsBackend::isResourceSupported(AbstractResource* res) const
+bool SnapReviewsBackend::isResourceSupported(AbstractResource* /*res*/) const
 {
     return true;
 }
