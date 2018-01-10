@@ -22,6 +22,7 @@
 #include "resources/ResourcesModel.h"
 #include "utils.h"
 #include <QAction>
+#include <QDebug>
 
 ActionsModel::ActionsModel(QObject* parent)
     : QAbstractListModel(parent)
@@ -39,19 +40,20 @@ QVariant ActionsModel::data(const QModelIndex& index, int role) const
 {
     if(!index.isValid() || role!=Qt::UserRole)
         return QVariant();
-    return QVariant::fromValue<QObject*>(m_actions[index.row()]);
+    return QVariant::fromValue<QObject*>(m_filteredActions[index.row()]);
 }
 
 int ActionsModel::rowCount(const QModelIndex& parent) const
 {
-    return parent.isValid() ? 0 : m_actions.count();
+    return parent.isValid() ? 0 : m_filteredActions.count();
 }
 
-void ActionsModel::setActions(const QList<QAction *>& actions)
+void ActionsModel::setActions(const QList<QAction*>& actions)
 {
     if (m_actions == actions) {
         return;
     }
+    m_actions = actions;
 
     reload();
     Q_EMIT actionsChanged(m_actions);
@@ -59,16 +61,17 @@ void ActionsModel::setActions(const QList<QAction *>& actions)
 
 void ActionsModel::reload()
 {
-    auto actions = m_filteredActions;
+    QList<QAction*> actions = m_actions;
     if (m_priority>=0) {
         actions = kFilter<QList<QAction*>>(actions, [this](QAction* action){ return action->priority() == m_priority; });
     }
     actions = kFilter<QList<QAction*>>(actions, [](QAction* action){ return action->isVisible(); });
-    if (actions == m_actions)
+    if (actions == m_filteredActions)
         return;
 
+
     beginResetModel();
-    m_actions = actions;
+    m_filteredActions = actions;
     endResetModel();
 
     for(auto a : qAsConst(m_filteredActions)) {
