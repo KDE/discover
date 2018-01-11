@@ -1,4 +1,4 @@
-import QtQuick 2.1
+import QtQuick 2.5
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import QtQuick.Controls 2.1 as QQC2
@@ -82,6 +82,19 @@ Kirigami.ApplicationWindow
         component: topSourcesComp
         objectName: "settings"
         shortcut: "Alt+S"
+    }
+
+    Action {
+        id: refreshAction
+        readonly property QtObject action: ResourcesModel.updateAction
+        text: action.text
+        onTriggered: action.trigger()
+        enabled: action.enabled
+        tooltip: seq.nativeText
+        shortcut: Shortcut {
+            id: seq
+            sequence: "Ctrl+R"
+        }
     }
 
     Connections {

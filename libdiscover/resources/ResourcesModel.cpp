@@ -68,16 +68,14 @@ void ResourcesModel::init(bool load)
         QMetaObject::invokeMethod(this, "registerAllBackends", Qt::QueuedConnection);
 
 
-    QAction* updateAction = new QAction(this);
-    updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
-    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
-    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(this, &ResourcesModel::fetchingChanged, updateAction, [updateAction](bool fetching) {
-        updateAction->setEnabled(!fetching);
+    m_updateAction = new QAction(this);
+    m_updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
+    m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    connect(this, &ResourcesModel::fetchingChanged, m_updateAction, [this](bool fetching) {
+        m_updateAction->setEnabled(!fetching);
     });
-    connect(updateAction, &QAction::triggered, this, &ResourcesModel::checkForUpdates);
-
-    m_ownActions += updateAction;
+    connect(m_updateAction, &QAction::triggered, this, &ResourcesModel::checkForUpdates);
 }
 
 ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)

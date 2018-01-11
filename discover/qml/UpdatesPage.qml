@@ -96,7 +96,11 @@ DiscoverPage
         }
     }
 
-    //TODO: use supportsRefreshing to fetch updates
+    supportsRefreshing: true
+    onRefreshingChanged: {
+        showPassiveNotification("Fetching updates...")
+        ResourcesModel.updateAction.triggered()
+    }
     ListView
     {
         id: updatesView

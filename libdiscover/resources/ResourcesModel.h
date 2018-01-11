@@ -58,7 +58,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
     Q_PROPERTY(QVariantList applicationBackends READ applicationBackendsVariant NOTIFY backendsChanged)
     Q_PROPERTY(AbstractResourcesBackend* currentApplicationBackend READ currentApplicationBackend WRITE setCurrentApplicationBackend NOTIFY currentApplicationBackendChanged)
-    Q_PROPERTY(QList<QAction*> actions READ actions CONSTANT)
+    Q_PROPERTY(QAction* updateAction READ updateAction CONSTANT)
     public:
         /** This constructor should be only used by unit tests.
          *  @p backendName defines what backend will be loaded when the backend is constructed.
@@ -86,7 +86,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         void setCurrentApplicationBackend(AbstractResourcesBackend* backend, bool writeConfig = true);
         AbstractResourcesBackend* currentApplicationBackend() const;
 
-        QList<QAction*> actions() const { return m_ownActions; }
+        QAction* updateAction() const { return m_updateAction; }
 
     public Q_SLOTS:
         void installApplication(AbstractResource* app, const AddonList& addons);
@@ -121,7 +121,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         bool m_isFetching;
         QVector< AbstractResourcesBackend* > m_backends;
         int m_initializingBackends;
-        QList<QAction*> m_ownActions;
+        QAction* m_updateAction = nullptr;
         AbstractResourcesBackend* m_currentApplicationBackend;
 
         static ResourcesModel* s_self;

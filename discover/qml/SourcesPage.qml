@@ -48,27 +48,8 @@ DiscoverPage {
                 Layout.fillWidth: true
             }
 
-            Repeater {
-                model: ActionsModel {
-                    actions: ResourcesModel.actions
-                }
-
-                delegate: RowLayout {
-                    Kirigami.Icon {
-                        source: modelData.icon
-                    }
-                    visible: theAction.action && theAction.action.visible
-                    ToolButton {
-                        height: parent.height
-                        action: Action {
-                            id: theAction
-                            readonly property QtObject action: modelData
-                            text: action.text
-                            onTriggered: action.trigger()
-                            enabled: action.enabled
-                        }
-                    }
-                }
+            ToolButton {
+                action: refreshAction
             }
 
             ToolButton {
