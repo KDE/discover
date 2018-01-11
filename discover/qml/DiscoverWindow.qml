@@ -90,11 +90,9 @@ Kirigami.ApplicationWindow
         text: action.text
         onTriggered: action.trigger()
         enabled: action.enabled
-        tooltip: seq.nativeText
-        shortcut: Shortcut {
-            id: seq
-            sequence: "Ctrl+R"
-        }
+        tooltip: shortcut
+
+        shortcut: "Ctrl+R"
     }
 
     Connections {
