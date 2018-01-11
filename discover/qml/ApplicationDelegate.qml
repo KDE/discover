@@ -50,7 +50,7 @@ Kirigami.AbstractListItem
         Kirigami.Icon {
             id: resourceIcon
             source: application.icon
-            readonly property real contHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 4 : Kirigami.Units.gridUnit * 7
+            readonly property real contHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 5
             height: contHeight
             width: contHeight
             anchors {
@@ -62,6 +62,7 @@ Kirigami.AbstractListItem
 
         ColumnLayout {
             id: conts
+            spacing: delegateArea.compact ? 0 : 5
             anchors {
                 right: parent.right
                 left: resourceIcon.right
@@ -70,21 +71,28 @@ Kirigami.AbstractListItem
 
             RowLayout {
                 Layout.fillWidth: true
-                Kirigami.Heading {
-                    level: 4
+                ColumnLayout {
+                    spacing: 0
                     Layout.fillWidth: true
-                    elide: Text.ElideRight
-                    text: delegateArea.application.name
-                    Layout.minimumWidth: Math.min(implicitWidth, conts.width)
-                    maximumLineCount: 1
+                    QQC2.Label {
+                        font.pointSize: delegateArea.compact ? 14 : 16
+                        font.bold: true
+                        Layout.fillWidth: true
+                        elide: Text.ElideRight
+                        text: delegateArea.application.name
+                        maximumLineCount: 1
+                    }
+                    QQC2.Label {
+                        id: category
+                        elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignRight
+                        text: delegateArea.application.categoryDisplay
+                        visible: ! delegateArea.compact && text != page.title
+                    }
                 }
-                QQC2.Label {
-                    Layout.fillWidth: true
-                    elide: Text.ElideRight
-                    horizontalAlignment: Text.AlignRight
-                    text: delegateArea.application.categoryDisplay
-                    color: Kirigami.Theme.linkColor
-                    visible: conts.width > implicitWidth
+                InstallApplicationButton {
+                    id: installButton
+                    Layout.alignment: Qt.AlignRight
                 }
             }
 
@@ -92,32 +100,17 @@ Kirigami.AbstractListItem
                 color: Kirigami.Theme.linkColor
                 Layout.fillWidth: true
                 height: Kirigami.Units.devicePixelRatio / 2
+                visible: ! delegateArea.compact
             }
 
-            Kirigami.Heading {
-                level: 5
+            Layout.fillWidth: true
+            QQC2.Label {
                 Layout.fillWidth: true
-
+                bottomPadding: Kirigami.Units.smallSpacing
                 elide: Text.ElideRight
                 text: delegateArea.application.comment
                 maximumLineCount: 1
                 textFormat: Text.PlainText
-            }
-
-            QQC2.Label {
-                Layout.fillWidth: true
-
-                horizontalAlignment: Text.AlignJustify
-                wrapMode: Text.WordWrap
-                elide: Text.ElideRight
-                textFormat: Text.StyledText
-                text: delegateArea.application.longDescription
-                maximumLineCount: 3
-                visible: !delegateArea.compact
-            }
-            InstallApplicationButton {
-                id: installButton
-                Layout.alignment: Qt.AlignRight
             }
         }
     }
