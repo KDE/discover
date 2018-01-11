@@ -1,11 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component type='addon'>
-    <id>org.kde.discover.flatpak</id>
-    <name>Flatpak backend</name>
-    <summary>Integrates Flatpak applications into Discover</summary>
-    <extends>org.kde.discover.desktop</extends>
-    <metadata_license>CC0-1.0</metadata_license>
-    <project_license>GPL-2.0+</project_license>
-    <developer_name>Aleix Pol Gonzalez</developer_name>
-    <icon type="stock">system-software-install</icon>
+<?xml version="1.0" encoding="utf-8"?>
+<component type="addon">
+  <id>org.kde.discover.flatpak</id>
+  <name>Flatpak backend</name>
+  <name xml:lang="ca">Dorsal del Flatpak</name>
+  <name xml:lang="ca-valencia">Dorsal del Flatpak</name>
+  <name xml:lang="pt">Infra-estrutura do Flatpak</name>
+  <name xml:lang="sv">Gränssnitt för Flatpak</name>
+  <name xml:lang="uk">Модуль Flatpak</name>
+  <name xml:lang="x-test">xxFlatpak backendxx</name>
+  <summary>Integrates Flatpak applications into Discover</summary>
+  <summary xml:lang="ca">Integra aplicacions del Flatpak al Discover</summary>
+  <summary xml:lang="ca-valencia">Integra aplicacions del Flatpak al Discover</summary>
+  <summary xml:lang="pt">Integra as aplicações do Flatpak no Discover</summary>
+  <summary xml:lang="sv">Integrerar Flatpak-program i Discover</summary>
+  <summary xml:lang="uk">Інтеграція програм Flatpak з Discover</summary>
+  <summary xml:lang="x-test">xxIntegrates Flatpak applications into Discoverxx</summary>
+  <extends>org.kde.discover.desktop</extends>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <developer_name>Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="pt">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="x-test">xxAleix Pol Gonzalezxx</developer_name>
+  <icon type="stock">system-software-install</icon>
 </component>

@@ -1,11 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component type='addon'>
-    <id>org.kde.discover.snap</id>
-    <name>Snap backend</name>
-    <summary>Integrates Snap applications into Discover</summary>
-    <extends>org.kde.discover.desktop</extends>
-    <metadata_license>CC0-1.0</metadata_license>
-    <project_license>GPL-2.0+</project_license>
-    <developer_name>Aleix Pol Gonzalez</developer_name>
-    <icon type="stock">system-software-install</icon>
+<?xml version="1.0" encoding="utf-8"?>
+<component type="addon">
+  <id>org.kde.discover.snap</id>
+  <name>Snap backend</name>
+  <name xml:lang="ca">Dorsal de l'Snap</name>
+  <name xml:lang="ca-valencia">Dorsal de l'Snap</name>
+  <name xml:lang="pt">Infra-estrutura do Snap</name>
+  <name xml:lang="sv">Gränssnitt för Snap</name>
+  <name xml:lang="uk">Модуль Snap</name>
+  <name xml:lang="x-test">xxSnap backendxx</name>
+  <summary>Integrates Snap applications into Discover</summary>
+  <summary xml:lang="ca">Integra aplicacions de l'Snap al Discover</summary>
+  <summary xml:lang="ca-valencia">Integra aplicacions de l'Snap al Discover</summary>
+  <summary xml:lang="pt">Integra as aplicações do Snap no Discover</summary>
+  <summary xml:lang="sv">Integrerar Snap-program i Discover</summary>
+  <summary xml:lang="uk">Інтегрує програми Snap до Discover</summary>
+  <summary xml:lang="x-test">xxIntegrates Snap applications into Discoverxx</summary>
+  <extends>org.kde.discover.desktop</extends>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <developer_name>Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="pt">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="x-test">xxAleix Pol Gonzalezxx</developer_name>
+  <icon type="stock">system-software-install</icon>
 </component>
