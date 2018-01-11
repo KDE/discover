@@ -249,6 +249,8 @@ bool DiscoverMainWindow::eventFilter(QObject * object, QEvent * event)
         KConfigGroup window(KSharedConfig::openConfig(), "Window");
         window.writeEntry("geometry", rootObject()->geometry());
         window.writeEntry<int>("visibility", rootObject()->visibility());
+    } else if (event->type() == QEvent::ShortcutOverride) {
+        qWarning() << "Action conflict" << event;
     }
     return false;
 }
