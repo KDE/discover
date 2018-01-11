@@ -18,19 +18,30 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-import QtQml 2.0
+import QtQuick 2.5
 import QtQuick.Controls 2.0
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.3 as Kirigami
 
-Kirigami.BasicListItem {
+Kirigami.BasicListItem
+{
+    id: item
     property QtObject action: null
     checked: action.checked
     icon: action.iconName
-    label: action.text
     separatorVisible: false
     visible: action.enabled
     onClicked: {
         drawer.resetMenu()
         action.trigger()
+    }
+
+    Kirigami.MnemonicData.enabled: item.enabled && item.visible
+    Kirigami.MnemonicData.controlType: Kirigami.MnemonicData.MenuItem
+    Kirigami.MnemonicData.label: action.text
+    label: Kirigami.MnemonicData.richTextLabel
+
+    readonly property var p0: Shortcut {
+        sequence: item.Kirigami.MnemonicData.sequence
+        onActivated: item.clicked()
     }
 }

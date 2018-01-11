@@ -33,6 +33,7 @@
     <file>qml/ActionListItem.qml</file>
     <file>qml/LoadingPage.qml</file>
     <file>qml/SearchField.qml</file>
+    <file>qml/MnemonicSupport.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>

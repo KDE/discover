@@ -48,7 +48,6 @@ Kirigami.ApplicationWindow
         text: i18n("Discover")
         component: topBrowsingComp
         objectName: "discover"
-        shortcut: "Alt+D"
     }
 
     TopLevelPageData {
@@ -65,7 +64,6 @@ Kirigami.ApplicationWindow
         text: i18n("Installed")
         component: topInstalledComp
         objectName: "installed"
-        shortcut: "Alt+I"
     }
     TopLevelPageData {
         id: updateAction
@@ -73,7 +71,6 @@ Kirigami.ApplicationWindow
         text: ResourcesModel.updatesCount<=0 ? (ResourcesModel.isFetching ? i18n("Checking for updates...") : i18n("No Updates") ) : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
         component: topUpdateComp
         objectName: "update"
-        shortcut: "Alt+U"
     }
     TopLevelPageData {
         id: settingsAction
@@ -81,7 +78,6 @@ Kirigami.ApplicationWindow
         text: i18n("Settings")
         component: topSourcesComp
         objectName: "settings"
-        shortcut: "Alt+S"
     }
 
     Action {
