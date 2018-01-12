@@ -46,8 +46,9 @@ DiscoverPage {
 
     mainItem: ListView {
         id: sourcesView
-        model: QSortFilterProxyModel{
+        model: QSortFilterProxyModel {
             filterRegExp: new RegExp(page.search, 'i')
+            sortRole: SourcesModelClass.SourceNameRole
             sourceModel: SourcesModel
         }
         currentIndex: -1

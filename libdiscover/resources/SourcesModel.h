@@ -37,12 +37,16 @@ class DISCOVERCOMMON_EXPORT SourcesModel : public KConcatenateRowsProxyModel
     public:
         enum Roles {
             SourcesBackend = Qt::UserRole+1,
+            SourceNameRole,
             ResourcesBackend
         };
+        Q_ENUM(Roles)
+
         explicit SourcesModel(QObject* parent = nullptr);
         ~SourcesModel() override;
 
         static SourcesModel* global();
+        QVariant data(const QModelIndex & index, int role) const override;
         QHash<int, QByteArray> roleNames() const override;
 
         SourceBackendModel* addBackend(AbstractResourcesBackend* backend);

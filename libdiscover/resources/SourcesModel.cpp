@@ -27,12 +27,14 @@
 
 Q_GLOBAL_STATIC(SourcesModel, s_sources)
 
+const auto DisplayName = "DisplayName";
+
 class SourceBackendModel : public QAbstractListModel
 {
 Q_OBJECT
 public:
-    SourceBackendModel(AbstractResourcesBackend* backend, QObject* parent)
-        : QAbstractListModel(parent), m_backend(backend)
+    SourceBackendModel(AbstractResourcesBackend* backend)
+        : QAbstractListModel(backend), m_backend(backend)
     {}
 
     QVariant data(const QModelIndex & index, int role) const override {
@@ -82,25 +84,44 @@ static bool ensureModel(const QList<QByteArray> &roles)
 
 void SourcesModel::addSourcesBackend(AbstractSourcesBackend* sources)
 {
-    auto b = addBackend(qobject_cast<AbstractResourcesBackend*>(sources->parent()));
+    auto backend = qobject_cast<AbstractResourcesBackend*>(sources->parent());
+    auto b = addBackend(backend);
     if (!b)
         return;
 
     b->m_sources = sources;
     Q_ASSERT(ensureModel(sources->sources()->roleNames().values()));
-    addSourceModel(sources->sources());
+    auto m = sources->sources();
+    m->setProperty(DisplayName, backend->displayName());
+    addSourceModel(m);
 }
+
 
 SourceBackendModel* SourcesModel::addBackend(AbstractResourcesBackend* backend)
 {
     Q_ASSERT(backend);
-    if (backend->dynamicPropertyNames().contains("InSourcesModel"))
+    const auto inSourcesModel = "InSourcesModel";
+    if (backend->dynamicPropertyNames().contains(inSourcesModel))
         return nullptr;
-    backend->setProperty("InSourcesModel", 1);
+    backend->setProperty(inSourcesModel, 1);
 
-    auto b = new SourceBackendModel(backend, this);
+    auto b = new SourceBackendModel(backend);
+    b->setProperty(DisplayName, backend->displayName());
     addSourceModel(b);
     return b;
+}
+
+QVariant SourcesModel::data(const QModelIndex& index, int role) const
+{
+    if (!index.isValid()) return {};
+    else if (role == SourceNameRole) {
+        const auto sidx = mapToSource(index);
+        const auto model = sidx.model();
+        auto ret = model->property(DisplayName);
+        return ret;
+    } else {
+        return KConcatenateRowsProxyModel::data(index, role);
+    }
 }
 
 #include "SourcesModel.moc"

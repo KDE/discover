@@ -68,6 +68,17 @@
 #include <resources/StoredResultsStream.h>
 #include <utils.h>
 
+class OurSortFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
+{
+    Q_OBJECT
+public:
+    void classBegin() override {}
+    void componentComplete() override {
+        if (dynamicSortFilter())
+            sort(0);
+    }
+};
+
 DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     : QObject()
     , m_collection(this)
@@ -84,7 +95,7 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
     qmlRegisterType<KConcatenateRowsProxyModel>("org.kde.discover.app", 1, 0, "KConcatenateRowsProxyModel");
     qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
-    qmlRegisterType<QSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
+    qmlRegisterType<OurSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
 
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/DiscoverSystemPalette.qml")), "org.kde.discover.app", 1, 0, "DiscoverSystemPalette");
     qmlRegisterType<QQuickView>();
@@ -407,3 +418,5 @@ void DiscoverMainWindow::showPassiveNotification(const QString& msg)
         QMetaObject::invokeMethod(rootObject(), "showPassiveNotification", Qt::QueuedConnection, Q_ARG(QVariant, msg), Q_ARG(QVariant, {}), Q_ARG(QVariant, {}), Q_ARG(QVariant, {}));
     });
 }
+
+#include "DiscoverMainWindow.moc"
