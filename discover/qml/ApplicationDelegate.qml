@@ -75,7 +75,7 @@ Kirigami.AbstractListItem
                     spacing: 0
                     Layout.fillWidth: true
                     Kirigami.Heading {
-                        level: 2
+                        level: delegateArea.compact ? 3 : 2
                         Layout.fillWidth: true
                         elide: Text.ElideRight
                         text: delegateArea.application.name
