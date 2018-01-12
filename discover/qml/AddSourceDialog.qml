@@ -24,8 +24,9 @@ import QtQuick.Layouts 1.1
 
 Dialog {
     id: newSourceDialog
-    title: i18n("Specify the new source for %1", source.name)
+    title: i18n("Specify the new source for %1", displayName)
     standardButtons: StandardButton.Ok | StandardButton.Close
+    property string displayName
     property QtObject source
 
     ColumnLayout {

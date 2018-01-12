@@ -59,6 +59,8 @@ SnapBackend::SnapBackend(QObject* parent)
 
     //make sure we populate the installed resources first
     populate(m_client.list(), AbstractResource::Installed);
+
+    SourcesModel::global()->addBackend(this);
 }
 
 int SnapBackend::updatesCount() const

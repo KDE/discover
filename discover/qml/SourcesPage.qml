@@ -101,7 +101,7 @@ DiscoverPage {
                             visible: backendItem.backend
 
                             onTriggered: {
-                                var addSourceDialog = dialogComponent.createObject()
+                                var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
                                 addSourceDialog.open()
                             }
                         }
