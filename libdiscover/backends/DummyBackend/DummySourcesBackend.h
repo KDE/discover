@@ -32,7 +32,6 @@ public:
     QAbstractItemModel* sources() override;
     bool addSource(const QString& id) override;
     bool removeSource(const QString& id) override;
-    QString name() const override { return QStringLiteral("Dummy"); }
     QString idDescription() override { return QStringLiteral("Random weird text"); }
     QList<QAction*> actions() const override;
 

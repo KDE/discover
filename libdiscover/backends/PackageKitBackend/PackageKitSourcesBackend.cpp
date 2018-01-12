@@ -105,11 +105,6 @@ PackageKitSourcesBackend::PackageKitSourcesBackend(AbstractResourcesBackend* par
         m_actions += createActionForService(service, this);
 }
 
-QString PackageKitSourcesBackend::name() const
-{
-    return resourcesBackend()->displayName();
-}
-
 QString PackageKitSourcesBackend::idDescription()
 {
     return i18n("Repository URL:");
@@ -134,8 +129,6 @@ void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QSt
         item = new QStandardItem(id);
         add = true;
     }
-    item->setData(description, Qt::ToolTipRole);
-    item->setData(name(), AbstractSourcesBackend::SectionRole);
     item->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
 
     if (add)

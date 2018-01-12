@@ -208,7 +208,6 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     FlatpakSourceItem *it = new FlatpakSourceItem(id);
     it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
     it->setData(title.isEmpty() ? id : title, Qt::ToolTipRole);
-    it->setData(name(), AbstractSourcesBackend::SectionRole);
     it->setData(QVariant::fromValue<QObject*>(this), AbstractSourcesBackend::SourcesBackend);
     it->setFlatpakInstallation(installation);
 

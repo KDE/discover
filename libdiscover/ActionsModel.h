@@ -30,7 +30,7 @@ class QAction;
 class DISCOVERCOMMON_EXPORT ActionsModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(QList<QAction*> actions READ actions WRITE setActions NOTIFY actionsChanged)
+    Q_PROPERTY(QVariant actions READ actions WRITE setActions NOTIFY actionsChanged)
     Q_PROPERTY(int filterPriority READ filterPriority WRITE setFilterPriority)
     public:
         explicit ActionsModel(QObject* parent = nullptr);
@@ -42,16 +42,16 @@ class DISCOVERCOMMON_EXPORT ActionsModel : public QAbstractListModel
         void setFilterPriority(int p);
         int filterPriority() const;
 
-        void setActions(const QList<QAction*>& actions);
-        QList<QAction*> actions() const { return m_actions; }
+        void setActions(const QVariant& actions);
+        QVariant actions() const { return m_actions; }
 
     Q_SIGNALS:
-        void actionsChanged(const QList<QAction*>& actions);
+        void actionsChanged(const QVariant& actions);
 
     private:
         void reload();
 
-        QList<QAction*> m_actions;
+        QVariant m_actions;
         QList<QAction*> m_filteredActions;
         int m_priority;
 };

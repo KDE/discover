@@ -14,24 +14,6 @@ DiscoverPage {
     title: i18n("Settings")
     property string search: ""
 
-    readonly property var fu: Instantiator {
-        model: SourcesModel
-        delegate: QtObject {
-            readonly property var sourcesModel: sourceBackend.sources
-
-            readonly property var a: Connections {
-                target: sourceBackend
-                onPassiveMessage: window.showPassiveNotification(message)
-            }
-        }
-        onObjectAdded: {
-            everySourceModel.addSourceModel(object.sourcesModel)
-        }
-        onObjectRemoved: {
-            everySourceModel.removeSourceModel(object.sourcesModel)
-        }
-    }
-
     header: QQC2.ToolBar {
         anchors {
             right: parent.right
@@ -66,15 +48,17 @@ DiscoverPage {
         id: sourcesView
         model: QSortFilterProxyModel{
             filterRegExp: new RegExp(page.search, 'i')
-            sourceModel: KConcatenateRowsProxyModel {
-                id: everySourceModel
-            }
+            sourceModel: SourcesModel
         }
         currentIndex: -1
 
-        section {
-            property: "statusTip"
-            delegate: RowLayout {
+        Component {
+            id: sourceBackendDelegate
+            RowLayout {
+                id: backendItem
+                readonly property QtObject backend: sourcesBackend
+                readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
+
                 anchors {
                     right: parent.right
                     left: parent.left
@@ -82,32 +66,44 @@ DiscoverPage {
                 Kirigami.Heading {
                     Layout.fillWidth: true
                     leftPadding: Kirigami.Units.largeSpacing
-                    text: settingsButton.isDefault ? i18n("%1 (Default)", section) : section
+                    text: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
                 }
                 Button {
-                    id: settingsButton
                     Layout.rightMargin: Kirigami.Units.smallSpacing
                     iconName: "preferences-other"
-                    readonly property QtObject backend: SourcesModel.backendForSection(section)
-                    readonly property bool isDefault: ResourcesModel.currentApplicationBackend == settingsButton.backend.resourcesBackend
-                    visible: backend
-                    AddSourceDialog {
-                        id: addSourceDialog
-                        source: settingsButton.backend
+
+                    Connections {
+                        target: backend
+                        onPassiveMessage: window.showPassiveNotification(message)
+                    }
+
+                    visible: resourcesBackend && resourcesBackend.hasApplications
+                    Component {
+                        id: dialogComponent
+                        AddSourceDialog {
+                            source: backendItem.backend
+                            onVisibleChanged: if (!visible) {
+                                destroy()
+                            }
+                        }
                     }
 
                     menu: Menu {
                         id: settingsMenu
                         MenuItem {
-                            enabled: !settingsButton.isDefault
+                            enabled: !backendItem.isDefault
                             text: i18n("Make default")
-                            onTriggered: ResourcesModel.currentApplicationBackend = settingsButton.backend.resourcesBackend
+                            onTriggered: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
                         }
 
                         MenuItem {
                             text: i18n("Add Source")
+                            visible: backendItem.backend
 
-                            onTriggered: addSourceDialog.open()
+                            onTriggered: {
+                                var addSourceDialog = dialogComponent.createObject()
+                                addSourceDialog.open()
+                            }
                         }
 
                         MenuSeparator {
@@ -117,10 +113,10 @@ DiscoverPage {
                         Instantiator {
                             id: backendActionsInst
                             model: ActionsModel {
-                                actions: settingsButton.backend ? settingsButton.backend.actions : null
+                                actions: backendItem.backend ? backendItem.backend.actions : undefined
                             }
                             delegate: MenuItem {
-                                action: ActionBridge { action: model.action }
+                                action: ActionBridge { action: action }
                             }
                             onObjectAdded: {
                                 settingsMenu.insertItem(index, object)
@@ -134,49 +130,68 @@ DiscoverPage {
             }
         }
 
-        delegate: Kirigami.SwipeListItem {
-            Layout.fillWidth: true
-            enabled: display.length>0
-            highlighted: ListView.isCurrentItem
-            onClicked: Navigation.openApplicationListSource(model.display)
-            readonly property string backendName: model.statusTip
-            readonly property variant modelIndex: sourcesView.model.index(model.index, 0)
+        delegate: ConditionalLoader {
+            anchors {
+                right: parent.right
+                left: parent.left
+            }
+            readonly property variant resourcesBackend: model.resourcesBackend
+            readonly property variant sourcesBackend: model.sourcesBackend
+            readonly property variant display: model.display
+            readonly property variant checked: model.checked
+            readonly property variant statusTip: model.statusTip
+            readonly property variant toolTip: model.toolTip
+            readonly property variant modelIndex: sourcesView.model.index(index, 0)
 
-            Keys.onReturnPressed: clicked()
-            actions: [
-                Kirigami.Action {
-                    enabled: display.length>0
-                    iconName: "view-filter"
-                    tooltip: i18n("Browse the origin's resources")
-                    onTriggered: Navigation.openApplicationListSource(model.display)
-                },
-                Kirigami.Action {
-                    iconName: "edit-delete"
-                    tooltip: i18n("Delete the origin")
-                    onTriggered: {
-                        var backend = sourcesView.model.data(modelIndex, AbstractSourcesBackend.SourcesBackend)
-                        if (!backend.removeSource(model.display)) {
-                            window.showPassiveNotification(i18n("Failed to remove the source '%1'", model.display))
+            condition: resourcesBackend != null
+            componentTrue: sourceBackendDelegate
+            componentFalse: sourceDelegate
+        }
+
+        Component {
+            id: sourceDelegate
+            Kirigami.SwipeListItem {
+                Layout.fillWidth: true
+                enabled: display.length>0
+                highlighted: ListView.isCurrentItem
+                onClicked: Navigation.openApplicationListSource(display)
+
+                Keys.onReturnPressed: clicked()
+                actions: [
+                    Kirigami.Action {
+                        enabled: display.length>0
+                        iconName: "view-filter"
+                        tooltip: i18n("Browse the origin's resources")
+                        onTriggered: Navigation.openApplicationListSource(display)
+                    },
+                    Kirigami.Action {
+                        iconName: "edit-delete"
+                        tooltip: i18n("Delete the origin")
+                        onTriggered: {
+                            var backend = sb
+                            if (!backend.removeSource(display)) {
+                                window.showPassiveNotification(i18n("Failed to remove the source '%1'", display))
+                            }
                         }
                     }
-                }
-            ]
+                ]
 
-            RowLayout {
-                CheckBox {
-                    id: enabledBox
+                RowLayout {
+                    CheckBox {
+                        id: enabledBox
 
-                    readonly property variant modelChecked: sourcesView.model.data(modelIndex, Qt.CheckStateRole)
-                    checked: modelChecked != Qt.Unchecked
-                    enabled: modelChecked !== undefined
-                    onClicked: {
-                        model.checked = checkedState
+                        readonly property variant modelChecked: sourcesView.model.data(modelIndex, Qt.CheckStateRole)
+                        checked: modelChecked != Qt.Unchecked
+                        enabled: modelChecked !== undefined
+                        onClicked: {
+                            sourcesView.model.setData(modelIndex, checkedState, Qt.CheckStateRole)
+                        }
                     }
-                }
-                QQC2.Label {
-                    text: model.display + " - <i>" + model.toolTip + "</i>"
-                    elide: Text.ElideRight
-                    Layout.fillWidth: true
+                    QQC2.Label {
+                        text: display + " - <i>" + toolTip + "</i>"
+                        elide: Text.ElideRight
+                        Layout.fillWidth: true
+                    }
                 }
             }
         }
@@ -200,7 +215,7 @@ DiscoverPage {
                         text: name
                     }
                     InstallApplicationButton {
-                        application: model.application
+                        application: application
                     }
                 }
             }

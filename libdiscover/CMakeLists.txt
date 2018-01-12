@@ -51,6 +51,7 @@ LINK_PUBLIC
     Qt5::Qml
     Qt5::Widgets
     KF5::I18n
+    KF5::ItemModels
 LINK_PRIVATE
     Qt5::Xml
     Qt5::DBus

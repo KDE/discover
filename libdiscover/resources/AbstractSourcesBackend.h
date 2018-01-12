@@ -33,7 +33,6 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
     Q_OBJECT
     Q_PROPERTY(AbstractResourcesBackend* resourcesBackend READ resourcesBackend CONSTANT)
     Q_PROPERTY(QAbstractItemModel* sources READ sources CONSTANT)
-    Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString idDescription READ idDescription CONSTANT)
     Q_PROPERTY(QList<QAction*> actions READ actions CONSTANT)
     public:
@@ -41,12 +40,10 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
         ~AbstractSourcesBackend() override;
 
         enum Roles {
-            SectionRole = Qt::StatusTipRole,
-            SourcesBackend
+            SourcesBackend = Qt::UserRole
         };
         Q_ENUM(Roles)
 
-        virtual QString name() const = 0;
         virtual QString idDescription() = 0;
 
         Q_SCRIPTABLE virtual bool addSource(const QString& id) = 0;

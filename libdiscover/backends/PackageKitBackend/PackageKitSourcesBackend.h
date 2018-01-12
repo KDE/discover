@@ -33,7 +33,6 @@ class PackageKitSourcesBackend : public AbstractSourcesBackend
     public:
         PackageKitSourcesBackend(AbstractResourcesBackend* parent);
 
-        QString name() const override;
         QString idDescription() override;
 
         bool addSource(const QString& id) override;

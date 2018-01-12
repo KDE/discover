@@ -48,7 +48,7 @@ int ActionsModel::rowCount(const QModelIndex& parent) const
     return parent.isValid() ? 0 : m_filteredActions.count();
 }
 
-void ActionsModel::setActions(const QList<QAction*>& actions)
+void ActionsModel::setActions(const QVariant& actions)
 {
     if (m_actions == actions) {
         return;
@@ -61,7 +61,7 @@ void ActionsModel::setActions(const QList<QAction*>& actions)
 
 void ActionsModel::reload()
 {
-    QList<QAction*> actions = m_actions;
+    QList<QAction*> actions = m_actions.value<QList<QAction*>>();
     if (m_priority>=0) {
         actions = kFilter<QList<QAction*>>(actions, [this](QAction* action){ return action->priority() == m_priority; });
     }

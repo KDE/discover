@@ -23,37 +23,30 @@
 
 #include <QAbstractListModel>
 #include <QSet>
-#include <QtQml/QQmlListProperty>
+#include <KConcatenateRowsProxyModel>
 #include "discovercommon_export.h"
 
 class QAction;
 class AbstractSourcesBackend;
-class DISCOVERCOMMON_EXPORT SourcesModel : public QAbstractListModel
+class AbstractResourcesBackend;
+class SourceBackendModel;
+
+class DISCOVERCOMMON_EXPORT SourcesModel : public KConcatenateRowsProxyModel
 {
     Q_OBJECT
-    Q_PROPERTY(int count READ rowCount NOTIFY sourcesChanged)
     public:
         enum Roles {
-            SourceBackend = Qt::UserRole+1
+            SourcesBackend = Qt::UserRole+1,
+            ResourcesBackend
         };
         explicit SourcesModel(QObject* parent = nullptr);
         ~SourcesModel() override;
 
         static SourcesModel* global();
-
-        QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
-        int rowCount(const QModelIndex& parent = QModelIndex()) const override;
-        void addSourcesBackend(AbstractSourcesBackend* sources);
         QHash<int, QByteArray> roleNames() const override;
 
-    public Q_SLOTS:
-        QObject* backendForSection(const QString &status) const;
-
-    Q_SIGNALS:
-        void sourcesChanged();
-
-    private:
-        QList<AbstractSourcesBackend*> m_sources;
+        SourceBackendModel* addBackend(AbstractResourcesBackend* backend);
+        void addSourcesBackend(AbstractSourcesBackend* sources);
 };
 
 #endif // SOURCESMODEL_H

@@ -38,7 +38,6 @@ public:
     QAbstractItemModel* sources() override;
     bool addSource(const QString &id) override;
     bool removeSource(const QString &id) override;
-    QString name() const override { return QStringLiteral("Flatpak"); }
     QString idDescription() override;
     QList<QAction*> actions() const override;
 

@@ -22,30 +22,58 @@
 #include <QtGlobal>
 #include <QDebug>
 #include <QAction>
+#include "resources/AbstractResourcesBackend.h"
 #include "resources/AbstractSourcesBackend.h"
 
 Q_GLOBAL_STATIC(SourcesModel, s_sources)
 
+class SourceBackendModel : public QAbstractListModel
+{
+Q_OBJECT
+public:
+    SourceBackendModel(AbstractResourcesBackend* backend, QObject* parent)
+        : QAbstractListModel(parent), m_backend(backend)
+    {}
+
+    QVariant data(const QModelIndex & index, int role) const override {
+        if (!index.isValid()) return {};
+        switch(role) {
+            case SourcesModel::ResourcesBackend: return QVariant::fromValue<QObject*>(m_backend);
+            case SourcesModel::SourcesBackend: return QVariant::fromValue<QObject*>(m_sources);
+        }
+        return {};
+    }
+    int rowCount(const QModelIndex & parent) const override { return parent.isValid() ? 0 : 1; }
+
+    AbstractSourcesBackend* m_sources = nullptr;
+
+private:
+    AbstractResourcesBackend* m_backend;
+};
+
 SourcesModel::SourcesModel(QObject* parent)
-    : QAbstractListModel(parent)
+    : KConcatenateRowsProxyModel(parent)
 {}
 
 SourcesModel::~SourcesModel() = default;
-
-QHash<int, QByteArray> SourcesModel::roleNames() const
-{
-    return { {SourceBackend, "sourceBackend"} };
-}
 
 SourcesModel* SourcesModel::global()
 {
     return s_sources;
 }
 
+QHash<int, QByteArray> SourcesModel::roleNames() const
+{
+    QHash<int, QByteArray> roles = KConcatenateRowsProxyModel::roleNames();
+    roles.insert(SourcesBackend, "sourcesBackend");
+    roles.insert(ResourcesBackend, "resourcesBackend");
+    return roles;
+}
+
 static bool ensureModel(const QList<QByteArray> &roles)
 {
-    static QList<QByteArray> required = {"sourcesBackend", "display", "checked"};
-    for (const auto &role: roles) {
+    static auto required = {"display", "checked"};
+    for (const auto &role: required) {
         if (!roles.contains(role))
             return false;
     }
@@ -54,43 +82,25 @@ static bool ensureModel(const QList<QByteArray> &roles)
 
 void SourcesModel::addSourcesBackend(AbstractSourcesBackend* sources)
 {
-    if (m_sources.contains(sources))
+    auto b = addBackend(qobject_cast<AbstractResourcesBackend*>(sources->parent()));
+    if (!b)
         return;
 
+    b->m_sources = sources;
     Q_ASSERT(ensureModel(sources->sources()->roleNames().values()));
-
-    beginInsertRows(QModelIndex(), m_sources.size(), m_sources.size());
-    m_sources += sources;
-    endInsertRows();
-    emit sourcesChanged();
+    addSourceModel(sources->sources());
 }
 
-QVariant SourcesModel::data(const QModelIndex& index, int role) const
+SourceBackendModel* SourcesModel::addBackend(AbstractResourcesBackend* backend)
 {
-    if(!index.isValid() || index.row()>=m_sources.count()) {
-        return QVariant();
-    }
-    switch(role) {
-        case SourceBackend:
-            return QVariant::fromValue<QObject*>(m_sources[index.row()]);
-    }
+    Q_ASSERT(backend);
+    if (backend->dynamicPropertyNames().contains("InSourcesModel"))
+        return nullptr;
+    backend->setProperty("InSourcesModel", 1);
 
-    return QVariant();
+    auto b = new SourceBackendModel(backend, this);
+    addSourceModel(b);
+    return b;
 }
 
-int SourcesModel::rowCount(const QModelIndex& parent) const
-{
-    return parent.isValid() ? 0 : m_sources.count();
-}
-
-QObject * SourcesModel::backendForSection(const QString& status) const
-{
-    AbstractSourcesBackend* ret = nullptr;
-    for(AbstractSourcesBackend* b: m_sources) {
-        if (b->name() == status) {
-            ret = b;
-            break;
-        }
-    }
-    return ret;
-}
+#include "SourcesModel.moc"
