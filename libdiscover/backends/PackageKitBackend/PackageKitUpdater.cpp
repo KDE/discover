@@ -21,6 +21,9 @@
 #include "PackageKitMessages.h"
 
 #include <PackageKit/Daemon>
+#ifdef PKQT_0_10
+#include <PackageKit/Offline>
+#endif
 #include <QDebug>
 #include <QAction>
 #include <QSet>
@@ -182,7 +185,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
 
     if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
 #ifdef PKQT_0_10
-        PackageKit::Daemon::global()->offlineTrigger(PackageKit::Daemon::OfflineActionReboot);
+        PackageKit::Daemon::global()->offline()->trigger(PackageKit::Offline::ActionReboot);
 #else
         qWarning() << "PK_OFFLINE_UPDATE is set but discover was built against an old version of PackageKitQt that didn't support offline updates";
 #endif
