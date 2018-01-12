@@ -74,9 +74,8 @@ Kirigami.AbstractListItem
                 ColumnLayout {
                     spacing: 0
                     Layout.fillWidth: true
-                    QQC2.Label {
-                        font.pointSize: delegateArea.compact ? 14 : 16
-                        font.bold: true
+                    Kirigami.Heading {
+                        level: 2
                         Layout.fillWidth: true
                         elide: Text.ElideRight
                         text: delegateArea.application.name
