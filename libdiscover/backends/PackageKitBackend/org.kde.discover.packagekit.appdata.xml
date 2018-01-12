@@ -4,14 +4,18 @@
   <name>PackageKit backend</name>
   <name xml:lang="ca">Dorsal del PackageKit</name>
   <name xml:lang="ca-valencia">Dorsal del PackageKit</name>
+  <name xml:lang="nl">PackageKit-backend</name>
   <name xml:lang="pt">Infra-estrutura do PackageKit</name>
+  <name xml:lang="sl">Zaledje PackageKit</name>
   <name xml:lang="sv">Gränssnitt för PackageKit</name>
   <name xml:lang="uk">Модуль PackageKit</name>
   <name xml:lang="x-test">xxPackageKit backendxx</name>
   <summary>Integrates distribution applications into Discover</summary>
   <summary xml:lang="ca">Integra aplicacions de distribució al Discover</summary>
   <summary xml:lang="ca-valencia">Integra aplicacions de distribució al Discover</summary>
+  <summary xml:lang="nl">Integreert distributie-toepassingen in Discover</summary>
   <summary xml:lang="pt">Integra as aplicações da distribuição no Discover</summary>
+  <summary xml:lang="sl">V Programsko središče vgradi programe distribucije</summary>
   <summary xml:lang="sv">Integrerar distributionsprogram i Discover</summary>
   <summary xml:lang="uk">Інтегрує програми зі сховищ дистрибутива до Discover</summary>
   <summary xml:lang="x-test">xxIntegrates distribution applications into Discoverxx</summary>
@@ -21,7 +25,10 @@
   <developer_name>Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="nl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="pt">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="x-test">xxAleix Pol Gonzalezxx</developer_name>

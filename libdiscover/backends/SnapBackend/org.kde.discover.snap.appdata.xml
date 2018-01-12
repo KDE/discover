@@ -4,14 +4,18 @@
   <name>Snap backend</name>
   <name xml:lang="ca">Dorsal de l'Snap</name>
   <name xml:lang="ca-valencia">Dorsal de l'Snap</name>
+  <name xml:lang="nl">Snap-backend</name>
   <name xml:lang="pt">Infra-estrutura do Snap</name>
+  <name xml:lang="sl">Zaledje Snap</name>
   <name xml:lang="sv">Gränssnitt för Snap</name>
   <name xml:lang="uk">Модуль Snap</name>
   <name xml:lang="x-test">xxSnap backendxx</name>
   <summary>Integrates Snap applications into Discover</summary>
   <summary xml:lang="ca">Integra aplicacions de l'Snap al Discover</summary>
   <summary xml:lang="ca-valencia">Integra aplicacions de l'Snap al Discover</summary>
+  <summary xml:lang="nl">Integreert Snap-toepassingen in Discover</summary>
   <summary xml:lang="pt">Integra as aplicações do Snap no Discover</summary>
+  <summary xml:lang="sl">V Programsko središče vgradi programe Snap</summary>
   <summary xml:lang="sv">Integrerar Snap-program i Discover</summary>
   <summary xml:lang="uk">Інтегрує програми Snap до Discover</summary>
   <summary xml:lang="x-test">xxIntegrates Snap applications into Discoverxx</summary>
@@ -21,7 +25,10 @@
   <developer_name>Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="nl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="pt">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="x-test">xxAleix Pol Gonzalezxx</developer_name>
