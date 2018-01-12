@@ -66,13 +66,7 @@ void DiscoverNotifier::showUpdatesNotification()
         return;
     }
 
-    //TODO: Better message strings
-    QString msg = message();
-    if (m_verbose) {
-        msg += QLatin1Char(' ') + extendedMessage();
-    }
-
-    KNotification::event(QStringLiteral("Update"), i18n("System update available"), msg, QStringLiteral("system-software-update"), nullptr, KNotification::CloseOnTimeout, QStringLiteral("discoverabstractnotifier"));
+    KNotification::event(QStringLiteral("Update"), message(), extendedMessage(), iconName(), nullptr, KNotification::CloseOnTimeout, QStringLiteral("discoverabstractnotifier"));
 }
 
 void DiscoverNotifier::updateStatusNotifier()
