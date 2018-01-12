@@ -47,7 +47,7 @@ public:
     explicit DiscoverNotifier(QObject* parent = nullptr);
     ~DiscoverNotifier() override;
 
-    bool isSystemUpToDate() const;
+    bool isSystemUpToDate() const { return state() == NoUpdates; }
 
     State state() const;
     QString iconName() const;
@@ -76,6 +76,8 @@ private:
     QList<BackendNotifierModule*> m_backends;
     bool m_verbose;
     QTimer m_timer;
+    uint m_securityCount = 0;
+    uint m_count = 0;
 };
 
 #endif //ABSTRACTKDEDMODULE_H

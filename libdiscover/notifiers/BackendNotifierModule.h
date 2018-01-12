@@ -31,9 +31,6 @@ public:
     explicit BackendNotifierModule(QObject* parent = nullptr);
     ~BackendNotifierModule() override;
 
-    /*** @returns \c true if there are any updates, \c false if not **/
-    virtual bool isSystemUpToDate() const = 0;
-
     /*** Check for new updates. Emits @see foundUpdates when it finds something. **/
     virtual void recheckSystemUpdateNeeded() = 0;
 

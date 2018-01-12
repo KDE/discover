@@ -71,11 +71,6 @@ void FlatpakNotifier::recheckSystemUpdateNeeded()
     checkUpdates();
 }
 
-bool FlatpakNotifier::isSystemUpToDate() const
-{
-    return !m_systemInstallationUpdates && !m_userInstallationUpdates;
-}
-
 uint FlatpakNotifier::securityUpdatesCount()
 {
     return 0;

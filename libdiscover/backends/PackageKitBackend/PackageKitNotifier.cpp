@@ -179,11 +179,6 @@ void PackageKitNotifier::finished(PackageKit::Transaction::Exit /*exit*/, uint)
     }
 }
 
-bool PackageKitNotifier::isSystemUpToDate() const
-{
-    return m_securityUpdates == 0 && m_normalUpdates == 0;
-}
-
 uint PackageKitNotifier::securityUpdatesCount()
 {
     return m_securityUpdates;

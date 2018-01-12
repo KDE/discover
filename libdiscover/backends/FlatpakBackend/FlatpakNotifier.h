@@ -36,7 +36,6 @@ public:
     explicit FlatpakNotifier(QObject* parent = nullptr);
     ~FlatpakNotifier() override;
 
-    bool isSystemUpToDate() const override;
     void recheckSystemUpdateNeeded() override;
     uint securityUpdatesCount() override;
     uint updatesCount() override;

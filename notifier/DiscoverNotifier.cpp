@@ -22,6 +22,7 @@
 #include "BackendNotifierFactory.h"
 #include <KConfig>
 #include <KConfigGroup>
+#include <QDebug>
 #include <KRun>
 #include <KLocalizedString>
 #include <KNotification>
@@ -58,15 +59,6 @@ void DiscoverNotifier::showMuon()
     KRun::runCommand(QStringLiteral("plasma-discover --mode update"), nullptr);
 }
 
-bool DiscoverNotifier::isSystemUpToDate() const
-{
-    for(BackendNotifierModule* module : m_backends) {
-        if(!module->isSystemUpToDate())
-            return false;
-    }
-    return true;
-}
-
 void DiscoverNotifier::showUpdatesNotification()
 {
     if (state()==NoUpdates) {
@@ -85,7 +77,21 @@ void DiscoverNotifier::showUpdatesNotification()
 
 void DiscoverNotifier::updateStatusNotifier()
 {
-    if (!isSystemUpToDate()) {
+    uint securityCount = 0;
+    for (BackendNotifierModule* module: m_backends)
+        securityCount += module->securityUpdatesCount();
+
+    uint count = securityUpdatesCount();
+    foreach(BackendNotifierModule* module, m_backends)
+        count += module->updatesCount();
+
+    if (m_count == count && m_securityCount == securityCount)
+        return;
+
+    m_securityCount = securityCount;
+    m_count = count;
+
+    if (state() != NoUpdates) {
         m_timer.start();
     }
     emit updatesChanged();
@@ -93,17 +99,9 @@ void DiscoverNotifier::updateStatusNotifier()
 
 DiscoverNotifier::State DiscoverNotifier::state() const
 {
-    bool security = false, normal = false;
-
-    for(BackendNotifierModule* module : m_backends) {
-        security |= module->securityUpdatesCount()>0;
-        normal |= security || module->updatesCount()>0;
-        if (security)
-            break;
-    }
-    if (security)
+    if (m_securityCount)
         return SecurityUpdates;
-    else if (normal)
+    else if (m_count)
         return NormalUpdates;
     else
         return NoUpdates;
@@ -137,21 +135,19 @@ QString DiscoverNotifier::message() const
 
 QString DiscoverNotifier::extendedMessage() const
 {
-    uint securityCount = securityUpdatesCount();
-    uint count = updatesCount();
-    if (count > 0 && securityCount > 0) {
+    if (m_count > 0 && m_securityCount > 0) {
         QString allUpdates = i18ncp("First part of '%1, %2'",
-                                    "1 package to update", "%1 packages to update", count);
+                                    "1 package to update", "%1 packages to update", m_count);
 
         QString securityUpdates = i18ncp("Second part of '%1, %2'",
-                                         "of which 1 is security update", "of which %1 are security updates", securityCount);
+                                         "of which 1 is security update", "of which %1 are security updates", m_securityCount);
 
         return i18nc("%1 is '%1 packages to update' and %2 is 'of which %1 is security updates'",
                      "%1, %2", allUpdates, securityUpdates);
-    } else if (count > 0) {
-        return i18np("1 package to update", "%1 packages to update", count);
-    } else if (securityCount > 0) {
-        return i18np("1 security update", "%1 security updates", securityCount);
+    } else if (m_count > 0) {
+        return i18np("1 package to update", "%1 packages to update", m_count);
+    } else if (m_securityCount > 0) {
+        return i18np("1 security update", "%1 security updates", m_securityCount);
     } else {
         return i18n("No packages to update");
     }
@@ -165,18 +161,12 @@ void DiscoverNotifier::recheckSystemUpdateNeeded()
 
 uint DiscoverNotifier::securityUpdatesCount() const
 {
-    uint ret = 0;
-    foreach(BackendNotifierModule* module, m_backends)
-        ret += module->securityUpdatesCount();
-    return ret;
+    return m_securityCount;
 }
 
 uint DiscoverNotifier::updatesCount() const
 {
-    uint ret = 0;
-    foreach(BackendNotifierModule* module, m_backends)
-        ret += module->updatesCount();
-    return ret + securityUpdatesCount();
+    return m_count;
 }
 
 QStringList DiscoverNotifier::loadedModules() const

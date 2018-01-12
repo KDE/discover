@@ -38,7 +38,6 @@ public:
     explicit PackageKitNotifier(QObject* parent = nullptr);
     ~PackageKitNotifier() override;
 
-    bool isSystemUpToDate() const override;
     uint securityUpdatesCount() override;
     uint updatesCount() override;
     void recheckSystemUpdateNeeded() override;

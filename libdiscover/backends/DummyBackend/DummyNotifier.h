@@ -31,7 +31,6 @@ public:
     explicit DummyNotifier(QObject* parent = nullptr);
     ~DummyNotifier() override;
 
-    bool isSystemUpToDate() const override;
     void recheckSystemUpdateNeeded() override;
     uint securityUpdatesCount() override;
     uint updatesCount() override;
