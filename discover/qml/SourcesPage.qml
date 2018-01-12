@@ -117,7 +117,7 @@ DiscoverPage {
                                 actions: backendItem.backend ? backendItem.backend.actions : undefined
                             }
                             delegate: MenuItem {
-                                action: ActionBridge { action: action }
+                                action: ActionBridge { action: modelData }
                             }
                             onObjectAdded: {
                                 settingsMenu.insertItem(index, object)
