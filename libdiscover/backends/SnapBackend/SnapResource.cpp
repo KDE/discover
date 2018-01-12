@@ -91,7 +91,7 @@ QString SnapResource::installedVersion() const
 
 QString SnapResource::license()
 {
-    return {};
+    return m_snap->license();
 }
 
 QString SnapResource::longDescription()
