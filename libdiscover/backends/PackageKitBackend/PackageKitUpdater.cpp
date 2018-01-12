@@ -60,7 +60,6 @@ PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
 
 PackageKitUpdater::~PackageKitUpdater()
 {
-    delete m_transaction;
 }
 
 void PackageKitUpdater::prepare()

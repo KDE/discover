@@ -337,7 +337,6 @@ void PackageKitBackend::refreshDatabase()
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, [this]() {
             reloadPackageList();
             acquireFetching(false);
-            delete m_refresher;
         });
     } else {
         qWarning() << "already resetting";
