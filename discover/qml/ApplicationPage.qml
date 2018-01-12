@@ -215,11 +215,13 @@ DiscoverPage {
             QQC2.Label {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("License:")
+                visible: appInfo.application.license.length>0
             }
             LinkButton {
                 elide: Text.ElideRight
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
+                visible: text.length>0
                 text: appInfo.application.license
 //                         tooltip: i18n("See full license terms")
                 onClicked: Qt.openUrlExternally("https://spdx.org/licenses/" + appInfo.application.license + ".html#licenseText")
