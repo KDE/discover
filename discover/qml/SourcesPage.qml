@@ -98,7 +98,7 @@ DiscoverPage {
                         }
 
                         MenuItem {
-                            text: i18n("Add Source")
+                            text: i18n("Add Source...")
                             visible: backendItem.backend
 
                             onTriggered: {
