@@ -6,6 +6,7 @@
   <name xml:lang="ca-valencia">Dorsal del Flatpak</name>
   <name xml:lang="nl">Flatpak-backend</name>
   <name xml:lang="pt">Infra-estrutura do Flatpak</name>
+  <name xml:lang="sk">Backend Flatpak</name>
   <name xml:lang="sl">Zaledje Flatpak</name>
   <name xml:lang="sv">Gränssnitt för Flatpak</name>
   <name xml:lang="uk">Модуль Flatpak</name>
@@ -15,7 +16,8 @@
   <summary xml:lang="ca-valencia">Integra aplicacions del Flatpak al Discover</summary>
   <summary xml:lang="nl">Integreert Flatpak-toepassingen in Discover</summary>
   <summary xml:lang="pt">Integra as aplicações do Flatpak no Discover</summary>
-  <summary xml:lang="sl">V Programsko središče vgradi programe Flatpack</summary>
+  <summary xml:lang="sk">Integruje aplikácie Flatpad do Discoveru</summary>
+  <summary xml:lang="sl">V Discover vgradi programe Flatpack</summary>
   <summary xml:lang="sv">Integrerar Flatpak-program i Discover</summary>
   <summary xml:lang="uk">Інтеграція програм Flatpak з Discover</summary>
   <summary xml:lang="x-test">xxIntegrates Flatpak applications into Discoverxx</summary>
@@ -28,6 +30,7 @@
   <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="pt">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>

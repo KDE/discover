@@ -29,7 +29,7 @@
   <name xml:lang="pt-BR">Discover</name>
   <name xml:lang="ru">Центр приложений Discover</name>
   <name xml:lang="sk">Objaviť</name>
-  <name xml:lang="sl">Programsko središče</name>
+  <name xml:lang="sl">Discover</name>
   <name xml:lang="sr">Oткривач</name>
   <name xml:lang="sr-Latn">Otkrivač</name>
   <name xml:lang="sr-ijekavian">Oткривач</name>
@@ -66,7 +66,7 @@
   <summary xml:lang="pt-BR">Discover</summary>
   <summary xml:lang="ru">Центр приложений Discover</summary>
   <summary xml:lang="sk">Objaviť</summary>
-  <summary xml:lang="sl">Programsko središče</summary>
+  <summary xml:lang="sl">Discover</summary>
   <summary xml:lang="sr">Oткривач</summary>
   <summary xml:lang="sr-Latn">Otkrivač</summary>
   <summary xml:lang="sr-ijekavian">Oткривач</summary>
@@ -133,7 +133,7 @@
     <p xml:lang="pt">O Discover ajuda os utilizadores a procurar fácil e rapidamente aplicações ou ferramentas. Ao permitir navegar numa biblioteca de 'software' com a pesquisa, as categorias de aplicações, as listas de topo com informações detalhadas, incluindo fotografias e revisões, os utilizadores poderão encontrar mais rapidamente as aplicações que se adequam às suas necessidades.</p>
     <p xml:lang="pt-BR">O Discover ajuda os usuários a encontrar os aplicativos e ferramentas de forma rápida e fácil. Ao fornecer acesso a uma biblioteca de software com uma ferramenta de pesquisa, por categorias de software, por listas das ferramentas mais populares e com informações detalhadas, incluindo capturas de tela e avaliações, os usuários poderão encontrar mais rapidamente os aplicativos que se adequam às suas necessidades.</p>
     <p xml:lang="sk">Discover vám pomôže ľahko a rýchlo nájsť aplikácie alebo nástroje. Umožní vám navigáciu cez knižnicu softvéru cez hľadanie, kategórie softvéru, najlepšie zoznamy spolu s podrobnými informáciami, ktoré obsahujú obrazovky a recenzie, teda môžete ľahšie nájsť aplikáciu, ktorá vám vyhovuje.</p>
-    <p xml:lang="sl">Programsko središče vam pomaga na enostaven način najti programe ali orodja. Omogoča vam krmarjenje po knjižnicah s programi preko iskalnika, kategorij programov in seznamov najboljših programov. Ogledali si boste lahko podrobnosti o programu vključno s posnetki zaslona in ocenami ter tako hitreje našli programe, ki zadoščajo vašim potrebam.</p>
+    <p xml:lang="sl">Discover vam pomaga na enostaven način najti programe ali orodja. Omogoča vam krmarjenje po knjižnicah s programi preko iskalnika, kategorij programov in seznamov najboljših programov. Ogledali si boste lahko podrobnosti o programu vključno s posnetki zaslona in ocenami ter tako hitreje našli programe, ki zadoščajo vašim potrebam.</p>
     <p xml:lang="sr">Oткривач помаже корисницима да лако и брзо налазе програме и алатке. Кретањем кроз библиотеку софтвера путем претраге, категорија, топ‑листа, праћеним детаљним описима програма, снимцима екрана и рецензијама, корисник може брзо да пронађе програм према својим потребама.</p>
     <p xml:lang="sr-Latn">Otkrivač pomaže korisnicima da lako i brzo nalaze programe i alatke. Kretanjem kroz biblioteku softvera putem pretrage, kategorija, top‑lista, praćenim detaljnim opisima programa, snimcima ekrana i recenzijama, korisnik može brzo da pronađe program prema svojim potrebama.</p>
     <p xml:lang="sr-ijekavian">Oткривач помаже корисницима да лако и брзо налазе програме и алатке. Кретањем кроз библиотеку софтвера путем претраге, категорија, топ‑листа, праћеним детаљним описима програма, снимцима екрана и рецензијама, корисник може брзо да пронађе програм према својим потребама.</p>
@@ -166,7 +166,7 @@
     <p xml:lang="pt">Para além disso, o Discover permitir-lhe-á gerir as diferentes fontes de aplicações que tem e gerir as aplicações que já instalou no passado e que não quer mais.</p>
     <p xml:lang="pt-BR">Além disso, o Discover possibilita gerenciar as diferentes fontes de software que você possui e os aplicativos que já foram instalados e que não são mais necessários.</p>
     <p xml:lang="sk">Okrem toho, Discover vám umožní spracovať rôzne zdroje softvéru a spravovať aplikácie, ktoré máte nainštalované, ale už ich nechcete.</p>
-    <p xml:lang="sl">Programsko središče vam tudi omogoča upravljati s programskimi viri in že nameščenimi programi.</p>
+    <p xml:lang="sl">Discover vam tudi omogoča upravljati s programskimi viri in že nameščenimi programi.</p>
     <p xml:lang="sr">Затим, Oткривач вам омогућава да управљате различитим изворима софтвера, као и програмима које сте инсталирали раније али их више не желите.</p>
     <p xml:lang="sr-Latn">Zatim, Otkrivač vam omogućava da upravljate različitim izvorima softvera, kao i programima koje ste instalirali ranije ali ih više ne želite.</p>
     <p xml:lang="sr-ijekavian">Затим, Oткривач вам омогућава да управљате различитим изворима софтвера, као и програмима које сте инсталирали раније али их више не желите.</p>
