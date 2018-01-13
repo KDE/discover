@@ -72,7 +72,9 @@ static ResultsStream* voidStream() { return new ResultsStream(QStringLiteral("Sn
 
 ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& filters)
 {
-    if (!filters.resourceUrl.isEmpty()) {
+    if (!filters.extends.isEmpty()) {
+        return voidStream();
+    } else if (!filters.resourceUrl.isEmpty()) {
         return findResourceByPackageName(filters.resourceUrl);
     } else if (filters.category && filters.category->isAddons()) {
         return voidStream();
