@@ -242,7 +242,6 @@ void PackageKitResource::updateDetail(const QString& /*packageID*/, const QStrin
     addIfNotEmpty(i18n("Reason:"), updateText, info);
     addIfNotEmpty(i18n("Obsoletes:"), joinPackages(obsoletes), info);
     addIfNotEmpty(i18n("Updates:"), joinPackages(updates), info);
-    addIfNotEmpty(i18n("Change Log:"), changelog, info);
     addIfNotEmpty(i18n("Update State:"), PackageKitMessages::updateStateMessage(state), info);
     addIfNotEmpty(i18n("Restart:"), PackageKitMessages::restartMessage(restart), info);
 
