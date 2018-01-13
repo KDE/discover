@@ -49,7 +49,7 @@ QString SnapResource::comment()
 
 int SnapResource::size()
 {
-    return m_snap->installedSize();
+    return isInstalled() ? m_snap->installedSize() : m_snap->downloadSize();
 }
 
 QUrl SnapResource::homepage()
