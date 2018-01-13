@@ -21,7 +21,7 @@ ApplicationsListPage {
         Kirigami.Heading {
             anchors {
                 right: parent.right
-                rightMargin: Kirigami.Units.smallSpacing
+                rightMargin: Kirigami.Units.largeSpacing
             }
             text: page.title
         }
