@@ -101,7 +101,7 @@ QString SnapResource::longDescription()
 
 QString SnapResource::name()
 {
-    return m_snap->name();
+    return m_snap->title().isEmpty() ? m_snap->name() : m_snap->title();
 }
 
 QString SnapResource::origin() const
