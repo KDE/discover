@@ -30,7 +30,7 @@ import org.kde.kirigami 2.1 as Kirigami
 DiscoverPage
 {
     id: page
-    title: i18n("Home")
+    title: i18n("Featured")
     leftPadding: 0
     rightPadding: 0
     topPadding: 0
