@@ -50,6 +50,7 @@ void SnapTransaction::cancel()
 
 void SnapTransaction::finishTransaction()
 {
+    qDebug() << "done!";
     switch(m_request->error()) {
         case QSnapdRequest::NoError:
             static_cast<SnapBackend*>(m_app->backend())->refreshStates();
@@ -86,5 +87,11 @@ void SnapTransaction::finishTransaction()
 
 void SnapTransaction::progressed()
 {
-//     setProgress(m_request->change()->???);
+    const auto change = m_request->change();
+    int percentage = 0, count = 0;
+    for(int i = 0, c = change->taskCount(); i<c; ++i) {
+        ++count;
+        percentage += (100 * change->task(i)->progressDone()) / change->task(i)->progressTotal();
+    }
+    setProgress(percentage / qMax(count, 1));
 }
