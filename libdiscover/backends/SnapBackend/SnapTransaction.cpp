@@ -29,10 +29,11 @@
 #include "libsnapclient/config-paths.h"
 #include "utils.h"
 
-SnapTransaction::SnapTransaction(SnapResource* app, QSnapdRequest* request, Role role)
+SnapTransaction::SnapTransaction(SnapResource* app, QSnapdRequest* request, Role role, AbstractResource::State newState)
     : Transaction(app, app, role)
     , m_app(app)
     , m_request(request)
+    , m_newState(newState)
 {
     setStatus(DownloadingStatus);
     setCancellable(false);
@@ -53,7 +54,7 @@ void SnapTransaction::finishTransaction()
     qDebug() << "done!";
     switch(m_request->error()) {
         case QSnapdRequest::NoError:
-            static_cast<SnapBackend*>(m_app->backend())->refreshStates();
+            m_app->setState(m_newState);
             break;
         case QSnapdRequest::AuthDataRequired: {
             QProcess* p = new QProcess;

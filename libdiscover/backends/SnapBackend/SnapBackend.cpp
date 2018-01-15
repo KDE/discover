@@ -191,13 +191,13 @@ Transaction* SnapBackend::installApplication(AbstractResource* app, const AddonL
 Transaction* SnapBackend::installApplication(AbstractResource* _app)
 {
     auto app = qobject_cast<SnapResource*>(_app);
-	return new SnapTransaction(app, m_client.install(app->packageName()), Transaction::InstallRole);
+	return new SnapTransaction(app, m_client.install(app->packageName()), Transaction::InstallRole, AbstractResource::Installed);
 }
 
 Transaction* SnapBackend::removeApplication(AbstractResource* _app)
 {
     auto app = qobject_cast<SnapResource*>(_app);
-	return new SnapTransaction(app, m_client.remove(app->packageName()), Transaction::RemoveRole);
+	return new SnapTransaction(app, m_client.remove(app->packageName()), Transaction::RemoveRole, AbstractResource::None);
 }
 
 QString SnapBackend::displayName() const
