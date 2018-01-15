@@ -121,7 +121,7 @@ ResultsStream * SnapBackend::populate(QSnapdListOneRequest* job, AbstractResourc
             res->setState(AbstractResource::None);
         }
 
-        stream->resourcesFound({ret});
+        stream->resourcesFound({res});
         stream->finish();
     });
     job->runAsync();
