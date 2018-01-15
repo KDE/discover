@@ -107,7 +107,7 @@ QString FlatpakResource::availableVersion() const
     }
 
     if (!m_appdata.releases().isEmpty()) {
-        auto release = m_appdata.releases().last();
+        auto release = m_appdata.releases().constFirst();
         return i18n("%1 (%2)", release.version(), theBranch);
     }
 
