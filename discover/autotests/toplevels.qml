@@ -36,7 +36,7 @@ DiscoverTest
         firstitem.clicked()
 
         drawer.bannerClicked()
-        compare(appRoot.stack.currentItem.title, "Home", "same title");
+        compare(appRoot.stack.currentItem.title, "Featured", "same title");
         compare(drawer.currentSubMenu, null)
     }
 
