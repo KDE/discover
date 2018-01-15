@@ -81,7 +81,6 @@ public:
 
 DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     : QObject()
-    , m_collection(this)
     , m_engine(new QQmlApplicationEngine)
     , m_mode(mode)
     , m_networkAccessManagerFactory(new CachedNetworkAccessManagerFactory)
@@ -268,37 +267,32 @@ bool DiscoverMainWindow::eventFilter(QObject * object, QEvent * event)
 
 void DiscoverMainWindow::setupActions()
 {
-    QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), &QCoreApplication::quit, actionCollection());
-    actionCollection()->addAction(QStringLiteral("file_quit"), quitAction);
-
     if (KAuthorized::authorizeAction(QStringLiteral("help_contents"))) {
         auto mHandBookAction = KStandardAction::helpContents(this, &DiscoverMainWindow::appHelpActivated, this);
-        actionCollection()->addAction(mHandBookAction->objectName(), mHandBookAction);
+        m_collection[mHandBookAction->objectName()] = mHandBookAction;
     }
 
     if (KAuthorized::authorizeAction(QStringLiteral("help_report_bug")) && !KAboutData::applicationData().bugAddress().isEmpty()) {
         auto mReportBugAction = KStandardAction::reportBug(this, &DiscoverMainWindow::reportBug, this);
-        actionCollection()->addAction(mReportBugAction->objectName(), mReportBugAction);
+        m_collection[mReportBugAction->objectName()] = mReportBugAction;
     }
 
     if (KAuthorized::authorizeAction(QStringLiteral("switch_application_language"))) {
 //         if (KLocalizedString::availableApplicationTranslations().count() > 1) {
             auto mSwitchApplicationLanguageAction = KStandardAction::create(KStandardAction::SwitchApplicationLanguage, this, &DiscoverMainWindow::switchApplicationLanguage, this);
-            actionCollection()->addAction(mSwitchApplicationLanguageAction->objectName(), mSwitchApplicationLanguageAction);
+            m_collection[mSwitchApplicationLanguageAction->objectName()] = mSwitchApplicationLanguageAction;
 //         }
     }
 
     if (KAuthorized::authorizeAction(QStringLiteral("help_about_app"))) {
         auto mAboutAppAction = KStandardAction::aboutApp(this, &DiscoverMainWindow::aboutApplication, this);
-        actionCollection()->addAction(mAboutAppAction->objectName(), mAboutAppAction);
+        m_collection[mAboutAppAction->objectName()] = mAboutAppAction;
     }
-    auto mKeyBindignsAction = KStandardAction::keyBindings(this, &DiscoverMainWindow::configureShortcuts, this);
-    actionCollection()->addAction(mKeyBindignsAction->objectName(), mKeyBindignsAction);
 }
 
-QAction * DiscoverMainWindow::action(const QString& name)
+QAction * DiscoverMainWindow::action(const QString& name) const
 {
-    return actionCollection()->action(name);
+    return m_collection.value(name);
 }
 
 QString DiscoverMainWindow::iconName(const QIcon& icon)
@@ -336,14 +330,6 @@ void DiscoverMainWindow::switchApplicationLanguage()
 //     auto langDialog = new KSwitchLanguageDialog(nullptr);
 //     connect(langDialog, SIGNAL(finished(int)), this, SLOT(dialogFinished()));
 //     langDialog->show();
-}
-
-void DiscoverMainWindow::configureShortcuts()
-{
-    KShortcutsDialog dlg(KShortcutsEditor::AllActions, KShortcutsEditor::LetterShortcutsAllowed, nullptr);
-    dlg.setModal(true);
-    dlg.addCollection(actionCollection());
-    qDebug() << "saving shortcuts..." << dlg.configure(/*bSaveSettings*/);
 }
 
 void DiscoverMainWindow::setCompactMode(DiscoverMainWindow::CompactMode mode)
