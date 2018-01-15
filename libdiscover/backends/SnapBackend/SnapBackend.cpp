@@ -134,6 +134,10 @@ ResultsStream* SnapBackend::populate(T* job, AbstractResource::State state)
     auto stream = new ResultsStream(QStringLiteral("Snap-populate"));
 
     connect(job, &QSnapdFindRequest::complete, stream, [stream, this, state, job]() {
+        if (job->error()) {
+            qDebug() << "error:" << job->error() << job->errorString();
+            return;
+        }
         QSet<SnapResource*> higher = kFilter<QSet<SnapResource*>>(m_resources, [state](AbstractResource* res){ return res->state()>=state; });
 
         QVector<AbstractResource*> ret;
