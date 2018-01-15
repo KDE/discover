@@ -680,6 +680,7 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
         if (!resourceExists) {
             addResource(resource);
         } else {
+            emit resourceRemoved(resource);
             resource->deleteLater();
         }
     }

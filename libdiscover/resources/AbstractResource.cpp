@@ -36,6 +36,8 @@ AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     connect(this, &AbstractResource::stateChanged, this, &AbstractResource::reportNewState);
 }
 
+AbstractResource::~AbstractResource() = default;
+
 bool AbstractResource::isTechnical() const
 {
     return false;

@@ -101,6 +101,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
          * Constructs the AbstractResource with its corresponding backend
          */
         explicit AbstractResource(AbstractResourcesBackend* parent);
+        ~AbstractResource() override;
 
         ///used as internal identification of a resource
         virtual QString packageName() const = 0;
