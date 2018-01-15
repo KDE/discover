@@ -157,3 +157,9 @@ bool SnapResource::isTechnical() const
 {
     return m_snap->snapType() != QLatin1String("app");
 }
+
+QUrl SnapResource::url() const
+{
+    //FIXME interim, until it has an appstreamId
+    return QUrl(QStringLiteral("snap://") + packageName());
+}

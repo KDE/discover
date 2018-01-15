@@ -55,6 +55,7 @@ public:
     void fetchChangelog() override;
     void fetchScreenshots() override;
     QList<PackageState> addonsInformation() override { return {}; }
+    QUrl url() const override;
 
     void setState(AbstractResource::State state);
 
