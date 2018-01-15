@@ -277,13 +277,6 @@ void DiscoverMainWindow::setupActions()
         m_collection[mReportBugAction->objectName()] = mReportBugAction;
     }
 
-    if (KAuthorized::authorizeAction(QStringLiteral("switch_application_language"))) {
-//         if (KLocalizedString::availableApplicationTranslations().count() > 1) {
-            auto mSwitchApplicationLanguageAction = KStandardAction::create(KStandardAction::SwitchApplicationLanguage, this, &DiscoverMainWindow::switchApplicationLanguage, this);
-            m_collection[mSwitchApplicationLanguageAction->objectName()] = mSwitchApplicationLanguageAction;
-//         }
-    }
-
     if (KAuthorized::authorizeAction(QStringLiteral("help_about_app"))) {
         auto mAboutAppAction = KStandardAction::aboutApp(this, &DiscoverMainWindow::aboutApplication, this);
         m_collection[mAboutAppAction->objectName()] = mAboutAppAction;
