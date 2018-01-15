@@ -59,6 +59,8 @@ private:
     template <class T>
     ResultsStream* populate(T* snaps, AbstractResource::State state);
 
+    ResultsStream* populate(QSnapdListOneRequest* snaps, AbstractResource::State state);
+
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;
     SnapReviewsBackend* m_reviews;
