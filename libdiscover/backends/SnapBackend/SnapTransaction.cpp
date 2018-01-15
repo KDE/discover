@@ -35,12 +35,12 @@ SnapTransaction::SnapTransaction(SnapResource* app, QSnapdRequest* request, Role
     , m_request(request)
     , m_newState(newState)
 {
-    setStatus(DownloadingStatus);
     setCancellable(false);
     connect(request, &QSnapdRequest::progress, this, &SnapTransaction::progressed);
     connect(request, &QSnapdRequest::complete, this, &SnapTransaction::finishTransaction);
     setStatus(SetupStatus);
 
+    setStatus(DownloadingStatus);
     request->runAsync();
 }
 
