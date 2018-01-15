@@ -37,6 +37,7 @@ DiscoverPage {
             ToolButton {
                 text: i18n("Help...")
                 menu: Menu {
+                    MenuItem { action: ActionBridge { action: app.action("help_contents") } }
                     MenuItem { action: ActionBridge { action: app.action("help_about_app") } }
                     MenuItem { action: ActionBridge { action: app.action("help_report_bug") } }
                 }
