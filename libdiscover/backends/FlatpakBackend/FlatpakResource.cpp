@@ -41,6 +41,7 @@
 #include <QNetworkRequest>
 #include <QStringList>
 #include <QTimer>
+#include <AppStreamQt/release.h>
 
 static QString iconCachePath(const AppStream::Icon &icon)
 {
@@ -100,13 +101,17 @@ QList<PackageState> FlatpakResource::addonsInformation()
 
 QString FlatpakResource::availableVersion() const
 {
-    // TODO check if there is actually version available
-    QString version = branch();
-    if (version.isEmpty()) {
-        version = i18n("Unknown");
+    QString theBranch = branch();
+    if (theBranch.isEmpty()) {
+        theBranch = i18n("Unknown");
     }
 
-    return version;
+    if (!m_appdata.releases().isEmpty()) {
+        auto release = m_appdata.releases().last();
+        return i18n("%1 (%2)", release.version(), theBranch);
+    }
+
+    return theBranch;
 }
 
 QString FlatpakResource::appstreamId() const
