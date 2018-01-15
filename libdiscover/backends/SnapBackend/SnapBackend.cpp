@@ -101,8 +101,6 @@ ResultsStream * SnapBackend::populate(QSnapdListOneRequest* job, AbstractResourc
             stream->finish();
             return;
         }
-        QSet<SnapResource*> higher = kFilter<QSet<SnapResource*>>(m_resources, [state](AbstractResource* res){ return res->state()>=state; });
-
         QSet<SnapResource*> resources;
 
         QSharedPointer<QSnapdSnap> snap(job->snap());
@@ -112,15 +110,11 @@ ResultsStream * SnapBackend::populate(QSnapdListOneRequest* job, AbstractResourc
             res = new SnapResource(snap, state, this);
             Q_ASSERT(res->packageName() == snapname);
             resources += res;
-        } else {
+        } else if (res->state() < state) {
             res->setState(state);
-            higher.remove(res);
         }
 
         m_resources[res->packageName()] = res;
-        for(auto res: higher) {
-            res->setState(AbstractResource::None);
-        }
 
         stream->resourcesFound({res});
         stream->finish();
@@ -140,7 +134,6 @@ ResultsStream* SnapBackend::populate(T* job, AbstractResource::State state)
             stream->finish();
             return;
         }
-        QSet<SnapResource*> higher = kFilter<QSet<SnapResource*>>(m_resources, [state](AbstractResource* res){ return res->state()>=state; });
 
         QVector<AbstractResource*> ret;
         QSet<SnapResource*> resources;
@@ -152,18 +145,14 @@ ResultsStream* SnapBackend::populate(T* job, AbstractResource::State state)
                 res = new SnapResource(snap, state, this);
                 Q_ASSERT(res->packageName() == snapname);
                 resources += res;
-            } else {
+            } else if (res->state() < state) {
                 res->setState(state);
-                higher.remove(res);
             }
             ret += res;
         }
 
         foreach(SnapResource* res, resources)
             m_resources[res->packageName()] = res;
-        for(auto res: higher) {
-            res->setState(AbstractResource::None);
-        }
 
         if (!ret.isEmpty())
             stream->resourcesFound(ret);
