@@ -445,8 +445,8 @@ void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & res
     }
 
     for(auto resource: resources) {
-        const auto finder = [this, resource](AbstractResource* res){ return lessThan(resource, res); };
-        const auto it = std::find_if(m_displayedResources.constBegin(), m_displayedResources.constEnd(), finder);
+        const auto finder = [this](AbstractResource* resource, AbstractResource* res){ return lessThan(resource, res); };
+        const auto it = std::upper_bound(m_displayedResources.constBegin(), m_displayedResources.constEnd(), resource, finder);
         const auto newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());
 
         if (it != m_displayedResources.constEnd() && *it == resource)
