@@ -72,16 +72,6 @@ QHash<int, QByteArray> SourcesModel::roleNames() const
     return roles;
 }
 
-static bool ensureModel(const QList<QByteArray> &roles)
-{
-    static auto required = {"display", "checked"};
-    for (const auto &role: required) {
-        if (!roles.contains(role))
-            return false;
-    }
-    return true;
-}
-
 void SourcesModel::addSourcesBackend(AbstractSourcesBackend* sources)
 {
     auto backend = qobject_cast<AbstractResourcesBackend*>(sources->parent());
@@ -90,7 +80,6 @@ void SourcesModel::addSourcesBackend(AbstractSourcesBackend* sources)
         return;
 
     b->m_sources = sources;
-    Q_ASSERT(ensureModel(sources->sources()->roleNames().values()));
     auto m = sources->sources();
     m->setProperty(DisplayName, backend->displayName());
     addSourceModel(m);
