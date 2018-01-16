@@ -69,37 +69,37 @@ Kirigami.AbstractListItem
                 leftMargin: Kirigami.Units.largeSpacing
             }
 
-            RowLayout {
+            Kirigami.Heading {
+                id: head
+                level: delegateArea.compact ? 3 : 2
                 Layout.fillWidth: true
-                ColumnLayout {
-                    spacing: 0
-                    Layout.fillWidth: true
-                    Kirigami.Heading {
-                        level: delegateArea.compact ? 3 : 2
-                        Layout.fillWidth: true
-                        elide: Text.ElideRight
-                        text: delegateArea.application.name
-                        maximumLineCount: 1
-                    }
-                    QQC2.Label {
-                        id: category
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignRight
-                        text: delegateArea.application.categoryDisplay
-                        visible: ! delegateArea.compact && text != page.title
-                    }
-                }
+                Layout.rightMargin: installButton.width
+                elide: Text.ElideRight
+                text: delegateArea.application.name
+                maximumLineCount: 1
+
                 InstallApplicationButton {
                     id: installButton
-                    Layout.alignment: Qt.AlignRight
+                    anchors {
+                        top: parent.top
+                        left: parent.right
+                    }
                 }
+
+            }
+            QQC2.Label {
+                id: category
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                text: delegateArea.application.categoryDisplay
+                visible: !delegateArea.compact && text != page.title
             }
 
             Rectangle {
                 color: Kirigami.Theme.linkColor
                 Layout.fillWidth: true
+                Layout.rightMargin: delegateArea.compact ? installButton.width + Kirigami.Units.largeSpacing : 0
                 height: Kirigami.Units.devicePixelRatio / 2
-                visible: ! delegateArea.compact
             }
 
             Layout.fillWidth: true
