@@ -55,6 +55,11 @@ DiscoverPage {
     }
     signal clearSearch()
 
+    supportsRefreshing: true
+    onRefreshingChanged: if (refreshing) {
+        appsModel.invalidateFilter()
+        refreshing = false
+    }
     ListView {
         id: apps
         section.delegate: QQC2.Label {
