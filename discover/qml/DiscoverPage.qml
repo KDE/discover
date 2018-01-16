@@ -48,4 +48,13 @@ Kirigami.ScrollablePage
             applicationWindow().pageStack.pop()
         }
     }
+
+    readonly property var sRefresh: Shortcut {
+        sequence: StandardKey.Refresh
+        enabled: root.isCurrentPage && root.supportsRefreshing
+        onActivated: {
+            if (root.supportsRefreshing)
+                root.refreshing = true
+        }
+    }
 }
