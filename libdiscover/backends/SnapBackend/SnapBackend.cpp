@@ -88,40 +88,7 @@ ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& fil
 
 ResultsStream * SnapBackend::findResourceByPackageName(const QUrl& search)
 {
-    return search.scheme() == QLatin1String("snap") ? populate(m_client.listOne(search.host()), AbstractResource::None) : voidStream();
-}
-
-ResultsStream * SnapBackend::populate(QSnapdListOneRequest* job, AbstractResource::State state)
-{
-    auto stream = new ResultsStream(QStringLiteral("Snap-populateOne"));
-
-    connect(job, &QSnapdFindRequest::complete, stream, [stream, this, state, job]() {
-        if (job->error()) {
-            qDebug() << "error:" << job->error() << job->errorString();
-            stream->finish();
-            return;
-        }
-        QSet<SnapResource*> resources;
-
-        QSharedPointer<QSnapdSnap> snap(job->snap());
-        const auto snapname = snap->name();
-        SnapResource* res = m_resources.value(snapname);
-        if (!res) {
-            res = new SnapResource(snap, state, this);
-            Q_ASSERT(res->packageName() == snapname);
-            resources += res;
-        } else if (res->state() < state) {
-            res->setState(state);
-            res->setSnap(snap);
-        }
-
-        m_resources[res->packageName()] = res;
-
-        stream->resourcesFound({res});
-        stream->finish();
-    });
-    job->runAsync();
-    return stream;
+    return search.scheme() == QLatin1String("snap") ? populate(m_client.find(QSnapdClient::MatchName, search.host()), AbstractResource::Installed) : voidStream();
 }
 
 template <class T>
