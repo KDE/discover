@@ -61,9 +61,11 @@ public:
     void setState(AbstractResource::State state);
 
 public:
+    void gotIcon();
     AbstractResource::State m_state;
 
     QSharedPointer<QSnapdSnap> m_snap;
+    mutable QVariant m_icon;
 };
 
 #endif // SNAPRESOURCE_H
