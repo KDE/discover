@@ -112,6 +112,7 @@ ResultsStream * SnapBackend::populate(QSnapdListOneRequest* job, AbstractResourc
             resources += res;
         } else if (res->state() < state) {
             res->setState(state);
+            res->setSnap(snap);
         }
 
         m_resources[res->packageName()] = res;
@@ -147,6 +148,7 @@ ResultsStream* SnapBackend::populate(T* job, AbstractResource::State state)
                 resources += res;
             } else if (res->state() < state) {
                 res->setState(state);
+                res->setSnap(snap);
             }
             ret += res;
         }

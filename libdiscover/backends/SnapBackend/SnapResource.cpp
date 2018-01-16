@@ -163,3 +163,15 @@ QUrl SnapResource::url() const
     //FIXME interim, until it has an appstreamId
     return QUrl(QStringLiteral("snap://") + packageName());
 }
+
+void SnapResource::setSnap(const QSharedPointer<QSnapdSnap>& snap)
+{
+    Q_ASSERT(snap->name() == m_snap->name());
+    if (m_snap == snap)
+        return;
+
+    const bool newSize = m_snap->installedSize() != snap->installedSize() || m_snap->downloadSize() != snap->downloadSize();
+    m_snap = snap;
+    if (newSize)
+        Q_EMIT sizeChanged();
+}

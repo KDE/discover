@@ -51,9 +51,9 @@ void SnapTransaction::cancel()
 
 void SnapTransaction::finishTransaction()
 {
-    qDebug() << "done!";
     switch(m_request->error()) {
         case QSnapdRequest::NoError:
+            static_cast<SnapBackend*>(m_app->backend())->refreshStates();
             m_app->setState(m_newState);
             break;
         case QSnapdRequest::AuthDataRequired: {

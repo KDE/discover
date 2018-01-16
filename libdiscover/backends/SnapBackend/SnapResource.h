@@ -56,6 +56,7 @@ public:
     void fetchScreenshots() override;
     QList<PackageState> addonsInformation() override { return {}; }
     QUrl url() const override;
+    void setSnap(const QSharedPointer<QSnapdSnap> &snap);
 
     void setState(AbstractResource::State state);
 
