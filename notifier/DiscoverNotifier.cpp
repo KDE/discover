@@ -89,7 +89,7 @@ void DiscoverNotifier::updateStatusNotifier()
     m_securityCount = securityCount;
     m_count = count;
 
-    if (state() != NoUpdates) {
+    if (state() != NoUpdates && m_count >= count) {
         m_timer.start();
     }
     emit updatesChanged();
