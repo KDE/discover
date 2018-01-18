@@ -40,7 +40,7 @@ Flow {
 
     Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
     Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
-    focus: true
+    focus: overlay.visible
 
     QQC2.Popup {
         id: overlay
