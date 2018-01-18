@@ -40,7 +40,7 @@ Kirigami.BasicListItem {
         }
 
         onTransactionRemoved: {
-            if (trans.status == Transaction.CancelledStatus || !trans.resource) {
+            if (!trans.resource) {
                 var id = progressModel.applicationAt(trans.resource)
                 if(id>=0)
                     progressModel.remove(id)
@@ -69,7 +69,10 @@ Kirigami.BasicListItem {
             Component {
                 id: listenerComp
                 TransactionListener {
-                    onCancelled: progressModel.remove(index)
+                    property int index: -1
+                    onCancelled: {
+                        progressModel.remove(index)
+                    }
                 }
             }
 
@@ -85,7 +88,7 @@ Kirigami.BasicListItem {
                             Navigation.openApplication(model.application)
                         }
                     }
-                    readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource} : {transaction: model.transaction}))
+                    readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource, index: index} : {transaction: model.transaction, index: index}))
 
                     ColumnLayout {
                         width: parent.width

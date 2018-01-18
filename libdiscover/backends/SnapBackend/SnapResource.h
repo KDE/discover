@@ -56,13 +56,16 @@ public:
     void fetchScreenshots() override;
     QList<PackageState> addonsInformation() override { return {}; }
     QUrl url() const override;
+    void setSnap(const QSharedPointer<QSnapdSnap> &snap);
 
     void setState(AbstractResource::State state);
 
 public:
+    void gotIcon();
     AbstractResource::State m_state;
 
     QSharedPointer<QSnapdSnap> m_snap;
+    mutable QVariant m_icon;
 };
 
 #endif // SNAPRESOURCE_H

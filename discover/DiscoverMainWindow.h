@@ -23,7 +23,6 @@
 #include <QtCore/QUrl>
 
 #include <QQuickView>
-#include <KActionCollection>
 
 class AbstractResource;
 class Category;
@@ -52,8 +51,8 @@ class DiscoverMainWindow : public QObject
 
         bool eventFilter(QObject * object, QEvent * event) override;
 
-        Q_SCRIPTABLE QAction * action(const QString& name);
-        Q_SCRIPTABLE QString iconName(const QIcon& icon);
+        Q_SCRIPTABLE QAction * action(const QString& name) const;
+        Q_SCRIPTABLE static QString iconName(const QIcon& icon);
 
         void loadTest(const QUrl& url);
 
@@ -73,7 +72,6 @@ class DiscoverMainWindow : public QObject
         void reportBug();
         void switchApplicationLanguage();
         void aboutApplication();
-        void configureShortcuts();
 
     Q_SIGNALS:
         void openSearch(const QString &search);
@@ -90,9 +88,7 @@ class DiscoverMainWindow : public QObject
         void integrateObject(QObject* object);
         QQmlApplicationEngine* engine() const { return m_engine; }
 
-        KActionCollection* actionCollection() { return &m_collection; }
-
-        KActionCollection m_collection;
+        QMap<QString, QAction*> m_collection;
         QQmlApplicationEngine * const m_engine;
 
         CompactMode m_mode;

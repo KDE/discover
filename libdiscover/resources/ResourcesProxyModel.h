@@ -118,7 +118,7 @@ public:
     bool isBusy() const { return m_currentStream != nullptr; }
 
     bool lessThan(AbstractResource* rl, AbstractResource* rr) const;
-    void invalidateFilter();
+    Q_SCRIPTABLE void invalidateFilter();
     void invalidateSorting();
 
     void classBegin() override {}

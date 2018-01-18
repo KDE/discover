@@ -100,6 +100,7 @@ DiscoverPage
     onRefreshingChanged: {
         showPassiveNotification("Fetching updates...")
         ResourcesModel.updateAction.triggered()
+        refreshing = false
     }
     ListView
     {

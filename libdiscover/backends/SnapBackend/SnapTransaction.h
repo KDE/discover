@@ -21,6 +21,7 @@
 #ifndef SNAPTRANSACTION_H
 #define SNAPTRANSACTION_H
 
+#include <resources/AbstractResource.h>
 #include <Transaction/Transaction.h>
 #include <QPointer>
 
@@ -31,7 +32,7 @@ class SnapTransaction : public Transaction
 {
     Q_OBJECT
     public:
-        SnapTransaction(SnapResource* app, QSnapdRequest* request, Role role);
+        SnapTransaction(SnapResource* app, QSnapdRequest* request, Role role, AbstractResource::State newState);
 
         void cancel() override;
 
@@ -43,6 +44,7 @@ class SnapTransaction : public Transaction
 
         SnapResource * const m_app;
         const QScopedPointer<QSnapdRequest> m_request;
+        const AbstractResource::State m_newState;
 };
 
 #endif // SNAPTRANSACTION_H
