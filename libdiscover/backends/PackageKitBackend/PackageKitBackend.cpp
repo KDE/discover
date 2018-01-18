@@ -38,6 +38,7 @@
 #include <QDebug>
 #include <QTimer>
 #include <QStandardPaths>
+#include <QFile>
 
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
@@ -564,6 +565,25 @@ AbstractResource * PackageKitBackend::resourceForFile(const QUrl& file)
 
 static QString readDistroName()
 {
+    const QStringList osreleasenames = (QStringList() << QStringLiteral("/etc/os-release")
+                                                      << QStringLiteral("/usr/lib/os-release"));
+    foreach (QString osrelease, osreleasenames)
+    {
+        QFile file(osrelease);
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            QByteArray line;
+            while (!file.atEnd()) {
+                line = file.readLine().trimmed();
+                if (line.startsWith("NAME=")) {
+                    auto output = line.right(line.length()-5);
+                    output = output.replace('\"',"");
+                    return QString::fromLocal8Bit(output);
+                }
+            }
+        }
+    }
+
     QProcess process;
     process.setEnvironment({QStringLiteral("LC_ALL=C")});
     process.start(QStringLiteral("lsb_release"), {QStringLiteral("-sd")});
