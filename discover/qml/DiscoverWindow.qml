@@ -197,7 +197,6 @@ Kirigami.ApplicationWindow
 
     globalDrawer: DiscoverDrawer {
         wideScreen: window.wideScreen
-        focus: true
     }
 
     onCurrentTopLevelChanged: {

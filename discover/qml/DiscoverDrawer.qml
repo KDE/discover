@@ -53,19 +53,21 @@ Kirigami.GlobalDrawer {
             Navigation.openHome()
     }
 
+    function suggestSearchText(text) {
+        toploader.item.text = text
+        toploader.item.forceActiveFocus()
+    }
     topContent: ConditionalLoader {
         id: toploader
         condition: drawer.wideScreen
         Layout.fillWidth: true
         componentFalse: Item {
             Layout.minimumHeight: 1
-            Keys.forwardTo: [window.pageStack]
         }
         componentTrue: SearchField {
             id: searchField
 
             visible: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
-            Keys.forwardTo: [window.pageStack]
 
             page: window.leftPage
 
@@ -76,6 +78,7 @@ Kirigami.GlobalDrawer {
                     Navigation.openApplicationList( { search: currentSearchText })
                 } else {
                     curr.search = currentSearchText;
+                    curr.forceActiveFocus()
                 }
             }
         }

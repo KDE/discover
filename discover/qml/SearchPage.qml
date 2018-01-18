@@ -35,6 +35,7 @@ ApplicationsListPage {
     listHeaderExtra: SearchField {
         id: searchField
         focus: true
+        Component.onCompleted: forceActiveFocus()
 
         Connections {
             ignoreUnknownSignals: true

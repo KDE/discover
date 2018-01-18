@@ -40,8 +40,6 @@ TextField
     }
     onAccepted: currentSearchText = text
 
-    Component.onCompleted: forceActiveFocus()
-
     hoverEnabled: true
     ToolTip {
         delay: Kirigami.Units.longDuration

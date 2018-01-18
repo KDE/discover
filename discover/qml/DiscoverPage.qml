@@ -57,4 +57,11 @@ Kirigami.ScrollablePage
                 root.refreshing = true
         }
     }
+
+    readonly property var readableCharacters: /\w+/
+    Keys.onPressed: {
+        if(event.text.length > 0 && event.modifiers === Qt.NoModifier && event.text.match(readableCharacters)) {
+            window.globalDrawer.suggestSearchText(event.text)
+        }
+    }
 }
