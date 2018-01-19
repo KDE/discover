@@ -80,6 +80,9 @@ DiscoverPage {
             id: appsModel
             sortRole: ResourcesProxyModel.RatingCountRole
             sortOrder: Qt.DescendingOrder
+            onBusyChanged: if (isBusy) {
+                apps.currentIndex = -1
+            }
         }
         spacing: Kirigami.Units.gridUnit
         currentIndex: -1
