@@ -105,13 +105,6 @@ DiscoverPage {
             Item {
                 Layout.fillWidth: true
             }
-            Kirigami.Icon {
-                Layout.preferredHeight: parent.implicitHeight
-                Layout.preferredWidth: Layout.preferredHeight
-
-                source: appInfo.application.icon
-                Layout.alignment: Qt.AlignVCenter
-            }
             Kirigami.Heading {
                 level: 3
                 Layout.maximumWidth: parent.width/2
@@ -146,16 +139,106 @@ DiscoverPage {
         }
     }
 
+    // Icon, name, caption, screenshots, description and reviews
     ColumnLayout {
         spacing: 0
-        Kirigami.Heading {
-            text: appInfo.application.comment
-            level: 4
-            Layout.fillWidth: true
-            elide: Text.ElideRight
-            bottomPadding: Kirigami.Units.largeSpacing
+        RowLayout {
+            Kirigami.Icon {
+                Layout.preferredHeight: 64
+                Layout.preferredWidth: 64
+                source: appInfo.application.icon
+                anchors.margins: 20
+            }
+            ColumnLayout {
+                spacing: 0
+                Kirigami.Heading {
+                    level: 3
+                    text: appInfo.application.name
+                    maximumLineCount: 1
+                    elide: Text.ElideRight
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignBottom
+                }
+                Kirigami.Heading {
+                    level: 5
+                    text: appInfo.application.comment
+                    maximumLineCount: 1
+                    elide: Text.ElideRight
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignTop
+                }
+            }
         }
 
+        Rectangle {
+            color: Kirigami.Theme.linkColor
+            Layout.fillWidth: true
+            height: 1
+            anchors.bottomMargin: Kirigami.Units.largeSpacing
+        }
+
+        ApplicationScreenshots {
+            Layout.topMargin: Kirigami.Units.largeSpacing
+            Layout.fillWidth: true
+            resource: appInfo.application
+            page: appInfo
+        }
+        Item {
+            Layout.fillWidth: true
+            height: 5
+        }
+        QQC2.Label {
+            Layout.fillWidth: true
+            horizontalAlignment: Text.AlignJustify
+            wrapMode: Text.WordWrap
+            text: appInfo.application.longDescription + originsOverlay.sentence
+            onLinkActivated: {
+                var idx = parseInt(link, 10)
+                var res = originsOverlay.model.resourceAt(idx)
+                window.stack.pop()
+                Navigation.openApplication(res)
+            }
+        }
+
+        LinkButton {
+            id: addonsButton
+            text: i18n("Addons")
+            visible: addonsView.containsAddons
+            onClicked: addonsView.sheetOpen = true
+        }
+
+        LinkButton {
+            text: i18n("Review")
+            onClicked: reviewsSheet.openReviewDialog()
+            visible: !commentsButton.visible && reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
+        }
+        LinkButton {
+            id: commentsButton
+            readonly property QtObject rating: appInfo.application.rating
+            visible: rating && rating.ratingCount>0 && reviewsModel.count
+            text: i18n("Show reviews (%1)...", rating ? reviewsModel.count : 0)
+
+            onClicked: {
+                reviewsSheet.open()
+            }
+        }
+
+        Item {
+            height: addonsButton.height
+            width: 5
+        }
+
+        // Details/metadata
+        Rectangle {
+            color: Kirigami.Theme.linkColor
+            Layout.fillWidth: true
+            height: 1
+            anchors.bottomMargin: Kirigami.Units.largeSpacing
+        }
+        Item {
+            Layout.fillWidth: true
+            height: 5
+        }
         GridLayout {
             rowSpacing: 0
             columns: 2
@@ -243,61 +326,6 @@ DiscoverPage {
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
             }
-        }
-
-        ApplicationScreenshots {
-            Layout.topMargin: Kirigami.Units.largeSpacing
-            Layout.fillWidth: true
-            resource: appInfo.application
-            page: appInfo
-        }
-
-        Kirigami.Heading {
-            level: 3
-            Layout.topMargin: Kirigami.Units.largeSpacing
-            text: i18n("Description")
-            Layout.fillWidth: true
-            visible: appInfo.application.longDescription.length > 0
-        }
-        QQC2.Label {
-            Layout.fillWidth: true
-            horizontalAlignment: Text.AlignJustify
-            wrapMode: Text.WordWrap
-            text: appInfo.application.longDescription + originsOverlay.sentence
-            onLinkActivated: {
-                var idx = parseInt(link, 10)
-                var res = originsOverlay.model.resourceAt(idx)
-                window.stack.pop()
-                Navigation.openApplication(res)
-            }
-        }
-
-        LinkButton {
-            id: addonsButton
-            text: i18n("Addons")
-            visible: addonsView.containsAddons
-            onClicked: addonsView.sheetOpen = true
-        }
-
-        LinkButton {
-            text: i18n("Review")
-            onClicked: reviewsSheet.openReviewDialog()
-            visible: !commentsButton.visible && reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
-        }
-        LinkButton {
-            id: commentsButton
-            readonly property QtObject rating: appInfo.application.rating
-            visible: rating && rating.ratingCount>0 && reviewsModel.count
-            text: i18n("Show reviews (%1)...", rating ? reviewsModel.count : 0)
-
-            onClicked: {
-                reviewsSheet.open()
-            }
-        }
-
-        Item {
-            height: addonsButton.height
-            width: 5
         }
     }
 

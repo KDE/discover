@@ -40,7 +40,12 @@ TextField
     }
     onAccepted: currentSearchText = text
 
-    Component.onCompleted: forceActiveFocus()
+    hoverEnabled: true
+    ToolTip {
+        delay: Kirigami.Units.longDuration
+        visible: hovered
+        text: searchAction.shortcut
+    }
 
     QQC1.ToolButton {
         anchors {
