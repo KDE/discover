@@ -144,23 +144,23 @@ DiscoverPage {
         spacing: 0
         RowLayout {
             Kirigami.Icon {
-                Layout.preferredHeight: 64
-                Layout.preferredWidth: 64
+                Layout.preferredHeight: 80
+                Layout.preferredWidth: 80
                 source: appInfo.application.icon
                 anchors.margins: 20
             }
             ColumnLayout {
                 spacing: 0
                 Kirigami.Heading {
-                    level: 3
+                    level: 1
                     text: appInfo.application.name
                     maximumLineCount: 1
                     elide: Text.ElideRight
                     Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignBottom
+                    Layout.alignment: Text.AlignBottom
                 }
                 Kirigami.Heading {
-                    level: 5
+                    level: 4
                     text: appInfo.application.comment
                     maximumLineCount: 1
                     elide: Text.ElideRight
@@ -168,25 +168,16 @@ DiscoverPage {
                     Layout.alignment: Qt.AlignTop
                 }
             }
-        }
-
-        Rectangle {
-            color: Kirigami.Theme.linkColor
-            Layout.fillWidth: true
-            height: 1
-            anchors.bottomMargin: Kirigami.Units.largeSpacing
+            Layout.bottomMargin: Kirigami.Units.largeSpacing
         }
 
         ApplicationScreenshots {
-            Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.fillWidth: true
             resource: appInfo.application
             page: appInfo
+            Layout.bottomMargin: Kirigami.Units.largeSpacing
         }
-        Item {
-            Layout.fillWidth: true
-            height: 5
-        }
+
         QQC2.Label {
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignJustify
@@ -230,14 +221,11 @@ DiscoverPage {
 
         // Details/metadata
         Rectangle {
+            Layout.topMargin: Kirigami.Units.smallSpacing
             color: Kirigami.Theme.linkColor
             Layout.fillWidth: true
             height: 1
-            anchors.bottomMargin: Kirigami.Units.largeSpacing
-        }
-        Item {
-            Layout.fillWidth: true
-            height: 5
+            Layout.bottomMargin: Kirigami.Units.smallSpacing
         }
         GridLayout {
             rowSpacing: 0

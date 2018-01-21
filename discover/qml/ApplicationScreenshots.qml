@@ -22,6 +22,7 @@ import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import QtQuick.Controls 2.1 as QQC2
+import QtGraphicalEffects 1.0
 import org.kde.discover 2.0
 import org.kde.kirigami 2.0 as Kirigami
 
@@ -29,9 +30,8 @@ Flow {
     id: root
     property alias resource: screenshotsModel.application
 
-    spacing: Kirigami.Units.smallSpacing
+    spacing: Kirigami.Units.largeSpacing
 
-    readonly property real side: Kirigami.Units.gridUnit * 8
     property QtObject page
     visible: screenshotsModel.count>0
 
@@ -104,30 +104,44 @@ Flow {
             id: screenshotsModel
         }
 
-        delegate: Image {
-            source: small_image_url
-            height: root.side
-            width: root.side
-            fillMode: Image.PreserveAspectCrop
-            smooth: true
-            opacity: mouse.containsMouse? 0.5 : 1
+        delegate: Item {
             readonly property url imageSource: large_image_url
-
-            Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 200 } }
-
-            BusyIndicator {
-                visible: running
-                running: parent.status == Image.Loading
-                anchors.centerIn: parent
+            height: thumbnail.height
+            width: thumbnail.width
+            DropShadow {
+                source: thumbnail
+                anchors.fill: thumbnail
+                verticalOffset: 3
+                horizontalOffset: 0
+                radius: 12.0
+                samples: 25
+                color: "#232627" // Shade Black from standard Breeze colors
+                cached: true
             }
+            Image {
+                id: thumbnail
+                source: small_image_url
+                height: Kirigami.Units.gridUnit * 7
+                fillMode: Image.PreserveAspectFit
+                smooth: true
+                opacity: mouse.containsMouse? 0.5 : 1
 
-            MouseArea {
-                id: mouse
-                anchors.fill: parent
-                hoverEnabled: true
-                onClicked: {
-                    root.currentIndex = index
-                    overlay.open()
+                Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 200 } }
+
+                BusyIndicator {
+                    visible: running
+                    running: parent.status == Image.Loading
+                    anchors.centerIn: thumbnail
+                }
+
+                MouseArea {
+                    id: mouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onClicked: {
+                        root.currentIndex = index
+                        overlay.open()
+                    }
                 }
             }
         }
