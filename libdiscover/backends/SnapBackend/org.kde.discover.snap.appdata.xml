@@ -2,6 +2,7 @@
 <component type="addon">
   <id>org.kde.discover.snap</id>
   <name>Snap backend</name>
+  <name xml:lang="ar">سَند سناپ</name>
   <name xml:lang="ca">Dorsal de l'Snap</name>
   <name xml:lang="ca-valencia">Dorsal de l'Snap</name>
   <name xml:lang="es">Motor Snap</name>
@@ -15,6 +16,7 @@
   <name xml:lang="uk">Модуль Snap</name>
   <name xml:lang="x-test">xxSnap backendxx</name>
   <summary>Integrates Snap applications into Discover</summary>
+  <summary xml:lang="ar">يُكامل تطبيقات ”سناپ“ في «استكشف»</summary>
   <summary xml:lang="ca">Integra aplicacions de l'Snap al Discover</summary>
   <summary xml:lang="ca-valencia">Integra aplicacions de l'Snap al Discover</summary>
   <summary xml:lang="es">Integra aplicaciones Snap en Discover</summary>
@@ -31,6 +33,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <developer_name>Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ar">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ast">Aleix Pol González</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
