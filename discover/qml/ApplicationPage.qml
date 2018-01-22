@@ -154,6 +154,7 @@ DiscoverPage {
                 Kirigami.Heading {
                     level: 1
                     text: appInfo.application.name
+                    lineHeight: 1.0
                     maximumLineCount: 1
                     elide: Text.ElideRight
                     Layout.fillWidth: true
@@ -162,7 +163,8 @@ DiscoverPage {
                 Kirigami.Heading {
                     level: 4
                     text: appInfo.application.comment
-                    maximumLineCount: 1
+                    maximumLineCount: 2
+                    lineHeight: lineCount > 1 ? 0.75 : 1.2
                     elide: Text.ElideRight
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignTop
