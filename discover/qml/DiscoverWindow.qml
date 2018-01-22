@@ -97,10 +97,6 @@ Kirigami.ApplicationWindow
             Navigation.clearStack()
             Navigation.openApplication(app)
         }
-        onOpenUrl: {
-            currentTopLevel = topBrowsingComp;
-            Navigation.openUrlResources(url)
-        }
         onListMimeInternal:  {
             currentTopLevel = topBrowsingComp;
             Navigation.openApplicationMime(mime)

@@ -76,7 +76,6 @@ class DiscoverObject : public QObject
     Q_SIGNALS:
         void openSearch(const QString &search);
         void openApplicationInternal(AbstractResource* app);
-        void openUrl(const QUrl& url);
         void listMimeInternal(const QString& mime);
         void listCategoryInternal(Category* cat);
 

@@ -217,7 +217,30 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
 void DiscoverObject::openApplication(const QUrl& url)
 {
     Q_ASSERT(!url.isEmpty());
-    Q_EMIT openUrl(url);
+    rootObject()->setProperty("defaultStartup", false);
+    auto action = new OneTimeAction(
+        [this, url]() {
+            AbstractResourcesBackend::Filters f;
+            f.resourceUrl = url;
+            auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
+            connect(stream, &StoredResultsStream::finished, this, [this, url, stream]() {
+                const auto res = stream->resources();
+                qDebug() << "results..." << res;
+                if (res.count() == 1) {
+                    emit openApplicationInternal(res.first());
+                } else {
+                    rootObject()->setProperty("defaultStartup", true);
+                    showPassiveNotification(i18n("Couldn't open %1", url.toDisplayString()));
+                }
+            });
+        }
+        , this);
+
+    if (ResourcesModel::global()->backends().isEmpty()) {
+        connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
+    } else {
+        action->trigger();
+    }
 }
 
 void DiscoverObject::integrateObject(QObject* object)
