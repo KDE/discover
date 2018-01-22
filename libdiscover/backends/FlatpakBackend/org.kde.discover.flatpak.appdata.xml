@@ -2,6 +2,7 @@
 <component type="addon">
   <id>org.kde.discover.flatpak</id>
   <name>Flatpak backend</name>
+  <name xml:lang="ar">سَند فلاتپاك</name>
   <name xml:lang="ca">Dorsal del Flatpak</name>
   <name xml:lang="ca-valencia">Dorsal del Flatpak</name>
   <name xml:lang="es">Motor Flatpak</name>
@@ -14,6 +15,7 @@
   <name xml:lang="uk">Модуль Flatpak</name>
   <name xml:lang="x-test">xxFlatpak backendxx</name>
   <summary>Integrates Flatpak applications into Discover</summary>
+  <summary xml:lang="ar">يُكامل تطبيقات ”فلاتپاك“ في «استكشف»</summary>
   <summary xml:lang="ca">Integra aplicacions del Flatpak al Discover</summary>
   <summary xml:lang="ca-valencia">Integra aplicacions del Flatpak al Discover</summary>
   <summary xml:lang="es">Integra aplicaciones Flatpak en Discover</summary>
@@ -29,6 +31,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <developer_name>Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ar">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="es">Aleix Pol Gonzalez</developer_name>

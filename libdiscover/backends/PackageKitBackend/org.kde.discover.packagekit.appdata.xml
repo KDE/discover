@@ -2,6 +2,7 @@
 <component type="addon">
   <id>org.kde.discover.packagekit</id>
   <name>PackageKit backend</name>
+  <name xml:lang="ar">سَند عدّة الحزم</name>
   <name xml:lang="ca">Dorsal del PackageKit</name>
   <name xml:lang="ca-valencia">Dorsal del PackageKit</name>
   <name xml:lang="es">Motor PackageKit</name>
@@ -14,6 +15,7 @@
   <name xml:lang="uk">Модуль PackageKit</name>
   <name xml:lang="x-test">xxPackageKit backendxx</name>
   <summary>Integrates distribution applications into Discover</summary>
+  <summary xml:lang="ar">يُكامل تطبيقات ”عُدّة الحزم“ في «استكشف»</summary>
   <summary xml:lang="ca">Integra aplicacions de distribució al Discover</summary>
   <summary xml:lang="ca-valencia">Integra aplicacions de distribució al Discover</summary>
   <summary xml:lang="es">Integra aplicaciones de la distribución en Discover</summary>
@@ -29,6 +31,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <developer_name>Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ar">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="es">Aleix Pol Gonzalez</developer_name>
