@@ -182,7 +182,6 @@ DiscoverPage {
 
         QQC2.Label {
             Layout.fillWidth: true
-            horizontalAlignment: Text.AlignJustify
             wrapMode: Text.WordWrap
             text: appInfo.application.longDescription + originsOverlay.sentence
             onLinkActivated: {
