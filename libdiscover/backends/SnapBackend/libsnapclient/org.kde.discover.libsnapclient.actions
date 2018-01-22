@@ -1,5 +1,6 @@
 [org.kde.discover.libsnapclient.login]
 Name=Snap login action
+Name[ar]=إجراء ولوج سناپ
 Name[ca]=Accions de connexió de l'Snap
 Name[ca@valencia]=Accions de connexió de l'Snap
 Name[da]=Snap login-handling
@@ -32,6 +33,7 @@ Name[x-test]=xxSnap login actionxx
 Name[zh_CN]=Snap 登录动作
 Name[zh_TW]=Snap 登入動作
 Description=Allows snap front-ends to log in
+Description[ar]=يتيح لسندات ”سناپ“ الولوج
 Description[ca]=Permet que els frontals de l'Snap es connectin
 Description[ca@valencia]=Permet que els frontals de l'Snap es connecten
 Description[da]=Tillader snap-frontends at logge ind
