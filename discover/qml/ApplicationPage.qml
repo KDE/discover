@@ -147,7 +147,7 @@ DiscoverPage {
                 Layout.preferredHeight: 80
                 Layout.preferredWidth: 80
                 source: appInfo.application.icon
-                anchors.margins: 20
+                Layout.rightMargin: Kirigami.Units.smallSpacing * 2
             }
             ColumnLayout {
                 spacing: 0
