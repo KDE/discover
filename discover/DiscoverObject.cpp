@@ -17,7 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "DiscoverMainWindow.h"
+#include "DiscoverObject.h"
 #include "PaginateModel.h"
 #include "UnityLauncher.h"
 #include "FeaturedModel.h"
@@ -79,7 +79,7 @@ public:
     }
 };
 
-DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
+DiscoverObject::DiscoverObject(CompactMode mode)
     : QObject()
     , m_engine(new QQmlApplicationEngine)
     , m_mode(mode)
@@ -100,7 +100,7 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     qmlRegisterType<QQuickView>();
     qmlRegisterType<QActionGroup>();
     qmlRegisterType<QAction>();
-    qmlRegisterUncreatableType<DiscoverMainWindow>("org.kde.discover.app", 1, 0, "DiscoverMainWindow", QStringLiteral("don't do that"));
+    qmlRegisterUncreatableType<DiscoverObject>("org.kde.discover.app", 1, 0, "DiscoverMainWindow", QStringLiteral("don't do that"));
     setupActions();
 
     auto uri = "org.kde.discover";
@@ -114,21 +114,21 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     m_engine->setNetworkAccessManagerFactory(m_networkAccessManagerFactory.data());
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
 
-    connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverMainWindow::integrateObject);
+    connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverObject::integrateObject);
     m_engine->load(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
 }
 
-DiscoverMainWindow::~DiscoverMainWindow()
+DiscoverObject::~DiscoverObject()
 {
     delete m_engine;
 }
 
-bool DiscoverMainWindow::isRoot()
+bool DiscoverObject::isRoot()
 {
     return ::getuid() == 0;
 }
 
-QStringList DiscoverMainWindow::modes() const
+QStringList DiscoverObject::modes() const
 {
     QStringList ret;
     QObject* obj = rootObject();
@@ -142,7 +142,7 @@ QStringList DiscoverMainWindow::modes() const
     return ret;
 }
 
-void DiscoverMainWindow::openMode(const QString& _mode)
+void DiscoverObject::openMode(const QString& _mode)
 {
     if(!modes().contains(_mode))
         qWarning() << "unknown mode" << _mode;
@@ -159,12 +159,12 @@ void DiscoverMainWindow::openMode(const QString& _mode)
         obj->setProperty("currentTopLevel", modeComp);
 }
 
-void DiscoverMainWindow::openMimeType(const QString& mime)
+void DiscoverObject::openMimeType(const QString& mime)
 {
     emit listMimeInternal(mime);
 }
 
-void DiscoverMainWindow::openCategory(const QString& category)
+void DiscoverObject::openCategory(const QString& category)
 {
     rootObject()->setProperty("defaultStartup", false);
     auto action = new OneTimeAction(
@@ -186,7 +186,7 @@ void DiscoverMainWindow::openCategory(const QString& category)
     }
 }
 
-void DiscoverMainWindow::openLocalPackage(const QUrl& localfile)
+void DiscoverObject::openLocalPackage(const QUrl& localfile)
 {
     if (!QFile::exists(localfile.toLocalFile())) {
 //         showPassiveNotification(i18n("Trying to open unexisting file '%1'", localfile.toString()));
@@ -214,13 +214,13 @@ void DiscoverMainWindow::openLocalPackage(const QUrl& localfile)
     }
 }
 
-void DiscoverMainWindow::openApplication(const QUrl& url)
+void DiscoverObject::openApplication(const QUrl& url)
 {
     Q_ASSERT(!url.isEmpty());
     Q_EMIT openUrl(url);
 }
 
-void DiscoverMainWindow::integrateObject(QObject* object)
+void DiscoverObject::integrateObject(QObject* object)
 {
     if (!object) {
         qWarning() << "Errors when loading the GUI";
@@ -244,7 +244,7 @@ void DiscoverMainWindow::integrateObject(QObject* object)
     connect(object, &QObject::destroyed, qGuiApp, &QCoreApplication::quit);
 }
 
-bool DiscoverMainWindow::eventFilter(QObject * object, QEvent * event)
+bool DiscoverObject::eventFilter(QObject * object, QEvent * event)
 {
     if (object!=rootObject())
         return false;
@@ -265,40 +265,40 @@ bool DiscoverMainWindow::eventFilter(QObject * object, QEvent * event)
     return false;
 }
 
-void DiscoverMainWindow::setupActions()
+void DiscoverObject::setupActions()
 {
     if (KAuthorized::authorizeAction(QStringLiteral("help_contents"))) {
-        auto mHandBookAction = KStandardAction::helpContents(this, &DiscoverMainWindow::appHelpActivated, this);
+        auto mHandBookAction = KStandardAction::helpContents(this, &DiscoverObject::appHelpActivated, this);
         m_collection[mHandBookAction->objectName()] = mHandBookAction;
     }
 
     if (KAuthorized::authorizeAction(QStringLiteral("help_report_bug")) && !KAboutData::applicationData().bugAddress().isEmpty()) {
-        auto mReportBugAction = KStandardAction::reportBug(this, &DiscoverMainWindow::reportBug, this);
+        auto mReportBugAction = KStandardAction::reportBug(this, &DiscoverObject::reportBug, this);
         m_collection[mReportBugAction->objectName()] = mReportBugAction;
     }
 
     if (KAuthorized::authorizeAction(QStringLiteral("help_about_app"))) {
-        auto mAboutAppAction = KStandardAction::aboutApp(this, &DiscoverMainWindow::aboutApplication, this);
+        auto mAboutAppAction = KStandardAction::aboutApp(this, &DiscoverObject::aboutApplication, this);
         m_collection[mAboutAppAction->objectName()] = mAboutAppAction;
     }
 }
 
-QAction * DiscoverMainWindow::action(const QString& name) const
+QAction * DiscoverObject::action(const QString& name) const
 {
     return m_collection.value(name);
 }
 
-QString DiscoverMainWindow::iconName(const QIcon& icon)
+QString DiscoverObject::iconName(const QIcon& icon)
 {
     return icon.name();
 }
 
-void DiscoverMainWindow::appHelpActivated()
+void DiscoverObject::appHelpActivated()
 {
     QDesktopServices::openUrl(QUrl(QStringLiteral("help:/")));
 }
 
-void DiscoverMainWindow::aboutApplication()
+void DiscoverObject::aboutApplication()
 {
     static QPointer<QDialog> dialog;
     if (!dialog) {
@@ -308,7 +308,7 @@ void DiscoverMainWindow::aboutApplication()
     dialog->show();
 }
 
-void DiscoverMainWindow::reportBug()
+void DiscoverObject::reportBug()
 {
     static QPointer<QDialog> dialog;
     if (!dialog) {
@@ -318,14 +318,14 @@ void DiscoverMainWindow::reportBug()
     dialog->show();
 }
 
-void DiscoverMainWindow::switchApplicationLanguage()
+void DiscoverObject::switchApplicationLanguage()
 {
 //     auto langDialog = new KSwitchLanguageDialog(nullptr);
 //     connect(langDialog, SIGNAL(finished(int)), this, SLOT(dialogFinished()));
 //     langDialog->show();
 }
 
-void DiscoverMainWindow::setCompactMode(DiscoverMainWindow::CompactMode mode)
+void DiscoverObject::setCompactMode(DiscoverObject::CompactMode mode)
 {
     if (m_mode != mode) {
         m_mode = mode;
@@ -381,21 +381,21 @@ private:
     QList<QQmlError> m_warnings;
 };
 
-void DiscoverMainWindow::loadTest(const QUrl& url)
+void DiscoverObject::loadTest(const QUrl& url)
 {
     new DiscoverTestExecutor(rootObject(), engine(), url);
 }
 
-QWindow* DiscoverMainWindow::rootObject() const
+QWindow* DiscoverObject::rootObject() const
 {
     return qobject_cast<QWindow*>(m_engine->rootObjects().at(0));
 }
 
-void DiscoverMainWindow::showPassiveNotification(const QString& msg)
+void DiscoverObject::showPassiveNotification(const QString& msg)
 {
     QTimer::singleShot(100, this, [this, msg](){
         QMetaObject::invokeMethod(rootObject(), "showPassiveNotification", Qt::QueuedConnection, Q_ARG(QVariant, msg), Q_ARG(QVariant, {}), Q_ARG(QVariant, {}), Q_ARG(QVariant, {}));
     });
 }
 
-#include "DiscoverMainWindow.moc"
+#include "DiscoverObject.moc"
