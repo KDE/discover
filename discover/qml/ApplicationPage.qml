@@ -139,6 +139,8 @@ DiscoverPage {
         }
     }
 
+    leftPadding: Kirigami.Units.largeSpacing * (applicationWindow().wideScreen ? 2 : 1)
+    rightPadding: Kirigami.Units.largeSpacing * (applicationWindow().wideScreen ? 2 : 1)
     // Icon, name, caption, screenshots, description and reviews
     ColumnLayout {
         spacing: 0
