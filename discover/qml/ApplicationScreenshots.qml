@@ -19,28 +19,26 @@
 
 
 import QtQuick 2.1
-import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import QtQuick.Controls 2.1 as QQC2
 import QtGraphicalEffects 1.0
 import org.kde.discover 2.0
 import org.kde.kirigami 2.0 as Kirigami
 
-Flow {
+ListView {
     id: root
     property alias resource: screenshotsModel.application
-
-    spacing: Kirigami.Units.largeSpacing
-
     property QtObject page
-    visible: screenshotsModel.count>0
-
     property int currentIndex: -1
     readonly property Item currentItem: root.currentIndex >= 0 ? rep.itemAt(root.currentIndex) : null
+    readonly property alias count: screenshotsModel.count
+
+    spacing: Kirigami.Units.largeSpacing
+    focus: overlay.visible
 
     Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
     Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
-    focus: overlay.visible
+    orientation: ListView.Horizontal
 
     QQC2.Popup {
         id: overlay
@@ -93,59 +91,54 @@ Flow {
             id: rightAction
             iconName: "arrow-right"
             enabled: overlay.visible && visible
-            visible: root.currentIndex < (rep.count - 1)
+            visible: root.currentIndex < (root.count - 1)
             onTriggered: root.currentIndex += 1
         }
     }
 
-    Repeater {
-        id: rep
-        model: ScreenshotsModel {
-            id: screenshotsModel
+    model: ScreenshotsModel {
+        id: screenshotsModel
+    }
+
+    delegate: Item {
+        readonly property url imageSource: large_image_url
+        height: parent.height
+        width: Math.max(thumbnail.width, 50)
+        DropShadow {
+            source: thumbnail
+            anchors.fill: thumbnail
+            verticalOffset: 3
+            horizontalOffset: 0
+            radius: 12.0
+            samples: 25
+            color: Kirigami.Theme.disabledTextColor
+            cached: true
         }
+        Image {
+            id: thumbnail
+            source: small_image_url
+            height: parent.height
+            fillMode: Image.PreserveAspectFit
+            smooth: true
+            opacity: mouse.containsMouse? 0.5 : 1
 
-        delegate: Item {
-            readonly property url imageSource: large_image_url
-            height: thumbnail.height
-            width: thumbnail.width
-            DropShadow {
-                source: thumbnail
-                anchors.fill: thumbnail
-                verticalOffset: 3
-                horizontalOffset: 0
-                radius: 12.0
-                samples: 25
-                color: "#232627" // Shade Black from standard Breeze colors
-                cached: true
+            Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 200 } }
+
+            BusyIndicator {
+                visible: running
+                running: parent.status == Image.Loading
+                anchors.centerIn: thumbnail
             }
-            Image {
-                id: thumbnail
-                source: small_image_url
-                height: Kirigami.Units.gridUnit * 7
-                fillMode: Image.PreserveAspectFit
-                smooth: true
-                opacity: mouse.containsMouse? 0.5 : 1
 
-                Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 200 } }
-
-                BusyIndicator {
-                    visible: running
-                    running: parent.status == Image.Loading
-                    anchors.centerIn: thumbnail
-                }
-
-                MouseArea {
-                    id: mouse
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: {
-                        root.currentIndex = index
-                        overlay.open()
-                    }
+            MouseArea {
+                id: mouse
+                anchors.fill: parent
+                hoverEnabled: true
+                onClicked: {
+                    root.currentIndex = index
+                    overlay.open()
                 }
             }
         }
     }
-
-    Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
 }

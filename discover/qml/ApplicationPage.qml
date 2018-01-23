@@ -19,7 +19,7 @@
 
 import QtQuick 2.5
 import QtQuick.Controls 1.1
-import QtQuick.Controls 2.1 as QQC2
+import QtQuick.Controls 2.3 as QQC2
 import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
@@ -175,11 +175,17 @@ DiscoverPage {
             Layout.bottomMargin: Kirigami.Units.largeSpacing
         }
 
-        ApplicationScreenshots {
+        ScrollView {
             Layout.fillWidth: true
-            resource: appInfo.application
-            page: appInfo
+            Layout.minimumHeight: Kirigami.Units.gridUnit * 5
+            visible: screenshots.count > 0
             Layout.bottomMargin: Kirigami.Units.largeSpacing
+            ApplicationScreenshots {
+                id: screenshots
+                resource: appInfo.application
+                page: appInfo
+
+            }
         }
 
         QQC2.Label {
