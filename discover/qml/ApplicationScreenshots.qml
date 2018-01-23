@@ -29,9 +29,6 @@ ListView {
     id: root
     property alias resource: screenshotsModel.application
     property QtObject page
-    property int currentIndex: -1
-    readonly property Item currentItem: root.currentIndex >= 0 ? rep.itemAt(root.currentIndex) : null
-    readonly property alias count: screenshotsModel.count
 
     spacing: Kirigami.Units.largeSpacing
     focus: overlay.visible
@@ -84,7 +81,7 @@ ListView {
             iconName: "arrow-left"
             enabled: overlay.visible && visible
             visible: root.currentIndex >= 1
-            onTriggered: root.currentIndex -= 1
+            onTriggered: root.decrementCurrentIndex()
         }
 
         Kirigami.Action {
@@ -92,7 +89,7 @@ ListView {
             iconName: "arrow-right"
             enabled: overlay.visible && visible
             visible: root.currentIndex < (root.count - 1)
-            onTriggered: root.currentIndex += 1
+            onTriggered: root.incrementCurrentIndex()
         }
     }
 
@@ -102,11 +99,12 @@ ListView {
 
     delegate: Item {
         readonly property url imageSource: large_image_url
+        readonly property real proportion: overlayImage.sourceSize.height/overlayImage.sourceSize.width
         height: parent.height
-        width: Math.max(thumbnail.width, 50)
+        width: height/proportion
         DropShadow {
             source: thumbnail
-            anchors.fill: thumbnail
+            anchors.fill: parent
             verticalOffset: 3
             horizontalOffset: 0
             radius: 12.0
@@ -114,31 +112,51 @@ ListView {
             color: Kirigami.Theme.disabledTextColor
             cached: true
         }
+        opacity: mouse.containsMouse? 0.5 : 1
+        MouseArea {
+            id: mouse
+            anchors.fill: parent
+            hoverEnabled: true
+            onClicked: {
+                root.currentIndex = index
+                overlay.open()
+            }
+        }
+        BusyIndicator {
+            visible: running
+            running: parent.status == Image.Loading
+            anchors.centerIn: thumbnail
+        }
+
         Image {
             id: thumbnail
             source: small_image_url
             height: parent.height
             fillMode: Image.PreserveAspectFit
             smooth: true
-            opacity: mouse.containsMouse? 0.5 : 1
-
-            Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 200 } }
-
-            BusyIndicator {
-                visible: running
-                running: parent.status == Image.Loading
-                anchors.centerIn: thumbnail
-            }
-
-            MouseArea {
-                id: mouse
-                anchors.fill: parent
-                hoverEnabled: true
-                onClicked: {
-                    root.currentIndex = index
-                    overlay.open()
-                }
-            }
         }
+
+    }
+
+    layer.enabled: true
+    // This item should be used as the 'mask'
+    layer.effect: ShaderEffect {
+        property var colorSource: root;
+        property bool atLeft: root.atXBeginning;
+        property bool atRight: root.atXEnd;
+        fragmentShader: "
+            uniform lowp bool atLeft;
+            uniform lowp bool atRight;
+            uniform lowp sampler2D colorSource;
+            uniform lowp float qt_Opacity;
+            varying highp vec2 qt_TexCoord0;
+            void main() {
+                gl_FragColor =
+                    texture2D(colorSource, qt_TexCoord0)
+                    * (atRight ? 1. : min(1.0, qt_TexCoord0.x * -20.0 + 20.))
+                    * (atLeft  ? 1. : min(1.0, qt_TexCoord0.x *  20.0))
+                    * qt_Opacity;
+            }
+        "
     }
 }
