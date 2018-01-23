@@ -47,5 +47,6 @@
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="x-test">xxAleix Pol Gonzalezxx</developer_name>
+  <developer_name xml:lang="zh-CN">Aleix Pol Gonzalez</developer_name>
   <icon type="stock">system-software-install</icon>
 </component>
