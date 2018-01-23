@@ -99,8 +99,9 @@ ListView {
 
     delegate: Item {
         readonly property url imageSource: large_image_url
-        readonly property real proportion: overlayImage.sourceSize.height/overlayImage.sourceSize.width
-        height: parent.height
+        readonly property real proportion: thumbnail.sourceSize.height/thumbnail.sourceSize.width
+        y: parent.height * 0.05
+        height: parent.height * 0.9
         width: height/proportion
         DropShadow {
             source: thumbnail
@@ -112,7 +113,7 @@ ListView {
             color: Kirigami.Theme.disabledTextColor
             cached: true
         }
-        opacity: mouse.containsMouse? 0.5 : 1
+
         MouseArea {
             id: mouse
             anchors.fill: parent
