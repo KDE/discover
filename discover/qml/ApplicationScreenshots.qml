@@ -117,6 +117,8 @@ ListView {
             id: mouse
             anchors.fill: parent
             hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+
             onClicked: {
                 root.currentIndex = index
                 overlay.open()
