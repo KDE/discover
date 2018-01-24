@@ -44,7 +44,7 @@ ListView {
 
         x: (parent.width - width)/2
         y: (parent.height - height)/2
-        readonly property real proportion: overlayImage.sourceSize.height/overlayImage.sourceSize.width
+        readonly property real proportion: overlayImage.sourceSize.width>1 ? overlayImage.sourceSize.height/overlayImage.sourceSize.width : 1
         height: Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
         width: height/proportion
 
@@ -99,7 +99,7 @@ ListView {
 
     delegate: Item {
         readonly property url imageSource: large_image_url
-        readonly property real proportion: thumbnail.sourceSize.height/thumbnail.sourceSize.width
+        readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
         y: parent.height * 0.05
         height: parent.height * 0.9
         width: Math.max(50, height/proportion)
@@ -115,7 +115,6 @@ ListView {
         }
 
         MouseArea {
-            id: mouse
             anchors.fill: parent
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
