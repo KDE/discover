@@ -31,7 +31,7 @@ class QQmlApplicationEngine;
 class CachedNetworkAccessManagerFactory;
 class ResourcesProxyModel;
 
-class DiscoverMainWindow : public QObject
+class DiscoverObject : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(CompactMode compactMode READ compactMode WRITE setCompactMode NOTIFY compactModeChanged)
@@ -40,8 +40,8 @@ class DiscoverMainWindow : public QObject
         enum CompactMode { Auto, Compact, Full };
         Q_ENUM(CompactMode)
 
-        explicit DiscoverMainWindow(CompactMode mode);
-        ~DiscoverMainWindow() override;
+        explicit DiscoverObject(CompactMode mode);
+        ~DiscoverObject() override;
 
         QStringList modes() const;
         void setupActions();
@@ -76,7 +76,6 @@ class DiscoverMainWindow : public QObject
     Q_SIGNALS:
         void openSearch(const QString &search);
         void openApplicationInternal(AbstractResource* app);
-        void openUrl(const QUrl& url);
         void listMimeInternal(const QString& mime);
         void listCategoryInternal(Category* cat);
 

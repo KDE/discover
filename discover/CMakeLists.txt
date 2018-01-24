@@ -8,7 +8,7 @@ qt5_add_resources(plasma_discover_SRCS assets.qrc)
 
 add_executable(plasma-discover ${plasma_discover_SRCS}
     main.cpp
-    DiscoverMainWindow.cpp
+    DiscoverObject.cpp
     DiscoverDeclarativePlugin.cpp
 
     FeaturedModel.cpp

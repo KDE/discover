@@ -26,17 +26,17 @@
 #include <KLocalizedString>
 #include <QCommandLineParser>
 #include <qwindow.h>
-#include "DiscoverMainWindow.h"
+#include "DiscoverObject.h"
 #include <DiscoverBackendsFactory.h>
 #include "DiscoverVersion.h"
 #include <QTextStream>
 #include <QStandardPaths>
 
-typedef QHash<QString, DiscoverMainWindow::CompactMode> StringCompactMode;
+typedef QHash<QString, DiscoverObject::CompactMode> StringCompactMode;
 Q_GLOBAL_STATIC_WITH_ARGS(StringCompactMode, s_decodeCompactMode, (StringCompactMode {
-    { QLatin1String("auto"), DiscoverMainWindow::Auto },
-    { QLatin1String("compact"), DiscoverMainWindow::Compact },
-    { QLatin1String("full"), DiscoverMainWindow::Full }
+    { QLatin1String("auto"), DiscoverObject::Auto },
+    { QLatin1String("compact"), DiscoverObject::Compact },
+    { QLatin1String("full"), DiscoverObject::Full }
 }))
 
 QCommandLineParser* createParser()
@@ -59,7 +59,7 @@ QCommandLineParser* createParser()
     return parser;
 }
 
-void processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
+void processArgs(QCommandLineParser* parser, DiscoverObject* mainWindow)
 {
     if(parser->isSet(QStringLiteral("application")))
         mainWindow->openApplication(QUrl(parser->value(QStringLiteral("application"))));
@@ -100,7 +100,7 @@ int main(int argc, char** argv)
     about.setProductName("discover/discover");
     KAboutData::setApplicationData(about);
 
-    DiscoverMainWindow *mainWindow = nullptr;
+    DiscoverObject *mainWindow = nullptr;
     {
         QScopedPointer<QCommandLineParser> parser(createParser());
         parser->process(app);
@@ -121,8 +121,8 @@ int main(int argc, char** argv)
 
         KDBusService* service = new KDBusService(KDBusService::Unique, &app);
 
-        mainWindow = new DiscoverMainWindow(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverMainWindow::Full));
-        QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverMainWindow::deleteLater);
+        mainWindow = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full));
+        QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverObject::deleteLater);
         QObject::connect(service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList &arguments, const QString &/*workingDirectory*/){
             if (!mainWindow->rootObject())
                 QCoreApplication::instance()->quit();

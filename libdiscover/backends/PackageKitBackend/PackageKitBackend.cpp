@@ -81,15 +81,6 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 
     SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
 
-    QTimer::singleShot(0, this, &PackageKitBackend::delayedInit);
-}
-
-PackageKitBackend::~PackageKitBackend()
-{
-}
-
-void PackageKitBackend::delayedInit()
-{
     QString error;
     const bool b = m_appdata.load(&error);
     reloadPackageList();
@@ -102,6 +93,8 @@ void PackageKitBackend::delayedInit()
         });
     }
 }
+
+PackageKitBackend::~PackageKitBackend() = default;
 
 bool PackageKitBackend::isFetching() const
 {

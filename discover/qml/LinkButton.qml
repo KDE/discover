@@ -20,6 +20,7 @@ QQC2.Label {
     MouseArea {
         anchors.fill: parent
         hoverEnabled: true
+        cursorShape: Qt.PointingHandCursor
 
         onContainsMouseChanged: {
             control.font.underline = containsMouse && control.enabled

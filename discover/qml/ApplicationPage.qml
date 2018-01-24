@@ -139,21 +139,25 @@ DiscoverPage {
         }
     }
 
+    leftPadding: Kirigami.Units.largeSpacing * (applicationWindow().wideScreen ? 2 : 1)
+    rightPadding: Kirigami.Units.largeSpacing * (applicationWindow().wideScreen ? 2 : 1)
     // Icon, name, caption, screenshots, description and reviews
     ColumnLayout {
         spacing: 0
         RowLayout {
             Kirigami.Icon {
+                Layout.topMargin: Kirigami.Units.smallSpacing * 2
                 Layout.preferredHeight: 80
                 Layout.preferredWidth: 80
                 source: appInfo.application.icon
-                anchors.margins: 20
+                Layout.rightMargin: Kirigami.Units.smallSpacing * 2
             }
             ColumnLayout {
                 spacing: 0
                 Kirigami.Heading {
                     level: 1
                     text: appInfo.application.name
+                    lineHeight: 1.0
                     maximumLineCount: 1
                     elide: Text.ElideRight
                     Layout.fillWidth: true
@@ -162,7 +166,8 @@ DiscoverPage {
                 Kirigami.Heading {
                     level: 4
                     text: appInfo.application.comment
-                    maximumLineCount: 1
+                    maximumLineCount: 2
+                    lineHeight: lineCount > 1 ? 0.75 : 1.2
                     elide: Text.ElideRight
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignTop
@@ -171,16 +176,21 @@ DiscoverPage {
             Layout.bottomMargin: Kirigami.Units.largeSpacing
         }
 
-        ApplicationScreenshots {
+        ScrollView {
             Layout.fillWidth: true
-            resource: appInfo.application
-            page: appInfo
+            Layout.preferredHeight: Kirigami.Units.gridUnit * 13
             Layout.bottomMargin: Kirigami.Units.largeSpacing
+            visible: screenshots.count > 0
+            ApplicationScreenshots {
+                id: screenshots
+                resource: appInfo.application
+                page: appInfo
+
+            }
         }
 
         QQC2.Label {
             Layout.fillWidth: true
-            horizontalAlignment: Text.AlignJustify
             wrapMode: Text.WordWrap
             text: appInfo.application.longDescription + originsOverlay.sentence
             onLinkActivated: {

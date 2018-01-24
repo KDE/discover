@@ -19,28 +19,23 @@
 
 
 import QtQuick 2.1
-import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import QtQuick.Controls 2.1 as QQC2
 import QtGraphicalEffects 1.0
 import org.kde.discover 2.0
 import org.kde.kirigami 2.0 as Kirigami
 
-Flow {
+ListView {
     id: root
     property alias resource: screenshotsModel.application
+    property QtObject page
 
     spacing: Kirigami.Units.largeSpacing
-
-    property QtObject page
-    visible: screenshotsModel.count>0
-
-    property int currentIndex: -1
-    readonly property Item currentItem: root.currentIndex >= 0 ? rep.itemAt(root.currentIndex) : null
+    focus: overlay.visible
 
     Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
     Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
-    focus: overlay.visible
+    orientation: ListView.Horizontal
 
     QQC2.Popup {
         id: overlay
@@ -86,66 +81,88 @@ Flow {
             iconName: "arrow-left"
             enabled: overlay.visible && visible
             visible: root.currentIndex >= 1
-            onTriggered: root.currentIndex -= 1
+            onTriggered: root.decrementCurrentIndex()
         }
 
         Kirigami.Action {
             id: rightAction
             iconName: "arrow-right"
             enabled: overlay.visible && visible
-            visible: root.currentIndex < (rep.count - 1)
-            onTriggered: root.currentIndex += 1
+            visible: root.currentIndex < (root.count - 1)
+            onTriggered: root.incrementCurrentIndex()
         }
     }
 
-    Repeater {
-        id: rep
-        model: ScreenshotsModel {
-            id: screenshotsModel
-        }
-
-        delegate: Item {
-            readonly property url imageSource: large_image_url
-            height: thumbnail.height
-            width: thumbnail.width
-            DropShadow {
-                source: thumbnail
-                anchors.fill: thumbnail
-                verticalOffset: 3
-                horizontalOffset: 0
-                radius: 12.0
-                samples: 25
-                color: "#232627" // Shade Black from standard Breeze colors
-                cached: true
-            }
-            Image {
-                id: thumbnail
-                source: small_image_url
-                height: Kirigami.Units.gridUnit * 7
-                fillMode: Image.PreserveAspectFit
-                smooth: true
-                opacity: mouse.containsMouse? 0.5 : 1
-
-                Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 200 } }
-
-                BusyIndicator {
-                    visible: running
-                    running: parent.status == Image.Loading
-                    anchors.centerIn: thumbnail
-                }
-
-                MouseArea {
-                    id: mouse
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: {
-                        root.currentIndex = index
-                        overlay.open()
-                    }
-                }
-            }
-        }
+    model: ScreenshotsModel {
+        id: screenshotsModel
     }
 
-    Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
+    delegate: Item {
+        readonly property url imageSource: large_image_url
+        readonly property real proportion: thumbnail.sourceSize.height/thumbnail.sourceSize.width
+        y: parent.height * 0.05
+        height: parent.height * 0.9
+        width: Math.max(50, height/proportion)
+        DropShadow {
+            source: thumbnail
+            anchors.fill: parent
+            verticalOffset: 3
+            horizontalOffset: 0
+            radius: 12.0
+            samples: 25
+            color: Kirigami.Theme.disabledTextColor
+            cached: true
+        }
+
+        MouseArea {
+            id: mouse
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+
+            onClicked: {
+                root.currentIndex = index
+                overlay.open()
+            }
+        }
+        BusyIndicator {
+            visible: running
+            running: parent.status == Image.Loading
+            anchors.centerIn: thumbnail
+        }
+
+        Image {
+            id: thumbnail
+            source: small_image_url
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+            }
+            fillMode: Image.PreserveAspectFit
+            smooth: true
+        }
+
+    }
+
+    layer.enabled: true
+    // This item should be used as the 'mask'
+    layer.effect: ShaderEffect {
+        property var colorSource: root;
+        property bool atLeft: root.atXBeginning;
+        property bool atRight: root.atXEnd;
+        fragmentShader: "
+            uniform lowp bool atLeft;
+            uniform lowp bool atRight;
+            uniform lowp sampler2D colorSource;
+            uniform lowp float qt_Opacity;
+            varying highp vec2 qt_TexCoord0;
+            void main() {
+                gl_FragColor =
+                    texture2D(colorSource, qt_TexCoord0)
+                    * (atRight ? 1. : min(1.0, qt_TexCoord0.x * -20.0 + 20.))
+                    * (atLeft  ? 1. : min(1.0, qt_TexCoord0.x *  20.0))
+                    * qt_Opacity;
+            }
+        "
+    }
 }
