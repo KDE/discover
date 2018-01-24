@@ -515,9 +515,29 @@ void PackageKitBackend::fetchDetails(const QString& pkgid)
 void PackageKitBackend::performDetailsFetch()
 {
     Q_ASSERT(!m_packageNamesToFetchDetails.isEmpty());
-    PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(m_packageNamesToFetchDetails.toList());
+    const auto ids = m_packageNamesToFetchDetails.toList();
+
+    PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(ids);
     connect(transaction, &PackageKit::Transaction::details, this, &PackageKitBackend::packageDetails);
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+
+    QSharedPointer<QMap<QString, int>> packageDependencies(new QMap<QString, int>);
+    auto trans = PackageKit::Daemon::installPackages(ids, PackageKit::Transaction::TransactionFlagSimulate);
+    connect(trans, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+    connect(trans, &PackageKit::Transaction::package, this, [packageDependencies](PackageKit::Transaction::Info /*info*/, const QString &packageID, const QString &/*summary*/) {
+        (*packageDependencies)[packageID] += 1;
+    });
+    connect(trans, &PackageKit::Transaction::finished, this, [this, packageDependencies](PackageKit::Transaction::Exit /*status*/) {
+        auto pkgDeps = (*packageDependencies);
+
+        for (auto it = pkgDeps.constBegin(), itEnd = pkgDeps.constEnd(); it != itEnd; ++it) {
+            const auto resources = resourcesByPackageName(PackageKit::Daemon::packageName(it.key()));
+            for(auto resource : resources) {
+                auto pkres = qobject_cast<PackageKitResource*>(resource);
+                pkres->setDependenciesCount(it.value());
+            }
+        }
+    });
 }
 
 void PackageKitBackend::checkDaemonRunning()
