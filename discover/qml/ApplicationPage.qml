@@ -146,6 +146,7 @@ DiscoverPage {
         spacing: 0
         RowLayout {
             Kirigami.Icon {
+                Layout.topMargin: Kirigami.Units.smallSpacing * 2
                 Layout.preferredHeight: 80
                 Layout.preferredWidth: 80
                 source: appInfo.application.icon
