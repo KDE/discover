@@ -67,6 +67,7 @@ class PackageKitResource : public AbstractResource
         bool canExecute() const override { return false; }
 
         QString sizeDescription() override;
+        void setDependenciesCount(uint count);
 
     public Q_SLOTS:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch);
