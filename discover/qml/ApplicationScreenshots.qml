@@ -102,7 +102,7 @@ ListView {
         readonly property real proportion: thumbnail.sourceSize.height/thumbnail.sourceSize.width
         y: parent.height * 0.05
         height: parent.height * 0.9
-        width: height/proportion
+        width: Math.max(50, height/proportion)
         DropShadow {
             source: thumbnail
             anchors.fill: parent
@@ -134,7 +134,10 @@ ListView {
         Image {
             id: thumbnail
             source: small_image_url
-            height: parent.height
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+            }
             fillMode: Image.PreserveAspectFit
             smooth: true
         }

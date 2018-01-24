@@ -177,7 +177,7 @@ DiscoverPage {
 
         ScrollView {
             Layout.fillWidth: true
-            Layout.minimumHeight: Kirigami.Units.gridUnit * 5
+            Layout.preferredHeight: Kirigami.Units.gridUnit * 13
             Layout.bottomMargin: Kirigami.Units.largeSpacing
             visible: screenshots.count > 0
             ApplicationScreenshots {
