@@ -133,10 +133,7 @@ ListView {
         Image {
             id: thumbnail
             source: small_image_url
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-            }
+            height: parent.height
             fillMode: Image.PreserveAspectFit
             smooth: true
         }
