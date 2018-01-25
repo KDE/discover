@@ -38,6 +38,7 @@ QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters& filters
     if (!filters.extends.isEmpty()) debug.nospace() << "extends:" << filters.extends << ',';
     if (!filters.origin.isEmpty()) debug.nospace() << "origin:" << filters.origin << ',';
     if (!filters.resourceUrl.isEmpty()) debug.nospace() << "resourceUrl:" << filters.resourceUrl << ',';
+    if (filters.allBackends) debug.nospace() << "allBackends";
     debug.nospace() << ')';
 
     return debug;
