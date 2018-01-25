@@ -7,6 +7,7 @@
   <name xml:lang="ca-valencia">Dorsal del PackageKit</name>
   <name xml:lang="es">Motor PackageKit</name>
   <name xml:lang="fr">Moteur PackageKit</name>
+  <name xml:lang="it">Motore PackageKit</name>
   <name xml:lang="nl">PackageKit-backend</name>
   <name xml:lang="pt">Infra-estrutura do PackageKit</name>
   <name xml:lang="sk">Backend PackageKit</name>
@@ -20,6 +21,7 @@
   <summary xml:lang="ca-valencia">Integra aplicacions de distribució al Discover</summary>
   <summary xml:lang="es">Integra aplicaciones de la distribución en Discover</summary>
   <summary xml:lang="fr">Intègre les applications de distribution au sein de Discover</summary>
+  <summary xml:lang="it">Integra le applicazioni della distribuzione in Discover</summary>
   <summary xml:lang="nl">Integreert distributie-toepassingen in Discover</summary>
   <summary xml:lang="pt">Integra as aplicações da distribuição no Discover</summary>
   <summary xml:lang="sk">Integruje distribučné aplikácie do Discovera</summary>
@@ -36,6 +38,7 @@
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="es">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="it">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="pt">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sk">Aleix Pol Gonzalez</developer_name>
