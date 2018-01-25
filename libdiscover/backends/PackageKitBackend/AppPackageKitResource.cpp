@@ -31,6 +31,8 @@
 #include <QStandardPaths>
 #include <QDebug>
 #include "config-paths.h"
+#include <PackageKit/Daemon>
+#include <utils.h>
 
 AppPackageKitResource::AppPackageKitResource(const AppStream::Component& data, const QString &packageName, PackageKitBackend* parent)
     : PackageKitResource(packageName, QString(), parent)
@@ -182,12 +184,21 @@ void AppPackageKitResource::fetchChangelog()
 
 void AppPackageKitResource::invokeApplication() const
 {
-    const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
-    if (exes.isEmpty()) {
-        const auto servicePath = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, m_appdata.id());
-        QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {servicePath});
-    } else {
-        QProcess::startDetached(exes.constFirst());
-    }
+    auto trans = PackageKit::Daemon::getFiles({installedPackageId()});
+    connect(trans, &PackageKit::Transaction::files, this, [this](const QString &/*packageID*/, const QStringList &filenames) {
+        const auto allServices = QStandardPaths::locateAll(QStandardPaths::ApplicationsLocation, m_appdata.id());
+        if (!allServices.isEmpty()) {
+            const auto packageServices = kFilter<QStringList>(allServices, [filenames](const QString &file) { return filenames.contains(file); });
+            QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {packageServices});
+        } else {
+            const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
+            const auto packageExecutables = kFilter<QStringList>(allServices, [filenames](const QString &exe) { return filenames.contains(QLatin1Char('/') + exe); });
+            if (packageExecutables.isEmpty()) {
+                qWarning() << "Could not find any executables" << exes << filenames;
+                return;
+            }
+            QProcess::startDetached(exes.constFirst());
+        }
+    });
 }
 
