@@ -8,6 +8,7 @@
   <name xml:lang="es">Motor Snap</name>
   <name xml:lang="fr">Moteur Snap</name>
   <name xml:lang="gl">Infraestrutura de Snap</name>
+  <name xml:lang="it">Motore Snap</name>
   <name xml:lang="nl">Snap-backend</name>
   <name xml:lang="pt">Infra-estrutura do Snap</name>
   <name xml:lang="sk">Backend Snap</name>
@@ -22,6 +23,7 @@
   <summary xml:lang="es">Integra aplicaciones Snap en Discover</summary>
   <summary xml:lang="fr">Intègre les applications Snap au sein de Discover</summary>
   <summary xml:lang="gl">Integra aplicativos de Snap con Discover.</summary>
+  <summary xml:lang="it">Integra le applicazioni Snap in Discover</summary>
   <summary xml:lang="nl">Integreert Snap-toepassingen in Discover</summary>
   <summary xml:lang="pt">Integra as aplicações do Snap no Discover</summary>
   <summary xml:lang="sk">Integruje aplikácie Snap do Discoveru</summary>
@@ -40,6 +42,7 @@
   <developer_name xml:lang="es">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="gl">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="it">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="pt">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sk">Aleix Pol Gonzalez</developer_name>
