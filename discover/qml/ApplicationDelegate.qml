@@ -62,7 +62,7 @@ Kirigami.AbstractListItem
 
         ColumnLayout {
             id: conts
-            spacing: delegateArea.compact ? 0 : 5
+            spacing: delegateArea.compact ? 3 : 5
             anchors {
                 right: parent.right
                 left: resourceIcon.right
