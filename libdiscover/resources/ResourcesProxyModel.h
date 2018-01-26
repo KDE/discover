@@ -75,7 +75,8 @@ public:
         SectionRole,
         MimeTypes,
         SizeRole,
-        LongDescriptionRole
+        LongDescriptionRole,
+        AvailableVersionRole
     };
     Q_ENUM(Roles)
 

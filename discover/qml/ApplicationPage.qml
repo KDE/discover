@@ -73,8 +73,14 @@ DiscoverPage {
                 allBackends: true
                 resourcesUrl: appInfo.application.url
             }
-            delegate: Kirigami.BasicListItem {
-                label: displayOrigin
+            delegate: Kirigami.AbstractListItem {
+                RowLayout {
+                    Label {
+                        Layout.fillWidth: true
+                        text: displayOrigin
+                    }
+                    Label { text: availableVersion }
+                }
                 checked: appInfo.application == model.application
                 onClicked: if(index>=0) {
                     var res = model.application
