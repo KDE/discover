@@ -130,7 +130,7 @@ QString PackageKitResource::section()
     return QString();
 }
 
-AbstractResource::State PackageKitResource::state()
+AbstractResource::State PackageKitResource::state() const
 {
     if (backend()->isPackageNameUpgradeable(this))
         return Upgradeable;

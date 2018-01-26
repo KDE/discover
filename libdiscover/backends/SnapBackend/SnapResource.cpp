@@ -136,7 +136,7 @@ QString SnapResource::section()
     return QStringLiteral("snap");
 }
 
-AbstractResource::State SnapResource::state()
+AbstractResource::State SnapResource::state() const
 {
     return m_state;
 }

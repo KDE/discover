@@ -37,7 +37,7 @@ KNSResource::KNSResource(const KNSCore::EntryInternal& entry, QStringList catego
 
 KNSResource::~KNSResource() = default;
 
-AbstractResource::State KNSResource::state()
+AbstractResource::State KNSResource::state() const
 {
     switch(m_entry.status()) {
         case KNS3::Entry::Invalid:

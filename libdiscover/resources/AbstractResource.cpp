@@ -53,12 +53,12 @@ QJsonValue AbstractResource::getMetadata(const QString &key)
     return m_metadata.value(key);
 }
 
-bool AbstractResource::canUpgrade()
+bool AbstractResource::canUpgrade() const
 {
     return state() == Upgradeable;
 }
 
-bool AbstractResource::isInstalled()
+bool AbstractResource::isInstalled() const
 {
     return state() >= Installed;
 }

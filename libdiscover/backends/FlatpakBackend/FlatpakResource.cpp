@@ -344,7 +344,7 @@ QString FlatpakResource::sizeDescription()
     }
 }
 
-AbstractResource::State FlatpakResource::state()
+AbstractResource::State FlatpakResource::state() const
 {
     return m_state;
 }

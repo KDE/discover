@@ -47,7 +47,7 @@ class PackageKitResource : public AbstractResource
         void fetchChangelog() override;
         
         QList<PackageState> addonsInformation() override;
-        State state() override;
+        State state() const override;
         
         QString installedVersion() const override;
         QString availableVersion() const override;

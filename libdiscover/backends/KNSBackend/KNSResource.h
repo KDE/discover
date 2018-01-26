@@ -35,7 +35,7 @@ public:
     explicit KNSResource(const KNSCore::EntryInternal & c, QStringList categories, KNSBackend* parent);
     ~KNSResource() override;
 
-    AbstractResource::State state() override;
+    AbstractResource::State state() const override;
     QVariant icon() const override;
     QString comment() override;
     QString name() override;

@@ -44,7 +44,7 @@ public:
     int size() override;
     QUrl homepage() override;
     QStringList categories() override;
-    AbstractResource::State state() override;
+    AbstractResource::State state() const override;
     QVariant icon() const override;
     QString comment() override;
     QString name() override;

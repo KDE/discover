@@ -122,7 +122,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         ///executes the resource, if applies.
         Q_SCRIPTABLE virtual void invokeApplication() const = 0;
 
-        virtual State state() = 0;
+        virtual State state() const = 0;
 
         virtual QStringList categories() = 0;
         ///@returns a URL that points to the content
@@ -154,8 +154,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         void addMetadata(const QString &key, const QJsonValue &value);
         QJsonValue getMetadata(const QString &key);
 
-        bool canUpgrade();
-        bool isInstalled();
+        bool canUpgrade() const;
+        bool isInstalled() const;
 
         ///@returns a user-readable explaination of the resource status
         ///by default, it will specify what state() is returning

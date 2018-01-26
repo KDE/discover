@@ -97,7 +97,7 @@ public:
     QString section() override;
     int size() override;
     QString sizeDescription() override;
-    AbstractResource::State state() override;
+    AbstractResource::State state() const override;
     ResourceType type() const;
     QString typeAsString() const;
     QString uniqueId() const;

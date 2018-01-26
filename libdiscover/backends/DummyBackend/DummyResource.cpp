@@ -124,7 +124,7 @@ QString DummyResource::section()
     return QStringLiteral("dummy");
 }
 
-AbstractResource::State DummyResource::state()
+AbstractResource::State DummyResource::state() const
 {
     return m_state;
 }
