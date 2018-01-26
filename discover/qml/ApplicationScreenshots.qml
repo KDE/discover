@@ -140,20 +140,20 @@ ListView {
     layer.enabled: true
     // This item should be used as the 'mask'
     layer.effect: ShaderEffect {
-        property var colorSource: root;
-        property bool atLeft: root.atXBeginning;
-        property bool atRight: root.atXEnd;
+        readonly property var colorSource: root;
+        readonly property real distLeft: Math.max(20, 2000/(root.contentX + 1) - 1)
+        readonly property real distRight: Math.max(20, 2000/Math.max(0, root.contentWidth - (root.contentX + root.width) + 1) - 1)
         fragmentShader: "
-            uniform lowp bool atLeft;
-            uniform lowp bool atRight;
+            uniform lowp float distLeft;
+            uniform lowp float distRight;
             uniform lowp sampler2D colorSource;
             uniform lowp float qt_Opacity;
             varying highp vec2 qt_TexCoord0;
             void main() {
                 gl_FragColor =
                     texture2D(colorSource, qt_TexCoord0)
-                    * (atRight ? 1. : min(1.0, qt_TexCoord0.x * -20.0 + 20.))
-                    * (atLeft  ? 1. : min(1.0, qt_TexCoord0.x *  20.0))
+                    * clamp(qt_TexCoord0.x * -distRight + distRight, 0., 1.)
+                    * clamp(qt_TexCoord0.x *  distLeft, 0., 1.)
                     * qt_Opacity;
             }
         "
