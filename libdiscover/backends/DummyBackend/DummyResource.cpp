@@ -76,6 +76,21 @@ QUrl DummyResource::homepage()
     return QUrl(QStringLiteral("http://kde.org"));
 }
 
+QUrl DummyResource::helpURL()
+{
+    return QUrl(QStringLiteral("http://very-very-excellent-docs.lol"));
+}
+
+QUrl DummyResource::bugURL()
+{
+    return QUrl(QStringLiteral("file:///dev/null"));
+}
+
+QUrl DummyResource::donationURL()
+{
+    return QUrl(QStringLiteral("https://youtu.be/0o8XMlL8rqY"));
+}
+
 QVariant DummyResource::icon() const
 {
     return isTechnical() ? QStringLiteral("kalarm") : m_iconName;

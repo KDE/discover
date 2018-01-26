@@ -84,6 +84,9 @@ public:
     int installedSize() const;
     bool isTechnical() const override;
     QUrl homepage() override;
+    QUrl helpURL() override;
+    QUrl bugURL() override;
+    QUrl donationURL() override;
     QString flatpakFileType() const;
     QString flatpakName() const;
     QString license() override;

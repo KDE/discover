@@ -56,6 +56,9 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QStringList category READ categories CONSTANT)
     Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
     Q_PROPERTY(QUrl homepage READ homepage CONSTANT)
+    Q_PROPERTY(QUrl helpURL READ helpURL CONSTANT)
+    Q_PROPERTY(QUrl bugURL READ bugURL CONSTANT)
+    Q_PROPERTY(QUrl donationURL READ donationURL CONSTANT)
     Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY stateChanged)
     Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY stateChanged)
     Q_PROPERTY(QString license READ license CONSTANT)
@@ -125,8 +128,14 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual State state() = 0;
 
         virtual QStringList categories() = 0;
-        ///@returns a URL that points to the content
-        virtual QUrl homepage() = 0;
+        ///@returns a URL that points to the app's website
+        virtual QUrl homepage();
+        ///@returns a URL that points to the app's online documentation
+        virtual QUrl helpURL();
+        ///@returns a URL that points to the place where you can file a bug
+        virtual QUrl bugURL();
+        ///@returns a URL that points to the place where you can donate money to the app developer
+        virtual QUrl donationURL();
 
         virtual bool isTechnical() const;
 

@@ -39,6 +39,9 @@ public:
     QString license() override;
     int size() override;
     QUrl homepage() override;
+    QUrl helpURL() override;
+    QUrl bugURL() override;
+    QUrl donationURL() override;
     QStringList categories() override;
     AbstractResource::State state() override;
     QVariant icon() const override;

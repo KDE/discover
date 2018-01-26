@@ -124,6 +124,21 @@ QUrl AppPackageKitResource::homepage()
     return m_appdata.url(AppStream::Component::UrlKindHomepage);
 }
 
+QUrl AppPackageKitResource::helpURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindHelp);
+}
+
+QUrl AppPackageKitResource::bugURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindBugtracker);
+}
+
+QUrl AppPackageKitResource::donationURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindDonation);
+}
+
 bool AppPackageKitResource::isTechnical() const
 {
     static QString desktop = QString::fromUtf8(qgetenv("XDG_CURRENT_DESKTOP"));

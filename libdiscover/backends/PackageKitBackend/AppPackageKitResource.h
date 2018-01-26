@@ -39,6 +39,9 @@ class AppPackageKitResource : public PackageKitResource
         QStringList categories() override;
         QString longDescription() override;
         QUrl homepage() override;
+        QUrl helpURL() override;
+        QUrl bugURL() override;
+        QUrl donationURL() override;
         QString comment() override;
         QString license() override;
         QStringList allPackageNames() const override;

@@ -54,11 +54,6 @@ int SnapResource::size()
     return m_snap->downloadSize();
 }
 
-QUrl SnapResource::homepage()
-{
-    return {};
-}
-
 QVariant SnapResource::icon() const
 {
     if (m_icon.isNull()) {

@@ -38,6 +38,26 @@ AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
 
 AbstractResource::~AbstractResource() = default;
 
+QUrl AbstractResource::homepage()
+{
+    return QUrl();
+}
+
+QUrl AbstractResource::helpURL()
+{
+    return QUrl();
+}
+
+QUrl AbstractResource::bugURL()
+{
+    return QUrl();
+}
+
+QUrl AbstractResource::donationURL()
+{
+    return QUrl();
+}
+
 bool AbstractResource::isTechnical() const
 {
     return false;

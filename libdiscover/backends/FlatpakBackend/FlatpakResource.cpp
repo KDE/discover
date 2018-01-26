@@ -243,6 +243,21 @@ QUrl FlatpakResource::homepage()
     return m_appdata.url(AppStream::Component::UrlKindHomepage);
 }
 
+QUrl FlatpakResource::helpURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindHelp);
+}
+
+QUrl FlatpakResource::bugURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindBugtracker);
+}
+
+QUrl FlatpakResource::donationURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindDonation);
+}
+
 QString FlatpakResource::flatpakFileType() const
 {
     return m_flatpakFileType;

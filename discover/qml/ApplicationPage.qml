@@ -254,14 +254,14 @@ DiscoverPage {
 
             // Version row
             QQC2.Label {
-                readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
-                visible: version.length > 0
+                visible: versionLabel.visible
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Version:")
             }
             QQC2.Label {
                 readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
-                visible: version.length > 0
+                id: versionLabel
+                visible: text.length > 0
                 Layout.fillWidth: true
                 elide: Text.ElideRight
                 text: version ? version : ""
@@ -310,16 +310,63 @@ DiscoverPage {
 
             // Homepage row
             QQC2.Label {
-                readonly property string homepage: application.homepage
-                visible: homepage.length > 0
+                visible: homepageLink.visible
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Homepage:")
             }
             LinkButton {
-                readonly property string homepage: application.homepage
-                visible: homepage.length > 0
-                text: homepage
+                id: homepageLink
+                visible: text.length > 0
+                text: application.homepage
                 onClicked: Qt.openUrlExternally(application.homepage)
+                elide: Text.ElideRight
+                Layout.fillWidth: true
+                horizontalAlignment: Text.AlignLeft
+            }
+
+            // "User Guide" row
+            QQC2.Label {
+                visible: docsLink.visible
+                Layout.alignment: Qt.AlignRight
+                text: i18n("User Guide:")
+            }
+            LinkButton {
+                id: docsLink
+                visible: text.length > 0
+                text: application.helpURL
+                onClicked: Qt.openUrlExternally(helpURL)
+                elide: Text.ElideRight
+                Layout.fillWidth: true
+                horizontalAlignment: Text.AlignLeft
+            }
+
+            // Donate row
+            QQC2.Label {
+                visible: donationLink.visible
+                Layout.alignment: Qt.AlignRight
+                text: i18n("Donate:")
+            }
+            LinkButton {
+                id: donationLink
+                visible: text.length > 0
+                text: application.donationURL
+                onClicked: Qt.openUrlExternally(donationURL)
+                elide: Text.ElideRight
+                Layout.fillWidth: true
+                horizontalAlignment: Text.AlignLeft
+            }
+
+            // "Report a Droblem" row
+            QQC2.Label {
+                visible: bugLink.visible
+                Layout.alignment: Qt.AlignRight
+                text: i18n("Report a Problem:")
+            }
+            LinkButton {
+                id: bugLink
+                visible: text.length > 0
+                text: application.bugURL
+                onClicked: Qt.openUrlExternally(bugURL)
                 elide: Text.ElideRight
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
