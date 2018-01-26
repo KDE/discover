@@ -97,15 +97,22 @@ ListView {
         id: screenshotsModel
     }
 
-    delegate: Item {
+    delegate: MouseArea {
         readonly property url imageSource: large_image_url
         readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
-        y: parent.height * 0.05
-        height: parent.height * 0.9
         width: Math.max(50, height/proportion)
+        height: parent.height
+
+        hoverEnabled: true
+        cursorShape: Qt.PointingHandCursor
+
+        onClicked: {
+            root.currentIndex = index
+            overlay.open()
+        }
         DropShadow {
             source: thumbnail
-            anchors.fill: parent
+            anchors.fill: thumbnail
             verticalOffset: 3
             horizontalOffset: 0
             radius: 12.0
@@ -114,16 +121,6 @@ ListView {
             cached: true
         }
 
-        MouseArea {
-            anchors.fill: parent
-            hoverEnabled: true
-            cursorShape: Qt.PointingHandCursor
-
-            onClicked: {
-                root.currentIndex = index
-                overlay.open()
-            }
-        }
         BusyIndicator {
             visible: running
             running: parent.status == Image.Loading
