@@ -9,6 +9,7 @@
   <name xml:lang="fr">Moteur Flatpak</name>
   <name xml:lang="it">Motore Flatpak</name>
   <name xml:lang="nl">Flatpak-backend</name>
+  <name xml:lang="nn">Flatpak-motor</name>
   <name xml:lang="pt">Infra-estrutura do Flatpak</name>
   <name xml:lang="sk">Backend Flatpak</name>
   <name xml:lang="sl">Zaledje Flatpak</name>
@@ -23,6 +24,7 @@
   <summary xml:lang="fr">Intègre les applications Flatpak au sein de Discover</summary>
   <summary xml:lang="it">Integra le applicazioni Flatpak in Discover</summary>
   <summary xml:lang="nl">Integreert Flatpak-toepassingen in Discover</summary>
+  <summary xml:lang="nn">Integrerer Flatpak-program i Discover</summary>
   <summary xml:lang="pt">Integra as aplicações do Flatpak no Discover</summary>
   <summary xml:lang="sk">Integruje aplikácie Flatpad do Discoveru</summary>
   <summary xml:lang="sl">V Discover vgradi programe Flatpack</summary>
@@ -40,6 +42,7 @@
   <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="it">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nl">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="nn">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="pt">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sl">Aleix Pol Gonzalez</developer_name>
