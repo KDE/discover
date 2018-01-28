@@ -113,7 +113,7 @@ DiscoverPage {
             }
             Kirigami.Heading {
                 level: 3
-                Layout.maximumWidth: parent.width/2
+                Layout.fillWidth: true
                 text: appInfo.application.name
                 maximumLineCount: 1
                 elide: Text.ElideRight
