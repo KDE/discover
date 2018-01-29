@@ -83,6 +83,7 @@ private:
     ResultsStream* searchStream(const QString &searchText);
     
     bool m_onePage = false;
+    bool m_stopSearching = false;
     bool m_responsePending = false;
     bool m_fetching;
     bool m_isValid;

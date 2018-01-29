@@ -213,7 +213,7 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
         Q_EMIT receivedResources(resources);
     }
 
-    if(resources.isEmpty()) {
+    if(resources.isEmpty() || m_stopSearching) {
         Q_EMIT searchFinished();
         Q_EMIT availableForQueries();
         setFetching(false);
@@ -346,6 +346,12 @@ ResultsStream* KNSBackend::searchStream(const QString &searchText)
         m_onePage = false;
         m_responsePending = true;
 
+        QSharedPointer<int> count(new int(0));
+        connect(this, &KNSBackend::receivedResources, stream, [this, count](const QVector<AbstractResource*>& resources){
+            *count += resources.count();
+            if (*count>2000)
+                m_stopSearching = true;
+        });
         connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
         connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::finish);
         connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::finish);
