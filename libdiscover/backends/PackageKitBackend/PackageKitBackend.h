@@ -90,8 +90,8 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint);
 
     private:
-        template <typename T>
-        T resourcesByPackageNames(const QStringList& names) const;
+        template <typename T, typename Q>
+        T resourcesByPackageNames(const Q& names) const;
         void fetchUpdates();
 
         void checkDaemonRunning();

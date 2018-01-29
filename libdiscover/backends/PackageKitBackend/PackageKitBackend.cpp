@@ -298,11 +298,11 @@ void PackageKitBackend::packageDetails(const PackageKit::Details& details)
 
 QSet<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QString& name) const
 {
-    return resourcesByPackageNames<QSet<AbstractResource*>>({name});
+    return resourcesByPackageNames<QSet<AbstractResource*>, QVector<QString>>({name});
 }
 
-template <typename T>
-T PackageKitBackend::resourcesByPackageNames(const QStringList &pkgnames) const
+template <typename T, typename Q>
+T PackageKitBackend::resourcesByPackageNames(const Q &pkgnames) const
 {
     T ret;
     ret.reserve(pkgnames.size());
@@ -367,7 +367,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
             if (status == PackageKit::Transaction::Exit::ExitSuccess) {
                 const auto packageId = stream->property("packageId");
                 if (!packageId.isNull()) {
-                    const auto res = resourcesByPackageNames<QVector<AbstractResource*>>({PackageKit::Daemon::packageName(packageId.toString())});
+                    const auto res = resourcesByPackageNames<QVector<AbstractResource*>, QVector<QString>>({PackageKit::Daemon::packageName(packageId.toString())});
                     stream->resourcesFound(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
                 }
             }
@@ -403,7 +403,7 @@ bool PackageKitBackend::hasSecurityUpdates() const
 
 int PackageKitBackend::updatesCount() const
 {
-    return m_updatesPackageId.count();
+    return resourcesByPackageNames<QSet<AbstractResource*>>(m_updatesPackageId).count();
 }
 
 Transaction* PackageKitBackend::installApplication(AbstractResource* app, const AddonList& addons)
