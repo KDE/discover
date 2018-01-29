@@ -40,7 +40,7 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
     }
     connect(&m_timer, &QTimer::timeout, this, &DiscoverNotifier::showUpdatesNotification);
     m_timer.setSingleShot(true);
-    m_timer.setInterval(1000);
+    m_timer.setInterval(60000);
     updateStatusNotifier();
 }
 
