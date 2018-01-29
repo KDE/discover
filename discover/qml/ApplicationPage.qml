@@ -45,6 +45,8 @@ DiscoverPage {
         }
     }
 
+    Keys.forwardTo: [screenshots]
+
     Kirigami.OverlaySheet {
         id: originsOverlay
         bottomPadding: Kirigami.Units.largeSpacing
