@@ -142,7 +142,7 @@ ListView {
     layer.effect: ShaderEffect {
         readonly property var colorSource: root;
         readonly property real distLeft: Math.max(20, 2000/(root.contentX + 1) - 1)
-        readonly property real distRight: Math.max(20, 2000/Math.max(0, root.contentWidth - (root.contentX + root.width) + 1) - 1)
+        readonly property real distRight: Math.max(20, 2000/Math.max(1, root.contentWidth - (root.contentX + root.width) + 1) - 1)
         fragmentShader: "
             uniform lowp float distLeft;
             uniform lowp float distRight;
