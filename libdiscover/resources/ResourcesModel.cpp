@@ -72,9 +72,6 @@ void ResourcesModel::init(bool load)
     m_updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(this, &ResourcesModel::fetchingChanged, m_updateAction, [this](bool fetching) {
-        m_updateAction->setEnabled(!fetching);
-    });
     connect(m_updateAction, &QAction::triggered, this, &ResourcesModel::checkForUpdates);
 }
 
@@ -343,7 +340,8 @@ AbstractResource* ResourcesModel::resourceForFile(const QUrl& file)
 void ResourcesModel::checkForUpdates()
 {
     for(auto backend: qAsConst(m_backends))
-        backend->checkForUpdates();
+        if (!backend->isFetching())
+            backend->checkForUpdates();
 }
 
 QVector<AbstractResourcesBackend *> ResourcesModel::applicationBackends() const
