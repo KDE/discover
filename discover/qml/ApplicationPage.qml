@@ -79,10 +79,14 @@ DiscoverPage {
             delegate: Kirigami.AbstractListItem {
                 RowLayout {
                     Label {
-                        Layout.fillWidth: true
                         text: displayOrigin
                     }
-                    Label { text: availableVersion }
+                    Label {
+                        Layout.fillWidth: true
+                        text: availableVersion
+                        elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignRight
+                    }
                 }
                 checked: appInfo.application == model.application
                 onClicked: if(index>=0) {
