@@ -403,7 +403,7 @@ bool PackageKitBackend::hasSecurityUpdates() const
 
 int PackageKitBackend::updatesCount() const
 {
-    return resourcesByPackageNames<QSet<AbstractResource*>>(m_updatesPackageId).count();
+    return upgradeablePackages().count();
 }
 
 Transaction* PackageKitBackend::installApplication(AbstractResource* app, const AddonList& addons)
