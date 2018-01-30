@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
-import org.kde.kirigami 2.1 as Kirigami
+import org.kde.kirigami 2.2 as Kirigami
 import "navigation.js" as Navigation
 
 DiscoverPage {
@@ -14,7 +14,16 @@ DiscoverPage {
     title: i18n("Settings")
     property string search: ""
 
+    Kirigami.Theme.inherit: false
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
+
+    background: Rectangle {
+        color: Kirigami.Theme.backgroundColor
+    }
+
     header: QQC2.ToolBar {
+        Kirigami.Theme.inherit: false
+        Kirigami.Theme.colorSet: Kirigami.Theme.Window
         anchors {
             right: parent.right
             left: parent.left
@@ -56,75 +65,80 @@ DiscoverPage {
 
         Component {
             id: sourceBackendDelegate
-            RowLayout {
-                id: backendItem
-                readonly property QtObject backend: sourcesBackend
-                readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
+            Kirigami.AbstractListItem {
+                hoverEnabled: false
+                supportsMouseEvents: false
+                RowLayout {
+                    id: backendItem
+                    readonly property QtObject backend: sourcesBackend
+                    readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
 
-                anchors {
-                    right: parent.right
-                    left: parent.left
-                }
-                Kirigami.Heading {
-                    Layout.fillWidth: true
-                    leftPadding: Kirigami.Units.largeSpacing
-                    text: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
-                }
-                Button {
-                    Layout.rightMargin: Kirigami.Units.smallSpacing
-                    iconName: "preferences-other"
-
-                    Connections {
-                        target: backend
-                        onPassiveMessage: window.showPassiveNotification(message)
+                    anchors {
+                        right: parent.right
+                        left: parent.left
+                        rightMargin: parent.rightPadding
+                        leftMargin: parent.leftPadding
                     }
-
-                    visible: resourcesBackend && resourcesBackend.hasApplications
-                    Component {
-                        id: dialogComponent
-                        AddSourceDialog {
-                            source: backendItem.backend
-                            onVisibleChanged: if (!visible) {
-                                destroy()
-                            }
-                        }
+                    Kirigami.Heading {
+                        Layout.fillWidth: true
+                        text: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
                     }
+                    Button {
+                        Layout.rightMargin: Kirigami.Units.smallSpacing
+                        iconName: "preferences-other"
 
-                    menu: Menu {
-                        id: settingsMenu
-                        MenuItem {
-                            enabled: !backendItem.isDefault
-                            text: i18n("Make default")
-                            onTriggered: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
+                        Connections {
+                            target: backend
+                            onPassiveMessage: window.showPassiveNotification(message)
                         }
 
-                        MenuItem {
-                            text: i18n("Add Source...")
-                            visible: backendItem.backend
-
-                            onTriggered: {
-                                var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
-                                addSourceDialog.open()
+                        visible: resourcesBackend && resourcesBackend.hasApplications
+                        Component {
+                            id: dialogComponent
+                            AddSourceDialog {
+                                source: backendItem.backend
+                                onVisibleChanged: if (!visible) {
+                                    destroy()
+                                }
                             }
                         }
 
-                        MenuSeparator {
-                            visible: backendActionsInst.count>0
-                        }
+                        menu: Menu {
+                            id: settingsMenu
+                            MenuItem {
+                                enabled: !backendItem.isDefault
+                                text: i18n("Make default")
+                                onTriggered: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
+                            }
 
-                        Instantiator {
-                            id: backendActionsInst
-                            model: ActionsModel {
-                                actions: backendItem.backend ? backendItem.backend.actions : undefined
+                            MenuItem {
+                                text: i18n("Add Source...")
+                                visible: backendItem.backend
+
+                                onTriggered: {
+                                    var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
+                                    addSourceDialog.open()
+                                }
                             }
-                            delegate: MenuItem {
-                                action: ActionBridge { action: modelData }
+
+                            MenuSeparator {
+                                visible: backendActionsInst.count>0
                             }
-                            onObjectAdded: {
-                                settingsMenu.insertItem(index, object)
-                            }
-                            onObjectRemoved: {
-                                object.destroy()
+
+                            Instantiator {
+                                id: backendActionsInst
+                                model: ActionsModel {
+                                    actions: backendItem.backend ? backendItem.backend.actions : undefined
+                                }
+                                delegate: MenuItem {
+                                    action: ActionBridge { action: modelData }
+                                }
+                                onObjectAdded: {
+                                    settingsMenu.insertItem(index, object)
+                                }
+                                onObjectRemoved: {
+                                    object.destroy()
+                                }
                             }
                         }
                     }
