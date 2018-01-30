@@ -29,6 +29,7 @@ Kirigami.OverlaySheet {
     property alias model: reviewsView.model
     readonly property QtObject reviewsBackend: resource.backend.reviewsBackend
     readonly property var resource: model.resource
+    property real parentWidth: 0
 
     readonly property var rd: ReviewDialog {
         id: reviewDialog
@@ -44,6 +45,7 @@ Kirigami.OverlaySheet {
 
     ListView {
         id: reviewsView
+        implicitWidth: page.parentWidth * (applicationWindow().wideScreen ? 3/4 : 1)
 
         clip: true
         spacing: Kirigami.Units.smallSpacing
@@ -59,6 +61,7 @@ Kirigami.OverlaySheet {
             anchors {
                 left: parent.left
                 right: parent.right
+                margins: Kirigami.Units.gridUnit
             }
             onMarkUseful: page.model.markUseful(index, useful)
         }

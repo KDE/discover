@@ -39,6 +39,7 @@ DiscoverPage {
 
     ReviewsPage {
         id: reviewsSheet
+        parentWidth: appInfo.width
         model: ReviewsModel {
             id: reviewsModel
             resource: appInfo.application
