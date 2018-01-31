@@ -43,13 +43,15 @@
 #include <QNetworkRequest>
 #include <QStandardPaths>
 
+#define APIURL "https://odrs.gnome.org/1.0/reviews/api"
+
 OdrsReviewsBackend::OdrsReviewsBackend(AbstractResourcesBackend *parent)
     : AbstractReviewsBackend(parent)
     , m_isFetching(false)
     , m_nam(new QNetworkAccessManager(this))
 {
     bool fetchRatings = false;
-    const QUrl ratingsUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/ratings"));
+    const QUrl ratingsUrl(QStringLiteral(APIURL "/ratings"));
     const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings/ratings"));
     const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
 
@@ -162,7 +164,7 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
             {QStringLiteral("limit"), 0}
     });
 
-    QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/fetch")));
+    QNetworkRequest request(QUrl(QStringLiteral(APIURL "/fetch")));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
     // Store reference to the app for which we request reviews
@@ -222,7 +224,7 @@ void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
                      {QStringLiteral("review_id"), QJsonValue(double(review->id()))} //if we really need uint64 we should get it in QJsonValue
     });
 
-    QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/%1").arg(useful ? QStringLiteral("upvote") : QStringLiteral("downvote"))));
+    QNetworkRequest request(QUrl(QStringLiteral(APIURL "/%1").arg(useful ? QStringLiteral("upvote") : QStringLiteral("downvote"))));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
 
@@ -257,7 +259,7 @@ void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summ
     const QJsonDocument document(map);
 
     QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
-    QNetworkRequest request(QUrl(QStringLiteral("https://odrs.gnome.org/1.0/reviews/api/submit")));
+    QNetworkRequest request(QUrl(QStringLiteral(APIURL "/submit")));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
 
