@@ -43,7 +43,6 @@ bool DummySourcesBackend::addSource(const QString& id)
 {
     QStandardItem* it = new QStandardItem(id);
     it->setData(QVariant(id + QLatin1Char(' ') + id), Qt::ToolTipRole);
-    it->setData(QVariant::fromValue<QObject*>(this), AbstractSourcesBackend::SourcesBackend);
     it->setCheckable(true);
     it->setCheckState(Qt::Checked);
     m_sources->appendRow(it);
