@@ -184,7 +184,7 @@ DiscoverPage {
                         iconName: "edit-delete"
                         tooltip: i18n("Delete the origin")
                         onTriggered: {
-                            var backend = sb
+                            var backend = sourcesBackend
                             if (!backend.removeSource(sourceId)) {
                                 window.showPassiveNotification(i18n("Failed to remove the source '%1'", display))
                             }

@@ -44,13 +44,16 @@ class DISCOVERCOMMON_EXPORT SourcesModel : public KConcatenateRowsProxyModel
 
         explicit SourcesModel(QObject* parent = nullptr);
         ~SourcesModel() override;
-
+        
         static SourcesModel* global();
         QVariant data(const QModelIndex & index, int role) const override;
         QHash<int, QByteArray> roleNames() const override;
 
         SourceBackendModel* addBackend(AbstractResourcesBackend* backend);
         void addSourcesBackend(AbstractSourcesBackend* sources);
+        
+    private:
+        const QAbstractItemModel* modelAt(const QModelIndex& idx) const;
 };
 
 #endif // SOURCESMODEL_H

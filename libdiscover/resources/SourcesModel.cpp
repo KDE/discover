@@ -28,6 +28,7 @@
 Q_GLOBAL_STATIC(SourcesModel, s_sources)
 
 const auto DisplayName = "DisplayName";
+const auto SourcesBackendId = "SourcesBackend";
 
 class SourceBackendModel : public QAbstractListModel
 {
@@ -41,13 +42,10 @@ public:
         if (!index.isValid()) return {};
         switch(role) {
             case SourcesModel::ResourcesBackend: return QVariant::fromValue<QObject*>(m_backend);
-            case SourcesModel::SourcesBackend: return QVariant::fromValue<QObject*>(m_sources);
         }
         return {};
     }
     int rowCount(const QModelIndex & parent) const override { return parent.isValid() ? 0 : 1; }
-
-    AbstractSourcesBackend* m_sources = nullptr;
 
 private:
     AbstractResourcesBackend* m_backend;
@@ -80,9 +78,10 @@ void SourcesModel::addSourcesBackend(AbstractSourcesBackend* sources)
     if (!b)
         return;
 
-    b->m_sources = sources;
     auto m = sources->sources();
     m->setProperty(DisplayName, backend->displayName());
+    m->setProperty(SourcesBackendId, qVariantFromValue<QObject*>(sources));
+    b->setProperty(SourcesBackendId, qVariantFromValue<QObject*>(sources));
     addSourceModel(m);
 }
 
@@ -101,16 +100,22 @@ SourceBackendModel* SourcesModel::addBackend(AbstractResourcesBackend* backend)
     return b;
 }
 
+const QAbstractItemModel * SourcesModel::modelAt(const QModelIndex& index) const
+{
+    const auto sidx = mapToSource(index);
+    return sidx.model();
+}
+
 QVariant SourcesModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid()) return {};
-    else if (role == SourceNameRole) {
-        const auto sidx = mapToSource(index);
-        const auto model = sidx.model();
-        auto ret = model->property(DisplayName);
-        return ret;
-    } else {
-        return KConcatenateRowsProxyModel::data(index, role);
+    switch (role) {
+        case SourceNameRole:
+            return modelAt(index)->property(DisplayName);
+        case SourcesBackend:
+            return modelAt(index)->property(SourcesBackendId);
+        default:
+            return KConcatenateRowsProxyModel::data(index, role);
     }
 }
 
