@@ -195,8 +195,8 @@ FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
 void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation *installation)
 {
     const QString id = QString::fromUtf8(flatpak_remote_get_name(remote));
+    const QString title = QString::fromUtf8(flatpak_remote_get_title(remote));
     const QUrl remoteUrl(QString::fromUtf8(flatpak_remote_get_url(remote)));
-    const QString title = i18nc("description (url)", "%1 (%2)", QString::fromUtf8(flatpak_remote_get_title(remote)), remoteUrl.host());
 
     for(QAction *action: actions()) {
         if (action->toolTip() == id) {
@@ -205,9 +205,9 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
         }
     }
 
-    FlatpakSourceItem *it = new FlatpakSourceItem(id);
+    FlatpakSourceItem *it = new FlatpakSourceItem(!title.isEmpty() ? title : id);
     it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
-    it->setData(title.isEmpty() ? id : title, Qt::ToolTipRole);
+    it->setData(remoteUrl.host(), Qt::ToolTipRole);
     it->setData(QVariant::fromValue<QObject*>(this), AbstractSourcesBackend::SourcesBackend);
     it->setFlatpakInstallation(installation);
 
