@@ -102,9 +102,17 @@ bool FlatpakSourcesBackend::addSource(const QString &id)
 
 bool FlatpakSourcesBackend::removeSource(const QString &id)
 {
-    QList<QStandardItem*> items = m_sources->findItems(id);
-    if (items.count() == 1) {
-        FlatpakSourceItem *sourceItem = static_cast<FlatpakSourceItem*>(items.first());
+    QStandardItem* sourceIt = nullptr;
+    for (int i = 0, c = m_sources->rowCount(); i<c; ++i) {
+        auto it = m_sources->item(i);
+        if (it->data(IdRole) == id) {
+            sourceIt = it;
+            break;
+        }
+    }
+
+    if (sourceIt) {
+        FlatpakSourceItem *sourceItem = static_cast<FlatpakSourceItem*>(sourceIt);
         g_autoptr(GCancellable) cancellable = g_cancellable_new();
         if (flatpak_installation_remove_remote(sourceItem->flatpakInstallation(), id.toUtf8().constData(), cancellable, nullptr)) {
             m_sources->removeRow(sourceItem->row());
@@ -114,7 +122,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
             return false;
         }
     } else {
-        qWarning() << "couldn't find " << id  << items;
+        qWarning() << "couldn't find " << id;
         return false;
     }
 
