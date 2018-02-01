@@ -4,7 +4,6 @@ import QtTest 1.1
 DiscoverTest
 {
     function test_open() {
-        compare(appRoot.stack.currentItem.title, "dummy://caca")
-        compare(appRoot.stack.currentItem.count, 0);
+        compare(appRoot.stack.currentItem.title, "Featured")
     }
 }

@@ -87,7 +87,7 @@ Item
         try {
             spy.wait(timeout);
         } catch (e) {
-            console.warn("wait for signal '"+name+"' unsuccessful")
+            console.warn("wait for signal '"+name+"' failed")
             return false;
         }
         return spy.count>0;
