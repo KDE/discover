@@ -66,12 +66,16 @@ DiscoverPage {
         Component {
             id: sourceBackendDelegate
             Kirigami.AbstractListItem {
+                id: backendItem
                 hoverEnabled: false
                 supportsMouseEvents: false
+                readonly property QtObject backend: sourcesBackend
+                readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
                 RowLayout {
-                    id: backendItem
-                    readonly property QtObject backend: sourcesBackend
-                    readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
+                    Connections {
+                        target: backendItem.backend
+                        onPassiveMessage: window.showPassiveNotification(message)
+                    }
 
                     anchors {
                         right: parent.right
@@ -86,11 +90,6 @@ DiscoverPage {
                     Button {
                         Layout.rightMargin: Kirigami.Units.smallSpacing
                         iconName: "preferences-other"
-
-                        Connections {
-                            target: backend
-                            onPassiveMessage: window.showPassiveNotification(message)
-                        }
 
                         visible: resourcesBackend && resourcesBackend.hasApplications
                         Component {
