@@ -25,9 +25,9 @@
 #include <QSet>
 #include <KConcatenateRowsProxyModel>
 #include "discovercommon_export.h"
+#include "AbstractSourcesBackend.h"
 
 class QAction;
-class AbstractSourcesBackend;
 class AbstractResourcesBackend;
 class SourceBackendModel;
 
@@ -36,8 +36,8 @@ class DISCOVERCOMMON_EXPORT SourcesModel : public KConcatenateRowsProxyModel
     Q_OBJECT
     public:
         enum Roles {
-            SourcesBackend = Qt::UserRole+1,
-            SourceNameRole,
+            SourceNameRole = AbstractSourcesBackend::LastRole,
+            SourcesBackend,
             ResourcesBackend
         };
         Q_ENUM(Roles)

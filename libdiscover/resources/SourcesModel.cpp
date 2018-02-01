@@ -67,6 +67,7 @@ SourcesModel* SourcesModel::global()
 QHash<int, QByteArray> SourcesModel::roleNames() const
 {
     QHash<int, QByteArray> roles = KConcatenateRowsProxyModel::roleNames();
+    roles.insert(AbstractSourcesBackend::IdRole, "sourceId");
     roles.insert(SourcesBackend, "sourcesBackend");
     roles.insert(ResourcesBackend, "resourcesBackend");
     return roles;

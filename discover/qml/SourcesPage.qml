@@ -156,6 +156,7 @@ DiscoverPage {
             readonly property variant checked: model.checked
             readonly property variant statusTip: model.statusTip
             readonly property variant toolTip: model.toolTip
+            readonly property variant sourceId: model.sourceId
             readonly property variant modelIndex: sourcesView.model.index(index, 0)
 
             condition: resourcesBackend != null
@@ -184,7 +185,7 @@ DiscoverPage {
                         tooltip: i18n("Delete the origin")
                         onTriggered: {
                             var backend = sb
-                            if (!backend.removeSource(display)) {
+                            if (!backend.removeSource(sourceId)) {
                                 window.showPassiveNotification(i18n("Failed to remove the source '%1'", display))
                             }
                         }
