@@ -118,7 +118,7 @@ void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QSt
     QStandardItem* item = findItemForId(id);
 
     if (!item) {
-        item = new QStandardItem(id);
+        item = new QStandardItem(description);
         add = true;
     }
     item->setData(id, IdRole);
