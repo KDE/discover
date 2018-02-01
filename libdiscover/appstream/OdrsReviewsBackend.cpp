@@ -43,6 +43,7 @@
 #include <QNetworkRequest>
 #include <QStandardPaths>
 
+// #define APIURL "http://127.0.0.1:5000/1.0/reviews/api"
 #define APIURL "https://odrs.gnome.org/1.0/reviews/api"
 
 OdrsReviewsBackend::OdrsReviewsBackend(AbstractResourcesBackend *parent)
