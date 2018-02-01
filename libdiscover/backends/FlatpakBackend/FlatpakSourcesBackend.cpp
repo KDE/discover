@@ -114,11 +114,12 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
     if (sourceIt) {
         FlatpakSourceItem *sourceItem = static_cast<FlatpakSourceItem*>(sourceIt);
         g_autoptr(GCancellable) cancellable = g_cancellable_new();
-        if (flatpak_installation_remove_remote(sourceItem->flatpakInstallation(), id.toUtf8().constData(), cancellable, nullptr)) {
+        g_autoptr(GError) error = NULL;
+        if (flatpak_installation_remove_remote(sourceItem->flatpakInstallation(), id.toUtf8().constData(), cancellable, &error)) {
             m_sources->removeRow(sourceItem->row());
             return true;
         } else {
-            qWarning() << "Failed to remove " << id << " remote repository";
+            qWarning() << "Failed to remove " << id << " remote repository:" << error->message;
             return false;
         }
     } else {
