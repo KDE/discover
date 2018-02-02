@@ -175,12 +175,6 @@ DiscoverPage {
                 Keys.onReturnPressed: clicked()
                 actions: [
                     Kirigami.Action {
-                        enabled: display.length>0
-                        iconName: "view-filter"
-                        tooltip: i18n("Browse the origin's resources")
-                        onTriggered: Navigation.openApplicationListSource(display)
-                    },
-                    Kirigami.Action {
                         iconName: "edit-delete"
                         tooltip: i18n("Delete the origin")
                         onTriggered: {
