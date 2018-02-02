@@ -40,7 +40,8 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
         ~AbstractSourcesBackend() override;
 
         enum Roles {
-            SourcesBackend = Qt::UserRole
+            IdRole = Qt::UserRole,
+            LastRole
         };
         Q_ENUM(Roles)
 

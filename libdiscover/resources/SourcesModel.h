@@ -25,9 +25,9 @@
 #include <QSet>
 #include <KConcatenateRowsProxyModel>
 #include "discovercommon_export.h"
+#include "AbstractSourcesBackend.h"
 
 class QAction;
-class AbstractSourcesBackend;
 class AbstractResourcesBackend;
 class SourceBackendModel;
 
@@ -36,21 +36,24 @@ class DISCOVERCOMMON_EXPORT SourcesModel : public KConcatenateRowsProxyModel
     Q_OBJECT
     public:
         enum Roles {
-            SourcesBackend = Qt::UserRole+1,
-            SourceNameRole,
+            SourceNameRole = AbstractSourcesBackend::LastRole,
+            SourcesBackend,
             ResourcesBackend
         };
         Q_ENUM(Roles)
 
         explicit SourcesModel(QObject* parent = nullptr);
         ~SourcesModel() override;
-
+        
         static SourcesModel* global();
         QVariant data(const QModelIndex & index, int role) const override;
         QHash<int, QByteArray> roleNames() const override;
 
         SourceBackendModel* addBackend(AbstractResourcesBackend* backend);
         void addSourcesBackend(AbstractSourcesBackend* sources);
+        
+    private:
+        const QAbstractItemModel* modelAt(const QModelIndex& idx) const;
 };
 
 #endif // SOURCESMODEL_H

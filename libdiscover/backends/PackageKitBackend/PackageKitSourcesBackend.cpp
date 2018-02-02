@@ -41,16 +41,8 @@ public:
     QHash<int, QByteArray> roleNames() const override
     {
         auto roles = QStandardItemModel::roleNames();
-        roles[AbstractSourcesBackend::SourcesBackend] = "sourcesBackend";
         roles[Qt::CheckStateRole] = "checked";
         return roles;
-    }
-
-    QVariant data(const QModelIndex & index, int role) const override {
-        if (role == AbstractSourcesBackend::SourcesBackend)
-            return QVariant::fromValue<QObject*>(m_backend);
-        else
-            return QStandardItemModel::data(index, role);
     }
 
     bool setData(const QModelIndex & index, const QVariant & value, int role) override {
@@ -60,7 +52,7 @@ public:
 
         switch(role) {
             case Qt::CheckStateRole: {
-                auto transaction = PackageKit::Daemon::global()->repoEnable(item->text(), value.toInt() == Qt::Checked);
+                auto transaction = PackageKit::Daemon::global()->repoEnable(item->data(AbstractSourcesBackend::IdRole).toString(), value.toInt() == Qt::Checked);
                 connect(transaction, &PackageKit::Transaction::errorCode, m_backend, &PackageKitSourcesBackend::transactionError);
                 return true;
             }
@@ -114,7 +106,7 @@ QStandardItem* PackageKitSourcesBackend::findItemForId(const QString &id) const
 {
     for(int i=0, c=m_sources->rowCount(); i<c; ++i) {
         auto it = m_sources->item(i);
-        if (it->text() == id)
+        if (it->data(AbstractSourcesBackend::IdRole).toString() == id)
             return it;
     }
     return nullptr;
@@ -126,9 +118,10 @@ void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QSt
     QStandardItem* item = findItemForId(id);
 
     if (!item) {
-        item = new QStandardItem(id);
+        item = new QStandardItem(description);
         add = true;
     }
+    item->setData(id, IdRole);
     item->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
 
     if (add)

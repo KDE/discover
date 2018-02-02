@@ -66,12 +66,16 @@ DiscoverPage {
         Component {
             id: sourceBackendDelegate
             Kirigami.AbstractListItem {
+                id: backendItem
                 hoverEnabled: false
                 supportsMouseEvents: false
+                readonly property QtObject backend: sourcesBackend
+                readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
                 RowLayout {
-                    id: backendItem
-                    readonly property QtObject backend: sourcesBackend
-                    readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
+                    Connections {
+                        target: backendItem.backend
+                        onPassiveMessage: window.showPassiveNotification(message)
+                    }
 
                     anchors {
                         right: parent.right
@@ -86,11 +90,6 @@ DiscoverPage {
                     Button {
                         Layout.rightMargin: Kirigami.Units.smallSpacing
                         iconName: "preferences-other"
-
-                        Connections {
-                            target: backend
-                            onPassiveMessage: window.showPassiveNotification(message)
-                        }
 
                         visible: resourcesBackend && resourcesBackend.hasApplications
                         Component {
@@ -157,6 +156,7 @@ DiscoverPage {
             readonly property variant checked: model.checked
             readonly property variant statusTip: model.statusTip
             readonly property variant toolTip: model.toolTip
+            readonly property variant sourceId: model.sourceId
             readonly property variant modelIndex: sourcesView.model.index(index, 0)
 
             condition: resourcesBackend != null
@@ -184,8 +184,8 @@ DiscoverPage {
                         iconName: "edit-delete"
                         tooltip: i18n("Delete the origin")
                         onTriggered: {
-                            var backend = sb
-                            if (!backend.removeSource(display)) {
+                            var backend = sourcesBackend
+                            if (!backend.removeSource(sourceId)) {
                                 window.showPassiveNotification(i18n("Failed to remove the source '%1'", display))
                             }
                         }

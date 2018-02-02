@@ -19,15 +19,11 @@ DiscoverTest
 
         {//we start installing a resource
             app.openApplication("dummy://dummy.1");
-
-            var appsList = appRoot.stack.currentItem.flickable;
-            appsList.currentIndex = 0
-            waitForSignal(appsList, "countChanged")
-            var item = appsList.currentItem
-            verify(item)
-            item.clicked()
+            verify(waitForSignal(appRoot.stack, "currentItemChanged"))
 
             var button = findChild(appRoot.stack.currentItem, "InstallApplicationButton")
+            console.log("button", appRoot.stack.currentItem, button)
+            verify(button)
             verify(!button.isActive)
             button.click()
         }

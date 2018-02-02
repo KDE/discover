@@ -6,14 +6,7 @@ DiscoverTest
 {
     function test_openResource() {
         app.openApplication("dummy://dummy.1");
-        compare(appRoot.stack.currentItem.title, "dummy://dummy.1", "same title");
-        compare(appRoot.stack.currentItem.isBusy, true, "same title");
-        verify(waitForSignal(appRoot.stack.currentItem, "isBusyChanged"))
-
-        appRoot.stack.currentItem.flickable.currentIndex = 0
-        var item = appRoot.stack.currentItem.flickable.currentItem
-        verify(item)
-        item.clicked()
+        verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         verify(appRoot.stack.currentItem, "has a page");
         compare(appRoot.stack.currentItem.title, "Dummy 1", "same title");
 
@@ -32,17 +25,7 @@ DiscoverTest
     }
     function test_cancel() {
         app.openApplication("dummy://dummy.2");
-        compare(appRoot.stack.currentItem.title, "dummy://dummy.2", "same title");
-        compare(appRoot.stack.currentItem.isBusy, true, "same title");
-        verify(waitForSignal(appRoot.stack.currentItem, "isBusyChanged"))
-
-        appRoot.stack.currentItem.flickable.currentIndex = 0
-        var item = appRoot.stack.currentItem.flickable.currentItem
-        verify(item)
-        item.clicked()
-        verify(appRoot.stack.currentItem, "has a page");
-        compare(appRoot.stack.currentItem.title, "Dummy 2", "same title");
-
+        verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         var button = findChild(appRoot.stack.currentItem, "InstallApplicationButton")
         verify(!button.isActive)
         

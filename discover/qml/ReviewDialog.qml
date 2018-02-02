@@ -34,7 +34,7 @@ Kirigami.OverlaySheet
 
         TextArea {
             id: reviewInput
-            readonly property bool acceptableInput: inputIssue.count === 0
+            readonly property bool acceptableInput: inputIssue.length === 0
             readonly property string inputIssue: length < 15 ? i18n("Comment too short") :
                                                  length > 3000 ? i18n("Comment too long") : ""
             Layout.fillWidth: true
