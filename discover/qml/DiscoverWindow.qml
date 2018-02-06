@@ -111,7 +111,7 @@ Kirigami.ApplicationWindow
             Navigation.openApplicationList({search: search})
         }
 
-        onPreventedClose: showPassiveNotification(i18n("Could not close the application, there are tasks that need to be done."), 3000)
+        onPreventedClose: showPassiveNotification(i18n("Could not close the application, there are tasks that need to be done."))
         onUnableToFind: {
             showPassiveNotification(i18n("Unable to find resource: %1", resid));
             Navigation.openHome()
@@ -121,7 +121,7 @@ Kirigami.ApplicationWindow
     Connections {
         target: ResourcesModel
         onPassiveMessage: {
-            showPassiveNotification(message, 3000)
+            showPassiveNotification(message)
             console.log("message:", message)
         }
     }
