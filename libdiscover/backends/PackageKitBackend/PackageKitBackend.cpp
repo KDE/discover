@@ -381,16 +381,29 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
 {
     AbstractResource* pkg = nullptr;
     if (url.scheme() == QLatin1String("appstream")) {
+        static const QMap<QString, QString> deprecatedAppstreamIds = {
+            { QStringLiteral("org.kde.krita.desktop"), QStringLiteral("krita.desktop") },
+            { QStringLiteral("org.kde.digikam.desktop"), QStringLiteral("digikam.desktop") },
+            { QStringLiteral("org.kde.ktorrent.desktop"), QStringLiteral("ktorrent.desktop") },
+            { QStringLiteral("org.kde.gcompris.desktop"), QStringLiteral("gcompris.desktop") },
+            { QStringLiteral("org.kde.kmymoney.desktop"), QStringLiteral("kmymoney.desktop") },
+            { QStringLiteral("org.kde.kolourpaint.desktop"), QStringLiteral("kolourpaint.desktop") },
+            { QStringLiteral("org.blender.blender.desktop"), QStringLiteral("blender.desktop") },
+        };
+        
         const auto host = url.host();
         if (host.isEmpty())
             passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
+            const auto deprecatedHost = deprecatedAppstreamIds.value(url.host()); //try this as fallback
             for (auto it = m_packages.packages.constBegin(), itEnd = m_packages.packages.constEnd(); it != itEnd; ++it) {
-                if (it.key().compare(host, Qt::CaseInsensitive) == 0) {
+                if (it.key().compare(host, Qt::CaseInsensitive) == 0 || it.key().compare(deprecatedHost, Qt::CaseInsensitive) == 0) {
                     pkg = it.value();
                     break;
                 }
             }
+            if (!pkg)
+                qWarning() << "could not find" << host << deprecatedHost;
         }
     }
     return new ResultsStream(QStringLiteral("PackageKitStream-url"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
