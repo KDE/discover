@@ -45,7 +45,7 @@ Kirigami.OverlaySheet
             id: acceptButton
             Layout.alignment: Qt.AlignRight
             enabled: summaryInput.acceptableInput && reviewInput.acceptableInput
-            text: summaryInput.acceptableInput && reviewInput.acceptableInput ? i18n("Accept")
+            text: summaryInput.acceptableInput && reviewInput.acceptableInput ? i18n("Submit")
                 : !summaryInput.acceptableInput ? i18n("Improve summary") : reviewInput.inputIssue
             onClicked: {
                 reviewDialog.accepted()
