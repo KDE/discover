@@ -51,10 +51,22 @@ Kirigami.OverlaySheet {
         spacing: Kirigami.Units.smallSpacing
         cacheBuffer: Math.max(0, contentHeight)
 
-        header: Button {
-            visible: page.reviewsBackend != null && page.resource.isInstalled
-            text: i18n("Review")
-            onClicked: page.openReviewDialog()
+        header: Item {
+            width: parent.width
+            height: reviewButton.height + 2 * Kirigami.Units.largeSpacing
+            Button {
+                id: reviewButton
+
+                anchors {
+                    verticalCenter: parent.verticalCenter
+                    left: parent.left
+                    leftMargin: Kirigami.Units.largeSpacing
+                }
+
+                visible: page.reviewsBackend != null && page.resource.isInstalled
+                text: i18n("Review")
+                onClicked: page.openReviewDialog()
+            }
         }
 
         delegate: ReviewDelegate {
