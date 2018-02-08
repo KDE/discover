@@ -62,7 +62,7 @@ Kirigami.OverlaySheet {
                 }
 
                 visible: page.reviewsBackend != null && page.resource.isInstalled
-                text: i18n("Review")
+                text: i18n("Review...")
                 onClicked: page.openReviewDialog()
             }
         }
