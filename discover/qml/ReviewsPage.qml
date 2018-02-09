@@ -61,7 +61,8 @@ Kirigami.OverlaySheet {
                     leftMargin: Kirigami.Units.largeSpacing
                 }
 
-                visible: page.reviewsBackend != null && page.resource.isInstalled
+                visible: page.reviewsBackend != null
+                enabled: page.resource.isInstalled
                 text: i18n("Review...")
                 onClicked: page.openReviewDialog()
             }

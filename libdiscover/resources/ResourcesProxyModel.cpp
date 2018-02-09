@@ -263,6 +263,7 @@ void ResourcesProxyModel::invalidateFilter()
     }
 
     m_currentStream = ResourcesModel::global()->search(m_filters);
+    Q_EMIT busyChanged(true);
 
     if (!m_displayedResources.isEmpty()) {
         beginResetModel();
@@ -275,7 +276,6 @@ void ResourcesProxyModel::invalidateFilter()
         m_currentStream = nullptr;
         Q_EMIT busyChanged(false);
     });
-    Q_EMIT busyChanged(true);
 }
 
 int ResourcesProxyModel::rowCount(const QModelIndex& parent) const

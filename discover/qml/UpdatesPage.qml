@@ -181,6 +181,7 @@ DiscoverPage
                         Layout.fillHeight: true
                         Layout.preferredWidth: height
                         source: decoration
+                        smooth: true
                     }
 
                     QQC2.Label {
