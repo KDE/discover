@@ -200,7 +200,7 @@ DiscoverPage
 
                 QQC2.Frame {
                     Layout.fillWidth: true
-                    Layout.minimumHeight: view.contentHeight
+                    implicitHeight: view.contentHeight
                     visible: layout.extended && changelog.length>0
                     QQC2.Label {
                         id: view
@@ -212,7 +212,13 @@ DiscoverPage
                         textFormat: Text.StyledText
                         wrapMode: Text.WordWrap
                         onLinkActivated: Qt.openUrlExternally(link)
+
                     }
+
+                    //This saves a binding loop on implictHeight, as the Label
+                    //height is updated twice (first time with the wrong value)
+                    Behavior on implicitHeight
+                    { PropertyAnimation { duration: Kirigami.Units.shortDuration } }
                 }
 
                 Button {
