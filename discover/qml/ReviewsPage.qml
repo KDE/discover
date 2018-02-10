@@ -73,6 +73,7 @@ Kirigami.OverlaySheet {
                 left: parent.left
                 right: parent.right
             }
+            separator: index != ListView.view.count-1
             onMarkUseful: page.model.markUseful(index, useful)
         }
     }

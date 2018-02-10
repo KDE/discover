@@ -208,6 +208,34 @@ DiscoverPage {
             onClicked: addonsView.sheetOpen = true
         }
 
+
+        Kirigami.Heading {
+            Layout.topMargin: Kirigami.Units.largeSpacing
+            text: i18n("Reviews")
+            level: 2
+            visible: rep.count > 0
+        }
+
+        Rectangle {
+            color: Kirigami.Theme.linkColor
+            Layout.fillWidth: true
+            height: 1
+            visible: rep.count > 0
+        }
+
+        Repeater {
+            id: rep
+            model: PaginateModel {
+                sourceModel: reviewsSheet.model
+                pageSize: 3
+            }
+            delegate: ReviewDelegate {
+                Layout.topMargin: Kirigami.Units.largeSpacing
+                separator: false
+                compact: true
+                Layout.bottomMargin: Kirigami.Units.largeSpacing
+            }
+        }
         LinkButton {
             text: i18n("Review")
             onClicked: reviewsSheet.openReviewDialog()
@@ -217,25 +245,19 @@ DiscoverPage {
             id: commentsButton
             readonly property QtObject rating: appInfo.application.rating
             visible: rating && rating.ratingCount>0 && reviewsModel.count
-            text: i18n("Show reviews (%1)...", rating ? reviewsModel.count : 0)
+            text: i18n("Show more reviews (%1)...", rating ? reviewsModel.count : 0)
 
             onClicked: {
                 reviewsSheet.open()
             }
+            Layout.bottomMargin: Kirigami.Units.largeSpacing
         }
 
-        Item {
-            height: addonsButton.height
-            width: 5
-        }
-
-        // Details/metadata
         Rectangle {
-            Layout.topMargin: Kirigami.Units.smallSpacing
             color: Kirigami.Theme.linkColor
             Layout.fillWidth: true
             height: 1
-            Layout.bottomMargin: Kirigami.Units.smallSpacing
+            Layout.bottomMargin: Kirigami.Units.largeSpacing
         }
         GridLayout {
             rowSpacing: 0

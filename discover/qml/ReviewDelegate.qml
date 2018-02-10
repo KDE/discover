@@ -27,6 +27,8 @@ ColumnLayout
 {
     id: item
     visible: model.shouldShow
+    property bool compact: false
+    property bool separator: true
     signal markUseful(bool useful)
 
     function usefulnessToString(favorable, total)
@@ -53,13 +55,16 @@ ColumnLayout
     Label {
         Layout.fillWidth: true
         text: display
+        maximumLineCount: item.compact ? 3 : undefined
         wrapMode: Text.Wrap
     }
     Label {
+        visible: !item.compact
         text: usefulnessToString(usefulnessFavorable, usefulnessTotal)
     }
 
     Label {
+        visible: !item.compact
         Layout.alignment: Qt.AlignRight
         text: {
             switch(usefulChoice) {
@@ -77,6 +82,7 @@ ColumnLayout
         onLinkActivated: item.markUseful(link=='true')
     }
     Kirigami.Separator {
+        visible: item.separator
         Layout.fillWidth: true
     }
 }
