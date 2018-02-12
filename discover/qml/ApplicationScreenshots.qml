@@ -19,23 +19,23 @@
 
 
 import QtQuick 2.1
+import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import QtQuick.Controls 2.1 as QQC2
 import QtGraphicalEffects 1.0
 import org.kde.discover 2.0
 import org.kde.kirigami 2.0 as Kirigami
 
-ListView {
+Flickable {
     id: root
+    readonly property alias count: screenshotsModel.count
     property alias resource: screenshotsModel.application
-    property QtObject page
-
-    spacing: Kirigami.Units.largeSpacing
-    focus: overlay.visible
-
-    Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
-    Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
-    orientation: ListView.Horizontal
+    property var resource
+    property int currentIndex: -1
+    property Item currentItem: screenshotsRep.itemAt(currentIndex)
+    Layout.preferredHeight: Kirigami.Units.gridUnit * 13
+    contentHeight: height
+    contentWidth: screenshotsLayout.width
 
     QQC2.Popup {
         id: overlay
@@ -81,7 +81,7 @@ ListView {
             iconName: "arrow-left"
             enabled: overlay.visible && visible
             visible: root.currentIndex >= 1
-            onTriggered: root.decrementCurrentIndex()
+            onTriggered: root.currentIndex = (root.currentIndex - 1) % screenshotsModel.count
         }
 
         Kirigami.Action {
@@ -89,76 +89,86 @@ ListView {
             iconName: "arrow-right"
             enabled: overlay.visible && visible
             visible: root.currentIndex < (root.count - 1)
-            onTriggered: root.incrementCurrentIndex()
+            onTriggered: root.currentIndex = (root.currentIndex + 1) % screenshotsModel.count
         }
     }
 
-    model: ScreenshotsModel {
-        id: screenshotsModel
-    }
+    Row {
+        id: screenshotsLayout
+        height: root.contentHeight
+        spacing: Kirigami.Units.largeSpacing
+        focus: overlay.visible
 
-    delegate: Item {
-        readonly property url imageSource: large_image_url
-        readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
-        y: parent.height * 0.05
-        height: parent.height * 0.9
-        width: Math.max(50, height/proportion)
-        DropShadow {
-            source: thumbnail
-            anchors.fill: parent
-            verticalOffset: 3
-            horizontalOffset: 0
-            radius: 12.0
-            samples: 25
-            color: Kirigami.Theme.disabledTextColor
-            cached: true
-        }
+        Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
+        Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
 
-        MouseArea {
-            anchors.fill: parent
-            hoverEnabled: true
-            cursorShape: Qt.PointingHandCursor
+        Repeater {
+            id: screenshotsRep
+            model: ScreenshotsModel {
+                id: screenshotsModel
+            }
 
-            onClicked: {
-                root.currentIndex = index
-                overlay.open()
+            delegate: MouseArea {
+                readonly property url imageSource: large_image_url
+                readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
+                width: Math.max(50, height/proportion)
+                height: screenshotsLayout.height
+
+                hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
+
+                onClicked: {
+                    root.currentIndex = index
+                    overlay.open()
+                }
+
+                DropShadow {
+                    source: thumbnail
+                    anchors.fill: thumbnail
+                    verticalOffset: 3
+                    horizontalOffset: 0
+                    radius: 12.0
+                    samples: 25
+                    color: Kirigami.Theme.disabledTextColor
+                    cached: true
+                }
+
+                BusyIndicator {
+                    visible: running
+                    running: thumbnail.status == Image.Loading
+                    anchors.centerIn: thumbnail
+                }
+
+                Image {
+                    id: thumbnail
+                    source: small_image_url
+                    height: parent.height
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
+                }
             }
         }
-        BusyIndicator {
-            visible: running
-            running: parent.status == Image.Loading
-            anchors.centerIn: thumbnail
+    }
+    clip: true
+    readonly property var leftShadow: Shadow {
+        parent: root
+        anchors {
+            left: parent.left
+            top: parent.top
+            bottom: parent.bottom
         }
-
-        Image {
-            id: thumbnail
-            source: small_image_url
-            height: parent.height
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-        }
-
+        edge: Qt.LeftEdge
+        width: Math.max(0, Math.min(root.width/5, root.contentX))
     }
 
-    layer.enabled: true
-    // This item should be used as the 'mask'
-    layer.effect: ShaderEffect {
-        property var colorSource: root;
-        property bool atLeft: root.atXBeginning;
-        property bool atRight: root.atXEnd;
-        fragmentShader: "
-            uniform lowp bool atLeft;
-            uniform lowp bool atRight;
-            uniform lowp sampler2D colorSource;
-            uniform lowp float qt_Opacity;
-            varying highp vec2 qt_TexCoord0;
-            void main() {
-                gl_FragColor =
-                    texture2D(colorSource, qt_TexCoord0)
-                    * (atRight ? 1. : min(1.0, qt_TexCoord0.x * -20.0 + 20.))
-                    * (atLeft  ? 1. : min(1.0, qt_TexCoord0.x *  20.0))
-                    * qt_Opacity;
-            }
-        "
+    readonly property var rightShadow: Shadow {
+        parent: root
+        anchors {
+            right: parent.right
+            top: parent.top
+            bottom: parent.bottom
+        }
+        edge: Qt.RightEdge
+        width: Math.max(0, Math.min(root.contentWidth - root.contentX - root.width)/5)
     }
 }

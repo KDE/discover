@@ -176,20 +176,20 @@ DiscoverPage {
             Layout.bottomMargin: Kirigami.Units.largeSpacing
         }
 
-        ScrollView {
+        ApplicationScreenshots {
+            id: screenshots
             Layout.fillWidth: true
-            Layout.preferredHeight: Kirigami.Units.gridUnit * 13
-            Layout.bottomMargin: Kirigami.Units.largeSpacing
-            visible: screenshots.count > 0
-            ApplicationScreenshots {
-                id: screenshots
-                resource: appInfo.application
-                page: appInfo
-
-            }
+            visible: count > 0
+            resource: appInfo.application
+            QQC2.ScrollBar.horizontal: screenshotsScrollbar
+        }
+        QQC2.ScrollBar {
+            id: screenshotsScrollbar
+            Layout.fillWidth: true
         }
 
         QQC2.Label {
+            Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
             text: appInfo.application.longDescription + originsOverlay.sentence

@@ -492,11 +492,14 @@ void FlatpakResource::setOrigin(const QString &origin)
     m_origin = origin;
 }
 
-void FlatpakResource::setPropertyState(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state)
+void FlatpakResource::setPropertyState(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState newState)
 {
-    m_propertyStates[kind] = state;
+    auto & state = m_propertyStates[kind];
+    if (state != newState) {
+        state = newState;
 
-    Q_EMIT propertyStateChanged(kind, state);
+        Q_EMIT propertyStateChanged(kind, newState);
+    }
 }
 
 void FlatpakResource::setResourceFile(const QUrl &url)
