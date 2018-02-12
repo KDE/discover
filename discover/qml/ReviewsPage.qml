@@ -34,7 +34,8 @@ Kirigami.OverlaySheet {
         id: reviewDialog
         application: page.resource
         parent: overlay
-        onAccepted: page.reviewsBackend.submitReview(resource, summary, review, rating)
+        backend: page.reviewsBackend
+        onAccepted: backend.submitReview(resource, summary, review, rating)
     }
 
     function openReviewDialog() {

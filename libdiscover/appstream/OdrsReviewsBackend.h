@@ -37,7 +37,7 @@ Q_OBJECT
 public:
     explicit OdrsReviewsBackend(AbstractResourcesBackend *parent = nullptr);
 
-    QString userName() const override { return {}; }
+    QString userName() const override;
     void login() override {}
     void logout() override {}
     void registerAndLogin() override {}

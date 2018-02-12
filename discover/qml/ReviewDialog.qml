@@ -13,6 +13,7 @@ Kirigami.OverlaySheet
     readonly property alias rating: ratingInput.rating
     readonly property alias summary: summaryInput.text
     readonly property alias review: reviewInput.text
+    property QtObject backend: null
 
     signal accepted()
 
@@ -24,6 +25,10 @@ Kirigami.OverlaySheet
             editable: true
         }
 
+        Label {
+            visible: reviewDialog.backend.userName.length > 0
+            text: visible ? i18n("Submission name: %1", reviewDialog.backend.userName) : ""
+        }
         Label { text: i18n("Summary:") }
         TextField {
             id: summaryInput

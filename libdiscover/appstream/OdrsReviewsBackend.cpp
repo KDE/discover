@@ -29,6 +29,7 @@
 
 #include <KIO/FileCopyJob>
 #include <KUser>
+#include <KLocalizedString>
 
 #include <QCryptographicHash>
 #include <QDir>
@@ -242,6 +243,11 @@ void OdrsReviewsBackend::usefulnessSubmitted()
     } else {
         qWarning() << "Failed to submit usefulness: " << reply->errorString();
     }
+}
+
+QString OdrsReviewsBackend::userName() const
+{
+    return i18n("%1 (%2)", KUser().property(KUser::FullName).toString(), KUser().loginName());
 }
 
 void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summary, const QString &description, const QString &rating)

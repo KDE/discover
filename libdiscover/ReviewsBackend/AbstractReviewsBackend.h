@@ -33,7 +33,7 @@ class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
     Q_OBJECT
     Q_PROPERTY(bool isReviewable READ isReviewable CONSTANT)
     Q_PROPERTY(bool hasCredentials READ hasCredentials NOTIFY loginStateChanged)
-    Q_PROPERTY(QString name READ userName NOTIFY loginStateChanged)
+    Q_PROPERTY(QString userName READ userName NOTIFY loginStateChanged)
     public:
         explicit AbstractReviewsBackend(QObject* parent = nullptr);
 
