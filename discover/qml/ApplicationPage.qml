@@ -86,57 +86,21 @@ DiscoverPage {
         }
     }
 
-    header: QQC2.ToolBar {
-        anchors {
-            right: parent.right
-            left: parent.left
+    actions {
+        main: appbutton.action
+        right: Kirigami.Action {
+            visible: application.isInstalled && application.canExecute
+            text: application.executeLabel
+            icon.name: "media-playback-start"
+            onTriggered: application.invokeApplication()
         }
+    }
 
-        contentItem: RowLayout {
-            spacing: Kirigami.Units.smallSpacing
-
-            ToolButton {
-                Layout.leftMargin: Kirigami.Units.smallSpacing
-                iconName: "draw-arrow-back"
-                tooltip: i18n("Back")
-                enabled: appInfo.sClose.enabled
-                onClicked: appInfo.sClose.activated()
-            }
-            Item {
-                Layout.fillWidth: true
-            }
-            Kirigami.Heading {
-                level: 3
-                Layout.maximumWidth: parent.width/2
-                text: appInfo.application.name
-                maximumLineCount: 1
-                elide: Text.ElideRight
-                horizontalAlignment: Text.AlignHCenter
-            }
-            Item {
-                Layout.fillWidth: true
-            }
-
-            Binding {
-                target: appInfo.actions
-                property: "main"
-                value: appbutton.action
-            }
-
-            InstallApplicationButton {
-                id: appbutton
-                Layout.rightMargin: Kirigami.Units.smallSpacing
-                application: appInfo.application
-                visible: applicationWindow().wideScreen
-            }
-
-            Button {
-                Layout.rightMargin: Kirigami.Units.smallSpacing
-                visible: application.isInstalled && application.canExecute
-                text: application.executeLabel
-                onClicked: application.invokeApplication()
-            }
-        }
+    InstallApplicationButton {
+        id: appbutton
+        Layout.rightMargin: Kirigami.Units.smallSpacing
+        application: appInfo.application
+        visible: false
     }
 
     leftPadding: Kirigami.Units.largeSpacing * (applicationWindow().wideScreen ? 2 : 1)
@@ -146,7 +110,6 @@ DiscoverPage {
         spacing: 0
         RowLayout {
             Kirigami.Icon {
-                Layout.topMargin: Kirigami.Units.smallSpacing * 2
                 Layout.preferredHeight: 80
                 Layout.preferredWidth: 80
                 source: appInfo.application.icon

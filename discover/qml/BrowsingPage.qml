@@ -51,11 +51,6 @@ DiscoverPage
     ListView {
         id: browsingView
 
-        headerPositioning: ListView.OverlayHeader
-        header: Kirigami.ItemViewHeader {
-            backgroundImage.source: "qrc:/banners/coffee.jpg"
-            title: page.title
-        }
         model: FeaturedModel {}
         spacing: Kirigami.Units.gridUnit
         currentIndex: -1

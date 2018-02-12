@@ -21,38 +21,11 @@ DiscoverPage {
         color: Kirigami.Theme.backgroundColor
     }
 
-    header: QQC2.ToolBar {
-        Kirigami.Theme.inherit: false
-        Kirigami.Theme.colorSet: Kirigami.Theme.Window
-        anchors {
-            right: parent.right
-            left: parent.left
-        }
-
-        contentItem: RowLayout {
-            anchors {
-                topMargin: Kirigami.Units.smallSpacing
-                bottomMargin: Kirigami.Units.smallSpacing
-            }
-
-            Item {
-                Layout.fillWidth: true
-            }
-
-            ToolButton {
-                action: refreshAction
-            }
-
-            ToolButton {
-                text: i18n("Help...")
-                menu: Menu {
-                    MenuItem { action: ActionBridge { action: app.action("help_contents") } }
-                    MenuItem { action: ActionBridge { action: app.action("help_about_app") } }
-                    MenuItem { action: ActionBridge { action: app.action("help_report_bug") } }
-                }
-            }
-        }
-    }
+    contextualActions: [
+        KirigamiActionBridge { action: app.action("help_contents") },
+        KirigamiActionBridge { action: app.action("help_about_app") },
+        KirigamiActionBridge { action: app.action("help_report_bug") }
+    ]
 
     mainItem: ListView {
         id: sourcesView
@@ -130,7 +103,7 @@ DiscoverPage {
                                     actions: backendItem.backend ? backendItem.backend.actions : undefined
                                 }
                                 delegate: MenuItem {
-                                    action: ActionBridge { action: modelData }
+                                    action: ActionBridge { action: modelData.action }
                                 }
                                 onObjectAdded: {
                                     settingsMenu.insertItem(index, object)

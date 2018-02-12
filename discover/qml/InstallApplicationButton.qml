@@ -25,7 +25,7 @@ ConditionalLoader
             name: application.isInstalled ? "trash-empty" : "cloud-download"
             color: application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor
         }
-        visible: !listener.isActive && !applicationWindow().wideScreen
+        visible: !listener.isActive
         onTriggered: root.click()
     }
 

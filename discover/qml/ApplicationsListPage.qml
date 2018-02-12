@@ -43,7 +43,7 @@ DiscoverPage {
     property alias allBackends: appsModel.allBackends
     property alias count: apps.count
     property alias listHeader: apps.header
-    property Component listHeaderExtra
+    property alias listHeaderPositioning: apps.headerPositioning
     property bool compact: page.width < 500 || !applicationWindow().wideScreen
 
     property bool canNavigate: true
@@ -69,13 +69,6 @@ DiscoverPage {
             }
         }
 
-        headerPositioning: ListView.OverlayHeader
-        header: CategoryDisplay {
-            id: header
-            category: appsModel.filteredCategory
-            search: appsModel.search
-            extra: page.listHeaderExtra
-        }
         model: ResourcesProxyModel {
             id: appsModel
             sortRole: ResourcesProxyModel.RatingCountRole

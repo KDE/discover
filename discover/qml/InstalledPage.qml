@@ -17,13 +17,4 @@ ApplicationsListPage {
     canNavigate: false
 
     listHeader: null
-    header: ToolBar {
-        Kirigami.Heading {
-            anchors {
-                right: parent.right
-                rightMargin: Kirigami.Units.largeSpacing
-            }
-            text: page.title
-        }
-    }
 }

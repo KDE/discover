@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2017 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2015 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,38 +18,22 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-import QtQuick 2.5
+import QtQml 2.0
+import org.kde.kirigami 2.1 as Kirigami
 
-ApplicationsListPage {
-    id: searchPage
+Kirigami.Action
+{
+    property QtObject action: null
 
-    signal shown()
-    Timer {
-        interval: 0
-        running: true
-        onTriggered: {
-            searchPage.shown()
-        }
+    function removeAmpersand(text) {
+        return text.replace("&", "");
     }
+    text: action ? removeAmpersand(action.text) : "<null>"
+    checked: action && action.checked
+    enabled: action && action.enabled
+    tooltip: action ? action.toolTip : ""
+    iconName: action ? app.iconName(action.icon) : ""
+    shortcut: action ? action.shortcut : undefined
 
-    listHeaderPositioning: ListView.OverlayHeader
-    listHeader: SearchField {
-        id: searchField
-        width: parent.width
-        focus: true
-        z: 100
-        Component.onCompleted: forceActiveFocus()
-
-        Connections {
-            ignoreUnknownSignals: true
-            target: searchPage
-            onShown: {
-                searchField.forceActiveFocus()
-            }
-        }
-
-        onCurrentSearchTextChanged: {
-            searchPage.search = currentSearchText
-        }
-    }
+    onTriggered: action.trigger()
 }
