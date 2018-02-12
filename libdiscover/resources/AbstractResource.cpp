@@ -245,3 +245,8 @@ QString AbstractResource::displayOrigin() const
 {
     return i18nc("origin (backend name)", "%1 (%2)", origin(), backend()->displayName());
 }
+
+QString AbstractResource::executeLabel() const
+{
+    return i18n("Launch");
+}

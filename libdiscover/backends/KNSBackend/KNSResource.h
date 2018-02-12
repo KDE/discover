@@ -64,6 +64,7 @@ public:
     void invokeApplication() const override;
 
     QUrl url() const override;
+    QString executeLabel() const override;
 
 private:
     const QStringList m_categories;

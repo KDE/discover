@@ -22,6 +22,7 @@
 #include "KNSBackend.h"
 #include <KNSCore/Engine>
 #include <KShell>
+#include <KLocalizedString>
 #include <QProcess>
 #include <QRegularExpression>
 #include <knewstuff_version.h>
@@ -222,4 +223,9 @@ void KNSResource::invokeApplication() const
     } else {
         qWarning() << "cannot execute" << packageName();
     }
+}
+
+QString KNSResource::executeLabel() const
+{
+    return i18n("Use");
 }

@@ -133,7 +133,7 @@ DiscoverPage {
             Button {
                 Layout.rightMargin: Kirigami.Units.smallSpacing
                 visible: application.isInstalled && application.canExecute
-                text: i18n("Launch")
+                text: application.executeLabel
                 onClicked: application.invokeApplication()
             }
         }
