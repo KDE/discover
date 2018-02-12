@@ -25,6 +25,7 @@
   <summary xml:lang="ar">يُكامل تطبيقات ”سناپ“ في «استكشف»</summary>
   <summary xml:lang="ca">Integra aplicacions de l'Snap al Discover</summary>
   <summary xml:lang="ca-valencia">Integra aplicacions de l'Snap al Discover</summary>
+  <summary xml:lang="de">Integriert Snap-Anwendungen in Discover</summary>
   <summary xml:lang="es">Integra aplicaciones Snap en Discover</summary>
   <summary xml:lang="fi">Yhdistää Snap-sovellukset Discoveriin</summary>
   <summary xml:lang="fr">Intègre les applications Snap au sein de Discover</summary>
@@ -49,6 +50,7 @@
   <developer_name xml:lang="ast">Aleix Pol González</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="de">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="es">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fi">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>

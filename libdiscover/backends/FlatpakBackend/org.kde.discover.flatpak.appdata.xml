@@ -5,6 +5,7 @@
   <name xml:lang="ar">سَند فلاتپاك</name>
   <name xml:lang="ca">Dorsal del Flatpak</name>
   <name xml:lang="ca-valencia">Dorsal del Flatpak</name>
+  <name xml:lang="de">Flatpak-Backend</name>
   <name xml:lang="es">Motor Flatpak</name>
   <name xml:lang="fi">Flatpak-taustaosa</name>
   <name xml:lang="fr">Moteur Flatpak</name>
@@ -25,6 +26,7 @@
   <summary xml:lang="ar">يُكامل تطبيقات ”فلاتپاك“ في «استكشف»</summary>
   <summary xml:lang="ca">Integra aplicacions del Flatpak al Discover</summary>
   <summary xml:lang="ca-valencia">Integra aplicacions del Flatpak al Discover</summary>
+  <summary xml:lang="de">Integriert Flatpak-Anwendungen in Discover</summary>
   <summary xml:lang="es">Integra aplicaciones Flatpak en Discover</summary>
   <summary xml:lang="fi">Yhdistää Flatpak-sovellukset Discoveriin</summary>
   <summary xml:lang="fr">Intègre les applications Flatpak au sein de Discover</summary>
@@ -49,6 +51,7 @@
   <developer_name xml:lang="ast">Aleix Pol González</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="de">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="es">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fi">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>
