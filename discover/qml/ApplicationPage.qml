@@ -237,7 +237,7 @@ DiscoverPage {
             }
         }
         LinkButton {
-            text: i18n("Review")
+            text: i18n("Be the first to write a review!")
             onClicked: reviewsSheet.openReviewDialog()
             visible: !commentsButton.visible && reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
         }
