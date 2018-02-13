@@ -33,7 +33,7 @@ class AbstractReviewsBackend;
 class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(AbstractReviewsBackend* backend READ backend CONSTANT)
+    Q_PROPERTY(AbstractReviewsBackend* backend READ backend NOTIFY resourceChanged)
     Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY rowsChanged)
     public:
