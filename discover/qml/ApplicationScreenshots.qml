@@ -136,7 +136,7 @@ Flickable {
                 BusyIndicator {
                     visible: running
                     running: thumbnail.status == Image.Loading
-                    anchors.centerIn: thumbnail
+                    anchors.centerIn: parent
                 }
 
                 Image {
