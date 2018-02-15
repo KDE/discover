@@ -29,7 +29,7 @@ Kirigami.BasicListItem {
         sheetObject = sheet.createObject()
         sheetObject.open()
     }
-    onVisibleChanged: if (!visible) {
+    onVisibleChanged: if (!visible && sheetObject) {
         sheetObject.close()
         sheetObject.destroy(100)
     }
