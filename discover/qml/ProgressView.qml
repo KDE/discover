@@ -24,11 +24,14 @@ Kirigami.BasicListItem {
         }
     }
 
+    property QtObject sheetObject: null
     onClicked: {
-        sheet.open()
+        sheetObject = sheet.createObject()
+        sheetObject.open()
     }
     onVisibleChanged: if (!visible) {
-        sheet.close()
+        sheetObject.close()
+        sheetObject.destroy(100)
     }
 
     readonly property var v1: Connections {
@@ -60,73 +63,75 @@ Kirigami.BasicListItem {
         }
     }
 
-    readonly property var v3: Kirigami.OverlaySheet {
+    readonly property var v3: Component {
         id: sheet
+        Kirigami.OverlaySheet {
 
-        contentItem: ColumnLayout {
-            spacing: 0
+            contentItem: ColumnLayout {
+                spacing: 0
 
-            Component {
-                id: listenerComp
-                TransactionListener {
-                    property int index: -1
-                    onCancelled: {
-                        progressModel.remove(index)
+                Component {
+                    id: listenerComp
+                    TransactionListener {
+                        property int index: -1
+                        onCancelled: {
+                            progressModel.remove(index)
+                        }
                     }
                 }
-            }
 
-            Repeater {
-                model: progressModel
+                Repeater {
+                    model: progressModel
 
-                delegate: Kirigami.AbstractListItem {
-                    id: del
-                    separatorVisible: false
-                    onClicked: {
-                        if (model.application) {
-                            Navigation.clearStack()
-                            Navigation.openApplication(model.application)
+                    delegate: Kirigami.AbstractListItem {
+                        id: del
+                        separatorVisible: false
+                        onClicked: {
+                            if (model.application) {
+                                Navigation.clearStack()
+                                Navigation.openApplication(model.application)
+                            }
                         }
-                    }
-                    readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource, index: index} : {transaction: model.transaction, index: index}))
+                        readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource, index: index} : {transaction: model.transaction, index: index}))
 
-                    ColumnLayout {
-                        width: parent.width
+                        ColumnLayout {
+                            width: parent.width
 
-                        RowLayout {
-                            Layout.fillWidth: true
-
-                            Kirigami.Icon {
-                                Layout.fillHeight: true
-                                Layout.minimumWidth: height
-                                source: model.transaction.icon
-                            }
-
-                            QQC2.Label {
-                                anchors.verticalCenter: parent.verticalCenter
+                            RowLayout {
                                 Layout.fillWidth: true
-                                elide: Text.ElideRight
-                                text: listener.isActive ? i18nc("TransactioName TransactionStatus", "%1 %2", model.transaction.name, listener.statusText) : model.transaction.name
-                            }
-                            ToolButton {
-                                iconName: "dialog-cancel"
-                                visible: listener.isCancellable
-                                onClicked: listener.cancel()
-                            }
-                            ToolButton {
-                                iconName: "system-run"
-                                visible: model.application != undefined && model.application.isInstalled && !listener.isActive && model.application.canExecute
-                                onClicked: {
-                                    model.application.invokeApplication()
-                                    model.remove(index)
+
+                                Kirigami.Icon {
+                                    Layout.fillHeight: true
+                                    Layout.minimumWidth: height
+                                    source: model.transaction.icon
+                                }
+
+                                QQC2.Label {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    Layout.fillWidth: true
+                                    elide: Text.ElideRight
+                                    text: listener.isActive ? i18nc("TransactioName TransactionStatus", "%1 %2", model.transaction.name, listener.statusText) : model.transaction.name
+                                }
+                                ToolButton {
+                                    iconName: "dialog-cancel"
+                                    visible: listener.isCancellable
+                                    onClicked: listener.cancel()
+                                }
+                                ToolButton {
+                                    iconName: "system-run"
+                                    visible: model.application != undefined && model.application.isInstalled && !listener.isActive && model.application.canExecute
+                                    onClicked: {
+                                        model.application.invokeApplication()
+                                        model.remove(index)
+                                    }
                                 }
                             }
-                        }
-                        ProgressBar {
-                            Layout.fillWidth: true
-                            visible: listener.isActive
-                            value: listener.progress
-                            maximumValue: 100
+                            ProgressBar {
+                                Layout.fillWidth: true
+                                visible: listener.isActive
+                                value: listener.progress
+                                maximumValue: 100
+                            }
                         }
                     }
                 }
