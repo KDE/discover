@@ -51,6 +51,10 @@ DiscoverPage
     ListView {
         id: browsingView
 
+        anchors {
+            top: parent.top
+            topMargin: Kirigami.Units.gridUnit
+        }
         model: FeaturedModel {}
         spacing: Kirigami.Units.gridUnit
         currentIndex: -1

@@ -62,6 +62,12 @@ DiscoverPage {
     }
     ListView {
         id: apps
+
+        anchors {
+            top: parent.top
+            topMargin: Kirigami.Units.gridUnit
+        }
+
         section.delegate: QQC2.Label {
             text: section
             anchors {
