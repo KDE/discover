@@ -200,7 +200,7 @@ DiscoverPage {
             }
         }
         LinkButton {
-            text: i18n("Be the first to write a review!")
+            text: appInfo.application.isInstalled? i18n("Be the first to write a review!") : i18n("Install this app and be the first to write a review!")
             onClicked: reviewsSheet.openReviewDialog()
             enabled: appInfo.application.isInstalled
             visible: !commentsButton.visible && reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
