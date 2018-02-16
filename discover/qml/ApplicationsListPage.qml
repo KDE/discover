@@ -60,6 +60,37 @@ DiscoverPage {
         appsModel.invalidateFilter()
         refreshing = false
     }
+
+    contextualActions: [
+        Kirigami.Action {
+            text: i18n("Sort")
+            Kirigami.Action {
+                text: i18n("Name")
+                onTriggered: {
+                    appsModel.sortRole = ResourcesProxyModel.NameRole
+                    appsModel.sortOrder = Qt.AscendingOrder
+                }
+                checked: appsModel.sortRole == ResourcesProxyModel.NameRole
+            }
+            Kirigami.Action {
+                text: i18n("Rating")
+                onTriggered: {
+                    appsModel.sortRole = ResourcesProxyModel.RatingPointsRole
+                    appsModel.sortOrder = Qt.AscendingOrder
+                }
+                checked: appsModel.sortRole == ResourcesProxyModel.RatingPointsRole
+            }
+            Kirigami.Action {
+                text: i18n("Size")
+                onTriggered: {
+                    appsModel.sortRole = ResourcesProxyModel.SizeRole
+                    appsModel.sortOrder = Qt.AscendingOrder
+                }
+                checked: appsModel.sortRole == ResourcesProxyModel.SizeRole
+            }
+        }
+    ]
+
     ListView {
         id: apps
 
