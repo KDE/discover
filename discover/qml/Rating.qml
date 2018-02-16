@@ -27,7 +27,7 @@ RowLayout
     id: view
     property bool editable: false
     property int max: 10
-    property int rating: 2
+    property int rating: 0
     property real starSize: Kirigami.Units.gridUnit
 
     clip: true
@@ -37,7 +37,7 @@ RowLayout
 
     Repeater {
         id: theRepeater
-        model: view.rating>0 ? 5 : 0
+        model: 5
         delegate: Kirigami.Icon {
             Layout.minimumWidth: view.starSize
             Layout.minimumHeight: view.starSize

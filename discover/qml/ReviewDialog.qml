@@ -11,7 +11,7 @@ Kirigami.OverlaySheet
 
     property QtObject application
     readonly property alias rating: ratingInput.rating
-    readonly property alias summary: summaryInput.text
+    readonly property alias summary: titleInput.text
     readonly property alias review: reviewInput.text
     property QtObject backend: null
 
@@ -29,19 +29,16 @@ Kirigami.OverlaySheet
             visible: reviewDialog.backend.userName.length > 0
             text: visible ? i18n("Submission name: %1", reviewDialog.backend.userName) : ""
         }
-        Label { text: i18n("Summary:") }
+        Label { text: i18n("Title:") }
         TextField {
-            id: summaryInput
+            id: titleInput
             Layout.fillWidth: true
-            placeholderText: i18n("Short summary...")
             validator: RegExpValidator { regExp: /.{3,70}/ }
         }
-
+        Label { text: i18n("Review:") }
         TextArea {
             id: reviewInput
-            readonly property bool acceptableInput: inputIssue.length === 0
-            readonly property string inputIssue: length < 15 ? i18n("Comment too short") :
-                                                 length > 3000 ? i18n("Comment too long") : ""
+            readonly property bool acceptableInput: length > 15 && length < 3000
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
@@ -49,9 +46,14 @@ Kirigami.OverlaySheet
         Button {
             id: acceptButton
             Layout.alignment: Qt.AlignRight
-            enabled: summaryInput.acceptableInput && reviewInput.acceptableInput
-            text: summaryInput.acceptableInput && reviewInput.acceptableInput ? i18n("Submit")
-                : !summaryInput.acceptableInput ? i18n("Improve summary") : reviewInput.inputIssue
+            enabled: rating > 2 && titleInput.acceptableInput && reviewInput.acceptableInput
+            text: {
+                if (rating < 2) return i18n("Enter a rating");
+                if (! titleInput.acceptableInput) return i18n("Write a title");
+                if (reviewInput.length < 15) return i18n("Keep writing...");
+                if (reviewInput.length > 3000) return i18n("Too long!");
+                return i18n("Submit review");
+            }
             onClicked: {
                 reviewDialog.accepted()
                 reviewDialog.sheetOpen = false
