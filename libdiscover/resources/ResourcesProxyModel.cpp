@@ -433,10 +433,23 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) 
     }
 }
 
+bool ResourcesProxyModel::isSorted(const QVector<AbstractResource*> & resources)
+{
+    auto last = resources.constFirst();
+    for(auto it = resources.constBegin()+1, itEnd = resources.constEnd(); it != itEnd; ++it) {
+        if(!lessThan(last, *it)) {
+            return false;
+        }
+        last = *it;
+    }
+    return true;
+}
+
 void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & resources)
 {
     Q_ASSERT(!resources.isEmpty());
     if (m_sortByRelevancy || m_displayedResources.isEmpty()) {
+//         Q_ASSERT(m_sortByRelevancy || isSorted(resources));
         int rows = rowCount();
         beginInsertRows({}, rows, rows+resources.count()-1);
         m_displayedResources += resources;
@@ -455,6 +468,7 @@ void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & res
         beginInsertRows({}, newIdx, newIdx);
         m_displayedResources.insert(newIdx, resource);
         endInsertRows();
+//         Q_ASSERT(isSorted(resources));
     }
 }
 

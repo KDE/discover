@@ -136,6 +136,7 @@ private:
     void addResources(const QVector<AbstractResource*> &res);
     void fetchSubcategories();
     void removeDuplicates(QVector<AbstractResource *>& newResources);
+    bool isSorted(const QVector<AbstractResource*> & resources);
 
     Roles m_sortRole;
     Qt::SortOrder m_sortOrder;
