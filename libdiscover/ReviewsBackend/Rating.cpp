@@ -107,6 +107,19 @@ Rating::Rating(const QString &packageName, quint64 ratingCount, const QVariantMa
     , m_ratingPoints(0)
     , m_sortableRating(0)
 {
+    const QVector<int> histo = { data.value(QStringLiteral("star1")).toInt(), data.value(QStringLiteral("star2")).toInt(),
+                                 data.value(QStringLiteral("star3")).toInt(), data.value(QStringLiteral("star4")).toInt(),
+                                 data.value(QStringLiteral("star5")).toInt() };
+    QVector<int> spread;
+    spread.reserve(histo.size());
+
+    for(int i=0; i<histo.size(); ++i) {
+        int points = histo[i];
+        m_ratingPoints += (i+1)*points;
+        spread.append(points);
+    }
+
+    m_sortableRating = dampenedRating(spread) * 2;
 }
 
 Rating::Rating(QString packageName, int inst)
