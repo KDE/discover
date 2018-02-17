@@ -144,7 +144,10 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         QStringLiteral("wallpaper.knsrc"), QStringLiteral("xcursor.knsrc"),
 
         QStringLiteral("cgcgtk3.knsrc"), QStringLiteral("cgcicon.knsrc"), QStringLiteral("cgctheme.knsrc"), //GTK integration
-        QStringLiteral("kwinswitcher.knsrc"), QStringLiteral("kwineffect.knsrc"), QStringLiteral("kwinscripts.knsrc") //KWin
+        QStringLiteral("kwinswitcher.knsrc"), QStringLiteral("kwineffect.knsrc"), QStringLiteral("kwinscripts.knsrc"), //KWin
+        QStringLiteral("comic.knsrc"), QStringLiteral("colorschemes.knsrc"),
+        QStringLiteral("emoticons.knsrc"), QStringLiteral("plymouth.knsrc"),
+        QStringLiteral("sddmtheme.knsrc")
     };
     auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, {}, QUrl(), true);
 
