@@ -436,6 +436,64 @@
           <Category>AudioVideo</Category>
         </And>
       </Include>
+
+      <Menu>
+        <Name>Audio and Video Editors</Name>
+        <Icon>edit-cut</Icon>
+        <Include>
+          <And>
+            <Category>AudioVideoEditing</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Audio Players</Name>
+        <Icon>audio-headphones</Icon>
+        <Include>
+          <And>
+            <Or>
+              <Category>AudioVideo</Category>
+              <Category>Audio</Category>
+            </Or>
+            <Not>
+              <Category>Video</Category>
+              <Category>AudioVideoEditing</Category>
+              <Category>DiscBurning</Category>
+              <Category>Music</Category>
+              <Category>Sequencer</Category>
+              <Category>Mixer</Category>
+              <Category>Utility</Category>
+            </Not>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Video Players</Name>
+        <Icon>emblem-videos-symbolic</Icon>
+        <Include>
+          <And>
+            <Or>
+              <Category>AudioVideo</Category>
+              <Category>Video</Category>
+            </Or>
+            <Not>
+              <Category>Audio</Category>
+              <Category>AudioVideoEditing</Category>
+              <Category>DiscBurning</Category>
+              <Category>Utility</Category>
+            </Not>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>CD and DVD</Name>
+        <Icon>media-optical</Icon>
+        <Include>
+          <And>
+            <Category>DiscBurning</Category>
+          </And>
+        </Include>
+      </Menu>
     </Menu>
 
 
