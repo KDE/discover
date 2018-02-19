@@ -5,6 +5,7 @@
   <name xml:lang="ar">سَند سناپ</name>
   <name xml:lang="ca">Dorsal de l'Snap</name>
   <name xml:lang="ca-valencia">Dorsal de l'Snap</name>
+  <name xml:lang="en-GB">Snap backend</name>
   <name xml:lang="es">Motor Snap</name>
   <name xml:lang="fi">Snap-taustaosa</name>
   <name xml:lang="fr">Moteur Snap</name>
@@ -25,6 +26,7 @@
   <summary xml:lang="ar">يُكامل تطبيقات ”سناپ“ في «استكشف»</summary>
   <summary xml:lang="ca">Integra aplicacions de l'Snap al Discover</summary>
   <summary xml:lang="ca-valencia">Integra aplicacions de l'Snap al Discover</summary>
+  <summary xml:lang="en-GB">Integrates Snap applications into Discover</summary>
   <summary xml:lang="es">Integra aplicaciones Snap en Discover</summary>
   <summary xml:lang="fi">Yhdistää Snap-sovellukset Discoveriin</summary>
   <summary xml:lang="fr">Intègre les applications Snap au sein de Discover</summary>
@@ -48,6 +50,7 @@
   <developer_name xml:lang="ar">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="en-GB">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="es">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fi">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>
