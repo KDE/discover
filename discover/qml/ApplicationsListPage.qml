@@ -70,6 +70,7 @@ DiscoverPage {
                     appsModel.sortRole = ResourcesProxyModel.NameRole
                     appsModel.sortOrder = Qt.AscendingOrder
                 }
+                checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.NameRole
             }
             Kirigami.Action {
@@ -78,6 +79,7 @@ DiscoverPage {
                     appsModel.sortRole = ResourcesProxyModel.RatingPointsRole
                     appsModel.sortOrder = Qt.AscendingOrder
                 }
+                checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.RatingPointsRole
             }
             Kirigami.Action {
@@ -86,6 +88,7 @@ DiscoverPage {
                     appsModel.sortRole = ResourcesProxyModel.SizeRole
                     appsModel.sortOrder = Qt.AscendingOrder
                 }
+                checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.SizeRole
             }
         }
