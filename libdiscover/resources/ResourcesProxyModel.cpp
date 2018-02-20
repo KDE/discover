@@ -462,7 +462,7 @@ void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & res
         const auto it = std::upper_bound(m_displayedResources.constBegin(), m_displayedResources.constEnd(), resource, finder);
         const auto newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());
 
-        if (it != m_displayedResources.constEnd() && *it == resource)
+        if ((it-1) != m_displayedResources.constEnd() && *(it-1) == resource)
             continue;
 
         beginInsertRows({}, newIdx, newIdx);
