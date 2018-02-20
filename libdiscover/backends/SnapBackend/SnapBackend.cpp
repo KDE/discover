@@ -80,7 +80,7 @@ ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& fil
         return voidStream();
     } else if (filters.state >= AbstractResource::Installed) {
         return populate(m_client.list(), AbstractResource::Installed);
-    } else {
+    } else if (!filters.search.isEmpty()) {
         return populate(m_client.find(QSnapdClient::FindFlag::None, filters.search), AbstractResource::None);
     }
     return voidStream();
