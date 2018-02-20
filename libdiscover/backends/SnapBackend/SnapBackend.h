@@ -57,7 +57,7 @@ public:
 private:
     void setFetching(bool fetching);
     template <class T>
-    ResultsStream* populate(T* snaps, AbstractResource::State state);
+    ResultsStream* populate(T* snaps);
 
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;
