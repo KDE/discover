@@ -134,7 +134,7 @@ Q_SIGNALS:
 
 public:
     QList<PackageState> m_addons;
-    AppStream::Component m_appdata;
+    const AppStream::Component m_appdata;
     FlatpakRefKind m_flatpakRefKind;
     QString m_arch;
     QString m_branch;

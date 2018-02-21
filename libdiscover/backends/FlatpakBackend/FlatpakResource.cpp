@@ -59,6 +59,8 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
     , m_state(AbstractResource::None)
     , m_type(FlatpakResource::DesktopApp)
 {
+    setObjectName(component.id());
+
     // Start fetching remote icons during initialization
     const auto icons = m_appdata.icons();
     if (!icons.isEmpty()) {
