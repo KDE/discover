@@ -38,13 +38,20 @@ TextField
             searchField.selectAll()
         }
     }
-    onAccepted: currentSearchText = text
+    onAccepted: {
+        currentSearchText = text
+    }
 
     hoverEnabled: true
     ToolTip {
         delay: Kirigami.Units.longDuration
         visible: hovered
         text: searchAction.shortcut
+    }
+
+    function clearText() {
+        searchField.text = ""
+        searchField.accepted()
     }
 
     QQC1.ToolButton {
@@ -56,25 +63,20 @@ TextField
         }
         iconName: "edit-clear"
         visible: searchField.text != ""
-        onClicked: {
-            searchField.text = ""
-            searchField.accepted()
-        }
+        onClicked: clearText()
     }
 
     Connections {
         ignoreUnknownSignals: true
         target: page
-        onClearSearch: {
-            searchField.text = ""
-        }
+        onClearSearch: clearText()
     }
 
     Connections {
         target: applicationWindow()
         onCurrentTopLevelChanged: {
             if (applicationWindow().currentTopLevel.length > 0)
-                searchField.text = ""
+                clearText()
         }
     }
 }
