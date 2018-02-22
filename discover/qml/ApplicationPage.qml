@@ -164,6 +164,27 @@ DiscoverPage {
             }
         }
 
+        Kirigami.Heading {
+            Layout.topMargin: Kirigami.Units.largeSpacing
+            text: i18n("Last Release")
+            level: 2
+            visible: changelogLabel.text.length > 0
+        }
+
+        QQC2.Label {
+            id: changelogLabel
+            Layout.topMargin: Kirigami.Units.largeSpacing
+            Layout.fillWidth: true
+            wrapMode: Text.WordWrap
+
+            Component.onCompleted: appInfo.application.fetchChangelog()
+            Connections {
+                target: appInfo.application
+                onChangelogFetched: parent.text = changelog
+            }
+        }
+
+
         LinkButton {
             id: addonsButton
             text: i18n("Addons")
