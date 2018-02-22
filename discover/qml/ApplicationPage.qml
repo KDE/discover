@@ -166,7 +166,7 @@ DiscoverPage {
 
         Kirigami.Heading {
             Layout.topMargin: Kirigami.Units.largeSpacing
-            text: i18n("Last Release")
+            text: i18n("What's New")
             level: 2
             visible: changelogLabel.text.length > 0
         }
