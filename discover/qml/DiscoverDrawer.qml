@@ -28,6 +28,10 @@ import "navigation.js" as Navigation
 
 Kirigami.GlobalDrawer {
     id: drawer
+
+    // FIXME: Dirty workaround for 385992
+    width: Kirigami.Units.gridUnit * 14
+
     property bool wideScreen: false
     bannerImageSource: "qrc:/banners/banner.svg"
     //make the left and bottom margins for search field the same
