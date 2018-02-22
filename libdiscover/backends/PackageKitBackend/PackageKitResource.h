@@ -69,6 +69,8 @@ class PackageKitResource : public AbstractResource
         QString sizeDescription() override;
         void setDependenciesCount(uint count);
 
+        QString sourceIcon() const override;
+
     public Q_SLOTS:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch);
         void setDetails(const PackageKit::Details& details);

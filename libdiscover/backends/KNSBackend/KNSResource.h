@@ -65,6 +65,7 @@ public:
 
     QUrl url() const override;
     QString executeLabel() const override;
+    QString sourceIcon() const override { return QStringLiteral("get-hot-new-stuff"); }
 
 private:
     const QStringList m_categories;

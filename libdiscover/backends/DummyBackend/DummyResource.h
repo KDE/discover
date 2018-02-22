@@ -59,6 +59,8 @@ public:
     void setAddons(const AddonList& addons);
 
     void setAddonInstalled(const QString& addon, bool installed);
+    QString sourceIcon() const override { return QStringLiteral("player-time"); }
+
 
 public:
     QString m_name;

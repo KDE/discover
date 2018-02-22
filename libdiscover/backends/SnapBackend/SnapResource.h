@@ -58,6 +58,7 @@ public:
     void setSnap(const QSharedPointer<QSnapdSnap> &snap);
 
     void setState(AbstractResource::State state);
+    QString sourceIcon() const override { return QStringLiteral("snap"); }
 
 public:
     void gotIcon();

@@ -77,6 +77,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString categoryDisplay READ categoryDisplay CONSTANT)
     Q_PROPERTY(QUrl url READ url CONSTANT)
     Q_PROPERTY(QString executeLabel READ executeLabel CONSTANT)
+    Q_PROPERTY(QString sourceIcon READ sourceIcon CONSTANT)
     public:
         /**
          * This describes the state of the resource
@@ -200,6 +201,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual QUrl url() const;
 
         virtual QString executeLabel() const;
+        virtual QString sourceIcon() const = 0;
 
     public Q_SLOTS:
         virtual void fetchScreenshots();

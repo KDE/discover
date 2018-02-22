@@ -259,3 +259,8 @@ QString PackageKitResource::sizeDescription()
     else
         return i18np("%2 (plus %1 dependency)", "%2 (plus %1 dependencies)", m_dependenciesCount, AbstractResource::sizeDescription());
 }
+
+QString PackageKitResource::sourceIcon() const
+{
+    return QStringLiteral("package-available");
+}

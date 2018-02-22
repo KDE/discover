@@ -131,6 +131,7 @@ public:
 //     void setAddonInstalled(const QString& addon, bool installed);
 
     void updateFromRef(FlatpakRef* ref);
+    QString sourceIcon() const override { return QStringLiteral("https://flatpak.org/img/logo.svg"); }
 
 Q_SIGNALS:
     void propertyStateChanged(PropertyKind kind, PropertyState state);
