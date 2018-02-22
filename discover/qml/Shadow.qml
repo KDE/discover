@@ -33,7 +33,7 @@ LinearGradient {
     gradient: Gradient {
         GradientStop {
             position: 0.0
-            color: Qt.rgba(1, 1, 1, 1)
+            color: Theme.backgroundColor
         }
         GradientStop {
             position: 0.3
