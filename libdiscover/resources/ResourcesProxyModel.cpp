@@ -493,7 +493,7 @@ void ResourcesProxyModel::refreshResource(AbstractResource* resource, const QVec
     const QModelIndex idx = index(residx, 0);
     Q_ASSERT(idx.isValid());
     const auto roles = propertiesToRoles(properties);
-    if (roles.contains(m_sortRole)) {
+    if (!m_sortByRelevancy && roles.contains(m_sortRole)) {
         beginRemoveRows({}, residx, residx);
         m_displayedResources.removeAt(residx);
         endRemoveRows();
