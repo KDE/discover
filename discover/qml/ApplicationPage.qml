@@ -171,6 +171,13 @@ DiscoverPage {
             visible: changelogLabel.text.length > 0
         }
 
+        Rectangle {
+            color: Kirigami.Theme.linkColor
+            Layout.fillWidth: true
+            height: 1
+            visible: changelogLabel.text.length > 0
+        }
+
         QQC2.Label {
             id: changelogLabel
             Layout.topMargin: Kirigami.Units.largeSpacing
@@ -180,7 +187,9 @@ DiscoverPage {
             Component.onCompleted: appInfo.application.fetchChangelog()
             Connections {
                 target: appInfo.application
-                onChangelogFetched: parent.text = changelog
+                onChangelogFetched: {
+                    changelogLabel.text = changelog
+                }
             }
         }
 
