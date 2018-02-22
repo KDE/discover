@@ -289,11 +289,6 @@ bool DiscoverObject::eventFilter(QObject * object, QEvent * event)
 
 void DiscoverObject::setupActions()
 {
-    if (KAuthorized::authorizeAction(QStringLiteral("help_contents"))) {
-        auto mHandBookAction = KStandardAction::helpContents(this, &DiscoverObject::appHelpActivated, this);
-        m_collection[mHandBookAction->objectName()] = mHandBookAction;
-    }
-
     if (KAuthorized::authorizeAction(QStringLiteral("help_report_bug")) && !KAboutData::applicationData().bugAddress().isEmpty()) {
         auto mReportBugAction = KStandardAction::reportBug(this, &DiscoverObject::reportBug, this);
         m_collection[mReportBugAction->objectName()] = mReportBugAction;
@@ -313,11 +308,6 @@ QAction * DiscoverObject::action(const QString& name) const
 QString DiscoverObject::iconName(const QIcon& icon)
 {
     return icon.name();
-}
-
-void DiscoverObject::appHelpActivated()
-{
-    QDesktopServices::openUrl(QUrl(QStringLiteral("help:/")));
 }
 
 void DiscoverObject::aboutApplication()

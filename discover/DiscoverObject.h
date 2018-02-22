@@ -68,7 +68,6 @@ class DiscoverObject : public QObject
         void openLocalPackage(const QUrl &localfile);
 
     private Q_SLOTS:
-        void appHelpActivated();
         void reportBug();
         void switchApplicationLanguage();
         void aboutApplication();
