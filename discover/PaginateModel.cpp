@@ -205,8 +205,8 @@ void PaginateModel::setStaticRowCount(bool src)
         return;
     }
 
-    m_hasStaticRowCount = src;
     beginResetModel();
+    m_hasStaticRowCount = src;
     endResetModel();
 }
 
