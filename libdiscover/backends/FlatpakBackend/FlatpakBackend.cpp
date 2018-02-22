@@ -1045,6 +1045,13 @@ int FlatpakBackend::updatesCount() const
     return m_updater->updatesCount();
 }
 
+bool FlatpakBackend::flatpakResourceLessThan(AbstractResource* l, AbstractResource* r)
+{
+    return (l->isInstalled() != r->isInstalled()) ? l->isInstalled()
+         : (l->origin() != r->origin()) ? l->origin() < r->origin()
+         : l < r;
+}
+
 ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     if (filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakrepo")) || filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakref"))) {
@@ -1080,6 +1087,8 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
             ret += r;
         }
     }
+    auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l,r); };
+    std::sort(ret.begin(), ret.end(), f);
     return new ResultsStream(QStringLiteral("FlatpakStream"), ret);
 }
 
