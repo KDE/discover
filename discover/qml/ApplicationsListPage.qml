@@ -50,9 +50,6 @@ DiscoverPage {
     readonly property alias subcategories: appsModel.subcategories
     title: category ? category.name : ""
 
-    onSearchChanged: {
-        appsModel.sortOrder = Qt.AscendingOrder
-    }
     signal clearSearch()
 
     supportsRefreshing: true
@@ -79,7 +76,7 @@ DiscoverPage {
         model: ResourcesProxyModel {
             id: appsModel
             sortRole: ResourcesProxyModel.SortableRatingRole
-            sortOrder: Qt.DescendingOrder
+            sortOrder: search.length>0 ? Qt.AscendingOrder : Qt.DescendingOrder
             onBusyChanged: if (isBusy) {
                 apps.currentIndex = -1
             }
