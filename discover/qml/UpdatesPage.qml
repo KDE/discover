@@ -32,6 +32,8 @@ DiscoverPage
         }
     }
 
+    contextualActions: [refreshAction]
+
     UpdateModel {
         id: updateModel
         backend: resourcesUpdatesModel

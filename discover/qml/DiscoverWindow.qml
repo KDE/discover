@@ -85,7 +85,7 @@ Kirigami.ApplicationWindow
         objectName: "settings"
     }
 
-    Action {
+    Kirigami.Action {
         id: refreshAction
         readonly property QtObject action: ResourcesModel.updateAction
         text: action.text
