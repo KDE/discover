@@ -49,7 +49,6 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QFutureWatcher>
-#include <QMessageBox>
 #include <QSettings>
 #include <QThread>
 #include <QTimer>
