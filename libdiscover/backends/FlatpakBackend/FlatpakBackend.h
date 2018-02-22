@@ -70,6 +70,7 @@ private Q_SLOTS:
     void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
 
 private:
+    bool flatpakResourceLessThan(AbstractResource* l, AbstractResource* r);
     void announceRatingsReady();
     FlatpakInstallation * preferredInstallation() const { return m_installations.constFirst(); }
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);

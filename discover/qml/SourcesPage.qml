@@ -22,7 +22,6 @@ DiscoverPage {
     }
 
     contextualActions: [
-        KirigamiActionBridge { action: app.action("help_contents") },
         KirigamiActionBridge { action: app.action("help_about_app") },
         KirigamiActionBridge { action: app.action("help_report_bug") }
     ]
