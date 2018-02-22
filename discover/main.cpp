@@ -78,7 +78,7 @@ void processArgs(QCommandLineParser* parser, DiscoverObject* mainWindow)
         const QUrl url = QUrl::fromUserInput(arg, {}, QUrl::AssumeLocalFile);
         if (url.isLocalFile())
             mainWindow->openLocalPackage(url);
-        else if (url.scheme() == QLatin1String("apt"))
+        else if (url.scheme() == QLatin1String("apt") || url.scheme() == QLatin1String("snap"))
             mainWindow->openSearch(url.host());
         else
             mainWindow->openApplication(url);

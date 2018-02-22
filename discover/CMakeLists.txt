@@ -43,12 +43,19 @@ set(DesktopExec "plasma-discover %F")
 configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.desktop)
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
 
-# URL handler accepts URLs as input but is only used to handle appstream://
+# Support appstream:// URI
 set(DesktopNoDisplay "true")
 set(DesktopMimeType "x-scheme-handler/appstream;")
 set(DesktopExec "plasma-discover %U")
 configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.urlhandler.desktop)
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.urlhandler.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+
+# support snap:/ URI
+set(DesktopNoDisplay "true")
+set(DesktopMimeType "x-scheme-handler/snap;")
+set(DesktopExec "plasma-discover %U")
+configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.snap.urlhandler.desktop)
+install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.snap.urlhandler.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
 
 if(EXISTS "/etc/debian_version")
     set(DesktopNoDisplay "true")
