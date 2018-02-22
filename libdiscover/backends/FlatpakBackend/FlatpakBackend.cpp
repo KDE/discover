@@ -658,7 +658,14 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
             continue;
         }
 
-        AppStream::Component appstreamComponent(metadata.component());
+        const AppStream::Component appstreamComponent(metadata.component());
+
+        const auto res = getAppForInstalledRef(flatpakInstallation, ref);
+        if (res) {
+            res->setState(AbstractResource::Installed);
+            continue;
+        }
+
         FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
 
         resource->setIconPath(pathExports);
@@ -666,23 +673,7 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
         resource->setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(ref)));
         resource->updateFromRef(FLATPAK_REF(ref));
 
-        // Go through apps we already know about from appstream metadata
-        bool resourceExists = false;
-        foreach (FlatpakResource *res, m_resources) {
-            // Compare the only information we have
-            if (res->appstreamId() == QStringLiteral("%1.desktop").arg(resource->appstreamId()) && res->name() == resource->name()) {
-                resourceExists = true;
-                res->setState(resource->state());
-                break;
-            }
-        }
-
-        if (!resourceExists) {
-            addResource(resource);
-        } else {
-            emit resourceRemoved(resource);
-            resource->deleteLater();
-        }
+        addResource(resource);
     }
 
     return true;

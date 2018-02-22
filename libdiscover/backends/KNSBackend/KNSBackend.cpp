@@ -231,6 +231,7 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
         m_engine->requestMoreData();
     } else {
         Q_EMIT availableForQueries();
+        setFetching(false);
     }
 }
 

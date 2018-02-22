@@ -77,6 +77,7 @@ Kirigami.GlobalDrawer {
                     Navigation.clearStack()
                     Navigation.openApplicationList( { search: currentSearchText })
                 } else {
+                    pageStack.currentIndex = 0
                     curr.search = currentSearchText;
                     curr.forceActiveFocus()
                 }

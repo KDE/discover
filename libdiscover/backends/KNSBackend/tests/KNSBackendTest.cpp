@@ -84,6 +84,9 @@ void KNSBackendTest::testRetrieval()
     QVERIFY(m_backend->backendUpdater());
     QCOMPARE(m_backend->updatesCount(), m_backend->backendUpdater()->toUpdate().count());
 
+    QSignalSpy spy(m_backend, &AbstractResourcesBackend::fetchingChanged);
+    QVERIFY(!m_backend->isFetching() || spy.wait());
+
     const auto resources = getAllResources(m_backend);
     foreach(AbstractResource* res, resources) {
         QVERIFY(!res->name().isEmpty());
