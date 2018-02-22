@@ -174,13 +174,7 @@ QStringList AppPackageKitResource::extends() const
 
 void AppPackageKitResource::fetchChangelog()
 {
-    QString changelog;
-    if(!m_appdata.releases().isEmpty()) {
-        const auto release = m_appdata.releases().constFirst();
-        changelog = QStringLiteral("<h3>") + release.version() + QStringLiteral("</h3>")
-                  + QStringLiteral("<p>") + release.description() + QStringLiteral("</p>");
-    }
-    emit changelogFetched(changelog);
+    emit changelogFetched(AppStreamUtils::changelogToHtml(m_appdata));
 }
 
 void AppPackageKitResource::invokeApplication() const
