@@ -398,10 +398,10 @@ void FlatpakResource::invokeApplication() const
 
 void FlatpakResource::fetchChangelog()
 {
-    QString log = longDescription();
-    log.replace(QLatin1Char('\n'), QLatin1String("<br />"));
-
-    emit changelogFetched(log);
+    const auto release = m_appdata.releases().constFirst();
+    const QString changelog = QStringLiteral("<h3>") + release.version() + QStringLiteral("</h3>")
+                            + QStringLiteral("<p>") + release.description() + QStringLiteral("</p>");
+    emit changelogFetched(changelog);
 }
 
 void FlatpakResource::fetchScreenshots()
