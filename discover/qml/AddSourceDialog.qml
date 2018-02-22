@@ -21,13 +21,14 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
+import org.kde.kirigami 2.2 as Kirigami
 
 Dialog {
     id: newSourceDialog
-    title: i18n("Specify the new source for %1", displayName)
     standardButtons: StandardButton.Ok | StandardButton.Close
     property string displayName
     property QtObject source
+    title: displayName
 
     ColumnLayout {
         id: info
@@ -36,6 +37,11 @@ Dialog {
             right: parent.right
         }
 
+        Kirigami.Heading {
+            level: 4
+            Layout.fillWidth: true
+            text: i18n("Specify the new source for %1", displayName)
+        }
         Label {
             id: description
             Layout.fillWidth: true
