@@ -271,7 +271,7 @@ QString FlatpakResource::longDescription()
     return m_appdata.description();
 }
 
-QString FlatpakResource::name()
+QString FlatpakResource::name() const
 {
     QString name = m_appdata.name();
     if (name.isEmpty()) {

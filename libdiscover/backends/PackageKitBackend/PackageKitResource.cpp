@@ -36,7 +36,7 @@ PackageKitResource::PackageKitResource(QString packageName, QString summary, Pac
     setObjectName(m_name);
 }
 
-QString PackageKitResource::name()
+QString PackageKitResource::name() const
 {
     return m_name;
 }

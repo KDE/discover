@@ -41,7 +41,7 @@ AppPackageKitResource::AppPackageKitResource(const AppStream::Component& data, c
     Q_ASSERT(data.isValid());
 }
 
-QString AppPackageKitResource::name()
+QString AppPackageKitResource::name() const
 {
     return m_appdata.name();
 }

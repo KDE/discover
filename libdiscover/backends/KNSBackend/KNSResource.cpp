@@ -98,7 +98,7 @@ QString KNSResource::longDescription()
     return ret;
 }
 
-QString KNSResource::name()
+QString KNSResource::name() const
 {
     return m_entry.name();
 }

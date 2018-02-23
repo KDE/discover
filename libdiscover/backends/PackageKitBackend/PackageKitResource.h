@@ -33,7 +33,7 @@ class PackageKitResource : public AbstractResource
     public:
         explicit PackageKitResource(QString  packageName, QString  summary, PackageKitBackend* parent);
         QString packageName() const override;
-        QString name() override;
+        QString name() const override;
         QString comment() override;
         QString longDescription() override;
         QUrl homepage() override;

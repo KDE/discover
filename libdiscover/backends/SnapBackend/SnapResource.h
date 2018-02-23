@@ -47,7 +47,7 @@ public:
     AbstractResource::State state() const override;
     QVariant icon() const override;
     QString comment() override;
-    QString name() override;
+    QString name() const override;
     QString packageName() const override;
     bool isTechnical() const override;
     bool canExecute() const override { return true; }
