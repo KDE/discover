@@ -255,6 +255,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
         return nullptr;
     }
 
+    g_autoptr(GBytes) metadata = flatpak_bundle_ref_get_metadata(bundleRef);
     appstreamGz = flatpak_bundle_ref_get_appstream(bundleRef);
     if (appstreamGz) {
         g_autoptr(GZlibDecompressor) decompressor = nullptr;
@@ -297,12 +298,31 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
         }
     } else {
         qWarning() << "No appstream metadata in bundle";
+
+        QTemporaryFile tempFile;
+        tempFile.setAutoRemove(false);
+        if (!tempFile.open()) {
+            qWarning() << "Failed to get metadata file";
+            return nullptr;
+        }
+
+        gsize len = 0;
+        QByteArray metadataContent = QByteArray((char *)g_bytes_get_data(metadata, &len));
+        tempFile.write(metadataContent);
+        tempFile.close();
+
+        // Parse the temporary file
+        QSettings setting(tempFile.fileName(), QSettings::NativeFormat);
+        setting.beginGroup(QLatin1String("Application"));
+
+        asComponent.setName(setting.value(QLatin1String("name")).toString());
+
+        tempFile.remove();
     }
 
-    gsize len = 0;
     FlatpakResource *resource = new FlatpakResource(asComponent, preferredInstallation(), this);
 
-    g_autoptr(GBytes) metadata = flatpak_bundle_ref_get_metadata(bundleRef);
+    gsize len = 0;
     QByteArray metadataContent = QByteArray((char *)g_bytes_get_data(metadata, &len));
     if (!updateAppMetadata(resource, metadataContent)) {
         delete resource;
