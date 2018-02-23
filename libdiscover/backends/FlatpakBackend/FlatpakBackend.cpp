@@ -296,7 +296,6 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
             return nullptr;
         }
     } else {
-        asComponent = AppStream::Component();
         qWarning() << "No appstream metadata in bundle";
     }
 
