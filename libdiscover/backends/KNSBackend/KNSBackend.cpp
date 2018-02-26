@@ -113,16 +113,19 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     // Setting setFetching to false when we get an error ensures we don't end up in an eternally-fetching state
     connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &_error) {
         QString error = _error;
+        bool invalidFile = false;
         if(error == QLatin1Literal("All categories are missing")) {
             markInvalid(error);
             error = i18n("Invalid %1 backend, contact your distributor.", m_displayName);
+            invalidFile = true;
         }
         m_responsePending = false;
         Q_EMIT searchFinished();
         Q_EMIT availableForQueries();
         this->setFetching(false);
         qWarning() << "kns error" << objectName() << error;
-        passiveMessage(i18n("%1: %2", name(), error));
+        if (!invalidFile)
+            passiveMessage(i18n("%1: %2", name(), error));
     });
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged, Qt::QueuedConnection);
