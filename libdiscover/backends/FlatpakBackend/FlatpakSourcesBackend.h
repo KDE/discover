@@ -40,6 +40,7 @@ public:
     bool removeSource(const QString &id) override;
     QString idDescription() override;
     QList<QAction*> actions() const override;
+    bool supportsAdding() const override { return true; }
 
     FlatpakRemote * installSource(FlatpakResource *resource);
 private:
