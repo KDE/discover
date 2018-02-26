@@ -224,7 +224,7 @@ DiscoverPage {
                         text: name
                     }
                     InstallApplicationButton {
-                        application: application
+                        application: model.application
                     }
                 }
             }
