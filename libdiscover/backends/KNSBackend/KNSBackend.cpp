@@ -109,9 +109,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
 
     m_engine = new KNSCore::Engine(this);
     m_engine->init(m_name);
-#if KNEWSTUFFCORE_VERSION_MAJOR==5 && KNEWSTUFFCORE_VERSION_MINOR>=36
     m_engine->setPageSize(100);
-#endif
     // Setting setFetching to false when we get an error ensures we don't end up in an eternally-fetching state
     connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &_error) {
         QString error = _error;
