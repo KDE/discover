@@ -74,7 +74,7 @@ DiscoverPage {
                 text: i18n("Rating")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.RatingPointsRole
-                    appsModel.sortOrder = Qt.AscendingOrder
+                    appsModel.sortOrder = Qt.DescendingOrder
                 }
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.RatingPointsRole
