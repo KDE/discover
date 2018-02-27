@@ -1084,7 +1084,7 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
         fetchResourceJob->start();
 
         return stream;
-    } else if (!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() != QLatin1String("appstream"))
+    } else if ((!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() != QLatin1String("appstream")) || !filter.extends.isEmpty())
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
 
     QVector<AbstractResource*> ret;

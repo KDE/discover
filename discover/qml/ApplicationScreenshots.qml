@@ -45,8 +45,14 @@ Flickable {
         x: (parent.width - width)/2
         y: (parent.height - height)/2
         readonly property real proportion: overlayImage.sourceSize.width>1 ? overlayImage.sourceSize.height/overlayImage.sourceSize.width : 1
-        height: Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
+        height: overlayImage.status == Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
         width: height/proportion
+
+        BusyIndicator {
+            visible: running
+            running: overlayImage.status == Image.Loading
+            anchors.fill: parent
+        }
 
         Image {
             id: overlayImage

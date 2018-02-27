@@ -142,7 +142,7 @@ DiscoverPage {
                 Layout.fillWidth: true
                 enabled: display.length>0
                 highlighted: ListView.isCurrentItem
-                onClicked: Navigation.openApplicationListSource(display)
+                onClicked: Navigation.openApplicationListSource(sourceId)
 
                 Keys.onReturnPressed: clicked()
                 actions: [

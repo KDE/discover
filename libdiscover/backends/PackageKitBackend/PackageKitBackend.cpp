@@ -544,8 +544,7 @@ void PackageKitBackend::performDetailsFetch()
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
 
     QSharedPointer<QMap<QString, int>> packageDependencies(new QMap<QString, int>);
-    auto trans = PackageKit::Daemon::installPackages(ids, PackageKit::Transaction::TransactionFlagSimulate);
-    connect(trans, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+    auto trans = PackageKit::Daemon::dependsOn(ids);
     connect(trans, &PackageKit::Transaction::package, this, [packageDependencies](PackageKit::Transaction::Info /*info*/, const QString &packageID, const QString &/*summary*/) {
         (*packageDependencies)[packageID] += 1;
     });
