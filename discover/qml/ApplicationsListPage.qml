@@ -19,7 +19,7 @@
 
 import QtQuick 2.5
 import QtQuick.Controls 1.1
-import QtQuick.Controls 2.1 as QQC2
+import QtQuick.Controls 2.3 as QQC2
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
 import "navigation.js" as Navigation
@@ -58,10 +58,16 @@ DiscoverPage {
         refreshing = false
     }
 
+    QQC2.ActionGroup {
+        id: sortGroup
+        exclusive: true
+    }
+
     contextualActions: [
         Kirigami.Action {
             text: i18n("Sort")
-            Kirigami.Action {
+            QQC2.Action {
+                QQC2.ActionGroup.group: sortGroup
                 text: i18n("Name")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.NameRole
@@ -70,7 +76,8 @@ DiscoverPage {
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.NameRole
             }
-            Kirigami.Action {
+            QQC2.Action {
+                QQC2.ActionGroup.group: sortGroup
                 text: i18n("Rating")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.RatingPointsRole
@@ -79,7 +86,8 @@ DiscoverPage {
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.RatingPointsRole
             }
-            Kirigami.Action {
+            QQC2.Action {
+                QQC2.ActionGroup.group: sortGroup
                 text: i18n("Size")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.SizeRole
