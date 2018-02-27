@@ -112,7 +112,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual QString packageName() const = 0;
 
         ///resource name to be displayed
-        virtual QString name() = 0;
+        virtual QString name() const = 0;
 
         ///short description of the resource
         virtual QString comment() = 0;

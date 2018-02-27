@@ -84,7 +84,7 @@ DiscoverPage {
 
                             MenuItem {
                                 text: i18n("Add Source...")
-                                visible: backendItem.backend
+                                visible: backendItem.backend && backendItem.backend.supportsAdding
 
                                 onTriggered: {
                                     var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
@@ -197,7 +197,7 @@ DiscoverPage {
                         text: name
                     }
                     InstallApplicationButton {
-                        application: application
+                        application: model.application
                     }
                 }
             }

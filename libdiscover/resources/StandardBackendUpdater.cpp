@@ -66,8 +66,10 @@ void StandardBackendUpdater::start()
     m_settingUp = true;
     emit progressingChanged(true);
     setProgress(0);
+    auto upgradeList = m_toUpgrade.toList();
+    qSort(upgradeList.begin(), upgradeList.end(), [](const AbstractResource* a, const AbstractResource* b){ return a->name() < b->name(); });
 
-    foreach(AbstractResource* res, m_toUpgrade) {
+    foreach(AbstractResource* res, upgradeList) {
         m_pendingResources += res;
         auto t = m_backend->installApplication(res);
         t->setVisible(false);

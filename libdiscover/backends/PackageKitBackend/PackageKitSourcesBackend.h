@@ -35,6 +35,7 @@ class PackageKitSourcesBackend : public AbstractSourcesBackend
 
         QString idDescription() override;
 
+        bool supportsAdding() const override { return false; }
         bool addSource(const QString& id) override;
         bool removeSource(const QString& id) override;
 

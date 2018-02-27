@@ -50,6 +50,7 @@ public:
     AbstractResource * resourceForFile(const QUrl & ) override;
     void checkForUpdates() override;
     QString displayName() const override;
+    bool hasApplications() const override;
 
 public Q_SLOTS:
     void toggleFetching();

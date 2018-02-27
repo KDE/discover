@@ -38,7 +38,7 @@ public:
     AbstractResource::State state() override;
     QVariant icon() const override;
     QString comment() override;
-    QString name() override;
+    QString name() const override;
     QString packageName() const override;
     QStringList categories() override;
     QUrl homepage() override;

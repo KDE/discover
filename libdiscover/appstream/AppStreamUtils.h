@@ -24,6 +24,8 @@
 #include <QUrl>
 #include <QList>
 #include <AppStreamQt/image.h>
+#include <AppStreamQt/component.h>
+#include <AppStreamQt/release.h>
 
 namespace AppStreamUtils
 {
@@ -37,6 +39,20 @@ static QUrl imageOfKind(const QList<AppStream::Image> &images, AppStream::Image:
         }
     }
     return ret;
+}
+
+static QString changelogToHtml(const AppStream::Component &appdata)
+{
+    if(appdata.releases().isEmpty())
+        return {};
+
+    const auto release = appdata.releases().constFirst();
+    if (release.description().isEmpty())
+        return {};
+
+    QString changelog = QStringLiteral("<h3>") + release.version() + QStringLiteral("</h3>")
+                      + QStringLiteral("<p>") + release.description() + QStringLiteral("</p>");
+    return changelog;
 }
 
 }

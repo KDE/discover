@@ -18,17 +18,21 @@
  */
 
 import QtQuick 2.1
-import QtQuick.Controls 1.1
-import QtQuick.Dialogs 1.2
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import org.kde.kirigami 2.2 as Kirigami
 
-Dialog {
+Popup
+{
     id: newSourceDialog
-    standardButtons: StandardButton.Ok | StandardButton.Close
+    parent: applicationWindow().overlay
+    modal: true
+
+    x: (parent.width - width)/2
+    y: (parent.height - height)/2
+
     property string displayName
     property QtObject source
-    title: displayName
 
     ColumnLayout {
         id: info
@@ -56,7 +60,18 @@ Dialog {
             Layout.fillWidth: true
             Keys.onEnterPressed: newSourceDialog.accept()
             focus: true
+            onTextChanged: color = Kirigami.Theme.textColor
+        }
+
+        DialogButtonBox {
+            Layout.fillWidth: true
+            standardButtons: DialogButtonBox.Ok | DialogButtonBox.Close
+
+            onAccepted: if (source.addSource(repository.text)) {
+                newSourceDialog.visible = false
+            } else {
+                repository.color = Kirigami.Theme.negativeTextColor
+            }
         }
     }
-    onAccepted: source.addSource(repository.text)
 }

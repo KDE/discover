@@ -91,7 +91,7 @@ public:
     QString flatpakName() const;
     QString license() override;
     QString longDescription() override;
-    QString name() override;
+    QString name() const override;
     QString origin() const override;
     QString packageName() const override;
     PropertyState propertyState(PropertyKind kind) const;

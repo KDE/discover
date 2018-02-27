@@ -29,7 +29,7 @@ class LocalFilePKResource : public PackageKitResource
     public:
         LocalFilePKResource(QUrl path, PackageKitBackend* parent);
 
-        QString name() override;
+        QString name() const override;
         QString comment() override;
 
         AbstractResource::State state() override { return m_state; }

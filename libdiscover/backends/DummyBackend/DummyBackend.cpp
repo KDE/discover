@@ -164,4 +164,9 @@ QString DummyBackend::displayName() const
     return QStringLiteral("Dummy");
 }
 
+bool DummyBackend::hasApplications() const
+{
+    return true;
+}
+
 #include "DummyBackend.moc"

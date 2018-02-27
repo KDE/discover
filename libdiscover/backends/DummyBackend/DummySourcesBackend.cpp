@@ -41,6 +41,9 @@ QAbstractItemModel* DummySourcesBackend::sources()
 
 bool DummySourcesBackend::addSource(const QString& id)
 {
+    if (id.isEmpty())
+        return false;
+
     QStandardItem* it = new QStandardItem(id);
     it->setData(QVariant(id + QLatin1Char(' ') + id), Qt::ToolTipRole);
     it->setCheckable(true);

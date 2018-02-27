@@ -35,6 +35,7 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
     Q_PROPERTY(QAbstractItemModel* sources READ sources CONSTANT)
     Q_PROPERTY(QString idDescription READ idDescription CONSTANT)
     Q_PROPERTY(QList<QAction*> actions READ actions CONSTANT)
+    Q_PROPERTY(bool supportsAdding READ supportsAdding CONSTANT)
     public:
         explicit AbstractSourcesBackend(AbstractResourcesBackend* parent);
         ~AbstractSourcesBackend() override;
@@ -52,6 +53,8 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
 
         virtual QAbstractItemModel* sources() = 0;
         virtual QList<QAction*> actions() const = 0;
+
+        virtual bool supportsAdding() const = 0;
 
         AbstractResourcesBackend* resourcesBackend() const;
 

@@ -75,8 +75,11 @@ QAbstractItemModel* FlatpakSourcesBackend::sources()
 bool FlatpakSourcesBackend::addSource(const QString &id)
 {
     FlatpakBackend* backend = qobject_cast<FlatpakBackend*>(parent());
-
     const QUrl flatpakrepoUrl = QUrl::fromUserInput(id);
+
+    if (id.isEmpty() || !flatpakrepoUrl.isValid())
+        return false;
+
     if (flatpakrepoUrl.isLocalFile()) {
         auto res = backend->addSourceFromFlatpakRepo(flatpakrepoUrl);
         if (res)

@@ -75,7 +75,9 @@ void PackageKitUpdater::prepare()
 void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFlags flags)
 {
     m_packagesRemoved.clear();
-    m_transaction = PackageKit::Daemon::updatePackages(involvedPackages(m_toUpgrade).toList(), flags);
+    auto pkgs = involvedPackages(m_toUpgrade).toList();
+    pkgs.sort();
+    m_transaction = PackageKit::Daemon::updatePackages(pkgs, flags);
     m_isCancelable = m_transaction->allowCancel();
 
     connect(m_transaction.data(), &PackageKit::Transaction::finished, this, &PackageKitUpdater::finished);

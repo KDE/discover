@@ -39,7 +39,7 @@ AppPackageKitResource::AppPackageKitResource(const AppStream::Component& data, c
     Q_ASSERT(data.isValid());
 }
 
-QString AppPackageKitResource::name()
+QString AppPackageKitResource::name() const
 {
     return m_appdata.name();
 }
@@ -187,13 +187,7 @@ QStringList AppPackageKitResource::extends() const
 
 void AppPackageKitResource::fetchChangelog()
 {
-    QString changelog;
-    if(!m_appdata.releases().isEmpty()) {
-        const auto release = m_appdata.releases().constFirst();
-        changelog = QStringLiteral("<h3>") + release.version() + QStringLiteral("</h3>")
-                  + QStringLiteral("<p>") + release.description() + QStringLiteral("</p>");
-    }
-    emit changelogFetched(changelog);
+    emit changelogFetched(AppStreamUtils::changelogToHtml(m_appdata));
 }
 
 void AppPackageKitResource::invokeApplication() const
