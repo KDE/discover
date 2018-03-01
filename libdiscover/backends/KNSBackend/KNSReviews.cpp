@@ -32,8 +32,6 @@
 #include <QDebug>
 #include <QDesktopServices>
 
-Q_DECLARE_METATYPE(AbstractResource*)
-
 class SharedManager : public QObject
 {
 Q_OBJECT
@@ -69,8 +67,7 @@ Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
     return new Rating(
         resource->packageName(),
         noc,
-        rating/10,
-        QLatin1Char('[')+QString::number(noc*rating)+QLatin1Char(']')
+        { { QStringLiteral("star5"), rating } }
     );
 }
 
@@ -93,10 +90,12 @@ void KNSReviews::commentsReceived(Attica::BaseJob* j)
     Attica::Comment::List comments = job->itemList();
 
     QVector<ReviewPtr> reviews;
+    reviews.reserve(comments.count());
     AbstractResource* app = job->property("app").value<AbstractResource*>();
     foreach(const Attica::Comment& comment, comments) {
         //TODO: language lookup?
-        ReviewPtr r(new Review(app->name(), app->packageName(), QStringLiteral("en"), comment.subject(), comment.text(), comment.user(),
+        const QString subject = comment.subject().isEmpty() ? QStringLiteral(".") : comment.subject();
+        ReviewPtr r(new Review(app->name(), app->packageName(), QStringLiteral("en"), subject, comment.text(), comment.user(),
             comment.date(), true, comment.id().toInt(), comment.score()/10, 0, 0, QString()
         ));
         reviews += r;

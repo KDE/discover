@@ -58,7 +58,7 @@ class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
         virtual bool isReviewable() const;
 
     Q_SIGNALS:
-        void reviewsReady(AbstractResource *app, const QVector<ReviewPtr> &, bool canFetchMore);
+        void reviewsReady(AbstractResource *app, const QVector<ReviewPtr> &reviews, bool canFetchMore);
         void loginStateChanged();
 };
 
