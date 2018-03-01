@@ -32,8 +32,6 @@
 #include <QDebug>
 #include <QDesktopServices>
 
-Q_DECLARE_METATYPE(AbstractResource*)
-
 class SharedManager : public QObject
 {
 Q_OBJECT
@@ -69,8 +67,7 @@ Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
     return new Rating(
         resource->packageName(),
         noc,
-        rating/10,
-        QLatin1Char('[')+QString::number(noc*rating)+QLatin1Char(']')
+        { { QStringLiteral("star5"), rating } }
     );
 }
 
