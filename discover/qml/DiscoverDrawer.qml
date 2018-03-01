@@ -164,8 +164,10 @@ Kirigami.GlobalDrawer {
                 if (!window.leftPage.canNavigate)
                     Navigation.openCategory(category, currentSearchText)
                 else {
-                    window.leftPage.category = category
+                    if (pageStack.depth>1)
+                        pageStack.pop()
                     pageStack.currentIndex = 0
+                    window.leftPage.category = category
                 }
             }
         }
