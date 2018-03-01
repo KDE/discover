@@ -41,6 +41,18 @@ Popup
             right: parent.right
         }
 
+        Kirigami.Icon {
+            Layout.alignment: Qt.AlignRight
+            visible: !Kirigami.Settings.isMobile
+            width: Kirigami.Units.iconSizes.smallMedium
+            height: width
+            source: "dialog-close"
+            MouseArea {
+                anchors.fill: parent
+                onClicked: newSourceDialog.close();
+            }
+        }
+
         Kirigami.Heading {
             level: 4
             Layout.fillWidth: true
