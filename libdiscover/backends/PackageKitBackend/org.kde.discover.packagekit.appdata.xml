@@ -15,6 +15,7 @@
   <name xml:lang="nn">PackageKit-motor</name>
   <name xml:lang="pl">Silnik PackageKit</name>
   <name xml:lang="pt">Infra-estrutura do PackageKit</name>
+  <name xml:lang="pt-BR">Infraestrutura PackageKit</name>
   <name xml:lang="ru">Модуль поддержки PackageKit</name>
   <name xml:lang="sk">Backend PackageKit</name>
   <name xml:lang="sl">Zaledje PackageKit</name>
@@ -36,6 +37,7 @@
   <summary xml:lang="nn">Integrerer distribusjonsprogram i Discover</summary>
   <summary xml:lang="pl">Integruje aplikacje dystrybucji w Odkrywcy</summary>
   <summary xml:lang="pt">Integra as aplicações da distribuição no Discover</summary>
+  <summary xml:lang="pt-BR">Integra aplicativos da distribuição no Discover</summary>
   <summary xml:lang="ru">Добавление поддержки приложений из дистрибутива ОС в центр программ Discover</summary>
   <summary xml:lang="sk">Integruje distribučné aplikácie do Discovera</summary>
   <summary xml:lang="sl">V Discover vgradi programe distribucije</summary>

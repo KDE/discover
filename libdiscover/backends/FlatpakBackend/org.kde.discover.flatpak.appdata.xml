@@ -15,6 +15,7 @@
   <name xml:lang="nn">Flatpak-motor</name>
   <name xml:lang="pl">Silnik Flatpak</name>
   <name xml:lang="pt">Infra-estrutura do Flatpak</name>
+  <name xml:lang="pt-BR">Infraestrutura Flatpak</name>
   <name xml:lang="ru">Модуль для работы с форматом Flatpak</name>
   <name xml:lang="sk">Backend Flatpak</name>
   <name xml:lang="sl">Zaledje Flatpak</name>
@@ -36,6 +37,7 @@
   <summary xml:lang="nn">Integrerer Flatpak-program i Discover</summary>
   <summary xml:lang="pl">Integruje aplikacje Flatpak w Odkrywcy</summary>
   <summary xml:lang="pt">Integra as aplicações do Flatpak no Discover</summary>
+  <summary xml:lang="pt-BR">Integra aplicativos Flatpak no Discover</summary>
   <summary xml:lang="ru">Добавление поддержки формата Flatpak в центр программ Discover</summary>
   <summary xml:lang="sk">Integruje aplikácie Flatpad do Discoveru</summary>
   <summary xml:lang="sl">V Discover vgradi programe Flatpack</summary>
