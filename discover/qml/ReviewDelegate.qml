@@ -44,7 +44,8 @@ ColumnLayout
             id: content
             Layout.fillWidth: true
             elide: Text.ElideRight
-            text: i18n("<b>%1</b> by %2", summary, reviewer ? reviewer : i18n("unknown reviewer"))
+            readonly property string author: reviewer ? reviewer : i18n("unknown reviewer")
+            text: summary ? i18n("<b>%1</b> by %2", summary, author) : i18n("Comment by %1", author)
         }
         Rating {
             id: rating
