@@ -27,6 +27,7 @@ Popup
     id: newSourceDialog
     parent: applicationWindow().overlay
     modal: true
+    focus: true
 
     x: (parent.width - width)/2
     y: (parent.height - height)/2
@@ -41,22 +42,10 @@ Popup
             right: parent.right
         }
 
-        Kirigami.Icon {
-            Layout.alignment: Qt.AlignRight
-            visible: !Kirigami.Settings.isMobile
-            width: Kirigami.Units.iconSizes.smallMedium
-            height: width
-            source: "dialog-close"
-            MouseArea {
-                anchors.fill: parent
-                onClicked: newSourceDialog.close();
-            }
-        }
-
         Kirigami.Heading {
-            level: 4
+            level: 3
             Layout.fillWidth: true
-            text: i18n("Specify the new source for %1", displayName)
+            text: i18n("Add a new %1 repository", displayName)
         }
         Label {
             id: description
@@ -70,19 +59,32 @@ Popup
         TextField {
             id: repository
             Layout.fillWidth: true
-            Keys.onEnterPressed: newSourceDialog.accept()
+            onAccepted: okButton.clicked()
             focus: true
             onTextChanged: color = Kirigami.Theme.textColor
         }
 
         DialogButtonBox {
             Layout.fillWidth: true
-            standardButtons: DialogButtonBox.Ok | DialogButtonBox.Close
 
-            onAccepted: if (source.addSource(repository.text)) {
-                newSourceDialog.visible = false
-            } else {
-                repository.color = Kirigami.Theme.negativeTextColor
+            Button {
+                id: okButton
+                DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
+                text: i18n("Add")
+                icon.name: "list-add"
+                onClicked: if (source.addSource(repository.text)) {
+                    newSourceDialog.close()
+                } else {
+                    repository.color = Kirigami.Theme.negativeTextColor
+                }
+            }
+
+            Button {
+                id: cancelButton
+                DialogButtonBox.buttonRole: DialogButtonBox.DestructiveRole
+                text: i18n("Cancel")
+                icon.name: "dialog-cancel"
+                onClicked: newSourceDialog.close()
             }
         }
     }
