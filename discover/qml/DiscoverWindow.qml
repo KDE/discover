@@ -156,6 +156,7 @@ Kirigami.ApplicationWindow
         id: proceedDialog
         Kirigami.OverlaySheet {
             id: sheet
+            showCloseButton: false
             property QtObject transaction
             property alias title: heading.text
             property alias description: desc.text
