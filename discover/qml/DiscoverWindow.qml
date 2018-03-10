@@ -89,6 +89,7 @@ Kirigami.ApplicationWindow
         id: refreshAction
         readonly property QtObject action: ResourcesModel.updateAction
         text: action.text
+        icon.name: "view-refresh"
         onTriggered: action.trigger()
         enabled: action.enabled
         tooltip: shortcut

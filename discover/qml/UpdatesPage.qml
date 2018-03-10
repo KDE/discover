@@ -60,7 +60,7 @@ DiscoverPage
 
     readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
     readonly property QtObject currentAction: resourcesUpdatesModel.isProgressing ? cancelUpdateAction : updateAction
-    actions.main: applicationWindow().wideScreen ? null : currentAction
+    actions.main: currentAction
 
     header: QQC2.ToolBar {
         visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
@@ -83,17 +83,8 @@ DiscoverPage
                 text: i18n("updates not selected")
                 visible: unselectedItem.visible
             }
-
             Item {
                 Layout.fillWidth: true
-            }
-
-            Button {
-                Layout.minimumWidth: Kirigami.Units.gridUnit * 6
-                Layout.rightMargin: Kirigami.Units.gridUnit
-                text: page.currentAction.text
-                visible: !page.actions.main
-                onClicked: page.currentAction.trigger()
             }
         }
     }
