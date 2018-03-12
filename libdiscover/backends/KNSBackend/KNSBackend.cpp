@@ -253,6 +253,14 @@ public:
         auto manager = res->knsBackend()->engine();
         connect(manager, &KNSCore::Engine::signalEntryChanged, this, &KNSTransaction::anEntryChanged);
         TransactionModel::global()->addTransaction(this);
+
+        QTimer::singleShot(0, this, [this, res]() {
+            auto engine = res->knsBackend()->engine();
+            if (this->role() == InstallRole)
+                engine->install(res->entry());
+            else if(this->role() == RemoveRole)
+                engine->uninstall(res->entry());
+        });
     }
 
     void anEntryChanged(const KNSCore::EntryInternal& entry) {
@@ -286,15 +294,12 @@ private:
 Transaction* KNSBackend::removeApplication(AbstractResource* app)
 {
     auto res = qobject_cast<KNSResource*>(app);
-    auto t = new KNSTransaction(this, res, Transaction::RemoveRole);
-    m_engine->uninstall(res->entry());
-    return t;
+    return new KNSTransaction(this, res, Transaction::RemoveRole);
 }
 
 Transaction* KNSBackend::installApplication(AbstractResource* app)
 {
     auto res = qobject_cast<KNSResource*>(app);
-    m_engine->install(res->entry());
     return new KNSTransaction(this, res, Transaction::InstallRole);
 }
 
@@ -386,7 +391,8 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
         connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, stream, [this, stream, entryid, providerid](const KNSCore::EntryInternal &entry) {
             if (entry.uniqueId() == entryid && providerid == QUrl(entry.providerId()).host()) {
                 stream->resourcesFound({resourceForEntry(entry)});
-            }
+            } else
+                qWarning() << "found invalid" << entryid << entry.uniqueId() << providerid << QUrl(entry.providerId()).host();
             m_responsePending = false;
             QTimer::singleShot(0, this, &KNSBackend::availableForQueries);
             stream->finish();

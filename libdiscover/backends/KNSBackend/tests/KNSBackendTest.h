@@ -40,12 +40,13 @@ class KNSBackendTest : public QObject
         void testRetrieval();
         void testReviews();
         void testResourceByUrl();
+        void testResourceByUrlResourcesModel();
 
     public Q_SLOTS:
         void reviewsArrived(AbstractResource *r, const QVector<ReviewPtr>& revs);
 
     private:
-        QVector<AbstractResource*> getResources(ResultsStream* stream);
+        QVector<AbstractResource*> getResources(ResultsStream* stream, bool canBeEmpty = false);
         QVector<AbstractResource*> getAllResources(AbstractResourcesBackend* backend);
         QPointer<AbstractResourcesBackend> m_backend;
         QPointer<AbstractResource> m_r;

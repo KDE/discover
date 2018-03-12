@@ -167,7 +167,7 @@ QString KNSResource::section()
 
 static void appendIfValid(QList<QUrl>& list, const QUrl &value, const QUrl &fallback = {})
 {
-    if (list.contains(value)) {
+    if (!list.contains(value)) {
         if (value.isValid() && !value.isEmpty())
             list << value;
         else if (!fallback.isEmpty())

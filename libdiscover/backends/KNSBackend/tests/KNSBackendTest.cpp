@@ -58,7 +58,7 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     connect(m_backend->reviewsBackend(), &AbstractReviewsBackend::reviewsReady, this, &KNSBackendTest::reviewsArrived);
 }
 
-QVector<AbstractResource*> KNSBackendTest::getResources(ResultsStream* stream)
+QVector<AbstractResource*> KNSBackendTest::getResources(ResultsStream* stream, bool canBeEmpty)
 {
     Q_ASSERT(stream);
     Q_ASSERT(stream->objectName() != QLatin1String("KNS-void"));
@@ -66,7 +66,7 @@ QVector<AbstractResource*> KNSBackendTest::getResources(ResultsStream* stream)
     QVector<AbstractResource*> resources;
     connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QVector<AbstractResource*>& res) { resources += res; });
     Q_ASSERT(spyResources.wait(10000));
-    Q_ASSERT(!resources.isEmpty());
+    Q_ASSERT(!resources.isEmpty() || canBeEmpty);
     return resources;
 }
 
@@ -159,4 +159,13 @@ void KNSBackendTest::testResourceByUrl()
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 2);
     QVERIFY(!resource->isInstalled());
+}
+
+void KNSBackendTest::testResourceByUrlResourcesModel()
+{
+    const QUrl url(QStringLiteral("kns://plasmoids.knsrc/store.kde.org/1169537")); //Wrong domain
+
+    auto resources = getResources(ResourcesModel::global()->findResourceByPackageName(url), true);
+    const QVector<QUrl> res = kTransform<QVector<QUrl>>(resources, [](AbstractResource* res){ return res->url(); });
+    QCOMPARE(res.count(), 0);
 }
