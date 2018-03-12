@@ -40,6 +40,7 @@ class KNSBackendTest : public QObject
         void testRetrieval();
         void testReviews();
         void testResourceByUrl();
+        void testResourceByUrlResourcesModel();
 
     public Q_SLOTS:
         void reviewsArrived(AbstractResource *r, const QVector<ReviewPtr>& revs);

@@ -160,3 +160,13 @@ void KNSBackendTest::testResourceByUrl()
     QCOMPARE(spy.count(), 2);
     QVERIFY(!resource->isInstalled());
 }
+
+void KNSBackendTest::testResourceByUrlResourcesModel()
+{
+    const QUrl url(QStringLiteral("kns://plasmoids.knsrc/store.kde.org/1169537")); //Wrong domain
+
+    auto resources = getResources(ResourcesModel::global()->findResourceByPackageName(url));
+    const QVector<QUrl> res = kTransform<QVector<QUrl>>(resources, [](AbstractResource* res){ return res->url(); });
+    QCOMPARE(res.count(), 0);
+    QCOMPARE(url, res.constFirst());
+}
