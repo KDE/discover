@@ -392,7 +392,8 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
         connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, stream, [this, stream, entryid, providerid](const KNSCore::EntryInternal &entry) {
             if (entry.uniqueId() == entryid && providerid == QUrl(entry.providerId()).host()) {
                 stream->resourcesFound({resourceForEntry(entry)});
-            }
+            } else
+                qWarning() << "found invalid" << entryid << entry.uniqueId() << providerid << QUrl(entry.providerId()).host();
             m_responsePending = false;
             QTimer::singleShot(0, this, &KNSBackend::availableForQueries);
             stream->finish();
