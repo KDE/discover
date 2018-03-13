@@ -80,11 +80,11 @@ DiscoverPage {
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Rating")
                 onTriggered: {
-                    appsModel.sortRole = ResourcesProxyModel.RatingPointsRole
+                    appsModel.sortRole = ResourcesProxyModel.SortableRatingRole
                     appsModel.sortOrder = Qt.DescendingOrder
                 }
                 checkable: true
-                checked: appsModel.sortRole == ResourcesProxyModel.RatingPointsRole
+                checked: appsModel.sortRole == ResourcesProxyModel.SortableRatingRole
             }
             QQC2.Action {
                 QQC2.ActionGroup.group: sortGroup
