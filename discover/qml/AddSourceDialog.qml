@@ -28,6 +28,7 @@ Popup
     parent: applicationWindow().overlay
     modal: true
     focus: true
+    width: Kirigami.Units.gridUnit * 20
 
     x: (parent.width - width)/2
     y: (parent.height - height)/2
