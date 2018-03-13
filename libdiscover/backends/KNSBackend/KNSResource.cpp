@@ -229,3 +229,8 @@ QString KNSResource::executeLabel() const
 {
     return i18n("Use");
 }
+
+QDate KNSResource::releaseDate() const
+{
+    return m_entry.releaseDate();
+}

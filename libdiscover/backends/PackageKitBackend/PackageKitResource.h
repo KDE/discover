@@ -71,6 +71,8 @@ class PackageKitResource : public AbstractResource
 
         QString sourceIcon() const override;
 
+        QDate releaseDate() const override { return {}; }
+
     public Q_SLOTS:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch);
         void setDetails(const PackageKit::Details& details);

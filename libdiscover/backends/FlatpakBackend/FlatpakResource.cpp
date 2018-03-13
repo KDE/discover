@@ -542,3 +542,13 @@ QUrl FlatpakResource::url() const
 {
     return m_resourceFile.isEmpty() ? QUrl(QStringLiteral("appstream://") + appstreamId()) : m_resourceFile;
 }
+
+QDate FlatpakResource::releaseDate() const
+{
+    if (!m_appdata.releases().isEmpty()) {
+        auto release = m_appdata.releases().constFirst();
+        return release.timestamp().date();
+    }
+
+    return {};
+}

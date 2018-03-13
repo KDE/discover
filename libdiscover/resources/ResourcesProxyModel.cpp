@@ -59,7 +59,8 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
         { MimeTypes, "mimetypes" },
         { LongDescriptionRole, "longDescription" },
         { SourceIconRole, "sourceIcon" },
-        { SizeRole, "size" }
+        { SizeRole, "size" },
+        { ReleaseDateRole, "releaseDate" }
         })
     , m_currentStream(nullptr)
 {

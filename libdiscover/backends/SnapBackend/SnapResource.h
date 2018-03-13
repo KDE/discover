@@ -60,6 +60,8 @@ public:
     void setState(AbstractResource::State state);
     QString sourceIcon() const override { return QStringLiteral("snap"); }
 
+    QDate releaseDate() const override;
+
 public:
     void gotIcon();
     AbstractResource::State m_state;

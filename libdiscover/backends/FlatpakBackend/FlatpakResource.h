@@ -105,6 +105,7 @@ public:
     QString typeAsString() const;
     QString uniqueId() const;
     QUrl url() const override;
+    QDate releaseDate() const override;
 
     FlatpakInstallation* installation() const { return m_installation; }
 

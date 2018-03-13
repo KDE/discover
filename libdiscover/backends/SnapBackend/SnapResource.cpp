@@ -187,3 +187,8 @@ void SnapResource::setSnap(const QSharedPointer<QSnapdSnap>& snap)
     if (newSize)
         Q_EMIT sizeChanged();
 }
+
+QDate SnapResource::releaseDate() const
+{
+    return {};
+}

@@ -96,6 +96,16 @@ DiscoverPage {
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.SizeRole
             }
+            QQC2.Action {
+                QQC2.ActionGroup.group: sortGroup
+                text: i18n("Release Date")
+                onTriggered: {
+                    appsModel.sortRole = ResourcesProxyModel.ReleaseDateRole
+                    appsModel.sortOrder = Qt.AscendingOrder
+                }
+                checkable: true
+                checked: appsModel.sortRole == ResourcesProxyModel.ReleaseDateRole
+            }
         }
     ]
 

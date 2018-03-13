@@ -76,7 +76,8 @@ public:
         MimeTypes,
         SizeRole,
         LongDescriptionRole,
-        SourceIconRole
+        SourceIconRole,
+        ReleaseDateRole
     };
     Q_ENUM(Roles)
 

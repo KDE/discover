@@ -51,6 +51,7 @@ class AppPackageKitResource : public PackageKitResource
         void fetchChangelog() override;
         void invokeApplication() const override;
         bool canExecute() const override { return true; }
+        QDate releaseDate() const override;
 
     private:
         const AppStream::Component m_appdata;

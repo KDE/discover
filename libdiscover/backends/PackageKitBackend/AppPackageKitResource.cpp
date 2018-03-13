@@ -201,3 +201,12 @@ void AppPackageKitResource::invokeApplication() const
     }
 }
 
+QDate AppPackageKitResource::releaseDate() const
+{
+    if (!m_appdata.releases().isEmpty()) {
+        auto release = m_appdata.releases().constFirst();
+        return release.timestamp().date();
+    }
+
+    return {};
+}
