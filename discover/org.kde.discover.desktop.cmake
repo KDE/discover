@@ -171,4 +171,4 @@ Name[x-test]=xxUpdatesxx
 Name[zh_CN]=更新
 Name[zh_TW]=更新
 Icon=system-software-update
-Exec=@DesktopExec@ --mode update
+Exec=plasma-discover --mode update
