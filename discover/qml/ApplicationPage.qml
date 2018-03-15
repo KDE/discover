@@ -19,7 +19,7 @@
 
 import QtQuick 2.5
 import QtQuick.Controls 1.1
-import QtQuick.Controls 2.1 as QQC2
+import QtQuick.Controls 2.3 as QQC2
 import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
@@ -47,6 +47,11 @@ DiscoverPage {
 
     contextualActions: [originsMenuAction]
 
+    QQC2.ActionGroup {
+        id: sourcesGroup
+        exclusive: true
+    }
+
     Kirigami.Action {
         id: originsMenuAction
 
@@ -58,7 +63,8 @@ DiscoverPage {
                 allBackends: true
                 resourcesUrl: appInfo.application.url
             }
-            delegate: Kirigami.Action {
+            delegate: QQC2.Action {
+                QQC2.ActionGroup.group: sourcesGroup
                 text: displayOrigin
                 icon.name: sourceIcon
                 checked: appInfo.application == model.application
