@@ -33,8 +33,6 @@ DiscoverPage {
     property QtObject application: null
     clip: true
 
-    title: application.name
-
     background: Rectangle { color: Kirigami.Theme.viewBackgroundColor }
 
     ReviewsPage {
