@@ -52,6 +52,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_PROPERTY(bool allBackends READ allBackends WRITE setAllBackends)
     Q_PROPERTY(QVariantList subcategories READ subcategories NOTIFY subcategoriesChanged)
     Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
+    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
 public:
     explicit ResourcesProxyModel(QObject* parent = nullptr);
     enum Roles {
@@ -162,6 +163,7 @@ Q_SIGNALS:
     void searchChanged(const QString &search);
     void subcategoriesChanged(const QVariantList &subcategories);
     void resourcesUrlChanged(const QUrl &url);
+    void countChanged();
 };
 
 #endif

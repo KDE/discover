@@ -70,6 +70,10 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     connect(ResourcesModel::global(), &ResourcesModel::backendDataChanged, this, &ResourcesProxyModel::refreshBackend);
     connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &ResourcesProxyModel::refreshResource);
     connect(ResourcesModel::global(), &ResourcesModel::resourceRemoved, this, &ResourcesProxyModel::removeResource);
+
+    connect(this, &QAbstractItemModel::modelReset, this, &ResourcesProxyModel::countChanged);
+    connect(this, &QAbstractItemModel::rowsInserted, this, &ResourcesProxyModel::countChanged);
+    connect(this, &QAbstractItemModel::rowsRemoved, this, &ResourcesProxyModel::countChanged);
 }
 
 void ResourcesProxyModel::componentComplete()

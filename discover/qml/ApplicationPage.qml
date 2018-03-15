@@ -45,44 +45,31 @@ DiscoverPage {
         }
     }
 
-    Kirigami.OverlaySheet {
-        id: originsOverlay
-        bottomPadding: Kirigami.Units.largeSpacing
-        topPadding: Kirigami.Units.largeSpacing
-        readonly property alias model: alternativeResourcesView.model
-        function listBackends() {
-            var first = true;
-            var ret = "";
-            var m = alternativeResourcesView.model;
-            for(var i=0, count=m.rowCount(); i<count; ++i) {
-                var res = m.resourceAt(i)
-                if (res != appInfo.application) {
-                    if (!first) {
-                        ret += ", "
-                    }
-                    ret += "<a href='" + i + "'>" + res.displayOrigin + "</a>"
-                    first = false
-                }
-            }
-            return ret
-        }
-        readonly property string sentence: alternativeResourcesView.count <= 1 ? "" : i18n("\nAlso available in %1", listBackends())
-        ListView {
-            id: alternativeResourcesView
+    contextualActions: [originsMenuAction]
+
+    Kirigami.Action {
+        id: originsMenuAction
+
+        text: i18n("Sources")
+        visible: children.length>1
+        readonly property var r0: Instantiator {
             model: ResourcesProxyModel {
+                id: alternativeResourcesModel
                 allBackends: true
                 resourcesUrl: appInfo.application.url
             }
-            delegate: Kirigami.BasicListItem {
-                label: displayOrigin
+            delegate: Kirigami.Action {
+                text: displayOrigin
+                icon.name: sourceIcon
                 checked: appInfo.application == model.application
-                onClicked: if(index>=0) {
+                onTriggered: if(index>=0) {
                     var res = model.application
                     console.assert(res)
                     window.stack.pop()
                     Navigation.openApplication(res)
                 }
             }
+            onObjectAdded: originsMenuAction.children.push(object)
         }
     }
 
@@ -155,13 +142,7 @@ DiscoverPage {
             Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
-            text: appInfo.application.longDescription + originsOverlay.sentence
-            onLinkActivated: {
-                var idx = parseInt(link, 10)
-                var res = originsOverlay.model.resourceAt(idx)
-                window.stack.pop()
-                Navigation.openApplication(res)
-            }
+            text: appInfo.application.longDescription
         }
 
         Kirigami.Heading {
@@ -298,13 +279,11 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Source:")
             }
-            LinkButton {
+            QQC2.Label {
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
-                enabled: alternativeResourcesView.count > 1
                 text: appInfo.application.displayOrigin
                 elide: Text.ElideRight
-                onClicked: originsOverlay.open()
             }
 
             // License row
