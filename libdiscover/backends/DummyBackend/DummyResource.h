@@ -60,7 +60,7 @@ public:
 
     void setAddonInstalled(const QString& addon, bool installed);
     QString sourceIcon() const override { return QStringLiteral("player-time"); }
-
+    QDate releaseDate() const override { return {}; }
 
 public:
     QString m_name;
