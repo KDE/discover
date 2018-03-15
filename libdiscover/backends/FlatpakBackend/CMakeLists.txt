@@ -1,4 +1,4 @@
-# add_subdirectory(tests)
+add_subdirectory(tests)
 
 include_directories(${FLATPAK_INCLUDE_DIRS})
 

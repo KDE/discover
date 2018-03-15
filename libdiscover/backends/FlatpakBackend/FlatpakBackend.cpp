@@ -550,6 +550,8 @@ void FlatpakBackend::finishInitialization()
 {
     loadInstalledApps();
     checkForUpdates();
+
+    Q_EMIT initialized();
 }
 
 void FlatpakBackend::loadAppsFromAppstreamData()
@@ -845,6 +847,14 @@ void FlatpakBackend::refreshAppstreamMetadata(FlatpakInstallation *installation,
 
 bool FlatpakBackend::setupFlatpakInstallations(GError **error)
 {
+    if (qEnvironmentVariableIsSet("FLATPAK_TEST_MODE")) {
+        const QString path = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-test");
+        qDebug() << "running flatpak backend on test mode" << path;
+        g_autoptr(GFile) file = g_file_new_for_path(QFile::encodeName(path).constData());
+        m_installations << flatpak_installation_new_for_path(file, true, m_cancellable, error);
+        return true;
+    }
+
     GPtrArray *installations = flatpak_get_system_installations(m_cancellable, error);
     if (*error) {
         qWarning() << "Failed to call flatpak_get_system_installations:" << (*error)->message;
