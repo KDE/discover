@@ -28,6 +28,7 @@
 #include <QVector>
 #include <QCollatorSortKey>
 #include <QJsonObject>
+#include <QDate>
 
 #include "discovercommon_export.h"
 #include "PackageState.h"
