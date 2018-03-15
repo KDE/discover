@@ -550,6 +550,8 @@ void FlatpakBackend::finishInitialization()
 {
     loadInstalledApps();
     checkForUpdates();
+
+    Q_EMIT initialized();
 }
 
 void FlatpakBackend::loadAppsFromAppstreamData()
@@ -591,6 +593,7 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
 
 void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)
 {
+    Q_ASSERT(m_refreshAppstreamMetadataJobs != 0);
     m_refreshAppstreamMetadataJobs--;
 
     FlatpakSource source(remote);
@@ -845,6 +848,14 @@ void FlatpakBackend::refreshAppstreamMetadata(FlatpakInstallation *installation,
 
 bool FlatpakBackend::setupFlatpakInstallations(GError **error)
 {
+    if (qEnvironmentVariableIsSet("FLATPAK_TEST_MODE")) {
+        const QString path = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-test");
+        qDebug() << "running flatpak backend on test mode" << path;
+        g_autoptr(GFile) file = g_file_new_for_path(QFile::encodeName(path).constData());
+        m_installations << flatpak_installation_new_for_path(file, true, m_cancellable, error);
+        return true;
+    }
+
     GPtrArray *installations = flatpak_get_system_installations(m_cancellable, error);
     if (*error) {
         qWarning() << "Failed to call flatpak_get_system_installations:" << (*error)->message;
@@ -873,7 +884,6 @@ void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRe
 
 bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation, FlatpakResource *resource)
 {
-    QByteArray metadataContent;
     g_autoptr(GFile) installationPath = nullptr;
 
     if (resource->type() != FlatpakResource::DesktopApp) {
@@ -1086,15 +1096,14 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
         return stream;
     } else if ((!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() != QLatin1String("appstream")) || !filter.extends.isEmpty())
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
+    else if(filter.resourceUrl.scheme() == QLatin1String("appstream"))
+        return findResourceByPackageName(filter.resourceUrl);
 
     QVector<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resources) {
         if (r->isTechnical() && filter.state != AbstractResource::Upgradeable) {
             continue;
         }
-
-        if (!filter.resourceUrl.isEmpty() && filter.resourceUrl.host().compare(r->appstreamId(), Qt::CaseInsensitive) != 0)
-            continue;
 
         if (r->state() < filter.state)
             continue;
@@ -1145,6 +1154,7 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
         FlatpakRemote *remote = m_sources->installSource(resource);
         if (remote) {
             resource->setState(AbstractResource::Installed);
+            m_refreshAppstreamMetadataJobs++;
             // Make sure we update appstream metadata first
             // FIXME we have to let flatpak to return the remote as the one created by FlatpakSourcesBackend will not have appstream directory
             refreshAppstreamMetadata(preferredInstallation(), flatpak_installation_get_remote_by_name(preferredInstallation(), flatpak_remote_get_name(remote), nullptr, nullptr));

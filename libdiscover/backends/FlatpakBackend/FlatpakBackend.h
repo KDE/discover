@@ -69,6 +69,9 @@ private Q_SLOTS:
     void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);
     void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
 
+Q_SIGNALS: //for tests
+    void initialized();
+
 private:
     bool flatpakResourceLessThan(AbstractResource* l, AbstractResource* r);
     void announceRatingsReady();
