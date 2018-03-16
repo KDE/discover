@@ -232,5 +232,5 @@ QString KNSResource::executeLabel() const
 
 QDate KNSResource::releaseDate() const
 {
-    return m_entry.releaseDate();
+    return m_entry.updateReleaseDate().isNull() ? m_entry.releaseDate() : m_entry.updateReleaseDate();
 }

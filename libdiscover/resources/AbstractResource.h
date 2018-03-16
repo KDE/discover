@@ -204,6 +204,9 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
 
         virtual QString executeLabel() const;
         virtual QString sourceIcon() const = 0;
+        /**
+         * @returns the date of the resource's most recent release
+         */
         virtual QDate releaseDate() const = 0;
 
     public Q_SLOTS:
