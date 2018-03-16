@@ -83,6 +83,14 @@ private Q_SLOTS:
         QVERIFY(resFlathub.count() > 0);
     }
 
+    void testListOrigin()
+    {
+        AbstractResourcesBackend::Filters f;
+        f.origin = QStringLiteral("flathub");
+        auto resources= getResources(m_appBackend->search(f), true);
+        QVERIFY(resources.count()>0);
+    }
+
     void testInstallApp()
     {
         AbstractResourcesBackend::Filters f;
