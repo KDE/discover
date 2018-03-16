@@ -117,6 +117,12 @@ Kirigami.ApplicationWindow
             Navigation.openApplicationList({search: search})
         }
 
+        onOpenErrorPage: {
+            Navigation.clearStack()
+            console.warn("error", errorMessage)
+            window.stack.push(errorPageComponent, { error: errorMessage, title: i18n("Sorry...") })
+        }
+
         onPreventedClose: showPassiveNotification(i18n("Could not close the application, there are tasks that need to be done."))
         onUnableToFind: {
             showPassiveNotification(i18n("Unable to find resource: %1", resid));
@@ -129,6 +135,20 @@ Kirigami.ApplicationWindow
         onPassiveMessage: {
             showPassiveNotification(message)
             console.log("message:", message)
+        }
+    }
+
+    Component {
+        id: errorPageComponent
+        Kirigami.Page {
+            id: page
+            property string error: ""
+            Kirigami.Heading {
+                text: page.error
+                anchors.fill: parent
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
         }
     }
 

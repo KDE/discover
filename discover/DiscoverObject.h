@@ -81,6 +81,7 @@ class DiscoverObject : public QObject
         void compactModeChanged(CompactMode compactMode);
         void preventedClose();
         void unableToFind(const QString &resid);
+        void openErrorPage(const QString &errorMessage);
 
     private:
         void integrateObject(QObject* object);

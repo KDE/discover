@@ -229,7 +229,7 @@ void DiscoverObject::openApplication(const QUrl& url)
                     emit openApplicationInternal(res.first());
                 } else {
                     rootObject()->setProperty("defaultStartup", true);
-                    showPassiveNotification(i18n("Couldn't open %1", url.toDisplayString()));
+                    Q_EMIT openErrorPage(i18n("Couldn't open %1", url.toDisplayString()));
                 }
             });
         }
