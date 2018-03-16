@@ -32,8 +32,6 @@ DiscoverPage
         }
     }
 
-    contextualActions: [refreshAction]
-
     UpdateModel {
         id: updateModel
         backend: resourcesUpdatesModel
@@ -60,7 +58,10 @@ DiscoverPage
 
     readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
     readonly property QtObject currentAction: resourcesUpdatesModel.isProgressing ? cancelUpdateAction : updateAction
-    actions.main: currentAction
+    actions {
+        left: refreshAction
+        main: currentAction
+    }
 
     header: QQC2.ToolBar {
         visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
