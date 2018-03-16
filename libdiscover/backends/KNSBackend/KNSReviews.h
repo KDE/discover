@@ -59,8 +59,9 @@ class KNSReviews : public AbstractReviewsBackend
 
     private:
         Attica::Provider provider() const;
-        KNSBackend* m_backend;
+        KNSBackend* const m_backend;
         QUrl m_providerUrl;
+        int m_fetching = 0;
 };
 
 #endif // KNSREVIEWS_H
