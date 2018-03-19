@@ -42,9 +42,8 @@ Kirigami.AbstractCard
     highlighted: ListView.isCurrentItem
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
-    rightPadding: Kirigami.Units.largeSpacing
 
-    header: Item {
+    contentItem: Item {
         implicitHeight: Math.max(conts.implicitHeight, resourceIcon.height)
 
         Kirigami.Icon {
@@ -56,7 +55,6 @@ Kirigami.AbstractCard
             anchors {
                 verticalCenter: parent.verticalCenter
                 left: parent.left
-                leftMargin: Kirigami.Units.smallSpacing
             }
         }
 
