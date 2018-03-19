@@ -25,13 +25,14 @@ import org.kde.kquickcontrolsaddons 2.0
 import QtQuick.Window 2.1
 import org.kde.kcoreaddons 1.0
 import "navigation.js" as Navigation
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.4 as Kirigami
 
-Kirigami.AbstractListItem
+Kirigami.AbstractCard
 {
     id: delegateArea
     property alias application: installButton.application
     property bool compact: false
+    showClickFeedback: true
 
     function trigger() {
         if (ListView.view)
@@ -42,9 +43,8 @@ Kirigami.AbstractListItem
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
     rightPadding: Kirigami.Units.largeSpacing
-    backgroundColor: Kirigami.Theme.viewBackgroundColor
 
-    Item {
+    header: Item {
         implicitHeight: Math.max(conts.implicitHeight, resourceIcon.height)
 
         Kirigami.Icon {

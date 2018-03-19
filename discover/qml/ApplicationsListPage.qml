@@ -25,7 +25,7 @@ import QtQuick.Window 2.2
 import "navigation.js" as Navigation
 import org.kde.discover.app 1.0
 import org.kde.discover 2.0
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.4 as Kirigami
 
 DiscoverPage {
     id: page
@@ -109,13 +109,8 @@ DiscoverPage {
         }
     ]
 
-    ListView {
+    Kirigami.CardsListView {
         id: apps
-
-        anchors {
-            top: parent.top
-            topMargin: Kirigami.Units.gridUnit
-        }
 
         section.delegate: QQC2.Label {
             text: section
@@ -132,7 +127,6 @@ DiscoverPage {
                 apps.currentIndex = -1
             }
         }
-        spacing: Kirigami.Units.gridUnit
         currentIndex: -1
         delegate: ApplicationDelegate {
             x: Kirigami.Units.gridUnit

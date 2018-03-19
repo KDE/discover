@@ -25,7 +25,7 @@ import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
-import org.kde.kirigami 2.1 as Kirigami
+import org.kde.kirigami 2.4 as Kirigami
 
 DiscoverPage
 {
@@ -48,15 +48,8 @@ DiscoverPage
 
     readonly property bool compact: page.width < 500 || !applicationWindow().wideScreen
 
-    ListView {
-        id: browsingView
-
-        anchors {
-            top: parent.top
-            topMargin: Kirigami.Units.gridUnit
-        }
+    Kirigami.CardsListView {
         model: FeaturedModel {}
-        spacing: Kirigami.Units.gridUnit
         currentIndex: -1
         delegate: ApplicationDelegate {
             x: Kirigami.Units.gridUnit
