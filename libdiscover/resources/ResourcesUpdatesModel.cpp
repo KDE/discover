@@ -26,10 +26,6 @@
 #include "AbstractResource.h"
 #include "utils.h"
 #include <QDateTime>
-#include <QDBusConnection>
-#include <QDBusInterface>
-#include <QDBusMessage>
-#include <QDBusReply>
 #include <QDebug>
 
 #include <KLocalizedString>
