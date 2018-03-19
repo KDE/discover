@@ -79,7 +79,7 @@ Kirigami.AbstractCard
                 InstallApplicationButton {
                     id: installButton
                     anchors {
-                        top: parent.top
+                        verticalCenter: parent.verticalCenter
                         left: parent.right
                     }
                 }
