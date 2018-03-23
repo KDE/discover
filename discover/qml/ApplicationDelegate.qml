@@ -44,7 +44,7 @@ Kirigami.AbstractCard
     onClicked: trigger()
 
     contentItem: Item {
-        implicitHeight: Math.max(conts.implicitHeight, resourceIcon.height)
+        implicitHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 2 : Kirigami.Units.gridUnit * 4
 
         Kirigami.Icon {
             id: resourceIcon
@@ -59,8 +59,7 @@ Kirigami.AbstractCard
         }
 
         ColumnLayout {
-            id: conts
-            spacing: delegateArea.compact ? 0 : 5
+            spacing: delegateArea.compact ? 3 : 5
             anchors {
                 right: parent.right
                 left: resourceIcon.right
