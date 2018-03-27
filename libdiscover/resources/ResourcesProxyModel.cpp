@@ -297,7 +297,7 @@ bool ResourcesProxyModel::lessThan(AbstractResource* leftPackage, AbstractResour
 
         if (leftValue == rightValue) {
             role = NameRole;
-            order = Qt::DescendingOrder;
+            order = Qt::AscendingOrder;
         }
     }
 
