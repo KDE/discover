@@ -172,7 +172,7 @@ DiscoverPage
 
                     CheckBox {
                         id: itemChecked
-                        anchors.verticalCenter: parent.verticalCenter
+                        Layout.alignment: Qt.AlignVCenter
                         checked: model.checked == Qt.Checked
                         onClicked: model.checked = (model.checked==Qt.Checked ? Qt.Unchecked : Qt.Checked)
                     }
