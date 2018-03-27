@@ -76,7 +76,7 @@ void UnityLauncher::update(const QVariantMap &properties)
         return;
     }
 
-    QDBusMessage message = QDBusMessage::createSignal(QStringLiteral("/org/kdevelop/UnityLauncher"),
+    QDBusMessage message = QDBusMessage::createSignal(QStringLiteral("/org/discover/UnityLauncher"),
                                                       QStringLiteral("com.canonical.Unity.LauncherEntry"),
                                                       QStringLiteral("Update"));
     message.setArguments({m_launcherId, properties});

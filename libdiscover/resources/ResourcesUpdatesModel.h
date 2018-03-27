@@ -31,7 +31,6 @@ class AbstractResource;
 class QAction;
 class AbstractBackendUpdater;
 class ResourcesModel;
-class QDBusInterface;
 class Transaction;
 class UpdateTransaction;
 

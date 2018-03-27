@@ -42,17 +42,13 @@
 #include <KAboutApplicationDialog>
 #include <KAuthorized>
 #include <KBugReport>
-#include <KActionCollection>
 #include <KDeclarative/KDeclarative>
 #include <KLocalizedString>
-#include <KMessageBox>
-#include <KHelpMenu>
 #include <KAboutData>
-#include <KHelpMenu>
-#include <KShortcutsDialog>
 #include <KConcatenateRowsProxyModel>
 #include <KSharedConfig>
 #include <KConfigGroup>
+#include <KStandardAction>
 // #include <KSwitchLanguageDialog>
 
 // DiscoverCommon includes

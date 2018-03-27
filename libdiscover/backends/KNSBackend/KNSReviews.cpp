@@ -82,10 +82,12 @@ void KNSReviews::fetchReviews(AbstractResource* app, int page)
     job->setProperty("app", qVariantFromValue<AbstractResource*>(app));
     connect(job, &Attica::BaseJob::finished, this, &KNSReviews::commentsReceived);
     job->start();
+    m_fetching++;
 }
 
 void KNSReviews::commentsReceived(Attica::BaseJob* j)
 {
+    m_fetching--;
     Attica::ListJob<Attica::Comment>* job = static_cast<Attica::ListJob<Attica::Comment>*>(j);
     Attica::Comment::List comments = job->itemList();
 
@@ -104,7 +106,7 @@ void KNSReviews::commentsReceived(Attica::BaseJob* j)
 
 bool KNSReviews::isFetching() const
 {
-    return m_backend->isFetching();
+    return m_fetching > 0;
 }
 
 void KNSReviews::flagReview(Review*  /*r*/, const QString&  /*reason*/, const QString&  /*text*/)

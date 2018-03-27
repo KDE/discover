@@ -21,7 +21,6 @@
 #include "KNSBackendTest.h"
 #include "utils.h"
 #include <KNSBackend.h>
-#include <KXmlGuiWindow>
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>

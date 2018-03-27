@@ -83,6 +83,14 @@ private Q_SLOTS:
         QVERIFY(resFlathub.count() > 0);
     }
 
+    void testListOrigin()
+    {
+        AbstractResourcesBackend::Filters f;
+        f.origin = QStringLiteral("flathub");
+        auto resources= getResources(m_appBackend->search(f), true);
+        QVERIFY(resources.count()>0);
+    }
+
     void testInstallApp()
     {
         AbstractResourcesBackend::Filters f;
@@ -96,6 +104,23 @@ private Q_SLOTS:
         QCOMPARE(resRssguard->state(), AbstractResource::Installed);
         waitTransaction(m_appBackend->removeApplication(resRssguard));
         QCOMPARE(resRssguard->state(), AbstractResource::None);
+    }
+
+    void testCancelInstallation()
+    {
+        AbstractResourcesBackend::Filters f;
+        f.resourceUrl = QUrl(QStringLiteral("appstream://com.github.rssguard.desktop"));
+        const auto res = getResources(m_appBackend->search(f));
+        QVERIFY(res.count() == 1);
+
+        const auto resRssguard = res.constFirst();
+        QCOMPARE(resRssguard->state(), AbstractResource::None);
+        auto t = m_appBackend->installApplication(resRssguard);
+        QSignalSpy spy(t, &Transaction::statusChanged);
+        QVERIFY(spy.wait());
+        QCOMPARE(t->status(), Transaction::DownloadingStatus);
+        t->cancel();
+        QCOMPARE(t->status(), Transaction::CancelledStatus);
     }
 
 private:

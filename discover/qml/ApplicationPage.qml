@@ -275,7 +275,7 @@ DiscoverPage {
             QQC2.Label {
                 Layout.fillWidth: true
                 elide: Text.ElideRight
-                text: i18n("%1", appInfo.application.sizeDescription)
+                text: appInfo.application.sizeDescription
             }
 
             // Source row

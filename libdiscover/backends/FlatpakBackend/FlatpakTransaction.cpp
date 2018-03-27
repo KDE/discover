@@ -44,6 +44,7 @@ FlatpakTransaction::FlatpakTransaction(FlatpakResource *app, FlatpakResource *ru
     , m_runtime(runtime)
 {
     setCancellable(true);
+    setStatus(QueuedStatus);
 
     if (!delayStart) {
         QTimer::singleShot(0, this, &FlatpakTransaction::start);
@@ -70,6 +71,7 @@ void FlatpakTransaction::setRuntime(FlatpakResource *runtime)
 
 void FlatpakTransaction::start()
 {
+    setStatus(DownloadingStatus);
     if (m_runtime) {
         QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(m_runtime, QPair<QString, uint>(), role(), this);
         connect(job, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);

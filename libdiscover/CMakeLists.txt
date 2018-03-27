@@ -54,7 +54,6 @@ LINK_PUBLIC
     KF5::ItemModels
 LINK_PRIVATE
     Qt5::Xml
-    Qt5::DBus
     KF5::KIOCore
     KF5::CoreAddons
 )

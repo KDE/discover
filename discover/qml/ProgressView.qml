@@ -10,7 +10,7 @@ import "navigation.js" as Navigation
 Kirigami.BasicListItem {
     id: listItem
     label: TransactionModel.count ? i18n("Tasks (%1%)", TransactionModel.progress) : i18n("Tasks")
-    visible: progressModel.count > 0
+    visible: TransactionModel.count > 0
 
     background: Item {
 
@@ -34,104 +34,67 @@ Kirigami.BasicListItem {
         sheetObject.destroy(100)
     }
 
-    readonly property var v1: Connections {
-        target: TransactionModel
-        onTransactionAdded: {
-            if(listItem.enabled && trans.visible && progressModel.applicationAt(trans.resource)<0) {
-                progressModel.append({ transaction: trans })
-            }
-        }
-
-        onTransactionRemoved: {
-            if (!trans.resource) {
-                var id = progressModel.applicationAt(trans.resource)
-                if(id>=0)
-                    progressModel.remove(id)
-            }
-        }
-    }
-    
-    readonly property var v2: ListModel {
-        id: progressModel
-        function applicationAt(app) {
-            for(var i=0; i<progressModel.count; i++) {
-                if(progressModel.get(i).application==app) {
-                    return i
-                }
-            }
-            return -1
-        }
-    }
-
     readonly property var v3: Component {
         id: sheet
         Kirigami.OverlaySheet {
 
-            contentItem: ColumnLayout {
+            contentItem: ListView {
                 spacing: 0
 
                 Component {
                     id: listenerComp
-                    TransactionListener {
-                        property int index: -1
-                        onCancelled: {
-                            progressModel.remove(index)
+                    TransactionListener {}
+                }
+                model: TransactionModel
+
+                delegate: Kirigami.AbstractListItem {
+                    id: del
+                    separatorVisible: false
+                    onClicked: {
+                        if (model.application) {
+                            Navigation.clearStack()
+                            Navigation.openApplication(model.application)
                         }
                     }
-                }
+                    readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource} : {transaction: model.transaction}))
 
-                Repeater {
-                    model: progressModel
+                    ColumnLayout {
+                        width: parent.width
 
-                    delegate: Kirigami.AbstractListItem {
-                        id: del
-                        separatorVisible: false
-                        onClicked: {
-                            if (model.application) {
-                                Navigation.clearStack()
-                                Navigation.openApplication(model.application)
+                        RowLayout {
+                            Layout.fillWidth: true
+
+                            Kirigami.Icon {
+                                Layout.fillHeight: true
+                                Layout.minimumWidth: height
+                                source: model.transaction.icon
+                            }
+
+                            QQC2.Label {
+                                anchors.verticalCenter: parent.verticalCenter
+                                Layout.fillWidth: true
+                                elide: Text.ElideRight
+                                text: listener.isActive ? i18nc("TransactioName TransactionStatus", "%1 %2", model.transaction.name, listener.statusText) : model.transaction.name
+                            }
+                            ToolButton {
+                                iconName: "dialog-cancel"
+                                visible: listener.isCancellable
+                                onClicked: listener.cancel()
+                            }
+                            ToolButton {
+                                iconName: "system-run"
+                                visible: model.application != undefined && model.application.isInstalled && !listener.isActive && model.application.canExecute
+                                onClicked: {
+                                    model.application.invokeApplication()
+                                    model.remove(index)
+                                }
                             }
                         }
-                        readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource, index: index} : {transaction: model.transaction, index: index}))
-
-                        ColumnLayout {
-                            width: parent.width
-
-                            RowLayout {
-                                Layout.fillWidth: true
-
-                                Kirigami.Icon {
-                                    Layout.fillHeight: true
-                                    Layout.minimumWidth: height
-                                    source: model.transaction.icon
-                                }
-
-                                QQC2.Label {
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    Layout.fillWidth: true
-                                    elide: Text.ElideRight
-                                    text: listener.isActive ? i18nc("TransactioName TransactionStatus", "%1 %2", model.transaction.name, listener.statusText) : model.transaction.name
-                                }
-                                ToolButton {
-                                    iconName: "dialog-cancel"
-                                    visible: listener.isCancellable
-                                    onClicked: listener.cancel()
-                                }
-                                ToolButton {
-                                    iconName: "system-run"
-                                    visible: model.application != undefined && model.application.isInstalled && !listener.isActive && model.application.canExecute
-                                    onClicked: {
-                                        model.application.invokeApplication()
-                                        model.remove(index)
-                                    }
-                                }
-                            }
-                            ProgressBar {
-                                Layout.fillWidth: true
-                                visible: listener.isActive
-                                value: listener.progress
-                                maximumValue: 100
-                            }
+                        ProgressBar {
+                            Layout.fillWidth: true
+                            visible: listener.isActive
+                            value: listener.progress
+                            maximumValue: 100
                         }
                     }
                 }
