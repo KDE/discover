@@ -65,7 +65,7 @@ DiscoverPage {
 
     contextualActions: [
         Kirigami.Action {
-            text: i18n("Sort")
+            text: i18n("Sort: %1", sortGroup.checkedAction.text)
             QQC2.Action {
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Name")
