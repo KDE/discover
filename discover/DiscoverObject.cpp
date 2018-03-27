@@ -112,6 +112,7 @@ DiscoverObject::DiscoverObject(CompactMode mode)
 
     connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverObject::integrateObject);
     m_engine->load(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
+    qDebug() << "xxxxxxxxxxxxx" << rootObject();
 }
 
 DiscoverObject::~DiscoverObject()
@@ -162,7 +163,7 @@ void DiscoverObject::openMimeType(const QString& mime)
 
 void DiscoverObject::openCategory(const QString& category)
 {
-    rootObject()->setProperty("defaultStartup", false);
+    setRootObjectProperty("defaultStartup", false);
     auto action = new OneTimeAction(
         [this, category]() {
             Category* cat = CategoryModel::global()->findCategoryByName(category);
@@ -170,7 +171,7 @@ void DiscoverObject::openCategory(const QString& category)
                 emit listCategoryInternal(cat);
             } else {
                 showPassiveNotification(i18n("Could not find category '%1'", category));
-                rootObject()->setProperty("defaultStartup", false);
+                setRootObjectProperty("defaultStartup", false);
             }
         }
         , this);
@@ -189,7 +190,7 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
         qWarning() << "Trying to open unexisting file" << localfile;
         return;
     }
-    rootObject()->setProperty("defaultStartup", false);
+    setRootObjectProperty("defaultStartup", false);
     auto action = new OneTimeAction(
         [this, localfile]() {
             auto res = ResourcesModel::global()->resourceForFile(localfile);
@@ -197,7 +198,7 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
             if (res) {
                 emit openApplicationInternal(res);
             } else {
-                rootObject()->setProperty("defaultStartup", true);
+                setRootObjectProperty("defaultStartup", true);
                 showPassiveNotification(i18n("Couldn't open %1", localfile.toDisplayString()));
             }
         }
@@ -213,7 +214,7 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
 void DiscoverObject::openApplication(const QUrl& url)
 {
     Q_ASSERT(!url.isEmpty());
-    rootObject()->setProperty("defaultStartup", false);
+    setRootObjectProperty("defaultStartup", false);
     auto action = new OneTimeAction(
         [this, url]() {
             AbstractResourcesBackend::Filters f;
@@ -224,7 +225,7 @@ void DiscoverObject::openApplication(const QUrl& url)
                 if (res.count() == 1) {
                     emit openApplicationInternal(res.first());
                 } else {
-                    rootObject()->setProperty("defaultStartup", true);
+                    setRootObjectProperty("defaultStartup", true);
                     showPassiveNotification(i18n("Couldn't open %1", url.toDisplayString()));
                 }
             });
@@ -397,6 +398,17 @@ void DiscoverObject::loadTest(const QUrl& url)
 QWindow* DiscoverObject::rootObject() const
 {
     return qobject_cast<QWindow*>(m_engine->rootObjects().at(0));
+}
+
+void DiscoverObject::setRootObjectProperty(const char* name, const QVariant& value)
+{
+    auto ro = rootObject();
+    if (!ro) {
+        qWarning() << "please check your installation";
+        return;
+    }
+
+    rootObject()->setProperty(name, value);
 }
 
 void DiscoverObject::showPassiveNotification(const QString& msg)
