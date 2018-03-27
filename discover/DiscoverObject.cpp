@@ -112,7 +112,6 @@ DiscoverObject::DiscoverObject(CompactMode mode)
 
     connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverObject::integrateObject);
     m_engine->load(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
-    qDebug() << "xxxxxxxxxxxxx" << rootObject();
 }
 
 DiscoverObject::~DiscoverObject()
