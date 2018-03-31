@@ -82,13 +82,6 @@ Kirigami.AbstractCard
                 }
 
             }
-            QQC2.Label {
-                id: category
-                Layout.fillWidth: true
-                elide: Text.ElideRight
-                text: delegateArea.application.categoryDisplay
-                visible: !delegateArea.compact && text != page.title
-            }
 
             Rectangle {
                 color: Kirigami.Theme.linkColor
