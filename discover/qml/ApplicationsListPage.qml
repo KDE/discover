@@ -121,8 +121,8 @@ DiscoverPage {
 
         model: ResourcesProxyModel {
             id: appsModel
-            sortRole: ResourcesProxyModel.ReleaseDateRole
-            sortOrder: search.length>0 ? Qt.AscendingOrder : Qt.DescendingOrder
+            sortRole: ResourcesProxyModel.SortableRatingRole
+            sortOrder: Qt.DescendingOrder
             onBusyChanged: if (isBusy) {
                 apps.currentIndex = -1
             }
