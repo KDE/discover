@@ -116,7 +116,19 @@ DiscoverPage {
                     Layout.fillWidth: true
                     Layout.alignment: Text.AlignBottom
                 }
+                RowLayout {
+                    spacing: Kirigami.Units.largeSpacing
+                    Rating {
+                        rating: appInfo.application.rating ? appInfo.application.rating.sortableRating : 0
+                        starSize: summary.font.pointSize
+                    }
+                    QQC2.Label {
+                        text: appInfo.application.rating ? i18n("%1 ratings", appInfo.application.rating.ratingCount) : i18n("No ratings yet")
+                        opacity: 0.5
+                    }
+                }
                 Kirigami.Heading {
+                    id: summary
                     level: 4
                     text: appInfo.application.comment
                     maximumLineCount: 2

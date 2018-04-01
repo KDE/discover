@@ -45,6 +45,7 @@ DiscoverPage {
     property alias listHeader: apps.header
     property alias listHeaderPositioning: apps.headerPositioning
     property bool compact: page.width < 500 || !applicationWindow().wideScreen
+    property bool showRating: true
 
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories
@@ -131,6 +132,7 @@ DiscoverPage {
         delegate: ApplicationDelegate {
             application: model.application
             compact: page.compact
+            showRating: page.showRating
         }
 
         QQC2.Label {

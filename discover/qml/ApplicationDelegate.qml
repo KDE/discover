@@ -30,6 +30,7 @@ Kirigami.AbstractCard
     id: delegateArea
     property alias application: installButton.application
     property bool compact: false
+    property bool showRating: true
     showClickFeedback: true
 
     function trigger() {
@@ -57,8 +58,9 @@ Kirigami.AbstractCard
         }
 
         ColumnLayout {
-            spacing: delegateArea.compact ? 3 : 5
+            spacing: delegateArea.compact ? 0 : 5
             anchors {
+                verticalCenter: parent.verticalCenter
                 right: parent.right
                 left: resourceIcon.right
                 leftMargin: Kirigami.Units.largeSpacing
@@ -76,22 +78,29 @@ Kirigami.AbstractCard
                 InstallApplicationButton {
                     id: installButton
                     anchors {
-                        verticalCenter: parent.verticalCenter
+                        verticalCenter: delegateArea.compact ? parent.bottom: parent.verticalCenter
                         left: parent.right
                     }
                 }
 
             }
 
-            Rectangle {
-                color: Kirigami.Theme.linkColor
-                Layout.fillWidth: true
-                Layout.rightMargin: delegateArea.compact ? installButton.width + Kirigami.Units.largeSpacing : 0
-                height: Kirigami.Units.devicePixelRatio / 2
+            RowLayout {
+                visible: showRating
+                spacing: Kirigami.Units.largeSpacing
+                Rating {
+                    rating: delegateArea.application.rating ? delegateArea.application.rating.sortableRating : 0
+                    starSize: delegateArea.compact ? summary.font.pointSize : head.font.pointSize
+                }
+                QQC2.Label {
+                    text: delegateArea.application.rating ? i18n("%1 ratings", delegateArea.application.rating.ratingCount) : i18n("No ratings yet")
+                    opacity: 0.5
+                }
             }
 
             Layout.fillWidth: true
             QQC2.Label {
+                id: summary
                 Layout.fillWidth: true
                 bottomPadding: Kirigami.Units.smallSpacing
                 elide: Text.ElideRight
