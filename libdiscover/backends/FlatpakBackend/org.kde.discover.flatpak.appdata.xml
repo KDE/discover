@@ -5,6 +5,7 @@
   <name xml:lang="ar">سَند فلاتپاك</name>
   <name xml:lang="ca">Dorsal del Flatpak</name>
   <name xml:lang="ca-valencia">Dorsal del Flatpak</name>
+  <name xml:lang="cs">Podpůrná vrstva Flatpak</name>
   <name xml:lang="en-GB">Flatpak backend</name>
   <name xml:lang="es">Motor Flatpak</name>
   <name xml:lang="fi">Flatpak-taustaosa</name>
@@ -52,6 +53,7 @@
   <developer_name xml:lang="ar">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="cs">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="en-GB">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="es">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fi">Aleix Pol Gonzalez</developer_name>
