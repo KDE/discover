@@ -128,7 +128,7 @@ void ResourcesModel::callerFetchingChanged()
         int idx = m_backends.indexOf(backend);
         Q_ASSERT(idx>=0);
         m_backends.removeAt(idx);
-//         Q_EMIT backendsChanged();
+        Q_EMIT backendsChanged();
         CategoryModel::global()->blacklistPlugin(backend->name());
         backend->deleteLater();
         return;
