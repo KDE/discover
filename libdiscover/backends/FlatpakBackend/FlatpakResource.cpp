@@ -183,8 +183,6 @@ QVariant FlatpakResource::icon() const
     } else if (icons.isEmpty()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     } else foreach(const AppStream::Icon &icon, icons) {
-        QStringList stock;
-
         switch (icon.kind()) {
             case AppStream::Icon::KindLocal:
             case AppStream::Icon::KindCached: {
@@ -199,8 +197,7 @@ QVariant FlatpakResource::icon() const
                 }
             }   break;
             case AppStream::Icon::KindStock:
-                stock += icon.name();
-                break;
+                return QIcon::fromTheme(icon.name(), QIcon::fromTheme(QStringLiteral("package-x-generic")));
             case AppStream::Icon::KindRemote: {
                 const QString fileName = iconCachePath(icon);
                 if (QFileInfo::exists(fileName)) {
@@ -211,11 +208,12 @@ QVariant FlatpakResource::icon() const
             case AppStream::Icon::KindUnknown:
                 break;
         }
-
-        if (ret.isNull()) {
-            ret = QIcon::fromTheme(stock.value(0), QIcon::fromTheme(QStringLiteral("package-x-generic")));
-        }
     }
+
+    if (ret.isNull()) {
+        ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+    }
+
     return ret;
 }
 

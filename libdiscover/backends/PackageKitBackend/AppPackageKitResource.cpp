@@ -56,10 +56,7 @@ QString AppPackageKitResource::longDescription()
 static QIcon componentIcon(const AppStream::Component &comp)
 {
     QIcon ret;
-    const auto icons = comp.icons();
-    if (icons.isEmpty()) {
-        ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
-    } else foreach(const AppStream::Icon &icon, icons) {
+    foreach(const AppStream::Icon &icon, comp.icons()) {
         QStringList stock;
         switch(icon.kind()) {
             case AppStream::Icon::KindLocal:
@@ -69,14 +66,13 @@ static QIcon componentIcon(const AppStream::Component &comp)
                 ret.addFile(icon.url().toLocalFile(), icon.size());
                 break;
             case AppStream::Icon::KindStock:
-                stock += icon.name();
-                break;
+                return QIcon::fromTheme(icon.name(), QIcon::fromTheme(QStringLiteral("package-x-generic")));
             default:
                 break;
         }
-        if (ret.isNull() && !stock.isEmpty()) {
-            ret = QIcon::fromTheme(stock.first());
-        }
+    }
+    if (ret.isNull()) {
+        ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     }
     return ret;
 }
