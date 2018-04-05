@@ -53,6 +53,12 @@ FlatpakTransaction::FlatpakTransaction(FlatpakResource *app, FlatpakResource *ru
 
 FlatpakTransaction::~FlatpakTransaction()
 {
+    for(auto job : m_jobs) {
+        if (!job->isFinished()) {
+            connect(job, &QThread::finished, job, &QObject::deleteLater);
+        } else
+            delete job;
+    }
 }
 
 void FlatpakTransaction::cancel()

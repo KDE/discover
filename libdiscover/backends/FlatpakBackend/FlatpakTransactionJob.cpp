@@ -48,7 +48,6 @@ FlatpakTransactionJob::FlatpakTransactionJob(FlatpakResource *app, const QPair<Q
     , m_role(role)
 {
     m_cancellable = g_cancellable_new();
-    connect(this, &QThread::finished, this, &QObject::deleteLater);
 }
 
 FlatpakTransactionJob::~FlatpakTransactionJob()
