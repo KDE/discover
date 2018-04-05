@@ -2,7 +2,6 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Controls 2.1 as QQC2
 import QtQuick.Layouts 1.1
-import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover 2.0
 import org.kde.kirigami 2.0 as Kirigami
 import "navigation.js" as Navigation
