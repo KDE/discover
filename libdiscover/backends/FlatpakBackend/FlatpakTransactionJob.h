@@ -35,8 +35,8 @@ class FlatpakTransactionJob : public QThread
 {
 Q_OBJECT
 public:
-    FlatpakTransactionJob(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role, QObject *parent = nullptr);
-    ~FlatpakTransactionJob();
+    FlatpakTransactionJob(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role);
+    ~FlatpakTransactionJob() override;
 
     void cancel();
     void run() override;

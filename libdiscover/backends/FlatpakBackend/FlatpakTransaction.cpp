@@ -73,7 +73,7 @@ void FlatpakTransaction::start()
 {
     setStatus(DownloadingStatus);
     if (m_runtime) {
-        QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(m_runtime, QPair<QString, uint>(), role(), this);
+        QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(m_runtime, QPair<QString, uint>(), role());
         connect(job, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
         connect(job, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
         m_jobs << job;
@@ -82,7 +82,7 @@ void FlatpakTransaction::start()
     }
 
     // App job will be added everytime
-    m_appJob = new FlatpakTransactionJob(m_app, QPair<QString, uint>(), role(), this);
+    m_appJob = new FlatpakTransactionJob(m_app, QPair<QString, uint>(), role());
     connect(m_appJob, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
     connect(m_appJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
     m_jobs << m_appJob;
@@ -133,7 +133,7 @@ void FlatpakTransaction::processRelatedRefs(FlatpakResource* resource)
         for (uint i = 0; i < refs->len; i++) {
             FlatpakRef *flatpakRef = FLATPAK_REF(g_ptr_array_index(refs, i));
             if (flatpak_related_ref_should_download(FLATPAK_RELATED_REF(flatpakRef))) {
-                QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(resource, QPair<QString, uint>(QString::fromUtf8(flatpak_ref_get_name(flatpakRef)), flatpak_ref_get_kind(flatpakRef)), role(), this);
+                QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(resource, QPair<QString, uint>(QString::fromUtf8(flatpak_ref_get_name(flatpakRef)), flatpak_ref_get_kind(flatpakRef)), role());
                 connect(job, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
                 connect(job, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
                 // Add to the list of all jobs
