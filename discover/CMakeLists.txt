@@ -18,14 +18,13 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
 add_executable(Plasma::Discover ALIAS plasma-discover)
 set_target_properties(plasma-discover PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
-target_link_libraries(plasma-discover LINK_PUBLIC
+target_link_libraries(plasma-discover PUBLIC
                                      KF5::Crash
                                      KF5::DBusAddons
                                      KF5::I18n
                                      KF5::XmlGui
-                                     KF5::Declarative
                                      KF5::ItemModels
-                                     KF5::KIOCore
+                                     KF5::KIOWidgets
                                      Qt5::Quick
                                      Discover::Common
 )

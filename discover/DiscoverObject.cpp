@@ -42,13 +42,14 @@
 #include <KAboutApplicationDialog>
 #include <KAuthorized>
 #include <KBugReport>
-#include <KDeclarative/KDeclarative>
 #include <KLocalizedString>
+#include <KLocalizedContext>
 #include <KAboutData>
 #include <KConcatenateRowsProxyModel>
 #include <KSharedConfig>
 #include <KConfigGroup>
 #include <KStandardAction>
+#include <KIO/AccessManager>
 // #include <KSwitchLanguageDialog>
 
 // DiscoverCommon includes
@@ -75,6 +76,17 @@ public:
     }
 };
 
+class KIOAccessManagerFactory : public QQmlNetworkAccessManagerFactory
+{
+public:
+    KIOAccessManagerFactory() = default;
+    ~KIOAccessManagerFactory() = default;
+    QNetworkAccessManager *create(QObject *parent) override
+    {
+        return new KIO::AccessManager(parent);
+    }
+};
+
 DiscoverObject::DiscoverObject(CompactMode mode)
     : QObject()
     , m_engine(new QQmlApplicationEngine)
@@ -82,9 +94,11 @@ DiscoverObject::DiscoverObject(CompactMode mode)
     , m_networkAccessManagerFactory(new CachedNetworkAccessManagerFactory)
 {
     setObjectName(QStringLiteral("DiscoverMain"));
-    KDeclarative::KDeclarative kdeclarative;
-    kdeclarative.setDeclarativeEngine(m_engine);
-    kdeclarative.setupBindings();
+    m_engine->rootContext()->setContextObject(new KLocalizedContext(m_engine));
+    auto factory = m_engine->networkAccessManagerFactory();
+    m_engine->setNetworkAccessManagerFactory(nullptr);
+    delete factory;
+    m_engine->setNetworkAccessManagerFactory(new KIOAccessManagerFactory());
 
     qmlRegisterType<UnityLauncher>("org.kde.discover.app", 1, 0, "UnityLauncher");
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
