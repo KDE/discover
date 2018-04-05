@@ -371,13 +371,10 @@ QString FlatpakResource::typeAsString() const
 
 QString FlatpakResource::uniqueId() const
 {
-    // Build uniqueId
-    return QString::fromUtf8("%1/%2/%3/%4/%5/%6").arg(installationPath())
-                                                 .arg(QLatin1String("flatpak"))
-                                                 .arg(origin())
-                                                 .arg(typeAsString())
-                                                 .arg(m_appdata.id())
-                                                 .arg(branch());
+    return installationPath() + QStringLiteral("%1/flatpak/") + origin()
+                              + QLatin1Char('/') + typeAsString()
+                              + QLatin1Char('/') + m_appdata.id()
+                              + QLatin1Char('/') + branch();
 }
 
 void FlatpakResource::invokeApplication() const
