@@ -79,7 +79,7 @@ void FlatpakTransaction::start()
 {
     setStatus(DownloadingStatus);
     if (m_runtime) {
-        QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(m_runtime, QPair<QString, uint>(), role());
+        QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(m_runtime, {}, role());
         connect(job, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
         connect(job, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
         m_jobs << job;
@@ -88,7 +88,7 @@ void FlatpakTransaction::start()
     }
 
     // App job will be added everytime
-    m_appJob = new FlatpakTransactionJob(m_app, QPair<QString, uint>(), role());
+    m_appJob = new FlatpakTransactionJob(m_app, {}, role());
     connect(m_appJob, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
     connect(m_appJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
     m_jobs << m_appJob;
@@ -109,8 +109,7 @@ void FlatpakTransaction::processRelatedRefs(FlatpakResource* resource)
     g_autoptr(GCancellable) cancellable = g_cancellable_new();;
     QList<FlatpakResource> additionalResources;
 
-    g_autofree gchar *ref = nullptr;
-    ref = g_strdup_printf ("%s/%s/%s/%s",
+    g_autofree gchar *ref = g_strdup_printf ("%s/%s/%s/%s",
                            resource->typeAsString().toUtf8().constData(),
                            resource->flatpakName().toUtf8().constData(),
                            resource->arch().toUtf8().constData(),
