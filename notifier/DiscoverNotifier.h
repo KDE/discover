@@ -63,7 +63,8 @@ public:
 public Q_SLOTS:
     void configurationChanged();
     void recheckSystemUpdateNeeded();
-    void showMuon();
+    void showDiscover();
+    void showDiscoverUpdates();
 
 Q_SIGNALS:
     void updatesChanged();

@@ -38,10 +38,14 @@ Item
     }
 
     Component.onCompleted: {
+        plasmoid.setAction("discover", i18n("Open Software Center..."), "plasma-discover");
         plasmoid.setAction("update", i18n("See Updates..."), "system-software-update");
     }
 
+    function action_discover() {
+        DiscoverNotifier.showDiscover();
+    }
     function action_update() {
-        DiscoverNotifier.showMuon();
+        DiscoverNotifier.showDiscoverUpdates();
     }
 }

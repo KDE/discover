@@ -54,7 +54,12 @@ void DiscoverNotifier::configurationChanged()
     m_verbose = notifyTypeGroup.readEntry("Verbose", false);
 }
 
-void DiscoverNotifier::showMuon()
+void DiscoverNotifier::showDiscover()
+{
+    KRun::runCommand(QStringLiteral("plasma-discover"), nullptr);
+}
+
+void DiscoverNotifier::showDiscoverUpdates()
 {
     KRun::runCommand(QStringLiteral("plasma-discover --mode update"), nullptr);
 }
@@ -70,7 +75,7 @@ void DiscoverNotifier::showUpdatesNotification()
     const QString name = i18n("Update");
     e->setDefaultAction(name);
     e->setActions({name});
-    connect(e, QOverload<unsigned int>::of(&KNotification::activated), this, &DiscoverNotifier::showMuon);
+    connect(e, QOverload<unsigned int>::of(&KNotification::activated), this, &DiscoverNotifier::showDiscover);
 }
 
 void DiscoverNotifier::updateStatusNotifier()
