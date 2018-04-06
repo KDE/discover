@@ -71,7 +71,10 @@ QVariantList CategoryModel::rootCategoriesVL() const
 
 void CategoryModel::blacklistPlugin(const QString &name)
 {
-    Category::blacklistPluginsInVector({name}, m_rootCategories);
+    const bool ret = Category::blacklistPluginsInVector({name}, m_rootCategories);
+    if (ret) {
+        Q_EMIT rootCategoriesChanged();
+    }
 }
 
 static Category* recFindCategory(Category* root, const QString& name)

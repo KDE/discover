@@ -38,8 +38,8 @@ static void flatpakInstallationProgressCallback(const gchar *stats, guint progre
     Q_EMIT transactionJob->progressChanged(progress);
 }
 
-FlatpakTransactionJob::FlatpakTransactionJob(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role, QObject *parent)
-    : QThread(parent)
+FlatpakTransactionJob::FlatpakTransactionJob(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role)
+    : QThread()
     , m_result(false)
     , m_progress(0)
     , m_relatedRef(relatedRef.first)

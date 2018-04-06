@@ -152,7 +152,7 @@ void PackageKitBackend::reloadPackageList()
                 }
             }
 
-            qDebug() << "no packages for" << component.name();
+            qDebug() << "no packages for" << component.id();
             continue;
         }
         neededPackages += pkgNames;
