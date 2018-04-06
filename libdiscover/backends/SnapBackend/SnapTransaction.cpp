@@ -26,22 +26,20 @@
 #include <QProcess>
 #include <QJsonDocument>
 #include <QJsonArray>
+#include <KLocalizedString>
 #include "libsnapclient/config-paths.h"
 #include "utils.h"
 
-SnapTransaction::SnapTransaction(SnapResource* app, QSnapdRequest* request, Role role, AbstractResource::State newState)
+SnapTransaction::SnapTransaction(QSnapdClient* client, SnapResource* app, Role role, AbstractResource::State newState)
     : Transaction(app, app, role)
+    , m_client(client)
     , m_app(app)
-    , m_request(request)
     , m_newState(newState)
 {
-    setCancellable(false);
-    connect(request, &QSnapdRequest::progress, this, &SnapTransaction::progressed);
-    connect(request, &QSnapdRequest::complete, this, &SnapTransaction::finishTransaction);
-    setStatus(SetupStatus);
-
-    setStatus(DownloadingStatus);
-    request->runAsync();
+    if (role == RemoveRole)
+        setRequest(m_client->remove(app->packageName()));
+    else
+        setRequest(m_client->install(app->packageName()));
 }
 
 void SnapTransaction::cancel()
@@ -55,6 +53,12 @@ void SnapTransaction::finishTransaction()
         case QSnapdRequest::NoError:
             static_cast<SnapBackend*>(m_app->backend())->refreshStates();
             m_app->setState(m_newState);
+            break;
+        case QSnapdRequest::NeedsClassic:
+            if (role() == Transaction::InstallRole) {
+                Q_EMIT proceedRequest(m_app->name(), i18n("This snap application needs security confinement measures disabled."));
+                return;
+            }
             break;
         case QSnapdRequest::AuthDataRequired: {
             QProcess* p = new QProcess;
@@ -79,11 +83,30 @@ void SnapTransaction::finishTransaction()
             });
         }   return;
         default:
+            qDebug() << "snap error" << m_request << m_request->error() << m_request->errorString();
             Q_EMIT passiveMessage(m_request->errorString());
             break;
     }
 
     setStatus(DoneStatus);
+}
+
+void SnapTransaction::proceed()
+{
+    setRequest(m_client->install(QSnapdClient::Classic, m_app->packageName()));
+}
+
+void SnapTransaction::setRequest(QSnapdRequest* req)
+{
+    m_request.reset(req);
+
+    setCancellable(false);
+    connect(m_request.data(), &QSnapdRequest::progress, this, &SnapTransaction::progressed);
+    connect(m_request.data(), &QSnapdRequest::complete, this, &SnapTransaction::finishTransaction);
+    setStatus(SetupStatus);
+
+    setStatus(DownloadingStatus);
+    m_request->runAsync();
 }
 
 void SnapTransaction::progressed()
