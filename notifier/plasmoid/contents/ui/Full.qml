@@ -42,7 +42,7 @@ ColumnLayout
     }
     Button {
         visible: !DiscoverNotifier.isSystemUpToDate
-        Layout.alignment: Qt.AlignVCenter
+        Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
         text: i18n("Update")
         tooltip: i18n("Launches the software to perform the update")
         onClicked: DiscoverNotifier.showMuon()
