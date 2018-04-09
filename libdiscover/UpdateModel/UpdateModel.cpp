@@ -90,6 +90,10 @@ void UpdateModel::activityChanged()
         if (!m_updates->isProgressing()) {
             m_updates->prepare();
             setResources(m_updates->toUpdate());
+
+            for(auto item : m_updateItems) {
+                item->setProgress(0);
+            }
         }
     }
 }
