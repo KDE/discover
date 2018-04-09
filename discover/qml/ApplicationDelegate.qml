@@ -102,6 +102,8 @@ Kirigami.AbstractCard
             QQC2.Label {
                 id: summary
                 Layout.fillWidth: true
+                Layout.rightMargin: delegateArea.compact ? installButton.width : 0
+
                 bottomPadding: Kirigami.Units.smallSpacing
                 elide: Text.ElideRight
                 text: delegateArea.application.comment
