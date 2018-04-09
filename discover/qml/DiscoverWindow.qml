@@ -28,11 +28,14 @@ Kirigami.ApplicationWindow
     objectName: "DiscoverMainWindow"
     title: leftPage ? leftPage.title : ""
 
-    header: Kirigami.ToolBarApplicationHeader {}
-//     header: (window.wideScreen ? desktopHeader : mobileHeader).createObject()
-//
-//     Component { id: desktopHeader; Kirigami.ToolBarApplicationHeader {} }
-//     Component { id: mobileHeader; Kirigami.ApplicationHeader {} }
+    ConditionalObject {
+        id: whichToolbar
+        condition: window.wideScreen
+
+        componentTrue: Component { id: desktopHeader; Kirigami.ToolBarApplicationHeader {} }
+        componentFalse: Component { id: mobileHeader; Kirigami.ApplicationHeader {} }
+    }
+    header: whichToolbar.object
 
     visible: true
 
@@ -217,6 +220,13 @@ Kirigami.ApplicationWindow
             }
         }
     }
+
+    ConditionalObject {
+        id: drawerObject
+        condition: window.wideScreen
+        componentFalse: Kirigami.ContextDrawer {}
+    }
+    contextDrawer: drawerObject.object
 
     globalDrawer: DiscoverDrawer {
         wideScreen: window.wideScreen
