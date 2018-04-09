@@ -89,8 +89,8 @@ void UpdateModel::activityChanged()
     if (m_updates) {
         if (!m_updates->isProgressing()) {
             m_updates->prepare();
+            setResources(m_updates->toUpdate());
         }
-        setResources(m_updates->toUpdate());
     }
 }
 
@@ -191,8 +191,13 @@ void UpdateModel::integrateChangelog(const QString &changelog)
     emit dataChanged(idx, idx, { ChangelogRole });
 }
 
-void UpdateModel::setResources(const QList< AbstractResource* >& resources)
+void UpdateModel::setResources(const QList<AbstractResource*>& resources)
 {
+    if (resources == m_resources) {
+        return;
+    }
+    m_resources = resources;
+
     beginResetModel();
     qDeleteAll(m_updateItems);
     m_updateItems.clear();
