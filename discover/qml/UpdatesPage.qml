@@ -87,6 +87,7 @@ DiscoverPage
             Button {
                 Layout.minimumWidth: Kirigami.Units.gridUnit * 6
                 Layout.rightMargin: Kirigami.Units.gridUnit
+                enabled: page.currentAction.enabled
                 text: page.currentAction.text
                 visible: !page.actions.main
                 onClicked: page.currentAction.trigger()
