@@ -371,7 +371,7 @@ QString FlatpakResource::typeAsString() const
 
 QString FlatpakResource::uniqueId() const
 {
-    return installationPath() + QStringLiteral("%1/flatpak/") + origin()
+    return installationPath() + QStringLiteral("/flatpak/") + origin()
                               + QLatin1Char('/') + typeAsString()
                               + QLatin1Char('/') + m_appdata.id()
                               + QLatin1Char('/') + branch();
