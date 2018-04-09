@@ -197,7 +197,6 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     qDeleteAll(m_updateItems);
     m_updateItems.clear();
 
-    const QString importantUpdatesSection = i18nc("@item:inlistbox", "Important Security Updates");
     const QString appUpdatesSection = i18nc("@item:inlistbox", "Application Updates");
     const QString systemUpdateSection = i18nc("@item:inlistbox", "System Updates");
     QVector<UpdateItem*> appItems, systemItems;
