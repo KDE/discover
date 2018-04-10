@@ -27,6 +27,8 @@ find_package(AppStreamQt 0.11.1)
 find_package(KF5Attica 5.23)
 find_package(KF5NewStuff 5.23)
 
+set(CMAKE_AUTORCC ON)
+
 pkg_check_modules(FLATPAK  flatpak>=0.6.12)
 
 if(NOT CMAKE_VERSION VERSION_LESS "3.10.0")
