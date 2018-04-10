@@ -43,7 +43,14 @@ AppPackageKitResource::AppPackageKitResource(const AppStream::Component& data, c
 
 QString AppPackageKitResource::name() const
 {
-    return m_appdata.name();
+    QString ret;
+    if (!m_appdata.extends().isEmpty()) {
+        auto components = backend()->componentsById(m_appdata.extends().constFirst());
+        Q_ASSERT(!components.isEmpty());
+        ret = components.constFirst().name() + QStringLiteral(" - ") + m_appdata.name();
+    } else
+        ret = m_appdata.name();
+    return ret;
 }
 
 QString AppPackageKitResource::longDescription()

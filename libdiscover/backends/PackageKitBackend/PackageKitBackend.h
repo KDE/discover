@@ -74,6 +74,8 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         bool hasApplications() const override { return true; }
         static QString locateService(const QString &filename);
 
+        QList<AppStream::Component> componentsById(const QString &id) const;
+
     public Q_SLOTS:
         void reloadPackageList();
         void refreshDatabase();
