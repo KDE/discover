@@ -162,7 +162,10 @@ bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int rol
 
         checkResources(apps, newValue);
         Q_ASSERT(idx.data(Qt::CheckStateRole) == value);
-        Q_EMIT dataChanged(idx, idx, { Qt::CheckStateRole });
+
+        //When un/checking some backends will decide to add or remove a bunch of packages, so refresh it all
+        auto m = idx.model();
+        Q_EMIT dataChanged(m->index(0, 0), m->index(m->rowCount()-1, 0), { Qt::CheckStateRole });
         Q_EMIT toUpdateChanged();
 
         return true;
