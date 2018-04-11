@@ -51,8 +51,10 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         double updateSize() const override;
         void setProgress(qreal p);
         int updatesCount() const;
+        void cancel() override;
 
     Q_SIGNALS:
+        void cancelTransaction();
         void updatesCountChanged(int updatesCount);
 
     public Q_SLOTS:
@@ -73,6 +75,7 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         qreal m_progress;
         QDateTime m_lastUpdate;
         QTimer m_timer;
+        bool m_canCancel = false;
 };
 
 #endif // STANDARDBACKENDUPDATER_H

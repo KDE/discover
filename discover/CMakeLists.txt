@@ -3,9 +3,6 @@ add_subdirectory(autotests)
 
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
 
-qt5_add_resources(plasma_discover_SRCS resources.qrc)
-qt5_add_resources(plasma_discover_SRCS assets.qrc)
-
 add_executable(plasma-discover ${plasma_discover_SRCS}
     main.cpp
     DiscoverObject.cpp
@@ -14,6 +11,9 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
     FeaturedModel.cpp
     PaginateModel.cpp
     UnityLauncher.cpp
+
+    resources.qrc
+    assets.qrc
 )
 add_executable(Plasma::Discover ALIAS plasma-discover)
 set_target_properties(plasma-discover PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)

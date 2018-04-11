@@ -85,6 +85,7 @@ DiscoverPage
             Item {
                 Layout.fillWidth: true
             }
+                enabled: page.currentAction.enabled
         }
     }
 

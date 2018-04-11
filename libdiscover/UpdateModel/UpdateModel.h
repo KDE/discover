@@ -93,6 +93,7 @@ private:
 
     QVector<UpdateItem*> m_updateItems;
     ResourcesUpdatesModel* m_updates;
+    QList<AbstractResource*> m_resources;
 };
 
 #endif // UPDATEMODEL_H

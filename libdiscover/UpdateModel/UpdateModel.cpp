@@ -89,8 +89,12 @@ void UpdateModel::activityChanged()
     if (m_updates) {
         if (!m_updates->isProgressing()) {
             m_updates->prepare();
+            setResources(m_updates->toUpdate());
+
+            for(auto item : m_updateItems) {
+                item->setProgress(0);
+            }
         }
-        setResources(m_updates->toUpdate());
     }
 }
 
@@ -158,7 +162,10 @@ bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int rol
 
         checkResources(apps, newValue);
         Q_ASSERT(idx.data(Qt::CheckStateRole) == value);
-        Q_EMIT dataChanged(idx, idx, { Qt::CheckStateRole });
+
+        //When un/checking some backends will decide to add or remove a bunch of packages, so refresh it all
+        auto m = idx.model();
+        Q_EMIT dataChanged(m->index(0, 0), m->index(m->rowCount()-1, 0), { Qt::CheckStateRole });
         Q_EMIT toUpdateChanged();
 
         return true;
@@ -191,13 +198,17 @@ void UpdateModel::integrateChangelog(const QString &changelog)
     emit dataChanged(idx, idx, { ChangelogRole });
 }
 
-void UpdateModel::setResources(const QList< AbstractResource* >& resources)
+void UpdateModel::setResources(const QList<AbstractResource*>& resources)
 {
+    if (resources == m_resources) {
+        return;
+    }
+    m_resources = resources;
+
     beginResetModel();
     qDeleteAll(m_updateItems);
     m_updateItems.clear();
 
-    const QString importantUpdatesSection = i18nc("@item:inlistbox", "Important Security Updates");
     const QString appUpdatesSection = i18nc("@item:inlistbox", "Application Updates");
     const QString systemUpdateSection = i18nc("@item:inlistbox", "System Updates");
     QVector<UpdateItem*> appItems, systemItems;

@@ -337,6 +337,11 @@ void PackageKitBackend::refreshDatabase()
     }
 }
 
+QList<AppStream::Component> PackageKitBackend::componentsById(const QString& id) const
+{
+    return m_appdata.componentsById(id);
+}
+
 ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
     if (!filter.resourceUrl.isEmpty()) {

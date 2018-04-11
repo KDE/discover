@@ -44,6 +44,7 @@ public:
             connect(updater, &AbstractBackendUpdater::progressingChanged, this, &UpdateTransaction::slotProgressingChanged);
             connect(updater, &AbstractBackendUpdater::progressChanged, this, &UpdateTransaction::slotUpdateProgress);
             connect(updater, &AbstractBackendUpdater::proceedRequest, this, &UpdateTransaction::processProceedRequest);
+            connect(updater, &AbstractBackendUpdater::cancelableChanged, this, [this](bool cancelable){ if (cancelable) setCancellable(true); });
             cancelable |= updater->isCancelable();
         }
         setCancellable(cancelable);
@@ -57,7 +58,7 @@ public:
     void cancel() override {
         QVector<AbstractBackendUpdater*> toCancel = m_updatersWaitingForFeedback.isEmpty() ? m_allUpdaters : m_updatersWaitingForFeedback;
 
-        foreach(auto updater, m_updatersWaitingForFeedback) {
+        foreach(auto updater, toCancel) {
             updater->cancel();
         }
     }
