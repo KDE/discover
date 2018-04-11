@@ -28,7 +28,7 @@ elseif(BUILD_FlatpakBackend)
     message(WARNING "BUILD_FlatpakBackend enabled but Flatpak=${FLATPAK_FOUND} or AppStreamQt=${AppStreamQt_FOUND} not found")
 endif()
 
-option(BUILD_SnapBackend "Build Snap support. Still a proof of concept" "OFF")
+option(BUILD_SnapBackend "Build Snap support." "ON")
 if(BUILD_SnapBackend)
     find_package(Snapd)
     set_package_properties(Snapd PROPERTIES

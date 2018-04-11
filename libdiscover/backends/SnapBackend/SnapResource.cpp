@@ -24,11 +24,56 @@
 #include <QProcess>
 #include <QBuffer>
 #include <QImageReader>
+#include <QQmlComponent>
+#include <QStandardItemModel>
+#include <KLocalizedString>
+#include <utils.h>
 
-SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend* parent)
-    : AbstractResource(parent)
+QDebug operator<<(QDebug debug, const QSnapdPlug& plug)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "QSnapdPlug(";
+    debug.nospace() << "name:" << plug.name() << ',';
+    debug.nospace() << "snap:" << plug.snap() << ',';
+    debug.nospace() << "label:" << plug.label() << ',';
+    debug.nospace() << "interface:" << plug.interface() << ',';
+    debug.nospace() << "connectionCount:" << plug.connectionCount();
+    debug.nospace() << ')';
+    return debug;
+}
+
+QDebug operator<<(QDebug debug, const QSnapdSlot& slot)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "QSnapdSlot(";
+    debug.nospace() << "name:" << slot.name() << ',';
+    debug.nospace() << "label:" << slot.label() << ',';
+    debug.nospace() << "snap:" << slot.snap() << ',';
+    debug.nospace() << "interface:" << slot.interface() << ',';
+    debug.nospace() << "connectionCount:" << slot.connectionCount();
+    debug.nospace() << ')';
+    return debug;
+}
+
+QDebug operator<<(QDebug debug, const QSnapdPlug* plug)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "*" << *plug;
+    return debug;
+}
+
+QDebug operator<<(QDebug debug, const QSnapdSlot* slot)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "*" << *slot;
+    return debug;
+}
+
+SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend* backend)
+    : AbstractResource(backend)
     , m_state(state)
     , m_snap(snap)
+    , m_objects({ QStringLiteral("qrc:/snapui/PermissionsButton.qml") })
 {
     setObjectName(snap->name());
 }
@@ -191,4 +236,92 @@ void SnapResource::setSnap(const QSharedPointer<QSnapdSnap>& snap)
 QDate SnapResource::releaseDate() const
 {
     return {};
+}
+
+class PlugsModel : public QStandardItemModel
+{
+public:
+    enum Roles {
+        PlugNameRole = Qt::UserRole + 1,
+        SlotSnapRole,
+        SlotNameRole
+    };
+
+    PlugsModel(QSnapdSnap* snap, SnapBackend* backend, QObject* parent)
+        : QStandardItemModel(parent)
+        , m_snap(snap)
+        , m_backend(backend)
+    {
+        setItemRoleNames(roleNames().unite(
+            { {Qt::CheckStateRole, "checked"} }
+        ));
+
+        auto req = backend->client()->getInterfaces();
+        req->runSync();
+
+        QHash<QString, QVector<QSnapdSlot*>> slotsForInterface;
+        for (int i = 0; i<req->slotCount(); ++i) {
+            const auto slot = req->slot(i);
+            slot->setParent(this);
+            slotsForInterface[slot->interface()].append(slot);
+
+        }
+
+        for (int i = 0; i<req->plugCount(); ++i) {
+            const QScopedPointer<QSnapdPlug> plug(req->plug(i));
+            if (plug->snap() == m_snap->name()) {
+                for (auto slot: slotsForInterface[plug->interface()]) {
+                    auto item = new QStandardItem;
+                    if (plug->label().isEmpty())
+                        item->setText(plug->name());
+                    else
+                        item->setText(i18n("%1 - %2", plug->name(), plug->label()));
+
+                    item->setCheckable(true);
+                    item->setCheckState(plug->connectionCount()>0 ? Qt::Checked : Qt::Unchecked);
+                    item->setData(plug->name(), PlugNameRole);
+                    item->setData(slot->snap(), SlotSnapRole);
+                    item->setData(slot->name(), SlotNameRole);
+                    appendRow(item);
+                }
+            }
+        }
+    }
+
+private:
+    bool setData(const QModelIndex & index, const QVariant & value, int role) override {
+        if (role != Qt::CheckStateRole)
+            return QStandardItemModel::setData(index, value, role);
+
+        auto item = itemFromIndex(index);
+        Q_ASSERT(item);
+        const QString plugName = item->data(PlugNameRole).toString();
+        const QString slotSnap = item->data(SlotSnapRole).toString();
+        const QString slotName = item->data(SlotNameRole).toString();
+
+        QSnapdRequest* req;
+
+        if (item->checkState() == Qt::Checked) {
+            req = m_backend->client()->connectInterface(m_snap->name(), plugName, slotSnap, slotName);
+        } else {
+            req = m_backend->client()->disconnectInterface(m_snap->name(), plugName, slotSnap, slotName);
+        }
+        req->runSync();
+        if (req->error()) {
+            qWarning() << "snapd error" << req->errorString();
+        }
+        return req->error() == QSnapdRequest::NoError;
+    }
+
+    QSnapdSnap* const m_snap;
+    SnapBackend* const m_backend;
+};
+
+QAbstractItemModel* SnapResource::plugs(QObject* p)
+{
+    if (!isInstalled())
+        return new QStandardItemModel(p);
+
+
+    return new PlugsModel(m_snap.data(), qobject_cast<SnapBackend*>(parent()), p);
 }

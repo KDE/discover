@@ -242,6 +242,20 @@ DiscoverPage {
             Layout.bottomMargin: Kirigami.Units.largeSpacing
         }
 
+        Repeater {
+            model: application.objects
+            delegate: Loader {
+                property QtObject resource: appInfo.application
+                source: modelData
+            }
+        }
+
+        Item {
+            height: addonsButton.height
+            width: 5
+        }
+
+        // Details/metadata
         Rectangle {
             color: Kirigami.Theme.linkColor
             Layout.fillWidth: true

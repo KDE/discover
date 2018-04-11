@@ -27,10 +27,12 @@
 #include <QSharedPointer>
 
 class SnapBackend;
+class QAbstractItemModel;
 
 class SnapResource : public AbstractResource
 {
 Q_OBJECT
+Q_PROPERTY(QStringList objects MEMBER m_objects CONSTANT)
 public:
     explicit SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend* parent);
     ~SnapResource() override = default;
@@ -62,12 +64,15 @@ public:
 
     QDate releaseDate() const override;
 
+    Q_SCRIPTABLE QAbstractItemModel* plugs(QObject* parents);
+
 public:
     void gotIcon();
     AbstractResource::State m_state;
 
     QSharedPointer<QSnapdSnap> m_snap;
     mutable QVariant m_icon;
+    const QStringList m_objects;
 };
 
 #endif // SNAPRESOURCE_H
