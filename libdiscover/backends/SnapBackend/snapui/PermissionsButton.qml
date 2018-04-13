@@ -28,6 +28,8 @@ Button
 
     visible: resource.isInstalled
     onClicked: overlay.open()
+    visible: view.count > 0
+
     Popup {
         id: overlay
         parent: applicationWindow().overlay
