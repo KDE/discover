@@ -28,14 +28,14 @@ elseif(BUILD_FlatpakBackend)
     message(WARNING "BUILD_FlatpakBackend enabled but Flatpak=${FLATPAK_FOUND} or AppStreamQt=${AppStreamQt_FOUND} not found")
 endif()
 
-option(BUILD_SnapBackend "Build Snap support." "ON")
-if(BUILD_SnapBackend)
-    find_package(Snapd)
-    set_package_properties(Snapd PROPERTIES
-        DESCRIPTION "Library that exposes Snapd"
-        URL "http://www.snapcraft.io"
-        PURPOSE "Required to build the Snap backend"
-        TYPE OPTIONAL)
+find_package(Snapd)
+set_package_properties(Snapd PROPERTIES
+    DESCRIPTION "Library that exposes Snapd"
+    URL "http://www.snapcraft.io"
+    PURPOSE "Required to build the Snap backend"
+    TYPE OPTIONAL)
 
+option(BUILD_SnapBackend "Build Snap support." "ON")
+if(BUILD_SnapBackend AND Snapd_FOUND)
     add_subdirectory(SnapBackend)
 endif()
