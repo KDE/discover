@@ -262,7 +262,6 @@ int UpdateModel::toUpdateCount() const
 
 int UpdateModel::totalUpdatesCount() const
 {
-
     int ret = 0;
     QSet<QString> packages;
     foreach (UpdateItem* item, m_updateItems) {
