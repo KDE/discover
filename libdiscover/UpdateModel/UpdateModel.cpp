@@ -248,8 +248,30 @@ ResourcesUpdatesModel* UpdateModel::backend() const
 int UpdateModel::toUpdateCount() const
 {
     int ret = 0;
+    QSet<QString> packages;
     foreach (UpdateItem* item, m_updateItems) {
+        const auto packageName = item->resource()->packageName();
+        if (packages.contains(packageName)) {
+            continue;
+        }
+        packages.insert(packageName);
         ret += item->checked() != Qt::Unchecked ? 1 : 0;
+    }
+    return ret;
+}
+
+int UpdateModel::totalUpdatesCount() const
+{
+
+    int ret = 0;
+    QSet<QString> packages;
+    foreach (UpdateItem* item, m_updateItems) {
+        const auto packageName = item->resource()->packageName();
+        if (packages.contains(packageName)) {
+            continue;
+        }
+        packages.insert(packageName);
+        ret += 1;
     }
     return ret;
 }
