@@ -64,7 +64,7 @@ public:
     bool hasUpdates() const;
 
     ///all upgradeable packages
-    int totalUpdatesCount() const { return m_updateItems.count(); }
+    int totalUpdatesCount() const;
 
     ///packages marked to upgrade
     int toUpdateCount() const;

@@ -305,7 +305,7 @@ QString FlatpakResource::origin() const
 
 QString FlatpakResource::packageName() const
 {
-    return flatpakName();
+    return flatpakName() + QLatin1Char('/') + arch() + QLatin1Char('/') + branch();
 }
 
 FlatpakResource::PropertyState FlatpakResource::propertyState(FlatpakResource::PropertyKind kind) const

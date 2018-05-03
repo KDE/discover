@@ -73,7 +73,7 @@ Kirigami.BasicListItem {
                                 anchors.verticalCenter: parent.verticalCenter
                                 Layout.fillWidth: true
                                 elide: Text.ElideRight
-                                text: listener.isActive ? i18nc("TransactioName TransactionStatus", "%1 %2", model.transaction.name, listener.statusText) : model.transaction.name
+                                text: listener.isActive ? i18nc("TransactioName - TransactionStatus", "%1 - %2", model.transaction.name, listener.statusText) : model.transaction.name
                             }
                             ToolButton {
                                 iconName: "dialog-cancel"

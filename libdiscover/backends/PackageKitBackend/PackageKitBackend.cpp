@@ -423,7 +423,17 @@ bool PackageKitBackend::hasSecurityUpdates() const
 
 int PackageKitBackend::updatesCount() const
 {
-    return m_updatesPackageId.count();
+    int ret = 0;
+    QSet<QString> packages;
+    for(auto res: upgradeablePackages()) {
+        const auto packageName = res->packageName();
+        if (packages.contains(packageName)) {
+            continue;
+        }
+        packages.insert(packageName);
+        ret += 1;
+    }
+    return ret;
 }
 
 Transaction* PackageKitBackend::installApplication(AbstractResource* app, const AddonList& addons)
