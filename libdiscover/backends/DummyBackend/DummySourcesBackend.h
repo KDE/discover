@@ -37,6 +37,8 @@ public:
     bool supportsAdding() const override { return true; }
 
 private:
+    QStandardItem* sourceForId(const QString& id) const;
+
     QStandardItemModel* m_sources;
     QAction* m_testAction;
 };

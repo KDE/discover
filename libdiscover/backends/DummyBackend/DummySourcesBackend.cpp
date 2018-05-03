@@ -45,6 +45,7 @@ bool DummySourcesBackend::addSource(const QString& id)
         return false;
 
     QStandardItem* it = new QStandardItem(id);
+    it->setData(id, AbstractSourcesBackend::IdRole);
     it->setData(QVariant(id + QLatin1Char(' ') + id), Qt::ToolTipRole);
     it->setCheckable(true);
     it->setCheckState(Qt::Checked);
@@ -52,15 +53,24 @@ bool DummySourcesBackend::addSource(const QString& id)
     return true;
 }
 
+QStandardItem * DummySourcesBackend::sourceForId(const QString& id) const
+{
+    for (int i=0, c=m_sources->rowCount(); i<c; ++i) {
+        const auto it = m_sources->item(i, 0);
+        if (it->text() == id)
+            return it;
+    }
+    return nullptr;
+}
+
 bool DummySourcesBackend::removeSource(const QString& id)
 {
-    QList<QStandardItem*> items = m_sources->findItems(id);
-    if (items.count()==1) {
-        m_sources->removeRow(items.first()->row());
-    } else {
-        qWarning() << "couldn't find " << id  << items;
+    const auto it = sourceForId(id);
+    if (!it) {
+        qWarning() << "couldn't find " << id;
+        return false;
     }
-    return items.count()==1;
+    return m_sources->removeRow(it->row());
 }
 
 QList<QAction*> DummySourcesBackend::actions() const
