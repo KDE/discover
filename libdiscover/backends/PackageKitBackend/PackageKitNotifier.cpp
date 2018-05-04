@@ -211,6 +211,10 @@ void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade 
     });
 
     notification->sendEvent();
+#else
+    Q_UNUSED(type)
+    Q_UNUSED(name)
+    Q_UNUSED(description)
 #endif
 }
 
