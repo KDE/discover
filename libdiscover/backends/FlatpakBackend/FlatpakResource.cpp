@@ -59,7 +59,7 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
     , m_state(AbstractResource::None)
     , m_type(FlatpakResource::DesktopApp)
 {
-    setObjectName(component.id());
+    setObjectName(packageName());
 
     // Start fetching remote icons during initialization
     const auto icons = m_appdata.icons();
@@ -143,6 +143,7 @@ void FlatpakResource::updateFromRef(FlatpakRef* ref)
     setCommit(QString::fromUtf8(flatpak_ref_get_commit(ref)));
     setFlatpakName(QString::fromUtf8(flatpak_ref_get_name(ref)));
     setType(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime);
+    setObjectName(packageName());
 }
 
 QStringList FlatpakResource::categories()
