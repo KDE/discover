@@ -76,6 +76,8 @@ void ResourcesModel::init(bool load)
         m_updateAction->setEnabled(!fetching);
     });
     connect(m_updateAction, &QAction::triggered, this, &ResourcesModel::checkForUpdates);
+
+    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, &QObject::deleteLater);
 }
 
 ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
@@ -87,6 +89,7 @@ ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
 
 ResourcesModel::~ResourcesModel()
 {
+    s_self = nullptr;
     qDeleteAll(m_backends);
 }
 
