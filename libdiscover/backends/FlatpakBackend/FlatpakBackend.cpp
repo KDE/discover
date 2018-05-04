@@ -1129,6 +1129,8 @@ ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
                 if (QString::compare(res->appstreamId(), url.host(), Qt::CaseInsensitive)==0)
                     resources << res;
             }
+            auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l,r); };
+            std::sort(resources.begin(), resources.end(), f);
         }
     }
     return new ResultsStream(QStringLiteral("FlatpakStream"), resources);
