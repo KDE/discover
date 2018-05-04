@@ -48,7 +48,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QSet<AbstractResource*> resourcesByPackageName(const QString& name) const;
 
         ResultsStream* search(const AbstractResourcesBackend::Filters & search) override;
-        ResultsStream* findResourceByPackageName(const QUrl& search) override;
+        ResultsStream* findResourceByPackageName(const QUrl& search);
         int updatesCount() const override;
         bool hasSecurityUpdates() const override;
 

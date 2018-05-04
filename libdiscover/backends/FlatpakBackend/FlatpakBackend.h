@@ -50,7 +50,7 @@ public:
     AbstractBackendUpdater * backendUpdater() const override;
     AbstractReviewsBackend * reviewsBackend() const override;
     ResultsStream * search(const AbstractResourcesBackend::Filters & search) override;
-    ResultsStream * findResourceByPackageName(const QUrl &search) override;
+    ResultsStream * findResourceByPackageName(const QUrl &search);
     QList<FlatpakResource*> resources() const { return m_resources.values(); }
     bool isValid() const override;
 

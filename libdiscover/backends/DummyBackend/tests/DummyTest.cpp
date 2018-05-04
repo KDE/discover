@@ -187,7 +187,10 @@ void DummyTest::testSort()
 
 void DummyTest::testInstallAddons()
 {
-    const auto resources = fetchResources(m_appBackend->findResourceByPackageName(QUrl(QStringLiteral("dummy://Dummy.1"))));
+    AbstractResourcesBackend::Filters filter;
+    filter.resourceUrl = QUrl(QStringLiteral("dummy://Dummy.1"));
+
+    const auto resources = fetchResources(m_appBackend->search(filter));
     QCOMPARE(resources.count(), 1);
     AbstractResource* res = resources.first();
     QVERIFY(res);
@@ -224,7 +227,10 @@ void DummyTest::testInstallAddons()
 
 void DummyTest::testReviewsModel()
 {
-    const auto resources = fetchResources(m_appBackend->findResourceByPackageName(QUrl(QStringLiteral("dummy://Dummy.1"))));
+    AbstractResourcesBackend::Filters filter;
+    filter.resourceUrl = QUrl(QStringLiteral("dummy://Dummy.1"));
+
+    const auto resources = fetchResources(m_appBackend->search(filter));
     QCOMPARE(resources.count(), 1);
     AbstractResource* res = resources.first();
     QVERIFY(res);
@@ -242,7 +248,7 @@ void DummyTest::testReviewsModel()
     m.markUseful(0, false);
     QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::No);
 
-    const auto resources2 = fetchResources(m_appBackend->findResourceByPackageName(QUrl(QStringLiteral("dummy://Dummy.1"))));
+    const auto resources2 = fetchResources(m_appBackend->search(filter));
     QCOMPARE(resources2.count(), 1);
     res = resources2.first();
     m.setResource(res);
@@ -268,10 +274,13 @@ void DummyTest::testUpdateModel()
 
 void DummyTest::testScreenshotsModel()
 {
+    AbstractResourcesBackend::Filters filter;
+    filter.resourceUrl = QUrl(QStringLiteral("dummy://Dummy.1"));
+
     ScreenshotsModel m;
     new ModelTest(&m, &m);
 
-    const auto resources = fetchResources(m_appBackend->findResourceByPackageName(QUrl(QStringLiteral("dummy://Dummy.1"))));
+    const auto resources = fetchResources(m_appBackend->search(filter));
     QCOMPARE(resources.count(), 1);
     AbstractResource* res = resources.first();
     QVERIFY(res);

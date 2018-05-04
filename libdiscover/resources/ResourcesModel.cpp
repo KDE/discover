@@ -310,12 +310,6 @@ void AggregatedResultsStream::clear()
     }
 }
 
-AggregatedResultsStream * ResourcesModel::findResourceByPackageName(const QUrl& search)
-{
-    auto streams = kTransform<QSet<ResultsStream*>>(m_backends, [search](AbstractResourcesBackend* backend){ return backend->findResourceByPackageName(search); });
-    return new AggregatedResultsStream(streams);
-}
-
 AggregatedResultsStream* ResourcesModel::search(const AbstractResourcesBackend::Filters& search)
 {
     if (search.isEmpty()) {
