@@ -204,6 +204,10 @@ DiscoverPage {
                 left: parent.left
                 margins: Kirigami.Units.smallSpacing
             }
+            Kirigami.Heading {
+                Layout.fillWidth: true
+                text: i18n("Missing Backends")
+            }
             Repeater {
                 id: back
                 model: ResourcesProxyModel {
