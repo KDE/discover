@@ -78,3 +78,17 @@ QList<QAction*> DummySourcesBackend::actions() const
     return QList<QAction*>() << m_testAction;
 }
 
+bool DummySourcesBackend::moveSource(const QString& sourceId, int delta)
+{
+    int row = sourceForId(sourceId)->row();
+    auto prevRow = m_sources->takeRow(row);
+    Q_ASSERT(!prevRow.isEmpty());
+
+    const auto destRow = row + delta;
+    m_sources->insertRow(destRow, prevRow);
+    if (destRow == 0 || row == 0)
+        Q_EMIT firstSourceIdChanged();
+    if (destRow == m_sources->rowCount() - 1 || row == m_sources->rowCount() - 1)
+        Q_EMIT lastSourceIdChanged();
+    return true;
+}

@@ -57,6 +57,7 @@
 #include <QNetworkAccessManager>
 
 #include <glib.h>
+#include "FlatpakSourcesBackend.h"
 
 DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
 
@@ -1074,7 +1075,7 @@ int FlatpakBackend::updatesCount() const
 bool FlatpakBackend::flatpakResourceLessThan(AbstractResource* l, AbstractResource* r)
 {
     return (l->isInstalled() != r->isInstalled()) ? l->isInstalled()
-         : (l->origin() != r->origin()) ? l->origin() < r->origin()
+         : (l->origin() != r->origin()) ? m_sources->originIndex(l->origin()) < m_sources->originIndex(r->origin())
          : l < r;
 }
 

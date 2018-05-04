@@ -36,6 +36,9 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
     Q_PROPERTY(QString idDescription READ idDescription CONSTANT)
     Q_PROPERTY(QList<QAction*> actions READ actions CONSTANT)
     Q_PROPERTY(bool supportsAdding READ supportsAdding CONSTANT)
+    Q_PROPERTY(bool canMoveSources READ canMoveSources CONSTANT)
+    Q_PROPERTY(QString firstSourceId READ firstSourceId NOTIFY firstSourceIdChanged)
+    Q_PROPERTY(QString lastSourceId READ lastSourceId NOTIFY lastSourceIdChanged)
     public:
         explicit AbstractSourcesBackend(AbstractResourcesBackend* parent);
         ~AbstractSourcesBackend() override;
@@ -58,7 +61,15 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
 
         AbstractResourcesBackend* resourcesBackend() const;
 
+        virtual bool canMoveSources() const { return false; }
+        Q_SCRIPTABLE virtual bool moveSource(const QString &sourceId, int delta);
+
+        QString firstSourceId() const;
+        QString lastSourceId() const;
+
     Q_SIGNALS:
+        void firstSourceIdChanged();
+        void lastSourceIdChanged();
         void passiveMessage(const QString &message);
 };
 

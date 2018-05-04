@@ -29,7 +29,7 @@ DiscoverPage {
         id: sourcesView
         model: QSortFilterProxyModel {
             filterRegExp: new RegExp(page.search, 'i')
-            sortRole: SourcesModelClass.SourceNameRole
+            dynamicSortFilter: false //We don't want to sort, as sorting can have some semantics on some backends
             sourceModel: SourcesModel
         }
         currentIndex: -1
@@ -145,6 +145,26 @@ DiscoverPage {
 
                 Keys.onReturnPressed: clicked()
                 actions: [
+                    Kirigami.Action {
+                        iconName: "go-up"
+                        enabled: sourcesBackend.firstSourceId !== sourceId
+                        visible: sourcesBackend.canMoveSources
+                        onTriggered: {
+                             var ret = sourcesBackend.moveSource(sourceId, -1)
+                             if (!ret)
+                                 window.showPassiveNotification(i18n("Failed to increase '%1' preference", display))
+                        }
+                    },
+                    Kirigami.Action {
+                        iconName: "go-down"
+                        enabled: sourcesBackend.lastSourceId !== sourceId
+                        visible: sourcesBackend.canMoveSources
+                        onTriggered: {
+                            var ret = sourcesBackend.moveSource(sourceId, +1)
+                            if (!ret)
+                                 window.showPassiveNotification(i18n("Failed to decrease '%1' preference", display))
+                        }
+                    },
                     Kirigami.Action {
                         iconName: "edit-delete"
                         tooltip: i18n("Delete the origin")

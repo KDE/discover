@@ -20,6 +20,7 @@
 
 #include "AbstractSourcesBackend.h"
 #include "AbstractResourcesBackend.h"
+#include <QAbstractItemModel>
 
 AbstractSourcesBackend::AbstractSourcesBackend(AbstractResourcesBackend* parent)
     : QObject(parent)
@@ -32,3 +33,22 @@ AbstractResourcesBackend * AbstractSourcesBackend::resourcesBackend() const
     return dynamic_cast<AbstractResourcesBackend*>(parent());
 }
 
+
+bool AbstractSourcesBackend::moveSource(const QString& sourceId, int delta)
+{
+    Q_UNUSED(sourceId)
+    Q_UNUSED(delta)
+    return false;
+}
+
+QString AbstractSourcesBackend::firstSourceId() const
+{
+    auto m = const_cast<AbstractSourcesBackend*>(this)->sources();
+    return m->index(0, 0).data(AbstractSourcesBackend::IdRole).toString();
+}
+
+QString AbstractSourcesBackend::lastSourceId() const
+{
+    auto m = const_cast<AbstractSourcesBackend*>(this)->sources();
+    return m->index(m->rowCount()-1, 0).data(AbstractSourcesBackend::IdRole).toString();
+}
