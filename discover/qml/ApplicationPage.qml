@@ -123,7 +123,7 @@ DiscoverPage {
                         starSize: summary.font.pointSize
                     }
                     QQC2.Label {
-                        text: appInfo.application.rating ? i18n("%1 ratings", appInfo.application.rating.ratingCount) : i18n("No ratings yet")
+                        text: appInfo.application.rating ? i18np("%1 rating", "%1 ratings", appInfo.application.rating.ratingCount) : i18n("No ratings yet")
                         opacity: 0.5
                     }
                 }

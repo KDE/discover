@@ -93,7 +93,7 @@ Kirigami.AbstractCard
                     starSize: delegateArea.compact ? summary.font.pointSize : head.font.pointSize
                 }
                 QQC2.Label {
-                    text: delegateArea.application.rating ? i18n("%1 ratings", delegateArea.application.rating.ratingCount) : i18n("No ratings yet")
+                    text: delegateArea.application.rating ? i18np("%1 rating", "%1 ratings", delegateArea.application.rating.ratingCount) : i18n("No ratings yet")
                     opacity: 0.5
                 }
             }
