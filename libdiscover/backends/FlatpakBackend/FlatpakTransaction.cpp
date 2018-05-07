@@ -77,7 +77,7 @@ void FlatpakTransaction::setRuntime(FlatpakResource *runtime)
 
 void FlatpakTransaction::start()
 {
-    setStatus(DownloadingStatus);
+    setStatus(CommittingStatus);
     if (m_runtime) {
         QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(m_runtime, {}, role());
         connect(job, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
