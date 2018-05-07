@@ -197,8 +197,12 @@ QVariant FlatpakResource::icon() const
                     }
                 }
             }   break;
-            case AppStream::Icon::KindStock:
-                return QIcon::fromTheme(icon.name(), QIcon::fromTheme(QStringLiteral("package-x-generic")));
+            case AppStream::Icon::KindStock: {
+                const auto ret = QIcon::fromTheme(icon.name());
+                if (!ret.isNull())
+                    return ret;
+                break;
+            }
             case AppStream::Icon::KindRemote: {
                 const QString fileName = iconCachePath(icon);
                 if (QFileInfo::exists(fileName)) {

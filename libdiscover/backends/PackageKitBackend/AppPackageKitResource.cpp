@@ -72,8 +72,12 @@ static QIcon componentIcon(const AppStream::Component &comp)
             case AppStream::Icon::KindCached:
                 ret.addFile(icon.url().toLocalFile(), icon.size());
                 break;
-            case AppStream::Icon::KindStock:
-                return QIcon::fromTheme(icon.name(), QIcon::fromTheme(QStringLiteral("package-x-generic")));
+            case AppStream::Icon::KindStock: {
+                const auto ret = QIcon::fromTheme(icon.name());
+                if (!ret.isNull())
+                    return ret;
+                break;
+            }
             default:
                 break;
         }
