@@ -214,12 +214,10 @@ DiscoverPage {
                 model: ResourcesProxyModel {
                     extending: "org.kde.discover.desktop"
                 }
-                delegate: RowLayout {
-                    visible: !model.application.isInstalled
-                    QQC2.Label {
-                        Layout.fillWidth: true
-                        text: name
-                    }
+                delegate: Kirigami.BasicListItem {
+                    supportsMouseEvents: false
+                    label: name
+                    icon: model.icon
                     InstallApplicationButton {
                         application: model.application
                     }

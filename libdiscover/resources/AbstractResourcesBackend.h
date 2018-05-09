@@ -113,8 +113,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
 
         virtual ResultsStream* search(const Filters &search) = 0;//FIXME: Probably provide a standard implementation?!
 
-        virtual ResultsStream* findResourceByPackageName(const QUrl &search) = 0;//FIXME: Probably provide a standard implementation?!
-        
         /**
          * @returns the reviews backend of this AbstractResourcesBackend (which handles all ratings and reviews of resources)
          */

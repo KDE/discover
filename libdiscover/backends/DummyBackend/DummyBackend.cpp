@@ -96,9 +96,16 @@ int DummyBackend::updatesCount() const
 ResultsStream* DummyBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
     QVector<AbstractResource*> ret;
-    if (!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() == QLatin1String("dummy"))
+    if (!filter.resourceUrl.isEmpty())
         return findResourceByPackageName(filter.resourceUrl);
     else foreach(AbstractResource* r, m_resources) {
+        if (r->isTechnical() && filter.state != AbstractResource::Upgradeable) {
+            continue;
+        }
+
+        if (r->state() < filter.state)
+            continue;
+
         if(r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
             ret += r;
     }

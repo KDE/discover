@@ -79,7 +79,7 @@ DiscoverPage {
     actions {
         main: appbutton.action
         right: Kirigami.Action {
-            visible: application.isInstalled && application.canExecute
+            visible: application.isInstalled && application.canExecute && !appbutton.isActive
             text: application.executeLabel
             icon.name: "media-playback-start"
             onTriggered: application.invokeApplication()

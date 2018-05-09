@@ -232,7 +232,7 @@ static QStringList urlToLinks(const QStringList& urls)
 
 void PackageKitResource::updateDetail(const QString& /*packageID*/, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
                                       const QStringList& /*bugzillaUrls*/, const QStringList& /*cveUrls*/, PackageKit::Transaction::Restart restart, const QString& updateText,
-                                      const QString& changelog, PackageKit::Transaction::UpdateState state, const QDateTime& /*issued*/, const QDateTime& /*updated*/)
+                                      const QString& /*changelog*/, PackageKit::Transaction::UpdateState state, const QDateTime& /*issued*/, const QDateTime& /*updated*/)
 {
     QString info;
     addIfNotEmpty(i18n("Reason:"), updateText, info);

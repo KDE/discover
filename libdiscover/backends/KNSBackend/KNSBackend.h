@@ -49,7 +49,7 @@ public:
     AbstractBackendUpdater* backendUpdater() const override;
     bool isFetching() const override;
     ResultsStream* search(const AbstractResourcesBackend::Filters & filter) override;
-    ResultsStream* findResourceByPackageName(const QUrl & search) override;
+    ResultsStream* findResourceByPackageName(const QUrl & search);
 
     QVector<Category*> category() const override { return m_rootCategories; }
 
