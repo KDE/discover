@@ -46,9 +46,14 @@ QString AppPackageKitResource::name() const
     QString ret;
     if (!m_appdata.extends().isEmpty()) {
         auto components = backend()->componentsById(m_appdata.extends().constFirst());
-        Q_ASSERT(!components.isEmpty());
-        ret = components.constFirst().name() + QStringLiteral(" - ") + m_appdata.name();
-    } else
+
+        if (components.isEmpty())
+            qWarning() << "couldn't find" << m_appdata.extends() << "which is supposedly extended by" << m_appdata.id();
+        else
+            ret = components.constFirst().name() + QStringLiteral(" - ") + m_appdata.name();
+    }
+
+    if (ret.isEmpty())
         ret = m_appdata.name();
     return ret;
 }
