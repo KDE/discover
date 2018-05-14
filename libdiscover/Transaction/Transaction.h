@@ -51,6 +51,8 @@ class DISCOVERCOMMON_EXPORT Transaction : public QObject
     Q_PROPERTY(bool isCancellable READ isCancellable NOTIFY cancellableChanged)
     Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
+    Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed WRITE setDownloadSpeed NOTIFY downloadSpeedChanged)
+    Q_PROPERTY(QString downloadSpeedString READ downloadSpeedString NOTIFY downloadSpeedChanged)
 
 public:
     enum Status {
@@ -148,6 +150,11 @@ public:
     bool isVisible() const;
     void setVisible(bool v);
 
+    quint64 downloadSpeed() const { return m_downloadSpeed; }
+    void setDownloadSpeed(quint64 downloadSpeed);
+
+    QString downloadSpeedString() const;
+
 private:
     AbstractResource * const m_resource;
     const Role m_role;
@@ -156,6 +163,7 @@ private:
     bool m_isCancellable;
     int m_progress;
     bool m_visible = true;
+    quint64 m_downloadSpeed = 0;
 
 Q_SIGNALS:
     /**
@@ -183,6 +191,8 @@ Q_SIGNALS:
     void passiveMessage(const QString &message);
 
     void visibleChanged(bool visible);
+
+    void downloadSpeedChanged(quint64 downloadSpeed);
 };
 
 #endif // TRANSACTION_H

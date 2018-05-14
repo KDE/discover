@@ -22,6 +22,8 @@
 
 #include <resources/AbstractResource.h>
 #include "TransactionModel.h"
+#include <KFormat>
+#include <KLocalizedString>
 #include <QDebug>
 
 Transaction::Transaction(QObject *parent, AbstractResource *resource,
@@ -131,4 +133,17 @@ void Transaction::setVisible(bool visible)
         m_visible = visible;
         Q_EMIT visibleChanged(visible);
     }
+}
+
+void Transaction::setDownloadSpeed(quint64 downloadSpeed)
+{
+    if (downloadSpeed != m_downloadSpeed) {
+        m_downloadSpeed = downloadSpeed;
+        Q_EMIT downloadSpeedChanged(downloadSpeed);
+    }
+}
+
+QString Transaction::downloadSpeedString() const
+{
+    return i18nc("@label Download rate", "%1/s", KFormat().formatByteSize(downloadSpeed()));
 }

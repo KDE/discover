@@ -47,6 +47,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         bool isProgressing() const override;
         void fetchChangelog() const override;
         double updateSize() const override;
+        quint64 downloadSpeed() const override;
 
         void proceed() override;
 

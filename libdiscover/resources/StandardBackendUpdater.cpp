@@ -74,6 +74,10 @@ void StandardBackendUpdater::start()
         m_pendingResources += res;
         auto t = m_backend->installApplication(res);
         t->setVisible(false);
+        t->setProperty("updater", QVariant::fromValue<QObject*>(this));
+        connect(t, &Transaction::downloadSpeedChanged, this, [this](){
+            Q_EMIT downloadSpeedChanged(downloadSpeed());
+        });
         connect(this, &StandardBackendUpdater::cancelTransaction, t, &Transaction::cancel);
         TransactionModel::global()->addTransaction(t);
         m_canCancel |= t->isCancellable();
@@ -235,4 +239,15 @@ double StandardBackendUpdater::updateSize() const
         ret += res->size();
     }
     return ret;
+}
+
+quint64 StandardBackendUpdater::downloadSpeed() const
+{
+    quint64 ret = 0;
+    for(Transaction* t: TransactionModel::global()->transactions()) {
+        if (t->property("updater").value<QObject*>() == this)
+            ret += t->downloadSpeed();
+    }
+    return ret;
+
 }

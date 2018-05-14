@@ -52,6 +52,7 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         void setProgress(qreal p);
         int updatesCount() const;
         void cancel() override;
+        quint64 downloadSpeed() const override;
 
     Q_SIGNALS:
         void cancelTransaction();

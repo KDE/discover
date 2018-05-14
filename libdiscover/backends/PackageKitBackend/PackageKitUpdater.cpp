@@ -90,6 +90,9 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     connect(m_transaction.data(), &PackageKit::Transaction::allowCancelChanged, this, &PackageKitUpdater::cancellableChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::percentageChanged, this, &PackageKitUpdater::percentageChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::itemProgress, this, &PackageKitUpdater::itemProgress);
+    connect(m_transaction.data(), &PackageKit::Transaction::speedChanged, this, [this] {
+        Q_EMIT downloadSpeedChanged(downloadSpeed());
+    });
 }
 
 QSet<AbstractResource*> PackageKitUpdater::packagesForPackageId(const QSet<QString>& pkgids) const
@@ -388,4 +391,9 @@ double PackageKitUpdater::updateSize() const
         }
     }
     return ret;
+}
+
+quint64 PackageKitUpdater::downloadSpeed() const
+{
+    return m_transaction ? m_transaction->speed() : 0;
 }

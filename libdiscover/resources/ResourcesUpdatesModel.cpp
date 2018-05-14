@@ -42,6 +42,7 @@ public:
         bool cancelable = false;
         foreach(auto updater, m_allUpdaters) {
             connect(updater, &AbstractBackendUpdater::progressingChanged, this, &UpdateTransaction::slotProgressingChanged);
+            connect(updater, &AbstractBackendUpdater::downloadSpeedChanged, this, &UpdateTransaction::slotDownloadSpeedChanged);
             connect(updater, &AbstractBackendUpdater::progressChanged, this, &UpdateTransaction::slotUpdateProgress);
             connect(updater, &AbstractBackendUpdater::proceedRequest, this, &UpdateTransaction::processProceedRequest);
             connect(updater, &AbstractBackendUpdater::cancelableChanged, this, [this](bool cancelable){ if (cancelable) setCancellable(true); });
@@ -92,6 +93,15 @@ public:
             total += updater->progress();
         }
         setProgress(total / m_allUpdaters.count());
+    }
+
+    void slotDownloadSpeedChanged()
+    {
+        quint64 total = 0;
+        foreach(AbstractBackendUpdater* updater, m_allUpdaters) {
+            total += updater->downloadSpeed();
+        }
+        setDownloadSpeed(total);
     }
 
     QVariant icon() const override { return QStringLiteral("update-low"); }

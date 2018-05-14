@@ -56,6 +56,7 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(bool isCancelable READ isCancelable NOTIFY cancelableChanged)
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
+    Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
     public:
         /**
          * Constructs an AbstractBackendUpdater
@@ -123,6 +124,11 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          */
         virtual double updateSize() const = 0;
 
+        /**
+         * @returns the speed at which we are downloading
+         */
+        virtual quint64 downloadSpeed() const = 0;
+
     public Q_SLOTS:
         /**
          * If \isCancelable is true during the transaction, this method has
@@ -179,7 +185,7 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          * The AbstractBackendUpdater should emit this signal when the download speed changed.
          * @see downloadSpeed
          */
-        void downloadSpeedChanged(quint64);
+        void downloadSpeedChanged(quint64 downloadSpeed);
 
         /**
          * Provides the @p progress of a specific @p resource in a percentage.
