@@ -24,6 +24,7 @@
 #include <QProcess>
 #include <QBuffer>
 #include <QImageReader>
+#include <QProcess>
 
 SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend* parent)
     : AbstractResource(parent)
@@ -167,7 +168,7 @@ void SnapResource::fetchScreenshots()
 
 void SnapResource::invokeApplication() const
 {
-//     QProcess::startDetached(m_snap->price());
+    QProcess::startDetached(QStringLiteral("snap"), {QStringLiteral("run"), packageName()});
 }
 
 bool SnapResource::isTechnical() const
