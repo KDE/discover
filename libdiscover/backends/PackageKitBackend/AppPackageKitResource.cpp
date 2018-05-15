@@ -200,11 +200,22 @@ void AppPackageKitResource::invokeApplication() const
         } else {
             const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
             const auto packageExecutables = kFilter<QStringList>(allServices, [filenames](const QString &exe) { return filenames.contains(QLatin1Char('/') + exe); });
-            if (packageExecutables.isEmpty()) {
-                qWarning() << "Could not find any executables" << exes << filenames;
-                return;
+            if (!packageExecutables.isEmpty()) {
+                QProcess::startDetached(exes.constFirst());
+            } else {
+                const auto locations = QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation);
+                const auto desktopFiles = kFilter<QStringList>(filenames, [locations](const QString &exe) {
+                    for (const auto &location: locations) {
+                        if (exe.startsWith(location))
+                            return exe.contains(QLatin1String(".desktop"));
+                    }
+                    return false;
+                });
+                if (!desktopFiles.isEmpty()) {
+                    QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), { desktopFiles });
+                }
             }
-            QProcess::startDetached(exes.constFirst());
+            qWarning() << "Could not find any executables" << exes << filenames;
         }
     });
 }
