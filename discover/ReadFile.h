@@ -21,15 +21,19 @@
 #define READFILE_H
 
 #include <QFile>
+#include <QFileSystemWatcher>
 #include <QTextStream>
 #include <QSharedPointer>
-#include <QFileSystemWatcher>
+#include <QRegularExpression>
+#include <QQmlParserStatus>
 
-class ReadFile : public QObject
+class ReadFile : public QObject, public QQmlParserStatus
 {
 Q_OBJECT
+Q_INTERFACES(QQmlParserStatus)
 Q_PROPERTY(QString contents READ contents NOTIFY contentsChanged)
 Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)
+Q_PROPERTY(QString filter READ filter WRITE setFilter FINAL)
 public:
     ReadFile();
 
@@ -37,6 +41,11 @@ public:
     QString path() const { return m_file.fileName(); }
     void setPath(QString path);
 
+    QString filter() const;
+    void setFilter(const QString &filter);
+
+    void classBegin() override {}
+    void componentComplete() override;
 
 Q_SIGNALS:
     void pathChanged(const QString &path);
@@ -48,10 +57,12 @@ private:
     void openNow();
     void processPath(QString& path);
 
+    bool completed = false;
     QFile m_file;
     QString m_contents;
     QSharedPointer<QTextStream> m_stream;
     QFileSystemWatcher m_watcher;
+    QRegularExpression m_filter;
 };
 
 #endif // READFILE_H

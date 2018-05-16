@@ -18,12 +18,18 @@
  */
 
 #include "ReadFile.h"
-#include <QRegularExpression>
+#include <QDebug>
 
 ReadFile::ReadFile()
 {
     connect(&m_watcher, &QFileSystemWatcher::fileChanged, this, &ReadFile::openNow);
     connect(&m_file, &QFile::readyRead, this, &ReadFile::processAll);
+}
+
+void ReadFile::componentComplete()
+{
+    completed = true;
+    openNow();
 }
 
 void ReadFile::setPath(QString path)
@@ -33,7 +39,7 @@ void ReadFile::setPath(QString path)
         return;
 
     if (path.isEmpty())
-        return;;
+        return;
 
     if (m_file.isOpen())
         m_watcher.removePath(m_file.fileName());
@@ -46,6 +52,9 @@ void ReadFile::setPath(QString path)
 
 void ReadFile::openNow()
 {
+    if (!completed)
+        return;
+
     if (!m_contents.isEmpty()) {
         m_contents.clear();
         Q_EMIT contentsChanged(m_contents);
@@ -57,7 +66,7 @@ void ReadFile::openNow()
         return;
 
     m_stream.reset(new QTextStream(&m_file));
-    process(800);
+    processAll();
 }
 
 void ReadFile::processPath(QString& path)
@@ -75,6 +84,30 @@ void ReadFile::process(uint max)
     QString read = m_stream->readAll();
     if (max>0)
         read = read.right(max);
-    m_contents += read;
+
+    if (m_filter.isValid()) {
+        auto it = m_filter.globalMatch(read);
+        qDebug() << "woooo" << it.hasNext();
+        while(it.hasNext()) {
+            const auto match = it.next();
+            m_contents.append(match.capturedRef(match.lastCapturedIndex()));
+            m_contents.append(QLatin1Char('\n'));
+        }
+    } else
+        m_contents += read;
     Q_EMIT contentsChanged(m_contents);
 }
+
+void ReadFile::setFilter(const QString& filter)
+{
+    m_filter = QRegularExpression(filter);
+    if (!m_filter.isValid())
+        qDebug() << "error" << m_filter.errorString();
+    Q_ASSERT(filter.isEmpty() || m_filter.isValid());
+}
+
+QString ReadFile::filter() const
+{
+    return m_filter.pattern();
+}
+

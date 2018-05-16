@@ -55,6 +55,7 @@ DiscoverPage
 
         ReadFile {
             id: log
+            filter: ".*ALPM-SCRIPTLET\\] .*"
             path: "/var/log/pacman.log"
         }
     }
