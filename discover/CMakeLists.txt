@@ -11,6 +11,7 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
     FeaturedModel.cpp
     PaginateModel.cpp
     UnityLauncher.cpp
+    ReadFile.cpp
 
     resources.qrc
     assets.qrc

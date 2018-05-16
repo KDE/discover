@@ -45,6 +45,20 @@ DiscoverPage
         onTriggered: resourcesUpdatesModel.updateAll()
     }
 
+    footer:  TextArea {
+        width: parent.width
+        height: Kirigami.Units.gridUnit * 10
+        text: log.contents
+        visible: text.length > 0
+
+        onTextChanged: flickableItem.contentY = flickableItem.contentHeight - flickableItem.height
+
+        ReadFile {
+            id: log
+            path: "/var/log/pacman.log"
+        }
+    }
+
     Kirigami.Action
     {
         id: cancelUpdateAction
