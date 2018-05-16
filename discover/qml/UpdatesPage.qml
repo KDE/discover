@@ -52,6 +52,7 @@ DiscoverPage
         visible: text.length > 0
 
         onTextChanged: flickableItem.contentY = flickableItem.contentHeight - flickableItem.height
+        font.family: "monospace"
 
         ReadFile {
             id: log
