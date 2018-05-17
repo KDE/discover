@@ -34,8 +34,6 @@ static void flatpakInstallationProgressCallback(const gchar *stats, guint progre
     }
 
     transactionJob->setProgress(progress);
-
-    Q_EMIT transactionJob->progressChanged(progress);
 }
 
 FlatpakTransactionJob::FlatpakTransactionJob(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role)
@@ -119,7 +117,7 @@ void FlatpakTransactionJob::run()
             m_result = false;
             m_errorMessage = QString::fromUtf8(localError->message);
             // We are done so we can set the progress to 100
-            m_progress = 100;
+            setProgress(100);
             qWarning() << "Failed to install" << refName << ':' << m_errorMessage;
             return;
         }
@@ -135,17 +133,15 @@ void FlatpakTransactionJob::run()
             m_result = false;
             m_errorMessage = QString::fromUtf8(localError->message);
             // We are done so we can set the progress to 100
-            m_progress = 100;
+            setProgress(100);
             qWarning() << "Failed to uninstall" << refName << ':' << m_errorMessage;
             return;
         }
     }
 
     // We are done so we can set the progress to 100
-    m_progress = 100;
     m_result = true;
-
-    Q_EMIT progressChanged(m_progress);
+    setProgress(100);
 }
 
 FlatpakResource * FlatpakTransactionJob::app() const
@@ -165,7 +161,10 @@ int FlatpakTransactionJob::progress() const
 
 void FlatpakTransactionJob::setProgress(int progress)
 {
-    m_progress = progress;
+    if (m_progress != progress) {
+        m_progress = progress;
+        Q_EMIT progressChanged(m_progress);
+    }
 }
 
 QString FlatpakTransactionJob::errorMessage() const
