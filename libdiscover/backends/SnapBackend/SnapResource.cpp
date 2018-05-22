@@ -24,10 +24,10 @@
 #include <QProcess>
 #include <QBuffer>
 #include <QImageReader>
-#include <QQmlComponent>
 #include <QStandardItemModel>
 #include <KLocalizedString>
 #include <utils.h>
+#include <QProcess>
 
 QDebug operator<<(QDebug debug, const QSnapdPlug& plug)
 {
@@ -207,7 +207,7 @@ void SnapResource::fetchScreenshots()
 
 void SnapResource::invokeApplication() const
 {
-//     QProcess::startDetached(m_snap->price());
+    QProcess::startDetached(QStringLiteral("snap"), {QStringLiteral("run"), packageName()});
 }
 
 bool SnapResource::isTechnical() const
