@@ -96,6 +96,9 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
     connect(m_trans.data(), &PackageKit::Transaction::itemProgress, this, &PKTransaction::progressChanged);
     connect(m_trans.data(), &PackageKit::Transaction::eulaRequired, this, &PKTransaction::eulaRequired);
     connect(m_trans.data(), &PackageKit::Transaction::allowCancelChanged, this, &PKTransaction::cancellableChanged);
+    connect(m_trans.data(), &PackageKit::Transaction::speedChanged, this, [this]() {
+        setDownloadSpeed(m_trans->speed());
+    });
     
     setCancellable(m_trans->allowCancel());
 }
@@ -210,13 +213,15 @@ void PKTransaction::packageResolved(PackageKit::Transaction::Info info, const QS
 void PKTransaction::submitResolve()
 {
     QStringList needResolving;
-    const auto pkgids = m_newPackageStates.value(PackageKit::Transaction::InfoFinished);
-    foreach(const auto pkgid, pkgids) {
-        needResolving += PackageKit::Daemon::packageName(pkgid);
+    foreach(const auto &pkgids, m_newPackageStates) {
+        foreach(const auto &pkgid, pkgids) {
+            needResolving += PackageKit::Daemon::packageName(pkgid);
+        }
     }
-    const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
 
     if (!needResolving.isEmpty()) {
+        needResolving.removeDuplicates();
+        const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
         backend->clearPackages(needResolving);
         backend->resolvePackages(needResolving);
     }

@@ -269,6 +269,11 @@ void PackageKitBackend::includePackagesToAdd()
         foreach(const auto &pkg, pkgs) {
             auto res = m_packages.packages.take(pkg);
             if (res) {
+                if (AppPackageKitResource* ares = qobject_cast<AppPackageKitResource*>(res)) {
+                    for(const auto &ext: res->extends())
+                        m_packages.extendedBy[ext].removeAll(ares);
+                }
+
                 emit resourceRemoved(res);
                 res->deleteLater();
             }
