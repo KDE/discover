@@ -154,13 +154,18 @@ QStringList DiscoverObject::modes() const
 
 void DiscoverObject::openMode(const QString& _mode)
 {
+    QObject* obj = rootObject();
+    if (!obj) {
+        qWarning() << "could not get the main object";
+        return;
+    }
+
     if(!modes().contains(_mode))
         qWarning() << "unknown mode" << _mode;
 
     QString mode = _mode;
     mode[0] = mode[0].toUpper();
 
-    QObject* obj = rootObject();
     const QByteArray propertyName = "top"+mode.toLatin1()+"Comp";
     const QVariant modeComp = obj->property(propertyName.constData());
     if (!modeComp.isValid())
