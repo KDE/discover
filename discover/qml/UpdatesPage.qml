@@ -54,7 +54,7 @@ DiscoverPage
             readOnly: true
             text: log.contents
 
-            onTextChanged: cursorPosition = text.length
+            cursorPosition: text.length - 1
             font.family: "monospace"
 
             ReadFile {

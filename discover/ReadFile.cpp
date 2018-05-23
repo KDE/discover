@@ -23,7 +23,7 @@
 ReadFile::ReadFile()
 {
     connect(&m_watcher, &QFileSystemWatcher::fileChanged, this, &ReadFile::openNow);
-    connect(&m_file, &QFile::readyRead, this, &ReadFile::processAll);
+    connect(&m_file, &QFile::readyRead, this, &ReadFile::process);
 }
 
 void ReadFile::componentComplete()
@@ -45,6 +45,7 @@ void ReadFile::setPath(QString path)
         m_watcher.removePath(m_file.fileName());
 
     m_file.setFileName(path);
+    m_sizeOnSet = m_file.size() + 1;
     openNow();
 
     m_watcher.addPath(m_file.fileName());
@@ -66,7 +67,8 @@ void ReadFile::openNow()
         return;
 
     m_stream.reset(new QTextStream(&m_file));
-    processAll();
+    m_stream->seek(m_sizeOnSet);
+    process();
 }
 
 void ReadFile::processPath(QString& path)
@@ -79,13 +81,11 @@ void ReadFile::processPath(QString& path)
     }
 }
 
-void ReadFile::process(uint max)
+void ReadFile::process()
 {
-    QString read = m_stream->readAll();
-    if (max>0)
-        read = read.right(max);
+    const QString read = m_stream->readAll();
 
-    if (m_filter.isValid()) {
+    if (m_filter.isValid() && !m_filter.pattern().isEmpty()) {
         auto it = m_filter.globalMatch(read);
         while(it.hasNext()) {
             const auto match = it.next();
