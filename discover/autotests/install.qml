@@ -8,7 +8,6 @@ DiscoverTest
         app.openApplication("dummy://dummy.1");
         verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         verify(appRoot.stack.currentItem, "has a page");
-        compare(appRoot.stack.currentItem.title, "Dummy 1", "same title");
 
         var button = findChild(appRoot.stack.currentItem, "InstallApplicationButton")
         verify(!button.isActive)

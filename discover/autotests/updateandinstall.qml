@@ -11,9 +11,9 @@ DiscoverTest
             var updatePage = appRoot.stack.currentItem;
             compare(typeName(updatePage), "UpdatesPage")
             compare(updatePage.state, "has-updates", "to update")
-            var button = findChild(updatePage, "Button")
-            verify(button);
-            button.clicked();
+            var action = updatePage.currentAction
+            verify(action);
+            action.triggered(null);
             compare(updatePage.state, "has-updates", "updating")
         }
 
@@ -35,8 +35,8 @@ DiscoverTest
             while(updatePage.state === "fetching")
                 waitForSignal(updatePage, "stateChanged")
             compare(updatePage.state, "now-uptodate", "to update")
-            var button = findChild(updatePage, "Button")
-            verify(!button.isActive)
+            var action = updatePage.currentAction
+            verify(!action.visible)
         }
 
         while(updatePage.state != "now-uptodate")
