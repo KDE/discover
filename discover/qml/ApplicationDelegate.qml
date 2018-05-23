@@ -18,8 +18,7 @@
  */
 
 import QtQuick 2.1
-import QtQuick.Controls 1.1
-import QtQuick.Controls 2.1 as QQC2
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.1
 import "navigation.js" as Navigation
@@ -92,14 +91,14 @@ Kirigami.AbstractCard
                     rating: delegateArea.application.rating ? delegateArea.application.rating.sortableRating : 0
                     starSize: delegateArea.compact ? summary.font.pointSize : head.font.pointSize
                 }
-                QQC2.Label {
+                Label {
                     text: delegateArea.application.rating ? i18np("%1 rating", "%1 ratings", delegateArea.application.rating.ratingCount) : i18n("No ratings yet")
                     opacity: 0.5
                 }
             }
 
             Layout.fillWidth: true
-            QQC2.Label {
+            Label {
                 id: summary
                 Layout.fillWidth: true
                 Layout.rightMargin: delegateArea.compact ? installButton.width : 0

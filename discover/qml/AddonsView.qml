@@ -1,5 +1,5 @@
 import QtQuick 2.1
-import QtQuick.Controls 1.1
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import "navigation.js" as Navigation
@@ -69,14 +69,14 @@ Kirigami.OverlaySheet
             spacing: 5
 
             Button {
-                iconName: "dialog-ok"
+                icon.name: "dialog-ok"
                 text: i18n("Apply Changes")
                 onClicked: addonsModel.applyChanges()
 
                 visible: parent.active
             }
             Button {
-                iconName: "document-revert"
+                icon.name: "document-revert"
                 text: i18n("Discard")
                 onClicked: addonsModel.discardChanges()
 

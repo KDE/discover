@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 import QtQml 2.0
-import QtQuick.Controls 1.0
+import QtQuick.Controls 2.3
 
 Action
 {
@@ -31,8 +31,7 @@ Action
     text: action ? removeAmpersand(action.text) : "<null>"
     checked: action && action.checked
     enabled: action && action.enabled
-    tooltip: action ? action.toolTip : ""
-    iconName: action ? app.iconName(action.icon) : ""
+    icon.name: action ? app.iconName(action.icon) : ""
     shortcut: action ? action.shortcut : undefined
 
     onTriggered: action.trigger()

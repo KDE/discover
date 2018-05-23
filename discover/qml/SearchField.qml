@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 import QtQuick 2.5
-import QtQuick.Controls 1.1 as QQC1
 import QtQuick.Controls 2.1
 import org.kde.kirigami 2.1 as Kirigami
 
@@ -54,14 +53,14 @@ TextField
         searchField.accepted()
     }
 
-    QQC1.ToolButton {
+    ToolButton {
         anchors {
             top: parent.top
             right: parent.right
             bottom: parent.bottom
             margins: Kirigami.Units.smallSpacing
         }
-        iconName: "edit-clear"
+        icon.name: "edit-clear"
         visible: searchField.text != ""
         onClicked: clearText()
     }

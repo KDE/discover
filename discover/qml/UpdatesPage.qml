@@ -1,5 +1,4 @@
-import QtQuick.Controls 1.2
-import QtQuick.Controls 2.3 as QQC2
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.1
 import QtQuick 2.4
 import org.kde.discover 2.0
@@ -45,12 +44,12 @@ DiscoverPage
         onTriggered: resourcesUpdatesModel.updateAll()
     }
 
-    footer: QQC2.ScrollView {
+    footer: ScrollView {
         id: scv
         width: parent.width
         height: visible ? Kirigami.Units.gridUnit * 10 : 0
         visible: log.contents.length > 0
-        QQC2.TextArea {
+        TextArea {
             readOnly: true
             text: log.contents
 
@@ -81,7 +80,7 @@ DiscoverPage
         main: currentAction
     }
 
-    header: QQC2.ToolBar {
+    header: ToolBar {
         visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
 
         RowLayout {
@@ -90,7 +89,7 @@ DiscoverPage
                 Layout.leftMargin: Kirigami.Units.gridUnit
                 text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
             }
-            QQC2.Label {
+            Label {
                 text: i18n("updates selected")
             }
             LabelBackground {
@@ -98,7 +97,7 @@ DiscoverPage
                 text: page.unselected
                 visible: page.unselected>0
             }
-            QQC2.Label {
+            Label {
                 text: i18n("updates not selected")
                 visible: unselectedItem.visible
             }
@@ -197,7 +196,7 @@ DiscoverPage
                         smooth: true
                     }
 
-                    QQC2.Label {
+                    Label {
                         Layout.fillWidth: true
                         text: i18n("%1 (%2)", display, version)
                         elide: Text.ElideRight
@@ -211,11 +210,11 @@ DiscoverPage
                     }
                 }
 
-                QQC2.Frame {
+                Frame {
                     Layout.fillWidth: true
                     implicitHeight: view.contentHeight
                     visible: layout.extended && changelog.length>0
-                    QQC2.Label {
+                    Label {
                         id: view
                         anchors {
                             right: parent.right

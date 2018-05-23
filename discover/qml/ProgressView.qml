@@ -1,6 +1,5 @@
 import QtQuick 2.1
-import QtQuick.Controls 1.1
-import QtQuick.Controls 2.1 as QQC2
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.kirigami 2.0 as Kirigami
@@ -69,19 +68,19 @@ Kirigami.BasicListItem {
                                 source: model.transaction.icon
                             }
 
-                            QQC2.Label {
+                            Label {
                                 Layout.alignment: Qt.AlignVCenter
                                 Layout.fillWidth: true
                                 elide: Text.ElideRight
                                 text: listener.isActive ? i18nc("TransactioName - TransactionStatus", "%1 - %2: %3", model.transaction.name, listener.statusText, model.transaction.downloadSpeedString) : model.transaction.name
                             }
                             ToolButton {
-                                iconName: "dialog-cancel"
+                                icon.name: "dialog-cancel"
                                 visible: listener.isCancellable
                                 onClicked: listener.cancel()
                             }
                             ToolButton {
-                                iconName: "system-run"
+                                icon.name: "system-run"
                                 visible: model.application != undefined && model.application.isInstalled && !listener.isActive && model.application.canExecute
                                 onClicked: {
                                     model.application.invokeApplication()
@@ -92,8 +91,7 @@ Kirigami.BasicListItem {
                         ProgressBar {
                             Layout.fillWidth: true
                             visible: listener.isActive
-                            value: listener.progress
-                            maximumValue: 100
+                            value: listener.progress / 100
                         }
                     }
                 }

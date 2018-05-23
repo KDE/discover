@@ -1,5 +1,4 @@
 import QtQuick 2.1
-import QtQuick.Controls 1.4
 import QtTest 1.1
 import org.kde.discover.app 1.0
 
@@ -9,13 +8,6 @@ Item
 
     signal reset()
     property QtObject appRoot
-
-    StackViewDelegate {
-        id: noTransitionsDelegate
-        popTransition: StackViewTransition { immediate: true }
-        pushTransition: StackViewTransition { immediate: true }
-        replaceTransition: StackViewTransition { immediate: true }
-    }
 
     function verify(condition, msg) {
         if (!condition) {
