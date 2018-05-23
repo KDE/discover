@@ -13,7 +13,6 @@ ConditionalLoader
     readonly property alias listener: listener
     readonly property string text: !application.isInstalled ? i18n("Install") : i18n("Remove")
     property Component additionalItem: null
-    property bool flat: false
 
     TransactionListener {
         id: listener
@@ -56,25 +55,11 @@ ConditionalLoader
         }
     }
 
-    Component {
-        id: flatButton
-        ToolButton {
-            enabled: application.state != AbstractResource.Broken
-            text: root.text
+    componentFalse: Button {
+        enabled: application.state != AbstractResource.Broken
+        text: root.text
+        focus: true
 
-            onClicked: root.click()
-        }
+        onClicked: root.click()
     }
-
-    Component {
-        id: fullButton
-        Button {
-            enabled: application.state != AbstractResource.Broken
-            text: root.text
-
-            onClicked: root.click()
-        }
-    }
-
-    componentFalse: root.flat ? flatButton : fullButton
 }
