@@ -118,7 +118,7 @@ private Q_SLOTS:
         auto t = m_appBackend->installApplication(resRssguard);
         QSignalSpy spy(t, &Transaction::statusChanged);
         QVERIFY(spy.wait());
-        QCOMPARE(t->status(), Transaction::DownloadingStatus);
+        QCOMPARE(t->status(), Transaction::CommittingStatus);
         t->cancel();
         QCOMPARE(t->status(), Transaction::CancelledStatus);
     }
