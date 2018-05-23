@@ -32,7 +32,9 @@ DiscoverTest
         {
             var updatePage = appRoot.stack.currentItem;
             compare(typeName(updatePage), "UpdatesPage")
-            compare(updatePage.state, "has-updates", "to update")
+            while(updatePage.state === "fetching")
+                waitForSignal(updatePage, "stateChanged")
+            compare(updatePage.state, "now-uptodate", "to update")
             var button = findChild(updatePage, "Button")
             verify(!button.isActive)
         }

@@ -81,7 +81,7 @@ void DummyTest::testReadData()
 {
     const auto resources = fetchResources(m_appBackend->search({}));
 
-    QCOMPARE(m_appBackend->property("startElements").toInt()*2, resources.size());
+    QCOMPARE(m_appBackend->property("startElements").toInt(), resources.size());
     QBENCHMARK {
         for(AbstractResource* res: resources) {
             QVERIFY(!res->name().isEmpty());
@@ -102,18 +102,18 @@ void DummyTest::testProxy()
     QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
 
-    QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
+    QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
     pm.setSearch(QStringLiteral("techie"));
     QVERIFY(pm.isBusy());
     QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
-    QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
+    QCOMPARE(0, pm.rowCount());
     QCOMPARE(pm.subcategories().count(), 7);
     pm.setSearch(QString());
     QVERIFY(pm.isBusy());
     QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
-    QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
+    QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
 }
 
 void DummyTest::testProxySorting()
@@ -131,7 +131,7 @@ void DummyTest::testProxySorting()
     QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
 
-    QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
+    QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
     QVariant lastRatingCount;
     for(int i=0, rc=pm.rowCount(); i<rc; ++i) {
         const QModelIndex mi = pm.index(i, 0);
@@ -145,14 +145,14 @@ void DummyTest::testProxySorting()
 void DummyTest::testFetch()
 {
     const auto resources = fetchResources(m_appBackend->search({}));
-    QCOMPARE(m_appBackend->property("startElements").toInt()*2, resources.count());
+    QCOMPARE(m_appBackend->property("startElements").toInt(), resources.count());
 
     //fetches updates, adds new things
     m_appBackend->checkForUpdates();
     QSignalSpy spy(m_model, SIGNAL(allInitialized()));
     QVERIFY(spy.wait(80000));
     auto resources2 = fetchResources(m_appBackend->search({}));
-    QCOMPARE(m_appBackend->property("startElements").toInt()*4, resources2.count());
+    QCOMPARE(m_appBackend->property("startElements").toInt()*2, resources2.count());
 }
 
 void DummyTest::testSort()

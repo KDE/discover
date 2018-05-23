@@ -209,7 +209,7 @@ void OdrsReviewsBackend::reviewsFetched()
 
 Rating * OdrsReviewsBackend::ratingForApplication(AbstractResource *app) const
 {
-    if (app->isTechnical()) {
+    if (app->appstreamId().isEmpty()) {
         return nullptr;
     }
 
