@@ -1,5 +1,5 @@
 import QtQuick.Controls 1.2
-import QtQuick.Controls 2.1 as QQC2
+import QtQuick.Controls 2.3 as QQC2
 import QtQuick.Layouts 1.1
 import QtQuick 2.4
 import org.kde.discover 2.0
@@ -45,19 +45,23 @@ DiscoverPage
         onTriggered: resourcesUpdatesModel.updateAll()
     }
 
-    footer:  TextArea {
+    footer: QQC2.ScrollView {
+        id: scv
         width: parent.width
-        height: Kirigami.Units.gridUnit * 10
-        text: log.contents
-        visible: text.length > 0
+        height: visible ? Kirigami.Units.gridUnit * 10 : 0
+        visible: log.contents.length > 0
+        QQC2.TextArea {
+            readOnly: true
+            text: log.contents
 
-        onTextChanged: flickableItem.contentY = flickableItem.contentHeight - flickableItem.height
-        font.family: "monospace"
+            onTextChanged: cursorPosition = text.length
+            font.family: "monospace"
 
-        ReadFile {
-            id: log
-            filter: ".*ALPM-SCRIPTLET\\] .*"
-            path: "/var/log/pacman.log"
+            ReadFile {
+                id: log
+                filter: ".*ALPM-SCRIPTLET\\] .*"
+                path: "/var/log/pacman.log"
+            }
         }
     }
 
