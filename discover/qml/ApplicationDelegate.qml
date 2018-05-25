@@ -18,8 +18,7 @@
  */
 
 import QtQuick 2.1
-import QtQuick.Controls 1.1
-import QtQuick.Controls 2.1 as QQC2
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.1
 import "navigation.js" as Navigation
@@ -57,52 +56,53 @@ Kirigami.AbstractCard
             }
         }
 
-        ColumnLayout {
-            spacing: delegateArea.compact ? 0 : 5
+        GridLayout {
+            columnSpacing: delegateArea.compact ? 0 : 5
+            rowSpacing: delegateArea.compact ? 0 : 5
             anchors {
                 verticalCenter: parent.verticalCenter
                 right: parent.right
                 left: resourceIcon.right
                 leftMargin: Kirigami.Units.largeSpacing
             }
+            columns: 2
+            rows: delegateArea.compact ? 4 : 3
 
             Kirigami.Heading {
                 id: head
                 level: delegateArea.compact ? 3 : 2
                 Layout.fillWidth: true
-                Layout.rightMargin: installButton.width
                 elide: Text.ElideRight
                 text: delegateArea.application.name
                 maximumLineCount: 1
+            }
 
-                InstallApplicationButton {
-                    id: installButton
-                    anchors {
-                        verticalCenter: delegateArea.compact ? parent.bottom: parent.verticalCenter
-                        left: parent.right
-                    }
-                }
-
+            InstallApplicationButton {
+                id: installButton
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                Layout.rowSpan: delegateArea.compact ? 3 : 1
             }
 
             RowLayout {
                 visible: showRating
                 spacing: Kirigami.Units.largeSpacing
+                Layout.fillWidth: true
                 Rating {
                     rating: delegateArea.application.rating ? delegateArea.application.rating.sortableRating : 0
                     starSize: delegateArea.compact ? summary.font.pointSize : head.font.pointSize
                 }
-                QQC2.Label {
+                Label {
+                    Layout.fillWidth: true
                     text: delegateArea.application.rating ? i18np("%1 rating", "%1 ratings", delegateArea.application.rating.ratingCount) : i18n("No ratings yet")
                     opacity: 0.5
+                    elide: Text.ElideRight
                 }
             }
 
-            Layout.fillWidth: true
-            QQC2.Label {
+            Label {
+                Layout.columnSpan: delegateArea.compact ? 1 : 2
                 id: summary
                 Layout.fillWidth: true
-                Layout.rightMargin: delegateArea.compact ? installButton.width : 0
 
                 bottomPadding: Kirigami.Units.smallSpacing
                 elide: Text.ElideRight

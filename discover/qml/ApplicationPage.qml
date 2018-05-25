@@ -18,8 +18,7 @@
  */
 
 import QtQuick 2.5
-import QtQuick.Controls 1.1
-import QtQuick.Controls 2.3 as QQC2
+import QtQuick.Controls 2.3
 import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
@@ -44,7 +43,7 @@ DiscoverPage {
 
     contextualActions: [originsMenuAction]
 
-    QQC2.ActionGroup {
+    ActionGroup {
         id: sourcesGroup
         exclusive: true
     }
@@ -60,8 +59,8 @@ DiscoverPage {
                 allBackends: true
                 resourcesUrl: appInfo.application.url
             }
-            delegate: QQC2.Action {
-                QQC2.ActionGroup.group: sourcesGroup
+            delegate: Action {
+                ActionGroup.group: sourcesGroup
                 text: displayOrigin
                 icon.name: sourceIcon
                 checked: appInfo.application == model.application
@@ -122,7 +121,7 @@ DiscoverPage {
                         rating: appInfo.application.rating ? appInfo.application.rating.sortableRating : 0
                         starSize: summary.font.pointSize
                     }
-                    QQC2.Label {
+                    Label {
                         text: appInfo.application.rating ? i18np("%1 rating", "%1 ratings", appInfo.application.rating.ratingCount) : i18n("No ratings yet")
                         opacity: 0.5
                     }
@@ -146,14 +145,14 @@ DiscoverPage {
             Layout.fillWidth: true
             visible: count > 0
             resource: appInfo.application
-            QQC2.ScrollBar.horizontal: screenshotsScrollbar
+            ScrollBar.horizontal: screenshotsScrollbar
         }
-        QQC2.ScrollBar {
+        ScrollBar {
             id: screenshotsScrollbar
             Layout.fillWidth: true
         }
 
-        QQC2.Label {
+        Label {
             Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
@@ -174,7 +173,7 @@ DiscoverPage {
             visible: changelogLabel.text.length > 0
         }
 
-        QQC2.Label {
+        Label {
             id: changelogLabel
             Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.fillWidth: true
@@ -267,23 +266,23 @@ DiscoverPage {
             columns: 2
 
             // Category row
-            QQC2.Label {
+            Label {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Category:")
             }
-            QQC2.Label {
+            Label {
                 Layout.fillWidth: true
                 elide: Text.ElideRight
                 text: appInfo.application.categoryDisplay
             }
 
             // Version row
-            QQC2.Label {
+            Label {
                 visible: versionLabel.visible
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Version:")
             }
-            QQC2.Label {
+            Label {
                 readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
                 id: versionLabel
                 visible: text.length > 0
@@ -293,22 +292,22 @@ DiscoverPage {
             }
 
             // Size row
-            QQC2.Label {
+            Label {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Size:")
             }
-            QQC2.Label {
+            Label {
                 Layout.fillWidth: true
                 elide: Text.ElideRight
                 text: appInfo.application.sizeDescription
             }
 
             // Source row
-            QQC2.Label {
+            Label {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Source:")
             }
-            QQC2.Label {
+            Label {
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
                 text: appInfo.application.displayOrigin
@@ -316,7 +315,7 @@ DiscoverPage {
             }
 
             // License row
-            QQC2.Label {
+            Label {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("License:")
                 visible: appInfo.application.license.length>0
@@ -332,7 +331,7 @@ DiscoverPage {
             }
 
             // Homepage row
-            QQC2.Label {
+            Label {
                 visible: homepageLink.visible
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Homepage:")
@@ -348,7 +347,7 @@ DiscoverPage {
             }
 
             // "User Guide" row
-            QQC2.Label {
+            Label {
                 visible: docsLink.visible
                 Layout.alignment: Qt.AlignRight
                 text: i18n("User Guide:")
@@ -364,7 +363,7 @@ DiscoverPage {
             }
 
             // Donate row
-            QQC2.Label {
+            Label {
                 visible: donationLink.visible
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Donate:")
@@ -380,7 +379,7 @@ DiscoverPage {
             }
 
             // "Report a Droblem" row
-            QQC2.Label {
+            Label {
                 visible: bugLink.visible
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Report a Problem:")

@@ -52,6 +52,11 @@ void ApplicationAddonsModel::setApplication(AbstractResource* app)
 
     m_app = app;
     resetState();
+    if (m_app) {
+        connect(m_app, &QObject::destroyed, this, [this](){
+            setApplication(nullptr);
+        });
+    }
     emit applicationChanged();
 }
 

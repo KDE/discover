@@ -52,8 +52,7 @@ Q_SIGNALS:
     void contentsChanged(const QString &contents);
 
 private:
-    void processAll() { return process(0); }
-    void process(uint max);
+    void process();
     void openNow();
     void processPath(QString& path);
 
@@ -63,6 +62,7 @@ private:
     QSharedPointer<QTextStream> m_stream;
     QFileSystemWatcher m_watcher;
     QRegularExpression m_filter;
+    qint64 m_sizeOnSet = 0;
 };
 
 #endif // READFILE_H

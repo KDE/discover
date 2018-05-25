@@ -1,6 +1,5 @@
 import QtQuick 2.4
-import QtQuick.Controls 1.1
-import QtQuick.Controls 2.1 as QQC2
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
@@ -60,7 +59,7 @@ DiscoverPage {
                     }
                     Button {
                         Layout.rightMargin: Kirigami.Units.smallSpacing
-                        iconName: "preferences-other"
+                        icon.name: "preferences-other"
 
                         visible: resourcesBackend && resourcesBackend.hasApplications
                         Component {
@@ -73,7 +72,9 @@ DiscoverPage {
                             }
                         }
 
-                        menu: Menu {
+                        id: this
+                        onClicked: settingsMenu.popup(this)
+                        Menu {
                             id: settingsMenu
                             MenuItem {
                                 enabled: !backendItem.isDefault
@@ -101,7 +102,9 @@ DiscoverPage {
                                     actions: backendItem.backend ? backendItem.backend.actions : undefined
                                 }
                                 delegate: MenuItem {
-                                    action: ActionBridge { action: modelData.action }
+                                    action: ActionBridge {
+                                        action: modelData.action
+                                    }
                                 }
                                 onObjectAdded: {
                                     settingsMenu.insertItem(index, object)
@@ -188,7 +191,7 @@ DiscoverPage {
                             sourcesView.model.setData(modelIndex, checkedState, Qt.CheckStateRole)
                         }
                     }
-                    QQC2.Label {
+                    Label {
                         text: display + " - <i>" + toolTip + "</i>"
                         elide: Text.ElideRight
                         Layout.fillWidth: true

@@ -1,7 +1,6 @@
 import QtQuick 2.5
 import QtQuick.Layouts 1.1
-import QtQuick.Controls 1.1
-import QtQuick.Controls 2.1 as QQC2
+import QtQuick.Controls 2.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 2.2 as Kirigami
@@ -168,7 +167,7 @@ Kirigami.ApplicationWindow
                 Kirigami.Heading {
                     id: heading
                 }
-                QQC2.Label {
+                Label {
                     id: desc
                     Layout.fillWidth: true
                     textFormat: Text.StyledText
@@ -178,7 +177,7 @@ Kirigami.ApplicationWindow
                     Layout.alignment: Qt.AlignRight
                     Button {
                         text: i18n("Proceed")
-                        iconName: "dialog-ok"
+                        icon.name: "dialog-ok"
                         onClicked: {
                             transaction.proceed()
                             sheet.acted = true
@@ -188,7 +187,7 @@ Kirigami.ApplicationWindow
                     Button {
                         Layout.alignment: Qt.AlignRight
                         text: i18n("Cancel")
-                        iconName: "dialog-cancel"
+                        icon.name: "dialog-cancel"
                         onClicked: {
                             transaction.cancel()
                             sheet.acted = true

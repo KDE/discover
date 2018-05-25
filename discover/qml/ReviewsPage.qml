@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 import QtQuick 2.1
-import QtQuick.Controls 1.1
+import QtQuick.Controls 2.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 2.0 as Kirigami
@@ -52,7 +52,7 @@ Kirigami.OverlaySheet {
 
         header: Item {
             width: parent.width
-            height: reviewButton.height + 2 * Kirigami.Units.largeSpacing
+            height: reviewButton.implicitHeight + 2 * Kirigami.Units.largeSpacing
             Button {
                 id: reviewButton
 

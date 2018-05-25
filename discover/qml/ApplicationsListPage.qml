@@ -18,8 +18,7 @@
  */
 
 import QtQuick 2.5
-import QtQuick.Controls 1.1
-import QtQuick.Controls 2.3 as QQC2
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
 import "navigation.js" as Navigation
@@ -59,7 +58,7 @@ DiscoverPage {
         refreshing = false
     }
 
-    QQC2.ActionGroup {
+    ActionGroup {
         id: sortGroup
         exclusive: true
     }
@@ -67,8 +66,8 @@ DiscoverPage {
     contextualActions: [
         Kirigami.Action {
             text: i18n("Sort: %1", sortGroup.checkedAction.text)
-            QQC2.Action {
-                QQC2.ActionGroup.group: sortGroup
+            Action {
+                ActionGroup.group: sortGroup
                 text: i18n("Name")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.NameRole
@@ -77,8 +76,8 @@ DiscoverPage {
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.NameRole
             }
-            QQC2.Action {
-                QQC2.ActionGroup.group: sortGroup
+            Action {
+                ActionGroup.group: sortGroup
                 text: i18n("Rating")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.SortableRatingRole
@@ -87,8 +86,8 @@ DiscoverPage {
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.SortableRatingRole
             }
-            QQC2.Action {
-                QQC2.ActionGroup.group: sortGroup
+            Action {
+                ActionGroup.group: sortGroup
                 text: i18n("Size")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.SizeRole
@@ -97,8 +96,8 @@ DiscoverPage {
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.SizeRole
             }
-            QQC2.Action {
-                QQC2.ActionGroup.group: sortGroup
+            Action {
+                ActionGroup.group: sortGroup
                 text: i18n("Release Date")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.ReleaseDateRole
@@ -113,7 +112,7 @@ DiscoverPage {
     Kirigami.CardsListView {
         id: apps
 
-        section.delegate: QQC2.Label {
+        section.delegate: Label {
             text: section
             anchors {
                 right: parent.right
@@ -135,7 +134,7 @@ DiscoverPage {
             showRating: page.showRating
         }
 
-        QQC2.Label {
+        Label {
             anchors.centerIn: parent
             opacity: apps.count == 0 && !appsModel.isBusy ? 0.3 : 0
             Behavior on opacity { PropertyAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad; } }
@@ -180,7 +179,7 @@ DiscoverPage {
                     }
                 }
             ]
-            QQC2.Label {
+            Label {
                 id: busyLabel
                 anchors {
                     horizontalCenter: parent.horizontalCenter

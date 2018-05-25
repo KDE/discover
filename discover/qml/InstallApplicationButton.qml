@@ -1,5 +1,5 @@
 import QtQuick 2.1
-import QtQuick.Controls 1.1
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.kirigami 2.0 as Kirigami
@@ -13,7 +13,6 @@ ConditionalLoader
     readonly property alias listener: listener
     readonly property string text: !application.isInstalled ? i18n("Install") : i18n("Remove")
     property Component additionalItem: null
-    property bool flat: false
 
     TransactionListener {
         id: listener
@@ -42,39 +41,25 @@ ConditionalLoader
 
     condition: listener.isActive
     componentTrue: RowLayout {
+        ToolButton {
+            Layout.fillHeight: true
+            icon.name: "dialog-cancel"
+            enabled: listener.isCancellable
+            onClicked: listener.cancel()
+        }
+
         LabelBackground {
             Layout.fillWidth: true
             text: listener.statusText
             progress: listener.progress/100
         }
-
-        ToolButton {
-            Layout.fillHeight: true
-            iconName: "dialog-cancel"
-            enabled: listener.isCancellable
-            onClicked: listener.cancel()
-        }
     }
 
-    Component {
-        id: flatButton
-        ToolButton {
-            enabled: application.state != AbstractResource.Broken
-            text: root.text
+    componentFalse: Button {
+        enabled: application.state != AbstractResource.Broken
+        text: root.text
+        focus: true
 
-            onClicked: root.click()
-        }
+        onClicked: root.click()
     }
-
-    Component {
-        id: fullButton
-        Button {
-            enabled: application.state != AbstractResource.Broken
-            text: root.text
-
-            onClicked: root.click()
-        }
-    }
-
-    componentFalse: root.flat ? flatButton : fullButton
 }

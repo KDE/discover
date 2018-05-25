@@ -20,7 +20,7 @@
 
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
-import QtQuick.Controls 1.1
+import QtQuick.Controls 2.1
 import QtQuick.Controls 2.1 as QQC2
 import QtGraphicalEffects 1.0
 import org.kde.discover 2.0
@@ -68,7 +68,7 @@ Flickable {
                 verticalCenter: parent.verticalCenter
             }
             visible: leftAction.visible
-            iconName: leftAction.iconName
+            icon.name: leftAction.iconName
             onClicked: leftAction.triggered(null)
         }
 
@@ -78,13 +78,13 @@ Flickable {
                 verticalCenter: parent.verticalCenter
             }
             visible: rightAction.visible
-            iconName: rightAction.iconName
+            icon.name: rightAction.iconName
             onClicked: rightAction.triggered(null)
         }
 
         Kirigami.Action {
             id: leftAction
-            iconName: "arrow-left"
+            icon.name: "arrow-left"
             enabled: overlay.visible && visible
             visible: root.currentIndex >= 1
             onTriggered: root.currentIndex = (root.currentIndex - 1) % screenshotsModel.count
@@ -92,7 +92,7 @@ Flickable {
 
         Kirigami.Action {
             id: rightAction
-            iconName: "arrow-right"
+            icon.name: "arrow-right"
             enabled: overlay.visible && visible
             visible: root.currentIndex < (root.count - 1)
             onTriggered: root.currentIndex = (root.currentIndex + 1) % screenshotsModel.count

@@ -72,9 +72,9 @@ DiscoverTest
         var updatePage = appRoot.stack.currentItem;
         compare(typeName(updatePage), "UpdatesPage")
         compare(updatePage.state, "has-updates", "to update")
-        var button = findChild(updatePage, "Button")
-        verify(button);
-        button.clicked();
+        var action = updatePage.currentAction
+        verify(action);
+        action.triggered(updatePage);
         compare(updatePage.state, "has-updates", "updating")
 
         //make sure the window doesn't close while updating
