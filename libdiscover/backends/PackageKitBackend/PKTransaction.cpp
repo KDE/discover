@@ -137,6 +137,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
     Q_UNUSED(runtime)
     const bool cancel = !m_proceedFunctions.isEmpty() || exit == PackageKit::Transaction::ExitCancelled;
+    const bool failed = exit == PackageKit::Transaction::ExitFailed;
     const bool simulate = m_trans->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
 
     disconnect(m_trans, nullptr, this, nullptr);
@@ -144,7 +145,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 
     const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
 
-    if (!cancel && simulate) {
+    if (!cancel && !failed && simulate) {
         auto packagesToRemove = m_newPackageStates.value(PackageKit::Transaction::InfoRemoving);
         QMutableListIterator<QString> i(packagesToRemove);
         QSet<AbstractResource*> removedResources;
@@ -175,7 +176,10 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     }
 
     this->submitResolve();
-    setStatus(Transaction::CancelledStatus);
+    if (failed)
+        setStatus(Transaction::DoneWithErrorStatus);
+    else
+        setStatus(Transaction::CancelledStatus);
 }
 
 void PKTransaction::processProceedFunction()
