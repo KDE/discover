@@ -144,6 +144,7 @@ void PackageKitBackend::reloadPackageList()
                             const auto pkgid = pkgidVal.toString();
                             acquireFetching(true);
                             auto res = addComponent(component, {PackageKit::Daemon::packageName(pkgid)});
+                            res->clearPackageIds();
                             res->addPackageId(PackageKit::Transaction::InfoInstalled, pkgid, true);
                             acquireFetching(false);
                         }
@@ -170,8 +171,14 @@ AppPackageKitResource* PackageKitBackend::addComponent(const AppStream::Componen
     Q_ASSERT(isFetching());
     Q_ASSERT(!pkgNames.isEmpty());
 
-    const auto res = new AppPackageKitResource(component, pkgNames.at(0), this);
-    m_packages.packages[component.id()] = res;
+
+    AppPackageKitResource* res = qobject_cast<AppPackageKitResource*>(m_packages.packages[component.id()]);
+    if (!res) {
+        res = new AppPackageKitResource(component, pkgNames.at(0), this);
+        m_packages.packages[component.id()] = res;
+    } else {
+        res->clearPackageIds();
+    }
     foreach (const QString& pkg, pkgNames) {
         m_packages.packageToApp[pkg] += component.id();
     }
