@@ -284,11 +284,38 @@
         </Include>
       </Menu>
       <Menu>
+        <Name>Strategy</Name>
+        <Icon>applications-games-strategy</Icon>
+        <Include>
+          <And>
+            <Category>StrategyGame</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
         <Name>Sports</Name>
         <Icon>applications-games</Icon>
         <Include>
           <And>
             <Category>SportsGame</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Action</Name>
+        <Icon>applications-games</Icon>
+        <Include>
+          <And>
+            <Category>ActionGame</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Emulators</Name>
+        <Icon>applications-games</Icon>
+        <Include>
+          <And>
+            <Category>Emulator</Category>
           </And>
         </Include>
       </Menu>
