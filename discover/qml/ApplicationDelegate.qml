@@ -90,7 +90,7 @@ Kirigami.AbstractListItem
                 Layout.fillWidth: true
                 elide: Text.ElideRight
                 text: delegateArea.application.categoryDisplay
-                visible: !delegateArea.compact && text != page.title
+                visible: !delegateArea.compact
             }
 
             Rectangle {
