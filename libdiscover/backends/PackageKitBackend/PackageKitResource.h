@@ -69,12 +69,12 @@ class PackageKitResource : public AbstractResource
         QString sizeDescription() override;
         void setDependenciesCount(int count);
 
-    Q_SIGNALS:
-        void dependenciesFound(const QJsonObject& dependencies);
-
         QString sourceIcon() const override;
 
         QDate releaseDate() const override { return {}; }
+
+    Q_SIGNALS:
+        void dependenciesFound(const QJsonObject& dependencies);
 
     public Q_SLOTS:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch);
