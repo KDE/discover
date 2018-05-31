@@ -24,6 +24,7 @@
 #include <QAbstractListModel>
 #include "discovercommon_export.h"
 
+class QTimer;
 class ResourcesUpdatesModel;
 class AbstractResource;
 class UpdateItem;
@@ -91,6 +92,7 @@ private:
     void resourceHasProgressed(AbstractResource* res, qreal progress);
     void activityChanged();
 
+    QTimer* const m_updateSizeTimer;
     QVector<UpdateItem*> m_updateItems;
     ResourcesUpdatesModel* m_updates;
     QList<AbstractResource*> m_resources;

@@ -144,6 +144,7 @@ void PackageKitBackend::reloadPackageList()
                             const auto pkgid = pkgidVal.toString();
                             acquireFetching(true);
                             auto res = addComponent(component, {PackageKit::Daemon::packageName(pkgid)});
+                            res->clearPackageIds();
                             res->addPackageId(PackageKit::Transaction::InfoInstalled, pkgid, true);
                             acquireFetching(false);
                         }
@@ -170,8 +171,14 @@ AppPackageKitResource* PackageKitBackend::addComponent(const AppStream::Componen
     Q_ASSERT(isFetching());
     Q_ASSERT(!pkgNames.isEmpty());
 
-    const auto res = new AppPackageKitResource(component, pkgNames.at(0), this);
-    m_packages.packages[component.id()] = res;
+
+    AppPackageKitResource* res = qobject_cast<AppPackageKitResource*>(m_packages.packages[component.id()]);
+    if (!res) {
+        res = new AppPackageKitResource(component, pkgNames.at(0), this);
+        m_packages.packages[component.id()] = res;
+    } else {
+        res->clearPackageIds();
+    }
     foreach (const QString& pkg, pkgNames) {
         m_packages.packageToApp[pkg] += component.id();
     }
@@ -562,23 +569,6 @@ void PackageKitBackend::performDetailsFetch()
     PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(ids);
     connect(transaction, &PackageKit::Transaction::details, this, &PackageKitBackend::packageDetails);
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
-
-    QSharedPointer<QMap<QString, int>> packageDependencies(new QMap<QString, int>);
-    auto trans = PackageKit::Daemon::dependsOn(ids);
-    connect(trans, &PackageKit::Transaction::package, this, [packageDependencies](PackageKit::Transaction::Info /*info*/, const QString &packageID, const QString &/*summary*/) {
-        (*packageDependencies)[packageID] += 1;
-    });
-    connect(trans, &PackageKit::Transaction::finished, this, [this, packageDependencies](PackageKit::Transaction::Exit /*status*/) {
-        auto pkgDeps = (*packageDependencies);
-
-        for (auto it = pkgDeps.constBegin(), itEnd = pkgDeps.constEnd(); it != itEnd; ++it) {
-            const auto resources = resourcesByPackageName(PackageKit::Daemon::packageName(it.key()));
-            for(auto resource : resources) {
-                auto pkres = qobject_cast<PackageKitResource*>(resource);
-                pkres->setDependenciesCount(it.value());
-            }
-        }
-    });
 }
 
 void PackageKitBackend::checkDaemonRunning()
