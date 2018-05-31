@@ -64,6 +64,7 @@
 #include <unistd.h>
 #include <resources/StoredResultsStream.h>
 #include <utils.h>
+#include <QMimeDatabase>
 
 class OurSortFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
 {
@@ -223,8 +224,15 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
             if (res) {
                 emit openApplicationInternal(res);
             } else {
-                setRootObjectProperty("defaultStartup", true);
-                showPassiveNotification(i18n("Couldn't open %1", localfile.toDisplayString()));
+                QMimeDatabase db;
+                auto mime = db.mimeTypeForUrl(localfile);
+                if (mime.name().startsWith(QLatin1String("application/vnd.flatpak"))) {
+                    openApplication(QUrl(QLatin1String("appstream://org.kde.discover.flatpak")));
+                    showPassiveNotification(i18n("Cannot interact with flatpak resources without the flatpak backend %1. Please install it first.", localfile.toDisplayString()));
+                } else {
+                    setRootObjectProperty("defaultStartup", true);
+                    showPassiveNotification(i18n("Couldn't open %1", localfile.toDisplayString()));
+                }
             }
         }
         , this);
