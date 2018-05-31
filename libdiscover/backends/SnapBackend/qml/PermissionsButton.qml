@@ -30,21 +30,13 @@ Button
     onClicked: overlay.open()
     visible: view.count > 0
 
-    Popup {
+    DiscoverPopup {
         id: overlay
-        parent: applicationWindow().overlay
-        bottomPadding: Kirigami.Units.largeSpacing
-        topPadding: Kirigami.Units.largeSpacing
-
-        x: (parent.width - width)/2
-        y: (parent.height - height)/2
-        width: parent.width * 1/3
-        height: Math.min(view.contentHeight + bottomPadding + topPadding, parent.height * 4/5)
 
         ListView {
             id: view
             anchors.fill: parent
-            header: Kirigami.Heading {
+            header: Kirigami.ItemViewHeader {
                 text: i18n ("Permissions for %1", resource.name)
             }
             model: resource.plugs(root)

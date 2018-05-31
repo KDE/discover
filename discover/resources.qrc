@@ -35,6 +35,7 @@
     <file>qml/LoadingPage.qml</file>
     <file>qml/SearchField.qml</file>
     <file>qml/Shadow.qml</file>
+    <file>qml/DiscoverPopup.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>

@@ -21,39 +21,14 @@ import QtQuick 2.8
 import QtQuick.Controls 2.1
 import org.kde.kirigami 2.1 as Kirigami
 
-LinkButton
-{
-    text: i18n("Show Dependencies...")
+Popup {
+    id: overlay
+    parent: applicationWindow().overlay
+    bottomPadding: Kirigami.Units.largeSpacing
+    topPadding: Kirigami.Units.largeSpacing
 
-    onClicked: overlay.open()
-
-    Connections {
-        target: resource
-        onDependenciesFound: {
-            view.model.clear()
-            for (var v in dependencies) {
-                view.model.append({display: i18n("<b>%1</b>: %2", v, dependencies[v])})
-            }
-        }
-    }
-
-    DiscoverPopup {
-        id: overlay
-
-        ListView {
-            id: view
-            anchors.fill: parent
-
-            clip: true
-            headerPositioning: ListView.OverlayHeader
-            header: Kirigami.ItemViewHeader {
-                title: i18n("%1 Dependencies", resource.name)
-            }
-            model: ListModel {}
-            delegate: Kirigami.BasicListItem {
-                width: parent.width
-                text: modelData
-            }
-        }
-    }
+    x: (parent.width - width)/2
+    y: (parent.height - height)/2
+    width: Math.min(parent.width - Kirigami.Units.gridUnit * 3, Kirigami.Units.gridUnit * 50)
+    height: Math.min(view.contentHeight + bottomPadding + topPadding, parent.height * 4/5)
 }
