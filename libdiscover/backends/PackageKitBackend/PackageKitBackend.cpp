@@ -569,23 +569,6 @@ void PackageKitBackend::performDetailsFetch()
     PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(ids);
     connect(transaction, &PackageKit::Transaction::details, this, &PackageKitBackend::packageDetails);
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
-
-    QSharedPointer<QMap<QString, int>> packageDependencies(new QMap<QString, int>);
-    auto trans = PackageKit::Daemon::dependsOn(ids);
-    connect(trans, &PackageKit::Transaction::package, this, [packageDependencies](PackageKit::Transaction::Info /*info*/, const QString &packageID, const QString &/*summary*/) {
-        (*packageDependencies)[packageID] += 1;
-    });
-    connect(trans, &PackageKit::Transaction::finished, this, [this, packageDependencies](PackageKit::Transaction::Exit /*status*/) {
-        auto pkgDeps = (*packageDependencies);
-
-        for (auto it = pkgDeps.constBegin(), itEnd = pkgDeps.constEnd(); it != itEnd; ++it) {
-            const auto resources = resourcesByPackageName(PackageKit::Daemon::packageName(it.key()));
-            for(auto resource : resources) {
-                auto pkres = qobject_cast<PackageKitResource*>(resource);
-                pkres->setDependenciesCount(it.value());
-            }
-        }
-    });
 }
 
 void PackageKitBackend::checkDaemonRunning()
