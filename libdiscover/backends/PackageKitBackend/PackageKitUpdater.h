@@ -94,7 +94,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         bool m_isProgressing;
         int m_percentage;
         QDateTime m_lastUpdate;
-        QStringList m_packagesRemoved;
+        QMap<PackageKit::Transaction::Info, QStringList> m_packagesModified;
         QVector<std::function<PackageKit::Transaction*()>> m_proceedFunctions;
 };
 

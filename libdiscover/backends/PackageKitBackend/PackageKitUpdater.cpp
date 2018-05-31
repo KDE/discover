@@ -74,7 +74,7 @@ void PackageKitUpdater::prepare()
 
 void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFlags flags)
 {
-    m_packagesRemoved.clear();
+    m_packagesModified.clear();
     auto pkgs = involvedPackages(m_toUpgrade).toList();
     pkgs.sort();
     m_transaction = PackageKit::Daemon::updatePackages(pkgs, flags);
@@ -176,9 +176,14 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     m_transaction = nullptr;
 
     if (!cancel && simulate) {
-        if (!m_packagesRemoved.isEmpty())
-            Q_EMIT proceedRequest(i18n("Packages to remove"), i18n("The following packages will be removed by the update:\n<ul><li>%1</li></ul>", PackageKitResource::joinPackages(m_packagesRemoved, QStringLiteral("</li><li>"))));
-        else {
+        const auto toremove = m_packagesModified.value(PackageKit::Transaction::InfoRemoving);
+        if (!toremove.isEmpty()) {
+            const auto toinstall = QStringList() << m_packagesModified.value(PackageKit::Transaction::InfoInstalling) << m_packagesModified.value(PackageKit::Transaction::InfoUpdating);
+            Q_EMIT proceedRequest(i18n("Packages to remove"), i18n("The following packages will be removed by the update:\n<ul><li>%1</li></ul>\nin order to install:\n<ul><li>%1</li></ul>",
+                                                                   PackageKitResource::joinPackages(toremove, QStringLiteral("</li><li>")),
+                                                                   PackageKitResource::joinPackages(toinstall, QStringLiteral("</li><li>"))
+                                                                  ));
+        } else {
             proceed();
         }
         return;
@@ -361,8 +366,7 @@ void PackageKitUpdater::updateDetail(const QString& packageID, const QStringList
 
 void PackageKitUpdater::packageResolved(PackageKit::Transaction::Info info, const QString& packageId)
 {
-    if (info == PackageKit::Transaction::InfoRemoving)
-        m_packagesRemoved << packageId;
+    m_packagesModified[info] << packageId;
 }
 
 void PackageKitUpdater::repoSignatureRequired(const QString& packageID, const QString& repoName, const QString& keyUrl,
