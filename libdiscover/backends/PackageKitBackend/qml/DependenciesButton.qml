@@ -31,9 +31,7 @@ LinkButton
         target: resource
         onDependenciesFound: {
             view.model.clear()
-            console.log("aaa", dependencies)
             for (var v in dependencies) {
-                console.log("xxx", dependencies[v])
                 view.model.append({display: i18n("<b>%1</b>: %2", v, dependencies[v])})
             }
         }
