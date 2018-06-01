@@ -127,6 +127,10 @@ void TransactionListener::setTransaction(Transaction* trans)
         connect(m_transaction, &Transaction::cancellableChanged, this, &TransactionListener::cancellableChanged);
         connect(m_transaction, &Transaction::statusChanged, this, &TransactionListener::transactionStatusChanged);
         connect(m_transaction, &Transaction::progressChanged, this, &TransactionListener::progressChanged);
+        connect(m_transaction, &QObject::destroyed, this, [this]() {
+            qDebug() << "destroyed transaction before finishing";
+            setTransaction(nullptr);
+        });
         setResourceInternal(trans->resource());
     }
     Q_EMIT transactionChanged(trans);

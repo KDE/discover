@@ -187,6 +187,7 @@ DiscoverPage
                         Layout.alignment: Qt.AlignVCenter
                         checked: model.checked == Qt.Checked
                         onClicked: model.checked = (model.checked==Qt.Checked ? Qt.Unchecked : Qt.Checked)
+                        enabled: !resourcesUpdatesModel.isProgressing
                     }
 
                     Kirigami.Icon {
@@ -250,8 +251,8 @@ DiscoverPage
 
     readonly property alias secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
     state:  ( updateModel.hasUpdates                     ? "has-updates"
-            : ResourcesModel.isFetching                  ? "fetching"
             : resourcesUpdatesModel.isProgressing        ? "progressing"
+            : ResourcesModel.isFetching                  ? "fetching"
             : secSinceUpdate < 0                         ? "unknown"
             : secSinceUpdate === 0                       ? "now-uptodate"
             : secSinceUpdate < 1000 * 60 * 60 * 24       ? "uptodate"
