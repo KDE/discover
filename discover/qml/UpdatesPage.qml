@@ -238,8 +238,8 @@ DiscoverPage
 
     readonly property alias secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
     state:  ( updateModel.hasUpdates                     ? "has-updates"
-            : ResourcesModel.isFetching                  ? "fetching"
             : resourcesUpdatesModel.isProgressing        ? "progressing"
+            : ResourcesModel.isFetching                  ? "fetching"
             : secSinceUpdate < 0                         ? "unknown"
             : secSinceUpdate === 0                       ? "now-uptodate"
             : secSinceUpdate < 1000 * 60 * 60 * 24       ? "uptodate"

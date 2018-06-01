@@ -100,7 +100,8 @@ void UpdateModel::activityChanged()
             for(auto item : m_updateItems) {
                 item->setProgress(0);
             }
-        }
+        } else
+            setResources(m_updates->toUpdate());
     }
 }
 
