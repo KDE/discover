@@ -175,9 +175,6 @@ void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& _res)
     if (res.isEmpty())
         return;
 
-    if (!m_filters.allBackends) {
-        removeDuplicates(res);
-    }
     if (!m_sortByRelevancy)
         qSort(res.begin(), res.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
 
@@ -446,9 +443,17 @@ bool ResourcesProxyModel::isSorted(const QVector<AbstractResource*> & resources)
     return true;
 }
 
-void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & resources)
+void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & _res)
 {
+    auto resources = _res;
     Q_ASSERT(!resources.isEmpty());
+
+    if (!m_filters.allBackends) {
+        removeDuplicates(resources);
+        if (resources.isEmpty())
+            return;
+    }
+
     if (m_sortByRelevancy || m_displayedResources.isEmpty()) {
 //         Q_ASSERT(m_sortByRelevancy || isSorted(resources));
         int rows = rowCount();
