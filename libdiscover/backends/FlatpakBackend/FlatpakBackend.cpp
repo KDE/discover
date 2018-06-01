@@ -667,6 +667,11 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
         if (flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_RUNTIME) {
             continue;
         }
+        const auto res = getAppForInstalledRef(flatpakInstallation, ref);
+        if (res) {
+            res->setState(AbstractResource::Installed);
+            continue;
+        }
 
         const auto name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
         AppStream::Metadata metadata;
@@ -677,15 +682,9 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
             continue;
         }
 
-        const AppStream::Component appstreamComponent(metadata.component());
-
-        const auto res = getAppForInstalledRef(flatpakInstallation, ref);
-        if (res) {
-            res->setState(AbstractResource::Installed);
-            continue;
-        }
-
-        FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
+        auto component = metadata.component();
+        component.setId(name + QLatin1String(".desktop"));
+        FlatpakResource *resource = new FlatpakResource(component, flatpakInstallation, this);
 
         resource->setIconPath(pathExports);
         resource->setState(AbstractResource::Installed);
