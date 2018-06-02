@@ -23,7 +23,7 @@
   <name xml:lang="it">Discover</name>
   <name xml:lang="ko">발견</name>
   <name xml:lang="nl">Ontdekken</name>
-  <name xml:lang="nn">Oppdag</name>
+  <name xml:lang="nn">Discover</name>
   <name xml:lang="pl">Odkrywca</name>
   <name xml:lang="pt">Discover</name>
   <name xml:lang="pt-BR">Discover</name>
@@ -60,7 +60,7 @@
   <summary xml:lang="it">Discover</summary>
   <summary xml:lang="ko">발견</summary>
   <summary xml:lang="nl">Ontdekken</summary>
-  <summary xml:lang="nn">Oppdag</summary>
+  <summary xml:lang="nn">Discover</summary>
   <summary xml:lang="pl">Odkrywca</summary>
   <summary xml:lang="pt">Discover</summary>
   <summary xml:lang="pt-BR">Discover</summary>
@@ -129,7 +129,7 @@
     <p xml:lang="it">Discover aiuta gli utenti a trovare in modo semplice e rapido applicazioni o strumenti. Permettendo di navigare una raccolta di software tramite ricerca, categorie di software, liste preferite oltre alle informazioni dettagliate sulle applicazioni che includono schermate e recensioni, gli utenti possono trovare più rapidamente applicazioni che si adattano alle loro esigenze.</p>
     <p xml:lang="ko">발견을 통하여 프로그램과 도구를 쉽고 빠르게 발견할 수 있습니다. 소프트웨어 라이브러리를 직접 검색하거나, 분류별 및 상위 목록으로 볼 수 있으며 스크린샷과 리뷰를 포함한 소프트웨어 정보를 통해서 필요한 프로그램을 찾을 수 있습니다.</p>
     <p xml:lang="nl">Discover helpt gebruikers om gemakkelijk en snel een toepassing of hulpmiddel te vinden. Door navigatie te bieden in een softwarebibliotheek door zoeken in softwarecategorieën, lijsten met toppers, samen met gedetailleerde informatie over toepassingen die schermafdrukken en reviews bevatten, kunnen gebruikers sneller toepassingen vinden die in hun behoeften voorzien.</p>
-    <p xml:lang="nn">Men Oppdag vert det lettare å finna program og verktøy. Du kan søkja etter program eller sjå gjennom programkategoriar og lister over populære program, og du får detaljert informasjon om kvart program, med bilete og brukaromtalar.</p>
+    <p xml:lang="nn">Med Discover vert det lettare å finna program og verktøy. Du kan søkja etter program eller sjå gjennom programkategoriar og lister over populære program. Du får òg detaljert informasjon om kvart program, med bilete og brukaromtalar.</p>
     <p xml:lang="pl">Odkrywca pomaga użytkownikowi w szybkim i łatwym wyszukiwaniu potrzebnych aplikacji i narzędzi. Umożliwia on przeglądanie biblioteki oprogramowania poprzez wyszukiwania, kategorie oprogramowania, listy najlepszych aplikacji wraz ze szczegółami takimi jak zrzuty ekranu i recenzje. W ten sposób użytkownicy znajdują szybciej to czego szukają.</p>
     <p xml:lang="pt">O Discover ajuda os utilizadores a procurar fácil e rapidamente aplicações ou ferramentas. Ao permitir navegar numa biblioteca de 'software' com a pesquisa, as categorias de aplicações, as listas de topo com informações detalhadas, incluindo fotografias e revisões, os utilizadores poderão encontrar mais rapidamente as aplicações que se adequam às suas necessidades.</p>
     <p xml:lang="pt-BR">O Discover ajuda os usuários a encontrar os aplicativos e ferramentas de forma rápida e fácil. Ao fornecer acesso a uma biblioteca de software com uma ferramenta de pesquisa, por categorias de software, por listas das ferramentas mais populares e com informações detalhadas, incluindo capturas de tela e avaliações, os usuários poderão encontrar mais rapidamente os aplicativos que se adequam às suas necessidades.</p>
