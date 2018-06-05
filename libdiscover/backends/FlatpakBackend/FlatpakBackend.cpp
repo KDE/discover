@@ -1125,18 +1125,37 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
 
 ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
 {
-    QVector<AbstractResource*> resources;
     if (url.scheme() == QLatin1String("appstream")) {
         if (url.host().isEmpty())
             passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
-            foreach(FlatpakResource* res, m_resources) {
-                if (QString::compare(res->appstreamId(), url.host(), Qt::CaseInsensitive)==0)
-                    resources << res;
+            auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
+            auto f = [this, stream, url] () {
+                QVector<AbstractResource*> resources;
+                foreach(FlatpakResource* res, m_resources) {
+                    if (QString::compare(res->appstreamId(), url.host(), Qt::CaseInsensitive)==0)
+                        resources << res;
+                }
+                auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l,r); };
+                std::sort(resources.begin(), resources.end(), f);
+
+                QTimer::singleShot(0, stream, [resources, stream] () {
+                    if (!resources.isEmpty())
+                        Q_EMIT stream->resourcesFound(resources);
+                    stream->finish();
+                });
+            };
+
+            if (isFetching()) {
+                connect(this, &FlatpakBackend::initialized, stream, f);
+            } else {
+                f();
             }
+
+            return stream;
         }
     }
-    return new ResultsStream(QStringLiteral("FlatpakStream"), resources);
+    return new ResultsStream(QStringLiteral("FlatpakStream-packageName-void"), {});
 }
 
 AbstractBackendUpdater * FlatpakBackend::backendUpdater() const
