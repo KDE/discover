@@ -77,7 +77,6 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(AppStreamIntegration::global()->reviews())
-    , m_fetching(false)
     , m_refreshAppstreamMetadataJobs(0)
     , m_threadPool(new QThreadPool(this))
 {
@@ -551,7 +550,7 @@ void FlatpakBackend::finishInitialization()
     loadInstalledApps();
     checkForUpdates();
 
-    Q_EMIT initialized();
+    acquireFetching(false);
 }
 
 void FlatpakBackend::loadAppsFromAppstreamData()
@@ -622,6 +621,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
         return metadata.components();
     }));
     const auto sourceName = source.name();
+    acquireFetching(true);
     connect(fw, &QFutureWatcher<QList<AppStream::Component>>::finished, this, [this, fw, flatpakInstallation, appstreamIconsPath, sourceName]() {
         const auto components = fw->result();
         foreach (const AppStream::Component& appstreamComponent, components) {
@@ -1057,12 +1057,19 @@ void FlatpakBackend::updateAppState(FlatpakInstallation *flatpakInstallation, Fl
     }
 }
 
-void FlatpakBackend::setFetching(bool fetching)
+void FlatpakBackend::acquireFetching(bool f)
 {
-    if (m_fetching != fetching) {
-        m_fetching = fetching;
+    if (f)
+        m_isFetching++;
+    else
+        m_isFetching--;
+
+    if ((!f && m_isFetching==0) || (f && m_isFetching==1)) {
         emit fetchingChanged();
     }
+
+    if (m_isFetching==0)
+        Q_EMIT initialized();
 }
 
 int FlatpakBackend::updatesCount() const
