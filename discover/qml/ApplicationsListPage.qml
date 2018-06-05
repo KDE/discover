@@ -43,7 +43,7 @@ DiscoverPage {
     property alias count: apps.count
     property alias listHeader: apps.header
     property alias listHeaderPositioning: apps.headerPositioning
-    property bool compact: page.width < 500 || !applicationWindow().wideScreen
+    property bool compact: page.width < 550 || !applicationWindow().wideScreen
     property bool showRating: true
 
     property bool canNavigate: true

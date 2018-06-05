@@ -44,7 +44,7 @@ DiscoverPage
 
     signal clearSearch()
 
-    readonly property bool compact: page.width < 500 || !applicationWindow().wideScreen
+    readonly property bool compact: page.width < 550 || !applicationWindow().wideScreen
 
     Kirigami.CardsListView {
         model: FeaturedModel {}
