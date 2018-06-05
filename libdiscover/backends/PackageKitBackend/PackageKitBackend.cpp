@@ -422,7 +422,7 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
                 }
             }
             if (!pkg)
-                qWarning() << "could not find" << host << deprecatedHost;
+                qDebug() << "could not find" << host << deprecatedHost;
         }
     }
     return new ResultsStream(QStringLiteral("PackageKitStream-url"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
