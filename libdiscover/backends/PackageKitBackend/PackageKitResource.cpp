@@ -219,7 +219,7 @@ QString PackageKitResource::joinPackages(const QStringList& pkgids, const QStrin
 {
     QStringList ret;
     foreach(const QString& pkgid, pkgids) {
-        ret += i18nc("package-name (version)", "%1 (%2)", PackageKit::Daemon::packageName(pkgid), PackageKit::Daemon::packageVersion(pkgid));
+        ret += PackageKit::Daemon::packageVersion(pkgid);
     }
     const QString sep = _sep.isEmpty() ? i18nc("comma separating package names", ", ") : _sep;
     return ret.join(sep);
@@ -238,9 +238,9 @@ void PackageKitResource::updateDetail(const QString& /*packageID*/, const QStrin
                                       const QString& /*changelog*/, PackageKit::Transaction::UpdateState state, const QDateTime& /*issued*/, const QDateTime& /*updated*/)
 {
     QString info;
-    addIfNotEmpty(i18n("Reason:"), updateText, info);
+    addIfNotEmpty(i18n("Current Version:"), joinPackages(updates), info);
     addIfNotEmpty(i18n("Obsoletes:"), joinPackages(obsoletes), info);
-    addIfNotEmpty(i18n("Updates:"), joinPackages(updates), info);
+    addIfNotEmpty(i18n("New Version:"), updateText, info);
     addIfNotEmpty(i18n("Update State:"), PackageKitMessages::updateStateMessage(state), info);
     addIfNotEmpty(i18n("Restart:"), PackageKitMessages::restartMessage(restart), info);
 
