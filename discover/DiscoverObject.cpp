@@ -241,7 +241,7 @@ void DiscoverObject::openApplication(const QUrl& url)
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
             connect(stream, &StoredResultsStream::finished, this, [this, url, stream]() {
                 const auto res = stream->resources();
-                if (res.count() == 1) {
+                if (res.count() >= 1) {
                     emit openApplicationInternal(res.first());
                 } else {
                     setRootObjectProperty("defaultStartup", true);
