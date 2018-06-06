@@ -53,6 +53,18 @@
 
 DISCOVER_BACKEND_PLUGIN(PackageKitBackend)
 
+template <typename T, typename W>
+static void setWhenAvailable(const QDBusPendingReply<T>& pending, W func, QObject* parent)
+{
+    QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(pending, parent);
+    QObject::connect(watcher, &QDBusPendingCallWatcher::finished,
+                    parent, [func](QDBusPendingCallWatcher* watcher) {
+                        watcher->deleteLater();
+                        QDBusPendingReply<T> reply = *watcher;
+                        func(reply.value());
+                    });
+}
+
 QString PackageKitBackend::locateService(const QString &filename)
 {
     return QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("applications/")+filename);
@@ -66,7 +78,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     , m_reviews(AppStreamIntegration::global()->reviews())
 {
     QTimer* t = new QTimer(this);
-    connect(t, &QTimer::timeout, this, &PackageKitBackend::refreshDatabase);
+    connect(t, &QTimer::timeout, this, &PackageKitBackend::checkForUpdates);
     t->setInterval(60 * 60 * 1000);
     t->setSingleShot(false);
     t->start();
@@ -81,6 +93,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 
     SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
 
+
     QString error;
     const bool b = m_appdata.load(&error);
     reloadPackageList();
@@ -92,6 +105,11 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
             Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
         });
     }
+
+    setWhenAvailable(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache), [this, error](uint timeSince) {
+        if (timeSince > 3600)
+            checkForUpdates();
+    }, this);
 }
 
 PackageKitBackend::~PackageKitBackend() = default;
@@ -330,11 +348,6 @@ T PackageKitBackend::resourcesByPackageNames(const Q &pkgnames) const
 }
 
 void PackageKitBackend::checkForUpdates()
-{
-    refreshDatabase();
-}
-
-void PackageKitBackend::refreshDatabase()
 {
     if (!m_refresher) {
         acquireFetching(true);
