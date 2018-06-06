@@ -53,6 +53,18 @@
 
 DISCOVER_BACKEND_PLUGIN(PackageKitBackend)
 
+template <typename T, typename W>
+static void setWhenAvailable(const QDBusPendingReply<T>& pending, W func, QObject* parent)
+{
+    QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(pending, parent);
+    QObject::connect(watcher, &QDBusPendingCallWatcher::finished,
+                    parent, [func](QDBusPendingCallWatcher* watcher) {
+                        watcher->deleteLater();
+                        QDBusPendingReply<T> reply = *watcher;
+                        func(reply.value());
+                    });
+}
+
 QString PackageKitBackend::locateService(const QString &filename)
 {
     return QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("applications/")+filename);
@@ -66,7 +78,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     , m_reviews(AppStreamIntegration::global()->reviews())
 {
     QTimer* t = new QTimer(this);
-    connect(t, &QTimer::timeout, this, &PackageKitBackend::refreshDatabase);
+    connect(t, &QTimer::timeout, this, &PackageKitBackend::checkForUpdates);
     t->setInterval(60 * 60 * 1000);
     t->setSingleShot(false);
     t->start();
@@ -81,17 +93,25 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 
     SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
 
+
+//     bug390224
     QString error;
     const bool b = m_appdata.load(&error);
-    reloadPackageList();
+    setWhenAvailable(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache), [this, error, b](uint t) {
+        if (t > 3000)
+            checkForUpdates();
+        else
+            reloadPackageList();
 
-    if (!b && m_packages.packages.isEmpty()) {
-        qWarning() << "Could not open the AppStream metadata pool" << error;
+        if (!b && m_packages.packages.isEmpty()) {
+            qWarning() << "Could not open the AppStream metadata pool" << error;
 
-        QTimer::singleShot(0, this, [this]() {
-            Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
-        });
-    }
+            QTimer::singleShot(0, this, [this]() {
+                Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
+            });
+        }
+    }, this);
+
 }
 
 PackageKitBackend::~PackageKitBackend() = default;
@@ -330,11 +350,6 @@ T PackageKitBackend::resourcesByPackageNames(const Q &pkgnames) const
 }
 
 void PackageKitBackend::checkForUpdates()
-{
-    refreshDatabase();
-}
-
-void PackageKitBackend::refreshDatabase()
 {
     if (!m_refresher) {
         acquireFetching(true);
@@ -595,12 +610,21 @@ AbstractResource * PackageKitBackend::resourceForFile(const QUrl& file)
 {
     QMimeDatabase db;
     const auto mime = db.mimeTypeForUrl(file);
-    if (    mime.inherits(QLatin1String("application/vnd.debian.binary-package"))
-         || mime.inherits(QLatin1String("application/x-rpm"))
-         || mime.inherits(QLatin1String("application/x-tar"))
-         || mime.inherits(QLatin1String("application/x-xz-compressed-tar"))
-    ) {
-        return new LocalFilePKResource(file, this);
+
+    QStringList mimes = PackageKit::Daemon::mimeTypes();
+    if (mimes.isEmpty()) {
+        mimes = QStringList {
+            QLatin1String("application/vnd.debian.binary-package"),
+            QLatin1String("application/x-rpm"),
+            QLatin1String("application/x-tar"),
+            QLatin1String("application/x-xz-compressed-tar")
+        };
+    }
+
+    for(const auto &mimename: mimes) {
+        if (mime.inherits(mimename)) {
+            return new LocalFilePKResource(file, this);
+        }
     }
     return nullptr;
 }
