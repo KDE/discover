@@ -78,7 +78,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
     public Q_SLOTS:
         void reloadPackageList();
-        void refreshDatabase();
         void transactionError(PackageKit::Transaction::Error, const QString& message);
 
     private Q_SLOTS:
