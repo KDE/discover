@@ -7,8 +7,8 @@ set(flatpak-backend_SRCS
     FlatpakBackend.cpp
     FlatpakFetchDataJob.cpp
     FlatpakSourcesBackend.cpp
-    FlatpakTransaction.cpp
-    FlatpakTransactionJob.cpp
+    FlatpakJobTransaction.cpp
+    FlatpakTransactionThread.cpp
 )
 
 add_library(flatpak-backend MODULE ${flatpak-backend_SRCS})

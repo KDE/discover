@@ -23,7 +23,7 @@
 #include "FlatpakFetchDataJob.h"
 #include "FlatpakResource.h"
 #include "FlatpakSourcesBackend.h"
-#include "FlatpakTransaction.h"
+#include "FlatpakJobTransaction.h"
 
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
@@ -1188,11 +1188,11 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
         return nullptr;
     }
 
-    FlatpakTransaction *transaction = nullptr;
+    FlatpakJobTransaction *transaction = nullptr;
     FlatpakInstallation *installation = resource->installation();
 
     if (resource->propertyState(FlatpakResource::RequiredRuntime) == FlatpakResource::NotKnownYet && resource->type() == FlatpakResource::DesktopApp) {
-        transaction = new FlatpakTransaction(resource, Transaction::InstallRole, true);
+        transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole, true);
         connect(resource, &FlatpakResource::propertyStateChanged, [resource, transaction, this] (FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state) {
             if (kind != FlatpakResource::RequiredRuntime) {
                 return;
@@ -1209,13 +1209,13 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
     } else {
         FlatpakResource *runtime = getRuntimeForApp(resource);
         if (runtime && !runtime->isInstalled()) {
-            transaction = new FlatpakTransaction(resource, runtime, Transaction::InstallRole);
+            transaction = new FlatpakJobTransaction(resource, runtime, Transaction::InstallRole);
         } else {
-            transaction = new FlatpakTransaction(resource, Transaction::InstallRole);
+            transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole);
         }
     }
 
-    connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
+    connect(transaction, &FlatpakJobTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
             updateAppState(installation, resource);
         }
@@ -1241,9 +1241,9 @@ Transaction* FlatpakBackend::removeApplication(AbstractResource *app)
     }
 
     FlatpakInstallation *installation = resource->installation();
-    FlatpakTransaction *transaction = new FlatpakTransaction(resource, Transaction::RemoveRole);
+    FlatpakJobTransaction *transaction = new FlatpakJobTransaction(resource, Transaction::RemoveRole);
 
-    connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
+    connect(transaction, &FlatpakJobTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
             updateAppSize(installation, resource);
         }

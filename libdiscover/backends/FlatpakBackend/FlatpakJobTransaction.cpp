@@ -19,10 +19,10 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "FlatpakTransaction.h"
+#include "FlatpakJobTransaction.h"
 #include "FlatpakBackend.h"
 #include "FlatpakResource.h"
-#include "FlatpakTransactionJob.h"
+#include "FlatpakTransactionThread.h"
 
 #include <QDebug>
 #include <QTimer>
@@ -33,12 +33,12 @@ extern "C" {
 #include <glib.h>
 }
 
-FlatpakTransaction::FlatpakTransaction(FlatpakResource *app, Role role, bool delayStart)
-    : FlatpakTransaction(app, nullptr, role, delayStart)
+FlatpakJobTransaction::FlatpakJobTransaction(FlatpakResource *app, Role role, bool delayStart)
+    : FlatpakJobTransaction(app, nullptr, role, delayStart)
 {
 }
 
-FlatpakTransaction::FlatpakTransaction(FlatpakResource *app, FlatpakResource *runtime, Transaction::Role role, bool delayStart)
+FlatpakJobTransaction::FlatpakJobTransaction(FlatpakResource *app, FlatpakResource *runtime, Transaction::Role role, bool delayStart)
     : Transaction(app->backend(), app, role, {})
     , m_app(app)
     , m_runtime(runtime)
@@ -47,11 +47,11 @@ FlatpakTransaction::FlatpakTransaction(FlatpakResource *app, FlatpakResource *ru
     setStatus(QueuedStatus);
 
     if (!delayStart) {
-        QTimer::singleShot(0, this, &FlatpakTransaction::start);
+        QTimer::singleShot(0, this, &FlatpakJobTransaction::start);
     }
 }
 
-FlatpakTransaction::~FlatpakTransaction()
+FlatpakJobTransaction::~FlatpakJobTransaction()
 {
     for(auto job : m_jobs) {
         if (!job->isFinished()) {
@@ -61,48 +61,48 @@ FlatpakTransaction::~FlatpakTransaction()
     }
 }
 
-void FlatpakTransaction::cancel()
+void FlatpakJobTransaction::cancel()
 {
     Q_ASSERT(m_appJob);
-    foreach (const QPointer<FlatpakTransactionJob> &job, m_jobs) {
+    foreach (const QPointer<FlatpakTransactionThread> &job, m_jobs) {
         job->cancel();
     }
     setStatus(CancelledStatus);
 }
 
-void FlatpakTransaction::setRuntime(FlatpakResource *runtime)
+void FlatpakJobTransaction::setRuntime(FlatpakResource *runtime)
 {
     m_runtime = runtime;
 }
 
-void FlatpakTransaction::start()
+void FlatpakJobTransaction::start()
 {
     setStatus(CommittingStatus);
     if (m_runtime) {
-        QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(m_runtime, {}, role());
-        connect(job, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
-        connect(job, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
+        QPointer<FlatpakTransactionThread> job = new FlatpakTransactionThread(m_runtime, {}, role());
+        connect(job, &FlatpakTransactionThread::finished, this, &FlatpakJobTransaction::onJobFinished);
+        connect(job, &FlatpakTransactionThread::progressChanged, this, &FlatpakJobTransaction::onJobProgressChanged);
         m_jobs << job;
 
         processRelatedRefs(m_runtime);
     }
 
     // App job will be added everytime
-    m_appJob = new FlatpakTransactionJob(m_app, {}, role());
-    connect(m_appJob, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
-    connect(m_appJob, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
+    m_appJob = new FlatpakTransactionThread(m_app, {}, role());
+    connect(m_appJob, &FlatpakTransactionThread::finished, this, &FlatpakJobTransaction::onJobFinished);
+    connect(m_appJob, &FlatpakTransactionThread::progressChanged, this, &FlatpakJobTransaction::onJobProgressChanged);
     m_jobs << m_appJob;
 
     processRelatedRefs(m_app);
 
 
     // Now start all the jobs together
-    foreach (const QPointer<FlatpakTransactionJob> &job, m_jobs) {
+    foreach (const QPointer<FlatpakTransactionThread> &job, m_jobs) {
         job->start();
     }
 }
 
-void FlatpakTransaction::processRelatedRefs(FlatpakResource* resource)
+void FlatpakJobTransaction::processRelatedRefs(FlatpakResource* resource)
 {
     g_autoptr(GPtrArray) refs = nullptr;
     g_autoptr(GError) error = nullptr;
@@ -138,9 +138,9 @@ void FlatpakTransaction::processRelatedRefs(FlatpakResource* resource)
         for (uint i = 0; i < refs->len; i++) {
             FlatpakRef *flatpakRef = FLATPAK_REF(g_ptr_array_index(refs, i));
             if (flatpak_related_ref_should_download(FLATPAK_RELATED_REF(flatpakRef))) {
-                QPointer<FlatpakTransactionJob> job = new FlatpakTransactionJob(resource, QPair<QString, uint>(QString::fromUtf8(flatpak_ref_get_name(flatpakRef)), flatpak_ref_get_kind(flatpakRef)), role());
-                connect(job, &FlatpakTransactionJob::finished, this, &FlatpakTransaction::onJobFinished);
-                connect(job, &FlatpakTransactionJob::progressChanged, this, &FlatpakTransaction::onJobProgressChanged);
+                QPointer<FlatpakTransactionThread> job = new FlatpakTransactionThread(resource, QPair<QString, uint>(QString::fromUtf8(flatpak_ref_get_name(flatpakRef)), flatpak_ref_get_kind(flatpakRef)), role());
+                connect(job, &FlatpakTransactionThread::finished, this, &FlatpakJobTransaction::onJobFinished);
+                connect(job, &FlatpakTransactionThread::progressChanged, this, &FlatpakJobTransaction::onJobProgressChanged);
                 // Add to the list of all jobs
                 m_jobs << job;
             }
@@ -148,9 +148,9 @@ void FlatpakTransaction::processRelatedRefs(FlatpakResource* resource)
     }
 }
 
-void FlatpakTransaction::onJobFinished()
+void FlatpakJobTransaction::onJobFinished()
 {
-    FlatpakTransactionJob *job = static_cast<FlatpakTransactionJob*>(sender());
+    FlatpakTransactionThread *job = static_cast<FlatpakTransactionThread*>(sender());
 
     if (job != m_appJob) {
         if (!job->result()) {
@@ -165,7 +165,7 @@ void FlatpakTransaction::onJobFinished()
         }
     }
 
-    foreach (const QPointer<FlatpakTransactionJob> &job, m_jobs) {
+    foreach (const QPointer<FlatpakTransactionThread> &job, m_jobs) {
         if (job->isRunning()) {
             return;
         }
@@ -175,21 +175,21 @@ void FlatpakTransaction::onJobFinished()
     finishTransaction();
 }
 
-void FlatpakTransaction::onJobProgressChanged(int progress)
+void FlatpakJobTransaction::onJobProgressChanged(int progress)
 {
     Q_UNUSED(progress);
 
     int total = 0;
 
     // Count progress from all the jobs
-    foreach (const QPointer<FlatpakTransactionJob> &job, m_jobs) {
+    foreach (const QPointer<FlatpakTransactionThread> &job, m_jobs) {
         total += job->progress();
     }
 
     setProgress(total / m_jobs.count());
 }
 
-void FlatpakTransaction::finishTransaction()
+void FlatpakJobTransaction::finishTransaction()
 {
     if (m_appJob->result()) {
         AbstractResource::State newState = AbstractResource::None;
