@@ -23,7 +23,7 @@
 #include "FlatpakFetchDataJob.h"
 #include "FlatpakResource.h"
 #include "FlatpakSourcesBackend.h"
-#include "FlatpakTransaction.h"
+#include "FlatpakJobTransaction.h"
 
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
@@ -78,7 +78,6 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(AppStreamIntegration::global()->reviews())
-    , m_fetching(false)
     , m_refreshAppstreamMetadataJobs(0)
     , m_threadPool(new QThreadPool(this))
 {
@@ -552,7 +551,7 @@ void FlatpakBackend::finishInitialization()
     loadInstalledApps();
     checkForUpdates();
 
-    Q_EMIT initialized();
+    acquireFetching(false);
 }
 
 void FlatpakBackend::loadAppsFromAppstreamData()
@@ -623,6 +622,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
         return metadata.components();
     }));
     const auto sourceName = source.name();
+    acquireFetching(true);
     connect(fw, &QFutureWatcher<QList<AppStream::Component>>::finished, this, [this, fw, flatpakInstallation, appstreamIconsPath, sourceName]() {
         const auto components = fw->result();
         foreach (const AppStream::Component& appstreamComponent, components) {
@@ -668,6 +668,11 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
         if (flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_RUNTIME) {
             continue;
         }
+        const auto res = getAppForInstalledRef(flatpakInstallation, ref);
+        if (res) {
+            res->setState(AbstractResource::Installed);
+            continue;
+        }
 
         const auto name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
         AppStream::Metadata metadata;
@@ -678,15 +683,9 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
             continue;
         }
 
-        const AppStream::Component appstreamComponent(metadata.component());
-
-        const auto res = getAppForInstalledRef(flatpakInstallation, ref);
-        if (res) {
-            res->setState(AbstractResource::Installed);
-            continue;
-        }
-
-        FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
+        auto component = metadata.component();
+        component.setId(name + QLatin1String(".desktop"));
+        FlatpakResource *resource = new FlatpakResource(component, flatpakInstallation, this);
 
         resource->setIconPath(pathExports);
         resource->setState(AbstractResource::Installed);
@@ -1059,12 +1058,19 @@ void FlatpakBackend::updateAppState(FlatpakInstallation *flatpakInstallation, Fl
     }
 }
 
-void FlatpakBackend::setFetching(bool fetching)
+void FlatpakBackend::acquireFetching(bool f)
 {
-    if (m_fetching != fetching) {
-        m_fetching = fetching;
+    if (f)
+        m_isFetching++;
+    else
+        m_isFetching--;
+
+    if ((!f && m_isFetching==0) || (f && m_isFetching==1)) {
         emit fetchingChanged();
     }
+
+    if (m_isFetching==0)
+        Q_EMIT initialized();
 }
 
 int FlatpakBackend::updatesCount() const
@@ -1120,20 +1126,37 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
 
 ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
 {
-    QVector<AbstractResource*> resources;
     if (url.scheme() == QLatin1String("appstream")) {
         if (url.host().isEmpty())
             passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
-            foreach(FlatpakResource* res, m_resources) {
-                if (QString::compare(res->appstreamId(), url.host(), Qt::CaseInsensitive)==0)
-                    resources << res;
+            auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
+            auto f = [this, stream, url] () {
+                QVector<AbstractResource*> resources;
+                foreach(FlatpakResource* res, m_resources) {
+                    if (QString::compare(res->appstreamId(), url.host(), Qt::CaseInsensitive)==0)
+                        resources << res;
+                }
+                auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l,r); };
+                std::sort(resources.begin(), resources.end(), f);
+
+                QTimer::singleShot(0, stream, [resources, stream] () {
+                    if (!resources.isEmpty())
+                        Q_EMIT stream->resourcesFound(resources);
+                    stream->finish();
+                });
+            };
+
+            if (isFetching()) {
+                connect(this, &FlatpakBackend::initialized, stream, f);
+            } else {
+                f();
             }
-            auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l,r); };
-            std::sort(resources.begin(), resources.end(), f);
+
+            return stream;
         }
     }
-    return new ResultsStream(QStringLiteral("FlatpakStream"), resources);
+    return new ResultsStream(QStringLiteral("FlatpakStream-packageName-void"), {});
 }
 
 AbstractBackendUpdater * FlatpakBackend::backendUpdater() const
@@ -1165,11 +1188,11 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
         return nullptr;
     }
 
-    FlatpakTransaction *transaction = nullptr;
+    FlatpakJobTransaction *transaction = nullptr;
     FlatpakInstallation *installation = resource->installation();
 
     if (resource->propertyState(FlatpakResource::RequiredRuntime) == FlatpakResource::NotKnownYet && resource->type() == FlatpakResource::DesktopApp) {
-        transaction = new FlatpakTransaction(resource, Transaction::InstallRole, true);
+        transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole, true);
         connect(resource, &FlatpakResource::propertyStateChanged, [resource, transaction, this] (FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state) {
             if (kind != FlatpakResource::RequiredRuntime) {
                 return;
@@ -1186,13 +1209,13 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
     } else {
         FlatpakResource *runtime = getRuntimeForApp(resource);
         if (runtime && !runtime->isInstalled()) {
-            transaction = new FlatpakTransaction(resource, runtime, Transaction::InstallRole);
+            transaction = new FlatpakJobTransaction(resource, runtime, Transaction::InstallRole);
         } else {
-            transaction = new FlatpakTransaction(resource, Transaction::InstallRole);
+            transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole);
         }
     }
 
-    connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
+    connect(transaction, &FlatpakJobTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
             updateAppState(installation, resource);
         }
@@ -1218,9 +1241,9 @@ Transaction* FlatpakBackend::removeApplication(AbstractResource *app)
     }
 
     FlatpakInstallation *installation = resource->installation();
-    FlatpakTransaction *transaction = new FlatpakTransaction(resource, Transaction::RemoveRole);
+    FlatpakJobTransaction *transaction = new FlatpakJobTransaction(resource, Transaction::RemoveRole);
 
-    connect(transaction, &FlatpakTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
+    connect(transaction, &FlatpakJobTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
             updateAppSize(installation, resource);
         }

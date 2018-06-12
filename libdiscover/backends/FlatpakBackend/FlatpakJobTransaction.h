@@ -19,8 +19,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef FLATPAKTRANSACTION_H
-#define FLATPAKTRANSACTION_H
+#ifndef FLATPAKJOBTRANSACTION_H
+#define FLATPAKJOBTRANSACTION_H
 
 #include <Transaction/Transaction.h>
 #include <QPointer>
@@ -32,15 +32,15 @@ extern "C" {
 }
 
 class FlatpakResource;
-class FlatpakTransactionJob;
-class FlatpakTransaction : public Transaction
+class FlatpakTransactionThread;
+class FlatpakJobTransaction : public Transaction
 {
 Q_OBJECT
 public:
-    FlatpakTransaction(FlatpakResource *app, Role role, bool delayStart = false);
-    FlatpakTransaction(FlatpakResource *app, FlatpakResource *runtime, Role role, bool delayStart = false);
+    FlatpakJobTransaction(FlatpakResource *app, Role role, bool delayStart = false);
+    FlatpakJobTransaction(FlatpakResource *app, FlatpakResource *runtime, Role role, bool delayStart = false);
 
-    ~FlatpakTransaction();
+    ~FlatpakJobTransaction();
 
     void cancel() override;
     void setRuntime(FlatpakResource *runtime);
@@ -57,8 +57,8 @@ private:
 
     QPointer<FlatpakResource> m_app;
     QPointer<FlatpakResource> m_runtime;
-    QPointer<FlatpakTransactionJob> m_appJob;
-    QList<QPointer<FlatpakTransactionJob> > m_jobs;
+    QPointer<FlatpakTransactionThread> m_appJob;
+    QList<QPointer<FlatpakTransactionThread> > m_jobs;
 };
 
-#endif // FLATPAKTRANSACTION_H
+#endif // FLATPAKJOBTRANSACTION_H

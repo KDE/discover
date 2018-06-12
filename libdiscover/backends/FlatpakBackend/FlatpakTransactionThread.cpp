@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "FlatpakTransactionJob.h"
+#include "FlatpakTransactionThread.h"
 #include "FlatpakResource.h"
 
 #include <QDebug>
@@ -28,7 +28,7 @@ static void flatpakInstallationProgressCallback(const gchar *stats, guint progre
     Q_UNUSED(estimating);
     Q_UNUSED(stats);
 
-    FlatpakTransactionJob *transactionJob = (FlatpakTransactionJob*)userData;
+    FlatpakTransactionThread *transactionJob = (FlatpakTransactionThread*)userData;
     if (!transactionJob) {
         return;
     }
@@ -36,7 +36,7 @@ static void flatpakInstallationProgressCallback(const gchar *stats, guint progre
     transactionJob->setProgress(progress);
 }
 
-FlatpakTransactionJob::FlatpakTransactionJob(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role)
+FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role)
     : QThread()
     , m_result(false)
     , m_progress(0)
@@ -48,17 +48,17 @@ FlatpakTransactionJob::FlatpakTransactionJob(FlatpakResource *app, const QPair<Q
     m_cancellable = g_cancellable_new();
 }
 
-FlatpakTransactionJob::~FlatpakTransactionJob()
+FlatpakTransactionThread::~FlatpakTransactionThread()
 {
     g_object_unref(m_cancellable);
 }
 
-void FlatpakTransactionJob::cancel()
+void FlatpakTransactionThread::cancel()
 {
     g_cancellable_cancel(m_cancellable);
 }
 
-void FlatpakTransactionJob::run()
+void FlatpakTransactionThread::run()
 {
     g_autoptr(GError) localError = nullptr;
     g_autoptr(FlatpakInstalledRef) ref = nullptr;
@@ -144,22 +144,22 @@ void FlatpakTransactionJob::run()
     setProgress(100);
 }
 
-FlatpakResource * FlatpakTransactionJob::app() const
+FlatpakResource * FlatpakTransactionThread::app() const
 {
     return m_app;
 }
 
-bool FlatpakTransactionJob::isRelated() const
+bool FlatpakTransactionThread::isRelated() const
 {
     return !m_relatedRef.isEmpty();
 }
 
-int FlatpakTransactionJob::progress() const
+int FlatpakTransactionThread::progress() const
 {
     return m_progress;
 }
 
-void FlatpakTransactionJob::setProgress(int progress)
+void FlatpakTransactionThread::setProgress(int progress)
 {
     if (m_progress != progress) {
         m_progress = progress;
@@ -167,12 +167,12 @@ void FlatpakTransactionJob::setProgress(int progress)
     }
 }
 
-QString FlatpakTransactionJob::errorMessage() const
+QString FlatpakTransactionThread::errorMessage() const
 {
     return m_errorMessage;
 }
 
-bool FlatpakTransactionJob::result() const
+bool FlatpakTransactionThread::result() const
 {
     return m_result;
 }
