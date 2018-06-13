@@ -69,6 +69,7 @@
 class OurSortFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
 {
     Q_OBJECT
+    Q_INTERFACES(QQmlParserStatus)
 public:
     void classBegin() override {}
     void componentComplete() override {
