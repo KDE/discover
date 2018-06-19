@@ -44,8 +44,6 @@ int main(int argc, char** argv)
         parser.addPositionalArgument(QStringLiteral("file"), i18n("File to which we'll export"));
         DiscoverBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);
-        parser.addHelpOption();
-        parser.addVersionOption();
         parser.process(app);
         about.processCommandLine(&parser);
         DiscoverBackendsFactory::processCommandLine(&parser, false);
