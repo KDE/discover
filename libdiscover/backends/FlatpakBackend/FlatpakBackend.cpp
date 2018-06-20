@@ -545,14 +545,6 @@ private:
     FlatpakRemote* m_remote;
 };
 
-void FlatpakBackend::finishInitialization()
-{
-    loadInstalledApps();
-    checkForUpdates();
-
-    acquireFetching(false);
-}
-
 void FlatpakBackend::loadAppsFromAppstreamData()
 {
     for (auto installation : qAsConst(m_installations)) {
@@ -631,8 +623,11 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
             addResource(resource);
         }
         if (!m_refreshAppstreamMetadataJobs) {
-            finishInitialization();
+            loadInstalledApps();
+            checkForUpdates();
+
         }
+        acquireFetching(false);
         fw->deleteLater();
     });
 }
