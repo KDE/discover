@@ -30,12 +30,14 @@
 
 #include <KLocalizedString>
 
-static int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage)
+int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage)
 {
+    const auto was = percentage;
     if (status != PackageKit::Transaction::StatusUnknown) {
         static const QMap<PackageKit::Transaction::Status, int> statuses = {
             { PackageKit::Transaction::Status::StatusDownload, 0 },
             { PackageKit::Transaction::Status::StatusInstall, 1},
+            { PackageKit::Transaction::Status::StatusRemove, 1},
             { PackageKit::Transaction::Status::StatusUpdate, 1}
         };
         const auto idx = statuses.value(status, -1);
@@ -45,7 +47,7 @@ static int percentageWithStatus(PackageKit::Transaction::Status status, uint per
         }
         percentage = (idx * 100 + percentage) / 2 /*the maximum in statuses*/;
     }
-    qDebug() << "reporing progress with status:" << status << percentage;
+    qDebug() << "reporting progress with status:" << status << percentage << was;
     return percentage;
 }
 
