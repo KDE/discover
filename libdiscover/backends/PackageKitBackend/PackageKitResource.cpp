@@ -276,7 +276,7 @@ void PackageKitResource::fetchDependencies()
 
     QSharedPointer<QJsonObject> packageDependencies(new QJsonObject);
     auto trans = PackageKit::Daemon::installPackage(id, PackageKit::Transaction::TransactionFlagSimulate);
-    connect(trans, &PackageKit::Transaction::errorCode, backend(), &PackageKitBackend::transactionError);
+    connect(trans, &PackageKit::Transaction::errorCode, this, [this](PackageKit::Transaction::Error, const QString& message) { qWarning() << "Transaction error: " << message << sender(); });
     connect(trans, &PackageKit::Transaction::package, this, [packageDependencies](PackageKit::Transaction::Info /*info*/, const QString &packageID, const QString &summary) {
         (*packageDependencies)[PackageKit::Daemon::packageName(packageID)] = summary ;
     });
