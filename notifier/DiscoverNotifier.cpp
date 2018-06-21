@@ -84,7 +84,7 @@ void DiscoverNotifier::updateStatusNotifier()
     for (BackendNotifierModule* module: m_backends)
         securityCount += module->securityUpdatesCount();
 
-    uint count = securityUpdatesCount();
+    uint count = securityCount;
     foreach(BackendNotifierModule* module, m_backends)
         count += module->updatesCount();
 

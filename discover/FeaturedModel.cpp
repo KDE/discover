@@ -125,7 +125,7 @@ void FeaturedModel::removeResource(AbstractResource* resource)
     if (index<0)
         return;
 
-    beginRemoveRows({}, index, 0);
+    beginRemoveRows({}, index, index);
     m_resources.removeAt(index);
     endRemoveRows();
 }
