@@ -72,6 +72,7 @@ QString PackageKitBackend::locateService(const QString &filename)
 
 PackageKitBackend::PackageKitBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
+    , m_appdata(new AppStream::Pool)
     , m_updater(new PackageKitUpdater(this))
     , m_refresher(nullptr)
     , m_isFetching(0)
@@ -93,18 +94,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 
     SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
 
-
-    QString error;
-    const bool b = m_appdata.load(&error);
     reloadPackageList();
-
-    if (!b && m_packages.packages.isEmpty()) {
-        qWarning() << "Could not open the AppStream metadata pool" << error;
-
-        QTimer::singleShot(0, this, [this]() {
-            Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
-        });
-    }
 
     setWhenAvailable(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache), [this](uint timeSince) {
         if (timeSince > 3600)
@@ -139,7 +129,18 @@ void PackageKitBackend::reloadPackageList()
         disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
     }
 
-    const auto components = m_appdata.components();
+    QString error;
+    m_appdata.reset(new AppStream::Pool);
+    const bool b = m_appdata->load(&error);
+    if (!b && m_packages.packages.isEmpty()) {
+        qWarning() << "Could not open the AppStream metadata pool" << error;
+
+        QTimer::singleShot(0, this, [this]() {
+            Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
+        });
+    }
+
+    const auto components = m_appdata->components();
     QStringList neededPackages;
     neededPackages.reserve(components.size());
     foreach(const AppStream::Component& component, components) {
@@ -181,8 +182,15 @@ void PackageKitBackend::reloadPackageList()
     }
 
     acquireFetching(false);
-    neededPackages.removeDuplicates();
-    resolvePackages(neededPackages);
+    if (!neededPackages.isEmpty()) {
+        neededPackages.removeDuplicates();
+        resolvePackages(neededPackages);
+    } else {
+        qDebug() << "empty appstream db";
+        if (PackageKit::Daemon::backendName() == QLatin1String("aptcc") || PackageKit::Daemon::backendName().isEmpty()) {
+            checkForUpdates();
+        }
+    }
 }
 
 AppPackageKitResource* PackageKitBackend::addComponent(const AppStream::Component& component, const QStringList& pkgNames)
@@ -355,6 +363,7 @@ void PackageKitBackend::checkForUpdates()
         m_refresher = PackageKit::Daemon::refreshCache(false);
         connect(m_refresher.data(), &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, [this]() {
+            m_refresher = nullptr;
             reloadPackageList();
             acquireFetching(false);
         });
@@ -365,7 +374,7 @@ void PackageKitBackend::checkForUpdates()
 
 QList<AppStream::Component> PackageKitBackend::componentsById(const QString& id) const
 {
-    return m_appdata.componentsById(id);
+    return m_appdata->componentsById(id);
 }
 
 ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters& filter)
@@ -378,7 +387,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
     } else if (filter.search.isEmpty()) {
         return new ResultsStream(QStringLiteral("PackageKitStream-all"), kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return !res->isTechnical(); }));
     } else {
-        const QList<AppStream::Component> components = m_appdata.search(filter.search);
+        const QList<AppStream::Component> components = m_appdata->search(filter.search);
         const QStringList ids = kTransform<QStringList>(components, [](const AppStream::Component& comp) { return comp.id(); });
         auto stream = new ResultsStream(QStringLiteral("PackageKitStream-search"));
         if (!ids.isEmpty()) {
