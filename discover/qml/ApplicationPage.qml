@@ -265,20 +265,6 @@ DiscoverPage {
             rowSpacing: 0
             columns: 2
 
-            // Date row
-            Label {
-                Layout.alignment: Qt.AlignRight
-                text: i18n("Release date:")
-                visible: releaseDateLabel.text.length !== 0
-            }
-            Label {
-                id: releaseDateLabel
-                Layout.fillWidth: true
-                elide: Text.ElideRight
-                text: appInfo.application.releaseDate.toDateString()
-                visible: releaseDateLabel.text.length !== 0
-            }
-
             // Category row
             Label {
                 Layout.alignment: Qt.AlignRight
@@ -298,11 +284,25 @@ DiscoverPage {
             }
             Label {
                 readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
+                readonly property string releaseDate: appInfo.application.releaseDate.toDateString()
+
+                function versionString() {
+                    if (version.length == 0) {
+                        return ""
+                    } else {
+                        if (releaseDate.length > 0) {
+                            return i18n("%1, released on %2", version, releaseDate)
+                        } else {
+                            return version
+                        }
+                    }
+                }
+
                 id: versionLabel
                 visible: text.length > 0
                 Layout.fillWidth: true
                 elide: Text.ElideRight
-                text: version ? version : ""
+                text: versionString()
             }
 
             // Size row
