@@ -148,8 +148,9 @@ void PackageKitBackend::reloadPackageList()
 
         const auto pkgNames = component.packageNames();
         if (pkgNames.isEmpty()) {
-            if (component.kind() == AppStream::Component::KindDesktopApp) {
-                const QString file = locateService(component.desktopId());
+            auto launchable = component.launchable(AppStream::Launchable::KindDesktopId);
+            if (component.kind() == AppStream::Component::KindDesktopApp && !launchable.entries().isEmpty()) {
+                const QString file = locateService(launchable.entries().constFirst());
                 if (!file.isEmpty()) {
                     auto trans = PackageKit::Daemon::searchFiles(file);
                     connect(trans, &PackageKit::Transaction::package, this, [trans](PackageKit::Transaction::Info info, const QString &packageID){
