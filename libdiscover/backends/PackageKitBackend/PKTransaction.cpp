@@ -93,25 +93,33 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
     connect(m_trans.data(), &PackageKit::Transaction::mediaChangeRequired, this, &PKTransaction::mediaChange);
     connect(m_trans.data(), &PackageKit::Transaction::requireRestart, this, &PKTransaction::requireRestart);
     connect(m_trans.data(), &PackageKit::Transaction::repoSignatureRequired, this, &PKTransaction::repoSignatureRequired);
-    connect(m_trans.data(), &PackageKit::Transaction::itemProgress, this, &PKTransaction::progressChanged);
+    connect(m_trans.data(), &PackageKit::Transaction::percentageChanged, this, &PKTransaction::progressChanged);
+    connect(m_trans.data(), &PackageKit::Transaction::statusChanged, this, &PKTransaction::statusChanged);
     connect(m_trans.data(), &PackageKit::Transaction::eulaRequired, this, &PKTransaction::eulaRequired);
     connect(m_trans.data(), &PackageKit::Transaction::allowCancelChanged, this, &PKTransaction::cancellableChanged);
     
     setCancellable(m_trans->allowCancel());
 }
 
-void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::Status status, uint percentage)
+void PKTransaction::statusChanged()
 {
-    PackageKitResource * res = qobject_cast<PackageKitResource*>(resource());
-    if (!res->allPackageNames().contains(PackageKit::Daemon::packageName(id)))
-        return;
+    setStatus(m_trans->status() == PackageKit::Transaction::StatusDownload ? Transaction::DownloadingStatus : Transaction::CommittingStatus);
+    progressChanged();
+}
 
-    setProgress(percentage);
+int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage);
 
-    if (status == PackageKit::Transaction::StatusDownload)
-        setStatus(Transaction::DownloadingStatus);
-    else
-        setStatus(Transaction::CommittingStatus);
+void PKTransaction::progressChanged()
+{
+    auto percent = m_trans->percentage();
+    if (percent == 101) {
+        qWarning() << "percentage cannot be calculated";
+        percent = 50;
+    }
+
+    const auto processedPercentage = percentageWithStatus(m_trans->status(), qBound<int>(0, percent, 100));
+    if (processedPercentage >= 0)
+        setProgress(processedPercentage);
 }
 
 void PKTransaction::cancellableChanged()
