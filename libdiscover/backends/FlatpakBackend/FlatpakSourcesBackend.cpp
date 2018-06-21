@@ -291,5 +291,6 @@ bool FlatpakSourcesBackend::moveSource(const QString& sourceId, int delta)
 
 int FlatpakSourcesBackend::originIndex(const QString& sourceId) const
 {
-    return sourceById(sourceId)->row();
+    auto item = sourceById(sourceId);
+    return item ? item->row() : INT_MAX;
 }
