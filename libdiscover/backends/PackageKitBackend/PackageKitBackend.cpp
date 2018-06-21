@@ -106,7 +106,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
         });
     }
 
-    setWhenAvailable(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache), [this, error](uint timeSince) {
+    setWhenAvailable(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache), [this](uint timeSince) {
         if (timeSince > 3600)
             checkForUpdates();
     }, this);
