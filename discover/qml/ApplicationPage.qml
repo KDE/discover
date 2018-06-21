@@ -265,6 +265,20 @@ DiscoverPage {
             rowSpacing: 0
             columns: 2
 
+            // Date row
+            Label {
+                Layout.alignment: Qt.AlignRight
+                text: i18n("Release date:")
+                visible: releaseDateLabel.text.length !== 0
+            }
+            Label {
+                id: releaseDateLabel
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                text: appInfo.application.releaseDate.toDateString()
+                visible: releaseDateLabel.text.length !== 0
+            }
+
             // Category row
             Label {
                 Layout.alignment: Qt.AlignRight
