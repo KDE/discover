@@ -28,11 +28,12 @@
 #include <QJsonArray>
 #include <QDebug>
 
+const QStringList PackageKitResource::m_objects({ QStringLiteral("qrc:/qml/DependenciesButton.qml") });
+
 PackageKitResource::PackageKitResource(QString packageName, QString summary, PackageKitBackend* parent)
     : AbstractResource(parent)
     , m_summary(std::move(summary))
     , m_name(std::move(packageName))
-    , m_objects({ QStringLiteral("qrc:/qml/DependenciesButton.qml") })
 {
     setObjectName(m_name);
 

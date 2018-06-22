@@ -108,7 +108,7 @@ class PackageKitResource : public AbstractResource
         const QString m_name;
         PackageKit::Details m_details;
         int m_dependenciesCount = -1;
-        const QStringList m_objects;
+        static const QStringList m_objects;
 };
 
 #endif // PACKAGEKITRESOURCE_H

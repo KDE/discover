@@ -72,7 +72,7 @@ public:
 
     QSharedPointer<QSnapdSnap> m_snap;
     mutable QVariant m_icon;
-    const QStringList m_objects;
+    static const QStringList m_objects;
 };
 
 #endif // SNAPRESOURCE_H
