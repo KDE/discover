@@ -245,3 +245,7 @@ QVector<int> KNSResource::linkIds() const
     return ids;
 }
 
+QUrl KNSResource::donationURL()
+{
+    return QUrl(m_entry.donationLink());
+}

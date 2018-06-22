@@ -68,6 +68,7 @@ public:
     QString sourceIcon() const override { return QStringLiteral("get-hot-new-stuff"); }
     QDate releaseDate() const override;
     QVector<int> linkIds() const;
+    QUrl donationURL() override;
 
 private:
     const QStringList m_categories;
