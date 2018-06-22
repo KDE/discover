@@ -1101,22 +1101,33 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
     } else if (!filter.resourceUrl.isEmpty() || !filter.extends.isEmpty())
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
 
-    QVector<AbstractResource*> ret;
-    foreach(AbstractResource* r, m_resources) {
-        if (r->isTechnical() && filter.state != AbstractResource::Upgradeable) {
-            continue;
-        }
+    auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
+    auto f = [this, stream, filter] () {
+        QVector<AbstractResource*> ret;
+        foreach(AbstractResource* r, m_resources) {
+            if (r->isTechnical() && filter.state != AbstractResource::Upgradeable) {
+                continue;
+            }
 
-        if (r->state() < filter.state)
-            continue;
+            if (r->state() < filter.state)
+                continue;
 
-        if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)) {
-            ret += r;
+            if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)) {
+                ret += r;
+            }
         }
-    }
-    auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l,r); };
-    std::sort(ret.begin(), ret.end(), f);
-    return new ResultsStream(QStringLiteral("FlatpakStream"), ret);
+        auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l,r); };
+        std::sort(ret.begin(), ret.end(), f);
+        if (!ret.isEmpty())
+            Q_EMIT stream->resourcesFound(ret);
+        stream->finish();
+    };
+    if (isFetching()) {
+            connect(this, &FlatpakBackend::initialized, stream, f);
+        } else {
+            QTimer::singleShot(0, this, f);
+        }
+    return stream;
 }
 
 ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
@@ -1135,19 +1146,16 @@ ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
                 auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l,r); };
                 std::sort(resources.begin(), resources.end(), f);
 
-                QTimer::singleShot(0, stream, [resources, stream] () {
-                    if (!resources.isEmpty())
-                        Q_EMIT stream->resourcesFound(resources);
-                    stream->finish();
-                });
+                if (!resources.isEmpty())
+                    Q_EMIT stream->resourcesFound(resources);
+                stream->finish();
             };
 
             if (isFetching()) {
                 connect(this, &FlatpakBackend::initialized, stream, f);
             } else {
-                f();
+                QTimer::singleShot(0, this, f);
             }
-
             return stream;
         }
     }

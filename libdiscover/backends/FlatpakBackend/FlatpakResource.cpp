@@ -518,7 +518,8 @@ void FlatpakResource::setState(AbstractResource::State state)
     if (m_state != state) {
         m_state = state;
 
-        Q_EMIT stateChanged();
+        if (!backend()->isFetching())
+            Q_EMIT stateChanged();
     }
 }
 
