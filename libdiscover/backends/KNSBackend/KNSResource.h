@@ -67,6 +67,7 @@ public:
     QString executeLabel() const override;
     QString sourceIcon() const override { return QStringLiteral("get-hot-new-stuff"); }
     QDate releaseDate() const override;
+    QVector<int> linkIds() const;
 
 private:
     const QStringList m_categories;

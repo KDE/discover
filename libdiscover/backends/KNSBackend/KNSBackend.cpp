@@ -255,11 +255,13 @@ public:
         TransactionModel::global()->addTransaction(this);
 
         QTimer::singleShot(0, this, [this, res]() {
-            auto engine = res->knsBackend()->engine();
-            if (this->role() == InstallRole)
-                engine->install(res->entry());
-            else if(this->role() == RemoveRole)
-                engine->uninstall(res->entry());
+            for(auto i : res->linkIds()) {
+                auto engine = res->knsBackend()->engine();
+                if (this->role() == InstallRole)
+                    engine->install(res->entry(), i);
+                else if(this->role() == RemoveRole)
+                    engine->uninstall(res->entry());
+            }
         });
     }
 
