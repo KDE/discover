@@ -142,7 +142,6 @@ DiscoverPage {
         }
 
         ApplicationScreenshots {
-            id: screenshots
             Layout.fillWidth: true
             visible: count > 0
             resource: appInfo.application
@@ -188,7 +187,6 @@ DiscoverPage {
                 }
             }
         }
-
 
         LinkButton {
             id: addonsButton
