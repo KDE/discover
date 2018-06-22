@@ -29,6 +29,7 @@ import "navigation.js" as Navigation
 DiscoverPage {
     id: appInfo
     property QtObject application: null
+    readonly property int visibleReviews: 3
     clip: true
 
     background: Rectangle { color: Kirigami.Theme.viewBackgroundColor }
@@ -197,11 +198,27 @@ DiscoverPage {
         }
 
 
-        Kirigami.Heading {
+        RowLayout {
             Layout.topMargin: Kirigami.Units.largeSpacing
-            text: i18n("Reviews")
-            level: 2
-            visible: rep.count > 0
+            Layout.fillWidth: true
+
+            Kirigami.Heading {
+                Layout.fillWidth: true
+                text: i18n("Reviews")
+                Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
+                level: 2
+                visible: rep.count > 0
+            }
+
+            LinkButton {
+                visible: reviewsModel.count > visibleReviews
+                text: i18n("Show all %1 reviews...", reviewsModel.count)
+                Layout.alignment: Qt.AlignRight | Qt.AlignBottom
+
+                onClicked: {
+                    reviewsSheet.open()
+                }
+            }
         }
 
         Rectangle {
@@ -215,7 +232,7 @@ DiscoverPage {
             id: rep
             model: PaginateModel {
                 sourceModel: reviewsSheet.model
-                pageSize: 3
+                pageSize: visibleReviews
             }
             delegate: ReviewDelegate {
                 Layout.topMargin: Kirigami.Units.largeSpacing
@@ -225,19 +242,28 @@ DiscoverPage {
             }
         }
         LinkButton {
-            text: appInfo.application.isInstalled? i18n("Be the first to write a review!") : i18n("Install this app and be the first to write a review!")
+            function writeReviewText() {
+                if (appInfo.application.isInstalled) {
+                    if (reviewsModel.count > 0) {
+                        return i18n("Write a review!")
+                    } else {
+                        return i18n("Be the first to write a review!")
+                    }
+                // App not installed
+                } else {
+                    if (reviewsModel.count > 0) {
+                        return i18n("Install this app to write a review!")
+                    } else {
+                        return i18n("Install this app and be the first to write a review!")
+                    }
+                }
+            }
+            text: writeReviewText()
+            Layout.alignment: Qt.AlignCenter
             onClicked: reviewsSheet.openReviewDialog()
             enabled: appInfo.application.isInstalled
-            visible: !commentsButton.visible && reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
-        }
-        LinkButton {
-            id: commentsButton
-            visible: reviewsModel.count > 0
-            text: i18n("Show all %1 reviews...", reviewsModel.count)
-
-            onClicked: {
-                reviewsSheet.open()
-            }
+            visible: reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
+            Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.bottomMargin: Kirigami.Units.largeSpacing
         }
 
