@@ -3,7 +3,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.2 as Kirigami
+import org.kde.kirigami 2.5 as Kirigami
 import "navigation.js" as Navigation
 
 Kirigami.ApplicationWindow
@@ -27,14 +27,6 @@ Kirigami.ApplicationWindow
     objectName: "DiscoverMainWindow"
     title: leftPage ? leftPage.title : ""
 
-    ConditionalObject {
-        id: whichToolbar
-        condition: window.wideScreen
-
-        componentTrue: Component { id: desktopHeader; Kirigami.ToolBarApplicationHeader {} }
-        componentFalse: Component { id: mobileHeader; Kirigami.ApplicationHeader {} }
-    }
-    header: whichToolbar.object
 
     visible: true
 
@@ -42,6 +34,7 @@ Kirigami.ApplicationWindow
     minimumHeight: 300
 
     pageStack.defaultColumnWidth: Kirigami.Units.gridUnit * 25
+    pageStack.globalToolBar.style: window.wideScreen ? Kirigami.ApplicationHeaderStyle.ToolBar : Kirigami.ApplicationHeaderStyle.Breadcrumb
 
     readonly property var leftPage: window.stack.depth>0 ? window.stack.get(0) : null
 
