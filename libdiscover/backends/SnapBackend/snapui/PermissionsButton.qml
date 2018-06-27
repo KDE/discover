@@ -26,9 +26,8 @@ Button
     id: root
     text: i18n("Configure permissions...")
 
-    visible: resource.isInstalled
     onClicked: overlay.open()
-    visible: view.count > 0
+    visible: resource.isInstalled && view.count > 0
 
     Popup {
         id: overlay
