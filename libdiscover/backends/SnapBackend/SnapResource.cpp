@@ -216,12 +216,6 @@ bool SnapResource::isTechnical() const
     return m_snap->snapType() != QLatin1String("app");
 }
 
-QUrl SnapResource::url() const
-{
-    //FIXME interim, until it has an appstreamId
-    return QUrl(QStringLiteral("snap://") + packageName());
-}
-
 void SnapResource::setSnap(const QSharedPointer<QSnapdSnap>& snap)
 {
     Q_ASSERT(snap->name() == m_snap->name());
@@ -325,4 +319,10 @@ QAbstractItemModel* SnapResource::plugs(QObject* p)
 
 
     return new PlugsModel(m_snap.data(), qobject_cast<SnapBackend*>(parent()), p);
+}
+
+QString SnapResource::appstreamId() const
+{
+    const auto ids = m_snap->commonIds();
+    return ids.isEmpty() ? QLatin1String("com.snap.") + m_snap->name() : ids.first();
 }

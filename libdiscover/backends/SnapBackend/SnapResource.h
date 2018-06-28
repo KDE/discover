@@ -56,7 +56,6 @@ public:
     void fetchChangelog() override;
     void fetchScreenshots() override;
     QList<PackageState> addonsInformation() override { return {}; }
-    QUrl url() const override;
     void setSnap(const QSharedPointer<QSnapdSnap> &snap);
 
     void setState(AbstractResource::State state);
@@ -65,6 +64,7 @@ public:
     QDate releaseDate() const override;
 
     Q_SCRIPTABLE QAbstractItemModel* plugs(QObject* parents);
+    QString appstreamId() const override;
 
 public:
     void gotIcon();
