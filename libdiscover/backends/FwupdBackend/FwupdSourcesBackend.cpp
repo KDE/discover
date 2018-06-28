@@ -20,41 +20,67 @@
  ***************************************************************************/
 
 #include "FwupdSourcesBackend.h"
-#include "FwupdBackend.h"
 
 #include <QDebug>
 #include <QAction>
 #include <QString>
 
+class FwupdSourcesModel : public QStandardItemModel
+{
+public:
+    FwupdSourcesModel(FwupdSourcesBackend* backend)
+        : QStandardItemModel(backend)
+        , m_backend(backend) {}
 
+    QHash<int, QByteArray> roleNames() const override
+    {
+        auto roles = QStandardItemModel::roleNames();
+        roles[Qt::CheckStateRole] = "checked";
+        return roles;
+    }
+
+    bool setData(const QModelIndex & index, const QVariant & value, int role) override {
+        auto item = itemFromIndex(index);
+        if (!item)
+            return false;
+
+        switch(role) {
+            case Qt::CheckStateRole: {
+             // To Do Show Agrement
+             status = fwupd_remote_get_enabled(fwupd_client_get_remote_by_id(m_backend->backend->client,item->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(),NULL,NULL));
+             fwupd_client_modify_remote(m_backend->backend->client,item->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(),QString(QLatin1String("Enabled")).toUtf8().constData(),(!status) ? (QString(QLatin1String("true")).toUtf8().constData()) : (QString(QLatin1String("false")).toUtf8().constData()),NULL,NULL);
+             return true;
+            }
+        }
+        item->setData(value, role);
+        return true;
+    }
+
+private:
+    FwupdSourcesBackend* m_backend;
+    bool status;
+};
 
 FwupdSourcesBackend::FwupdSourcesBackend(AbstractResourcesBackend * parent)
     : AbstractSourcesBackend(parent)
-    , m_sources(new QStandardItemModel(this))
-    , m_testAction(new QAction(QIcon::fromTheme(QStringLiteral("kalgebra")), QStringLiteral("FwupdAction"), this))
+    , m_sources(new FwupdSourcesModel(this))
 {
-    FwupdBackend* backend = qobject_cast<FwupdBackend*>(parent);
+    backend = qobject_cast<FwupdBackend*>(parent);
     g_autoptr(GPtrArray) remotes = NULL;
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = NULL;
     /* find all remotes */
     remotes = fwupd_client_get_remotes (backend->client,cancellable,&error);
-    
-    for (guint i = 0; i < remotes->len; i++) {
-        FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index (remotes, i);
-        g_autofree gchar *id = NULL;
-        /* ignore these, they're built in */
-        if (fwupd_remote_get_kind (remote) == FWUPD_REMOTE_KIND_LOCAL)
-            continue;
-        /* create something that we can use to enable/disable */
-        id = g_strdup_printf ("org.fwupd.%s.remote", fwupd_remote_get_id (remote));
-        addSource(QLatin1String(id));
-    }
-    //for (int i = 0; i<10; ++i)
-      //s  addSource(QStringLiteral("FwupdSource%1").arg(i));
-
-    connect(m_testAction, &QAction::triggered, [](){ qDebug() << "action triggered!"; });
-    connect(m_sources, &QStandardItemModel::itemChanged, this, [](QStandardItem* item) { qDebug() << "FwupdSource changed" << item << item->checkState(); });
+     if(remotes != NULL)
+     {
+        for (int i = 0; i < (int)remotes->len; i++)
+        {
+            FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index (remotes, i);
+            if (fwupd_remote_get_kind (remote) == FWUPD_REMOTE_KIND_LOCAL)
+                continue;
+            addSource(QLatin1String(fwupd_remote_get_id (remote)));
+        }
+      }
 }
 
 QAbstractItemModel* FwupdSourcesBackend::sources()
@@ -63,15 +89,22 @@ QAbstractItemModel* FwupdSourcesBackend::sources()
 }
 
 bool FwupdSourcesBackend::addSource(const QString& id)
-{
+{   
+    g_autoptr(GCancellable) cancellable = g_cancellable_new();
+    g_autoptr(GError) error = NULL;
+    FwupdBackend* backend = qobject_cast<FwupdBackend*>(parent());
+    FwupdRemote* remote;
+
     if (id.isEmpty())
         return false;
     
+    remote = fwupd_client_get_remote_by_id(backend->client,id.toUtf8().constData(),cancellable,&error);
 
     QStandardItem* it = new QStandardItem(id);
-    it->setData(QVariant(id + QLatin1Char(' ') + id), Qt::ToolTipRole);
+    it->setData(id, AbstractSourcesBackend::IdRole);
+    it->setData(QVariant(QLatin1Literal(fwupd_remote_get_title (remote))), Qt::ToolTipRole);
     it->setCheckable(true);
-    it->setCheckState(Qt::Checked);
+    it->setCheckState(!fwupd_remote_get_enabled(remote) ? Qt::Unchecked : Qt::Checked);
     m_sources->appendRow(it);
     return true;
 }
@@ -89,6 +122,6 @@ bool FwupdSourcesBackend::removeSource(const QString& id)
 
 QList<QAction*> FwupdSourcesBackend::actions() const
 {
-    return QList<QAction*>() << m_testAction;
+    return  m_actions ;
 }
 

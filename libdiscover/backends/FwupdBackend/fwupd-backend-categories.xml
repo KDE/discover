@@ -12,17 +12,6 @@
     </Include>
 
     <Menu>
-      <Name>Devices</Name>
-      <Image>pkcategories/officecrop.jpg</Image>
-      <Icon>applications-office</Icon>
-      <Include>
-        <And>
-          <Category>Devices</Category>
-        </And>
-      </Include>
-    </Menu>
-
-    <Menu>
       <Name>Releases</Name>
       <Image>pkcategories/officecrop.jpg</Image>
       <Icon>applications-office</Icon>

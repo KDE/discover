@@ -25,22 +25,25 @@
 #include <resources/AbstractSourcesBackend.h>
 #include <QStandardItemModel>
 
+#include "FwupdBackend.h"
+
+class FwupdSourcesModel;
 
 class FwupdSourcesBackend : public AbstractSourcesBackend
 {
 public:
     explicit FwupdSourcesBackend(AbstractResourcesBackend * parent);
 
+    FwupdBackend* backend ;
     QAbstractItemModel* sources() override;
     bool addSource(const QString& id) override;
     bool removeSource(const QString& id) override;
-    QString idDescription() override { return QStringLiteral("Random weird text"); }
+    QString idDescription() override { return QStringLiteral(""); }
     QList<QAction*> actions() const override;
-    bool supportsAdding() const override { return true; }
-
+    bool supportsAdding() const override { return false; }
 private:
-    QStandardItemModel* m_sources;
-    QAction* m_testAction;
+    FwupdSourcesModel* m_sources;
+    QList<QAction*> m_actions;
 };
 
 #endif // FWUPDSOURCESBACKEND_H

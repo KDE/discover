@@ -19,25 +19,126 @@
  ***************************************************************************/
 
 #include "FwupdTransaction.h"
-#include "FwupdBackend.h"
-#include "FwupdResource.h"
+
 #include <QTimer>
 #include <QDebug>
 #include <KRandom>
 
-// #define TEST_PROCEED
+#define TEST_PROCEED
 
-FwupdTransaction::FwupdTransaction(FwupdResource* app, Role role)
-    : FwupdTransaction(app, {}, role)
+FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, Role role)
+    : FwupdTransaction(app, backend,{}, role)
 {
 }
 
-FwupdTransaction::FwupdTransaction(FwupdResource* app, const AddonList& addons, Transaction::Role role)
+FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, const AddonList& addons, Transaction::Role role)
     : Transaction(app->backend(), app, role, addons)
     , m_app(app)
+    , m_backend(backend)
 {
     setCancellable(true);
+    if(role == InstallRole)
+    {
+       if(!FwupdCheck())
+           qWarning() << "Error In Install!";
+    }
+    else if(role == RemoveRole)
+    {
+        if(!FwupdRemove())
+           qWarning() << "Error in Remove!";
+    }
+
     iterateTransaction();
+}
+
+FwupdTransaction::~FwupdTransaction()
+{
+    
+}
+
+bool FwupdTransaction::FwupdCheck()
+{
+    g_autoptr(GCancellable) cancellable = g_cancellable_new();
+    g_autoptr(GError) error = NULL;
+    
+    if(m_app->isDeviceLocked)
+    {
+        const gchar *device_id;
+        device_id = m_app->m_deviceID.toUtf8().constData();
+        if(device_id == NULL)
+        {
+            qWarning("No Device ID Set");
+            return false;
+        }
+        if (!fwupd_client_unlock (m_backend->client, device_id,cancellable, &error))
+        {
+            m_backend->FwupdHandleError(&error);
+            return false;
+        }
+        return true;
+     }
+    if(!FwupdInstall())
+    {
+        // To DO error handling
+        return false;
+    }
+    return true;
+    
+}
+
+bool FwupdTransaction::FwupdInstall()
+{
+    const gchar *device_id;
+    FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;//Removed 0 check for ussage
+    GFile *local_file;
+    g_autofree gchar *filename = NULL;
+    g_autoptr(GCancellable) cancellable = g_cancellable_new();
+    g_autoptr(GError) error = NULL;
+    
+    local_file = m_app->m_file;
+    
+    if(local_file == NULL)
+    {
+        //to Do error handling
+        qWarning("No Local File Set For this Resource");
+        return false;
+    }
+    
+    filename = g_file_get_path (local_file);
+    
+    if (!g_file_query_exists (local_file, cancellable)) 
+    {
+        const gchar *uri = m_app->m_updateURI.toUtf8().constData();
+         if(!m_backend->FwupdDownloadFile(uri,filename))
+            return false;
+    }
+    
+    /* limit to single device? */
+    device_id = m_app->m_deviceID.toUtf8().constData();
+    if (device_id == NULL)
+        device_id = FWUPD_DEVICE_ID_ANY;
+
+    /* only offline supported */
+    if (m_app->isOnlyOffline)
+        install_flags = FWUPD_INSTALL_FLAG_OFFLINE; // removed the bit wise or operation |=
+
+    if (!fwupd_client_install (m_backend->client, device_id,filename, install_flags,cancellable, &error)) {
+        m_backend->FwupdHandleError(&error);
+        return false;
+    }
+    return true;
+}
+
+bool FwupdTransaction::FwupdRemove()
+{
+    // To Do Implement It
+    return true;
+}
+
+int FwupdTransaction::speed()
+{
+    //To Do Implement It
+    return 0;
 }
 
 void FwupdTransaction::iterateTransaction()
@@ -47,8 +148,9 @@ void FwupdTransaction::iterateTransaction()
 
     setStatus(CommittingStatus);
     if(progress()<100) {
-        setProgress(qBound(0, progress()+(KRandom::random()%30), 100));
-        QTimer::singleShot(/*KRandom::random()%*/100, this, &FwupdTransaction::iterateTransaction);
+        setProgress(fwupd_client_get_percentage (m_backend->client));
+        
+        QTimer::singleShot(100, this, &FwupdTransaction::iterateTransaction);
     } else
 #ifdef TEST_PROCEED
         Q_EMIT proceedRequest(QStringLiteral("yadda yadda"), QStringLiteral("Biii BOooo<ul><li>A</li><li>A</li><li>A</li><li>A</li></ul>"));

@@ -7,6 +7,7 @@ set(fwupd-backend_SRCS
     FwupdReviewsBackend.cpp
     FwupdTransaction.cpp
     FwupdSourcesBackend.cpp
+    FwupdUpdater.cpp
 )
 
 

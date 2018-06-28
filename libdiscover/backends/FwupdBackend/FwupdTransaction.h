@@ -22,6 +22,8 @@
 #define FWUPDTRANSACTION_H
 
 #include <Transaction/Transaction.h>
+#include "FwupdBackend.h"
+#include "FwupdResource.h"
 
 
 class FwupdResource;
@@ -29,11 +31,15 @@ class FwupdTransaction : public Transaction
 {
     Q_OBJECT
     public:
-        FwupdTransaction(FwupdResource* app, Role role);
-        FwupdTransaction(FwupdResource* app, const AddonList& list, Role role);
-
+        FwupdTransaction(FwupdResource* app, FwupdBackend* backend, Role role);
+        FwupdTransaction(FwupdResource* app, FwupdBackend* backend, const AddonList& list, Role role);
+        ~FwupdTransaction();
+        bool FwupdCheck();
+        bool FwupdInstall();
+        bool FwupdRemove();
         void cancel() override;
         void proceed() override;
+        int speed();
 
     private Q_SLOTS:
         void iterateTransaction();
@@ -42,6 +48,7 @@ class FwupdTransaction : public Transaction
     private:
         bool m_iterate = true;
         FwupdResource* m_app;
+        FwupdBackend* m_backend;
 };
 
 #endif // FWUPDTRANSACTION_H

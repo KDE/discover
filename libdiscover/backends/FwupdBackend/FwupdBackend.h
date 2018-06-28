@@ -24,6 +24,7 @@
 
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
+#include <QSet>
 
 extern "C" {
 #include <fwupd.h>
@@ -39,18 +40,18 @@ extern "C" {
 #include <libsoup/soup-requester.h>
 #include <libsoup/soup.h>
 
-
+#define FWUPD_DEBUG // UnComment This to see all debug messages
 
 class QAction;
 class FwupdReviewsBackend;
-class StandardBackendUpdater;
+class FwupdUpdater;
 class FwupdResource;
 class FwupdBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 Q_PROPERTY(int startElements MEMBER m_startElements)
 public:
-    explicit FwupdBackend(QObject* parent = nullptr);
+    explicit FwupdBackend(QObject* parent = NULL);
     ~FwupdBackend();
 
     int updatesCount() const override;
@@ -70,8 +71,27 @@ public:
     QString displayName() const override;
     bool hasApplications() const override;
     FwupdClient *client;
-    GPtrArray *to_download;
-    GPtrArray *to_ignore;
+    GPtrArray *toDownload;
+    GPtrArray *toIgnore;
+    
+    bool FwupdDownloadFile(const gchar *uri,const gchar *filename);
+    GBytes* FwupdDownloadData(const gchar *uri); 
+    bool FwupdRefreshRemotes(guint cache_age);
+    bool FwupdRefreshRemote(FwupdRemote *remote,guint cache_age);
+    gchar* FwupdCacheFile(const gchar *kind,const gchar *resource);
+    bool FwupdDownloadAllScheduled(guint cache_age);
+    bool FwupdAddToScheduleForDownload(const gchar * uri);
+    FwupdResource * FwupdCreateDevice(FwupdDevice *device);
+    FwupdResource * FwupdCreateRelease(FwupdDevice *device);
+    bool FwupdAddToSchedule(FwupdDevice *device);
+    gchar* FwupdGetChecksum(const gchar *filename,GChecksumType checksum_type);
+    gchar* FwupdBuildDeviceID(FwupdDevice* device);
+    void FwupdAddUpdates();
+    void FwupdSetReleaseDetails(FwupdResource *res,FwupdRelease *rel);
+    void FwupdSetDeviceDetails(FwupdResource *res,FwupdDevice *device);
+    void FwupdHandleError(GError **perror);
+    QSet<AbstractResource*> FwupdGetAllUpdates();
+    QString FwupdGetAppName(QString ID);
 
 
 public Q_SLOTS:
@@ -81,14 +101,15 @@ private:
     void populate(const QString& name);
 
     QHash<QString, FwupdResource*> m_resources;
-    StandardBackendUpdater* m_updater;
+    FwupdUpdater* m_updater;
     FwupdReviewsBackend* m_reviews;
     bool m_fetching;
     int m_startElements;
-
+    QList<FwupdResource*> m_toUpdate;
     
-    g_autofree gchar *user_agent = NULL;
-    g_autoptr(SoupSession) soup_session = NULL;
+    g_autofree gchar *userAgent = NULL;
+    g_autoptr(SoupSession) soupSession = NULL;
+
 
 };
 

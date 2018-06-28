@@ -20,33 +20,20 @@
  ***************************************************************************/
 
 #include "FwupdResource.h"
-#include "FwupdBackend.h"
+
 
 #include <Transaction/AddonList.h>
-#include <krandom.h>
 #include <QDesktopServices>
 #include <QStringList>
 #include <QTimer>
-
-Q_GLOBAL_STATIC_WITH_ARGS(QVector<QString>, s_icons, ({ QLatin1String("kdevelop"), QLatin1String("kalgebra"), QLatin1String("kmail"), QLatin1String("akregator"), QLatin1String("korganizer") }))
 
 FwupdResource::FwupdResource(QString name, bool isTechnical, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_name(std::move(name))
     , m_state(State::Broken)
-    , m_iconName((*s_icons)[KRandom::random() % s_icons->size()])
-    , m_addons({ PackageState(QStringLiteral("a"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("b"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("c"), QStringLiteral("aaaaaa"), false)})
     , m_isTechnical(isTechnical)
 {
-    const int nofScreenshots = KRandom::random() % 5;
-    m_screenshots = QList<QUrl>{
-        QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/000/014/863/large.png")),
-        QUrl(QStringLiteral("https://c2.staticflickr.com/6/5656/21772158034_dc84382527_o.jpg")),
-        QUrl(QStringLiteral("https://c1.staticflickr.com/9/8479/8166397343_b78106f353_k.jpg")),
-        QUrl(QStringLiteral("https://c2.staticflickr.com/4/3685/9954407993_dad10a6943_k.jpg")),
-        QUrl(QStringLiteral("https://c1.staticflickr.com/1/653/22527103378_8ce572e1de_k.jpg"))
-    }.mid(nofScreenshots);
-    m_screenshotThumbnails = m_screenshots;
+
 }
 
 QList<PackageState> FwupdResource::addonsInformation()
@@ -57,6 +44,11 @@ QList<PackageState> FwupdResource::addonsInformation()
 QString FwupdResource::availableVersion() const
 {
     return m_version;
+}
+
+QStringList FwupdResource::allResourceNames() const
+{
+    return { m_name };
 }
 
 QStringList FwupdResource::categories()
@@ -85,22 +77,22 @@ QUrl FwupdResource::homepage()
 
 QUrl FwupdResource::helpURL()
 {
-    return QUrl(QStringLiteral("http://very-very-excellent-docs.lol"));
+    return m_homepage;
 }
 
 QUrl FwupdResource::bugURL()
 {
-    return QUrl(QStringLiteral("file:///dev/null"));
+    return m_homepage;
 }
 
 QUrl FwupdResource::donationURL()
 {
-    return QUrl(QStringLiteral("https://youtu.be/0o8XMlL8rqY"));
+    return m_homepage;
 }
 
 QVariant FwupdResource::icon() const
 {
-    return isTechnical() ? QStringLiteral("kalarm") : m_iconName;
+    return  m_iconName;
 }
 
 QString FwupdResource::installedVersion() const
@@ -130,7 +122,7 @@ QString FwupdResource::vendor() const
 
 QString FwupdResource::origin() const
 {
-    return QStringLiteral("FwupdSource1");
+    return m_homepage.toString();
 }
 
 QString FwupdResource::packageName() const
@@ -140,7 +132,7 @@ QString FwupdResource::packageName() const
 
 QString FwupdResource::section()
 {
-    return QStringLiteral("fwupd");
+    return QStringLiteral("Firmware Updates");
 }
 
 AbstractResource::State FwupdResource::state()
@@ -154,11 +146,6 @@ void FwupdResource::fetchChangelog()
     log.replace(QLatin1Char('\n'), QLatin1String("<br />"));
 
     emit changelogFetched(log);
-}
-
-void FwupdResource::fetchScreenshots()
-{
-    Q_EMIT screenshotsFetched(m_screenshotThumbnails, m_screenshots);
 }
 
 void FwupdResource::setState(AbstractResource::State state)
@@ -195,5 +182,5 @@ void FwupdResource::invokeApplication() const
 
 QUrl FwupdResource::url() const
 {
-    return QUrl(QLatin1String("fwupd://") + packageName().replace(QLatin1Char(' '), QLatin1Char('.')));
+    return m_homepage;
 }

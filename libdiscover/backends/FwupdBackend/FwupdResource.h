@@ -23,6 +23,7 @@
 #define FWUPDRESOURCE_H
 
 #include <resources/AbstractResource.h>
+#include "FwupdBackend.h"
 
 class AddonList;
 class FwupdResource : public AbstractResource
@@ -54,21 +55,28 @@ public:
     bool canExecute() const override { return true; }
     void invokeApplication() const override;
     void fetchChangelog() override;
-    void fetchScreenshots() override;
     QUrl url() const override;
     
     void setState(State state);
     void setSize(int size) { m_size = size; }
     void setAddons(const AddonList& addons);
-    bool setId(const QString &id);
-    void setName(const QString &name){  m_name = name;};
-    void setSummary(const QString &summary){    m_summary = summary;};
-    void setDescription(const QString &description){    m_description = description;};
-    void setVersion(const QString &version){    m_version = version;};
-    void setVendor(const QString &vendor){  m_vendor = vendor;};
+    void setId(const QString &id){m_id = id;}
+    void setName(const QString &name){ m_name = name;}
+    void setSummary(const QString &summary){ m_summary = summary;}
+    void setDescription(const QString &description){ m_description = description;}
+    void setVersion(const QString &version){ m_version = version;}
+    void setVendor(const QString &vendor){ m_vendor = vendor;}
     void addCategories(const QString &category);
-    void setHomePage(const QUrl &homepage){  m_homepage = homepage;};
-    void setLicense(const QString &license){ m_license = license;};
+    void setHomePage(const QUrl &homepage){  m_homepage = homepage;}
+    void setLicense(const QString &license){ m_license = license;}
+    void setIconName(const QString &iconName){ m_iconName = iconName;}
+    virtual QStringList allResourceNames() const;
+    
+    void setIsDeviceLocked(bool status){ isDeviceLocked = status;}
+    void setDeviceID(const QString &deviceID){ m_deviceID = deviceID;}
+    void setUpdateURI(const QString &updateURI){m_updateURI = updateURI;}
+   // void setFile(const QFile &file){m_file = file;};
+    
     
     void setAddonInstalled(const QString& addon, bool installed);
     QString sourceIcon() const override { return QStringLiteral("player-time"); }
@@ -80,21 +88,30 @@ public:
     QString m_summary;
     QString m_description;
     QString m_version;
+    QString m_updateVersion;
     QString m_vendor;
     QStringList m_categories;
     QString m_license;
     
     AbstractResource::State m_state;
-    QList<QUrl> m_screenshots;
-    QList<QUrl> m_screenshotThumbnails;
     QUrl m_homepage;
     QString m_iconName;
     QList<PackageState> m_addons;
     bool m_isTechnical;
     int m_size;
     
-
+    bool isDeviceLocked = false; // True if device is locked!
+    QString m_deviceID;
+    QString m_updateURI;
+    GFile* m_file;
+    bool isOnlyOffline = false; // True if only offline updates
+    bool isLiveUpdatable = false; // True if device is live updatable
+    bool needsReboot = false; // True if device needs Reboot
+    bool isDeviceRemoval = false; //True if device is Removal
+    gchar * guidString;
     
+
+    QList<FwupdResource*> m_releases; // A list of all refrences to releases of a device.
 };
 
 #endif // FWUPDRESOURCE_H
