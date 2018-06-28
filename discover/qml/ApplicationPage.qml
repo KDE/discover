@@ -210,7 +210,7 @@ DiscoverPage {
 
             LinkButton {
                 visible: reviewsModel.count > visibleReviews
-                text: i18n("Show all %1 reviews...", reviewsModel.count)
+                text: i18np("Show %1 review...", "Show all %1 reviews...", reviewsModel.count)
                 Layout.alignment: Qt.AlignRight | Qt.AlignBottom
 
                 onClicked: {
