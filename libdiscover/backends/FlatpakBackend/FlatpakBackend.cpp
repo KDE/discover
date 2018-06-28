@@ -748,6 +748,11 @@ void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation* installation)
 
 void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates)
 {
+    if (!updates) {
+        qWarning() << "could not get updates for" << flatpakInstallation;
+        return;
+    }
+
     g_autoptr(GPtrArray) fetchedUpdates = updates;
 
     for (uint i = 0; i < fetchedUpdates->len; i++) {
