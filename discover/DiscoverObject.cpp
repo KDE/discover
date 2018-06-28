@@ -37,6 +37,7 @@
 #include <QGuiApplication>
 #include <QSortFilterProxyModel>
 #include <QTimer>
+#include <QSessionManager>
 
 // KDE includes
 #include <KAboutApplicationDialog>
@@ -247,7 +248,7 @@ void DiscoverObject::openApplication(const QUrl& url)
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
             connect(stream, &StoredResultsStream::finished, this, [this, url, stream]() {
                 const auto res = stream->resources();
-                if (res.count() == 1) {
+                if (res.count() >= 1) {
                     emit openApplicationInternal(res.first());
                 } else {
                     setRootObjectProperty("defaultStartup", true);
@@ -286,6 +287,13 @@ void DiscoverObject::integrateObject(QObject* object)
 
     object->installEventFilter(this);
     connect(object, &QObject::destroyed, qGuiApp, &QCoreApplication::quit);
+
+    connect(qGuiApp, &QGuiApplication::commitDataRequest, this, [this](QSessionManager &sessionManager) {
+        if (ResourcesModel::global()->isBusy()) {
+            Q_EMIT preventedClose();
+            sessionManager.cancel();
+        }
+    });
 }
 
 bool DiscoverObject::eventFilter(QObject * object, QEvent * event)

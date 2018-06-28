@@ -25,15 +25,17 @@
 #include <KLocalizedString>
 #include <PackageKit/Details>
 #include <PackageKit/Daemon>
+#include <QJsonArray>
 #include <QDebug>
 
 PackageKitResource::PackageKitResource(QString packageName, QString summary, PackageKitBackend* parent)
     : AbstractResource(parent)
     , m_summary(std::move(summary))
     , m_name(std::move(packageName))
-    , m_dependenciesCount(0)
 {
     setObjectName(m_name);
+
+    connect(this, &PackageKitResource::dependenciesFound, this, [this](const QJsonObject& obj) { setDependenciesCount(obj.size()); });
 }
 
 QString PackageKitResource::name() const
@@ -176,7 +178,7 @@ void PackageKitResource::failedFetchingDetails(PackageKit::Transaction::Error, c
     qWarning() << "error fetching details" << msg;
 }
 
-void PackageKitResource::setDependenciesCount(uint deps)
+void PackageKitResource::setDependenciesCount(int deps)
 {
     if (deps != m_dependenciesCount) {
         m_dependenciesCount = deps;
@@ -254,7 +256,12 @@ PackageKitBackend* PackageKitResource::backend() const
 
 QString PackageKitResource::sizeDescription()
 {
-    if (m_dependenciesCount == 0)
+    if (m_dependenciesCount < 0) {
+        fetchDetails();
+        fetchDependencies();
+    }
+
+    if (m_dependenciesCount <= 0)
         return AbstractResource::sizeDescription();
     else
         return i18np("%2 (plus %1 dependency)", "%2 (plus %1 dependencies)", m_dependenciesCount, AbstractResource::sizeDescription());
@@ -263,4 +270,22 @@ QString PackageKitResource::sizeDescription()
 QString PackageKitResource::sourceIcon() const
 {
     return QStringLiteral("package-available");
+}
+
+void PackageKitResource::fetchDependencies()
+{
+    const auto id = availablePackageId();
+    if (id.isEmpty())
+        return;
+    m_dependenciesCount = 0;
+
+    QSharedPointer<QJsonObject> packageDependencies(new QJsonObject);
+    auto trans = PackageKit::Daemon::installPackage(id, PackageKit::Transaction::TransactionFlagSimulate);
+    connect(trans, &PackageKit::Transaction::errorCode, this, [this](PackageKit::Transaction::Error, const QString& message) { qWarning() << "Transaction error: " << message << sender(); });
+    connect(trans, &PackageKit::Transaction::package, this, [packageDependencies](PackageKit::Transaction::Info /*info*/, const QString &packageID, const QString &summary) {
+        (*packageDependencies)[PackageKit::Daemon::packageName(packageID)] = summary ;
+    });
+    connect(trans, &PackageKit::Transaction::finished, this, [this, packageDependencies](PackageKit::Transaction::Exit /*status*/) {
+        Q_EMIT dependenciesFound(*packageDependencies);
+    });
 }

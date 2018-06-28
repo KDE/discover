@@ -41,12 +41,13 @@ class PKTransaction : public Transaction
 
     private:
         void processProceedFunction();
+        void statusChanged();
 
         void cleanup(PackageKit::Transaction::Exit, uint);
         void errorFound(PackageKit::Transaction::Error err, const QString& error);
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
         void requireRestart(PackageKit::Transaction::Restart restart, const QString& p);
-        void progressChanged(const QString&, PackageKit::Transaction::Status, uint);
+        void progressChanged();
         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
         void cancellableChanged();
         void packageResolved(PackageKit::Transaction::Info info, const QString& packageId);

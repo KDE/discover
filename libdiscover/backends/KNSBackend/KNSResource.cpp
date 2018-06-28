@@ -234,3 +234,18 @@ QDate KNSResource::releaseDate() const
 {
     return m_entry.updateReleaseDate().isNull() ? m_entry.releaseDate() : m_entry.updateReleaseDate();
 }
+
+QVector<int> KNSResource::linkIds() const
+{
+    QVector<int> ids;
+    for(auto e : m_entry.downloadLinkInformationList()) {
+        if (e.isDownloadtypeLink)
+            ids << e.id;
+    }
+    return ids;
+}
+
+QUrl KNSResource::donationURL()
+{
+    return QUrl(m_entry.donationLink());
+}

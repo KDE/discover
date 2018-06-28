@@ -57,7 +57,7 @@ public:
     Transaction* installApplication(AbstractResource* app) override;
     Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;
     Transaction* removeApplication(AbstractResource* app) override;
-    bool isFetching() const override { return m_fetching; }
+    bool isFetching() const override { return m_isFetching>0; }
     AbstractResource * resourceForFile(const QUrl & ) override;
     void checkForUpdates() override;
     QString displayName() const override;
@@ -86,7 +86,6 @@ private:
     FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
     void addResource(FlatpakResource *resource);
     bool compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref) const;
-    void finishInitialization();
     void loadAppsFromAppstreamData();
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);
     void loadInstalledApps();
@@ -104,13 +103,13 @@ private:
     bool updateAppSizeFromRemote(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     void updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
 
-    void setFetching(bool fetching);
+    void acquireFetching(bool f);
 
     QHash<QString, FlatpakResource*> m_resources;
     StandardBackendUpdater  *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;
     QSharedPointer<OdrsReviewsBackend> m_reviews;
-    bool m_fetching;
+    uint m_isFetching = 0;
     uint m_refreshAppstreamMetadataJobs;
 
     GCancellable *m_cancellable;

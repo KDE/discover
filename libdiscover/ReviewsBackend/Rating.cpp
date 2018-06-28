@@ -103,7 +103,7 @@ Rating::Rating(const QString &packageName, quint64 ratingCount, const QVariantMa
     // TODO consider storing this and present in UI
     , m_rating(((data.value(QStringLiteral("star1")).toInt() + (data.value(QStringLiteral("star2")).toInt() * 2) +
                 (data.value(QStringLiteral("star3")).toInt() * 3) + (data.value(QStringLiteral("star4")).toInt() * 4) +
-                (data.value(QStringLiteral("star5")).toInt() * 5)) * 2) / (float) ratingCount)
+                (data.value(QStringLiteral("star5")).toInt() * 5)) * 2) / qMax<float>(1, ratingCount))
     , m_ratingPoints(0)
     , m_sortableRating(0)
 {

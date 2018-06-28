@@ -22,6 +22,7 @@
 
 // Qt includes
 #include <QFont>
+#include <QTimer>
 #include <QDebug>
 
 // KDE includes
@@ -36,12 +37,17 @@
 
 UpdateModel::UpdateModel(QObject *parent)
     : QAbstractListModel(parent)
+    , m_updateSizeTimer(new QTimer(this))
     , m_updates(nullptr)
 {
     connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &UpdateModel::activityChanged);
     connect(ResourcesModel::global(), &ResourcesModel::updatesCountChanged, this, &UpdateModel::activityChanged);
     connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &UpdateModel::resourceDataChanged);
     connect(this, &UpdateModel::toUpdateChanged, this, &UpdateModel::updateSizeChanged);
+
+    m_updateSizeTimer->setInterval(100);
+    m_updateSizeTimer->setSingleShot(true);
+    connect(m_updateSizeTimer, &QTimer::timeout, this, &UpdateModel::updateSizeChanged);
 }
 
 UpdateModel::~UpdateModel() = default;
@@ -94,7 +100,8 @@ void UpdateModel::activityChanged()
             for(auto item : m_updateItems) {
                 item->setProgress(0);
             }
-        }
+        } else
+            setResources(m_updates->toUpdate());
     }
 }
 
@@ -310,6 +317,6 @@ void UpdateModel::resourceDataChanged(AbstractResource* res, const QVector<QByte
         dataChanged(index, index, {SizeRole, VersionRole});
     else if (properties.contains("size")) {
         dataChanged(index, index, {SizeRole});
-        Q_EMIT updateSizeChanged();
+        m_updateSizeTimer->start();
     }
 }

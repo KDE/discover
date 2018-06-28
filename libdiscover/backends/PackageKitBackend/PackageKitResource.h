@@ -67,11 +67,14 @@ class PackageKitResource : public AbstractResource
         bool canExecute() const override { return false; }
 
         QString sizeDescription() override;
-        void setDependenciesCount(uint count);
+        void setDependenciesCount(int count);
 
         QString sourceIcon() const override;
 
         QDate releaseDate() const override { return {}; }
+
+    Q_SIGNALS:
+        void dependenciesFound(const QJsonObject& dependencies);
 
     public Q_SLOTS:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch);
@@ -94,6 +97,8 @@ class PackageKitResource : public AbstractResource
         void failedFetchingDetails(PackageKit::Transaction::Error, const QString& msg);
 
     private:
+        void fetchDependencies();
+        void setDependencies(const QStringList &deps);
         /** fetches details individually, it's better if done in batch, like for updates */
         void fetchDetails();
 
@@ -101,7 +106,7 @@ class PackageKitResource : public AbstractResource
         const QString m_summary;
         const QString m_name;
         PackageKit::Details m_details;
-        uint m_dependenciesCount;
+        int m_dependenciesCount = -1;
 };
 
 #endif // PACKAGEKITRESOURCE_H

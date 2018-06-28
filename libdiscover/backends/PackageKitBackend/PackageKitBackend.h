@@ -78,7 +78,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
     public Q_SLOTS:
         void reloadPackageList();
-        void refreshDatabase();
+        void transactionError(PackageKit::Transaction::Error, const QString& message);
 
     private Q_SLOTS:
         void getPackagesFinished();
@@ -86,7 +86,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void addPackageArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void addPackageNotArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void packageDetails(const PackageKit::Details& details);
-        void transactionError(PackageKit::Transaction::Error, const QString& message);
         void addPackageToUpdate(PackageKit::Transaction::Info, const QString& pkgid, const QString& summary);
         void getUpdatesFinished(PackageKit::Transaction::Exit,uint);
         void getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint);

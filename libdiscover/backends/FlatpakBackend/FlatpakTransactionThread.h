@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef FLATPAKTRANSACTIONJOB_H
-#define FLATPAKTRANSACTIONJOB_H
+#ifndef FLATPAKTRANSACTIONTHREAD_H
+#define FLATPAKTRANSACTIONTHREAD_H
 
 extern "C" {
 #include <flatpak.h>
@@ -31,12 +31,12 @@ extern "C" {
 #include <QThread>
 
 class FlatpakResource;
-class FlatpakTransactionJob : public QThread
+class FlatpakTransactionThread : public QThread
 {
 Q_OBJECT
 public:
-    FlatpakTransactionJob(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role);
-    ~FlatpakTransactionJob() override;
+    FlatpakTransactionThread(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role);
+    ~FlatpakTransactionThread() override;
 
     void cancel();
     void run() override;

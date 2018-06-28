@@ -22,9 +22,9 @@ ConditionalLoader
         text: root.text
         icon {
             name: application.isInstalled ? "trash-empty" : "cloud-download"
-            color: application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor
+            color: !listener.isActive ? (application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor) : Kirigami.Theme.backgroundColor
         }
-        visible: !listener.isActive
+        enabled: !listener.isActive
         onTriggered: root.click()
     }
 
