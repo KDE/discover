@@ -323,6 +323,10 @@ QAbstractItemModel* SnapResource::plugs(QObject* p)
 
 QString SnapResource::appstreamId() const
 {
-    const auto ids = m_snap->commonIds();
+    const QStringList ids
+#if defined(SNAP_COMMON_IDS)
+        = m_snap->commonIds()
+#endif
+    ;
     return ids.isEmpty() ? QLatin1String("com.snap.") + m_snap->name() : ids.first();
 }
