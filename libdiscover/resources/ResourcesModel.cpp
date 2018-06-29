@@ -131,6 +131,7 @@ void ResourcesModel::callerFetchingChanged()
         Q_EMIT backendsChanged();
         CategoryModel::global()->blacklistPlugin(backend->name());
         backend->deleteLater();
+        slotFetching();
         return;
     }
 
