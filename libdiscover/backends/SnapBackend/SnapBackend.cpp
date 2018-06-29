@@ -47,6 +47,15 @@ SnapBackend::SnapBackend(QObject* parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(new SnapReviewsBackend(this))
 {
+    {
+        auto request = m_client.connect();
+        request->runSync();
+        m_valid = request->error() == QSnapdRequest::NoError;
+        if (!m_valid) {
+            qWarning() << "snap problem at initialize:" << request->errorString();
+            return;
+        }
+    }
     connect(m_reviews, &SnapReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
     //make sure we populate the installed resources first
