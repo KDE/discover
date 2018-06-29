@@ -70,6 +70,7 @@ Q_SIGNALS:
     void searchFinished();
     void startingSearch();
     void availableForQueries();
+    void initialized();
 
 public Q_SLOTS:
     void receivedEntries(const KNSCore::EntryInternal::List& entries);
@@ -80,7 +81,7 @@ private:
     KNSResource* resourceForEntry(const KNSCore::EntryInternal& entry);
     void setFetching(bool f);
     void markInvalid(const QString &message);
-    ResultsStream* searchStream(const QString &searchText);
+    void searchStream(ResultsStream* stream, const QString &searchText);
     
     bool m_onePage = false;
     bool m_responsePending = false;
