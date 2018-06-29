@@ -165,6 +165,7 @@ void KNSBackend::markInvalid(const QString &message)
     qWarning() << "invalid kns backend!" << m_name << "because:" << message;
     m_isValid = false;
     setFetching(false);
+    Q_EMIT initialized();
 }
 
 void KNSBackend::fetchInstalled()
@@ -188,7 +189,12 @@ void KNSBackend::setFetching(bool f)
     if(m_fetching!=f) {
         m_fetching = f;
         emit fetchingChanged();
+
+        if (!m_fetching) {
+            Q_EMIT initialized();
+        }
     }
+
 }
 
 bool KNSBackend::isValid() const
@@ -333,26 +339,43 @@ ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filte
     if (filter.resourceUrl.scheme() == QLatin1String("kns")) {
         return findResourceByPackageName(filter.resourceUrl);
     } else if (filter.state >= AbstractResource::Installed) {
-        QVector<AbstractResource*> ret;
-        foreach(AbstractResource* r, m_resourcesByName) {
-            if(r->state()>=filter.state && (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)))
-                ret += r;
+        auto stream = new ResultsStream(QStringLiteral("KNS-installed"));
+
+        const auto start = [this, stream, filter]() {
+            if (m_isValid) {
+                auto filterFunction = [&filter](AbstractResource* r) { return r->state()>=filter.state && (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)); };
+                const auto ret = kFilter<QVector<AbstractResource*>>(m_resourcesByName, filterFunction);
+
+                if (!ret.isEmpty())
+                    stream->resourcesFound(ret);
+            }
+            stream->finish();
+        };
+        if (isFetching()) {
+            connect(this, &KNSBackend::initialized, stream, start);
+        } else {
+            QTimer::singleShot(0, stream, start);
         }
-        return new ResultsStream(QStringLiteral("KNS-installed"), ret);
-    } else if (filter.category && filter.category->matchesCategoryName(m_categories.constFirst())) {
-        return searchStream(filter.search);
-    } else if (!filter.category && !filter.search.isEmpty()) {
-        return searchStream(filter.search);
+
+        return stream;
+    } else if ((!filter.category && !filter.search.isEmpty()) || (filter.category && filter.category->matchesCategoryName(m_categories.constFirst()))) {
+        auto r = new ResultsStream(QStringLiteral("KNS-search-")+name());
+        searchStream(r, filter.search);
+        return r;
     }
     return voidStream();
 }
 
-ResultsStream* KNSBackend::searchStream(const QString &searchText)
+void KNSBackend::searchStream(ResultsStream* stream, const QString &searchText)
 {
     Q_EMIT startingSearch();
 
-    auto stream = new ResultsStream(QStringLiteral("KNS-search-")+name());
     auto start = [this, stream, searchText]() {
+        Q_ASSERT(!isFetching());
+        if (!m_isValid) {
+            stream->finish();
+            return;
+        }
         // No need to explicitly launch a search, setting the search term already does that for us
         m_engine->setSearchTerm(searchText);
         m_onePage = false;
@@ -365,10 +388,11 @@ ResultsStream* KNSBackend::searchStream(const QString &searchText)
 
     if (m_responsePending) {
         connect(this, &KNSBackend::availableForQueries, stream, start, Qt::QueuedConnection);
+    } else if (isFetching()) {
+        connect(this, &KNSBackend::initialized, stream, start);
     } else {
-        start();
+        QTimer::singleShot(0, stream, start);
     }
-    return stream;
 }
 
 ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
