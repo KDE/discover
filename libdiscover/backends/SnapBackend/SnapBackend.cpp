@@ -71,7 +71,7 @@ ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& fil
     } else if (filters.category && filters.category->isAddons()) {
         return voidStream();
     } else if (filters.state >= AbstractResource::Installed) {
-        return populate(m_client.getSnaps());
+        return populate(m_client.list());
     } else if (!filters.search.isEmpty()) {
         return populate(m_client.find(QSnapdClient::FindFlag::None, filters.search));
     }
