@@ -180,6 +180,9 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         return;
     }
 
+    if (failed && m_newPackageStates.isEmpty())
+        m_newPackageStates.insert(PackageKit::Transaction::InfoAvailable, kTransform<QStringList>(m_apps, [](AbstractResource* res) { return res->packageName(); }));
+
     this->submitResolve();
     if (failed)
         setStatus(Transaction::DoneWithErrorStatus);
