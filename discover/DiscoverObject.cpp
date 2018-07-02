@@ -38,6 +38,7 @@
 #include <QSortFilterProxyModel>
 #include <QTimer>
 #include <QSessionManager>
+#include <QClipboard>
 
 // KDE includes
 #include <KAboutApplicationDialog>
@@ -458,5 +459,11 @@ void DiscoverObject::showPassiveNotification(const QString& msg)
         QMetaObject::invokeMethod(rootObject(), "showPassiveNotification", Qt::QueuedConnection, Q_ARG(QVariant, msg), Q_ARG(QVariant, {}), Q_ARG(QVariant, {}), Q_ARG(QVariant, {}));
     });
 }
+
+void DiscoverObject::copyTextToClipboard(const QString& text)
+{
+    qGuiApp->clipboard()->setText(text);
+}
+
 
 #include "DiscoverObject.moc"

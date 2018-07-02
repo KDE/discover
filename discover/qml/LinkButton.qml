@@ -6,6 +6,7 @@ QQC2.Label {
     id: control
 
     property QtObject action: null //some older Qt versions don't support the namespacing in Kirigami.Action
+    property alias acceptedButtons: area.acceptedButtons
     text: action ? action.text : ""
     enabled: !action || action.enabled
     onClicked: if (action) action.trigger()
@@ -16,8 +17,9 @@ QQC2.Label {
     verticalAlignment: Text.AlignVCenter
     elide: Text.ElideRight
 
-    signal clicked()
+    signal clicked(QtObject mouse)
     MouseArea {
+        id: area
         anchors.fill: parent
         hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
@@ -26,6 +28,6 @@ QQC2.Label {
             control.font.underline = containsMouse && control.enabled
         }
 
-        onClicked: control.clicked()
+        onClicked: control.clicked(mouse)
     }
 }
