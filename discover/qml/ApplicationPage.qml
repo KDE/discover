@@ -358,14 +358,11 @@ DiscoverPage {
                 text: i18n("License:")
                 visible: appInfo.application.license.length>0
             }
-            LinkButton {
-                elide: Text.ElideRight
+            UrlButton {
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
-                visible: text.length>0
-                text: appInfo.application.license
-//                         tooltip: i18n("See full license terms")
-                onClicked: Qt.openUrlExternally("https://spdx.org/licenses/" + appInfo.application.license + ".html#licenseText")
+//                 tooltip: i18n("See full license terms")
+                url: "https://spdx.org/licenses/" + appInfo.application.license + ".html#licenseText"
             }
 
             // Homepage row
@@ -374,12 +371,9 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Homepage:")
             }
-            LinkButton {
+            UrlButton {
                 id: homepageLink
-                visible: text.length > 0
-                text: application.homepage
-                onClicked: Qt.openUrlExternally(application.homepage)
-                elide: Text.ElideRight
+                url: application.homepage
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
             }
@@ -390,12 +384,9 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("User Guide:")
             }
-            LinkButton {
+            UrlButton {
                 id: docsLink
-                visible: text.length > 0
-                text: application.helpURL
-                onClicked: Qt.openUrlExternally(helpURL)
-                elide: Text.ElideRight
+                url: application.helpURL
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
             }
@@ -406,28 +397,22 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Donate:")
             }
-            LinkButton {
+            UrlButton {
                 id: donationLink
-                visible: text.length > 0
-                text: application.donationURL
-                onClicked: Qt.openUrlExternally(donationURL)
-                elide: Text.ElideRight
+                url: application.donationURL
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
             }
 
-            // "Report a Droblem" row
+            // "Report a Problem" row
             Label {
                 visible: bugLink.visible
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Report a Problem:")
             }
-            LinkButton {
+            UrlButton {
                 id: bugLink
-                visible: text.length > 0
-                text: application.bugURL
-                onClicked: Qt.openUrlExternally(bugURL)
-                elide: Text.ElideRight
+                url: application.bugURL
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
             }
