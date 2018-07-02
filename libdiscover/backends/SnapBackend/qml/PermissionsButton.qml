@@ -36,7 +36,7 @@ Button
             id: view
             anchors.fill: parent
             header: Kirigami.ItemViewHeader {
-                text: i18n ("Permissions for %1", resource.name)
+                title: i18n ("Permissions for %1", resource.name)
             }
             model: resource.plugs(root)
             delegate: CheckDelegate {
