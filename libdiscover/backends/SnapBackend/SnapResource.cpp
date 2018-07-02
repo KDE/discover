@@ -69,7 +69,7 @@ QDebug operator<<(QDebug debug, const QSnapdSlot* slot)
     return debug;
 }
 
-const QStringList SnapResource::m_objects({ QStringLiteral("qrc:/snapui/PermissionsButton.qml") });
+const QStringList SnapResource::m_objects({ QStringLiteral("qrc:/qml/PermissionsButton.qml") });
 
 SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend* backend)
     : AbstractResource(backend)
