@@ -362,6 +362,7 @@ DiscoverPage {
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
 //                 tooltip: i18n("See full license terms")
+                text: appInfo.application.license
                 url: "https://spdx.org/licenses/" + appInfo.application.license + ".html#licenseText"
             }
 
