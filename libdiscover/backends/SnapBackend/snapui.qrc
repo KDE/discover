@@ -2,5 +2,6 @@
 <RCC version="1.0">
  <qresource>
     <file>qml/PermissionsButton.qml</file>
+    <file>qml/ChannelsButton.qml</file>
  </qresource>
 </RCC>
