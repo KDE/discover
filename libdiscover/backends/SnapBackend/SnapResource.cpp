@@ -340,7 +340,7 @@ QString SnapResource::appstreamId() const
 
 QString SnapResource::channel() const
 {
-    auto req = client()->getSnap(packageName());
+    auto req = client()->listOne(packageName());
     req->runSync();
     return req->error() ? QString() : req->snap()->trackingChannel();
 }
