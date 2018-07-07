@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DUMMYTEST_H
-#define DUMMYTEST_H
+#ifndef FWUPDTEST_H
+#define FWUPDTEST_H
 
 #include <QObject>
 
@@ -40,14 +40,11 @@ private Q_SLOTS:
     void testProxySorting();
     void testFetch();
     void testSort();
-    void testInstallAddons();
-    void testReviewsModel();
     void testUpdateModel();
-    void testScreenshotsModel();
 
 private:
     AbstractResourcesBackend* m_appBackend;
     ResourcesModel* m_model;
 };
 
-#endif // DUMMYTEST_H
+#endif // FWUPDTEST_H

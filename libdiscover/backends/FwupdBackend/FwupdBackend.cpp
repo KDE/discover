@@ -109,7 +109,7 @@ QSet<AbstractResource*> FwupdBackend::FwupdGetAllUpdates()
 FwupdResource * FwupdBackend::FwupdCreateDevice(FwupdDevice *device)
 {
     const QString name = QLatin1String(fwupd_device_get_name(device));
-    FwupdResource* res = new FwupdResource(name, false, this);
+    FwupdResource* res = new FwupdResource(name, true, this);
     res->setId(QLatin1String(FwupdBuildDeviceID(device)));
     res->addCategories(QStringLiteral("Releases"));
     res->setIconName(QLatin1String((const gchar *)g_ptr_array_index (fwupd_device_get_icons(device),0)));// Implement a Better way to decide icon
@@ -122,7 +122,7 @@ FwupdResource * FwupdBackend::FwupdCreateRelease(FwupdDevice *device)
 {
     FwupdRelease *rel = fwupd_device_get_release_default (device);
     const QString name = QLatin1String(fwupd_release_get_name(rel));
-    FwupdResource* res = new FwupdResource(name, false, this);
+    FwupdResource* res = new FwupdResource(name, true, this);
 
     res->setDeviceID(QLatin1String(fwupd_device_get_id (device)));
     FwupdSetReleaseDetails(res,rel);
@@ -220,8 +220,8 @@ void FwupdBackend::populate(const QString& n)
             g_autoptr(GPtrArray) releases = NULL;
 
             /* Devices Which are not updatable */
-            if (!fwupd_device_has_flag (device, FWUPD_DEVICE_FLAG_UPDATABLE))
-                continue;
+            // if (!fwupd_device_has_flag (device, FWUPD_DEVICE_FLAG_UPDATABLE))
+            //     continue;
 
             /* add releases */
             res = FwupdCreateDevice(device);
@@ -236,7 +236,7 @@ void FwupdBackend::populate(const QString& n)
                 {
                     FwupdRelease *rel = (FwupdRelease *)g_ptr_array_index (releases, j);
                     const QString name = QLatin1String(fwupd_release_get_name(rel));
-                    FwupdResource* res_ = new FwupdResource(name, false, this);
+                    FwupdResource* res_ = new FwupdResource(name, true, this);
                     FwupdSetReleaseDetails (res_, rel);
                     res->m_releases.append(res_);
                 }
@@ -272,8 +272,8 @@ void FwupdBackend::FwupdAddUpdates()
             FwupdDevice *device = (FwupdDevice *)g_ptr_array_index (devices, i);
             FwupdResource* res;
 
-           //res = FwupdCreateDevice(device); //just to test code should be deleted
-           //m_toUpdate.append(res); //just to test code should be deleted
+           res = FwupdCreateDevice(device); //just to test code should be deleted
+           m_toUpdate.append(res); //just to test code should be deleted
 
             if (!fwupd_device_has_flag (device, FWUPD_DEVICE_FLAG_SUPPORTED))
                 continue;
@@ -777,7 +777,7 @@ AbstractBackendUpdater* FwupdBackend::backendUpdater() const
 
 AbstractReviewsBackend* FwupdBackend::reviewsBackend() const
 {
-    //return m_reviews; // To Remove the Review backend not needed
+    //return m_reviews; // To Remove the Review backend ( not needed)
     return NULL;
 }
 

@@ -45,6 +45,10 @@ DiscoverPage {
                     Connections {
                         target: backendItem.backend
                         onPassiveMessage: window.showPassiveNotification(message)
+                        onProceedRequest: {
+                            var dialog = sourceProceedDialog.createObject(window, {sourcesBackend: sourcesBackend, title: title, description: description})
+                            dialog.open()
+                        }
                     }
 
                     anchors {
@@ -106,6 +110,7 @@ DiscoverPage {
                                         action: modelData.action
                                     }
                                 }
+
                                 onObjectAdded: {
                                     settingsMenu.insertItem(index, object)
                                 }
@@ -137,6 +142,56 @@ DiscoverPage {
             componentTrue: sourceBackendDelegate
             componentFalse: sourceDelegate
         }
+        Component {
+            id: sourceProceedDialog
+            Kirigami.OverlaySheet {
+                id: sheet
+                showCloseButton: false
+                property QtObject  sourcesBackend
+                property alias title: heading.text
+                property alias description: desc.text
+                property bool acted: false
+                ColumnLayout {
+                    Kirigami.Heading {
+                        id: heading
+                    }
+                    Label {
+                        id: desc
+                        Layout.fillWidth: true
+                        textFormat: Text.StyledText
+                        wrapMode: Text.WordWrap
+                    }
+                    RowLayout {
+                        Layout.alignment: Qt.AlignRight
+                        Button {
+                            text: i18n("Proceed")
+                            icon.name: "dialog-ok"
+                            onClicked: {
+                                sourcesBackend.proceed()
+                                sheet.acted = true
+                                sheet.close()
+                            }
+                        }
+                        Button {
+                            Layout.alignment: Qt.AlignRight
+                            text: i18n("Cancel")
+                            icon.name: "dialog-cancel"
+                            onClicked: {
+                                sourcesBackend.cancel()
+                                sheet.acted = true
+                                sheet.close()
+                            }
+                        }
+                    }
+                }
+                onSheetOpenChanged: if(!sheetOpen) {
+                    sheet.destroy(1000)
+                    if (!sheet.acted)
+                        sourcesBackend.cancel()
+                }
+            }
+        }
+
 
         Component {
             id: sourceDelegate
@@ -188,7 +243,7 @@ DiscoverPage {
                         checked: modelChecked != Qt.Unchecked
                         enabled: modelChecked !== undefined
                         onClicked: {
-                            sourcesView.model.setData(modelIndex, modelChecked, Qt.CheckStateRole)
+                            sourcesView.model.setData(modelIndex, checkState, Qt.CheckStateRole)
                         }
                     }
                     Label {

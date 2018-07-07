@@ -34,6 +34,10 @@ public:
     void recheckSystemUpdateNeeded() override;
     uint securityUpdatesCount() override;
     uint updatesCount() override;
+
+private:
+    uint m_securityUpdates;
+    uint m_normalUpdates;
 };
 
 #endif

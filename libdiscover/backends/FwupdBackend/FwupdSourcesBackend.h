@@ -23,6 +23,7 @@
 #define FWUPDSOURCESBACKEND_H
 
 #include <resources/AbstractSourcesBackend.h>
+#include "FwupdBackend.h"
 #include <QStandardItemModel>
 
 #include "FwupdBackend.h"
@@ -31,6 +32,7 @@ class FwupdSourcesModel;
 
 class FwupdSourcesBackend : public AbstractSourcesBackend
 {
+    Q_OBJECT
 public:
     explicit FwupdSourcesBackend(AbstractResourcesBackend * parent);
 
@@ -41,6 +43,11 @@ public:
     QString idDescription() override { return QStringLiteral(""); }
     QList<QAction*> actions() const override;
     bool supportsAdding() const override { return false; }
+    void eulaRequired(const QString& remoteName , const QString& licenseAgreement);
+    void cancel() override;
+Q_SIGNALS:
+    void proceed() override;
+
 private:
     FwupdSourcesModel* m_sources;
     QList<QAction*> m_actions;

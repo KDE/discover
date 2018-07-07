@@ -185,73 +185,6 @@ void FwupdTest::testSort()
     }
 }
 
-void FwupdTest::testInstallAddons()
-{
-    const auto resources = fetchResources(m_appBackend->findResourceByPackageName(QUrl(QStringLiteral("fwupd://Fwupd.1"))));
-    QCOMPARE(resources.count(), 1);
-    AbstractResource* res = resources.first();
-    QVERIFY(res);
-
-    ApplicationAddonsModel m;
-    new ModelTest(&m, &m);
-    m.setApplication(res);
-    QCOMPARE(m.rowCount(), res->addonsInformation().count());
-    QCOMPARE(res->addonsInformation().at(0).isInstalled(), false);
-
-    QString firstAddonName = m.data(m.index(0,0)).toString();
-    m.changeState(firstAddonName, true);
-    QVERIFY(m.hasChanges());
-
-    m.applyChanges();
-    QSignalSpy sR(TransactionModel::global(), &TransactionModel::transactionRemoved);
-    QVERIFY(sR.wait());
-    QVERIFY(!m.hasChanges());
-
-    QCOMPARE(m.data(m.index(0,0)).toString(), firstAddonName);
-    QCOMPARE(res->addonsInformation().at(0).name(), firstAddonName);
-    QCOMPARE(res->addonsInformation().at(0).isInstalled(), true);
-
-    m.changeState(m.data(m.index(1,0)).toString(), true);
-    QVERIFY(m.hasChanges());
-    for(int i=0, c=m.rowCount(); i<c; ++i) {
-        const auto idx = m.index(i, 0);
-        QCOMPARE(idx.data(Qt::CheckStateRole).toInt(), int(i<=1 ? Qt::Checked : Qt::Unchecked));
-        QVERIFY(!idx.data(ApplicationAddonsModel::PackageNameRole).toString().isEmpty());
-    }
-    m.discardChanges();
-    QVERIFY(!m.hasChanges());
-}
-
-void FwupdTest::testReviewsModel()
-{
-    const auto resources = fetchResources(m_appBackend->findResourceByPackageName(QUrl(QStringLiteral("fwupd://Fwupd.1"))));
-    QCOMPARE(resources.count(), 1);
-    AbstractResource* res = resources.first();
-    QVERIFY(res);
-
-    ReviewsModel m;
-    new ModelTest(&m, &m);
-    m.setResource(res);
-    m.fetchMore();
-
-    QVERIFY(m.rowCount()>0);
-
-    QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::None);
-    m.markUseful(0, true);
-    QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::Yes);
-    m.markUseful(0, false);
-    QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::No);
-
-    const auto resources2 = fetchResources(m_appBackend->findResourceByPackageName(QUrl(QStringLiteral("fwupd://Fwupd.1"))));
-    QCOMPARE(resources2.count(), 1);
-    res = resources2.first();
-    m.setResource(res);
-    m.fetchMore();
-
-    QSignalSpy spy(&m, &ReviewsModel::rowsChanged);
-    QVERIFY(m.rowCount()>0);
-}
-
 void FwupdTest::testUpdateModel()
 {
     const auto backend = m_model->backends().first();
@@ -264,26 +197,6 @@ void FwupdTest::testUpdateModel()
 
     QCOMPARE(model.rowCount(), 4*backend->property("startElements").toInt()/3);
     QCOMPARE(model.hasUpdates(), true);
-}
-
-void FwupdTest::testScreenshotsModel()
-{
-    ScreenshotsModel m;
-    new ModelTest(&m, &m);
-
-    const auto resources = fetchResources(m_appBackend->findResourceByPackageName(QUrl(QStringLiteral("fwupd://Fwupd.1"))));
-    QCOMPARE(resources.count(), 1);
-    AbstractResource* res = resources.first();
-    QVERIFY(res);
-    m.setResource(res);
-    QCOMPARE(res, m.resource());
-
-    int c=m.rowCount();
-    for(int i=0; i<c; ++i) {
-        const auto idx = m.index(i, 0);
-        QVERIFY(!idx.data(ScreenshotsModel::ThumbnailUrl).isNull());
-        QVERIFY(!idx.data(ScreenshotsModel::ScreenshotUrl).isNull());
-    }
 }
 
 //TODO test cancel transaction

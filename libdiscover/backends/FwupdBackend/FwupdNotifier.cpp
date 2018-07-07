@@ -23,6 +23,8 @@
 
 FwupdNotifier::FwupdNotifier(QObject* parent)
     : BackendNotifierModule(parent)
+    , m_securityUpdates(0)
+    , m_normalUpdates(0)
 {
 }
 

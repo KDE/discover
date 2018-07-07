@@ -24,6 +24,7 @@
 #include <QDebug>
 #include <KRandom>
 
+
 #define TEST_PROCEED
 
 FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, Role role)

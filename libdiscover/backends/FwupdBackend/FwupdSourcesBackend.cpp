@@ -24,9 +24,12 @@
 #include <QDebug>
 #include <QAction>
 #include <QString>
+#include <KLocalizedString>
+
 
 class FwupdSourcesModel : public QStandardItemModel
 {
+Q_OBJECT
 public:
     FwupdSourcesModel(FwupdSourcesBackend* backend)
         : QStandardItemModel(backend)
@@ -44,20 +47,54 @@ public:
         if (!item)
             return false;
 
-        switch(role) {
-            case Qt::CheckStateRole: {
-             // To Do Show Agrement
-             status = fwupd_remote_get_enabled(fwupd_client_get_remote_by_id(m_backend->backend->client,item->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(),NULL,NULL));
-             fwupd_client_modify_remote(m_backend->backend->client,item->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(),QString(QLatin1String("Enabled")).toUtf8().constData(),(!status) ? (QString(QLatin1String("true")).toUtf8().constData()) : (QString(QLatin1String("false")).toUtf8().constData()),NULL,NULL);
-             return true;
+        remote = fwupd_client_get_remote_by_id(m_backend->backend->client,item->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(),NULL,NULL);
+        status = fwupd_remote_get_enabled(remote);
+        switch(role)
+        {
+            case Qt::CheckStateRole:
+            {
+                if((value.toInt() == Qt::Checked) )
+                {
+                     m_backend->eulaRequired(QLatin1String(fwupd_remote_get_title(remote)),QLatin1String(fwupd_remote_get_agreement(remote)));
+                     connect(m_backend,&FwupdSourcesBackend::proceed,this,
+                             [=]()
+                                {
+                                 if((value.toInt() == Qt::Checked) )
+                                 {
+                                    if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("true")).toUtf8().constData()),NULL,NULL))
+                                        item->setData(value, role);
+                                 }
+                                 else
+                                 {
+                                     if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("false")).toUtf8().constData()),NULL,NULL))
+                                        item->setData(value, role);
+                                 }
+                                }
+                             );
+                }
+                else if(value.toInt() == Qt::Unchecked)
+                {
+                    if((value.toInt() == Qt::Checked) )
+                    {
+                       if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("true")).toUtf8().constData()),NULL,NULL))
+                           item->setData(value, role);
+                    }
+                    else
+                    {
+                        if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("false")).toUtf8().constData()),NULL,NULL))
+                           item->setData(value, role);
+                    }
+                }
+
             }
         }
-        item->setData(value, role);
+        Q_EMIT dataChanged(index,index,{});
         return true;
     }
 
 private:
     FwupdSourcesBackend* m_backend;
+    FwupdRemote* remote;
     bool status;
 };
 
@@ -71,7 +108,7 @@ FwupdSourcesBackend::FwupdSourcesBackend(AbstractResourcesBackend * parent)
     g_autoptr(GError) error = NULL;
     /* find all remotes */
     remotes = fwupd_client_get_remotes (backend->client,cancellable,&error);
-     if(remotes != NULL)
+    if(remotes != NULL)
      {
         for (int i = 0; i < (int)remotes->len; i++)
         {
@@ -88,40 +125,51 @@ QAbstractItemModel* FwupdSourcesBackend::sources()
     return m_sources;
 }
 
+void FwupdSourcesBackend::eulaRequired( const QString& remoteName , const QString& licenseAgreement)
+{
+    Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The remote %1 require that you accept their license:\n %2",
+                                                 remoteName, licenseAgreement));
+}
+
+void FwupdSourcesBackend::cancel()
+{
+    qDebug() << "Request Cancelled";
+}
+
 bool FwupdSourcesBackend::addSource(const QString& id)
 {   
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = NULL;
     FwupdBackend* backend = qobject_cast<FwupdBackend*>(parent());
     FwupdRemote* remote;
+    bool status ;
 
     if (id.isEmpty())
         return false;
     
     remote = fwupd_client_get_remote_by_id(backend->client,id.toUtf8().constData(),cancellable,&error);
+    status = !fwupd_remote_get_enabled(remote);
 
     QStandardItem* it = new QStandardItem(id);
     it->setData(id, AbstractSourcesBackend::IdRole);
     it->setData(QVariant(QLatin1Literal(fwupd_remote_get_title (remote))), Qt::ToolTipRole);
     it->setCheckable(true);
-    it->setCheckState(!fwupd_remote_get_enabled(remote) ? Qt::Unchecked : Qt::Checked);
+    it->setCheckState(status ? Qt::Unchecked : Qt::Checked);
     m_sources->appendRow(it);
     return true;
 }
 
 bool FwupdSourcesBackend::removeSource(const QString& id)
 {
-    QList<QStandardItem*> items = m_sources->findItems(id);
-    if (items.count()==1) {
-        m_sources->removeRow(items.first()->row());
-    } else {
-        qWarning() << "couldn't find " << id  << items;
-    }
-    return items.count()==1;
+    qWarning() << "Removal of Sources Not Allowed" << "Remote-ID" << id;
+    return false;
 }
 
 QList<QAction*> FwupdSourcesBackend::actions() const
 {
     return  m_actions ;
 }
+
+#include "FwupdSourcesBackend.moc"
+
 
