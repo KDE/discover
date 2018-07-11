@@ -75,6 +75,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         static QString locateService(const QString &filename);
 
         QList<AppStream::Component> componentsById(const QString &id) const;
+        void fetchUpdates();
 
     public Q_SLOTS:
         void reloadPackageList();
@@ -93,7 +94,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
     private:
         template <typename T>
         T resourcesByPackageNames(const QStringList& names) const;
-        void fetchUpdates();
 
         void checkDaemonRunning();
         void acquireFetching(bool f);

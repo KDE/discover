@@ -192,7 +192,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     }
 
     setProgressing(false);
-    m_backend->checkForUpdates();
+    m_backend->fetchUpdates();
     fetchLastUpdateTime();
 
     if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE")) {
