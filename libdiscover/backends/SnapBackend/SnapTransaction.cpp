@@ -88,7 +88,7 @@ void SnapTransaction::finishTransaction()
             break;
     }
 
-    setStatus(DoneStatus);
+    setStatus(CommittingStatus);
 }
 
 void SnapTransaction::proceed()
