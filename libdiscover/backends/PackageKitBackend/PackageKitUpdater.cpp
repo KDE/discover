@@ -195,13 +195,14 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     m_backend->checkForUpdates();
     fetchLastUpdateTime();
 
-    if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
+    if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE")) {
 #ifdef PKQT_1_0
         PackageKit::Daemon::global()->offline()->trigger(PackageKit::Offline::ActionReboot);
         Q_EMIT passiveMessage(i18n("Please restart the computer to finish the installation"));
 #else
         qWarning() << "PK_OFFLINE_UPDATE is set but discover was built against an old version of PackageKitQt that didn't support offline updates";
 #endif
+    }
 }
 
 void PackageKitUpdater::cancellableChanged()
