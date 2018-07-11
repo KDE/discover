@@ -273,8 +273,13 @@ void PackageKitNotifier::transactionListChanged(const QStringList& tids)
         connect(t, &PackageKit::Transaction::requireRestart, this, &PackageKitNotifier::onRequireRestart);
         connect(t, &PackageKit::Transaction::finished, this, [this, t](){
             auto restart = t->property("requireRestart");
-            if (!restart.isNull())
-                requireRestartNotification(PackageKit::Transaction::Restart(restart.toInt()));
+            if (!restart.isNull()) {
+                auto restartEvent = PackageKit::Transaction::Restart(restart.toInt());
+                if (restartEvent >= PackageKit::Transaction::RestartSession) {
+                    m_needsReboot = true;
+                    Q_EMIT needsRebootChanged();
+                }
+            }
             m_transactions.remove(t->tid().path());
             t->deleteLater();
         });
@@ -287,34 +292,4 @@ void PackageKitNotifier::onRequireRestart(PackageKit::Transaction::Restart type,
     PackageKit::Transaction* t = qobject_cast<PackageKit::Transaction*>(sender());
     t->setProperty("requireRestart", qMax<int>(t->property("requireRestart").toInt(), type));
     qDebug() << "RESTART" << type << "is required for package" << packageID;
-}
-
-void PackageKitNotifier::requireRestartNotification(PackageKit::Transaction::Restart type)
-{
-    if (type < PackageKit::Transaction::RestartSession) {
-        return;
-    }
-
-    KNotification *notification = new KNotification(QLatin1String("notification"), KNotification::Persistent | KNotification::DefaultEvent);
-    notification->setIconName(QStringLiteral("system-software-update"));
-    if (type == PackageKit::Transaction::RestartSystem || type == PackageKit::Transaction::RestartSecuritySystem) {
-        notification->setActions(QStringList{QLatin1String("Restart")});
-        notification->setTitle(i18n("Restart is required"));
-        notification->setText(i18n("The system needs to be restarted for the updates to take effect."));
-    } else {
-        notification->setActions(QStringList{QLatin1String("Logout")});
-        notification->setTitle(i18n("Session restart is required"));
-        notification->setText(i18n("You will need to log out and back in for the update to take effect."));
-    }
-
-    connect(notification, &KNotification::action1Activated, this, [type] () {
-        QDBusInterface interface(QStringLiteral("org.kde.ksmserver"), QStringLiteral("/KSMServer"), QStringLiteral("org.kde.KSMServerInterface"), QDBusConnection::sessionBus());
-        if (type == PackageKit::Transaction::RestartSystem) {
-            interface.asyncCall(QStringLiteral("logout"), 0, 1, 2); // Options: do not ask again | reboot | force
-        } else {
-            interface.asyncCall(QStringLiteral("logout"), 0, 0, 2); // Options: do not ask again | logout | force
-        }
-    });
-
-    notification->sendEvent();
 }

@@ -39,6 +39,7 @@ public:
     void recheckSystemUpdateNeeded() override;
     uint securityUpdatesCount() override;
     uint updatesCount() override;
+    bool needsReboot() const override { return false; }
 
 public Q_SLOTS:
     void checkUpdates();

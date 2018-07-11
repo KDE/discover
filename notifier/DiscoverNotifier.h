@@ -40,7 +40,8 @@ public:
     enum State {
         NoUpdates,
         NormalUpdates,
-        SecurityUpdates
+        SecurityUpdates,
+        RebootRequired
     };
     Q_ENUM(State)
 
@@ -65,12 +66,13 @@ public Q_SLOTS:
     void recheckSystemUpdateNeeded();
     void showDiscover();
     void showDiscoverUpdates();
+    void showUpdatesNotification();
 
 Q_SIGNALS:
     void updatesChanged();
 
 private:
-    void showUpdatesNotification();
+    void showRebootNotification();
     void updateStatusNotifier();
     void loadBackends();
 
@@ -79,6 +81,7 @@ private:
     QTimer m_timer;
     uint m_securityCount = 0;
     uint m_count = 0;
+    bool m_needsReboot = false;
 };
 
 #endif //ABSTRACTKDEDMODULE_H

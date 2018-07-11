@@ -33,6 +33,7 @@ Item
             return PlasmaCore.Types.PassiveStatus;
         case DiscoverNotifier.NormalUpdates:
         case DiscoverNotifier.SecurityUpdates:
+        case DiscoverNotifier.RebootRequired:
             return PlasmaCore.Types.ActiveStatus;
         }
     }

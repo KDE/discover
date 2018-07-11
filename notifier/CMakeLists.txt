@@ -7,6 +7,7 @@ target_link_libraries(DiscoverNotifierDeclarativePlugin
     KF5::I18n
     KF5::KIOWidgets
     Qt5::Qml
+    Qt5::DBus
 
     Discover::Notifiers
 )

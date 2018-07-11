@@ -20,9 +20,11 @@
 
 #include "DiscoverNotifier.h"
 #include "BackendNotifierFactory.h"
+#include <QDebug>
+#include <QDBusInterface>
+#include <QDBusPendingReply>
 #include <KConfig>
 #include <KConfigGroup>
-#include <QDebug>
 #include <KRun>
 #include <KLocalizedString>
 #include <KNotification>
@@ -37,6 +39,12 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
     m_backends = BackendNotifierFactory().allBackends();
     foreach(BackendNotifierModule* module, m_backends) {
         connect(module, &BackendNotifierModule::foundUpdates, this, &DiscoverNotifier::updateStatusNotifier);
+        connect(module, &BackendNotifierModule::needsRebootChanged, this, [this]() {
+            if (!m_needsReboot) {
+                m_needsReboot = true;
+                showRebootNotification();
+            }
+        });
     }
     connect(&m_timer, &QTimer::timeout, this, &DiscoverNotifier::showUpdatesNotification);
     m_timer.setSingleShot(true);
@@ -119,6 +127,8 @@ QString DiscoverNotifier::iconName() const
             return QStringLiteral("update-low");
         case NoUpdates:
             return QStringLiteral("update-none");
+        case RebootRequired:
+            return QStringLiteral("system-reboot");
     }
     return QString();
 }
@@ -132,6 +142,8 @@ QString DiscoverNotifier::message() const
             return i18n("Updates available");
         case NoUpdates:
             return i18n("System up to date");
+        case RebootRequired:
+            return i18n("Computer needs to restart");
     }
     return QString();
 }
@@ -178,4 +190,20 @@ QStringList DiscoverNotifier::loadedModules() const
     for(BackendNotifierModule* module : m_backends)
         ret += QString::fromLatin1(module->metaObject()->className());
     return ret;
+}
+
+void DiscoverNotifier::showRebootNotification()
+{
+    KNotification *notification = new KNotification(QLatin1String("notification"), KNotification::Persistent | KNotification::DefaultEvent);
+    notification->setIconName(QStringLiteral("system-software-update"));
+    notification->setActions(QStringList{QLatin1String("Restart")});
+    notification->setTitle(i18n("Restart is required"));
+    notification->setText(i18n("The system needs to be restarted for the updates to take effect."));
+
+    connect(notification, &KNotification::action1Activated, this, [] () {
+        QDBusInterface interface(QStringLiteral("org.kde.ksmserver"), QStringLiteral("/KSMServer"), QStringLiteral("org.kde.KSMServerInterface"), QDBusConnection::sessionBus());
+        interface.asyncCall(QStringLiteral("logout"), 0, 1, 2); // Options: do not ask again | reboot | force
+    });
+
+    notification->sendEvent();
 }
