@@ -40,7 +40,7 @@ SnapTransaction::SnapTransaction(SnapResource* app, QSnapdRequest* request, Role
     connect(request, &QSnapdRequest::complete, this, &SnapTransaction::finishTransaction);
     setStatus(SetupStatus);
 
-    setStatus(DownloadingStatus);
+    setStatus(CommittingStatus);
     request->runAsync();
 }
 
