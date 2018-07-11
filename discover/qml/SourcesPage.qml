@@ -211,6 +211,7 @@ DiscoverPage {
                 left: parent.left
                 margins: Kirigami.Units.smallSpacing
             }
+            spacing: 0
             Repeater {
                 id: back
                 model: ResourcesProxyModel {
