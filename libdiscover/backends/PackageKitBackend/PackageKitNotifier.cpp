@@ -31,6 +31,7 @@
 #include <PackageKit/Daemon>
 #include <QDBusInterface>
 #include <QFile>
+#include <QFileSystemWatcher>
 #include <KLocalizedString>
 #include <KDesktopFile>
 #include <KConfigGroup>
@@ -77,6 +78,10 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     m_recheckTimer->setInterval(200);
     m_recheckTimer->setSingleShot(true);
     connect(m_recheckTimer, &QTimer::timeout, this, &PackageKitNotifier::recheckSystemUpdate);
+
+    QFileSystemWatcher* watcher = new QFileSystemWatcher(this);
+    watcher->addPath(QStringLiteral(PK_OFFLINE_ACTION_FILENAME));
+    connect(watcher, &QFileSystemWatcher::fileChanged, this, &PackageKitNotifier::nowNeedsReboot);
 }
 
 PackageKitNotifier::~PackageKitNotifier()
@@ -276,14 +281,21 @@ void PackageKitNotifier::transactionListChanged(const QStringList& tids)
             if (!restart.isNull()) {
                 auto restartEvent = PackageKit::Transaction::Restart(restart.toInt());
                 if (restartEvent >= PackageKit::Transaction::RestartSession) {
-                    m_needsReboot = true;
-                    Q_EMIT needsRebootChanged();
+                    nowNeedsReboot();
                 }
             }
             m_transactions.remove(t->tid().path());
             t->deleteLater();
         });
         m_transactions.insert(tid, t);
+    }
+}
+
+void PackageKitNotifier::nowNeedsReboot()
+{
+    if (!m_needsReboot) {
+        m_needsReboot = true;
+        Q_EMIT needsRebootChanged();
     }
 }
 
