@@ -71,7 +71,7 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     } else
         regularCheck->start();
 
-	QTimer::singleShot(3000, this, &PackageKitNotifier::checkOfflineUpdates);
+    QTimer::singleShot(3000, this, &PackageKitNotifier::checkOfflineUpdates);
 
     m_recheckTimer = new QTimer(this);
     m_recheckTimer->setInterval(200);
