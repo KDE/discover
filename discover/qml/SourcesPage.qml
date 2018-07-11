@@ -212,6 +212,7 @@ DiscoverPage {
                 text: i18n("Missing Backends")
                 visible: back.count>0
             }
+            spacing: 0
             Repeater {
                 id: back
                 model: ResourcesProxyModel {
