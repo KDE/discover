@@ -52,6 +52,7 @@ FeaturedModel::FeaturedModel()
         if (!f.open(QIODevice::WriteOnly))
             qWarning() << "could not open" << *featuredCache << f.errorString();
         f.write(getJob->data());
+        f.close();
         refresh();
     });
 
