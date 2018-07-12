@@ -71,7 +71,10 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
                     dirIt.next();
 
                     auto bk = new KNSBackend(parent, QStringLiteral("plasma"), dirIt.filePath());
-                    ret += bk;
+                    if (bk->isValid())
+                        ret += bk;
+                    else
+                        delete bk;
                 }
             }
             return ret;
