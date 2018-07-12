@@ -82,6 +82,11 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     QFileSystemWatcher* watcher = new QFileSystemWatcher(this);
     watcher->addPath(QStringLiteral(PK_OFFLINE_ACTION_FILENAME));
     connect(watcher, &QFileSystemWatcher::fileChanged, this, &PackageKitNotifier::nowNeedsReboot);
+
+    QTimer::singleShot(100, this, [this](){
+    if (QFile::exists(QStringLiteral(PK_OFFLINE_ACTION_FILENAME)))
+        nowNeedsReboot();
+    });
 }
 
 PackageKitNotifier::~PackageKitNotifier()
