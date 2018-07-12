@@ -152,7 +152,7 @@ Kirigami.GlobalDrawer {
         Kirigami.Action {
             property QtObject category
             readonly property bool itsMe: window.leftPage && window.leftPage.hasOwnProperty("category") && (window.leftPage.category == category)
-            text: category.name
+            text: category ? category.name : ""
             checked: itsMe
             visible: (!window.leftPage
                    || !window.leftPage.subcategories
