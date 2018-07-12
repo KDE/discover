@@ -192,7 +192,7 @@ DiscoverPage {
                         }
                     }
                     Label {
-                        text: display + " - <i>" + toolTip + "</i>"
+                        text: display + (toolTip ? " - <i>" + toolTip + "</i>" : "")
                         elide: Text.ElideRight
                         Layout.fillWidth: true
                     }
