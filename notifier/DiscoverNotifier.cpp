@@ -43,6 +43,7 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
             if (!m_needsReboot) {
                 m_needsReboot = true;
                 showRebootNotification();
+                Q_EMIT updatesChanged();
             }
         });
     }
