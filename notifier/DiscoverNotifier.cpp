@@ -110,7 +110,9 @@ void DiscoverNotifier::updateStatusNotifier()
 
 DiscoverNotifier::State DiscoverNotifier::state() const
 {
-    if (m_securityCount)
+    if (m_needsReboot)
+        return RebootRequired;
+    else if (m_securityCount)
         return SecurityUpdates;
     else if (m_count)
         return NormalUpdates;
