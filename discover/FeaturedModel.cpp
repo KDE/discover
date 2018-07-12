@@ -26,7 +26,7 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QDir>
-#include <KIO/FileCopyJob>
+#include <KIO/StoredTransferJob>
 
 #include <utils.h>
 #include <resources/ResourcesModel.h>
@@ -46,8 +46,14 @@ FeaturedModel::FeaturedModel()
     *featuredCache = dir+QLatin1String("/featured-5.9.json");
 
     const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover/featured-5.9.json"));
-    KIO::FileCopyJob *getJob = KIO::file_copy(featuredUrl, QUrl::fromLocalFile(*featuredCache), -1, KIO::Overwrite | KIO::HideProgressInfo);
-    connect(getJob, &KIO::FileCopyJob::result, this, &FeaturedModel::refresh);
+    auto *getJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
+    connect(getJob, &KIO::StoredTransferJob::result, this, [this, getJob](){
+        QFile f(*featuredCache);
+        if (!f.open(QIODevice::WriteOnly))
+            qWarning() << "could not open" << *featuredCache << f.errorString();
+        f.write(getJob->data());
+        refresh();
+    });
 
     if (!ResourcesModel::global()->backends().isEmpty() && QFile::exists(*featuredCache))
         refresh();
@@ -57,7 +63,7 @@ void FeaturedModel::refresh()
 {
     QFile f(*featuredCache);
     if (!f.open(QIODevice::ReadOnly)) {
-        qWarning() << "couldn't open file" << *featuredCache;
+        qWarning() << "couldn't open file" << *featuredCache << f.errorString();
         return;
     }
     QJsonParseError error;
