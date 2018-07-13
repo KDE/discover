@@ -32,7 +32,7 @@ int main(int argc, char** argv)
     if (app.arguments().size() != 2)
         return 1;
 
-    KService _service(app.arguments().last());
+    KService _service(app.arguments().constLast());
     if (!_service.isValid())
         return 2;
 

@@ -165,7 +165,7 @@ void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *>& resource
             if ((*it)->backend() == cab) {
                 **at = *it;
                 auto pos = index(*at - m_displayedResources.begin(), 0);
-                dataChanged(pos, pos);
+                Q_EMIT dataChanged(pos, pos);
             }
             it = resources.erase(it);
         }
@@ -231,13 +231,13 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 
 void ResourcesProxyModel::fetchSubcategories()
 {
-    auto cats = (m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories()).toList().toSet();
+    auto cats = kVectorToSet(m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories());
 
     const int count = rowCount();
     QSet<Category*> done;
     for (int i=0; i<count && !cats.isEmpty(); ++i) {
         AbstractResource* res = m_displayedResources[i];
-        const auto found = res->categoryObjects(cats.toList().toVector());
+        const auto found = res->categoryObjects(kSetToVector(cats));
         done.unite(found);
         cats.subtract(found);
     }
@@ -468,7 +468,7 @@ void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & _re
         return;
     }
 
-    for(auto resource: resources) {
+    for(auto resource: qAsConst(resources)) {
         const auto finder = [this](AbstractResource* resource, AbstractResource* res){ return lessThan(resource, res); };
         const auto it = std::upper_bound(m_displayedResources.constBegin(), m_displayedResources.constEnd(), resource, finder);
         const auto newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());

@@ -393,7 +393,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
         if (!ids.isEmpty()) {
             const auto resources = resourcesByPackageNames<QVector<AbstractResource*>>(ids);
             QTimer::singleShot(0, this, [stream, resources] () {
-                stream->resourcesFound(resources);
+                Q_EMIT stream->resourcesFound(resources);
             });
         }
 
@@ -408,7 +408,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 const auto packageId = stream->property("packageId");
                 if (!packageId.isNull()) {
                     const auto res = resourcesByPackageNames<QVector<AbstractResource*>>({PackageKit::Daemon::packageName(packageId.toString())});
-                    stream->resourcesFound(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
+                    Q_EMIT stream->resourcesFound(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
                 }
             }
             stream->finish();
@@ -421,7 +421,7 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
 {
     AbstractResource* pkg = nullptr;
     if (url.host().isEmpty())
-        passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
+        Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
     else if (url.scheme() == QLatin1String("appstream")) {
         static const QMap<QString, QString> deprecatedAppstreamIds = {
             { QStringLiteral("org.kde.krita.desktop"), QStringLiteral("krita.desktop") },
@@ -435,7 +435,7 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
         
         const auto host = url.host();
         if (host.isEmpty())
-            passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
+            Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
             const auto deprecatedHost = deprecatedAppstreamIds.value(url.host()); //try this as fallback
             for (auto it = m_packages.packages.constBegin(), itEnd = m_packages.packages.constEnd(); it != itEnd; ++it) {

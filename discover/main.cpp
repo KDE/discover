@@ -79,7 +79,7 @@ void processArgs(QCommandLineParser* parser, DiscoverObject* mainWindow)
         if (url.isLocalFile())
             mainWindow->openLocalPackage(url);
         else if (url.scheme() == QLatin1String("apt") || url.scheme() == QLatin1String("snap"))
-            mainWindow->openSearch(url.host());
+            Q_EMIT mainWindow->openSearch(url.host());
         else
             mainWindow->openApplication(url);
     }

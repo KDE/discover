@@ -199,7 +199,7 @@ void PackageKitResource::setDetails(const PackageKit::Details & details)
         emit stateChanged();
 
         if (!backend()->isFetching())
-            backend()->resourcesChanged(this, {"size", "homepage", "license"});
+            Q_EMIT backend()->resourcesChanged(this, {"size", "homepage", "license"});
     }
 }
 

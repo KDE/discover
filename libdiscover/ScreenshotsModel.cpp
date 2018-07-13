@@ -45,6 +45,7 @@ void ScreenshotsModel::setResource(AbstractResource* res)
         disconnect(m_resource, &AbstractResource::screenshotsFetched, this, &ScreenshotsModel::screenshotsFetched);
     }
     m_resource = res;
+    Q_EMIT resourceChanged(res);
     
     if(res) {
         connect(m_resource, &AbstractResource::screenshotsFetched, this, &ScreenshotsModel::screenshotsFetched);

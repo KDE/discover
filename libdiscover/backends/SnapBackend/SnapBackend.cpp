@@ -127,7 +127,7 @@ ResultsStream* SnapBackend::populate(T* job)
             m_resources[res->packageName()] = res;
 
         if (!ret.isEmpty())
-            stream->resourcesFound(ret);
+            Q_EMIT stream->resourcesFound(ret);
         stream->finish();
     });
     job->runAsync();
@@ -181,7 +181,7 @@ void SnapBackend::refreshStates()
 {
     auto ret = new StoredResultsStream({populate(m_client.list())});
     connect(ret, &StoredResultsStream::finished, this, [this, ret](){
-        for (auto res: m_resources) {
+        for (auto res: qAsConst(m_resources)) {
             if (ret->resources().contains(res))
                 res->setState(AbstractResource::Installed);
             else

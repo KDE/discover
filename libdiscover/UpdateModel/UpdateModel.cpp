@@ -97,7 +97,7 @@ void UpdateModel::activityChanged()
             m_updates->prepare();
             setResources(m_updates->toUpdate());
 
-            for(auto item : m_updateItems) {
+            for(auto item : qAsConst(m_updateItems)) {
                 item->setProgress(0);
             }
         } else
@@ -314,9 +314,9 @@ void UpdateModel::resourceDataChanged(AbstractResource* res, const QVector<QByte
 
     const auto index = indexFromItem(item);
     if (properties.contains("state"))
-        dataChanged(index, index, {SizeRole, VersionRole});
+        Q_EMIT dataChanged(index, index, {SizeRole, VersionRole});
     else if (properties.contains("size")) {
-        dataChanged(index, index, {SizeRole});
+        Q_EMIT dataChanged(index, index, {SizeRole});
         m_updateSizeTimer->start();
     }
 }

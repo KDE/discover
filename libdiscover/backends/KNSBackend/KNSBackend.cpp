@@ -125,7 +125,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         this->setFetching(false);
         qWarning() << "kns error" << objectName() << error;
         if (!invalidFile)
-            passiveMessage(i18n("%1: %2", name(), error));
+            Q_EMIT passiveMessage(i18n("%1: %2", name(), error));
     });
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged, Qt::QueuedConnection);
@@ -347,7 +347,7 @@ ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filte
                 const auto ret = kFilter<QVector<AbstractResource*>>(m_resourcesByName, filterFunction);
 
                 if (!ret.isEmpty())
-                    stream->resourcesFound(ret);
+                    Q_EMIT stream->resourcesFound(ret);
             }
             stream->finish();
         };
@@ -402,7 +402,7 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
 
     const auto pathParts = search.path().split(QLatin1Char('/'), QString::SkipEmptyParts);
     if (pathParts.size() != 2) {
-        passiveMessage(i18n("Wrong KNewStuff URI: %1", search.toString()));
+        Q_EMIT passiveMessage(i18n("Wrong KNewStuff URI: %1", search.toString()));
         return voidStream();
     }
     const auto providerid = pathParts.at(0);
@@ -416,7 +416,7 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
         connect(m_engine, &KNSCore::Engine::signalError, stream, &ResultsStream::finish);
         connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, stream, [this, stream, entryid, providerid](const KNSCore::EntryInternal &entry) {
             if (entry.uniqueId() == entryid && providerid == QUrl(entry.providerId()).host()) {
-                stream->resourcesFound({resourceForEntry(entry)});
+                Q_EMIT stream->resourcesFound({resourceForEntry(entry)});
             } else
                 qWarning() << "found invalid" << entryid << entry.uniqueId() << providerid << QUrl(entry.providerId()).host();
             m_responsePending = false;

@@ -43,6 +43,8 @@ class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
         Q_SCRIPTABLE virtual Rating *ratingForApplication(AbstractResource *app) const = 0;
         Q_INVOKABLE virtual QString errorMessage() const;
         Q_INVOKABLE virtual bool isResourceSupported(AbstractResource *res) const = 0;
+        virtual bool isFetching() const = 0;
+        virtual bool isReviewable() const;
 
     public Q_SLOTS:
         virtual void login() = 0;
@@ -53,9 +55,7 @@ class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
                         const QString& review_text, const QString& rating) = 0;
         virtual void deleteReview(Review* r) = 0;
         virtual void flagReview(Review* r, const QString& reason, const QString &text) = 0;
-        virtual bool isFetching() const = 0;
         virtual void fetchReviews(AbstractResource* app, int page=1) = 0;
-        virtual bool isReviewable() const;
 
     Q_SIGNALS:
         void reviewsReady(AbstractResource *app, const QVector<ReviewPtr> &reviews, bool canFetchMore);

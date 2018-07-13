@@ -30,7 +30,7 @@ class AbstractResource;
 class DISCOVERCOMMON_EXPORT ScreenshotsModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(AbstractResource* application READ resource WRITE setResource)
+    Q_PROPERTY(AbstractResource* application READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(int count READ count NOTIFY countChanged)
     public:
         enum Roles { ThumbnailUrl=Qt::UserRole+1, ScreenshotUrl };
@@ -51,6 +51,7 @@ class DISCOVERCOMMON_EXPORT ScreenshotsModel : public QAbstractListModel
 
     Q_SIGNALS:
         void countChanged();
+        void resourceChanged(const AbstractResource* resource);
 
     private:
         AbstractResource* m_resource;

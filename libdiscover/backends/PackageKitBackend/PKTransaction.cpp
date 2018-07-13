@@ -165,7 +165,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
                 i.remove();
             }
         }
-        removedResources.subtract(m_apps.toList().toSet());
+        removedResources.subtract(kVectorToSet(m_apps));
 
         if (!packagesToRemove.isEmpty() || !removedResources.isEmpty()) {
             QString msg = QStringLiteral("<ul><li>") + PackageKitResource::joinPackages(packagesToRemove, QStringLiteral("</li><li>"));

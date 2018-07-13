@@ -269,7 +269,7 @@ bool Category::contains(Category* cat) const
 bool Category::contains(const QVariantList& cats) const
 {
     bool ret = false;
-    for(auto itCat : cats) {
+    for(const auto &itCat : cats) {
         if (contains(qobject_cast<Category*>(itCat.value<QObject*>()))) {
             ret = true;
             break;

@@ -60,7 +60,7 @@ void DummyReviewsBackend::initialize()
         Rating* rating = new Rating(app->packageName(), ++i, {{QStringLiteral("star5"), randomRating}});
         rating->setParent(this);
         m_ratings.insert(app, rating);
-        app->ratingFetched();
+        Q_EMIT app->ratingFetched();
     }
     emit ratingsReady();
 }

@@ -220,7 +220,8 @@ void ResourcesModel::registerAllBackends()
 void ResourcesModel::registerBackendByName(const QString& name)
 {
     DiscoverBackendsFactory f;
-    for(auto b : f.backend(name))
+    const auto backends = f.backend(name);
+    for(auto b : backends)
         addResourcesBackend(b);
 
     emit backendsChanged();

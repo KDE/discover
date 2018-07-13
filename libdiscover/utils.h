@@ -73,6 +73,26 @@ static int kIndexOf(const Q& list, W func)
     return -1;
 }
 
+template <typename T>
+static QVector<T> kSetToVector(const QSet<T> & set)
+{
+    QVector<T> ret;
+    ret.reserve(set.size());
+    for(auto &x: set)
+        ret.append(x);
+    return ret;
+}
+
+template <typename T>
+static QSet<T> kVectorToSet(const QVector<T> & set)
+{
+    QSet<T> ret;
+    ret.reserve(set.size());
+    for(auto &x: set)
+        ret.insert(x);
+    return ret;
+}
+
 class ElapsedDebug : private QElapsedTimer
 {
 public:

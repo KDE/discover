@@ -80,7 +80,7 @@ class DiscoverObject : public QObject
         void listMimeInternal(const QString& mime);
         void listCategoryInternal(Category* cat);
 
-        void compactModeChanged(CompactMode compactMode);
+        void compactModeChanged(DiscoverObject::CompactMode compactMode);
         void preventedClose();
         void unableToFind(const QString &resid);
         void openErrorPage(const QString &errorMessage);

@@ -132,7 +132,7 @@ static QString userHash()
         return QString();
     }
 
-    QString salted = QStringLiteral("gnome-software[%1:%2]").arg(KUser().loginName()).arg(machineId);
+    QString salted = QStringLiteral("gnome-software[%1:%2]").arg(KUser().loginName(), machineId);
     return QString::fromUtf8(QCryptographicHash::hash(salted.toUtf8(), QCryptographicHash::Sha1).toHex());
 }
 
