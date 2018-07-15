@@ -44,7 +44,6 @@ void FwupdUpdater::prepare()
     Q_ASSERT(!m_transaction);
     m_toUpgrade = m_backend->FwupdGetAllUpdates();
     m_allUpgradeable = m_toUpgrade;
-    qDebug() << "Inside The Updater Prepare Method";
 }
 
 int FwupdUpdater::updatesCount()
@@ -67,7 +66,8 @@ void FwupdUpdater::cancel()
 
 void FwupdUpdater::setProgressing(bool progressing)
 {
-    if (m_isProgressing != progressing) {
+    if (m_isProgressing != progressing) 
+    {
         m_isProgressing = progressing;
         emit progressingChanged(m_isProgressing);
     }
@@ -82,10 +82,12 @@ double FwupdUpdater::updateSize() const
 {
     double ret = 0.;
     QSet<QString> donePkgs;
-    for (AbstractResource * res : m_toUpgrade) {
+    for (AbstractResource * res : m_toUpgrade)
+    {
         FwupdResource * app = qobject_cast<FwupdResource*>(res);
         QString pkgid = app->m_id;
-        if (!donePkgs.contains(pkgid)) {
+        if (!donePkgs.contains(pkgid)) 
+        {
             donePkgs.insert(pkgid);
             ret += app->size();
         }
@@ -134,7 +136,8 @@ QSet<QString> FwupdUpdater::involvedResources(const QSet<AbstractResource*>& res
 {
     QSet<QString> resIds;
     resIds.reserve(resources.size());
-    foreach (AbstractResource * res, resources) {
+    foreach (AbstractResource * res, resources)
+    {
         FwupdResource * app = qobject_cast<FwupdResource*>(res);
         QString resid = app->m_id;
         resIds.insert(resid);
@@ -151,9 +154,11 @@ QSet<AbstractResource*> FwupdUpdater::resourcesForResourceId(const QSet<QString>
     }
 
     QSet<AbstractResource*> ret;
-    foreach (AbstractResource * res, m_allUpgradeable) {
+    foreach (AbstractResource * res, m_allUpgradeable)
+    {
         FwupdResource* pres = qobject_cast<FwupdResource*>(res);
-        if (resources.contains(pres->allResourceNames().toSet())) {
+        if (resources.contains(pres->allResourceNames().toSet()))
+        {
             ret.insert(res);
         }
     }

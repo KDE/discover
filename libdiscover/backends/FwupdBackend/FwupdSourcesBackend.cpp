@@ -59,31 +59,23 @@ public:
                      connect(m_backend,&FwupdSourcesBackend::proceed,this,
                              [=]()
                                 {
-                                 if((value.toInt() == Qt::Checked) )
-                                 {
                                     if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("true")).toUtf8().constData()),NULL,NULL))
                                         item->setData(value, role);
-                                 }
-                                 else
-                                 {
-                                     if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("false")).toUtf8().constData()),NULL,NULL))
-                                        item->setData(value, role);
-                                 }
+                                }
+                             );
+                     connect(m_backend,&FwupdSourcesBackend::cancel,this,
+                             [=]()
+                                {
+                                    item->setCheckState(Qt::Unchecked);
+                                    Q_EMIT dataChanged(index,index,{});
+                                    return false;
                                 }
                              );
                 }
                 else if(value.toInt() == Qt::Unchecked)
                 {
-                    if((value.toInt() == Qt::Checked) )
-                    {
-                       if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("true")).toUtf8().constData()),NULL,NULL))
+                    if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("false")).toUtf8().constData()),NULL,NULL))
                            item->setData(value, role);
-                    }
-                    else
-                    {
-                        if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("false")).toUtf8().constData()),NULL,NULL))
-                           item->setData(value, role);
-                    }
                 }
 
             }
@@ -103,14 +95,13 @@ FwupdSourcesBackend::FwupdSourcesBackend(AbstractResourcesBackend * parent)
     , m_sources(new FwupdSourcesModel(this))
 {
     backend = qobject_cast<FwupdBackend*>(parent);
-    g_autoptr(GPtrArray) remotes = NULL;
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = NULL;
     /* find all remotes */
-    remotes = fwupd_client_get_remotes (backend->client,cancellable,&error);
+    g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes (backend->client,cancellable,&error);
     if(remotes != NULL)
      {
-        for (int i = 0; i < (int)remotes->len; i++)
+        for (uint i = 0; i < remotes->len; i++)
         {
             FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index (remotes, i);
             if (fwupd_remote_get_kind (remote) == FWUPD_REMOTE_KIND_LOCAL)
@@ -129,11 +120,6 @@ void FwupdSourcesBackend::eulaRequired( const QString& remoteName , const QStrin
 {
     Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The remote %1 require that you accept their license:\n %2",
                                                  remoteName, licenseAgreement));
-}
-
-void FwupdSourcesBackend::cancel()
-{
-    qDebug() << "Request Cancelled";
 }
 
 bool FwupdSourcesBackend::addSource(const QString& id)

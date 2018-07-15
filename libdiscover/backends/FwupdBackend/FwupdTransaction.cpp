@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2018 Abhijeet Sharma <sharma.abhijeet2096@gmail.com>      *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -64,14 +65,13 @@ bool FwupdTransaction::FwupdCheck()
     
     if(m_app->isDeviceLocked)
     {
-        const gchar *device_id;
-        device_id = m_app->m_deviceID.toUtf8().constData();
-        if(device_id == NULL)
+        QString device_id = m_app->m_deviceID;
+        if(device_id.isNull())
         {
             qWarning("No Device ID Set");
             return false;
         }
-        if (!fwupd_client_unlock (m_backend->client, device_id,cancellable, &error))
+        if (!fwupd_client_unlock (m_backend->client, device_id.toUtf8().constData(),cancellable, &error))
         {
             m_backend->FwupdHandleError(&error);
             return false;
@@ -89,41 +89,38 @@ bool FwupdTransaction::FwupdCheck()
 
 bool FwupdTransaction::FwupdInstall()
 {
-    const gchar *device_id;
     FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;//Removed 0 check for ussage
-    GFile *local_file;
-    g_autofree gchar *filename = NULL;
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = NULL;
     
-    local_file = m_app->m_file;
+    QFile *local_file = m_app->m_file;
     
-    if(local_file == NULL)
+    if(!local_file)
     {
         //to Do error handling
         qWarning("No Local File Set For this Resource");
         return false;
     }
     
-    filename = g_file_get_path (local_file);
+    QString filename = local_file->fileName();
     
-    if (!g_file_query_exists (local_file, cancellable)) 
+    if (!(QFileInfo::exists(filename) && QFileInfo(filename).isFile())) 
     {
-        const gchar *uri = m_app->m_updateURI.toUtf8().constData();
+        const QUrl uri(m_app->m_updateURI);
          if(!m_backend->FwupdDownloadFile(uri,filename))
             return false;
     }
     
     /* limit to single device? */
-    device_id = m_app->m_deviceID.toUtf8().constData();
-    if (device_id == NULL)
-        device_id = FWUPD_DEVICE_ID_ANY;
+    QString device_id = m_app->m_deviceID;
+    if (device_id.isNull())
+        device_id = QStringLiteral(FWUPD_DEVICE_ID_ANY);
 
     /* only offline supported */
     if (m_app->isOnlyOffline)
         install_flags = FWUPD_INSTALL_FLAG_OFFLINE; // removed the bit wise or operation |=
 
-    if (!fwupd_client_install (m_backend->client, device_id,filename, install_flags,cancellable, &error)) {
+    if (!fwupd_client_install (m_backend->client, device_id.toUtf8().constData(),filename.toUtf8().constData(), install_flags,cancellable, &error)) {
         m_backend->FwupdHandleError(&error);
         return false;
     }
@@ -148,7 +145,8 @@ void FwupdTransaction::iterateTransaction()
         return;
 
     setStatus(CommittingStatus);
-    if(progress()<100) {
+    if(progress()<100) 
+    {
         setProgress(fwupd_client_get_percentage (m_backend->client));
         
         QTimer::singleShot(100, this, &FwupdTransaction::iterateTransaction);

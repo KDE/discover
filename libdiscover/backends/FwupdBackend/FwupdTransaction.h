@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2018 Abhijeet Sharma <sharma.abhijeet2096@gmail.com>      *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *

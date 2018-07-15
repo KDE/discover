@@ -44,9 +44,9 @@ public:
     QList<QAction*> actions() const override;
     bool supportsAdding() const override { return false; }
     void eulaRequired(const QString& remoteName , const QString& licenseAgreement);
-    void cancel() override;
 Q_SIGNALS:
     void proceed() override;
+    void cancel() override;
 
 private:
     FwupdSourcesModel* m_sources;

@@ -150,24 +150,32 @@ void FwupdResource::fetchChangelog()
 
 void FwupdResource::setState(AbstractResource::State state)
 {
-    m_state = state;
-    emit stateChanged();
+    if(m_state != state)
+    {   
+        m_state = state;
+        emit stateChanged();
+    }
+        
 }
 
 void FwupdResource::setAddons(const AddonList& addons)
 {
-    Q_FOREACH (const QString& toInstall, addons.addonsToInstall()) {
+    Q_FOREACH (const QString& toInstall, addons.addonsToInstall()) 
+    {
         setAddonInstalled(toInstall, true);
     }
-    Q_FOREACH (const QString& toRemove, addons.addonsToRemove()) {
+    Q_FOREACH (const QString& toRemove, addons.addonsToRemove())
+    {
         setAddonInstalled(toRemove, false);
     }
 }
 
 void FwupdResource::setAddonInstalled(const QString& addon, bool installed)
 {
-    for(auto & elem : m_addons) {
-        if(elem.name() == addon) {
+    for(auto & elem : m_addons)
+    {
+        if(elem.name() == addon)
+        {
             elem.setInstalled(installed);
         }
     }

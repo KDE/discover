@@ -103,12 +103,12 @@ public:
     bool isDeviceLocked = false; // True if device is locked!
     QString m_deviceID;
     QString m_updateURI;
-    GFile* m_file;
+    QFile* m_file;
     bool isOnlyOffline = false; // True if only offline updates
     bool isLiveUpdatable = false; // True if device is live updatable
     bool needsReboot = false; // True if device needs Reboot
     bool isDeviceRemoval = false; //True if device is Removal
-    gchar * guidString;
+    QString guidString;
     
 
     QList<FwupdResource*> m_releases; // A list of all refrences to releases of a device.
