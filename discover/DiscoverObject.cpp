@@ -170,8 +170,8 @@ void DiscoverObject::openMode(const QString& _mode)
         return;
     }
 
-    if(!modes().contains(_mode))
-        qWarning() << "unknown mode" << _mode;
+    if(!modes().contains(_mode, Qt::CaseInsensitive))
+        qWarning() << "unknown mode" << _mode << modes();
 
     QString mode = _mode;
     mode[0] = mode[0].toUpper();
