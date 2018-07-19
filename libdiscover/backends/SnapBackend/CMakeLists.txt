@@ -4,7 +4,7 @@ add_library(snap-backend MODULE SnapResource.cpp SnapBackend.cpp SnapReviewsBack
 target_link_libraries(snap-backend Qt5::Core KF5::CoreAddons KF5::ConfigCore Discover::Common Snapd::Core)
 
 if ("${Snapd_VERSION}" VERSION_GREATER 1.40)
-    target_compile_definitions(snap-backend PRIVATE -DSNAP_COMMON_IDS)
+    target_compile_definitions(snap-backend PRIVATE -DSNAP_COMMON_IDS -DSNAP_CHANNELS)
 endif()
 
 install(TARGETS snap-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)

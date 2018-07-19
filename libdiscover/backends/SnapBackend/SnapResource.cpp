@@ -69,7 +69,11 @@ QDebug operator<<(QDebug debug, const QSnapdSlot* slot)
     return debug;
 }
 
-const QStringList SnapResource::m_objects({ QStringLiteral("qrc:/qml/PermissionsButton.qml"), QStringLiteral("qrc:/qml/ChannelsButton.qml") });
+const QStringList SnapResource::m_objects({ QStringLiteral("qrc:/qml/PermissionsButton.qml")
+#ifdef SNAP_CHANNELS
+	, QStringLiteral("qrc:/qml/ChannelsButton.qml")
+#endif
+	});
 
 SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend* backend)
     : AbstractResource(backend)
@@ -347,6 +351,7 @@ QString SnapResource::channel() const
 
 void SnapResource::setChannel(const QString& channelName)
 {
+#ifdef SNAP_CHANNELS
     Q_ASSERT(isInstalled());
     auto request = client()->switchChannel(m_snap->name(), channelName);
 
@@ -360,6 +365,7 @@ void SnapResource::setChannel(const QString& channelName)
 
     request->runAsync();
     connect(request, &QSnapdRequest::complete, dest, &QObject::deleteLater);
+#endif
 }
 
 void SnapResource::refreshSnap()
@@ -376,6 +382,7 @@ void SnapResource::refreshSnap()
     request->runAsync();
 }
 
+#ifdef SNAP_CHANNELS
 class Channels : public QObject
 {
     Q_OBJECT
@@ -418,9 +425,15 @@ private:
     SnapResource* const m_res;
 };
 
+#endif
+
 QObject * SnapResource::channels(QObject* parent)
 {
+#ifdef SNAP_CHANNELS
     return new Channels(this, parent);
+#else
+    return nullptr;
+#endif
 }
 
 #include "SnapResource.moc"
