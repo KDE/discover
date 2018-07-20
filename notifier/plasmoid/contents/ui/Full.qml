@@ -23,32 +23,34 @@ import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.components 2.0
 import org.kde.discovernotifier 1.0
 
-ColumnLayout
-{
+Item {
+
     PlasmaExtras.Heading {
-        Layout.fillWidth: true
+        anchors.top: parent.top
+        width: parent.width
         level: 3
         wrapMode: Text.WordWrap
         text: DiscoverNotifier.message
     }
 
-    Label {
-        visible: !DiscoverNotifier.isSystemUpToDate
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-        wrapMode: Text.WordWrap
-        horizontalAlignment: Text.AlignHCenter
-        text: DiscoverNotifier.extendedMessage
-    }
-    Button {
-        visible: !DiscoverNotifier.isSystemUpToDate
-        Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-        text: i18n("Update")
-        tooltip: i18n("Launches the software to perform the update")
-        onClicked: DiscoverNotifier.showDiscoverUpdates()
-    }
-    Item {
-        Layout.fillHeight: true
-        width: 5
+    ColumnLayout {
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        spacing: units.smallSpacing * 2
+
+        Label {
+            visible: !DiscoverNotifier.isSystemUpToDate
+            Layout.fillWidth: true
+            wrapMode: Text.WordWrap
+            text: DiscoverNotifier.extendedMessage
+        }
+        Button {
+            visible: !DiscoverNotifier.isSystemUpToDate
+            Layout.alignment: Qt.AlignHCenter
+            iconSource: DiscoverNotifier.iconName
+            text: i18n("View Updates")
+            tooltip: i18n("Launches Discover to update the software")
+            onClicked: DiscoverNotifier.showDiscoverUpdates()
+        }
     }
 }
