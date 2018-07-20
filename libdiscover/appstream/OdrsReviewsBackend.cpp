@@ -321,6 +321,10 @@ void OdrsReviewsBackend::parseRatings()
 void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractResource *resource)
 {
     m_isFetching = false;
+    Q_ASSERT(resource);
+    if (!resource) {
+        return;
+    }
 
     QJsonArray reviews = document.array();
     if (!reviews.isEmpty()) {
