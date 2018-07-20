@@ -101,7 +101,7 @@ DiscoverPage {
                 text: i18n("Release Date")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.ReleaseDateRole
-                    appsModel.sortOrder = Qt.AscendingOrder
+                    appsModel.sortOrder = Qt.DescendingOrder
                 }
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.ReleaseDateRole
