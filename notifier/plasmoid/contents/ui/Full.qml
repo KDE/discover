@@ -27,21 +27,20 @@ Item {
 
     PlasmaExtras.Heading {
         anchors.top: parent.top
-        width: parent.width
         level: 3
         wrapMode: Text.WordWrap
         text: DiscoverNotifier.message
     }
 
     ColumnLayout {
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.centerIn: parent
         spacing: units.smallSpacing * 2
 
         Label {
             visible: !DiscoverNotifier.isSystemUpToDate
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
             text: DiscoverNotifier.extendedMessage
         }
         Button {
