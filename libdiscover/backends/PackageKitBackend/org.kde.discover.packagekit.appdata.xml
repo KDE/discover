@@ -10,6 +10,7 @@
   <name xml:lang="de">PackageKit-Backend</name>
   <name xml:lang="en-GB">PackageKit backend</name>
   <name xml:lang="es">Motor PackageKit</name>
+  <name xml:lang="eu">PackageKit bizkarraldekoa</name>
   <name xml:lang="fi">PackageKit-taustaosa</name>
   <name xml:lang="fr">Moteur PackageKit</name>
   <name xml:lang="gl">Infraestrutura de PackageKit</name>
@@ -36,6 +37,7 @@
   <summary xml:lang="de">Integriert Distributions-Anwendungen in Discover</summary>
   <summary xml:lang="en-GB">Integrates distribution applications into Discover</summary>
   <summary xml:lang="es">Integra aplicaciones de la distribución en Discover</summary>
+  <summary xml:lang="eu">Banaketaren aplikazioak Dicover-ren integratzen ditu</summary>
   <summary xml:lang="fi">Yhdistää jakelun sovellukset Discoveriin</summary>
   <summary xml:lang="fr">Intègre les applications de distribution au sein de Discover</summary>
   <summary xml:lang="gl">Integra aplicativos da distribución con Discover</summary>
@@ -67,6 +69,7 @@
   <developer_name xml:lang="de">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="en-GB">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="es">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="eu">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fi">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="gl">Aleix Pol Gonzalez</developer_name>
