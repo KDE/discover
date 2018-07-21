@@ -41,13 +41,14 @@ FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, co
     setCancellable(true);
     if(role == InstallRole)
     {
-       if(!FwupdCheck())
-           qWarning() << "Error In Install!";
+        setStatus(QueuedStatus);
+        if(!check())
+            qWarning() << "Fwupd Error: Error In Install!";
     }
     else if(role == RemoveRole)
     {
-        if(!FwupdRemove())
-           qWarning() << "Error in Remove!";
+        if(!remove())
+           qWarning() << "Fwupd Error: Error in Remove!";
     }
 
     iterateTransaction();
@@ -58,7 +59,7 @@ FwupdTransaction::~FwupdTransaction()
     
 }
 
-bool FwupdTransaction::FwupdCheck()
+bool FwupdTransaction::check()
 {
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = NULL;
@@ -68,75 +69,72 @@ bool FwupdTransaction::FwupdCheck()
         QString device_id = m_app->m_deviceID;
         if(device_id.isNull())
         {
-            qWarning("No Device ID Set");
+            qWarning("Fwupd Error: No Device ID set, cannot unlock device ");
             return false;
         }
         if (!fwupd_client_unlock (m_backend->client, device_id.toUtf8().constData(),cancellable, &error))
         {
-            m_backend->FwupdHandleError(&error);
+            m_backend->handleError(&error);
             return false;
         }
         return true;
      }
-    if(!FwupdInstall())
+    if(!install())
     {
-        // To DO error handling
+        qWarning("Fwupd Error: Cannot Install Application");
         return false;
     }
     return true;
     
 }
 
-bool FwupdTransaction::FwupdInstall()
+bool FwupdTransaction::install()
 {
-    FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;//Removed 0 check for ussage
+    FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = NULL;
     
-    QFile *local_file = m_app->m_file;
+    QFile *localFile = m_app->m_file;
+    QString deviceId = m_app->m_deviceID;
     
-    if(!local_file)
+    if(!localFile)
     {
-        //to Do error handling
-        qWarning("No Local File Set For this Resource");
+        qWarning("Fwupd Error: No Local File Set For this Resource");
         return false;
     }
-    
-    QString filename = local_file->fileName();
-    
-    if (!(QFileInfo::exists(filename) && QFileInfo(filename).isFile())) 
+     
+    if (!(localFile->exists())) 
     {
         const QUrl uri(m_app->m_updateURI);
-         if(!m_backend->FwupdDownloadFile(uri,filename))
+        setStatus(DownloadingStatus);
+        if(!m_backend->downloadFile(uri,localFile->fileName()))
             return false;
     }
     
     /* limit to single device? */
-    QString device_id = m_app->m_deviceID;
-    if (device_id.isNull())
-        device_id = QStringLiteral(FWUPD_DEVICE_ID_ANY);
+    if (deviceId.isNull())
+        deviceId = QStringLiteral(FWUPD_DEVICE_ID_ANY);
 
     /* only offline supported */
     if (m_app->isOnlyOffline)
-        install_flags = FWUPD_INSTALL_FLAG_OFFLINE; // removed the bit wise or operation |=
-
-    if (!fwupd_client_install (m_backend->client, device_id.toUtf8().constData(),filename.toUtf8().constData(), install_flags,cancellable, &error)) {
-        m_backend->FwupdHandleError(&error);
+        install_flags = static_cast<FwupdInstallFlags>(install_flags | FWUPD_INSTALL_FLAG_OFFLINE);
+   
+    m_iterate = true;
+    QTimer::singleShot(100, this, &FwupdTransaction::iterateTransaction);
+    if (!fwupd_client_install (m_backend->client, deviceId.toUtf8().constData(),localFile->fileName().toUtf8().constData(), install_flags,cancellable, &error)) 
+    {
+        m_backend->handleError(&error);
+        m_iterate = false;
         return false;
     }
+    finishTransaction();
     return true;
 }
 
-bool FwupdTransaction::FwupdRemove()
+bool FwupdTransaction::remove()
 {
-    // To Do Implement It
+    m_app->setState(AbstractResource::State::None);
     return true;
-}
-
-int FwupdTransaction::speed()
-{
-    //To Do Implement It
-    return 0;
 }
 
 void FwupdTransaction::iterateTransaction()
@@ -148,14 +146,8 @@ void FwupdTransaction::iterateTransaction()
     if(progress()<100) 
     {
         setProgress(fwupd_client_get_percentage (m_backend->client));
-        
         QTimer::singleShot(100, this, &FwupdTransaction::iterateTransaction);
-    } else
-#ifdef TEST_PROCEED
-        Q_EMIT proceedRequest(QStringLiteral("yadda yadda"), QStringLiteral("Biii BOooo<ul><li>A</li><li>A</li><li>A</li><li>A</li></ul>"));
-#else
-        finishTransaction();
-#endif
+    }
 }
 
 void FwupdTransaction::proceed()

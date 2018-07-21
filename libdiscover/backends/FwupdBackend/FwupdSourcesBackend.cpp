@@ -55,22 +55,24 @@ public:
             {
                 if((value.toInt() == Qt::Checked) )
                 {
-                     m_backend->eulaRequired(QLatin1String(fwupd_remote_get_title(remote)),QLatin1String(fwupd_remote_get_agreement(remote)));
-                     connect(m_backend,&FwupdSourcesBackend::proceed,this,
-                             [=]()
-                                {
-                                    if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("true")).toUtf8().constData()),NULL,NULL))
-                                        item->setData(value, role);
-                                }
-                             );
-                     connect(m_backend,&FwupdSourcesBackend::cancel,this,
-                             [=]()
-                                {
-                                    item->setCheckState(Qt::Unchecked);
-                                    Q_EMIT dataChanged(index,index,{});
-                                    return false;
-                                }
-                             );
+                    #if FWUPD_CHECK_VERSION(1,0,7)
+                        m_backend->eulaRequired(QLatin1String(fwupd_remote_get_title(remote)),QLatin1String(fwupd_remote_get_agreement(remote)));
+                    #endif
+                    connect(m_backend,&FwupdSourcesBackend::proceed,this,
+                        [=]()
+                            {
+                                if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("true")).toUtf8().constData()),NULL,NULL))
+                                    item->setData(value, role);
+                            }
+                            );
+                    connect(m_backend,&FwupdSourcesBackend::cancel,this,
+                        [=]()
+                            {
+                                item->setCheckState(Qt::Unchecked);
+                                Q_EMIT dataChanged(index,index,{});
+                                return false;
+                            }
+                            );
                 }
                 else if(value.toInt() == Qt::Unchecked)
                 {

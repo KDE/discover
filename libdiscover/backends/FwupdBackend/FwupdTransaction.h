@@ -35,12 +35,11 @@ class FwupdTransaction : public Transaction
         FwupdTransaction(FwupdResource* app, FwupdBackend* backend, Role role);
         FwupdTransaction(FwupdResource* app, FwupdBackend* backend, const AddonList& list, Role role);
         ~FwupdTransaction();
-        bool FwupdCheck();
-        bool FwupdInstall();
-        bool FwupdRemove();
+        bool check();
+        bool install();
+        bool remove();
         void cancel() override;
         void proceed() override;
-        int speed();
 
     private Q_SLOTS:
         void iterateTransaction();

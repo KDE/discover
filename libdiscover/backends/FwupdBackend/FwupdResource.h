@@ -24,6 +24,7 @@
 
 #include <resources/AbstractResource.h>
 #include "FwupdBackend.h"
+#include <KLocalizedString>
 
 class AddonList;
 class FwupdResource : public AbstractResource
@@ -52,10 +53,11 @@ public:
     QString packageName() const override;
     QString vendor() const;
     bool isTechnical() const override { return m_isTechnical; }
-    bool canExecute() const override { return true; }
+    bool canExecute() const override { return false; }
     void invokeApplication() const override;
     void fetchChangelog() override;
     QUrl url() const override;
+    QString executeLabel() const override;
     
     void setState(State state);
     void setSize(int size) { m_size = size; }
@@ -75,8 +77,6 @@ public:
     void setIsDeviceLocked(bool status){ isDeviceLocked = status;}
     void setDeviceID(const QString &deviceID){ m_deviceID = deviceID;}
     void setUpdateURI(const QString &updateURI){m_updateURI = updateURI;}
-   // void setFile(const QFile &file){m_file = file;};
-    
     
     void setAddonInstalled(const QString& addon, bool installed);
     QString sourceIcon() const override { return QStringLiteral("player-time"); }
@@ -100,10 +100,10 @@ public:
     bool m_isTechnical;
     int m_size;
     
-    bool isDeviceLocked = false; // True if device is locked!
     QString m_deviceID;
     QString m_updateURI;
     QFile* m_file;
+    bool isDeviceLocked = false; // True if device is locked!
     bool isOnlyOffline = false; // True if only offline updates
     bool isLiveUpdatable = false; // True if device is live updatable
     bool needsReboot = false; // True if device needs Reboot

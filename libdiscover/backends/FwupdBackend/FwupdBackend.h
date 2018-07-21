@@ -47,15 +47,15 @@ extern "C" {
 }
 #include <gio/gio.h>
 
-#define FWUPD_DEBUG // UnComment This to see all debug messages
 
 class QAction;
-class FwupdUpdater;
+class StandardBackendUpdater;
 class FwupdResource;
 class FwupdBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 Q_PROPERTY(int startElements MEMBER m_startElements)
+Q_ENUMS(Modes)
 public:
     explicit FwupdBackend(QObject* parent = NULL);
     ~FwupdBackend();
@@ -77,40 +77,42 @@ public:
     QString displayName() const override;
     bool hasApplications() const override;
     FwupdClient *client;
-    QList<QUrl> toDownload;
-    QList<QUrl> toIgnore;
     
-    bool FwupdDownloadFile(const QUrl &uri,const QString &filename);
-    bool FwupdRefreshRemotes(uint cacheAge);
-    bool FwupdRefreshRemote(FwupdRemote *remote,uint cacheAge);
-    const QUrl FwupdCacheFile(const QString &kind,const QFileInfo &resource);
-    bool FwupdDownloadAllScheduled(uint cacheAge);
-    bool FwupdAddToScheduleForDownload(const QUrl uri);
-    FwupdResource * FwupdCreateDevice(FwupdDevice *device);
-    FwupdResource * FwupdCreateRelease(FwupdDevice *device);
-    bool FwupdAddToSchedule(FwupdDevice *device);
-    QByteArray FwupdGetChecksum(const QUrl filename,QCryptographicHash::Algorithm hashAlgorithm);
-    QString FwupdBuildDeviceID(FwupdDevice* device);
-    void FwupdAddUpdates();
-    void FwupdSetReleaseDetails(FwupdResource *res,FwupdRelease *rel);
-    void FwupdSetDeviceDetails(FwupdResource *res,FwupdDevice *device);
-    void FwupdHandleError(GError **perror);
-    QSet<AbstractResource*> FwupdGetAllUpdates();
-    QString FwupdGetAppName(QString ID);
+    bool downloadFile(const QUrl &uri,const QString &filename);
+    bool refreshRemotes(uint cacheAge);
+    bool refreshRemote(FwupdRemote *remote,uint cacheAge);
+    const QUrl cacheFile(const QString &kind,const QFileInfo &resource);
+    FwupdResource * createDevice(FwupdDevice *device);
+    FwupdResource * createRelease(FwupdDevice *device);
+    FwupdResource * createApp(FwupdDevice *device);
+    QByteArray getChecksum(const QUrl filename,QCryptographicHash::Algorithm hashAlgorithm);
+    QString buildDeviceID(FwupdDevice* device);
+    void addUpdates();
+    void addResourceToList(FwupdResource *res);
+    void addHistoricalUpdates();
+    void setReleaseDetails(FwupdResource *res,FwupdRelease *rel);
+    void setDeviceDetails(FwupdResource *res,FwupdDevice *device);
+    void handleError(GError **perror);
+    QSet<AbstractResource*> getAllUpdates();
+    QString getAppName(QString ID);
     QMap<GChecksumType,QCryptographicHash::Algorithm> initHashMap();
 
 
 public Q_SLOTS:
     void toggleFetching();
 
+private Q_SLOTS:
+    void saveFile(QNetworkReply *reply);
+
 private:
     void populate(const QString& name);
 
     QHash<QString, FwupdResource*> m_resources;
-    FwupdUpdater* m_updater;
+    QMap<QUrl,QString> m_downloadFile;
+    StandardBackendUpdater* m_updater;
     bool m_fetching;
     int m_startElements;
-    QList<FwupdResource*> m_toUpdate;
+    QList<AbstractResource*> m_toUpdate;
 };
 
 #endif // FWUPDBACKEND_H

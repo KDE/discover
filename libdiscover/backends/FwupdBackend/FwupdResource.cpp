@@ -184,11 +184,15 @@ void FwupdResource::setAddonInstalled(const QString& addon, bool installed)
 
 void FwupdResource::invokeApplication() const
 {
-    QDesktopServices d;
-    d.openUrl(QUrl(QStringLiteral("https://projects.kde.org/projects/extragear/sysadmin/muon")));
+    qWarning() << "Not Launchable";
 }
 
 QUrl FwupdResource::url() const
 {
     return m_homepage;
+}
+
+QString FwupdResource::executeLabel() const
+{
+    return i18n("Not Invokable");
 }
