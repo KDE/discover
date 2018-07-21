@@ -33,85 +33,84 @@ DiscoverPage {
         }
         currentIndex: -1
 
-        Component {
-            id: sourceBackendDelegate
-            Kirigami.AbstractListItem {
-                id: backendItem
-                hoverEnabled: false
-                supportsMouseEvents: false
-                readonly property QtObject backend: sourcesBackend
-                readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
-                RowLayout {
-                    Connections {
-                        target: backendItem.backend
-                        onPassiveMessage: window.showPassiveNotification(message)
+        section.property: "sourceName"
+        section.delegate: Kirigami.AbstractListItem {
+            id: backendItem
+            hoverEnabled: false
+            supportsMouseEvents: false
+            readonly property QtObject backend: SourcesModel.sourcesBackendByName(section)
+            readonly property QtObject resourcesBackend: backend.resourcesBackend
+            readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
+            RowLayout {
+                Connections {
+                    target: backendItem.backend
+                    onPassiveMessage: window.showPassiveNotification(message)
+                }
+
+                anchors {
+                    right: parent.right
+                    left: parent.left
+                    rightMargin: parent.rightPadding
+                    leftMargin: parent.leftPadding
+                }
+                Kirigami.Heading {
+                    Layout.fillWidth: true
+                    text: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
+                }
+                Button {
+                    Layout.rightMargin: Kirigami.Units.smallSpacing
+                    icon.name: "preferences-other"
+
+                    visible: resourcesBackend && resourcesBackend.hasApplications
+                    Component {
+                        id: dialogComponent
+                        AddSourceDialog {
+                            source: backendItem.backend
+                            onVisibleChanged: if (!visible) {
+                                destroy()
+                            }
+                        }
                     }
 
-                    anchors {
-                        right: parent.right
-                        left: parent.left
-                        rightMargin: parent.rightPadding
-                        leftMargin: parent.leftPadding
-                    }
-                    Kirigami.Heading {
-                        Layout.fillWidth: true
-                        text: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
-                    }
-                    Button {
-                        Layout.rightMargin: Kirigami.Units.smallSpacing
-                        icon.name: "preferences-other"
+                    id: this
+                    onClicked: settingsMenu.popup(this)
+                    Menu {
+                        id: settingsMenu
+                        MenuItem {
+                            enabled: !backendItem.isDefault
+                            text: i18n("Make default")
+                            onTriggered: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
+                        }
 
-                        visible: resourcesBackend && resourcesBackend.hasApplications
-                        Component {
-                            id: dialogComponent
-                            AddSourceDialog {
-                                source: backendItem.backend
-                                onVisibleChanged: if (!visible) {
-                                    destroy()
-                                }
+                        MenuItem {
+                            text: i18n("Add Source...")
+                            visible: backendItem.backend && backendItem.backend.supportsAdding
+
+                            onTriggered: {
+                                var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
+                                addSourceDialog.open()
                             }
                         }
 
-                        id: this
-                        onClicked: settingsMenu.popup(this)
-                        Menu {
-                            id: settingsMenu
-                            MenuItem {
-                                enabled: !backendItem.isDefault
-                                text: i18n("Make default")
-                                onTriggered: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
+                        MenuSeparator {
+                            visible: backendActionsInst.count>0
+                        }
+
+                        Instantiator {
+                            id: backendActionsInst
+                            model: ActionsModel {
+                                actions: backendItem.backend ? backendItem.backend.actions : undefined
                             }
-
-                            MenuItem {
-                                text: i18n("Add Source...")
-                                visible: backendItem.backend && backendItem.backend.supportsAdding
-
-                                onTriggered: {
-                                    var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
-                                    addSourceDialog.open()
+                            delegate: MenuItem {
+                                action: ActionBridge {
+                                    action: modelData
                                 }
                             }
-
-                            MenuSeparator {
-                                visible: backendActionsInst.count>0
+                            onObjectAdded: {
+                                settingsMenu.insertItem(index, object)
                             }
-
-                            Instantiator {
-                                id: backendActionsInst
-                                model: ActionsModel {
-                                    actions: backendItem.backend ? backendItem.backend.actions : undefined
-                                }
-                                delegate: MenuItem {
-                                    action: ActionBridge {
-                                        action: modelData.action
-                                    }
-                                }
-                                onObjectAdded: {
-                                    settingsMenu.insertItem(index, object)
-                                }
-                                onObjectRemoved: {
-                                    object.destroy()
-                                }
+                            onObjectRemoved: {
+                                object.destroy()
                             }
                         }
                     }
@@ -119,83 +118,63 @@ DiscoverPage {
             }
         }
 
-        delegate: ConditionalLoader {
-            anchors {
-                right: parent.right
-                left: parent.left
-            }
-            readonly property variant resourcesBackend: model.resourcesBackend
-            readonly property variant sourcesBackend: model.sourcesBackend
-            readonly property variant display: model.display
-            readonly property variant checked: model.checked
-            readonly property variant statusTip: model.statusTip
-            readonly property variant toolTip: model.toolTip
-            readonly property variant sourceId: model.sourceId
-            readonly property variant modelIndex: sourcesView.model.index(index, 0)
+        delegate: Kirigami.SwipeListItem {
+            Layout.fillWidth: true
+            enabled: display.length>0
+            highlighted: ListView.isCurrentItem
+            onClicked: Navigation.openApplicationListSource(sourceId)
 
-            condition: resourcesBackend != null
-            componentTrue: sourceBackendDelegate
-            componentFalse: sourceDelegate
-        }
-
-        Component {
-            id: sourceDelegate
-            Kirigami.SwipeListItem {
-                Layout.fillWidth: true
-                enabled: display.length>0
-                highlighted: ListView.isCurrentItem
-                onClicked: Navigation.openApplicationListSource(sourceId)
-
-                Keys.onReturnPressed: clicked()
-                actions: [
-                    Kirigami.Action {
-                        iconName: "go-up"
-                        enabled: sourcesBackend.firstSourceId !== sourceId
-                        visible: sourcesBackend.canMoveSources
-                        onTriggered: {
-                             var ret = sourcesBackend.moveSource(sourceId, -1)
-                             if (!ret)
-                                 window.showPassiveNotification(i18n("Failed to increase '%1' preference", display))
-                        }
-                    },
-                    Kirigami.Action {
-                        iconName: "go-down"
-                        enabled: sourcesBackend.lastSourceId !== sourceId
-                        visible: sourcesBackend.canMoveSources
-                        onTriggered: {
-                            var ret = sourcesBackend.moveSource(sourceId, +1)
+            Keys.onReturnPressed: clicked()
+            actions: [
+                Kirigami.Action {
+                    iconName: "go-up"
+                    enabled: sourcesBackend.firstSourceId !== sourceId
+                    visible: sourcesBackend.canMoveSources
+                    onTriggered: {
+                            var ret = sourcesBackend.moveSource(sourceId, -1)
                             if (!ret)
-                                 window.showPassiveNotification(i18n("Failed to decrease '%1' preference", display))
-                        }
-                    },
-                    Kirigami.Action {
-                        iconName: "edit-delete"
-                        tooltip: i18n("Delete the origin")
-                        onTriggered: {
-                            var backend = sourcesBackend
-                            if (!backend.removeSource(sourceId)) {
-                                window.showPassiveNotification(i18n("Failed to remove the source '%1'", display))
-                            }
+                                window.showPassiveNotification(i18n("Failed to increase '%1' preference", display))
+                    }
+                },
+                Kirigami.Action {
+                    iconName: "go-down"
+                    enabled: sourcesBackend.lastSourceId !== sourceId
+                    visible: sourcesBackend.canMoveSources
+                    onTriggered: {
+                        var ret = sourcesBackend.moveSource(sourceId, +1)
+                        if (!ret)
+                                window.showPassiveNotification(i18n("Failed to decrease '%1' preference", display))
+                    }
+                },
+                Kirigami.Action {
+                    iconName: "edit-delete"
+                    tooltip: i18n("Delete the origin")
+                    visible: sourcesBackend.supportsAdding
+                    onTriggered: {
+                        var backend = sourcesBackend
+                        if (!backend.removeSource(sourceId)) {
+                            window.showPassiveNotification(i18n("Failed to remove the source '%1'", display))
                         }
                     }
-                ]
+                }
+            ]
 
-                RowLayout {
-                    CheckBox {
-                        id: enabledBox
+            RowLayout {
+                CheckBox {
+                    id: enabledBox
 
-                        readonly property variant modelChecked: sourcesView.model.data(modelIndex, Qt.CheckStateRole)
-                        checked: modelChecked != Qt.Unchecked
-                        enabled: modelChecked !== undefined
-                        onClicked: {
-                            sourcesView.model.setData(modelIndex, checkedState, Qt.CheckStateRole)
-                        }
+                    readonly property variant idx: sourcesView.model.index(index, 0)
+                    readonly property variant modelChecked: sourcesView.model.data(idx, Qt.CheckStateRole)
+                    checked: modelChecked != Qt.Unchecked
+                    enabled: modelChecked !== undefined
+                    onClicked: {
+                        sourcesView.model.setData(idx, checkedState, Qt.CheckStateRole)
                     }
-                    Label {
-                        text: display + (toolTip ? " - <i>" + toolTip + "</i>" : "")
-                        elide: Text.ElideRight
-                        Layout.fillWidth: true
-                    }
+                }
+                Label {
+                    text: display + (toolTip ? " - <i>" + toolTip + "</i>" : "")
+                    elide: Text.ElideRight
+                    Layout.fillWidth: true
                 }
             }
         }

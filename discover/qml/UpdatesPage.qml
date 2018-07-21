@@ -119,6 +119,13 @@ DiscoverPage
         id: updatesView
         currentIndex: -1
 
+        displaced: Transition {
+            YAnimator {
+                duration: Kirigami.Units.longDuration
+                easing.type: Easing.InOutQuad
+            }
+        }
+
         footer: ColumnLayout {
             anchors.right: parent.right
             anchors.left: parent.left

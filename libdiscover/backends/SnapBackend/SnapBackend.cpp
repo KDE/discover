@@ -37,10 +37,31 @@
 #include <QThread>
 #include <QTimer>
 #include <QAction>
+#include <QStandardItemModel>
 
 #include "utils.h"
 
 DISCOVER_BACKEND_PLUGIN(SnapBackend)
+
+class SnapSourcesBackend : public AbstractSourcesBackend
+{
+public:
+    explicit SnapSourcesBackend(AbstractResourcesBackend * parent) : AbstractSourcesBackend(parent), m_model(new QStandardItemModel) {
+        m_model->appendRow(new QStandardItem(i18n("Snap")));
+    }
+
+    QAbstractItemModel* sources() override { return m_model; }
+    bool addSource(const QString& /*id*/) override { return false; }
+    bool removeSource(const QString& /*id*/) override { return false;}
+    QString idDescription() override { return QStringLiteral("Snap"); }
+    QList<QAction*> actions() const override { return {}; }
+
+    bool supportsAdding() const override { return false; }
+    bool canMoveSources() const override { return false; }
+
+private:
+    QStandardItemModel* const m_model;
+};
 
 SnapBackend::SnapBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
@@ -61,7 +82,7 @@ SnapBackend::SnapBackend(QObject* parent)
     //make sure we populate the installed resources first
     refreshStates();
 
-    SourcesModel::global()->addBackend(this);
+    SourcesModel::global()->addSourcesBackend(new SnapSourcesBackend(this));
 }
 
 int SnapBackend::updatesCount() const

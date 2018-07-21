@@ -66,6 +66,7 @@ QHash<int, QByteArray> SourcesModel::roleNames() const
 {
     QHash<int, QByteArray> roles = KConcatenateRowsProxyModel::roleNames();
     roles.insert(AbstractSourcesBackend::IdRole, "sourceId");
+    roles.insert(SourceNameRole, "sourceName");
     roles.insert(SourcesBackend, "sourcesBackend");
     roles.insert(ResourcesBackend, "resourcesBackend");
     return roles;
@@ -74,30 +75,11 @@ QHash<int, QByteArray> SourcesModel::roleNames() const
 void SourcesModel::addSourcesBackend(AbstractSourcesBackend* sources)
 {
     auto backend = qobject_cast<AbstractResourcesBackend*>(sources->parent());
-    auto b = addBackend(backend);
-    if (!b)
-        return;
 
     auto m = sources->sources();
     m->setProperty(DisplayName, backend->displayName());
     m->setProperty(SourcesBackendId, qVariantFromValue<QObject*>(sources));
-    b->setProperty(SourcesBackendId, qVariantFromValue<QObject*>(sources));
     addSourceModel(m);
-}
-
-
-SourceBackendModel* SourcesModel::addBackend(AbstractResourcesBackend* backend)
-{
-    Q_ASSERT(backend);
-    const auto inSourcesModel = "InSourcesModel";
-    if (backend->dynamicPropertyNames().contains(inSourcesModel))
-        return nullptr;
-    backend->setProperty(inSourcesModel, 1);
-
-    auto b = new SourceBackendModel(backend);
-    b->setProperty(DisplayName, backend->displayName());
-    addSourceModel(b);
-    return b;
 }
 
 const QAbstractItemModel * SourcesModel::modelAt(const QModelIndex& index) const
@@ -117,6 +99,17 @@ QVariant SourcesModel::data(const QModelIndex& index, int role) const
         default:
             return KConcatenateRowsProxyModel::data(index, role);
     }
+}
+
+AbstractSourcesBackend * SourcesModel::sourcesBackendByName(const QString& id) const
+{
+    for(int i = 0, c = rowCount(); i < c; ++i) {
+        const auto idx = index(i, 0);
+        if (idx.data(SourceNameRole) == id) {
+            return qobject_cast<AbstractSourcesBackend *>(idx.data(SourcesBackend).value<QObject*>());
+        }
+    }
+    return nullptr;
 }
 
 #include "SourcesModel.moc"
