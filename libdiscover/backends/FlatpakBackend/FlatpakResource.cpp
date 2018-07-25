@@ -387,12 +387,9 @@ QString FlatpakResource::typeAsString() const
     }
 }
 
-QString FlatpakResource::uniqueId() const
+FlatpakResource::Id FlatpakResource::uniqueId() const
 {
-    return installationPath() + QStringLiteral("/flatpak/") + origin()
-                              + QLatin1Char('/') + typeAsString()
-                              + QLatin1Char('/') + m_appdata.id()
-                              + QLatin1Char('/') + branch();
+    return {m_installation, m_origin, m_type, m_appdata.id(), branch(), arch() };
 }
 
 void FlatpakResource::invokeApplication() const

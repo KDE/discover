@@ -104,7 +104,7 @@ private:
 
     void acquireFetching(bool f);
 
-    QHash<QString, FlatpakResource*> m_resources;
+    QHash<FlatpakResource::Id, FlatpakResource*> m_resources;
     StandardBackendUpdater  *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;
     QSharedPointer<OdrsReviewsBackend> m_reviews;

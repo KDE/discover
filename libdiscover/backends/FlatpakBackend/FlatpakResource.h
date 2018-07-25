@@ -58,6 +58,24 @@ public:
         Source
     };
 
+    struct Id {
+        const FlatpakInstallation * installation;
+        const QString origin;
+        const FlatpakResource::ResourceType type;
+        const QString id;
+        const QString branch;
+        const QString arch;
+        bool operator!=(const Id& other) const { return !operator==(other); }
+        bool operator==(const Id& other) const { return &other == this || (
+               other.installation == installation
+            && other.origin == origin
+            && other.type == type
+            && other.id == id
+            && other.branch == branch
+            && other.arch == arch
+        ); }
+    };
+
     static QString typeAsString(ResourceType type) {
         if (type == DesktopApp) {
             return QLatin1String("app");
@@ -103,7 +121,7 @@ public:
     AbstractResource::State state() override;
     ResourceType type() const;
     QString typeAsString() const;
-    QString uniqueId() const;
+    FlatpakResource::Id uniqueId() const;
     QUrl url() const override;
     QDate releaseDate() const override;
 
@@ -157,5 +175,15 @@ public:
     AbstractResource::State m_state;
     ResourceType m_type;
 };
+
+inline uint qHash(const FlatpakResource::Id &key)
+{
+    return qHash(key.installation)
+         ^ qHash(key.origin)
+         ^ qHash(key.type)
+         ^ qHash(key.id)
+         ^ qHash(key.branch)
+         ;
+}
 
 #endif // FLATPAKRESOURCE_H

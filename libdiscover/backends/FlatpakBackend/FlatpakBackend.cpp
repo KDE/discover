@@ -61,7 +61,7 @@
 
 DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
 
-static QString idForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref)
+static FlatpakResource::Id idForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref)
 {
     const FlatpakResource::ResourceType appType = flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime;
     const QString name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
@@ -70,8 +70,7 @@ static QString idForInstalledRef(FlatpakInstallation *installation, FlatpakInsta
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
 
-    return QStringLiteral("%1/%2/%3/%4/%5/%6").arg(FlatpakResource::installationPath(installation), QLatin1String("flatpak"), QString::fromUtf8(flatpak_installed_ref_get_origin(ref)),
-                                                   FlatpakResource::typeAsString(appType), appId, branch);
+    return { installation, QString::fromUtf8(flatpak_installed_ref_get_origin(ref)), appType, appId, branch, arch };
 }
 
 FlatpakBackend::FlatpakBackend(QObject* parent)
@@ -226,10 +225,9 @@ FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) co
         return runtime;
     }
 
-    const QString runtimeId = QStringLiteral("runtime/") + runtimeInfo.at(0) + QLatin1Char('/') + runtimeInfo.at(2);
-
     for(auto it = m_resources.constBegin(), itEnd = m_resources.constEnd(); it!=itEnd; ++it) {
-        if (it.key().endsWith(runtimeId)) {
+        const auto id = it.key();
+        if (id.type == FlatpakResource::Runtime && id.id == runtimeInfo.at(0) && id.branch == runtimeInfo.at(2)) {
             runtime = *it;
             break;
         }
@@ -237,7 +235,7 @@ FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) co
 
     // TODO if runtime wasn't found, create a new one from available info
     if (!runtime) {
-        qWarning() << "could not find runtime" << runtimeId << resource;
+        qWarning() << "could not find runtime" << runtimeInfo << resource;
     }
 
     return runtime;
