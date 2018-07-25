@@ -98,7 +98,7 @@ AppStream::Component FlatpakResource::appstreamComponent() const
 
 QList<PackageState> FlatpakResource::addonsInformation()
 {
-    return m_addons;
+    return {};
 }
 
 QString FlatpakResource::availableVersion() const

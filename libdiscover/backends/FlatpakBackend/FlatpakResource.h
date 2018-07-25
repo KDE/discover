@@ -138,7 +138,6 @@ Q_SIGNALS:
     void propertyStateChanged(PropertyKind kind, PropertyState state);
 
 public:
-    QList<PackageState> m_addons;
     const AppStream::Component m_appdata;
     FlatpakRefKind m_flatpakRefKind;
     QString m_arch;
