@@ -44,6 +44,7 @@ class FwupdTransaction : public Transaction
     private Q_SLOTS:
         void iterateTransaction();
         void finishTransaction();
+        void fwupdInstall(QNetworkReply* reply);
 
     private:
         bool m_iterate = true;

@@ -22,8 +22,9 @@
 #ifndef FWUPDRESOURCE_H
 #define FWUPDRESOURCE_H
 
-#include <resources/AbstractResource.h>
 #include "FwupdBackend.h"
+
+#include <resources/AbstractResource.h>
 #include <KLocalizedString>
 
 class AddonList;
@@ -102,7 +103,7 @@ public:
     
     QString m_deviceID;
     QString m_updateURI;
-    QFile* m_file;
+    QString m_file;
     bool isDeviceLocked = false; // True if device is locked!
     bool isOnlyOffline = false; // True if only offline updates
     bool isLiveUpdatable = false; // True if device is live updatable
@@ -111,7 +112,7 @@ public:
     QString guidString;
     
 
-    QList<FwupdResource*> m_releases; // A list of all refrences to releases of a device.
+    QVector<FwupdResource*> m_releases; // A list of all references to releases of a device.
 };
 
 #endif // FWUPDRESOURCE_H

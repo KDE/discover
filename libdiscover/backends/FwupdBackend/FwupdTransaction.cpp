@@ -22,8 +22,6 @@
 #include "FwupdTransaction.h"
 
 #include <QTimer>
-#include <QDebug>
-#include <KRandom>
 
 
 #define TEST_PROCEED
@@ -62,7 +60,7 @@ FwupdTransaction::~FwupdTransaction()
 bool FwupdTransaction::check()
 {
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
-    g_autoptr(GError) error = NULL;
+    g_autoptr(GError) error = nullptr;
     
     if(m_app->isDeviceLocked)
     {
@@ -90,27 +88,55 @@ bool FwupdTransaction::check()
 
 bool FwupdTransaction::install()
 {
-    FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
-    g_autoptr(GError) error = NULL;
-    
-    QFile *localFile = m_app->m_file;
-    QString deviceId = m_app->m_deviceID;
-    
-    if(!localFile)
+    QString localFile = m_app->m_file;
+    if(localFile.isEmpty())
     {
         qWarning("Fwupd Error: No Local File Set For this Resource");
         return false;
     }
-     
-    if (!(localFile->exists())) 
+    
+    if (!(QFileInfo::exists(localFile))) 
     {
         const QUrl uri(m_app->m_updateURI);
         setStatus(DownloadingStatus);
-        if(!m_backend->downloadFile(uri,localFile->fileName()))
-            return false;
+        QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+        connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(fwupdInstall(QNetworkReply*)));
+        manager->get(QNetworkRequest(uri));
     }
+    else
+    {
+        fwupdInstall(nullptr);
+    }
+    return true;
+}
+
+void FwupdTransaction::fwupdInstall(QNetworkReply* reply)
+{
+    if(reply)
+    {
+        QString filename = m_app->m_file;
+        if (reply->error() == QNetworkReply::NoError) 
+        {
+            QByteArray Data = reply->readAll();
+            QFile file(filename);
+            if (file.open(QIODevice::WriteOnly)) 
+            {
+                file.write(Data);
+            }
+            else
+            {
+                qWarning() << "Fwupd Error: Cannot Save File";
+            }
+            file.close();
+            delete reply;
+        }   
+    }
+    FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;
+    g_autoptr(GCancellable) cancellable = g_cancellable_new();
+    g_autoptr(GError) error = nullptr;
     
+    QString localFile = m_app->m_file;
+    QString deviceId = m_app->m_deviceID;
     /* limit to single device? */
     if (deviceId.isNull())
         deviceId = QStringLiteral(FWUPD_DEVICE_ID_ANY);
@@ -121,14 +147,13 @@ bool FwupdTransaction::install()
    
     m_iterate = true;
     QTimer::singleShot(100, this, &FwupdTransaction::iterateTransaction);
-    if (!fwupd_client_install (m_backend->client, deviceId.toUtf8().constData(),localFile->fileName().toUtf8().constData(), install_flags,cancellable, &error)) 
+    if (!fwupd_client_install (m_backend->client, deviceId.toUtf8().constData(),localFile.toUtf8().constData(), install_flags,cancellable, &error)) 
     {
         m_backend->handleError(&error);
         m_iterate = false;
-        return false;
+        return;
     }
     finishTransaction();
-    return true;
 }
 
 bool FwupdTransaction::remove()

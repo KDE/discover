@@ -46,10 +46,6 @@ else (LIBFWUPD_INCLUDE_DIRS AND LIBFWUPD_LIBRARIES)
         HINTS fwupd-1/libfwupd
     )
     set(LIBFWUPD_FOUND TRUE)
-    find_package(GIO)
-    find_package(Soup)
-    find_package(GLib)
-
 
 endif (LIBFWUPD_INCLUDE_DIRS AND LIBFWUPD_LIBRARIES)
 
@@ -59,5 +55,4 @@ if (LIBFWUPD_FOUND)
        INTERFACE_INCLUDE_DIRECTORIES ${LIBFWUPD_INCLUDE_DIRS}
        IMPORTED_LOCATION ${LIBFWUPD_LIBRARIES}
        ) 
-    add_dependencies(LIBFWUPD GIO Soup GLib)
-endif()
+endif (LIBFWUPD_FOUND)

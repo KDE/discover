@@ -47,7 +47,6 @@ extern "C" {
 }
 #include <gio/gio.h>
 
-
 class QAction;
 class StandardBackendUpdater;
 class FwupdResource;
