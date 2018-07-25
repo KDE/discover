@@ -101,6 +101,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 
 FlatpakBackend::~FlatpakBackend()
 {
+    g_cancellable_cancel(m_cancellable);
     m_threadPool.clear();
     for(auto inst : m_installations)
         g_object_unref(inst);
@@ -733,10 +734,9 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
 void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation* installation)
 {
     auto fw = new QFutureWatcher<GPtrArray *>(this);
-    fw->setFuture(QtConcurrent::run(&m_threadPool, [installation]() -> GPtrArray * {
-        g_autoptr(GCancellable) cancellable = g_cancellable_new();
+    fw->setFuture(QtConcurrent::run(&m_threadPool, [installation, this]() -> GPtrArray * {
         g_autoptr(GError) localError = nullptr;
-        GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
+        GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation, m_cancellable, &localError);
         if (!refs) {
             qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
         }
