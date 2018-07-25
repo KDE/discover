@@ -85,7 +85,6 @@ private:
     FlatpakResource * addAppFromFlatpakBundle(const QUrl &url);
     FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
     void addResource(FlatpakResource *resource);
-    bool compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref) const;
     void loadAppsFromAppstreamData();
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);
     void loadInstalledApps();

@@ -516,11 +516,6 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
     m_resources.insert(resource->uniqueId(), resource);
 }
 
-bool FlatpakBackend::compareAppFlatpakRef(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, FlatpakInstalledRef *ref) const
-{
-    return resource->uniqueId() == idForInstalledRef(flatpakInstallation, ref);
-}
-
 class FlatpakSource
 {
 public:
