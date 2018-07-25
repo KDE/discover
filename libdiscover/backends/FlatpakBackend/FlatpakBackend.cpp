@@ -368,7 +368,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
     const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
 
-    g_autoptr(GError) error = NULL;
+    g_autoptr(GError) error = nullptr;
     g_autoptr(FlatpakRemoteRef) remoteRef = nullptr;
     {
         QFile f(url.toLocalFile());
