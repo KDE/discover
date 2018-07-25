@@ -151,7 +151,10 @@ DiscoverPage
             }
         }
 
-        model: updateModel
+        model: QSortFilterProxyModel {
+            sourceModel: updateModel
+            sortRole: UpdateModel.SectionResourceProgressRole
+        }
 
         section {
             property: "section"

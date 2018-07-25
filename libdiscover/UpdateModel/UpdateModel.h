@@ -44,9 +44,11 @@ public:
         SizeRole,
         ResourceRole,
         ResourceProgressRole,
+        SectionResourceProgressRole,
         ChangelogRole,
         SectionRole
     };
+    Q_ENUM(Roles)
 
     explicit UpdateModel(QObject *parent = nullptr);
     ~UpdateModel() override;

@@ -87,7 +87,7 @@ void UpdateModel::resourceHasProgressed(AbstractResource* res, qreal progress)
     item->setProgress(progress);
 
     const QModelIndex idx = indexFromItem(item);
-    Q_EMIT dataChanged(idx, idx, { ResourceProgressRole });
+    Q_EMIT dataChanged(idx, idx, { ResourceProgressRole, SectionResourceProgressRole });
 }
 
 void UpdateModel::activityChanged()
@@ -130,8 +130,15 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return item->progress();
     case ChangelogRole:
         return item->changelog();
-    case SectionRole:
-        return item->section();
+    case SectionRole: {
+        static const QString appUpdatesSection = i18nc("@item:inlistbox", "Application Updates");
+        static const QString systemUpdateSection = i18nc("@item:inlistbox", "System Updates");
+        switch(item->section()) {
+            case UpdateItem::ApplicationSection: return appUpdatesSection;
+            case UpdateItem::SystemSection: return systemUpdateSection;
+        }
+    } case SectionResourceProgressRole:
+        return (100-item->progress()) + (101 * item->section());
     default:
         break;
     }
@@ -216,8 +223,6 @@ void UpdateModel::setResources(const QList<AbstractResource*>& resources)
     qDeleteAll(m_updateItems);
     m_updateItems.clear();
 
-    const QString appUpdatesSection = i18nc("@item:inlistbox", "Application Updates");
-    const QString systemUpdateSection = i18nc("@item:inlistbox", "System Updates");
     QVector<UpdateItem*> appItems, systemItems;
     foreach(AbstractResource* res, resources) {
         connect(res, &AbstractResource::changelogFetched, this, &UpdateModel::integrateChangelog, Qt::UniqueConnection);
@@ -225,10 +230,10 @@ void UpdateModel::setResources(const QList<AbstractResource*>& resources)
         UpdateItem *updateItem = new UpdateItem(res);
 
         if(!res->isTechnical()) {
-            updateItem->setSection(appUpdatesSection);
+            updateItem->setSection(UpdateItem::ApplicationSection);
             appItems += updateItem;
         } else {
-            updateItem->setSection(systemUpdateSection);
+            updateItem->setSection(UpdateItem::SystemSection);
             systemItems += updateItem;
         }
     }
