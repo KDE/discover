@@ -55,6 +55,7 @@ DiscoverPage {
                 }
                 Kirigami.Heading {
                     Layout.fillWidth: true
+                    Layout.leftMargin: Kirigami.Units.smallSpacing
                     text: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
                 }
                 Button {
