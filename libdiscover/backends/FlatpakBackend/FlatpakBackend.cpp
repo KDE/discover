@@ -235,6 +235,9 @@ FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) co
     }
 
     // TODO if runtime wasn't found, create a new one from available info
+    if (!runtime) {
+        qWarning() << "could not find runtime" << runtimeId << resource;
+    }
 
     return runtime;
 }
