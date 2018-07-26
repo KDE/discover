@@ -61,14 +61,7 @@ Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
         return nullptr;
     }
 
-    const int noc = resource->entry().numberOfComments();
-    const int rating = resource->entry().rating();
-    Q_ASSERT(rating <= 100);
-    return new Rating(
-        resource->packageName(),
-        noc,
-        { { QStringLiteral("star5"), rating } }
-    );
+    return resource->ratingInstance();
 }
 
 void KNSReviews::fetchReviews(AbstractResource* app, int page)
