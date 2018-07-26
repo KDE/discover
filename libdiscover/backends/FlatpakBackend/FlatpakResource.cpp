@@ -52,12 +52,11 @@ static QString iconCachePath(const AppStream::Icon &icon)
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation* installation, FlatpakBackend *parent)
     : AbstractResource(parent)
     , m_appdata(component)
+    , m_id({installation, QString(), FlatpakResource::DesktopApp, component.id(), QString(), QString() })
     , m_downloadSize(0)
     , m_installedSize(0)
     , m_propertyStates({{DownloadSize, NotKnownYet}, {InstalledSize, NotKnownYet},{RequiredRuntime, NotKnownYet}})
-    , m_installation(installation)
     , m_state(AbstractResource::None)
-    , m_type(FlatpakResource::DesktopApp)
 {
     setObjectName(packageName());
 
@@ -118,22 +117,22 @@ QString FlatpakResource::availableVersion() const
 
 QString FlatpakResource::appstreamId() const
 {
-    return m_appdata.id();
+    return m_id.id;
 }
 
 QString FlatpakResource::arch() const
 {
-    return m_arch;
+    return m_id.arch;
 }
 
 QString FlatpakResource::branch() const
 {
-    return m_branch;
+    return m_id.branch;
 }
 
 bool FlatpakResource::canExecute() const
 {
-    return (m_type == DesktopApp && (m_state == AbstractResource::Installed || m_state == AbstractResource::Upgradeable));
+    return (m_id.type == DesktopApp && (m_state == AbstractResource::Installed || m_state == AbstractResource::Upgradeable));
 }
 
 void FlatpakResource::updateFromRef(FlatpakRef* ref)
@@ -240,7 +239,7 @@ int FlatpakResource::installedSize() const
 
 bool FlatpakResource::isTechnical() const
 {
-    return m_type == FlatpakResource::Runtime;
+    return m_id.type == FlatpakResource::Runtime;
 }
 
 QUrl FlatpakResource::homepage()
@@ -273,7 +272,7 @@ QString FlatpakResource::flatpakName() const
     // If the flatpak name is not known (known only for installed apps), then use
     // appstream id instead;
     if (m_flatpakName.isEmpty()) {
-        return m_appdata.id();
+        return m_id.id;
     }
 
     return m_flatpakName;
@@ -293,7 +292,7 @@ QString FlatpakResource::name() const
 {
     QString name = m_appdata.name();
     if (name.isEmpty()) {
-        name = m_appdata.id();
+        name = flatpakName();
     }
 
     if (name.startsWith(QLatin1String("(Nightly) "))) {
@@ -305,7 +304,7 @@ QString FlatpakResource::name() const
 
 QString FlatpakResource::origin() const
 {
-    return m_origin;
+    return m_id.origin;
 }
 
 QString FlatpakResource::packageName() const
@@ -371,12 +370,12 @@ AbstractResource::State FlatpakResource::state()
 
 FlatpakResource::ResourceType FlatpakResource::type() const
 {
-    return m_type;
+    return m_id.type;
 }
 
 QString FlatpakResource::typeAsString() const
 {
-    switch (m_type) {
+    switch (m_id.type) {
         case FlatpakResource::DesktopApp:
         case FlatpakResource::Source:
             return QLatin1String("app");
@@ -389,7 +388,7 @@ QString FlatpakResource::typeAsString() const
 
 FlatpakResource::Id FlatpakResource::uniqueId() const
 {
-    return {m_installation, m_origin, m_type, m_appdata.id(), branch(), arch() };
+    return m_id;
 }
 
 void FlatpakResource::invokeApplication() const
@@ -397,7 +396,7 @@ void FlatpakResource::invokeApplication() const
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) localError = nullptr;
 
-    if (!flatpak_installation_launch(m_installation,
+    if (!flatpak_installation_launch(m_id.installation,
                                      flatpakName().toUtf8().constData(),
                                      arch().toUtf8().constData(),
                                      branch().toUtf8().constData(),
@@ -432,12 +431,12 @@ void FlatpakResource::fetchScreenshots()
 
 void FlatpakResource::setArch(const QString &arch)
 {
-    m_arch = arch;
+    m_id.arch = arch;
 }
 
 void FlatpakResource::setBranch(const QString &branch)
 {
-    m_branch = branch;
+    m_id.branch = branch;
 }
 
 void FlatpakResource::setBundledIcon(const QPixmap &pixmap)
@@ -485,7 +484,7 @@ void FlatpakResource::setInstalledSize(int size)
 
 void FlatpakResource::setOrigin(const QString &origin)
 {
-    m_origin = origin;
+    m_id.origin = origin;
 }
 
 void FlatpakResource::setPropertyState(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState newState)
@@ -522,12 +521,12 @@ void FlatpakResource::setState(AbstractResource::State state)
 
 void FlatpakResource::setType(FlatpakResource::ResourceType type)
 {
-    m_type = type;
+    m_id.type = type;
 }
 
 QString FlatpakResource::installationPath() const
 {
-    return installationPath(m_installation);
+    return installationPath(m_id.installation);
 }
 
 QString FlatpakResource::installationPath(FlatpakInstallation* flatpakInstallation)

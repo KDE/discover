@@ -59,12 +59,12 @@ public:
     };
 
     struct Id {
-        const FlatpakInstallation * installation;
-        const QString origin;
-        const FlatpakResource::ResourceType type;
-        const QString id;
-        const QString branch;
-        const QString arch;
+        FlatpakInstallation * installation;
+        QString origin;
+        FlatpakResource::ResourceType type;
+        QString id;
+        QString branch;
+        QString arch;
         bool operator!=(const Id& other) const { return !operator==(other); }
         bool operator==(const Id& other) const { return &other == this || (
                other.installation == installation
@@ -125,16 +125,14 @@ public:
     QUrl url() const override;
     QDate releaseDate() const override;
 
-    FlatpakInstallation* installation() const { return m_installation; }
+    FlatpakInstallation* installation() const { return m_id.installation; }
 
     void invokeApplication() const override;
     void fetchChangelog() override;
     void fetchScreenshots() override;
 
-    void setArch(const QString &arch);
     void setBranch(const QString &branch);
     void setBundledIcon(const QPixmap &pixmap);
-    void setCommit(const QString &commit);
     void setDownloadSize(int size);
     void setIconPath(const QString &path);
     void setInstalledSize(int size);
@@ -155,11 +153,13 @@ public:
 Q_SIGNALS:
     void propertyStateChanged(PropertyKind kind, PropertyState state);
 
-public:
+private:
+    void setArch(const QString &arch);
+    void setCommit(const QString &commit);
+
     const AppStream::Component m_appdata;
+    FlatpakResource::Id m_id;
     FlatpakRefKind m_flatpakRefKind;
-    QString m_arch;
-    QString m_branch;
     QPixmap m_bundledIcon;
     QString m_commit;
     int m_downloadSize;
@@ -167,13 +167,10 @@ public:
     QString m_flatpakName;
     QString m_iconPath;
     int m_installedSize;
-    QString m_origin;
     QHash<PropertyKind, PropertyState> m_propertyStates;
     QUrl m_resourceFile;
     QString m_runtime;
-    FlatpakInstallation* const m_installation;
     AbstractResource::State m_state;
-    ResourceType m_type;
 };
 
 inline uint qHash(const FlatpakResource::Id &key)
@@ -183,6 +180,7 @@ inline uint qHash(const FlatpakResource::Id &key)
          ^ qHash(key.type)
          ^ qHash(key.id)
          ^ qHash(key.branch)
+         ^ qHash(key.arch)
          ;
 }
 
