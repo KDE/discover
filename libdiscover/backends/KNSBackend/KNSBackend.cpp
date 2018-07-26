@@ -34,8 +34,8 @@
 #include <knewstuffcore_version.h>
 #include <KNSCore/Engine>
 #include <KNSCore/QuestionManager>
+#include <KConfig>
 #include <KConfigGroup>
-#include <KDesktopFile>
 #include <KLocalizedString>
 
 // DiscoverCommon includes
