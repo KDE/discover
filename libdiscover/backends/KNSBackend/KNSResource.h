@@ -23,6 +23,7 @@
 
 #include <resources/AbstractResource.h>
 #include <KNSCore/EntryInternal>
+#include <QPointer>
 #include <attica/content.h>
 
 #include "discovercommon_export.h"
@@ -70,10 +71,13 @@ public:
     QVector<int> linkIds() const;
     QUrl donationURL() override;
 
+    Rating* ratingInstance();
+
 private:
     const QStringList m_categories;
     KNSCore::EntryInternal m_entry;
     KNS3::Entry::Status m_lastStatus;
+    QPointer<Rating> m_rating;
 };
 
 #endif // KNSRESOURCE_H

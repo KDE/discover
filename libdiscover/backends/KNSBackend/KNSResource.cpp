@@ -25,6 +25,8 @@
 #include <KLocalizedString>
 #include <QProcess>
 #include <QRegularExpression>
+
+#include "ReviewsBackend/Rating.h"
 #include <knewstuff_version.h>
 
 KNSResource::KNSResource(const KNSCore::EntryInternal& entry, QStringList categories, KNSBackend* parent)
@@ -248,4 +250,19 @@ QVector<int> KNSResource::linkIds() const
 QUrl KNSResource::donationURL()
 {
     return QUrl(m_entry.donationLink());
+}
+
+Rating * KNSResource::ratingInstance()
+{
+    if (!m_rating) {
+        const int noc = m_entry.numberOfComments();
+        const int rating = m_entry.rating();
+        Q_ASSERT(rating <= 100);
+        return new Rating(
+            packageName(),
+            noc,
+            { { QStringLiteral("star5"), rating } }
+        );
+    }
+    return m_rating;
 }
