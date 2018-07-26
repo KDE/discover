@@ -143,7 +143,8 @@ void AbstractResource::reportNewState()
     if (backend()->isFetching())
         return;
 
-    emit backend()->resourcesChanged(this, {"state", "status", "canUpgrade", "size", "sizeDescription", "installedVersion", "availableVersion" });
+    static const QVector<QByteArray> ns = {"state", "status", "canUpgrade", "size", "sizeDescription", "installedVersion", "availableVersion" };
+    emit backend()->resourcesChanged(this, ns);
 }
 
 static bool shouldFilter(AbstractResource* res, const QPair<FilterType, QString>& filter)
