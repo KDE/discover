@@ -23,9 +23,6 @@
 
 #include <QTimer>
 
-
-#define TEST_PROCEED
-
 FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, Role role)
     : FwupdTransaction(app, backend,{}, role)
 {
@@ -59,7 +56,6 @@ FwupdTransaction::~FwupdTransaction()
 
 bool FwupdTransaction::check()
 {
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = nullptr;
     
     if(m_app->isDeviceLocked)
@@ -70,7 +66,7 @@ bool FwupdTransaction::check()
             qWarning("Fwupd Error: No Device ID set, cannot unlock device ");
             return false;
         }
-        if (!fwupd_client_unlock (m_backend->client, device_id.toUtf8().constData(),cancellable, &error))
+        if (!fwupd_client_unlock (m_backend->client, device_id.toUtf8().constData(),nullptr, &error))
         {
             m_backend->handleError(&error);
             return false;
@@ -132,7 +128,6 @@ void FwupdTransaction::fwupdInstall(QNetworkReply* reply)
         }   
     }
     FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = nullptr;
     
     QString localFile = m_app->m_file;
@@ -147,7 +142,7 @@ void FwupdTransaction::fwupdInstall(QNetworkReply* reply)
    
     m_iterate = true;
     QTimer::singleShot(100, this, &FwupdTransaction::iterateTransaction);
-    if (!fwupd_client_install (m_backend->client, deviceId.toUtf8().constData(),localFile.toUtf8().constData(), install_flags,cancellable, &error)) 
+    if (!fwupd_client_install (m_backend->client, deviceId.toUtf8().constData(),localFile.toUtf8().constData(), install_flags,nullptr, &error)) 
     {
         m_backend->handleError(&error);
         m_iterate = false;

@@ -210,10 +210,9 @@ void FwupdBackend::populate(const QString& n)
 
 void FwupdBackend::addUpdates()
 {
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = nullptr;
     g_autoptr(GError) error2 = nullptr;
-    g_autoptr(GPtrArray) devices = fwupd_client_get_devices (client, cancellable, &error);
+    g_autoptr(GPtrArray) devices = fwupd_client_get_devices (client, nullptr, &error);
     
     if(!devices)
     {
@@ -243,7 +242,7 @@ void FwupdBackend::addUpdates()
             }
 
 
-            g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades (client,fwupd_device_get_id(device),cancellable, &error2);
+            g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades (client,fwupd_device_get_id(device),nullptr, &error2);
 
             if (!rels) 
             {
@@ -286,9 +285,8 @@ void FwupdBackend::addUpdates()
 
 void FwupdBackend::addHistoricalUpdates()
 {
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = nullptr;
-    g_autoptr(FwupdDevice) device = fwupd_client_get_results (client,FWUPD_DEVICE_ID_ANY,cancellable,&error);
+    g_autoptr(FwupdDevice) device = fwupd_client_get_results (client,FWUPD_DEVICE_ID_ANY,nullptr,&error);
     if(!device)
     {
         handleError(&error);
@@ -443,9 +441,8 @@ bool FwupdBackend::downloadFile(const QUrl &uri,const QString &filename)
 
 bool FwupdBackend::refreshRemotes(uint cacheAge)
 {
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = nullptr;
-    g_autoptr(GPtrArray)  remotes = fwupd_client_get_remotes (client, cancellable, &error);
+    g_autoptr(GPtrArray)  remotes = fwupd_client_get_remotes (client, nullptr, &error);
     if (!remotes)
         return false;
     for (uint i = 0; i < remotes->len; i++)
@@ -466,7 +463,6 @@ bool FwupdBackend::refreshRemotes(uint cacheAge)
 
 bool FwupdBackend::refreshRemote(FwupdRemote* remote,uint cacheAge)
 {
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = nullptr;
     
     if (fwupd_remote_get_filename_cache_sig (remote) == nullptr) 
@@ -545,7 +541,7 @@ bool FwupdBackend::refreshRemote(FwupdRemote* remote,uint cacheAge)
         return false;
     }
     /* Sending Metadata to fwupd Daemon*/
-    if (!fwupd_client_update_metadata (client,fwupd_remote_get_id (remote),filename.toString().toUtf8().constData(),filenameSig.toString().toUtf8().constData(),cancellable,&error)) 
+    if (!fwupd_client_update_metadata (client,fwupd_remote_get_id (remote),filename.toString().toUtf8().constData(),filenameSig.toString().toUtf8().constData(),nullptr,&error)) 
     {
         handleError(&error);
         return false;
@@ -684,7 +680,6 @@ void FwupdBackend::checkForUpdates()
 
 AbstractResource * FwupdBackend::resourceForFile(const QUrl& path)
 {
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) error = nullptr;
 
     QMimeDatabase db;
@@ -694,7 +689,7 @@ AbstractResource * FwupdBackend::resourceForFile(const QUrl& path)
     if(type.isValid() && type.inherits(QStringLiteral("application/vnd.ms-cab-compressed")))
     {
         g_autofree gchar *filename = path.fileName().toUtf8().data();
-        g_autoptr(GPtrArray) devices = fwupd_client_get_details (client,filename,cancellable,&error);
+        g_autoptr(GPtrArray) devices = fwupd_client_get_details (client,filename,nullptr,&error);
 
         if (devices)
         {

@@ -100,10 +100,8 @@ FwupdSourcesBackend::FwupdSourcesBackend(AbstractResourcesBackend * parent)
 
 void FwupdSourcesBackend::populateSources()
 {
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
-    g_autoptr(GError) error = nullptr;
     /* find all remotes */
-    g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes (backend->client,cancellable,&error);
+    g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes (backend->client,nullptr,nullptr);
     if(remotes != nullptr)
     {
         for (uint i = 0; i < remotes->len; i++)

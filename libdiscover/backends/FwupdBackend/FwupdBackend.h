@@ -45,7 +45,7 @@
 extern "C" {
 #include <fwupd.h>
 }
-#include <gio/gio.h>
+#include <glib-2.0/glib-object.h>
 
 class QAction;
 class StandardBackendUpdater;
