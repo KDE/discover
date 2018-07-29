@@ -165,12 +165,8 @@ DiscoverPage
             }
         }
 
-        spacing: Kirigami.Units.smallSpacing
-
         delegate: Kirigami.AbstractListItem {
             backgroundColor: Kirigami.Theme.viewBackgroundColor
-            x: Kirigami.Units.gridUnit
-            width: ListView.view.width - Kirigami.Units.gridUnit * 2
             highlighted: ListView.isCurrentItem
             onEnabledChanged: if (!enabled) {
                 layout.extended = false;
@@ -194,6 +190,7 @@ DiscoverPage
 
                     CheckBox {
                         id: itemChecked
+                        Layout.leftMargin: Kirigami.Units.gridUnit
                         Layout.alignment: Qt.AlignVCenter
                         checked: model.checked == Qt.Checked
                         onClicked: model.checked = (model.checked==Qt.Checked ? Qt.Unchecked : Qt.Checked)
