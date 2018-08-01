@@ -160,8 +160,9 @@ DiscoverPage
             property: "section"
             delegate: Kirigami.Heading {
                 x: Kirigami.Units.gridUnit
-                level: 2
+                level: 3
                 text: section
+                height: implicitHeight + Kirigami.Units.largeSpacing * 2
             }
         }
 
