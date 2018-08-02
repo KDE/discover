@@ -4,7 +4,7 @@ import QtQuick 2.4
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
-import org.kde.kirigami 2.1 as Kirigami
+import org.kde.kirigami 2.3 as Kirigami
 
 DiscoverPage
 {
@@ -81,6 +81,8 @@ DiscoverPage
     }
 
     header: ToolBar {
+        Kirigami.Theme.colorSet: Kirigami.Theme.Button
+        Kirigami.Theme.inherit: false
         visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
 
         RowLayout {
@@ -168,7 +170,7 @@ DiscoverPage
         }
 
         delegate: Kirigami.AbstractListItem {
-            backgroundColor: Kirigami.Theme.viewBackgroundColor
+            backgroundColor: Kirigami.Theme.backgroundColor
             highlighted: ListView.isCurrentItem
             onEnabledChanged: if (!enabled) {
                 layout.extended = false;
