@@ -49,6 +49,9 @@ void CategoryModel::populateCategories()
     QVector<Category*> ret;
     CategoriesReader cr;
     Q_FOREACH (const auto backend, backends) {
+        if (!backend->isValid())
+            continue;
+
         const QVector<Category*> cats = cr.loadCategoriesFile(backend);
 
         if(ret.isEmpty()) {
