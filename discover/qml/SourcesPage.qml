@@ -12,13 +12,6 @@ DiscoverPage {
     title: i18n("Settings")
     property string search: ""
 
-    Kirigami.Theme.inherit: false
-    Kirigami.Theme.colorSet: Kirigami.Theme.View
-
-    background: Rectangle {
-        color: Kirigami.Theme.backgroundColor
-    }
-
     contextualActions: [
         KirigamiActionBridge { action: app.action("help_about_app") },
         KirigamiActionBridge { action: app.action("help_report_bug") }
@@ -41,25 +34,23 @@ DiscoverPage {
             readonly property QtObject backend: SourcesModel.sourcesBackendByName(section)
             readonly property QtObject resourcesBackend: backend.resourcesBackend
             readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
+
             RowLayout {
+                Layout.fillHeight: true
                 Connections {
                     target: backendItem.backend
                     onPassiveMessage: window.showPassiveNotification(message)
                 }
 
-                anchors {
-                    right: parent.right
-                    left: parent.left
-                    rightMargin: parent.rightPadding
-                    leftMargin: parent.leftPadding
-                }
                 Kirigami.Heading {
                     Layout.fillWidth: true
                     Layout.leftMargin: Kirigami.Units.smallSpacing
+                    Layout.alignment: Qt.AlignVCenter
                     text: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
+                    level: 3
                 }
                 Button {
-                    Layout.rightMargin: Kirigami.Units.smallSpacing
+                    Layout.alignment: Qt.AlignVCenter
                     icon.name: "preferences-other"
 
                     visible: resourcesBackend && resourcesBackend.hasApplications
