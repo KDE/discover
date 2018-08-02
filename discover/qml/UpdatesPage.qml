@@ -85,6 +85,8 @@ DiscoverPage
 
         RowLayout {
             anchors.fill: parent
+            enabled: page.currentAction.enabled
+
             LabelBackground {
                 Layout.leftMargin: Kirigami.Units.gridUnit
                 text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
@@ -104,7 +106,6 @@ DiscoverPage
             Item {
                 Layout.fillWidth: true
             }
-                enabled: page.currentAction.enabled
         }
     }
 
