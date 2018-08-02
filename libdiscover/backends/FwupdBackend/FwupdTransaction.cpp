@@ -45,8 +45,6 @@ FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, co
         if(!remove())
            qWarning() << "Fwupd Error: Error in Remove!";
     }
-
-    iterateTransaction();
 }
 
 FwupdTransaction::~FwupdTransaction()
@@ -96,7 +94,7 @@ bool FwupdTransaction::install()
         const QUrl uri(m_app->m_updateURI);
         setStatus(DownloadingStatus);
         QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-        connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(fwupdInstall(QNetworkReply*)));
+        connect(manager, &QNetworkAccessManager::finished,this, [this](QNetworkReply* reply){fwupdInstall(reply);});
         manager->get(QNetworkRequest(uri));
     }
     else
@@ -141,13 +139,14 @@ void FwupdTransaction::fwupdInstall(QNetworkReply* reply)
         install_flags = static_cast<FwupdInstallFlags>(install_flags | FWUPD_INSTALL_FLAG_OFFLINE);
    
     m_iterate = true;
-    QTimer::singleShot(100, this, &FwupdTransaction::iterateTransaction);
-    if (!fwupd_client_install (m_backend->client, deviceId.toUtf8().constData(),localFile.toUtf8().constData(), install_flags,nullptr, &error)) 
+    QTimer::singleShot(100, this, &FwupdTransaction::updateProgress);
+    if (!fwupd_client_install (m_backend->client, deviceId.toUtf8().constData(), localFile.toUtf8().constData(), install_flags, nullptr, &error)) 
     {
         m_backend->handleError(&error);
         m_iterate = false;
         return;
     }
+    m_iterate = false;
     finishTransaction();
 }
 
@@ -157,7 +156,7 @@ bool FwupdTransaction::remove()
     return true;
 }
 
-void FwupdTransaction::iterateTransaction()
+void FwupdTransaction::updateProgress()
 {
     if (!m_iterate)
         return;
@@ -166,7 +165,7 @@ void FwupdTransaction::iterateTransaction()
     if(progress()<100) 
     {
         setProgress(fwupd_client_get_percentage (m_backend->client));
-        QTimer::singleShot(100, this, &FwupdTransaction::iterateTransaction);
+        QTimer::singleShot(100, this, &FwupdTransaction::updateProgress);
     }
 }
 

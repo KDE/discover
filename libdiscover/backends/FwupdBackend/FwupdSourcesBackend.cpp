@@ -128,7 +128,7 @@ QAbstractItemModel* FwupdSourcesBackend::sources()
     return m_sources;
 }
 
-void FwupdSourcesBackend::eulaRequired( const QString& remoteName , const QString& licenseAgreement)
+void FwupdSourcesBackend::eulaRequired( const QString& remoteName, const QString& licenseAgreement)
 {
     Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The remote %1 require that you accept their license:\n %2",
                                                  remoteName, licenseAgreement));
@@ -148,7 +148,7 @@ bool FwupdSourcesBackend::removeSource(const QString& id)
 
 QList<QAction*> FwupdSourcesBackend::actions() const
 {
-    return  m_actions ;
+    return  {} ;
 }
 
 #include "FwupdSourcesBackend.moc"

@@ -77,20 +77,20 @@ public:
     bool hasApplications() const override;
     FwupdClient *client;
     
-    bool downloadFile(const QUrl &uri,const QString &filename);
+    bool downloadFile(const QUrl &uri, const QString &filename);
     bool refreshRemotes(uint cacheAge);
-    bool refreshRemote(FwupdRemote *remote,uint cacheAge);
-    const QUrl cacheFile(const QString &kind,const QFileInfo &resource);
+    bool refreshRemote(FwupdRemote *remote, uint cacheAge);
+    const QUrl cacheFile(const QString &kind, const QFileInfo &resource);
     FwupdResource * createDevice(FwupdDevice *device);
     FwupdResource * createRelease(FwupdDevice *device);
     FwupdResource * createApp(FwupdDevice *device);
-    QByteArray getChecksum(const QUrl filename,QCryptographicHash::Algorithm hashAlgorithm);
+    QByteArray getChecksum(const QUrl filename, QCryptographicHash::Algorithm hashAlgorithm);
     QString buildDeviceID(FwupdDevice* device);
     void addUpdates();
     void addResourceToList(FwupdResource *res);
     void addHistoricalUpdates();
-    void setReleaseDetails(FwupdResource *res,FwupdRelease *rel);
-    void setDeviceDetails(FwupdResource *res,FwupdDevice *device);
+    void setReleaseDetails(FwupdResource *res, FwupdRelease *rel);
+    void setDeviceDetails(FwupdResource *res, FwupdDevice *device);
     void handleError(GError **perror);
     QSet<AbstractResource*> getAllUpdates();
     QString getAppName(QString ID);

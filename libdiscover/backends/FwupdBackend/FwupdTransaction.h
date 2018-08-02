@@ -42,7 +42,7 @@ class FwupdTransaction : public Transaction
         void proceed() override;
 
     private Q_SLOTS:
-        void iterateTransaction();
+        void updateProgress();
         void finishTransaction();
         void fwupdInstall(QNetworkReply* reply);
 

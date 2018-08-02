@@ -43,7 +43,7 @@ public:
     QString idDescription() override { return QString(); }
     QList<QAction*> actions() const override;
     bool supportsAdding() const override { return false; }
-    void eulaRequired(const QString& remoteName , const QString& licenseAgreement);
+    void eulaRequired(const QString& remoteName, const QString& licenseAgreement);
     void populateSources();
 Q_SIGNALS:
     void proceed() override;
@@ -51,7 +51,6 @@ Q_SIGNALS:
 
 private:
     FwupdSourcesModel* m_sources;
-    QList<QAction*> m_actions;
 };
 
 #endif // FWUPDSOURCESBACKEND_H
