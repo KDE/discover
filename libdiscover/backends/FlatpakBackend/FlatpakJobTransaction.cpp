@@ -63,7 +63,8 @@ FlatpakJobTransaction::~FlatpakJobTransaction()
 
 void FlatpakJobTransaction::cancel()
 {
-    Q_ASSERT(m_appJob);
+    //note it's possible to have a job cancelled before it ever started as
+    //sometimes we're delaying the start until we have the runtime
     foreach (const QPointer<FlatpakTransactionThread> &job, m_jobs) {
         job->cancel();
     }
