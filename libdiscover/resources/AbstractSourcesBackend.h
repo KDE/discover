@@ -67,10 +67,15 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
         QString firstSourceId() const;
         QString lastSourceId() const;
 
+    public Q_SLOTS:
+        virtual void cancel() {}
+        virtual void proceed() {}
+
     Q_SIGNALS:
         void firstSourceIdChanged();
         void lastSourceIdChanged();
         void passiveMessage(const QString &message);
+        void proceedRequest(const QString &title, const QString &description);
 };
 
 #endif // ABSTRACTRESOURCESBACKEND_H

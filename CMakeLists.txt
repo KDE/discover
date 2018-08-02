@@ -30,6 +30,7 @@ find_package(KF5NewStuff 5.23 CONFIG)
 set(CMAKE_AUTORCC ON)
 
 pkg_check_modules(FLATPAK  flatpak>=0.6.12)
+find_package(LIBFWUPD 1.0.7 REQUIRED)
 
 if(NOT CMAKE_VERSION VERSION_LESS "3.10.0")
   # CMake 3.9+ warns about automoc on files without Q_OBJECT, and doesn't know about other macros.
@@ -76,6 +77,11 @@ set_package_properties(FLATPAK PROPERTIES
     DESCRIPTION "Library that exposes flatpak repositories"
     URL "http://www.freedesktop.org"
     PURPOSE "Required to build the Flatpak backend"
+    TYPE OPTIONAL)
+set_package_properties(LIBFWUPD PROPERTIES
+    DESCRIPTION "Library that exposes fwupd"
+    URL "http://www.fwupd.org"
+    PURPOSE "Required to build the Fwupd backend"
     TYPE OPTIONAL)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
