@@ -84,8 +84,10 @@ Kirigami.GlobalDrawer {
                 if (currentSearchText === "" && window.currentTopLevel === "" && !window.leftPage.category) {
                     Navigation.openHome()
                 } else if (!curr.hasOwnProperty("search")) {
-                    Navigation.clearStack()
-                    Navigation.openApplicationList( { search: currentSearchText })
+                    if (currentSearchText) {
+                        Navigation.clearStack()
+                        Navigation.openApplicationList( { search: currentSearchText })
+                    }
                 } else {
                     curr.search = currentSearchText;
                     curr.forceActiveFocus()
