@@ -30,7 +30,7 @@ find_package(KF5NewStuff 5.23 CONFIG)
 set(CMAKE_AUTORCC ON)
 
 pkg_check_modules(FLATPAK  flatpak>=0.6.12)
-find_package(LIBFWUPD 1.0.7 REQUIRED)
+find_package(LIBFWUPD 1.0.7)
 
 if(NOT CMAKE_VERSION VERSION_LESS "3.10.0")
   # CMake 3.9+ warns about automoc on files without Q_OBJECT, and doesn't know about other macros.
