@@ -27,7 +27,7 @@ Item
 {
     property alias text: theLabel.text
     property real progress: 1.
-    readonly property real margin: 5
+    readonly property real margin: Kirigami.Units.smallSpacing * 1.5
     implicitWidth: theLabel.implicitWidth + margin*2
     implicitHeight: theLabel.implicitHeight + margin*2
     width: implicitWidth

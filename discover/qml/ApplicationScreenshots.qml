@@ -131,7 +131,7 @@ Flickable {
                 DropShadow {
                     source: thumbnail
                     anchors.fill: thumbnail
-                    verticalOffset: 3
+                    verticalOffset: Kirigami.Units.largeSpacing
                     horizontalOffset: 0
                     radius: 12.0
                     samples: 25

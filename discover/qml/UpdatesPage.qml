@@ -144,8 +144,8 @@ DiscoverPage
                 visible: page.footerLabel !== ""
                 source: "update-none"
                 opacity: 0.3
-                width: 200
-                height: 200
+                width: Kirigami.Units.gridUnit * 12
+                height: width
             }
             Item {
                 visible: page.footerLabel === ""

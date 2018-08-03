@@ -17,7 +17,7 @@ Kirigami.OverlaySheet
     {
         visible: addonsView.containsAddons
         enabled: !addonsView.isInstalling
-        spacing: 5
+        spacing: Kirigami.Units.largeSpacing
 
         Kirigami.Heading {
             level: 3
@@ -66,7 +66,7 @@ Kirigami.OverlaySheet
 
         RowLayout {
             readonly property bool active: addonsModel.hasChanges && !addonsView.isInstalling
-            spacing: 5
+            spacing: Kirigami.Units.largeSpacing
 
             Button {
                 icon.name: "dialog-ok"
@@ -84,7 +84,7 @@ Kirigami.OverlaySheet
             }
             Item {
                 Layout.fillWidth: true
-                height: 5
+                height: Kirigami.Units.largeSpacing
             }
             Button {
                 Layout.alignment: Qt.AlignRight

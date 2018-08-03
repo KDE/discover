@@ -275,7 +275,7 @@ DiscoverPage {
 
         Item {
             height: addonsButton.height
-            width: 5
+            width: 1
         }
 
         // Details/metadata
