@@ -86,7 +86,8 @@ FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
     FwupdResource* res = new FwupdResource(name, true, this);
     res->setId(buildDeviceID(device));
     res->addCategories(QStringLiteral("Releases"));
-    res->setIconName(QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(device),0)));// Implement a Better way to decide icon
+    if(fwupd_device_get_icons(device)->len > 1)
+        res->setIconName(QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(device),0)));// Check Weather given icon exists or not!
 
     setDeviceDetails(res,device);
     return res;
@@ -104,6 +105,8 @@ FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
 
     if(fwupd_release_get_appstream_id(release))
         res->setId(QString::fromUtf8(fwupd_release_get_appstream_id(release)));
+    else
+        return nullptr;
 
     /* the same as we have already */
     if(QLatin1Literal(fwupd_device_get_version(device)) == QLatin1Literal(fwupd_release_get_version(release)))
@@ -121,6 +124,8 @@ void FwupdBackend::setReleaseDetails(FwupdResource *res, FwupdRelease *release)
         res->setSummary(QString::fromUtf8(fwupd_release_get_summary(release)));
     if(fwupd_release_get_vendor(release))
         res->setVendor(QString::fromUtf8(fwupd_release_get_vendor(release)));
+    if(fwupd_release_get_size(release))
+        res->setSize(fwupd_release_get_size(release));
     if(fwupd_release_get_version(release))
         res->setVersion(QString::fromUtf8(fwupd_release_get_version(release)));
     if(fwupd_release_get_description(release))
@@ -138,6 +143,7 @@ void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
     res->isOnlyOffline = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_ONLY_OFFLINE);
     res->needsReboot = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_REBOOT);
     res->isDeviceRemoval = !fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_INTERNAL);
+    res->needsBootLoader = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_BOOTLOADER);
     
     GPtrArray *guids = fwupd_device_get_guids(dev);
     if(guids->len > 0)
@@ -162,10 +168,13 @@ void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
         res->setSummary(QString::fromUtf8(fwupd_device_get_summary(dev)));
     if(fwupd_device_get_vendor(dev))
         res->setVendor(QString::fromUtf8(fwupd_device_get_vendor(dev)));
+    if(fwupd_device_get_created(dev))
+        res->setReleaseDate((QDateTime::fromSecsSinceEpoch(fwupd_device_get_created(dev))).date());
     if(fwupd_device_get_version(dev))
         res->setVersion(QString::fromUtf8(fwupd_device_get_version(dev)));
     if(fwupd_device_get_description(dev))
         res->setDescription(QString::fromUtf8((fwupd_device_get_description(dev))));
+    res->setIconName(QString::fromUtf8("device-notifier")); 
 }
 
 void FwupdBackend::populate(const QString& n)

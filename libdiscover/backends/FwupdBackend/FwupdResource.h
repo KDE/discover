@@ -73,6 +73,7 @@ public:
     void setHomePage(const QUrl &homepage){  m_homepage = homepage;}
     void setLicense(const QString &license){ m_license = license;}
     void setIconName(const QString &iconName){ m_iconName = iconName;}
+    void setReleaseDate(const QDate &date){ m_releaseDate = date;}
     virtual QStringList allResourceNames() const;
     
     void setIsDeviceLocked(bool status){ isDeviceLocked = status;}
@@ -80,8 +81,8 @@ public:
     void setUpdateURI(const QString &updateURI){m_updateURI = updateURI;}
     
     void setAddonInstalled(const QString& addon, bool installed);
-    QString sourceIcon() const override { return QStringLiteral("player-time"); }
-    QDate releaseDate() const override { return {}; }
+    QString sourceIcon() const override { return m_iconName; }
+    QDate releaseDate() const override { return m_releaseDate; }
 
 public:
     QString m_id;
@@ -93,6 +94,7 @@ public:
     QString m_vendor;
     QStringList m_categories;
     QString m_license;
+    QDate m_releaseDate;
     
     AbstractResource::State m_state;
     QUrl m_homepage;
@@ -109,6 +111,7 @@ public:
     bool isLiveUpdatable = false; // True if device is live updatable
     bool needsReboot = false; // True if device needs Reboot
     bool isDeviceRemoval = false; //True if device is Removal
+    bool needsBootLoader = false; //True if BootLoader Required
     QString guidString;
     
 
