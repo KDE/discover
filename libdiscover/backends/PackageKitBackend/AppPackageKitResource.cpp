@@ -199,9 +199,9 @@ QStringList AppPackageKitResource::extends() const
     return m_appdata.extends();
 }
 
-void AppPackageKitResource::fetchChangelog()
+QString AppPackageKitResource::changelog() const
 {
-    emit changelogFetched(AppStreamUtils::changelogToHtml(m_appdata));
+    return AppStreamUtils::changelogToHtml(m_appdata);
 }
 
 void AppPackageKitResource::invokeApplication() const

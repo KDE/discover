@@ -248,7 +248,7 @@ void PackageKitResource::updateDetail(const QString& /*packageID*/, const QStrin
     if (!vendorUrls.isEmpty())
         addIfNotEmpty(i18n("Vendor:"), urlToLinks(vendorUrls).join(QStringLiteral(", ")), info);
 
-    emit changelogFetched(info);
+    emit changelogFetched(changelog() + info);
 }
 
 PackageKitBackend* PackageKitResource::backend() const

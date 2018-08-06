@@ -48,10 +48,10 @@ class AppPackageKitResource : public PackageKitResource
         QList<PackageState> addonsInformation() override;
         QStringList extends() const override;
         void fetchScreenshots() override;
-        void fetchChangelog() override;
         void invokeApplication() const override;
         bool canExecute() const override { return true; }
         QDate releaseDate() const override;
+        QString changelog() const override;
 
     private:
         const AppStream::Component m_appdata;

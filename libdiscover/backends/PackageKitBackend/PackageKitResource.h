@@ -74,6 +74,8 @@ class PackageKitResource : public AbstractResource
 
         QDate releaseDate() const override { return {}; }
 
+        virtual QString changelog() const { return {}; }
+
     Q_SIGNALS:
         void dependenciesFound(const QJsonObject& dependencies);
 
