@@ -64,7 +64,7 @@ bool FwupdTransaction::check()
             qWarning("Fwupd Error: No Device ID set, cannot unlock device ");
             return false;
         }
-        if (!fwupd_client_unlock (m_backend->client, device_id.toUtf8().constData(),nullptr, &error))
+        if(!fwupd_client_unlock(m_backend->client, device_id.toUtf8().constData(),nullptr, &error))
         {
             m_backend->handleError(&error);
             return false;
@@ -89,7 +89,7 @@ bool FwupdTransaction::install()
         return false;
     }
     
-    if (!(QFileInfo::exists(localFile))) 
+    if(!(QFileInfo::exists(localFile))) 
     {
         const QUrl uri(m_app->m_updateURI);
         setStatus(DownloadingStatus);
@@ -109,11 +109,11 @@ void FwupdTransaction::fwupdInstall(QNetworkReply* reply)
     if(reply)
     {
         QString filename = m_app->m_file;
-        if (reply->error() == QNetworkReply::NoError) 
+        if(reply->error() == QNetworkReply::NoError) 
         {
             QByteArray Data = reply->readAll();
             QFile file(filename);
-            if (file.open(QIODevice::WriteOnly)) 
+            if(file.open(QIODevice::WriteOnly)) 
             {
                 file.write(Data);
             }
@@ -131,16 +131,16 @@ void FwupdTransaction::fwupdInstall(QNetworkReply* reply)
     QString localFile = m_app->m_file;
     QString deviceId = m_app->m_deviceID;
     /* limit to single device? */
-    if (deviceId.isNull())
+    if(deviceId.isNull())
         deviceId = QStringLiteral(FWUPD_DEVICE_ID_ANY);
 
     /* only offline supported */
-    if (m_app->isOnlyOffline)
+    if(m_app->isOnlyOffline)
         install_flags = static_cast<FwupdInstallFlags>(install_flags | FWUPD_INSTALL_FLAG_OFFLINE);
    
     m_iterate = true;
     QTimer::singleShot(100, this, &FwupdTransaction::updateProgress);
-    if (!fwupd_client_install (m_backend->client, deviceId.toUtf8().constData(), localFile.toUtf8().constData(), install_flags, nullptr, &error)) 
+    if(!fwupd_client_install(m_backend->client, deviceId.toUtf8().constData(), localFile.toUtf8().constData(), install_flags, nullptr, &error)) 
     {
         m_backend->handleError(&error);
         m_iterate = false;
@@ -158,13 +158,13 @@ bool FwupdTransaction::remove()
 
 void FwupdTransaction::updateProgress()
 {
-    if (!m_iterate)
+    if(!m_iterate)
         return;
 
     setStatus(CommittingStatus);
     if(progress()<100) 
     {
-        setProgress(fwupd_client_get_percentage (m_backend->client));
+        setProgress(fwupd_client_get_percentage(m_backend->client));
         QTimer::singleShot(100, this, &FwupdTransaction::updateProgress);
     }
 }

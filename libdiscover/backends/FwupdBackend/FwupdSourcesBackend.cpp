@@ -43,7 +43,7 @@ public:
 
     bool setData(const QModelIndex & index, const QVariant & value, int role) override {
         auto item = itemFromIndex(index);
-        if (!item)
+        if(!item)
             return false;
         remote = fwupd_client_get_remote_by_id(m_backend->backend->client,item->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(),nullptr,nullptr);
         status = fwupd_remote_get_enabled(remote);
@@ -101,21 +101,21 @@ FwupdSourcesBackend::FwupdSourcesBackend(AbstractResourcesBackend * parent)
 void FwupdSourcesBackend::populateSources()
 {
     /* find all remotes */
-    g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes (backend->client,nullptr,nullptr);
+    g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(backend->client,nullptr,nullptr);
     if(remotes != nullptr)
     {
-        for (uint i = 0; i < remotes->len; i++)
+        for(uint i = 0; i < remotes->len; i++)
         {
-            FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index (remotes, i);
-            if (fwupd_remote_get_kind (remote) == FWUPD_REMOTE_KIND_LOCAL)
+            FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
+            if(fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
                 continue;
-            const QString id = QString::fromUtf8(fwupd_remote_get_id (remote));
-            if (id.isEmpty())
+            const QString id = QString::fromUtf8(fwupd_remote_get_id(remote));
+            if(id.isEmpty())
                 continue;
             bool status = !fwupd_remote_get_enabled(remote);
             QStandardItem* it = new QStandardItem(id);
             it->setData(id, AbstractSourcesBackend::IdRole);
-            it->setData(QVariant(QString::fromUtf8(fwupd_remote_get_title (remote))), Qt::ToolTipRole);
+            it->setData(QVariant(QString::fromUtf8(fwupd_remote_get_title(remote))), Qt::ToolTipRole);
             it->setCheckable(true);
             it->setCheckState(status ? Qt::Unchecked : Qt::Checked);
             m_sources->appendRow(it);

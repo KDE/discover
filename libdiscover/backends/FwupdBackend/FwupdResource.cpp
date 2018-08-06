@@ -160,11 +160,11 @@ void FwupdResource::setState(AbstractResource::State state)
 
 void FwupdResource::setAddons(const AddonList& addons)
 {
-    Q_FOREACH (const QString& toInstall, addons.addonsToInstall()) 
+    Q_FOREACH(const QString& toInstall, addons.addonsToInstall()) 
     {
         setAddonInstalled(toInstall, true);
     }
-    Q_FOREACH (const QString& toRemove, addons.addonsToRemove())
+    Q_FOREACH(const QString& toRemove, addons.addonsToRemove())
     {
         setAddonInstalled(toRemove, false);
     }

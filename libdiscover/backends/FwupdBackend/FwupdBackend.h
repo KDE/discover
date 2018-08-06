@@ -89,7 +89,7 @@ public:
     void addUpdates();
     void addResourceToList(FwupdResource *res);
     void addHistoricalUpdates();
-    void setReleaseDetails(FwupdResource *res, FwupdRelease *rel);
+    void setReleaseDetails(FwupdResource *res, FwupdRelease *release);
     void setDeviceDetails(FwupdResource *res, FwupdDevice *device);
     void handleError(GError **perror);
     QSet<AbstractResource*> getAllUpdates();
