@@ -23,9 +23,11 @@
 
 #include <QUrl>
 #include <QList>
+#include <QDebug>
 #include <AppStreamQt/image.h>
 #include <AppStreamQt/component.h>
 #include <AppStreamQt/release.h>
+#include <AppStreamQt/screenshot.h>
 
 namespace AppStreamUtils
 {
@@ -53,6 +55,22 @@ static QString changelogToHtml(const AppStream::Component &appdata)
     QString changelog = QStringLiteral("<h3>") + release.version() + QStringLiteral("</h3>")
                       + QStringLiteral("<p>") + release.description() + QStringLiteral("</p>");
     return changelog;
+}
+
+static QPair<QList<QUrl>, QList<QUrl>> fetchScreenshots(const AppStream::Component &appdata)
+{
+    QList<QUrl> screenshots, thumbnails;
+    Q_FOREACH (const AppStream::Screenshot &s, appdata.screenshots()) {
+        const auto images = s.images();
+        const QUrl thumbnail = AppStreamUtils::imageOfKind(images, AppStream::Image::KindThumbnail);
+        const QUrl plain = AppStreamUtils::imageOfKind(images, AppStream::Image::KindSource);
+        if (plain.isEmpty())
+            qWarning() << "invalid screenshot for" << appdata.name();
+
+        screenshots << plain;
+        thumbnails << (thumbnail.isEmpty() ? plain : thumbnail);
+    }
+    return {screenshots, thumbnails};
 }
 
 }

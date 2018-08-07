@@ -162,19 +162,8 @@ bool AppPackageKitResource::isTechnical() const
 
 void AppPackageKitResource::fetchScreenshots()
 {
-    QList<QUrl> thumbnails, screenshots;
-
-    Q_FOREACH (const AppStream::Screenshot &s, m_appdata.screenshots()) {
-        const QUrl thumbnail = AppStreamUtils::imageOfKind(s.images(), AppStream::Image::KindThumbnail);
-        const QUrl plain = AppStreamUtils::imageOfKind(s.images(), AppStream::Image::KindSource);
-        if (plain.isEmpty())
-            qWarning() << "invalid screenshot for" << name();
-
-        screenshots << plain;
-        thumbnails << (thumbnail.isEmpty() ? plain : thumbnail);
-    }
-
-    Q_EMIT screenshotsFetched(thumbnails, screenshots);
+    const auto sc = AppStreamUtils::fetchScreenshots(m_appdata);
+    Q_EMIT screenshotsFetched(sc.first, sc.second);
 }
 
 QStringList AppPackageKitResource::allPackageNames() const
