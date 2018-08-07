@@ -153,6 +153,7 @@ void PackageKitBackend::reloadPackageList()
             if (component.kind() == AppStream::Component::KindDesktopApp && !launchable.entries().isEmpty()) {
                 const QString file = locateService(launchable.entries().constFirst());
                 if (!file.isEmpty()) {
+                    acquireFetching(true);
                     auto trans = PackageKit::Daemon::searchFiles(file);
                     connect(trans, &PackageKit::Transaction::package, this, [trans](PackageKit::Transaction::Info info, const QString &packageID){
                         if (info == PackageKit::Transaction::InfoInstalled)
@@ -162,12 +163,11 @@ void PackageKitBackend::reloadPackageList()
                         const auto pkgidVal = trans->property("installedPackage");
                         if (status == PackageKit::Transaction::ExitSuccess && !pkgidVal.isNull()) {
                             const auto pkgid = pkgidVal.toString();
-                            acquireFetching(true);
                             auto res = addComponent(component, {PackageKit::Daemon::packageName(pkgid)});
                             res->clearPackageIds();
                             res->addPackageId(PackageKit::Transaction::InfoInstalled, pkgid, true);
-                            acquireFetching(false);
                         }
+                        acquireFetching(false);
                     });
                     continue;
                 }
