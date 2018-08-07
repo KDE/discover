@@ -627,17 +627,16 @@ int FwupdBackend::updatesCount() const
 
 ResultsStream* FwupdBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    QVector<AbstractResource*> ret;
     if(filter.resourceUrl.scheme() == QLatin1String("fwupd")) {
         return findResourceByPackageName(filter.resourceUrl);
     } else if (!filter.resourceUrl.isEmpty()) {
-         return new ResultsStream(QStringLiteral("FwupdStream-void"), {});
-    } else {
-        foreach(AbstractResource* r, m_resources) 
-        {
-            if(r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
-                ret += r;
-        }
+        return new ResultsStream(QStringLiteral("FwupdStream-void"), {});
+    }
+
+    QVector<AbstractResource*> ret;
+    foreach(AbstractResource* r, m_resources) {
+        if(r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
+            ret += r;
     }
     return new ResultsStream(QStringLiteral("FwupdStream"), ret);
 }
