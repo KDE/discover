@@ -15,6 +15,7 @@
   <name xml:lang="gl">Infraestrutura de Snap</name>
   <name xml:lang="id">Backend Snap</name>
   <name xml:lang="it">Motore Snap</name>
+  <name xml:lang="ko">Snap 백엔드</name>
   <name xml:lang="nb">Snap-motor</name>
   <name xml:lang="nl">Snap-backend</name>
   <name xml:lang="nn">Snap-motor</name>
@@ -41,6 +42,7 @@
   <summary xml:lang="gl">Integra aplicativos de Snap con Discover</summary>
   <summary xml:lang="id">Aplikasi Snap terintegrasi ke dalam Discover</summary>
   <summary xml:lang="it">Integra le applicazioni Snap in Discover</summary>
+  <summary xml:lang="ko">Snap 프로그램을 발견에 통합</summary>
   <summary xml:lang="nb">Integrerer Snap-programmer i Discover</summary>
   <summary xml:lang="nl">Integreert Snap-toepassingen in Discover</summary>
   <summary xml:lang="nn">Integrerer Snap-program i Discover</summary>
@@ -71,6 +73,7 @@
   <developer_name xml:lang="gl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="id">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="it">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ko">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nb">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nn">Aleix Pol Gonzalez</developer_name>
