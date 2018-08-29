@@ -40,7 +40,7 @@ DiscoverPage
         text: page.unselected>0 ? i18n("Update Selected") : i18n("Update All")
         visible: updateModel.toUpdateCount
         iconName: "update-none"
-        enabled: !resourcesUpdatesModel.isProgressing
+        enabled: !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
         onTriggered: resourcesUpdatesModel.updateAll()
     }
 
