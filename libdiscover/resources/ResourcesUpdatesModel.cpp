@@ -183,6 +183,9 @@ void ResourcesUpdatesModel::updateAll()
         delete m_transaction;
 
         const auto updaters = kFilter<QVector<AbstractBackendUpdater*>>(m_updaters, [](AbstractBackendUpdater* u) {return u->hasUpdates(); });
+        if (updaters.isEmpty()) {
+            return;
+        }
 
         m_transaction = new UpdateTransaction(this, updaters);
         setTransaction(m_transaction);

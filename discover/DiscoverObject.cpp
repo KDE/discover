@@ -204,7 +204,7 @@ void DiscoverObject::openCategory(const QString& category)
         , this);
 
     if (ResourcesModel::global()->backends().isEmpty()) {
-        connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
+        connect(ResourcesModel::global(), &ResourcesModel::allInitialized, action, &OneTimeAction::trigger);
     } else {
         action->trigger();
     }
@@ -239,7 +239,7 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
         , this);
 
     if (ResourcesModel::global()->backends().isEmpty()) {
-        connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
+        connect(ResourcesModel::global(), &ResourcesModel::allInitialized, action, &OneTimeAction::trigger);
     } else {
         action->trigger();
     }
@@ -267,7 +267,7 @@ void DiscoverObject::openApplication(const QUrl& url)
         , this);
 
     if (ResourcesModel::global()->backends().isEmpty()) {
-        connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
+        connect(ResourcesModel::global(), &ResourcesModel::allInitialized, action, &OneTimeAction::trigger);
     } else {
         action->trigger();
     }
