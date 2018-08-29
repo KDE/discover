@@ -161,7 +161,10 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     m_rootCategories = { addonsCategory };
 }
 
-KNSBackend::~KNSBackend() = default;
+KNSBackend::~KNSBackend()
+{
+    qDeleteAll(m_rootCategories);
+}
 
 void KNSBackend::markInvalid(const QString &message)
 {
