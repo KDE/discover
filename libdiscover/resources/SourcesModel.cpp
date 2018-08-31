@@ -20,7 +20,7 @@
 
 #include "SourcesModel.h"
 #include <QtGlobal>
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <QAction>
 #include "resources/AbstractResourcesBackend.h"
 #include "resources/AbstractSourcesBackend.h"

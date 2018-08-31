@@ -25,7 +25,7 @@
 #include <klocalizedstring.h>
 #include <QFile>
 #include <QStandardPaths>
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <utils.h>
 
 Category::Category(QSet<QString> pluginName, QObject* parent)
@@ -55,7 +55,7 @@ void Category::parseData(const QString& path, const QDomNode& data)
     {
         if(!node.isElement()) {
             if(!node.isComment())
-                qWarning() << "unknown node found at " << QStringLiteral("%1:%2").arg(path).arg(node.lineNumber());
+                qCWarning(LIBDISCOVER_LOG) << "unknown node found at " << QStringLiteral("%1:%2").arg(path).arg(node.lineNumber());
             continue;
         }
         QDomElement tempElement = node.toElement();
@@ -71,7 +71,7 @@ void Category::parseData(const QString& path, const QDomNode& data)
             if (m_decoration.isRelative()) {
                 m_decoration = QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("discover/") + tempElement.text()));
                 if (m_decoration.isEmpty())
-                    qWarning() << "couldn't find category decoration" << tempElement.text();
+                    qCWarning(LIBDISCOVER_LOG) << "couldn't find category decoration" << tempElement.text();
             }
         } else if (tempElement.tagName() == QLatin1String("Addons")) {
             m_isAddons = true;
@@ -111,7 +111,7 @@ QVector<QPair<FilterType, QString> > Category::parseIncludes(const QDomNode &dat
         } else if (tempElement.tagName() == QLatin1String("PkgName")) {
             filter.append({ PkgNameFilter, tempElement.text() });
         } else {
-            qWarning() << "unknown" << tempElement.tagName();
+            qCWarning(LIBDISCOVER_LOG) << "unknown" << tempElement.tagName();
         }
         node = node.nextSibling();
     }
@@ -191,7 +191,7 @@ void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
             || c->m_isAddons != newcat->m_isAddons
         )
         {
-            qWarning() << "the following categories seem to be the same but they're not entirely"
+            qCWarning(LIBDISCOVER_LOG) << "the following categories seem to be the same but they're not entirely"
                 << c->name() << newcat->name() << "--"
                 << c->andFilters() << newcat->andFilters() << "--"
                 << c->isAddons() << newcat->isAddons();

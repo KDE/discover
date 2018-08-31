@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "AddonList.h"
-#include <QDebug>
+#include "libdiscover_debug.h"
 
 AddonList::AddonList()
 {}

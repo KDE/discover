@@ -19,6 +19,7 @@ include(ECMInstallIcons)
 include(ECMMarkAsTest)
 include(ECMAddTests)
 include(GenerateExportHeader)
+include(ECMQtDeclareLoggingCategory)
 
 find_package(PkgConfig REQUIRED)
 
@@ -88,3 +89,5 @@ set_package_properties(LIBFWUPD PROPERTIES
     TYPE OPTIONAL)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+install( FILES discover.categories DESTINATION ${KDE_INSTALL_CONFDIR} )

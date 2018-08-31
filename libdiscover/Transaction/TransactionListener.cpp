@@ -23,7 +23,7 @@
 
 #include "TransactionModel.h"
 #include <QMetaProperty>
-#include <QDebug>
+#include "libdiscover_debug.h"
 
 TransactionListener::TransactionListener(QObject *parent)
     : QObject(parent)
@@ -128,7 +128,7 @@ void TransactionListener::setTransaction(Transaction* trans)
         connect(m_transaction, &Transaction::statusChanged, this, &TransactionListener::transactionStatusChanged);
         connect(m_transaction, &Transaction::progressChanged, this, &TransactionListener::progressChanged);
         connect(m_transaction, &QObject::destroyed, this, [this]() {
-            qDebug() << "destroyed transaction before finishing";
+            qCDebug(LIBDISCOVER_LOG) << "destroyed transaction before finishing";
             setTransaction(nullptr);
         });
         setResourceInternal(trans->resource());

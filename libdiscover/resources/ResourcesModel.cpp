@@ -30,7 +30,7 @@
 #include "Transaction/TransactionModel.h"
 #include "Category/CategoryModel.h"
 #include "utils.h"
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <QCoreApplication>
 #include <QThread>
 #include <QAction>
@@ -97,7 +97,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
 {
     Q_ASSERT(!m_backends.contains(backend));
     if(!backend->isValid()) {
-        qWarning() << "Discarding invalid backend" << backend->name();
+        qCWarning(LIBDISCOVER_LOG) << "Discarding invalid backend" << backend->name();
         CategoryModel::global()->blacklistPlugin(backend->name());
         backend->deleteLater();
         return;
@@ -130,7 +130,7 @@ void ResourcesModel::callerFetchingChanged()
     AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
 
     if (!backend->isValid()) {
-        qWarning() << "Discarding invalid backend" << backend->name();
+        qCWarning(LIBDISCOVER_LOG) << "Discarding invalid backend" << backend->name();
         int idx = m_backends.indexOf(backend);
         Q_ASSERT(idx>=0);
         m_backends.removeAt(idx);
@@ -207,7 +207,7 @@ void ResourcesModel::registerAllBackends()
     DiscoverBackendsFactory f;
     const auto backends = f.allBackends();
     if(m_initializingBackends==0 && backends.isEmpty()) {
-        qWarning() << "Couldn't find any backends";
+        qCWarning(LIBDISCOVER_LOG) << "Couldn't find any backends";
         emit allInitialized();
     } else {
         foreach(AbstractResourcesBackend* b, backends) {
@@ -272,7 +272,7 @@ AggregatedResultsStream::AggregatedResultsStream(const QSet<ResultsStream*>& str
 {
     Q_ASSERT(!streams.contains(nullptr));
     if (streams.isEmpty()) {
-        qWarning() << "no streams to aggregate!!";
+        qCWarning(LIBDISCOVER_LOG) << "no streams to aggregate!!";
         QTimer::singleShot(0, this, &AggregatedResultsStream::clear);
     }
 
@@ -371,7 +371,7 @@ void ResourcesModel::setCurrentApplicationBackend(AbstractResourcesBackend* back
                 settings.deleteEntry("currentApplicationBackend");
         }
 
-        qDebug() << "setting currentApplicationBackend" << backend;
+        qCDebug(LIBDISCOVER_LOG) << "setting currentApplicationBackend" << backend;
         m_currentApplicationBackend = backend;
         Q_EMIT currentApplicationBackendChanged(backend);
     }
@@ -386,7 +386,7 @@ void ResourcesModel::initApplicationsBackend()
     auto idx = kIndexOf(backends, [name](AbstractResourcesBackend* b) { return b->name() == name; });
     if (idx<0) {
         idx = kIndexOf(backends, [](AbstractResourcesBackend* b) { return b->hasApplications(); });
-        qDebug() << "falling back applications backend to" << idx;
+        qCDebug(LIBDISCOVER_LOG) << "falling back applications backend to" << idx;
     }
     setCurrentApplicationBackend(backends.value(idx, nullptr), false);
 }

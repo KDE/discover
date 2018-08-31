@@ -20,7 +20,7 @@
 
 #include "ScreenshotsModel.h"
 #include <resources/AbstractResource.h>
-#include <QDebug>
+#include "libdiscover_debug.h"
 // #include <tests/modeltest.h>
 
 ScreenshotsModel::ScreenshotsModel(QObject* parent)
@@ -51,7 +51,7 @@ void ScreenshotsModel::setResource(AbstractResource* res)
         connect(m_resource, &AbstractResource::screenshotsFetched, this, &ScreenshotsModel::screenshotsFetched);
         res->fetchScreenshots();
     } else
-        qWarning() << "empty resource!";
+        qCWarning(LIBDISCOVER_LOG) << "empty resource!";
 }
 
 AbstractResource* ScreenshotsModel::resource() const

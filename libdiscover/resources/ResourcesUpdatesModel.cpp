@@ -26,7 +26,7 @@
 #include "AbstractResource.h"
 #include "utils.h"
 #include <QDateTime>
-#include <QDebug>
+#include "libdiscover_debug.h"
 
 #include <KLocalizedString>
 #include <KFormat>
@@ -169,7 +169,7 @@ void ResourcesUpdatesModel::message(const QString& msg)
 void ResourcesUpdatesModel::prepare()
 {
     if(isProgressing()) {
-        qWarning() << "trying to set up a running instance";
+        qCWarning(LIBDISCOVER_LOG) << "trying to set up a running instance";
         return;
     }
     foreach(AbstractBackendUpdater* upd, m_updaters) {

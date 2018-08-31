@@ -24,7 +24,7 @@
 #include "TransactionModel.h"
 #include <KFormat>
 #include <KLocalizedString>
-#include <QDebug>
+#include "libdiscover_debug.h"
 
 Transaction::Transaction(QObject *parent, AbstractResource *resource,
                          Role role, const AddonList& addons)
@@ -41,7 +41,7 @@ Transaction::Transaction(QObject *parent, AbstractResource *resource,
 Transaction::~Transaction()
 {
     if(status()<DoneStatus || TransactionModel::global()->contains(this)) {
-        qWarning() << "destroying Transaction before it's over" << this;
+        qCWarning(LIBDISCOVER_LOG) << "destroying Transaction before it's over" << this;
         TransactionModel::global()->removeTransaction(this);
     }
 }

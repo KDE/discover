@@ -22,7 +22,7 @@
 #include "resources/AbstractResourcesBackend.h"
 #include "resources/ResourcesModel.h"
 #include "utils.h"
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <QStandardPaths>
 #include <QDir>
 #include <QCommandLineParser>
@@ -56,15 +56,15 @@ QVector<AbstractResourcesBackend*> DiscoverBackendsFactory::backendForFile(const
 {
     QPluginLoader* loader = new QPluginLoader(QStringLiteral("discover/") + libname, ResourcesModel::global());
 
-    //     qDebug() << "trying to load plugin:" << loader->fileName();
+    //     qCDebug(LIBDISCOVER_LOG) << "trying to load plugin:" << loader->fileName();
     AbstractResourcesBackendFactory* f = qobject_cast<AbstractResourcesBackendFactory*>(loader->instance());
     if(!f) {
-        qWarning() << "error loading" << libname << loader->errorString() << loader->metaData();
+        qCWarning(LIBDISCOVER_LOG) << "error loading" << libname << loader->errorString() << loader->metaData();
         return {};
     }
     auto instances = f->newInstance(ResourcesModel::global(), name);
     if(instances.isEmpty()) {
-        qWarning() << "Couldn't find the backend: " << libname << "among" << allBackendNames(false, true);
+        qCWarning(LIBDISCOVER_LOG) << "Couldn't find the backend: " << libname << "among" << allBackendNames(false, true);
         return instances;
     }
 
@@ -100,7 +100,7 @@ QVector<AbstractResourcesBackend*> DiscoverBackendsFactory::allBackends() const
     ret.removeAll(nullptr);
 
     if(ret.isEmpty())
-        qWarning() << "Didn't find any Discover backend!";
+        qCWarning(LIBDISCOVER_LOG) << "Didn't find any Discover backend!";
     return ret;
 }
 

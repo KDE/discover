@@ -22,7 +22,7 @@
 #include "CategoryModel.h"
 #include "Category.h"
 #include "CategoriesReader.h"
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <QCollator>
 #include <utils.h>
 #include <resources/ResourcesModel.h>

@@ -22,7 +22,7 @@
 #include "resources/ResourcesModel.h"
 #include "utils.h"
 #include <QAction>
-#include <QDebug>
+#include "libdiscover_debug.h"
 
 ActionsModel::ActionsModel(QObject* parent)
     : QAbstractListModel(parent)

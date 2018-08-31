@@ -23,7 +23,7 @@
 // Qt includes
 #include <QFont>
 #include <QTimer>
-#include <QDebug>
+#include "libdiscover_debug.h"
 
 // KDE includes
 #include <KFormat>

@@ -22,7 +22,7 @@
 #include "Category.h"
 #include <QDomNode>
 #include <QFile>
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <QStandardPaths>
 
 #include <DiscoverBackendsFactory.h>
@@ -34,7 +34,7 @@ QVector<Category*> CategoriesReader::loadCategoriesFile(AbstractResourcesBackend
     if (path.isEmpty()) {
         auto cat = backend->category();
         if (cat.isEmpty())
-            qWarning() << "Couldn't find a category for " << backend->name();
+            qCWarning(LIBDISCOVER_LOG) << "Couldn't find a category for " << backend->name();
 
         Category::sortCategories(cat);
         return cat;
@@ -47,7 +47,7 @@ QVector<Category*> CategoriesReader::loadCategoriesPath(const QString& path)
     QVector<Category *> ret;
     QFile menuFile(path);
     if (!menuFile.open(QIODevice::ReadOnly)) {
-        qWarning() << "couldn't open" << path;
+        qCWarning(LIBDISCOVER_LOG) << "couldn't open" << path;
         return ret;
     }
 
@@ -56,7 +56,7 @@ QVector<Category*> CategoriesReader::loadCategoriesPath(const QString& path)
     int line;
     bool correct = menuDocument.setContent(&menuFile, &error, &line);
     if(!correct)
-        qWarning() << "error while parsing the categories file:" << error << " at: " << path << ':' << line;
+        qCWarning(LIBDISCOVER_LOG) << "error while parsing the categories file:" << error << " at: " << path << ':' << line;
 
     QDomElement root = menuDocument.documentElement();
 

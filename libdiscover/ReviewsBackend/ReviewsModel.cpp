@@ -23,7 +23,7 @@
 #include <resources/ResourcesModel.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
-#include <QDebug>
+#include "libdiscover_debug.h"
 
 ReviewsModel::ReviewsModel(QObject* parent)
     : QAbstractListModel(parent)
@@ -134,7 +134,7 @@ void ReviewsModel::fetchMore(const QModelIndex& parent)
 
     m_lastPage++;
     m_backend->fetchReviews(m_app, m_lastPage);
-//     qDebug() << "fetching reviews... " << m_lastPage;
+//     qCDebug(LIBDISCOVER_LOG) << "fetching reviews... " << m_lastPage;
 }
 
 void ReviewsModel::addReviews(AbstractResource* app, const QVector<ReviewPtr>& reviews, bool canFetchMore)
@@ -143,7 +143,7 @@ void ReviewsModel::addReviews(AbstractResource* app, const QVector<ReviewPtr>& r
         return;
 
     m_canFetchMore = canFetchMore;
-//     qDebug() << "reviews arrived..." << m_lastPage << reviews.size();
+//     qCDebug(LIBDISCOVER_LOG) << "reviews arrived..." << m_lastPage << reviews.size();
 
     if(!reviews.isEmpty()) {
         beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size()-1);
@@ -162,7 +162,7 @@ void ReviewsModel::markUseful(int row, bool useful)
 {
     Review* r = m_reviews[row].data();
     r->setUsefulChoice(useful ? Yes : No);
-//     qDebug() << "submitting usefulness" << r->applicationName() << r->id() << useful;
+//     qCDebug(LIBDISCOVER_LOG) << "submitting usefulness" << r->applicationName() << r->id() << useful;
     m_backend->submitUsefulness(r, useful);
     const QModelIndex ind = index(row, 0, QModelIndex());
     emit dataChanged(ind, ind, {UsefulnessTotal, UsefulnessFavorable, UsefulChoice});

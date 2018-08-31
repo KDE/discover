@@ -36,6 +36,8 @@ set(discovercommon_SRCS
     ApplicationAddonsModel.cpp
 )
 
+ecm_qt_declare_logging_category(discovercommon_SRCS HEADER libdiscover_debug.h IDENTIFIER LIBDISCOVER_LOG CATEGORY_NAME org.kde.plasma.libdiscover)
+
 if(AppStreamQt_FOUND)
     set(discovercommon_SRCS ${discovercommon_SRCS}
         appstream/OdrsReviewsBackend.cpp

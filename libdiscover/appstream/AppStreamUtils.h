@@ -23,7 +23,7 @@
 
 #include <QUrl>
 #include <QList>
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <AppStreamQt/image.h>
 #include <AppStreamQt/component.h>
 #include <AppStreamQt/release.h>
@@ -65,7 +65,7 @@ static QPair<QList<QUrl>, QList<QUrl>> fetchScreenshots(const AppStream::Compone
         const QUrl thumbnail = AppStreamUtils::imageOfKind(images, AppStream::Image::KindThumbnail);
         const QUrl plain = AppStreamUtils::imageOfKind(images, AppStream::Image::KindSource);
         if (plain.isEmpty())
-            qWarning() << "invalid screenshot for" << appdata.name();
+            qCWarning(LIBDISCOVER_LOG) << "invalid screenshot for" << appdata.name();
 
         screenshots << plain;
         thumbnails << (thumbnail.isEmpty() ? plain : thumbnail);

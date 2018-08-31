@@ -21,7 +21,7 @@
 
 #include "ResourcesProxyModel.h"
 
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <QMetaProperty>
 #include <utils.h>
 
@@ -136,7 +136,7 @@ void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *>& resource
         if (at == storedIds.end()) {
             storedIds[appstreamid] = it;
         } else {
-            qWarning() << "We should have sanitized the displayed resources. There is a bug";
+            qCWarning(LIBDISCOVER_LOG) << "We should have sanitized the displayed resources. There is a bug";
             Q_UNREACHABLE();
         }
     }
@@ -261,7 +261,7 @@ void ResourcesProxyModel::invalidateFilter()
     }
 
     if (m_currentStream) {
-        qWarning() << "last stream isn't over yet" << m_filters << this;
+        qCWarning(LIBDISCOVER_LOG) << "last stream isn't over yet" << m_filters << this;
         delete m_currentStream;
     }
 
@@ -421,14 +421,14 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) 
         default: {
             QByteArray roleText = roleNames().value(role);
             if(Q_UNLIKELY(roleText.isEmpty())) {
-                qDebug() << "unsupported role" << role;
+                qCDebug(LIBDISCOVER_LOG) << "unsupported role" << role;
                 return {};
             }
             static const QMetaObject* m = &AbstractResource::staticMetaObject;
             int propidx = roleText.isEmpty() ? -1 : m->indexOfProperty(roleText.constData());
 
             if(Q_UNLIKELY(propidx < 0)) {
-                qWarning() << "unknown role:" << role << roleText;
+                qCWarning(LIBDISCOVER_LOG) << "unknown role:" << role << roleText;
                 return QVariant();
             } else
                 return m->property(propidx).read(resource);

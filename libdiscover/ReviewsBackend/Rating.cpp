@@ -20,7 +20,7 @@
 
 #include "Rating.h"
 #include <QStringList>
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <qmath.h>
 
 inline double fastPow(double a, double b) {

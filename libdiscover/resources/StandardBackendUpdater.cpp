@@ -25,7 +25,7 @@
 #include <Transaction/TransactionModel.h>
 #include <KLocalizedString>
 #include <QDateTime>
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <QTimer>
 #include <QIcon>
 

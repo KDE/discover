@@ -27,7 +27,7 @@
 #include <KShell>
 #include <QList>
 #include <QProcess>
-#include <QDebug>
+#include "libdiscover_debug.h"
 
 AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     : QObject(parent)

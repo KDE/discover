@@ -33,7 +33,7 @@
 
 #include <QCryptographicHash>
 #include <QDir>
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -83,7 +83,7 @@ void OdrsReviewsBackend::ratingsFetched(KJob *job)
 {
     m_isFetching = false;
     if (job->error()) {
-        qWarning() << "Failed to fetch ratings " << job->errorString();
+        qCWarning(LIBDISCOVER_LOG) << "Failed to fetch ratings " << job->errorString();
     } else {
         parseRatings();
     }
@@ -181,7 +181,7 @@ void OdrsReviewsBackend::reviewsFetched()
     QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
 
     if (reply->error() != QNetworkReply::NoError) {
-        qWarning() << "error fetching reviews:" << reply->errorString();
+        qCWarning(LIBDISCOVER_LOG) << "error fetching reviews:" << reply->errorString();
         m_isFetching = false;
         return;
     }
@@ -241,9 +241,9 @@ void OdrsReviewsBackend::usefulnessSubmitted()
     QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
 
     if (reply->error() == QNetworkReply::NoError) {
-        qWarning() << "Usefullness submitted";
+        qCWarning(LIBDISCOVER_LOG) << "Usefullness submitted";
     } else {
-        qWarning() << "Failed to submit usefulness: " << reply->errorString();
+        qCWarning(LIBDISCOVER_LOG) << "Failed to submit usefulness: " << reply->errorString();
     }
 }
 
@@ -285,7 +285,7 @@ void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summ
 void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
 {
     if (reply->error() == QNetworkReply::NoError) {
-        qWarning() << "Review submitted";
+        qCWarning(LIBDISCOVER_LOG) << "Review submitted";
         AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
         const QJsonArray array = {resource->getMetadata(QStringLiteral("ODRS::review_map")).toObject()};
         const QJsonDocument document(array);
@@ -294,7 +294,7 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
         file.remove();
         parseReviews(document, resource);
     } else {
-        qWarning() << "Failed to submit review: " << reply->errorString();
+        qCWarning(LIBDISCOVER_LOG) << "Failed to submit review: " << reply->errorString();
     }
 }
 

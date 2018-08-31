@@ -23,7 +23,7 @@
 #include <resources/PackageState.h>
 #include <resources/AbstractResource.h>
 #include <Transaction/TransactionModel.h>
-#include <QDebug>
+#include "libdiscover_debug.h"
 
 ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
     : QAbstractListModel(parent)

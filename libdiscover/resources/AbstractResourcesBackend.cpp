@@ -24,7 +24,7 @@
 #include <QHash>
 #include <QMetaObject>
 #include <QMetaProperty>
-#include <QDebug>
+#include "libdiscover_debug.h"
 #include <QTimer>
 
 QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters& filters)
@@ -57,7 +57,7 @@ ResultsStream::ResultsStream(const QString &objectName, const QVector<AbstractRe
 ResultsStream::ResultsStream(const QString &objectName)
 {
     setObjectName(objectName);
-    QTimer::singleShot(5000, this, [objectName]() { qDebug() << "stream took really long" << objectName; });
+    QTimer::singleShot(5000, this, [objectName]() { qCDebug(LIBDISCOVER_LOG) << "stream took really long" << objectName; });
 }
 
 ResultsStream::~ResultsStream()

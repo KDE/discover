@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "PackageState.h"
-#include <QDebug>
+#include "libdiscover_debug.h"
 
 PackageState::PackageState(QString name, QString description, bool installed)
     : PackageState(name, name, description, installed)
