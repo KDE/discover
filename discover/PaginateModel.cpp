@@ -19,7 +19,7 @@
 
 #include "PaginateModel.h"
 #include <QtMath>
-#include <QDebug>
+#include "discover_debug.h"
 
 PaginateModel::PaginateModel(QObject* object)
     : QAbstractListModel(object)

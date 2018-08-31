@@ -5,6 +5,8 @@ endif()
 
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
 
+ecm_qt_declare_logging_category(plasma_discover_SRCS HEADER discover_debug.h IDENTIFIER DISCOVER_LOG CATEGORY_NAME org.kde.plasma.discover)
+
 add_executable(plasma-discover ${plasma_discover_SRCS}
     main.cpp
     DiscoverObject.cpp

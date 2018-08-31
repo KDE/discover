@@ -1,4 +1,6 @@
-ecm_add_test(PaginateModelTest.cpp ../PaginateModel.cpp ${CMAKE_SOURCE_DIR}/libdiscover/tests/modeltest.cpp TEST_NAME PaginateModelTest LINK_LIBRARIES Qt5::Test Qt5::Gui)
+set(plasma_discover_autotest_SRCS)
+ecm_qt_declare_logging_category(plasma_discover_autotest_SRCS HEADER discover_debug.h IDENTIFIER DISCOVER_LOG CATEGORY_NAME org.kde.plasma.discover)
+ecm_add_test(PaginateModelTest.cpp ../PaginateModel.cpp ${plasma_discover_autotest_SRCS} ${CMAKE_SOURCE_DIR}/libdiscover/tests/modeltest.cpp TEST_NAME PaginateModelTest LINK_LIBRARIES Qt5::Test Qt5::Gui)
 target_include_directories(PaginateModelTest PUBLIC ${CMAKE_SOURCE_DIR}/libdiscover/)
 
 if(BUILD_DummyBackend)

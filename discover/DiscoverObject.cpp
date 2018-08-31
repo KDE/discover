@@ -26,7 +26,7 @@
 
 // Qt includes
 #include <QAction>
-#include <QDebug>
+#include "discover_debug.h"
 #include <QDesktopServices>
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
@@ -165,12 +165,12 @@ void DiscoverObject::openMode(const QString& _mode)
 {
     QObject* obj = rootObject();
     if (!obj) {
-        qWarning() << "could not get the main object";
+        qCWarning(DISCOVER_LOG) << "could not get the main object";
         return;
     }
 
     if(!modes().contains(_mode, Qt::CaseInsensitive))
-        qWarning() << "unknown mode" << _mode << modes();
+        qCWarning(DISCOVER_LOG) << "unknown mode" << _mode << modes();
 
     QString mode = _mode;
     mode[0] = mode[0].toUpper();
@@ -178,7 +178,7 @@ void DiscoverObject::openMode(const QString& _mode)
     const QByteArray propertyName = "top"+mode.toLatin1()+"Comp";
     const QVariant modeComp = obj->property(propertyName.constData());
     if (!modeComp.isValid())
-        qWarning() << "couldn't open mode" << _mode;
+        qCWarning(DISCOVER_LOG) << "couldn't open mode" << _mode;
     else
         obj->setProperty("currentTopLevel", modeComp);
 }
@@ -214,14 +214,14 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
 {
     if (!QFile::exists(localfile.toLocalFile())) {
 //         showPassiveNotification(i18n("Trying to open unexisting file '%1'", localfile.toString()));
-        qWarning() << "Trying to open unexisting file" << localfile;
+        qCWarning(DISCOVER_LOG) << "Trying to open unexisting file" << localfile;
         return;
     }
     setRootObjectProperty("defaultStartup", false);
     auto action = new OneTimeAction(
         [this, localfile]() {
             auto res = ResourcesModel::global()->resourceForFile(localfile);
-            qDebug() << "all initialized..." << res;
+            qCDebug(DISCOVER_LOG) << "all initialized..." << res;
             if (res) {
                 emit openApplicationInternal(res);
             } else {
@@ -276,7 +276,7 @@ void DiscoverObject::openApplication(const QUrl& url)
 void DiscoverObject::integrateObject(QObject* object)
 {
     if (!object) {
-        qWarning() << "Errors when loading the GUI";
+        qCWarning(DISCOVER_LOG) << "Errors when loading the GUI";
         QTimer::singleShot(0, QCoreApplication::instance(), [](){
             QCoreApplication::instance()->exit(1);
         });
@@ -311,7 +311,7 @@ bool DiscoverObject::eventFilter(QObject * object, QEvent * event)
 
     if (event->type() == QEvent::Close) {
         if (ResourcesModel::global()->isBusy()) {
-            qWarning() << "not closing because there's still pending tasks";
+            qCWarning(DISCOVER_LOG) << "not closing because there's still pending tasks";
             Q_EMIT preventedClose();
             return true;
         }
@@ -320,7 +320,7 @@ bool DiscoverObject::eventFilter(QObject * object, QEvent * event)
         window.writeEntry("geometry", rootObject()->geometry());
         window.writeEntry<int>("visibility", rootObject()->visibility());
 //     } else if (event->type() == QEvent::ShortcutOverride) {
-//         qWarning() << "Action conflict" << event;
+//         qCWarning(DISCOVER_LOG) << "Action conflict" << event;
     }
     return false;
 }
@@ -395,7 +395,7 @@ public:
         m_testObject = component->create(engine->rootContext());
 
         if (!m_testObject) {
-            qWarning() << "error loading test" << url << m_testObject << component->errors();
+            qCWarning(DISCOVER_LOG) << "error loading test" << url << m_testObject << component->errors();
             Q_ASSERT(false);
         }
 
@@ -406,7 +406,7 @@ public:
     void processWarnings(const QList<QQmlError> &warnings) {
         foreach(const QQmlError &warning, warnings) {
             if (warning.url().path().endsWith(QLatin1String("DiscoverTest.qml"))) {
-                qWarning() << "Test failed!" << warnings;
+                qCWarning(DISCOVER_LOG) << "Test failed!" << warnings;
                 qGuiApp->exit(1);
             }
         }
@@ -420,9 +420,9 @@ public:
         }));
 
         if (m_warnings.isEmpty())
-            qDebug() << "cool no warnings!";
+            qCDebug(DISCOVER_LOG) << "cool no warnings!";
         else
-            qDebug() << "test finished succesfully despite" << m_warnings;
+            qCDebug(DISCOVER_LOG) << "test finished succesfully despite" << m_warnings;
         qGuiApp->exit(m_warnings.count());
     }
 
@@ -445,7 +445,7 @@ void DiscoverObject::setRootObjectProperty(const char* name, const QVariant& val
 {
     auto ro = rootObject();
     if (!ro) {
-        qWarning() << "please check your installation";
+        qCWarning(DISCOVER_LOG) << "please check your installation";
         return;
     }
 

@@ -18,7 +18,7 @@
  */
 
 #include "ReadFile.h"
-#include <QDebug>
+#include "discover_debug.h"
 
 ReadFile::ReadFile()
 {
@@ -101,7 +101,7 @@ void ReadFile::setFilter(const QString& filter)
 {
     m_filter = QRegularExpression(filter);
     if (!m_filter.isValid())
-        qDebug() << "error" << m_filter.errorString();
+        qCDebug(DISCOVER_LOG) << "error" << m_filter.errorString();
     Q_ASSERT(filter.isEmpty() || m_filter.isValid());
 }
 

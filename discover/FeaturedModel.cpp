@@ -20,7 +20,7 @@
 
 #include "FeaturedModel.h"
 
-#include <QDebug>
+#include "discover_debug.h"
 #include <QStandardPaths>
 #include <QFile>
 #include <QJsonDocument>
@@ -50,7 +50,7 @@ FeaturedModel::FeaturedModel()
     connect(getJob, &KIO::StoredTransferJob::result, this, [this, getJob](){
         QFile f(*featuredCache);
         if (!f.open(QIODevice::WriteOnly))
-            qWarning() << "could not open" << *featuredCache << f.errorString();
+            qCWarning(DISCOVER_LOG) << "could not open" << *featuredCache << f.errorString();
         f.write(getJob->data());
         f.close();
         refresh();
@@ -64,13 +64,13 @@ void FeaturedModel::refresh()
 {
     QFile f(*featuredCache);
     if (!f.open(QIODevice::ReadOnly)) {
-        qWarning() << "couldn't open file" << *featuredCache << f.errorString();
+        qCWarning(DISCOVER_LOG) << "couldn't open file" << *featuredCache << f.errorString();
         return;
     }
     QJsonParseError error;
     const auto array = QJsonDocument::fromJson(f.readAll(), &error).array();
     if (error.error) {
-        qWarning() << "couldn't parse" << *featuredCache << ". error:" << error.errorString();
+        qCWarning(DISCOVER_LOG) << "couldn't parse" << *featuredCache << ". error:" << error.errorString();
         return;
     }
 
