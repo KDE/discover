@@ -4,11 +4,14 @@ set(PROJECT_VERSION_MAJOR 5)
 
 cmake_minimum_required(VERSION 2.8.12)
 
-find_package(ECM REQUIRED NO_MODULE)
+set(QT_MIN_VERSION "5.10.0")
+set(KF5_MIN_VERSION "5.48.0")
+
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} "${CMAKE_SOURCE_DIR}/cmake")
 
-find_package(Qt5 5.10.0 REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick)
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
@@ -19,7 +22,7 @@ include(GenerateExportHeader)
 
 find_package(PkgConfig REQUIRED)
 
-find_package(KF5 5.48 REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui ItemModels KIO)
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui ItemModels KIO)
 find_package(KF5Kirigami2 2.1.0)
 
 find_package(packagekitqt5 CONFIG)
