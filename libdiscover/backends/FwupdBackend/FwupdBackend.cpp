@@ -732,7 +732,7 @@ QString FwupdBackend::displayName() const
 
 bool FwupdBackend::hasApplications() const
 {
-    return !m_resources.isEmpty() ? true : false;
+    return false;
 }
 
 #include "FwupdBackend.moc"
