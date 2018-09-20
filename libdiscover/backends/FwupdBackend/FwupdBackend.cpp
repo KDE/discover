@@ -86,8 +86,8 @@ FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
     FwupdResource* res = new FwupdResource(name, true, this);
     res->setId(buildDeviceID(device));
     res->addCategories(QStringLiteral("Releases"));
-    if(fwupd_device_get_icons(device)->len > 1)
-        res->setIconName(QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(device),0)));// Check Weather given icon exists or not!
+    if(fwupd_device_get_icons(device)->len >= 1)
+        res->setIconName(QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(device),0)));// Check wether given icon exists or not!
 
     setDeviceDetails(res,device);
     return res;
