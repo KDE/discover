@@ -109,7 +109,7 @@ FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
         return nullptr;
 
     /* the same as we have already */
-    if(QLatin1Literal(fwupd_device_get_version(device)) == QLatin1Literal(fwupd_release_get_version(release)))
+    if(qstrcmp(fwupd_device_get_version(device), fwupd_release_get_version(release)) == 0)
     {
         qWarning() << "Fwupd Error: same firmware version as installed";
     }
