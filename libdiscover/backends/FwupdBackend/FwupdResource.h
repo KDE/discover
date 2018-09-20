@@ -90,7 +90,6 @@ public:
     QString m_summary;
     QString m_description;
     QString m_version;
-    QString m_updateVersion;
     QString m_vendor;
     QStringList m_categories;
     QString m_license;

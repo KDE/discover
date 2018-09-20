@@ -352,15 +352,10 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
         qWarning() << "Fwupd Error: No version! for " << app->m_id;
         return nullptr;
     }
-    if(app->m_updateVersion.isNull())
-    {
-        qWarning() << "Fwupd Error: No update-version! for " << app->m_id;
-        return nullptr;
-    }
     checksums = fwupd_release_get_checksums(release);
     if(checksums->len == 0)
     {
-        qWarning() << "Fwupd Error: " << app->m_name << "[" << app->m_id << "]" << "(" << app->m_updateVersion << ")" "has no checksums, ignoring as unsafe";
+        qWarning() << "Fwupd Error: " << app->m_name << "[" << app->m_id << "] has no checksums, ignoring as unsafe";
         return nullptr;
     }
     const QUrl update_uri(QString::fromUtf8(fwupd_release_get_uri(release)));
