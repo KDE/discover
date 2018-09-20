@@ -139,9 +139,9 @@ void FwupdTransaction::fwupdInstall()
     if(!fwupd_client_install(m_backend->client, deviceId.toUtf8().constData(), localFile.toUtf8().constData(), install_flags, nullptr, &error))
     {
         m_backend->handleError(&error);
-        return;
-    }
-    finishTransaction();
+        setStatus(DoneWithErrorStatus);
+    } else
+        finishTransaction();
 }
 
 bool FwupdTransaction::remove()
