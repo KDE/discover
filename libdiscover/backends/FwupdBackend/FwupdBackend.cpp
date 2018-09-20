@@ -232,63 +232,62 @@ void FwupdBackend::addUpdates()
             qDebug() << "Fwupd Info: No Devices Found";
             handleError(&error);
         }
+        return;
     }
-    else{
-        for(uint i = 0; i < devices->len; i++)
+
+    for(uint i = 0; i < devices->len; i++)
+    {
+        FwupdDevice *device = (FwupdDevice *)g_ptr_array_index(devices, i);
+
+        if(!fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_SUPPORTED))
+            continue;
+
+        /*Device is Locked Needs Unlocking*/
+        if(fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_LOCKED))
         {
-            FwupdDevice *device = (FwupdDevice *)g_ptr_array_index(devices, i);
-            FwupdResource* res;
+            auto res = createDevice(device);
+            res->setIsDeviceLocked(true);
+            addResourceToList(res);
+            connect(res, &FwupdResource::stateChanged, this, &FwupdBackend::updatesCountChanged);
+            continue;
+        }
 
-            if(!fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_SUPPORTED))
-                continue;
 
-            /*Device is Locked Needs Unlocking*/
-            if(fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_LOCKED))
+        g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades(client, fwupd_device_get_id(device), nullptr, &error2);
+
+        if(!rels)
+        {
+            if(g_error_matches(error2, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
             {
-                res = createDevice(device);
-                res->setIsDeviceLocked(true);
-                addResourceToList(res);
-                connect(res, &FwupdResource::stateChanged, this, &FwupdBackend::updatesCountChanged);
+                qWarning() << "Fwupd Error: No Packages Found for "<< fwupd_device_get_id(device);
+                handleError(&error2);
                 continue;
             }
-
-
-            g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades(client, fwupd_device_get_id(device), nullptr, &error2);
-
-            if(!rels)
+        }
+        else
+        {
+            fwupd_device_add_release(device,(FwupdRelease *)g_ptr_array_index(rels, 0));
+            auto res = createApp(device);
+            if(res == nullptr)
             {
-                if(g_error_matches(error2, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
-                {
-                    qWarning() << "Fwupd Error: No Packages Found for "<< fwupd_device_get_id(device);
-                    handleError(&error2);
-                    continue;
-                }
+                qWarning() << "Fwupd Error: Cannot Create App From Device";
             }
             else
             {
-                fwupd_device_add_release(device,(FwupdRelease *)g_ptr_array_index(rels, 0));
-                res = createApp(device);
-                if(res == nullptr)
+                if(rels->len > 1)
                 {
-                    qWarning() << "Fwupd Error: Cannot Create App From Device";
-                }
-                else
-                {
-                    if(rels->len > 1)
+                    QString longdescription;
+                    for(uint j = 0; j < rels->len; j++)
                     {
-                        QString longdescription;
-                        for(uint j = 0; j < rels->len; j++)
-                        {
-                            FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(rels, j);
-                            if(fwupd_release_get_description(release) == nullptr)
-                                continue;
-                            longdescription += QStringLiteral("Version %1\n").arg(QString::fromUtf8(fwupd_release_get_version(release)));
-                            longdescription += QString::fromUtf8(fwupd_release_get_description(release)) + QLatin1Char('\n');
-                        }
-                        res->setDescription(longdescription);
+                        FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(rels, j);
+                        if(fwupd_release_get_description(release) == nullptr)
+                            continue;
+                        longdescription += QStringLiteral("Version %1\n").arg(QString::fromUtf8(fwupd_release_get_version(release)));
+                        longdescription += QString::fromUtf8(fwupd_release_get_description(release)) + QLatin1Char('\n');
                     }
-                    addResourceToList(res);
+                    res->setDescription(longdescription);
                 }
+                addResourceToList(res);
             }
         }
     }
