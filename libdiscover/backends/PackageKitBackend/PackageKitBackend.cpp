@@ -39,14 +39,16 @@
 #include <QTimer>
 #include <QStandardPaths>
 #include <QFile>
+#include <QAction>
+#include <QMimeDatabase>
+#include <QFileSystemWatcher>
 
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
 #include <PackageKit/Details>
 
 #include <KLocalizedString>
-#include <QAction>
-#include <QMimeDatabase>
+#include <KProtocolManager>
 
 #include "utils.h"
 #include "config-paths.h"
@@ -92,6 +94,13 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
+    auto proxyWatch = new QFileSystemWatcher(this);
+    proxyWatch->addPath(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QLatin1String("/kioslaverc"));
+    connect(proxyWatch, &QFileSystemWatcher::fileChanged, this, [this](){
+        KProtocolManager::reparseConfiguration();
+        updateProxy();
+    });
+
     SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
 
     reloadPackageList();
@@ -103,6 +112,24 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 }
 
 PackageKitBackend::~PackageKitBackend() = default;
+
+void PackageKitBackend::updateProxy()
+{
+
+    if (PackageKit::Daemon::isRunning()) {
+        static bool everHad = KProtocolManager::useProxy();
+        if (!everHad && !KProtocolManager::useProxy())
+            return;
+
+        everHad = KProtocolManager::useProxy();
+        PackageKit::Daemon::global()->setProxy(KProtocolManager::proxyFor(QLatin1String("http")),
+                                               KProtocolManager::proxyFor(QLatin1String("https")),
+                                               KProtocolManager::proxyFor(QLatin1String("ftp")),
+                                               KProtocolManager::proxyFor(QLatin1String("socks")),
+                                               {},
+                                               {});
+    }
+}
 
 bool PackageKitBackend::isFetching() const
 {
@@ -598,7 +625,8 @@ void PackageKitBackend::checkDaemonRunning()
 {
     if (!PackageKit::Daemon::isRunning()) {
         qWarning() << "PackageKit stopped running!";
-    }
+    } else
+        updateProxy();
 }
 
 AbstractBackendUpdater* PackageKitBackend::backendUpdater() const
