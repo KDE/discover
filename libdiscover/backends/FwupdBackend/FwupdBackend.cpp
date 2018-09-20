@@ -423,12 +423,12 @@ void FwupdBackend::saveFile(QNetworkReply *reply)
 
 bool FwupdBackend::downloadFile(const QUrl &uri,const QString &filename)
 {
-    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+    QScopedPointer<QNetworkAccessManager> manager(new QNetworkAccessManager(this));
     this->m_downloadFile.insert(uri,filename);
     QEventLoop loop;
     QTimer getTimer;
     connect(&getTimer, &QTimer::timeout, &loop, &QEventLoop::quit);
-    connect(manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
+    connect(manager.data(), &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
     QNetworkReply *reply = manager->get(QNetworkRequest(uri));
     getTimer.start(600000); // 60 Seconds TimeOout Period
     loop.exec();
@@ -443,7 +443,6 @@ bool FwupdBackend::downloadFile(const QUrl &uri,const QString &filename)
     else
     {
         saveFile(reply);
-        delete manager;
     }
     return true;
 }
