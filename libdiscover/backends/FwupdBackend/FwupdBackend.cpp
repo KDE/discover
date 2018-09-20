@@ -34,7 +34,7 @@
 #include <KSharedConfig>
 
 DISCOVER_BACKEND_PLUGIN(FwupdBackend)
-    
+
 FwupdBackend::FwupdBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
@@ -53,12 +53,12 @@ FwupdBackend::FwupdBackend(QObject* parent)
 QMap<GChecksumType, QCryptographicHash::Algorithm> FwupdBackend::initHashMap()
 {
     QMap<GChecksumType,QCryptographicHash::Algorithm> map;
-    
+
     map.insert(G_CHECKSUM_SHA1,QCryptographicHash::Sha1);
     map.insert(G_CHECKSUM_SHA256,QCryptographicHash::Sha256);
     map.insert(G_CHECKSUM_SHA512,QCryptographicHash::Sha512);
     map.insert(G_CHECKSUM_MD5,QCryptographicHash::Md5);
-    
+
     return map;
 }
 
@@ -144,7 +144,7 @@ void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
     res->needsReboot = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_REBOOT);
     res->isDeviceRemoval = !fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_INTERNAL);
     res->needsBootLoader = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_BOOTLOADER);
-    
+
     GPtrArray *guids = fwupd_device_get_guids(dev);
     if(guids->len > 0)
     {
@@ -159,7 +159,7 @@ void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
     {
         QString vendorName;
         vendorName.sprintf("%s",fwupd_device_get_name(dev));
-        
+
         if(vendorName.indexOf(QString::fromUtf8(fwupd_device_get_vendor(dev))) == 0)
             vendorName.sprintf("%s %s",fwupd_device_get_vendor(dev), fwupd_device_get_name(dev));
         res->setName(vendorName);
@@ -174,7 +174,7 @@ void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
         res->setVersion(QString::fromUtf8(fwupd_device_get_version(dev)));
     if(fwupd_device_get_description(dev))
         res->setDescription(QString::fromUtf8((fwupd_device_get_description(dev))));
-    res->setIconName(QString::fromUtf8("device-notifier")); 
+    res->setIconName(QString::fromUtf8("device-notifier"));
 }
 
 void FwupdBackend::populate(const QString& n)
@@ -222,7 +222,7 @@ void FwupdBackend::addUpdates()
     g_autoptr(GError) error = nullptr;
     g_autoptr(GError) error2 = nullptr;
     g_autoptr(GPtrArray) devices = fwupd_client_get_devices(client, nullptr, &error);
-    
+
     if(!devices)
     {
         if(g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
@@ -236,7 +236,7 @@ void FwupdBackend::addUpdates()
         {
             FwupdDevice *device = (FwupdDevice *)g_ptr_array_index(devices, i);
             FwupdResource* res;
-            
+
             if(!fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_SUPPORTED))
                 continue;
 
@@ -253,7 +253,7 @@ void FwupdBackend::addUpdates()
 
             g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades(client, fwupd_device_get_id(device), nullptr, &error2);
 
-            if(!rels) 
+            if(!rels)
             {
                 if(g_error_matches(error2, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
                 {
@@ -280,7 +280,7 @@ void FwupdBackend::addUpdates()
                             FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(rels, j);
                             if(fwupd_release_get_description(release) == nullptr)
                                 continue;
-                            longdescription += QStringLiteral("Version %1\n").arg(QString::fromUtf8(fwupd_release_get_version(release))); 
+                            longdescription += QStringLiteral("Version %1\n").arg(QString::fromUtf8(fwupd_release_get_version(release)));
                             longdescription += QString::fromUtf8(fwupd_release_get_description(release)) + QLatin1Char('\n');
                         }
                         res->setDescription(longdescription);
@@ -319,7 +319,7 @@ QByteArray FwupdBackend::getChecksum(const QUrl filename, QCryptographicHash::Al
     if(f.open(QFile::ReadOnly))
     {
         QCryptographicHash hash(hashAlgorithm);
-        if(hash.addData(&f)) 
+        if(hash.addData(&f))
         {
             return hash.result().toHex();
         }
@@ -363,7 +363,7 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
         return nullptr;
     }
     const QUrl update_uri(QString::fromUtf8(fwupd_release_get_uri(release)));
-    
+
     if(!update_uri.isValid())
     {
         qWarning() << "Fwupd Error: No Update URI available for" << app->m_name <<  "[" << app->m_id << "]";
@@ -404,11 +404,11 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
 void FwupdBackend::saveFile(QNetworkReply *reply)
 {
     QString filename = this->m_downloadFile[reply->url()];
-    if(reply->error() == QNetworkReply::NoError) 
+    if(reply->error() == QNetworkReply::NoError)
     {
         QByteArray Data = reply->readAll();
         QFile file(filename);
-        if(file.open(QIODevice::WriteOnly)) 
+        if(file.open(QIODevice::WriteOnly))
         {
             file.write(Data);
         }
@@ -426,7 +426,7 @@ bool FwupdBackend::downloadFile(const QUrl &uri,const QString &filename)
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     this->m_downloadFile.insert(uri,filename);
     QEventLoop loop;
-    QTimer getTimer;   
+    QTimer getTimer;
     connect(&getTimer, &QTimer::timeout, &loop, &QEventLoop::quit);
     connect(manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
     QNetworkReply *reply = manager->get(QNetworkRequest(uri));
@@ -473,13 +473,13 @@ bool FwupdBackend::refreshRemotes(uint cacheAge)
 bool FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
 {
     g_autoptr(GError) error = nullptr;
-    
-    if(fwupd_remote_get_filename_cache_sig(remote) == nullptr) 
+
+    if(fwupd_remote_get_filename_cache_sig(remote) == nullptr)
     {
         qWarning() << "Fwupd Error: " << "Remote " << fwupd_remote_get_id(remote) << "has no cache signature!";
         return false;
     }
-    
+
     /* check cache age */
     if(cacheAge > 0)
     {
@@ -491,19 +491,19 @@ bool FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
             return true;
         }
     }
-    
-    QString cacheId = QStringLiteral("fwupd/remotes.d/%1").arg(QString::fromUtf8(fwupd_remote_get_id(remote))); 
+
+    QString cacheId = QStringLiteral("fwupd/remotes.d/%1").arg(QString::fromUtf8(fwupd_remote_get_id(remote)));
     QFileInfo basenameSig = QFileInfo(QString::fromUtf8(g_path_get_basename(fwupd_remote_get_filename_cache_sig(remote))));
     const QUrl filenameSig = cacheFile(cacheId, basenameSig);
-    
+
     if(filenameSig.isEmpty())
         return false;
-    
+
     /* download the signature first*/
     const QUrl urlSig(QString::fromUtf8(fwupd_remote_get_metadata_uri_sig(remote)));
     qDebug() << "Fwupd Info: downloading remotes signatures ...";
 
-    
+
     const QUrl filenameSig_(filenameSig.toString() + QStringLiteral(".tmp"));
 
     if(!downloadFile(urlSig,filenameSig_.toString()))
@@ -511,11 +511,11 @@ bool FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
         qDebug() << "Fwupd Info: remote signature download failed ...";
         return false;
     }
-    
+
     QMap<GChecksumType,QCryptographicHash::Algorithm> map = initHashMap();
     QCryptographicHash::Algorithm hashAlgorithm = map[(fwupd_checksum_guess_kind(fwupd_remote_get_checksum(remote)))];
     QByteArray hash = getChecksum(filenameSig_,hashAlgorithm);
-    
+
     if((fwupd_remote_get_checksum(remote) == hash) && filenameSig.isLocalFile())
     {
         qDebug() << "Fwupd Info: signature of" <<  urlSig.toString() << "is unchanged";
@@ -523,10 +523,10 @@ bool FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
     }
     else
         QFile::remove(filenameSig.toString());
-    
+
     /* save to a file */
     qDebug() << "Fwupd Info: saving new remote signature to:" << filenameSig.toString();
-    
+
     if(!(QFile::copy(filenameSig_.toString(), filenameSig.toString())))
     {
         QFile::remove(filenameSig_.toString());
@@ -537,20 +537,20 @@ bool FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
 
     QFileInfo basename = QFileInfo(QString::fromUtf8(g_path_get_basename(fwupd_remote_get_filename_cache(remote))));
     const QUrl filename = cacheFile(cacheId, basename);
-    
+
     if(filename.isEmpty())
         return false;
-    
+
     qDebug() << "Fwupd Info: saving new firmware metadata to:" <<  filename.toString();
 
     const QUrl url(QString::fromUtf8(fwupd_remote_get_metadata_uri(remote)));
-    if(!downloadFile(url, filename.toString())) 
+    if(!downloadFile(url, filename.toString()))
     {
         qWarning() << "Fwupd Error: cannot download file : " << filename.toString() ;
         return false;
     }
     /* Sending Metadata to fwupd Daemon*/
-    if(!fwupd_client_update_metadata(client, fwupd_remote_get_id(remote), filename.toString().toUtf8().constData(), filenameSig.toString().toUtf8().constData(), nullptr, &error)) 
+    if(!fwupd_client_update_metadata(client, fwupd_remote_get_id(remote), filename.toString().toUtf8().constData(), filenameSig.toString().toUtf8().constData(), nullptr, &error))
     {
         handleError(&error);
         return false;
@@ -602,8 +602,8 @@ const QUrl FwupdBackend::cacheFile(const QString &kind,const QFileInfo &resource
     const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
     const QUrl cacheDirFile = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1Char('/') + kind);
     const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1Char('/') + kind + QLatin1Char('/') + basename);
-    
-    if(!QFileInfo::exists(cacheDirFile.toLocalFile()) && !cacheDir.mkpath(kind)) 
+
+    if(!QFileInfo::exists(cacheDirFile.toLocalFile()) && !cacheDir.mkpath(kind))
     {
         qWarning() << "Fwupd Error: cannot make  cache directory!";
         return QUrl();
@@ -644,10 +644,10 @@ ResultsStream* FwupdBackend::search(const AbstractResourcesBackend::Filters& fil
 ResultsStream * FwupdBackend::findResourceByPackageName(const QUrl& search)
 {
     auto res = search.scheme() == QLatin1String("fwupd") ? m_resources.value(search.host().replace(QLatin1Char('.'), QLatin1Char(' '))) : nullptr;
-    if(!res) 
+    if(!res)
     {
         return new ResultsStream(QStringLiteral("FwupdStream"), {});
-    } 
+    }
     else
         return new ResultsStream(QStringLiteral("FwupdStream"), { res });
 }
@@ -681,7 +681,7 @@ void FwupdBackend::checkForUpdates()
 {
     if(m_fetching)
         return;
-    
+
     populate(QStringLiteral("Releases"));
     toggleFetching();
     QTimer::singleShot(500, this, &FwupdBackend::toggleFetching);
@@ -694,7 +694,7 @@ AbstractResource * FwupdBackend::resourceForFile(const QUrl& path)
     QMimeDatabase db;
     QMimeType type = db.mimeTypeForFile(path.fileName());
     FwupdResource* app = nullptr;
-    
+
     if(type.isValid() && type.inherits(QStringLiteral("application/vnd.ms-cab-compressed")))
     {
         g_autofree gchar *filename = path.fileName().toUtf8().data();

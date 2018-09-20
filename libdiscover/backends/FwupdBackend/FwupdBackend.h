@@ -76,7 +76,7 @@ public:
     QString displayName() const override;
     bool hasApplications() const override;
     FwupdClient *client;
-    
+
     bool downloadFile(const QUrl &uri, const QString &filename);
     bool refreshRemotes(uint cacheAge);
     bool refreshRemote(FwupdRemote *remote, uint cacheAge);
