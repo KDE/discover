@@ -97,16 +97,18 @@ FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
 {
     FwupdRelease *release = fwupd_device_get_release_default(device);
     const QString name = QString::fromUtf8(fwupd_release_get_name(release));
+    auto appstreamId = fwupd_release_get_appstream_id(release);
+    if (!appstreamId) {
+        qWarning() << "no appstream id for" << name;
+        return nullptr;
+    }
+
     FwupdResource* res = new FwupdResource(name, true, this);
 
     res->setDeviceID(QString::fromUtf8(fwupd_device_get_id(device)));
     setReleaseDetails(res,release);
     setDeviceDetails(res,device);
-
-    if(fwupd_release_get_appstream_id(release))
-        res->setId(QString::fromUtf8(fwupd_release_get_appstream_id(release)));
-    else
-        return nullptr;
+    res->setId(QString::fromUtf8(appstreamId));
 
     /* the same as we have already */
     if(qstrcmp(fwupd_device_get_version(device), fwupd_release_get_version(release)) == 0)
