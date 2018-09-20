@@ -94,37 +94,35 @@ bool FwupdTransaction::install()
         const QUrl uri(m_app->m_updateURI);
         setStatus(DownloadingStatus);
         QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-        connect(manager, &QNetworkAccessManager::finished,this, [this](QNetworkReply* reply){fwupdInstall(reply);});
+        connect(manager, &QNetworkAccessManager::finished, this, [this](QNetworkReply* reply){
+            if(reply->error() != QNetworkReply::NoError) {
+                qWarning() << "Fwupd Error: Could not download" << reply->url() << reply->errorString();
+                return;
+            }
+
+            QFile file(m_app->m_file);
+            if(file.open(QIODevice::WriteOnly))
+            {
+                file.write(reply->readAll());
+            }
+            else
+            {
+                qWarning() << "Fwupd Error: Cannot write file" << m_app->m_file;
+            }
+
+            fwupdInstall();
+        });
         manager->get(QNetworkRequest(uri));
     }
     else
     {
-        fwupdInstall(nullptr);
+        fwupdInstall();
     }
     return true;
 }
 
-void FwupdTransaction::fwupdInstall(QNetworkReply* reply)
+void FwupdTransaction::fwupdInstall()
 {
-    if(reply)
-    {
-        QString filename = m_app->m_file;
-        if(reply->error() == QNetworkReply::NoError)
-        {
-            QByteArray Data = reply->readAll();
-            QFile file(filename);
-            if(file.open(QIODevice::WriteOnly))
-            {
-                file.write(Data);
-            }
-            else
-            {
-                qWarning() << "Fwupd Error: Cannot Save File";
-            }
-            file.close();
-            delete reply;
-        }
-    }
     FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;
     g_autoptr(GError) error = nullptr;
 
@@ -138,15 +136,11 @@ void FwupdTransaction::fwupdInstall(QNetworkReply* reply)
     if(m_app->isOnlyOffline)
         install_flags = static_cast<FwupdInstallFlags>(install_flags | FWUPD_INSTALL_FLAG_OFFLINE);
 
-    m_iterate = true;
-    QTimer::singleShot(100, this, &FwupdTransaction::updateProgress);
     if(!fwupd_client_install(m_backend->client, deviceId.toUtf8().constData(), localFile.toUtf8().constData(), install_flags, nullptr, &error))
     {
         m_backend->handleError(&error);
-        m_iterate = false;
         return;
     }
-    m_iterate = false;
     finishTransaction();
 }
 
@@ -158,15 +152,7 @@ bool FwupdTransaction::remove()
 
 void FwupdTransaction::updateProgress()
 {
-    if(!m_iterate)
-        return;
-
-    setStatus(CommittingStatus);
-    if(progress()<100)
-    {
-        setProgress(fwupd_client_get_percentage(m_backend->client));
-        QTimer::singleShot(100, this, &FwupdTransaction::updateProgress);
-    }
+    setProgress(fwupd_client_get_percentage(m_backend->client));
 }
 
 void FwupdTransaction::proceed()
@@ -176,8 +162,6 @@ void FwupdTransaction::proceed()
 
 void FwupdTransaction::cancel()
 {
-    m_iterate = false;
-
     setStatus(CancelledStatus);
 }
 
