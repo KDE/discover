@@ -21,7 +21,6 @@
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
-import QtQuick.Controls 2.1 as QQC2
 import QtGraphicalEffects 1.0
 import org.kde.discover 2.0
 import org.kde.kirigami 2.0 as Kirigami
@@ -37,7 +36,7 @@ Flickable {
     contentHeight: height
     contentWidth: screenshotsLayout.width
 
-    QQC2.Popup {
+    Popup {
         id: overlay
         parent: applicationWindow().overlay
         modal: true
