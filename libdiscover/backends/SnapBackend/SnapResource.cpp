@@ -276,6 +276,9 @@ public:
         for (int i = 0; i<req->plugCount(); ++i) {
             const QScopedPointer<QSnapdPlug> plug(req->plug(i));
             if (plug->snap() == m_snap->name()) {
+                if (plug->interface() == QLatin1String("content"))
+                    continue;
+
                 for (auto slot: slotsForInterface[plug->interface()]) {
                     auto item = new QStandardItem;
                     if (plug->label().isEmpty())
@@ -283,6 +286,7 @@ public:
                     else
                         item->setText(i18n("%1 - %2", plug->name(), plug->label()));
 
+//                     qDebug() << "xxx" << plug->name() << plug->label() << plug->interface() << slot->snap() << "slot:" << slot->name() << slot->snap() << slot->interface() << slot->label();
                     item->setCheckable(true);
                     item->setCheckState(plug->connectionCount()>0 ? Qt::Checked : Qt::Unchecked);
                     item->setData(plug->name(), PlugNameRole);
