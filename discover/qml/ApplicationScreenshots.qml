@@ -40,6 +40,7 @@ Flickable {
         id: overlay
         parent: applicationWindow().overlay
         modal: true
+        clip: false
 
         x: (parent.width - width)/2
         y: (parent.height - height)/2
