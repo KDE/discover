@@ -253,16 +253,7 @@ void FwupdBackend::addUpdates()
 
         g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades(client, fwupd_device_get_id(device), nullptr, &error2);
 
-        if (!rels)
-        {
-            if (g_error_matches(error2, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
-            {
-                qWarning() << "Fwupd Error: No Packages Found for "<< fwupd_device_get_id(device) << fwupd_device_get_name(device);
-                handleError(&error2);
-                continue;
-            }
-        }
-        else
+        if (rels)
         {
             fwupd_device_add_release(device,(FwupdRelease *)g_ptr_array_index(rels, 0));
             auto res = createApp(device);
@@ -286,6 +277,11 @@ void FwupdBackend::addUpdates()
                     res->setDescription(longdescription);
                 }
                 addResourceToList(res);
+            }
+        } else {
+            if (!g_error_matches(error2, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
+            {
+                handleError(&error2);
             }
         }
     }
