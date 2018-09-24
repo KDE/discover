@@ -205,7 +205,6 @@ void OdrsReviewsBackend::reviewsFetched()
     QFile file(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/reviews/%1.json").arg(jsonObject.value(QStringLiteral("app_id")).toString()));
     if (file.open(QIODevice::WriteOnly)) {
         file.write(document.toJson());
-        file.close();
     }
 }
 
@@ -303,7 +302,7 @@ void OdrsReviewsBackend::parseRatings()
     QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings/ratings"));
     if (ratingsDocument.open(QIODevice::ReadOnly)) {
         QJsonDocument jsonDocument = QJsonDocument::fromJson(ratingsDocument.readAll());
-        QJsonObject jsonObject = jsonDocument.object();
+        const QJsonObject jsonObject = jsonDocument.object();
         m_ratings.reserve(jsonObject.size());
         for (auto it = jsonObject.begin(); it != jsonObject.end(); it++) {
             QJsonObject appJsonObject = it.value().toObject();
@@ -338,7 +337,7 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
     if (!reviews.isEmpty()) {
         QVector<ReviewPtr> reviewList;
         for (auto it = reviews.begin(); it != reviews.end(); it++) {
-            QJsonObject review = it->toObject();
+            const QJsonObject review = it->toObject();
             if (!review.isEmpty()) {
                 const int usefulFavorable = review.value(QStringLiteral("karma_up")).toInt();
                 const int usefulTotal = review.value(QStringLiteral("karma_down")).toInt() + usefulFavorable;
