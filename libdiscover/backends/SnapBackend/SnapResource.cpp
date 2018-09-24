@@ -253,9 +253,9 @@ public:
         SlotNameRole
     };
 
-    PlugsModel(QSnapdSnap* snap, SnapBackend* backend, QObject* parent)
+    PlugsModel(SnapResource* res, SnapBackend* backend, QObject* parent)
         : QStandardItemModel(parent)
-        , m_snap(snap)
+        , m_res(res)
         , m_backend(backend)
     {
         setItemRoleNames(roleNames().unite(
@@ -273,9 +273,13 @@ public:
 
         }
 
+        const auto snap = m_res->snap();
         for (int i = 0; i<req->plugCount(); ++i) {
             const QScopedPointer<QSnapdPlug> plug(req->plug(i));
-            if (plug->snap() == m_snap->name()) {
+            if (plug->snap() == snap->name()) {
+                if (plug->interface() == QLatin1String("content"))
+                    continue;
+
                 for (auto slot: slotsForInterface[plug->interface()]) {
                     auto item = new QStandardItem;
                     if (plug->label().isEmpty())
@@ -283,6 +287,7 @@ public:
                     else
                         item->setText(i18n("%1 - %2", plug->name(), plug->label()));
 
+//                     qDebug() << "xxx" << plug->name() << plug->label() << plug->interface() << slot->snap() << "slot:" << slot->name() << slot->snap() << slot->interface() << slot->label();
                     item->setCheckable(true);
                     item->setCheckState(plug->connectionCount()>0 ? Qt::Checked : Qt::Unchecked);
                     item->setData(plug->name(), PlugNameRole);
@@ -307,10 +312,11 @@ private:
 
         QSnapdRequest* req;
 
+        const auto snap = m_res->snap();
         if (item->checkState() == Qt::Checked) {
-            req = m_backend->client()->connectInterface(m_snap->name(), plugName, slotSnap, slotName);
+            req = m_backend->client()->connectInterface(snap->name(), plugName, slotSnap, slotName);
         } else {
-            req = m_backend->client()->disconnectInterface(m_snap->name(), plugName, slotSnap, slotName);
+            req = m_backend->client()->disconnectInterface(snap->name(), plugName, slotSnap, slotName);
         }
         req->runSync();
         if (req->error()) {
@@ -319,7 +325,7 @@ private:
         return req->error() == QSnapdRequest::NoError;
     }
 
-    QSnapdSnap* const m_snap;
+    SnapResource* const m_res;
     SnapBackend* const m_backend;
 };
 
@@ -329,7 +335,7 @@ QAbstractItemModel* SnapResource::plugs(QObject* p)
         return new QStandardItemModel(p);
 
 
-    return new PlugsModel(m_snap.data(), qobject_cast<SnapBackend*>(parent()), p);
+    return new PlugsModel(this, qobject_cast<SnapBackend*>(parent()), p);
 }
 
 QString SnapResource::appstreamId() const

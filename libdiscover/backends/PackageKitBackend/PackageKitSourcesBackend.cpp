@@ -87,7 +87,7 @@ PackageKitSourcesBackend::PackageKitSourcesBackend(AbstractResourcesBackend* par
     resetSources();
 
     // Kubuntu-based
-    auto service = PackageKitBackend::locateService(QStringLiteral("software-properties-kde.desktop"));
+    auto service = PackageKitBackend::locateService(QStringLiteral("software-properties-qt.desktop"));
     if (!service.isEmpty())
         m_actions += createActionForService(service, this);
 

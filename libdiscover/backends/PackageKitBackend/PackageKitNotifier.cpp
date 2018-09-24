@@ -55,7 +55,6 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     QTimer::singleShot(5 * 60 * 1000, this, &PackageKitNotifier::refreshDatabase);
 
     QTimer *regularCheck = new QTimer(this);
-    regularCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
     connect(regularCheck, &QTimer::timeout, this, &PackageKitNotifier::refreshDatabase);
 
     const QString aptconfig = QStandardPaths::findExecutable(QStringLiteral("apt-config"));
@@ -63,14 +62,17 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
         auto process = checkAptVariable(aptconfig, QLatin1String("Apt::Periodic::Update-Package-Lists"), [regularCheck](const QStringRef& value) {
             bool ok;
             int time = value.toInt(&ok);
-            if (ok && time > 0)
+            if (ok && time > 0) {
                 regularCheck->setInterval(time * 60 * 60 * 1000);
-            else
+                regularCheck->start();
+            } else
                 qWarning() << "couldn't understand value for timer:" << value;
         });
         connect(process, static_cast<void(QProcess::*)(int)>(&QProcess::finished), regularCheck, static_cast<void(QTimer::*)()>(&QTimer::start));
-    } else
+    } else {
+        regularCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
         regularCheck->start();
+    }
 
     QTimer::singleShot(3000, this, &PackageKitNotifier::checkOfflineUpdates);
 

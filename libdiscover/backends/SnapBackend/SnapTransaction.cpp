@@ -52,15 +52,18 @@ void SnapTransaction::finishTransaction()
     switch(m_request->error()) {
         case QSnapdRequest::NoError:
             static_cast<SnapBackend*>(m_app->backend())->refreshStates();
+            setStatus(DoneStatus);
             m_app->setState(m_newState);
             break;
         case QSnapdRequest::NeedsClassic:
+            setStatus(SetupStatus);
             if (role() == Transaction::InstallRole) {
                 Q_EMIT proceedRequest(m_app->name(), i18n("This snap application needs security confinement measures disabled."));
                 return;
             }
             break;
         case QSnapdRequest::AuthDataRequired: {
+            setStatus(SetupStatus);
             QProcess* p = new QProcess;
             p->setProgram(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR "/discover/SnapMacaroonDialog"));
             p->start();
@@ -70,7 +73,7 @@ void SnapTransaction::finishTransaction()
                 if (code != 0) {
                     qWarning() << "login failed... code:" << code << p->readAll();
                     Q_EMIT passiveMessage(m_request->errorString());
-                    setStatus(DoneStatus);
+                    setStatus(DoneWithErrorStatus);
                     return;
                 }
                 const auto doc = QJsonDocument::fromJson(p->readAllStandardOutput());
@@ -83,12 +86,11 @@ void SnapTransaction::finishTransaction()
             });
         }   return;
         default:
+            setStatus(DoneWithErrorStatus);
             qDebug() << "snap error" << m_request << m_request->error() << m_request->errorString();
             Q_EMIT passiveMessage(m_request->errorString());
             break;
     }
-
-    setStatus(CommittingStatus);
 }
 
 void SnapTransaction::proceed()

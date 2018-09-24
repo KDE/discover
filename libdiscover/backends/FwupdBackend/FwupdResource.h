@@ -59,7 +59,7 @@ public:
     void fetchChangelog() override;
     QUrl url() const override;
     QString executeLabel() const override;
-    
+
     void setState(State state);
     void setSize(int size) { m_size = size; }
     void setAddons(const AddonList& addons);
@@ -75,11 +75,11 @@ public:
     void setIconName(const QString &iconName){ m_iconName = iconName;}
     void setReleaseDate(const QDate &date){ m_releaseDate = date;}
     virtual QStringList allResourceNames() const;
-    
+
     void setIsDeviceLocked(bool status){ isDeviceLocked = status;}
     void setDeviceID(const QString &deviceID){ m_deviceID = deviceID;}
     void setUpdateURI(const QString &updateURI){m_updateURI = updateURI;}
-    
+
     void setAddonInstalled(const QString& addon, bool installed);
     QString sourceIcon() const override { return m_iconName; }
     QDate releaseDate() const override { return m_releaseDate; }
@@ -90,19 +90,18 @@ public:
     QString m_summary;
     QString m_description;
     QString m_version;
-    QString m_updateVersion;
     QString m_vendor;
     QStringList m_categories;
     QString m_license;
     QDate m_releaseDate;
-    
+
     AbstractResource::State m_state;
     QUrl m_homepage;
     QString m_iconName;
     QList<PackageState> m_addons;
     bool m_isTechnical;
     int m_size;
-    
+
     QString m_deviceID;
     QString m_updateURI;
     QString m_file;
@@ -113,7 +112,7 @@ public:
     bool isDeviceRemoval = false; //True if device is Removal
     bool needsBootLoader = false; //True if BootLoader Required
     QString guidString;
-    
+
 
     QVector<FwupdResource*> m_releases; // A list of all references to releases of a device.
 };
