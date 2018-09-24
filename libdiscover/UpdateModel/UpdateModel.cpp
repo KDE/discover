@@ -50,7 +50,11 @@ UpdateModel::UpdateModel(QObject *parent)
     connect(m_updateSizeTimer, &QTimer::timeout, this, &UpdateModel::updateSizeChanged);
 }
 
-UpdateModel::~UpdateModel() = default;
+UpdateModel::~UpdateModel()
+{
+    qDeleteAll(m_updateItems);
+    m_updateItems.clear();
+}
 
 QHash<int,QByteArray> UpdateModel::roleNames() const
 {

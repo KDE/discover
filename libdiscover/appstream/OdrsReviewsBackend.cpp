@@ -304,6 +304,7 @@ void OdrsReviewsBackend::parseRatings()
     if (ratingsDocument.open(QIODevice::ReadOnly)) {
         QJsonDocument jsonDocument = QJsonDocument::fromJson(ratingsDocument.readAll());
         QJsonObject jsonObject = jsonDocument.object();
+        m_ratings.reserve(jsonObject.size());
         for (auto it = jsonObject.begin(); it != jsonObject.end(); it++) {
             QJsonObject appJsonObject = it.value().toObject();
 
@@ -316,6 +317,7 @@ void OdrsReviewsBackend::parseRatings()
                                       { QStringLiteral("star5"), appJsonObject.value(QLatin1String("star5")).toInt() } };
 
             Rating *rating = new Rating(it.key(), ratingCount, ratingMap);
+            rating->setParent(this);
             m_ratings.insert(it.key(), rating);
         }
         ratingsDocument.close();

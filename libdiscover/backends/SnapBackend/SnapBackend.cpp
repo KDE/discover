@@ -46,7 +46,7 @@ DISCOVER_BACKEND_PLUGIN(SnapBackend)
 class SnapSourcesBackend : public AbstractSourcesBackend
 {
 public:
-    explicit SnapSourcesBackend(AbstractResourcesBackend * parent) : AbstractSourcesBackend(parent), m_model(new QStandardItemModel) {
+    explicit SnapSourcesBackend(AbstractResourcesBackend * parent) : AbstractSourcesBackend(parent), m_model(new QStandardItemModel(this)) {
         m_model->appendRow(new QStandardItem(i18n("Snap")));
     }
 
