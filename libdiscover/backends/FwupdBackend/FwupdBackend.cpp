@@ -659,17 +659,19 @@ AbstractReviewsBackend* FwupdBackend::reviewsBackend() const
 
 Transaction* FwupdBackend::installApplication(AbstractResource* app, const AddonList& addons)
 {
-    return new FwupdTransaction(qobject_cast<FwupdResource*>(app), this, addons, Transaction::InstallRole);
+    Q_ASSERT(addons.isEmpty());
+    return installApplication(app);
 }
 
 Transaction* FwupdBackend::installApplication(AbstractResource* app)
 {
-	return new FwupdTransaction(qobject_cast<FwupdResource*>(app), this, Transaction::InstallRole);
+	return new FwupdTransaction(qobject_cast<FwupdResource*>(app), this);
 }
 
 Transaction* FwupdBackend::removeApplication(AbstractResource* app)
 {
-	return new FwupdTransaction(qobject_cast<FwupdResource*>(app), this, Transaction::RemoveRole);
+    qWarning() << "should not have reached here, it's not possible to uninstall a firmware";
+    return nullptr;
 }
 
 void FwupdBackend::checkForUpdates()

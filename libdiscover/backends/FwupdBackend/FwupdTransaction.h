@@ -32,8 +32,8 @@ class FwupdTransaction : public Transaction
 {
     Q_OBJECT
     public:
-        FwupdTransaction(FwupdResource* app, FwupdBackend* backend, Role role);
-        FwupdTransaction(FwupdResource* app, FwupdBackend* backend, const AddonList& list, Role role);
+        FwupdTransaction(FwupdResource* app, FwupdBackend* backend);
+        FwupdTransaction(FwupdResource* app, FwupdBackend* backend, const AddonList& list);
         ~FwupdTransaction();
         void cancel() override;
         void proceed() override;
@@ -45,7 +45,6 @@ class FwupdTransaction : public Transaction
 
     private:
         void install();
-        void remove();
 
         FwupdResource* const m_app;
         FwupdBackend* const m_backend;

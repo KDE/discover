@@ -23,27 +23,15 @@
 
 #include <QTimer>
 
-FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, Role role)
-    : FwupdTransaction(app, backend,{}, role)
-{
-}
-
-FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, const AddonList& addons, Transaction::Role role)
-    : Transaction(app->backend(), app, role, addons)
+FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend)
+    : Transaction(backend, app, Transaction::InstallRole, {})
     , m_app(app)
     , m_backend(backend)
 {
     setCancellable(true);
     setStatus(QueuedStatus);
 
-    if(role == InstallRole)
-    {
-        QTimer::singleShot(0, this, &FwupdTransaction::install);
-    }
-    else if(role == RemoveRole)
-    {
-        QTimer::singleShot(0, this, &FwupdTransaction::remove);
-    }
+    QTimer::singleShot(0, this, &FwupdTransaction::install);
 }
 
 FwupdTransaction::~FwupdTransaction() = default;
@@ -121,13 +109,6 @@ void FwupdTransaction::fwupdInstall()
         setStatus(DoneWithErrorStatus);
     } else
         finishTransaction();
-}
-
-void FwupdTransaction::remove()
-{
-    qWarning() << "something horrible has happened";
-    m_app->setState(AbstractResource::State::None);
-    setStatus(DoneWithErrorStatus);
 }
 
 void FwupdTransaction::updateProgress()
