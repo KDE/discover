@@ -113,7 +113,6 @@ public:
     bool needsBootLoader = false; //True if BootLoader Required
     QString guidString;
 
-
     QVector<FwupdResource*> m_releases; // A list of all references to releases of a device.
 };
 
