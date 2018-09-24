@@ -34,9 +34,9 @@ FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, co
     , m_backend(backend)
 {
     setCancellable(true);
+    setStatus(QueuedStatus);
     if(role == InstallRole)
     {
-        setStatus(QueuedStatus);
         if(!check())
             qWarning() << "Fwupd Error: Error In Install!";
     }
@@ -94,25 +94,23 @@ bool FwupdTransaction::install()
         const QUrl uri(m_app->m_updateURI);
         setStatus(DownloadingStatus);
         QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-        connect(manager, &QNetworkAccessManager::finished, this, [this](QNetworkReply* reply){
+        auto reply = manager->get(QNetworkRequest(uri));
+        QFile* file = new QFile(m_app->m_file);
+
+        connect(reply, &QNetworkReply::finished, this, [this, file, reply](){
+            file->close();
+            file->deleteLater();
+
             if(reply->error() != QNetworkReply::NoError) {
                 qWarning() << "Fwupd Error: Could not download" << reply->url() << reply->errorString();
-                return;
+                file->remove();
+            } else {
+                fwupdInstall();
             }
-
-            QFile file(m_app->m_file);
-            if(file.open(QIODevice::WriteOnly))
-            {
-                file.write(reply->readAll());
-            }
-            else
-            {
-                qWarning() << "Fwupd Error: Cannot write file" << m_app->m_file;
-            }
-
-            fwupdInstall();
         });
-        manager->get(QNetworkRequest(uri));
+        connect(reply, &QNetworkReply::readyRead, this, [file, reply](){
+            file->write(reply->readAll());
+        });
     }
     else
     {
