@@ -540,40 +540,9 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
 
 void FwupdBackend::handleError(GError **perror)
 {
-    GError *error = perror != nullptr ? *perror : nullptr;
-
-    if(!error)
-        return;
-    switch(error->code)
-    {
-        case FWUPD_ERROR_ALREADY_PENDING:
-            qWarning() << "Fwupd Error: FWUPD_ERROR_ALREADY_PENDING";
-            Q_EMIT passiveMessage(i18n("FWUPD ERROR ALREADY PENDING!"));
-            break;
-        case FWUPD_ERROR_INVALID_FILE:
-            qWarning() << "Fwupd Error: FWUPD_ERROR_INVALID_FILE";
-            Q_EMIT passiveMessage(i18n("FWUPD ERROR INVALID FILE"));
-            break;
-        case FWUPD_ERROR_NOT_SUPPORTED:
-            qWarning() << "Fwupd Error: FWUPD_ERROR_NOT_SUPPORTED";
-            Q_EMIT passiveMessage(i18n("FWUPD ERROR NOT SUPPORTED"));
-            break;
-        case FWUPD_ERROR_AUTH_FAILED:
-            qWarning() << "Fwupd Error: FWUPD_ERROR_AUTH_FAILED";
-            Q_EMIT passiveMessage(i18n("FWUPD ERROR AUTH FAILED"));
-            break;
-        case FWUPD_ERROR_SIGNATURE_INVALID:
-            qWarning() << "Fwupd Error: FWUPD_ERROR_SIGNATURE_INVALID";
-            Q_EMIT passiveMessage(i18n("FWUPD ERROR SIGNATURE INVALID"));
-            break;
-        case FWUPD_ERROR_AC_POWER_REQUIRED:
-            qWarning() << "Fwupd Error: FWUPD_ERROR_AC_POWER_REQUIRED";
-            Q_EMIT passiveMessage(i18n("FWUPD ERROR AC POWER REQUIRED"));
-           break;
-        default:
-            qWarning() << "Fwupd Error: Unknown Error " << error->code;
-            break;
-    }
+    //TODO: localise the error message
+    Q_EMIT passiveMessage(QString::fromUtf8((*perror)->message));
+    qWarning() << "Fwupd Error" << (*perror)->code << (*perror)->message;
 }
 
 QString FwupdBackend::cacheFile(const QString &kind,const QFileInfo &resource)
