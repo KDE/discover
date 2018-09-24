@@ -168,7 +168,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         removedResources.subtract(kVectorToSet(m_apps));
 
         if (!packagesToRemove.isEmpty() || !removedResources.isEmpty()) {
-            QString msg = QStringLiteral("<ul><li>") + PackageKitResource::joinPackages(packagesToRemove, QStringLiteral("</li><li>"));
+            QString msg = QStringLiteral("<ul><li>") + PackageKitResource::joinPackages(packagesToRemove, QStringLiteral("</li><li>"), {});
             if (!removedResources.isEmpty()) {
                 const QStringList removedResourcesStr = kTransform<QStringList>(removedResources, [](AbstractResource* a) { return a->name(); });
                 msg += QLatin1Char('\n');

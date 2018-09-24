@@ -296,6 +296,7 @@ void DiscoverObject::integrateObject(QObject* object)
     object->installEventFilter(this);
     connect(object, &QObject::destroyed, qGuiApp, &QCoreApplication::quit);
 
+    object->setParent(m_engine);
     connect(qGuiApp, &QGuiApplication::commitDataRequest, this, [this](QSessionManager &sessionManager) {
         if (ResourcesModel::global()->isBusy()) {
             Q_EMIT preventedClose();

@@ -168,7 +168,11 @@ void AppPackageKitResource::fetchScreenshots()
 
 QStringList AppPackageKitResource::allPackageNames() const
 {
-    return m_appdata.packageNames();
+    auto ret = m_appdata.packageNames();
+    if (ret.isEmpty()) {
+        ret = QStringList{ PackageKit::Daemon::packageName(availablePackageId()) };
+    }
+    return ret;
 }
 
 QList<PackageState> AppPackageKitResource::addonsInformation()

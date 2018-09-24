@@ -216,11 +216,15 @@ static void addIfNotEmpty(const QString& title, const QString& content, QString&
         where += QStringLiteral("<p><b>") + title + QStringLiteral("</b>&nbsp;") + QString(content).replace(QStringLiteral("\n"), QStringLiteral("<br />")) + QStringLiteral("</p>");
 }
 
-QString PackageKitResource::joinPackages(const QStringList& pkgids, const QString &_sep)
+QString PackageKitResource::joinPackages(const QStringList& pkgids, const QString &_sep, const QString &shadowPackage)
 {
     QStringList ret;
     foreach(const QString& pkgid, pkgids) {
-        ret += PackageKit::Daemon::packageVersion(pkgid);
+        const auto pkgname = PackageKit::Daemon::packageName(pkgid);
+        if (pkgname == shadowPackage)
+            ret += PackageKit::Daemon::packageVersion(pkgid);
+        else
+            ret += i18nc("package-name (version)", "%1 (%2)", pkgname, PackageKit::Daemon::packageVersion(pkgid));
     }
     const QString sep = _sep.isEmpty() ? i18nc("comma separating package names", ", ") : _sep;
     return ret.join(sep);
@@ -234,13 +238,15 @@ static QStringList urlToLinks(const QStringList& urls)
     return ret;
 }
 
-void PackageKitResource::updateDetail(const QString& /*packageID*/, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
+void PackageKitResource::updateDetail(const QString& packageID, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
                                       const QStringList& /*bugzillaUrls*/, const QStringList& /*cveUrls*/, PackageKit::Transaction::Restart restart, const QString& updateText,
                                       const QString& /*changelog*/, PackageKit::Transaction::UpdateState state, const QDateTime& /*issued*/, const QDateTime& /*updated*/)
 {
+    const auto name = PackageKit::Daemon::packageName(packageID);
+
     QString info;
-    addIfNotEmpty(i18n("Current Version:"), joinPackages(updates), info);
-    addIfNotEmpty(i18n("Obsoletes:"), joinPackages(obsoletes), info);
+    addIfNotEmpty(i18n("Current Version:"), joinPackages(updates, {}, name), info);
+    addIfNotEmpty(i18n("Obsoletes:"), joinPackages(obsoletes, {}, name), info);
     addIfNotEmpty(i18n("New Version:"), updateText, info);
     addIfNotEmpty(i18n("Update State:"), PackageKitMessages::updateStateMessage(state), info);
     addIfNotEmpty(i18n("Restart:"), PackageKitMessages::restartMessage(restart), info);
