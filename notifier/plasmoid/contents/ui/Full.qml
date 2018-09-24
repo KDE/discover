@@ -26,14 +26,15 @@ import org.kde.discovernotifier 1.0
 Item {
 
     PlasmaExtras.Heading {
-        anchors.top: parent.top
+        width: parent.width
         level: 3
         wrapMode: Text.WordWrap
         text: DiscoverNotifier.message
     }
 
     ColumnLayout {
-        anchors.centerIn: parent
+        anchors.verticalCenter: parent.verticalCenter
+        width: parent.width
         spacing: units.smallSpacing * 2
 
         Label {
