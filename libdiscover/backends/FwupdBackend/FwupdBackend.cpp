@@ -252,10 +252,8 @@ void FwupdBackend::addUpdates()
 
 
         g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades(client, fwupd_device_get_id(device), nullptr, &error2);
-
-        if (rels)
-        {
-            fwupd_device_add_release(device,(FwupdRelease *)g_ptr_array_index(rels, 0));
+        if (rels) {
+            fwupd_device_add_release(device, (FwupdRelease *)g_ptr_array_index(rels, 0));
             auto res = createApp(device);
             if (!res)
             {
@@ -360,7 +358,7 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
     }
 
     /* Checking for firmware in the cache? */
-    const QString filename_cache = cacheFile(QStringLiteral("fwupd"), QFileInfo(update_uri.path()));
+    const QString filename_cache = cacheFile(QStringLiteral("fwupd"), QFileInfo(update_uri.path()).baseName());
     if (filename_cache.isEmpty())
         return nullptr;
 
@@ -473,7 +471,7 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
     }
 
     QString cacheId = QStringLiteral("fwupd/remotes.d/%1").arg(QString::fromUtf8(fwupd_remote_get_id(remote)));
-    QFileInfo basenameSig = QFileInfo(QString::fromUtf8(g_path_get_basename(fwupd_remote_get_filename_cache_sig(remote))));
+    const auto basenameSig = QString::fromUtf8(g_path_get_basename(fwupd_remote_get_filename_cache_sig(remote)));
     const QString filenameSig = cacheFile(cacheId, basenameSig);
 
     if (filenameSig.isEmpty())
@@ -512,7 +510,7 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
     }
     QFile::remove(filenameSig_);
 
-    QFileInfo basename = QFileInfo(QString::fromUtf8(g_path_get_basename(fwupd_remote_get_filename_cache(remote))));
+    const auto basename = QString::fromUtf8(g_path_get_basename(fwupd_remote_get_filename_cache(remote)));
     const QString filename = cacheFile(cacheId, basename);
 
     if (filename.isEmpty())
@@ -541,9 +539,8 @@ void FwupdBackend::handleError(GError **perror)
     qWarning() << "Fwupd Error" << (*perror)->code << (*perror)->message;
 }
 
-QString FwupdBackend::cacheFile(const QString &kind,const QFileInfo &resource)
+QString FwupdBackend::cacheFile(const QString &kind, const QString &basename)
 {
-    const QString basename = resource.fileName();
     const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
     const QString cacheDirFile = cacheDir.filePath(kind);
 

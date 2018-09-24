@@ -80,7 +80,7 @@ public:
     bool downloadFile(const QUrl &uri, const QString &filename);
     void refreshRemotes(uint cacheAge);
     void refreshRemote(FwupdRemote *remote, uint cacheAge);
-    QString cacheFile(const QString &kind, const QFileInfo &resource);
+    QString cacheFile(const QString &kind, const QString &baseName);
     FwupdResource * createDevice(FwupdDevice *device);
     FwupdResource * createRelease(FwupdDevice *device);
     FwupdResource * createApp(FwupdDevice *device);
