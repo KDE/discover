@@ -35,9 +35,6 @@ class FwupdTransaction : public Transaction
         FwupdTransaction(FwupdResource* app, FwupdBackend* backend, Role role);
         FwupdTransaction(FwupdResource* app, FwupdBackend* backend, const AddonList& list, Role role);
         ~FwupdTransaction();
-        bool check();
-        bool install();
-        bool remove();
         void cancel() override;
         void proceed() override;
 
@@ -47,8 +44,11 @@ class FwupdTransaction : public Transaction
         void fwupdInstall();
 
     private:
-        FwupdResource* m_app;
-        FwupdBackend* m_backend;
+        void install();
+        void remove();
+
+        FwupdResource* const m_app;
+        FwupdBackend* const m_backend;
 };
 
 #endif // FWUPDTRANSACTION_H

@@ -35,61 +35,42 @@ FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, co
 {
     setCancellable(true);
     setStatus(QueuedStatus);
+
     if(role == InstallRole)
     {
-        if(!check())
-            qWarning() << "Fwupd Error: Error In Install!";
+        QTimer::singleShot(0, this, &FwupdTransaction::install);
     }
     else if(role == RemoveRole)
     {
-        if(!remove())
-           qWarning() << "Fwupd Error: Error in Remove!";
+        QTimer::singleShot(0, this, &FwupdTransaction::remove);
     }
 }
 
-FwupdTransaction::~FwupdTransaction()
-{
+FwupdTransaction::~FwupdTransaction() = default;
 
-}
-
-bool FwupdTransaction::check()
+void FwupdTransaction::install()
 {
     g_autoptr(GError) error = nullptr;
 
     if(m_app->isDeviceLocked)
     {
         QString device_id = m_app->m_deviceID;
-        if(device_id.isNull())
-        {
-            qWarning("Fwupd Error: No Device ID set, cannot unlock device ");
-            return false;
-        }
-        if(!fwupd_client_unlock(m_backend->client, device_id.toUtf8().constData(),nullptr, &error))
-        {
+        if(device_id.isNull()) {
+            qWarning() << "Fwupd Error: No Device ID set, cannot unlock device " << this;
+        } else if(!fwupd_client_unlock(m_backend->client, device_id.toUtf8().constData(),nullptr, &error)) {
             m_backend->handleError(&error);
-            return false;
         }
-        return true;
-     }
-    if(!install())
-    {
-        qWarning("Fwupd Error: Cannot Install Application");
-        return false;
-    }
-    return true;
-
-}
-
-bool FwupdTransaction::install()
-{
-    QString localFile = m_app->m_file;
-    if(localFile.isEmpty())
-    {
-        qWarning("Fwupd Error: No Local File Set For this Resource");
-        return false;
+        setStatus(DoneWithErrorStatus);
+        return;
     }
 
-    if(!(QFileInfo::exists(localFile)))
+    Q_ASSERT(!m_app->m_file.isEmpty());
+    if (m_app->m_file.isEmpty()) {
+        setStatus(DoneWithErrorStatus);
+        return;
+    }
+
+    if(!QFileInfo::exists(m_app->m_file))
     {
         const QUrl uri(m_app->m_updateURI);
         setStatus(DownloadingStatus);
@@ -104,6 +85,7 @@ bool FwupdTransaction::install()
             if(reply->error() != QNetworkReply::NoError) {
                 qWarning() << "Fwupd Error: Could not download" << reply->url() << reply->errorString();
                 file->remove();
+                setStatus(DoneWithErrorStatus);
             } else {
                 fwupdInstall();
             }
@@ -116,7 +98,6 @@ bool FwupdTransaction::install()
     {
         fwupdInstall();
     }
-    return true;
 }
 
 void FwupdTransaction::fwupdInstall()
@@ -142,10 +123,11 @@ void FwupdTransaction::fwupdInstall()
         finishTransaction();
 }
 
-bool FwupdTransaction::remove()
+void FwupdTransaction::remove()
 {
+    qWarning() << "something horrible has happened";
     m_app->setState(AbstractResource::State::None);
-    return true;
+    setStatus(DoneWithErrorStatus);
 }
 
 void FwupdTransaction::updateProgress()
