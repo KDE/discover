@@ -50,15 +50,15 @@ FwupdBackend::FwupdBackend(QObject* parent)
     SourcesModel::global()->addSourcesBackend(new FwupdSourcesBackend(this));
 }
 
-QMap<GChecksumType, QCryptographicHash::Algorithm> FwupdBackend::initHashMap()
+QMap<GChecksumType, QCryptographicHash::Algorithm> FwupdBackend::gchecksumToQChryptographicHash()
 {
-    QMap<GChecksumType,QCryptographicHash::Algorithm> map;
-
-    map.insert(G_CHECKSUM_SHA1,QCryptographicHash::Sha1);
-    map.insert(G_CHECKSUM_SHA256,QCryptographicHash::Sha256);
-    map.insert(G_CHECKSUM_SHA512,QCryptographicHash::Sha512);
-    map.insert(G_CHECKSUM_MD5,QCryptographicHash::Md5);
-
+    static QMap<GChecksumType,QCryptographicHash::Algorithm> map;
+    if (map.isEmpty()) {
+        map.insert(G_CHECKSUM_SHA1,QCryptographicHash::Sha1);
+        map.insert(G_CHECKSUM_SHA256,QCryptographicHash::Sha256);
+        map.insert(G_CHECKSUM_SHA512,QCryptographicHash::Sha512);
+        map.insert(G_CHECKSUM_MD5,QCryptographicHash::Md5);
+    }
     return map;
 }
 
@@ -444,9 +444,8 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
         return;
     }
 
-    QMap<GChecksumType,QCryptographicHash::Algorithm> map = initHashMap();
-    QCryptographicHash::Algorithm hashAlgorithm = map[(fwupd_checksum_guess_kind(fwupd_remote_get_checksum(remote)))];
-    QByteArray hash = getChecksum(filenameSig_,hashAlgorithm);
+    const QCryptographicHash::Algorithm hashAlgorithm = gchecksumToQChryptographicHash()[(fwupd_checksum_guess_kind(fwupd_remote_get_checksum(remote)))];
+    const QByteArray hash = getChecksum(filenameSig_,hashAlgorithm);
 
     if (fwupd_remote_get_checksum(remote) == hash)
     {
