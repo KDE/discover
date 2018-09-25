@@ -33,6 +33,7 @@ FwupdResource::FwupdResource(QString name, bool isTechnical, AbstractResourcesBa
     , m_state(State::Broken)
     , m_isTechnical(isTechnical)
 {
+    setObjectName(m_name);
 }
 
 QList<PackageState> FwupdResource::addonsInformation()
