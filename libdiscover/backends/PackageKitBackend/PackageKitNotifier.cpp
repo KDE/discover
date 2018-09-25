@@ -59,16 +59,17 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
 
     const QString aptconfig = QStandardPaths::findExecutable(QStringLiteral("apt-config"));
     if (!aptconfig.isEmpty()) {
-        auto process = checkAptVariable(aptconfig, QLatin1String("Apt::Periodic::Update-Package-Lists"), [regularCheck](const QStringRef& value) {
+        checkAptVariable(aptconfig, QLatin1String("Apt::Periodic::Update-Package-Lists"), [regularCheck](const QStringRef& value) {
             bool ok;
             int time = value.toInt(&ok);
             if (ok && time > 0) {
                 regularCheck->setInterval(time * 60 * 60 * 1000);
-                regularCheck->start();
-            } else
+            } else {
+                regularCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
                 qWarning() << "couldn't understand value for timer:" << value;
+            }
+            regularCheck->start();
         });
-        connect(process, static_cast<void(QProcess::*)(int)>(&QProcess::finished), regularCheck, static_cast<void(QTimer::*)()>(&QTimer::start));
     } else {
         regularCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
         regularCheck->start();
@@ -262,8 +263,10 @@ QProcess* PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
             const auto match = rx.match(line);
             if (match.hasMatch()) {
                 func(match.capturedRef(1));
+                return;
             }
         }
+        func({});
     });
     connect(process, static_cast<void(QProcess::*)(int)>(&QProcess::finished), process, &QObject::deleteLater);
     return process;
