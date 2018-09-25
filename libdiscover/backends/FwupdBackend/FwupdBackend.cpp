@@ -37,17 +37,13 @@ DISCOVER_BACKEND_PLUGIN(FwupdBackend)
 
 FwupdBackend::FwupdBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
+    , client(fwupd_client_new())
     , m_updater(new StandardBackendUpdater(this))
-    , m_fetching(true)
 {
-
-    QTimer::singleShot(500, this, &FwupdBackend::toggleFetching);
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FwupdBackend::updatesCountChanged);
 
-    client = fwupd_client_new();
-
-    populate();
     SourcesModel::global()->addSourcesBackend(new FwupdSourcesBackend(this));
+    QTimer::singleShot(0, this, &FwupdBackend::checkForUpdates);
 }
 
 QMap<GChecksumType, QCryptographicHash::Algorithm> FwupdBackend::gchecksumToQChryptographicHash()
@@ -84,7 +80,6 @@ FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
     const QString name = QString::fromUtf8(fwupd_device_get_name(device));
     FwupdResource* res = new FwupdResource(name, true, this);
     res->setId(buildDeviceID(device));
-    res->addCategories(QStringLiteral("Releases"));
     if (fwupd_device_get_icons(device)->len >= 1)
         res->setIconName(QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(device),0)));// Check wether given icon exists or not!
 
@@ -323,11 +318,7 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
     {
         qWarning() << "Fwupd Error: No valid checksum for" << filename_cache;
     }
-    QByteArray checksum = getChecksum(filename_cache, QCryptographicHash::Sha1);
-    if (checksum.isNull() || checksum_tmp.isNull()) {
-        qWarning() << "failed to get checksum from" << filename_cache;
-        return nullptr;
-    }
+    const QByteArray checksum = getChecksum(filename_cache, QCryptographicHash::Sha1);
     if (checksum_tmp != checksum)
     {
         qWarning() << "Fwupd Error: " << filename_cache << " does not match checksum, expected" << checksum_tmp << "got" << checksum;
@@ -410,7 +401,7 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
         }
     }
 
-    QString cacheId = QStringLiteral("fwupd/remotes.d/%1").arg(QString::fromUtf8(fwupd_remote_get_id(remote)));
+    const QString cacheId = QStringLiteral("fwupd/remotes.d/%1").arg(QString::fromUtf8(fwupd_remote_get_id(remote)));
     const auto basenameSig = QString::fromUtf8(g_path_get_basename(fwupd_remote_get_filename_cache_sig(remote)));
     const QString filenameSig = cacheFile(cacheId, basenameSig);
 
@@ -419,35 +410,38 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
 
     /* download the signature first*/
     const QUrl urlSig(QString::fromUtf8(fwupd_remote_get_metadata_uri_sig(remote)));
+    const QString filenameSigTmp(filenameSig + QStringLiteral(".tmp"));
 
+    if (!downloadFile(urlSig, filenameSigTmp)) {
+        qWarning() << "failed to download" << urlSig;
+        return;
+    }
+    Q_ASSERT(QFile::exists(filenameSigTmp));
 
-    const QString filenameSig_(filenameSig + QStringLiteral(".tmp"));
+    const auto checksum = fwupd_remote_get_checksum(remote);
+    const QCryptographicHash::Algorithm hashAlgorithm = gchecksumToQChryptographicHash()[fwupd_checksum_guess_kind(checksum)];
+    const QByteArray hash = getChecksum(filenameSigTmp, hashAlgorithm);
 
-    if (!downloadFile(urlSig, filenameSig))
-    {
-        qDebug() << "Fwupd Info: failed to download" << urlSig;
+    if (QByteArray(checksum) != hash) {
+        qDebug() << "Fwupd Error: signature of remote is wrong" << urlSig << "expected:" << checksum << "got" << hash;
+        QFile::remove(filenameSigTmp);
         return;
     }
 
-    const QCryptographicHash::Algorithm hashAlgorithm = gchecksumToQChryptographicHash()[(fwupd_checksum_guess_kind(fwupd_remote_get_checksum(remote)))];
-    const QByteArray hash = getChecksum(filenameSig_,hashAlgorithm);
-
-    if (fwupd_remote_get_checksum(remote) == hash)
-    {
-        qDebug() << "Fwupd Info: signature of" << urlSig << "is unchanged";
+    const QByteArray oldHash = getChecksum(filenameSig, hashAlgorithm);
+    if (oldHash == hash) {
+        qDebug() << "remote hasn't changed:" << fwupd_remote_get_id(remote);
         return;
     }
+
     QFile::remove(filenameSig);
 
-    /* save to a file */
-    qDebug() << "Fwupd Info: saving new remote signature to:" << filenameSig;
-
-    if (!QFile::rename(filenameSig_, filenameSig)) {
-        QFile::remove(filenameSig_);
-        qWarning() << "Fwupd Error: cannot save remote signature";
+    if (!QFile::rename(filenameSigTmp, filenameSig)) {
+        QFile::remove(filenameSigTmp);
+        qWarning() << "Fwupd Error: cannot save remote signature" << filenameSigTmp << "to" << filenameSig;
         return;
     }
-    QFile::remove(filenameSig_);
+    QFile::remove(filenameSigTmp);
 
     const auto basename = QString::fromUtf8(g_path_get_basename(fwupd_remote_get_filename_cache(remote)));
     const QString filename = cacheFile(cacheId, basename);
@@ -463,7 +457,7 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
         qWarning() << "Fwupd Error: cannot download file : " << filename;
         return;
     }
-    /* Sending Metadata to fwupd Daemon*/
+
     g_autoptr(GError) error = nullptr;
     if (!fwupd_client_update_metadata(client, fwupd_remote_get_id(remote), filename.toUtf8().constData(), filenameSig.toUtf8().constData(), nullptr, &error))
     {
@@ -493,12 +487,19 @@ QString FwupdBackend::cacheFile(const QString &kind, const QString &basename)
     return cacheDir.filePath(kind + QLatin1Char('/') + basename);
 }
 
-void FwupdBackend::toggleFetching()
+void FwupdBackend::refresh()
 {
-    m_fetching = !m_fetching;
-    refreshRemotes(30*24*60*60); //  Nicer Way to put time? currently 30 days in seconds
+    if (m_fetching)
+        return;
+
+    m_fetching = true;
+    emit fetchingChanged();
+
+    refreshRemotes(24*60*60); // Check for updates every day
     addUpdates();
     addHistoricalUpdates();
+
+    m_fetching = false;
     emit fetchingChanged();
 }
 
@@ -567,8 +568,7 @@ void FwupdBackend::checkForUpdates()
         return;
 
     populate();
-    toggleFetching();
-    QTimer::singleShot(500, this, &FwupdBackend::toggleFetching);
+    refresh();
 }
 
 AbstractResource * FwupdBackend::resourceForFile(const QUrl& path)

@@ -94,11 +94,11 @@ public:
     void handleError(GError **perror);
     QSet<AbstractResource*> getAllUpdates();
     QString getAppName(QString ID);
-    QMap<GChecksumType,QCryptographicHash::Algorithm> initHashMap();
+    QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
 
 
 public Q_SLOTS:
-    void toggleFetching();
+    void refresh();
 
 private:
     void populate();
