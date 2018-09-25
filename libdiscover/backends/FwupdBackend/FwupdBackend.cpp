@@ -115,23 +115,14 @@ FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
 }
 void FwupdBackend::setReleaseDetails(FwupdResource *res, FwupdRelease *release)
 {
-    res->addCategories(QLatin1String("Releases"));
-    if (fwupd_release_get_summary(release))
-        res->setSummary(QString::fromUtf8(fwupd_release_get_summary(release)));
-    if (fwupd_release_get_vendor(release))
-        res->setVendor(QString::fromUtf8(fwupd_release_get_vendor(release)));
-    if (fwupd_release_get_size(release))
-        res->setSize(fwupd_release_get_size(release));
-    if (fwupd_release_get_version(release))
-        res->setVersion(QString::fromUtf8(fwupd_release_get_version(release)));
-    if (fwupd_release_get_description(release))
-        res->setDescription(QString::fromUtf8((fwupd_release_get_description(release))));
-    if (fwupd_release_get_homepage(release))
-        res->setHomePage(QUrl(QString::fromUtf8(fwupd_release_get_homepage(release))));
-    if (fwupd_release_get_license(release))
-        res->setLicense(QString::fromUtf8(fwupd_release_get_license(release)));
-    if (fwupd_release_get_uri(release))
-        res->m_updateURI = QString::fromUtf8(fwupd_release_get_uri(release));
+    res->setSummary(QString::fromUtf8(fwupd_release_get_summary(release)));
+    res->setVendor(QString::fromUtf8(fwupd_release_get_vendor(release)));
+    res->setSize(fwupd_release_get_size(release));
+    res->setVersion(QString::fromUtf8(fwupd_release_get_version(release)));
+    res->setDescription(QString::fromUtf8((fwupd_release_get_description(release))));
+    res->setHomePage(QUrl(QString::fromUtf8(fwupd_release_get_homepage(release))));
+    res->setLicense(QString::fromUtf8(fwupd_release_get_license(release)));
+    res->m_updateURI = QString::fromUtf8(fwupd_release_get_uri(release));
 }
 void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
 {
@@ -160,16 +151,11 @@ void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
             vendorDesc = vendorName + QLatin1Char(' ') + vendorDesc;
         res->setName(vendorDesc);
      }
-    if (fwupd_device_get_summary(dev))
-        res->setSummary(QString::fromUtf8(fwupd_device_get_summary(dev)));
-    if (fwupd_device_get_vendor(dev))
-        res->setVendor(QString::fromUtf8(fwupd_device_get_vendor(dev)));
-    if (fwupd_device_get_created(dev))
-        res->setReleaseDate((QDateTime::fromSecsSinceEpoch(fwupd_device_get_created(dev))).date());
-    if (fwupd_device_get_version(dev))
-        res->setVersion(QString::fromUtf8(fwupd_device_get_version(dev)));
-    if (fwupd_device_get_description(dev))
-        res->setDescription(QString::fromUtf8((fwupd_device_get_description(dev))));
+    res->setSummary(QString::fromUtf8(fwupd_device_get_summary(dev)));
+    res->setVendor(QString::fromUtf8(fwupd_device_get_vendor(dev)));
+    res->setReleaseDate((QDateTime::fromSecsSinceEpoch(fwupd_device_get_created(dev))).date());
+    res->setVersion(QString::fromUtf8(fwupd_device_get_version(dev)));
+    res->setDescription(QString::fromUtf8((fwupd_device_get_description(dev))));
     res->setIconName(QString::fromUtf8("device-notifier"));
 }
 
@@ -186,7 +172,6 @@ void FwupdBackend::populate()
         }
     }
 }
-
 
 void FwupdBackend::addUpdates()
 {
