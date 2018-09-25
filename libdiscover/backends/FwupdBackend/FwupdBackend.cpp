@@ -76,7 +76,6 @@ QString FwupdBackend::buildDeviceID(FwupdDevice* device)
 
 void FwupdBackend::addResourceToList(FwupdResource* res)
 {
-    res->setState(FwupdResource::Upgradeable);
     m_resources.insert(res->packageName().toLower(), res);
 }
 
@@ -354,6 +353,8 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
 
     /* link file to application and return its reference */
     app->m_file = filename_cache;
+    if (!app->needsReboot)
+        app->setState(AbstractResource::Upgradeable);
     return app;
 }
 
