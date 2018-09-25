@@ -31,6 +31,8 @@ FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend)
     setCancellable(true);
     setStatus(QueuedStatus);
 
+    Q_ASSERT(!m_app->m_file.isEmpty());
+    Q_ASSERT(!m_app->m_deviceID.isEmpty());
     QTimer::singleShot(0, this, &FwupdTransaction::install);
 }
 
@@ -44,16 +46,10 @@ void FwupdTransaction::install()
     {
         QString device_id = m_app->m_deviceID;
         if(device_id.isNull()) {
-            qWarning() << "Fwupd Error: No Device ID set, cannot unlock device " << this;
+            qWarning() << "Fwupd Error: No Device ID set, cannot unlock device " << this << m_app->name();
         } else if(!fwupd_client_unlock(m_backend->client, device_id.toUtf8().constData(),nullptr, &error)) {
             m_backend->handleError(&error);
         }
-        setStatus(DoneWithErrorStatus);
-        return;
-    }
-
-    Q_ASSERT(!m_app->m_file.isEmpty());
-    if (m_app->m_file.isEmpty()) {
         setStatus(DoneWithErrorStatus);
         return;
     }
@@ -93,17 +89,11 @@ void FwupdTransaction::fwupdInstall()
     FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;
     g_autoptr(GError) error = nullptr;
 
-    QString localFile = m_app->m_file;
-    QString deviceId = m_app->m_deviceID;
-    /* limit to single device? */
-    if(deviceId.isNull())
-        deviceId = QStringLiteral(FWUPD_DEVICE_ID_ANY);
-
     /* only offline supported */
     if(m_app->isOnlyOffline)
         install_flags = static_cast<FwupdInstallFlags>(install_flags | FWUPD_INSTALL_FLAG_OFFLINE);
 
-    if(!fwupd_client_install(m_backend->client, deviceId.toUtf8().constData(), localFile.toUtf8().constData(), install_flags, nullptr, &error))
+    if(!fwupd_client_install(m_backend->client, m_app->m_deviceID.toUtf8().constData(), m_app->m_file.toUtf8().constData(), install_flags, nullptr, &error))
     {
         m_backend->handleError(&error);
         setStatus(DoneWithErrorStatus);

@@ -104,7 +104,7 @@ private Q_SLOTS:
     void saveFile(QNetworkReply *reply);
 
 private:
-    void populate(const QString& name);
+    void populate();
 
     QHash<QString, FwupdResource*> m_resources;
     QMap<QUrl,QString> m_downloadFile;
