@@ -431,6 +431,7 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
     const QByteArray oldHash = getChecksum(filenameSig, hashAlgorithm);
     if (oldHash == hash) {
         qDebug() << "remote hasn't changed:" << fwupd_remote_get_id(remote);
+        QFile::remove(filenameSigTmp);
         return;
     }
 
