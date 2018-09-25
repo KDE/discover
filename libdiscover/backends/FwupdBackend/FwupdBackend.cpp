@@ -191,7 +191,6 @@ void FwupdBackend::populate()
 void FwupdBackend::addUpdates()
 {
     g_autoptr(GError) error = nullptr;
-    g_autoptr(GError) error2 = nullptr;
     g_autoptr(GPtrArray) devices = fwupd_client_get_devices(client, nullptr, &error);
 
     if (!devices)
@@ -224,7 +223,7 @@ void FwupdBackend::addUpdates()
         if (!fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_UPDATABLE))
             continue;
 
-
+        g_autoptr(GError) error2 = nullptr;
         g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades(client, fwupd_device_get_id(device), nullptr, &error2);
         if (rels) {
             fwupd_device_add_release(device, (FwupdRelease *)g_ptr_array_index(rels, 0));
