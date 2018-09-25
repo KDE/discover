@@ -23,102 +23,65 @@
 
 #include <QTimer>
 
-FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, Role role)
-    : FwupdTransaction(app, backend,{}, role)
-{
-}
-
-FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend, const AddonList& addons, Transaction::Role role)
-    : Transaction(app->backend(), app, role, addons)
+FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend)
+    : Transaction(backend, app, Transaction::InstallRole, {})
     , m_app(app)
     , m_backend(backend)
 {
     setCancellable(true);
-    if(role == InstallRole)
-    {
-        setStatus(QueuedStatus);
-        if(!check())
-            qWarning() << "Fwupd Error: Error In Install!";
-    }
-    else if(role == RemoveRole)
-    {
-        if(!remove())
-           qWarning() << "Fwupd Error: Error in Remove!";
-    }
+    setStatus(QueuedStatus);
+
+    Q_ASSERT(!m_app->m_file.isEmpty());
+    Q_ASSERT(!m_app->m_deviceID.isEmpty());
+    QTimer::singleShot(0, this, &FwupdTransaction::install);
 }
 
-FwupdTransaction::~FwupdTransaction()
-{
+FwupdTransaction::~FwupdTransaction() = default;
 
-}
-
-bool FwupdTransaction::check()
+void FwupdTransaction::install()
 {
     g_autoptr(GError) error = nullptr;
 
     if(m_app->isDeviceLocked)
     {
         QString device_id = m_app->m_deviceID;
-        if(device_id.isNull())
-        {
-            qWarning("Fwupd Error: No Device ID set, cannot unlock device ");
-            return false;
-        }
-        if(!fwupd_client_unlock(m_backend->client, device_id.toUtf8().constData(),nullptr, &error))
-        {
+        if(device_id.isNull()) {
+            qWarning() << "Fwupd Error: No Device ID set, cannot unlock device " << this << m_app->name();
+        } else if(!fwupd_client_unlock(m_backend->client, device_id.toUtf8().constData(),nullptr, &error)) {
             m_backend->handleError(&error);
-            return false;
         }
-        return true;
-     }
-    if(!install())
-    {
-        qWarning("Fwupd Error: Cannot Install Application");
-        return false;
-    }
-    return true;
-
-}
-
-bool FwupdTransaction::install()
-{
-    QString localFile = m_app->m_file;
-    if(localFile.isEmpty())
-    {
-        qWarning("Fwupd Error: No Local File Set For this Resource");
-        return false;
+        setStatus(DoneWithErrorStatus);
+        return;
     }
 
-    if(!(QFileInfo::exists(localFile)))
+    if(!QFileInfo::exists(m_app->m_file))
     {
         const QUrl uri(m_app->m_updateURI);
         setStatus(DownloadingStatus);
         QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-        connect(manager, &QNetworkAccessManager::finished, this, [this](QNetworkReply* reply){
+        auto reply = manager->get(QNetworkRequest(uri));
+        QFile* file = new QFile(m_app->m_file);
+
+        connect(reply, &QNetworkReply::finished, this, [this, file, reply](){
+            file->close();
+            file->deleteLater();
+
             if(reply->error() != QNetworkReply::NoError) {
                 qWarning() << "Fwupd Error: Could not download" << reply->url() << reply->errorString();
-                return;
+                file->remove();
+                setStatus(DoneWithErrorStatus);
+            } else {
+                fwupdInstall();
             }
-
-            QFile file(m_app->m_file);
-            if(file.open(QIODevice::WriteOnly))
-            {
-                file.write(reply->readAll());
-            }
-            else
-            {
-                qWarning() << "Fwupd Error: Cannot write file" << m_app->m_file;
-            }
-
-            fwupdInstall();
         });
-        manager->get(QNetworkRequest(uri));
+        connect(reply, &QNetworkReply::readyRead, this, [file, reply](){
+            file->write(reply->readAll());
+        });
     }
     else
     {
         fwupdInstall();
     }
-    return true;
 }
 
 void FwupdTransaction::fwupdInstall()
@@ -126,28 +89,16 @@ void FwupdTransaction::fwupdInstall()
     FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;
     g_autoptr(GError) error = nullptr;
 
-    QString localFile = m_app->m_file;
-    QString deviceId = m_app->m_deviceID;
-    /* limit to single device? */
-    if(deviceId.isNull())
-        deviceId = QStringLiteral(FWUPD_DEVICE_ID_ANY);
-
     /* only offline supported */
     if(m_app->isOnlyOffline)
         install_flags = static_cast<FwupdInstallFlags>(install_flags | FWUPD_INSTALL_FLAG_OFFLINE);
 
-    if(!fwupd_client_install(m_backend->client, deviceId.toUtf8().constData(), localFile.toUtf8().constData(), install_flags, nullptr, &error))
+    if(!fwupd_client_install(m_backend->client, m_app->m_deviceID.toUtf8().constData(), m_app->m_file.toUtf8().constData(), install_flags, nullptr, &error))
     {
         m_backend->handleError(&error);
         setStatus(DoneWithErrorStatus);
     } else
         finishTransaction();
-}
-
-bool FwupdTransaction::remove()
-{
-    m_app->setState(AbstractResource::State::None);
-    return true;
 }
 
 void FwupdTransaction::updateProgress()

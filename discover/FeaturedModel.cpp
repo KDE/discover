@@ -81,7 +81,7 @@ void FeaturedModel::refresh()
 void FeaturedModel::setUris(const QVector<QUrl>& uris)
 {
     auto backend = ResourcesModel::global()->currentApplicationBackend();
-    if (uris == m_uris || !backend || backend->isFetching())
+    if (uris == m_uris || !backend)
         return;
 
     QSet<ResultsStream*> streams;

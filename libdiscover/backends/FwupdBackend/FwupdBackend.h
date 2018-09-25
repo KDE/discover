@@ -78,13 +78,13 @@ public:
     FwupdClient *client;
 
     bool downloadFile(const QUrl &uri, const QString &filename);
-    bool refreshRemotes(uint cacheAge);
-    bool refreshRemote(FwupdRemote *remote, uint cacheAge);
-    const QUrl cacheFile(const QString &kind, const QFileInfo &resource);
+    void refreshRemotes(uint cacheAge);
+    void refreshRemote(FwupdRemote *remote, uint cacheAge);
+    QString cacheFile(const QString &kind, const QString &baseName);
     FwupdResource * createDevice(FwupdDevice *device);
     FwupdResource * createRelease(FwupdDevice *device);
     FwupdResource * createApp(FwupdDevice *device);
-    QByteArray getChecksum(const QUrl filename, QCryptographicHash::Algorithm hashAlgorithm);
+    QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
     QString buildDeviceID(FwupdDevice* device);
     void addUpdates();
     void addResourceToList(FwupdResource *res);
@@ -104,7 +104,7 @@ private Q_SLOTS:
     void saveFile(QNetworkReply *reply);
 
 private:
-    void populate(const QString& name);
+    void populate();
 
     QHash<QString, FwupdResource*> m_resources;
     QMap<QUrl,QString> m_downloadFile;
