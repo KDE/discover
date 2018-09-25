@@ -357,30 +357,9 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
     return app;
 }
 
-void FwupdBackend::saveFile(QNetworkReply *reply)
-{
-    QString filename = this->m_downloadFile[reply->url()];
-    if (reply->error() == QNetworkReply::NoError)
-    {
-        QByteArray Data = reply->readAll();
-        QFile file(filename);
-        if (file.open(QIODevice::WriteOnly))
-        {
-            file.write(Data);
-        }
-        else
-        {
-            qWarning() << "Fwupd Error: Cannot Open File to write Data";
-        }
-        file.close();
-        delete reply;
-    }
-}
-
-bool FwupdBackend::downloadFile(const QUrl &uri,const QString &filename)
+bool FwupdBackend::downloadFile(const QUrl &uri, const QString &filename)
 {
     QScopedPointer<QNetworkAccessManager> manager(new QNetworkAccessManager(this));
-    this->m_downloadFile.insert(uri,filename);
     QEventLoop loop;
     QTimer getTimer;
     connect(&getTimer, &QTimer::timeout, &loop, &QEventLoop::quit);
@@ -391,15 +370,18 @@ bool FwupdBackend::downloadFile(const QUrl &uri,const QString &filename)
     if (!reply)
     {
         return false;
-    }
-    else if (QNetworkReply::NoError != reply->error() )
-    {
+    } else if (QNetworkReply::NoError != reply->error() ) {
+        qWarning() << "error fetching" << uri;
         return false;
+    } else if (reply->error() == QNetworkReply::NoError) {
+        QFile file(filename);
+        if (file.open(QIODevice::WriteOnly)) {
+            file.write(reply->readAll());
+        } else {
+            qWarning() << "Fwupd Error: Cannot Open File to write Data" << filename;
+        }
     }
-    else
-    {
-        saveFile(reply);
-    }
+    reply->deleteLater();
     return true;
 }
 

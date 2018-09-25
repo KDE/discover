@@ -100,14 +100,10 @@ public:
 public Q_SLOTS:
     void toggleFetching();
 
-private Q_SLOTS:
-    void saveFile(QNetworkReply *reply);
-
 private:
     void populate();
 
     QHash<QString, FwupdResource*> m_resources;
-    QMap<QUrl,QString> m_downloadFile;
     StandardBackendUpdater* m_updater;
     bool m_fetching;
     int m_startElements;
