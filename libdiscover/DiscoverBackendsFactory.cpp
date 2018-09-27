@@ -90,6 +90,7 @@ QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist, bool allowD
         }
     }
 
+    pluginNames.removeDuplicates(); //will happen when discover is installed twice on the system
     return pluginNames;
 }
 
