@@ -508,7 +508,8 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
 void FwupdBackend::handleError(GError **perror)
 {
     //TODO: localise the error message
-    Q_EMIT passiveMessage(QString::fromUtf8((*perror)->message));
+    if ((*perror)->code != FWUPD_ERROR_NOTHING_TO_DO)
+        Q_EMIT passiveMessage(QString::fromUtf8((*perror)->message));
     qWarning() << "Fwupd Error" << (*perror)->code << (*perror)->message;
 }
 
