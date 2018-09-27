@@ -437,9 +437,11 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
         if (host.isEmpty())
             Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
-            const auto deprecatedHost = deprecatedAppstreamIds.value(url.host()); //try this as fallback
+            const auto deprecatedHost = deprecatedAppstreamIds.value(host); //try this as fallback
             for (auto it = m_packages.packages.constBegin(), itEnd = m_packages.packages.constEnd(); it != itEnd; ++it) {
-                if (it.key().compare(host, Qt::CaseInsensitive) == 0 || it.key().compare(deprecatedHost, Qt::CaseInsensitive) == 0) {
+                if    (it.key().compare(host, Qt::CaseInsensitive) == 0
+                    || it.key().compare(deprecatedHost, Qt::CaseInsensitive) == 0
+                    || (host.endsWith(QLatin1String(".desktop")) && host.compare(it.key()+QLatin1String(".desktop"), Qt::CaseInsensitive) == 0)) {
                     pkg = it.value();
                     break;
                 }
