@@ -105,7 +105,7 @@ private:
 
     QHash<QString, FwupdResource*> m_resources;
     StandardBackendUpdater* m_updater;
-    bool m_fetching;
+    bool m_fetching = false;
     int m_startElements;
     QList<AbstractResource*> m_toUpdate;
 };
