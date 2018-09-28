@@ -100,6 +100,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
             QUrl resourceUrl;
             QString origin;
             bool allBackends = false;
+            bool filterMinimumState = true;
 
             bool isEmpty() const { return !category && state == AbstractResource::Broken && mimetype.isEmpty() && search.isEmpty() && extends.isEmpty() && resourceUrl.isEmpty() && origin.isEmpty(); }
 

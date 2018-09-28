@@ -242,6 +242,7 @@ DiscoverPage {
                 id: back
                 model: ResourcesProxyModel {
                     extending: "org.kde.discover.desktop"
+                    filterMinimumState: false
                 }
                 delegate: Kirigami.BasicListItem {
                     supportsMouseEvents: false
