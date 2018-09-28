@@ -94,22 +94,18 @@ public:
     void handleError(GError **perror);
     QSet<AbstractResource*> getAllUpdates();
     QString getAppName(QString ID);
-    QMap<GChecksumType,QCryptographicHash::Algorithm> initHashMap();
+    QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
 
 
 public Q_SLOTS:
-    void toggleFetching();
-
-private Q_SLOTS:
-    void saveFile(QNetworkReply *reply);
+    void refresh();
 
 private:
     void populate();
 
     QHash<QString, FwupdResource*> m_resources;
-    QMap<QUrl,QString> m_downloadFile;
     StandardBackendUpdater* m_updater;
-    bool m_fetching;
+    bool m_fetching = false;
     int m_startElements;
     QList<AbstractResource*> m_toUpdate;
 };

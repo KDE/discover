@@ -33,7 +33,7 @@ FwupdResource::FwupdResource(QString name, bool isTechnical, AbstractResourcesBa
     , m_state(State::Broken)
     , m_isTechnical(isTechnical)
 {
-
+    setObjectName(m_name);
 }
 
 QList<PackageState> FwupdResource::addonsInformation()
@@ -54,10 +54,6 @@ QStringList FwupdResource::allResourceNames() const
 QStringList FwupdResource::categories()
 {
    return m_categories;
-}
-
-void FwupdResource::addCategories(const QString &category){
-    m_categories.append(category);
 }
 
 QString FwupdResource::comment()

@@ -359,6 +359,20 @@ void ResourcesProxyModel::setExtends(const QString& extends)
     }
 }
 
+void ResourcesProxyModel::setFilterMinimumState(bool filterMinimumState)
+{
+    if (filterMinimumState != m_filters.filterMinimumState) {
+        m_filters.filterMinimumState = filterMinimumState;
+        invalidateFilter();
+        Q_EMIT filterMinimumStateChanged(m_filters.filterMinimumState);
+    }
+}
+
+bool ResourcesProxyModel::filterMinimumState() const
+{
+    return m_filters.filterMinimumState;
+}
+
 QUrl ResourcesProxyModel::resourcesUrl() const
 {
     return m_filters.resourceUrl;

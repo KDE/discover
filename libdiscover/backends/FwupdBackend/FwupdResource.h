@@ -69,7 +69,6 @@ public:
     void setDescription(const QString &description){ m_description = description;}
     void setVersion(const QString &version){ m_version = version;}
     void setVendor(const QString &vendor){ m_vendor = vendor;}
-    void addCategories(const QString &category);
     void setHomePage(const QUrl &homepage){  m_homepage = homepage;}
     void setLicense(const QString &license){ m_license = license;}
     void setIconName(const QString &iconName){ m_iconName = iconName;}
