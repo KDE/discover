@@ -215,7 +215,7 @@ DiscoverPage {
                     checked: modelChecked != Qt.Unchecked
                     enabled: modelChecked !== undefined
                     onClicked: {
-                        sourcesView.model.setData(idx, checkedState, Qt.CheckStateRole)
+                        sourcesView.model.setData(idx, checkState, Qt.CheckStateRole)
                     }
                 }
                 Label {
