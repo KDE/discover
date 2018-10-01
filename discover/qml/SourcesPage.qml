@@ -246,7 +246,6 @@ DiscoverPage {
                 }
                 delegate: Kirigami.BasicListItem {
                     supportsMouseEvents: false
-                    visible: !model.isInstalled
                     label: name
                     icon: model.icon
                     InstallApplicationButton {

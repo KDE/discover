@@ -109,8 +109,9 @@ bool AbstractResourcesBackend::Filters::shouldFilter(AbstractResource* res) cons
         return false;
     }
 
-    if(filterMinimumState ? res->state() < state : res->state() == state)
+    if(filterMinimumState ? (res->state() < state) : (res->state() != state)) {
         return false;
+    }
 
     if(!mimetype.isEmpty() && !res->mimetypes().contains(mimetype)) {
         return false;
