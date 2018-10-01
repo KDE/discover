@@ -88,14 +88,20 @@ PackageKitSourcesBackend::PackageKitSourcesBackend(AbstractResourcesBackend* par
     resetSources();
 
     // Kubuntu-based
-    auto service = PackageKitBackend::locateService(QStringLiteral("software-properties-qt.desktop"));
-    if (!service.isEmpty())
-        m_actions += createActionForService(service, this);
+    auto addNativeSourcesManager = [this](const QString &file){
+        auto service = PackageKitBackend::locateService(file);
+        if (!service.isEmpty())
+            m_actions += createActionForService(service, this);
+        };
 
-    // openSUSE-based
-    service = PackageKitBackend::locateService(QStringLiteral("YaST2/sw_source.desktop"));
-    if (!service.isEmpty())
-        m_actions += createActionForService(service, this);
+    //New Ubuntu
+    addNativeSourcesManager(QStringLiteral("software-properties-qt.desktop"));
+
+    //Old Ubuntu
+    addNativeSourcesManager(QStringLiteral("software-properties-kde.desktop"));
+
+    //OpenSuse
+    addNativeSourcesManager(QStringLiteral("YaST2/sw_source.desktop"));
 }
 
 QString PackageKitSourcesBackend::idDescription()
