@@ -27,6 +27,7 @@
 #include <QAction>
 #include <QProcess>
 #include <QDebug>
+#include <QRegularExpression>
 #include <resources/AbstractResourcesBackend.h>
 #include "PackageKitBackend.h"
 #include "config-paths.h"
@@ -118,7 +119,17 @@ void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QSt
     QStandardItem* item = findItemForId(id);
 
     if (!item) {
-        item = new QStandardItem(description);
+        QString desc = description;
+        if (PackageKit::Daemon::backendName() == QLatin1String("aptcc")) {
+            QRegularExpression exp(QStringLiteral("^/etc/apt/sources.list.d/(.+?).list:.*"));
+
+            auto matchIt = exp.globalMatch(id);
+            if (matchIt.hasNext()) {
+                auto match = matchIt.next();
+                desc += QStringLiteral(" - ") + match.captured(1);
+            }
+        }
+        item = new QStandardItem(desc);
         add = true;
     }
     item->setData(id, IdRole);

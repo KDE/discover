@@ -35,7 +35,8 @@ DiscoverPage {
             readonly property QtObject resourcesBackend: backend.resourcesBackend
             readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
 
-            RowLayout {
+            GridLayout {
+                id: sourceTitleLayout
                 Layout.fillHeight: true
                 Connections {
                     target: backendItem.backend
@@ -53,9 +54,26 @@ DiscoverPage {
                     text: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
                     level: 3
                 }
+
+                Instantiator {
+                    id: backendActionsInst
+                    model: ActionsModel {
+                        actions: backendItem.backend ? backendItem.backend.actions : undefined
+                    }
+                    delegate: Button {
+                        parent: sourceTitleLayout
+                        Layout.column: 1
+                        text: modelData.text
+                    }
+                    onObjectRemoved: {
+                        object.destroy()
+                    }
+                }
+
                 Button {
                     Layout.alignment: Qt.AlignVCenter
                     icon.name: "preferences-other"
+                    Layout.column: 2
 
                     visible: resourcesBackend && resourcesBackend.hasApplications
                     Component {
@@ -85,28 +103,6 @@ DiscoverPage {
                             onTriggered: {
                                 var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
                                 addSourceDialog.open()
-                            }
-                        }
-
-                        MenuSeparator {
-                            visible: backendActionsInst.count>0
-                        }
-
-                        Instantiator {
-                            id: backendActionsInst
-                            model: ActionsModel {
-                                actions: backendItem.backend ? backendItem.backend.actions : undefined
-                            }
-                            delegate: MenuItem {
-                                action: ActionBridge {
-                                    action: modelData
-                                }
-                            }
-                            onObjectAdded: {
-                                settingsMenu.insertItem(index, object)
-                            }
-                            onObjectRemoved: {
-                                object.destroy()
                             }
                         }
                     }
@@ -168,6 +164,7 @@ DiscoverPage {
             Layout.fillWidth: true
             enabled: display.length>0
             highlighted: ListView.isCurrentItem
+            supportsMouseEvents: sourcesBackend.canFilterSources
             onClicked: Navigation.openApplicationListSource(sourceId)
 
             Keys.onReturnPressed: clicked()
@@ -246,7 +243,6 @@ DiscoverPage {
                 }
                 delegate: Kirigami.BasicListItem {
                     supportsMouseEvents: false
-                    visible: !model.isInstalled
                     label: name
                     icon: model.icon
                     InstallApplicationButton {

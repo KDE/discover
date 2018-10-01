@@ -43,6 +43,7 @@ public:
     QString idDescription() override;
     QList<QAction*> actions() const override;
     bool supportsAdding() const override { return true; }
+    bool canFilterSources() const override { return true; }
 
     FlatpakRemote * installSource(FlatpakResource *resource);
     bool canMoveSources() const override { return true; }
