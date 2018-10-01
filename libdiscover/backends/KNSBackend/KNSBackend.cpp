@@ -227,25 +227,29 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
     const auto resources = kTransform<QVector<AbstractResource*>>(entries, [this](const KNSCore::EntryInternal& entry){ return resourceForEntry(entry); });
     if (!resources.isEmpty()) {
         Q_EMIT receivedResources(resources);
-    }
-
-    if(resources.isEmpty()) {
+    } else {
         Q_EMIT searchFinished();
         Q_EMIT availableForQueries();
         setFetching(false);
         return;
     }
 //     qDebug() << "received" << objectName() << this << m_resourcesByName.count();
-    if (!m_responsePending && !m_onePage) {
-        // We _have_ to set this first. If we do not, we may run into a situation where the
-        // data request will conclude immediately, causing m_responsePending to remain true
-        // for perpetuity as the slots will be called before the function returns.
-        m_responsePending = true;
-        m_engine->requestMoreData();
-    } else {
+    if (m_onePage) {
         Q_EMIT availableForQueries();
         setFetching(false);
     }
+}
+
+void KNSBackend::fetchMore()
+{
+    if (m_responsePending)
+        return;
+
+    // We _have_ to set this first. If we do not, we may run into a situation where the
+    // data request will conclude immediately, causing m_responsePending to remain true
+    // for perpetuity as the slots will be called before the function returns.
+    m_responsePending = true;
+    m_engine->requestMoreData();
 }
 
 void KNSBackend::statusChanged(const KNSCore::EntryInternal& entry)
@@ -387,6 +391,7 @@ void KNSBackend::searchStream(ResultsStream* stream, const QString &searchText)
         m_onePage = false;
         m_responsePending = true;
 
+        connect(stream, &ResultsStream::fetchMore, this, &KNSBackend::fetchMore);
         connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
         connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::finish);
         connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::finish);

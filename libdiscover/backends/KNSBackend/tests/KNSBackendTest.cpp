@@ -63,7 +63,10 @@ QVector<AbstractResource*> KNSBackendTest::getResources(ResultsStream* stream, b
     Q_ASSERT(stream->objectName() != QLatin1String("KNS-void"));
     QSignalSpy spyResources(stream, &ResultsStream::destroyed);
     QVector<AbstractResource*> resources;
-    connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QVector<AbstractResource*>& res) { resources += res; });
+    connect(stream, &ResultsStream::resourcesFound, this, [&resources, stream](const QVector<AbstractResource*>& res) {
+        resources += res;
+        stream->fetchMore();
+    });
     Q_ASSERT(spyResources.wait(10000));
     Q_ASSERT(!resources.isEmpty() || canBeEmpty);
     return resources;

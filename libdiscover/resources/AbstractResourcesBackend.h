@@ -49,6 +49,7 @@ class DISCOVERCOMMON_EXPORT ResultsStream : public QObject
 
     Q_SIGNALS:
         void resourcesFound(const QVector<AbstractResource*>& resources);
+        void fetchMore();
 };
 
 /**

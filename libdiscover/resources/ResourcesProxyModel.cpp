@@ -578,3 +578,17 @@ AbstractResource * ResourcesProxyModel::resourceAt(int row) const
 {
     return m_displayedResources[row];
 }
+
+bool ResourcesProxyModel::canFetchMore(const QModelIndex& parent) const
+{
+    Q_ASSERT(!parent.isValid());
+    return m_currentStream;
+}
+
+void ResourcesProxyModel::fetchMore(const QModelIndex& parent)
+{
+    Q_ASSERT(!parent.isValid());
+    if (!m_currentStream)
+        return;
+    m_currentStream->fetchMore();
+}

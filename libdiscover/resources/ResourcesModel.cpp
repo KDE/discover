@@ -279,6 +279,7 @@ AggregatedResultsStream::AggregatedResultsStream(const QSet<ResultsStream*>& str
     for (auto stream: streams) {
         connect(stream, &ResultsStream::resourcesFound, this, &AggregatedResultsStream::addResults);
         connect(stream, &QObject::destroyed, this, &AggregatedResultsStream::destruction);
+        connect(this, &ResultsStream::fetchMore, stream, &ResultsStream::fetchMore);
         m_streams << stream;
     }
 

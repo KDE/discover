@@ -127,6 +127,9 @@ public:
     Q_SCRIPTABLE void invalidateFilter();
     void invalidateSorting();
 
+    bool canFetchMore(const QModelIndex & parent) const override;
+    void fetchMore(const QModelIndex & parent) override;
+
     void classBegin() override {}
     void componentComplete() override;
 

@@ -82,7 +82,8 @@ private:
     void setFetching(bool f);
     void markInvalid(const QString &message);
     void searchStream(ResultsStream* stream, const QString &searchText);
-    
+    void fetchMore();
+
     bool m_onePage = false;
     bool m_responsePending = false;
     bool m_fetching;
