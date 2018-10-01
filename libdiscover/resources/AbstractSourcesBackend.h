@@ -37,6 +37,7 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
     Q_PROPERTY(QList<QAction*> actions READ actions CONSTANT)
     Q_PROPERTY(bool supportsAdding READ supportsAdding CONSTANT)
     Q_PROPERTY(bool canMoveSources READ canMoveSources CONSTANT)
+    Q_PROPERTY(bool canFilterSources READ canFilterSources CONSTANT)
     Q_PROPERTY(QString firstSourceId READ firstSourceId NOTIFY firstSourceIdChanged)
     Q_PROPERTY(QString lastSourceId READ lastSourceId NOTIFY lastSourceIdChanged)
     public:
@@ -61,6 +62,7 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
 
         AbstractResourcesBackend* resourcesBackend() const;
 
+        virtual bool canFilterSources() const { return false; }
         virtual bool canMoveSources() const { return false; }
         Q_SCRIPTABLE virtual bool moveSource(const QString &sourceId, int delta);
 

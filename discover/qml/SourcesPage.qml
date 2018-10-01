@@ -168,6 +168,7 @@ DiscoverPage {
             Layout.fillWidth: true
             enabled: display.length>0
             highlighted: ListView.isCurrentItem
+            supportsMouseEvents: sourcesBackend.canFilterSources
             onClicked: Navigation.openApplicationListSource(sourceId)
 
             Keys.onReturnPressed: clicked()
