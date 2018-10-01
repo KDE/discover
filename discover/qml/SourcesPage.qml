@@ -64,6 +64,10 @@ DiscoverPage {
                         parent: sourceTitleLayout
                         Layout.column: 1
                         text: modelData.text
+                        icon.name: app.iconName(modelData.icon)
+                        ToolTip.visible: hovered
+                        ToolTip.text: modelData.toolTip
+                        onClicked: modelData.trigger()
                     }
                     onObjectRemoved: {
                         object.destroy()
