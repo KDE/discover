@@ -235,9 +235,7 @@ void PackageKitNotifier::refreshDatabase()
 {
     if (!m_refresher) {
         m_refresher = PackageKit::Daemon::refreshCache(false);
-        connect(m_refresher.data(), &PackageKit::Transaction::finished, this, [this]() {
-            recheckSystemUpdateNeeded();
-        });
+        connect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     }
 
 #ifdef PKQT_1_0
