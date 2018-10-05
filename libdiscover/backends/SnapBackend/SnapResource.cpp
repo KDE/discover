@@ -408,6 +408,7 @@ public:
     void refreshChannels()
     {
         qDeleteAll(m_channels);
+        m_channels.clear();
 
         auto s = m_res->snap();
         for(int i=0, c=s->channelCount(); i<c; ++i) {
