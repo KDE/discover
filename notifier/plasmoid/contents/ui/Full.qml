@@ -54,7 +54,7 @@ Item {
         }
 
         Button {
-            visible: true
+            visible: DiscoverNotifier.needsReboot
             Layout.alignment: Qt.AlignHCenter
             iconSource: "system-reboot"
             text: i18n("Restart")
