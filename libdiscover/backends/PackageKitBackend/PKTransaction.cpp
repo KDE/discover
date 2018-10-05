@@ -145,7 +145,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
     Q_UNUSED(runtime)
     const bool cancel = !m_proceedFunctions.isEmpty() || exit == PackageKit::Transaction::ExitCancelled;
-    const bool failed = exit == PackageKit::Transaction::ExitFailed;
+    const bool failed = exit == PackageKit::Transaction::ExitFailed || exit == PackageKit::Transaction::ExitUnknown;
     const bool simulate = m_trans->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
 
     disconnect(m_trans, nullptr, this, nullptr);
@@ -189,8 +189,10 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     this->submitResolve();
     if (failed)
         setStatus(Transaction::DoneWithErrorStatus);
-    else
+    else if (cancel)
         setStatus(Transaction::CancelledStatus);
+    else
+        setStatus(Transaction::DoneStatus);
 }
 
 void PKTransaction::processProceedFunction()
