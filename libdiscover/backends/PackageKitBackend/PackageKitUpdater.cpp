@@ -28,6 +28,8 @@
 #include <QAction>
 #include <QSet>
 
+#include <KSharedConfig>
+#include <KConfigGroup>
 #include <KLocalizedString>
 
 int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage)
@@ -151,11 +153,25 @@ void PackageKitUpdater::proceed()
     if (!m_proceedFunctions.isEmpty())
         processProceedFunction();
 #ifdef PKQT_1_0
-    else if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
+    else if (useOfflineUpdates())
         setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted | PackageKit::Transaction::TransactionFlagOnlyDownload);
 #endif
     else
         setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
+}
+
+bool PackageKitUpdater::useOfflineUpdates() const
+{
+    if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
+        return true;
+    KConfigGroup group(KSharedConfig::openConfig(), "Software");
+    return group.readEntry<bool>("UseOfflineUpdates", false);
+}
+
+void PackageKitUpdater::setUseOfflineUpdates(bool use)
+{
+    KConfigGroup group(KSharedConfig::openConfig(), "Software");
+    group.writeEntry<bool>("UseOfflineUpdates", use);
 }
 
 void PackageKitUpdater::start()
@@ -195,7 +211,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     m_backend->fetchUpdates();
     fetchLastUpdateTime();
 
-    if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE")) {
+    if (useOfflineUpdates()) {
 #ifdef PKQT_1_0
         PackageKit::Daemon::global()->offline()->trigger(PackageKit::Offline::ActionReboot);
         Q_EMIT passiveMessage(i18n("Please restart the computer to finish the installation"));

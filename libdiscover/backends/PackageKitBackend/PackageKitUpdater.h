@@ -83,6 +83,9 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void fetchLastUpdateTime();
         void lastUpdateTimeReceived(QDBusPendingCallWatcher* w);
         void setupTransaction(PackageKit::Transaction::TransactionFlags flags);
+        bool useOfflineUpdates() const;
+        void setUseOfflineUpdates(bool use);
+
         QSet<QString> involvedPackages(const QSet<AbstractResource*>& packages) const;
         QSet<AbstractResource*> packagesForPackageId(const QSet<QString>& packages) const;
 
