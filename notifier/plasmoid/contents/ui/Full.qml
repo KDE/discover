@@ -52,5 +52,14 @@ Item {
             tooltip: i18n("Launches Discover to update the software")
             onClicked: DiscoverNotifier.showDiscoverUpdates()
         }
+
+        Button {
+            visible: true
+            Layout.alignment: Qt.AlignHCenter
+            iconSource: "system-reboot"
+            text: i18n("Restart")
+            tooltip: i18n("Restart the system")
+            onClicked: DiscoverNotifier.reboot()
+        }
     }
 }
