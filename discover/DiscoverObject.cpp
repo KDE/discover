@@ -23,6 +23,7 @@
 #include "FeaturedModel.h"
 #include "CachedNetworkAccessManager.h"
 #include "DiscoverDeclarativePlugin.h"
+#include "DiscoverBackendsFactory.h"
 
 // Qt includes
 #include <QAction>
@@ -227,7 +228,8 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
             } else {
                 QMimeDatabase db;
                 auto mime = db.mimeTypeForUrl(localfile);
-                if (mime.name().startsWith(QLatin1String("application/vnd.flatpak"))) {
+                auto fIsFlatpakBackend = [](AbstractResourcesBackend* backend) { return backend->metaObject()->className() == QByteArray("FlatpakBackend"); };
+                if (mime.name().startsWith(QLatin1String("application/vnd.flatpak")) && !kContains(ResourcesModel::global()->backends(), fIsFlatpakBackend)) {
                     openApplication(QUrl(QLatin1String("appstream://org.kde.discover.flatpak")));
                     showPassiveNotification(i18n("Cannot interact with flatpak resources without the flatpak backend %1. Please install it first.", localfile.toDisplayString()));
                 } else {
