@@ -314,13 +314,14 @@ private:
 
         const auto snap = m_res->snap();
         if (item->checkState() == Qt::Checked) {
-            req = m_backend->client()->connectInterface(snap->name(), plugName, slotSnap, slotName);
-        } else {
             req = m_backend->client()->disconnectInterface(snap->name(), plugName, slotSnap, slotName);
+        } else {
+            req = m_backend->client()->connectInterface(snap->name(), plugName, slotSnap, slotName);
         }
         req->runSync();
         if (req->error()) {
             qWarning() << "snapd error" << req->errorString();
+            m_res->backend()->passiveMessage(req->errorString());
         }
         return req->error() == QSnapdRequest::NoError;
     }
