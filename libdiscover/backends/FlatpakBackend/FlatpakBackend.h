@@ -73,7 +73,7 @@ Q_SIGNALS: //for tests
     void initialized();
 
 private:
-    bool flatpakResourceLessThan(AbstractResource* l, AbstractResource* r);
+    bool flatpakResourceLessThan(AbstractResource* l, AbstractResource* r) const;
     void announceRatingsReady();
     FlatpakInstallation * preferredInstallation() const { return m_installations.constFirst(); }
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
@@ -102,6 +102,7 @@ private:
     bool updateAppSizeFromRemote(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     void updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
 
+    QVector<AbstractResource*> resourcesByAppstreamName(const QString &name) const;
     void acquireFetching(bool f);
 
     QHash<FlatpakResource::Id, FlatpakResource*> m_resources;

@@ -159,9 +159,12 @@ public:
                         resource->setResourceFile(originalUrl);
                         Q_EMIT jobFinished(true, resource);
                     } else {
-                        qWarning() << "couldn't download" << originalUrl << "into" << fileUrl << replyPut->errorString();
+                        qWarning() << "couldn't create resource from" << fileUrl.toLocalFile();
                         Q_EMIT jobFinished(false, nullptr);
                     }
+                } else {
+                    qWarning() << "couldn't save" << originalUrl << replyPut->errorString();
+                    Q_EMIT jobFinished(false, nullptr);
                 }
             });
         });
@@ -382,7 +385,11 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 
         remoteRef = flatpak_installation_install_ref_file (preferredInstallation(), bytes, m_cancellable, &error);
         if (!remoteRef) {
-            qWarning() << "Failed to install ref file:" << error->message;
+            qWarning() << "Failed to create install ref file:" << error->message;
+            const auto resources = resourcesByAppstreamName(settings.value(QStringLiteral("Flatpak Ref/Name")).toString());
+            if (!resources.isEmpty()) {
+                return qobject_cast<FlatpakResource*>(resources.constFirst());
+            }
             return nullptr;
         }
     }
@@ -1068,7 +1075,7 @@ int FlatpakBackend::updatesCount() const
     return m_updater->updatesCount();
 }
 
-bool FlatpakBackend::flatpakResourceLessThan(AbstractResource* l, AbstractResource* r)
+bool FlatpakBackend::flatpakResourceLessThan(AbstractResource* l, AbstractResource* r) const
 {
     return (l->isInstalled() != r->isInstalled()) ? l->isInstalled()
          : (l->origin() != r->origin()) ? m_sources->originIndex(l->origin()) < m_sources->originIndex(r->origin())
@@ -1125,6 +1132,18 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
     return stream;
 }
 
+QVector<AbstractResource *> FlatpakBackend::resourcesByAppstreamName(const QString& name) const
+{
+    QVector<AbstractResource*> resources;
+    foreach(FlatpakResource* res, m_resources) {
+        if (QString::compare(res->appstreamId(), name, Qt::CaseInsensitive)==0 || QString::compare(res->appstreamId(), name + QLatin1String(".desktop"), Qt::CaseInsensitive)==0)
+            resources << res;
+    }
+    auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l, r); };
+    std::sort(resources.begin(), resources.end(), f);
+    return resources;
+}
+
 ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
 {
     if (url.scheme() == QLatin1String("appstream")) {
@@ -1133,14 +1152,7 @@ ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
         else {
             auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
             auto f = [this, stream, url] () {
-                QVector<AbstractResource*> resources;
-                foreach(FlatpakResource* res, m_resources) {
-                    if (QString::compare(res->appstreamId(), url.host(), Qt::CaseInsensitive)==0)
-                        resources << res;
-                }
-                auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l,r); };
-                std::sort(resources.begin(), resources.end(), f);
-
+                const auto resources = resourcesByAppstreamName(url.host());
                 if (!resources.isEmpty())
                     Q_EMIT stream->resourcesFound(resources);
                 stream->finish();
