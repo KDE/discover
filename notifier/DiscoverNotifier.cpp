@@ -204,12 +204,12 @@ void DiscoverNotifier::showRebootNotification()
     notification->setTitle(i18n("Restart is required"));
     notification->setText(i18n("The system needs to be restarted for the updates to take effect."));
 
-    connect(notification, &KNotification::action1Activated, this, &DiscoverNotifier::loadBackends);
+    connect(notification, &KNotification::action1Activated, this, &DiscoverNotifier::reboot);
 
     notification->sendEvent();
 }
 
-void DiscoverNotifier::loadBackends()
+void DiscoverNotifier::reboot()
 {
     QDBusInterface interface(QStringLiteral("org.kde.ksmserver"), QStringLiteral("/KSMServer"), QStringLiteral("org.kde.KSMServerInterface"), QDBusConnection::sessionBus());
     interface.asyncCall(QStringLiteral("logout"), 0, 1, 2); // Options: do not ask again | reboot | force

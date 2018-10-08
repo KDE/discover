@@ -78,7 +78,6 @@ Q_SIGNALS:
 private:
     void showRebootNotification();
     void updateStatusNotifier();
-    void loadBackends();
 
     QList<BackendNotifierModule*> m_backends;
     bool m_verbose;
