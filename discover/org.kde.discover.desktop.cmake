@@ -49,6 +49,7 @@ NoDisplay=@DesktopNoDisplay@
 Actions=Updates;
 GenericName=Software Center
 GenericName[ar]=مركز البرمجيّات
+GenericName[ast]=Centru de software
 GenericName[ca]=Centre de programari
 GenericName[ca@valencia]=Centre de programari
 GenericName[cs]=Centrum softwaru
