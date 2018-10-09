@@ -135,6 +135,18 @@ DiscoverObject::DiscoverObject(CompactMode mode)
         for(auto o: objs)
             delete o;
     });
+    auto action = new OneTimeAction(
+        [this]() {
+            if (ResourcesModel::global()->backends().isEmpty())
+                Q_EMIT openErrorPage(i18n("No Discover back-ends found, please report to your distribution."));
+        }
+        , this);
+
+    if (ResourcesModel::global()->backends().isEmpty()) {
+        connect(ResourcesModel::global(), &ResourcesModel::allInitialized, action, &OneTimeAction::trigger);
+    } else {
+        action->trigger();
+    }
 }
 
 DiscoverObject::~DiscoverObject()
