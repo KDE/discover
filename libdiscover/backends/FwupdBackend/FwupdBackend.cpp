@@ -422,12 +422,6 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
     const QCryptographicHash::Algorithm hashAlgorithm = gchecksumToQChryptographicHash()[fwupd_checksum_guess_kind(checksum)];
     const QByteArray hash = getChecksum(filenameSigTmp, hashAlgorithm);
 
-    if (QByteArray(checksum) != hash) {
-        qDebug() << "Fwupd Error: signature of remote is wrong" << urlSig << "expected:" << checksum << "got" << hash;
-        QFile::remove(filenameSigTmp);
-        return;
-    }
-
     const QByteArray oldHash = getChecksum(filenameSig, hashAlgorithm);
     if (oldHash == hash) {
         qDebug() << "remote hasn't changed:" << fwupd_remote_get_id(remote);
@@ -455,7 +449,7 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
     const QUrl url(QString::fromUtf8(fwupd_remote_get_metadata_uri(remote)));
     if (!downloadFile(url, filename))
     {
-        qWarning() << "Fwupd Error: cannot download file : " << filename;
+        qWarning() << "Fwupd Error: cannot download file:" << filename;
         return;
     }
 
