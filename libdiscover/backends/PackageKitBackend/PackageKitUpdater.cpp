@@ -123,6 +123,12 @@ QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource*>&
     foreach (AbstractResource * res, packages) {
         PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
         QString pkgid = m_backend->upgradeablePackageId(app);
+
+        if (pkgid.isEmpty()) {
+            qWarning() << "no upgradeablePackageId for" << app;
+            continue;
+        }
+
         packageIds.insert(pkgid);
     }
     return packageIds;
