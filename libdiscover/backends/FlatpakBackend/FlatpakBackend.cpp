@@ -102,6 +102,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 FlatpakBackend::~FlatpakBackend()
 {
     g_cancellable_cancel(m_cancellable);
+    m_threadPool.waitForDone(200);
     m_threadPool.clear();
     for(auto inst : m_installations)
         g_object_unref(inst);
