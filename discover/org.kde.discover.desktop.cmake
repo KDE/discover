@@ -1,7 +1,6 @@
 [Desktop Entry]
 Name=Discover
 Name[ar]=استكشف
-Name[ast]=Discover
 Name[ca]=Discover
 Name[ca@valencia]=Discover
 Name[da]=Discover
@@ -49,7 +48,6 @@ NoDisplay=@DesktopNoDisplay@
 Actions=Updates;
 GenericName=Software Center
 GenericName[ar]=مركز البرمجيّات
-GenericName[ast]=Centru de software
 GenericName[ca]=Centre de programari
 GenericName[ca@valencia]=Centre de programari
 GenericName[cs]=Centrum softwaru
