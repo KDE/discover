@@ -73,13 +73,15 @@ QString FwupdBackend::buildDeviceID(FwupdDevice* device)
 
 void FwupdBackend::addResourceToList(FwupdResource* res)
 {
+    res->setParent(this);
+    Q_ASSERT(!m_resources.contains(res->packageName().toLower()));
     m_resources.insert(res->packageName().toLower(), res);
 }
 
 FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
 {
     const QString name = QString::fromUtf8(fwupd_device_get_name(device));
-    FwupdResource* res = new FwupdResource(name, true, this);
+    FwupdResource* res = new FwupdResource(name, true, nullptr);
     res->setId(buildDeviceID(device));
     if (fwupd_device_get_icons(device)->len >= 1)
         res->setIconName(QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(device),0)));// Check wether given icon exists or not!
@@ -153,20 +155,6 @@ void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
     res->setVersion(QString::fromUtf8(fwupd_device_get_version(dev)));
     res->setDescription(QString::fromUtf8((fwupd_device_get_description(dev))));
     res->setIconName(QString::fromUtf8("device-notifier"));
-}
-
-void FwupdBackend::populate()
-{
-    /* get devices */
-    g_autoptr(GPtrArray) devices = fwupd_client_get_devices(client, nullptr, nullptr);
-
-    if (devices) {
-        for(uint i = 0; i < devices->len; i++) {
-            FwupdDevice *device = (FwupdDevice *)g_ptr_array_index(devices, i);
-
-            addResourceToList(createDevice(device));
-        }
-    }
 }
 
 void FwupdBackend::addUpdates()
@@ -467,22 +455,23 @@ QString FwupdBackend::cacheFile(const QString &kind, const QString &basename)
     return cacheDir.filePath(kind + QLatin1Char('/') + basename);
 }
 
-void FwupdBackend::refresh()
+void FwupdBackend::checkForUpdates()
 {
     if (m_fetching)
         return;
 
-
-    auto fw = new QFutureWatcher<void>(this);
-    fw->setFuture(QtConcurrent::run([this]()
+    auto fw = new QFutureWatcher<GPtrArray*>(this);
+    fw->setFuture(QtConcurrent::run([this] () -> GPtrArray*
         {
             const uint cacheAge = (24*60*60); // Check for updates every day
             g_autoptr(GError) error = nullptr;
-            g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(client, nullptr, &error);
-            if (!remotes)
-                return;
 
-            for(uint i = 0; i < remotes->len; i++)
+            /* get devices */
+            GPtrArray* devices = fwupd_client_get_devices(client, nullptr, nullptr);
+
+
+            g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(client, nullptr, &error);
+            for(uint i = 0; remotes && i < remotes->len; i++)
             {
                 FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
                 if (!fwupd_remote_get_enabled(remote))
@@ -493,11 +482,21 @@ void FwupdBackend::refresh()
 
                 refreshRemote(this, remote, cacheAge);
             }
+            return devices;
         }
     ));
-    connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, fw]() {
+    connect(fw, &QFutureWatcher<GPtrArray*>::finished, this, [this, fw]() {
         m_fetching = true;
         emit fetchingChanged();
+
+        auto devices = fw->result();
+        for(uint i = 0; devices && i < devices->len; i++) {
+            FwupdDevice *device = (FwupdDevice *) g_ptr_array_index(devices, i);
+
+            addResourceToList(createDevice(device));
+        }
+        g_ptr_array_unref(devices);
+
 
         addUpdates();
         addHistoricalUpdates();
@@ -565,15 +564,6 @@ Transaction* FwupdBackend::removeApplication(AbstractResource* /*app*/)
 {
     qWarning() << "should not have reached here, it's not possible to uninstall a firmware";
     return nullptr;
-}
-
-void FwupdBackend::checkForUpdates()
-{
-    if (m_fetching)
-        return;
-
-    populate();
-    refresh();
 }
 
 AbstractResource * FwupdBackend::resourceForFile(const QUrl& path)

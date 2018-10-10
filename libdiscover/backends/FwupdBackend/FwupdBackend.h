@@ -76,31 +76,26 @@ public:
     QString displayName() const override;
     bool hasApplications() const override;
     FwupdClient *client;
+    void handleError(GError **perror);
 
+private:
     void refreshRemotes();
-    FwupdResource * createDevice(FwupdDevice *device);
     FwupdResource * createRelease(FwupdDevice *device);
     FwupdResource * createApp(FwupdDevice *device);
-    QString buildDeviceID(FwupdDevice* device);
     void addUpdates();
     void addResourceToList(FwupdResource *res);
     void addHistoricalUpdates();
     void setReleaseDetails(FwupdResource *res, FwupdRelease *release);
-    void setDeviceDetails(FwupdResource *res, FwupdDevice *device);
-    void handleError(GError **perror);
     QSet<AbstractResource*> getAllUpdates();
 
-public Q_SLOTS:
-    void refresh();
-
-private:
     static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
     static QString cacheFile(const QString &kind, const QString &baseName);
     static void refreshRemote(FwupdBackend* backend, FwupdRemote *remote, uint cacheAge);
     static QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
     static bool downloadFile(const QUrl &uri, const QString &filename);
-
-    void populate();
+    static QString buildDeviceID(FwupdDevice* device);
+    static void setDeviceDetails(FwupdResource *res, FwupdDevice *device);
+    static FwupdResource * createDevice(FwupdDevice *device);
 
     QHash<QString, FwupdResource*> m_resources;
     StandardBackendUpdater* m_updater;
