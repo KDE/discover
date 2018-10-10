@@ -77,14 +77,10 @@ public:
     bool hasApplications() const override;
     FwupdClient *client;
 
-    bool downloadFile(const QUrl &uri, const QString &filename);
-    void refreshRemotes(uint cacheAge);
-    void refreshRemote(FwupdRemote *remote, uint cacheAge);
-    QString cacheFile(const QString &kind, const QString &baseName);
+    void refreshRemotes();
     FwupdResource * createDevice(FwupdDevice *device);
     FwupdResource * createRelease(FwupdDevice *device);
     FwupdResource * createApp(FwupdDevice *device);
-    QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
     QString buildDeviceID(FwupdDevice* device);
     void addUpdates();
     void addResourceToList(FwupdResource *res);
@@ -93,14 +89,17 @@ public:
     void setDeviceDetails(FwupdResource *res, FwupdDevice *device);
     void handleError(GError **perror);
     QSet<AbstractResource*> getAllUpdates();
-    QString getAppName(QString ID);
-    QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
-
 
 public Q_SLOTS:
     void refresh();
 
 private:
+    static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
+    static QString cacheFile(const QString &kind, const QString &baseName);
+    static void refreshRemote(FwupdBackend* backend, FwupdRemote *remote, uint cacheAge);
+    static QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
+    static bool downloadFile(const QUrl &uri, const QString &filename);
+
     void populate();
 
     QHash<QString, FwupdResource*> m_resources;

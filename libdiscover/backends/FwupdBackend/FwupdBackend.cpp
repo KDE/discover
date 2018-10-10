@@ -27,6 +27,7 @@
 #include <resources/SourcesModel.h>
 #include <Transaction/Transaction.h>
 
+#include <QtConcurrent>
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KPluginFactory>
@@ -335,7 +336,7 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
 
 bool FwupdBackend::downloadFile(const QUrl &uri, const QString &filename)
 {
-    QScopedPointer<QNetworkAccessManager> manager(new QNetworkAccessManager(this));
+    QScopedPointer<QNetworkAccessManager> manager(new QNetworkAccessManager);
     QEventLoop loop;
     QTimer getTimer;
     connect(&getTimer, &QTimer::timeout, &loop, &QEventLoop::quit);
@@ -361,27 +362,7 @@ bool FwupdBackend::downloadFile(const QUrl &uri, const QString &filename)
     return true;
 }
 
-void FwupdBackend::refreshRemotes(uint cacheAge)
-{
-    g_autoptr(GError) error = nullptr;
-    g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(client, nullptr, &error);
-    if (!remotes)
-        return;
-
-    for(uint i = 0; i < remotes->len; i++)
-    {
-        FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
-        if (!fwupd_remote_get_enabled(remote))
-            continue;
-
-        if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
-            continue;
-
-        refreshRemote(remote, cacheAge);
-    }
-}
-
-void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
+void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, uint cacheAge)
 {
     if (!fwupd_remote_get_filename_cache_sig(remote))
     {
@@ -454,17 +435,21 @@ void FwupdBackend::refreshRemote(FwupdRemote* remote, uint cacheAge)
     }
 
     g_autoptr(GError) error = nullptr;
-    if (!fwupd_client_update_metadata(client, fwupd_remote_get_id(remote), filename.toUtf8().constData(), filenameSig.toUtf8().constData(), nullptr, &error))
+    if (!fwupd_client_update_metadata(backend->client, fwupd_remote_get_id(remote), filename.toUtf8().constData(), filenameSig.toUtf8().constData(), nullptr, &error))
     {
-        handleError(&error);
+        backend->handleError(&error);
     }
 }
 
 void FwupdBackend::handleError(GError **perror)
 {
     //TODO: localise the error message
-    if ((*perror)->code != FWUPD_ERROR_NOTHING_TO_DO)
-        Q_EMIT passiveMessage(QString::fromUtf8((*perror)->message));
+    if ((*perror)->code != FWUPD_ERROR_NOTHING_TO_DO) {
+        const QString msg = QString::fromUtf8((*perror)->message);
+        QTimer::singleShot(0, this, [this, msg](){
+            Q_EMIT passiveMessage(msg);
+        });
+    }
     qWarning() << "Fwupd Error" << (*perror)->code << (*perror)->message;
 }
 
@@ -487,15 +472,40 @@ void FwupdBackend::refresh()
     if (m_fetching)
         return;
 
-    m_fetching = true;
-    emit fetchingChanged();
 
-    refreshRemotes(24*60*60); // Check for updates every day
-    addUpdates();
-    addHistoricalUpdates();
+    auto fw = new QFutureWatcher<void>(this);
+    fw->setFuture(QtConcurrent::run([this]()
+        {
+            const uint cacheAge = (24*60*60); // Check for updates every day
+            g_autoptr(GError) error = nullptr;
+            g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(client, nullptr, &error);
+            if (!remotes)
+                return;
 
-    m_fetching = false;
-    emit fetchingChanged();
+            for(uint i = 0; i < remotes->len; i++)
+            {
+                FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
+                if (!fwupd_remote_get_enabled(remote))
+                    continue;
+
+                if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
+                    continue;
+
+                refreshRemote(this, remote, cacheAge);
+            }
+        }
+    ));
+    connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, fw]() {
+        m_fetching = true;
+        emit fetchingChanged();
+
+        addUpdates();
+        addHistoricalUpdates();
+
+        m_fetching = false;
+        emit fetchingChanged();
+        fw->deleteLater();
+    });
 }
 
 int FwupdBackend::updatesCount() const
