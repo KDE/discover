@@ -88,8 +88,6 @@ FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
     const QString name = QString::fromUtf8(fwupd_device_get_name(device));
     FwupdResource* res = new FwupdResource(name, true, nullptr);
     res->setId(buildDeviceID(device));
-    if (fwupd_device_get_icons(device)->len >= 1)
-        res->setIconName(QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(device),0)));// Check wether given icon exists or not!
 
     setDeviceDetails(res, device);
     return res;
@@ -127,6 +125,7 @@ void FwupdBackend::setReleaseDetails(FwupdResource *res, FwupdRelease *release)
     res->setLicense(QString::fromUtf8(fwupd_release_get_license(release)));
     res->m_updateURI = QString::fromUtf8(fwupd_release_get_uri(release));
 }
+
 void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
 {
     res->isLiveUpdatable = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_UPDATABLE);
@@ -159,7 +158,11 @@ void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
     res->setReleaseDate((QDateTime::fromSecsSinceEpoch(fwupd_device_get_created(dev))).date());
     res->setVersion(QString::fromUtf8(fwupd_device_get_version(dev)));
     res->setDescription(QString::fromUtf8((fwupd_device_get_description(dev))));
-    res->setIconName(QString::fromUtf8("device-notifier"));
+
+    if (fwupd_device_get_icons(dev)->len >= 1)
+        res->setIconName(QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(dev), 0)));// Check wether given icon exists or not!
+    else
+        res->setIconName(QString::fromUtf8("device-notifier"));
 }
 
 void FwupdBackend::addUpdates()
