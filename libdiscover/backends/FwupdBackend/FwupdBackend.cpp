@@ -74,8 +74,13 @@ QString FwupdBackend::buildDeviceID(FwupdDevice* device)
 void FwupdBackend::addResourceToList(FwupdResource* res)
 {
     res->setParent(this);
-    Q_ASSERT(!m_resources.contains(res->packageName().toLower()));
-    m_resources.insert(res->packageName().toLower(), res);
+    auto &r = m_resources[res->packageName().toLower()];
+    if (r) {
+        Q_EMIT resourceRemoved(r);
+        delete r;
+    }
+    r = res;
+    Q_ASSERT(m_resources.value(res->packageName().toLower()) == res);
 }
 
 FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
