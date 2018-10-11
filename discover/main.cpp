@@ -98,6 +98,11 @@ int main(int argc, char** argv)
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), QStringLiteral("aleixpol@blue-systems.com"));
     about.addAuthor(i18n("Jonathan Thomas"), QString(), QStringLiteral("echidnaman@kubuntu.org"));
     about.setProductName("discover/discover");
+
+    about.setTranslator(
+            i18ndc(nullptr, "NAME OF TRANSLATORS", "Your names"),
+            i18ndc(nullptr, "EMAIL OF TRANSLATORS", "Your emails"));
+
     KAboutData::setApplicationData(about);
 
     DiscoverObject *mainWindow = nullptr;
