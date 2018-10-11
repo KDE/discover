@@ -72,17 +72,17 @@ QUrl FwupdResource::homepage()
 
 QUrl FwupdResource::helpURL()
 {
-    return m_homepage;
+    return {};
 }
 
 QUrl FwupdResource::bugURL()
 {
-    return m_homepage;
+    return {};
 }
 
 QUrl FwupdResource::donationURL()
 {
-    return m_homepage;
+    return {};
 }
 
 QVariant FwupdResource::icon() const
