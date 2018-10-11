@@ -173,7 +173,7 @@ QString SnapResource::name() const
 
 QString SnapResource::origin() const
 {
-    return QStringLiteral("snappy:") + m_snap->channel();
+    return QStringLiteral("Snap");
 }
 
 QString SnapResource::packageName() const

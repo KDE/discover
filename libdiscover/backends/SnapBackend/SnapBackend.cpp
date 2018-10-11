@@ -47,7 +47,9 @@ class SnapSourcesBackend : public AbstractSourcesBackend
 {
 public:
     explicit SnapSourcesBackend(AbstractResourcesBackend * parent) : AbstractSourcesBackend(parent), m_model(new QStandardItemModel(this)) {
-        m_model->appendRow(new QStandardItem(i18n("Snap")));
+        auto it = new QStandardItem(i18n("Snap"));
+        it->setData(QStringLiteral("Snap"), IdRole);
+        m_model->appendRow(it);
     }
 
     QAbstractItemModel* sources() override { return m_model; }
@@ -100,7 +102,7 @@ ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& fil
         return findResourceByPackageName(filters.resourceUrl);
     } else if (filters.category && filters.category->isAddons()) {
         return voidStream();
-    } else if (filters.state >= AbstractResource::Installed) {
+    } else if (filters.state >= AbstractResource::Installed || filters.origin == QLatin1String("Snap")) {
         return populate(m_client.list());
     } else if (!filters.search.isEmpty()) {
         return populate(m_client.find(QSnapdClient::FindFlag::None, filters.search));
