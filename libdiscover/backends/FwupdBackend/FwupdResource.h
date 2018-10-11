@@ -73,6 +73,7 @@ public:
     void setLicense(const QString &license){ m_license = license;}
     void setIconName(const QString &iconName){ m_iconName = iconName;}
     void setReleaseDate(const QDate &date){ m_releaseDate = date;}
+    void setOrigin(const QString &origin){ m_origin = origin;}
     virtual QStringList allResourceNames() const;
 
     void setIsDeviceLocked(bool status){ isDeviceLocked = status;}
@@ -110,6 +111,7 @@ public:
     bool isDeviceRemoval = false; //True if device is Removal
     bool needsBootLoader = false; //True if BootLoader Required
     QString guidString;
+    QString m_origin;
 };
 
 #endif // FWUPDRESOURCE_H

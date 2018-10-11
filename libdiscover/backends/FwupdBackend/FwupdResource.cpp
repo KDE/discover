@@ -117,7 +117,7 @@ QString FwupdResource::vendor() const
 
 QString FwupdResource::origin() const
 {
-    return m_homepage.toString();
+    return m_origin;
 }
 
 QString FwupdResource::packageName() const

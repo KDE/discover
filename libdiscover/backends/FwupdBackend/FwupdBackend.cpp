@@ -116,6 +116,7 @@ FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
 }
 void FwupdBackend::setReleaseDetails(FwupdResource *res, FwupdRelease *release)
 {
+    res->setOrigin(QString::fromUtf8(fwupd_release_get_remote_id(release)));
     res->setSummary(QString::fromUtf8(fwupd_release_get_summary(release)));
     res->setVendor(QString::fromUtf8(fwupd_release_get_vendor(release)));
     res->setSize(fwupd_release_get_size(release));

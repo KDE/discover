@@ -45,7 +45,7 @@ public:
         auto item = itemFromIndex(index);
         if(!item)
             return false;
-        remote = fwupd_client_get_remote_by_id(m_backend->backend->client,item->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(),nullptr,nullptr);
+        remote = fwupd_client_get_remote_by_id(m_backend->backend->client, item->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(),nullptr,nullptr);
         status = fwupd_remote_get_enabled(remote);
         switch(role)
         {
