@@ -530,7 +530,7 @@ ResultsStream* FwupdBackend::search(const AbstractResourcesBackend::Filters& fil
 
     QVector<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resources) {
-        if (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
+        if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
             ret += r;
     }
     return new ResultsStream(QStringLiteral("FwupdStream"), ret);
