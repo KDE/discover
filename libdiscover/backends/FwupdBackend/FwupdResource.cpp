@@ -27,11 +27,10 @@
 #include <QStringList>
 #include <QTimer>
 
-FwupdResource::FwupdResource(QString name, bool isTechnical, AbstractResourcesBackend* parent)
+FwupdResource::FwupdResource(QString name, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_name(std::move(name))
     , m_state(State::Broken)
-    , m_isTechnical(isTechnical)
 {
     setObjectName(m_name);
 }

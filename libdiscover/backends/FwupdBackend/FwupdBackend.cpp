@@ -86,7 +86,7 @@ void FwupdBackend::addResourceToList(FwupdResource* res)
 FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
 {
     const QString name = QString::fromUtf8(fwupd_device_get_name(device));
-    FwupdResource* res = new FwupdResource(name, true, nullptr);
+    FwupdResource* res = new FwupdResource(name, nullptr);
     res->setId(buildDeviceID(device));
 
     setDeviceDetails(res, device);
@@ -98,7 +98,7 @@ FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
     FwupdRelease *release = fwupd_device_get_release_default(device);
     const QString name = QString::fromUtf8(fwupd_release_get_name(release));
 
-    FwupdResource* res = new FwupdResource(name, true, this);
+    FwupdResource* res = new FwupdResource(name, this);
 
     res->setDeviceID(QString::fromUtf8(fwupd_device_get_id(device)));
     setReleaseDetails(res, release);
