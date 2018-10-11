@@ -53,16 +53,17 @@ public:
             {
                 if((value.toInt() == Qt::Checked) )
                 {
-                    #if FWUPD_CHECK_VERSION(1,0,7)
-                        m_backend->eulaRequired(QString::fromUtf8(fwupd_remote_get_title(remote)),QString::fromUtf8(fwupd_remote_get_agreement(remote)));
-                    #endif
-                    connect(m_backend,&FwupdSourcesBackend::proceed,this,
-                        [=]()
-                            {
-                                if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QString(QLatin1String("Enabled")).toUtf8().constData(),(QString(QLatin1String("true")).toUtf8().constData()),nullptr,nullptr))
-                                    item->setData(value, role);
-                            }
-                            );
+                    auto proceedFunction = [=]()
+                    {
+                        if(fwupd_client_modify_remote(m_backend->backend->client, fwupd_remote_get_id(remote), "Enabled", "true", nullptr, nullptr))
+                            item->setData(value, role);
+                    };
+#if FWUPD_CHECK_VERSION(1,0,7)
+                    m_backend->eulaRequired(QString::fromUtf8(fwupd_remote_get_title(remote)),QString::fromUtf8(fwupd_remote_get_agreement(remote)));
+#else
+                    proceedFunction();
+#endif
+                    connect(m_backend,&FwupdSourcesBackend::proceed,this, proceedFunction);
                     connect(m_backend,&FwupdSourcesBackend::cancel,this,
                         [=]()
                             {
