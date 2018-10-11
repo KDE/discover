@@ -237,9 +237,9 @@ int FlatpakResource::installedSize() const
     return m_installedSize;
 }
 
-bool FlatpakResource::isTechnical() const
+AbstractResource::Type FlatpakResource::type() const
 {
-    return m_id.type == FlatpakResource::Runtime;
+    return m_id.type == FlatpakResource::Runtime ? Technical : Application;
 }
 
 QUrl FlatpakResource::homepage()
@@ -368,7 +368,7 @@ AbstractResource::State FlatpakResource::state()
     return m_state;
 }
 
-FlatpakResource::ResourceType FlatpakResource::type() const
+FlatpakResource::ResourceType FlatpakResource::resourceType() const
 {
     return m_id.type;
 }

@@ -55,7 +55,6 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(QString status READ status NOTIFY stateChanged)
     Q_PROPERTY(QStringList category READ categories CONSTANT)
-    Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
     Q_PROPERTY(QUrl homepage READ homepage CONSTANT)
     Q_PROPERTY(QUrl helpURL READ helpURL CONSTANT)
     Q_PROPERTY(QUrl bugURL READ bugURL CONSTANT)
@@ -141,7 +140,9 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         ///@returns a URL that points to the place where you can donate money to the app developer
         virtual QUrl donationURL();
 
-        virtual bool isTechnical() const;
+        enum Type { Application, Addon, Technical };
+        Q_ENUM(Type);
+        virtual Type type() const = 0;
 
         virtual int size() = 0;
         virtual QString sizeDescription();

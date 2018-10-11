@@ -36,13 +36,6 @@ public:
 
     ~UpdateItem();
 
-    enum Section {
-        ApplicationSection,
-        SystemSection
-    };
-
-    void setSection(const Section &section) { m_section = section; }
-    Section section() const { return m_section; }
     void setProgress(qreal progress);
     qreal progress() const;
 
@@ -65,7 +58,6 @@ private:
     const QIcon m_categoryIcon;
     qreal m_progress;
     QString m_changelog;
-    Section m_section;
 };
 
 #endif // UPDATEITEM_H

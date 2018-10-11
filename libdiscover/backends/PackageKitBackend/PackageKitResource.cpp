@@ -160,9 +160,9 @@ QStringList PackageKitResource::categories()
     return { QStringLiteral("Unknown") };
 }
 
-bool PackageKitResource::isTechnical() const
+AbstractResource::Type PackageKitResource::type() const
 {
-    return true;
+    return Technical;
 }
 
 void PackageKitResource::fetchDetails()

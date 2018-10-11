@@ -100,7 +100,7 @@ public:
     QVariant icon() const override;
     QString installedVersion() const override;
     int installedSize() const;
-    bool isTechnical() const override;
+    AbstractResource::Type type() const override;
     QUrl homepage() override;
     QUrl helpURL() override;
     QUrl bugURL() override;
@@ -119,7 +119,7 @@ public:
     int size() override;
     QString sizeDescription() override;
     AbstractResource::State state() override;
-    ResourceType type() const;
+    ResourceType resourceType() const;
     QString typeAsString() const;
     FlatpakResource::Id uniqueId() const;
     QUrl url() const override;

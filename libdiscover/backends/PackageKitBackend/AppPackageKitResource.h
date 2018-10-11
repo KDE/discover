@@ -32,7 +32,7 @@ class AppPackageKitResource : public PackageKitResource
 
         QString appstreamId() const override;
 
-        bool isTechnical() const override;
+        AbstractResource::Type type() const override;
         QString name() const override;
         QVariant icon() const override;
         QStringList mimetypes() const override;

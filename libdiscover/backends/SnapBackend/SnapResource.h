@@ -53,7 +53,7 @@ public:
     QString comment() override;
     QString name() const override;
     QString packageName() const override;
-    bool isTechnical() const override;
+    AbstractResource::Type type() const override;
     bool canExecute() const override { return true; }
     void invokeApplication() const override;
     void fetchChangelog() override;

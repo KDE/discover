@@ -137,14 +137,16 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
     case SectionRole: {
         static const QString appUpdatesSection = i18nc("@item:inlistbox", "Application Updates");
         static const QString systemUpdateSection = i18nc("@item:inlistbox", "System Updates");
-        switch(item->section()) {
-            case UpdateItem::ApplicationSection: return appUpdatesSection;
-            case UpdateItem::SystemSection: return systemUpdateSection;
+        static const QString addonsSection = i18nc("@item:inlistbox", "Addons");
+        switch(item->resource()->type()) {
+            case AbstractResource::Application: return appUpdatesSection;
+            case AbstractResource::Technical: return systemUpdateSection;
+            case AbstractResource::Addon: return addonsSection;
         }
-        return {};
+        Q_UNREACHABLE();
     } 
     case SectionResourceProgressRole:
-        return (100-item->progress()) + (101 * item->section());
+        return (100-item->progress()) + (101 * item->resource()->type());
     default:
         break;
     }
@@ -229,24 +231,29 @@ void UpdateModel::setResources(const QList<AbstractResource*>& resources)
     qDeleteAll(m_updateItems);
     m_updateItems.clear();
 
-    QVector<UpdateItem*> appItems, systemItems;
+    QVector<UpdateItem*> appItems, systemItems, addonItems;
     foreach(AbstractResource* res, resources) {
         connect(res, &AbstractResource::changelogFetched, this, &UpdateModel::integrateChangelog, Qt::UniqueConnection);
 
         UpdateItem *updateItem = new UpdateItem(res);
 
-        if(!res->isTechnical()) {
-            updateItem->setSection(UpdateItem::ApplicationSection);
-            appItems += updateItem;
-        } else {
-            updateItem->setSection(UpdateItem::SystemSection);
-            systemItems += updateItem;
+        switch(res->type()) {
+            case AbstractResource::Technical:
+                systemItems += updateItem;
+                break;
+            case AbstractResource::Application:
+                appItems += updateItem;
+                break;
+            case AbstractResource::Addon:
+                addonItems += updateItem;
+                break;
         }
     }
     const auto sortUpdateItems = [](UpdateItem *a, UpdateItem *b) { return a->name() < b->name(); };
     qSort(appItems.begin(), appItems.end(), sortUpdateItems);
     qSort(systemItems.begin(), systemItems.end(), sortUpdateItems);
-    m_updateItems = (QVector<UpdateItem*>() << appItems << systemItems);
+    qSort(addonItems.begin(), addonItems.end(), sortUpdateItems);
+    m_updateItems = (QVector<UpdateItem*>() << appItems << addonItems << systemItems);
     endResetModel();
 
     Q_EMIT hasUpdatesChanged(!resources.isEmpty());

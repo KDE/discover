@@ -58,11 +58,6 @@ QUrl AbstractResource::donationURL()
     return QUrl();
 }
 
-bool AbstractResource::isTechnical() const
-{
-    return false;
-}
-
 void AbstractResource::addMetadata(const QString &key, const QJsonValue &value)
 {
     m_metadata.insert(key, value);

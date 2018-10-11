@@ -412,7 +412,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
         const auto ext = kTransform<QVector<AbstractResource*>>(m_packages.extendedBy[filter.extends], [](AppPackageKitResource* a){ return a; });
         return new ResultsStream(QStringLiteral("PackageKitStream-extends"), ext);
     } else if (filter.search.isEmpty()) {
-        return new ResultsStream(QStringLiteral("PackageKitStream-all"), kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return !res->isTechnical(); }));
+        return new ResultsStream(QStringLiteral("PackageKitStream-all"), kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return res->type() != AbstractResource::Technical; }));
     } else {
         const QList<AppStream::Component> components = m_appdata->search(filter.search);
         const QStringList ids = kTransform<QStringList>(components, [](const AppStream::Component& comp) { return comp.id(); });

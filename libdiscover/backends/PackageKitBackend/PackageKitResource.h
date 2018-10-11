@@ -43,7 +43,7 @@ class PackageKitResource : public AbstractResource
         QString license() override;
         QString origin() const override;
         QString section() override;
-        bool isTechnical() const override;
+        AbstractResource::Type type() const override;
         int size() override;
         void fetchChangelog() override;
         

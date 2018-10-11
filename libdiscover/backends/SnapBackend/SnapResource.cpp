@@ -220,9 +220,9 @@ void SnapResource::invokeApplication() const
     QProcess::startDetached(QStringLiteral("snap"), {QStringLiteral("run"), packageName()});
 }
 
-bool SnapResource::isTechnical() const
+AbstractResource::Type SnapResource::type() const
 {
-    return m_snap->snapType() != QLatin1String("app");
+    return m_snap->snapType() != QLatin1String("app") ? Application : Technical;
 }
 
 void SnapResource::setSnap(const QSharedPointer<QSnapdSnap>& snap)

@@ -28,7 +28,7 @@ class DummyResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit DummyResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent);
+    explicit DummyResource(QString name, AbstractResource::Type type, AbstractResourcesBackend* parent);
 
     QList<PackageState> addonsInformation() override;
     QString section() override;
@@ -48,7 +48,7 @@ public:
     QString comment() override;
     QString name() const override;
     QString packageName() const override;
-    bool isTechnical() const override { return m_isTechnical; }
+    AbstractResource::Type type() const override { return m_type; }
     bool canExecute() const override { return true; }
     void invokeApplication() const override;
     void fetchChangelog() override;
@@ -63,13 +63,13 @@ public:
     QDate releaseDate() const override { return {}; }
 
 public:
-    QString m_name;
+    const QString m_name;
     AbstractResource::State m_state;
     QList<QUrl> m_screenshots;
     QList<QUrl> m_screenshotThumbnails;
     QString m_iconName;
     QList<PackageState> m_addons;
-    bool m_isTechnical;
+    const AbstractResource::Type m_type;
     int m_size;
 };
 

@@ -206,7 +206,7 @@ FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakInstallation 
         return ref;
     }
 
-    const auto type = resource->type() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME;
+    const auto type = resource->resourceType() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME;
 
     return flatpak_installation_get_installed_ref(flatpakInstallation,
                                                  type,
@@ -891,7 +891,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
 {
     g_autoptr(GFile) installationPath = nullptr;
 
-    if (resource->type() != FlatpakResource::DesktopApp) {
+    if (resource->resourceType() != FlatpakResource::DesktopApp) {
         return true;
     }
 
@@ -979,7 +979,7 @@ bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, Fla
 bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
 {
     // Calculate the runtime size
-    if (resource->state() == AbstractResource::None && resource->type() == FlatpakResource::DesktopApp) {
+    if (resource->state() == AbstractResource::None && resource->resourceType() == FlatpakResource::DesktopApp) {
         auto runtime = getRuntimeForApp(resource);
         if (runtime) {
             // Re-check runtime state if case a new one was created
@@ -1031,7 +1031,7 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
 void FlatpakBackend::onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize)
 {
     FlatpakResource *runtime = nullptr;
-    if (resource->state() == AbstractResource::None && resource->type() == FlatpakResource::DesktopApp) {
+    if (resource->state() == AbstractResource::None && resource->resourceType() == FlatpakResource::DesktopApp) {
         runtime = getRuntimeForApp(resource);
     }
 
@@ -1108,7 +1108,7 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
     auto f = [this, stream, filter] () {
         QVector<AbstractResource*> ret;
         foreach(AbstractResource* r, m_resources) {
-            if (r->isTechnical() && filter.state != AbstractResource::Upgradeable) {
+            if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable) {
                 continue;
             }
 
@@ -1186,7 +1186,7 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
 
     FlatpakResource *resource = qobject_cast<FlatpakResource*>(app);
 
-    if (resource->type() == FlatpakResource::Source) {
+    if (resource->resourceType() == FlatpakResource::Source) {
         // Let source backend handle this
         FlatpakRemote *remote = m_sources->installSource(resource);
         if (remote) {
@@ -1202,7 +1202,7 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
     FlatpakJobTransaction *transaction = nullptr;
     FlatpakInstallation *installation = resource->installation();
 
-    if (resource->propertyState(FlatpakResource::RequiredRuntime) == FlatpakResource::NotKnownYet && resource->type() == FlatpakResource::DesktopApp) {
+    if (resource->propertyState(FlatpakResource::RequiredRuntime) == FlatpakResource::NotKnownYet && resource->resourceType() == FlatpakResource::DesktopApp) {
         transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole, true);
         connect(resource, &FlatpakResource::propertyStateChanged, [resource, transaction, this] (FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state) {
             if (kind != FlatpakResource::RequiredRuntime) {
@@ -1243,7 +1243,7 @@ Transaction* FlatpakBackend::removeApplication(AbstractResource *app)
 {
     FlatpakResource *resource = qobject_cast<FlatpakResource*>(app);
 
-    if (resource->type() == FlatpakResource::Source) {
+    if (resource->resourceType() == FlatpakResource::Source) {
         // Let source backend handle this
         if (m_sources->removeSource(resource->flatpakName())) {
             resource->setState(AbstractResource::None);

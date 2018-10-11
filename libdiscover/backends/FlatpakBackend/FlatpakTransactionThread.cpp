@@ -64,7 +64,7 @@ void FlatpakTransactionThread::run()
     g_autoptr(FlatpakInstalledRef) ref = nullptr;
 
     const QString refName = m_relatedRef.isEmpty() ? m_app->flatpakName() : m_relatedRef;
-    const uint kind = m_relatedRef.isEmpty() ? (uint)m_app->type() : m_relatedRefKind;
+    const uint kind = m_relatedRef.isEmpty() ? (uint)m_app->resourceType() : m_relatedRefKind;
 
     if (m_role == Transaction::Role::InstallRole) {
         bool installRelatedRef = false;

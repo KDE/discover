@@ -153,11 +153,13 @@ QUrl AppPackageKitResource::donationURL()
     return m_appdata.url(AppStream::Component::UrlKindDonation);
 }
 
-bool AppPackageKitResource::isTechnical() const
+AbstractResource::Type AppPackageKitResource::type() const
 {
     static QString desktop = QString::fromUtf8(qgetenv("XDG_CURRENT_DESKTOP"));
     const auto desktops = m_appdata.compulsoryForDesktops();
-    return (!desktops.isEmpty() && !desktops.contains(desktop)) || m_appdata.kind() == AppStream::Component::KindAddon;
+    return (!desktops.isEmpty() && !desktops.contains(desktop))  ? Application
+           : m_appdata.kind() == AppStream::Component::KindAddon ? Addon
+                                                                 : Technical;
 }
 
 void AppPackageKitResource::fetchScreenshots()
