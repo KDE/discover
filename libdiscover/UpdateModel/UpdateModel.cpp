@@ -141,6 +141,7 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
             case UpdateItem::ApplicationSection: return appUpdatesSection;
             case UpdateItem::SystemSection: return systemUpdateSection;
         }
+        return {};
     } 
     case SectionResourceProgressRole:
         return (100-item->progress()) + (101 * item->section());

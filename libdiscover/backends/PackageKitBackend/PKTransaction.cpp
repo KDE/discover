@@ -69,8 +69,9 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
     if (m_apps.size() == 1 && qobject_cast<LocalFilePKResource*>(m_apps.at(0))) {
         auto app = qobject_cast<LocalFilePKResource*>(m_apps.at(0));
         m_trans = PackageKit::Daemon::installFile(QUrl(app->packageName()).toLocalFile(), flags);
-        connect(m_trans.data(), &PackageKit::Transaction::finished, this, [app](PackageKit::Transaction::Exit status) {
-            if (status == PackageKit::Transaction::ExitSuccess) {
+        connect(m_trans.data(), &PackageKit::Transaction::finished, this, [this, app](PackageKit::Transaction::Exit status) {
+			const bool simulate = m_trans->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
+            if (!simulate && status == PackageKit::Transaction::ExitSuccess) {
                 app->markInstalled();
             }
         });
@@ -145,7 +146,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
     Q_UNUSED(runtime)
     const bool cancel = !m_proceedFunctions.isEmpty() || exit == PackageKit::Transaction::ExitCancelled;
-    const bool failed = exit == PackageKit::Transaction::ExitFailed;
+    const bool failed = exit == PackageKit::Transaction::ExitFailed || exit == PackageKit::Transaction::ExitUnknown;
     const bool simulate = m_trans->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
 
     disconnect(m_trans, nullptr, this, nullptr);
@@ -189,8 +190,10 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     this->submitResolve();
     if (failed)
         setStatus(Transaction::DoneWithErrorStatus);
-    else
+    else if (cancel)
         setStatus(Transaction::CancelledStatus);
+    else
+        setStatus(Transaction::DoneStatus);
 }
 
 void PKTransaction::processProceedFunction()

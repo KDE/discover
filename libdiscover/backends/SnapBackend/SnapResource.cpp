@@ -314,13 +314,14 @@ private:
 
         const auto snap = m_res->snap();
         if (item->checkState() == Qt::Checked) {
-            req = m_backend->client()->connectInterface(snap->name(), plugName, slotSnap, slotName);
-        } else {
             req = m_backend->client()->disconnectInterface(snap->name(), plugName, slotSnap, slotName);
+        } else {
+            req = m_backend->client()->connectInterface(snap->name(), plugName, slotSnap, slotName);
         }
         req->runSync();
         if (req->error()) {
             qWarning() << "snapd error" << req->errorString();
+            m_res->backend()->passiveMessage(req->errorString());
         }
         return req->error() == QSnapdRequest::NoError;
     }
@@ -408,6 +409,7 @@ public:
     void refreshChannels()
     {
         qDeleteAll(m_channels);
+        m_channels.clear();
 
         auto s = m_res->snap();
         for(int i=0, c=s->channelCount(); i<c; ++i) {

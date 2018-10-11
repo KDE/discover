@@ -27,11 +27,10 @@
 #include <QStringList>
 #include <QTimer>
 
-FwupdResource::FwupdResource(QString name, bool isTechnical, AbstractResourcesBackend* parent)
+FwupdResource::FwupdResource(QString name, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_name(std::move(name))
     , m_state(State::Broken)
-    , m_isTechnical(isTechnical)
 {
     setObjectName(m_name);
 }
@@ -73,17 +72,17 @@ QUrl FwupdResource::homepage()
 
 QUrl FwupdResource::helpURL()
 {
-    return m_homepage;
+    return {};
 }
 
 QUrl FwupdResource::bugURL()
 {
-    return m_homepage;
+    return {};
 }
 
 QUrl FwupdResource::donationURL()
 {
-    return m_homepage;
+    return {};
 }
 
 QVariant FwupdResource::icon() const
@@ -118,7 +117,7 @@ QString FwupdResource::vendor() const
 
 QString FwupdResource::origin() const
 {
-    return m_homepage.toString();
+    return m_origin;
 }
 
 QString FwupdResource::packageName() const

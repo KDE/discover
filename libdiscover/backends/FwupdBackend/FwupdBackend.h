@@ -76,32 +76,26 @@ public:
     QString displayName() const override;
     bool hasApplications() const override;
     FwupdClient *client;
+    void handleError(GError **perror);
 
-    bool downloadFile(const QUrl &uri, const QString &filename);
-    void refreshRemotes(uint cacheAge);
-    void refreshRemote(FwupdRemote *remote, uint cacheAge);
-    QString cacheFile(const QString &kind, const QString &baseName);
-    FwupdResource * createDevice(FwupdDevice *device);
+private:
+    void refreshRemotes();
     FwupdResource * createRelease(FwupdDevice *device);
     FwupdResource * createApp(FwupdDevice *device);
-    QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
-    QString buildDeviceID(FwupdDevice* device);
     void addUpdates();
     void addResourceToList(FwupdResource *res);
     void addHistoricalUpdates();
-    void setReleaseDetails(FwupdResource *res, FwupdRelease *release);
-    void setDeviceDetails(FwupdResource *res, FwupdDevice *device);
-    void handleError(GError **perror);
+    static void setReleaseDetails(FwupdResource *res, FwupdRelease *release);
     QSet<AbstractResource*> getAllUpdates();
-    QString getAppName(QString ID);
-    QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
 
-
-public Q_SLOTS:
-    void refresh();
-
-private:
-    void populate();
+    static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
+    static QString cacheFile(const QString &kind, const QString &baseName);
+    static void refreshRemote(FwupdBackend* backend, FwupdRemote *remote, uint cacheAge);
+    static QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
+    static bool downloadFile(const QUrl &uri, const QString &filename);
+    static QString buildDeviceID(FwupdDevice* device);
+    static void setDeviceDetails(FwupdResource *res, FwupdDevice *device);
+    static FwupdResource * createDevice(FwupdDevice *device);
 
     QHash<QString, FwupdResource*> m_resources;
     StandardBackendUpdater* m_updater;

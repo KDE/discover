@@ -32,7 +32,7 @@ class FwupdResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit FwupdResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent);
+    explicit FwupdResource(QString name, AbstractResourcesBackend* parent);
 
     QList<PackageState> addonsInformation() override;
     QString section() override;
@@ -53,7 +53,7 @@ public:
     QString name() const override;
     QString packageName() const override;
     QString vendor() const;
-    bool isTechnical() const override { return m_isTechnical; }
+    bool isTechnical() const override { return true; }
     bool canExecute() const override { return false; }
     void invokeApplication() const override;
     void fetchChangelog() override;
@@ -73,6 +73,7 @@ public:
     void setLicense(const QString &license){ m_license = license;}
     void setIconName(const QString &iconName){ m_iconName = iconName;}
     void setReleaseDate(const QDate &date){ m_releaseDate = date;}
+    void setOrigin(const QString &origin){ m_origin = origin;}
     virtual QStringList allResourceNames() const;
 
     void setIsDeviceLocked(bool status){ isDeviceLocked = status;}
@@ -98,7 +99,6 @@ public:
     QUrl m_homepage;
     QString m_iconName;
     QList<PackageState> m_addons;
-    bool m_isTechnical;
     int m_size;
 
     QString m_deviceID;
@@ -111,6 +111,7 @@ public:
     bool isDeviceRemoval = false; //True if device is Removal
     bool needsBootLoader = false; //True if BootLoader Required
     QString guidString;
+    QString m_origin;
 };
 
 #endif // FWUPDRESOURCE_H

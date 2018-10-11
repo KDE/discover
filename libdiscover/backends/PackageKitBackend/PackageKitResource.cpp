@@ -205,6 +205,11 @@ void PackageKitResource::setDetails(const PackageKit::Details & details)
 
 void PackageKitResource::fetchChangelog()
 {
+    const auto pkgid = availablePackageId();
+    if (pkgid.isEmpty()) {
+        connect(this, &PackageKitResource::stateChanged, this, &PackageKitResource::fetchChangelog);
+        return;
+    }
     PackageKit::Transaction* t = PackageKit::Daemon::getUpdateDetail(availablePackageId());
     connect(t, &PackageKit::Transaction::updateDetail, this, &PackageKitResource::updateDetail);
     connect(t, &PackageKit::Transaction::errorCode, this, [this](PackageKit::Transaction::Error err, const QString & error) { qWarning() << "error fetching updates:" << err << error; emit changelogFetched(QString()); });
