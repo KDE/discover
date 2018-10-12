@@ -126,17 +126,16 @@ void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QSt
     QStandardItem* item = findItemForId(id);
 
     if (!item) {
-        QString desc = description;
+        item = new QStandardItem(description);
         if (PackageKit::Daemon::backendName() == QLatin1String("aptcc")) {
             QRegularExpression exp(QStringLiteral("^/etc/apt/sources.list.d/(.+?).list:.*"));
 
             auto matchIt = exp.globalMatch(id);
             if (matchIt.hasNext()) {
                 auto match = matchIt.next();
-                desc += QStringLiteral(" - ") + match.captured(1);
+                item->setData(match.captured(1), Qt::ToolTipRole);
             }
         }
-        item = new QStandardItem(desc);
         add = true;
     }
     item->setData(id, IdRole);
