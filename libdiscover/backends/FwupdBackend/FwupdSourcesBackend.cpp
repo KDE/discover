@@ -34,13 +34,6 @@ public:
         : QStandardItemModel(backend)
         , m_backend(backend) {}
 
-    QHash<int, QByteArray> roleNames() const override
-    {
-        auto roles = QStandardItemModel::roleNames();
-        roles[Qt::CheckStateRole] = "checked";
-        return roles;
-    }
-
     bool setData(const QModelIndex & index, const QVariant & value, int role) override {
         auto item = itemFromIndex(index);
         if(!item)

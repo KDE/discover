@@ -52,11 +52,6 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
     , m_sources(new QStandardItemModel(this))
     , m_flathubAction(new QAction(i18n("Add Flathub"), this))
 {
-    QHash<int, QByteArray> roles = m_sources->roleNames();
-    roles.insert(Qt::CheckStateRole, "checked");
-    roles.insert(Qt::UserRole, "flatpakInstallation");
-    m_sources->setItemRoleNames(roles);
-
     m_flathubAction->setToolTip(QStringLiteral("flathub"));
     connect(m_flathubAction, &QAction::triggered, this, [this](){
         addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
