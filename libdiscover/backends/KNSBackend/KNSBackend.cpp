@@ -375,7 +375,7 @@ ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filte
         }
 
         return stream;
-    } else if ((!filter.category && !filter.search.isEmpty()) || (filter.category && filter.category->matchesCategoryName(m_categories.constFirst()))) {
+    } else if (filter.category && filter.category->matchesCategoryName(m_categories.constFirst())) {
         auto r = new ResultsStream(QStringLiteral("KNS-search-")+name());
         searchStream(r, filter.search);
         return r;
