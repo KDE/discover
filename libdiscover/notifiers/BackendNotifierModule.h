@@ -24,6 +24,31 @@
 #include <QObject>
 #include "discovernotifiers_export.h"
 
+class DISCOVERNOTIFIERS_EXPORT UpgradeAction : public QObject
+{
+Q_OBJECT
+Q_PROPERTY(QString name READ name CONSTANT)
+Q_PROPERTY(QString description READ description CONSTANT)
+public:
+    UpgradeAction(const QString& name, const QString& description, QObject* parent)
+        : QObject(parent)
+        , m_name(name)
+        , m_description(description)
+    {}
+
+    QString name() const { return m_name; }
+    QString description() const { return m_description; }
+
+    void trigger() { triggered(m_name); }
+
+Q_SIGNALS:
+    void triggered(const QString & name);
+
+private:
+    const QString m_name;
+    const QString m_description;
+};
+
 class DISCOVERNOTIFIERS_EXPORT BackendNotifierModule : public QObject
 {
 Q_OBJECT
@@ -51,6 +76,9 @@ Q_SIGNALS:
 
     /** Notifies that the system needs a reboot. @see needsReboot */
     void needsRebootChanged();
+
+    /** notifies about an available upgrade */
+    void foundUpgradeAction(UpgradeAction* action);
 };
 
 Q_DECLARE_INTERFACE(BackendNotifierModule, "org.kde.discover.BackendNotifierModule")

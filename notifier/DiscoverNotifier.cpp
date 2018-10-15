@@ -47,6 +47,8 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
                 Q_EMIT needsRebootChanged(true);
             }
         });
+
+        connect(module, &BackendNotifierModule::foundUpgradeAction, this, &DiscoverNotifier::foundUpgradeAction);
     }
     connect(&m_timer, &QTimer::timeout, this, &DiscoverNotifier::showUpdatesNotification);
     m_timer.setSingleShot(true);
@@ -213,4 +215,19 @@ void DiscoverNotifier::reboot()
 {
     QDBusInterface interface(QStringLiteral("org.kde.ksmserver"), QStringLiteral("/KSMServer"), QStringLiteral("org.kde.KSMServerInterface"), QDBusConnection::sessionBus());
     interface.asyncCall(QStringLiteral("logout"), 0, 1, 2); // Options: do not ask again | reboot | force
+}
+
+void DiscoverNotifier::foundUpgradeAction(UpgradeAction* action)
+{
+    KNotification *notification = new KNotification(QLatin1String("distupgrade-notification"), KNotification::Persistent | KNotification::DefaultEvent);
+    notification->setIconName(QStringLiteral("system-software-update"));
+    notification->setActions(QStringList{QLatin1String("Upgrade")});
+    notification->setTitle(i18n("Upgrade available"));
+    notification->setText(i18n("New version: %1", action->description()));
+
+    connect(notification, &KNotification::action1Activated, this, [action] () {
+        action->trigger();
+    });
+
+    notification->sendEvent();
 }

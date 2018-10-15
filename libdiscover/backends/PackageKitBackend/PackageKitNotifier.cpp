@@ -204,25 +204,11 @@ uint PackageKitNotifier::updatesCount()
 
 void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade type, const QString& name, const QString& description)
 {
-    KNotification *notification = new KNotification(QLatin1String("distupgrade-notification"), KNotification::Persistent | KNotification::DefaultEvent);
-    notification->setIconName(QStringLiteral("system-software-update"));
-    notification->setActions(QStringList{QLatin1String("Upgrade")});
-    notification->setTitle(i18n("Upgrade available"));
-    switch(type) {
-        case PackageKit::Transaction::DistroUpgradeUnknown:
-        case PackageKit::Transaction::DistroUpgradeUnstable:
-            notification->setText(i18n("New unstable version: %1", description));
-            break;
-        case PackageKit::Transaction::DistroUpgradeStable:
-            notification->setText(i18n("New version: %1", description));
-            break;
-    }
-
-    connect(notification, &KNotification::action1Activated, this, [name] () {
+    auto a = new UpgradeAction(name, description, this);
+    connect(a, &UpgradeAction::triggered, this, [] (const QString &name) {
         PackageKit::Daemon::upgradeSystem(name, PackageKit::Transaction::UpgradeKindDefault);
     });
-
-    notification->sendEvent();
+    Q_EMIT foundUpgradeAction(a);
 }
 
 void PackageKitNotifier::refreshDatabase()

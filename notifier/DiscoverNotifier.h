@@ -70,6 +70,7 @@ public Q_SLOTS:
     void showDiscoverUpdates();
     void showUpdatesNotification();
     void reboot();
+    void foundUpgradeAction(UpgradeAction* action);
 
 Q_SIGNALS:
     void updatesChanged();
