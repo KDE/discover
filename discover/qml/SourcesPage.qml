@@ -166,7 +166,7 @@ DiscoverPage {
 
         delegate: Kirigami.SwipeListItem {
             Layout.fillWidth: true
-            enabled: display.length>0
+            enabled: display.length>0 && model.enabled
             highlighted: ListView.isCurrentItem
             supportsMouseEvents: sourcesBackend.canFilterSources
             onClicked: Navigation.openApplicationListSource(sourceId)
@@ -178,9 +178,9 @@ DiscoverPage {
                     enabled: sourcesBackend.firstSourceId !== sourceId
                     visible: sourcesBackend.canMoveSources
                     onTriggered: {
-                            var ret = sourcesBackend.moveSource(sourceId, -1)
-                            if (!ret)
-                                window.showPassiveNotification(i18n("Failed to increase '%1' preference", display))
+                        var ret = sourcesBackend.moveSource(sourceId, -1)
+                        if (!ret)
+                            window.showPassiveNotification(i18n("Failed to increase '%1' preference", display))
                     }
                 },
                 Kirigami.Action {

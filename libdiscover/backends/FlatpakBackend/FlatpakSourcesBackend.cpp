@@ -66,6 +66,12 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
             qWarning() << "Failed to list repositories from installation" << installation;
         }
     }
+
+    m_noSourcesItem = new QStandardItem(QStringLiteral("-"));
+    m_noSourcesItem->setEnabled(false);
+    if (m_sources->rowCount() == 0) {
+        m_sources->appendRow(m_noSourcesItem);
+    }
 }
 
 FlatpakSourcesBackend::~FlatpakSourcesBackend()
@@ -139,6 +145,10 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
         g_autoptr(GError) error = nullptr;
         if (flatpak_installation_remove_remote(sourceItem->flatpakInstallation(), id.toUtf8().constData(), cancellable, &error)) {
             m_sources->removeRow(sourceItem->row());
+
+            if (m_sources->rowCount() == 0) {
+                m_sources->appendRow(m_noSourcesItem);
+            }
             return true;
         } else {
             qWarning() << "Failed to remove " << id << " remote repository:" << error->message;
@@ -267,6 +277,10 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     if (m_sources->rowCount() == 1)
         Q_EMIT firstSourceIdChanged();
     Q_EMIT lastSourceIdChanged();
+
+    if (m_sources->rowCount() > 0) {
+        m_sources->takeRow(m_noSourcesItem->row());
+    }
 }
 
 QString FlatpakSourcesBackend::idDescription()
@@ -276,7 +290,10 @@ QString FlatpakSourcesBackend::idDescription()
 
 bool FlatpakSourcesBackend::moveSource(const QString& sourceId, int delta)
 {
-    const auto row = sourceById(sourceId)->row();
+    auto item = sourceById(sourceId);
+    if (!item)
+        return false;
+    const auto row = item->row();
     auto prevRow = m_sources->takeRow(row);
     Q_ASSERT(!prevRow.isEmpty());
 

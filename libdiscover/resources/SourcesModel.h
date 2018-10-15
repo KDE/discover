@@ -34,7 +34,8 @@ class DISCOVERCOMMON_EXPORT SourcesModel : public KConcatenateRowsProxyModel
         enum Roles {
             SourceNameRole = AbstractSourcesBackend::LastRole,
             SourcesBackend,
-            ResourcesBackend
+            ResourcesBackend,
+            EnabledRole
         };
         Q_ENUM(Roles)
 
