@@ -40,6 +40,11 @@ void DiscoverBackendsFactory::setRequestedBackends(const QStringList& backends)
     *s_requestedBackends = backends;
 }
 
+bool DiscoverBackendsFactory::hasRequestedBackends()
+{
+    return !s_requestedBackends->isEmpty();
+}
+
 DiscoverBackendsFactory::DiscoverBackendsFactory()
 {}
 

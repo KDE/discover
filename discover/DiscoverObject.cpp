@@ -138,8 +138,12 @@ DiscoverObject::DiscoverObject(CompactMode mode)
     });
     auto action = new OneTimeAction(
         [this]() {
-            if (ResourcesModel::global()->backends().isEmpty())
-                Q_EMIT openErrorPage(i18n("No Discover back-ends found, please report to your distribution."));
+            bool found = DiscoverBackendsFactory::hasRequestedBackends();
+            for (auto b : ResourcesModel::global()->backends())
+                found |= b->hasApplications();
+
+            if (!found)
+                Q_EMIT openErrorPage(i18n("No application back-ends found, please report to your distribution."));
         }
         , this);
 

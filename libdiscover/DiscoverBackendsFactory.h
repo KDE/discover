@@ -42,6 +42,7 @@ public:
     static void setupCommandLine(QCommandLineParser* parser);
     static void processCommandLine(QCommandLineParser* parser, bool test);
     static void setRequestedBackends(const QStringList &backends);
+    static bool hasRequestedBackends();
 
 private:
     QVector<AbstractResourcesBackend*> backendForFile(const QString& path, const QString& name) const;
