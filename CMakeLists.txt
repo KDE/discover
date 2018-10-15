@@ -26,7 +26,7 @@ find_package(PkgConfig REQUIRED)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui ItemModels KIO)
 find_package(KF5Kirigami2 2.1.0)
 
-find_package(packagekitqt5 CONFIG)
+find_package(packagekitqt5 1.0.1 CONFIG)
 find_package(AppStreamQt 0.11.1 CONFIG)
 find_package(KF5Attica 5.23 CONFIG)
 find_package(KF5NewStuff 5.23 CONFIG)
@@ -75,7 +75,7 @@ set_package_properties(packagekitqt5 PROPERTIES
 set_package_properties(AppStreamQt PROPERTIES
     DESCRIPTION "Library that lists Appstream resources"
     URL "http://www.freedesktop.org"
-    PURPOSE "Required to build the PackageKit backend"
+    PURPOSE "Required to build the PackageKit and Flatpak backends"
     TYPE OPTIONAL)
 set_package_properties(FLATPAK PROPERTIES
     DESCRIPTION "Library that exposes flatpak repositories"

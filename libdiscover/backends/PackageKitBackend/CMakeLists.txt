@@ -30,9 +30,4 @@ install(TARGETS DiscoverPackageKitNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/dis
 install(FILES packagekit-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 add_subdirectory(categoryimages)
 
-if(packagekitqt5_VERSION VERSION_GREATER 1.0.1 OR packagekitqt5_VERSION VERSION_EQUAL 1.0.1)
-    target_compile_definitions(packagekit-backend PUBLIC -DPKQT_1_0)
-    target_compile_definitions(DiscoverPackageKitNotifier PUBLIC -DPKQT_1_0)
-endif()
-
 install( FILES org.kde.discover.packagekit.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )

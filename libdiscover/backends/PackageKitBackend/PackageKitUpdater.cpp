@@ -21,9 +21,7 @@
 #include "PackageKitMessages.h"
 
 #include <PackageKit/Daemon>
-#ifdef PKQT_1_0
 #include <PackageKit/Offline>
-#endif
 #include <QDebug>
 #include <QAction>
 #include <QSet>
@@ -158,10 +156,8 @@ void PackageKitUpdater::proceed()
 {
     if (!m_proceedFunctions.isEmpty())
         processProceedFunction();
-#ifdef PKQT_1_0
     else if (useOfflineUpdates())
         setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted | PackageKit::Transaction::TransactionFlagOnlyDownload);
-#endif
     else
         setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
 }
@@ -218,12 +214,8 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     fetchLastUpdateTime();
 
     if (useOfflineUpdates()) {
-#ifdef PKQT_1_0
         PackageKit::Daemon::global()->offline()->trigger(PackageKit::Offline::ActionReboot);
         Q_EMIT passiveMessage(i18n("Please restart the computer to finish the installation"));
-#else
-        qWarning() << "PK_OFFLINE_UPDATE is set but discover was built against an old version of PackageKitQt that didn't support offline updates";
-#endif
     }
 }
 
