@@ -75,6 +75,7 @@ public Q_SLOTS:
 Q_SIGNALS:
     void updatesChanged();
     bool needsRebootChanged(bool needsReboot);
+    void newUpgradeAction(UpgradeAction* action);
 
 private:
     void showRebootNotification();

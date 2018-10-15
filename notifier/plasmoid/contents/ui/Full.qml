@@ -18,6 +18,7 @@
  ***************************************************************************/
 
 import QtQuick 2.1
+import QtQml.Models 2.11
 import QtQuick.Layouts 1.1
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.components 2.0
@@ -60,6 +61,24 @@ Item {
             text: i18n("Restart")
             tooltip: i18n("Restart the system")
             onClicked: DiscoverNotifier.reboot()
+        }
+
+        Repeater {
+            model: ObjectModel {
+                id: upgrades
+                Connections {
+                    target: DiscoverNotifier
+                    onNewUpgradeAction: upgrades.append(action)
+                }
+            }
+
+            delegate: Button {
+                visible: DiscoverNotifier.needsReboot
+                Layout.alignment: Qt.AlignHCenter
+                iconSource: "system-upgrade"
+                text: description
+                onClicked: model.trigger()
+            }
         }
     }
 }
