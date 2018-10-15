@@ -69,6 +69,7 @@ QHash<int, QByteArray> SourcesModel::roleNames() const
     roles.insert(SourceNameRole, "sourceName");
     roles.insert(SourcesBackend, "sourcesBackend");
     roles.insert(ResourcesBackend, "resourcesBackend");
+    roles.insert(EnabledRole, "enabled");
     return roles;
 }
 
@@ -80,6 +81,9 @@ void SourcesModel::addSourcesBackend(AbstractSourcesBackend* sources)
     m->setProperty(DisplayName, backend->displayName());
     m->setProperty(SourcesBackendId, qVariantFromValue<QObject*>(sources));
     addSourceModel(m);
+
+    if (!m->rowCount())
+        qWarning() << "adding empty sources model" << m;
 }
 
 const QAbstractItemModel * SourcesModel::modelAt(const QModelIndex& index) const
@@ -96,6 +100,8 @@ QVariant SourcesModel::data(const QModelIndex& index, int role) const
             return modelAt(index)->property(DisplayName);
         case SourcesBackend:
             return modelAt(index)->property(SourcesBackendId);
+        case EnabledRole:
+            return QVariant(flags(index) & Qt::ItemIsEnabled);
         default:
             return KConcatenateRowsProxyModel::data(index, role);
     }
