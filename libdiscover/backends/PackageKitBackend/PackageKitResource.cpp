@@ -287,13 +287,14 @@ QString PackageKitResource::sourceIcon() const
 
 void PackageKitResource::fetchDependencies()
 {
-    const auto id = availablePackageId();
+    const auto id = isInstalled() ? installedPackageId() : availablePackageId();
     if (id.isEmpty())
         return;
     m_dependenciesCount = 0;
 
     QSharedPointer<QJsonObject> packageDependencies(new QJsonObject);
-    auto trans = PackageKit::Daemon::installPackage(id, PackageKit::Transaction::TransactionFlagSimulate);
+
+    auto trans = PackageKit::Daemon::dependsOn(id);
     connect(trans, &PackageKit::Transaction::errorCode, this, [this](PackageKit::Transaction::Error, const QString& message) { qWarning() << "Transaction error: " << message << sender(); });
     connect(trans, &PackageKit::Transaction::package, this, [packageDependencies](PackageKit::Transaction::Info /*info*/, const QString &packageID, const QString &summary) {
         (*packageDependencies)[PackageKit::Daemon::packageName(packageID)] = summary ;
