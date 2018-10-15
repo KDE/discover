@@ -270,15 +270,22 @@ public:
         connect(manager, &KNSCore::Engine::signalEntryChanged, this, &KNSTransaction::anEntryChanged);
         TransactionModel::global()->addTransaction(this);
 
-        QTimer::singleShot(0, this, [this, res]() {
-            for(auto i : res->linkIds()) {
-                auto engine = res->knsBackend()->engine();
-                if (this->role() == InstallRole)
+        std::function<void()> actionFunction;
+        auto engine = res->knsBackend()->engine();
+        if(role == RemoveRole)
+            actionFunction = [res, engine]() {
+                engine->uninstall(res->entry());
+            };
+        else if (res->linkIds().isEmpty())
+            actionFunction = [res, engine]() {
+                engine->install(res->entry());
+            };
+        else
+            actionFunction = [res, engine]() {
+                for(auto i : res->linkIds())
                     engine->install(res->entry(), i);
-                else if(this->role() == RemoveRole)
-                    engine->uninstall(res->entry());
-            }
-        });
+            };
+        QTimer::singleShot(0, res, actionFunction);
     }
 
     void anEntryChanged(const KNSCore::EntryInternal& entry) {

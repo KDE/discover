@@ -86,8 +86,6 @@ void StandardBackendUpdater::start()
         Q_EMIT cancelableChanged(m_canCancel);
     }
     m_settingUp = false;
-    if (m_pendingResources.isEmpty())
-        emit progressingChanged(false);
 
     if(m_pendingResources.isEmpty()) {
         cleanup();

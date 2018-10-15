@@ -79,7 +79,7 @@ public:
 
     void slotProgressingChanged()
     {
-        if (status() < DoneStatus && !isProgressing()) {
+        if (status() > SetupStatus && status() < DoneStatus && !isProgressing()) {
             setStatus(Transaction::DoneStatus);
             Q_EMIT finished();
             deleteLater();
@@ -188,11 +188,18 @@ void ResourcesUpdatesModel::updateAll()
         }
 
         m_transaction = new UpdateTransaction(this, updaters);
+        m_transaction->setStatus(Transaction::SetupStatus);
         setTransaction(m_transaction);
         TransactionModel::global()->addTransaction(m_transaction);
         Q_FOREACH (AbstractBackendUpdater* upd, updaters) {
             QMetaObject::invokeMethod(upd, "start", Qt::QueuedConnection);
         }
+
+        QMetaObject::invokeMethod(this, [this](){
+            m_transaction->setStatus(Transaction::QueuedStatus);
+            m_transaction->slotProgressingChanged();
+        }, Qt::QueuedConnection);
+
     }
 }
 
