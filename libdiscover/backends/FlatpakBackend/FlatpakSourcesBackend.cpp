@@ -51,6 +51,7 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
     , m_preferredInstallation(installations.constFirst())
     , m_sources(new QStandardItemModel(this))
     , m_flathubAction(new QAction(i18n("Add Flathub"), this))
+    , m_noSourcesItem(new QStandardItem(QStringLiteral("-")))
 {
     m_flathubAction->setToolTip(QStringLiteral("flathub"));
     connect(m_flathubAction, &QAction::triggered, this, [this](){
@@ -62,7 +63,6 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
         }
     }
 
-    m_noSourcesItem = new QStandardItem(QStringLiteral("-"));
     m_noSourcesItem->setEnabled(false);
     if (m_sources->rowCount() == 0) {
         m_sources->appendRow(m_noSourcesItem);
