@@ -84,7 +84,7 @@ void DiscoverNotifier::showUpdatesNotification()
     const QString name = i18n("Update");
     e->setDefaultAction(name);
     e->setActions({name});
-    connect(e, QOverload<unsigned int>::of(&KNotification::activated), this, &DiscoverNotifier::showDiscover);
+    connect(e, QOverload<unsigned int>::of(&KNotification::activated), this, &DiscoverNotifier::showDiscoverUpdates);
 }
 
 void DiscoverNotifier::updateStatusNotifier()
