@@ -65,6 +65,7 @@ DiscoverPage {
 
     contextualActions: [
         Kirigami.Action {
+            visible: !appsModel.sortByRelevancy
             text: i18n("Sort: %1", sortGroup.checkedAction.text)
             Action {
                 ActionGroup.group: sortGroup

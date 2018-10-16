@@ -116,7 +116,10 @@ void ResourcesProxyModel::setSearch(const QString &_searchText)
 
     if (diff) {
         m_filters.search = searchText;
-        m_sortByRelevancy = !searchText.isEmpty();
+        if (m_sortByRelevancy == searchText.isEmpty()) {
+            m_sortByRelevancy = !searchText.isEmpty();
+            Q_EMIT sortByRelevancyChanged(m_sortByRelevancy);
+        }
         invalidateFilter();
         Q_EMIT searchChanged(m_filters.search);
     }
@@ -577,4 +580,9 @@ int ResourcesProxyModel::indexOf(AbstractResource* res)
 AbstractResource * ResourcesProxyModel::resourceAt(int row) const
 {
     return m_displayedResources[row];
+}
+
+bool ResourcesProxyModel::sortByRelevancy() const
+{
+    return m_sortByRelevancy;
 }
