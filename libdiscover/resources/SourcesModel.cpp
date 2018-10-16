@@ -30,27 +30,6 @@ Q_GLOBAL_STATIC(SourcesModel, s_sources)
 const auto DisplayName = "DisplayName";
 const auto SourcesBackendId = "SourcesBackend";
 
-class SourceBackendModel : public QAbstractListModel
-{
-Q_OBJECT
-public:
-    SourceBackendModel(AbstractResourcesBackend* backend)
-        : QAbstractListModel(backend), m_backend(backend)
-    {}
-
-    QVariant data(const QModelIndex & index, int role) const override {
-        if (!index.isValid()) return {};
-        switch(role) {
-            case SourcesModel::ResourcesBackend: return QVariant::fromValue<QObject*>(m_backend);
-        }
-        return {};
-    }
-    int rowCount(const QModelIndex & parent) const override { return parent.isValid() ? 0 : 1; }
-
-private:
-    AbstractResourcesBackend* m_backend;
-};
-
 SourcesModel::SourcesModel(QObject* parent)
     : KConcatenateRowsProxyModel(parent)
 {}
@@ -117,5 +96,3 @@ AbstractSourcesBackend * SourcesModel::sourcesBackendByName(const QString& id) c
     }
     return nullptr;
 }
-
-#include "SourcesModel.moc"

@@ -54,6 +54,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_PROPERTY(QVariantList subcategories READ subcategories NOTIFY subcategoriesChanged)
     Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
+    Q_PROPERTY(bool sortByRelevancy READ sortByRelevancy NOTIFY sortByRelevancyChanged)
 public:
     explicit ResourcesProxyModel(QObject* parent = nullptr);
     enum Roles {
@@ -129,6 +130,7 @@ public:
 
     bool canFetchMore(const QModelIndex & parent) const override;
     void fetchMore(const QModelIndex & parent) override;
+    bool sortByRelevancy() const;
 
     void classBegin() override {}
     void componentComplete() override;
@@ -171,6 +173,7 @@ Q_SIGNALS:
     void resourcesUrlChanged(const QUrl &url);
     void countChanged();
     void filterMinimumStateChanged(bool filterMinimumState);
+    void sortByRelevancyChanged(bool sortByRelevancy);
 };
 
 #endif

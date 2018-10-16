@@ -116,7 +116,10 @@ void ResourcesProxyModel::setSearch(const QString &_searchText)
 
     if (diff) {
         m_filters.search = searchText;
-        m_sortByRelevancy = !searchText.isEmpty();
+        if (m_sortByRelevancy == searchText.isEmpty()) {
+            m_sortByRelevancy = !searchText.isEmpty();
+            Q_EMIT sortByRelevancyChanged(m_sortByRelevancy);
+        }
         invalidateFilter();
         Q_EMIT searchChanged(m_filters.search);
     }
@@ -591,4 +594,9 @@ void ResourcesProxyModel::fetchMore(const QModelIndex& parent)
     if (!m_currentStream)
         return;
     m_currentStream->fetchMore();
+}
+
+bool ResourcesProxyModel::sortByRelevancy() const
+{
+    return m_sortByRelevancy;
 }
