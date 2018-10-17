@@ -272,37 +272,31 @@ QByteArray FwupdBackend::getChecksum(const QString &filename, QCryptographicHash
 FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
 {
     FwupdRelease *release = fwupd_device_get_release_default(device);
-    GPtrArray *checksums;
     FwupdResource* app = createRelease(device);
 
-    /* update unsupported */
-    if (!app->isLiveUpdatable)
-    {
+    if (!app->isLiveUpdatable) {
         qWarning() << "Fwupd Error: " << app->m_name << "[" << app->m_id << "]" << "cannot be updated ";
         return nullptr;
     }
 
-    /* Important Attributes missing */
-    if (app->m_id.isNull())
-    {
+    if (app->m_id.isNull()) {
         qWarning() << "Fwupd Error: No id for firmware";
         return nullptr;
     }
-    if (app->m_version.isNull())
-    {
+
+    if (app->m_version.isNull()) {
         qWarning() << "Fwupd Error: No version! for " << app->m_id;
         return nullptr;
     }
-    checksums = fwupd_release_get_checksums(release);
-    if (checksums->len == 0)
-    {
+
+    GPtrArray *checksums = fwupd_release_get_checksums(release);
+    if (checksums->len == 0) {
         qWarning() << "Fwupd Error: " << app->m_name << "[" << app->m_id << "] has no checksums, ignoring as unsafe";
         return nullptr;
     }
-    const QUrl update_uri(QString::fromUtf8(fwupd_release_get_uri(release)));
 
-    if (!update_uri.isValid())
-    {
+    const QUrl update_uri(QString::fromUtf8(fwupd_release_get_uri(release)));
+    if (!update_uri.isValid()) {
         qWarning() << "Fwupd Error: No Update URI available for" << app->m_name <<  "[" << app->m_id << "]";
         return nullptr;
     }
@@ -311,13 +305,8 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
     const QString filename_cache = cacheFile(QStringLiteral("fwupd"), QFileInfo(update_uri.path()).fileName());
     Q_ASSERT(!filename_cache.isEmpty());
 
-    const QByteArray checksum_tmp = QByteArray(fwupd_checksum_get_by_kind(checksums, G_CHECKSUM_SHA1));
-
     /* Currently LVFS supports SHA1 only*/
-    if (checksum_tmp.isNull())
-    {
-        qWarning() << "Fwupd Error: No valid checksum for" << filename_cache;
-    }
+    const QByteArray checksum_tmp(fwupd_checksum_get_by_kind(checksums, G_CHECKSUM_SHA1));
     const QByteArray checksum = getChecksum(filename_cache, QCryptographicHash::Sha1);
     if (checksum_tmp != checksum)
     {
@@ -507,7 +496,6 @@ void FwupdBackend::checkForUpdates()
             addResourceToList(createDevice(device));
         }
         g_ptr_array_unref(devices);
-
 
         addUpdates();
         addHistoricalUpdates();

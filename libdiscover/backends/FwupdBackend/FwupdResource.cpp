@@ -88,7 +88,7 @@ QUrl FwupdResource::donationURL()
 
 QVariant FwupdResource::icon() const
 {
-    return  m_iconName;
+    return m_iconName;
 }
 
 QString FwupdResource::installedVersion() const
