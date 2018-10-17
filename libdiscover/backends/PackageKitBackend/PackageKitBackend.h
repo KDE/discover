@@ -65,7 +65,8 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
         void clearPackages(const QStringList &packageNames);
         void resolvePackages(const QStringList &packageNames);
-        void fetchDetails(const QString& pkgid);
+        void fetchDetails(const QString& pkgid) { fetchDetails(QSet<QString>{pkgid}); }
+        void fetchDetails(const QSet<QString>& pkgid);
 
         AbstractResource * resourceForFile(const QUrl & ) override;
         void checkForUpdates() override;
@@ -89,7 +90,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void packageDetails(const PackageKit::Details& details);
         void addPackageToUpdate(PackageKit::Transaction::Info, const QString& pkgid, const QString& summary);
         void getUpdatesFinished(PackageKit::Transaction::Exit,uint);
-        void getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint);
 
     private:
         template <typename T>
