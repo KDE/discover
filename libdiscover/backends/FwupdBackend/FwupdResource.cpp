@@ -30,7 +30,6 @@
 FwupdResource::FwupdResource(QString name, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_name(std::move(name))
-    , m_state(State::Broken)
 {
     Q_ASSERT(!m_name.isEmpty());
     setObjectName(m_name);

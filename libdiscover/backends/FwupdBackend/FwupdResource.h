@@ -82,7 +82,7 @@ public:
     QString m_license;
     QDate m_releaseDate;
 
-    AbstractResource::State m_state;
+    AbstractResource::State m_state = None;
     QUrl m_homepage;
     QString m_iconName;
     int m_size = 0;
