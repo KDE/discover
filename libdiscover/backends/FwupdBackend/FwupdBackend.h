@@ -78,6 +78,9 @@ public:
     FwupdClient *client;
     void handleError(GError **perror);
 
+Q_SIGNALS:
+    void initialized();
+
 private:
     void refreshRemotes();
     FwupdResource * createRelease(FwupdDevice *device);

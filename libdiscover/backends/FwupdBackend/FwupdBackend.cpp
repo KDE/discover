@@ -514,6 +514,7 @@ void FwupdBackend::checkForUpdates()
 
         m_fetching = false;
         emit fetchingChanged();
+        emit initialized();
         fw->deleteLater();
     });
 }
@@ -531,12 +532,27 @@ ResultsStream* FwupdBackend::search(const AbstractResourcesBackend::Filters& fil
         return new ResultsStream(QStringLiteral("FwupdStream-void"), {});
     }
 
-    QVector<AbstractResource*> ret;
-    foreach(AbstractResource* r, m_resources) {
-        if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
-            ret += r;
+    auto stream = new ResultsStream(QStringLiteral("FwupdStream"));
+    auto f = [this, stream, filter] () {
+        QVector<AbstractResource*> ret;
+        foreach(AbstractResource* r, m_resources) {
+            if (r->state() < filter.state)
+                continue;
+
+            if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)) {
+                ret += r;
+            }
+        }
+        if (!ret.isEmpty())
+            Q_EMIT stream->resourcesFound(ret);
+        stream->finish();
+    };
+    if (isFetching()) {
+        connect(this, &FwupdBackend::initialized, stream, f);
+    } else {
+        QTimer::singleShot(0, this, f);
     }
-    return new ResultsStream(QStringLiteral("FwupdStream"), ret);
+    return stream;
 }
 
 ResultsStream * FwupdBackend::findResourceByPackageName(const QUrl& search)
