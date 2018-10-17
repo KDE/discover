@@ -324,12 +324,14 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
 
 bool FwupdBackend::downloadFile(const QUrl &uri, const QString &filename)
 {
+    Q_ASSERT(QThread::currentThread() != QCoreApplication::instance()->thread());
+
     QScopedPointer<QNetworkAccessManager> manager(new QNetworkAccessManager);
     QEventLoop loop;
     QTimer getTimer;
     connect(&getTimer, &QTimer::timeout, &loop, &QEventLoop::quit);
     connect(manager.data(), &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
-    QNetworkReply *reply = manager->get(QNetworkRequest(uri));
+    QScopedPointer<QNetworkReply> reply(manager->get(QNetworkRequest(uri)));
     getTimer.start(600000); // 60 Seconds TimeOout Period
     loop.exec();
     if (!reply)
@@ -346,7 +348,6 @@ bool FwupdBackend::downloadFile(const QUrl &uri, const QString &filename)
             qWarning() << "Fwupd Error: Cannot Open File to write Data" << filename;
         }
     }
-    reply->deleteLater();
     return true;
 }
 
