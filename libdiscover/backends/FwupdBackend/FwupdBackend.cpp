@@ -96,7 +96,9 @@ FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
 FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
 {
     FwupdRelease *release = fwupd_device_get_release_default(device);
-    const QString name = QString::fromUtf8(fwupd_release_get_name(release));
+    QString name = QString::fromUtf8(fwupd_release_get_name(release));
+    if (name.isEmpty())
+        name = QString::fromUtf8(fwupd_device_get_name(device));
 
     FwupdResource* res = new FwupdResource(name, this);
 
