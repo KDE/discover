@@ -41,6 +41,7 @@ Item
     Component.onCompleted: {
         plasmoid.setAction("discover", i18n("Open Software Center..."), "plasma-discover");
         plasmoid.setAction("update", i18n("See Updates..."), "system-software-update");
+        plasmoid.setAction("refresh", i18n("Refresh..."), "view-refresh");
     }
 
     function action_discover() {
@@ -48,5 +49,8 @@ Item
     }
     function action_update() {
         DiscoverNotifier.showDiscoverUpdates();
+    }
+    function action_refresh() {
+        DiscoverNotifier.recheckSystemUpdateNeeded();
     }
 }
