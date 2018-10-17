@@ -61,17 +61,28 @@ public:
     QString executeLabel() const override;
     QDate releaseDate() const override { return m_releaseDate; }
     QString sourceIcon() const override { return {}; }
-    void setDeviceID(const QString &deviceId) { m_deviceID = deviceId; }
-    void setIsDeviceLocked(bool locked) { isDeviceLocked = locked; }
+
+    void setDeviceId(const QString &deviceId) { m_deviceID = deviceId; }
+    void setIsDeviceLocked(bool locked) { m_isDeviceLocked = locked; }
     void setDescription(const QString &description) { m_description = description; }
     void setId(const QString &id) { m_id = id; }
+    void setFile(const QString &file) { m_file = file; }
 
     void setState(AbstractResource::State state);
     void setAddonInstalled(const QString& addon, bool installed);
     void setReleaseDetails(FwupdRelease *release);
     void setDeviceDetails(FwupdDevice* device);
 
-public:
+    QString id() const { return m_id; }
+    QString deviceId() const { return m_deviceID; }
+    QString file() const { return m_file; }
+    QUrl updateURI() const { return QUrl(m_updateURI); }
+    bool isDeviceLocked() const { return m_isDeviceLocked; }
+    bool isOnlyOffline() const { return m_isOnlyOffline; }
+    bool isLiveUpdatable() const { return m_isLiveUpdatable; }
+    bool needsReboot() const { return m_needsReboot; }
+
+private:
     QString m_id;
     QString m_name;
     QString m_summary;
@@ -90,13 +101,12 @@ public:
     QString m_deviceID;
     QString m_updateURI;
     QString m_file;
-    bool isDeviceLocked = false; // True if device is locked!
-    bool isOnlyOffline = false; // True if only offline updates
-    bool isLiveUpdatable = false; // True if device is live updatable
-    bool needsReboot = false; // True if device needs Reboot
-    bool isDeviceRemoval = false; //True if device is Removal
-    bool needsBootLoader = false; //True if BootLoader Required
-    QString guidString;
+    bool m_isDeviceLocked = false; // True if device is locked!
+    bool m_isOnlyOffline = false; // True if only offline updates
+    bool m_isLiveUpdatable = false; // True if device is live updatable
+    bool m_needsReboot = false; // True if device needs Reboot
+    bool m_isDeviceRemoval = false; //True if device is Removal
+    bool m_needsBootLoader = false; //True if BootLoader Required
     QString m_origin;
 };
 

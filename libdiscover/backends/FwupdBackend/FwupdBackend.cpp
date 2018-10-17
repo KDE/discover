@@ -83,7 +83,7 @@ FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
 
     const QString deviceID = QString::fromUtf8(fwupd_device_get_id(device));
     res->setId(QStringLiteral("org.fwupd.%1.device").arg(QString(deviceID).replace(QLatin1Char('/'),QLatin1Char('_'))));
-    res->setDeviceID(deviceID);
+    res->setDeviceId(deviceID);
 
     res->setDeviceDetails(device);
     return res;
@@ -213,30 +213,30 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
     FwupdRelease *release = fwupd_device_get_release_default(device);
     FwupdResource* app = createRelease(device);
 
-    if (!app->isLiveUpdatable) {
-        qWarning() << "Fwupd Error: " << app->m_name << "[" << app->m_id << "]" << "cannot be updated ";
+    if (!app->isLiveUpdatable()) {
+        qWarning() << "Fwupd Error: " << app->name() << "[" << app->id() << "]" << "cannot be updated ";
         return nullptr;
     }
 
-    if (app->m_id.isNull()) {
+    if (app->id().isNull()) {
         qWarning() << "Fwupd Error: No id for firmware";
         return nullptr;
     }
 
-    if (app->m_version.isNull()) {
-        qWarning() << "Fwupd Error: No version! for " << app->m_id;
+    if (app->availableVersion().isNull()) {
+        qWarning() << "Fwupd Error: No version! for " << app->id();
         return nullptr;
     }
 
     GPtrArray *checksums = fwupd_release_get_checksums(release);
     if (checksums->len == 0) {
-        qWarning() << "Fwupd Error: " << app->m_name << "[" << app->m_id << "] has no checksums, ignoring as unsafe";
+        qWarning() << "Fwupd Error: " << app->name() << "[" << app->id() << "] has no checksums, ignoring as unsafe";
         return nullptr;
     }
 
     const QUrl update_uri(QString::fromUtf8(fwupd_release_get_uri(release)));
     if (!update_uri.isValid()) {
-        qWarning() << "Fwupd Error: No Update URI available for" << app->m_name <<  "[" << app->m_id << "]";
+        qWarning() << "Fwupd Error: No Update URI available for" << app->name() <<  "[" << app->id() << "]";
         return nullptr;
     }
 
@@ -255,8 +255,8 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
     }
 
     /* link file to application and return its reference */
-    app->m_file = filename_cache;
-    if (!app->needsReboot)
+    app->setFile(filename_cache);
+    if (!app->needsReboot())
         app->setState(AbstractResource::Upgradeable);
     return app;
 }
