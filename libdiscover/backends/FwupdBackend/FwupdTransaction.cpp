@@ -128,7 +128,6 @@ void FwupdTransaction::finishTransaction()
         newState = AbstractResource::None;
         break;
     }
-    m_app->setAddons(addons());
     m_app->setState(newState);
     setStatus(DoneStatus);
     deleteLater();

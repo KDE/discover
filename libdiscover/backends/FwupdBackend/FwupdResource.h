@@ -34,7 +34,7 @@ Q_OBJECT
 public:
     explicit FwupdResource(QString name, AbstractResourcesBackend* parent);
 
-    QList<PackageState> addonsInformation() override;
+    QList<PackageState> addonsInformation() override { return {}; }
     QString section() override;
     QString origin() const override;
     QString longDescription() override;
@@ -85,7 +85,6 @@ public:
     AbstractResource::State m_state;
     QUrl m_homepage;
     QString m_iconName;
-    QList<PackageState> m_addons;
     int m_size = 0;
 
     QString m_deviceID;

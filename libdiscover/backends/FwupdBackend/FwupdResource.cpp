@@ -36,11 +36,6 @@ FwupdResource::FwupdResource(QString name, AbstractResourcesBackend* parent)
     setObjectName(m_name);
 }
 
-QList<PackageState> FwupdResource::addonsInformation()
-{
-    return m_addons;
-}
-
 QString FwupdResource::availableVersion() const
 {
     return m_version;
@@ -148,30 +143,6 @@ void FwupdResource::setState(AbstractResource::State state)
     }
 
 }
-
-void FwupdResource::setAddons(const AddonList& addons)
-{
-    Q_FOREACH(const QString& toInstall, addons.addonsToInstall())
-    {
-        setAddonInstalled(toInstall, true);
-    }
-    Q_FOREACH(const QString& toRemove, addons.addonsToRemove())
-    {
-        setAddonInstalled(toRemove, false);
-    }
-}
-
-void FwupdResource::setAddonInstalled(const QString& addon, bool installed)
-{
-    for(auto & elem : m_addons)
-    {
-        if(elem.name() == addon)
-        {
-            elem.setInstalled(installed);
-        }
-    }
-}
-
 
 void FwupdResource::invokeApplication() const
 {
