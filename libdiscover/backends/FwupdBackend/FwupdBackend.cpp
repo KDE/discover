@@ -403,7 +403,16 @@ void FwupdBackend::checkForUpdates()
         for(uint i = 0; devices && i < devices->len; i++) {
             FwupdDevice *device = (FwupdDevice *) g_ptr_array_index(devices, i);
 
-            addResourceToList(createDevice(device));
+            auto res = createDevice(device);
+            g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), nullptr, nullptr);
+            for (uint i=0; releases && i<releases->len; ++i) {
+                FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(releases, i);
+                if (res->installedVersion().toUtf8() == fwupd_release_get_version(release)) {
+                    res->setReleaseDetails(release);
+                    break;
+                }
+            }
+            addResourceToList(res);
         }
         g_ptr_array_unref(devices);
 
