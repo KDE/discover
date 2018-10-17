@@ -46,11 +46,6 @@ QString FwupdResource::availableVersion() const
     return m_version;
 }
 
-QStringList FwupdResource::allResourceNames() const
-{
-    return { m_name };
-}
-
 QStringList FwupdResource::categories()
 {
    return m_categories;
@@ -190,5 +185,57 @@ QUrl FwupdResource::url() const
 
 QString FwupdResource::executeLabel() const
 {
-    return i18n("Not Invokable");
+    return QStringLiteral("Not Invokable");
+}
+
+void FwupdResource::setReleaseDetails(FwupdRelease* release)
+{
+    m_origin = QString::fromUtf8(fwupd_release_get_remote_id(release));
+    m_summary = QString::fromUtf8(fwupd_release_get_summary(release));
+    m_vendor = QString::fromUtf8(fwupd_release_get_vendor(release));
+    m_size = fwupd_release_get_size(release);
+    m_version = QString::fromUtf8(fwupd_release_get_version(release));
+    m_description = QString::fromUtf8((fwupd_release_get_description(release)));
+    m_homepage = QUrl(QString::fromUtf8(fwupd_release_get_homepage(release)));
+    m_license = QString::fromUtf8(fwupd_release_get_license(release));
+    m_updateURI = QString::fromUtf8(fwupd_release_get_uri(release));
+}
+
+void FwupdResource::setDeviceDetails(FwupdDevice* dev)
+{
+    isLiveUpdatable = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_UPDATABLE);
+    isOnlyOffline = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_ONLY_OFFLINE);
+    needsReboot = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_REBOOT);
+    isDeviceRemoval = !fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_INTERNAL);
+    needsBootLoader = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_BOOTLOADER);
+
+    GPtrArray *guids = fwupd_device_get_guids(dev);
+    if (guids->len > 0)
+    {
+        QString guidStr = QString::fromUtf8((char *)g_ptr_array_index(guids, 0));
+        for(uint i = 1; i < guids->len; i++)
+        {
+            guidStr += QLatin1Char(',') + QString::fromUtf8((char *)g_ptr_array_index(guids, i));
+        }
+        guidString = guidStr;
+    }
+    if (fwupd_device_get_name(dev))
+    {
+        QString vendorDesc = QString::fromUtf8(fwupd_device_get_name(dev));
+        const QString vendorName = QString::fromUtf8(fwupd_device_get_vendor(dev));
+
+        if (!vendorDesc.startsWith(vendorName))
+            vendorDesc = vendorName + QLatin1Char(' ') + vendorDesc;
+        m_name = vendorDesc;
+     }
+    m_summary = QString::fromUtf8(fwupd_device_get_summary(dev));
+    m_vendor = QString::fromUtf8(fwupd_device_get_vendor(dev));
+    m_releaseDate = QDateTime::fromSecsSinceEpoch(fwupd_device_get_created(dev)).date();
+    m_version = QString::fromUtf8(fwupd_device_get_version(dev));
+    m_description = QString::fromUtf8((fwupd_device_get_description(dev)));
+
+    if (fwupd_device_get_icons(dev)->len >= 1)
+        m_iconName = QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(dev), 0));// Check wether given icon exists or not!
+    else
+        m_iconName = QString::fromUtf8("device-notifier");
 }

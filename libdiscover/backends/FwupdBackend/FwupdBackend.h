@@ -83,12 +83,9 @@ Q_SIGNALS:
 
 private:
     void refreshRemotes();
-    FwupdResource * createRelease(FwupdDevice *device);
-    FwupdResource * createApp(FwupdDevice *device);
     void addUpdates();
     void addResourceToList(FwupdResource *res);
     void addHistoricalUpdates();
-    static void setReleaseDetails(FwupdResource *res, FwupdRelease *release);
     QSet<AbstractResource*> getAllUpdates();
 
     static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
@@ -96,9 +93,10 @@ private:
     static void refreshRemote(FwupdBackend* backend, FwupdRemote *remote, uint cacheAge);
     static QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
     static bool downloadFile(const QUrl &uri, const QString &filename);
-    static QString buildDeviceID(FwupdDevice* device);
-    static void setDeviceDetails(FwupdResource *res, FwupdDevice *device);
+
     static FwupdResource * createDevice(FwupdDevice *device);
+    FwupdResource * createRelease(FwupdDevice *device);
+    FwupdResource * createApp(FwupdDevice *device);
 
     QHash<QString, FwupdResource*> m_resources;
     StandardBackendUpdater* m_updater;

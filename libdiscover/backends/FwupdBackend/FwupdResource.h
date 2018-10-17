@@ -59,30 +59,17 @@ public:
     void fetchChangelog() override;
     QUrl url() const override;
     QString executeLabel() const override;
-
-    void setState(State state);
-    void setSize(int size) { m_size = size; }
-    void setAddons(const AddonList& addons);
-    void setId(const QString &id){m_id = id;}
-    void setName(const QString &name){ m_name = name;}
-    void setSummary(const QString &summary){ m_summary = summary;}
-    void setDescription(const QString &description){ m_description = description;}
-    void setVersion(const QString &version){ m_version = version;}
-    void setVendor(const QString &vendor){ m_vendor = vendor;}
-    void setHomePage(const QUrl &homepage){  m_homepage = homepage;}
-    void setLicense(const QString &license){ m_license = license;}
-    void setIconName(const QString &iconName){ m_iconName = iconName;}
-    void setReleaseDate(const QDate &date){ m_releaseDate = date;}
-    void setOrigin(const QString &origin){ m_origin = origin;}
-    virtual QStringList allResourceNames() const;
-
-    void setIsDeviceLocked(bool status){ isDeviceLocked = status;}
-    void setDeviceID(const QString &deviceID){ m_deviceID = deviceID;}
-    void setUpdateURI(const QString &updateURI){m_updateURI = updateURI;}
-
-    void setAddonInstalled(const QString& addon, bool installed);
-    QString sourceIcon() const override { return m_iconName; }
     QDate releaseDate() const override { return m_releaseDate; }
+    QString sourceIcon() const override { return {}; }
+    void setDeviceID(const QString &deviceId) { m_deviceID = deviceId; }
+    void setIsDeviceLocked(bool locked) { isDeviceLocked = locked; }
+    void setDescription(const QString &description) { m_description = description; }
+    void setId(const QString &id) { m_id = id; }
+
+    void setState(AbstractResource::State state);
+    void setAddonInstalled(const QString& addon, bool installed);
+    void setReleaseDetails(FwupdRelease *release);
+    void setDeviceDetails(FwupdDevice* device);
 
 public:
     QString m_id;
@@ -99,7 +86,7 @@ public:
     QUrl m_homepage;
     QString m_iconName;
     QList<PackageState> m_addons;
-    int m_size;
+    int m_size = 0;
 
     QString m_deviceID;
     QString m_updateURI;

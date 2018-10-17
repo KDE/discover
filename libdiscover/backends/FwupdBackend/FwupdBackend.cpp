@@ -64,13 +64,6 @@ FwupdBackend::~FwupdBackend()
     g_object_unref(client);
 }
 
-QString FwupdBackend::buildDeviceID(FwupdDevice* device)
-{
-    QString DeviceID = QString::fromUtf8(fwupd_device_get_id(device));
-    DeviceID.replace(QLatin1Char('/'),QLatin1Char('_'));
-    return QStringLiteral("org.fwupd.%1.device").arg(DeviceID);
-}
-
 void FwupdBackend::addResourceToList(FwupdResource* res)
 {
     res->setParent(this);
@@ -87,25 +80,22 @@ FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
 {
     const QString name = QString::fromUtf8(fwupd_device_get_name(device));
     FwupdResource* res = new FwupdResource(name, nullptr);
-    res->setId(buildDeviceID(device));
 
-    setDeviceDetails(res, device);
+    const QString deviceID = QString::fromUtf8(fwupd_device_get_id(device));
+    res->setId(QStringLiteral("org.fwupd.%1.device").arg(QString(deviceID).replace(QLatin1Char('/'),QLatin1Char('_'))));
+    res->setDeviceID(deviceID);
+
+    res->setDeviceDetails(device);
     return res;
 }
 
 FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
 {
+    FwupdResource* res = createDevice(device);
+
     FwupdRelease *release = fwupd_device_get_release_default(device);
-    QString name = QString::fromUtf8(fwupd_release_get_name(release));
-    if (name.isEmpty())
-        name = QString::fromUtf8(fwupd_device_get_name(device));
-
-    FwupdResource* res = new FwupdResource(name, this);
-
-    res->setDeviceID(QString::fromUtf8(fwupd_device_get_id(device)));
-    setReleaseDetails(res, release);
-    setDeviceDetails(res, device);
     res->setId(QString::fromUtf8(fwupd_release_get_appstream_id(release)));
+    res->setReleaseDetails(release);
 
     /* the same as we have already */
     if (qstrcmp(fwupd_device_get_version(device), fwupd_release_get_version(release)) == 0)
@@ -115,57 +105,6 @@ FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
 
     return res;
 
-}
-void FwupdBackend::setReleaseDetails(FwupdResource *res, FwupdRelease *release)
-{
-    res->setOrigin(QString::fromUtf8(fwupd_release_get_remote_id(release)));
-    res->setSummary(QString::fromUtf8(fwupd_release_get_summary(release)));
-    res->setVendor(QString::fromUtf8(fwupd_release_get_vendor(release)));
-    res->setSize(fwupd_release_get_size(release));
-    res->setVersion(QString::fromUtf8(fwupd_release_get_version(release)));
-    res->setDescription(QString::fromUtf8((fwupd_release_get_description(release))));
-    res->setHomePage(QUrl(QString::fromUtf8(fwupd_release_get_homepage(release))));
-    res->setLicense(QString::fromUtf8(fwupd_release_get_license(release)));
-    res->m_updateURI = QString::fromUtf8(fwupd_release_get_uri(release));
-}
-
-void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
-{
-    res->isLiveUpdatable = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_UPDATABLE);
-    res->isOnlyOffline = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_ONLY_OFFLINE);
-    res->needsReboot = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_REBOOT);
-    res->isDeviceRemoval = !fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_INTERNAL);
-    res->needsBootLoader = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_BOOTLOADER);
-
-    GPtrArray *guids = fwupd_device_get_guids(dev);
-    if (guids->len > 0)
-    {
-        QString guidStr = QString::fromUtf8((char *)g_ptr_array_index(guids, 0));
-        for(uint i = 1; i < guids->len; i++)
-        {
-            guidStr += QLatin1Char(',') + QString::fromUtf8((char *)g_ptr_array_index(guids, i));
-        }
-        res->guidString = guidStr;
-    }
-    if (fwupd_device_get_name(dev))
-    {
-        QString vendorDesc = QString::fromUtf8(fwupd_device_get_name(dev));
-        const QString vendorName = QString::fromUtf8(fwupd_device_get_vendor(dev));
-
-        if (!vendorDesc.startsWith(vendorName))
-            vendorDesc = vendorName + QLatin1Char(' ') + vendorDesc;
-        res->setName(vendorDesc);
-     }
-    res->setSummary(QString::fromUtf8(fwupd_device_get_summary(dev)));
-    res->setVendor(QString::fromUtf8(fwupd_device_get_vendor(dev)));
-    res->setReleaseDate((QDateTime::fromSecsSinceEpoch(fwupd_device_get_created(dev))).date());
-    res->setVersion(QString::fromUtf8(fwupd_device_get_version(dev)));
-    res->setDescription(QString::fromUtf8((fwupd_device_get_description(dev))));
-
-    if (fwupd_device_get_icons(dev)->len >= 1)
-        res->setIconName(QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(dev), 0)));// Check wether given icon exists or not!
-    else
-        res->setIconName(QString::fromUtf8("device-notifier"));
 }
 
 void FwupdBackend::addUpdates()
