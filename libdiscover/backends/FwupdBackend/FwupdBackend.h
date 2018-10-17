@@ -90,7 +90,7 @@ private:
 
     static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
     static QString cacheFile(const QString &kind, const QString &baseName);
-    static void refreshRemote(FwupdBackend* backend, FwupdRemote *remote, uint cacheAge);
+    static void refreshRemote(FwupdBackend* backend, FwupdRemote *remote, quint64 cacheAge);
     static QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
     static bool downloadFile(const QUrl &uri, const QString &filename);
 

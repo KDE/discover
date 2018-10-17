@@ -290,7 +290,7 @@ bool FwupdBackend::downloadFile(const QUrl &uri, const QString &filename)
     return true;
 }
 
-void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, uint cacheAge)
+void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, quint64 cacheAge)
 {
     if (!fwupd_remote_get_filename_cache_sig(remote))
     {
@@ -301,11 +301,10 @@ void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, uin
     /* check cache age */
     if (cacheAge > 0)
     {
-        quint64 age = fwupd_remote_get_age(remote);
-        uint tmp = age < std::numeric_limits<uint>::max() ? (uint) age : std::numeric_limits<uint>::max();
-        if (tmp < cacheAge)
+        const quint64 age = fwupd_remote_get_age(remote);
+        if (age < cacheAge)
         {
-//             qDebug() << "Fwupd Info:" << fwupd_remote_get_id(remote) << "is only" << tmp << "seconds old, so ignoring refresh! ";
+//             qDebug() << "Fwupd Info:" << fwupd_remote_get_id(remote) << "is only" << age << "seconds old, so ignoring refresh! ";
             return;
         }
     }
