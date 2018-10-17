@@ -515,6 +515,10 @@ Transaction* PackageKitBackend::removeApplication(AbstractResource* app)
 
 QSet<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 {
+    if (isFetching() || !m_packagesToAdd.isEmpty()) {
+        return {};
+    }
+
     QSet<AbstractResource*> ret;
     ret.reserve(m_updatesPackageId.size());
     Q_FOREACH (const QString& pkgid, m_updatesPackageId) {
