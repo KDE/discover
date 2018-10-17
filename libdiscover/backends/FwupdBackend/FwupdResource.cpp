@@ -97,7 +97,7 @@ QString FwupdResource::longDescription()
 
 QString FwupdResource::name() const
 {
-    return m_name;
+    return m_displayName.isEmpty() ? m_name : m_displayName;
 }
 
 QString FwupdResource::vendor() const
@@ -186,7 +186,7 @@ void FwupdResource::setDeviceDetails(FwupdDevice* dev)
 
         if (!vendorDesc.startsWith(vendorName))
             vendorDesc = vendorName + QLatin1Char(' ') + vendorDesc;
-        m_name = vendorDesc;
+        m_displayName = vendorDesc;
      }
     m_summary = QString::fromUtf8(fwupd_device_get_summary(dev));
     m_vendor = QString::fromUtf8(fwupd_device_get_vendor(dev));

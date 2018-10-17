@@ -83,13 +83,14 @@ public:
 
 private:
     QString m_id;
-    QString m_name;
+    const QString m_name;
     QString m_summary;
     QString m_description;
     QString m_version;
     QString m_vendor;
     QStringList m_categories;
     QString m_license;
+    QString m_displayName;
     QDate m_releaseDate;
 
     AbstractResource::State m_state = None;

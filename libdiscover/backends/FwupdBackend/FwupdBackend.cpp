@@ -67,13 +67,13 @@ FwupdBackend::~FwupdBackend()
 void FwupdBackend::addResourceToList(FwupdResource* res)
 {
     res->setParent(this);
-    auto &r = m_resources[res->packageName().toLower()];
+    auto &r = m_resources[res->packageName()];
     if (r) {
         Q_EMIT resourceRemoved(r);
         delete r;
     }
     r = res;
-    Q_ASSERT(m_resources.value(res->packageName().toLower()) == res);
+    Q_ASSERT(m_resources.value(res->packageName()) == res);
 }
 
 FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
