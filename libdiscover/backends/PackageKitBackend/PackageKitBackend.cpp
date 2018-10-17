@@ -99,6 +99,8 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     setWhenAvailable(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache), [this](uint timeSince) {
         if (timeSince > 3600)
             checkForUpdates();
+        else
+            fetchUpdates();
     }, this);
 }
 
@@ -236,7 +238,6 @@ void PackageKitBackend::resolvePackages(const QStringList &packageNames)
 
     TransactionSet* merge = new TransactionSet({tArch, tNotArch});
     connect(merge, &TransactionSet::allFinished, this, &PackageKitBackend::getPackagesFinished);
-    fetchUpdates();
 }
 
 void PackageKitBackend::fetchUpdates()
