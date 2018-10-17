@@ -85,7 +85,6 @@ private:
     void refreshRemotes();
     void addUpdates();
     void addResourceToList(FwupdResource *res);
-    void addHistoricalUpdates();
     QSet<AbstractResource*> getAllUpdates();
 
     static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();

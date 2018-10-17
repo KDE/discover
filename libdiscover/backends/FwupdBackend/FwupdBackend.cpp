@@ -84,7 +84,6 @@ FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
     const QString deviceID = QString::fromUtf8(fwupd_device_get_id(device));
     res->setId(QStringLiteral("org.fwupd.%1.device").arg(QString(deviceID).replace(QLatin1Char('/'),QLatin1Char('_'))));
     res->setDeviceId(deviceID);
-
     res->setDeviceDetails(device);
     return res;
 }
@@ -129,15 +128,8 @@ void FwupdBackend::addUpdates()
         if (!fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_SUPPORTED))
             continue;
 
-        /*Device is Locked Needs Unlocking*/
         if (fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_LOCKED))
-        {
-            auto res = createDevice(device);
-            res->setIsDeviceLocked(true);
-            addResourceToList(res);
-            connect(res, &FwupdResource::stateChanged, this, &FwupdBackend::updatesCountChanged);
             continue;
-        }
 
         if (!fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_UPDATABLE))
             continue;
@@ -173,27 +165,6 @@ void FwupdBackend::addUpdates()
         }
     }
 }
-
-void FwupdBackend::addHistoricalUpdates()
-{
-    g_autoptr(GError) error = nullptr;
-    g_autoptr(FwupdDevice) device = fwupd_client_get_results(client, FWUPD_DEVICE_ID_ANY, nullptr, &error);
-    if (!device)
-    {
-        handleError(&error);
-    }
-    else
-    {
-        FwupdResource* res = createRelease(device);
-        if (!res)
-            qWarning() << "Fwupd Error: Cannot Make App for" << fwupd_device_get_name(device);
-        else
-        {
-            addResourceToList(res);
-        }
-    }
-}
-
 
 QByteArray FwupdBackend::getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm)
 {
@@ -437,7 +408,6 @@ void FwupdBackend::checkForUpdates()
         g_ptr_array_unref(devices);
 
         addUpdates();
-        addHistoricalUpdates();
 
         m_fetching = false;
         emit fetchingChanged();
