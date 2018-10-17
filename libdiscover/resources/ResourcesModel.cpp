@@ -286,8 +286,15 @@ AggregatedResultsStream::AggregatedResultsStream(const QSet<ResultsStream*>& str
     connect(&m_delayedEmission, &QTimer::timeout, this, &AggregatedResultsStream::emitResults);
 }
 
+AggregatedResultsStream::~AggregatedResultsStream() = default;
+
 void AggregatedResultsStream::addResults(const QVector<AbstractResource *>& res)
 {
+    for(auto r : res)
+        connect(r, &QObject::destroyed, this, [this, r](){
+            m_results.removeAll(r);
+        });
+
     m_results += res;
 
     m_delayedEmission.start();
