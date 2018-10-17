@@ -69,7 +69,6 @@ public:
     void setFile(const QString &file) { m_file = file; }
 
     void setState(AbstractResource::State state);
-    void setAddonInstalled(const QString& addon, bool installed);
     void setReleaseDetails(FwupdRelease *release);
     void setDeviceDetails(FwupdDevice* device);
 
