@@ -24,6 +24,8 @@
 #include <KLocalizedString>
 #include <QDebug>
 
+static int FLATPAK_CLI_UPDATE_FREQUENCY = 150;
+
 static void flatpakInstallationProgressCallback(const gchar *stats, guint progress, gboolean estimating, gpointer userData)
 {
     Q_UNUSED(estimating);
@@ -52,6 +54,29 @@ add_new_remote_cb(FlatpakTransaction */*object*/,
     return true;
 }
 
+static void
+progress_changed_cb (FlatpakTransactionProgress *progress,
+                     gpointer                    user_data)
+{
+    FlatpakTransactionThread *obj = (FlatpakTransactionThread*) user_data;
+
+    qDebug() << "progress" << flatpak_transaction_progress_get_progress(progress);
+    obj->setProgress(flatpak_transaction_progress_get_progress(progress));
+}
+
+void
+new_operation_cb(FlatpakTransaction          */*object*/,
+               FlatpakTransactionOperation */*operation*/,
+               FlatpakTransactionProgress  *progress,
+               gpointer                     user_data)
+{
+    FlatpakTransactionThread *obj = (FlatpakTransactionThread*) user_data;
+
+
+    g_signal_connect (progress, "changed", G_CALLBACK (progress_changed_cb), obj);
+    flatpak_transaction_progress_set_update_frequency (progress, FLATPAK_CLI_UPDATE_FREQUENCY);
+}
+
 FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role)
     : QThread()
     , m_result(false)
@@ -64,6 +89,7 @@ FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transac
     g_autoptr(GError) localError = nullptr;
     m_transaction = flatpak_transaction_new_for_installation(m_app->installation(), m_cancellable, &localError);
     g_signal_connect (m_transaction, "add-new-remote", G_CALLBACK (add_new_remote_cb), this);
+    g_signal_connect (m_transaction, "new-operation", G_CALLBACK (new_operation_cb), this);
 }
 
 FlatpakTransactionThread::~FlatpakTransactionThread()
