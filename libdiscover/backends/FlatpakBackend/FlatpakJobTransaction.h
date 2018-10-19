@@ -38,27 +38,21 @@ class FlatpakJobTransaction : public Transaction
 Q_OBJECT
 public:
     FlatpakJobTransaction(FlatpakResource *app, Role role, bool delayStart = false);
-    FlatpakJobTransaction(FlatpakResource *app, FlatpakResource *runtime, Role role, bool delayStart = false);
 
     ~FlatpakJobTransaction();
 
     void cancel() override;
-    void setRuntime(FlatpakResource *runtime);
 
 public Q_SLOTS:
-    void onJobFinished();
     void onJobProgressChanged(int progress);
     void finishTransaction();
     void start();
 
 private:
-    void processRelatedRefs(FlatpakResource *resource);
     void updateProgress();
 
     QPointer<FlatpakResource> m_app;
-    QPointer<FlatpakResource> m_runtime;
     QPointer<FlatpakTransactionThread> m_appJob;
-    QList<QPointer<FlatpakTransactionThread> > m_jobs;
 };
 
 #endif // FLATPAKJOBTRANSACTION_H

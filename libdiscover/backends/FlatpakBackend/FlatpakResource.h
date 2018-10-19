@@ -59,10 +59,10 @@ public:
     };
 
     struct Id {
-        FlatpakInstallation * installation;
+        FlatpakInstallation * const installation;
         QString origin;
         FlatpakResource::ResourceType type;
-        QString id;
+        const QString id;
         QString branch;
         QString arch;
         bool operator!=(const Id& other) const { return !operator==(other); }
@@ -148,6 +148,7 @@ public:
 //     void setAddonInstalled(const QString& addon, bool installed);
 
     void updateFromRef(FlatpakRef* ref);
+    QString ref() const;
     QString sourceIcon() const override { return QStringLiteral("https://flatpak.org/img/logo.svg"); }
 
 Q_SIGNALS:

@@ -36,20 +36,22 @@ static void flatpakInstallationProgressCallback(const gchar *stats, guint progre
     transactionJob->setProgress(progress);
 }
 
-FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role)
+FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role)
     : QThread()
     , m_result(false)
     , m_progress(0)
-    , m_relatedRef(relatedRef.first)
-    , m_relatedRefKind(relatedRef.second)
     , m_app(app)
     , m_role(role)
 {
     m_cancellable = g_cancellable_new();
+
+    g_autoptr(GError) localError = nullptr;
+    m_transaction = flatpak_transaction_new_for_installation(m_app->installation(), m_cancellable, &localError);
 }
 
 FlatpakTransactionThread::~FlatpakTransactionThread()
 {
+    g_object_unref(m_transaction);
     g_object_unref(m_cancellable);
 }
 
@@ -61,59 +63,34 @@ void FlatpakTransactionThread::cancel()
 void FlatpakTransactionThread::run()
 {
     g_autoptr(GError) localError = nullptr;
-    g_autoptr(FlatpakInstalledRef) ref = nullptr;
 
-    const QString refName = m_relatedRef.isEmpty() ? m_app->flatpakName() : m_relatedRef;
-    const uint kind = m_relatedRef.isEmpty() ? (uint)m_app->resourceType() : m_relatedRefKind;
+    const QString refName = m_app->ref();
 
+    bool correct = false;
     if (m_role == Transaction::Role::InstallRole) {
-        bool installRelatedRef = false;
-        // Before we attempt to upgrade related refs we should verify whether they are installed in first place
-        if (m_app->state() == AbstractResource::Upgradeable && !m_relatedRef.isEmpty()) {
-            g_autoptr(GError) installedRefError = nullptr;
-            FlatpakInstalledRef *installedRef = flatpak_installation_get_installed_ref(m_app->installation(),
-                                                                                       kind == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
-                                                                                       refName.toUtf8().constData(),
-                                                                                       m_app->arch().toUtf8().constData(),
-                                                                                       m_app->branch().toUtf8().constData(),
-                                                                                       m_cancellable, &installedRefError);
-            if (installedRefError) {
-                qWarning() << "Failed to check whether related ref is installed: " << installedRefError;
-            }
-            installRelatedRef = installedRef == nullptr;
-        }
-
-        if (m_app->state() == AbstractResource::Upgradeable && !installRelatedRef) {
-            ref = flatpak_installation_update(m_app->installation(),
-                                              FLATPAK_UPDATE_FLAGS_NONE,
-                                              kind == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
+        if (m_app->state() == AbstractResource::Upgradeable && m_app->isInstalled()) {
+            correct = flatpak_transaction_add_update(m_transaction,
                                               refName.toUtf8().constData(),
-                                              m_app->arch().toUtf8().constData(),
-                                              m_app->branch().toUtf8().constData(),
-                                              flatpakInstallationProgressCallback,
-                                              this,
-                                              m_cancellable, &localError);
+                                              nullptr, nullptr, &localError);
         } else {
             if (m_app->flatpakFileType() == QStringLiteral("flatpak")) {
                 g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
                 if (!file) {
                     qWarning() << "Failed to install bundled application" << refName;
+                    m_result = false;
+                    return;
                 }
-                ref = flatpak_installation_install_bundle(m_app->installation(), file, flatpakInstallationProgressCallback, this, m_cancellable, &localError);
+                correct = flatpak_transaction_add_install_bundle(m_transaction, file, nullptr, &localError);
             } else {
-                ref = flatpak_installation_install(m_app->installation(),
+                correct = flatpak_transaction_add_install(m_transaction,
                                                    m_app->origin().toUtf8().constData(),
-                                                   kind == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
                                                    refName.toUtf8().constData(),
-                                                   m_app->arch().toUtf8().constData(),
-                                                   m_app->branch().toUtf8().constData(),
-                                                   flatpakInstallationProgressCallback,
-                                                   this,
-                                                   m_cancellable, &localError);
+                                                   nullptr,
+                                                   &localError);
             }
         }
 
-        if (!ref) {
+        if (!correct) {
             m_result = false;
             m_errorMessage = QString::fromUtf8(localError->message);
             // We are done so we can set the progress to 100
@@ -122,14 +99,9 @@ void FlatpakTransactionThread::run()
             return;
         }
     } else if (m_role == Transaction::Role::RemoveRole) {
-        if (!flatpak_installation_uninstall(m_app->installation(),
-                                            kind == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME,
+        if (!flatpak_transaction_add_uninstall(m_transaction,
                                             refName.toUtf8().constData(),
-                                            m_app->arch().toUtf8().constData(),
-                                            m_app->branch().toUtf8().constData(),
-                                            flatpakInstallationProgressCallback,
-                                            this,
-                                            m_cancellable, &localError)) {
+                                            &localError)) {
             m_result = false;
             m_errorMessage = QString::fromUtf8(localError->message);
             // We are done so we can set the progress to 100
@@ -140,18 +112,13 @@ void FlatpakTransactionThread::run()
     }
 
     // We are done so we can set the progress to 100
-    m_result = true;
+    m_result = flatpak_transaction_run(m_transaction, m_cancellable, &localError);
     setProgress(100);
 }
 
 FlatpakResource * FlatpakTransactionThread::app() const
 {
     return m_app;
-}
-
-bool FlatpakTransactionThread::isRelated() const
-{
-    return !m_relatedRef.isEmpty();
 }
 
 int FlatpakTransactionThread::progress() const

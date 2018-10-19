@@ -1199,35 +1199,10 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
         return nullptr;
     }
 
-    FlatpakJobTransaction *transaction = nullptr;
-    FlatpakInstallation *installation = resource->installation();
-
-    if (resource->propertyState(FlatpakResource::RequiredRuntime) == FlatpakResource::NotKnownYet && resource->resourceType() == FlatpakResource::DesktopApp) {
-        transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole, true);
-        connect(resource, &FlatpakResource::propertyStateChanged, [resource, transaction, this] (FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state) {
-            if (kind != FlatpakResource::RequiredRuntime) {
-                return;
-            }
-
-            if (state == FlatpakResource::AlreadyKnown) {
-                FlatpakResource *runtime = getRuntimeForApp(resource);
-                if (runtime && !runtime->isInstalled()) {
-                    transaction->setRuntime(runtime);
-                }
-            }
-            transaction->start();
-        });
-    } else {
-        FlatpakResource *runtime = getRuntimeForApp(resource);
-        if (runtime && !runtime->isInstalled()) {
-            transaction = new FlatpakJobTransaction(resource, runtime, Transaction::InstallRole);
-        } else {
-            transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole);
-        }
-    }
-
-    connect(transaction, &FlatpakJobTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
+    FlatpakJobTransaction *transaction = transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole);
+    connect(transaction, &FlatpakJobTransaction::statusChanged, [this, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
+            FlatpakInstallation *installation = resource->installation();
             updateAppState(installation, resource);
         }
     });

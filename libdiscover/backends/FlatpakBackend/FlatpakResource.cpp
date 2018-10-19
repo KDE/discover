@@ -145,6 +145,11 @@ void FlatpakResource::updateFromRef(FlatpakRef* ref)
     setObjectName(packageName());
 }
 
+QString FlatpakResource::ref() const
+{
+    return typeAsString() + QLatin1Char('/') + flatpakName() + QLatin1Char('/') + arch() + QLatin1Char('/') + branch();
+}
+
 QStringList FlatpakResource::categories()
 {
     auto cats = m_appdata.categories();

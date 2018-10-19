@@ -35,15 +35,13 @@ class FlatpakTransactionThread : public QThread
 {
 Q_OBJECT
 public:
-    FlatpakTransactionThread(FlatpakResource *app, const QPair<QString, uint> &relatedRef, Transaction::Role role);
+    FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role);
     ~FlatpakTransactionThread() override;
 
     void cancel();
     void run() override;
 
     FlatpakResource * app() const;
-
-    bool isRelated() const;
 
     int progress() const;
     void setProgress(int progress);
@@ -55,11 +53,11 @@ Q_SIGNALS:
     void progressChanged(int progress);
 
 private:
+    FlatpakTransaction* m_transaction;
+
     bool m_result;
     int m_progress;
     QString m_errorMessage;
-    QString m_relatedRef;
-    uint m_relatedRefKind;
     GCancellable *m_cancellable;
     FlatpakResource *m_app;
     Transaction::Role m_role;

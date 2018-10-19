@@ -28,7 +28,7 @@ static FlatpakRef * createFakeRef(FlatpakResource *resource)
     FlatpakRef *ref = nullptr;
     g_autoptr(GError) localError = nullptr;
 
-    const QString id = QStringLiteral("%1/%2/%3/%4").arg(resource->typeAsString(), resource->flatpakName(), resource->arch(), resource->branch());
+    const auto id = resource->ref();
     ref = flatpak_ref_parse(id.toUtf8().constData(), &localError);
 
     if (!ref) {
