@@ -541,5 +541,5 @@ QDate FlatpakResource::releaseDate() const
 
 QString FlatpakResource::sourceIcon() const
 {
-    return QStringLiteral("package");
+    return QStringLiteral("flatpak-discover");
 }
