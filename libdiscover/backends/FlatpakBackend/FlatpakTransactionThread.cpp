@@ -21,6 +21,7 @@
 #include "FlatpakTransactionThread.h"
 #include "FlatpakResource.h"
 
+#include <KLocalizedString>
 #include <QDebug>
 
 static void flatpakInstallationProgressCallback(const gchar *stats, guint progress, gboolean estimating, gpointer userData)
@@ -36,6 +37,21 @@ static void flatpakInstallationProgressCallback(const gchar *stats, guint progre
     transactionJob->setProgress(progress);
 }
 
+gboolean
+add_new_remote_cb(FlatpakTransaction */*object*/,
+               gint                /*reason*/,
+               gchar              *from_id,
+               gchar              *suggested_remote_name,
+               gchar              *url,
+               gpointer            user_data)
+{
+    FlatpakTransactionThread *obj = (FlatpakTransactionThread*) user_data;
+
+    //TODO ask instead
+    Q_EMIT obj->passiveMessage(i18n("Adding remote '%1' in %2 from %3", QString::fromUtf8(suggested_remote_name), QString::fromUtf8(url), QString::fromUtf8(from_id)));
+    return true;
+}
+
 FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role)
     : QThread()
     , m_result(false)
@@ -47,6 +63,7 @@ FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transac
 
     g_autoptr(GError) localError = nullptr;
     m_transaction = flatpak_transaction_new_for_installation(m_app->installation(), m_cancellable, &localError);
+    g_signal_connect (m_transaction, "add-new-remote", G_CALLBACK (add_new_remote_cb), this);
 }
 
 FlatpakTransactionThread::~FlatpakTransactionThread()

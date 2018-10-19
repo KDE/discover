@@ -51,6 +51,7 @@ public:
 
 Q_SIGNALS:
     void progressChanged(int progress);
+    void passiveMessage(const QString &msg);
 
 private:
     FlatpakTransaction* m_transaction;

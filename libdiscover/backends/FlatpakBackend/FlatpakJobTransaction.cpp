@@ -61,6 +61,7 @@ void FlatpakJobTransaction::start()
     m_appJob = new FlatpakTransactionThread(m_app, role());
     connect(m_appJob, &FlatpakTransactionThread::finished, this, &FlatpakJobTransaction::finishTransaction);
     connect(m_appJob, &FlatpakTransactionThread::progressChanged, this, &FlatpakJobTransaction::onJobProgressChanged);
+    connect(m_appJob, &FlatpakTransactionThread::passiveMessage, this, &FlatpakJobTransaction::passiveMessage);
 
     m_appJob->start();
 }
