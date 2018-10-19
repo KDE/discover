@@ -1126,10 +1126,10 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
         stream->finish();
     };
     if (isFetching()) {
-            connect(this, &FlatpakBackend::initialized, stream, f);
-        } else {
-            QTimer::singleShot(0, this, f);
-        }
+        connect(this, &FlatpakBackend::initialized, stream, f);
+    } else {
+        QTimer::singleShot(0, this, f);
+    }
     return stream;
 }
 

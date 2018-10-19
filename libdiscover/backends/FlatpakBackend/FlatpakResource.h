@@ -149,7 +149,7 @@ public:
 
     void updateFromRef(FlatpakRef* ref);
     QString ref() const;
-    QString sourceIcon() const override { return QStringLiteral("https://flatpak.org/img/logo.svg"); }
+    QString sourceIcon() const override;
 
 Q_SIGNALS:
     void propertyStateChanged(PropertyKind kind, PropertyState state);

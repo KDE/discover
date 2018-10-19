@@ -34,7 +34,7 @@ Q_OBJECT
 public:
     explicit FwupdResource(QString name, AbstractResourcesBackend* parent);
 
-    QList<PackageState> addonsInformation() override;
+    QList<PackageState> addonsInformation() override { return {}; }
     QString section() override;
     QString origin() const override;
     QString longDescription() override;
@@ -59,58 +59,54 @@ public:
     void fetchChangelog() override;
     QUrl url() const override;
     QString executeLabel() const override;
-
-    void setState(State state);
-    void setSize(int size) { m_size = size; }
-    void setAddons(const AddonList& addons);
-    void setId(const QString &id){m_id = id;}
-    void setName(const QString &name){ m_name = name;}
-    void setSummary(const QString &summary){ m_summary = summary;}
-    void setDescription(const QString &description){ m_description = description;}
-    void setVersion(const QString &version){ m_version = version;}
-    void setVendor(const QString &vendor){ m_vendor = vendor;}
-    void setHomePage(const QUrl &homepage){  m_homepage = homepage;}
-    void setLicense(const QString &license){ m_license = license;}
-    void setIconName(const QString &iconName){ m_iconName = iconName;}
-    void setReleaseDate(const QDate &date){ m_releaseDate = date;}
-    void setOrigin(const QString &origin){ m_origin = origin;}
-    virtual QStringList allResourceNames() const;
-
-    void setIsDeviceLocked(bool status){ isDeviceLocked = status;}
-    void setDeviceID(const QString &deviceID){ m_deviceID = deviceID;}
-    void setUpdateURI(const QString &updateURI){m_updateURI = updateURI;}
-
-    void setAddonInstalled(const QString& addon, bool installed);
-    QString sourceIcon() const override { return m_iconName; }
     QDate releaseDate() const override { return m_releaseDate; }
+    QString sourceIcon() const override { return {}; }
 
-public:
+    void setDeviceId(const QString &deviceId) { m_deviceID = deviceId; }
+    void setIsDeviceLocked(bool locked) { m_isDeviceLocked = locked; }
+    void setDescription(const QString &description) { m_description = description; }
+    void setId(const QString &id) { m_id = id; }
+    void setFile(const QString &file) { m_file = file; }
+
+    void setState(AbstractResource::State state);
+    void setReleaseDetails(FwupdRelease *release);
+    void setDeviceDetails(FwupdDevice* device);
+
+    QString id() const { return m_id; }
+    QString deviceId() const { return m_deviceID; }
+    QString file() const { return m_file; }
+    QUrl updateURI() const { return QUrl(m_updateURI); }
+    bool isDeviceLocked() const { return m_isDeviceLocked; }
+    bool isOnlyOffline() const { return m_isOnlyOffline; }
+    bool isLiveUpdatable() const { return m_isLiveUpdatable; }
+    bool needsReboot() const { return m_needsReboot; }
+
+private:
     QString m_id;
-    QString m_name;
+    const QString m_name;
     QString m_summary;
     QString m_description;
     QString m_version;
     QString m_vendor;
     QStringList m_categories;
     QString m_license;
+    QString m_displayName;
     QDate m_releaseDate;
 
-    AbstractResource::State m_state;
+    AbstractResource::State m_state = None;
     QUrl m_homepage;
     QString m_iconName;
-    QList<PackageState> m_addons;
-    int m_size;
+    int m_size = 0;
 
     QString m_deviceID;
     QString m_updateURI;
     QString m_file;
-    bool isDeviceLocked = false; // True if device is locked!
-    bool isOnlyOffline = false; // True if only offline updates
-    bool isLiveUpdatable = false; // True if device is live updatable
-    bool needsReboot = false; // True if device needs Reboot
-    bool isDeviceRemoval = false; //True if device is Removal
-    bool needsBootLoader = false; //True if BootLoader Required
-    QString guidString;
+    bool m_isDeviceLocked = false; // True if device is locked!
+    bool m_isOnlyOffline = false; // True if only offline updates
+    bool m_isLiveUpdatable = false; // True if device is live updatable
+    bool m_needsReboot = false; // True if device needs Reboot
+    bool m_isDeviceRemoval = false; //True if device is Removal
+    bool m_needsBootLoader = false; //True if BootLoader Required
     QString m_origin;
 };
 

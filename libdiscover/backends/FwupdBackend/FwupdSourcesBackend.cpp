@@ -46,8 +46,7 @@ public:
             {
                 if((value.toInt() == Qt::Checked) )
                 {
-                    auto proceedFunction = [=]()
-                    {
+                    auto proceedFunction = [this, item, value, role]() {
                         if(fwupd_client_modify_remote(m_backend->backend->client, fwupd_remote_get_id(remote), "Enabled", "true", nullptr, nullptr))
                             item->setData(value, role);
                     };
@@ -57,14 +56,11 @@ public:
                     proceedFunction();
 #endif
                     connect(m_backend,&FwupdSourcesBackend::proceed,this, proceedFunction);
-                    connect(m_backend,&FwupdSourcesBackend::cancel,this,
-                        [=]()
-                            {
-                                item->setCheckState(Qt::Unchecked);
-                                Q_EMIT dataChanged(index,index,{});
-                                return false;
-                            }
-                            );
+                    connect(m_backend,&FwupdSourcesBackend::cancel,this, [this, item, index]() {
+                        item->setCheckState(Qt::Unchecked);
+                        Q_EMIT dataChanged(index,index,{});
+                        return false;
+                    });
                 }
                 else if(value.toInt() == Qt::Unchecked)
                 {
@@ -74,7 +70,7 @@ public:
 
             }
         }
-        Q_EMIT dataChanged(index,index,{});
+        Q_EMIT dataChanged(index, index, {Qt::CheckStateRole});
         return true;
     }
 

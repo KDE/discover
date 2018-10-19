@@ -64,46 +64,37 @@ FwupdBackend::~FwupdBackend()
     g_object_unref(client);
 }
 
-QString FwupdBackend::buildDeviceID(FwupdDevice* device)
-{
-    QString DeviceID = QString::fromUtf8(fwupd_device_get_id(device));
-    DeviceID.replace(QLatin1Char('/'),QLatin1Char('_'));
-    return QStringLiteral("org.fwupd.%1.device").arg(DeviceID);
-}
-
 void FwupdBackend::addResourceToList(FwupdResource* res)
 {
     res->setParent(this);
-    auto &r = m_resources[res->packageName().toLower()];
+    auto &r = m_resources[res->packageName()];
     if (r) {
         Q_EMIT resourceRemoved(r);
         delete r;
     }
     r = res;
-    Q_ASSERT(m_resources.value(res->packageName().toLower()) == res);
+    Q_ASSERT(m_resources.value(res->packageName()) == res);
 }
 
 FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
 {
     const QString name = QString::fromUtf8(fwupd_device_get_name(device));
     FwupdResource* res = new FwupdResource(name, nullptr);
-    res->setId(buildDeviceID(device));
 
-    setDeviceDetails(res, device);
+    const QString deviceID = QString::fromUtf8(fwupd_device_get_id(device));
+    res->setId(QStringLiteral("org.fwupd.%1.device").arg(QString(deviceID).replace(QLatin1Char('/'),QLatin1Char('_'))));
+    res->setDeviceId(deviceID);
+    res->setDeviceDetails(device);
     return res;
 }
 
 FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
 {
+    FwupdResource* res = createDevice(device);
+
     FwupdRelease *release = fwupd_device_get_release_default(device);
-    const QString name = QString::fromUtf8(fwupd_release_get_name(release));
-
-    FwupdResource* res = new FwupdResource(name, this);
-
-    res->setDeviceID(QString::fromUtf8(fwupd_device_get_id(device)));
-    setReleaseDetails(res, release);
-    setDeviceDetails(res, device);
     res->setId(QString::fromUtf8(fwupd_release_get_appstream_id(release)));
+    res->setReleaseDetails(release);
 
     /* the same as we have already */
     if (qstrcmp(fwupd_device_get_version(device), fwupd_release_get_version(release)) == 0)
@@ -113,57 +104,6 @@ FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
 
     return res;
 
-}
-void FwupdBackend::setReleaseDetails(FwupdResource *res, FwupdRelease *release)
-{
-    res->setOrigin(QString::fromUtf8(fwupd_release_get_remote_id(release)));
-    res->setSummary(QString::fromUtf8(fwupd_release_get_summary(release)));
-    res->setVendor(QString::fromUtf8(fwupd_release_get_vendor(release)));
-    res->setSize(fwupd_release_get_size(release));
-    res->setVersion(QString::fromUtf8(fwupd_release_get_version(release)));
-    res->setDescription(QString::fromUtf8((fwupd_release_get_description(release))));
-    res->setHomePage(QUrl(QString::fromUtf8(fwupd_release_get_homepage(release))));
-    res->setLicense(QString::fromUtf8(fwupd_release_get_license(release)));
-    res->m_updateURI = QString::fromUtf8(fwupd_release_get_uri(release));
-}
-
-void FwupdBackend::setDeviceDetails(FwupdResource *res, FwupdDevice *dev)
-{
-    res->isLiveUpdatable = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_UPDATABLE);
-    res->isOnlyOffline = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_ONLY_OFFLINE);
-    res->needsReboot = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_REBOOT);
-    res->isDeviceRemoval = !fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_INTERNAL);
-    res->needsBootLoader = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_BOOTLOADER);
-
-    GPtrArray *guids = fwupd_device_get_guids(dev);
-    if (guids->len > 0)
-    {
-        QString guidStr = QString::fromUtf8((char *)g_ptr_array_index(guids, 0));
-        for(uint i = 1; i < guids->len; i++)
-        {
-            guidStr += QLatin1Char(',') + QString::fromUtf8((char *)g_ptr_array_index(guids, i));
-        }
-        res->guidString = guidStr;
-    }
-    if (fwupd_device_get_name(dev))
-    {
-        QString vendorDesc = QString::fromUtf8(fwupd_device_get_name(dev));
-        const QString vendorName = QString::fromUtf8(fwupd_device_get_vendor(dev));
-
-        if (!vendorDesc.startsWith(vendorName))
-            vendorDesc = vendorName + QLatin1Char(' ') + vendorDesc;
-        res->setName(vendorDesc);
-     }
-    res->setSummary(QString::fromUtf8(fwupd_device_get_summary(dev)));
-    res->setVendor(QString::fromUtf8(fwupd_device_get_vendor(dev)));
-    res->setReleaseDate((QDateTime::fromSecsSinceEpoch(fwupd_device_get_created(dev))).date());
-    res->setVersion(QString::fromUtf8(fwupd_device_get_version(dev)));
-    res->setDescription(QString::fromUtf8((fwupd_device_get_description(dev))));
-
-    if (fwupd_device_get_icons(dev)->len >= 1)
-        res->setIconName(QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(dev), 0)));// Check wether given icon exists or not!
-    else
-        res->setIconName(QString::fromUtf8("device-notifier"));
 }
 
 void FwupdBackend::addUpdates()
@@ -188,15 +128,8 @@ void FwupdBackend::addUpdates()
         if (!fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_SUPPORTED))
             continue;
 
-        /*Device is Locked Needs Unlocking*/
         if (fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_LOCKED))
-        {
-            auto res = createDevice(device);
-            res->setIsDeviceLocked(true);
-            addResourceToList(res);
-            connect(res, &FwupdResource::stateChanged, this, &FwupdBackend::updatesCountChanged);
             continue;
-        }
 
         if (!fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_UPDATABLE))
             continue;
@@ -233,27 +166,6 @@ void FwupdBackend::addUpdates()
     }
 }
 
-void FwupdBackend::addHistoricalUpdates()
-{
-    g_autoptr(GError) error = nullptr;
-    g_autoptr(FwupdDevice) device = fwupd_client_get_results(client, FWUPD_DEVICE_ID_ANY, nullptr, &error);
-    if (!device)
-    {
-        handleError(&error);
-    }
-    else
-    {
-        FwupdResource* res = createRelease(device);
-        if (!res)
-            qWarning() << "Fwupd Error: Cannot Make App for" << fwupd_device_get_name(device);
-        else
-        {
-            addResourceToList(res);
-        }
-    }
-}
-
-
 QByteArray FwupdBackend::getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm)
 {
     QFile f(filename);
@@ -270,38 +182,32 @@ QByteArray FwupdBackend::getChecksum(const QString &filename, QCryptographicHash
 FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
 {
     FwupdRelease *release = fwupd_device_get_release_default(device);
-    GPtrArray *checksums;
     FwupdResource* app = createRelease(device);
 
-    /* update unsupported */
-    if (!app->isLiveUpdatable)
-    {
-        qWarning() << "Fwupd Error: " << app->m_name << "[" << app->m_id << "]" << "cannot be updated ";
+    if (!app->isLiveUpdatable()) {
+        qWarning() << "Fwupd Error: " << app->name() << "[" << app->id() << "]" << "cannot be updated ";
         return nullptr;
     }
 
-    /* Important Attributes missing */
-    if (app->m_id.isNull())
-    {
+    if (app->id().isNull()) {
         qWarning() << "Fwupd Error: No id for firmware";
         return nullptr;
     }
-    if (app->m_version.isNull())
-    {
-        qWarning() << "Fwupd Error: No version! for " << app->m_id;
-        return nullptr;
-    }
-    checksums = fwupd_release_get_checksums(release);
-    if (checksums->len == 0)
-    {
-        qWarning() << "Fwupd Error: " << app->m_name << "[" << app->m_id << "] has no checksums, ignoring as unsafe";
-        return nullptr;
-    }
-    const QUrl update_uri(QString::fromUtf8(fwupd_release_get_uri(release)));
 
-    if (!update_uri.isValid())
-    {
-        qWarning() << "Fwupd Error: No Update URI available for" << app->m_name <<  "[" << app->m_id << "]";
+    if (app->availableVersion().isNull()) {
+        qWarning() << "Fwupd Error: No version! for " << app->id();
+        return nullptr;
+    }
+
+    GPtrArray *checksums = fwupd_release_get_checksums(release);
+    if (checksums->len == 0) {
+        qWarning() << "Fwupd Error: " << app->name() << "[" << app->id() << "] has no checksums, ignoring as unsafe";
+        return nullptr;
+    }
+
+    const QUrl update_uri(QString::fromUtf8(fwupd_release_get_uri(release)));
+    if (!update_uri.isValid()) {
+        qWarning() << "Fwupd Error: No Update URI available for" << app->name() <<  "[" << app->id() << "]";
         return nullptr;
     }
 
@@ -309,13 +215,8 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
     const QString filename_cache = cacheFile(QStringLiteral("fwupd"), QFileInfo(update_uri.path()).fileName());
     Q_ASSERT(!filename_cache.isEmpty());
 
-    const QByteArray checksum_tmp = QByteArray(fwupd_checksum_get_by_kind(checksums, G_CHECKSUM_SHA1));
-
     /* Currently LVFS supports SHA1 only*/
-    if (checksum_tmp.isNull())
-    {
-        qWarning() << "Fwupd Error: No valid checksum for" << filename_cache;
-    }
+    const QByteArray checksum_tmp(fwupd_checksum_get_by_kind(checksums, G_CHECKSUM_SHA1));
     const QByteArray checksum = getChecksum(filename_cache, QCryptographicHash::Sha1);
     if (checksum_tmp != checksum)
     {
@@ -325,20 +226,22 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
     }
 
     /* link file to application and return its reference */
-    app->m_file = filename_cache;
-    if (!app->needsReboot)
+    app->setFile(filename_cache);
+    if (!app->needsReboot())
         app->setState(AbstractResource::Upgradeable);
     return app;
 }
 
 bool FwupdBackend::downloadFile(const QUrl &uri, const QString &filename)
 {
+    Q_ASSERT(QThread::currentThread() != QCoreApplication::instance()->thread());
+
     QScopedPointer<QNetworkAccessManager> manager(new QNetworkAccessManager);
     QEventLoop loop;
     QTimer getTimer;
     connect(&getTimer, &QTimer::timeout, &loop, &QEventLoop::quit);
     connect(manager.data(), &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
-    QNetworkReply *reply = manager->get(QNetworkRequest(uri));
+    QScopedPointer<QNetworkReply> reply(manager->get(QNetworkRequest(uri)));
     getTimer.start(600000); // 60 Seconds TimeOout Period
     loop.exec();
     if (!reply)
@@ -355,11 +258,10 @@ bool FwupdBackend::downloadFile(const QUrl &uri, const QString &filename)
             qWarning() << "Fwupd Error: Cannot Open File to write Data" << filename;
         }
     }
-    reply->deleteLater();
     return true;
 }
 
-void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, uint cacheAge)
+void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, quint64 cacheAge)
 {
     if (!fwupd_remote_get_filename_cache_sig(remote))
     {
@@ -370,11 +272,10 @@ void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, uin
     /* check cache age */
     if (cacheAge > 0)
     {
-        quint64 age = fwupd_remote_get_age(remote);
-        uint tmp = age < std::numeric_limits<uint>::max() ? (uint) age : std::numeric_limits<uint>::max();
-        if (tmp < cacheAge)
+        const quint64 age = fwupd_remote_get_age(remote);
+        if (age < cacheAge)
         {
-//             qDebug() << "Fwupd Info:" << fwupd_remote_get_id(remote) << "is only" << tmp << "seconds old, so ignoring refresh! ";
+//             qDebug() << "Fwupd Info:" << fwupd_remote_get_id(remote) << "is only" << age << "seconds old, so ignoring refresh! ";
             return;
         }
     }
@@ -502,16 +403,24 @@ void FwupdBackend::checkForUpdates()
         for(uint i = 0; devices && i < devices->len; i++) {
             FwupdDevice *device = (FwupdDevice *) g_ptr_array_index(devices, i);
 
-            addResourceToList(createDevice(device));
+            auto res = createDevice(device);
+            g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), nullptr, nullptr);
+            for (uint i=0; releases && i<releases->len; ++i) {
+                FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(releases, i);
+                if (res->installedVersion().toUtf8() == fwupd_release_get_version(release)) {
+                    res->setReleaseDetails(release);
+                    break;
+                }
+            }
+            addResourceToList(res);
         }
         g_ptr_array_unref(devices);
 
-
         addUpdates();
-        addHistoricalUpdates();
 
         m_fetching = false;
         emit fetchingChanged();
+        emit initialized();
         fw->deleteLater();
     });
 }
@@ -529,12 +438,27 @@ ResultsStream* FwupdBackend::search(const AbstractResourcesBackend::Filters& fil
         return new ResultsStream(QStringLiteral("FwupdStream-void"), {});
     }
 
-    QVector<AbstractResource*> ret;
-    foreach(AbstractResource* r, m_resources) {
-        if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive))
-            ret += r;
+    auto stream = new ResultsStream(QStringLiteral("FwupdStream"));
+    auto f = [this, stream, filter] () {
+        QVector<AbstractResource*> ret;
+        foreach(AbstractResource* r, m_resources) {
+            if (r->state() < filter.state)
+                continue;
+
+            if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)) {
+                ret += r;
+            }
+        }
+        if (!ret.isEmpty())
+            Q_EMIT stream->resourcesFound(ret);
+        stream->finish();
+    };
+    if (isFetching()) {
+        connect(this, &FwupdBackend::initialized, stream, f);
+    } else {
+        QTimer::singleShot(0, this, f);
     }
-    return new ResultsStream(QStringLiteral("FwupdStream"), ret);
+    return stream;
 }
 
 ResultsStream * FwupdBackend::findResourceByPackageName(const QUrl& search)

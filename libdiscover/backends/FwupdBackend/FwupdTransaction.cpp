@@ -31,8 +31,8 @@ FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend)
     setCancellable(true);
     setStatus(QueuedStatus);
 
-    Q_ASSERT(!m_app->m_file.isEmpty());
-    Q_ASSERT(!m_app->m_deviceID.isEmpty());
+    Q_ASSERT(!m_app->file().isEmpty());
+    Q_ASSERT(!m_app->deviceId().isEmpty());
     QTimer::singleShot(0, this, &FwupdTransaction::install);
 }
 
@@ -42,9 +42,9 @@ void FwupdTransaction::install()
 {
     g_autoptr(GError) error = nullptr;
 
-    if(m_app->isDeviceLocked)
+    if(m_app->isDeviceLocked())
     {
-        QString device_id = m_app->m_deviceID;
+        QString device_id = m_app->deviceId();
         if(device_id.isNull()) {
             qWarning() << "Fwupd Error: No Device ID set, cannot unlock device " << this << m_app->name();
         } else if(!fwupd_client_unlock(m_backend->client, device_id.toUtf8().constData(),nullptr, &error)) {
@@ -54,13 +54,13 @@ void FwupdTransaction::install()
         return;
     }
 
-    if(!QFileInfo::exists(m_app->m_file))
+    if(!QFileInfo::exists(m_app->file()))
     {
-        const QUrl uri(m_app->m_updateURI);
+        const QUrl uri(m_app->updateURI());
         setStatus(DownloadingStatus);
         QNetworkAccessManager *manager = new QNetworkAccessManager(this);
         auto reply = manager->get(QNetworkRequest(uri));
-        QFile* file = new QFile(m_app->m_file);
+        QFile* file = new QFile(m_app->file());
 
         connect(reply, &QNetworkReply::finished, this, [this, file, reply](){
             file->close();
@@ -90,10 +90,10 @@ void FwupdTransaction::fwupdInstall()
     g_autoptr(GError) error = nullptr;
 
     /* only offline supported */
-    if(m_app->isOnlyOffline)
+    if(m_app->isOnlyOffline())
         install_flags = static_cast<FwupdInstallFlags>(install_flags | FWUPD_INSTALL_FLAG_OFFLINE);
 
-    if(!fwupd_client_install(m_backend->client, m_app->m_deviceID.toUtf8().constData(), m_app->m_file.toUtf8().constData(), install_flags, nullptr, &error))
+    if(!fwupd_client_install(m_backend->client, m_app->deviceId().toUtf8().constData(), m_app->file().toUtf8().constData(), install_flags, nullptr, &error))
     {
         m_backend->handleError(&error);
         setStatus(DoneWithErrorStatus);
@@ -128,7 +128,6 @@ void FwupdTransaction::finishTransaction()
         newState = AbstractResource::None;
         break;
     }
-    m_app->setAddons(addons());
     m_app->setState(newState);
     setStatus(DoneStatus);
     deleteLater();

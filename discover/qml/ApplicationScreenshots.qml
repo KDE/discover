@@ -49,6 +49,7 @@ Flickable {
         width: height/proportion
 
         BusyIndicator {
+            id: indicator
             visible: running
             running: overlayImage.status == Image.Loading
             anchors.fill: parent
@@ -86,7 +87,7 @@ Flickable {
             id: leftAction
             icon.name: "arrow-left"
             enabled: overlay.visible && visible
-            visible: root.currentIndex >= 1
+            visible: root.currentIndex >= 1 && !indicator.running
             onTriggered: root.currentIndex = (root.currentIndex - 1) % screenshotsModel.count
         }
 
@@ -94,7 +95,7 @@ Flickable {
             id: rightAction
             icon.name: "arrow-right"
             enabled: overlay.visible && visible
-            visible: root.currentIndex < (root.count - 1)
+            visible: root.currentIndex < (root.count - 1) && !indicator.running
             onTriggered: root.currentIndex = (root.currentIndex + 1) % screenshotsModel.count
         }
     }

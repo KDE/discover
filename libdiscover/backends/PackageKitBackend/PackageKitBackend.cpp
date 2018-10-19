@@ -87,7 +87,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     t->start();
 
     m_delayedDetailsFetch.setSingleShot(true);
-    m_delayedDetailsFetch.setInterval(0);
+    m_delayedDetailsFetch.setInterval(100);
     connect(&m_delayedDetailsFetch, &QTimer::timeout, this, &PackageKitBackend::performDetailsFetch);
 
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
@@ -108,6 +108,8 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     setWhenAvailable(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache), [this](uint timeSince) {
         if (timeSince > 3600)
             checkForUpdates();
+        else
+            fetchUpdates();
     }, this);
 }
 
@@ -263,7 +265,6 @@ void PackageKitBackend::resolvePackages(const QStringList &packageNames)
 
     TransactionSet* merge = new TransactionSet({tArch, tNotArch});
     connect(merge, &TransactionSet::allFinished, this, &PackageKitBackend::getPackagesFinished);
-    fetchUpdates();
 }
 
 void PackageKitBackend::fetchUpdates()
@@ -541,6 +542,10 @@ Transaction* PackageKitBackend::removeApplication(AbstractResource* app)
 
 QSet<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 {
+    if (isFetching() || !m_packagesToAdd.isEmpty()) {
+        return {};
+    }
+
     QSet<AbstractResource*> ret;
     ret.reserve(m_updatesPackageId.size());
     Q_FOREACH (const QString& pkgid, m_updatesPackageId) {
@@ -570,23 +575,13 @@ void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, c
 void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
 {
     if (!m_updatesPackageId.isEmpty()) {
-        PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(m_updatesPackageId.toList());
-        connect(transaction, &PackageKit::Transaction::details, this, &PackageKitBackend::packageDetails);
-        connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
-        connect(transaction, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesDetailsFinished);
+        fetchDetails(m_updatesPackageId);
     }
 
     m_updater->setProgressing(false);
 
     includePackagesToAdd();
     emit updatesCountChanged();
-}
-
-void PackageKitBackend::getUpdatesDetailsFinished(PackageKit::Transaction::Exit exit, uint)
-{
-    if (exit != PackageKit::Transaction::ExitSuccess) {
-        qWarning() << "Couldn't figure out the updates on PackageKit backend" << exit;
-    }
 }
 
 bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource* res) const
@@ -604,7 +599,7 @@ QString PackageKitBackend::upgradeablePackageId(const PackageKitResource* res) c
     return QString();
 }
 
-void PackageKitBackend::fetchDetails(const QString& pkgid)
+void PackageKitBackend::fetchDetails(const QSet<QString>& pkgid)
 {
     if (!m_delayedDetailsFetch.isActive()) {
         m_delayedDetailsFetch.start();
@@ -621,6 +616,7 @@ void PackageKitBackend::performDetailsFetch()
     PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(ids);
     connect(transaction, &PackageKit::Transaction::details, this, &PackageKitBackend::packageDetails);
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+    m_packageNamesToFetchDetails.clear();
 }
 
 void PackageKitBackend::checkDaemonRunning()

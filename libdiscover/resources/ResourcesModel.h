@@ -35,6 +35,7 @@ class DISCOVERCOMMON_EXPORT AggregatedResultsStream : public ResultsStream
 Q_OBJECT
 public:
     AggregatedResultsStream(const QSet<ResultsStream*>& streams);
+    ~AggregatedResultsStream();
 
 Q_SIGNALS:
     void finished();

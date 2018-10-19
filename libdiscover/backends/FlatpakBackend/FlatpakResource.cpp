@@ -543,3 +543,8 @@ QDate FlatpakResource::releaseDate() const
 
     return {};
 }
+
+QString FlatpakResource::sourceIcon() const
+{
+    return QStringLiteral("flatpak-discover");
+}

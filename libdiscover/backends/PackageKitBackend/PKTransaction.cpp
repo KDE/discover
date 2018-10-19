@@ -242,6 +242,7 @@ void PKTransaction::submitResolve()
         const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
         backend->clearPackages(needResolving);
         backend->resolvePackages(needResolving);
+        backend->fetchUpdates();
     }
 }
 
