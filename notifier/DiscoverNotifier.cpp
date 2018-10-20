@@ -231,3 +231,9 @@ void DiscoverNotifier::foundUpgradeAction(UpgradeAction* action)
 
     notification->sendEvent();
 }
+
+bool DiscoverNotifier::isSystemUpToDate() const
+{
+    auto s = state();
+    return m_count==0 && m_securityCount==0;
+}

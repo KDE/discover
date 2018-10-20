@@ -49,7 +49,7 @@ public:
     explicit DiscoverNotifier(QObject* parent = nullptr);
     ~DiscoverNotifier() override;
 
-    bool isSystemUpToDate() const { return state() == NoUpdates; }
+    bool isSystemUpToDate() const;
 
     State state() const;
     QString iconName() const;
