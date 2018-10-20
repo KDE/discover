@@ -291,10 +291,13 @@ DiscoverPage {
 
             // Category row
             Label {
+                visible: categoryLabel.visible
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Category:")
             }
             Label {
+                id: categoryLabel
+                visible: text.length > 0
                 Layout.fillWidth: true
                 elide: Text.ElideRight
                 text: appInfo.application.categoryDisplay
