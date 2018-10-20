@@ -29,6 +29,7 @@
 #include <QDebug>
 #include <KNotification>
 #include <PackageKit/Daemon>
+#include <PackageKit/Offline>
 #include <QDBusInterface>
 #include <QFile>
 #include <QFileSystemWatcher>
@@ -50,6 +51,11 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::transactionListChanged, this, &PackageKitNotifier::transactionListChanged);
+    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::restartScheduled, this, &PackageKitNotifier::nowNeedsReboot);
+    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::changed, this, [this]{
+        if (PackageKit::Daemon::global()->offline()->updateTriggered())
+            nowNeedsReboot();
+    });
 
     //Check if there's packages after 5'
     QTimer::singleShot(5 * 60 * 1000, this, &PackageKitNotifier::refreshDatabase);
@@ -140,6 +146,9 @@ void PackageKitNotifier::checkOfflineUpdates()
 
 void PackageKitNotifier::recheckSystemUpdateNeeded()
 {
+    if (PackageKit::Daemon::global()->offline()->updateTriggered())
+        return;
+
     m_recheckTimer->start();
 }
 
@@ -250,6 +259,9 @@ QProcess* PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
 
 void PackageKitNotifier::transactionListChanged(const QStringList& tids)
 {
+    if (PackageKit::Daemon::global()->offline()->updateTriggered())
+        return;
+
     for (const auto &tid: tids) {
         if (m_transactions.contains(tid))
             continue;

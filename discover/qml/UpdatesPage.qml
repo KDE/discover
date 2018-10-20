@@ -264,6 +264,7 @@ DiscoverPage
     state:  ( updateModel.hasUpdates                     ? "has-updates"
             : resourcesUpdatesModel.isProgressing        ? "progressing"
             : ResourcesModel.isFetching                  ? "fetching"
+            : resourcesUpdatesModel.needsReboot          ? "reboot"
             : secSinceUpdate < 0                         ? "unknown"
             : secSinceUpdate === 0                       ? "now-uptodate"
             : secSinceUpdate < 1000 * 60 * 60 * 24       ? "uptodate"
@@ -285,6 +286,11 @@ DiscoverPage
         State {
             name: "has-updates"
             PropertyChanges { target: page; title: i18nc("@info", "Updates") }
+        },
+        State {
+            name: "reboot"
+            PropertyChanges { target: page; title: i18nc("@info", "The system requires a reboot") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Reboot") }
         },
         State {
             name: "now-uptodate"

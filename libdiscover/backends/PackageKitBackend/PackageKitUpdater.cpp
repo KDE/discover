@@ -69,6 +69,13 @@ PackageKitUpdater::~PackageKitUpdater()
 
 void PackageKitUpdater::prepare()
 {
+    if (PackageKit::Daemon::global()->offline()->updateTriggered()) {
+        m_toUpgrade.clear();
+        m_allUpgradeable.clear();
+        enableNeedsReboot();
+        return;
+    }
+
     Q_ASSERT(!m_transaction);
     m_toUpgrade = m_backend->upgradeablePackages();
     m_allUpgradeable = m_toUpgrade;
@@ -172,6 +179,9 @@ bool PackageKitUpdater::useOfflineUpdates() const
 
 void PackageKitUpdater::setUseOfflineUpdates(bool use)
 {
+//     To enable from command line use:
+//     kwriteconfig5 --file discoverrc --group Software --key UseOfflineUpdates true
+
     KConfigGroup group(KSharedConfig::openConfig(), "Software");
     group.writeEntry<bool>("UseOfflineUpdates", use);
 }

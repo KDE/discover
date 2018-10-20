@@ -137,6 +137,7 @@ void ResourcesUpdatesModel::init()
             connect(updater, &AbstractBackendUpdater::downloadSpeedChanged, this, &ResourcesUpdatesModel::downloadSpeedChanged);
             connect(updater, &AbstractBackendUpdater::resourceProgressed, this, &ResourcesUpdatesModel::resourceProgressed);
             connect(updater, &AbstractBackendUpdater::passiveMessage, this, &ResourcesUpdatesModel::passiveMessage);
+            connect(updater, &AbstractBackendUpdater::needsRebootChanged, this, &ResourcesUpdatesModel::needsRebootChanged);
             connect(updater, &AbstractBackendUpdater::destroyed, this, &ResourcesUpdatesModel::updaterDestroyed);
             m_updaters += updater;
 
@@ -279,6 +280,15 @@ void ResourcesUpdatesModel::setTransaction(UpdateTransaction* transaction)
 Transaction* ResourcesUpdatesModel::transaction() const
 {
     return m_transaction.data();
+}
+
+bool ResourcesUpdatesModel::needsReboot() const
+{
+    for(auto upd: m_updaters) {
+        if (upd->needsReboot())
+            return true;
+    }
+    return false;
 }
 
 #include "ResourcesUpdatesModel.moc"

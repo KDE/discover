@@ -45,6 +45,7 @@
 
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
+#include <PackageKit/Offline>
 #include <PackageKit/Details>
 
 #include <KLocalizedString>
@@ -90,6 +91,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     m_delayedDetailsFetch.setInterval(100);
     connect(&m_delayedDetailsFetch, &QTimer::timeout, this, &PackageKitBackend::performDetailsFetch);
 
+    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::restartScheduled, m_updater, &PackageKitUpdater::enableNeedsReboot);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
@@ -488,6 +490,9 @@ bool PackageKitBackend::hasSecurityUpdates() const
 
 int PackageKitBackend::updatesCount() const
 {
+    if (PackageKit::Daemon::global()->offline()->updateTriggered())
+        return 0;
+
     int ret = 0;
     QSet<QString> packages;
     for(auto res: upgradeablePackages()) {

@@ -37,3 +37,17 @@ void AbstractBackendUpdater::fetchChangelog() const
         res->fetchChangelog();
     }
 }
+
+void AbstractBackendUpdater::enableNeedsReboot()
+{
+    if (m_needsReboot)
+        return;
+
+    m_needsReboot = true;
+    needsRebootChanged();
+}
+
+bool AbstractBackendUpdater::needsReboot() const
+{
+    return m_needsReboot;
+}

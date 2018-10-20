@@ -56,6 +56,7 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(bool isCancelable READ isCancelable NOTIFY cancelableChanged)
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
+    Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
     Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
     public:
         /**
@@ -128,6 +129,10 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          * @returns the speed at which we are downloading
          */
         virtual quint64 downloadSpeed() const = 0;
+
+        void enableNeedsReboot();
+
+        bool needsReboot() const;
 
     public Q_SLOTS:
         /**
@@ -202,6 +207,14 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          * @sa proceed(), cancel()
          */
         void proceedRequest(const QString &title, const QString &description);
+
+        /**
+         * emitted when the updater decides it needs to reboot
+         */
+        void needsRebootChanged();
+
+    private:
+        bool m_needsReboot = false;
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H
