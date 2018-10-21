@@ -50,3 +50,8 @@ void LocalFilePKResource::markInstalled()
     m_state = AbstractResource::Installed;
     Q_EMIT stateChanged();
 }
+
+QString LocalFilePKResource::origin() const
+{
+    return m_path.toLocalFile();
+}
