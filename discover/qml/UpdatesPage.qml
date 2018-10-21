@@ -276,7 +276,7 @@ DiscoverPage
         State {
             name: "fetching"
             PropertyChanges { target: page; title: i18nc("@info", "Fetching...") }
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Looking for updates") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Checking for updates...") }
         },
         State {
             name: "progressing"
