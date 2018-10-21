@@ -101,7 +101,6 @@ class PackageKitResource : public AbstractResource
 
     private:
         void fetchDependencies();
-        void setDependencies(const QStringList &deps);
         /** fetches details individually, it's better if done in batch, like for updates */
         void fetchDetails();
 
