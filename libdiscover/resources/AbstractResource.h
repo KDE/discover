@@ -212,6 +212,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     public Q_SLOTS:
         virtual void fetchScreenshots();
         virtual void fetchChangelog() = 0;
+        virtual void fetchUpdateDetails() { fetchChangelog(); }
 
     Q_SIGNALS:
         void iconChanged();

@@ -205,9 +205,13 @@ void PackageKitResource::setDetails(const PackageKit::Details & details)
 
 void PackageKitResource::fetchChangelog()
 {
+}
+
+void PackageKitResource::fetchUpdateDetails()
+{
     const auto pkgid = availablePackageId();
     if (pkgid.isEmpty()) {
-        connect(this, &PackageKitResource::stateChanged, this, &PackageKitResource::fetchChangelog);
+        connect(this, &PackageKitResource::stateChanged, this, &PackageKitResource::fetchUpdateDetails);
         return;
     }
     PackageKit::Transaction* t = PackageKit::Daemon::getUpdateDetail(availablePackageId());

@@ -46,6 +46,7 @@ class PackageKitResource : public AbstractResource
         bool isTechnical() const override;
         int size() override;
         void fetchChangelog() override;
+        void fetchUpdateDetails() override;
         
         QList<PackageState> addonsInformation() override;
         State state() override;

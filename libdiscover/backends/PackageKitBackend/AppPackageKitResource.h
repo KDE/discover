@@ -53,6 +53,8 @@ class AppPackageKitResource : public PackageKitResource
         QDate releaseDate() const override;
         QString changelog() const override;
 
+        void fetchChangelog() override;
+
     private:
         const AppStream::Component m_appdata;
 };

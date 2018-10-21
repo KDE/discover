@@ -237,3 +237,8 @@ QDate AppPackageKitResource::releaseDate() const
 
     return {};
 }
+
+void AppPackageKitResource::fetchChangelog()
+{
+    emit changelogFetched(changelog());
+}
