@@ -48,7 +48,18 @@ DiscoverPage {
 
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories
-    title: category ? category.name : ""
+
+    function escapeHtml(unsafe) {
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    title: search.length>0 ? i18n("Search: %1", escapeHtml(search))
+         : category ? category.name : ""
 
     signal clearSearch()
 
