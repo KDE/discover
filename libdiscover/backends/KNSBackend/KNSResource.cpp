@@ -266,3 +266,8 @@ Rating * KNSResource::ratingInstance()
     }
     return m_rating;
 }
+
+QString KNSResource::author() const
+{
+    return m_entry.author().name();
+}

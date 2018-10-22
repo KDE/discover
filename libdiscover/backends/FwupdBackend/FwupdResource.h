@@ -61,6 +61,7 @@ public:
     QString executeLabel() const override;
     QDate releaseDate() const override { return m_releaseDate; }
     QString sourceIcon() const override { return {}; }
+    QString author() const override { return {}; }
 
     void setDeviceId(const QString &deviceId) { m_deviceID = deviceId; }
     void setIsDeviceLocked(bool locked) { m_isDeviceLocked = locked; }

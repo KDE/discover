@@ -55,6 +55,7 @@ public:
     void fetchChangelog() override;
     QStringList extends() const override;
     AbstractResource::Type type() const override { return Addon; }
+    QString author() const override;
 
     KNSBackend* knsBackend() const;
 

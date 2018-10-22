@@ -46,12 +46,12 @@ class PackageKitResource : public AbstractResource
         AbstractResource::Type type() const override;
         int size() override;
         void fetchChangelog() override;
-        
         QList<PackageState> addonsInformation() override;
         State state() override;
         
         QString installedVersion() const override;
         QString availableVersion() const override;
+        QString author() const override { return {}; }
         virtual QStringList allPackageNames() const;
         QString installedPackageId() const;
         QString availablePackageId() const;

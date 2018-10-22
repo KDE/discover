@@ -356,6 +356,11 @@ QString SnapResource::channel() const
     return req->error() ? QString() : req->snap()->trackingChannel();
 }
 
+QString SnapResource::author() const
+{
+    return m_snap->publisherDisplayName();
+}
+
 void SnapResource::setChannel(const QString& channelName)
 {
 #ifdef SNAP_CHANNELS

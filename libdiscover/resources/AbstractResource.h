@@ -78,6 +78,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QUrl url READ url CONSTANT)
     Q_PROPERTY(QString executeLabel READ executeLabel CONSTANT)
     Q_PROPERTY(QString sourceIcon READ sourceIcon CONSTANT)
+    Q_PROPERTY(QString author READ author CONSTANT)
     Q_PROPERTY(QDate releaseDate READ releaseDate NOTIFY stateChanged)
     public:
         /**
@@ -155,6 +156,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual QString origin() const = 0;
         QString displayOrigin() const;
         virtual QString section() = 0;
+        virtual QString author() const = 0;
 
         ///@returns what kind of mime types the resource can consume
         virtual QStringList mimetypes() const;

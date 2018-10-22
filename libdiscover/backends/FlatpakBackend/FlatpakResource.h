@@ -124,6 +124,7 @@ public:
     FlatpakResource::Id uniqueId() const;
     QUrl url() const override;
     QDate releaseDate() const override;
+    QString author() const override;
 
     FlatpakInstallation* installation() const { return m_id.installation; }
 

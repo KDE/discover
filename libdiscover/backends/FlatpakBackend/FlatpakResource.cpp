@@ -548,3 +548,8 @@ QString FlatpakResource::sourceIcon() const
 {
     return QStringLiteral("flatpak-discover");
 }
+
+QString FlatpakResource::author() const
+{
+    return m_appdata.developerName();
+}

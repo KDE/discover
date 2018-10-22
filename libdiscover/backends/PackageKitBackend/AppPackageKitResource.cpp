@@ -239,3 +239,8 @@ QDate AppPackageKitResource::releaseDate() const
 
     return {};
 }
+
+QString AppPackageKitResource::author() const
+{
+    return m_appdata.developerName();
+}

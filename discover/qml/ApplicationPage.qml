@@ -332,6 +332,20 @@ DiscoverPage {
                 text: versionString()
             }
 
+            // Author row
+            Label {
+                Layout.alignment: Qt.AlignRight
+                text: i18n("Author:")
+                visible: authorLabel.visible
+            }
+            Label {
+                id: authorLabel
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                visible: text.length>0
+                text: appInfo.application.author
+            }
+
             // Size row
             Label {
                 Layout.alignment: Qt.AlignRight

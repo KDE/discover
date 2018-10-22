@@ -58,6 +58,7 @@ public:
     void invokeApplication() const override;
     void fetchChangelog() override;
     void fetchScreenshots() override;
+    QString author() const override;
     QList<PackageState> addonsInformation() override { return {}; }
     void setSnap(const QSharedPointer<QSnapdSnap> &snap);
 

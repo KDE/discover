@@ -52,6 +52,7 @@ class AppPackageKitResource : public PackageKitResource
         bool canExecute() const override { return true; }
         QDate releaseDate() const override;
         QString changelog() const override;
+        QString author() const override;
 
     private:
         const AppStream::Component m_appdata;
