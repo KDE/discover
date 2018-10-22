@@ -25,6 +25,10 @@ StoredResultsStream::StoredResultsStream(const QSet< ResultsStream* >& streams)
     : AggregatedResultsStream(streams)
 {
     connect(this, &ResultsStream::resourcesFound, this, [this](const QVector<AbstractResource*>& resources) {
+        for(auto r : resources)
+            connect(r, &QObject::destroyed, this, [this, r](){
+                m_resources.removeAll(r);
+            });
         m_resources += resources;
     });
 

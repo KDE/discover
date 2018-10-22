@@ -244,3 +244,8 @@ QString AppPackageKitResource::author() const
 {
     return m_appdata.developerName();
 }
+
+void AppPackageKitResource::fetchChangelog()
+{
+    emit changelogFetched(changelog());
+}

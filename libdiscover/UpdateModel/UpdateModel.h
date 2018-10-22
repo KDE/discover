@@ -72,7 +72,7 @@ public:
     ///packages marked to upgrade
     int toUpdateCount() const;
 
-    Q_SCRIPTABLE void fetchChangelog(int row);
+    Q_SCRIPTABLE void fetchUpdateDetails(int row);
 
     QString updateSize() const;
 

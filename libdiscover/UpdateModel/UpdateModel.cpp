@@ -196,13 +196,13 @@ bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int rol
     return false;
 }
 
-void UpdateModel::fetchChangelog(int row)
+void UpdateModel::fetchUpdateDetails(int row)
 {
     UpdateItem *item = itemFromIndex(index(row, 0));
     Q_ASSERT(item);
     if (!item) return;
 
-    item->app()->fetchChangelog();
+    item->app()->fetchUpdateDetails();
 }
 
 void UpdateModel::integrateChangelog(const QString &changelog)

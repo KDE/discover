@@ -50,5 +50,5 @@ void SnapReviewsBackend::submitReview(AbstractResource* /*res*/, const QString& 
 
 bool SnapReviewsBackend::isResourceSupported(AbstractResource* /*res*/) const
 {
-    return true;
+    return false;
 }

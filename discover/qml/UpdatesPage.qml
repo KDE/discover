@@ -186,7 +186,7 @@ DiscoverPage
                 id: layout
                 property bool extended: false
                 onExtendedChanged: if (extended) {
-                    updateModel.fetchChangelog(index)
+                    updateModel.fetchUpdateDetails(index)
                 }
                 RowLayout {
                     Layout.fillWidth: true

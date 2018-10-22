@@ -84,7 +84,7 @@ private Q_SLOTS:
         QCOMPARE(m->index(0,0).data(UpdateModel::ChangelogRole).toString(), {});
 
         QSignalSpy spy(m, &QAbstractItemModel::dataChanged);
-        m->fetchChangelog(0);
+        m->fetchUpdateDetails(0);
         QVERIFY(spy.count() || spy.wait());
         QCOMPARE(spy.count(), 1);
         delete m;
