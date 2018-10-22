@@ -358,7 +358,12 @@ QString SnapResource::channel() const
 
 QString SnapResource::author() const
 {
-    return m_snap->publisherDisplayName();
+    QString author = m_snap->publisherDisplayName();
+    if (m_snap->publisherValidation() == QSnapdEnums::PublisherValidationVerified) {
+        author += QStringLiteral(" ✅");
+    }
+
+    return author;
 }
 
 void SnapResource::setChannel(const QString& channelName)
