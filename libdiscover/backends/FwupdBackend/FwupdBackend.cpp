@@ -114,10 +114,9 @@ void FwupdBackend::addUpdates()
     if (!devices)
     {
         if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
-        {
             qDebug() << "Fwupd Info: No Devices Found";
+        else
             handleError(&error);
-        }
         return;
     }
 
