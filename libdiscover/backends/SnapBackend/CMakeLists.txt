@@ -6,6 +6,9 @@ target_link_libraries(snap-backend Qt5::Core KF5::CoreAddons KF5::ConfigCore Dis
 if ("${Snapd_VERSION}" VERSION_GREATER 1.40)
     target_compile_definitions(snap-backend PRIVATE -DSNAP_COMMON_IDS -DSNAP_CHANNELS)
 endif()
+if ("${Snapd_VERSION}" VERSION_GREATER 1.42)
+    target_compile_definitions(snap-backend PRIVATE -DSNAP_PUBLISHER)
+endif()
 
 install(TARGETS snap-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
 install(FILES snap-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
