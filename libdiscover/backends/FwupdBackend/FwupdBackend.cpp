@@ -114,10 +114,9 @@ void FwupdBackend::addUpdates()
     if (!devices)
     {
         if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
-        {
             qDebug() << "Fwupd Info: No Devices Found";
-            handleError(&error);
-        }
+        else
+            handleError(error);
         return;
     }
 
@@ -160,7 +159,7 @@ void FwupdBackend::addUpdates()
         } else {
             if (!g_error_matches(error2, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
             {
-                handleError(&error2);
+                handleError(error2);
             }
         }
     }
@@ -335,20 +334,22 @@ void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, qui
     g_autoptr(GError) error = nullptr;
     if (!fwupd_client_update_metadata(backend->client, fwupd_remote_get_id(remote), filename.toUtf8().constData(), filenameSig.toUtf8().constData(), nullptr, &error))
     {
-        backend->handleError(&error);
+        backend->handleError(error);
     }
 }
 
-void FwupdBackend::handleError(GError **perror)
+void FwupdBackend::handleError(GError *perror)
 {
     //TODO: localise the error message
-    if ((*perror)->code != FWUPD_ERROR_NOTHING_TO_DO) {
-        const QString msg = QString::fromUtf8((*perror)->message);
+    if (!g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE) && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO)) {
+        const QString msg = QString::fromUtf8(perror->message);
         QTimer::singleShot(0, this, [this, msg](){
             Q_EMIT passiveMessage(msg);
         });
+        qWarning() << "Fwupd Error" << perror->code << perror->message;
     }
-    qWarning() << "Fwupd Error" << (*perror)->code << (*perror)->message;
+//     else
+//         qDebug() << "Fwupd skipped" << perror->code << perror->message;
 }
 
 QString FwupdBackend::cacheFile(const QString &kind, const QString &basename)
@@ -402,9 +403,17 @@ void FwupdBackend::checkForUpdates()
         auto devices = fw->result();
         for(uint i = 0; devices && i < devices->len; i++) {
             FwupdDevice *device = (FwupdDevice *) g_ptr_array_index(devices, i);
+            g_autoptr(GError) error = nullptr;
+            g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), nullptr, &error);
+
+            if (error) {
+                if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE))
+                    continue;
+
+                handleError(error);
+            }
 
             auto res = createDevice(device);
-            g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), nullptr, nullptr);
             for (uint i=0; releases && i<releases->len; ++i) {
                 FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(releases, i);
                 if (res->installedVersion().toUtf8() == fwupd_release_get_version(release)) {
@@ -528,7 +537,7 @@ AbstractResource * FwupdBackend::resourceForFile(const QUrl& path)
         }
         else
         {
-            handleError(&error);
+            handleError(error);
         }
     }
     return app;
