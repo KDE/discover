@@ -346,8 +346,10 @@ void FwupdBackend::handleError(GError *perror)
         QTimer::singleShot(0, this, [this, msg](){
             Q_EMIT passiveMessage(msg);
         });
+        qWarning() << "Fwupd Error" << perror->code << perror->message;
     }
-    qWarning() << "Fwupd Error" << perror->code << perror->message;
+//     else
+//         qDebug() << "Fwupd skipped" << perror->code << perror->message;
 }
 
 QString FwupdBackend::cacheFile(const QString &kind, const QString &basename)
