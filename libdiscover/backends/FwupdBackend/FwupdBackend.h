@@ -76,7 +76,7 @@ public:
     QString displayName() const override;
     bool hasApplications() const override;
     FwupdClient *client;
-    void handleError(GError **perror);
+    void handleError(GError *perror);
 
 Q_SIGNALS:
     void initialized();

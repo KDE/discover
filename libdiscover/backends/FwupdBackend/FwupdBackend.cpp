@@ -116,7 +116,7 @@ void FwupdBackend::addUpdates()
         if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
             qDebug() << "Fwupd Info: No Devices Found";
         else
-            handleError(&error);
+            handleError(error);
         return;
     }
 
@@ -159,7 +159,7 @@ void FwupdBackend::addUpdates()
         } else {
             if (!g_error_matches(error2, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
             {
-                handleError(&error2);
+                handleError(error2);
             }
         }
     }
@@ -334,20 +334,20 @@ void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, qui
     g_autoptr(GError) error = nullptr;
     if (!fwupd_client_update_metadata(backend->client, fwupd_remote_get_id(remote), filename.toUtf8().constData(), filenameSig.toUtf8().constData(), nullptr, &error))
     {
-        backend->handleError(&error);
+        backend->handleError(error);
     }
 }
 
-void FwupdBackend::handleError(GError **perror)
+void FwupdBackend::handleError(GError *perror)
 {
     //TODO: localise the error message
-    if (g_error_matches(*perror, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE) && g_error_matches(*perror, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO)) {
-        const QString msg = QString::fromUtf8((*perror)->message);
+    if (g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE) && g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO)) {
+        const QString msg = QString::fromUtf8(perror->message);
         QTimer::singleShot(0, this, [this, msg](){
             Q_EMIT passiveMessage(msg);
         });
     }
-    qWarning() << "Fwupd Error" << (*perror)->code << (*perror)->message;
+    qWarning() << "Fwupd Error" << perror->code << perror->message;
 }
 
 QString FwupdBackend::cacheFile(const QString &kind, const QString &basename)
@@ -408,7 +408,7 @@ void FwupdBackend::checkForUpdates()
                 if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE))
                     continue;
 
-                handleError(&error);
+                handleError(error);
             }
 
             auto res = createDevice(device);
@@ -535,7 +535,7 @@ AbstractResource * FwupdBackend::resourceForFile(const QUrl& path)
         }
         else
         {
-            handleError(&error);
+            handleError(error);
         }
     }
     return app;
