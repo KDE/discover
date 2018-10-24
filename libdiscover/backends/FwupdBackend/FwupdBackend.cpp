@@ -407,7 +407,7 @@ void FwupdBackend::checkForUpdates()
             g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), nullptr, &error);
 
             if (error) {
-                if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE))
+                if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE) || g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED))
                     continue;
 
                 handleError(error);
