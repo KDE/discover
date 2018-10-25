@@ -40,6 +40,7 @@ FwupdBackend::FwupdBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , client(fwupd_client_new())
     , m_updater(new StandardBackendUpdater(this))
+    , m_cancellable(g_cancellable_new())
 {
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FwupdBackend::updatesCountChanged);
 
@@ -61,6 +62,11 @@ QMap<GChecksumType, QCryptographicHash::Algorithm> FwupdBackend::gchecksumToQChr
 
 FwupdBackend::~FwupdBackend()
 {
+    g_cancellable_cancel(m_cancellable);
+    m_threadPool.waitForDone(200);
+    m_threadPool.clear();
+    g_object_unref(m_cancellable);
+
     g_object_unref(client);
 }
 
@@ -260,7 +266,7 @@ bool FwupdBackend::downloadFile(const QUrl &uri, const QString &filename)
     return true;
 }
 
-void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, quint64 cacheAge)
+void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, quint64 cacheAge, GCancellable *cancellable)
 {
     if (!fwupd_remote_get_filename_cache_sig(remote))
     {
@@ -332,7 +338,7 @@ void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, qui
     }
 
     g_autoptr(GError) error = nullptr;
-    if (!fwupd_client_update_metadata(backend->client, fwupd_remote_get_id(remote), filename.toUtf8().constData(), filenameSig.toUtf8().constData(), nullptr, &error))
+    if (!fwupd_client_update_metadata(backend->client, fwupd_remote_get_id(remote), filename.toUtf8().constData(), filenameSig.toUtf8().constData(), cancellable, &error))
     {
         backend->handleError(error);
     }
@@ -372,16 +378,16 @@ void FwupdBackend::checkForUpdates()
         return;
 
     auto fw = new QFutureWatcher<GPtrArray*>(this);
-    fw->setFuture(QtConcurrent::run([this] () -> GPtrArray*
+    fw->setFuture(QtConcurrent::run(&m_threadPool, [this] () -> GPtrArray*
         {
             const uint cacheAge = (24*60*60); // Check for updates every day
             g_autoptr(GError) error = nullptr;
 
             /* get devices */
-            GPtrArray* devices = fwupd_client_get_devices(client, nullptr, nullptr);
+            GPtrArray* devices = fwupd_client_get_devices(client, m_cancellable, nullptr);
 
 
-            g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(client, nullptr, &error);
+            g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(client, m_cancellable, &error);
             for(uint i = 0; remotes && i < remotes->len; i++)
             {
                 FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
@@ -391,7 +397,7 @@ void FwupdBackend::checkForUpdates()
                 if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
                     continue;
 
-                refreshRemote(this, remote, cacheAge);
+                refreshRemote(this, remote, cacheAge, m_cancellable);
             }
             return devices;
         }
@@ -407,7 +413,7 @@ void FwupdBackend::checkForUpdates()
             g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), nullptr, &error);
 
             if (error) {
-                if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE))
+                if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE) || g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED))
                     continue;
 
                 handleError(error);
