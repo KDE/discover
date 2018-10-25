@@ -40,7 +40,7 @@
 #include <QCryptographicHash>
 #include <QMap>
 #include <QEventLoop>
-
+#include <QThreadPool>
 
 extern "C" {
 #include <fwupd.h>
@@ -89,7 +89,7 @@ private:
 
     static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
     static QString cacheFile(const QString &kind, const QString &baseName);
-    static void refreshRemote(FwupdBackend* backend, FwupdRemote *remote, quint64 cacheAge);
+    static void refreshRemote(FwupdBackend* backend, FwupdRemote *remote, quint64 cacheAge, GCancellable *cancellable);
     static QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
     static bool downloadFile(const QUrl &uri, const QString &filename);
 
@@ -102,6 +102,8 @@ private:
     bool m_fetching = false;
     int m_startElements;
     QList<AbstractResource*> m_toUpdate;
+    GCancellable *m_cancellable;
+    QThreadPool m_threadPool;
 };
 
 #endif // FWUPDBACKEND_H
