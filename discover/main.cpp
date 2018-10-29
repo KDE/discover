@@ -50,6 +50,7 @@ QCommandLineParser* createParser()
     parser->addOption(QCommandLineOption(QStringLiteral("compact"), i18n("Compact Mode (auto/compact/full)."), QStringLiteral("mode"), QStringLiteral("auto")));
     parser->addOption(QCommandLineOption(QStringLiteral("local-filename"), i18n("Local package file to install"), QStringLiteral("package")));
     parser->addOption(QCommandLineOption(QStringLiteral("listbackends"), i18n("List all the available backends.")));
+    parser->addOption(QCommandLineOption(QStringLiteral("search"), i18n("Search string."), QStringLiteral("text")));
     parser->addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Test file"), QStringLiteral("file.qml")));
     parser->addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
     DiscoverBackendsFactory::setupCommandLine(parser);
@@ -70,6 +71,9 @@ void processArgs(QCommandLineParser* parser, DiscoverObject* mainWindow)
 
     if(parser->isSet(QStringLiteral("mode")))
         mainWindow->openMode(parser->value(QStringLiteral("mode")));
+
+    if(parser->isSet(QStringLiteral("search")))
+        mainWindow->openSearch(parser->value(QStringLiteral("search")));
 
     if(parser->isSet(QStringLiteral("local-filename")))
         mainWindow->openLocalPackage(QUrl::fromUserInput(parser->value(QStringLiteral("local-filename")), {}, QUrl::AssumeLocalFile));
