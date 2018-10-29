@@ -79,8 +79,8 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(AppStreamIntegration::global()->reviews())
     , m_refreshAppstreamMetadataJobs(0)
-    , m_threadPool(new QThreadPool(this))
     , m_cancellable(g_cancellable_new())
+    , m_threadPool(new QThreadPool(this))
 {
     g_autoptr(GError) error = nullptr;
 
