@@ -1199,7 +1199,7 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
         return nullptr;
     }
 
-    FlatpakJobTransaction *transaction = transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole);
+    FlatpakJobTransaction *transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole);
     connect(transaction, &FlatpakJobTransaction::statusChanged, [this, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
             FlatpakInstallation *installation = resource->installation();
