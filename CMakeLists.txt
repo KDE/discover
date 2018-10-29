@@ -33,7 +33,7 @@ find_package(KF5NewStuff 5.23 CONFIG)
 
 set(CMAKE_AUTORCC ON)
 
-pkg_check_modules(FLATPAK  flatpak>=0.6.12)
+pkg_check_modules(Flatpak IMPORTED_TARGET flatpak>=0.6.12)
 pkg_check_modules(Fwupd IMPORTED_TARGET fwupd>=1.0.6)
 
 if(NOT CMAKE_VERSION VERSION_LESS "3.10.0")

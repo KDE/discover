@@ -22,10 +22,10 @@ if(BUILD_DummyBackend)
 endif()
 
 option(BUILD_FlatpakBackend "Build Flatpak support" "ON")
-if(FLATPAK_FOUND AND AppStreamQt_FOUND AND BUILD_FlatpakBackend)
+if(Flatpak_FOUND AND AppStreamQt_FOUND AND BUILD_FlatpakBackend)
     add_subdirectory(FlatpakBackend)
 elseif(BUILD_FlatpakBackend)
-    message(WARNING "BUILD_FlatpakBackend enabled but Flatpak=${FLATPAK_FOUND} or AppStreamQt=${AppStreamQt_FOUND} not found")
+    message(WARNING "BUILD_FlatpakBackend enabled but Flatpak=${Flatpak_FOUND} or AppStreamQt=${AppStreamQt_FOUND} not found")
 endif()
 
 find_package(Snapd)
