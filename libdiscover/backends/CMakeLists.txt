@@ -41,7 +41,7 @@ if(BUILD_SnapBackend AND Snapd_FOUND)
 endif()
 
 option(BUILD_FwupdBackend "Build Fwupd support." "ON")
-if(BUILD_FwupdBackend AND LIBFWUPD_FOUND)
+if(BUILD_FwupdBackend AND TARGET PkgConfig::Fwupd)
     add_subdirectory(FwupdBackend)
 endif()
 
