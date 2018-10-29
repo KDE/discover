@@ -25,7 +25,7 @@ install(FILES org.kde.discover.flatpak.appdata.xml DESTINATION ${KDE_INSTALL_MET
 
 ecm_install_icons(
     ICONS
-        sc-apps-flatpak-discover.svgz
+        sc-apps-flatpak-discover.svg
     DESTINATION ${ICON_INSTALL_DIR}
     THEME hicolor
 )
