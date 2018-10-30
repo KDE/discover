@@ -23,34 +23,33 @@ import QtQuick.Layouts 1.1
 import org.kde.discover.app 1.0
 import org.kde.kirigami 2.0 as Kirigami
 
-Item
+Control
 {
+    id: root
     property alias text: theLabel.text
     property real progress: 1.
-    readonly property real margin: Kirigami.Units.smallSpacing * 1.5
-    implicitWidth: theLabel.implicitWidth + margin*2
-    implicitHeight: theLabel.implicitHeight + margin*2
-    width: implicitWidth
-    height: implicitHeight
+    padding: Kirigami.Units.smallSpacing * 1.5
 
-    Rectangle {
-        color: Kirigami.Theme.disabledTextColor
-        anchors.fill: parent
-        radius: parent.margin
-    }
-
-    Rectangle {
-        anchors {
-            fill: parent
-            rightMargin: (1-parent.progress) * parent.width
+    background: Item {
+        Rectangle {
+            color: Kirigami.Theme.disabledTextColor
+            anchors.fill: parent
+            radius: root.padding
         }
-        color: Kirigami.Theme.highlightColor
-        radius: parent.margin
+
+        Rectangle {
+            anchors {
+                fill: parent
+                rightMargin: (1-root.progress) * parent.width
+            }
+            color: Kirigami.Theme.highlightColor
+            radius: root.padding
+        }
     }
 
-    Label {
+    contentItem: Label {
         id: theLabel
-        anchors.centerIn: parent
+        horizontalAlignment: Text.AlignHCenter
         color: Kirigami.Theme.highlightedTextColor
     }
 }
