@@ -89,8 +89,22 @@ DiscoverPage
             anchors.fill: parent
             enabled: page.currentAction.enabled
 
+            CheckBox {
+                Layout.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.largeSpacing
+                tristate: true
+                checkState: updateModel.toUpdateCount === 0                             ? Qt.Unchecked
+                          : updateModel.toUpdateCount === updateModel.totalUpdatesCount ? Qt.Checked
+                                                                                        : Qt.PartiallyChecked
+
+                onClicked: {
+                    if (updateModel.toUpdateCount === 0)
+                        updateModel.checkAll()
+                    else
+                        updateModel.uncheckAll()
+                }
+            }
+
             LabelBackground {
-                Layout.leftMargin: Kirigami.Units.gridUnit
                 text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
             }
             Label {

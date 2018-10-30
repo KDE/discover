@@ -144,7 +144,7 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
             case AbstractResource::Addon: return addonsSection;
         }
         Q_UNREACHABLE();
-    } 
+    }
     case SectionResourceProgressRole:
         return (100-item->progress()) + (101 * item->resource()->type());
     default:
@@ -337,4 +337,18 @@ void UpdateModel::resourceDataChanged(AbstractResource* res, const QVector<QByte
         Q_EMIT dataChanged(index, index, {SizeRole});
         m_updateSizeTimer->start();
     }
+}
+
+void UpdateModel::checkAll()
+{
+    for(int i=0, c=rowCount(); i<c; ++i)
+        if(index(i,0).data(Qt::CheckStateRole) != Qt::Checked)
+            setData(index(i,0), Qt::Checked, Qt::CheckStateRole);
+}
+
+void UpdateModel::uncheckAll()
+{
+    for(int i=0, c=rowCount(); i<c; ++i)
+        if(index(i,0).data(Qt::CheckStateRole) != Qt::Unchecked)
+            setData(index(i,0), Qt::Unchecked, Qt::CheckStateRole);
 }

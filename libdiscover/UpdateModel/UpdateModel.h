@@ -79,6 +79,9 @@ public:
     ResourcesUpdatesModel* backend() const;
 
 public Q_SLOTS:
+    void checkAll();
+    void uncheckAll();
+
     void setBackend(ResourcesUpdatesModel* updates);
 
 Q_SIGNALS:
