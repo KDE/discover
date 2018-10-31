@@ -28,6 +28,12 @@
 #include <QJsonArray>
 #include <QDebug>
 
+#if WITH_MARKDOWN
+extern "C" {
+#include <mkdio.h>
+}
+#endif
+
 const QStringList PackageKitResource::m_objects({ QStringLiteral("qrc:/qml/DependenciesButton.qml") });
 
 PackageKitResource::PackageKitResource(QString packageName, QString summary, PackageKitBackend* parent)
@@ -248,9 +254,28 @@ static QStringList urlToLinks(const QStringList& urls)
 }
 
 void PackageKitResource::updateDetail(const QString& packageID, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
-                                      const QStringList& /*bugzillaUrls*/, const QStringList& /*cveUrls*/, PackageKit::Transaction::Restart restart, const QString& updateText,
+                                      const QStringList& /*bugzillaUrls*/, const QStringList& /*cveUrls*/, PackageKit::Transaction::Restart restart, const QString &_updateText,
                                       const QString& /*changelog*/, PackageKit::Transaction::UpdateState state, const QDateTime& /*issued*/, const QDateTime& /*updated*/)
 {
+#if WITH_MARKDOWN
+    const char* xx = _updateText.toUtf8().constData();
+    MMIOT *markdownHandle = mkd_string(xx, _updateText.size(), 0);
+
+    QString updateText;
+    if ( !mkd_compile( markdownHandle, MKD_FENCEDCODE | MKD_GITHUBTAGS | MKD_AUTOLINK ) ) {
+        updateText = _updateText;
+    } else {
+        char *htmlDocument;
+        const int size = mkd_document( markdownHandle, &htmlDocument );
+
+        updateText = QString::fromUtf8( htmlDocument, size );
+    }
+    mkd_cleanup( markdownHandle );
+
+#else
+    const auto& updateText = _updateText;
+#endif
+
     const auto name = PackageKit::Daemon::packageName(packageID);
 
     QString info;
