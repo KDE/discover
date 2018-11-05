@@ -105,9 +105,8 @@ void SnapTransaction::setRequest(QSnapdRequest* req)
     setCancellable(false);
     connect(m_request.data(), &QSnapdRequest::progress, this, &SnapTransaction::progressed);
     connect(m_request.data(), &QSnapdRequest::complete, this, &SnapTransaction::finishTransaction);
-    setStatus(SetupStatus);
 
-    setStatus(DownloadingStatus);
+    setStatus(SetupStatus);
     m_request->runAsync();
 }
 
@@ -115,9 +114,17 @@ void SnapTransaction::progressed()
 {
     const auto change = m_request->change();
     int percentage = 0, count = 0;
+
+    auto status = SetupStatus;
     for(int i = 0, c = change->taskCount(); i<c; ++i) {
         ++count;
-        percentage += (100 * change->task(i)->progressDone()) / change->task(i)->progressTotal();
+        auto task = change->task(i);
+        if (task->kind() == QLatin1String("download-snap")) {
+            status = task->status() == QLatin1String("doing") || task->status() == QLatin1String("do") ? DownloadingStatus : CommittingStatus;
+        } else if (task->kind() == QLatin1String("clear-snap")) {
+            status = CommittingStatus;
+        }
+        percentage += (100 * task->progressDone()) / task->progressTotal();
     }
     setProgress(percentage / qMax(count, 1));
 }
