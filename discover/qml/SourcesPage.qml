@@ -75,15 +75,8 @@ DiscoverPage {
                 }
 
                 Button {
-                    visible: resourcesBackend && resourcesBackend.hasApplications
-
-                    enabled: !backendItem.isDefault
-                    text: i18n("Make default")
-                    onClicked: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
-                }
-
-                Button {
                     text: i18n("Add Source...")
+                    icon.name: "list-add"
                     visible: backendItem.backend && backendItem.backend.supportsAdding
 
                     Component {
@@ -100,6 +93,15 @@ DiscoverPage {
                         var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
                         addSourceDialog.open()
                     }
+                }
+
+                Button {
+                    visible: resourcesBackend && resourcesBackend.hasApplications
+
+                    enabled: !backendItem.isDefault
+                    text: i18n("Make default")
+                    icon.name: "favorite"
+                    onClicked: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
                 }
             }
         }
