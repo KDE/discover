@@ -35,7 +35,7 @@ DiscoverPage {
             readonly property QtObject resourcesBackend: backend.resourcesBackend
             readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
 
-            GridLayout {
+            RowLayout {
                 id: sourceTitleLayout
                 Layout.fillHeight: true
                 Connections {
@@ -75,11 +75,17 @@ DiscoverPage {
                 }
 
                 Button {
-                    Layout.alignment: Qt.AlignVCenter
-                    icon.name: "preferences-other"
-                    Layout.column: 2
-
                     visible: resourcesBackend && resourcesBackend.hasApplications
+
+                    enabled: !backendItem.isDefault
+                    text: i18n("Make default")
+                    onClicked: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
+                }
+
+                Button {
+                    text: i18n("Add Source...")
+                    visible: backendItem.backend && backendItem.backend.supportsAdding
+
                     Component {
                         id: dialogComponent
                         AddSourceDialog {
@@ -90,25 +96,9 @@ DiscoverPage {
                         }
                     }
 
-                    id: this
-                    onClicked: settingsMenu.popup(this)
-                    Menu {
-                        id: settingsMenu
-                        MenuItem {
-                            enabled: !backendItem.isDefault
-                            text: i18n("Make default")
-                            onTriggered: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
-                        }
-
-                        MenuItem {
-                            text: i18n("Add Source...")
-                            visible: backendItem.backend && backendItem.backend.supportsAdding
-
-                            onTriggered: {
-                                var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
-                                addSourceDialog.open()
-                            }
-                        }
+                    onClicked: {
+                        var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
+                        addSourceDialog.open()
                     }
                 }
             }
