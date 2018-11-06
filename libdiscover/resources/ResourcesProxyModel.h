@@ -22,8 +22,8 @@
 #ifndef RESOURCESPROXYMODEL_H
 #define RESOURCESPROXYMODEL_H
 
-#include <QtCore/QSortFilterProxyModel>
-#include <QtCore/QString>
+#include <QSortFilterProxyModel>
+#include <QString>
 #include <QStringList>
 #include <QQmlParserStatus>
 

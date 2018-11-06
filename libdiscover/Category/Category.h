@@ -21,11 +21,11 @@
 #ifndef CATEGORY_H
 #define CATEGORY_H
 
-#include <QtCore/QVector>
-#include <QtCore/QPair>
-#include <QtCore/QObject>
-#include <QtCore/QSet>
-#include <QtCore/QUrl>
+#include <QVector>
+#include <QPair>
+#include <QObject>
+#include <QSet>
+#include <QUrl>
 
 #include "discovercommon_export.h"
 

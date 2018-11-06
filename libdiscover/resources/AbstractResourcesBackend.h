@@ -21,9 +21,9 @@
 #ifndef ABSTRACTRESOURCESBACKEND_H
 #define ABSTRACTRESOURCESBACKEND_H
 
-#include <QtCore/QObject>
-#include <QtCore/QPair>
-#include <QtCore/QVector>
+#include <QObject>
+#include <QPair>
+#include <QVector>
 
 #include "AbstractResource.h"
 #include "Transaction/AddonList.h"

@@ -22,7 +22,7 @@
 #define TRANSACTION_H
 
 // Qt includes
-#include <QtCore/QObject>
+#include <QObject>
 
 // Own includes
 #include "AddonList.h"

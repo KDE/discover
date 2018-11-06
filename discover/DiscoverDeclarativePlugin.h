@@ -20,7 +20,7 @@
 #ifndef DISCOVERDECLARATIVEPLUGIN_H
 #define DISCOVERDECLARATIVEPLUGIN_H
 
-#include <QtQml/QQmlExtensionPlugin>
+#include <QQmlExtensionPlugin>
 
 class DiscoverDeclarativePlugin : public QQmlExtensionPlugin
 {

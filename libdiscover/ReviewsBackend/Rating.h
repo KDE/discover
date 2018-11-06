@@ -21,8 +21,8 @@
 #ifndef RATING_H
 #define RATING_H
 
-#include <QtCore/QObject>
-#include <QtCore/QVariant>
+#include <QObject>
+#include <QVariant>
 
 #include "discovercommon_export.h"
 

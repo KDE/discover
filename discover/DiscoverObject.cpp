@@ -29,9 +29,9 @@
 #include <QAction>
 #include "discover_debug.h"
 #include <QDesktopServices>
-#include <QtQml/QQmlEngine>
-#include <QtQml/QQmlContext>
-#include <QtQml/QQmlApplicationEngine>
+#include <QQmlEngine>
+#include <QQmlContext>
+#include <QQmlApplicationEngine>
 #include <QtQuick/QQuickItem>
 #include <qqml.h>
 #include <QPointer>

@@ -21,7 +21,7 @@
 #ifndef ABSTRACTRESOURCE_H
 #define ABSTRACTRESOURCE_H
 
-#include <QtCore/QObject>
+#include <QObject>
 #include <QUrl>
 #include <QStringList>
 #include <QScopedPointer>

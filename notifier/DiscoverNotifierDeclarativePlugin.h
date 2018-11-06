@@ -20,7 +20,7 @@
 #ifndef DISCOVERNOTIFIERDECLARATIVEPLUGIN_H
 #define DISCOVERNOTIFIERDECLARATIVEPLUGIN_H
 
-#include <QtQml/QQmlExtensionPlugin>
+#include <QQmlExtensionPlugin>
 
 class DiscoverNotifierDeclarativePlugin : public QQmlExtensionPlugin
 {

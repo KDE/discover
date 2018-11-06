@@ -21,8 +21,8 @@
 #ifndef REVIEW_H
 #define REVIEW_H
 
-#include <QtCore/QDateTime>
-#include <QtCore/QVariant>
+#include <QDateTime>
+#include <QVariant>
 
 #include "ReviewsModel.h"
 #include "discovercommon_export.h"

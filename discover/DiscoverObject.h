@@ -20,7 +20,7 @@
 #ifndef MUONDISCOVERMAINWINDOW_H
 #define MUONDISCOVERMAINWINDOW_H
 
-#include <QtCore/QUrl>
+#include <QUrl>
 
 #include <QQuickView>
 

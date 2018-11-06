@@ -23,7 +23,7 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractBackendUpdater.h>
 
-#include <QtCore/QStringBuilder>
+#include <QStringBuilder>
 #include <KLocalizedString>
 #include "libdiscover_debug.h"
 

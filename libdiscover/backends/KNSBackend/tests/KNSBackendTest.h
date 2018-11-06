@@ -21,8 +21,8 @@
 #ifndef KNSBACKENDTEST_H
 #define KNSBACKENDTEST_H
 
-#include <QtCore/QObject>
-#include <QtCore/QPointer>
+#include <QObject>
+#include <QPointer>
 #include "ReviewsBackend/ReviewsModel.h"
 
 class AbstractResourcesBackend;

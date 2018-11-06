@@ -22,8 +22,8 @@
 #define UPDATEITEM_H
 
 // Qt includes
-#include <QtCore/QSet>
-#include <QtCore/QString>
+#include <QSet>
+#include <QString>
 #include "discovercommon_export.h"
 
 #include <QIcon>

@@ -20,7 +20,7 @@
 
 #include "Category.h"
 
-#include <QtXml/QDomNode>
+#include <QDomNode>
 
 #include <klocalizedstring.h>
 #include <QFile>

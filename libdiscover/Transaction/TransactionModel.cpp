@@ -21,8 +21,8 @@
 #include "TransactionModel.h"
 
 // Qt includes
-#include <QtCore/QDebug>
-#include <QtCore/QMetaProperty>
+#include <QDebug>
+#include <QMetaProperty>
 #include <KLocalizedString>
 
 // Own includes

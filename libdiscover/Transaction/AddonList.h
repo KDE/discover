@@ -22,7 +22,7 @@
 #define ADDONLIST_H
 
 #include <QStringList>
-#include <QtCore/QVector>
+#include <QVector>
 
 #include "discovercommon_export.h"
 
