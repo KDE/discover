@@ -130,7 +130,8 @@ ResultsStream* SnapBackend::populate(T* job)
         }
 
         QVector<AbstractResource*> ret;
-        QSet<SnapResource*> resources;
+        QVector<SnapResource*> resources;
+        ret.reserve(job->snapCount());
         resources.reserve(job->snapCount());
         for (int i=0, c=job->snapCount(); i<c; ++i) {
             QSharedPointer<QSnapdSnap> snap(job->snap(i));
