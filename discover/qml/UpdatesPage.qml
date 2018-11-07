@@ -91,6 +91,7 @@ DiscoverPage
 
             CheckBox {
                 Layout.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.largeSpacing
+                enabled: !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
                 tristate: true
                 checkState: updateModel.toUpdateCount === 0                             ? Qt.Unchecked
                           : updateModel.toUpdateCount === updateModel.totalUpdatesCount ? Qt.Checked
