@@ -521,6 +521,10 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
     updateAppSize(installation, resource);
 
     m_resources.insert(resource->uniqueId(), resource);
+    if (!resource->extends().isEmpty()) {
+        m_extends.append(resource->extends());
+        m_extends.removeDuplicates();
+    }
 }
 
 class FlatpakSource
@@ -1101,18 +1105,21 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
         return stream;
     } else if(filter.resourceUrl.scheme() == QLatin1String("appstream")) {
         return findResourceByPackageName(filter.resourceUrl);
-    } else if (!filter.resourceUrl.isEmpty() || !filter.extends.isEmpty())
+    } else if (!filter.resourceUrl.isEmpty() || (!filter.extends.isEmpty() && !m_extends.contains(filter.extends)))
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
 
     auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
     auto f = [this, stream, filter] () {
         QVector<AbstractResource*> ret;
-        foreach(AbstractResource* r, m_resources) {
+        foreach(auto r, m_resources) {
             if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable) {
                 continue;
             }
 
             if (r->state() < filter.state)
+                continue;
+
+            if (!filter.extends.isEmpty() && !r->extends().contains(filter.extends))
                 continue;
 
             if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)) {

@@ -141,7 +141,9 @@ void FlatpakResource::updateFromRef(FlatpakRef* ref)
     setBranch(QString::fromUtf8(flatpak_ref_get_branch(ref)));
     setCommit(QString::fromUtf8(flatpak_ref_get_commit(ref)));
     setFlatpakName(QString::fromUtf8(flatpak_ref_get_name(ref)));
-    setType(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime);
+    setType(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? DesktopApp :
+                                          extends().isEmpty() ? Runtime
+                                                              : Extension);
     setObjectName(packageName());
 }
 
@@ -244,7 +246,14 @@ int FlatpakResource::installedSize() const
 
 AbstractResource::Type FlatpakResource::type() const
 {
-    return m_id.type == FlatpakResource::Runtime ? Technical : Application;
+    switch (m_id.type) {
+        case FlatpakResource::Runtime:
+            return Technical;
+        case FlatpakResource::Extension:
+            return Addon;
+        default:
+            return Application;
+    }
 }
 
 QUrl FlatpakResource::homepage()
@@ -381,11 +390,11 @@ FlatpakResource::ResourceType FlatpakResource::resourceType() const
 QString FlatpakResource::typeAsString() const
 {
     switch (m_id.type) {
+        case FlatpakResource::Runtime:
+        case FlatpakResource::Extension:
+            return QLatin1String("runtime");
         case FlatpakResource::DesktopApp:
         case FlatpakResource::Source:
-            return QLatin1String("app");
-        case FlatpakResource::Runtime:
-            return QLatin1String("runtime");
         default:
             return QLatin1String("app");
     }
@@ -549,7 +558,12 @@ QString FlatpakResource::sourceIcon() const
     return QStringLiteral("flatpak-discover");
 }
 
-QString FlatpakResource::author() const
+    QString FlatpakResource::author() const
 {
     return m_appdata.developerName();
+}
+
+QStringList FlatpakResource::extends() const
+{
+    return m_appdata.extends();
 }

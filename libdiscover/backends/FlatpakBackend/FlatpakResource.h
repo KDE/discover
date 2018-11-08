@@ -55,6 +55,7 @@ public:
     enum ResourceType {
         DesktopApp = 0,
         Runtime,
+        Extension,
         Source
     };
 
@@ -125,6 +126,7 @@ public:
     QUrl url() const override;
     QDate releaseDate() const override;
     QString author() const override;
+    QStringList extends() const override;
 
     FlatpakInstallation* installation() const { return m_id.installation; }
 

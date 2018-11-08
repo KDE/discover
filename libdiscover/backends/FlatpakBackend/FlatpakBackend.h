@@ -63,6 +63,7 @@ public:
     QString displayName() const override;
     bool hasApplications() const override { return true; }
     FlatpakResource * addSourceFromFlatpakRepo(const QUrl &url);
+    QStringList extends() const override { return m_extends; }
 
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata);
@@ -111,6 +112,7 @@ private:
     QSharedPointer<OdrsReviewsBackend> m_reviews;
     uint m_isFetching = 0;
     uint m_refreshAppstreamMetadataJobs;
+    QStringList m_extends;
 
     GCancellable *m_cancellable;
     QVector<FlatpakInstallation *> m_installations;
