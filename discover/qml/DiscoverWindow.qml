@@ -73,11 +73,10 @@ Kirigami.ApplicationWindow
         objectName: "update"
     }
     TopLevelPageData {
-        id: settingsAction
-        iconName: "settings"
-        text: i18n("Settings")
+        id: sourcesAction
+        text: i18n("Sources")
         component: topSourcesComp
-        objectName: "settings"
+        objectName: "sources"
     }
 
     Kirigami.Action {

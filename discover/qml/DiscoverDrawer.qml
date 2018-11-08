@@ -117,7 +117,7 @@ Kirigami.GlobalDrawer {
             action: installedAction
         }
         ActionListItem {
-            action: settingsAction
+            action: sourcesAction
         }
 
         ActionListItem {
