@@ -40,6 +40,9 @@ Kirigami.BasicListItem
     Kirigami.MnemonicData.label: action.text
     label: Kirigami.MnemonicData.richTextLabel
 
+    ToolTip.visible: hovered
+    ToolTip.text: action.shortcut || p0.sequence
+
     readonly property var p0: Shortcut {
         sequence: item.Kirigami.MnemonicData.sequence
         onActivated: item.clicked()
