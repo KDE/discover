@@ -57,7 +57,7 @@ void FlatpakJobTransaction::start()
 {
     setStatus(CommittingStatus);
 
-    // App job will be added everytime
+    // App job will be added every time
     m_appJob = new FlatpakTransactionThread(m_app, role());
     connect(m_appJob, &FlatpakTransactionThread::finished, this, &FlatpakJobTransaction::finishTransaction);
     connect(m_appJob, &FlatpakTransactionThread::progressChanged, this, &FlatpakJobTransaction::onJobProgressChanged);

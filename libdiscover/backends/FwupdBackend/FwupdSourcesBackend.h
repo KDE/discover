@@ -26,8 +26,6 @@
 #include "FwupdBackend.h"
 #include <QStandardItemModel>
 
-#include "FwupdBackend.h"
-
 class FwupdSourcesModel;
 
 class FwupdSourcesBackend : public AbstractSourcesBackend

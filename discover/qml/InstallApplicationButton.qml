@@ -35,7 +35,7 @@ ConditionalLoader
             else
                 ResourcesModel.installApplication(application);
         } else {
-            console.warn("trying to un/install but resouce still active", application.name)
+            console.warn("trying to un/install but resource still active", application.name)
         }
     }
 

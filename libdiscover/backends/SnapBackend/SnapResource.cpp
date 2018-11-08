@@ -27,7 +27,6 @@
 #include <QStandardItemModel>
 #include <KLocalizedString>
 #include <utils.h>
-#include <QProcess>
 
 QDebug operator<<(QDebug debug, const QSnapdPlug& plug)
 {

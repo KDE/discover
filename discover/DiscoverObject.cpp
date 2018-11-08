@@ -441,7 +441,7 @@ public:
         if (m_warnings.isEmpty())
             qCDebug(DISCOVER_LOG) << "cool no warnings!";
         else
-            qCDebug(DISCOVER_LOG) << "test finished succesfully despite" << m_warnings;
+            qCDebug(DISCOVER_LOG) << "test finished successfully despite" << m_warnings;
         qGuiApp->exit(m_warnings.count());
     }
 

@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef ABSTRACTSOURCESMANAGER_H
-#define ABSTRACTSOURCESMANAGER_H
+#ifndef ABSTRACTSOURCESBACKEND_H
+#define ABSTRACTSOURCESBACKEND_H
 
 #include <QObject>
 #include "discovercommon_export.h"

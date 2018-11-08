@@ -17,8 +17,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef MUONDISCOVERMAINWINDOW_H
-#define MUONDISCOVERMAINWINDOW_H
+#ifndef DISCOVEROBJECT_H
+#define DISCOVEROBJECT_H
 
 #include <QUrl>
 
@@ -97,4 +97,4 @@ class DiscoverObject : public QObject
         QScopedPointer<CachedNetworkAccessManagerFactory> m_networkAccessManagerFactory;
 };
 
-#endif // MUONINSTALLERDECLARATIVEVIEW_H
+#endif // DISCOVEROBJECT_H

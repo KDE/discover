@@ -79,7 +79,7 @@ void DiscoverNotifier::showDiscoverUpdates()
 void DiscoverNotifier::showUpdatesNotification()
 {
     if (state()==NoUpdates) {
-        //it's not very helpful to notify that everyting is in order
+        //it's not very helpful to notify that everything is in order
         return;
     }
 

@@ -67,7 +67,7 @@ class DISCOVERCOMMON_EXPORT ResultsStream : public QObject
  * To show resources in Muon, we need to initialize all resources we want to show beforehand,
  * we should not create resources in the search function. When we reload the resources
  * (e.g. when initializing), the backend needs change the fetching property throughout the
- * processs.
+ * process.
  */
 class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
 {

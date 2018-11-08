@@ -58,7 +58,6 @@
 
 #include <glib.h>
 #include <QRegularExpression>
-#include "FlatpakSourcesBackend.h"
 
 DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
 
@@ -1055,7 +1054,7 @@ void FlatpakBackend::updateAppState(FlatpakInstallation *flatpakInstallation, Fl
         // If the app is installed, we can set information about commit, arch etc.
         updateAppInstalledMetadata(ref, resource);
     } else {
-        // TODO check if the app is actuall still available
+        // TODO check if the app is actually still available
         resource->setState(AbstractResource::None);
     }
 }

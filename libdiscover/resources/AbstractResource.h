@@ -173,7 +173,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         bool canUpgrade();
         bool isInstalled();
 
-        ///@returns a user-readable explaination of the resource status
+        ///@returns a user-readable explanation of the resource status
         ///by default, it will specify what state() is returning
         virtual QString status();
 
