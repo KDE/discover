@@ -12,11 +12,6 @@ DiscoverPage {
     title: i18n("Settings")
     property string search: ""
 
-    contextualActions: [
-        KirigamiActionBridge { action: app.action("help_about_app") },
-        KirigamiActionBridge { action: app.action("help_report_bug") }
-    ]
-
     mainItem: ListView {
         id: sourcesView
         model: QSortFilterProxyModel {

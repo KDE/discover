@@ -119,6 +119,23 @@ Kirigami.GlobalDrawer {
         ActionListItem {
             action: settingsAction
         }
+
+        ActionListItem {
+            action: Kirigami.Action {
+                text: i18n("Help")
+                icon.name: "help-feedback"
+                onTriggered: helpMenu.open()
+            }
+
+            readonly property var p0: Menu {
+                id: helpMenu
+                title: i18n("Help")
+
+                MenuItem { action: ActionBridge { action: app.action("help_about_app") } }
+                MenuItem { action: ActionBridge { action: app.action("help_report_bug") } }
+            }
+        }
+
         ActionListItem {
             objectName: "updateButton"
             action: updateAction
