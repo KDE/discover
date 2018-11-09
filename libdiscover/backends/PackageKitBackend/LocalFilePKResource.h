@@ -33,9 +33,11 @@ class LocalFilePKResource : public PackageKitResource
         QString comment() override;
 
         AbstractResource::State state() override { return m_state; }
+        QString license() override;
         int size() override;
         void markInstalled();
         QString origin() const override;
+        void fetchDetails() override;
 
     private:
         AbstractResource::State m_state = AbstractResource::None;

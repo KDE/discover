@@ -181,9 +181,9 @@ void PackageKitResource::fetchDetails()
     backend()->fetchDetails(pkgid);
 }
 
-void PackageKitResource::failedFetchingDetails(PackageKit::Transaction::Error, const QString& msg)
+void PackageKitResource::failedFetchingDetails(PackageKit::Transaction::Error error, const QString& msg)
 {
-    qWarning() << "error fetching details" << msg;
+    qWarning() << "error fetching details" << error << msg;
 }
 
 void PackageKitResource::setDependenciesCount(int deps)

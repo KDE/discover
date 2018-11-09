@@ -21,6 +21,8 @@
 #include "LocalFilePKResource.h"
 #include <QDebug>
 #include <QFileInfo>
+#include <PackageKit/Daemon>
+#include <PackageKit/Details>
 
 LocalFilePKResource::LocalFilePKResource(QUrl path, PackageKitBackend* parent)
     : PackageKitResource(path.toString(), path.toString(), parent)
@@ -54,4 +56,18 @@ void LocalFilePKResource::markInstalled()
 QString LocalFilePKResource::origin() const
 {
     return m_path.toLocalFile();
+}
+
+void LocalFilePKResource::fetchDetails()
+{
+    m_details.insert(QStringLiteral("fetching"), true);//we add an entry so it's not re-fetched.
+
+    PackageKit::Transaction* transaction = PackageKit::Daemon::getDetailsLocal(m_path.toLocalFile());
+    connect(transaction, &PackageKit::Transaction::details, this, [this] (const PackageKit::Details &details){ setDetails(details); });
+    connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
+}
+
+QString LocalFilePKResource::license()
+{
+    return m_details.license();
 }

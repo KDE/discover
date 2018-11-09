@@ -98,18 +98,19 @@ class PackageKitResource : public AbstractResource
                           const QDateTime &issued,
                           const QDateTime &updated);
 
-    private Q_SLOTS:
         void failedFetchingDetails(PackageKit::Transaction::Error, const QString& msg);
+
+    protected:
+        PackageKit::Details m_details;
 
     private:
         void fetchDependencies();
         /** fetches details individually, it's better if done in batch, like for updates */
-        void fetchDetails();
+        virtual void fetchDetails();
 
         QMap<PackageKit::Transaction::Info, QStringList> m_packages;
         const QString m_summary;
         const QString m_name;
-        PackageKit::Details m_details;
         int m_dependenciesCount = -1;
         static const QStringList m_objects;
 };
