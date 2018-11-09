@@ -28,7 +28,7 @@
 #include <QJsonArray>
 #include <QDebug>
 
-#if WITH_MARKDOWN
+#if defined(WITH_MARKDOWN)
 extern "C" {
 #include <mkdio.h>
 }
@@ -257,7 +257,7 @@ void PackageKitResource::updateDetail(const QString& packageID, const QStringLis
                                       const QStringList& /*bugzillaUrls*/, const QStringList& /*cveUrls*/, PackageKit::Transaction::Restart restart, const QString &_updateText,
                                       const QString& /*changelog*/, PackageKit::Transaction::UpdateState state, const QDateTime& /*issued*/, const QDateTime& /*updated*/)
 {
-#if WITH_MARKDOWN
+#if defined(WITH_MARKDOWN)
     const char* xx = _updateText.toUtf8().constData();
     MMIOT *markdownHandle = mkd_string(xx, _updateText.size(), 0);
 
