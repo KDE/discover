@@ -38,10 +38,13 @@ class LocalFilePKResource : public PackageKitResource
         void markInstalled();
         QString origin() const override;
         void fetchDetails() override;
+        bool canExecute() const override { return !m_exec.isEmpty(); }
+        void invokeApplication() const override;
 
     private:
         AbstractResource::State m_state = AbstractResource::None;
         QUrl m_path;
+        QString m_exec;
 };
 
 #endif // LOCALFILEPKRESOURCE_H

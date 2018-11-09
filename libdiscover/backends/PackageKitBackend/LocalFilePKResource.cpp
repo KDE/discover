@@ -21,8 +21,11 @@
 #include "LocalFilePKResource.h"
 #include <QDebug>
 #include <QFileInfo>
+#include <QProcess>
 #include <PackageKit/Daemon>
 #include <PackageKit/Details>
+#include <utils.h>
+#include "config-paths.h"
 
 LocalFilePKResource::LocalFilePKResource(QUrl path, PackageKitBackend* parent)
     : PackageKitResource(path.toString(), path.toString(), parent)
@@ -65,9 +68,25 @@ void LocalFilePKResource::fetchDetails()
     PackageKit::Transaction* transaction = PackageKit::Daemon::getDetailsLocal(m_path.toLocalFile());
     connect(transaction, &PackageKit::Transaction::details, this, [this] (const PackageKit::Details &details){ setDetails(details); });
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
+
+    PackageKit::Transaction* transaction2 = PackageKit::Daemon::getFilesLocal(m_path.toLocalFile());
+    connect(transaction2, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
+    connect(transaction2, &PackageKit::Transaction::files, this, [this] (const QString &/*pkgid*/, const QStringList & files){
+        const auto execs = kFilter<QVector<QString>>(files, [](const QString& file) { return file.endsWith(QLatin1String(".desktop")) && file.contains(QLatin1String("usr/share/applications")); });
+        if (!execs.isEmpty())
+            m_exec = execs.constFirst();
+        else
+            qWarning() << "could not find an executable desktop file for" << m_path << "among" << files;
+    });
+    connect(transaction2, &PackageKit::Transaction::finished, this, [] {qDebug() << "."; });
 }
 
 QString LocalFilePKResource::license()
 {
     return m_details.license();
+}
+
+void LocalFilePKResource::invokeApplication() const
+{
+    QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {m_exec});
 }
