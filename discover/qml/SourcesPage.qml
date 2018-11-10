@@ -9,7 +9,7 @@ import "navigation.js" as Navigation
 DiscoverPage {
     id: page
     clip: true
-    title: i18n("Settings")
+    title: i18n("Sources")
     property string search: ""
 
     mainItem: ListView {
