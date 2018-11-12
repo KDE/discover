@@ -179,14 +179,10 @@ QStringList AppPackageKitResource::allPackageNames() const
 
 QList<PackageState> AppPackageKitResource::addonsInformation()
 {
-    const PackageKitBackend* p = static_cast<PackageKitBackend*>(parent());
-    const QVector<AppPackageKitResource*> res = p->extendedBy(m_appdata.id());
-
-    QList<PackageState> ret;
-    Q_FOREACH (AppPackageKitResource* r, res) {
-        ret += PackageState(r->appstreamId(), r->name(), r->comment(), r->isInstalled());
-    }
-    return ret;
+    return kTransform<QList<PackageState>>(
+        backend()->extendedBy(m_appdata.id()),
+        [](AppPackageKitResource* r) { return PackageState(r->appstreamId(), r->name(), r->comment(), r->isInstalled()); }
+    );
 }
 
 QStringList AppPackageKitResource::extends() const

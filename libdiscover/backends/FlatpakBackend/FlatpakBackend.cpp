@@ -1040,11 +1040,10 @@ void FlatpakBackend::onFetchSizeFinished(FlatpakResource *resource, guint64 down
 
     if (runtime && !runtime->isInstalled()) {
         resource->setDownloadSize(runtime->downloadSize() + downloadSize);
-        resource->setInstalledSize(installedSize);
     } else {
         resource->setDownloadSize(downloadSize);
-        resource->setInstalledSize(installedSize);
     }
+    resource->setInstalledSize(installedSize);
 }
 
 void FlatpakBackend::updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
