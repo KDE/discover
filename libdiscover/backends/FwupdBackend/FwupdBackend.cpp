@@ -378,30 +378,6 @@ void FwupdBackend::checkForUpdates()
         return;
 
     auto fw = new QFutureWatcher<GPtrArray*>(this);
-    fw->setFuture(QtConcurrent::run(&m_threadPool, [this] () -> GPtrArray*
-        {
-            const uint cacheAge = (24*60*60); // Check for updates every day
-            g_autoptr(GError) error = nullptr;
-
-            /* get devices */
-            GPtrArray* devices = fwupd_client_get_devices(client, m_cancellable, nullptr);
-
-
-            g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(client, m_cancellable, &error);
-            for(uint i = 0; remotes && i < remotes->len; i++)
-            {
-                FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
-                if (!fwupd_remote_get_enabled(remote))
-                    continue;
-
-                if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
-                    continue;
-
-                refreshRemote(this, remote, cacheAge, m_cancellable);
-            }
-            return devices;
-        }
-    ));
     connect(fw, &QFutureWatcher<GPtrArray*>::finished, this, [this, fw]() {
         m_fetching = true;
         emit fetchingChanged();
@@ -438,6 +414,30 @@ void FwupdBackend::checkForUpdates()
         emit initialized();
         fw->deleteLater();
     });
+    fw->setFuture(QtConcurrent::run(&m_threadPool, [this] () -> GPtrArray*
+        {
+            const uint cacheAge = (24*60*60); // Check for updates every day
+            g_autoptr(GError) error = nullptr;
+
+            /* get devices */
+            GPtrArray* devices = fwupd_client_get_devices(client, m_cancellable, nullptr);
+
+
+            g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(client, m_cancellable, &error);
+            for(uint i = 0; remotes && i < remotes->len; i++)
+            {
+                FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
+                if (!fwupd_remote_get_enabled(remote))
+                    continue;
+
+                if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
+                    continue;
+
+                refreshRemote(this, remote, cacheAge, m_cancellable);
+            }
+            return devices;
+        }
+    ));
 }
 
 int FwupdBackend::updatesCount() const
