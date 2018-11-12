@@ -23,6 +23,7 @@
 #include <KAboutData>
 #include <KCrash>
 #include <KDBusService>
+#include <KQuickAddons/QtQuickSettings>
 #include <KLocalizedString>
 #include <QCommandLineParser>
 #include <qwindow.h>
@@ -96,6 +97,7 @@ int main(int argc, char** argv)
     app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     KCrash::initialize();
+    KQuickAddons::QtQuickSettings::init();
     KLocalizedString::setApplicationDomain("plasma-discover");
     KAboutData about(QStringLiteral("discover"), i18n("Discover"), version, i18n("An application explorer"),
                      KAboutLicense::GPL, i18n("© 2010-2018 Plasma Development Team"));

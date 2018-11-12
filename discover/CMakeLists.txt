@@ -30,6 +30,7 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF5::XmlGui
                                      KF5::ItemModels
                                      KF5::KIOWidgets
+                                     KF5::QuickAddons
                                      Qt5::Quick
                                      Discover::Common
 )
