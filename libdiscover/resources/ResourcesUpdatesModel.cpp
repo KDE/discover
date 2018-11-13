@@ -196,7 +196,7 @@ void ResourcesUpdatesModel::updateAll()
         }
 
         QMetaObject::invokeMethod(this, [this](){
-            m_transaction->setStatus(Transaction::QueuedStatus);
+            m_transaction->setStatus(Transaction::CommittingStatus);
             m_transaction->slotProgressingChanged();
         }, Qt::QueuedConnection);
 
