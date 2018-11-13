@@ -113,23 +113,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     m_engine = new KNSCore::Engine(this);
     m_engine->init(m_name);
     m_engine->setPageSize(100);
-    // Setting setFetching to false when we get an error ensures we don't end up in an eternally-fetching state
-    connect(m_engine, &KNSCore::Engine::signalError, this, [this](const QString &_error) {
-        QString error = _error;
-        bool invalidFile = false;
-        if(error == QLatin1Literal("All categories are missing")) {
-            markInvalid(error);
-            error = i18n("Invalid %1 backend, contact your distributor.", m_displayName);
-            invalidFile = true;
-        }
-        m_responsePending = false;
-        Q_EMIT searchFinished();
-        Q_EMIT availableForQueries();
-        this->setFetching(false);
-        qWarning() << "kns error" << objectName() << error;
-        if (!invalidFile)
-            Q_EMIT passiveMessage(i18n("%1: %2", name(), error));
-    });
+    connect(m_engine, &KNSCore::Engine::signalErrorCode, this, &KNSBackend::signalErrorCode);
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
@@ -255,6 +239,64 @@ void KNSBackend::fetchMore()
 void KNSBackend::statusChanged(const KNSCore::EntryInternal& entry)
 {
     resourceForEntry(entry);
+}
+
+void KNSBackend::signalErrorCode(const KNSCore::ErrorCode& errorCode, const QString& message, const QVariant& metadata)
+{
+    QString error = message;
+    qDebug() << "KNS backend error in backend" << m_displayName << ":" << errorCode << message << metadata;
+    bool invalidFile = false;
+    switch(errorCode) {
+        case KNSCore::ErrorCode::UnknownError:
+            // This is not supposed to be hit, of course, but any error coming to this point should be non-critical and safely ignored.
+            break;
+        case KNSCore::ErrorCode::NetworkError:
+            // If we have a network error, we need to tell the user about it. This is almost always fatal, so mark invalid and tell the user.
+            error = i18n("Network error in backend %1: %2", m_displayName, metadata.toInt());
+            markInvalid(error);
+            invalidFile = true;
+            break;
+        case KNSCore::ErrorCode::OcsError:
+            if(metadata.toInt() == 200) {
+                // Too many requests, try again in a couple of minutes - perhaps we can simply postpone it automatically, and give a message?
+                error = i18n("Too many requests sent to the server for backend %1. Please try again in a few minutes.", m_displayName);
+            } else {
+                // Unknown API error, usually something critical, mark as invalid and cry a lot
+                error = i18n("Invalid %1 backend, contact your distributor.", m_displayName);
+                markInvalid(error);
+                invalidFile = true;
+            }
+            break;
+        case KNSCore::ErrorCode::ConfigFileError:
+            error = i18n("Invalid %1 backend, contact your distributor.", m_displayName);
+            markInvalid(error);
+            invalidFile = true;
+            break;
+        case KNSCore::ErrorCode::ProviderError:
+            error = i18n("Invalid %1 backend, contact your distributor.", m_displayName);
+            markInvalid(error);
+            invalidFile = true;
+            break;
+        case KNSCore::ErrorCode::InstallationError:
+            // This error is handled already, by forwarding the KNS engine's installer error message.
+            break;
+        case KNSCore::ErrorCode::ImageError:
+            // Image fetching errors are not critical as such, but may lead to weird layout issues, might want handling...
+            error = i18n("Could not fetch screenshot for the entry %1 in backend %2", metadata.toList().at(0).toString(), m_displayName);
+            break;
+        default:
+            // Having handled all current error values, we should by all rights never arrive here, but for good order and future safety...
+            error = i18n("Unhandled error in %1 backend. Contact your distributor.", m_displayName);
+            break;
+    }
+    m_responsePending = false;
+    Q_EMIT searchFinished();
+    Q_EMIT availableForQueries();
+    // Setting setFetching to false when we get an error ensures we don't end up in an eternally-fetching state
+    this->setFetching(false);
+    qWarning() << "kns error" << objectName() << error;
+    if (!invalidFile)
+        Q_EMIT passiveMessage(i18n("%1: %2", name(), error));
 }
 
 class KNSTransaction : public Transaction

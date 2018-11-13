@@ -22,6 +22,7 @@
 #define KNSBACKEND_H
 
 #include <KNSCore/EntryInternal>
+#include <KNSCore/ErrorCode>
 
 #include <resources/AbstractResourcesBackend.h>
 #include "Transaction/AddonList.h"
@@ -75,6 +76,7 @@ Q_SIGNALS:
 public Q_SLOTS:
     void receivedEntries(const KNSCore::EntryInternal::List& entries);
     void statusChanged(const KNSCore::EntryInternal& entry);
+    void signalErrorCode(const KNSCore::ErrorCode& errorCode, const QString& message, const QVariant& metadata);
 
 private:
     void fetchInstalled();
