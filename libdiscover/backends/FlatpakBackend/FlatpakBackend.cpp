@@ -424,7 +424,6 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
         auto installation = preferredInstallation();
         // We need to fetch metadata to find information about required runtime
         auto fw = new QFutureWatcher<QByteArray>(this);
-        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, installation, resource));
         connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, installation, resource, fw, runtimeUrl]() {
             const auto metadata = fw->result();
             // Even when we failed to fetch information about runtime we still want to show the application
@@ -450,6 +449,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
             }
             fw->deleteLater();
         });
+        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, installation, resource));
     } else {
         addResource(resource);
     }
@@ -608,19 +608,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
     }
 
     auto fw = new QFutureWatcher<QList<AppStream::Component>>(this);
-    fw->setFuture(QtConcurrent::run(&m_threadPool, [appDirFileName]() -> QList<AppStream::Component> {
-        AppStream::Metadata metadata;
-        metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
-        AppStream::Metadata::MetadataError error = metadata.parseFile(appDirFileName, AppStream::Metadata::FormatKindXml);
-        if (error != AppStream::Metadata::MetadataErrorNoError) {
-            qWarning() << "Failed to parse appstream metadata: " << error;
-            return {};
-        }
-
-        return metadata.components();
-    }));
     const auto sourceName = source.name();
-    acquireFetching(true);
     connect(fw, &QFutureWatcher<QList<AppStream::Component>>::finished, this, [this, fw, flatpakInstallation, appstreamIconsPath, sourceName]() {
         const auto components = fw->result();
         foreach (const AppStream::Component& appstreamComponent, components) {
@@ -637,6 +625,18 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
         acquireFetching(false);
         fw->deleteLater();
     });
+    acquireFetching(true);
+    fw->setFuture(QtConcurrent::run(&m_threadPool, [appDirFileName]() -> QList<AppStream::Component> {
+        AppStream::Metadata metadata;
+        metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
+        AppStream::Metadata::MetadataError error = metadata.parseFile(appDirFileName, AppStream::Metadata::FormatKindXml);
+        if (error != AppStream::Metadata::MetadataErrorNoError) {
+            qWarning() << "Failed to parse appstream metadata: " << error;
+            return {};
+        }
+
+        return metadata.components();
+    }));
 }
 
 void FlatpakBackend::loadInstalledApps()
@@ -736,6 +736,11 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
 void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation* installation)
 {
     auto fw = new QFutureWatcher<GPtrArray *>(this);
+    connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw](){
+        auto refs = fw->result();
+        onFetchUpdatesFinished(installation, refs);
+        fw->deleteLater();
+    });
     fw->setFuture(QtConcurrent::run(&m_threadPool, [installation, this]() -> GPtrArray * {
         g_autoptr(GError) localError = nullptr;
         GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation, m_cancellable, &localError);
@@ -744,11 +749,6 @@ void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation* installation)
         }
         return refs;
     }));
-    connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw](){
-        auto refs = fw->result();
-        onFetchUpdatesFinished(installation, refs);
-        fw->deleteLater();
-    });
 }
 
 void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates)
@@ -902,13 +902,13 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
         return updateAppMetadata(resource, path);
     } else {
         auto fw = new QFutureWatcher<QByteArray>(this);
-        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, flatpakInstallation, resource));
         connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, flatpakInstallation, resource, fw]() {
             const auto metadata = fw->result();
             if (!metadata.isEmpty())
                 onFetchMetadataFinished(flatpakInstallation, resource, metadata);
             fw->deleteLater();
         });
+        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, flatpakInstallation, resource));
 
         // Return false to indicate we cannot continue (right now used only in updateAppSize())
         return false;
@@ -1012,7 +1012,6 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
         }
 
         auto futureWatcher = new QFutureWatcher<FlatpakRunnables::SizeInformation>(this);
-        futureWatcher->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchFlatpakSize, flatpakInstallation, resource));
         connect(futureWatcher, &QFutureWatcher<FlatpakRunnables::SizeInformation>::finished, this, [this, resource, futureWatcher]() {
             auto value = futureWatcher->result();
             if (value.valid) {
@@ -1023,6 +1022,7 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
             }
             futureWatcher->deleteLater();
         });
+        futureWatcher->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchFlatpakSize, flatpakInstallation, resource));
     }
 
     return true;
