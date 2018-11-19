@@ -29,7 +29,7 @@ find_package(KF5Kirigami2 2.1.0)
 find_package(packagekitqt5 1.0.1 CONFIG)
 find_package(AppStreamQt 0.11.1 CONFIG)
 find_package(KF5Attica 5.23 CONFIG)
-find_package(KF5NewStuff 5.23 CONFIG)
+find_package(KF5NewStuff 5.53 CONFIG)
 
 set(CMAKE_AUTORCC ON)
 
