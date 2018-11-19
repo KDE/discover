@@ -33,7 +33,7 @@ find_package(KF5NewStuff 5.53 CONFIG)
 
 set(CMAKE_AUTORCC ON)
 
-pkg_check_modules(Flatpak IMPORTED_TARGET flatpak>=0.6.12)
+pkg_check_modules(Flatpak IMPORTED_TARGET flatpak>=0.6.14)
 pkg_check_modules(Fwupd IMPORTED_TARGET fwupd>=1.0.6)
 pkg_check_modules(Markdown IMPORTED_TARGET libmarkdown)
 
