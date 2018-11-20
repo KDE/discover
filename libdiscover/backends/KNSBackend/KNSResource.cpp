@@ -79,7 +79,7 @@ QString KNSResource::comment()
         if(newLine>0) {
             ret=ret.left(newLine);
         }
-        ret = ret.replace(QRegularExpression(QStringLiteral("\\[/?[a-z]*\\]")), QString());
+        ret = ret.replace(QRegularExpression(QStringLiteral("\\[\\/?[a-z]*\\]")), QString());
         ret = ret.remove(QRegularExpression(QStringLiteral("<[^>]*>")));
     }
     return ret;
@@ -97,7 +97,12 @@ QString KNSResource::longDescription()
     }
     ret = ret.replace(QLatin1Char('\r'), QString());
     ret = ret.replace(QStringLiteral("[li]"), QStringLiteral("\n* "));
-    ret = ret.replace(QRegularExpression(QStringLiteral("\\[/?[a-z]*\\]")), QString());
+    // Get rid of all BBCode markup we don't handle above
+    ret = ret.replace(QRegularExpression(QStringLiteral("\\[\\/?[a-z]*\\]")), QString());
+    // Find anything that looks like a link (but which also is not some html
+    // tag value or another already) and make it a link
+    static const QRegularExpression urlRegExp(QStringLiteral("(^|\\s)([-a-zA-Z0-9@:%_\\+.~#?&//=]{2,256}\\.[a-z]{2,4}\\b(\\/[-a-zA-Z0-9@:;%_\\+.~#?&//=]*)?)"), QRegularExpression::CaseInsensitiveOption);
+    ret = ret.replace(urlRegExp, QStringLiteral("<a href=\"\\2\">\\2</a>"));
     return ret;
 }
 
