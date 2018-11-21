@@ -127,4 +127,5 @@ void SnapTransaction::progressed()
         percentage += (100 * task->progressDone()) / task->progressTotal();
     }
     setProgress(percentage / qMax(count, 1));
+    setStatus(status);
 }
