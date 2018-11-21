@@ -82,7 +82,7 @@ Comment[zh_CN]=帮助您保持系统更新
 Comment[zh_TW]=協助您的系統更新到最新狀態
 Encoding=UTF-8
 
-Icon=update-none
+Icon=system-software-update
 Type=Service
 
 X-KDE-ServiceTypes=Plasma/Applet

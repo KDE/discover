@@ -157,15 +157,6 @@ Kirigami.GlobalDrawer {
         ]
     }
 
-    function rootCategory(cat) {
-        var ret = null
-        while (cat) {
-            ret = cat
-            cat = cat.parent
-        }
-        return ret
-    }
-
     Component {
         id: categoryActionComponent
         Kirigami.Action {
