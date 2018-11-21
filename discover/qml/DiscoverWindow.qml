@@ -19,6 +19,7 @@ Kirigami.ApplicationWindow
     readonly property string topSearchComp: ("qrc:/qml/SearchPage.qml")
     readonly property string topUpdateComp: ("qrc:/qml/UpdatesPage.qml")
     readonly property string topSourcesComp: ("qrc:/qml/SourcesPage.qml")
+    readonly property string topAboutComp: ("qrc:/qml/AboutPage.qml")
     readonly property string loadingComponent: ("qrc:/qml/LoadingPage.qml")
     readonly property QtObject stack: window.pageStack
     property string currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
@@ -71,6 +72,13 @@ Kirigami.ApplicationWindow
         text: ResourcesModel.updatesCount<=0 ? (ResourcesModel.isFetching ? i18n("Checking for updates...") : i18n("No Updates") ) : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
         component: topUpdateComp
         objectName: "update"
+    }
+    TopLevelPageData {
+        id: aboutAction
+        iconName: "help-feedback"
+        text: i18n("Help")
+        component: topAboutComp
+        objectName: "about"
     }
     TopLevelPageData {
         id: sourcesAction

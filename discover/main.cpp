@@ -101,9 +101,10 @@ int main(int argc, char** argv)
     KLocalizedString::setApplicationDomain("plasma-discover");
     KAboutData about(QStringLiteral("discover"), i18n("Discover"), version, i18n("An application explorer"),
                      KAboutLicense::GPL, i18n("© 2010-2018 Plasma Development Team"));
-    about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), QStringLiteral("aleixpol@blue-systems.com"));
+    about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), QStringLiteral("aleixpol@kde.org"));
     about.addAuthor(i18n("Jonathan Thomas"), QString(), QStringLiteral("echidnaman@kubuntu.org"));
     about.setProductName("discover/discover");
+    about.setProgramLogo(app.windowIcon());
 
     about.setTranslator(
             i18ndc(nullptr, "NAME OF TRANSLATORS", "Your names"),
