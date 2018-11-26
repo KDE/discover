@@ -23,7 +23,7 @@ import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.1 as Kirigami
+import org.kde.kirigami 2.6 as Kirigami
 import "navigation.js" as Navigation
 
 DiscoverPage {
@@ -197,7 +197,7 @@ DiscoverPage {
             }
         }
 
-        LinkButton {
+        Kirigami.LinkButton {
             id: addonsButton
             text: i18n("Addons")
             visible: addonsView.containsAddons
@@ -217,7 +217,7 @@ DiscoverPage {
                 visible: rep.count > 0
             }
 
-            LinkButton {
+            Kirigami.LinkButton {
                 visible: reviewsModel.count > visibleReviews
                 text: i18np("Show %1 review...", "Show all %1 reviews...", reviewsModel.count)
                 Layout.alignment: Qt.AlignRight | Qt.AlignBottom
@@ -248,7 +248,7 @@ DiscoverPage {
                 Layout.bottomMargin: Kirigami.Units.largeSpacing
             }
         }
-        LinkButton {
+        Kirigami.LinkButton {
             function writeReviewText() {
                 if (appInfo.application.isInstalled) {
                     if (reviewsModel.count > 0) {
@@ -384,7 +384,7 @@ DiscoverPage {
                 text: i18n("License:")
                 visible: appInfo.application.license.length>0
             }
-            UrlButton {
+            Kirigami.UrlButton {
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
 //                 tooltip: i18n("See full license terms")
@@ -398,7 +398,7 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Homepage:")
             }
-            UrlButton {
+            Kirigami.UrlButton {
                 id: homepageLink
                 url: application.homepage
                 Layout.fillWidth: true
@@ -411,7 +411,7 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("User Guide:")
             }
-            UrlButton {
+            Kirigami.UrlButton {
                 id: docsLink
                 url: application.helpURL
                 Layout.fillWidth: true
@@ -424,7 +424,7 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Donate:")
             }
-            UrlButton {
+            Kirigami.UrlButton {
                 id: donationLink
                 url: application.donationURL
                 Layout.fillWidth: true
@@ -437,7 +437,7 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("Report a Problem:")
             }
-            UrlButton {
+            Kirigami.UrlButton {
                 id: bugLink
                 url: application.bugURL
                 Layout.fillWidth: true

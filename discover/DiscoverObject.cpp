@@ -133,11 +133,6 @@ DiscoverObject::DiscoverObject(CompactMode mode)
     m_engine->setNetworkAccessManagerFactory(m_networkAccessManagerFactory.data());
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
     m_engine->rootContext()->setContextProperty(QStringLiteral("discoverAboutData"), QVariant::fromValue(KAboutData::applicationData()));
-    m_engine->rootContext()->setContextProperty(QStringLiteral("discoverAboutLibraries"), i18n("<ul><li>KDE Frameworks %1</li><li>Qt %2 (built against %3)</li><li>The <em>%4</em> windowing system</li></ul>",
-                 QStringLiteral(KCOREADDONS_VERSION_STRING),
-                 QString::fromLocal8Bit(qVersion()),
-                 QStringLiteral(QT_VERSION_STR),
-                 QGuiApplication::platformName()));
 
     connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverObject::integrateObject);
     m_engine->load(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));

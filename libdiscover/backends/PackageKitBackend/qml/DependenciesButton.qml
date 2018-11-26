@@ -19,9 +19,9 @@
 
 import QtQuick 2.8
 import QtQuick.Controls 2.1
-import org.kde.kirigami 2.1 as Kirigami
+import org.kde.kirigami 2.6 as Kirigami
 
-LinkButton
+Kirigami.LinkButton
 {
     text: i18n("Show Dependencies...")
 
