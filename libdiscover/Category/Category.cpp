@@ -213,7 +213,7 @@ void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
 bool Category::blacklistPluginsInVector(const QSet<QString>& pluginNames, QVector<Category *>& subCategories)
 {
     bool ret = false;
-    for(QVector<Category*>::iterator it = subCategories.begin(), itEnd = subCategories.end(); it!=itEnd; ) {
+    for(QVector<Category*>::iterator it = subCategories.begin(); it!=subCategories.end(); ) {
         if ((*it)->blacklistPlugins(pluginNames)) {
             delete *it;
             it = subCategories.erase(it);
