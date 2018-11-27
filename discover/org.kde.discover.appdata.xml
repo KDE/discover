@@ -184,6 +184,7 @@
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=Discover</url>
   <screenshots>
     <screenshot type="default">
+      <caption>New Discover design</caption>
       <image>https://www.kde.org/announcements/plasma-5.5/discover.png</image>
     </screenshot>
   </screenshots>
