@@ -119,7 +119,7 @@ Kirigami.Page
             header: Label {
                 readonly property string bugAddress: aboutData.bugAddress || "https://bugs.kde.org"
                 readonly property string bugDisplay: aboutData.bugAddress ? ("mailto:" + aboutData.bugAddress) : "https://bugs.kde.org"
-                text: i18n("Please use <a href=\"" +  + bugAddress + "\">" + bugDisplay + "</a> to report bugs.\n")
+                text: i18n("Please use <a href=\"%1\">%2</a> to report bugs.\n", bugDisplay, bugAddress)
             }
             model: aboutData.authors
             delegate: Kirigami.AbstractCard {
