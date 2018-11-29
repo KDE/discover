@@ -76,7 +76,7 @@ Kirigami.ApplicationWindow
     TopLevelPageData {
         id: aboutAction
         iconName: "help-feedback"
-        text: i18n("Help")
+        text: i18n("About")
         component: topAboutComp
         objectName: "about"
     }
