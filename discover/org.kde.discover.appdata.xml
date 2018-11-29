@@ -185,6 +185,13 @@
   <screenshots>
     <screenshot type="default">
       <caption>New Discover design</caption>
+      <caption xml:lang="ca">Disseny nou del Discover</caption>
+      <caption xml:lang="ca-valencia">Disseny nou del Discover</caption>
+      <caption xml:lang="nl">Nieuw ontwerp van Discover</caption>
+      <caption xml:lang="pt">Novo desenho do Discover</caption>
+      <caption xml:lang="sv">Ny design in Discover</caption>
+      <caption xml:lang="uk">Новий дизайн Discover</caption>
+      <caption xml:lang="x-test">xxNew Discover designxx</caption>
       <image>https://www.kde.org/announcements/plasma-5.5/discover.png</image>
     </screenshot>
   </screenshots>
