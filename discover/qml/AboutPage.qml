@@ -27,7 +27,4 @@ Kirigami.AboutPage
     ]
 
     aboutData: discoverAboutData
-    Component.onCompleted: {
-        console.log("xxx", JSON.stringify(discoverAboutData))
-    }
 }
