@@ -19,33 +19,26 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "CachedNetworkAccessManager.h"
+#ifndef CACHEDNETWORKACCESSMANAGER_H
+#define CACHEDNETWORKACCESSMANAGER_H
 
-#include <QNetworkDiskCache>
-#include <QNetworkRequest>
-#include <QStandardPaths>
-#include <QStorageInfo>
+#include <QNetworkAccessManager>
+#include <QQmlNetworkAccessManagerFactory>
+#include <KIO/AccessManager>
 
-CachedNetworkAccessManager::CachedNetworkAccessManager(const QString &path, QObject *parent)
-    : QNetworkAccessManager(parent)
+class CachedNetworkAccessManager : public KIO::AccessManager
 {
-    const QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1Char('/') + path;
-    QNetworkDiskCache *cache = new QNetworkDiskCache(this);
-    QStorageInfo storageInfo(cacheDir);
-    cache->setCacheDirectory(cacheDir);
-    cache->setMaximumCacheSize(storageInfo.bytesTotal() / 1000);
-    setCache(cache);
-}
+    Q_OBJECT
+public:
+    explicit CachedNetworkAccessManager(const QString &path, QObject *parent = nullptr);
 
-QNetworkReply * CachedNetworkAccessManager::createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData)
-{
-    QNetworkRequest req(request);
-    req.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
-    return QNetworkAccessManager::createRequest(op, request, outgoingData);
-}
+    virtual QNetworkReply * createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = nullptr) override;
+};
 
-QNetworkAccessManager * CachedNetworkAccessManagerFactory::create(QObject *parent)
+class CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
 {
-    return new CachedNetworkAccessManager(QStringLiteral("images"), parent);
-}
+    virtual QNetworkAccessManager * create(QObject *parent) override;
+};
+
+#endif // CACHEDNETWORKACCESSMANAGER_H
 

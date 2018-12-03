@@ -19,26 +19,34 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef CACHEDNETWORKACCESSMANAGER_H
-#define CACHEDNETWORKACCESSMANAGER_H
+#include "CachedNetworkAccessManager.h"
 
-#include "discovercommon_export.h"
+#include <QNetworkDiskCache>
+#include <QNetworkRequest>
+#include <QStandardPaths>
+#include <QStorageInfo>
 
-#include <QNetworkAccessManager>
-#include <QQmlNetworkAccessManagerFactory>
-
-class DISCOVERCOMMON_EXPORT CachedNetworkAccessManager : public QNetworkAccessManager
+CachedNetworkAccessManager::CachedNetworkAccessManager(const QString &path, QObject *parent)
+    : KIO::AccessManager(parent)
 {
-public:
-    explicit CachedNetworkAccessManager(const QString &path, QObject *parent = nullptr);
+    const QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1Char('/') + path;
+    qDebug() << "wooooooooo" << cacheDir;
+    QNetworkDiskCache *cache = new QNetworkDiskCache(this);
+    QStorageInfo storageInfo(cacheDir);
+    cache->setCacheDirectory(cacheDir);
+    cache->setMaximumCacheSize(storageInfo.bytesTotal() / 1000);
+    setCache(cache);
+}
 
-    virtual QNetworkReply * createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = nullptr) override;
-};
-
-class DISCOVERCOMMON_EXPORT CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
+QNetworkReply * CachedNetworkAccessManager::createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData)
 {
-    virtual QNetworkAccessManager * create(QObject *parent) override;
-};
+    QNetworkRequest req(request);
+    req.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
+    return QNetworkAccessManager::createRequest(op, request, outgoingData);
+}
 
-#endif // CACHEDNETWORKACCESSMANAGER_H
+QNetworkAccessManager * CachedNetworkAccessManagerFactory::create(QObject *parent)
+{
+    return new CachedNetworkAccessManager(QStringLiteral("images"), parent);
+}
 

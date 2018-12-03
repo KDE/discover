@@ -29,7 +29,6 @@ set(discovercommon_SRCS
     resources/AbstractBackendUpdater.cpp
     resources/AbstractSourcesBackend.cpp
     resources/StoredResultsStream.cpp
-    CachedNetworkAccessManager.cpp
     ActionsModel.cpp
     DiscoverBackendsFactory.cpp
     ScreenshotsModel.cpp

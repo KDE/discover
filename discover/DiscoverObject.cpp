@@ -52,7 +52,6 @@
 #include <KSharedConfig>
 #include <KConfigGroup>
 #include <KStandardAction>
-#include <KIO/AccessManager>
 #include <kcoreaddons_version.h>
 // #include <KSwitchLanguageDialog>
 
@@ -82,17 +81,6 @@ public:
     }
 };
 
-class KIOAccessManagerFactory : public QQmlNetworkAccessManagerFactory
-{
-public:
-    KIOAccessManagerFactory() = default;
-    ~KIOAccessManagerFactory() = default;
-    QNetworkAccessManager *create(QObject *parent) override
-    {
-        return new KIO::AccessManager(parent);
-    }
-};
-
 DiscoverObject::DiscoverObject(CompactMode mode)
     : QObject()
     , m_engine(new QQmlApplicationEngine)
@@ -104,7 +92,7 @@ DiscoverObject::DiscoverObject(CompactMode mode)
     auto factory = m_engine->networkAccessManagerFactory();
     m_engine->setNetworkAccessManagerFactory(nullptr);
     delete factory;
-    m_engine->setNetworkAccessManagerFactory(new KIOAccessManagerFactory());
+    m_engine->setNetworkAccessManagerFactory(m_networkAccessManagerFactory.data());
 
     qmlRegisterType<UnityLauncher>("org.kde.discover.app", 1, 0, "UnityLauncher");
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
@@ -128,9 +116,6 @@ DiscoverObject::DiscoverObject(CompactMode mode)
     plugin->initializeEngine(m_engine, uri);
     plugin->registerTypes(uri);
 
-    //Here we set up a cache for the screenshots
-    delete m_engine->networkAccessManagerFactory();
-    m_engine->setNetworkAccessManagerFactory(m_networkAccessManagerFactory.data());
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
     m_engine->rootContext()->setContextProperty(QStringLiteral("discoverAboutData"), QVariant::fromValue(KAboutData::applicationData()));
 
