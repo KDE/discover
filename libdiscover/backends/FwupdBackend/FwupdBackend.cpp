@@ -174,12 +174,16 @@ void FwupdBackend::addUpdates()
 QByteArray FwupdBackend::getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm)
 {
     QFile f(filename);
-    if (!f.open(QFile::ReadOnly))
+    if (!f.open(QFile::ReadOnly)) {
+        qWarning() << "could not open to check" << filename;
         return {};
+    }
 
     QCryptographicHash hash(hashAlgorithm);
-    if (!hash.addData(&f))
+    if (!hash.addData(&f)) {
+        qWarning() << "could not read to check" << filename;
         return {};
+    }
 
     return hash.result().toHex();
 }
@@ -385,12 +389,17 @@ void FwupdBackend::checkForUpdates()
         auto devices = fw->result();
         for(uint i = 0; devices && i < devices->len; i++) {
             FwupdDevice *device = (FwupdDevice *) g_ptr_array_index(devices, i);
+
+            if (!fwupd_device_has_flag (device, FWUPD_DEVICE_FLAG_SUPPORTED))
+                continue;
+
             g_autoptr(GError) error = nullptr;
             g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), nullptr, &error);
 
             if (error) {
-                if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE) || g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED))
+                if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE)) {
                     continue;
+                }
 
                 handleError(error);
             }
