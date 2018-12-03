@@ -153,12 +153,10 @@ DiscoverPage {
             text: i18n("Sorry, nothing found...")
         }
 
-        BusyIndicator {
+        footer: BusyIndicator {
             id: busyIndicator
             anchors {
-                top: parent.bottom
                 horizontalCenter: parent.horizontalCenter
-                margins: Kirigami.Units.largeSpacing
             }
             running: false
             opacity: 0
@@ -167,7 +165,6 @@ DiscoverPage {
                     name: "running";
                     when: appsModel.isBusy
                     PropertyChanges { target: busyIndicator; opacity: 1; running: true; }
-                    AnchorChanges { target: busyIndicator; anchors.bottom: parent.bottom; anchors.top: undefined; }
                 }
             ]
             transitions: [
