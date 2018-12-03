@@ -30,7 +30,6 @@ CachedNetworkAccessManager::CachedNetworkAccessManager(const QString &path, QObj
     : KIO::AccessManager(parent)
 {
     const QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1Char('/') + path;
-    qDebug() << "wooooooooo" << cacheDir;
     QNetworkDiskCache *cache = new QNetworkDiskCache(this);
     QStorageInfo storageInfo(cacheDir);
     cache->setCacheDirectory(cacheDir);
