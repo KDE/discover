@@ -174,12 +174,16 @@ void FwupdBackend::addUpdates()
 QByteArray FwupdBackend::getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm)
 {
     QFile f(filename);
-    if (!f.open(QFile::ReadOnly))
+    if (!f.open(QFile::ReadOnly)) {
+        qWarning() << "could not open to check" << filename;
         return {};
+    }
 
     QCryptographicHash hash(hashAlgorithm);
-    if (!hash.addData(&f))
+    if (!hash.addData(&f)) {
+        qWarning() << "could not read to check" << filename;
         return {};
+    }
 
     return hash.result().toHex();
 }
