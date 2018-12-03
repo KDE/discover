@@ -244,7 +244,7 @@ void KNSBackend::statusChanged(const KNSCore::EntryInternal& entry)
 void KNSBackend::signalErrorCode(const KNSCore::ErrorCode& errorCode, const QString& message, const QVariant& metadata)
 {
     QString error = message;
-    qDebug() << "KNS backend error in backend" << m_displayName << ":" << errorCode << message << metadata;
+    qDebug() << "KNS error in" << m_displayName << ":" << errorCode << message << metadata;
     bool invalidFile = false;
     switch(errorCode) {
         case KNSCore::ErrorCode::UnknownError:
