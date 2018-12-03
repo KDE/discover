@@ -187,6 +187,7 @@
       <caption>New Discover design</caption>
       <caption xml:lang="ca">Disseny nou del Discover</caption>
       <caption xml:lang="ca-valencia">Disseny nou del Discover</caption>
+      <caption xml:lang="en-GB">New Discover design</caption>
       <caption xml:lang="fi">Uusi Discover-ulkoasu</caption>
       <caption xml:lang="gl">Novo deseño de Discover</caption>
       <caption xml:lang="it">Nuova concezione di Discover</caption>
@@ -195,6 +196,7 @@
       <caption xml:lang="sv">Ny design in Discover</caption>
       <caption xml:lang="uk">Новий дизайн Discover</caption>
       <caption xml:lang="x-test">xxNew Discover designxx</caption>
+      <caption xml:lang="zh-TW">新的 Discover 設計</caption>
       <image>https://www.kde.org/announcements/plasma-5.5/discover.png</image>
     </screenshot>
   </screenshots>
