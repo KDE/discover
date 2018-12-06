@@ -30,7 +30,11 @@
 CategoryModel::CategoryModel(QObject* parent)
     : QObject(parent)
 {
-    connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &CategoryModel::populateCategories);
+    QTimer* t = new QTimer(this);
+    t->setInterval(0);
+    t->setSingleShot(true);
+    connect(t, &QTimer::timeout, this, &CategoryModel::populateCategories);
+    connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, t, QOverload<>::of(&QTimer::start));
 }
 
 CategoryModel * CategoryModel::global()
