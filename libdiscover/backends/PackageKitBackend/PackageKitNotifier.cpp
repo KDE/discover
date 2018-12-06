@@ -211,7 +211,7 @@ uint PackageKitNotifier::updatesCount()
     return m_normalUpdates;
 }
 
-void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade type, const QString& name, const QString& description)
+void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade /*type*/, const QString& name, const QString& description)
 {
     auto a = new UpgradeAction(name, description, this);
     connect(a, &UpgradeAction::triggered, this, [] (const QString &name) {
