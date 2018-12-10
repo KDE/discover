@@ -48,6 +48,7 @@ Kirigami.BasicListItem {
                 delegate: Kirigami.AbstractListItem {
                     id: del
                     separatorVisible: false
+                    hoverEnabled: model.application
                     onClicked: {
                         if (model.application) {
                             Navigation.clearStack()
