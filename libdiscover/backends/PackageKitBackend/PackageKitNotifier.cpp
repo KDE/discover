@@ -61,14 +61,15 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     if (!aptconfig.isEmpty()) {
         checkAptVariable(aptconfig, QLatin1String("Apt::Periodic::Update-Package-Lists"), [regularCheck](const QStringRef& value) {
             bool ok;
-            int time = value.toInt(&ok);
-            if (ok && time > 0) {
-                regularCheck->setInterval(time * 60 * 60 * 1000);
-            } else {
+            const int days = value.toInt(&ok);
+            if (!ok || days == 0) {
                 regularCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
+                regularCheck->start();
                 qWarning() << "couldn't understand value for timer:" << value;
             }
-            regularCheck->start();
+
+            //if the setting is not empty, refresh will be carried out by unattended-upgrade
+            //https://wiki.debian.org/UnattendedUpgrades
         });
     } else {
         regularCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
