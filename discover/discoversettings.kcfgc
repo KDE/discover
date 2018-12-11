@@ -1,0 +1,5 @@
+File=discoversettings.kcfg
+ClassName=DiscoverSettings
+GenerateProperties=true
+Mutators=true
+IncludeFiles=resources/ResourcesProxyModel.h

@@ -43,6 +43,7 @@ DiscoverPage {
     property alias count: apps.count
     property alias listHeader: apps.header
     property alias listHeaderPositioning: apps.headerPositioning
+    property alias sortProperty: saveChanges.property
     property bool compact: page.width < 550 || !applicationWindow().wideScreen
     property bool showRating: true
 
@@ -74,6 +75,13 @@ DiscoverPage {
         exclusive: true
     }
 
+    Binding {
+        id: saveChanges
+        target: DiscoverSettings
+        property: "appsListPageSorting"
+        value: appsModel.sortRole
+    }
+
     contextualActions: [
         Kirigami.Action {
             visible: !appsModel.sortByRelevancy
@@ -83,7 +91,6 @@ DiscoverPage {
                 text: i18n("Name")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.NameRole
-                    appsModel.sortOrder = Qt.AscendingOrder
                 }
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.NameRole
@@ -93,7 +100,6 @@ DiscoverPage {
                 text: i18n("Rating")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.SortableRatingRole
-                    appsModel.sortOrder = Qt.DescendingOrder
                 }
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.SortableRatingRole
@@ -103,7 +109,6 @@ DiscoverPage {
                 text: i18n("Size")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.SizeRole
-                    appsModel.sortOrder = Qt.AscendingOrder
                 }
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.SizeRole
@@ -113,7 +118,6 @@ DiscoverPage {
                 text: i18n("Release Date")
                 onTriggered: {
                     appsModel.sortRole = ResourcesProxyModel.ReleaseDateRole
-                    appsModel.sortOrder = Qt.DescendingOrder
                 }
                 checkable: true
                 checked: appsModel.sortRole == ResourcesProxyModel.ReleaseDateRole
@@ -133,8 +137,9 @@ DiscoverPage {
 
         model: ResourcesProxyModel {
             id: appsModel
-            sortRole: ResourcesProxyModel.SortableRatingRole
-            sortOrder: Qt.DescendingOrder
+            sortRole: DiscoverSettings.appsListPageSorting
+            sortOrder: sortRole === ResourcesProxyModel.SortableRatingRole || sortRole === ResourcesProxyModel.ReleaseDateRole ? Qt.DescendingOrder : Qt.AscendingOrder
+
             onBusyChanged: if (isBusy) {
                 apps.currentIndex = -1
             }

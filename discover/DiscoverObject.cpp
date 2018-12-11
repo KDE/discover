@@ -69,6 +69,8 @@
 #include <utils.h>
 #include <QMimeDatabase>
 
+#include "discoversettings.h"
+
 class OurSortFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
 {
     Q_OBJECT
@@ -100,6 +102,12 @@ DiscoverObject::DiscoverObject(CompactMode mode)
     qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
     qmlRegisterType<OurSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
 
+    qmlRegisterSingletonType<DiscoverSettings>("org.kde.discover.app", 1, 0, "DiscoverSettings", [](QQmlEngine*, QJSEngine*) -> QObject* {
+            auto r = new DiscoverSettings;
+            connect(r, &DiscoverSettings::installedPageSortingChanged, r, &DiscoverSettings::save);
+            connect(r, &DiscoverSettings::appsListPageSortingChanged, r, &DiscoverSettings::save);
+            return r;
+        });
     qmlRegisterType<QQuickView>();
     qmlRegisterType<QActionGroup>();
     qmlRegisterType<QAction>();
