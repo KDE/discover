@@ -154,11 +154,14 @@ AbstractResource::State PackageKitResource::state()
 
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch)
 {
+    auto oldState = state();
     if (arch)
         m_packages[info].append(packageId);
     else
         m_packages[info].prepend(packageId);
-    emit stateChanged();
+
+    if (oldState != state())
+        emit stateChanged();
 }
 
 QStringList PackageKitResource::categories()
