@@ -52,7 +52,6 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
         { DisplayOriginRole, "displayOrigin" },
         { CanUpgrade, "canUpgrade" },
         { PackageNameRole, "packageName" },
-        { IsTechnicalRole, "isTechnical" },
         { CategoryRole, "category" },
         { CategoryDisplayRole, "categoryDisplay" },
         { SectionRole, "section" },

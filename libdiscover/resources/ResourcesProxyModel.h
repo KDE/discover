@@ -72,7 +72,6 @@ public:
         DisplayOriginRole,
         CanUpgrade,
         PackageNameRole,
-        IsTechnicalRole,
         CategoryRole,
         CategoryDisplayRole,
         SectionRole,
