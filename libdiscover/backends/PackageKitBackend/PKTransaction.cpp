@@ -233,7 +233,12 @@ void PKTransaction::submitResolve()
     const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
     QStringList needResolving;
     for(auto it = m_newPackageStates.constBegin(), itEnd = m_newPackageStates.constEnd(); it != itEnd; ++it) {
-        if (it.key() != PackageKit::Transaction::InfoInstalled && it.key() != PackageKit::Transaction::InfoAvailable)
+        auto state = it.key();
+        if (state == PackageKit::Transaction::InfoInstalling)
+            state = PackageKit::Transaction::InfoInstalled;
+        if (state == PackageKit::Transaction::InfoRemoving)
+            state = PackageKit::Transaction::InfoAvailable;
+        if (state != PackageKit::Transaction::InfoInstalled && state != PackageKit::Transaction::InfoAvailable)
             continue;
 
         foreach(const auto &pkgid, it.value()) {
@@ -241,7 +246,7 @@ void PKTransaction::submitResolve()
             for(auto res: resources) {
                 auto r = qobject_cast<PackageKitResource*>(res);
                 r->clearPackageIds();
-                r->addPackageId(it.key(), pkgid, true);
+                r->addPackageId(state, pkgid, true);
             }
         }
     }
