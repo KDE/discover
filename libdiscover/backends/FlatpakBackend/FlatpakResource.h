@@ -153,6 +153,7 @@ public:
     void updateFromRef(FlatpakRef* ref);
     QString ref() const;
     QString sourceIcon() const override;
+    QString installPath() const;
 
 Q_SIGNALS:
     void propertyStateChanged(PropertyKind kind, PropertyState state);

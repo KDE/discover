@@ -21,6 +21,7 @@
 
 #include "FlatpakResource.h"
 #include "FlatpakBackend.h"
+#include "config-paths.h"
 
 #include <Transaction/AddonList.h>
 
@@ -31,6 +32,7 @@
 #include <KFormat>
 #include <KLocalizedString>
 
+#include <QProcess>
 #include <QDir>
 #include <QDebug>
 #include <QDesktopServices>
@@ -407,6 +409,13 @@ FlatpakResource::Id FlatpakResource::uniqueId() const
 
 void FlatpakResource::invokeApplication() const
 {
+    const QString desktopFile = installPath() + QStringLiteral("/export/share/applications/") + appstreamId();
+    const QString runservice = QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice");
+    if (QFile::exists(desktopFile) && QFile::exists(runservice)) {
+        QProcess::startDetached(runservice, {desktopFile});
+        return;
+    }
+
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) localError = nullptr;
 
@@ -536,6 +545,11 @@ QString FlatpakResource::installationPath(FlatpakInstallation* flatpakInstallati
 {
     g_autoptr(GFile) path = flatpak_installation_get_path(flatpakInstallation);
     return QString::fromUtf8(g_file_get_path(path));
+}
+
+QString FlatpakResource::installPath() const
+{
+    return installationPath() + QStringLiteral("/app/%1/%2/%3/active").arg(flatpakName()).arg(arch()).arg(branch());
 }
 
 QUrl FlatpakResource::url() const

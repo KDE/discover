@@ -2,8 +2,6 @@ find_package(KF5 REQUIRED Notifications)
 
 add_subdirectory(runservice)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-paths.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-paths.h)
-
 add_library(packagekit-backend MODULE PackageKitBackend.cpp
     PackageKitResource.cpp
     AppPackageKitResource.cpp

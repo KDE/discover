@@ -1,5 +1,7 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"libdiscover\")
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-paths.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-paths.h)
+
 add_subdirectory(backends)
 add_subdirectory(notifiers)
 add_subdirectory(tests)

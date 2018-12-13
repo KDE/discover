@@ -892,14 +892,11 @@ void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRe
 
 bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation, FlatpakResource *resource)
 {
-    g_autoptr(GFile) installationPath = nullptr;
-
     if (resource->resourceType() != FlatpakResource::DesktopApp) {
         return true;
     }
 
-    installationPath = flatpak_installation_get_path(flatpakInstallation);
-    const QString path = QString::fromUtf8(g_file_get_path(installationPath)) + QStringLiteral("/app/%1/%2/%3/active/metadata").arg(resource->flatpakName()).arg(resource->arch()).arg(resource->branch());
+    const QString path = resource->installPath() + QStringLiteral("/metadata");
 
     if (QFile::exists(path)) {
         return updateAppMetadata(resource, path);
