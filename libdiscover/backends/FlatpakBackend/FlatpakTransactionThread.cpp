@@ -26,19 +26,6 @@
 
 static int FLATPAK_CLI_UPDATE_FREQUENCY = 150;
 
-static void flatpakInstallationProgressCallback(const gchar *stats, guint progress, gboolean estimating, gpointer userData)
-{
-    Q_UNUSED(estimating);
-    Q_UNUSED(stats);
-
-    FlatpakTransactionThread *transactionJob = (FlatpakTransactionThread*)userData;
-    if (!transactionJob) {
-        return;
-    }
-
-    transactionJob->setProgress(progress);
-}
-
 gboolean
 add_new_remote_cb(FlatpakTransaction */*object*/,
                gint                /*reason*/,
