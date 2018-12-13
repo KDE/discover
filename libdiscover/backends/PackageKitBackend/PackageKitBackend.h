@@ -63,7 +63,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QString upgradeablePackageId(const PackageKitResource* res) const;
         QVector<AppPackageKitResource*> extendedBy(const QString& id) const;
 
-        void clearPackages(const QStringList &packageNames);
         void resolvePackages(const QStringList &packageNames);
         void fetchDetails(const QString& pkgid) { fetchDetails(QSet<QString>{pkgid}); }
         void fetchDetails(const QSet<QString>& pkgid);

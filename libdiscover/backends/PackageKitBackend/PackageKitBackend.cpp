@@ -247,14 +247,6 @@ AppPackageKitResource* PackageKitBackend::addComponent(const AppStream::Componen
     return res;
 }
 
-void PackageKitBackend::clearPackages(const QStringList& packageNames)
-{
-    const auto resources = resourcesByPackageNames<QVector<AbstractResource*>>(packageNames);
-    for(auto res: resources) {
-        qobject_cast<PackageKitResource*>(res)->clearPackageIds();
-    }
-}
-
 void PackageKitBackend::resolvePackages(const QStringList &packageNames)
 {
     PackageKit::Transaction * tArch = PackageKit::Daemon::resolve(packageNames, PackageKit::Transaction::FilterArch);
