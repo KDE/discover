@@ -47,11 +47,13 @@ DiscoverPage
     readonly property bool compact: page.width < 550 || !applicationWindow().wideScreen
 
     Kirigami.CardsListView {
+        id: apps
         model: FeaturedModel {}
         currentIndex: -1
         delegate: ApplicationDelegate {
             application: model.application
             compact: page.compact
+            view: apps
         }
     }
 }

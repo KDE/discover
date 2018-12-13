@@ -31,10 +31,11 @@ Kirigami.AbstractCard
     property bool compact: false
     property bool showRating: true
     showClickFeedback: true
+    property var view: null
 
     function trigger() {
-        if (ListView.view)
-            ListView.view.currentIndex = index
+        if (view)
+            view.currentIndex = index
         Navigation.openApplication(application)
     }
     highlighted: ListView.isCurrentItem
