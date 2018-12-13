@@ -46,14 +46,16 @@ FeaturedModel::FeaturedModel()
     *featuredCache = dir+QLatin1String("/featured-5.9.json");
 
     const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover/featured-5.9.json"));
-    auto *getJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
-    connect(getJob, &KIO::StoredTransferJob::result, this, [this, getJob](){
+    auto *m_fetchJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
+    connect(m_fetchJob, &KIO::StoredTransferJob::result, this, [this, m_fetchJob](){
         QFile f(*featuredCache);
         if (!f.open(QIODevice::WriteOnly))
             qCWarning(DISCOVER_LOG) << "could not open" << *featuredCache << f.errorString();
-        f.write(getJob->data());
+        f.write(m_fetchJob->data());
         f.close();
         refresh();
+
+        Q_EMIT isFetchingChanged();
     });
 
     if (!ResourcesModel::global()->backends().isEmpty() && QFile::exists(*featuredCache))

@@ -47,11 +47,19 @@ DiscoverPage
     readonly property bool compact: page.width < 550 || !applicationWindow().wideScreen
 
     Kirigami.CardsListView {
+        id: view
         model: FeaturedModel {}
         currentIndex: -1
         delegate: ApplicationDelegate {
             application: model.application
             compact: page.compact
+        }
+
+        footer: Kirigami.Heading {
+            visible: view.count === 0
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            text: i18n("Please check your connectivity")
         }
     }
 }

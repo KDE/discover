@@ -22,12 +22,15 @@
 #define FEATUREDMODEL_H
 
 #include <QAbstractListModel>
+#include <QPointer>
 
+namespace KIO { class StoredTransferJob; }
 class AbstractResource;
 
 class FeaturedModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(bool isFetching READ isFetching NOTIFY isFetchingChanged)
     public:
         FeaturedModel();
         ~FeaturedModel() override {}
@@ -37,6 +40,11 @@ class FeaturedModel : public QAbstractListModel
         int rowCount(const QModelIndex & parent) const override;
         QHash<int, QByteArray> roleNames() const override;
 
+        bool isFetching() const { return !m_fetchJob.isNull(); }
+
+    Q_SIGNALS:
+        void isFetchingChanged();
+
     private:
         void setUris(const QVector<QUrl> &uris);
         void refresh();
@@ -44,6 +52,7 @@ class FeaturedModel : public QAbstractListModel
 
         QVector<QUrl> m_uris;
         QVector<AbstractResource*> m_resources;
+        QPointer<KIO::StoredTransferJob> m_fetchJob;
 };
 
 #endif // FEATUREDMODEL_H
