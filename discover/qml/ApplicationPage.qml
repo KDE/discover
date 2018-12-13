@@ -32,7 +32,10 @@ DiscoverPage {
     readonly property int visibleReviews: 3
     clip: true
 
-    background: Rectangle { color: Kirigami.Theme.viewBackgroundColor }
+    background: Rectangle {
+        color: Kirigami.Theme.backgroundColor
+        Kirigami.Theme.colorSet: Kirigami.Theme.View
+    }
 
     ReviewsPage {
         id: reviewsSheet
