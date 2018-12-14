@@ -152,11 +152,8 @@ DiscoverPage {
         }
 
         delegate: Kirigami.SwipeListItem {
-            Layout.fillWidth: true
             enabled: display.length>0 && model.enabled
             highlighted: ListView.isCurrentItem
-            supportsMouseEvents: sourcesBackend.canFilterSources
-            onClicked: Navigation.openApplicationListSource(sourceId)
 
             Keys.onReturnPressed: clicked()
             actions: [
@@ -189,6 +186,14 @@ DiscoverPage {
                         if (!backend.removeSource(sourceId)) {
                             window.showPassiveNotification(i18n("Failed to remove the source '%1'", display))
                         }
+                    }
+                },
+                Kirigami.Action {
+                    iconName: "view-filter"
+                    tooltip: i18n("Show contents")
+                    visible: sourcesBackend.canFilterSources
+                    onTriggered: {
+                        Navigation.openApplicationListSource(sourceId)
                     }
                 }
             ]
