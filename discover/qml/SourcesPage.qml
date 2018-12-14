@@ -169,7 +169,9 @@ DiscoverPage {
             enabled: display.length>0 && model.enabled
             highlighted: ListView.isCurrentItem
             supportsMouseEvents: sourcesBackend.canFilterSources
-            onClicked: Navigation.openApplicationListSource(sourceId)
+            onClicked: if (sourcesBackend.canFilterSources) {
+                Navigation.openApplicationListSource(sourceId)
+            }
 
             Keys.onReturnPressed: clicked()
             actions: [
