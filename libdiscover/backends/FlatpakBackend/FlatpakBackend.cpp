@@ -383,6 +383,17 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 {
     QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
     const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
+    const QString name = settings.value(QStringLiteral("Flatpak Ref/Name")).toString();
+
+    auto item = m_sources->sourceByUrl(refurl);
+    if (item) {
+        const auto resources = resourcesByAppstreamName(name);
+        for (auto resource : resources) {
+            if (resource->origin() == item->data(AbstractSourcesBackend::IdRole)) {
+                return static_cast<FlatpakResource*>(resource);
+            }
+        }
+    }
 
     g_autoptr(GError) error = nullptr;
     g_autoptr(FlatpakRemoteRef) remoteRef = nullptr;

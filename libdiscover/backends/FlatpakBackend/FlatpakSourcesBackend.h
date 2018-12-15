@@ -50,6 +50,7 @@ public:
 
     bool moveSource(const QString & sourceId, int delta) override;
     int originIndex(const QString& sourceId) const;
+    QStandardItem* sourceByUrl(const QString & url) const;
 
 private:
     QStandardItem* sourceById(const QString & sourceId) const;
