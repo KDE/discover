@@ -175,8 +175,7 @@ Kirigami.GlobalDrawer {
         var actions = []
         for(var i in categories) {
             var cat = categories[i];
-            var catAction = categoryActionComponent.createObject(drawer, {category: cat});
-            catAction.children = createCategoryActions(cat.subcategories);
+            var catAction = categoryActionComponent.createObject(drawer, {category: cat, children: createCategoryActions(cat.subcategories)});
             actions.push(catAction)
         }
         return actions;
