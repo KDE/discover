@@ -154,6 +154,7 @@ DiscoverPage {
         delegate: Kirigami.SwipeListItem {
             enabled: display.length>0 && model.enabled
             highlighted: ListView.isCurrentItem
+            supportsMouseEvents: false
 
             Keys.onReturnPressed: clicked()
             actions: [
