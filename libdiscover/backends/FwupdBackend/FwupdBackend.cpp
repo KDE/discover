@@ -459,7 +459,7 @@ ResultsStream* FwupdBackend::search(const AbstractResourcesBackend::Filters& fil
     if (filter.resourceUrl.scheme() == QLatin1String("fwupd")) {
         return findResourceByPackageName(filter.resourceUrl);
     } else if (!filter.resourceUrl.isEmpty()) {
-        return new ResultsStream(QStringLiteral("FwupdStream-void"), {});
+        return resourceForFile(filter.resourceUrl);
     }
 
     auto stream = new ResultsStream(QStringLiteral("FwupdStream"));
@@ -523,7 +523,7 @@ Transaction* FwupdBackend::removeApplication(AbstractResource* /*app*/)
     return nullptr;
 }
 
-AbstractResource * FwupdBackend::resourceForFile(const QUrl& path)
+ResultsStream* FwupdBackend::resourceForFile(const QUrl& path)
 {
     g_autoptr(GError) error = nullptr;
 
@@ -549,13 +549,14 @@ AbstractResource * FwupdBackend::resourceForFile(const QUrl& path)
             }
             addResourceToList(app);
             connect(app, &FwupdResource::stateChanged, this, &FwupdBackend::updatesCountChanged);
+            return new ResultsStream(QStringLiteral("FwupdStream-file"), {app});
         }
         else
         {
             handleError(error);
         }
     }
-    return app;
+    return new ResultsStream(QStringLiteral("FwupdStream-void"), {});
 }
 
 QString FwupdBackend::displayName() const

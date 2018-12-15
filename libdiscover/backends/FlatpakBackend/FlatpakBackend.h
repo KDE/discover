@@ -58,12 +58,14 @@ public:
     Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;
     Transaction* removeApplication(AbstractResource* app) override;
     bool isFetching() const override { return m_isFetching>0; }
-    AbstractResource * resourceForFile(const QUrl & ) override;
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override { return true; }
     FlatpakResource * addSourceFromFlatpakRepo(const QUrl &url);
     QStringList extends() const override { return m_extends; }
+
+    FlatpakResource * addAppFromFlatpakBundle(const QUrl &url);
+    FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
 
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata);
@@ -83,8 +85,6 @@ private:
     FlatpakResource * getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const;
     FlatpakResource * getRuntimeForApp(FlatpakResource *resource) const;
 
-    FlatpakResource * addAppFromFlatpakBundle(const QUrl &url);
-    FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
     void addResource(FlatpakResource *resource);
     void loadAppsFromAppstreamData();
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);

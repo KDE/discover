@@ -236,22 +236,26 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
     setRootObjectProperty("defaultStartup", false);
     auto action = new OneTimeAction(
         [this, localfile]() {
-            auto res = ResourcesModel::global()->resourceForFile(localfile);
-            qCDebug(DISCOVER_LOG) << "all initialized..." << res;
-            if (res) {
-                emit openApplicationInternal(res);
-            } else {
-                QMimeDatabase db;
-                auto mime = db.mimeTypeForUrl(localfile);
-                auto fIsFlatpakBackend = [](AbstractResourcesBackend* backend) { return backend->metaObject()->className() == QByteArray("FlatpakBackend"); };
-                if (mime.name().startsWith(QLatin1String("application/vnd.flatpak")) && !kContains(ResourcesModel::global()->backends(), fIsFlatpakBackend)) {
-                    openApplication(QUrl(QLatin1String("appstream://org.kde.discover.flatpak")));
-                    showPassiveNotification(i18n("Cannot interact with flatpak resources without the flatpak backend %1. Please install it first.", localfile.toDisplayString()));
+            AbstractResourcesBackend::Filters f;
+            f.resourceUrl = localfile;
+            auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
+            connect(stream, &StoredResultsStream::finished, this, [this, localfile, stream]() {
+                const auto res = stream->resources();
+                if (res.count() == 1) {
+                    emit openApplicationInternal(res.first());
                 } else {
-                    setRootObjectProperty("defaultStartup", true);
-                    showPassiveNotification(i18n("Couldn't open %1", localfile.toDisplayString()));
+                    QMimeDatabase db;
+                    auto mime = db.mimeTypeForUrl(localfile);
+                    auto fIsFlatpakBackend = [](AbstractResourcesBackend* backend) { return backend->metaObject()->className() == QByteArray("FlatpakBackend"); };
+                    if (mime.name().startsWith(QLatin1String("application/vnd.flatpak")) && !kContains(ResourcesModel::global()->backends(), fIsFlatpakBackend)) {
+                        openApplication(QUrl(QLatin1String("appstream://org.kde.discover.flatpak")));
+                        showPassiveNotification(i18n("Cannot interact with flatpak resources without the flatpak backend %1. Please install it first.", localfile.toDisplayString()));
+                    } else {
+                        setRootObjectProperty("defaultStartup", true);
+                        showPassiveNotification(i18n("Couldn't open %1", localfile.toDisplayString()));
+                    }
                 }
-            }
+            });
         }
         , this);
 

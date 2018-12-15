@@ -123,6 +123,15 @@ ResultsStream* DummyBackend::search(const AbstractResourcesBackend::Filters& fil
 
 ResultsStream * DummyBackend::findResourceByPackageName(const QUrl& search)
 {
+    if(search.isLocalFile()) {
+        DummyResource* res = new DummyResource(search.fileName(), AbstractResource::Technical, this);
+        res->setSize(666);
+        res->setState(AbstractResource::None);
+        m_resources.insert(res->packageName(), res);
+        connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
+        return new ResultsStream(QStringLiteral("DummyStream-local"), { res });
+    }
+
     auto res = search.scheme() == QLatin1String("dummy") ? m_resources.value(search.host().replace(QLatin1Char('.'), QLatin1Char(' '))) : nullptr;
     if (!res) {
         return new ResultsStream(QStringLiteral("DummyStream"), {});
@@ -163,16 +172,6 @@ void DummyBackend::checkForUpdates()
     populate(QStringLiteral("Moar"));
     QTimer::singleShot(500, this, &DummyBackend::toggleFetching);
     qDebug() << "DummyBackend::checkForUpdates";
-}
-
-AbstractResource * DummyBackend::resourceForFile(const QUrl& path)
-{
-    DummyResource* res = new DummyResource(path.fileName(), AbstractResource::Technical, this);
-    res->setSize(666);
-    res->setState(AbstractResource::None);
-    m_resources.insert(res->packageName(), res);
-    connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
-    return res;
 }
 
 QString DummyBackend::displayName() const

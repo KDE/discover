@@ -442,7 +442,17 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
 ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
 {
     AbstractResource* pkg = nullptr;
-    if (url.host().isEmpty())
+    if (url.isLocalFile()) {
+        QMimeDatabase db;
+        const auto mime = db.mimeTypeForUrl(url);
+        if (    mime.inherits(QLatin1String("application/vnd.debian.binary-package"))
+            || mime.inherits(QLatin1String("application/x-rpm"))
+            || mime.inherits(QLatin1String("application/x-tar"))
+            || mime.inherits(QLatin1String("application/x-xz-compressed-tar"))
+        ) {
+            pkg = new LocalFilePKResource(url, this);
+        }
+    } else if (url.host().isEmpty())
         Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
     else if (url.scheme() == QLatin1String("appstream")) {
         static const QMap<QString, QString> deprecatedAppstreamIds = {
@@ -637,20 +647,6 @@ QVector<AppPackageKitResource*> PackageKitBackend::extendedBy(const QString& id)
 AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const
 {
     return m_reviews.data();
-}
-
-AbstractResource * PackageKitBackend::resourceForFile(const QUrl& file)
-{
-    QMimeDatabase db;
-    const auto mime = db.mimeTypeForUrl(file);
-    if (    mime.inherits(QLatin1String("application/vnd.debian.binary-package"))
-         || mime.inherits(QLatin1String("application/x-rpm"))
-         || mime.inherits(QLatin1String("application/x-tar"))
-         || mime.inherits(QLatin1String("application/x-xz-compressed-tar"))
-    ) {
-        return new LocalFilePKResource(file, this);
-    }
-    return nullptr;
 }
 
 static QString readDistroName()

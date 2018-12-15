@@ -67,7 +67,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void fetchDetails(const QString& pkgid) { fetchDetails(QSet<QString>{pkgid}); }
         void fetchDetails(const QSet<QString>& pkgid);
 
-        AbstractResource * resourceForFile(const QUrl & ) override;
         void checkForUpdates() override;
         QString displayName() const override;
 

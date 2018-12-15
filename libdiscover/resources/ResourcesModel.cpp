@@ -336,17 +336,6 @@ AggregatedResultsStream* ResourcesModel::search(const AbstractResourcesBackend::
     return new AggregatedResultsStream(streams);
 }
 
-AbstractResource* ResourcesModel::resourceForFile(const QUrl& file)
-{
-    AbstractResource* ret = nullptr;
-    foreach(auto backend, m_backends) {
-        ret = backend->resourceForFile(file);
-        if (ret)
-            break;
-    }
-    return ret;
-}
-
 void ResourcesModel::checkForUpdates()
 {
     for(auto backend: qAsConst(m_backends))

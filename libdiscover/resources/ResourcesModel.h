@@ -78,7 +78,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         Q_SCRIPTABLE bool isExtended(const QString &id);
 
         AggregatedResultsStream* search(const AbstractResourcesBackend::Filters &search);
-        AbstractResource* resourceForFile(const QUrl &/*url*/);
         void checkForUpdates();
 
         QVariantList applicationBackendsVariant() const;

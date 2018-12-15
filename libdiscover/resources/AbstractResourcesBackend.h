@@ -159,8 +159,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          */
         void emitRatingsReady();
 
-        virtual AbstractResource* resourceForFile(const QUrl &/*url*/) { return nullptr; }
-
         /**
          * @returns the root category tree
          */

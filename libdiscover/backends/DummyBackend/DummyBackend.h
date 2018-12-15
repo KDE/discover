@@ -47,7 +47,6 @@ public:
     Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;
     Transaction* removeApplication(AbstractResource* app) override;
     bool isFetching() const override { return m_fetching; }
-    AbstractResource * resourceForFile(const QUrl & ) override;
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override;

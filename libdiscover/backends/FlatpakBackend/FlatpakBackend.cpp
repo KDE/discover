@@ -152,21 +152,34 @@ public:
             const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1Char('/') + originalUrl.fileName());
             auto replyPut = put(QNetworkRequest(fileUrl), replyGet->readAll());
             connect(replyPut, &QNetworkReply::finished, this, [this, originalUrl, fileUrl, replyPut]() {
-                if (replyPut->error() == QNetworkReply::NoError) {
-                    auto res = m_backend->resourceForFile(fileUrl);
-                    if (res) {
-                        FlatpakResource *resource = qobject_cast<FlatpakResource*>(res);
-                        resource->setResourceFile(originalUrl);
-                        Q_EMIT jobFinished(true, resource);
-                    } else {
-                        qWarning() << "couldn't create resource from" << fileUrl.toLocalFile();
-                        Q_EMIT jobFinished(false, nullptr);
-                    }
-                } else {
+                if (replyPut->error() != QNetworkReply::NoError) {
                     qWarning() << "couldn't save" << originalUrl << replyPut->errorString();
                     Q_EMIT jobFinished(false, nullptr);
+                    return;
                 }
-            });
+                if (!fileUrl.isLocalFile()) {
+                    Q_EMIT jobFinished(false, nullptr);
+                    return;
+                }
+
+                FlatpakResource *resource = nullptr;
+                if (fileUrl.path().endsWith(QLatin1String(".flatpak"))) {
+                    resource = m_backend->addAppFromFlatpakBundle(fileUrl);
+                } else if (fileUrl.path().endsWith(QLatin1String(".flatpakref"))) {
+                    resource = m_backend->addAppFromFlatpakRef(fileUrl);
+                } else if (fileUrl.path().endsWith(QLatin1String(".flatpakrepo"))) {
+                    resource = m_backend->addSourceFromFlatpakRepo(fileUrl);
+                }
+
+                if (resource) {
+                    resource->setResourceFile(originalUrl);
+                    Q_EMIT jobFinished(true, resource);
+                } else {
+                    qWarning() << "couldn't create resource from" << fileUrl.toLocalFile();
+                    Q_EMIT jobFinished(false, nullptr);
+                }
+            }
+            );
         });
     }
 
@@ -386,7 +399,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
         remoteRef = flatpak_installation_install_ref_file (preferredInstallation(), bytes, m_cancellable, &error);
         if (!remoteRef) {
             qWarning() << "Failed to create install ref file:" << error->message;
-            const auto resources = resourcesByAppstreamName(settings.value(QStringLiteral("Flatpak Ref/Name")).toString());
+            const auto resources = resourcesByAppstreamName(name);
             if (!resources.isEmpty()) {
                 return qobject_cast<FlatpakResource*>(resources.constFirst());
             }
@@ -403,7 +416,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     asComponent.setDescription(settings.value(QStringLiteral("Flatpak Ref/Description")).toString());
     asComponent.setName(settings.value(QStringLiteral("Flatpak Ref/Title")).toString());
     asComponent.setSummary(settings.value(QStringLiteral("Flatpak Ref/Comment")).toString());
-    asComponent.setId(settings.value(QStringLiteral("Flatpak Ref/Name")).toString());
+    asComponent.setId(name);
 
     const QString iconUrl = settings.value(QStringLiteral("Flatpak Ref/Icon")).toString();
     if (!iconUrl.isEmpty()) {
@@ -1084,7 +1097,7 @@ bool FlatpakBackend::flatpakResourceLessThan(AbstractResource* l, AbstractResour
 
 ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
-    if (filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakrepo")) || filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakref"))) {
+    if (filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakrepo")) || filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakref")) || filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpak"))) {
         auto stream = new ResultsStream(QStringLiteral("FlatpakStream-http-")+filter.resourceUrl.fileName());
 
         FlatpakFetchRemoteResourceJob *fetchResourceJob = new FlatpakFetchRemoteResourceJob(filter.resourceUrl, this);
@@ -1248,24 +1261,6 @@ void FlatpakBackend::checkForUpdates()
         // Load updates from remote repositories
         loadRemoteUpdates(installation);
     }
-}
-
-AbstractResource * FlatpakBackend::resourceForFile(const QUrl &url)
-{
-    if (!url.isLocalFile()) {
-        return nullptr;
-    }
-
-    FlatpakResource *resource = nullptr;
-    if (url.path().endsWith(QLatin1String(".flatpak"))) {
-        resource = addAppFromFlatpakBundle(url);
-    } else if (url.path().endsWith(QLatin1String(".flatpakref"))) {
-        resource = addAppFromFlatpakRef(url);
-    } else if (url.path().endsWith(QLatin1String(".flatpakrepo"))) {
-        resource = addSourceFromFlatpakRepo(url);
-    }
-
-    return resource;
 }
 
 QString FlatpakBackend::displayName() const
