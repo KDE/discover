@@ -152,6 +152,7 @@ KNSBackend::~KNSBackend()
 
 void KNSBackend::markInvalid(const QString &message)
 {
+    m_rootCategories.clear();
     qWarning() << "invalid kns backend!" << m_name << "because:" << message;
     m_isValid = false;
     setFetching(false);
