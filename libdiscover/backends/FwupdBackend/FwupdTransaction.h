@@ -40,7 +40,7 @@ class FwupdTransaction : public Transaction
     private Q_SLOTS:
         void updateProgress();
         void finishTransaction();
-        void fwupdInstall();
+        void fwupdInstall(const QString &file);
 
     private:
         void install();

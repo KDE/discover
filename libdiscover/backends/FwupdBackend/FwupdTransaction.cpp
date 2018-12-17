@@ -31,7 +31,6 @@ FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend)
     setCancellable(true);
     setStatus(QueuedStatus);
 
-    Q_ASSERT(!m_app->file().isEmpty());
     Q_ASSERT(!m_app->deviceId().isEmpty());
     QTimer::singleShot(0, this, &FwupdTransaction::install);
 }
@@ -54,13 +53,13 @@ void FwupdTransaction::install()
         return;
     }
 
-    if(!QFileInfo::exists(m_app->file()))
-    {
+    const QString fileName = m_app->cacheFile();
+    if(!QFileInfo::exists(fileName)) {
         const QUrl uri(m_app->updateURI());
         setStatus(DownloadingStatus);
         QNetworkAccessManager *manager = new QNetworkAccessManager(this);
         auto reply = manager->get(QNetworkRequest(uri));
-        QFile* file = new QFile(m_app->file());
+        QFile* file = new QFile(fileName);
 
         connect(reply, &QNetworkReply::finished, this, [this, file, reply](){
             file->close();
@@ -71,7 +70,7 @@ void FwupdTransaction::install()
                 file->remove();
                 setStatus(DoneWithErrorStatus);
             } else {
-                fwupdInstall();
+                fwupdInstall(file->fileName());
             }
         });
         connect(reply, &QNetworkReply::readyRead, this, [file, reply](){
@@ -80,11 +79,11 @@ void FwupdTransaction::install()
     }
     else
     {
-        fwupdInstall();
+        fwupdInstall(fileName);
     }
 }
 
-void FwupdTransaction::fwupdInstall()
+void FwupdTransaction::fwupdInstall(const QString &file)
 {
     FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;
     g_autoptr(GError) error = nullptr;
@@ -93,7 +92,7 @@ void FwupdTransaction::fwupdInstall()
     if(m_app->isOnlyOffline())
         install_flags = static_cast<FwupdInstallFlags>(install_flags | FWUPD_INSTALL_FLAG_OFFLINE);
 
-    if(!fwupd_client_install(m_backend->client, m_app->deviceId().toUtf8().constData(), m_app->file().toUtf8().constData(), install_flags, nullptr, &error))
+    if(!fwupd_client_install(m_backend->client, m_app->deviceId().toUtf8().constData(), file.toUtf8().constData(), install_flags, nullptr, &error))
     {
         m_backend->handleError(error);
         setStatus(DoneWithErrorStatus);

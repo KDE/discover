@@ -199,3 +199,10 @@ void FwupdResource::setDeviceDetails(FwupdDevice* dev)
     else
         m_iconName = QString::fromUtf8("device-notifier");
 }
+
+QString FwupdResource::cacheFile() const
+{
+    const auto filename_cache = FwupdBackend::cacheFile(QStringLiteral("fwupd"), QFileInfo(QUrl(m_updateURI).path()).fileName());
+    Q_ASSERT(!filename_cache.isEmpty());
+    return filename_cache;
+}

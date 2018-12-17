@@ -221,21 +221,16 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
     }
 
     /* Checking for firmware in the cache? */
-    const QString filename_cache = cacheFile(QStringLiteral("fwupd"), QFileInfo(update_uri.path()).fileName());
-    Q_ASSERT(!filename_cache.isEmpty());
-
-    /* Currently LVFS supports SHA1 only*/
-    const QByteArray checksum_tmp(fwupd_checksum_get_by_kind(checksums, G_CHECKSUM_SHA1));
-    const QByteArray checksum = getChecksum(filename_cache, QCryptographicHash::Sha1);
-    if (checksum_tmp != checksum)
-    {
-        qWarning() << "Fwupd Error: " << filename_cache << " does not match checksum, expected" << checksum_tmp << "got" << checksum;
-        QFile::remove(filename_cache);
-        return nullptr;
+    const QString filename_cache = app->cacheFile();
+    if (QFile::exists(filename_cache)) {
+        /* Currently LVFS supports SHA1 only*/
+        const QByteArray checksum_tmp(fwupd_checksum_get_by_kind(checksums, G_CHECKSUM_SHA1));
+        const QByteArray checksum = getChecksum(filename_cache, QCryptographicHash::Sha1);
+        if (checksum_tmp != checksum) {
+            QFile::remove(filename_cache);
+        }
     }
 
-    /* link file to application and return its reference */
-    app->setFile(filename_cache);
     if (!app->needsReboot())
         app->setState(AbstractResource::Upgradeable);
     return app.take();
