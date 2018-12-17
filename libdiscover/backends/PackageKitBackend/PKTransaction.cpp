@@ -269,7 +269,7 @@ void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID
 
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
-    if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
+    if (err == PackageKit::Transaction::ErrorNoLicenseAgreement || err == PackageKit::Transaction::ErrorTransactionCancelled)
         return;
     qWarning() << "PackageKit error:" << err << PackageKitMessages::errorMessage(err) << error;
     Q_EMIT passiveMessage(PackageKitMessages::errorMessage(err));
