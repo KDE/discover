@@ -191,7 +191,7 @@ QByteArray FwupdBackend::getChecksum(const QString &filename, QCryptographicHash
 FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
 {
     FwupdRelease *release = fwupd_device_get_release_default(device);
-    FwupdResource* app = createRelease(device);
+    QScopedPointer<FwupdResource> app(createRelease(device));
 
     if (!app->isLiveUpdatable()) {
         qWarning() << "Fwupd Error: " << app->name() << "[" << app->id() << "]" << "cannot be updated ";
@@ -238,7 +238,7 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
     app->setFile(filename_cache);
     if (!app->needsReboot())
         app->setState(AbstractResource::Upgradeable);
-    return app;
+    return app.take();
 }
 
 bool FwupdBackend::downloadFile(const QUrl &uri, const QString &filename)
