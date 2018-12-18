@@ -67,7 +67,6 @@ public:
     void setIsDeviceLocked(bool locked) { m_isDeviceLocked = locked; }
     void setDescription(const QString &description) { m_description = description; }
     void setId(const QString &id) { m_id = id; }
-    void setFile(const QString &file) { m_file = file; }
 
     void setState(AbstractResource::State state);
     void setReleaseDetails(FwupdRelease *release);
@@ -75,12 +74,13 @@ public:
 
     QString id() const { return m_id; }
     QString deviceId() const { return m_deviceID; }
-    QString file() const { return m_file; }
     QUrl updateURI() const { return QUrl(m_updateURI); }
     bool isDeviceLocked() const { return m_isDeviceLocked; }
     bool isOnlyOffline() const { return m_isOnlyOffline; }
     bool isLiveUpdatable() const { return m_isLiveUpdatable; }
     bool needsReboot() const { return m_needsReboot; }
+
+    QString cacheFile() const;
 
 private:
     QString m_id;
@@ -101,7 +101,6 @@ private:
 
     QString m_deviceID;
     QString m_updateURI;
-    QString m_file;
     bool m_isDeviceLocked = false; // True if device is locked!
     bool m_isOnlyOffline = false; // True if only offline updates
     bool m_isLiveUpdatable = false; // True if device is live updatable

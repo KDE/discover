@@ -77,6 +77,8 @@ public:
     FwupdClient *client;
     void handleError(GError *perror);
 
+    static QString cacheFile(const QString &kind, const QString &baseName);
+
 Q_SIGNALS:
     void initialized();
 
@@ -88,7 +90,6 @@ private:
     QSet<AbstractResource*> getAllUpdates();
 
     static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
-    static QString cacheFile(const QString &kind, const QString &baseName);
     static void refreshRemote(FwupdBackend* backend, FwupdRemote *remote, quint64 cacheAge, GCancellable *cancellable);
     static QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
     static bool downloadFile(const QUrl &uri, const QString &filename);

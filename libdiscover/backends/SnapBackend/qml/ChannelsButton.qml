@@ -45,7 +45,7 @@ Button
                 readonly property bool current: resource.channel === modelData.name
                 Label {
                     Layout.fillWidth: true
-                    text: i18n("%1 - %2", modelData.name, modelData.track)
+                    text: i18n("%1 - %2", modelData.name, modelData.version)
                 }
                 Button {
                     text: i18n("Switch")
