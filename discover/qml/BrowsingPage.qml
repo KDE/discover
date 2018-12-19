@@ -53,7 +53,6 @@ DiscoverPage
         delegate: ApplicationDelegate {
             application: model.application
             compact: page.compact
-            view: apps
         }
 
         footer: Kirigami.Heading {

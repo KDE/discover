@@ -149,7 +149,6 @@ DiscoverPage {
             application: model.application
             compact: page.compact
             showRating: page.showRating
-            view: apps
         }
 
         Label {

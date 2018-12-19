@@ -22,7 +22,7 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.1
 import "navigation.js" as Navigation
-import org.kde.kirigami 2.4 as Kirigami
+import org.kde.kirigami 2.6 as Kirigami
 
 Kirigami.AbstractCard
 {
@@ -31,14 +31,13 @@ Kirigami.AbstractCard
     property bool compact: false
     property bool showRating: true
     showClickFeedback: true
-    property var view: null
 
     function trigger() {
-        if (view)
-            view.currentIndex = index
+        if (delegateRecycler.ListView.view)
+            delegateRecycler.ListView.view.currentIndex = index
         Navigation.openApplication(application)
     }
-    highlighted: ListView.isCurrentItem
+    highlighted: delegateRecycler.ListView.isCurrentItem
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
 
