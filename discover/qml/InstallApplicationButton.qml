@@ -27,12 +27,15 @@ ConditionalLoader
         enabled: !listener.isActive
         onTriggered: root.click()
     }
-    readonly property QtObject cancelAction: Kirigami.Action {
-        text: i18n("Cancel")
-        icon.name: "dialog-cancel"
+    readonly property QtObject cancelAction: KirigamiActionBridge {
+        Action {
+            id: cancelQQCAction
+            text: i18n("Cancel")
+            icon.name: "dialog-cancel"
+            enabled: listener.isCancellable
+            onTriggered: listener.cancel()
+        }
         visible: listener.isActive
-        enabled: listener.isCancellable
-        onTriggered: listener.cancel()
     }
 
     function click() {
@@ -50,7 +53,7 @@ ConditionalLoader
     componentTrue: RowLayout {
         ToolButton {
             Layout.fillHeight: true
-            action: root.cancelAction
+            action: cancelQQCAction
         }
 
         LabelBackground {
