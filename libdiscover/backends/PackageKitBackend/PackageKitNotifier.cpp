@@ -128,6 +128,12 @@ void PackageKitNotifier::checkOfflineUpdates()
         connect(notification, &KNotification::action1Activated, this, [] () {
             QProcess::startDetached(QStringLiteral("plasma-discover"));
         });
+        connect(notification, &KNotification::action2Activated, this, [this] () {
+            auto trans = PackageKit::Daemon::global()->repairSystem();
+            connect(trans, &PackageKit::Transaction::errorCode, this, [](PackageKit::Transaction::Error /*error*/, const QString &details){
+                KNotification::event(QStringLiteral("offlineupdate-repair-failed"), i18n("Repair Failed"), i18n("Please report to your distribution: %1", details), {}, KNotification::Persistent, QStringLiteral("org.kde.discovernotifier"));
+            });
+        });
 
         notification->sendEvent();
     } else {
