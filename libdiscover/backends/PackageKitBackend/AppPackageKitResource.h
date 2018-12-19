@@ -49,7 +49,7 @@ class AppPackageKitResource : public PackageKitResource
         QStringList extends() const override;
         void fetchScreenshots() override;
         void invokeApplication() const override;
-        bool canExecute() const override { return true; }
+        bool canExecute() const override;
         QDate releaseDate() const override;
         QString changelog() const override;
         QString author() const override;

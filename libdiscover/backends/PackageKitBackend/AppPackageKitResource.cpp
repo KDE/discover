@@ -195,6 +195,13 @@ QString AppPackageKitResource::changelog() const
     return AppStreamUtils::changelogToHtml(m_appdata);
 }
 
+
+bool AppPackageKitResource::canExecute() const
+{
+    static QSet<QString> cannotExecute = { QStringLiteral("org.kde.development") };
+    return !cannotExecute.contains(m_appdata.id());
+}
+
 void AppPackageKitResource::invokeApplication() const
 {
     auto trans = PackageKit::Daemon::getFiles({installedPackageId()});
@@ -203,11 +210,13 @@ void AppPackageKitResource::invokeApplication() const
         if (!allServices.isEmpty()) {
             const auto packageServices = kFilter<QStringList>(allServices, [filenames](const QString &file) { return filenames.contains(file); });
             QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {packageServices});
+            return;
         } else {
             const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
             const auto packageExecutables = kFilter<QStringList>(allServices, [filenames](const QString &exe) { return filenames.contains(QLatin1Char('/') + exe); });
             if (!packageExecutables.isEmpty()) {
                 QProcess::startDetached(exes.constFirst());
+                return;
             } else {
                 const auto locations = QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation);
                 const auto desktopFiles = kFilter<QStringList>(filenames, [locations](const QString &exe) {
@@ -219,9 +228,10 @@ void AppPackageKitResource::invokeApplication() const
                 });
                 if (!desktopFiles.isEmpty()) {
                     QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), { desktopFiles });
+                    return;
                 }
             }
-            qWarning() << "Could not find any executables" << exes << filenames;
+            backend()->passiveMessage(i18n("Cannot launch %1", name()));
         }
     });
 }
