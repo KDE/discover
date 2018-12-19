@@ -380,6 +380,11 @@ T PackageKitBackend::resourcesByPackageNames(const QStringList &pkgnames) const
 
 void PackageKitBackend::checkForUpdates()
 {
+    if (PackageKit::Daemon::global()->offline()->updateTriggered()) {
+        qDebug() << "Won't be checking for updates again, the system needs a reboot to apply the fetched offline updates.";
+        return;
+    }
+
     if (!m_refresher) {
         acquireFetching(true);
         m_refresher = PackageKit::Daemon::refreshCache(false);
