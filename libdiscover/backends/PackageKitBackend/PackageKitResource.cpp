@@ -282,9 +282,8 @@ void PackageKitResource::updateDetail(const QString& packageID, const QStringLis
     const auto name = PackageKit::Daemon::packageName(packageID);
 
     QString info;
-    addIfNotEmpty(i18n("Current Version:"), joinPackages(updates, {}, name), info);
     addIfNotEmpty(i18n("Obsoletes:"), joinPackages(obsoletes, {}, name), info);
-    addIfNotEmpty(i18n("New Version:"), updateText, info);
+    addIfNotEmpty(i18n("Release Notes:"), updateText, info);
     addIfNotEmpty(i18n("Update State:"), PackageKitMessages::updateStateMessage(state), info);
     addIfNotEmpty(i18n("Restart:"), PackageKitMessages::restartMessage(restart), info);
 

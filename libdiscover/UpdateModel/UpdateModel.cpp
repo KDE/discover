@@ -63,9 +63,10 @@ QHash<int,QByteArray> UpdateModel::roleNames() const
         { ResourceProgressRole, "resourceProgress" },
         { ResourceRole, "resource" },
         { SizeRole, "size" },
-        { VersionRole, "version" },
         { SectionRole, "section" },
-        { ChangelogRole, "changelog" }
+        { ChangelogRole, "changelog" },
+        { InstalledVersionRole, "installedVersion" },
+        { AvailableVersionRole, "availableVersion" }
     } );
 }
 
@@ -124,8 +125,10 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return item->icon();
     case Qt::CheckStateRole:
         return item->checked();
-    case VersionRole:
-        return item->version();
+    case InstalledVersionRole:
+        return item->installedVersion();
+    case AvailableVersionRole:
+        return item->availableVersion();
     case SizeRole:
         return KFormat().formatByteSize(item->size());
     case ResourceRole:
@@ -332,7 +335,7 @@ void UpdateModel::resourceDataChanged(AbstractResource* res, const QVector<QByte
 
     const auto index = indexFromItem(item);
     if (properties.contains("state"))
-        Q_EMIT dataChanged(index, index, {SizeRole, VersionRole});
+        Q_EMIT dataChanged(index, index, {SizeRole, AvailableVersionRole});
     else if (properties.contains("size")) {
         Q_EMIT dataChanged(index, index, {SizeRole});
         m_updateSizeTimer->start();

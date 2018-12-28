@@ -44,7 +44,9 @@ public:
 
     AbstractResource *app() const;
     QString name() const;
-    QString version() const;
+    QString version() const; // Deprecated; use availableVersion() instead
+    QString availableVersion() const;
+    QString installedVersion() const;
     QVariant icon() const;
     qint64 size() const;
     Qt::CheckState checked() const;

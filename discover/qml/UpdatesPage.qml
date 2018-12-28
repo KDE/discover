@@ -178,7 +178,7 @@ DiscoverPage
             property: "section"
             delegate: Kirigami.Heading {
                 x: Kirigami.Units.gridUnit
-                level: 3
+                level: 2
                 text: section
                 height: implicitHeight + Kirigami.Units.largeSpacing * 2
             }
@@ -223,10 +223,22 @@ DiscoverPage
                         smooth: true
                     }
 
-                    Label {
-                        Layout.fillWidth: true
-                        text: i18n("%1 (%2)", display, version)
-                        elide: Text.ElideRight
+                    ColumnLayout {
+
+                        // App name
+                        Kirigami.Heading {
+                            Layout.fillWidth: true
+                            text: i18n("%1", display)
+                            level: 3
+                            elide: Text.ElideRight
+                        }
+
+                        // Old and new version numbers
+                        Label {
+                            Layout.fillWidth: true
+                            elide: Text.ElideRight
+                            text: i18n("%1 ⮕ %2", installedVersion, availableVersion)
+                        }
                     }
 
                     LabelBackground {

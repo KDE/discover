@@ -47,9 +47,20 @@ QString UpdateItem::name() const
     return m_app->name();
 }
 
+// Deprecated; use availableVersion() instead
 QString UpdateItem::version() const
 {
     return m_app->availableVersion();
+}
+
+QString UpdateItem::availableVersion() const
+{
+    return m_app->availableVersion();
+}
+
+QString UpdateItem::installedVersion() const
+{
+    return m_app->installedVersion();
 }
 
 QVariant UpdateItem::icon() const

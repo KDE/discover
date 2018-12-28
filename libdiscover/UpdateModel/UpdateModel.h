@@ -40,13 +40,14 @@ class DISCOVERCOMMON_EXPORT UpdateModel : public QAbstractListModel
 public:
 
     enum Roles {
-        VersionRole = Qt::UserRole + 1,
-        SizeRole,
+        SizeRole = Qt::UserRole + 1,
         ResourceRole,
         ResourceProgressRole,
         SectionResourceProgressRole,
         ChangelogRole,
-        SectionRole
+        SectionRole,
+        InstalledVersionRole,
+        AvailableVersionRole
     };
     Q_ENUM(Roles)
 
