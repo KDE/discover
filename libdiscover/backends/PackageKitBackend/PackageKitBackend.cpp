@@ -587,6 +587,7 @@ void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, c
 void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
 {
     if (!m_updatesPackageId.isEmpty()) {
+        resolvePackages(kTransform<QStringList>(m_updatesPackageId, [](const QString &pkgid) { return PackageKit::Daemon::packageName(pkgid); }));
         fetchDetails(m_updatesPackageId);
     }
 
