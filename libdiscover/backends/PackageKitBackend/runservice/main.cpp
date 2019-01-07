@@ -18,28 +18,27 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include <QCoreApplication>
+#include <QApplication>
 #include <QFile>
 #include <QTextStream>
 #include <QUrl>
 #include <QProcess>
 #include <KService>
+#include <KRun>
 #include <KIO/DesktopExecParser>
 
 int main(int argc, char** argv)
 {
-    QCoreApplication app(argc, argv);
+    QApplication app(argc, argv);
     if (app.arguments().size() != 2)
         return 1;
 
-    KService _service(app.arguments().constLast());
-    if (!_service.isValid())
+    KService service(app.arguments().constLast());
+    if (!service.isValid())
         return 2;
 
-    QTextStream cerr(stderr);
-    KIO::DesktopExecParser execParser(_service, {});
+    if (KRun::runApplication(service, {}, nullptr) == 0)
+        return 3;
 
-    auto args = execParser.resultingArguments();
-    const auto execName = args.takeFirst();
-    return !QProcess::startDetached(execName, args);
+    return 0;
 }
