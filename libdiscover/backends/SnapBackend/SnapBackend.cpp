@@ -103,7 +103,8 @@ ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& fil
     } else if (filters.category && filters.category->isAddons()) {
         return voidStream();
     } else if (filters.state >= AbstractResource::Installed || filters.origin == QLatin1String("Snap")) {
-        return populate(m_client.list());
+        std::function<bool(const QSharedPointer<QSnapdSnap>&)> f = [filters](const QSharedPointer<QSnapdSnap>& s) { return filters.search.isEmpty() || s->name().contains(filters.search, Qt::CaseInsensitive) || s->description().contains(filters.search, Qt::CaseInsensitive); };
+        return populateWithFilter(m_client.list(), f);
     } else if (!filters.search.isEmpty()) {
         return populate(m_client.find(QSnapdClient::FindFlag::None, filters.search));
     }
@@ -118,11 +119,18 @@ ResultsStream * SnapBackend::findResourceByPackageName(const QUrl& search)
 }
 
 template <class T>
-ResultsStream* SnapBackend::populate(T* job)
+ResultsStream* SnapBackend::populate(T* snaps)
+{
+    std::function<bool(const QSharedPointer<QSnapdSnap>&)> acceptAll = [](const QSharedPointer<QSnapdSnap>&){ return true; };
+    return populateWithFilter(snaps, acceptAll);
+}
+
+template <class T>
+ResultsStream* SnapBackend::populateWithFilter(T* job, std::function<bool(const QSharedPointer<QSnapdSnap>& s)>& filter)
 {
     auto stream = new ResultsStream(QStringLiteral("Snap-populate"));
 
-    connect(job, &QSnapdFindRequest::complete, stream, [stream, this, job]() {
+    connect(job, &QSnapdFindRequest::complete, stream, [stream, this, job, filter]() {
         if (job->error()) {
             qDebug() << "error:" << job->error() << job->errorString();
             stream->finish();
@@ -135,6 +143,10 @@ ResultsStream* SnapBackend::populate(T* job)
         resources.reserve(job->snapCount());
         for (int i=0, c=job->snapCount(); i<c; ++i) {
             QSharedPointer<QSnapdSnap> snap(job->snap(i));
+
+            if (!filter(snap))
+                continue;
+
             const auto snapname = snap->name();
             SnapResource* res = m_resources.value(snapname);
             if (!res) {

@@ -25,6 +25,7 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 #include <Snapd/Client>
+#include <functional>
 
 class QAction;
 class SnapReviewsBackend;
@@ -56,6 +57,10 @@ public:
 
 private:
     void setFetching(bool fetching);
+
+    template <class T>
+    ResultsStream* populateWithFilter(T* snaps, std::function<bool(const QSharedPointer<QSnapdSnap>&)>& filter);
+
     template <class T>
     ResultsStream* populate(T* snaps);
 
