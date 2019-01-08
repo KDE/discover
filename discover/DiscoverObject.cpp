@@ -248,7 +248,7 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
                     auto mime = db.mimeTypeForUrl(localfile);
                     auto fIsFlatpakBackend = [](AbstractResourcesBackend* backend) { return backend->metaObject()->className() == QByteArray("FlatpakBackend"); };
                     if (mime.name().startsWith(QLatin1String("application/vnd.flatpak")) && !kContains(ResourcesModel::global()->backends(), fIsFlatpakBackend)) {
-                        openApplication(QUrl(QLatin1String("appstream://org.kde.discover.flatpak")));
+                        openApplication(QUrl(QStringLiteral("appstream://org.kde.discover.flatpak")));
                         showPassiveNotification(i18n("Cannot interact with flatpak resources without the flatpak backend %1. Please install it first.", localfile.toDisplayString()));
                     } else {
                         setRootObjectProperty("defaultStartup", true);

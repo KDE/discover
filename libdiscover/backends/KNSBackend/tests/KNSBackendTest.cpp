@@ -42,7 +42,7 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     , m_r(nullptr)
 {
     QStandardPaths::setTestModeEnabled(true);
-    ResourcesModel* model = new ResourcesModel(QLatin1String("kns-backend"), this);
+    ResourcesModel* model = new ResourcesModel(QStringLiteral("kns-backend"), this);
     Q_ASSERT(!model->backends().isEmpty());
     auto findTestBackend = [](AbstractResourcesBackend* backend) {
         return backend->name() == QLatin1String("discover_ktexteditor_codesnippets_core.knsrc");

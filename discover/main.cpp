@@ -74,7 +74,7 @@ void processArgs(QCommandLineParser* parser, DiscoverObject* mainWindow)
         mainWindow->openMode(parser->value(QStringLiteral("mode")));
 
     if(parser->isSet(QStringLiteral("search")))
-        mainWindow->openSearch(parser->value(QStringLiteral("search")));
+        Q_EMIT mainWindow->openSearch(parser->value(QStringLiteral("search")));
 
     if(parser->isSet(QStringLiteral("local-filename")))
         mainWindow->openLocalPackage(QUrl::fromUserInput(parser->value(QStringLiteral("local-filename")), {}, QUrl::AssumeLocalFile));

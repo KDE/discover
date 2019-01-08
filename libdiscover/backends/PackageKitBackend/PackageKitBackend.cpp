@@ -126,10 +126,10 @@ void PackageKitBackend::updateProxy()
             return;
 
         everHad = KProtocolManager::useProxy();
-        PackageKit::Daemon::global()->setProxy(KProtocolManager::proxyFor(QLatin1String("http")),
-                                               KProtocolManager::proxyFor(QLatin1String("https")),
-                                               KProtocolManager::proxyFor(QLatin1String("ftp")),
-                                               KProtocolManager::proxyFor(QLatin1String("socks")),
+        PackageKit::Daemon::global()->setProxy(KProtocolManager::proxyFor(QStringLiteral("http")),
+                                               KProtocolManager::proxyFor(QStringLiteral("https")),
+                                               KProtocolManager::proxyFor(QStringLiteral("ftp")),
+                                               KProtocolManager::proxyFor(QStringLiteral("socks")),
                                                {},
                                                {});
     }
@@ -450,10 +450,10 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
     if (url.isLocalFile()) {
         QMimeDatabase db;
         const auto mime = db.mimeTypeForUrl(url);
-        if (    mime.inherits(QLatin1String("application/vnd.debian.binary-package"))
-            || mime.inherits(QLatin1String("application/x-rpm"))
-            || mime.inherits(QLatin1String("application/x-tar"))
-            || mime.inherits(QLatin1String("application/x-xz-compressed-tar"))
+        if (    mime.inherits(QStringLiteral("application/vnd.debian.binary-package"))
+            || mime.inherits(QStringLiteral("application/x-rpm"))
+            || mime.inherits(QStringLiteral("application/x-tar"))
+            || mime.inherits(QStringLiteral("application/x-xz-compressed-tar"))
         ) {
             pkg = new LocalFilePKResource(url, this);
         }

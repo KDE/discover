@@ -200,7 +200,7 @@ QStringList DiscoverNotifier::loadedModules() const
 
 void DiscoverNotifier::showRebootNotification()
 {
-    KNotification *notification = new KNotification(QLatin1String("notification"), KNotification::Persistent | KNotification::DefaultEvent);
+    KNotification *notification = new KNotification(QStringLiteral("notification"), KNotification::Persistent | KNotification::DefaultEvent);
     notification->setIconName(QStringLiteral("system-software-update"));
     notification->setActions(QStringList{QLatin1String("Restart")});
     notification->setTitle(i18n("Restart is required"));
@@ -219,7 +219,7 @@ void DiscoverNotifier::reboot()
 
 void DiscoverNotifier::foundUpgradeAction(UpgradeAction* action)
 {
-    KNotification *notification = new KNotification(QLatin1String("distupgrade-notification"), KNotification::Persistent | KNotification::DefaultEvent);
+    KNotification *notification = new KNotification(QStringLiteral("distupgrade-notification"), KNotification::Persistent | KNotification::DefaultEvent);
     notification->setIconName(QStringLiteral("system-software-update"));
     notification->setActions(QStringList{QLatin1String("Upgrade")});
     notification->setTitle(i18n("Upgrade available"));

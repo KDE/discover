@@ -197,7 +197,7 @@ void FwupdResource::setDeviceDetails(FwupdDevice* dev)
     if (fwupd_device_get_icons(dev)->len >= 1)
         m_iconName = QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(dev), 0));// Check whether given icon exists or not!
     else
-        m_iconName = QString::fromUtf8("device-notifier");
+        m_iconName = QStringLiteral("device-notifier");
 }
 
 QString FwupdResource::cacheFile() const
