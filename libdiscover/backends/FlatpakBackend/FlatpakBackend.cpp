@@ -711,9 +711,7 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
             continue;
         }
 
-        auto component = metadata.component();
-        component.setId(name + QLatin1String(".desktop"));
-        FlatpakResource *resource = new FlatpakResource(component, flatpakInstallation, this);
+        FlatpakResource *resource = new FlatpakResource(metadata.component(), flatpakInstallation, this);
 
         resource->setIconPath(pathExports);
         resource->setState(AbstractResource::Installed);
