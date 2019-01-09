@@ -516,27 +516,18 @@ int PackageKitBackend::updatesCount() const
 Transaction* PackageKitBackend::installApplication(AbstractResource* app, const AddonList& addons)
 {
     Transaction* t = nullptr;
-    if(!addons.addonsToInstall().isEmpty())
-    {
-        QVector<AbstractResource*> appsToInstall;
-
+    if(!addons.addonsToInstall().isEmpty()) {
+        QVector<AbstractResource*> appsToInstall = resourcesByPackageNames<QVector<AbstractResource*>>(addons.addonsToInstall());
         if(!app->isInstalled())
             appsToInstall << app;
-
-        foreach(const QString& toInstall, addons.addonsToInstall()) {
-            appsToInstall += m_packages.packages.value(toInstall);
-            Q_ASSERT(appsToInstall.last());
-        }
         t = new PKTransaction(appsToInstall, Transaction::ChangeAddonsRole);
-    }
+    } else if (!app->isInstalled())
+        t = installApplication(app);
 
     if (!addons.addonsToRemove().isEmpty()) {
-        QVector<AbstractResource*> appsToRemove = kTransform<QVector<AbstractResource*>>(addons.addonsToRemove(), [this](const QString& toRemove){ return m_packages.packages.value(toRemove); });
+        const auto appsToRemove = resourcesByPackageNames<QVector<AbstractResource*>>(addons.addonsToRemove());
         t = new PKTransaction(appsToRemove, Transaction::RemoveRole);
     }
-
-    if (!app->isInstalled())
-        t = installApplication(app);
 
     return t;
 }
