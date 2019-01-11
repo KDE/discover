@@ -21,7 +21,7 @@
 #include "PackageState.h"
 #include "libdiscover_debug.h"
 
-PackageState::PackageState(QString name, QString description, bool installed)
+PackageState::PackageState(const QString &name, const QString &description, bool installed)
     : PackageState(name, name, description, installed)
 {}
 

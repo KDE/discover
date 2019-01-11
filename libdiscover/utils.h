@@ -28,7 +28,7 @@
 class OneTimeAction : public QObject
 {
 public:
-    OneTimeAction(std::function<void()> func, QObject* parent) : QObject(parent), m_function(func) {}
+    OneTimeAction(const std::function<void()> &func, QObject* parent) : QObject(parent), m_function(func) {}
 
     void trigger() {
         m_function();

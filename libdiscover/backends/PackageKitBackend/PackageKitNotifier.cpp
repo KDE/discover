@@ -240,7 +240,7 @@ void PackageKitNotifier::refreshDatabase()
     }
 }
 
-QProcess* PackageKitNotifier::checkAptVariable(const QString &aptconfig, const QLatin1String& varname, std::function<void(const QStringRef& val)> func)
+QProcess* PackageKitNotifier::checkAptVariable(const QString &aptconfig, const QLatin1String& varname, const std::function<void(const QStringRef& val)> &func)
 {
     QProcess* process = new QProcess;
     process->start(aptconfig, {QStringLiteral("dump")});
