@@ -30,6 +30,7 @@
   <name xml:lang="uk">Модуль PackageKit</name>
   <name xml:lang="x-test">xxPackageKit backendxx</name>
   <name xml:lang="zh-CN">PackageKit 后端</name>
+  <name xml:lang="zh-TW">PackageKit 後端</name>
   <summary>Integrates distribution applications into Discover</summary>
   <summary xml:lang="ar">يُكامل تطبيقات ”عُدّة الحزم“ في «استكشف»</summary>
   <summary xml:lang="ca">Integra aplicacions de distribució al Discover</summary>
@@ -57,6 +58,7 @@
   <summary xml:lang="uk">Інтегрує програми зі сховищ дистрибутива до Discover</summary>
   <summary xml:lang="x-test">xxIntegrates distribution applications into Discoverxx</summary>
   <summary xml:lang="zh-CN">将发行版应用程序集成到发现者中</summary>
+  <summary xml:lang="zh-TW">將發行版的應用程式整合進 Discover 商店</summary>
   <extends>org.kde.discover.desktop</extends>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
@@ -90,5 +92,6 @@
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="x-test">xxAleix Pol Gonzalezxx</developer_name>
   <developer_name xml:lang="zh-CN">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="zh-TW">Aleix Pol Gonzalez</developer_name>
   <icon type="stock">system-software-install</icon>
 </component>

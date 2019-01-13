@@ -29,6 +29,7 @@
   <name xml:lang="uk">Модуль Flatpak</name>
   <name xml:lang="x-test">xxFlatpak backendxx</name>
   <name xml:lang="zh-CN">Flatpak 后端</name>
+  <name xml:lang="zh-TW">Flatpak 後端</name>
   <summary>Integrates Flatpak applications into Discover</summary>
   <summary xml:lang="ar">يُكامل تطبيقات ”فلاتپاك“ في «استكشف»</summary>
   <summary xml:lang="ca">Integra aplicacions del Flatpak al Discover</summary>
@@ -56,6 +57,7 @@
   <summary xml:lang="uk">Інтеграція програм Flatpak з Discover</summary>
   <summary xml:lang="x-test">xxIntegrates Flatpak applications into Discoverxx</summary>
   <summary xml:lang="zh-CN">将 Flatpak 应用程序集成到发现者中</summary>
+  <summary xml:lang="zh-TW">將 Flatpak 應用程式整合進 Discover 商店</summary>
   <extends>org.kde.discover.desktop</extends>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
@@ -89,5 +91,6 @@
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="x-test">xxAleix Pol Gonzalezxx</developer_name>
   <developer_name xml:lang="zh-CN">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="zh-TW">Aleix Pol Gonzalez</developer_name>
   <icon type="stock">system-software-install</icon>
 </component>
