@@ -44,7 +44,6 @@ public:
     void cancel() override;
 
 public Q_SLOTS:
-    void onJobProgressChanged(int progress);
     void finishTransaction();
     void start();
 

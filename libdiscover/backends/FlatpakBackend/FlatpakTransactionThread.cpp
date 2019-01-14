@@ -47,8 +47,14 @@ progress_changed_cb (FlatpakTransactionProgress *progress,
 {
     FlatpakTransactionThread *obj = (FlatpakTransactionThread*) user_data;
 
-    qDebug() << "progress" << flatpak_transaction_progress_get_progress(progress);
     obj->setProgress(flatpak_transaction_progress_get_progress(progress));
+
+#ifdef FLATPAK_VERBOSE_PROGRESS
+    guint64 transferred = flatpak_transaction_progress_get_bytes_transferred (progress);
+    guint64 start_time = flatpak_transaction_progress_get_start_time (progress);
+    guint64 elapsed_time = (g_get_monotonic_time () - start_time) / G_USEC_PER_SEC;
+    obj->setSpeed(transferred / elapsed_time);
+#endif
 }
 
 void
@@ -67,7 +73,6 @@ new_operation_cb(FlatpakTransaction          */*object*/,
 FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role)
     : QThread()
     , m_result(false)
-    , m_progress(0)
     , m_app(app)
     , m_role(role)
 {
@@ -151,16 +156,19 @@ FlatpakResource * FlatpakTransactionThread::app() const
     return m_app;
 }
 
-int FlatpakTransactionThread::progress() const
-{
-    return m_progress;
-}
-
 void FlatpakTransactionThread::setProgress(int progress)
 {
     if (m_progress != progress) {
         m_progress = progress;
         Q_EMIT progressChanged(m_progress);
+    }
+}
+
+void FlatpakTransactionThread::setSpeed(quint64 speed)
+{
+    if (m_speed != speed) {
+        m_speed = speed;
+        Q_EMIT speedChanged(m_speed);
     }
 }
 

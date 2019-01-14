@@ -43,21 +43,24 @@ public:
 
     FlatpakResource * app() const;
 
-    int progress() const;
+    int progress() const { return m_progress; }
     void setProgress(int progress);
+    void setSpeed(quint64 speed);
 
     QString errorMessage() const;
     bool result() const;
 
 Q_SIGNALS:
     void progressChanged(int progress);
+    void speedChanged(quint64 speed);
     void passiveMessage(const QString &msg);
 
 private:
     FlatpakTransaction* m_transaction;
 
     bool m_result;
-    int m_progress;
+    int m_progress = 0;
+    quint64 m_speed = 0;
     QString m_errorMessage;
     GCancellable *m_cancellable;
     FlatpakResource *m_app;
