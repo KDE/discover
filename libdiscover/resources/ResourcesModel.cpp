@@ -119,10 +119,18 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     connect(backend, &AbstractResourcesBackend::passiveMessage, this, &ResourcesModel::passiveMessage);
     connect(backend->backendUpdater(), &AbstractBackendUpdater::progressingChanged, this, &ResourcesModel::slotFetching);
 
-    if(m_initializingBackends==0)
-        emit allInitialized();
-    else
+    // In case this is in fact the first backend to be added, and also happens to be
+    // pre-filled, we still need for the rest of the backends to be added before trying
+    // to send out the initialized signal. To ensure this happens, schedule it for the
+    // start of the next run of the event loop.
+    if(m_initializingBackends==0) {
+        QTimer::singleShot(0, this, [this](){
+            if (m_initializingBackends == 0)
+                emit allInitialized();
+        });
+    } else {
         slotFetching();
+    }
 }
 
 void ResourcesModel::callerFetchingChanged()
