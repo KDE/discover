@@ -122,6 +122,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         int m_initializingBackends;
         QAction* m_updateAction = nullptr;
         AbstractResourcesBackend* m_currentApplicationBackend;
+        QTimer* m_allInitializedEmitter;
 
         static ResourcesModel* s_self;
 };

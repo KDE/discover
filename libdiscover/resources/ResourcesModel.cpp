@@ -53,6 +53,7 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
     , m_isFetching(false)
     , m_initializingBackends(0)
     , m_currentApplicationBackend(nullptr)
+    , m_allInitializedEmitter(new QTimer(this))
 {
     init(load);
     connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::slotFetching);
@@ -63,6 +64,13 @@ void ResourcesModel::init(bool load)
 {
     Q_ASSERT(!s_self);
     Q_ASSERT(QCoreApplication::instance()->thread()==QThread::currentThread());
+
+    m_allInitializedEmitter->setSingleShot(true);
+    m_allInitializedEmitter->setInterval(0);
+    connect(m_allInitializedEmitter, &QTimer::timeout, this, [this](){
+        if (m_initializingBackends == 0)
+            emit allInitialized();
+    });
 
     if(load)
         QMetaObject::invokeMethod(this, "registerAllBackends", Qt::QueuedConnection);
@@ -124,10 +132,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     // to send out the initialized signal. To ensure this happens, schedule it for the
     // start of the next run of the event loop.
     if(m_initializingBackends==0) {
-        QTimer::singleShot(0, this, [this](){
-            if (m_initializingBackends == 0)
-                emit allInitialized();
-        });
+        m_allInitializedEmitter->start();
     } else {
         slotFetching();
     }
@@ -155,7 +160,7 @@ void ResourcesModel::callerFetchingChanged()
     } else {
         m_initializingBackends--;
         if(m_initializingBackends==0)
-            emit allInitialized();
+            m_allInitializedEmitter->start();
         else
             slotFetching();
     }
@@ -216,7 +221,7 @@ void ResourcesModel::registerAllBackends()
     const auto backends = f.allBackends();
     if(m_initializingBackends==0 && backends.isEmpty()) {
         qCWarning(LIBDISCOVER_LOG) << "Couldn't find any backends";
-        emit allInitialized();
+        m_allInitializedEmitter->start();
     } else {
         foreach(AbstractResourcesBackend* b, backends) {
             addResourcesBackend(b);
