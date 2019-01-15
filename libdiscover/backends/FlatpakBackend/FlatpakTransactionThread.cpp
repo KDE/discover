@@ -50,10 +50,12 @@ progress_changed_cb (FlatpakTransactionProgress *progress,
     obj->setProgress(flatpak_transaction_progress_get_progress(progress));
 
 #ifdef FLATPAK_VERBOSE_PROGRESS
-    guint64 transferred = flatpak_transaction_progress_get_bytes_transferred (progress);
     guint64 start_time = flatpak_transaction_progress_get_start_time (progress);
     guint64 elapsed_time = (g_get_monotonic_time () - start_time) / G_USEC_PER_SEC;
-    obj->setSpeed(transferred / elapsed_time);
+    if (elapsed_time > 0) {
+        guint64 transferred = flatpak_transaction_progress_get_bytes_transferred (progress);
+        obj->setSpeed(transferred / elapsed_time);
+    }
 #endif
 }
 
