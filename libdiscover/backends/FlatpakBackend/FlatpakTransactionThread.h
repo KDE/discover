@@ -41,8 +41,6 @@ public:
     void cancel();
     void run() override;
 
-    FlatpakResource * app() const;
-
     int progress() const { return m_progress; }
     void setProgress(int progress);
     void setSpeed(quint64 speed);
@@ -58,7 +56,7 @@ Q_SIGNALS:
 private:
     FlatpakTransaction* m_transaction;
 
-    bool m_result;
+    bool m_result = false;
     int m_progress = 0;
     quint64 m_speed = 0;
     QString m_errorMessage;

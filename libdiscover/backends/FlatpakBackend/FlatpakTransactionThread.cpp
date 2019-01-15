@@ -101,8 +101,8 @@ void FlatpakTransactionThread::run()
 
     const QString refName = m_app->ref();
 
-    bool correct = false;
     if (m_role == Transaction::Role::InstallRole) {
+        bool correct = false;
         if (m_app->state() == AbstractResource::Upgradeable && m_app->isInstalled()) {
             correct = flatpak_transaction_add_update(m_transaction,
                                               refName.toUtf8().constData(),
@@ -149,11 +149,6 @@ void FlatpakTransactionThread::run()
     // We are done so we can set the progress to 100
     m_result = flatpak_transaction_run(m_transaction, m_cancellable, &localError);
     setProgress(100);
-}
-
-FlatpakResource * FlatpakTransactionThread::app() const
-{
-    return m_app;
 }
 
 void FlatpakTransactionThread::setProgress(int progress)
