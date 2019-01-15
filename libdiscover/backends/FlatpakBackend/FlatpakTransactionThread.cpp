@@ -79,9 +79,14 @@ FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transac
     m_cancellable = g_cancellable_new();
 
     g_autoptr(GError) localError = nullptr;
-    m_transaction = flatpak_transaction_new_for_installation(m_app->installation(), m_cancellable, &localError);
-    g_signal_connect (m_transaction, "add-new-remote", G_CALLBACK (add_new_remote_cb), this);
-    g_signal_connect (m_transaction, "new-operation", G_CALLBACK (new_operation_cb), this);
+    m_transaction = flatpak_transaction_new_for_installation(app->installation(), m_cancellable, &localError);
+    if (localError) {
+        m_errorMessage = QString::fromUtf8(localError->message);
+        qWarning() << "Failed to create transaction" << m_errorMessage;
+    } else {
+        g_signal_connect (m_transaction, "add-new-remote", G_CALLBACK (add_new_remote_cb), this);
+        g_signal_connect (m_transaction, "new-operation", G_CALLBACK (new_operation_cb), this);
+    }
 }
 
 FlatpakTransactionThread::~FlatpakTransactionThread()
@@ -97,6 +102,8 @@ void FlatpakTransactionThread::cancel()
 
 void FlatpakTransactionThread::run()
 {
+    if (!m_transaction)
+        return;
     g_autoptr(GError) localError = nullptr;
 
     const QString refName = m_app->ref();
