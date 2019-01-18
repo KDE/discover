@@ -32,6 +32,18 @@ DiscoverPage {
     readonly property int visibleReviews: 3
     clip: true
 
+    // Usually this page is not the top level page, but when we are, isHome being
+    // true will ensure that the search field suggests we are searching in the list
+    // of available apps, not inside the app page itself. This will happen when
+    // Discover is launched e.g. from krunner or otherwise requested to show a
+    // specific application on launch.
+    readonly property bool isHome: true
+    function searchFor(text) {
+        if (text.length === 0)
+            return;
+        Navigation.openCategory(null, "")
+    }
+
     background: Rectangle {
         color: Kirigami.Theme.backgroundColor
         Kirigami.Theme.colorSet: Kirigami.Theme.View
