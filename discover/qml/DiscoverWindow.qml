@@ -145,11 +145,34 @@ Kirigami.ApplicationWindow
         Kirigami.Page {
             id: page
             property string error: ""
+            readonly property bool isHome: true
+            function searchFor(text) {
+                if (text.length === 0)
+                    return;
+                Navigation.openCategory(null, "")
+            }
+            Kirigami.Icon {
+                id: infoIcon;
+                anchors {
+                    bottom: parent.verticalCenter
+                    margins: Kirigami.Units.largeSpacing
+                    horizontalCenter: parent.horizontalCenter
+                }
+                visible: page.page.error !== ""
+                source: "emblem-warning"
+                height: Kirigami.Units.iconSizes.huge
+                width: height;
+            }
             Kirigami.Heading {
-                text: page.error
-                anchors.fill: parent
+                anchors {
+                    top: parent.verticalCenter
+                    margins: Kirigami.Units.largeSpacing
+                    horizontalCenter: parent.horizontalCenter
+                }
+                width: parent.width;
                 horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
+                visible: page.error !== ""
+                text: page.error
             }
         }
     }
