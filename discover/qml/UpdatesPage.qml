@@ -237,7 +237,7 @@ DiscoverPage
                         Label {
                             Layout.fillWidth: true
                             elide: Text.ElideRight
-                            text: i18n("%1 ⮕ %2", installedVersion, availableVersion)
+                            text: i18n("%1 → %2", installedVersion, availableVersion)
                         }
                     }
 
