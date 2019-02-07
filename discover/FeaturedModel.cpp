@@ -43,9 +43,12 @@ FeaturedModel::FeaturedModel()
 
     const QString dir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
     QDir().mkpath(dir);
-    *featuredCache = dir+QLatin1String("/featured-5.9.json");
 
-    const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover/featured-5.9.json"));
+    const bool isMobile = qEnvironmentVariableIsSet("QT_QUICK_CONTROLS_MOBILE");
+    auto fileName = isMobile ? QLatin1String("/featured-mobile-5.9.json") : QLatin1String("/featured-5.9.json");
+    *featuredCache = dir + fileName;
+
+    const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover") + fileName);
     auto *m_fetchJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
     connect(m_fetchJob, &KIO::StoredTransferJob::result, this, [this, m_fetchJob](){
         QFile f(*featuredCache);
