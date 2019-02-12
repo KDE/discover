@@ -44,7 +44,7 @@ TextField
     hoverEnabled: true
     ToolTip {
         delay: Kirigami.Units.longDuration
-        visible: hovered
+        visible: hovered && searchField.text.length === 0
         text: searchAction.shortcut
     }
 
