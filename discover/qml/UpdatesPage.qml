@@ -217,8 +217,8 @@ DiscoverPage
                     }
 
                     Kirigami.Icon {
-                        Layout.fillHeight: true
-                        Layout.preferredWidth: height
+                        width: Kirigami.Units.gridUnit * 2
+                        Layout.preferredHeight: width
                         source: decoration
                         smooth: true
                     }
