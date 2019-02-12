@@ -119,6 +119,18 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
     connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
 
+    // This ensures we have something to track when checking after the initialization timeout
+    connect(this, &KNSBackend::initialized, this, [this](){ m_initialized = true; });
+    // If we have not initialized in 60 seconds, consider this KNS backend invalid
+    QTimer::singleShot(60000, this, [this](){
+        if(!m_initialized) {
+            markInvalid(i18n("Backend %1 took too long to initialize", m_displayName));
+            m_responsePending = false;
+            Q_EMIT searchFinished();
+            Q_EMIT availableForQueries();
+        }
+    });
+
     const QVector<QPair<FilterType, QString>> filters = { {CategoryFilter, fileName } };
     const QSet<QString> backendName = { name() };
     m_displayName = group.readEntry("Name", QString());

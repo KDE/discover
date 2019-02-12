@@ -100,6 +100,7 @@ private:
     QStringList m_categories;
     QVector<Category*> m_rootCategories;
     QString m_displayName;
+    bool m_initialized = false;
 };
 
 #endif // KNSBACKEND_H
