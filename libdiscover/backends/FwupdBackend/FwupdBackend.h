@@ -94,7 +94,7 @@ private:
     static QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
     static bool downloadFile(const QUrl &uri, const QString &filename);
 
-    static FwupdResource * createDevice(FwupdDevice *device);
+    FwupdResource * createDevice(FwupdDevice *device);
     FwupdResource * createRelease(FwupdDevice *device);
     FwupdResource * createApp(FwupdDevice *device);
 
