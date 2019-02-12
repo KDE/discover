@@ -85,7 +85,7 @@ void FwupdBackend::addResourceToList(FwupdResource* res)
 FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
 {
     const QString name = QString::fromUtf8(fwupd_device_get_name(device));
-    FwupdResource* res = new FwupdResource(name, nullptr);
+    FwupdResource* res = new FwupdResource(name, this);
 
     const QString deviceID = QString::fromUtf8(fwupd_device_get_id(device));
     res->setId(QStringLiteral("org.fwupd.%1.device").arg(QString(deviceID).replace(QLatin1Char('/'),QLatin1Char('_'))));
