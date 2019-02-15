@@ -44,7 +44,7 @@ FeaturedModel::FeaturedModel()
     const QString dir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
     QDir().mkpath(dir);
 
-    const bool isMobile = qEnvironmentVariableIsSet("QT_QUICK_CONTROLS_MOBILE");
+    const bool isMobile = QByteArrayList{"1", "true"}.contains(qgetenv("QT_QUICK_CONTROLS_MOBILE"));
     auto fileName = isMobile ? QLatin1String("/featured-mobile-5.9.json") : QLatin1String("/featured-5.9.json");
     *featuredCache = dir + fileName;
 
