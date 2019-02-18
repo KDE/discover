@@ -1129,17 +1129,18 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
     auto f = [this, stream, filter] () {
         QVector<AbstractResource*> ret;
         foreach(auto r, m_resources) {
-            if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable) {
+            const bool matchById = filter.search.compare(r->appstreamId(), Qt::CaseInsensitive) == 0;
+            if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
                 continue;
             }
-
             if (r->state() < filter.state)
                 continue;
 
             if (!filter.extends.isEmpty() && !r->extends().contains(filter.extends))
                 continue;
 
-            if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive)) {
+            if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive) || matchById)
+            {
                 ret += r;
             }
         }
