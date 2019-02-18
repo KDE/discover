@@ -63,7 +63,8 @@ QMap<GChecksumType, QCryptographicHash::Algorithm> FwupdBackend::gchecksumToQChr
 FwupdBackend::~FwupdBackend()
 {
     g_cancellable_cancel(m_cancellable);
-    m_threadPool.waitForDone(200);
+    if (!m_threadPool.waitForDone(200))
+        qWarning("Could not stop all fwupd threads");
     m_threadPool.clear();
     g_object_unref(m_cancellable);
 
