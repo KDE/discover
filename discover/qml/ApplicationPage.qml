@@ -171,20 +171,12 @@ DiscoverPage {
             Layout.fillWidth: true
         }
 
-        Label {
+        LinkLabel {
             Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
             text: appInfo.application.longDescription
             onLinkActivated: Qt.openUrlExternally(link);
-            // Since Text (and Label) lack cursor-changing abilities of their own,
-            // as suggested by QTBUG-30804, use a MouseAra to do our dirty work.
-            // See comment https://bugreports.qt.io/browse/QTBUG-30804?#comment-206287
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
-                acceptedButtons: Qt.NoButton // Not actually accepting clicks, just changing the cursor
-            }
         }
 
         Kirigami.Heading {

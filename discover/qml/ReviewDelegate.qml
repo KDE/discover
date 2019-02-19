@@ -64,7 +64,7 @@ ColumnLayout
         text: usefulnessToString(usefulnessFavorable, usefulnessTotal)
     }
 
-    Label {
+    LinkLabel {
         visible: !item.compact
         Layout.alignment: Qt.AlignRight
         text: {
