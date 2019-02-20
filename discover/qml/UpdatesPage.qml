@@ -105,23 +105,10 @@ DiscoverPage
                 }
             }
 
-            LabelBackground {
-                text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
-            }
             Label {
-                text: i18n("updates selected")
-            }
-            LabelBackground {
-                id: unselectedItem
-                text: page.unselected
-                visible: page.unselected>0
-            }
-            Label {
-                text: i18n("updates not selected")
-                visible: unselectedItem.visible
-            }
-            Item {
                 Layout.fillWidth: true
+                text: (page.unselected === 0 ? i18n("All updates selected") : i18np("%1/%2 update selected", "%1/%2 updates selected", updateModel.toUpdateCount, updateModel.totalUpdatesCount)) + " (" + updateModel.updateSize + ")"
+                elide: Text.ElideRight
             }
         }
     }
