@@ -36,7 +36,7 @@ Name[sv]=Upptäck
 Name[tr]=Keşfet
 Name[uk]=Discover
 Name[x-test]=xxDiscoverxx
-Name[zh_CN]=发现
+Name[zh_CN]=Discover
 Name[zh_TW]=Discover
 MimeType=@DesktopMimeType@
 Exec=@DesktopExec@
@@ -124,7 +124,7 @@ Keywords[sv]=program;programvara;arkiv;paket;installera;ta bort;uppdatera;appar;
 Keywords[tr]=program;yazılım;depo;paket;yükle;kur;kaldır;güncelle;uygulama;uygulamalar;
 Keywords[uk]=program;software;repository;package;install;remove;update;app;apps;applications;програма;програмне забезпечення;сховище;архів;пакунок;встановити;встановлення;вилучити;вилучення;оновлення;оновити;
 Keywords[x-test]=xxprogramxx;xxsoftwarexx;xxrepositoryxx;xxpackagexx;xxinstallxx;xxremovexx;xxupdatexx;xxappsxx;xxapplicationsxx;
-Keywords[zh_CN]=program;software;repository;package;install;remove;update;apps;applications;程序;软件;软件源;包;安装;移除;更新;应用程序;应用;
+Keywords[zh_CN]=程序;软件;软件源;包;安装;移除;更新;应用程序;应用;
 Keywords[zh_TW]=program;software;repository;package;install;remove;update;apps;applications;
 
 [Desktop Action Updates]
