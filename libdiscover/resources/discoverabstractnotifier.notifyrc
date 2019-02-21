@@ -36,7 +36,7 @@ Comment[sv]=Upptäck
 Comment[tr]=Keşfet
 Comment[uk]=Discover
 Comment[x-test]=xxDiscoverxx
-Comment[zh_CN]=发现
+Comment[zh_CN]=Discover
 Comment[zh_TW]=探詢
 
 [Event/Update]
@@ -79,7 +79,7 @@ Name[sv]=Uppdateringar är tillgängliga
 Name[tr]=Güncellemeler Mevcut
 Name[uk]=Доступні оновлення
 Name[x-test]=xxUpdates Are Availablexx
-Name[zh_CN]=更新可用
+Name[zh_CN]=有可用更新
 Name[zh_TW]=有可用的更新
 Comment=Updates Available
 Comment[ar]=تتوفّر تحديثات
@@ -120,7 +120,7 @@ Comment[sv]=Uppdateringar tillgängliga
 Comment[tr]=Güncellemeler Mevcut
 Comment[uk]=Доступні оновлення
 Comment[x-test]=xxUpdates Availablexx
-Comment[zh_CN]=更新可用
+Comment[zh_CN]=可用更新
 Comment[zh_TW]=有可用的更新
 Action=Popup
 
