@@ -107,7 +107,7 @@ DiscoverPage
 
             Label {
                 Layout.fillWidth: true
-                text: (page.unselected === 0 ? i18n("All updates selected") : i18np("%1/%2 update selected", "%1/%2 updates selected", updateModel.toUpdateCount, updateModel.totalUpdatesCount)) + " (" + updateModel.updateSize + ")"
+                text: page.unselected === 0 ? i18n("All updates selected (%1)", updateModel.updateSize) : i18np("%1/%2 update selected (%3)", "%1/%2 updates selected (%3)", updateModel.toUpdateCount, updateModel.totalUpdatesCount, updateModel.updateSize)
                 elide: Text.ElideRight
             }
         }
