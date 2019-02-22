@@ -40,7 +40,7 @@ class FeaturedModel : public QAbstractListModel
         int rowCount(const QModelIndex & parent) const override;
         QHash<int, QByteArray> roleNames() const override;
 
-        bool isFetching() const { return !m_fetchJob.isNull(); }
+        bool isFetching() const { return m_isFetching != 0; }
 
     Q_SIGNALS:
         void isFetchingChanged();
@@ -50,9 +50,11 @@ class FeaturedModel : public QAbstractListModel
         void refresh();
         void removeResource(AbstractResource* resource);
 
+        void acquireFetching(bool f);
+
         QVector<QUrl> m_uris;
         QVector<AbstractResource*> m_resources;
-        QPointer<KIO::StoredTransferJob> m_fetchJob;
+        int m_isFetching = 0;
 };
 
 #endif // FEATUREDMODEL_H
