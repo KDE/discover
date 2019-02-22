@@ -56,7 +56,7 @@ DiscoverPage
         }
 
         footer: Kirigami.Heading {
-            visible: apps.count === 0
+            visible: apps.count === 0 && !apps.model.isFetching
             width: parent.width
             horizontalAlignment: Text.AlignHCenter
             text: i18n("Please check your connectivity")

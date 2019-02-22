@@ -46,14 +46,16 @@ FeaturedModel::FeaturedModel()
     *featuredCache = dir+QLatin1String("/featured-5.9.json");
 
     const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover/featured-5.9.json"));
-    auto *m_fetchJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
-    connect(m_fetchJob, &KIO::StoredTransferJob::result, this, [this, m_fetchJob](){
+    auto *fetchJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
+    acquireFetching(true);
+    connect(fetchJob, &KIO::StoredTransferJob::result, this, [this, fetchJob](){
         QFile f(*featuredCache);
         if (!f.open(QIODevice::WriteOnly))
             qCWarning(DISCOVER_LOG) << "could not open" << *featuredCache << f.errorString();
-        f.write(m_fetchJob->data());
+        f.write(fetchJob->data());
         f.close();
         refresh();
+        acquireFetching(false);
 
         Q_EMIT isFetchingChanged();
     });
@@ -64,6 +66,7 @@ FeaturedModel::FeaturedModel()
 
 void FeaturedModel::refresh()
 {
+    acquireFetching(true);
     QFile f(*featuredCache);
     if (!f.open(QIODevice::ReadOnly)) {
         qCWarning(DISCOVER_LOG) << "couldn't open file" << *featuredCache << f.errorString();
@@ -82,6 +85,7 @@ void FeaturedModel::refresh()
 
 void FeaturedModel::setUris(const QVector<QUrl>& uris)
 {
+    acquireFetching(false);
     auto backend = ResourcesModel::global()->currentApplicationBackend();
     if (uris == m_uris || !backend)
         return;
@@ -111,6 +115,19 @@ static void filterDupes(QVector<AbstractResource *> &resources)
             ++it;
         }
     }
+}
+
+void FeaturedModel::acquireFetching(bool f)
+{
+    if (f)
+        m_isFetching++;
+    else
+        m_isFetching--;
+
+    if ((!f && m_isFetching==0) || (f && m_isFetching==1)) {
+        emit isFetchingChanged();
+    }
+    Q_ASSERT(m_isFetching>=0);
 }
 
 void FeaturedModel::setResources(const QVector<AbstractResource *>& _resources)
