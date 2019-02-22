@@ -220,11 +220,27 @@ DiscoverPage
                             elide: Text.ElideRight
                         }
 
-                        // Old and new version numbers
+                        // Old and new version numbers; show when there's enough room
                         Label {
+                            id: oldAndNewVersions
                             Layout.fillWidth: true
                             elide: Text.ElideRight
                             text: i18n("%1 → %2", installedVersion, availableVersion)
+                            visible: !truncated
+                        }
+                        // Available version only, for when old+new would be elided.
+                        // Use squeezey text to gain more room, and if it's still so
+                        // so long that it would be elided, elide from the left so
+                        // the most important part on the right is still visible
+
+                        // All of this is mostly for the benefit of KDE Neon users,
+                        // since the version strings there are really really long
+                        Label {
+                            Layout.fillWidth: true
+                            elide: Text.ElideLeft
+                            text: availableVersion
+                            visible: !oldAndNewVersions.visible
+                            font.letterSpacing: -0.5
                         }
                     }
 

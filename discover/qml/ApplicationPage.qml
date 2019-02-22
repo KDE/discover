@@ -70,6 +70,7 @@ DiscoverPage {
 
         text: i18n("Sources")
         visible: children.length>1
+        children: sourcesGroup.actions
         readonly property var r0: Instantiator {
             model: ResourcesProxyModel {
                 id: alternativeResourcesModel
@@ -88,7 +89,6 @@ DiscoverPage {
                     Navigation.openApplication(res)
                 }
             }
-            onObjectAdded: originsMenuAction.children.push(object)
         }
     }
 
