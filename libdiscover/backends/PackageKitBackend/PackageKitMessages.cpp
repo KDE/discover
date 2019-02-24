@@ -157,7 +157,7 @@ QString errorMessage(PackageKit::Transaction::Error error)
         case PackageKit::Transaction::ErrorInstallRootInvalid:
             return i18n("Install root is invalid");
         case PackageKit::Transaction::ErrorCannotFetchSources:
-            return i18n("Cannot fetch sources");
+            return i18nc("Failed to sync your Linux distro repositories or other sources of packages", "Cannot fetch sources");
         case PackageKit::Transaction::ErrorCancelledPriority:
             return i18n("Canceled priority");
         case PackageKit::Transaction::ErrorUnfinishedTransaction:
