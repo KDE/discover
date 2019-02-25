@@ -23,7 +23,7 @@ import QtQuick.Controls 2.3
 
 Action
 {
-    property QtObject action: null
+    default property QtObject action: null
 
     function removeAmpersand(text) {
         return text.replace("&", "");
