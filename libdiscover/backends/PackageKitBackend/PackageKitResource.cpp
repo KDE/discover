@@ -313,7 +313,7 @@ QString PackageKitResource::sizeDescription()
 
 QString PackageKitResource::sourceIcon() const
 {
-    return QStringLiteral("package-available");
+    return QStringLiteral("package-x-generic");
 }
 
 void PackageKitResource::fetchDependencies()
