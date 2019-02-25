@@ -81,6 +81,7 @@ DiscoverPage {
                 ActionGroup.group: sourcesGroup
                 text: displayOrigin
                 icon.name: sourceIcon
+                checkable: true
                 checked: appInfo.application == model.application
                 onTriggered: if(index>=0) {
                     var res = model.application
