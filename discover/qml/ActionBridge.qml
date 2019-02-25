@@ -31,7 +31,7 @@ Action
     text: action ? removeAmpersand(action.text) : "<null>"
     checked: action && action.checked
     enabled: action && action.enabled
-    icon.name: action ? app.iconName(action.icon) : ""
+    icon: action ? action.icon : undefined
     shortcut: action ? action.shortcut : undefined
 
     onTriggered: action.trigger()
