@@ -24,7 +24,7 @@ include(ECMQtDeclareLoggingCategory)
 find_package(PkgConfig REQUIRED)
 
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui ItemModels KIO Declarative)
-find_package(KF5Kirigami2 2.1.0)
+find_package(KF5Kirigami2 2.7.0)
 
 find_package(packagekitqt5 1.0.1 CONFIG)
 find_package(AppStreamQt 0.11.1 CONFIG)

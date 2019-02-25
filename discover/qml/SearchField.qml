@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright © 2017 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2019 Carl Schwan <carl@carlschwan.eu>                     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -20,49 +21,32 @@
 
 import QtQuick 2.5
 import QtQuick.Controls 2.1
-import org.kde.kirigami 2.1 as Kirigami
+import org.kde.kirigami 2.7 as Kirigami
 
-TextField
+Kirigami.ActionTextField
 {
     id: searchField
+    focusSequence: "Ctrl+F"
+    rightActions: [
+        Kirigami.Action {
+            iconName: "edit-clear"
+            visible: root.text.length !== 0
+            onTriggered: searchField.clearText()
+        }
+    ]
+
     property QtObject page
     property string currentSearchText
 
     placeholderText: (!enabled || !page || page.hasOwnProperty("isHome") || page.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
 
-    Shortcut {
-        sequence: "Ctrl+F"
-        onActivated: {
-            searchField.forceActiveFocus()
-            searchField.selectAll()
-        }
-    }
     onAccepted: {
         currentSearchText = text
-    }
-
-    hoverEnabled: true
-    ToolTip {
-        delay: Kirigami.Units.longDuration
-        visible: hovered && searchField.text.length === 0
-        text: searchAction.shortcut
     }
 
     function clearText() {
         searchField.text = ""
         searchField.accepted()
-    }
-
-    ToolButton {
-        anchors {
-            top: parent.top
-            right: parent.right
-            bottom: parent.bottom
-            margins: Kirigami.Units.smallSpacing
-        }
-        icon.name: "edit-clear"
-        visible: searchField.text != ""
-        onClicked: clearText()
     }
 
     Connections {
