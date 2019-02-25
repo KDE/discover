@@ -23,7 +23,7 @@ import org.kde.kirigami 2.1 as Kirigami
 
 Kirigami.Action
 {
-    property QtObject action: null
+    default property QtObject action: null
 
     function removeAmpersand(text) {
         return text.replace("&", "");
