@@ -215,6 +215,7 @@ DiscoverPage {
                 Label {
                     text: display + (toolTip ? " - <i>" + toolTip + "</i>" : "")
                     elide: Text.ElideRight
+                    textFormat: Text.StyledText
                     Layout.fillWidth: true
                 }
             }
