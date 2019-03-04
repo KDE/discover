@@ -79,7 +79,7 @@ DiscoverPage {
             }
             delegate: Action {
                 ActionGroup.group: sourcesGroup
-                text: displayOrigin
+                text: i18n("%1 - %2", displayOrigin, model.application.availableVersion)
                 icon.name: sourceIcon
                 checkable: true
                 checked: appInfo.application == model.application
