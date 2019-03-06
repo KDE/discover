@@ -30,7 +30,7 @@ Kirigami.ActionTextField
     rightActions: [
         Kirigami.Action {
             iconName: "edit-clear"
-            visible: root.text.length !== 0
+            visible: searchField.text.length !== 0
             onTriggered: searchField.clearText()
         }
     ]
