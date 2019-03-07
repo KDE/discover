@@ -157,6 +157,9 @@ void FlatpakTransactionThread::run()
 
     // We are done so we can set the progress to 100
     m_result = flatpak_transaction_run(m_transaction, m_cancellable, &localError);
+    if (!m_result) {
+        m_errorMessage = QString::fromUtf8(localError->message);
+    }
     setProgress(100);
 }
 
