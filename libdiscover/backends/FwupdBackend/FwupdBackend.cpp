@@ -347,7 +347,7 @@ void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, qui
 void FwupdBackend::handleError(GError *perror)
 {
     //TODO: localise the error message
-    if (!g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE) && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO)) {
+    if (perror && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE) && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO)) {
         const QString msg = QString::fromUtf8(perror->message);
         QTimer::singleShot(0, this, [this, msg](){
             Q_EMIT passiveMessage(msg);
