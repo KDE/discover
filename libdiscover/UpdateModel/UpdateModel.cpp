@@ -253,9 +253,9 @@ void UpdateModel::setResources(const QList<AbstractResource*>& resources)
         }
     }
     const auto sortUpdateItems = [](UpdateItem *a, UpdateItem *b) { return a->name() < b->name(); };
-    qSort(appItems.begin(), appItems.end(), sortUpdateItems);
-    qSort(systemItems.begin(), systemItems.end(), sortUpdateItems);
-    qSort(addonItems.begin(), addonItems.end(), sortUpdateItems);
+    std::sort(appItems.begin(), appItems.end(), sortUpdateItems);
+    std::sort(systemItems.begin(), systemItems.end(), sortUpdateItems);
+    std::sort(addonItems.begin(), addonItems.end(), sortUpdateItems);
     m_updateItems = (QVector<UpdateItem*>() << appItems << addonItems << systemItems);
     endResetModel();
 

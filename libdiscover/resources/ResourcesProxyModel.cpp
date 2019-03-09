@@ -183,7 +183,7 @@ void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& _res)
         return;
 
     if (!m_sortByRelevancy)
-        qSort(res.begin(), res.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
+        std::sort(res.begin(), res.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
 
     sortedInsertion(res);
     fetchSubcategories();
@@ -196,7 +196,7 @@ void ResourcesProxyModel::invalidateSorting()
 
     if (!m_sortByRelevancy) {
         beginResetModel();
-        qSort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
+        std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
         endResetModel();
     }
 }

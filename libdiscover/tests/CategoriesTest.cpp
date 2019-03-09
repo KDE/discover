@@ -53,7 +53,7 @@ public:
                     Category::addSubcategory(ret, c);
             }
         }
-        qSort(ret.begin(), ret.end(), Category::categoryLessThan);
+        std::sort(ret.begin(), ret.end(), Category::categoryLessThan);
         return ret;
     }
 

@@ -67,7 +67,7 @@ void StandardBackendUpdater::start()
     emit progressingChanged(true);
     setProgress(0);
     auto upgradeList = m_toUpgrade.toList();
-    qSort(upgradeList.begin(), upgradeList.end(), [](const AbstractResource* a, const AbstractResource* b){ return a->name() < b->name(); });
+    std::sort(upgradeList.begin(), upgradeList.end(), [](const AbstractResource* a, const AbstractResource* b){ return a->name() < b->name(); });
 
     const bool couldCancel = m_canCancel;
     foreach(AbstractResource* res, upgradeList) {
