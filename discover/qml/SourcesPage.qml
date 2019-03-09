@@ -28,7 +28,7 @@ DiscoverPage {
             supportsMouseEvents: false
             readonly property QtObject backend: SourcesModel.sourcesBackendByName(section)
             readonly property QtObject resourcesBackend: backend.resourcesBackend
-            readonly property bool isDefault: ResourcesModel.currentApplicationBackend == resourcesBackend
+            readonly property bool isDefault: ResourcesModel.currentApplicationBackend === resourcesBackend
 
             RowLayout {
                 id: sourceTitleLayout
@@ -205,11 +205,11 @@ DiscoverPage {
 
                     readonly property variant idx: sourcesView.model.index(index, 0)
                     readonly property variant modelChecked: sourcesView.model.data(idx, Qt.CheckStateRole)
-                    checked: modelChecked != Qt.Unchecked
+                    checked: modelChecked !== Qt.Unchecked
                     enabled: modelChecked !== undefined
                     onClicked: {
                         sourcesView.model.setData(idx, checkState, Qt.CheckStateRole)
-                        checked = Qt.binding(function() { return modelChecked != Qt.Unchecked; })
+                        checked = Qt.binding(function() { return modelChecked !== Qt.Unchecked; })
                     }
                 }
                 Label {

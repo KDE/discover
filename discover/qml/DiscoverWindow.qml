@@ -257,7 +257,7 @@ Kirigami.ApplicationWindow
     onCurrentTopLevelChanged: {
         window.pageStack.clear()
         if (currentTopLevel)
-            window.pageStack.push(currentTopLevel, {}, window.status!=Component.Ready)
+            window.pageStack.push(currentTopLevel, {}, window.status!==Component.Ready)
     }
 
     UnityLauncher {

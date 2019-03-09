@@ -93,7 +93,7 @@ DiscoverPage {
                     appsModel.sortRole = ResourcesProxyModel.NameRole
                 }
                 checkable: true
-                checked: appsModel.sortRole == ResourcesProxyModel.NameRole
+                checked: appsModel.sortRole === ResourcesProxyModel.NameRole
             }
             Action {
                 ActionGroup.group: sortGroup
@@ -102,7 +102,7 @@ DiscoverPage {
                     appsModel.sortRole = ResourcesProxyModel.SortableRatingRole
                 }
                 checkable: true
-                checked: appsModel.sortRole == ResourcesProxyModel.SortableRatingRole
+                checked: appsModel.sortRole === ResourcesProxyModel.SortableRatingRole
             }
             Action {
                 ActionGroup.group: sortGroup
@@ -111,7 +111,7 @@ DiscoverPage {
                     appsModel.sortRole = ResourcesProxyModel.SizeRole
                 }
                 checkable: true
-                checked: appsModel.sortRole == ResourcesProxyModel.SizeRole
+                checked: appsModel.sortRole === ResourcesProxyModel.SizeRole
             }
             Action {
                 ActionGroup.group: sortGroup
@@ -120,7 +120,7 @@ DiscoverPage {
                     appsModel.sortRole = ResourcesProxyModel.ReleaseDateRole
                 }
                 checkable: true
-                checked: appsModel.sortRole == ResourcesProxyModel.ReleaseDateRole
+                checked: appsModel.sortRole === ResourcesProxyModel.ReleaseDateRole
             }
         }
     ]

@@ -34,7 +34,7 @@ Item
     }
 
     function isType(obj, typename) {
-        return obj && obj.toString().indexOf(typename+"_QMLTYPE_") == 0
+        return obj && obj.toString().indexOf(typename+"_QMLTYPE_") === 0
     }
 
     function chooseChild(obj, validator) {
@@ -101,7 +101,7 @@ Item
 
             done = true;
             for(var v in testRoot) {
-                if (v.indexOf("test_") == 0) {
+                if (v.indexOf("test_") === 0) {
                     testRoot.currentTest = v;
                     testRoot.reset();
                     testRoot[v]();

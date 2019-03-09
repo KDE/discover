@@ -39,7 +39,7 @@ DiscoverTest
             verify(!action.visible)
         }
 
-        while(updatePage.state != "now-uptodate")
+        while(updatePage.state !== "now-uptodate")
             waitForSignal(updatePage, "stateChanged")
     }
 }

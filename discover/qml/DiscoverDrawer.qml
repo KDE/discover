@@ -71,7 +71,7 @@ Kirigami.GlobalDrawer {
         componentTrue: SearchField {
             id: searchField
 
-            visible: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
+            visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
 
             page: window.leftPage
 
@@ -149,7 +149,7 @@ Kirigami.GlobalDrawer {
         id: categoryActionComponent
         Kirigami.Action {
             property QtObject category
-            readonly property bool itsMe: window.leftPage && window.leftPage.hasOwnProperty("category") && (window.leftPage.category == category)
+            readonly property bool itsMe: window.leftPage && window.leftPage.hasOwnProperty("category") && (window.leftPage.category === category)
             text: category ? category.name : ""
             checked: itsMe
             visible: (!window.leftPage

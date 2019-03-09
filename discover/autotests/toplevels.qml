@@ -52,7 +52,7 @@ DiscoverTest
         });
         var updateButton;
         chooseChild(drawer, function(object) {
-            if (object.objectName == "updateButton") {
+            if (object.objectName === "updateButton") {
                 updateButton = object;
                 return true
             }

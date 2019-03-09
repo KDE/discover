@@ -24,7 +24,7 @@ ConditionalLoader
             name: application.isInstalled ? "trash-empty" : "cloud-download"
             color: !enabled ? Kirigami.Theme.backgroundColor : !listener.isActive ? (application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor) : Kirigami.Theme.backgroundColor
         }
-        enabled: !listener.isActive && application.state != AbstractResource.Broken
+        enabled: !listener.isActive && application.state !== AbstractResource.Broken
         onTriggered: root.click()
     }
     readonly property QtObject cancelAction: KirigamiActionBridge {
@@ -64,7 +64,7 @@ ConditionalLoader
     }
 
     componentFalse: Button {
-        enabled: application.state != AbstractResource.Broken
+        enabled: application.state !== AbstractResource.Broken
         text: root.text
         focus: true
 

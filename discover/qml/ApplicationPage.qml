@@ -82,7 +82,7 @@ DiscoverPage {
                 text: i18n("%1 - %2", displayOrigin, model.application.availableVersion)
                 icon.name: sourceIcon
                 checkable: true
-                checked: appInfo.application == model.application
+                checked: appInfo.application === model.application
                 onTriggered: if(index>=0) {
                     var res = model.application
                     console.assert(res)

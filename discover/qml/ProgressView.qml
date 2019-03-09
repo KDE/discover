@@ -84,7 +84,7 @@ Kirigami.BasicListItem {
                             }
                             ToolButton {
                                 icon.name: "system-run"
-                                visible: model.application != undefined && model.application.isInstalled && !listener.isActive && model.application.canExecute
+                                visible: model.application !== undefined && model.application.isInstalled && !listener.isActive && model.application.canExecute
                                 onClicked: {
                                     model.application.invokeApplication()
                                     model.remove(index)

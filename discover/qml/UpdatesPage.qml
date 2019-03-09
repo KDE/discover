@@ -198,8 +198,8 @@ DiscoverPage
                         id: itemChecked
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         Layout.alignment: Qt.AlignVCenter
-                        checked: model.checked == Qt.Checked
-                        onClicked: model.checked = (model.checked==Qt.Checked ? Qt.Unchecked : Qt.Checked)
+                        checked: model.checked === Qt.Checked
+                        onClicked: model.checked = (model.checked===Qt.Checked ? Qt.Unchecked : Qt.Checked)
                         enabled: !resourcesUpdatesModel.isProgressing
                     }
 

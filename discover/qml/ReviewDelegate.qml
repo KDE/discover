@@ -33,7 +33,7 @@ ColumnLayout
 
     function usefulnessToString(favorable, total)
     {
-        return total==0
+        return total===0
                 ? i18n("<em>Tell us about this review!</em>")
                 : i18n("<em>%1 out of %2 people found this review useful</em>", favorable, total)
     }

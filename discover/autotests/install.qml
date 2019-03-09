@@ -36,6 +36,6 @@ DiscoverTest
         button.listener.cancel()
         verify(!button.isActive)
         compare(cancelSpy.count, 1)
-        verify(state == button.application.state)
+        verify(state === button.application.state)
     }
 }
