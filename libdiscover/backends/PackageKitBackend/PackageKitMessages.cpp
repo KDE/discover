@@ -188,7 +188,7 @@ QString restartMessage(PackageKit::Transaction::Restart restart, const QString& 
         case PackageKit::Transaction::RestartUnknown:
         case PackageKit::Transaction::RestartNone:
         default:
-            return i18n("A change by '%1' suggests your system to be rebooted.", PackageKit::Daemon::packageName(pkgid));
+            return i18n("A change by '%1' suggests your system to be restarted.", PackageKit::Daemon::packageName(pkgid));
     }
 }
 
@@ -200,7 +200,7 @@ QString restartMessage(PackageKit::Transaction::Restart restart)
         case PackageKit::Transaction::RestartSession:
             return i18n("The session will have to be restarted");
         case PackageKit::Transaction::RestartSystem:
-            return i18n("The system will have to be rebooted.");
+            return i18n("The system will have to be restarted.");
         case PackageKit::Transaction::RestartSecuritySession:
             return i18n("For security, the session will have to be restarted.");
         case PackageKit::Transaction::RestartSecuritySystem:

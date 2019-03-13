@@ -319,8 +319,8 @@ DiscoverPage
         },
         State {
             name: "reboot"
-            PropertyChanges { target: page; title: i18nc("@info", "The system requires a reboot") }
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Reboot") }
+            PropertyChanges { target: page; title: i18nc("@info", "The system requires a restart") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Restart") }
         },
         State {
             name: "now-uptodate"
