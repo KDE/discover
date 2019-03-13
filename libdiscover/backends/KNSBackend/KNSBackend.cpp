@@ -27,8 +27,8 @@
 #include <QDirIterator>
 
 // Attica includes
-#include <attica/content.h>
-#include <attica/providermanager.h>
+#include <Attica/Content>
+#include <Attica/ProviderManager>
 
 // KDE includes
 #include <knewstuffcore_version.h>
