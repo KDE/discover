@@ -311,6 +311,7 @@ DiscoverPage
         State {
             name: "progressing"
             PropertyChanges { target: page; title: i18nc("@info", "Updating...") }
+            PropertyChanges { target: page; supportsRefreshing: false }
             PropertyChanges { target: page; footerLabel: resourcesUpdatesModel.progress<=0 ? i18nc("@info", "Fetching updates") : "" }
         },
         State {

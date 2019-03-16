@@ -65,7 +65,7 @@ static FlatpakResource::Id idForInstalledRef(FlatpakInstallation *installation, 
 {
     const FlatpakResource::ResourceType appType = flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime;
     const QString name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
-    const QString appId = appType == FlatpakResource::DesktopApp ? QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))) + QStringLiteral(".desktop") : name;
+    const QString appId = appType == FlatpakResource::DesktopApp ? QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))) : name;
 
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
@@ -791,7 +791,8 @@ void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstalla
         if (resource) {
             resource->setState(AbstractResource::Upgradeable);
             updateAppSize(flatpakInstallation, resource);
-        }
+        } else
+            qWarning() << "could not find updated resource" << idForInstalledRef(flatpakInstallation, ref).id << m_resources.size();
     }
 }
 

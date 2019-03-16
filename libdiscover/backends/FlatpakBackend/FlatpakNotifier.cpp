@@ -120,6 +120,12 @@ void FlatpakNotifier::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstall
 void FlatpakNotifier::loadRemoteUpdates(FlatpakInstallation *installation)
 {
     auto fw = new QFutureWatcher<GPtrArray *>(this);
+    connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw](){
+        auto refs = fw->result();
+        if (refs)
+            onFetchUpdatesFinished(installation, refs);
+        fw->deleteLater();
+    });
     fw->setFuture(QtConcurrent::run( [installation]() -> GPtrArray * {
         g_autoptr(GCancellable) cancellable = g_cancellable_new();
         g_autoptr(GError) localError = nullptr;
@@ -129,12 +135,6 @@ void FlatpakNotifier::loadRemoteUpdates(FlatpakInstallation *installation)
         }
         return refs;
     }));
-    connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw](){
-        auto refs = fw->result();
-        if (refs)
-            onFetchUpdatesFinished(installation, refs);
-        fw->deleteLater();
-    });
 }
 
 bool FlatpakNotifier::hasUpdates()
