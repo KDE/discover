@@ -32,8 +32,8 @@ public:
     ~DummyNotifier() override;
 
     void recheckSystemUpdateNeeded() override;
-    uint securityUpdatesCount() override;
-    uint updatesCount() override;
+    bool hasSecurityUpdates() override { return false; }
+    bool hasUpdates() override { return false; }
     bool needsReboot() const override { return false; }
 };
 

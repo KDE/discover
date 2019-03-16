@@ -31,10 +31,8 @@ class DiscoverNotifier : public QObject
 {
 Q_OBJECT
 Q_PROPERTY(QStringList modules READ loadedModules CONSTANT)
-Q_PROPERTY(bool isSystemUpToDate READ isSystemUpToDate NOTIFY updatesChanged)
 Q_PROPERTY(QString iconName READ iconName NOTIFY updatesChanged)
 Q_PROPERTY(QString message READ message NOTIFY updatesChanged)
-Q_PROPERTY(QString extendedMessage READ extendedMessage NOTIFY updatesChanged)
 Q_PROPERTY(State state READ state NOTIFY updatesChanged)
 Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
 public:
@@ -49,16 +47,11 @@ public:
     explicit DiscoverNotifier(QObject* parent = nullptr);
     ~DiscoverNotifier() override;
 
-    bool isSystemUpToDate() const;
-
     State state() const;
     QString iconName() const;
     QString message() const;
-    QString extendedMessage() const;
-    /*** @returns count of normal updates only **/
-    uint updatesCount() const;
-    /*** @returns count of security updates only **/
-    uint securityUpdatesCount() const;
+    bool hasUpdates() const { return m_hasUpdates; }
+    bool hasSecurityUpdates() const { return m_hasSecurityUpdates; }
 
     QStringList loadedModules() const;
     bool needsReboot() const { return m_needsReboot; }
@@ -82,10 +75,10 @@ private:
     void updateStatusNotifier();
 
     QList<BackendNotifierModule*> m_backends;
-    bool m_verbose;
+    bool m_verbose = false;
     QTimer m_timer;
-    uint m_securityCount = 0;
-    uint m_count = 0;
+    bool m_hasSecurityUpdates = false;
+    bool m_hasUpdates = false;
     bool m_needsReboot = false;
 };
 

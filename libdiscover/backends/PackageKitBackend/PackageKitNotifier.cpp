@@ -208,15 +208,16 @@ void PackageKitNotifier::finished(PackageKit::Transaction::Exit /*exit*/, uint)
     }
 }
 
-uint PackageKitNotifier::securityUpdatesCount()
+bool PackageKitNotifier::hasUpdates()
 {
-    return m_securityUpdates;
+    return m_normalUpdates > 0;
 }
 
-uint PackageKitNotifier::updatesCount()
+bool PackageKitNotifier::hasSecurityUpdates()
 {
-    return m_normalUpdates;
+    return m_securityUpdates > 0;
 }
+
 
 void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade /*type*/, const QString& name, const QString& description)
 {

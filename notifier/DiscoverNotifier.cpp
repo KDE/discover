@@ -30,9 +30,10 @@
 #include <KNotification>
 #include <KPluginFactory>
 
+#include "../libdiscover/utils.h"
+
 DiscoverNotifier::DiscoverNotifier(QObject * parent)
     : QObject(parent)
-    , m_verbose(false)
 {
     configurationChanged();
 
@@ -83,7 +84,7 @@ void DiscoverNotifier::showUpdatesNotification()
         return;
     }
 
-    auto e = KNotification::event(QStringLiteral("Update"), message(), extendedMessage(), iconName(), nullptr, KNotification::CloseOnTimeout, QStringLiteral("discoverabstractnotifier"));
+    auto e = KNotification::event(QStringLiteral("Update"), message(), {}, iconName(), nullptr, KNotification::CloseOnTimeout, QStringLiteral("discoverabstractnotifier"));
     const QString name = i18n("Update");
     e->setDefaultAction(name);
     e->setActions({name});
@@ -92,23 +93,18 @@ void DiscoverNotifier::showUpdatesNotification()
 
 void DiscoverNotifier::updateStatusNotifier()
 {
-    uint securityCount = 0;
-    for (BackendNotifierModule* module: m_backends)
-        securityCount += module->securityUpdatesCount();
+    const bool hasSecurityUpdates = kContains(m_backends, [](BackendNotifierModule* module) { return module->hasSecurityUpdates(); });
+    const bool hasUpdates = hasSecurityUpdates || kContains(m_backends, [](BackendNotifierModule* module) { return module->hasUpdates(); });
 
-    uint count = securityCount;
-    foreach(BackendNotifierModule* module, m_backends)
-        count += module->updatesCount();
-
-    if (m_count == count && m_securityCount == securityCount)
+    if (m_hasUpdates == hasUpdates && m_hasSecurityUpdates == hasSecurityUpdates )
         return;
 
-    if (state() != NoUpdates && count > m_count) {
+    if (state() != NoUpdates) {
         m_timer.start();
     }
 
-    m_securityCount = securityCount;
-    m_count = count;
+    m_hasSecurityUpdates = hasSecurityUpdates;
+    m_hasUpdates = hasUpdates;
     emit updatesChanged();
 }
 
@@ -116,9 +112,9 @@ DiscoverNotifier::State DiscoverNotifier::state() const
 {
     if (m_needsReboot)
         return RebootRequired;
-    else if (m_securityCount)
+    else if (m_hasSecurityUpdates)
         return SecurityUpdates;
-    else if (m_count)
+    else if (m_hasUpdates)
         return NormalUpdates;
     else
         return NoUpdates;
@@ -154,40 +150,10 @@ QString DiscoverNotifier::message() const
     return QString();
 }
 
-QString DiscoverNotifier::extendedMessage() const
-{
-    if (m_count > 0 && m_securityCount > 0) {
-        QString allUpdates = i18ncp("First part of '%1, %2'",
-                                    "1 package to update", "%1 packages to update", m_count);
-
-        QString securityUpdates = i18ncp("Second part of '%1, %2'",
-                                         "of which 1 is security update", "of which %1 are security updates", m_securityCount);
-
-        return i18nc("%1 is '%1 packages to update' and %2 is 'of which %1 is security updates'",
-                     "%1, %2", allUpdates, securityUpdates);
-    } else if (m_count > 0) {
-        return i18np("1 package to update", "%1 packages to update", m_count);
-    } else if (m_securityCount > 0) {
-        return i18np("1 security update", "%1 security updates", m_securityCount);
-    } else {
-        return i18n("No packages to update");
-    }
-}
-
 void DiscoverNotifier::recheckSystemUpdateNeeded()
 {
     foreach(BackendNotifierModule* module, m_backends)
         module->recheckSystemUpdateNeeded();
-}
-
-uint DiscoverNotifier::securityUpdatesCount() const
-{
-    return m_securityCount;
-}
-
-uint DiscoverNotifier::updatesCount() const
-{
-    return m_count;
 }
 
 QStringList DiscoverNotifier::loadedModules() const
@@ -232,7 +198,3 @@ void DiscoverNotifier::foundUpgradeAction(UpgradeAction* action)
     notification->sendEvent();
 }
 
-bool DiscoverNotifier::isSystemUpToDate() const
-{
-    return m_count==0 && m_securityCount==0;
-}

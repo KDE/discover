@@ -60,13 +60,14 @@ public:
     virtual void recheckSystemUpdateNeeded() = 0;
 
     /*** @returns count of !security updates only. **/
-    virtual uint updatesCount() = 0;
+    virtual bool hasUpdates() = 0;
 
     /*** @returns count of security updates only. **/
-    virtual uint securityUpdatesCount() = 0;
+    virtual bool hasSecurityUpdates() = 0;
 
     /** @returns whether the system changed in a way that needs to be rebooted. */
     virtual bool needsReboot() const = 0;
+
 Q_SIGNALS:
     /**
      * This signal is emitted when any new updates are available.

@@ -38,8 +38,8 @@ public:
     explicit PackageKitNotifier(QObject* parent = nullptr);
     ~PackageKitNotifier() override;
 
-    uint securityUpdatesCount() override;
-    uint updatesCount() override;
+    bool hasUpdates() override;
+    bool hasSecurityUpdates() override;
     void recheckSystemUpdateNeeded() override;
     void refreshDatabase();
     bool needsReboot() const override { return m_needsReboot; }

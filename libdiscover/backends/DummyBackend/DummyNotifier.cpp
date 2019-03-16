@@ -35,12 +35,3 @@ void DummyNotifier::recheckSystemUpdateNeeded()
     emit foundUpdates();
 }
 
-uint DummyNotifier::securityUpdatesCount()
-{
-    return 0;
-}
-
-uint DummyNotifier::updatesCount()
-{
-    return 0;
-}

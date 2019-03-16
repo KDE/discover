@@ -36,9 +36,9 @@ public:
     explicit FlatpakNotifier(QObject* parent = nullptr);
     ~FlatpakNotifier() override;
 
+    bool hasUpdates() override;
+    bool hasSecurityUpdates() override { return false; }
     void recheckSystemUpdateNeeded() override;
-    uint securityUpdatesCount() override;
-    uint updatesCount() override;
     bool needsReboot() const override { return false; }
 
 public Q_SLOTS:
@@ -49,13 +49,16 @@ private:
     void loadRemoteUpdates(FlatpakInstallation *flatpakInstallation);
     bool setupFlatpakInstallations(GError **error);
 
-    uint m_userInstallationUpdates;
-    uint m_systemInstallationUpdates;
-    GCancellable *m_cancellable;
-    GFileMonitor *m_userInstallationMonitor = nullptr;
-    GFileMonitor *m_systemInstallationMonitor = nullptr;
-    FlatpakInstallation *m_flatpakInstallationUser = nullptr;
-    FlatpakInstallation *m_flatpakInstallationSystem = nullptr;
+    struct Installation {
+        ~Installation();
+
+        bool m_hasUpdates = false;
+        GFileMonitor *m_monitor = nullptr;
+        FlatpakInstallation *m_installation = nullptr;
+    };
+    Installation m_user;
+    Installation m_system;
+    GCancellable * const m_cancellable;
 };
 
 #endif
