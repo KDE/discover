@@ -12,6 +12,12 @@ DiscoverPage {
     title: i18n("Sources")
     property string search: ""
 
+    background: Rectangle {
+        color: Kirigami.Theme.backgroundColor
+        Kirigami.Theme.colorSet: Kirigami.Theme.Window
+        Kirigami.Theme.inherit: false
+    }
+
     mainItem: ListView {
         id: sourcesView
         model: QSortFilterProxyModel {

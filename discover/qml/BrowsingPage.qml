@@ -42,6 +42,12 @@ DiscoverPage
         Navigation.openCategory(null, "")
     }
 
+    background: Rectangle {
+        color: Kirigami.Theme.backgroundColor
+        Kirigami.Theme.colorSet: Kirigami.Theme.Window
+        Kirigami.Theme.inherit: false
+    }
+
     signal clearSearch()
 
     readonly property bool compact: page.width < 550 || !applicationWindow().wideScreen
