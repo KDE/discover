@@ -140,8 +140,8 @@ public:
     void start()
     {
         auto replyGet = get(QNetworkRequest(m_url));
-
         connect(replyGet, &QNetworkReply::finished, this, [this, replyGet] {
+            QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(replyGet);
             const QUrl originalUrl = replyGet->request().url();
             if (replyGet->error() != QNetworkReply::NoError) {
                 qWarning() << "couldn't download" << originalUrl << replyGet->errorString();
@@ -152,6 +152,7 @@ public:
             const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1Char('/') + originalUrl.fileName());
             auto replyPut = put(QNetworkRequest(fileUrl), replyGet->readAll());
             connect(replyPut, &QNetworkReply::finished, this, [this, originalUrl, fileUrl, replyPut]() {
+                QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(replyPut);
                 if (replyPut->error() != QNetworkReply::NoError) {
                     qWarning() << "couldn't save" << originalUrl << replyPut->errorString();
                     Q_EMIT jobFinished(false, nullptr);

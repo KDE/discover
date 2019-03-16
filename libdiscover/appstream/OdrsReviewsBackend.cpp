@@ -179,7 +179,7 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
 void OdrsReviewsBackend::reviewsFetched()
 {
     QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
-
+    QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(reply);
     if (reply->error() != QNetworkReply::NoError) {
         qCWarning(LIBDISCOVER_LOG) << "error fetching reviews:" << reply->errorString();
         m_isFetching = false;
@@ -191,7 +191,6 @@ void OdrsReviewsBackend::reviewsFetched()
     AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
     Q_ASSERT(resource);
     parseReviews(document, resource);
-
     // Store reviews to cache so we don't need to download them all the time
     if (document.array().isEmpty()) {
         return;
@@ -244,6 +243,7 @@ void OdrsReviewsBackend::usefulnessSubmitted()
     } else {
         qCWarning(LIBDISCOVER_LOG) << "Failed to submit usefulness: " << reply->errorString();
     }
+    reply->deleteLater();
 }
 
 QString OdrsReviewsBackend::userName() const
@@ -295,6 +295,7 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
     } else {
         qCWarning(LIBDISCOVER_LOG) << "Failed to submit review: " << reply->errorString();
     }
+    reply->deleteLater();
 }
 
 void OdrsReviewsBackend::parseRatings()
