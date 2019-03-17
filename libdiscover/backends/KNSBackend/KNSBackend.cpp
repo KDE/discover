@@ -65,7 +65,12 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
         QVector<AbstractResourcesBackend*> newInstance(QObject* parent, const QString &/*name*/) const override
         {
             QVector<AbstractResourcesBackend*> ret;
-            for (const QString &path: QStandardPaths::standardLocations(QStandardPaths::GenericConfigLocation)) {
+#if KNEWSTUFFCORE_VERSION_MAJOR==5 && KNEWSTUFFCORE_VERSION_MINOR>=57
+            QStringList locations = KNSCore::Engine::configSearchLocations();
+#else
+            QStringList locations = QStandardPaths::standardLocations(QStandardPaths::GenericConfigLocation);
+#endif
+            for (const QString &path: locations) {
                 QDirIterator dirIt(path, {QStringLiteral("*.knsrc")}, QDir::Files);
                 for(; dirIt.hasNext(); ) {
                     dirIt.next();
