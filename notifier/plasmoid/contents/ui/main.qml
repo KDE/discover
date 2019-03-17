@@ -47,7 +47,7 @@ Item
 
         MouseArea {
             anchors.fill: parent
-            onClicked: action_discover()
+            onClicked: action_update()
         }
     }
 

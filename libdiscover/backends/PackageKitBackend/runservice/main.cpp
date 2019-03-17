@@ -25,7 +25,6 @@
 #include <QProcess>
 #include <KService>
 #include <KRun>
-#include <KIO/DesktopExecParser>
 
 int main(int argc, char** argv)
 {
