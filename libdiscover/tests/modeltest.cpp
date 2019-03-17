@@ -44,7 +44,6 @@
 
 #include "modeltest.h"
 
-#include <QtTest>
 #include <QVariant>
 
 Q_DECLARE_METATYPE ( QModelIndex )

@@ -56,6 +56,8 @@ public:
     Qt::CheckState checked() const;
 
     AbstractResource* resource() const { return m_app; }
+    bool isVisible() const { return m_visible; }
+    void setVisible(bool visible) { m_visible = visible; }
 
 private:
     AbstractResource * const m_app;
@@ -63,6 +65,7 @@ private:
     const QString m_categoryName;
     const QIcon m_categoryIcon;
     qreal m_progress = 0.;
+    bool m_visible = true;
     AbstractBackendUpdater::State m_state = AbstractBackendUpdater::None;
     QString m_changelog;
 };

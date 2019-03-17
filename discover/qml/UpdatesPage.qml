@@ -178,6 +178,8 @@ DiscoverPage
                 layout.extended = false;
             }
 
+            visible: resourceState < 3 //3=AbstractBackendUpdater.Done
+
             Keys.onReturnPressed: {
                 itemChecked.clicked()
             }
