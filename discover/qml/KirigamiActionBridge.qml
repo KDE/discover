@@ -31,7 +31,6 @@ Kirigami.Action
     text: action ? removeAmpersand(action.text) : "<null>"
     checked: action && action.checked
     enabled: action && action.enabled
-    tooltip: action ? action.toolTip : ""
     icon.name: action ? action.icon.name : ""
     shortcut: action ? action.shortcut : undefined
 
