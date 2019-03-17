@@ -12,6 +12,7 @@ DiscoverPage
     title: i18n("Updates")
 
     property string footerLabel: ""
+    property bool isBusy: false
 
     ResourcesUpdatesModel {
         id: resourcesUpdatesModel
@@ -141,9 +142,18 @@ DiscoverPage
                 visible: page.footerLabel !== ""
                 text: page.footerLabel
             }
+            BusyIndicator {
+                id: indicator
+                Layout.alignment: Qt.AlignHCenter
+                Layout.minimumWidth: Kirigami.Units.gridUnit * 12
+                Layout.maximumWidth: Layout.minimumWidth
+                Layout.minimumHeight: Layout.minimumWidth
+                Layout.maximumHeight: Layout.minimumHeight
+                visible: page.isBusy
+            }
             Kirigami.Icon {
                 Layout.alignment: Qt.AlignHCenter
-                visible: page.footerLabel !== ""
+                visible: !indicator.visible && page.footerLabel !== ""
                 source: "update-none"
                 opacity: 0.3
                 width: Kirigami.Units.gridUnit * 12
@@ -307,14 +317,14 @@ DiscoverPage
     states: [
         State {
             name: "fetching"
-            PropertyChanges { target: page; title: i18nc("@info", "Fetching...") }
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Checking for updates...") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates...") }
+            PropertyChanges { target: page; isBusy: true }
         },
         State {
             name: "progressing"
-            PropertyChanges { target: page; title: i18nc("@info", "Updating...") }
             PropertyChanges { target: page; supportsRefreshing: false }
-            PropertyChanges { target: page; footerLabel: resourcesUpdatesModel.progress<=0 ? i18nc("@info", "Fetching updates") : "" }
+            PropertyChanges { target: page; footerLabel: resourcesUpdatesModel.progress<=0 ? i18nc("@info", "Fetching updates...") : "" }
+            PropertyChanges { target: page; isBusy: true }
         },
         State {
             name: "has-updates"
@@ -322,22 +332,19 @@ DiscoverPage
         },
         State {
             name: "reboot"
-            PropertyChanges { target: page; title: i18nc("@info", "The system requires a restart") }
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Restart") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "The system requires a restart") }
         },
         State {
             name: "now-uptodate"
-            PropertyChanges { target: page; title: i18nc("@info", "The system is up to date") }
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "No updates") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
         },
         State {
             name: "uptodate"
-            PropertyChanges { target: page; title: i18nc("@info", "The system is up to date") }
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "No updates") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
         },
         State {
             name: "medium"
-            PropertyChanges { target: page; title: i18nc("@info", "No updates are available") }
+            PropertyChanges { target: page; title: i18nc("@info", "Up to date") }
         },
         State {
             name: "low"
