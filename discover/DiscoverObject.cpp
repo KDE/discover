@@ -214,13 +214,13 @@ void DiscoverObject::openCategory(const QString& category)
                 emit listCategoryInternal(cat);
             } else {
                 showPassiveNotification(i18n("Could not find category '%1'", category));
-                setRootObjectProperty("defaultStartup", false);
+                setRootObjectProperty("defaultStartup", true);
             }
         }
         , this);
 
-    if (ResourcesModel::global()->backends().isEmpty()) {
-        connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
+    if (CategoryModel::global()->rootCategories().isEmpty()) {
+        connect(CategoryModel::global(), &CategoryModel::rootCategoriesChanged, action, &OneTimeAction::trigger);
     } else {
         action->trigger();
     }
