@@ -105,12 +105,31 @@ void StandardBackendUpdater::transactionAdded(Transaction* newTransaction)
         return;
 
     connect(newTransaction, &Transaction::progressChanged, this, &StandardBackendUpdater::transactionProgressChanged);
+    connect(newTransaction, &Transaction::statusChanged, this, &StandardBackendUpdater::transactionProgressChanged);
 }
 
-void StandardBackendUpdater::transactionProgressChanged(int percentage)
+AbstractBackendUpdater::State toUpdateState(Transaction* t)
+{
+    switch(t->status()) {
+        case Transaction::SetupStatus:
+        case Transaction::QueuedStatus:
+            return AbstractBackendUpdater::None;
+        case Transaction::DownloadingStatus:
+            return AbstractBackendUpdater::Downloading;
+        case Transaction::CommittingStatus:
+            return AbstractBackendUpdater::Installing;
+        case Transaction::DoneStatus:
+        case Transaction::DoneWithErrorStatus:
+        case Transaction::CancelledStatus:
+            return AbstractBackendUpdater::Done;
+    }
+    Q_UNREACHABLE();
+}
+
+void StandardBackendUpdater::transactionProgressChanged()
 {
     Transaction* t = qobject_cast<Transaction*>(sender());
-    Q_EMIT resourceProgressed(t->resource(), percentage);
+    Q_EMIT resourceProgressed(t->resource(), t->progress(), toUpdateState(t));
 }
 
 void StandardBackendUpdater::transactionRemoved(Transaction* t)

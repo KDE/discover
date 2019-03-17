@@ -37,6 +37,8 @@ DummyTransaction::DummyTransaction(DummyResource* app, const AddonList& addons, 
     , m_app(app)
 {
     setCancellable(true);
+    setStatus(DownloadingStatus);
+
     iterateTransaction();
 }
 
@@ -45,9 +47,12 @@ void DummyTransaction::iterateTransaction()
     if (!m_iterate)
         return;
 
-    setStatus(CommittingStatus);
     if(progress()<100) {
         setProgress(qBound(0, progress()+(KRandom::random()%30), 100));
+        QTimer::singleShot(/*KRandom::random()%*/100, this, &DummyTransaction::iterateTransaction);
+    } else if (status() == DownloadingStatus) {
+        setStatus(CommittingStatus);
+        setProgress(0);
         QTimer::singleShot(/*KRandom::random()%*/100, this, &DummyTransaction::iterateTransaction);
     } else
 #ifdef TEST_PROCEED

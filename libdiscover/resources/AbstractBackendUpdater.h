@@ -59,6 +59,9 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
     Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
     Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
     public:
+        enum State { None, Downloading, Installing, Done };
+        Q_ENUM(State);
+
         /**
          * Constructs an AbstractBackendUpdater
          */
@@ -195,7 +198,7 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
         /**
          * Provides the @p progress of a specific @p resource in a percentage.
          */
-        void resourceProgressed(AbstractResource* resource, qreal progress);
+        void resourceProgressed(AbstractResource* resource, qreal progress, State state);
 
         void passiveMessage(const QString &message);
 

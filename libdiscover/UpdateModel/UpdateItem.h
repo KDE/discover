@@ -25,6 +25,7 @@
 #include <QSet>
 #include <QString>
 #include "discovercommon_export.h"
+#include "resources/AbstractBackendUpdater.h"
 
 #include <QIcon>
 
@@ -38,6 +39,9 @@ public:
 
     void setProgress(qreal progress);
     qreal progress() const;
+
+    AbstractBackendUpdater::State state() const { return m_state; }
+    void setState(AbstractBackendUpdater::State state) { m_state = state; }
 
     QString changelog() const;
     void setChangelog(const QString &changelog);
@@ -58,7 +62,8 @@ private:
 
     const QString m_categoryName;
     const QIcon m_categoryIcon;
-    qreal m_progress;
+    qreal m_progress = 0.;
+    AbstractBackendUpdater::State m_state = AbstractBackendUpdater::None;
     QString m_changelog;
 };
 

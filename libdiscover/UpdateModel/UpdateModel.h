@@ -22,6 +22,7 @@
 #define UPDATEMODEL_H
 
 #include <QAbstractListModel>
+#include "resources/AbstractBackendUpdater.h"
 #include "discovercommon_export.h"
 
 class QTimer;
@@ -43,11 +44,12 @@ public:
         SizeRole = Qt::UserRole + 1,
         ResourceRole,
         ResourceProgressRole,
+        ResourceStateRole,
         SectionResourceProgressRole,
         ChangelogRole,
         SectionRole,
         InstalledVersionRole,
-        AvailableVersionRole
+        AvailableVersionRole,
     };
     Q_ENUM(Roles)
 
@@ -95,7 +97,7 @@ private:
     void integrateChangelog(const QString &changelog);
     QModelIndex indexFromItem(UpdateItem* item) const;
     UpdateItem* itemFromResource(AbstractResource* res);
-    void resourceHasProgressed(AbstractResource* res, qreal progress);
+    void resourceHasProgressed(AbstractResource* res, qreal progress, AbstractBackendUpdater::State state);
     void activityChanged();
 
     QTimer* const m_updateSizeTimer;

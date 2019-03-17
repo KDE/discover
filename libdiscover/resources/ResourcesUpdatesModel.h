@@ -25,14 +25,14 @@
 #include <QDateTime>
 #include <QPointer>
 #include "discovercommon_export.h"
+#include "resources/AbstractBackendUpdater.h"
 
 class AbstractResourcesBackend;
 class AbstractResource;
 class QAction;
-class AbstractBackendUpdater;
 class ResourcesModel;
-class Transaction;
 class UpdateTransaction;
+class Transaction;
 
 class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
@@ -64,7 +64,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void downloadSpeedChanged();
         void progressingChanged();
         void finished();
-        void resourceProgressed(AbstractResource* resource, qreal progress);
+        void resourceProgressed(AbstractResource* resource, qreal progress, AbstractBackendUpdater::State state);
         void passiveMessage(const QString &message);
         void needsRebootChanged();
 

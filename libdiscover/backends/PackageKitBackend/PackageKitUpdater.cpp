@@ -355,16 +355,34 @@ void PackageKitUpdater::lastUpdateTimeReceived(QDBusPendingCallWatcher* w)
     w->deleteLater();
 }
 
+AbstractBackendUpdater::State toUpdateState(PackageKit::Transaction::Status t)
+{
+    switch(t) {
+        case PackageKit::Transaction::StatusUnknown:
+        case PackageKit::Transaction::StatusDownload:
+            return AbstractBackendUpdater::Downloading;
+        case PackageKit::Transaction::StatusDepResolve:
+        case PackageKit::Transaction::StatusSigCheck:
+        case PackageKit::Transaction::StatusTestCommit:
+        case PackageKit::Transaction::StatusInstall:
+        case PackageKit::Transaction::StatusCommit:
+            return AbstractBackendUpdater::Installing;
+        case PackageKit::Transaction::StatusFinished:
+        case PackageKit::Transaction::StatusCancel:
+            return AbstractBackendUpdater::Done;
+        default:
+            qDebug() << "unknown packagekit status" << t;
+            return AbstractBackendUpdater::None;
+    }
+    Q_UNREACHABLE();
+}
+
 void PackageKitUpdater::itemProgress(const QString& itemID, PackageKit::Transaction::Status status, uint percentage)
 {
-    auto res = packagesForPackageId({itemID});
-
-    const auto actualPercentage = percentageWithStatus(status, percentage);
-    if (actualPercentage<0)
-        return;
+    const auto res = packagesForPackageId({itemID});
 
     foreach(auto r, res) {
-        Q_EMIT resourceProgressed(r, actualPercentage);
+        Q_EMIT resourceProgressed(r, percentage, toUpdateState(status));
     }
 }
 

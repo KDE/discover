@@ -61,6 +61,7 @@ QHash<int,QByteArray> UpdateModel::roleNames() const
     return QAbstractItemModel::roleNames().unite({
         { Qt::CheckStateRole, "checked" },
         { ResourceProgressRole, "resourceProgress" },
+        { ResourceStateRole, "resourceState" },
         { ResourceRole, "resource" },
         { SizeRole, "size" },
         { SectionRole, "section" },
@@ -84,15 +85,16 @@ void UpdateModel::setBackend(ResourcesUpdatesModel* updates)
     activityChanged();
 }
 
-void UpdateModel::resourceHasProgressed(AbstractResource* res, qreal progress)
+void UpdateModel::resourceHasProgressed(AbstractResource* res, qreal progress, AbstractBackendUpdater::State state)
 {
     UpdateItem* item = itemFromResource(res);
     if (!item)
         return;
     item->setProgress(progress);
+    item->setState(state);
 
     const QModelIndex idx = indexFromItem(item);
-    Q_EMIT dataChanged(idx, idx, { ResourceProgressRole, SectionResourceProgressRole });
+    Q_EMIT dataChanged(idx, idx, { ResourceProgressRole, ResourceStateRole, SectionResourceProgressRole });
 }
 
 void UpdateModel::activityChanged()
@@ -135,6 +137,8 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return QVariant::fromValue<QObject*>(item->resource());
     case ResourceProgressRole:
         return item->progress();
+    case ResourceStateRole:
+        return item->state();
     case ChangelogRole:
         return item->changelog();
     case SectionRole: {

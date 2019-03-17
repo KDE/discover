@@ -29,7 +29,6 @@
 
 UpdateItem::UpdateItem(AbstractResource *app)
     : m_app(app)
-    , m_progress(0)
 {
 }
 

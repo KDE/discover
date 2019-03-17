@@ -246,7 +246,7 @@ DiscoverPage
 
                     LabelBackground {
                         Layout.minimumWidth: Kirigami.Units.gridUnit * 6
-                        text: size
+                        text: resourceState == 2 ? i18n("Installing") : size
 
                         progress: resourceProgress/100
                     }

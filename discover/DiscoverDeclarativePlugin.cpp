@@ -29,6 +29,7 @@
 #include <resources/ResourcesModel.h>
 #include <resources/SourcesModel.h>
 #include <resources/AbstractSourcesBackend.h>
+#include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesProxyModel.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
@@ -70,6 +71,7 @@ void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
     qmlRegisterUncreatableType<AbstractSourcesBackend>("org.kde.discover", 2, 0, "AbstractSourcesBackend", QStringLiteral("should come from the SourcesModel"));
     qmlRegisterUncreatableType<Transaction>("org.kde.discover", 2, 0, "Transaction", QStringLiteral("should come from the backends"));
     qmlRegisterUncreatableType<SourcesModel>("org.kde.discover", 2, 0, "SourcesModelClass", QStringLiteral("should come from the backends"));
+    qmlRegisterUncreatableType<SourcesModel>("org.kde.discover", 2, 0, "AbstractBackendUpdater", QStringLiteral("should come from the backends"));
     qmlRegisterType<Rating>();
     qmlRegisterType<AbstractResourcesBackend>();
     qmlRegisterType<AbstractReviewsBackend>();
