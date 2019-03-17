@@ -5,22 +5,23 @@ import org.kde.discover 2.0
 import org.kde.kirigami 2.0 as Kirigami
 import "navigation.js" as Navigation
 
-Kirigami.BasicListItem {
+Kirigami.AbstractListItem {
     id: listItem
-    label: TransactionModel.count ? i18n("Tasks (%1%)", TransactionModel.progress) : i18n("Tasks")
-    visible: TransactionModel.count > 0
 
-    background: Item {
-
-        Rectangle {
-            anchors {
-                fill: parent
-                rightMargin: TransactionModel.count>=1 ? listItem.width*(1-TransactionModel.progress/100) : 0
-            }
-            color: TransactionModel.count>=1 || listItem.hovered || listItem.highlighted || listItem.pressed || listItem.checked ? listItem.activeBackgroundColor : listItem.backgroundColor
-            opacity: listItem.hovered || listItem.highlighted ? 0.2 : 1
+    contentItem: ColumnLayout {
+        Label {
+            id: label
+            Layout.fillWidth: true
+            Layout.leftMargin: Kirigami.Units.iconSizes.smallMedium + (LayoutMirroring.enabled ? listItem.rightPadding : listItem.leftPadding)
+            Layout.rightMargin: Layout.leftMargin
+            text: TransactionModel.count ? i18n("Tasks (%1%)", TransactionModel.progress) : i18n("Tasks")
+        }
+        ProgressBar {
+            Layout.fillWidth: true
+            value: TransactionModel.progress/100
         }
     }
+    visible: TransactionModel.count > 0
 
     property QtObject sheetObject: null
     onClicked: {
