@@ -220,9 +220,9 @@ KNSResource* KNSBackend::resourceForEntry(const KNSCore::EntryInternal& entry)
 void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
 {
     m_responsePending = false;
-
-    const auto filtered = kFilter<KNSCore::EntryInternal::List>(entries, [this](const KNSCore::EntryInternal& entry){ return entry.isValid(); });
+    const auto filtered = kFilter<KNSCore::EntryInternal::List>(entries, [](const KNSCore::EntryInternal& entry){ return entry.isValid(); });
     const auto resources = kTransform<QVector<AbstractResource*>>(filtered, [this](const KNSCore::EntryInternal& entry){ return resourceForEntry(entry); });
+
     if (!resources.isEmpty()) {
         Q_EMIT receivedResources(resources);
     } else {
