@@ -32,7 +32,7 @@ Kirigami.Action
     checked: action && action.checked
     enabled: action && action.enabled
     tooltip: action ? action.toolTip : ""
-    icon: action ? action.icon : undefined
+    icon.name: action ? action.icon.name : ""
     shortcut: action ? action.shortcut : undefined
 
     onTriggered: action.trigger()
