@@ -152,7 +152,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         QStringLiteral("kwinswitcher.knsrc"), QStringLiteral("kwineffect.knsrc"), QStringLiteral("kwinscripts.knsrc"), //KWin
         QStringLiteral("comic.knsrc"), QStringLiteral("colorschemes.knsrc"),
         QStringLiteral("emoticons.knsrc"), QStringLiteral("plymouth.knsrc"),
-        QStringLiteral("sddmtheme.knsrc")
+        QStringLiteral("sddmtheme.knsrc"), QStringLiteral("wallpaperplugin.knsrc")
     };
     auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, {}, QUrl(), true);
 
@@ -225,9 +225,9 @@ KNSResource* KNSBackend::resourceForEntry(const KNSCore::EntryInternal& entry)
 void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List& entries)
 {
     m_responsePending = false;
-
-    const auto filtered = kFilter<KNSCore::EntryInternal::List>(entries, [this](const KNSCore::EntryInternal& entry){ return entry.isValid(); });
+    const auto filtered = kFilter<KNSCore::EntryInternal::List>(entries, [](const KNSCore::EntryInternal& entry){ return entry.isValid(); });
     const auto resources = kTransform<QVector<AbstractResource*>>(filtered, [this](const KNSCore::EntryInternal& entry){ return resourceForEntry(entry); });
+
     if (!resources.isEmpty()) {
         Q_EMIT receivedResources(resources);
     } else {
