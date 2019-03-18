@@ -41,7 +41,7 @@ public:
     }
 
 public Q_SLOTS:
-    ActionReply login(const QVariantMap &args)
+    KAuth::ActionReply login(const QVariantMap &args)
     {
         const QString user = args[QStringLiteral("user")].toString()
                     , pass = args[QStringLiteral("password")].toString()

@@ -31,7 +31,7 @@ class DISCOVERCOMMON_EXPORT ActionsModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(QVariant actions READ actions WRITE setActions NOTIFY actionsChanged)
-    Q_PROPERTY(int filterPriority READ filterPriority WRITE setFilterPriority)
+    Q_PROPERTY(int filterPriority READ filterPriority WRITE setFilterPriority NOTIFY filterPriorityChanged)
     public:
         explicit ActionsModel(QObject* parent = nullptr);
 
@@ -47,6 +47,7 @@ class DISCOVERCOMMON_EXPORT ActionsModel : public QAbstractListModel
 
     Q_SIGNALS:
         void actionsChanged(const QVariant& actions);
+        void filterPriorityChanged();
 
     private:
         void reload();

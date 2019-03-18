@@ -54,7 +54,6 @@ class FwupdBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 Q_PROPERTY(int startElements MEMBER m_startElements)
-Q_ENUMS(Modes)
 public:
     explicit FwupdBackend(QObject* parent = nullptr);
     ~FwupdBackend();

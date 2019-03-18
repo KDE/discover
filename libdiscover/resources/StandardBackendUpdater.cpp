@@ -263,7 +263,8 @@ double StandardBackendUpdater::updateSize() const
 quint64 StandardBackendUpdater::downloadSpeed() const
 {
     quint64 ret = 0;
-    for(Transaction* t: TransactionModel::global()->transactions()) {
+    const auto trans = TransactionModel::global()->transactions();
+    for(Transaction* t: trans) {
         if (t->property("updater").value<QObject*>() == this)
             ret += t->downloadSpeed();
     }

@@ -100,7 +100,7 @@ bool FlatpakSourcesBackend::addSource(const QString &id)
         if (res)
             backend->installApplication(res);
         else
-            backend->passiveMessage(i18n("Could not add the source %1", flatpakrepoUrl.toDisplayString()));
+            Q_EMIT backend->passiveMessage(i18n("Could not add the source %1", flatpakrepoUrl.toDisplayString()));
     } else {
         AbstractResourcesBackend::Filters filter;
         filter.resourceUrl = flatpakrepoUrl;
@@ -111,7 +111,7 @@ bool FlatpakSourcesBackend::addSource(const QString &id)
                 Q_ASSERT(res.count() == 1);
                 backend->installApplication(res.first());
             } else {
-                backend->passiveMessage(i18n("Could not add the source %1", flatpakrepoUrl.toDisplayString()));
+                Q_EMIT backend->passiveMessage(i18n("Could not add the source %1", flatpakrepoUrl.toDisplayString()));
             }
         });
     }
@@ -247,7 +247,8 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     const QString title = QString::fromUtf8(flatpak_remote_get_title(remote));
     const QUrl remoteUrl(QString::fromUtf8(flatpak_remote_get_url(remote)));
 
-    for(QAction *action: actions()) {
+    const auto theActions = actions();
+    for(QAction *action: theActions) {
         if (action->toolTip() == id) {
             action->setEnabled(false);
             action->setVisible(false);

@@ -39,7 +39,7 @@ public:
     QString name() const { return m_name; }
     QString description() const { return m_description; }
 
-    void trigger() { triggered(m_name); }
+    void trigger() { Q_EMIT triggered(m_name); }
 
 Q_SIGNALS:
     void triggered(const QString & name);

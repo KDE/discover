@@ -40,7 +40,7 @@ class PaginateModel : public QAbstractListModel
     Q_PROPERTY(int pageCount READ pageCount NOTIFY pageCountChanged)
 
     /** If enabled, ensures that pageCount and pageSize are the same. */
-    Q_PROPERTY(bool staticRowCount READ hasStaticRowCount WRITE setStaticRowCount)
+    Q_PROPERTY(bool staticRowCount READ hasStaticRowCount WRITE setStaticRowCount NOTIFY staticRowCountChanged)
 
     public:
         explicit PaginateModel(QObject* object = nullptr);
@@ -105,6 +105,7 @@ class PaginateModel : public QAbstractListModel
         void firstItemChanged();
         void sourceModelChanged();
         void pageCountChanged();
+        void staticRowCountChanged();
 
     private:
         bool canSizeChange() const;

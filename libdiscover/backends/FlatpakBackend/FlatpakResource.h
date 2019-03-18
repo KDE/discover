@@ -156,7 +156,7 @@ public:
     QString installPath() const;
 
 Q_SIGNALS:
-    void propertyStateChanged(PropertyKind kind, PropertyState state);
+    void propertyStateChanged(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state);
 
 private:
     void setArch(const QString &arch);

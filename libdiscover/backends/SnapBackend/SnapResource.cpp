@@ -146,7 +146,7 @@ void SnapResource::gotIcon()
     auto theIcon = QVariant::fromValue<QImage>(reader.read());
     if (theIcon != m_icon) {
         m_icon = theIcon;
-        iconChanged();
+        Q_EMIT iconChanged();
     }
 }
 
@@ -279,7 +279,8 @@ public:
                 if (plug->interface() == QLatin1String("content"))
                     continue;
 
-                for (auto slot: slotsForInterface[plug->interface()]) {
+                const auto theSlots = slotsForInterface.value(plug->interface());
+                for (auto slot: theSlots) {
                     auto item = new QStandardItem;
                     if (plug->label().isEmpty())
                         item->setText(plug->name());
@@ -320,7 +321,7 @@ private:
         req->runSync();
         if (req->error()) {
             qWarning() << "snapd error" << req->errorString();
-            m_res->backend()->passiveMessage(req->errorString());
+            Q_EMIT m_res->backend()->passiveMessage(req->errorString());
         }
         return req->error() == QSnapdRequest::NoError;
     }

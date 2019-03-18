@@ -44,7 +44,7 @@ void AbstractBackendUpdater::enableNeedsReboot()
         return;
 
     m_needsReboot = true;
-    needsRebootChanged();
+    Q_EMIT needsRebootChanged();
 }
 
 bool AbstractBackendUpdater::needsReboot() const

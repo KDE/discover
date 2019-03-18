@@ -138,7 +138,8 @@ DiscoverObject::DiscoverObject(CompactMode mode)
     auto action = new OneTimeAction(
         [this]() {
             bool found = DiscoverBackendsFactory::hasRequestedBackends();
-            for (auto b : ResourcesModel::global()->backends())
+            const auto backends = ResourcesModel::global()->backends();
+            for (auto b : backends)
                 found |= b->hasApplications();
 
             if (!found)

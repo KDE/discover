@@ -147,7 +147,6 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     const QStringList cats = group.readEntry<QStringList>("Categories", QStringList{});
     QVector<Category*> categories;
     if (cats.count() > 1) {
-        QHash<QString, QVector<Category*> > subCategories;
         m_categories += cats;
         for(const auto &cat: cats)
             categories << new Category(cat, {}, { {CategoryFilter, cat } }, backendName, {}, {}, true);
@@ -375,7 +374,8 @@ public:
             };
         else
             actionFunction = [res, engine]() {
-                for(auto i : res->linkIds())
+                const auto links = res->linkIds();
+                for(auto i : links)
                     engine->install(res->entry(), i);
             };
         QTimer::singleShot(0, res, actionFunction);

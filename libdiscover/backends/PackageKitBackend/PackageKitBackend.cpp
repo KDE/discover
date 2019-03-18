@@ -326,7 +326,8 @@ void PackageKitBackend::includePackagesToAdd()
             auto res = m_packages.packages.take(pkg);
             if (res) {
                 if (AppPackageKitResource* ares = qobject_cast<AppPackageKitResource*>(res)) {
-                    for(const auto &ext: res->extends())
+                    const auto extends = res->extends();
+                    for(const auto &ext: extends)
                         m_packages.extendedBy[ext].removeAll(ares);
                 }
 
@@ -502,7 +503,8 @@ int PackageKitBackend::updatesCount() const
 
     int ret = 0;
     QSet<QString> packages;
-    for(auto res: upgradeablePackages()) {
+    const auto toUpgrade = upgradeablePackages();
+    for(auto res: toUpgrade) {
         const auto packageName = res->packageName();
         if (packages.contains(packageName)) {
             continue;

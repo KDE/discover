@@ -103,7 +103,7 @@ FlatpakBackend::~FlatpakBackend()
     g_cancellable_cancel(m_cancellable);
     m_threadPool.waitForDone(200);
     m_threadPool.clear();
-    for(auto inst : m_installations)
+    for(auto inst : qAsConst(m_installations))
         g_object_unref(inst);
 
     g_object_unref(m_cancellable);
@@ -121,7 +121,7 @@ void FlatpakBackend::announceRatingsReady()
     const auto ids = m_reviews->appstreamIds().toSet();
     foreach(AbstractResource* res, m_resources) {
         if (ids.contains(res->appstreamId())) {
-            res->ratingFetched();
+            Q_EMIT res->ratingFetched();
         }
     }
 }
@@ -1113,7 +1113,7 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
         FlatpakFetchRemoteResourceJob *fetchResourceJob = new FlatpakFetchRemoteResourceJob(filter.resourceUrl, this);
         connect(fetchResourceJob, &FlatpakFetchRemoteResourceJob::jobFinished, this, [fetchResourceJob, stream] (bool success, FlatpakResource *resource) {
             if (success) {
-                stream->resourcesFound({resource});
+                Q_EMIT stream->resourcesFound({resource});
             }
             stream->finish();
             fetchResourceJob->deleteLater();
@@ -1175,7 +1175,7 @@ ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
 {
     if (url.scheme() == QLatin1String("appstream")) {
         if (url.host().isEmpty())
-            passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
+            Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
             auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
             auto f = [this, stream, url] () {
@@ -1226,7 +1226,7 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
     }
 
     FlatpakJobTransaction *transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole);
-    connect(transaction, &FlatpakJobTransaction::statusChanged, [this, resource] (Transaction::Status status) {
+    connect(transaction, &FlatpakJobTransaction::statusChanged, this, [this, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
             FlatpakInstallation *installation = resource->installation();
             updateAppState(installation, resource);
@@ -1255,7 +1255,7 @@ Transaction* FlatpakBackend::removeApplication(AbstractResource *app)
     FlatpakInstallation *installation = resource->installation();
     FlatpakJobTransaction *transaction = new FlatpakJobTransaction(resource, Transaction::RemoveRole);
 
-    connect(transaction, &FlatpakJobTransaction::statusChanged, [this, installation, resource] (Transaction::Status status) {
+    connect(transaction, &FlatpakJobTransaction::statusChanged, this, [this, installation, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
             updateAppSize(installation, resource);
         }

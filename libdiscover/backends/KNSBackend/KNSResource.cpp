@@ -245,7 +245,8 @@ QDate KNSResource::releaseDate() const
 QVector<int> KNSResource::linkIds() const
 {
     QVector<int> ids;
-    for(const auto &e : m_entry.downloadLinkInformationList()) {
+    const auto linkInfo = m_entry.downloadLinkInformationList();
+    for(const auto &e : linkInfo) {
         if (e.isDownloadtypeLink)
             ids << e.id;
     }

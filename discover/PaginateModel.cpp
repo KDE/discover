@@ -208,6 +208,8 @@ void PaginateModel::setStaticRowCount(bool src)
     beginResetModel();
     m_hasStaticRowCount = src;
     endResetModel();
+
+    Q_EMIT staticRowCountChanged();
 }
 
 //////////////////////////////

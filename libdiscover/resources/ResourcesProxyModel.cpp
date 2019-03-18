@@ -592,7 +592,7 @@ void ResourcesProxyModel::fetchMore(const QModelIndex& parent)
     Q_ASSERT(!parent.isValid());
     if (!m_currentStream)
         return;
-    m_currentStream->fetchMore();
+    Q_EMIT m_currentStream->fetchMore();
 }
 
 bool ResourcesProxyModel::sortByRelevancy() const

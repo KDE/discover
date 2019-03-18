@@ -89,5 +89,6 @@ void ActionsModel::setFilterPriority(int p)
     if (m_priority != p) {
         m_priority = p;
         reload();
+        Q_EMIT filterPriorityChanged();
     }
 }

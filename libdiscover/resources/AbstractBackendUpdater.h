@@ -198,7 +198,7 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
         /**
          * Provides the @p progress of a specific @p resource in a percentage.
          */
-        void resourceProgressed(AbstractResource* resource, qreal progress, State state);
+        void resourceProgressed(AbstractResource* resource, qreal progress, AbstractBackendUpdater::State state);
 
         void passiveMessage(const QString &message);
 

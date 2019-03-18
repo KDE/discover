@@ -231,7 +231,7 @@ void AppPackageKitResource::invokeApplication() const
                     return;
                 }
             }
-            backend()->passiveMessage(i18n("Cannot launch %1", name()));
+            Q_EMIT backend()->passiveMessage(i18n("Cannot launch %1", name()));
         }
     });
 }

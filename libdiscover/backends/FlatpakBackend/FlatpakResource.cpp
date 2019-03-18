@@ -48,7 +48,7 @@
 static QString iconCachePath(const AppStream::Icon &icon)
 {
     Q_ASSERT(icon.kind() == AppStream::Icon::KindRemote);
-    return QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation)).arg(icon.url().fileName());
+    return QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation), icon.url().fileName());
 }
 
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation* installation, FlatpakBackend *parent)
@@ -73,7 +73,7 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
                     // Create $HOME/.cache/discover/icons folder
                     cacheDir.mkdir(QStringLiteral("icons"));
                     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-                    connect(manager, &QNetworkAccessManager::finished, [this, icon, fileName, manager] (QNetworkReply *reply) {
+                    connect(manager, &QNetworkAccessManager::finished, this, [this, icon, fileName, manager] (QNetworkReply *reply) {
                         if (reply->error() == QNetworkReply::NoError) {
                             QByteArray iconData = reply->readAll();
                             QFile file(fileName);
@@ -549,7 +549,7 @@ QString FlatpakResource::installationPath(FlatpakInstallation* flatpakInstallati
 
 QString FlatpakResource::installPath() const
 {
-    return installationPath() + QStringLiteral("/app/%1/%2/%3/active").arg(flatpakName()).arg(arch()).arg(branch());
+    return installationPath() + QStringLiteral("/app/%1/%2/%3/active").arg(flatpakName(), arch(), branch());
 }
 
 QUrl FlatpakResource::url() const
