@@ -43,7 +43,7 @@ DiscoverPage {
                     target: backendItem.backend
                     onPassiveMessage: window.showPassiveNotification(message)
                     onProceedRequest: {
-                        var dialog = sourceProceedDialog.createObject(window, {sourcesBackend: sourcesBackend, title: title, description: description})
+                        var dialog = sourceProceedDialog.createObject(window, {sourcesBackend: backendItem.backend, title: title, description: description})
                         dialog.open()
                     }
                 }
