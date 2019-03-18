@@ -144,11 +144,19 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         m_displayName[0] = m_displayName[0].toUpper();
     }
 
+    const QStringList cats = group.readEntry<QStringList>("Categories", QStringList{});
+    QVector<Category*> categories;
+    if (cats.count() > 1) {
+        QHash<QString, QVector<Category*> > subCategories;
+        m_categories += cats;
+        for(const auto &cat: cats)
+            categories << new Category(cat, {}, { {CategoryFilter, cat } }, backendName, {}, {}, true);
+    }
     static const QString knsrcApplications = QLatin1String("storekdeapps.knsrc");
 
     if(knsrcApplications == fileName) {
         m_hasApplications = true;
-        auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, {}, QUrl(), false);
+        auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, categories, QUrl(), false);
         auto applicationCategory = new Category(i18n("Applications"), QStringLiteral("plasma"), filters, backendName, { actualCategory }, QUrl(), false);
         m_categories.append(applicationCategory->name());
         m_rootCategories = { applicationCategory };
@@ -178,7 +186,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
             QStringLiteral("emoticons.knsrc"), QStringLiteral("plymouth.knsrc"),
             QStringLiteral("sddmtheme.knsrc"), QStringLiteral("wallpaperplugin.knsrc")
         };
-        auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, {}, QUrl(), true);
+        auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, categories, QUrl(), true);
 
         const auto topLevelName = knsrcPlasma.contains(fileName)? i18n("Plasma Addons") : i18n("Application Addons");
         auto addonsCategory = new Category(topLevelName, QStringLiteral("plasma"), filters, backendName, {actualCategory}, QUrl(), true);
@@ -238,7 +246,7 @@ KNSResource* KNSBackend::resourceForEntry(const KNSCore::EntryInternal& entry)
 {
     KNSResource* r = static_cast<KNSResource*>(m_resourcesByName.value(entry.uniqueId()));
     if (!r) {
-        r = new KNSResource(entry, m_categories, this);
+        r = new KNSResource(entry, m_categories + QStringList{entry.category()}, this);
         m_resourcesByName.insert(entry.uniqueId(), r);
     } else {
         r->setEntry(entry);
