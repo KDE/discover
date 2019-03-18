@@ -64,7 +64,7 @@ public:
                 }
                 else if(value.toInt() == Qt::Unchecked)
                 {
-                    if(fwupd_client_modify_remote(m_backend->backend->client,fwupd_remote_get_id(remote),QStringLiteral("Enabled").toUtf8().constData(),(QStringLiteral("false").toUtf8().constData()),nullptr,nullptr))
+                    if(fwupd_client_modify_remote(m_backend->backend->client, fwupd_remote_get_id(remote), "Enabled", "false", nullptr, nullptr))
                            item->setData(value, role);
                 }
 
