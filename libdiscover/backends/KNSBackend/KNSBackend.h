@@ -53,6 +53,7 @@ public:
     ResultsStream* findResourceByPackageName(const QUrl & search);
 
     QVector<Category*> category() const override { return m_rootCategories; }
+    bool hasApplications() const override { return m_hasApplications; }
 
     bool isValid() const override;
 
@@ -101,6 +102,7 @@ private:
     QVector<Category*> m_rootCategories;
     QString m_displayName;
     bool m_initialized = false;
+    bool m_hasApplications = false;
 };
 
 #endif // KNSBACKEND_H

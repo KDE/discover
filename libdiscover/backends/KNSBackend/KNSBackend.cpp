@@ -116,13 +116,13 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     setFetching(true);
 
     m_engine = new KNSCore::Engine(this);
-    m_engine->init(m_name);
-    m_engine->setPageSize(100);
     connect(m_engine, &KNSCore::Engine::signalErrorCode, this, &KNSBackend::signalErrorCode);
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
     connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
+    m_engine->setPageSize(100);
+    m_engine->init(m_name);
 
     // This ensures we have something to track when checking after the initialization timeout
     connect(this, &KNSBackend::initialized, this, [this](){ m_initialized = true; });
@@ -144,22 +144,46 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         m_displayName[0] = m_displayName[0].toUpper();
     }
 
-    static const QSet<QString> knsrcPlasma = {
-        QStringLiteral("aurorae.knsrc"), QStringLiteral("icons.knsrc"), QStringLiteral("kfontinst.knsrc"), QStringLiteral("lookandfeel.knsrc"), QStringLiteral("plasma-themes.knsrc"), QStringLiteral("plasmoids.knsrc"),
-        QStringLiteral("wallpaper.knsrc"), QStringLiteral("xcursor.knsrc"),
+    static const QString knsrcApplications = QLatin1String("storekdeapps.knsrc");
 
-        QStringLiteral("cgcgtk3.knsrc"), QStringLiteral("cgcicon.knsrc"), QStringLiteral("cgctheme.knsrc"), //GTK integration
-        QStringLiteral("kwinswitcher.knsrc"), QStringLiteral("kwineffect.knsrc"), QStringLiteral("kwinscripts.knsrc"), //KWin
-        QStringLiteral("comic.knsrc"), QStringLiteral("colorschemes.knsrc"),
-        QStringLiteral("emoticons.knsrc"), QStringLiteral("plymouth.knsrc"),
-        QStringLiteral("sddmtheme.knsrc"), QStringLiteral("wallpaperplugin.knsrc")
-    };
-    auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, {}, QUrl(), true);
+    if(knsrcApplications == fileName) {
+        m_hasApplications = true;
+        auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, {}, QUrl(), false);
+        auto applicationCategory = new Category(i18n("Applications"), QStringLiteral("plasma"), filters, backendName, { actualCategory }, QUrl(), false);
+        m_categories.append(applicationCategory->name());
+        m_rootCategories = { applicationCategory };
+        // Make sure we filter out any apps which won't run on the current system architecture
+        QStringList tagFilter = m_engine->tagFilter();
+        if(QSysInfo::currentCpuArchitecture() == QLatin1String("arm")) {
+            tagFilter << QLatin1String("application##architecture=armhf");
+        } else if(QSysInfo::currentCpuArchitecture() == QLatin1String("arm64")) {
+            tagFilter << QLatin1String("application##architecture=arm64");
+        } else if(QSysInfo::currentCpuArchitecture() == QLatin1String("i386")) {
+            tagFilter << QLatin1String("application##architecture=x86");
+        } else if(QSysInfo::currentCpuArchitecture() == QLatin1String("ia64")) {
+            tagFilter << QLatin1String("application##architecture=x86-64");
+        } else if(QSysInfo::currentCpuArchitecture() == QLatin1String("x86_64")) {
+            tagFilter << QLatin1String("application##architecture=x86");
+            tagFilter << QLatin1String("application##architecture=x86-64");
+        }
+        m_engine->setTagFilter(tagFilter);
+    } else {
+        static const QSet<QString> knsrcPlasma = {
+            QStringLiteral("aurorae.knsrc"), QStringLiteral("icons.knsrc"), QStringLiteral("kfontinst.knsrc"), QStringLiteral("lookandfeel.knsrc"), QStringLiteral("plasma-themes.knsrc"), QStringLiteral("plasmoids.knsrc"),
+            QStringLiteral("wallpaper.knsrc"), QStringLiteral("xcursor.knsrc"),
 
-    const auto topLevelName = knsrcPlasma.contains(fileName)? i18n("Plasma Addons") : i18n("Application Addons");
-    const QUrl decoration(knsrcPlasma.contains(fileName)? QStringLiteral("https://c2.staticflickr.com/4/3148/3042248532_20bd2e38f4_b.jpg") : QStringLiteral("https://c2.staticflickr.com/8/7067/6847903539_d9324dcd19_o.jpg"));
-    auto addonsCategory = new Category(topLevelName, QStringLiteral("plasma"), filters, backendName, {actualCategory}, decoration, true);
-    m_rootCategories = { addonsCategory };
+            QStringLiteral("cgcgtk3.knsrc"), QStringLiteral("cgcicon.knsrc"), QStringLiteral("cgctheme.knsrc"), //GTK integration
+            QStringLiteral("kwinswitcher.knsrc"), QStringLiteral("kwineffect.knsrc"), QStringLiteral("kwinscripts.knsrc"), //KWin
+            QStringLiteral("comic.knsrc"), QStringLiteral("colorschemes.knsrc"),
+            QStringLiteral("emoticons.knsrc"), QStringLiteral("plymouth.knsrc"),
+            QStringLiteral("sddmtheme.knsrc"), QStringLiteral("wallpaperplugin.knsrc")
+        };
+        auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, {}, QUrl(), true);
+
+        const auto topLevelName = knsrcPlasma.contains(fileName)? i18n("Plasma Addons") : i18n("Application Addons");
+        auto addonsCategory = new Category(topLevelName, QStringLiteral("plasma"), filters, backendName, {actualCategory}, QUrl(), true);
+        m_rootCategories = { addonsCategory };
+    }
 }
 
 KNSBackend::~KNSBackend()
@@ -436,7 +460,9 @@ ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filte
         }
 
         return stream;
-    } else if (filter.category && filter.category->matchesCategoryName(m_categories.constFirst())) {
+    } else if ((m_hasApplications && !filter.category) // If there is no category defined, we are searching in the root, and should include only application results
+              // If there /is/ a category, make sure we actually are one of those requested before searching
+           || (filter.category && kContains(m_categories, [&filter](const QString& cat) { return filter.category->matchesCategoryName(cat); }))) {
         auto r = new ResultsStream(QStringLiteral("KNS-search-")+name());
         searchStream(r, filter.search);
         return r;
