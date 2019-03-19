@@ -124,6 +124,12 @@ QString Category::name() const
     return m_name;
 }
 
+void Category::setName(const QString& name)
+{
+    m_name = name;
+    Q_EMIT nameChanged();
+}
+
 QString Category::icon() const
 {
     return m_iconString;

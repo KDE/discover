@@ -44,7 +44,7 @@ class DISCOVERCOMMON_EXPORT Category : public QObject
 {
 Q_OBJECT
 public:
-    Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(QString name READ name NOTIFY nameChanged)
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(QObject* parent READ parent CONSTANT)
     Q_PROPERTY(QUrl decoration READ decoration CONSTANT)
@@ -55,6 +55,9 @@ public:
     ~Category() override;
 
     QString name() const;
+    // You should never attempt to change the name of anything that is not a leaf category
+    // as the results could be potentially detremental to the function of the category filters
+    void setName(const QString& name);
     QString icon() const;
     QVector<QPair<FilterType, QString> > andFilters() const;
     void setAndFilter(QVector<QPair<FilterType, QString> > filters);
@@ -79,6 +82,7 @@ public:
 
 Q_SIGNALS:
     void subCategoriesChanged();
+    void nameChanged();
 
 private:
     QString m_name;

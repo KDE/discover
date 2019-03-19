@@ -115,15 +115,6 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
 
     setFetching(true);
 
-    m_engine = new KNSCore::Engine(this);
-    connect(m_engine, &KNSCore::Engine::signalErrorCode, this, &KNSBackend::signalErrorCode);
-    connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
-    connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged, Qt::QueuedConnection);
-    connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
-    connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
-    m_engine->setPageSize(100);
-    m_engine->init(m_name);
-
     // This ensures we have something to track when checking after the initialization timeout
     connect(this, &KNSBackend::initialized, this, [this](){ m_initialized = true; });
     // If we have not initialized in 60 seconds, consider this KNS backend invalid
@@ -151,6 +142,26 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         for(const auto &cat: cats)
             categories << new Category(cat, {}, { {CategoryFilter, cat } }, backendName, {}, {}, true);
     }
+
+    m_engine = new KNSCore::Engine(this);
+    connect(m_engine, &KNSCore::Engine::signalErrorCode, this, &KNSBackend::signalErrorCode);
+    connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
+    connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged, Qt::QueuedConnection);
+    connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
+    connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
+    connect(m_engine, &KNSCore::Engine::signalCategoriesMetadataLoded, this, [categories](const QList< KNSCore::Provider::CategoryMetadata>& categoryMetadatas){
+        for (const KNSCore::Provider::CategoryMetadata& category : categoryMetadatas) {
+            for (Category* cat : categories) {
+                if (cat->orFilters().count() > 0 && cat->orFilters().first().second == category.name) {
+                    cat->setName(category.displayName);
+                    break;
+                }
+            }
+        }
+    });
+    m_engine->setPageSize(100);
+    m_engine->init(m_name);
+
     static const QString knsrcApplications = QLatin1String("storekdeapps.knsrc");
 
     if(knsrcApplications == fileName) {
@@ -246,7 +257,16 @@ KNSResource* KNSBackend::resourceForEntry(const KNSCore::EntryInternal& entry)
 {
     KNSResource* r = static_cast<KNSResource*>(m_resourcesByName.value(entry.uniqueId()));
     if (!r) {
-        r = new KNSResource(entry, m_categories + QStringList{entry.category()}, this);
+        QStringList categories{name(), m_rootCategories.first()->name()};
+        const auto cats = m_engine->categoriesMetadata();
+        const int catIndex = kIndexOf(cats, [&entry](const KNSCore::Provider::CategoryMetadata& cat){ return entry.category() == cat.id; });
+        if (catIndex > -1) {
+            categories << cats.at(catIndex).name;
+        }
+        if(m_hasApplications) {
+            categories << QLatin1String("Application");
+        }
+        r = new KNSResource(entry, categories, this);
         m_resourcesByName.insert(entry.uniqueId(), r);
     } else {
         r->setEntry(entry);
