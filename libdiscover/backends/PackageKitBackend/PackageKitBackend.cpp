@@ -288,6 +288,12 @@ void PackageKitBackend::addPackageNotArch(PackageKit::Transaction::Info info, co
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary, bool arch)
 {
+    if(PackageKit::Daemon::packageArch(packageId) == QLatin1String("source")) {
+        // We do not add source packages, they make little sense here. If source is needed,
+        // we are going to have to consider that in some other way, some other time
+        // If we do not ignore them here, e.g. openSuse entirely fails at installing applications
+        return;
+    }
     const QString packageName = PackageKit::Daemon::packageName(packageId);
     QSet<AbstractResource*> r = resourcesByPackageName(packageName);
     if (r.isEmpty()) {
