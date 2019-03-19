@@ -134,6 +134,11 @@ QVector<QPair<FilterType, QString> > Category::andFilters() const
     return m_andFilters;
 }
 
+void Category::setAndFilter(QVector<QPair<FilterType, QString> > filters)
+{
+    m_andFilters = filters;
+}
+
 QVector<QPair<FilterType, QString> > Category::orFilters() const
 {
     return m_orFilters;
@@ -192,6 +197,7 @@ void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
         )
         {
             qCWarning(LIBDISCOVER_LOG) << "the following categories seem to be the same but they're not entirely"
+                << c->icon() << newcat->icon() << "--"
                 << c->name() << newcat->name() << "--"
                 << c->andFilters() << newcat->andFilters() << "--"
                 << c->isAddons() << newcat->isAddons();

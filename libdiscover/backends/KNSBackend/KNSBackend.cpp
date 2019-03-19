@@ -156,7 +156,8 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     if(knsrcApplications == fileName) {
         m_hasApplications = true;
         auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, categories, QUrl(), false);
-        auto applicationCategory = new Category(i18n("Applications"), QStringLiteral("plasma"), filters, backendName, { actualCategory }, QUrl(), false);
+        auto applicationCategory = new Category(i18n("Applications"), QStringLiteral("applications-internet"), filters, backendName, { actualCategory }, QUrl(), false);
+        applicationCategory->setAndFilter({ {CategoryFilter, QLatin1String("Application")} });
         m_categories.append(applicationCategory->name());
         m_rootCategories = { applicationCategory };
         // Make sure we filter out any apps which won't run on the current system architecture

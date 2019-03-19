@@ -57,6 +57,7 @@ public:
     QString name() const;
     QString icon() const;
     QVector<QPair<FilterType, QString> > andFilters() const;
+    void setAndFilter(QVector<QPair<FilterType, QString> > filters);
     QVector<QPair<FilterType, QString> > orFilters() const;
     QVector<QPair<FilterType, QString> > notFilters() const;
     QVector<Category *> subCategories() const;
