@@ -37,7 +37,7 @@ Name[zh_CN]=Kate 代码片断
 Name[zh_TW]=Kate 片段
 
 #ProvidersUrl=http://.../provider.xml
-ProvidersUrl=http://download.kde.org/ocs/providers.xml
+ProvidersUrl=https://download.kde.org/ocs/providers.xml
 Categories=KTextEditor Snippet
 UploadCategories=KTextEditor Snippet
 

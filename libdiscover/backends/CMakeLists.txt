@@ -31,7 +31,7 @@ endif()
 find_package(Snapd)
 set_package_properties(Snapd PROPERTIES
     DESCRIPTION "Library that exposes Snapd"
-    URL "http://www.snapcraft.io"
+    URL "https://www.snapcraft.io"
     PURPOSE "Required to build the Snap backend"
     TYPE OPTIONAL)
 
