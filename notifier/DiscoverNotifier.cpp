@@ -99,12 +99,13 @@ void DiscoverNotifier::updateStatusNotifier()
     if (m_hasUpdates == hasUpdates && m_hasSecurityUpdates == hasSecurityUpdates )
         return;
 
+    m_hasSecurityUpdates = hasSecurityUpdates;
+    m_hasUpdates = hasUpdates;
+
     if (state() != NoUpdates) {
         m_timer.start();
     }
 
-    m_hasSecurityUpdates = hasSecurityUpdates;
-    m_hasUpdates = hasUpdates;
     emit updatesChanged();
 }
 
