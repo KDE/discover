@@ -64,17 +64,13 @@ Item
         onNeedsRebootChanged: plasmoid.setAction("reboot", i18n("Restart..."), "system-reboot");
     }
 
-    function action_reboot() {
-        DiscoverNotifier.reboot()
-    }
-
     Instantiator {
         Connections {
-                target: DiscoverNotifier
-                onNewUpgradeAction: {
-                    upgrades.append(action)
-                }
+            target: DiscoverNotifier
+            onNewUpgradeAction: {
+                upgrades.append(action)
             }
+        }
 
         model: ObjectModel {
             id: upgrades
@@ -96,8 +92,13 @@ Item
     }
     function action_update() {
         DiscoverNotifier.showDiscoverUpdates();
+        root.activated()
     }
     function action_refresh() {
         DiscoverNotifier.recheckSystemUpdateNeeded();
+    }
+
+    function action_reboot() {
+        DiscoverNotifier.reboot()
     }
 }
