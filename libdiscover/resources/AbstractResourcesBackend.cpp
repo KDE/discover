@@ -72,6 +72,18 @@ void ResultsStream::finish()
 AbstractResourcesBackend::AbstractResourcesBackend(QObject* parent)
     : QObject(parent)
 {
+    QTimer* fetchingChangedTimer = new QTimer(this);
+    fetchingChangedTimer->setInterval(3000);
+    fetchingChangedTimer->setSingleShot(true);
+    connect(fetchingChangedTimer, &QTimer::timeout, this, [this]{ qDebug() << "took really long to fetch" << this; });
+
+    connect(this, &AbstractResourcesBackend::fetchingChanged, this, [this, fetchingChangedTimer]{
+//         Q_ASSERT(isFetching() != fetchingChangedTimer->isActive());
+        if (isFetching())
+            fetchingChangedTimer->start();
+        else
+            fetchingChangedTimer->stop();
+    });
 }
 
 Transaction* AbstractResourcesBackend::installApplication(AbstractResource* app)
