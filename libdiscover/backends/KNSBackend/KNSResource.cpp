@@ -234,6 +234,9 @@ void KNSResource::invokeApplication() const
 
 QString KNSResource::executeLabel() const
 {
+    if(knsBackend()->hasApplications()) {
+        return i18n("Launch");
+    }
     return i18n("Use");
 }
 
