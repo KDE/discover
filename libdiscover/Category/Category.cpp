@@ -222,6 +222,19 @@ void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
     Q_ASSERT(isSorted(list));
 }
 
+void Category::addSubcategory(Category* cat)
+{
+    int i = 0;
+    for(Category* subCat : m_subCategories) {
+        if(!categoryLessThan(subCat, cat)) {
+            break;
+        }
+        ++i;
+    }
+    m_subCategories.insert(i, cat);
+    Q_ASSERT(isSorted(m_subCategories));
+}
+
 bool Category::blacklistPluginsInVector(const QSet<QString>& pluginNames, QVector<Category *>& subCategories)
 {
     bool ret = false;

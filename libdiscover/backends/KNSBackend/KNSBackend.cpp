@@ -143,6 +143,17 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
             categories << new Category(cat, {}, { {CategoryFilter, cat } }, backendName, {}, {}, true);
     }
 
+    QVector<Category*> topCategories{categories};
+    for (const auto &cat: categories) {
+        const QString catName = cat->name().append(QLatin1Char('/'));
+        for (const auto& potentialSubCat: categories) {
+            if(potentialSubCat->name().startsWith(catName)) {
+                cat->addSubcategory(potentialSubCat);
+                topCategories.removeOne(potentialSubCat);
+            }
+        }
+    }
+
     m_engine = new KNSCore::Engine(this);
     connect(m_engine, &KNSCore::Engine::signalErrorCode, this, &KNSBackend::signalErrorCode);
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);

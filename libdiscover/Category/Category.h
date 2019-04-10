@@ -68,6 +68,12 @@ public:
 
     static void sortCategories(QVector<Category*>& cats);
     static void addSubcategory(QVector<Category*>& cats, Category* cat);
+    /**
+     * Add a subcategory to this category. This function should only
+     * be used during the initialisation stage, before adding the local
+     * root category to the global root category model.
+     */
+    void addSubcategory(Category* cat);
     void parseData(const QString& path, const QDomNode& data);
     bool blacklistPlugins(const QSet<QString>& pluginName);
     bool isAddons() const { return m_isAddons; }
