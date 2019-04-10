@@ -173,11 +173,9 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     m_engine->setPageSize(100);
     m_engine->init(m_name);
 
-    static const QString knsrcApplications = QLatin1String("storekdeapps.knsrc");
-
-    if(knsrcApplications == fileName) {
-        m_hasApplications = true;
-        auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, categories, QUrl(), false);
+    m_hasApplications = group.readEntry<bool>("X-Discover-HasApplications", false);
+    if(m_hasApplications) {
+        auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, topCategories, QUrl(), false);
         auto applicationCategory = new Category(i18n("Applications"), QStringLiteral("applications-internet"), filters, backendName, { actualCategory }, QUrl(), false);
         applicationCategory->setAndFilter({ {CategoryFilter, QLatin1String("Application")} });
         m_categories.append(applicationCategory->name());
