@@ -183,16 +183,16 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         // Make sure we filter out any apps which won't run on the current system architecture
         QStringList tagFilter = m_engine->tagFilter();
         if(QSysInfo::currentCpuArchitecture() == QLatin1String("arm")) {
-            tagFilter << QLatin1String("application##architecture=armhf");
+            tagFilter << QLatin1String("application##architecture==armhf");
         } else if(QSysInfo::currentCpuArchitecture() == QLatin1String("arm64")) {
-            tagFilter << QLatin1String("application##architecture=arm64");
+            tagFilter << QLatin1String("application##architecture==arm64");
         } else if(QSysInfo::currentCpuArchitecture() == QLatin1String("i386")) {
-            tagFilter << QLatin1String("application##architecture=x86");
+            tagFilter << QLatin1String("application##architecture==x86");
         } else if(QSysInfo::currentCpuArchitecture() == QLatin1String("ia64")) {
-            tagFilter << QLatin1String("application##architecture=x86-64");
+            tagFilter << QLatin1String("application##architecture==x86-64");
         } else if(QSysInfo::currentCpuArchitecture() == QLatin1String("x86_64")) {
-            tagFilter << QLatin1String("application##architecture=x86");
-            tagFilter << QLatin1String("application##architecture=x86-64");
+            tagFilter << QLatin1String("application##architecture==x86");
+            tagFilter << QLatin1String("application##architecture==x86-64");
         }
         m_engine->setTagFilter(tagFilter);
     } else {
