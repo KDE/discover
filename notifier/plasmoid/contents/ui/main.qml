@@ -92,7 +92,7 @@ Item
     }
     function action_update() {
         DiscoverNotifier.showDiscoverUpdates();
-        root.activated()
+        plasmoid.activated()
     }
     function action_refresh() {
         DiscoverNotifier.recheckSystemUpdateNeeded();
