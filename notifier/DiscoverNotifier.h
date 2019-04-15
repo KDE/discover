@@ -25,22 +25,24 @@
 #include <QStringList>
 #include <QTimer>
 
+class QNetworkConfigurationManager;
 class KStatusNotifierItem;
 
 class DiscoverNotifier : public QObject
 {
 Q_OBJECT
 Q_PROPERTY(QStringList modules READ loadedModules CONSTANT)
-Q_PROPERTY(QString iconName READ iconName NOTIFY updatesChanged)
-Q_PROPERTY(QString message READ message NOTIFY updatesChanged)
-Q_PROPERTY(State state READ state NOTIFY updatesChanged)
+Q_PROPERTY(QString iconName READ iconName NOTIFY stateChanged)
+Q_PROPERTY(QString message READ message NOTIFY stateChanged)
+Q_PROPERTY(State state READ state NOTIFY stateChanged)
 Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
 public:
     enum State {
         NoUpdates,
         NormalUpdates,
         SecurityUpdates,
-        RebootRequired
+        RebootRequired,
+        Offline,
     };
     Q_ENUM(State)
 
@@ -66,7 +68,7 @@ public Q_SLOTS:
     void foundUpgradeAction(UpgradeAction* action);
 
 Q_SIGNALS:
-    void updatesChanged();
+    void stateChanged();
     bool needsRebootChanged(bool needsReboot);
     void newUpgradeAction(UpgradeAction* action);
 
@@ -80,6 +82,7 @@ private:
     bool m_hasSecurityUpdates = false;
     bool m_hasUpdates = false;
     bool m_needsReboot = false;
+    QNetworkConfigurationManager* const m_manager;
 };
 
 #endif //ABSTRACTKDEDMODULE_H

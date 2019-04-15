@@ -29,7 +29,9 @@ Item
     Plasmoid.icon: DiscoverNotifier.iconName
     Plasmoid.toolTipSubText: DiscoverNotifier.message
     Plasmoid.status: {
+
         switch (DiscoverNotifier.state) {
+        case DiscoverNotifier.Offline:
         case DiscoverNotifier.NoUpdates:
             return PlasmaCore.Types.PassiveStatus;
         case DiscoverNotifier.NormalUpdates:

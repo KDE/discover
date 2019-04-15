@@ -23,6 +23,7 @@
 #include <QDebug>
 #include <QDBusInterface>
 #include <QDBusPendingReply>
+#include <QNetworkConfigurationManager>
 #include <KConfig>
 #include <KConfigGroup>
 #include <KRun>
@@ -34,6 +35,7 @@
 
 DiscoverNotifier::DiscoverNotifier(QObject * parent)
     : QObject(parent)
+    , m_manager(new QNetworkConfigurationManager(this))
 {
     configurationChanged();
 
@@ -44,7 +46,7 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
             if (!m_needsReboot) {
                 m_needsReboot = true;
                 showRebootNotification();
-                Q_EMIT updatesChanged();
+                Q_EMIT stateChanged();
                 Q_EMIT needsRebootChanged(true);
             }
         });
@@ -55,6 +57,8 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
     m_timer.setSingleShot(true);
     m_timer.setInterval(1000);
     updateStatusNotifier();
+
+    connect(m_manager, &QNetworkConfigurationManager::onlineStateChanged, this, &DiscoverNotifier::stateChanged);
 }
 
 DiscoverNotifier::~DiscoverNotifier() = default;
@@ -79,7 +83,7 @@ void DiscoverNotifier::showDiscoverUpdates()
 
 void DiscoverNotifier::showUpdatesNotification()
 {
-    if (state()==NoUpdates) {
+    if (state() != NormalUpdates && state() != SecurityUpdates) {
         //it's not very helpful to notify that everything is in order
         return;
     }
@@ -106,13 +110,15 @@ void DiscoverNotifier::updateStatusNotifier()
         m_timer.start();
     }
 
-    emit updatesChanged();
+    emit stateChanged();
 }
 
 DiscoverNotifier::State DiscoverNotifier::state() const
 {
     if (m_needsReboot)
         return RebootRequired;
+    else if (!m_manager->isOnline())
+        return Offline;
     else if (m_hasSecurityUpdates)
         return SecurityUpdates;
     else if (m_hasUpdates)
@@ -132,6 +138,8 @@ QString DiscoverNotifier::iconName() const
             return QStringLiteral("update-none");
         case RebootRequired:
             return QStringLiteral("system-reboot");
+        case Offline:
+            return QStringLiteral("offline");
     }
     return QString();
 }
@@ -147,6 +155,8 @@ QString DiscoverNotifier::message() const
             return i18n("System up to date");
         case RebootRequired:
             return i18n("Computer needs to restart");
+        case Offline:
+            return i18n("Offline");
     }
     return QString();
 }
@@ -198,4 +208,3 @@ void DiscoverNotifier::foundUpgradeAction(UpgradeAction* action)
 
     notification->sendEvent();
 }
-
