@@ -334,3 +334,18 @@ void PackageKitResource::fetchDependencies()
         Q_EMIT dependenciesFound(*packageDependencies);
     });
 }
+
+bool PackageKitResource::extendsItself() const
+{
+    const auto extendsResources = backend()->resourcesByPackageNames<QVector<AbstractResource*>>(extends());
+    if (extendsResources.isEmpty())
+        return false;
+
+    const auto ourPackageNames = allPackageNames();
+    for (auto r : extendsResources) {
+        PackageKitResource* pkres = qobject_cast<PackageKitResource*>(r);
+        if (pkres->allPackageNames() != ourPackageNames)
+            return false;
+    }
+    return true;
+}

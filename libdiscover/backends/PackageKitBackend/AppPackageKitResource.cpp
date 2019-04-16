@@ -179,8 +179,8 @@ QStringList AppPackageKitResource::allPackageNames() const
 
 QList<PackageState> AppPackageKitResource::addonsInformation()
 {
-    return kTransform<QList<PackageState>>(
-        backend()->extendedBy(m_appdata.id()),
+    const auto res = kFilter<QVector<AppPackageKitResource*>>(backend()->extendedBy(m_appdata.id()), [this](AppPackageKitResource* r){ return r->allPackageNames() != allPackageNames(); });
+    return kTransform<QList<PackageState>>(res,
         [](AppPackageKitResource* r) { return PackageState(r->appstreamId(), r->name(), r->comment(), r->isInstalled()); }
     );
 }

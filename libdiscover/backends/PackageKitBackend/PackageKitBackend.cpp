@@ -419,13 +419,13 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
         const auto ext = kTransform<QVector<AbstractResource*>>(m_packages.extendedBy[filter.extends], [](AppPackageKitResource* a){ return a; });
         return new ResultsStream(QStringLiteral("PackageKitStream-extends"), ext);
     } else if (filter.search.isEmpty()) {
-        return new ResultsStream(QStringLiteral("PackageKitStream-all"), kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return res->type() != AbstractResource::Technical; }));
+        return new ResultsStream(QStringLiteral("PackageKitStream-all"), kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource*>(res)->extendsItself(); }));
     } else {
         const QList<AppStream::Component> components = m_appdata->search(filter.search);
         const QStringList ids = kTransform<QStringList>(components, [](const AppStream::Component& comp) { return comp.id(); });
         auto stream = new ResultsStream(QStringLiteral("PackageKitStream-search"));
         if (!ids.isEmpty()) {
-            const auto resources = resourcesByPackageNames<QVector<AbstractResource*>>(ids);
+            const auto resources = kFilter<QVector<AbstractResource*>>(resourcesByPackageNames<QVector<AbstractResource*>>(ids), [](AbstractResource* res){ return !qobject_cast<PackageKitResource*>(res)->extendsItself(); });
             QTimer::singleShot(0, this, [stream, resources] () {
                 Q_EMIT stream->resourcesFound(resources);
             });

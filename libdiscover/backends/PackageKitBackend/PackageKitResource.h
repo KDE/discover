@@ -78,6 +78,8 @@ class PackageKitResource : public AbstractResource
 
         virtual QString changelog() const { return {}; }
 
+        bool extendsItself() const;
+
     Q_SIGNALS:
         void dependenciesFound(const QJsonObject& dependencies);
 

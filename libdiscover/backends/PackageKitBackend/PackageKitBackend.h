@@ -90,6 +90,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void getUpdatesFinished(PackageKit::Transaction::Exit,uint);
 
     private:
+        friend class PackageKitResource;
         template <typename T>
         T resourcesByPackageNames(const QStringList& names) const;
 
