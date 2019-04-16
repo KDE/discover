@@ -69,6 +69,8 @@ class DiscoverObject : public QObject
 
         void copyTextToClipboard(const QString &text);
 
+        void reboot();
+
     private Q_SLOTS:
         void reportBug();
         void switchApplicationLanguage();

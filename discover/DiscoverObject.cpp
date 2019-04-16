@@ -40,6 +40,9 @@
 #include <QTimer>
 #include <QSessionManager>
 #include <QClipboard>
+#include <QDBusConnection>
+#include <QDBusInterface>
+#include <QDBusPendingCall>
 
 // KDE includes
 #include <KAboutApplicationDialog>
@@ -487,5 +490,10 @@ void DiscoverObject::copyTextToClipboard(const QString& text)
     qGuiApp->clipboard()->setText(text);
 }
 
+void DiscoverObject::reboot()
+{
+    QDBusInterface interface(QStringLiteral("org.kde.ksmserver"), QStringLiteral("/KSMServer"), QStringLiteral("org.kde.KSMServerInterface"), QDBusConnection::sessionBus());
+    interface.asyncCall(QStringLiteral("logout"), 0, 1, 2); // Options: do not ask again | reboot | force
+}
 
 #include "DiscoverObject.moc"

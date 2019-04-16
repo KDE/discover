@@ -159,6 +159,12 @@ DiscoverPage
                 width: Kirigami.Units.gridUnit * 12
                 height: width
             }
+            Button {
+                Layout.alignment: Qt.AlignHCenter
+                text: i18n("Restart")
+                visible: resourcesUpdatesModel.needsReboot
+                onClicked: app.reboot()
+            }
             Item {
                 visible: page.footerLabel === ""
                 height: Kirigami.Units.gridUnit
@@ -332,7 +338,7 @@ DiscoverPage
         },
         State {
             name: "reboot"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "The system requires a restart") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "The system requires a restart to apply updates") }
         },
         State {
             name: "now-uptodate"
