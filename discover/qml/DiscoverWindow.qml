@@ -127,7 +127,7 @@ Kirigami.ApplicationWindow
             window.stack.push(errorPageComponent, { error: errorMessage, title: i18n("Sorry...") })
         }
 
-        onPreventedClose: showPassiveNotification(i18n("Could not close the application, there are tasks that need to be done."))
+        onPreventedClose: showPassiveNotification(i18n("Could not close Discover, there are tasks that need to be done."), 20000, i18n("Quit Anyway"), function() { Qt.quit() })
         onUnableToFind: {
             showPassiveNotification(i18n("Unable to find resource: %1", resid));
             Navigation.openHome()
