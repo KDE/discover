@@ -28,6 +28,8 @@ Kirigami.ApplicationWindow
     objectName: "DiscoverMainWindow"
     title: leftPage ? leftPage.title : ""
 
+    width: app.initialGeometry.width>=10 ? app.initialGeometry.width : Kirigami.Units.gridUnit * 45
+    height: app.initialGeometry.height>=10 ? app.initialGeometry.height : Kirigami.Units.gridUnit * 30
 
     visible: true
 

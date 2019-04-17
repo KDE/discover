@@ -36,6 +36,8 @@ class DiscoverObject : public QObject
     Q_OBJECT
     Q_PROPERTY(CompactMode compactMode READ compactMode WRITE setCompactMode NOTIFY compactModeChanged)
     Q_PROPERTY(bool isRoot READ isRoot CONSTANT)
+    Q_PROPERTY(QRect initialGeometry READ initialGeometry CONSTANT)
+
     public:
         enum CompactMode { Auto, Compact, Full };
         Q_ENUM(CompactMode)
@@ -59,6 +61,7 @@ class DiscoverObject : public QObject
         static bool isRoot();
         QWindow* rootObject() const;
         void showPassiveNotification(const QString &msg);
+        QRect initialGeometry() const;
 
     public Q_SLOTS:
         void openApplication(const QUrl& app);

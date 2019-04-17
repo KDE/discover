@@ -496,4 +496,10 @@ void DiscoverObject::reboot()
     interface.asyncCall(QStringLiteral("logout"), 0, 1, 2); // Options: do not ask again | reboot | force
 }
 
+QRect DiscoverObject::initialGeometry() const
+{
+    KConfigGroup window(KSharedConfig::openConfig(), "Window");
+    return window.readEntry("geometry", QRect());
+}
+
 #include "DiscoverObject.moc"
