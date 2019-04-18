@@ -172,6 +172,7 @@ Kirigami.ApplicationWindow
                     horizontalCenter: parent.horizontalCenter
                 }
                 width: parent.width;
+                wrapMode: Text.WordWrap
                 horizontalAlignment: Text.AlignHCenter
                 visible: page.error !== ""
                 text: page.error
