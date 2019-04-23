@@ -160,7 +160,7 @@ Kirigami.ApplicationWindow
                     margins: Kirigami.Units.largeSpacing
                     horizontalCenter: parent.horizontalCenter
                 }
-                visible: page.page.error !== ""
+                visible: page.error !== ""
                 source: "emblem-warning"
                 height: Kirigami.Units.iconSizes.huge
                 width: height;
