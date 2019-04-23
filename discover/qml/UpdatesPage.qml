@@ -75,11 +75,6 @@ DiscoverPage
     }
 
     readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
-    readonly property QtObject currentAction: resourcesUpdatesModel.isProgressing ? cancelUpdateAction : updateAction
-    actions {
-        left: refreshAction
-        main: currentAction
-    }
 
     header: ToolBar {
         Kirigami.Theme.colorSet: Kirigami.Theme.Button
@@ -88,7 +83,7 @@ DiscoverPage
 
         RowLayout {
             anchors.fill: parent
-            enabled: page.currentAction.enabled
+            enabled: updateAction.enabled
 
             CheckBox {
                 Layout.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.largeSpacing
@@ -309,8 +304,8 @@ DiscoverPage
     }
 
     readonly property alias secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
-    state:  ( updateModel.hasUpdates                     ? "has-updates"
-            : resourcesUpdatesModel.isProgressing        ? "progressing"
+    state:  ( resourcesUpdatesModel.isProgressing        ? "progressing"
+            : updateModel.hasUpdates                     ? "has-updates"
             : ResourcesModel.isFetching                  ? "fetching"
             : resourcesUpdatesModel.needsReboot          ? "reboot"
             : secSinceUpdate < 0                         ? "unknown"
@@ -329,12 +324,13 @@ DiscoverPage
         State {
             name: "progressing"
             PropertyChanges { target: page; supportsRefreshing: false }
-            PropertyChanges { target: page; footerLabel: resourcesUpdatesModel.progress<=0 ? i18nc("@info", "Fetching updates...") : "" }
-            PropertyChanges { target: page; isBusy: true }
+            PropertyChanges { target: page.actions; main: cancelUpdateAction }
         },
         State {
             name: "has-updates"
             PropertyChanges { target: page; title: i18nc("@info", "Updates") }
+            PropertyChanges { target: page.actions; main: updateAction }
+            PropertyChanges { target: page.actions; left: refreshAction }
         },
         State {
             name: "reboot"
@@ -343,22 +339,27 @@ DiscoverPage
         State {
             name: "now-uptodate"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
+            PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "uptodate"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
+            PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "medium"
             PropertyChanges { target: page; title: i18nc("@info", "Up to date") }
+            PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "low"
             PropertyChanges { target: page; title: i18nc("@info", "Should check for updates") }
+            PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "unknown"
             PropertyChanges { target: page; title: i18nc("@info", "It is unknown when the last check for updates was") }
+            PropertyChanges { target: page.actions; main: refreshAction }
         }
     ]
 }

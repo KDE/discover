@@ -91,6 +91,7 @@ void OdrsReviewsBackend::ratingsFetched(KJob *job)
 
 static QString osName()
 {
+    //TODO: port to KOSRelease
     QString osReleaseFilename;
     if (QFileInfo::exists(QStringLiteral("/etc/os-release"))) {
         osReleaseFilename = QStringLiteral("/etc/os-release");
