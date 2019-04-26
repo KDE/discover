@@ -243,8 +243,7 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
             AbstractResourcesBackend::Filters f;
             f.resourceUrl = localfile;
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
-            connect(stream, &StoredResultsStream::finished, this, [this, localfile, stream]() {
-                const auto res = stream->resources();
+            connect(stream, &StoredResultsStream::finishedResources, this, [this, localfile](const QVector<AbstractResource*> &res) {
                 if (res.count() == 1) {
                     emit openApplicationInternal(res.first());
                 } else {
@@ -279,8 +278,7 @@ void DiscoverObject::openApplication(const QUrl& url)
             AbstractResourcesBackend::Filters f;
             f.resourceUrl = url;
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
-            connect(stream, &StoredResultsStream::finished, this, [this, url, stream]() {
-                const auto res = stream->resources();
+            connect(stream, &StoredResultsStream::finishedResources, this, [this, url](const QVector<AbstractResource*> &res) {
                 if (res.count() >= 1) {
                     emit openApplicationInternal(res.first());
                 } else {

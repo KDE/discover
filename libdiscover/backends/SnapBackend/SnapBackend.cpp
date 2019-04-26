@@ -216,9 +216,9 @@ QString SnapBackend::displayName() const
 void SnapBackend::refreshStates()
 {
     auto ret = new StoredResultsStream({populate(m_client.list())});
-    connect(ret, &StoredResultsStream::finished, this, [this, ret](){
+    connect(ret, &StoredResultsStream::finishedResources, this, [this] (const QVector<AbstractResource*>& resources){
         for (auto res: qAsConst(m_resources)) {
-            if (ret->resources().contains(res))
+            if (resources.contains(res))
                 res->setState(AbstractResource::Installed);
             else
                 res->setState(AbstractResource::None);
