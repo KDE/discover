@@ -104,8 +104,11 @@ ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& fil
 
 ResultsStream * SnapBackend::findResourceByPackageName(const QUrl& search)
 {
-    return search.scheme() == QLatin1String("snap") ? populate(m_client.find(QSnapdClient::MatchName, search.host())) :
-           search.scheme() == QLatin1String("appstream") ? new ResultsStream(QLatin1String("snap-appstreamurl"), kFilter<QVector<AbstractResource*>>(m_resources, [search](SnapResource* res){ return res->appstreamId() == search.host(); } )) :
+    Q_ASSERT(!search.host().isEmpty());
+    return search.scheme() == QLatin1String("snap")      ? populate(m_client.find(QSnapdClient::MatchName, search.host())) :
+#ifdef SNAP_FIND_COMMON_ID
+           search.scheme() == QLatin1String("appstream") ? populate(m_client.find(QSnapdClient::MatchCommonId, search.host())) :
+#endif
                 voidStream();
 }
 
