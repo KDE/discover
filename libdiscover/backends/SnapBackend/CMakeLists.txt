@@ -9,7 +9,7 @@ endif()
 if ("${Snapd_VERSION}" VERSION_GREATER 1.42)
     target_compile_definitions(snap-backend PRIVATE -DSNAP_PUBLISHER)
 endif()
-if ("${Snapd_VERSION}" VERSION_GREATER 1.46)
+if ("${Snapd_VERSION}" VERSION_GREATER 1.48)
     target_compile_definitions(snap-backend PRIVATE -DSNAP_FIND_COMMON_ID)
 endif()
 
