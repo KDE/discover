@@ -70,15 +70,6 @@ SnapBackend::SnapBackend(QObject* parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(new OdrsReviewsBackend(this))
 {
-    {
-        auto request = m_client.connect();
-        request->runSync();
-        m_valid = request->error() == QSnapdRequest::NoError;
-        if (!m_valid) {
-            qWarning() << "snap problem at initialize:" << request->errorString();
-            return;
-        }
-    }
     connect(m_reviews, &OdrsReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
     //make sure we populate the installed resources first
@@ -104,7 +95,7 @@ ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& fil
         return voidStream();
     } else if (filters.state >= AbstractResource::Installed || filters.origin == QLatin1String("Snap")) {
         std::function<bool(const QSharedPointer<QSnapdSnap>&)> f = [filters](const QSharedPointer<QSnapdSnap>& s) { return filters.search.isEmpty() || s->name().contains(filters.search, Qt::CaseInsensitive) || s->description().contains(filters.search, Qt::CaseInsensitive); };
-        return populateWithFilter(m_client.list(), f);
+        return populateWithFilter(m_client.getSnaps(), f);
     } else if (!filters.search.isEmpty()) {
         return populate(m_client.find(QSnapdClient::FindFlag::None, filters.search));
     }
@@ -130,7 +121,7 @@ ResultsStream* SnapBackend::populateWithFilter(T* job, std::function<bool(const 
 {
     auto stream = new ResultsStream(QStringLiteral("Snap-populate"));
 
-    connect(job, &QSnapdFindRequest::complete, stream, [stream, this, job, filter]() {
+    connect(job, &T::complete, stream, [stream, this, job, filter]() {
         if (job->error()) {
             qDebug() << "error:" << job->error() << job->errorString();
             stream->finish();
@@ -215,7 +206,7 @@ QString SnapBackend::displayName() const
 
 void SnapBackend::refreshStates()
 {
-    auto ret = new StoredResultsStream({populate(m_client.list())});
+    auto ret = new StoredResultsStream({populate(m_client.getSnaps())});
     connect(ret, &StoredResultsStream::finishedResources, this, [this] (const QVector<AbstractResource*>& resources){
         for (auto res: qAsConst(m_resources)) {
             if (resources.contains(res))
