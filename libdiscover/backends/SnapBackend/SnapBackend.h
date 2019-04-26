@@ -28,7 +28,7 @@
 #include <functional>
 
 class QAction;
-class SnapReviewsBackend;
+class OdrsReviewsBackend;
 class StandardBackendUpdater;
 class SnapResource;
 class SnapBackend : public AbstractResourcesBackend
@@ -66,7 +66,7 @@ private:
 
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;
-    SnapReviewsBackend* m_reviews;
+    OdrsReviewsBackend* m_reviews;
 
     bool m_valid = true;
     bool m_fetching = false;

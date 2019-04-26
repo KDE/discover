@@ -21,7 +21,7 @@
 #include "SnapBackend.h"
 #include "SnapTransaction.h"
 #include "SnapResource.h"
-#include "SnapReviewsBackend.h"
+#include "appstream/OdrsReviewsBackend.h"
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
 #include <Category/Category.h>
@@ -68,7 +68,7 @@ private:
 SnapBackend::SnapBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
-    , m_reviews(new SnapReviewsBackend(this))
+    , m_reviews(new OdrsReviewsBackend(this))
 {
     {
         auto request = m_client.connect();
@@ -79,7 +79,7 @@ SnapBackend::SnapBackend(QObject* parent)
             return;
         }
     }
-    connect(m_reviews, &SnapReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
+    connect(m_reviews, &OdrsReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
     //make sure we populate the installed resources first
     refreshStates();
