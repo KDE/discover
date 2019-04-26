@@ -96,4 +96,7 @@
   <developer_name xml:lang="zh-CN">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="zh-TW">Aleix Pol Gonzalez</developer_name>
   <icon type="stock">system-software-install</icon>
+  <releases>
+    <release version="5.15.4" date="2019-04-02"/>
+  </releases>
 </component>
