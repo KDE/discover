@@ -41,7 +41,7 @@ Kirigami.BasicListItem
     label: Kirigami.MnemonicData.richTextLabel
 
     ToolTip.visible: hovered
-    ToolTip.text: action.shortcut || p0.sequence
+    ToolTip.text: action.shortcut ? action.shortcut : p0.nativeText
 
     readonly property var p0: Shortcut {
         sequence: item.Kirigami.MnemonicData.sequence
