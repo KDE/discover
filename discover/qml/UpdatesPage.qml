@@ -140,10 +140,8 @@ DiscoverPage
             BusyIndicator {
                 id: indicator
                 Layout.alignment: Qt.AlignHCenter
-                Layout.minimumWidth: Kirigami.Units.gridUnit * 12
-                Layout.maximumWidth: Layout.minimumWidth
-                Layout.minimumHeight: Layout.minimumWidth
-                Layout.maximumHeight: Layout.minimumHeight
+                Layout.preferredWidth: Kirigami.Units.gridUnit * 12
+                Layout.preferredHeight: Layout.preferredWidth
                 visible: page.isBusy
             }
             Kirigami.Icon {
