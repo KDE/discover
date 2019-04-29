@@ -45,12 +45,14 @@ public:
         InstalledSize,
         RequiredRuntime
     };
+    Q_ENUM(PropertyKind)
 
     enum PropertyState {
         NotKnownYet = 0,
         AlreadyKnown,
         UnknownOrFailed,
     };
+    Q_ENUM(PropertyState)
 
     enum ResourceType {
         DesktopApp = 0,
@@ -58,6 +60,7 @@ public:
         Extension,
         Source
     };
+    Q_ENUM(ResourceType)
 
     struct Id {
         FlatpakInstallation * const installation;
