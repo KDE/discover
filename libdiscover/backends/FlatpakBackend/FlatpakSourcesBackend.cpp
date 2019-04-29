@@ -131,12 +131,14 @@ QStandardItem * FlatpakSourcesBackend::sourceById(const QString& id) const
     return sourceIt;
 }
 
-QStandardItem * FlatpakSourcesBackend::sourceByUrl(const QString& url) const
+QStandardItem * FlatpakSourcesBackend::sourceByUrl(const QString& _url) const
 {
+    QUrl url(_url);
+
     QStandardItem* sourceIt = nullptr;
-    for (int i = 0, c = m_sources->rowCount(); i<c; ++i) {
+    for (int i = 0, c = m_sources->rowCount(); i<c && !sourceIt; ++i) {
         auto it = m_sources->item(i);
-        if (it->data(Qt::StatusTipRole) == url) {
+        if (url.matches(it->data(Qt::StatusTipRole).toUrl(), QUrl::StripTrailingSlash)) {
             sourceIt = it;
             break;
         }
