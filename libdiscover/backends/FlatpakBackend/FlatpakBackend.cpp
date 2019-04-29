@@ -61,12 +61,22 @@
 
 DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
 
+QDebug operator<<(QDebug debug, const FlatpakResource::Id& id)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "FlatpakResource::Id(";
+    debug.nospace() << "name:" << id.id << ',';
+    debug.nospace() << "branch:" << id.branch << ',';
+    debug.nospace() << "origin:" << id.origin << ',';
+    debug.nospace() << "type:" << id.type;
+    debug.nospace() << ')';
+    return debug;
+}
+
 static FlatpakResource::Id idForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref)
 {
     const FlatpakResource::ResourceType appType = flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime;
-    const QString name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
-    const QString appId = appType == FlatpakResource::DesktopApp ? QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))) : name;
-
+    const QString appId = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
 
@@ -795,7 +805,7 @@ void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstalla
             resource->setState(AbstractResource::Upgradeable);
             updateAppSize(flatpakInstallation, resource);
         } else
-            qWarning() << "could not find updated resource" << idForInstalledRef(flatpakInstallation, ref).id << m_resources.size();
+            qWarning() << "could not find updated resource" << flatpak_ref_get_name(FLATPAK_REF(ref)) << m_resources.size();
     }
 }
 
