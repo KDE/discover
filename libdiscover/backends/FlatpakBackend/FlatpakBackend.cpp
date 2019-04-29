@@ -707,9 +707,6 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
     for (uint i = 0; i < refs->len; i++) {
         FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
 
-        if (flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_RUNTIME) {
-            continue;
-        }
         const auto res = getAppForInstalledRef(flatpakInstallation, ref);
         if (res) {
             res->setState(AbstractResource::Installed);
@@ -717,15 +714,22 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
         }
 
         const auto name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
+        if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp")) || name.endsWith(QLatin1String(".Docs")))
+            continue;
+
+        AppStream::Component cid;
         AppStream::Metadata metadata;
         const QString fnDesktop = pathApps + name + QLatin1String(".desktop");
         AppStream::Metadata::MetadataError error = metadata.parseFile(fnDesktop, AppStream::Metadata::FormatKindDesktopEntry);
         if (error != AppStream::Metadata::MetadataErrorNoError) {
-            qWarning() << "Failed to parse appstream metadata: " << error << fnDesktop;
-            continue;
-        }
+            qDebug() << "Failed to parse appstream metadata:" << error << fnDesktop;
 
-        FlatpakResource *resource = new FlatpakResource(metadata.component(), flatpakInstallation, this);
+            cid.setId(QString::fromLatin1(flatpak_ref_get_name(FLATPAK_REF(ref))));
+            cid.setName(QString::fromLatin1(flatpak_installed_ref_get_appdata_name(ref)));
+        } else
+            cid = metadata.component();
+
+        FlatpakResource *resource = new FlatpakResource(cid, flatpakInstallation, this);
 
         resource->setIconPath(pathExports);
         resource->setState(AbstractResource::Installed);
