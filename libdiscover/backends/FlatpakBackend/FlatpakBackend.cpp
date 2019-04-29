@@ -619,10 +619,10 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
 void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)
 {
     Q_ASSERT(m_refreshAppstreamMetadataJobs != 0);
-    m_refreshAppstreamMetadataJobs--;
 
     FlatpakSource source(remote);
     if (!source.isEnabled() || flatpak_remote_get_noenumerate(remote)) {
+        m_refreshAppstreamMetadataJobs--;
         return;
     }
 
@@ -630,6 +630,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
     const QString appstreamIconsPath = source.appstreamDir() + QLatin1String("/icons/");
     const QString appDirFileName = appstreamDirPath + QLatin1String("/appstream.xml.gz");
     if (!QFile::exists(appDirFileName)) {
+        m_refreshAppstreamMetadataJobs--;
         qWarning() << "No" << appDirFileName << "appstream metadata found for" << source.name();
         return;
     }
@@ -644,7 +645,9 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
             resource->setOrigin(sourceName);
             addResource(resource);
         }
-        if (!m_refreshAppstreamMetadataJobs) {
+
+        m_refreshAppstreamMetadataJobs--;
+        if (m_refreshAppstreamMetadataJobs == 0) {
             loadInstalledApps();
             checkForUpdates();
 
