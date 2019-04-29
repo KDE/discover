@@ -73,10 +73,10 @@ QDebug operator<<(QDebug debug, const FlatpakResource::Id& id)
     return debug;
 }
 
-static FlatpakResource::Id idForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref)
+static FlatpakResource::Id idForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref, const QString &postfix)
 {
     const FlatpakResource::ResourceType appType = flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime;
-    const QString appId = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
+    const QString appId = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))) + postfix;
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
 
@@ -241,7 +241,14 @@ FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakInstallation 
 
 FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const
 {
-    return m_resources.value(idForInstalledRef(flatpakInstallation, ref));
+    auto r = m_resources.value(idForInstalledRef(flatpakInstallation, ref, {}));
+    if (!r)
+        r = m_resources.value(idForInstalledRef(flatpakInstallation, ref, QStringLiteral(".desktop")));
+
+    if (!r) {
+        qDebug() << "no" << flatpak_ref_get_name(FLATPAK_REF(ref));
+    }
+    return r;
 }
 
 FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) const
@@ -707,15 +714,15 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
     for (uint i = 0; i < refs->len; i++) {
         FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
 
+        const auto name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
+        if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp")) || name.endsWith(QLatin1String(".Docs")))
+            continue;
+
         const auto res = getAppForInstalledRef(flatpakInstallation, ref);
         if (res) {
             res->setState(AbstractResource::Installed);
             continue;
         }
-
-        const auto name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
-        if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp")) || name.endsWith(QLatin1String(".Docs")))
-            continue;
 
         AppStream::Component cid;
         AppStream::Metadata metadata;
