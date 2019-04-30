@@ -1,5 +1,6 @@
 [Global]
 IconName=plasmadiscover
+DesktopEntry=org.kde.discover
 Comment=Discover
 Comment[ar]=استكشف
 Comment[ca]=Discover
