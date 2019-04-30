@@ -732,7 +732,9 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
             qDebug() << "Failed to parse appstream metadata:" << error << fnDesktop;
 
             cid.setId(QString::fromLatin1(flatpak_ref_get_name(FLATPAK_REF(ref))));
+#ifdef FLATPAK_CHECK_VERSION(1,1,2)
             cid.setName(QString::fromLatin1(flatpak_installed_ref_get_appdata_name(ref)));
+#endif
         } else
             cid = metadata.component();
 
