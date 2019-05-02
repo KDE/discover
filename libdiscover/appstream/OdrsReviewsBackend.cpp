@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "OdrsReviewsBackend.h"
+#include "AppStreamIntegration.h"
 
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/Rating.h>
@@ -91,33 +92,7 @@ void OdrsReviewsBackend::ratingsFetched(KJob *job)
 
 static QString osName()
 {
-    //TODO: port to KOSRelease
-    QString osReleaseFilename;
-    if (QFileInfo::exists(QStringLiteral("/etc/os-release"))) {
-        osReleaseFilename = QStringLiteral("/etc/os-release");
-    } else if (QFileInfo::exists(QStringLiteral("/usr/lib/os-release"))) {
-        osReleaseFilename = QStringLiteral("/usr/lib/os-release");
-    }
-
-    if (osReleaseFilename.isEmpty()) {
-        return QStringLiteral("Unknown");
-    }
-
-    QFile osReleaseFile(osReleaseFilename);
-    if (osReleaseFile.open(QIODevice::ReadOnly)) {
-        QString line;
-        QTextStream stream(&osReleaseFile);
-        while (stream.readLineInto(&line)) {
-            if (line.startsWith(QStringLiteral("NAME"))) {
-                QStringRef name = line.midRef(5).trimmed();
-                if (name.startsWith(QLatin1Char('\"')) && name.endsWith(QLatin1Char('\"')))
-                    name = name.mid(1, name.size()-2);
-                return name.toString();
-            }
-        }
-    }
-
-    return QStringLiteral("Unknown");
+    return AppStreamIntegration::global()->osRelease()->osName();
 }
 
 static QString userHash()

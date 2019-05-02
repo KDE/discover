@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "AppStreamIntegration.h"
+#include <KOSRelease>
 
 AppStreamIntegration * AppStreamIntegration::global()
 {

@@ -23,6 +23,7 @@
 
 #include "discovercommon_export.h"
 #include <QObject>
+#include <KOSRelease>
 #include "OdrsReviewsBackend.h"
 
 class DISCOVERCOMMON_EXPORT AppStreamIntegration : public QObject
@@ -32,9 +33,11 @@ public:
     static AppStreamIntegration* global();
 
     QSharedPointer<OdrsReviewsBackend> reviews();
+    KOSRelease* osRelease() { return &m_osrelease; }
 
 private:
     QWeakPointer<OdrsReviewsBackend> m_reviews;
+    KOSRelease m_osrelease;
 
     AppStreamIntegration() {}
 };

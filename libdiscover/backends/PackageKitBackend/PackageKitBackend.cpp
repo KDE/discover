@@ -654,41 +654,9 @@ AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const
     return m_reviews.data();
 }
 
-static QString readDistroName()
-{
-    const QStringList osreleasenames = (QStringList() << QStringLiteral("/etc/os-release")
-                                                      << QStringLiteral("/usr/lib/os-release"));
-    foreach (QString osrelease, osreleasenames)
-    {
-        QFile file(osrelease);
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            QByteArray line;
-            while (!file.atEnd()) {
-                line = file.readLine().trimmed();
-                if (line.startsWith("NAME=")) {
-                    auto output = line.right(line.length()-5);
-                    output = output.replace('\"',"");
-                    return QString::fromLocal8Bit(output);
-                }
-            }
-        }
-    }
-
-    QProcess process;
-    process.setEnvironment({QStringLiteral("LC_ALL=C")});
-    process.start(QStringLiteral("lsb_release"), {QStringLiteral("-sd")});
-    process.waitForFinished();
-    auto output = process.readAll().trimmed();
-    if (output.startsWith('\"') && output.endsWith('\"'))
-        output = output.mid(1, output.length()-2);
-    return QString::fromLocal8Bit(output);
-}
-
 QString PackageKitBackend::displayName() const
 {
-    static const QString distro = readDistroName();
-    return distro;
+    return AppStreamIntegration::global()->osRelease()->prettyName();
 }
 
 #include "PackageKitBackend.moc"
