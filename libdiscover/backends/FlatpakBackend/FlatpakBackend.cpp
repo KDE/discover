@@ -111,8 +111,6 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 
     /* Override the umask to 022 to make it possible to share files between
      * the plasma-discover process and flatpak system helper process.
-     * Ideally this should be set when needed in the flatpak plugin, but
-     * umask is thread-unsafe so there is really no local way to fix this.
      *
      * See https://github.com/flatpak/flatpak/pull/2856/
      */
