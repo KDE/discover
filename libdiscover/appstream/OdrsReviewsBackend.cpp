@@ -92,7 +92,7 @@ void OdrsReviewsBackend::ratingsFetched(KJob *job)
 
 static QString osName()
 {
-    return AppStreamIntegration::global()->osRelease()->osName();
+    return AppStreamIntegration::global()->osRelease()->name();
 }
 
 static QString userHash()
