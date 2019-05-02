@@ -59,6 +59,8 @@
 #include <glib.h>
 #include <QRegularExpression>
 
+#include <sys/stat.h>
+
 DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
 
 QDebug operator<<(QDebug debug, const FlatpakResource::Id& id)
@@ -106,6 +108,15 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     }
 
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, &FlatpakBackend::announceRatingsReady);
+
+    /* Override the umask to 022 to make it possible to share files between
+     * the plasma-discover process and flatpak system helper process.
+     * Ideally this should be set when needed in the flatpak plugin, but
+     * umask is thread-unsafe so there is really no local way to fix this.
+     *
+     * See https://github.com/flatpak/flatpak/pull/2856/
+     */
+    umask(022);
 }
 
 FlatpakBackend::~FlatpakBackend()
