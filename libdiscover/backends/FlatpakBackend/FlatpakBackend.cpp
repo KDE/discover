@@ -643,13 +643,22 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
     return true;
 }
 
+void FlatpakBackend::metadataRefreshed()
+{
+    m_refreshAppstreamMetadataJobs--;
+    if (m_refreshAppstreamMetadataJobs == 0) {
+        loadInstalledApps();
+        checkForUpdates();
+    }
+}
+
 void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)
 {
     Q_ASSERT(m_refreshAppstreamMetadataJobs != 0);
 
     FlatpakSource source(remote);
     if (!source.isEnabled() || flatpak_remote_get_noenumerate(remote)) {
-        m_refreshAppstreamMetadataJobs--;
+        metadataRefreshed();
         return;
     }
 
@@ -657,8 +666,8 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
     const QString appstreamIconsPath = source.appstreamDir() + QLatin1String("/icons/");
     const QString appDirFileName = appstreamDirPath + QLatin1String("/appstream.xml.gz");
     if (!QFile::exists(appDirFileName)) {
-        m_refreshAppstreamMetadataJobs--;
         qWarning() << "No" << appDirFileName << "appstream metadata found for" << source.name();
+        metadataRefreshed();
         return;
     }
 
@@ -673,12 +682,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
             addResource(resource);
         }
 
-        m_refreshAppstreamMetadataJobs--;
-        if (m_refreshAppstreamMetadataJobs == 0) {
-            loadInstalledApps();
-            checkForUpdates();
-
-        }
+        metadataRefreshed();
         acquireFetching(false);
         fw->deleteLater();
     });
@@ -906,10 +910,11 @@ private:
 void FlatpakBackend::refreshAppstreamMetadata(FlatpakInstallation *installation, FlatpakRemote *remote)
 {
     FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
-    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, [this] () {
-        m_refreshAppstreamMetadataJobs--;
-    });
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, &FlatpakBackend::metadataRefreshed);
     connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this] { acquireFetching(false); });
+
+    acquireFetching(true);
     job->start();
 }
 

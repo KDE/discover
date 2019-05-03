@@ -76,6 +76,7 @@ Q_SIGNALS: //for tests
     void initialized();
 
 private:
+    void metadataRefreshed();
     bool flatpakResourceLessThan(AbstractResource* l, AbstractResource* r) const;
     void announceRatingsReady();
     FlatpakInstallation * preferredInstallation() const { return m_installations.constFirst(); }
