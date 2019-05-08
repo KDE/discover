@@ -6,6 +6,7 @@
   <name xml:lang="ca">Dorsal del Flatpak</name>
   <name xml:lang="ca-valencia">Dorsal del Flatpak</name>
   <name xml:lang="cs">Podpůrná vrstva Flatpak</name>
+  <name xml:lang="da">Flatpak-motor</name>
   <name xml:lang="de">Flatpak-Backend</name>
   <name xml:lang="en-GB">Flatpak backend</name>
   <name xml:lang="es">Motor Flatpak</name>
@@ -35,6 +36,7 @@
   <summary xml:lang="ar">يُكامل تطبيقات ”فلاتپاك“ في «استكشف»</summary>
   <summary xml:lang="ca">Integra aplicacions del Flatpak al Discover</summary>
   <summary xml:lang="ca-valencia">Integra aplicacions del Flatpak al Discover</summary>
+  <summary xml:lang="da">Integrerer Flatpak-programmer i Discover</summary>
   <summary xml:lang="de">Integriert Flatpak-Anwendungen in Discover</summary>
   <summary xml:lang="en-GB">Integrates Flatpak applications into Discover</summary>
   <summary xml:lang="es">Integra aplicaciones Flatpak en Discover</summary>
