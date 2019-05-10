@@ -38,10 +38,13 @@ DummyResource::DummyResource(QString name, AbstractResource::Type type, Abstract
     const int nofScreenshots = KRandom::random() % 5;
     m_screenshots = QList<QUrl>{
         QUrl(QStringLiteral("https://screenshots.debian.net/screenshots/000/014/863/large.png")),
-        QUrl(QStringLiteral("https://c2.staticflickr.com/6/5656/21772158034_dc84382527_o.jpg")),
         QUrl(QStringLiteral("https://c1.staticflickr.com/9/8479/8166397343_b78106f353_k.jpg")),
         QUrl(QStringLiteral("https://c2.staticflickr.com/4/3685/9954407993_dad10a6943_k.jpg")),
-        QUrl(QStringLiteral("https://c1.staticflickr.com/1/653/22527103378_8ce572e1de_k.jpg"))
+        QUrl(QStringLiteral("https://c1.staticflickr.com/1/653/22527103378_8ce572e1de_k.jpg")),
+        QUrl(QStringLiteral("https://images.unsplash.com/photo-1528744598421-b7b93e12df15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")),
+        QUrl(QStringLiteral("https://images.unsplash.com/photo-1552385430-53e6f2028760?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80")),
+        QUrl(QStringLiteral("https://images.unsplash.com/photo-1506810172640-8a9f77cb1472?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")),
+
     }.mid(nofScreenshots);
     m_screenshotThumbnails = m_screenshots;
 }
