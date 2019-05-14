@@ -158,7 +158,9 @@ public:
 
     void start()
     {
-        auto replyGet = get(QNetworkRequest(m_url));
+        QNetworkRequest req(m_url);
+        req.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+        auto replyGet = get(req);
         connect(replyGet, &QNetworkReply::finished, this, [this, replyGet] {
             QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(replyGet);
             const QUrl originalUrl = replyGet->request().url();
