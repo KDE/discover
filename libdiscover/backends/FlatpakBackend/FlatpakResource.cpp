@@ -27,9 +27,6 @@
 
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/screenshot.h>
-#if APPSTREAM_HAS_SPDX
-#include <AppStreamQt/spdx.h>
-#endif
 #include <appstream/AppStreamUtils.h>
 
 #include <KFormat>
