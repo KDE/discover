@@ -28,7 +28,9 @@
 #include <AppStreamQt/component.h>
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/screenshot.h>
+#if APPSTREAM_HAS_SPDX
 #include <AppStreamQt/spdx.h>
+#endif
 
 using namespace AppStreamUtils;
 
