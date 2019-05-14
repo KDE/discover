@@ -26,6 +26,7 @@
 #include <KLocalizedString>
 #include <QDateTime>
 #include "libdiscover_debug.h"
+#include "utils.h"
 #include <QTimer>
 #include <QIcon>
 
@@ -130,6 +131,8 @@ void StandardBackendUpdater::transactionProgressChanged()
 {
     Transaction* t = qobject_cast<Transaction*>(sender());
     Q_EMIT resourceProgressed(t->resource(), t->progress(), toUpdateState(t));
+
+    refreshProgress();
 }
 
 void StandardBackendUpdater::transactionRemoved(Transaction* t)
@@ -142,13 +145,22 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
     const bool found = fromOurBackend && m_pendingResources.remove(t->resource());
 
     if(found && !m_settingUp) {
-        qreal p = 1-(qreal(m_pendingResources.size())/m_toUpgrade.size());
-        setProgress(100*p);
+        refreshProgress();
         if(m_pendingResources.isEmpty()) {
             cleanup();
         }
     }
     refreshUpdateable();
+}
+
+void StandardBackendUpdater::refreshProgress()
+{
+    int allProgresses = (m_toUpgrade.size() - m_pendingResources.size()) * 100;
+    for (auto t: transactions()) {
+        allProgresses += t->progress();
+    }
+    setProgress(allProgresses / m_toUpgrade.size());
+    qDebug() << allProgresses << m_toUpgrade.size() << (m_toUpgrade.size() - m_pendingResources.size())  << progress();
 }
 
 void StandardBackendUpdater::refreshUpdateable()
@@ -260,13 +272,18 @@ double StandardBackendUpdater::updateSize() const
     return ret;
 }
 
+QVector<Transaction *> StandardBackendUpdater::transactions() const
+{
+    const auto trans = TransactionModel::global()->transactions();
+    return kFilter<QVector<Transaction*>>(trans, [this](Transaction* t) { return t->property("updater").value<QObject*>() == this; });
+}
+
 quint64 StandardBackendUpdater::downloadSpeed() const
 {
     quint64 ret = 0;
-    const auto trans = TransactionModel::global()->transactions();
+    const auto trans = transactions();
     for(Transaction* t: trans) {
-        if (t->property("updater").value<QObject*>() == this)
-            ret += t->downloadSpeed();
+        ret += t->downloadSpeed();
     }
     return ret;
 

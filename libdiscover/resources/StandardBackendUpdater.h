@@ -67,6 +67,8 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         void refreshUpdateable();
         void transactionAdded(Transaction* newTransaction);
         void transactionProgressChanged();
+        void refreshProgress();
+        QVector<Transaction*> transactions() const;
 
         QSet<AbstractResource*> m_toUpgrade;
         QSet<AbstractResource*> m_upgradeable;

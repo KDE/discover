@@ -52,7 +52,6 @@ void DummyTransaction::iterateTransaction()
         QTimer::singleShot(/*KRandom::random()%*/100, this, &DummyTransaction::iterateTransaction);
     } else if (status() == DownloadingStatus) {
         setStatus(CommittingStatus);
-        setProgress(0);
         QTimer::singleShot(/*KRandom::random()%*/100, this, &DummyTransaction::iterateTransaction);
     } else
 #ifdef TEST_PROCEED
