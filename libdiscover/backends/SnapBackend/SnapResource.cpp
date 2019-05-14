@@ -155,9 +155,9 @@ QString SnapResource::installedVersion() const
     return m_snap->version();
 }
 
-QString SnapResource::license()
+QJsonArray SnapResource::licenses()
 {
-    return m_snap->license();
+    return { QJsonObject{ {QStringLiteral("name"), m_snap->license()} } };
 }
 
 QString SnapResource::longDescription()

@@ -111,7 +111,7 @@ public:
     QUrl donationURL() override;
     QString flatpakFileType() const;
     QString flatpakName() const;
-    QString license() override;
+    QJsonArray licenses() override;
     QString longDescription() override;
     QString name() const override;
     QString origin() const override;

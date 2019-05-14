@@ -28,6 +28,7 @@
 #include <QVector>
 #include <QCollatorSortKey>
 #include <QJsonObject>
+#include <QJsonArray>
 #include <QDate>
 
 #include "discovercommon_export.h"
@@ -61,7 +62,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QUrl donationURL READ donationURL CONSTANT)
     Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY stateChanged)
     Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY stateChanged)
-    Q_PROPERTY(QString license READ license CONSTANT)
+    Q_PROPERTY(QJsonArray licenses READ licenses CONSTANT)
     Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
     Q_PROPERTY(QString origin READ origin CONSTANT)
     Q_PROPERTY(QString displayOrigin READ displayOrigin CONSTANT)
@@ -147,7 +148,9 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
 
         virtual int size() = 0;
         virtual QString sizeDescription();
-        virtual QString license() = 0;
+
+        ///@returns a list of pairs with the name of the license and a URL pointing at it
+        virtual QJsonArray licenses() = 0;
 
         virtual QString installedVersion() const = 0;
         virtual QString availableVersion() const = 0;

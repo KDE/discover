@@ -102,10 +102,15 @@ QVariant PackageKitResource::icon() const
     return QStringLiteral("applications-other");
 }
 
-QString PackageKitResource::license()
+QJsonArray PackageKitResource::licenses()
 {
     fetchDetails();
-    return m_details.license().isEmpty() ? i18n("Unknown") : m_details.license();
+
+    if (!m_details.license().isEmpty()) {
+        return {{ m_details.license(), {} }};
+    }
+
+    return {};
 }
 
 QList<PackageState> PackageKitResource::addonsInformation()

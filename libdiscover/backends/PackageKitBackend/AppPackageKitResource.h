@@ -43,7 +43,7 @@ class AppPackageKitResource : public PackageKitResource
         QUrl bugURL() override;
         QUrl donationURL() override;
         QString comment() override;
-        QString license() override;
+        QJsonArray licenses() override;
         QStringList allPackageNames() const override;
         QList<PackageState> addonsInformation() override;
         QStringList extends() const override;

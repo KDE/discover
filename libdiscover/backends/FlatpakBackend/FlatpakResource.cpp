@@ -27,6 +27,7 @@
 
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/screenshot.h>
+#include <AppStreamQt/spdx.h>
 #include <appstream/AppStreamUtils.h>
 
 #include <KFormat>
@@ -294,9 +295,9 @@ QString FlatpakResource::flatpakName() const
     return m_flatpakName;
 }
 
-QString FlatpakResource::license()
+QJsonArray FlatpakResource::licenses()
 {
-    return m_appdata.projectLicense();
+    return AppStreamUtils::licenses(m_appdata);
 }
 
 QString FlatpakResource::longDescription()

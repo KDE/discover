@@ -40,7 +40,7 @@ public:
     QString longDescription() override;
     QString availableVersion() const override;
     QString installedVersion() const override;
-    QString license() override;
+    QJsonArray licenses() override;
     int size() override;
     QUrl homepage() override;
     QUrl helpURL() override;

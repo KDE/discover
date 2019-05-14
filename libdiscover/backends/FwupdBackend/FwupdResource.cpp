@@ -85,9 +85,9 @@ QString FwupdResource::installedVersion() const
     return m_version;
 }
 
-QString FwupdResource::license()
+QJsonArray FwupdResource::licenses()
 {
-    return m_license;
+    return { QJsonObject{ {QStringLiteral("name"), m_license} } };
 }
 
 QString FwupdResource::longDescription()

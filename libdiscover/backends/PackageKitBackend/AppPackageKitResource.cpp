@@ -100,10 +100,9 @@ QVariant AppPackageKitResource::icon() const
     return componentIcon(m_appdata);
 }
 
-QString AppPackageKitResource::license()
+QJsonArray AppPackageKitResource::licenses()
 {
-    const auto license = m_appdata.projectLicense();
-    return license.isEmpty() ? PackageKitResource::license() : license;
+    return m_appdata.projectLicense().isEmpty() ? PackageKitResource::licenses() : AppStreamUtils::licenses(m_appdata);
 }
 
 QStringList AppPackageKitResource::mimetypes() const

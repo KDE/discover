@@ -105,9 +105,9 @@ QString DummyResource::installedVersion() const
     return QStringLiteral("2.3");
 }
 
-QString DummyResource::license()
+QJsonArray DummyResource::licenses()
 {
-    return QStringLiteral("GPL");
+    return { QJsonObject{ {QStringLiteral("name"), QStringLiteral("GPL") }, { QStringLiteral("url"), QStringLiteral("https://kde.org") } } };
 }
 
 QString DummyResource::longDescription()

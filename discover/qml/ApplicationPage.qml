@@ -394,14 +394,21 @@ DiscoverPage {
             Label {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("License:")
-                visible: appInfo.application.license.length>0
+                visible: appInfo.application.licenses.length>0
             }
-            Kirigami.UrlButton {
+            RowLayout {
+                visible: appInfo.application.licenses.length>0
                 Layout.fillWidth: true
-                horizontalAlignment: Text.AlignLeft
-//                 tooltip: i18n("See full license terms")
-                text: appInfo.application.license
-                url: "https://spdx.org/licenses/" + appInfo.application.license + ".html#licenseText"
+                Repeater {
+                    model: appInfo.application.licenses
+                    delegate: Kirigami.UrlButton {
+                        horizontalAlignment: Text.AlignLeft
+        //                 tooltip: i18n("See full license terms")
+                        text: modelData.name
+                        url: modelData.url
+                        enabled: url !== ""
+                    }
+                }
             }
 
             // Homepage row

@@ -40,7 +40,7 @@ class PackageKitResource : public AbstractResource
         QUrl homepage() override;
         QVariant icon() const override;
         QStringList categories() override;
-        QString license() override;
+        QJsonArray licenses() override;
         QString origin() const override;
         QString section() override;
         AbstractResource::Type type() const override;

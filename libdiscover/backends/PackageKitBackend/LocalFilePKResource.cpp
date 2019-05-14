@@ -81,11 +81,6 @@ void LocalFilePKResource::fetchDetails()
     connect(transaction2, &PackageKit::Transaction::finished, this, [] {qDebug() << "."; });
 }
 
-QString LocalFilePKResource::license()
-{
-    return m_details.license();
-}
-
 void LocalFilePKResource::invokeApplication() const
 {
     QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {m_exec});

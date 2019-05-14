@@ -43,7 +43,7 @@ public:
     QString packageName() const override;
     QStringList categories() override;
     QUrl homepage() override;
-    QString license() override;
+    QJsonArray licenses() override;
     QString longDescription() override;
     QList<PackageState> addonsInformation() override { return QList<PackageState>(); }
     QString availableVersion() const override;

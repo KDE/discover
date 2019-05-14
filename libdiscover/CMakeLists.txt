@@ -39,14 +39,22 @@ set(discovercommon_SRCS
 
 ecm_qt_declare_logging_category(discovercommon_SRCS HEADER libdiscover_debug.h IDENTIFIER LIBDISCOVER_LOG CATEGORY_NAME org.kde.plasma.libdiscover)
 
-if(AppStreamQt_FOUND)
-    set(discovercommon_SRCS ${discovercommon_SRCS}
-        appstream/OdrsReviewsBackend.cpp
-        appstream/AppStreamIntegration.cpp
-    )
-endif()
 
 add_library(DiscoverCommon ${discovercommon_SRCS})
+if(AppStreamQt_FOUND)
+    target_sources(DiscoverCommon PRIVATE
+        appstream/OdrsReviewsBackend.cpp
+        appstream/AppStreamIntegration.cpp
+        appstream/AppStreamUtils.cpp
+    )
+    target_link_libraries(DiscoverCommon PRIVATE AppStreamQt)
+
+    if(AppStreamQt_VERSION VERSION_GREATER 0.12.4)
+        target_compile_definitions(DiscoverCommon PRIVATE -DAPPSTREAM_HAS_SPDX=1)
+    else()
+        target_compile_definitions(DiscoverCommon PRIVATE -DAPPSTREAM_HAS_SPDX=0)
+    endif()
+endif()
 
 target_link_libraries(DiscoverCommon
 LINK_PUBLIC
