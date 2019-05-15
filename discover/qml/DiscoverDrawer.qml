@@ -23,7 +23,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.8 as Kirigami
 import "navigation.js" as Navigation
 
 Kirigami.GlobalDrawer {
@@ -37,6 +37,9 @@ Kirigami.GlobalDrawer {
     //make the left and bottom margins for search field the same
     topPadding: drawer.wideScreen ? -toploader.height - leftPadding : 0
     bottomPadding: 0
+
+    // In desktop view, it's a sidebar, and sidebars get the view BG color
+    Kirigami.Theme.colorSet: modal ? Kirigami.Theme.Window : Kirigami.Theme.View
 
     resetMenuOnTriggered: false
 
