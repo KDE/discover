@@ -29,14 +29,15 @@ import "navigation.js" as Navigation
 Kirigami.GlobalDrawer {
     id: drawer
 
+    leftPadding: 0
+    rightPadding: 0
+    topPadding: 0
+
     // FIXME: Dirty workaround for 385992
     width: Kirigami.Units.gridUnit * 14
 
     property bool wideScreen: false
-    bannerImageSource: "qrc:/banners/banner.svg"
-    //make the left and bottom margins for search field the same
-    topPadding: drawer.wideScreen ? -toploader.height - leftPadding : 0
-    bottomPadding: 0
+    bannerImageSource: modal ? "qrc:/banners/banner.svg" : ""
 
     // In desktop view, it's a sidebar, and sidebars get the view BG color
     Kirigami.Theme.colorSet: modal ? Kirigami.Theme.Window : Kirigami.Theme.View
@@ -45,8 +46,7 @@ Kirigami.GlobalDrawer {
 
     onBannerClicked: {
         Navigation.openHome();
-        if (modal)
-            drawerOpen = false
+        drawerOpen = false
     }
 
     property string currentSearchText
@@ -66,34 +66,57 @@ Kirigami.GlobalDrawer {
     }
     topContent: ConditionalLoader {
         id: toploader
-        condition: drawer.wideScreen
+        condition: !modal
         Layout.fillWidth: true
         componentFalse: Item {
             Layout.minimumHeight: 1
         }
-        componentTrue: SearchField {
-            id: searchField
+        componentTrue: Kirigami.AbstractApplicationHeader {
+            preferredHeight: 40 // Match Kirigami.ToolBarApplicationHeader, which is hardcoded to this
 
-            visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
+            RowLayout {
+                width: parent.width
+                anchors.centerIn: parent
 
-            page: window.leftPage
+                ToolButton {
+                    Layout.leftMargin: Kirigami.Units.smallSpacing
 
-            onCurrentSearchTextChanged: {
-                var curr = window.leftPage;
+                    icon.name: "go-home"
+                    onPressed: Navigation.openHome()
 
-                if (pageStack.depth>1)
-                    pageStack.pop()
-
-                if (currentSearchText === "" && window.currentTopLevel === "" && !window.leftPage.category) {
-                    Navigation.openHome()
-                } else if (!curr.hasOwnProperty("search")) {
-                    if (currentSearchText) {
-                        Navigation.clearStack()
-                        Navigation.openApplicationList( { search: currentSearchText })
+                    ToolTip {
+                        text: i18n("Return to the Featured page")
                     }
-                } else {
-                    curr.search = currentSearchText;
-                    curr.forceActiveFocus()
+                }
+
+                SearchField {
+                    id: searchField
+
+                    Layout.fillWidth: true
+                    Layout.rightMargin: Kirigami.Units.smallSpacing
+
+                    visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
+
+                    page: window.leftPage
+
+                    onCurrentSearchTextChanged: {
+                        var curr = window.leftPage;
+
+                        if (pageStack.depth>1)
+                            pageStack.pop()
+
+                        if (currentSearchText === "" && window.currentTopLevel === "" && !window.leftPage.category) {
+                            Navigation.openHome()
+                        } else if (!curr.hasOwnProperty("search")) {
+                            if (currentSearchText) {
+                                Navigation.clearStack()
+                                Navigation.openApplicationList( { search: currentSearchText })
+                            }
+                        } else {
+                            curr.search = currentSearchText;
+                            curr.forceActiveFocus()
+                        }
+                    }
                 }
             }
         }
