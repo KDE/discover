@@ -1,11 +1,3 @@
 include_directories(..)
 
-add_executable(knsbackendtest KNSBackendTest.cpp)
-add_test(knsbackendtest knsbackendtest)
-ecm_mark_as_test(knsbackendtest)
-target_link_libraries(knsbackendtest
-    Discover::Common
-    
-    Qt5::Test Qt5::Core
-    KF5::NewStuff KF5::Attica
-)
+ecm_add_test(KNSBackendTest.cpp TEST_NAME knsbackendtest LINK_LIBRARIES Discover::Common Qt5::Core Qt5::Test KF5::Attica KF5::NewStuff)
