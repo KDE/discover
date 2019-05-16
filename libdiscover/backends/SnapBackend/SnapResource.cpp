@@ -207,10 +207,18 @@ void SnapResource::fetchChangelog()
 void SnapResource::fetchScreenshots()
 {
     QList<QUrl> screenshots;
+#ifdef SNAP_MEDIA
+    for(int i = 0, c = m_snap->mediaCount(); i<c; ++i) {
+        QScopedPointer<QSnapdMedia> media(m_snap->media(i));
+        if (media->type() == QLatin1String("screenshot"))
+            screenshots << QUrl(media->url());
+    }
+#else
     for(int i = 0, c = m_snap->screenshotCount(); i<c; ++i) {
         QScopedPointer<QSnapdScreenshot> screenshot(m_snap->screenshot(i));
         screenshots << QUrl(screenshot->url());
     }
+#endif
     Q_EMIT screenshotsFetched(screenshots, screenshots);
 }
 
@@ -351,7 +359,11 @@ QString SnapResource::appstreamId() const
 
 QString SnapResource::channel() const
 {
+#ifdef SNAP_PUBLISHER
+    auto req = client()->getSnap(packageName());
+#else
     auto req = client()->listOne(packageName());
+#endif
     req->runSync();
     return req->error() ? QString() : req->snap()->trackingChannel();
 }
