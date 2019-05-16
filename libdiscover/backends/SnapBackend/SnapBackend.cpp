@@ -21,7 +21,7 @@
 #include "SnapBackend.h"
 #include "SnapTransaction.h"
 #include "SnapResource.h"
-#include "appstream/OdrsReviewsBackend.h"
+#include "appstream/AppStreamIntegration.h"
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
 #include <Category/Category.h>
@@ -68,7 +68,7 @@ private:
 SnapBackend::SnapBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
-    , m_reviews(new OdrsReviewsBackend()) //TODO: use AppStreamIntegration
+    , m_reviews(AppStreamIntegration::global()->reviews())
 {
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
         m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource*>>(m_resources.values(), [] (AbstractResource* r) { return r; }));
