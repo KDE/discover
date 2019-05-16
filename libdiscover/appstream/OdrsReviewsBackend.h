@@ -35,7 +35,7 @@ class DISCOVERCOMMON_EXPORT OdrsReviewsBackend : public AbstractReviewsBackend
 {
 Q_OBJECT
 public:
-    explicit OdrsReviewsBackend(AbstractResourcesBackend *parent = nullptr);
+    explicit OdrsReviewsBackend();
 
     QString userName() const override;
     void login() override {}
@@ -50,8 +50,8 @@ public:
     void submitReview(AbstractResource *, const QString &summary, const QString &description, const QString &rating) override;
     void flagReview(Review *, const QString &, const QString &) override {}
     void submitUsefulness(Review *review, bool useful) override;
-    QStringList appstreamIds() const { return m_ratings.keys(); }
     bool isResourceSupported(AbstractResource * res) const override;
+    void emitRatingFetched(AbstractResourcesBackend* backend, const QList<AbstractResource*>& res) const;
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);

@@ -68,15 +68,19 @@ private:
 SnapBackend::SnapBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
-    , m_reviews(new OdrsReviewsBackend(this))
+    , m_reviews(new OdrsReviewsBackend()) //TODO: use AppStreamIntegration
 {
-    connect(m_reviews, &OdrsReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
+    connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
+        m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource*>>(m_resources.values(), [] (AbstractResource* r) { return r; }));
+    });
 
     //make sure we populate the installed resources first
     refreshStates();
 
     SourcesModel::global()->addSourcesBackend(new SnapSourcesBackend(this));
 }
+
+SnapBackend::~SnapBackend() = default;
 
 int SnapBackend::updatesCount() const
 {
@@ -181,7 +185,7 @@ AbstractBackendUpdater* SnapBackend::backendUpdater() const
 
 AbstractReviewsBackend* SnapBackend::reviewsBackend() const
 {
-    return m_reviews;
+    return m_reviews.data();
 }
 
 Transaction* SnapBackend::installApplication(AbstractResource* app, const AddonList& addons)
