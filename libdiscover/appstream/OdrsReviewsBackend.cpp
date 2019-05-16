@@ -48,8 +48,8 @@
 // #define APIURL "http://127.0.0.1:5000/1.0/reviews/api"
 #define APIURL "https://odrs.gnome.org/1.0/reviews/api"
 
-OdrsReviewsBackend::OdrsReviewsBackend(AbstractResourcesBackend *parent)
-    : AbstractReviewsBackend(parent)
+OdrsReviewsBackend::OdrsReviewsBackend()
+    : AbstractReviewsBackend(nullptr)
     , m_isFetching(false)
     , m_nam(new QNetworkAccessManager(this))
 {
@@ -345,4 +345,14 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
 bool OdrsReviewsBackend::isResourceSupported(AbstractResource* res) const
 {
     return !res->appstreamId().isEmpty();
+}
+
+void OdrsReviewsBackend::emitRatingFetched(AbstractResourcesBackend* b, const QList<AbstractResource *>& resources) const
+{
+    b->emitRatingsReady();
+    foreach(AbstractResource* res, resources) {
+        if (m_ratings.contains(res->appstreamId())) {
+            Q_EMIT res->ratingFetched();
+        }
+    }
 }

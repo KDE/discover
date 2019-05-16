@@ -25,6 +25,7 @@
 #include "FlatpakSourcesBackend.h"
 #include "FlatpakJobTransaction.h"
 
+#include <utils.h>
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
 #include <Transaction/Transaction.h>
@@ -107,7 +108,9 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
         SourcesModel::global()->addSourcesBackend(m_sources);
     }
 
-    connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, &FlatpakBackend::announceRatingsReady);
+    connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
+        m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource*>>(m_resources.values(), [] (AbstractResource* r) { return r; }));
+    });
 
     /* Override the umask to 022 to make it possible to share files between
      * the plasma-discover process and flatpak system helper process.
@@ -131,18 +134,6 @@ FlatpakBackend::~FlatpakBackend()
 bool FlatpakBackend::isValid() const
 {
     return m_sources && !m_installations.isEmpty();
-}
-
-void FlatpakBackend::announceRatingsReady()
-{
-    emitRatingsReady();
-
-    const auto ids = m_reviews->appstreamIds().toSet();
-    foreach(AbstractResource* res, m_resources) {
-        if (ids.contains(res->appstreamId())) {
-            Q_EMIT res->ratingFetched();
-        }
-    }
 }
 
 class FlatpakFetchRemoteResourceJob : public QNetworkAccessManager
@@ -209,8 +200,8 @@ Q_SIGNALS:
     void jobFinished(bool success, FlatpakResource *resource);
 
 private:
-    FlatpakBackend *m_backend;
-    QUrl m_url;
+    FlatpakBackend  *const m_backend;
+    const QUrl m_url;
 };
 
 FlatpakRemote * FlatpakBackend::getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const

@@ -24,6 +24,7 @@
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
+#include <QScopedPointer>
 #include <Snapd/Client>
 #include <functional>
 
@@ -36,6 +37,7 @@ class SnapBackend : public AbstractResourcesBackend
 Q_OBJECT
 public:
     explicit SnapBackend(QObject* parent = nullptr);
+    ~SnapBackend() override;
 
     ResultsStream * search(const AbstractResourcesBackend::Filters & search) override;
     ResultsStream * findResourceByPackageName(const QUrl& search);
@@ -66,7 +68,7 @@ private:
 
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;
-    OdrsReviewsBackend* m_reviews;
+    QScopedPointer<OdrsReviewsBackend> m_reviews;
 
     bool m_valid = true;
     bool m_fetching = false;

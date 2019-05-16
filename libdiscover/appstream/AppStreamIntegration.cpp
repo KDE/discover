@@ -37,7 +37,7 @@ QSharedPointer<OdrsReviewsBackend> AppStreamIntegration::reviews()
     if (m_reviews) {
         ret = m_reviews;
     } else {
-        ret = QSharedPointer<OdrsReviewsBackend>(new OdrsReviewsBackend(nullptr));
+        ret = QSharedPointer<OdrsReviewsBackend>(new OdrsReviewsBackend());
         m_reviews = ret;
     }
     return ret;
