@@ -24,7 +24,6 @@
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
-#include <QScopedPointer>
 #include <Snapd/Client>
 #include <functional>
 
@@ -68,7 +67,7 @@ private:
 
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;
-    QScopedPointer<OdrsReviewsBackend> m_reviews;
+    QSharedPointer<OdrsReviewsBackend> m_reviews;
 
     bool m_valid = true;
     bool m_fetching = false;
