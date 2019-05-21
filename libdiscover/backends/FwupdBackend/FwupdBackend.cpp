@@ -232,8 +232,7 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
         }
     }
 
-    if (!app->needsReboot())
-        app->setState(AbstractResource::Upgradeable);
+    app->setState(AbstractResource::Upgradeable);
     return app.take();
 }
 
