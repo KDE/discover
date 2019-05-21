@@ -60,6 +60,12 @@ void FwupdTransaction::install()
         QNetworkAccessManager *manager = new QNetworkAccessManager(this);
         auto reply = manager->get(QNetworkRequest(uri));
         QFile* file = new QFile(fileName);
+        if (!file->open(QFile::WriteOnly)) {
+            qWarning() << "Fwupd Error: Could not open to write" << fileName << uri;
+            setStatus(DoneWithErrorStatus);
+            file->deleteLater();
+            return;
+        }
 
         connect(reply, &QNetworkReply::finished, this, [this, file, reply](){
             file->close();
