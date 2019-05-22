@@ -41,11 +41,8 @@ public:
     void recheckSystemUpdateNeeded() override;
     bool needsReboot() const override { return false; }
 
-public Q_SLOTS:
-    void checkUpdates();
-    void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
-
 private:
+    void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
     void loadRemoteUpdates(FlatpakInstallation *flatpakInstallation);
     bool setupFlatpakInstallations(GError **error);
 

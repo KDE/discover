@@ -59,6 +59,9 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
     updateStatusNotifier();
 
     connect(m_manager, &QNetworkConfigurationManager::onlineStateChanged, this, &DiscoverNotifier::stateChanged);
+
+    //Only fetch updates after the system is comfortably booted
+    QTimer::singleShot(10000, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
 }
 
 DiscoverNotifier::~DiscoverNotifier() = default;
