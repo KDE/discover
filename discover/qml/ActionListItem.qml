@@ -19,8 +19,9 @@
  ***************************************************************************/
 
 import QtQuick 2.5
-import QtQuick.Controls 2.0
-import org.kde.kirigami 2.3 as Kirigami
+import QtQuick.Controls 2.5 as QQC2
+
+import org.kde.kirigami 2.5 as Kirigami
 
 Kirigami.BasicListItem
 {
@@ -40,8 +41,9 @@ Kirigami.BasicListItem
     Kirigami.MnemonicData.label: action.text
     label: Kirigami.MnemonicData.richTextLabel
 
-    ToolTip.visible: hovered
-    ToolTip.text: action.shortcut ? action.shortcut : p0.nativeText
+    readonly property var tooltip: QQC2.ToolTip {
+        text: action.shortcut ? action.shortcut : p0.nativeText
+    }
 
     readonly property var p0: Shortcut {
         sequence: item.Kirigami.MnemonicData.sequence
