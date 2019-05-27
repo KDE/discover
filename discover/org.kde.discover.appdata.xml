@@ -79,7 +79,7 @@
   <summary xml:lang="zh-TW">Discover</summary>
   <description>
     <p>Discover helps you find and install applications, games, and tools. You can search or browse by category, and look at screenshots and read reviews to help you pick the perfect app.</p>
-    <p>With Discover, you can manage software from multiple sources, including your operating system's software repository,Flatpak repos, the Snap store, or even AppImages from store.kde.org.</p>
+    <p>With Discover, you can manage software from multiple sources, including your operating system's software repository, Flatpak repos, the Snap store, or even AppImages from store.kde.org.</p>
     <p>Finally, Discover also allows you to find, install, and manage add-ons for Plasma and all your favorite KDE apps!</p>
   </description>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=Discover</url>
