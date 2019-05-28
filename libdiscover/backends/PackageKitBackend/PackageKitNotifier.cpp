@@ -44,12 +44,7 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     , m_securityUpdates(0)
     , m_normalUpdates(0)
 {
-    if (PackageKit::Daemon::global()->isRunning()) {
-        recheckSystemUpdateNeeded();
-    }
-    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::networkStateChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
-    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::transactionListChanged, this, &PackageKitNotifier::transactionListChanged);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::restartScheduled, this, &PackageKitNotifier::nowNeedsReboot);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::changed, this, [this]{
@@ -153,6 +148,14 @@ void PackageKitNotifier::checkOfflineUpdates()
 
 void PackageKitNotifier::recheckSystemUpdateNeeded()
 {
+    static bool first = true;
+    if (first) {
+        //PKQt will emit these signals when it starts (bug?) and would trigger the system recheck before we've ever checked at all
+        connect(PackageKit::Daemon::global(), &PackageKit::Daemon::networkStateChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
+        connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
+        first = false;
+    }
+
     if (PackageKit::Daemon::global()->offline()->updateTriggered())
         return;
 

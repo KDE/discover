@@ -83,7 +83,7 @@ Kirigami.GlobalDrawer {
                     Layout.leftMargin: Kirigami.Units.smallSpacing
 
                     icon.name: "go-home"
-                    onPressed: Navigation.openHome()
+                    onClicked: Navigation.openHome()
 
                     ToolTip {
                         text: i18n("Return to the Featured page")

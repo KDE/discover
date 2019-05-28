@@ -40,25 +40,24 @@ static void installationChanged(GFileMonitor *monitor, GFile *child, GFile *othe
         return;
     }
 
-    notifier->checkUpdates();
+    notifier->recheckSystemUpdateNeeded();
 }
 
 FlatpakNotifier::FlatpakNotifier(QObject* parent)
     : BackendNotifierModule(parent)
     , m_cancellable(g_cancellable_new())
 {
-
-    checkUpdates();
-
     QTimer *dailyCheck = new QTimer(this);
     dailyCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
-    connect(dailyCheck, &QTimer::timeout, this, &FlatpakNotifier::checkUpdates);
+    connect(dailyCheck, &QTimer::timeout, this, &FlatpakNotifier::recheckSystemUpdateNeeded);
 }
 
 FlatpakNotifier::Installation::~Installation()
 {
-    g_object_unref(m_monitor);
-    g_object_unref(m_installation);
+    if (m_monitor)
+        g_object_unref(m_monitor);
+    if (m_installation)
+        g_object_unref(m_installation);
 }
 
 FlatpakNotifier::~FlatpakNotifier()
@@ -67,11 +66,6 @@ FlatpakNotifier::~FlatpakNotifier()
 }
 
 void FlatpakNotifier::recheckSystemUpdateNeeded()
-{
-    checkUpdates();
-}
-
-void FlatpakNotifier::checkUpdates()
 {
     g_autoptr(GError) error = nullptr;
 

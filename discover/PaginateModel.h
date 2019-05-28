@@ -33,10 +33,19 @@
 class PaginateModel : public QAbstractListModel
 {
     Q_OBJECT
+    /** Holds the number of elements that will fit in a page */
     Q_PROPERTY(int pageSize READ pageSize WRITE setPageSize NOTIFY pageSizeChanged)
+
+    /** Tells what is the first row shown in the model */
     Q_PROPERTY(int firstItem READ firstItem WRITE setFirstItem NOTIFY firstItemChanged)
+
+    /** The model we will be proxying */
     Q_PROPERTY(QAbstractItemModel* sourceModel READ sourceModel WRITE setSourceModel NOTIFY sourceModelChanged)
+
+    /** Among the totality of elements, indicates the one we're currently offering */
     Q_PROPERTY(int currentPage READ currentPage NOTIFY firstItemChanged)
+
+    /** Provides the number of pages available, given the sourceModel size */
     Q_PROPERTY(int pageCount READ pageCount NOTIFY pageCountChanged)
 
     /** If enabled, ensures that pageCount and pageSize are the same. */
@@ -74,9 +83,16 @@ class PaginateModel : public QAbstractListModel
         void setStaticRowCount(bool src);
         bool hasStaticRowCount() const;
 
+        /** Display the first rows of the model */
         Q_SCRIPTABLE void firstPage();
+
+        /** Display the rows right after the ones that are currently being served */
         Q_SCRIPTABLE void nextPage();
+
+        /** Display the rows right before the ones that are currently being served */
         Q_SCRIPTABLE void previousPage();
+
+        /** Display the last set of rows of the source model */
         Q_SCRIPTABLE void lastPage();
 
     private Q_SLOTS:
@@ -110,12 +126,10 @@ class PaginateModel : public QAbstractListModel
     private:
         bool canSizeChange() const;
         bool isIntervalValid(const QModelIndex& parent, int start, int end) const;
-
         int rowsByPageSize(int size) const;
-        int m_firstItem;
-        int m_pageSize;
-        QAbstractItemModel* m_sourceModel;
-        bool m_hasStaticRowCount;
+
+        class PaginateModelPrivate;
+        QScopedPointer<PaginateModelPrivate> d;
 };
 
 #endif
