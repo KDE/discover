@@ -88,7 +88,12 @@
     <p xml:lang="uk">Discover допоможе вам знайти і встановити програми, ігри та інструменти. Ви можете виконувати пошук або навігацію за категоріями, переглядати знімки вікон і читати рецензії, щоб вибрати ту програму, яка пасує вам найкраще.</p>
     <p xml:lang="x-test">xxDiscover helps you find and install applications, games, and tools. You can search or browse by category, and look at screenshots and read reviews to help you pick the perfect app.xx</p>
     <p>With Discover, you can manage software from multiple sources, including your operating system's software repository, Flatpak repos, the Snap store, or even AppImages from store.kde.org.</p>
+    <p xml:lang="ca">Amb el Discover podeu gestionar programari de diverses fonts, incloent-hi el repositori de programari del sistema operatiu, repositoris del Flatpak, la botiga de l'Snap, o també AppImages des de «store.kde.org».</p>
+    <p xml:lang="nl">Met Discover kunt u software uit meerdere bronnen beheren, inclusief de opslagruimten van uw besturingssysteem, Flatpak-repo's, de Snap store of zelfs AppImages uit store.kde.org.</p>
+    <p xml:lang="pt">Com o Discover, poderá gerir aplicações de várias fontes, incluindo os repositórios de aplicações do seu sistema operativo, os repositórios do Flatpak, a loja do Snap ou mesmo AppImages do store.kde.org.</p>
+    <p xml:lang="sv">Man kan hantera programvara från flera olika källor med Discover, inklusive operativsystemets programvaruarkiv, Flatpak-arkiv, Snap-butiken eller till och med programavbilder från store.kde.org.</p>
     <p xml:lang="uk">За допомогою Discover ви можете керувати програмним забезпеченням із багатьох джерел, зокрема зі сховищ програмного забезпечення вашої операційної системи, зі сховищ Flatpak, із крамниці Snap або навіть із образів AppImage з store.kde.org.</p>
+    <p xml:lang="x-test">xxWith Discover, you can manage software from multiple sources, including your operating system's software repository, Flatpak repos, the Snap store, or even AppImages from store.kde.org.xx</p>
     <p>Finally, Discover also allows you to find, install, and manage add-ons for Plasma and all your favorite KDE apps!</p>
     <p xml:lang="ca">Finalment, el Discover també permet cercar, instal·lar i gestionar complements per al Plasma i totes les aplicacions preferides del KDE!</p>
     <p xml:lang="ca-valencia">Finalment, el Discover també permet cercar, instal·lar i gestionar complements per al Plasma i totes les aplicacions preferides del KDE!</p>
