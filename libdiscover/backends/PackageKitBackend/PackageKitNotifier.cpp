@@ -117,7 +117,8 @@ void PackageKitNotifier::checkOfflineUpdates()
         KNotification *notification = new KNotification(QStringLiteral("offlineupdate-failed"), KNotification::Persistent | KNotification::DefaultEvent);
         notification->setIconName(QStringLiteral("error"));
         notification->setText(i18n("Offline Updates"));
-        notification->setText(i18n("Failed to update %1 packages\n%2", packages.count(), errorDetails));
+        notification->setText(i18np("Failed to update %1 package\n%2", "Failed to update %1 packages\n%2",
+                                    packages.count(), errorDetails));
         notification->setActions(QStringList{QLatin1String("Open Discover")});
 
         connect(notification, &KNotification::action1Activated, this, [] () {
@@ -135,7 +136,7 @@ void PackageKitNotifier::checkOfflineUpdates()
         KNotification *notification = new KNotification(QStringLiteral("offlineupdate-successful"));
         notification->setIconName(QStringLiteral("system-software-update"));
         notification->setTitle(i18n("Offline Updates"));
-        notification->setText(i18n("Successfully updated %1 packages", packages.count()));
+        notification->setText(i18np("Successfully updated %1 package", "Successfully updated %1 packages", packages.count()));
         notification->setActions(QStringList{QLatin1String("Open Discover")});
 
         connect(notification, &KNotification::action1Activated, this, [] () {
