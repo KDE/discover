@@ -46,11 +46,14 @@ Item
     Plasmoid.preferredRepresentation: Plasmoid.compactRepresentation
     Plasmoid.compactRepresentation: PlasmaCore.IconItem {
         source: plasmoid.icon
-
         MouseArea {
             anchors.fill: parent
             onClicked: action_update()
         }
+    }
+
+    Plasmoid.onExpandedChanged: if (Plasmoid.expanded) {
+        action_update()
     }
 
     Component.onCompleted: {
