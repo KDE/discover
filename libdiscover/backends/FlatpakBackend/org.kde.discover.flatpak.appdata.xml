@@ -17,6 +17,7 @@
   <name xml:lang="id">Backend Flatpak</name>
   <name xml:lang="it">Motore Flatpak</name>
   <name xml:lang="ko">Flatpak 백엔드</name>
+  <name xml:lang="lt">Flatpak vidinė pusė</name>
   <name xml:lang="nb">Flatpak-motor</name>
   <name xml:lang="nl">Flatpak-backend</name>
   <name xml:lang="nn">Flatpak-motor</name>
@@ -47,6 +48,7 @@
   <summary xml:lang="id">Aplikasi Flatpak terintegrasi ke dalam Discover</summary>
   <summary xml:lang="it">Integra le applicazioni Flatpak in Discover</summary>
   <summary xml:lang="ko">Flatpak 프로그램을 살펴보기에 통합</summary>
+  <summary xml:lang="lt">Integruoja Flatpak programas į Discover</summary>
   <summary xml:lang="nb">Integrerer Flatpak-programmer i Discover</summary>
   <summary xml:lang="nl">Integreert Flatpak-toepassingen in Discover</summary>
   <summary xml:lang="nn">Integrerer Flatpak-program i Discover</summary>
@@ -59,7 +61,7 @@
   <summary xml:lang="sv">Integrerar Flatpak-program i Discover</summary>
   <summary xml:lang="uk">Інтеграція програм Flatpak з Discover</summary>
   <summary xml:lang="x-test">xxIntegrates Flatpak applications into Discoverxx</summary>
-  <summary xml:lang="zh-CN">将 Flatpak 应用程序集成到发现者中</summary>
+  <summary xml:lang="zh-CN">将 Flatpak 应用程序集成到Discover中</summary>
   <summary xml:lang="zh-TW">將 Flatpak 應用程式整合進 Discover 商店</summary>
   <extends>org.kde.discover.desktop</extends>
   <metadata_license>CC0-1.0</metadata_license>
@@ -80,6 +82,7 @@
   <developer_name xml:lang="id">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="it">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ko">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="lt">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nb">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nn">Aleix Pol Gonzalez</developer_name>
