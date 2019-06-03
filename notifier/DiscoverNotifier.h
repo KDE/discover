@@ -26,7 +26,6 @@
 #include <QTimer>
 
 class QNetworkConfigurationManager;
-class KStatusNotifierItem;
 
 class DiscoverNotifier : public QObject
 {

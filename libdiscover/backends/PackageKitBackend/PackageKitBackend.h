@@ -34,7 +34,6 @@
 
 class AppPackageKitResource;
 class PackageKitUpdater;
-class PKTransaction;
 class OdrsReviewsBackend;
 class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 {

@@ -25,7 +25,6 @@
 #include "discovercommon_export.h"
 
 class QDateTime;
-class QIcon;
 class AbstractResource;
 
 /**

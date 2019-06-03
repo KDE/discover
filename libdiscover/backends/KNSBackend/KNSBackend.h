@@ -28,7 +28,6 @@
 #include "Transaction/AddonList.h"
 #include "discovercommon_export.h"
 
-class KConfigGroup;
 class KNSReviews;
 class KNSResource;
 class StandardBackendUpdater;

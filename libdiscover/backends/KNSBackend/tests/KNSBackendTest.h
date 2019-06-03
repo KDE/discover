@@ -28,7 +28,6 @@
 class AbstractResourcesBackend;
 class AbstractResource;
 class ResultsStream;
-class Category;
 
 class KNSBackendTest : public QObject
 {

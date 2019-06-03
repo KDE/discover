@@ -27,7 +27,6 @@
 #include <resources/AbstractResource.h>
 #include <KLocalizedString>
 
-class AddonList;
 class FwupdResource : public AbstractResource
 {
 Q_OBJECT

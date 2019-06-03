@@ -27,10 +27,7 @@
 #include "discovercommon_export.h"
 #include "resources/AbstractBackendUpdater.h"
 
-class AbstractResourcesBackend;
 class AbstractResource;
-class QAction;
-class ResourcesModel;
 class UpdateTransaction;
 class Transaction;
 

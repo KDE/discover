@@ -27,7 +27,6 @@
 class KNSBackend;
 class QUrl;
 namespace Attica {
-class ProviderManager;
 class BaseJob;
 }
 

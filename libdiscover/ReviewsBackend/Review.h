@@ -27,7 +27,6 @@
 #include "ReviewsModel.h"
 #include "discovercommon_export.h"
 
-class AbstractResource;
 
 class DISCOVERCOMMON_EXPORT Review
 {

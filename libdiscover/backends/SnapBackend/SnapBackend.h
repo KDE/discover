@@ -27,7 +27,6 @@
 #include <Snapd/Client>
 #include <functional>
 
-class QAction;
 class OdrsReviewsBackend;
 class StandardBackendUpdater;
 class SnapResource;

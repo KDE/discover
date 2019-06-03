@@ -24,7 +24,6 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 
-class QAction;
 class DummyReviewsBackend;
 class StandardBackendUpdater;
 class DummyResource;

@@ -33,7 +33,6 @@
 #include "AbstractResource.h"
 #include "AbstractResourcesBackend.h"
 
-class Transaction;
 class AggregatedResultsStream;
 
 class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, public QQmlParserStatus

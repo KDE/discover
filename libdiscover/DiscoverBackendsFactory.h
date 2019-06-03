@@ -26,7 +26,6 @@
 
 class QCommandLineParser;
 class QStringList;
-class KPluginInfo;
 class AbstractResourcesBackend;
 
 class DISCOVERCOMMON_EXPORT DiscoverBackendsFactory

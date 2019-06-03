@@ -29,7 +29,6 @@
 class SnapBackend;
 class QAbstractItemModel;
 class QSnapdClient;
-class QSnapdChannel;
 
 class SnapResource : public AbstractResource
 {

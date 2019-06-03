@@ -35,7 +35,6 @@ extern "C" {
 #include <flatpak.h>
 }
 
-class QAction;
 class FlatpakSourcesBackend;
 class StandardBackendUpdater;
 class OdrsReviewsBackend;

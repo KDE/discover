@@ -29,7 +29,6 @@ class Category;
 class QWindow;
 class QQmlApplicationEngine;
 class CachedNetworkAccessManagerFactory;
-class ResourcesProxyModel;
 
 class DiscoverObject : public QObject
 {
