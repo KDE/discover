@@ -35,7 +35,6 @@
 
 DiscoverNotifier::DiscoverNotifier(QObject * parent)
     : QObject(parent)
-    , m_manager(new QNetworkConfigurationManager(this))
 {
     configurationChanged();
 
@@ -57,8 +56,6 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
     m_timer.setSingleShot(true);
     m_timer.setInterval(1000);
     updateStatusNotifier();
-
-    connect(m_manager, &QNetworkConfigurationManager::onlineStateChanged, this, &DiscoverNotifier::stateChanged);
 
     //Only fetch updates after the system is comfortably booted
     QTimer::singleShot(10000, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
@@ -120,7 +117,7 @@ DiscoverNotifier::State DiscoverNotifier::state() const
 {
     if (m_needsReboot)
         return RebootRequired;
-    else if (!m_manager->isOnline())
+    else if (m_manager && !m_manager->isOnline())
         return Offline;
     else if (m_hasSecurityUpdates)
         return SecurityUpdates;
@@ -166,6 +163,14 @@ QString DiscoverNotifier::message() const
 
 void DiscoverNotifier::recheckSystemUpdateNeeded()
 {
+    if (!m_manager) {
+        m_manager = new QNetworkConfigurationManager(this);
+        connect(m_manager, &QNetworkConfigurationManager::onlineStateChanged, this, &DiscoverNotifier::stateChanged);
+        if (!m_manager->isOnline()) {
+            emit stateChanged();
+        }
+    }
+
     foreach(BackendNotifierModule* module, m_backends)
         module->recheckSystemUpdateNeeded();
 }

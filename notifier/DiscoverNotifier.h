@@ -81,7 +81,7 @@ private:
     bool m_hasSecurityUpdates = false;
     bool m_hasUpdates = false;
     bool m_needsReboot = false;
-    QNetworkConfigurationManager* const m_manager;
+    QNetworkConfigurationManager* m_manager = nullptr;
 };
 
 #endif //ABSTRACTKDEDMODULE_H
