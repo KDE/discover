@@ -85,6 +85,7 @@
     <p xml:lang="ca-valencia">El Discover vos ajuda a instal·lar aplicacions, jocs i eines. Podeu cercar o explorar per categoria, i veure les captures de pantalla i llegir els comentaris per ajudar-vos a triar l'aplicació perfecta.</p>
     <p xml:lang="en-GB">Discover helps you find and install applications, games, and tools. You can search or browse by category, and look at screenshots and read reviews to help you pick the perfect app.</p>
     <p xml:lang="es">Discover le ayuda a encontrar e instalar aplicaciones, juegos y herramientas. Puede buscar o explorar por categorías, ver capturas de pantalla y leer comentarios que le ayudarán a escoger la aplicación perfecta.</p>
+    <p xml:lang="eu">Discover-rek aplikazioak, jokoak eta tresnak bilatzen eta instalatzen laguntzen dizu. Kategoria bidez bilatu eta arakatu dezakezu, eta pantaila-argazkiak ikusi eta iritziak irakur ditzakezu aplikazio egokia aukeratzen laguntzako.</p>
     <p xml:lang="id">Discover membantu kamu untuk menemukan dan menginstal aplikasi, permainan, dan peralatan. Kamu bisa mencari atau menelusuri berdasarkan kategori, dan melihat screenshot dan membaca ulasan untuk membantu kamu memilih aplikasi yang sempurna.</p>
     <p xml:lang="it">Discover ti aiuta a trovare e installare applicazioni, giochi e strumenti. Puoi cercare o sfogliare per categoria, vedere schermate e leggere recensioni per aiutarti a scegliere l'applicazione perfetta.</p>
     <p xml:lang="ko">살펴보기를 사용하여 프로그램, 게임, 도구를 찾고 설치할 수 있습니다. 분류별로 검색 및 탐색하고, 스크린샷과 리뷰를 참조하여 꼭 필요한 앱을 찾으십시오.</p>
@@ -101,6 +102,7 @@
     <p xml:lang="ca-valencia">Amb el Discover podeu gestionar programari de diverses fonts, incloent-hi el repositori de programari del sistema operatiu, repositoris del Flatpak, la botiga de l'Snap, o també AppImages des de «store.kde.org».</p>
     <p xml:lang="en-GB">With Discover, you can manage software from multiple sources, including your operating system's software repository, Flatpak repos, the Snap store, or even AppImages from store.kde.org.</p>
     <p xml:lang="es">Con Discover puede gestionar software de múltiples fuentes, incluyendo los repositorios de software de su sistema operativo, repositorios de Flatpak, la tienda de Snap, e incluso AppImages de store.kde.org.</p>
+    <p xml:lang="eu">Discover-rekin, sorburu askotako softwarea kudeatu dezakezu, tartean zure sistema eragilearen software gordetegia, Flatpak gordetegiak, Snap biltegia, edo baita store.kde.org-eko  AppImages-etik ere.</p>
     <p xml:lang="id">Dengan Discover, kamu bisa mengelola perangkat lunak dari banyak sumber, termasuk repositori perangkat lunak operasi sistemmu, repo Flatpak, Snap store, atau bahkan AppImages dari store.kde.org.</p>
     <p xml:lang="it">Con Discover, puoi gestire i programmi da diverse fonti, inclusi i depositi del software del tuo sistema operativo, depositi Flatpak, lo Snap Store o anche AppImages da store.kde.org.</p>
     <p xml:lang="ko">살펴보기를 사용하면 여러 원본에서 제공되는 소프트웨어를 관리할 수 있습니다. 운영 체제 소프트웨어 저장소, Flatpak 저장소, Snap 스토어, store.kde.org의 AppImage를 한 곳에서 관리할 수 있습니다.</p>
@@ -117,6 +119,7 @@
     <p xml:lang="ca-valencia">Finalment, el Discover també permet cercar, instal·lar i gestionar complements per al Plasma i totes les aplicacions preferides del KDE!</p>
     <p xml:lang="en-GB">Finally, Discover also allows you to find, install, and manage add-ons for Plasma and all your favourite KDE apps!</p>
     <p xml:lang="es">Por último, Discover también le permite encontrar, instalar y gestionar complementos para Plasma y para todas sus aplicaciones favoritas de KDE.</p>
+    <p xml:lang="eu">Azkenik, Discover-rek uzten dizu Plasma eta zure KDEko aplikazio gogoko guztietarako gehigarriak bilatu, instalatu eta kudeatzen.</p>
     <p xml:lang="id">Terakhir, Discover juga memungkinkan kamu untuk menemukan, menginstal, dan mengelola pernik untuk Plasma dan semua aplikasi KDE favoritmu.</p>
     <p xml:lang="it">Infine, Discover ti consente di trovare, installare e gestire componenti aggiuntivi di Plasma e tutte le tue applicazioni preferite di KDE!</p>
     <p xml:lang="ko">또한 살펴보기를 사용하면 Plasma와 KDE 프로그램의 추가 기능을 찾고, 설치하고, 관리할 수 있습니다!</p>
@@ -137,6 +140,7 @@
       <caption xml:lang="ca-valencia">Discover del Plasma</caption>
       <caption xml:lang="en-GB">Plasma Discover</caption>
       <caption xml:lang="es">Plasma Discover</caption>
+      <caption xml:lang="eu">Plasma Discover</caption>
       <caption xml:lang="id">Discover Plasma</caption>
       <caption xml:lang="it">Plasma Discover</caption>
       <caption xml:lang="ko">Plasma 살펴보기</caption>
