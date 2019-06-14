@@ -798,7 +798,9 @@ void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation* installation)
         auto refs = fw->result();
         onFetchUpdatesFinished(installation, refs);
         fw->deleteLater();
+        acquireFetching(false);
     });
+    acquireFetching(true);
     fw->setFuture(QtConcurrent::run(&m_threadPool, [installation, this]() -> GPtrArray * {
         g_autoptr(GError) localError = nullptr;
         GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation, m_cancellable, &localError);
