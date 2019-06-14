@@ -160,7 +160,6 @@ void StandardBackendUpdater::refreshProgress()
         allProgresses += t->progress();
     }
     setProgress(allProgresses / m_toUpgrade.size());
-    qDebug() << allProgresses << m_toUpgrade.size() << (m_toUpgrade.size() - m_pendingResources.size())  << progress();
 }
 
 void StandardBackendUpdater::refreshUpdateable()
