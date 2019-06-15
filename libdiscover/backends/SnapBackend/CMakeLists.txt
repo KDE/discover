@@ -13,7 +13,7 @@ if ("${Snapd_VERSION}" VERSION_GREATER 1.45)
     target_compile_definitions(snap-backend PRIVATE -DSNAP_MEDIA)
 endif()
 if ("${Snapd_VERSION}" VERSION_GREATER 1.48)
-    target_compile_definitions(snap-backend PRIVATE -DSNAP_FIND_COMMON_ID)
+    target_compile_definitions(snap-backend PRIVATE -DSNAP_FIND_COMMON_ID -DSNAP_MARKDOWN)
 endif()
 
 install(TARGETS snap-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)

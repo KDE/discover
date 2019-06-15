@@ -26,6 +26,11 @@
 #include <QImageReader>
 #include <QStandardItemModel>
 #include <KLocalizedString>
+
+#ifdef SNAP_MARKDOWN
+#include <Snapd/MarkdownParser>
+#endif
+
 #include <utils.h>
 
 QDebug operator<<(QDebug debug, const QSnapdPlug& plug)
@@ -160,9 +165,76 @@ QJsonArray SnapResource::licenses()
     return { QJsonObject{ {QStringLiteral("name"), m_snap->license()} } };
 }
 
+#ifdef SNAP_MARKDOWN
+static QString serialize_node (QSnapdMarkdownNode &node);
+
+static QString
+serialize_children (QSnapdMarkdownNode &node)
+{
+    QString result;
+    for (int i = 0; i < node.childCount (); i++) {
+        QScopedPointer<QSnapdMarkdownNode> child (node.child (i));
+        result += serialize_node (*child);
+    }
+    return result;
+}
+
+static QString
+serialize_node (QSnapdMarkdownNode &node)
+{
+   switch (node.type ()) {
+   case QSnapdMarkdownNode::NodeTypeText:
+       return node.text().toHtmlEscaped();
+
+   case QSnapdMarkdownNode::NodeTypeParagraph:
+       return QLatin1String("<p>") + serialize_children (node) + QLatin1String("</p>\n");
+
+   case QSnapdMarkdownNode::NodeTypeUnorderedList:
+       return QLatin1String("<ul>\n") + serialize_children (node) + QLatin1String("</ul>\n");
+
+   case QSnapdMarkdownNode::NodeTypeListItem:
+       if (node.childCount () == 0)
+           return QLatin1String("<li></li>\n");
+       if (node.childCount () == 1) {
+           QScopedPointer<QSnapdMarkdownNode> child (node.child (0));
+           if (child->type () == QSnapdMarkdownNode::NodeTypeParagraph)
+               return QLatin1String("<li>") + serialize_children (*child) + QLatin1String("</li>\n");
+       }
+       return QLatin1String("<li>\n") + serialize_children (node) + QLatin1String("</li>\n");
+
+   case QSnapdMarkdownNode::NodeTypeCodeBlock:
+       return QLatin1String("<pre><code>") + serialize_children (node) + QLatin1String("</code></pre>\n");
+
+   case QSnapdMarkdownNode::NodeTypeCodeSpan:
+       return QLatin1String("<code>") + serialize_children (node) + QLatin1String("</code>");
+
+   case QSnapdMarkdownNode::NodeTypeEmphasis:
+       return QLatin1String("<em>") + serialize_children (node) + QLatin1String("</em>");
+
+   case QSnapdMarkdownNode::NodeTypeStrongEmphasis:
+       return QLatin1String("<strong>") + serialize_children (node) + QLatin1String("</strong>");
+
+   case QSnapdMarkdownNode::NodeTypeUrl:
+       return serialize_children (node);
+
+   default:
+       return QString();
+   }
+}
+#endif
+
 QString SnapResource::longDescription()
 {
+#ifdef SNAP_MARKDOWN
+    QSnapdMarkdownParser parser (QSnapdMarkdownParser::MarkdownVersion0);
+    QList<QSnapdMarkdownNode> nodes = parser.parse (m_snap->description());
+    QString result;
+    for (int i = 0; i < nodes.size (); i++)
+        result += serialize_node (nodes[i]);
+    return result;
+#else
     return m_snap->description();
+#endif
 }
 
 QString SnapResource::name() const
