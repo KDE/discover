@@ -33,7 +33,7 @@ Item
         switch (DiscoverNotifier.state) {
         case DiscoverNotifier.Offline:
         case DiscoverNotifier.NoUpdates:
-            return PlasmaCore.Types.PassiveStatus;
+            return PlasmaCore.Types.HiddenStatus;
         case DiscoverNotifier.NormalUpdates:
         case DiscoverNotifier.SecurityUpdates:
         case DiscoverNotifier.RebootRequired:
