@@ -77,9 +77,20 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
         });
     } else switch (role()) {
         case Transaction::ChangeAddonsRole:
-        case Transaction::InstallRole:
-            m_trans = PackageKit::Daemon::installPackages(packageIds(m_apps, [](PackageKitResource* r){return r->availablePackageId(); }), flags);
-            break;
+        case Transaction::InstallRole: {
+            const QStringList ids = packageIds(m_apps, [](PackageKitResource* r){return r->availablePackageId(); });
+            if (ids.isEmpty()) {
+                //FIXME this state shouldn't exist
+                qWarning() << "Installing no packages found!";
+                for(auto app : m_apps) {
+                    qDebug() << "app" << app << app->state() << static_cast<PackageKitResource*>(app)->packages();
+                }
+
+                setStatus(Transaction::DoneWithErrorStatus);
+                return;
+            }
+            m_trans = PackageKit::Daemon::installPackages(ids, flags);
+        }   break;
         case Transaction::RemoveRole:
             //see bug #315063
             m_trans = PackageKit::Daemon::removePackages(packageIds(m_apps, [](PackageKitResource* r){return r->installedPackageId(); }), true /*allowDeps*/, false, flags);
