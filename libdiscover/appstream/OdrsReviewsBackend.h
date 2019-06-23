@@ -63,12 +63,13 @@ Q_SIGNALS:
     void ratingsReady();
 
 private:
+    QNetworkAccessManager* nam();
     void parseRatings();
     void parseReviews(const QJsonDocument &document, AbstractResource *resource);
 
     QHash<QString, Rating*> m_ratings;
     bool m_isFetching;
-    QNetworkAccessManager* const m_nam;
+    QNetworkAccessManager* m_delayedNam = nullptr;
 };
 
 #endif // ODRSREVIEWSBACKEND_H

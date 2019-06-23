@@ -51,7 +51,6 @@
 OdrsReviewsBackend::OdrsReviewsBackend()
     : AbstractReviewsBackend(nullptr)
     , m_isFetching(false)
-    , m_nam(new QNetworkAccessManager(this))
 {
     bool fetchRatings = false;
     const QUrl ratingsUrl(QStringLiteral(APIURL "/ratings"));
@@ -148,7 +147,7 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
     // Store reference to the app for which we request reviews
     request.setOriginatingObject(app);
 
-    auto reply = m_nam->post(request, document.toJson());
+    auto reply = nam()->post(request, document.toJson());
     connect(reply, &QNetworkReply::finished, this, &OdrsReviewsBackend::reviewsFetched);
 }
 
@@ -206,7 +205,7 @@ void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
 
-    auto reply = m_nam->post(request, document.toJson());
+    auto reply = nam()->post(request, document.toJson());
     connect(reply, &QNetworkReply::finished, this, &OdrsReviewsBackend::usefulnessSubmitted);
 }
 
@@ -355,4 +354,12 @@ void OdrsReviewsBackend::emitRatingFetched(AbstractResourcesBackend* b, const QL
             Q_EMIT res->ratingFetched();
         }
     }
+}
+
+QNetworkAccessManager * OdrsReviewsBackend::nam()
+{
+    if (!m_delayedNam) {
+        m_delayedNam = new QNetworkAccessManager(this);
+    }
+    return m_delayedNam;
 }
