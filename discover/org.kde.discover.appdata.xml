@@ -92,6 +92,7 @@
     <p xml:lang="ko">살펴보기를 사용하여 프로그램, 게임, 도구를 찾고 설치할 수 있습니다. 분류별로 검색 및 탐색하고, 스크린샷과 리뷰를 참조하여 꼭 필요한 앱을 찾으십시오.</p>
     <p xml:lang="lt">Discover padeda jums rasti ir įdiegti programas, žaidimus bei įrankius. Galite ieškoti ar naršyti pagal kategoriją ir žiūrėti ekrano kopijas bei skaityti apžvalgas, kurios padeda jums išsirinkti tobulą programą.</p>
     <p xml:lang="nl">Discover helpt om toepassingen, spellen en hulpmiddelen te zoeken en te installeren. U kunt zoeken of bladeren op categorie, kijken naar schermafdrukken en reviews lezen om u te helpen de perfecte toepassing te kiezen.</p>
+    <p xml:lang="nn">Discover hjelper deg å finna og installera program, spel og verktøy. Du kan søkja etter program eller bla gjennom program­kategoriar, sjå skjermbilete og lesa brukaromtalar for å finna det perfekte programmet.</p>
     <p xml:lang="pl">Odkrywca pomaga znaleźć i wgrać aplikacje, gry oraz narzędzia. Można wyszukiwać lub przeglądać po kategorii. Można oglądać zrzuty ekranu i czytać oceny, aby wybrać najlepszą aplikację.</p>
     <p xml:lang="pt">O Discover ajuda-o a instalar aplicações, jogos e ferramentas. Poderá pesquisar ou navegar por categoria, assim como ver as imagens e ler as revisões e comentários que o possam ajudar a escolher a aplicação perfeita.</p>
     <p xml:lang="pt-BR">O Discover ajuda-o a encontrar e instalar aplicativos, jogos e ferramentas. Você pode pesquisar ou navegar por categoria, assim como ver as capturas de tela e ler as avaliações e comentários que o possam ajudá-lo a escolher o aplicativo perfeito.</p>
@@ -112,6 +113,7 @@
     <p xml:lang="ko">살펴보기를 사용하면 여러 원본에서 제공되는 소프트웨어를 관리할 수 있습니다. 운영 체제 소프트웨어 저장소, Flatpak 저장소, Snap 스토어, store.kde.org의 AppImage를 한 곳에서 관리할 수 있습니다.</p>
     <p xml:lang="lt">Naudodami Discover, galite tvarkyti programinę įrangą iš daugelio šaltinių, įskaitant jūsų operacinės sistemos programinės įrangos saugyklas, Flatpak saugyklas, Snap parduotuvę ar netgi AppImage paketus iš store.kde.org.</p>
     <p xml:lang="nl">Met Discover kunt u software uit meerdere bronnen beheren, inclusief de opslagruimten van uw besturingssysteem, Flatpak-repo's, de Snap store of zelfs AppImages uit store.kde.org.</p>
+    <p xml:lang="nn">Men Discover kan du installera program frå ulike kjelder, blant anna standard pakkebrønnar for operativsystemet, Flatpak-depot, Snap-butikken og AppImages frå store.kde.org.</p>
     <p xml:lang="pl">Dzięki Odkrywcy, można zarządzać oprogramowaniem z wielu źródeł, uwzględniając w tym źródło oprogramowania systemu operacyjnego, repozytoria Flatpak, sklep Snap lub nawet AppImage z store.kde.org.</p>
     <p xml:lang="pt">Com o Discover, poderá gerir aplicações de várias fontes, incluindo os repositórios de aplicações do seu sistema operativo, os repositórios do Flatpak, a loja do Snap ou mesmo AppImages do store.kde.org.</p>
     <p xml:lang="pt-BR">Com o Discover você poderá gerenciar aplicativos de várias origens, incluindo os repositórios de aplicativos do seu sistema operacional, os repositórios do Flatpak, a loja do Snap ou mesmo AppImages do store.kde.org.</p>
@@ -132,6 +134,7 @@
     <p xml:lang="ko">또한 살펴보기를 사용하면 Plasma와 KDE 프로그램의 추가 기능을 찾고, 설치하고, 관리할 수 있습니다!</p>
     <p xml:lang="lt">Pagaliau, Discover taip pat leidžia jums rasti, įdiegti ir tvarkyti Plasma papildinius ir visas jūsų mėgstamas KDE programas!</p>
     <p xml:lang="nl">Tenslotte biedt Discover ook om add-ons voor Plasma en al uw favoriete KDE toepassingen te vinden, te installeren en te beheren!</p>
+    <p xml:lang="nn">Discover lèt deg òg finna, installera og handsama programtillegg for Plasma og andre KDE-program.</p>
     <p xml:lang="pl">Odkrywca umożliwia także znalezienie, wgranie i zrządzanie dodatkami do Plazmy i innych ulubionych aplikacji KDE!</p>
     <p xml:lang="pt">Finalmente, o Discover também lhe permite procurar, instalar e gerir as extensões do Plasma e de todas as suas aplicações favoritas do KDE!</p>
     <p xml:lang="pt-BR">Finalmente, o Discover também lhe permite procurar, instalar e gerenciar as extensões do Plasma e de todos os seus aplicativos favoritos do KDE!</p>
