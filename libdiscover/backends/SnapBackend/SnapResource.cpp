@@ -346,7 +346,7 @@ QString SnapResource::appstreamId() const
         = m_snap->commonIds()
 #endif
     ;
-    return ids.isEmpty() ? QLatin1String("com.snap.") + m_snap->name() : ids.first();
+    return ids.isEmpty() ? QLatin1String("io.snapcraft.") + m_snap->name() + QLatin1Char('-') + m_snap()->id() : ids.first();
 }
 
 QString SnapResource::channel() const
