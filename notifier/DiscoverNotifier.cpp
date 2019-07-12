@@ -74,11 +74,13 @@ void DiscoverNotifier::configurationChanged()
 void DiscoverNotifier::showDiscover()
 {
     KRun::runCommand(QStringLiteral("plasma-discover"), nullptr);
+    if (m_updatesAvailableNotification) { m_updatesAvailableNotification->close(); }
 }
 
 void DiscoverNotifier::showDiscoverUpdates()
 {
     KRun::runCommand(QStringLiteral("plasma-discover --mode update"), nullptr);
+    if (m_updatesAvailableNotification) { m_updatesAvailableNotification->close(); }
 }
 
 void DiscoverNotifier::showUpdatesNotification()
@@ -88,11 +90,11 @@ void DiscoverNotifier::showUpdatesNotification()
         return;
     }
 
-    auto e = KNotification::event(QStringLiteral("Update"), message(), {}, iconName(), nullptr, KNotification::CloseOnTimeout, QStringLiteral("discoverabstractnotifier"));
+    m_updatesAvailableNotification = KNotification::event(QStringLiteral("Update"), message(), {}, iconName(), nullptr, KNotification::Persistent, QStringLiteral("discoverabstractnotifier"));
     const QString name = i18n("Update");
-    e->setDefaultAction(name);
-    e->setActions({name});
-    connect(e, QOverload<unsigned int>::of(&KNotification::activated), this, &DiscoverNotifier::showDiscoverUpdates);
+    m_updatesAvailableNotification->setDefaultAction(name);
+    m_updatesAvailableNotification->setActions({name});
+    connect(m_updatesAvailableNotification, QOverload<unsigned int>::of(&KNotification::activated), this, &DiscoverNotifier::showDiscoverUpdates);
 }
 
 void DiscoverNotifier::updateStatusNotifier()

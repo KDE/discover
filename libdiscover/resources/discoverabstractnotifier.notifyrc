@@ -129,5 +129,6 @@ Comment[uk]=Доступні оновлення
 Comment[x-test]=xxUpdates Availablexx
 Comment[zh_CN]=可用更新
 Comment[zh_TW]=有可用的更新
+Urgency=Low
 Action=Popup
 
