@@ -24,9 +24,11 @@
 #include <BackendNotifierModule.h>
 #include <QStringList>
 #include <QTimer>
+#include <QPointer>
 
 class QNetworkConfigurationManager;
 class KStatusNotifierItem;
+class KNotification;
 
 class DiscoverNotifier : public QObject
 {
@@ -83,6 +85,7 @@ private:
     bool m_hasUpdates = false;
     bool m_needsReboot = false;
     QNetworkConfigurationManager* const m_manager;
+    QPointer<KNotification> m_updatesAvailableNotification;
 };
 
 #endif //ABSTRACTKDEDMODULE_H
