@@ -86,6 +86,7 @@ void DiscoverNotifier::showDiscoverUpdates()
 
 void DiscoverNotifier::showUpdatesNotification()
 {
+    if (m_updatesAvailableNotification) { m_updatesAvailableNotification->close(); }
     if (state() != NormalUpdates && state() != SecurityUpdates) {
         //it's not very helpful to notify that everything is in order
         return;
