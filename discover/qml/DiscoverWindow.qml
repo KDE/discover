@@ -64,6 +64,7 @@ Kirigami.ApplicationWindow
     }
     TopLevelPageData {
         id: installedAction
+        iconName: "view-list-symbolic"
         text: i18n("Installed")
         component: topInstalledComp
         objectName: "installed"
@@ -84,6 +85,7 @@ Kirigami.ApplicationWindow
     }
     TopLevelPageData {
         id: sourcesAction
+        iconName: "configure"
         text: i18n("Sources")
         component: topSourcesComp
         objectName: "sources"

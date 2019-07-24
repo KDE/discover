@@ -24,6 +24,7 @@
 #include <QFile>
 #include "libdiscover_debug.h"
 #include <QStandardPaths>
+#include <QCoreApplication>
 
 #include <DiscoverBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
@@ -64,7 +65,7 @@ QVector<Category*> CategoriesReader::loadCategoriesPath(const QString& path)
     while(!node.isNull())
     {
         if (node.nodeType() == QDomNode::ElementNode) {
-            ret << new Category( {path} );
+            ret << new Category( {path}, qApp );
             ret.last()->parseData(path, node);
         }
 

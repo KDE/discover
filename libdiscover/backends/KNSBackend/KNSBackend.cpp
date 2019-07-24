@@ -134,13 +134,18 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         m_displayName = fileName.mid(0, fileName.indexOf(QLatin1Char('.')));
         m_displayName[0] = m_displayName[0].toUpper();
     }
+    m_hasApplications = group.readEntry<bool>("X-Discover-HasApplications", false);
 
     const QStringList cats = group.readEntry<QStringList>("Categories", QStringList{});
     QVector<Category*> categories;
     if (cats.count() > 1) {
         m_categories += cats;
-        for(const auto &cat: cats)
-            categories << new Category(cat, {}, { {CategoryFilter, cat } }, backendName, {}, {}, true);
+        for(const auto &cat: cats) {
+            if (m_hasApplications)
+                categories << new Category(cat, QStringLiteral("applications-other"), { {CategoryFilter, cat } }, backendName, {}, {}, true);
+            else
+                categories << new Category(cat, QStringLiteral("plasma"), { {CategoryFilter, cat } }, backendName, {}, {}, true);
+        }
     }
 
     QVector<Category*> topCategories{categories};
@@ -173,9 +178,8 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     m_engine->setPageSize(100);
     m_engine->init(m_name);
 
-    m_hasApplications = group.readEntry<bool>("X-Discover-HasApplications", false);
     if(m_hasApplications) {
-        auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, topCategories, QUrl(), false);
+        auto actualCategory = new Category(m_displayName, QStringLiteral("applications-other"), filters, backendName, topCategories, QUrl(), false);
         auto applicationCategory = new Category(i18n("Applications"), QStringLiteral("applications-internet"), filters, backendName, { actualCategory }, QUrl(), false);
         applicationCategory->setAndFilter({ {CategoryFilter, QLatin1String("Application")} });
         m_categories.append(applicationCategory->name());
@@ -207,10 +211,11 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
             QStringLiteral("sddmtheme.knsrc"), QStringLiteral("wallpaperplugin.knsrc"),
             QStringLiteral("ksplash.knsrc"), QStringLiteral("window-decorations.knsrc")
         };
-        auto actualCategory = new Category(m_displayName, QStringLiteral("plasma"), filters, backendName, categories, QUrl(), true);
+        const auto iconName = knsrcPlasma.contains(fileName)? QStringLiteral("plasma") : QStringLiteral("applications-other");
+        auto actualCategory = new Category(m_displayName, iconName, filters, backendName, categories, QUrl(), true);
 
         const auto topLevelName = knsrcPlasma.contains(fileName)? i18n("Plasma Addons") : i18n("Application Addons");
-        auto addonsCategory = new Category(topLevelName, QStringLiteral("plasma"), filters, backendName, {actualCategory}, QUrl(), true);
+        auto addonsCategory = new Category(topLevelName, iconName, filters, backendName, {actualCategory}, QUrl(), true);
         m_rootCategories = { addonsCategory };
     }
 }
