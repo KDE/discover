@@ -18,6 +18,7 @@ Kirigami.OverlaySheet
     signal accepted()
 
     ColumnLayout {
+        height: Kirigami.Units.gridUnit * 22
         Kirigami.Heading { level: 3; text: i18n("Reviewing '%1'", application.name) }
         Label { text: i18n("Rating:") }
         Rating {
