@@ -28,7 +28,7 @@
   <name xml:lang="pt">Discover</name>
   <name xml:lang="pt-BR">Discover</name>
   <name xml:lang="ru">Центр приложений Discover</name>
-  <name xml:lang="sk">Objaviť</name>
+  <name xml:lang="sk">Discover</name>
   <name xml:lang="sl">Discover</name>
   <name xml:lang="sr">Oткривач</name>
   <name xml:lang="sr-Latn">Otkrivač</name>
@@ -65,7 +65,7 @@
   <summary xml:lang="pt">Discover</summary>
   <summary xml:lang="pt-BR">Discover</summary>
   <summary xml:lang="ru">Центр приложений Discover</summary>
-  <summary xml:lang="sk">Objaviť</summary>
+  <summary xml:lang="sk">Discover</summary>
   <summary xml:lang="sl">Discover</summary>
   <summary xml:lang="sr">Oткривач</summary>
   <summary xml:lang="sr-Latn">Otkrivač</summary>
@@ -205,7 +205,7 @@
       <caption xml:lang="pt">Novo desenho do Discover</caption>
       <caption xml:lang="pt-BR">Novo design do Discover</caption>
       <caption xml:lang="ru">Новый внешний вид Discover</caption>
-      <caption xml:lang="sk">Nový dizajn pre Objaviť</caption>
+      <caption xml:lang="sk">Nový dizajn pre Discover</caption>
       <caption xml:lang="sv">Ny design in Discover</caption>
       <caption xml:lang="uk">Новий дизайн Discover</caption>
       <caption xml:lang="x-test">xxNew Discover designxx</caption>
