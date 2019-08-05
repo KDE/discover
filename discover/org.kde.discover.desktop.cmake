@@ -148,6 +148,7 @@ Name[hu]=Frissítések
 Name[ia]=Actualisationes
 Name[id]=Pembaruan
 Name[it]=Aggiornamenti
+Name[ja]=更新
 Name[ko]=업데이트
 Name[nb]=Oppdateringer
 Name[nl]=Elementen voor bijwerken
