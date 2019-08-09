@@ -181,6 +181,7 @@ DiscoverPage
         }
 
         delegate: Kirigami.AbstractListItem {
+            id: listItem
             backgroundColor: Kirigami.Theme.backgroundColor
             highlighted: ListView.isCurrentItem
             onEnabledChanged: if (!enabled) {
@@ -238,6 +239,7 @@ DiscoverPage
                             elide: Text.ElideRight
                             text: i18n("%1 → %2", installedVersion, availableVersion)
                             visible: !truncated
+                            opacity: listItem.hovered? 0.8 : 0.6
                         }
                         // Available version only, for when old+new would be elided.
                         // Use squeezey text to gain more room, and if it's still so
@@ -252,6 +254,7 @@ DiscoverPage
                             text: availableVersion
                             visible: !oldAndNewVersions.visible
                             font.letterSpacing: -0.5
+                            opacity: listItem.hovered? 0.8 : 0.6
                         }
                     }
 
