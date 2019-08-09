@@ -4,7 +4,7 @@ import QtQuick 2.4
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
-import org.kde.kirigami 2.3 as Kirigami
+import org.kde.kirigami 2.10 as Kirigami
 
 DiscoverPage
 {
@@ -207,11 +207,9 @@ DiscoverPage
 
         section {
             property: "section"
-            delegate: Kirigami.Heading {
-                x: Kirigami.Units.gridUnit
-                level: 2
-                text: section
-                height: implicitHeight + Kirigami.Units.largeSpacing * 2
+            delegate: Kirigami.ListSectionHeader {
+                width: updatesView.width
+                label: section
             }
         }
 

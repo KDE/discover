@@ -3,7 +3,7 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.2 as Kirigami
+import org.kde.kirigami 2.10 as Kirigami
 import "navigation.js" as Navigation
 
 DiscoverPage {
@@ -28,83 +28,78 @@ DiscoverPage {
         currentIndex: -1
 
         section.property: "sourceName"
-        section.delegate: Kirigami.AbstractListItem {
+        section.delegate: Kirigami.ListSectionHeader {
             id: backendItem
-            hoverEnabled: false
-            supportsMouseEvents: false
+
             readonly property QtObject backend: SourcesModel.sourcesBackendByName(section)
             readonly property QtObject resourcesBackend: backend.resourcesBackend
             readonly property bool isDefault: ResourcesModel.currentApplicationBackend === resourcesBackend
 
-            RowLayout {
-                id: sourceTitleLayout
-                Layout.fillHeight: true
-                Connections {
-                    target: backendItem.backend
-                    onPassiveMessage: window.showPassiveNotification(message)
-                    onProceedRequest: {
-                        var dialog = sourceProceedDialog.createObject(window, {sourcesBackend: backendItem.backend, title: title, description: description})
-                        dialog.open()
-                    }
-                }
+            width: sourcesView.width
+            label: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
 
-                Kirigami.Heading {
-                    Layout.fillWidth: true
-                    Layout.leftMargin: Kirigami.Units.smallSpacing
-                    Layout.alignment: Qt.AlignVCenter
-                    text: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
-                    level: 3
-                }
-
-                Instantiator {
-                    id: backendActionsInst
-                    model: ActionsModel {
-                        actions: backendItem.backend ? backendItem.backend.actions : undefined
-                    }
-                    delegate: Button {
-                        parent: sourceTitleLayout
-                        Layout.column: 1
-                        text: modelData.text
-                        icon.name: app.iconName(modelData.icon)
-                        ToolTip.visible: hovered
-                        ToolTip.text: modelData.toolTip
-                        onClicked: modelData.trigger()
-                    }
-                    onObjectRemoved: {
-                        object.destroy()
-                    }
-                }
-
-                Button {
-                    text: i18n("Add Source...")
-                    icon.name: "list-add"
-                    visible: backendItem.backend && backendItem.backend.supportsAdding
-
-                    Component {
-                        id: dialogComponent
-                        AddSourceDialog {
-                            source: backendItem.backend
-                            onVisibleChanged: if (!visible) {
-                                destroy()
-                            }
+            customItems: [
+                RowLayout {
+                    id: sourceTitleLayout
+                    Connections {
+                        target: backendItem.backend
+                        onPassiveMessage: window.showPassiveNotification(message)
+                        onProceedRequest: {
+                            var dialog = sourceProceedDialog.createObject(window, {sourcesBackend: backendItem.backend, title: title, description: description})
+                            dialog.open()
                         }
                     }
 
-                    onClicked: {
-                        var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
-                        addSourceDialog.open()
+                    Instantiator {
+                        id: backendActionsInst
+                        model: ActionsModel {
+                            actions: backendItem.backend ? backendItem.backend.actions : undefined
+                        }
+                        delegate: Button {
+                            parent: sourceTitleLayout
+                            Layout.column: 1
+                            text: modelData.text
+                            icon.name: app.iconName(modelData.icon)
+                            ToolTip.visible: hovered
+                            ToolTip.text: modelData.toolTip
+                            onClicked: modelData.trigger()
+                        }
+                        onObjectRemoved: {
+                            object.destroy()
+                        }
+                    }
+
+                    Button {
+                        text: i18n("Add Source...")
+                        icon.name: "list-add"
+                        visible: backendItem.backend && backendItem.backend.supportsAdding
+
+                        Component {
+                            id: dialogComponent
+                            AddSourceDialog {
+                                source: backendItem.backend
+                                onVisibleChanged: if (!visible) {
+                                    destroy()
+                                }
+                            }
+                        }
+
+                        onClicked: {
+                            var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
+                            addSourceDialog.open()
+                        }
+                    }
+
+                    Button {
+                        visible: resourcesBackend && resourcesBackend.hasApplications
+
+                        enabled: !backendItem.isDefault
+                        text: i18n("Make default")
+                        icon.name: "favorite"
+                        onClicked: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
                     }
                 }
-
-                Button {
-                    visible: resourcesBackend && resourcesBackend.hasApplications
-
-                    enabled: !backendItem.isDefault
-                    text: i18n("Make default")
-                    icon.name: "favorite"
-                    onClicked: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
-                }
-            }
+            ]
         }
 
         Component {
