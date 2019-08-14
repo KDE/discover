@@ -42,6 +42,14 @@ DiscoverPage
         Navigation.openCategory(null, "")
     }
 
+    BusyIndicator {
+        id: indicator
+        anchors.centerIn: parent
+        width: Kirigami.Units.gridUnit * 8
+        height: width
+        visible: apps.count === 0 && apps.model.isFetching
+    }
+
     background: Rectangle {
         color: Kirigami.Theme.backgroundColor
         Kirigami.Theme.colorSet: Kirigami.Theme.Window
