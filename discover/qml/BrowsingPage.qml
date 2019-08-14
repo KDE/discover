@@ -61,11 +61,22 @@ DiscoverPage
             compact: page.compact
         }
 
-        footer: Kirigami.Heading {
+        footer: ColumnLayout {
             visible: apps.count === 0 && !apps.model.isFetching
             width: parent.width
-            horizontalAlignment: Text.AlignHCenter
-            text: i18n("Please check your connectivity")
+
+            Kirigami.Icon {
+                source: "network-disconnect"
+                Layout.alignment: Qt.AlignHCenter
+                width: Kirigami.Units.gridUnit * 4
+                height: width
+            }
+
+            Kirigami.Heading {
+                Layout.fillWidth: true
+                horizontalAlignment: Text.AlignHCenter
+                text: xi18nc("@info", "Unable to load applications.<nl/>Please verify Internet connectivity.")
+            }
         }
     }
 }
