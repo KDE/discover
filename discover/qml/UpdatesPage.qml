@@ -238,7 +238,7 @@ DiscoverPage
                             Layout.fillWidth: true
                             elide: Text.ElideRight
                             text: i18n("%1 → %2", installedVersion, availableVersion)
-                            visible: !truncated
+                            visible: installedVersion && !truncated
                             opacity: listItem.hovered? 0.8 : 0.6
                         }
                         // Available version only, for when old+new would be elided.
