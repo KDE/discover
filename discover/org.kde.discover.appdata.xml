@@ -88,6 +88,7 @@
     <p xml:lang="eu">Discover-rek aplikazioak, jokoak eta tresnak bilatzen eta instalatzen laguntzen dizu. Kategoria bidez bilatu eta arakatu dezakezu, eta pantaila-argazkiak ikusi eta iritziak irakur ditzakezu aplikazio egokia aukeratzen laguntzako.</p>
     <p xml:lang="fi">Discover auttaa sinua etsimään ja asentamaan sovelluksia, pelejä ja apuohjelmia. Voit etsiä tai selata luokittain, katsella ruutukaappauskuvia ja lukea arvosteluja.</p>
     <p xml:lang="fr">Discover vous aide à trouver et à installer des applications, des jeux et des outils. Vous pouvez chercher ou naviguer par catégorie, ou consulter les captures d'écran et les avis d'utilisateurs pour vous aider à trouver l'appli parfaite.</p>
+    <p xml:lang="gl">Discover axúdalle a atopar e instalar aplicacións, xogos e ferramentas. Pode buscar ou explorar por categoría, e ollar capturas de pantalla e ler recensións como axuda para escoller a aplicación perfecta.</p>
     <p xml:lang="id">Discover membantu kamu untuk menemukan dan menginstal aplikasi, permainan, dan peralatan. Kamu bisa mencari atau menelusuri berdasarkan kategori, dan melihat screenshot dan membaca ulasan untuk membantu kamu memilih aplikasi yang sempurna.</p>
     <p xml:lang="it">Discover ti aiuta a trovare e installare applicazioni, giochi e strumenti. Puoi cercare o sfogliare per categoria, vedere schermate e leggere recensioni per aiutarti a scegliere l'applicazione perfetta.</p>
     <p xml:lang="ko">살펴보기를 사용하여 프로그램, 게임, 도구를 찾고 설치할 수 있습니다. 분류별로 검색 및 탐색하고, 스크린샷과 리뷰를 참조하여 꼭 필요한 앱을 찾으십시오.</p>
@@ -111,6 +112,7 @@
     <p xml:lang="eu">Discover-rekin, sorburu askotako softwarea kudeatu dezakezu, tartean zure sistema eragilearen software gordetegia, Flatpak gordetegiak, Snap biltegia, edo baita store.kde.org-eko  AppImages-etik ere.</p>
     <p xml:lang="fi">Discoverilla voit hallita ohjelmia eri lähteistä: käyttöjärjestelmän tai Flatpakin asennuslähteistä, Snap-kaupasta tai jopa store.kde.orgin AppImageista.</p>
     <p xml:lang="fr">Grâce à Discover, vous pouvez gérer des logiciels provenant de plusieurs sources, dont le dépôt de logiciels de votre système d'exploitation, les dépôts Flatpak, la boutique Snap ou même des AppImages de store.kde.org.</p>
+    <p xml:lang="gl">Con Discover pode xestionar software de varias fontes, entre elas o repositorio de software do seu sistema operativo, os repositorios de Flatpak, a tenda de Snap, ou mesmo as AppImage de store.kde.org.</p>
     <p xml:lang="id">Dengan Discover, kamu bisa mengelola perangkat lunak dari banyak sumber, termasuk repositori perangkat lunak operasi sistemmu, repo Flatpak, Snap store, atau bahkan AppCitras dari store.kde.org.</p>
     <p xml:lang="it">Con Discover, puoi gestire i programmi da diverse fonti, inclusi i depositi del software del tuo sistema operativo, depositi Flatpak, lo Snap Store o anche AppImages da store.kde.org.</p>
     <p xml:lang="ko">살펴보기를 사용하면 여러 원본에서 제공되는 소프트웨어를 관리할 수 있습니다. 운영 체제 소프트웨어 저장소, Flatpak 저장소, Snap 스토어, store.kde.org의 AppImage를 한 곳에서 관리할 수 있습니다.</p>
@@ -134,6 +136,7 @@
     <p xml:lang="eu">Azkenik, Discover-rek uzten dizu Plasma eta zure KDEko aplikazio gogoko guztietarako gehigarriak bilatu, instalatu eta kudeatzen.</p>
     <p xml:lang="fi">Discoverilla voit myös etsiä, asentaa ja hallita Plasman laajennusosia ja kaikkia suosikki-KDE-sovelluksiasi!</p>
     <p xml:lang="fr">Enfin, Discover vous permet de trouver, d'installer et de gérer des modules complémentaires pour Plasma et toutes vos applis KDE préférées !</p>
+    <p xml:lang="gl">Por último, Discover tamén lle permite atopar, instalar e xestionar complementos de Plasma e das súas aplicacións favoritas de KDE!</p>
     <p xml:lang="id">Terakhir, Discover juga memungkinkan kamu untuk menemukan, menginstal, dan mengelola pernik untuk Plasma dan semua aplikasi KDE favoritmu.</p>
     <p xml:lang="it">Infine, Discover ti consente di trovare, installare e gestire componenti aggiuntivi di Plasma e tutte le tue applicazioni preferite di KDE!</p>
     <p xml:lang="ko">또한 살펴보기를 사용하면 Plasma와 KDE 프로그램의 추가 기능을 찾고, 설치하고, 관리할 수 있습니다!</p>
@@ -162,6 +165,7 @@
       <caption xml:lang="eu">Plasma Discover</caption>
       <caption xml:lang="fi">Plasma Discover</caption>
       <caption xml:lang="fr">Plasma Discover</caption>
+      <caption xml:lang="gl">Plasma Discover</caption>
       <caption xml:lang="id">Discover Plasma</caption>
       <caption xml:lang="it">Plasma Discover</caption>
       <caption xml:lang="ko">Plasma 살펴보기</caption>
