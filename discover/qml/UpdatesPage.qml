@@ -111,7 +111,7 @@ DiscoverPage
 
     supportsRefreshing: true
     onRefreshingChanged: {
-        showPassiveNotification("Fetching updates...")
+        showPassiveNotification("Fetching Updates...")
         ResourcesModel.updateAction.triggered()
         refreshing = false
     }
@@ -319,7 +319,7 @@ DiscoverPage
     states: [
         State {
             name: "fetching"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates...") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching Updates...") }
             PropertyChanges { target: page; isBusy: true }
         },
         State {
@@ -339,17 +339,17 @@ DiscoverPage
         },
         State {
             name: "now-uptodate"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to Date") }
             PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "uptodate"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to Date") }
             PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "medium"
-            PropertyChanges { target: page; title: i18nc("@info", "Up to date") }
+            PropertyChanges { target: page; title: i18nc("@info", "Up to Date") }
             PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
