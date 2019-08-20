@@ -211,6 +211,8 @@ Kirigami.ApplicationWindow
                             sheet.acted = true
                             sheet.close()
                         }
+                        Keys.onEnterPressed: clicked()
+                        Keys.onReturnPressed: clicked()
                     }
                     Button {
                         Layout.alignment: Qt.AlignRight
@@ -221,6 +223,7 @@ Kirigami.ApplicationWindow
                             sheet.acted = true
                             sheet.close()
                         }
+                        Keys.onEscapePressed: clicked()
                     }
                 }
             }
