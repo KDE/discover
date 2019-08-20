@@ -18,7 +18,7 @@ ConditionalLoader
         id: listener
     }
 
-    readonly property QtObject action: Kirigami.Action {
+    readonly property Kirigami.Action action: Kirigami.Action {
         text: root.text
         icon {
             name: application.isInstalled ? "trash-empty" : "cloud-download"
@@ -27,14 +27,11 @@ ConditionalLoader
         enabled: !listener.isActive && application.state !== AbstractResource.Broken
         onTriggered: root.click()
     }
-    readonly property QtObject cancelAction: KirigamiActionBridge {
-        Action {
-            id: cancelQQCAction
-            text: i18n("Cancel")
-            icon.name: "dialog-cancel"
-            enabled: listener.isCancellable
-            onTriggered: listener.cancel()
-        }
+    readonly property Kirigami.Action cancelAction: Kirigami.Action {
+        text: i18n("Cancel")
+        icon.name: "dialog-cancel"
+        enabled: listener.isCancellable
+        onTriggered: listener.cancel()
         visible: listener.isActive
     }
 
@@ -53,7 +50,7 @@ ConditionalLoader
     componentTrue: RowLayout {
         ToolButton {
             Layout.fillHeight: true
-            action: cancelQQCAction
+            action: root.cancelAction
         }
 
         LabelBackground {
