@@ -24,6 +24,8 @@
 #include "PackageKitBackend.h"
 #include <PackageKit/Transaction>
 
+int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage);
+
 class PackageKitUpdater : public AbstractBackendUpdater
 {
     Q_OBJECT

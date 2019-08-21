@@ -82,6 +82,7 @@ void ResourcesModel::init(bool load)
     m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(this, &ResourcesModel::fetchingChanged, m_updateAction, [this](bool fetching) {
         m_updateAction->setEnabled(!fetching);
+        fetchingUpdatesProgressChanged();
     });
     connect(m_updateAction, &QAction::triggered, this, &ResourcesModel::checkForUpdates);
 
@@ -123,6 +124,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     connect(backend, &AbstractResourcesBackend::allDataChanged, this, &ResourcesModel::updateCaller);
     connect(backend, &AbstractResourcesBackend::resourcesChanged, this, &ResourcesModel::resourceDataChanged);
     connect(backend, &AbstractResourcesBackend::updatesCountChanged, this, &ResourcesModel::updatesCountChanged);
+    connect(backend, &AbstractResourcesBackend::fetchingUpdatesProgressChanged, this, &ResourcesModel::fetchingUpdatesProgressChanged);
     connect(backend, &AbstractResourcesBackend::resourceRemoved, this, &ResourcesModel::resourceRemoved);
     connect(backend, &AbstractResourcesBackend::passiveMessage, this, &ResourcesModel::passiveMessage);
     connect(backend->backendUpdater(), &AbstractBackendUpdater::progressingChanged, this, &ResourcesModel::slotFetching);
@@ -399,4 +401,17 @@ void ResourcesModel::initApplicationsBackend()
         qCDebug(LIBDISCOVER_LOG) << "falling back applications backend to" << idx;
     }
     setCurrentApplicationBackend(backends.value(idx, nullptr), false);
+}
+
+
+int ResourcesModel::fetchingUpdatesProgress() const
+{
+    if (m_backends.isEmpty())
+        return 0;
+    
+    int sum = 0;
+    for(auto backend: m_backends) {
+        sum += backend->fetchingUpdatesProgress();
+    }
+    return sum / m_backends.count();
 }

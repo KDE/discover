@@ -83,6 +83,8 @@ AbstractResourcesBackend::AbstractResourcesBackend(QObject* parent)
             fetchingChangedTimer->start();
         else
             fetchingChangedTimer->stop();
+        
+        Q_EMIT fetchingUpdatesProgressChanged();
     });
 }
 
@@ -145,4 +147,9 @@ void AbstractResourcesBackend::Filters::filterJustInCase(QVector<AbstractResourc
 QStringList AbstractResourcesBackend::extends() const
 {
     return {};
+}
+
+int AbstractResourcesBackend::fetchingUpdatesProgress() const
+{
+    return isFetching() ? 42 : 100;
 }

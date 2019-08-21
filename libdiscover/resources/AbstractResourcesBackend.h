@@ -166,6 +166,8 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
 
         virtual bool hasApplications() const { return false; }
 
+        virtual int fetchingUpdatesProgress() const;
+
     public Q_SLOTS:
         /**
          * This gets called when the backend should install an application.
@@ -221,6 +223,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
         void resourceRemoved(AbstractResource* resource);
 
         void passiveMessage(const QString &message);
+        void fetchingUpdatesProgressChanged();
 
     private:
         QString m_name;

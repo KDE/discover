@@ -12,6 +12,7 @@ DiscoverPage
     title: i18n("Updates")
 
     property string footerLabel: ""
+    property int footerProgress: 0
     property bool isBusy: false
 
     ResourcesUpdatesModel {
@@ -111,9 +112,49 @@ DiscoverPage
 
     supportsRefreshing: true
     onRefreshingChanged: {
-        showPassiveNotification("Fetching Updates...")
         ResourcesModel.updateAction.triggered()
         refreshing = false
+    }
+
+    readonly property Item report: ColumnLayout {
+        parent: page
+        anchors.fill: parent
+        Item {
+            Layout.fillHeight: true
+            width: 1
+        }
+        Kirigami.Heading {
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter
+            horizontalAlignment: Text.AlignHCenter
+            text: page.footerLabel
+        }
+        ProgressBar {
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 20
+            value: page.footerProgress
+            from: 0
+            to: 100
+            visible: page.isBusy
+        }
+        Kirigami.Icon {
+            Layout.alignment: Qt.AlignHCenter
+            visible: page.footerProgress === 0 && page.footerLabel !== ""
+            source: "update-none"
+            opacity: 0.3
+            width: Kirigami.Units.gridUnit * 12
+            height: width
+        }
+        Button {
+            Layout.alignment: Qt.AlignHCenter
+            text: i18n("Restart")
+            visible: resourcesUpdatesModel.needsReboot
+            onClicked: app.reboot()
+        }
+        Item {
+            Layout.fillHeight: true
+            width: 1
+        }
     }
     ListView
     {
@@ -124,44 +165,6 @@ DiscoverPage
             YAnimator {
                 duration: Kirigami.Units.longDuration
                 easing.type: Easing.InOutQuad
-            }
-        }
-
-        footer: ColumnLayout {
-            anchors.right: parent.right
-            anchors.left: parent.left
-            Kirigami.Heading {
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignHCenter
-                horizontalAlignment: Text.AlignHCenter
-                visible: page.footerLabel !== ""
-                text: page.footerLabel
-            }
-            BusyIndicator {
-                id: indicator
-                Layout.alignment: Qt.AlignHCenter
-                Layout.preferredWidth: Kirigami.Units.gridUnit * 12
-                Layout.preferredHeight: Layout.preferredWidth
-                visible: page.isBusy
-            }
-            Kirigami.Icon {
-                Layout.alignment: Qt.AlignHCenter
-                visible: !indicator.visible && page.footerLabel !== ""
-                source: "update-none"
-                opacity: 0.3
-                width: Kirigami.Units.gridUnit * 12
-                height: width
-            }
-            Button {
-                Layout.alignment: Qt.AlignHCenter
-                text: i18n("Restart")
-                visible: resourcesUpdatesModel.needsReboot
-                onClicked: app.reboot()
-            }
-            Item {
-                visible: page.footerLabel === ""
-                height: Kirigami.Units.gridUnit
-                width: 1
             }
         }
 
@@ -320,6 +323,7 @@ DiscoverPage
         State {
             name: "fetching"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching Updates...") }
+            PropertyChanges { target: page; footerProgress: ResourcesModel.fetchingUpdatesProgress }
             PropertyChanges { target: page; isBusy: true }
         },
         State {

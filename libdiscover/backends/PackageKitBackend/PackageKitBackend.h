@@ -74,6 +74,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
         QList<AppStream::Component> componentsById(const QString &id) const;
         void fetchUpdates();
+        int fetchingUpdatesProgress() const override;
 
     public Q_SLOTS:
         void reloadPackageList();
@@ -120,6 +121,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QSet<QString> m_packageNamesToFetchDetails;
         Packages m_packages;
         QSharedPointer<OdrsReviewsBackend> m_reviews;
+        QPointer<PackageKit::Transaction> m_getUpdatesTransaction;
 };
 
 #endif // PACKAGEKITBACKEND_H

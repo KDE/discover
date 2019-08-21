@@ -42,7 +42,6 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     public:
         explicit ResourcesUpdatesModel(QObject* parent = nullptr);
 
-        quint64 downloadSpeed() const;
         Q_SCRIPTABLE void prepare();
 
         bool isProgressing() const;
@@ -64,6 +63,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void resourceProgressed(AbstractResource* resource, qreal progress, AbstractBackendUpdater::State state);
         void passiveMessage(const QString &message);
         void needsRebootChanged();
+        void fetchingUpdatesProgressChanged(int percent);
 
     public Q_SLOTS:
         void updateAll();
@@ -74,7 +74,6 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
     private:
         void init();
-        void updateFinished();
         void setTransaction(UpdateTransaction* transaction);
 
         QVector<AbstractBackendUpdater*> m_updaters;

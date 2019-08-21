@@ -60,6 +60,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_PROPERTY(QVariantList applicationBackends READ applicationBackendsVariant NOTIFY backendsChanged)
     Q_PROPERTY(AbstractResourcesBackend* currentApplicationBackend READ currentApplicationBackend WRITE setCurrentApplicationBackend NOTIFY currentApplicationBackendChanged)
     Q_PROPERTY(QAction* updateAction READ updateAction CONSTANT)
+    Q_PROPERTY(int fetchingUpdatesProgress READ fetchingUpdatesProgress NOTIFY fetchingUpdatesProgressChanged)
     public:
         /** This constructor should be only used by unit tests.
          *  @p backendName defines what backend will be loaded when the backend is constructed.
@@ -86,6 +87,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         AbstractResourcesBackend* currentApplicationBackend() const;
 
         QAction* updateAction() const { return m_updateAction; }
+        int fetchingUpdatesProgress() const;
 
     public Q_SLOTS:
         void installApplication(AbstractResource* app, const AddonList& addons);
@@ -102,6 +104,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         void resourceRemoved(AbstractResource* resource);
         void passiveMessage(const QString &message);
         void currentApplicationBackendChanged(AbstractResourcesBackend* currentApplicationBackend);
+        void fetchingUpdatesProgressChanged();
 
     private Q_SLOTS:
         void callerFetchingChanged();

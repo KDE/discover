@@ -268,14 +268,17 @@ void PackageKitBackend::fetchUpdates()
     if (m_updater->isProgressing())
         return;
 
-    PackageKit::Transaction * tUpdates = PackageKit::Daemon::getUpdates();
-    connect(tUpdates, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesFinished);
-    connect(tUpdates, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
-    connect(tUpdates, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+    m_getUpdatesTransaction = PackageKit::Daemon::getUpdates();
+    connect(m_getUpdatesTransaction, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesFinished);
+    connect(m_getUpdatesTransaction, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
+    connect(m_getUpdatesTransaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+    connect(m_getUpdatesTransaction, &PackageKit::Transaction::percentageChanged, this, &PackageKitBackend::fetchingUpdatesProgressChanged);
     m_updatesPackageId.clear();
     m_hasSecurityUpdates = false;
 
     m_updater->setProgressing(true);
+    
+    fetchingUpdatesProgressChanged();
 }
 
 void PackageKitBackend::addPackageArch(PackageKit::Transaction::Info info, const QString& packageId, const QString& summary)
@@ -660,5 +663,19 @@ QString PackageKitBackend::displayName() const
 {
     return AppStreamIntegration::global()->osRelease()->prettyName();
 }
+
+int PackageKitBackend::fetchingUpdatesProgress() const
+{
+    if (!m_getUpdatesTransaction)
+        return 0;
+    
+    if (m_getUpdatesTransaction->status() == PackageKit::Transaction::StatusWait || m_getUpdatesTransaction->status() == PackageKit::Transaction::StatusUnknown) {
+        return m_getUpdatesTransaction->property("lastPercentage").toInt();
+    }
+    int percentage = percentageWithStatus(m_getUpdatesTransaction->status(), m_getUpdatesTransaction->percentage());
+    m_getUpdatesTransaction->setProperty("lastPercentage", percentage);
+    return percentage;
+}
+
 
 #include "PackageKitBackend.moc"
