@@ -142,8 +142,8 @@ DiscoverPage
             Layout.alignment: Qt.AlignHCenter
             visible: page.footerProgress === 0 && page.footerLabel !== ""
             source: "update-none"
-            opacity: 0.3
-            width: Kirigami.Units.gridUnit * 12
+            opacity: 0.1
+            width: Kirigami.Units.gridUnit * 8
             height: width
         }
         Button {
