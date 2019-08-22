@@ -17,7 +17,10 @@ DiscoverPage
 
     ResourcesUpdatesModel {
         id: resourcesUpdatesModel
-        onPassiveMessage: window.showPassiveNotification(message)
+        onPassiveMessage: {
+            desc.text += message + "<br/>\n"
+            sheet.sheetOpen = true
+        }
         onIsProgressingChanged: {
             if (!isProgressing) {
                 resourcesUpdatesModel.prepare()
@@ -28,6 +31,34 @@ DiscoverPage
             if (!isProgressing) {
                 resourcesUpdatesModel.prepare()
             }
+        }
+    }
+
+    Kirigami.OverlaySheet {
+        id: sheet
+        ColumnLayout {
+            Label {
+                id: desc
+                Layout.fillWidth: true
+                textFormat: Text.StyledText
+                wrapMode: Text.WordWrap
+            }
+
+            Button {
+                id: okButton
+                Layout.alignment: Qt.AlignRight
+                text: i18n("Proceed")
+                icon.name: "dialog-ok"
+                onClicked: {
+                    sheet.sheetOpen = false
+                }
+            }
+        }
+
+        onSheetOpenChanged: if(!sheetOpen) {
+            desc.text = ""
+        } else {
+            okButton.focus = true
         }
     }
 
