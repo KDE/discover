@@ -128,6 +128,7 @@ DiscoverPage
             Layout.alignment: Qt.AlignHCenter
             horizontalAlignment: Text.AlignHCenter
             text: page.footerLabel
+            level: 3
         }
         ProgressBar {
             Layout.alignment: Qt.AlignHCenter

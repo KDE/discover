@@ -84,6 +84,7 @@ DiscoverPage
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignHCenter
                 text: xi18nc("@info", "Unable to load applications.<nl/>Please verify Internet connectivity.")
+                level: 3
             }
         }
     }
