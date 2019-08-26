@@ -28,7 +28,9 @@ Kirigami.OverlaySheet
 
         Label {
             visible: reviewDialog.backend.userName.length > 0
-            text: visible ? i18n("Submission name: %1", reviewDialog.backend.userName) : ""
+            Layout.fillWidth: true
+            elide: Text.ElideRight
+            text: visible ? xi18nc("@info", "Submission name:<nl/>%1", reviewDialog.backend.userName) : ""
         }
         Label { text: i18n("Title:") }
         TextField {
