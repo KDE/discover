@@ -155,13 +155,13 @@ void OdrsReviewsBackend::reviewsFetched()
 {
     QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
     QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(reply);
+    const QByteArray data = reply->readAll();
     if (reply->error() != QNetworkReply::NoError) {
-        qCWarning(LIBDISCOVER_LOG) << "error fetching reviews:" << reply->errorString();
+        qCWarning(LIBDISCOVER_LOG) << "error fetching reviews:" << reply->errorString() << data;
         m_isFetching = false;
         return;
     }
 
-    QByteArray data = reply->readAll();
     const QJsonDocument document = QJsonDocument::fromJson(data);
     AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
     Q_ASSERT(resource);
