@@ -241,7 +241,7 @@ void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summ
 
     const QJsonDocument document(map);
 
-    QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
+    QNetworkAccessManager *accessManager = nam();
     QNetworkRequest request(QUrl(QStringLiteral(APIURL "/submit")));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
