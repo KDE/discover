@@ -138,7 +138,7 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
             {QStringLiteral("user_hash"), userHash()},
             {QStringLiteral("version"), app->isInstalled() ? app->installedVersion() : app->availableVersion()},
             {QStringLiteral("locale"), QLocale::system().name()},
-            {QStringLiteral("limit"), 0}
+            {QStringLiteral("limit"), -1}
     });
 
     QNetworkRequest request(QUrl(QStringLiteral(APIURL "/fetch")));
@@ -241,7 +241,7 @@ void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summ
 
     const QJsonDocument document(map);
 
-    QNetworkAccessManager *accessManager = new QNetworkAccessManager(this);
+    QNetworkAccessManager *accessManager = nam();
     QNetworkRequest request(QUrl(QStringLiteral(APIURL "/submit")));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
