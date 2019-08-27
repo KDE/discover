@@ -138,7 +138,7 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
             {QStringLiteral("user_hash"), userHash()},
             {QStringLiteral("version"), app->isInstalled() ? app->installedVersion() : app->availableVersion()},
             {QStringLiteral("locale"), QLocale::system().name()},
-            {QStringLiteral("limit"), 0}
+            {QStringLiteral("limit"), -1}
     });
 
     QNetworkRequest request(QUrl(QStringLiteral(APIURL "/fetch")));
