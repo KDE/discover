@@ -31,6 +31,8 @@
 
 class KJob;
 class AbstractResourcesBackend;
+class CachedNetworkAccessManager;
+
 class DISCOVERCOMMON_EXPORT OdrsReviewsBackend : public AbstractReviewsBackend
 {
 Q_OBJECT
@@ -69,7 +71,7 @@ private:
 
     QHash<QString, Rating*> m_ratings;
     bool m_isFetching;
-    QNetworkAccessManager* m_delayedNam = nullptr;
+    CachedNetworkAccessManager* m_delayedNam = nullptr;
 };
 
 #endif // ODRSREVIEWSBACKEND_H

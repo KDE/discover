@@ -74,6 +74,13 @@
 
 #include "discoversettings.h"
 
+class CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
+{
+    virtual QNetworkAccessManager * create(QObject *parent) override {
+        return new CachedNetworkAccessManager(QStringLiteral("images"), parent);
+    }
+};
+
 class OurSortFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
 {
     Q_OBJECT

@@ -21,6 +21,7 @@
 
 #include "OdrsReviewsBackend.h"
 #include "AppStreamIntegration.h"
+#include "CachedNetworkAccessManager.h"
 
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/Rating.h>
@@ -116,22 +117,6 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
     Q_UNUSED(page)
     m_isFetching = true;
 
-    // Check cached reviews
-    const QString fileName = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/reviews/%1.json").arg(app->appstreamId());
-    if (QFileInfo::exists(fileName)) {
-        QFileInfo file(fileName);
-        // Check if the reviews are not older than a week               msecs * secs * hours * days
-        if (file.lastModified().msecsTo(QDateTime::currentDateTime()) < 1000 * 60 * 60 * 24 * 7 ) {
-            QFile reviewFile(fileName);
-            if (reviewFile.open(QIODevice::ReadOnly)) {
-                QByteArray reviews = reviewFile.readAll();
-                QJsonDocument document = QJsonDocument::fromJson(reviews);
-                parseReviews(document, app);
-                return;
-            }
-        }
-    }
-
     const QJsonDocument document(QJsonObject{
             {QStringLiteral("app_id"), app->appstreamId()},
             {QStringLiteral("distro"), osName()},
@@ -141,13 +126,14 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
             {QStringLiteral("limit"), -1}
     });
 
+    const auto json = document.toJson(QJsonDocument::Compact);
     QNetworkRequest request(QUrl(QStringLiteral(APIURL "/fetch")));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
-    request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
+    request.setHeader(QNetworkRequest::ContentLengthHeader, json.size());
     // Store reference to the app for which we request reviews
     request.setOriginatingObject(app);
 
-    auto reply = nam()->post(request, document.toJson());
+    auto reply = nam()->post(request, json);
     connect(reply, &QNetworkReply::finished, this, &OdrsReviewsBackend::reviewsFetched);
 }
 
@@ -166,20 +152,6 @@ void OdrsReviewsBackend::reviewsFetched()
     AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
     Q_ASSERT(resource);
     parseReviews(document, resource);
-    // Store reviews to cache so we don't need to download them all the time
-    if (document.array().isEmpty()) {
-        return;
-    }
-
-    QJsonObject jsonObject = document.array().first().toObject();
-    if (jsonObject.isEmpty()) {
-        return;
-    }
-
-    QFile file(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/reviews/%1.json").arg(jsonObject.value(QStringLiteral("app_id")).toString()));
-    if (file.open(QIODevice::WriteOnly)) {
-        file.write(document.toJson());
-    }
 }
 
 Rating * OdrsReviewsBackend::ratingForApplication(AbstractResource *app) const
@@ -359,7 +331,7 @@ void OdrsReviewsBackend::emitRatingFetched(AbstractResourcesBackend* b, const QL
 QNetworkAccessManager * OdrsReviewsBackend::nam()
 {
     if (!m_delayedNam) {
-        m_delayedNam = new QNetworkAccessManager(this);
+        m_delayedNam = new CachedNetworkAccessManager(QStringLiteral("odrs"), this);
     }
     return m_delayedNam;
 }

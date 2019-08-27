@@ -26,18 +26,13 @@
 #include <QQmlNetworkAccessManagerFactory>
 #include <KIO/AccessManager>
 
-class CachedNetworkAccessManager : public KIO::AccessManager
+class Q_DECL_EXPORT CachedNetworkAccessManager : public KIO::AccessManager
 {
     Q_OBJECT
 public:
     explicit CachedNetworkAccessManager(const QString &path, QObject *parent = nullptr);
 
     virtual QNetworkReply * createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = nullptr) override;
-};
-
-class CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
-{
-    virtual QNetworkAccessManager * create(QObject *parent) override;
 };
 
 #endif // CACHEDNETWORKACCESSMANAGER_H

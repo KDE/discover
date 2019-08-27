@@ -35,6 +35,7 @@ set(discovercommon_SRCS
     DiscoverBackendsFactory.cpp
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp
+    CachedNetworkAccessManager.cpp
 )
 
 ecm_qt_declare_logging_category(discovercommon_SRCS HEADER libdiscover_debug.h IDENTIFIER LIBDISCOVER_LOG CATEGORY_NAME org.kde.plasma.libdiscover)
@@ -65,8 +66,8 @@ LINK_PUBLIC
     KF5::ItemModels
 LINK_PRIVATE
     Qt5::Xml
-    KF5::KIOCore
     KF5::CoreAddons
+    KF5::KIOWidgets # KIO/AccessManager
 )
 add_library(Discover::Common ALIAS DiscoverCommon)
 

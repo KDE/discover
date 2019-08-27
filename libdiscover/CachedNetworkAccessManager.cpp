@@ -44,8 +44,3 @@ QNetworkReply * CachedNetworkAccessManager::createRequest(Operation op, const QN
     return QNetworkAccessManager::createRequest(op, request, outgoingData);
 }
 
-QNetworkAccessManager * CachedNetworkAccessManagerFactory::create(QObject *parent)
-{
-    return new CachedNetworkAccessManager(QStringLiteral("images"), parent);
-}
-
