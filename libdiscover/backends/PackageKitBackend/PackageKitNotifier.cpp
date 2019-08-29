@@ -66,7 +66,8 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
             if (!ok || days == 0) {
                 regularCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
                 regularCheck->start();
-                qWarning() << "couldn't understand value for timer:" << value;
+                if (!value.isEmpty())
+                    qWarning() << "couldn't understand value for timer:" << value;
             }
 
             //if the setting is not empty, refresh will be carried out by unattended-upgrade
