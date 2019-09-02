@@ -64,7 +64,7 @@ Kirigami.ApplicationWindow
     }
     TopLevelPageData {
         id: installedAction
-        iconName: "view-list-symbolic"
+        iconName: "view-list-details"
         text: i18n("Installed")
         component: topInstalledComp
         objectName: "installed"
