@@ -70,7 +70,7 @@ void DummyBackend::populate(const QString& n)
     }
 
     for(int i=start; i<start+m_startElements; i++) {
-        const QString name = QStringLiteral("addon")+QString::number(i);
+        const QString name = QLatin1String("addon")+QString::number(i);
         DummyResource* res = new DummyResource(name, AbstractResource::Addon, this);
         res->setState(AbstractResource::State(1+(i%3)));
         res->setSize(300+(m_startElements-i));
@@ -79,7 +79,7 @@ void DummyBackend::populate(const QString& n)
     }
 
     for(int i=start; i<start+m_startElements; i++) {
-        const QString name = QStringLiteral("techie")+QString::number(i);
+        const QString name = QLatin1String("techie")+QString::number(i);
         DummyResource* res = new DummyResource(name, AbstractResource::Technical, this);
         res->setState(AbstractResource::State(1+(i%3)));
         res->setSize(300+(m_startElements-i));

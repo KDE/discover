@@ -228,7 +228,7 @@ QString AbstractResource::categoryDisplay() const
         ret.append(cat->name());
     }
     ret.sort();
-    return ret.join(QStringLiteral(", "));
+    return ret.join(QLatin1String(", "));
 }
 
 QUrl AbstractResource::url() const

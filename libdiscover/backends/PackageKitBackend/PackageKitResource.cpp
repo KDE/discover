@@ -236,7 +236,7 @@ void PackageKitResource::fetchUpdateDetails()
 static void addIfNotEmpty(const QString& title, const QString& content, QString& where)
 {
     if (!content.isEmpty())
-        where += QStringLiteral("<p><b>") + title + QStringLiteral("</b>&nbsp;") + QString(content).replace(QStringLiteral("\n"), QStringLiteral("<br />")) + QStringLiteral("</p>");
+        where += QLatin1String("<p><b>") + title + QLatin1String("</b>&nbsp;") + QString(content).replace(QLatin1Char('\n'), QLatin1String("<br />")) + QLatin1String("</p>");
 }
 
 QString PackageKitResource::joinPackages(const QStringList& pkgids, const QString &_sep, const QString &shadowPackage)
@@ -293,7 +293,7 @@ void PackageKitResource::updateDetail(const QString& packageID, const QStringLis
     addIfNotEmpty(i18n("Restart:"), PackageKitMessages::restartMessage(restart), info);
 
     if (!vendorUrls.isEmpty())
-        addIfNotEmpty(i18n("Vendor:"), urlToLinks(vendorUrls).join(QStringLiteral(", ")), info);
+        addIfNotEmpty(i18n("Vendor:"), urlToLinks(vendorUrls).join(QLatin1String(", ")), info);
 
     emit changelogFetched(changelog() + info);
 }

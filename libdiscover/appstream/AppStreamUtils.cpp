@@ -55,7 +55,7 @@ QString AppStreamUtils::changelogToHtml(const AppStream::Component& appdata)
     if (release.description().isEmpty())
         return {};
 
-    QString changelog = QStringLiteral("<h3>") + release.version() + QStringLiteral("</h3>")
+    QString changelog = QLatin1String("<h3>") + release.version() + QLatin1String("</h3>")
                       + QStringLiteral("<p>") + release.description() + QStringLiteral("</p>");
     return changelog;
 }

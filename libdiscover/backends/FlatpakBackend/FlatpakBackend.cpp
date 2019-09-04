@@ -513,7 +513,7 @@ FlatpakResource * FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
         return nullptr;
     }
 
-    if (gpgKey.startsWith(QStringLiteral("http://")) || gpgKey.startsWith(QStringLiteral("https://"))) {
+    if (gpgKey.startsWith(QLatin1String("http://")) || gpgKey.startsWith(QLatin1String("https://"))) {
         return nullptr;
     }
 
@@ -1144,7 +1144,7 @@ bool FlatpakBackend::flatpakResourceLessThan(AbstractResource* l, AbstractResour
 ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     if (filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakrepo")) || filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakref")) || filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpak"))) {
-        auto stream = new ResultsStream(QStringLiteral("FlatpakStream-http-")+filter.resourceUrl.fileName());
+        auto stream = new ResultsStream(QLatin1String("FlatpakStream-http-")+filter.resourceUrl.fileName());
 
         FlatpakFetchRemoteResourceJob *fetchResourceJob = new FlatpakFetchRemoteResourceJob(filter.resourceUrl, this);
         connect(fetchResourceJob, &FlatpakFetchRemoteResourceJob::jobFinished, this, [fetchResourceJob, stream] (bool success, FlatpakResource *resource) {

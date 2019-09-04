@@ -117,7 +117,7 @@ void FlatpakTransactionThread::run()
                                               refName.toUtf8().constData(),
                                               nullptr, nullptr, &localError);
         } else {
-            if (m_app->flatpakFileType() == QStringLiteral("flatpak")) {
+            if (m_app->flatpakFileType() == QLatin1String("flatpak")) {
                 g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
                 if (!file) {
                     qWarning() << "Failed to install bundled application" << refName;

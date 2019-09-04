@@ -507,7 +507,7 @@ ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filte
     } else if ((m_hasApplications && !filter.category) // If there is no category defined, we are searching in the root, and should include only application results
               // If there /is/ a category, make sure we actually are one of those requested before searching
            || (filter.category && kContains(m_categories, [&filter](const QString& cat) { return filter.category->matchesCategoryName(cat); }))) {
-        auto r = new ResultsStream(QStringLiteral("KNS-search-")+name());
+        auto r = new ResultsStream(QLatin1String("KNS-search-")+name());
         searchStream(r, filter.search);
         return r;
     }
@@ -557,7 +557,7 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
     const auto providerid = pathParts.at(0);
     const auto entryid = pathParts.at(1);
 
-    auto stream = new ResultsStream(QStringLiteral("KNS-byname-")+entryid);
+    auto stream = new ResultsStream(QLatin1String("KNS-byname-")+entryid);
     auto start = [this, entryid, stream, providerid]() {
         m_responsePending = true;
         m_engine->fetchEntryById(entryid);

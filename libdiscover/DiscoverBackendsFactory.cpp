@@ -59,7 +59,7 @@ QVector<AbstractResourcesBackend*> DiscoverBackendsFactory::backend(const QStrin
 
 QVector<AbstractResourcesBackend*> DiscoverBackendsFactory::backendForFile(const QString& libname, const QString& name) const
 {
-    QPluginLoader* loader = new QPluginLoader(QStringLiteral("discover/") + libname, ResourcesModel::global());
+    QPluginLoader* loader = new QPluginLoader(QLatin1String("discover/") + libname, ResourcesModel::global());
 
     //     qCDebug(LIBDISCOVER_LOG) << "trying to load plugin:" << loader->fileName();
     AbstractResourcesBackendFactory* f = qobject_cast<AbstractResourcesBackendFactory*>(loader->instance());

@@ -409,7 +409,7 @@ FlatpakResource::Id FlatpakResource::uniqueId() const
 
 void FlatpakResource::invokeApplication() const
 {
-    const QString desktopFile = installPath() + QStringLiteral("/export/share/applications/") + appstreamId();
+    const QString desktopFile = installPath() + QLatin1String("/export/share/applications/") + appstreamId();
     const QString runservice = QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice");
     if (QFile::exists(desktopFile) && QFile::exists(runservice)) {
         QProcess::startDetached(runservice, {desktopFile});

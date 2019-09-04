@@ -92,7 +92,7 @@ void FlatpakNotifier::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstall
         // FIXME right now I can't think of any other filter than this, in FlatpakBackend updates are matched
         // with apps so .Locale/.Debug subrefs are not shown and updated automatically. Also this will show
         // updates for refs we don't show in Discover if appstream metadata or desktop file for them is not found
-        if (refName.endsWith(QStringLiteral(".Locale")) || refName.endsWith(QStringLiteral(".Debug"))) {
+        if (refName.endsWith(QLatin1String(".Locale")) || refName.endsWith(QLatin1String(".Debug"))) {
             continue;
         }
         hasUpdates = true;

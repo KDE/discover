@@ -69,7 +69,7 @@ void Category::parseData(const QString& path, const QDomNode& data)
         } else if (tempElement.tagName() == QLatin1String("Image")) {
             m_decoration = QUrl(tempElement.text());
             if (m_decoration.isRelative()) {
-                m_decoration = QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("discover/") + tempElement.text()));
+                m_decoration = QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("discover/") + tempElement.text()));
                 if (m_decoration.isEmpty())
                     qCWarning(LIBDISCOVER_LOG) << "couldn't find category decoration" << tempElement.text();
             }
