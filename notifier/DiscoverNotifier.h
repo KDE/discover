@@ -62,7 +62,6 @@ public:
     bool needsReboot() const { return m_needsReboot; }
 
 public Q_SLOTS:
-    void configurationChanged();
     void recheckSystemUpdateNeeded();
     void showDiscover();
     void showDiscoverUpdates();
@@ -80,7 +79,6 @@ private:
     void updateStatusNotifier();
 
     QList<BackendNotifierModule*> m_backends;
-    bool m_verbose = false;
     QTimer m_timer;
     bool m_hasSecurityUpdates = false;
     bool m_hasUpdates = false;

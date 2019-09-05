@@ -36,8 +36,6 @@
 DiscoverNotifier::DiscoverNotifier(QObject * parent)
     : QObject(parent)
 {
-    configurationChanged();
-
     m_backends = BackendNotifierFactory().allBackends();
     foreach(BackendNotifierModule* module, m_backends) {
         connect(module, &BackendNotifierModule::foundUpdates, this, &DiscoverNotifier::updateStatusNotifier);
@@ -62,14 +60,6 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
 }
 
 DiscoverNotifier::~DiscoverNotifier() = default;
-
-void DiscoverNotifier::configurationChanged()
-{
-    KConfig notifierConfig(QStringLiteral("plasma-discover-notifierrc"), KConfig::NoGlobals);
-
-    KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");
-    m_verbose = notifyTypeGroup.readEntry("Verbose", false);
-}
 
 void DiscoverNotifier::showDiscover()
 {
