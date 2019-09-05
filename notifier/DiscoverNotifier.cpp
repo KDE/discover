@@ -56,7 +56,7 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
     updateStatusNotifier();
 
     //Only fetch updates after the system is comfortably booted
-    QTimer::singleShot(10000, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
+    QTimer::singleShot(20000, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
 }
 
 DiscoverNotifier::~DiscoverNotifier() = default;
