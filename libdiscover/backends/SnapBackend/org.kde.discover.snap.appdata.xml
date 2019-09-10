@@ -88,4 +88,7 @@
   <developer_name xml:lang="x-test">xxAleix Pol Gonzalezxx</developer_name>
   <developer_name xml:lang="zh-CN">Aleix Pol Gonzalez</developer_name>
   <icon type="stock">system-software-install</icon>
+  <releases>
+    <release version="5.12.9" date="2019-09-10"/>
+  </releases>
 </component>
