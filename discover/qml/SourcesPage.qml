@@ -38,68 +38,63 @@ DiscoverPage {
             width: sourcesView.width
             label: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
 
-            customItems: [
-                RowLayout {
-                    id: sourceTitleLayout
-                    Connections {
-                        target: backendItem.backend
-                        onPassiveMessage: window.showPassiveNotification(message)
-                        onProceedRequest: {
-                            var dialog = sourceProceedDialog.createObject(window, {sourcesBackend: backendItem.backend, title: title, description: description})
-                            dialog.open()
-                        }
-                    }
+            Connections {
+                target: backendItem.backend
+                onPassiveMessage: window.showPassiveNotification(message)
+                onProceedRequest: {
+                    var dialog = sourceProceedDialog.createObject(window, {sourcesBackend: backendItem.backend, title: title, description: description})
+                    dialog.open()
+                }
+            }
 
-                    Instantiator {
-                        id: backendActionsInst
-                        model: ActionsModel {
-                            actions: backendItem.backend ? backendItem.backend.actions : undefined
-                        }
-                        delegate: Button {
-                            parent: sourceTitleLayout
-                            Layout.column: 1
-                            text: modelData.text
-                            icon.name: app.iconName(modelData.icon)
-                            ToolTip.visible: hovered
-                            ToolTip.text: modelData.toolTip
-                            onClicked: modelData.trigger()
-                        }
-                        onObjectRemoved: {
-                            object.destroy()
-                        }
-                    }
+            Instantiator {
+                id: backendActionsInst
+                model: ActionsModel {
+                    actions: backendItem.backend ? backendItem.backend.actions : undefined
+                }
+                delegate: Button {
+                    parent: backendItem
+                    Layout.column: 1
+                    text: modelData.text
+                    icon.name: app.iconName(modelData.icon)
+                    ToolTip.visible: hovered
+                    ToolTip.text: modelData.toolTip
+                    onClicked: modelData.trigger()
+                }
+                onObjectRemoved: {
+                    object.destroy()
+                }
+            }
 
-                    Button {
-                        text: i18n("Add Source...")
-                        icon.name: "list-add"
-                        visible: backendItem.backend && backendItem.backend.supportsAdding
+            Button {
+                text: i18n("Add Source...")
+                icon.name: "list-add"
+                visible: backendItem.backend && backendItem.backend.supportsAdding
 
-                        Component {
-                            id: dialogComponent
-                            AddSourceDialog {
-                                source: backendItem.backend
-                                onVisibleChanged: if (!visible) {
-                                    destroy()
-                                }
-                            }
+                Component {
+                    id: dialogComponent
+                    AddSourceDialog {
+                        source: backendItem.backend
+                        onVisibleChanged: if (!visible) {
+                            destroy()
                         }
-
-                        onClicked: {
-                            var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
-                            addSourceDialog.open()
-                        }
-                    }
-
-                    Button {
-                        visible: resourcesBackend && resourcesBackend.hasApplications
-
-                        enabled: !backendItem.isDefault
-                        text: i18n("Make default")
-                        icon.name: "favorite"
-                        onClicked: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
                     }
                 }
-            ]
+
+                onClicked: {
+                    var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
+                    addSourceDialog.open()
+                }
+            }
+
+            Button {
+                visible: resourcesBackend && resourcesBackend.hasApplications
+
+                enabled: !backendItem.isDefault
+                text: i18n("Make default")
+                icon.name: "favorite"
+                onClicked: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
+            }
         }
 
         Component {
