@@ -21,7 +21,7 @@
 #include "ScreenshotsModel.h"
 #include <resources/AbstractResource.h>
 #include "libdiscover_debug.h"
-// #include <tests/modeltest.h>
+// #include <QAbstractItemModelTester>
 
 ScreenshotsModel::ScreenshotsModel(QObject* parent)
     : QAbstractListModel(parent)

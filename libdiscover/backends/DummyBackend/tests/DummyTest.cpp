@@ -22,7 +22,7 @@
 #include "DiscoverBackendsFactory.h"
 #include <resources/ResourcesUpdatesModel.h>
 #include <UpdateModel/UpdateModel.h>
-#include <tests/modeltest.h>
+#include <QAbstractItemModelTester>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
 #include <resources/AbstractBackendUpdater.h>
@@ -196,7 +196,7 @@ void DummyTest::testInstallAddons()
     QVERIFY(res);
 
     ApplicationAddonsModel m;
-    new ModelTest(&m, &m);
+    new QAbstractItemModelTester(&m, &m);
     m.setApplication(res);
     QCOMPARE(m.rowCount(), res->addonsInformation().count());
     QCOMPARE(res->addonsInformation().at(0).isInstalled(), false);
@@ -236,7 +236,7 @@ void DummyTest::testReviewsModel()
     QVERIFY(res);
 
     ReviewsModel m;
-    new ModelTest(&m, &m);
+    new QAbstractItemModelTester(&m, &m);
     m.setResource(res);
     m.fetchMore();
 
@@ -263,9 +263,9 @@ void DummyTest::testUpdateModel()
     const auto backend = m_model->backends().first();
 
     ResourcesUpdatesModel ruModel;
-    new ModelTest(&ruModel, &ruModel);
+    new QAbstractItemModelTester(&ruModel, &ruModel);
     UpdateModel model;
-    new ModelTest(&model, &model);
+    new QAbstractItemModelTester(&model, &model);
     model.setBackend(&ruModel);
 
     QCOMPARE(model.rowCount(), 4*backend->property("startElements").toInt()/3);
@@ -278,7 +278,7 @@ void DummyTest::testScreenshotsModel()
     filter.resourceUrl = QUrl(QStringLiteral("dummy://Dummy.1"));
 
     ScreenshotsModel m;
-    new ModelTest(&m, &m);
+    new QAbstractItemModelTester(&m, &m);
 
     const auto resources = fetchResources(m_appBackend->search(filter));
     QCOMPARE(resources.count(), 1);

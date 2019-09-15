@@ -63,7 +63,7 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
         })
     , m_currentStream(nullptr)
 {
-//     new ModelTest(this, this);
+//     new QAbstractItemModelTester(this, this);
 
     connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &ResourcesProxyModel::invalidateFilter);
     connect(ResourcesModel::global(), &ResourcesModel::backendDataChanged, this, &ResourcesProxyModel::refreshBackend);

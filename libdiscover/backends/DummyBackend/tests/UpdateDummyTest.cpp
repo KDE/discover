@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "DummyTest.h"
-#include <tests/modeltest.h>
+#include <QAbstractItemModelTester>
 #include <KFormat>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
@@ -69,10 +69,10 @@ private Q_SLOTS:
     void testInformation()
     {
         ResourcesUpdatesModel* rum = new ResourcesUpdatesModel(this);
-        new ModelTest(rum, rum);
+        new QAbstractItemModelTester(rum, rum);
 
         UpdateModel* m = new UpdateModel(this);
-        new ModelTest(m, m);
+        new QAbstractItemModelTester(m, m);
         m->setBackend(rum);
 
         rum->prepare();
@@ -93,10 +93,10 @@ private Q_SLOTS:
     void testUpdate()
     {
         ResourcesUpdatesModel* rum = new ResourcesUpdatesModel(this);
-        new ModelTest(rum, rum);
+        new QAbstractItemModelTester(rum, rum);
 
         UpdateModel* m = new UpdateModel(this);
-        new ModelTest(m, m);
+        new QAbstractItemModelTester(m, m);
         m->setBackend(rum);
 
         rum->prepare();
@@ -147,10 +147,10 @@ private Q_SLOTS:
 
         QTest::qWait(20);
         QScopedPointer<ResourcesUpdatesModel> rum2(new ResourcesUpdatesModel(this));
-        new ModelTest(rum2.data(), rum2.data());
+        new QAbstractItemModelTester(rum2.data(), rum2.data());
 
         QScopedPointer<UpdateModel> m2(new UpdateModel(this));
-        new ModelTest(m2.data(), m2.data());
+        new QAbstractItemModelTester(m2.data(), m2.data());
         m->setBackend(rum2.data());
 
         QCOMPARE(rum->isProgressing(), true);

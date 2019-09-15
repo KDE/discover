@@ -19,7 +19,7 @@
 
 #include <QtTest>
 #include "../PaginateModel.h"
-#include <tests/modeltest.h>
+#include <QAbstractItemModelTester>
 #include <QStandardItemModel>
 
 class PaginateModelTest : public QObject
@@ -37,7 +37,7 @@ public:
 private Q_SLOTS:
     void testPages() {
         PaginateModel pm;
-        new ModelTest(&pm, &pm);
+        new QAbstractItemModelTester(&pm, &pm);
         pm.setSourceModel(m_testModel);
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 3);
@@ -63,7 +63,7 @@ private Q_SLOTS:
 
     void testPageSize() {
         PaginateModel pm;
-        new ModelTest(&pm, &pm);
+        new QAbstractItemModelTester(&pm, &pm);
         pm.setSourceModel(m_testModel);
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 3);
@@ -75,7 +75,7 @@ private Q_SLOTS:
 
     void testItemAdded() {
         PaginateModel pm;
-        new ModelTest(&pm, &pm);
+        new QAbstractItemModelTester(&pm, &pm);
         pm.setSourceModel(m_testModel);
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 3);
@@ -100,7 +100,7 @@ private Q_SLOTS:
         QStandardItemModel smallerModel;
 
         PaginateModel pm;
-        new ModelTest(&pm, &pm);
+        new QAbstractItemModelTester(&pm, &pm);
         pm.setSourceModel(&smallerModel);
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 1);
@@ -115,7 +115,7 @@ private Q_SLOTS:
 
     void testItemRemoved() {
         PaginateModel pm;
-        new ModelTest(&pm, &pm);
+        new QAbstractItemModelTester(&pm, &pm);
         pm.setSourceModel(m_testModel);
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 5);
@@ -131,7 +131,7 @@ private Q_SLOTS:
 
     void testMove() {
         PaginateModel pm;
-        new ModelTest(&pm, &pm);
+        new QAbstractItemModelTester(&pm, &pm);
         pm.setSourceModel(m_testModel);
         pm.setPageSize(5);
         m_testModel->moveRow({}, 0, {}, 3);
