@@ -265,28 +265,31 @@ DiscoverPage
                             elide: Text.ElideRight
                         }
 
-                        // Old and new version numbers; show when there's enough room
+                        // Version numbers
                         Label {
-                            id: oldAndNewVersions
                             Layout.fillWidth: true
                             elide: Text.ElideRight
-                            text: i18n("%1 → %2", installedVersion, availableVersion)
-                            visible: installedVersion && !truncated
-                            opacity: listItem.hovered? 0.8 : 0.6
-                        }
-                        // Available version only, for when old+new would be elided.
-                        // Use squeezey text to gain more room, and if it's still so
-                        // so long that it would be elided, elide from the left so
-                        // the most important part on the right is still visible
+                            text: {
+                                if (installedVersion == availableVersion && !truncated) {
+                                    // Update of the same version; show when old and new are
+                                    // the same (common with Flatpak runtimes)
+                                    return i18n("Update to version %1", availableVersion);
+                                } else if (installedVersion && availableVersion && !truncated) {
+                                    // Old and new version numbers; show when there's enough room
+                                    return i18n("%1 → %2", installedVersion, availableVersion);
+                                } else {
+                                    // Available version only, for when the installed version
+                                    // isn't available for some reason, or when old+new would be
+                                    // elided. Use squeezey text to gain more room, and if it's
+                                    // still so long that it would be elided, elide from the left
+                                    // so the most important part on the right is still visible
 
-                        // All of this is mostly for the benefit of KDE Neon users,
-                        // since the version strings there are really really long
-                        Label {
-                            Layout.fillWidth: true
-                            elide: Text.ElideLeft
-                            text: availableVersion
-                            visible: !oldAndNewVersions.visible
-                            font.letterSpacing: -0.5
+                                    // All of this is mostly for the benefit of KDE Neon users,
+                                    // since the version strings there are really really long
+                                    return availableVersion
+                                }
+                            }
+                            font.letterSpacing: truncated ? -0.5 : undefined
                             opacity: listItem.hovered? 0.8 : 0.6
                         }
                     }
