@@ -47,22 +47,18 @@ DiscoverPage {
                 }
             }
 
-            Instantiator {
+            Repeater {
                 id: backendActionsInst
                 model: ActionsModel {
                     actions: backendItem.backend ? backendItem.backend.actions : undefined
                 }
                 delegate: Button {
-                    parent: backendItem
                     Layout.column: 1
                     text: modelData.text
                     icon.name: app.iconName(modelData.icon)
                     ToolTip.visible: hovered
                     ToolTip.text: modelData.toolTip
                     onClicked: modelData.trigger()
-                }
-                onObjectRemoved: {
-                    object.destroy()
                 }
             }
 
