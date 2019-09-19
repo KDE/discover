@@ -490,11 +490,6 @@ void DiscoverObject::showPassiveNotification(const QString& msg)
     });
 }
 
-void DiscoverObject::copyTextToClipboard(const QString& text)
-{
-    qGuiApp->clipboard()->setText(text);
-}
-
 void DiscoverObject::reboot()
 {
     QDBusInterface interface(QStringLiteral("org.kde.ksmserver"), QStringLiteral("/KSMServer"), QStringLiteral("org.kde.KSMServerInterface"), QDBusConnection::sessionBus());

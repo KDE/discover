@@ -69,8 +69,6 @@ class DiscoverObject : public QObject
         void openMode(const QString& mode);
         void openLocalPackage(const QUrl &localfile);
 
-        void copyTextToClipboard(const QString &text);
-
         void reboot();
 
     private Q_SLOTS:
