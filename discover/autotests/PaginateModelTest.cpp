@@ -20,17 +20,26 @@
 #include <QtTest>
 #include "../PaginateModel.h"
 #include <QAbstractItemModelTester>
-#include <QStandardItemModel>
+#include <QStringListModel>
+
+void insertRow(QStringListModel* model, int row, const QString& appendString) {
+    model->insertRow(row);
+    model->setData(model->index(row, 0), appendString);
+}
+void appendRow(QStringListModel* model, const QString& appendString) {
+    int count = model->rowCount();
+    insertRow(model, count, appendString);
+}
 
 class PaginateModelTest : public QObject
 {
     Q_OBJECT
 public:
     PaginateModelTest()
-        : m_testModel(new QStandardItemModel)
+        : m_testModel(new QStringListModel)
     {
         for(int i=0; i<13; ++i) {
-            m_testModel->appendRow(new QStandardItem(QStringLiteral("figui%1").arg(i)));
+            appendRow(m_testModel, QStringLiteral("figui%1").arg(i));
         }
     }
 
@@ -80,24 +89,24 @@ private Q_SLOTS:
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 3);
         QSignalSpy spy(&pm, &QAbstractItemModel::rowsAboutToBeInserted);
-        m_testModel->insertRow(3, new QStandardItem(QStringLiteral("mwahahaha")));
-        m_testModel->insertRow(3, new QStandardItem(QStringLiteral("mwahahaha")));
+        insertRow(m_testModel, 3, QStringLiteral("mwahahaha"));
+        insertRow(m_testModel, 3, QStringLiteral("mwahahaha"));
         QCOMPARE(spy.count(), 0);
-        m_testModel->appendRow(new QStandardItem(QStringLiteral("mwahahaha")));
+        appendRow(m_testModel, QStringLiteral("mwahahaha"));
 
         pm.lastPage();
         for (int i=0; i<7; ++i)
-            m_testModel->appendRow(new QStandardItem(QStringLiteral("mwahahaha%1").arg(i)));
+            appendRow(m_testModel, QStringLiteral("mwahahaha%1").arg(i));
         QCOMPARE(spy.count(), 4);
         pm.firstPage();
 
         for (int i=0; i<7; ++i)
-            m_testModel->appendRow(new QStandardItem(QStringLiteral("faraway%1").arg(i)));
+            appendRow(m_testModel, QStringLiteral("faraway%1").arg(i));
         QCOMPARE(spy.count(), 4);
     }
 
     void testItemAddBeginning() {
-        QStandardItemModel smallerModel;
+        QStringListModel smallerModel;
 
         PaginateModel pm;
         new QAbstractItemModelTester(&pm, &pm);
@@ -105,7 +114,7 @@ private Q_SLOTS:
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 1);
         QCOMPARE(pm.rowCount(), 0);
-        smallerModel.insertRow(0, new QStandardItem(QStringLiteral("just one")));
+        insertRow(&smallerModel, 0, QStringLiteral("just one"));
         QCOMPARE(pm.pageCount(), 1);
         QCOMPARE(pm.rowCount(), 1);
         smallerModel.removeRow(0);
@@ -138,7 +147,7 @@ private Q_SLOTS:
     }
 
 private:
-    QStandardItemModel* const m_testModel;
+    QStringListModel* const m_testModel;
 };
 
 QTEST_MAIN( PaginateModelTest )
