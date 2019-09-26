@@ -76,25 +76,14 @@ Kirigami.GlobalDrawer {
             preferredHeight: 40 // Match Kirigami.ToolBarApplicationHeader, which is hardcoded to this
 
             RowLayout {
-                width: parent.width
-                anchors.centerIn: parent
-
-                ToolButton {
-                    Layout.leftMargin: Kirigami.Units.smallSpacing
-
-                    icon.name: "go-home"
-                    onClicked: Navigation.openHome()
-
-                    ToolTip {
-                        text: i18n("Return to the Featured page")
-                    }
-                }
+                anchors.fill: parent
+                anchors.leftMargin: Kirigami.Units.smallSpacing
+                anchors.rightMargin: Kirigami.Units.smallSpacing
 
                 SearchField {
                     id: searchField
 
                     Layout.fillWidth: true
-                    Layout.rightMargin: Kirigami.Units.smallSpacing
 
                     visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
 
@@ -117,6 +106,16 @@ Kirigami.GlobalDrawer {
                             curr.search = currentSearchText;
                             curr.forceActiveFocus()
                         }
+                    }
+                }
+
+                ToolButton {
+
+                    icon.name: "go-home"
+                    onClicked: Navigation.openHome()
+
+                    ToolTip {
+                        text: i18n("Return to the Featured page")
                     }
                 }
             }
