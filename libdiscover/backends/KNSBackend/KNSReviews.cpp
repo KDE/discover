@@ -72,7 +72,7 @@ void KNSReviews::fetchReviews(AbstractResource* app, int page)
         emit reviewsReady(app, {}, false);
         return;
     }
-    job->setProperty("app", qVariantFromValue<AbstractResource*>(app));
+    job->setProperty("app", QVariant::fromValue<AbstractResource*>(app));
     connect(job, &Attica::BaseJob::finished, this, &KNSReviews::commentsReceived);
     job->start();
     m_fetching++;

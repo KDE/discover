@@ -58,7 +58,7 @@ void SourcesModel::addSourcesBackend(AbstractSourcesBackend* sources)
 
     auto m = sources->sources();
     m->setProperty(DisplayName, backend->displayName());
-    m->setProperty(SourcesBackendId, qVariantFromValue<QObject*>(sources));
+    m->setProperty(SourcesBackendId, QVariant::fromValue<QObject*>(sources));
     addSourceModel(m);
 
     if (!m->rowCount())

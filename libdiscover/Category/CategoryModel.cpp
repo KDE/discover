@@ -73,7 +73,7 @@ void CategoryModel::populateCategories()
 
 QVariantList CategoryModel::rootCategoriesVL() const
 {
-    return kTransform<QVariantList>(m_rootCategories, [](Category* cat) {return qVariantFromValue<QObject*>(cat); });
+    return kTransform<QVariantList>(m_rootCategories, [](Category* cat) {return QVariant::fromValue<QObject*>(cat); });
 }
 
 void CategoryModel::blacklistPlugin(const QString &name)

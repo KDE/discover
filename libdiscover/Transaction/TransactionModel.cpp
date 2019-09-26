@@ -109,9 +109,9 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
         }
         break;
     case TransactionRole:
-        return qVariantFromValue<QObject*>(trans);
+        return QVariant::fromValue<QObject*>(trans);
     case ResourceRole:
-        return qVariantFromValue<QObject*>(trans->resource());
+        return QVariant::fromValue<QObject*>(trans->resource());
     }
 
     return QVariant();
