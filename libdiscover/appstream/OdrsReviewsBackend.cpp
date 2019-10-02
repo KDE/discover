@@ -290,7 +290,7 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                 const int usefulFavorable = review.value(QStringLiteral("karma_up")).toInt();
                 const int usefulTotal = review.value(QStringLiteral("karma_down")).toInt() + usefulFavorable;
                 QDateTime dateTime;
-                dateTime.setTime_t(review.value(QStringLiteral("date_created")).toInt());
+                dateTime.setSecsSinceEpoch(review.value(QStringLiteral("date_created")).toInt());
                 ReviewPtr r(new Review(review.value(QStringLiteral("app_id")).toString(), resource->packageName(),
                                        review.value(QStringLiteral("locale")).toString(), review.value(QStringLiteral("summary")).toString(),
                                        review.value(QStringLiteral("description")).toString(), review.value(QStringLiteral("user_display")).toString(),
