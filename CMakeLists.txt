@@ -31,8 +31,6 @@ find_package(AppStreamQt 0.11.1 CONFIG)
 find_package(KF5Attica 5.23 CONFIG)
 find_package(KF5NewStuff 5.53 CONFIG)
 
-set(CMAKE_AUTORCC ON)
-
 pkg_check_modules(Flatpak IMPORTED_TARGET flatpak>=0.11.8)
 pkg_check_modules(Fwupd IMPORTED_TARGET fwupd>=1.0.6)
 pkg_check_modules(Markdown IMPORTED_TARGET libmarkdown)
