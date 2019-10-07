@@ -92,7 +92,6 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     connect(&m_delayedDetailsFetch, &QTimer::timeout, this, &PackageKitBackend::performDetailsFetch);
 
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::restartScheduled, m_updater, &PackageKitUpdater::enableNeedsReboot);
-    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
         m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource*>>(m_packages.packages.values(), [] (AbstractResource* r) { return r; }));
@@ -107,13 +106,13 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 
     SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
 
-    reloadPackageList();
-
+    acquireFetching(true);
     setWhenAvailable(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache), [this](uint timeSince) {
         if (timeSince > 3600)
             checkForUpdates();
         else
             fetchUpdates();
+        acquireFetching(false);
     }, this);
 }
 
@@ -400,10 +399,11 @@ void PackageKitBackend::checkForUpdates()
     if (!m_refresher) {
         acquireFetching(true);
         m_refresher = PackageKit::Daemon::refreshCache(false);
+
         connect(m_refresher.data(), &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, [this]() {
             m_refresher = nullptr;
-            reloadPackageList();
+            fetchUpdates();
             acquireFetching(false);
         });
     } else {
