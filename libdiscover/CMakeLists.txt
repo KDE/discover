@@ -55,6 +55,11 @@ if(AppStreamQt_FOUND)
     else()
         target_compile_definitions(DiscoverCommon PRIVATE -DAPPSTREAM_HAS_SPDX=0)
     endif()
+    if(AppStreamQt_VERSION VERSION_GREATER 0.12.7)
+        target_compile_definitions(DiscoverCommon PRIVATE -DAPPSTREAM_HAS_SPDX_LICENSEURL=1)
+    else()
+        target_compile_definitions(DiscoverCommon PRIVATE -DAPPSTREAM_HAS_SPDX_LICENSEURL=0)
+    endif()
 endif()
 
 target_link_libraries(DiscoverCommon

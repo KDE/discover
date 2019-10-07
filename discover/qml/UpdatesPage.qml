@@ -171,7 +171,7 @@ DiscoverPage
         }
         Kirigami.Icon {
             Layout.alignment: Qt.AlignHCenter
-            visible: page.footerProgress === 0 && page.footerLabel !== ""
+            visible: page.footerProgress === 0 && page.footerLabel !== "" && !page.isBusy
             source: "update-none"
             opacity: 0.1
             width: Kirigami.Units.gridUnit * 8
@@ -342,8 +342,8 @@ DiscoverPage
 
     readonly property alias secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
     state:  ( resourcesUpdatesModel.isProgressing        ? "progressing"
-            : updateModel.hasUpdates                     ? "has-updates"
             : ResourcesModel.isFetching                  ? "fetching"
+            : updateModel.hasUpdates                     ? "has-updates"
             : resourcesUpdatesModel.needsReboot          ? "reboot"
             : secSinceUpdate < 0                         ? "unknown"
             : secSinceUpdate === 0                       ? "now-uptodate"
@@ -358,6 +358,7 @@ DiscoverPage
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching Updates...") }
             PropertyChanges { target: page; footerProgress: ResourcesModel.fetchingUpdatesProgress }
             PropertyChanges { target: page; isBusy: true }
+            PropertyChanges { target: updatesView; opacity: 0 }
         },
         State {
             name: "progressing"

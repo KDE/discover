@@ -87,11 +87,14 @@ QJsonArray AppStreamUtils::licenses(const AppStream::Component& appdata)
         license.remove(0, 1); //tokenize prefixes with an @ for some reason
         if (!AppStream::SPDX::isLicenseId(license))
             continue;
-
+#if APPSTREAM_HAS_SPDX_LICENSEURL
+        ret.append(QJsonObject{ {QStringLiteral("name"), license}, {QStringLiteral("url"), { AppStream::SPDX::licenseUrl(license) } }});
+#else
         if (license.startsWith(prop))
             ret.append(QJsonObject{ {QStringLiteral("name"), i18n("Proprietary")}, {QStringLiteral("url"), license.mid(prop.size())} });
         else
             ret.append(QJsonObject{ {QStringLiteral("name"), license}, {QStringLiteral("url"), { QLatin1String("https://spdx.org/licenses/") + AppStream::SPDX::asSpdxId(license) + QLatin1String(".html#licenseText") } }});
+#endif
     }
     return ret;
 #else
