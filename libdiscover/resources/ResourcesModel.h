@@ -61,6 +61,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_PROPERTY(AbstractResourcesBackend* currentApplicationBackend READ currentApplicationBackend WRITE setCurrentApplicationBackend NOTIFY currentApplicationBackendChanged)
     Q_PROPERTY(QAction* updateAction READ updateAction CONSTANT)
     Q_PROPERTY(int fetchingUpdatesProgress READ fetchingUpdatesProgress NOTIFY fetchingUpdatesProgressChanged)
+    Q_PROPERTY(QString applicationSourceName READ applicationSourceName NOTIFY currentApplicationBackendChanged)
     public:
         /** This constructor should be only used by unit tests.
          *  @p backendName defines what backend will be loaded when the backend is constructed.
@@ -80,6 +81,8 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
 
         AggregatedResultsStream* search(const AbstractResourcesBackend::Filters &search);
         void checkForUpdates();
+
+        QString applicationSourceName() const;
 
         QVariantList applicationBackendsVariant() const;
         QVector<AbstractResourcesBackend*> applicationBackends() const;

@@ -9,7 +9,7 @@ import "navigation.js" as Navigation
 DiscoverPage {
     id: page
     clip: true
-    title: i18n("Sources")
+    title: i18n("Settings")
     property string search: ""
 
     background: Rectangle {
@@ -17,6 +17,11 @@ DiscoverPage {
         Kirigami.Theme.colorSet: Kirigami.Theme.Window
         Kirigami.Theme.inherit: false
     }
+
+    contextualActions: [
+        submitStatisticsAction,
+        feedbackSettingsAction
+    ]
 
     mainItem: ListView {
         id: sourcesView

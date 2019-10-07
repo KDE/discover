@@ -391,8 +391,7 @@ void ResourcesModel::setCurrentApplicationBackend(AbstractResourcesBackend* back
 
 void ResourcesModel::initApplicationsBackend()
 {
-    KConfigGroup settings(KSharedConfig::openConfig(), "ResourcesModel");
-    const QString name = settings.readEntry<QString>("currentApplicationBackend", QStringLiteral("packagekit-backend"));
+    const auto name = applicationSourceName();
 
     const auto backends = applicationBackends();
     auto idx = kIndexOf(backends, [name](AbstractResourcesBackend* b) { return b->name() == name; });
@@ -402,7 +401,6 @@ void ResourcesModel::initApplicationsBackend()
     }
     setCurrentApplicationBackend(backends.value(idx, nullptr), false);
 }
-
 
 int ResourcesModel::fetchingUpdatesProgress() const
 {
@@ -414,4 +412,10 @@ int ResourcesModel::fetchingUpdatesProgress() const
         sum += backend->fetchingUpdatesProgress();
     }
     return sum / m_backends.count();
+}
+
+QString ResourcesModel::applicationSourceName() const
+{
+    KConfigGroup settings(KSharedConfig::openConfig(), "ResourcesModel");
+    return settings.readEntry<QString>("currentApplicationBackend", QStringLiteral("packagekit-backend"));
 }

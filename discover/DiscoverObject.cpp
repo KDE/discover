@@ -72,6 +72,7 @@
 #include <utils.h>
 #include <QMimeDatabase>
 
+#include "plasmauserfeedback.h"
 #include "discoversettings.h"
 
 class CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
@@ -112,6 +113,7 @@ DiscoverObject::DiscoverObject(CompactMode mode)
     qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
     qmlRegisterType<OurSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
 
+    qmlRegisterSingletonType<PlasmaUserFeedback>("org.kde.discover.app", 1, 0, "UserFeedbackSettings", [](QQmlEngine*, QJSEngine*) -> QObject* { return new PlasmaUserFeedback(KSharedConfig::openConfig(QStringLiteral("PlasmaUserFeedback"), KConfig::NoGlobals)); });
     qmlRegisterSingletonType<DiscoverSettings>("org.kde.discover.app", 1, 0, "DiscoverSettings", [](QQmlEngine*, QJSEngine*) -> QObject* {
             auto r = new DiscoverSettings;
             connect(r, &DiscoverSettings::installedPageSortingChanged, r, &DiscoverSettings::save);

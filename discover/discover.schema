@@ -1,0 +1,329 @@
+{
+    "aggregation": [
+        {
+            "elements": [
+                {
+                    "schemaEntry": "",
+                    "schemaEntryElement": "",
+                    "type": "value"
+                }
+            ],
+            "name": "CPU Architecture Distribution",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "",
+                    "schemaEntryElement": "",
+                    "type": "value"
+                }
+            ],
+            "name": "CPU Count Distribution",
+            "type": "numeric"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "",
+                    "schemaEntryElement": "",
+                    "type": "value"
+                }
+            ],
+            "name": "OS Distribution",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "",
+                    "schemaEntryElement": "",
+                    "type": "value"
+                },
+                {
+                    "schemaEntry": "",
+                    "schemaEntryElement": "",
+                    "type": "value"
+                }
+            ],
+            "name": "Platform Details",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "style",
+                    "schemaEntryElement": "style",
+                    "type": "value"
+                }
+            ],
+            "name": "Widget Style Distribution",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "style",
+                    "schemaEntryElement": "dark",
+                    "type": "value"
+                }
+            ],
+            "name": "Palette Color Scheme",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "usageTime",
+                    "schemaEntryElement": "value",
+                    "type": "value"
+                }
+            ],
+            "name": "Usage Time Distribution",
+            "type": "numeric"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "screens",
+                    "type": "size"
+                }
+            ],
+            "name": "Amount of Screens",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "screens",
+                    "schemaEntryElement": "dpi",
+                    "type": "value"
+                }
+            ],
+            "name": "DPI Distribution",
+            "type": "numeric"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "opengl",
+                    "schemaEntryElement": "type",
+                    "type": "value"
+                }
+            ],
+            "name": "OpenGL Stack Type",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "opengl",
+                    "schemaEntryElement": "vendor",
+                    "type": "value"
+                }
+            ],
+            "name": "OpenGL Vendor Distribution",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "opengl",
+                    "schemaEntryElement": "renderer",
+                    "type": "value"
+                }
+            ],
+            "name": "OpenGL Renderer Distribution",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "opengl",
+                    "schemaEntryElement": "type",
+                    "type": "value"
+                },
+                {
+                    "schemaEntry": "opengl",
+                    "schemaEntryElement": "version",
+                    "type": "value"
+                }
+            ],
+            "name": "OpenGL Version Distribution",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "opengl",
+                    "schemaEntryElement": "type",
+                    "type": "value"
+                },
+                {
+                    "schemaEntry": "opengl",
+                    "schemaEntryElement": "glslVersion",
+                    "type": "value"
+                }
+            ],
+            "name": "OpenGL GLSL Version Distribution",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "opengl",
+                    "schemaEntryElement": "profile",
+                    "type": "value"
+                }
+            ],
+            "name": "OpenGL Profile Distribution",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "locale",
+                    "schemaEntryElement": "language",
+                    "type": "value"
+                }
+            ],
+            "name": "Language Distribution",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "locale",
+                    "schemaEntryElement": "region",
+                    "type": "value"
+                }
+            ],
+            "name": "Region Distribution",
+            "type": "category"
+        },
+        {
+            "elements": [
+                {
+                    "schemaEntry": "qtVersion",
+                    "schemaEntryElement": "value",
+                    "type": "value"
+                }
+            ],
+            "name": "Qt Version Distribution",
+            "type": "category"
+        }
+    ],
+    "name": "org.kde.discover",
+    "schema": [
+        {
+            "elements": [
+                {
+                    "name": "style",
+                    "type": "string"
+                },
+                {
+                    "name": "dark",
+                    "type": "bool"
+                }
+            ],
+            "name": "style",
+            "type": "scalar"
+        },
+        {
+            "elements": [
+                {
+                    "name": "value",
+                    "type": "int"
+                }
+            ],
+            "name": "usageTime",
+            "type": "scalar"
+        },
+        {
+            "elements": [
+                {
+                    "name": "width",
+                    "type": "int"
+                },
+                {
+                    "name": "height",
+                    "type": "int"
+                },
+                {
+                    "name": "dpi",
+                    "type": "int"
+                }
+            ],
+            "name": "screens",
+            "type": "list"
+        },
+        {
+            "elements": [
+                {
+                    "name": "type",
+                    "type": "string"
+                },
+                {
+                    "name": "vendor",
+                    "type": "string"
+                },
+                {
+                    "name": "renderer",
+                    "type": "string"
+                },
+                {
+                    "name": "version",
+                    "type": "string"
+                },
+                {
+                    "name": "vendorVersion",
+                    "type": "string"
+                },
+                {
+                    "name": "glslVersion",
+                    "type": "string"
+                },
+                {
+                    "name": "profile",
+                    "type": "string"
+                }
+            ],
+            "name": "opengl",
+            "type": "scalar"
+        },
+        {
+            "elements": [
+                {
+                    "name": "language",
+                    "type": "string"
+                },
+                {
+                    "name": "region",
+                    "type": "string"
+                }
+            ],
+            "name": "locale",
+            "type": "scalar"
+        },
+        {
+            "elements": [
+                {
+                    "name": "value",
+                    "type": "string"
+                }
+            ],
+            "name": "qtVersion",
+            "type": "scalar"
+        },
+        {
+            "elements": [
+                {
+                    "name": "value",
+                    "type": "string"
+                }
+            ],
+            "name": "applicationSourceName",
+            "type": "scalar"
+        }
+    ]
+}
