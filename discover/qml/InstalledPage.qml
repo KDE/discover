@@ -11,6 +11,7 @@ ApplicationsListPage {
     sortOrder: Qt.AscendingOrder
     allBackends: true
     sortProperty: "installedPageSorting"
+    sortRole: DiscoverSettings.installedPageSorting
 
     title: i18n("Installed")
     compact: true

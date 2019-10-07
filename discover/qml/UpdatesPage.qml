@@ -289,7 +289,7 @@ DiscoverPage
                                     return availableVersion
                                 }
                             }
-                            font.letterSpacing: truncated ? -0.5 : undefined
+                            font.letterSpacing: truncated ? -0.5 : 0
                             opacity: listItem.hovered? 0.8 : 0.6
                         }
                     }
