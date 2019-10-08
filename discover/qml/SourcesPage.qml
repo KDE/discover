@@ -18,10 +18,7 @@ DiscoverPage {
         Kirigami.Theme.inherit: false
     }
 
-    contextualActions: [
-        submitStatisticsAction,
-        feedbackSettingsAction
-    ]
+    contextualActions: feedbackLoader.item ? feedbackLoader.item.actions : []
 
     mainItem: ListView {
         id: sourcesView
