@@ -106,6 +106,8 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 
     SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
 
+    reloadPackageList();
+
     acquireFetching(true);
     setWhenAvailable(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache), [this](uint timeSince) {
         if (timeSince > 3600)

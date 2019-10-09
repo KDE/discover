@@ -118,7 +118,7 @@ Flickable {
             delegate: MouseArea {
                 readonly property url imageSource: large_image_url
                 readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
-                width: Math.min(Math.max(50, height/proportion), thumbnail.sourceSize.width)
+                width: Math.min(Math.max(50, height/proportion), thumbnail.status == Image.Loading ? height : thumbnail.sourceSize.width)
                 height: screenshotsLayout.height
 
                 hoverEnabled: true
