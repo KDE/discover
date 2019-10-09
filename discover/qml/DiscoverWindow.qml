@@ -204,8 +204,26 @@ Kirigami.ApplicationWindow
                 Label {
                     id: desc
                     Layout.fillWidth: true
+                    Layout.maximumHeight: clip ? window.height * 0.5 : implicitHeight
+                    clip: true
                     textFormat: Text.StyledText
                     wrapMode: Text.WordWrap
+
+                    readonly property var bottomShadow: Shadow {
+                        parent: desc
+                        anchors {
+                            right: parent.right
+                            left: parent.left
+                            bottom: parent.bottom
+                        }
+                        visible: desc.clip
+                        edge: Qt.BottomEdge
+                        height: desc.height * 0.01
+                    }
+                }
+                Button {
+                    text: desc.clip ? i18n("Show all") : i18n("Hide")
+                    onClicked: desc.clip = !desc.clip
                 }
                 RowLayout {
                     Layout.alignment: Qt.AlignRight
