@@ -89,6 +89,7 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     pkgs.sort();
     m_transaction = PackageKit::Daemon::updatePackages(pkgs, flags);
     m_isCancelable = m_transaction->allowCancel();
+    cancellableChanged();
 
     connect(m_transaction.data(), &PackageKit::Transaction::finished, this, &PackageKitUpdater::finished);
     connect(m_transaction.data(), &PackageKit::Transaction::package, this, &PackageKitUpdater::packageResolved);
