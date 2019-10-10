@@ -196,9 +196,9 @@
     <binary>plasma-discover</binary>
   </provides>
   <releases>
+    <release version="5.17.80" date="2019-10-15"/>
     <release version="5.17.0" date="2019-10-15"/>
     <release version="5.16.4" date="2019-07-30"/>
     <release version="5.16.3" date="2019-07-09"/>
-    <release version="5.16.2" date="2019-06-25"/>
   </releases>
 </component>
