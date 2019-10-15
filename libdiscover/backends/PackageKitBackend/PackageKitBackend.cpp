@@ -583,6 +583,11 @@ void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, c
         return;
     }
 
+    if (info == PackageKit::Transaction::InfoRemoving || info == PackageKit::Transaction::InfoObsoleting) {
+        // Don't try updating packages which need to be removed
+        return;
+    }
+
     if (info == PackageKit::Transaction::InfoSecurity)
         m_hasSecurityUpdates = true;
 
