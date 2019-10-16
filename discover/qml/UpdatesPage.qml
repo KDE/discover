@@ -113,30 +113,21 @@ DiscoverPage
         Kirigami.Theme.inherit: false
         visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
 
-        RowLayout {
-            anchors.fill: parent
-            enabled: updateAction.enabled
+        CheckBox {
+            Layout.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.largeSpacing
+            Layout.fillWidth: true
+            text: page.unselected === 0 ? i18n("All updates selected (%1)", updateModel.updateSize) : i18np("%1/%2 update selected (%3)", "%1/%2 updates selected (%3)", updateModel.toUpdateCount, updateModel.totalUpdatesCount, updateModel.updateSize)
+            enabled: updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
+            tristate: true
+            checkState: updateModel.toUpdateCount === 0                             ? Qt.Unchecked
+                        : updateModel.toUpdateCount === updateModel.totalUpdatesCount ? Qt.Checked
+                                                                                    : Qt.PartiallyChecked
 
-            CheckBox {
-                Layout.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.largeSpacing
-                enabled: !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
-                tristate: true
-                checkState: updateModel.toUpdateCount === 0                             ? Qt.Unchecked
-                          : updateModel.toUpdateCount === updateModel.totalUpdatesCount ? Qt.Checked
-                                                                                        : Qt.PartiallyChecked
-
-                onClicked: {
-                    if (updateModel.toUpdateCount === 0)
-                        updateModel.checkAll()
-                    else
-                        updateModel.uncheckAll()
-                }
-            }
-
-            Label {
-                Layout.fillWidth: true
-                text: page.unselected === 0 ? i18n("All updates selected (%1)", updateModel.updateSize) : i18np("%1/%2 update selected (%3)", "%1/%2 updates selected (%3)", updateModel.toUpdateCount, updateModel.totalUpdatesCount, updateModel.updateSize)
-                elide: Text.ElideRight
+            onClicked: {
+                if (updateModel.toUpdateCount === 0)
+                    updateModel.checkAll()
+                else
+                    updateModel.uncheckAll()
             }
         }
     }
