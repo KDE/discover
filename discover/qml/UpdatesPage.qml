@@ -259,28 +259,28 @@ DiscoverPage
                         // Version numbers
                         Label {
                             Layout.fillWidth: true
-                            elide: Text.ElideRight
+                            elide: truncated ? Text.ElideLeft : Text.ElideRight
                             text: {
-                                if (installedVersion == availableVersion && !truncated) {
+                                if (installedVersion == availableVersion) {
                                     // Update of the same version; show when old and new are
                                     // the same (common with Flatpak runtimes)
                                     return i18n("Update to version %1", availableVersion);
-                                } else if (installedVersion && availableVersion && !truncated) {
-                                    // Old and new version numbers; show when there's enough room
-                                    return i18n("%1 → %2", installedVersion, availableVersion);
-                                } else {
-                                    // Available version only, for when the installed version
-                                    // isn't available for some reason, or when old+new would be
-                                    // elided. Use squeezey text to gain more room, and if it's
-                                    // still so long that it would be elided, elide from the left
-                                    // so the most important part on the right is still visible
+                                } else if (installedVersion && availableVersion) {
+                                    // Old and new version numbers
+                                    // This thing with \x9 is a fancy feature in QML text handling:
+                                    // when the string will be elided, it shows the string after
+                                    // the last \x9. This allows us to show a smaller string
+                                    // when there's now enough room
 
                                     // All of this is mostly for the benefit of KDE Neon users,
                                     // since the version strings there are really really long
-                                    return availableVersion
+                                    return i18nc("Do not translate or alter \\x9", "%1 → %2\x9C%1 → %2\x9C%2", installedVersion, availableVersion);
+                                } else {
+                                    // Available version only, for when the installed version
+                                    // isn't available for some reason
+                                    return availableVersion;
                                 }
                             }
-                            font.letterSpacing: truncated ? -0.5 : 0
                             opacity: listItem.hovered? 0.8 : 0.6
                         }
                     }
