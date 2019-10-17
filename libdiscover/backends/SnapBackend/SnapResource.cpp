@@ -239,7 +239,7 @@ QString SnapResource::longDescription()
 
 QString SnapResource::name() const
 {
-    return m_snap->title().isEmpty() ? m_snap->name() : m_snap->title();
+    return m_snap->title().isEmpty() ? m_snap->name() + QLatin1String("<font size=\"-2\">  &nbsp;&nbsp; ") + availableVersion() + QLatin1String(" - <font color=\"#e3521f\">Snap</font>") : m_snap->title() + QLatin1String("<font size=\"-2\">  &nbsp;&nbsp; ") + availableVersion() + QLatin1String(" - <font color=\"#e3521f\">Snap</font>");
 }
 
 QString SnapResource::origin() const
