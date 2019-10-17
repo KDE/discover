@@ -119,7 +119,7 @@ QString FlatpakResource::availableVersion() const
 
 QString FlatpakResource::appstreamId() const
 {
-    return m_id.id;
+    return QStringLiteral("flatpak.") + m_id.id;
 }
 
 QString FlatpakResource::arch() const
@@ -315,7 +315,7 @@ QString FlatpakResource::name() const
         return name.mid(10);
     }
 
-    return name;
+    return name + QLatin1String("<font size=\"-2\"> - ") + availableVersion() + QLatin1String(" &nbsp;&nbsp; <font color=\"#2c97ff\">Flatpak</font>");
 }
 
 QString FlatpakResource::origin() const

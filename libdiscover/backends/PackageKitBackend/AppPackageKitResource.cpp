@@ -54,7 +54,7 @@ QString AppPackageKitResource::name() const
     }
 
     if (ret.isEmpty())
-        ret = m_appdata.name();
+        ret = m_appdata.name() + QLatin1String("<font size=\"-2\">  &nbsp;&nbsp; ") + availableVersion() + QLatin1String("</font>");
     return ret;
 }
 
