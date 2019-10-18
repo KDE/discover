@@ -81,7 +81,7 @@ void DiscoverNotifier::showUpdatesNotification()
         return;
     }
 
-    m_updatesAvailableNotification = KNotification::event(QStringLiteral("Update"), message(), {}, iconName(), nullptr, KNotification::Persistent, QStringLiteral("discoverabstractnotifier"));
+    m_updatesAvailableNotification = KNotification::event(QStringLiteral("Update"), message(), {}, iconName(), nullptr, KNotification::CloseOnTimeout, QStringLiteral("discoverabstractnotifier"));
     const QString name = i18n("Update");
     m_updatesAvailableNotification->setDefaultAction(name);
     m_updatesAvailableNotification->setActions({name});

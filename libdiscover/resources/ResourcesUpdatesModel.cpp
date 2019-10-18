@@ -45,7 +45,7 @@ public:
             connect(updater, &AbstractBackendUpdater::downloadSpeedChanged, this, &UpdateTransaction::slotDownloadSpeedChanged);
             connect(updater, &AbstractBackendUpdater::progressChanged, this, &UpdateTransaction::slotUpdateProgress);
             connect(updater, &AbstractBackendUpdater::proceedRequest, this, &UpdateTransaction::processProceedRequest);
-            connect(updater, &AbstractBackendUpdater::cancelableChanged, this, [this](bool cancelable){ if (cancelable) setCancellable(true); });
+            connect(updater, &AbstractBackendUpdater::cancelableChanged, this, [this](bool){ setCancellable(kContains(m_allUpdaters, [] (AbstractBackendUpdater* updater) { return updater->isCancelable() && updater->isProgressing(); })); });
             cancelable |= updater->isCancelable();
         }
         setCancellable(cancelable);
