@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Discover
 Name[ar]=استكشف
+Name[ast]=Discover
 Name[ca]=Discover
 Name[ca@valencia]=Discover
 Name[da]=Discover
