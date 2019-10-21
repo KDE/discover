@@ -47,7 +47,7 @@ DiscoverPage
             Button {
                 id: okButton
                 Layout.alignment: Qt.AlignRight
-                text: i18n("Proceed")
+                text: i18n("OK")
                 icon.name: "dialog-ok"
                 onClicked: {
                     sheet.sheetOpen = false
