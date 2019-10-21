@@ -68,13 +68,28 @@ Kirigami.AbstractCard
             columns: 2
             rows: delegateArea.compact ? 4 : 3
 
-            Kirigami.Heading {
-                id: head
-                level: delegateArea.compact ? 3 : 2
+            RowLayout {
                 Layout.fillWidth: true
-                elide: Text.ElideRight
-                text: delegateArea.application.name
-                maximumLineCount: 1
+
+                Kirigami.Heading {
+                    id: head
+                    level: delegateArea.compact ? 3 : 2
+                    Layout.fillWidth: !category.visible
+                    elide: Text.ElideRight
+                    text: delegateArea.application.name
+                    maximumLineCount: 1
+                }
+
+                Kirigami.Heading {
+                    id: category
+                    level: 5
+                    Layout.fillWidth: true
+                    elide: Text.ElideRight
+                    text: i18nc("Part of a string like this: '<app name> - <category>'", "- %1", delegateArea.application.categoryDisplay)
+                    maximumLineCount: 1
+                    opacity: 0.6
+                    visible: delegateArea.application.categoryDisplay !== page.title
+                }
             }
 
             InstallApplicationButton {
