@@ -1,6 +1,6 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"plasma-discover-notifier\")
 
-add_executable(DiscoverNotifier BackendNotifierFactory.cpp DiscoverNotifier.cpp main.cpp)
+add_executable(DiscoverNotifier BackendNotifierFactory.cpp DiscoverNotifier.cpp NotifierItem.cpp main.cpp)
 target_link_libraries(DiscoverNotifier
     KF5::Notifications
     KF5::I18n

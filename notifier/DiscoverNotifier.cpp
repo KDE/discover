@@ -24,8 +24,6 @@
 #include <QDBusInterface>
 #include <QDBusPendingReply>
 #include <QNetworkConfigurationManager>
-#include <KConfig>
-#include <KConfigGroup>
 #include <KRun>
 #include <KLocalizedString>
 #include <KNotification>

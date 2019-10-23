@@ -24,27 +24,16 @@
 #include <KAboutData>
 #include <KCrash>
 #include <KDBusService>
+#include <KConfig>
+#include <KConfigGroup>
+#include <KSharedConfig>
 #include <QCommandLineParser>
 #include <QDBusMessage>
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
-#include <QDebug>
-#include "DiscoverNotifier.h"
-#include "../DiscoverVersion.h"
 
-KStatusNotifierItem::ItemStatus sniStatus(DiscoverNotifier::State state)
-{
-    switch (state) {
-        case DiscoverNotifier::Offline:
-        case DiscoverNotifier::NoUpdates:
-            return KStatusNotifierItem::Passive;
-        case DiscoverNotifier::NormalUpdates:
-        case DiscoverNotifier::SecurityUpdates:
-        case DiscoverNotifier::RebootRequired:
-            return KStatusNotifierItem::Active;
-    }
-    return KStatusNotifierItem::Active;
-}
+#include "NotifierItem.h"
+#include "../DiscoverVersion.h"
 
 int main(int argc, char** argv)
 {
@@ -53,6 +42,8 @@ int main(int argc, char** argv)
 
     KCrash::setFlags(KCrash::AutoRestart);
 
+    NotifierItem notifier;
+    bool hide = false;
     {
         KAboutData about(QStringLiteral("DiscoverNotifier"), i18n("Discover Notifier"), version, i18n("System update status notifier"),
                      KAboutLicense::GPL, i18n("© 2010-2019 Plasma Development Team"));
@@ -60,10 +51,16 @@ int main(int argc, char** argv)
         about.setProductName("discover/discover");
         about.setProgramLogo(app.windowIcon());
 
+        about.setTranslator(
+                i18ndc(nullptr, "NAME OF TRANSLATORS", "Your names"),
+                i18ndc(nullptr, "EMAIL OF TRANSLATORS", "Your emails"));
+
         QCommandLineParser parser;
         QCommandLineOption replaceOption({QStringLiteral("replace")},
                                  i18n("Replace an existing instance"));
         parser.addOption(replaceOption);
+        QCommandLineOption hideOption({QStringLiteral("hide")}, i18n("Do not show the notifier"), i18n("hidden"), QStringLiteral("false"));
+        parser.addOption(hideOption);
         about.setupCommandLine(&parser);
         parser.process(app);
         about.processCommandLine(&parser);
@@ -79,53 +76,21 @@ int main(int argc, char** argv)
                 QCoreApplication::processEvents(QEventLoop::AllEvents);
             }
         }
+
+        const auto config = KSharedConfig::openConfig();
+        KConfigGroup group(config, "Behavior");
+
+        if (parser.isSet(hideOption)) {
+            hide = parser.value(hideOption) == QLatin1String("true");
+            group.writeEntry<bool>("Hide", hide);
+            config->sync();
+        } else {
+            hide = group.readEntry<bool>("Hide", false);
+        }
     }
 
     KDBusService service(KDBusService::Unique);
-    DiscoverNotifier notifier;
-
-    KStatusNotifierItem item;
-    item.setTitle(i18n("Updates"));
-    item.setToolTipTitle(i18n("Updates"));
-
-    auto refresh = [&notifier, &item](){
-        item.setStatus(sniStatus(notifier.state()));
-        item.setIconByName(notifier.iconName());
-        item.setToolTipSubTitle(notifier.message());
-    };
-
-    QObject::connect(&notifier, &DiscoverNotifier::stateChanged, &item, refresh);
-
-    QObject::connect(&item, &KStatusNotifierItem::activateRequested, &notifier, [&notifier]() {
-        notifier.showDiscoverUpdates();
-    });
-
-    QMenu* menu = new QMenu;
-    auto discoverAction = menu->addAction(QIcon::fromTheme(QStringLiteral("plasma-discover")), i18n("Open Software Center..."));
-    QObject::connect(discoverAction, &QAction::triggered, &notifier, &DiscoverNotifier::showDiscover);
-
-    auto updatesAction = menu->addAction(QIcon::fromTheme(QStringLiteral("system-software-update")), i18n("See Updates..."));
-    QObject::connect(updatesAction, &QAction::triggered, &notifier, &DiscoverNotifier::showDiscoverUpdates);
-
-    auto refreshAction = menu->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Refresh..."));
-    QObject::connect(refreshAction, &QAction::triggered, &notifier, &DiscoverNotifier::recheckSystemUpdateNeeded);
-
-    auto f = [menu, &notifier]() {
-        auto refreshAction = menu->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Restart..."));
-        QObject::connect(refreshAction, &QAction::triggered, &notifier, &DiscoverNotifier::recheckSystemUpdateNeeded);
-    };
-    if (notifier.needsReboot())
-        f();
-    else
-        QObject::connect(&notifier, &DiscoverNotifier::needsRebootChanged, menu, f);
-
-    QObject::connect(&notifier, &DiscoverNotifier::newUpgradeAction, menu, [menu](UpgradeAction* a) {
-        QAction* action = new QAction(a->description(), menu);
-        QObject::connect(action, &QAction::triggered, a, &UpgradeAction::trigger);
-        menu->addAction(action);
-    });
-    item.setContextMenu(menu);
-    refresh();
+    notifier.setVisible(!hide);
 
     return app.exec();
 }
