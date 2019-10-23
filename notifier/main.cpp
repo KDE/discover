@@ -21,9 +21,16 @@
 #include <KStatusNotifierItem>
 #include <QMenu>
 #include <KLocalizedString>
+#include <KAboutData>
 #include <KCrash>
 #include <KDBusService>
+#include <QCommandLineParser>
+#include <QDBusMessage>
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
+#include <QDebug>
 #include "DiscoverNotifier.h"
+#include "../DiscoverVersion.h"
 
 KStatusNotifierItem::ItemStatus sniStatus(DiscoverNotifier::State state)
 {
@@ -42,10 +49,40 @@ KStatusNotifierItem::ItemStatus sniStatus(DiscoverNotifier::State state)
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
-    DiscoverNotifier notifier;
+    app.setOrganizationDomain(QStringLiteral("kde.org"));
+
+    KCrash::setFlags(KCrash::AutoRestart);
+
+    {
+        KAboutData about(QStringLiteral("DiscoverNotifier"), i18n("Discover Notifier"), version, i18n("System update status notifier"),
+                     KAboutLicense::GPL, i18n("© 2010-2019 Plasma Development Team"));
+        about.addAuthor(QStringLiteral("Aleix Pol Gonzalez"), {}, QStringLiteral("aleixpol@kde.org"));
+        about.setProductName("discover/discover");
+        about.setProgramLogo(app.windowIcon());
+
+        QCommandLineParser parser;
+        QCommandLineOption replaceOption({QStringLiteral("replace")},
+                                 i18n("Replace an existing instance"));
+        parser.addOption(replaceOption);
+        about.setupCommandLine(&parser);
+        parser.process(app);
+        about.processCommandLine(&parser);
+
+        if (parser.isSet(replaceOption)) {
+            auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.DiscoverNotifier"),
+                                                        QStringLiteral("/MainApplication"),
+                                                        QStringLiteral("org.qtproject.Qt.QCoreApplication"),
+                                                        QStringLiteral("quit"));
+            auto reply = QDBusConnection::sessionBus().call(message); //deliberately block until it's done, so we register the name after the app quits
+
+            while (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.DiscoverNotifier"))) {
+                QCoreApplication::processEvents(QEventLoop::AllEvents);
+            }
+        }
+    }
 
     KDBusService service(KDBusService::Unique);
-    KCrash::setFlags(KCrash::AutoRestart);
+    DiscoverNotifier notifier;
 
     KStatusNotifierItem item;
     item.setTitle(i18n("Updates"));
