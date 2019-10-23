@@ -180,7 +180,7 @@ void DiscoverNotifier::showRebootNotification()
 {
     KNotification *notification = new KNotification(QStringLiteral("notification"), KNotification::Persistent | KNotification::DefaultEvent);
     notification->setIconName(QStringLiteral("system-software-update"));
-    notification->setActions(QStringList{QLatin1String("Restart")});
+    notification->setActions(QStringList{i18nc("@action:button", "Restart")});
     notification->setTitle(i18n("Restart is required"));
     notification->setText(i18n("The system needs to be restarted for the updates to take effect."));
 
@@ -199,7 +199,7 @@ void DiscoverNotifier::foundUpgradeAction(UpgradeAction* action)
 {
     KNotification *notification = new KNotification(QStringLiteral("distupgrade-notification"), KNotification::Persistent | KNotification::DefaultEvent);
     notification->setIconName(QStringLiteral("system-software-update"));
-    notification->setActions(QStringList{QLatin1String("Upgrade")});
+    notification->setActions(QStringList{i18nc("@action:button", "Upgrade")});
     notification->setTitle(i18n("Upgrade available"));
     notification->setText(i18n("New version: %1", action->description()));
 
