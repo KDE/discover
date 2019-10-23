@@ -574,7 +574,7 @@ QSet<AbstractResource*> PackageKitBackend::upgradeablePackages() const
         }
         ret.unite(pkgs);
     }
-    return ret;
+    return kFilter<QSet<AbstractResource*>>(ret, [] (AbstractResource* res) { return !static_cast<PackageKitResource*>(res)->extendsItself(); });
 }
 
 void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, const QString& packageId, const QString& summary)
