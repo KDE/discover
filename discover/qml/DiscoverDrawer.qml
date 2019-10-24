@@ -62,61 +62,60 @@ Kirigami.GlobalDrawer {
     }
 
     function suggestSearchText(text) {
-        toploader.item.text = text
-        toploader.item.forceActiveFocus()
+        searchField.text = text
+        searchField.forceActiveFocus()
     }
-    topContent: ConditionalLoader {
-        id: toploader
-        condition: !modal
-        Layout.fillWidth: true
-        componentFalse: Item {
-            Layout.minimumHeight: 1
-        }
-        componentTrue: Kirigami.AbstractApplicationHeader {
-            preferredHeight: 40 // Match Kirigami.ToolBarApplicationHeader, which is hardcoded to this
 
-            RowLayout {
-                anchors.fill: parent
-                anchors.leftMargin: Kirigami.Units.smallSpacing
-                anchors.rightMargin: Kirigami.Units.smallSpacing
+    // Give the search field keyboard focus by default
+    Component.onCompleted: {
+        searchField.forceActiveFocus();
+    }
 
-                SearchField {
-                    id: searchField
+    topContent: Kirigami.AbstractApplicationHeader {
+        id: toolbar
+        preferredHeight: 40 // Match Kirigami.ToolBarApplicationHeader, which is hardcoded to this
 
-                    Layout.fillWidth: true
+        RowLayout {
+            anchors.fill: parent
+            anchors.leftMargin: Kirigami.Units.smallSpacing
+            anchors.rightMargin: Kirigami.Units.smallSpacing
 
-                    visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
+            SearchField {
+                id: searchField
 
-                    page: window.leftPage
+                Layout.fillWidth: true
 
-                    onCurrentSearchTextChanged: {
-                        var curr = window.leftPage;
+                visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
 
-                        if (pageStack.depth>1)
-                            pageStack.pop()
+                page: window.leftPage
 
-                        if (currentSearchText === "" && window.currentTopLevel === "" && !window.leftPage.category) {
-                            Navigation.openHome()
-                        } else if (!curr.hasOwnProperty("search")) {
-                            if (currentSearchText) {
-                                Navigation.clearStack()
-                                Navigation.openApplicationList( { search: currentSearchText })
-                            }
-                        } else {
-                            curr.search = currentSearchText;
-                            curr.forceActiveFocus()
+                onCurrentSearchTextChanged: {
+                    var curr = window.leftPage;
+
+                    if (pageStack.depth>1)
+                        pageStack.pop()
+
+                    if (currentSearchText === "" && window.currentTopLevel === "" && !window.leftPage.category) {
+                        Navigation.openHome()
+                    } else if (!curr.hasOwnProperty("search")) {
+                        if (currentSearchText) {
+                            Navigation.clearStack()
+                            Navigation.openApplicationList( { search: currentSearchText })
                         }
+                    } else {
+                        curr.search = currentSearchText;
+                        curr.forceActiveFocus()
                     }
                 }
+            }
 
-                ToolButton {
+            ToolButton {
 
-                    icon.name: "go-home"
-                    onClicked: Navigation.openHome()
+                icon.name: "go-home"
+                onClicked: Navigation.openHome()
 
-                    ToolTip {
-                        text: i18n("Return to the Featured page")
-                    }
+                ToolTip {
+                    text: i18n("Return to the Featured page")
                 }
             }
         }
@@ -162,11 +161,13 @@ Kirigami.GlobalDrawer {
                 name: "full"
                 when: drawer.wideScreen
                 PropertyChanges { target: drawer; drawerOpen: true }
+                PropertyChanges { target: drawer; topContent: toolbar }
             },
             State {
                 name: "compact"
                 when: !drawer.wideScreen
                 PropertyChanges { target: drawer; drawerOpen: false }
+                PropertyChanges { target: drawer; topContent: null }
             }
         ]
     }
