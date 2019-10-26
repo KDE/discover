@@ -138,7 +138,7 @@ void PackageKitNotifier::checkOfflineUpdates()
         notification->setIconName(QStringLiteral("system-software-update"));
         notification->setTitle(i18n("Offline Updates"));
         notification->setText(i18np("Successfully updated %1 package", "Successfully updated %1 packages", packages.count()));
-        notification->setActions(QStringList{QLatin1String("Open Discover")});
+        notification->setActions(QStringList{i18nc("@action:button", "Open Discover")});
 
         connect(notification, &KNotification::action1Activated, this, [] () {
             QProcess::startDetached(QStringLiteral("plasma-discover"));
