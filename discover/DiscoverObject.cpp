@@ -186,7 +186,7 @@ QStringList DiscoverObject::modes() const
     for(int i = obj->metaObject()->propertyOffset(); i<obj->metaObject()->propertyCount(); i++) {
         QMetaProperty p = obj->metaObject()->property(i);
         QByteArray compName = p.name();
-        if(compName.startsWith("top") && compName.endsWith("Comp")) {
+        if(compName.startsWith(QLatin1String("top")) && compName.endsWith(QLatin1String("Comp"))) {
             ret += QString::fromLatin1(compName.mid(3, compName.length()-7));
         }
     }

@@ -186,7 +186,7 @@ void OdrsReviewsBackend::usefulnessSubmitted()
     QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
 
     if (reply->error() == QNetworkReply::NoError) {
-        qCWarning(LIBDISCOVER_LOG) << "Usefullness submitted";
+        qCWarning(LIBDISCOVER_LOG) << "Usefulness submitted";
     } else {
         qCWarning(LIBDISCOVER_LOG) << "Failed to submit usefulness: " << reply->errorString();
     }

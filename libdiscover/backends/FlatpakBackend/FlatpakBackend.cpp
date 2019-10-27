@@ -1010,7 +1010,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QByteArr
 
 bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
 {
-    // Check if the size is already set, we should also distiguish between download and installed size,
+    // Check if the size is already set, we should also distinguish between download and installed size,
     // right now it doesn't matter whether we get size for installed or not installed app, but if we
     // start making difference then for not installed app check download and install size separately
 
