@@ -101,3 +101,8 @@ QJsonArray AppStreamUtils::licenses(const AppStream::Component& appdata)
     return { QJsonObject { {QStringLiteral("name"), appdata.projectLicense() } } };
 #endif
 }
+
+QString AppStreamUtils::appstreamId(const QUrl &appstreamUrl)
+{
+    return appstreamUrl.host().isEmpty() ? appstreamUrl.path() : appstreamUrl.host();
+}

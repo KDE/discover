@@ -22,6 +22,7 @@
 #include "SnapTransaction.h"
 #include "SnapResource.h"
 #include "appstream/AppStreamIntegration.h"
+#include <appstream/AppStreamUtils.h>
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
 #include <Category/Category.h>
@@ -111,7 +112,7 @@ ResultsStream * SnapBackend::findResourceByPackageName(const QUrl& search)
     Q_ASSERT(!search.host().isEmpty());
     return search.scheme() == QLatin1String("snap")      ? populate(m_client.find(QSnapdClient::MatchName, search.host())) :
 #ifdef SNAP_FIND_COMMON_ID
-           search.scheme() == QLatin1String("appstream") ? populate(m_client.find(QSnapdClient::MatchCommonId, search.host())) :
+           search.scheme() == QLatin1String("appstream") ? populate(m_client.find(QSnapdClient::MatchCommonId, AppStreamUtils::appstreamId(search))) :
 #endif
                 voidStream();
 }
