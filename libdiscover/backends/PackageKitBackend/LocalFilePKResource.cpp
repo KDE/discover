@@ -66,15 +66,15 @@ void LocalFilePKResource::fetchDetails()
     m_details.insert(QStringLiteral("fetching"), true);//we add an entry so it's not re-fetched.
 
     PackageKit::Transaction* transaction = PackageKit::Daemon::getDetailsLocal(m_path.toLocalFile());
-    connect(transaction, &PackageKit::Transaction::details, this, [this] (const PackageKit::Details &details){ setDetails(details); });
+    connect(transaction, &PackageKit::Transaction::details, this, &LocalFilePKResource::setDetails);
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
 
     PackageKit::Transaction* transaction2 = PackageKit::Daemon::getFilesLocal(m_path.toLocalFile());
     connect(transaction2, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
-    connect(transaction2, &PackageKit::Transaction::files, this, [this] (const QString &/*pkgid*/, const QStringList & files){
-        const auto execs = kFilter<QVector<QString>>(files, [](const QString& file) { return file.endsWith(QLatin1String(".desktop")) && file.contains(QLatin1String("usr/share/applications")); });
-        if (!execs.isEmpty())
-            m_exec = execs.constFirst();
+    connect(transaction2, &PackageKit::Transaction::files, this, [this] (const QString &/*pkgid*/, const QStringList & files) {
+        const auto execIdx = kIndexOf(files, [](const QString& file) { return file.endsWith(QLatin1String(".desktop")) && file.contains(QLatin1String("usr/share/applications")); });
+        if (execIdx >= 0)
+            m_exec = files[execIdx];
         else
             qWarning() << "could not find an executable desktop file for" << m_path << "among" << files;
     });
