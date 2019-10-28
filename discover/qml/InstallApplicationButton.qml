@@ -51,6 +51,9 @@ ConditionalLoader
         ToolButton {
             Layout.fillHeight: true
             action: root.cancelAction
+            text: ""
+            ToolTip.visible: hovered
+            ToolTip.text: root.cancelAction.text
         }
 
         LabelBackground {
