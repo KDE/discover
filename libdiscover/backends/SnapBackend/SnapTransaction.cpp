@@ -102,11 +102,11 @@ void SnapTransaction::setRequest(QSnapdRequest* req)
 {
     m_request.reset(req);
 
-    setCancellable(false);
+    setCancellable(true);
     connect(m_request.data(), &QSnapdRequest::progress, this, &SnapTransaction::progressed);
     connect(m_request.data(), &QSnapdRequest::complete, this, &SnapTransaction::finishTransaction);
 
-    setStatus(SetupStatus);
+    setStatus(CommittingStatus);
     m_request->runAsync();
 }
 
