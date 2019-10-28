@@ -1216,7 +1216,7 @@ ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
             Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
             auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
-            auto f = [this, stream, url] () {
+            auto f = [this, stream, appstreamId] () {
                 const auto resources = resourcesByAppstreamName(appstreamId);
                 if (!resources.isEmpty())
                     Q_EMIT stream->resourcesFound(resources);
