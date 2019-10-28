@@ -32,6 +32,7 @@
 #include <resources/SourcesModel.h>
 #include <appstream/OdrsReviewsBackend.h>
 #include <appstream/AppStreamIntegration.h>
+#include <appstream/AppStreamUtils.h>
 
 #include <QProcess>
 #include <QStringList>
@@ -471,9 +472,7 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
         ) {
             pkg = new LocalFilePKResource(url, this);
         }
-    } else if (url.host().isEmpty())
-        Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
-    else if (url.scheme() == QLatin1String("appstream")) {
+    } else if (url.scheme() == QLatin1String("appstream")) {
         static const QMap<QString, QString> deprecatedAppstreamIds = {
             { QStringLiteral("org.kde.krita.desktop"), QStringLiteral("krita.desktop") },
             { QStringLiteral("org.kde.digikam.desktop"), QStringLiteral("digikam.desktop") },
@@ -484,15 +483,15 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
             { QStringLiteral("org.blender.blender.desktop"), QStringLiteral("blender.desktop") },
         };
         
-        const auto host = url.host();
-        if (host.isEmpty())
+        const auto appstreamId = AppStreamUtils::appstreamId(url);
+        if (appstreamId.isEmpty())
             Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
-            const auto deprecatedHost = deprecatedAppstreamIds.value(host); //try this as fallback
+            const auto deprecatedHost = deprecatedAppstreamIds.value(appstreamId); //try this as fallback
             for (auto it = m_packages.packages.constBegin(), itEnd = m_packages.packages.constEnd(); it != itEnd; ++it) {
-                if    (it.key().compare(host, Qt::CaseInsensitive) == 0
+                if    (it.key().compare(appstreamId, Qt::CaseInsensitive) == 0
                     || it.key().compare(deprecatedHost, Qt::CaseInsensitive) == 0
-                    || (host.endsWith(QLatin1String(".desktop")) && host.compare(it.key()+QLatin1String(".desktop"), Qt::CaseInsensitive) == 0)) {
+                    || (appstreamId.endsWith(QLatin1String(".desktop")) && appstreamId.compare(it.key()+QLatin1String(".desktop"), Qt::CaseInsensitive) == 0)) {
                     pkg = it.value();
                     break;
                 }

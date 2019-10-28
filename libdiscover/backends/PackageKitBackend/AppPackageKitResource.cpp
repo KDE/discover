@@ -204,6 +204,7 @@ bool AppPackageKitResource::canExecute() const
 void AppPackageKitResource::invokeApplication() const
 {
     auto trans = PackageKit::Daemon::getFiles({installedPackageId()});
+    connect(trans, &PackageKit::Transaction::errorCode, backend(), &PackageKitBackend::transactionError);
     connect(trans, &PackageKit::Transaction::files, this, [this](const QString &/*packageID*/, const QStringList &filenames) {
         const auto allServices = QStandardPaths::locateAll(QStandardPaths::ApplicationsLocation, m_appdata.id());
         if (!allServices.isEmpty()) {

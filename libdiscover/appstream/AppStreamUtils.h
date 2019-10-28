@@ -36,6 +36,8 @@ Q_DECL_EXPORT QPair<QList<QUrl>, QList<QUrl>> fetchScreenshots(const AppStream::
 
 Q_DECL_EXPORT QJsonArray licenses(const AppStream::Component &appdata);
 
+Q_DECL_EXPORT QString appstreamId(const QUrl &appstreamUrl);
+
 }
 
 #endif

@@ -31,6 +31,7 @@
 #include <Transaction/Transaction.h>
 #include <appstream/OdrsReviewsBackend.h>
 #include <appstream/AppStreamIntegration.h>
+#include <appstream/AppStreamUtils.h>
 
 #include <AppStreamQt/bundle.h>
 #include <AppStreamQt/component.h>
@@ -1210,12 +1211,13 @@ QVector<AbstractResource *> FlatpakBackend::resourcesByAppstreamName(const QStri
 ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
 {
     if (url.scheme() == QLatin1String("appstream")) {
-        if (url.host().isEmpty())
+        const auto appstreamId = AppStreamUtils::appstreamId(url);
+        if (appstreamId.isEmpty())
             Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
             auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
-            auto f = [this, stream, url] () {
-                const auto resources = resourcesByAppstreamName(url.host());
+            auto f = [this, stream, appstreamId] () {
+                const auto resources = resourcesByAppstreamName(appstreamId);
                 if (!resources.isEmpty())
                     Q_EMIT stream->resourcesFound(resources);
                 stream->finish();
