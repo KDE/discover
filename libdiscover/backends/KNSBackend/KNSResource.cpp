@@ -270,7 +270,7 @@ Rating * KNSResource::ratingInstance()
         return new Rating(
             packageName(),
             noc,
-            { { QStringLiteral("star5"), rating } }
+            rating / 10
         );
     }
     return m_rating;

@@ -122,6 +122,16 @@ Rating::Rating(const QString &packageName, quint64 ratingCount, const QVariantMa
     m_sortableRating = dampenedRating(spread) * 2;
 }
 
+Rating::Rating(const QString &packageName, quint64 ratingCount, int rating)
+    : QObject()
+    , m_packageName(packageName)
+    , m_ratingCount(ratingCount)
+    , m_rating(rating)
+    , m_ratingPoints(rating)
+    , m_sortableRating(rating)
+{
+}
+
 Rating::~Rating() = default;
 
 QString Rating::packageName() const
