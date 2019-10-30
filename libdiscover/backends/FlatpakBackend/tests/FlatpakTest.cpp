@@ -57,6 +57,9 @@ public:
 private Q_SLOTS:
     void init()
     {
+        QStandardPaths::setTestModeEnabled(true);
+        QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-test")).removeRecursively();
+
         QVERIFY(m_appBackend);
         while(m_appBackend->isFetching()) {
             QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::fetchingChanged);
@@ -78,7 +81,7 @@ private Q_SLOTS:
             bk->actions().constFirst()->trigger();
             QVERIFY(spy.count() || spy.wait());
         }
-        QVERIFY(initializedSpy.count() || initializedSpy.wait());
+        QVERIFY(initializedSpy.count() || initializedSpy.wait(20000));
         auto resFlathub = getAllResources(m_appBackend);
         QVERIFY(resFlathub.count() > 0);
     }

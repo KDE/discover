@@ -205,7 +205,7 @@ FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
 
     auto remote = flatpak_installation_get_remote_by_name(m_preferredInstallation, resource->flatpakName().toUtf8().constData(), cancellable, nullptr);
     if (remote) {
-        qWarning() << "Source " << resource->flatpakName() << " already exists";
+        qWarning() << "Source " << resource->flatpakName() << " already exists in" << flatpak_installation_get_path(m_preferredInstallation);
         return nullptr;
     }
 
