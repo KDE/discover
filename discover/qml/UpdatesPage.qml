@@ -109,13 +109,16 @@ DiscoverPage
     readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
 
     header: ToolBar {
+        anchors.left: page.left
+        anchors.right: page.right
         Kirigami.Theme.colorSet: Kirigami.Theme.Button
         Kirigami.Theme.inherit: false
         visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
 
         CheckBox {
-            Layout.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.largeSpacing
-            Layout.fillWidth: true
+            anchors.left: parent.left
+            anchors.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.smallSpacing
+            anchors.right: parent.right
             text: page.unselected === 0 ? i18n("All updates selected (%1)", updateModel.updateSize) : i18np("%1/%2 update selected (%3)", "%1/%2 updates selected (%3)", updateModel.toUpdateCount, updateModel.totalUpdatesCount, updateModel.updateSize)
             enabled: updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
             tristate: true
