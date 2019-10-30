@@ -11,10 +11,10 @@ DiscoverTest
             var updatePage = appRoot.stack.currentItem;
             compare(typeName(updatePage), "UpdatesPage")
             compare(updatePage.state, "has-updates", "to update")
-            var action = updatePage.currentAction
+            var action = updatePage.actions.main
             verify(action);
             action.triggered(null);
-            compare(updatePage.state, "has-updates", "updating")
+            compare(updatePage.state, "progressing", "updating")
         }
 
         {//we start installing a resource
@@ -32,14 +32,10 @@ DiscoverTest
         {
             var updatePage = appRoot.stack.currentItem;
             compare(typeName(updatePage), "UpdatesPage")
-            while(updatePage.state === "fetching")
+            while(updatePage.state === "fetching" || updatePage.state === "progressing") {
                 waitForSignal(updatePage, "stateChanged")
+            }
             compare(updatePage.state, "now-uptodate", "to update")
-            var action = updatePage.currentAction
-            verify(!action.visible)
         }
-
-        while(updatePage.state !== "now-uptodate")
-            waitForSignal(updatePage, "stateChanged")
     }
 }

@@ -72,10 +72,10 @@ DiscoverTest
         var updatePage = appRoot.stack.currentItem;
         compare(typeName(updatePage), "UpdatesPage")
         compare(updatePage.state, "has-updates", "to update")
-        var action = updatePage.currentAction
+        var action = updatePage.actions.main
         verify(action);
         action.triggered(updatePage);
-        compare(updatePage.state, "has-updates", "updating")
+        compare(updatePage.state, "progressing", "updating")
 
         //make sure the window doesn't close while updating
         verify(appRoot.visible);
