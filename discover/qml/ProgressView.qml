@@ -23,10 +23,13 @@ Kirigami.AbstractListItem {
     }
     visible: TransactionModel.count > 0
 
-    property QtObject sheetObject: null
+    property Kirigami.OverlaySheet sheetObject: null
     onClicked: {
-        sheetObject = sheet.createObject()
-        sheetObject.open()
+        if (!sheetObject)
+            sheetObject = sheet.createObject()
+
+        if (!sheetObject.sheetOpen)
+            sheetObject.open()
     }
     onVisibleChanged: if (!visible && sheetObject) {
         sheetObject.close()
