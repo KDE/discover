@@ -20,6 +20,7 @@ include(ECMMarkAsTest)
 include(ECMAddTests)
 include(GenerateExportHeader)
 include(ECMQtDeclareLoggingCategory)
+include(KDEClangFormat)
 
 find_package(PkgConfig REQUIRED)
 
@@ -90,5 +91,9 @@ set_package_properties(LIBFWUPD PROPERTIES
     TYPE OPTIONAL)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+# add clang-format target for all our real source files
+file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 install(FILES discover.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
