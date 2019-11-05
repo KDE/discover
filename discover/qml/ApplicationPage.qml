@@ -172,7 +172,7 @@ DiscoverPage {
             Layout.fillWidth: true
         }
 
-        LinkLabel {
+        Label {
             Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
