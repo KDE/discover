@@ -412,7 +412,7 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) 
 {
     switch(role) {
         case ApplicationRole:
-            return qVariantFromValue<QObject*>(resource);
+            return QVariant::fromValue<QObject*>(resource);
         case RatingPointsRole:
         case RatingRole:
         case RatingCountRole:
