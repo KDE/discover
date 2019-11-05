@@ -149,7 +149,7 @@ void DummyTest::testFetch()
 
     //fetches updates, adds new things
     m_appBackend->checkForUpdates();
-    QSignalSpy spy(m_model, SIGNAL(allInitialized()));
+    QSignalSpy spy(m_model, &ResourcesModel::allInitialized);
     QVERIFY(spy.wait(80000));
     auto resources2 = fetchResources(m_appBackend->search({}));
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, resources2.count());
