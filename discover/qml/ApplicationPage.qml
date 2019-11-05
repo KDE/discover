@@ -403,7 +403,8 @@ DiscoverPage {
                     model: appInfo.application.licenses
                     delegate: Kirigami.UrlButton {
                         horizontalAlignment: Text.AlignLeft
-        //                 tooltip: i18n("See full license terms")
+                        ToolTip.text: i18n("See full license terms")
+                        ToolTip.visible: hovered
                         text: modelData.name
                         url: modelData.url
                         enabled: url !== ""
