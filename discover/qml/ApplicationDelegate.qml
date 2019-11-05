@@ -37,7 +37,7 @@ Kirigami.AbstractCard
             delegateRecycler.ListView.view.currentIndex = index
         Navigation.openApplication(application)
     }
-    highlighted: delegateRecycler.ListView.isCurrentItem
+    highlighted: delegateRecycler && delegateRecycler.ListView.isCurrentItem
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
 

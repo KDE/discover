@@ -143,7 +143,7 @@ KNSCore::EntryInternal KNSResource::entry() const
 
 QJsonArray KNSResource::licenses()
 {
-    return { QJsonObject{ {QStringLiteral("name"), m_entry.license()} } };
+    return { QJsonObject{ {QStringLiteral("name"), m_entry.license()}, {QStringLiteral("url"), QString()} } };
 }
 
 int KNSResource::size()
