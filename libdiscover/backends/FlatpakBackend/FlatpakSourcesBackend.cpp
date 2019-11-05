@@ -95,24 +95,22 @@ bool FlatpakSourcesBackend::addSource(const QString &id)
     if (id.isEmpty() || !flatpakrepoUrl.isValid())
         return false;
 
-    if (flatpakrepoUrl.isLocalFile()) {
-        auto res = backend->addSourceFromFlatpakRepo(flatpakrepoUrl);
+    auto addSource = [=](AbstractResource* res) {
         if (res)
             backend->installApplication(res);
         else
             Q_EMIT backend->passiveMessage(i18n("Could not add the source %1", flatpakrepoUrl.toDisplayString()));
+    };
+
+    if (flatpakrepoUrl.isLocalFile()) {
+        addSource(backend->addSourceFromFlatpakRepo(flatpakrepoUrl));
     } else {
         AbstractResourcesBackend::Filters filter;
         filter.resourceUrl = flatpakrepoUrl;
         auto stream = new StoredResultsStream ({backend->search(filter)});
-        connect(stream, &StoredResultsStream::finished, this, [backend, stream, flatpakrepoUrl]() {
+        connect(stream, &StoredResultsStream::finished, this, [addSource, stream]() {
             const auto res = stream->resources();
-            if (!res.isEmpty()) {
-                Q_ASSERT(res.count() == 1);
-                backend->installApplication(res.first());
-            } else {
-                Q_EMIT backend->passiveMessage(i18n("Could not add the source %1", flatpakrepoUrl.toDisplayString()));
-            }
+            addSource(res.value(0));
         });
     }
     return true;
@@ -207,7 +205,7 @@ FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
 
     auto remote = flatpak_installation_get_remote_by_name(m_preferredInstallation, resource->flatpakName().toUtf8().constData(), cancellable, nullptr);
     if (remote) {
-        qWarning() << "Source " << resource->flatpakName() << " already exists";
+        qWarning() << "Source " << resource->flatpakName() << " already exists in" << flatpak_installation_get_path(m_preferredInstallation);
         return nullptr;
     }
 

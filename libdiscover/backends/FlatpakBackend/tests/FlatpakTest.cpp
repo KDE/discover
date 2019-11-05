@@ -49,6 +49,7 @@ public:
 
     FlatpakTest(QObject* parent = nullptr): QObject(parent)
     {
+        QStandardPaths::setTestModeEnabled(true);
         qputenv("FLATPAK_TEST_MODE", "ON");
         m_model = new ResourcesModel(QStringLiteral("flatpak-backend"), this);
         m_appBackend = backendByName(m_model, QStringLiteral("FlatpakBackend"));
@@ -57,6 +58,8 @@ public:
 private Q_SLOTS:
     void init()
     {
+        QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-test")).removeRecursively();
+
         QVERIFY(m_appBackend);
         while(m_appBackend->isFetching()) {
             QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::fetchingChanged);
@@ -76,9 +79,9 @@ private Q_SLOTS:
         if (m->rowCount() == 1) {
             QSignalSpy spy(m, &SourcesModel::rowsInserted);
             bk->actions().constFirst()->trigger();
-            QVERIFY(spy.count() || spy.wait());
+            QVERIFY(spy.count() || spy.wait(20000));
         }
-        QVERIFY(initializedSpy.count() || initializedSpy.wait());
+        QVERIFY(initializedSpy.count() || initializedSpy.wait(20000));
         auto resFlathub = getAllResources(m_appBackend);
         QVERIFY(resFlathub.count() > 0);
     }
@@ -100,9 +103,9 @@ private Q_SLOTS:
 
         const auto resRssguard = res.constFirst();
         QCOMPARE(resRssguard->state(), AbstractResource::None);
-        waitTransaction(m_appBackend->installApplication(resRssguard));
+        QCOMPARE(waitTransaction(m_appBackend->installApplication(resRssguard)), Transaction::DoneStatus);
         QCOMPARE(resRssguard->state(), AbstractResource::Installed);
-        waitTransaction(m_appBackend->removeApplication(resRssguard));
+        QCOMPARE(waitTransaction(m_appBackend->removeApplication(resRssguard)), Transaction::DoneStatus);
         QCOMPARE(resRssguard->state(), AbstractResource::None);
     }
 
@@ -124,14 +127,19 @@ private Q_SLOTS:
     }
 
 private:
-    void waitTransaction(Transaction* t) {
-        QSignalSpy spyInstalled(t->resource(), &AbstractResource::stateChanged);
+    Transaction::Status waitTransaction(Transaction* t) {
+        TransactionModel::global()->addTransaction(t);
+        QSignalSpy spyInstalled(TransactionModel::global(), &TransactionModel::transactionRemoved);
         QSignalSpy destructionSpy(t, &QObject::destroyed);
+
+        Transaction::Status ret = t->status();
+        connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, [t, &ret] { ret = t->status(); });
         while (t && spyInstalled.count() == 0) {
-            qDebug() << t->status() << t->progress();
+            qDebug() << "waiting, currently" << ret << spyInstalled.count() << destructionSpy.count();
             spyInstalled.wait(100);
         }
-        QVERIFY(destructionSpy.count() || destructionSpy.wait());
+        Q_ASSERT(destructionSpy.count() || destructionSpy.wait());
+        return ret;
     }
 
     QVector<AbstractResource*> getResources(ResultsStream* stream, bool canBeEmpty = true)

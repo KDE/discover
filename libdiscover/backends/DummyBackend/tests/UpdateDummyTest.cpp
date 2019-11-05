@@ -78,10 +78,10 @@ private Q_SLOTS:
         rum->prepare();
         QSignalSpy spySetup(m_appBackend->backendUpdater(), &AbstractBackendUpdater::progressingChanged);
         QVERIFY(!m_appBackend->backendUpdater()->isProgressing() || spySetup.wait());
-        QCOMPARE(m_appBackend->updatesCount(), m_appBackend->property("startElements").toInt()*2/3);
+        QCOMPARE(m_appBackend->updatesCount(), m_appBackend->property("startElements").toInt());
         QCOMPARE(m->hasUpdates(), true);
 
-        QCOMPARE(m->index(0,0).data(UpdateModel::ChangelogRole).toString(), {});
+        QCOMPARE(m->index(0,0).data(UpdateModel::ChangelogRole).toString(), QString{});
 
         QSignalSpy spy(m, &QAbstractItemModel::dataChanged);
         m->fetchUpdateDetails(0);
@@ -102,7 +102,7 @@ private Q_SLOTS:
         rum->prepare();
         QSignalSpy spySetup(m_appBackend->backendUpdater(), &AbstractBackendUpdater::progressingChanged);
         QVERIFY(!m_appBackend->backendUpdater()->isProgressing() || spySetup.wait());
-        QCOMPARE(m_appBackend->updatesCount(), m_appBackend->property("startElements").toInt()*2/3);
+        QCOMPARE(m_appBackend->updatesCount(), m_appBackend->property("startElements").toInt());
         QCOMPARE(m->hasUpdates(), true);
 
         for(int i=0, c=m->rowCount(); i<c; ++i) {

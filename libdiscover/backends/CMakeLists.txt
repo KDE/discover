@@ -1,6 +1,6 @@
 function(add_unit_test name)
     add_executable(${name} ${ARGN})
-    add_test(${name} ${name})
+    add_test(${name} ${CMAKE_BINARY_DIR}/bin/${name})
     ecm_mark_as_test(${name})
     target_link_libraries(${name}
         Discover::Common

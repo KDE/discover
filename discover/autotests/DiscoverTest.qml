@@ -107,7 +107,8 @@ Item
                     testRoot[v]();
                 }
             }
-            Qt.quit();
+            console.log("done")
+            appRoot.close()
         }
     }
 }
