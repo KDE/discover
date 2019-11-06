@@ -99,3 +99,17 @@ int ScreenshotsModel::count() const
 {
     return m_screenshots.count();
 }
+
+void ScreenshotsModel::remove(const QUrl& url)
+{
+    int idxRemove = m_thumbnails.indexOf(url);
+    if (idxRemove>=0) {
+        beginRemoveRows({}, idxRemove, idxRemove);
+        m_thumbnails.removeAt(idxRemove);
+        m_screenshots.removeAt(idxRemove);
+        endRemoveRows();
+        emit countChanged();
+
+        qDebug() << "screenshot removed" << url;
+    }
+}

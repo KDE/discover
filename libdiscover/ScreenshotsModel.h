@@ -46,6 +46,8 @@ class DISCOVERCOMMON_EXPORT ScreenshotsModel : public QAbstractListModel
         Q_SCRIPTABLE QUrl screenshotAt(int row) const;
         int count() const;
 
+        Q_INVOKABLE void remove(const QUrl &url);
+
     private Q_SLOTS:
         void screenshotsFetched(const QList<QUrl>& thumbnails, const QList<QUrl>& screenshots);
 
