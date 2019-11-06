@@ -79,7 +79,7 @@ DiscoverPage {
             }
             delegate: Action {
                 ActionGroup.group: sourcesGroup
-                text: i18n("%1 - %2", displayOrigin, model.application.availableVersion)
+                text: model.application.availableVersion ? i18n("%1 - %2", displayOrigin, model.application.availableVersion) : displayOrigin
                 icon.name: sourceIcon
                 checkable: true
                 checked: appInfo.application === model.application
@@ -172,7 +172,7 @@ DiscoverPage {
             Layout.fillWidth: true
         }
 
-        LinkLabel {
+        Label {
             Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.fillWidth: true
             wrapMode: Text.WordWrap

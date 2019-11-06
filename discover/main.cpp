@@ -56,8 +56,6 @@ QCommandLineParser* createParser()
     parser->addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
     DiscoverBackendsFactory::setupCommandLine(parser);
     KAboutData::applicationData().setupCommandLine(parser);
-    parser->addHelpOption();
-    parser->addVersionOption();
     return parser;
 }
 

@@ -300,7 +300,7 @@ DiscoverPage
                     Layout.fillWidth: true
                     implicitHeight: view.contentHeight
                     visible: layout.extended && changelog.length>0
-                    LinkLabel {
+                    Label {
                         id: view
                         anchors {
                             right: parent.right

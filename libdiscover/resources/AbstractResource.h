@@ -63,7 +63,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY stateChanged)
     Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY stateChanged)
     Q_PROPERTY(QJsonArray licenses READ licenses CONSTANT)
-    Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
+    Q_PROPERTY(QString longDescription READ longDescription NOTIFY longDescriptionChanged)
     Q_PROPERTY(QString origin READ origin CONSTANT)
     Q_PROPERTY(QString displayOrigin READ displayOrigin CONSTANT)
     Q_PROPERTY(int size READ size NOTIFY sizeChanged)
@@ -225,6 +225,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         void sizeChanged();
         void stateChanged();
         void ratingFetched();
+        void longDescriptionChanged();
 
         ///response to the fetchScreenshots method
         ///@p thumbnails and @p screenshots should have the same number of elements

@@ -163,7 +163,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     connect(m_engine, &KNSCore::Engine::signalErrorCode, this, &KNSBackend::signalErrorCode);
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged, Qt::QueuedConnection);
-    connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::statusChanged);
+    connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::detailsLoaded);
     connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
     connect(m_engine, &KNSCore::Engine::signalCategoriesMetadataLoded, this, [categories](const QList< KNSCore::Provider::CategoryMetadata>& categoryMetadatas){
         for (const KNSCore::Provider::CategoryMetadata& category : categoryMetadatas) {
@@ -594,6 +594,12 @@ AbstractBackendUpdater* KNSBackend::backendUpdater() const
 QString KNSBackend::displayName() const
 {
     return QStringLiteral("KNewStuff");
+}
+
+void KNSBackend::detailsLoaded(const KNSCore::EntryInternal& entry)
+{
+    auto res = resourceForEntry(entry);
+    res->longDescriptionChanged();
 }
 
 #include "KNSBackend.moc"

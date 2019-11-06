@@ -31,7 +31,6 @@
     <file>qml/Shadow.qml</file>
     <file>qml/DiscoverPopup.qml</file>
     <file>qml/AboutPage.qml</file>
-    <file>qml/LinkLabel.qml</file>
     <file>qml/Feedback.qml</file>
 
     <file>qml/navigation.js</file>

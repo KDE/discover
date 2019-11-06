@@ -76,6 +76,7 @@ Q_SIGNALS:
 public Q_SLOTS:
     void receivedEntries(const KNSCore::EntryInternal::List& entries);
     void statusChanged(const KNSCore::EntryInternal& entry);
+    void detailsLoaded(const KNSCore::EntryInternal& entry);
     void signalErrorCode(const KNSCore::ErrorCode& errorCode, const QString& message, const QVariant& metadata);
 
 private:
