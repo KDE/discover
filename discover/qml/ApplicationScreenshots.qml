@@ -152,6 +152,9 @@ Flickable {
                     height: parent.height
                     fillMode: Image.PreserveAspectFit
                     smooth: true
+                    onStatusChanged: if (status === Image.Error) {
+                        screenshotsModel.remove(small_image_url)
+                    }
                 }
             }
         }
