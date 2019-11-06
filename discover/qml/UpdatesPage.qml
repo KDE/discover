@@ -15,7 +15,7 @@ DiscoverPage
     property int footerProgress: 0
     property bool isBusy: false
 
-    ResourcesUpdatesModel {
+    readonly property var resourcesUpdatesModel: ResourcesUpdatesModel {
         id: resourcesUpdatesModel
         onPassiveMessage: {
             desc.text += message + "<br/>\n"
@@ -34,7 +34,7 @@ DiscoverPage
         }
     }
 
-    Kirigami.OverlaySheet {
+    readonly property var sheet: Kirigami.OverlaySheet {
         id: sheet
         ColumnLayout {
             Label {
@@ -62,12 +62,12 @@ DiscoverPage
         }
     }
 
-    UpdateModel {
+    readonly property var updateModel: UpdateModel {
         id: updateModel
         backend: resourcesUpdatesModel
     }
 
-    Kirigami.Action
+    readonly property var updateAction: Kirigami.Action
     {
         id: updateAction
         text: page.unselected>0 ? i18n("Update Selected") : i18n("Update All")
@@ -188,7 +188,7 @@ DiscoverPage
             width: 1
         }
     }
-    ListView
+    mainItem: ListView
     {
         id: updatesView
         currentIndex: -1
