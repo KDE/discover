@@ -257,14 +257,15 @@ FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *fla
 FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) const
 {
     FlatpakResource *runtime = nullptr;
-    const auto runtimeInfo = resource->runtime().split(QLatin1Char('/'));
+    const QString runtimeName = resource->runtime();
+    const auto runtimeInfo = runtimeName.splitRef(QLatin1Char('/'));
 
     if (runtimeInfo.count() != 3) {
         return runtime;
     }
 
     for(auto it = m_resources.constBegin(), itEnd = m_resources.constEnd(); it!=itEnd; ++it) {
-        const auto id = it.key();
+        const auto& id = it.key();
         if (id.type == FlatpakResource::Runtime && id.id == runtimeInfo.at(0) && id.branch == runtimeInfo.at(2)) {
             runtime = *it;
             break;

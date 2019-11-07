@@ -160,68 +160,24 @@ DiscoverPage {
         Label {
             anchors.centerIn: parent
             opacity: apps.count == 0 && !appsModel.isBusy ? 0.3 : 0
-            Behavior on opacity { PropertyAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad; } }
+            Behavior on opacity { PropertyAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad } }
             text: i18n("Sorry, nothing found...")
         }
 
         footer: BusyIndicator {
-            id: busyIndicator
-            anchors {
-                horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible: appsModel.isBusy && apps.atYEnd
+            running: visible
+            opacity: visible ? 1 : 0
+            Behavior on opacity {
+                PropertyAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad }
             }
-            running: false
-            opacity: 0
-            states: [
-                State {
-                    name: "running";
-                    when: appsModel.isBusy
-                    PropertyChanges { target: busyIndicator; opacity: 1; running: true; }
-                }
-            ]
-            transitions: [
-                Transition {
-                    from: ""
-                    to: "running"
-                    SequentialAnimation {
-                        PauseAnimation { duration: Kirigami.Units.longDuration * 5; }
-                        ParallelAnimation {
-                            AnchorAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad; }
-                            PropertyAnimation { property: "opacity"; duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad; }
-                        }
-                    }
-                },
-                Transition {
-                    from: "running"
-                    to: ""
-                    ParallelAnimation {
-                        AnchorAnimation { duration: Kirigami.Units.shortDuration; easing.type: Easing.InOutQuad; }
-                        PropertyAnimation { property: "opacity"; duration: Kirigami.Units.shortDuration; easing.type: Easing.InOutQuad; }
-                    }
-                }
-            ]
             Label {
-                id: busyLabel
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                     bottom: parent.top
                 }
                 text: i18n("Still looking...")
-                opacity: 0
-                states: [
-                    State {
-                        name: "running";
-                        when: busyIndicator.opacity === 1;
-                        PropertyChanges { target: busyLabel; opacity: 1; }
-                    }
-                ]
-                transitions: Transition {
-                    from: ""
-                    to: "running"
-                    SequentialAnimation {
-                        PauseAnimation { duration: Kirigami.Units.longDuration * 5; }
-                        PropertyAnimation { property: "opacity"; duration: Kirigami.Units.longDuration * 10; easing.type: Easing.InOutCubic; }
-                    }
-                }
             }
         }
     }
