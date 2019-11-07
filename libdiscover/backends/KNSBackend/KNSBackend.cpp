@@ -101,7 +101,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     setName(fileName);
     setObjectName(knsrc);
 
-    const KConfig conf(m_name);
+    const KConfig conf(m_name, KConfig::SimpleConfig);
     if (!conf.hasGroup("KNewStuff3")) {
         markInvalid(QStringLiteral("Config group not found! Check your KNS3 installation."));
         return;
