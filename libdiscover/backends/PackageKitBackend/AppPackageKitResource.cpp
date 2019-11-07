@@ -213,7 +213,7 @@ void AppPackageKitResource::invokeApplication() const
             return;
         } else {
             const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
-            const auto packageExecutables = kFilter<QStringList>(allServices, [filenames](const QString &exe) { return filenames.contains(QLatin1Char('/') + exe); });
+            const auto packageExecutables = kFilter<QStringList>(exes, [filenames](const QString &exe) { return filenames.contains(QLatin1Char('/') + exe); });
             if (!packageExecutables.isEmpty()) {
                 QProcess::startDetached(exes.constFirst());
                 return;
