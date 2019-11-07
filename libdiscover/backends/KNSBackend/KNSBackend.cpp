@@ -504,7 +504,7 @@ ResultsStream* KNSBackend::search(const AbstractResourcesBackend::Filters& filte
         }
 
         return stream;
-    } else if ((m_hasApplications && !filter.category) // If there is no category defined, we are searching in the root, and should include only application results
+    } else if ((!filter.category && !filter.search.isEmpty()) // Accept global searches
               // If there /is/ a category, make sure we actually are one of those requested before searching
            || (filter.category && kContains(m_categories, [&filter](const QString& cat) { return filter.category->matchesCategoryName(cat); }))) {
         auto r = new ResultsStream(QLatin1String("KNS-search-")+name());
