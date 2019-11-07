@@ -887,15 +887,16 @@ public:
 #else
         if (!flatpak_installation_update_appstream_sync(m_installation, flatpak_remote_get_name(m_remote), nullptr, nullptr, m_cancellable, &localError)) {
 #endif
-            qWarning() << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << (localError ? localError->message : "<no error>");
-            Q_EMIT jobRefreshAppstreamMetadataFailed();
+            const QString error = localError ? QString::fromUtf8(localError->message) : QStringLiteral("<no error>");
+            qWarning() << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << error;
+            Q_EMIT jobRefreshAppstreamMetadataFailed(error);
         } else  {
             Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
         }
     }
 
 Q_SIGNALS:
-    void jobRefreshAppstreamMetadataFailed();
+    void jobRefreshAppstreamMetadataFailed(const QString &errorMessage);
     void jobRefreshAppstreamMetadataFinished(FlatpakInstallation *installation, FlatpakRemote *remote);
 
 private:
@@ -908,6 +909,7 @@ void FlatpakBackend::refreshAppstreamMetadata(FlatpakInstallation *installation,
 {
     FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
     connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, &FlatpakBackend::metadataRefreshed);
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, [this] (const QString &errorMessage) { Q_EMIT passiveMessage(errorMessage); });
     connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
     connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this] { acquireFetching(false); });
 
