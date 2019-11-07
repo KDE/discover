@@ -144,7 +144,7 @@ DiscoverPage {
         }
 
         delegate: Kirigami.SwipeListItem {
-            enabled: display.length>0 && model.enabled
+            enabled: model.display.length>0 && model.enabled
             highlighted: ListView.isCurrentItem
             supportsMouseEvents: false
 
@@ -157,7 +157,7 @@ DiscoverPage {
                     onTriggered: {
                         var ret = sourcesBackend.moveSource(sourceId, -1)
                         if (!ret)
-                            window.showPassiveNotification(i18n("Failed to increase '%1' preference", display))
+                            window.showPassiveNotification(i18n("Failed to increase '%1' preference", model.display))
                     }
                 },
                 Kirigami.Action {
@@ -167,7 +167,7 @@ DiscoverPage {
                     onTriggered: {
                         var ret = sourcesBackend.moveSource(sourceId, +1)
                         if (!ret)
-                                window.showPassiveNotification(i18n("Failed to decrease '%1' preference", display))
+                            window.showPassiveNotification(i18n("Failed to decrease '%1' preference", model.display))
                     }
                 },
                 Kirigami.Action {
@@ -177,7 +177,7 @@ DiscoverPage {
                     onTriggered: {
                         var backend = sourcesBackend
                         if (!backend.removeSource(sourceId)) {
-                            window.showPassiveNotification(i18n("Failed to remove the source '%1'", display))
+                            window.showPassiveNotification(i18n("Failed to remove the source '%1'", model.display))
                         }
                     }
                 },
@@ -205,7 +205,7 @@ DiscoverPage {
                     }
                 }
                 Label {
-                    text: display + (toolTip ? " - <i>" + toolTip + "</i>" : "")
+                    text: model.display + (toolTip ? " - <i>" + toolTip + "</i>" : "")
                     elide: Text.ElideRight
                     textFormat: Text.StyledText
                     Layout.fillWidth: true
