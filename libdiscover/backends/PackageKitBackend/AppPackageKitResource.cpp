@@ -28,6 +28,7 @@
 #include <KLocalizedString>
 #include <KToolInvocation>
 #include <QIcon>
+#include <QFile>
 #include <QProcess>
 #include <QStandardPaths>
 #include <QDebug>
@@ -205,7 +206,12 @@ void AppPackageKitResource::invokeApplication() const
 {
     auto trans = PackageKit::Daemon::getFiles({installedPackageId()});
     connect(trans, &PackageKit::Transaction::errorCode, backend(), &PackageKitBackend::transactionError);
-    connect(trans, &PackageKit::Transaction::files, this, [this](const QString &/*packageID*/, const QStringList &filenames) {
+    connect(trans, &PackageKit::Transaction::files, this, [this](const QString &/*packageID*/, const QStringList &_filenames) {
+        //This workarounds bug in zypper's backend (suse) https://github.com/hughsie/PackageKit/issues/351
+        QStringList filenames = _filenames;
+        if (filenames.count() == 1 && !QFile::exists(filenames.constFirst())) {
+            filenames = filenames.constFirst().split(QLatin1Char(';'));
+        }
         const auto allServices = QStandardPaths::locateAll(QStandardPaths::ApplicationsLocation, m_appdata.id());
         if (!allServices.isEmpty()) {
             const auto packageServices = kFilter<QStringList>(allServices, [filenames](const QString &file) { return filenames.contains(file); });
@@ -213,7 +219,7 @@ void AppPackageKitResource::invokeApplication() const
             return;
         } else {
             const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
-            const auto packageExecutables = kFilter<QStringList>(allServices, [filenames](const QString &exe) { return filenames.contains(QLatin1Char('/') + exe); });
+            const auto packageExecutables = kFilter<QStringList>(exes, [filenames](const QString &exe) { return filenames.contains(QLatin1Char('/') + exe); });
             if (!packageExecutables.isEmpty()) {
                 QProcess::startDetached(exes.constFirst());
                 return;
