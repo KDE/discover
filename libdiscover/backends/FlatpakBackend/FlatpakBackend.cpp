@@ -248,9 +248,9 @@ FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *fla
     if (!r)
         r = m_resources.value(idForInstalledRef(flatpakInstallation, ref, QStringLiteral(".desktop")));
 
-    if (!r) {
-        qDebug() << "no" << flatpak_ref_get_name(FLATPAK_REF(ref));
-    }
+//     if (!r) {
+//         qDebug() << "no" << flatpak_ref_get_name(FLATPAK_REF(ref));
+//     }
     return r;
 }
 
@@ -737,7 +737,8 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
         const QString fnDesktop = pathApps + name + QLatin1String(".desktop");
         AppStream::Metadata::MetadataError error = metadata.parseFile(fnDesktop, AppStream::Metadata::FormatKindDesktopEntry);
         if (error != AppStream::Metadata::MetadataErrorNoError) {
-            qDebug() << "Failed to parse appstream metadata:" << error << fnDesktop;
+            if (QFile::exists(fnDesktop))
+                qDebug() << "Failed to parse appstream metadata:" << error << fnDesktop;
 
             cid.setId(QString::fromLatin1(flatpak_ref_get_name(FLATPAK_REF(ref))));
 #if FLATPAK_CHECK_VERSION(1,1,2)
