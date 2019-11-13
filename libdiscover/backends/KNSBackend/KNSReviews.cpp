@@ -67,7 +67,7 @@ Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
 void KNSReviews::fetchReviews(AbstractResource* app, int page)
 {
     Attica::ListJob< Attica::Comment >* job =
-        provider().requestComments(Attica::Comment::ContentComment, app->packageName(), QStringLiteral("0"), page, 10);
+        provider().requestComments(Attica::Comment::ContentComment, app->packageName(), QStringLiteral("0"), page - 1, 10);
     if (!job) {
         emit reviewsReady(app, {}, false);
         return;
