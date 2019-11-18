@@ -131,7 +131,13 @@ int main(int argc, char** argv)
 
         KDBusService* service = new KDBusService(KDBusService::Unique, &app);
 
-        mainWindow = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full));
+        {
+            auto options = parser->optionNames();
+            options.removeAll(QStringLiteral("backends"));
+            options.removeAll(QStringLiteral("test"));
+            bool hasOptions = !options.isEmpty() || !parser->positionalArguments().isEmpty();
+            mainWindow = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full), {{QStringLiteral("defaultStartup"), !hasOptions}});
+        }
         QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverObject::deleteLater);
         QObject::connect(service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList &arguments, const QString &/*workingDirectory*/){
             if (!mainWindow->rootObject())

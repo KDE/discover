@@ -96,7 +96,7 @@ public:
     }
 };
 
-DiscoverObject::DiscoverObject(CompactMode mode)
+DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialProperties)
     : QObject()
     , m_engine(new QQmlApplicationEngine)
     , m_mode(mode)
@@ -139,6 +139,7 @@ DiscoverObject::DiscoverObject(CompactMode mode)
     plugin->initializeEngine(m_engine, uri);
     plugin->registerTypes(uri);
 
+    m_engine->setInitialProperties(initialProperties);
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
     m_engine->rootContext()->setContextProperty(QStringLiteral("discoverAboutData"), QVariant::fromValue(KAboutData::applicationData()));
 

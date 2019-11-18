@@ -41,7 +41,7 @@ class DiscoverObject : public QObject
         enum CompactMode { Auto, Compact, Full };
         Q_ENUM(CompactMode)
 
-        explicit DiscoverObject(CompactMode mode);
+        explicit DiscoverObject(CompactMode mode, const QVariantMap &initialProperties);
         ~DiscoverObject() override;
 
         QStringList modes() const;
