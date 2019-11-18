@@ -139,7 +139,9 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     plugin->initializeEngine(m_engine, uri);
     plugin->registerTypes(uri);
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     m_engine->setInitialProperties(initialProperties);
+#endif
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
     m_engine->rootContext()->setContextProperty(QStringLiteral("discoverAboutData"), QVariant::fromValue(KAboutData::applicationData()));
 
