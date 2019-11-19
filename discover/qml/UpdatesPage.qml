@@ -182,8 +182,7 @@ DiscoverPage
             width: 1
         }
     }
-    mainItem: ListView
-    {
+    ListView {
         id: updatesView
         currentIndex: -1
 
