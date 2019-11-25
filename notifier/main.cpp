@@ -47,6 +47,7 @@ int main(int argc, char** argv)
 
     NotifierItem notifier;
     bool hide = false;
+    KDBusService::StartupOptions startup = nullptr;
     {
         KAboutData about(QStringLiteral("DiscoverNotifier"), i18n("Discover Notifier"), version, i18n("System update status notifier"),
                      KAboutLicense::GPL, i18n("© 2010-2019 Plasma Development Team"));
@@ -68,15 +69,7 @@ int main(int argc, char** argv)
         about.processCommandLine(&parser);
 
         if (parser.isSet(replaceOption)) {
-            auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.DiscoverNotifier"),
-                                                        QStringLiteral("/MainApplication"),
-                                                        QStringLiteral("org.qtproject.Qt.QCoreApplication"),
-                                                        QStringLiteral("quit"));
-            auto reply = QDBusConnection::sessionBus().call(message); //deliberately block until it's done, so we register the name after the app quits
-
-            while (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.DiscoverNotifier"))) {
-                QCoreApplication::processEvents(QEventLoop::AllEvents);
-            }
+            startup |= KDBusService::Replace;
         }
 
         const auto config = KSharedConfig::openConfig();
@@ -91,7 +84,7 @@ int main(int argc, char** argv)
         }
     }
 
-    KDBusService service(KDBusService::Unique);
+    KDBusService service(KDBusService::Unique | startup);
     notifier.setVisible(!hide);
 
     return app.exec();
