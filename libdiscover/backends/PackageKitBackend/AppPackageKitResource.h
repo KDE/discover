@@ -58,6 +58,7 @@ class AppPackageKitResource : public PackageKitResource
 
     private:
         const AppStream::Component m_appdata;
+        mutable QString m_name;
 };
 
 #endif // APPPACKAGEKITRESOURCE_H
