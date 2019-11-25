@@ -44,19 +44,20 @@ AppPackageKitResource::AppPackageKitResource(const AppStream::Component& data, c
 
 QString AppPackageKitResource::name() const
 {
-    QString ret;
-    if (!m_appdata.extends().isEmpty()) {
-        auto components = backend()->componentsById(m_appdata.extends().constFirst());
+    if (m_name.isEmpty()) {
+        if (!m_appdata.extends().isEmpty()) {
+            const auto components = backend()->componentsById(m_appdata.extends().constFirst());
 
-        if (components.isEmpty())
-            qWarning() << "couldn't find" << m_appdata.extends() << "which is supposedly extended by" << m_appdata.id();
-        else
-            ret = components.constFirst().name() + QLatin1String(" - ") + m_appdata.name();
+            if (components.isEmpty())
+                qWarning() << "couldn't find" << m_appdata.extends() << "which is supposedly extended by" << m_appdata.id();
+            else
+                m_name = components.constFirst().name() + QLatin1String(" - ") + m_appdata.name();
+        }
+
+        if (m_name.isEmpty())
+            m_name = m_appdata.name();
     }
-
-    if (ret.isEmpty())
-        ret = m_appdata.name();
-    return ret;
+    return m_name;
 }
 
 QString AppPackageKitResource::longDescription()
