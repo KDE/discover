@@ -23,7 +23,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.8 as Kirigami
+import org.kde.kirigami 2.11 as Kirigami
 import "navigation.js" as Navigation
 
 Kirigami.GlobalDrawer {
@@ -38,7 +38,7 @@ Kirigami.GlobalDrawer {
     width: Kirigami.Units.gridUnit * 14
 
     property bool wideScreen: false
-    bannerImageSource: modal ? "qrc:/banners/banner.svg" : ""
+    bannerImageSource: "qrc:/banners/banner.svg"
 
     // In desktop view, it's a sidebar, and sidebars get the view BG color
     Kirigami.Theme.colorSet: modal ? Kirigami.Theme.Window : Kirigami.Theme.View
@@ -71,9 +71,8 @@ Kirigami.GlobalDrawer {
         searchField.forceActiveFocus();
     }
 
-    topContent: Kirigami.AbstractApplicationHeader {
+    header: Kirigami.AbstractApplicationHeader {
         id: toolbar
-        preferredHeight: 40 // Match Kirigami.ToolBarApplicationHeader, which is hardcoded to this
 
         RowLayout {
             anchors.fill: parent
@@ -161,13 +160,11 @@ Kirigami.GlobalDrawer {
                 name: "full"
                 when: drawer.wideScreen
                 PropertyChanges { target: drawer; drawerOpen: true }
-                PropertyChanges { target: drawer; topContent: toolbar }
             },
             State {
                 name: "compact"
                 when: !drawer.wideScreen
                 PropertyChanges { target: drawer; drawerOpen: false }
-                PropertyChanges { target: drawer; topContent: null }
             }
         ]
     }
