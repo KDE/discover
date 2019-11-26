@@ -63,6 +63,8 @@ QString LocalFilePKResource::origin() const
 
 void LocalFilePKResource::fetchDetails()
 {
+    if (!m_details.isEmpty())
+        return;
     m_details.insert(QStringLiteral("fetching"), true);//we add an entry so it's not re-fetched.
 
     PackageKit::Transaction* transaction = PackageKit::Daemon::getDetailsLocal(m_path.toLocalFile());
