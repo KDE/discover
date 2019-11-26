@@ -39,9 +39,14 @@ Kirigami.AbstractListItem {
     readonly property var v3: Component {
         id: sheet
         Kirigami.OverlaySheet {
-
+            parent: applicationWindow().overlay
+            header: Kirigami.Heading {
+                text: i18n("Tasks")
+            }
             contentItem: ListView {
+                id: tasksView
                 spacing: 0
+                implicitWidth: Kirigami.Units.gridUnit * 30
 
                 Component {
                     id: listenerComp
@@ -61,8 +66,7 @@ Kirigami.AbstractListItem {
                     }
                     readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource} : {transaction: model.transaction}))
 
-                    ColumnLayout {
-                        width: parent.width
+                    contentItem: ColumnLayout {
 
                         RowLayout {
                             Layout.fillWidth: true
