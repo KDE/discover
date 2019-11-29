@@ -81,7 +81,9 @@ QJsonArray AppStreamUtils::licenses(const AppStream::Component& appdata)
 #if APPSTREAM_HAS_SPDX
     QJsonArray ret;
     const auto licenses = AppStream::SPDX::tokenizeLicense(appdata.projectLicense());
+#if !APPSTREAM_HAS_SPDX_LICENSEURL
     static const QLatin1String prop ("@LicenseRef-proprietary=");
+#endif
     for (const auto &token : licenses) {
         QString license = token;
         license.remove(0, 1); //tokenize prefixes with an @ for some reason
