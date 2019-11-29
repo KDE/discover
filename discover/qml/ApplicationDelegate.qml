@@ -96,6 +96,7 @@ Kirigami.AbstractCard
                 id: installButton
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 Layout.rowSpan: delegateArea.compact ? 3 : 1
+                compact: delegateArea.compact
             }
 
             RowLayout {

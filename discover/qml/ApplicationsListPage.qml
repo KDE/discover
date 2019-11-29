@@ -153,7 +153,7 @@ DiscoverPage {
         currentIndex: -1
         delegate: ApplicationDelegate {
             application: model.application
-            compact: page.compact
+            compact: !applicationWindow().wideScreen
             showRating: page.showRating
         }
 

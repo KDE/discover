@@ -14,6 +14,8 @@ ConditionalLoader
     readonly property string text: !application.isInstalled ? i18n("Install") : i18n("Remove")
     property Component additionalItem: null
 
+    property bool compact: false
+
     TransactionListener {
         id: listener
     }
@@ -65,7 +67,8 @@ ConditionalLoader
 
     componentFalse: Button {
         enabled: application.state !== AbstractResource.Broken
-        text: root.text
+        text: compact ? "" : root.text
+        icon.name: compact ? root.action.icon.name : ""
         focus: true
 
         onClicked: root.click()
