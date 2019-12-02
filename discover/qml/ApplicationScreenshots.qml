@@ -46,7 +46,7 @@ Flickable {
         y: (parent.height - height)/2
         readonly property real proportion: overlayImage.sourceSize.width>1 ? overlayImage.sourceSize.height/overlayImage.sourceSize.width : 1
         height: overlayImage.status == Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
-        width: height/proportion
+        width: (height - 2 * padding)/proportion
 
         BusyIndicator {
             id: indicator
