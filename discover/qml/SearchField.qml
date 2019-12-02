@@ -41,7 +41,9 @@ Kirigami.ActionTextField
     placeholderText: (!enabled || !page || page.hasOwnProperty("isHome") || page.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
 
     onAccepted: {
-        currentSearchText = text
+        searchField.text = searchField.text.replace(/\n/g, ' ');
+        console.log("searchField.text", searchField.text)
+        currentSearchText = searchField.text
     }
 
     function clearText() {
