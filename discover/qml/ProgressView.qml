@@ -56,6 +56,7 @@ Kirigami.AbstractListItem {
 
                 delegate: Kirigami.AbstractListItem {
                     id: del
+                    highlighted: false
                     separatorVisible: false
                     hoverEnabled: model.application
                     onClicked: {
