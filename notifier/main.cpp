@@ -56,7 +56,9 @@ int main(int argc, char** argv)
         about.setProgramLogo(app.windowIcon());
         about.setTranslator(
                 i18ndc(nullptr, "NAME OF TRANSLATORS", "Your names"),
-                i18ndc(nullptr, "EMAIL OF TRANSLATORS", "Your emails"));
+                i18ndc(nullptr, "EMAIL OF ;TRANSLATORS", "Your emails"));
+
+        KAboutData::setApplicationData(about);
 
         QCommandLineParser parser;
         QCommandLineOption replaceOption({QStringLiteral("replace")},
