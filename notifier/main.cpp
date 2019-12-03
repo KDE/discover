@@ -47,7 +47,7 @@ int main(int argc, char** argv)
 
     NotifierItem notifier;
     bool hide = false;
-    KDBusService::StartupOptions startup = nullptr;
+    KDBusService::StartupOptions startup = {};
     {
         KAboutData about(QStringLiteral("DiscoverNotifier"), i18n("Discover Notifier"), version, i18n("System update status notifier"),
                      KAboutLicense::GPL, i18n("© 2010-2019 Plasma Development Team"));

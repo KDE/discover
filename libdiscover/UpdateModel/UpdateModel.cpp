@@ -172,7 +172,7 @@ void UpdateModel::checkResources(const QList<AbstractResource*>& resource, bool 
 Qt::ItemFlags UpdateModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
-        return nullptr;
+        return Qt::NoItemFlags;
 
     return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 }
