@@ -225,7 +225,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     m_backend->fetchUpdates();
     fetchLastUpdateTime();
 
-    if (useOfflineUpdates()) {
+    if (useOfflineUpdates() && exit == PackageKit::Transaction::ExitSuccess) {
         PackageKit::Daemon::global()->offline()->trigger(PackageKit::Offline::ActionReboot);
         Q_EMIT passiveMessage(i18n("Please restart the computer to finish the update"));
     }

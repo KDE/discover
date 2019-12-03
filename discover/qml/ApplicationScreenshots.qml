@@ -46,7 +46,7 @@ Flickable {
         y: (parent.height - height)/2
         readonly property real proportion: overlayImage.sourceSize.width>1 ? overlayImage.sourceSize.height/overlayImage.sourceSize.width : 1
         height: overlayImage.status == Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
-        width: height/proportion
+        width: (height - 2 * padding)/proportion
 
         BusyIndicator {
             id: indicator
@@ -118,7 +118,7 @@ Flickable {
             delegate: MouseArea {
                 readonly property url imageSource: large_image_url
                 readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
-                width: Math.min(Math.max(50, height/proportion), thumbnail.status == Image.Loading ? height : thumbnail.sourceSize.width)
+                width: Math.min(root.width/3, Math.min(Math.max(50, height/proportion), thumbnail.status == Image.Loading ? height : thumbnail.sourceSize.width))
                 height: screenshotsLayout.height
 
                 hoverEnabled: true
@@ -149,9 +149,11 @@ Flickable {
                 Image {
                     id: thumbnail
                     source: small_image_url
-                    height: parent.height
+                    height: parent.proportion>1 ? parent.height : undefined
+                    width: parent.proportion<=1 ? parent.width : undefined
                     fillMode: Image.PreserveAspectFit
                     smooth: true
+                    anchors.verticalCenter: parent.verticalCenter
                     onStatusChanged: if (status === Image.Error) {
                         screenshotsModel.remove(small_image_url)
                     }
