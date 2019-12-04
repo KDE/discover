@@ -123,6 +123,7 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
             connect(r, &DiscoverSettings::appsListPageSortingChanged, r, &DiscoverSettings::save);
             return r;
         });
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     qmlRegisterType<QQuickView>();
     qmlRegisterType<QActionGroup>();
     qmlRegisterType<QAction>();
@@ -130,6 +131,16 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     qmlRegisterType<KAboutData>();
     qmlRegisterType<KAboutLicense>();
     qmlRegisterType<KAboutPerson>();
+#else
+    qmlRegisterAnonymousType<QQuickView>("org.kde.discover.app", 1);
+    qmlRegisterAnonymousType<QActionGroup>("org.kde.discover.app", 1);
+    qmlRegisterAnonymousType<QAction>("org.kde.discover.app", 1);
+
+    qmlRegisterAnonymousType<KAboutData>("org.kde.discover.app", 1);
+    qmlRegisterAnonymousType<KAboutLicense>("org.kde.discover.app", 1);
+    qmlRegisterAnonymousType<KAboutPerson>("org.kde.discover.app", 1);
+#endif
+
     qmlRegisterUncreatableType<DiscoverObject>("org.kde.discover.app", 1, 0, "DiscoverMainWindow", QStringLiteral("don't do that"));
     setupActions();
 
