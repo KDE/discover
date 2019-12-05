@@ -359,7 +359,7 @@ void FwupdBackend::handleError(GError *perror)
 
 QString FwupdBackend::cacheFile(const QString &kind, const QString &basename)
 {
-    const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
+    const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::GenericCacheLocation));
     const QString cacheDirFile = cacheDir.filePath(kind);
 
     if (!QFileInfo::exists(cacheDirFile) && !cacheDir.mkpath(kind))
