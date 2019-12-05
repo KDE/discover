@@ -82,6 +82,9 @@ Kirigami.GlobalDrawer {
             SearchField {
                 id: searchField
 
+                Layout.topMargin: Kirigami.Units.smallSpacing
+                Layout.bottomMargin: Kirigami.Units.smallSpacing
+                Layout.fillHeight: true
                 Layout.fillWidth: true
 
                 visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
