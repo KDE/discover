@@ -132,11 +132,11 @@ Flickable {
                 DropShadow {
                     source: thumbnail
                     anchors.fill: thumbnail
-                    verticalOffset: Kirigami.Units.largeSpacing
+                    verticalOffset: Kirigami.Units.smallSpacing
                     horizontalOffset: 0
                     radius: 12.0
                     samples: 25
-                    color: Kirigami.Theme.disabledTextColor
+                    color: "Black" // Shadows should always be pure black
                     cached: true
                 }
 
