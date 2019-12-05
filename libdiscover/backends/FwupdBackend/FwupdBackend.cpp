@@ -164,8 +164,9 @@ void FwupdBackend::addUpdates()
                 addResourceToList(res);
             }
         } else {
-            if (!g_error_matches(error2, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
-            {
+            if (g_error_matches(error2, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED)) {
+                qWarning() << "fwupd: Device not supported:" << fwupd_device_get_name(device);
+            } else if (!g_error_matches(error2, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO)) {
                 handleError(error2);
             }
         }
@@ -392,6 +393,10 @@ void FwupdBackend::checkForUpdates()
             g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), nullptr, &error);
 
             if (error) {
+                if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED)) {
+                    qWarning() << "fwupd: Device not supported:" << fwupd_device_get_name(device);
+                    continue;
+                }
                 if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE)) {
                     continue;
                 }

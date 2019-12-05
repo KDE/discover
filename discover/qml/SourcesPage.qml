@@ -207,7 +207,7 @@ DiscoverPage {
                     }
                 }
                 Label {
-                    text: model.display + (toolTip ? " - <i>" + toolTip + "</i>" : "")
+                    text: model.display + (model.toolTip ? " - <i>" + model.toolTip + "</i>" : "")
                     elide: Text.ElideRight
                     textFormat: Text.StyledText
                     Layout.fillWidth: true

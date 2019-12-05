@@ -42,7 +42,6 @@ Kirigami.ActionTextField
 
     onAccepted: {
         searchField.text = searchField.text.replace(/\n/g, ' ');
-        console.log("searchField.text", searchField.text)
         currentSearchText = searchField.text
     }
 

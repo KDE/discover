@@ -1,5 +1,4 @@
 project(discover)
-
 set(PROJECT_VERSION "5.17.80")
 set(PROJECT_VERSION_MAJOR 5)
 
