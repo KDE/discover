@@ -562,7 +562,8 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
         m_responsePending = true;
         m_engine->fetchEntryById(entryid);
         m_onePage = false;
-        connect(m_engine, &KNSCore::Engine::signalError, stream, &ResultsStream::finish);
+
+        connect(m_engine, &KNSCore::Engine::signalErrorCode, stream, &ResultsStream::finish);
         connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, stream, [this, stream, entryid, providerid](const KNSCore::EntryInternal &entry) {
             if (entry.uniqueId() == entryid && providerid == QUrl(entry.providerId()).host()) {
                 Q_EMIT stream->resourcesFound({resourceForEntry(entry)});
