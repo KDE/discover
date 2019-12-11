@@ -70,11 +70,12 @@ Kirigami.AbstractCard
 
             RowLayout {
                 Layout.fillWidth: true
+                readonly property bool bigTitle: (head.implicitWidth + installButton.width) > parent.width
 
                 Kirigami.Heading {
                     id: head
                     level: delegateArea.compact ? 3 : 2
-                    Layout.fillWidth: !category.visible
+                    Layout.fillWidth: !category.visible || parent.bigTitle
                     elide: Text.ElideRight
                     text: delegateArea.application.name
                     maximumLineCount: 1
@@ -88,7 +89,7 @@ Kirigami.AbstractCard
                     text: i18nc("Part of a string like this: '<app name> - <category>'", "- %1", delegateArea.application.categoryDisplay)
                     maximumLineCount: 1
                     opacity: 0.6
-                    visible: delegateArea.application.categoryDisplay !== page.title
+                    visible: delegateArea.application.categoryDisplay !== page.title && !parent.bigTitle
                 }
             }
 
