@@ -40,7 +40,7 @@ DiscoverPage {
             width: sourcesView.width
             label: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
 
-            Connections {
+            readonly property var p0: Connections {
                 target: backendItem.backend
                 onPassiveMessage: window.showPassiveNotification(message)
                 onProceedRequest: {
@@ -49,49 +49,59 @@ DiscoverPage {
                 }
             }
 
-            Repeater {
-                id: backendActionsInst
-                model: ActionsModel {
-                    actions: backendItem.backend ? backendItem.backend.actions : undefined
-                }
-                delegate: Button {
-                    Layout.column: 1
-                    text: modelData.text
-                    icon.name: app.iconName(modelData.icon)
-                    ToolTip.visible: hovered
-                    ToolTip.text: modelData.toolTip
-                    onClicked: modelData.trigger()
-                }
-            }
+            Kirigami.ActionToolBar {
+                id: actionBar
+                Layout.fillWidth: true
+                alignment: Qt.AlignRight
+                Kirigami.Action {
+                    id: addSource
+                    text: i18n("Add Source...")
+                    icon.name: "list-add"
+                    visible: backendItem.backend && backendItem.backend.supportsAdding
 
-            Button {
-                text: i18n("Add Source...")
-                icon.name: "list-add"
-                visible: backendItem.backend && backendItem.backend.supportsAdding
+                    readonly property Component p0: Component {
+                        id: dialogComponent
+                        AddSourceDialog {
+                            source: backendItem.backend
+                            onVisibleChanged: if (!visible) {
+                                destroy()
+                            }
+                        }
+                    }
+
+                    onTriggered: {
+                        var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
+                        addSourceDialog.open()
+                    }
+                }
+                Kirigami.Action {
+                    id: makeDefault
+                    visible: resourcesBackend && resourcesBackend.hasApplications
+
+                    enabled: !backendItem.isDefault
+                    text: i18n("Make default")
+                    icon.name: "favorite"
+                    onTriggered: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
+                }
 
                 Component {
-                    id: dialogComponent
-                    AddSourceDialog {
-                        source: backendItem.backend
-                        onVisibleChanged: if (!visible) {
-                            destroy()
-                        }
+                    id: kirigamiAction
+                    Kirigami.Action {
+                        property QtObject action
+                        text: action.text
+                        tooltip: action.toolTip
+                        onTriggered: action.trigger()
                     }
                 }
 
-                onClicked: {
-                    var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
-                    addSourceDialog.open()
+                function mergeActions(moreActions) {
+                    var actions = [makeDefault, addSource]
+                    for(var i in moreActions) {
+                        actions.push(kirigamiAction.createObject(null, {action: moreActions[i]}))
+                    }
+                    return actions;
                 }
-            }
-
-            Button {
-                visible: resourcesBackend && resourcesBackend.hasApplications
-
-                enabled: !backendItem.isDefault
-                text: i18n("Make default")
-                icon.name: "favorite"
-                onClicked: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
+                actions: mergeActions(backendItem.backend.actions)
             }
         }
 
