@@ -23,8 +23,7 @@ import QtQuick.Controls 2.1
 import org.kde.discover 2.0
 import org.kde.kirigami 2.0 as Kirigami
 
-ColumnLayout
-{
+RowLayout {
     id: item
     visible: model.shouldShow
     property bool compact: false
@@ -38,52 +37,73 @@ ColumnLayout
                 : i18n("<em>%1 out of %2 people found this review useful</em>", favorable, total)
     }
 
-    RowLayout {
-        Layout.fillWidth: true
-        Label {
-            id: content
-            Layout.fillWidth: true
-            elide: Text.ElideRight
-            readonly property string author: reviewer ? reviewer : i18n("unknown reviewer")
-            text: summary ? i18n("<b>%1</b> by %2", summary, author) : i18n("Comment by %1", author)
-        }
-        Rating {
-            id: rating
-            rating: model.rating
-            starSize: content.font.pointSize
-        }
-    }
-    Label {
-        Layout.fillWidth: true
-        text: display
-        maximumLineCount: item.compact ? 3 : undefined
-        wrapMode: Text.Wrap
-    }
-    Label {
-        visible: !item.compact
-        text: usefulnessToString(usefulnessFavorable, usefulnessTotal)
-    }
-
-    Label {
-        visible: !item.compact
-        Layout.alignment: Qt.AlignRight
-        text: {
-            switch(usefulChoice) {
-                case ReviewsModel.Yes:
-                    i18n("<em>Useful? <a href='true'><b>Yes</b></a>/<a href='false'>No</a></em>")
-                    break;
-                case ReviewsModel.No:
-                    i18n("<em>Useful? <a href='true'>Yes</a>/<a href='false'><b>No</b></a></em>")
-                    break;
-                default:
-                    i18n("<em>Useful? <a href='true'>Yes</a>/<a href='false'>No</a></em>")
-                    break;
+    Repeater {
+        model: depth
+        delegate: Rectangle {
+            Layout.fillHeight: true
+            Layout.minimumWidth: Kirigami.Units.largeSpacing
+            Layout.maximumWidth: Kirigami.Units.largeSpacing
+            color: Qt.tint(Kirigami.Theme.textColor, Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.8))
+            Rectangle {
+                anchors {
+                    top: parent.top
+                    bottom: parent.bottom
+                    left: parent.left
+                }
+                width: 1
+                color: Kirigami.Theme.backgroundColor
             }
         }
-        onLinkActivated: item.markUseful(link=='true')
     }
-    Kirigami.Separator {
-        visible: item.separator
-        Layout.fillWidth: true
+    ColumnLayout
+    {
+        RowLayout {
+            Layout.fillWidth: true
+            Label {
+                id: content
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                readonly property string author: reviewer ? reviewer : i18n("unknown reviewer")
+                text: summary ? i18n("<b>%1</b> by %2", summary, author) : i18n("Comment by %1", author)
+            }
+            Rating {
+                id: rating
+                rating: model.rating
+                starSize: content.font.pointSize
+            }
+        }
+        Label {
+            Layout.fillWidth: true
+            text: display
+            maximumLineCount: item.compact ? 3 : undefined
+            wrapMode: Text.Wrap
+        }
+        Label {
+            visible: !item.compact
+            text: item.usefulnessToString(usefulnessFavorable, usefulnessTotal)
+        }
+
+        Label {
+            visible: !item.compact
+            Layout.alignment: Qt.AlignRight
+            text: {
+                switch(usefulChoice) {
+                    case ReviewsModel.Yes:
+                        i18n("<em>Useful? <a href='true'><b>Yes</b></a>/<a href='false'>No</a></em>")
+                        break;
+                    case ReviewsModel.No:
+                        i18n("<em>Useful? <a href='true'>Yes</a>/<a href='false'><b>No</b></a></em>")
+                        break;
+                    default:
+                        i18n("<em>Useful? <a href='true'>Yes</a>/<a href='false'>No</a></em>")
+                        break;
+                }
+            }
+            onLinkActivated: item.markUseful(link=='true')
+        }
+        Kirigami.Separator {
+            visible: item.separator
+            Layout.fillWidth: true
+        }
     }
 }

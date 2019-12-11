@@ -46,6 +46,7 @@ QHash< int, QByteArray > ReviewsModel::roleNames() const
     roles.insert(UsefulChoice, "usefulChoice");
     roles.insert(Rating, "rating");
     roles.insert(Summary, "summary");
+    roles.insert(Depth, "depth");
     return roles;
 }
 
@@ -72,6 +73,8 @@ QVariant ReviewsModel::data(const QModelIndex& index, int role) const
             return m_reviews.at(index.row())->rating();
         case Summary:
             return m_reviews.at(index.row())->summary();
+        case Depth:
+            return m_reviews.at(index.row())->getMetadata(QStringLiteral("NumberOfParents")).toInt();
     }
     return QVariant();
 }

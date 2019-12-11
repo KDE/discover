@@ -45,7 +45,8 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
             UsefulnessFavorable,
             UsefulChoice,
             Rating,
-            Summary
+            Summary,
+            Depth
         };
         enum UserChoice {
             None,
