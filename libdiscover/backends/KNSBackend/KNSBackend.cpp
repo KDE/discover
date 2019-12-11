@@ -70,10 +70,15 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
 #else
             QStringList locations = QStandardPaths::standardLocations(QStandardPaths::GenericConfigLocation);
 #endif
+            QSet<QString> files;
             for (const QString &path: locations) {
                 QDirIterator dirIt(path, {QStringLiteral("*.knsrc")}, QDir::Files);
                 for(; dirIt.hasNext(); ) {
                     dirIt.next();
+
+                    if (files.contains(dirIt.fileName()))
+                        continue;
+                    files << dirIt.fileName();
 
                     auto bk = new KNSBackend(parent, QStringLiteral("plasma"), dirIt.filePath());
                     if (bk->isValid())
