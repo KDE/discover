@@ -26,6 +26,7 @@ import org.kde.kirigami 2.0 as Kirigami
 
 Kirigami.OverlaySheet {
     id: page
+
     property alias model: reviewsView.model
     readonly property QtObject reviewsBackend: resource.backend.reviewsBackend
     readonly property var resource: model.resource
@@ -73,6 +74,8 @@ Kirigami.OverlaySheet {
             anchors {
                 left: parent.left
                 right: parent.right
+                topMargin: Kirigami.Units.largeSpacing
+                bottomMargin: Kirigami.Units.largeSpacing
             }
             separator: index != ListView.view.count-1
             onMarkUseful: page.model.markUseful(index, useful)
