@@ -73,6 +73,7 @@ Kirigami.GlobalDrawer {
 
     header: Kirigami.AbstractApplicationHeader {
         id: toolbar
+        visible: drawer.wideScreen
 
         RowLayout {
             anchors.fill: parent
