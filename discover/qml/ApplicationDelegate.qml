@@ -89,7 +89,7 @@ Kirigami.AbstractCard
                     text: i18nc("Part of a string like this: '<app name> - <category>'", "- %1", delegateArea.application.categoryDisplay)
                     maximumLineCount: 1
                     opacity: 0.6
-                    visible: delegateArea.application.categoryDisplay !== page.title && !parent.bigTitle
+                    visible: delegateArea.application.categoryDisplay && delegateArea.application.categoryDisplay !== page.title && !parent.bigTitle
                 }
             }
 
