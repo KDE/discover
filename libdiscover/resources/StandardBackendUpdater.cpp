@@ -67,7 +67,7 @@ void StandardBackendUpdater::start()
     m_settingUp = true;
     emit progressingChanged(true);
     setProgress(0);
-    auto upgradeList = m_toUpgrade.toList();
+    auto upgradeList = m_toUpgrade.values();
     std::sort(upgradeList.begin(), upgradeList.end(), [](const AbstractResource* a, const AbstractResource* b){ return a->name() < b->name(); });
 
     const bool couldCancel = m_canCancel;
@@ -217,15 +217,25 @@ int StandardBackendUpdater::updatesCount() const
 
 void StandardBackendUpdater::addResources(const QList< AbstractResource* >& apps)
 {
-    Q_ASSERT(m_upgradeable.contains(apps.toSet()));
-    m_toUpgrade += apps.toSet();
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    const QSet<AbstractResource *> upgradeableApps(apps.begin(), apps.end());
+#else
+    const QSet<AbstractResource *> upgradeableApps = apps.toSet();
+#endif
+    Q_ASSERT(m_upgradeable.contains(upgradeableApps));
+    m_toUpgrade += upgradeableApps;
 }
 
 void StandardBackendUpdater::removeResources(const QList< AbstractResource* >& apps)
 {
-    Q_ASSERT(m_upgradeable.contains(apps.toSet()));
-    Q_ASSERT(m_toUpgrade.contains(apps.toSet()));
-    m_toUpgrade -= apps.toSet();
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    const QSet<AbstractResource *> upgradeableApps(apps.begin(), apps.end());
+#else
+    const QSet<AbstractResource *> upgradeableApps = apps.toSet();
+#endif
+    Q_ASSERT(m_upgradeable.contains(upgradeableApps));
+    Q_ASSERT(m_toUpgrade.contains(upgradeableApps));
+    m_toUpgrade -= upgradeableApps;
 }
 
 void StandardBackendUpdater::cleanup()
@@ -239,7 +249,7 @@ void StandardBackendUpdater::cleanup()
 
 QList<AbstractResource*> StandardBackendUpdater::toUpdate() const
 {
-    return m_toUpgrade.toList();
+    return m_toUpgrade.values();
 }
 
 bool StandardBackendUpdater::isMarked(AbstractResource* res) const
