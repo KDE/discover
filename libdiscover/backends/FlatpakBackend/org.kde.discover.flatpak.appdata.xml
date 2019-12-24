@@ -20,6 +20,7 @@
   <name xml:lang="it">Motore Flatpak</name>
   <name xml:lang="ko">Flatpak 백엔드</name>
   <name xml:lang="lt">Flatpak vidinė pusė</name>
+  <name xml:lang="ml">ഫ്ലാറ്റ്പ്പാക്ക് ബാക്കെൻഡ്</name>
   <name xml:lang="nb">Flatpak-motor</name>
   <name xml:lang="nl">Flatpak-backend</name>
   <name xml:lang="nn">Flatpak-motor</name>
@@ -54,6 +55,7 @@
   <summary xml:lang="it">Integra le applicazioni Flatpak in Discover</summary>
   <summary xml:lang="ko">Flatpak 프로그램을 살펴보기에 통합</summary>
   <summary xml:lang="lt">Integruoja Flatpak programas į Discover</summary>
+  <summary xml:lang="ml">ഡിസ്കവറിൽ ഫ്ലാറ്റ്പ്പാക്ക് ആപ്ലിക്കേഷൻ സംയോജിപ്പിക്കുന്നു</summary>
   <summary xml:lang="nb">Integrerer Flatpak-programmer i Discover</summary>
   <summary xml:lang="nl">Integreert Flatpak-toepassingen in Discover</summary>
   <summary xml:lang="nn">Integrerer Flatpak-program i Discover</summary>
