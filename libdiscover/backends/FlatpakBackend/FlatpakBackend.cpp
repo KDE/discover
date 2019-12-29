@@ -985,7 +985,7 @@ void FlatpakBackend::onFetchMetadataFinished(FlatpakInstallation *flatpakInstall
 
     // Right now we attempt to update metadata for calculating the size so call updateSizeFromRemote()
     // as it's what we want. In future if there are other reason to update metadata we will need to somehow
-    // distinguish betwen these calls
+    // distinguish between these calls
     updateAppSizeFromRemote(flatpakInstallation, resource);
 }
 

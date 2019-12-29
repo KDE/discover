@@ -36,7 +36,6 @@
 #include "../DiscoverVersion.h"
 
 #include "NotifierItem.h"
-#include "../DiscoverVersion.h"
 
 int main(int argc, char** argv)
 {

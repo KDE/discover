@@ -7,7 +7,7 @@ DiscoverTest
     function test_openResource() {
         app.openMode("Update");
 
-        {// we start an upate
+        {// we start an update
             var updatePage = appRoot.stack.currentItem;
             compare(typeName(updatePage), "UpdatesPage")
             compare(updatePage.state, "has-updates", "to update")
