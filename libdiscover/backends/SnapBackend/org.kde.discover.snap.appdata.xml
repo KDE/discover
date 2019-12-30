@@ -21,6 +21,7 @@
   <name xml:lang="it">Motore Snap</name>
   <name xml:lang="ko">Snap 백엔드</name>
   <name xml:lang="lt">Snap vidinė pusė</name>
+  <name xml:lang="ml">സ്നാപ്പ് ബാക്കെൻഡ്</name>
   <name xml:lang="nb">Snap-motor</name>
   <name xml:lang="nl">Snap-backend</name>
   <name xml:lang="nn">Snap-motor</name>
@@ -55,6 +56,7 @@
   <summary xml:lang="it">Integra le applicazioni Snap in Discover</summary>
   <summary xml:lang="ko">Snap 프로그램을 발견에 통합</summary>
   <summary xml:lang="lt">Integruoja Snap programas į Discover</summary>
+  <summary xml:lang="ml">സ്നാപ്പ് ആപ്ലിക്കേഷനുകൾ ഡിസ്കവറിലേക്ക് സംയോജിപ്പിക്കുന്നു</summary>
   <summary xml:lang="nb">Integrerer Snap-programmer i Discover</summary>
   <summary xml:lang="nl">Integreert Snap-toepassingen in Discover</summary>
   <summary xml:lang="nn">Integrerer Snap-program i Discover</summary>
