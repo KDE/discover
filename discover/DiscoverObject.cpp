@@ -36,7 +36,6 @@
 #include <qqml.h>
 #include <QPointer>
 #include <QGuiApplication>
-#include <QSortFilterProxyModel>
 #include <QTimer>
 #include <QSessionManager>
 #include <QClipboard>
@@ -84,18 +83,6 @@ class CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
     }
 };
 
-class OurSortFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
-{
-    Q_OBJECT
-    Q_INTERFACES(QQmlParserStatus)
-public:
-    void classBegin() override {}
-    void componentComplete() override {
-        if (dynamicSortFilter())
-            sort(0);
-    }
-};
-
 DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialProperties)
     : QObject()
     , m_engine(new QQmlApplicationEngine)
@@ -113,7 +100,6 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
     qmlRegisterType<KConcatenateRowsProxyModel>("org.kde.discover.app", 1, 0, "KConcatenateRowsProxyModel");
     qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
-    qmlRegisterType<OurSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
 #ifdef WITH_FEEDBACK
     qmlRegisterSingletonType<PlasmaUserFeedback>("org.kde.discover.app", 1, 0, "UserFeedbackSettings", [](QQmlEngine*, QJSEngine*) -> QObject* { return new PlasmaUserFeedback(KSharedConfig::openConfig(QStringLiteral("PlasmaUserFeedback"), KConfig::NoGlobals)); });
 #endif

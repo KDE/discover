@@ -22,11 +22,7 @@ DiscoverPage {
 
     mainItem: ListView {
         id: sourcesView
-        model: QSortFilterProxyModel {
-            filterRegExp: new RegExp(page.search, 'i')
-            dynamicSortFilter: false //We don't want to sort, as sorting can have some semantics on some backends
-            sourceModel: SourcesModel
-        }
+        model: SourcesModel
         currentIndex: -1
 
         section.property: "sourceName"
@@ -159,6 +155,8 @@ DiscoverPage {
             enabled: model.display.length>0 && model.enabled
             highlighted: ListView.isCurrentItem
             supportsMouseEvents: false
+            visible: model.display.indexOf(page.search)>=0
+            height: visible ? implicitHeight : 0
 
             Keys.onReturnPressed: clicked()
             actions: [
