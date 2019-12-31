@@ -136,7 +136,7 @@ bool FwupdSourcesBackend::removeSource(const QString& id)
     return false;
 }
 
-QList<QAction*> FwupdSourcesBackend::actions() const
+QVariantList FwupdSourcesBackend::actions() const
 {
     return  {} ;
 }

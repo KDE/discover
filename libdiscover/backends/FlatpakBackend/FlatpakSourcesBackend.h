@@ -41,7 +41,7 @@ public:
     bool addSource(const QString &id) override;
     bool removeSource(const QString &id) override;
     QString idDescription() override;
-    QList<QAction*> actions() const override;
+    QVariantList actions() const override;
     bool supportsAdding() const override { return true; }
     bool canFilterSources() const override { return true; }
 

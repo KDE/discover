@@ -40,7 +40,7 @@ class PackageKitSourcesBackend : public AbstractSourcesBackend
         bool removeSource(const QString& id) override;
 
         QAbstractItemModel* sources() override;
-        QList<QAction*> actions() const override;
+        QVariantList actions() const override;
 
         void transactionError(PackageKit::Transaction::Error, const QString& message);
 
@@ -50,7 +50,7 @@ class PackageKitSourcesBackend : public AbstractSourcesBackend
         QStandardItem* findItemForId(const QString &id) const;
 
         PKSourcesModel* m_sources;
-        QList<QAction*> m_actions;
+        QVariantList m_actions;
 };
 
 #endif // PACKAGEKITSOURCESBACKEND_H

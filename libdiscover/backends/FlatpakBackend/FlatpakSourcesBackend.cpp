@@ -170,9 +170,9 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
     return false;
 }
 
-QList<QAction*> FlatpakSourcesBackend::actions() const
+QVariantList FlatpakSourcesBackend::actions() const
 {
-    return { m_flathubAction };
+    return { QVariant::fromValue<QObject*>(m_flathubAction) };
 }
 
 bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
@@ -248,7 +248,8 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     const QUrl remoteUrl(QString::fromUtf8(flatpak_remote_get_url(remote)));
 
     const auto theActions = actions();
-    for(QAction *action: theActions) {
+    for(const QVariant& act: theActions) {
+        QAction* action = qobject_cast<QAction*>(act.value<QObject*>());
         if (action->toolTip() == id) {
             action->setEnabled(false);
             action->setVisible(false);

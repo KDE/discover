@@ -85,7 +85,7 @@ PackageKitSourcesBackend::PackageKitSourcesBackend(AbstractResourcesBackend* par
     auto addNativeSourcesManager = [this](const QString &file){
         auto service = PackageKitBackend::locateService(file);
         if (!service.isEmpty())
-            m_actions += createActionForService(service, this);
+            m_actions += QVariant::fromValue<QObject*>(createActionForService(service, this));
         };
 
     //New Ubuntu
@@ -155,7 +155,7 @@ bool PackageKitSourcesBackend::removeSource(const QString& id)
     return false;
 }
 
-QList<QAction *> PackageKitSourcesBackend::actions() const
+QVariantList PackageKitSourcesBackend::actions() const
 {
     return m_actions;
 }

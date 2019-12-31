@@ -73,9 +73,9 @@ bool DummySourcesBackend::removeSource(const QString& id)
     return m_sources->removeRow(it->row());
 }
 
-QList<QAction*> DummySourcesBackend::actions() const
+QVariantList DummySourcesBackend::actions() const
 {
-    return QList<QAction*>() << m_testAction;
+    return QVariantList() << QVariant::fromValue<QObject*>(m_testAction);
 }
 
 bool DummySourcesBackend::moveSource(const QString& sourceId, int delta)

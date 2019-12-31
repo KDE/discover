@@ -78,7 +78,7 @@ private Q_SLOTS:
         QSignalSpy initializedSpy(m_appBackend, SIGNAL(initialized()));
         if (m->rowCount() == 1) {
             QSignalSpy spy(m, &SourcesModel::rowsInserted);
-            bk->actions().constFirst()->trigger();
+            qobject_cast<QAction*>(bk->actions().constFirst().value<QObject*>())->trigger();
             QVERIFY(spy.count() || spy.wait(20000));
         }
         QVERIFY(initializedSpy.count() || initializedSpy.wait(20000));

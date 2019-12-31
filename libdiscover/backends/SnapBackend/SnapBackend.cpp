@@ -57,7 +57,7 @@ public:
     bool addSource(const QString& /*id*/) override { return false; }
     bool removeSource(const QString& /*id*/) override { return false;}
     QString idDescription() override { return QStringLiteral("Snap"); }
-    QList<QAction*> actions() const override { return {}; }
+    QVariantList actions() const override { return {}; }
 
     bool supportsAdding() const override { return false; }
     bool canMoveSources() const override { return false; }

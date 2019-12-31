@@ -39,7 +39,7 @@ public:
     bool addSource(const QString& id) override;
     bool removeSource(const QString& id) override;
     QString idDescription() override { return QString(); }
-    QList<QAction*> actions() const override;
+    QVariantList actions() const override;
     bool supportsAdding() const override { return false; }
     void eulaRequired(const QString& remoteName, const QString& licenseAgreement);
     void populateSources();

@@ -33,7 +33,7 @@ public:
     bool addSource(const QString& id) override;
     bool removeSource(const QString& id) override;
     QString idDescription() override { return QStringLiteral("Random weird text"); }
-    QList<QAction*> actions() const override;
+    QVariantList actions() const override;
     bool supportsAdding() const override { return true; }
 
     bool canMoveSources() const override { return true; }
