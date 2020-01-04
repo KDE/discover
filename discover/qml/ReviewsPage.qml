@@ -20,6 +20,7 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 2.1
+import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 2.0 as Kirigami
@@ -51,22 +52,29 @@ Kirigami.OverlaySheet {
         spacing: Kirigami.Units.smallSpacing
         cacheBuffer: Math.max(0, contentHeight)
 
-        header: Item {
+        header: ColumnLayout {
             width: parent.width
-            height: reviewButton.implicitHeight + 2 * Kirigami.Units.largeSpacing
+            spacing: 0
+
             Button {
                 id: reviewButton
 
-                anchors {
-                    verticalCenter: parent.verticalCenter
-                    left: parent.left
-                    leftMargin: Kirigami.Units.largeSpacing
-                }
+                Layout.alignment: Qt.AlignHCenter
+                Layout.topMargin: Kirigami.Units.largeSpacing
+                Layout.bottomMargin: Kirigami.Units.largeSpacing
 
                 visible: page.reviewsBackend != null
                 enabled: page.resource.isInstalled
-                text: i18n("Review...")
+                text: i18n("Write a Review...")
                 onClicked: page.openReviewDialog()
+            }
+            Label {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.bottomMargin: Kirigami.Units.largeSpacing * 2
+                text: i18n("Install this app to write a review")
+                wrapMode: Text.WordWrap
+                visible: !reviewButton.enabled
+                opacity: 0.6
             }
         }
 
