@@ -195,7 +195,7 @@ void OdrsReviewsBackend::usefulnessSubmitted()
 
 QString OdrsReviewsBackend::userName() const
 {
-    return i18n("%1 (%2)", KUser().property(KUser::FullName).toString(), KUser().loginName());
+    return KUser().property(KUser::FullName).toString();
 }
 
 void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summary, const QString &description, const QString &rating)
