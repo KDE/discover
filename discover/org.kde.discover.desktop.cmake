@@ -111,6 +111,7 @@ Keywords[fr]=programme; logiciel;dépôt;archive;paquet;installation;suppression
 Keywords[gl]=aplicación;software;repositorio;paquete;instalar;desinstalar;actualizar;deb;
 Keywords[he]=program;software;repository;package;install;remove;update;apps;applications;תוכנות;התקנה;הסרה;חבילה;מקורות;יישומים;
 Keywords[hu]=program;szoftver;tároló;csomag;telepítés;eltávolítás;frissítés;alkalmazás;alkalmazások;
+Keywords[ia]=program;software;repository;package;install;remove;update;apps;applications;
 Keywords[id]=program;perangkat lunak;repositori;paket;pasang;hapus;perbarui;apl;aplikasi;
 Keywords[it]=programma;software;deposito;pacchetto;installa;rimuovi;aggiorna;app;applicazioni;
 Keywords[ko]=프로그램;software;repository;archive;package;install;remove;update;deb;프로그램;소프트웨어;저장소;리포지토리;패키지;꾸러미;설치;삭제;업데이트;
