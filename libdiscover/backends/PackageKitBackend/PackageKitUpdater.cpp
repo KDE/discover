@@ -30,6 +30,8 @@
 #include <KConfigGroup>
 #include <KLocalizedString>
 
+#include "libdiscover_backend_debug.h"
+
 int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage)
 {
     const auto was = percentage;
@@ -43,12 +45,12 @@ int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage
         };
         const auto idx = statuses.value(status, -1);
         if (idx < 0) {
-            qDebug() << "Status not present" << status << "among" << statuses   .keys() << percentage;
+            qCDebug(LIBDISCOVER_BACKEND_LOG) << "Status not present" << status << "among" << statuses   .keys() << percentage;
             return -1;
         }
         percentage = (idx * 100 + percentage) / 2 /*the maximum in statuses*/;
     }
-    qDebug() << "reporting progress with status:" << status << percentage << was;
+    qCDebug(LIBDISCOVER_BACKEND_LOG) << "reporting progress with status:" << status << percentage << was;
     return percentage;
 }
 
@@ -198,7 +200,7 @@ void PackageKitUpdater::start()
 
 void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time*/)
 {
-//     qDebug() << "update finished!" << exit << time;
+//     qCDebug(LIBDISCOVER_BACKEND_LOG) << "update finished!" << exit << time;
     if (!m_proceedFunctions.isEmpty())
         return;
     const bool cancel = exit == PackageKit::Transaction::ExitCancelled;
@@ -373,7 +375,7 @@ AbstractBackendUpdater::State toUpdateState(PackageKit::Transaction::Status t)
         case PackageKit::Transaction::StatusCancel:
             return AbstractBackendUpdater::Done;
         default:
-            qDebug() << "unknown packagekit status" << t;
+            qCDebug(LIBDISCOVER_BACKEND_LOG) << "unknown packagekit status" << t;
             return AbstractBackendUpdater::None;
     }
     Q_UNREACHABLE();

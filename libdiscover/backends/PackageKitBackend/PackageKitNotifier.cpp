@@ -38,6 +38,7 @@
 #include <KConfigGroup>
 
 #include "pk-offline-private.h"
+#include "libdiscover_backend_debug.h"
 
 PackageKitNotifier::PackageKitNotifier(QObject* parent)
     : BackendNotifierModule(parent)
@@ -104,7 +105,7 @@ void PackageKitNotifier::checkOfflineUpdates()
     if (!QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
         return;
     }
-    qDebug() << "found offline update results at " << PK_OFFLINE_RESULTS_FILENAME;
+    qCDebug(LIBDISCOVER_BACKEND_LOG) << "found offline update results at " << PK_OFFLINE_RESULTS_FILENAME;
 
     KDesktopFile file(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME));
     KConfigGroup group(&file, PK_OFFLINE_RESULTS_GROUP);
@@ -173,7 +174,7 @@ void PackageKitNotifier::recheckSystemUpdate()
 
 void PackageKitNotifier::setupGetUpdatesTransaction(PackageKit::Transaction* trans)
 {
-    qDebug() << "using..." << trans << trans->tid().path();
+    qCDebug(LIBDISCOVER_BACKEND_LOG) << "using..." << trans << trans->tid().path();
 
     trans->setProperty("normalUpdates", 0);
     trans->setProperty("securityUpdates", 0);
@@ -314,5 +315,5 @@ void PackageKitNotifier::onRequireRestart(PackageKit::Transaction::Restart type,
 {
     PackageKit::Transaction* t = qobject_cast<PackageKit::Transaction*>(sender());
     t->setProperty("requireRestart", qMax<int>(t->property("requireRestart").toInt(), type));
-    qDebug() << "RESTART" << type << "is required for package" << packageID;
+    qCDebug(LIBDISCOVER_BACKEND_LOG) << "RESTART" << type << "is required for package" << packageID;
 }

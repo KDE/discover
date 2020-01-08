@@ -2,7 +2,9 @@ find_package(KF5 REQUIRED Notifications)
 
 add_subdirectory(runservice)
 
-add_library(packagekit-backend MODULE PackageKitBackend.cpp
+#packagekit-backend
+set (packagekit-backend_SRCS
+    PackageKitBackend.cpp
     PackageKitResource.cpp
     AppPackageKitResource.cpp
     PKTransaction.cpp
@@ -12,7 +14,10 @@ add_library(packagekit-backend MODULE PackageKitBackend.cpp
     LocalFilePKResource.cpp
     TransactionSet.cpp
     pkui.qrc
-)
+    )
+ecm_qt_declare_logging_category(packagekit-backend_SRCS HEADER libdiscover_backend_debug.h IDENTIFIER LIBDISCOVER_BACKEND_LOG CATEGORY_NAME org.kde.plasma.libdiscover.backend)
+
+add_library(packagekit-backend MODULE ${packagekit-backend_SRCS})
 
 target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt5::Core PK::packagekitqt5 KF5::ConfigGui KF5::KIOCore KF5::Archive AppStreamQt)
 install(TARGETS packagekit-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
@@ -23,7 +28,13 @@ if(TARGET PkgConfig::Markdown)
 endif()
 
 #notifier
-add_library(DiscoverPackageKitNotifier MODULE PackageKitNotifier.cpp)
+set (DiscoverPackageKitNotifier_SRCS
+    PackageKitNotifier.cpp
+)
+ecm_qt_declare_logging_category(DiscoverPackageKitNotifier_SRCS HEADER libdiscover_backend_debug.h IDENTIFIER LIBDISCOVER_BACKEND_LOG CATEGORY_NAME org.kde.plasma.libdiscover.backend)
+
+add_library(DiscoverPackageKitNotifier MODULE ${DiscoverPackageKitNotifier_SRCS})
+
 target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt5 Discover::Notifiers KF5::I18n KF5::Notifications KF5::ConfigCore)
 set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 

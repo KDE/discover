@@ -26,6 +26,7 @@
 #include <PackageKit/Details>
 #include <utils.h>
 #include "config-paths.h"
+#include "libdiscover_backend_debug.h"
 
 LocalFilePKResource::LocalFilePKResource(QUrl path, PackageKitBackend* parent)
     : PackageKitResource(path.toString(), path.toString(), parent)
@@ -80,7 +81,7 @@ void LocalFilePKResource::fetchDetails()
         else
             qWarning() << "could not find an executable desktop file for" << m_path << "among" << files;
     });
-    connect(transaction2, &PackageKit::Transaction::finished, this, [] {qDebug() << "."; });
+    connect(transaction2, &PackageKit::Transaction::finished, this, [] {qCDebug(LIBDISCOVER_BACKEND_LOG) << "."; });
 }
 
 void LocalFilePKResource::invokeApplication() const

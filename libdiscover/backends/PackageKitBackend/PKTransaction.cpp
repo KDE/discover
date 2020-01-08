@@ -24,6 +24,7 @@
 #include "PackageKitMessages.h"
 #include "utils.h"
 #include "LocalFilePKResource.h"
+#include "libdiscover_backend_debug.h"
 #include <resources/AbstractResource.h>
 #include <QDebug>
 #include <QTimer>
@@ -83,7 +84,7 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
                 //FIXME this state shouldn't exist
                 qWarning() << "Installing no packages found!";
                 for(auto app : m_apps) {
-                    qDebug() << "app" << app << app->state() << static_cast<PackageKitResource*>(app)->packages();
+                    qCDebug(LIBDISCOVER_BACKEND_LOG) << "app" << app << app->state() << static_cast<PackageKitResource*>(app)->packages();
                 }
 
                 setStatus(Transaction::DoneWithErrorStatus);
@@ -98,7 +99,7 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
     };
     Q_ASSERT(m_trans);
 
-//     connect(m_trans.data(), &PackageKit::Transaction::statusChanged, this, [this]() { qDebug() << "state..." << m_trans->status(); });
+//     connect(m_trans.data(), &PackageKit::Transaction::statusChanged, this, [this]() { qCDebug(LIBDISCOVER_BACKEND_LOG) << "state..." << m_trans->status(); });
     connect(m_trans.data(), &PackageKit::Transaction::package, this, &PKTransaction::packageResolved);
     connect(m_trans.data(), &PackageKit::Transaction::finished, this, &PKTransaction::cleanup);
     connect(m_trans.data(), &PackageKit::Transaction::errorCode, this, &PKTransaction::errorFound);

@@ -54,6 +54,7 @@
 
 #include "utils.h"
 #include "config-paths.h"
+#include "libdiscover_backend_debug.h"
 
 DISCOVER_BACKEND_PLUGIN(PackageKitBackend)
 
@@ -208,7 +209,7 @@ void PackageKitBackend::reloadPackageList()
                 }
             }
 
-            qDebug() << "no packages for" << component.id();
+            qCDebug(LIBDISCOVER_BACKEND_LOG) << "no packages for" << component.id();
             continue;
         }
         neededPackages += pkgNames;
@@ -221,7 +222,7 @@ void PackageKitBackend::reloadPackageList()
         neededPackages.removeDuplicates();
         resolvePackages(neededPackages);
     } else {
-        qDebug() << "empty appstream db";
+        qCDebug(LIBDISCOVER_BACKEND_LOG) << "empty appstream db";
         if (PackageKit::Daemon::backendName() == QLatin1String("aptcc") || PackageKit::Daemon::backendName().isEmpty()) {
             checkForUpdates();
         }
@@ -395,7 +396,7 @@ T PackageKitBackend::resourcesByPackageNames(const QStringList &pkgnames) const
 void PackageKitBackend::checkForUpdates()
 {
     if (PackageKit::Daemon::global()->offline()->updateTriggered()) {
-        qDebug() << "Won't be checking for updates again, the system needs a reboot to apply the fetched offline updates.";
+        qCDebug(LIBDISCOVER_BACKEND_LOG) << "Won't be checking for updates again, the system needs a reboot to apply the fetched offline updates.";
         return;
     }
 
@@ -497,7 +498,7 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
                 }
             }
 //             if (!pkg)
-//                 qDebug() << "could not find" << host << deprecatedHost;
+//                 qCDebug(LIBDISCOVER_BACKEND_LOG) << "could not find" << host << deprecatedHost;
         }
     }
     return new ResultsStream(QStringLiteral("PackageKitStream-url"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
