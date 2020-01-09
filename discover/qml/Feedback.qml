@@ -61,7 +61,6 @@ UserFeedback.Provider
     UserFeedback.OpenGLInfoSource{ mode: UserFeedback.Provider.DetailedSystemInformation }
     UserFeedback.ScreenInfoSource { mode: UserFeedback.Provider.DetailedSystemInformation }
     UserFeedback.PropertySource {
-        id: dialRatioSource
         mode: UserFeedback.Provider.DetailedUsageStatistics
         sourceId: "applicationSourceName"
         data: { "value": ResourcesModel.applicationSourceName }
