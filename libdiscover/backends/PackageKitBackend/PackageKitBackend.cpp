@@ -160,7 +160,6 @@ void PackageKitBackend::acquireFetching(bool f)
 
 void PackageKitBackend::reloadPackageList()
 {
-    qDebug() << "xxx";
     acquireFetching(true);
     if (m_refresher) {
         disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
