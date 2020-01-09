@@ -43,6 +43,8 @@
 #include <QAction>
 #include <QMimeDatabase>
 #include <QFileSystemWatcher>
+#include <QFutureWatcher>
+#include <QtConcurrentRun>
 
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
@@ -120,7 +122,11 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     }, this);
 }
 
-PackageKitBackend::~PackageKitBackend() = default;
+PackageKitBackend::~PackageKitBackend()
+{
+    m_threadPool.waitForDone(200);
+    m_threadPool.clear();
+}
 
 void PackageKitBackend::updateProxy()
 {
@@ -158,27 +164,24 @@ void PackageKitBackend::acquireFetching(bool f)
     Q_ASSERT(m_isFetching>=0);
 }
 
-void PackageKitBackend::reloadPackageList()
+struct DelayedAppStreamLoad {
+    QVector<AppStream::Component> components;
+    QHash<QString, AppStream::Component> missingComponents;
+    bool correct = true;
+};
+
+static DelayedAppStreamLoad loadAppStream(AppStream::Pool* appdata)
 {
-    acquireFetching(true);
-    if (m_refresher) {
-        disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
-    }
+    DelayedAppStreamLoad ret;
 
     QString error;
-    m_appdata.reset(new AppStream::Pool);
-    const bool b = m_appdata->load(&error);
-    if (!b && m_packages.packages.isEmpty()) {
+    ret.correct = appdata->load(&error);
+    if (!ret.correct) {
         qWarning() << "Could not open the AppStream metadata pool" << error;
-
-        QTimer::singleShot(0, this, [this]() {
-            Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
-        });
     }
 
-    const auto components = m_appdata->components();
-    QStringList neededPackages;
-    neededPackages.reserve(components.size());
+    const auto components = appdata->components();
+    ret.components.reserve(components.size());
     foreach(const AppStream::Component& component, components) {
         if (component.kind() == AppStream::Component::KindFirmware)
             continue;
@@ -187,46 +190,81 @@ void PackageKitBackend::reloadPackageList()
         if (pkgNames.isEmpty()) {
             const auto entries = component.launchable(AppStream::Launchable::KindDesktopId).entries();
             if (component.kind() == AppStream::Component::KindDesktopApp && !entries.isEmpty()) {
-                const QString file = locateService(entries.first());
+                const QString file = PackageKitBackend::locateService(entries.first());
                 if (!file.isEmpty()) {
-                    acquireFetching(true);
-                    auto trans = PackageKit::Daemon::searchFiles(file);
-                    connect(trans, &PackageKit::Transaction::package, this, [trans](PackageKit::Transaction::Info info, const QString &packageID){
-                        if (info == PackageKit::Transaction::InfoInstalled)
-                            trans->setProperty("installedPackage", packageID);
-                    });
-                    connect(trans, &PackageKit::Transaction::finished, this, [this, trans, component](PackageKit::Transaction::Exit status) {
-                        const auto pkgidVal = trans->property("installedPackage");
-                        if (status == PackageKit::Transaction::ExitSuccess && !pkgidVal.isNull()) {
-                            const auto pkgid = pkgidVal.toString();
-                            auto res = addComponent(component, {PackageKit::Daemon::packageName(pkgid)});
-                            res->clearPackageIds();
-                            res->addPackageId(PackageKit::Transaction::InfoInstalled, pkgid, true);
-                        }
-                        acquireFetching(false);
-                    });
-                    continue;
+                    ret.missingComponents[file] = component;
                 }
             }
-
-            qCDebug(LIBDISCOVER_BACKEND_LOG) << "no packages for" << component.id();
-            continue;
-        }
-        neededPackages += pkgNames;
-
-        addComponent(component, pkgNames);
-    }
-
-    acquireFetching(false);
-    if (!neededPackages.isEmpty()) {
-        neededPackages.removeDuplicates();
-        resolvePackages(neededPackages);
-    } else {
-        qCDebug(LIBDISCOVER_BACKEND_LOG) << "empty appstream db";
-        if (PackageKit::Daemon::backendName() == QLatin1String("aptcc") || PackageKit::Daemon::backendName().isEmpty()) {
-            checkForUpdates();
+        } else {
+            ret.components << component;
         }
     }
+    return ret;
+}
+
+void PackageKitBackend::reloadPackageList()
+{
+    acquireFetching(true);
+    if (m_refresher) {
+        disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
+    }
+
+    m_appdata.reset(new AppStream::Pool);
+
+    auto fw = new QFutureWatcher<DelayedAppStreamLoad>(this);
+    connect(fw, &QFutureWatcher<DelayedAppStreamLoad>::finished, this, [this, fw]() {
+        const auto data = fw->result();
+        fw->deleteLater();
+
+        if (!data.correct && m_packages.packages.isEmpty()) {
+            QTimer::singleShot(0, this, [this]() {
+                Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
+            });
+        }
+        QStringList neededPackages;
+        neededPackages.reserve(data.components.size());
+        for (const auto &component: data.components) {
+            const auto pkgNames = component.packageNames();
+            addComponent(component, pkgNames);
+            neededPackages << pkgNames;
+        }
+        for (auto it = data.missingComponents.constBegin(), itEnd = data.missingComponents.constEnd(); it != itEnd; ++it) {
+            acquireFetching(true);
+            const auto file = it.key();
+            const auto component = it.value();
+            auto trans = PackageKit::Daemon::searchFiles(file);
+            connect(trans, &PackageKit::Transaction::package, this, [trans](PackageKit::Transaction::Info info, const QString &packageID){
+                if (info == PackageKit::Transaction::InfoInstalled)
+                    trans->setProperty("installedPackage", packageID);
+            });
+            connect(trans, &PackageKit::Transaction::finished, this, [this, trans, component](PackageKit::Transaction::Exit status) {
+                const auto pkgidVal = trans->property("installedPackage");
+                if (status == PackageKit::Transaction::ExitSuccess && !pkgidVal.isNull()) {
+                    const auto pkgid = pkgidVal.toString();
+                    auto res = addComponent(component, {PackageKit::Daemon::packageName(pkgid)});
+                    res->clearPackageIds();
+                    res->addPackageId(PackageKit::Transaction::InfoInstalled, pkgid, true);
+                }
+                acquireFetching(false);
+            });
+        }
+
+        if (!neededPackages.isEmpty()) {
+            neededPackages.removeDuplicates();
+            resolvePackages(neededPackages);
+        } else {
+            qCDebug(LIBDISCOVER_BACKEND_LOG) << "empty appstream db";
+            if (PackageKit::Daemon::backendName() == QLatin1String("aptcc") || PackageKit::Daemon::backendName().isEmpty()) {
+                checkForUpdates();
+            }
+        }
+        acquireFetching(false);
+        if (!m_appstreamInitialized) {
+            m_appstreamInitialized = true;
+            Q_EMIT loadedAppStream();
+        }
+    });
+    fw->setFuture(QtConcurrent::run(&m_threadPool, &loadAppStream, m_appdata.get()));
 }
 
 AppPackageKitResource* PackageKitBackend::addComponent(const AppStream::Component& component, const QStringList& pkgNames)
@@ -417,6 +455,7 @@ void PackageKitBackend::checkForUpdates()
 
 QList<AppStream::Component> PackageKitBackend::componentsById(const QString& id) const
 {
+    Q_ASSERT(m_appstreamInitialized);
     return m_appdata->componentsById(id);
 }
 
@@ -430,39 +469,43 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
     } else if (filter.search.isEmpty()) {
         return new ResultsStream(QStringLiteral("PackageKitStream-all"), kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource*>(res)->extendsItself(); }));
     } else {
-        const QList<AppStream::Component> components = m_appdata->search(filter.search);
-        const QStringList ids = kTransform<QStringList>(components, [](const AppStream::Component& comp) { return comp.id(); });
         auto stream = new ResultsStream(QStringLiteral("PackageKitStream-search"));
-        if (!ids.isEmpty()) {
-            const auto resources = kFilter<QVector<AbstractResource*>>(resourcesByPackageNames<QVector<AbstractResource*>>(ids), [](AbstractResource* res){ return !qobject_cast<PackageKitResource*>(res)->extendsItself(); });
-            QTimer::singleShot(0, this, [stream, resources] () {
+        const auto f = [this, stream, filter] () {
+            const QList<AppStream::Component> components = m_appdata->search(filter.search);
+            const QStringList ids = kTransform<QStringList>(components, [](const AppStream::Component& comp) { return comp.id(); });
+            if (!ids.isEmpty()) {
+                const auto resources = kFilter<QVector<AbstractResource*>>(resourcesByPackageNames<QVector<AbstractResource*>>(ids), [](AbstractResource* res){ return !qobject_cast<PackageKitResource*>(res)->extendsItself(); });
                 Q_EMIT stream->resourcesFound(resources);
-            });
-        }
-
-        PackageKit::Transaction * tArch = PackageKit::Daemon::resolve(filter.search, PackageKit::Transaction::FilterArch);
-        connect(tArch, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageArch);
-        connect(tArch, &PackageKit::Transaction::package, stream, [stream](PackageKit::Transaction::Info /*info*/, const QString &packageId){
-            stream->setProperty("packageId", packageId);
-        });
-        connect(tArch, &PackageKit::Transaction::finished, stream, [stream, ids, this](PackageKit::Transaction::Exit status) {
-            getPackagesFinished();
-            if (status == PackageKit::Transaction::Exit::ExitSuccess) {
-                const auto packageId = stream->property("packageId");
-                if (!packageId.isNull()) {
-                    const auto res = resourcesByPackageNames<QVector<AbstractResource*>>({PackageKit::Daemon::packageName(packageId.toString())});
-                    Q_EMIT stream->resourcesFound(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
-                }
             }
-            stream->finish();
-        }, Qt::QueuedConnection);
+
+            PackageKit::Transaction * tArch = PackageKit::Daemon::resolve(filter.search, PackageKit::Transaction::FilterArch);
+            connect(tArch, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageArch);
+            connect(tArch, &PackageKit::Transaction::package, stream, [stream](PackageKit::Transaction::Info /*info*/, const QString &packageId){
+                stream->setProperty("packageId", packageId);
+            });
+            connect(tArch, &PackageKit::Transaction::finished, stream, [stream, ids, this](PackageKit::Transaction::Exit status) {
+                getPackagesFinished();
+                if (status == PackageKit::Transaction::Exit::ExitSuccess) {
+                    const auto packageId = stream->property("packageId");
+                    if (!packageId.isNull()) {
+                        const auto res = resourcesByPackageNames<QVector<AbstractResource*>>({PackageKit::Daemon::packageName(packageId.toString())});
+                        Q_EMIT stream->resourcesFound(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
+                    }
+                }
+                stream->finish();
+            }, Qt::QueuedConnection);
+        };
+        if (!m_appstreamInitialized) {
+            connect(this, &PackageKitBackend::loadedAppStream, stream, f);
+        } else {
+            QTimer::singleShot(0, this, f);
+        }
         return stream;
     }
 }
 
 ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
 {
-    AbstractResource* pkg = nullptr;
     if (url.isLocalFile()) {
         QMimeDatabase db;
         const auto mime = db.mimeTypeForUrl(url);
@@ -471,7 +514,7 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
             || mime.inherits(QStringLiteral("application/x-tar"))
             || mime.inherits(QStringLiteral("application/x-xz-compressed-tar"))
         ) {
-            pkg = new LocalFilePKResource(url, this);
+            return new ResultsStream(QStringLiteral("PackageKitStream-localpkg"), QVector<AbstractResource*>{ new LocalFilePKResource(url, this)});
         }
     } else if (url.scheme() == QLatin1String("appstream")) {
         static const QMap<QString, QString> deprecatedAppstreamIds = {
@@ -488,20 +531,33 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
         if (appstreamId.isEmpty())
             Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
-            const auto deprecatedHost = deprecatedAppstreamIds.value(appstreamId); //try this as fallback
-            for (auto it = m_packages.packages.constBegin(), itEnd = m_packages.packages.constEnd(); it != itEnd; ++it) {
-                if    (it.key().compare(appstreamId, Qt::CaseInsensitive) == 0
-                    || it.key().compare(deprecatedHost, Qt::CaseInsensitive) == 0
-                    || (appstreamId.endsWith(QLatin1String(".desktop")) && appstreamId.compare(it.key()+QLatin1String(".desktop"), Qt::CaseInsensitive) == 0)) {
-                    pkg = it.value();
-                    break;
+            auto stream = new ResultsStream(QStringLiteral("PackageKitStream-appstream-url"));
+            const auto f = [this, appstreamId, stream] () {
+                AbstractResource* pkg = nullptr;
+                const auto deprecatedHost = deprecatedAppstreamIds.value(appstreamId); //try this as fallback
+                for (auto it = m_packages.packages.constBegin(), itEnd = m_packages.packages.constEnd(); it != itEnd; ++it) {
+                    if    (it.key().compare(appstreamId, Qt::CaseInsensitive) == 0
+                        || it.key().compare(deprecatedHost, Qt::CaseInsensitive) == 0
+                        || (appstreamId.endsWith(QLatin1String(".desktop")) && appstreamId.compare(it.key()+QLatin1String(".desktop"), Qt::CaseInsensitive) == 0)) {
+                        pkg = it.value();
+                        break;
+                    }
                 }
+                if (pkg)
+                    Q_EMIT stream->resourcesFound({pkg});
+                stream->finish();
+    //             if (!pkg)
+    //                 qCDebug(LIBDISCOVER_BACKEND_LOG) << "could not find" << host << deprecatedHost;
+            };
+            if (!m_appstreamInitialized) {
+                connect(this, &PackageKitBackend::loadedAppStream, stream, f);
+            } else {
+                QTimer::singleShot(0, this, f);
             }
-//             if (!pkg)
-//                 qCDebug(LIBDISCOVER_BACKEND_LOG) << "could not find" << host << deprecatedHost;
+            return stream;
         }
     }
-    return new ResultsStream(QStringLiteral("PackageKitStream-url"), pkg ? QVector<AbstractResource*>{pkg} : QVector<AbstractResource*>{});
+    return new ResultsStream(QStringLiteral("PackageKitStream-unknown-url"), {});
 }
 
 bool PackageKitBackend::hasSecurityUpdates() const

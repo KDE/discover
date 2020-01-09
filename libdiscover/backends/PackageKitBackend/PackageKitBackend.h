@@ -29,6 +29,7 @@
 #include <QTimer>
 #include <QSet>
 #include <QSharedPointer>
+#include <QThreadPool>
 #include <PackageKit/Transaction>
 #include <AppStreamQt/pool.h>
 
@@ -89,6 +90,9 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void addPackageToUpdate(PackageKit::Transaction::Info, const QString& pkgid, const QString& summary);
         void getUpdatesFinished(PackageKit::Transaction::Exit,uint);
 
+    Q_SIGNALS:
+        void loadedAppStream();
+
     private:
         friend class PackageKitResource;
         template <typename T>
@@ -109,6 +113,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         bool m_hasSecurityUpdates = false;
         QSet<PackageKitResource*> m_packagesToAdd;
         QSet<PackageKitResource*> m_packagesToDelete;
+        bool m_appstreamInitialized = false;
 
         struct Packages {
             QHash<QString, AbstractResource*> packages;
@@ -122,6 +127,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         Packages m_packages;
         QSharedPointer<OdrsReviewsBackend> m_reviews;
         QPointer<PackageKit::Transaction> m_getUpdatesTransaction;
+        QThreadPool m_threadPool;
 };
 
 #endif // PACKAGEKITBACKEND_H
