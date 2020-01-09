@@ -160,6 +160,7 @@ void PackageKitBackend::acquireFetching(bool f)
 
 void PackageKitBackend::reloadPackageList()
 {
+    qDebug() << "xxx";
     acquireFetching(true);
     if (m_refresher) {
         disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
@@ -185,9 +186,9 @@ void PackageKitBackend::reloadPackageList()
 
         const auto pkgNames = component.packageNames();
         if (pkgNames.isEmpty()) {
-            auto launchable = component.launchable(AppStream::Launchable::KindDesktopId);
-            if (component.kind() == AppStream::Component::KindDesktopApp && !launchable.entries().isEmpty()) {
-                const QString file = locateService(launchable.entries().constFirst());
+            const auto entries = component.launchable(AppStream::Launchable::KindDesktopId).entries();
+            if (component.kind() == AppStream::Component::KindDesktopApp && !entries.isEmpty()) {
+                const QString file = locateService(entries.first());
                 if (!file.isEmpty()) {
                     acquireFetching(true);
                     auto trans = PackageKit::Daemon::searchFiles(file);
