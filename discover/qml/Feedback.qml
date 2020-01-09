@@ -62,6 +62,7 @@ UserFeedback.Provider
     UserFeedback.ScreenInfoSource { mode: UserFeedback.Provider.DetailedSystemInformation }
     UserFeedback.PropertySource {
         mode: UserFeedback.Provider.DetailedUsageStatistics
+        name: "Application Source Name"
         sourceId: "applicationSourceName"
         data: { "value": ResourcesModel.applicationSourceName }
         description: "The source for applications"
