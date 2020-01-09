@@ -58,8 +58,6 @@ FeaturedModel::FeaturedModel()
         f.close();
         refresh();
         acquireFetching(false);
-
-        Q_EMIT isFetchingChanged();
     });
 
     if (!ResourcesModel::global()->backends().isEmpty() && QFile::exists(*featuredCache))
