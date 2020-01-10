@@ -50,6 +50,7 @@ Kirigami.OverlaySheet {
 
         clip: true
         spacing: Kirigami.Units.smallSpacing
+        implicitWidth: Kirigami.Units.gridUnit * 25
         cacheBuffer: Math.max(0, contentHeight)
 
         header: ColumnLayout {
@@ -79,12 +80,7 @@ Kirigami.OverlaySheet {
         }
 
         delegate: ReviewDelegate {
-            anchors {
-                left: parent.left
-                right: parent.right
-                topMargin: Kirigami.Units.largeSpacing
-                bottomMargin: Kirigami.Units.largeSpacing
-            }
+            width: parent.width
             separator: index != ListView.view.count-1
             onMarkUseful: page.model.markUseful(index, useful)
         }
