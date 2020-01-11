@@ -77,3 +77,16 @@ option(BUILD_RpmOstreeBackend "Build rpm-ostree support." "ON")
 if (BUILD_RpmOstreeBackend AND Ostree_FOUND AND RpmOstree_FOUND)
     add_subdirectory(RpmOstreeBackend)
 endif()
+
+# Optional library
+find_package(ApkQt CONFIG)
+set_package_properties(ApkQt PROPERTIES
+    DESCRIPTION "C++/Qt interface library for Alpine package keeper"
+    URL "https://gitlab.com/postmarketOS/libapk-qt"
+    PURPOSE "Required to build the Alpine APK backend"
+    TYPE OPTIONAL)
+
+option(BUILD_AlpineApkBackend "Build Alpine APK support." "ON")
+if(BUILD_AlpineApkBackend AND ApkQt_FOUND)
+    add_subdirectory(AlpineApkBackend)
+endif()
