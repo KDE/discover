@@ -28,6 +28,7 @@
 #include <QProcess>
 #include <QDebug>
 #include <QRegularExpression>
+#include <resources/SourcesModel.h>
 #include <resources/AbstractResourcesBackend.h>
 #include "PackageKitBackend.h"
 #include "config-paths.h"
@@ -79,7 +80,7 @@ PackageKitSourcesBackend::PackageKitSourcesBackend(AbstractResourcesBackend* par
     , m_sources(new PKSourcesModel(this))
 {
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::repoListChanged, this, &PackageKitSourcesBackend::resetSources);
-    resetSources();
+    connect(SourcesModel::global(), &SourcesModel::showingNow, this, &PackageKitSourcesBackend::resetSources);
 
     // Kubuntu-based
     auto addNativeSourcesManager = [this](const QString &file){
@@ -162,6 +163,7 @@ QVariantList PackageKitSourcesBackend::actions() const
 
 void PackageKitSourcesBackend::resetSources()
 {
+    disconnect(SourcesModel::global(), &SourcesModel::showingNow, this, &PackageKitSourcesBackend::resetSources);
     m_sources->clear();
     auto transaction = PackageKit::Daemon::global()->getRepoList();
     connect(transaction, &PackageKit::Transaction::repoDetail, this, &PackageKitSourcesBackend::addRepositoryDetails);

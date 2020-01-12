@@ -23,6 +23,7 @@ DiscoverPage {
     mainItem: ListView {
         id: sourcesView
         model: SourcesModel
+        Component.onCompleted: Qt.callLater(SourcesModel.showingNow)
         currentIndex: -1
 
         section.property: "sourceName"

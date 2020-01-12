@@ -50,6 +50,9 @@ class DISCOVERCOMMON_EXPORT SourcesModel : public KConcatenateRowsProxyModel
 
         Q_SCRIPTABLE AbstractSourcesBackend* sourcesBackendByName(const QString &name) const;
 
+    Q_SIGNALS:
+        void showingNow();
+
     private:
         const QAbstractItemModel* modelAt(const QModelIndex& idx) const;
 };
