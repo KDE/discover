@@ -217,22 +217,14 @@ int StandardBackendUpdater::updatesCount() const
 
 void StandardBackendUpdater::addResources(const QList< AbstractResource* >& apps)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    const QSet<AbstractResource *> upgradeableApps(apps.begin(), apps.end());
-#else
-    const QSet<AbstractResource *> upgradeableApps = apps.toSet();
-#endif
+    const QSet<AbstractResource *> upgradeableApps = kToSet(apps);
     Q_ASSERT(m_upgradeable.contains(upgradeableApps));
     m_toUpgrade += upgradeableApps;
 }
 
 void StandardBackendUpdater::removeResources(const QList< AbstractResource* >& apps)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    const QSet<AbstractResource *> upgradeableApps(apps.begin(), apps.end());
-#else
-    const QSet<AbstractResource *> upgradeableApps = apps.toSet();
-#endif
+    const QSet<AbstractResource *> upgradeableApps = kToSet(apps);
     Q_ASSERT(m_upgradeable.contains(upgradeableApps));
     Q_ASSERT(m_toUpgrade.contains(upgradeableApps));
     m_toUpgrade -= upgradeableApps;

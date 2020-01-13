@@ -31,6 +31,7 @@
 #include <KLocalizedString>
 
 #include "libdiscover_backend_debug.h"
+#include "utils.h"
 
 int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage)
 {
@@ -87,7 +88,7 @@ void PackageKitUpdater::prepare()
 void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFlags flags)
 {
     m_packagesModified.clear();
-    auto pkgs = involvedPackages(m_toUpgrade).toList();
+    auto pkgs = involvedPackages(m_toUpgrade).values();
     pkgs.sort();
     m_transaction = PackageKit::Daemon::updatePackages(pkgs, flags);
     m_isCancelable = m_transaction->allowCancel();
@@ -119,7 +120,7 @@ QSet<AbstractResource*> PackageKitUpdater::packagesForPackageId(const QSet<QStri
     QSet<AbstractResource*> ret;
     foreach (AbstractResource * res, m_allUpgradeable) {
         PackageKitResource* pres = qobject_cast<PackageKitResource*>(res);
-        if (packages.contains(pres->allPackageNames().toSet())) {
+        if (packages.contains(kToSet(pres->allPackageNames()))) {
             ret.insert(res);
         }
     }
@@ -262,19 +263,24 @@ qreal PackageKitUpdater::progress() const
 
 void PackageKitUpdater::removeResources(const QList<AbstractResource*>& apps)
 {
-    QSet<QString> pkgs = involvedPackages(apps.toSet());
+    QSet<QString> pkgs = involvedPackages(kToSet(apps));
     m_toUpgrade.subtract(packagesForPackageId(pkgs));
 }
 
 void PackageKitUpdater::addResources(const QList<AbstractResource*>& apps)
 {
-    QSet<QString> pkgs = involvedPackages(apps.toSet());
+    QSet<QString> pkgs = involvedPackages(kToSet(apps));
     m_toUpgrade.unite(packagesForPackageId(pkgs));
 }
 
 QList<AbstractResource*> PackageKitUpdater::toUpdate() const
 {
-    return m_toUpgrade.toList();
+    return m_toUpgrade
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    .values();
+#else
+    .toList();
+#endif
 }
 
 bool PackageKitUpdater::isMarked(AbstractResource* res) const

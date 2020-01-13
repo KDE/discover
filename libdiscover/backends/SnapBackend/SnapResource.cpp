@@ -41,7 +41,7 @@ QDebug operator<<(QDebug debug, const QSnapdPlug& plug)
     debug.nospace() << "snap:" << plug.snap() << ',';
     debug.nospace() << "label:" << plug.label() << ',';
     debug.nospace() << "interface:" << plug.interface() << ',';
-    debug.nospace() << "connectionCount:" << plug.connectionCount();
+//     debug.nospace() << "connectionCount:" << plug.connectionSlotCount();
     debug.nospace() << ')';
     return debug;
 }
@@ -54,7 +54,7 @@ QDebug operator<<(QDebug debug, const QSnapdSlot& slot)
     debug.nospace() << "label:" << slot.label() << ',';
     debug.nospace() << "snap:" << slot.snap() << ',';
     debug.nospace() << "interface:" << slot.interface() << ',';
-    debug.nospace() << "connectionCount:" << slot.connectionCount();
+//     debug.nospace() << "connectionCount:" << slot.connectionSlotCount();
     debug.nospace() << ')';
     return debug;
 }

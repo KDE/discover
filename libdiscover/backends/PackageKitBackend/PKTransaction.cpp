@@ -40,7 +40,7 @@ PKTransaction::PKTransaction(const QVector<AbstractResource*>& apps, Transaction
     Q_ASSERT(!apps.contains(nullptr));
     foreach(auto r, apps) {
         PackageKitResource* res = qobject_cast<PackageKitResource*>(r);
-        m_pkgnames.unite(res->allPackageNames().toSet());
+        m_pkgnames.unite(kToSet(res->allPackageNames()));
     }
 
     QTimer::singleShot(0, this, &PKTransaction::start);
@@ -178,7 +178,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
                 i.remove();
             }
         }
-        removedResources.subtract(kVectorToSet(m_apps));
+        removedResources.subtract(kToSet(m_apps));
 
         if (!packagesToRemove.isEmpty() || !removedResources.isEmpty()) {
             QString msg = QLatin1String("<ul><li>") + PackageKitResource::joinPackages(packagesToRemove, QLatin1String("</li><li>"), {});

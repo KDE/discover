@@ -691,7 +691,7 @@ void PackageKitBackend::fetchDetails(const QSet<QString>& pkgid)
 void PackageKitBackend::performDetailsFetch()
 {
     Q_ASSERT(!m_packageNamesToFetchDetails.isEmpty());
-    const auto ids = m_packageNamesToFetchDetails.toList();
+    const auto ids = m_packageNamesToFetchDetails.values();
 
     PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(ids);
     connect(transaction, &PackageKit::Transaction::details, this, &PackageKitBackend::packageDetails);
@@ -739,6 +739,5 @@ int PackageKitBackend::fetchingUpdatesProgress() const
     m_getUpdatesTransaction->setProperty("lastPercentage", percentage);
     return percentage;
 }
-
 
 #include "PackageKitBackend.moc"

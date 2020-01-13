@@ -88,13 +88,27 @@ static QVector<T> kSetToVector(const QSet<T> & set)
 }
 
 template <typename T>
-static QSet<T> kVectorToSet(const QVector<T> & set)
+static QSet<T> kToSet(const QVector<T> & set)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    return QSet<T>(set.begin(), set.end());
+#else
     QSet<T> ret;
     ret.reserve(set.size());
     for(auto &x: set)
         ret.insert(x);
     return ret;
+#endif
+}
+
+template <typename T>
+static QSet<T> kToSet(const QList<T> & set)
+{
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    return QSet<T>(set.begin(), set.end());
+#else
+    return set.toSet();
+#endif
 }
 
 class ElapsedDebug : private QElapsedTimer

@@ -68,10 +68,10 @@ void SnapTransaction::finishTransaction()
             p->setProgram(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR "/discover/SnapMacaroonDialog"));
             p->start();
 
-            connect(p, static_cast<void(QProcess::*)(int)>(&QProcess::finished), this, [this, p] (int code) {
+            connect(p, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, [this, p] (int code, QProcess::ExitStatus status) {
                 p->deleteLater();
                 if (code != 0) {
-                    qWarning() << "login failed... code:" << code << p->readAll();
+                    qWarning() << "login failed... code:" << code << status << p->readAll();
                     Q_EMIT passiveMessage(m_request->errorString());
                     setStatus(DoneWithErrorStatus);
                     return;

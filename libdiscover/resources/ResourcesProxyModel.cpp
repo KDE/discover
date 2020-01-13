@@ -233,7 +233,7 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 
 void ResourcesProxyModel::fetchSubcategories()
 {
-    auto cats = kVectorToSet(m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories());
+    auto cats = kToSet(m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories());
 
     const int count = rowCount();
     QSet<Category*> done;

@@ -36,9 +36,7 @@ class SnapAuthHelper : public QObject
     Q_OBJECT
     QSnapdClient m_client;
 public:
-    SnapAuthHelper() {
-        m_client.connect()->runAsync();
-    }
+    SnapAuthHelper() {}
 
 public Q_SLOTS:
     KAuth::ActionReply login(const QVariantMap &args)
