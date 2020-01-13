@@ -456,10 +456,12 @@ int FwupdBackend::updatesCount() const
 
 ResultsStream* FwupdBackend::search(const AbstractResourcesBackend::Filters& filter)
 {
-    if (filter.resourceUrl.scheme() == QLatin1String("fwupd")) {
-        return findResourceByPackageName(filter.resourceUrl);
-    } else if (!filter.resourceUrl.isEmpty()) {
-        return resourceForFile(filter.resourceUrl);
+    if (!filter.resourceUrl.isEmpty()) {
+        if (filter.resourceUrl.scheme() == QLatin1String("fwupd")) {
+            return findResourceByPackageName(filter.resourceUrl);
+        } else if (filter.resourceUrl.isLocalFile()) {
+            return resourceForFile(filter.resourceUrl);
+        }
     }
 
     auto stream = new ResultsStream(QStringLiteral("FwupdStream"));
@@ -525,15 +527,19 @@ Transaction* FwupdBackend::removeApplication(AbstractResource* /*app*/)
 
 ResultsStream* FwupdBackend::resourceForFile(const QUrl& path)
 {
+    if (!path.isLocalFile())
+        return new ResultsStream(QStringLiteral("FwupdStream-void"), {});
+
     g_autoptr(GError) error = nullptr;
 
+    const QString fileName = path.fileName();
     QMimeDatabase db;
-    QMimeType type = db.mimeTypeForFile(path.fileName());
+    QMimeType type = db.mimeTypeForFile(fileName);
     FwupdResource* app = nullptr;
 
     if (type.isValid() && type.inherits(QStringLiteral("application/vnd.ms-cab-compressed")))
     {
-        g_autofree gchar *filename = path.fileName().toUtf8().data();
+        g_autofree gchar *filename = fileName.toUtf8().data();
         g_autoptr(GPtrArray) devices = fwupd_client_get_details(client, filename, nullptr, &error);
 
         if (devices)
