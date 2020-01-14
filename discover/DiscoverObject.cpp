@@ -521,4 +521,9 @@ QRect DiscoverObject::initialGeometry() const
     return window.readEntry("geometry", QRect());
 }
 
+QString DiscoverObject::describeSources() const
+{
+    return rootObject()->property("describeSources").toString();
+}
+
 #include "DiscoverObject.moc"

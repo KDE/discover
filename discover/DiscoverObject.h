@@ -62,6 +62,8 @@ class DiscoverObject : public QObject
         void showPassiveNotification(const QString &msg);
         QRect initialGeometry() const;
 
+        QString describeSources() const;
+
     public Q_SLOTS:
         void openApplication(const QUrl& app);
         void openMimeType(const QString& mime);

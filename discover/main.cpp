@@ -52,6 +52,7 @@ QCommandLineParser* createParser()
     parser->addOption(QCommandLineOption(QStringLiteral("local-filename"), i18n("Local package file to install"), QStringLiteral("package")));
     parser->addOption(QCommandLineOption(QStringLiteral("listbackends"), i18n("List all the available backends.")));
     parser->addOption(QCommandLineOption(QStringLiteral("search"), i18n("Search string."), QStringLiteral("text")));
+    parser->addOption(QCommandLineOption(QStringLiteral("feedback"), i18n("Lists the available options for user feedback")));
     parser->addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Test file"), QStringLiteral("file.qml")));
     parser->addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
     DiscoverBackendsFactory::setupCommandLine(parser);
@@ -157,6 +158,12 @@ int main(int argc, char** argv)
             QTextStream(stdout) << i18n("Available modes:\n");
             foreach(const QString& mode, mainWindow->modes())
                 QTextStream(stdout) << " * " << mode << '\n';
+            delete mainWindow;
+            return 0;
+        }
+
+        if(parser->isSet(QStringLiteral("feedback"))) {
+            QTextStream(stdout) << mainWindow->describeSources() << '\n';
             delete mainWindow;
             return 0;
         }
