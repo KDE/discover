@@ -52,7 +52,6 @@ class FeaturedModel : public QAbstractListModel
 
         void acquireFetching(bool f);
 
-        QVector<QUrl> m_uris;
         QVector<AbstractResource*> m_resources;
         int m_isFetching = 0;
 };
