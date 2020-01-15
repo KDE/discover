@@ -96,8 +96,11 @@ void FeaturedModel::setUris(const QVector<QUrl>& uris)
         filter.resourceUrl = uri;
         streams << backend->search(filter);
     }
-    auto stream = new StoredResultsStream(streams);
-    connect(stream, &StoredResultsStream::finishedResources, this, &FeaturedModel::setResources);
+    if (!streams.isEmpty()) {
+        auto stream = new StoredResultsStream(streams);
+        acquireFetching(true);
+        connect(stream, &StoredResultsStream::finishedResources, this, &FeaturedModel::setResources);
+    }
 }
 
 static void filterDupes(QVector<AbstractResource *> &resources)
@@ -135,14 +138,16 @@ void FeaturedModel::setResources(const QVector<AbstractResource *>& _resources)
     auto resources = _resources;
     filterDupes(resources);
 
-    if (m_resources == resources)
+    if (m_resources == resources) {
+        acquireFetching(false);
         return;
+    }
 
     //TODO: sort like in the json files
-
     beginResetModel();
     m_resources = resources;
     endResetModel();
+    acquireFetching(false);
 }
 
 void FeaturedModel::removeResource(AbstractResource* resource)
