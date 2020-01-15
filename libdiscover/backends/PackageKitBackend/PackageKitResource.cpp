@@ -107,10 +107,10 @@ QJsonArray PackageKitResource::licenses()
     fetchDetails();
 
     if (!m_details.license().isEmpty()) {
-        return {{ m_details.license(), {} }};
+        return { QJsonObject {{ QStringLiteral("name"), m_details.license() }} };
     }
 
-    return {};
+    return { QJsonObject {{ QStringLiteral("name"), {} }} };
 }
 
 QList<PackageState> PackageKitResource::addonsInformation()
