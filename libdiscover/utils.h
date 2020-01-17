@@ -51,6 +51,17 @@ static T kTransform(const Q &input, _UnaryOperation op)
 }
 
 template <typename T, typename Q, typename _UnaryOperation>
+static T kAppend(const Q &input, _UnaryOperation op)
+{
+    T ret;
+    ret.reserve(input.size());
+    for(const auto& v : input) {
+        ret.append(op(v));
+    }
+    return ret;
+}
+
+template <typename T, typename Q, typename _UnaryOperation>
 static T kFilter(const Q &input, _UnaryOperation op)
 {
     T ret;
