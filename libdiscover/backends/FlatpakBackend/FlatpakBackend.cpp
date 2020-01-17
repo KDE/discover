@@ -1170,8 +1170,8 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
     auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
     auto f = [this, stream, filter] () {
         QVector<AbstractResource*> ret;
-        foreach(auto r, m_resources) {
-            const bool matchById = filter.search.compare(r->appstreamId(), Qt::CaseInsensitive) == 0;
+        for (auto r : qAsConst(m_resources)) {
+            const bool matchById = r->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
             if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
                 continue;
             }
@@ -1215,13 +1215,13 @@ QVector<AbstractResource *> FlatpakBackend::resourcesByAppstreamName(const QStri
 ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
 {
     if (url.scheme() == QLatin1String("appstream")) {
-        const auto appstreamId = AppStreamUtils::appstreamId(url);
-        if (appstreamId.isEmpty())
+        const auto appstreamIds = AppStreamUtils::appstreamIds(url);
+        if (appstreamIds.isEmpty())
             Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
             auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
-            auto f = [this, stream, appstreamId] () {
-                const auto resources = resourcesByAppstreamName(appstreamId);
+            auto f = [this, stream, appstreamIds] () {
+                const auto resources = kAppend<QVector<AbstractResource*>>(appstreamIds, [this] (const QString appstreamId) { return resourcesByAppstreamName(appstreamId); });
                 if (!resources.isEmpty())
                     Q_EMIT stream->resourcesFound(resources);
                 stream->finish();

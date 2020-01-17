@@ -527,18 +527,21 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
             { QStringLiteral("org.blender.blender.desktop"), QStringLiteral("blender.desktop") },
         };
         
-        const auto appstreamId = AppStreamUtils::appstreamId(url);
-        if (appstreamId.isEmpty())
+        const auto appstreamIds = AppStreamUtils::appstreamIds(url);
+        if (appstreamIds.isEmpty())
             Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
             auto stream = new ResultsStream(QStringLiteral("PackageKitStream-appstream-url"));
-            const auto f = [this, appstreamId, stream] () {
+            const auto f = [this, appstreamIds, stream] () {
                 AbstractResource* pkg = nullptr;
-                const auto deprecatedHost = deprecatedAppstreamIds.value(appstreamId); //try this as fallback
+
+                const QStringList allAppStreamIds = appstreamIds + deprecatedAppstreamIds.values(appstreamIds.first());
                 for (auto it = m_packages.packages.constBegin(), itEnd = m_packages.packages.constEnd(); it != itEnd; ++it) {
-                    if    (it.key().compare(appstreamId, Qt::CaseInsensitive) == 0
-                        || it.key().compare(deprecatedHost, Qt::CaseInsensitive) == 0
-                        || (appstreamId.endsWith(QLatin1String(".desktop")) && appstreamId.compare(it.key()+QLatin1String(".desktop"), Qt::CaseInsensitive) == 0)) {
+                    const bool matches = kContains(allAppStreamIds, [&it] (const QString& id) {
+                        return it.key().compare(id, Qt::CaseInsensitive) == 0 ||
+                              (id.endsWith(QLatin1String(".desktop")) && id.compare(it.key()+QLatin1String(".desktop"), Qt::CaseInsensitive) == 0);
+                    });
+                    if (matches) {
                         pkg = it.value();
                         break;
                     }

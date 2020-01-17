@@ -24,6 +24,7 @@
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
+#include <QVector>
 #include <Snapd/Client>
 #include <functional>
 
@@ -62,7 +63,13 @@ private:
     ResultsStream* populateWithFilter(T* snaps, std::function<bool(const QSharedPointer<QSnapdSnap>&)>& filter);
 
     template <class T>
+    ResultsStream* populateJobsWithFilter(const QVector<T*>& snaps, std::function<bool(const QSharedPointer<QSnapdSnap>&)>& filter);
+
+    template <class T>
     ResultsStream* populate(T* snaps);
+
+    template <class T>
+    ResultsStream* populate(const QVector<T*>& snaps);
 
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;

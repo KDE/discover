@@ -22,6 +22,7 @@
 
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QUrlQuery>
 #include <QDebug>
 #include "utils.h"
 #include <KLocalizedString>
@@ -104,7 +105,13 @@ QJsonArray AppStreamUtils::licenses(const AppStream::Component& appdata)
 #endif
 }
 
-QString AppStreamUtils::appstreamId(const QUrl &appstreamUrl)
+QStringList AppStreamUtils::appstreamIds(const QUrl &appstreamUrl)
 {
-    return appstreamUrl.host().isEmpty() ? appstreamUrl.path() : appstreamUrl.host();
+    QStringList ret;
+    ret += appstreamUrl.host().isEmpty() ? appstreamUrl.path() : appstreamUrl.host();
+    if (appstreamUrl.hasQuery()) {
+        QUrlQuery query(appstreamUrl);
+        ret << query.queryItemValue(QStringLiteral("alt")).split(QLatin1Char(','), Qt::SkipEmptyParts);
+    }
+    return ret;
 }
