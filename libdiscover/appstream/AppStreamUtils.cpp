@@ -111,7 +111,7 @@ QStringList AppStreamUtils::appstreamIds(const QUrl &appstreamUrl)
     ret += appstreamUrl.host().isEmpty() ? appstreamUrl.path() : appstreamUrl.host();
     if (appstreamUrl.hasQuery()) {
         QUrlQuery query(appstreamUrl);
-        ret << query.queryItemValue(QStringLiteral("alt")).split(QLatin1Char(','), Qt::SkipEmptyParts);
+        ret << query.queryItemValue(QStringLiteral("alt")).split(QLatin1Char(','), QString::SkipEmptyParts);
     }
     return ret;
 }
