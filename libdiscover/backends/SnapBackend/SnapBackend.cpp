@@ -109,63 +109,84 @@ ResultsStream * SnapBackend::search(const AbstractResourcesBackend::Filters& fil
 
 ResultsStream * SnapBackend::findResourceByPackageName(const QUrl& search)
 {
-    Q_ASSERT(!search.host().isEmpty() || !AppStreamUtils::appstreamId(search).isEmpty());
+    Q_ASSERT(!search.host().isEmpty() || !AppStreamUtils::appstreamIds(search).isEmpty());
     return search.scheme() == QLatin1String("snap")      ? populate(m_client.find(QSnapdClient::MatchName, search.host())) :
 #ifdef SNAP_FIND_COMMON_ID
-           search.scheme() == QLatin1String("appstream") ? populate(m_client.find(QSnapdClient::MatchCommonId, AppStreamUtils::appstreamId(search))) :
+           search.scheme() == QLatin1String("appstream") ? populate(kTransform<QVector<QSnapdFindRequest*>>(AppStreamUtils::appstreamIds(search),
+                                                                                [this] (const QString &id) {return m_client.find(QSnapdClient::MatchCommonId, id); })) :
 #endif
                 voidStream();
 }
 
 template <class T>
-ResultsStream* SnapBackend::populate(T* snaps)
+ResultsStream* SnapBackend::populate(T* job)
+{
+    return populate<T>(QVector<T*>{job});
+}
+
+template <class T>
+ResultsStream* SnapBackend::populate(const QVector<T*>& jobs)
 {
     std::function<bool(const QSharedPointer<QSnapdSnap>&)> acceptAll = [](const QSharedPointer<QSnapdSnap>&){ return true; };
-    return populateWithFilter(snaps, acceptAll);
+    return populateJobsWithFilter(jobs, acceptAll);
 }
 
 template <class T>
 ResultsStream* SnapBackend::populateWithFilter(T* job, std::function<bool(const QSharedPointer<QSnapdSnap>& s)>& filter)
 {
+    return populateJobsWithFilter<T>({job}, filter);
+}
+
+template <class T>
+ResultsStream* SnapBackend::populateJobsWithFilter(const QVector<T*>& jobs, std::function<bool(const QSharedPointer<QSnapdSnap>& s)>& filter)
+{
     auto stream = new ResultsStream(QStringLiteral("Snap-populate"));
+    stream->setProperty("remaining", jobs.count());
+    for(auto job : jobs) {
+        connect(job, &T::complete, stream, [stream, this, job, filter]() {
+            const int remaining = stream->property("remaining").toInt() - 1;
+            stream->setProperty("remaining", remaining);
 
-    connect(job, &T::complete, stream, [stream, this, job, filter]() {
-        if (job->error()) {
-            qDebug() << "error:" << job->error() << job->errorString();
-            stream->finish();
-            return;
-        }
-
-        QVector<AbstractResource*> ret;
-        QVector<SnapResource*> resources;
-        ret.reserve(job->snapCount());
-        resources.reserve(job->snapCount());
-        for (int i=0, c=job->snapCount(); i<c; ++i) {
-            QSharedPointer<QSnapdSnap> snap(job->snap(i));
-
-            if (!filter(snap))
-                continue;
-
-            const auto snapname = snap->name();
-            SnapResource* res = m_resources.value(snapname);
-            if (!res) {
-                res = new SnapResource(snap, AbstractResource::None, this);
-                Q_ASSERT(res->packageName() == snapname);
-                resources += res;
-            } else {
-                res->setSnap(snap);
+            if (job->error()) {
+                qDebug() << "error:" << job->error() << job->errorString();
+                if (remaining == 0)
+                    stream->finish();
+                return;
             }
-            ret += res;
-        }
 
-        foreach(SnapResource* res, resources)
-            m_resources[res->packageName()] = res;
+            QVector<AbstractResource*> ret;
+            QVector<SnapResource*> resources;
+            ret.reserve(job->snapCount());
+            resources.reserve(job->snapCount());
+            for (int i=0, c=job->snapCount(); i<c; ++i) {
+                QSharedPointer<QSnapdSnap> snap(job->snap(i));
 
-        if (!ret.isEmpty())
-            Q_EMIT stream->resourcesFound(ret);
-        stream->finish();
-    });
-    job->runAsync();
+                if (!filter(snap))
+                    continue;
+
+                const auto snapname = snap->name();
+                SnapResource* res = m_resources.value(snapname);
+                if (!res) {
+                    res = new SnapResource(snap, AbstractResource::None, this);
+                    Q_ASSERT(res->packageName() == snapname);
+                    resources += res;
+                } else {
+                    res->setSnap(snap);
+                }
+                ret += res;
+            }
+
+            foreach(SnapResource* res, resources)
+                m_resources[res->packageName()] = res;
+
+            if (!ret.isEmpty())
+                Q_EMIT stream->resourcesFound(ret);
+
+            if (remaining == 0)
+                stream->finish();
+        });
+        job->runAsync();
+    }
     return stream;
 }
 

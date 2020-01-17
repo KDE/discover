@@ -51,6 +51,17 @@ static T kTransform(const Q &input, _UnaryOperation op)
 }
 
 template <typename T, typename Q, typename _UnaryOperation>
+static T kAppend(const Q &input, _UnaryOperation op)
+{
+    T ret;
+    ret.reserve(input.size());
+    for(const auto& v : input) {
+        ret.append(op(v));
+    }
+    return ret;
+}
+
+template <typename T, typename Q, typename _UnaryOperation>
 static T kFilter(const Q &input, _UnaryOperation op)
 {
     T ret;
@@ -75,7 +86,7 @@ static int kIndexOf(const Q& list, W func)
 
 template <typename Q, typename W>
 static bool kContains(const Q& list, W func)
-{ return kIndexOf(list, func) != -1; }
+{ return std::any_of(list.begin(), list.end(), func); }
 
 template <typename T>
 static QVector<T> kSetToVector(const QSet<T> & set)
