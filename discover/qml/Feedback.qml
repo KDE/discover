@@ -1,5 +1,6 @@
 import org.kde.kirigami 2.5 as Kirigami
 import org.kde.userfeedback 1.0 as UserFeedback
+import org.kde.kquickcontrolsaddons 2.0 as KQCA
 import org.kde.discover.app 1.0
 import QtQml 2.0
 
@@ -33,7 +34,7 @@ UserFeedback.Provider
     telemetryMode: UserFeedbackSettings.feedbackLevel
 
     function encouraged() {
-        KCMShell.open("kcm_feedback");
+        KQCA.KCMShell.open("kcm_feedback");
     }
 
     property var lastSurvey: null
