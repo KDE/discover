@@ -75,7 +75,7 @@ static int kIndexOf(const Q& list, W func)
 
 template <typename Q, typename W>
 static bool kContains(const Q& list, W func)
-{ return kIndexOf(list, func) != -1; }
+{ return std::any_of(list.begin(), list.end(), func); }
 
 template <typename T>
 static QVector<T> kSetToVector(const QSet<T> & set)
