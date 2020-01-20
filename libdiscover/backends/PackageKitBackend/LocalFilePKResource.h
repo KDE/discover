@@ -39,6 +39,7 @@ class LocalFilePKResource : public PackageKitResource
         void fetchDetails() override;
         bool canExecute() const override { return !m_exec.isEmpty(); }
         void invokeApplication() const override;
+        QString displayOrigin() const override { return origin(); }
 
     private:
         AbstractResource::State m_state = AbstractResource::None;
