@@ -35,12 +35,15 @@ static void installationChanged(GFileMonitor *monitor, GFile *child, GFile *othe
     Q_UNUSED(other_file);
     Q_UNUSED(event_type);
 
-    FlatpakNotifier *notifier = (FlatpakNotifier*)self;
+    FlatpakNotifier *notifier = (FlatpakNotifier*) self;
     if (!notifier) {
         return;
     }
 
-    notifier->recheckSystemUpdateNeeded();
+    if (notifier->m_user.m_monitor == monitor)
+        notifier->loadRemoteUpdates(&notifier->m_user);
+    else
+        notifier->loadRemoteUpdates(&notifier->m_system);
 }
 
 FlatpakNotifier::FlatpakNotifier(QObject* parent)
@@ -74,14 +77,13 @@ void FlatpakNotifier::recheckSystemUpdateNeeded()
         qWarning() << "Failed to setup flatpak installations: " << error->message;
     } else {
         // Load updates from remote repositories
-        loadRemoteUpdates(m_system.m_installation);
-        loadRemoteUpdates(m_user.m_installation);
+        loadRemoteUpdates(&m_system);
+        loadRemoteUpdates(&m_user);
     }
 }
 
-void FlatpakNotifier::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates)
+void FlatpakNotifier::onFetchUpdatesFinished(Installation *installation, GPtrArray *updates)
 {
-    bool changed = false;
     bool hasUpdates = false;
 
     g_autoptr(GPtrArray) fetchedUpdates = updates;
@@ -97,21 +99,15 @@ void FlatpakNotifier::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstall
         }
         hasUpdates = true;
     }
-
-    if (flatpak_installation_get_is_user(flatpakInstallation)) {
-        changed = m_user.m_hasUpdates != hasUpdates;
-        m_user.m_hasUpdates = hasUpdates;
-    } else {
-        changed = m_system.m_hasUpdates != hasUpdates;
-        m_system.m_hasUpdates = hasUpdates;
-    }
+    const bool changed = this->hasUpdates() != hasUpdates;
+    installation->m_hasUpdates = hasUpdates;
 
     if (changed) {
         Q_EMIT foundUpdates();
     }
 }
 
-void FlatpakNotifier::loadRemoteUpdates(FlatpakInstallation *installation)
+void FlatpakNotifier::loadRemoteUpdates(Installation* installation)
 {
     auto fw = new QFutureWatcher<GPtrArray *>(this);
     connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw](){
@@ -123,7 +119,7 @@ void FlatpakNotifier::loadRemoteUpdates(FlatpakInstallation *installation)
     fw->setFuture(QtConcurrent::run( [installation]() -> GPtrArray * {
         g_autoptr(GCancellable) cancellable = g_cancellable_new();
         g_autoptr(GError) localError = nullptr;
-        GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
+        GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation->m_installation, cancellable, &localError);
         if (!refs) {
             qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
         }
@@ -136,39 +132,22 @@ bool FlatpakNotifier::hasUpdates()
     return m_system.m_hasUpdates || m_user.m_hasUpdates;
 }
 
+bool FlatpakNotifier::Installation::ensureInitialized(std::function<FlatpakInstallation*()> func, GCancellable *cancellable, GError **error)
+{
+    if (!m_installation) {
+        m_installation = func();
+        m_monitor = flatpak_installation_create_monitor(m_installation, cancellable, error);
+        g_signal_connect(m_monitor, "changed", G_CALLBACK(installationChanged), this);
+    }
+    return m_installation && m_monitor;
+}
+
 bool FlatpakNotifier::setupFlatpakInstallations(GError **error)
 {
-    if (!m_system.m_installation) {
-        m_system.m_installation = flatpak_installation_new_system(m_cancellable, error);
-        if (!m_system.m_installation) {
-            return false;
-        }
-    }
-
-    if (!m_user.m_installation) {
-        m_user.m_installation = flatpak_installation_new_user(m_cancellable, error);
-        if (!m_user.m_installation) {
-            return false;
-        }
-    }
-
-    if (!m_system.m_monitor) {
-        m_system.m_monitor = flatpak_installation_create_monitor(m_system.m_installation, m_cancellable, error);
-        if (!m_system.m_monitor) {
-            return false;
-        }
-
-        g_signal_connect(m_system.m_monitor, "changed", G_CALLBACK(installationChanged), this);
-    }
-
-    if (!m_user.m_monitor) {
-        m_user.m_monitor = flatpak_installation_create_monitor(m_user.m_installation, m_cancellable, error);
-        if (!m_user.m_monitor) {
-            return false;
-        }
-
-        g_signal_connect(m_user.m_monitor, "changed", G_CALLBACK(installationChanged), this);
-    }
+    if (!m_system.ensureInitialized([this, error] { return flatpak_installation_new_system(m_cancellable, error); }, m_cancellable, error))
+        return false;
+    if (!m_user.ensureInitialized([this, error] { return flatpak_installation_new_system(m_cancellable, error); }, m_cancellable, error))
+        return false;
 
     return true;
 }

@@ -41,18 +41,19 @@ public:
     void recheckSystemUpdateNeeded() override;
     bool needsReboot() const override { return false; }
 
-private:
-    void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
-    void loadRemoteUpdates(FlatpakInstallation *flatpakInstallation);
-    bool setupFlatpakInstallations(GError **error);
-
     struct Installation {
         ~Installation();
+
+        bool ensureInitialized(std::function<FlatpakInstallation*()> func, GCancellable *, GError **error);
 
         bool m_hasUpdates = false;
         GFileMonitor *m_monitor = nullptr;
         FlatpakInstallation *m_installation = nullptr;
     };
+
+    void onFetchUpdatesFinished(Installation *flatpakInstallation, GPtrArray *updates);
+    void loadRemoteUpdates(Installation* installation);
+    bool setupFlatpakInstallations(GError **error);
     Installation m_user;
     Installation m_system;
     GCancellable * const m_cancellable;
