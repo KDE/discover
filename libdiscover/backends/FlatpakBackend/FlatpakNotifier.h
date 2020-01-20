@@ -22,6 +22,7 @@
 #define FLATPAKNOTIFIER_H
 
 #include <BackendNotifierModule.h>
+#include <functional>
 
 extern "C" {
 #include <flatpak.h>
