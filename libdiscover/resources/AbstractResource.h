@@ -157,7 +157,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual QString longDescription() = 0;
 
         virtual QString origin() const = 0;
-        QString displayOrigin() const;
+        virtual QString displayOrigin() const;
         virtual QString section() = 0;
         virtual QString author() const = 0;
 

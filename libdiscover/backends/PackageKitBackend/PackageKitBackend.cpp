@@ -512,6 +512,7 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
         if (    mime.inherits(QStringLiteral("application/vnd.debian.binary-package"))
             || mime.inherits(QStringLiteral("application/x-rpm"))
             || mime.inherits(QStringLiteral("application/x-tar"))
+            || mime.inherits(QStringLiteral("application/x-zstd-compressed-tar"))
             || mime.inherits(QStringLiteral("application/x-xz-compressed-tar"))
         ) {
             return new ResultsStream(QStringLiteral("PackageKitStream-localpkg"), QVector<AbstractResource*>{ new LocalFilePKResource(url, this)});
