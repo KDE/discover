@@ -74,7 +74,7 @@ QPair<QList<QUrl>, QList<QUrl> > AppStreamUtils::fetchScreenshots(const AppStrea
         screenshots << plain;
         thumbnails << (thumbnail.isEmpty() ? plain : thumbnail);
     }
-    return {screenshots, thumbnails};
+    return {thumbnails, screenshots};
 }
 
 QJsonArray AppStreamUtils::licenses(const AppStream::Component& appdata)
