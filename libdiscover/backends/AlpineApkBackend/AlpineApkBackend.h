@@ -55,7 +55,8 @@ public:
     bool hasApplications() const override;
 
 public Q_SLOTS:
-    void toggleFetching();
+    void startCheckForUpdates();
+    void finishCheckForUpdates();
 
 private:
     void populate();
@@ -66,7 +67,7 @@ private:
     QtApk::Database m_apkdb;
     QVector<QtApk::Package> m_availablePackages;
     QVector<QtApk::Package> m_installedPackages;
-    bool m_fetching = true;
+    bool m_fetching = false;
     int m_startElements = 0;
 };
 

@@ -55,8 +55,10 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
 
     qCDebug(LOG_ALPINEAPK) << "constructing backend!";
 
-    QTimer::singleShot(500, this, &AlpineApkBackend::toggleFetching);
-    connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &AlpineApkBackend::updatesCountChanged);
+    QTimer::singleShot(1000, this, &AlpineApkBackend::startCheckForUpdates);
+
+    QObject::connect(m_updater, &StandardBackendUpdater::updatesCountChanged,
+                     this, &AlpineApkBackend::updatesCountChanged);
 
     populate();
 
@@ -65,12 +67,14 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
 
 QVector<Category *> AlpineApkBackend::category() const
 {
+    // single root category
+    // we could add more, but Alpine apk does not have this concept
     static Category *cat = new Category(
-                QStringLiteral("All applications"),    // displayName
-                QStringLiteral("applications-other"),  // icon
-                { }, // orFilters
+                QStringLiteral("All packages"),    // displayName
+                QStringLiteral("package-x-generic"), // icon
+                {}, // orFilters
                 { displayName() }, // pluginName
-                { }, // subCategories
+                {}, // subCategories
                 QUrl(), // decoration (what is it?)
                 false  // isAddons
     );
@@ -112,11 +116,23 @@ void AlpineApkBackend::populate()
     }
 }
 
-void AlpineApkBackend::toggleFetching()
+void AlpineApkBackend::startCheckForUpdates()
 {
-    m_fetching = !m_fetching;
+    if (m_fetching) {
+        return;
+    }
+    qCDebug(LOG_ALPINEAPK) << "startCheckForUpdates()";
 
-    qCDebug(LOG_ALPINEAPK) << "fetching..." << m_fetching;
+    m_fetching = true;
+    emit fetchingChanged();
+
+    // temporary hack - finish updates check in 5 seconds
+    QTimer::singleShot(5000, this, &AlpineApkBackend::finishCheckForUpdates);
+}
+
+void AlpineApkBackend::finishCheckForUpdates()
+{
+    m_fetching = false;
     emit fetchingChanged();
 }
 
@@ -212,14 +228,11 @@ Transaction* AlpineApkBackend::removeApplication(AbstractResource *app)
 
 void AlpineApkBackend::checkForUpdates()
 {
-    if(m_fetching) {
+    if (m_fetching) {
         qCDebug(LOG_ALPINEAPK) << "checkForUpdates(): already fetching";
         return;
     }
-    qCDebug(LOG_ALPINEAPK) << "checkForUpdates() start!";
-    toggleFetching();
-    // populate(QStringLiteral("Moar"));
-    QTimer::singleShot(1000, this, &AlpineApkBackend::toggleFetching);
+    startCheckForUpdates();
 }
 
 QString AlpineApkBackend::displayName() const
