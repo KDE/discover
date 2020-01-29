@@ -5,6 +5,8 @@ set(alpineapkbackend_SRCS
     AlpineApkBackend.h
     AlpineApkResource.cpp
     AlpineApkResource.h
+    AlpineApkReviewsBackend.cpp
+    AlpineApkReviewsBackend.h
     AlpineApkSourcesBackend.cpp
     AlpineApkSourcesBackend.h
     AlpineApkTransaction.cpp
