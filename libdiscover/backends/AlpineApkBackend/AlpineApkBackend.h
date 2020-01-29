@@ -26,7 +26,7 @@
 
 #include <QtApk.h>
 
-// class DummyReviewsBackend;
+class AlpineApkReviewsBackend;
 class StandardBackendUpdater;
 class AlpineApkResource;
 class AlpineApkBackend : public AbstractResourcesBackend
@@ -62,7 +62,7 @@ private:
 
     QHash<QString, AlpineApkResource *> m_resources;
     StandardBackendUpdater *m_updater;
-    // DummyReviewsBackend* m_reviews;
+    AlpineApkReviewsBackend *m_reviews;
     QtApk::Database m_apkdb;
     QVector<QtApk::Package> m_availablePackages;
     QVector<QtApk::Package> m_installedPackages;
