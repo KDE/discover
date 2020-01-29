@@ -1,0 +1,5 @@
+[org.kde.discover.alpineapkbackend.test_action]
+Name=Test Action
+Description=Just test
+Policy=auth_admin
+Persistence=session

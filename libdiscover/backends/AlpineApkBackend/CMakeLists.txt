@@ -1,4 +1,4 @@
-# add_subdirectory(tests) # no tests yet
+find_package(KF5Auth CONFIG REQUIRED)  # Probably should be moved to top CMakeLists
 
 set(alpineapkbackend_SRCS
     AlpineApkBackend.cpp
@@ -38,12 +38,34 @@ target_link_libraries(
         apk-qt
 )
 
+# KAuth helper exe
+add_executable(alpineapk_kauth_helper
+    AlpineApkAuthHelper.cpp
+    AlpineApkAuthHelper.h
+    org.kde.discover.alpineapkbackend.actions
+)
+set_source_files_properties(
+    org.kde.discover.alpineapkbackend.actions
+    PROPERTIES HEADER_FILE_ONLY ON
+)
+target_link_libraries(alpineapk_kauth_helper
+    Qt5::Core
+    KF5::AuthCore
+    apk-qt
+)
+
+kauth_install_actions(org.kde.discover.alpineapkbackend org.kde.discover.alpineapkbackend.actions)
+kauth_install_helper_files(alpineapk_kauth_helper org.kde.discover.alpineapkbackend root)
+
 install(
     TARGETS alpineapk-backend
     DESTINATION ${PLUGIN_INSTALL_DIR}/discover
 )
 
-# install(FILES alpineapk-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
+install(
+    TARGETS alpineapk_kauth_helper
+    DESTINATION ${KAUTH_HELPER_INSTALL_DIR}
+)
 
 # add_library(AlpineApkNotifier MODULE AlpineApkNotifier.cpp)
 
