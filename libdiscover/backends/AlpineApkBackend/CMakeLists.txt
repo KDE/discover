@@ -34,6 +34,7 @@ target_link_libraries(
         Qt5::Widgets
         KF5::CoreAddons
         KF5::ConfigCore
+        KF5::AuthCore
         Discover::Common
         apk-qt
 )

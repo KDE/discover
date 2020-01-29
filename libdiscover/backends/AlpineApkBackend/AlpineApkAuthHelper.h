@@ -31,5 +31,5 @@ public:
     AlpineApkAuthHelper();
 
 public Q_SLOTS:
-    ActionReply test_action(const QVariantMap &args);
+    ActionReply test(const QVariantMap &args);
 };

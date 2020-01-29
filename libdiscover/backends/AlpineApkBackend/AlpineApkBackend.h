@@ -29,6 +29,8 @@
 class AlpineApkReviewsBackend;
 class StandardBackendUpdater;
 class AlpineApkResource;
+class KJob;
+
 class AlpineApkBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
@@ -55,6 +57,7 @@ public:
     bool hasApplications() const override;
 
 public Q_SLOTS:
+    void handleKauthHelperReply(KJob *job);
     void startCheckForUpdates();
     void finishCheckForUpdates();
 

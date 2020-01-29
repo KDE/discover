@@ -32,7 +32,7 @@ using namespace KAuth;
 
 AlpineApkAuthHelper::AlpineApkAuthHelper() {}
 
-ActionReply AlpineApkAuthHelper::test_action(const QVariantMap &args)
+ActionReply AlpineApkAuthHelper::test(const QVariantMap &args)
 {
     const QString txt = args[QStringLiteral("txt")].toString();
 

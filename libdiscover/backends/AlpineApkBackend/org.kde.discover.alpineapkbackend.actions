@@ -1,4 +1,4 @@
-[org.kde.discover.alpineapkbackend.test_action]
+[org.kde.discover.alpineapkbackend.test]
 Name=Test Action
 Description=Just test
 Policy=auth_admin

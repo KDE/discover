@@ -35,6 +35,8 @@
 #include <KPluginFactory>
 #include <KConfigGroup>
 #include <KSharedConfig>
+#include <KAuthExecuteJob>
+
 #include <QDebug>
 #include <QLoggingCategory>
 #include <QThread>
@@ -116,6 +118,19 @@ void AlpineApkBackend::populate()
     }
 }
 
+void AlpineApkBackend::handleKauthHelperReply(KJob *job)
+{
+    qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
+    KAuth::ExecuteJob* reply = static_cast<KAuth::ExecuteJob *>(job);
+    const QVariantMap replyData = reply->data();
+    if (reply->error() == 0) {
+        qCDebug(LOG_ALPINEAPK) << replyData[QLatin1String("reply")].toString();
+    } else {
+        const QString message = replyData.value(QLatin1String("errorString"), reply->errorString()).toString();
+        qCDebug(LOG_ALPINEAPK) << message;
+    }
+}
+
 void AlpineApkBackend::startCheckForUpdates()
 {
     if (m_fetching) {
@@ -123,11 +138,26 @@ void AlpineApkBackend::startCheckForUpdates()
     }
     qCDebug(LOG_ALPINEAPK) << "startCheckForUpdates()";
 
+    // temporary hack - finish updates check in 5 seconds
+    QTimer::singleShot(5000, this, &AlpineApkBackend::finishCheckForUpdates);
+
     m_fetching = true;
     emit fetchingChanged();
 
-    // temporary hack - finish updates check in 5 seconds
-    QTimer::singleShot(5000, this, &AlpineApkBackend::finishCheckForUpdates);
+    KAuth::Action testAction(QStringLiteral("org.kde.discover.alpineapkbackend.test"));
+    testAction.setHelperId(QStringLiteral("org.kde.discover.alpineapkbackend"));
+    testAction.setArguments({
+        { QStringLiteral("txt"), QLatin1String("Wooo!") },
+    });
+    if (!testAction.isValid()) {
+        qCWarning(LOG_ALPINEAPK) << "kauth action is not valid!";
+        return;
+    }
+
+    KAuth::ExecuteJob *reply = testAction.execute();
+    QObject::connect(reply, &KAuth::ExecuteJob::result,
+                     this, &AlpineApkBackend::handleKauthHelperReply);
+    reply->start();
 }
 
 void AlpineApkBackend::finishCheckForUpdates()
