@@ -142,7 +142,12 @@ void OdrsReviewsBackend::reviewsFetched()
     QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
     QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(reply);
     const QByteArray data = reply->readAll();
-    if (reply->error() != QNetworkReply::NoError) {
+#if (QT_VERSION < QT_VERSION_CHECK(5, 15, 0))
+    const auto networkError = reply->error();
+#else
+    const auto networkError = reply->networkError();
+#endif
+    if (networkError != QNetworkReply::NoError) {
         qCWarning(LIBDISCOVER_LOG) << "error fetching reviews:" << reply->errorString() << data;
         m_isFetching = false;
         return;
@@ -184,8 +189,12 @@ void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
 void OdrsReviewsBackend::usefulnessSubmitted()
 {
     QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
-
-    if (reply->error() == QNetworkReply::NoError) {
+#if (QT_VERSION < QT_VERSION_CHECK(5, 15, 0))
+    const auto networkError = reply->error();
+#else
+    const auto networkError = reply->networkError();
+#endif
+    if (networkError == QNetworkReply::NoError) {
         qCWarning(LIBDISCOVER_LOG) << "Usefulness submitted";
     } else {
         qCWarning(LIBDISCOVER_LOG) << "Failed to submit usefulness: " << reply->errorString();
@@ -230,7 +239,12 @@ void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summ
 
 void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
 {
-    if (reply->error() == QNetworkReply::NoError) {
+#if (QT_VERSION < QT_VERSION_CHECK(5, 15, 0))
+    const auto networkError = reply->error();
+#else
+    const auto networkError = reply->networkError();
+#endif
+    if (networkError == QNetworkReply::NoError) {
         qCWarning(LIBDISCOVER_LOG) << "Review submitted";
         AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
         const QJsonArray array = {resource->getMetadata(QStringLiteral("ODRS::review_map")).toObject()};
