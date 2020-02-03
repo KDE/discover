@@ -47,6 +47,7 @@ void AlpineApkUpdater::prepare()
         return;
     }
 
+    // readonly is fine for a simulation of upgrade
     if (!db->open(QtApk::Database::QTAPK_OPENF_READONLY)) {
         emit passiveMessage(i18n("Failed to open APK database!"));
         return;
@@ -57,7 +58,7 @@ void AlpineApkUpdater::prepare()
         db->close();
         return;
     }
-    // clsoe DB ASAP
+    // close DB ASAP
     db->close();
 
     m_updatesCount = m_upgradeable.changes().size();
@@ -202,6 +203,7 @@ int AlpineApkUpdater::updatesCount()
 
 void AlpineApkUpdater::startCheckForUpdates()
 {
+    QtApk::Database *db = m_backend->apkdb();
     KAuth::Action updateAction(QStringLiteral("org.kde.discover.alpineapkbackend.update"));
     updateAction.setHelperId(QStringLiteral("org.kde.discover.alpineapkbackend"));
     if (!updateAction.isValid()) {
@@ -210,6 +212,7 @@ void AlpineApkUpdater::startCheckForUpdates()
     }
     updateAction.setTimeout(60 * 1000); // 1 minute
     updateAction.setDetails(i18n("Update repositories index"));
+    updateAction.addArgument(QLatin1String("fakeRoot"), db->fakeRoot());
 
     // run updates check with elevated privileges to access
     // system package manager files

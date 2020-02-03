@@ -64,8 +64,12 @@ ActionReply AlpineApkAuthHelper::test(const QVariantMap &args)
 
 ActionReply AlpineApkAuthHelper::update(const QVariantMap &args)
 {
-    Q_UNUSED(args)
     ActionReply reply = ActionReply::HelperErrorReply();
+
+    const QString fakeRoot = args.value(QLatin1String("fakeRoot"), QString()).toString();
+    if (!fakeRoot.isEmpty()) {
+        m_apkdb.setFakeRoot(fakeRoot);
+    }
 
     HelperSupport::progressStep(10);
 
@@ -123,6 +127,11 @@ ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
     if (onlySimulate) {
         flags = QtApk::Database::QTAPK_UPGRADE_SIMULATE;
         qCDebug(LOG_AUTHHELPER) << "Simulating upgrade run.";
+    }
+
+    const QString fakeRoot = args.value(QLatin1String("fakeRoot"), QString()).toString();
+    if (!fakeRoot.isEmpty()) {
+        m_apkdb.setFakeRoot(fakeRoot);
     }
 
     QtApk::Changeset changes;
