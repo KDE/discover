@@ -67,11 +67,13 @@ public:
     void setSection(const QString &sectionName);
     void setAddons(const AddonList &addons);
     void setAddonInstalled(const QString &addon, bool installed);
+    void setAvailableVersion(const QString &av);
 
 public:
     AbstractResource::State m_state;
     const AbstractResource::Type m_type;
     QtApk::Package m_pkg;
+    QString m_availableVersion;
     QString m_category;
     QString m_originSoruce;
     QString m_sectionName;
