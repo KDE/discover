@@ -27,14 +27,14 @@
 #include <QtApk.h>
 
 class AlpineApkReviewsBackend;
-class StandardBackendUpdater;
+class AlpineApkUpdater;
 class AlpineApkResource;
 class KJob;
+class QTimer;
 
 class AlpineApkBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
-    Q_PROPERTY(int startElements MEMBER m_startElements)
 
 public:
     explicit AlpineApkBackend(QObject *parent = nullptr);
@@ -46,32 +46,37 @@ public:
     ResultsStream *search(const AbstractResourcesBackend::Filters &filter) override;
     ResultsStream *findResourceByPackageName(const QUrl &search);
     QHash<QString, AlpineApkResource *> resources() const { return m_resources; }
+    QHash<QString, AlpineApkResource *> *resourcesPtr() { return &m_resources; }
     bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
 
     Transaction *installApplication(AbstractResource *app) override;
     Transaction *installApplication(AbstractResource *app, const AddonList &addons) override;
     Transaction *removeApplication(AbstractResource *app) override;
     bool isFetching() const override { return m_fetching; }
+    int fetchingUpdatesProgress() const override;
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override;
 
 public Q_SLOTS:
-    void handleKauthHelperReply(KJob *job);
-    void startCheckForUpdates();
+    void setFetchingUpdatesProgress(int percent);
+
+private Q_SLOTS:
     void finishCheckForUpdates();
 
-private:
-    void populate();
+public:
+    QtApk::Database *apkdb() { return &m_apkdb; }
 
+private:
     QHash<QString, AlpineApkResource *> m_resources;
-    StandardBackendUpdater *m_updater;
+    AlpineApkUpdater *m_updater;
     AlpineApkReviewsBackend *m_reviews;
     QtApk::Database m_apkdb;
     QVector<QtApk::Package> m_availablePackages;
     QVector<QtApk::Package> m_installedPackages;
     bool m_fetching = false;
-    int m_startElements = 0;
+    int m_fetchProgress = 0;
+    QTimer *m_updatesTimeoutTimer;
 };
 
 #endif // AlpineApkBackend_H
