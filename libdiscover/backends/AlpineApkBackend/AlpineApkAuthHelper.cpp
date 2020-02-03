@@ -21,9 +21,8 @@
 #include <QProcess>
 #include <QDebug>
 #include <QLoggingCategory>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QJsonArray>
+#include <QSocketNotifier>
+#include <QScopedPointer>
 #include <QFile>
 
 #include <KAuthHelperSupport>
@@ -133,6 +132,14 @@ ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
     if (!fakeRoot.isEmpty()) {
         m_apkdb.setFakeRoot(fakeRoot);
     }
+
+    int progress_fd = m_apkdb.progressFd();
+    qCDebug(LOG_AUTHHELPER) << "    progress_fd: " << progress_fd;
+
+    QScopedPointer<QSocketNotifier> notifier(new QSocketNotifier(progress_fd, QSocketNotifier::Read));
+    QObject::connect(notifier.data(), &QSocketNotifier::activated, notifier.data(), [](int sock) {
+        qCDebug(LOG_AUTHHELPER) << "        read trigger from progress_fd!";
+    });
 
     QtApk::Changeset changes;
     bool upgrade_ok = m_apkdb.upgrade(flags, &changes);
