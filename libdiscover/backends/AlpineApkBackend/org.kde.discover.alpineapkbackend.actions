@@ -3,3 +3,27 @@ Name=Test Action
 Description=Just test
 Policy=auth_admin
 Persistence=session
+
+[org.kde.discover.alpineapkbackend.update]
+Name=Update repository index
+Description=Updates available packages list from repositories
+Policy=auth_admin
+Persistence=session
+
+[org.kde.discover.alpineapkbackend.upgrade]
+Name=Upgrade all upgradable packages
+Description=Upgrade installed packages to latest versions
+Policy=auth_admin
+Persistence=session
+
+[org.kde.discover.alpineapkbackend.add]
+Name=Install/upgrade package
+Description=Installs/upgrades one package
+Policy=auth_admin
+Persistence=session
+
+[org.kde.discover.alpineapkbackend.del]
+Name=Remove package
+Description=Uninstall one package
+Policy=auth_admin
+Persistence=session

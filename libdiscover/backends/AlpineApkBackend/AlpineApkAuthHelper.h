@@ -22,6 +22,8 @@
 #include <QVariant>
 #include <KAuthActionReply>
 
+#include <QtApk.h>
+
 using namespace KAuth;
 
 class AlpineApkAuthHelper : public QObject
@@ -32,4 +34,11 @@ public:
 
 public Q_SLOTS:
     ActionReply test(const QVariantMap &args);
+    ActionReply update(const QVariantMap &args);
+    ActionReply add(const QVariantMap &args);
+    ActionReply del(const QVariantMap &args);
+    ActionReply upgrade(const QVariantMap &args);
+
+private:
+    QtApk::Database m_apkdb;
 };
