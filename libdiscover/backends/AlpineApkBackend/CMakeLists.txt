@@ -9,6 +9,8 @@ set(alpineapkbackend_SRCS
     AlpineApkReviewsBackend.h
     AlpineApkSourcesBackend.cpp
     AlpineApkSourcesBackend.h
+    AlpineApkUpdater.cpp
+    AlpineApkUpdater.h
     AlpineApkTransaction.cpp
     AlpineApkTransaction.h
 )
