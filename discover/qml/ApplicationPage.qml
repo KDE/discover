@@ -332,7 +332,7 @@ DiscoverPage {
             }
             Label {
                 readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
-                readonly property string releaseDate: appInfo.application.releaseDate.toLocaleString()
+                readonly property string releaseDate: appInfo.application.releaseDate.toLocaleDateString(Locale.ShortFormat)
 
                 function versionString() {
                     if (version.length == 0) {
