@@ -187,8 +187,7 @@ DiscoverPage {
             visible: changelogLabel.text.length > 0
         }
 
-        Rectangle {
-            color: Kirigami.Theme.linkColor
+        Kirigami.Separator {
             Layout.fillWidth: true
             height: 1
             visible: changelogLabel.text.length > 0
@@ -240,8 +239,7 @@ DiscoverPage {
             }
         }
 
-        Rectangle {
-            color: Kirigami.Theme.linkColor
+        Kirigami.Separator {
             Layout.fillWidth: true
             height: 1
             visible: rep.count > 0
@@ -300,8 +298,7 @@ DiscoverPage {
         }
 
         // Details/metadata
-        Rectangle {
-            color: Kirigami.Theme.linkColor
+        Kirigami.Separator {
             Layout.fillWidth: true
             height: 1
             Layout.bottomMargin: Kirigami.Units.largeSpacing
