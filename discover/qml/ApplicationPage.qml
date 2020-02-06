@@ -303,18 +303,12 @@ DiscoverPage {
             height: 1
             Layout.bottomMargin: Kirigami.Units.largeSpacing
         }
-        GridLayout {
-            rowSpacing: 0
-            columns: 2
+        Kirigami.FormLayout {
+            Layout.fillWidth: true
 
             // Category row
             Label {
-                visible: categoryLabel.visible
-                Layout.alignment: Qt.AlignRight
-                text: i18n("Category:")
-            }
-            Label {
-                id: categoryLabel
+                Kirigami.FormData.label: i18n("Category:")
                 visible: text.length > 0
                 Layout.fillWidth: true
                 elide: Text.ElideRight
@@ -322,11 +316,6 @@ DiscoverPage {
             }
 
             // Version row
-            Label {
-                visible: versionLabel.visible
-                Layout.alignment: Qt.AlignRight
-                text: i18n("Version:")
-            }
             Label {
                 readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
                 readonly property string releaseDate: appInfo.application.releaseDate.toLocaleDateString(Locale.ShortFormat)
@@ -343,7 +332,7 @@ DiscoverPage {
                     }
                 }
 
-                id: versionLabel
+                Kirigami.FormData.label: i18n("Version:")
                 visible: text.length > 0
                 Layout.fillWidth: true
                 elide: Text.ElideRight
@@ -352,12 +341,7 @@ DiscoverPage {
 
             // Author row
             Label {
-                Layout.alignment: Qt.AlignRight
-                text: i18n("Author:")
-                visible: authorLabel.visible
-            }
-            Label {
-                id: authorLabel
+                Kirigami.FormData.label: i18n("Author:")
                 Layout.fillWidth: true
                 elide: Text.ElideRight
                 visible: text.length>0
@@ -366,21 +350,16 @@ DiscoverPage {
 
             // Size row
             Label {
-                Layout.alignment: Qt.AlignRight
-                text: i18n("Size:")
-            }
-            Label {
+                Kirigami.FormData.label: i18n("Size:")
                 Layout.fillWidth: true
+                Layout.alignment: Text.AlignTop
                 elide: Text.ElideRight
                 text: appInfo.application.sizeDescription
             }
 
             // Source row
             Label {
-                Layout.alignment: Qt.AlignRight
-                text: i18n("Source:")
-            }
-            Label {
+                Kirigami.FormData.label: i18n("Source:")
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
                 text: appInfo.application.displayOrigin
@@ -388,12 +367,8 @@ DiscoverPage {
             }
 
             // License row
-            Label {
-                Layout.alignment: Qt.AlignRight
-                text: i18n("License:")
-                visible: appInfo.application.licenses.length>0
-            }
             RowLayout {
+                Kirigami.FormData.label: i18n("License:")
                 visible: appInfo.application.licenses.length>0
                 Layout.fillWidth: true
                 Repeater {
@@ -410,52 +385,32 @@ DiscoverPage {
             }
 
             // Homepage row
-            Label {
-                visible: homepageLink.visible
-                Layout.alignment: Qt.AlignRight
-                text: i18n("Homepage:")
-            }
             Kirigami.UrlButton {
-                id: homepageLink
+                Kirigami.FormData.label: i18n("Homepage:")
                 url: application.homepage
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
             }
 
             // "User Guide" row
-            Label {
-                visible: docsLink.visible
-                Layout.alignment: Qt.AlignRight
-                text: i18n("User Guide:")
-            }
             Kirigami.UrlButton {
-                id: docsLink
+                Kirigami.FormData.label: i18n("User Guide:")
                 url: application.helpURL
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
             }
 
             // Donate row
-            Label {
-                visible: donationLink.visible
-                Layout.alignment: Qt.AlignRight
-                text: i18n("Donate:")
-            }
             Kirigami.UrlButton {
-                id: donationLink
+                Kirigami.FormData.label: i18n("Donate:")
                 url: application.donationURL
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
             }
 
             // "Report a Problem" row
-            Label {
-                visible: bugLink.visible
-                Layout.alignment: Qt.AlignRight
-                text: i18n("Report a Problem:")
-            }
             Kirigami.UrlButton {
-                id: bugLink
+                Kirigami.FormData.label: i18n("Report a Problem:")
                 url: application.bugURL
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
