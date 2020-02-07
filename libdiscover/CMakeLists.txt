@@ -63,13 +63,13 @@ if(AppStreamQt_FOUND)
 endif()
 
 target_link_libraries(DiscoverCommon
-LINK_PUBLIC
+PUBLIC
     Qt5::Core
     Qt5::Qml
     Qt5::Widgets
     KF5::I18n
     KF5::ItemModels
-LINK_PRIVATE
+PRIVATE
     Qt5::Xml
     KF5::CoreAddons
     KF5::KIOWidgets # KIO/AccessManager
