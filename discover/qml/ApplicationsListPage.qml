@@ -50,22 +50,17 @@ DiscoverPage {
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories
 
-    function escapeHtml(unsafe) {
-        return unsafe
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-    }
-
+    function stripHtml(input) {
+        var regex = /(<([^>]+)>)/ig
+        return input.replace(regex, "");
+     }
     background: Rectangle {
         color: Kirigami.Theme.backgroundColor
         Kirigami.Theme.colorSet: Kirigami.Theme.Window
         Kirigami.Theme.inherit: false
     }
 
-    title: search.length>0 ? i18n("Search: %1", escapeHtml(search))
+    title: search.length>0 ? i18n("Search: %1", stripHtml(search))
          : category ? category.name : ""
 
     signal clearSearch()
