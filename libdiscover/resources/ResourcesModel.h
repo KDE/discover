@@ -51,6 +51,29 @@ private:
     QTimer m_delayedEmission;
 };
 
+template <typename T>
+class EmitWhenChanged
+{
+public:
+    EmitWhenChanged(T initial, const std::function<T()> &get, const std::function<void(T)> &emitChanged)
+        : m_get(get)
+        , m_emitChanged(emitChanged)
+        , m_value(initial)
+    {}
+
+    void reevaluate() {
+        auto newValue = m_get();
+        if (newValue != m_value) {
+            m_value = newValue;
+            m_emitChanged(m_value);
+        }
+    }
+
+    std::function<T()> const m_get;
+    std::function<void(T)> const m_emitChanged;
+    T m_value;
+};
+
 class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
 {
     Q_OBJECT
@@ -71,7 +94,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         ~ResourcesModel() override;
         
         QVector< AbstractResourcesBackend* > backends() const;
-        int updatesCount() const;
+        int updatesCount() const { return m_updatesCount.m_value; }
         bool hasSecurityUpdates() const;
         
         bool isBusy() const;
@@ -90,7 +113,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         AbstractResourcesBackend* currentApplicationBackend() const;
 
         QAction* updateAction() const { return m_updateAction; }
-        int fetchingUpdatesProgress() const;
+        int fetchingUpdatesProgress() const { return m_fetchingUpdatesProgress.m_value; }
 
     public Q_SLOTS:
         void installApplication(AbstractResource* app, const AddonList& addons);
@@ -101,13 +124,13 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         void fetchingChanged(bool isFetching);
         void allInitialized();
         void backendsChanged();
-        void updatesCountChanged();
+        void updatesCountChanged(int updatesCount);
         void backendDataChanged(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties);
         void resourceDataChanged(AbstractResource* resource, const QVector<QByteArray>& properties);
         void resourceRemoved(AbstractResource* resource);
         void passiveMessage(const QString &message);
         void currentApplicationBackendChanged(AbstractResourcesBackend* currentApplicationBackend);
-        void fetchingUpdatesProgressChanged();
+        void fetchingUpdatesProgressChanged(int fetchingUpdatesProgress);
 
     private Q_SLOTS:
         void callerFetchingChanged();
@@ -129,6 +152,9 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         QAction* m_updateAction = nullptr;
         AbstractResourcesBackend* m_currentApplicationBackend;
         QTimer* m_allInitializedEmitter;
+
+        EmitWhenChanged<int> m_updatesCount;
+        EmitWhenChanged<int> m_fetchingUpdatesProgress;
 
         static ResourcesModel* s_self;
 };

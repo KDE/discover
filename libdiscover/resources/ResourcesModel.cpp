@@ -31,6 +31,7 @@
 #include "Category/CategoryModel.h"
 #include "utils.h"
 #include "libdiscover_debug.h"
+#include <functional>
 #include <QCoreApplication>
 #include <QThread>
 #include <QAction>
@@ -38,6 +39,7 @@
 #include <KLocalizedString>
 #include <KSharedConfig>
 #include <KConfigGroup>
+#include <KObjectTracking/ObjectTracking>
 
 ResourcesModel *ResourcesModel::s_self = nullptr;
 
@@ -54,6 +56,27 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
     , m_initializingBackends(0)
     , m_currentApplicationBackend(nullptr)
     , m_allInitializedEmitter(new QTimer(this))
+    , m_updatesCount(0, [this] {
+        {
+            int ret = 0;
+            foreach(AbstractResourcesBackend* backend, m_backends) {
+                ret += backend->updatesCount();
+            }
+            return ret;
+        }
+    }, [this](int count){ Q_EMIT updatesCountChanged(count); })
+    , m_fetchingUpdatesProgress(0, [this] {
+        {
+            if (m_backends.isEmpty())
+                return 0;
+
+            int sum = 0;
+            for(auto backend: m_backends) {
+                sum += backend->fetchingUpdatesProgress();
+            }
+            return sum / m_backends.count();
+        }
+    }, [this](int progress){ Q_EMIT fetchingUpdatesProgressChanged(progress); })
 {
     init(load);
     connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::slotFetching);
@@ -82,7 +105,7 @@ void ResourcesModel::init(bool load)
     m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(this, &ResourcesModel::fetchingChanged, m_updateAction, [this](bool fetching) {
         m_updateAction->setEnabled(!fetching);
-        fetchingUpdatesProgressChanged();
+        m_fetchingUpdatesProgress.reevaluate();
     });
     connect(m_updateAction, &QAction::triggered, this, &ResourcesModel::checkForUpdates);
 
@@ -114,8 +137,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
 
     m_backends += backend;
     if(!backend->isFetching()) {
-        if (backend->updatesCount() > 0)
-            emit updatesCountChanged();
+        m_updatesCount.reevaluate();
     } else {
         m_initializingBackends++;
     }
@@ -123,8 +145,8 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     connect(backend, &AbstractResourcesBackend::fetchingChanged, this, &ResourcesModel::callerFetchingChanged);
     connect(backend, &AbstractResourcesBackend::allDataChanged, this, &ResourcesModel::updateCaller);
     connect(backend, &AbstractResourcesBackend::resourcesChanged, this, &ResourcesModel::resourceDataChanged);
-    connect(backend, &AbstractResourcesBackend::updatesCountChanged, this, &ResourcesModel::updatesCountChanged);
-    connect(backend, &AbstractResourcesBackend::fetchingUpdatesProgressChanged, this, &ResourcesModel::fetchingUpdatesProgressChanged);
+    connect(backend, &AbstractResourcesBackend::updatesCountChanged, this, [this] { m_updatesCount.reevaluate(); });
+    connect(backend, &AbstractResourcesBackend::fetchingUpdatesProgressChanged, this, [this] { m_fetchingUpdatesProgress.reevaluate(); });
     connect(backend, &AbstractResourcesBackend::resourceRemoved, this, &ResourcesModel::resourceRemoved);
     connect(backend, &AbstractResourcesBackend::passiveMessage, this, &ResourcesModel::passiveMessage);
     connect(backend->backendUpdater(), &AbstractBackendUpdater::progressingChanged, this, &ResourcesModel::slotFetching);
@@ -178,17 +200,6 @@ void ResourcesModel::updateCaller(const QVector<QByteArray>& properties)
 QVector< AbstractResourcesBackend* > ResourcesModel::backends() const
 {
     return m_backends;
-}
-
-int ResourcesModel::updatesCount() const
-{
-    int ret = 0;
-
-    foreach(AbstractResourcesBackend* backend, m_backends) {
-        ret += backend->updatesCount();
-    }
-
-    return ret;
 }
 
 bool ResourcesModel::hasSecurityUpdates() const
@@ -400,18 +411,6 @@ void ResourcesModel::initApplicationsBackend()
         qCDebug(LIBDISCOVER_LOG) << "falling back applications backend to" << idx;
     }
     setCurrentApplicationBackend(backends.value(idx, nullptr), false);
-}
-
-int ResourcesModel::fetchingUpdatesProgress() const
-{
-    if (m_backends.isEmpty())
-        return 0;
-    
-    int sum = 0;
-    for(auto backend: m_backends) {
-        sum += backend->fetchingUpdatesProgress();
-    }
-    return sum / m_backends.count();
 }
 
 QString ResourcesModel::applicationSourceName() const
