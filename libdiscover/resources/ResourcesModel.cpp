@@ -39,7 +39,6 @@
 #include <KLocalizedString>
 #include <KSharedConfig>
 #include <KConfigGroup>
-#include <KObjectTracking/ObjectTracking>
 
 ResourcesModel *ResourcesModel::s_self = nullptr;
 
