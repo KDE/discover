@@ -47,7 +47,7 @@ Kirigami.ApplicationWindow
             showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
     }
 
-    readonly property string describeSources: feedbackLoader.item.describeDataSources
+    readonly property string describeSources: feedbackLoader.item ? feedbackLoader.item.describeDataSources : ""
     Loader {
         id: feedbackLoader
         source: "Feedback.qml"
