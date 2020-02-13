@@ -225,6 +225,7 @@ Kirigami.ApplicationWindow
                 Button {
                     text: desc.clip ? i18n("Show all") : i18n("Hide")
                     onClicked: desc.clip = !desc.clip
+                    visible: window.height * 0.5 < desc.implicitHeight
                 }
                 RowLayout {
                     Layout.alignment: Qt.AlignRight
