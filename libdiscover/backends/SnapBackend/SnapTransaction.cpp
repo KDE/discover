@@ -45,6 +45,7 @@ SnapTransaction::SnapTransaction(QSnapdClient* client, SnapResource* app, Role r
 void SnapTransaction::cancel()
 {
     m_request->cancel();
+    setStatus(CancelledStatus);
 }
 
 void SnapTransaction::finishTransaction()

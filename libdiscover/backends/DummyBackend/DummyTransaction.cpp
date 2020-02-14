@@ -55,7 +55,7 @@ void DummyTransaction::iterateTransaction()
         QTimer::singleShot(/*KRandom::random()%*/100, this, &DummyTransaction::iterateTransaction);
     } else
 #ifdef TEST_PROCEED
-        Q_EMIT proceedRequest(QStringLiteral("yadda yadda"), QStringLiteral("Biii BOooo<ul><li>A</li><li>A</li><li>A</li><li>A</li></ul>"));
+        Q_EMIT proceedRequest(QStringLiteral("yadda yadda"), QStringLiteral("Biii BOooo<ul><li>A</li><li>A</li>") + QStringLiteral("<li>A</li>").repeated(2) + QStringLiteral("<li>A</li></ul>"));
 #else
         finishTransaction();
 #endif

@@ -47,7 +47,7 @@ Kirigami.ApplicationWindow
             showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
     }
 
-    readonly property string describeSources: feedbackLoader.item.describeDataSources
+    readonly property string describeSources: feedbackLoader.item ? feedbackLoader.item.describeDataSources : ""
     Loader {
         id: feedbackLoader
         source: "Feedback.qml"
@@ -225,6 +225,7 @@ Kirigami.ApplicationWindow
                 Button {
                     text: desc.clip ? i18n("Show all") : i18n("Hide")
                     onClicked: desc.clip = !desc.clip
+                    visible: window.height * 0.5 < desc.implicitHeight
                 }
                 RowLayout {
                     Layout.alignment: Qt.AlignRight

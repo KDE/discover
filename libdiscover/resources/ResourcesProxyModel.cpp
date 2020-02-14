@@ -101,7 +101,7 @@ void ResourcesProxyModel::setSortOrder(Qt::SortOrder sortOrder)
 {
     if (sortOrder != m_sortOrder) {
         m_sortOrder = sortOrder;
-        Q_EMIT sortRoleChanged(sortOrder);
+        Q_EMIT sortOrderChanged(sortOrder);
         invalidateSorting();
     }
 }

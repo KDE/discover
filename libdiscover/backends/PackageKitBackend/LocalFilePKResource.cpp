@@ -84,6 +84,12 @@ void LocalFilePKResource::fetchDetails()
     connect(transaction2, &PackageKit::Transaction::finished, this, [] {qCDebug(LIBDISCOVER_BACKEND_LOG) << "."; });
 }
 
+void LocalFilePKResource::setDetails(const PackageKit::Details& details)
+{
+    addPackageId(PackageKit::Transaction::InfoAvailable, details.packageId(), true);
+    PackageKitResource::setDetails(details);
+}
+
 void LocalFilePKResource::invokeApplication() const
 {
     QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {m_exec});
