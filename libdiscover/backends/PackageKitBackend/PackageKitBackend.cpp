@@ -258,11 +258,11 @@ void PackageKitBackend::reloadPackageList()
                 checkForUpdates();
             }
         }
-        acquireFetching(false);
         if (!m_appstreamInitialized) {
             m_appstreamInitialized = true;
             Q_EMIT loadedAppStream();
         }
+        acquireFetching(false);
     });
     fw->setFuture(QtConcurrent::run(&m_threadPool, &loadAppStream, m_appdata.get()));
 }
