@@ -41,6 +41,8 @@ class LocalFilePKResource : public PackageKitResource
         void invokeApplication() const override;
         QString displayOrigin() const override { return origin(); }
 
+        void setDetails(const PackageKit::Details & details);
+
     private:
         AbstractResource::State m_state = AbstractResource::None;
         QUrl m_path;
