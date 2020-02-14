@@ -43,7 +43,7 @@ DiscoverPage {
     property alias count: apps.count
     property alias listHeader: apps.header
     property alias listHeaderPositioning: apps.headerPositioning
-    property alias sortProperty: saveChanges.property
+    property string sortProperty: "appsListPageSorting"
     property bool compact: page.width < 550 || !applicationWindow().wideScreen
     property bool showRating: true
 
@@ -76,13 +76,6 @@ DiscoverPage {
         exclusive: true
     }
 
-    Binding {
-        id: saveChanges
-        target: DiscoverSettings
-        property: "appsListPageSorting"
-        value: appsModel.sortRole
-    }
-
     contextualActions: [
         Kirigami.Action {
             visible: !appsModel.sortByRelevancy
@@ -91,7 +84,7 @@ DiscoverPage {
                 ActionGroup.group: sortGroup
                 text: i18n("Name")
                 onTriggered: {
-                    appsModel.sortRole = ResourcesProxyModel.NameRole
+                    DiscoverSettings[page.sortProperty] = ResourcesProxyModel.NameRole
                 }
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.NameRole
@@ -100,7 +93,7 @@ DiscoverPage {
                 ActionGroup.group: sortGroup
                 text: i18n("Rating")
                 onTriggered: {
-                    appsModel.sortRole = ResourcesProxyModel.SortableRatingRole
+                    DiscoverSettings[page.sortProperty] = ResourcesProxyModel.SortableRatingRole
                 }
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.SortableRatingRole
@@ -109,7 +102,7 @@ DiscoverPage {
                 ActionGroup.group: sortGroup
                 text: i18n("Size")
                 onTriggered: {
-                    appsModel.sortRole = ResourcesProxyModel.SizeRole
+                    DiscoverSettings[page.sortProperty] = ResourcesProxyModel.SizeRole
                 }
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.SizeRole
@@ -118,7 +111,7 @@ DiscoverPage {
                 ActionGroup.group: sortGroup
                 text: i18n("Release Date")
                 onTriggered: {
-                    appsModel.sortRole = ResourcesProxyModel.ReleaseDateRole
+                    DiscoverSettings[page.sortProperty] = ResourcesProxyModel.ReleaseDateRole
                 }
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.ReleaseDateRole
