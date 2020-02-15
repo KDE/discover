@@ -224,7 +224,7 @@ void AppPackageKitResource::invokeApplication() const
             const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
             const auto packageExecutables = kFilter<QStringList>(exes, [filenames](const QString &exe) { return filenames.contains(QLatin1Char('/') + exe); });
             if (!packageExecutables.isEmpty()) {
-                QProcess::startDetached(exes.constFirst());
+                QProcess::startDetached(exes.constFirst(), QStringList());
                 return;
             } else {
                 const auto locations = QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation);

@@ -124,7 +124,7 @@ void PackageKitNotifier::checkOfflineUpdates()
         notification->setActions(QStringList{i18nc("@action:button", "Open Discover"), i18nc("@action:button", "Repair System")});
 
         connect(notification, &KNotification::action1Activated, this, [] () {
-            QProcess::startDetached(QStringLiteral("plasma-discover"));
+            QProcess::startDetached(QStringLiteral("plasma-discover"), QStringList());
         });
         connect(notification, &KNotification::action2Activated, this, [this] () {
             auto trans = PackageKit::Daemon::global()->repairSystem();
@@ -142,7 +142,7 @@ void PackageKitNotifier::checkOfflineUpdates()
         notification->setActions(QStringList{i18nc("@action:button", "Open Discover")});
 
         connect(notification, &KNotification::action1Activated, this, [] () {
-            QProcess::startDetached(QStringLiteral("plasma-discover"));
+            QProcess::startDetached(QStringLiteral("plasma-discover"), QStringList());
         });
 
         notification->sendEvent();
