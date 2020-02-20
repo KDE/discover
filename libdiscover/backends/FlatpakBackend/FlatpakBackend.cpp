@@ -624,7 +624,7 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
 
     for (uint i = 0; i < remotes->len; i++) {
         FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
-        g_autoptr(GFile) fileTimestamp = flatpak_remote_get_appstream_timestamp(remote, nullptr);
+        g_autoptr(GFile) fileTimestamp = flatpak_remote_get_appstream_timestamp(remote, flatpak_get_default_arch());
 
         QFileInfo fileInfo = QFileInfo(QString::fromUtf8(g_file_get_path(fileTimestamp)));
         // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
@@ -634,7 +634,6 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
             integrateRemote(flatpakInstallation, remote);
         }
     }
-
     return true;
 }
 
