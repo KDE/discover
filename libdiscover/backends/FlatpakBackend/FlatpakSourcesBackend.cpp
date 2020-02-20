@@ -154,20 +154,39 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
         const auto installation = sourceItem->flatpakInstallation();
 
         g_autoptr(GPtrArray) refs = flatpak_installation_list_remote_refs_sync(installation, id.toUtf8().constData(), cancellable, &error);
-        QStringList toRemove;
-        toRemove.reserve(refs->len);
+        QHash<QString, QStringList> toRemoveHash;
+        toRemoveHash.reserve(refs->len);
         QVector<FlatpakInstalledRef*> toRemoveRefs;
         toRemoveRefs.reserve(refs->len);
+        FlatpakBackend* backend = qobject_cast<FlatpakBackend*>(parent());
         for (uint i = 0; i < refs->len; i++) {
             FlatpakRef *ref= FLATPAK_REF(g_ptr_array_index(refs, i));
 
             g_autoptr(GError) error = nullptr;
             FlatpakInstalledRef* installedRef = flatpak_installation_get_installed_ref(installation, flatpak_ref_get_kind(ref), flatpak_ref_get_name(ref), flatpak_ref_get_arch(ref), flatpak_ref_get_branch(ref), cancellable, &error);
             if (installedRef) {
-                toRemove << QString::fromUtf8(flatpak_ref_get_name(ref));
+                auto res = backend->getAppForInstalledRef(installation, installedRef);
+                const auto name = QString::fromUtf8(flatpak_ref_get_name(ref));
+                if (!name.endsWith(QLatin1String(".Locale"))) {
+                    const auto arch = qstrcmp(flatpak_get_default_arch(), flatpak_ref_get_arch(ref)) == 0 ? QString() : QString::fromUtf8(flatpak_ref_get_arch(ref));
+                    const auto refString = QStringLiteral("%1/%2/%3").arg(name, arch, QString::fromUtf8(flatpak_ref_get_branch(ref)));
+                    if (res)
+                        toRemoveHash[res->name()] << refString;
+                    else
+                        toRemoveHash[refString] << refString;
+                }
                 toRemoveRefs << installedRef;
             }
         }
+        QStringList toRemove;
+        toRemove.reserve(toRemoveHash.count());
+        for (auto it = toRemoveHash.constBegin(), itEnd = toRemoveHash.constEnd(); it != itEnd; ++it) {
+            if (it.value().count() > 1)
+                toRemove << QStringLiteral("%1 - %2").arg(it.key(), it.value().join(QLatin1String(", ")));
+            else
+                toRemove << it.key();
+        }
+        toRemove.sort();
 
         if (!toRemove.isEmpty()) {
             m_proceedFunctions.push([this, toRemoveRefs, installation, id] {
@@ -185,6 +204,8 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
                     removeSource(id);
                 }
             });
+
+
             Q_EMIT proceedRequest(i18n("Removing '%1'", id), i18n("To remove this remote, we will need to uninstall the following applications:<ul><li>%1</li></ul>", toRemove.join(QStringLiteral("</li><li>"))));
             return false;
         }
@@ -197,7 +218,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
             }
             return true;
         } else {
-            Q_EMIT passiveMessage(i18n("Failed to remove %1 remote repository: %2", id, error->message));
+            Q_EMIT passiveMessage(i18n("Failed to remove %1 remote repository: %2", id, QString::fromUtf8(error->message)));
             return false;
         }
     } else {

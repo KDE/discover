@@ -65,6 +65,7 @@ public:
 
     FlatpakResource * addAppFromFlatpakBundle(const QUrl &url);
     FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
+    FlatpakResource * getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const;
 
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata);
@@ -82,7 +83,6 @@ private:
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     FlatpakRemote * getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
     FlatpakInstalledRef * getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource) const;
-    FlatpakResource * getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const;
     FlatpakResource * getRuntimeForApp(FlatpakResource *resource) const;
 
     void addResource(FlatpakResource *resource);
