@@ -185,7 +185,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
                     removeSource(id);
                 }
             });
-            Q_EMIT proceedRequest(i18n("Removing '%1'", id), i18n("To remove this remote, we'll need to uninstall the following applications:<ul><li>%1</li></ul>", toRemove.join(QStringLiteral("</li><li>"))));
+            Q_EMIT proceedRequest(i18n("Removing '%1'", id), i18n("To remove this remote, we will need to uninstall the following applications:<ul><li>%1</li></ul>", toRemove.join(QStringLiteral("</li><li>"))));
             return false;
         }
 
@@ -197,11 +197,11 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
             }
             return true;
         } else {
-            qWarning() << "Failed to remove " << id << " remote repository:" << error->message;
+            Q_EMIT passiveMessage(i18n("Failed to remove %1 remote repository: %2", id, error->message));
             return false;
         }
     } else {
-        qWarning() << "couldn't find " << id;
+        Q_EMIT passiveMessage(i18n("Could not find %1", id));
         return false;
     }
 

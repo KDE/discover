@@ -67,7 +67,7 @@ bool DummySourcesBackend::removeSource(const QString& id)
 {
     const auto it = sourceForId(id);
     if (!it) {
-        qWarning() << "couldn't find " << id;
+        Q_EMIT passiveMessage(QStringLiteral("Could not find %1").arg(id));
         return false;
     }
     return m_sources->removeRow(it->row());

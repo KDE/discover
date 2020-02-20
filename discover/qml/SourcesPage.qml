@@ -188,7 +188,7 @@ DiscoverPage {
                     onTriggered: {
                         var backend = sourcesBackend
                         if (!backend.removeSource(sourceId)) {
-                            window.showPassiveNotification(i18n("Failed to remove the source '%1'", model.display))
+                            console.warn("Failed to remove the source", model.display)
                         }
                     }
                 },
