@@ -47,7 +47,7 @@ progress_changed_cb (FlatpakTransactionProgress *progress,
 {
     FlatpakTransactionThread *obj = (FlatpakTransactionThread*) user_data;
 
-    obj->setProgress(flatpak_transaction_progress_get_progress(progress));
+    obj->setProgress(qMin(99, flatpak_transaction_progress_get_progress(progress)));
 
 #ifdef FLATPAK_VERBOSE_PROGRESS
     guint64 start_time = flatpak_transaction_progress_get_start_time (progress);
@@ -165,6 +165,7 @@ void FlatpakTransactionThread::run()
 
 void FlatpakTransactionThread::setProgress(int progress)
 {
+    Q_ASSERT(qBound(0, progress, 100) == progress);
     if (m_progress != progress) {
         m_progress = progress;
         Q_EMIT progressChanged(m_progress);
