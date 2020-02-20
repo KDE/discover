@@ -206,7 +206,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
             });
 
 
-            Q_EMIT proceedRequest(i18n("Removing '%1'", id), i18n("To remove this remote, we will need to uninstall the following applications:<ul><li>%1</li></ul>", toRemove.join(QStringLiteral("</li><li>"))));
+            Q_EMIT proceedRequest(i18n("Removing '%1'", id), i18n("To remove this repository, the following applications must be uninstalled:<ul><li>%1</li></ul>", toRemove.join(QStringLiteral("</li><li>"))));
             return false;
         }
 
