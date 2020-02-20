@@ -798,7 +798,7 @@ void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation* installation)
 {
     auto fw = new QFutureWatcher<GPtrArray *>(this);
     connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw](){
-        auto refs = fw->result();
+        g_autoptr(GPtrArray) refs = fw->result();
         onFetchUpdatesFinished(installation, refs);
         fw->deleteLater();
         acquireFetching(false);
@@ -814,14 +814,12 @@ void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation* installation)
     }));
 }
 
-void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates)
+void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *fetchedUpdates)
 {
-    if (!updates) {
+    if (!fetchedUpdates) {
         qWarning() << "could not get updates for" << flatpakInstallation;
         return;
     }
-
-    g_autoptr(GPtrArray) fetchedUpdates = updates;
 
     for (uint i = 0; i < fetchedUpdates->len; i++) {
         FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(fetchedUpdates, i));

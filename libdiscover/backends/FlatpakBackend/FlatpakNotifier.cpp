@@ -115,7 +115,7 @@ void FlatpakNotifier::loadRemoteUpdates(FlatpakInstallation *installation)
 {
     auto fw = new QFutureWatcher<GPtrArray *>(this);
     connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw](){
-        auto refs = fw->result();
+        g_autoptr(GPtrArray) refs = fw->result();
         if (refs)
             onFetchUpdatesFinished(installation, refs);
         fw->deleteLater();
