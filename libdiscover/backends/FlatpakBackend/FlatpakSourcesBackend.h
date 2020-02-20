@@ -24,6 +24,8 @@
 
 #include <resources/AbstractSourcesBackend.h>
 #include <QStandardItemModel>
+#include <QStack>
+#include <functional>
 
 extern "C" {
 #include <flatpak.h>
@@ -52,6 +54,9 @@ public:
     int originIndex(const QString& sourceId) const;
     QStandardItem* sourceByUrl(const QString & url) const;
 
+    void cancel() override;
+    void proceed() override;
+
 private:
     QStandardItem* sourceById(const QString & sourceId) const;
     bool listRepositories(FlatpakInstallation *installation);
@@ -61,6 +66,7 @@ private:
     QStandardItemModel* m_sources;
     QAction* const m_flathubAction;
     QStandardItem* m_noSourcesItem;
+    QStack<std::function<void()>> m_proceedFunctions;
 };
 
 #endif // FLATPAKSOURCESBACKEND_H

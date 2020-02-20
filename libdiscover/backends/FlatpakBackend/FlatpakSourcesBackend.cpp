@@ -151,7 +151,45 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
         FlatpakSourceItem *sourceItem = static_cast<FlatpakSourceItem*>(sourceIt);
         g_autoptr(GCancellable) cancellable = g_cancellable_new();
         g_autoptr(GError) error = nullptr;
-        if (flatpak_installation_remove_remote(sourceItem->flatpakInstallation(), id.toUtf8().constData(), cancellable, &error)) {
+        const auto installation = sourceItem->flatpakInstallation();
+
+        g_autoptr(GPtrArray) refs = flatpak_installation_list_remote_refs_sync(installation, id.toUtf8().constData(), cancellable, &error);
+        QStringList toRemove;
+        toRemove.reserve(refs->len);
+        QVector<FlatpakInstalledRef*> toRemoveRefs;
+        toRemoveRefs.reserve(refs->len);
+        for (uint i = 0; i < refs->len; i++) {
+            FlatpakRef *ref= FLATPAK_REF(g_ptr_array_index(refs, i));
+
+            g_autoptr(GError) error = nullptr;
+            FlatpakInstalledRef* installedRef = flatpak_installation_get_installed_ref(installation, flatpak_ref_get_kind(ref), flatpak_ref_get_name(ref), flatpak_ref_get_arch(ref), flatpak_ref_get_branch(ref), cancellable, &error);
+            if (installedRef) {
+                toRemove << QString::fromUtf8(flatpak_ref_get_name(ref));
+                toRemoveRefs << installedRef;
+            }
+        }
+
+        if (!toRemove.isEmpty()) {
+            m_proceedFunctions.push([this, toRemoveRefs, installation, id] {
+                g_autoptr(GError) localError = nullptr;
+                g_autoptr(GCancellable) cancellable = g_cancellable_new();
+                g_autoptr(FlatpakTransaction) transaction = flatpak_transaction_new_for_installation(installation, cancellable, &localError);
+                for (FlatpakInstalledRef* instRef : qAsConst(toRemoveRefs)) {
+                    g_autofree gchar *ref = flatpak_ref_format_ref(FLATPAK_REF(instRef));
+                    flatpak_transaction_add_uninstall(transaction, ref, &localError);
+                    if (localError)
+                        return;
+                }
+
+                if (flatpak_transaction_run(transaction, cancellable, &localError)) {
+                    removeSource(id);
+                }
+            });
+            Q_EMIT proceedRequest(i18n("Removing '%1'", id), i18n("To remove this remote, we'll need to uninstall the following applications:<ul><li>%1</li></ul>", toRemove.join(QStringLiteral("</li><li>"))));
+            return false;
+        }
+
+        if (flatpak_installation_remove_remote(installation, id.toUtf8().constData(), cancellable, &error)) {
             m_sources->removeRow(sourceItem->row());
 
             if (m_sources->rowCount() == 0) {
@@ -320,4 +358,14 @@ int FlatpakSourcesBackend::originIndex(const QString& sourceId) const
 {
     auto item = sourceById(sourceId);
     return item ? item->row() : INT_MAX;
+}
+
+void FlatpakSourcesBackend::cancel()
+{
+    m_proceedFunctions.pop();
+}
+
+void FlatpakSourcesBackend::proceed()
+{
+    m_proceedFunctions.pop()();
 }
