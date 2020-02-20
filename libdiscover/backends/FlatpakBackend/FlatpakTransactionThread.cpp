@@ -155,11 +155,35 @@ void FlatpakTransactionThread::run()
         }
     }
 
-    // We are done so we can set the progress to 100
     m_result = flatpak_transaction_run(m_transaction, m_cancellable, &localError);
     if (!m_result) {
         m_errorMessage = QString::fromUtf8(localError->message);
+    } else {
+        const auto installation = flatpak_transaction_get_installation(m_transaction);
+        g_autoptr(GPtrArray) refs = flatpak_installation_list_unused_refs(installation, nullptr, m_cancellable, nullptr);
+        if (refs->len > 0) {
+            g_autoptr(GError) localError = nullptr;
+            qDebug() << "found unused refs:" << refs->len;
+            auto transaction = flatpak_transaction_new_for_installation(installation, m_cancellable, &localError);
+            for (uint i = 0; i < refs->len; i++) {
+                FlatpakRef *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
+                g_autofree gchar *strRef = flatpak_ref_format_ref(ref);
+                qDebug() << "unused ref:" << strRef;
+                if (!flatpak_transaction_add_uninstall(transaction,
+                                            strRef,
+                                            &localError))
+                {
+                    qDebug() << "failed to uninstall unused ref" << refName << localError->message;
+                    break;
+                }
+            }
+            if (!flatpak_transaction_run(transaction, m_cancellable, &localError)) {
+                qWarning() << "could not properly clean the elements" << refs->len << localError->message;
+            }
+            g_object_unref(m_transaction);
+        }
     }
+    // We are done so we can set the progress to 100
     setProgress(100);
 }
 
