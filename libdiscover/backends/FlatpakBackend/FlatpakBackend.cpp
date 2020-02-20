@@ -624,7 +624,7 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
 
     for (uint i = 0; i < remotes->len; i++) {
         FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
-        g_autoptr(GFile) fileTimestamp = flatpak_remote_get_appstream_timestamp(remote, nullptr);
+        g_autoptr(GFile) fileTimestamp = flatpak_remote_get_appstream_timestamp(remote, flatpak_get_default_arch());
 
         QFileInfo fileInfo = QFileInfo(QString::fromUtf8(g_file_get_path(fileTimestamp)));
         // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
@@ -634,7 +634,6 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
             integrateRemote(flatpakInstallation, remote);
         }
     }
-
     return true;
 }
 
@@ -798,7 +797,7 @@ void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation* installation)
 {
     auto fw = new QFutureWatcher<GPtrArray *>(this);
     connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw](){
-        auto refs = fw->result();
+        g_autoptr(GPtrArray) refs = fw->result();
         onFetchUpdatesFinished(installation, refs);
         fw->deleteLater();
         acquireFetching(false);
@@ -814,14 +813,12 @@ void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation* installation)
     }));
 }
 
-void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates)
+void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *fetchedUpdates)
 {
-    if (!updates) {
+    if (!fetchedUpdates) {
         qWarning() << "could not get updates for" << flatpakInstallation;
         return;
     }
-
-    g_autoptr(GPtrArray) fetchedUpdates = updates;
 
     for (uint i = 0; i < fetchedUpdates->len; i++) {
         FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(fetchedUpdates, i));
