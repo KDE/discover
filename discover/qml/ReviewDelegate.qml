@@ -92,7 +92,7 @@ RowLayout {
 
                 elide: Text.ElideRight
                 readonly property string author: reviewer ? reviewer : i18n("unknown reviewer")
-                text: summary ? i18n("<b>%1</b> by %2", summary, author) : i18n("Comment by %1", author)
+                text: summary ? i18n("<b>%1</b> by %2 | Version: %3", summary, author, packageVersion) : i18n("Comment by %1 | Version: %2", author, packageVersion)
             }
 
             // Review text
