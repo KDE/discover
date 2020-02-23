@@ -160,6 +160,8 @@ void PackageKitBackend::acquireFetching(bool f)
 
     if ((!f && m_isFetching==0) || (f && m_isFetching==1)) {
         emit fetchingChanged();
+        if (m_isFetching==0)
+            emit available();
     }
     Q_ASSERT(m_isFetching>=0);
 }
@@ -665,7 +667,13 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
     m_updater->setProgressing(false);
 
     includePackagesToAdd();
-    emit updatesCountChanged();
+    if (isFetching()) {
+        auto a = new OneTimeAction([this] {
+            emit updatesCountChanged();
+        }, this);
+        connect(this, &PackageKitBackend::available, a, &OneTimeAction::trigger);
+    } else
+        emit updatesCountChanged();
 }
 
 bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource* res) const
