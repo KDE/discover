@@ -143,6 +143,7 @@ void TransactionListener::transactionStatusChanged(Transaction::Status status)
         setTransaction(nullptr);
         emit cancelled();
         break;
+    case Transaction::DoneWithErrorStatus:
     case Transaction::DoneStatus:
         setTransaction(nullptr);
         break;
