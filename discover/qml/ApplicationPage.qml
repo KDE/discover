@@ -384,25 +384,27 @@ DiscoverPage {
                 }
             }
 
-            // Homepage row
+            // "User Guide" row
             Kirigami.UrlButton {
-                Kirigami.FormData.label: i18n("Homepage:")
-                url: application.homepage
+                Kirigami.FormData.label: i18n ("Documentation:")
+                text: i18n("Read the user guide")
+                url: application.helpURL
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
             }
 
-            // "User Guide" row
+            // Homepage row
             Kirigami.UrlButton {
-                Kirigami.FormData.label: i18n("User Guide:")
-                url: application.helpURL
+                Kirigami.FormData.label: i18n("Get involved:")
+                text: i18n("Visit the app's website")
+                url: application.homepage
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
             }
 
             // Donate row
             Kirigami.UrlButton {
-                Kirigami.FormData.label: i18n("Donate:")
+                text: i18n("Make a donation")
                 url: application.donationURL
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
@@ -410,7 +412,7 @@ DiscoverPage {
 
             // "Report a Problem" row
             Kirigami.UrlButton {
-                Kirigami.FormData.label: i18n("Report a Problem:")
+                text: i18n("Report a problem")
                 url: application.bugURL
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
