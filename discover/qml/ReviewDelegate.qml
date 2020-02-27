@@ -74,6 +74,12 @@ RowLayout {
                 }
 
                 Label {
+                    text: i18n("Version: %1", packageVersion)
+                    elide: Text.ElideRight
+                    opacity: 0.6
+                }
+
+                Label {
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignRight
                     text: date.toLocaleDateString(Qt.locale(), "MMMM d yyyy")
@@ -92,7 +98,7 @@ RowLayout {
 
                 elide: Text.ElideRight
                 readonly property string author: reviewer ? reviewer : i18n("unknown reviewer")
-                text: summary ? i18n("<b>%1</b> by %2 | Version: %3", summary, author, packageVersion) : i18n("Comment by %1 | Version: %2", author, packageVersion)
+                text: summary ? i18n("<b>%1</b> by %2", summary, author) : i18n("Comment by %1", author)
             }
 
             // Review text
