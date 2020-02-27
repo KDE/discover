@@ -39,6 +39,8 @@ public:
     explicit FlatpakSourcesBackend(const QVector<FlatpakInstallation *>& installations, AbstractResourcesBackend *parent);
     ~FlatpakSourcesBackend() override;
 
+    enum Roles { IconUrlRole = LastRole + 1 };
+
     QAbstractItemModel* sources() override;
     bool addSource(const QString &id) override;
     bool removeSource(const QString &id) override;
@@ -53,12 +55,12 @@ public:
     bool moveSource(const QString & sourceId, int delta) override;
     int originIndex(const QString& sourceId) const;
     QStandardItem* sourceByUrl(const QString & url) const;
+    QStandardItem* sourceById(const QString & sourceId) const;
 
     void cancel() override;
     void proceed() override;
 
 private:
-    QStandardItem* sourceById(const QString & sourceId) const;
     bool listRepositories(FlatpakInstallation *installation);
     void addRemote(FlatpakRemote *remote, FlatpakInstallation *installation);
 

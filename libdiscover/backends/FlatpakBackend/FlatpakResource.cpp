@@ -21,6 +21,7 @@
 
 #include "FlatpakResource.h"
 #include "FlatpakBackend.h"
+#include "FlatpakSourcesBackend.h"
 #include "config-paths.h"
 
 #include <Transaction/AddonList.h>
@@ -569,7 +570,10 @@ QDate FlatpakResource::releaseDate() const
 
 QString FlatpakResource::sourceIcon() const
 {
-    return QStringLiteral("flatpak-discover");
+    const auto iconUrl = qobject_cast<FlatpakBackend*>(backend())->sources()->sourceById(origin())->data(FlatpakSourcesBackend::IconUrlRole).toString();
+    if (iconUrl.isEmpty())
+        return QStringLiteral("flatpak-discover");
+    return iconUrl;
 }
 
     QString FlatpakResource::author() const
