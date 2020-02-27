@@ -67,6 +67,8 @@ public:
     FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
     FlatpakResource * getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const;
 
+    FlatpakSourcesBackend *sources() const { return m_sources; }
+
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata);
     void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);
