@@ -92,6 +92,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
     Q_SIGNALS:
         void loadedAppStream();
+        void available();
 
     private:
         friend class PackageKitResource;

@@ -13,7 +13,7 @@ add_library(flatpak-backend MODULE ${flatpak-backend_SRCS})
 target_link_libraries(flatpak-backend Qt5::Core Qt5::Widgets Qt5::Concurrent KF5::CoreAddons KF5::ConfigCore Discover::Common AppStreamQt PkgConfig::Flatpak)
 
 if (NOT Flatpak_VERSION VERSION_LESS 1.1.2)
-    target_compile_definitions(flatpak-backend PRIVATE -DFLATPAK_VERBOSE_PROGRESS)
+    target_compile_definitions(flatpak-backend PRIVATE -DFLATPAK_VERBOSE_PROGRESS -DFLATPAK_LIST_UNUSED_REFS)
 endif()
 
 install(TARGETS flatpak-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)

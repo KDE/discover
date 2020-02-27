@@ -158,6 +158,7 @@ void FlatpakTransactionThread::run()
     m_result = flatpak_transaction_run(m_transaction, m_cancellable, &localError);
     if (!m_result) {
         m_errorMessage = QString::fromUtf8(localError->message);
+#if defined(FLATPAK_LIST_UNUSED_REFS)
     } else {
         const auto installation = flatpak_transaction_get_installation(m_transaction);
         g_autoptr(GPtrArray) refs = flatpak_installation_list_unused_refs(installation, nullptr, m_cancellable, nullptr);
@@ -182,6 +183,7 @@ void FlatpakTransactionThread::run()
             }
             g_object_unref(m_transaction);
         }
+#endif
     }
     // We are done so we can set the progress to 100
     setProgress(100);
