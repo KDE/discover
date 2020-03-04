@@ -554,7 +554,11 @@ ResultsStream * KNSBackend::findResourceByPackageName(const QUrl& search)
     if (search.scheme() != QLatin1String("kns") || search.host() != name())
         return voidStream();
 
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     const auto pathParts = search.path().split(QLatin1Char('/'), QString::SkipEmptyParts);
+#else
+    const auto pathParts = search.path().split(QLatin1Char('/'), Qt::SkipEmptyParts);
+#endif
     if (pathParts.size() != 2) {
         Q_EMIT passiveMessage(i18n("Wrong KNewStuff URI: %1", search.toString()));
         return voidStream();
