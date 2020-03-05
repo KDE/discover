@@ -269,9 +269,9 @@ DiscoverPage {
                 // App not installed
                 } else {
                     if (reviewsModel.count > 0) {
-                        return i18n("Install this app to write a review!")
+                        return i18n("Install to write a review!")
                     } else {
-                        return i18n("Install this app and be the first to write a review!")
+                        return i18n("Install and be the first to write a review!")
                     }
                 }
             }
