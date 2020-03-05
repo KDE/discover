@@ -23,8 +23,7 @@ Kirigami.ApplicationWindow
     readonly property string topAboutComp: ("qrc:/qml/AboutPage.qml")
     readonly property string loadingComponent: ("qrc:/qml/LoadingPage.qml")
     readonly property QtObject stack: window.pageStack
-    property string currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
-    property bool defaultStartup: true
+    property string currentTopLevel
 
     objectName: "DiscoverMainWindow"
     title: leftPage ? leftPage.title : ""

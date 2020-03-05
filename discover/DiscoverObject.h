@@ -90,7 +90,7 @@ class DiscoverObject : public QObject
         void openErrorPage(const QString &errorMessage);
 
     private:
-        void setRootObjectProperty(const char *name, const QVariant &value);
+        void showLoadingPage();
         void integrateObject(QObject* object);
         QQmlApplicationEngine* engine() const { return m_engine; }
 
