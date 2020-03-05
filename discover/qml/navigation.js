@@ -33,7 +33,7 @@ function openApplicationMime(mime) {
 }
 
 function openApplicationList(props) {
-    var page = window.stack.push(applicationListComp, props)
+    var page = window.stack.push("qrc:/qml/ApplicationsListPage.qml", props)
     if (props.search === "")
         page.clearSearch();
 }
@@ -45,15 +45,15 @@ function openCategory(cat, search) {
 
 function openApplication(app) {
     console.assert(app)
-    window.stack.push(applicationComp, { application: app })
+    window.stack.push("qrc:/qml/ApplicationPage.qml", { application: app })
 }
 
 function openReviews(model) {
-    window.stack.push(reviewsComp, { model: model })
+    window.stack.push("qrc:/qml/ReviewsPage.qml", { model: model })
 }
 
 function openExtends(ext) {
-    window.stack.push(applicationListComp, { extending: ext, title: i18n("Extensions...") })
+    window.stack.push("qrc:/qml/ApplicationsListPage.qml", { extending: ext, title: i18n("Extensions...") })
 }
 
 function openHome() {

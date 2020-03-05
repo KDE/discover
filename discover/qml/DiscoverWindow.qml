@@ -10,18 +10,12 @@ import "navigation.js" as Navigation
 Kirigami.ApplicationWindow
 {
     id: window
-    readonly property string applicationListComp: ("qrc:/qml/ApplicationsListPage.qml")
-    readonly property string applicationComp: ("qrc:/qml/ApplicationPage.qml")
-    readonly property string reviewsComp: ("qrc:/qml/ReviewsPage.qml")
-
-    //toplevels
     readonly property string topBrowsingComp: ("qrc:/qml/BrowsingPage.qml")
     readonly property string topInstalledComp: ("qrc:/qml/InstalledPage.qml")
     readonly property string topSearchComp: ("qrc:/qml/SearchPage.qml")
     readonly property string topUpdateComp: ("qrc:/qml/UpdatesPage.qml")
     readonly property string topSourcesComp: ("qrc:/qml/SourcesPage.qml")
     readonly property string topAboutComp: ("qrc:/qml/AboutPage.qml")
-    readonly property string loadingComponent: ("qrc:/qml/LoadingPage.qml")
     readonly property QtObject stack: window.pageStack
     property string currentTopLevel
 
