@@ -209,8 +209,11 @@ void PackageKitResource::setDetails(const PackageKit::Details & details)
         return;
 
     if (m_details != details) {
+        const auto oldState = state();
         m_details = details;
-        emit stateChanged();
+
+        if (oldState != state())
+            emit stateChanged();
 
         if (!backend()->isFetching())
             Q_EMIT backend()->resourcesChanged(this, {"size", "homepage", "license"});
