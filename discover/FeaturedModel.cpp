@@ -50,14 +50,18 @@ FeaturedModel::FeaturedModel()
     const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover") + fileName);
     auto *fetchJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
     acquireFetching(true);
-    connect(fetchJob, &KIO::StoredTransferJob::result, this, [this, fetchJob](){
+    connect(fetchJob, &KIO::StoredTransferJob::result, this, [this, fetchJob]() {
+        const auto dest = qScopeGuard([this] { acquireFetching(false); });
+        if (fetchJob->error() != 0) {
+            refresh();
+            return;
+        }
         QFile f(*featuredCache);
         if (!f.open(QIODevice::WriteOnly))
             qCWarning(DISCOVER_LOG) << "could not open" << *featuredCache << f.errorString();
         f.write(fetchJob->data());
         f.close();
         refresh();
-        acquireFetching(false);
     });
 
     if (!ResourcesModel::global()->backends().isEmpty() && QFile::exists(*featuredCache))
@@ -67,6 +71,7 @@ FeaturedModel::FeaturedModel()
 void FeaturedModel::refresh()
 {
     acquireFetching(true);
+    const auto dest = qScopeGuard([this] { acquireFetching(false); });
     QFile f(*featuredCache);
     if (!f.open(QIODevice::ReadOnly)) {
         qCWarning(DISCOVER_LOG) << "couldn't open file" << *featuredCache << f.errorString();
@@ -85,7 +90,6 @@ void FeaturedModel::refresh()
 
 void FeaturedModel::setUris(const QVector<QUrl>& uris)
 {
-    acquireFetching(false);
     auto backend = ResourcesModel::global()->currentApplicationBackend();
     if (!backend)
         return;
@@ -138,15 +142,13 @@ void FeaturedModel::setResources(const QVector<AbstractResource *>& _resources)
     auto resources = _resources;
     filterDupes(resources);
 
-    if (m_resources == resources) {
-        acquireFetching(false);
-        return;
+    if (m_resources != resources) {
+        //TODO: sort like in the json files
+        beginResetModel();
+        m_resources = resources;
+        endResetModel();
     }
 
-    //TODO: sort like in the json files
-    beginResetModel();
-    m_resources = resources;
-    endResetModel();
     acquireFetching(false);
 }
 

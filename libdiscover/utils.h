@@ -24,6 +24,7 @@
 #include <functional>
 #include <QString>
 #include <QElapsedTimer>
+#include <QScopeGuard>
 
 class OneTimeAction : public QObject
 {
