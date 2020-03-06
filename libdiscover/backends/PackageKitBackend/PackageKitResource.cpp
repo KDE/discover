@@ -27,6 +27,7 @@
 #include <PackageKit/Daemon>
 #include <QJsonArray>
 #include <QDebug>
+#include <utils.h>
 
 #if defined(WITH_MARKDOWN)
 extern "C" {
@@ -228,7 +229,8 @@ void PackageKitResource::fetchUpdateDetails()
 {
     const auto pkgid = availablePackageId();
     if (pkgid.isEmpty()) {
-        connect(this, &PackageKitResource::stateChanged, this, &PackageKitResource::fetchUpdateDetails);
+        auto a = new OneTimeAction([this] { fetchUpdateDetails(); }, this);
+        connect(this, &PackageKitResource::stateChanged, a, &OneTimeAction::trigger);
         return;
     }
     PackageKit::Transaction* t = PackageKit::Daemon::getUpdateDetail(availablePackageId());
