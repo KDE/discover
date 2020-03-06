@@ -133,14 +133,4 @@ public:
     QString m_name;
 };
 
-class CallOnDestroy : public QObject
-{
-public:
-    CallOnDestroy(std::function<void()> f) : m_func(std::move(f)) {}
-    ~CallOnDestroy() { m_func(); }
-
-private:
-    std::function<void()> m_func;
-};
-
 #endif

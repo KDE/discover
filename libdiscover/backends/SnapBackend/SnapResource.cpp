@@ -461,15 +461,13 @@ void SnapResource::setChannel(const QString& channelName)
     auto request = client()->switchChannel(m_snap->name(), channelName);
 
     const auto currentChannel = channel();
-    auto dest = new CallOnDestroy([this, currentChannel]() {
-        const auto newChannel = channel();
-        if (newChannel != currentChannel) {
-            Q_EMIT channelChanged(newChannel);
-        }
-    });
-
     request->runAsync();
-    connect(request, &QSnapdRequest::complete, dest, &QObject::deleteLater);
+    connect(request, &QSnapdRequest::complete, this, [this, currentChannel]() {
+            const auto newChannel = channel();
+            if (newChannel != currentChannel) {
+                Q_EMIT channelChanged(newChannel);
+            }
+        });
 #endif
 }
 
