@@ -27,6 +27,7 @@
 #include <PackageKit/Daemon>
 #include <QJsonArray>
 #include <QDebug>
+#include <utils.h>
 
 #if defined(WITH_MARKDOWN)
 extern "C" {
@@ -209,8 +210,11 @@ void PackageKitResource::setDetails(const PackageKit::Details & details)
         return;
 
     if (m_details != details) {
+        const auto oldState = state();
         m_details = details;
-        emit stateChanged();
+
+        if (oldState != state())
+            emit stateChanged();
 
         if (!backend()->isFetching())
             Q_EMIT backend()->resourcesChanged(this, {"size", "homepage", "license"});
@@ -225,7 +229,8 @@ void PackageKitResource::fetchUpdateDetails()
 {
     const auto pkgid = availablePackageId();
     if (pkgid.isEmpty()) {
-        connect(this, &PackageKitResource::stateChanged, this, &PackageKitResource::fetchUpdateDetails);
+        auto a = new OneTimeAction([this] { fetchUpdateDetails(); }, this);
+        connect(this, &PackageKitResource::stateChanged, a, &OneTimeAction::trigger);
         return;
     }
     PackageKit::Transaction* t = PackageKit::Daemon::getUpdateDetail(availablePackageId());

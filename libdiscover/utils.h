@@ -24,6 +24,7 @@
 #include <functional>
 #include <QString>
 #include <QElapsedTimer>
+#include <QScopeGuard>
 
 class OneTimeAction : public QObject
 {
@@ -130,16 +131,6 @@ public:
     void step(const QString &step) { qDebug("step %s(%s): %lld!", m_name.toUtf8().constData(), qPrintable(step), elapsed()); }
 
     QString m_name;
-};
-
-class CallOnDestroy : public QObject
-{
-public:
-    CallOnDestroy(std::function<void()> f) : m_func(std::move(f)) {}
-    ~CallOnDestroy() { m_func(); }
-
-private:
-    std::function<void()> m_func;
 };
 
 #endif

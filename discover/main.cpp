@@ -71,6 +71,8 @@ void processArgs(QCommandLineParser* parser, DiscoverObject* mainWindow)
 
     if(parser->isSet(QStringLiteral("mode")))
         mainWindow->openMode(parser->value(QStringLiteral("mode")));
+    else
+        mainWindow->openMode(QStringLiteral("Browsing"));
 
     if(parser->isSet(QStringLiteral("search")))
         Q_EMIT mainWindow->openSearch(parser->value(QStringLiteral("search")));
@@ -136,8 +138,10 @@ int main(int argc, char** argv)
             auto options = parser->optionNames();
             options.removeAll(QStringLiteral("backends"));
             options.removeAll(QStringLiteral("test"));
-            bool hasOptions = !options.isEmpty() || !parser->positionalArguments().isEmpty();
-            mainWindow = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full), {{QStringLiteral("defaultStartup"), !hasOptions}});
+            QVariantMap initialProperties;
+            if (!options.isEmpty() || !parser->positionalArguments().isEmpty())
+                initialProperties = {{QStringLiteral("currentTopLevel"), QStringLiteral("qrc:/qml/LoadingPage.qml")}};
+            mainWindow = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full), initialProperties);
         }
         QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverObject::deleteLater);
         QObject::connect(service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList &arguments, const QString &/*workingDirectory*/){

@@ -48,6 +48,8 @@ public:
     QString errorMessage() const;
     bool result() const;
 
+    void addErrorMessage(const QString &error);
+
 Q_SIGNALS:
     void progressChanged(int progress);
     void speedChanged(quint64 speed);
@@ -61,8 +63,8 @@ private:
     quint64 m_speed = 0;
     QString m_errorMessage;
     GCancellable *m_cancellable;
-    FlatpakResource *m_app;
-    Transaction::Role m_role;
+    FlatpakResource * const m_app;
+    const Transaction::Role m_role;
 };
 
 #endif // FLATPAKTRANSACTIONJOB_H

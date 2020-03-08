@@ -72,6 +72,17 @@ new_operation_cb(FlatpakTransaction          */*object*/,
     flatpak_transaction_progress_set_update_frequency (progress, FLATPAK_CLI_UPDATE_FREQUENCY);
 }
 
+void
+operation_error_cb(FlatpakTransaction          */*object*/,
+                    FlatpakTransactionOperation */*operation*/,
+                    GError                      *error,
+                    gint                         /*details*/,
+                    gpointer                     user_data)
+{
+    FlatpakTransactionThread *obj = (FlatpakTransactionThread*) user_data;
+    obj->addErrorMessage(QString::fromUtf8(error->message));
+}
+
 FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role)
     : QThread()
     , m_result(false)
@@ -83,11 +94,12 @@ FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transac
     g_autoptr(GError) localError = nullptr;
     m_transaction = flatpak_transaction_new_for_installation(app->installation(), m_cancellable, &localError);
     if (localError) {
-        m_errorMessage = QString::fromUtf8(localError->message);
+        addErrorMessage(QString::fromUtf8(localError->message));
         qWarning() << "Failed to create transaction" << m_errorMessage;
     } else {
         g_signal_connect (m_transaction, "add-new-remote", G_CALLBACK (add_new_remote_cb), this);
         g_signal_connect (m_transaction, "new-operation", G_CALLBACK (new_operation_cb), this);
+        g_signal_connect (m_transaction, "operation-error", G_CALLBACK (operation_error_cb), this);
     }
 }
 
@@ -216,3 +228,9 @@ bool FlatpakTransactionThread::result() const
     return m_result;
 }
 
+void FlatpakTransactionThread::addErrorMessage(const QString &error)
+{
+    if (!m_errorMessage.isEmpty())
+        m_errorMessage.append(QLatin1Char('\n'));
+    m_errorMessage.append(error);
+}

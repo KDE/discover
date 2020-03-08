@@ -234,17 +234,28 @@ void DiscoverObject::openMimeType(const QString& mime)
     emit listMimeInternal(mime);
 }
 
+void DiscoverObject::showLoadingPage()
+{
+    QObject* obj = rootObject();
+    if (!obj) {
+        qCWarning(DISCOVER_LOG) << "could not get the main object";
+        return;
+    }
+
+    obj->setProperty("currentTopLevel", QStringLiteral("qrc:/qml/LoadingPage.qml"));
+}
+
 void DiscoverObject::openCategory(const QString& category)
 {
-    setRootObjectProperty("defaultStartup", false);
+    showLoadingPage();
     auto action = new OneTimeAction(
         [this, category]() {
             Category* cat = CategoryModel::global()->findCategoryByName(category);
             if (cat) {
                 emit listCategoryInternal(cat);
             } else {
+                openMode(QStringLiteral("Browsing"));
                 showPassiveNotification(i18n("Could not find category '%1'", category));
-                setRootObjectProperty("defaultStartup", true);
             }
         }
         , this);
@@ -263,7 +274,7 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
         qCWarning(DISCOVER_LOG) << "Trying to open unexisting file" << localfile;
         return;
     }
-    setRootObjectProperty("defaultStartup", false);
+    showLoadingPage();
     auto action = new OneTimeAction(
         [this, localfile]() {
             AbstractResourcesBackend::Filters f;
@@ -280,7 +291,7 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
                         openApplication(QUrl(QStringLiteral("appstream://org.kde.discover.flatpak")));
                         showPassiveNotification(i18n("Cannot interact with flatpak resources without the flatpak backend %1. Please install it first.", localfile.toDisplayString()));
                     } else {
-                        setRootObjectProperty("defaultStartup", true);
+                        openMode(QStringLiteral("Browsing"));
                         showPassiveNotification(i18n("Couldn't open %1", localfile.toDisplayString()));
                     }
                 }
@@ -298,7 +309,7 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
 void DiscoverObject::openApplication(const QUrl& url)
 {
     Q_ASSERT(!url.isEmpty());
-    setRootObjectProperty("defaultStartup", false);
+    showLoadingPage();
     auto action = new OneTimeAction(
         [this, url]() {
             AbstractResourcesBackend::Filters f;
@@ -308,7 +319,6 @@ void DiscoverObject::openApplication(const QUrl& url)
                 if (res.count() >= 1) {
                     emit openApplicationInternal(res.first());
                 } else {
-                    setRootObjectProperty("defaultStartup", true);
                     Q_EMIT openErrorPage(i18n("Couldn't open %1", url.toDisplayString()));
                 }
             });
@@ -489,17 +499,6 @@ void DiscoverObject::loadTest(const QUrl& url)
 QWindow* DiscoverObject::rootObject() const
 {
     return qobject_cast<QWindow*>(m_engine->rootObjects().at(0));
-}
-
-void DiscoverObject::setRootObjectProperty(const char* name, const QVariant& value)
-{
-    auto ro = rootObject();
-    if (!ro) {
-        qCWarning(DISCOVER_LOG) << "please check your installation";
-        return;
-    }
-
-    rootObject()->setProperty(name, value);
 }
 
 void DiscoverObject::showPassiveNotification(const QString& msg)

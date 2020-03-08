@@ -318,7 +318,7 @@ UpdateItem * UpdateModel::itemFromResource(AbstractResource* res)
 
 QString UpdateModel::updateSize() const
 {
-    return KFormat().formatByteSize(m_updates->updateSize());
+    return m_updates ? KFormat().formatByteSize(m_updates->updateSize()) : QString();
 }
 
 QModelIndex UpdateModel::indexFromItem(UpdateItem* item) const
