@@ -155,6 +155,10 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
 
 void StandardBackendUpdater::refreshProgress()
 {
+    if (m_toUpgrade.isEmpty()) {
+        return;
+    }
+
     int allProgresses = (m_toUpgrade.size() - m_pendingResources.size()) * 100;
     for (auto t: transactions()) {
         allProgresses += t->progress();
