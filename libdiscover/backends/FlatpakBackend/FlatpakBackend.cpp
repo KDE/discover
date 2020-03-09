@@ -605,6 +605,9 @@ void FlatpakBackend::loadAppsFromAppstreamData()
 {
     for (auto installation : qAsConst(m_installations)) {
         // Load applications from appstream metadata
+        if (g_cancellable_is_cancelled(m_cancellable))
+            break;
+
         if (!loadAppsFromAppstreamData(installation)) {
             qWarning() << "Failed to load packages from appstream data from installation" << installation;
         }
