@@ -116,9 +116,9 @@
   <developer_name xml:lang="zh-TW">Aleix Pol Gonzalez</developer_name>
   <icon type="stock">system-software-install</icon>
   <releases>
+    <release version="5.18.3" date="2020-03-10"/>
     <release version="5.18.2" date="2020-02-25"/>
     <release version="5.18.1" date="2020-02-18"/>
     <release version="5.18.0" date="2020-02-11"/>
-    <release version="5.17.5" date="2020-01-07"/>
   </releases>
 </component>
