@@ -100,12 +100,14 @@ ActionReply AlpineApkAuthHelper::update(const QVariantMap &args)
 
 ActionReply AlpineApkAuthHelper::add(const QVariantMap &args)
 {
+    Q_UNUSED(args)
     ActionReply reply = ActionReply::HelperErrorReply();
     return reply;
 }
 
 ActionReply AlpineApkAuthHelper::del(const QVariantMap &args)
 {
+    Q_UNUSED(args)
     ActionReply reply = ActionReply::HelperErrorReply();
     return reply;
 }
@@ -138,6 +140,7 @@ ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
 
     QScopedPointer<QSocketNotifier> notifier(new QSocketNotifier(progress_fd, QSocketNotifier::Read));
     QObject::connect(notifier.data(), &QSocketNotifier::activated, notifier.data(), [](int sock) {
+        Q_UNUSED(sock)
         qCDebug(LOG_AUTHHELPER) << "        read trigger from progress_fd!";
     });
 
