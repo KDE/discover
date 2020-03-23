@@ -570,7 +570,13 @@ QDate FlatpakResource::releaseDate() const
 
 QString FlatpakResource::sourceIcon() const
 {
-    const auto iconUrl = qobject_cast<FlatpakBackend*>(backend())->sources()->sourceById(origin())->data(FlatpakSourcesBackend::IconUrlRole).toString();
+    const auto sourceItem = qobject_cast<FlatpakBackend*>(backend())->sources()->sourceById(origin());
+    if (!sourceItem) {
+        qWarning() << "Could not find source " << origin();
+        return QStringLiteral("flatpak-discover");
+    }
+
+    const auto iconUrl = sourceItem->data(FlatpakSourcesBackend::IconUrlRole).toString();
     if (iconUrl.isEmpty())
         return QStringLiteral("flatpak-discover");
     return iconUrl;
