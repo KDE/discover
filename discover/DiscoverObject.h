@@ -58,7 +58,7 @@ class DiscoverObject : public QObject
         void loadTest(const QUrl& url);
 
         static bool isRoot();
-        QWindow* rootObject() const;
+        QQuickWindow* rootObject() const;
         void showPassiveNotification(const QString &msg);
         QRect initialGeometry() const;
 

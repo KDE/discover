@@ -55,7 +55,9 @@
 #include <KSharedConfig>
 #include <KConfigGroup>
 #include <KStandardAction>
+#include <KCrash>
 #include <kcoreaddons_version.h>
+#include <kcrash_version.h>
 // #include <KSwitchLanguageDialog>
 
 // DiscoverCommon includes
@@ -351,6 +353,12 @@ void DiscoverObject::integrateObject(QObject* object)
         QWindow::Visibility visibility(QWindow::Visibility(window.readEntry<int>("visibility", QWindow::Windowed)));
         rootObject()->setVisibility(qMax(visibility, QQuickView::AutomaticVisibility));
     }
+    connect(rootObject(), &QQuickView::sceneGraphError, this, [] (QQuickWindow::SceneGraphError /*error*/, const QString &message) {
+#if KCrash_VERSION >= QT_VERSION_CHECK(5, 69, 0)
+        KCrash::setErrorMessage(message);
+#endif
+        qFatal("%s", qPrintable(message));
+    });
 
     object->installEventFilter(this);
     connect(object, &QObject::destroyed, qGuiApp, &QCoreApplication::quit);
@@ -496,9 +504,9 @@ void DiscoverObject::loadTest(const QUrl& url)
     new DiscoverTestExecutor(rootObject(), engine(), url);
 }
 
-QWindow* DiscoverObject::rootObject() const
+QQuickWindow* DiscoverObject::rootObject() const
 {
-    return qobject_cast<QWindow*>(m_engine->rootObjects().at(0));
+    return qobject_cast<QQuickWindow*>(m_engine->rootObjects().at(0));
 }
 
 void DiscoverObject::showPassiveNotification(const QString& msg)
