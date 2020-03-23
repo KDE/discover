@@ -233,13 +233,9 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
 {
     const auto networkError = reply->error();
     if (networkError == QNetworkReply::NoError) {
-        qCWarning(LIBDISCOVER_LOG) << "Review submitted";
         AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
-        const QJsonArray array = {resource->getMetadata(QStringLiteral("ODRS::review_map")).toObject()};
-        const QJsonDocument document(array);
-        // Remove local file with reviews so we can re-download it next time to get our review
-        QFile file(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/reviews/%1.json").arg(array.first().toObject().value(QStringLiteral("app_id")).toString()));
-        file.remove();
+        qCWarning(LIBDISCOVER_LOG) << "Review submitted" << resource;
+        const QJsonDocument document({resource->getMetadata(QStringLiteral("ODRS::review_map")).toObject()});
         parseReviews(document, resource);
     } else {
         qCWarning(LIBDISCOVER_LOG) << "Failed to submit review: " << reply->errorString();
