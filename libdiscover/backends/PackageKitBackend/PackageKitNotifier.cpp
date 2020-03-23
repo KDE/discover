@@ -255,7 +255,7 @@ QProcess* PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
         if (code != 0)
             return;
 
-        QRegularExpression rx(QLatin1Char('^') + varname + QStringLiteral(" \"(.*?)\"$"));
+        QRegularExpression rx(QLatin1Char('^') + varname + QStringLiteral(" \"(.*?)\";?$"), QRegularExpression::CaseInsensitiveOption);
         QTextStream stream(process);
         QString line;
         while (stream.readLineInto(&line)) {
