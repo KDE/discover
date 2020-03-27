@@ -538,7 +538,14 @@ ResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
             const auto f = [this, appstreamIds, stream] () {
                 AbstractResource* pkg = nullptr;
 
-                const QStringList allAppStreamIds = appstreamIds + deprecatedAppstreamIds.values(appstreamIds.first());
+                QStringList allAppStreamIds = appstreamIds;
+                {
+                    auto it = deprecatedAppstreamIds.constFind(appstreamIds.first());
+                    if (it != deprecatedAppstreamIds.constEnd()) {
+                        allAppStreamIds << *it;
+                    }
+                }
+
                 for (auto it = m_packages.packages.constBegin(), itEnd = m_packages.packages.constEnd(); it != itEnd; ++it) {
                     const bool matches = kContains(allAppStreamIds, [&it] (const QString& id) {
                         return it.key().compare(id, Qt::CaseInsensitive) == 0 ||

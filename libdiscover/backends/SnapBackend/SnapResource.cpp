@@ -337,9 +337,9 @@ public:
         , m_res(res)
         , m_backend(backend)
     {
-        setItemRoleNames(roleNames().unite(
-            { {Qt::CheckStateRole, "checked"} }
-        ));
+        auto roles = roleNames();
+        roles.insert(Qt::CheckStateRole, "checked");
+        setItemRoleNames(roles);
 
         auto req = backend->client()->getInterfaces();
         req->runSync();

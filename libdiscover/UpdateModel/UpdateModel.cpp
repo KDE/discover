@@ -58,7 +58,8 @@ UpdateModel::~UpdateModel()
 
 QHash<int,QByteArray> UpdateModel::roleNames() const
 {
-    return QAbstractItemModel::roleNames().unite({
+    auto ret = QAbstractItemModel::roleNames();
+    ret.insert({
         { Qt::CheckStateRole, "checked" },
         { ResourceProgressRole, "resourceProgress" },
         { ResourceStateRole, "resourceState" },
@@ -69,6 +70,7 @@ QHash<int,QByteArray> UpdateModel::roleNames() const
         { InstalledVersionRole, "installedVersion" },
         { AvailableVersionRole, "availableVersion" }
     } );
+    return ret;
 }
 
 void UpdateModel::setBackend(ResourcesUpdatesModel* updates)
