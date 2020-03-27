@@ -59,17 +59,15 @@ UpdateModel::~UpdateModel()
 QHash<int,QByteArray> UpdateModel::roleNames() const
 {
     auto ret = QAbstractItemModel::roleNames();
-    ret.insert({
-        { Qt::CheckStateRole, "checked" },
-        { ResourceProgressRole, "resourceProgress" },
-        { ResourceStateRole, "resourceState" },
-        { ResourceRole, "resource" },
-        { SizeRole, "size" },
-        { SectionRole, "section" },
-        { ChangelogRole, "changelog" },
-        { InstalledVersionRole, "installedVersion" },
-        { AvailableVersionRole, "availableVersion" }
-    } );
+    ret.insert(Qt::CheckStateRole, "checked");
+    ret.insert(ResourceProgressRole, "resourceProgress");
+    ret.insert(ResourceStateRole, "resourceState");
+    ret.insert(ResourceRole, "resource");
+    ret.insert(SizeRole, "size");
+    ret.insert(SectionRole, "section");
+    ret.insert(ChangelogRole, "changelog");
+    ret.insert(InstalledVersionRole, "installedVersion");
+    ret.insert(AvailableVersionRole, "availableVersion");
     return ret;
 }
 
