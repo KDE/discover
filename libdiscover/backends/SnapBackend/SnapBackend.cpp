@@ -71,6 +71,7 @@ SnapBackend::SnapBackend(QObject* parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(AppStreamIntegration::global()->reviews())
 {
+    connect(m_reviews.data(), &OdrsReviewsBackend::error, this, &SnapBackend::passiveMessage);
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
         m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource*>>(m_resources.values(), [] (AbstractResource* r) { return r; }));
     });

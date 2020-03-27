@@ -145,6 +145,7 @@ void OdrsReviewsBackend::reviewsFetched()
     const auto networkError = reply->error();
     if (networkError != QNetworkReply::NoError) {
         qCWarning(LIBDISCOVER_LOG) << "error fetching reviews:" << reply->errorString() << data;
+        Q_EMIT error(i18n("Error while fetching reviews: %1", reply->errorString()));
         m_isFetching = false;
         return;
     }
@@ -190,6 +191,7 @@ void OdrsReviewsBackend::usefulnessSubmitted()
         qCWarning(LIBDISCOVER_LOG) << "Usefulness submitted";
     } else {
         qCWarning(LIBDISCOVER_LOG) << "Failed to submit usefulness: " << reply->errorString();
+        Q_EMIT error(i18n("Error while submitting usefuless: %1", reply->errorString()));
     }
     reply->deleteLater();
 }
@@ -238,6 +240,7 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
         const QJsonDocument document({resource->getMetadata(QStringLiteral("ODRS::review_map")).toObject()});
         parseReviews(document, resource);
     } else {
+        Q_EMIT error(i18n("Error while submitting review: %1", reply->errorString()));
         qCWarning(LIBDISCOVER_LOG) << "Failed to submit review: " << reply->errorString();
     }
     reply->deleteLater();
