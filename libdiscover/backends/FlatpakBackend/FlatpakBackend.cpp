@@ -109,7 +109,6 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
         SourcesModel::global()->addSourcesBackend(m_sources);
     }
 
-    connect(m_reviews.data(), &OdrsReviewsBackend::error, this, &FlatpakBackend::passiveMessage);
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
         m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource*>>(m_resources.values(), [] (AbstractResource* r) { return r; }));
     });
