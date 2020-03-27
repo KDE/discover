@@ -116,7 +116,7 @@ FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
 void FwupdBackend::addUpdates()
 {
     g_autoptr(GError) error = nullptr;
-    g_autoptr(GPtrArray) devices = fwupd_client_get_devices(client, nullptr, &error);
+    g_autoptr(GPtrArray) devices = fwupd_client_get_devices(client, m_cancellable, &error);
 
     if (!devices)
     {
@@ -127,7 +127,7 @@ void FwupdBackend::addUpdates()
         return;
     }
 
-    for(uint i = 0; i < devices->len; i++)
+    for(uint i = 0; i < devices->len && !g_cancellable_is_cancelled(m_cancellable); i++)
     {
         FwupdDevice *device = (FwupdDevice *)g_ptr_array_index(devices, i);
 
@@ -141,7 +141,7 @@ void FwupdBackend::addUpdates()
             continue;
 
         g_autoptr(GError) error2 = nullptr;
-        g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades(client, fwupd_device_get_id(device), nullptr, &error2);
+        g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades(client, fwupd_device_get_id(device), m_cancellable, &error2);
         if (rels) {
             fwupd_device_add_release(device, (FwupdRelease *)g_ptr_array_index(rels, 0));
             auto res = createApp(device);
@@ -390,7 +390,7 @@ void FwupdBackend::checkForUpdates()
                 continue;
 
             g_autoptr(GError) error = nullptr;
-            g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), nullptr, &error);
+            g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), m_cancellable, &error);
 
             if (error) {
                 if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED)) {
