@@ -429,10 +429,11 @@ void FwupdBackend::checkForUpdates()
             g_autoptr(GError) error = nullptr;
 
             /* get devices */
-            GPtrArray* devices = fwupd_client_get_devices(client, m_cancellable, nullptr);
-
+            GPtrArray* devices = fwupd_client_get_devices(client, m_cancellable, &error);
+            handleError(error);
 
             g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(client, m_cancellable, &error);
+            handleError(error);
             for(uint i = 0; remotes && i < remotes->len; i++)
             {
                 FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
