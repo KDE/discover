@@ -1311,8 +1311,14 @@ void FlatpakBackend::checkForUpdates()
         // Load local updates, comparing current and latest commit
         loadLocalUpdates(installation);
 
+        if (g_cancellable_is_cancelled(m_cancellable))
+            break;
+
         // Load updates from remote repositories
         loadRemoteUpdates(installation);
+
+        if (g_cancellable_is_cancelled(m_cancellable))
+            break;
     }
 }
 
