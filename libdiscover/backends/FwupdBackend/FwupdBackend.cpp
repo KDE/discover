@@ -394,7 +394,7 @@ void FwupdBackend::checkForUpdates()
 
             if (error) {
                 if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED)) {
-                    qWarning() << "fwupd: Device not supported:" << fwupd_device_get_name(device);
+                    qWarning() << "fwupd: Device not supported:" << fwupd_device_get_name(device) << error->message;
                     continue;
                 }
                 if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE)) {
