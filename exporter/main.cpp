@@ -40,7 +40,6 @@ int main(int argc, char** argv)
     MuonExporter exp;
     {
         QCommandLineParser parser;
-        parser.addOption(QCommandLineOption(QStringLiteral("backends"), i18n("List all the backends we'll want to have loaded, separated by coma ','."), QStringLiteral("names")));
         parser.addPositionalArgument(QStringLiteral("file"), i18n("File to which we'll export"));
         DiscoverBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);

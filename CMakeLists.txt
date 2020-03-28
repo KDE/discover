@@ -49,6 +49,7 @@ configure_file(DiscoverVersion.h.in DiscoverVersion.h)
 add_subdirectory(libdiscover)
 add_subdirectory(discover)
 add_subdirectory(exporter)
+add_subdirectory(update)
 
 option(WITH_NOTIFIER "Build and install the notifier plasmoid" ON)
 if(WITH_NOTIFIER)
