@@ -191,7 +191,7 @@ void OdrsReviewsBackend::usefulnessSubmitted()
         qCWarning(LIBDISCOVER_LOG) << "Usefulness submitted";
     } else {
         qCWarning(LIBDISCOVER_LOG) << "Failed to submit usefulness: " << reply->errorString();
-        Q_EMIT error(i18n("Error while submitting usefuless: %1", reply->errorString()));
+        Q_EMIT error(i18n("Error while submitting usefulness: %1", reply->errorString()));
     }
     reply->deleteLater();
 }
