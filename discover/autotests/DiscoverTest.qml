@@ -38,6 +38,7 @@ Item
     }
 
     function chooseChild(obj, validator) {
+        verify(obj, "can't find a null's child")
         if (validator(obj))
             return true;
         var children = obj.data ? obj.data : obj.contentData
