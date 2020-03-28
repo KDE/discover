@@ -202,7 +202,7 @@ DiscoverPage {
             Component.onCompleted: appInfo.application.fetchChangelog()
             Connections {
                 target: appInfo.application
-                onChangelogFetched: {
+                function onChangelogFetched(changelog) {
                     changelogLabel.text = changelog
                 }
             }

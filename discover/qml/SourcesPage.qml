@@ -39,8 +39,10 @@ DiscoverPage {
 
             readonly property var p0: Connections {
                 target: backendItem.backend
-                onPassiveMessage: window.showPassiveNotification(message)
-                onProceedRequest: {
+                function onPassiveMessage(message) {
+                    window.showPassiveNotification(message)
+                }
+                function onProceedRequest(title, description) {
                     var dialog = sourceProceedDialog.createObject(window, {sourcesBackend: backendItem.backend, title: title, description: description})
                     dialog.open()
                 }

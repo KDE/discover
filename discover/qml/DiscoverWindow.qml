@@ -105,32 +105,34 @@ Kirigami.ApplicationWindow
 
     Connections {
         target: app
-        onOpenApplicationInternal: {
+        function onOpenApplicationInternal(app) {
             Navigation.clearStack()
             Navigation.openApplication(app)
         }
-        onListMimeInternal:  {
+        function onListMimeInternal(mime)  {
             currentTopLevel = topBrowsingComp;
             Navigation.openApplicationMime(mime)
         }
-        onListCategoryInternal:  {
+        function onListCategoryInternal(cat)  {
             currentTopLevel = topBrowsingComp;
             Navigation.openCategory(cat, "")
         }
 
-        onOpenSearch: {
+        function onOpenSearch(search) {
             Navigation.clearStack()
             Navigation.openApplicationList({search: search})
         }
 
-        onOpenErrorPage: {
+        function onOpenErrorPage(errorMessage) {
             Navigation.clearStack()
             console.warn("error", errorMessage)
             window.stack.push(errorPageComponent, { error: errorMessage, title: i18n("Sorry...") })
         }
 
-        onPreventedClose: showPassiveNotification(i18n("Could not close Discover, there are tasks that need to be done."), 20000, i18n("Quit Anyway"), function() { Qt.quit() })
-        onUnableToFind: {
+        function onPreventedClose() {
+            showPassiveNotification(i18n("Could not close Discover, there are tasks that need to be done."), 20000, i18n("Quit Anyway"), function() { Qt.quit() })
+        }
+        function onUnableToFind(resid) {
             showPassiveNotification(i18n("Unable to find resource: %1", resid));
             Navigation.openHome()
         }
@@ -138,7 +140,7 @@ Kirigami.ApplicationWindow
 
     Connections {
         target: ResourcesModel
-        onPassiveMessage: {
+        function onPassiveMessage (message) {
             showPassiveNotification(message)
             console.log("message:", message)
         }

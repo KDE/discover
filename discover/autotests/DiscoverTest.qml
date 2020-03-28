@@ -96,7 +96,7 @@ Item
     Connections {
         target: ResourcesModel
         property bool done: false
-        onIsFetchingChanged: {
+        function onIsFetchingChanged() {
             if (ResourcesModel.isFetching || done)
                 return;
 

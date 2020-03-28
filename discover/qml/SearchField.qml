@@ -53,12 +53,14 @@ Kirigami.ActionTextField
     Connections {
         ignoreUnknownSignals: true
         target: page
-        onClearSearch: clearText()
+        function onClearSearch() {
+            clearText()
+        }
     }
 
     Connections {
         target: applicationWindow()
-        onCurrentTopLevelChanged: {
+        function onCurrentTopLevelChanged() {
             if (applicationWindow().currentTopLevel.length > 0)
                 clearText()
         }

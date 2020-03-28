@@ -43,7 +43,7 @@ ApplicationsListPage {
         Connections {
             ignoreUnknownSignals: true
             target: searchPage
-            onShown: {
+            function onShown() {
                 searchField.forceActiveFocus()
             }
         }
