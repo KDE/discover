@@ -21,6 +21,7 @@
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesUpdatesModel.h>
 #include <QCoreApplication>
+#include <QDebug>
 
 DiscoverUpdate::DiscoverUpdate()
     : QObject(nullptr)
