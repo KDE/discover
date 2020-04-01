@@ -47,12 +47,13 @@ Kirigami.OverlaySheet {
 
     header: ColumnLayout {
         width: parent.width
-        spacing: 0
+        spacing: Kirigami.Units.largeSpacing
 
         Button {
             id: reviewButton
 
             Layout.alignment: Qt.AlignHCenter
+            Layout.topMargin: enabled ? undefined : Kirigami.Units.largeSpacing
 
             visible: page.reviewsBackend != null
             enabled: page.resource.isInstalled
@@ -61,7 +62,8 @@ Kirigami.OverlaySheet {
         }
         Label {
             Layout.alignment: Qt.AlignHCenter
-            Layout.bottomMargin: Kirigami.Units.largeSpacing * 2
+            Layout.bottomMargin: Kirigami.Units.largeSpacing
+
             text: i18n("Install this app to write a review")
             wrapMode: Text.WordWrap
             visible: !reviewButton.enabled
