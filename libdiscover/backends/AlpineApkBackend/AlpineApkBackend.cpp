@@ -79,9 +79,12 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
     if (m_availablePackages.size() > 0) {
         for (const QtApk::Package &pkg: m_availablePackages) {
             AlpineApkResource *res = new AlpineApkResource(pkg, this);
-            res->setCategoryName(QStringLiteral("all"));
+            res->setCategoryName(QStringLiteral("alpine_packages"));
             res->setOriginSource(QStringLiteral("apk"));
             res->setSection(QStringLiteral("dummy"));
+            // here is the place to set a proper type of package
+            // AlpineApkResource defaults to AbstractResource::Technical,
+            // which places it into "System updates" section
             const QString key = pkg.name.toLower();
             m_resources.insert(key, res);
             connect(res, &AlpineApkResource::stateChanged, this, &AlpineApkBackend::updatesCountChanged);
@@ -105,18 +108,22 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
 
 QVector<Category *> AlpineApkBackend::category() const
 {
-    // single root category
+    static QPair<FilterType, QString> s_apkFlt(
+                FilterType::CategoryFilter, QLatin1String("alpine_packages"));
+
+    // Display a single root category
     // we could add more, but Alpine apk does not have this concept
-    static Category *cat = new Category(
-                i18nc("Root category name", "Alpine packages"),
-                QStringLiteral("package-x-generic"), // icon
-                {},                // orFilters
-                { displayName() }, // pluginName
-                {},                // subCategories
-                QUrl(),            // decoration (what is it?)
-                false              // isAddons
+    static Category *s_rootCat = new Category(
+            i18nc("Root category name", "Alpine packages"),
+            QStringLiteral("package-x-generic"), // icon
+            { s_apkFlt },      // orFilters - include packages that match filter
+            { displayName() }, // pluginName
+            {},                // subCategories - none
+            QUrl(),            // decoration (what is it?)
+            false              // isAddons
     );
-    return { cat };
+
+    return { s_rootCat };
 }
 
 int AlpineApkBackend::updatesCount() const
@@ -130,17 +137,23 @@ ResultsStream *AlpineApkBackend::search(const AbstractResourcesBackend::Filters 
     if (!filter.resourceUrl.isEmpty()) {
         return findResourceByPackageName(filter.resourceUrl);
     } else {
-        for (AbstractResource *r: qAsConst(m_resources)) {
-            if (r->type() == AbstractResource::Technical
-                    && filter.state != AbstractResource::Upgradeable) {
+        for (AbstractResource *resource: qAsConst(m_resources)) {
+            // skip technical package types (not apps/addons)
+            //      that are not upgradeable
+            //  (does not work because for now all Alpine packages are "technical"
+            // if (resource->type() == AbstractResource::Technical
+            //         && filter.state != AbstractResource::Upgradeable) {
+            //     continue;
+            // }
+
+            // skip not-requested states
+            if (resource->state() < filter.state) {
                 continue;
             }
-            if (r->state() < filter.state) {
-                continue;
-            }
-            if(r->name().contains(filter.search, Qt::CaseInsensitive)
-                    || r->comment().contains(filter.search, Qt::CaseInsensitive)) {
-                ret += r;
+
+            if(resource->name().contains(filter.search, Qt::CaseInsensitive)
+                    || resource->comment().contains(filter.search, Qt::CaseInsensitive)) {
+                ret += resource;
             }
         }
     }
@@ -162,7 +175,7 @@ ResultsStream *AlpineApkBackend::findResourceByPackageName(const QUrl &searchUrl
     AlpineApkResource *result = nullptr;
 
     // QUrl("appstream://org.kde.krita.desktop")
-    // smart workaround for appstream URLs
+    // smart workaround for appstream URLs - handle "featured" apps
     if (searchUrl.scheme()  == QLatin1String("appstream")) {
         // remove leading "org.kde."
         QString pkgName = searchUrl.host();
@@ -174,6 +187,13 @@ ResultsStream *AlpineApkBackend::findResourceByPackageName(const QUrl &searchUrl
             pkgName = pkgName.left(pkgName.length() - 8);
         }
         // now we can search for "krita" package
+        result = m_resources.value(pkgName);
+    }
+
+    // QUrl("apk://krita")
+    // handle packages from Alpine repos
+    if (searchUrl.scheme() == QLatin1String("apk")) {
+        const QString pkgName = searchUrl.host();
         result = m_resources.value(pkgName);
     }
 

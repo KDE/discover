@@ -26,7 +26,7 @@ AlpineApkResource::AlpineApkResource(const QtApk::Package &apkPkg,
                                      AbstractResourcesBackend *parent)
     : AbstractResource(parent)
     , m_state(AbstractResource::State::None)
-    , m_type(Application)
+    , m_type(AbstractResource::Type::Technical)
     , m_pkg(apkPkg)
 {
 }
