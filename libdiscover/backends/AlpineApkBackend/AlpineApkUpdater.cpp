@@ -25,6 +25,7 @@
 #include "utils.h"
 
 #include <KAuthExecuteJob>
+#include <kauth_version.h>
 #include <KLocalizedString>
 
 #include <QtApk.h>
@@ -178,8 +179,15 @@ void AlpineApkUpdater::start()
         return;
     }
     upgradeAction.setTimeout(60 * 1000); // 1 minute
-    upgradeAction.setDetails(i18n("Get the list of packages to upgrade"));
-    upgradeAction.addArgument(QLatin1String("onlySimulate"), true);
+#if KAUTH_VERSION < QT_VERSION_CHECK(5, 68, 0)
+    upgradeAction.setDetails(i18n("Upgrade currently installed packages"));
+#else
+    static const KAuth::Action::DetailsMap details{
+        { KAuth::Action::AuthDetail::DetailMessage, i18n("Upgrade currently installed packages") }
+    };
+    upgradeAction.setDetailsV2(details);
+#endif
+    // upgradeAction.addArgument(QLatin1String("onlySimulate"), true);
 
     // run upgrade check with elevated privileges
     KAuth::ExecuteJob *reply = upgradeAction.execute();
@@ -211,7 +219,15 @@ void AlpineApkUpdater::startCheckForUpdates()
         return;
     }
     updateAction.setTimeout(60 * 1000); // 1 minute
+    // setDetails deprecated since KF 5.68, use setDetailsV2() with DetailsMap.
+#if KAUTH_VERSION < QT_VERSION_CHECK(5, 68, 0)
     updateAction.setDetails(i18n("Update repositories index"));
+#else
+    static const KAuth::Action::DetailsMap details{
+        { KAuth::Action::AuthDetail::DetailMessage, i18n("Update repositories index") }
+    };
+    updateAction.setDetailsV2(details);
+#endif
     updateAction.addArgument(QLatin1String("fakeRoot"), db->fakeRoot());
 
     // run updates check with elevated privileges to access
