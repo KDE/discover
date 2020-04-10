@@ -215,12 +215,11 @@ void AlpineApkUpdater::startCheckForUpdates()
     updateAction.addArgument(QLatin1String("fakeRoot"), db->fakeRoot());
 
     // run updates check with elevated privileges to access
-    // system package manager files
+    //     system package manager files
     KAuth::ExecuteJob *reply = updateAction.execute();
     QObject::connect(reply, &KAuth::ExecuteJob::result,
                      this, &AlpineApkUpdater::handleKAuthUpdateHelperReply);
-    //QObject::connect(reply, &KAuth::ExecuteJob::newData,
-    //                 this, &AlpineApkUpdater::handleKAuthUpdateHelperProgressStep);
+    // qOverload is needed because of conflict with getter named percent()
     QObject::connect(reply, QOverload<KJob *, unsigned long>::of(&KAuth::ExecuteJob::percent),
                      this, &AlpineApkUpdater::handleKAuthUpdateHelperProgress);
 
@@ -236,14 +235,7 @@ void AlpineApkUpdater::handleKAuthUpdateHelperReply(KJob *job)
         qCDebug(LOG_ALPINEAPK) << "KAuth helper update reply received, updatesCount:" << m_updatesCount;
         Q_EMIT updatesCountChanged(m_updatesCount);
     } else {
-        const QString message = replyData.value(QLatin1String("errorString"),
-                                                reply->errorString()).toString();
-        qCDebug(LOG_ALPINEAPK) << "KAuth helper returned error:" << message << reply->error();
-        if (reply->error() == KAuth::ActionReply::Error::AuthorizationDeniedError) {
-            Q_EMIT passiveMessage(i18n("Authorization denied"));
-        } else {
-            Q_EMIT passiveMessage(i18n("Error") + QStringLiteral(":\n") + message);
-        }
+        handleKAuthHelperError(reply, replyData);
     }
 
     // we are not in the state "Fetching updates" now, update UI
@@ -273,17 +265,24 @@ void AlpineApkUpdater::handleKAuthUpgradeHelperReply(KJob *job)
             }
         }
     } else {
-        const QString message = replyData.value(QLatin1String("errorString"),
-                                                reply->errorString()).toString();
-        qCDebug(LOG_ALPINEAPK) << "KAuth helper returned error:" << message << reply->error();
-        if (reply->error() == KAuth::ActionReply::Error::AuthorizationDeniedError) {
-            Q_EMIT passiveMessage(i18n("Authorization denied"));
-        } else {
-            Q_EMIT passiveMessage(i18n("Error") + QStringLiteral(":\n") + message);
-        }
+        handleKAuthHelperError(reply, replyData);
     }
 
     // we are not in the state "Fetching updates" now, update UI
     Q_EMIT checkForUpdatesFinished();
+}
+
+void AlpineApkUpdater::handleKAuthHelperError(
+        KAuth::ExecuteJob *reply,
+        const QVariantMap &replyData)
+{
+    const QString message = replyData.value(QLatin1String("errorString"),
+                                            reply->errorString()).toString();
+    qCDebug(LOG_ALPINEAPK) << "KAuth helper returned error:" << message << reply->error();
+    if (reply->error() == KAuth::ActionReply::Error::AuthorizationDeniedError) {
+        Q_EMIT passiveMessage(i18n("Authorization denied"));
+    } else {
+        Q_EMIT passiveMessage(i18n("Error") + QStringLiteral(":\n") + message);
+    }
 }
 

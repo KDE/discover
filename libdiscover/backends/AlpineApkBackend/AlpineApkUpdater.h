@@ -36,6 +36,9 @@
 class AbstractResourcesBackend;
 class AlpineApkBackend;
 class KJob;
+namespace KAuth {
+    class ExecuteJob;
+}
 
 class AlpineApkUpdater : public AbstractBackendUpdater
 {
@@ -163,6 +166,9 @@ public Q_SLOTS:
 public:
     QVector<QtApk::ChangesetItem> &changes() { return m_upgradeable.changes(); }
     const QVector<QtApk::ChangesetItem> &changes() const { return m_upgradeable.changes(); }
+
+protected:
+    void handleKAuthHelperError(KAuth::ExecuteJob *reply, const QVariantMap &replyData);
 
 private:
     AlpineApkBackend *const m_backend;
