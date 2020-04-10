@@ -26,6 +26,7 @@
 #include <QFile>
 
 #include <KAuthHelperSupport>
+#include <kauth_version.h>
 
 #include "AlpineApkAuthHelper.h"
 
@@ -135,14 +136,15 @@ ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
         m_apkdb.setFakeRoot(fakeRoot);
     }
 
-    int progress_fd = m_apkdb.progressFd();
-    qCDebug(LOG_AUTHHELPER) << "    progress_fd: " << progress_fd;
+    // no progress notifications for now
+    //int progress_fd = m_apkdb.progressFd();
+    //qCDebug(LOG_AUTHHELPER) << "    progress_fd: " << progress_fd;
 
-    QScopedPointer<QSocketNotifier> notifier(new QSocketNotifier(progress_fd, QSocketNotifier::Read));
-    QObject::connect(notifier.data(), &QSocketNotifier::activated, notifier.data(), [](int sock) {
-        Q_UNUSED(sock)
-        qCDebug(LOG_AUTHHELPER) << "        read trigger from progress_fd!";
-    });
+    //QScopedPointer<QSocketNotifier> notifier(new QSocketNotifier(progress_fd, QSocketNotifier::Read));
+    //QObject::connect(notifier.data(), &QSocketNotifier::activated, notifier.data(), [](int sock) {
+    //    Q_UNUSED(sock)
+    //    qCDebug(LOG_AUTHHELPER) << "        read trigger from progress_fd!";
+    //});
 
     QtApk::Changeset changes;
     bool upgrade_ok = m_apkdb.upgrade(flags, &changes);
