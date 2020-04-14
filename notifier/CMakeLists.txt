@@ -4,7 +4,7 @@ add_executable(DiscoverNotifier BackendNotifierFactory.cpp DiscoverNotifier.cpp 
 target_link_libraries(DiscoverNotifier
     KF5::Notifications
     KF5::I18n
-    KF5::KIOWidgets
+    KF5::KIOGui
     KF5::Crash
     KF5::DBusAddons
 

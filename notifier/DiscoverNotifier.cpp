@@ -24,10 +24,13 @@
 #include <QDBusInterface>
 #include <QDBusPendingReply>
 #include <QNetworkConfigurationManager>
-#include <KRun>
 #include <KLocalizedString>
 #include <KNotification>
+#include <KNotificationJobUiDelegate>
 #include <KPluginFactory>
+
+#include <KIO/ApplicationLauncherJob>
+#include <KIO/CommandLauncherJob>
 
 #include "../libdiscover/utils.h"
 
@@ -61,14 +64,28 @@ DiscoverNotifier::~DiscoverNotifier() = default;
 
 void DiscoverNotifier::showDiscover()
 {
-    KRun::runCommand(QStringLiteral("plasma-discover"), nullptr);
-    if (m_updatesAvailableNotification) { m_updatesAvailableNotification->close(); }
+    auto *job = new KIO::ApplicationLauncherJob(KService::serviceByDesktopName(QStringLiteral("org.kde.discover")));
+    job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
+    job->start();
+
+    if (m_updatesAvailableNotification) {
+        m_updatesAvailableNotification->close();
+    }
 }
 
 void DiscoverNotifier::showDiscoverUpdates()
 {
-    KRun::runCommand(QStringLiteral("plasma-discover --mode update"), nullptr);
-    if (m_updatesAvailableNotification) { m_updatesAvailableNotification->close(); }
+    auto *job = new KIO::CommandLauncherJob(QStringLiteral("plasma-discover"), {
+        QStringLiteral("--mode"),
+        QStringLiteral("update")
+    });
+    job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
+    job->setDesktopName(QStringLiteral("org.kde.discover"));
+    job->start();
+
+    if (m_updatesAvailableNotification) {
+        m_updatesAvailableNotification->close();
+    }
 }
 
 void DiscoverNotifier::showUpdatesNotification()
