@@ -3,7 +3,7 @@
 
   <Menu>
     <Name>Applications</Name>
-    <Icon>applications-internet</Icon>
+    <Icon>applications-all</Icon>
     <Image>pkcategories/applicationcrop.jpg</Image>
     <Include>
         <And>
