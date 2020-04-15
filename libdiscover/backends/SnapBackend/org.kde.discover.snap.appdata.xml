@@ -29,7 +29,7 @@
   <name xml:lang="pt">Infra-estrutura do Snap</name>
   <name xml:lang="pt-BR">Infraestrutura Snap</name>
   <name xml:lang="ru">Модуль поддержки формата Snap</name>
-  <name xml:lang="sk">Backend Snap</name>
+  <name xml:lang="sk">Podporný program pre Snap</name>
   <name xml:lang="sl">Zaledje Snap</name>
   <name xml:lang="sv">Gränssnitt för Snap</name>
   <name xml:lang="tg">Коркардкунандаи Часпиш</name>
@@ -64,7 +64,7 @@
   <summary xml:lang="pt">Integra as aplicações do Snap no Discover</summary>
   <summary xml:lang="pt-BR">Integra aplicativos Snap no Discover</summary>
   <summary xml:lang="ru">Добавление поддержки формата Snap в центр программ Discover</summary>
-  <summary xml:lang="sk">Integruje aplikácie Snap do Discoveru</summary>
+  <summary xml:lang="sk">Integruje aplikácie Snap do aplikácie Discover</summary>
   <summary xml:lang="sl">V Discover vgradi programe Snap</summary>
   <summary xml:lang="sv">Integrerar Snap-program i Discover</summary>
   <summary xml:lang="tg">Барномаҳои Часпишро ба барномаи Кашфиёт дарунсохт мекунад</summary>

@@ -30,7 +30,7 @@
   <name xml:lang="pt">Infra-estrutura do PackageKit</name>
   <name xml:lang="pt-BR">Infraestrutura PackageKit</name>
   <name xml:lang="ru">Модуль поддержки PackageKit</name>
-  <name xml:lang="sk">Backend PackageKit</name>
+  <name xml:lang="sk">Podporný program pre PackageKit</name>
   <name xml:lang="sl">Zaledje PackageKit</name>
   <name xml:lang="sv">Gränssnitt för PackageKit</name>
   <name xml:lang="tg">Коркардкунандаи PackageKit</name>
@@ -66,7 +66,7 @@
   <summary xml:lang="pt">Integra as aplicações da distribuição no Discover</summary>
   <summary xml:lang="pt-BR">Integra aplicativos da distribuição no Discover</summary>
   <summary xml:lang="ru">Добавление поддержки приложений из дистрибутива ОС в центр программ Discover</summary>
-  <summary xml:lang="sk">Integruje distribučné aplikácie do Discovera</summary>
+  <summary xml:lang="sk">Integruje aplikácie z distribúcie do aplikácie Discover</summary>
   <summary xml:lang="sl">V Discover vgradi programe distribucije</summary>
   <summary xml:lang="sv">Integrerar distributionsprogram i Discover</summary>
   <summary xml:lang="tg">Барномаҳои низоми амалкунандаро ба барномаи Кашфиёт дарунсохт мекунад.</summary>
