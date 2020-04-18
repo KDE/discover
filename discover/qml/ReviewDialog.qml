@@ -17,16 +17,13 @@ Kirigami.OverlaySheet
 
     signal accepted()
 
+    header: Kirigami.Heading {
+        wrapMode: Text.WordWrap
+        text: i18n("Reviewing %1", application.name)
+    }
+
     ColumnLayout {
         Layout.maximumWidth: Kirigami.Units.gridUnit * 8
-
-        Kirigami.Heading {
-            Layout.fillWidth: true
-            Layout.bottomMargin: Kirigami.Units.largeSpacing * 2
-            wrapMode: Text.WordWrap
-            level: 2
-            text: i18n("Reviewing %1", application.name)
-        }
 
         Kirigami.FormLayout {
             id: contentLayout
