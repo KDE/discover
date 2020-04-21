@@ -18,12 +18,12 @@
  */
 
 import QtQuick 2.4
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
-import org.kde.kirigami 2.4 as Kirigami
+import org.kde.kirigami 2.12 as Kirigami
 
 DiscoverPage
 {
@@ -50,6 +50,18 @@ DiscoverPage
         visible: apps.count === 0 && apps.model.isFetching
     }
 
+    Kirigami.PlaceholderMessage {
+        anchors.centerIn: parent
+        anchors.left: parent.left
+        anchors.right:  parent.right
+        anchors.margins: Kirigami.Units.largeSpacing
+
+        visible: apps.count === 0 && !apps.model.isFetching
+
+        icon.name: "network-disconnect"
+        text: xi18nc("@info", "Unable to load applications.<nl/>Please verify Internet connectivity.")
+    }
+
     background: Rectangle {
         color: Kirigami.Theme.backgroundColor
         Kirigami.Theme.colorSet: Kirigami.Theme.Window
@@ -67,25 +79,6 @@ DiscoverPage
         delegate: ApplicationDelegate {
             application: model.application
             compact: page.compact
-        }
-
-        footer: ColumnLayout {
-            visible: apps.count === 0 && !apps.model.isFetching
-            width: parent.width
-
-            Kirigami.Icon {
-                source: "network-disconnect"
-                Layout.alignment: Qt.AlignHCenter
-                width: Kirigami.Units.gridUnit * 4
-                height: width
-            }
-
-            Kirigami.Heading {
-                Layout.fillWidth: true
-                horizontalAlignment: Text.AlignHCenter
-                text: xi18nc("@info", "Unable to load applications.<nl/>Please verify Internet connectivity.")
-                level: 3
-            }
         }
     }
 }
