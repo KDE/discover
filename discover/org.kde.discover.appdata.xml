@@ -21,7 +21,7 @@
   <name xml:lang="ia">Discoperi</name>
   <name xml:lang="id">Discover</name>
   <name xml:lang="it">Discover</name>
-  <name xml:lang="ko">살펴보기</name>
+  <name xml:lang="ko">둘러보기</name>
   <name xml:lang="nl">Ontdekken</name>
   <name xml:lang="nn">Discover</name>
   <name xml:lang="pl">Odkrywca</name>
@@ -58,7 +58,7 @@
   <summary xml:lang="ia">Discoperi</summary>
   <summary xml:lang="id">Discover</summary>
   <summary xml:lang="it">Discover</summary>
-  <summary xml:lang="ko">살펴보기</summary>
+  <summary xml:lang="ko">둘러보기</summary>
   <summary xml:lang="nl">Ontdekken</summary>
   <summary xml:lang="nn">Discover</summary>
   <summary xml:lang="pl">Odkrywca</summary>
@@ -127,7 +127,7 @@
     <p xml:lang="gl">Discover permite atopar aplicacións e ferramentas de maneira fácil e rápida. Atope rapidamente aplicacións que se axustan ás súas necesidades explorando a biblioteca de software mediante buscas, categorías de software, e listas de aplicacións máis usadas con información detallada das aplicacións, incluíndo capturas de pantalla e opinións de usuarios.</p>
     <p xml:lang="id">Discover membantu pengguna dengan mudah dan cepat menemukan aplikasi atau alat-alat. Oleh karena itu memungkinkan untuk menavigasi sebuah perpustakaan perangkat lunak dengan mencari, kategori perangkat lunak, daftar teratas beserta informasi aplikasi terinci yang meliputi cuplikan dan ulasan, pengguna bisa lebih cepat menemukan aplikasi yang sesuai dengan kebutuhan mereka.</p>
     <p xml:lang="it">Discover aiuta gli utenti a trovare in modo semplice e rapido applicazioni o strumenti. Permettendo di navigare una raccolta di software tramite ricerca, categorie di software, liste preferite oltre alle informazioni dettagliate sulle applicazioni che includono schermate e recensioni, gli utenti possono trovare più rapidamente applicazioni che si adattano alle loro esigenze.</p>
-    <p xml:lang="ko">살펴보기를 통하여 프로그램과 도구를 쉽고 빠르게 발견할 수 있습니다. 소프트웨어 라이브러리를 직접 검색하거나, 분류별 및 상위 목록으로 볼 수 있으며 스크린샷과 리뷰가 있는 소프트웨어 정보를 통해서 필요한 프로그램을 찾을 수 있습니다.</p>
+    <p xml:lang="ko">둘러보기를 통하여 프로그램과 도구를 쉽고 빠르게 발견할 수 있습니다. 소프트웨어 라이브러리를 직접 검색하거나, 분류별 및 상위 목록으로 볼 수 있으며 스크린샷과 리뷰가 있는 소프트웨어 정보를 통해서 필요한 프로그램을 찾을 수 있습니다.</p>
     <p xml:lang="nl">Discover helpt gebruikers om gemakkelijk en snel een toepassing of hulpmiddel te vinden. Door navigatie te bieden in een softwarebibliotheek door zoeken in softwarecategorieën, lijsten met toppers, samen met gedetailleerde informatie over toepassingen die schermafdrukken en reviews bevatten, kunnen gebruikers sneller toepassingen vinden die in hun behoeften voorzien.</p>
     <p xml:lang="nn">Med Discover vert det lettare å finna program og verktøy. Du kan søkja etter program eller sjå gjennom programkategoriar og lister over populære program. Du får òg detaljert informasjon om kvart program, med bilete og brukaromtalar.</p>
     <p xml:lang="pl">Odkrywca pomaga użytkownikowi w szybkim i łatwym wyszukiwaniu potrzebnych aplikacji i narzędzi. Umożliwia on przeglądanie biblioteki oprogramowania poprzez wyszukiwania, kategorie oprogramowania, listy najlepszych aplikacji wraz ze szczegółami takimi jak zrzuty ekranu i recenzje. W ten sposób użytkownicy znajdują szybciej to czego szukają.</p>
@@ -161,7 +161,7 @@
     <p xml:lang="gl">Ademais, Discover permitiralle xestionar as distintas fontes de software de que dispón e xestionar as aplicacións que ten instaladas pero que xa non lle interesan.</p>
     <p xml:lang="id">Selanjutnya, Discover akan membiarkan Anda mengelola sumber perangkat lunak yang berbeda-beda yang Anda miliki dan mengelola aplikasi yang sudah Anda instal di masa lalu tetapi Anda tidak menginginkannya lagi.</p>
     <p xml:lang="it">Inoltre, Discover ti consentirà di gestire le diverse fonti del software disponibili e gestire le applicazioni che hai già installato in passato, ma che non ti servono più.</p>
-    <p xml:lang="ko">또한 살펴보기를 사용하면 기존에 설치했지만 더 이상 원하지 않는 다양한 소프트웨어 소스를 관리하고, 애플리케이션을 관리할 수 있습니다.</p>
+    <p xml:lang="ko">또한 둘러보기를 사용하면 기존에 설치했지만 더 이상 원하지 않는 다양한 소프트웨어 소스를 관리하고, 애플리케이션을 관리할 수 있습니다.</p>
     <p xml:lang="nl">Verder laat Discover u de verschillende bronnen van software die u hebt beheren, evenals de al eerder geïnstalleerde toepassingen maar die u niet meer wilt.</p>
     <p xml:lang="nn">Du får òg kontroll over dei ulike programvarekjeldene du har, og kan lett avinstallera program du tidlegare har installert men som du ikkje lenger treng.</p>
     <p xml:lang="pl">Dodatkowo, Odkrywca umożliwia zarządzanie wieloma źródłami oprogramowania i oprogramowaniem, które jest już na twoim komputerze i którego chcesz się pozbyć.</p>
