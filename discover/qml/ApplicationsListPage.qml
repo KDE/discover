@@ -24,7 +24,7 @@ import QtQuick.Window 2.2
 import "navigation.js" as Navigation
 import org.kde.discover.app 1.0
 import org.kde.discover 2.0
-import org.kde.kirigami 2.4 as Kirigami
+import org.kde.kirigami 2.12 as Kirigami
 
 DiscoverPage {
     id: page
@@ -145,11 +145,15 @@ DiscoverPage {
             showRating: page.showRating
         }
 
-        Label {
+        Kirigami.PlaceholderMessage {
             anchors.centerIn: parent
-            opacity: apps.count == 0 && !appsModel.isBusy ? 0.3 : 0
-            Behavior on opacity { PropertyAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad } }
-            text: i18n("Sorry, nothing found...")
+            width: parent.width - (Kirigami.Units.largeSpacing * 4)
+
+            opacity: apps.count == 0 && !appsModel.isBusy ? 1 : 0
+            Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad } }
+
+            icon.name: "edit-none"
+            text: i18n("Sorry, nothing found")
         }
 
         footer: BusyIndicator {
