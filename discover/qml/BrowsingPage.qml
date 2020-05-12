@@ -52,9 +52,7 @@ DiscoverPage
 
     Kirigami.PlaceholderMessage {
         anchors.centerIn: parent
-        anchors.left: parent.left
-        anchors.right:  parent.right
-        anchors.margins: Kirigami.Units.largeSpacing
+        width: parent.width - (Kirigami.Units.largeSpacing * 4)
 
         visible: apps.count === 0 && !apps.model.isFetching
 
