@@ -193,10 +193,13 @@ Kirigami.ApplicationWindow
             property alias title: heading.text
             property alias description: desc.text
             property bool acted: false
+
+            header: Kirigami.Heading {
+                id: heading
+                wrapMode: Text.WordWrap
+            }
+
             ColumnLayout {
-                Kirigami.Heading {
-                    id: heading
-                }
                 Label {
                     id: desc
                     Layout.fillWidth: true

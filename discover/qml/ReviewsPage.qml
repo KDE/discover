@@ -49,25 +49,30 @@ Kirigami.OverlaySheet {
         width: parent.width
         spacing: Kirigami.Units.largeSpacing
 
-        Button {
-            id: reviewButton
-
-            Layout.alignment: Qt.AlignHCenter
-            Layout.topMargin: enabled ? undefined : Kirigami.Units.largeSpacing
-
-            visible: page.reviewsBackend != null
-            enabled: page.resource.isInstalled
-            text: i18n("Write a Review...")
-            onClicked: page.openReviewDialog()
+        Kirigami.Heading {
+            Layout.fillWidth: true
+            wrapMode: Text.WordWrap
+            text: i18n("Reviews for %1", page.resource.name)
         }
-        Label {
-            Layout.alignment: Qt.AlignHCenter
+
+        RowLayout {
             Layout.bottomMargin: Kirigami.Units.largeSpacing
 
-            text: i18n("Install this app to write a review")
-            wrapMode: Text.WordWrap
-            visible: !reviewButton.enabled
-            opacity: 0.6
+            Button {
+                id: reviewButton
+
+                visible: page.reviewsBackend != null
+                enabled: page.resource.isInstalled
+                text: i18n("Write a Review...")
+                onClicked: page.openReviewDialog()
+            }
+            Label {
+                text: i18n("Install this app to write a review")
+                wrapMode: Text.WordWrap
+                visible: !reviewButton.enabled
+                opacity: 0.6
+            }
+
         }
     }
 

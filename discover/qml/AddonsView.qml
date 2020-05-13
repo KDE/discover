@@ -13,16 +13,13 @@ Kirigami.OverlaySheet
     readonly property bool containsAddons: rep.count>0 || isExtended
     readonly property bool isExtended: ResourcesModel.isExtended(application.appstreamId)
 
+    header: Kirigami.Heading { text: i18n("Addons") }
+
     ColumnLayout
     {
         visible: addonsView.containsAddons
         enabled: !addonsView.isInstalling
         spacing: Kirigami.Units.largeSpacing
-
-        Kirigami.Heading {
-            level: 3
-            text: i18n("Addons")
-        }
 
         Repeater
         {
