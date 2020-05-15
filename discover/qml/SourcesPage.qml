@@ -12,12 +12,6 @@ DiscoverPage {
     title: i18n("Settings")
     property string search: ""
 
-    background: Rectangle {
-        color: Kirigami.Theme.backgroundColor
-        Kirigami.Theme.colorSet: Kirigami.Theme.Window
-        Kirigami.Theme.inherit: false
-    }
-
     contextualActions: feedbackLoader.item ? feedbackLoader.item.actions : []
 
     mainItem: ListView {
