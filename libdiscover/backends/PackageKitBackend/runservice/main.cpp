@@ -18,26 +18,28 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include <QApplication>
+#include <QGuiApplication>
 #include <QFile>
 #include <QTextStream>
 #include <QUrl>
 #include <QProcess>
 #include <KService>
-#include <KRun>
+#include <KIO/ApplicationLauncherJob>
 
 int main(int argc, char** argv)
 {
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
     if (app.arguments().size() != 2)
         return 1;
 
-    KService service(app.arguments().constLast());
-    if (!service.isValid())
+    KService::Ptr service(new KService(app.arguments().constLast()));
+    if (!service->isValid())
         return 2;
 
-    if (KRun::runApplication(service, {}, nullptr) == 0)
-        return 3;
-
-    return 0;
+    KIO::ApplicationLauncherJob *job = new KIO::ApplicationLauncherJob(service);
+    job->start();
+    QObject::connect(job, &KIO::ApplicationLauncherJob::finished, &app, [&] {
+        app.exit(job->error());
+    });
+    return app.exec();
 }
