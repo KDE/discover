@@ -54,11 +54,6 @@ DiscoverPage {
         var regex = /(<([^>]+)>)/ig
         return input.replace(regex, "");
      }
-    background: Rectangle {
-        color: Kirigami.Theme.backgroundColor
-        Kirigami.Theme.colorSet: Kirigami.Theme.Window
-        Kirigami.Theme.inherit: false
-    }
 
     title: search.length>0 ? i18n("Search: %1", stripHtml(search))
          : category ? category.name : ""

@@ -113,8 +113,6 @@ DiscoverPage
     header: ToolBar {
         anchors.left: page.left
         anchors.right: page.right
-        Kirigami.Theme.colorSet: Kirigami.Theme.Button
-        Kirigami.Theme.inherit: false
         visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
 
         CheckBox {
