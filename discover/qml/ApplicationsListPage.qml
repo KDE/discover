@@ -156,6 +156,9 @@ DiscoverPage {
             visible: appsModel.isBusy && apps.atYEnd
             opacity: visible ? 0.5 : 0
 
+            Item {
+                Layout.preferredHeight: units.gridUnit
+            }
             Kirigami.Heading {
                 level: 2
                 Layout.alignment: Qt.AlignCenter
