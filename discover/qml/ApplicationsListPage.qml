@@ -154,9 +154,10 @@ DiscoverPage {
         footer: ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
             visible: appsModel.isBusy && apps.atYEnd
-            opacity: visible ? 1 : 0
+            opacity: visible ? 0.5 : 0
 
-            Label {
+            Kirigami.Heading {
+                level: 2
                 Layout.alignment: Qt.AlignCenter
                 text: i18n("Still looking...")
             }
