@@ -151,20 +151,21 @@ DiscoverPage {
             text: i18n("Sorry, nothing found")
         }
 
-        footer: BusyIndicator {
+        footer: ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
             visible: appsModel.isBusy && apps.atYEnd
-            running: visible
             opacity: visible ? 1 : 0
+
+            Label {
+                Layout.alignment: Qt.AlignCenter
+                text: i18n("Still looking...")
+            }
+            BusyIndicator {
+                running: parent.visible
+                Layout.alignment: Qt.AlignCenter
+            }
             Behavior on opacity {
                 PropertyAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad }
-            }
-            Label {
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    bottom: parent.top
-                }
-                text: i18n("Still looking...")
             }
         }
     }
