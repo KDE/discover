@@ -152,7 +152,8 @@ DiscoverPage
         }
         ProgressBar {
             Layout.alignment: Qt.AlignHCenter
-            Layout.preferredWidth: Kirigami.Units.gridUnit * 20
+            Layout.fillWidth: true
+            Layout.maximumWidth: Kirigami.Units.gridUnit * 20
             value: page.footerProgress
             from: 0
             to: 100
