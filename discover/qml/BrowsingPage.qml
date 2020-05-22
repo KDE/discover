@@ -42,12 +42,23 @@ DiscoverPage
         Navigation.openCategory(null, "")
     }
 
-    BusyIndicator {
-        id: indicator
+    ColumnLayout {
         anchors.centerIn: parent
-        width: Kirigami.Units.gridUnit * 8
-        height: width
+        opacity: 0.5
+
         visible: apps.count === 0 && apps.model.isFetching
+
+        Kirigami.Heading {
+            level: 2
+            Layout.alignment: Qt.AlignCenter
+            text: i18n("Loading...")
+        }
+        BusyIndicator {
+            id: indicator
+            Layout.alignment: Qt.AlignCenter
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 4
+            Layout.preferredHeight: Kirigami.Units.gridUnit * 4
+        }
     }
 
     Kirigami.PlaceholderMessage {

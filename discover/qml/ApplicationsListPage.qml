@@ -167,6 +167,8 @@ DiscoverPage {
             BusyIndicator {
                 running: parent.visible
                 Layout.alignment: Qt.AlignCenter
+                Layout.preferredWidth: Kirigami.Units.gridUnit * 4
+                Layout.preferredHeight: Kirigami.Units.gridUnit * 4
             }
             Behavior on opacity {
                 PropertyAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad }
