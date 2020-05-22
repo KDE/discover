@@ -112,7 +112,6 @@
     <p xml:lang="pt-BR">O Discover ajuda-o a encontrar e instalar aplicativos, jogos e ferramentas. Você pode pesquisar ou navegar por categoria, assim como ver as capturas de tela e ler as avaliações e comentários que o possam ajudá-lo a escolher o aplicativo perfeito.</p>
     <p xml:lang="ru">Центр программ Discover предназначен для поиска, в числе по категориям и установки приложений и игр. Описания приложений содержат снимки экрана и отзывы других пользователей.</p>
     <p xml:lang="sk">Aplikácia Discover vám pomôže nájsť a nainštalovať aplikácie, hry a nástroje. Môžete vyhľadávať alebo prehliadať podľa kategórií, prezerať si snímky obrazoviek a čítať recenzie, ktoré vám pomôžu vybrať si perfektnú aplikáciu.</p>
-    <p xml:lang="sl">Discover vam pomaga najti in namestiti programe, igre in orodja. Lahko iščete ali brskate po kategorijah in si ogledate posnetke zaslona in preberete ocene, ki vam pomagajo izbrati popoln program.</p>
     <p xml:lang="sv">Discover hjälper till att hitta och installera program, spel och verktyg. Man kan söka eller bläddra enligt kategori, och titta på skärmbilder och läsa recensioner för att hjälpa till att välja det perfekta programmet.</p>
     <p xml:lang="tg">Кашфиёт ба шумо барои ёфтан ва насб кардани барномаҳо, бозиҳо ва абзорҳо кумак мерасонад. Шумо метавонед барномаҳоро аз рӯи навъ ҷустуҷӯ карда, аз назар гузаронед, аксҳои барномаҳоро бинед ва барои кумак ҳангоми интихоб намудани барномаҳои беҳтарин тақризҳоро хонед.</p>
     <p xml:lang="uk">Discover допоможе вам знайти і встановити програми, ігри та інструменти. Ви можете виконувати пошук або навігацію за категоріями, переглядати знімки вікон і читати рецензії, щоб вибрати ту програму, яка пасує вам найкраще.</p>
@@ -173,7 +172,10 @@
     <p xml:lang="pt-BR">Finalmente, o Discover também lhe permite procurar, instalar e gerenciar as extensões do Plasma e de todos os seus aplicativos favoritos do KDE!</p>
     <p xml:lang="ru">Кроме того, при помощи Discover возможно искать, устанавливать и управлять дополнениями рабочей среды Plasma и приложений KDE.</p>
     <p xml:lang="sk">Konečne aplikácia Discover tiež umožňuje nájsť, nainštalovať a spravovať doplnky pre Plasmu a všetky vaše obľúbené aplikácie prostredia KDE!</p>
+<<<<<<< HEAD
     <p xml:lang="sl">Končno Discover vam omogoča iskanje, namestitev in upravljanje dodatkov za Plazma in vse vaše najljubše programe za KDE!</p>
+=======
+>>>>>>> Plasma/5.18
     <p xml:lang="sv">Slutligen låter Discovery dig söka efter, installera och hantera tilläggsprogram för Plasma och alla favoritprogram i KDE.</p>
     <p xml:lang="tg">Дар охир, Кашфиёт ба шумо барои ёфтан, насб ва идора кардани барномаҳои иловагӣ барои Плазма ва ҳамаи барномаҳои пазируфтаи шумо аз KDE имкон медиҳад!</p>
     <p xml:lang="uk">Нарешті, Discover надає вам змогу шукати, встановлювати додатки до Плазми та усі ваші улюблені програми KDE та керувати ними!</p>

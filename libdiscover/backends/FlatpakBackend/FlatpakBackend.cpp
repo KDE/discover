@@ -808,6 +808,10 @@ void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation* installation)
     acquireFetching(true);
     fw->setFuture(QtConcurrent::run(&m_threadPool, [installation, this]() -> GPtrArray * {
         g_autoptr(GError) localError = nullptr;
+        if (g_cancellable_is_cancelled(m_cancellable)) {
+            qWarning() << "don't issue commands after cancelling";
+            return {};
+        }
         GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation, m_cancellable, &localError);
         if (!refs) {
             qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
