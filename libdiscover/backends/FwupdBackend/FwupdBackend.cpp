@@ -463,6 +463,7 @@ ResultsStream* FwupdBackend::search(const AbstractResourcesBackend::Filters& fil
         } else if (filter.resourceUrl.isLocalFile()) {
             return resourceForFile(filter.resourceUrl);
         }
+        return new ResultsStream(QStringLiteral("FwupdStream-empty"), {});
     }
 
     auto stream = new ResultsStream(QStringLiteral("FwupdStream"));
