@@ -25,6 +25,7 @@
 #include <QSortFilterProxyModel>
 #include <QString>
 #include <QStringList>
+#include <QVector>
 #include <QQmlParserStatus>
 
 #include <Category/Category.h>
@@ -34,6 +35,13 @@
 #include "AbstractResourcesBackend.h"
 
 class AggregatedResultsStream;
+
+class ResourcesProxyModelEntry
+{
+public:
+    AbstractResource* resource;
+    QVector<AbstractResource*> dupes;
+};
 
 class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, public QQmlParserStatus
 {
@@ -78,6 +86,7 @@ public:
         SizeRole,
         LongDescriptionRole,
         SourceIconRole,
+        DuplicatesRole,
         ReleaseDateRole
     };
     Q_ENUM(Roles)
@@ -122,7 +131,7 @@ public:
 
     bool isBusy() const { return m_currentStream != nullptr; }
 
-    bool lessThan(AbstractResource* rl, AbstractResource* rr) const;
+    bool lessThan(const ResourcesProxyModelEntry &rl, const ResourcesProxyModelEntry &rr) const;
     Q_SCRIPTABLE void invalidateFilter();
     void invalidateSorting();
 
@@ -138,14 +147,18 @@ private Q_SLOTS:
     void refreshResource(AbstractResource* resource, const QVector<QByteArray>& properties);
     void removeResource(AbstractResource* resource);
 private:
-    void sortedInsertion(const QVector<AbstractResource*> &res);
-    QVariant roleToValue(AbstractResource* res, int role) const;
+    void sortedInsertion(const QVector<ResourcesProxyModelEntry> &res);
+    QVariant roleToValue(const ResourcesProxyModelEntry &res, int role) const;
 
     QVector<int> propertiesToRoles(const QVector<QByteArray>& properties) const;
     void addResources(const QVector<AbstractResource*> &res);
     void fetchSubcategories();
-    void removeDuplicates(QVector<AbstractResource *>& newResources);
-    bool isSorted(const QVector<AbstractResource*> & resources);
+    void removeDuplicates(QVector<ResourcesProxyModelEntry>& newResources);
+    bool isSorted(const QVector<ResourcesProxyModelEntry> & resources);
+
+    std::function<bool(const ResourcesProxyModelEntry &rl, const ResourcesProxyModelEntry &rr)> lessThanFunction() const {
+        return [this](const ResourcesProxyModelEntry &rl, const ResourcesProxyModelEntry &rr){ return lessThan(rl, rr); };
+    }
 
     Roles m_sortRole;
     Qt::SortOrder m_sortOrder;
@@ -156,7 +169,7 @@ private:
     AbstractResourcesBackend::Filters m_filters;
     QVariantList m_subcategories;
 
-    QVector<AbstractResource*> m_displayedResources;
+    QVector<ResourcesProxyModelEntry> m_displayedResources;
     const QHash<int, QByteArray> m_roles;
     AggregatedResultsStream* m_currentStream;
 

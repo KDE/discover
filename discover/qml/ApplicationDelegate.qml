@@ -41,6 +41,29 @@ Kirigami.AbstractCard
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
 
+    ToolTip {
+        visible: parent.hovered
+        width: sources.width + leftMargin + rightMargin
+        height: sources.height + bottomMargin + topMargin
+        Column {
+            id: sources
+            Repeater {
+                model: duplicates
+                delegate: RowLayout {
+                    Kirigami.Icon {
+                        width: Kirigami.Units.gridUnit
+                        height: Kirigami.Units.gridUnit
+                        source: modelData.sourceIcon
+                    }
+
+                    Kirigami.Label {
+                        text: modelData.availableVersion
+                    }
+                }
+            }
+        }
+    }
+
     contentItem: Item {
         implicitHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 2 : Kirigami.Units.gridUnit * 4
 

@@ -59,6 +59,7 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
         { LongDescriptionRole, "longDescription" },
         { SourceIconRole, "sourceIcon" },
         { SizeRole, "size" },
+        { DuplicatesRole, "duplicates" },
         { ReleaseDateRole, "releaseDate" }
         })
     , m_currentStream(nullptr)
@@ -124,13 +125,12 @@ void ResourcesProxyModel::setSearch(const QString &_searchText)
     }
 }
 
-void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *>& resources)
+void ResourcesProxyModel::removeDuplicates(QVector<ResourcesProxyModelEntry>& resources)
 {
-    const auto cab = ResourcesModel::global()->currentApplicationBackend();
-    QHash<QString, QVector<AbstractResource *>::iterator> storedIds;
+    QHash<QString, QVector<ResourcesProxyModelEntry>::iterator> storedIds;
     for(auto it = m_displayedResources.begin(); it != m_displayedResources.end(); ++it)
     {
-        const auto appstreamid = (*it)->appstreamId();
+        const auto appstreamid = it->resource->appstreamId();
         if (appstreamid.isEmpty()) {
             continue;
         }
@@ -143,10 +143,11 @@ void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *>& resource
         }
     }
 
-    QHash<QString, QVector<AbstractResource *>::iterator> ids;
+    const auto cab = ResourcesModel::global()->currentApplicationBackend();
+    QHash<QString, QVector<ResourcesProxyModelEntry>::iterator> ids;
     for(auto it = resources.begin(); it != resources.end(); )
     {
-        const auto appstreamid = (*it)->appstreamId();
+        const auto appstreamid = it->resource->appstreamId();
         if (appstreamid.isEmpty()) {
             ++it;
             continue;
@@ -158,16 +159,24 @@ void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *>& resource
                 ids[appstreamid] = it;
                 ++it;
             } else {
-                if ((*it)->backend() == cab) {
-                    qSwap(*it, **at);
+                if (it->resource->backend() == cab) {
+                    (*at)->dupes += (*at)->resource;
+                    (*at)->resource = it->resource;
+                    std::swap(*it, **at);
+                } else {
+                    (*at)->dupes += it->resource;
                 }
                 it = resources.erase(it);
             }
         } else {
-            if ((*it)->backend() == cab) {
-                **at = *it;
-                auto pos = index(*at - m_displayedResources.begin(), 0);
+            const auto pos = index(*at - m_displayedResources.begin(), 0);
+            if (it->resource->backend() == cab) {
+                (*at)->dupes += (*at)->resource;
+                (*at)->resource = it->resource;
                 Q_EMIT dataChanged(pos, pos);
+            } else {
+                (*at)->dupes += it->resource;
+                Q_EMIT dataChanged(pos, pos, {DuplicatesRole});
             }
             it = resources.erase(it);
         }
@@ -182,10 +191,11 @@ void ResourcesProxyModel::addResources(const QVector<AbstractResource *>& _res)
     if (res.isEmpty())
         return;
 
+    QVector<ResourcesProxyModelEntry> entries = kTransform<QVector<ResourcesProxyModelEntry>>(_res, [] (AbstractResource* res) { return ResourcesProxyModelEntry{res, {}}; });
     if (!m_sortByRelevancy)
-        std::sort(res.begin(), res.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
+        std::sort(entries.begin(), entries.end(), lessThanFunction());
 
-    sortedInsertion(res);
+    sortedInsertion(entries);
     fetchSubcategories();
 }
 
@@ -196,7 +206,7 @@ void ResourcesProxyModel::invalidateSorting()
 
     if (!m_sortByRelevancy) {
         beginResetModel();
-        std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](AbstractResource* res, AbstractResource* res2){ return lessThan(res, res2); });
+        std::sort(m_displayedResources.begin(), m_displayedResources.end(), lessThanFunction());
         endResetModel();
     }
 }
@@ -238,7 +248,7 @@ void ResourcesProxyModel::fetchSubcategories()
     const int count = rowCount();
     QSet<Category*> done;
     for (int i=0; i<count && !cats.isEmpty(); ++i) {
-        AbstractResource* res = m_displayedResources[i];
+        AbstractResource* res = m_displayedResources[i].resource;
         const auto found = res->categoryObjects(kSetToVector(cats));
         done.unite(found);
         cats.subtract(found);
@@ -288,7 +298,7 @@ int ResourcesProxyModel::rowCount(const QModelIndex& parent) const
     return parent.isValid() ? 0 : m_displayedResources.count();
 }
 
-bool ResourcesProxyModel::lessThan(AbstractResource* leftPackage, AbstractResource* rightPackage) const
+bool ResourcesProxyModel::lessThan(const ResourcesProxyModelEntry &leftPackage, const ResourcesProxyModelEntry &rightPackage) const
 {
     auto role = m_sortRole;
     Qt::SortOrder order = m_sortOrder;
@@ -307,7 +317,7 @@ bool ResourcesProxyModel::lessThan(AbstractResource* leftPackage, AbstractResour
 
     bool ret;
     if(role == NameRole) {
-        ret = leftPackage->nameSortKey().compare(rightPackage->nameSortKey()) < 0;
+        ret = leftPackage.resource->nameSortKey().compare(rightPackage.resource->nameSortKey()) < 0;
     } else if(role == CanUpgrade) {
         ret = leftValue.toBool();
     } else {
@@ -404,13 +414,20 @@ QVariant ResourcesProxyModel::data(const QModelIndex& index, int role) const
         return QVariant();
     }
 
-    AbstractResource* const resource = m_displayedResources[index.row()];
-    return roleToValue(resource, role);
+    return roleToValue(m_displayedResources[index.row()], role);
 }
 
-QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) const
+QVariant ResourcesProxyModel::roleToValue(const ResourcesProxyModelEntry &entry, int role) const
 {
+    const auto &resource = entry.resource;
     switch(role) {
+        case DuplicatesRole: {
+            QVariantList sources = { QVariant::fromValue<QObject*>(entry.resource) };
+            for (const auto &resource : entry.dupes) {
+                sources += QVariant::fromValue<QObject*>(resource);
+            }
+            return sources;
+        }
         case ApplicationRole:
             return QVariant::fromValue<QObject*>(resource);
         case RatingPointsRole:
@@ -452,7 +469,7 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) 
     }
 }
 
-bool ResourcesProxyModel::isSorted(const QVector<AbstractResource*> & resources)
+bool ResourcesProxyModel::isSorted(const QVector<ResourcesProxyModelEntry> & resources)
 {
     auto last = resources.constFirst();
     for(auto it = resources.constBegin()+1, itEnd = resources.constEnd(); it != itEnd; ++it) {
@@ -464,7 +481,7 @@ bool ResourcesProxyModel::isSorted(const QVector<AbstractResource*> & resources)
     return true;
 }
 
-void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & _res)
+void ResourcesProxyModel::sortedInsertion(const QVector<ResourcesProxyModelEntry> & _res)
 {
     auto resources = _res;
     Q_ASSERT(!resources.isEmpty());
@@ -479,21 +496,21 @@ void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & _re
 //         Q_ASSERT(m_sortByRelevancy || isSorted(resources));
         int rows = rowCount();
         beginInsertRows({}, rows, rows+resources.count()-1);
-        m_displayedResources += resources;
+        for (auto r : qAsConst(resources))
+            m_displayedResources += r;
         endInsertRows();
         return;
     }
 
-    for(auto resource: qAsConst(resources)) {
-        const auto finder = [this](AbstractResource* resource, AbstractResource* res){ return lessThan(resource, res); };
-        const auto it = std::upper_bound(m_displayedResources.constBegin(), m_displayedResources.constEnd(), resource, finder);
+    for(const auto &entry : qAsConst(resources)) {
+        const auto it = std::upper_bound(m_displayedResources.constBegin(), m_displayedResources.constEnd(), entry, lessThanFunction());
         const auto newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());
 
-        if ((it-1) != m_displayedResources.constEnd() && *(it-1) == resource)
+        if ((it-1) != m_displayedResources.constEnd() && (*(it-1)).resource == entry.resource)
             continue;
 
         beginInsertRows({}, newIdx, newIdx);
-        m_displayedResources.insert(newIdx, resource);
+        m_displayedResources.insert(newIdx, entry);
         endInsertRows();
 //         Q_ASSERT(isSorted(resources));
     }
@@ -501,42 +518,52 @@ void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource*> & _re
 
 void ResourcesProxyModel::refreshResource(AbstractResource* resource, const QVector<QByteArray>& properties)
 {
-    const auto residx = m_displayedResources.indexOf(resource);
+    const auto residx = indexOf(resource);
     if (residx<0) {
         if (!m_sortByRelevancy && m_filters.shouldFilter(resource)) {
-            sortedInsertion({resource});
+            sortedInsertion({{resource, {}}});
         }
         return;
     }
 
     if (!m_filters.shouldFilter(resource)) {
-        beginRemoveRows({}, residx, residx);
-        m_displayedResources.removeAt(residx);
-        endRemoveRows();
+        removeResource(resource);
         return;
     }
 
-    const QModelIndex idx = index(residx, 0);
-    Q_ASSERT(idx.isValid());
     const auto roles = propertiesToRoles(properties);
     if (!m_sortByRelevancy && roles.contains(m_sortRole)) {
-        beginRemoveRows({}, residx, residx);
-        m_displayedResources.removeAt(residx);
-        endRemoveRows();
-
-        sortedInsertion({resource});
-    } else
+        removeResource(resource);
+        sortedInsertion({{resource, {}}});
+    } else {
+        const QModelIndex idx = index(residx, 0);
+        Q_ASSERT(idx.isValid());
         emit dataChanged(idx, idx, roles);
+    }
 }
 
 void ResourcesProxyModel::removeResource(AbstractResource* resource)
 {
-    const auto residx = m_displayedResources.indexOf(resource);
+    const auto residx = indexOf(resource);
     if (residx < 0)
         return;
-    beginRemoveRows({}, residx, residx);
-    m_displayedResources.removeAt(residx);
-    endRemoveRows();
+
+    auto &entry = m_displayedResources[residx];
+    if (entry.resource == resource) {
+        if (entry.dupes.isEmpty()) {
+            beginRemoveRows({}, residx, residx);
+            m_displayedResources.removeAt(residx);
+            endRemoveRows();
+        } else {
+            entry.resource = entry.dupes.takeFirst();
+            const QModelIndex pos = index(residx, residx);
+            Q_EMIT dataChanged(pos, pos);
+        }
+    } else {
+        Q_ASSERT(entry.dupes.contains(resource));
+        const QModelIndex pos = index(residx, residx);
+        Q_EMIT dataChanged(pos, pos, {DuplicatesRole});
+    }
 }
 
 void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend* backend, const QVector<QByteArray>& properties)
@@ -547,11 +574,11 @@ void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend* backend, cons
     bool found = false;
 
     for(int i = 0; i<count; ++i) {
-        if (backend != m_displayedResources[i]->backend())
+        if (backend != m_displayedResources[i].resource->backend())
             continue;
 
         int j = i+1;
-        for(; j<count && backend == m_displayedResources[j]->backend(); ++j)
+        for(; j<count && backend == m_displayedResources[j].resource->backend(); ++j)
         {}
 
         Q_EMIT dataChanged(index(i, 0), index(j-1, 0), roles);
@@ -571,14 +598,14 @@ QVector<int> ResourcesProxyModel::propertiesToRoles(const QVector<QByteArray>& p
     return roles;
 }
 
-int ResourcesProxyModel::indexOf(AbstractResource* res)
+int ResourcesProxyModel::indexOf(AbstractResource* resource)
 {
-    return m_displayedResources.indexOf(res);
+    return kIndexOf(m_displayedResources, [resource] (const ResourcesProxyModelEntry &entry) { return entry.resource == resource || entry.dupes.contains(resource); });
 }
 
 AbstractResource * ResourcesProxyModel::resourceAt(int row) const
 {
-    return m_displayedResources[row];
+    return m_displayedResources[row].resource;
 }
 
 bool ResourcesProxyModel::canFetchMore(const QModelIndex& parent) const
