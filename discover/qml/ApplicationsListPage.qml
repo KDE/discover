@@ -154,15 +154,21 @@ DiscoverPage {
         footer: ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
             visible: appsModel.isBusy && apps.atYEnd
-            opacity: visible ? 1 : 0
+            opacity: visible ? 0.5 : 0
 
-            Label {
+            Item {
+                Layout.preferredHeight: units.gridUnit
+            }
+            Kirigami.Heading {
+                level: 2
                 Layout.alignment: Qt.AlignCenter
                 text: i18n("Still looking...")
             }
             BusyIndicator {
                 running: parent.visible
                 Layout.alignment: Qt.AlignCenter
+                Layout.preferredWidth: Kirigami.Units.gridUnit * 4
+                Layout.preferredHeight: Kirigami.Units.gridUnit * 4
             }
             Behavior on opacity {
                 PropertyAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad }
