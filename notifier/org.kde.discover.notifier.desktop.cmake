@@ -2,6 +2,7 @@
 Name=Discover
 Name[ar]=استكشف
 Name[ast]=Discover
+Name[az]=Discover
 Name[ca]=Discover
 Name[ca@valencia]=Discover
 Name[cs]=Discover
