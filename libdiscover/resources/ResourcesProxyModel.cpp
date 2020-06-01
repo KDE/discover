@@ -127,6 +127,7 @@ void ResourcesProxyModel::setSearch(const QString &_searchText)
 void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *>& resources)
 {
     const auto cab = ResourcesModel::global()->currentApplicationBackend();
+    QHash<QString, QString> aliases;
     QHash<QString, QVector<AbstractResource *>::iterator> storedIds;
     for(auto it = m_displayedResources.begin(); it != m_displayedResources.end(); ++it)
     {
@@ -141,6 +142,11 @@ void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *>& resource
             qCWarning(LIBDISCOVER_LOG) << "We should have sanitized the displayed resources. There is a bug";
             Q_UNREACHABLE();
         }
+
+        const auto alts = (*it)->alternativeAppstreamIds();
+        for (const auto &alias : alts) {
+            aliases[alias] = appstreamid;
+        }
     }
 
     QHash<QString, QVector<AbstractResource *>::iterator> ids;
@@ -153,7 +159,23 @@ void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *>& resource
         }
         auto at = storedIds.find(appstreamid);
         if (at == storedIds.end()) {
+            const auto alts = (*it)->alternativeAppstreamIds();
+            for (const auto &alt : alts) {
+                at = storedIds.find(alt);
+                if (at != storedIds.end())
+                    break;
+            }
+        }
+        if (at == storedIds.end()) {
             auto at = ids.find(appstreamid);
+            if (at == ids.end()) {
+                const auto alts = (*it)->alternativeAppstreamIds();
+                for (const auto &alt : alts) {
+                    at = ids.find(alt);
+                    if (at != ids.end())
+                        break;
+                }
+            }
             if (at == ids.end()) {
                 ids[appstreamid] = it;
                 ++it;

@@ -30,6 +30,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QDate>
+#include <QSet>
 
 #include "discovercommon_export.h"
 #include "PackageState.h"
@@ -214,6 +215,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
          * @returns the date of the resource's most recent release
          */
         virtual QDate releaseDate() const = 0;
+
+        virtual QSet<QString> alternativeAppstreamIds() const { return {}; }
 
     public Q_SLOTS:
         virtual void fetchScreenshots();
