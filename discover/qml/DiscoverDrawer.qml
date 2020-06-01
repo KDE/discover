@@ -40,9 +40,6 @@ Kirigami.GlobalDrawer {
     property bool wideScreen: false
     bannerImageSource: "qrc:/banners/banner.svg"
 
-    // In desktop view, it's a sidebar, and sidebars get the view BG color
-    Kirigami.Theme.colorSet: modal ? Kirigami.Theme.Window : Kirigami.Theme.View
-
     resetMenuOnTriggered: false
 
     onBannerClicked: {
