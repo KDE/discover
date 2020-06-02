@@ -56,14 +56,15 @@ DiscoverPage {
                         id: dialogComponent
                         AddSourceDialog {
                             source: backendItem.backend
-                            onVisibleChanged: if (!visible) {
-                                destroy()
+
+                            onSheetOpenChanged: if(!sheetOpen) {
+                                destroy(1000)
                             }
                         }
                     }
 
                     onTriggered: {
-                        var addSourceDialog = dialogComponent.createObject(null, {displayName: backendItem.backend.resourcesBackend.displayName })
+                        var addSourceDialog = dialogComponent.createObject(window, {displayName: backendItem.backend.resourcesBackend.displayName })
                         addSourceDialog.open()
                     }
                 }

@@ -20,39 +20,25 @@
 import QtQuick 2.1
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
-import org.kde.kirigami 2.2 as Kirigami
+import org.kde.kirigami 2.10 as Kirigami
 
-Popup
+Kirigami.OverlaySheet
 {
     id: newSourceDialog
-    parent: applicationWindow().overlay
-    modal: true
-    focus: true
-    width: Kirigami.Units.gridUnit * 20
-
-    x: (parent.width - width)/2
-    y: (parent.height - height)/2
 
     property string displayName
     property QtObject source
 
-    ColumnLayout {
-        id: info
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
+    header: Kirigami.Heading {
+        text: i18n("Add New %1 Repository", displayName)
+        wrapMode: Text.WordWrap
+    }
 
-        Kirigami.Heading {
-            level: 3
-            Layout.fillWidth: true
-            text: i18n("Add a new %1 repository", displayName)
-        }
+    ColumnLayout {
+
         Label {
-            id: description
             Layout.fillWidth: true
-            Layout.fillHeight: true
-            wrapMode: Text.WordWrap
+            wrapMode: Text.Wrap
             textFormat: Text.PlainText
             text: source.idDescription
         }
