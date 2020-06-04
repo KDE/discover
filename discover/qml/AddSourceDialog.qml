@@ -54,6 +54,10 @@ Kirigami.OverlaySheet
         DialogButtonBox {
             Layout.fillWidth: true
 
+            // Cancel out built-in margins so it lines up with the rest of the
+            // content in this sheet
+            Layout.margins: -units.smallSpacing
+
             Button {
                 id: okButton
                 DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
