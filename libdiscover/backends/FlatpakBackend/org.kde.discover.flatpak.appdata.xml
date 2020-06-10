@@ -3,6 +3,7 @@
   <id>org.kde.discover.flatpak</id>
   <name>Flatpak backend</name>
   <name xml:lang="ar">سَند فلاتپاك</name>
+  <name xml:lang="az">Flatpak geri izləri</name>
   <name xml:lang="ca">Dorsal del Flatpak</name>
   <name xml:lang="ca-valencia">Dorsal de Flatpak</name>
   <name xml:lang="cs">Podpůrná vrstva Flatpak</name>
@@ -40,6 +41,7 @@
   <name xml:lang="zh-TW">Flatpak 後端</name>
   <summary>Integrates Flatpak applications into Discover</summary>
   <summary xml:lang="ar">يُكامل تطبيقات ”فلاتپاك“ في «استكشف»</summary>
+  <summary xml:lang="az">Flatpak tətbiqlərini Discoveriyə daxil edir</summary>
   <summary xml:lang="ca">Integra aplicacions del Flatpak al Discover</summary>
   <summary xml:lang="ca-valencia">Integra aplicacions de Flatpak a Discover</summary>
   <summary xml:lang="da">Integrerer Flatpak-programmer i Discover</summary>
@@ -78,6 +80,7 @@
   <project_license>GPL-2.0+</project_license>
   <developer_name>Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ar">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="az">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="cs">Aleix Pol Gonzalez</developer_name>
