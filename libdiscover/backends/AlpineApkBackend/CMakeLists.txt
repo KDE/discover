@@ -38,7 +38,7 @@ target_link_libraries(
         KF5::ConfigCore
         KF5::AuthCore
         Discover::Common
-        ApkQt::apk-qt
+        ApkQt::ApkQt
 )
 
 # KAuth helper exe
@@ -54,7 +54,7 @@ set_source_files_properties(
 target_link_libraries(alpineapk_kauth_helper
     Qt5::Core
     KF5::AuthCore
-    ApkQt::apk-qt
+    ApkQt::ApkQt
 )
 
 kauth_install_actions(org.kde.discover.alpineapkbackend org.kde.discover.alpineapkbackend.actions)

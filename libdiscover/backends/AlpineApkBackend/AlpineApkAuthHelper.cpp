@@ -73,7 +73,7 @@ ActionReply AlpineApkAuthHelper::update(const QVariantMap &args)
 
     HelperSupport::progressStep(10);
 
-    if (!m_apkdb.open(QtApk::Database::QTAPK_OPENF_READWRITE)) {
+    if (!m_apkdb.open(QtApk::QTAPK_OPENF_READWRITE)) {
         reply.setErrorDescription(QStringLiteral("Failed to open database!"));
         return reply;
     }
@@ -119,15 +119,15 @@ ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
 
     HelperSupport::progressStep(10);
 
-    if (!m_apkdb.open(QtApk::Database::QTAPK_OPENF_READWRITE)) {
+    if (!m_apkdb.open(QtApk::QTAPK_OPENF_READWRITE)) {
         reply.setErrorDescription(QStringLiteral("Failed to open database!"));
         return reply;
     }
 
     bool onlySimulate = args.value(QLatin1String("onlySimulate"), false).toBool();
-    QtApk::Database::DbUpgradeFlags flags = QtApk::Database::QTAPK_UPGRADE_DEFAULT;
+    QtApk::DbUpgradeFlags flags = QtApk::QTAPK_UPGRADE_DEFAULT;
     if (onlySimulate) {
-        flags = QtApk::Database::QTAPK_UPGRADE_SIMULATE;
+        flags = QtApk::QTAPK_UPGRADE_SIMULATE;
         qCDebug(LOG_AUTHHELPER) << "Simulating upgrade run.";
     }
 

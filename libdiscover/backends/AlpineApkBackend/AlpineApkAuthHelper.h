@@ -22,7 +22,7 @@
 #include <QVariant>
 #include <KAuthActionReply>
 
-#include <QtApk.h>
+#include <QtApk>
 
 using namespace KAuth;
 

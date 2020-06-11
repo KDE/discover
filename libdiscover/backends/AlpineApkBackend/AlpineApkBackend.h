@@ -24,7 +24,7 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 
-#include <QtApk.h>
+#include <QtApk>
 
 class AlpineApkReviewsBackend;
 class AlpineApkUpdater;

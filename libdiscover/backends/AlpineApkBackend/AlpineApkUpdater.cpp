@@ -28,7 +28,7 @@
 #include <kauth_version.h>
 #include <KLocalizedString>
 
-#include <QtApk.h>
+#include <QtApk>
 
 
 AlpineApkUpdater::AlpineApkUpdater(AbstractResourcesBackend *parent)
@@ -49,12 +49,12 @@ void AlpineApkUpdater::prepare()
     }
 
     // readonly is fine for a simulation of upgrade
-    if (!db->open(QtApk::Database::QTAPK_OPENF_READONLY)) {
+    if (!db->open(QtApk::QTAPK_OPENF_READONLY)) {
         emit passiveMessage(i18n("Failed to open APK database!"));
         return;
     }
 
-    if (!db->upgrade(QtApk::Database::QTAPK_UPGRADE_SIMULATE, &m_upgradeable)) {
+    if (!db->upgrade(QtApk::QTAPK_UPGRADE_SIMULATE, &m_upgradeable)) {
         emit passiveMessage(i18n("Failed to get a list of packages to upgrade!"));
         db->close();
         return;

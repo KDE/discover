@@ -29,7 +29,7 @@
 #include <KLocalizedString>
 
 // libapk-qt
-#include <QtApk.h>
+#include <QtApk>
 
 AlpineApkSourcesBackend::AlpineApkSourcesBackend(AbstractResourcesBackend *parent)
     : AbstractSourcesBackend(parent)

@@ -70,7 +70,7 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
 
     qCDebug(LOG_ALPINEAPK) << "backend: populating resources...";
 
-    if (m_apkdb.open(QtApk::Database::QTAPK_OPENF_READONLY)) {
+    if (m_apkdb.open(QtApk::QTAPK_OPENF_READONLY)) {
         m_availablePackages = m_apkdb.getAvailablePackages();
         m_installedPackages = m_apkdb.getInstalledPackages();
         m_apkdb.close();
