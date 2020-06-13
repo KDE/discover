@@ -3,8 +3,7 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.10 as Kirigami
-import "navigation.js" as Navigation
+import org.kde.kirigami 2.12 as Kirigami
 
 DiscoverPage {
     id: page
@@ -196,9 +195,8 @@ DiscoverPage {
                     iconName: "view-filter"
                     tooltip: i18n("Show contents")
                     visible: sourcesBackend.canFilterSources
-                    onTriggered: {
-                        Navigation.openApplicationListSource(sourceId)
-                    }
+                    Kirigami.PageRouter.router: window.router
+                    onTriggered: Kirigami.PageRouter.pushFromHere({"route": "application-list", "data": {"sourceId": sourceId, "origin": sourceId, "allBackends": true}})
                 }
             ]
 

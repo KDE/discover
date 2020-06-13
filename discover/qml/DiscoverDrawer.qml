@@ -23,8 +23,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.11 as Kirigami
-import "navigation.js" as Navigation
+import org.kde.kirigami 2.12 as Kirigami
 
 Kirigami.GlobalDrawer {
     id: drawer
@@ -41,9 +40,12 @@ Kirigami.GlobalDrawer {
     bannerImageSource: "qrc:/banners/banner.svg"
 
     resetMenuOnTriggered: false
+    Kirigami.PageRouter.router: window.router
 
     onBannerClicked: {
-        Navigation.openHome();
+        if (window.globalDrawer.currentSubMenu)
+            window.globalDrawer.resetMenu()
+        Kirigami.PageRouter.navigateToRoute("browsing")
         drawerOpen = false
     }
 
@@ -54,8 +56,11 @@ Kirigami.GlobalDrawer {
             currentSubMenu.trigger()
         else if (currentSearchText.length > 0)
             window.leftPage.category = null
-        else
-            Navigation.openHome()
+        else {
+            if (window.globalDrawer.currentSubMenu)
+                window.globalDrawer.resetMenu()
+            Kirigami.PageRouter.navigateToRoute("browsing")
+        }
     }
 
     function suggestSearchText(text) {
@@ -85,7 +90,8 @@ Kirigami.GlobalDrawer {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
-                visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
+                visible: window.leftPage && window.leftPage.hasOwnProperty("search")
+                Kirigami.PageRouter.router: window.router
 
                 page: window.leftPage
 
@@ -96,11 +102,12 @@ Kirigami.GlobalDrawer {
                         pageStack.pop()
 
                     if (currentSearchText === "" && window.currentTopLevel === "" && !window.leftPage.category) {
-                        Navigation.openHome()
+                        if (window.globalDrawer.currentSubMenu)
+                            window.globalDrawer.resetMenu()
+                        Kirigami.PageRouter.navigateToRoute("browsing")
                     } else if (!curr.hasOwnProperty("search")) {
                         if (currentSearchText) {
-                            Navigation.clearStack()
-                            Navigation.openApplicationList( { search: currentSearchText })
+                            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "data": {"search": currentSearchText}})
                         }
                     } else {
                         curr.search = currentSearchText;
@@ -112,7 +119,12 @@ Kirigami.GlobalDrawer {
             ToolButton {
 
                 icon.name: "go-home"
-                onClicked: Navigation.openHome()
+                Kirigami.PageRouter.router: window.router
+                onClicked: {
+                    if (window.globalDrawer.currentSubMenu)
+                        window.globalDrawer.resetMenu()
+                    Kirigami.PageRouter.navigateToRoute("browsing")
+                }
 
                 ToolTip {
                     text: i18n("Return to the Featured page")
@@ -136,23 +148,54 @@ Kirigami.GlobalDrawer {
         }
 
         ActionListItem {
-            action: searchAction
+            action: TopLevelPageData {
+                id: searchAction
+                enabled: !window.wideScreen
+                iconName: "search"
+                text: i18n("Search")
+                route: "search"
+                objectName: "discover"
+                shortcut: "Ctrl+F"
+            }
         }
         ActionListItem {
-            action: installedAction
+            action: TopLevelPageData {
+                id: installedAction
+                iconName: "view-list-details"
+                text: i18n("Installed")
+                route: "installed"
+                objectName: "installed"
+            }
         }
         ActionListItem {
-            action: sourcesAction
+            action: TopLevelPageData {
+                id: sourcesAction
+                iconName: "configure"
+                text: i18n("Settings")
+                route: "sources"
+                objectName: "sources"
+            }
         }
 
         ActionListItem {
-            action: aboutAction
+            action: TopLevelPageData {
+                id: aboutAction
+                iconName: "help-feedback"
+                text: i18n("About")
+                route: "about"
+                objectName: "about"
+            }
         }
 
         ActionListItem {
             objectName: "updateButton"
-            action: updateAction
-
+            action: TopLevelPageData {
+                id: updateAction
+                iconName: ResourcesModel.updatesCount>0 ? ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low" : "update-none"
+                text: ResourcesModel.updatesCount<=0 ? (ResourcesModel.isFetching ? i18n("Fetching updates...") : i18n("Up to date") ) : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
+                route: "update"
+                objectName: "update"
+            }
             backgroundColor: ResourcesModel.updatesCount>0 ? "orange" : Kirigami.Theme.backgroundColor
         }
 
@@ -184,15 +227,9 @@ Kirigami.GlobalDrawer {
                    || currentSearchText.length === 0
                    || (category && category.contains(window.leftPage.subcategories))
                      )
+            Kirigami.PageRouter.router: window.router
             onTriggered: {
-                if (!window.leftPage.canNavigate)
-                    Navigation.openCategory(category, currentSearchText)
-                else {
-                    if (pageStack.depth>1)
-                        pageStack.pop()
-                    pageStack.currentIndex = 0
-                    window.leftPage.category = category
-                }
+                Kirigami.PageRouter.navigateToRoute({"route": "application-list", "data": {"category": category, "search": currentSearchText}})
             }
         }
     }

@@ -4,161 +4,69 @@ import QtQuick.Controls 2.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
-import org.kde.kirigami 2.5 as Kirigami
-import "navigation.js" as Navigation
+import org.kde.kirigami 2.13 as Kirigami
 
-Kirigami.ApplicationWindow
-{
+Kirigami.RouterWindow {
     id: window
-    readonly property string topBrowsingComp: ("qrc:/qml/BrowsingPage.qml")
-    readonly property string topInstalledComp: ("qrc:/qml/InstalledPage.qml")
-    readonly property string topSearchComp: ("qrc:/qml/SearchPage.qml")
-    readonly property string topUpdateComp: ("qrc:/qml/UpdatesPage.qml")
-    readonly property string topSourcesComp: ("qrc:/qml/SourcesPage.qml")
-    readonly property string topAboutComp: ("qrc:/qml/AboutPage.qml")
-    readonly property QtObject stack: window.pageStack
-    property string currentTopLevel
 
-    objectName: "DiscoverMainWindow"
-    title: leftPage ? leftPage.title : ""
-
-    width: app.initialGeometry.width>=10 ? app.initialGeometry.width : Kirigami.Units.gridUnit * 45
-    height: app.initialGeometry.height>=10 ? app.initialGeometry.height : Kirigami.Units.gridUnit * 30
-
-    visible: true
-
-    minimumWidth: 300
-    minimumHeight: 300
-
-    pageStack.defaultColumnWidth: Kirigami.Units.gridUnit * 25
-    pageStack.globalToolBar.style: window.wideScreen ? Kirigami.ApplicationHeaderStyle.ToolBar : Kirigami.ApplicationHeaderStyle.Breadcrumb
-
-    readonly property var leftPage: window.stack.depth>0 ? window.stack.get(0) : null
-
-    Component.onCompleted: {
-        if (app.isRoot)
-            showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
+    globalDrawer: DiscoverDrawer {
+        Kirigami.PageRouter.router: window.router
+        wideScreen: window.wideScreen
     }
 
-    readonly property string describeSources: feedbackLoader.item ? feedbackLoader.item.describeDataSources : ""
-    Loader {
-        id: feedbackLoader
-        source: "Feedback.qml"
+    initialRoute: "browsing"
+
+    Kirigami.PageRoute {
+        name: "sources"
+        cache: true
+        SourcesPage {}
     }
 
-    TopLevelPageData {
-        iconName: "tools-wizard"
-        text: i18n("Discover")
-        component: topBrowsingComp
-        objectName: "discover"
+    Kirigami.PageRoute {
+        name: "installed"
+        cache: true
+        InstalledPage {}
     }
 
-    TopLevelPageData {
-        id: searchAction
-        enabled: !window.wideScreen
-        iconName: "search"
-        text: i18n("Search")
-        component: topSearchComp
-        objectName: "discover"
-        shortcut: "Ctrl+F"
-    }
-    TopLevelPageData {
-        id: installedAction
-        iconName: "view-list-details"
-        text: i18n("Installed")
-        component: topInstalledComp
-        objectName: "installed"
-    }
-    TopLevelPageData {
-        id: updateAction
-        iconName: ResourcesModel.updatesCount>0 ? ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low" : "update-none"
-        text: ResourcesModel.updatesCount<=0 ? (ResourcesModel.isFetching ? i18n("Fetching updates...") : i18n("Up to date") ) : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
-        component: topUpdateComp
-        objectName: "update"
-    }
-    TopLevelPageData {
-        id: aboutAction
-        iconName: "help-feedback"
-        text: i18n("About")
-        component: topAboutComp
-        objectName: "about"
-    }
-    TopLevelPageData {
-        id: sourcesAction
-        iconName: "configure"
-        text: i18n("Settings")
-        component: topSourcesComp
-        objectName: "sources"
+    Kirigami.PageRoute {
+        name: "update"
+        cache: true
+        UpdatesPage {}
     }
 
-    Kirigami.Action {
-        id: refreshAction
-        readonly property QtObject action: ResourcesModel.updateAction
-        text: action.text
-        icon.name: "view-refresh"
-        onTriggered: action.trigger()
-        enabled: action.enabled
-        tooltip: shortcut
-
-        shortcut: "Ctrl+R"
+    Kirigami.PageRoute {
+        name: "about"
+        cache: true
+        AboutPage {}
     }
 
-    Connections {
-        target: app
-        function onOpenApplicationInternal(app) {
-            Navigation.clearStack()
-            Navigation.openApplication(app)
-        }
-        function onListMimeInternal(mime)  {
-            currentTopLevel = topBrowsingComp;
-            Navigation.openApplicationMime(mime)
-        }
-        function onListCategoryInternal(cat)  {
-            currentTopLevel = topBrowsingComp;
-            Navigation.openCategory(cat, "")
-        }
-
-        function onOpenSearch(search) {
-            Navigation.clearStack()
-            Navigation.openApplicationList({search: search})
-        }
-
-        function onOpenErrorPage(errorMessage) {
-            Navigation.clearStack()
-            console.warn("error", errorMessage)
-            window.stack.push(errorPageComponent, { error: errorMessage, title: i18n("Sorry...") })
-        }
-
-        function onPreventedClose() {
-            showPassiveNotification(i18n("Could not close Discover, there are tasks that need to be done."), 20000, i18n("Quit Anyway"), function() { Qt.quit() })
-        }
-        function onUnableToFind(resid) {
-            showPassiveNotification(i18n("Unable to find resource: %1", resid));
-            Navigation.openHome()
-        }
+    Kirigami.PageRoute {
+        name: "browsing"
+        cache: true
+        BrowsingPage {}
     }
 
-    Connections {
-        target: ResourcesModel
-        function onPassiveMessage (message) {
-            showPassiveNotification(message)
-            console.log("message:", message)
-        }
+    Kirigami.PageRoute {
+        name: "application"
+        cache: true
+        ApplicationPage {}
     }
 
-    Component {
-        id: errorPageComponent
+    Kirigami.PageRoute {
+        name: "application-list"
+        cache: true
+        ApplicationsListPage {}
+    }
+
+    Kirigami.PageRoute {
+        name: "error"
         Kirigami.Page {
             id: page
-            property string error: ""
+            property string error: Kirigami.PageRouter.data
+            title: i18n("Sorry...")
             readonly property bool isHome: true
-            function searchFor(text) {
-                if (text.length === 0)
-                    return;
-                Navigation.openCategory(null, "")
-            }
             Kirigami.Icon {
-                id: infoIcon;
+                id: infoIcon
                 anchors {
                     bottom: parent.verticalCenter
                     margins: Kirigami.Units.largeSpacing
@@ -167,7 +75,7 @@ Kirigami.ApplicationWindow
                 visible: page.error !== ""
                 source: "emblem-warning"
                 height: Kirigami.Units.iconSizes.huge
-                width: height;
+                width: height
             }
             Kirigami.Heading {
                 anchors {
@@ -184,7 +92,73 @@ Kirigami.ApplicationWindow
         }
     }
 
-    Component {
+    width: app.initialGeometry.width>=10 ? app.initialGeometry.width : Kirigami.Units.gridUnit * 45
+    height: app.initialGeometry.height>=10 ? app.initialGeometry.height : Kirigami.Units.gridUnit * 30
+    minimumWidth: 300
+    minimumHeight: 300
+
+    pageStack.defaultColumnWidth: Kirigami.Units.gridUnit * 25
+    pageStack.globalToolBar.style: window.wideScreen ? Kirigami.ApplicationHeaderStyle.ToolBar : Kirigami.ApplicationHeaderStyle.Breadcrumb
+
+    Component.onCompleted: {
+        if (app.isRoot)
+            showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
+    }
+
+    readonly property string describeSources: feedbackLoader.item ? feedbackLoader.item.describeDataSources : ""
+    property Loader loader: Loader {
+        id: feedbackLoader
+        source: "Feedback.qml"
+    }
+
+    property Kirigami.Action refreshAction: Kirigami.Action {
+        id: refreshAction
+        readonly property QtObject action: ResourcesModel.updateAction
+        text: action.text
+        icon.name: "view-refresh"
+        onTriggered: action.trigger()
+        enabled: action.enabled
+        tooltip: shortcut
+
+        shortcut: "Ctrl+R"
+    }
+
+    property Connections appConnections: Connections {
+        target: app
+        function onOpenApplicationInternal(app) {
+            Kirigami.PageRouter.pushFromHere({"route": "application", "data": app})
+        }
+        function onListMimeInternal(mime) {
+            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "data": { "mimeTypeFilter": mime, "title": i18n("Resources for '%1'", mime) }})
+        }
+        function onListCategoryInternal(cat)  {
+            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "data": { "category": cat, "search": "" }})
+        }
+        function onOpenSearch(search) {
+            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "data": { "search": "" }})
+        }
+        function onOpenErrorPage(errorMessage) {
+            console.warn("error", errorMessage)
+            Kirigami.PageRouter.navigateToRoute({"route": "error", "data": errorMessage})
+        }
+        function onPreventedClose() {
+            showPassiveNotification(i18n("Could not close Discover, there are tasks that need to be done."), 20000, i18n("Quit Anyway"), function() { Qt.quit() })
+        }
+        function onUnableToFind(resid) {
+            showPassiveNotification(i18n("Unable to find resource: %1", resid));
+            Kirigami.PageRouter.navigateToRoute("browsing")
+        }
+    }
+
+    property Connections resourcesModelConnections: Connections {
+        target: ResourcesModel
+        function onPassiveMessage (message) {
+            showPassiveNotification(message)
+            console.log("message:", message)
+        }
+    }
+
+    property Component proceedDialogComponent: Component {
         id: proceedDialog
         Kirigami.OverlaySheet {
             id: sheet
@@ -259,7 +233,7 @@ Kirigami.ApplicationWindow
         }
     }
 
-    Instantiator {
+    property Instantiator instantiator: Instantiator {
         model: TransactionModel
 
         delegate: Connections {
@@ -275,24 +249,14 @@ Kirigami.ApplicationWindow
         }
     }
 
-    ConditionalObject {
+    property ConditionalObject conditionalObject: ConditionalObject {
         id: drawerObject
         condition: window.wideScreen
         componentFalse: Kirigami.ContextDrawer {}
     }
     contextDrawer: drawerObject.object
 
-    globalDrawer: DiscoverDrawer {
-        wideScreen: window.wideScreen
-    }
-
-    onCurrentTopLevelChanged: {
-        window.pageStack.clear()
-        if (currentTopLevel)
-            window.pageStack.push(currentTopLevel, {}, window.status!==Component.Ready)
-    }
-
-    UnityLauncher {
+    property UnityLauncher unityLauncher: UnityLauncher {
         launcherId: "org.kde.discover.desktop"
         progressVisible: TransactionModel.count > 0
         progress: TransactionModel.progress

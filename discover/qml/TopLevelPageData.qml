@@ -17,14 +17,14 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import org.kde.kirigami 2.0
+import org.kde.kirigami 2.12 as Kirigami
 
-Action {
-    property string component
-    checked: window.currentTopLevel==component
+Kirigami.Action {
+    property variant route
 
-    onTriggered: {
-        if(window.currentTopLevel!=component)
-            window.currentTopLevel=component
-    }
+    Kirigami.PageRouter.router: window.router
+    Kirigami.PageRouter.watchedRoute: route
+    checked: Kirigami.PageRouter.watchedRouteActive
+
+    onTriggered: Kirigami.PageRouter.navigateToRoute(route)
 }

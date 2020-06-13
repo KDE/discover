@@ -21,11 +21,9 @@ import QtQuick 2.1
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.1
-import "navigation.js" as Navigation
-import org.kde.kirigami 2.6 as Kirigami
+import org.kde.kirigami 2.13 as Kirigami
 
-Kirigami.AbstractCard
-{
+Kirigami.AbstractCard {
     id: delegateArea
     property alias application: installButton.application
     property bool compact: false
@@ -35,7 +33,7 @@ Kirigami.AbstractCard
     function trigger() {
         if (delegateRecycler.ListView.view)
             delegateRecycler.ListView.view.currentIndex = index
-        Navigation.openApplication(application)
+        Kirigami.PageRouter.pushFromHere({"route": "application", "data": application})
     }
     highlighted: delegateRecycler && delegateRecycler.ListView.isCurrentItem
     Keys.onReturnPressed: trigger()

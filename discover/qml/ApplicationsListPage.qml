@@ -21,7 +21,6 @@ import QtQuick 2.5
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
-import "navigation.js" as Navigation
 import org.kde.discover.app 1.0
 import org.kde.discover 2.0
 import org.kde.kirigami 2.12 as Kirigami
@@ -46,6 +45,26 @@ DiscoverPage {
     property string sortProperty: "appsListPageSorting"
     property bool compact: page.width < 550 || !applicationWindow().wideScreen
     property bool showRating: true
+
+    Component.onCompleted: {
+        let data = Kirigami.PageRouter.data
+        if (data.search)
+            search = data.search
+        if (data.category)
+            category = data.category
+        if (data.mimeTypeFilter)
+            mimeTypeFilter = data.mimeTypeFilter
+        if (data.title)
+            title = data.title
+        if (data.extending)
+            extending = data.extending
+        if (data.originFilter)
+            originFilter = data.originFilter
+        if (data.originFilter)
+            originFilter = data.originFilter
+        if (data.allBackends)
+            allBackends = data.allBackends
+    }
 
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories

@@ -22,11 +22,9 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import "navigation.js" as Navigation
 import org.kde.kirigami 2.12 as Kirigami
 
-DiscoverPage
-{
+DiscoverPage {
     id: page
     title: i18n("Featured")
     leftPadding: 0
@@ -35,12 +33,6 @@ DiscoverPage
     bottomPadding: 0
 
     readonly property bool isHome: true
-
-    function searchFor(text) {
-        if (text.length === 0)
-            return;
-        Navigation.openCategory(null, "")
-    }
 
     ColumnLayout {
         anchors.centerIn: parent

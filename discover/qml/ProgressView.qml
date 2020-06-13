@@ -2,8 +2,7 @@ import QtQuick 2.1
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
-import org.kde.kirigami 2.0 as Kirigami
-import "navigation.js" as Navigation
+import org.kde.kirigami 2.12 as Kirigami
 
 Kirigami.AbstractListItem {
     id: listItem
@@ -61,8 +60,7 @@ Kirigami.AbstractListItem {
                     hoverEnabled: model.application
                     onClicked: {
                         if (model.application) {
-                            Navigation.clearStack()
-                            Navigation.openApplication(model.application)
+                            Kirigami.PageRouter.navigateToRoute({"route": "application", "data": model.application})
                         }
                     }
                     readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource} : {transaction: model.transaction}))

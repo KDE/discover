@@ -2,8 +2,7 @@ import QtQuick 2.1
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
-import "navigation.js" as Navigation
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.12 as Kirigami
 
 Kirigami.OverlaySheet
 {
@@ -87,7 +86,7 @@ Kirigami.OverlaySheet
                 Layout.alignment: Qt.AlignRight
                 text: i18n("More...")
                 visible: application.appstreamId.length>0 && addonsView.isExtended
-                onClicked: Navigation.openExtends(application.appstreamId)
+                onClicked: Kirgami.PageRouter.pushFromHere({"route": "application-list", "data": {"extending": application.appstreamId, "title": i18n("Extensions...")}})
             }
         }
     }
