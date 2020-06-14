@@ -118,15 +118,29 @@ Kirigami.AbstractCard
             }
 
             Label {
-                Layout.columnSpan: delegateArea.compact ? 1 : 2
                 id: summary
+                Layout.columnSpan: delegateArea.compact ? 1 : 2
                 Layout.fillWidth: true
 
-                bottomPadding: Kirigami.Units.smallSpacing
+                rightPadding: soup.visible ? soup.width : 0
+                bottomPadding: soup.visible ? Kirigami.Units.gridUnit : Kirigami.Units.smallSpacing
                 elide: Text.ElideRight
                 text: delegateArea.application.comment
                 maximumLineCount: 1
                 textFormat: Text.PlainText
+
+                Kirigami.Icon {
+                    id: soup
+                    source: application.sourceIcon
+                    height: Kirigami.Units.gridUnit
+                    width: Kirigami.Units.gridUnit
+                    smooth: true
+                    visible: !delegateArea.compact && ResourcesModel.currentApplicationBackend !== application.backend
+                    anchors {
+                        bottom: parent.bottom
+                        right: parent.right
+                    }
+                }
             }
         }
     }
