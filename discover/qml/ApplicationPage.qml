@@ -27,7 +27,7 @@ import org.kde.kirigami 2.13 as Kirigami
 
 DiscoverPage {
     id: appInfo
-    readonly QtObject application: Kirigami.PageRouter.data
+    property QtObject application: Kirigami.PageRouter.data
     readonly property int visibleReviews: 3
     clip: true
 
@@ -78,6 +78,7 @@ DiscoverPage {
                 icon.name: sourceIcon
                 checkable: true
                 checked: appInfo.application === model.application
+                Kirigami.PageRouter.router: window.router
                 onTriggered: if(index>=0) {
                     var res = model.application
                     console.assert(res)
