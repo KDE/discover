@@ -150,7 +150,7 @@ Kirigami.RouterWindow {
         }
     }
 
-    property Connections resourcesModelConnections: Connections {
+    readonly property Connections resourcesModelConnections: Connections {
         target: ResourcesModel
         function onPassiveMessage (message) {
             showPassiveNotification(message)
@@ -158,7 +158,7 @@ Kirigami.RouterWindow {
         }
     }
 
-    property Component proceedDialogComponent: Component {
+    readonly property Component proceedDialogComponent: Component {
         id: proceedDialog
         Kirigami.OverlaySheet {
             id: sheet
@@ -233,7 +233,7 @@ Kirigami.RouterWindow {
         }
     }
 
-    property Instantiator instantiator: Instantiator {
+    readonly property Instantiator instantiator: Instantiator {
         model: TransactionModel
 
         delegate: Connections {
@@ -249,14 +249,14 @@ Kirigami.RouterWindow {
         }
     }
 
-    property ConditionalObject conditionalObject: ConditionalObject {
+    readonly property ConditionalObject conditionalObject: ConditionalObject {
         id: drawerObject
         condition: window.wideScreen
         componentFalse: Kirigami.ContextDrawer {}
     }
     contextDrawer: drawerObject.object
 
-    property UnityLauncher unityLauncher: UnityLauncher {
+    readonly property UnityLauncher unityLauncher: UnityLauncher {
         launcherId: "org.kde.discover.desktop"
         progressVisible: TransactionModel.count > 0
         progress: TransactionModel.progress

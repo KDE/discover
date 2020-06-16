@@ -45,9 +45,9 @@ DiscoverPage {
     property string sortProperty: "appsListPageSorting"
     property bool compact: page.width < 550 || !applicationWindow().wideScreen
     property bool showRating: true
+    readonly property QtObject data: Kirigami.PageRouter.data
 
     Component.onCompleted: {
-        let data = Kirigami.PageRouter.data
         if (data.search)
             search = data.search
         if (data.category)
