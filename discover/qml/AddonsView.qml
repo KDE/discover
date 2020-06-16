@@ -86,7 +86,7 @@ Kirigami.OverlaySheet
                 Layout.alignment: Qt.AlignRight
                 text: i18n("More...")
                 visible: application.appstreamId.length>0 && addonsView.isExtended
-                onClicked: Kirgami.PageRouter.pushFromHere({"route": "application-list", "data": {"extending": application.appstreamId, "title": i18n("Extensions...")}})
+                onClicked: Kirgami.PageRouter.pushFromHere({"route": "application-list", "extending": application.appstreamId, "title": i18n("Extensions...")})
             }
         }
     }

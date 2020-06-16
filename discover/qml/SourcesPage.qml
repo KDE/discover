@@ -196,7 +196,7 @@ DiscoverPage {
                     tooltip: i18n("Show contents")
                     visible: sourcesBackend.canFilterSources
                     Kirigami.PageRouter.router: window.router
-                    onTriggered: Kirigami.PageRouter.pushFromHere({"route": "application-list", "data": {"sourceId": sourceId, "origin": sourceId, "allBackends": true}})
+                    onTriggered: Kirigami.PageRouter.pushFromHere({"route": "application-list", "sourceId": sourceId, "origin": sourceId, "allBackends": true})
                 }
             ]
 

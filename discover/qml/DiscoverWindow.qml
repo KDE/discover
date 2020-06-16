@@ -129,13 +129,13 @@ Kirigami.RouterWindow {
             Kirigami.PageRouter.pushFromHere({"route": "application", "data": app})
         }
         function onListMimeInternal(mime) {
-            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "data": { "mimeTypeFilter": mime, "title": i18n("Resources for '%1'", mime) }})
+            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "mimeTypeFilter": mime, "title": i18n("Resources for '%1'", mime) })
         }
         function onListCategoryInternal(cat)  {
-            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "data": { "category": cat, "search": "" }})
+            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "category": cat, "search": "" })
         }
         function onOpenSearch(search) {
-            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "data": { "search": "" }})
+            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "search": "" })
         }
         function onOpenErrorPage(errorMessage) {
             console.warn("error", errorMessage)

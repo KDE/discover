@@ -27,6 +27,7 @@ import org.kde.kirigami 2.13 as Kirigami
 
 DiscoverPage {
     id: appInfo
+    readonly QtObject application: Kirigami.PageRouter.data
     readonly property int visibleReviews: 3
     clip: true
 
@@ -36,10 +37,6 @@ DiscoverPage {
     // Discover is launched e.g. from krunner or otherwise requested to show a
     // specific application on launch.
     readonly property bool isHome: true
-
-    function app() {
-        return Kirigami.PageRouter.data
-    }
 
     background: Rectangle {
         color: Kirigami.Theme.backgroundColor
@@ -51,7 +48,7 @@ DiscoverPage {
         id: reviewsSheet
         model: ReviewsModel {
             id: reviewsModel
-            resource: app()
+            resource: appInfo.application
         }
     }
 
@@ -73,19 +70,18 @@ DiscoverPage {
                 id: alternativeResourcesModel
                 allBackends: true
                 Kirigami.PageRouter.router: window.router
-                resourcesUrl: app().url
+                resourcesUrl: appInfo.application.url
             }
             delegate: Action {
                 ActionGroup.group: sourcesGroup
                 text: model.application.availableVersion ? i18n("%1 - %2", displayOrigin, model.application.availableVersion) : displayOrigin
                 icon.name: sourceIcon
                 checkable: true
-                checked: app() === model.application
+                checked: appInfo.application === model.application
                 onTriggered: if(index>=0) {
                     var res = model.application
                     console.assert(res)
-                    Kirigami.PageRouter.popRoute()
-                    Kirigami.PageRouter.pushRoute({"route": "application", "data": res})
+                    Kirigami.PageRouter.replaceFromHere({"route": "application", "data": res})
                 }
             }
         }
@@ -107,7 +103,7 @@ DiscoverPage {
     InstallApplicationButton {
         id: appbutton
         Layout.rightMargin: Kirigami.Units.smallSpacing
-        application: app()
+        application: appInfo.application
         visible: false
     }
 
@@ -120,14 +116,14 @@ DiscoverPage {
             Kirigami.Icon {
                 Layout.preferredHeight: 80
                 Layout.preferredWidth: 80
-                source: app().icon
+                source: appInfo.application.icon
                 Layout.rightMargin: Kirigami.Units.smallSpacing * 2
             }
             ColumnLayout {
                 spacing: 0
                 Kirigami.Heading {
                     level: 1
-                    text: app().name
+                    text: appInfo.application.name
                     lineHeight: 1.0
                     maximumLineCount: 1
                     elide: Text.ElideRight
@@ -137,18 +133,18 @@ DiscoverPage {
                 RowLayout {
                     spacing: Kirigami.Units.largeSpacing
                     Rating {
-                        rating: app().rating ? app().rating.sortableRating : 0
+                        rating: appInfo.application.rating ? appInfo.application.rating.sortableRating : 0
                         starSize: summary.font.pointSize
                     }
                     Label {
-                        text: app().rating ? i18np("%1 rating", "%1 ratings", app().rating.ratingCount) : i18n("No ratings yet")
+                        text: appInfo.application.rating ? i18np("%1 rating", "%1 ratings", appInfo.application.rating.ratingCount) : i18n("No ratings yet")
                         opacity: 0.5
                     }
                 }
                 Kirigami.Heading {
                     id: summary
                     level: 4
-                    text: app().comment
+                    text: appInfo.application.comment
                     maximumLineCount: 2
                     lineHeight: lineCount > 1 ? 0.75 : 1.2
                     elide: Text.ElideRight
@@ -162,7 +158,7 @@ DiscoverPage {
         ApplicationScreenshots {
             Layout.fillWidth: true
             visible: count > 0
-            resource: app()
+            resource: appInfo.application
             ScrollBar.horizontal: screenshotsScrollbar
         }
         ScrollBar {
@@ -174,7 +170,7 @@ DiscoverPage {
             Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
-            text: app().longDescription
+            text: appInfo.application.longDescription
             onLinkActivated: Qt.openUrlExternally(link);
         }
 
@@ -197,9 +193,9 @@ DiscoverPage {
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
 
-            Component.onCompleted: app().fetchChangelog()
+            Component.onCompleted: appInfo.application.fetchChangelog()
             Connections {
-                target: app()
+                target: appInfo.application
                 function onChangelogFetched(changelog) {
                     changelogLabel.text = changelog
                 }
@@ -258,7 +254,7 @@ DiscoverPage {
         }
         Kirigami.LinkButton {
             function writeReviewText() {
-                if (app().isInstalled) {
+                if (appInfo.application.isInstalled) {
                     if (reviewsModel.count > 0) {
                         return i18n("Write a review!")
                     } else {
@@ -276,8 +272,8 @@ DiscoverPage {
             text: writeReviewText()
             Layout.alignment: Qt.AlignCenter
             onClicked: reviewsSheet.openReviewDialog()
-            enabled: app().isInstalled
-            visible: reviewsModel.backend && reviewsModel.backend.isResourceSupported(app())
+            enabled: appInfo.application.isInstalled
+            visible: reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
             Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.bottomMargin: Kirigami.Units.largeSpacing
         }
@@ -285,7 +281,7 @@ DiscoverPage {
         Repeater {
             model: application.objects
             delegate: Loader {
-                property QtObject resource: app()
+                property QtObject resource: appInfo.application
                 source: modelData
             }
         }
@@ -310,13 +306,13 @@ DiscoverPage {
                 visible: text.length > 0
                 Layout.fillWidth: true
                 elide: Text.ElideRight
-                text: app().categoryDisplay
+                text: appInfo.application.categoryDisplay
             }
 
             // Version row
             Label {
-                readonly property string version: app().isInstalled ? app().installedVersion : app().availableVersion
-                readonly property string releaseDate: app().releaseDate.toLocaleDateString(Locale.ShortFormat)
+                readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
+                readonly property string releaseDate: appInfo.application.releaseDate.toLocaleDateString(Locale.ShortFormat)
 
                 function versionString() {
                     if (version.length == 0) {
@@ -343,7 +339,7 @@ DiscoverPage {
                 Layout.fillWidth: true
                 elide: Text.ElideRight
                 visible: text.length>0
-                text: app().author
+                text: appInfo.application.author
             }
 
             // Size row
@@ -352,7 +348,7 @@ DiscoverPage {
                 Layout.fillWidth: true
                 Layout.alignment: Text.AlignTop
                 elide: Text.ElideRight
-                text: app().sizeDescription
+                text: appInfo.application.sizeDescription
             }
 
             // Source row
@@ -360,17 +356,17 @@ DiscoverPage {
                 Kirigami.FormData.label: i18n("Source:")
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
-                text: app().displayOrigin
+                text: appInfo.application.displayOrigin
                 elide: Text.ElideRight
             }
 
             // License row
             RowLayout {
                 Kirigami.FormData.label: i18n("License:")
-                visible: app().licenses.length>0
+                visible: appInfo.application.licenses.length>0
                 Layout.fillWidth: true
                 Repeater {
-                    model: app().licenses
+                    model: appInfo.application.licenses
                     delegate: Kirigami.UrlButton {
                         horizontalAlignment: Text.AlignLeft
                         ToolTip.text: i18n("See full license terms")
@@ -420,7 +416,7 @@ DiscoverPage {
 
     readonly property var addons: AddonsView {
         id: addonsView
-        application: app()
+        application: appInfo.application
         parent: overlay
     }
 }

@@ -107,7 +107,7 @@ Kirigami.GlobalDrawer {
                         Kirigami.PageRouter.navigateToRoute("browsing")
                     } else if (!curr.hasOwnProperty("search")) {
                         if (currentSearchText) {
-                            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "data": {"search": currentSearchText}})
+                            Kirigami.PageRouter.navigateToRoute({"route": "application-list", "search": currentSearchText})
                         }
                     } else {
                         curr.search = currentSearchText;
@@ -229,7 +229,7 @@ Kirigami.GlobalDrawer {
                      )
             Kirigami.PageRouter.router: window.router
             onTriggered: {
-                Kirigami.PageRouter.navigateToRoute({"route": "application-list", "data": {"category": category, "search": currentSearchText}})
+                Kirigami.PageRouter.navigateToRoute({"route": "application-list", "category": category, "search": currentSearchText})
             }
         }
     }
