@@ -136,6 +136,7 @@ public:
     void invokeApplication() const override;
     void fetchChangelog() override;
     void fetchScreenshots() override;
+    QSet<QString> alternativeAppstreamIds() const override;
 
     void setBranch(const QString &branch);
     void setBundledIcon(const QPixmap &pixmap);

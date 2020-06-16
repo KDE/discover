@@ -136,6 +136,13 @@ QString AppPackageKitResource::appstreamId() const
     return m_appdata.id();
 }
 
+QSet<QString> AppPackageKitResource::alternativeAppstreamIds() const
+{
+    const AppStream::Provided::Kind AppStream_Provided_KindId = (AppStream::Provided::Kind) 12; //Should be AppStream::Provided::KindId when released
+    const auto ret = m_appdata.provided(AppStream_Provided_KindId).items();
+    return QSet<QString>(ret.begin(), ret.end());
+}
+
 QUrl AppPackageKitResource::homepage()
 {
     return m_appdata.url(AppStream::Component::UrlKindHomepage);

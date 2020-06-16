@@ -55,6 +55,7 @@ class AppPackageKitResource : public PackageKitResource
         QString author() const override;
 
         void fetchChangelog() override;
+        QSet<QString> alternativeAppstreamIds() const override;
 
     private:
         const AppStream::Component m_appdata;
