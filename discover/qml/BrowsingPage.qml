@@ -24,7 +24,8 @@ import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 2.12 as Kirigami
 
-DiscoverPage {
+DiscoverPage
+{
     id: page
     title: i18n("Featured")
     leftPadding: 0

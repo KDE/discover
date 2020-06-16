@@ -23,7 +23,8 @@ import QtQuick.Layouts 1.1
 import QtQuick.Window 2.1
 import org.kde.kirigami 2.13 as Kirigami
 
-Kirigami.AbstractCard {
+Kirigami.AbstractCard
+{
     id: delegateArea
     property alias application: installButton.application
     property bool compact: false
