@@ -135,7 +135,7 @@ Kirigami.AbstractCard
                     height: Kirigami.Units.gridUnit
                     width: Kirigami.Units.gridUnit
                     smooth: true
-                    visible: !delegateArea.compact && ResourcesModel.currentApplicationBackend !== application.backend
+                    visible: !delegateArea.compact && ResourcesModel.currentApplicationBackend !== application.backend && application.backend.hasApplications
                     anchors {
                         bottom: parent.bottom
                         right: parent.right
