@@ -40,7 +40,6 @@ Name[sv]=Upptäck
 Name[tg]=Кашфиёт
 Name[tr]=Keşfet
 Name[uk]=Discover
-Name[x-test]=xxDiscoverxx
 Name[zh_CN]=Discover
 Name[zh_TW]=Discover
 Exec=@DesktopExec@
