@@ -35,7 +35,6 @@
   <name xml:lang="sv">Gränssnitt för Flatpak</name>
   <name xml:lang="tg">Коркардкунандаи Flatpak</name>
   <name xml:lang="uk">Модуль Flatpak</name>
-  <name xml:lang="x-test">xxFlatpak backendxx</name>
   <name xml:lang="zh-CN">Flatpak 后端</name>
   <name xml:lang="zh-TW">Flatpak 後端</name>
   <summary>Integrates Flatpak applications into Discover</summary>
@@ -70,7 +69,6 @@
   <summary xml:lang="sv">Integrerar Flatpak-program i Discover</summary>
   <summary xml:lang="tg">Барномаҳои Flatpak-ро ба барномаи Кашфиёт дарунсохт мекунад</summary>
   <summary xml:lang="uk">Інтеграція програм Flatpak з Discover</summary>
-  <summary xml:lang="x-test">xxIntegrates Flatpak applications into Discoverxx</summary>
   <summary xml:lang="zh-CN">将 Flatpak 应用程序集成到Discover中</summary>
   <summary xml:lang="zh-TW">將 Flatpak 應用程式整合進 Discover 商店</summary>
   <extends>org.kde.discover.desktop</extends>
@@ -109,7 +107,6 @@
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="tg">Алейкс Пол Гонзалес (Aleix Pol Gonzalez)</developer_name>
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
-  <developer_name xml:lang="x-test">xxAleix Pol Gonzalezxx</developer_name>
   <developer_name xml:lang="zh-CN">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="zh-TW">Aleix Pol Gonzalez</developer_name>
   <icon type="stock">system-software-install</icon>
