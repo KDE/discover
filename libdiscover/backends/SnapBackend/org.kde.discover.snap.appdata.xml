@@ -34,6 +34,7 @@
   <name xml:lang="sv">Gränssnitt för Snap</name>
   <name xml:lang="tg">Коркардкунандаи Часпиш</name>
   <name xml:lang="uk">Модуль Snap</name>
+  <name xml:lang="x-test">xxSnap backendxx</name>
   <name xml:lang="zh-CN">Snap 后端</name>
   <name xml:lang="zh-TW">Snap 後端</name>
   <summary>Integrates Snap applications into Discover</summary>
@@ -68,6 +69,7 @@
   <summary xml:lang="sv">Integrerar Snap-program i Discover</summary>
   <summary xml:lang="tg">Барномаҳои Часпишро ба барномаи Кашфиёт дарунсохт мекунад</summary>
   <summary xml:lang="uk">Інтегрує програми Snap до Discover</summary>
+  <summary xml:lang="x-test">xxIntegrates Snap applications into Discoverxx</summary>
   <summary xml:lang="zh-CN">将 Snap 应用程序集成到Discover中</summary>
   <summary xml:lang="zh-TW">將 Snap 應用程式整合進 Discover 商店</summary>
   <extends>org.kde.discover.desktop</extends>
@@ -105,6 +107,7 @@
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="tg">Алейкс Пол Гонзалес (Aleix Pol Gonzalez)</developer_name>
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="x-test">xxAleix Pol Gonzalezxx</developer_name>
   <developer_name xml:lang="zh-CN">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="zh-TW">Aleix Pol Gonzalez</developer_name>
   <icon type="stock">system-software-install</icon>
