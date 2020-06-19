@@ -53,7 +53,11 @@ void NotifierItem::setupNotifierItem()
     connect(&m_notifier, &DiscoverNotifier::stateChanged, this, &NotifierItem::refresh);
 
     connect(m_item, &KStatusNotifierItem::activateRequested, &m_notifier, [this]() {
-        m_notifier.showDiscoverUpdates();
+        if (m_notifier.needsReboot()) {
+            m_notifier.reboot();
+        } else {
+            m_notifier.showDiscoverUpdates();
+        }
     });
 
     QMenu* menu = new QMenu;
@@ -68,6 +72,9 @@ void NotifierItem::setupNotifierItem()
     connect(refreshAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::recheckSystemUpdateNeeded);
 
     auto f = [menu, this]() {
+        m_item->setTitle(i18n("Restart to apply installed updates"));
+        m_item->setToolTipTitle(i18n("Click to restart the computer"));
+        m_item->setIconByName(QStringLiteral("view-refresh"));
         auto refreshAction = menu->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Restart..."));
         connect(refreshAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::recheckSystemUpdateNeeded);
     };
