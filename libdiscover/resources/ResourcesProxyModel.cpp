@@ -159,25 +159,56 @@ void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *>& resource
         }
         auto at = storedIds.find(appstreamid);
         if (at == storedIds.end()) {
+            auto aliased = aliases.constFind(appstreamid);
+            if (aliased != aliases.constEnd()) {
+                at = storedIds.find(aliased.value());
+            }
+        }
+
+        if (at == storedIds.end()) {
             const auto alts = (*it)->alternativeAppstreamIds();
             for (const auto &alt : alts) {
                 at = storedIds.find(alt);
-                if (at != storedIds.end())
+                if (at == storedIds.end())
                     break;
+
+                auto aliased = aliases.constFind(alt);
+                if (aliased != aliases.constEnd()) {
+                    at = storedIds.find(aliased.value());
+                    if (at != storedIds.end())
+                        break;
+                }
             }
         }
         if (at == storedIds.end()) {
             auto at = ids.find(appstreamid);
+            if (at == ids.end()) {
+                auto aliased = aliases.constFind(appstreamid);
+                if (aliased != aliases.constEnd()) {
+                    at = ids.find(aliased.value());
+                }
+            }
             if (at == ids.end()) {
                 const auto alts = (*it)->alternativeAppstreamIds();
                 for (const auto &alt : alts) {
                     at = ids.find(alt);
                     if (at != ids.end())
                         break;
+
+                    auto aliased = aliases.constFind(appstreamid);
+                    if (aliased != aliases.constEnd()) {
+                        at = ids.find(aliased.value());
+                        if (at != ids.end())
+                            break;
+                    }
                 }
             }
             if (at == ids.end()) {
                 ids[appstreamid] = it;
+                const auto alts = (*it)->alternativeAppstreamIds();
+                for (const auto &alias : alts) {
+                    aliases[alias] = appstreamid;
+                }
                 ++it;
             } else {
                 if ((*it)->backend() == cab) {
