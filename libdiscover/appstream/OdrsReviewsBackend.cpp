@@ -203,6 +203,7 @@ QString OdrsReviewsBackend::userName() const
 
 void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summary, const QString &description, const QString &rating)
 {
+    Q_ASSERT(res);
     QJsonObject map = {{QStringLiteral("app_id"), res->appstreamId()},
                      {QStringLiteral("user_skey"), res->getMetadata(QStringLiteral("ODRS::user_skey")).toString()},
                      {QStringLiteral("user_hash"), userHash()},
@@ -236,9 +237,14 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
     const auto networkError = reply->error();
     if (networkError == QNetworkReply::NoError) {
         AbstractResource *resource = qobject_cast<AbstractResource*>(reply->request().originatingObject());
+        Q_ASSERT(resource);
         qCWarning(LIBDISCOVER_LOG) << "Review submitted" << resource;
-        const QJsonDocument document({resource->getMetadata(QStringLiteral("ODRS::review_map")).toObject()});
-        parseReviews(document, resource);
+        if (resource) {
+            const QJsonDocument document({resource->getMetadata(QStringLiteral("ODRS::review_map")).toObject()});
+            parseReviews(document, resource);
+        } else {
+            qCWarning(LIBDISCOVER_LOG) << "Failed to submit review: missing object";
+        }
     } else {
         Q_EMIT error(i18n("Error while submitting review: %1", reply->errorString()));
         qCWarning(LIBDISCOVER_LOG) << "Failed to submit review: " << reply->errorString();
