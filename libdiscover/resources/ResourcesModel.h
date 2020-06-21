@@ -43,7 +43,8 @@ Q_SIGNALS:
 private:
     void addResults(const QVector<AbstractResource*>& res);
     void emitResults();
-    void destruction(QObject* obj);
+    void streamDestruction(QObject* obj);
+    void resourceDestruction(QObject* obj);
     void clear();
 
     QSet<QObject*> m_streams;
