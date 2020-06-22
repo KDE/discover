@@ -190,7 +190,7 @@ void DiscoverNotifier::showRebootNotification()
 void DiscoverNotifier::reboot()
 {
     QDBusInterface interface(QStringLiteral("org.kde.ksmserver"), QStringLiteral("/KSMServer"), QStringLiteral("org.kde.KSMServerInterface"), QDBusConnection::sessionBus());
-    interface.asyncCall(QStringLiteral("logout"), 0, 1, 2); // Options: do not ask again | reboot | force
+    interface.asyncCall(QStringLiteral("logout"), 1, 1, 2); // Options: confirm first | reboot | force
 }
 
 void DiscoverNotifier::foundUpgradeAction(UpgradeAction* action)
