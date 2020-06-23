@@ -21,8 +21,9 @@
 #include "DiscoverNotifier.h"
 #include "BackendNotifierFactory.h"
 #include <QDebug>
-#include <QDBusInterface>
-#include <QDBusPendingReply>
+#include <QDBusConnection>
+#include <QDBusPendingCall>
+#include <QDBusMessage>
 #include <QNetworkConfigurationManager>
 #include <KLocalizedString>
 #include <KNotification>
@@ -206,8 +207,12 @@ void DiscoverNotifier::showRebootNotification()
 
 void DiscoverNotifier::reboot()
 {
-    QDBusInterface interface(QStringLiteral("org.kde.ksmserver"), QStringLiteral("/KSMServer"), QStringLiteral("org.kde.KSMServerInterface"), QDBusConnection::sessionBus());
-    interface.asyncCall(QStringLiteral("logout"), 1, 1, 2); // Options: confirm first | reboot | force
+    QDBusConnection::sessionBus().asyncCall(
+        QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
+                                       QStringLiteral("/LogoutPrompt"),
+                                       QStringLiteral("org.kde.LogoutPrompt"),
+                                       QStringLiteral("promptReboot"))
+    );
 }
 
 void DiscoverNotifier::foundUpgradeAction(UpgradeAction* action)

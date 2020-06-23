@@ -41,7 +41,7 @@
 #include <QSessionManager>
 #include <QClipboard>
 #include <QDBusConnection>
-#include <QDBusInterface>
+#include <QDBusMessage>
 #include <QDBusPendingCall>
 
 // KDE includes
@@ -518,8 +518,12 @@ void DiscoverObject::showPassiveNotification(const QString& msg)
 
 void DiscoverObject::reboot()
 {
-    QDBusInterface interface(QStringLiteral("org.kde.ksmserver"), QStringLiteral("/KSMServer"), QStringLiteral("org.kde.KSMServerInterface"), QDBusConnection::sessionBus());
-    interface.asyncCall(QStringLiteral("logout"), 1, 1, 2); // Options: confirm first | reboot | force
+    QDBusConnection::sessionBus().asyncCall(
+        QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
+                                       QStringLiteral("/LogoutPrompt"),
+                                       QStringLiteral("org.kde.LogoutPrompt"),
+                                       QStringLiteral("promptReboot"))
+    );
 }
 
 QRect DiscoverObject::initialGeometry() const
