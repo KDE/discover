@@ -40,88 +40,194 @@ using namespace KAuth;
 
 AlpineApkAuthHelper::AlpineApkAuthHelper() {}
 
-ActionReply AlpineApkAuthHelper::test(const QVariantMap &args)
+bool AlpineApkAuthHelper::openDatabase(const QVariantMap &args, bool readwrite)
 {
-    const QString txt = args[QStringLiteral("txt")].toString();
-
-    ActionReply reply = ActionReply::HelperErrorReply();
-    QByteArray replyData(QByteArrayLiteral("ok"));
-
-    // write some text file at the root directory as root, why not
-    QFile f(QStringLiteral("/lol.txt"));
-    if (f.open(QIODevice::ReadWrite | QIODevice::Text)) {
-        f.write(txt.toUtf8());
-        f.close();
-
-        reply = ActionReply::SuccessReply();
-        reply.setData({
-            { QStringLiteral("reply"), replyData },
-        });
-    }
-
-    return reply;
-}
-
-ActionReply AlpineApkAuthHelper::update(const QVariantMap &args)
-{
-    ActionReply reply = ActionReply::HelperErrorReply();
-
+    // maybe set fakeRoot (needs to be done before Database::open()
     const QString fakeRoot = args.value(QLatin1String("fakeRoot"), QString()).toString();
     if (!fakeRoot.isEmpty()) {
         m_apkdb.setFakeRoot(fakeRoot);
     }
 
-    HelperSupport::progressStep(10);
-
-    if (!m_apkdb.open(QtApk::QTAPK_OPENF_READWRITE)) {
-        reply.setErrorDescription(QStringLiteral("Failed to open database!"));
-        return reply;
+    // calculate flags to use during open
+    QtApk::DbOpenFlags fl = QtApk::QTAPK_OPENF_ENABLE_PROGRESSFD;
+    if (readwrite) {
+        fl |= QtApk::QTAPK_OPENF_READWRITE;
     }
 
-    bool update_ok = m_apkdb.updatePackageIndex();
+    if (!m_apkdb.open(fl)) {
+        return false;
+    }
+    return true;
+}
 
-    if (update_ok) {
+void AlpineApkAuthHelper::closeDatabase()
+{
+    m_apkdb.close();
+}
+
+void AlpineApkAuthHelper::setupTransactionPostCreate(QtApk::Transaction *trans)
+{
+    // receive progress notifications
+    QObject::connect(trans, &QtApk::Transaction::progressChanged,
+                     this, &AlpineApkAuthHelper::reportProgress);
+
+    // receive error messages
+    QObject::connect(trans, &QtApk::Transaction::errorOccured,
+                     this, &AlpineApkAuthHelper::onTransactionError);
+
+    // what to do when transaction is complete
+    QObject::connect(trans, &QtApk::Transaction::finished,
+                     this, &AlpineApkAuthHelper::onTransactionFinished);
+}
+
+void AlpineApkAuthHelper::reportProgress(float percent)
+{
+    int p = static_cast<int>(percent);
+    if (p < 0) p = 0;
+    if (p > 100) p = 100;
+    HelperSupport::progressStep(p);
+}
+
+void AlpineApkAuthHelper::onTransactionError(const QString &msg)
+{
+    qCWarning(LOG_AUTHHELPER).nospace() << "ERROR occured in transaction \""
+                                        << m_currentTransaction->desc()
+                                        << "\": " << msg;
+    const QString errMsg = m_currentTransaction->desc() + QLatin1String(" failed: ") + msg;
+    m_actionReply.setErrorDescription(errMsg);
+    m_actionReply.setData({
+        { QLatin1String("errorString"), errMsg }
+    });
+    m_trans_ok = false;
+}
+
+void AlpineApkAuthHelper::onTransactionFinished()
+{
+    m_lastChangeset = m_currentTransaction->changeset();
+    m_currentTransaction->deleteLater();
+    m_currentTransaction = nullptr;
+    m_loop.quit();
+}
+
+ActionReply AlpineApkAuthHelper::update(const QVariantMap &args)
+{
+    // return error by default
+    m_actionReply = ActionReply::HelperErrorReply();
+
+    HelperSupport::progressStep(0);
+
+    if (!openDatabase(args)) {
+        m_actionReply.setErrorDescription(QStringLiteral("Failed to open database!"));
+        return m_actionReply;
+    }
+
+    m_trans_ok = true;
+    QtApk::Transaction *trans = m_apkdb.updatePackageIndex();
+    setupTransactionPostCreate(trans);
+
+    trans->start();
+    m_loop.exec();
+
+    if (m_trans_ok) {
         int updatesCount = m_apkdb.upgradeablePackagesCount();
-        reply = ActionReply::SuccessReply();
-        reply.setData({
+        m_actionReply = ActionReply::SuccessReply();
+        m_actionReply.setData({
             { QLatin1String("updatesCount"), updatesCount }
         });
-    } else {
-        reply.setErrorDescription(QStringLiteral("Repo update failed!"));
-        reply.setData({
-            { QLatin1String("errorString"), QStringLiteral("Repo update failed!") }
-        });
     }
 
-    m_apkdb.close();
+    closeDatabase();
     HelperSupport::progressStep(100);
 
-    return reply;
+    return m_actionReply;
 }
 
 ActionReply AlpineApkAuthHelper::add(const QVariantMap &args)
 {
-    Q_UNUSED(args)
-    ActionReply reply = ActionReply::HelperErrorReply();
-    return reply;
+    // return error by default
+    m_actionReply = ActionReply::HelperErrorReply();
+
+    HelperSupport::progressStep(0);
+
+    if (!openDatabase(args)) {
+        m_actionReply.setErrorDescription(QStringLiteral("Failed to open database!"));
+        return m_actionReply;
+    }
+
+    const QString pkgName = args.value(QLatin1String("pkgName"), QString()).toString();
+    if (pkgName.isEmpty()) {
+        m_actionReply.setErrorDescription(QStringLiteral("Specify pkgName for adding!"));
+        return m_actionReply;
+    }
+
+    m_trans_ok = true;
+    QtApk::Transaction *trans = m_apkdb.add(pkgName);
+    setupTransactionPostCreate(trans);
+
+    trans->start();
+    m_loop.exec();
+
+    if (m_trans_ok) {
+        m_actionReply = ActionReply::SuccessReply();
+    }
+
+    closeDatabase();
+    HelperSupport::progressStep(100);
+
+    return m_actionReply;
 }
 
 ActionReply AlpineApkAuthHelper::del(const QVariantMap &args)
 {
-    Q_UNUSED(args)
-    ActionReply reply = ActionReply::HelperErrorReply();
-    return reply;
+    // return error by default
+    m_actionReply = ActionReply::HelperErrorReply();
+
+    HelperSupport::progressStep(0);
+
+    if (!openDatabase(args)) {
+        m_actionReply.setErrorDescription(QStringLiteral("Failed to open database!"));
+        return m_actionReply;
+    }
+
+    const QString pkgName = args.value(QLatin1String("pkgName"), QString()).toString();
+    if (pkgName.isEmpty()) {
+        m_actionReply.setErrorDescription(QStringLiteral("Specify pkgName for removing!"));
+        return m_actionReply;
+    }
+
+    const bool delRdepends = args.value(QLatin1String("delRdepends"), false).toBool();
+
+    QtApk::DbDelFlags delFlags = QtApk::QTAPK_DEL_DEFAULT;
+    if (delRdepends) {
+        delFlags = QtApk::QTAPK_DEL_RDEPENDS;
+    }
+
+    m_trans_ok = true;
+    QtApk::Transaction *trans = m_apkdb.del(pkgName, delFlags);
+    setupTransactionPostCreate(trans);
+
+    trans->start();
+    m_loop.exec();
+
+    if (m_trans_ok) {
+        m_actionReply = ActionReply::SuccessReply();
+    }
+
+    closeDatabase();
+    HelperSupport::progressStep(100);
+
+    return m_actionReply;
 }
 
 ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
 {
-    ActionReply reply = ActionReply::HelperErrorReply();
+    m_actionReply = ActionReply::HelperErrorReply();
 
-    HelperSupport::progressStep(10);
+    HelperSupport::progressStep(0);
 
-    if (!m_apkdb.open(QtApk::QTAPK_OPENF_READWRITE)) {
-        reply.setErrorDescription(QStringLiteral("Failed to open database!"));
-        return reply;
+    if (!openDatabase(args)) {
+        m_actionReply.setErrorDescription(QStringLiteral("Failed to open database!"));
+        return m_actionReply;
     }
 
     bool onlySimulate = args.value(QLatin1String("onlySimulate"), false).toBool();
@@ -131,28 +237,18 @@ ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
         qCDebug(LOG_AUTHHELPER) << "Simulating upgrade run.";
     }
 
-    const QString fakeRoot = args.value(QLatin1String("fakeRoot"), QString()).toString();
-    if (!fakeRoot.isEmpty()) {
-        m_apkdb.setFakeRoot(fakeRoot);
-    }
+    m_trans_ok = true;
 
-    // no progress notifications for now
-    //int progress_fd = m_apkdb.progressFd();
-    //qCDebug(LOG_AUTHHELPER) << "    progress_fd: " << progress_fd;
+    QtApk::Transaction *trans = m_apkdb.upgrade(flags);
+    setupTransactionPostCreate(trans);
 
-    //QScopedPointer<QSocketNotifier> notifier(new QSocketNotifier(progress_fd, QSocketNotifier::Read));
-    //QObject::connect(notifier.data(), &QSocketNotifier::activated, notifier.data(), [](int sock) {
-    //    Q_UNUSED(sock)
-    //    qCDebug(LOG_AUTHHELPER) << "        read trigger from progress_fd!";
-    //});
+    trans->start();
+    m_loop.exec();
 
-    QtApk::Changeset changes;
-    bool upgrade_ok = m_apkdb.upgrade(flags, &changes);
-
-    if (upgrade_ok) {
-        reply = ActionReply::SuccessReply();
+    if (m_trans_ok) {
+        m_actionReply = ActionReply::SuccessReply();
         QVariantMap replyData;
-        const QVector<QtApk::ChangesetItem> ch = changes.changes();
+        const QVector<QtApk::ChangesetItem> ch = m_lastChangeset.changes();
         QVector<QVariant> chVector;
         QVector<QtApk::Package> pkgVector;
         for (const QtApk::ChangesetItem &it: ch) {
@@ -160,15 +256,13 @@ ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
         }
         replyData.insert(QLatin1String("changes"), QVariant::fromValue(pkgVector));
         replyData.insert(QLatin1String("onlySimulate"), onlySimulate);
-        reply.setData(replyData);
-    } else {
-        reply.setErrorDescription(QStringLiteral("Repo upgrade failed!"));
+        m_actionReply.setData(replyData);
     }
 
-    m_apkdb.close();
+    closeDatabase();
     HelperSupport::progressStep(100);
 
-    return reply;
+    return m_actionReply;
 }
 
 KAUTH_HELPER_MAIN("org.kde.discover.alpineapkbackend", AlpineApkAuthHelper)

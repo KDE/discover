@@ -18,6 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+#include <QEventLoop>
 #include <QObject>
 #include <QVariant>
 #include <KAuthActionReply>
@@ -33,12 +34,26 @@ public:
     AlpineApkAuthHelper();
 
 public Q_SLOTS:
-    ActionReply test(const QVariantMap &args);
     ActionReply update(const QVariantMap &args);
     ActionReply add(const QVariantMap &args);
     ActionReply del(const QVariantMap &args);
     ActionReply upgrade(const QVariantMap &args);
 
+protected:
+    bool openDatabase(const QVariantMap &args, bool readwrite = true);
+    void closeDatabase();
+    void setupTransactionPostCreate(QtApk::Transaction *trans);
+
+protected Q_SLOTS:
+    void reportProgress(float percent);
+    void onTransactionError(const QString &msg);
+    void onTransactionFinished();
+
 private:
-    QtApk::Database m_apkdb;
+    QtApk::DatabaseAsync m_apkdb; // runs transactions in bg thread
+    QtApk::Transaction *m_currentTransaction = nullptr;
+    QEventLoop m_loop; // event loop that will run and wait while bg transaction is in progress
+    ActionReply m_actionReply; // return value for main action slots
+    bool m_trans_ok = true; // flag to indicate if bg transaction was successful
+    QtApk::Changeset m_lastChangeset; // changeset from last completed transaction
 };
