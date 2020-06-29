@@ -67,6 +67,8 @@ void AlpineApkAuthHelper::closeDatabase()
 
 void AlpineApkAuthHelper::setupTransactionPostCreate(QtApk::Transaction *trans)
 {
+    m_currentTransaction = trans; // remember current transaction here
+
     // receive progress notifications
     QObject::connect(trans, &QtApk::Transaction::progressChanged,
                      this, &AlpineApkAuthHelper::reportProgress);
