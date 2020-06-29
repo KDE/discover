@@ -53,7 +53,7 @@ protected Q_SLOTS:
 private:
     QtApk::DatabaseAsync m_apkdb; // runs transactions in bg thread
     QtApk::Transaction *m_currentTransaction = nullptr;
-    QEventLoop m_loop; // event loop that will run and wait while bg transaction is in progress
+    QEventLoop *m_loop = nullptr; // event loop that will run and wait while bg transaction is in progress
     ActionReply m_actionReply; // return value for main action slots
     bool m_trans_ok = true; // flag to indicate if bg transaction was successful
     QtApk::Changeset m_lastChangeset; // changeset from last completed transaction

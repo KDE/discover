@@ -78,6 +78,10 @@ void AlpineApkAuthHelper::setupTransactionPostCreate(QtApk::Transaction *trans)
     // what to do when transaction is complete
     QObject::connect(trans, &QtApk::Transaction::finished,
                      this, &AlpineApkAuthHelper::onTransactionFinished);
+
+    if (!m_loop) {
+        m_loop = new QEventLoop(this);
+    }
 }
 
 void AlpineApkAuthHelper::reportProgress(float percent)
@@ -106,7 +110,7 @@ void AlpineApkAuthHelper::onTransactionFinished()
     m_lastChangeset = m_currentTransaction->changeset();
     m_currentTransaction->deleteLater();
     m_currentTransaction = nullptr;
-    m_loop.quit();
+    m_loop->quit();
 }
 
 ActionReply AlpineApkAuthHelper::update(const QVariantMap &args)
@@ -126,7 +130,7 @@ ActionReply AlpineApkAuthHelper::update(const QVariantMap &args)
     setupTransactionPostCreate(trans);
 
     trans->start();
-    m_loop.exec();
+    m_loop->exec();
 
     if (m_trans_ok) {
         int updatesCount = m_apkdb.upgradeablePackagesCount();
@@ -165,7 +169,7 @@ ActionReply AlpineApkAuthHelper::add(const QVariantMap &args)
     setupTransactionPostCreate(trans);
 
     trans->start();
-    m_loop.exec();
+    m_loop->exec();
 
     if (m_trans_ok) {
         m_actionReply = ActionReply::SuccessReply();
@@ -207,7 +211,7 @@ ActionReply AlpineApkAuthHelper::del(const QVariantMap &args)
     setupTransactionPostCreate(trans);
 
     trans->start();
-    m_loop.exec();
+    m_loop->exec();
 
     if (m_trans_ok) {
         m_actionReply = ActionReply::SuccessReply();
@@ -243,7 +247,7 @@ ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
     setupTransactionPostCreate(trans);
 
     trans->start();
-    m_loop.exec();
+    m_loop->exec();
 
     if (m_trans_ok) {
         m_actionReply = ActionReply::SuccessReply();
