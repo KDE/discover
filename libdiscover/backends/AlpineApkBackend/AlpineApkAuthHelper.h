@@ -38,6 +38,7 @@ public Q_SLOTS:
     ActionReply add(const QVariantMap &args);
     ActionReply del(const QVariantMap &args);
     ActionReply upgrade(const QVariantMap &args);
+    ActionReply repoconfig(const QVariantMap &args);
 
 protected:
     bool openDatabase(const QVariantMap &args, bool readwrite = true);

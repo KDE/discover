@@ -21,3 +21,9 @@ Name=Remove package
 Description=Uninstall one package
 Policy=auth_admin
 Persistence=session
+
+[org.kde.discover.alpineapkbackend.repoconfig]
+Name=Remove package
+Description=Configure repositories URLs
+Policy=auth_admin
+Persistence=session

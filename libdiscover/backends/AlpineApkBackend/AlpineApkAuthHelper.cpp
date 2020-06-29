@@ -265,4 +265,25 @@ ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
     return m_actionReply;
 }
 
+ActionReply AlpineApkAuthHelper::repoconfig(const QVariantMap &args)
+{
+    m_actionReply = ActionReply::HelperErrorReply();
+    HelperSupport::progressStep(10);
+
+    if (args.contains(QLatin1String("repoList"))) {
+        const QVariant v = args.value(QLatin1String("repoList"));
+        const QVector<QtApk::Repository> repoVec = v.value<QVector<QtApk::Repository>>();
+        if (QtApk::Database::saveRepositories(repoVec)) {
+            m_actionReply = ActionReply::SuccessReply(); // OK
+        } else {
+            m_actionReply.setErrorDescription(QStringLiteral("Failed to write repositories config!"));
+        }
+    } else {
+        m_actionReply.setErrorDescription(QStringLiteral("repoList parameter is missing in request!"));
+    }
+
+    HelperSupport::progressStep(100);
+    return m_actionReply;
+}
+
 KAUTH_HELPER_MAIN("org.kde.discover.alpineapkbackend", AlpineApkAuthHelper)
