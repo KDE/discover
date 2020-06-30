@@ -26,6 +26,8 @@
 #include <QVector>
 
 // KF5
+#include <KAuthExecuteJob>
+#include <kauth_version.h>
 #include <KLocalizedString>
 
 // libapk-qt
@@ -35,16 +37,19 @@ AlpineApkSourcesBackend::AlpineApkSourcesBackend(AbstractResourcesBackend *paren
     : AbstractSourcesBackend(parent)
     , m_sourcesModel(new QStandardItemModel(this))
     , m_refreshAction(new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")),
-                                  QStringLiteral("Refresh"), this))
+                                  QStringLiteral("Reload"), this))
+    , m_saveAction(new QAction(QIcon::fromTheme(QStringLiteral("document-save")),
+                                  QStringLiteral("Save"), this))
+    // ^^ unfortunately QML side ignores icons for custom actions
 {
     loadSources();
     QObject::connect(m_refreshAction, &QAction::triggered,
                      this, &AlpineApkSourcesBackend::loadSources);
-
-    // can be used to track enabling/disabling repo source
-    // QObject::connect(m_sourcesModel, &QStandardItemModel::itemChanged, this, [](QStandardItem* item) {
-    //     qCDebug(LOG_ALPINEAPK) << "source backend: DummySource changed" << item << item->checkState();
-    // });
+    QObject::connect(m_saveAction, &QAction::triggered,
+                     this, &AlpineApkSourcesBackend::saveSources);
+    // track enabling/disabling repo source
+    QObject::connect(m_sourcesModel, &QStandardItemModel::itemChanged,
+                     this, &AlpineApkSourcesBackend::onItemChanged);
 }
 
 QAbstractItemModel *AlpineApkSourcesBackend::sources()
@@ -52,48 +57,97 @@ QAbstractItemModel *AlpineApkSourcesBackend::sources()
     return m_sourcesModel;
 }
 
-bool AlpineApkSourcesBackend::addSource(const QString &id)
-{
-    return addSourceFull(id, QString(), true);
-}
-
 QStandardItem *AlpineApkSourcesBackend::sourceForId(const QString& id) const
 {
-    for (int i = 0, c = m_sourcesModel->rowCount(); i < c; ++i) {
-        QStandardItem *it = m_sourcesModel->item(i, 0);
-        if (it->text() == id) {
-            return it;
+    for (int i = 0; i < m_sourcesModel->rowCount(); ++i) {
+        QStandardItem *item = m_sourcesModel->item(i, 0);
+        if (item->data(AbstractSourcesBackend::IdRole) == id) {
+            return item;
         }
     }
     return nullptr;
 }
 
-bool AlpineApkSourcesBackend::addSourceFull(const QString &id, const QString &comment, bool enabled)
+bool AlpineApkSourcesBackend::addSource(const QString &id)
 {
-    if (id.isEmpty()) {
-        return false;
-    }
-
-    qCDebug(LOG_ALPINEAPK) << "source backend: Adding source:" << id;
-
-    QStandardItem *it = new QStandardItem(id);
-    it->setData(id, AbstractSourcesBackend::IdRole);
-    it->setData(comment, Qt::ToolTipRole);
-    it->setCheckable(true);
-    it->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
-    // for now, disable editing sources
-    it->setFlags(it->flags() & ~Qt::ItemIsEnabled);
-    m_sourcesModel->appendRow(it);
+    m_repos.append(QtApk::Repository(id, QString(), true));
+    fillModelFromRepos();
     return true;
 }
 
 void AlpineApkSourcesBackend::loadSources()
 {
-    QVector<QtApk::Repository> repos = QtApk::Database::getRepositories();
+    m_repos = QtApk::Database::getRepositories();
+    fillModelFromRepos();
+}
+
+void AlpineApkSourcesBackend::fillModelFromRepos()
+{
     m_sourcesModel->clear();
-    for (const QtApk::Repository &repo: repos) {
-        addSourceFull(repo.url, repo.comment, repo.enabled);
+    for (const QtApk::Repository &repo: m_repos) {
+        if (repo.url.isEmpty()) {
+            continue;
+        }
+        qCDebug(LOG_ALPINEAPK) << "source backend: Adding source:" << repo.url << repo.enabled;
+        QStandardItem *it = new QStandardItem(repo.url);
+        it->setData(repo.url, AbstractSourcesBackend::IdRole);
+        it->setData(repo.comment, Qt::ToolTipRole);
+        it->setCheckable(true);
+        it->setCheckState(repo.enabled ? Qt::Checked : Qt::Unchecked);
+        m_sourcesModel->appendRow(it);
     }
+}
+
+void AlpineApkSourcesBackend::saveSources()
+{
+    KAuth::Action repoConfigAction(QStringLiteral("org.kde.discover.alpineapkbackend.repoconfig"));
+    repoConfigAction.setHelperId(QStringLiteral("org.kde.discover.alpineapkbackend"));
+    if (!repoConfigAction.isValid()) {
+        qCWarning(LOG_ALPINEAPK) << "repoConfigAction is not valid!";
+        return;
+    }
+
+    repoConfigAction.setTimeout(1 * 60 * 1000); // 1 min
+#if KAUTH_VERSION < QT_VERSION_CHECK(5, 68, 0)
+    upgradeAction.setDetails(i18n("Configure repositories URLs"));
+#else
+    static const KAuth::Action::DetailsMap details{
+        { KAuth::Action::AuthDetail::DetailMessage, i18n("Configure repositories URLs") }
+    };
+    repoConfigAction.setDetailsV2(details);
+#endif
+    // pass in new repositories list
+    repoConfigAction.addArgument(QLatin1String("repoList"),
+                                 QVariant::fromValue<QVector<QtApk::Repository>>(m_repos));
+
+    // run with elevated privileges
+    KAuth::ExecuteJob *reply = repoConfigAction.execute();
+    QObject::connect(reply, &KAuth::ExecuteJob::result, this, [this] (KJob *job) {
+        KAuth::ExecuteJob *reply = static_cast<KAuth::ExecuteJob *>(job);
+        if (reply->error() != 0) {
+            const QString errMessage = reply->errorString();
+            qCWarning(LOG_ALPINEAPK) << "KAuth helper returned error:"
+                                     << reply->error() << errMessage;
+            if (reply->error() == KAuth::ActionReply::Error::AuthorizationDeniedError) {
+                Q_EMIT passiveMessage(i18n("Authorization denied"));
+            } else {
+                Q_EMIT passiveMessage(i18n("Error: ") + errMessage);
+            }
+        }
+        this->loadSources();
+    });
+
+    reply->start();
+}
+
+void AlpineApkSourcesBackend::onItemChanged(QStandardItem *item)
+{
+    // update internal storage vector and relaod model from it
+    //    otherwise checks state are not updated in UI
+    const Qt::CheckState cs = item->checkState();
+    const QModelIndex idx = m_sourcesModel->indexFromItem(item);
+    m_repos[idx.row()].enabled = (cs == Qt::Checked);
+    fillModelFromRepos();
 }
 
 bool AlpineApkSourcesBackend::removeSource(const QString &id)
@@ -103,18 +157,20 @@ bool AlpineApkSourcesBackend::removeSource(const QString &id)
         qCWarning(LOG_ALPINEAPK) << "source backend: couldn't find " << id;
         return false;
     }
+    m_repos.remove(it->row());
     return m_sourcesModel->removeRow(it->row());
 }
 
 QString AlpineApkSourcesBackend::idDescription()
 {
-    return i18nc("Adding repo", "Enter apk repository URL, for example: "
+    return i18nc("Adding repo", "Enter Alpine repository URL, for example: "
                      "http://dl-cdn.alpinelinux.org/alpine/edge/testing/");
 }
 
 QVariantList AlpineApkSourcesBackend::actions() const
 {
     static const QVariantList s_actions {
+        QVariant::fromValue<QObject *>(m_saveAction),
         QVariant::fromValue<QObject *>(m_refreshAction),
     };
     return s_actions;
@@ -122,12 +178,12 @@ QVariantList AlpineApkSourcesBackend::actions() const
 
 bool AlpineApkSourcesBackend::supportsAdding() const
 {
-    return false; // for now, disable editing sources
+    return true;
 }
 
 bool AlpineApkSourcesBackend::canMoveSources() const
 {
-    return false; // for now, disable editing sources
+    return true;
 }
 
 bool AlpineApkSourcesBackend::moveSource(const QString& sourceId, int delta)
@@ -147,5 +203,9 @@ bool AlpineApkSourcesBackend::moveSource(const QString& sourceId, int delta)
             || row == (m_sourcesModel->rowCount() - 1)) {
         Q_EMIT lastSourceIdChanged();
     }
+
+    // swap also items in internal storage vector
+    m_repos.swapItemsAt(row, destRow);
+
     return true;
 }

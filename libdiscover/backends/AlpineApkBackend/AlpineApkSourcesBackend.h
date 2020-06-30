@@ -24,6 +24,8 @@
 #include <resources/AbstractSourcesBackend.h>
 #include <QStandardItemModel>
 
+#include <QtApkRepository.h>
+
 class AlpineApkSourcesBackend : public AbstractSourcesBackend
 {
 public:
@@ -42,9 +44,14 @@ private:
     QStandardItem *sourceForId(const QString &id) const;
     bool addSourceFull(const QString &id, const QString &comment, bool enabled);
     void loadSources();
+    void saveSources();
+    void fillModelFromRepos();
+    void onItemChanged(QStandardItem* item);
 
     QStandardItemModel *m_sourcesModel = nullptr;
     QAction *m_refreshAction = nullptr;
+    QAction *m_saveAction = nullptr;
+    QVector<QtApk::Repository> m_repos;
 };
 
 #endif // ALPINEAPKSOURCESBACKEND_H
