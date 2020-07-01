@@ -26,7 +26,6 @@
 #include <QDebug>
 #include <KRandom>
 
-// #define TEST_PROCEED
 
 AlpineApkTransaction::AlpineApkTransaction(AlpineApkResource *app, Role role)
     : AlpineApkTransaction(app, {}, role)
@@ -36,10 +35,23 @@ AlpineApkTransaction::AlpineApkTransaction(AlpineApkResource *app, Role role)
 AlpineApkTransaction::AlpineApkTransaction(AlpineApkResource *app, const AddonList &addons, Transaction::Role role)
     : Transaction(app->backend(), app, role, addons)
     , m_app(app)
+    , m_backend(static_cast<AlpineApkBackend *>(app->backend()))
 {
-    setCancellable(true);
+    setCancellable(false);
     setStatus(DownloadingStatus);
     iterateTransaction();
+}
+
+void AlpineApkTransaction::proceed()
+{
+    finishTransaction();
+}
+
+void AlpineApkTransaction::cancel()
+{
+    m_iterate = false;
+
+    setStatus(CancelledStatus);
 }
 
 void AlpineApkTransaction::iterateTransaction()
@@ -57,18 +69,6 @@ void AlpineApkTransaction::iterateTransaction()
     } else {
         finishTransaction();
     }
-}
-
-void AlpineApkTransaction::proceed()
-{
-    finishTransaction();
-}
-
-void AlpineApkTransaction::cancel()
-{
-    m_iterate = false;
-
-    setStatus(CancelledStatus);
 }
 
 void AlpineApkTransaction::finishTransaction()

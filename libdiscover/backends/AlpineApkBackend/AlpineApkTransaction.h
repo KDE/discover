@@ -23,24 +23,27 @@
 
 #include <Transaction/Transaction.h>
 
+class AlpineApkBackend;
 class AlpineApkResource;
+
 class AlpineApkTransaction : public Transaction
 {
-    Q_OBJECT
-    public:
-        AlpineApkTransaction(AlpineApkResource *app, Role role);
-        AlpineApkTransaction(AlpineApkResource *app, const AddonList &list, Role role);
+Q_OBJECT
+public:
+    AlpineApkTransaction(AlpineApkResource *app, Role role);
+    AlpineApkTransaction(AlpineApkResource *app, const AddonList &list, Role role);
 
-        void cancel() override;
-        void proceed() override;
+    void cancel() override;
+    void proceed() override;
 
-    private Q_SLOTS:
-        void iterateTransaction();
-        void finishTransaction();
+private Q_SLOTS:
+    void iterateTransaction();
+    void finishTransaction();
 
-    private:
-        bool m_iterate = true;
-        AlpineApkResource *m_app;
+private:
+    bool m_iterate = true;
+    AlpineApkResource *m_app;
+    AlpineApkBackend *m_backend;
 };
 
 #endif // ALPINEAPKTRANSACTION_H
