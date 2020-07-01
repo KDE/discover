@@ -125,20 +125,18 @@ QDateTime AlpineApkUpdater::lastUpdate() const
 bool AlpineApkUpdater::isCancelable() const
 {
     qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
-    return true;
+    return false;
 }
 
 bool AlpineApkUpdater::isProgressing() const
 {
-    qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
-    return false;
+    qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO << m_progressing;
+    return m_progressing;
 }
 
 bool AlpineApkUpdater::isMarked(AbstractResource *res) const
 {
-    // qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
     return m_markedToUpdate.contains(res);
-    // return true;
 }
 
 void AlpineApkUpdater::fetchChangelog() const
@@ -148,7 +146,6 @@ void AlpineApkUpdater::fetchChangelog() const
 
 double AlpineApkUpdater::updateSize() const
 {
-    // qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
     double sum = 0.0;
     for (AbstractResource *res : m_markedToUpdate) {
         sum += res->size();
@@ -170,8 +167,6 @@ void AlpineApkUpdater::cancel()
 void AlpineApkUpdater::start()
 {
     qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
-    //return;
-//#if 0
     KAuth::Action upgradeAction(QStringLiteral("org.kde.discover.alpineapkbackend.upgrade"));
     upgradeAction.setHelperId(QStringLiteral("org.kde.discover.alpineapkbackend"));
 
@@ -196,8 +191,10 @@ void AlpineApkUpdater::start()
     QObject::connect(reply, &KAuth::ExecuteJob::result,
                      this, &AlpineApkUpdater::handleKAuthUpgradeHelperReply);
 
+    m_progressing = true;
+    Q_EMIT progressingChanged(m_progressing);
+
     reply->start();
-//#endif
 }
 
 void AlpineApkUpdater::proceed()
@@ -207,7 +204,7 @@ void AlpineApkUpdater::proceed()
 
 int AlpineApkUpdater::updatesCount()
 {
-    // qDebug(LOG_ALPINEAPK) << Q_FUNC_INFO << m_updatesCount;
+    qDebug(LOG_ALPINEAPK) << Q_FUNC_INFO << m_updatesCount;
     return m_updatesCount;
 }
 
@@ -241,6 +238,10 @@ void AlpineApkUpdater::startCheckForUpdates()
     QObject::connect(reply, QOverload<KJob *, unsigned long>::of(&KAuth::ExecuteJob::percent),
                      this, &AlpineApkUpdater::handleKAuthUpdateHelperProgress);
 
+    m_progressing = true;
+    Q_EMIT progressingChanged(m_progressing);
+    Q_EMIT progressChanged(0);
+
     reply->start();
 }
 
@@ -256,6 +257,9 @@ void AlpineApkUpdater::handleKAuthUpdateHelperReply(KJob *job)
         handleKAuthHelperError(reply, replyData);
     }
 
+    m_progressing = false;
+    Q_EMIT progressingChanged(m_progressing);
+
     // we are not in the state "Fetching updates" now, update UI
     Q_EMIT checkForUpdatesFinished();
 }
@@ -265,6 +269,7 @@ void AlpineApkUpdater::handleKAuthUpdateHelperProgress(KJob *job, unsigned long 
     Q_UNUSED(job)
     qCDebug(LOG_ALPINEAPK) << "    fetch updates progress: " << percent;
     Q_EMIT fetchingUpdatesProgressChanged(percent);
+    Q_EMIT progressChanged(static_cast<qreal>(percent));
 }
 
 void AlpineApkUpdater::handleKAuthUpgradeHelperReply(KJob *job)

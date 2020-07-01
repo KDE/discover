@@ -185,7 +185,7 @@ private:
 
 //    QSet<AbstractResource*> m_upgradeable;
 //    QSet<AbstractResource*> m_pendingResources;
-//    bool m_settingUp;
+    bool m_progressing = false;
 //    qreal m_progress;
 //    QDateTime m_lastUpdate;
 //    QTimer m_timer;
