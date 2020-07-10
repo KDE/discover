@@ -36,6 +36,12 @@ Kirigami.AbstractCard
             delegateRecycler.ListView.view.currentIndex = index
         Kirigami.PageRouter.pushFromHere({"route": "application", "data": application})
     }
+    // Because the Cards are in a ListView, this will result in cards
+    // preloading and unloading as cards scroll in and out of view
+    Kirigami.PageRouter.preload {
+        route: {"route": "application", "data": application}
+        when: true
+    }
     highlighted: delegateRecycler && delegateRecycler.ListView.isCurrentItem
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
