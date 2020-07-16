@@ -22,7 +22,7 @@
 
 #include <QDomNode>
 
-#include <klocalizedstring.h>
+#include <KLocalizedString>
 #include <QFile>
 #include <QStandardPaths>
 #include "libdiscover_debug.h"

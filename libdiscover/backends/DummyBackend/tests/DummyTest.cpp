@@ -31,7 +31,7 @@
 #include <ReviewsBackend/ReviewsModel.h>
 #include <ScreenshotsModel.h>
 #include <Category/CategoryModel.h>
-#include <qtest.h>
+#include <QTest>
 
 #include <QtTest>
 #include <QAction>

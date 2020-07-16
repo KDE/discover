@@ -26,7 +26,7 @@
 #include <KQuickAddons/QtQuickSettings>
 #include <KLocalizedString>
 #include <QCommandLineParser>
-#include <qwindow.h>
+#include <QWindow>
 #include "DiscoverObject.h"
 #include <DiscoverBackendsFactory.h>
 #include "DiscoverVersion.h"

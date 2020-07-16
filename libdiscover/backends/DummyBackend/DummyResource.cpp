@@ -20,7 +20,7 @@
 
 #include "DummyResource.h"
 #include <Transaction/AddonList.h>
-#include <krandom.h>
+#include <KRandom>
 #include <QDesktopServices>
 #include <QStringList>
 #include <QTimer>

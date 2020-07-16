@@ -19,7 +19,7 @@
 
 #include <QApplication>
 #include <QCommandLineParser>
-#include <klocalizedstring.h>
+#include <KLocalizedString>
 #include <KAboutData>
 #include <QIcon>
 #include "MuonExporter.h"

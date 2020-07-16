@@ -32,8 +32,8 @@
 #include <DiscoverBackendsFactory.h>
 #include <QStandardPaths>
 
-#include <qtest.h>
-#include <qsignalspy.h>
+#include <QTest>
+#include <QSignalSpy>
 
 QTEST_MAIN( KNSBackendTest )
 

@@ -27,7 +27,7 @@
 #include <Transaction/TransactionModel.h>
 #include <Category/CategoryModel.h>
 
-#include <qtest.h>
+#include <QTest>
 #include <QtTest>
 #include <QAction>
 

@@ -25,8 +25,8 @@
 #include <QJsonArray>
 #include <unistd.h>
 #include <stdlib.h>
-#include <kauthhelpersupport.h>
-#include <kauthactionreply.h>
+#include <KAuthHelperSupport>
+#include <KAuthActionReply>
 #include <Snapd/Client>
 
 using namespace KAuth;

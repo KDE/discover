@@ -30,7 +30,7 @@
 #include <resources/ResourcesUpdatesModel.h>
 #include <Transaction/TransactionModel.h>
 
-#include <qtest.h>
+#include <QTest>
 #include <QtTest>
 #include <QAction>
 
