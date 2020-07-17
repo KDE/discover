@@ -122,8 +122,7 @@ Kirigami.AbstractCard
                 Layout.columnSpan: delegateArea.compact ? 1 : 2
                 Layout.fillWidth: true
 
-                rightPadding: soup.visible ? soup.width : 0
-                bottomPadding: soup.visible ? Kirigami.Units.gridUnit : Kirigami.Units.smallSpacing
+                rightPadding: soup.visible ? soup.width + soup.anchors.rightMargin : 0
                 elide: Text.ElideRight
                 text: delegateArea.application.comment
                 maximumLineCount: 1
@@ -139,6 +138,7 @@ Kirigami.AbstractCard
                     anchors {
                         bottom: parent.bottom
                         right: parent.right
+                        rightMargin: units.smallSpacing
                     }
                 }
             }
