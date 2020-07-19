@@ -26,6 +26,7 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QDir>
+#include <QtGlobal>
 #include <KIO/StoredTransferJob>
 
 #include <utils.h>
@@ -36,10 +37,7 @@ Q_GLOBAL_STATIC(QString, featuredCache)
 
 FeaturedModel::FeaturedModel()
 {
-    connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &FeaturedModel::refresh);
-    connect(ResourcesModel::global(), &ResourcesModel::currentApplicationBackendChanged, this, &FeaturedModel::refresh);
-    connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &FeaturedModel::refresh);
-    connect(ResourcesModel::global(), &ResourcesModel::resourceRemoved, this, &FeaturedModel::removeResource);
+    connect(ResourcesModel::global(), &ResourcesModel::currentApplicationBackendChanged, this, &FeaturedModel::refreshCurrentApplicationBackend);
 
     const QString dir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
     QDir().mkpath(dir);
@@ -51,25 +49,48 @@ FeaturedModel::FeaturedModel()
     auto *fetchJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
     acquireFetching(true);
     connect(fetchJob, &KIO::StoredTransferJob::result, this, [this, fetchJob]() {
-        const auto dest = qScopeGuard([this] { acquireFetching(false); });
-        if (fetchJob->error() != 0) {
+        const auto dest = qScopeGuard([this] {
+            acquireFetching(false);
             refresh();
+        });
+        if (fetchJob->error() != 0)
             return;
-        }
+
         QFile f(*featuredCache);
         if (!f.open(QIODevice::WriteOnly))
             qCWarning(DISCOVER_LOG) << "could not open" << *featuredCache << f.errorString();
         f.write(fetchJob->data());
         f.close();
-        refresh();
     });
 
-    if (!ResourcesModel::global()->backends().isEmpty() && QFile::exists(*featuredCache))
+    refreshCurrentApplicationBackend();
+}
+
+void FeaturedModel::refreshCurrentApplicationBackend()
+{
+    auto backend = ResourcesModel::global()->currentApplicationBackend();
+    if (m_backend == backend)
+        return;
+
+    disconnect(backend, &AbstractResourcesBackend::fetchingChanged, this, &FeaturedModel::refresh);
+    disconnect(backend, &AbstractResourcesBackend::resourceRemoved, this, &FeaturedModel::removeResource);
+    m_backend = backend;
+
+    if (backend) {
+        connect(backend, &AbstractResourcesBackend::fetchingChanged, this, &FeaturedModel::refresh);
+        connect(backend, &AbstractResourcesBackend::resourceRemoved, this, &FeaturedModel::removeResource);
+    }
+
+    if (backend && QFile::exists(*featuredCache))
         refresh();
 }
 
 void FeaturedModel::refresh()
 {
+    Q_ASSERT(m_backend);
+    if (m_backend->isFetching())
+        return;
+
     acquireFetching(true);
     const auto dest = qScopeGuard([this] { acquireFetching(false); });
     QFile f(*featuredCache);
@@ -90,15 +111,14 @@ void FeaturedModel::refresh()
 
 void FeaturedModel::setUris(const QVector<QUrl>& uris)
 {
-    auto backend = ResourcesModel::global()->currentApplicationBackend();
-    if (!backend)
+    if (!m_backend)
         return;
 
     QSet<ResultsStream*> streams;
     foreach(const auto &uri, uris) {
         AbstractResourcesBackend::Filters filter;
         filter.resourceUrl = uri;
-        streams << backend->search(filter);
+        streams << m_backend->search(filter);
     }
     if (!streams.isEmpty()) {
         auto stream = new StoredResultsStream(streams);
@@ -109,12 +129,12 @@ void FeaturedModel::setUris(const QVector<QUrl>& uris)
 
 static void filterDupes(QVector<AbstractResource *> &resources)
 {
-    const auto appsBackend = ResourcesModel::global()->currentApplicationBackend();
+    const auto m_appsBackend = ResourcesModel::global()->currentApplicationBackend();
     QHash<QString, AbstractResource*> resById;
     for(auto it = resources.begin(); it!=resources.end(); ) {
         auto id = (*it)->appstreamId();
         auto curr = resById.value(id);
-        if (curr && curr->backend() == appsBackend) {
+        if (curr && curr->backend() == m_appsBackend) {
             it = resources.erase(it);
         } else {
             resources.removeAll(curr);

@@ -26,6 +26,7 @@
 
 namespace KIO { class StoredTransferJob; }
 class AbstractResource;
+class AbstractResourcesBackend;
 
 class FeaturedModel : public QAbstractListModel
 {
@@ -46,6 +47,7 @@ class FeaturedModel : public QAbstractListModel
         void isFetchingChanged();
 
     private:
+        void refreshCurrentApplicationBackend();
         void setUris(const QVector<QUrl> &uris);
         void refresh();
         void removeResource(AbstractResource* resource);
@@ -54,6 +56,7 @@ class FeaturedModel : public QAbstractListModel
 
         QVector<AbstractResource*> m_resources;
         int m_isFetching = 0;
+        AbstractResourcesBackend* m_backend = nullptr;
 };
 
 #endif // FEATUREDMODEL_H
