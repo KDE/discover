@@ -129,16 +129,13 @@ void FeaturedModel::setUris(const QVector<QUrl>& uris)
 
 static void filterDupes(QVector<AbstractResource *> &resources)
 {
-    const auto m_appsBackend = ResourcesModel::global()->currentApplicationBackend();
-    QHash<QString, AbstractResource*> resById;
+    QSet<QString> found;
     for(auto it = resources.begin(); it!=resources.end(); ) {
         auto id = (*it)->appstreamId();
-        auto curr = resById.value(id);
-        if (curr && curr->backend() == m_appsBackend) {
+        if (found.contains(id)) {
             it = resources.erase(it);
         } else {
-            resources.removeAll(curr);
-            resById[id] = *it;
+            found.insert(id);
             ++it;
         }
     }
