@@ -51,6 +51,17 @@ static T kTransform(const Q &input, _UnaryOperation op)
     return ret;
 }
 
+template <typename T, typename Q>
+static T kTransform(const Q &input)
+{
+    T ret;
+    ret.reserve(input.size());
+    for(const auto& v : input) {
+        ret += v;
+    }
+    return ret;
+}
+
 template <typename T, typename Q, typename _UnaryOperation>
 static T kAppend(const Q &input, _UnaryOperation op)
 {

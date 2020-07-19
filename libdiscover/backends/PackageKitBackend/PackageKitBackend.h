@@ -36,6 +36,9 @@
 class AppPackageKitResource;
 class PackageKitUpdater;
 class OdrsReviewsBackend;
+class PKResultsStream;
+class PKResolveTransaction;
+
 class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
@@ -48,7 +51,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QSet<AbstractResource*> resourcesByPackageName(const QString& name) const;
 
         ResultsStream* search(const AbstractResourcesBackend::Filters & search) override;
-        ResultsStream* findResourceByPackageName(const QUrl& search);
+        PKResultsStream* findResourceByPackageName(const QUrl& search);
         int updatesCount() const override;
         bool hasSecurityUpdates() const override;
 
@@ -77,6 +80,9 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void fetchUpdates();
         int fetchingUpdatesProgress() const override;
 
+        void addPackageArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
+        void addPackageNotArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
+
     public Q_SLOTS:
         void reloadPackageList();
         void transactionError(PackageKit::Transaction::Error, const QString& message);
@@ -84,8 +90,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
     private Q_SLOTS:
         void getPackagesFinished();
         void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary, bool arch);
-        void addPackageArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
-        void addPackageNotArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void packageDetails(const PackageKit::Details& details);
         void addPackageToUpdate(PackageKit::Transaction::Info, const QString& pkgid, const QString& summary);
         void getUpdatesFinished(PackageKit::Transaction::Exit,uint);
@@ -127,6 +131,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QSharedPointer<OdrsReviewsBackend> m_reviews;
         QPointer<PackageKit::Transaction> m_getUpdatesTransaction;
         QThreadPool m_threadPool;
+        QPointer<PKResolveTransaction> m_resolveTransaction;
 };
 
 #endif // PACKAGEKITBACKEND_H

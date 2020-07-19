@@ -18,27 +18,36 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef TRANSACTIONSET_H
-#define TRANSACTIONSET_H
+#ifndef PKRESOLVETRANSACTION_H
+#define PKRESOLVETRANSACTION_H
 
 #include <QObject>
 #include <QVector>
+#include <QTimer>
 #include <PackageKit/Transaction>
 
-class TransactionSet : public QObject
+class PackageKitBackend;
+
+class PKResolveTransaction : public QObject
 {
     Q_OBJECT
     public:
-        TransactionSet(const QVector<PackageKit::Transaction*> &transactions);
+        PKResolveTransaction(PackageKitBackend* backend);
 
-        void transactionFinished(PackageKit::Transaction::Exit exit);
+        void start();
+        void addPackageNames(const QStringList &packageNames);
 
     Q_SIGNALS:
         void allFinished();
+        void started();
 
     private:
-        QVector<PackageKit::Transaction*> m_transactions;
+        void transactionFinished(PackageKit::Transaction::Exit exit);
 
+        QTimer m_floodTimer;
+        QStringList m_packageNames;
+        QVector<PackageKit::Transaction*> m_transactions;
+        PackageKitBackend* const m_backend;
 };
 
 #endif

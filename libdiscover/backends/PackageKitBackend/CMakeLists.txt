@@ -12,7 +12,7 @@ set (packagekit-backend_SRCS
     PackageKitMessages.cpp
     PackageKitSourcesBackend.cpp
     LocalFilePKResource.cpp
-    TransactionSet.cpp
+    PKResolveTransaction.cpp
     pkui.qrc
     )
 ecm_qt_declare_logging_category(packagekit-backend_SRCS HEADER libdiscover_backend_debug.h IDENTIFIER LIBDISCOVER_BACKEND_LOG CATEGORY_NAME org.kde.plasma.libdiscover.backend)
