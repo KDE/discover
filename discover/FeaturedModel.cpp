@@ -72,8 +72,8 @@ void FeaturedModel::refreshCurrentApplicationBackend()
     if (m_backend == backend)
         return;
 
-    disconnect(backend, &AbstractResourcesBackend::fetchingChanged, this, &FeaturedModel::refresh);
-    disconnect(backend, &AbstractResourcesBackend::resourceRemoved, this, &FeaturedModel::removeResource);
+    disconnect(m_backend, &AbstractResourcesBackend::fetchingChanged, this, &FeaturedModel::refresh);
+    disconnect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, &FeaturedModel::removeResource);
     m_backend = backend;
 
     if (backend) {
