@@ -116,16 +116,14 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QSet<PackageKitResource*> m_packagesToDelete;
         bool m_appstreamInitialized = false;
 
-        struct Packages {
+        struct {
             QHash<QString, AbstractResource*> packages;
             QHash<QString, QStringList> packageToApp;
             QHash<QString, QVector<AppPackageKitResource*>> extendedBy;
-            void clear() { *this = {}; }
-        };
+        } m_packages;
 
         QTimer m_delayedDetailsFetch;
         QSet<QString> m_packageNamesToFetchDetails;
-        Packages m_packages;
         QSharedPointer<OdrsReviewsBackend> m_reviews;
         QPointer<PackageKit::Transaction> m_getUpdatesTransaction;
         QThreadPool m_threadPool;
