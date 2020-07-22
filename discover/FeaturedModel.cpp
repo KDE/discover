@@ -90,7 +90,10 @@ void FeaturedModel::refreshCurrentApplicationBackend()
 
 void FeaturedModel::refresh()
 {
-    Q_ASSERT(m_backend);
+    //usually only useful if launching just fwupd or kns backends
+    if (!m_backend)
+        return;
+
     acquireFetching(true);
     const auto dest = qScopeGuard([this] { acquireFetching(false); });
     QFile f(*featuredCache);
