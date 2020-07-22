@@ -274,11 +274,11 @@ AppPackageKitResource* PackageKitBackend::addComponent(const AppStream::Componen
     Q_ASSERT(isFetching());
     Q_ASSERT(!pkgNames.isEmpty());
 
-
-    AppPackageKitResource* res = qobject_cast<AppPackageKitResource*>(m_packages.packages[component.id()]);
+    auto& resPos = m_packages.packages[component.id()];
+    AppPackageKitResource* res = qobject_cast<AppPackageKitResource*>(resPos);
     if (!res) {
         res = new AppPackageKitResource(component, pkgNames.at(0), this);
-        m_packages.packages[component.id()] = res;
+        resPos = res;
     } else {
         res->clearPackageIds();
     }
