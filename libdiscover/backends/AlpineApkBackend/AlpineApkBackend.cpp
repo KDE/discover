@@ -66,7 +66,7 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
                      this, &AlpineApkBackend::finishCheckForUpdates);
     m_updatesTimeoutTimer->setTimerType(Qt::CoarseTimer);
     m_updatesTimeoutTimer->setSingleShot(true);
-    m_updatesTimeoutTimer->setInterval(2 * 60 * 1000); // 2minutes
+    m_updatesTimeoutTimer->setInterval(5 * 60 * 1000); // 5 minutes
 
     qCDebug(LOG_ALPINEAPK) << "backend: populating resources...";
 
@@ -87,7 +87,8 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
             // which places it into "System updates" section
             const QString key = pkg.name.toLower();
             m_resources.insert(key, res);
-            connect(res, &AlpineApkResource::stateChanged, this, &AlpineApkBackend::updatesCountChanged);
+            connect(res, &AlpineApkResource::stateChanged,
+                    this, &AlpineApkBackend::updatesCountChanged);
         }
         qCDebug(LOG_ALPINEAPK) << "  available" << m_availablePackages.size()
                                << "packages";
@@ -215,17 +216,20 @@ AbstractReviewsBackend *AlpineApkBackend::reviewsBackend() const
 
 Transaction* AlpineApkBackend::installApplication(AbstractResource *app, const AddonList &addons)
 {
-    return new AlpineApkTransaction(qobject_cast<AlpineApkResource *>(app), addons, Transaction::InstallRole);
+    return new AlpineApkTransaction(qobject_cast<AlpineApkResource *>(app),
+                                    addons, Transaction::InstallRole);
 }
 
 Transaction* AlpineApkBackend::installApplication(AbstractResource *app)
 {
-    return new AlpineApkTransaction(qobject_cast<AlpineApkResource *>(app), Transaction::InstallRole);
+    return new AlpineApkTransaction(qobject_cast<AlpineApkResource *>(app),
+                                    Transaction::InstallRole);
 }
 
 Transaction* AlpineApkBackend::removeApplication(AbstractResource *app)
 {
-    return new AlpineApkTransaction(qobject_cast<AlpineApkResource *>(app), Transaction::RemoveRole);
+    return new AlpineApkTransaction(qobject_cast<AlpineApkResource *>(app),
+                                    Transaction::RemoveRole);
 }
 
 int AlpineApkBackend::fetchingUpdatesProgress() const
@@ -281,4 +285,5 @@ void AlpineApkBackend::setFetchingUpdatesProgress(int percent)
     emit fetchingUpdatesProgressChanged();
 }
 
+// needed because DISCOVER_BACKEND_PLUGIN(AlpineApkBackend) contains Q_OBJECT
 #include "AlpineApkBackend.moc"
