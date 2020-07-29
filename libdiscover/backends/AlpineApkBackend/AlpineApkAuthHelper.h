@@ -32,6 +32,7 @@ class AlpineApkAuthHelper : public QObject
     Q_OBJECT
 public:
     AlpineApkAuthHelper();
+    ~AlpineApkAuthHelper() override;
 
 public Q_SLOTS:
     ActionReply update(const QVariantMap &args);

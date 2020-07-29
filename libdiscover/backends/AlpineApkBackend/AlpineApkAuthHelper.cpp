@@ -40,8 +40,18 @@ using namespace KAuth;
 
 AlpineApkAuthHelper::AlpineApkAuthHelper() {}
 
+AlpineApkAuthHelper::~AlpineApkAuthHelper()
+{
+    closeDatabase();
+}
+
 bool AlpineApkAuthHelper::openDatabase(const QVariantMap &args, bool readwrite)
 {
+    // is already opened?
+    if (m_apkdb.isOpen()) {
+        return true;
+    }
+
     // maybe set fakeRoot (needs to be done before Database::open()
     const QString fakeRoot = args.value(QLatin1String("fakeRoot"), QString()).toString();
     if (!fakeRoot.isEmpty()) {
@@ -62,7 +72,11 @@ bool AlpineApkAuthHelper::openDatabase(const QVariantMap &args, bool readwrite)
 
 void AlpineApkAuthHelper::closeDatabase()
 {
-    m_apkdb.close();
+    // close database only if opened
+    if (m_apkdb.isOpen()) {
+        // this also stops bg thread
+        m_apkdb.close();
+    }
 }
 
 void AlpineApkAuthHelper::setupTransactionPostCreate(QtApk::Transaction *trans)
@@ -142,9 +156,7 @@ ActionReply AlpineApkAuthHelper::update(const QVariantMap &args)
         });
     }
 
-    closeDatabase();
     HelperSupport::progressStep(100);
-
     return m_actionReply;
 }
 
@@ -177,9 +189,7 @@ ActionReply AlpineApkAuthHelper::add(const QVariantMap &args)
         m_actionReply = ActionReply::SuccessReply();
     }
 
-    closeDatabase();
     HelperSupport::progressStep(100);
-
     return m_actionReply;
 }
 
@@ -219,9 +229,7 @@ ActionReply AlpineApkAuthHelper::del(const QVariantMap &args)
         m_actionReply = ActionReply::SuccessReply();
     }
 
-    closeDatabase();
     HelperSupport::progressStep(100);
-
     return m_actionReply;
 }
 
@@ -265,9 +273,7 @@ ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
         m_actionReply.setData(replyData);
     }
 
-    closeDatabase();
     HelperSupport::progressStep(100);
-
     return m_actionReply;
 }
 
