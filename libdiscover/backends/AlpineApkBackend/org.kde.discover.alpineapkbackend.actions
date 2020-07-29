@@ -23,7 +23,7 @@ Policy=auth_admin
 Persistence=session
 
 [org.kde.discover.alpineapkbackend.repoconfig]
-Name=Remove package
+Name=Configure repositories
 Description=Configure repositories URLs
 Policy=auth_admin
 Persistence=session
