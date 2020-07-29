@@ -30,19 +30,19 @@ class AlpineApkTransaction : public Transaction
 {
 Q_OBJECT
 public:
-    AlpineApkTransaction(AlpineApkResource *app, Role role);
-    AlpineApkTransaction(AlpineApkResource *app, const AddonList &list, Role role);
+    AlpineApkTransaction(AlpineApkResource *res, Role role);
+    AlpineApkTransaction(AlpineApkResource *res, const AddonList &list, Role role);
 
     void cancel() override;
     void proceed() override;
 
 private Q_SLOTS:
-    void iterateTransaction();
-    void finishTransaction();
+    void startTransaction();
+    void finishTransactionOK();
+    void finishTransactionWithError(const QString &errMsg);
 
 private:
-    bool m_iterate = true;
-    AlpineApkResource *m_app;
+    AlpineApkResource *m_resource;
     AlpineApkBackend *m_backend;
 };
 
