@@ -43,8 +43,8 @@ Q_GLOBAL_STATIC_WITH_ARGS(StringCompactMode, s_decodeCompactMode, (StringCompact
 QCommandLineParser* createParser()
 {
     QCommandLineParser* parser = new QCommandLineParser;
-    parser->addOption(QCommandLineOption(QStringLiteral("application"), i18n("Directly open the specified application by its package name."), QStringLiteral("name")));
-    parser->addOption(QCommandLineOption(QStringLiteral("mime"), i18n("Open with a program that can deal with the given mimetype."), QStringLiteral("name")));
+    parser->addOption(QCommandLineOption(QStringLiteral("application"), i18n("Directly open the specified application by its appstream:// URI."), QStringLiteral("name")));
+    parser->addOption(QCommandLineOption(QStringLiteral("mime"), i18n("Open with a search for programs that can deal with the given mimetype."), QStringLiteral("name")));
     parser->addOption(QCommandLineOption(QStringLiteral("category"), i18n("Display a list of entries with a category."), QStringLiteral("name")));
     parser->addOption(QCommandLineOption(QStringLiteral("mode"), i18n("Open Discover in a said mode. Modes correspond to the toolbar buttons."), QStringLiteral("name")));
     parser->addOption(QCommandLineOption(QStringLiteral("listmodes"), i18n("List all the available modes.")));
