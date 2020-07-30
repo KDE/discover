@@ -68,8 +68,7 @@ void processArgs(QCommandLineParser* parser, DiscoverObject* mainWindow)
         mainWindow->openMimeType(parser->value(QStringLiteral("mime")));
     else if(parser->isSet(QStringLiteral("category")))
         mainWindow->openCategory(parser->value(QStringLiteral("category")));
-
-    if(parser->isSet(QStringLiteral("mode")))
+    else if(parser->isSet(QStringLiteral("mode")))
         mainWindow->openMode(parser->value(QStringLiteral("mode")));
     else
         mainWindow->openMode(QStringLiteral("Browsing"));
