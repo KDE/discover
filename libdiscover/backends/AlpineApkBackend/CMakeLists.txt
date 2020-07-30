@@ -39,6 +39,7 @@ target_link_libraries(
         KF5::AuthCore
         Discover::Common
         ApkQt::ApkQt
+        AppStreamQt
 )
 
 # KAuth helper exe

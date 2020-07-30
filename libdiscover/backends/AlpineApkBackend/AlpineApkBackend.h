@@ -26,6 +26,8 @@
 
 #include <QtApk>
 
+#include <AppStreamQt/component.h>
+
 class AlpineApkReviewsBackend;
 class AlpineApkUpdater;
 class AlpineApkResource;
@@ -77,6 +79,8 @@ private:
     bool m_fetching = false;
     int m_fetchProgress = 0;
     QTimer *m_updatesTimeoutTimer;
+    QList<AppStream::Component> m_appStreamComponents;
+    // QVector<QString> m_collectedCategories;
 };
 
 #endif // AlpineApkBackend_H

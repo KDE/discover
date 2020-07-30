@@ -32,11 +32,14 @@
 
 #include <KLocalizedString>
 
+#include <AppStreamQt/pool.h>
+
+#include <QAction>
 #include <QDebug>
 #include <QLoggingCategory>
+#include <QSet>
 #include <QThread>
 #include <QTimer>
-#include <QAction>
 
 DISCOVER_BACKEND_PLUGIN(AlpineApkBackend)
 
@@ -68,6 +71,36 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
     m_updatesTimeoutTimer->setSingleShot(true);
     m_updatesTimeoutTimer->setInterval(5 * 60 * 1000); // 5 minutes
 
+    qCDebug(LOG_ALPINEAPK) << "backend: loading AppStream metadata...";
+    AppStream::Pool *appStreamPool = new AppStream::Pool(this);
+    appStreamPool->setFlags(AppStream::Pool::FlagReadCollection |
+                            AppStream::Pool::FlagReadMetainfo |
+                            AppStream::Pool::FlagReadDesktopFiles);
+    appStreamPool->setCacheFlags(AppStream::Pool::CacheFlagUseUser |
+                                 AppStream::Pool::CacheFlagUseSystem);
+    if (!appStreamPool->load()) {
+        qCWarning(LOG_ALPINEAPK) << "backend: Failed to load appstream data:"
+                                 << appStreamPool->lastError();
+    } else {
+        m_appStreamComponents = appStreamPool->components();
+        qCDebug(LOG_ALPINEAPK) << "backend: loaded AppStream metadata OK:"
+                               << m_appStreamComponents.size() << "components.";
+        // collect all categories present in appstream metadata
+//        QSet<QString> collectedCategories;
+//        for (const AppStream::Component &component : m_appStreamComponents) {
+//            const QStringList cats = component.categories();
+//            for (const QString &cat : cats) {
+//                collectedCategories.insert(cat);
+//            }
+//        }
+//        for (const QString &cat : collectedCategories) {
+//            qCDebug(LOG_ALPINEAPK) << "    collected category: " << cat;
+//            m_collectedCategories << cat;
+//        }
+    }
+    delete appStreamPool;
+    appStreamPool = nullptr;
+
     qCDebug(LOG_ALPINEAPK) << "backend: populating resources...";
 
     if (m_apkdb.open(QtApk::QTAPK_OPENF_READONLY)) {
@@ -78,13 +111,38 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
 
     if (m_availablePackages.size() > 0) {
         for (const QtApk::Package &pkg: m_availablePackages) {
-            AlpineApkResource *res = new AlpineApkResource(pkg, this);
+
+            // try to find appstream data for this package
+            AppStream::Component appstreamComponent;
+            AbstractResource::Type resType = AbstractResource::Type::Technical; // default
+            for (const auto& appsC : m_appStreamComponents) {
+                // find result which package name is exactly the one we want
+                if (appsC.packageNames().contains(pkg.name)) {
+                    // found!
+                    appstreamComponent = appsC;
+                    // determine resource type here
+                    switch (appsC.kind()) {
+                    case AppStream::Component::KindDesktopApp:
+                    case AppStream::Component::KindConsoleApp:
+                    case AppStream::Component::KindWebApp:
+                        resType = AbstractResource::Type::Application;
+                        break;
+                    case AppStream::Component::KindAddon:
+                        resType = AbstractResource::Type::Addon;
+                        break;
+                    default:
+                        resType = AbstractResource::Type::Technical;
+                        break;
+                    }
+                    break; // exit for() loop
+                }
+            }
+
+            AlpineApkResource *res = new AlpineApkResource(pkg, appstreamComponent, resType, this);
             res->setCategoryName(QStringLiteral("alpine_packages"));
             res->setOriginSource(QStringLiteral("apk"));
             res->setSection(QStringLiteral("dummy"));
-            // here is the place to set a proper type of package
-            // AlpineApkResource defaults to AbstractResource::Technical,
-            // which places it into "System updates" section
+
             const QString key = pkg.name.toLower();
             m_resources.insert(key, res);
             connect(res, &AlpineApkResource::stateChanged,
@@ -125,6 +183,26 @@ QVector<Category *> AlpineApkBackend::category() const
     );
 
     return { s_rootCat };
+
+//    static QVector<Category *> s_cats;
+//    if (s_cats.isEmpty()) {
+//        // fill only once
+//        s_cats << s_rootCat;
+//        for (const QString &scat : m_collectedCategories) {
+//            Category *cat = new Category(
+//                        scat,   // name
+//                        QStringLiteral("package-x-generic"), // icon
+//                        {},     // orFilters
+//                        { displayName() }, // pluginName
+//                        {},     // subcategories
+//                        QUrl(), // decoration
+//                        false   // isAddons
+//            );
+//            s_cats << cat;
+//        }
+//    }
+//    return s_cats;
+    // ^^ causes deep hang in discover in recalculating QML bindings
 }
 
 int AlpineApkBackend::updatesCount() const
