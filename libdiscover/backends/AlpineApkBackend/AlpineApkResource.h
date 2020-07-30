@@ -23,6 +23,7 @@
 
 #include <resources/AbstractResource.h>
 #include <QtApkPackage.h>
+#include <AppStreamQt/component.h>
 
 class AddonList;
 
@@ -31,7 +32,10 @@ class AlpineApkResource : public AbstractResource
     Q_OBJECT
 
 public:
-    explicit AlpineApkResource(const QtApk::Package &apkPkg, AbstractResourcesBackend *parent);
+    explicit AlpineApkResource(const QtApk::Package &apkPkg,
+                               AppStream::Component &component,
+                               AbstractResource::Type typ,
+                               AbstractResourcesBackend *parent);
 
     QList<PackageState> addonsInformation() override;
     QString section() override;
@@ -52,10 +56,11 @@ public:
     QString name() const override;
     QString packageName() const override;
     AbstractResource::Type type() const override { return m_type; }
-    bool canExecute() const override { return true; }
+    bool canExecute() const override;
     void invokeApplication() const override;
     void fetchChangelog() override;
     void fetchScreenshots() override;
+    QString appstreamId() const override;
     QUrl url() const override;
     QString author() const override;
     QString sourceIcon() const override;
@@ -69,6 +74,9 @@ public:
     void setAddonInstalled(const QString &addon, bool installed);
     void setAvailableVersion(const QString &av);
 
+private:
+    bool hasAppStreamData() const;
+
 public:
     AbstractResource::State m_state;
     const AbstractResource::Type m_type;
@@ -78,6 +86,7 @@ public:
     QString m_originSoruce;
     QString m_sectionName;
     QList<PackageState> m_addons;
+    AppStream::Component m_appsC;
 };
 
 #endif // ALPINEAPKRESOURCE_H
