@@ -465,8 +465,15 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
     if (!filter.resourceUrl.isEmpty()) {
         return findResourceByPackageName(filter.resourceUrl);
     } else if (!filter.extends.isEmpty()) {
-        const auto ext = kTransform<QVector<AbstractResource*>>(m_packages.extendedBy.value(filter.extends), [](AppPackageKitResource* a){ return a; });
-        return new PKResultsStream(this, QStringLiteral("PackageKitStream-extends"), ext);
+        auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-extends"));
+        auto f = [this, filter, stream] {
+            const auto resources = kTransform<QVector<AbstractResource*>>(m_packages.extendedBy.value(filter.extends), [](AppPackageKitResource* a){ return a; });
+            if (!resources.isEmpty()) {
+                Q_EMIT stream->setResources(resources);
+            }
+        };
+        runWhenInitialized(f, stream);
+        return stream;
     } else if (filter.state == AbstractResource::Upgradeable) {
         return new ResultsStream(QStringLiteral("PackageKitStream-upgradeable"), kTransform<QVector<AbstractResource*>>(upgradeablePackages())); //No need for it to be a PKResultsStream
     } else if (filter.state == AbstractResource::Installed) {
