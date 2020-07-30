@@ -103,6 +103,8 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         template <typename T>
         T resourcesByPackageNames(const QStringList& names) const;
 
+        void runWhenInitialized(const std::function<void()> &f, QObject* stream);
+
         void checkDaemonRunning();
         void acquireFetching(bool f);
         void includePackagesToAdd();

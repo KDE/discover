@@ -495,13 +495,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
             });
             }
         };
-
-        if (!m_appstreamInitialized) {
-            connect(this, &PackageKitBackend::loadedAppStream, stream, f);
-        } else {
-            QTimer::singleShot(0, this, f);
-        }
-
+        runWhenInitialized(f, stream);
         return stream;
     } else if (filter.search.isEmpty()) {
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-all"));
@@ -511,11 +505,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 Q_EMIT stream->setResources(resources);
             }
         };
-        if (!m_appstreamInitialized) {
-            connect(this, &PackageKitBackend::loadedAppStream, stream, f);
-        } else {
-            QTimer::singleShot(0, this, f);
-        }
+        runWhenInitialized(f, stream);
         return stream;
     } else {
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-search"));
@@ -544,12 +534,17 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 stream->finish();
             }, Qt::QueuedConnection);
         };
-        if (!m_appstreamInitialized) {
-            connect(this, &PackageKitBackend::loadedAppStream, stream, f);
-        } else {
-            QTimer::singleShot(0, this, f);
-        }
+        runWhenInitialized(f, stream);
         return stream;
+    }
+}
+
+void PackageKitBackend::runWhenInitialized(const std::function<void ()>& f, QObject* stream)
+{
+    if (!m_appstreamInitialized) {
+        connect(this, &PackageKitBackend::loadedAppStream, stream, f);
+    } else {
+        QTimer::singleShot(0, this, f);
     }
 }
 
@@ -609,11 +604,7 @@ PKResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
     //             if (!pkg)
     //                 qCDebug(LIBDISCOVER_BACKEND_LOG) << "could not find" << host << deprecatedHost;
             };
-            if (!m_appstreamInitialized) {
-                connect(this, &PackageKitBackend::loadedAppStream, stream, f);
-            } else {
-                QTimer::singleShot(0, this, f);
-            }
+            runWhenInitialized(f, stream);
             return stream;
         }
     }
