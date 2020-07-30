@@ -504,7 +504,19 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
 
         return stream;
     } else if (filter.search.isEmpty()) {
-        return new PKResultsStream(this, QStringLiteral("PackageKitStream-all"), kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource*>(res)->extendsItself(); }));
+        auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-all"));
+        auto f = [this, filter, stream] {
+            auto resources = kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource*>(res)->extendsItself(); });
+            if (!resources.isEmpty()) {
+                Q_EMIT stream->setResources(resources);
+            }
+        };
+        if (!m_appstreamInitialized) {
+            connect(this, &PackageKitBackend::loadedAppStream, stream, f);
+        } else {
+            QTimer::singleShot(0, this, f);
+        }
+        return stream;
     } else {
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-search"));
         const auto f = [this, stream, filter] () {
