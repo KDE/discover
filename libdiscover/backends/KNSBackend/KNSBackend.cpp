@@ -242,10 +242,22 @@ void KNSBackend::markInvalid(const QString &message)
 void KNSBackend::fetchInstalled()
 {
     auto search = new OneTimeAction([this]() {
+        // First we ensure we've got data loaded on what we've got installed already
         Q_EMIT startingSearch();
         m_onePage = true;
         m_responsePending = true;
         m_engine->checkForInstalled();
+        // And then we check for updates - we could do only one, if all we cared about was updates,
+        // but to have both a useful initial list, /and/ information on updates, we want to get both.
+        // The reason we are not doing a checkUpdates() overload for this is that the caching for this
+        // information is done by KNSEngine, and we want to actually load it every time we initialize.
+        auto updateChecker = new OneTimeAction([this]() {
+            Q_EMIT startingSearch();
+            m_onePage = true;
+            m_responsePending = true;
+            m_engine->checkForUpdates();
+        }, this);
+        connect(this, &KNSBackend::availableForQueries, updateChecker, &OneTimeAction::trigger, Qt::QueuedConnection);
     }, this);
 
     if (m_responsePending) {
