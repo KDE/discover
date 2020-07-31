@@ -267,6 +267,26 @@ void KNSBackend::fetchInstalled()
     }
 }
 
+void KNSBackend::checkForUpdates()
+{
+    // Since we load the updates during initialization already, don't overburden
+    // the machine with multiple of these, because that would just be silly.
+    if (m_initialized) {
+        auto updateChecker = new OneTimeAction([this]() {
+            Q_EMIT startingSearch();
+            m_onePage = true;
+            m_responsePending = true;
+            m_engine->checkForUpdates();
+        }, this);
+
+        if (m_responsePending) {
+            connect(this, &KNSBackend::availableForQueries, updateChecker, &OneTimeAction::trigger, Qt::QueuedConnection);
+        } else {
+            updateChecker->trigger();
+        }
+    }
+}
+
 void KNSBackend::setFetching(bool f)
 {
     if(m_fetching!=f) {

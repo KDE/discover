@@ -62,7 +62,7 @@ public:
 
     KNSCore::Engine* engine() const { return m_engine; }
 
-    void checkForUpdates() override {}
+    void checkForUpdates() override;
 
     QString displayName() const override;
 
