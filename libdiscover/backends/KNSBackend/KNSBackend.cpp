@@ -442,14 +442,12 @@ public:
                 engine->uninstall(res->entry());
             };
         else if (res->linkIds().isEmpty())
-            actionFunction = [res, engine]() {
-                engine->install(res->entry());
+            actionFunction = [res]() {
+                qWarning() << "No installable candidates in the KNewStuff entry" << res->entry().name() << "with id" << res->entry().uniqueId() << "on the backend" << res->backend()->name() << "There should always be at least one downloadable item in an OCS entry, and if there isn't, we should consider it broken. OCS can technically show them, but if there is nothing to install, it cannot be installed.";
             };
         else
             actionFunction = [res, engine]() {
-                const auto links = res->linkIds();
-                for(auto i : links)
-                    engine->install(res->entry(), i);
+                engine->install(res->entry());
             };
         QTimer::singleShot(0, res, actionFunction);
     }
