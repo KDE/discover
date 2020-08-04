@@ -441,6 +441,10 @@ public:
             actionFunction = [res, engine]() {
                 engine->uninstall(res->entry());
             };
+        else if (res->entry().status() == KNS3::Entry::Updateable)
+            actionFunction = [res, engine]() {
+                engine->install(res->entry(), -1);
+            };
         else if (res->linkIds().isEmpty())
             actionFunction = [res]() {
                 qWarning() << "No installable candidates in the KNewStuff entry" << res->entry().name() << "with id" << res->entry().uniqueId() << "on the backend" << res->backend()->name() << "There should always be at least one downloadable item in an OCS entry, and if there isn't, we should consider it broken. OCS can technically show them, but if there is nothing to install, it cannot be installed.";
