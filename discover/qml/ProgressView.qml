@@ -31,10 +31,6 @@ Kirigami.AbstractListItem {
         if (!sheetObject.sheetOpen)
             sheetObject.open()
     }
-    onVisibleChanged: if (!visible && sheetObject) {
-        sheetObject.close()
-        sheetObject.destroy(100)
-    }
 
     readonly property var v3: Component {
         id: sheet
@@ -42,6 +38,11 @@ Kirigami.AbstractListItem {
             parent: applicationWindow().overlay
             header: Kirigami.Heading {
                 text: i18n("Tasks")
+            }
+            onSheetOpenChanged: {
+                if (!sheetOpen) {
+                    sheetObject.destroy(100)
+                }
             }
             contentItem: ListView {
                 id: tasksView
