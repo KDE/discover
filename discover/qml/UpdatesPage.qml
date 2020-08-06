@@ -121,6 +121,7 @@ DiscoverPage
             anchors.left: parent.left
             anchors.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.smallSpacing
             anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
             text: page.unselected === 0 ? i18n("All updates selected (%1)", updateModel.updateSize) : i18np("%1/%2 update selected (%3)", "%1/%2 updates selected (%3)", updateModel.toUpdateCount, updateModel.totalUpdatesCount, updateModel.updateSize)
             enabled: updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
             tristate: true
