@@ -26,7 +26,6 @@
 #include <appstream/AppStreamUtils.h>
 #include <PackageKit/Daemon>
 #include <KLocalizedString>
-#include <KToolInvocation>
 #include <QIcon>
 #include <QFile>
 #include <QProcess>
