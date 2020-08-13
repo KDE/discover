@@ -84,6 +84,7 @@ DiscoverPage {
                         property QtObject action
                         text: action.text
                         tooltip: action.toolTip
+                        visible: action.visible
                         onTriggered: action.trigger()
                     }
                 }
