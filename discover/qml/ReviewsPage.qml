@@ -67,6 +67,7 @@ Kirigami.OverlaySheet {
                 onClicked: page.openReviewDialog()
             }
             Label {
+                Layout.fillWidth: true
                 text: i18n("Install this app to write a review")
                 wrapMode: Text.WordWrap
                 visible: !reviewButton.enabled
