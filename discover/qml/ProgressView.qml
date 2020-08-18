@@ -55,6 +55,15 @@ Kirigami.AbstractListItem {
                 }
                 model: TransactionModel
 
+                Connections {
+                    target: TransactionModel
+                    function onRowsRemoved() {
+                        if (TransactionModel.count === 0) {
+                            sheetObject.close();
+                        }
+                    }
+                }
+
                 delegate: Kirigami.AbstractListItem {
                     id: del
                     highlighted: false
