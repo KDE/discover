@@ -34,6 +34,12 @@ Kirigami.OverlaySheet
         wrapMode: Text.WordWrap
     }
 
+    onSheetOpenChanged: {
+        if (sheetOpen) {
+            repository.forceActiveFocus();
+        }
+    }
+
     ColumnLayout {
 
         Label {
