@@ -35,24 +35,28 @@ static void installationChanged(GFileMonitor *monitor, GFile *child, GFile *othe
     Q_UNUSED(other_file);
     Q_UNUSED(event_type);
 
-    FlatpakNotifier *notifier = (FlatpakNotifier*) self;
-    if (!notifier) {
+    FlatpakNotifier::Installation *installation = (FlatpakNotifier::Installation*) self;
+    if (!installation)
         return;
-    }
 
-    if (notifier->m_user.m_monitor == monitor)
-        notifier->loadRemoteUpdates(&notifier->m_user);
-    else
-        notifier->loadRemoteUpdates(&notifier->m_system);
+    FlatpakNotifier *notifier = installation->m_notifier;
+    notifier->loadRemoteUpdates(installation);
 }
 
 FlatpakNotifier::FlatpakNotifier(QObject* parent)
     : BackendNotifierModule(parent)
+    , m_user(this)
+    , m_system(this)
     , m_cancellable(g_cancellable_new())
 {
     QTimer *dailyCheck = new QTimer(this);
     dailyCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
     connect(dailyCheck, &QTimer::timeout, this, &FlatpakNotifier::recheckSystemUpdateNeeded);
+}
+
+FlatpakNotifier::Installation::Installation(FlatpakNotifier *notifier)
+    : m_notifier(notifier)
+{
 }
 
 FlatpakNotifier::Installation::~Installation()

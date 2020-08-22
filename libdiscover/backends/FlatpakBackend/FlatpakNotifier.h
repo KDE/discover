@@ -43,10 +43,12 @@ public:
     bool needsReboot() const override { return false; }
 
     struct Installation {
+        explicit Installation(FlatpakNotifier *notifier);
         ~Installation();
 
         bool ensureInitialized(std::function<FlatpakInstallation*()> func, GCancellable *, GError **error);
 
+        FlatpakNotifier *m_notifier;
         bool m_hasUpdates = false;
         GFileMonitor *m_monitor = nullptr;
         FlatpakInstallation *m_installation = nullptr;
