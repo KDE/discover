@@ -1,6 +1,6 @@
 import QtQuick 2.5
 import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.14
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
@@ -199,58 +199,51 @@ Kirigami.ApplicationWindow
                 wrapMode: Text.WordWrap
             }
 
-            ColumnLayout {
+            // No need to add our own ScrollView since OverlaySheet includes
+            // one automatically.
+            // But we do need to put the label into a Layout of some sort so we
+            // can limit the width of the sheet.
+            contentItem: ColumnLayout {
                 Label {
                     id: desc
+
                     Layout.fillWidth: true
-                    Layout.maximumHeight: clip ? window.height * 0.5 : implicitHeight
-                    clip: true
+                    Layout.maximumWidth: Kirigami.Units.gridUnit * 30
+
                     textFormat: Text.StyledText
                     wrapMode: Text.WordWrap
-
-                    readonly property var bottomShadow: Shadow {
-                        parent: desc
-                        anchors {
-                            right: parent.right
-                            left: parent.left
-                            bottom: parent.bottom
-                        }
-                        visible: desc.clip
-                        edge: Qt.BottomEdge
-                        height: desc.height * 0.01
-                    }
-                }
-                Button {
-                    text: desc.clip ? i18n("Show all") : i18n("Hide")
-                    onClicked: desc.clip = !desc.clip
-                    visible: window.height * 0.5 < desc.implicitHeight
-                }
-                RowLayout {
-                    Layout.alignment: Qt.AlignRight
-                    Button {
-                        text: i18n("Proceed")
-                        icon.name: "dialog-ok"
-                        onClicked: {
-                            transaction.proceed()
-                            sheet.acted = true
-                            sheet.close()
-                        }
-                        Keys.onEnterPressed: clicked()
-                        Keys.onReturnPressed: clicked()
-                    }
-                    Button {
-                        Layout.alignment: Qt.AlignRight
-                        text: i18n("Cancel")
-                        icon.name: "dialog-cancel"
-                        onClicked: {
-                            transaction.cancel()
-                            sheet.acted = true
-                            sheet.close()
-                        }
-                        Keys.onEscapePressed: clicked()
-                    }
                 }
             }
+
+            footer: RowLayout {
+
+                Item { Layout.fillWidth : true }
+
+                Button {
+                    text: i18n("Proceed")
+                    icon.name: "dialog-ok"
+                    onClicked: {
+                        transaction.proceed()
+                        sheet.acted = true
+                        sheet.close()
+                    }
+                    Keys.onEnterPressed: clicked()
+                    Keys.onReturnPressed: clicked()
+                }
+
+                Button {
+                    Layout.alignment: Qt.AlignRight
+                    text: i18n("Cancel")
+                    icon.name: "dialog-cancel"
+                    onClicked: {
+                        transaction.cancel()
+                        sheet.acted = true
+                        sheet.close()
+                    }
+                    Keys.onEscapePressed: clicked()
+                }
+            }
+
             onSheetOpenChanged: if(!sheetOpen) {
                 sheet.destroy(1000)
                 if (!sheet.acted)
