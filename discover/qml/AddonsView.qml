@@ -34,13 +34,6 @@ Kirigami.OverlaySheet
                     checked: model.checked
                     onClicked: addonsModel.changeState(packageName, checked)
                 }
-                Kirigami.Icon {
-                    source: "applications-other"
-                    smooth: true
-                    Layout.minimumWidth: content.implicitHeight
-                    Layout.minimumHeight: content.implicitHeight
-                    opacity: addonsView.isInstalling ? 0.3 : 1
-                }
 
                 ColumnLayout {
                     id: content
@@ -54,41 +47,39 @@ Kirigami.OverlaySheet
                     Label {
                         Layout.fillWidth: true
                         elide: Text.ElideRight
-                        font.italic: true
                         text: toolTip
+                        opacity: 0.6
                     }
                 }
             }
         }
+    }
 
-        RowLayout {
-            readonly property bool active: addonsModel.hasChanges && !addonsView.isInstalling
-            spacing: Kirigami.Units.largeSpacing
+    footer: RowLayout {
 
-            Button {
-                icon.name: "dialog-ok"
-                text: i18n("Apply Changes")
-                onClicked: addonsModel.applyChanges()
+        readonly property bool active: addonsModel.hasChanges && !addonsView.isInstalling
 
-                visible: parent.active
-            }
-            Button {
-                icon.name: "document-revert"
-                text: i18n("Discard")
-                onClicked: addonsModel.discardChanges()
+        Button {
+            text: i18n("More...")
+            visible: application.appstreamId.length>0 && addonsView.isExtended
+            onClicked: Navigation.openExtends(application.appstreamId)
+        }
 
-                visible: parent.active
-            }
-            Item {
-                Layout.fillWidth: true
-                height: Kirigami.Units.largeSpacing
-            }
-            Button {
-                Layout.alignment: Qt.AlignRight
-                text: i18n("More...")
-                visible: application.appstreamId.length>0 && addonsView.isExtended
-                onClicked: Navigation.openExtends(application.appstreamId)
-            }
+        Item { Layout.fillWidth: true }
+
+        Button {
+            icon.name: "dialog-ok"
+            text: i18n("Apply Changes")
+            onClicked: addonsModel.applyChanges()
+
+            enabled: parent.active
+        }
+        Button {
+            icon.name: "document-revert"
+            text: i18n("Reset")
+            onClicked: addonsModel.discardChanges()
+
+            enabled: parent.active
         }
     }
 }
