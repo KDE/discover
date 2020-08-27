@@ -39,8 +39,9 @@ Kirigami.OverlaySheet
                     id: content
                     Layout.fillWidth: true
                     spacing: 0
-                    Label {
+                    Kirigami.Heading {
                         Layout.fillWidth: true
+                        level: 5
                         elide: Text.ElideRight
                         text: display
                     }
@@ -49,6 +50,7 @@ Kirigami.OverlaySheet
                         elide: Text.ElideRight
                         text: toolTip
                         opacity: 0.6
+                        font: theme.smallestFont
                     }
                 }
             }
