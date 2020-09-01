@@ -1,9 +1,9 @@
 import QtQuick 2.1
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import "navigation.js" as Navigation
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.OverlaySheet
 {
@@ -12,48 +12,37 @@ Kirigami.OverlaySheet
 
     property alias application: addonsModel.application
     property bool isInstalling: false
-    readonly property bool containsAddons: rep.count>0 || isExtended
+    readonly property bool containsAddons: listview.count > 0 || isExtended
     readonly property bool isExtended: ResourcesModel.isExtended(application.appstreamId)
 
     header: Kirigami.Heading { text: i18n("Addons") }
 
-    ColumnLayout
+    ListView
     {
+        id: listview
+
+        implicitWidth: Kirigami.Units.gridUnit * 25
+
         visible: addonsView.containsAddons
         enabled: !addonsView.isInstalling
-        spacing: Kirigami.Units.largeSpacing
 
-        Repeater
-        {
-            id: rep
-            model: ApplicationAddonsModel { id: addonsModel }
+        model: ApplicationAddonsModel { id: addonsModel }
 
-            delegate: RowLayout {
-                Layout.fillWidth: true
+        delegate: Kirigami.CheckableListItem {
+            id: listItem
 
-                CheckBox {
-                    enabled: !addonsView.isInstalling
-                    checked: model.checked
-                    onClicked: addonsModel.changeState(packageName, checked)
-                }
+            enabled: !addonsView.isInstalling
 
-                ColumnLayout {
-                    id: content
-                    Layout.fillWidth: true
-                    spacing: 0
-                    Kirigami.Heading {
-                        Layout.fillWidth: true
-                        level: 5
-                        elide: Text.ElideRight
-                        text: display
-                    }
-                    Label {
-                        Layout.fillWidth: true
-                        elide: Text.ElideRight
-                        text: toolTip
-                        opacity: 0.6
-                        font: theme.smallestFont
-                    }
+            icon: undefined
+            label: model.display
+            subtitle: model.toolTip
+
+            checked: model.checked
+
+            action: Action {
+                onTriggered: {
+                    checked = !checked
+                    addonsModel.changeState(packageName, listItem.checked)
                 }
             }
         }
