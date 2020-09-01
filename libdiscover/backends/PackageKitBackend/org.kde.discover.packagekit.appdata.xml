@@ -29,6 +29,7 @@
   <name xml:lang="pl">Silnik PackageKit</name>
   <name xml:lang="pt">Infra-estrutura do PackageKit</name>
   <name xml:lang="pt-BR">Infraestrutura PackageKit</name>
+  <name xml:lang="ro">Platformă PackageKit</name>
   <name xml:lang="ru">Модуль поддержки PackageKit</name>
   <name xml:lang="sk">Podporný program pre PackageKit</name>
   <name xml:lang="sl">Zaledje PackageKit</name>
@@ -65,6 +66,7 @@
   <summary xml:lang="pl">Integruje aplikacje dystrybucji w Odkrywcy</summary>
   <summary xml:lang="pt">Integra as aplicações da distribuição no Discover</summary>
   <summary xml:lang="pt-BR">Integra aplicativos da distribuição no Discover</summary>
+  <summary xml:lang="ro">Integrează aplicațiile distribuției în Descoperă</summary>
   <summary xml:lang="ru">Добавление поддержки приложений из дистрибутива ОС в центр программ Discover</summary>
   <summary xml:lang="sk">Integruje aplikácie z distribúcie do aplikácie Discover</summary>
   <summary xml:lang="sl">V Discover vgradi programe distribucije</summary>
@@ -104,6 +106,7 @@
   <developer_name xml:lang="pl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="pt">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="pt-BR">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ro">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ru">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sl">Aleix Pol Gonzalez</developer_name>
