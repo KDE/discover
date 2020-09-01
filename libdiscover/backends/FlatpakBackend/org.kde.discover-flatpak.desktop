@@ -29,6 +29,7 @@ Name[pa]=ਖੋਜ
 Name[pl]=Odkrywca
 Name[pt]=Discover
 Name[pt_BR]=Discover
+Name[ro]=Descoperă
 Name[ru]=Discover
 Name[sk]=Discover
 Name[sl]=Discover
