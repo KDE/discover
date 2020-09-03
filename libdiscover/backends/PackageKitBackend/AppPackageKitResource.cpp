@@ -111,12 +111,12 @@ QStringList AppPackageKitResource::mimetypes() const
     return m_appdata.provided(AppStream::Provided::KindMimetype).items();
 }
 
-static const QVector<AppStream::Component::Kind> s_addonKinds = {AppStream::Component::KindAddon, AppStream::Component::KindCodec};
+static constexpr auto s_addonKinds = {AppStream::Component::KindAddon, AppStream::Component::KindCodec};
 
 QStringList AppPackageKitResource::categories()
 {
     auto cats = m_appdata.categories();
-    if (!s_addonKinds.contains(m_appdata.kind()))
+    if (!kContainsValue(s_addonKinds, m_appdata.kind()))
         cats.append(QStringLiteral("Application"));
     return cats;
 }
@@ -166,7 +166,7 @@ AbstractResource::Type AppPackageKitResource::type() const
 {
     static QString desktop = QString::fromUtf8(qgetenv("XDG_CURRENT_DESKTOP"));
     const auto desktops = m_appdata.compulsoryForDesktops();
-    return s_addonKinds.contains(m_appdata.kind())               ? Addon
+    return kContainsValue(s_addonKinds, m_appdata.kind())        ? Addon
            : (desktops.isEmpty() || !desktops.contains(desktop)) ? Application
                                                                  : Technical;
 }

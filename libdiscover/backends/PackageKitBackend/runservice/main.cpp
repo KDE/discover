@@ -38,8 +38,8 @@ int main(int argc, char** argv)
 
     KIO::ApplicationLauncherJob *job = new KIO::ApplicationLauncherJob(service);
     job->start();
-    QObject::connect(job, &KIO::ApplicationLauncherJob::finished, &app, [&] {
-        app.exit(job->error());
+    QObject::connect(job, &KIO::ApplicationLauncherJob::finished, &app, [job] {
+        QCoreApplication::instance()->exit(job->error());
     });
     return app.exec();
 }

@@ -65,11 +65,7 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory {
         QVector<AbstractResourcesBackend*> newInstance(QObject* parent, const QString &/*name*/) const override
         {
             QVector<AbstractResourcesBackend*> ret;
-#if KNEWSTUFFCORE_VERSION_MAJOR==5 && KNEWSTUFFCORE_VERSION_MINOR>=57
-            QStringList locations = KNSCore::Engine::configSearchLocations();
-#else
-            QStringList locations = QStandardPaths::standardLocations(QStandardPaths::GenericConfigLocation);
-#endif
+            const QStringList locations = KNSCore::Engine::configSearchLocations();
             QSet<QString> files;
             for (const QString &path: locations) {
                 QDirIterator dirIt(path, {QStringLiteral("*.knsrc")}, QDir::Files);
@@ -154,9 +150,9 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     }
 
     QVector<Category*> topCategories{categories};
-    for (const auto &cat: categories) {
+    for (const auto &cat: qAsConst(categories)) {
         const QString catName = cat->name().append(QLatin1Char('/'));
-        for (const auto& potentialSubCat: categories) {
+        for (const auto& potentialSubCat: qAsConst(categories)) {
             if(potentialSubCat->name().startsWith(catName)) {
                 cat->addSubcategory(potentialSubCat);
                 topCategories.removeOne(potentialSubCat);
@@ -170,10 +166,10 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::detailsLoaded);
     connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
-    connect(m_engine, &KNSCore::Engine::signalCategoriesMetadataLoded, this, [categories](const QList< KNSCore::Provider::CategoryMetadata>& categoryMetadatas){
+    connect(m_engine, &KNSCore::Engine::signalCategoriesMetadataLoded, this, [categories] (const QList<KNSCore::Provider::CategoryMetadata>& categoryMetadatas){
         for (const KNSCore::Provider::CategoryMetadata& category : categoryMetadatas) {
-            for (Category* cat : categories) {
-                if (cat->orFilters().count() > 0 && cat->orFilters().first().second == category.name) {
+            for (Category* cat : qAsConst(categories)) {
+                if (cat->orFilters().count() > 0 && cat->orFilters().constFirst().second == category.name) {
                     cat->setName(category.displayName);
                     break;
                 }
@@ -643,7 +639,7 @@ QString KNSBackend::displayName() const
 void KNSBackend::detailsLoaded(const KNSCore::EntryInternal& entry)
 {
     auto res = resourceForEntry(entry);
-    res->longDescriptionChanged();
+    Q_EMIT res->longDescriptionChanged();
 }
 
 #include "KNSBackend.moc"

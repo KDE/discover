@@ -176,10 +176,9 @@ static DelayedAppStreamLoad loadAppStream(AppStream::Pool* appdata)
 {
     DelayedAppStreamLoad ret;
 
-    QString error;
-    ret.correct = appdata->load(&error);
+    ret.correct = appdata->load();
     if (!ret.correct) {
-        qWarning() << "Could not open the AppStream metadata pool" << error;
+        qWarning() << "Could not open the AppStream metadata pool" << appdata->lastError();
     }
 
     const auto components = appdata->components();
@@ -293,8 +292,8 @@ void PackageKitBackend::fetchUpdates()
     m_hasSecurityUpdates = false;
 
     m_updater->setProgressing(true);
-    
-    fetchingUpdatesProgressChanged();
+
+    Q_EMIT fetchingUpdatesProgressChanged();
 }
 
 void PackageKitBackend::addPackageArch(PackageKit::Transaction::Info info, const QString& packageId, const QString& summary)
@@ -469,7 +468,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
         auto f = [this, filter, stream] {
             const auto resources = kTransform<QVector<AbstractResource*>>(m_packages.extendedBy.value(filter.extends), [](AppPackageKitResource* a){ return a; });
             if (!resources.isEmpty()) {
-                Q_EMIT stream->setResources(resources);
+                stream->setResources(resources);
             }
         };
         runWhenInitialized(f, stream);
@@ -509,7 +508,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
         auto f = [this, filter, stream] {
             auto resources = kFilter<QVector<AbstractResource*>>(m_packages.packages, [](AbstractResource* res) { return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource*>(res)->extendsItself(); });
             if (!resources.isEmpty()) {
-                Q_EMIT stream->setResources(resources);
+                stream->setResources(resources);
             }
         };
         runWhenInitialized(f, stream);
@@ -521,7 +520,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
             const QStringList ids = kTransform<QStringList>(components, [](const AppStream::Component& comp) { return comp.id(); });
             if (!ids.isEmpty()) {
                 const auto resources = kFilter<QVector<AbstractResource*>>(resourcesByPackageNames<QVector<AbstractResource*>>(ids), [](AbstractResource* res){ return !qobject_cast<PackageKitResource*>(res)->extendsItself(); });
-                Q_EMIT stream->setResources(resources);
+                stream->setResources(resources);
             }
 
             PackageKit::Transaction * tArch = PackageKit::Daemon::resolve(filter.search, PackageKit::Transaction::FilterArch);
@@ -535,7 +534,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
                     const auto packageId = stream->property("packageId");
                     if (!packageId.isNull()) {
                         const auto res = resourcesByPackageNames<QVector<AbstractResource*>>({PackageKit::Daemon::packageName(packageId.toString())});
-                        Q_EMIT stream->setResources(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
+                        stream->setResources(kFilter<QVector<AbstractResource*>>(res, [ids](AbstractResource* res){ return !ids.contains(res->appstreamId()); }));
                     }
                 }
                 stream->finish();

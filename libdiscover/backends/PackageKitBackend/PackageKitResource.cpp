@@ -271,8 +271,8 @@ void PackageKitResource::updateDetail(const QString& packageID, const QStringLis
                                       const QString& /*changelog*/, PackageKit::Transaction::UpdateState state, const QDateTime& /*issued*/, const QDateTime& /*updated*/)
 {
 #if defined(WITH_MARKDOWN)
-    const char* xx = _updateText.toUtf8().constData();
-    MMIOT *markdownHandle = mkd_string(xx, _updateText.size(), 0);
+    const QByteArray xx = _updateText.toUtf8();
+    MMIOT *markdownHandle = mkd_string(xx.constData(), _updateText.size(), 0);
 
     QString updateText;
     if ( !mkd_compile( markdownHandle, MKD_FENCEDCODE | MKD_GITHUBTAGS | MKD_AUTOLINK ) ) {

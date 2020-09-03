@@ -160,7 +160,8 @@ void StandardBackendUpdater::refreshProgress()
     }
 
     int allProgresses = (m_toUpgrade.size() - m_pendingResources.size()) * 100;
-    for (auto t: transactions()) {
+    const auto allTransactions = transactions();
+    for (auto t: allTransactions) {
         allProgresses += t->progress();
     }
     setProgress(allProgresses / m_toUpgrade.size());

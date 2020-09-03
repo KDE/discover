@@ -225,7 +225,7 @@ void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
 void Category::addSubcategory(Category* cat)
 {
     int i = 0;
-    for(Category* subCat : m_subCategories) {
+    for(Category* subCat : qAsConst(m_subCategories)) {
         if(!categoryLessThan(subCat, cat)) {
             break;
         }
