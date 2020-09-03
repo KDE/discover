@@ -80,26 +80,28 @@ FwupdSourcesBackend::FwupdSourcesBackend(AbstractResourcesBackend * parent)
 
 void FwupdSourcesBackend::populateSources()
 {
-    /* find all remotes */
-    g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(backend->client,nullptr,nullptr);
-    if(remotes != nullptr)
-    {
-        for(uint i = 0; i < remotes->len; i++)
-        {
-            FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
-            if(fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
-                continue;
-            const QString id = QString::fromUtf8(fwupd_remote_get_id(remote));
-            if(id.isEmpty())
-                continue;
+    g_autoptr(GError) error = nullptr;
+    g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(backend->client, nullptr, &error);
+    if(!remotes) {
+        qWarning() << "could not list fwupd remotes" << error->message;
+        return;
+    }
 
-            QStandardItem* it = new QStandardItem(id);
-            it->setData(id, AbstractSourcesBackend::IdRole);
-            it->setData(QVariant(QString::fromUtf8(fwupd_remote_get_title(remote))), Qt::ToolTipRole);
-            it->setCheckable(true);
-            it->setCheckState(fwupd_remote_get_enabled(remote) ? Qt::Checked : Qt::Unchecked);
-            m_sources->appendRow(it);
-        }
+    for(uint i = 0; i < remotes->len; i++)
+    {
+        FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
+        if(fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
+            continue;
+        const QString id = QString::fromUtf8(fwupd_remote_get_id(remote));
+        if(id.isEmpty())
+            continue;
+
+        QStandardItem* it = new QStandardItem(id);
+        it->setData(id, AbstractSourcesBackend::IdRole);
+        it->setData(QVariant(QString::fromUtf8(fwupd_remote_get_title(remote))), Qt::ToolTipRole);
+        it->setCheckable(true);
+        it->setCheckState(fwupd_remote_get_enabled(remote) ? Qt::Checked : Qt::Unchecked);
+        m_sources->appendRow(it);
     }
 }
 
