@@ -43,9 +43,11 @@ public:
     bool supportsAdding() const override { return false; }
     void eulaRequired(const QString& remoteName, const QString& licenseAgreement);
     void populateSources();
-Q_SIGNALS:
+
     void proceed() override;
     void cancel() override;
+
+    QStandardItem* m_currentItem = nullptr;
 
 private:
     FwupdSourcesModel* m_sources;

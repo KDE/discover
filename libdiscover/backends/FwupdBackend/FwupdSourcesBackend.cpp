@@ -34,50 +34,40 @@ public:
         : QStandardItemModel(backend)
         , m_backend(backend) {}
 
-    bool setData(const QModelIndex & index, const QVariant & value, int role) override {
+    bool setData(const QModelIndex & index, const QVariant & value, int role) override
+    {
         auto item = itemFromIndex(index);
         if(!item)
             return false;
-        remote = fwupd_client_get_remote_by_id(m_backend->backend->client, item->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(),nullptr,nullptr);
-        status = fwupd_remote_get_enabled(remote);
+
+        FwupdRemote* remote = fwupd_client_get_remote_by_id(m_backend->backend->client, item->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(), nullptr, nullptr);
         switch(role)
         {
-            case Qt::CheckStateRole:
-            {
-                if((value.toInt() == Qt::Checked) )
-                {
-                    auto proceedFunction = [this, item, value, role]() {
-                        if(fwupd_client_modify_remote(m_backend->backend->client, fwupd_remote_get_id(remote), "Enabled", "true", nullptr, nullptr))
-                            item->setData(value, role);
-                    };
-#if FWUPD_CHECK_VERSION(1,0,7)
-                    m_backend->eulaRequired(QString::fromUtf8(fwupd_remote_get_title(remote)),QString::fromUtf8(fwupd_remote_get_agreement(remote)));
-#else
-                    proceedFunction();
-#endif
-                    connect(m_backend,&FwupdSourcesBackend::proceed,this, proceedFunction);
-                    connect(m_backend,&FwupdSourcesBackend::cancel,this, [this, item, index]() {
+            case Qt::CheckStateRole: {
+                if(value == Qt::Checked) {
+                    m_backend->m_currentItem = item;
+                    if (fwupd_remote_get_approval_required(remote)) {
+                        Q_EMIT m_backend->proceedRequest(i18n("Review EULA"), i18n("The remote %1 require that you accept their license:\n %2",
+                                                    QString::fromUtf8(fwupd_remote_get_title(remote)),
+                                                    QString::fromUtf8(fwupd_remote_get_agreement(remote))));
+                    } else {
+                        m_backend->proceed();
+                    }
+                } else if(value.toInt() == Qt::Unchecked) {
+                    g_autoptr(GError) error = nullptr;
+                    if(fwupd_client_modify_remote(m_backend->backend->client, fwupd_remote_get_id(remote), "Enabled", "false", nullptr, &error))
                         item->setCheckState(Qt::Unchecked);
-                        Q_EMIT dataChanged(index,index,{});
-                        return false;
-                    });
+                    else
+                        qWarning() << "could not disable remote" << remote << error->message;
                 }
-                else if(value.toInt() == Qt::Unchecked)
-                {
-                    if(fwupd_client_modify_remote(m_backend->backend->client, fwupd_remote_get_id(remote), "Enabled", "false", nullptr, nullptr))
-                           item->setData(value, role);
-                }
-
+                return true;
             }
         }
-        Q_EMIT dataChanged(index, index, {Qt::CheckStateRole});
-        return true;
+        return false;
     }
 
 private:
-    FwupdSourcesBackend* m_backend;
-    FwupdRemote* remote;
-    bool status;
+    FwupdSourcesBackend* const m_backend;
 };
 
 FwupdSourcesBackend::FwupdSourcesBackend(AbstractResourcesBackend * parent)
@@ -118,12 +108,6 @@ QAbstractItemModel* FwupdSourcesBackend::sources()
     return m_sources;
 }
 
-void FwupdSourcesBackend::eulaRequired( const QString& remoteName, const QString& licenseAgreement)
-{
-    Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The remote %1 require that you accept their license:\n %2",
-                                                 remoteName, licenseAgreement));
-}
-
 bool FwupdSourcesBackend::addSource(const QString& id)
 {   
     qWarning() << "Fwupd Error: Custom Addition of Sources Not Allowed" << "Remote-ID" << id;
@@ -138,9 +122,27 @@ bool FwupdSourcesBackend::removeSource(const QString& id)
 
 QVariantList FwupdSourcesBackend::actions() const
 {
-    return  {} ;
+    return {};
+}
+
+void FwupdSourcesBackend::cancel()
+{
+    FwupdRemote* remote = fwupd_client_get_remote_by_id(backend->client, m_currentItem->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(),nullptr,nullptr);
+    m_currentItem->setCheckState(fwupd_remote_get_enabled(remote) ? Qt::Checked : Qt::Unchecked);
+
+    m_currentItem = nullptr;
+}
+
+void FwupdSourcesBackend::proceed()
+{
+    FwupdRemote* remote = fwupd_client_get_remote_by_id(backend->client, m_currentItem->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(),nullptr,nullptr);
+    g_autoptr(GError) error = nullptr;
+    if (fwupd_client_modify_remote(backend->client, fwupd_remote_get_id(remote), "Enabled", "true", nullptr, &error))
+        m_currentItem->setData(Qt::Checked, Qt::CheckStateRole);
+    else
+        qWarning() << "could not enable remote" << remote << error->message;
+
+    m_currentItem = nullptr;
 }
 
 #include "FwupdSourcesBackend.moc"
-
-
