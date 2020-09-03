@@ -92,12 +92,12 @@ void FwupdSourcesBackend::populateSources()
             const QString id = QString::fromUtf8(fwupd_remote_get_id(remote));
             if(id.isEmpty())
                 continue;
-            bool status = !fwupd_remote_get_enabled(remote);
+
             QStandardItem* it = new QStandardItem(id);
             it->setData(id, AbstractSourcesBackend::IdRole);
             it->setData(QVariant(QString::fromUtf8(fwupd_remote_get_title(remote))), Qt::ToolTipRole);
             it->setCheckable(true);
-            it->setCheckState(status ? Qt::Unchecked : Qt::Checked);
+            it->setCheckState(fwupd_remote_get_enabled(remote) ? Qt::Checked : Qt::Unchecked);
             m_sources->appendRow(it);
         }
     }
