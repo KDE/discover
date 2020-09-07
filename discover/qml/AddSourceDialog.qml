@@ -58,6 +58,7 @@ Kirigami.OverlaySheet
         }
 
         DialogButtonBox {
+            Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.fillWidth: true
 
             // Cancel out built-in margins so it lines up with the rest of the
