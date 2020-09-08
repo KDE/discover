@@ -8,6 +8,8 @@ import org.kde.kirigami 2.0 as Kirigami
 Kirigami.OverlaySheet
 {
     id: addonsView
+    parent: applicationWindow().overlay
+
     property alias application: addonsModel.application
     property bool isInstalling: false
     readonly property bool containsAddons: rep.count>0 || isExtended

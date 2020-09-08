@@ -8,6 +8,7 @@ import org.kde.kirigami 2.10 as Kirigami
 Kirigami.OverlaySheet
 {
     id: reviewDialog
+    parent: applicationWindow().overlay
 
     property QtObject application
     readonly property alias rating: ratingInput.rating

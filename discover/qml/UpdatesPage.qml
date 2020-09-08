@@ -36,6 +36,8 @@ DiscoverPage
 
     readonly property var sheet: Kirigami.OverlaySheet {
         id: sheet
+        parent: applicationWindow().overlay
+
         header: Kirigami.Heading { text: i18n("Update Issue") }
 
         ColumnLayout {

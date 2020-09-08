@@ -423,6 +423,5 @@ DiscoverPage {
     readonly property var addons: AddonsView {
         id: addonsView
         application: appInfo.application
-        parent: overlay
     }
 }

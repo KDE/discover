@@ -104,6 +104,8 @@ DiscoverPage {
             id: sourceProceedDialog
             Kirigami.OverlaySheet {
                 id: sheet
+                parent: applicationWindow().overlay
+
                 showCloseButton: false
                 property QtObject  sourcesBackend
                 property alias title: heading.text

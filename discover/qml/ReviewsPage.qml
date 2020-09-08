@@ -27,6 +27,7 @@ import org.kde.kirigami 2.0 as Kirigami
 
 Kirigami.OverlaySheet {
     id: page
+    parent: applicationWindow().overlay
 
     property alias model: reviewsView.model
     readonly property QtObject reviewsBackend: resource.backend.reviewsBackend
@@ -34,8 +35,9 @@ Kirigami.OverlaySheet {
 
     readonly property var rd: ReviewDialog {
         id: reviewDialog
+        parent: applicationWindow().overlay
+
         application: page.resource
-        parent: overlay
         backend: page.reviewsBackend
         onAccepted: backend.submitReview(resource, summary, review, rating)
     }
