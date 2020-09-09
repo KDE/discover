@@ -101,9 +101,10 @@ int main(int argc, char** argv)
     KQuickAddons::QtQuickSettings::init();
     KLocalizedString::setApplicationDomain("plasma-discover");
     KAboutData about(QStringLiteral("discover"), i18n("Discover"), version, i18n("An application explorer"),
-                     KAboutLicense::GPL, i18n("© 2010-2019 Plasma Development Team"));
+                     KAboutLicense::GPL, i18n("© 2010-2020 Plasma Development Team"));
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), QStringLiteral("aleixpol@kde.org"));
-    about.addAuthor(i18n("Jonathan Thomas"), QString(), QStringLiteral("echidnaman@kubuntu.org"));
+    about.addAuthor(i18n("Nate Graham"), i18n("Quality Assurance, Design and Usability"), QStringLiteral("nate@kde.org"));
+    about.addAuthor(i18n("Dan Leinir Turthra Jensen"), i18n("KNewStuff"), QStringLiteral("admin@leinir.dk"));
     about.setProductName("discover/discover");
     about.setProgramLogo(app.windowIcon());
 
