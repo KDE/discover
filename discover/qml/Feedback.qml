@@ -26,7 +26,7 @@ UserFeedback.Provider
     id: provider
 
     submissionInterval: 7
-    surveyInterval: 30
+    surveyInterval: -1
     feedbackServer: "https://telemetry.kde.org/"
     encouragementInterval: 30
     applicationStartsUntilEncouragement: 1
