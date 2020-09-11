@@ -43,7 +43,9 @@ void DummyReviewsBackend::initialize()
         if (m_ratings.contains(app))
             continue;
         auto randomRating = qrand()%10;
-        Rating* rating = new Rating(app->packageName(), ++i, {{QStringLiteral("star5"), randomRating}});
+
+        int ratings[] = {0,0,0,0,0, randomRating};
+        Rating* rating = new Rating(app->packageName(), ++i, ratings);
         rating->setParent(this);
         m_ratings.insert(app, rating);
         Q_EMIT app->ratingFetched();

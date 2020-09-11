@@ -62,19 +62,15 @@ double wilson_score(int pos, int n, double power = 0.2)
             (phat * (1 - phat) + z * z / (4 * n)) / n)) / (1 + z * z / n);
 }
 
-double dampenedRating(const QVector<int> &ratings, double power = 0.1)
+double dampenedRating(int ratings[6], double power = 0.1)
 {
-    if (ratings.count() != 5)
-        return 0;
-
     int tot_ratings = 0;
-    Q_FOREACH (const int rating, ratings)
-            tot_ratings = rating + tot_ratings;
+    for (int i = 0; i < 6; ++i)
+        tot_ratings = ratings[i] + tot_ratings;
 
     double sum_scores = 0.0;
-
-    for (int i = 0; i < ratings.count(); i++) {
-        const int rating = ratings.at(i);
+    for (int i = 0; i < 6; i++) {
+        const int rating = ratings[i];
         double ws = wilson_score(rating, tot_ratings, power);
         sum_scores = sum_scores + float((i + 1) - 3) * ws;
     }
@@ -82,27 +78,22 @@ double dampenedRating(const QVector<int> &ratings, double power = 0.1)
     return sum_scores + 3;
 }
 
-Rating::Rating(const QString &packageName, quint64 ratingCount, const QVariantMap &data)
+Rating::Rating(const QString &packageName, quint64 ratingCount, int data[6])
     : QObject()
     , m_packageName(packageName)
     , m_ratingCount(ratingCount)
-    // TODO consider storing this and present in UI
-    , m_rating(((data.value(QStringLiteral("star1")).toInt() + (data.value(QStringLiteral("star2")).toInt() * 2) +
-                (data.value(QStringLiteral("star3")).toInt() * 3) + (data.value(QStringLiteral("star4")).toInt() * 4) +
-                (data.value(QStringLiteral("star5")).toInt() * 5)) * 2) / qMax<float>(1, ratingCount))
+    // TODO consider storing data[] and present in UI
+    , m_rating(((data[1] + (data[2] * 2) +
+                (data[3] * 3) + (data[4] * 4) +
+                (data[5] * 5)) * 2) / qMax<float>(1, ratingCount))
     , m_ratingPoints(0)
     , m_sortableRating(0)
 {
-    const QVector<int> histo = { data.value(QStringLiteral("star1")).toInt(), data.value(QStringLiteral("star2")).toInt(),
-                                 data.value(QStringLiteral("star3")).toInt(), data.value(QStringLiteral("star4")).toInt(),
-                                 data.value(QStringLiteral("star5")).toInt() };
-    QVector<int> spread;
-    spread.reserve(histo.size());
-
-    for(int i=0; i<histo.size(); ++i) {
-        int points = histo[i];
+    int spread[6];
+    for(int i=0; i<6; ++i) {
+        int points = data[i];
         m_ratingPoints += (i+1)*points;
-        spread.append(points);
+        spread[i] = points;
     }
 
     m_sortableRating = dampenedRating(spread) * 2;

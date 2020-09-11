@@ -249,12 +249,12 @@ void OdrsReviewsBackend::parseRatings()
             QJsonObject appJsonObject = it.value().toObject();
 
             const int ratingCount =  appJsonObject.value(QLatin1String("total")).toInt();
-            QVariantMap ratingMap = { { QStringLiteral("star0"), appJsonObject.value(QLatin1String("star0")).toInt() },
-                                      { QStringLiteral("star1"), appJsonObject.value(QLatin1String("star1")).toInt() },
-                                      { QStringLiteral("star2"), appJsonObject.value(QLatin1String("star2")).toInt() },
-                                      { QStringLiteral("star3"), appJsonObject.value(QLatin1String("star3")).toInt() },
-                                      { QStringLiteral("star4"), appJsonObject.value(QLatin1String("star4")).toInt() },
-                                      { QStringLiteral("star5"), appJsonObject.value(QLatin1String("star5")).toInt() } };
+            int ratingMap[] = { appJsonObject.value(QLatin1String("star0")).toInt(),
+                                appJsonObject.value(QLatin1String("star1")).toInt(),
+                                appJsonObject.value(QLatin1String("star2")).toInt(),
+                                appJsonObject.value(QLatin1String("star3")).toInt(),
+                                appJsonObject.value(QLatin1String("star4")).toInt(),
+                                appJsonObject.value(QLatin1String("star5")).toInt() };
 
             Rating *rating = new Rating(it.key(), ratingCount, ratingMap);
             rating->setParent(this);
