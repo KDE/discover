@@ -596,8 +596,10 @@ PKResultsStream * PackageKitBackend::findResourceByPackageName(const QUrl& url)
 
                 for (auto it = m_packages.packages.constBegin(), itEnd = m_packages.packages.constEnd(); it != itEnd; ++it) {
                     const bool matches = kContains(allAppStreamIds, [&it] (const QString& id) {
+                        static const QLatin1String desktopPostfix(".desktop");
                         return it.key().compare(id, Qt::CaseInsensitive) == 0 ||
-                              (id.endsWith(QLatin1String(".desktop")) && id.compare(it.key()+QLatin1String(".desktop"), Qt::CaseInsensitive) == 0);
+                              //doing (id == id.key()+".desktop") without allocating
+                              (id.size() == (desktopPostfix.size() + it.key().size()) && id.endsWith(desktopPostfix) && id.startsWith(it.key(), Qt::CaseInsensitive));
                     });
                     if (matches) {
                         pkg = it.value();
