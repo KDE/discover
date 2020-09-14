@@ -92,7 +92,7 @@ DiscoverPage {
                 function mergeActions(moreActions) {
                     var actions = [makeDefault, addSource]
                     for(var i in moreActions) {
-                        actions.push(kirigamiAction.createObject(null, {action: moreActions[i]}))
+                        actions.push(kirigamiAction.createObject(actionBar, {action: moreActions[i]}))
                     }
                     return actions;
                 }
