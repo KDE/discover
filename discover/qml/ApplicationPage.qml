@@ -242,6 +242,7 @@ DiscoverPage {
                 visible: reviewsModel.count > visibleReviews
 
                 text: i18np("Show %1 Review...", "Show All %1 Reviews...", reviewsModel.count)
+                icon.name: "view-visible"
 
                 onClicked: {
                     reviewsSheet.open()
@@ -253,6 +254,7 @@ DiscoverPage {
                 enabled: appInfo.application.isInstalled
 
                 text: appInfo.application.isInstalled ? i18n("Write a Review") : i18n("Install to Write a Review")
+                icon.name: "document-edit"
 
                 onClicked: {
                     reviewsSheet.openReviewDialog()
