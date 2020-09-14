@@ -203,27 +203,13 @@ DiscoverPage {
         }
 
 
-        RowLayout {
-            Layout.topMargin: Kirigami.Units.largeSpacing
+        Kirigami.Heading {
             Layout.fillWidth: true
-
-            Kirigami.Heading {
-                Layout.fillWidth: true
-                text: i18n("Reviews")
-                Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
-                level: 2
-                visible: rep.count > 0
-            }
-
-            Kirigami.LinkButton {
-                visible: reviewsModel.count > visibleReviews
-                text: i18np("Show %1 review...", "Show all %1 reviews...", reviewsModel.count)
-                Layout.alignment: Qt.AlignRight | Qt.AlignBottom
-
-                onClicked: {
-                    reviewsSheet.open()
-                }
-            }
+            Layout.topMargin: Kirigami.Units.largeSpacing
+            text: i18n("Reviews")
+            Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
+            level: 2
+            visible: rep.count > 0
         }
 
         Kirigami.Separator {
@@ -245,30 +231,33 @@ DiscoverPage {
                 Layout.bottomMargin: Kirigami.Units.largeSpacing
             }
         }
-        Kirigami.LinkButton {
-            function writeReviewText() {
-                if (appInfo.application.isInstalled) {
-                    if (reviewsModel.count > 0) {
-                        return i18n("Write a review!")
-                    } else {
-                        return i18n("Be the first to write a review!")
-                    }
-                // App not installed
-                } else {
-                    if (reviewsModel.count > 0) {
-                        return i18n("Install to write a review!")
-                    } else {
-                        return i18n("Install and be the first to write a review!")
-                    }
-                }
-            }
-            text: writeReviewText()
-            Layout.alignment: Qt.AlignCenter
-            onClicked: reviewsSheet.openReviewDialog()
-            enabled: appInfo.application.isInstalled
-            visible: reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
+
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
             Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.bottomMargin: Kirigami.Units.largeSpacing
+            spacing: Kirigami.Units.largeSpacing
+
+            Button {
+                visible: reviewsModel.count > visibleReviews
+
+                text: i18np("Show %1 Review...", "Show All %1 Reviews...", reviewsModel.count)
+
+                onClicked: {
+                    reviewsSheet.open()
+                }
+            }
+
+            Button {
+                visible: reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
+                enabled: appInfo.application.isInstalled
+
+                text: appInfo.application.isInstalled ? i18n("Write a Review") : i18n("Install to Write a Review")
+
+                onClicked: {
+                    reviewsSheet.openReviewDialog()
+                }
+            }
         }
 
         Repeater {
@@ -279,10 +268,6 @@ DiscoverPage {
             }
         }
 
-        Item {
-            height: addonsButton.height
-            width: 1
-        }
 
         // Details/metadata
         Kirigami.Separator {
