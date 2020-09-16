@@ -141,59 +141,63 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
         const auto installation = sourceItem->flatpakInstallation();
 
         g_autoptr(GPtrArray) refs = flatpak_installation_list_remote_refs_sync(installation, id.toUtf8().constData(), cancellable, &error);
-        QHash<QString, QStringList> toRemoveHash;
-        toRemoveHash.reserve(refs->len);
-        QStringList toRemoveRefs;
-        toRemoveRefs.reserve(refs->len);
-        FlatpakBackend* backend = qobject_cast<FlatpakBackend*>(parent());
-        for (uint i = 0; i < refs->len; i++) {
-            FlatpakRef *ref= FLATPAK_REF(g_ptr_array_index(refs, i));
+        if (refs) {
+            QHash<QString, QStringList> toRemoveHash;
+            toRemoveHash.reserve(refs->len);
+            QStringList toRemoveRefs;
+            toRemoveRefs.reserve(refs->len);
+            FlatpakBackend* backend = qobject_cast<FlatpakBackend*>(parent());
+            for (uint i = 0; i < refs->len; i++) {
+                FlatpakRef *ref= FLATPAK_REF(g_ptr_array_index(refs, i));
 
-            g_autoptr(GError) error = nullptr;
-            FlatpakInstalledRef* installedRef = flatpak_installation_get_installed_ref(installation, flatpak_ref_get_kind(ref), flatpak_ref_get_name(ref), flatpak_ref_get_arch(ref), flatpak_ref_get_branch(ref), cancellable, &error);
-            if (installedRef) {
-                auto res = backend->getAppForInstalledRef(installation, installedRef);
-                const auto name = QString::fromUtf8(flatpak_ref_get_name(ref));
-                const auto refString = QString::fromUtf8(flatpak_ref_format_ref(ref));
-                if (!name.endsWith(QLatin1String(".Locale"))) {
-                    if (res)
-                        toRemoveHash[res->name()] << refString;
-                    else
-                        toRemoveHash[refString] << refString;
+                g_autoptr(GError) error = nullptr;
+                FlatpakInstalledRef* installedRef = flatpak_installation_get_installed_ref(installation, flatpak_ref_get_kind(ref), flatpak_ref_get_name(ref), flatpak_ref_get_arch(ref), flatpak_ref_get_branch(ref), cancellable, &error);
+                if (installedRef) {
+                    auto res = backend->getAppForInstalledRef(installation, installedRef);
+                    const auto name = QString::fromUtf8(flatpak_ref_get_name(ref));
+                    const auto refString = QString::fromUtf8(flatpak_ref_format_ref(ref));
+                    if (!name.endsWith(QLatin1String(".Locale"))) {
+                        if (res)
+                            toRemoveHash[res->name()] << refString;
+                        else
+                            toRemoveHash[refString] << refString;
+                    }
+                    toRemoveRefs << refString;
                 }
-                toRemoveRefs << refString;
             }
-        }
-        QStringList toRemove;
-        toRemove.reserve(toRemoveHash.count());
-        for (auto it = toRemoveHash.constBegin(), itEnd = toRemoveHash.constEnd(); it != itEnd; ++it) {
-            if (it.value().count() > 1)
-                toRemove << QStringLiteral("%1 - %2").arg(it.key(), it.value().join(QLatin1String(", ")));
-            else
-                toRemove << it.key();
-        }
-        toRemove.sort();
+            QStringList toRemove;
+            toRemove.reserve(toRemoveHash.count());
+            for (auto it = toRemoveHash.constBegin(), itEnd = toRemoveHash.constEnd(); it != itEnd; ++it) {
+                if (it.value().count() > 1)
+                    toRemove << QStringLiteral("%1 - %2").arg(it.key(), it.value().join(QLatin1String(", ")));
+                else
+                    toRemove << it.key();
+            }
+            toRemove.sort();
 
-        if (!toRemove.isEmpty()) {
-            m_proceedFunctions.push([this, toRemoveRefs, installation, id] {
-                g_autoptr(GError) localError = nullptr;
-                g_autoptr(GCancellable) cancellable = g_cancellable_new();
-                g_autoptr(FlatpakTransaction) transaction = flatpak_transaction_new_for_installation(installation, cancellable, &localError);
-                for (const QString& instRef : qAsConst(toRemoveRefs)) {
-                    const QByteArray refString = instRef.toUtf8();
-                    flatpak_transaction_add_uninstall(transaction, refString.constData(), &localError);
-                    if (localError)
-                        return;
-                }
+            if (!toRemove.isEmpty()) {
+                m_proceedFunctions.push([this, toRemoveRefs, installation, id] {
+                    g_autoptr(GError) localError = nullptr;
+                    g_autoptr(GCancellable) cancellable = g_cancellable_new();
+                    g_autoptr(FlatpakTransaction) transaction = flatpak_transaction_new_for_installation(installation, cancellable, &localError);
+                    for (const QString& instRef : qAsConst(toRemoveRefs)) {
+                        const QByteArray refString = instRef.toUtf8();
+                        flatpak_transaction_add_uninstall(transaction, refString.constData(), &localError);
+                        if (localError)
+                            return;
+                    }
 
-                if (flatpak_transaction_run(transaction, cancellable, &localError)) {
-                    removeSource(id);
-                }
-            });
+                    if (flatpak_transaction_run(transaction, cancellable, &localError)) {
+                        removeSource(id);
+                    }
+                });
 
 
-            Q_EMIT proceedRequest(i18n("Removing '%1'", id), i18n("To remove this repository, the following applications must be uninstalled:<ul><li>%1</li></ul>", toRemove.join(QStringLiteral("</li><li>"))));
-            return false;
+                Q_EMIT proceedRequest(i18n("Removing '%1'", id), i18n("To remove this repository, the following applications must be uninstalled:<ul><li>%1</li></ul>", toRemove.join(QStringLiteral("</li><li>"))));
+                return false;
+            }
+        } else {
+            qWarning() << "could not list refs in repo" << id << error->message;
         }
 
         if (flatpak_installation_remove_remote(installation, id.toUtf8().constData(), cancellable, &error)) {
