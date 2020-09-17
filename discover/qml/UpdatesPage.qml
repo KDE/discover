@@ -113,8 +113,6 @@ DiscoverPage
     readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
 
     header: ToolBar {
-        anchors.left: page.left
-        anchors.right: page.right
         Kirigami.Theme.colorSet: Kirigami.Theme.Header
         Kirigami.Theme.inherit: false
         visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
