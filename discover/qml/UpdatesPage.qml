@@ -81,22 +81,64 @@ DiscoverPage
         onTriggered: resourcesUpdatesModel.updateAll()
     }
 
-    footer: ScrollView {
-        id: scv
+    footer: ColumnLayout {
         width: parent.width
-        height: visible ? Kirigami.Units.gridUnit * 10 : 0
-        visible: log.contents.length > 0
-        TextArea {
-            readOnly: true
-            text: log.contents
+        spacing: 0
 
-            cursorPosition: text.length - 1
-            font.family: "monospace"
+        ScrollView {
+            id: scv
+            Layout.fillWidth: true
+            Layout.preferredHeight: visible ? Kirigami.Units.gridUnit * 10 : 0
+            visible: log.contents.length > 0
+            TextArea {
+                readOnly: true
+                text: log.contents
 
-            ReadFile {
-                id: log
-                filter: ".*ALPM-SCRIPTLET\\] .*"
-                path: "/var/log/pacman.log"
+                cursorPosition: text.length - 1
+                font.family: "monospace"
+
+                ReadFile {
+                    id: log
+                    filter: ".*ALPM-SCRIPTLET\\] .*"
+                    path: "/var/log/pacman.log"
+                }
+            }
+        }
+        // A QQC2 toolbar which automatically draws a separator line on the
+        // bottom, but not on the top, and we need one on the top because we're
+        // using it as a footer, so we have to draw our own separator
+        Kirigami.Separator {
+            Layout.fillWidth: true
+            visible: footerToolbar.visible
+        }
+        ToolBar {
+            id: footerToolbar
+            Layout.fillWidth: true
+            visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
+
+            // Normally Toolbars use header colors, but this is a footer! So use the
+            // window color set instead
+            Kirigami.Theme.colorSet: Kirigami.Theme.Window
+            Kirigami.Theme.inherit: false
+
+            CheckBox {
+                anchors.left: parent.left
+                anchors.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.smallSpacing
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                text: page.unselected === 0 ? i18n("All updates selected (%1)", updateModel.updateSize) : i18np("%1/%2 update selected (%3)", "%1/%2 updates selected (%3)", updateModel.toUpdateCount, updateModel.totalUpdatesCount, updateModel.updateSize)
+                enabled: updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
+                tristate: true
+                checkState: updateModel.toUpdateCount === 0                             ? Qt.Unchecked
+                            : updateModel.toUpdateCount === updateModel.totalUpdatesCount ? Qt.Checked
+                                                                                        : Qt.PartiallyChecked
+
+                onClicked: {
+                    if (updateModel.toUpdateCount === 0)
+                        updateModel.checkAll()
+                    else
+                        updateModel.uncheckAll()
+                }
             }
         }
     }
@@ -111,30 +153,6 @@ DiscoverPage
     }
 
     readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
-
-    header: ToolBar {
-        visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
-
-        CheckBox {
-            anchors.left: parent.left
-            anchors.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.smallSpacing
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-            text: page.unselected === 0 ? i18n("All updates selected (%1)", updateModel.updateSize) : i18np("%1/%2 update selected (%3)", "%1/%2 updates selected (%3)", updateModel.toUpdateCount, updateModel.totalUpdatesCount, updateModel.updateSize)
-            enabled: updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
-            tristate: true
-            checkState: updateModel.toUpdateCount === 0                             ? Qt.Unchecked
-                        : updateModel.toUpdateCount === updateModel.totalUpdatesCount ? Qt.Checked
-                                                                                    : Qt.PartiallyChecked
-
-            onClicked: {
-                if (updateModel.toUpdateCount === 0)
-                    updateModel.checkAll()
-                else
-                    updateModel.uncheckAll()
-            }
-        }
-    }
 
     supportsRefreshing: true
     onRefreshingChanged: {
