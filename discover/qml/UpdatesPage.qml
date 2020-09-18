@@ -104,22 +104,12 @@ DiscoverPage
                 }
             }
         }
-        // A QQC2 toolbar which automatically draws a separator line on the
-        // bottom, but not on the top, and we need one on the top because we're
-        // using it as a footer, so we have to draw our own separator
-        Kirigami.Separator {
-            Layout.fillWidth: true
-            visible: footerToolbar.visible
-        }
         ToolBar {
             id: footerToolbar
             Layout.fillWidth: true
             visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
 
-            // Normally Toolbars use header colors, but this is a footer! So use the
-            // window color set instead
-            Kirigami.Theme.colorSet: Kirigami.Theme.Window
-            Kirigami.Theme.inherit: false
+            position: ToolBar.Footer
 
             CheckBox {
                 anchors.left: parent.left
