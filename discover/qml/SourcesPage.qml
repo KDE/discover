@@ -198,7 +198,7 @@ DiscoverPage {
                     }
                 },
                 Kirigami.Action {
-                    iconName: "view-filter"
+                    iconName: LayoutMirroring.enabled ? "go-next-symbolic-rtl" : "go-next-symbolic"
                     tooltip: i18n("Show contents")
                     visible: sourcesBackend.canFilterSources
                     onTriggered: {
