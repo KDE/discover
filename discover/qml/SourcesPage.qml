@@ -166,6 +166,7 @@ DiscoverPage {
             actions: [
                 Kirigami.Action {
                     iconName: "go-up"
+                    tooltip: i18n("Increase priority")
                     enabled: sourcesBackend.firstSourceId !== sourceId
                     visible: sourcesBackend.canMoveSources
                     onTriggered: {
@@ -176,6 +177,7 @@ DiscoverPage {
                 },
                 Kirigami.Action {
                     iconName: "go-down"
+                    tooltip: i18n("Decrease priority")
                     enabled: sourcesBackend.lastSourceId !== sourceId
                     visible: sourcesBackend.canMoveSources
                     onTriggered: {
@@ -186,7 +188,7 @@ DiscoverPage {
                 },
                 Kirigami.Action {
                     iconName: "edit-delete"
-                    tooltip: i18n("Delete the origin")
+                    tooltip: i18n("Remove repository")
                     visible: sourcesBackend.supportsAdding
                     onTriggered: {
                         var backend = sourcesBackend
