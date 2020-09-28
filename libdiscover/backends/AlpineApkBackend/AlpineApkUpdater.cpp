@@ -204,7 +204,7 @@ void AlpineApkUpdater::proceed()
 
 int AlpineApkUpdater::updatesCount()
 {
-    qDebug(LOG_ALPINEAPK) << Q_FUNC_INFO << m_updatesCount;
+    // qDebug(LOG_ALPINEAPK) << Q_FUNC_INFO << m_updatesCount;
     return m_updatesCount;
 }
 
