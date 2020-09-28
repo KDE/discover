@@ -34,6 +34,7 @@ target_link_libraries(
     PRIVATE
         Qt5::Core
         Qt5::Widgets
+        Qt5::Concurrent
         KF5::CoreAddons
         KF5::ConfigCore
         KF5::AuthCore
