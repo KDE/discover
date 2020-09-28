@@ -35,10 +35,14 @@
 #include <AppStreamQt/pool.h>
 
 #include <QAction>
+#include <QtConcurrentRun>
 #include <QDebug>
+#include <QFuture>
+#include <QFutureWatcher>
 #include <QLoggingCategory>
 #include <QSet>
 #include <QThread>
+#include <QThreadPool>
 #include <QTimer>
 
 DISCOVER_BACKEND_PLUGIN(AlpineApkBackend)
@@ -52,9 +56,6 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
 #ifndef QT_DEBUG
     const_cast<QLoggingCategory &>(LOG_ALPINEAPK()).setEnabled(QtDebugMsg, false);
 #endif
-
-    // schedule checking for updates
-    QTimer::singleShot(1000, this, &AlpineApkBackend::checkForUpdates);
 
     // connections with our updater
     QObject::connect(m_updater, &AlpineApkUpdater::updatesCountChanged,
@@ -71,8 +72,24 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
     m_updatesTimeoutTimer->setSingleShot(true);
     m_updatesTimeoutTimer->setInterval(5 * 60 * 1000); // 5 minutes
 
+    // load packages data in a separate thread; it takes a noticeable amount of time
+    //     and this way UI is not blocked here
+    m_fetching = true; // we are busy!
+    QFuture<void> loadResFuture = QtConcurrent::run(QThreadPool::globalInstance(), this,
+                                                    &AlpineApkBackend::loadResources);
+
+    QObject::connect(&m_voidFutureWatcher, &QFutureWatcher<void>::finished,
+                     this, &AlpineApkBackend::onLoadResourcesFinished);
+    m_voidFutureWatcher.setFuture(loadResFuture);
+
+    SourcesModel::global()->addSourcesBackend(new AlpineApkSourcesBackend(this));
+}
+
+void AlpineApkBackend::loadResources()
+{
     qCDebug(LOG_ALPINEAPK) << "backend: loading AppStream metadata...";
-    AppStream::Pool *appStreamPool = new AppStream::Pool(this);
+
+    AppStream::Pool *appStreamPool = new AppStream::Pool();
     appStreamPool->setFlags(AppStream::Pool::FlagReadCollection |
                             AppStream::Pool::FlagReadMetainfo |
                             AppStream::Pool::FlagReadDesktopFiles);
@@ -102,6 +119,7 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
     appStreamPool = nullptr;
 
     qCDebug(LOG_ALPINEAPK) << "backend: populating resources...";
+    emit this->passiveMessage(i18n("Loading, please wait..."));
 
     if (m_apkdb.open(QtApk::QTAPK_OPENF_READONLY)) {
         m_availablePackages = m_apkdb.getAvailablePackages();
@@ -114,43 +132,77 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
 
             // try to find appstream data for this package
             AppStream::Component appstreamComponent;
-            AbstractResource::Type resType = AbstractResource::Type::Technical; // default
             for (const auto& appsC : m_appStreamComponents) {
                 // find result which package name is exactly the one we want
                 if (appsC.packageNames().contains(pkg.name)) {
-                    // found!
-                    appstreamComponent = appsC;
-                    // determine resource type here
-                    switch (appsC.kind()) {
-                    case AppStream::Component::KindDesktopApp:
-                    case AppStream::Component::KindConsoleApp:
-                    case AppStream::Component::KindWebApp:
-                        resType = AbstractResource::Type::Application;
-                        break;
-                    case AppStream::Component::KindAddon:
-                        resType = AbstractResource::Type::Addon;
-                        break;
-                    default:
-                        resType = AbstractResource::Type::Technical;
-                        break;
+                    // workaround for kate (Kate Sessions is found first, but
+                    //   package name = "kate" too, bugged metadata?)
+                    if (pkg.name == QStringLiteral("kate")) {
+                        // qCDebug(LOG_ALPINEAPK) << appsC.packageNames() << appsC.id();
+                        // ^^ ("kate") "org.kde.plasma.katesessions"
+                        if (appsC.id() != QStringLiteral("org.kde.kate")) {
+                            continue;
+                        }
                     }
+                    appstreamComponent = appsC;
                     break; // exit for() loop
                 }
             }
+
+            const QString key = pkg.name.toLower();
+            m_resourcesAppstreamData.insert(key, appstreamComponent);
+        }
+    }
+
+    qCDebug(LOG_ALPINEAPK) << "  available" << m_availablePackages.size()
+                           << "packages";
+    qCDebug(LOG_ALPINEAPK) << "  installed" << m_installedPackages.size()
+                           << "packages";
+}
+
+static AbstractResource::Type toDiscoverResourceType(const AppStream::Component &component)
+{
+    AbstractResource::Type resType = AbstractResource::Type::Technical; // default
+    // determine resource type here
+    switch (component.kind()) {
+    case AppStream::Component::KindDesktopApp:
+    case AppStream::Component::KindConsoleApp:
+    case AppStream::Component::KindWebApp:
+        resType = AbstractResource::Type::Application;
+        break;
+    case AppStream::Component::KindAddon:
+        resType = AbstractResource::Type::Addon;
+        break;
+    default:
+        resType = AbstractResource::Type::Technical;
+        break;
+    }
+    return resType;
+}
+
+void AlpineApkBackend::onLoadResourcesFinished()
+{
+    qCDebug(LOG_ALPINEAPK) << "backend: appstream data loaded and sorted; fill in resources";
+
+    if (m_availablePackages.size() > 0) {
+        for (const QtApk::Package &pkg: m_availablePackages) {
+            const QString key = pkg.name.toLower();
+
+            AppStream::Component &appstreamComponent = m_resourcesAppstreamData[key];
+            const AbstractResource::Type resType = toDiscoverResourceType(appstreamComponent);
 
             AlpineApkResource *res = new AlpineApkResource(pkg, appstreamComponent, resType, this);
             res->setCategoryName(QStringLiteral("alpine_packages"));
             res->setOriginSource(QStringLiteral("apk"));
             res->setSection(QStringLiteral("dummy"));
 
-            const QString key = pkg.name.toLower();
             m_resources.insert(key, res);
-            connect(res, &AlpineApkResource::stateChanged,
-                    this, &AlpineApkBackend::updatesCountChanged);
+            QObject::connect(res, &AlpineApkResource::stateChanged,
+                             this, &AlpineApkBackend::updatesCountChanged);
         }
-        qCDebug(LOG_ALPINEAPK) << "  available" << m_availablePackages.size()
-                               << "packages";
     }
+
+    // update "installed/not installed" state
     if (m_installedPackages.size() > 0) {
         for (const QtApk::Package &pkg: m_installedPackages) {
             const QString key = pkg.name.toLower();
@@ -158,11 +210,17 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
                 m_resources.value(key)->setState(AbstractResource::Installed);
             }
         }
-        qCDebug(LOG_ALPINEAPK) << "  installed" << m_installedPackages.size()
-                               << "packages";
     }
 
-    SourcesModel::global()->addSourcesBackend(new AlpineApkSourcesBackend(this));
+    qCDebug(LOG_ALPINEAPK) << "backend: resources loaded.";
+
+    m_fetching = false;
+    emit fetchingChanged();
+    // ^^ this causes the UI to update "Featured" page and show
+    //    to user that we actually have loaded packages data
+
+    // schedule check for updates 1 sec after we've loaded all resources
+    QTimer::singleShot(1000, this, &AlpineApkBackend::checkForUpdates);
 }
 
 QVector<Category *> AlpineApkBackend::category() const
