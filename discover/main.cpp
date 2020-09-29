@@ -97,7 +97,9 @@ int main(int argc, char** argv)
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("plasmadiscover")));
     app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
     app.setAttribute(Qt::AA_DisableSessionManager, true);
+#endif
     KCrash::initialize();
     KQuickAddons::QtQuickSettings::init();
     KLocalizedString::setApplicationDomain("plasma-discover");
