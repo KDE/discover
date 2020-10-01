@@ -205,6 +205,8 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
         auto addonsCategory = new Category(topLevelName, iconName, filters, backendName, {actualCategory}, QUrl(), true);
         m_rootCategories = { addonsCategory };
     }
+
+    connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &KNSBackend::updatesCountChanged);
 }
 
 KNSBackend::~KNSBackend()
