@@ -156,6 +156,7 @@ DiscoverPage {
         }
 
         delegate: Kirigami.SwipeListItem {
+            id: delegate
             enabled: model.display.length>0 && model.enabled
             highlighted: ListView.isCurrentItem
             supportsMouseEvents: false
@@ -198,7 +199,7 @@ DiscoverPage {
                     }
                 },
                 Kirigami.Action {
-                    iconName: LayoutMirroring.enabled ? "go-next-symbolic-rtl" : "go-next-symbolic"
+                    iconName: delegate.LayoutMirroring.enabled ? "go-next-symbolic-rtl" : "go-next-symbolic"
                     tooltip: i18n("Show contents")
                     visible: sourcesBackend.canFilterSources
                     onTriggered: {
