@@ -1194,9 +1194,18 @@ QVector<AbstractResource *> FlatpakBackend::resourcesByAppstreamName(const QStri
 {
     QVector<AbstractResource*> resources;
     const QString nameWithDesktop = name + QLatin1String(".desktop");
-    foreach(FlatpakResource* res, m_resources) {
+    for (FlatpakResource* res : m_resources) {
         if (QString::compare(res->appstreamId(), name, Qt::CaseInsensitive)==0 || QString::compare(res->appstreamId(), nameWithDesktop, Qt::CaseInsensitive)==0)
             resources << res;
+        else {
+            const auto alts = res->alternativeAppstreamIds();
+            for (const auto &alt : alts) {
+                if (QString::compare(alt, name, Qt::CaseInsensitive)==0 || QString::compare(alt, nameWithDesktop, Qt::CaseInsensitive)==0) {
+                    resources << res;
+                    break;
+                }
+            }
+        }
     }
     auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l, r); };
     std::sort(resources.begin(), resources.end(), f);
