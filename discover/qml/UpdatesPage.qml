@@ -172,8 +172,8 @@ DiscoverPage
             Layout.alignment: Qt.AlignHCenter
             visible: page.footerProgress === 0 && page.footerLabel !== "" && !page.isBusy
             source: "update-none"
-            width: Kirigami.Units.gridUnit * 4
-            height: width
+            implicitWidth: Kirigami.Units.gridUnit * 4
+            implicitHeight: Kirigami.Units.gridUnit * 4
             enabled: false
         }
         Kirigami.Heading {
