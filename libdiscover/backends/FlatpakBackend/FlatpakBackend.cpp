@@ -1221,7 +1221,7 @@ ResultsStream * FlatpakBackend::findResourceByPackageName(const QUrl &url)
         else {
             auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
             auto f = [this, stream, appstreamIds] () {
-                const auto resources = kAppend<QVector<AbstractResource*>>(appstreamIds, [this] (const QString appstreamId) { return resourcesByAppstreamName(appstreamId); });
+                const auto resources = kAppend<QVector<AbstractResource*>>(appstreamIds, [this] (const QString &appstreamId) { return resourcesByAppstreamName(appstreamId); });
                 if (!resources.isEmpty())
                     Q_EMIT stream->resourcesFound(resources);
                 stream->finish();
