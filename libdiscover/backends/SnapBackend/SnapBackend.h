@@ -11,6 +11,7 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 #include <QVector>
+#include <QThreadPool>
 #include <Snapd/Client>
 #include <functional>
 
@@ -42,6 +43,9 @@ public:
     QSnapdClient* client() { return &m_client; }
     void refreshStates();
 
+Q_SIGNALS:
+    void shuttingDown();
+
 private:
     void setFetching(bool fetching);
 
@@ -64,6 +68,7 @@ private:
     bool m_valid = true;
     bool m_fetching = false;
     QSnapdClient m_client;
+    QThreadPool m_threadPool;
 };
 
 #endif // SNAPBACKEND_H

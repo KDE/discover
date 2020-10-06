@@ -25,6 +25,10 @@
 #include <QTimer>
 #include <QAction>
 #include <QStandardItemModel>
+#include <QtConcurrentMap>
+#include <QtConcurrentRun>
+#include <QFuture>
+#include <QFutureWatcher>
 
 #include "utils.h"
 
@@ -65,9 +69,16 @@ SnapBackend::SnapBackend(QObject* parent)
     refreshStates();
 
     SourcesModel::global()->addSourcesBackend(new SnapSourcesBackend(this));
+
+    m_threadPool.setMaxThreadCount(1);
 }
 
-SnapBackend::~SnapBackend() = default;
+SnapBackend::~SnapBackend()
+{
+    Q_EMIT shuttingDown();
+    m_threadPool.waitForDone(80000);
+    m_threadPool.clear();
+}
 
 int SnapBackend::updatesCount() const
 {
@@ -127,23 +138,24 @@ template <class T>
 ResultsStream* SnapBackend::populateJobsWithFilter(const QVector<T*>& jobs, std::function<bool(const QSharedPointer<QSnapdSnap>& s)>& filter)
 {
     auto stream = new ResultsStream(QStringLiteral("Snap-populate"));
-    stream->setProperty("remaining", jobs.count());
-    for(auto job : jobs) {
-        connect(job, &T::complete, stream, [stream, this, job, filter]() {
-            const int remaining = stream->property("remaining").toInt() - 1;
-            stream->setProperty("remaining", remaining);
+    auto future = QtConcurrent::run(&m_threadPool, [this, jobs] () {
+        for (auto job : jobs) {
+            connect(this, &SnapBackend::shuttingDown, job, &T::cancel);
+            job->runSync();
+        }
+    });
 
+    auto watcher = new QFutureWatcher<void>(this);
+    watcher->setFuture(future);
+    connect(watcher, &QFutureWatcher<void>::finished, watcher, &QObject::deleteLater);
+    connect(watcher, &QFutureWatcher<void>::finished, stream, [this, jobs, filter, stream] {
+        QVector<AbstractResource*> ret;
+        for (auto job : jobs) {
             if (job->error()) {
                 qDebug() << "error:" << job->error() << job->errorString();
-                if (remaining == 0)
-                    stream->finish();
-                return;
+                continue;
             }
 
-            QVector<AbstractResource*> ret;
-            QVector<SnapResource*> resources;
-            ret.reserve(job->snapCount());
-            resources.reserve(job->snapCount());
             for (int i=0, c=job->snapCount(); i<c; ++i) {
                 QSharedPointer<QSnapdSnap> snap(job->snap(i));
 
@@ -151,28 +163,21 @@ ResultsStream* SnapBackend::populateJobsWithFilter(const QVector<T*>& jobs, std:
                     continue;
 
                 const auto snapname = snap->name();
-                SnapResource* res = m_resources.value(snapname);
+                SnapResource*& res = m_resources[snapname];
                 if (!res) {
                     res = new SnapResource(snap, AbstractResource::None, this);
                     Q_ASSERT(res->packageName() == snapname);
-                    resources += res;
                 } else {
                     res->setSnap(snap);
                 }
                 ret += res;
             }
+        }
 
-            foreach(SnapResource* res, resources)
-                m_resources[res->packageName()] = res;
-
-            if (!ret.isEmpty())
-                Q_EMIT stream->resourcesFound(ret);
-
-            if (remaining == 0)
-                stream->finish();
-        });
-        job->runAsync();
-    }
+        if (!ret.isEmpty())
+            Q_EMIT stream->resourcesFound(ret);
+        stream->finish();
+    });
     return stream;
 }
 
