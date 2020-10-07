@@ -92,7 +92,8 @@ Kirigami.AbstractListItem {
                                 Layout.alignment: Qt.AlignVCenter
                                 Layout.fillWidth: true
                                 elide: Text.ElideRight
-                                text: listener.isActive && model.transaction.downloadSpeed>0 ? i18nc("TransactioName - TransactionStatus", "%1 - %2: %3", model.transaction.name, listener.statusText, model.transaction.downloadSpeedString) :
+                                text: listener.isActive && model.transaction.remainingTime>0 ? i18nc("TransactioName - TransactionStatus: speed, remaining time", "%1 - %2: %3, %4 remaining", model.transaction.name, listener.statusText, model.transaction.downloadSpeedString, model.transaction.remainingTime) :
+                                      listener.isActive && model.transaction.downloadSpeed>0 ? i18nc("TransactioName - TransactionStatus: speed", "%1 - %2: %3", model.transaction.name, listener.statusText, model.transaction.downloadSpeedString) :
                                                                            listener.isActive ? i18nc("TransactioName - TransactionStatus", "%1 - %2", model.transaction.name, listener.statusText)
                                                                                              : model.transaction.name
                             }

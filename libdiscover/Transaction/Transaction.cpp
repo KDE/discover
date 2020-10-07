@@ -133,3 +133,16 @@ QString Transaction::downloadSpeedString() const
 {
     return i18nc("@label Download rate", "%1/s", KFormat().formatByteSize(downloadSpeed()));
 }
+
+void Transaction::setRemainingTime(uint remainingTime)
+{
+    if (remainingTime != m_remainingTime) {
+        m_remainingTime = remainingTime;
+        Q_EMIT remainingTimeChanged(remainingTime);
+    }
+}
+
+QString Transaction::remainingTimeString() const
+{
+    return KFormat().formatSpelloutDuration(m_remainingTime * 1000);
+}

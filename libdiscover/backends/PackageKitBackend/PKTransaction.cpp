@@ -95,6 +95,9 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
     connect(m_trans.data(), &PackageKit::Transaction::statusChanged, this, &PKTransaction::statusChanged);
     connect(m_trans.data(), &PackageKit::Transaction::eulaRequired, this, &PKTransaction::eulaRequired);
     connect(m_trans.data(), &PackageKit::Transaction::allowCancelChanged, this, &PKTransaction::cancellableChanged);
+    connect(m_trans.data(), &PackageKit::Transaction::remainingTimeChanged, this, [this]() {
+        setRemainingTime(m_trans->remainingTime());
+    });
     connect(m_trans.data(), &PackageKit::Transaction::speedChanged, this, [this]() {
         setDownloadSpeed(m_trans->speed());
     });

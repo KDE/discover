@@ -39,6 +39,8 @@ class DISCOVERCOMMON_EXPORT Transaction : public QObject
     Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
     Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed WRITE setDownloadSpeed NOTIFY downloadSpeedChanged)
     Q_PROPERTY(QString downloadSpeedString READ downloadSpeedString NOTIFY downloadSpeedChanged)
+    Q_PROPERTY(QString remainingTimeString READ remainingTimeString NOTIFY remainingTimeChanged)
+    Q_PROPERTY(uint remainingTime READ remainingTime NOTIFY remainingTimeChanged)
 
 public:
     enum Status {
@@ -139,7 +141,11 @@ public:
     quint64 downloadSpeed() const { return m_downloadSpeed; }
     void setDownloadSpeed(quint64 downloadSpeed);
 
+    uint remainingTime() const { return m_remainingTime; }
+    void setRemainingTime(uint seconds);
+
     QString downloadSpeedString() const;
+    QString remainingTimeString() const;
 
 private:
     AbstractResource * const m_resource;
@@ -150,6 +156,7 @@ private:
     int m_progress;
     bool m_visible = true;
     quint64 m_downloadSpeed = 0;
+    uint m_remainingTime = 0;
 
 Q_SIGNALS:
     /**
@@ -179,6 +186,8 @@ Q_SIGNALS:
     void visibleChanged(bool visible);
 
     void downloadSpeedChanged(quint64 downloadSpeed);
+
+    void remainingTimeChanged(uint remainingTime);
 };
 
 #endif // TRANSACTION_H
