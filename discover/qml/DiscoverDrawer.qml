@@ -24,7 +24,6 @@ Kirigami.GlobalDrawer {
     width: Kirigami.Units.gridUnit * 14
 
     property bool wideScreen: false
-    bannerImageSource: "qrc:/banners/banner.svg"
 
     resetMenuOnTriggered: false
 

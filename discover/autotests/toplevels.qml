@@ -35,7 +35,6 @@ DiscoverTest
         var categoryName = "dummy 3";
         firstitem.clicked()
 
-        drawer.bannerClicked()
         compare(appRoot.stack.currentItem.title, "Featured", "same title");
         compare(drawer.currentSubMenu, null)
     }
