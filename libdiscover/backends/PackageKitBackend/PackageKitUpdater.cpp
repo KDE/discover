@@ -262,11 +262,7 @@ void PackageKitUpdater::addResources(const QList<AbstractResource*>& apps)
 QList<AbstractResource*> PackageKitUpdater::toUpdate() const
 {
     return m_toUpgrade
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     .values();
-#else
-    .toList();
-#endif
 }
 
 bool PackageKitUpdater::isMarked(AbstractResource* res) const

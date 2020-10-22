@@ -44,7 +44,6 @@
 #include <KStandardAction>
 #include <KCrash>
 #include <kcoreaddons_version.h>
-#include <kcrash_version.h>
 // #include <KSwitchLanguageDialog>
 
 // DiscoverCommon includes
@@ -112,15 +111,6 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
             connect(r, &DiscoverSettings::appsListPageSortingChanged, r, &DiscoverSettings::save);
             return r;
         });
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-    qmlRegisterType<QQuickView>();
-    qmlRegisterType<QActionGroup>();
-    qmlRegisterType<QAction>();
-
-    qmlRegisterType<KAboutData>();
-    qmlRegisterType<KAboutLicense>();
-    qmlRegisterType<KAboutPerson>();
-#else
     qmlRegisterAnonymousType<QQuickView>("org.kde.discover.app", 1);
     qmlRegisterAnonymousType<QActionGroup>("org.kde.discover.app", 1);
     qmlRegisterAnonymousType<QAction>("org.kde.discover.app", 1);
@@ -128,7 +118,6 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     qmlRegisterAnonymousType<KAboutData>("org.kde.discover.app", 1);
     qmlRegisterAnonymousType<KAboutLicense>("org.kde.discover.app", 1);
     qmlRegisterAnonymousType<KAboutPerson>("org.kde.discover.app", 1);
-#endif
 
     qmlRegisterUncreatableType<DiscoverObject>("org.kde.discover.app", 1, 0, "DiscoverMainWindow", QStringLiteral("don't do that"));
     setupActions();
@@ -139,9 +128,7 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     plugin->initializeEngine(m_engine, uri);
     plugin->registerTypes(uri);
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     m_engine->setInitialProperties(initialProperties);
-#endif
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
     m_engine->rootContext()->setContextProperty(QStringLiteral("discoverAboutData"), QVariant::fromValue(KAboutData::applicationData()));
 
@@ -341,9 +328,7 @@ void DiscoverObject::integrateObject(QObject* object)
         rootObject()->setVisibility(qMax(visibility, QQuickView::AutomaticVisibility));
     }
     connect(rootObject(), &QQuickView::sceneGraphError, this, [] (QQuickWindow::SceneGraphError /*error*/, const QString &message) {
-#if KCrash_VERSION >= QT_VERSION_CHECK(5, 69, 0)
         KCrash::setErrorMessage(message);
-#endif
         qFatal("%s", qPrintable(message));
     });
 

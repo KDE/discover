@@ -58,21 +58,12 @@ void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
     qmlRegisterUncreatableType<Transaction>("org.kde.discover", 2, 0, "Transaction", QStringLiteral("should come from the backends"));
     qmlRegisterUncreatableType<SourcesModel>("org.kde.discover", 2, 0, "SourcesModelClass", QStringLiteral("should come from the backends"));
     qmlRegisterUncreatableType<SourcesModel>("org.kde.discover", 2, 0, "AbstractBackendUpdater", QStringLiteral("should come from the backends"));
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-    qmlRegisterType<TransactionModel>();
-    qmlRegisterType<Rating>();
-    qmlRegisterType<AbstractResourcesBackend>();
-    qmlRegisterType<AbstractReviewsBackend>();
-    qmlRegisterType<Category>();
-    qmlRegisterType<ResourcesModel>();
-#else
     qmlRegisterAnonymousType<TransactionModel>("org.kde.discover", 1);
     qmlRegisterAnonymousType<Rating>("org.kde.discover", 1);
     qmlRegisterAnonymousType<AbstractResourcesBackend>("org.kde.discover", 1);
     qmlRegisterAnonymousType<AbstractReviewsBackend>("org.kde.discover", 1);
     qmlRegisterAnonymousType<Category>("org.kde.discover", 1);
     qmlRegisterAnonymousType<ResourcesModel>("org.kde.discover", 1);
-#endif
     qmlProtectModule("org.kde.discover", 2);
     qRegisterMetaType<QList<QAction*>>();
 }
