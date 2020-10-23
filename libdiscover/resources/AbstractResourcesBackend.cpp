@@ -5,7 +5,6 @@
  */
 
 #include "AbstractResourcesBackend.h"
-#include "AbstractResource.h"
 #include "Category/Category.h"
 #include <QHash>
 #include <QMetaObject>

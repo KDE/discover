@@ -9,7 +9,6 @@
 #include "PackageKitBackend.h"
 #include "PackageKitMessages.h"
 #include <KLocalizedString>
-#include <PackageKit/Details>
 #include <PackageKit/Daemon>
 #include <QJsonArray>
 #include <QDebug>

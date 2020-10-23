@@ -8,7 +8,6 @@
 #include <QStandardItemModel>
 #include <KLocalizedString>
 #include <KDesktopFile>
-#include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
 #include <QAction>
 #include <QProcess>

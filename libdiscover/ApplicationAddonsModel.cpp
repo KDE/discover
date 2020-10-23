@@ -6,7 +6,6 @@
 
 #include "ApplicationAddonsModel.h"
 #include <resources/ResourcesModel.h>
-#include <resources/PackageState.h>
 #include <resources/AbstractResource.h>
 #include <Transaction/TransactionModel.h>
 #include "libdiscover_debug.h"

@@ -12,8 +12,6 @@
 #include <utils.h>
 
 #include "ResourcesModel.h"
-#include "AbstractResource.h"
-#include "AbstractResourcesBackend.h"
 #include <Category/CategoryModel.h>
 #include <ReviewsBackend/Rating.h>
 #include <Transaction/TransactionModel.h>

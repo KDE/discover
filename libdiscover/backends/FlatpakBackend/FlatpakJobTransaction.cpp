@@ -14,9 +14,6 @@
 #include <QTimer>
 
 extern "C" {
-#include <flatpak.h>
-#include <gio/gio.h>
-#include <glib.h>
 }
 
 FlatpakJobTransaction::FlatpakJobTransaction(FlatpakResource *app, Role role, bool delayStart)

@@ -7,7 +7,6 @@
 
 #include "PackageKitBackend.h"
 #include "PackageKitSourcesBackend.h"
-#include "PackageKitResource.h"
 #include "PackageKitUpdater.h"
 #include "AppPackageKitResource.h"
 #include "PKTransaction.h"
@@ -23,7 +22,6 @@
 #include <QProcess>
 #include <QStringList>
 #include <QDebug>
-#include <QTimer>
 #include <QStandardPaths>
 #include <QFile>
 #include <QAction>
@@ -32,7 +30,6 @@
 #include <QFutureWatcher>
 #include <QtConcurrentRun>
 
-#include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
 #include <PackageKit/Offline>
 #include <PackageKit/Details>

@@ -11,7 +11,6 @@
 #include "AbstractBackendUpdater.h"
 #include "AbstractResource.h"
 #include "utils.h"
-#include <QDateTime>
 #include "libdiscover_debug.h"
 
 #include <KLocalizedString>

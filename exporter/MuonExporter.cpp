@@ -11,7 +11,6 @@
 #include <resources/AbstractResource.h>
 #include <QFile>
 #include <QDebug>
-#include <QTimer>
 #include <QMetaProperty>
 #include <QJsonDocument>
 #include <QJsonArray>

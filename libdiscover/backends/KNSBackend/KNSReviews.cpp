@@ -10,7 +10,6 @@
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
 #include <resources/AbstractResource.h>
-#include <attica/provider.h>
 #include <attica/providermanager.h>
 #include <attica/content.h>
 #include <KLocalizedString>

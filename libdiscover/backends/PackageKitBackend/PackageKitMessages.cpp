@@ -6,7 +6,6 @@
  */
 
 #include "PackageKitMessages.h"
-#include <PackageKit/Transaction>
 #include <Daemon>
 #include <KLocalizedString>
 

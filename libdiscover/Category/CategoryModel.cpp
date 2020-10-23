@@ -6,7 +6,6 @@
 
 // Own includes
 #include "CategoryModel.h"
-#include "Category.h"
 #include "CategoriesReader.h"
 #include "libdiscover_debug.h"
 #include <QCollator>

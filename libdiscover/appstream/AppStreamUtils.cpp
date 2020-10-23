@@ -12,7 +12,6 @@
 #include <QDebug>
 #include "utils.h"
 #include <KLocalizedString>
-#include <AppStreamQt/component.h>
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/screenshot.h>
 #if APPSTREAM_HAS_SPDX

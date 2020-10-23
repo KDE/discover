@@ -23,12 +23,10 @@
 #include <QDir>
 #include "libdiscover_debug.h"
 #include <QJsonArray>
-#include <QJsonDocument>
 #include <QJsonObject>
 #include <QFile>
 #include <QFileInfo>
 #include <QNetworkAccessManager>
-#include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QStandardPaths>
 

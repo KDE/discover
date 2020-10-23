@@ -15,7 +15,6 @@
 #include <QDebug>
 #include <QTimer>
 #include <KLocalizedString>
-#include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
 #include <functional>
 

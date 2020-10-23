@@ -11,10 +11,8 @@
 #include <Transaction/Transaction.h>
 #include <Transaction/TransactionModel.h>
 #include <KLocalizedString>
-#include <QDateTime>
 #include "libdiscover_debug.h"
 #include "utils.h"
-#include <QTimer>
 #include <QIcon>
 
 StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)

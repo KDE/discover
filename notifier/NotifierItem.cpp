@@ -5,7 +5,6 @@
  */
 
 #include "NotifierItem.h"
-#include <KStatusNotifierItem>
 #include <KLocalizedString>
 #include <QMenu>
 #include <QDebug>

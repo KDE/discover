@@ -7,7 +7,6 @@
 
 #include "FlatpakBackend.h"
 #include "FlatpakFetchDataJob.h"
-#include "FlatpakResource.h"
 #include "FlatpakSourcesBackend.h"
 #include "FlatpakJobTransaction.h"
 
@@ -20,7 +19,6 @@
 #include <appstream/AppStreamUtils.h>
 
 #include <AppStreamQt/bundle.h>
-#include <AppStreamQt/component.h>
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/metadata.h>
 

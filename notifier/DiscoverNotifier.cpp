@@ -12,7 +12,6 @@
 #include <QDBusMessage>
 #include <QNetworkConfigurationManager>
 #include <KLocalizedString>
-#include <KNotification>
 #include <KNotificationJobUiDelegate>
 #include <KPluginFactory>
 
