@@ -213,7 +213,11 @@ void PKTransaction::proceed()
     if (!m_proceedFunctions.isEmpty()) {
         processProceedFunction();
     } else {
-        trigger(PackageKit::Transaction::TransactionFlagOnlyTrusted);
+        if (m_apps.size() == 1 && qobject_cast<LocalFilePKResource*>(m_apps.at(0))) {
+            trigger(PackageKit::Transaction::TransactionFlagNone);
+        } else {
+            trigger(PackageKit::Transaction::TransactionFlagOnlyTrusted);
+        }
     }
 }
 
