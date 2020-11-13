@@ -1,5 +1,6 @@
 /*
  *   SPDX-FileCopyrightText: 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   SPDX-FileCopyrightText: 2020 Carl Schwan <carl@carlschwan.eu>
  *
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
@@ -8,20 +9,53 @@
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
-import QtGraphicalEffects 1.0
 import org.kde.discover 2.0
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.12 as Kirigami
 
-Flickable {
+ListView {
     id: root
     readonly property alias count: screenshotsModel.count
     property alias resource: screenshotsModel.application
     property var resource
-    property int currentIndex: -1
-    property Item currentItem: screenshotsRep.itemAt(currentIndex)
+
+    spacing: Kirigami.Units.largeSpacing
+    focus: overlay.visible
+    orientation: Qt.Horizontal
+
     Layout.preferredHeight: Kirigami.Units.gridUnit * 13
-    contentHeight: height
-    contentWidth: screenshotsLayout.width
+
+    Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
+    Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
+
+    model: ScreenshotsModel {
+        id: screenshotsModel
+    }
+
+    delegate: AbstractButton {
+        readonly property url imageSource: large_image_url
+        readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
+
+        implicitWidth: thumbnail.width
+        implicitHeight: root.height
+        padding: Kirigami.Units.largeSpacing
+        hoverEnabled: true
+        onClicked: overlay.open()
+        // TODO cursorShape: Qt.PointingHandCursor
+
+        background: Image {
+            id: thumbnail
+            readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
+            width: root.height / proportion
+            height: root.height
+
+            BusyIndicator {
+                visible: running
+                running: thumbnail.status == Image.Loading
+                anchors.centerIn: parent
+            }
+            source: small_image_url
+        }
+    }
 
     Popup {
         id: overlay
@@ -87,69 +121,10 @@ Flickable {
         }
     }
 
-    Row {
-        id: screenshotsLayout
-        height: root.contentHeight
-        spacing: Kirigami.Units.largeSpacing
-        focus: overlay.visible
 
-        Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
-        Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
-
-        Repeater {
-            id: screenshotsRep
-            model: ScreenshotsModel {
-                id: screenshotsModel
-            }
-
-            delegate: MouseArea {
-                readonly property url imageSource: large_image_url
-                readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
-                width: Math.min(root.width/3, Math.min(Math.max(50, height/proportion), thumbnail.status == Image.Loading ? height : thumbnail.sourceSize.width))
-                height: screenshotsLayout.height
-
-                hoverEnabled: true
-                cursorShape: Qt.PointingHandCursor
-
-                onClicked: {
-                    root.currentIndex = index
-                    overlay.open()
-                }
-
-                DropShadow {
-                    source: thumbnail
-                    anchors.fill: thumbnail
-                    verticalOffset: Kirigami.Units.smallSpacing
-                    horizontalOffset: 0
-                    radius: 12.0
-                    samples: 25
-                    color: "Black" // Shadows should always be pure black
-                    cached: true
-                }
-
-                BusyIndicator {
-                    visible: running
-                    running: thumbnail.status == Image.Loading
-                    anchors.centerIn: parent
-                }
-
-                Image {
-                    id: thumbnail
-                    source: small_image_url
-                    height: parent.proportion>1 ? parent.height : undefined
-                    width: parent.proportion<=1 ? parent.width : undefined
-                    fillMode: Image.PreserveAspectFit
-                    smooth: true
-                    anchors.verticalCenter: parent.verticalCenter
-                    onStatusChanged: if (status === Image.Error) {
-                        screenshotsModel.remove(small_image_url)
-                    }
-                }
-            }
-        }
-    }
     clip: true
-    readonly property var leftShadow: Shadow {
+
+    Shadow {
         parent: root
         anchors {
             left: parent.left
@@ -160,7 +135,7 @@ Flickable {
         width: Math.max(0, Math.min(root.width/5, root.contentX))
     }
 
-    readonly property var rightShadow: Shadow {
+    Shadow {
         parent: root
         anchors {
             right: parent.right
@@ -169,5 +144,33 @@ Flickable {
         }
         edge: Qt.RightEdge
         width: Math.max(0, Math.min(root.contentWidth - root.contentX - root.width)/5)
+    }
+
+    RoundButton {
+        anchors {
+            left: parent.left
+            leftMargin: Kirigami.Units.largeSpacing
+            verticalCenter: parent.verticalCenter
+        }
+        width: Kirigami.Units.gridUnit * 2
+        height: width
+        icon.name: "arrow-left"
+        visible: !Kirigami.Settings.isMobile && root.currentIndex > 0
+        Keys.forwardTo: [root]
+        onClicked: root.currentIndex -= 1
+    }
+
+    RoundButton {
+        anchors {
+            right: parent.right
+            rightMargin: Kirigami.Units.largeSpacing
+            verticalCenter: parent.verticalCenter
+        }
+        width: Kirigami.Units.gridUnit * 2
+        height: width
+        icon.name: "arrow-right"
+        visible: !Kirigami.Settings.isMobile && root.currentIndex < root.count - 1
+        Keys.forwardTo: [root]
+        onClicked: root.currentIndex += 1
     }
 }
