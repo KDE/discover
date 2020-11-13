@@ -17,6 +17,7 @@ DiscoverPage {
     id: appInfo
     property QtObject application: null
     readonly property int visibleReviews: 3
+    title: appInfo.application.name
     clip: true
 
     // Usually this page is not the top level page, but when we are, isHome being
