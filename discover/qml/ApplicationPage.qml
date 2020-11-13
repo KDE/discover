@@ -227,14 +227,13 @@ DiscoverPage {
             }
             delegate: ReviewDelegate {
                 Layout.topMargin: Kirigami.Units.largeSpacing
+                Layout.fillWidth: true
                 separator: false
                 compact: true
-                Layout.bottomMargin: Kirigami.Units.largeSpacing
             }
         }
 
         RowLayout {
-            Layout.alignment: Qt.AlignHCenter
             Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.bottomMargin: Kirigami.Units.largeSpacing
             spacing: Kirigami.Units.largeSpacing

@@ -17,10 +17,6 @@ RowLayout {
     property bool separator: true
     signal markUseful(bool useful)
 
-    Item {
-        Layout.fillHeight: true
-        Layout.preferredWidth: Kirigami.Units.largeSpacing
-    }
     // Spacers to indent nested comments/replies
     Repeater {
         model: depth
@@ -182,9 +178,5 @@ RowLayout {
                 }
             }
         }
-    }
-    Item {
-        Layout.fillHeight: true
-        Layout.preferredWidth: Kirigami.Units.largeSpacing * 2
     }
 }
