@@ -65,6 +65,7 @@ DiscoverPage
     Kirigami.CardsListView {
         id: apps
         model: FeaturedModel {}
+        Component.onCompleted: apps.bottomMargin = Kirigami.Units.largeSpacing * 2
         currentIndex: -1
         delegate: ApplicationDelegate {
             application: model.application
