@@ -45,7 +45,7 @@ DiscoverPage {
         }
     }
 
-    contextualActions: [originsMenuAction]
+    rightAction: originsMenuAction
 
     ActionGroup {
         id: sourcesGroup
@@ -56,6 +56,7 @@ DiscoverPage {
         id: originsMenuAction
 
         text: i18n("Sources")
+        icon.name: "repository"
         visible: children.length>1
         children: sourcesGroup.actions
         readonly property var r0: Instantiator {
