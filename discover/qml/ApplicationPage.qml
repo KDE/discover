@@ -150,6 +150,7 @@ DiscoverPage {
         }
 
         ApplicationScreenshots {
+            id: applicationScreenshots
             Layout.fillWidth: true
             visible: count > 0
             resource: appInfo.application
@@ -158,6 +159,7 @@ DiscoverPage {
         ScrollBar {
             id: screenshotsScrollbar
             Layout.fillWidth: true
+            visible: applicationScreenshots.count > 0
         }
 
         Label {
