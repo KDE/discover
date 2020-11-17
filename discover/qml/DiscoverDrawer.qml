@@ -54,20 +54,18 @@ Kirigami.GlobalDrawer {
     }
 
     header: Kirigami.AbstractApplicationHeader {
-        id: toolbar
         visible: drawer.wideScreen
 
         RowLayout {
-            anchors.fill: parent
-            anchors.leftMargin: Kirigami.Units.smallSpacing
-            anchors.rightMargin: Kirigami.Units.smallSpacing
+            anchors {
+                left: parent.left
+                leftMargin: Kirigami.Units.smallSpacing
+                right: parent.right
+                rightMargin: Kirigami.Units.smallSpacing
+            }
 
             SearchField {
                 id: searchField
-
-                Layout.topMargin: Kirigami.Units.smallSpacing
-                Layout.bottomMargin: Kirigami.Units.smallSpacing
-                Layout.fillHeight: true
                 Layout.fillWidth: true
 
                 visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
