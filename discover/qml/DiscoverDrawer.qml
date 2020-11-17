@@ -27,11 +27,6 @@ Kirigami.GlobalDrawer {
 
     resetMenuOnTriggered: false
 
-    onBannerClicked: {
-        Navigation.openHome();
-        drawerOpen = false
-    }
-
     property string currentSearchText
 
     onCurrentSubMenuChanged: {
