@@ -13,9 +13,15 @@
 #include <QStringList>
 #include <QTimer>
 
-FwupdResource::FwupdResource(QString name, AbstractResourcesBackend* parent)
+FwupdResource::FwupdResource(FwupdDevice* device, AbstractResourcesBackend* parent)
+    : FwupdResource(device, QStringLiteral("org.fwupd.%1.device").arg(QString::fromUtf8(fwupd_device_get_id(device)).replace(QLatin1Char('/'),QLatin1Char('_'))), parent)
+{}
+
+FwupdResource::FwupdResource(FwupdDevice* device, const QString &id, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
-    , m_name(std::move(name))
+    , m_id(id)
+    , m_name(QString::fromUtf8(fwupd_device_get_name(device)))
+    , m_deviceID(QString::fromUtf8(fwupd_device_get_id(device)))
 {
     Q_ASSERT(!m_name.isEmpty());
     setObjectName(m_name);

@@ -69,24 +69,10 @@ void FwupdBackend::addResourceToList(FwupdResource* res)
     Q_ASSERT(m_resources.value(res->packageName()) == res);
 }
 
-FwupdResource * FwupdBackend::createDevice(FwupdDevice *device)
-{
-    const QString name = QString::fromUtf8(fwupd_device_get_name(device));
-    FwupdResource* res = new FwupdResource(name, this);
-
-    const QString deviceID = QString::fromUtf8(fwupd_device_get_id(device));
-    res->setId(QStringLiteral("org.fwupd.%1.device").arg(QString(deviceID).replace(QLatin1Char('/'),QLatin1Char('_'))));
-    res->setDeviceId(deviceID);
-    res->setDeviceDetails(device);
-    return res;
-}
-
 FwupdResource * FwupdBackend::createRelease(FwupdDevice *device)
 {
-    FwupdResource* res = createDevice(device);
-
     FwupdRelease *release = fwupd_device_get_release_default(device);
-    res->setId(QString::fromUtf8(fwupd_release_get_appstream_id(release)));
+    FwupdResource* res = new FwupdResource(device, QString::fromUtf8(fwupd_release_get_appstream_id(release)), this);
     res->setReleaseDetails(release);
 
     /* the same as we have already */
@@ -390,7 +376,7 @@ void FwupdBackend::checkForUpdates()
                 handleError(error);
             }
 
-            auto res = createDevice(device);
+            auto res = new FwupdResource(device, this);
             for (uint i=0; releases && i<releases->len; ++i) {
                 FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(releases, i);
                 if (res->installedVersion().toUtf8() == fwupd_release_get_version(release)) {

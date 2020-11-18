@@ -17,7 +17,8 @@ class FwupdResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit FwupdResource(QString name, AbstractResourcesBackend* parent);
+    explicit FwupdResource(FwupdDevice *device, AbstractResourcesBackend* parent);
+    explicit FwupdResource(FwupdDevice *device, const QString &id, AbstractResourcesBackend* parent);
 
     QList<PackageState> addonsInformation() override { return {}; }
     QString section() override;
@@ -48,10 +49,8 @@ public:
     QString sourceIcon() const override { return {}; }
     QString author() const override { return {}; }
 
-    void setDeviceId(const QString &deviceId) { m_deviceID = deviceId; }
     void setIsDeviceLocked(bool locked) { m_isDeviceLocked = locked; }
     void setDescription(const QString &description) { m_description = description; }
-    void setId(const QString &id) { m_id = id; }
 
     void setState(AbstractResource::State state);
     void setReleaseDetails(FwupdRelease *release);
@@ -68,8 +67,9 @@ public:
     QString cacheFile() const;
 
 private:
-    QString m_id;
+    const QString m_id;
     const QString m_name;
+    const QString m_deviceID;
     QString m_summary;
     QString m_description;
     QString m_version;
@@ -84,7 +84,6 @@ private:
     QString m_iconName;
     int m_size = 0;
 
-    QString m_deviceID;
     QString m_updateURI;
     bool m_isDeviceLocked = false; // True if device is locked!
     bool m_isOnlyOffline = false; // True if only offline updates
