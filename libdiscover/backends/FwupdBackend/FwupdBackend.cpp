@@ -13,7 +13,7 @@
 #include <resources/SourcesModel.h>
 #include <Transaction/Transaction.h>
 
-#include <QCoreApplication>
+#include <QtConcurrent>
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KPluginFactory>
@@ -28,7 +28,6 @@ FwupdBackend::FwupdBackend(QObject* parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_cancellable(g_cancellable_new())
 {
-    fwupd_client_set_user_agent_for_package(client, "plasma-discover", "1.0");
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FwupdBackend::updatesCountChanged);
 
     SourcesModel::global()->addSourcesBackend(new FwupdSourcesBackend(this));
@@ -50,6 +49,9 @@ QMap<GChecksumType, QCryptographicHash::Algorithm> FwupdBackend::gchecksumToQChr
 FwupdBackend::~FwupdBackend()
 {
     g_cancellable_cancel(m_cancellable);
+    if (!m_threadPool.waitForDone(200))
+        qWarning("Could not stop all fwupd threads");
+    m_threadPool.clear();
     g_object_unref(m_cancellable);
 
     g_object_unref(client);
@@ -221,6 +223,113 @@ FwupdResource* FwupdBackend::createApp(FwupdDevice *device)
     return app.take();
 }
 
+bool FwupdBackend::downloadFile(const QUrl &uri, const QString &filename)
+{
+    Q_ASSERT(QThread::currentThread() != QCoreApplication::instance()->thread());
+
+    QScopedPointer<QNetworkAccessManager> manager(new QNetworkAccessManager);
+    QEventLoop loop;
+    QTimer getTimer;
+    connect(&getTimer, &QTimer::timeout, &loop, &QEventLoop::quit);
+    connect(manager.data(), &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
+    QScopedPointer<QNetworkReply> reply(manager->get(QNetworkRequest(uri)));
+    getTimer.start(600000); // 60 Seconds TimeOout Period
+    loop.exec();
+    if (!reply)
+    {
+        return false;
+    } else if (QNetworkReply::NoError != reply->error() ) {
+        qWarning() << "error fetching" << uri;
+        return false;
+    } else if (reply->error() == QNetworkReply::NoError) {
+        QFile file(filename);
+        if (file.open(QIODevice::WriteOnly)) {
+            file.write(reply->readAll());
+        } else {
+            qWarning() << "Fwupd Error: Cannot Open File to write Data" << filename;
+        }
+    }
+    return true;
+}
+
+void FwupdBackend::refreshRemote(FwupdBackend* backend, FwupdRemote* remote, quint64 cacheAge, GCancellable *cancellable)
+{
+    if (!fwupd_remote_get_filename_cache_sig(remote))
+    {
+        qWarning() << "Fwupd Error: " << "Remote " << fwupd_remote_get_id(remote) << "has no cache signature!";
+        return;
+    }
+
+    /* check cache age */
+    if (cacheAge > 0)
+    {
+        const quint64 age = fwupd_remote_get_age(remote);
+        if (age < cacheAge)
+        {
+//             qDebug() << "Fwupd Info:" << fwupd_remote_get_id(remote) << "is only" << age << "seconds old, so ignoring refresh! ";
+            return;
+        }
+    }
+
+    const QString cacheId = QStringLiteral("fwupd/remotes.d/%1").arg(QString::fromUtf8(fwupd_remote_get_id(remote)));
+    const auto basenameSig = QString::fromUtf8(g_path_get_basename(fwupd_remote_get_filename_cache_sig(remote)));
+    const QString filenameSig = cacheFile(cacheId, basenameSig);
+
+    if (filenameSig.isEmpty())
+        return;
+
+    /* download the signature first*/
+    const QUrl urlSig(QString::fromUtf8(fwupd_remote_get_metadata_uri_sig(remote)));
+    const QString filenameSigTmp(filenameSig + QStringLiteral(".tmp"));
+
+    if (!downloadFile(urlSig, filenameSigTmp)) {
+        qWarning() << "failed to download" << urlSig;
+        return;
+    }
+    Q_ASSERT(QFile::exists(filenameSigTmp));
+
+    const auto checksum = fwupd_remote_get_checksum(remote);
+    const QCryptographicHash::Algorithm hashAlgorithm = gchecksumToQChryptographicHash()[fwupd_checksum_guess_kind(checksum)];
+    const QByteArray hash = getChecksum(filenameSigTmp, hashAlgorithm);
+
+    const QByteArray oldHash = getChecksum(filenameSig, hashAlgorithm);
+    if (oldHash == hash) {
+        qDebug() << "remote hasn't changed:" << fwupd_remote_get_id(remote);
+        QFile::remove(filenameSigTmp);
+        return;
+    }
+
+    QFile::remove(filenameSig);
+
+    if (!QFile::rename(filenameSigTmp, filenameSig)) {
+        QFile::remove(filenameSigTmp);
+        qWarning() << "Fwupd Error: cannot save remote signature" << filenameSigTmp << "to" << filenameSig;
+        return;
+    }
+    QFile::remove(filenameSigTmp);
+
+    const auto basename = QString::fromUtf8(g_path_get_basename(fwupd_remote_get_filename_cache(remote)));
+    const QString filename = cacheFile(cacheId, basename);
+
+    if (filename.isEmpty())
+        return;
+
+    qDebug() << "Fwupd Info: saving new firmware metadata to:" <<  filename;
+
+    const QUrl url(QString::fromUtf8(fwupd_remote_get_metadata_uri(remote)));
+    if (!downloadFile(url, filename))
+    {
+        qWarning() << "Fwupd Error: cannot download file:" << filename;
+        return;
+    }
+
+    g_autoptr(GError) error = nullptr;
+    if (!fwupd_client_update_metadata(backend->client, fwupd_remote_get_id(remote), filename.toUtf8().constData(), filenameSig.toUtf8().constData(), cancellable, &error))
+    {
+        backend->handleError(error);
+    }
+}
+
 void FwupdBackend::handleError(GError *perror)
 {
     //TODO: localise the error message
@@ -249,104 +358,82 @@ QString FwupdBackend::cacheFile(const QString &kind, const QString &basename)
     return cacheDir.filePath(kind + QLatin1Char('/') + basename);
 }
 
-static void fwupd_client_get_devices_cb (GObject */*source*/, GAsyncResult *res, gpointer user_data)
-{
-    FwupdBackend *helper = (FwupdBackend *) user_data;
-    g_autoptr(GError) error = nullptr;
-    auto array = fwupd_client_get_devices_finish(helper->client, res, &error);
-    if (!error)
-        helper->setDevices(array);
-    else
-        helper->handleError(error);
-}
-
-void FwupdBackend::setDevices(GPtrArray *devices)
-{
-    for(uint i = 0; devices && i < devices->len; i++) {
-        FwupdDevice *device = (FwupdDevice *) g_ptr_array_index(devices, i);
-
-        if (!fwupd_device_has_flag (device, FWUPD_DEVICE_FLAG_SUPPORTED))
-            continue;
-
-        g_autoptr(GError) error = nullptr;
-        g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), m_cancellable, &error);
-
-        if (error) {
-            if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED)) {
-                qWarning() << "fwupd: Device not supported:" << fwupd_device_get_name(device) << error->message;
-                continue;
-            }
-            if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE)) {
-                continue;
-            }
-
-            handleError(error);
-        }
-
-        auto res = createDevice(device);
-        for (uint i=0; releases && i<releases->len; ++i) {
-            FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(releases, i);
-            if (res->installedVersion().toUtf8() == fwupd_release_get_version(release)) {
-                res->setReleaseDetails(release);
-                break;
-            }
-        }
-        addResourceToList(res);
-    }
-    g_ptr_array_unref(devices);
-
-    addUpdates();
-
-    m_fetching = false;
-    emit fetchingChanged();
-    emit initialized();
-}
-
-static void fwupd_client_get_remotes_cb (GObject */*source*/, GAsyncResult *res, gpointer user_data)
-{
-    FwupdBackend *helper = (FwupdBackend *) user_data;
-    g_autoptr(GError) error = nullptr;
-    auto array = fwupd_client_get_remotes_finish(helper->client, res, &error);
-    if (!error)
-        helper->setRemotes(array);
-    else
-        helper->handleError(error);
-}
-
-void FwupdBackend::setRemotes(GPtrArray *remotes)
-{
-    for(uint i = 0; remotes && i < remotes->len; i++)
-    {
-        FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
-        if (!fwupd_remote_get_enabled(remote))
-            continue;
-
-        if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
-            continue;
-
-        g_autoptr(GError) error = nullptr;
-        fwupd_client_refresh_remote(client, remote, m_cancellable, &error);
-        handleError(error);
-    }
-}
-
 void FwupdBackend::checkForUpdates()
 {
     if (m_fetching)
         return;
 
-    g_autoptr(GError) error = nullptr;
+    auto fw = new QFutureWatcher<GPtrArray*>(this);
+    connect(fw, &QFutureWatcher<GPtrArray*>::finished, this, [this, fw]() {
+        m_fetching = true;
+        emit fetchingChanged();
 
-    if (!fwupd_client_connect (client, m_cancellable, &error)) {
-        handleError(error);
-        return;
-    }
+        auto devices = fw->result();
+        for(uint i = 0; devices && i < devices->len; i++) {
+            FwupdDevice *device = (FwupdDevice *) g_ptr_array_index(devices, i);
 
-    m_fetching = true;
-    emit fetchingChanged();
+            if (!fwupd_device_has_flag (device, FWUPD_DEVICE_FLAG_SUPPORTED))
+                continue;
 
-    fwupd_client_get_devices_async(client, m_cancellable, fwupd_client_get_devices_cb, this);
-    fwupd_client_get_remotes_async(client, m_cancellable, fwupd_client_get_remotes_cb, this);
+            g_autoptr(GError) error = nullptr;
+            g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), m_cancellable, &error);
+
+            if (error) {
+                if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED)) {
+                    qWarning() << "fwupd: Device not supported:" << fwupd_device_get_name(device) << error->message;
+                    continue;
+                }
+                if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE)) {
+                    continue;
+                }
+
+                handleError(error);
+            }
+
+            auto res = createDevice(device);
+            for (uint i=0; releases && i<releases->len; ++i) {
+                FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(releases, i);
+                if (res->installedVersion().toUtf8() == fwupd_release_get_version(release)) {
+                    res->setReleaseDetails(release);
+                    break;
+                }
+            }
+            addResourceToList(res);
+        }
+        g_ptr_array_unref(devices);
+
+        addUpdates();
+
+        m_fetching = false;
+        emit fetchingChanged();
+        emit initialized();
+        fw->deleteLater();
+    });
+    fw->setFuture(QtConcurrent::run(&m_threadPool, [this] () -> GPtrArray*
+        {
+            const uint cacheAge = (24*60*60); // Check for updates every day
+            g_autoptr(GError) error = nullptr;
+
+            /* get devices */
+            GPtrArray* devices = fwupd_client_get_devices(client, m_cancellable, &error);
+            handleError(error);
+
+            g_autoptr(GPtrArray) remotes = fwupd_client_get_remotes(client, m_cancellable, &error);
+            handleError(error);
+            for(uint i = 0; remotes && i < remotes->len; i++)
+            {
+                FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
+                if (!fwupd_remote_get_enabled(remote))
+                    continue;
+
+                if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
+                    continue;
+
+                refreshRemote(this, remote, cacheAge, m_cancellable);
+            }
+            return devices;
+        }
+    ));
 }
 
 int FwupdBackend::updatesCount() const

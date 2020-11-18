@@ -13,6 +13,7 @@
 #include <QString>
 #include <QDir>
 #include <QDebug>
+#include <QThread>
 #include <QTimer>
 #include <QAction>
 #include <QMimeDatabase>
@@ -24,6 +25,8 @@
 #include <QNetworkRequest>
 #include <QCryptographicHash>
 #include <QMap>
+#include <QEventLoop>
+#include <QThreadPool>
 
 extern "C" {
 #include <fwupd.h>
@@ -60,8 +63,6 @@ public:
     void handleError(GError *perror);
 
     static QString cacheFile(const QString &kind, const QString &baseName);
-    void setDevices(GPtrArray*);
-    void setRemotes(GPtrArray*);
 
 Q_SIGNALS:
     void initialized();
@@ -76,6 +77,7 @@ private:
     static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
     static void refreshRemote(FwupdBackend* backend, FwupdRemote *remote, quint64 cacheAge, GCancellable *cancellable);
     static QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
+    static bool downloadFile(const QUrl &uri, const QString &filename);
 
     FwupdResource * createDevice(FwupdDevice *device);
     FwupdResource * createRelease(FwupdDevice *device);
@@ -87,6 +89,7 @@ private:
     int m_startElements;
     QList<AbstractResource*> m_toUpdate;
     GCancellable *m_cancellable;
+    QThreadPool m_threadPool;
 };
 
 #endif // FWUPDBACKEND_H
