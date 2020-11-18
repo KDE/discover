@@ -125,7 +125,7 @@ Kirigami.AbstractCard
                     anchors {
                         bottom: parent.bottom
                         right: parent.right
-                        rightMargin: units.smallSpacing
+                        rightMargin: Kirigami.Units.smallSpacing
                     }
                 }
             }
