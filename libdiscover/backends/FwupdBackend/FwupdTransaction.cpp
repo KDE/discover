@@ -30,7 +30,7 @@ void FwupdTransaction::install()
     if(m_app->isDeviceLocked())
     {
         QString device_id = m_app->deviceId();
-        if(device_id.isNull()) {
+        if(device_id.isEmpty()) {
             qWarning() << "Fwupd Error: No Device ID set, cannot unlock device " << this << m_app->name();
         } else if(!fwupd_client_unlock(m_backend->client, device_id.toUtf8().constData(),nullptr, &error)) {
             m_backend->handleError(error);
