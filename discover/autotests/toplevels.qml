@@ -24,16 +24,10 @@ DiscoverTest
 
     function test_openHome() {
         var drawer = appRoot.globalDrawer;
-        var firstitem;
-        chooseChild(drawer, function(object) {
-            if (object.hasOwnProperty("label") && object.label.indexOf("ummy")>0) {
-                firstitem = object;
-                return true
-            }
-            return false;
-        });
-        var categoryName = "dummy 3";
-        firstitem.clicked()
+        drawer.actions[0].children[2].trigger()
+        compare(appRoot.stack.currentItem.title, "dummy 3", "same title");
+
+        app.openMode("Browsing");
 
         compare(appRoot.stack.currentItem.title, "Featured", "same title");
         compare(drawer.currentSubMenu, null)
@@ -41,14 +35,7 @@ DiscoverTest
 
     function test_navigateThenUpdate() {
         var drawer = appRoot.globalDrawer;
-        var firstitem;
-        chooseChild(drawer, function(object) {
-            if (object.hasOwnProperty("label") && object.label.indexOf("ummy")>0) {
-                firstitem = object;
-                return true
-            }
-            return false;
-        });
+        var firstitem = drawer.actions[0].children[2]
         var updateButton;
         chooseChild(drawer, function(object) {
             if (object.objectName === "updateButton") {
@@ -58,7 +45,7 @@ DiscoverTest
             return false;
         });
 
-        firstitem.clicked()
+        firstitem.trigger()
         verify(updateButton.enabled)
         updateButton.clicked()
 

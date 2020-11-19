@@ -127,12 +127,10 @@ void FwupdResource::fetchChangelog()
 
 void FwupdResource::setState(AbstractResource::State state)
 {
-    if(m_state != state)
-    {
+    if(m_state != state) {
         m_state = state;
         emit stateChanged();
     }
-
 }
 
 void FwupdResource::invokeApplication() const

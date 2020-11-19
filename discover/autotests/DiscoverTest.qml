@@ -37,6 +37,15 @@ Item
         return obj && obj.toString().indexOf(typename+"_QMLTYPE_") === 0
     }
 
+    function chooseChildren(objects, validator) {
+        for (var v in objects) {
+            var obj = objects[v];
+            if (validator(obj))
+                return true;
+        }
+        return false;
+    }
+
     function chooseChild(obj, validator) {
         verify(obj, "can't find a null's child")
         if (validator(obj))
@@ -103,6 +112,7 @@ Item
             done = true;
             for(var v in testRoot) {
                 if (v.indexOf("test_") === 0) {
+                    console.log("doing", v)
                     testRoot.currentTest = v;
                     testRoot.reset();
                     testRoot[v]();
