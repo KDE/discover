@@ -51,7 +51,7 @@ Kirigami.GlobalDrawer {
     header: Kirigami.AbstractApplicationHeader {
         visible: drawer.wideScreen
 
-        RowLayout {
+        contentItem: RowLayout {
             anchors {
                 left: parent.left
                 leftMargin: Kirigami.Units.smallSpacing
