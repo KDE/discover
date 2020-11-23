@@ -213,10 +213,7 @@ void KNSResource::invokeApplication() const
 
 QString KNSResource::executeLabel() const
 {
-    if(knsBackend()->hasApplications()) {
-        return i18n("Launch");
-    }
-    return i18n("Use");
+    return knsBackend()->engine()->useLabel();
 }
 
 QDate KNSResource::releaseDate() const
