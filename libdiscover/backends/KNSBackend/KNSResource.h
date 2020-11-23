@@ -48,8 +48,7 @@ public:
     void setEntry(const KNSCore::EntryInternal& entry);
     KNSCore::EntryInternal entry() const;
 
-    bool canExecute() const override { return !executables().isEmpty(); }
-    QStringList executables() const;
+    bool canExecute() const override;
     void invokeApplication() const override;
 
     QUrl url() const override;

@@ -196,29 +196,19 @@ QStringList KNSResource::extends() const
     return knsBackend()->extends();
 }
 
-QStringList KNSResource::executables() const
-{
-    if (knsBackend()->engine()->hasAdoptionCommand())
-        return {knsBackend()->engine()->adoptionCommand(m_entry)};
-    else
-        return {};
-}
-
 QUrl KNSResource::url() const
 {
     return QUrl(QStringLiteral("kns://")+knsBackend()->name() + QLatin1Char('/') + QUrl(m_entry.providerId()).host() + QLatin1Char('/') + m_entry.uniqueId());
 }
 
+bool KNSResource::canExecute() const
+{
+    return knsBackend()->engine()->hasAdoptionCommand();
+}
+
 void KNSResource::invokeApplication() const
 {
-    QStringList exes = executables();
-    if(!exes.isEmpty()) {
-        const QString exe = exes.constFirst();
-        auto args = KShell::splitArgs(exe);
-        QProcess::startDetached(args.takeFirst(), args);
-    } else {
-        qWarning() << "cannot execute" << packageName();
-    }
+    knsBackend()->engine()->adoptEntry(m_entry);
 }
 
 QString KNSResource::executeLabel() const
