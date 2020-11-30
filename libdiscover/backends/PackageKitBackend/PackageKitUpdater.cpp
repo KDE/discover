@@ -261,8 +261,7 @@ void PackageKitUpdater::addResources(const QList<AbstractResource*>& apps)
 
 QList<AbstractResource*> PackageKitUpdater::toUpdate() const
 {
-    return m_toUpgrade
-    .values();
+    return m_toUpgrade.values();
 }
 
 bool PackageKitUpdater::isMarked(AbstractResource* res) const
