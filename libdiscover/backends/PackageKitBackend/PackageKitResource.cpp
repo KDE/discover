@@ -196,6 +196,7 @@ void PackageKitResource::setDetails(const PackageKit::Details & details)
 
     if (m_details != details) {
         const auto oldState = state();
+        const auto oldSize= size();
         m_details = details;
 
         if (oldState != state())
@@ -203,6 +204,10 @@ void PackageKitResource::setDetails(const PackageKit::Details & details)
 
         if (!backend()->isFetching())
             Q_EMIT backend()->resourcesChanged(this, {"size", "homepage", "license"});
+
+        if (oldSize != size()) {
+            Q_EMIT sizeChanged();
+        }
     }
 }
 
