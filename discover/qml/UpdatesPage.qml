@@ -275,27 +275,7 @@ DiscoverPage
                         Label {
                             Layout.fillWidth: true
                             elide: truncated ? Text.ElideLeft : Text.ElideRight
-                            text: {
-                                if (installedVersion == availableVersion) {
-                                    // Update of the same version; show when old and new are
-                                    // the same (common with Flatpak runtimes)
-                                    return i18n("Update to version %1", availableVersion);
-                                } else if (installedVersion && availableVersion) {
-                                    // Old and new version numbers
-                                    // This thing with \x9C is a fancy feature in QML text handling:
-                                    // when the string will be elided, it shows the string after
-                                    // the last \x9C. This allows us to show a smaller string
-                                    // when there's now enough room
-
-                                    // All of this is mostly for the benefit of KDE Neon users,
-                                    // since the version strings there are really really long
-                                    return i18nc("Do not translate or alter \\x9C", "%1 → %2\x9C%1 → %2\x9C%2", installedVersion, availableVersion);
-                                } else {
-                                    // Available version only, for when the installed version
-                                    // isn't available for some reason
-                                    return availableVersion;
-                                }
-                            }
+                            text: upgradeText
                             opacity: listItem.hovered? 0.8 : 0.6
                         }
                     }

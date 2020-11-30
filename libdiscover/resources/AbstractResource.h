@@ -68,6 +68,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString sourceIcon READ sourceIcon CONSTANT)
     Q_PROPERTY(QString author READ author CONSTANT)
     Q_PROPERTY(QDate releaseDate READ releaseDate NOTIFY stateChanged)
+    Q_PROPERTY(QString upgradeText READ upgradeText NOTIFY stateChanged)
     public:
         /**
          * This describes the state of the resource
@@ -203,6 +204,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual QDate releaseDate() const = 0;
 
         virtual QSet<QString> alternativeAppstreamIds() const { return {}; }
+
+        QString upgradeText() const;
 
     public Q_SLOTS:
         virtual void fetchScreenshots();
