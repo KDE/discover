@@ -249,13 +249,13 @@ qreal PackageKitUpdater::progress() const
 
 void PackageKitUpdater::removeResources(const QList<AbstractResource*>& apps)
 {
-    QSet<QString> pkgs = involvedPackages(kToSet(apps));
+    const QSet<QString> pkgs = involvedPackages(kToSet(apps));
     m_toUpgrade.subtract(packagesForPackageId(pkgs));
 }
 
 void PackageKitUpdater::addResources(const QList<AbstractResource*>& apps)
 {
-    QSet<QString> pkgs = involvedPackages(kToSet(apps));
+    const QSet<QString> pkgs = involvedPackages(kToSet(apps));
     m_toUpgrade.unite(packagesForPackageId(pkgs));
 }
 
