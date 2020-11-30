@@ -41,6 +41,106 @@ int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage
     return percentage;
 }
 
+
+static void kRemoveDuplicates(QJsonArray & input, std::function<QString(const QJsonValueRef &)> fetchKey)
+{
+    QSet<QString> ret;
+    for (auto it = input.begin(); it != input.end(); ) {
+        const auto key = fetchKey(*it);
+        if (!ret.contains(key)) {
+            ret << key;
+            ++it;
+        } else {
+            it = input.erase(it);
+        }
+    }
+}
+
+class SystemUpgrade : public AbstractResource
+{
+public:
+    SystemUpgrade(const QSet<AbstractResource*> &resources, PackageKitBackend* backend)
+        : AbstractResource(backend)
+        , m_resources(resources)
+        , m_backend(backend)
+    {
+        for (auto res : qAsConst(m_resources)) {
+            connect(res, &AbstractResource::sizeChanged, this, [this] {
+                Q_EMIT m_backend->resourcesChanged(this, {"size", "homepage", "license"});
+            });
+        }
+    }
+
+    QString packageName() const override { return QStringLiteral("discover-offline-upgrade");}
+    QString name() const override { return i18n("System upgrade"); }
+    QString comment() override { return upgradeText(); }
+    QVariant icon() const override { return QStringLiteral("system-upgrade"); }
+    bool canExecute() const override { return false; }
+    void invokeApplication() const override {}
+    State state() override { return Upgradeable; }
+    QStringList categories() override { return {}; }
+    AbstractResource::Type type() const override { return Technical; }
+    int size() override {
+        int ret = 0;
+        QSet<QString> donePkgs;
+        for (auto res : qAsConst(m_resources)) {
+            PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
+            QString pkgid = m_backend->upgradeablePackageId(app);
+            if (!donePkgs.contains(pkgid)) {
+                donePkgs.insert(pkgid);
+                ret += app->size();
+            }
+        }
+        return ret;
+    }
+    QJsonArray licenses() override {
+        QJsonArray ret;
+        for (auto res : qAsConst(m_resources)) {
+            ret += res->licenses();
+        }
+        kRemoveDuplicates(ret, [] (const QJsonValueRef &val) -> QString { return val.toObject()[QLatin1String("name")].toString(); });
+        return ret;
+    }
+    QString section() override { return {}; }
+    QString longDescription() override { return {}; }
+    QString origin() const override { return {}; }
+    QString author() const override { return {}; }
+    QList<PackageState> addonsInformation() override { return {}; }
+    QString upgradeText() const override {
+        return i18np("1 package to upgrade", "%1 pacakages to upgrade", m_resources.count());
+    }
+    void fetchChangelog() override {
+        QString changes;
+        for (auto res : qAsConst(m_resources)) {
+            const auto versions = res->upgradeText();
+            const auto idx = versions.indexOf(u'\ufffd');
+            changes += QStringLiteral("<li>") + res->packageName() + QStringLiteral(": ") + versions.leftRef(idx) + QStringLiteral("</li>\n");
+        }
+        Q_EMIT changelogFetched(QStringLiteral("<ul>") + changes + QStringLiteral("</ul>\n"));
+    }
+
+    QString installedVersion() const override { return i18n("Present"); }
+    QString availableVersion() const override { return i18n("Future"); }
+    QString sourceIcon() const override { return QStringLiteral("package-x-generic"); }
+    QDate releaseDate() const override { return {}; }
+
+    QSet<AbstractResource*> resources() const {
+        return m_resources;
+    }
+
+    QSet<QString> allPackageNames() const {
+        QSet<QString> ret;
+        for (auto res : qAsConst(m_resources)) {
+            ret += kToSet(qobject_cast<PackageKitResource*>(res)->allPackageNames());
+        }
+        return ret;
+    }
+
+private:
+    const QSet<AbstractResource*> m_resources;
+    PackageKitBackend* const m_backend;
+};
+
 PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
   : AbstractBackendUpdater(parent),
     m_transaction(nullptr),
@@ -67,7 +167,11 @@ void PackageKitUpdater::prepare()
     }
 
     Q_ASSERT(!m_transaction);
-    m_toUpgrade = m_backend->upgradeablePackages();
+    if (useOfflineUpdates()) {
+        m_toUpgrade = { new SystemUpgrade(m_backend->upgradeablePackages(), m_backend) };
+    } else {
+        m_toUpgrade = m_backend->upgradeablePackages();
+    }
     m_allUpgradeable = m_toUpgrade;
 }
 
@@ -97,14 +201,19 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
 
 QSet<AbstractResource*> PackageKitUpdater::packagesForPackageId(const QSet<QString>& pkgids) const
 {
-    QSet<QString> packages;
-    packages.reserve(pkgids.size());
-    foreach(const QString& pkgid, pkgids) {
-        packages += PackageKit::Daemon::packageName(pkgid);
-    }
+    const auto packages = kTransform<QSet<QString>>(pkgids,
+                                                    [] (const QString& pkgid) { return PackageKit::Daemon::packageName(pkgid); }
+                                                   );
 
     QSet<AbstractResource*> ret;
     foreach (AbstractResource * res, m_allUpgradeable) {
+        if (auto upgrade = dynamic_cast<SystemUpgrade*>(res)) {
+            if (packages.contains(upgrade->allPackageNames())) {
+                ret += upgrade->resources();
+            }
+            continue;
+        }
+
         PackageKitResource* pres = qobject_cast<PackageKitResource*>(res);
         if (packages.contains(kToSet(pres->allPackageNames()))) {
             ret.insert(res);
@@ -119,9 +228,13 @@ QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource*>&
     QSet<QString> packageIds;
     packageIds.reserve(packages.size());
     foreach (AbstractResource * res, packages) {
-        PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
-        QString pkgid = m_backend->upgradeablePackageId(app);
+        if (SystemUpgrade* upgrade = dynamic_cast<SystemUpgrade*>(res)) {
+            packageIds = involvedPackages(upgrade->resources());
+            continue;
+        }
 
+        PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
+        const QString pkgid = m_backend->upgradeablePackageId(app);
         if (pkgid.isEmpty()) {
             qWarning() << "no upgradeablePackageId for" << app;
             continue;
@@ -381,7 +494,11 @@ void PackageKitUpdater::fetchChangelog() const
 {
     QStringList pkgids;
     foreach(AbstractResource* res, m_allUpgradeable) {
-        pkgids += static_cast<PackageKitResource*>(res)->availablePackageId();
+        if (auto upgrade = dynamic_cast<SystemUpgrade*>(res)) {
+            upgrade->fetchChangelog();
+        } else {
+            pkgids += static_cast<PackageKitResource*>(res)->availablePackageId();
+        }
     }
     Q_ASSERT(!pkgids.isEmpty());
 
@@ -424,6 +541,11 @@ double PackageKitUpdater::updateSize() const
     double ret = 0.;
     QSet<QString> donePkgs;
     for (AbstractResource * res : m_toUpgrade) {
+        if (auto upgrade = dynamic_cast<SystemUpgrade*>(res)) {
+            ret += upgrade->size();
+            continue;
+        }
+
         PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
         QString pkgid = m_backend->upgradeablePackageId(app);
         if (!donePkgs.contains(pkgid)) {

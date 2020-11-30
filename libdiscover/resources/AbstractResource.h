@@ -205,7 +205,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
 
         virtual QSet<QString> alternativeAppstreamIds() const { return {}; }
 
-        QString upgradeText() const;
+        virtual QString upgradeText() const;
 
     public Q_SLOTS:
         virtual void fetchScreenshots();
