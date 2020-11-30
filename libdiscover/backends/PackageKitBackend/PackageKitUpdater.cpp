@@ -162,7 +162,7 @@ void PackageKitUpdater::proceed()
 
 bool PackageKitUpdater::useOfflineUpdates() const
 {
-    if (qEnvironmentVariableIsSet("PK_OFFLINE_UPDATE"))
+    if (qEnvironmentVariableIntValue("PK_OFFLINE_UPDATE"))
         return true;
     KConfigGroup group(KSharedConfig::openConfig(), "Software");
     return group.readEntry<bool>("UseOfflineUpdates", false);
