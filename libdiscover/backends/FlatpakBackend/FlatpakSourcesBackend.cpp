@@ -67,6 +67,9 @@ FlatpakSourcesBackend::~FlatpakSourcesBackend()
     auto conf = KSharedConfig::openConfig();
     KConfigGroup group = conf->group("FlatpakSources");
     group.writeEntry("Sources", ids);
+
+    if (!m_noSourcesItem->model())
+        delete m_noSourcesItem;
 }
 
 QAbstractItemModel* FlatpakSourcesBackend::sources()
