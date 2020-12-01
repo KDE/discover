@@ -151,6 +151,7 @@ ResultsStream* SnapBackend::populateJobsWithFilter(const QVector<T*>& jobs, std:
     connect(watcher, &QFutureWatcher<void>::finished, stream, [this, jobs, filter, stream] {
         QVector<AbstractResource*> ret;
         for (auto job : jobs) {
+            job->deleteLater();
             if (job->error()) {
                 qDebug() << "error:" << job->error() << job->errorString();
                 continue;
