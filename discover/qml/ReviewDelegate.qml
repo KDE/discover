@@ -57,7 +57,7 @@ RowLayout {
                 }
 
                 Label {
-                    text: i18n("Version: %1", packageVersion)
+                    text: packageVersion ? i18n("Version: %1", packageVersion) : i18n("Version: unknown")
                     elide: Text.ElideRight
                     opacity: 0.6
                 }
