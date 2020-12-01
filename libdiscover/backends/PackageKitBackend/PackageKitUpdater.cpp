@@ -106,7 +106,7 @@ public:
     QString author() const override { return {}; }
     QList<PackageState> addonsInformation() override { return {}; }
     QString upgradeText() const override {
-        return i18np("1 package to upgrade", "%1 pacakages to upgrade", m_resources.count());
+        return i18np("1 package to upgrade", "%1 packages to upgrade", m_resources.count());
     }
     void fetchChangelog() override {
         QString changes;
