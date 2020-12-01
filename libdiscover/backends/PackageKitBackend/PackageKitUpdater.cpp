@@ -41,7 +41,6 @@ int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage
     return percentage;
 }
 
-
 static void kRemoveDuplicates(QJsonArray & input, std::function<QString(const QJsonValueRef &)> fetchKey)
 {
     QSet<QString> ret;
@@ -113,7 +112,7 @@ public:
         QString changes;
         for (auto res : qAsConst(m_resources)) {
             const auto versions = res->upgradeText();
-            const auto idx = versions.indexOf(u'\ufffd');
+            const auto idx = versions.indexOf(u'\u009C');
             changes += QStringLiteral("<li>") + res->packageName() + QStringLiteral(": ") + versions.leftRef(idx) + QStringLiteral("</li>\n");
         }
         Q_EMIT changelogFetched(QStringLiteral("<ul>") + changes + QStringLiteral("</ul>\n"));
