@@ -79,8 +79,8 @@ install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.urlhandler.desktop
 set(DesktopNoDisplay "true")
 set(DesktopMimeType "x-scheme-handler/snap;")
 set(DesktopExec "plasma-discover %U")
-configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.snap.urlhandler.desktop)
-install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.snap.urlhandler.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.snap.desktop)
+install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.snap.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
 
 if(EXISTS "/etc/debian_version")
     set(DesktopNoDisplay "true")
