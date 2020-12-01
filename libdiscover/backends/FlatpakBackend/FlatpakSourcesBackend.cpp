@@ -40,7 +40,8 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
     , m_flathubAction(new QAction(i18n("Add Flathub"), this))
     , m_noSourcesItem(new QStandardItem(QStringLiteral("-")))
 {
-    m_flathubAction->setToolTip(QStringLiteral("flathub"));
+    m_flathubAction->setObjectName(QStringLiteral("flathub"));
+    m_flathubAction->setToolTip(i18n("Makes it possible to easily install the applications listed in https://flathub.org"));
     connect(m_flathubAction, &QAction::triggered, this, [this](){
         addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
     });
@@ -302,7 +303,7 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     const auto theActions = actions();
     for(const QVariant& act: theActions) {
         QAction* action = qobject_cast<QAction*>(act.value<QObject*>());
-        if (action->toolTip() == id) {
+        if (action->objectName() == id) {
             action->setEnabled(false);
             action->setVisible(false);
         }
