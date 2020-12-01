@@ -275,7 +275,7 @@ DiscoverPage
                         Label {
                             Layout.fillWidth: true
                             elide: truncated ? Text.ElideLeft : Text.ElideRight
-                            text: upgradeText
+                            text: resource.upgradeText
                             opacity: listItem.hovered? 0.8 : 0.6
                         }
                     }

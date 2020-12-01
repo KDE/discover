@@ -55,8 +55,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString displayOrigin READ displayOrigin CONSTANT)
     Q_PROPERTY(int size READ size NOTIFY sizeChanged)
     Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY sizeChanged)
-    Q_PROPERTY(QString installedVersion READ installedVersion NOTIFY stateChanged)
-    Q_PROPERTY(QString availableVersion READ availableVersion NOTIFY stateChanged)
+    Q_PROPERTY(QString installedVersion READ installedVersion NOTIFY versionsChanged)
+    Q_PROPERTY(QString availableVersion READ availableVersion NOTIFY versionsChanged)
     Q_PROPERTY(QString section READ section CONSTANT)
     Q_PROPERTY(QStringList mimetypes READ mimetypes CONSTANT)
     Q_PROPERTY(AbstractResourcesBackend* backend READ backend CONSTANT)
@@ -67,8 +67,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString executeLabel READ executeLabel CONSTANT)
     Q_PROPERTY(QString sourceIcon READ sourceIcon CONSTANT)
     Q_PROPERTY(QString author READ author CONSTANT)
-    Q_PROPERTY(QDate releaseDate READ releaseDate NOTIFY stateChanged)
-    Q_PROPERTY(QString upgradeText READ upgradeText NOTIFY stateChanged)
+    Q_PROPERTY(QDate releaseDate READ releaseDate NOTIFY versionsChanged)
+    Q_PROPERTY(QString upgradeText READ upgradeText NOTIFY versionsChanged)
     public:
         /**
          * This describes the state of the resource
@@ -218,6 +218,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         void stateChanged();
         void ratingFetched();
         void longDescriptionChanged();
+        void versionsChanged();
 
         ///response to the fetchScreenshots method
         ///@p thumbnails and @p screenshots should have the same number of elements

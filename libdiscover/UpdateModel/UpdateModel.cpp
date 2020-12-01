@@ -112,8 +112,6 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return item->icon();
     case Qt::CheckStateRole:
         return item->checked();
-    case UpgradeTextRole:
-        return item->resource()->upgradeText();
     case SizeRole:
         return KFormat().formatByteSize(item->size());
     case ResourceRole:

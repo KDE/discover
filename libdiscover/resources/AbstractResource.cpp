@@ -19,6 +19,7 @@ AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     : QObject(parent)
 {
     connect(this, &AbstractResource::stateChanged, this, &AbstractResource::sizeChanged);
+    connect(this, &AbstractResource::stateChanged, this, &AbstractResource::versionsChanged);
     connect(this, &AbstractResource::stateChanged, this, &AbstractResource::reportNewState);
 }
 

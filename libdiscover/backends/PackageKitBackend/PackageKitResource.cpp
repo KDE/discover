@@ -153,6 +153,8 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
 
     if (oldState != state())
         emit stateChanged();
+
+    Q_EMIT versionsChanged();
 }
 
 QStringList PackageKitResource::categories()
