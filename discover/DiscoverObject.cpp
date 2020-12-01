@@ -294,6 +294,9 @@ void DiscoverObject::openApplication(const QUrl& url)
             connect(stream, &StoredResultsStream::finishedResources, this, [this, url](const QVector<AbstractResource*> &res) {
                 if (res.count() >= 1) {
                     emit openApplicationInternal(res.first());
+                } else if (url.scheme() == QLatin1String("snap")) {
+                    openApplication(QUrl(QStringLiteral("appstream://org.kde.discover.snap")));
+                    showPassiveNotification(i18n("Please make sure snap support is installed %1", url.toDisplayString()));
                 } else {
                     Q_EMIT openErrorPage(i18n("Couldn't open %1", url.toDisplayString()));
                 }
