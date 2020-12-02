@@ -23,6 +23,8 @@ public:
     AggregatedResultsStream(const QSet<ResultsStream*>& streams);
     ~AggregatedResultsStream();
 
+    QSet<QObject*> streams() const { return m_streams; }
+
 Q_SIGNALS:
     void finished();
 

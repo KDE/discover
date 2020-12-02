@@ -55,7 +55,12 @@ QVector<AbstractResource*> KNSBackendTest::getResources(ResultsStream* stream, b
         resources += res;
         Q_EMIT stream->fetchMore();
     });
-    Q_ASSERT(spyResources.wait(10000));
+    bool waited = spyResources.wait(10000);
+    if (!waited) {
+        if (auto x = qobject_cast<AggregatedResultsStream*>(stream))
+            qDebug() << "waited" << x->streams();
+    }
+    Q_ASSERT(waited);
     Q_ASSERT(!resources.isEmpty() || canBeEmpty);
     return resources;
 }
