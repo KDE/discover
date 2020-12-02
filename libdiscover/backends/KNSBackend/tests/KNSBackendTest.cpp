@@ -28,6 +28,8 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     , m_r(nullptr)
 {
     QStandardPaths::setTestModeEnabled(true);
+    QDir(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)).removeRecursively();
+
     ResourcesModel* model = new ResourcesModel(QStringLiteral("kns-backend"), this);
     Q_ASSERT(!model->backends().isEmpty());
     auto findTestBackend = [](AbstractResourcesBackend* backend) {
