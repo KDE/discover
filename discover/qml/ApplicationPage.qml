@@ -349,9 +349,10 @@ DiscoverPage {
                 Repeater {
                     model: appInfo.application.licenses
                     delegate: Kirigami.UrlButton {
+                        id: licenseButton
                         horizontalAlignment: Text.AlignLeft
                         ToolTip.text: i18n("See full license terms")
-                        ToolTip.visible: hovered
+                        ToolTip.visible: licenseButton.hovered
                         text: modelData.name
                         url: modelData.url
                         enabled: url !== ""
