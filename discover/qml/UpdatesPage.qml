@@ -185,9 +185,10 @@ DiscoverPage
             level: 3
         }
         Button {
+            id: restartButton
             Layout.alignment: Qt.AlignHCenter
             text: i18n("Restart")
-            visible: resourcesUpdatesModel.needsReboot
+            visible: false
             onClicked: app.reboot()
         }
         Item {
@@ -362,6 +363,7 @@ DiscoverPage
             name: "reboot"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "The system requires a restart to apply updates") }
             PropertyChanges { target: statusLabel; enabled: true }
+            PropertyChanges { target: restartButton; visible: true }
         },
         State {
             name: "now-uptodate"
