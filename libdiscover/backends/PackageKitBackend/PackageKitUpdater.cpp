@@ -187,7 +187,6 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     connect(m_transaction.data(), &PackageKit::Transaction::package, this, &PackageKitUpdater::packageResolved);
     connect(m_transaction.data(), &PackageKit::Transaction::errorCode, this, &PackageKitUpdater::errorFound);
     connect(m_transaction.data(), &PackageKit::Transaction::mediaChangeRequired, this, &PackageKitUpdater::mediaChange);
-    connect(m_transaction.data(), &PackageKit::Transaction::requireRestart, this, &PackageKitUpdater::requireRestart);
     connect(m_transaction.data(), &PackageKit::Transaction::eulaRequired, this, &PackageKitUpdater::eulaRequired);
     connect(m_transaction.data(), &PackageKit::Transaction::repoSignatureRequired, this, &PackageKitUpdater::repoSignatureRequired);
     connect(m_transaction.data(), &PackageKit::Transaction::allowCancelChanged, this, &PackageKitUpdater::cancellableChanged);
@@ -416,11 +415,6 @@ void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, co
 {
     Q_UNUSED(media)
     Q_EMIT passiveMessage(i18n("Media Change of type '%1' is requested.\n%2", type, text));
-}
-
-void PackageKitUpdater::requireRestart(PackageKit::Transaction::Restart restart, const QString& pkgid)
-{
-    Q_EMIT passiveMessage(PackageKitMessages::restartMessage(restart, pkgid));
 }
 
 void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
