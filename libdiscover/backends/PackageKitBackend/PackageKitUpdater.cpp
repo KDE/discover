@@ -328,7 +328,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
 
     if (useOfflineUpdates() && exit == PackageKit::Transaction::ExitSuccess) {
         PackageKit::Daemon::global()->offline()->trigger(PackageKit::Offline::ActionReboot);
-        Q_EMIT passiveMessage(i18n("Please restart the computer to finish the update"));
+        Q_EMIT passiveMessage(i18n("Please restart the device to finish the update"));
     }
 }
 
