@@ -29,6 +29,7 @@ void DiscoverUpdate::start()
     if (m_resourcesUpdatesModel->isProgressing() || ResourcesModel::global()->isFetching() || m_done)
         return;
 
+    m_resourcesUpdatesModel->setOfflineUpdates(m_offlineUpdates);
     qDebug() << "ready" << ResourcesModel::global()->updatesCount();
     m_resourcesUpdatesModel->prepare();
     qDebug() << "steady" << m_resourcesUpdatesModel->rowCount({});

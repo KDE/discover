@@ -25,11 +25,15 @@ int main(int argc, char** argv)
     DiscoverUpdate exp;
     {
         QCommandLineParser parser;
+        QCommandLineOption offlineUpdate(QStringLiteral("offline"), i18n("Prefer updates that will only apply upon reboot"));
+        parser.addOption(offlineUpdate);
         DiscoverBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);
         parser.process(app);
         about.processCommandLine(&parser);
         DiscoverBackendsFactory::processCommandLine(&parser, false);
+
+        exp.setOfflineUpdates(parser.isSet(offlineUpdate));
     }
 
     return app.exec();

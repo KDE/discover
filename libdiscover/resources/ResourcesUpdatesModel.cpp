@@ -15,6 +15,8 @@
 
 #include <KLocalizedString>
 #include <KFormat>
+#include <KSharedConfig>
+#include <KConfigGroup>
 
 class UpdateTransaction : public Transaction
 {
@@ -130,6 +132,11 @@ void ResourcesUpdatesModel::init()
         }
     }
 
+//     To enable from command line use:
+//     kwriteconfig5 --file discoverrc --group Software --key UseOfflineUpdates true
+    KConfigGroup group(KSharedConfig::openConfig(), "Software");
+    m_offlineUpdates = group.readEntry<bool>("UseOfflineUpdates", false);
+
     auto tm = TransactionModel::global();
     foreach(auto t, tm->transactions()) {
         auto updateTransaction = qobject_cast<UpdateTransaction*>(t);
@@ -158,7 +165,9 @@ void ResourcesUpdatesModel::prepare()
         qCWarning(LIBDISCOVER_LOG) << "trying to set up a running instance";
         return;
     }
+
     foreach(AbstractBackendUpdater* upd, m_updaters) {
+        upd->setOfflineUpdates(m_offlineUpdates);
         upd->prepare();
     }
 }
@@ -274,6 +283,11 @@ bool ResourcesUpdatesModel::needsReboot() const
             return true;
     }
     return false;
+}
+
+void ResourcesUpdatesModel::setOfflineUpdates(bool offline)
+{
+    m_offlineUpdates = offline;
 }
 
 #include "ResourcesUpdatesModel.moc"

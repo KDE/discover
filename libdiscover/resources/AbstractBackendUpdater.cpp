@@ -37,3 +37,8 @@ bool AbstractBackendUpdater::needsReboot() const
 {
     return m_needsReboot;
 }
+
+void AbstractBackendUpdater::setOfflineUpdates(bool useOfflineUpdates)
+{
+    Q_UNUSED(useOfflineUpdates);
+}

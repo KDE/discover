@@ -38,6 +38,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         quint64 downloadSpeed() const override;
 
         void proceed() override;
+        void setOfflineUpdates(bool use) override;
 
     public Q_SLOTS:
         ///must be implemented if ever isCancelable is true
@@ -71,7 +72,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void lastUpdateTimeReceived(QDBusPendingCallWatcher* w);
         void setupTransaction(PackageKit::Transaction::TransactionFlags flags);
         bool useOfflineUpdates() const;
-        void setUseOfflineUpdates(bool use);
 
         QSet<QString> involvedPackages(const QSet<AbstractResource*>& packages) const;
         QSet<AbstractResource*> packagesForPackageId(const QSet<QString>& packages) const;
@@ -82,6 +82,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         QSet<AbstractResource*> m_allUpgradeable;
         bool m_isCancelable;
         bool m_isProgressing;
+        bool m_useOfflineUpdates = false;
         int m_percentage;
         QDateTime m_lastUpdate;
         QMap<PackageKit::Transaction::Info, QStringList> m_packagesModified;

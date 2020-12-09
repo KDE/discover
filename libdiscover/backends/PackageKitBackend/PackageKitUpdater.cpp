@@ -12,8 +12,6 @@
 #include <QAction>
 #include <QSet>
 
-#include <KSharedConfig>
-#include <KConfigGroup>
 #include <KLocalizedString>
 
 #include "libdiscover_backend_debug.h"
@@ -273,19 +271,12 @@ void PackageKitUpdater::proceed()
 
 bool PackageKitUpdater::useOfflineUpdates() const
 {
-    if (qEnvironmentVariableIntValue("PK_OFFLINE_UPDATE"))
-        return true;
-    KConfigGroup group(KSharedConfig::openConfig(), "Software");
-    return group.readEntry<bool>("UseOfflineUpdates", false);
+    return m_useOfflineUpdates || qEnvironmentVariableIntValue("PK_OFFLINE_UPDATE");
 }
 
-void PackageKitUpdater::setUseOfflineUpdates(bool use)
+void PackageKitUpdater::setOfflineUpdates(bool use)
 {
-//     To enable from command line use:
-//     kwriteconfig5 --file discoverrc --group Software --key UseOfflineUpdates true
-
-    KConfigGroup group(KSharedConfig::openConfig(), "Software");
-    group.writeEntry<bool>("UseOfflineUpdates", use);
+    m_useOfflineUpdates = use;
 }
 
 void PackageKitUpdater::start()

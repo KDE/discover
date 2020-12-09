@@ -122,6 +122,8 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
 
         bool needsReboot() const;
 
+        virtual void setOfflineUpdates(bool useOfflineUpdates);
+
     public Q_SLOTS:
         /**
          * If \isCancelable is true during the transaction, this method has

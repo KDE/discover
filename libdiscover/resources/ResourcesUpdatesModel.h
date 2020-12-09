@@ -30,6 +30,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
         Q_SCRIPTABLE void prepare();
 
+        void setOfflineUpdates(bool offline);
         bool isProgressing() const;
         QList<AbstractResource*> toUpdate() const;
         QDateTime lastUpdate() const;
@@ -64,6 +65,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
         QVector<AbstractBackendUpdater*> m_updaters;
         bool m_lastIsProgressing;
+        bool m_offlineUpdates = false;
         QPointer<UpdateTransaction> m_transaction;
 };
 

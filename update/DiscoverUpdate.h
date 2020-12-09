@@ -23,12 +23,16 @@ class DiscoverUpdate : public QObject
         explicit DiscoverUpdate();
         ~DiscoverUpdate() override;
 
+        void setOfflineUpdates(bool offline) {
+            m_offlineUpdates = offline;
+        }
     private:
         void start();
         void transactionStatusChanged(Transaction::Status status);
 
         ResourcesUpdatesModel* const m_resourcesUpdatesModel;
         bool m_done = false;
+        bool m_offlineUpdates = false;
 };
 
 #endif // DISCOVERUPDATE_H
