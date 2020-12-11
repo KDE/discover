@@ -1,0 +1,11 @@
+; SPDX-FileCopyrightText: (C) 2020 Aleix Pol Gonzalzez <aleixpol@kde.org>
+;
+; SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+
+File=updatessettings.kcfg
+ClassName=UpdatesSettings
+Notifiers=true
+Mutators=true
+DefaultValueGetters=true
+GenerateProperties=true
+ParentInConstructor=true

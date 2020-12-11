@@ -12,10 +12,12 @@
 #include <QTimer>
 #include <QPointer>
 
+#include <KConfigWatcher>
 #include <KNotification>
 
-class QNetworkConfigurationManager;
 class KNotification;
+class QNetworkConfigurationManager;
+class UnattendedUpdates;
 
 class DiscoverNotifier : public QObject
 {
@@ -25,11 +27,13 @@ Q_PROPERTY(QString iconName READ iconName NOTIFY stateChanged)
 Q_PROPERTY(QString message READ message NOTIFY stateChanged)
 Q_PROPERTY(State state READ state NOTIFY stateChanged)
 Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
+Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
 public:
     enum State {
         NoUpdates,
         NormalUpdates,
         SecurityUpdates,
+        Busy,
         RebootRequired,
         Offline,
     };
@@ -47,6 +51,9 @@ public:
     QStringList loadedModules() const;
     bool needsReboot() const { return m_needsReboot; }
 
+    void setBusy(bool isBusy);
+    bool isBusy() const { return m_isBusy; }
+
 public Q_SLOTS:
     void recheckSystemUpdateNeeded();
     void showDiscover();
@@ -59,18 +66,24 @@ Q_SIGNALS:
     void stateChanged();
     bool needsRebootChanged(bool needsReboot);
     void newUpgradeAction(UpgradeAction* action);
+    bool busyChanged(bool isBusy);
 
 private:
     void showRebootNotification();
     void updateStatusNotifier();
+    void refreshUnattended();
 
     QList<BackendNotifierModule*> m_backends;
     QTimer m_timer;
     bool m_hasSecurityUpdates = false;
     bool m_hasUpdates = false;
     bool m_needsReboot = false;
+    bool m_isBusy = false;
     QNetworkConfigurationManager* m_manager = nullptr;
     QPointer<KNotification> m_updatesAvailableNotification;
+    UnattendedUpdates* m_unattended = nullptr;
+    KConfigWatcher::Ptr m_settingsWatcher;
+    class UpdatesSettings* m_settings;
 };
 
 #endif //ABSTRACTKDEDMODULE_H

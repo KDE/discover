@@ -19,7 +19,6 @@
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
 #include <QDebug>
-#include "DiscoverNotifier.h"
 #include "../DiscoverVersion.h"
 
 #include "NotifierItem.h"
@@ -36,7 +35,7 @@ int main(int argc, char** argv)
     KDBusService::StartupOptions startup = {};
     {
         KAboutData about(QStringLiteral("DiscoverNotifier"), i18n("Discover Notifier"), version, i18n("System update status notifier"),
-                     KAboutLicense::GPL, i18n("© 2010-2019 Plasma Development Team"));
+                     KAboutLicense::GPL, i18n("© 2010-2020 Plasma Development Team"));
         about.addAuthor(QStringLiteral("Aleix Pol Gonzalez"), {}, QStringLiteral("aleixpol@kde.org"));
         about.setProductName("discover/discover");
         about.setProgramLogo(app.windowIcon());

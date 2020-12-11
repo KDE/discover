@@ -24,7 +24,7 @@ include(KDEClangFormat)
 
 find_package(PkgConfig REQUIRED)
 
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui ItemModels KIO Declarative)
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui ItemModels KIO Declarative KCMUtils IdleTime)
 find_package(KF5Kirigami2 2.7.0)
 
 find_package(packagekitqt5 1.0.1 CONFIG)
@@ -44,12 +44,15 @@ if(NOT CMAKE_VERSION VERSION_LESS "3.10.0")
   list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
 endif()
 
+set(CMAKE_CXX_STANDARD 14)
+
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)
 
 add_subdirectory(libdiscover)
 add_subdirectory(discover)
 add_subdirectory(exporter)
 add_subdirectory(update)
+add_subdirectory(kcm)
 
 option(WITH_NOTIFIER "Build and install the notifier plasmoid" ON)
 if(WITH_NOTIFIER)

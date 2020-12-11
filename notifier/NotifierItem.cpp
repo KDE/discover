@@ -15,6 +15,7 @@ KStatusNotifierItem::ItemStatus sniStatus(DiscoverNotifier::State state)
         case DiscoverNotifier::Offline:
         case DiscoverNotifier::NoUpdates:
             return KStatusNotifierItem::Passive;
+        case DiscoverNotifier::Busy:
         case DiscoverNotifier::NormalUpdates:
         case DiscoverNotifier::SecurityUpdates:
         case DiscoverNotifier::RebootRequired:
@@ -22,7 +23,6 @@ KStatusNotifierItem::ItemStatus sniStatus(DiscoverNotifier::State state)
     }
     return KStatusNotifierItem::Active;
 }
-
 
 NotifierItem::NotifierItem()
 {

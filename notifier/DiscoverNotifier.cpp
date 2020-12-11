@@ -6,6 +6,7 @@
 
 #include "DiscoverNotifier.h"
 #include "BackendNotifierFactory.h"
+#include "UnattendedUpdates.h"
 #include <QDebug>
 #include <QDBusConnection>
 #include <QDBusPendingCall>
@@ -18,6 +19,7 @@
 #include <KIO/ApplicationLauncherJob>
 #include <KIO/CommandLauncherJob>
 
+#include "updatessettings.h"
 #include "../libdiscover/utils.h"
 
 DiscoverNotifier::DiscoverNotifier(QObject * parent)
@@ -44,6 +46,11 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
 
     //Only fetch updates after the system is comfortably booted
     QTimer::singleShot(20000, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
+
+    m_settings = new UpdatesSettings(this);
+    m_settingsWatcher = KConfigWatcher::create(m_settings->sharedConfig());
+    refreshUnattended();
+    connect(m_settingsWatcher.data(), &KConfigWatcher::configChanged, this, &DiscoverNotifier::refreshUnattended);
 }
 
 DiscoverNotifier::~DiscoverNotifier() = default;
@@ -107,10 +114,34 @@ void DiscoverNotifier::updateStatusNotifier()
     emit stateChanged();
 }
 
+// we only want to do unattended updates when on an ethernet or wlan network
+static bool isConnectionAdequate(const QNetworkConfiguration &network)
+{
+    return (network.bearerType() == QNetworkConfiguration::BearerEthernet || network.bearerType() == QNetworkConfiguration::BearerWLAN);
+}
+
+void DiscoverNotifier::refreshUnattended()
+{
+    m_settings->read();
+    const auto enabled = m_settings->useUnattendedUpdates() && m_manager->isOnline() && isConnectionAdequate(m_manager->defaultConfiguration());
+    if (bool(m_unattended) == enabled)
+        return;
+
+    if (enabled) {
+        m_unattended = new UnattendedUpdates(this);
+    } else {
+        delete m_unattended;
+        m_unattended = nullptr;
+    }
+}
+
+
 DiscoverNotifier::State DiscoverNotifier::state() const
 {
     if (m_needsReboot)
         return RebootRequired;
+    else if (m_isBusy)
+        return Busy;
     else if (m_manager && !m_manager->isOnline())
         return Offline;
     else if (m_hasSecurityUpdates)
@@ -134,6 +165,8 @@ QString DiscoverNotifier::iconName() const
             return QStringLiteral("system-reboot");
         case Offline:
             return QStringLiteral("offline");
+        case Busy:
+            return QStringLiteral("state-download");
     }
     return QString();
 }
@@ -151,6 +184,8 @@ QString DiscoverNotifier::message() const
             return i18n("Computer needs to restart");
         case Offline:
             return i18n("Offline");
+        case Busy:
+            return i18n("Applying unattended updates...");
     }
     return QString();
 }
@@ -167,6 +202,8 @@ void DiscoverNotifier::recheckSystemUpdateNeeded()
 
     foreach(BackendNotifierModule* module, m_backends)
         module->recheckSystemUpdateNeeded();
+
+    refreshUnattended();
 }
 
 QStringList DiscoverNotifier::loadedModules() const
@@ -213,4 +250,14 @@ void DiscoverNotifier::foundUpgradeAction(UpgradeAction* action)
     });
 
     notification->sendEvent();
+}
+
+void DiscoverNotifier::setBusy(bool isBusy)
+{
+    if (isBusy == m_isBusy)
+        return;
+
+    m_isBusy = isBusy;
+    Q_EMIT busyChanged(isBusy);
+    Q_EMIT stateChanged();
 }

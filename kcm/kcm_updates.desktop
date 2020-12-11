@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=KCModule
+Icon=system-software-update
+
+X-KDE-Library=kcm_updates
+X-KDE-ParentApp=kcontrol
+
+X-KDE-System-Settings-Parent-Category=system-administration
+
+Name=Updates
+Comment=Configure software updates integration
+
+Categories=Qt;KDE;
