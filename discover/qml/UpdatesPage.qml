@@ -371,8 +371,11 @@ DiscoverPage
         State {
             name: "has-updates"
             PropertyChanges { target: page; title: i18nc("@info", "Updates") }
-            PropertyChanges { target: page.actions; main: updateAction }
-            PropertyChanges { target: page.actions; left: refreshAction }
+            // On mobile, we want "Update" to be the primary action so it's in
+            // the center, but on desktop this feels a bit awkward and it would
+            // be better to have "Update" be the right-most action
+            PropertyChanges { target: page.actions; main: applicationWindow().wideScreen ? refreshAction : updateAction}
+            PropertyChanges { target: page.actions; left: applicationWindow().wideScreen ? updateAction : refreshAction}
         },
         State {
             name: "reboot"
