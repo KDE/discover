@@ -34,7 +34,7 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::transactionListChanged, this, &PackageKitNotifier::transactionListChanged);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::restartScheduled, this, &PackageKitNotifier::nowNeedsReboot);
-    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::changed, this, [this]{
+    connect(PackageKit::Daemon::global()->offline(), &PackageKit::Offline::changed, this, [this]{
         if (PackageKit::Daemon::global()->offline()->updateTriggered())
             nowNeedsReboot();
     });
