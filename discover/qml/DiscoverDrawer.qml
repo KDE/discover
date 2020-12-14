@@ -114,6 +114,9 @@ Kirigami.GlobalDrawer {
         }
 
         ActionListItem {
+            action: featuredAction
+        }
+        ActionListItem {
             action: searchAction
         }
         ActionListItem {

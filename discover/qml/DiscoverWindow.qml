@@ -47,8 +47,10 @@ Kirigami.ApplicationWindow
     }
 
     TopLevelPageData {
-        iconName: "tools-wizard"
-        text: i18n("Discover")
+        id: featuredAction
+        iconName: "go-home"
+        text: i18n("Home")
+        enabled: !window.wideScreen
         component: topBrowsingComp
         objectName: "discover"
     }
