@@ -393,13 +393,12 @@ void ResourcesModel::initApplicationsBackend()
 {
     const auto name = applicationSourceName();
 
-    const auto backends = applicationBackends();
-    auto idx = kIndexOf(backends, [name](AbstractResourcesBackend* b) { return b->name() == name; });
+    auto idx = kIndexOf(m_backends, [name](AbstractResourcesBackend* b) { return b->hasApplications() && b->name() == name; });
     if (idx<0) {
-        idx = kIndexOf(backends, [](AbstractResourcesBackend* b) { return b->hasApplications(); });
+        idx = kIndexOf(m_backends, [](AbstractResourcesBackend* b) { return b->hasApplications(); });
         qCDebug(LIBDISCOVER_LOG) << "falling back applications backend to" << idx;
     }
-    setCurrentApplicationBackend(backends.value(idx, nullptr), false);
+    setCurrentApplicationBackend(m_backends.value(idx, nullptr), false);
 }
 
 QString ResourcesModel::applicationSourceName() const
