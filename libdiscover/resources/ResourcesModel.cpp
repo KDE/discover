@@ -357,14 +357,9 @@ void ResourcesModel::checkForUpdates()
         backend->checkForUpdates();
 }
 
-QVector<AbstractResourcesBackend *> ResourcesModel::applicationBackends() const
+QVariantList ResourcesModel::backendsVariant() const
 {
-    return kFilter<QVector<AbstractResourcesBackend*>>(m_backends, [](AbstractResourcesBackend* b){ return b->hasApplications(); });
-}
-
-QVariantList ResourcesModel::applicationBackendsVariant() const
-{
-    return kTransform<QVariantList>(applicationBackends(), [](AbstractResourcesBackend* b) {return QVariant::fromValue<QObject*>(b);});
+    return kTransform<QVariantList>(m_backends, [](AbstractResourcesBackend* b) {return QVariant::fromValue<QObject*>(b);});
 }
 
 AbstractResourcesBackend* ResourcesModel::currentApplicationBackend() const
