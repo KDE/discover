@@ -65,7 +65,7 @@ RowLayout {
                 Label {
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignRight
-                    text: date.toLocaleDateString(Qt.locale(), "MMMM d yyyy")
+                    text: date.toLocaleDateString(Qt.locale(), Locale.LongFormat)
                     elide: Text.ElideRight
                     opacity: 0.6
                 }
