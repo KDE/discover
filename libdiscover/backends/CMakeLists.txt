@@ -45,4 +45,9 @@ if(BUILD_FwupdBackend AND TARGET PkgConfig::Fwupd)
     add_subdirectory(FwupdBackend)
 endif()
 
+option(BUILD_OSTreeRPMBackend "Build OSTreeRPM support." "ON")
+if(BUILD_OSTreeRPMBackend AND TARGET PkgConfig::Fwupd)
+    add_subdirectory(OSTreeRPMBackend)
+endif()
+
 
