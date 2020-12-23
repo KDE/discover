@@ -4,6 +4,14 @@
 
 [Desktop Entry]
 Name=Software Updates
+Name[ca]=Actualitzacions de programari
+Name[es]=Actualizaciones de software
+Name[eu]=Software eguneratzeak
+Name[nl]=Elementen voor software bijwerken
+Name[pt]=Actualizações de Aplicações
+Name[sv]=Uppdateringar av programvara
+Name[uk]=Оновлення програм
+Name[x-test]=xxSoftware Updatesxx
 
 Icon=system-software-update
 Type=Service

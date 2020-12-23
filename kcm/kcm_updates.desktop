@@ -57,5 +57,13 @@ Name[x-test]=xxUpdatesxx
 Name[zh_CN]=更新
 Name[zh_TW]=更新
 Comment=Configure software updates integration
+Comment[ca]=Configura la integració de les actualitzacions de programari
+Comment[es]=Configurar la integración de las actualizaciones de software
+Comment[eu]=Konfiguratu software eguneratzeen bategitea
+Comment[nl]=Integratie van software bijwerken configureren
+Comment[pt]=Configurar a integração com as actualizações de aplicações
+Comment[sv]=Anpassa integrering av uppdateringar av programvara
+Comment[uk]=Налаштовування інтеграції оновлення програм
+Comment[x-test]=xxConfigure software updates integrationxx
 
 Categories=Qt;KDE;
