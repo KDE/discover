@@ -728,7 +728,7 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
 
             cid.setId(QString::fromLatin1(flatpak_ref_get_name(FLATPAK_REF(ref))));
 #if FLATPAK_CHECK_VERSION(1,1,2)
-            cid.setName(QString::fromLatin1(flatpak_installed_ref_get_appdata_name(ref)));
+            cid.setName(QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref)));
 #endif
         } else
             cid = metadata.component();
