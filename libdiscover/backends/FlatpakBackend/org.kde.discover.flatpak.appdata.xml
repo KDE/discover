@@ -13,7 +13,7 @@
   <name xml:lang="et">Flatpaki taustaprogramm</name>
   <name xml:lang="eu">Flatpak bizkarraldeakoa</name>
   <name xml:lang="fi">Flatpak-taustaosa</name>
-  <name xml:lang="fr">Moteur Flatpak</name>
+  <name xml:lang="fr">Moteur « Flatpak »</name>
   <name xml:lang="gl">Infraestrutura de Flatpak</name>
   <name xml:lang="hu">Flatpak backend</name>
   <name xml:lang="ia">Retro-Administration de Flatpak</name>
@@ -50,7 +50,7 @@
   <summary xml:lang="et">Flatpaki rakenduste lõimimine Discoverisse</summary>
   <summary xml:lang="eu">Flatpak aplikazioak Discover-ren integratzen ditu</summary>
   <summary xml:lang="fi">Yhdistää Flatpak-sovellukset Discoveriin</summary>
-  <summary xml:lang="fr">Intègre les applications Flatpak au sein de Discover</summary>
+  <summary xml:lang="fr">Intègre les applications « Flatpak » au sein de Discover</summary>
   <summary xml:lang="gl">Integra aplicacións de Flatpak con Discover</summary>
   <summary xml:lang="hu">Flatpak alkalmazások integrálása a Discoverbe</summary>
   <summary xml:lang="ia">Integra pplicationes de Flatpak in Discover</summary>
