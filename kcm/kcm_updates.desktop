@@ -64,11 +64,13 @@ Comment[eu]=Konfiguratu software eguneratzeen bategitea
 Comment[fr]=Configurer l'intégration avec les mises à jour des logiciels 
 Comment[hu]=A szoftverfrissítések integrációjának beállítása
 Comment[ia]=Configura integration de actualisation de software
+Comment[it]=Configura l'integrazione degli aggiornamenti software
 Comment[nl]=Integratie van software bijwerken configureren
 Comment[pt]=Configurar a integração com as actualizações de aplicações
 Comment[sl]=Nastavite integracijo posodobitev programja
 Comment[sv]=Anpassa integrering av uppdateringar av programvara
 Comment[uk]=Налаштовування інтеграції оновлення програм
 Comment[x-test]=xxConfigure software updates integrationxx
+Comment[zh_CN]=配置软件更新集成功能
 
 Categories=Qt;KDE;
