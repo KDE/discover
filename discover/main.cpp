@@ -19,6 +19,9 @@
 #include "DiscoverVersion.h"
 #include <QTextStream>
 #include <QStandardPaths>
+#include <kstartupinfo.h>
+
+#include <QX11Info>
 
 typedef QHash<QString, DiscoverObject::CompactMode> StringCompactMode;
 Q_GLOBAL_STATIC_WITH_ARGS(StringCompactMode, s_decodeCompactMode, (StringCompactMode {
@@ -135,10 +138,18 @@ int main(int argc, char** argv)
         }
         QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverObject::deleteLater);
         QObject::connect(service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList &arguments, const QString &/*workingDirectory*/){
+
+
             if (!mainWindow->rootObject())
                 QCoreApplication::instance()->quit();
 
-            mainWindow->rootObject()->raise();
+
+            auto window = qobject_cast<QWindow*>(mainWindow->rootObject());
+            if (window && QX11Info::isPlatformX11()) {
+                KStartupInfo::setNewStartupId(window, QX11Info::nextStartupId());
+            }
+            window->raise();
+
             if (arguments.isEmpty())
                 return;
             QScopedPointer<QCommandLineParser> parser(createParser());
