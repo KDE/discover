@@ -70,6 +70,9 @@ Kirigami.OverlaySheet {
 
         clip: true
         topMargin: Kirigami.Units.largeSpacing
+        leftMargin: Kirigami.Units.largeSpacing
+        rightMargin: Kirigami.Units.largeSpacing
+        bottomMargin: Kirigami.Units.largeSpacing
         spacing: Kirigami.Units.smallSpacing
         implicitWidth: Kirigami.Units.gridUnit * 25
         cacheBuffer: Math.max(0, contentHeight)
