@@ -299,6 +299,15 @@ static void fwupd_client_get_remotes_cb (GObject */*source*/, GAsyncResult *res,
         helper->handleError(error);
 }
 
+static void fwupd_client_refresh_remote_cb (GObject */*source*/, GAsyncResult *res, gpointer user_data)
+{
+    FwupdBackend *helper = (FwupdBackend *) user_data;
+    g_autoptr(GError) error = nullptr;
+    fwupd_client_refresh_remote_finish(helper->client, res, &error);
+    if (error)
+        helper->handleError(error);
+}
+
 void FwupdBackend::setRemotes(GPtrArray *remotes)
 {
     for(uint i = 0; remotes && i < remotes->len; i++)
@@ -310,9 +319,7 @@ void FwupdBackend::setRemotes(GPtrArray *remotes)
         if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
             continue;
 
-        g_autoptr(GError) error = nullptr;
-        fwupd_client_refresh_remote(client, remote, m_cancellable, &error);
-        handleError(error);
+        fwupd_client_refresh_remote_async(client, remote, m_cancellable, fwupd_client_refresh_remote_cb, this);
     }
 }
 
