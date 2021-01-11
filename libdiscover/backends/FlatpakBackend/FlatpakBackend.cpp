@@ -1063,6 +1063,10 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
             return false;
         }
 
+        if (resource->propertyState(FlatpakResource::DownloadSize) == FlatpakResource::Fetching) {
+            return true;
+        }
+
         auto futureWatcher = new QFutureWatcher<FlatpakRunnables::SizeInformation>(this);
         connect(futureWatcher, &QFutureWatcher<FlatpakRunnables::SizeInformation>::finished, this, [this, resource, futureWatcher]() {
             auto value = futureWatcher->result();
@@ -1074,6 +1078,9 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
             }
             futureWatcher->deleteLater();
         });
+        resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::Fetching);
+        resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::Fetching);
+
         futureWatcher->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchFlatpakSize, flatpakInstallation, resource));
     }
 

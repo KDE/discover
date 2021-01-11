@@ -349,7 +349,7 @@ QString FlatpakResource::sizeDescription()
 {
     KFormat f;
     if (!isInstalled() || canUpgrade()) {
-        if (propertyState(DownloadSize) == NotKnownYet || propertyState(InstalledSize) == NotKnownYet) {
+        if (propertyState(DownloadSize) == NotKnownYet || propertyState(InstalledSize) == NotKnownYet || propertyState(DownloadSize) == Fetching || propertyState(InstalledSize) == Fetching) {
             return i18n("Retrieving size information");
         } else if (propertyState(DownloadSize) == UnknownOrFailed || propertyState(InstalledSize) == UnknownOrFailed) {
             return i18n("Unknown size");
@@ -357,7 +357,7 @@ QString FlatpakResource::sizeDescription()
             return i18nc("@info app size", "%1 to download, %2 on disk", f.formatByteSize(downloadSize()), f.formatByteSize(installedSize()));
         }
     } else {
-        if (propertyState(InstalledSize) == NotKnownYet) {
+        if (propertyState(InstalledSize) == NotKnownYet || propertyState(InstalledSize) == Fetching) {
             return i18n("Retrieving size information");
         } else if (propertyState(InstalledSize) == UnknownOrFailed) {
             return i18n("Unknown size");

@@ -38,6 +38,7 @@ public:
         NotKnownYet = 0,
         AlreadyKnown,
         UnknownOrFailed,
+        Fetching,
     };
     Q_ENUM(PropertyState)
 
