@@ -88,9 +88,9 @@ private:
     bool updateAppMetadata(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
     bool updateAppMetadata(FlatpakResource *resource, const QByteArray &data);
     bool updateAppMetadata(FlatpakResource *resource, const QString &path);
-    bool updateAppSize(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
+    bool updateAppSize(FlatpakResource *resource);
     bool updateAppSizeFromRemote(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
-    void updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
+    void updateAppState(FlatpakResource *resource);
 
     QVector<AbstractResource*> resourcesByAppstreamName(const QString &name) const;
     void acquireFetching(bool f);

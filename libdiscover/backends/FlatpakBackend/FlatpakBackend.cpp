@@ -543,11 +543,10 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
         qWarning() << "Failed to parse metadata from app bundle for" << resource->name();
     }
 
-    auto installation = resource->installation();
-    updateAppState(installation, resource);
+    updateAppState(resource);
 
     // This will update also metadata (required runtime)
-    updateAppSize(installation, resource);
+    updateAppSize(resource);
 
     m_resources.insert(resource->uniqueId(), resource);
     if (!resource->extends().isEmpty()) {
@@ -775,7 +774,7 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
         FlatpakResource *resource = getAppForInstalledRef(flatpakInstallation, ref);
         if (resource) {
             resource->setState(AbstractResource::Upgradeable);
-            updateAppSize(flatpakInstallation, resource);
+            updateAppSize(resource);
         }
     }
 }
@@ -816,7 +815,7 @@ void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstalla
         FlatpakResource *resource = getAppForInstalledRef(flatpakInstallation, ref);
         if (resource) {
             resource->setState(AbstractResource::Upgradeable);
-            updateAppSize(flatpakInstallation, resource);
+            updateAppSize(resource);
         } else
             qWarning() << "could not find updated resource" << flatpak_ref_get_name(FLATPAK_REF(ref)) << m_resources.size();
     }
@@ -1001,7 +1000,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QByteArr
     return true;
 }
 
-bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
+bool FlatpakBackend::updateAppSize(FlatpakResource *resource)
 {
     // Check if the size is already set, we should also distinguish between download and installed size,
     // right now it doesn't matter whether we get size for installed or not installed app, but if we
@@ -1020,12 +1019,12 @@ bool FlatpakBackend::updateAppSize(FlatpakInstallation *flatpakInstallation, Fla
 
     // Check if we know the needed runtime which is needed for calculating the size
     if (resource->runtime().isEmpty()) {
-        if (!updateAppMetadata(flatpakInstallation, resource)) {
+        if (!updateAppMetadata(resource->installation(), resource)) {
             return false;
         }
     }
 
-    return updateAppSizeFromRemote(flatpakInstallation, resource);
+    return updateAppSizeFromRemote(resource->installation(), resource);
 }
 
 bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
@@ -1035,10 +1034,10 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
         auto runtime = getRuntimeForApp(resource);
         if (runtime) {
             // Re-check runtime state if case a new one was created
-            updateAppState(flatpakInstallation, runtime);
+            updateAppState(runtime);
 
             if (!runtime->isInstalled()) {
-                if (!updateAppSize(flatpakInstallation, runtime)) {
+                if (!updateAppSize(runtime)) {
                     qWarning() << "Failed to get runtime size needed for total size of" << resource->name();
                     return false;
                 }
@@ -1102,9 +1101,9 @@ void FlatpakBackend::onFetchSizeFinished(FlatpakResource *resource, guint64 down
     resource->setInstalledSize(installedSize);
 }
 
-void FlatpakBackend::updateAppState(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
+void FlatpakBackend::updateAppState(FlatpakResource *resource)
 {
-    FlatpakInstalledRef *ref = getInstalledRefForApp(flatpakInstallation, resource);
+    FlatpakInstalledRef *ref = getInstalledRefForApp(resource->installation(), resource);
     if (ref) {
         // If the app is installed, we can set information about commit, arch etc.
         updateAppInstalledMetadata(ref, resource);
@@ -1275,8 +1274,7 @@ Transaction* FlatpakBackend::installApplication(AbstractResource *app, const Add
     FlatpakJobTransaction *transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole);
     connect(transaction, &FlatpakJobTransaction::statusChanged, this, [this, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
-            FlatpakInstallation *installation = resource->installation();
-            updateAppState(installation, resource);
+            updateAppState(resource);
         }
     });
     return transaction;
@@ -1299,12 +1297,11 @@ Transaction* FlatpakBackend::removeApplication(AbstractResource *app)
         return nullptr;
     }
 
-    FlatpakInstallation *installation = resource->installation();
     FlatpakJobTransaction *transaction = new FlatpakJobTransaction(resource, Transaction::RemoveRole);
 
-    connect(transaction, &FlatpakJobTransaction::statusChanged, this, [this, installation, resource] (Transaction::Status status) {
+    connect(transaction, &FlatpakJobTransaction::statusChanged, this, [this, resource] (Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
-            updateAppSize(installation, resource);
+            updateAppSize(resource);
         }
     });
     return transaction;
