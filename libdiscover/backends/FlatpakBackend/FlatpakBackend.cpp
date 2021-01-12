@@ -108,10 +108,12 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
 FlatpakBackend::~FlatpakBackend()
 {
     g_cancellable_cancel(m_cancellable);
-    m_threadPool.waitForDone(200);
-    m_threadPool.clear();
     for(auto inst : qAsConst(m_installations))
         g_object_unref(inst);
+    if (!m_threadPool.waitForDone(200)) {
+        qDebug() << "could not kill them all" << m_threadPool.activeThreadCount();
+    }
+    m_threadPool.clear();
 
     g_object_unref(m_cancellable);
 }
