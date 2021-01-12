@@ -55,7 +55,7 @@ FwupdBackend::~FwupdBackend()
     g_object_unref(client);
 }
 
-void FwupdBackend::addResourceToList(FwupdResource* res)
+void FwupdBackend::addResource(FwupdResource* res)
 {
     res->setParent(this);
     auto &r = m_resources[res->packageName()];
@@ -131,7 +131,7 @@ void FwupdBackend::addUpdates()
                     longdescription += QString::fromUtf8(fwupd_release_get_description(release)) + QLatin1Char('\n');
                 }
                 res->setDescription(longdescription);
-                addResourceToList(res);
+                addResource(res);
             }
         } else {
             if (g_error_matches(error2, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED)) {
@@ -277,7 +277,7 @@ void FwupdBackend::setDevices(GPtrArray *devices)
                 break;
             }
         }
-        addResourceToList(res);
+        addResource(res);
     }
     g_ptr_array_unref(devices);
 
@@ -447,7 +447,7 @@ ResultsStream* FwupdBackend::resourceForFile(const QUrl& path)
                 FwupdResource* app_ = createRelease(device);
                 app_->setState(AbstractResource::None);
             }
-            addResourceToList(app);
+            addResource(app);
             connect(app, &FwupdResource::stateChanged, this, &FwupdBackend::updatesCountChanged);
             return new ResultsStream(QStringLiteral("FwupdStream-file"), {app});
         }

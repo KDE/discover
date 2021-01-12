@@ -70,7 +70,7 @@ private:
     ResultsStream* resourceForFile(const QUrl & );
     void refreshRemotes();
     void addUpdates();
-    void addResourceToList(FwupdResource *res);
+    void addResource(FwupdResource *res);
     QSet<AbstractResource*> getAllUpdates();
 
     static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
