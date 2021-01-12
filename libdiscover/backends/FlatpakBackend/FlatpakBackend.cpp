@@ -868,11 +868,13 @@ public:
         , m_installation(installation)
         , m_remote(remote)
     {
+        g_object_ref(m_remote);
         connect(this, &FlatpakRefreshAppstreamMetadataJob::finished, this, &QObject::deleteLater);
     }
 
     ~FlatpakRefreshAppstreamMetadataJob()
     {
+        g_object_unref(m_remote);
         g_object_unref(m_cancellable);
     }
 
