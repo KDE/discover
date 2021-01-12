@@ -258,7 +258,7 @@ FlatpakResource * FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) co
 
     // TODO if runtime wasn't found, create a new one from available info
     if (!runtime) {
-        qWarning() << "could not find runtime" << runtimeInfo << resource;
+        qWarning() << "could not find runtime" << runtimeName << resource;
     }
 
     return runtime;
@@ -655,10 +655,18 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
     const auto sourceName = source.name();
     connect(fw, &QFutureWatcher<QList<AppStream::Component>>::finished, this, [this, fw, flatpakInstallation, appstreamIconsPath, sourceName]() {
         const auto components = fw->result();
-        foreach (const AppStream::Component& appstreamComponent, components) {
+        QVector<FlatpakResource*> resources;
+        for (const AppStream::Component& appstreamComponent : components) {
             FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
             resource->setIconPath(appstreamIconsPath);
             resource->setOrigin(sourceName);
+            if (resource->resourceType() == FlatpakResource::Runtime) {
+                resources.prepend(resource);
+            } else {
+                resources.append(resource);
+            }
+        }
+        for (auto resource : qAsConst(resources)) {
             addResource(resource);
         }
 
@@ -704,6 +712,7 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
     const QString pathExports = FlatpakResource::installationPath(flatpakInstallation) + QLatin1String("/exports/");
     const QString pathApps = pathExports + QLatin1String("share/applications/");
 
+    QVector<FlatpakResource*> resources;
     for (uint i = 0; i < refs->len; i++) {
         FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
 
@@ -739,8 +748,14 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
         resource->setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(ref)));
         resource->updateFromRef(FLATPAK_REF(ref));
 
-        addResource(resource);
+        if (resource->resourceType() == FlatpakResource::Runtime) {
+            resources.prepend(resource);
+        } else {
+            resources.append(resource);
+        }
     }
+    for (auto resource : qAsConst(resources))
+        addResource(resource);
 
     return true;
 }
