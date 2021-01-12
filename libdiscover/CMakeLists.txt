@@ -42,7 +42,7 @@ ecm_qt_declare_logging_category(discovercommon_SRCS HEADER libdiscover_debug.h I
 
 
 add_library(DiscoverCommon ${discovercommon_SRCS})
-if(AppStreamQt_FOUND)
+if(TARGET AppStreamQt)
     target_sources(DiscoverCommon PRIVATE
         appstream/OdrsReviewsBackend.cpp
         appstream/AppStreamIntegration.cpp
