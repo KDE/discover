@@ -574,7 +574,8 @@ public:
             qWarning() << "No appstream dir for" << flatpak_remote_get_name(m_remote);
             return {};
         }
-        return QString::fromUtf8(g_file_get_path(appstreamDir));
+        g_autofree char *path_str = g_file_get_path(appstreamDir);
+        return QString::fromUtf8(path_str);
     }
 
     QString name() const
@@ -603,7 +604,7 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
 {
     Q_ASSERT(flatpakInstallation);
 
-    GPtrArray *remotes = flatpak_installation_list_remotes(flatpakInstallation, m_cancellable, nullptr);
+    g_autoptr(GPtrArray) remotes = flatpak_installation_list_remotes(flatpakInstallation, m_cancellable, nullptr);
     if (!remotes) {
         return false;
     }
@@ -614,7 +615,8 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
         FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
         g_autoptr(GFile) fileTimestamp = flatpak_remote_get_appstream_timestamp(remote, flatpak_get_default_arch());
 
-        QFileInfo fileInfo = QFileInfo(QString::fromUtf8(g_file_get_path(fileTimestamp)));
+        g_autofree char *path_str = g_file_get_path(fileTimestamp);
+        QFileInfo fileInfo = QFileInfo(QString::fromUtf8(path_str));
         // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
         if (!fileInfo.exists() || fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
             refreshAppstreamMetadata(flatpakInstallation, remote);
@@ -765,9 +767,7 @@ bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
 void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
 {
     g_autoptr(GError) localError = nullptr;
-    g_autoptr(GPtrArray) refs = nullptr;
-
-    refs = flatpak_installation_list_installed_refs(flatpakInstallation, m_cancellable, &localError);
+    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(flatpakInstallation, m_cancellable, &localError);
     if (!refs) {
         qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
         return;
@@ -932,12 +932,14 @@ bool FlatpakBackend::setupFlatpakInstallations(GError **error)
         return true;
     }
 
-    GPtrArray *installations = flatpak_get_system_installations(m_cancellable, error);
+    g_autoptr(GPtrArray) installations = flatpak_get_system_installations(m_cancellable, error);
     if (*error) {
         qWarning() << "Failed to call flatpak_get_system_installations:" << (*error)->message;
     }
     for (uint i = 0; installations && i < installations->len; i++) {
-        m_installations << FLATPAK_INSTALLATION(g_ptr_array_index(installations, i));
+        auto installation = FLATPAK_INSTALLATION(g_ptr_array_index(installations, i));
+        g_object_ref(installation);
+        m_installations << installation;
     }
 
     auto user = flatpak_installation_new_user(m_cancellable, error);
@@ -1120,7 +1122,7 @@ void FlatpakBackend::onFetchSizeFinished(FlatpakResource *resource, guint64 down
 
 void FlatpakBackend::updateAppState(FlatpakResource *resource)
 {
-    FlatpakInstalledRef *ref = getInstalledRefForApp(resource->installation(), resource);
+    g_autoptr(FlatpakInstalledRef) ref = getInstalledRefForApp(resource->installation(), resource);
     if (ref) {
         // If the app is installed, we can set information about commit, arch etc.
         updateAppInstalledMetadata(ref, resource);
