@@ -264,11 +264,11 @@ Kirigami.ApplicationWindow
         delegate: Connections {
             target: model.transaction ? model.transaction : null
 
-            onProceedRequest: {
+            function onProceedRequest(title, description) {
                 var dialog = proceedDialog.createObject(window, {transaction: transaction, title: title, description: description})
                 dialog.open()
             }
-            onPassiveMessage: {
+            function onPassiveMessage(message) {
                 window.showPassiveNotification(message)
             }
         }
