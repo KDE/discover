@@ -480,7 +480,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
             }
             fw->deleteLater();
         });
-        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, installation, resource));
+        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, installation, resource, m_cancellable));
     } else {
         addResource(resource);
     }
@@ -980,7 +980,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
                 onFetchMetadataFinished(flatpakInstallation, resource, metadata);
             fw->deleteLater();
         });
-        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, flatpakInstallation, resource));
+        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, flatpakInstallation, resource, m_cancellable));
 
         // Return false to indicate we cannot continue (right now used only in updateAppSize())
         return false;
@@ -1101,7 +1101,7 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
         resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::Fetching);
         resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::Fetching);
 
-        futureWatcher->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchFlatpakSize, flatpakInstallation, resource));
+        futureWatcher->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchFlatpakSize, flatpakInstallation, resource, m_cancellable));
     }
 
     return true;

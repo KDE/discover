@@ -27,9 +27,8 @@ static FlatpakRef * createFakeRef(FlatpakResource *resource)
 
 namespace FlatpakRunnables
 {
-QByteArray fetchMetadata(FlatpakInstallation *installation, FlatpakResource *app)
+QByteArray fetchMetadata(FlatpakInstallation *installation, FlatpakResource *app, GCancellable* cancellable)
 {
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) localError = nullptr;
 
     if (app->origin().isEmpty()) {
@@ -61,9 +60,8 @@ QByteArray fetchMetadata(FlatpakInstallation *installation, FlatpakResource *app
     return metadataContent;
 }
 
-SizeInformation fetchFlatpakSize(FlatpakInstallation *installation, FlatpakResource *app)
+SizeInformation fetchFlatpakSize(FlatpakInstallation *installation, FlatpakResource *app, GCancellable* cancellable)
 {
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) localError = nullptr;
 
     SizeInformation ret;
