@@ -299,12 +299,22 @@ void AlpineApkUpdater::handleKAuthHelperError(
         KAuth::ExecuteJob *reply,
         const QVariantMap &replyData)
 {
-    const QString message = replyData.value(QLatin1String("errorString"),
+    // error message should be received as part of JSON reply from helper
+    QString message = replyData.value(QLatin1String("errorString"),
                                             reply->errorString()).toString();
-    qCDebug(LOG_ALPINEAPK) << "KAuth helper returned error:" << message << reply->error();
     if (reply->error() == KAuth::ActionReply::Error::AuthorizationDeniedError) {
+        qCWarning(LOG_ALPINEAPK) << "updater: KAuth helper returned AuthorizationDeniedError";
         Q_EMIT passiveMessage(i18n("Authorization denied"));
     } else {
+        // if received error message is empty, try other ways to get error text for user
+        // there are multiple ways to get error messages in kauth/kjob
+        if (message.isEmpty()) {
+            message = reply->errorString();
+            if (message.isEmpty()) {
+                message = reply->errorText();
+            }
+        }
+        qCDebug(LOG_ALPINEAPK) << "updater: KAuth helper returned error:" << message << reply->error();
         Q_EMIT passiveMessage(i18n("Error") + QStringLiteral(":\n") + message);
     }
 }
