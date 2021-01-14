@@ -205,7 +205,7 @@ QSet<AbstractResource*> PackageKitUpdater::packagesForPackageId(const QSet<QStri
     foreach (AbstractResource * res, m_allUpgradeable) {
         if (auto upgrade = dynamic_cast<SystemUpgrade*>(res)) {
             if (packages.contains(upgrade->allPackageNames())) {
-                ret += upgrade->resources();
+                ret += upgrade;
             }
             continue;
         }
