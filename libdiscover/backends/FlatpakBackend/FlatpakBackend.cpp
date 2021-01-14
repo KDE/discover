@@ -278,7 +278,11 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
         return nullptr;
     }
 
+
+    gsize len = 0;
     g_autoptr(GBytes) metadata = flatpak_bundle_ref_get_metadata(bundleRef);
+    const QByteArray metadataContent((char *)g_bytes_get_data(metadata, &len));
+
     appstreamGz = flatpak_bundle_ref_get_appstream(bundleRef);
     if (appstreamGz) {
         g_autoptr(GZlibDecompressor) decompressor = nullptr;
@@ -329,8 +333,6 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
             return nullptr;
         }
 
-        gsize len = 0;
-        QByteArray metadataContent = QByteArray((char *)g_bytes_get_data(metadata, &len));
         tempFile.write(metadataContent);
         tempFile.close();
 
@@ -344,9 +346,6 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
     }
 
     FlatpakResource *resource = new FlatpakResource(asComponent, preferredInstallation(), this);
-
-    gsize len = 0;
-    QByteArray metadataContent = QByteArray((char *)g_bytes_get_data(metadata, &len));
     if (!updateAppMetadata(resource, metadataContent)) {
         delete resource;
         qWarning() << "Failed to update metadata from app bundle";
