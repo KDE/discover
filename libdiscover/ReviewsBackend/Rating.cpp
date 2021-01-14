@@ -79,8 +79,7 @@ double dampenedRating(int ratings[6], double power = 0.1)
 }
 
 Rating::Rating(const QString &packageName, quint64 ratingCount, int data[6])
-    : QObject()
-    , m_packageName(packageName)
+    : m_packageName(packageName)
     , m_ratingCount(ratingCount)
     // TODO consider storing data[] and present in UI
     , m_rating(((data[1] + (data[2] * 2) +
@@ -100,8 +99,7 @@ Rating::Rating(const QString &packageName, quint64 ratingCount, int data[6])
 }
 
 Rating::Rating(const QString &packageName, quint64 ratingCount, int rating)
-    : QObject()
-    , m_packageName(packageName)
+    : m_packageName(packageName)
     , m_ratingCount(ratingCount)
     , m_rating(rating)
     , m_ratingPoints(rating)

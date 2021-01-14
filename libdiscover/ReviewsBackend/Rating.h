@@ -12,17 +12,18 @@
 
 #include "discovercommon_export.h"
 
-class DISCOVERCOMMON_EXPORT Rating : public QObject
+class DISCOVERCOMMON_EXPORT Rating
 {
-Q_OBJECT
+Q_GADGET
 Q_PROPERTY(double sortableRating READ sortableRating CONSTANT)
 Q_PROPERTY(float rating READ rating CONSTANT)
 Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
 Q_PROPERTY(quint64 ratingCount READ ratingCount CONSTANT)
 public:
+    Rating() {}
     explicit Rating(const QString &packageName, quint64 ratingCount, int rating);
     explicit Rating(const QString &packageName, quint64 ratingCount, int data[6]);
-    ~Rating() override;
+    ~Rating();
 
     QString packageName() const;
     quint64 ratingCount() const;
@@ -34,10 +35,12 @@ public:
 
 private:
     const QString m_packageName;
-    const quint64 m_ratingCount;
-    const float m_rating;
-    int m_ratingPoints;
-    double m_sortableRating;
+    const quint64 m_ratingCount = 0;
+    const float m_rating = 0;
+    int m_ratingPoints = 0;
+    double m_sortableRating = 0;
 };
+
+Q_DECLARE_METATYPE(Rating)
 
 #endif

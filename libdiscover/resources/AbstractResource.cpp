@@ -7,6 +7,7 @@
 #include "AbstractResource.h"
 #include "AbstractResourcesBackend.h"
 #include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <ReviewsBackend/Rating.h>
 #include <Category/CategoryModel.h>
 #include <KLocalizedString>
 #include <KFormat>
@@ -108,6 +109,12 @@ Rating* AbstractResource::rating() const
 {
     AbstractReviewsBackend* ratings = backend()->reviewsBackend();
     return ratings ? ratings->ratingForApplication(const_cast<AbstractResource*>(this)) : nullptr;
+}
+
+QVariant AbstractResource::ratingVariant() const
+{
+    auto instance = rating();
+    return instance ? QVariant::fromValue<Rating>(*instance) : QVariant();
 }
 
 QStringList AbstractResource::extends() const

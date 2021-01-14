@@ -17,6 +17,7 @@ class DummyReviewsBackend : public AbstractReviewsBackend
 Q_OBJECT
 public:
     explicit DummyReviewsBackend(DummyBackend* parent = nullptr);
+    ~DummyReviewsBackend() override;
 
     QString userName() const override { return QStringLiteral("dummy"); }
     void login() override {}

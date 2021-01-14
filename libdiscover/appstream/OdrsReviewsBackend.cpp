@@ -64,6 +64,11 @@ OdrsReviewsBackend::OdrsReviewsBackend()
     }
 }
 
+OdrsReviewsBackend::~OdrsReviewsBackend() noexcept
+{
+    qDeleteAll(m_ratings);
+}
+
 void OdrsReviewsBackend::ratingsFetched(KJob *job)
 {
     m_isFetching = false;
@@ -255,7 +260,6 @@ void OdrsReviewsBackend::parseRatings()
                                 appJsonObject.value(QLatin1String("star5")).toInt() };
 
             Rating *rating = new Rating(it.key(), ratingCount, ratingMap);
-            rating->setParent(this);
             m_ratings.insert(it.key(), rating);
         }
         ratingsDocument.close();

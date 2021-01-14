@@ -458,9 +458,9 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource* resource, int role) 
             const int idx = Rating::staticMetaObject.indexOfProperty(roleNames().value(role).constData());
             Q_ASSERT(idx >= 0);
             auto prop = Rating::staticMetaObject.property(idx);
-            if (rating)
-                return prop.read(rating);
-            else {
+            if (rating) {
+                return prop.readOnGadget(rating);
+            } else {
                 QVariant val(0);
                 val.convert(prop.type());
                 return val;

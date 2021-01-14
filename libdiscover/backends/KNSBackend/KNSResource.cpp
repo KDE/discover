@@ -243,13 +243,13 @@ Rating * KNSResource::ratingInstance()
         const int noc = m_entry.numberOfComments();
         const int rating = m_entry.rating();
         Q_ASSERT(rating <= 100);
-        return new Rating(
+        m_rating.reset(new Rating(
             packageName(),
             noc,
             rating / 10
-        );
+        ));
     }
-    return m_rating;
+    return m_rating.data();
 }
 
 QString KNSResource::author() const

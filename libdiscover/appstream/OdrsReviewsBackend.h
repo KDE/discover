@@ -24,6 +24,7 @@ class DISCOVERCOMMON_EXPORT OdrsReviewsBackend : public AbstractReviewsBackend
 Q_OBJECT
 public:
     explicit OdrsReviewsBackend();
+    ~OdrsReviewsBackend() override;
 
     QString userName() const override;
     void login() override {}

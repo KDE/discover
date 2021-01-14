@@ -17,6 +17,11 @@ DummyReviewsBackend::DummyReviewsBackend(DummyBackend* parent)
     : AbstractReviewsBackend(parent)
 {}
 
+DummyReviewsBackend::~DummyReviewsBackend() noexcept
+{
+    qDeleteAll(m_ratings);
+}
+
 void DummyReviewsBackend::fetchReviews(AbstractResource* app, int page)
 {
     if (page>=5)
@@ -46,7 +51,6 @@ void DummyReviewsBackend::initialize()
 
         int ratings[] = {0,0,0,0,0, randomRating};
         Rating* rating = new Rating(app->packageName(), ++i, ratings);
-        rating->setParent(this);
         m_ratings.insert(app, rating);
         Q_EMIT app->ratingFetched();
     }
