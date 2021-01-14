@@ -8,41 +8,32 @@
 #include "FlatpakFetchDataJob.h"
 #include "FlatpakResource.h"
 
-#include <QDebug>
-
-static FlatpakRef * createFakeRef(FlatpakResource *resource)
-{
-    FlatpakRef *ref = nullptr;
-    g_autoptr(GError) localError = nullptr;
-
-    const auto id = resource->ref();
-    ref = flatpak_ref_parse(id.toUtf8().constData(), &localError);
-
-    if (!ref) {
-        qWarning() << "Failed to create fake ref: " << localError->message;
-    }
-
-    return ref;
-}
-
 namespace FlatpakRunnables
 {
+
+static FlatpakRemoteRef* findRemoteRef(FlatpakResource *app, GCancellable* cancellable, GError **error)
+{
+    if (app->origin().isEmpty()) {
+        qWarning() << "Failed to get metadata file because of missing origin";
+        return nullptr;
+    }
+
+    const auto kind = app->resourceType() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME;
+    const QByteArray origin = app->origin().toUtf8(), name = app->flatpakName().toUtf8(), arch = app->arch().toUtf8(), branch = app->branch().toUtf8();
+    return flatpak_installation_fetch_remote_ref_sync_full(app->installation(), origin.constData(), kind, name.constData(), arch.constData(), branch.constData(), FLATPAK_QUERY_FLAGS_ONLY_CACHED, cancellable, error);
+}
+
 QByteArray fetchMetadata(FlatpakResource *app, GCancellable* cancellable)
 {
     g_autoptr(GError) localError = nullptr;
 
-    if (app->origin().isEmpty()) {
-        qWarning() << "Failed to get metadata file because of missing origin";
-        return {};
-    }
+    FlatpakRemoteRef* remote = findRemoteRef(app, cancellable, &localError);
 
-    g_autoptr(FlatpakRef) fakeRef = createFakeRef(app);
-    if (!fakeRef) {
-        return {};
-    }
+    Q_ASSERT(remote);
+    Q_ASSERT(!localError);
 
     QByteArray metadataContent;
-    g_autoptr(GBytes) data = flatpak_installation_fetch_remote_metadata_sync(app->installation(), app->origin().toUtf8().constData(), fakeRef, cancellable, &localError);
+    g_autoptr(GBytes) data = flatpak_remote_ref_get_metadata(remote);
     if (data) {
         gsize len = 0;
         auto buff = g_bytes_get_data(data, &len);
@@ -65,16 +56,14 @@ SizeInformation fetchFlatpakSize(FlatpakResource *app, GCancellable* cancellable
     g_autoptr(GError) localError = nullptr;
 
     SizeInformation ret;
-    g_autoptr(FlatpakRef) ref = createFakeRef(app);
-    if (!ref) {
+    FlatpakRemoteRef* remote = findRemoteRef(app, cancellable, &localError);
+    if (!remote) {
+        qWarning() << "Failed to get remote size of" << app->name() << app->origin() << ":" << localError->message;
         return ret;
     }
 
-    if (!flatpak_installation_fetch_remote_size_sync(app->installation(), app->origin().toUtf8().constData(), ref, &ret.downloadSize, &ret.installedSize, cancellable, &localError)) {
-        qWarning() << "Failed to get remote size of " << app->name() << ": " << localError->message;
-        return ret;
-    }
-
+    ret.downloadSize = flatpak_remote_ref_get_download_size(remote);
+    ret.installedSize = flatpak_remote_ref_get_installed_size(remote);
     ret.valid = true;
     return ret;
 }
