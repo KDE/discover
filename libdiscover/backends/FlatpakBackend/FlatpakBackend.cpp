@@ -541,9 +541,6 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
 
     updateAppState(resource);
 
-    // This will update also metadata (required runtime)
-    updateAppSize(resource);
-
     m_resources.insert(resource->uniqueId(), resource);
     if (!resource->extends().isEmpty()) {
         m_extends.append(resource->extends());

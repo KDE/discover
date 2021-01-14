@@ -350,6 +350,7 @@ QString FlatpakResource::sizeDescription()
     KFormat f;
     if (!isInstalled() || canUpgrade()) {
         if (propertyState(DownloadSize) == NotKnownYet || propertyState(InstalledSize) == NotKnownYet || propertyState(DownloadSize) == Fetching || propertyState(InstalledSize) == Fetching) {
+            qobject_cast<FlatpakBackend*>(backend())->updateAppSize(this);
             return i18n("Retrieving size information");
         } else if (propertyState(DownloadSize) == UnknownOrFailed || propertyState(InstalledSize) == UnknownOrFailed) {
             return i18n("Unknown size");

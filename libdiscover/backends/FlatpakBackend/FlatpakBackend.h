@@ -56,6 +56,8 @@ public:
 
     FlatpakSourcesBackend *sources() const { return m_sources; }
 
+    bool updateAppSize(FlatpakResource *resource);
+
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata);
     void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);
@@ -88,7 +90,6 @@ private:
     bool updateAppMetadata(FlatpakResource *resource);
     bool updateAppMetadata(FlatpakResource *resource, const QByteArray &data);
     bool updateAppMetadata(FlatpakResource *resource, const QString &path);
-    bool updateAppSize(FlatpakResource *resource);
     bool updateAppSizeFromRemote(FlatpakResource *resource);
     void updateAppState(FlatpakResource *resource);
 
