@@ -23,9 +23,9 @@ namespace FlatpakRunnables
         guint64 installedSize;
     };
 
-    SizeInformation fetchFlatpakSize(FlatpakInstallation *installation, FlatpakResource *app, GCancellable* cancellable);
+    SizeInformation fetchFlatpakSize(FlatpakResource *app, GCancellable* cancellable);
 
-    QByteArray fetchMetadata(FlatpakInstallation *installation, FlatpakResource *app, GCancellable* cancellable);
+    QByteArray fetchMetadata(FlatpakResource *app, GCancellable* cancellable);
 }
 
 #endif // FLATPAKFETCHDATAJOB_H

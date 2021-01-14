@@ -57,7 +57,7 @@ public:
     FlatpakSourcesBackend *sources() const { return m_sources; }
 
 private Q_SLOTS:
-    void onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata);
+    void onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata);
     void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);
     void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
 
@@ -71,7 +71,7 @@ private:
     FlatpakInstallation * preferredInstallation() const { return m_installations.constFirst(); }
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     FlatpakRemote * getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
-    FlatpakInstalledRef * getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource) const;
+    FlatpakInstalledRef * getInstalledRefForApp(FlatpakResource *resource) const;
     FlatpakResource * getRuntimeForApp(FlatpakResource *resource) const;
 
     void addResource(FlatpakResource *resource);
@@ -85,11 +85,11 @@ private:
     void refreshAppstreamMetadata(FlatpakInstallation *installation, FlatpakRemote *remote);
     bool setupFlatpakInstallations(GError **error);
     void updateAppInstalledMetadata(FlatpakInstalledRef *installedRef, FlatpakResource *resource);
-    bool updateAppMetadata(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
+    bool updateAppMetadata(FlatpakResource *resource);
     bool updateAppMetadata(FlatpakResource *resource, const QByteArray &data);
     bool updateAppMetadata(FlatpakResource *resource, const QString &path);
     bool updateAppSize(FlatpakResource *resource);
-    bool updateAppSizeFromRemote(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource);
+    bool updateAppSizeFromRemote(FlatpakResource *resource);
     void updateAppState(FlatpakResource *resource);
 
     QVector<AbstractResource*> resourcesByAppstreamName(const QString &name) const;

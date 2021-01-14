@@ -27,7 +27,7 @@ static FlatpakRef * createFakeRef(FlatpakResource *resource)
 
 namespace FlatpakRunnables
 {
-QByteArray fetchMetadata(FlatpakInstallation *installation, FlatpakResource *app, GCancellable* cancellable)
+QByteArray fetchMetadata(FlatpakResource *app, GCancellable* cancellable)
 {
     g_autoptr(GError) localError = nullptr;
 
@@ -42,7 +42,7 @@ QByteArray fetchMetadata(FlatpakInstallation *installation, FlatpakResource *app
     }
 
     QByteArray metadataContent;
-    g_autoptr(GBytes) data = flatpak_installation_fetch_remote_metadata_sync(installation, app->origin().toUtf8().constData(), fakeRef, cancellable, &localError);
+    g_autoptr(GBytes) data = flatpak_installation_fetch_remote_metadata_sync(app->installation(), app->origin().toUtf8().constData(), fakeRef, cancellable, &localError);
     if (data) {
         gsize len = 0;
         auto buff = g_bytes_get_data(data, &len);
@@ -60,7 +60,7 @@ QByteArray fetchMetadata(FlatpakInstallation *installation, FlatpakResource *app
     return metadataContent;
 }
 
-SizeInformation fetchFlatpakSize(FlatpakInstallation *installation, FlatpakResource *app, GCancellable* cancellable)
+SizeInformation fetchFlatpakSize(FlatpakResource *app, GCancellable* cancellable)
 {
     g_autoptr(GError) localError = nullptr;
 
@@ -70,7 +70,7 @@ SizeInformation fetchFlatpakSize(FlatpakInstallation *installation, FlatpakResou
         return ret;
     }
 
-    if (!flatpak_installation_fetch_remote_size_sync(installation, app->origin().toUtf8().constData(), ref, &ret.downloadSize, &ret.installedSize, cancellable, &localError)) {
+    if (!flatpak_installation_fetch_remote_size_sync(app->installation(), app->origin().toUtf8().constData(), ref, &ret.downloadSize, &ret.installedSize, cancellable, &localError)) {
         qWarning() << "Failed to get remote size of " << app->name() << ": " << localError->message;
         return ret;
     }

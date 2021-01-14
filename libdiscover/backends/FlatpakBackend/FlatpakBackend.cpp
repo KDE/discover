@@ -209,23 +209,19 @@ FlatpakRemote * FlatpakBackend::getFlatpakRemoteByUrl(const QString &url, Flatpa
     return nullptr;
 }
 
-FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource) const
+FlatpakInstalledRef * FlatpakBackend::getInstalledRefForApp(FlatpakResource *resource) const
 {
-    FlatpakInstalledRef *ref = nullptr;
     g_autoptr(GError) localError = nullptr;
-
-    if (!flatpakInstallation) {
-        return ref;
-    }
 
     const auto type = resource->resourceType() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME;
 
-    return flatpak_installation_get_installed_ref(flatpakInstallation,
+    FlatpakInstalledRef *ref = flatpak_installation_get_installed_ref(resource->installation(),
                                                  type,
                                                  resource->flatpakName().toUtf8().constData(),
                                                  resource->arch().toUtf8().constData(),
                                                  resource->branch().toUtf8().constData(),
                                                  m_cancellable, &localError);
+    return ref;
 }
 
 FlatpakResource * FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const
@@ -452,14 +448,13 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 
     QUrl runtimeUrl = QUrl(settings.value(QStringLiteral("Flatpak Ref/RuntimeRepo")).toString());
     if (!runtimeUrl.isEmpty()) {
-        auto installation = preferredInstallation();
         // We need to fetch metadata to find information about required runtime
         auto fw = new QFutureWatcher<QByteArray>(this);
-        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, installation, resource, fw, runtimeUrl]() {
+        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, resource, fw, runtimeUrl]() {
             const auto metadata = fw->result();
             // Even when we failed to fetch information about runtime we still want to show the application
             if (metadata.isEmpty()) {
-                onFetchMetadataFinished(installation, resource, metadata);
+                Q_EMIT onFetchMetadataFinished(resource, metadata);
             } else {
                 updateAppMetadata(resource, metadata);
 
@@ -480,7 +475,7 @@ FlatpakResource * FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
             }
             fw->deleteLater();
         });
-        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, installation, resource, m_cancellable));
+        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, resource, m_cancellable));
     } else {
         addResource(resource);
     }
@@ -962,7 +957,7 @@ void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRe
         resource->setState(AbstractResource::Installed);
 }
 
-bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation, FlatpakResource *resource)
+bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource)
 {
     if (resource->resourceType() != FlatpakResource::DesktopApp) {
         return true;
@@ -974,27 +969,27 @@ bool FlatpakBackend::updateAppMetadata(FlatpakInstallation* flatpakInstallation,
         return updateAppMetadata(resource, path);
     } else {
         auto fw = new QFutureWatcher<QByteArray>(this);
-        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, flatpakInstallation, resource, fw]() {
+        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, resource, fw]() {
             const auto metadata = fw->result();
             if (!metadata.isEmpty())
-                onFetchMetadataFinished(flatpakInstallation, resource, metadata);
+                onFetchMetadataFinished(resource, metadata);
             fw->deleteLater();
         });
-        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, flatpakInstallation, resource, m_cancellable));
+        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, resource, m_cancellable));
 
         // Return false to indicate we cannot continue (right now used only in updateAppSize())
         return false;
     }
 }
 
-void FlatpakBackend::onFetchMetadataFinished(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource, const QByteArray &metadata)
+void FlatpakBackend::onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata)
 {
     updateAppMetadata(resource, metadata);
 
     // Right now we attempt to update metadata for calculating the size so call updateSizeFromRemote()
     // as it's what we want. In future if there are other reason to update metadata we will need to somehow
     // distinguish between these calls
-    updateAppSizeFromRemote(flatpakInstallation, resource);
+    updateAppSizeFromRemote(resource);
 }
 
 bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QString &path)
@@ -1040,15 +1035,15 @@ bool FlatpakBackend::updateAppSize(FlatpakResource *resource)
 
     // Check if we know the needed runtime which is needed for calculating the size
     if (resource->runtime().isEmpty()) {
-        if (!updateAppMetadata(resource->installation(), resource)) {
+        if (!updateAppMetadata(resource)) {
             return false;
         }
     }
 
-    return updateAppSizeFromRemote(resource->installation(), resource);
+    return updateAppSizeFromRemote(resource);
 }
 
-bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstallation, FlatpakResource *resource)
+bool FlatpakBackend::updateAppSizeFromRemote(FlatpakResource *resource)
 {
     // Calculate the runtime size
     if (resource->state() == AbstractResource::None && resource->resourceType() == FlatpakResource::DesktopApp) {
@@ -1071,7 +1066,7 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
 
     if (resource->state() == AbstractResource::Installed) {
         g_autoptr(FlatpakInstalledRef) ref = nullptr;
-        ref = getInstalledRefForApp(flatpakInstallation, resource);
+        ref = getInstalledRefForApp(resource);
         if (!ref) {
             qWarning() << "Failed to get installed size of" << resource->name();
             return false;
@@ -1101,7 +1096,7 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakInstallation *flatpakInstall
         resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::Fetching);
         resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::Fetching);
 
-        futureWatcher->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchFlatpakSize, flatpakInstallation, resource, m_cancellable));
+        futureWatcher->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchFlatpakSize, resource, m_cancellable));
     }
 
     return true;
@@ -1124,7 +1119,7 @@ void FlatpakBackend::onFetchSizeFinished(FlatpakResource *resource, guint64 down
 
 void FlatpakBackend::updateAppState(FlatpakResource *resource)
 {
-    g_autoptr(FlatpakInstalledRef) ref = getInstalledRefForApp(resource->installation(), resource);
+    g_autoptr(FlatpakInstalledRef) ref = getInstalledRefForApp(resource);
     if (ref) {
         // If the app is installed, we can set information about commit, arch etc.
         updateAppInstalledMetadata(ref, resource);
