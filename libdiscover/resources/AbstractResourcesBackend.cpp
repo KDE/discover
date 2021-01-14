@@ -100,9 +100,6 @@ bool AbstractResourcesBackend::Filters::shouldFilter(AbstractResource* res) cons
     if(!extends.isEmpty() && !res->extends().contains(extends)) {
         return false;
     }
-    if(!resourceUrl.isEmpty() && res->url() != resourceUrl) {
-        return false;
-    }
 
     if(!origin.isEmpty() && res->origin() != origin) {
         return false;
