@@ -1081,11 +1081,11 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakResource *resource)
             return true;
         }
 
-        auto futureWatcher = new QFutureWatcher<FlatpakRunnables::SizeInformation>(this);
-        connect(futureWatcher, &QFutureWatcher<FlatpakRunnables::SizeInformation>::finished, this, [this, resource, futureWatcher]() {
-            auto value = futureWatcher->result();
-            if (value.valid) {
-                onFetchSizeFinished(resource, value.downloadSize, value.installedSize);
+        auto futureWatcher = new QFutureWatcher<FlatpakRemoteRef*>(this);
+        connect(futureWatcher, &QFutureWatcher<FlatpakRemoteRef*>::finished, this, [this, resource, futureWatcher]() {
+            g_autoptr(FlatpakRemoteRef) remoteRef = futureWatcher->result();
+            if (remoteRef) {
+                onFetchSizeFinished(resource, flatpak_remote_ref_get_download_size(remoteRef), flatpak_remote_ref_get_installed_size(remoteRef));
             } else {
                 resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::UnknownOrFailed);
                 resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::UnknownOrFailed);
@@ -1095,7 +1095,7 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakResource *resource)
         resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::Fetching);
         resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::Fetching);
 
-        futureWatcher->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchFlatpakSize, resource, m_cancellable));
+        futureWatcher->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::findRemoteRef, resource, m_cancellable));
     }
 
     return true;

@@ -17,13 +17,7 @@ class FlatpakResource;
 
 namespace FlatpakRunnables
 {
-    struct SizeInformation {
-        bool valid = false;
-        guint64 downloadSize;
-        guint64 installedSize;
-    };
-
-    SizeInformation fetchFlatpakSize(FlatpakResource *app, GCancellable* cancellable);
+    FlatpakRemoteRef* findRemoteRef(FlatpakResource *app, GCancellable* cancellable);
 
     QByteArray fetchMetadata(FlatpakResource *app, GCancellable* cancellable);
 }
