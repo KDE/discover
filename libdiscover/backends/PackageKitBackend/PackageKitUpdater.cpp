@@ -164,10 +164,11 @@ void PackageKitUpdater::prepare()
     }
 
     Q_ASSERT(!m_transaction);
-    if (useOfflineUpdates()) {
-        m_toUpgrade = { new SystemUpgrade(m_backend->upgradeablePackages(), m_backend) };
+    const auto candidates = m_backend->upgradeablePackages();
+    if (useOfflineUpdates() && !candidates.isEmpty()) {
+        m_toUpgrade = { new SystemUpgrade(candidates, m_backend) };
     } else {
-        m_toUpgrade = m_backend->upgradeablePackages();
+        m_toUpgrade = candidates;
     }
     m_allUpgradeable = m_toUpgrade;
 }
