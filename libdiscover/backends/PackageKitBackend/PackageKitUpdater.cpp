@@ -60,11 +60,6 @@ public:
         : AbstractResource(backend)
         , m_backend(backend)
     {
-        for (auto res : qAsConst(m_resources)) {
-            connect(res, &AbstractResource::sizeChanged, this, [this] {
-                Q_EMIT m_backend->resourcesChanged(this, {"size", "homepage", "license"});
-            });
-        }
     }
 
     QString packageName() const override { return QStringLiteral("discover-offline-upgrade");}
@@ -132,8 +127,20 @@ public:
         return ret;
     }
 
+    void refreshResource() {
+        Q_EMIT m_backend->resourcesChanged(this, {"size", "license"});
+    }
+
     void setCandidates(const QSet<AbstractResource*> &candidates) {
+        for (auto res : (m_resources - candidates)) {
+            disconnect(res, &AbstractResource::sizeChanged, this, &SystemUpgrade::refreshResource);
+        }
+
+        const auto newCandidates = (candidates - m_resources);
         m_resources = candidates;
+        for (auto res : newCandidates) {
+            connect(res, &AbstractResource::sizeChanged, this, &SystemUpgrade::refreshResource);
+        }
     }
 
 private:
