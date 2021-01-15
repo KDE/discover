@@ -655,6 +655,10 @@ Transaction* PackageKitBackend::installApplication(AbstractResource* app)
 Transaction* PackageKitBackend::removeApplication(AbstractResource* app)
 {
     Q_ASSERT(!isFetching());
+    if (!qobject_cast<PackageKitResource*>(app)) {
+        Q_EMIT passiveMessage(i18n("Cannot remove '%1'", app->name()));
+        return nullptr;
+    }
     return new PKTransaction({app}, Transaction::RemoveRole);
 }
 
