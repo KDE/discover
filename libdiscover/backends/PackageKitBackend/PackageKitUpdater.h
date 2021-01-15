@@ -10,6 +10,8 @@
 #include "PackageKitBackend.h"
 #include <PackageKit/Transaction>
 
+class SystemUpgrade;
+
 int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage);
 
 class PackageKitUpdater : public AbstractBackendUpdater
@@ -87,6 +89,8 @@ class PackageKitUpdater : public AbstractBackendUpdater
         QDateTime m_lastUpdate;
         QMap<PackageKit::Transaction::Info, QStringList> m_packagesModified;
         QVector<std::function<PackageKit::Transaction*()>> m_proceedFunctions;
+
+        SystemUpgrade* m_upgrade = nullptr;
 };
 
 

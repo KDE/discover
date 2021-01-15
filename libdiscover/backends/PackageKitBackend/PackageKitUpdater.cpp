@@ -56,9 +56,8 @@ static void kRemoveDuplicates(QJsonArray & input, std::function<QString(const QJ
 class SystemUpgrade : public AbstractResource
 {
 public:
-    SystemUpgrade(const QSet<AbstractResource*> &resources, PackageKitBackend* backend)
+    SystemUpgrade(PackageKitBackend* backend)
         : AbstractResource(backend)
-        , m_resources(resources)
         , m_backend(backend)
     {
         for (auto res : qAsConst(m_resources)) {
@@ -133,8 +132,12 @@ public:
         return ret;
     }
 
+    void setCandidates(const QSet<AbstractResource*> &candidates) {
+        m_resources = candidates;
+    }
+
 private:
-    const QSet<AbstractResource*> m_resources;
+    QSet<AbstractResource*> m_resources;
     PackageKitBackend* const m_backend;
 };
 
@@ -145,7 +148,8 @@ PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
     m_isCancelable(false),
     m_isProgressing(false),
     m_percentage(0),
-    m_lastUpdate()
+    m_lastUpdate(),
+    m_upgrade(new SystemUpgrade(m_backend))
 {
     fetchLastUpdateTime();
 }
@@ -166,7 +170,9 @@ void PackageKitUpdater::prepare()
     Q_ASSERT(!m_transaction);
     const auto candidates = m_backend->upgradeablePackages();
     if (useOfflineUpdates() && !candidates.isEmpty()) {
-        m_toUpgrade = { new SystemUpgrade(candidates, m_backend) };
+        m_upgrade->setCandidates(candidates);
+
+        m_toUpgrade = { m_upgrade };
     } else {
         m_toUpgrade = candidates;
     }
