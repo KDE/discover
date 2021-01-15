@@ -60,6 +60,9 @@ public:
         : AbstractResource(backend)
         , m_backend(backend)
     {
+        connect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, [this] (AbstractResource *res) {
+            m_resources.remove(res);
+        });
     }
 
     QString packageName() const override { return QStringLiteral("discover-offline-upgrade");}
