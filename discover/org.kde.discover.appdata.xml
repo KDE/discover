@@ -93,7 +93,7 @@
   <summary xml:lang="zh-TW">探尋</summary>
   <description>
     <p>Discover helps you find and install applications, games, and tools. You can search or browse by category, and look at screenshots and read reviews to help you pick the perfect app.</p>
-    <p xml:lang="ast">Discover ayúdate a alcontrar ya instalar aplicaciones y ferramientes. Pues buscar o restolar por estayes, mirar captures de pantalla y lleer reseñes p'ayudate a escoyer l'aplicación perfeuta.</p>
+    <p xml:lang="ast">Discover ayúdate a atopar ya instalar aplicaciones y ferramientes. Pues buscar o restolar por estayes, mirar captures de pantalla y lleer reseñes p'ayudate a escoyer l'aplicación perfeuta.</p>
     <p xml:lang="az">Discover sizə tətbiqləri, oyunları və digər alət və vasitələri tapmağa və quraşdırmağa kömək edir. Siz kateqoriyalar üzrə axtararaq, ekran şəkillərinə baxmaqla və rəyləri oxumaqla istəyinizə uyğun ən mükəmməl tətbiqi və ya əlavələri seçə bilərsiniz.</p>
     <p xml:lang="ca">El Discover ajuda a instal·lar aplicacions, jocs i eines. Podeu cercar o explorar per categoria, i veure les captures de pantalla i llegir els comentaris com a ajuda per a triar l'aplicació perfecta.</p>
     <p xml:lang="ca-valencia">Discover us ajuda a instal·lar aplicacions, jocs i eines. Podeu buscar o explorar per categoria, i veure les captures de pantalla i llegir els comentaris per a ajudar-vos a triar l'aplicació perfecta.</p>
@@ -160,7 +160,7 @@
     <p xml:lang="zh-CN">使用 Discover，您可以管理来自不同来源的软件，包括系统软件源，Flatpak 仓库，Snap 商店，或者来自 store.kde.org 的 AppImage。</p>
     <p xml:lang="zh-TW">使用《探尋》，您可以管理來自多個來源的軟體，包含您作業系統的軟體庫、Flatpak 軟體庫、Snap 商店，或甚至是來自 store.kde.org 的 AppImage。</p>
     <p>Finally, Discover also allows you to find, install, and manage add-ons for Plasma and all your favorite KDE apps!</p>
-    <p xml:lang="ast">P'acabar, Discover tamién te permite alcontrar, instalar y xestionar complementos de Plasma y toles aplicaciones de KDE.</p>
+    <p xml:lang="ast">P'acabar, Discover tamién te permite atopar, instalar y xestionar complementos de Plasma y toles aplicaciones de KDE.</p>
     <p xml:lang="az">Nəhayət, Discover həmçinin Plazma və bütün sevdiyiniz KDE tətbiqlərini tapmaq, quraşdırmaq və idarə etməyə imkan verir!</p>
     <p xml:lang="ca">Finalment, el Discover també permet cercar, instal·lar i gestionar complements per al Plasma i totes les aplicacions preferides del KDE!</p>
     <p xml:lang="ca-valencia">Finalment, Discover també permet buscar, instal·lar i gestionar complements per a Plasma i totes les aplicacions preferides de KDE.</p>
