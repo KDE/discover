@@ -389,8 +389,25 @@ void KNSBackend::signalErrorCode(const KNSCore::ErrorCode& errorCode, const QStr
             invalidFile = true;
             break;
         case KNSCore::ErrorCode::InstallationError:
-            // This error is handled already, by forwarding the KNS engine's installer error message.
+        {
+            KNSResource* r = static_cast<KNSResource*>(m_resourcesByName.value(metadata.toString()));
+            if (r) {
+                // If the following is true, then we can safely assume that the entry was
+                // attempted updated, but the update was aborted.
+                // Specifically, we can also likely expect that the update failed because
+                // KNSCore::Engine was unable to deduce which payload to use (which will
+                // happen when an entry has more than one payload, and none of those match
+                // the name of the originally downloaded file).
+                // We cannot complete this in Discover (as we've no way to forward that
+                // query to the user) but we can give them an idea of how to deal with the
+                // situation some other way.
+                // TODO: Once Discover has a way to forward queries to the user from transactions, this likely will no longer be needed
+                if (r->entry().status() == KNS3::Entry::Updateable) {
+                    error = i18n("Unable to complete the update of %1. You can try and perform this action through the Get Hot New Stuff dialog, which grants tighter control. The reported error was:\n%2", r->name(), message);
+                }
+            }
             break;
+        }
         case KNSCore::ErrorCode::ImageError:
             // Image fetching errors are not critical as such, but may lead to weird layout issues, might want handling...
             error = i18n("Could not fetch screenshot for the entry %1 in backend %2", metadata.toList().at(0).toString(), m_displayName);
