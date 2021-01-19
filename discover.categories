@@ -1,3 +1,0 @@
-org.kde.plasma.libdiscover libdiscover IDENTIFIER [LIBDISCOVER_LOG]
-org.kde.plasma.discover discover IDENTIFIER [DISCOVER_LOG]
-org.kde.plasma.libdiscover.backend libdiscover backend IDENTIFIER [LIBDISCOVER_BACKEND_LOG]
