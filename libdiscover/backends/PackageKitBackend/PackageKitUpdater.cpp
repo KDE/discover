@@ -104,13 +104,14 @@ public:
         return i18np("1 package to upgrade", "%1 packages to upgrade", m_resources.count());
     }
     void fetchChangelog() override {
-        QString changes;
+        QStringList changes;
         for (auto res : qAsConst(m_resources)) {
             const auto versions = res->upgradeText();
             const auto idx = versions.indexOf(u'\u009C');
             changes += QStringLiteral("<li>") + res->packageName() + QStringLiteral(": ") + versions.leftRef(idx) + QStringLiteral("</li>\n");
         }
-        Q_EMIT changelogFetched(QStringLiteral("<ul>") + changes + QStringLiteral("</ul>\n"));
+        changes.sort();
+        Q_EMIT changelogFetched(QStringLiteral("<ul>") + changes.join(QString()) + QStringLiteral("</ul>\n"));
     }
 
     QString installedVersion() const override { return i18n("Present"); }
