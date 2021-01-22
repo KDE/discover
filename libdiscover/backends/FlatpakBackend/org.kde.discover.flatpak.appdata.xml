@@ -64,6 +64,7 @@
   <summary xml:lang="nb">Integrerer Flatpak-programmer i Discover</summary>
   <summary xml:lang="nl">Integreert Flatpak-toepassingen in Discover</summary>
   <summary xml:lang="nn">Integrerer Flatpak-program i Discover</summary>
+  <summary xml:lang="pa">ਡਿਸਕਵਰ ਵਿੱਚ ਫਲੈਟਪੈਕ ਐਪਲੀਕੇਸ਼ਨਾਂ ਨੂੰ ਜੋੜਦਾ ਹੈ</summary>
   <summary xml:lang="pl">Integruje aplikacje Flatpak w Odkrywcy</summary>
   <summary xml:lang="pt">Integra as aplicações do Flatpak no Discover</summary>
   <summary xml:lang="pt-BR">Integra aplicativos Flatpak no Discover</summary>
@@ -105,6 +106,7 @@
   <developer_name xml:lang="nb">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nn">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="pa">ਐਲਿਕਸ ਪੋਲ ਗੋਨਜ਼ਾਵੇਜ</developer_name>
   <developer_name xml:lang="pl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="pt">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="pt-BR">Aleix Pol Gonzalez</developer_name>
