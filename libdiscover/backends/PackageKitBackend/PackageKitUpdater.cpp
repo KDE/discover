@@ -105,10 +105,16 @@ public:
     }
     void fetchChangelog() override {
         QStringList changes;
+        QSet<QString> donePkgs;
         for (auto res : qAsConst(m_resources)) {
-            const auto versions = res->upgradeText();
-            const auto idx = versions.indexOf(u'\u009C');
-            changes += QStringLiteral("<li>") + res->packageName() + QStringLiteral(": ") + versions.leftRef(idx) + QStringLiteral("</li>\n");
+            PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
+            QString pkgid = m_backend->upgradeablePackageId(app);
+            if (!donePkgs.contains(pkgid)) {
+                donePkgs.insert(pkgid);
+                const auto versions = res->upgradeText();
+                const auto idx = versions.indexOf(u'\u009C');
+                changes += QStringLiteral("<li>") + res->packageName() + QStringLiteral(": ") + versions.leftRef(idx) + QStringLiteral("</li>\n");
+            }
         }
         changes.sort();
         Q_EMIT changelogFetched(QStringLiteral("<ul>") + changes.join(QString()) + QStringLiteral("</ul>\n"));
