@@ -21,11 +21,11 @@
 #include "AlpineApkUpdater.h"
 #include "AlpineApkResource.h"
 #include "AlpineApkBackend.h"
+#include "AlpineApkAuthActionFactory.h"
 #include "alpineapk_backend_logging.h"
 #include "utils.h"
 
 #include <KAuthExecuteJob>
-#include <kauth_version.h>
 #include <KLocalizedString>
 
 #include <QtApk>
@@ -167,27 +167,10 @@ void AlpineApkUpdater::cancel()
 void AlpineApkUpdater::start()
 {
     qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
-    KAuth::Action upgradeAction(QStringLiteral("org.kde.discover.alpineapkbackend.upgrade"));
-    upgradeAction.setHelperId(QStringLiteral("org.kde.discover.alpineapkbackend"));
-
-    if (!upgradeAction.isValid()) {
-        qCWarning(LOG_ALPINEAPK) << "kauth upgradeAction is not valid!";
-        return;
-    }
-
-    upgradeAction.setTimeout(30 * 60 * 1000); // 30 min
-#if KAUTH_VERSION < QT_VERSION_CHECK(5, 68, 0)
-    upgradeAction.setDetails(i18n("Upgrade currently installed packages"));
-#else
-    static const KAuth::Action::DetailsMap details{
-        { KAuth::Action::AuthDetail::DetailMessage, i18n("Upgrade currently installed packages") }
-    };
-    upgradeAction.setDetailsV2(details);
-#endif
-    // upgradeAction.addArgument(QLatin1String("onlySimulate"), true);
 
     // run upgrade with elevated privileges
-    KAuth::ExecuteJob *reply = upgradeAction.execute();
+    KAuth::ExecuteJob *reply = ActionFactory::createUpgradeAction();
+    if (!reply) return;
     QObject::connect(reply, &KAuth::ExecuteJob::result,
                      this, &AlpineApkUpdater::handleKAuthUpgradeHelperReply);
 
@@ -211,27 +194,11 @@ int AlpineApkUpdater::updatesCount()
 void AlpineApkUpdater::startCheckForUpdates()
 {
     QtApk::Database *db = m_backend->apkdb();
-    KAuth::Action updateAction(QStringLiteral("org.kde.discover.alpineapkbackend.update"));
-    updateAction.setHelperId(QStringLiteral("org.kde.discover.alpineapkbackend"));
-    if (!updateAction.isValid()) {
-        qCWarning(LOG_ALPINEAPK) << "kauth updateAction is not valid!";
-        return;
-    }
-    updateAction.setTimeout(60 * 1000); // 1 minute
-    // setDetails deprecated since KF 5.68, use setDetailsV2() with DetailsMap.
-#if KAUTH_VERSION < QT_VERSION_CHECK(5, 68, 0)
-    updateAction.setDetails(i18n("Update repositories index"));
-#else
-    static const KAuth::Action::DetailsMap details{
-        { KAuth::Action::AuthDetail::DetailMessage, i18n("Update repositories index") }
-    };
-    updateAction.setDetailsV2(details);
-#endif
-    updateAction.addArgument(QLatin1String("fakeRoot"), db->fakeRoot());
 
     // run updates check with elevated privileges to access
     //     system package manager files
-    KAuth::ExecuteJob *reply = updateAction.execute();
+    KAuth::ExecuteJob *reply = ActionFactory::createUpdateAction(db->fakeRoot());
+    if (!reply) return;
     QObject::connect(reply, &KAuth::ExecuteJob::result,
                      this, &AlpineApkUpdater::handleKAuthUpdateHelperReply);
     // qOverload is needed because of conflict with getter named percent()
@@ -279,8 +246,8 @@ void AlpineApkUpdater::handleKAuthUpgradeHelperReply(KJob *job)
     if (reply->error() == 0) {
         QVariant pkgsV = replyData.value(QLatin1String("changes"));
         bool onlySimulate = replyData.value(QLatin1String("onlySimulate"), false).toBool();
-        qCDebug(LOG_ALPINEAPK) << "KAuth helper upgrade reply received, onlySimulate:" << onlySimulate;
         if (onlySimulate) {
+            qCDebug(LOG_ALPINEAPK) << "KAuth helper upgrade reply received, simulation mode";
             QVector<QtApk::Package> pkgVector = pkgsV.value<QVector<QtApk::Package>>();
             qCDebug(LOG_ALPINEAPK) << "  num changes:" << pkgVector.size();
             for (const QtApk::Package &pkg : pkgVector) {

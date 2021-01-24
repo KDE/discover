@@ -1,6 +1,8 @@
 find_package(KF5Auth CONFIG REQUIRED)  # Probably should be moved to top CMakeLists
 
 set(alpineapkbackend_SRCS
+    AlpineApkAuthActionFactory.h
+    AlpineApkAuthActionFactory.cpp
     AlpineApkBackend.cpp
     AlpineApkBackend.h
     AlpineApkResource.cpp
