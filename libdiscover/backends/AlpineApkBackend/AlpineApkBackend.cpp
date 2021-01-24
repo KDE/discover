@@ -231,7 +231,7 @@ QVector<Category *> AlpineApkBackend::category() const
     // Display a single root category
     // we could add more, but Alpine apk does not have this concept
     static Category *s_rootCat = new Category(
-            i18nc("Root category name", "Alpine packages"),
+            i18nc("Root category name", "Alpine Linux packages"),
             QStringLiteral("package-x-generic"), // icon
             { s_apkFlt },      // orFilters - include packages that match filter
             { displayName() }, // pluginName
