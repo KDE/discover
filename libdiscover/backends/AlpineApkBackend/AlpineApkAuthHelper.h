@@ -35,16 +35,21 @@ public:
     ~AlpineApkAuthHelper() override;
 
 public Q_SLOTS:
-    ActionReply update(const QVariantMap &args);
-    ActionReply add(const QVariantMap &args);
-    ActionReply del(const QVariantMap &args);
-    ActionReply upgrade(const QVariantMap &args);
-    ActionReply repoconfig(const QVariantMap &args);
+    // single entry point for all package management operations
+    ActionReply pkgmgmt(const QVariantMap &args);
 
 protected:
+    // helpers
     bool openDatabase(const QVariantMap &args, bool readwrite = true);
     void closeDatabase();
     void setupTransactionPostCreate(QtApk::Transaction *trans);
+
+    // individual pakckage management actions
+    void update(const QVariantMap &args);
+    void add(const QVariantMap &args);
+    void del(const QVariantMap &args);
+    void upgrade(const QVariantMap &args);
+    void repoconfig(const QVariantMap &args);
 
 protected Q_SLOTS:
     void reportProgress(float percent);

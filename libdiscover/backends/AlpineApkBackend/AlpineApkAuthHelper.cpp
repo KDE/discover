@@ -113,6 +113,7 @@ void AlpineApkAuthHelper::onTransactionError(const QString &msg)
     qCWarning(LOG_AUTHHELPER).nospace() << "ERROR occured in transaction \""
                                         << m_currentTransaction->desc()
                                         << "\": " << msg;
+    // construct error message to use in helper reply
     const QString errMsg = m_currentTransaction->desc() + QLatin1String(" failed: ") + msg;
     m_actionReply.setErrorDescription(errMsg);
     m_actionReply.setData({
@@ -129,16 +130,48 @@ void AlpineApkAuthHelper::onTransactionFinished()
     m_loop->quit();
 }
 
-ActionReply AlpineApkAuthHelper::update(const QVariantMap &args)
+// single entry point for all package management actions
+ActionReply AlpineApkAuthHelper::pkgmgmt(const QVariantMap &args)
 {
-    // return error by default
     m_actionReply = ActionReply::HelperErrorReply();
-
     HelperSupport::progressStep(0);
 
+    // actual package management action to perform is passed in "pkgAction" argument
+    if (!args.contains(QLatin1String("pkgAction"))) {
+        m_actionReply.setError(ActionReply::InvalidActionError);
+        m_actionReply.setErrorDescription(QLatin1String("Please pass \'pkgAction\' argument."));
+        HelperSupport::progressStep(100);
+        return m_actionReply;
+    }
+
+    const QString pkgAction = args.value(QLatin1String("pkgAction")).toString();
+
+    if (pkgAction == QStringLiteral("update")) {
+        update(args);
+    } else if (pkgAction == QStringLiteral("add")) {
+        add(args);
+    } else if (pkgAction == QStringLiteral("del")) {
+        del(args);
+    } else if (pkgAction == QStringLiteral("upgrade")) {
+        upgrade(args);
+    } else if (pkgAction == QStringLiteral("repoconfig")) {
+        repoconfig(args);
+    } else {
+        // error: unknown pkgAction
+        m_actionReply.setError(ActionReply::NoSuchActionError);
+        m_actionReply.setErrorDescription(QLatin1String("Please pass a valid \'pkgAction\' argument. "
+                                                        "Action \"%1\" is not recognized.").arg(pkgAction));
+    }
+
+    HelperSupport::progressStep(100);
+    return m_actionReply;
+}
+
+void AlpineApkAuthHelper::update(const QVariantMap &args)
+{
     if (!openDatabase(args)) {
         m_actionReply.setErrorDescription(QStringLiteral("Failed to open database!"));
-        return m_actionReply;
+        return;
     }
 
     m_trans_ok = true;
@@ -155,27 +188,19 @@ ActionReply AlpineApkAuthHelper::update(const QVariantMap &args)
             { QLatin1String("updatesCount"), updatesCount }
         });
     }
-
-    HelperSupport::progressStep(100);
-    return m_actionReply;
 }
 
-ActionReply AlpineApkAuthHelper::add(const QVariantMap &args)
+void AlpineApkAuthHelper::add(const QVariantMap &args)
 {
-    // return error by default
-    m_actionReply = ActionReply::HelperErrorReply();
-
-    HelperSupport::progressStep(0);
-
     if (!openDatabase(args)) {
         m_actionReply.setErrorDescription(QStringLiteral("Failed to open database!"));
-        return m_actionReply;
+        return;
     }
 
     const QString pkgName = args.value(QLatin1String("pkgName"), QString()).toString();
     if (pkgName.isEmpty()) {
         m_actionReply.setErrorDescription(QStringLiteral("Specify pkgName for adding!"));
-        return m_actionReply;
+        return;
     }
 
     m_trans_ok = true;
@@ -188,27 +213,19 @@ ActionReply AlpineApkAuthHelper::add(const QVariantMap &args)
     if (m_trans_ok) {
         m_actionReply = ActionReply::SuccessReply();
     }
-
-    HelperSupport::progressStep(100);
-    return m_actionReply;
 }
 
-ActionReply AlpineApkAuthHelper::del(const QVariantMap &args)
+void AlpineApkAuthHelper::del(const QVariantMap &args)
 {
-    // return error by default
-    m_actionReply = ActionReply::HelperErrorReply();
-
-    HelperSupport::progressStep(0);
-
     if (!openDatabase(args)) {
         m_actionReply.setErrorDescription(QStringLiteral("Failed to open database!"));
-        return m_actionReply;
+        return;
     }
 
     const QString pkgName = args.value(QLatin1String("pkgName"), QString()).toString();
     if (pkgName.isEmpty()) {
         m_actionReply.setErrorDescription(QStringLiteral("Specify pkgName for removing!"));
-        return m_actionReply;
+        return;
     }
 
     const bool delRdepends = args.value(QLatin1String("delRdepends"), false).toBool();
@@ -228,20 +245,13 @@ ActionReply AlpineApkAuthHelper::del(const QVariantMap &args)
     if (m_trans_ok) {
         m_actionReply = ActionReply::SuccessReply();
     }
-
-    HelperSupport::progressStep(100);
-    return m_actionReply;
 }
 
-ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
+void AlpineApkAuthHelper::upgrade(const QVariantMap &args)
 {
-    m_actionReply = ActionReply::HelperErrorReply();
-
-    HelperSupport::progressStep(0);
-
     if (!openDatabase(args)) {
         m_actionReply.setErrorDescription(QStringLiteral("Failed to open database!"));
-        return m_actionReply;
+        return;
     }
 
     bool onlySimulate = args.value(QLatin1String("onlySimulate"), false).toBool();
@@ -272,16 +282,10 @@ ActionReply AlpineApkAuthHelper::upgrade(const QVariantMap &args)
         replyData.insert(QLatin1String("onlySimulate"), onlySimulate);
         m_actionReply.setData(replyData);
     }
-
-    HelperSupport::progressStep(100);
-    return m_actionReply;
 }
 
-ActionReply AlpineApkAuthHelper::repoconfig(const QVariantMap &args)
+void AlpineApkAuthHelper::repoconfig(const QVariantMap &args)
 {
-    m_actionReply = ActionReply::HelperErrorReply();
-    HelperSupport::progressStep(10);
-
     if (args.contains(QLatin1String("repoList"))) {
         const QVariant v = args.value(QLatin1String("repoList"));
         const QVector<QtApk::Repository> repoVec = v.value<QVector<QtApk::Repository>>();
@@ -293,9 +297,6 @@ ActionReply AlpineApkAuthHelper::repoconfig(const QVariantMap &args)
     } else {
         m_actionReply.setErrorDescription(QStringLiteral("repoList parameter is missing in request!"));
     }
-
-    HelperSupport::progressStep(100);
-    return m_actionReply;
 }
 
 KAUTH_HELPER_MAIN("org.kde.discover.alpineapkbackend", AlpineApkAuthHelper)
