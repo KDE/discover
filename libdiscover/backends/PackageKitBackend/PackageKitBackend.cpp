@@ -462,20 +462,23 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
         return new ResultsStream(QStringLiteral("PackageKitStream-upgradeable"), kTransform<QVector<AbstractResource*>>(upgradeablePackages())); //No need for it to be a PKResultsStream
     } else if (filter.state == AbstractResource::Installed) {
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-installed"));
-        auto f = [this, stream] {
+        auto f = [this, stream, filter] {
             const auto toResolve = kFilter<QVector<AbstractResource*>>(m_packages.packages, needsResolveFilter);
 
+            auto installedAndNameFilter = [filter] (AbstractResource *res) {
+                return res->state() >= AbstractResource::Installed && (res->name().contains(filter.search) || res->packageName() == filter.search);
+            };
             if (!toResolve.isEmpty()) {
                 resolvePackages(kTransform<QStringList>(toResolve, [] (AbstractResource* res) { return res->packageName(); }));
-                connect(m_resolveTransaction, &PKResolveTransaction::allFinished, this, [stream, toResolve] {
-                    const auto resolved = kFilter<QVector<AbstractResource*>>(toResolve, installedFilter);
+                connect(m_resolveTransaction, &PKResolveTransaction::allFinished, this, [stream, toResolve, installedAndNameFilter] {
+                    const auto resolved = kFilter<QVector<AbstractResource*>>(toResolve, installedAndNameFilter);
                     if (!resolved.isEmpty())
                         Q_EMIT stream->resourcesFound(resolved);
                     stream->finish();
                 });
             }
 
-            const auto resolved = kFilter<QVector<AbstractResource*>>(m_packages.packages, installedFilter);
+            const auto resolved = kFilter<QVector<AbstractResource*>>(m_packages.packages, installedAndNameFilter);
             if (!resolved.isEmpty()) {
                 QTimer::singleShot(0, this, [resolved, toResolve, stream] () {
                     if (!resolved.isEmpty())
