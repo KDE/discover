@@ -22,8 +22,9 @@
 #define AlpineApkBackend_H
 
 #include <resources/AbstractResourcesBackend.h>
-#include <QVariantList>
+
 #include <QFutureWatcher>
+#include <QVariantList>
 
 #include <QtApk>
 
@@ -32,6 +33,7 @@
 class AlpineApkReviewsBackend;
 class AlpineApkUpdater;
 class AlpineApkResource;
+class AppstreamDataDownloader;
 class KJob;
 class QTimer;
 
@@ -66,8 +68,13 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void finishCheckForUpdates();
+    void loadAppStreamComponents();
+    void parseAppStreamMetadata();
+    void reloadAppStreamMetadata();
+    void fillResourcesAndApplyAppStreamData();
     void loadResources();
     void onLoadResourcesFinished();
+    void onAppstreamDataDownloaded();
 
 public:
     QtApk::Database *apkdb() { return &m_apkdb; }
@@ -86,6 +93,7 @@ private:
     QList<AppStream::Component> m_appStreamComponents;
     // QVector<QString> m_collectedCategories;
     QFutureWatcher<void> m_voidFutureWatcher;
+    AppstreamDataDownloader *m_appstreamDownloader;
 };
 
 #endif // AlpineApkBackend_H
