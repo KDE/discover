@@ -73,6 +73,7 @@ public:
     void setAddons(const AddonList &addons);
     void setAddonInstalled(const QString &addon, bool installed);
     void setAvailableVersion(const QString &av);
+    void setAppStreamData(const AppStream::Component &component);
 
 private:
     bool hasAppStreamData() const;

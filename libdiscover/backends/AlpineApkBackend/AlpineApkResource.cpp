@@ -285,6 +285,11 @@ bool AlpineApkResource::hasAppStreamData() const
     return !m_appsC.id().isEmpty();
 }
 
+void AlpineApkResource::setAppStreamData(const AppStream::Component &component)
+{
+    m_appsC = component;
+}
+
 bool AlpineApkResource::canExecute() const
 {
     if (hasAppStreamData()) {
