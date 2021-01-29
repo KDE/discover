@@ -16,6 +16,8 @@ set(alpineapkbackend_SRCS
     AlpineApkUpdater.h
     AlpineApkTransaction.cpp
     AlpineApkTransaction.h
+    AppstreamDataDownloader.h
+    AppstreamDataDownloader.cpp
 )
 
 ecm_qt_declare_logging_category(
