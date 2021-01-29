@@ -16,6 +16,6 @@ if ("${Snapd_VERSION}" VERSION_GREATER 1.48)
     target_compile_definitions(snap-backend PRIVATE -DSNAP_FIND_COMMON_ID -DSNAP_MARKDOWN)
 endif()
 
-install(TARGETS snap-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
+install(TARGETS snap-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 install(FILES snap-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 install( FILES org.kde.discover.snap.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )

@@ -45,7 +45,7 @@ if (TARGET KUserFeedbackCore)
     target_compile_definitions(plasma-discover PRIVATE WITH_FEEDBACK=1)
 endif()
 
-install(TARGETS plasma-discover ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS plasma-discover ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 # if (BUILD_DummyBackend)
 #     target_compile_definitions(plasma-discover PRIVATE $<$<CONFIG:Debug>:QT_QML_DEBUG=1>)
