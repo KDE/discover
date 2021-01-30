@@ -5,7 +5,7 @@ function(add_unit_test name)
     target_link_libraries(${name}
         Discover::Common
 
-        Qt5::Test Qt5::Core ${EXTRA_LIBS})
+        Qt::Test Qt::Core ${EXTRA_LIBS})
 endfunction()
 
 if(KF5Attica_FOUND AND KF5NewStuff_FOUND)

@@ -9,7 +9,7 @@ set(dummy-backend_SRCS
 )
 
 add_library(dummy-backend MODULE ${dummy-backend_SRCS})
-target_link_libraries(dummy-backend Qt5::Core Qt5::Widgets KF5::CoreAddons KF5::ConfigCore Discover::Common)
+target_link_libraries(dummy-backend Qt::Core Qt::Widgets KF5::CoreAddons KF5::ConfigCore Discover::Common)
 
 install(TARGETS dummy-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 install(FILES dummy-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)

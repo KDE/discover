@@ -8,7 +8,7 @@ set(fwupd-backend_SRCS
 )
 
 add_library(fwupd-backend MODULE ${fwupd-backend_SRCS})
-target_link_libraries(fwupd-backend Qt5::Core KF5::CoreAddons KF5::ConfigCore Discover::Common PkgConfig::Fwupd)
+target_link_libraries(fwupd-backend Qt::Core KF5::CoreAddons KF5::ConfigCore Discover::Common PkgConfig::Fwupd)
 
 install(TARGETS fwupd-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 

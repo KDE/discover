@@ -64,13 +64,13 @@ endif()
 
 target_link_libraries(DiscoverCommon
 PUBLIC
-    Qt5::Core
-    Qt5::Qml
-    Qt5::Widgets
+    Qt::Core
+    Qt::Qml
+    Qt::Widgets
     KF5::I18n
     KF5::ItemModels
 PRIVATE
-    Qt5::Xml
+    Qt::Xml
     KF5::CoreAddons
     KF5::KIOWidgets # KIO/AccessManager
 )

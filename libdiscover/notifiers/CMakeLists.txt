@@ -1,7 +1,7 @@
 add_library(DiscoverNotifiers BackendNotifierModule.cpp)
 target_link_libraries(DiscoverNotifiers
     PUBLIC
-        Qt5::Core
+        Qt::Core
 )
 
 generate_export_header(DiscoverNotifiers)
