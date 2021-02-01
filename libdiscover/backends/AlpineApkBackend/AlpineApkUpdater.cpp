@@ -91,8 +91,7 @@ bool AlpineApkUpdater::hasUpdates() const
 
 qreal AlpineApkUpdater::progress() const
 {
-    qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
-    return 0.0;
+    return m_upgradeProgress;
 }
 
 void AlpineApkUpdater::removeResources(const QList<AbstractResource *> &apps)
@@ -171,10 +170,15 @@ void AlpineApkUpdater::start()
     // run upgrade with elevated privileges
     KAuth::ExecuteJob *reply = ActionFactory::createUpgradeAction();
     if (!reply) return;
+
     QObject::connect(reply, &KAuth::ExecuteJob::result,
                      this, &AlpineApkUpdater::handleKAuthUpgradeHelperReply);
+    // qOverload is needed because of conflict with getter named percent()
+    QObject::connect(reply, QOverload<KJob *, unsigned long>::of(&KAuth::ExecuteJob::percent),
+                     this, &AlpineApkUpdater::handleKAuthUpgradeHelperProgress);
 
     m_progressing = true;
+    m_upgradeProgress = 0.0;
     Q_EMIT progressingChanged(m_progressing);
 
     reply->start();
@@ -239,6 +243,17 @@ void AlpineApkUpdater::handleKAuthUpdateHelperProgress(KJob *job, unsigned long 
     Q_EMIT progressChanged(static_cast<qreal>(percent));
 }
 
+void AlpineApkUpdater::handleKAuthUpgradeHelperProgress(KJob *job, unsigned long percent)
+{
+    Q_UNUSED(job)
+    qCDebug(LOG_ALPINEAPK) << "    upgrade progress: " << percent;
+    qreal newProgress = static_cast<qreal>(percent);
+    if (newProgress != m_upgradeProgress) {
+        m_upgradeProgress = newProgress;
+        Q_EMIT progressChanged(m_upgradeProgress);
+    }
+}
+
 void AlpineApkUpdater::handleKAuthUpgradeHelperReply(KJob *job)
 {
     KAuth::ExecuteJob *reply = static_cast<KAuth::ExecuteJob *>(job);
@@ -258,8 +273,8 @@ void AlpineApkUpdater::handleKAuthUpgradeHelperReply(KJob *job)
         handleKAuthHelperError(reply, replyData);
     }
 
-    // we are not in the state "Fetching updates" now, update UI
-    Q_EMIT checkForUpdatesFinished();
+    m_progressing = false;
+    Q_EMIT progressingChanged(m_progressing);
 }
 
 void AlpineApkUpdater::handleKAuthHelperError(

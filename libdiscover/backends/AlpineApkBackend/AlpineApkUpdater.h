@@ -159,6 +159,7 @@ public Q_SLOTS:
     void handleKAuthUpdateHelperProgress(KJob *job, unsigned long percent);
     // upgrade
     void handleKAuthUpgradeHelperReply(KJob *job);
+    void handleKAuthUpgradeHelperProgress(KJob *job, unsigned long percent);
 
     //void transactionRemoved(Transaction* t);
     //void cleanup();
@@ -186,7 +187,7 @@ private:
 //    QSet<AbstractResource*> m_upgradeable;
 //    QSet<AbstractResource*> m_pendingResources;
     bool m_progressing = false;
-//    qreal m_progress;
+    qreal m_upgradeProgress = 0.0;
 //    QDateTime m_lastUpdate;
 //    QTimer m_timer;
 //    bool m_canCancel = false;
