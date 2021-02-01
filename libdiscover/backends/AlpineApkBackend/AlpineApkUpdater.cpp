@@ -40,8 +40,6 @@ AlpineApkUpdater::AlpineApkUpdater(AbstractResourcesBackend *parent)
 
 void AlpineApkUpdater::prepare()
 {
-    qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
-
     QtApk::Database *db = m_backend->apkdb();
 
     if (db->isOpen()) {
@@ -85,7 +83,6 @@ void AlpineApkUpdater::prepare()
 
 bool AlpineApkUpdater::hasUpdates() const
 {
-    // qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO << m_updatesCount;
     return (m_updatesCount > 0);
 }
 
@@ -96,22 +93,18 @@ qreal AlpineApkUpdater::progress() const
 
 void AlpineApkUpdater::removeResources(const QList<AbstractResource *> &apps)
 {
-    // qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
     const QSet<AbstractResource *> checkSet = kToSet(apps);
     m_markedToUpdate -= checkSet;
 }
 
 void AlpineApkUpdater::addResources(const QList<AbstractResource *> &apps)
 {
-    //Q_UNUSED(apps)
-    //qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
     const QSet<AbstractResource *> checkSet = kToSet(apps);
     m_markedToUpdate += checkSet;
 }
 
 QList<AbstractResource *> AlpineApkUpdater::toUpdate() const
 {
-    // qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
     return m_allUpdateable.values();
 }
 
@@ -191,7 +184,6 @@ void AlpineApkUpdater::proceed()
 
 int AlpineApkUpdater::updatesCount()
 {
-    // qDebug(LOG_ALPINEAPK) << Q_FUNC_INFO << m_updatesCount;
     return m_updatesCount;
 }
 
