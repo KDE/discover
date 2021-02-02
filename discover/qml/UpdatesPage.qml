@@ -175,7 +175,7 @@ DiscoverPage
             source: "update-none"
             implicitWidth: Kirigami.Units.gridUnit * 4
             implicitHeight: Kirigami.Units.gridUnit * 4
-            enabled: false
+            opacity: 0.5
         }
         Kirigami.Heading {
             id: statusLabel
@@ -186,7 +186,7 @@ DiscoverPage
             ToolTip.text: page.footerToolTip
             ToolTip.visible: hovered && page.footerToolTip.length > 0
             ToolTip.delay: Kirigami.Units.toolTipDelay
-            level: 3
+            level: 2
         }
         Button {
             id: restartButton
@@ -347,7 +347,7 @@ DiscoverPage
         State {
             name: "fetching"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates...") }
-            PropertyChanges { target: statusLabel; enabled: true }
+            PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: page; footerProgress: ResourcesModel.fetchingUpdatesProgress }
             PropertyChanges { target: page; footerToolTip: {
                     var ret = "";
@@ -380,37 +380,37 @@ DiscoverPage
         State {
             name: "reboot"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "The system requires a restart to apply updates") }
-            PropertyChanges { target: statusLabel; enabled: true }
+            PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: restartButton; visible: true }
         },
         State {
             name: "now-uptodate"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
-            PropertyChanges { target: statusLabel; enabled: false }
+            PropertyChanges { target: statusLabel; opacity: 0.5 }
             PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "uptodate"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
-            PropertyChanges { target: statusLabel; enabled: false }
+            PropertyChanges { target: statusLabel; opacity: 0.5 }
             PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "medium"
             PropertyChanges { target: page; title: i18nc("@info", "Up to date") }
-            PropertyChanges { target: statusLabel; enabled: false }
+            PropertyChanges { target: statusLabel; opacity: 0.5 }
             PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "low"
             PropertyChanges { target: page; title: i18nc("@info", "Should check for updates") }
-            PropertyChanges { target: statusLabel; enabled: true }
+            PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "unknown"
             PropertyChanges { target: page; title: i18nc("@info", "It is unknown when the last check for updates was") }
-            PropertyChanges { target: statusLabel; enabled: true }
+            PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: page.actions; main: refreshAction }
         }
     ]
