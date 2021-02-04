@@ -74,16 +74,26 @@ public:
     State state() override { return Upgradeable; }
     QStringList categories() override { return {}; }
     AbstractResource::Type type() const override { return Technical; }
-    int size() override {
-        int ret = 0;
+
+    QVector<PackageKitResource*> withoutDuplicates() const {
+        QVector<PackageKitResource*> ret;
         QSet<QString> donePkgs;
         for (auto res : qAsConst(m_resources)) {
             PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
             QString pkgid = m_backend->upgradeablePackageId(app);
             if (!donePkgs.contains(pkgid)) {
                 donePkgs.insert(pkgid);
-                ret += app->size();
+                ret += app;
             }
+        }
+        return ret;
+    }
+
+    int size() override {
+        int ret = 0;
+        const auto resources = withoutDuplicates();
+        for (auto res : resources) {
+            ret += res->size();
         }
         return ret;
     }
@@ -101,20 +111,16 @@ public:
     QString author() const override { return {}; }
     QList<PackageState> addonsInformation() override { return {}; }
     QString upgradeText() const override {
-        return i18np("1 package to upgrade", "%1 packages to upgrade", m_resources.count());
+        return i18np("1 package to upgrade", "%1 packages to upgrade", withoutDuplicates().count());
     }
     void fetchChangelog() override {
         QStringList changes;
-        QSet<QString> donePkgs;
-        for (auto res : qAsConst(m_resources)) {
-            PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
-            QString pkgid = m_backend->upgradeablePackageId(app);
-            if (!donePkgs.contains(pkgid)) {
-                donePkgs.insert(pkgid);
-                const auto versions = res->upgradeText();
-                const auto idx = versions.indexOf(u'\u009C');
-                changes += QStringLiteral("<li>") + res->packageName() + QStringLiteral(": ") + versions.leftRef(idx) + QStringLiteral("</li>\n");
-            }
+        const auto resources = withoutDuplicates();
+        for (auto res : resources) {
+            const auto versions = res->upgradeText();
+            const auto idx = versions.indexOf(u'\u009C');
+            changes += QStringLiteral("<li>") + res->packageName() + QStringLiteral(": ") + versions.leftRef(idx) + QStringLiteral("</li>\n");
+
         }
         changes.sort();
         Q_EMIT changelogFetched(QStringLiteral("<ul>") + changes.join(QString()) + QStringLiteral("</ul>\n"));
