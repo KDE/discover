@@ -68,13 +68,10 @@ Q_SIGNALS:
 
 private:
     ResultsStream* resourceForFile(const QUrl & );
-    void refreshRemotes();
     void addUpdates();
     void addResource(FwupdResource *res);
-    QSet<AbstractResource*> getAllUpdates();
 
     static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
-    static void refreshRemote(FwupdBackend* backend, FwupdRemote *remote, quint64 cacheAge, GCancellable *cancellable);
     static QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
 
     FwupdResource * createRelease(FwupdDevice *device);
