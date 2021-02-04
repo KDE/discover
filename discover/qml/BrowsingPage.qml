@@ -21,6 +21,8 @@ DiscoverPage
     topPadding: 0
     bottomPadding: 0
 
+    actions.main: searchAction
+
     readonly property bool isHome: true
 
     function searchFor(text) {
