@@ -17,6 +17,7 @@ ApplicationsListPage {
             searchPage.shown()
         }
     }
+    searchPage: true
 
     listHeaderPositioning: ListView.OverlayHeader
     listHeader: SearchField {

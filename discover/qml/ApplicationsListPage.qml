@@ -33,6 +33,7 @@ DiscoverPage {
     property string sortProperty: "appsListPageSorting"
     property bool compact: page.width < 550 || !applicationWindow().wideScreen
     property bool showRating: true
+    property bool searchPage: false
 
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories
@@ -131,7 +132,7 @@ DiscoverPage {
             anchors.centerIn: parent
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
 
-            opacity: apps.count == 0 && !appsModel.isBusy ? 1 : 0
+            opacity: apps.count == 0 && !appsModel.isBusy && (!page.searchPage || appsModel.search.length > 0) ? 1 : 0
             Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad } }
 
             icon.name: "edit-none"
