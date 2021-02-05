@@ -6,17 +6,17 @@
 
 #include "DummySourcesBackend.h"
 #include <QDebug>
-#include <QAction>
+#include "resources/DiscoverAction.h"
 
 DummySourcesBackend::DummySourcesBackend(AbstractResourcesBackend * parent)
     : AbstractSourcesBackend(parent)
     , m_sources(new QStandardItemModel(this))
-    , m_testAction(new QAction(QIcon::fromTheme(QStringLiteral("kalgebra")), QStringLiteral("DummyAction"), this))
+    , m_testAction(new DiscoverAction(QIcon::fromTheme(QStringLiteral("kalgebra")), QStringLiteral("DummyAction"), this))
 {
     for (int i = 0; i<10; ++i)
         addSource(QStringLiteral("DummySource%1").arg(i));
 
-    connect(m_testAction, &QAction::triggered, [](){ qDebug() << "action triggered!"; });
+    connect(m_testAction, &DiscoverAction::triggered, [](){ qDebug() << "action triggered!"; });
     connect(m_sources, &QStandardItemModel::itemChanged, this, [](QStandardItem* item) { qDebug() << "DummySource changed" << item << item->checkState(); });
 }
 

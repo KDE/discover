@@ -15,11 +15,11 @@
 #include <QDebug>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QAction>
 
 #include <glib.h>
 #include <QTemporaryFile>
 #include <QStandardPaths>
+#include <resources/DiscoverAction.h>
 #include <resources/StoredResultsStream.h>
 
 class FlatpakSourceItem : public QStandardItem
@@ -37,12 +37,12 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
     : AbstractSourcesBackend(parent)
     , m_preferredInstallation(installations.constFirst())
     , m_sources(new QStandardItemModel(this))
-    , m_flathubAction(new QAction(i18n("Add Flathub"), this))
+    , m_flathubAction(new DiscoverAction(i18n("Add Flathub"), this))
     , m_noSourcesItem(new QStandardItem(QStringLiteral("-")))
 {
     m_flathubAction->setObjectName(QStringLiteral("flathub"));
     m_flathubAction->setToolTip(i18n("Makes it possible to easily install the applications listed in https://flathub.org"));
-    connect(m_flathubAction, &QAction::triggered, this, [this](){
+    connect(m_flathubAction, &DiscoverAction::triggered, this, [this](){
         addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
     });
     for (auto installation : installations) {
@@ -302,7 +302,7 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
 
     const auto theActions = actions();
     for(const QVariant& act: theActions) {
-        QAction* action = qobject_cast<QAction*>(act.value<QObject*>());
+        DiscoverAction* action = qobject_cast<DiscoverAction*>(act.value<QObject*>());
         if (action->objectName() == id) {
             action->setEnabled(false);
             action->setVisible(false);

@@ -8,6 +8,7 @@
 #include <resources/ResourcesProxyModel.h>
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/SourcesModel.h>
+#include <resources/DiscoverAction.h>
 #include <ApplicationAddonsModel.h>
 #include <ReviewsBackend/ReviewsModel.h>
 #include <Transaction/TransactionModel.h>
@@ -15,7 +16,6 @@
 
 #include <QTest>
 #include <QtTest>
-#include <QAction>
 
 class FlatpakTest
     : public QObject
@@ -64,7 +64,7 @@ private Q_SLOTS:
         QSignalSpy initializedSpy(m_appBackend, SIGNAL(initialized()));
         if (m->rowCount() == 1) {
             QSignalSpy spy(m, &SourcesModel::rowsInserted);
-            qobject_cast<QAction*>(bk->actions().constFirst().value<QObject*>())->trigger();
+            qobject_cast<DiscoverAction*>(bk->actions().constFirst().value<QObject*>())->trigger();
             QVERIFY(spy.count() || spy.wait(20000));
         }
         QVERIFY(initializedSpy.count() || initializedSpy.wait(20000));

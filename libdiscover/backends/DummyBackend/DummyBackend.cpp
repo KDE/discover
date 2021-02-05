@@ -21,7 +21,6 @@
 #include <QDebug>
 #include <QThread>
 #include <QTimer>
-#include <QAction>
 
 DISCOVER_BACKEND_PLUGIN(DummyBackend)
 

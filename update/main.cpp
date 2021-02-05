@@ -4,7 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#include <QApplication>
+#include <QGuiApplication>
 #include <QCommandLineParser>
 #include <KLocalizedString>
 #include <KAboutData>
@@ -14,7 +14,7 @@
 
 int main(int argc, char** argv)
 {
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
     app.setQuitOnLastWindowClosed(false);
     KLocalizedString::setApplicationDomain("plasma-discover-update");
     KAboutData about(QStringLiteral("discoverupdate"), i18n("Discover Update"), version, {},

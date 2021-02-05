@@ -28,7 +28,6 @@
 #include <KConfigGroup>
 #include <KSharedConfig>
 
-#include <QAction>
 #include <QtConcurrentRun>
 #include <QDebug>
 #include <QDir>

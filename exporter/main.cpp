@@ -4,7 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#include <QApplication>
+#include <QGuiApplication>
 #include <QCommandLineParser>
 #include <KLocalizedString>
 #include <KAboutData>
@@ -40,7 +40,7 @@ int main(int argc, char** argv)
         exp.setExportPath(QUrl::fromUserInput(parser.positionalArguments().at(0), QString(), QUrl::AssumeLocalFile));
     }
 
-    QObject::connect(&exp, &MuonExporter::exportDone, &app, &QApplication::quit);
+    QObject::connect(&exp, &MuonExporter::exportDone, &app, &QCoreApplication::quit);
 
     return app.exec();
 }

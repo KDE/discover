@@ -9,7 +9,6 @@
 #include <PackageKit/Daemon>
 #include <PackageKit/Offline>
 #include <QDebug>
-#include <QAction>
 #include <QSet>
 
 #include <KLocalizedString>

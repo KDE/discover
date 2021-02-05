@@ -20,6 +20,7 @@ set(discovercommon_SRCS
     Transaction/TransactionModel.cpp
     UpdateModel/UpdateItem.cpp
     UpdateModel/UpdateModel.cpp
+    resources/DiscoverAction.cpp
     resources/ResourcesModel.cpp
     resources/ResourcesProxyModel.cpp
     resources/PackageState.cpp
@@ -31,7 +32,6 @@ set(discovercommon_SRCS
     resources/AbstractBackendUpdater.cpp
     resources/AbstractSourcesBackend.cpp
     resources/StoredResultsStream.cpp
-    ActionsModel.cpp
     DiscoverBackendsFactory.cpp
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp
@@ -66,7 +66,7 @@ target_link_libraries(DiscoverCommon
 PUBLIC
     Qt::Core
     Qt::Qml
-    Qt::Widgets
+    Qt::Gui
     KF5::I18n
     KF5::ItemModels
 PRIVATE

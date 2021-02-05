@@ -20,7 +20,6 @@
 #include <QTest>
 
 #include <QtTest>
-#include <QAction>
 
 QTEST_MAIN(DummyTest)
 

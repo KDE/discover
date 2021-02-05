@@ -187,7 +187,7 @@ void ResourcesUpdatesModel::updateAll()
         setTransaction(m_transaction);
         TransactionModel::global()->addTransaction(m_transaction);
         Q_FOREACH (AbstractBackendUpdater* upd, updaters) {
-            QMetaObject::invokeMethod(upd, "start", Qt::QueuedConnection);
+            QMetaObject::invokeMethod(upd, &AbstractBackendUpdater::start, Qt::QueuedConnection);
         }
 
         QMetaObject::invokeMethod(this, [this](){

@@ -18,7 +18,6 @@
 
 #include <QTest>
 #include <QtTest>
-#include <QAction>
 
 class UpdateDummyTest
     : public QObject

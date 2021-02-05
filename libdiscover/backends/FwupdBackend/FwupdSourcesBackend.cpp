@@ -7,10 +7,8 @@
 
 #include "FwupdSourcesBackend.h"
 
-#include <QAction>
 #include <QString>
 #include <KLocalizedString>
-
 
 class FwupdSourcesModel : public QStandardItemModel
 {

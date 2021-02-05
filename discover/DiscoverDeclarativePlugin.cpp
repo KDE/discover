@@ -11,6 +11,7 @@
 #include <Transaction/TransactionListener.h>
 #include <Transaction/TransactionModel.h>
 #include <Transaction/Transaction.h>
+#include <resources/DiscoverAction.h>
 #include <resources/ResourcesUpdatesModel.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
@@ -24,7 +25,6 @@
 #include <UpdateModel/UpdateModel.h>
 #include <ScreenshotsModel.h>
 #include <ApplicationAddonsModel.h>
-#include <ActionsModel.h>
 #include <qqml.h>
 #include <QQmlEngine>
 #include <QQmlContext>
@@ -48,10 +48,10 @@ void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
     qmlRegisterType<ReviewsModel>("org.kde.discover", 2, 0, "ReviewsModel");
     qmlRegisterType<ApplicationAddonsModel>("org.kde.discover", 2, 0, "ApplicationAddonsModel");
     qmlRegisterType<ScreenshotsModel>("org.kde.discover", 2, 0, "ScreenshotsModel");
-    qmlRegisterType<ActionsModel>("org.kde.discover", 2, 0, "ActionsModel");
     qmlRegisterType<UpdateModel>("org.kde.discover", 2, 0, "UpdateModel");
     qmlRegisterType<ReadFile>("org.kde.discover", 2, 0, "ReadFile");
 
+    qmlRegisterUncreatableType<DiscoverAction>("org.kde.discover", 2, 0, "DiscoverAction", QStringLiteral("Use QQC Action"));
     qmlRegisterUncreatableType<QAction>("org.kde.discover", 2, 0, "QAction", QStringLiteral("Use QQC Action"));
     qmlRegisterUncreatableType<AbstractResource>("org.kde.discover", 2, 0, "AbstractResource", QStringLiteral("should come from the ResourcesModel"));
     qmlRegisterUncreatableType<AbstractSourcesBackend>("org.kde.discover", 2, 0, "AbstractSourcesBackend", QStringLiteral("should come from the SourcesModel"));

@@ -14,7 +14,6 @@
 #include <QDir>
 #include <QDebug>
 #include <QTimer>
-#include <QAction>
 #include <QMimeDatabase>
 #include <QVariantList>
 #include <QSet>
@@ -30,7 +29,7 @@ extern "C" {
 }
 #include <glib-2.0/glib-object.h>
 
-class QAction;
+class DiscoverAction;
 class StandardBackendUpdater;
 class FwupdResource;
 class FwupdBackend : public AbstractResourcesBackend

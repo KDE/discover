@@ -1,7 +1,7 @@
 add_subdirectory(libsnapclient)
 
 add_library(snap-backend MODULE SnapResource.cpp SnapBackend.cpp SnapTransaction.cpp snapui.qrc)
-target_link_libraries(snap-backend Qt::Core Qt::Concurrent KF5::CoreAddons KF5::ConfigCore Discover::Common Snapd::Core)
+target_link_libraries(snap-backend Qt::Gui Qt::Core Qt::Concurrent KF5::CoreAddons KF5::ConfigCore Discover::Common Snapd::Core)
 
 if ("${Snapd_VERSION}" VERSION_GREATER 1.40)
     target_compile_definitions(snap-backend PRIVATE -DSNAP_COMMON_IDS -DSNAP_CHANNELS)

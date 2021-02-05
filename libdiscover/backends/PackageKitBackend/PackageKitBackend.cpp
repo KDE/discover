@@ -24,7 +24,6 @@
 #include <QDebug>
 #include <QStandardPaths>
 #include <QFile>
-#include <QAction>
 #include <QMimeDatabase>
 #include <QFileSystemWatcher>
 #include <QFutureWatcher>

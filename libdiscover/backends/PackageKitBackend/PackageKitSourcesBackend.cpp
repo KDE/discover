@@ -9,10 +9,10 @@
 #include <KLocalizedString>
 #include <KDesktopFile>
 #include <PackageKit/Daemon>
-#include <QAction>
 #include <QProcess>
 #include <QDebug>
 #include <QRegularExpression>
+#include <resources/DiscoverAction.h>
 #include <resources/SourcesModel.h>
 #include <resources/AbstractResourcesBackend.h>
 #include "PackageKitBackend.h"
@@ -45,14 +45,14 @@ private:
     PackageKitSourcesBackend* m_backend;
 };
 
-static QAction* createActionForService(const QString &servicePath, QObject* parent)
+static DiscoverAction* createActionForService(const QString &servicePath, QObject* parent)
 {
-    QAction* action = new QAction(parent);
+    DiscoverAction* action = new DiscoverAction(parent);
     KDesktopFile parser(servicePath);
     action->setIcon(QIcon::fromTheme(parser.readIcon()));
     action->setText(parser.readName());
     action->setToolTip(parser.readComment());
-    QObject::connect(action, &QAction::triggered, action, [servicePath](){
+    QObject::connect(action, &DiscoverAction::triggered, action, [servicePath](){
         bool b = QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {servicePath});
         if (!b)
             qWarning() << "Could not start" << servicePath;

@@ -23,7 +23,6 @@
 #include <QDebug>
 #include <QThread>
 #include <QTimer>
-#include <QAction>
 #include <QStandardItemModel>
 #include <QtConcurrentMap>
 #include <QtConcurrentRun>

@@ -17,6 +17,7 @@ extern "C" {
 #include <flatpak.h>
 }
 
+class DiscoverAction;
 class FlatpakResource;
 class FlatpakSourcesBackend : public AbstractSourcesBackend
 {
@@ -52,7 +53,7 @@ private:
 
     FlatpakInstallation *m_preferredInstallation;
     QStandardItemModel* m_sources;
-    QAction* const m_flathubAction;
+    DiscoverAction* const m_flathubAction;
     QStandardItem* m_noSourcesItem;
     QStack<std::function<void()>> m_proceedFunctions;
 };

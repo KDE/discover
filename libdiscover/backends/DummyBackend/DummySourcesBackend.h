@@ -10,6 +10,8 @@
 #include <resources/AbstractSourcesBackend.h>
 #include <QStandardItemModel>
 
+class DiscoverAction;
+
 class DummySourcesBackend : public AbstractSourcesBackend
 {
 public:
@@ -29,7 +31,7 @@ private:
     QStandardItem* sourceForId(const QString& id) const;
 
     QStandardItemModel* m_sources;
-    QAction* m_testAction;
+    DiscoverAction* m_testAction;
 };
 
 #endif // DUMMYSOURCESBACKEND_H

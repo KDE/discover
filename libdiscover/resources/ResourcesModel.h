@@ -14,7 +14,7 @@
 #include "discovercommon_export.h"
 #include "AbstractResourcesBackend.h"
 
-class QAction;
+class DiscoverAction;
 
 class DISCOVERCOMMON_EXPORT AggregatedResultsStream : public ResultsStream
 {
@@ -71,7 +71,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
     Q_PROPERTY(QVariantList backends READ backendsVariant NOTIFY backendsChanged)
     Q_PROPERTY(AbstractResourcesBackend* currentApplicationBackend READ currentApplicationBackend WRITE setCurrentApplicationBackend NOTIFY currentApplicationBackendChanged)
-    Q_PROPERTY(QAction* updateAction READ updateAction CONSTANT)
+    Q_PROPERTY(DiscoverAction* updateAction READ updateAction CONSTANT)
     Q_PROPERTY(int fetchingUpdatesProgress READ fetchingUpdatesProgress NOTIFY fetchingUpdatesProgressChanged)
     Q_PROPERTY(QString applicationSourceName READ applicationSourceName NOTIFY currentApplicationBackendChanged)
     public:
@@ -100,7 +100,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         void setCurrentApplicationBackend(AbstractResourcesBackend* backend, bool writeConfig = true);
         AbstractResourcesBackend* currentApplicationBackend() const;
 
-        QAction* updateAction() const { return m_updateAction; }
+        DiscoverAction* updateAction() const { return m_updateAction; }
         int fetchingUpdatesProgress() const { return m_fetchingUpdatesProgress.m_value; }
 
     public Q_SLOTS:
@@ -137,7 +137,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
         bool m_isFetching;
         QVector< AbstractResourcesBackend* > m_backends;
         int m_initializingBackends;
-        QAction* m_updateAction = nullptr;
+        DiscoverAction* m_updateAction = nullptr;
         AbstractResourcesBackend* m_currentApplicationBackend;
         QTimer* m_allInitializedEmitter;
 
