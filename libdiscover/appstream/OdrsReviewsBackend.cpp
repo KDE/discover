@@ -30,6 +30,9 @@
 #include <QNetworkRequest>
 #include <QStandardPaths>
 
+#include <QtConcurrentRun>
+#include <QFutureWatcher>
+
 // #define APIURL "http://127.0.0.1:5000/1.0/reviews/api"
 #define APIURL "https://odrs.gnome.org/1.0/reviews/api"
 
@@ -243,9 +246,10 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
 
 void OdrsReviewsBackend::parseRatings()
 {
-    QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings/ratings"));
-    if (ratingsDocument.open(QIODevice::ReadOnly)) {
-        QJsonDocument jsonDocument = QJsonDocument::fromJson(ratingsDocument.readAll());
+    auto fw = new QFutureWatcher<QJsonDocument>(this);
+    connect(fw, &QFutureWatcher<QJsonDocument>::finished, this, [this, fw] {
+        const QJsonDocument jsonDocument = fw->result();
+        fw->deleteLater();
         const QJsonObject jsonObject = jsonDocument.object();
         m_ratings.reserve(jsonObject.size());
         for (auto it = jsonObject.begin(); it != jsonObject.end(); it++) {
@@ -262,10 +266,15 @@ void OdrsReviewsBackend::parseRatings()
             Rating *rating = new Rating(it.key(), ratingCount, ratingMap);
             m_ratings.insert(it.key(), rating);
         }
-        ratingsDocument.close();
-
         Q_EMIT ratingsReady();
-    }
+    });
+    fw->setFuture(QtConcurrent::run([] {
+        QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings/ratings"));
+        if (!ratingsDocument.open(QIODevice::ReadOnly)) {
+            return QJsonDocument::fromJson({});
+        }
+        return QJsonDocument::fromJson(ratingsDocument.readAll());
+    }));
 }
 
 void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractResource *resource)
