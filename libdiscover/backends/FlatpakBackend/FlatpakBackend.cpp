@@ -546,6 +546,11 @@ void FlatpakBackend::addResource(FlatpakResource *resource)
         m_extends.append(resource->extends());
         m_extends.removeDuplicates();
     }
+
+    connect(resource, &FlatpakResource::sizeChanged, this, [this, resource] {
+        if (!isFetching())
+            Q_EMIT resourcesChanged(resource, {"size", "sizeDescription"});
+    });
 }
 
 class FlatpakSource
