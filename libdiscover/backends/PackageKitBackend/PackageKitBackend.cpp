@@ -794,7 +794,7 @@ int PackageKitBackend::fetchingUpdatesProgress() const
     }
     int percentage = percentageWithStatus(m_getUpdatesTransaction->status(), m_getUpdatesTransaction->percentage());
     m_getUpdatesTransaction->setProperty("lastPercentage", percentage);
-    return percentage;
+    return std::max(0, percentage);
 }
 
 #include "PackageKitBackend.moc"

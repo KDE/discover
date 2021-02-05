@@ -10,6 +10,8 @@
 #include <QMetaObject>
 #include <QMetaProperty>
 #include "libdiscover_debug.h"
+#include "Transaction/Transaction.h"
+#include "Transaction/TransactionModel.h"
 #include <QTimer>
 
 QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters& filters)
@@ -54,6 +56,36 @@ void ResultsStream::finish()
     deleteLater();
 }
 
+class FetchingTransaction : public Transaction
+{
+public:
+    FetchingTransaction(AbstractResourcesBackend* parent)
+        : Transaction(parent, nullptr, Transaction::InstallRole)
+        , m_backend(parent)
+    {
+        setStatus(Transaction::DownloadingStatus);
+        connect(m_backend, &AbstractResourcesBackend::fetchingChanged, this, [this] {
+            if (m_backend->isFetching())
+                return;
+
+            setStatus(Transaction::DoneStatus);
+        });
+        connect(m_backend, &AbstractResourcesBackend::fetchingUpdatesProgressChanged, this, [this] {
+            setProgress(m_backend->fetchingUpdatesProgress());
+        });
+
+        setCancellable(false);
+        TransactionModel::global()->addTransaction(this);
+    }
+    QString name() const override { return m_backend->name(); }
+    QVariant icon() const override { return QStringLiteral("view-refresh"); }
+
+    void cancel() override {}
+
+private:
+    AbstractResourcesBackend* const m_backend;
+};
+
 AbstractResourcesBackend::AbstractResourcesBackend(QObject* parent)
     : QObject(parent)
 {
@@ -64,9 +96,10 @@ AbstractResourcesBackend::AbstractResourcesBackend(QObject* parent)
 
     connect(this, &AbstractResourcesBackend::fetchingChanged, this, [this, fetchingChangedTimer]{
 //         Q_ASSERT(isFetching() != fetchingChangedTimer->isActive());
-        if (isFetching())
+        if (isFetching()) {
+            new FetchingTransaction(this);
             fetchingChangedTimer->start();
-        else
+        } else
             fetchingChangedTimer->stop();
         
         Q_EMIT fetchingUpdatesProgressChanged();
