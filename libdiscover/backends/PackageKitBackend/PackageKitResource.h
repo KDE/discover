@@ -94,7 +94,19 @@ class PackageKitResource : public AbstractResource
         /** fetches details individually, it's better if done in batch, like for updates */
         virtual void fetchDetails();
 
-        QMap<PackageKit::Transaction::Info, QStringList> m_packages;
+        struct Ids {
+            QVector<QString> archPkgIds;
+            QVector<QString> nonarchPkgIds;
+
+            QString first() const {
+                return !archPkgIds.isEmpty() ? archPkgIds.first() : nonarchPkgIds.first();
+            }
+
+            bool isEmpty() const {
+                return archPkgIds.isEmpty() && nonarchPkgIds.isEmpty();
+            }
+        };
+        QMap<PackageKit::Transaction::Info, Ids> m_packages;
         const QString m_summary;
         const QString m_name;
         int m_dependenciesCount = -1;

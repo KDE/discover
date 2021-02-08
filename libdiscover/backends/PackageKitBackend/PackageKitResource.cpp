@@ -54,16 +54,16 @@ QString PackageKitResource::availablePackageId() const
     if (!pkgid.isEmpty())
         return pkgid;
 
-    QMap<PackageKit::Transaction::Info, QStringList>::const_iterator it = m_packages.constFind(PackageKit::Transaction::InfoAvailable);
+    const auto it = m_packages.constFind(PackageKit::Transaction::InfoAvailable);
     if (it != m_packages.constEnd())
-        return it->last();
+        return it->first();
     return installedPackageId();
 }
 
 QString PackageKitResource::installedPackageId() const
 {
     const auto installed = m_packages[PackageKit::Transaction::InfoInstalled];
-    return installed.isEmpty() ? QString() : installed.last();
+    return installed.isEmpty() ? QString() : installed.first();
 }
 
 QString PackageKitResource::comment()
@@ -147,9 +147,9 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
 {
     auto oldState = state();
     if (arch)
-        m_packages[info].append(packageId);
+        m_packages[info].archPkgIds.append(packageId);
     else
-        m_packages[info].prepend(packageId);
+        m_packages[info].nonarchPkgIds.append(packageId);
 
     if (oldState != state())
         emit stateChanged();
