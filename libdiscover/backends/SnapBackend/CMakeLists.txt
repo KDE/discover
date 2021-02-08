@@ -17,5 +17,5 @@ if ("${Snapd_VERSION}" VERSION_GREATER 1.48)
 endif()
 
 install(TARGETS snap-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
-install(FILES snap-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
+install(FILES snap-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
 install( FILES org.kde.discover.snap.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )

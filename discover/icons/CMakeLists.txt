@@ -6,6 +6,6 @@ ecm_install_icons(
         32-apps-plasmadiscover.png
         48-apps-plasmadiscover.png
         sc-apps-plasmadiscover.svgz
-    DESTINATION ${ICON_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_ICONDIR}
     THEME hicolor
 )
