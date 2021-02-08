@@ -704,7 +704,6 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
 {
     if (!m_updatesPackageId.isEmpty()) {
         resolvePackages(kTransform<QStringList>(m_updatesPackageId, [](const QString &pkgid) { return PackageKit::Daemon::packageName(pkgid); }));
-        fetchDetails(m_updatesPackageId);
     }
 
     m_updater->setProgressing(false);
