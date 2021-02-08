@@ -411,7 +411,6 @@ QList<AppStream::Component> PackageKitBackend::componentsById(const QString& id)
 }
 
 static const auto needsResolveFilter = [] (AbstractResource* res) { return res->state() == AbstractResource::Broken; };
-static const auto installedFilter = [] (AbstractResource* res) { return res->state() >= AbstractResource::Installed; };
 
 class PKResultsStream : public ResultsStream
 {
