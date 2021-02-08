@@ -46,8 +46,6 @@ class PackageKitResource : public AbstractResource
 
         void clearPackageIds() { m_packages.clear(); }
 
-        QMap<PackageKit::Transaction::Info, QStringList> packages() const { return m_packages; }
-
         PackageKitBackend* backend() const;
 
         static QString joinPackages(const QStringList& pkgids, const QString &_sep, const QString &shadowPackageName);

@@ -69,7 +69,7 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
                 //FIXME this state shouldn't exist
                 qWarning() << "Installing no packages found!";
                 for(auto app : m_apps) {
-                    qCDebug(LIBDISCOVER_BACKEND_LOG) << "app" << app << app->state() << static_cast<PackageKitResource*>(app)->packages();
+                    qCDebug(LIBDISCOVER_BACKEND_LOG) << "app" << app << app->state();
                 }
 
                 setStatus(Transaction::DoneWithErrorStatus);
