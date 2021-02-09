@@ -62,10 +62,16 @@ void LocalFilePKResource::fetchDetails()
     connect(transaction2, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
     connect(transaction2, &PackageKit::Transaction::files, this, [this] (const QString &/*pkgid*/, const QStringList & files) {
         const auto execIdx = kIndexOf(files, [](const QString& file) { return file.endsWith(QLatin1String(".desktop")) && file.contains(QLatin1String("usr/share/applications")); });
-        if (execIdx >= 0)
+        if (execIdx >= 0) {
             m_exec = files[execIdx];
-        else
+
+            // sometimes aptcc provides paths like usr/share/applications/steam.desktop
+            if (!m_exec.startsWith(QLatin1Char('/'))) {
+                m_exec.prepend(QLatin1Char('/'));
+            }
+        } else {
             qWarning() << "could not find an executable desktop file for" << m_path << "among" << files;
+        }
     });
     connect(transaction2, &PackageKit::Transaction::finished, this, [] {qCDebug(LIBDISCOVER_BACKEND_LOG) << "."; });
 }
