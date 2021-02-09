@@ -726,11 +726,22 @@ bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource* res) 
     return !upgradeablePackageId(res).isEmpty();
 }
 
+// Copy of Transaction::packageName that doesn't create a copy but just pass a reference
+// It's an optimisation as there's a bunch of allocations that happen from packageName
+// Having packageName return a QStringRef or a QStringView would fix this issue.
+// TODO Qt 6: Have packageName and similars return a QStringView
+static QStringRef TransactionpackageName(const QString &packageID)
+{
+    QStringRef ret;
+    ret = packageID.leftRef(packageID.indexOf(QLatin1Char(';')));
+    return ret;
+}
+
 QString PackageKitBackend::upgradeablePackageId(const PackageKitResource* res) const
 {
-    QString name = res->packageName();
-    foreach (const QString& pkgid, m_updatesPackageId) {
-        if (PackageKit::Daemon::packageName(pkgid) == name)
+    const QString name = res->packageName();
+    for (const QString& pkgid : m_updatesPackageId) {
+        if (TransactionpackageName(pkgid) == name)
             return pkgid;
     }
     return QString();
