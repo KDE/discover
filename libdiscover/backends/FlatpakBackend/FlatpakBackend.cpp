@@ -93,7 +93,7 @@ FlatpakBackend::FlatpakBackend(QObject* parent)
     }
 
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
-        m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource*>>(m_resources.values(), [] (AbstractResource* r) { return r; }));
+        m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource*>>(m_resources, [] (AbstractResource* r) { return r; }));
     });
 
     /* Override the umask to 022 to make it possible to share files between
