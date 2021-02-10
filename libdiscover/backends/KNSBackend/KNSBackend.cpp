@@ -193,7 +193,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
     } else {
         static const QSet<QString> knsrcPlasma = {
             QStringLiteral("aurorae.knsrc"), QStringLiteral("icons.knsrc"), QStringLiteral("kfontinst.knsrc"), QStringLiteral("lookandfeel.knsrc"), QStringLiteral("plasma-themes.knsrc"), QStringLiteral("plasmoids.knsrc"),
-            QStringLiteral("wallpaper.knsrc"), QStringLiteral("xcursor.knsrc"),
+            QStringLiteral("wallpaper.knsrc"), QStringLiteral("wallpaper-mobile.knsrc"), QStringLiteral("xcursor.knsrc"),
 
             QStringLiteral("cgcgtk3.knsrc"), QStringLiteral("cgcicon.knsrc"), QStringLiteral("cgctheme.knsrc"), //GTK integration
             QStringLiteral("kwinswitcher.knsrc"), QStringLiteral("kwineffect.knsrc"), QStringLiteral("kwinscripts.knsrc"), //KWin
