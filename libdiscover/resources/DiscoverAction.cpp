@@ -53,7 +53,7 @@ void DiscoverAction::setIcon(const QIcon& icon)
 
 void DiscoverAction::setText(const QString& text)
 {
-    if (text != m_text)
+    if (text == m_text)
         return;
 
     m_text = text;
@@ -62,7 +62,7 @@ void DiscoverAction::setText(const QString& text)
 
 void DiscoverAction::setToolTip(const QString& toolTip)
 {
-    if (toolTip != m_toolTip)
+    if (toolTip == m_toolTip)
         return;
 
     m_toolTip = toolTip;
