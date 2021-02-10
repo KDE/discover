@@ -18,8 +18,12 @@ AppStreamIntegration * AppStreamIntegration::global()
 
 QSharedPointer<OdrsReviewsBackend> AppStreamIntegration::reviews()
 {
-    if (!m_reviews) {
-        m_reviews = QSharedPointer<OdrsReviewsBackend>::create();
+    QSharedPointer<OdrsReviewsBackend> ret;
+    if (m_reviews) {
+        ret = m_reviews;
+    } else {
+        ret = QSharedPointer<OdrsReviewsBackend>(new OdrsReviewsBackend());
+        m_reviews = ret;
     }
-    return m_reviews;
+    return ret;
 }
