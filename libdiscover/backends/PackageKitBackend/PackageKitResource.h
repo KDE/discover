@@ -64,6 +64,8 @@ class PackageKitResource : public AbstractResource
 
         bool extendsItself() const;
 
+        void runService(const QStringList &desktopFilePaths) const;
+
     Q_SIGNALS:
         void dependenciesFound(const QJsonObject& dependencies);
 

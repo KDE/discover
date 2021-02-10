@@ -11,7 +11,6 @@
 #include <PackageKit/Daemon>
 #include <PackageKit/Details>
 #include <utils.h>
-#include "config-paths.h"
 #include "libdiscover_backend_debug.h"
 
 LocalFilePKResource::LocalFilePKResource(QUrl path, PackageKitBackend* parent)
@@ -84,5 +83,5 @@ void LocalFilePKResource::setDetails(const PackageKit::Details& details)
 
 void LocalFilePKResource::invokeApplication() const
 {
-    QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {m_exec});
+    runService({m_exec});
 }

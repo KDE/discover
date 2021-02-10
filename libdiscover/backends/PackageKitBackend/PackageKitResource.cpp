@@ -9,10 +9,13 @@
 #include "PackageKitBackend.h"
 #include "PackageKitMessages.h"
 #include <KLocalizedString>
+#include <KShell>
 #include <PackageKit/Daemon>
 #include <QJsonArray>
+#include <QProcess>
 #include <QDebug>
 #include <utils.h>
+#include "config-paths.h"
 
 #if defined(WITH_MARKDOWN)
 extern "C" {
@@ -350,4 +353,18 @@ bool PackageKitResource::extendsItself() const
             return false;
     }
     return true;
+}
+
+void PackageKitResource::runService(const QStringList& desktopFilePaths) const
+{
+    for (const QString &desktopFilePath : desktopFilePaths) {
+        auto p = new QProcess(parent());
+        connect(p, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, p] (int exitCode, QProcess::ExitStatus exitStatus) {
+            if (exitCode != 0) {
+                backend()->passiveMessage(i18n("Failed to start '%1'", KShell::joinArgs(p->arguments())));
+            }
+	    p->deleteLater();
+        });
+        p->start(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {desktopFilePath});
+    }
 }

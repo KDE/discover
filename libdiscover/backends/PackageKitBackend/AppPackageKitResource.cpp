@@ -17,7 +17,6 @@
 #include <QProcess>
 #include <QStandardPaths>
 #include <QDebug>
-#include "config-paths.h"
 #include "utils.h"
 
 AppPackageKitResource::AppPackageKitResource(const AppStream::Component& data, const QString &packageName, PackageKitBackend* parent)
@@ -210,7 +209,7 @@ void AppPackageKitResource::invokeApplication() const
         const auto allServices = QStandardPaths::locateAll(QStandardPaths::ApplicationsLocation, m_appdata.id());
         if (!allServices.isEmpty()) {
             const auto packageServices = kFilter<QStringList>(allServices, [filenames](const QString &file) { return filenames.contains(file); });
-            QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {packageServices});
+            runService(packageServices);
             return;
         } else {
             const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
@@ -228,7 +227,7 @@ void AppPackageKitResource::invokeApplication() const
                     return false;
                 });
                 if (!desktopFiles.isEmpty()) {
-                    QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), { desktopFiles });
+                    runService(desktopFiles);
                     return;
                 }
             }
