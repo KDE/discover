@@ -57,6 +57,7 @@ Kirigami.ApplicationWindow
 
     TopLevelPageData {
         id: searchAction
+        visible: enabled
         enabled: !window.wideScreen
         iconName: "search"
         text: i18n("Search")
