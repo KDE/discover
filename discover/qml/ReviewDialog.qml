@@ -24,7 +24,7 @@ Kirigami.OverlaySheet
     }
 
     ColumnLayout {
-        Layout.maximumWidth: Kirigami.Units.gridUnit * 8
+        Layout.maximumWidth: Kirigami.Units.gridUnit * 24
 
         Kirigami.FormLayout {
             id: contentLayout
