@@ -33,7 +33,7 @@ void UnattendedUpdates::checkNewState()
         qDebug() << "waiting for an idle moment";
         // If the system is untouched for 1 hour, trigger the unattened update
         using namespace std::chrono_literals;
-        KIdleTime::instance()->addIdleTimeout(int(std::chrono::milliseconds(1h).count()));
+        KIdleTime::instance()->addIdleTimeout(int(std::chrono::milliseconds(15min).count()));
     } else {
         KIdleTime::instance()->removeAllIdleTimeouts();
     }
