@@ -223,6 +223,13 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     connect(m_transaction.data(), &PackageKit::Transaction::speedChanged, this, [this] {
         Q_EMIT downloadSpeedChanged(downloadSpeed());
     });
+    if (m_toUpgrade.contains(m_upgrade)) {
+        connect(m_transaction, &PackageKit::Transaction::percentageChanged, this, [this] {
+            if (m_transaction->status() == PackageKit::Transaction::StatusDownload) {
+                Q_EMIT resourceProgressed(m_upgrade, m_transaction->percentage(), Downloading);
+            }
+        });
+    }
 }
 
 QSet<AbstractResource*> PackageKitUpdater::packagesForPackageId(const QSet<QString>& pkgids) const
