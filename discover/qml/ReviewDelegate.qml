@@ -92,7 +92,6 @@ RowLayout {
                 Layout.bottomMargin: Kirigami.Units.smallSpacing
 
                 text: display
-                maximumLineCount: item.compact ? 3 : undefined
                 wrapMode: Text.Wrap
             }
 
