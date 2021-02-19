@@ -64,6 +64,11 @@ public:
         return m_errorMessage;
     }
 
+    QVector<Rating *> top() const
+    {
+        return m_top;
+    }
+
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
     void reviewsFetched();
@@ -88,6 +93,8 @@ private:
     QHash<QString, Rating *> m_ratings;
     bool m_isFetching = false;
     CachedNetworkAccessManager *m_delayedNam = nullptr;
+
+    QVector<Rating *> m_top;
 };
 
 #endif // ODRSREVIEWSBACKEND_H

@@ -150,30 +150,30 @@ void AbstractResource::reportNewState()
     Q_EMIT backend()->resourcesChanged(this, ns);
 }
 
-static bool shouldFilter(AbstractResource *res, const QPair<FilterType, QString> &filter)
+static bool shouldFilter(AbstractResource *res, const QPair<Category::FilterType, QString> &filter)
 {
     bool ret = true;
     switch (filter.first) {
-    case CategoryFilter:
+    case Category::CategoryFilter:
         ret = res->categories().contains(filter.second);
         break;
-    case PkgSectionFilter:
+    case Category::PkgSectionFilter:
         ret = res->section() == filter.second;
         break;
-    case PkgWildcardFilter: {
+    case Category::PkgWildcardFilter: {
         QString wildcard = filter.second;
         wildcard.remove(QLatin1Char('*'));
         ret = res->packageName().contains(wildcard);
     } break;
-    case AppstreamIdWildcardFilter: {
+    case Category::AppstreamIdWildcardFilter: {
         QString wildcard = filter.second;
         wildcard.remove(QLatin1Char('*'));
         ret = res->appstreamId().contains(wildcard);
     } break;
-    case PkgNameFilter: // Only useful in the not filters
+    case Category::PkgNameFilter: // Only useful in the not filters
         ret = res->packageName() == filter.second;
         break;
-    case InvalidFilter:
+    case Category::InvalidFilter:
         break;
     }
     return ret;

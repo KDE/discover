@@ -17,6 +17,8 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
     DiscoverObject.cpp
     DiscoverDeclarativePlugin.cpp
 
+    AbstractAppsModel.cpp
+    OdrsAppsModel.cpp
     FeaturedModel.cpp
     PaginateModel.cpp
     UnityLauncher.cpp

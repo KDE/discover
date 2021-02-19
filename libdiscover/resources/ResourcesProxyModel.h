@@ -28,6 +28,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_PROPERTY(Roles sortRole READ sortRole WRITE setSortRole NOTIFY sortRoleChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder NOTIFY sortOrderChanged)
     Q_PROPERTY(Category *filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
+    Q_PROPERTY(QString filteredCategoryName READ filteredCategoryName WRITE setFilteredCategoryName NOTIFY categoryChanged)
     Q_PROPERTY(QString originFilter READ originFilter WRITE setOriginFilter)
     Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter NOTIFY stateFilterChanged)
     Q_PROPERTY(bool filterMinimumState READ filterMinimumState WRITE setFilterMinimumState NOTIFY filterMinimumStateChanged)
@@ -93,6 +94,8 @@ public:
     bool filterMinimumState() const;
 
     Category *filteredCategory() const;
+    QString filteredCategoryName() const;
+    void setFilteredCategoryName(const QString &cat);
 
     QString mimeTypeFilter() const;
     void setMimeTypeFilter(const QString &mime);
@@ -157,6 +160,7 @@ private:
 
     bool m_sortByRelevancy;
     bool m_setup = false;
+    QString m_categoryName;
 
     AbstractResourcesBackend::Filters m_filters;
     QVariantList m_subcategories;

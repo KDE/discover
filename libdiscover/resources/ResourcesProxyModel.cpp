@@ -269,6 +269,31 @@ QString ResourcesProxyModel::originFilter() const
     return m_filters.origin;
 }
 
+QString ResourcesProxyModel::filteredCategoryName() const
+{
+    return m_categoryName;
+}
+
+void ResourcesProxyModel::setFilteredCategoryName(const QString &cat)
+{
+    if (cat == m_categoryName)
+        return;
+
+    m_categoryName = cat;
+
+    auto category = CategoryModel::global()->findCategoryByName(cat);
+    if (category) {
+        setFiltersFromCategory(category);
+    } else {
+        auto f = [this, cat] {
+            auto category = CategoryModel::global()->findCategoryByName(cat);
+            setFiltersFromCategory(category);
+        };
+        auto one = new OneTimeAction(f, this);
+        connect(CategoryModel::global(), &CategoryModel::rootCategoriesChanged, one, &OneTimeAction::trigger);
+    }
+}
+
 void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 {
     if (category == m_filters.category)
@@ -522,7 +547,9 @@ bool ResourcesProxyModel::isSorted(const QVector<AbstractResource *> &resources)
 {
     auto last = resources.constFirst();
     for (auto it = resources.constBegin() + 1, itEnd = resources.constEnd(); it != itEnd; ++it) {
-        if (!lessThan(last, *it)) {
+        auto v1 = roleToValue(last, m_sortRole), v2 = roleToValue(*it, m_sortRole);
+        if (!lessThan(last, *it) && v1 != v2) {
+            qDebug() << "faulty sort" << last->name() << (*it)->name() << last << (*it);
             return false;
         }
         last = *it;

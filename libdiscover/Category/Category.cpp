@@ -93,7 +93,7 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml)
     Q_ASSERT(xml->isEndElement() && xml->name() == QLatin1String("Menu"));
 }
 
-QVector<QPair<FilterType, QString>> Category::parseIncludes(QXmlStreamReader *xml)
+QVector<QPair<Category::FilterType, QString>> Category::parseIncludes(QXmlStreamReader *xml)
 {
     const QString opening = xml->name().toString();
 
@@ -156,7 +156,7 @@ QString Category::icon() const
     return m_iconString;
 }
 
-QVector<QPair<FilterType, QString>> Category::andFilters() const
+QVector<QPair<Category::FilterType, QString>> Category::andFilters() const
 {
     return m_andFilters;
 }
@@ -166,12 +166,12 @@ void Category::setAndFilter(const QVector<QPair<FilterType, QString>> &filters)
     m_andFilters = filters;
 }
 
-QVector<QPair<FilterType, QString>> Category::orFilters() const
+QVector<QPair<Category::FilterType, QString>> Category::orFilters() const
 {
     return m_orFilters;
 }
 
-QVector<QPair<FilterType, QString>> Category::notFilters() const
+QVector<QPair<Category::FilterType, QString>> Category::notFilters() const
 {
     return m_notFilters;
 }
@@ -307,6 +307,20 @@ bool Category::contains(const QVariantList &cats) const
             ret = true;
             break;
         }
+    }
+    return ret;
+}
+
+QStringList Category::involvedCategories() const
+{
+    QStringList ret;
+    for (const auto &filter : m_orFilters) {
+        if (filter.first == CategoryFilter)
+            ret << filter.second;
+    }
+    for (const auto &filter : m_andFilters) {
+        if (filter.first == CategoryFilter)
+            ret << filter.second;
     }
     return ret;
 }

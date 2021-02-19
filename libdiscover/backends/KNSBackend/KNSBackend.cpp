@@ -109,7 +109,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
         }
     });
 
-    const QVector<QPair<FilterType, QString>> filters = {{CategoryFilter, fileName}};
+    const QVector<QPair<Category::FilterType, QString>> filters = {{Category::CategoryFilter, fileName}};
     const QSet<QString> backendName = {name()};
     m_displayName = group.readEntry("Name", QString());
     if (m_displayName.isEmpty()) {
@@ -124,9 +124,9 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
         m_categories += cats;
         for (const auto &cat : cats) {
             if (m_hasApplications)
-                categories << new Category(cat, QStringLiteral("applications-other"), {{CategoryFilter, cat}}, backendName, {}, true);
+                categories << new Category(cat, QStringLiteral("applications-other"), {{Category::CategoryFilter, cat}}, backendName, {}, true);
             else
-                categories << new Category(cat, QStringLiteral("plasma"), {{CategoryFilter, cat}}, backendName, {}, true);
+                categories << new Category(cat, QStringLiteral("plasma"), {{Category::CategoryFilter, cat}}, backendName, {}, true);
         }
     }
 
@@ -172,7 +172,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
                                                 backendName,
                                                 {actualCategory},
                                                 false);
-        applicationCategory->setAndFilter({{CategoryFilter, QLatin1String("Application")}});
+        applicationCategory->setAndFilter({{Category::CategoryFilter, QLatin1String("Application")}});
         m_categories.append(applicationCategory->name());
         m_rootCategories = {applicationCategory};
         // Make sure we filter out any apps which won't run on the current system architecture

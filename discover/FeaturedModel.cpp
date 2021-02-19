@@ -62,36 +62,18 @@ FeaturedModel::FeaturedModel()
     });
 
     refreshCurrentApplicationBackend();
-}
 
-void FeaturedModel::refreshCurrentApplicationBackend()
-{
-    auto backend = ResourcesModel::global()->currentApplicationBackend();
-    if (m_backend == backend)
-        return;
-
-    if (m_backend) {
-        disconnect(m_backend, &AbstractResourcesBackend::fetchingChanged, this, &FeaturedModel::refresh);
-        disconnect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, &FeaturedModel::removeResource);
-    }
-
-    m_backend = backend;
-
-    if (backend) {
-        connect(backend, &AbstractResourcesBackend::fetchingChanged, this, &FeaturedModel::refresh);
-        connect(backend, &AbstractResourcesBackend::resourceRemoved, this, &FeaturedModel::removeResource);
-    }
-
-    if (backend && QFile::exists(*featuredCache))
-        refresh();
-
-    Q_EMIT currentApplicationBackendChanged(m_backend);
+    connect(this, &AbstractAppsModel::currentApplicationBackendChanged, this, [this] {
+        auto backend = currentApplicationBackend();
+        if (backend && QFile::exists(*featuredCache))
+            refresh();
+    });
 }
 
 void FeaturedModel::refresh()
 {
     // usually only useful if launching just fwupd or kns backends
-    if (!m_backend)
+    if (!currentApplicationBackend())
         return;
 
     acquireFetching(true);
@@ -115,98 +97,3 @@ void FeaturedModel::refresh()
     });
     setUris(uris);
 }
-
-void FeaturedModel::setUris(const QVector<QUrl> &uris)
-{
-    if (!m_backend)
-        return;
-
-    QSet<ResultsStream *> streams;
-    for (const auto &uri : uris) {
-        AbstractResourcesBackend::Filters filter;
-        filter.resourceUrl = uri;
-        streams << m_backend->search(filter);
-    }
-    if (!streams.isEmpty()) {
-        auto stream = new StoredResultsStream(streams);
-        acquireFetching(true);
-        connect(stream, &StoredResultsStream::finishedResources, this, &FeaturedModel::setResources);
-    }
-}
-
-static void filterDupes(QVector<AbstractResource *> &resources)
-{
-    QSet<QString> found;
-    for (auto it = resources.begin(); it != resources.end();) {
-        auto id = (*it)->appstreamId();
-        if (found.contains(id)) {
-            it = resources.erase(it);
-        } else {
-            found.insert(id);
-            ++it;
-        }
-    }
-}
-
-void FeaturedModel::acquireFetching(bool f)
-{
-    if (f)
-        m_isFetching++;
-    else
-        m_isFetching--;
-
-    if ((!f && m_isFetching == 0) || (f && m_isFetching == 1)) {
-        Q_EMIT isFetchingChanged();
-    }
-    Q_ASSERT(m_isFetching >= 0);
-}
-
-void FeaturedModel::setResources(const QVector<AbstractResource *> &_resources)
-{
-    auto resources = _resources;
-    filterDupes(resources);
-
-    if (m_resources != resources) {
-        // TODO: sort like in the json files
-        beginResetModel();
-        m_resources = resources;
-        endResetModel();
-    }
-
-    acquireFetching(false);
-}
-
-void FeaturedModel::removeResource(AbstractResource *resource)
-{
-    int index = m_resources.indexOf(resource);
-    if (index < 0)
-        return;
-
-    beginRemoveRows({}, index, index);
-    m_resources.removeAt(index);
-    endRemoveRows();
-}
-
-QVariant FeaturedModel::data(const QModelIndex &index, int role) const
-{
-    if (!index.isValid() || role != Qt::UserRole)
-        return {};
-
-    auto res = m_resources.value(index.row());
-    if (!res)
-        return {};
-
-    return QVariant::fromValue<QObject *>(res);
-}
-
-int FeaturedModel::rowCount(const QModelIndex &parent) const
-{
-    return parent.isValid() ? 0 : m_resources.count();
-}
-
-QHash<int, QByteArray> FeaturedModel::roleNames() const
-{
-    return {{Qt::UserRole, "application"}};
-}
-
-#include "moc_FeaturedModel.cpp"

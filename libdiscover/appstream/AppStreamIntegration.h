@@ -25,7 +25,7 @@ public:
     }
 
 private:
-    QWeakPointer<OdrsReviewsBackend> m_reviews;
+    QSharedPointer<OdrsReviewsBackend> m_reviews;
     KOSRelease m_osrelease;
 
     AppStreamIntegration()

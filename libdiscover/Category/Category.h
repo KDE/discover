@@ -18,15 +18,6 @@
 class QXmlStreamReader;
 class QTimer;
 
-enum FilterType {
-    InvalidFilter,
-    CategoryFilter,
-    PkgSectionFilter,
-    PkgWildcardFilter,
-    PkgNameFilter,
-    AppstreamIdWildcardFilter,
-};
-
 class DISCOVERCOMMON_EXPORT Category : public QObject
 {
     Q_OBJECT
@@ -36,6 +27,16 @@ public:
     Q_PROPERTY(QObject *parent READ parent CONSTANT)
     Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant NOTIFY subCategoriesChanged)
     explicit Category(QSet<QString> pluginNames, QObject *parent = nullptr);
+
+    enum FilterType {
+        InvalidFilter,
+        CategoryFilter,
+        PkgSectionFilter,
+        PkgWildcardFilter,
+        PkgNameFilter,
+        AppstreamIdWildcardFilter,
+    };
+    Q_ENUM(FilterType)
 
     Category(const QString &name,
              const QString &iconName,
@@ -78,6 +79,8 @@ public:
 
     static bool categoryLessThan(Category *c1, const Category *c2);
     static bool blacklistPluginsInVector(const QSet<QString> &pluginNames, QVector<Category *> &subCategories);
+
+    QStringList involvedCategories() const;
 
 Q_SIGNALS:
     void subCategoriesChanged();

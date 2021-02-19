@@ -9,6 +9,7 @@
 #include "DiscoverBackendsFactory.h"
 #include "DiscoverDeclarativePlugin.h"
 #include "FeaturedModel.h"
+#include "OdrsAppsModel.h"
 #include "PaginateModel.h"
 #include "UnityLauncher.h"
 #include <Transaction/TransactionModel.h>
@@ -105,6 +106,7 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     qmlRegisterType<UnityLauncher>("org.kde.discover.app", 1, 0, "UnityLauncher");
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
     qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
+    qmlRegisterType<OdrsAppsModel>("org.kde.discover.app", 1, 0, "OdrsAppsModel");
     qmlRegisterType<PowerManagementInterface>("org.kde.discover.app", 1, 0, "PowerManagementInterface");
     qmlRegisterType<OurSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
 #ifdef WITH_FEEDBACK

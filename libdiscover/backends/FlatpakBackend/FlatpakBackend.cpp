@@ -48,6 +48,7 @@
 #include <QRegularExpression>
 #include <glib.h>
 
+#include <Category/Category.h>
 #include <optional>
 #include <set>
 #include <sys/stat.h>
@@ -1506,7 +1507,10 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         for (const auto &source : qAsConst(m_flatpakSources)) {
             QList<FlatpakResource *> resources;
             if (source->m_pool) {
-                resources = kTransform<QList<FlatpakResource *>>(source->m_pool->search(filter.search), [this, &source](const auto &comp) {
+                const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search)
+                    : filter.category                   ? source->m_pool->componentsByCategories(filter.category->involvedCategories())
+                                                        : source->m_pool->components();
+                resources = kTransform<QList<FlatpakResource *>>(a, [this, &source](const auto &comp) {
                     return resourceForComponent(comp, source);
                 });
             } else {

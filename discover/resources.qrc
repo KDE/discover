@@ -8,6 +8,7 @@
     <file>qml/ReviewsPage.qml</file>
     <file>qml/AddonsView.qml</file>
     <file>qml/ApplicationDelegate.qml</file>
+    <file>qml/GridApplicationDelegate.qml</file>
     <file>qml/InstallApplicationButton.qml</file>
     <file>qml/Rating.qml</file>
     <file>qml/UpdatesPage.qml</file>

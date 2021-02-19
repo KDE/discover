@@ -309,6 +309,20 @@ void OdrsReviewsBackend::parseRatings()
 
             Rating *rating = new Rating(it.key(), ratingCount, ratingMap);
             m_ratings.insert(it.key(), rating);
+
+            const auto finder = [rating](Rating *r) {
+                return r->ratingPoints() < rating->ratingPoints();
+            };
+            const auto topIt = std::find_if(m_top.begin(), m_top.end(), finder);
+            if (topIt == m_top.end()) {
+                if (m_top.size() < 25) {
+                    m_top.append(rating);
+                }
+            } else
+                m_top.insert(topIt, rating);
+            if (m_top.size() > 25) {
+                m_top.resize(25);
+            }
         }
         Q_EMIT ratingsReady();
     });
