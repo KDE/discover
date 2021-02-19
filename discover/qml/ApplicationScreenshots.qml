@@ -39,7 +39,10 @@ ListView {
         implicitHeight: root.height
         padding: Kirigami.Units.largeSpacing
         hoverEnabled: true
-        onClicked: overlay.open()
+        onClicked: {
+            root.currentIndex = model.row
+            overlay.open()
+        }
         // TODO cursorShape: Qt.PointingHandCursor
 
         background: Image {
