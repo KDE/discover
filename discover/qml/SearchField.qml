@@ -7,7 +7,7 @@
 
 import QtQuick 2.5
 import QtQuick.Controls 2.1
-import org.kde.kirigami 2.7 as Kirigami
+import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.ActionTextField
 {

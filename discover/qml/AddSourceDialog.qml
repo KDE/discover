@@ -7,7 +7,7 @@
 import QtQuick 2.1
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
-import org.kde.kirigami 2.10 as Kirigami
+import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.OverlaySheet
 {

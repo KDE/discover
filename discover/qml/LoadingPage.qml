@@ -1,4 +1,4 @@
-import org.kde.kirigami 2.0 as Kirigami
+import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.Page {
     title: label.text

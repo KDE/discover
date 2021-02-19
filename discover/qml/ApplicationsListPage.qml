@@ -11,7 +11,7 @@ import QtQuick.Window 2.2
 import "navigation.js" as Navigation
 import org.kde.discover.app 1.0
 import org.kde.discover 2.0
-import org.kde.kirigami 2.12 as Kirigami
+import org.kde.kirigami 2.14 as Kirigami
 
 DiscoverPage {
     id: page

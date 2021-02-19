@@ -1,4 +1,4 @@
-import org.kde.kirigami 2.5 as Kirigami
+import org.kde.kirigami 2.14 as Kirigami
 import org.kde.userfeedback 1.0 as UserFeedback
 import org.kde.kquickcontrolsaddons 2.0 as KQCA
 import org.kde.discover.app 1.0
