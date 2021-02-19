@@ -6,7 +6,7 @@
  */
 
 
-import QtQuick 2.1
+import QtQuick 2.15
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
 import org.kde.discover 2.0
@@ -43,7 +43,10 @@ ListView {
             root.currentIndex = model.row
             overlay.open()
         }
-        // TODO cursorShape: Qt.PointingHandCursor
+
+        HoverHandler {
+            cursorShape: Qt.PointingHandCursor
+        }
 
         background: Image {
             id: thumbnail
