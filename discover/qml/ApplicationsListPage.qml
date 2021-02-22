@@ -143,7 +143,7 @@ DiscoverPage {
             anchors.horizontalCenter: parent.horizontalCenter
             visible: appsModel.isBusy && apps.atYEnd
             opacity: visible ? 0.5 : 0
-            height: visible ? preferredHeight : 0
+            height: visible ? Layout.preferredHeight : 0
 
             Item {
                 Layout.preferredHeight: units.gridUnit
