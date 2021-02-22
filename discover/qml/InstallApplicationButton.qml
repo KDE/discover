@@ -23,7 +23,7 @@ ConditionalLoader
     readonly property Kirigami.Action action: Kirigami.Action {
         text: root.text
         icon {
-            name: application.isInstalled ? "trash-empty" : "cloud-download"
+            name: application.isInstalled ? "edit-delete" : "download"
             color: !enabled ? Kirigami.Theme.backgroundColor : !listener.isActive ? (application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor) : Kirigami.Theme.backgroundColor
         }
         enabled: !listener.isActive && application.state !== AbstractResource.Broken
