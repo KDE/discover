@@ -455,6 +455,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
             if (!resources.isEmpty()) {
                 stream->setResources(resources);
             }
+            stream->finish();
         };
         runWhenInitialized(f, stream);
         return stream;
@@ -468,6 +469,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
             auto installedAndNameFilter = [filter] (AbstractResource *res) {
                 return res->state() >= AbstractResource::Installed && (res->name().contains(filter.search) || res->packageName() == filter.search);
             };
+            bool furtherSearch = false;
             if (!toResolve.isEmpty()) {
                 resolvePackages(kTransform<QStringList>(toResolve, [] (AbstractResource* res) { return res->packageName(); }));
                 connect(m_resolveTransaction, &PKResolveTransaction::allFinished, this, [stream, toResolve, installedAndNameFilter] {
@@ -476,6 +478,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
                         Q_EMIT stream->resourcesFound(resolved);
                     stream->finish();
                 });
+                furtherSearch = true;
             }
 
             const auto resolved = kFilter<QVector<AbstractResource*>>(m_packages.packages, installedAndNameFilter);
@@ -486,8 +489,12 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
 
                     if (toResolve.isEmpty())
                         stream->finish();
-            });
+                });
+                furtherSearch = true;
             }
+
+            if (!furtherSearch)
+                stream->finish();
         };
         runWhenInitialized(f, stream);
         return stream;
@@ -498,6 +505,7 @@ ResultsStream* PackageKitBackend::search(const AbstractResourcesBackend::Filters
             if (!resources.isEmpty()) {
                 stream->setResources(resources);
             }
+            stream->finish();
         };
         runWhenInitialized(f, stream);
         return stream;
