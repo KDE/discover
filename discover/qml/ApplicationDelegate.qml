@@ -17,6 +17,8 @@ Kirigami.AbstractCard
     property alias application: installButton.application
     property bool compact: false
     property bool showRating: true
+
+    readonly property bool appIsFromNonDefaultBackend: ResourcesModel.currentApplicationBackend !== application.backend && application.backend.hasApplications
     showClickFeedback: true
 
     function trigger() {
@@ -85,6 +87,12 @@ Kirigami.AbstractCard
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 Layout.rowSpan: delegateArea.compact ? 3 : 1
                 compact: delegateArea.compact
+                backendName: delegateArea.appIsFromNonDefaultBackend ? application.backend.displayName : ""
+
+                // TODO: Show the backend icon inside the button for Flatpak
+                // and Snap backend items in widescreen mode. Currently blocked
+                // by https://bugs.kde.org/show_bug.cgi?id=433433
+
             }
 
             RowLayout {
@@ -115,13 +123,15 @@ Kirigami.AbstractCard
                 maximumLineCount: 1
                 textFormat: Text.PlainText
 
+                // TODO: remove this once the backend icon is inside the install
+                // button (blocked by https://bugs.kde.org/show_bug.cgi?id=433433)
                 Kirigami.Icon {
                     id: soup
                     source: application.sourceIcon
                     height: Kirigami.Units.gridUnit
                     width: Kirigami.Units.gridUnit
                     smooth: true
-                    visible: !delegateArea.compact && ResourcesModel.currentApplicationBackend !== application.backend && application.backend.hasApplications
+                    visible: !delegateArea.compact && delegateArea.appIsFromNonDefaultBackend
 
                     HoverHandler {
                         id: sourceIconHover

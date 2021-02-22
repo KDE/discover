@@ -7,14 +7,25 @@ import org.kde.kirigami 2.14 as Kirigami
 ConditionalLoader
 {
     id: root
+    property Component additionalItem: null
+    property bool compact: false
+    property string backendName: ""
+
     property alias application: listener.resource
+
     readonly property alias isActive: listener.isActive
     readonly property alias progress: listener.progress
     readonly property alias listener: listener
-    readonly property string text: !application.isInstalled ? i18n("Install") : i18n("Remove")
-    property Component additionalItem: null
-
-    property bool compact: false
+    readonly property string text: {
+        if (!application.isInstalled) {
+            // Must be from a non-default backend; tell the user where it's from
+            if (backendName.length !== 0) {
+                return i18nc("Install the version of an app that comes from Snap, Flatpak, etc", "Install from %1", backendName);
+            }
+            return i18n("Install");
+        }
+        return i18n("Remove");
+    }
 
     TransactionListener {
         id: listener
