@@ -4,7 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.1
+import QtQuick 2.15
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.1
@@ -123,8 +123,12 @@ Kirigami.AbstractCard
                     smooth: true
                     visible: !delegateArea.compact && ResourcesModel.currentApplicationBackend !== application.backend && application.backend.hasApplications
 
+                    HoverHandler {
+                        id: sourceIconHover
+                    }
+
                     ToolTip.text: application.backend.displayName
-                    ToolTip.visible: hovered && soup.visible
+                    ToolTip.visible: sourceIconHover.hovered && soup.visible
                     ToolTip.delay: Kirigami.Units.toolTipDelay
 
                     anchors {
