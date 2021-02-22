@@ -122,6 +122,11 @@ Kirigami.AbstractCard
                     width: Kirigami.Units.gridUnit
                     smooth: true
                     visible: !delegateArea.compact && ResourcesModel.currentApplicationBackend !== application.backend && application.backend.hasApplications
+
+                    ToolTip.text: application.backend.displayName
+                    ToolTip.visible: hovered && soup.visible
+                    ToolTip.delay: Kirigami.Units.toolTipDelay
+
                     anchors {
                         bottom: parent.bottom
                         right: parent.right
