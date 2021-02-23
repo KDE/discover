@@ -44,7 +44,7 @@ DiscoverPage {
      }
 
     title: search.length>0 ? i18n("Search: %1", stripHtml(search))
-         : category ? category.name : ""
+         : category ? category.name : i18n("Search")
 
     signal clearSearch()
 
