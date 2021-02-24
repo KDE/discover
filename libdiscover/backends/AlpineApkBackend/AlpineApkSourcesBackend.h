@@ -21,10 +21,13 @@
 #ifndef ALPINEAPKSOURCESBACKEND_H
 #define ALPINEAPKSOURCESBACKEND_H
 
-#include <resources/AbstractSourcesBackend.h>
+#include "resources/AbstractSourcesBackend.h"
+
 #include <QStandardItemModel>
 
 #include <QtApkRepository.h>
+
+class DiscoverAction;
 
 class AlpineApkSourcesBackend : public AbstractSourcesBackend
 {
@@ -49,8 +52,8 @@ private:
     void onItemChanged(QStandardItem* item);
 
     QStandardItemModel *m_sourcesModel = nullptr;
-    QAction *m_refreshAction = nullptr;
-    QAction *m_saveAction = nullptr;
+    DiscoverAction *m_refreshAction = nullptr;
+    DiscoverAction *m_saveAction = nullptr;
     QVector<QtApk::Repository> m_repos;
 };
 
