@@ -13,6 +13,7 @@
 #include <utils.h>
 #include <resources/StandardBackendUpdater.h>
 #include <resources/SourcesModel.h>
+#include <ReviewsBackend/Rating.h>
 #include <Transaction/Transaction.h>
 #include <appstream/OdrsReviewsBackend.h>
 #include <appstream/AppStreamIntegration.h>
@@ -1153,6 +1154,7 @@ bool FlatpakBackend::flatpakResourceLessThan(AbstractResource* l, AbstractResour
 {
     return (l->isInstalled() != r->isInstalled()) ? l->isInstalled()
          : (l->origin() != r->origin()) ? m_sources->originIndex(l->origin()) < m_sources->originIndex(r->origin())
+         : (l->rating() && r->rating() && l->rating()->ratingPoints() != r->rating()->ratingPoints()) ? l->rating()->ratingPoints() > r->rating()->ratingPoints()
          : l < r;
 }
 
@@ -1179,7 +1181,7 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
 
     auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
     auto f = [this, stream, filter] () {
-        QVector<AbstractResource*> ret;
+        QVector<AbstractResource*> prioritary, rest;
         for (auto r : qAsConst(m_resources)) {
             const bool matchById = r->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
             if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
@@ -1191,15 +1193,20 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
             if (!filter.extends.isEmpty() && !r->extends().contains(filter.extends))
                 continue;
 
-            if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive) || matchById)
-            {
-                ret += r;
+            if (filter.search.isEmpty() || matchById) {
+                rest += r;
+            } else if (r->name().contains(filter.search, Qt::CaseInsensitive)) {
+                prioritary += r;
+            } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
+                rest += r;
             }
         }
         auto f = [this](AbstractResource* l, AbstractResource* r) { return flatpakResourceLessThan(l,r); };
-        std::sort(ret.begin(), ret.end(), f);
-        if (!ret.isEmpty())
-            Q_EMIT stream->resourcesFound(ret);
+        std::sort(rest.begin(), rest.end(), f);
+        std::sort(prioritary.begin(), prioritary.end(), f);
+        rest = prioritary + rest;
+        if (!rest.isEmpty())
+            Q_EMIT stream->resourcesFound(rest);
         stream->finish();
     };
     if (isFetching()) {
