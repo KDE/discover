@@ -485,7 +485,7 @@ void AlpineApkBackend::finishCheckForUpdates()
 
 QString AlpineApkBackend::displayName() const
 {
-    return i18nc("Backend plugin display name", "Alpine APK backend");
+    return i18nc("Backend plugin display name", "Alpine APK");
 }
 
 bool AlpineApkBackend::hasApplications() const
