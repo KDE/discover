@@ -92,7 +92,7 @@ public:
     }
 
     QVariant icon() const override { return QStringLiteral("update-low"); }
-    QString name() const override { return i18n("View Updates"); }
+    QString name() const override { return i18n("Updates"); }
 
 Q_SIGNALS:
     void finished();
