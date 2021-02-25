@@ -64,6 +64,32 @@ DiscoverPage
 
     readonly property bool compact: page.width < 550 || !applicationWindow().wideScreen
 
+
+    header: ToolBar {
+        width: page.width
+        height: visible ? youGotUpdatesHeaderMessage.height + Kirigami.Units.smallSpacing * 4 : 0
+        visible: page.compact && ResourcesModel.updatesCount>0
+        Kirigami.InlineMessage {
+            id: youGotUpdatesHeaderMessage
+            visible: true
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+                leftMargin: Kirigami.Units.smallSpacing
+                rightMargin: Kirigami.Units.smallSpacing
+            }
+            icon.name: updateAction.icon.name
+            text: i18n("Updates are available")
+            actions: [
+                Kirigami.Action {
+                    icon.name: "go-next"
+                    text: i18nc("Short for 'show updates'", "Show")
+                    onTriggered: { updateAction.trigger(); }
+                }
+            ]
+        }
+    }
     Kirigami.CardsListView {
         id: apps
         model: FeaturedModel {}
