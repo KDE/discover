@@ -325,7 +325,7 @@ QString AlpineApkResource::author() const
 
 QString AlpineApkResource::sourceIcon() const
 {
-    return QStringLiteral("player-time");
+    return QStringLiteral("alpine-linux-logo-icon");
 }
 
 QDate AlpineApkResource::releaseDate() const
