@@ -102,7 +102,7 @@ void PackageKitNotifier::checkOfflineUpdates()
     if (!success) {
         const QString errorDetails = group.readEntry("ErrorDetails");
 
-        KNotification *notification = new KNotification(QStringLiteral("offlineupdate-failed"), KNotification::Persistent | KNotification::DefaultEvent);
+        KNotification *notification = new KNotification(QStringLiteral("OfflineUpdateFailed"), KNotification::Persistent | KNotification::DefaultEvent);
         notification->setIconName(QStringLiteral("error"));
         notification->setText(i18n("Offline Updates"));
         notification->setText(i18np("Failed to update %1 package\n%2", "Failed to update %1 packages\n%2",
@@ -115,17 +115,18 @@ void PackageKitNotifier::checkOfflineUpdates()
         connect(notification, &KNotification::action2Activated, this, [this] () {
             auto trans = PackageKit::Daemon::global()->repairSystem();
             connect(trans, &PackageKit::Transaction::errorCode, this, [](PackageKit::Transaction::Error /*error*/, const QString &details){
-                KNotification::event(QStringLiteral("offlineupdate-repair-failed"), i18n("Repair Failed"), i18n("Please report to your distribution: %1", details), {}, KNotification::Persistent, QStringLiteral("org.kde.discovernotifier"));
+                KNotification::event(QStringLiteral("OfflineUpdateRepairFailed"), i18n("Repair Failed"), i18n("Please report to your distribution: %1", details), {}, KNotification::Persistent, QStringLiteral("org.kde.discovernotifier"));
             });
         });
 
         notification->sendEvent();
     } else {
-        KNotification *notification = new KNotification(QStringLiteral("offlineupdate-successful"));
+        KNotification *notification = new KNotification(QStringLiteral("OfflineUpdateSuccessful"));
         notification->setIconName(QStringLiteral("system-software-update"));
         notification->setTitle(i18n("Offline Updates"));
         notification->setText(i18np("Successfully updated %1 package", "Successfully updated %1 packages", packages.count()));
         notification->setActions(QStringList{i18nc("@action:button", "Open Discover")});
+        notification->setComponentName(QStringLiteral("discoverabstractnotifier"));
 
         connect(notification, &KNotification::action1Activated, this, [] () {
             QProcess::startDetached(QStringLiteral("plasma-discover"), QStringList());

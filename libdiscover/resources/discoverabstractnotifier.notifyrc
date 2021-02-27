@@ -148,3 +148,20 @@ Comment[zh_TW]=有可用的更新
 Urgency=Low
 Action=Popup
 
+[Event/OfflineUpdateSuccessful]
+Name=Successful Offline Update
+Comment=System updated successfully
+Urgency=Low
+Action=Popup
+
+[Event/OfflineUpdateFailed]
+Name=Failed Offline Update
+Comment=System update failed
+Urgency=High
+Action=Popup
+
+[Event/OfflineUpdateRepairFailed]
+Name=Repair Failed
+Comment=Repair failure after offline update
+Urgency=High
+Action=Popup
