@@ -588,3 +588,8 @@ QSet<QString> FlatpakResource::alternativeAppstreamIds() const
 
     return QSet<QString>(ret.begin(), ret.end());
 }
+
+QStringList FlatpakResource::mimetypes() const
+{
+    return m_appdata.provided(AppStream::Provided::KindMimetype).items();
+}

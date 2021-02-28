@@ -125,6 +125,7 @@ public:
     void fetchChangelog() override;
     void fetchScreenshots() override;
     QSet<QString> alternativeAppstreamIds() const override;
+    QStringList mimetypes() const override;
 
     void setBranch(const QString &branch);
     void setBundledIcon(const QPixmap &pixmap);
