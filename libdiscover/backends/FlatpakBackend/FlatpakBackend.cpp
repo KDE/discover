@@ -1192,6 +1192,9 @@ ResultsStream * FlatpakBackend::search(const AbstractResourcesBackend::Filters &
             if (!filter.extends.isEmpty() && !r->extends().contains(filter.extends))
                 continue;
 
+            if (!filter.mimetype.isEmpty() && !r->mimetypes().contains(filter.mimetype))
+                continue;
+
             if (filter.search.isEmpty() || r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive) || matchById)
             {
                 ret += r;
