@@ -51,14 +51,10 @@ Kirigami.GlobalDrawer {
     header: Kirigami.AbstractApplicationHeader {
         visible: drawer.wideScreen
 
-        contentItem: RowLayout {
-            anchors {
-                left: parent.left
-                leftMargin: Kirigami.Units.smallSpacing
-                right: parent.right
-                rightMargin: Kirigami.Units.smallSpacing
-            }
+        leftPadding: Kirigami.Units.smallSpacing
+        rightPadding: Kirigami.Units.smallSpacing
 
+        contentItem: RowLayout {
             SearchField {
                 id: searchField
                 Layout.fillWidth: true
