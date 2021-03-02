@@ -94,6 +94,7 @@
     <p xml:lang="ast">Discover ayúdate a alcontrar ya instalar aplicaciones y ferramientes. Pues guetar o restolar por estayes, mirar captures de pantalla y lleer reseñes p'ayudate a escoyer l'aplicación perfeuta.</p>
     <p xml:lang="ca">El Discover us ajuda a instal·lar aplicacions, jocs i eines. Podeu cercar o explorar per categoria, i veure les captures de pantalla i llegir els comentaris per ajudar-vos a triar l'aplicació perfecta.</p>
     <p xml:lang="ca-valencia">Discover us ajuda a instal·lar aplicacions, jocs i eines. Podeu buscar o explorar per categoria, i veure les captures de pantalla i llegir els comentaris per a ajudar-vos a triar l'aplicació perfecta.</p>
+    <p xml:lang="de">Discover hilft Ihnen dabei, Anwendungen, Spiele und Werkzeuge zu finden und zu installieren. Sie können suchen oder durch Kategorien blättern sowie Bildschirmfotos ansehen und Bewertung lesen, um die für Sie beste Anwendung zu finden.</p>
     <p xml:lang="en-GB">Discover helps you find and install applications, games, and tools. You can search or browse by category, and look at screenshots and read reviews to help you pick the perfect app.</p>
     <p xml:lang="es">Discover le ayuda a encontrar e instalar aplicaciones, juegos y herramientas. Puede buscar o explorar por categorías, ver capturas de pantalla y leer reseñas que le ayudarán a escoger la aplicación perfecta.</p>
     <p xml:lang="et">Discover aitab leida ja paigaldada rakendusi, mänge ja tööriistu. Otsida või sirvida saab kategooriaid pidi, ekraanipiltide uurimine ja ülevaadete lugemine lubab leida just selle õige rakenduse.</p>
@@ -124,6 +125,7 @@
     <p>With Discover, you can manage software from multiple sources, including your operating system's software repository, Flatpak repos, the Snap store, or even AppImages from store.kde.org.</p>
     <p xml:lang="ca">Amb el Discover podeu gestionar programari de diverses fonts, incloent-hi el repositori de programari del sistema operatiu, repositoris del Flatpak, la botiga de l'Snap, o també AppImages des de «store.kde.org».</p>
     <p xml:lang="ca-valencia">Amb Discover podeu gestionar programari de diverses fonts, incloent-hi el repositori de programari del sistema operatiu, repositoris de Flatpak, la botiga d'Snap, o també AppImages des de «store.kde.org».</p>
+    <p xml:lang="de">Mit Discover können Sie Software von mehreren Quellen verwalten, einschließlich der Ihres Betriebssystems, Flatpak-Quellen, dem Snap-Store und sogar AppImages von store.kde.org.</p>
     <p xml:lang="en-GB">With Discover, you can manage software from multiple sources, including your operating system's software repository, Flatpak repos, the Snap store, or even AppImages from store.kde.org.</p>
     <p xml:lang="es">Con Discover puede gestionar software de múltiples fuentes, incluyendo los repositorios de software de su sistema operativo, repositorios de Flatpak, la tienda de Snap, e incluso AppImages de store.kde.org.</p>
     <p xml:lang="et">Discoveriga saab hallata tarkvara, mis on pärit mitmest allikast, kaasa arvatud su enda operatsioonisüsteemi tarkvarahoidla, Flatpaki hoidlad, Snapi hoidla või isegi hoidlas store.kde.org pakutavad AppImage'id.</p>
@@ -155,6 +157,7 @@
     <p xml:lang="ast">P'acabar, Discover tamién te permite alcontrar, instalar y xestionar complementos de Plasma y toles aplicaciones de KDE.</p>
     <p xml:lang="ca">Finalment, el Discover també permet cercar, instal·lar i gestionar complements per al Plasma i totes les aplicacions preferides del KDE!</p>
     <p xml:lang="ca-valencia">Finalment, Discover també permet buscar, instal·lar i gestionar complements per a Plasma i totes les aplicacions preferides de KDE.</p>
+    <p xml:lang="de">Außerdem können Sie mit Discover Erweiterungen für Plasma und Ihre Lieblings-KDE-Anwendungen suchen, installieren und verwalten.</p>
     <p xml:lang="en-GB">Finally, Discover also allows you to find, install, and manage add-ons for Plasma and all your favourite KDE apps!</p>
     <p xml:lang="es">Por último, Discover también le permite encontrar, instalar y gestionar complementos para Plasma y para todas sus aplicaciones favoritas de KDE.</p>
     <p xml:lang="et">Ja lõpuks lubab Discover leida, paigaldada ja hallata lisasid nii Plasmale kui ka kõigile KDE parimatele rakendustele!</p>
