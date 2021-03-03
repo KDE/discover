@@ -39,13 +39,16 @@ Kirigami.GlobalDrawer {
     }
 
     function suggestSearchText(text) {
-        searchField.text = text
-        searchField.forceActiveFocus()
+        if (searchField.visible) {
+            searchField.text = text
+            searchField.forceActiveFocus()
+        }
     }
 
     // Give the search field keyboard focus by default
     Component.onCompleted: {
-        searchField.forceActiveFocus();
+        if (searchField.visible)
+            searchField.forceActiveFocus();
     }
 
     header: Kirigami.AbstractApplicationHeader {
