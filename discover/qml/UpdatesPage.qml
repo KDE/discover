@@ -183,6 +183,7 @@ DiscoverPage
             Layout.alignment: Qt.AlignHCenter
             horizontalAlignment: Text.AlignHCenter
             text: page.footerLabel
+            wrapMode: Text.WordWrap
             ToolTip.text: page.footerToolTip
             ToolTip.visible: hovered && page.footerToolTip.length > 0
             ToolTip.delay: Kirigami.Units.toolTipDelay
