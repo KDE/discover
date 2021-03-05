@@ -8,6 +8,7 @@
 #include "PackageKitBackend.h"
 #include "PackageKitResource.h"
 #include "PackageKitMessages.h"
+#include "PackageKitUpdater.h"
 #include "utils.h"
 #include "LocalFilePKResource.h"
 #include "libdiscover_backend_debug.h"
@@ -110,8 +111,6 @@ void PKTransaction::statusChanged()
     setStatus(m_trans->status() == PackageKit::Transaction::StatusDownload ? Transaction::DownloadingStatus : Transaction::CommittingStatus);
     progressChanged();
 }
-
-int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage);
 
 void PKTransaction::progressChanged()
 {
@@ -260,12 +259,14 @@ PackageKit::Transaction* PKTransaction::transaction()
 
 void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
-    m_proceedFunctions << [eulaID](){
-        return PackageKit::Daemon::acceptEula(eulaID);
-    };
-
-    Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
+    const auto handle = handleEula(eulaID, licenseAgreement);
+    m_proceedFunctions << handle.proceedFunction;
+    if (handle.request) {
+        Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement));
+    } else {
+        proceed();
+    }
 }
 
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)

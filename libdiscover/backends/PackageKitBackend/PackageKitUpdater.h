@@ -12,6 +12,11 @@
 
 class SystemUpgrade;
 
+struct EulaHandling {
+    std::function<PackageKit::Transaction*()> proceedFunction;
+    bool request = false;
+};
+EulaHandling handleEula(const QString& eulaID, const QString& licenseAgreement);
 int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage);
 
 class PackageKitUpdater : public AbstractBackendUpdater

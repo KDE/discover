@@ -10,8 +10,11 @@
 #include <PackageKit/Offline>
 #include <QDebug>
 #include <QSet>
+#include <QCryptographicHash>
 
 #include <KLocalizedString>
+#include <KSharedConfig>
+#include <KConfigGroup>
 
 #include "libdiscover_backend_debug.h"
 #include "utils.h"
@@ -443,13 +446,41 @@ void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, co
     Q_EMIT passiveMessage(i18n("Media Change of type '%1' is requested.\n%2", type, text));
 }
 
+EulaHandling handleEula(const QString& eulaID, const QString& licenseAgreement)
+{
+    KConfigGroup group(KSharedConfig::openConfig(), "EULA");
+    auto licenseGroup = group.group(eulaID);
+    QCryptographicHash hash(QCryptographicHash::Sha256);
+    hash.addData(licenseAgreement.toUtf8());
+    QByteArray hashHex = hash.result().toHex();
+
+    EulaHandling ret;
+    ret.request = licenseGroup.readEntry("Hash", QByteArray()) != hashHex;
+    if (!ret.request) {
+        ret.proceedFunction = [eulaID] {
+            return PackageKit::Daemon::acceptEula(eulaID);
+        };
+    } else {
+        ret.proceedFunction = [eulaID, hashHex] {
+            KConfigGroup group(KSharedConfig::openConfig(), "EULA");
+            KConfigGroup licenseGroup = group.group(eulaID);
+            licenseGroup.writeEntry<QByteArray>("Hash", hashHex);
+            return PackageKit::Daemon::acceptEula(eulaID);
+        };
+    }
+    return ret;
+}
+
 void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
-    m_proceedFunctions << [eulaID](){
-        return PackageKit::Daemon::acceptEula(eulaID);
-    };
-    Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
+    const auto handle = handleEula(eulaID, licenseAgreement);
+    m_proceedFunctions << handle.proceedFunction;
+    if (handle.request) {
+        Q_EMIT proceedRequest(i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement));
+    } else {
+        proceed();
+    }
 }
 
 void PackageKitUpdater::setProgressing(bool progressing)
