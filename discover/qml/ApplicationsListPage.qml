@@ -146,7 +146,7 @@ DiscoverPage {
             height: visible ? Layout.preferredHeight : 0
 
             Item {
-                Layout.preferredHeight: units.gridUnit
+                Layout.preferredHeight: Kirigami.Units.gridUnit
             }
             Kirigami.Heading {
                 level: 2
