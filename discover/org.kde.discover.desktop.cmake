@@ -128,6 +128,7 @@ Keywords[lt]=programa;programinė įranga;programine iranga;saugykla;paketas;įd
 Keywords[nb]=program;programvare;pakkebrønn;pakke;installere;fjerne;oppdatere;app;apper;
 Keywords[nl]=programma;software;opslagruimte;pakket;installeren;verwijderen;bijwerken;apps;toepassingen;applicaties;
 Keywords[nn]=program;programvare;pakkebrønn;pakke;pakkar;installera;installering;fjerna;fjerning;oppdatera;oppdatering;app;appar;applikasjonar;
+Keywords[pa]=ਪਰੋਗਰਾਮ;ਸਾਫਟਵੇਅਰ;ਰਿਪੋਜ਼ਟਰੀ;ਪੈਕੇਜ;ਇੰਸਟਾਲ;ਪ੍ਰੋਗਰਾਮ;ਇੰਸਟਾਲ;ਹਟਾਓ;ਮਿਟਾਓ;ਅੱਪਡੇਟ;ਐਪ;ਐਪਲੀਕੇਸ਼ਨਾਂ;
 Keywords[pl]=program,oprogramowanie,repozytorium,archiwum,pakiet,paczka,instaluj,zainstaluj,usuń,odinstaluj,uaktualnij,aktualizuj,programy,aplikacje,deb
 Keywords[pt]=programa;software;repositório;pacote;instalar;remover;actualizar;aplicações;
 Keywords[pt_BR]=programa;software;repositório;pacote;instalar;instalação;remover;atualizar;aplicativos;apps;aplicações;
