@@ -90,6 +90,7 @@ void DiscoverNotifier::showUpdatesNotification()
     }
 
     m_updatesAvailableNotification = KNotification::event(QStringLiteral("Update"), message(), {}, iconName(), nullptr, KNotification::CloseOnTimeout, QStringLiteral("discoverabstractnotifier"));
+    m_updatesAvailableNotification->setHint(QStringLiteral("resident"), true);
     const QString name = i18n("View Updates");
     m_updatesAvailableNotification->setDefaultAction(name);
     m_updatesAvailableNotification->setActions({name});
