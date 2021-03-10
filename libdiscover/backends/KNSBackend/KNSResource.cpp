@@ -101,7 +101,7 @@ QString KNSResource::longDescription()
     ret.remove(QRegularExpression(QStringLiteral("\\[\\/?[a-z]*\\]")));
     // Find anything that looks like a link (but which also is not some html
     // tag value or another already) and make it a link
-    static const QRegularExpression urlRegExp(QStringLiteral("(^|\\s)([-a-zA-Z0-9@:%_\\+.~#?&//=]{2,256}\\.[a-z]{2,4}\\b(\\/[-a-zA-Z0-9@:;%_\\+.~#?&//=]*)?)"), QRegularExpression::CaseInsensitiveOption);
+    static const QRegularExpression urlRegExp(QStringLiteral("(^|\\s)(http[-a-zA-Z0-9@:%_\\+.~#?&//=]{2,256}\\.[a-z]{2,4}\\b(\\/[-a-zA-Z0-9@:;%_\\+.~#?&//=]*)?)"), QRegularExpression::CaseInsensitiveOption);
     ret.replace(urlRegExp, QStringLiteral("<a href=\"\\2\">\\2</a>"));
     return ret;
 }
