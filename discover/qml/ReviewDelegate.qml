@@ -135,9 +135,7 @@ RowLayout {
                     Label {
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignRight
-                        // Change this to "Was this review useful?" once Kirigami fixes
-                        // https://bugs.kde.org/show_bug.cgi?id=415677
-                        text: i18n("Useful?")
+                        text: i18n("Was this review useful?")
                         elide: Text.ElideLeft
                     }
 
