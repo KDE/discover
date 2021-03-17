@@ -205,7 +205,7 @@ void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summ
                      {QStringLiteral("user_display"), QJsonValue::fromVariant(KUser().property(KUser::FullName))},
                      {QStringLiteral("summary"), summary},
                      {QStringLiteral("description"), description},
-                     {QStringLiteral("rating"), rating.toInt() * 10}};
+                     {QStringLiteral("rating"), rating.toInt() * 10},};
 
     const QJsonDocument document(map);
 
@@ -261,7 +261,7 @@ void OdrsReviewsBackend::parseRatings()
                                 appJsonObject.value(QLatin1String("star2")).toInt(),
                                 appJsonObject.value(QLatin1String("star3")).toInt(),
                                 appJsonObject.value(QLatin1String("star4")).toInt(),
-                                appJsonObject.value(QLatin1String("star5")).toInt() };
+                                appJsonObject.value(QLatin1String("star5")).toInt(), };
 
             Rating *rating = new Rating(it.key(), ratingCount, ratingMap);
             m_ratings.insert(it.key(), rating);

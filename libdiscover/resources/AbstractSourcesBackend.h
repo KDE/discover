@@ -31,7 +31,7 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
 
         enum Roles {
             IdRole = Qt::UserRole,
-            LastRole
+            LastRole,
         };
         Q_ENUM(Roles)
 

@@ -26,7 +26,9 @@ public:
     explicit FlatpakSourcesBackend(const QVector<FlatpakInstallation *>& installations, AbstractResourcesBackend *parent);
     ~FlatpakSourcesBackend() override;
 
-    enum Roles { IconUrlRole = LastRole + 1 };
+    enum Roles {
+        IconUrlRole = LastRole + 1,
+    };
 
     QAbstractItemModel* sources() override;
     bool addSource(const QString &id) override;

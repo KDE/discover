@@ -34,7 +34,7 @@ public:
         SectionResourceProgressRole,
         ChangelogRole,
         SectionRole,
-        UpgradeTextRole
+        UpgradeTextRole,
     };
     Q_ENUM(Roles)
 

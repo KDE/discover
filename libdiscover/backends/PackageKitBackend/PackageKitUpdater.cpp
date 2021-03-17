@@ -28,7 +28,7 @@ int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage
             { PackageKit::Transaction::Status::StatusInstall, 1},
             { PackageKit::Transaction::Status::StatusRemove, 1},
             { PackageKit::Transaction::Status::StatusLoadingCache, 1},
-            { PackageKit::Transaction::Status::StatusUpdate, 1}
+            { PackageKit::Transaction::Status::StatusUpdate, 1},
         };
         const auto idx = statuses.value(status, -1);
         if (idx < 0) {

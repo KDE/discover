@@ -30,7 +30,7 @@ public:
     enum PropertyKind {
         DownloadSize = 0,
         InstalledSize,
-        RequiredRuntime
+        RequiredRuntime,
     };
     Q_ENUM(PropertyKind)
 
@@ -46,7 +46,7 @@ public:
         DesktopApp = 0,
         Runtime,
         Extension,
-        Source
+        Source,
     };
     Q_ENUM(ResourceType)
 

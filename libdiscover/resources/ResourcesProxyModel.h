@@ -64,7 +64,7 @@ public:
         SizeRole,
         LongDescriptionRole,
         SourceIconRole,
-        ReleaseDateRole
+        ReleaseDateRole,
     };
     Q_ENUM(Roles)
 

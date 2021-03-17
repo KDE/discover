@@ -200,7 +200,7 @@ KNSBackend::KNSBackend(QObject* parent, const QString& iconName, const QString &
             QStringLiteral("comic.knsrc"), QStringLiteral("colorschemes.knsrc"),
             QStringLiteral("emoticons.knsrc"), QStringLiteral("plymouth.knsrc"),
             QStringLiteral("sddmtheme.knsrc"), QStringLiteral("wallpaperplugin.knsrc"),
-            QStringLiteral("ksplash.knsrc"), QStringLiteral("window-decorations.knsrc")
+            QStringLiteral("ksplash.knsrc"), QStringLiteral("window-decorations.knsrc"),
         };
         const auto iconName = knsrcPlasma.contains(fileName)? QStringLiteral("plasma") : QStringLiteral("applications-other");
         auto actualCategory = new Category(m_displayName, iconName, filters, backendName, categories, QUrl(), true);

@@ -57,7 +57,7 @@ public:
         /// Transaction is done, but there was an error during transaction
         DoneWithErrorStatus,
         /// Transaction was cancelled
-        CancelledStatus
+        CancelledStatus,
     };
     Q_ENUM(Status)
 
@@ -67,7 +67,7 @@ public:
         ///The transaction is going to remove a resource
         RemoveRole,
         ///The transaction is going to change the addons of a resource
-        ChangeAddonsRole
+        ChangeAddonsRole,
     };
     Q_ENUM(Role)
 

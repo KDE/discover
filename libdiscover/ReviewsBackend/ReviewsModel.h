@@ -33,12 +33,12 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
             Rating,
             Summary,
             Depth,
-            PackageVersion
+            PackageVersion,
         };
         enum UserChoice {
             None,
             Yes,
-            No
+            No,
         };
         Q_ENUM(UserChoice)
 

@@ -24,7 +24,7 @@ class DISCOVERCOMMON_EXPORT ApplicationAddonsModel : public QAbstractListModel
     Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY applicationChanged)
     public:
         enum Roles {
-            PackageNameRole = Qt::UserRole
+            PackageNameRole = Qt::UserRole,
         };
 
         explicit ApplicationAddonsModel(QObject* parent = nullptr);

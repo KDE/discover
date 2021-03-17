@@ -19,7 +19,10 @@ class DISCOVERCOMMON_EXPORT ScreenshotsModel : public QAbstractListModel
     Q_PROPERTY(AbstractResource* application READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(int count READ count NOTIFY countChanged)
     public:
-        enum Roles { ThumbnailUrl=Qt::UserRole+1, ScreenshotUrl };
+        enum Roles {
+            ThumbnailUrl=Qt::UserRole+1,
+            ScreenshotUrl,
+        };
         
         explicit ScreenshotsModel(QObject* parent = nullptr);
         QHash<int, QByteArray> roleNames() const override;

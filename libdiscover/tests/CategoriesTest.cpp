@@ -25,7 +25,7 @@ public:
             QFINDTESTDATA("../backends/KNSBackend/knsplasmoids-backend-categories.xml"),
             QFINDTESTDATA("../backends/ApplicationBackend/ubuntu_sso_dbus_interface.xml"),
             QFINDTESTDATA("../backends/ApplicationBackend/qapt-backend-categories.xml"),
-            QFINDTESTDATA("../backends/DummyBackend/dummy-backend-categories.xml")
+            QFINDTESTDATA("../backends/DummyBackend/dummy-backend-categories.xml"),
         };
 
         QVector<Category*> ret;

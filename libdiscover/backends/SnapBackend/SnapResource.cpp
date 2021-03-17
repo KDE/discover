@@ -315,7 +315,7 @@ public:
     enum Roles {
         PlugNameRole = Qt::UserRole + 1,
         SlotSnapRole,
-        SlotNameRole
+        SlotNameRole,
     };
 
     PlugsModel(SnapResource* res, SnapBackend* backend, QObject* parent)

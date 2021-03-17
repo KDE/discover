@@ -89,7 +89,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
             /**
              * The resource is installed and an update is available
              */
-            Upgradeable
+            Upgradeable,
         };
         Q_ENUM(State)
 
@@ -130,7 +130,11 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         ///@returns a URL that points to the place where you can donate money to the app developer
         virtual QUrl donationURL();
 
-        enum Type { Application, Addon, Technical };
+        enum Type {
+            Application,
+            Addon,
+            Technical,
+        };
         Q_ENUM(Type);
         virtual Type type() const = 0;
 

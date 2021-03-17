@@ -26,7 +26,7 @@ public:
         ProgressRole,
         StatusTextRole,
         ResourceRole,
-        TransactionRole
+        TransactionRole,
     };
 
     explicit TransactionModel(QObject *parent = nullptr);

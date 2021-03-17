@@ -25,7 +25,11 @@ class DiscoverObject : public QObject
     Q_PROPERTY(QRect initialGeometry READ initialGeometry CONSTANT)
 
     public:
-        enum CompactMode { Auto, Compact, Full };
+        enum CompactMode {
+            Auto,
+            Compact,
+            Full,
+        };
         Q_ENUM(CompactMode)
 
         explicit DiscoverObject(CompactMode mode, const QVariantMap &initialProperties);

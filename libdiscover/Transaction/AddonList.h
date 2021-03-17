@@ -18,7 +18,7 @@ public:
     enum State {
         None,
         ToInstall,
-        ToRemove
+        ToRemove,
     };
     AddonList();
     AddonList(const AddonList &other) = default;

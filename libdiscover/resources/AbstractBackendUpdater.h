@@ -44,7 +44,12 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
     Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
     Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
     public:
-        enum State { None, Downloading, Installing, Done };
+        enum State {
+            None,
+            Downloading,
+            Installing,
+            Done,
+        };
         Q_ENUM(State);
 
         /**

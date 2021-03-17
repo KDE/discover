@@ -23,7 +23,7 @@ enum FilterType {
     PkgSectionFilter,
     PkgWildcardFilter,
     PkgNameFilter,
-    AppstreamIdWildcardFilter
+    AppstreamIdWildcardFilter,
 };
 
 class DISCOVERCOMMON_EXPORT Category : public QObject
