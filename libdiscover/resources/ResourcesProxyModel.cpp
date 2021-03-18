@@ -45,7 +45,7 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
                {ReleaseDateRole, "releaseDate"}})
     , m_currentStream(nullptr)
 {
-    //     new QAbstractItemModelTester(this, this);
+    // new QAbstractItemModelTester(this, this);
 
     connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &ResourcesProxyModel::invalidateFilter);
     connect(ResourcesModel::global(), &ResourcesModel::backendDataChanged, this, &ResourcesProxyModel::refreshBackend);
@@ -515,7 +515,7 @@ void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource *> &_re
     }
 
     if (m_sortByRelevancy || m_displayedResources.isEmpty()) {
-        //         Q_ASSERT(m_sortByRelevancy || isSorted(resources));
+        // Q_ASSERT(m_sortByRelevancy || isSorted(resources));
         int rows = rowCount();
         beginInsertRows({}, rows, rows + resources.count() - 1);
         m_displayedResources += resources;
@@ -536,7 +536,7 @@ void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource *> &_re
         beginInsertRows({}, newIdx, newIdx);
         m_displayedResources.insert(newIdx, resource);
         endInsertRows();
-        //         Q_ASSERT(isSorted(resources));
+        // Q_ASSERT(isSorted(resources));
     }
 }
 

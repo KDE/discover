@@ -234,9 +234,9 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *flat
     if (!r)
         r = m_resources.value(idForInstalledRef(flatpakInstallation, ref, QStringLiteral(".desktop")));
 
-    //     if (!r) {
-    //         qDebug() << "no" << flatpak_ref_get_name(FLATPAK_REF(ref));
-    //     }
+    // if (!r) {
+    //     qDebug() << "no" << flatpak_ref_get_name(FLATPAK_REF(ref));
+    // }
     return r;
 }
 

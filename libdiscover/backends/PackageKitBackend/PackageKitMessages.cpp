@@ -217,7 +217,7 @@ QString statusMessage(PackageKit::Transaction::Status status)
         return i18n("Updating...");
     case PackageKit::Transaction::StatusCleanup:
         return i18n("Cleaning up...");
-        //         case PackageKit::Transaction::StatusObsolete:
+        // case PackageKit::Transaction::StatusObsolete:
     case PackageKit::Transaction::StatusDepResolve:
         return i18n("Resolving dependencies...");
     case PackageKit::Transaction::StatusSigCheck:

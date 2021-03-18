@@ -48,7 +48,7 @@ QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::backendForFile(cons
 {
     QPluginLoader *loader = new QPluginLoader(QLatin1String("discover/") + libname, ResourcesModel::global());
 
-    //     qCDebug(LIBDISCOVER_LOG) << "trying to load plugin:" << loader->fileName();
+    // qCDebug(LIBDISCOVER_LOG) << "trying to load plugin:" << loader->fileName();
     AbstractResourcesBackendFactory *f = qobject_cast<AbstractResourcesBackendFactory *>(loader->instance());
     if (!f) {
         qCWarning(LIBDISCOVER_LOG) << "error loading" << libname << loader->errorString() << loader->metaData();

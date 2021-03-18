@@ -145,8 +145,8 @@ void ResourcesUpdatesModel::init()
         }
     }
 
-    //     To enable from command line use:
-    //     kwriteconfig5 --file discoverrc --group Software --key UseOfflineUpdates true
+    // To enable from command line use:
+    // kwriteconfig5 --file discoverrc --group Software --key UseOfflineUpdates true
     KConfigGroup group(KSharedConfig::openConfig(), "Software");
     m_offlineUpdates = group.readEntry<bool>("UseOfflineUpdates", false);
 

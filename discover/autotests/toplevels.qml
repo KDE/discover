@@ -87,7 +87,7 @@ DiscoverTest
         app.openSearch("dummy")
         listPage = appRoot.stack.currentItem
         compare(listPage.search, "dummy")
-//         compare(listPage.count, ResourcesModel.rowCount()/2)
+//     compare(listPage.count, ResourcesModel.rowCount()/2)
     }
 
     function test_modes() {

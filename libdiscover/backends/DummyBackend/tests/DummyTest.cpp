@@ -81,7 +81,7 @@ void DummyTest::testProxy()
 {
     ResourcesProxyModel pm;
     QSignalSpy spy(&pm, &ResourcesProxyModel::busyChanged);
-    //     QVERIFY(spy.wait());
+    // QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
 
     pm.setFiltersFromCategory(CategoryModel::global()->rootCategories().first());
@@ -108,7 +108,7 @@ void DummyTest::testProxySorting()
 {
     ResourcesProxyModel pm;
     QSignalSpy spy(&pm, &ResourcesProxyModel::busyChanged);
-    //     QVERIFY(spy.wait());
+    // QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
 
     pm.setFiltersFromCategory(CategoryModel::global()->rootCategories().first());

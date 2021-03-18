@@ -210,8 +210,8 @@ void FwupdBackend::handleError(GError *perror)
         });
         qWarning() << "Fwupd Error" << perror->code << perror->message;
     }
-    //     else
-    //         qDebug() << "Fwupd skipped" << perror->code << perror->message;
+    // else
+    //     qDebug() << "Fwupd skipped" << perror->code << perror->message;
 }
 
 QString FwupdBackend::cacheFile(const QString &kind, const QString &basename)

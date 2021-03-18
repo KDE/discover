@@ -391,7 +391,7 @@ void PackageKitUpdater::start()
 
 void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time*/)
 {
-    //     qCDebug(LIBDISCOVER_BACKEND_LOG) << "update finished!" << exit << time;
+    // qCDebug(LIBDISCOVER_BACKEND_LOG) << "update finished!" << exit << time;
     if (!m_proceedFunctions.isEmpty())
         return;
     const bool cancel = exit == PackageKit::Transaction::ExitCancelled;

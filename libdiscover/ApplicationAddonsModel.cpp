@@ -14,7 +14,7 @@ ApplicationAddonsModel::ApplicationAddonsModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_app(nullptr)
 {
-    //     new QAbstractItemModelTester(this, this);
+    // new QAbstractItemModelTester(this, this);
 
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &ApplicationAddonsModel::transactionOver);
 }

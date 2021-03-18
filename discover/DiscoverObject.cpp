@@ -252,7 +252,7 @@ void DiscoverObject::openCategory(const QString &category)
 void DiscoverObject::openLocalPackage(const QUrl &localfile)
 {
     if (!QFile::exists(localfile.toLocalFile())) {
-        //         showPassiveNotification(i18n("Trying to open unexisting file '%1'", localfile.toString()));
+        // showPassiveNotification(i18n("Trying to open unexisting file '%1'", localfile.toString()));
         qCWarning(DISCOVER_LOG) << "Trying to open unexisting file" << localfile;
         return;
     }
@@ -372,8 +372,8 @@ bool DiscoverObject::eventFilter(QObject *object, QEvent *event)
         KConfigGroup window(KSharedConfig::openConfig(), "Window");
         window.writeEntry("geometry", rootObject()->geometry());
         window.writeEntry<int>("visibility", rootObject()->visibility());
-        //     } else if (event->type() == QEvent::ShortcutOverride) {
-        //         qCWarning(DISCOVER_LOG) << "Action conflict" << event;
+        // } else if (event->type() == QEvent::ShortcutOverride) {
+        //     qCWarning(DISCOVER_LOG) << "Action conflict" << event;
     }
     return false;
 }
@@ -423,9 +423,9 @@ void DiscoverObject::reportBug()
 
 void DiscoverObject::switchApplicationLanguage()
 {
-    //     auto langDialog = new KSwitchLanguageDialog(nullptr);
-    //     connect(langDialog, SIGNAL(finished(int)), this, SLOT(dialogFinished()));
-    //     langDialog->show();
+    // auto langDialog = new KSwitchLanguageDialog(nullptr);
+    // connect(langDialog, SIGNAL(finished(int)), this, SLOT(dialogFinished()));
+    // langDialog->show();
 }
 
 void DiscoverObject::setCompactMode(DiscoverObject::CompactMode mode)

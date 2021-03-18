@@ -349,7 +349,7 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List &entries)
         setFetching(false);
         return;
     }
-    //     qDebug() << "received" << objectName() << this << m_resourcesByName.count();
+    // qDebug() << "received" << objectName() << this << m_resourcesByName.count();
     if (m_onePage) {
         Q_EMIT availableForQueries();
         setFetching(false);

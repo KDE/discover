@@ -94,8 +94,8 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
         };
     Q_ASSERT(m_trans);
 
-    //     connect(m_trans.data(), &PackageKit::Transaction::statusChanged, this, [this]() { qCDebug(LIBDISCOVER_BACKEND_LOG) << "state..." <<
-    //     m_trans->status(); });
+    // connect(m_trans.data(), &PackageKit::Transaction::statusChanged, this, [this]() { qCDebug(LIBDISCOVER_BACKEND_LOG) << "state..." <<
+    // m_trans->status(); });
     connect(m_trans.data(), &PackageKit::Transaction::package, this, &PKTransaction::packageResolved);
     connect(m_trans.data(), &PackageKit::Transaction::finished, this, &PKTransaction::cleanup);
     connect(m_trans.data(), &PackageKit::Transaction::errorCode, this, &PKTransaction::errorFound);

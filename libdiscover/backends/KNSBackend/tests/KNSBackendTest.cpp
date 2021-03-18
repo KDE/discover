@@ -88,9 +88,9 @@ void KNSBackendTest::testRetrieval()
         QVERIFY(!res->categories().isEmpty());
         QVERIFY(!res->origin().isEmpty());
         QVERIFY(!res->icon().isNull());
-        //         QVERIFY(!res->comment().isEmpty());
-        //         QVERIFY(!res->longDescription().isEmpty());
-        //         QVERIFY(!res->license().isEmpty());
+        //     QVERIFY(!res->comment().isEmpty());
+        //     QVERIFY(!res->longDescription().isEmpty());
+        //     QVERIFY(!res->license().isEmpty());
         QVERIFY(res->homepage().isValid() && !res->homepage().isEmpty());
         QVERIFY(res->state() > AbstractResource::Broken);
         QVERIFY(res->addonsInformation().isEmpty());

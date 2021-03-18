@@ -144,8 +144,8 @@ public:
     void setRuntime(const QString &runtime);
     void setState(State state);
     void setType(ResourceType type);
-    //     void setAddons(const AddonList& addons);
-    //     void setAddonInstalled(const QString& addon, bool installed);
+    // void setAddons(const AddonList& addons);
+    // void setAddonInstalled(const QString& addon, bool installed);
 
     void updateFromRef(FlatpakRef *ref);
     QString ref() const;

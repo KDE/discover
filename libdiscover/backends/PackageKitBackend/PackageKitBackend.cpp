@@ -606,8 +606,8 @@ PKResultsStream *PackageKitBackend::findResourceByPackageName(const QUrl &url)
                 if (pkg)
                     stream->setResources({pkg});
                 stream->finish();
-                //             if (!pkg)
-                //                 qCDebug(LIBDISCOVER_BACKEND_LOG) << "could not find" << host << deprecatedHost;
+                //         if (!pkg)
+                //             qCDebug(LIBDISCOVER_BACKEND_LOG) << "could not find" << host << deprecatedHost;
             };
             runWhenInitialized(f, stream);
             return stream;

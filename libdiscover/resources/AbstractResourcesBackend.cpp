@@ -74,7 +74,7 @@ AbstractResourcesBackend::AbstractResourcesBackend(QObject *parent)
     });
 
     connect(this, &AbstractResourcesBackend::fetchingChanged, this, [this, fetchingChangedTimer] {
-        //         Q_ASSERT(isFetching() != fetchingChangedTimer->isActive());
+        // Q_ASSERT(isFetching() != fetchingChangedTimer->isActive());
         if (isFetching())
             fetchingChangedTimer->start();
         else

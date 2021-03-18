@@ -27,7 +27,7 @@ QDebug operator<<(QDebug debug, const QSnapdPlug &plug)
     debug.nospace() << "snap:" << plug.snap() << ',';
     debug.nospace() << "label:" << plug.label() << ',';
     debug.nospace() << "interface:" << plug.interface() << ',';
-    //     debug.nospace() << "connectionCount:" << plug.connectionSlotCount();
+    // debug.nospace() << "connectionCount:" << plug.connectionSlotCount();
     debug.nospace() << ')';
     return debug;
 }
@@ -40,7 +40,7 @@ QDebug operator<<(QDebug debug, const QSnapdSlot &slot)
     debug.nospace() << "label:" << slot.label() << ',';
     debug.nospace() << "snap:" << slot.snap() << ',';
     debug.nospace() << "interface:" << slot.interface() << ',';
-    //     debug.nospace() << "connectionCount:" << slot.connectionSlotCount();
+    // debug.nospace() << "connectionCount:" << slot.connectionSlotCount();
     debug.nospace() << ')';
     return debug;
 }
@@ -97,7 +97,7 @@ QString SnapResource::comment()
 
 int SnapResource::size()
 {
-    //     return isInstalled() ? m_snap->installedSize() : m_snap->downloadSize();
+    // return isInstalled() ? m_snap->installedSize() : m_snap->downloadSize();
     return m_snap->downloadSize();
 }
 
@@ -351,8 +351,8 @@ public:
                     else
                         item->setText(i18n("%1 - %2", plug->name(), plug->label()));
 
-                    //                     qDebug() << "xxx" << plug->name() << plug->label() << plug->interface() << slot->snap() << "slot:" << slot->name() <<
-                    //                     slot->snap() << slot->interface() << slot->label();
+                    // qDebug() << "xxx" << plug->name() << plug->label() << plug->interface() << slot->snap() << "slot:" << slot->name() <<
+                    // slot->snap() << slot->interface() << slot->label();
                     item->setCheckable(true);
                     item->setCheckState(plug->connectionCount() > 0 ? Qt::Checked : Qt::Unchecked);
                     item->setData(plug->name(), PlugNameRole);
