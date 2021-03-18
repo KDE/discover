@@ -99,6 +99,7 @@ Kirigami.AbstractListItem {
                             }
                             ToolButton {
                                 icon.name: "dialog-cancel"
+                                text: i18n("Cancel")
                                 visible: listener.isCancellable
                                 onClicked: listener.cancel()
                             }
