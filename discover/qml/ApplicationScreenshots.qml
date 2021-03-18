@@ -92,6 +92,16 @@ ListView {
 
         Button {
             anchors {
+                left: parent.right
+                bottom: parent.top
+            }
+            icon.name: "window-close"
+            onClicked: overlay.close()
+        }
+
+
+        Button {
+            anchors {
                 right: parent.left
                 verticalCenter: parent.verticalCenter
             }
