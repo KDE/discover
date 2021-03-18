@@ -5,7 +5,6 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-
 #ifndef FLATPAKRESOURCE_H
 #define FLATPAKRESOURCE_H
 
@@ -23,9 +22,9 @@ class AddonList;
 class FlatpakBackend;
 class FlatpakResource : public AbstractResource
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    explicit FlatpakResource(const AppStream::Component &component, FlatpakInstallation* installation, FlatpakBackend *parent);
+    explicit FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent);
 
     enum PropertyKind {
         DownloadSize = 0,
@@ -51,24 +50,26 @@ public:
     Q_ENUM(ResourceType)
 
     struct Id {
-        FlatpakInstallation * const installation;
+        FlatpakInstallation *const installation;
         QString origin;
         FlatpakResource::ResourceType type;
         const QString id;
         QString branch;
         QString arch;
-        bool operator!=(const Id& other) const { return !operator==(other); }
-        bool operator==(const Id& other) const { return &other == this || (
-               other.installation == installation
-            && other.origin == origin
-            && other.type == type
-            && other.id == id
-            && other.branch == branch
-            && other.arch == arch
-        ); }
+        bool operator!=(const Id &other) const
+        {
+            return !operator==(other);
+        }
+        bool operator==(const Id &other) const
+        {
+            return &other == this
+                || (other.installation == installation && other.origin == origin && other.type == type && other.id == id && other.branch == branch
+                    && other.arch == arch);
+        }
     };
 
-    static QString typeAsString(ResourceType type) {
+    static QString typeAsString(ResourceType type)
+    {
         if (type == DesktopApp) {
             return QLatin1String("app");
         }
@@ -76,7 +77,7 @@ public:
     }
 
     QString installationPath() const;
-    static QString installationPath(FlatpakInstallation* installation);
+    static QString installationPath(FlatpakInstallation *installation);
 
     AppStream::Component appstreamComponent() const;
     QList<PackageState> addonsInformation() override;
@@ -119,7 +120,10 @@ public:
     QString author() const override;
     QStringList extends() const override;
 
-    FlatpakInstallation* installation() const { return m_id.installation; }
+    FlatpakInstallation *installation() const
+    {
+        return m_id.installation;
+    }
 
     void invokeApplication() const override;
     void fetchChangelog() override;
@@ -140,10 +144,10 @@ public:
     void setRuntime(const QString &runtime);
     void setState(State state);
     void setType(ResourceType type);
-//     void setAddons(const AddonList& addons);
-//     void setAddonInstalled(const QString& addon, bool installed);
+    //     void setAddons(const AddonList& addons);
+    //     void setAddonInstalled(const QString& addon, bool installed);
 
-    void updateFromRef(FlatpakRef* ref);
+    void updateFromRef(FlatpakRef *ref);
     QString ref() const;
     QString sourceIcon() const override;
     QString installPath() const;
@@ -173,13 +177,7 @@ private:
 
 inline uint qHash(const FlatpakResource::Id &key)
 {
-    return qHash(key.installation)
-         ^ qHash(key.origin)
-         ^ qHash(key.type)
-         ^ qHash(key.id)
-         ^ qHash(key.branch)
-         ^ qHash(key.arch)
-         ;
+    return qHash(key.installation) ^ qHash(key.origin) ^ qHash(key.type) ^ qHash(key.id) ^ qHash(key.branch) ^ qHash(key.arch);
 }
 
 #endif // FLATPAKRESOURCE_H

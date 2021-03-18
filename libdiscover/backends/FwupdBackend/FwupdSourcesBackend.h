@@ -8,9 +8,9 @@
 #ifndef FWUPDSOURCESBACKEND_H
 #define FWUPDSOURCESBACKEND_H
 
-#include <resources/AbstractSourcesBackend.h>
 #include "FwupdBackend.h"
 #include <QStandardItemModel>
+#include <resources/AbstractSourcesBackend.h>
 
 class FwupdSourcesModel;
 
@@ -18,25 +18,31 @@ class FwupdSourcesBackend : public AbstractSourcesBackend
 {
     Q_OBJECT
 public:
-    explicit FwupdSourcesBackend(AbstractResourcesBackend * parent);
+    explicit FwupdSourcesBackend(AbstractResourcesBackend *parent);
 
-    FwupdBackend* backend ;
-    QAbstractItemModel* sources() override;
-    bool addSource(const QString& id) override;
-    bool removeSource(const QString& id) override;
-    QString idDescription() override { return QString(); }
+    FwupdBackend *backend;
+    QAbstractItemModel *sources() override;
+    bool addSource(const QString &id) override;
+    bool removeSource(const QString &id) override;
+    QString idDescription() override
+    {
+        return QString();
+    }
     QVariantList actions() const override;
-    bool supportsAdding() const override { return false; }
-    void eulaRequired(const QString& remoteName, const QString& licenseAgreement);
+    bool supportsAdding() const override
+    {
+        return false;
+    }
+    void eulaRequired(const QString &remoteName, const QString &licenseAgreement);
     void populateSources();
 
     void proceed() override;
     void cancel() override;
 
-    QStandardItem* m_currentItem = nullptr;
+    QStandardItem *m_currentItem = nullptr;
 
 private:
-    FwupdSourcesModel* m_sources;
+    FwupdSourcesModel *m_sources;
 };
 
 #endif // FWUPDSOURCESBACKEND_H

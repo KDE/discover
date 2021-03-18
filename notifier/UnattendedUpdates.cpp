@@ -7,16 +7,16 @@
 #include "UnattendedUpdates.h"
 #include "DiscoverNotifier.h"
 #include <KIdleTime>
-#include <QProcess>
 #include <QDateTime>
 #include <QDebug>
+#include <QProcess>
 #include <chrono>
 
-UnattendedUpdates::UnattendedUpdates(DiscoverNotifier* parent)
+UnattendedUpdates::UnattendedUpdates(DiscoverNotifier *parent)
     : QObject(parent)
 {
     connect(parent, &DiscoverNotifier::stateChanged, this, &UnattendedUpdates::checkNewState);
-    connect(KIdleTime::instance(), QOverload<int,int>::of(&KIdleTime::timeoutReached), this, &UnattendedUpdates::triggerUpdate);
+    connect(KIdleTime::instance(), QOverload<int, int>::of(&KIdleTime::timeoutReached), this, &UnattendedUpdates::triggerUpdate);
 
     checkNewState();
 }
@@ -28,7 +28,7 @@ UnattendedUpdates::~UnattendedUpdates() noexcept
 
 void UnattendedUpdates::checkNewState()
 {
-    DiscoverNotifier* notifier = static_cast<DiscoverNotifier*>(parent());
+    DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
     if (notifier->hasUpdates()) {
         qDebug() << "waiting for an idle moment";
         // If the system is untouched for 1 hour, trigger the unattened update
@@ -42,23 +42,23 @@ void UnattendedUpdates::checkNewState()
 void UnattendedUpdates::triggerUpdate()
 {
     KIdleTime::instance()->removeAllIdleTimeouts();
-    DiscoverNotifier* notifier = static_cast<DiscoverNotifier*>(parent());
+    DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
     if (!notifier->hasUpdates() || notifier->isBusy()) {
         return;
     }
 
     auto process = new QProcess(this);
-    connect(process, &QProcess::errorOccurred, this, [] (QProcess::ProcessError error) {
+    connect(process, &QProcess::errorOccurred, this, [](QProcess::ProcessError error) {
         qWarning() << "Error running plasma-discover-update" << error;
     });
-    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, process] (int exitCode, QProcess::ExitStatus exitStatus) {
+    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
         qDebug() << "Finished running plasma-discover-update" << exitCode << exitStatus;
-        DiscoverNotifier* notifier = static_cast<DiscoverNotifier*>(parent());
+        DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
         notifier->setBusy(false);
         process->deleteLater();
     });
 
     notifier->setBusy(true);
-    process->start(QStringLiteral("plasma-discover-update"), { QStringLiteral("--offline") });
+    process->start(QStringLiteral("plasma-discover-update"), {QStringLiteral("--offline")});
     qInfo() << "started unattended update" << QDateTime::currentDateTimeUtc();
 }

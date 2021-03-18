@@ -14,13 +14,15 @@
 
 class DISCOVERCOMMON_EXPORT Rating
 {
-Q_GADGET
-Q_PROPERTY(double sortableRating READ sortableRating CONSTANT)
-Q_PROPERTY(float rating READ rating CONSTANT)
-Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
-Q_PROPERTY(quint64 ratingCount READ ratingCount CONSTANT)
+    Q_GADGET
+    Q_PROPERTY(double sortableRating READ sortableRating CONSTANT)
+    Q_PROPERTY(float rating READ rating CONSTANT)
+    Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
+    Q_PROPERTY(quint64 ratingCount READ ratingCount CONSTANT)
 public:
-    Rating() {}
+    Rating()
+    {
+    }
     explicit Rating(const QString &packageName, quint64 ratingCount, int rating);
     explicit Rating(const QString &packageName, quint64 ratingCount, int data[6]);
     ~Rating();

@@ -5,21 +5,21 @@
  */
 
 #include "ApplicationAddonsModel.h"
-#include <resources/ResourcesModel.h>
-#include <resources/AbstractResource.h>
-#include <Transaction/TransactionModel.h>
 #include "libdiscover_debug.h"
+#include <Transaction/TransactionModel.h>
+#include <resources/AbstractResource.h>
+#include <resources/ResourcesModel.h>
 
-ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
+ApplicationAddonsModel::ApplicationAddonsModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_app(nullptr)
 {
-//     new QAbstractItemModelTester(this, this);
+    //     new QAbstractItemModelTester(this, this);
 
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &ApplicationAddonsModel::transactionOver);
 }
 
-QHash< int, QByteArray > ApplicationAddonsModel::roleNames() const
+QHash<int, QByteArray> ApplicationAddonsModel::roleNames() const
 {
     QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
@@ -27,7 +27,7 @@ QHash< int, QByteArray > ApplicationAddonsModel::roleNames() const
     return roles;
 }
 
-void ApplicationAddonsModel::setApplication(AbstractResource* app)
+void ApplicationAddonsModel::setApplication(AbstractResource *app)
 {
     if (app == m_app)
         return;
@@ -38,7 +38,7 @@ void ApplicationAddonsModel::setApplication(AbstractResource* app)
     m_app = app;
     resetState();
     if (m_app) {
-        connect(m_app, &QObject::destroyed, this, [this](){
+        connect(m_app, &QObject::destroyed, this, [this]() {
             setApplication(nullptr);
         });
     }
@@ -55,45 +55,45 @@ void ApplicationAddonsModel::resetState()
     emit stateChanged();
 }
 
-AbstractResource* ApplicationAddonsModel::application() const
+AbstractResource *ApplicationAddonsModel::application() const
 {
     return m_app;
 }
 
-int ApplicationAddonsModel::rowCount(const QModelIndex& parent) const
+int ApplicationAddonsModel::rowCount(const QModelIndex &parent) const
 {
-    return parent.isValid()? 0 : m_initial.size();
+    return parent.isValid() ? 0 : m_initial.size();
 }
 
-QVariant ApplicationAddonsModel::data(const QModelIndex& index, int role) const
+QVariant ApplicationAddonsModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid() || index.row()>=m_initial.size())
+    if (!index.isValid() || index.row() >= m_initial.size())
         return QVariant();
-    
-    switch(role) {
-        case Qt::DisplayRole:
-            return m_initial[index.row()].name();
-        case Qt::ToolTipRole:
-            return m_initial[index.row()].description();
-        case PackageNameRole:
-            return m_initial[index.row()].packageName();
-        case Qt::CheckStateRole: {
-            const PackageState init = m_initial[index.row()];
-            const AddonList::State state = m_state.addonState(init.name());
-            if(state == AddonList::None) {
-                return init.isInstalled() ? Qt::Checked : Qt::Unchecked;
-            } else {
-                return state == AddonList::ToInstall ? Qt::Checked : Qt::Unchecked;
-            }
+
+    switch (role) {
+    case Qt::DisplayRole:
+        return m_initial[index.row()].name();
+    case Qt::ToolTipRole:
+        return m_initial[index.row()].description();
+    case PackageNameRole:
+        return m_initial[index.row()].packageName();
+    case Qt::CheckStateRole: {
+        const PackageState init = m_initial[index.row()];
+        const AddonList::State state = m_state.addonState(init.name());
+        if (state == AddonList::None) {
+            return init.isInstalled() ? Qt::Checked : Qt::Unchecked;
+        } else {
+            return state == AddonList::ToInstall ? Qt::Checked : Qt::Unchecked;
         }
     }
-    
+    }
+
     return QVariant();
 }
 
 void ApplicationAddonsModel::discardChanges()
 {
-    //dataChanged should suffice, but it doesn't
+    // dataChanged should suffice, but it doesn't
     beginResetModel();
     m_state.clear();
     emit stateChanged();
@@ -105,18 +105,18 @@ void ApplicationAddonsModel::applyChanges()
     ResourcesModel::global()->installApplication(m_app, m_state);
 }
 
-void ApplicationAddonsModel::changeState(const QString& packageName, bool installed)
+void ApplicationAddonsModel::changeState(const QString &packageName, bool installed)
 {
     auto it = m_initial.constBegin();
-    for(; it != m_initial.constEnd(); ++it) {
-        if(it->packageName()==packageName)
+    for (; it != m_initial.constEnd(); ++it) {
+        if (it->packageName() == packageName)
             break;
     }
     Q_ASSERT(it != m_initial.constEnd());
-    
-    const bool restored = it->isInstalled()==installed;
 
-    if(restored)
+    const bool restored = it->isInstalled() == installed;
+
+    if (restored)
         m_state.resetAddon(packageName);
     else
         m_state.addAddon(packageName, installed);
@@ -134,7 +134,7 @@ bool ApplicationAddonsModel::isEmpty() const
     return m_initial.isEmpty();
 }
 
-void ApplicationAddonsModel::transactionOver(Transaction* t)
+void ApplicationAddonsModel::transactionOver(Transaction *t)
 {
     if (t->resource() != m_app)
         return;

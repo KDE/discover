@@ -8,7 +8,8 @@
 #include "libdiscover_debug.h"
 
 AddonList::AddonList()
-{}
+{
+}
 
 bool AddonList::isEmpty() const
 {
@@ -48,17 +49,17 @@ void AddonList::clear()
     m_toRemove.clear();
 }
 
-AddonList::State AddonList::addonState(const QString& addonName) const
+AddonList::State AddonList::addonState(const QString &addonName) const
 {
-    if(m_toInstall.contains(addonName))
+    if (m_toInstall.contains(addonName))
         return ToInstall;
-    else if(m_toRemove.contains(addonName))
+    else if (m_toRemove.contains(addonName))
         return ToRemove;
     else
         return None;
 }
 
-QDebug operator<<(QDebug debug, const AddonList& addons)
+QDebug operator<<(QDebug debug, const AddonList &addons)
 {
     QDebugStateSaver saver(debug);
     debug.nospace() << "AddonsList(";

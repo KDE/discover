@@ -6,31 +6,31 @@
 
 #include "DiscoverDeclarativePlugin.h"
 #include "ReadFile.h"
-#include <Category/CategoryModel.h>
+#include <ApplicationAddonsModel.h>
 #include <Category/Category.h>
+#include <Category/CategoryModel.h>
+#include <QAction>
+#include <QQmlContext>
+#include <QQmlEngine>
+#include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <ReviewsBackend/Rating.h>
+#include <ReviewsBackend/ReviewsModel.h>
+#include <ScreenshotsModel.h>
+#include <Transaction/Transaction.h>
 #include <Transaction/TransactionListener.h>
 #include <Transaction/TransactionModel.h>
-#include <Transaction/Transaction.h>
-#include <resources/DiscoverAction.h>
-#include <resources/ResourcesUpdatesModel.h>
-#include <resources/AbstractResource.h>
-#include <resources/ResourcesModel.h>
-#include <resources/SourcesModel.h>
-#include <resources/AbstractSourcesBackend.h>
-#include <resources/AbstractBackendUpdater.h>
-#include <resources/ResourcesProxyModel.h>
-#include <ReviewsBackend/Rating.h>
-#include <ReviewsBackend/AbstractReviewsBackend.h>
-#include <ReviewsBackend/ReviewsModel.h>
 #include <UpdateModel/UpdateModel.h>
-#include <ScreenshotsModel.h>
-#include <ApplicationAddonsModel.h>
 #include <qqml.h>
-#include <QQmlEngine>
-#include <QQmlContext>
-#include <QAction>
+#include <resources/AbstractBackendUpdater.h>
+#include <resources/AbstractResource.h>
+#include <resources/AbstractSourcesBackend.h>
+#include <resources/DiscoverAction.h>
+#include <resources/ResourcesModel.h>
+#include <resources/ResourcesProxyModel.h>
+#include <resources/ResourcesUpdatesModel.h>
+#include <resources/SourcesModel.h>
 
-void DiscoverDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char* uri)
+void DiscoverDeclarativePlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 {
     engine->rootContext()->setContextProperty(QStringLiteral("ResourcesModel"), ResourcesModel::global());
     engine->rootContext()->setContextProperty(QStringLiteral("TransactionModel"), TransactionModel::global());
@@ -39,7 +39,7 @@ void DiscoverDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char*
     QQmlExtensionPlugin::initializeEngine(engine, uri);
 }
 
-void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
+void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
 {
     qmlRegisterType<TransactionListener>("org.kde.discover", 2, 0, "TransactionListener");
     qmlRegisterType<ResourcesUpdatesModel>("org.kde.discover", 2, 0, "ResourcesUpdatesModel");
@@ -65,5 +65,5 @@ void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
     qmlRegisterAnonymousType<Category>("org.kde.discover", 1);
     qmlRegisterAnonymousType<ResourcesModel>("org.kde.discover", 1);
     qmlProtectModule("org.kde.discover", 2);
-    qRegisterMetaType<QList<QAction*>>();
+    qRegisterMetaType<QList<QAction *>>();
 }

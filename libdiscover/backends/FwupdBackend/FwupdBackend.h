@@ -10,19 +10,19 @@
 
 #include <resources/AbstractResourcesBackend.h>
 
-#include <QString>
-#include <QDir>
+#include <QCryptographicHash>
 #include <QDebug>
-#include <QTimer>
-#include <QMimeDatabase>
-#include <QVariantList>
-#include <QSet>
+#include <QDir>
 #include <QFileInfo>
+#include <QMap>
+#include <QMimeDatabase>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
-#include <QCryptographicHash>
-#include <QMap>
+#include <QSet>
+#include <QString>
+#include <QTimer>
+#include <QVariantList>
 
 extern "C" {
 #include <fwupd.h>
@@ -34,24 +34,33 @@ class StandardBackendUpdater;
 class FwupdResource;
 class FwupdBackend : public AbstractResourcesBackend
 {
-Q_OBJECT
-Q_PROPERTY(int startElements MEMBER m_startElements)
+    Q_OBJECT
+    Q_PROPERTY(int startElements MEMBER m_startElements)
 public:
-    explicit FwupdBackend(QObject* parent = nullptr);
+    explicit FwupdBackend(QObject *parent = nullptr);
     ~FwupdBackend();
 
     int updatesCount() const override;
-    AbstractBackendUpdater* backendUpdater() const override;
-    AbstractReviewsBackend* reviewsBackend() const override;
-    ResultsStream* search(const AbstractResourcesBackend::Filters & search) override;
-    ResultsStream * findResourceByPackageName(const QUrl& search) ;
-    QHash<QString, FwupdResource*> resources() const { return m_resources; }
-    bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
+    AbstractBackendUpdater *backendUpdater() const override;
+    AbstractReviewsBackend *reviewsBackend() const override;
+    ResultsStream *search(const AbstractResourcesBackend::Filters &search) override;
+    ResultsStream *findResourceByPackageName(const QUrl &search);
+    QHash<QString, FwupdResource *> resources() const
+    {
+        return m_resources;
+    }
+    bool isValid() const override
+    {
+        return true;
+    } // No external file dependencies that could cause runtime errors
 
-    Transaction* installApplication(AbstractResource* app) override;
-    Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;
-    Transaction* removeApplication(AbstractResource* app) override;
-    bool isFetching() const override { return m_fetching; }
+    Transaction *installApplication(AbstractResource *app) override;
+    Transaction *installApplication(AbstractResource *app, const AddonList &addons) override;
+    Transaction *removeApplication(AbstractResource *app) override;
+    bool isFetching() const override
+    {
+        return m_fetching;
+    }
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override;
@@ -59,28 +68,28 @@ public:
     void handleError(GError *perror);
 
     static QString cacheFile(const QString &kind, const QString &baseName);
-    void setDevices(GPtrArray*);
-    void setRemotes(GPtrArray*);
+    void setDevices(GPtrArray *);
+    void setRemotes(GPtrArray *);
 
 Q_SIGNALS:
     void initialized();
 
 private:
-    ResultsStream* resourceForFile(const QUrl & );
+    ResultsStream *resourceForFile(const QUrl &);
     void addUpdates();
     void addResource(FwupdResource *res);
 
-    static QMap<GChecksumType,QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
+    static QMap<GChecksumType, QCryptographicHash::Algorithm> gchecksumToQChryptographicHash();
     static QByteArray getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm);
 
-    FwupdResource * createRelease(FwupdDevice *device);
-    FwupdResource * createApp(FwupdDevice *device);
+    FwupdResource *createRelease(FwupdDevice *device);
+    FwupdResource *createApp(FwupdDevice *device);
 
-    QHash<QString, FwupdResource*> m_resources;
-    StandardBackendUpdater* m_updater;
+    QHash<QString, FwupdResource *> m_resources;
+    StandardBackendUpdater *m_updater;
     bool m_fetching = false;
     int m_startElements;
-    QList<AbstractResource*> m_toUpdate;
+    QList<AbstractResource *> m_toUpdate;
     GCancellable *m_cancellable;
 };
 

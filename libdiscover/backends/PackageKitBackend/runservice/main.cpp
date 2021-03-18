@@ -4,15 +4,15 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#include <QGuiApplication>
+#include <KIO/ApplicationLauncherJob>
+#include <KService>
 #include <QFile>
+#include <QGuiApplication>
+#include <QProcess>
 #include <QTextStream>
 #include <QUrl>
-#include <QProcess>
-#include <KService>
-#include <KIO/ApplicationLauncherJob>
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     QGuiApplication app(argc, argv);
     if (app.arguments().size() != 2)

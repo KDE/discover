@@ -7,7 +7,7 @@
 
 #include <QDebug>
 
-DummyNotifier::DummyNotifier(QObject* parent)
+DummyNotifier::DummyNotifier(QObject *parent)
     : BackendNotifierModule(parent)
 {
 }
@@ -20,4 +20,3 @@ void DummyNotifier::recheckSystemUpdateNeeded()
 {
     emit foundUpdates();
 }
-

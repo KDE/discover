@@ -7,33 +7,33 @@
 #ifndef PKRESOLVETRANSACTION_H
 #define PKRESOLVETRANSACTION_H
 
-#include <QObject>
-#include <QVector>
-#include <QTimer>
 #include <PackageKit/Transaction>
+#include <QObject>
+#include <QTimer>
+#include <QVector>
 
 class PackageKitBackend;
 
 class PKResolveTransaction : public QObject
 {
     Q_OBJECT
-    public:
-        PKResolveTransaction(PackageKitBackend* backend);
+public:
+    PKResolveTransaction(PackageKitBackend *backend);
 
-        void start();
-        void addPackageNames(const QStringList &packageNames);
+    void start();
+    void addPackageNames(const QStringList &packageNames);
 
-    Q_SIGNALS:
-        void allFinished();
-        void started();
+Q_SIGNALS:
+    void allFinished();
+    void started();
 
-    private:
-        void transactionFinished(PackageKit::Transaction::Exit exit);
+private:
+    void transactionFinished(PackageKit::Transaction::Exit exit);
 
-        QTimer m_floodTimer;
-        QStringList m_packageNames;
-        QVector<PackageKit::Transaction*> m_transactions;
-        PackageKitBackend* const m_backend;
+    QTimer m_floodTimer;
+    QStringList m_packageNames;
+    QVector<PackageKit::Transaction *> m_transactions;
+    PackageKitBackend *const m_backend;
 };
 
 #endif

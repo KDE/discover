@@ -6,20 +6,20 @@
 
 #include "NotifierItem.h"
 #include <KLocalizedString>
-#include <QMenu>
 #include <QDebug>
+#include <QMenu>
 
 KStatusNotifierItem::ItemStatus sniStatus(DiscoverNotifier::State state)
 {
     switch (state) {
-        case DiscoverNotifier::Offline:
-        case DiscoverNotifier::NoUpdates:
-            return KStatusNotifierItem::Passive;
-        case DiscoverNotifier::Busy:
-        case DiscoverNotifier::NormalUpdates:
-        case DiscoverNotifier::SecurityUpdates:
-        case DiscoverNotifier::RebootRequired:
-            return KStatusNotifierItem::Active;
+    case DiscoverNotifier::Offline:
+    case DiscoverNotifier::NoUpdates:
+        return KStatusNotifierItem::Passive;
+    case DiscoverNotifier::Busy:
+    case DiscoverNotifier::NormalUpdates:
+    case DiscoverNotifier::SecurityUpdates:
+    case DiscoverNotifier::RebootRequired:
+        return KStatusNotifierItem::Active;
     }
     return KStatusNotifierItem::Active;
 }
@@ -45,7 +45,7 @@ void NotifierItem::setupNotifierItem()
         }
     });
 
-    QMenu* menu = new QMenu;
+    QMenu *menu = new QMenu;
     connect(m_item, &QObject::destroyed, menu, &QObject::deleteLater);
     auto discoverAction = menu->addAction(QIcon::fromTheme(QStringLiteral("plasma-discover")), i18n("Open Discover..."));
     connect(discoverAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::showDiscover);
@@ -68,8 +68,8 @@ void NotifierItem::setupNotifierItem()
     else
         connect(&m_notifier, &DiscoverNotifier::needsRebootChanged, menu, f);
 
-    connect(&m_notifier, &DiscoverNotifier::newUpgradeAction, menu, [menu](UpgradeAction* a) {
-        QAction* action = new QAction(a->description(), menu);
+    connect(&m_notifier, &DiscoverNotifier::newUpgradeAction, menu, [menu](UpgradeAction *a) {
+        QAction *action = new QAction(a->description(), menu);
         connect(action, &QAction::triggered, a, &UpgradeAction::trigger);
         menu->addAction(action);
     });

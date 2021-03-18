@@ -8,10 +8,10 @@
 #ifndef FLATPAKSOURCESBACKEND_H
 #define FLATPAKSOURCESBACKEND_H
 
-#include <resources/AbstractSourcesBackend.h>
-#include <QStandardItemModel>
 #include <QStack>
+#include <QStandardItemModel>
 #include <functional>
+#include <resources/AbstractSourcesBackend.h>
 
 extern "C" {
 #include <flatpak.h>
@@ -21,30 +21,39 @@ class DiscoverAction;
 class FlatpakResource;
 class FlatpakSourcesBackend : public AbstractSourcesBackend
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    explicit FlatpakSourcesBackend(const QVector<FlatpakInstallation *>& installations, AbstractResourcesBackend *parent);
+    explicit FlatpakSourcesBackend(const QVector<FlatpakInstallation *> &installations, AbstractResourcesBackend *parent);
     ~FlatpakSourcesBackend() override;
 
     enum Roles {
         IconUrlRole = LastRole + 1,
     };
 
-    QAbstractItemModel* sources() override;
+    QAbstractItemModel *sources() override;
     bool addSource(const QString &id) override;
     bool removeSource(const QString &id) override;
     QString idDescription() override;
     QVariantList actions() const override;
-    bool supportsAdding() const override { return true; }
-    bool canFilterSources() const override { return true; }
+    bool supportsAdding() const override
+    {
+        return true;
+    }
+    bool canFilterSources() const override
+    {
+        return true;
+    }
 
-    FlatpakRemote * installSource(FlatpakResource *resource);
-    bool canMoveSources() const override { return true; }
+    FlatpakRemote *installSource(FlatpakResource *resource);
+    bool canMoveSources() const override
+    {
+        return true;
+    }
 
-    bool moveSource(const QString & sourceId, int delta) override;
-    int originIndex(const QString& sourceId) const;
-    QStandardItem* sourceByUrl(const QString & url) const;
-    QStandardItem* sourceById(const QString & sourceId) const;
+    bool moveSource(const QString &sourceId, int delta) override;
+    int originIndex(const QString &sourceId) const;
+    QStandardItem *sourceByUrl(const QString &url) const;
+    QStandardItem *sourceById(const QString &sourceId) const;
 
     void cancel() override;
     void proceed() override;
@@ -54,9 +63,9 @@ private:
     void addRemote(FlatpakRemote *remote, FlatpakInstallation *installation);
 
     FlatpakInstallation *m_preferredInstallation;
-    QStandardItemModel* m_sources;
-    DiscoverAction* const m_flathubAction;
-    QStandardItem* m_noSourcesItem;
+    QStandardItemModel *m_sources;
+    DiscoverAction *const m_flathubAction;
+    QStandardItem *m_noSourcesItem;
     QStack<std::function<void()>> m_proceedFunctions;
 };
 

@@ -5,37 +5,37 @@
  */
 
 #include "DummyTest.h"
-#include <QAbstractItemModelTester>
+#include <ApplicationAddonsModel.h>
 #include <KFormat>
+#include <QAbstractItemModelTester>
+#include <ReviewsBackend/ReviewsModel.h>
+#include <Transaction/TransactionModel.h>
+#include <UpdateModel/UpdateModel.h>
+#include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
-#include <resources/AbstractBackendUpdater.h>
-#include <ApplicationAddonsModel.h>
-#include <ReviewsBackend/ReviewsModel.h>
-#include <UpdateModel/UpdateModel.h>
 #include <resources/ResourcesUpdatesModel.h>
-#include <Transaction/TransactionModel.h>
 
 #include <QTest>
 #include <QtTest>
 
-class UpdateDummyTest
-    : public QObject
+class UpdateDummyTest : public QObject
 {
     Q_OBJECT
 public:
-    AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
+    AbstractResourcesBackend *backendByName(ResourcesModel *m, const QString &name)
     {
-        QVector<AbstractResourcesBackend*> backends = m->backends();
-        foreach(AbstractResourcesBackend* backend, backends) {
-            if(QLatin1String(backend->metaObject()->className()) == name) {
+        QVector<AbstractResourcesBackend *> backends = m->backends();
+        foreach (AbstractResourcesBackend *backend, backends) {
+            if (QLatin1String(backend->metaObject()->className()) == name) {
                 return backend;
             }
         }
         return nullptr;
     }
 
-    UpdateDummyTest(QObject* parent = nullptr): QObject(parent)
+    UpdateDummyTest(QObject *parent = nullptr)
+        : QObject(parent)
     {
         m_model = new ResourcesModel(QStringLiteral("dummy-backend"), this);
         m_appBackend = backendByName(m_model, QStringLiteral("DummyBackend"));
@@ -45,7 +45,7 @@ private Q_SLOTS:
     void init()
     {
         QVERIFY(m_appBackend);
-        while(m_appBackend->isFetching()) {
+        while (m_appBackend->isFetching()) {
             QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::fetchingChanged);
             QVERIFY(spy.wait());
         }
@@ -53,10 +53,10 @@ private Q_SLOTS:
 
     void testInformation()
     {
-        ResourcesUpdatesModel* rum = new ResourcesUpdatesModel(this);
+        ResourcesUpdatesModel *rum = new ResourcesUpdatesModel(this);
         new QAbstractItemModelTester(rum, rum);
 
-        UpdateModel* m = new UpdateModel(this);
+        UpdateModel *m = new UpdateModel(this);
         new QAbstractItemModelTester(m, m);
         m->setBackend(rum);
 
@@ -66,7 +66,7 @@ private Q_SLOTS:
         QCOMPARE(m_appBackend->updatesCount(), m_appBackend->property("startElements").toInt());
         QCOMPARE(m->hasUpdates(), true);
 
-        QCOMPARE(m->index(0,0).data(UpdateModel::ChangelogRole).toString(), QString{});
+        QCOMPARE(m->index(0, 0).data(UpdateModel::ChangelogRole).toString(), QString{});
 
         QSignalSpy spy(m, &QAbstractItemModel::dataChanged);
         m->fetchUpdateDetails(0);
@@ -77,10 +77,10 @@ private Q_SLOTS:
 
     void testUpdate()
     {
-        ResourcesUpdatesModel* rum = new ResourcesUpdatesModel(this);
+        ResourcesUpdatesModel *rum = new ResourcesUpdatesModel(this);
         new QAbstractItemModelTester(rum, rum);
 
-        UpdateModel* m = new UpdateModel(this);
+        UpdateModel *m = new UpdateModel(this);
         new QAbstractItemModelTester(m, m);
         m->setBackend(rum);
 
@@ -90,11 +90,11 @@ private Q_SLOTS:
         QCOMPARE(m_appBackend->updatesCount(), m_appBackend->property("startElements").toInt());
         QCOMPARE(m->hasUpdates(), true);
 
-        for(int i=0, c=m->rowCount(); i<c; ++i) {
-            const QModelIndex resourceIdx = m->index(i,0);
+        for (int i = 0, c = m->rowCount(); i < c; ++i) {
+            const QModelIndex resourceIdx = m->index(i, 0);
             QVERIFY(resourceIdx.isValid());
 
-            AbstractResource* res = qobject_cast<AbstractResource*>(resourceIdx.data(UpdateModel::ResourceRole).value<QObject*>());
+            AbstractResource *res = qobject_cast<AbstractResource *>(resourceIdx.data(UpdateModel::ResourceRole).value<QObject *>());
             QVERIFY(res);
 
             QCOMPARE(Qt::CheckState(resourceIdx.data(Qt::CheckStateRole).toInt()), Qt::Checked);
@@ -102,7 +102,7 @@ private Q_SLOTS:
             QCOMPARE(Qt::CheckState(resourceIdx.data(Qt::CheckStateRole).toInt()), Qt::Unchecked);
             QCOMPARE(resourceIdx.data(Qt::DisplayRole).toString(), res->name());
 
-            if (i!=0) {
+            if (i != 0) {
                 QVERIFY(m->setData(resourceIdx, int(Qt::Checked), Qt::CheckStateRole));
             }
         }
@@ -147,8 +147,8 @@ private Q_SLOTS:
     }
 
 private:
-    ResourcesModel* m_model;
-    AbstractResourcesBackend* m_appBackend;
+    ResourcesModel *m_model;
+    AbstractResourcesBackend *m_appBackend;
 };
 
 QTEST_MAIN(UpdateDummyTest)

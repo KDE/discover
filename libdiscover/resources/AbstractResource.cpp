@@ -6,17 +6,17 @@
 
 #include "AbstractResource.h"
 #include "AbstractResourcesBackend.h"
-#include <ReviewsBackend/AbstractReviewsBackend.h>
-#include <ReviewsBackend/Rating.h>
+#include "libdiscover_debug.h"
 #include <Category/CategoryModel.h>
-#include <KLocalizedString>
 #include <KFormat>
+#include <KLocalizedString>
 #include <KShell>
 #include <QList>
 #include <QProcess>
-#include "libdiscover_debug.h"
+#include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <ReviewsBackend/Rating.h>
 
-AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
+AbstractResource::AbstractResource(AbstractResourcesBackend *parent)
     : QObject(parent)
 {
     connect(this, &AbstractResource::stateChanged, this, &AbstractResource::sizeChanged);
@@ -76,18 +76,22 @@ QStringList AbstractResource::mimetypes() const
     return QStringList();
 }
 
-AbstractResourcesBackend* AbstractResource::backend() const
+AbstractResourcesBackend *AbstractResource::backend() const
 {
-    return static_cast<AbstractResourcesBackend*>(parent());
+    return static_cast<AbstractResourcesBackend *>(parent());
 }
 
 QString AbstractResource::status()
 {
-    switch(state()) {
-        case Broken: return i18n("Broken");
-        case None: return i18n("Available");
-        case Installed: return i18n("Installed");
-        case Upgradeable: return i18n("Upgradeable");
+    switch (state()) {
+    case Broken:
+        return i18n("Broken");
+    case None:
+        return i18n("Available");
+    case Installed:
+        return i18n("Installed");
+    case Upgradeable:
+        return i18n("Upgradeable");
     }
     return QString();
 }
@@ -105,10 +109,10 @@ QCollatorSortKey AbstractResource::nameSortKey()
     return *m_collatorKey;
 }
 
-Rating* AbstractResource::rating() const
+Rating *AbstractResource::rating() const
 {
-    AbstractReviewsBackend* ratings = backend()->reviewsBackend();
-    return ratings ? ratings->ratingForApplication(const_cast<AbstractResource*>(this)) : nullptr;
+    AbstractReviewsBackend *ratings = backend()->reviewsBackend();
+    return ratings ? ratings->ratingForApplication(const_cast<AbstractResource *>(this)) : nullptr;
 }
 
 QVariant AbstractResource::ratingVariant() const
@@ -132,70 +136,70 @@ void AbstractResource::reportNewState()
     if (backend()->isFetching())
         return;
 
-    static const QVector<QByteArray> ns = {"state", "status", "canUpgrade", "size", "sizeDescription", "installedVersion", "availableVersion" };
+    static const QVector<QByteArray> ns = {"state", "status", "canUpgrade", "size", "sizeDescription", "installedVersion", "availableVersion"};
     emit backend()->resourcesChanged(this, ns);
 }
 
-static bool shouldFilter(AbstractResource* res, const QPair<FilterType, QString>& filter)
+static bool shouldFilter(AbstractResource *res, const QPair<FilterType, QString> &filter)
 {
     bool ret = true;
     switch (filter.first) {
-        case CategoryFilter:
-            ret = res->categories().contains(filter.second);
-            break;
-        case PkgSectionFilter:
-            ret = res->section() == filter.second;
-            break;
-        case PkgWildcardFilter: {
-            QString wildcard = filter.second;
-            wildcard.remove(QLatin1Char('*'));
-            ret = res->packageName().contains(wildcard);
-        }   break;
-        case AppstreamIdWildcardFilter: {
-            QString wildcard = filter.second;
-            wildcard.remove(QLatin1Char('*'));
-            ret = res->appstreamId().contains(wildcard);
-        }   break;
-        case PkgNameFilter: // Only useful in the not filters
-            ret = res->packageName() == filter.second;
-            break;
-        case InvalidFilter:
-            break;
+    case CategoryFilter:
+        ret = res->categories().contains(filter.second);
+        break;
+    case PkgSectionFilter:
+        ret = res->section() == filter.second;
+        break;
+    case PkgWildcardFilter: {
+        QString wildcard = filter.second;
+        wildcard.remove(QLatin1Char('*'));
+        ret = res->packageName().contains(wildcard);
+    } break;
+    case AppstreamIdWildcardFilter: {
+        QString wildcard = filter.second;
+        wildcard.remove(QLatin1Char('*'));
+        ret = res->appstreamId().contains(wildcard);
+    } break;
+    case PkgNameFilter: // Only useful in the not filters
+        ret = res->packageName() == filter.second;
+        break;
+    case InvalidFilter:
+        break;
     }
     return ret;
 }
 
-bool AbstractResource::categoryMatches(Category* cat)
+bool AbstractResource::categoryMatches(Category *cat)
 {
     {
         const auto orFilters = cat->orFilters();
         bool orValue = orFilters.isEmpty();
-        for (const auto& filter: orFilters) {
-            if(shouldFilter(this, filter)) {
+        for (const auto &filter : orFilters) {
+            if (shouldFilter(this, filter)) {
                 orValue = true;
                 break;
             }
         }
-        if(!orValue)
+        if (!orValue)
             return false;
     }
 
     Q_FOREACH (const auto &filter, cat->andFilters()) {
-        if(!shouldFilter(this, filter))
+        if (!shouldFilter(this, filter))
             return false;
     }
 
     Q_FOREACH (const auto &filter, cat->notFilters()) {
-        if(shouldFilter(this, filter))
+        if (shouldFilter(this, filter))
             return false;
     }
     return true;
 }
 
-static QSet<Category*> walkCategories(AbstractResource* res, const QVector<Category*>& cats)
+static QSet<Category *> walkCategories(AbstractResource *res, const QVector<Category *> &cats)
 {
-    QSet<Category*> ret;
-    foreach (Category* cat, cats) {
+    QSet<Category *> ret;
+    foreach (Category *cat, cats) {
         if (res->categoryMatches(cat)) {
             const auto subcats = walkCategories(res, cat->subCategories());
             if (subcats.isEmpty()) {
@@ -209,16 +213,16 @@ static QSet<Category*> walkCategories(AbstractResource* res, const QVector<Categ
     return ret;
 }
 
-QSet<Category*> AbstractResource::categoryObjects(const QVector<Category*>& cats) const
+QSet<Category *> AbstractResource::categoryObjects(const QVector<Category *> &cats) const
 {
-    return walkCategories(const_cast<AbstractResource*>(this), cats);
+    return walkCategories(const_cast<AbstractResource *>(this), cats);
 }
 
 QString AbstractResource::categoryDisplay() const
 {
     const auto matchedCategories = categoryObjects(CategoryModel::global()->rootCategories());
     QStringList ret;
-    foreach(auto cat, matchedCategories) {
+    foreach (auto cat, matchedCategories) {
         ret.append(cat->name());
     }
     ret.sort();

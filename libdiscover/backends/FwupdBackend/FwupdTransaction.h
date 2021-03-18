@@ -8,31 +8,30 @@
 #ifndef FWUPDTRANSACTION_H
 #define FWUPDTRANSACTION_H
 
-#include <Transaction/Transaction.h>
 #include "FwupdBackend.h"
 #include "FwupdResource.h"
-
+#include <Transaction/Transaction.h>
 
 class FwupdResource;
 class FwupdTransaction : public Transaction
 {
     Q_OBJECT
-    public:
-        FwupdTransaction(FwupdResource* app, FwupdBackend* backend);
-        ~FwupdTransaction();
-        void cancel() override;
-        void proceed() override;
+public:
+    FwupdTransaction(FwupdResource *app, FwupdBackend *backend);
+    ~FwupdTransaction();
+    void cancel() override;
+    void proceed() override;
 
-    private Q_SLOTS:
-        void updateProgress();
-        void finishTransaction();
-        void fwupdInstall(const QString &file);
+private Q_SLOTS:
+    void updateProgress();
+    void finishTransaction();
+    void fwupdInstall(const QString &file);
 
-    private:
-        void install();
+private:
+    void install();
 
-        FwupdResource* const m_app;
-        FwupdBackend* const m_backend;
+    FwupdResource *const m_app;
+    FwupdBackend *const m_backend;
 };
 
 #endif // FWUPDTRANSACTION_H

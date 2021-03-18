@@ -5,13 +5,13 @@
  */
 
 #include "UpdateItem.h"
+#include <resources/AbstractBackendUpdater.h>
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
-#include <resources/AbstractBackendUpdater.h>
 
-#include <QStringBuilder>
-#include <KLocalizedString>
 #include "libdiscover_debug.h"
+#include <KLocalizedString>
+#include <QStringBuilder>
 
 UpdateItem::UpdateItem(AbstractResource *app)
     : m_app(app)
@@ -42,7 +42,7 @@ qint64 UpdateItem::size() const
     return m_app->size();
 }
 
-static bool isMarked(AbstractResource* res)
+static bool isMarked(AbstractResource *res)
 {
     return res->backend()->backendUpdater()->isMarked(res);
 }
@@ -67,7 +67,7 @@ QString UpdateItem::changelog() const
     return m_changelog;
 }
 
-void UpdateItem::setChangelog(const QString& changelog)
+void UpdateItem::setChangelog(const QString &changelog)
 {
     m_changelog = changelog;
 }

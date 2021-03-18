@@ -7,9 +7,10 @@
 #include "AbstractBackendUpdater.h"
 #include "AbstractResource.h"
 
-AbstractBackendUpdater::AbstractBackendUpdater(QObject* parent)
+AbstractBackendUpdater::AbstractBackendUpdater(QObject *parent)
     : QObject(parent)
-{}
+{
+}
 
 void AbstractBackendUpdater::cancel()
 {
@@ -19,7 +20,7 @@ void AbstractBackendUpdater::cancel()
 
 void AbstractBackendUpdater::fetchChangelog() const
 {
-    foreach(auto res, toUpdate()) {
+    foreach (auto res, toUpdate()) {
         res->fetchChangelog();
     }
 }

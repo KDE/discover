@@ -36,7 +36,6 @@ private:
     QString m_launcherId;
     bool m_progressVisible = false;
     int m_progress = 0;
-
 };
 
 #endif // KDEVPLATFORM_UNITYLAUNCHER_H

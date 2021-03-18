@@ -5,44 +5,44 @@
  */
 
 #include "MuonExporter.h"
+#include <QDebug>
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QMetaProperty>
+#include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
 #include <resources/StoredResultsStream.h>
-#include <resources/AbstractResource.h>
-#include <QFile>
-#include <QDebug>
-#include <QMetaProperty>
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QJsonObject>
 
 MuonExporter::MuonExporter()
     : QObject(nullptr)
-    , m_exculdedProperties({ "executables" , "canExecute" })
+    , m_exculdedProperties({"executables", "canExecute"})
 {
     connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &MuonExporter::fetchResources);
 }
 
 MuonExporter::~MuonExporter() = default;
 
-void MuonExporter::setExportPath(const QUrl& url)
+void MuonExporter::setExportPath(const QUrl &url)
 {
     m_path = url;
 }
 
-QJsonObject itemDataToMap(const AbstractResource* res, const QSet<QByteArray>& excluded)
+QJsonObject itemDataToMap(const AbstractResource *res, const QSet<QByteArray> &excluded)
 {
     QJsonObject ret;
     int propsCount = res->metaObject()->propertyCount();
-    for(int i = 0; i<propsCount; i++) {
+    for (int i = 0; i < propsCount; i++) {
         QMetaProperty prop = res->metaObject()->property(i);
-        if(prop.type() == QVariant::UserType || excluded.contains(prop.name()))
+        if (prop.type() == QVariant::UserType || excluded.contains(prop.name()))
             continue;
 
         const QVariant val = prop.read(res);
-        if(val.isNull())
+        if (val.isNull())
             continue;
-        
+
         ret.insert(QLatin1String(prop.name()), QJsonValue::fromVariant(val));
     }
     return ret;
@@ -50,9 +50,9 @@ QJsonObject itemDataToMap(const AbstractResource* res, const QSet<QByteArray>& e
 
 void MuonExporter::fetchResources()
 {
-    ResourcesModel* m = ResourcesModel::global();
-    QSet<ResultsStream*> streams;
-    foreach(auto backend, m->backends()) {
+    ResourcesModel *m = ResourcesModel::global();
+    QSet<ResultsStream *> streams;
+    foreach (auto backend, m->backends()) {
         streams << backend->search({});
     }
     auto stream = new StoredResultsStream(streams);
@@ -60,23 +60,23 @@ void MuonExporter::fetchResources()
     QTimer::singleShot(15000, stream, &AggregatedResultsStream::finished);
 }
 
-void MuonExporter::exportResources(const QVector<AbstractResource*>& resources)
+void MuonExporter::exportResources(const QVector<AbstractResource *> &resources)
 {
     QJsonArray data;
-    foreach(auto res, resources) {
+    foreach (auto res, resources) {
         data += itemDataToMap(res, m_exculdedProperties);
     }
 
     QJsonDocument doc = QJsonDocument(data);
-    if(doc.isNull()) {
+    if (doc.isNull()) {
         qWarning() << "Could not completely export the data to " << m_path;
         return;
     }
 
     QFile f(m_path.toLocalFile());
-    if(f.open(QIODevice::WriteOnly|QIODevice::Text)) {
+    if (f.open(QIODevice::WriteOnly | QIODevice::Text)) {
         int w = f.write(doc.toJson(QJsonDocument::Indented));
-        if(w<=0)
+        if (w <= 0)
             qWarning() << "Could not completely export the data to " << m_path;
     } else {
         qWarning() << "Could not write to " << m_path;

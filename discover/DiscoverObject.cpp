@@ -5,60 +5,60 @@
  */
 
 #include "DiscoverObject.h"
+#include "CachedNetworkAccessManager.h"
+#include "DiscoverBackendsFactory.h"
+#include "DiscoverDeclarativePlugin.h"
+#include "FeaturedModel.h"
 #include "PaginateModel.h"
 #include "UnityLauncher.h"
-#include "FeaturedModel.h"
-#include "CachedNetworkAccessManager.h"
-#include "DiscoverDeclarativePlugin.h"
-#include "DiscoverBackendsFactory.h"
 
 // Qt includes
-#include <QAction>
 #include "discover_debug.h"
-#include <QDesktopServices>
-#include <QQmlEngine>
-#include <QQmlContext>
-#include <QQmlApplicationEngine>
-#include <QtQuick/QQuickItem>
-#include <qqml.h>
-#include <QPointer>
-#include <QGuiApplication>
-#include <QSortFilterProxyModel>
-#include <QTimer>
-#include <QSessionManager>
+#include <QAction>
 #include <QClipboard>
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusPendingCall>
+#include <QDesktopServices>
+#include <QGuiApplication>
+#include <QPointer>
+#include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include <QQmlEngine>
+#include <QSessionManager>
+#include <QSortFilterProxyModel>
+#include <QTimer>
+#include <QtQuick/QQuickItem>
+#include <qqml.h>
 
 // KDE includes
 #include <KAboutApplicationDialog>
+#include <KAboutData>
 #include <KAuthorized>
 #include <KBugReport>
-#include <KLocalizedString>
-#include <KLocalizedContext>
-#include <KAboutData>
 #include <KConcatenateRowsProxyModel>
-#include <KSharedConfig>
 #include <KConfigGroup>
-#include <KStandardAction>
 #include <KCrash>
+#include <KLocalizedContext>
+#include <KLocalizedString>
+#include <KSharedConfig>
+#include <KStandardAction>
 #include <kcoreaddons_version.h>
 // #include <KSwitchLanguageDialog>
 
 // DiscoverCommon includes
+#include <Category/Category.h>
+#include <Category/CategoryModel.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
-#include <Category/Category.h>
-#include <Category/CategoryModel.h>
 
-#include <functional>
-#include <cmath>
-#include <unistd.h>
-#include <resources/StoredResultsStream.h>
-#include <utils.h>
 #include <QMimeDatabase>
+#include <cmath>
+#include <functional>
+#include <resources/StoredResultsStream.h>
+#include <unistd.h>
+#include <utils.h>
 
 #ifdef WITH_FEEDBACK
 #include "plasmauserfeedback.h"
@@ -67,7 +67,8 @@
 
 class CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
 {
-    virtual QNetworkAccessManager * create(QObject *parent) override {
+    virtual QNetworkAccessManager *create(QObject *parent) override
+    {
         return new CachedNetworkAccessManager(QStringLiteral("images"), parent);
     }
 };
@@ -77,8 +78,11 @@ class OurSortFilterProxyModel : public QSortFilterProxyModel, public QQmlParserS
     Q_OBJECT
     Q_INTERFACES(QQmlParserStatus)
 public:
-    void classBegin() override {}
-    void componentComplete() override {
+    void classBegin() override
+    {
+    }
+    void componentComplete() override
+    {
         if (dynamicSortFilter())
             sort(0);
     }
@@ -103,14 +107,16 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
     qmlRegisterType<OurSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
 #ifdef WITH_FEEDBACK
-    qmlRegisterSingletonType<PlasmaUserFeedback>("org.kde.discover.app", 1, 0, "UserFeedbackSettings", [](QQmlEngine*, QJSEngine*) -> QObject* { return new PlasmaUserFeedback(KSharedConfig::openConfig(QStringLiteral("PlasmaUserFeedback"), KConfig::NoGlobals)); });
+    qmlRegisterSingletonType<PlasmaUserFeedback>("org.kde.discover.app", 1, 0, "UserFeedbackSettings", [](QQmlEngine *, QJSEngine *) -> QObject * {
+        return new PlasmaUserFeedback(KSharedConfig::openConfig(QStringLiteral("PlasmaUserFeedback"), KConfig::NoGlobals));
+    });
 #endif
-    qmlRegisterSingletonType<DiscoverSettings>("org.kde.discover.app", 1, 0, "DiscoverSettings", [](QQmlEngine*, QJSEngine*) -> QObject* {
-            auto r = new DiscoverSettings;
-            connect(r, &DiscoverSettings::installedPageSortingChanged, r, &DiscoverSettings::save);
-            connect(r, &DiscoverSettings::appsListPageSortingChanged, r, &DiscoverSettings::save);
-            return r;
-        });
+    qmlRegisterSingletonType<DiscoverSettings>("org.kde.discover.app", 1, 0, "DiscoverSettings", [](QQmlEngine *, QJSEngine *) -> QObject * {
+        auto r = new DiscoverSettings;
+        connect(r, &DiscoverSettings::installedPageSortingChanged, r, &DiscoverSettings::save);
+        connect(r, &DiscoverSettings::appsListPageSortingChanged, r, &DiscoverSettings::save);
+        return r;
+    });
     qmlRegisterAnonymousType<QQuickView>("org.kde.discover.app", 1);
     qmlRegisterAnonymousType<QActionGroup>("org.kde.discover.app", 1);
     qmlRegisterAnonymousType<QAction>("org.kde.discover.app", 1);
@@ -123,7 +129,7 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     setupActions();
 
     auto uri = "org.kde.discover";
-    DiscoverDeclarativePlugin* plugin = new DiscoverDeclarativePlugin;
+    DiscoverDeclarativePlugin *plugin = new DiscoverDeclarativePlugin;
     plugin->setParent(this);
     plugin->initializeEngine(m_engine, uri);
     plugin->registerTypes(uri);
@@ -135,9 +141,9 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverObject::integrateObject);
     m_engine->load(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
 
-    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, [this](){
+    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, [this]() {
         const auto objs = m_engine->rootObjects();
-        for(auto o: objs)
+        for (auto o : objs)
             delete o;
     });
     auto action = new OneTimeAction(
@@ -149,8 +155,8 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
 
             if (!found)
                 Q_EMIT openErrorPage(i18n("No application back-ends found, please report to your distribution."));
-        }
-        , this);
+        },
+        this);
 
     if (ResourcesModel::global()->backends().isEmpty()) {
         connect(ResourcesModel::global(), &ResourcesModel::allInitialized, action, &OneTimeAction::trigger);
@@ -172,32 +178,32 @@ bool DiscoverObject::isRoot()
 QStringList DiscoverObject::modes() const
 {
     QStringList ret;
-    QObject* obj = rootObject();
-    for(int i = obj->metaObject()->propertyOffset(); i<obj->metaObject()->propertyCount(); i++) {
+    QObject *obj = rootObject();
+    for (int i = obj->metaObject()->propertyOffset(); i < obj->metaObject()->propertyCount(); i++) {
         QMetaProperty p = obj->metaObject()->property(i);
         QByteArray compName = p.name();
-        if(compName.startsWith("top") && compName.endsWith("Comp")) {
-            ret += QString::fromLatin1(compName.mid(3, compName.length()-7));
+        if (compName.startsWith("top") && compName.endsWith("Comp")) {
+            ret += QString::fromLatin1(compName.mid(3, compName.length() - 7));
         }
     }
     return ret;
 }
 
-void DiscoverObject::openMode(const QString& _mode)
+void DiscoverObject::openMode(const QString &_mode)
 {
-    QObject* obj = rootObject();
+    QObject *obj = rootObject();
     if (!obj) {
         qCWarning(DISCOVER_LOG) << "could not get the main object";
         return;
     }
 
-    if(!modes().contains(_mode, Qt::CaseInsensitive))
+    if (!modes().contains(_mode, Qt::CaseInsensitive))
         qCWarning(DISCOVER_LOG) << "unknown mode" << _mode << modes();
 
     QString mode = _mode;
     mode[0] = mode[0].toUpper();
 
-    const QByteArray propertyName = "top"+mode.toLatin1()+"Comp";
+    const QByteArray propertyName = "top" + mode.toLatin1() + "Comp";
     const QVariant modeComp = obj->property(propertyName.constData());
     if (!modeComp.isValid())
         qCWarning(DISCOVER_LOG) << "couldn't open mode" << _mode;
@@ -205,14 +211,14 @@ void DiscoverObject::openMode(const QString& _mode)
         obj->setProperty("currentTopLevel", modeComp);
 }
 
-void DiscoverObject::openMimeType(const QString& mime)
+void DiscoverObject::openMimeType(const QString &mime)
 {
     emit listMimeInternal(mime);
 }
 
 void DiscoverObject::showLoadingPage()
 {
-    QObject* obj = rootObject();
+    QObject *obj = rootObject();
     if (!obj) {
         qCWarning(DISCOVER_LOG) << "could not get the main object";
         return;
@@ -221,20 +227,20 @@ void DiscoverObject::showLoadingPage()
     obj->setProperty("currentTopLevel", QStringLiteral("qrc:/qml/LoadingPage.qml"));
 }
 
-void DiscoverObject::openCategory(const QString& category)
+void DiscoverObject::openCategory(const QString &category)
 {
     showLoadingPage();
     auto action = new OneTimeAction(
         [this, category]() {
-            Category* cat = CategoryModel::global()->findCategoryByName(category);
+            Category *cat = CategoryModel::global()->findCategoryByName(category);
             if (cat) {
                 emit listCategoryInternal(cat);
             } else {
                 openMode(QStringLiteral("Browsing"));
                 showPassiveNotification(i18n("Could not find category '%1'", category));
             }
-        }
-        , this);
+        },
+        this);
 
     if (CategoryModel::global()->rootCategories().isEmpty()) {
         connect(CategoryModel::global(), &CategoryModel::rootCategoriesChanged, action, &OneTimeAction::trigger);
@@ -243,10 +249,10 @@ void DiscoverObject::openCategory(const QString& category)
     }
 }
 
-void DiscoverObject::openLocalPackage(const QUrl& localfile)
+void DiscoverObject::openLocalPackage(const QUrl &localfile)
 {
     if (!QFile::exists(localfile.toLocalFile())) {
-//         showPassiveNotification(i18n("Trying to open unexisting file '%1'", localfile.toString()));
+        //         showPassiveNotification(i18n("Trying to open unexisting file '%1'", localfile.toString()));
         qCWarning(DISCOVER_LOG) << "Trying to open unexisting file" << localfile;
         return;
     }
@@ -256,24 +262,28 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
             AbstractResourcesBackend::Filters f;
             f.resourceUrl = localfile;
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
-            connect(stream, &StoredResultsStream::finishedResources, this, [this, localfile](const QVector<AbstractResource*> &res) {
+            connect(stream, &StoredResultsStream::finishedResources, this, [this, localfile](const QVector<AbstractResource *> &res) {
                 if (res.count() == 1) {
                     emit openApplicationInternal(res.first());
                 } else {
                     QMimeDatabase db;
                     auto mime = db.mimeTypeForUrl(localfile);
-                    auto fIsFlatpakBackend = [](AbstractResourcesBackend* backend) { return backend->metaObject()->className() == QByteArray("FlatpakBackend"); };
-                    if (mime.name().startsWith(QLatin1String("application/vnd.flatpak")) && !kContains(ResourcesModel::global()->backends(), fIsFlatpakBackend)) {
+                    auto fIsFlatpakBackend = [](AbstractResourcesBackend *backend) {
+                        return backend->metaObject()->className() == QByteArray("FlatpakBackend");
+                    };
+                    if (mime.name().startsWith(QLatin1String("application/vnd.flatpak"))
+                        && !kContains(ResourcesModel::global()->backends(), fIsFlatpakBackend)) {
                         openApplication(QUrl(QStringLiteral("appstream://org.kde.discover.flatpak")));
-                        showPassiveNotification(i18n("Cannot interact with flatpak resources without the flatpak backend %1. Please install it first.", localfile.toDisplayString()));
+                        showPassiveNotification(i18n("Cannot interact with flatpak resources without the flatpak backend %1. Please install it first.",
+                                                     localfile.toDisplayString()));
                     } else {
                         openMode(QStringLiteral("Browsing"));
                         showPassiveNotification(i18n("Could not open %1", localfile.toDisplayString()));
                     }
                 }
             });
-        }
-        , this);
+        },
+        this);
 
     if (ResourcesModel::global()->backends().isEmpty()) {
         connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
@@ -282,7 +292,7 @@ void DiscoverObject::openLocalPackage(const QUrl& localfile)
     }
 }
 
-void DiscoverObject::openApplication(const QUrl& url)
+void DiscoverObject::openApplication(const QUrl &url)
 {
     Q_ASSERT(!url.isEmpty());
     showLoadingPage();
@@ -291,7 +301,7 @@ void DiscoverObject::openApplication(const QUrl& url)
             AbstractResourcesBackend::Filters f;
             f.resourceUrl = url;
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
-            connect(stream, &StoredResultsStream::finishedResources, this, [this, url](const QVector<AbstractResource*> &res) {
+            connect(stream, &StoredResultsStream::finishedResources, this, [this, url](const QVector<AbstractResource *> &res) {
                 if (res.count() >= 1) {
                     emit openApplicationInternal(res.first());
                 } else if (url.scheme() == QLatin1String("snap")) {
@@ -301,8 +311,8 @@ void DiscoverObject::openApplication(const QUrl& url)
                     Q_EMIT openErrorPage(i18n("Could not open %1", url.toDisplayString()));
                 }
             });
-        }
-        , this);
+        },
+        this);
 
     if (ResourcesModel::global()->backends().isEmpty()) {
         connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
@@ -311,11 +321,11 @@ void DiscoverObject::openApplication(const QUrl& url)
     }
 }
 
-void DiscoverObject::integrateObject(QObject* object)
+void DiscoverObject::integrateObject(QObject *object)
 {
     if (!object) {
         qCWarning(DISCOVER_LOG) << "Errors when loading the GUI";
-        QTimer::singleShot(0, QCoreApplication::instance(), [](){
+        QTimer::singleShot(0, QCoreApplication::instance(), []() {
             QCoreApplication::instance()->exit(1);
         });
         return;
@@ -330,7 +340,7 @@ void DiscoverObject::integrateObject(QObject* object)
         QWindow::Visibility visibility(QWindow::Visibility(window.readEntry<int>("visibility", QWindow::Windowed)));
         rootObject()->setVisibility(qMax(visibility, QQuickView::AutomaticVisibility));
     }
-    connect(rootObject(), &QQuickView::sceneGraphError, this, [] (QQuickWindow::SceneGraphError /*error*/, const QString &message) {
+    connect(rootObject(), &QQuickView::sceneGraphError, this, [](QQuickWindow::SceneGraphError /*error*/, const QString &message) {
         KCrash::setErrorMessage(message);
         qFatal("%s", qPrintable(message));
     });
@@ -347,9 +357,9 @@ void DiscoverObject::integrateObject(QObject* object)
     });
 }
 
-bool DiscoverObject::eventFilter(QObject * object, QEvent * event)
+bool DiscoverObject::eventFilter(QObject *object, QEvent *event)
 {
-    if (object!=rootObject())
+    if (object != rootObject())
         return false;
 
     if (event->type() == QEvent::Close) {
@@ -362,8 +372,8 @@ bool DiscoverObject::eventFilter(QObject * object, QEvent * event)
         KConfigGroup window(KSharedConfig::openConfig(), "Window");
         window.writeEntry("geometry", rootObject()->geometry());
         window.writeEntry<int>("visibility", rootObject()->visibility());
-//     } else if (event->type() == QEvent::ShortcutOverride) {
-//         qCWarning(DISCOVER_LOG) << "Action conflict" << event;
+        //     } else if (event->type() == QEvent::ShortcutOverride) {
+        //         qCWarning(DISCOVER_LOG) << "Action conflict" << event;
     }
     return false;
 }
@@ -381,12 +391,12 @@ void DiscoverObject::setupActions()
     }
 }
 
-QAction * DiscoverObject::action(const QString& name) const
+QAction *DiscoverObject::action(const QString &name) const
 {
     return m_collection.value(name);
 }
 
-QString DiscoverObject::iconName(const QIcon& icon)
+QString DiscoverObject::iconName(const QIcon &icon)
 {
     return icon.name();
 }
@@ -413,9 +423,9 @@ void DiscoverObject::reportBug()
 
 void DiscoverObject::switchApplicationLanguage()
 {
-//     auto langDialog = new KSwitchLanguageDialog(nullptr);
-//     connect(langDialog, SIGNAL(finished(int)), this, SLOT(dialogFinished()));
-//     langDialog->show();
+    //     auto langDialog = new KSwitchLanguageDialog(nullptr);
+    //     connect(langDialog, SIGNAL(finished(int)), this, SLOT(dialogFinished()));
+    //     langDialog->show();
 }
 
 void DiscoverObject::setCompactMode(DiscoverObject::CompactMode mode)
@@ -429,12 +439,12 @@ void DiscoverObject::setCompactMode(DiscoverObject::CompactMode mode)
 class DiscoverTestExecutor : public QObject
 {
 public:
-    DiscoverTestExecutor(QObject* rootObject, QQmlEngine* engine, const QUrl &url)
+    DiscoverTestExecutor(QObject *rootObject, QQmlEngine *engine, const QUrl &url)
         : QObject(engine)
     {
         connect(engine, &QQmlEngine::quit, this, &DiscoverTestExecutor::finish, Qt::QueuedConnection);
 
-        QQmlComponent* component = new QQmlComponent(engine, url, engine);
+        QQmlComponent *component = new QQmlComponent(engine, url, engine);
         m_testObject = component->create(engine->rootContext());
 
         if (!m_testObject) {
@@ -442,12 +452,13 @@ public:
             Q_ASSERT(false);
         }
 
-        m_testObject->setProperty("appRoot", QVariant::fromValue<QObject*>(rootObject));
+        m_testObject->setProperty("appRoot", QVariant::fromValue<QObject *>(rootObject));
         connect(engine, &QQmlEngine::warnings, this, &DiscoverTestExecutor::processWarnings);
     }
 
-    void processWarnings(const QList<QQmlError> &warnings) {
-        foreach(const QQmlError &warning, warnings) {
+    void processWarnings(const QList<QQmlError> &warnings)
+    {
+        foreach (const QQmlError &warning, warnings) {
             if (warning.url().path().endsWith(QLatin1String("DiscoverTest.qml"))) {
                 qCWarning(DISCOVER_LOG) << "Test failed!" << warnings;
                 qGuiApp->exit(1);
@@ -456,9 +467,10 @@ public:
         m_warnings << warnings;
     }
 
-    void finish() {
-        //The CI doesn't seem to have icons, remove when it's not an issue anymore
-        m_warnings.erase(std::remove_if(m_warnings.begin(), m_warnings.end(), [](const QQmlError& err) -> bool {
+    void finish()
+    {
+        // The CI doesn't seem to have icons, remove when it's not an issue anymore
+        m_warnings.erase(std::remove_if(m_warnings.begin(), m_warnings.end(), [](const QQmlError &err) -> bool {
             return err.description().contains(QLatin1String("QML Image: Failed to get image from provider: image://icon/"));
         }));
 
@@ -470,35 +482,39 @@ public:
     }
 
 private:
-    QObject* m_testObject;
+    QObject *m_testObject;
     QList<QQmlError> m_warnings;
 };
 
-void DiscoverObject::loadTest(const QUrl& url)
+void DiscoverObject::loadTest(const QUrl &url)
 {
     new DiscoverTestExecutor(rootObject(), engine(), url);
 }
 
-QQuickWindow* DiscoverObject::rootObject() const
+QQuickWindow *DiscoverObject::rootObject() const
 {
-    return qobject_cast<QQuickWindow*>(m_engine->rootObjects().at(0));
+    return qobject_cast<QQuickWindow *>(m_engine->rootObjects().at(0));
 }
 
-void DiscoverObject::showPassiveNotification(const QString& msg)
+void DiscoverObject::showPassiveNotification(const QString &msg)
 {
-    QTimer::singleShot(100, this, [this, msg](){
-        QMetaObject::invokeMethod(rootObject(), "showPassiveNotification", Qt::QueuedConnection, Q_ARG(QVariant, msg), Q_ARG(QVariant, {}), Q_ARG(QVariant, {}), Q_ARG(QVariant, {}));
+    QTimer::singleShot(100, this, [this, msg]() {
+        QMetaObject::invokeMethod(rootObject(),
+                                  "showPassiveNotification",
+                                  Qt::QueuedConnection,
+                                  Q_ARG(QVariant, msg),
+                                  Q_ARG(QVariant, {}),
+                                  Q_ARG(QVariant, {}),
+                                  Q_ARG(QVariant, {}));
     });
 }
 
 void DiscoverObject::reboot()
 {
-    QDBusConnection::sessionBus().asyncCall(
-        QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
-                                       QStringLiteral("/LogoutPrompt"),
-                                       QStringLiteral("org.kde.LogoutPrompt"),
-                                       QStringLiteral("promptReboot"))
-    );
+    QDBusConnection::sessionBus().asyncCall(QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
+                                                                           QStringLiteral("/LogoutPrompt"),
+                                                                           QStringLiteral("org.kde.LogoutPrompt"),
+                                                                           QStringLiteral("promptReboot")));
 }
 
 QRect DiscoverObject::initialGeometry() const

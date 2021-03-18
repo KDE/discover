@@ -7,19 +7,19 @@
 #ifndef ABSTRACTRESOURCE_H
 #define ABSTRACTRESOURCE_H
 
-#include <QObject>
-#include <QUrl>
-#include <QStringList>
-#include <QScopedPointer>
-#include <QVector>
 #include <QCollatorSortKey>
-#include <QJsonObject>
-#include <QJsonArray>
 #include <QDate>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QObject>
+#include <QScopedPointer>
 #include <QSet>
+#include <QStringList>
+#include <QUrl>
+#include <QVector>
 
-#include "discovercommon_export.h"
 #include "PackageState.h"
+#include "discovercommon_export.h"
 
 class Category;
 class Rating;
@@ -59,7 +59,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString availableVersion READ availableVersion NOTIFY versionsChanged)
     Q_PROPERTY(QString section READ section CONSTANT)
     Q_PROPERTY(QStringList mimetypes READ mimetypes CONSTANT)
-    Q_PROPERTY(AbstractResourcesBackend* backend READ backend CONSTANT)
+    Q_PROPERTY(AbstractResourcesBackend *backend READ backend CONSTANT)
     Q_PROPERTY(QVariant rating READ ratingVariant NOTIFY ratingFetched)
     Q_PROPERTY(QString appstreamId READ appstreamId CONSTANT)
     Q_PROPERTY(QString categoryDisplay READ categoryDisplay CONSTANT)
@@ -69,175 +69,181 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString author READ author CONSTANT)
     Q_PROPERTY(QDate releaseDate READ releaseDate NOTIFY versionsChanged)
     Q_PROPERTY(QString upgradeText READ upgradeText NOTIFY versionsChanged)
-    public:
+public:
+    /**
+     * This describes the state of the resource
+     */
+    enum State {
         /**
-         * This describes the state of the resource
+         * When the resource is somehow broken
          */
-        enum State {
-            /**
-             * When the resource is somehow broken
-             */
-            Broken,
-            /**
-             * This means that the resource is neither installed nor broken
-             */
-            None,
-            /**
-             * The resource is installed and up-to-date
-             */
-            Installed,
-            /**
-             * The resource is installed and an update is available
-             */
-            Upgradeable,
-        };
-        Q_ENUM(State)
-
+        Broken,
         /**
-         * Constructs the AbstractResource with its corresponding backend
+         * This means that the resource is neither installed nor broken
          */
-        explicit AbstractResource(AbstractResourcesBackend* parent);
-        ~AbstractResource() override;
-
-        ///used as internal identification of a resource
-        virtual QString packageName() const = 0;
-
-        ///resource name to be displayed
-        virtual QString name() const = 0;
-
-        ///short description of the resource
-        virtual QString comment() = 0;
-
-        ///xdg-compatible icon name to represent the resource, url or QIcon
-        virtual QVariant icon() const = 0;
-
-        ///@returns whether invokeApplication makes something
-        /// false if not overridden
-        virtual bool canExecute() const = 0;
-
-        ///executes the resource, if applies.
-        Q_SCRIPTABLE virtual void invokeApplication() const = 0;
-
-        virtual State state() = 0;
-
-        virtual QStringList categories() = 0;
-        ///@returns a URL that points to the app's website
-        virtual QUrl homepage();
-        ///@returns a URL that points to the app's online documentation
-        virtual QUrl helpURL();
-        ///@returns a URL that points to the place where you can file a bug
-        virtual QUrl bugURL();
-        ///@returns a URL that points to the place where you can donate money to the app developer
-        virtual QUrl donationURL();
-
-        enum Type {
-            Application,
-            Addon,
-            Technical,
-        };
-        Q_ENUM(Type);
-        virtual Type type() const = 0;
-
-        virtual int size() = 0;
-        virtual QString sizeDescription();
-
-        ///@returns a list of pairs with the name of the license and a URL pointing at it
-        virtual QJsonArray licenses() = 0;
-
-        virtual QString installedVersion() const = 0;
-        virtual QString availableVersion() const = 0;
-        virtual QString longDescription() = 0;
-
-        virtual QString origin() const = 0;
-        virtual QString displayOrigin() const;
-        virtual QString section() = 0;
-        virtual QString author() const = 0;
-
-        ///@returns what kind of mime types the resource can consume
-        virtual QStringList mimetypes() const;
-
-        virtual QList<PackageState> addonsInformation() = 0;
-
-        virtual QStringList extends() const;
-
-        virtual QString appstreamId() const;
-
-        void addMetadata(const QString &key, const QJsonValue &value);
-        QJsonValue getMetadata(const QString &key);
-
-        bool canUpgrade();
-        bool isInstalled();
-
-        ///@returns a user-readable explanation of the resource status
-        ///by default, it will specify what state() is returning
-        virtual QString status();
-
-        AbstractResourcesBackend* backend() const;
-
+        None,
         /**
-         * @returns a name sort key for faster sorting
+         * The resource is installed and up-to-date
          */
-        QCollatorSortKey nameSortKey();
-
+        Installed,
         /**
-         * Convenience method to fetch the resource's rating
-         *
-         * @returns the rating for the resource or null if not available
+         * The resource is installed and an update is available
          */
-        Rating* rating() const;
-        QVariant ratingVariant() const;
+        Upgradeable,
+    };
+    Q_ENUM(State)
 
-        /**
-         * @returns a string defining the categories the resource belongs to
-         */
-        QString categoryDisplay() const;
+    /**
+     * Constructs the AbstractResource with its corresponding backend
+     */
+    explicit AbstractResource(AbstractResourcesBackend *parent);
+    ~AbstractResource() override;
 
-        bool categoryMatches(Category* cat);
+    /// used as internal identification of a resource
+    virtual QString packageName() const = 0;
 
-        QSet<Category*> categoryObjects(const QVector<Category*>& cats) const;
+    /// resource name to be displayed
+    virtual QString name() const = 0;
 
-        /**
-         * @returns a url that uniquely identifies the application
-         */
-        virtual QUrl url() const;
+    /// short description of the resource
+    virtual QString comment() = 0;
 
-        virtual QString executeLabel() const;
-        virtual QString sourceIcon() const = 0;
-        /**
-         * @returns the date of the resource's most recent release
-         */
-        virtual QDate releaseDate() const = 0;
+    /// xdg-compatible icon name to represent the resource, url or QIcon
+    virtual QVariant icon() const = 0;
 
-        virtual QSet<QString> alternativeAppstreamIds() const { return {}; }
+    ///@returns whether invokeApplication makes something
+    /// false if not overridden
+    virtual bool canExecute() const = 0;
 
-        virtual QString upgradeText() const;
+    /// executes the resource, if applies.
+    Q_SCRIPTABLE virtual void invokeApplication() const = 0;
 
-    public Q_SLOTS:
-        virtual void fetchScreenshots();
-        virtual void fetchChangelog() = 0;
-        virtual void fetchUpdateDetails() { fetchChangelog(); }
+    virtual State state() = 0;
 
-    Q_SIGNALS:
-        void iconChanged();
-        void sizeChanged();
-        void stateChanged();
-        void ratingFetched();
-        void longDescriptionChanged();
-        void versionsChanged();
+    virtual QStringList categories() = 0;
+    ///@returns a URL that points to the app's website
+    virtual QUrl homepage();
+    ///@returns a URL that points to the app's online documentation
+    virtual QUrl helpURL();
+    ///@returns a URL that points to the place where you can file a bug
+    virtual QUrl bugURL();
+    ///@returns a URL that points to the place where you can donate money to the app developer
+    virtual QUrl donationURL();
 
-        ///response to the fetchScreenshots method
-        ///@p thumbnails and @p screenshots should have the same number of elements
-        void screenshotsFetched(const QList<QUrl>& thumbnails, const QList<QUrl>& screenshots);
-        void changelogFetched(const QString& changelog);
+    enum Type {
+        Application,
+        Addon,
+        Technical,
+    };
+    Q_ENUM(Type);
+    virtual Type type() const = 0;
 
-    private:
-        void reportNewState();
+    virtual int size() = 0;
+    virtual QString sizeDescription();
 
-//         TODO: make it std::optional or make QCollatorSortKey()
-        QScopedPointer<QCollatorSortKey> m_collatorKey;
-        QJsonObject m_metadata;
+    ///@returns a list of pairs with the name of the license and a URL pointing at it
+    virtual QJsonArray licenses() = 0;
+
+    virtual QString installedVersion() const = 0;
+    virtual QString availableVersion() const = 0;
+    virtual QString longDescription() = 0;
+
+    virtual QString origin() const = 0;
+    virtual QString displayOrigin() const;
+    virtual QString section() = 0;
+    virtual QString author() const = 0;
+
+    ///@returns what kind of mime types the resource can consume
+    virtual QStringList mimetypes() const;
+
+    virtual QList<PackageState> addonsInformation() = 0;
+
+    virtual QStringList extends() const;
+
+    virtual QString appstreamId() const;
+
+    void addMetadata(const QString &key, const QJsonValue &value);
+    QJsonValue getMetadata(const QString &key);
+
+    bool canUpgrade();
+    bool isInstalled();
+
+    ///@returns a user-readable explanation of the resource status
+    /// by default, it will specify what state() is returning
+    virtual QString status();
+
+    AbstractResourcesBackend *backend() const;
+
+    /**
+     * @returns a name sort key for faster sorting
+     */
+    QCollatorSortKey nameSortKey();
+
+    /**
+     * Convenience method to fetch the resource's rating
+     *
+     * @returns the rating for the resource or null if not available
+     */
+    Rating *rating() const;
+    QVariant ratingVariant() const;
+
+    /**
+     * @returns a string defining the categories the resource belongs to
+     */
+    QString categoryDisplay() const;
+
+    bool categoryMatches(Category *cat);
+
+    QSet<Category *> categoryObjects(const QVector<Category *> &cats) const;
+
+    /**
+     * @returns a url that uniquely identifies the application
+     */
+    virtual QUrl url() const;
+
+    virtual QString executeLabel() const;
+    virtual QString sourceIcon() const = 0;
+    /**
+     * @returns the date of the resource's most recent release
+     */
+    virtual QDate releaseDate() const = 0;
+
+    virtual QSet<QString> alternativeAppstreamIds() const
+    {
+        return {};
+    }
+
+    virtual QString upgradeText() const;
+
+public Q_SLOTS:
+    virtual void fetchScreenshots();
+    virtual void fetchChangelog() = 0;
+    virtual void fetchUpdateDetails()
+    {
+        fetchChangelog();
+    }
+
+Q_SIGNALS:
+    void iconChanged();
+    void sizeChanged();
+    void stateChanged();
+    void ratingFetched();
+    void longDescriptionChanged();
+    void versionsChanged();
+
+    /// response to the fetchScreenshots method
+    ///@p thumbnails and @p screenshots should have the same number of elements
+    void screenshotsFetched(const QList<QUrl> &thumbnails, const QList<QUrl> &screenshots);
+    void changelogFetched(const QString &changelog);
+
+private:
+    void reportNewState();
+
+    //         TODO: make it std::optional or make QCollatorSortKey()
+    QScopedPointer<QCollatorSortKey> m_collatorKey;
+    QJsonObject m_metadata;
 };
 
-Q_DECLARE_METATYPE(QVector<AbstractResource*>)
+Q_DECLARE_METATYPE(QVector<AbstractResource *>)
 
 #endif // ABSTRACTRESOURCE_H

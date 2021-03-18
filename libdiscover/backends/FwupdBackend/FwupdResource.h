@@ -10,17 +10,20 @@
 
 #include "FwupdBackend.h"
 
-#include <resources/AbstractResource.h>
 #include <KLocalizedString>
+#include <resources/AbstractResource.h>
 
 class FwupdResource : public AbstractResource
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    explicit FwupdResource(FwupdDevice *device, AbstractResourcesBackend* parent);
-    explicit FwupdResource(FwupdDevice *device, const QString &id, AbstractResourcesBackend* parent);
+    explicit FwupdResource(FwupdDevice *device, AbstractResourcesBackend *parent);
+    explicit FwupdResource(FwupdDevice *device, const QString &id, AbstractResourcesBackend *parent);
 
-    QList<PackageState> addonsInformation() override { return {}; }
+    QList<PackageState> addonsInformation() override
+    {
+        return {};
+    }
     QString section() override;
     QString origin() const override;
     QString longDescription() override;
@@ -39,30 +42,72 @@ public:
     QString name() const override;
     QString packageName() const override;
     QString vendor() const;
-    AbstractResource::Type type() const override { return Technical; }
-    bool canExecute() const override { return false; }
+    AbstractResource::Type type() const override
+    {
+        return Technical;
+    }
+    bool canExecute() const override
+    {
+        return false;
+    }
     void invokeApplication() const override;
     void fetchChangelog() override;
     QUrl url() const override;
     QString executeLabel() const override;
-    QDate releaseDate() const override { return m_releaseDate; }
-    QString sourceIcon() const override { return {}; }
-    QString author() const override { return {}; }
+    QDate releaseDate() const override
+    {
+        return m_releaseDate;
+    }
+    QString sourceIcon() const override
+    {
+        return {};
+    }
+    QString author() const override
+    {
+        return {};
+    }
 
-    void setIsDeviceLocked(bool locked) { m_isDeviceLocked = locked; }
-    void setDescription(const QString &description) { m_description = description; }
+    void setIsDeviceLocked(bool locked)
+    {
+        m_isDeviceLocked = locked;
+    }
+    void setDescription(const QString &description)
+    {
+        m_description = description;
+    }
 
     void setState(AbstractResource::State state);
     void setReleaseDetails(FwupdRelease *release);
-    void setDeviceDetails(FwupdDevice* device);
+    void setDeviceDetails(FwupdDevice *device);
 
-    QString id() const { return m_id; }
-    QString deviceId() const { return m_deviceID; }
-    QUrl updateURI() const { return QUrl(m_updateURI); }
-    bool isDeviceLocked() const { return m_isDeviceLocked; }
-    bool isOnlyOffline() const { return m_isOnlyOffline; }
-    bool isLiveUpdatable() const { return m_isLiveUpdatable; }
-    bool needsReboot() const { return m_needsReboot; }
+    QString id() const
+    {
+        return m_id;
+    }
+    QString deviceId() const
+    {
+        return m_deviceID;
+    }
+    QUrl updateURI() const
+    {
+        return QUrl(m_updateURI);
+    }
+    bool isDeviceLocked() const
+    {
+        return m_isDeviceLocked;
+    }
+    bool isOnlyOffline() const
+    {
+        return m_isOnlyOffline;
+    }
+    bool isLiveUpdatable() const
+    {
+        return m_isLiveUpdatable;
+    }
+    bool needsReboot() const
+    {
+        return m_needsReboot;
+    }
 
     QString cacheFile() const;
 
@@ -89,8 +134,8 @@ private:
     bool m_isOnlyOffline = false; // True if only offline updates
     bool m_isLiveUpdatable = false; // True if device is live updatable
     bool m_needsReboot = false; // True if device needs Reboot
-    bool m_isDeviceRemoval = false; //True if device is Removal
-    bool m_needsBootLoader = false; //True if BootLoader Required
+    bool m_isDeviceRemoval = false; // True if device is Removal
+    bool m_needsBootLoader = false; // True if BootLoader Required
     QString m_origin;
 };
 

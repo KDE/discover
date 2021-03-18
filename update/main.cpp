@@ -4,21 +4,20 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#include <QGuiApplication>
-#include <QCommandLineParser>
-#include <KLocalizedString>
-#include <KAboutData>
+#include "../DiscoverVersion.h"
 #include "DiscoverUpdate.h"
 #include <DiscoverBackendsFactory.h>
-#include "../DiscoverVersion.h"
+#include <KAboutData>
+#include <KLocalizedString>
+#include <QCommandLineParser>
+#include <QGuiApplication>
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     QGuiApplication app(argc, argv);
     app.setQuitOnLastWindowClosed(false);
     KLocalizedString::setApplicationDomain("plasma-discover-update");
-    KAboutData about(QStringLiteral("discoverupdate"), i18n("Discover Update"), version, {},
-                     KAboutLicense::GPL, i18n("© 2020 Aleix Pol Gonzalez"), {});
+    KAboutData about(QStringLiteral("discoverupdate"), i18n("Discover Update"), version, {}, KAboutLicense::GPL, i18n("© 2020 Aleix Pol Gonzalez"), {});
     about.addAuthor(QStringLiteral("Aleix Pol i Gonzàlez"), {}, QStringLiteral("aleixpolkde.org"));
     about.setProductName("discover/update");
 

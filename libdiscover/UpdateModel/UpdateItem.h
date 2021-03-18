@@ -8,10 +8,10 @@
 #define UPDATEITEM_H
 
 // Qt includes
-#include <QSet>
-#include <QString>
 #include "discovercommon_export.h"
 #include "resources/AbstractBackendUpdater.h"
+#include <QSet>
+#include <QString>
 
 #include <QIcon>
 
@@ -26,8 +26,14 @@ public:
     void setProgress(qreal progress);
     qreal progress() const;
 
-    AbstractBackendUpdater::State state() const { return m_state; }
-    void setState(AbstractBackendUpdater::State state) { m_state = state; }
+    AbstractBackendUpdater::State state() const
+    {
+        return m_state;
+    }
+    void setState(AbstractBackendUpdater::State state)
+    {
+        m_state = state;
+    }
 
     QString changelog() const;
     void setChangelog(const QString &changelog);
@@ -38,12 +44,21 @@ public:
     qint64 size() const;
     Qt::CheckState checked() const;
 
-    AbstractResource* resource() const { return m_app; }
-    bool isVisible() const { return m_visible; }
-    void setVisible(bool visible) { m_visible = visible; }
+    AbstractResource *resource() const
+    {
+        return m_app;
+    }
+    bool isVisible() const
+    {
+        return m_visible;
+    }
+    void setVisible(bool visible)
+    {
+        m_visible = visible;
+    }
 
 private:
-    AbstractResource * const m_app;
+    AbstractResource *const m_app;
 
     const QString m_categoryName;
     const QIcon m_categoryIcon;

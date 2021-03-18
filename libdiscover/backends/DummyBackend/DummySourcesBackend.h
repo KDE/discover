@@ -7,31 +7,40 @@
 #ifndef DUMMYSOURCESBACKEND_H
 #define DUMMYSOURCESBACKEND_H
 
-#include <resources/AbstractSourcesBackend.h>
 #include <QStandardItemModel>
+#include <resources/AbstractSourcesBackend.h>
 
 class DiscoverAction;
 
 class DummySourcesBackend : public AbstractSourcesBackend
 {
 public:
-    explicit DummySourcesBackend(AbstractResourcesBackend * parent);
+    explicit DummySourcesBackend(AbstractResourcesBackend *parent);
 
-    QAbstractItemModel* sources() override;
-    bool addSource(const QString& id) override;
-    bool removeSource(const QString& id) override;
-    QString idDescription() override { return QStringLiteral("Random weird text"); }
+    QAbstractItemModel *sources() override;
+    bool addSource(const QString &id) override;
+    bool removeSource(const QString &id) override;
+    QString idDescription() override
+    {
+        return QStringLiteral("Random weird text");
+    }
     QVariantList actions() const override;
-    bool supportsAdding() const override { return true; }
+    bool supportsAdding() const override
+    {
+        return true;
+    }
 
-    bool canMoveSources() const override { return true; }
-    bool moveSource(const QString & sourceId, int delta) override;
+    bool canMoveSources() const override
+    {
+        return true;
+    }
+    bool moveSource(const QString &sourceId, int delta) override;
 
 private:
-    QStandardItem* sourceForId(const QString& id) const;
+    QStandardItem *sourceForId(const QString &id) const;
 
-    QStandardItemModel* m_sources;
-    DiscoverAction* m_testAction;
+    QStandardItemModel *m_sources;
+    DiscoverAction *m_testAction;
 };
 
 #endif // DUMMYSOURCESBACKEND_H

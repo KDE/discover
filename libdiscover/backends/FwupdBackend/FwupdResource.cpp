@@ -7,17 +7,19 @@
 
 #include "FwupdResource.h"
 
-
-#include <Transaction/AddonList.h>
 #include <QDesktopServices>
 #include <QStringList>
 #include <QTimer>
+#include <Transaction/AddonList.h>
 
-FwupdResource::FwupdResource(FwupdDevice* device, AbstractResourcesBackend* parent)
-    : FwupdResource(device, QStringLiteral("org.fwupd.%1.device").arg(QString::fromUtf8(fwupd_device_get_id(device)).replace(QLatin1Char('/'),QLatin1Char('_'))), parent)
-{}
+FwupdResource::FwupdResource(FwupdDevice *device, AbstractResourcesBackend *parent)
+    : FwupdResource(device,
+                    QStringLiteral("org.fwupd.%1.device").arg(QString::fromUtf8(fwupd_device_get_id(device)).replace(QLatin1Char('/'), QLatin1Char('_'))),
+                    parent)
+{
+}
 
-FwupdResource::FwupdResource(FwupdDevice* device, const QString &id, AbstractResourcesBackend* parent)
+FwupdResource::FwupdResource(FwupdDevice *device, const QString &id, AbstractResourcesBackend *parent)
     : AbstractResource(parent)
     , m_id(id)
     , m_name(QString::fromUtf8(fwupd_device_get_name(device)))
@@ -34,7 +36,7 @@ QString FwupdResource::availableVersion() const
 
 QStringList FwupdResource::categories()
 {
-   return m_categories;
+    return m_categories;
 }
 
 QString FwupdResource::comment()
@@ -79,7 +81,7 @@ QString FwupdResource::installedVersion() const
 
 QJsonArray FwupdResource::licenses()
 {
-    return { QJsonObject{ {QStringLiteral("name"), m_license} } };
+    return {QJsonObject{{QStringLiteral("name"), m_license}}};
 }
 
 QString FwupdResource::longDescription()
@@ -127,7 +129,7 @@ void FwupdResource::fetchChangelog()
 
 void FwupdResource::setState(AbstractResource::State state)
 {
-    if(m_state != state) {
+    if (m_state != state) {
         m_state = state;
         emit stateChanged();
     }
@@ -148,7 +150,7 @@ QString FwupdResource::executeLabel() const
     return QStringLiteral("Not Invokable");
 }
 
-void FwupdResource::setReleaseDetails(FwupdRelease* release)
+void FwupdResource::setReleaseDetails(FwupdRelease *release)
 {
     m_origin = QString::fromUtf8(fwupd_release_get_remote_id(release));
     m_summary = QString::fromUtf8(fwupd_release_get_summary(release));
@@ -161,7 +163,7 @@ void FwupdResource::setReleaseDetails(FwupdRelease* release)
     m_updateURI = QString::fromUtf8(fwupd_release_get_uri(release));
 }
 
-void FwupdResource::setDeviceDetails(FwupdDevice* dev)
+void FwupdResource::setDeviceDetails(FwupdDevice *dev)
 {
     m_isLiveUpdatable = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_UPDATABLE);
     m_isOnlyOffline = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_ONLY_OFFLINE);
@@ -169,15 +171,14 @@ void FwupdResource::setDeviceDetails(FwupdDevice* dev)
     m_isDeviceRemoval = !fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_INTERNAL);
     m_needsBootLoader = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_BOOTLOADER);
 
-    if (fwupd_device_get_name(dev))
-    {
+    if (fwupd_device_get_name(dev)) {
         QString vendorDesc = QString::fromUtf8(fwupd_device_get_name(dev));
         const QString vendorName = QString::fromUtf8(fwupd_device_get_vendor(dev));
 
         if (!vendorDesc.startsWith(vendorName))
             vendorDesc = vendorName + QLatin1Char(' ') + vendorDesc;
         m_displayName = vendorDesc;
-     }
+    }
     m_summary = QString::fromUtf8(fwupd_device_get_summary(dev));
     m_vendor = QString::fromUtf8(fwupd_device_get_vendor(dev));
     m_releaseDate = QDateTime::fromSecsSinceEpoch(fwupd_device_get_created(dev)).date();
@@ -185,7 +186,7 @@ void FwupdResource::setDeviceDetails(FwupdDevice* dev)
     m_description = QString::fromUtf8((fwupd_device_get_description(dev)));
 
     if (fwupd_device_get_icons(dev)->len >= 1)
-        m_iconName = QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(dev), 0));// Check whether given icon exists or not!
+        m_iconName = QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(dev), 0)); // Check whether given icon exists or not!
     else
         m_iconName = QStringLiteral("device-notifier");
 }

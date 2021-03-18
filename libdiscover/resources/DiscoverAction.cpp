@@ -6,19 +6,19 @@
 
 #include "DiscoverAction.h"
 
-DiscoverAction::DiscoverAction(QObject* parent)
+DiscoverAction::DiscoverAction(QObject *parent)
     : QObject(parent)
 {
 }
 
-DiscoverAction::DiscoverAction(const QIcon icon, const QString &text, QObject* parent)
+DiscoverAction::DiscoverAction(const QIcon icon, const QString &text, QObject *parent)
     : QObject(parent)
     , m_text(text)
     , m_icon(icon)
 {
 }
 
-DiscoverAction::DiscoverAction(const QString &text, QObject* parent)
+DiscoverAction::DiscoverAction(const QString &text, QObject *parent)
     : QObject(parent)
     , m_text(text)
 {
@@ -42,7 +42,7 @@ void DiscoverAction::setVisible(bool visible)
     Q_EMIT visibleChanged(visible);
 }
 
-void DiscoverAction::setIcon(const QIcon& icon)
+void DiscoverAction::setIcon(const QIcon &icon)
 {
     if (icon.name() == m_icon.name() && !icon.name().isEmpty())
         return;
@@ -51,7 +51,7 @@ void DiscoverAction::setIcon(const QIcon& icon)
     Q_EMIT iconChanged(icon);
 }
 
-void DiscoverAction::setText(const QString& text)
+void DiscoverAction::setText(const QString &text)
 {
     if (text == m_text)
         return;
@@ -60,7 +60,7 @@ void DiscoverAction::setText(const QString& text)
     Q_EMIT textChanged(text);
 }
 
-void DiscoverAction::setToolTip(const QString& toolTip)
+void DiscoverAction::setToolTip(const QString &toolTip)
 {
     if (toolTip == m_toolTip)
         return;

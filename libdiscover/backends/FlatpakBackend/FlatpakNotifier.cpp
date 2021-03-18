@@ -10,9 +10,9 @@
 #include <glib.h>
 
 #include <QDebug>
+#include <QFutureWatcher>
 #include <QTimer>
 #include <QtConcurrentRun>
-#include <QFutureWatcher>
 
 static void installationChanged(GFileMonitor *monitor, GFile *child, GFile *other_file, GFileMonitorEvent event_type, gpointer self)
 {
@@ -21,7 +21,7 @@ static void installationChanged(GFileMonitor *monitor, GFile *child, GFile *othe
     Q_UNUSED(other_file);
     Q_UNUSED(event_type);
 
-    FlatpakNotifier::Installation *installation = (FlatpakNotifier::Installation*) self;
+    FlatpakNotifier::Installation *installation = (FlatpakNotifier::Installation *)self;
     if (!installation)
         return;
 
@@ -29,14 +29,14 @@ static void installationChanged(GFileMonitor *monitor, GFile *child, GFile *othe
     notifier->loadRemoteUpdates(installation);
 }
 
-FlatpakNotifier::FlatpakNotifier(QObject* parent)
+FlatpakNotifier::FlatpakNotifier(QObject *parent)
     : BackendNotifierModule(parent)
     , m_user(this)
     , m_system(this)
     , m_cancellable(g_cancellable_new())
 {
     QTimer *dailyCheck = new QTimer(this);
-    dailyCheck->setInterval(24 * 60 * 60 * 1000); //refresh at least once every day
+    dailyCheck->setInterval(24 * 60 * 60 * 1000); // refresh at least once every day
     connect(dailyCheck, &QTimer::timeout, this, &FlatpakNotifier::recheckSystemUpdateNeeded);
 }
 
@@ -97,16 +97,16 @@ void FlatpakNotifier::onFetchUpdatesFinished(Installation *installation, GPtrArr
     }
 }
 
-void FlatpakNotifier::loadRemoteUpdates(Installation* installation)
+void FlatpakNotifier::loadRemoteUpdates(Installation *installation)
 {
     auto fw = new QFutureWatcher<GPtrArray *>(this);
-    connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw](){
+    connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw]() {
         g_autoptr(GPtrArray) refs = fw->result();
         if (refs)
             onFetchUpdatesFinished(installation, refs);
         fw->deleteLater();
     });
-    fw->setFuture(QtConcurrent::run( [installation]() -> GPtrArray * {
+    fw->setFuture(QtConcurrent::run([installation]() -> GPtrArray * {
         g_autoptr(GCancellable) cancellable = g_cancellable_new();
         g_autoptr(GError) localError = nullptr;
         GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation->m_installation, cancellable, &localError);
@@ -122,7 +122,7 @@ bool FlatpakNotifier::hasUpdates()
     return m_system.m_hasUpdates || m_user.m_hasUpdates;
 }
 
-bool FlatpakNotifier::Installation::ensureInitialized(std::function<FlatpakInstallation*()> func, GCancellable *cancellable, GError **error)
+bool FlatpakNotifier::Installation::ensureInitialized(std::function<FlatpakInstallation *()> func, GCancellable *cancellable, GError **error)
 {
     if (!m_installation) {
         m_installation = func();
@@ -134,9 +134,19 @@ bool FlatpakNotifier::Installation::ensureInitialized(std::function<FlatpakInsta
 
 bool FlatpakNotifier::setupFlatpakInstallations(GError **error)
 {
-    if (!m_system.ensureInitialized([this, error] { return flatpak_installation_new_system(m_cancellable, error); }, m_cancellable, error))
+    if (!m_system.ensureInitialized(
+            [this, error] {
+                return flatpak_installation_new_system(m_cancellable, error);
+            },
+            m_cancellable,
+            error))
         return false;
-    if (!m_user.ensureInitialized([this, error] { return flatpak_installation_new_system(m_cancellable, error); }, m_cancellable, error))
+    if (!m_user.ensureInitialized(
+            [this, error] {
+                return flatpak_installation_new_system(m_cancellable, error);
+            },
+            m_cancellable,
+            error))
         return false;
 
     return true;

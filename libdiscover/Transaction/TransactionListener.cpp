@@ -8,8 +8,8 @@
 #include "TransactionListener.h"
 
 #include "TransactionModel.h"
-#include <QMetaProperty>
 #include "libdiscover_debug.h"
+#include <QMetaProperty>
 
 TransactionListener::TransactionListener(QObject *parent)
     : QObject(parent)
@@ -21,7 +21,7 @@ TransactionListener::TransactionListener(QObject *parent)
 
 void TransactionListener::cancel()
 {
-    if(!isCancellable()) {
+    if (!isCancellable()) {
         return;
     }
     m_transaction->cancel();
@@ -51,7 +51,7 @@ void TransactionListener::setResource(AbstractResource *resource)
     setTransaction(TransactionModel::global()->transactionFromResource(resource));
 }
 
-void TransactionListener::setResourceInternal(AbstractResource* resource)
+void TransactionListener::setResourceInternal(AbstractResource *resource)
 {
     if (m_resource == resource)
         return;
@@ -71,15 +71,16 @@ void TransactionListener::transactionAdded(Transaction *trans)
 class CheckChange
 {
 public:
-    CheckChange(QObject* obj, const QByteArray& prop)
+    CheckChange(QObject *obj, const QByteArray &prop)
         : m_object(obj)
         , m_prop(obj->metaObject()->property(obj->metaObject()->indexOfProperty(prop.constData())))
         , m_oldValue(m_prop.read(obj))
     {
-        Q_ASSERT(obj->metaObject()->indexOfProperty(prop.constData())>=0);
+        Q_ASSERT(obj->metaObject()->indexOfProperty(prop.constData()) >= 0);
     }
 
-    ~CheckChange() {
+    ~CheckChange()
+    {
         const QVariant newValue = m_prop.read(m_object);
         if (newValue != m_oldValue) {
             QMetaMethod m = m_prop.notifySignal();
@@ -88,18 +89,18 @@ public:
     }
 
 private:
-    QObject* m_object;
+    QObject *m_object;
     QMetaProperty m_prop;
     QVariant m_oldValue;
 };
 
-void TransactionListener::setTransaction(Transaction* trans)
+void TransactionListener::setTransaction(Transaction *trans)
 {
     if (m_transaction == trans) {
         return;
     }
 
-    if(m_transaction) {
+    if (m_transaction) {
         disconnect(m_transaction, nullptr, this, nullptr);
     }
 
@@ -109,7 +110,7 @@ void TransactionListener::setTransaction(Transaction* trans)
     CheckChange change4(this, "progress");
 
     m_transaction = trans;
-    if(m_transaction) {
+    if (m_transaction) {
         connect(m_transaction, &Transaction::cancellableChanged, this, &TransactionListener::cancellableChanged);
         connect(m_transaction, &Transaction::statusChanged, this, &TransactionListener::transactionStatusChanged);
         connect(m_transaction, &Transaction::progressChanged, this, &TransactionListener::progressChanged);

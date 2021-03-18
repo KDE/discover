@@ -8,9 +8,9 @@
 #ifndef CACHEDNETWORKACCESSMANAGER_H
 #define CACHEDNETWORKACCESSMANAGER_H
 
+#include <KIO/AccessManager>
 #include <QNetworkAccessManager>
 #include <QQmlNetworkAccessManagerFactory>
-#include <KIO/AccessManager>
 
 class Q_DECL_EXPORT CachedNetworkAccessManager : public KIO::AccessManager
 {
@@ -18,8 +18,7 @@ class Q_DECL_EXPORT CachedNetworkAccessManager : public KIO::AccessManager
 public:
     explicit CachedNetworkAccessManager(const QString &path, QObject *parent = nullptr);
 
-    virtual QNetworkReply * createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = nullptr) override;
+    virtual QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = nullptr) override;
 };
 
 #endif // CACHEDNETWORKACCESSMANAGER_H
-

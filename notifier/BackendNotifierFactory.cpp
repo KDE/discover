@@ -6,24 +6,24 @@
 
 #include "BackendNotifierFactory.h"
 #include <BackendNotifierModule.h>
-#include <QDebug>
 #include <QCoreApplication>
+#include <QDebug>
 #include <QDir>
 #include <QPluginLoader>
 
 BackendNotifierFactory::BackendNotifierFactory() = default;
 
-QList<BackendNotifierModule*> BackendNotifierFactory::allBackends() const
+QList<BackendNotifierModule *> BackendNotifierFactory::allBackends() const
 {
-    QList<BackendNotifierModule*> ret;
+    QList<BackendNotifierModule *> ret;
 
-    foreach(const QString& path, QCoreApplication::instance()->libraryPaths()) {
+    foreach (const QString &path, QCoreApplication::instance()->libraryPaths()) {
         QDir dir(path + QStringLiteral("/discover-notifier/"));
-        foreach(const QString& file, dir.entryList(QDir::Files)) {
+        foreach (const QString &file, dir.entryList(QDir::Files)) {
             QString fullPath = dir.absoluteFilePath(file);
             QPluginLoader loader(fullPath);
             loader.load();
-            ret += qobject_cast<BackendNotifierModule*>(loader.instance());
+            ret += qobject_cast<BackendNotifierModule *>(loader.instance());
             if (ret.last() == nullptr) {
                 qWarning() << "couldn't load" << fullPath << "because" << loader.errorString();
                 ret.removeLast();

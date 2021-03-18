@@ -5,7 +5,6 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-
 #include "FlatpakResource.h"
 #include "FlatpakBackend.h"
 #include "FlatpakSourcesBackend.h"
@@ -20,18 +19,18 @@
 #include <KFormat>
 #include <KLocalizedString>
 
-#include <QProcess>
-#include <QDir>
+#include <AppStreamQt/release.h>
 #include <QDebug>
 #include <QDesktopServices>
-#include <QIcon>
+#include <QDir>
 #include <QFileInfo>
+#include <QIcon>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QProcess>
 #include <QStringList>
 #include <QTimer>
-#include <AppStreamQt/release.h>
 
 static QString iconCachePath(const AppStream::Icon &icon)
 {
@@ -39,13 +38,13 @@ static QString iconCachePath(const AppStream::Icon &icon)
     return QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation), icon.url().fileName());
 }
 
-FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation* installation, FlatpakBackend *parent)
+FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent)
     : AbstractResource(parent)
     , m_appdata(component)
-    , m_id({installation, QString(), FlatpakResource::DesktopApp, component.id(), QString(), QString() })
+    , m_id({installation, QString(), FlatpakResource::DesktopApp, component.id(), QString(), QString()})
     , m_downloadSize(0)
     , m_installedSize(0)
-    , m_propertyStates({{DownloadSize, NotKnownYet}, {InstalledSize, NotKnownYet},{RequiredRuntime, NotKnownYet}})
+    , m_propertyStates({{DownloadSize, NotKnownYet}, {InstalledSize, NotKnownYet}, {RequiredRuntime, NotKnownYet}})
     , m_state(AbstractResource::None)
 {
     setObjectName(packageName());
@@ -61,7 +60,7 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
                     // Create $HOME/.cache/discover/icons folder
                     cacheDir.mkdir(QStringLiteral("icons"));
                     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-                    connect(manager, &QNetworkAccessManager::finished, this, [this, icon, fileName, manager] (QNetworkReply *reply) {
+                    connect(manager, &QNetworkAccessManager::finished, this, [this, icon, fileName, manager](QNetworkReply *reply) {
                         if (reply->error() == QNetworkReply::NoError) {
                             QByteArray iconData = reply->readAll();
                             QFile file(fileName);
@@ -125,15 +124,13 @@ bool FlatpakResource::canExecute() const
     return (m_id.type == DesktopApp && (m_state == AbstractResource::Installed || m_state == AbstractResource::Upgradeable));
 }
 
-void FlatpakResource::updateFromRef(FlatpakRef* ref)
+void FlatpakResource::updateFromRef(FlatpakRef *ref)
 {
     setArch(QString::fromUtf8(flatpak_ref_get_arch(ref)));
     setBranch(QString::fromUtf8(flatpak_ref_get_branch(ref)));
     setCommit(QString::fromUtf8(flatpak_ref_get_commit(ref)));
     setFlatpakName(QString::fromUtf8(flatpak_ref_get_name(ref)));
-    setType(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? DesktopApp :
-                                          extends().isEmpty() ? Runtime
-                                                              : Extension);
+    setType(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? DesktopApp : extends().isEmpty() ? Runtime : Extension);
     setObjectName(packageName());
 }
 
@@ -179,8 +176,9 @@ QVariant FlatpakResource::icon() const
         ret = QIcon(m_bundledIcon);
     } else if (icons.isEmpty()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
-    } else foreach(const AppStream::Icon &icon, icons) {
-        switch (icon.kind()) {
+    } else
+        foreach (const AppStream::Icon &icon, icons) {
+            switch (icon.kind()) {
             case AppStream::Icon::KindLocal:
             case AppStream::Icon::KindCached: {
                 const QString path = m_iconPath + icon.url().path();
@@ -192,7 +190,7 @@ QVariant FlatpakResource::icon() const
                         ret.addFile(altPath, icon.size());
                     }
                 }
-            }   break;
+            } break;
             case AppStream::Icon::KindStock: {
                 const auto ret = QIcon::fromTheme(icon.name());
                 if (!ret.isNull())
@@ -208,8 +206,8 @@ QVariant FlatpakResource::icon() const
             }
             case AppStream::Icon::KindUnknown:
                 break;
+            }
         }
-    }
 
     if (ret.isNull()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
@@ -237,12 +235,12 @@ int FlatpakResource::installedSize() const
 AbstractResource::Type FlatpakResource::type() const
 {
     switch (m_id.type) {
-        case FlatpakResource::Runtime:
-            return Technical;
-        case FlatpakResource::Extension:
-            return Addon;
-        default:
-            return Application;
+    case FlatpakResource::Runtime:
+        return Technical;
+    case FlatpakResource::Extension:
+        return Addon;
+    default:
+        return Application;
     }
 }
 
@@ -349,8 +347,9 @@ QString FlatpakResource::sizeDescription()
 {
     KFormat f;
     if (!isInstalled() || canUpgrade()) {
-        if (propertyState(DownloadSize) == NotKnownYet || propertyState(InstalledSize) == NotKnownYet || propertyState(DownloadSize) == Fetching || propertyState(InstalledSize) == Fetching) {
-            qobject_cast<FlatpakBackend*>(backend())->updateAppSize(this);
+        if (propertyState(DownloadSize) == NotKnownYet || propertyState(InstalledSize) == NotKnownYet || propertyState(DownloadSize) == Fetching
+            || propertyState(InstalledSize) == Fetching) {
+            qobject_cast<FlatpakBackend *>(backend())->updateAppSize(this);
             return i18n("Retrieving size information");
         } else if (propertyState(DownloadSize) == UnknownOrFailed || propertyState(InstalledSize) == UnknownOrFailed) {
             return i18n("Unknown size");
@@ -381,13 +380,13 @@ FlatpakResource::ResourceType FlatpakResource::resourceType() const
 QString FlatpakResource::typeAsString() const
 {
     switch (m_id.type) {
-        case FlatpakResource::Runtime:
-        case FlatpakResource::Extension:
-            return QLatin1String("runtime");
-        case FlatpakResource::DesktopApp:
-        case FlatpakResource::Source:
-        default:
-            return QLatin1String("app");
+    case FlatpakResource::Runtime:
+    case FlatpakResource::Extension:
+        return QLatin1String("runtime");
+    case FlatpakResource::DesktopApp:
+    case FlatpakResource::Source:
+    default:
+        return QLatin1String("app");
     }
 }
 
@@ -490,7 +489,7 @@ void FlatpakResource::setOrigin(const QString &origin)
 
 void FlatpakResource::setPropertyState(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState newState)
 {
-    auto & state = m_propertyStates[kind];
+    auto &state = m_propertyStates[kind];
     if (state != newState) {
         state = newState;
 
@@ -530,7 +529,7 @@ QString FlatpakResource::installationPath() const
     return installationPath(m_id.installation);
 }
 
-QString FlatpakResource::installationPath(FlatpakInstallation* flatpakInstallation)
+QString FlatpakResource::installationPath(FlatpakInstallation *flatpakInstallation)
 {
     g_autoptr(GFile) path = flatpak_installation_get_path(flatpakInstallation);
     g_autofree char *path_str = g_file_get_path(path);
@@ -559,7 +558,7 @@ QDate FlatpakResource::releaseDate() const
 
 QString FlatpakResource::sourceIcon() const
 {
-    const auto sourceItem = qobject_cast<FlatpakBackend*>(backend())->sources()->sourceById(origin());
+    const auto sourceItem = qobject_cast<FlatpakBackend *>(backend())->sources()->sourceById(origin());
     if (!sourceItem) {
         qWarning() << "Could not find source " << origin();
         return QStringLiteral("flatpak-discover");
@@ -571,7 +570,7 @@ QString FlatpakResource::sourceIcon() const
     return iconUrl;
 }
 
-    QString FlatpakResource::author() const
+QString FlatpakResource::author() const
 {
     return m_appdata.developerName();
 }
@@ -583,7 +582,7 @@ QStringList FlatpakResource::extends() const
 
 QSet<QString> FlatpakResource::alternativeAppstreamIds() const
 {
-    const AppStream::Provided::Kind AppStream_Provided_KindId = (AppStream::Provided::Kind) 12; //Should be AppStream::Provided::KindId when released
+    const AppStream::Provided::Kind AppStream_Provided_KindId = (AppStream::Provided::Kind)12; // Should be AppStream::Provided::KindId when released
     const auto ret = m_appdata.provided(AppStream_Provided_KindId).items();
 
     return QSet<QString>(ret.begin(), ret.end());

@@ -7,16 +7,16 @@
 #ifndef CATEGORIESREADER_H
 #define CATEGORIESREADER_H
 
-#include <QVector>
 #include "discovercommon_export.h"
+#include <QVector>
 
 class Category;
 class AbstractResourcesBackend;
 class DISCOVERCOMMON_EXPORT CategoriesReader
 {
-    public:
-        QVector<Category*> loadCategoriesPath(const QString& path);
-        QVector<Category*> loadCategoriesFile(AbstractResourcesBackend* backend);
+public:
+    QVector<Category *> loadCategoriesPath(const QString &path);
+    QVector<Category *> loadCategoriesFile(AbstractResourcesBackend *backend);
 };
 
 #endif // CATEGORIESREADER_H

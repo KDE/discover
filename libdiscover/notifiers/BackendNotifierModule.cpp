@@ -6,8 +6,9 @@
 
 #include "BackendNotifierModule.h"
 
-BackendNotifierModule::BackendNotifierModule(QObject* parent)
+BackendNotifierModule::BackendNotifierModule(QObject *parent)
     : QObject(parent)
-{}
+{
+}
 
 BackendNotifierModule::~BackendNotifierModule() = default;

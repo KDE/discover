@@ -21,7 +21,7 @@ class AbstractResource;
  * \class Transaction  Transaction.h "Transaction.h"
  *
  * \brief This is the base class of all transactions.
- * 
+ *
  * When there are transactions running inside Muon, the backends should
  * provide the corresponding Transaction objects with proper information.
  */
@@ -31,7 +31,7 @@ class DISCOVERCOMMON_EXPORT Transaction : public QObject
 
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QVariant icon READ icon CONSTANT)
-    Q_PROPERTY(AbstractResource* resource READ resource CONSTANT)
+    Q_PROPERTY(AbstractResource *resource READ resource CONSTANT)
     Q_PROPERTY(Role role READ role CONSTANT)
     Q_PROPERTY(Status status READ status NOTIFY statusChanged)
     Q_PROPERTY(bool isCancellable READ isCancellable NOTIFY cancellableChanged)
@@ -62,17 +62,16 @@ public:
     Q_ENUM(Status)
 
     enum Role {
-        ///The transaction is going to install a resource
+        /// The transaction is going to install a resource
         InstallRole = 0,
-        ///The transaction is going to remove a resource
+        /// The transaction is going to remove a resource
         RemoveRole,
-        ///The transaction is going to change the addons of a resource
+        /// The transaction is going to change the addons of a resource
         ChangeAddonsRole,
     };
     Q_ENUM(Role)
 
-    Transaction(QObject *parent, AbstractResource *resource,
-                 Transaction::Role role, const AddonList &addons = {});
+    Transaction(QObject *parent, AbstractResource *resource, Transaction::Role role, const AddonList &addons = {});
 
     ~Transaction() override;
 
@@ -127,7 +126,9 @@ public:
      */
     bool isActive() const;
 
-    Q_SCRIPTABLE virtual void proceed() {}
+    Q_SCRIPTABLE virtual void proceed()
+    {
+    }
 
     /** @returns a name that identifies the transaction */
     virtual QString name() const;
@@ -138,17 +139,23 @@ public:
     bool isVisible() const;
     void setVisible(bool v);
 
-    quint64 downloadSpeed() const { return m_downloadSpeed; }
+    quint64 downloadSpeed() const
+    {
+        return m_downloadSpeed;
+    }
     void setDownloadSpeed(quint64 downloadSpeed);
 
-    uint remainingTime() const { return m_remainingTime; }
+    uint remainingTime() const
+    {
+        return m_remainingTime;
+    }
     void setRemainingTime(uint seconds);
 
     QString downloadSpeedString() const;
     QString remainingTimeString() const;
 
 private:
-    AbstractResource * const m_resource;
+    AbstractResource *const m_resource;
     const Role m_role;
     Status m_status;
     const AddonList m_addons;

@@ -7,17 +7,17 @@
 #include "FeaturedModel.h"
 
 #include "discover_debug.h"
-#include <QStandardPaths>
-#include <QFile>
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QDir>
-#include <QtGlobal>
 #include <KIO/StoredTransferJob>
+#include <QDir>
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QStandardPaths>
+#include <QtGlobal>
 
-#include <utils.h>
 #include <resources/ResourcesModel.h>
 #include <resources/StoredResultsStream.h>
+#include <utils.h>
 
 Q_GLOBAL_STATIC(QString, featuredCache)
 
@@ -76,12 +76,14 @@ void FeaturedModel::refreshCurrentApplicationBackend()
 
 void FeaturedModel::refresh()
 {
-    //usually only useful if launching just fwupd or kns backends
+    // usually only useful if launching just fwupd or kns backends
     if (!m_backend)
         return;
 
     acquireFetching(true);
-    const auto dest = qScopeGuard([this] { acquireFetching(false); });
+    const auto dest = qScopeGuard([this] {
+        acquireFetching(false);
+    });
     QFile f(*featuredCache);
     if (!f.open(QIODevice::ReadOnly)) {
         qCWarning(DISCOVER_LOG) << "couldn't open file" << *featuredCache << f.errorString();
@@ -94,17 +96,19 @@ void FeaturedModel::refresh()
         return;
     }
 
-    const auto uris = kTransform<QVector<QUrl>>(array, [](const QJsonValue& uri) { return QUrl(uri.toString()); });
+    const auto uris = kTransform<QVector<QUrl>>(array, [](const QJsonValue &uri) {
+        return QUrl(uri.toString());
+    });
     setUris(uris);
 }
 
-void FeaturedModel::setUris(const QVector<QUrl>& uris)
+void FeaturedModel::setUris(const QVector<QUrl> &uris)
 {
     if (!m_backend)
         return;
 
-    QSet<ResultsStream*> streams;
-    foreach(const auto &uri, uris) {
+    QSet<ResultsStream *> streams;
+    foreach (const auto &uri, uris) {
         AbstractResourcesBackend::Filters filter;
         filter.resourceUrl = uri;
         streams << m_backend->search(filter);
@@ -119,7 +123,7 @@ void FeaturedModel::setUris(const QVector<QUrl>& uris)
 static void filterDupes(QVector<AbstractResource *> &resources)
 {
     QSet<QString> found;
-    for(auto it = resources.begin(); it!=resources.end(); ) {
+    for (auto it = resources.begin(); it != resources.end();) {
         auto id = (*it)->appstreamId();
         if (found.contains(id)) {
             it = resources.erase(it);
@@ -137,19 +141,19 @@ void FeaturedModel::acquireFetching(bool f)
     else
         m_isFetching--;
 
-    if ((!f && m_isFetching==0) || (f && m_isFetching==1)) {
+    if ((!f && m_isFetching == 0) || (f && m_isFetching == 1)) {
         emit isFetchingChanged();
     }
-    Q_ASSERT(m_isFetching>=0);
+    Q_ASSERT(m_isFetching >= 0);
 }
 
-void FeaturedModel::setResources(const QVector<AbstractResource *>& _resources)
+void FeaturedModel::setResources(const QVector<AbstractResource *> &_resources)
 {
     auto resources = _resources;
     filterDupes(resources);
 
     if (m_resources != resources) {
-        //TODO: sort like in the json files
+        // TODO: sort like in the json files
         beginResetModel();
         m_resources = resources;
         endResetModel();
@@ -158,10 +162,10 @@ void FeaturedModel::setResources(const QVector<AbstractResource *>& _resources)
     acquireFetching(false);
 }
 
-void FeaturedModel::removeResource(AbstractResource* resource)
+void FeaturedModel::removeResource(AbstractResource *resource)
 {
     int index = m_resources.indexOf(resource);
-    if (index<0)
+    if (index < 0)
         return;
 
     beginRemoveRows({}, index, index);
@@ -169,19 +173,19 @@ void FeaturedModel::removeResource(AbstractResource* resource)
     endRemoveRows();
 }
 
-QVariant FeaturedModel::data(const QModelIndex& index, int role) const
+QVariant FeaturedModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || role!=Qt::UserRole)
+    if (!index.isValid() || role != Qt::UserRole)
         return {};
 
     auto res = m_resources.value(index.row());
     if (!res)
         return {};
 
-    return QVariant::fromValue<QObject*>(res);
+    return QVariant::fromValue<QObject *>(res);
 }
 
-int FeaturedModel::rowCount(const QModelIndex& parent) const
+int FeaturedModel::rowCount(const QModelIndex &parent) const
 {
     return parent.isValid() ? 0 : m_resources.count();
 }

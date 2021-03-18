@@ -14,7 +14,7 @@ class UnattendedUpdates : public QObject
 {
     Q_OBJECT
 public:
-    UnattendedUpdates(DiscoverNotifier* parent);
+    UnattendedUpdates(DiscoverNotifier *parent);
     ~UnattendedUpdates() override;
 
 private:

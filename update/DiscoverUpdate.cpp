@@ -5,16 +5,16 @@
  */
 
 #include "DiscoverUpdate.h"
-#include <resources/ResourcesModel.h>
-#include <resources/ResourcesUpdatesModel.h>
 #include <QCoreApplication>
 #include <QDebug>
+#include <resources/ResourcesModel.h>
+#include <resources/ResourcesUpdatesModel.h>
 
 DiscoverUpdate::DiscoverUpdate()
     : QObject(nullptr)
     , m_resourcesUpdatesModel(new ResourcesUpdatesModel)
 {
-    connect(m_resourcesUpdatesModel, &ResourcesUpdatesModel::passiveMessage, this, [] (const QString &message) {
+    connect(m_resourcesUpdatesModel, &ResourcesUpdatesModel::passiveMessage, this, [](const QString &message) {
         qWarning() << "message" << message;
     });
     connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &DiscoverUpdate::start);
@@ -38,13 +38,13 @@ void DiscoverUpdate::start()
     auto transaction = m_resourcesUpdatesModel->transaction();
     connect(transaction, &Transaction::statusChanged, this, &DiscoverUpdate::transactionStatusChanged);
 
-    qDebug() <<"go!" << transaction;
+    qDebug() << "go!" << transaction;
 }
 
 void DiscoverUpdate::transactionStatusChanged(Transaction::Status status)
 {
     m_done = true;
-    qDebug() <<"status!" << status << ResourcesModel::global()->updatesCount();
+    qDebug() << "status!" << status << ResourcesModel::global()->updatesCount();
     if (status == Transaction::DoneStatus || status == Transaction::DoneWithErrorStatus) {
         const bool withError = status == Transaction::DoneWithErrorStatus;
         QCoreApplication::instance()->exit(withError);

@@ -23,10 +23,9 @@ CachedNetworkAccessManager::CachedNetworkAccessManager(const QString &path, QObj
     setCache(cache);
 }
 
-QNetworkReply * CachedNetworkAccessManager::createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData)
+QNetworkReply *CachedNetworkAccessManager::createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData)
 {
     QNetworkRequest req(request);
     req.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
     return KIO::AccessManager::createRequest(op, request, outgoingData);
 }
-

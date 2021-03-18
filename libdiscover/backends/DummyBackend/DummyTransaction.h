@@ -13,20 +13,20 @@ class DummyResource;
 class DummyTransaction : public Transaction
 {
     Q_OBJECT
-    public:
-        DummyTransaction(DummyResource* app, Role role);
-        DummyTransaction(DummyResource* app, const AddonList& list, Role role);
+public:
+    DummyTransaction(DummyResource *app, Role role);
+    DummyTransaction(DummyResource *app, const AddonList &list, Role role);
 
-        void cancel() override;
-        void proceed() override;
+    void cancel() override;
+    void proceed() override;
 
-    private Q_SLOTS:
-        void iterateTransaction();
-        void finishTransaction();
+private Q_SLOTS:
+    void iterateTransaction();
+    void finishTransaction();
 
-    private:
-        bool m_iterate = true;
-        DummyResource* m_app;
+private:
+    bool m_iterate = true;
+    DummyResource *m_app;
 };
 
 #endif // DUMMYTRANSACTION_H

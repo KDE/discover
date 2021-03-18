@@ -7,26 +7,29 @@
 #ifndef NOTIFIERITEM_H
 #define NOTIFIERITEM_H
 
-#include <QObject>
-#include <KStatusNotifierItem>
 #include "DiscoverNotifier.h"
+#include <KStatusNotifierItem>
+#include <QObject>
 
 class NotifierItem : public QObject
 {
     Q_OBJECT
-    public:
-        NotifierItem();
+public:
+    NotifierItem();
 
-        void setupNotifierItem();
-        void refresh();
+    void setupNotifierItem();
+    void refresh();
 
-        bool isVisible() const { return m_visible; }
-        void setVisible(bool visible);
+    bool isVisible() const
+    {
+        return m_visible;
+    }
+    void setVisible(bool visible);
 
-    private:
-        bool m_visible = false;
-        DiscoverNotifier m_notifier;
-        QPointer<KStatusNotifierItem> m_item;
+private:
+    bool m_visible = false;
+    DiscoverNotifier m_notifier;
+    QPointer<KStatusNotifierItem> m_item;
 };
 
 #endif // NOTIFIERITEM_H

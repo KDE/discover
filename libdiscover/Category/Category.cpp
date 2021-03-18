@@ -8,19 +8,26 @@
 
 #include <QDomNode>
 
+#include "libdiscover_debug.h"
 #include <KLocalizedString>
 #include <QFile>
 #include <QStandardPaths>
-#include "libdiscover_debug.h"
 #include <utils.h>
 
-Category::Category(QSet<QString> pluginName, QObject* parent)
-        : QObject(parent)
-        , m_iconString(QStringLiteral("applications-other"))
-        , m_plugins(std::move(pluginName))
-{}
+Category::Category(QSet<QString> pluginName, QObject *parent)
+    : QObject(parent)
+    , m_iconString(QStringLiteral("applications-other"))
+    , m_plugins(std::move(pluginName))
+{
+}
 
-Category::Category(const QString& name, const QString& iconName, const QVector<QPair<FilterType, QString> >& orFilters, const QSet<QString> &pluginName, const QVector<Category *>& subCategories, const QUrl& decoration, bool isAddons)
+Category::Category(const QString &name,
+                   const QString &iconName,
+                   const QVector<QPair<FilterType, QString>> &orFilters,
+                   const QSet<QString> &pluginName,
+                   const QVector<Category *> &subCategories,
+                   const QUrl &decoration,
+                   bool isAddons)
     : QObject(nullptr)
     , m_name(name)
     , m_iconString(iconName)
@@ -35,12 +42,11 @@ Category::Category(const QString& name, const QString& iconName, const QVector<Q
 
 Category::~Category() = default;
 
-void Category::parseData(const QString& path, const QDomNode& data)
+void Category::parseData(const QString &path, const QDomNode &data)
 {
-    for(QDomNode node = data.firstChild(); !node.isNull(); node = node.nextSibling())
-    {
-        if(!node.isElement()) {
-            if(!node.isComment())
+    for (QDomNode node = data.firstChild(); !node.isNull(); node = node.nextSibling()) {
+        if (!node.isElement()) {
+            if (!node.isComment())
                 qCWarning(LIBDISCOVER_LOG) << "unknown node found at " << QStringLiteral("%1:%2").arg(path).arg(node.lineNumber());
             continue;
         }
@@ -55,7 +61,8 @@ void Category::parseData(const QString& path, const QDomNode& data)
         } else if (tempElement.tagName() == QLatin1String("Image")) {
             m_decoration = QUrl(tempElement.text());
             if (m_decoration.isRelative()) {
-                m_decoration = QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("discover/") + tempElement.text()));
+                m_decoration =
+                    QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("discover/") + tempElement.text()));
                 if (m_decoration.isEmpty())
                     qCWarning(LIBDISCOVER_LOG) << "couldn't find category decoration" << tempElement.text();
             }
@@ -63,20 +70,19 @@ void Category::parseData(const QString& path, const QDomNode& data)
             m_isAddons = true;
         } else if (tempElement.tagName() == QLatin1String("Icon") && tempElement.hasChildNodes()) {
             m_iconString = tempElement.text();
-        } else if (tempElement.tagName() == QLatin1String("Include")) { //previous muon format
+        } else if (tempElement.tagName() == QLatin1String("Include")) { // previous muon format
             parseIncludes(tempElement);
-        } else if (tempElement.tagName() == QLatin1String("Categories")) { //as provided by appstream
+        } else if (tempElement.tagName() == QLatin1String("Categories")) { // as provided by appstream
             parseIncludes(tempElement);
         }
     }
 }
 
-QVector<QPair<FilterType, QString> > Category::parseIncludes(const QDomNode &data)
+QVector<QPair<FilterType, QString>> Category::parseIncludes(const QDomNode &data)
 {
     QDomNode node = data.firstChild();
-    QVector<QPair<FilterType, QString> > filter;
-    while(!node.isNull())
-    {
+    QVector<QPair<FilterType, QString>> filter;
+    while (!node.isNull()) {
         QDomElement tempElement = node.toElement();
 
         if (tempElement.tagName() == QLatin1String("And")) {
@@ -87,15 +93,15 @@ QVector<QPair<FilterType, QString> > Category::parseIncludes(const QDomNode &dat
         } else if (tempElement.tagName() == QLatin1String("Not")) {
             m_notFilters.append(parseIncludes(node));
         } else if (tempElement.tagName() == QLatin1String("PkgSection")) {
-            filter.append({ PkgSectionFilter, tempElement.text() });
+            filter.append({PkgSectionFilter, tempElement.text()});
         } else if (tempElement.tagName() == QLatin1String("Category")) {
-            filter.append({ CategoryFilter, tempElement.text() });
+            filter.append({CategoryFilter, tempElement.text()});
         } else if (tempElement.tagName() == QLatin1String("PkgWildcard")) {
-            filter.append({ PkgWildcardFilter, tempElement.text() });
+            filter.append({PkgWildcardFilter, tempElement.text()});
         } else if (tempElement.tagName() == QLatin1String("AppstreamIdWildcard")) {
-            filter.append({ AppstreamIdWildcardFilter, tempElement.text() });
+            filter.append({AppstreamIdWildcardFilter, tempElement.text()});
         } else if (tempElement.tagName() == QLatin1String("PkgName")) {
-            filter.append({ PkgNameFilter, tempElement.text() });
+            filter.append({PkgNameFilter, tempElement.text()});
         } else {
             qCWarning(LIBDISCOVER_LOG) << "unknown" << tempElement.tagName();
         }
@@ -110,7 +116,7 @@ QString Category::name() const
     return m_name;
 }
 
-void Category::setName(const QString& name)
+void Category::setName(const QString &name)
 {
     m_name = name;
     Q_EMIT nameChanged();
@@ -121,22 +127,22 @@ QString Category::icon() const
     return m_iconString;
 }
 
-QVector<QPair<FilterType, QString> > Category::andFilters() const
+QVector<QPair<FilterType, QString>> Category::andFilters() const
 {
     return m_andFilters;
 }
 
-void Category::setAndFilter(QVector<QPair<FilterType, QString> > filters)
+void Category::setAndFilter(QVector<QPair<FilterType, QString>> filters)
 {
     m_andFilters = filters;
 }
 
-QVector<QPair<FilterType, QString> > Category::orFilters() const
+QVector<QPair<FilterType, QString>> Category::orFilters() const
 {
     return m_orFilters;
 }
 
-QVector<QPair<FilterType, QString> > Category::notFilters() const
+QVector<QPair<FilterType, QString>> Category::notFilters() const
 {
     return m_notFilters;
 }
@@ -148,13 +154,13 @@ QVector<Category *> Category::subCategories() const
 
 bool Category::categoryLessThan(Category *c1, const Category *c2)
 {
-    return (!c1->isAddons() && c2->isAddons()) || (c1->isAddons()==c2->isAddons() && QString::localeAwareCompare(c1->name(), c2->name()) < 0);
+    return (!c1->isAddons() && c2->isAddons()) || (c1->isAddons() == c2->isAddons() && QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
 
-static bool isSorted(const QVector<Category*>& vector)
+static bool isSorted(const QVector<Category *> &vector)
 {
     Category *last = nullptr;
-    for(auto a: vector) {
+    for (auto a : vector) {
         if (last && !Category::categoryLessThan(last, a))
             return false;
         last = a;
@@ -162,16 +168,16 @@ static bool isSorted(const QVector<Category*>& vector)
     return true;
 }
 
-void Category::sortCategories(QVector<Category *>& cats)
+void Category::sortCategories(QVector<Category *> &cats)
 {
     std::sort(cats.begin(), cats.end(), &categoryLessThan);
-    for(auto cat: cats) {
+    for (auto cat : cats) {
         sortCategories(cat->m_subCategories);
     }
     Q_ASSERT(isSorted(cats));
 }
 
-void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
+void Category::addSubcategory(QVector<Category *> &list, Category *newcat)
 {
     Q_ASSERT(isSorted(list));
 
@@ -182,22 +188,16 @@ void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
     }
 
     auto c = *it;
-    if(c->name() == newcat->name()) {
-        if(c->icon() != newcat->icon()
-            || c->m_andFilters != newcat->m_andFilters
-            || c->m_isAddons != newcat->m_isAddons
-        )
-        {
-            qCWarning(LIBDISCOVER_LOG) << "the following categories seem to be the same but they're not entirely"
-                << c->icon() << newcat->icon() << "--"
-                << c->name() << newcat->name() << "--"
-                << c->andFilters() << newcat->andFilters() << "--"
-                << c->isAddons() << newcat->isAddons();
+    if (c->name() == newcat->name()) {
+        if (c->icon() != newcat->icon() || c->m_andFilters != newcat->m_andFilters || c->m_isAddons != newcat->m_isAddons) {
+            qCWarning(LIBDISCOVER_LOG) << "the following categories seem to be the same but they're not entirely" << c->icon() << newcat->icon() << "--"
+                                       << c->name() << newcat->name() << "--" << c->andFilters() << newcat->andFilters() << "--" << c->isAddons()
+                                       << newcat->isAddons();
         } else {
             c->m_orFilters += newcat->orFilters();
             c->m_notFilters += newcat->notFilters();
             c->m_plugins.unite(newcat->m_plugins);
-            Q_FOREACH (Category* nc, newcat->subCategories()) {
+            Q_FOREACH (Category *nc, newcat->subCategories()) {
                 addSubcategory(c->m_subCategories, nc);
             }
             return;
@@ -208,11 +208,11 @@ void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
     Q_ASSERT(isSorted(list));
 }
 
-void Category::addSubcategory(Category* cat)
+void Category::addSubcategory(Category *cat)
 {
     int i = 0;
-    for(Category* subCat : qAsConst(m_subCategories)) {
-        if(!categoryLessThan(subCat, cat)) {
+    for (Category *subCat : qAsConst(m_subCategories)) {
+        if (!categoryLessThan(subCat, cat)) {
             break;
         }
         ++i;
@@ -221,10 +221,10 @@ void Category::addSubcategory(Category* cat)
     Q_ASSERT(isSorted(m_subCategories));
 }
 
-bool Category::blacklistPluginsInVector(const QSet<QString>& pluginNames, QVector<Category *>& subCategories)
+bool Category::blacklistPluginsInVector(const QSet<QString> &pluginNames, QVector<Category *> &subCategories)
 {
     bool ret = false;
-    for(QVector<Category*>::iterator it = subCategories.begin(); it!=subCategories.end(); ) {
+    for (QVector<Category *>::iterator it = subCategories.begin(); it != subCategories.end();) {
         if ((*it)->blacklistPlugins(pluginNames)) {
             delete *it;
             it = subCategories.erase(it);
@@ -235,7 +235,7 @@ bool Category::blacklistPluginsInVector(const QSet<QString>& pluginNames, QVecto
     return ret;
 }
 
-bool Category::blacklistPlugins(const QSet<QString>& pluginNames)
+bool Category::blacklistPlugins(const QSet<QString> &pluginNames)
 {
     if (m_plugins.subtract(pluginNames).isEmpty()) {
         return true;
@@ -249,7 +249,7 @@ bool Category::blacklistPlugins(const QSet<QString>& pluginNames)
 QUrl Category::decoration() const
 {
     if (m_decoration.isEmpty()) {
-        Category* c = qobject_cast<Category*>(parent());
+        Category *c = qobject_cast<Category *>(parent());
         return c ? c->decoration() : QUrl();
     } else {
         Q_ASSERT(!m_decoration.isLocalFile() || QFile::exists(m_decoration.toLocalFile()));
@@ -259,29 +259,31 @@ QUrl Category::decoration() const
 
 QVariantList Category::subCategoriesVariant() const
 {
-    return kTransform<QVariantList>(m_subCategories, [](Category* cat){ return QVariant::fromValue<QObject*>(cat); });
+    return kTransform<QVariantList>(m_subCategories, [](Category *cat) {
+        return QVariant::fromValue<QObject *>(cat);
+    });
 }
 
-bool Category::matchesCategoryName(const QString& name) const
+bool Category::matchesCategoryName(const QString &name) const
 {
-    for(const auto &filter: m_orFilters) {
+    for (const auto &filter : m_orFilters) {
         if (filter.first == CategoryFilter && filter.second == name)
             return true;
     }
     return false;
 }
 
-bool Category::contains(Category* cat) const
+bool Category::contains(Category *cat) const
 {
-    const bool ret = cat == this || (cat && contains(qobject_cast<Category*>(cat->parent())));
+    const bool ret = cat == this || (cat && contains(qobject_cast<Category *>(cat->parent())));
     return ret;
 }
 
-bool Category::contains(const QVariantList& cats) const
+bool Category::contains(const QVariantList &cats) const
 {
     bool ret = false;
-    for(const auto &itCat : cats) {
-        if (contains(qobject_cast<Category*>(itCat.value<QObject*>()))) {
+    for (const auto &itCat : cats) {
+        if (contains(qobject_cast<Category *>(itCat.value<QObject *>()))) {
             ret = true;
             break;
         }

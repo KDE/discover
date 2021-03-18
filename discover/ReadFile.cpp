@@ -58,11 +58,11 @@ void ReadFile::openNow()
     process();
 }
 
-void ReadFile::processPath(QString& path)
+void ReadFile::processPath(QString &path)
 {
     const QRegularExpression envRx(QStringLiteral("\\$([A-Z_]+)"));
     auto matchIt = envRx.globalMatch(path);
-    while(matchIt.hasNext()) {
+    while (matchIt.hasNext()) {
         auto match = matchIt.next();
         path.replace(match.capturedStart(), match.capturedLength(), QString::fromUtf8(qgetenv(match.capturedRef(1).toUtf8().constData())));
     }
@@ -74,7 +74,7 @@ void ReadFile::process()
 
     if (m_filter.isValid() && !m_filter.pattern().isEmpty()) {
         auto it = m_filter.globalMatch(read);
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             const auto match = it.next();
             m_contents.append(match.capturedRef(match.lastCapturedIndex()));
             m_contents.append(QLatin1Char('\n'));
@@ -84,7 +84,7 @@ void ReadFile::process()
     Q_EMIT contentsChanged(m_contents);
 }
 
-void ReadFile::setFilter(const QString& filter)
+void ReadFile::setFilter(const QString &filter)
 {
     m_filter = QRegularExpression(filter);
     if (!m_filter.isValid())
@@ -96,4 +96,3 @@ QString ReadFile::filter() const
 {
     return m_filter.pattern();
 }
-

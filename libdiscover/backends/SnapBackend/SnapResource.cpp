@@ -6,12 +6,12 @@
 
 #include "SnapResource.h"
 #include "SnapBackend.h"
-#include <QDebug>
-#include <QProcess>
-#include <QBuffer>
-#include <QImageReader>
-#include <QStandardItemModel>
 #include <KLocalizedString>
+#include <QBuffer>
+#include <QDebug>
+#include <QImageReader>
+#include <QProcess>
+#include <QStandardItemModel>
 
 #ifdef SNAP_MARKDOWN
 #include <Snapd/MarkdownParser>
@@ -19,7 +19,7 @@
 
 #include <utils.h>
 
-QDebug operator<<(QDebug debug, const QSnapdPlug& plug)
+QDebug operator<<(QDebug debug, const QSnapdPlug &plug)
 {
     QDebugStateSaver saver(debug);
     debug.nospace() << "QSnapdPlug(";
@@ -27,12 +27,12 @@ QDebug operator<<(QDebug debug, const QSnapdPlug& plug)
     debug.nospace() << "snap:" << plug.snap() << ',';
     debug.nospace() << "label:" << plug.label() << ',';
     debug.nospace() << "interface:" << plug.interface() << ',';
-//     debug.nospace() << "connectionCount:" << plug.connectionSlotCount();
+    //     debug.nospace() << "connectionCount:" << plug.connectionSlotCount();
     debug.nospace() << ')';
     return debug;
 }
 
-QDebug operator<<(QDebug debug, const QSnapdSlot& slot)
+QDebug operator<<(QDebug debug, const QSnapdSlot &slot)
 {
     QDebugStateSaver saver(debug);
     debug.nospace() << "QSnapdSlot(";
@@ -40,32 +40,33 @@ QDebug operator<<(QDebug debug, const QSnapdSlot& slot)
     debug.nospace() << "label:" << slot.label() << ',';
     debug.nospace() << "snap:" << slot.snap() << ',';
     debug.nospace() << "interface:" << slot.interface() << ',';
-//     debug.nospace() << "connectionCount:" << slot.connectionSlotCount();
+    //     debug.nospace() << "connectionCount:" << slot.connectionSlotCount();
     debug.nospace() << ')';
     return debug;
 }
 
-QDebug operator<<(QDebug debug, const QSnapdPlug* plug)
+QDebug operator<<(QDebug debug, const QSnapdPlug *plug)
 {
     QDebugStateSaver saver(debug);
     debug.nospace() << "*" << *plug;
     return debug;
 }
 
-QDebug operator<<(QDebug debug, const QSnapdSlot* slot)
+QDebug operator<<(QDebug debug, const QSnapdSlot *slot)
 {
     QDebugStateSaver saver(debug);
     debug.nospace() << "*" << *slot;
     return debug;
 }
 
-const QStringList SnapResource::m_objects({ QStringLiteral("qrc:/qml/PermissionsButton.qml")
+const QStringList SnapResource::m_objects({QStringLiteral("qrc:/qml/PermissionsButton.qml")
 #ifdef SNAP_CHANNELS
-	, QStringLiteral("qrc:/qml/ChannelsButton.qml")
+                                               ,
+                                           QStringLiteral("qrc:/qml/ChannelsButton.qml")
 #endif
-	});
+});
 
-SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend* backend)
+SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend *backend)
     : AbstractResource(backend)
     , m_state(state)
     , m_snap(snap)
@@ -73,9 +74,9 @@ SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::St
     setObjectName(snap->name());
 }
 
-QSnapdClient * SnapResource::client() const
+QSnapdClient *SnapResource::client() const
 {
-    auto backend = qobject_cast<SnapBackend*>(parent());
+    auto backend = qobject_cast<SnapBackend *>(parent());
     return backend->client();
 }
 
@@ -86,7 +87,7 @@ QString SnapResource::availableVersion() const
 
 QStringList SnapResource::categories()
 {
-    return { QStringLiteral("Application") };
+    return {QStringLiteral("Application")};
 }
 
 QString SnapResource::comment()
@@ -96,7 +97,7 @@ QString SnapResource::comment()
 
 int SnapResource::size()
 {
-//     return isInstalled() ? m_snap->installedSize() : m_snap->downloadSize();
+    //     return isInstalled() ? m_snap->installedSize() : m_snap->downloadSize();
     return m_snap->downloadSize();
 }
 
@@ -122,7 +123,7 @@ QVariant SnapResource::icon() const
 
 void SnapResource::gotIcon()
 {
-    auto req = qobject_cast<QSnapdGetIconRequest*>(sender());
+    auto req = qobject_cast<QSnapdGetIconRequest *>(sender());
     if (req->error()) {
         qWarning() << "icon error" << req->errorString();
         return;
@@ -148,75 +149,73 @@ QString SnapResource::installedVersion() const
 
 QJsonArray SnapResource::licenses()
 {
-    return { QJsonObject{ {QStringLiteral("name"), m_snap->license()} } };
+    return {QJsonObject{{QStringLiteral("name"), m_snap->license()}}};
 }
 
 #ifdef SNAP_MARKDOWN
-static QString serialize_node (QSnapdMarkdownNode &node);
+static QString serialize_node(QSnapdMarkdownNode &node);
 
-static QString
-serialize_children (QSnapdMarkdownNode &node)
+static QString serialize_children(QSnapdMarkdownNode &node)
 {
     QString result;
-    for (int i = 0; i < node.childCount (); i++) {
-        QScopedPointer<QSnapdMarkdownNode> child (node.child (i));
-        result += serialize_node (*child);
+    for (int i = 0; i < node.childCount(); i++) {
+        QScopedPointer<QSnapdMarkdownNode> child(node.child(i));
+        result += serialize_node(*child);
     }
     return result;
 }
 
-static QString
-serialize_node (QSnapdMarkdownNode &node)
+static QString serialize_node(QSnapdMarkdownNode &node)
 {
-   switch (node.type ()) {
-   case QSnapdMarkdownNode::NodeTypeText:
-       return node.text().toHtmlEscaped();
+    switch (node.type()) {
+    case QSnapdMarkdownNode::NodeTypeText:
+        return node.text().toHtmlEscaped();
 
-   case QSnapdMarkdownNode::NodeTypeParagraph:
-       return QLatin1String("<p>") + serialize_children (node) + QLatin1String("</p>\n");
+    case QSnapdMarkdownNode::NodeTypeParagraph:
+        return QLatin1String("<p>") + serialize_children(node) + QLatin1String("</p>\n");
 
-   case QSnapdMarkdownNode::NodeTypeUnorderedList:
-       return QLatin1String("<ul>\n") + serialize_children (node) + QLatin1String("</ul>\n");
+    case QSnapdMarkdownNode::NodeTypeUnorderedList:
+        return QLatin1String("<ul>\n") + serialize_children(node) + QLatin1String("</ul>\n");
 
-   case QSnapdMarkdownNode::NodeTypeListItem:
-       if (node.childCount () == 0)
-           return QLatin1String("<li></li>\n");
-       if (node.childCount () == 1) {
-           QScopedPointer<QSnapdMarkdownNode> child (node.child (0));
-           if (child->type () == QSnapdMarkdownNode::NodeTypeParagraph)
-               return QLatin1String("<li>") + serialize_children (*child) + QLatin1String("</li>\n");
-       }
-       return QLatin1String("<li>\n") + serialize_children (node) + QLatin1String("</li>\n");
+    case QSnapdMarkdownNode::NodeTypeListItem:
+        if (node.childCount() == 0)
+            return QLatin1String("<li></li>\n");
+        if (node.childCount() == 1) {
+            QScopedPointer<QSnapdMarkdownNode> child(node.child(0));
+            if (child->type() == QSnapdMarkdownNode::NodeTypeParagraph)
+                return QLatin1String("<li>") + serialize_children(*child) + QLatin1String("</li>\n");
+        }
+        return QLatin1String("<li>\n") + serialize_children(node) + QLatin1String("</li>\n");
 
-   case QSnapdMarkdownNode::NodeTypeCodeBlock:
-       return QLatin1String("<pre><code>") + serialize_children (node) + QLatin1String("</code></pre>\n");
+    case QSnapdMarkdownNode::NodeTypeCodeBlock:
+        return QLatin1String("<pre><code>") + serialize_children(node) + QLatin1String("</code></pre>\n");
 
-   case QSnapdMarkdownNode::NodeTypeCodeSpan:
-       return QLatin1String("<code>") + serialize_children (node) + QLatin1String("</code>");
+    case QSnapdMarkdownNode::NodeTypeCodeSpan:
+        return QLatin1String("<code>") + serialize_children(node) + QLatin1String("</code>");
 
-   case QSnapdMarkdownNode::NodeTypeEmphasis:
-       return QLatin1String("<em>") + serialize_children (node) + QLatin1String("</em>");
+    case QSnapdMarkdownNode::NodeTypeEmphasis:
+        return QLatin1String("<em>") + serialize_children(node) + QLatin1String("</em>");
 
-   case QSnapdMarkdownNode::NodeTypeStrongEmphasis:
-       return QLatin1String("<strong>") + serialize_children (node) + QLatin1String("</strong>");
+    case QSnapdMarkdownNode::NodeTypeStrongEmphasis:
+        return QLatin1String("<strong>") + serialize_children(node) + QLatin1String("</strong>");
 
-   case QSnapdMarkdownNode::NodeTypeUrl:
-       return serialize_children (node);
+    case QSnapdMarkdownNode::NodeTypeUrl:
+        return serialize_children(node);
 
-   default:
-       return QString();
-   }
+    default:
+        return QString();
+    }
 }
 #endif
 
 QString SnapResource::longDescription()
 {
 #ifdef SNAP_MARKDOWN
-    QSnapdMarkdownParser parser (QSnapdMarkdownParser::MarkdownVersion0);
-    QList<QSnapdMarkdownNode> nodes = parser.parse (m_snap->description());
+    QSnapdMarkdownParser parser(QSnapdMarkdownParser::MarkdownVersion0);
+    QList<QSnapdMarkdownNode> nodes = parser.parse(m_snap->description());
     QString result;
-    for (int i = 0; i < nodes.size (); i++)
-        result += serialize_node (nodes[i]);
+    for (int i = 0; i < nodes.size(); i++)
+        result += serialize_node(nodes[i]);
     return result;
 #else
     return m_snap->description();
@@ -266,13 +265,13 @@ void SnapResource::fetchScreenshots()
 {
     QList<QUrl> screenshots;
 #ifdef SNAP_MEDIA
-    for(int i = 0, c = m_snap->mediaCount(); i<c; ++i) {
+    for (int i = 0, c = m_snap->mediaCount(); i < c; ++i) {
         QScopedPointer<QSnapdMedia> media(m_snap->media(i));
         if (media->type() == QLatin1String("screenshot"))
             screenshots << QUrl(media->url());
     }
 #else
-    for(int i = 0, c = m_snap->screenshotCount(); i<c; ++i) {
+    for (int i = 0, c = m_snap->screenshotCount(); i < c; ++i) {
         QScopedPointer<QSnapdScreenshot> screenshot(m_snap->screenshot(i));
         screenshots << QUrl(screenshot->url());
     }
@@ -290,7 +289,7 @@ AbstractResource::Type SnapResource::type() const
     return m_snap->snapType() != QLatin1String("app") ? Application : Technical;
 }
 
-void SnapResource::setSnap(const QSharedPointer<QSnapdSnap>& snap)
+void SnapResource::setSnap(const QSharedPointer<QSnapdSnap> &snap)
 {
     Q_ASSERT(snap->name() == m_snap->name());
     if (m_snap == snap)
@@ -318,7 +317,7 @@ public:
         SlotNameRole,
     };
 
-    PlugsModel(SnapResource* res, SnapBackend* backend, QObject* parent)
+    PlugsModel(SnapResource *res, SnapBackend *backend, QObject *parent)
         : QStandardItemModel(parent)
         , m_res(res)
         , m_backend(backend)
@@ -330,32 +329,32 @@ public:
         auto req = backend->client()->getInterfaces();
         req->runSync();
 
-        QHash<QString, QVector<QSnapdSlot*>> slotsForInterface;
-        for (int i = 0; i<req->slotCount(); ++i) {
+        QHash<QString, QVector<QSnapdSlot *>> slotsForInterface;
+        for (int i = 0; i < req->slotCount(); ++i) {
             const auto slot = req->slot(i);
             slot->setParent(this);
             slotsForInterface[slot->interface()].append(slot);
-
         }
 
         const auto snap = m_res->snap();
-        for (int i = 0; i<req->plugCount(); ++i) {
+        for (int i = 0; i < req->plugCount(); ++i) {
             const QScopedPointer<QSnapdPlug> plug(req->plug(i));
             if (plug->snap() == snap->name()) {
                 if (plug->interface() == QLatin1String("content"))
                     continue;
 
                 const auto theSlots = slotsForInterface.value(plug->interface());
-                for (auto slot: theSlots) {
+                for (auto slot : theSlots) {
                     auto item = new QStandardItem;
                     if (plug->label().isEmpty())
                         item->setText(plug->name());
                     else
                         item->setText(i18n("%1 - %2", plug->name(), plug->label()));
 
-//                     qDebug() << "xxx" << plug->name() << plug->label() << plug->interface() << slot->snap() << "slot:" << slot->name() << slot->snap() << slot->interface() << slot->label();
+                    //                     qDebug() << "xxx" << plug->name() << plug->label() << plug->interface() << slot->snap() << "slot:" << slot->name() <<
+                    //                     slot->snap() << slot->interface() << slot->label();
                     item->setCheckable(true);
-                    item->setCheckState(plug->connectionCount()>0 ? Qt::Checked : Qt::Unchecked);
+                    item->setCheckState(plug->connectionCount() > 0 ? Qt::Checked : Qt::Unchecked);
                     item->setData(plug->name(), PlugNameRole);
                     item->setData(slot->snap(), SlotSnapRole);
                     item->setData(slot->name(), SlotNameRole);
@@ -366,7 +365,8 @@ public:
     }
 
 private:
-    bool setData(const QModelIndex & index, const QVariant & value, int role) override {
+    bool setData(const QModelIndex &index, const QVariant &value, int role) override
+    {
         if (role != Qt::CheckStateRole)
             return QStandardItemModel::setData(index, value, role);
 
@@ -376,7 +376,7 @@ private:
         const QString slotSnap = item->data(SlotSnapRole).toString();
         const QString slotName = item->data(SlotNameRole).toString();
 
-        QSnapdRequest* req;
+        QSnapdRequest *req;
 
         const auto snap = m_res->snap();
         if (item->checkState() == Qt::Checked) {
@@ -392,17 +392,16 @@ private:
         return req->error() == QSnapdRequest::NoError;
     }
 
-    SnapResource* const m_res;
-    SnapBackend* const m_backend;
+    SnapResource *const m_res;
+    SnapBackend *const m_backend;
 };
 
-QAbstractItemModel* SnapResource::plugs(QObject* p)
+QAbstractItemModel *SnapResource::plugs(QObject *p)
 {
     if (!isInstalled())
         return new QStandardItemModel(p);
 
-
-    return new PlugsModel(this, qobject_cast<SnapBackend*>(parent()), p);
+    return new PlugsModel(this, qobject_cast<SnapBackend *>(parent()), p);
 }
 
 QString SnapResource::appstreamId() const
@@ -411,7 +410,7 @@ QString SnapResource::appstreamId() const
 #if defined(SNAP_COMMON_IDS)
         = m_snap->commonIds()
 #endif
-    ;
+        ;
     return ids.isEmpty() ? QLatin1String("io.snapcraft.") + m_snap->name() + QLatin1Char('-') + m_snap->id() : ids.first();
 }
 
@@ -440,7 +439,7 @@ QString SnapResource::author() const
     return author;
 }
 
-void SnapResource::setChannel(const QString& channelName)
+void SnapResource::setChannel(const QString &channelName)
 {
 #ifdef SNAP_CHANNELS
     Q_ASSERT(isInstalled());
@@ -449,18 +448,18 @@ void SnapResource::setChannel(const QString& channelName)
     const auto currentChannel = channel();
     request->runAsync();
     connect(request, &QSnapdRequest::complete, this, [this, currentChannel]() {
-            const auto newChannel = channel();
-            if (newChannel != currentChannel) {
-                Q_EMIT channelChanged(newChannel);
-            }
-        });
+        const auto newChannel = channel();
+        if (newChannel != currentChannel) {
+            Q_EMIT channelChanged(newChannel);
+        }
+    });
 #endif
 }
 
 void SnapResource::refreshSnap()
 {
     auto request = client()->find(QSnapdClient::FindFlag::MatchName, m_snap->name());
-    connect(request, &QSnapdRequest::complete, this, [this, request](){
+    connect(request, &QSnapdRequest::complete, this, [this, request]() {
         if (request->error()) {
             qWarning() << "error" << request->error() << ": " << request->errorString();
             return;
@@ -478,7 +477,10 @@ class Channels : public QObject
     Q_PROPERTY(QList<QObject *> channels READ channels NOTIFY channelsChanged)
 
 public:
-    Channels(SnapResource* res, QObject* parent) : QObject(parent), m_res(res) {
+    Channels(SnapResource *res, QObject *parent)
+        : QObject(parent)
+        , m_res(res)
+    {
         if (res->snap()->channelCount() == 0)
             res->refreshSnap();
         else
@@ -487,14 +489,13 @@ public:
         connect(res, &SnapResource::newSnap, this, &Channels::refreshChannels);
     }
 
-
     void refreshChannels()
     {
         qDeleteAll(m_channels);
         m_channels.clear();
 
         auto s = m_res->snap();
-        for(int i=0, c=s->channelCount(); i<c; ++i) {
+        for (int i = 0, c = s->channelCount(); i < c; ++i) {
             auto channel = s->channel(i);
             channel->setParent(this);
             m_channels << channel;
@@ -511,13 +512,13 @@ Q_SIGNALS:
     void channelsChanged();
 
 private:
-    QList<QObject*> m_channels;
-    SnapResource* const m_res;
+    QList<QObject *> m_channels;
+    SnapResource *const m_res;
 };
 
 #endif
 
-QObject * SnapResource::channels(QObject* parent)
+QObject *SnapResource::channels(QObject *parent)
 {
 #ifdef SNAP_CHANNELS
     return new Channels(this, parent);

@@ -7,10 +7,10 @@
 #ifndef APPSTREAMUTILS_H
 #define APPSTREAMUTILS_H
 
-#include <QUrl>
-#include <QList>
-#include <AppStreamQt/image.h>
 #include <AppStreamQt/component.h>
+#include <AppStreamQt/image.h>
+#include <QList>
+#include <QUrl>
 
 namespace AppStreamUtils
 {

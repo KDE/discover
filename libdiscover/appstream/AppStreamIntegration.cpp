@@ -6,9 +6,9 @@
 
 #include "AppStreamIntegration.h"
 
-AppStreamIntegration * AppStreamIntegration::global()
+AppStreamIntegration *AppStreamIntegration::global()
 {
-    static AppStreamIntegration * var = nullptr;
+    static AppStreamIntegration *var = nullptr;
     if (!var) {
         var = new AppStreamIntegration;
     }

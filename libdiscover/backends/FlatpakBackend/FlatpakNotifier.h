@@ -16,23 +16,29 @@ extern "C" {
 
 class FlatpakNotifier : public BackendNotifierModule
 {
-Q_OBJECT
-Q_PLUGIN_METADATA(IID "org.kde.discover.BackendNotifierModule")
-Q_INTERFACES(BackendNotifierModule)
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.discover.BackendNotifierModule")
+    Q_INTERFACES(BackendNotifierModule)
 public:
-    explicit FlatpakNotifier(QObject* parent = nullptr);
+    explicit FlatpakNotifier(QObject *parent = nullptr);
     ~FlatpakNotifier() override;
 
     bool hasUpdates() override;
-    bool hasSecurityUpdates() override { return false; }
+    bool hasSecurityUpdates() override
+    {
+        return false;
+    }
     void recheckSystemUpdateNeeded() override;
-    bool needsReboot() const override { return false; }
+    bool needsReboot() const override
+    {
+        return false;
+    }
 
     struct Installation {
         explicit Installation(FlatpakNotifier *notifier);
         ~Installation();
 
-        bool ensureInitialized(std::function<FlatpakInstallation*()> func, GCancellable *, GError **error);
+        bool ensureInitialized(std::function<FlatpakInstallation *()> func, GCancellable *, GError **error);
 
         FlatpakNotifier *m_notifier;
         bool m_hasUpdates = false;
@@ -41,11 +47,11 @@ public:
     };
 
     void onFetchUpdatesFinished(Installation *flatpakInstallation, GPtrArray *updates);
-    void loadRemoteUpdates(Installation* installation);
+    void loadRemoteUpdates(Installation *installation);
     bool setupFlatpakInstallations(GError **error);
     Installation m_user;
     Installation m_system;
-    GCancellable * const m_cancellable;
+    GCancellable *const m_cancellable;
 };
 
 #endif

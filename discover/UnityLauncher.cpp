@@ -11,9 +11,9 @@
 #include <QDBusMessage>
 #include <QVariantMap>
 
-UnityLauncher::UnityLauncher(QObject *parent) : QObject(parent)
+UnityLauncher::UnityLauncher(QObject *parent)
+    : QObject(parent)
 {
-
 }
 
 UnityLauncher::~UnityLauncher() = default;
@@ -38,7 +38,7 @@ void UnityLauncher::setProgressVisible(bool progressVisible)
     if (m_progressVisible != progressVisible) {
         m_progressVisible = progressVisible;
 
-        update({ {QStringLiteral("progress-visible"), progressVisible} });
+        update({{QStringLiteral("progress-visible"), progressVisible}});
     }
 }
 
@@ -52,7 +52,7 @@ void UnityLauncher::setProgress(int progress)
     if (m_progress != progress) {
         m_progress = progress;
 
-        update({ {QStringLiteral("progress"), progress / 100.0} });
+        update({{QStringLiteral("progress"), progress / 100.0}});
     }
 }
 

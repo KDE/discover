@@ -13,13 +13,13 @@ extern "C" {
 #include <glib.h>
 }
 
-#include <Transaction/Transaction.h>
 #include <QThread>
+#include <Transaction/Transaction.h>
 
 class FlatpakResource;
 class FlatpakTransactionThread : public QThread
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role);
     ~FlatpakTransactionThread() override;
@@ -27,7 +27,10 @@ public:
     void cancel();
     void run() override;
 
-    int progress() const { return m_progress; }
+    int progress() const
+    {
+        return m_progress;
+    }
     void setProgress(int progress);
     void setSpeed(quint64 speed);
 
@@ -42,16 +45,15 @@ Q_SIGNALS:
     void passiveMessage(const QString &msg);
 
 private:
-    FlatpakTransaction* m_transaction;
+    FlatpakTransaction *m_transaction;
 
     bool m_result = false;
     int m_progress = 0;
     quint64 m_speed = 0;
     QString m_errorMessage;
     GCancellable *m_cancellable;
-    FlatpakResource * const m_app;
+    FlatpakResource *const m_app;
     const Transaction::Role m_role;
 };
 
 #endif // FLATPAKTRANSACTIONJOB_H
-

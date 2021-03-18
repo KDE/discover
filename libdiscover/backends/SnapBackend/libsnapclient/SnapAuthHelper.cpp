@@ -4,16 +4,16 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#include <QProcess>
+#include <KAuthActionReply>
+#include <KAuthHelperSupport>
 #include <QDebug>
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QJsonArray>
-#include <unistd.h>
-#include <stdlib.h>
-#include <KAuthHelperSupport>
-#include <KAuthActionReply>
+#include <QProcess>
 #include <Snapd/Client>
+#include <stdlib.h>
+#include <unistd.h>
 
 using namespace KAuth;
 
@@ -21,18 +21,19 @@ class SnapAuthHelper : public QObject
 {
     Q_OBJECT
     QSnapdClient m_client;
+
 public:
-    SnapAuthHelper() {}
+    SnapAuthHelper()
+    {
+    }
 
 public Q_SLOTS:
     KAuth::ActionReply login(const QVariantMap &args)
     {
-        const QString user = args[QStringLiteral("user")].toString()
-                    , pass = args[QStringLiteral("password")].toString()
-                    , otp  = args[QStringLiteral("otp")].toString();
+        const QString user = args[QStringLiteral("user")].toString(), pass = args[QStringLiteral("password")].toString(),
+                      otp = args[QStringLiteral("otp")].toString();
 
-        QScopedPointer<QSnapdLoginRequest> req(otp.isEmpty() ? m_client.login(user, pass)
-                                                             : m_client.login(user, pass, otp));
+        QScopedPointer<QSnapdLoginRequest> req(otp.isEmpty() ? m_client.login(user, pass) : m_client.login(user, pass, otp));
 
         req->runSync();
 
@@ -42,10 +43,9 @@ public Q_SLOTS:
 
         if (req->error() == QSnapdRequest::NoError) {
             const auto auth = req->authData();
-            replyData = QJsonDocument(QJsonObject{
-                    {QStringLiteral("macaroon"), auth->macaroon()},
-                    {QStringLiteral("discharges"), QJsonArray::fromStringList(auth->discharges())}
-                }).toJson();
+            replyData = QJsonDocument(QJsonObject{{QStringLiteral("macaroon"), auth->macaroon()},
+                                                  {QStringLiteral("discharges"), QJsonArray::fromStringList(auth->discharges())}})
+                            .toJson();
 
             reply = ActionReply::SuccessReply();
         } else {
@@ -53,10 +53,7 @@ public Q_SLOTS:
             reply = ActionReply::InvalidActionReply();
             reply.setErrorDescription(req->errorString());
         }
-        reply.setData({
-            { QStringLiteral("reply"), replyData },
-            { QStringLiteral("otpMode"), otpMode }
-        });
+        reply.setData({{QStringLiteral("reply"), replyData}, {QStringLiteral("otpMode"), otpMode}});
         return reply;
     }
 };

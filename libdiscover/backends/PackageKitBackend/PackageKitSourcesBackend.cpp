@@ -5,54 +5,57 @@
  */
 
 #include "PackageKitSourcesBackend.h"
-#include <QStandardItemModel>
-#include <KLocalizedString>
-#include <KDesktopFile>
-#include <PackageKit/Daemon>
-#include <QProcess>
-#include <QDebug>
-#include <QRegularExpression>
-#include <resources/DiscoverAction.h>
-#include <resources/SourcesModel.h>
-#include <resources/AbstractResourcesBackend.h>
 #include "PackageKitBackend.h"
 #include "config-paths.h"
+#include <KDesktopFile>
+#include <KLocalizedString>
+#include <PackageKit/Daemon>
+#include <QDebug>
+#include <QProcess>
+#include <QRegularExpression>
+#include <QStandardItemModel>
+#include <resources/AbstractResourcesBackend.h>
+#include <resources/DiscoverAction.h>
+#include <resources/SourcesModel.h>
 
 class PKSourcesModel : public QStandardItemModel
 {
 public:
-    PKSourcesModel(PackageKitSourcesBackend* backend)
+    PKSourcesModel(PackageKitSourcesBackend *backend)
         : QStandardItemModel(backend)
-        , m_backend(backend) {}
+        , m_backend(backend)
+    {
+    }
 
-    bool setData(const QModelIndex & index, const QVariant & value, int role) override {
+    bool setData(const QModelIndex &index, const QVariant &value, int role) override
+    {
         auto item = itemFromIndex(index);
         if (!item)
             return false;
 
-        switch(role) {
-            case Qt::CheckStateRole: {
-                auto transaction = PackageKit::Daemon::global()->repoEnable(item->data(AbstractSourcesBackend::IdRole).toString(), value.toInt() == Qt::Checked);
-                connect(transaction, &PackageKit::Transaction::errorCode, m_backend, &PackageKitSourcesBackend::transactionError);
-                return true;
-            }
+        switch (role) {
+        case Qt::CheckStateRole: {
+            auto transaction = PackageKit::Daemon::global()->repoEnable(item->data(AbstractSourcesBackend::IdRole).toString(), value.toInt() == Qt::Checked);
+            connect(transaction, &PackageKit::Transaction::errorCode, m_backend, &PackageKitSourcesBackend::transactionError);
+            return true;
+        }
         }
         item->setData(value, role);
         return true;
     }
 
 private:
-    PackageKitSourcesBackend* m_backend;
+    PackageKitSourcesBackend *m_backend;
 };
 
-static DiscoverAction* createActionForService(const QString &servicePath, QObject* parent)
+static DiscoverAction *createActionForService(const QString &servicePath, QObject *parent)
 {
-    DiscoverAction* action = new DiscoverAction(parent);
+    DiscoverAction *action = new DiscoverAction(parent);
     KDesktopFile parser(servicePath);
     action->setIcon(QIcon::fromTheme(parser.readIcon()));
     action->setText(parser.readName());
     action->setToolTip(parser.readComment());
-    QObject::connect(action, &DiscoverAction::triggered, action, [servicePath](){
+    QObject::connect(action, &DiscoverAction::triggered, action, [servicePath]() {
         bool b = QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {servicePath});
         if (!b)
             qWarning() << "Could not start" << servicePath;
@@ -60,7 +63,7 @@ static DiscoverAction* createActionForService(const QString &servicePath, QObjec
     return action;
 }
 
-PackageKitSourcesBackend::PackageKitSourcesBackend(AbstractResourcesBackend* parent)
+PackageKitSourcesBackend::PackageKitSourcesBackend(AbstractResourcesBackend *parent)
     : AbstractSourcesBackend(parent)
     , m_sources(new PKSourcesModel(this))
 {
@@ -68,19 +71,19 @@ PackageKitSourcesBackend::PackageKitSourcesBackend(AbstractResourcesBackend* par
     connect(SourcesModel::global(), &SourcesModel::showingNow, this, &PackageKitSourcesBackend::resetSources);
 
     // Kubuntu-based
-    auto addNativeSourcesManager = [this](const QString &file){
+    auto addNativeSourcesManager = [this](const QString &file) {
         auto service = PackageKitBackend::locateService(file);
         if (!service.isEmpty())
-            m_actions += QVariant::fromValue<QObject*>(createActionForService(service, this));
-        };
+            m_actions += QVariant::fromValue<QObject *>(createActionForService(service, this));
+    };
 
-    //New Ubuntu
+    // New Ubuntu
     addNativeSourcesManager(QStringLiteral("software-properties-qt.desktop"));
 
-    //Old Ubuntu
+    // Old Ubuntu
     addNativeSourcesManager(QStringLiteral("software-properties-kde.desktop"));
 
-    //OpenSuse
+    // OpenSuse
     addNativeSourcesManager(QStringLiteral("YaST2/sw_source.desktop"));
 }
 
@@ -89,9 +92,9 @@ QString PackageKitSourcesBackend::idDescription()
     return i18n("Repository URL:");
 }
 
-QStandardItem* PackageKitSourcesBackend::findItemForId(const QString &id) const
+QStandardItem *PackageKitSourcesBackend::findItemForId(const QString &id) const
 {
-    for(int i=0, c=m_sources->rowCount(); i<c; ++i) {
+    for (int i = 0, c = m_sources->rowCount(); i < c; ++i) {
         auto it = m_sources->item(i);
         if (it->data(AbstractSourcesBackend::IdRole).toString() == id)
             return it;
@@ -102,7 +105,7 @@ QStandardItem* PackageKitSourcesBackend::findItemForId(const QString &id) const
 void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QString &description, bool enabled)
 {
     bool add = false;
-    QStandardItem* item = findItemForId(id);
+    QStandardItem *item = findItemForId(id);
 
     if (!item) {
         item = new QStandardItem(description);
@@ -124,17 +127,17 @@ void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QSt
         m_sources->appendRow(item);
 }
 
-QAbstractItemModel * PackageKitSourcesBackend::sources()
+QAbstractItemModel *PackageKitSourcesBackend::sources()
 {
     return m_sources;
 }
 
-bool PackageKitSourcesBackend::addSource(const QString& /*id*/)
+bool PackageKitSourcesBackend::addSource(const QString & /*id*/)
 {
     return false;
 }
 
-bool PackageKitSourcesBackend::removeSource(const QString& id)
+bool PackageKitSourcesBackend::removeSource(const QString &id)
 {
     auto transaction = PackageKit::Daemon::global()->repoRemove(id, false);
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitSourcesBackend::transactionError);
@@ -155,7 +158,7 @@ void PackageKitSourcesBackend::resetSources()
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitSourcesBackend::transactionError);
 }
 
-void PackageKitSourcesBackend::transactionError(PackageKit::Transaction::Error error, const QString& message)
+void PackageKitSourcesBackend::transactionError(PackageKit::Transaction::Error error, const QString &message)
 {
     Q_EMIT passiveMessage(message);
     qWarning() << "Transaction error: " << error << message << sender();

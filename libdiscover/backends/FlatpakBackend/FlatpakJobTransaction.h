@@ -8,8 +8,8 @@
 #ifndef FLATPAKJOBTRANSACTION_H
 #define FLATPAKJOBTRANSACTION_H
 
-#include <Transaction/Transaction.h>
 #include <QPointer>
+#include <Transaction/Transaction.h>
 
 extern "C" {
 #include <flatpak.h>
@@ -21,7 +21,7 @@ class FlatpakResource;
 class FlatpakTransactionThread;
 class FlatpakJobTransaction : public Transaction
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     FlatpakJobTransaction(FlatpakResource *app, Role role, bool delayStart = false);
 

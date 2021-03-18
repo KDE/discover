@@ -8,19 +8,19 @@
 #include "AbstractResourcesBackend.h"
 #include <QAbstractItemModel>
 
-AbstractSourcesBackend::AbstractSourcesBackend(AbstractResourcesBackend* parent)
+AbstractSourcesBackend::AbstractSourcesBackend(AbstractResourcesBackend *parent)
     : QObject(parent)
-{}
+{
+}
 
 AbstractSourcesBackend::~AbstractSourcesBackend() = default;
 
-AbstractResourcesBackend * AbstractSourcesBackend::resourcesBackend() const
+AbstractResourcesBackend *AbstractSourcesBackend::resourcesBackend() const
 {
-    return dynamic_cast<AbstractResourcesBackend*>(parent());
+    return dynamic_cast<AbstractResourcesBackend *>(parent());
 }
 
-
-bool AbstractSourcesBackend::moveSource(const QString& sourceId, int delta)
+bool AbstractSourcesBackend::moveSource(const QString &sourceId, int delta)
 {
     Q_UNUSED(sourceId)
     Q_UNUSED(delta)
@@ -29,12 +29,12 @@ bool AbstractSourcesBackend::moveSource(const QString& sourceId, int delta)
 
 QString AbstractSourcesBackend::firstSourceId() const
 {
-    auto m = const_cast<AbstractSourcesBackend*>(this)->sources();
+    auto m = const_cast<AbstractSourcesBackend *>(this)->sources();
     return m->index(0, 0).data(AbstractSourcesBackend::IdRole).toString();
 }
 
 QString AbstractSourcesBackend::lastSourceId() const
 {
-    auto m = const_cast<AbstractSourcesBackend*>(this)->sources();
-    return m->index(m->rowCount()-1, 0).data(AbstractSourcesBackend::IdRole).toString();
+    auto m = const_cast<AbstractSourcesBackend *>(this)->sources();
+    return m->index(m->rowCount() - 1, 0).data(AbstractSourcesBackend::IdRole).toString();
 }

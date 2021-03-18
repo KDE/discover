@@ -7,25 +7,30 @@
 #ifndef APPSTREAMINTEGRATION_H
 #define APPSTREAMINTEGRATION_H
 
-#include "discovercommon_export.h"
-#include <QObject>
-#include <KOSRelease>
 #include "OdrsReviewsBackend.h"
+#include "discovercommon_export.h"
+#include <KOSRelease>
+#include <QObject>
 
 class DISCOVERCOMMON_EXPORT AppStreamIntegration : public QObject
 {
     Q_OBJECT
 public:
-    static AppStreamIntegration* global();
+    static AppStreamIntegration *global();
 
     QSharedPointer<OdrsReviewsBackend> reviews();
-    KOSRelease* osRelease() { return &m_osrelease; }
+    KOSRelease *osRelease()
+    {
+        return &m_osrelease;
+    }
 
 private:
     QWeakPointer<OdrsReviewsBackend> m_reviews;
     KOSRelease m_osrelease;
 
-    AppStreamIntegration() {}
+    AppStreamIntegration()
+    {
+    }
 };
 
 #endif // APPSTREAMINTEGRATION_H

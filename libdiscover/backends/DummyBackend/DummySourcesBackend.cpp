@@ -5,32 +5,36 @@
  */
 
 #include "DummySourcesBackend.h"
-#include <QDebug>
 #include "resources/DiscoverAction.h"
+#include <QDebug>
 
-DummySourcesBackend::DummySourcesBackend(AbstractResourcesBackend * parent)
+DummySourcesBackend::DummySourcesBackend(AbstractResourcesBackend *parent)
     : AbstractSourcesBackend(parent)
     , m_sources(new QStandardItemModel(this))
     , m_testAction(new DiscoverAction(QIcon::fromTheme(QStringLiteral("kalgebra")), QStringLiteral("DummyAction"), this))
 {
-    for (int i = 0; i<10; ++i)
+    for (int i = 0; i < 10; ++i)
         addSource(QStringLiteral("DummySource%1").arg(i));
 
-    connect(m_testAction, &DiscoverAction::triggered, [](){ qDebug() << "action triggered!"; });
-    connect(m_sources, &QStandardItemModel::itemChanged, this, [](QStandardItem* item) { qDebug() << "DummySource changed" << item << item->checkState(); });
+    connect(m_testAction, &DiscoverAction::triggered, []() {
+        qDebug() << "action triggered!";
+    });
+    connect(m_sources, &QStandardItemModel::itemChanged, this, [](QStandardItem *item) {
+        qDebug() << "DummySource changed" << item << item->checkState();
+    });
 }
 
-QAbstractItemModel* DummySourcesBackend::sources()
+QAbstractItemModel *DummySourcesBackend::sources()
 {
     return m_sources;
 }
 
-bool DummySourcesBackend::addSource(const QString& id)
+bool DummySourcesBackend::addSource(const QString &id)
 {
     if (id.isEmpty())
         return false;
 
-    QStandardItem* it = new QStandardItem(id);
+    QStandardItem *it = new QStandardItem(id);
     it->setData(id, AbstractSourcesBackend::IdRole);
     it->setData(QVariant(id + QLatin1Char(' ') + id), Qt::ToolTipRole);
     it->setCheckable(true);
@@ -39,9 +43,9 @@ bool DummySourcesBackend::addSource(const QString& id)
     return true;
 }
 
-QStandardItem * DummySourcesBackend::sourceForId(const QString& id) const
+QStandardItem *DummySourcesBackend::sourceForId(const QString &id) const
 {
-    for (int i=0, c=m_sources->rowCount(); i<c; ++i) {
+    for (int i = 0, c = m_sources->rowCount(); i < c; ++i) {
         const auto it = m_sources->item(i, 0);
         if (it->text() == id)
             return it;
@@ -49,7 +53,7 @@ QStandardItem * DummySourcesBackend::sourceForId(const QString& id) const
     return nullptr;
 }
 
-bool DummySourcesBackend::removeSource(const QString& id)
+bool DummySourcesBackend::removeSource(const QString &id)
 {
     const auto it = sourceForId(id);
     if (!it) {
@@ -61,10 +65,10 @@ bool DummySourcesBackend::removeSource(const QString& id)
 
 QVariantList DummySourcesBackend::actions() const
 {
-    return QVariantList() << QVariant::fromValue<QObject*>(m_testAction);
+    return QVariantList() << QVariant::fromValue<QObject *>(m_testAction);
 }
 
-bool DummySourcesBackend::moveSource(const QString& sourceId, int delta)
+bool DummySourcesBackend::moveSource(const QString &sourceId, int delta)
 {
     int row = sourceForId(sourceId)->row();
     auto prevRow = m_sources->takeRow(row);

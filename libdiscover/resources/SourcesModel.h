@@ -7,40 +7,40 @@
 #ifndef SOURCESMODEL_H
 #define SOURCESMODEL_H
 
+#include "AbstractSourcesBackend.h"
+#include "discovercommon_export.h"
+#include <KConcatenateRowsProxyModel>
 #include <QAbstractListModel>
 #include <QSet>
-#include <KConcatenateRowsProxyModel>
-#include "discovercommon_export.h"
-#include "AbstractSourcesBackend.h"
 
 class DISCOVERCOMMON_EXPORT SourcesModel : public KConcatenateRowsProxyModel
 {
     Q_OBJECT
-    public:
-        enum Roles {
-            SourceNameRole = AbstractSourcesBackend::LastRole,
-            SourcesBackend,
-            ResourcesBackend,
-            EnabledRole,
-        };
-        Q_ENUM(Roles)
+public:
+    enum Roles {
+        SourceNameRole = AbstractSourcesBackend::LastRole,
+        SourcesBackend,
+        ResourcesBackend,
+        EnabledRole,
+    };
+    Q_ENUM(Roles)
 
-        explicit SourcesModel(QObject* parent = nullptr);
-        ~SourcesModel() override;
-        
-        static SourcesModel* global();
-        QVariant data(const QModelIndex & index, int role) const override;
-        QHash<int, QByteArray> roleNames() const override;
+    explicit SourcesModel(QObject *parent = nullptr);
+    ~SourcesModel() override;
 
-        void addSourcesBackend(AbstractSourcesBackend* sources);
+    static SourcesModel *global();
+    QVariant data(const QModelIndex &index, int role) const override;
+    QHash<int, QByteArray> roleNames() const override;
 
-        Q_SCRIPTABLE AbstractSourcesBackend* sourcesBackendByName(const QString &name) const;
+    void addSourcesBackend(AbstractSourcesBackend *sources);
 
-    Q_SIGNALS:
-        void showingNow();
+    Q_SCRIPTABLE AbstractSourcesBackend *sourcesBackendByName(const QString &name) const;
 
-    private:
-        const QAbstractItemModel* modelAt(const QModelIndex& idx) const;
+Q_SIGNALS:
+    void showingNow();
+
+private:
+    const QAbstractItemModel *modelAt(const QModelIndex &idx) const;
 };
 
 #endif // SOURCESMODEL_H

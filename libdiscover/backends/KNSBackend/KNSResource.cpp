@@ -6,16 +6,16 @@
 
 #include "KNSResource.h"
 #include "KNSBackend.h"
+#include <KLocalizedString>
 #include <KNSCore/Engine>
 #include <KShell>
-#include <KLocalizedString>
 #include <QProcess>
 #include <QRegularExpression>
 
 #include "ReviewsBackend/Rating.h"
 #include <knewstuff_version.h>
 
-KNSResource::KNSResource(const KNSCore::EntryInternal& entry, QStringList categories, KNSBackend* parent)
+KNSResource::KNSResource(const KNSCore::EntryInternal &entry, QStringList categories, KNSBackend *parent)
     : AbstractResource(parent)
     , m_categories(std::move(categories))
     , m_entry(entry)
@@ -28,26 +28,26 @@ KNSResource::~KNSResource() = default;
 
 AbstractResource::State KNSResource::state()
 {
-    switch(m_entry.status()) {
-        case KNS3::Entry::Invalid:
-            return Broken;
-        case KNS3::Entry::Downloadable:
-            return None;
-        case KNS3::Entry::Installed:
-            return Installed;
-        case KNS3::Entry::Updateable:
-            return Upgradeable;
-        case KNS3::Entry::Deleted:
-        case KNS3::Entry::Installing:
-        case KNS3::Entry::Updating:
-            return None;
+    switch (m_entry.status()) {
+    case KNS3::Entry::Invalid:
+        return Broken;
+    case KNS3::Entry::Downloadable:
+        return None;
+    case KNS3::Entry::Installed:
+        return Installed;
+    case KNS3::Entry::Updateable:
+        return Upgradeable;
+    case KNS3::Entry::Deleted:
+    case KNS3::Entry::Installing:
+    case KNS3::Entry::Updating:
+        return None;
     }
     return None;
 }
 
-KNSBackend * KNSResource::knsBackend() const
+KNSBackend *KNSResource::knsBackend() const
 {
-    return qobject_cast<KNSBackend*>(parent());
+    return qobject_cast<KNSBackend *>(parent());
 }
 
 QVariant KNSResource::icon() const
@@ -59,10 +59,10 @@ QVariant KNSResource::icon() const
 QString KNSResource::comment()
 {
     QString ret = m_entry.shortSummary();
-    if(ret.isEmpty()) {
+    if (ret.isEmpty()) {
         ret = m_entry.summary();
         int newLine = ret.indexOf(QLatin1Char('\n'));
-        if(newLine>0) {
+        if (newLine > 0) {
             ret.truncate(newLine);
         }
         ret.remove(QRegularExpression(QStringLiteral("\\[\\/?[a-z]*\\]")));
@@ -76,10 +76,10 @@ QString KNSResource::longDescription()
     QString ret = m_entry.summary();
     if (m_entry.shortSummary().isEmpty()) {
         const int newLine = ret.indexOf(QLatin1Char('\n'));
-        if (newLine<0)
+        if (newLine < 0)
             ret.clear();
         else
-            ret = ret.mid(newLine+1).trimmed();
+            ret = ret.mid(newLine + 1).trimmed();
     }
     ret.remove(QLatin1Char('\r'));
     ret.replace(QStringLiteral("[li]"), QStringLiteral("\n* "));
@@ -87,7 +87,9 @@ QString KNSResource::longDescription()
     ret.remove(QRegularExpression(QStringLiteral("\\[\\/?[a-z]*\\]")));
     // Find anything that looks like a link (but which also is not some html
     // tag value or another already) and make it a link
-    static const QRegularExpression urlRegExp(QStringLiteral("(^|\\s)(http[-a-zA-Z0-9@:%_\\+.~#?&//=]{2,256}\\.[a-z]{2,4}\\b(\\/[-a-zA-Z0-9@:;%_\\+.~#?&//=]*)?)"), QRegularExpression::CaseInsensitiveOption);
+    static const QRegularExpression urlRegExp(
+        QStringLiteral("(^|\\s)(http[-a-zA-Z0-9@:%_\\+.~#?&//=]{2,256}\\.[a-z]{2,4}\\b(\\/[-a-zA-Z0-9@:;%_\\+.~#?&//=]*)?)"),
+        QRegularExpression::CaseInsensitiveOption);
     ret.replace(urlRegExp, QStringLiteral("<a href=\"\\2\">\\2</a>"));
     return ret;
 }
@@ -112,7 +114,7 @@ QUrl KNSResource::homepage()
     return m_entry.homepage();
 }
 
-void KNSResource::setEntry(const KNSCore::EntryInternal& entry)
+void KNSResource::setEntry(const KNSCore::EntryInternal &entry)
 {
     const bool diff = entry.status() != m_lastStatus;
     m_entry = entry;
@@ -129,7 +131,7 @@ KNSCore::EntryInternal KNSResource::entry() const
 
 QJsonArray KNSResource::licenses()
 {
-    return { QJsonObject{ {QStringLiteral("name"), m_entry.license()}, {QStringLiteral("url"), QString()} } };
+    return {QJsonObject{{QStringLiteral("name"), m_entry.license()}, {QStringLiteral("url"), QString()}}};
 }
 
 int KNSResource::size()
@@ -145,10 +147,10 @@ QString KNSResource::installedVersion() const
 
 QString KNSResource::availableVersion() const
 {
-    return !m_entry.updateVersion().isEmpty() ? m_entry.updateVersion()
-         : !m_entry.updateReleaseDate().isNull() ? m_entry.updateReleaseDate().toString()
-         : !m_entry.version().isEmpty() ? m_entry.version()
-         : releaseDate().toString();
+    return !m_entry.updateVersion().isEmpty()   ? m_entry.updateVersion()
+        : !m_entry.updateReleaseDate().isNull() ? m_entry.updateReleaseDate().toString()
+        : !m_entry.version().isEmpty()          ? m_entry.version()
+                                                : releaseDate().toString();
 }
 
 QString KNSResource::origin() const
@@ -161,7 +163,7 @@ QString KNSResource::section()
     return m_entry.category();
 }
 
-static void appendIfValid(QList<QUrl>& list, const QUrl &value, const QUrl &fallback = {})
+static void appendIfValid(QList<QUrl> &list, const QUrl &value, const QUrl &fallback = {})
 {
     if (!list.contains(value)) {
         if (value.isValid() && !value.isEmpty())
@@ -198,7 +200,7 @@ QStringList KNSResource::extends() const
 
 QUrl KNSResource::url() const
 {
-    return QUrl(QStringLiteral("kns://")+knsBackend()->name() + QLatin1Char('/') + QUrl(m_entry.providerId()).host() + QLatin1Char('/') + m_entry.uniqueId());
+    return QUrl(QStringLiteral("kns://") + knsBackend()->name() + QLatin1Char('/') + QUrl(m_entry.providerId()).host() + QLatin1Char('/') + m_entry.uniqueId());
 }
 
 bool KNSResource::canExecute() const
@@ -225,7 +227,7 @@ QVector<int> KNSResource::linkIds() const
 {
     QVector<int> ids;
     const auto linkInfo = m_entry.downloadLinkInformationList();
-    for(const auto &e : linkInfo) {
+    for (const auto &e : linkInfo) {
         if (e.isDownloadtypeLink)
             ids << e.id;
     }
@@ -237,17 +239,13 @@ QUrl KNSResource::donationURL()
     return QUrl(m_entry.donationLink());
 }
 
-Rating * KNSResource::ratingInstance()
+Rating *KNSResource::ratingInstance()
 {
     if (!m_rating) {
         const int noc = m_entry.numberOfComments();
         const int rating = m_entry.rating();
         Q_ASSERT(rating <= 100);
-        m_rating.reset(new Rating(
-            packageName(),
-            noc,
-            rating / 10
-        ));
+        m_rating.reset(new Rating(packageName(), noc, rating / 10));
     }
     return m_rating.data();
 }

@@ -17,11 +17,9 @@ class FlatpakResource;
 
 namespace FlatpakRunnables
 {
-    FlatpakRemoteRef* findRemoteRef(FlatpakResource *app, GCancellable* cancellable);
+FlatpakRemoteRef *findRemoteRef(FlatpakResource *app, GCancellable *cancellable);
 
-    QByteArray fetchMetadata(FlatpakResource *app, GCancellable* cancellable);
+QByteArray fetchMetadata(FlatpakResource *app, GCancellable *cancellable);
 }
 
 #endif // FLATPAKFETCHDATAJOB_H
-
-

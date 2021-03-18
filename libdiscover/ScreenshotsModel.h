@@ -7,48 +7,47 @@
 #ifndef SCREENSHOTSMODEL_H
 #define SCREENSHOTSMODEL_H
 
+#include "discovercommon_export.h"
 #include <QModelIndex>
 #include <QUrl>
-#include "discovercommon_export.h"
 
 class AbstractResource;
 
 class DISCOVERCOMMON_EXPORT ScreenshotsModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(AbstractResource* application READ resource WRITE setResource NOTIFY resourceChanged)
+    Q_PROPERTY(AbstractResource *application READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(int count READ count NOTIFY countChanged)
-    public:
-        enum Roles {
-            ThumbnailUrl=Qt::UserRole+1,
-            ScreenshotUrl,
-        };
-        
-        explicit ScreenshotsModel(QObject* parent = nullptr);
-        QHash<int, QByteArray> roleNames() const override;
+public:
+    enum Roles {
+        ThumbnailUrl = Qt::UserRole + 1,
+        ScreenshotUrl,
+    };
 
-        AbstractResource* resource() const;
-        void setResource(AbstractResource* res);
+    explicit ScreenshotsModel(QObject *parent = nullptr);
+    QHash<int, QByteArray> roleNames() const override;
 
-        QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
-        int rowCount(const QModelIndex& parent = QModelIndex()) const override;
-        Q_SCRIPTABLE QUrl screenshotAt(int row) const;
-        int count() const;
+    AbstractResource *resource() const;
+    void setResource(AbstractResource *res);
 
-        Q_INVOKABLE void remove(const QUrl &url);
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    Q_SCRIPTABLE QUrl screenshotAt(int row) const;
+    int count() const;
 
-    private Q_SLOTS:
-        void screenshotsFetched(const QList<QUrl>& thumbnails, const QList<QUrl>& screenshots);
+    Q_INVOKABLE void remove(const QUrl &url);
 
-    Q_SIGNALS:
-        void countChanged();
-        void resourceChanged(const AbstractResource* resource);
+private Q_SLOTS:
+    void screenshotsFetched(const QList<QUrl> &thumbnails, const QList<QUrl> &screenshots);
 
-    private:
-        AbstractResource* m_resource;
-        QList<QUrl> m_thumbnails;
-        QList<QUrl> m_screenshots;
+Q_SIGNALS:
+    void countChanged();
+    void resourceChanged(const AbstractResource *resource);
 
+private:
+    AbstractResource *m_resource;
+    QList<QUrl> m_thumbnails;
+    QList<QUrl> m_screenshots;
 };
 
 #endif // SCREENSHOTSMODEL_H

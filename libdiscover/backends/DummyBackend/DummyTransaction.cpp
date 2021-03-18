@@ -7,18 +7,18 @@
 #include "DummyTransaction.h"
 #include "DummyBackend.h"
 #include "DummyResource.h"
-#include <QTimer>
-#include <QDebug>
 #include <KRandom>
+#include <QDebug>
+#include <QTimer>
 
 // #define TEST_PROCEED
 
-DummyTransaction::DummyTransaction(DummyResource* app, Role role)
+DummyTransaction::DummyTransaction(DummyResource *app, Role role)
     : DummyTransaction(app, {}, role)
 {
 }
 
-DummyTransaction::DummyTransaction(DummyResource* app, const AddonList& addons, Transaction::Role role)
+DummyTransaction::DummyTransaction(DummyResource *app, const AddonList &addons, Transaction::Role role)
     : Transaction(app->backend(), app, role, addons)
     , m_app(app)
 {
@@ -33,15 +33,17 @@ void DummyTransaction::iterateTransaction()
     if (!m_iterate)
         return;
 
-    if(progress()<100) {
-        setProgress(qBound(0, progress()+(KRandom::random()%30), 100));
-        QTimer::singleShot(/*KRandom::random()%*/100, this, &DummyTransaction::iterateTransaction);
+    if (progress() < 100) {
+        setProgress(qBound(0, progress() + (KRandom::random() % 30), 100));
+        QTimer::singleShot(/*KRandom::random()%*/ 100, this, &DummyTransaction::iterateTransaction);
     } else if (status() == DownloadingStatus) {
         setStatus(CommittingStatus);
-        QTimer::singleShot(/*KRandom::random()%*/100, this, &DummyTransaction::iterateTransaction);
+        QTimer::singleShot(/*KRandom::random()%*/ 100, this, &DummyTransaction::iterateTransaction);
     } else
 #ifdef TEST_PROCEED
-        Q_EMIT proceedRequest(QStringLiteral("yadda yadda"), QStringLiteral("Biii BOooo<ul><li>A</li><li>A</li>") + QStringLiteral("<li>A</li>").repeated(2) + QStringLiteral("<li>A</li></ul>"));
+        Q_EMIT proceedRequest(QStringLiteral("yadda yadda"),
+                              QStringLiteral("Biii BOooo<ul><li>A</li><li>A</li>") + QStringLiteral("<li>A</li>").repeated(2)
+                                  + QStringLiteral("<li>A</li></ul>"));
 #else
         finishTransaction();
 #endif
@@ -62,7 +64,7 @@ void DummyTransaction::cancel()
 void DummyTransaction::finishTransaction()
 {
     AbstractResource::State newState;
-    switch(role()) {
+    switch (role()) {
     case InstallRole:
     case ChangeAddonsRole:
         newState = AbstractResource::Installed;

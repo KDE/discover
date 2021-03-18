@@ -9,7 +9,7 @@
 
 #include <QTimer>
 
-FwupdTransaction::FwupdTransaction(FwupdResource* app, FwupdBackend* backend)
+FwupdTransaction::FwupdTransaction(FwupdResource *app, FwupdBackend *backend)
     : Transaction(backend, app, Transaction::InstallRole, {})
     , m_app(app)
     , m_backend(backend)
@@ -27,12 +27,11 @@ void FwupdTransaction::install()
 {
     g_autoptr(GError) error = nullptr;
 
-    if(m_app->isDeviceLocked())
-    {
+    if (m_app->isDeviceLocked()) {
         QString device_id = m_app->deviceId();
-        if(device_id.isEmpty()) {
+        if (device_id.isEmpty()) {
             qWarning() << "Fwupd Error: No Device ID set, cannot unlock device " << this << m_app->name();
-        } else if(!fwupd_client_unlock(m_backend->client, device_id.toUtf8().constData(),nullptr, &error)) {
+        } else if (!fwupd_client_unlock(m_backend->client, device_id.toUtf8().constData(), nullptr, &error)) {
             m_backend->handleError(error);
         }
         setStatus(DoneWithErrorStatus);
@@ -40,12 +39,12 @@ void FwupdTransaction::install()
     }
 
     const QString fileName = m_app->cacheFile();
-    if(!QFileInfo::exists(fileName)) {
+    if (!QFileInfo::exists(fileName)) {
         const QUrl uri(m_app->updateURI());
         setStatus(DownloadingStatus);
         QNetworkAccessManager *manager = new QNetworkAccessManager(this);
         auto reply = manager->get(QNetworkRequest(uri));
-        QFile* file = new QFile(fileName);
+        QFile *file = new QFile(fileName);
         if (!file->open(QFile::WriteOnly)) {
             qWarning() << "Fwupd Error: Could not open to write" << fileName << uri;
             setStatus(DoneWithErrorStatus);
@@ -53,11 +52,11 @@ void FwupdTransaction::install()
             return;
         }
 
-        connect(reply, &QNetworkReply::finished, this, [this, file, reply](){
+        connect(reply, &QNetworkReply::finished, this, [this, file, reply]() {
             file->close();
             file->deleteLater();
 
-            if(reply->error() != QNetworkReply::NoError) {
+            if (reply->error() != QNetworkReply::NoError) {
                 qWarning() << "Fwupd Error: Could not download" << reply->url() << reply->errorString();
                 file->remove();
                 setStatus(DoneWithErrorStatus);
@@ -65,12 +64,10 @@ void FwupdTransaction::install()
                 fwupdInstall(file->fileName());
             }
         });
-        connect(reply, &QNetworkReply::readyRead, this, [file, reply](){
+        connect(reply, &QNetworkReply::readyRead, this, [file, reply]() {
             file->write(reply->readAll());
         });
-    }
-    else
-    {
+    } else {
         fwupdInstall(fileName);
     }
 }
@@ -81,11 +78,10 @@ void FwupdTransaction::fwupdInstall(const QString &file)
     g_autoptr(GError) error = nullptr;
 
     /* only offline supported */
-    if(m_app->isOnlyOffline())
+    if (m_app->isOnlyOffline())
         install_flags = static_cast<FwupdInstallFlags>(install_flags | FWUPD_INSTALL_FLAG_OFFLINE);
 
-    if(!fwupd_client_install(m_backend->client, m_app->deviceId().toUtf8().constData(), file.toUtf8().constData(), install_flags, nullptr, &error))
-    {
+    if (!fwupd_client_install(m_backend->client, m_app->deviceId().toUtf8().constData(), file.toUtf8().constData(), install_flags, nullptr, &error)) {
         m_backend->handleError(error);
         setStatus(DoneWithErrorStatus);
     } else
@@ -110,7 +106,7 @@ void FwupdTransaction::cancel()
 void FwupdTransaction::finishTransaction()
 {
     AbstractResource::State newState;
-    switch(role()) {
+    switch (role()) {
     case InstallRole:
     case ChangeAddonsRole:
         newState = AbstractResource::Installed;

@@ -6,14 +6,13 @@
 
 #include "Transaction.h"
 
-#include <resources/AbstractResource.h>
 #include "TransactionModel.h"
+#include "libdiscover_debug.h"
 #include <KFormat>
 #include <KLocalizedString>
-#include "libdiscover_debug.h"
+#include <resources/AbstractResource.h>
 
-Transaction::Transaction(QObject *parent, AbstractResource *resource,
-                         Role role, const AddonList& addons)
+Transaction::Transaction(QObject *parent, AbstractResource *resource, Role role, const AddonList &addons)
     : QObject(parent)
     , m_resource(resource)
     , m_role(role)
@@ -26,7 +25,7 @@ Transaction::Transaction(QObject *parent, AbstractResource *resource,
 
 Transaction::~Transaction()
 {
-    if(status()<DoneStatus || TransactionModel::global()->contains(this)) {
+    if (status() < DoneStatus || TransactionModel::global()->contains(this)) {
         qCWarning(LIBDISCOVER_LOG) << "destroying Transaction before it's over" << this;
         TransactionModel::global()->removeTransaction(this);
     }
@@ -64,7 +63,7 @@ int Transaction::progress() const
 
 void Transaction::setStatus(Status status)
 {
-    if(m_status != status) {
+    if (m_status != status) {
         m_status = status;
         emit statusChanged(m_status);
 
@@ -78,7 +77,7 @@ void Transaction::setStatus(Status status)
 
 void Transaction::setCancellable(bool isCancellable)
 {
-    if(m_isCancellable != isCancellable) {
+    if (m_isCancellable != isCancellable) {
         m_isCancellable = isCancellable;
         emit cancellableChanged(m_isCancellable);
     }
@@ -86,7 +85,7 @@ void Transaction::setCancellable(bool isCancellable)
 
 void Transaction::setProgress(int progress)
 {
-    if(m_progress != progress) {
+    if (m_progress != progress) {
         Q_ASSERT(qBound(0, progress, 100) == progress);
         m_progress = qBound(0, progress, 100);
         emit progressChanged(m_progress);

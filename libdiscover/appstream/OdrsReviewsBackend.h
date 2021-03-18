@@ -12,8 +12,8 @@
 #include <ReviewsBackend/ReviewsModel.h>
 
 #include <QJsonDocument>
-#include <QNetworkReply>
 #include <QMap>
+#include <QNetworkReply>
 
 class KJob;
 class AbstractResourcesBackend;
@@ -21,26 +21,42 @@ class CachedNetworkAccessManager;
 
 class DISCOVERCOMMON_EXPORT OdrsReviewsBackend : public AbstractReviewsBackend
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     explicit OdrsReviewsBackend();
     ~OdrsReviewsBackend() override;
 
     QString userName() const override;
-    void login() override {}
-    void logout() override {}
-    void registerAndLogin() override {}
+    void login() override
+    {
+    }
+    void logout() override
+    {
+    }
+    void registerAndLogin() override
+    {
+    }
 
-    Rating * ratingForApplication(AbstractResource *app) const override;
-    bool hasCredentials() const override { return false; }
-    void deleteReview(Review *) override {}
+    Rating *ratingForApplication(AbstractResource *app) const override;
+    bool hasCredentials() const override
+    {
+        return false;
+    }
+    void deleteReview(Review *) override
+    {
+    }
     void fetchReviews(AbstractResource *app, int page = 1) override;
-    bool isFetching() const override { return m_isFetching; }
+    bool isFetching() const override
+    {
+        return m_isFetching;
+    }
     void submitReview(AbstractResource *, const QString &summary, const QString &description, const QString &rating) override;
-    void flagReview(Review *, const QString &, const QString &) override {}
+    void flagReview(Review *, const QString &, const QString &) override
+    {
+    }
     void submitUsefulness(Review *review, bool useful) override;
-    bool isResourceSupported(AbstractResource * res) const override;
-    void emitRatingFetched(AbstractResourcesBackend* backend, const QList<AbstractResource*>& res) const;
+    bool isResourceSupported(AbstractResource *res) const override;
+    void emitRatingFetched(AbstractResourcesBackend *backend, const QList<AbstractResource *> &res) const;
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
@@ -52,14 +68,13 @@ Q_SIGNALS:
     void ratingsReady();
 
 private:
-    QNetworkAccessManager* nam();
+    QNetworkAccessManager *nam();
     void parseRatings();
     void parseReviews(const QJsonDocument &document, AbstractResource *resource);
 
-    QHash<QString, Rating*> m_ratings;
+    QHash<QString, Rating *> m_ratings;
     bool m_isFetching;
-    CachedNetworkAccessManager* m_delayedNam = nullptr;
+    CachedNetworkAccessManager *m_delayedNam = nullptr;
 };
 
 #endif // ODRSREVIEWSBACKEND_H
-

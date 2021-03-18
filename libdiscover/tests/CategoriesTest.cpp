@@ -4,18 +4,20 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#include <QtTest>
-#include <QList>
-#include <Category/Category.h>
 #include <Category/CategoriesReader.h>
+#include <Category/Category.h>
+#include <QList>
+#include <QtTest>
 
 class CategoriesTest : public QObject
 {
     Q_OBJECT
 public:
-    CategoriesTest() {}
+    CategoriesTest()
+    {
+    }
 
-    QVector<Category*> populateCategories()
+    QVector<Category *> populateCategories()
     {
         const QVector<QString> categoryFiles = {
             QFINDTESTDATA("../backends/BodegaBackend/muon-bodegawallpapers-backend-categories.xml"),
@@ -28,15 +30,15 @@ public:
             QFINDTESTDATA("../backends/DummyBackend/dummy-backend-categories.xml"),
         };
 
-        QVector<Category*> ret;
+        QVector<Category *> ret;
         CategoriesReader reader;
-        Q_FOREACH (const QString& name, categoryFiles) {
-            const QVector<Category*> cats = reader.loadCategoriesPath(name);
+        Q_FOREACH (const QString &name, categoryFiles) {
+            const QVector<Category *> cats = reader.loadCategoriesPath(name);
 
-            if(ret.isEmpty()) {
+            if (ret.isEmpty()) {
                 ret = cats;
             } else {
-                Q_FOREACH (Category* c, cats)
+                Q_FOREACH (Category *c, cats)
                     Category::addSubcategory(ret, c);
             }
         }
@@ -45,12 +47,13 @@ public:
     }
 
 private Q_SLOTS:
-    void testReadCategories() {
+    void testReadCategories()
+    {
         auto categories = populateCategories();
         QVERIFY(!categories.isEmpty());
     }
 };
 
-QTEST_MAIN( CategoriesTest )
+QTEST_MAIN(CategoriesTest)
 
 #include "CategoriesTest.moc"

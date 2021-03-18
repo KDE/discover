@@ -5,21 +5,21 @@
  */
 
 #include "AppPackageKitResource.h"
-#include <AppStreamQt/screenshot.h>
+#include "utils.h"
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/image.h>
 #include <AppStreamQt/release.h>
-#include <appstream/AppStreamUtils.h>
-#include <PackageKit/Daemon>
+#include <AppStreamQt/screenshot.h>
 #include <KLocalizedString>
-#include <QIcon>
+#include <PackageKit/Daemon>
+#include <QDebug>
 #include <QFile>
+#include <QIcon>
 #include <QProcess>
 #include <QStandardPaths>
-#include <QDebug>
-#include "utils.h"
+#include <appstream/AppStreamUtils.h>
 
-AppPackageKitResource::AppPackageKitResource(const AppStream::Component& data, const QString &packageName, PackageKitBackend* parent)
+AppPackageKitResource::AppPackageKitResource(const AppStream::Component &data, const QString &packageName, PackageKitBackend *parent)
     : PackageKitResource(packageName, QString(), parent)
     , m_appdata(data)
 {
@@ -56,23 +56,23 @@ QString AppPackageKitResource::longDescription()
 static QIcon componentIcon(const AppStream::Component &comp)
 {
     QIcon ret;
-    foreach(const AppStream::Icon &icon, comp.icons()) {
+    foreach (const AppStream::Icon &icon, comp.icons()) {
         QStringList stock;
-        switch(icon.kind()) {
-            case AppStream::Icon::KindLocal:
-                ret.addFile(icon.url().toLocalFile(), icon.size());
-                break;
-            case AppStream::Icon::KindCached:
-                ret.addFile(icon.url().toLocalFile(), icon.size());
-                break;
-            case AppStream::Icon::KindStock: {
-                const auto ret = QIcon::fromTheme(icon.name());
-                if (!ret.isNull())
-                    return ret;
-                break;
-            }
-            default:
-                break;
+        switch (icon.kind()) {
+        case AppStream::Icon::KindLocal:
+            ret.addFile(icon.url().toLocalFile(), icon.size());
+            break;
+        case AppStream::Icon::KindCached:
+            ret.addFile(icon.url().toLocalFile(), icon.size());
+            break;
+        case AppStream::Icon::KindStock: {
+            const auto ret = QIcon::fromTheme(icon.name());
+            if (!ret.isNull())
+                return ret;
+            break;
+        }
+        default:
+            break;
         }
     }
     if (ret.isNull()) {
@@ -122,7 +122,7 @@ QString AppPackageKitResource::appstreamId() const
 
 QSet<QString> AppPackageKitResource::alternativeAppstreamIds() const
 {
-    const AppStream::Provided::Kind AppStream_Provided_KindId = (AppStream::Provided::Kind) 12; //Should be AppStream::Provided::KindId when released
+    const AppStream::Provided::Kind AppStream_Provided_KindId = (AppStream::Provided::Kind)12; // Should be AppStream::Provided::KindId when released
     const auto ret = m_appdata.provided(AppStream_Provided_KindId).items();
     return QSet<QString>(ret.begin(), ret.end());
 }
@@ -151,9 +151,7 @@ AbstractResource::Type AppPackageKitResource::type() const
 {
     static QString desktop = QString::fromUtf8(qgetenv("XDG_CURRENT_DESKTOP"));
     const auto desktops = m_appdata.compulsoryForDesktops();
-    return kContainsValue(s_addonKinds, m_appdata.kind())        ? Addon
-           : (desktops.isEmpty() || !desktops.contains(desktop)) ? Application
-                                                                 : Technical;
+    return kContainsValue(s_addonKinds, m_appdata.kind()) ? Addon : (desktops.isEmpty() || !desktops.contains(desktop)) ? Application : Technical;
 }
 
 void AppPackageKitResource::fetchScreenshots()
@@ -166,17 +164,19 @@ QStringList AppPackageKitResource::allPackageNames() const
 {
     auto ret = m_appdata.packageNames();
     if (ret.isEmpty()) {
-        ret = QStringList{ PackageKit::Daemon::packageName(availablePackageId()) };
+        ret = QStringList{PackageKit::Daemon::packageName(availablePackageId())};
     }
     return ret;
 }
 
 QList<PackageState> AppPackageKitResource::addonsInformation()
 {
-    const auto res = kFilter<QVector<AppPackageKitResource*>>(backend()->extendedBy(m_appdata.id()), [this](AppPackageKitResource* r){ return r->allPackageNames() != allPackageNames(); });
-    return kTransform<QList<PackageState>>(res,
-        [](AppPackageKitResource* r) { return PackageState(r->appstreamId(), r->name(), r->comment(), r->isInstalled()); }
-    );
+    const auto res = kFilter<QVector<AppPackageKitResource *>>(backend()->extendedBy(m_appdata.id()), [this](AppPackageKitResource *r) {
+        return r->allPackageNames() != allPackageNames();
+    });
+    return kTransform<QList<PackageState>>(res, [](AppPackageKitResource *r) {
+        return PackageState(r->appstreamId(), r->name(), r->comment(), r->isInstalled());
+    });
 }
 
 QStringList AppPackageKitResource::extends() const
@@ -189,10 +189,9 @@ QString AppPackageKitResource::changelog() const
     return AppStreamUtils::changelogToHtml(m_appdata);
 }
 
-
 bool AppPackageKitResource::canExecute() const
 {
-    static QSet<QString> cannotExecute = { QStringLiteral("org.kde.development") };
+    static QSet<QString> cannotExecute = {QStringLiteral("org.kde.development")};
     return !cannotExecute.contains(m_appdata.id());
 }
 
@@ -200,27 +199,31 @@ void AppPackageKitResource::invokeApplication() const
 {
     auto trans = PackageKit::Daemon::getFiles({installedPackageId()});
     connect(trans, &PackageKit::Transaction::errorCode, backend(), &PackageKitBackend::transactionError);
-    connect(trans, &PackageKit::Transaction::files, this, [this](const QString &/*packageID*/, const QStringList &_filenames) {
-        //This workarounds bug in zypper's backend (suse) https://github.com/hughsie/PackageKit/issues/351
+    connect(trans, &PackageKit::Transaction::files, this, [this](const QString & /*packageID*/, const QStringList &_filenames) {
+        // This workarounds bug in zypper's backend (suse) https://github.com/hughsie/PackageKit/issues/351
         QStringList filenames = _filenames;
         if (filenames.count() == 1 && !QFile::exists(filenames.constFirst())) {
             filenames = filenames.constFirst().split(QLatin1Char(';'));
         }
         const auto allServices = QStandardPaths::locateAll(QStandardPaths::ApplicationsLocation, m_appdata.id());
         if (!allServices.isEmpty()) {
-            const auto packageServices = kFilter<QStringList>(allServices, [filenames](const QString &file) { return filenames.contains(file); });
+            const auto packageServices = kFilter<QStringList>(allServices, [filenames](const QString &file) {
+                return filenames.contains(file);
+            });
             runService(packageServices);
             return;
         } else {
             const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
-            const auto packageExecutables = kFilter<QStringList>(exes, [filenames](const QString &exe) { return filenames.contains(QLatin1Char('/') + exe); });
+            const auto packageExecutables = kFilter<QStringList>(exes, [filenames](const QString &exe) {
+                return filenames.contains(QLatin1Char('/') + exe);
+            });
             if (!packageExecutables.isEmpty()) {
                 QProcess::startDetached(exes.constFirst(), QStringList());
                 return;
             } else {
                 const auto locations = QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation);
                 const auto desktopFiles = kFilter<QStringList>(filenames, [locations](const QString &exe) {
-                    for (const auto &location: locations) {
+                    for (const auto &location : locations) {
                         if (exe.startsWith(location))
                             return exe.contains(QLatin1String(".desktop"));
                     }

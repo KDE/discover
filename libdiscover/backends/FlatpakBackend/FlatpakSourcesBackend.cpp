@@ -5,35 +5,43 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-
 #include "FlatpakSourcesBackend.h"
-#include "FlatpakResource.h"
 #include "FlatpakBackend.h"
+#include "FlatpakResource.h"
+#include <KConfigGroup>
 #include <KLocalizedString>
 #include <KSharedConfig>
-#include <KConfigGroup>
 #include <QDebug>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 
-#include <glib.h>
-#include <QTemporaryFile>
 #include <QStandardPaths>
+#include <QTemporaryFile>
+#include <glib.h>
 #include <resources/DiscoverAction.h>
 #include <resources/StoredResultsStream.h>
 
 class FlatpakSourceItem : public QStandardItem
 {
 public:
-    FlatpakSourceItem(const QString &text) : QStandardItem(text) { }
-    void setFlatpakInstallation(FlatpakInstallation *installation) { m_installation = installation; }
-    FlatpakInstallation *flatpakInstallation() const { return m_installation; }
+    FlatpakSourceItem(const QString &text)
+        : QStandardItem(text)
+    {
+    }
+    void setFlatpakInstallation(FlatpakInstallation *installation)
+    {
+        m_installation = installation;
+    }
+    FlatpakInstallation *flatpakInstallation() const
+    {
+        return m_installation;
+    }
 
 private:
     FlatpakInstallation *m_installation;
 };
 
-FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *> &installations, AbstractResourcesBackend * parent)
+FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *> &installations, AbstractResourcesBackend *parent)
     : AbstractSourcesBackend(parent)
     , m_preferredInstallation(installations.constFirst())
     , m_sources(new QStandardItemModel(this))
@@ -42,7 +50,7 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
 {
     m_flathubAction->setObjectName(QStringLiteral("flathub"));
     m_flathubAction->setToolTip(i18n("Makes it possible to easily install the applications listed in https://flathub.org"));
-    connect(m_flathubAction, &DiscoverAction::triggered, this, [this](){
+    connect(m_flathubAction, &DiscoverAction::triggered, this, [this]() {
         addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
     });
     for (auto installation : installations) {
@@ -60,7 +68,7 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
 FlatpakSourcesBackend::~FlatpakSourcesBackend()
 {
     QStringList ids;
-    for (int i = 0, c = m_sources->rowCount(); i<c; ++i) {
+    for (int i = 0, c = m_sources->rowCount(); i < c; ++i) {
         auto it = m_sources->item(i);
         ids << it->data(IdRole).toString();
     }
@@ -73,20 +81,20 @@ FlatpakSourcesBackend::~FlatpakSourcesBackend()
         delete m_noSourcesItem;
 }
 
-QAbstractItemModel* FlatpakSourcesBackend::sources()
+QAbstractItemModel *FlatpakSourcesBackend::sources()
 {
     return m_sources;
 }
 
 bool FlatpakSourcesBackend::addSource(const QString &id)
 {
-    FlatpakBackend* backend = qobject_cast<FlatpakBackend*>(parent());
+    FlatpakBackend *backend = qobject_cast<FlatpakBackend *>(parent());
     const QUrl flatpakrepoUrl(id);
 
     if (id.isEmpty() || !flatpakrepoUrl.isValid())
         return false;
 
-    auto addSource = [=](AbstractResource* res) {
+    auto addSource = [=](AbstractResource *res) {
         if (res)
             backend->installApplication(res);
         else
@@ -98,7 +106,7 @@ bool FlatpakSourcesBackend::addSource(const QString &id)
     } else {
         AbstractResourcesBackend::Filters filter;
         filter.resourceUrl = flatpakrepoUrl;
-        auto stream = new StoredResultsStream ({backend->search(filter)});
+        auto stream = new StoredResultsStream({backend->search(filter)});
         connect(stream, &StoredResultsStream::finished, this, [addSource, stream]() {
             const auto res = stream->resources();
             addSource(res.value(0));
@@ -107,10 +115,10 @@ bool FlatpakSourcesBackend::addSource(const QString &id)
     return true;
 }
 
-QStandardItem * FlatpakSourcesBackend::sourceById(const QString& id) const
+QStandardItem *FlatpakSourcesBackend::sourceById(const QString &id) const
 {
-    QStandardItem* sourceIt = nullptr;
-    for (int i = 0, c = m_sources->rowCount(); i<c; ++i) {
+    QStandardItem *sourceIt = nullptr;
+    for (int i = 0, c = m_sources->rowCount(); i < c; ++i) {
         auto it = m_sources->item(i);
         if (it->data(IdRole) == id) {
             sourceIt = it;
@@ -120,12 +128,12 @@ QStandardItem * FlatpakSourcesBackend::sourceById(const QString& id) const
     return sourceIt;
 }
 
-QStandardItem * FlatpakSourcesBackend::sourceByUrl(const QString& _url) const
+QStandardItem *FlatpakSourcesBackend::sourceByUrl(const QString &_url) const
 {
     QUrl url(_url);
 
-    QStandardItem* sourceIt = nullptr;
-    for (int i = 0, c = m_sources->rowCount(); i<c && !sourceIt; ++i) {
+    QStandardItem *sourceIt = nullptr;
+    for (int i = 0, c = m_sources->rowCount(); i < c && !sourceIt; ++i) {
         auto it = m_sources->item(i);
         if (url.matches(it->data(Qt::StatusTipRole).toUrl(), QUrl::StripTrailingSlash)) {
             sourceIt = it;
@@ -139,7 +147,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
 {
     auto sourceIt = sourceById(id);
     if (sourceIt) {
-        FlatpakSourceItem *sourceItem = static_cast<FlatpakSourceItem*>(sourceIt);
+        FlatpakSourceItem *sourceItem = static_cast<FlatpakSourceItem *>(sourceIt);
         g_autoptr(GCancellable) cancellable = g_cancellable_new();
         g_autoptr(GError) error = nullptr;
         const auto installation = sourceItem->flatpakInstallation();
@@ -150,12 +158,18 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
             toRemoveHash.reserve(refs->len);
             QStringList toRemoveRefs;
             toRemoveRefs.reserve(refs->len);
-            FlatpakBackend* backend = qobject_cast<FlatpakBackend*>(parent());
+            FlatpakBackend *backend = qobject_cast<FlatpakBackend *>(parent());
             for (uint i = 0; i < refs->len; i++) {
-                FlatpakRef *ref= FLATPAK_REF(g_ptr_array_index(refs, i));
+                FlatpakRef *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
 
                 g_autoptr(GError) error = nullptr;
-                FlatpakInstalledRef* installedRef = flatpak_installation_get_installed_ref(installation, flatpak_ref_get_kind(ref), flatpak_ref_get_name(ref), flatpak_ref_get_arch(ref), flatpak_ref_get_branch(ref), cancellable, &error);
+                FlatpakInstalledRef *installedRef = flatpak_installation_get_installed_ref(installation,
+                                                                                           flatpak_ref_get_kind(ref),
+                                                                                           flatpak_ref_get_name(ref),
+                                                                                           flatpak_ref_get_arch(ref),
+                                                                                           flatpak_ref_get_branch(ref),
+                                                                                           cancellable,
+                                                                                           &error);
                 if (installedRef) {
                     auto res = backend->getAppForInstalledRef(installation, installedRef);
                     const auto name = QString::fromUtf8(flatpak_ref_get_name(ref));
@@ -184,7 +198,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
                     g_autoptr(GError) localError = nullptr;
                     g_autoptr(GCancellable) cancellable = g_cancellable_new();
                     g_autoptr(FlatpakTransaction) transaction = flatpak_transaction_new_for_installation(installation, cancellable, &localError);
-                    for (const QString& instRef : qAsConst(toRemoveRefs)) {
+                    for (const QString &instRef : qAsConst(toRemoveRefs)) {
                         const QByteArray refString = instRef.toUtf8();
                         flatpak_transaction_add_uninstall(transaction, refString.constData(), &localError);
                         if (localError)
@@ -196,8 +210,9 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
                     }
                 });
 
-
-                Q_EMIT proceedRequest(i18n("Removing '%1'", id), i18n("To remove this repository, the following applications must be uninstalled:<ul><li>%1</li></ul>", toRemove.join(QStringLiteral("</li><li>"))));
+                Q_EMIT proceedRequest(i18n("Removing '%1'", id),
+                                      i18n("To remove this repository, the following applications must be uninstalled:<ul><li>%1</li></ul>",
+                                           toRemove.join(QStringLiteral("</li><li>"))));
                 return false;
             }
         } else {
@@ -225,10 +240,10 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
 
 QVariantList FlatpakSourcesBackend::actions() const
 {
-    return { QVariant::fromValue<QObject*>(m_flathubAction) };
+    return {QVariant::fromValue<QObject *>(m_flathubAction)};
 }
 
-bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
+bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation *installation)
 {
     Q_ASSERT(installation);
 
@@ -252,7 +267,7 @@ bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation* installation)
     return true;
 }
 
-FlatpakRemote * FlatpakSourcesBackend::installSource(FlatpakResource *resource)
+FlatpakRemote *FlatpakSourcesBackend::installSource(FlatpakResource *resource)
 {
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
 
@@ -301,8 +316,8 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     const QUrl remoteUrl(QString::fromUtf8(flatpak_remote_get_url(remote)));
 
     const auto theActions = actions();
-    for(const QVariant& act: theActions) {
-        DiscoverAction* action = qobject_cast<DiscoverAction*>(act.value<QObject*>());
+    for (const QVariant &act : theActions) {
+        DiscoverAction *action = qobject_cast<DiscoverAction *>(act.value<QObject *>());
         if (action->objectName() == id) {
             action->setEnabled(false);
             action->setVisible(false);
@@ -313,7 +328,7 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     it->setData(remoteUrl.isLocalFile() ? remoteUrl.toLocalFile() : remoteUrl.host(), Qt::ToolTipRole);
     it->setData(remoteUrl, Qt::StatusTipRole);
     it->setData(id, IdRole);
-#if FLATPAK_CHECK_VERSION(1,4,0)
+#if FLATPAK_CHECK_VERSION(1, 4, 0)
     it->setData(QString::fromUtf8(flatpak_remote_get_icon(remote)), IconUrlRole);
 #endif
     it->setFlatpakInstallation(installation);
@@ -325,11 +340,11 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
         const auto ids = group.readEntry<QStringList>("Sources", QStringList());
 
         const auto ourIdx = ids.indexOf(id);
-        if (ourIdx<0) { //If not present, we put it on top
+        if (ourIdx < 0) { // If not present, we put it on top
             idx = 0;
         } else {
-            idx=0;
-            for(int c=m_sources->rowCount(); idx<c; ++idx) {
+            idx = 0;
+            for (int c = m_sources->rowCount(); idx < c; ++idx) {
                 const auto compIt = m_sources->item(idx);
                 const int compIdx = ids.indexOf(compIt->data(IdRole).toString());
                 if (compIdx >= ourIdx) {
@@ -354,7 +369,7 @@ QString FlatpakSourcesBackend::idDescription()
     return i18n("Enter a Flatpak repository URI (*.flatpakrepo):");
 }
 
-bool FlatpakSourcesBackend::moveSource(const QString& sourceId, int delta)
+bool FlatpakSourcesBackend::moveSource(const QString &sourceId, int delta)
 {
     auto item = sourceById(sourceId);
     if (!item)
@@ -363,7 +378,7 @@ bool FlatpakSourcesBackend::moveSource(const QString& sourceId, int delta)
     auto prevRow = m_sources->takeRow(row);
     Q_ASSERT(!prevRow.isEmpty());
 
-    const auto destRow = row + (delta>0? delta : delta);
+    const auto destRow = row + (delta > 0 ? delta : delta);
     m_sources->insertRow(destRow, prevRow);
     if (destRow == 0 || row == 0)
         Q_EMIT firstSourceIdChanged();
@@ -372,7 +387,7 @@ bool FlatpakSourcesBackend::moveSource(const QString& sourceId, int delta)
     return true;
 }
 
-int FlatpakSourcesBackend::originIndex(const QString& sourceId) const
+int FlatpakSourcesBackend::originIndex(const QString &sourceId) const
 {
     auto item = sourceById(sourceId);
     return item ? item->row() : INT_MAX;

@@ -5,19 +5,19 @@
  */
 
 #include "PaginateModel.h"
-#include <QtMath>
 #include "discover_debug.h"
+#include <QtMath>
 
 class PaginateModel::PaginateModelPrivate
 {
 public:
     int m_firstItem = 0;
     int m_pageSize = 0;
-    QAbstractItemModel* m_sourceModel = nullptr;
+    QAbstractItemModel *m_sourceModel = nullptr;
     bool m_hasStaticRowCount = false;
 };
 
-PaginateModel::PaginateModel(QObject* object)
+PaginateModel::PaginateModel(QObject *object)
     : QAbstractListModel(object)
     , d(new PaginateModelPrivate)
 {
@@ -52,9 +52,9 @@ void PaginateModel::setPageSize(int count)
         const int oldSize = rowsByPageSize(d->m_pageSize);
         const int newSize = rowsByPageSize(count);
         const int difference = newSize - oldSize;
-        if (difference==0) {
+        if (difference == 0) {
             d->m_pageSize = count;
-        } else if (difference>0) {
+        } else if (difference > 0) {
             beginInsertRows(QModelIndex(), d->m_pageSize, d->m_pageSize + difference - 1);
             d->m_pageSize = count;
             endInsertRows();
@@ -67,12 +67,12 @@ void PaginateModel::setPageSize(int count)
     }
 }
 
-QAbstractItemModel* PaginateModel::sourceModel() const
+QAbstractItemModel *PaginateModel::sourceModel() const
 {
     return d->m_sourceModel;
 }
 
-void PaginateModel::setSourceModel(QAbstractItemModel* model)
+void PaginateModel::setSourceModel(QAbstractItemModel *model)
 {
     if (d->m_sourceModel) {
         disconnect(d->m_sourceModel, nullptr, this, nullptr);
@@ -111,31 +111,29 @@ void PaginateModel::setSourceModel(QAbstractItemModel* model)
     }
 }
 
-QHash< int, QByteArray > PaginateModel::roleNames() const
+QHash<int, QByteArray> PaginateModel::roleNames() const
 {
     return d->m_sourceModel ? d->m_sourceModel->roleNames() : QAbstractItemModel::roleNames();
 }
 
 int PaginateModel::rowsByPageSize(int size) const
 {
-    return d->m_hasStaticRowCount ? size
-        : !d->m_sourceModel ? 0
-        : qMin(d->m_sourceModel->rowCount() - d->m_firstItem, size);
+    return d->m_hasStaticRowCount ? size : !d->m_sourceModel ? 0 : qMin(d->m_sourceModel->rowCount() - d->m_firstItem, size);
 }
 
-int PaginateModel::rowCount(const QModelIndex& parent) const
+int PaginateModel::rowCount(const QModelIndex &parent) const
 {
     return parent.isValid() ? 0 : rowsByPageSize(d->m_pageSize);
 }
 
-QModelIndex PaginateModel::mapToSource(const QModelIndex& idx) const
+QModelIndex PaginateModel::mapToSource(const QModelIndex &idx) const
 {
     if (!d->m_sourceModel)
         return QModelIndex();
     return d->m_sourceModel->index(idx.row() + d->m_firstItem, idx.column());
 }
 
-QModelIndex PaginateModel::mapFromSource(const QModelIndex& idx) const
+QModelIndex PaginateModel::mapFromSource(const QModelIndex &idx) const
 {
     Q_ASSERT(idx.model() == d->m_sourceModel);
     if (!d->m_sourceModel)
@@ -143,7 +141,7 @@ QModelIndex PaginateModel::mapFromSource(const QModelIndex& idx) const
     return index(idx.row() - d->m_firstItem, idx.column());
 }
 
-QVariant PaginateModel::data(const QModelIndex& index, int role) const
+QVariant PaginateModel::data(const QModelIndex &index, int role) const
 {
     if (!d->m_sourceModel)
         return QVariant();
@@ -205,16 +203,16 @@ void PaginateModel::setStaticRowCount(bool src)
 
 //////////////////////////////
 
-void PaginateModel::_k_sourceColumnsAboutToBeInserted(const QModelIndex& parent, int start, int end)
+void PaginateModel::_k_sourceColumnsAboutToBeInserted(const QModelIndex &parent, int start, int end)
 {
     Q_UNUSED(end)
-    if (parent.isValid() || start!=0) {
+    if (parent.isValid() || start != 0) {
         return;
     }
     beginResetModel();
 }
 
-void PaginateModel::_k_sourceColumnsAboutToBeMoved(const QModelIndex& sourceParent, int sourceStart, int sourceEnd, const QModelIndex& destParent, int dest)
+void PaginateModel::_k_sourceColumnsAboutToBeMoved(const QModelIndex &sourceParent, int sourceStart, int sourceEnd, const QModelIndex &destParent, int dest)
 {
     Q_UNUSED(sourceParent)
     Q_UNUSED(sourceStart)
@@ -224,25 +222,25 @@ void PaginateModel::_k_sourceColumnsAboutToBeMoved(const QModelIndex& sourcePare
     beginResetModel();
 }
 
-void PaginateModel::_k_sourceColumnsAboutToBeRemoved(const QModelIndex& parent, int start, int end)
+void PaginateModel::_k_sourceColumnsAboutToBeRemoved(const QModelIndex &parent, int start, int end)
 {
     Q_UNUSED(end)
-    if (parent.isValid() || start!=0) {
+    if (parent.isValid() || start != 0) {
         return;
     }
     beginResetModel();
 }
 
-void PaginateModel::_k_sourceColumnsInserted(const QModelIndex& parent, int start, int end)
+void PaginateModel::_k_sourceColumnsInserted(const QModelIndex &parent, int start, int end)
 {
     Q_UNUSED(end)
-    if (parent.isValid() || start!=0) {
+    if (parent.isValid() || start != 0) {
         return;
     }
     endResetModel();
 }
 
-void PaginateModel::_k_sourceColumnsMoved(const QModelIndex& sourceParent, int sourceStart, int sourceEnd, const QModelIndex& destParent, int dest)
+void PaginateModel::_k_sourceColumnsMoved(const QModelIndex &sourceParent, int sourceStart, int sourceEnd, const QModelIndex &destParent, int dest)
 {
     Q_UNUSED(sourceParent)
     Q_UNUSED(sourceStart)
@@ -252,18 +250,18 @@ void PaginateModel::_k_sourceColumnsMoved(const QModelIndex& sourceParent, int s
     endResetModel();
 }
 
-void PaginateModel::_k_sourceColumnsRemoved(const QModelIndex& parent, int start, int end)
+void PaginateModel::_k_sourceColumnsRemoved(const QModelIndex &parent, int start, int end)
 {
     Q_UNUSED(end)
-    if (parent.isValid() || start!=0) {
+    if (parent.isValid() || start != 0) {
         return;
     }
     endResetModel();
 }
 
-void PaginateModel::_k_sourceDataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int> &roles)
+void PaginateModel::_k_sourceDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
 {
-    if (topLeft.parent().isValid() || bottomRight.row() < d->m_firstItem || topLeft.row()>lastItem()) {
+    if (topLeft.parent().isValid() || bottomRight.row() < d->m_firstItem || topLeft.row() > lastItem()) {
         return;
     }
 
@@ -272,7 +270,7 @@ void PaginateModel::_k_sourceDataChanged(const QModelIndex& topLeft, const QMode
     if (!idxTop.isValid())
         idxTop = index(0);
     if (!idxBottom.isValid())
-        idxBottom = index(rowCount()-1);
+        idxBottom = index(rowCount() - 1);
 
     emit dataChanged(idxTop, idxBottom, roles);
 }
@@ -294,17 +292,17 @@ void PaginateModel::_k_sourceModelReset()
     endResetModel();
 }
 
-bool PaginateModel::isIntervalValid(const QModelIndex& parent, int start, int /*end*/) const
+bool PaginateModel::isIntervalValid(const QModelIndex &parent, int start, int /*end*/) const
 {
-    return !parent.isValid() && start<=lastItem();
+    return !parent.isValid() && start <= lastItem();
 }
 
 bool PaginateModel::canSizeChange() const
 {
-    return !d->m_hasStaticRowCount && currentPage() == pageCount()-1;
+    return !d->m_hasStaticRowCount && currentPage() == pageCount() - 1;
 }
 
-void PaginateModel::_k_sourceRowsAboutToBeInserted(const QModelIndex& parent, int start, int end)
+void PaginateModel::_k_sourceRowsAboutToBeInserted(const QModelIndex &parent, int start, int end)
 {
     if (!isIntervalValid(parent, start, end)) {
         return;
@@ -312,14 +310,14 @@ void PaginateModel::_k_sourceRowsAboutToBeInserted(const QModelIndex& parent, in
 
     if (canSizeChange()) {
         const int newStart = qMax(start - d->m_firstItem, 0);
-        const int insertedCount = qMin(end - start, pageSize() - newStart -1);
-        beginInsertRows(QModelIndex(), newStart, newStart+insertedCount);
+        const int insertedCount = qMin(end - start, pageSize() - newStart - 1);
+        beginInsertRows(QModelIndex(), newStart, newStart + insertedCount);
     } else {
         beginResetModel();
     }
 }
 
-void PaginateModel::_k_sourceRowsInserted(const QModelIndex& parent, int start, int end)
+void PaginateModel::_k_sourceRowsInserted(const QModelIndex &parent, int start, int end)
 {
     if (!isIntervalValid(parent, start, end)) {
         return;
@@ -332,18 +330,18 @@ void PaginateModel::_k_sourceRowsInserted(const QModelIndex& parent, int start, 
     }
 }
 
-void PaginateModel::_k_sourceRowsAboutToBeMoved(const QModelIndex& sourceParent, int sourceStart, int sourceEnd, const QModelIndex& destParent, int dest)
+void PaginateModel::_k_sourceRowsAboutToBeMoved(const QModelIndex &sourceParent, int sourceStart, int sourceEnd, const QModelIndex &destParent, int dest)
 {
     Q_UNUSED(sourceParent)
     Q_UNUSED(sourceStart)
     Q_UNUSED(sourceEnd)
     Q_UNUSED(destParent)
     Q_UNUSED(dest)
-    //NOTE could optimize, unsure if it makes sense
+    // NOTE could optimize, unsure if it makes sense
     beginResetModel();
 }
 
-void PaginateModel::_k_sourceRowsMoved(const QModelIndex& sourceParent, int sourceStart, int sourceEnd, const QModelIndex& destParent, int dest)
+void PaginateModel::_k_sourceRowsMoved(const QModelIndex &sourceParent, int sourceStart, int sourceEnd, const QModelIndex &destParent, int dest)
 {
     Q_UNUSED(sourceParent)
     Q_UNUSED(sourceStart)
@@ -353,14 +351,14 @@ void PaginateModel::_k_sourceRowsMoved(const QModelIndex& sourceParent, int sour
     endResetModel();
 }
 
-void PaginateModel::_k_sourceRowsAboutToBeRemoved(const QModelIndex& parent, int start, int end)
+void PaginateModel::_k_sourceRowsAboutToBeRemoved(const QModelIndex &parent, int start, int end)
 {
     if (!isIntervalValid(parent, start, end)) {
         return;
     }
 
     if (canSizeChange()) {
-        const int removedCount = end-start;
+        const int removedCount = end - start;
         const int newStart = qMax(start - d->m_firstItem, 0);
         beginRemoveRows(QModelIndex(), newStart, newStart + removedCount);
     } else {
@@ -368,7 +366,7 @@ void PaginateModel::_k_sourceRowsAboutToBeRemoved(const QModelIndex& parent, int
     }
 }
 
-void PaginateModel::_k_sourceRowsRemoved(const QModelIndex& parent, int start, int end)
+void PaginateModel::_k_sourceRowsRemoved(const QModelIndex &parent, int start, int end)
 {
     if (!isIntervalValid(parent, start, end)) {
         return;

@@ -5,16 +5,15 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-
 #ifndef FLATPAKBACKEND_H
 #define FLATPAKBACKEND_H
 
 #include "FlatpakResource.h"
 
-#include <resources/AbstractResourcesBackend.h>
-#include <QVariantList>
 #include <QSharedPointer>
 #include <QThreadPool>
+#include <QVariantList>
+#include <resources/AbstractResourcesBackend.h>
 
 #include <AppStreamQt/component.h>
 
@@ -33,28 +32,43 @@ public:
     ~FlatpakBackend();
 
     int updatesCount() const override;
-    AbstractBackendUpdater * backendUpdater() const override;
-    AbstractReviewsBackend * reviewsBackend() const override;
-    ResultsStream * search(const AbstractResourcesBackend::Filters & search) override;
-    ResultsStream * findResourceByPackageName(const QUrl &search);
-    QList<FlatpakResource*> resources() const { return m_resources.values(); }
+    AbstractBackendUpdater *backendUpdater() const override;
+    AbstractReviewsBackend *reviewsBackend() const override;
+    ResultsStream *search(const AbstractResourcesBackend::Filters &search) override;
+    ResultsStream *findResourceByPackageName(const QUrl &search);
+    QList<FlatpakResource *> resources() const
+    {
+        return m_resources.values();
+    }
     bool isValid() const override;
 
-    Transaction* installApplication(AbstractResource* app) override;
-    Transaction* installApplication(AbstractResource* app, const AddonList& addons) override;
-    Transaction* removeApplication(AbstractResource* app) override;
-    bool isFetching() const override { return m_isFetching>0; }
+    Transaction *installApplication(AbstractResource *app) override;
+    Transaction *installApplication(AbstractResource *app, const AddonList &addons) override;
+    Transaction *removeApplication(AbstractResource *app) override;
+    bool isFetching() const override
+    {
+        return m_isFetching > 0;
+    }
     void checkForUpdates() override;
     QString displayName() const override;
-    bool hasApplications() const override { return true; }
-    FlatpakResource * addSourceFromFlatpakRepo(const QUrl &url);
-    QStringList extends() const override { return m_extends; }
+    bool hasApplications() const override
+    {
+        return true;
+    }
+    FlatpakResource *addSourceFromFlatpakRepo(const QUrl &url);
+    QStringList extends() const override
+    {
+        return m_extends;
+    }
 
-    FlatpakResource * addAppFromFlatpakBundle(const QUrl &url);
-    FlatpakResource * addAppFromFlatpakRef(const QUrl &url);
-    FlatpakResource * getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const;
+    FlatpakResource *addAppFromFlatpakBundle(const QUrl &url);
+    FlatpakResource *addAppFromFlatpakRef(const QUrl &url);
+    FlatpakResource *getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const;
 
-    FlatpakSourcesBackend *sources() const { return m_sources; }
+    FlatpakSourcesBackend *sources() const
+    {
+        return m_sources;
+    }
 
     bool updateAppSize(FlatpakResource *resource);
 
@@ -63,18 +77,21 @@ private Q_SLOTS:
     void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);
     void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
 
-Q_SIGNALS: //for tests
+Q_SIGNALS: // for tests
     void initialized();
 
 private:
     void metadataRefreshed();
-    bool flatpakResourceLessThan(AbstractResource* l, AbstractResource* r) const;
+    bool flatpakResourceLessThan(AbstractResource *l, AbstractResource *r) const;
     void announceRatingsReady();
-    FlatpakInstallation * preferredInstallation() const { return m_installations.constFirst(); }
+    FlatpakInstallation *preferredInstallation() const
+    {
+        return m_installations.constFirst();
+    }
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
-    FlatpakRemote * getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
-    FlatpakInstalledRef * getInstalledRefForApp(FlatpakResource *resource) const;
-    FlatpakResource * getRuntimeForApp(FlatpakResource *resource) const;
+    FlatpakRemote *getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
+    FlatpakInstalledRef *getInstalledRefForApp(FlatpakResource *resource) const;
+    FlatpakResource *getRuntimeForApp(FlatpakResource *resource) const;
 
     void addResource(FlatpakResource *resource);
     void loadAppsFromAppstreamData();
@@ -93,11 +110,11 @@ private:
     bool updateAppSizeFromRemote(FlatpakResource *resource);
     void updateAppState(FlatpakResource *resource);
 
-    QVector<AbstractResource*> resourcesByAppstreamName(const QString &name) const;
+    QVector<AbstractResource *> resourcesByAppstreamName(const QString &name) const;
     void acquireFetching(bool f);
 
-    QHash<FlatpakResource::Id, FlatpakResource*> m_resources;
-    StandardBackendUpdater  *m_updater;
+    QHash<FlatpakResource::Id, FlatpakResource *> m_resources;
+    StandardBackendUpdater *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;
     QSharedPointer<OdrsReviewsBackend> m_reviews;
     uint m_isFetching = 0;

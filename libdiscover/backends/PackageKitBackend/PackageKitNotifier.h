@@ -7,9 +7,9 @@
 #define PACKAGEKITNOTIFIER_H
 
 #include <BackendNotifierModule.h>
+#include <PackageKit/Transaction>
 #include <QPointer>
 #include <QVariantList>
-#include <PackageKit/Transaction>
 #include <functional>
 
 class QTimer;
@@ -17,18 +17,21 @@ class QProcess;
 
 class PackageKitNotifier : public BackendNotifierModule
 {
-Q_OBJECT
-Q_PLUGIN_METADATA(IID "org.kde.discover.BackendNotifierModule")
-Q_INTERFACES(BackendNotifierModule)
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.discover.BackendNotifierModule")
+    Q_INTERFACES(BackendNotifierModule)
 public:
-    explicit PackageKitNotifier(QObject* parent = nullptr);
+    explicit PackageKitNotifier(QObject *parent = nullptr);
     ~PackageKitNotifier() override;
 
     bool hasUpdates() override;
     bool hasSecurityUpdates() override;
     void recheckSystemUpdateNeeded() override;
     void refreshDatabase();
-    bool needsReboot() const override { return m_needsReboot; }
+    bool needsReboot() const override
+    {
+        return m_needsReboot;
+    }
 
 private Q_SLOTS:
     void package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary);
@@ -41,17 +44,17 @@ private:
     void nowNeedsReboot();
     void recheckSystemUpdate();
     void checkOfflineUpdates();
-    void setupGetUpdatesTransaction(PackageKit::Transaction* transaction);
-    QProcess* checkAptVariable(const QString &aptconfig, const QLatin1String& varname, const std::function<void(const QStringRef& val)> &func);
+    void setupGetUpdatesTransaction(PackageKit::Transaction *transaction);
+    QProcess *checkAptVariable(const QString &aptconfig, const QLatin1String &varname, const std::function<void(const QStringRef &val)> &func);
 
     bool m_needsReboot = false;
     uint m_securityUpdates;
     uint m_normalUpdates;
     QPointer<PackageKit::Transaction> m_refresher;
     QPointer<PackageKit::Transaction> m_distUpgrades;
-    QTimer* m_recheckTimer;
+    QTimer *m_recheckTimer;
 
-    QHash<QString, PackageKit::Transaction*> m_transactions;
+    QHash<QString, PackageKit::Transaction *> m_transactions;
 };
 
 #endif

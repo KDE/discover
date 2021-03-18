@@ -7,28 +7,38 @@
 #ifndef BACKENDNOTIFIERMODULE_H
 #define BACKENDNOTIFIERMODULE_H
 
-#include <QObject>
 #include "discovernotifiers_export.h"
+#include <QObject>
 
 class DISCOVERNOTIFIERS_EXPORT UpgradeAction : public QObject
 {
-Q_OBJECT
-Q_PROPERTY(QString name READ name CONSTANT)
-Q_PROPERTY(QString description READ description CONSTANT)
+    Q_OBJECT
+    Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(QString description READ description CONSTANT)
 public:
-    UpgradeAction(const QString& name, const QString& description, QObject* parent)
+    UpgradeAction(const QString &name, const QString &description, QObject *parent)
         : QObject(parent)
         , m_name(name)
         , m_description(description)
-    {}
+    {
+    }
 
-    QString name() const { return m_name; }
-    QString description() const { return m_description; }
+    QString name() const
+    {
+        return m_name;
+    }
+    QString description() const
+    {
+        return m_description;
+    }
 
-    void trigger() { Q_EMIT triggered(m_name); }
+    void trigger()
+    {
+        Q_EMIT triggered(m_name);
+    }
 
 Q_SIGNALS:
-    void triggered(const QString & name);
+    void triggered(const QString &name);
 
 private:
     const QString m_name;
@@ -37,9 +47,9 @@ private:
 
 class DISCOVERNOTIFIERS_EXPORT BackendNotifierModule : public QObject
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    explicit BackendNotifierModule(QObject* parent = nullptr);
+    explicit BackendNotifierModule(QObject *parent = nullptr);
     ~BackendNotifierModule() override;
 
     /*** Check for new updates. Emits @see foundUpdates when it finds something. **/
@@ -65,7 +75,7 @@ Q_SIGNALS:
     void needsRebootChanged();
 
     /** notifies about an available upgrade */
-    void foundUpgradeAction(UpgradeAction* action);
+    void foundUpgradeAction(UpgradeAction *action);
 };
 
 Q_DECLARE_INTERFACE(BackendNotifierModule, "org.kde.discover.BackendNotifierModule")

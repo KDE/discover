@@ -7,16 +7,16 @@
 #include "SnapTransaction.h"
 #include "SnapBackend.h"
 #include "SnapResource.h"
-#include <Snapd/Request>
-#include <QTimer>
-#include <QProcess>
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <KLocalizedString>
 #include "libsnapclient/config-paths.h"
 #include "utils.h"
+#include <KLocalizedString>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QProcess>
+#include <QTimer>
+#include <Snapd/Request>
 
-SnapTransaction::SnapTransaction(QSnapdClient* client, SnapResource* app, Role role, AbstractResource::State newState)
+SnapTransaction::SnapTransaction(QSnapdClient *client, SnapResource *app, Role role, AbstractResource::State newState)
     : Transaction(app, app, role)
     , m_client(client)
     , m_app(app)
@@ -36,47 +36,50 @@ void SnapTransaction::cancel()
 
 void SnapTransaction::finishTransaction()
 {
-    switch(m_request->error()) {
-        case QSnapdRequest::NoError:
-            static_cast<SnapBackend*>(m_app->backend())->refreshStates();
-            setStatus(DoneStatus);
-            m_app->setState(m_newState);
-            break;
-        case QSnapdRequest::NeedsClassic:
-            setStatus(SetupStatus);
-            if (role() == Transaction::InstallRole) {
-                Q_EMIT proceedRequest(m_app->name(), i18n("This snap application needs security confinement measures disabled."));
+    switch (m_request->error()) {
+    case QSnapdRequest::NoError:
+        static_cast<SnapBackend *>(m_app->backend())->refreshStates();
+        setStatus(DoneStatus);
+        m_app->setState(m_newState);
+        break;
+    case QSnapdRequest::NeedsClassic:
+        setStatus(SetupStatus);
+        if (role() == Transaction::InstallRole) {
+            Q_EMIT proceedRequest(m_app->name(), i18n("This snap application needs security confinement measures disabled."));
+            return;
+        }
+        break;
+    case QSnapdRequest::AuthDataRequired: {
+        setStatus(SetupStatus);
+        QProcess *p = new QProcess;
+        p->setProgram(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR "/discover/SnapMacaroonDialog"));
+        p->start();
+
+        connect(p, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, [this, p](int code, QProcess::ExitStatus status) {
+            p->deleteLater();
+            if (code != 0) {
+                qWarning() << "login failed... code:" << code << status << p->readAll();
+                Q_EMIT passiveMessage(m_request->errorString());
+                setStatus(DoneWithErrorStatus);
                 return;
             }
-            break;
-        case QSnapdRequest::AuthDataRequired: {
-            setStatus(SetupStatus);
-            QProcess* p = new QProcess;
-            p->setProgram(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR "/discover/SnapMacaroonDialog"));
-            p->start();
+            const auto doc = QJsonDocument::fromJson(p->readAllStandardOutput());
+            const auto result = doc.object();
 
-            connect(p, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, [this, p] (int code, QProcess::ExitStatus status) {
-                p->deleteLater();
-                if (code != 0) {
-                    qWarning() << "login failed... code:" << code << status << p->readAll();
-                    Q_EMIT passiveMessage(m_request->errorString());
-                    setStatus(DoneWithErrorStatus);
-                    return;
-                }
-                const auto doc = QJsonDocument::fromJson(p->readAllStandardOutput());
-                const auto result = doc.object();
-
-                const auto macaroon = result[QStringLiteral("macaroon")].toString();
-                const auto discharges = kTransform<QStringList>(result[QStringLiteral("discharges")].toArray(), [](const QJsonValue& val) { return val.toString(); });
-                static_cast<SnapBackend*>(m_app->backend())->client()->setAuthData(new QSnapdAuthData(macaroon, discharges));
-                m_request->runAsync();
+            const auto macaroon = result[QStringLiteral("macaroon")].toString();
+            const auto discharges = kTransform<QStringList>(result[QStringLiteral("discharges")].toArray(), [](const QJsonValue &val) {
+                return val.toString();
             });
-        }   return;
-        default:
-            setStatus(DoneWithErrorStatus);
-            qDebug() << "snap error" << m_request << m_request->error() << m_request->errorString();
-            Q_EMIT passiveMessage(m_request->errorString());
-            break;
+            static_cast<SnapBackend *>(m_app->backend())->client()->setAuthData(new QSnapdAuthData(macaroon, discharges));
+            m_request->runAsync();
+        });
+    }
+        return;
+    default:
+        setStatus(DoneWithErrorStatus);
+        qDebug() << "snap error" << m_request << m_request->error() << m_request->errorString();
+        Q_EMIT passiveMessage(m_request->errorString());
+        break;
     }
 }
 
@@ -85,7 +88,7 @@ void SnapTransaction::proceed()
     setRequest(m_client->install(QSnapdClient::Classic, m_app->packageName()));
 }
 
-void SnapTransaction::setRequest(QSnapdRequest* req)
+void SnapTransaction::setRequest(QSnapdRequest *req)
 {
     m_request.reset(req);
 
@@ -103,7 +106,7 @@ void SnapTransaction::progressed()
     int percentage = 0, count = 0;
 
     auto status = SetupStatus;
-    for(int i = 0, c = change->taskCount(); i<c; ++i) {
+    for (int i = 0, c = change->taskCount(); i < c; ++i) {
         ++count;
         auto task = change->task(i);
         if (task->kind() == QLatin1String("download-snap")) {

@@ -16,27 +16,30 @@ class PKSourcesModel;
 class PackageKitSourcesBackend : public AbstractSourcesBackend
 {
     Q_OBJECT
-    public:
-        PackageKitSourcesBackend(AbstractResourcesBackend* parent);
+public:
+    PackageKitSourcesBackend(AbstractResourcesBackend *parent);
 
-        QString idDescription() override;
+    QString idDescription() override;
 
-        bool supportsAdding() const override { return false; }
-        bool addSource(const QString& id) override;
-        bool removeSource(const QString& id) override;
+    bool supportsAdding() const override
+    {
+        return false;
+    }
+    bool addSource(const QString &id) override;
+    bool removeSource(const QString &id) override;
 
-        QAbstractItemModel* sources() override;
-        QVariantList actions() const override;
+    QAbstractItemModel *sources() override;
+    QVariantList actions() const override;
 
-        void transactionError(PackageKit::Transaction::Error, const QString& message);
+    void transactionError(PackageKit::Transaction::Error, const QString &message);
 
-    private:
-        void resetSources();
-        void addRepositoryDetails(const QString &id, const QString &description, bool enabled);
-        QStandardItem* findItemForId(const QString &id) const;
+private:
+    void resetSources();
+    void addRepositoryDetails(const QString &id, const QString &description, bool enabled);
+    QStandardItem *findItemForId(const QString &id) const;
 
-        PKSourcesModel* m_sources;
-        QVariantList m_actions;
+    PKSourcesModel *m_sources;
+    QVariantList m_actions;
 };
 
 #endif // PACKAGEKITSOURCESBACKEND_H

@@ -6,9 +6,9 @@
 
 #pragma once
 
-#include <QObject>
-#include <QIcon>
 #include "discovercommon_export.h"
+#include <QIcon>
+#include <QObject>
 
 /**
  * An action class that doesn't need QtWidgets
@@ -22,9 +22,9 @@ class DISCOVERCOMMON_EXPORT DiscoverAction : public QObject
     Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled NOTIFY enabledChanged)
     Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
 public:
-    DiscoverAction(QObject* parent = nullptr);
-    DiscoverAction(const QString &text, QObject* parent = nullptr);
-    DiscoverAction(const QIcon icon, const QString &text, QObject* parent = nullptr);
+    DiscoverAction(QObject *parent = nullptr);
+    DiscoverAction(const QString &text, QObject *parent = nullptr);
+    DiscoverAction(const QIcon icon, const QString &text, QObject *parent = nullptr);
 
     void setText(const QString &text);
     void setToolTip(const QString &toolTip);
@@ -32,11 +32,26 @@ public:
     void setEnabled(bool enabled);
     void setVisible(bool enabled);
 
-    bool isVisible() const { return m_isVisible; }
-    bool isEnabled() const { return m_isEnabled; }
-    QString text() const { return m_text; }
-    QString toolTip() const { return m_toolTip; }
-    QIcon icon() const { return m_icon; }
+    bool isVisible() const
+    {
+        return m_isVisible;
+    }
+    bool isEnabled() const
+    {
+        return m_isEnabled;
+    }
+    QString text() const
+    {
+        return m_text;
+    }
+    QString toolTip() const
+    {
+        return m_toolTip;
+    }
+    QIcon icon() const
+    {
+        return m_icon;
+    }
 
 public Q_SLOTS:
     void trigger();

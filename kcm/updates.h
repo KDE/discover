@@ -18,12 +18,12 @@ class Updates : public KQuickAddons::ManagedConfigModule
     Q_OBJECT
     Q_PROPERTY(UpdatesSettings *updatesSettings READ updatesSettings CONSTANT)
 
-    public:
-        explicit Updates(QObject *parent = nullptr, const QVariantList &list = QVariantList());
-        ~Updates() override;
+public:
+    explicit Updates(QObject *parent = nullptr, const QVariantList &list = QVariantList());
+    ~Updates() override;
 
-        UpdatesSettings *updatesSettings() const;
+    UpdatesSettings *updatesSettings() const;
 
-    private:
-        UpdatesData *m_data;
+private:
+    UpdatesData *m_data;
 };

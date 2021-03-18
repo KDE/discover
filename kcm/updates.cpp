@@ -6,10 +6,10 @@
 
 #include "updates.h"
 
-#include <KConfigGroup>
-#include <KPluginFactory>
 #include <KAboutData>
+#include <KConfigGroup>
 #include <KLocalizedString>
+#include <KPluginFactory>
 
 #include <updatesdata.h>
 #include <updatessettings.h>
@@ -25,8 +25,10 @@ Updates::Updates(QObject *parent, const QVariantList &args)
     qmlRegisterAnonymousType<UpdatesSettings>("org.kde.discover.updates", 1);
 
     setAboutData(new KAboutData(QStringLiteral("kcm_updates"),
-                                       i18n("Software Updates"),
-                                       QStringLiteral("1.0"), i18n("Configure software update settings"), KAboutLicense::LGPL));
+                                i18n("Software Updates"),
+                                QStringLiteral("1.0"),
+                                i18n("Configure software update settings"),
+                                KAboutLicense::LGPL));
 }
 
 Updates::~Updates() = default;

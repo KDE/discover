@@ -6,18 +6,19 @@
 
 #include "CategoriesReader.h"
 #include "Category.h"
+#include "libdiscover_debug.h"
+#include <QCoreApplication>
 #include <QDomNode>
 #include <QFile>
-#include "libdiscover_debug.h"
 #include <QStandardPaths>
-#include <QCoreApplication>
 
 #include <DiscoverBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
 
-QVector<Category*> CategoriesReader::loadCategoriesFile(AbstractResourcesBackend* backend)
+QVector<Category *> CategoriesReader::loadCategoriesFile(AbstractResourcesBackend *backend)
 {
-    QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("libdiscover/categories/")+backend->name()+QLatin1String("-categories.xml"));
+    QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+                                          QLatin1String("libdiscover/categories/") + backend->name() + QLatin1String("-categories.xml"));
     if (path.isEmpty()) {
         auto cat = backend->category();
         if (cat.isEmpty())
@@ -29,7 +30,7 @@ QVector<Category*> CategoriesReader::loadCategoriesFile(AbstractResourcesBackend
     return loadCategoriesPath(path);
 }
 
-QVector<Category*> CategoriesReader::loadCategoriesPath(const QString& path)
+QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path)
 {
     QVector<Category *> ret;
     QFile menuFile(path);
@@ -42,16 +43,15 @@ QVector<Category*> CategoriesReader::loadCategoriesPath(const QString& path)
     QString error;
     int line;
     bool correct = menuDocument.setContent(&menuFile, &error, &line);
-    if(!correct)
+    if (!correct)
         qCWarning(LIBDISCOVER_LOG) << "error while parsing the categories file:" << error << " at: " << path << ':' << line;
 
     QDomElement root = menuDocument.documentElement();
 
     QDomNode node = root.firstChild();
-    while(!node.isNull())
-    {
+    while (!node.isNull()) {
         if (node.nodeType() == QDomNode::ElementNode) {
-            ret << new Category( {path}, qApp );
+            ret << new Category({path}, qApp);
             ret.last()->parseData(path, node);
         }
 

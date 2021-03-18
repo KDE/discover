@@ -12,41 +12,42 @@
 
 class KNSBackend;
 class QUrl;
-namespace Attica {
+namespace Attica
+{
 class BaseJob;
 }
 
 class KNSReviews : public AbstractReviewsBackend
 {
     Q_OBJECT
-    public:
-        explicit KNSReviews(KNSBackend* backend);
+public:
+    explicit KNSReviews(KNSBackend *backend);
 
-        void fetchReviews(AbstractResource* app, int page = 1) override;
-        bool isFetching() const override;
-        void flagReview(Review* r, const QString& reason, const QString& text) override;
-        void deleteReview(Review* r) override;
-        void submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& rating) override;
-        void submitUsefulness(Review* r, bool useful) override;
-        void logout() override;
-        void registerAndLogin() override;
-        void login() override;
-        Rating* ratingForApplication(AbstractResource* app) const override;
-        bool hasCredentials() const override;
-        QString userName() const override;
+    void fetchReviews(AbstractResource *app, int page = 1) override;
+    bool isFetching() const override;
+    void flagReview(Review *r, const QString &reason, const QString &text) override;
+    void deleteReview(Review *r) override;
+    void submitReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating) override;
+    void submitUsefulness(Review *r, bool useful) override;
+    void logout() override;
+    void registerAndLogin() override;
+    void login() override;
+    Rating *ratingForApplication(AbstractResource *app) const override;
+    bool hasCredentials() const override;
+    QString userName() const override;
 
-        void setProviderUrl(const QUrl &url);
-        bool isResourceSupported(AbstractResource * res) const override;
+    void setProviderUrl(const QUrl &url);
+    bool isResourceSupported(AbstractResource *res) const override;
 
-    private Q_SLOTS:
-        void commentsReceived(Attica::BaseJob* job);
-        void credentialsReceived(const QString& user, const QString& password);
+private Q_SLOTS:
+    void commentsReceived(Attica::BaseJob *job);
+    void credentialsReceived(const QString &user, const QString &password);
 
-    private:
-        Attica::Provider provider() const;
-        KNSBackend* const m_backend;
-        QUrl m_providerUrl;
-        int m_fetching = 0;
+private:
+    Attica::Provider provider() const;
+    KNSBackend *const m_backend;
+    QUrl m_providerUrl;
+    int m_fetching = 0;
 };
 
 #endif // KNSREVIEWS_H

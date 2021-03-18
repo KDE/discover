@@ -4,36 +4,36 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  ***************************************************************************/
 
-#include <resources/ResourcesModel.h>
-#include <resources/ResourcesProxyModel.h>
-#include <resources/AbstractBackendUpdater.h>
-#include <resources/SourcesModel.h>
-#include <resources/DiscoverAction.h>
 #include <ApplicationAddonsModel.h>
+#include <Category/CategoryModel.h>
 #include <ReviewsBackend/ReviewsModel.h>
 #include <Transaction/TransactionModel.h>
-#include <Category/CategoryModel.h>
+#include <resources/AbstractBackendUpdater.h>
+#include <resources/DiscoverAction.h>
+#include <resources/ResourcesModel.h>
+#include <resources/ResourcesProxyModel.h>
+#include <resources/SourcesModel.h>
 
 #include <QTest>
 #include <QtTest>
 
-class FlatpakTest
-    : public QObject
+class FlatpakTest : public QObject
 {
     Q_OBJECT
 public:
-    AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
+    AbstractResourcesBackend *backendByName(ResourcesModel *m, const QString &name)
     {
-        QVector<AbstractResourcesBackend*> backends = m->backends();
-        foreach(AbstractResourcesBackend* backend, backends) {
-            if(QLatin1String(backend->metaObject()->className()) == name) {
+        QVector<AbstractResourcesBackend *> backends = m->backends();
+        foreach (AbstractResourcesBackend *backend, backends) {
+            if (QLatin1String(backend->metaObject()->className()) == name) {
                 return backend;
             }
         }
         return nullptr;
     }
 
-    FlatpakTest(QObject* parent = nullptr): QObject(parent)
+    FlatpakTest(QObject *parent = nullptr)
+        : QObject(parent)
     {
         QStandardPaths::setTestModeEnabled(true);
         qputenv("FLATPAK_TEST_MODE", "ON");
@@ -47,7 +47,7 @@ private Q_SLOTS:
         QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-test")).removeRecursively();
 
         QVERIFY(m_appBackend);
-        while(m_appBackend->isFetching()) {
+        while (m_appBackend->isFetching()) {
             QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::fetchingChanged);
             QVERIFY(spy.wait());
         }
@@ -59,12 +59,12 @@ private Q_SLOTS:
         QCOMPARE(res.count(), 0);
 
         auto m = SourcesModel::global();
-        auto bk = qobject_cast<AbstractSourcesBackend*>(m->index(0, 0).data(SourcesModel::SourcesBackend).value<QObject*>());
+        auto bk = qobject_cast<AbstractSourcesBackend *>(m->index(0, 0).data(SourcesModel::SourcesBackend).value<QObject *>());
 
         QSignalSpy initializedSpy(m_appBackend, SIGNAL(initialized()));
         if (m->rowCount() == 1) {
             QSignalSpy spy(m, &SourcesModel::rowsInserted);
-            qobject_cast<DiscoverAction*>(bk->actions().constFirst().value<QObject*>())->trigger();
+            qobject_cast<DiscoverAction *>(bk->actions().constFirst().value<QObject *>())->trigger();
             QVERIFY(spy.count() || spy.wait(20000));
         }
         QVERIFY(initializedSpy.count() || initializedSpy.wait(20000));
@@ -76,8 +76,8 @@ private Q_SLOTS:
     {
         AbstractResourcesBackend::Filters f;
         f.origin = QStringLiteral("flathub");
-        auto resources= getResources(m_appBackend->search(f), true);
-        QVERIFY(resources.count()>0);
+        auto resources = getResources(m_appBackend->search(f), true);
+        QVERIFY(resources.count() > 0);
     }
 
     void testInstallApp()
@@ -113,13 +113,16 @@ private Q_SLOTS:
     }
 
 private:
-    Transaction::Status waitTransaction(Transaction* t) {
+    Transaction::Status waitTransaction(Transaction *t)
+    {
         TransactionModel::global()->addTransaction(t);
         QSignalSpy spyInstalled(TransactionModel::global(), &TransactionModel::transactionRemoved);
         QSignalSpy destructionSpy(t, &QObject::destroyed);
 
         Transaction::Status ret = t->status();
-        connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, [t, &ret] { ret = t->status(); });
+        connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, [t, &ret] {
+            ret = t->status();
+        });
         while (t && spyInstalled.count() == 0) {
             qDebug() << "waiting, currently" << ret << spyInstalled.count() << destructionSpy.count();
             spyInstalled.wait(100);
@@ -128,18 +131,20 @@ private:
         return ret;
     }
 
-    QVector<AbstractResource*> getResources(ResultsStream* stream, bool canBeEmpty = true)
+    QVector<AbstractResource *> getResources(ResultsStream *stream, bool canBeEmpty = true)
     {
         Q_ASSERT(stream);
         QSignalSpy spyResources(stream, &ResultsStream::destroyed);
-        QVector<AbstractResource*> resources;
-        connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QVector<AbstractResource*>& res) { resources += res; });
+        QVector<AbstractResource *> resources;
+        connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QVector<AbstractResource *> &res) {
+            resources += res;
+        });
         Q_ASSERT(spyResources.wait(10000));
         Q_ASSERT(!resources.isEmpty() || canBeEmpty);
         return resources;
     }
 
-    QVector<AbstractResource*> getAllResources(AbstractResourcesBackend* backend)
+    QVector<AbstractResource *> getAllResources(AbstractResourcesBackend *backend)
     {
         AbstractResourcesBackend::Filters f;
         if (CategoryModel::global()->rootCategories().isEmpty())
@@ -148,8 +153,8 @@ private:
         return getResources(backend->search(f), true);
     }
 
-    ResourcesModel* m_model;
-    AbstractResourcesBackend* m_appBackend;
+    ResourcesModel *m_model;
+    AbstractResourcesBackend *m_appBackend;
 };
 
 QTEST_MAIN(FlatpakTest)

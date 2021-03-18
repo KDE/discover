@@ -4,18 +4,18 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#include <resources/StandardBackendUpdater.h>
-#include <resources/AbstractResourcesBackend.h>
-#include <resources/AbstractResource.h>
 #include "ResourcesModel.h"
-#include <Transaction/Transaction.h>
-#include <Transaction/TransactionModel.h>
-#include <KLocalizedString>
 #include "libdiscover_debug.h"
 #include "utils.h"
+#include <KLocalizedString>
 #include <QIcon>
+#include <Transaction/Transaction.h>
+#include <Transaction/TransactionModel.h>
+#include <resources/AbstractResource.h>
+#include <resources/AbstractResourcesBackend.h>
+#include <resources/StandardBackendUpdater.h>
 
-StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
+StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend *parent)
     : AbstractBackendUpdater(parent)
     , m_backend(parent)
     , m_settingUp(false)
@@ -24,7 +24,7 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
 {
     connect(m_backend, &AbstractResourcesBackend::fetchingChanged, this, &StandardBackendUpdater::refreshUpdateable);
     connect(m_backend, &AbstractResourcesBackend::resourcesChanged, this, &StandardBackendUpdater::resourcesChanged);
-    connect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, [this](AbstractResource* resource){
+    connect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, [this](AbstractResource *resource) {
         m_upgradeable.remove(resource);
         m_toUpgrade.remove(resource);
     });
@@ -36,7 +36,7 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     connect(&m_timer, &QTimer::timeout, this, &StandardBackendUpdater::refreshUpdateable);
 }
 
-void StandardBackendUpdater::resourcesChanged(AbstractResource* res, const QVector<QByteArray>& props)
+void StandardBackendUpdater::resourcesChanged(AbstractResource *res, const QVector<QByteArray> &props)
 {
     if (props.contains("state") && (res->state() == AbstractResource::Upgradeable || m_upgradeable.contains(res)))
         m_timer.start();
@@ -53,15 +53,17 @@ void StandardBackendUpdater::start()
     emit progressingChanged(true);
     setProgress(0);
     auto upgradeList = m_toUpgrade.values();
-    std::sort(upgradeList.begin(), upgradeList.end(), [](const AbstractResource* a, const AbstractResource* b){ return a->name() < b->name(); });
+    std::sort(upgradeList.begin(), upgradeList.end(), [](const AbstractResource *a, const AbstractResource *b) {
+        return a->name() < b->name();
+    });
 
     const bool couldCancel = m_canCancel;
-    foreach(AbstractResource* res, upgradeList) {
+    foreach (AbstractResource *res, upgradeList) {
         m_pendingResources += res;
         auto t = m_backend->installApplication(res);
         t->setVisible(false);
-        t->setProperty("updater", QVariant::fromValue<QObject*>(this));
-        connect(t, &Transaction::downloadSpeedChanged, this, [this](){
+        t->setProperty("updater", QVariant::fromValue<QObject *>(this));
+        connect(t, &Transaction::downloadSpeedChanged, this, [this]() {
             Q_EMIT downloadSpeedChanged(downloadSpeed());
         });
         connect(this, &StandardBackendUpdater::cancelTransaction, t, &Transaction::cancel);
@@ -73,7 +75,7 @@ void StandardBackendUpdater::start()
     }
     m_settingUp = false;
 
-    if(m_pendingResources.isEmpty()) {
+    if (m_pendingResources.isEmpty()) {
         cleanup();
     } else {
         setProgress(1);
@@ -85,7 +87,7 @@ void StandardBackendUpdater::cancel()
     Q_EMIT cancelTransaction();
 }
 
-void StandardBackendUpdater::transactionAdded(Transaction* newTransaction)
+void StandardBackendUpdater::transactionAdded(Transaction *newTransaction)
 {
     if (!m_pendingResources.contains(newTransaction->resource()))
         return;
@@ -94,44 +96,44 @@ void StandardBackendUpdater::transactionAdded(Transaction* newTransaction)
     connect(newTransaction, &Transaction::statusChanged, this, &StandardBackendUpdater::transactionProgressChanged);
 }
 
-AbstractBackendUpdater::State toUpdateState(Transaction* t)
+AbstractBackendUpdater::State toUpdateState(Transaction *t)
 {
-    switch(t->status()) {
-        case Transaction::SetupStatus:
-        case Transaction::QueuedStatus:
-            return AbstractBackendUpdater::None;
-        case Transaction::DownloadingStatus:
-            return AbstractBackendUpdater::Downloading;
-        case Transaction::CommittingStatus:
-            return AbstractBackendUpdater::Installing;
-        case Transaction::DoneStatus:
-        case Transaction::DoneWithErrorStatus:
-        case Transaction::CancelledStatus:
-            return AbstractBackendUpdater::Done;
+    switch (t->status()) {
+    case Transaction::SetupStatus:
+    case Transaction::QueuedStatus:
+        return AbstractBackendUpdater::None;
+    case Transaction::DownloadingStatus:
+        return AbstractBackendUpdater::Downloading;
+    case Transaction::CommittingStatus:
+        return AbstractBackendUpdater::Installing;
+    case Transaction::DoneStatus:
+    case Transaction::DoneWithErrorStatus:
+    case Transaction::CancelledStatus:
+        return AbstractBackendUpdater::Done;
     }
     Q_UNREACHABLE();
 }
 
 void StandardBackendUpdater::transactionProgressChanged()
 {
-    Transaction* t = qobject_cast<Transaction*>(sender());
+    Transaction *t = qobject_cast<Transaction *>(sender());
     Q_EMIT resourceProgressed(t->resource(), t->progress(), toUpdateState(t));
 
     refreshProgress();
 }
 
-void StandardBackendUpdater::transactionRemoved(Transaction* t)
+void StandardBackendUpdater::transactionRemoved(Transaction *t)
 {
-    const bool fromOurBackend = t->resource() && t->resource()->backend()==m_backend;
+    const bool fromOurBackend = t->resource() && t->resource()->backend() == m_backend;
     if (!fromOurBackend) {
         return;
     }
 
     const bool found = fromOurBackend && m_pendingResources.remove(t->resource());
 
-    if(found && !m_settingUp) {
+    if (found && !m_settingUp) {
         refreshProgress();
-        if(m_pendingResources.isEmpty()) {
+        if (m_pendingResources.isEmpty()) {
             cleanup();
         }
     }
@@ -146,7 +148,7 @@ void StandardBackendUpdater::refreshProgress()
 
     int allProgresses = (m_toUpgrade.size() - m_pendingResources.size()) * 100;
     const auto allTransactions = transactions();
-    for (auto t: allTransactions) {
+    for (auto t : allTransactions) {
         allProgresses += t->progress();
     }
     setProgress(allProgresses / m_toUpgrade.size());
@@ -169,12 +171,12 @@ void StandardBackendUpdater::refreshUpdateable()
     f.state = AbstractResource::Upgradeable;
     m_upgradeable.clear();
     auto r = m_backend->search(f);
-    connect(r, &ResultsStream::resourcesFound, this, [this](const QVector<AbstractResource*> &resources){
-        for(auto res : resources)
+    connect(r, &ResultsStream::resourcesFound, this, [this](const QVector<AbstractResource *> &resources) {
+        for (auto res : resources)
             if (res->state() == AbstractResource::Upgradeable)
                 m_upgradeable.insert(res);
     });
-    connect(r, &ResultsStream::destroyed, this, [this](){
+    connect(r, &ResultsStream::destroyed, this, [this]() {
         m_settingUp = false;
         Q_EMIT updatesCountChanged(updatesCount());
         Q_EMIT progressingChanged(false);
@@ -188,7 +190,7 @@ qreal StandardBackendUpdater::progress() const
 
 void StandardBackendUpdater::setProgress(qreal p)
 {
-    if(p>m_progress || p<0) {
+    if (p > m_progress || p < 0) {
         m_progress = p;
         emit progressChanged(p);
     }
@@ -205,14 +207,14 @@ int StandardBackendUpdater::updatesCount() const
     return m_upgradeable.count();
 }
 
-void StandardBackendUpdater::addResources(const QList< AbstractResource* >& apps)
+void StandardBackendUpdater::addResources(const QList<AbstractResource *> &apps)
 {
     const QSet<AbstractResource *> upgradeableApps = kToSet(apps);
     Q_ASSERT(m_upgradeable.contains(upgradeableApps));
     m_toUpgrade += upgradeableApps;
 }
 
-void StandardBackendUpdater::removeResources(const QList< AbstractResource* >& apps)
+void StandardBackendUpdater::removeResources(const QList<AbstractResource *> &apps)
 {
     const QSet<AbstractResource *> upgradeableApps = kToSet(apps);
     Q_ASSERT(m_upgradeable.contains(upgradeableApps));
@@ -229,12 +231,12 @@ void StandardBackendUpdater::cleanup()
     emit progressingChanged(false);
 }
 
-QList<AbstractResource*> StandardBackendUpdater::toUpdate() const
+QList<AbstractResource *> StandardBackendUpdater::toUpdate() const
 {
     return m_toUpgrade.values();
 }
 
-bool StandardBackendUpdater::isMarked(AbstractResource* res) const
+bool StandardBackendUpdater::isMarked(AbstractResource *res) const
 {
     return m_toUpgrade.contains(res);
 }
@@ -257,7 +259,7 @@ bool StandardBackendUpdater::isProgressing() const
 double StandardBackendUpdater::updateSize() const
 {
     double ret = 0.;
-    for(AbstractResource* res: m_toUpgrade) {
+    for (AbstractResource *res : m_toUpgrade) {
         ret += res->size();
     }
     return ret;
@@ -266,16 +268,17 @@ double StandardBackendUpdater::updateSize() const
 QVector<Transaction *> StandardBackendUpdater::transactions() const
 {
     const auto trans = TransactionModel::global()->transactions();
-    return kFilter<QVector<Transaction*>>(trans, [this](Transaction* t) { return t->property("updater").value<QObject*>() == this; });
+    return kFilter<QVector<Transaction *>>(trans, [this](Transaction *t) {
+        return t->property("updater").value<QObject *>() == this;
+    });
 }
 
 quint64 StandardBackendUpdater::downloadSpeed() const
 {
     quint64 ret = 0;
     const auto trans = transactions();
-    for(Transaction* t: trans) {
+    for (Transaction *t : trans) {
         ret += t->downloadSpeed();
     }
     return ret;
-
 }

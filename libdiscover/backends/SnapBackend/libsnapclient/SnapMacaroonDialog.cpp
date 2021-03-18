@@ -4,16 +4,16 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+#include "ui_SnapMacaroonDialog.h"
+#include <KAuthExecuteJob>
 #include <QApplication>
 #include <QBuffer>
-#include <QPointer>
+#include <QDebug>
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QJsonArray>
+#include <QPointer>
 #include <QTextStream>
-#include <KAuthExecuteJob>
-#include <QDebug>
-#include "ui_SnapMacaroonDialog.h"
 
 class MacaroonDialog : public QDialog
 {
@@ -35,15 +35,11 @@ public:
         login(m_ui.username->text(), m_ui.password->text(), m_ui.otp->text());
     }
 
-    void login(const QString& username, const QString& password, const QString& otp = {})
+    void login(const QString &username, const QString &password, const QString &otp = {})
     {
         KAuth::Action snapAction(QStringLiteral("org.kde.discover.libsnapclient.login"));
         snapAction.setHelperId(QStringLiteral("org.kde.discover.libsnapclient"));
-        snapAction.setArguments({
-            { QStringLiteral("user"), username },
-            { QStringLiteral("password"), password },
-            { QStringLiteral("otp"), otp }
-        });
+        snapAction.setArguments({{QStringLiteral("user"), username}, {QStringLiteral("password"), password}, {QStringLiteral("otp"), otp}});
         Q_ASSERT(snapAction.isValid());
 
         KAuth::ExecuteJob *reply = snapAction.execute();
@@ -58,9 +54,9 @@ public:
         m_ui.otpLabel->setVisible(enabled);
     }
 
-    void replied(KJob* job)
+    void replied(KJob *job)
     {
-        KAuth::ExecuteJob* reply = static_cast<KAuth::ExecuteJob*>(job);
+        KAuth::ExecuteJob *reply = static_cast<KAuth::ExecuteJob *>(job);
         const QVariantMap replyData = reply->data();
         if (reply->error() == 0) {
             QTextStream(stdout) << replyData[QLatin1String("reply")].toString();
@@ -77,8 +73,7 @@ public:
     Ui::SnapMacaroonDialog m_ui;
 };
 
-
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
     app.setQuitOnLastWindowClosed(false);

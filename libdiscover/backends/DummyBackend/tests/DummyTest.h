@@ -16,7 +16,7 @@ class DummyTest : public QObject
 {
     Q_OBJECT
 public:
-    explicit DummyTest(QObject* parent = nullptr);
+    explicit DummyTest(QObject *parent = nullptr);
 
 private Q_SLOTS:
     void initTestCase();
@@ -32,8 +32,8 @@ private Q_SLOTS:
     void testScreenshotsModel();
 
 private:
-    AbstractResourcesBackend* m_appBackend;
-    ResourcesModel* m_model;
+    AbstractResourcesBackend *m_appBackend;
+    ResourcesModel *m_model;
 };
 
 #endif // DUMMYTEST_H

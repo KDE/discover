@@ -26,7 +26,7 @@ public:
     bool isEmpty() const;
     QStringList addonsToInstall() const;
     QStringList addonsToRemove() const;
-    State addonState(const QString& addonName) const;
+    State addonState(const QString &addonName) const;
 
     void addAddon(const QString &addon, bool toInstall);
     void resetAddon(const QString &addon);
@@ -37,6 +37,6 @@ private:
     QStringList m_toRemove;
 };
 
-DISCOVERCOMMON_EXPORT QDebug operator<<(QDebug dbg, const AddonList& addons);
+DISCOVERCOMMON_EXPORT QDebug operator<<(QDebug dbg, const AddonList &addons);
 
 #endif // ADDONLIST_H

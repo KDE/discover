@@ -54,7 +54,7 @@ void FlatpakJobTransaction::finishTransaction()
 {
     if (m_appJob->result()) {
         AbstractResource::State newState = AbstractResource::None;
-        switch(role()) {
+        switch (role()) {
         case InstallRole:
         case ChangeAddonsRole:
             newState = AbstractResource::Installed;
@@ -73,5 +73,4 @@ void FlatpakJobTransaction::finishTransaction()
         }
         setStatus(DoneWithErrorStatus);
     }
-
 }

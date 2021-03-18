@@ -11,17 +11,17 @@
 
 class DISCOVERCOMMON_EXPORT StoredResultsStream : public AggregatedResultsStream
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    StoredResultsStream(const QSet<ResultsStream*>& streams);
+    StoredResultsStream(const QSet<ResultsStream *> &streams);
 
-    QVector<AbstractResource*> resources() const;
+    QVector<AbstractResource *> resources() const;
 
 Q_SIGNALS:
-    void finishedResources(const QVector<AbstractResource*>& resources);
+    void finishedResources(const QVector<AbstractResource *> &resources);
 
 private:
-    QVector<AbstractResource*> m_resources;
+    QVector<AbstractResource *> m_resources;
 };
 
 #endif

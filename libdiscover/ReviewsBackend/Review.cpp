@@ -7,9 +7,19 @@
 #include "Review.h"
 #include <resources/ResourcesModel.h>
 
-Review::Review(QString  name, QString  pkgName, QString  language, QString  summary,
-               QString  reviewText, QString  userName, const QDateTime& date, bool show, quint64 id,
-               int rating, int usefulTotal, int usefulFavorable, QString  packageVersion)
+Review::Review(QString name,
+               QString pkgName,
+               QString language,
+               QString summary,
+               QString reviewText,
+               QString userName,
+               const QDateTime &date,
+               bool show,
+               quint64 id,
+               int rating,
+               int usefulTotal,
+               int usefulFavorable,
+               QString packageVersion)
     : m_appName(std::move(name))
     , m_creationDate(date)
     , m_shouldShow(show)
@@ -24,7 +34,8 @@ Review::Review(QString  name, QString  pkgName, QString  language, QString  summ
     , m_usefulChoice(ReviewsModel::None)
     , m_summary(std::move(summary))
     , m_packageVersion(std::move(packageVersion))
-{}
+{
+}
 
 Review::~Review() = default;
 

@@ -7,8 +7,8 @@
 #ifndef BACKENDNOTIFIERFACTORY_H
 #define BACKENDNOTIFIERFACTORY_H
 
-#include <QString>
 #include <QList>
+#include <QString>
 
 class BackendNotifierModule;
 
@@ -17,7 +17,7 @@ class BackendNotifierFactory
 public:
     BackendNotifierFactory();
 
-    QList<BackendNotifierModule*> allBackends() const;
+    QList<BackendNotifierModule *> allBackends() const;
 };
 
 #endif // BACKENDNOTIFIERFACTORY_H

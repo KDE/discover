@@ -6,9 +6,10 @@
 
 #include "AbstractReviewsBackend.h"
 
-AbstractReviewsBackend::AbstractReviewsBackend(QObject* parent)
+AbstractReviewsBackend::AbstractReviewsBackend(QObject *parent)
     : QObject(parent)
-{}
+{
+}
 
 bool AbstractReviewsBackend::isReviewable() const
 {

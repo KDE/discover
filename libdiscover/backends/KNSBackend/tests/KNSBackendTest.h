@@ -7,9 +7,9 @@
 #ifndef KNSBACKENDTEST_H
 #define KNSBACKENDTEST_H
 
+#include "ReviewsBackend/ReviewsModel.h"
 #include <QObject>
 #include <QPointer>
-#include "ReviewsBackend/ReviewsModel.h"
 
 class AbstractResourcesBackend;
 class AbstractResource;
@@ -18,24 +18,24 @@ class ResultsStream;
 class KNSBackendTest : public QObject
 {
     Q_OBJECT
-    public:
-        explicit KNSBackendTest(QObject* parent = nullptr);
+public:
+    explicit KNSBackendTest(QObject *parent = nullptr);
 
-    private Q_SLOTS:
-        void testRetrieval();
-        void testReviews();
-        void testResourceByUrl();
-        void testResourceByUrlResourcesModel();
+private Q_SLOTS:
+    void testRetrieval();
+    void testReviews();
+    void testResourceByUrl();
+    void testResourceByUrlResourcesModel();
 
-    public Q_SLOTS:
-        void reviewsArrived(AbstractResource *r, const QVector<ReviewPtr>& revs);
+public Q_SLOTS:
+    void reviewsArrived(AbstractResource *r, const QVector<ReviewPtr> &revs);
 
-    private:
-        QVector<AbstractResource*> getResources(ResultsStream* stream, bool canBeEmpty = false);
-        QVector<AbstractResource*> getAllResources(AbstractResourcesBackend* backend);
-        QPointer<AbstractResourcesBackend> m_backend;
-        QPointer<AbstractResource> m_r;
-        QVector<ReviewPtr> m_revs;
+private:
+    QVector<AbstractResource *> getResources(ResultsStream *stream, bool canBeEmpty = false);
+    QVector<AbstractResource *> getAllResources(AbstractResourcesBackend *backend);
+    QPointer<AbstractResourcesBackend> m_backend;
+    QPointer<AbstractResource> m_r;
+    QVector<ReviewPtr> m_revs;
 };
 
 #endif // KNSBACKENDTEST_H
