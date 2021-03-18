@@ -26,20 +26,20 @@
 typedef QHash<QString, DiscoverObject::CompactMode> StringCompactMode;
 Q_GLOBAL_STATIC_WITH_ARGS(StringCompactMode,
                           s_decodeCompactMode,
-                          (StringCompactMode{{QLatin1String("auto"), DiscoverObject::Auto},
-                                             {QLatin1String("compact"), DiscoverObject::Compact},
-                                             {QLatin1String("full"), DiscoverObject::Full}}))
+                          (StringCompactMode{
+                              {QLatin1String("auto"), DiscoverObject::Auto},
+                              {QLatin1String("compact"), DiscoverObject::Compact},
+                              {QLatin1String("full"), DiscoverObject::Full},
+                          }))
 
 QCommandLineParser *createParser()
 {
+    // clang-format off
     QCommandLineParser *parser = new QCommandLineParser;
-    parser->addOption(
-        QCommandLineOption(QStringLiteral("application"), i18n("Directly open the specified application by its appstream:// URI."), QStringLiteral("name")));
-    parser->addOption(
-        QCommandLineOption(QStringLiteral("mime"), i18n("Open with a search for programs that can deal with the given mimetype."), QStringLiteral("name")));
+    parser->addOption(QCommandLineOption(QStringLiteral("application"), i18n("Directly open the specified application by its appstream:// URI."), QStringLiteral("name")));
+    parser->addOption(QCommandLineOption(QStringLiteral("mime"), i18n("Open with a search for programs that can deal with the given mimetype."), QStringLiteral("name")));
     parser->addOption(QCommandLineOption(QStringLiteral("category"), i18n("Display a list of entries with a category."), QStringLiteral("name")));
-    parser->addOption(
-        QCommandLineOption(QStringLiteral("mode"), i18n("Open Discover in a said mode. Modes correspond to the toolbar buttons."), QStringLiteral("name")));
+    parser->addOption(QCommandLineOption(QStringLiteral("mode"), i18n("Open Discover in a said mode. Modes correspond to the toolbar buttons."), QStringLiteral("name")));
     parser->addOption(QCommandLineOption(QStringLiteral("listmodes"), i18n("List all the available modes.")));
     parser->addOption(QCommandLineOption(QStringLiteral("compact"), i18n("Compact Mode (auto/compact/full)."), QStringLiteral("mode"), QStringLiteral("auto")));
     parser->addOption(QCommandLineOption(QStringLiteral("local-filename"), i18n("Local package file to install"), QStringLiteral("package")));
@@ -48,6 +48,7 @@ QCommandLineParser *createParser()
     parser->addOption(QCommandLineOption(QStringLiteral("feedback"), i18n("Lists the available options for user feedback")));
     parser->addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Test file"), QStringLiteral("file.qml")));
     parser->addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
+    // clang-format on
     DiscoverBackendsFactory::setupCommandLine(parser);
     KAboutData::applicationData().setupCommandLine(parser);
     return parser;
@@ -142,25 +143,23 @@ int main(int argc, char **argv)
             mainWindow = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full), initialProperties);
         }
         QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverObject::deleteLater);
-        QObject::connect(service,
-                         &KDBusService::activateRequested,
-                         mainWindow,
-                         [mainWindow](const QStringList &arguments, const QString & /*workingDirectory*/) {
-                             if (!mainWindow->rootObject())
-                                 QCoreApplication::instance()->quit();
+        auto onActivateRequested = [mainWindow](const QStringList &arguments, const QString & /*workingDirectory*/) {
+            if (!mainWindow->rootObject())
+                QCoreApplication::instance()->quit();
 
-                             auto window = qobject_cast<QWindow *>(mainWindow->rootObject());
-                             if (window && QX11Info::isPlatformX11()) {
-                                 KStartupInfo::setNewStartupId(window, QX11Info::nextStartupId());
-                             }
-                             window->raise();
+            auto window = qobject_cast<QWindow *>(mainWindow->rootObject());
+            if (window && QX11Info::isPlatformX11()) {
+                KStartupInfo::setNewStartupId(window, QX11Info::nextStartupId());
+            }
+            window->raise();
 
-                             if (arguments.isEmpty())
-                                 return;
-                             QScopedPointer<QCommandLineParser> parser(createParser());
-                             parser->parse(arguments);
-                             processArgs(parser.data(), mainWindow);
-                         });
+            if (arguments.isEmpty())
+                return;
+            QScopedPointer<QCommandLineParser> parser(createParser());
+            parser->parse(arguments);
+            processArgs(parser.data(), mainWindow);
+        };
+        QObject::connect(service, &KDBusService::activateRequested, mainWindow, onActivateRequested);
 
         processArgs(parser.data(), mainWindow);
 

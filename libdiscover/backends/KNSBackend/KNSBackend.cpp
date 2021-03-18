@@ -175,8 +175,13 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
 
     if (m_hasApplications) {
         auto actualCategory = new Category(m_displayName, QStringLiteral("applications-other"), filters, backendName, topCategories, QUrl(), false);
-        auto applicationCategory =
-            new Category(i18n("Applications"), QStringLiteral("applications-internet"), filters, backendName, {actualCategory}, QUrl(), false);
+        auto applicationCategory = new Category(i18n("Applications"), //
+                                                QStringLiteral("applications-internet"),
+                                                filters,
+                                                backendName,
+                                                {actualCategory},
+                                                QUrl(),
+                                                false);
         applicationCategory->setAndFilter({{CategoryFilter, QLatin1String("Application")}});
         m_categories.append(applicationCategory->name());
         m_rootCategories = {applicationCategory};

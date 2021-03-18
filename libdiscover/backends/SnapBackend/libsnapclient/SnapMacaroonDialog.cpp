@@ -39,7 +39,11 @@ public:
     {
         KAuth::Action snapAction(QStringLiteral("org.kde.discover.libsnapclient.login"));
         snapAction.setHelperId(QStringLiteral("org.kde.discover.libsnapclient"));
-        snapAction.setArguments({{QStringLiteral("user"), username}, {QStringLiteral("password"), password}, {QStringLiteral("otp"), otp}});
+        snapAction.setArguments({
+            {QStringLiteral("user"), username},
+            {QStringLiteral("password"), password},
+            {QStringLiteral("otp"), otp},
+        });
         Q_ASSERT(snapAction.isValid());
 
         KAuth::ExecuteJob *reply = snapAction.execute();

@@ -92,7 +92,13 @@ Rating::Rating(const QString &packageName, quint64 ratingCount, int data[6])
     : m_packageName(packageName)
     , m_ratingCount(ratingCount)
     // TODO consider storing data[] and present in UI
-    , m_rating(((data[1] + (data[2] * 2) + (data[3] * 3) + (data[4] * 4) + (data[5] * 5)) * 2) / qMax<float>(1, ratingCount))
+    , m_rating(((data[1] //
+                 + (data[2] * 2) //
+                 + (data[3] * 3) //
+                 + (data[4] * 4) //
+                 + (data[5] * 5)) //
+                * 2)
+               / qMax<float>(1, ratingCount))
     , m_ratingPoints(0)
     , m_sortableRating(0)
 {

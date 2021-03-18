@@ -36,18 +36,22 @@ public:
     {
         return m_isVisible;
     }
+
     bool isEnabled() const
     {
         return m_isEnabled;
     }
+
     QString text() const
     {
         return m_text;
     }
+
     QString toolTip() const
     {
         return m_toolTip;
     }
+
     QIcon icon() const
     {
         return m_icon;

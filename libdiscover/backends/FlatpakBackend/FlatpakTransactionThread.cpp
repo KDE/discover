@@ -105,8 +105,11 @@ void FlatpakTransactionThread::run()
                 }
                 correct = flatpak_transaction_add_install_bundle(m_transaction, file, nullptr, &localError);
             } else {
-                correct =
-                    flatpak_transaction_add_install(m_transaction, m_app->origin().toUtf8().constData(), refName.toUtf8().constData(), nullptr, &localError);
+                correct = flatpak_transaction_add_install(m_transaction, //
+                                                          m_app->origin().toUtf8().constData(),
+                                                          refName.toUtf8().constData(),
+                                                          nullptr,
+                                                          &localError);
             }
         }
 

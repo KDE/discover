@@ -63,8 +63,9 @@ QDebug operator<<(QDebug debug, const FlatpakResource::Id &id)
 
 static FlatpakResource::Id idForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref, const QString &postfix)
 {
-    const FlatpakResource::ResourceType appType =
-        flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP ? FlatpakResource::DesktopApp : FlatpakResource::Runtime;
+    const FlatpakResource::ResourceType appType = (flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP //
+                                                       ? FlatpakResource::DesktopApp
+                                                       : FlatpakResource::Runtime);
     const QString appId = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))) + postfix;
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
@@ -151,8 +152,8 @@ public:
                 return;
             }
 
-            const QUrl fileUrl =
-                QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1Char('/') + originalUrl.fileName());
+            const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::TempLocation) //
+                                                     + QLatin1Char('/') + originalUrl.fileName());
             auto replyPut = put(QNetworkRequest(fileUrl), replyGet->readAll());
             connect(replyPut, &QNetworkReply::finished, this, [this, originalUrl, fileUrl, replyPut]() {
                 QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(replyPut);
@@ -1173,10 +1174,12 @@ int FlatpakBackend::updatesCount() const
 
 bool FlatpakBackend::flatpakResourceLessThan(AbstractResource *l, AbstractResource *r) const
 {
+    // clang-format off
     return (l->isInstalled() != r->isInstalled()) ? l->isInstalled()
-        : (l->origin() != r->origin())            ? m_sources->originIndex(l->origin()) < m_sources->originIndex(r->origin())
-        : (l->rating() && r->rating() && l->rating()->ratingPoints() != r->rating()->ratingPoints()) ? l->rating()->ratingPoints() > r->rating()->ratingPoints()
-                                                                                                     : l < r;
+         : (l->origin() != r->origin()) ? m_sources->originIndex(l->origin()) < m_sources->originIndex(r->origin())
+         : (l->rating() && r->rating() && l->rating()->ratingPoints() != r->rating()->ratingPoints()) ? l->rating()->ratingPoints() > r->rating()->ratingPoints()
+         : l < r;                                                                                                     : l < r);
+    // clang-format on
 }
 
 ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
@@ -1321,8 +1324,8 @@ Transaction *FlatpakBackend::installApplication(AbstractResource *app, const Add
             m_refreshAppstreamMetadataJobs++;
             // Make sure we update appstream metadata first
             // FIXME we have to let flatpak to return the remote as the one created by FlatpakSourcesBackend will not have appstream directory
-            refreshAppstreamMetadata(preferredInstallation(),
-                                     flatpak_installation_get_remote_by_name(preferredInstallation(), flatpak_remote_get_name(remote), nullptr, nullptr));
+            auto repo = flatpak_installation_get_remote_by_name(preferredInstallation(), flatpak_remote_get_name(remote), nullptr, nullptr);
+            refreshAppstreamMetadata(preferredInstallation(), repo);
         }
         return nullptr;
     }

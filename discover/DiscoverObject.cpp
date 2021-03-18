@@ -511,10 +511,11 @@ void DiscoverObject::showPassiveNotification(const QString &msg)
 
 void DiscoverObject::reboot()
 {
-    QDBusConnection::sessionBus().asyncCall(QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
-                                                                           QStringLiteral("/LogoutPrompt"),
-                                                                           QStringLiteral("org.kde.LogoutPrompt"),
-                                                                           QStringLiteral("promptReboot")));
+    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
+                                                 QStringLiteral("/LogoutPrompt"),
+                                                 QStringLiteral("org.kde.LogoutPrompt"),
+                                                 QStringLiteral("promptReboot"));
+    QDBusConnection::sessionBus().asyncCall(method);
 }
 
 QRect DiscoverObject::initialGeometry() const

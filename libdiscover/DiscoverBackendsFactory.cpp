@@ -113,8 +113,9 @@ void DiscoverBackendsFactory::setupCommandLine(QCommandLineParser *parser)
 
 void DiscoverBackendsFactory::processCommandLine(QCommandLineParser *parser, bool test)
 {
-    QStringList backends =
-        test ? QStringList{QStringLiteral("dummy-backend")} : parser->value(QStringLiteral("backends")).split(QLatin1Char(','), Qt::SkipEmptyParts);
+    QStringList backends = test //
+        ? QStringList{QStringLiteral("dummy-backend")} //
+        : parser->value(QStringLiteral("backends")).split(QLatin1Char(','), Qt::SkipEmptyParts);
     for (auto &backend : backends) {
         if (!backend.endsWith(QLatin1String("-backend")))
             backend.append(QLatin1String("-backend"));

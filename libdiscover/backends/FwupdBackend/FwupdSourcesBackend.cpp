@@ -35,10 +35,10 @@ public:
             if (value == Qt::Checked) {
                 m_backend->m_currentItem = item;
                 if (fwupd_remote_get_approval_required(remote)) {
-                    Q_EMIT m_backend->proceedRequest(i18n("Review EULA"),
-                                                     i18n("The remote %1 require that you accept their license:\n %2",
-                                                          QString::fromUtf8(fwupd_remote_get_title(remote)),
-                                                          QString::fromUtf8(fwupd_remote_get_agreement(remote))));
+                    QString eulaText = i18n("The remote %1 require that you accept their license:\n %2",
+                                            QString::fromUtf8(fwupd_remote_get_title(remote)),
+                                            QString::fromUtf8(fwupd_remote_get_agreement(remote));
+                                            Q_EMIT m_backend->proceedRequest(i18n("Review EULA"), eulaText));
                 } else {
                     m_backend->proceed();
                 }

@@ -28,10 +28,12 @@ public:
         : QStandardItem(text)
     {
     }
+
     void setFlatpakInstallation(FlatpakInstallation *installation)
     {
         m_installation = installation;
     }
+
     FlatpakInstallation *flatpakInstallation() const
     {
         return m_installation;

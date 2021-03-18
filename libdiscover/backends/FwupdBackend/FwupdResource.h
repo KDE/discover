@@ -84,26 +84,32 @@ public:
     {
         return m_id;
     }
+
     QString deviceId() const
     {
         return m_deviceID;
     }
+
     QUrl updateURI() const
     {
         return QUrl(m_updateURI);
     }
+
     bool isDeviceLocked() const
     {
         return m_isDeviceLocked;
     }
+
     bool isOnlyOffline() const
     {
         return m_isOnlyOffline;
     }
+
     bool isLiveUpdatable() const
     {
         return m_isLiveUpdatable;
     }
+
     bool needsReboot() const
     {
         return m_needsReboot;

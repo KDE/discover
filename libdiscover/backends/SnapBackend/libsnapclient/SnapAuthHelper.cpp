@@ -43,8 +43,10 @@ public Q_SLOTS:
 
         if (req->error() == QSnapdRequest::NoError) {
             const auto auth = req->authData();
-            replyData = QJsonDocument(QJsonObject{{QStringLiteral("macaroon"), auth->macaroon()},
-                                                  {QStringLiteral("discharges"), QJsonArray::fromStringList(auth->discharges())}})
+            replyData = QJsonDocument(QJsonObject{
+                                          {QStringLiteral("macaroon"), auth->macaroon()},
+                                          {QStringLiteral("discharges"), QJsonArray::fromStringList(auth->discharges())},
+                                      })
                             .toJson();
 
             reply = ActionReply::SuccessReply();
@@ -53,7 +55,10 @@ public Q_SLOTS:
             reply = ActionReply::InvalidActionReply();
             reply.setErrorDescription(req->errorString());
         }
-        reply.setData({{QStringLiteral("reply"), replyData}, {QStringLiteral("otpMode"), otpMode}});
+        reply.setData({
+            {QStringLiteral("reply"), replyData},
+            {QStringLiteral("otpMode"), otpMode},
+        });
         return reply;
     }
 };

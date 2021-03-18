@@ -109,12 +109,14 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
     Q_UNUSED(page)
     m_isFetching = true;
 
-    const QJsonDocument document(QJsonObject{{QStringLiteral("app_id"), app->appstreamId()},
-                                             {QStringLiteral("distro"), osName()},
-                                             {QStringLiteral("user_hash"), userHash()},
-                                             {QStringLiteral("version"), app->isInstalled() ? app->installedVersion() : app->availableVersion()},
-                                             {QStringLiteral("locale"), QLocale::system().name()},
-                                             {QStringLiteral("limit"), -1}});
+    const QJsonDocument document(QJsonObject{
+        {QStringLiteral("app_id"), app->appstreamId()},
+        {QStringLiteral("distro"), osName()},
+        {QStringLiteral("user_hash"), userHash()},
+        {QStringLiteral("version"), app->isInstalled() ? app->installedVersion() : app->availableVersion()},
+        {QStringLiteral("locale"), QLocale::system().name()},
+        {QStringLiteral("limit"), -1},
+    });
 
     const auto json = document.toJson(QJsonDocument::Compact);
     QNetworkRequest request(QUrl(QStringLiteral(APIURL "/fetch")));
@@ -162,7 +164,7 @@ void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
         {QStringLiteral("user_skey"), review->getMetadata(QStringLiteral("ODRS::user_skey")).toString()},
         {QStringLiteral("user_hash"), userHash()},
         {QStringLiteral("distro"), osName()},
-        {QStringLiteral("review_id"), QJsonValue(double(review->id()))} // if we really need uint64 we should get it in QJsonValue
+        {QStringLiteral("review_id"), QJsonValue(double(review->id()))}, // if we really need uint64 we should get it in QJsonValue
     });
 
     QNetworkRequest request(QUrl(QStringLiteral(APIURL) + (useful ? QLatin1String("/upvote") : QLatin1String("/downvote"))));

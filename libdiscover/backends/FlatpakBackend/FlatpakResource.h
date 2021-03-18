@@ -63,8 +63,13 @@ public:
         bool operator==(const Id &other) const
         {
             return &other == this
-                || (other.installation == installation && other.origin == origin && other.type == type && other.id == id && other.branch == branch
-                    && other.arch == arch);
+                || (other.installation == installation //
+                    && other.origin == origin //
+                    && other.type == type //
+                    && other.id == id //
+                    && other.branch == branch //
+                    && other.arch == arch //
+                );
         }
     };
 

@@ -22,10 +22,12 @@ public:
     {
         return false;
     }
+
     bool hasUpdates() override
     {
         return false;
     }
+
     bool needsReboot() const override
     {
         return false;

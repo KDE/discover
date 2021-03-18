@@ -27,6 +27,7 @@ public:
     {
         return m_name;
     }
+
     QString description() const
     {
         return m_description;

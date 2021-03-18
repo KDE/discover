@@ -51,6 +51,7 @@ public:
     {
         return false;
     }
+
     virtual bool canMoveSources() const
     {
         return false;
@@ -64,6 +65,7 @@ public Q_SLOTS:
     virtual void cancel()
     {
     }
+
     virtual void proceed()
     {
     }
