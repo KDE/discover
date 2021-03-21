@@ -100,7 +100,7 @@ ListView {
         }
 
 
-        Button {
+        RoundButton {
             anchors {
                 right: parent.left
                 verticalCenter: parent.verticalCenter
@@ -110,7 +110,7 @@ ListView {
             onClicked: leftAction.triggered(null)
         }
 
-        Button {
+        RoundButton {
             anchors {
                 left: parent.right
                 verticalCenter: parent.verticalCenter
