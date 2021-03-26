@@ -11,10 +11,11 @@
 #include <Transaction/Transaction.h>
 #include <QPointer>
 
-extern "C" {
-#include <flatpak.h>
 #include <gio/gio.h>
 #include <glib.h>
+
+extern "C" {
+#include <flatpak.h>
 }
 
 class FlatpakResource;

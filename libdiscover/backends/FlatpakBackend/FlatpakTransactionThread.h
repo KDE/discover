@@ -9,9 +9,10 @@
 
 extern "C" {
 #include <flatpak.h>
+}
+
 #include <gio/gio.h>
 #include <glib.h>
-}
 
 #include <Transaction/Transaction.h>
 #include <QThread>

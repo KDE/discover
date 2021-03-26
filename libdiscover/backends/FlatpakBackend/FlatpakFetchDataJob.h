@@ -10,8 +10,8 @@
 #include <QByteArray>
 extern "C" {
 #include <flatpak.h>
-#include <glib.h>
 }
+#include <glib.h>
 
 class FlatpakResource;
 
