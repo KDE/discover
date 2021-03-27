@@ -21,6 +21,7 @@ include(ECMAddTests)
 include(GenerateExportHeader)
 include(ECMQtDeclareLoggingCategory)
 include(KDEClangFormat)
+include(KDEGitCommitHooks)
 
 find_package(PkgConfig REQUIRED)
 
@@ -93,6 +94,7 @@ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 # add clang-format target for all our real source files
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
 ecm_qt_install_logging_categories(
         EXPORT DISCOVER
