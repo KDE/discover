@@ -9,17 +9,12 @@ import QtQuick 2.5
 import QtQuick.Controls 2.1
 import org.kde.kirigami 2.14 as Kirigami
 
-Kirigami.ActionTextField
+Kirigami.SearchField
 {
     id: searchField
-    focusSequence: "Ctrl+F"
-    rightActions: [
-        Kirigami.Action {
-            iconName: "edit-clear"
-            visible: searchField.text.length !== 0
-            onTriggered: searchField.clearText()
-        }
-    ]
+
+    // Search operations are network-intensive, so delay the auto-accept
+    delaySearch: true
 
     property QtObject page
     property string currentSearchText
