@@ -1178,7 +1178,7 @@ bool FlatpakBackend::flatpakResourceLessThan(AbstractResource *l, AbstractResour
     return (l->isInstalled() != r->isInstalled()) ? l->isInstalled()
          : (l->origin() != r->origin()) ? m_sources->originIndex(l->origin()) < m_sources->originIndex(r->origin())
          : (l->rating() && r->rating() && l->rating()->ratingPoints() != r->rating()->ratingPoints()) ? l->rating()->ratingPoints() > r->rating()->ratingPoints()
-         : l < r;                                                                                                     : l < r);
+         : l < r;
     // clang-format on
 }
 
