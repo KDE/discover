@@ -164,28 +164,11 @@ Kirigami.ApplicationWindow
                     return;
                 Navigation.openCategory(null, "")
             }
-            Kirigami.Icon {
-                id: infoIcon;
-                anchors {
-                    bottom: parent.verticalCenter
-                    margins: Kirigami.Units.largeSpacing
-                    horizontalCenter: parent.horizontalCenter
-                }
+            Kirigami.PlaceholderMessage {
+                anchors.centerIn: parent
+                width: parent.width - (Kirigami.Units.largeSpacing * 8)
                 visible: page.error !== ""
-                source: "emblem-warning"
-                height: Kirigami.Units.iconSizes.huge
-                width: height;
-            }
-            Kirigami.Heading {
-                anchors {
-                    top: parent.verticalCenter
-                    margins: Kirigami.Units.largeSpacing
-                    horizontalCenter: parent.horizontalCenter
-                }
-                width: parent.width;
-                wrapMode: Text.WordWrap
-                horizontalAlignment: Text.AlignHCenter
-                visible: page.error !== ""
+                icon.name: "emblem-warning"
                 text: page.error
             }
         }
