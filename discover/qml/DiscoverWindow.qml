@@ -133,7 +133,7 @@ Kirigami.ApplicationWindow
         function onOpenErrorPage(errorMessage) {
             Navigation.clearStack()
             console.warn("error", errorMessage)
-            window.stack.push(errorPageComponent, { error: errorMessage, title: i18n("Sorry...") })
+            window.stack.push(errorPageComponent, { error: errorMessage, title: i18n("Error") })
         }
 
         function onPreventedClose() {

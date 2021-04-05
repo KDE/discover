@@ -136,7 +136,7 @@ DiscoverPage {
             Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad } }
 
             icon.name: "edit-none"
-            text: i18n("Sorry, nothing found")
+            text: i18n("Nothing found")
         }
 
         footer: ColumnLayout {
