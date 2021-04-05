@@ -7,14 +7,14 @@
 #ifndef FLATPAKTRANSACTIONTHREAD_H
 #define FLATPAKTRANSACTIONTHREAD_H
 
+#include <QThread>
+#include <Transaction/Transaction.h>
+
 extern "C" {
 #include <flatpak.h>
 #include <gio/gio.h>
 #include <glib.h>
 }
-
-#include <QThread>
-#include <Transaction/Transaction.h>
 
 class FlatpakResource;
 class FlatpakTransactionThread : public QThread
