@@ -116,7 +116,7 @@ void PackageKitNotifier::checkOfflineUpdates()
             connect(trans, &PackageKit::Transaction::errorCode, this, [](PackageKit::Transaction::Error /*error*/, const QString &details) {
                 KNotification::event(QStringLiteral("OfflineUpdateRepairFailed"),
                                      i18n("Repair Failed"),
-                                     i18n("Please report to your distribution: %1", details),
+                                     xi18nc("@info", "%1<nl/>Please report this error to your distribution.", details),
                                      {},
                                      KNotification::Persistent,
                                      QStringLiteral("org.kde.discovernotifier"));

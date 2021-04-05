@@ -154,7 +154,10 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
                 found |= b->hasApplications();
 
             if (!found)
-                Q_EMIT openErrorPage(i18n("No application back-ends found, please report to your distribution."));
+                Q_EMIT openErrorPage(
+                    i18n("Discover currently cannot be used to install any apps "
+                         "because none of its app backends are available. Please "
+                         "report this error to your distribution."));
         },
         this);
 
