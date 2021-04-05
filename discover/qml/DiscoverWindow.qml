@@ -168,7 +168,7 @@ Kirigami.ApplicationWindow
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 8)
                 visible: page.error !== ""
-                icon.name: "emblem-warning"
+                icon.name: "error"
                 text: page.error
             }
         }
