@@ -57,7 +57,8 @@ DiscoverPage
         visible: apps.count === 0 && !apps.model.isFetching
 
         icon.name: "network-disconnect"
-        text: xi18nc("@info", "Unable to load applications.<nl/>Please verify Internet connectivity.")
+        text: i18n("Unable to load applications")
+        explanation: ("Please verify Internet connectivity")
     }
 
     signal clearSearch()
