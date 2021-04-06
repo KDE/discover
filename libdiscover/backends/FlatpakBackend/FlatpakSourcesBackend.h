@@ -13,9 +13,7 @@
 #include <functional>
 #include <resources/AbstractSourcesBackend.h>
 
-extern "C" {
-#include <flatpak.h>
-}
+#include "flatpak-helper.h"
 
 class DiscoverAction;
 class FlatpakResource;

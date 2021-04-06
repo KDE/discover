@@ -10,9 +10,7 @@
 #include <BackendNotifierModule.h>
 #include <functional>
 
-extern "C" {
-#include <flatpak.h>
-}
+#include "flatpak-helper.h"
 
 class FlatpakNotifier : public BackendNotifierModule
 {

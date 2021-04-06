@@ -17,9 +17,7 @@
 
 #include <AppStreamQt/component.h>
 
-extern "C" {
-#include <flatpak.h>
-}
+#include "flatpak-helper.h"
 
 class FlatpakSourcesBackend;
 class StandardBackendUpdater;

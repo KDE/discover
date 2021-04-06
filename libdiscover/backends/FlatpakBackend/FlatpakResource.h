@@ -10,9 +10,7 @@
 
 #include <resources/AbstractResource.h>
 
-extern "C" {
-#include <flatpak.h>
-}
+#include "flatpak-helper.h"
 
 #include <AppStreamQt/component.h>
 

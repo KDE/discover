@@ -8,10 +8,8 @@
 #define FLATPAKFETCHDATAJOB_H
 
 #include <QByteArray>
-extern "C" {
-#include <flatpak.h>
+#include "flatpak-helper.h"
 #include <glib.h>
-}
 
 class FlatpakResource;
 
