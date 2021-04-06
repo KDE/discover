@@ -25,9 +25,14 @@
 #include <QCryptographicHash>
 #include <QMap>
 
+#ifdef FWUPD_EXTERNC_REQUIRED
 extern "C" {
+#endif
+
 #include <fwupd.h>
+#ifdef FWUPD_EXTERNC_REQUIRED
 }
+#endif
 #include <glib-2.0/glib-object.h>
 
 class QAction;

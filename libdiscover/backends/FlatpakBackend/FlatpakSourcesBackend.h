@@ -13,9 +13,7 @@
 #include <QStack>
 #include <functional>
 
-extern "C" {
-#include <flatpak.h>
-}
+#include "flatpak-helper.h"
 
 class FlatpakResource;
 class FlatpakSourcesBackend : public AbstractSourcesBackend

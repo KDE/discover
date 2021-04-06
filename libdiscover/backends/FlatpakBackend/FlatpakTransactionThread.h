@@ -7,11 +7,9 @@
 #ifndef FLATPAKTRANSACTIONTHREAD_H
 #define FLATPAKTRANSACTIONTHREAD_H
 
-extern "C" {
-#include <flatpak.h>
+#include "flatpak-helper.h"
 #include <gio/gio.h>
 #include <glib.h>
-}
 
 #include <Transaction/Transaction.h>
 #include <QThread>

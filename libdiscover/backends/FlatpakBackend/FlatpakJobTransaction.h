@@ -10,12 +10,10 @@
 
 #include <Transaction/Transaction.h>
 #include <QPointer>
+#include "flatpak-helper.h"
 
-extern "C" {
-#include <flatpak.h>
 #include <gio/gio.h>
 #include <glib.h>
-}
 
 class FlatpakResource;
 class FlatpakTransactionThread;

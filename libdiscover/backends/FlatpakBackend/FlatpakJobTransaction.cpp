@@ -13,9 +13,6 @@
 #include <QDebug>
 #include <QTimer>
 
-extern "C" {
-}
-
 FlatpakJobTransaction::FlatpakJobTransaction(FlatpakResource *app, Role role, bool delayStart)
     : Transaction(app->backend(), app, role, {})
     , m_app(app)
