@@ -374,13 +374,6 @@ void ResourcesModel::checkForUpdates()
         backend->checkForUpdates();
 }
 
-QVariantList ResourcesModel::backendsVariant() const
-{
-    return kTransform<QVariantList>(m_backends, [](AbstractResourcesBackend *b) {
-        return QVariant::fromValue<QObject *>(b);
-    });
-}
-
 AbstractResourcesBackend *ResourcesModel::currentApplicationBackend() const
 {
     return m_currentApplicationBackend;

@@ -74,7 +74,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(bool hasSecurityUpdates READ hasSecurityUpdates NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
-    Q_PROPERTY(QVariantList backends READ backendsVariant NOTIFY backendsChanged)
     Q_PROPERTY(AbstractResourcesBackend *currentApplicationBackend READ currentApplicationBackend WRITE setCurrentApplicationBackend NOTIFY
                    currentApplicationBackendChanged)
     Q_PROPERTY(DiscoverAction *updateAction READ updateAction CONSTANT)
@@ -105,7 +104,6 @@ public:
 
     QString applicationSourceName() const;
 
-    QVariantList backendsVariant() const;
     void setCurrentApplicationBackend(AbstractResourcesBackend *backend, bool writeConfig = true);
     AbstractResourcesBackend *currentApplicationBackend() const;
 

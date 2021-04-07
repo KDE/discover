@@ -12,7 +12,6 @@ DiscoverPage
     title: i18n("Updates")
 
     property string footerLabel: ""
-    property string footerToolTip: ""
     property int footerProgress: 0
     property bool isBusy: false
 
@@ -184,9 +183,6 @@ DiscoverPage
             horizontalAlignment: Text.AlignHCenter
             text: page.footerLabel
             wrapMode: Text.WordWrap
-            ToolTip.text: page.footerToolTip
-            ToolTip.visible: hovered && page.footerToolTip.length > 0
-            ToolTip.delay: Kirigami.Units.toolTipDelay
             level: 2
         }
         Button {
@@ -350,17 +346,6 @@ DiscoverPage
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates...") }
             PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: page; footerProgress: ResourcesModel.fetchingUpdatesProgress }
-            PropertyChanges { target: page; footerToolTip: {
-                    var ret = "";
-                    for (var i in ResourcesModel.backends) {
-                        var backend = ResourcesModel.backends[i]
-                        if (!backend.isFetching)
-                            continue
-                        ret += i18n("%1 (%2%)\n", backend.name, backend.fetchingUpdatesProgress)
-                    }
-                    return ret
-                }
-            }
             PropertyChanges { target: page; isBusy: true }
             PropertyChanges { target: updatesView; opacity: 0 }
         },
