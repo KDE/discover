@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
     app.setOrganizationDomain(QStringLiteral("kde.org"));
+    app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
     KCrash::setFlags(KCrash::AutoRestart);
 
