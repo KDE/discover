@@ -72,10 +72,7 @@ DiscoverPage {
                 checkable: true
                 checked: appInfo.application === model.application
                 onTriggered: if(index>=0) {
-                    var res = model.application
-                    console.assert(res)
-                    window.stack.pop()
-                    Navigation.openApplication(res)
+                    appInfo.application = model.application
                 }
             }
         }
