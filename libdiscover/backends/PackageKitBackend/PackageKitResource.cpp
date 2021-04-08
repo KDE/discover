@@ -31,10 +31,6 @@ PackageKitResource::PackageKitResource(QString packageName, QString summary, Pac
     , m_name(std::move(packageName))
 {
     setObjectName(m_name);
-
-    connect(this, &PackageKitResource::dependenciesFound, this, [this](const QJsonObject &obj) {
-        setDependenciesCount(obj.size());
-    });
 }
 
 QString PackageKitResource::name() const
@@ -361,6 +357,7 @@ void PackageKitResource::fetchDependencies()
             });
     connect(trans, &PackageKit::Transaction::finished, this, [this, packageDependencies](PackageKit::Transaction::Exit /*status*/) {
         Q_EMIT dependenciesFound(*packageDependencies);
+        setDependenciesCount(packageDependencies->size());
     });
 }
 
