@@ -19,7 +19,10 @@ Kirigami.LinkButton {
         onDependenciesFound: {
             view.model.clear()
             for (var v in dependencies) {
-                view.model.append({display: i18n("<b>%1</b>: %2", v, dependencies[v])})
+                view.model.append({
+                                   "packageName": v,
+                                   "packageDescription": dependencies[v]
+                                  })
             }
         }
     }
@@ -41,7 +44,8 @@ Kirigami.LinkButton {
             model: ListModel {}
             delegate: Kirigami.BasicListItem {
                 width: view.width
-                text: modelData
+                text: model.packageName
+                subtitle: model.packageDescription
                 // No need to offer a hover/selection effect since these list
                 // items are non-interactive and non-selectable
                 activeBackgroundColor: "transparent"
