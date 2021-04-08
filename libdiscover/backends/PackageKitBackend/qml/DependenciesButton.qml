@@ -40,7 +40,7 @@ Kirigami.LinkButton {
             headerPositioning: ListView.OverlayHeader
             model: ListModel {}
             delegate: Kirigami.BasicListItem {
-                width: parent.width
+                width: view.width
                 text: modelData
             }
         }
