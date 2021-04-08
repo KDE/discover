@@ -5,8 +5,7 @@ import org.kde.discover 2.0
 import "navigation.js" as Navigation
 import org.kde.kirigami 2.14 as Kirigami
 
-Kirigami.OverlaySheet
-{
+Kirigami.OverlaySheet {
     id: addonsView
     parent: applicationWindow().overlay
 
@@ -17,8 +16,7 @@ Kirigami.OverlaySheet
 
     header: Kirigami.Heading { text: i18n("Addons") }
 
-    ListView
-    {
+    ListView {
         id: listview
 
         implicitWidth: Kirigami.Units.gridUnit * 25
