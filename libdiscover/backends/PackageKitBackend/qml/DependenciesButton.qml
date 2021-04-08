@@ -8,8 +8,7 @@ import QtQuick 2.8
 import QtQuick.Controls 2.1
 import org.kde.kirigami 2.14 as Kirigami
 
-Kirigami.LinkButton
-{
+Kirigami.LinkButton {
     text: i18n("Show Dependencies...")
 
     onClicked: overlay.open()
@@ -25,18 +24,20 @@ Kirigami.LinkButton
         }
     }
 
-    DiscoverPopup {
+    Kirigami.OverlaySheet {
         id: overlay
+
+        parent: applicationWindow().overlay
+
+        header: Kirigami.Heading { text: i18n("Package dependencies for %1", resource.name) }
 
         ListView {
             id: view
-            anchors.fill: parent
+
+            implicitWidth: Kirigami.Units.gridUint * 20
 
             clip: true
             headerPositioning: ListView.OverlayHeader
-            header: Kirigami.ItemViewHeader {
-                title: i18n("%1 Dependencies", resource.name)
-            }
             model: ListModel {}
             delegate: Kirigami.BasicListItem {
                 width: parent.width
