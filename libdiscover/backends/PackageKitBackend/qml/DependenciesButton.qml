@@ -13,7 +13,7 @@ Kirigami.LinkButton
     text: i18n("Show Dependencies...")
 
     onClicked: overlay.open()
-    visible: view.count > 0
+    visible: view.model.count > 0
 
     Connections {
         target: resource
