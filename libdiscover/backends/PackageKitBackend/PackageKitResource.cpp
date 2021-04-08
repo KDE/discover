@@ -383,7 +383,7 @@ void PackageKitResource::runService(const QStringList &desktopFilePaths) const
 {
     for (const QString &desktopFilePath : desktopFilePaths) {
         auto p = new QProcess(parent());
-        connect(p, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, p](int exitCode, QProcess::ExitStatus exitStatus) {
+        connect(p, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, p](int exitCode, QProcess::ExitStatus /*exitStatus*/) {
             if (exitCode != 0) {
                 backend()->passiveMessage(i18n("Failed to start '%1'", KShell::joinArgs(p->arguments())));
             }
