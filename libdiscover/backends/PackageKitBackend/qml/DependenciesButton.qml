@@ -32,7 +32,7 @@ Kirigami.LinkButton {
 
         parent: applicationWindow().overlay
 
-        header: Kirigami.Heading { text: i18n("Package dependencies for %1", resource.name) }
+        header: Kirigami.Heading { text: i18n("Dependencies for package: %1", resource.packageName) }
 
         ListView {
             id: view
