@@ -34,7 +34,7 @@ Kirigami.LinkButton {
         ListView {
             id: view
 
-            implicitWidth: Kirigami.Units.gridUint * 20
+            implicitWidth: Kirigami.Units.gridUnit * 25
 
             clip: true
             headerPositioning: ListView.OverlayHeader
