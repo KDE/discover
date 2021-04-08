@@ -42,6 +42,10 @@ Kirigami.LinkButton {
             delegate: Kirigami.BasicListItem {
                 width: view.width
                 text: modelData
+                // No need to offer a hover/selection effect since these list
+                // items are non-interactive and non-selectable
+                activeBackgroundColor: "transparent"
+                activeTextColor: Kirigami.Theme.textColor
             }
         }
     }
