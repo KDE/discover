@@ -29,11 +29,14 @@ Kirigami.LinkButton {
 
         parent: applicationWindow().overlay
 
-        header: Kirigami.Heading { text: i18n("Dependencies for package: %1", resource.packageName) }
+        header: Kirigami.Heading {
+            text: i18n("Dependencies for package: %1", resource.packageName)
+            elide: Text.ElideLeft
+        }
 
         ListView {
             id: view
-            implicitWidth: Kirigami.Units.gridUnit * 25
+            implicitWidth: Kirigami.Units.gridUnit * 26
             clip: true
             model: ListModel {}
             // FIXME: Workaround for https://bugs.kde.org/show_bug.cgi?id=435546
