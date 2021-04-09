@@ -8,6 +8,7 @@
 #define UTILS_H
 
 #include <QElapsedTimer>
+#include <QJsonValue>
 #include <QScopeGuard>
 #include <QString>
 #include <functional>
@@ -140,5 +141,12 @@ public:
 
     QString m_name;
 };
+
+inline void swap(QJsonValueRef v1, QJsonValueRef v2)
+{
+    QJsonValue temp(v1);
+    v1 = QJsonValue(v2);
+    v2 = temp;
+}
 
 #endif

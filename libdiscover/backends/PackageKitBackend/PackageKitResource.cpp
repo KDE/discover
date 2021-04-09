@@ -343,7 +343,7 @@ void PackageKitResource::fetchDependencies()
         return;
     m_dependenciesCount = 0;
 
-    QSharedPointer<QJsonObject> packageDependencies(new QJsonObject);
+    auto packageDependencies = QSharedPointer<QJsonArray>::create();
 
     auto trans = PackageKit::Daemon::dependsOn(id);
     connect(trans, &PackageKit::Transaction::errorCode, this, [this](PackageKit::Transaction::Error, const QString &message) {
@@ -352,10 +352,20 @@ void PackageKitResource::fetchDependencies()
     connect(trans,
             &PackageKit::Transaction::package,
             this,
-            [packageDependencies](PackageKit::Transaction::Info /*info*/, const QString &packageID, const QString &summary) {
-                (*packageDependencies)[PackageKit::Daemon::packageName(packageID)] = summary;
+            [packageDependencies](PackageKit::Transaction::Info info, const QString &packageID, const QString &summary) {
+                (*packageDependencies)
+                    .append(QJsonObject{{QStringLiteral("packageName"), PackageKit::Daemon::packageName(packageID)},
+                                        {QStringLiteral("packageInfo"), PackageKitMessages::info(info)},
+                                        {QStringLiteral("packageDescription"), summary}});
             });
     connect(trans, &PackageKit::Transaction::finished, this, [this, packageDependencies](PackageKit::Transaction::Exit /*status*/) {
+        std::sort(packageDependencies->begin(), packageDependencies->end(), [](QJsonValue a, QJsonValue b) {
+            const auto objA = a.toObject(), objB = b.toObject();
+            return objA[QLatin1String("packageInfo")].toString() < objB[QLatin1String("packageInfo")].toString()
+                || (objA[QLatin1String("packageInfo")].toString() == objB[QLatin1String("packageInfo")].toString()
+                    && objA[QLatin1String("packageName")].toString() < objB[QLatin1String("packageName")].toString());
+        });
+
         Q_EMIT dependenciesFound(*packageDependencies);
         setDependenciesCount(packageDependencies->size());
     });

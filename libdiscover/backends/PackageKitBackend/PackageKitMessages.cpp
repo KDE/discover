@@ -314,4 +314,62 @@ QString updateStateMessage(PackageKit::Transaction::UpdateState state)
     return QString();
 }
 
+QString info(PackageKit::Transaction::Info info)
+{
+    switch (info) {
+    case PackageKit::Transaction::InfoUnknown:
+        return i18n("Unknown");
+    case PackageKit::Transaction::InfoInstalled:
+        return i18n("Installed");
+    case PackageKit::Transaction::InfoAvailable:
+        return i18n("Not Installed");
+    case PackageKit::Transaction::InfoLow:
+        return i18n("Low");
+    case PackageKit::Transaction::InfoEnhancement:
+        return i18n("Enhancement");
+    case PackageKit::Transaction::InfoNormal:
+        return i18n("Normal");
+    case PackageKit::Transaction::InfoBugfix:
+        return i18n("Bugfix");
+    case PackageKit::Transaction::InfoImportant:
+        return i18n("Important");
+    case PackageKit::Transaction::InfoSecurity:
+        return i18n("Security");
+    case PackageKit::Transaction::InfoBlocked:
+        return i18n("Blocked");
+    case PackageKit::Transaction::InfoDownloading:
+        return i18n("Downloading");
+    case PackageKit::Transaction::InfoUpdating:
+        return i18n("Updating");
+    case PackageKit::Transaction::InfoInstalling:
+        return i18n("Installing");
+    case PackageKit::Transaction::InfoRemoving:
+        return i18n("Removing");
+    case PackageKit::Transaction::InfoCleanup:
+        return i18n("Cleanup");
+    case PackageKit::Transaction::InfoObsoleting:
+        return i18n("Obsoleting");
+    case PackageKit::Transaction::InfoCollectionInstalled:
+        return i18n("Collection Installed");
+    case PackageKit::Transaction::InfoCollectionAvailable:
+        return i18n("Collection Available");
+    case PackageKit::Transaction::InfoFinished:
+        return i18n("Finished");
+    case PackageKit::Transaction::InfoReinstalling:
+        return i18n("Reinstalling");
+    case PackageKit::Transaction::InfoDowngrading:
+        return i18n("Downgrading");
+    case PackageKit::Transaction::InfoPreparing:
+        return i18n("Preparing");
+    case PackageKit::Transaction::InfoDecompressing:
+        return i18n("Decompressing");
+    case PackageKit::Transaction::InfoUntrusted:
+        return i18n("Untrusted");
+    case PackageKit::Transaction::InfoTrusted:
+        return i18n("Trusted");
+    case PackageKit::Transaction::InfoUnavailable:
+        return i18n("Unavailable");
+    }
+    return {};
+}
 }

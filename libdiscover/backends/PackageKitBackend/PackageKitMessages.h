@@ -17,6 +17,7 @@ QString restartMessage(PackageKit::Transaction::Restart restart);
 QString statusMessage(PackageKit::Transaction::Status status);
 QString statusDetail(PackageKit::Transaction::Status status);
 QString updateStateMessage(PackageKit::Transaction::UpdateState state);
+QString info(PackageKit::Transaction::Info info);
 }
 
 #endif // PACKAGEKITMESSAGES_H

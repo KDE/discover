@@ -19,10 +19,7 @@ Kirigami.LinkButton {
         onDependenciesFound: {
             view.model.clear()
             for (var v in dependencies) {
-                view.model.append({
-                                   "packageName": v,
-                                   "packageDescription": dependencies[v]
-                                  })
+                view.model.append(dependencies[v])
             }
         }
     }
@@ -36,12 +33,17 @@ Kirigami.LinkButton {
 
         ListView {
             id: view
-
             implicitWidth: Kirigami.Units.gridUnit * 25
-
             clip: true
             headerPositioning: ListView.OverlayHeader
             model: ListModel {}
+
+            section.property: "packageInfo"
+            section.delegate: Kirigami.ListSectionHeader {
+                width: view.width
+                height: Kirigami.Units.fontMetrics.xHeight * 4
+                label: section
+            }
             delegate: Kirigami.BasicListItem {
                 width: view.width
                 text: model.packageName

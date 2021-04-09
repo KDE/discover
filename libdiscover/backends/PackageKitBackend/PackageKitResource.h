@@ -84,7 +84,7 @@ public:
     void runService(const QStringList &desktopFilePaths) const;
 
 Q_SIGNALS:
-    void dependenciesFound(const QJsonObject &dependencies);
+    void dependenciesFound(const QJsonArray &dependencies);
 
 public Q_SLOTS:
     void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch);
