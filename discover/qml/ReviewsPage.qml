@@ -78,7 +78,7 @@ Kirigami.OverlaySheet {
         cacheBuffer: Math.max(0, contentHeight)
 
         delegate: ReviewDelegate {
-            width: parent.width
+            width: reviewsView.width
             separator: index != ListView.view.count-1
             onMarkUseful: page.model.markUseful(index, useful)
         }

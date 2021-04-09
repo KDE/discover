@@ -28,7 +28,7 @@ Button
             model: resource.plugs(root)
             delegate: CheckDelegate {
                 id: delegate
-                width: parent.width
+                width: view.width
                 text: model.display
                 checked: model.checked
                 onClicked: {

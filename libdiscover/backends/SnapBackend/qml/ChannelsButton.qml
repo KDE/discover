@@ -28,7 +28,7 @@ Button
             }
             model: resource.channels(root).channels
             delegate: RowLayout {
-                width: parent.width
+                width: view.width
                 readonly property bool current: resource.channel === modelData.name
                 Label {
                     Layout.fillWidth: true
