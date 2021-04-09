@@ -350,7 +350,7 @@ DiscoverPage {
                         id: licenseButton
                         horizontalAlignment: Text.AlignLeft
                         ToolTip.text: i18n("See full license terms")
-                        ToolTip.visible: licenseButton.hovered
+                        ToolTip.visible: licenseButton.mouseArea.containsMouse
                         text: modelData.name
                         url: modelData.url
                         enabled: url !== ""
