@@ -49,7 +49,7 @@ Kirigami.ApplicationWindow
     TopLevelPageData {
         id: featuredAction
         iconName: "go-home"
-        text: i18n("Home")
+        text: i18n("&Home")
         enabled: !window.wideScreen
         component: topBrowsingComp
         objectName: "discover"
@@ -60,7 +60,7 @@ Kirigami.ApplicationWindow
         visible: enabled
         enabled: !window.wideScreen
         iconName: "search"
-        text: i18n("Search")
+        text: i18n("&Search")
         component: topSearchComp
         objectName: "discover"
         shortcut: "Ctrl+F"
@@ -68,28 +68,28 @@ Kirigami.ApplicationWindow
     TopLevelPageData {
         id: installedAction
         iconName: "view-list-details"
-        text: i18n("Installed")
+        text: i18n("&Installed")
         component: topInstalledComp
         objectName: "installed"
     }
     TopLevelPageData {
         id: updateAction
         iconName: ResourcesModel.updatesCount>0 ? ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low" : "update-none"
-        text: ResourcesModel.updatesCount<=0 ? (ResourcesModel.isFetching ? i18n("Fetching updates...") : i18n("Up to date") ) : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
+        text: ResourcesModel.updatesCount<=0 ? (ResourcesModel.isFetching ? i18n("Fetching &updates...") : i18n("&Up to date") ) : i18nc("Update section name", "&Update (%1)", ResourcesModel.updatesCount)
         component: topUpdateComp
         objectName: "update"
     }
     TopLevelPageData {
         id: aboutAction
         iconName: "help-feedback"
-        text: i18n("About")
+        text: i18n("&About")
         component: topAboutComp
         objectName: "about"
     }
     TopLevelPageData {
         id: sourcesAction
         iconName: "configure"
-        text: i18n("Settings")
+        text: i18n("S&ettings")
         component: topSourcesComp
         objectName: "sources"
     }
