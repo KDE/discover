@@ -132,9 +132,8 @@ void PackageKitNotifier::checkOfflineUpdates()
         });
 
         notification->sendEvent();
+        PackageKit::Daemon::global()->offline()->clearResults();
     }
-
-    PackageKit::Daemon::global()->offline()->clearResults();
 }
 
 void PackageKitNotifier::recheckSystemUpdateNeeded()
