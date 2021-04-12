@@ -36,6 +36,12 @@ void DiscoverUpdate::start()
     m_resourcesUpdatesModel->updateAll();
 
     auto transaction = m_resourcesUpdatesModel->transaction();
+    if (!transaction) {
+        qWarning() << "No updates available, exiting";
+        QCoreApplication::instance()->exit(0);
+        return;
+    }
+
     connect(transaction, &Transaction::statusChanged, this, &DiscoverUpdate::transactionStatusChanged);
 
     qDebug() << "go!" << transaction;
