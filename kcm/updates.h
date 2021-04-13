@@ -12,18 +12,23 @@
 
 class UpdatesData;
 class UpdatesSettings;
+class DiscoverData;
+class DiscoverSettings;
 
 class Updates : public KQuickAddons::ManagedConfigModule
 {
     Q_OBJECT
     Q_PROPERTY(UpdatesSettings *updatesSettings READ updatesSettings CONSTANT)
+    Q_PROPERTY(DiscoverSettings *discoverSettings READ discoverSettings CONSTANT)
 
 public:
     explicit Updates(QObject *parent = nullptr, const QVariantList &list = QVariantList());
     ~Updates() override;
 
     UpdatesSettings *updatesSettings() const;
+    DiscoverSettings *discoverSettings() const;
 
 private:
     UpdatesData *m_data;
+    DiscoverData *m_discoverData;
 };

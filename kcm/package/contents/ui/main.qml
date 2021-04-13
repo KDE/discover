@@ -23,6 +23,8 @@ SimpleKCM {
 
     ColumnLayout {
         Kirigami.FormLayout {
+            id: unattendedUpdatesLayout
+            Layout.fillWidth: true
             QQC2.RadioButton {
                 Kirigami.FormData.label: i18n("Update software:")
                 text: i18n("Manually")
@@ -54,6 +56,42 @@ SimpleKCM {
             horizontalAlignment: Text.AlignHCenter
             font: theme.smallestFont
             text: xi18nc("@info", "Software updates will be downloaded automatically when they become available. Updates for applications will be installed immediately, while system updates will be installed the next time the computer is restarted.")
+        }
+
+        Kirigami.Separator {
+            Layout.fillWidth: true
+            Layout.topMargin: Kirigami.Units.gridUnit
+            Layout.bottomMargin: Kirigami.Units.gridUnit
+        }
+
+        Kirigami.FormLayout {
+            Layout.fillWidth: true
+            twinFormLayouts: unattendedUpdatesLayout
+            QQC2.CheckBox {
+                id: offlineUpdatesBox
+                Kirigami.FormData.label: i18n("Use offline updates:")
+                enabled: !kcm.discoverSettings.isUseOfflineUpdatesImmutable
+                checked: kcm.discoverSettings.useOfflineUpdates
+                onToggled: {
+                    kcm.discoverSettings.useOfflineUpdates = checked
+                }
+            }
+
+            SettingStateBinding {
+                configObject: kcm.discoverSettings
+                settingName: "useOfflineUpdates"
+                target: offlineUpdatesBox
+            }
+        }
+
+        QQC2.Label {
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: Math.min(Kirigami.Units.gridUnit * 25, Math.round(root.width * 0.6))
+
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
+            font: Kirigami.Theme.smallFont
+            text: i18n("Offline updates maximize system stability by applying changes while restarting the system. Using this update mode is strongly recommended.")
         }
     }
 }

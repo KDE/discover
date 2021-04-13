@@ -11,6 +11,8 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
+#include <discoverdata.h>
+#include <discoversettings.h>
 #include <updatesdata.h>
 #include <updatessettings.h>
 
@@ -19,10 +21,12 @@ K_PLUGIN_FACTORY_WITH_JSON(UpdatesFactory, "kcm_updates.json", registerPlugin<Up
 Updates::Updates(QObject *parent, const QVariantList &args)
     : KQuickAddons::ManagedConfigModule(parent)
     , m_data(new UpdatesData(this))
+    , m_discoverData(new DiscoverData(this))
 {
     Q_UNUSED(args)
 
     qmlRegisterAnonymousType<UpdatesSettings>("org.kde.discover.updates", 1);
+    qmlRegisterAnonymousType<DiscoverSettings>("org.kde.discover.updates", 1);
 
     setAboutData(new KAboutData(QStringLiteral("kcm_updates"),
                                 i18n("Software Updates"),
@@ -32,9 +36,15 @@ Updates::Updates(QObject *parent, const QVariantList &args)
 }
 
 Updates::~Updates() = default;
+
 UpdatesSettings *Updates::updatesSettings() const
 {
     return m_data->settings();
+}
+
+DiscoverSettings *Updates::discoverSettings() const
+{
+    return m_discoverData->settings();
 }
 
 #include "updates.moc"
