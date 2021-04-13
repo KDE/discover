@@ -15,8 +15,12 @@ ConditionalLoader
 
     readonly property alias isActive: listener.isActive
     readonly property alias progress: listener.progress
+    readonly property bool isStateAvailable: application.state !== AbstractResource.Broken
     readonly property alias listener: listener
     readonly property string text: {
+        if (!root.isStateAvailable) {
+            return i18nc("State being fetched", "Loading...")
+        }
         if (!application.isInstalled) {
             // Must be from a non-default backend; tell the user where it's from
             if (backendName.length !== 0) {
@@ -37,7 +41,7 @@ ConditionalLoader
             name: application.isInstalled ? "edit-delete" : "download"
             color: !enabled ? Kirigami.Theme.backgroundColor : !listener.isActive ? (application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor) : Kirigami.Theme.backgroundColor
         }
-        enabled: !listener.isActive && application.state !== AbstractResource.Broken
+        enabled: !listener.isActive && root.isStateAvailable
         onTriggered: root.click()
     }
     readonly property Kirigami.Action cancelAction: Kirigami.Action {

@@ -249,7 +249,7 @@ DiscoverPage {
             }
 
             Button {
-                visible: reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
+                visible: appbutton.isStateAvailable && reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
                 enabled: appInfo.application.isInstalled
 
                 text: appInfo.application.isInstalled ? i18n("Write a Review") : i18n("Install to Write a Review")
