@@ -45,4 +45,9 @@ if(BUILD_FwupdBackend AND TARGET PkgConfig::Fwupd)
     add_subdirectory(FwupdBackend)
 endif()
 
+option(BUILD_RpmOstreeBackend "Build RpmOstree support." "ON")
+if(BUILD_RpmOstreeBackend AND TARGET PkgConfig::Fwupd)
+    add_subdirectory(RpmOstreeBackend)
+endif()
+
 
