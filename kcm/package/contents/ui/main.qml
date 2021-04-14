@@ -60,7 +60,7 @@ SimpleKCM {
             wrapMode: Text.WordWrap
             visible: automaticallyRadio.checked
             horizontalAlignment: Text.AlignHCenter
-            font: theme.smallestFont
+            font: Kirigami.Theme.smallFont
             text: xi18nc("@info", "Software updates will be downloaded automatically when they become available. Updates for applications will be installed immediately, while system updates will be installed the next time the computer is restarted.")
         }
 
