@@ -21,6 +21,12 @@ SimpleKCM {
         }
     }
 
+    leftPadding: width * 0.1
+    rightPadding: leftPadding
+
+    implicitWidth: Kirigami.Units.gridUnit * 38
+    implicitHeight: Kirigami.Units.gridUnit * 35
+
     ColumnLayout {
         Kirigami.FormLayout {
             id: unattendedUpdatesLayout
