@@ -177,7 +177,7 @@ void RpmOstreeBackend::checkForUpdatesNeeded()
 
 void RpmOstreeBackend::executeCheckUpdateProcess()
 {
-    QProcess *process = new QProcess();
+    QProcess *process = new QProcess(this);
 
     connect(process, &QProcess::readyReadStandardError, [process]() {
         QByteArray readError = process->readAllStandardError();
