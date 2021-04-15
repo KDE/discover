@@ -67,11 +67,6 @@ public:
     void readRefsOutput(QIODevice *device);
 
     /*
-     * Setting the current remote refs list to the current running deployment resource.
-     */
-    void settingRemoteRefsDeploymentResource();
-
-    /*
      * Calling Rebase method from the rpm-ostree DBus class when
      * there is a new kinoite refs.
      */
@@ -117,7 +112,6 @@ private:
     QVector<RpmOstreeResource *> m_resources;
     QVector<DeploymentInformation> m_deployments;
 
-    QStringList m_remoteRefsList;
     QString m_transactionUpdatePath;
     bool m_fetching;
     QString m_newVersion;

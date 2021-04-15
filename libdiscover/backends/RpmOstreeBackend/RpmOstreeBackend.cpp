@@ -209,24 +209,18 @@ void RpmOstreeBackend::readUpdateOutput(QIODevice *device)
 
 void RpmOstreeBackend::executeRemoteRefsProcess()
 {
-    if (!m_remoteRefsList.isEmpty())
-        m_remoteRefsList.clear();
-
     QProcess *process = new QProcess(this);
 
     connect(process, &QProcess::readyReadStandardError, [process]() {
         QByteArray readError = process->readAllStandardError();
     });
 
-    // catch data output
-    connect(process, &QProcess::readyReadStandardOutput, this, [process, this]() {
-        readRefsOutput(process);
-    });
-
     // delete process instance when done, and get the exit status to handle errors.
     QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus exitStatus) {
-        qWarning() << "process exited with code " << exitCode;
-        settingRemoteRefsDeploymentResource();
+        qWarning() << "process exited with code " << exitCode << exitStatus;
+        if (exitCode == 0) {
+            readRefsOutput(process);
+        }
         process->deleteLater();
     });
 
@@ -239,17 +233,14 @@ void RpmOstreeBackend::readRefsOutput(QIODevice *device)
 {
     const QString kinoite = QStringLiteral("/kinoite");
 
+    QStringList remoteRefs;
     QTextStream stream(device);
     for (QString ref = stream.readLine(); stream.readLineInto(&ref);) {
         if (ref.endsWith(kinoite))
             continue;
-        m_remoteRefsList.push_back(ref);
+        remoteRefs.push_back(ref);
     }
-}
-
-void RpmOstreeBackend::settingRemoteRefsDeploymentResource()
-{
-    m_resources[0]->setRemoteRefsList(m_remoteRefsList);
+    m_resources[0]->setRemoteRefsList(remoteRefs);
 }
 
 int RpmOstreeBackend::updatesCount() const
