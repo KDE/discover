@@ -8,6 +8,7 @@
 #include "FwupdTransaction.h"
 
 #include <QTimer>
+#include <resources/AbstractBackendUpdater.h>
 
 FwupdTransaction::FwupdTransaction(FwupdResource *app, FwupdBackend *backend)
     : Transaction(backend, app, Transaction::InstallRole, {})
@@ -116,6 +117,9 @@ void FwupdTransaction::finishTransaction()
         break;
     }
     m_app->setState(newState);
+    if (m_app->needsReboot()) {
+        m_app->backend()->backendUpdater()->enableNeedsReboot();
+    }
     setStatus(DoneStatus);
     deleteLater();
 }
