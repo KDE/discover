@@ -54,7 +54,6 @@ public:
 
     void setState(AbstractResource::State state);
     void setReleaseDetails(FwupdRelease *release);
-    void setDeviceDetails(FwupdDevice* device);
 
     QString id() const { return m_id; }
     QString deviceId() const { return m_deviceID; }
@@ -67,6 +66,8 @@ public:
     QString cacheFile() const;
 
 private:
+    void setDeviceDetails(FwupdDevice *device);
+
     const QString m_id;
     const QString m_name;
     const QString m_deviceID;
