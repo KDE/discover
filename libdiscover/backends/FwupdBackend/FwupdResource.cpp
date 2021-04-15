@@ -27,6 +27,7 @@ FwupdResource::FwupdResource(FwupdDevice *device, const QString &id, AbstractRes
 {
     Q_ASSERT(!m_name.isEmpty());
     setObjectName(m_name);
+    setDeviceDetails(device);
 }
 
 QString FwupdResource::availableVersion() const
