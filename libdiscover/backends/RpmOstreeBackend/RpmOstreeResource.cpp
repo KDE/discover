@@ -45,7 +45,7 @@ void RpmOstreeResource::setRemoteRefsList(QStringList remoteRefs)
 QString RpmOstreeResource::getRecentRemoteRefs()
 {
     if (!isRecentRefsAvaliable())
-        return QStringLiteral("");
+        return {};
     QString recentRefs = m_recentRefs;
     QStringList str = recentRefs.split(QStringLiteral("/"));
     QString refs = QStringLiteral("Kinoite ") + str[1];
