@@ -95,22 +95,9 @@ public Q_SLOTS:
     void toggleFetching();
 
 private:
-    struct DeploymentInformation {
-        QString name;
-        bool booted;
-        QString baseVersion;
-        QString baseChecksum;
-        QString layeredPackages;
-        QString localPackages;
-        QString signature;
-        QString origin;
-        qulonglong timestamp;
-    };
-
     QSharedPointer<OdrsReviewsBackend> m_reviews;
     StandardBackendUpdater *m_updater;
     QVector<RpmOstreeResource *> m_resources;
-    QVector<DeploymentInformation> m_deployments;
 
     QString m_transactionUpdatePath;
     bool m_fetching;

@@ -119,42 +119,23 @@ void RpmOstreeBackend::getDeployments()
         deploymentName.remove(8, deploymentName.size() - 1);
         baseVersion.remove(0, 7);
 
-        // creating a deployment struct
-        DeploymentInformation extractDeployment;
-        extractDeployment.name = deploymentName;
-        extractDeployment.baseVersion = baseVersion;
-        extractDeployment.booted = map[QStringLiteral("booted")].toBool();
-        extractDeployment.baseChecksum = map[QStringLiteral("checksum")].toString();
-        extractDeployment.layeredPackages = map[QStringLiteral("packages")].toString();
-        extractDeployment.localPackages = map[QStringLiteral("requested-local-packages")].toString();
-        extractDeployment.signature = map[QStringLiteral("signatures")].toString();
-        extractDeployment.origin = map[QStringLiteral("origin")].toString();
-        extractDeployment.timestamp = map[QStringLiteral("timestamp")].toULongLong();
+        const QString baseChecksum = map[QStringLiteral("checksum")].toString();
+        const QString signature = map[QStringLiteral("signatures")].toString();
+        const QString layeredPackages = map[QStringLiteral("packages")].toString();
+        const QString localPackages = map[QStringLiteral("requested-local-packages")].toString();
+        const QString origin = map[QStringLiteral("origin")].toString();
+        const qulonglong timestamp = map[QStringLiteral("timestamp")].toULongLong();
 
-        m_deployments.push_back(extractDeployment);
-    }
-    dbusArgs.endArray();
-
-    // create a resource for each deployment
-    for (const DeploymentInformation &deployment : m_deployments) {
-        QString name = deployment.name;
-        QString baseVersion = deployment.baseVersion;
-        QString baseChecksum = deployment.baseChecksum;
-        QString signature = deployment.signature;
-        QString layeredPackages = deployment.layeredPackages;
-        QString localPackages = deployment.localPackages;
-        QString origin = deployment.origin;
-        qulonglong timestamp = deployment.timestamp;
-        bool booted = deployment.booted;
-
-        RpmOstreeResource *deploymentResource = new RpmOstreeResource(name, baseVersion, baseChecksum, signature, layeredPackages, localPackages, origin, timestamp, this);
-
-        // changing the state of the booted deployment resource to Installed.
-        if (booted) {
+        RpmOstreeResource *deploymentResource =
+            new RpmOstreeResource(deploymentName, baseVersion, baseChecksum, signature, layeredPackages, localPackages, origin, timestamp, this);
+        if (map[QStringLiteral("booted")].toBool()) {
+            // changing the state of the booted deployment resource to Installed.
             deploymentResource->setState(AbstractResource::Installed);
         }
+        connect(deploymentResource, &RpmOstreeResource::stateChanged, this, &RpmOstreeBackend::updatesCountChanged);
         m_resources.push_back(deploymentResource);
     }
+    dbusArgs.endArray();
 }
 
 void RpmOstreeBackend::toggleFetching()
@@ -171,7 +152,6 @@ void RpmOstreeBackend::checkForUpdatesNeeded()
         m_newVersion.remove(13, m_newVersion.size() - 13);
         m_resources[0]->setNewVersion(m_newVersion);
         m_resources[0]->setState(AbstractResource::Upgradeable);
-        connect(m_resources[0], &RpmOstreeResource::stateChanged, this, &RpmOstreeBackend::updatesCountChanged);
     }
 }
 
