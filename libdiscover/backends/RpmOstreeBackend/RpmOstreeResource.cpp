@@ -86,7 +86,7 @@ void RpmOstreeResource::setNewVersion(QString newVersion)
 
 QString RpmOstreeResource::appstreamId() const
 {
-    return QStringLiteral(" ");
+    return QStringLiteral("ostree.") + m_deploymentName;
 }
 
 bool RpmOstreeResource::canExecute() const
