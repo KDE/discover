@@ -28,15 +28,8 @@ public:
     bool needsReboot() const override;
 
 private:
-    bool m_newUpdate;
-    bool m_needsReboot;
-
-    /*
-     * It is executed whenever there is a change in the tracked directory (/ostree/deploy/fedora/deploy/)
-     * to check if there is a new deployment update by executing "rpm-ostree update --check"
-     * using QProcess.
-     */
-    void recheckSystemUpdate();
+    bool m_hasUpdates = false;
+    bool m_needsReboot = false;
 
     /*
      * Getting the output resulting from executing the QProcess update check.

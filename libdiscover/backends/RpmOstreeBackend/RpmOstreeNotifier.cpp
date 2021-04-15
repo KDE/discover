@@ -12,8 +12,6 @@
 
 RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
     : BackendNotifierModule(parent)
-    , m_newUpdate(false)
-    , m_needsReboot(false)
 {
     QFileSystemWatcher *watcher = new QFileSystemWatcher(this);
     watcher->addPath(QStringLiteral("/ostree/deploy/fedora/deploy/"));
@@ -36,15 +34,12 @@ void RpmOstreeNotifier::recheckSystemUpdateNeeded()
         qDebug() << "rpm-ostree errors" << process->readAllStandardError().constData();
     });
 
-    // catch data output
-    connect(process, &QProcess::readyReadStandardOutput, this, [process, this]() {
-        readUpdateOutput(process);
-    });
-
-    // delete process instance when done, and get the exit status to handle errors.
+    // handle the output if successful
     QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus exitStatus) {
         qWarning() << "process exited with code " << exitCode << exitStatus;
-        recheckSystemUpdate();
+        if (exitCode == 0) {
+            readUpdateOutput(process);
+        }
         process->deleteLater();
     });
 
@@ -52,18 +47,17 @@ void RpmOstreeNotifier::recheckSystemUpdateNeeded()
     process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("update"), QStringLiteral("--check")});
 }
 
-void RpmOstreeNotifier::recheckSystemUpdate()
-{
-    if (m_newUpdate) {
-        Q_EMIT foundUpdates();
-    }
-}
-
 void RpmOstreeNotifier::readUpdateOutput(QIODevice *device)
 {
+    const bool hadUpdates = m_hasUpdates;
+    m_hasUpdates = false;
     QTextStream stream(device);
     for (QString line = stream.readLine(); stream.readLineInto(&line);) {
-        m_newUpdate |= line.contains(QLatin1String("Version"));
+        m_hasUpdates |= line.contains(QLatin1String("Version"));
+    }
+
+    if (m_hasUpdates != hadUpdates) {
+        Q_EMIT foundUpdates();
     }
 }
 
@@ -81,5 +75,5 @@ bool RpmOstreeNotifier::needsReboot() const
 
 bool RpmOstreeNotifier::hasUpdates()
 {
-    return m_newUpdate;
+    return m_hasUpdates;
 }
