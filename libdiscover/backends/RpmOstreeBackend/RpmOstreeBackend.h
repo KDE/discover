@@ -115,10 +115,10 @@ private:
     QSharedPointer<OdrsReviewsBackend> m_reviews;
     StandardBackendUpdater *m_updater;
     QVector<RpmOstreeResource *> m_resources;
-    QVector<DeploymentInformation> deploymentsList;
+    QVector<DeploymentInformation> m_deployments;
 
-    QString transactionUpdatePath;
     QStringList m_remoteRefsList;
+    QString m_transactionUpdatePath;
     bool m_fetching;
     QString m_newVersion;
 
@@ -126,7 +126,7 @@ private:
      * Checking if the required update is deployment update or system upgrade
      * by default isDeploymentUpdate is true
      */
-    bool isDeploymentUpdate;
+    bool m_isDeploymentUpdate;
 
     /*
      * Extracting the new avaliable version of the deployment from the output

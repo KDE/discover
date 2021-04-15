@@ -79,7 +79,7 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     , m_reviews(AppStreamIntegration::global()->reviews())
     , m_updater(new StandardBackendUpdater(this))
     , m_fetching(true)
-    , isDeploymentUpdate(true)
+    , m_isDeploymentUpdate(true)
 {
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &RpmOstreeBackend::updatesCountChanged);
     getDeployments();
@@ -131,12 +131,12 @@ void RpmOstreeBackend::getDeployments()
         extractDeployment.origin = map[QStringLiteral("origin")].toString();
         extractDeployment.timestamp = map[QStringLiteral("timestamp")].toULongLong();
 
-        deploymentsList.push_back(extractDeployment);
+        m_deployments.push_back(extractDeployment);
     }
     dbusArgs.endArray();
 
     // create a resource for each deployment
-    for (const DeploymentInformation &deployment : deploymentsList) {
+    for (const DeploymentInformation &deployment : m_deployments) {
         QString name = deployment.name;
         QString baseVersion = deployment.baseVersion;
         QString baseChecksum = deployment.baseChecksum;
@@ -275,18 +275,18 @@ ResultsStream *RpmOstreeBackend::search(const AbstractResourcesBackend::Filters 
 Transaction *RpmOstreeBackend::installApplication(AbstractResource *app, const AddonList &addons)
 {
     updateCurrentDeployment();
-    return new RpmOstreeTransaction(qobject_cast<RpmOstreeResource *>(app), addons, Transaction::InstallRole, transactionUpdatePath, true);
+    return new RpmOstreeTransaction(qobject_cast<RpmOstreeResource *>(app), addons, Transaction::InstallRole, m_transactionUpdatePath, true);
 }
 
 Transaction *RpmOstreeBackend::installApplication(AbstractResource *app)
 {
-    bool deploymentUpdate = isDeploymentUpdate;
-    if (isDeploymentUpdate) {
+    bool deploymentUpdate = m_isDeploymentUpdate;
+    if (m_isDeploymentUpdate) {
         updateCurrentDeployment();
     } else {
-        isDeploymentUpdate = true;
+        m_isDeploymentUpdate = true;
     }
-    return new RpmOstreeTransaction(qobject_cast<RpmOstreeResource *>(app), Transaction::InstallRole, transactionUpdatePath, deploymentUpdate);
+    return new RpmOstreeTransaction(qobject_cast<RpmOstreeResource *>(app), Transaction::InstallRole, m_transactionUpdatePath, deploymentUpdate);
 }
 
 Transaction *RpmOstreeBackend::removeApplication(AbstractResource *)
@@ -307,7 +307,7 @@ void RpmOstreeBackend::updateCurrentDeployment()
     QDBusPendingReply<QString> reply = interface.UpdateDeployment(modifiers, options);
     reply.waitForFinished();
     if (!reply.isError()) {
-        transactionUpdatePath = reply.argumentAt(0).value<QString>();
+        m_transactionUpdatePath = reply.argumentAt(0).value<QString>();
     } else {
         qDebug() << "Error occurs when performing the UpdateDeployment: " << reply.error();
     }
@@ -328,14 +328,14 @@ void RpmOstreeBackend::perfromSystemUpgrade(QString selectedRefs)
                                                      QStringLiteral("/org/projectatomic/rpmostree1/fedora"),
                                                      QDBusConnection::systemBus(),
                                                      this);
-    isDeploymentUpdate = false;
+    m_isDeploymentUpdate = false;
     QVariantMap options;
     QStringList packages;
 
     QDBusPendingReply<QString> reply = interface.Rebase(options, selectedRefs, packages);
     reply.waitForFinished();
     if (!reply.isError()) {
-        transactionUpdatePath = reply.argumentAt(0).value<QString>();
+        m_transactionUpdatePath = reply.argumentAt(0).value<QString>();
         installApplication(m_resources[0]);
     } else {
         qDebug() << "Error occurs when performing the Rebase: " << reply.error();
