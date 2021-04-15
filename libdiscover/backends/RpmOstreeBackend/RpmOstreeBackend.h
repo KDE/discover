@@ -17,10 +17,6 @@
 #include <QThreadPool>
 #include <QtDBus/QDBusPendingReply>
 
-#include <AppStreamQt/component.h>
-#include <appstream/AppStreamIntegration.h>
-#include <appstream/OdrsReviewsBackend.h>
-
 class RpmOstreeReviewsBackend;
 class OdrsReviewsBackend;
 class RpmOstreeResource;
@@ -74,7 +70,10 @@ public:
 
     int updatesCount() const override;
     AbstractBackendUpdater *backendUpdater() const override;
-    AbstractReviewsBackend *reviewsBackend() const override;
+    AbstractReviewsBackend *reviewsBackend() const override
+    {
+        return nullptr;
+    }
     ResultsStream *search(const AbstractResourcesBackend::Filters &search) override;
 
     // return true when OSTreeRPMBackend is ready to be loaded
@@ -95,7 +94,6 @@ public Q_SLOTS:
     void toggleFetching();
 
 private:
-    QSharedPointer<OdrsReviewsBackend> m_reviews;
     StandardBackendUpdater *m_updater;
     QVector<RpmOstreeResource *> m_resources;
 

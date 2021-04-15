@@ -76,7 +76,6 @@ private:
 
 RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
-    , m_reviews(AppStreamIntegration::global()->reviews())
     , m_updater(new StandardBackendUpdater(this))
     , m_fetching(false)
     , m_isDeploymentUpdate(true)
@@ -314,11 +313,6 @@ void RpmOstreeBackend::perfromSystemUpgrade(QString selectedRefs)
 AbstractBackendUpdater *RpmOstreeBackend::backendUpdater() const
 {
     return m_updater;
-}
-
-AbstractReviewsBackend *RpmOstreeBackend::reviewsBackend() const
-{
-    return m_reviews.data();
 }
 
 QString RpmOstreeBackend::displayName() const
