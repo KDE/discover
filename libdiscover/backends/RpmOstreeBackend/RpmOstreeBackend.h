@@ -47,7 +47,7 @@ public:
     /*
      * Getting the output resulting from executing the QProcess update check.
      */
-    void getQProcessUpdateOutput(QByteArray readOutput);
+    void readUpdateOutput(QIODevice *process);
 
     /*
      * Calling UpdateDeployment method from the rpm-ostree DBus class when
@@ -64,7 +64,7 @@ public:
     /*
      * Getting the output resulting from executing the QProcess remote refs list.
      */
-    void getQProcessRefsOutput(QByteArray readOutput);
+    void readRefsOutput(QIODevice *device);
 
     /*
      * Setting the current remote refs list to the current running deployment resource.

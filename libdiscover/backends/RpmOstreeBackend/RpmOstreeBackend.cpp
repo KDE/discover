@@ -183,15 +183,12 @@ void RpmOstreeBackend::executeCheckUpdateProcess()
         QByteArray readError = process->readAllStandardError();
     });
 
-    // catch data output
-    connect(process, &QProcess::readyReadStandardOutput, this, [process, this]() {
-        QByteArray readOutput = process->readAllStandardOutput();
-        this->getQProcessUpdateOutput(readOutput);
-    });
-
     // delete process instance when done, and get the exit status to handle errors.
-    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus exitStatus) {
+    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
         qWarning() << "process exited with code " << exitCode << exitStatus;
+        if (exitCode == 0) {
+            readUpdateOutput(process);
+        }
         toggleFetching();
         process->deleteLater();
     });
@@ -200,13 +197,12 @@ void RpmOstreeBackend::executeCheckUpdateProcess()
     process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("update"), QStringLiteral("--check")});
 }
 
-void RpmOstreeBackend::getQProcessUpdateOutput(QByteArray readOutput)
+void RpmOstreeBackend::readUpdateOutput(QIODevice *device)
 {
-    QList<QByteArray> checkUpdateOutput = readOutput.split('\n');
-
-    for (const QByteArray &output : checkUpdateOutput) {
-        if (output.contains(QByteArray("Version"))) {
-            m_newVersion = QString::fromLocal8Bit(output);
+    QTextStream stream(device);
+    for (QString line = stream.readLine(); stream.readLineInto(&line);) {
+        if (line.contains(QLatin1String("Version"))) {
+            m_newVersion = line;
         }
     }
 }
@@ -224,8 +220,7 @@ void RpmOstreeBackend::executeRemoteRefsProcess()
 
     // catch data output
     connect(process, &QProcess::readyReadStandardOutput, this, [process, this]() {
-        QByteArray readOutput = process->readAllStandardOutput();
-        this->getQProcessRefsOutput(readOutput);
+        readRefsOutput(process);
     });
 
     // delete process instance when done, and get the exit status to handle errors.
@@ -240,18 +235,15 @@ void RpmOstreeBackend::executeRemoteRefsProcess()
                    {QStringLiteral("--repo=/ostree/repo"), QStringLiteral("remote"), QStringLiteral("refs"), QStringLiteral("kinoite")});
 }
 
-void RpmOstreeBackend::getQProcessRefsOutput(QByteArray readOutput)
+void RpmOstreeBackend::readRefsOutput(QIODevice *device)
 {
-    QList<QByteArray> remoteRefsList;
-    remoteRefsList = readOutput.split('\n');
+    const QString kinoite = QStringLiteral("/kinoite");
 
-    QString kinoite = QStringLiteral("kinoite");
-
-    for (const QByteArray &refs : remoteRefsList) {
-        QString refsToString = QString::fromLocal8Bit(refs);
-        if (refsToString.count(kinoite) <= 1)
+    QTextStream stream(device);
+    for (QString ref = stream.readLine(); stream.readLineInto(&ref);) {
+        if (ref.endsWith(kinoite))
             continue;
-        m_remoteRefsList.push_back(refsToString);
+        m_remoteRefsList.push_back(ref);
     }
 }
 

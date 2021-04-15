@@ -33,13 +33,12 @@ void RpmOstreeNotifier::recheckSystemUpdateNeeded()
     QProcess *process = new QProcess();
 
     connect(process, &QProcess::readyReadStandardError, [process]() {
-        QByteArray readError = process->readAllStandardError();
+        qDebug() << "rpm-ostree errors" << process->readAllStandardError().constData();
     });
 
     // catch data output
     connect(process, &QProcess::readyReadStandardOutput, this, [process, this]() {
-        QByteArray readOutput = process->readAllStandardOutput();
-        this->getQProcessOutput(readOutput);
+        readUpdateOutput(process);
     });
 
     // delete process instance when done, and get the exit status to handle errors.
@@ -60,14 +59,11 @@ void RpmOstreeNotifier::recheckSystemUpdate()
     }
 }
 
-void RpmOstreeNotifier::getQProcessOutput(QByteArray readOutput)
+void RpmOstreeNotifier::readUpdateOutput(QIODevice *device)
 {
-    QList<QByteArray> checkUpdateOutput = readOutput.split('\n');
-
-    for (const QByteArray &output : checkUpdateOutput) {
-        if (output.contains(QByteArray("Version"))) {
-            m_newUpdate = true;
-        }
+    QTextStream stream(device);
+    for (QString line = stream.readLine(); stream.readLineInto(&line);) {
+        m_newUpdate |= line.contains(QLatin1String("Version"));
     }
 }
 

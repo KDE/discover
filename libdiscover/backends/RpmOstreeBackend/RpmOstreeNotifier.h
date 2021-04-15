@@ -42,7 +42,7 @@ private:
      * Getting the output resulting from executing the QProcess update check.
      * and setting m_newUpdate to true if there is a new version.
      */
-    void getQProcessOutput(QByteArray readOutput);
+    void readUpdateOutput(QIODevice *device);
 
     /*
      * It is executed whenever there is a change in the tracked file (/tmp/discover-ostree-changed)
