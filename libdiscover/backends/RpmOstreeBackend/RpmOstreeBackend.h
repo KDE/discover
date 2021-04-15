@@ -101,20 +101,12 @@ private:
 
     QString m_transactionUpdatePath;
     bool m_fetching;
-    QString m_newVersion;
 
     /*
      * Checking if the required update is deployment update or system upgrade
      * by default isDeploymentUpdate is true
      */
     bool m_isDeploymentUpdate;
-
-    /*
-     * Extracting the new avaliable version of the deployment from the output
-     * resulting from QProcess update deployment and setting the current running
-     * deployment resource to AbstractResource::Upgradeable
-     */
-    void checkForUpdatesNeeded();
 };
 
 #endif

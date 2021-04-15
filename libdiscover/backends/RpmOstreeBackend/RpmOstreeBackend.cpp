@@ -141,18 +141,7 @@ void RpmOstreeBackend::getDeployments()
 void RpmOstreeBackend::toggleFetching()
 {
     m_fetching = !m_fetching;
-    checkForUpdatesNeeded();
     emit fetchingChanged();
-}
-
-void RpmOstreeBackend::checkForUpdatesNeeded()
-{
-    if (!m_newVersion.isEmpty()) {
-        m_newVersion.remove(0, 25);
-        m_newVersion.remove(13, m_newVersion.size() - 13);
-        m_resources[0]->setNewVersion(m_newVersion);
-        m_resources[0]->setState(AbstractResource::Upgradeable);
-    }
 }
 
 void RpmOstreeBackend::executeCheckUpdateProcess()
@@ -179,11 +168,20 @@ void RpmOstreeBackend::executeCheckUpdateProcess()
 
 void RpmOstreeBackend::readUpdateOutput(QIODevice *device)
 {
+    QString newVersionFound;
+
     QTextStream stream(device);
     for (QString line = stream.readLine(); stream.readLineInto(&line);) {
         if (line.contains(QLatin1String("Version"))) {
-            m_newVersion = line;
+            newVersionFound = line;
         }
+    }
+
+    if (!newVersionFound.isEmpty()) {
+        newVersionFound.remove(0, 25);
+        newVersionFound.remove(13, newVersionFound.size() - 13);
+        m_resources[0]->setNewVersion(newVersionFound);
+        m_resources[0]->setState(AbstractResource::Upgradeable);
     }
 }
 
