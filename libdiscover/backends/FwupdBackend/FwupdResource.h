@@ -140,8 +140,6 @@ private:
     bool m_isOnlyOffline = false; // True if only offline updates
     bool m_isLiveUpdatable = false; // True if device is live updatable
     bool m_needsReboot = false; // True if device needs Reboot
-    bool m_isDeviceRemoval = false; // True if device is Removal
-    bool m_needsBootLoader = false; // True if BootLoader Required
     QString m_origin;
 };
 
