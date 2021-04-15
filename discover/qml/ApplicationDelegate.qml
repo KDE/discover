@@ -106,7 +106,7 @@ Kirigami.AbstractCard
                 Label {
                     Layout.fillWidth: true
                     text: delegateArea.application.rating ? i18np("%1 rating", "%1 ratings", delegateArea.application.rating.ratingCount) : i18n("No ratings yet")
-                    visible: delegateArea.application.rating || delegateArea.application.backend.reviewsBackend.isResourceSupported(delegateArea.application)
+                    visible: delegateArea.application.rating || (delegateArea.application.backend.reviewsBackend && delegateArea.application.backend.reviewsBackend.isResourceSupported(delegateArea.application))
                     opacity: 0.5
                     elide: Text.ElideRight
                 }
