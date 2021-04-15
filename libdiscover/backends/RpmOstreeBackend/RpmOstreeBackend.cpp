@@ -152,6 +152,7 @@ void RpmOstreeBackend::executeCheckUpdateProcess()
         QByteArray readError = process->readAllStandardError();
     });
 
+    toggleFetching();
     // delete process instance when done, and get the exit status to handle errors.
     connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
         qWarning() << "process exited with code " << exitCode << exitStatus;
@@ -288,7 +289,6 @@ void RpmOstreeBackend::checkForUpdates()
         return;
     executeCheckUpdateProcess();
     executeRemoteRefsProcess();
-    QTimer::singleShot(500, this, &RpmOstreeBackend::toggleFetching);
 }
 
 void RpmOstreeBackend::perfromSystemUpgrade(QString selectedRefs)
