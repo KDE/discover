@@ -31,6 +31,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(RpmOstreeResource *app, const AddonLi
 
 void RpmOstreeTransaction::iterateTransaction(QString text, unsigned int percentage)
 {
+    Q_UNUSED(text);
     if (progress() < 100) {
         setProgress(percentage);
     }

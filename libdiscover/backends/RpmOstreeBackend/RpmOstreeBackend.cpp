@@ -76,10 +76,10 @@ private:
 
 RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
-    , isDeploymentUpdate(true)
-    , m_fetching(true)
     , m_reviews(AppStreamIntegration::global()->reviews())
     , m_updater(new StandardBackendUpdater(this))
+    , m_fetching(true)
+    , isDeploymentUpdate(true)
 {
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &RpmOstreeBackend::updatesCountChanged);
     getDeployments();
@@ -191,13 +191,13 @@ void RpmOstreeBackend::executeCheckUpdateProcess()
 
     // delete process instance when done, and get the exit status to handle errors.
     connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus exitStatus) {
-        qWarning() << "process exited with code " << exitCode;
+        qWarning() << "process exited with code " << exitCode << exitStatus;
         toggleFetching();
         process->deleteLater();
     });
 
     process->setProcessChannelMode(QProcess::MergedChannels);
-    process->start(QStringLiteral("rpm-ostree update --check"));
+    process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("update"), QStringLiteral("--check")});
 }
 
 void RpmOstreeBackend::getQProcessUpdateOutput(QByteArray readOutput)
@@ -236,7 +236,8 @@ void RpmOstreeBackend::executeRemoteRefsProcess()
     });
 
     process->setProcessChannelMode(QProcess::MergedChannels);
-    process->start(QStringLiteral("ostree --repo=/ostree/repo remote refs kinoite"));
+    process->start(QStringLiteral("ostree"),
+                   {QStringLiteral("--repo=/ostree/repo"), QStringLiteral("remote"), QStringLiteral("refs"), QStringLiteral("kinoite")});
 }
 
 void RpmOstreeBackend::getQProcessRefsOutput(QByteArray readOutput)

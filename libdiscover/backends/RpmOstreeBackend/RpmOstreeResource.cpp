@@ -28,9 +28,9 @@ RpmOstreeResource::RpmOstreeResource(QString name,
     , m_signature(signature)
     , m_layeredPackages(layeredPackages)
     , m_localPackages(localPackages)
+    , m_state(AbstractResource::None)
     , m_currentRefs(origin)
     , m_releaseDate(QDateTime::fromSecsSinceEpoch(timestamp).date())
-    , m_state(AbstractResource::None)
 {
     connect(this, &RpmOstreeResource::buttonPressed, parent, &RpmOstreeBackend::perfromSystemUpgrade);
 }

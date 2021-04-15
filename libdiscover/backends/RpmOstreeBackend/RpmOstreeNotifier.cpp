@@ -44,13 +44,13 @@ void RpmOstreeNotifier::recheckSystemUpdateNeeded()
 
     // delete process instance when done, and get the exit status to handle errors.
     QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus exitStatus) {
-        qWarning() << "process exited with code " << exitCode;
+        qWarning() << "process exited with code " << exitCode << exitStatus;
         recheckSystemUpdate();
         process->deleteLater();
     });
 
     process->setProcessChannelMode(QProcess::MergedChannels);
-    process->start(QStringLiteral("rpm-ostree update --check"));
+    process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("update"), QStringLiteral("--check")});
 }
 
 void RpmOstreeNotifier::recheckSystemUpdate()
