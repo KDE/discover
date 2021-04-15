@@ -18,8 +18,8 @@ DiscoverPage
     readonly property var resourcesUpdatesModel: ResourcesUpdatesModel {
         id: resourcesUpdatesModel
         onPassiveMessage: {
-            desc.text += message + "<br/>\n"
-            sheet.sheetOpen = true
+            desc.text = xi18nc("@info", "%1<nl/><nl/>Please report this issue to the packagers of your distribution.", message);
+            sheet.sheetOpen = true;
         }
         onIsProgressingChanged: {
             if (!isProgressing) {
