@@ -159,7 +159,7 @@ FwupdResource *FwupdBackend::createApp(FwupdDevice *device)
 
     if (!app->isLiveUpdatable()) {
         qWarning() << "Fwupd Error: " << app->name() << "[" << app->id() << "]"
-                   << "cannot be updated ";
+                   << "cannot be updated";
         return nullptr;
     }
 
@@ -295,8 +295,8 @@ static void fwupd_client_refresh_remote_cb(GObject * /*source*/, GAsyncResult *r
 {
     FwupdBackend *helper = (FwupdBackend *)user_data;
     g_autoptr(GError) error = nullptr;
-    fwupd_client_refresh_remote_finish(helper->client, res, &error);
-    if (error)
+    const bool successful = fwupd_client_refresh_remote_finish(helper->client, res, &error);
+    if (!successful)
         helper->handleError(error);
 }
 
