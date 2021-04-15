@@ -78,7 +78,7 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
     , m_reviews(AppStreamIntegration::global()->reviews())
     , m_updater(new StandardBackendUpdater(this))
-    , m_fetching(true)
+    , m_fetching(false)
     , m_isDeploymentUpdate(true)
 {
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &RpmOstreeBackend::updatesCountChanged);
