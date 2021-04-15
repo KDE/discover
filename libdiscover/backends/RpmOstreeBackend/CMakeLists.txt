@@ -12,11 +12,7 @@ target_link_libraries(rpmostree-backend PRIVATE Discover::Common Qt5::DBus KF5::
 install(TARGETS rpmostree-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
 
 add_library(RpmOstreeNotifier MODULE RpmOstreeNotifier.cpp)
-target_link_libraries(RpmOstreeNotifier Discover::Notifiers Qt5::Concurrent PkgConfig::Flatpak)
+target_link_libraries(RpmOstreeNotifier Discover::Notifiers)
 set_target_properties(RpmOstreeNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 install(TARGETS RpmOstreeNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
-
-
-
-
