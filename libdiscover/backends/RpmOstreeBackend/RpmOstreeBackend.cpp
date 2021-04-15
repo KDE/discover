@@ -149,13 +149,13 @@ void RpmOstreeBackend::executeCheckUpdateProcess()
     QProcess *process = new QProcess(this);
 
     connect(process, &QProcess::readyReadStandardError, [process]() {
-        QByteArray readError = process->readAllStandardError();
+        qDebug() << "rpm-ostree errors" << process->readAllStandardError().constData();
     });
 
     toggleFetching();
     // delete process instance when done, and get the exit status to handle errors.
     connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
-        qWarning() << "process exited with code " << exitCode << exitStatus;
+        qDebug() << "process exited with code " << exitCode << exitStatus;
         if (exitCode == 0) {
             readUpdateOutput(process);
         }
@@ -191,12 +191,12 @@ void RpmOstreeBackend::executeRemoteRefsProcess()
     QProcess *process = new QProcess(this);
 
     connect(process, &QProcess::readyReadStandardError, [process]() {
-        QByteArray readError = process->readAllStandardError();
+        qDebug() << "rpm-ostree errors" << process->readAllStandardError().constData();
     });
 
     // delete process instance when done, and get the exit status to handle errors.
     QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus exitStatus) {
-        qWarning() << "process exited with code " << exitCode << exitStatus;
+        qDebug() << "process exited with code " << exitCode << exitStatus;
         if (exitCode == 0) {
             readRefsOutput(process);
         }
