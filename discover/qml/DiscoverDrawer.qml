@@ -105,8 +105,6 @@ Kirigami.GlobalDrawer {
     ColumnLayout {
         spacing: 0
         Layout.fillWidth: true
-        Layout.leftMargin: -drawer.leftPadding
-        Layout.rightMargin: -drawer.rightPadding
 
         Kirigami.Separator {
             Layout.fillWidth: true
