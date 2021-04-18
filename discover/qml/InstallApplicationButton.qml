@@ -73,10 +73,10 @@ ConditionalLoader
             ToolTip.text: root.cancelAction.text
         }
 
-        LabelBackground {
+        ProgressLabel {
             Layout.fillWidth: true
             text: listener.statusText
-            progress: listener.progress/100
+            value: listener.progress/100
         }
     }
 
