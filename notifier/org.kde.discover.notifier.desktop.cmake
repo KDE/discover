@@ -21,6 +21,7 @@ Name[hu]=Discover
 Name[ia]=Discover (Discoperi)
 Name[id]=Discover
 Name[it]=Discover
+Name[ja]=Discover
 Name[ko]=둘러보기
 Name[lt]=Discover
 Name[ml]=കണ്ടെത്തുക
