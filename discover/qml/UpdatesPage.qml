@@ -365,7 +365,7 @@ DiscoverPage
         },
         State {
             name: "reboot"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "The system requires a restart to apply updates") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "The system must be restarted to fully to apply the installed updates") }
             PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: restartButton; visible: true }
         },
@@ -395,7 +395,7 @@ DiscoverPage
         },
         State {
             name: "unknown"
-            PropertyChanges { target: page; title: i18nc("@info", "It is unknown when the last check for updates was") }
+            PropertyChanges { target: page; title: i18nc("@info", "Time of last update unknown") }
             PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: page.actions; main: refreshAction }
         }
