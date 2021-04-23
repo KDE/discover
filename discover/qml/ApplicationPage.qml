@@ -199,7 +199,11 @@ DiscoverPage {
             id: addonsButton
             text: i18n("Addons")
             visible: addonsView.containsAddons
-            onClicked: addonsView.sheetOpen = true
+            onClicked: if (addonsView.addonsCount === 0) {
+                Navigation.openExtends(application.appstreamId)
+            } else {
+                addonsView.sheetOpen = true
+            }
         }
 
 

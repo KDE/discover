@@ -11,6 +11,7 @@ Kirigami.OverlaySheet {
 
     property alias application: addonsModel.application
     property bool isInstalling: false
+    readonly property alias addonsCount: listview.count
     readonly property bool containsAddons: listview.count > 0 || isExtended
     readonly property bool isExtended: ResourcesModel.isExtended(application.appstreamId)
 
