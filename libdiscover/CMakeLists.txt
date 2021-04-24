@@ -48,7 +48,7 @@ if(TARGET AppStreamQt)
         appstream/AppStreamIntegration.cpp
         appstream/AppStreamUtils.cpp
     )
-    target_link_libraries(DiscoverCommon PRIVATE AppStreamQt)
+    target_link_libraries(DiscoverCommon PRIVATE Qt::Concurrent AppStreamQt)
 
     if(AppStreamQt_VERSION VERSION_GREATER 0.12.4)
         target_compile_definitions(DiscoverCommon PRIVATE -DAPPSTREAM_HAS_SPDX=1)
