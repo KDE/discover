@@ -19,7 +19,7 @@ ecm_qt_declare_logging_category(packagekit-backend_SRCS HEADER libdiscover_backe
 
 add_library(packagekit-backend MODULE ${packagekit-backend_SRCS})
 
-target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt5::Core PK::packagekitqt5 KF5::ConfigGui KF5::KIOCore KF5::Archive AppStreamQt)
+target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt5::Core Qt5::Concurrent PK::packagekitqt5 KF5::ConfigGui KF5::KIOCore KF5::Archive AppStreamQt)
 install(TARGETS packagekit-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
 
 if(TARGET PkgConfig::Markdown)
