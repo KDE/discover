@@ -293,6 +293,6 @@ Comment[sl]=Neuspešen popravek po posodobitvi brez povezave
 Comment[sv]=Reparera fel efter nedkopplad uppdatering
 Comment[uk]=Не вдалося відновитися після автономного оновлення
 Comment[x-test]=xxRepair failure after offline updatexx
-Comment[zh_CN]=离线更新修复失败
+Comment[zh_CN]=离线更新后修复失败
 Urgency=High
 Action=Popup
