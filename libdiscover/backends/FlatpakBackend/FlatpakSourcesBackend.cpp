@@ -326,7 +326,11 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
         }
     }
 
-    FlatpakSourceItem *it = new FlatpakSourceItem(!title.isEmpty() ? title : id);
+    QString label = !title.isEmpty() ? title : id;
+    if (flatpak_installation_get_is_user(installation)) {
+        label = i18n("%1 (user)", label);
+    }
+    FlatpakSourceItem *it = new FlatpakSourceItem(label);
     it->setData(remoteUrl.isLocalFile() ? remoteUrl.toLocalFile() : remoteUrl.host(), Qt::ToolTipRole);
     it->setData(remoteUrl, Qt::StatusTipRole);
     it->setData(id, IdRole);
