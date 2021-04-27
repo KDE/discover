@@ -8,7 +8,7 @@ X-KDE-ParentApp=kcontrol
 
 X-KDE-System-Settings-Parent-Category=system-administration
 
-Name=Software Updates
+Name=Software Update
 Name[ar]=التّحديثات
 Name[ast]=Anovamientos
 Name[az]=Yeniləmələr
@@ -56,7 +56,7 @@ Name[uk]=Оновлення
 Name[x-test]=xxUpdatesxx
 Name[zh_CN]=更新
 Name[zh_TW]=更新
-Comment=Configure software updates integration
+Comment=Configure software update behavior
 Comment[az]=Proqram təminatı inteqrasiyasını tənzimləyin
 Comment[ca]=Configura la integració de les actualitzacions de programari
 Comment[cs]=Nastavit integraci aktualizací software

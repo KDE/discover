@@ -29,7 +29,7 @@ Updates::Updates(QObject *parent, const QVariantList &args)
     qmlRegisterAnonymousType<DiscoverSettings>("org.kde.discover.updates", 1);
 
     setAboutData(new KAboutData(QStringLiteral("kcm_updates"),
-                                i18n("Software Updates"),
+                                i18n("Software Update"),
                                 QStringLiteral("1.0"),
                                 i18n("Configure software update settings"),
                                 KAboutLicense::LGPL));
