@@ -151,7 +151,7 @@ Keywords[zh_CN]=程序;软件;软件源;包;安装;移除;更新;应用程序;�
 Keywords[zh_TW]=program;software;repository;package;install;remove;update;apps;applications;
 
 [Desktop Action Updates]
-Name=Updates
+Name=See Available Updates
 Name[ar]=التّحديثات
 Name[ast]=Anovamientos
 Name[az]=Yeniləmələr
@@ -199,5 +199,5 @@ Name[uk]=Оновлення
 Name[x-test]=xxUpdatesxx
 Name[zh_CN]=更新
 Name[zh_TW]=更新
-Icon=system-software-update
+Icon=update-low
 Exec=plasma-discover --mode update
