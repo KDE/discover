@@ -102,9 +102,17 @@ int main(int argc, char **argv)
                      i18n("An application explorer"),
                      KAboutLicense::GPL,
                      i18n("© 2010-2020 Plasma Development Team"));
-    about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), QStringLiteral("aleixpol@kde.org"));
-    about.addAuthor(i18n("Nate Graham"), i18n("Quality Assurance, Design and Usability"), QStringLiteral("nate@kde.org"));
-    about.addAuthor(i18n("Dan Leinir Turthra Jensen"), i18n("KNewStuff"), QStringLiteral("admin@leinir.dk"));
+    about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), QStringLiteral("aleixpol@kde.org"), QStringLiteral("https://proli.net"), QStringLiteral("apol"));
+    about.addAuthor(i18n("Nate Graham"),
+                    i18n("Quality Assurance, Design and Usability"),
+                    QStringLiteral("nate@kde.org"),
+                    QStringLiteral("https://pointieststick.com/"),
+                    QStringLiteral("ngraham"));
+    about.addAuthor(i18n("Dan Leinir Turthra Jensen"),
+                    i18n("KNewStuff"),
+                    QStringLiteral("admin@leinir.dk"),
+                    QStringLiteral("https://leinir.dk/"),
+                    QStringLiteral("leinir"));
     about.setProductName("discover/discover");
     about.setProgramLogo(app.windowIcon());
 
