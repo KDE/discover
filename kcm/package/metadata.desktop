@@ -4,33 +4,6 @@
 
 [Desktop Entry]
 Name=Software Update
-Name[az]=Proqram Təminatı Yenilənmələri
-Name[ca]=Actualitzacions de programari
-Name[cs]=Aktualizace software
-Name[de]=Softwareaktualisierungen
-Name[en_GB]=Software Updates
-Name[es]=Actualizaciones de software
-Name[eu]=Software eguneratzeak
-Name[fi]=Ohjelmapäivitykset
-Name[fr]=Mises à jour des logiciels 
-Name[hu]=Szoftverfrissítések
-Name[ia]=Actualisationes de Software
-Name[id]=Pembaruan Perangkat Lunak
-Name[it]=Aggiornamenti software
-Name[lt]=Programinės įrangos atnaujinimai
-Name[nl]=Elementen voor software bijwerken
-Name[nn]=Program­oppdateringar
-Name[pa]=ਸਾਫਟਵੇਅਰ ਅੱਪਡੇਟ ਹਨ
-Name[pl]=Uaktualnienia oprogramowania
-Name[pt]=Actualizações de Aplicações
-Name[pt_BR]=Atualização de aplicativos
-Name[ru]=Обновления программ
-Name[sk]=Aktualizácie softvéru
-Name[sl]=Posodobitve programja
-Name[sv]=Uppdateringar av programvara
-Name[uk]=Оновлення програм
-Name[x-test]=xxSoftware Updatesxx
-Name[zh_CN]=软件更新
 
 Icon=system-software-update
 Type=Service
