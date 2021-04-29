@@ -9,6 +9,20 @@ X-KDE-ParentApp=kcontrol
 X-KDE-System-Settings-Parent-Category=system-administration
 
 Name=Software Update
+Name[az]=Proqram Təminatı Yenilənməsi
+Name[ca]=Actualització de programari
+Name[de]=Softwareaktualisierung
+Name[nl]=Bijwerken van software
+Name[sv]=Uppdatering av programvara
+Name[uk]=Оновлення програм
+Name[x-test]=xxSoftware Updatexx
 Comment=Configure software update behavior
+Comment[az]=Proqram təminatı yenilənməsi davranışını ayarlayın
+Comment[ca]=Configura el comportament de l'actualització de programari
+Comment[de]=Verhalten der Softwareaktualisierungen einrichten
+Comment[nl]=Gedrag van software bijwerken configureren
+Comment[sv]=Anpassa beteende för uppdateringar av programvara
+Comment[uk]=Налаштовування поведінки при оновленні програм
+Comment[x-test]=xxConfigure software update behaviorxx
 
 Categories=Qt;KDE;

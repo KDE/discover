@@ -4,6 +4,13 @@
 
 [Desktop Entry]
 Name=Software Update
+Name[az]=Proqram Təminatı Yenilənməsi
+Name[ca]=Actualització de programari
+Name[de]=Softwareaktualisierung
+Name[nl]=Bijwerken van software
+Name[sv]=Uppdatering av programvara
+Name[uk]=Оновлення програм
+Name[x-test]=xxSoftware Updatexx
 
 Icon=system-software-update
 Type=Service
