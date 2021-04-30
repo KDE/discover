@@ -95,22 +95,29 @@ void FlatpakTransactionThread::run()
         bool correct = false;
         if (m_app->state() == AbstractResource::Upgradeable && m_app->isInstalled()) {
             correct = flatpak_transaction_add_update(m_transaction, refName.toUtf8().constData(), nullptr, nullptr, &localError);
-        } else {
-            if (m_app->flatpakFileType() == QLatin1String("flatpak")) {
-                g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
-                if (!file) {
-                    qWarning() << "Failed to install bundled application" << refName;
-                    m_result = false;
-                    return;
-                }
-                correct = flatpak_transaction_add_install_bundle(m_transaction, file, nullptr, &localError);
-            } else {
-                correct = flatpak_transaction_add_install(m_transaction, //
-                                                          m_app->origin().toUtf8().constData(),
-                                                          refName.toUtf8().constData(),
-                                                          nullptr,
-                                                          &localError);
+        } else if (m_app->flatpakFileType() == QLatin1String("flatpak")) {
+            g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
+            if (!file) {
+                qWarning() << "Failed to install bundled application" << refName;
+                m_result = false;
+                return;
             }
+            correct = flatpak_transaction_add_install_bundle(m_transaction, file, nullptr, &localError);
+        } else if (m_app->flatpakFileType() == QLatin1String("flatpakref") && m_app->resourceFile().isLocalFile()) {
+            g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
+            if (!file) {
+                qWarning() << "Failed to install flatpakref application" << refName;
+                m_result = false;
+                return;
+            }
+            g_autoptr(GBytes) bytes = g_file_load_bytes(file, m_cancellable, nullptr, &localError);
+            correct = flatpak_transaction_add_install_flatpakref(m_transaction, bytes, &localError);
+        } else {
+            correct = flatpak_transaction_add_install(m_transaction, //
+                                                      m_app->origin().toUtf8().constData(),
+                                                      refName.toUtf8().constData(),
+                                                      nullptr,
+                                                      &localError);
         }
 
         if (!correct) {
@@ -118,7 +125,7 @@ void FlatpakTransactionThread::run()
             m_errorMessage = QString::fromUtf8(localError->message);
             // We are done so we can set the progress to 100
             setProgress(100);
-            qWarning() << "Failed to install" << refName << ':' << m_errorMessage;
+            qWarning() << "Failed to install" << m_app->flatpakFileType() << refName << ':' << m_errorMessage;
             return;
         }
     } else if (m_role == Transaction::Role::RemoveRole) {
