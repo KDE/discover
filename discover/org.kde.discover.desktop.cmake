@@ -152,5 +152,14 @@ Keywords[zh_TW]=program;software;repository;package;install;remove;update;apps;a
 
 [Desktop Action Updates]
 Name=See Available Updates
+Name[az]=Əlçatan yenilənmələrə baxın
+Name[ca]=Mostra les actualitzacions disponibles
+Name[de]=Zeigt verfügbare Aktualisierungen
+Name[es]=Ver las actualizaciones disponibles
+Name[nl]=Zie beschikbare elementen voor bijwerken
+Name[sl]=Poglej razpoložljive posodobitve
+Name[sv]=Se Tillgängliga uppdateringar
+Name[uk]=Перегляд доступних оновлень
+Name[x-test]=xxSee Available Updatesxx
 Icon=update-low
 Exec=plasma-discover --mode update
