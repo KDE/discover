@@ -140,25 +140,29 @@ public:
 
     void start()
     {
+        if (m_url.isLocalFile()) {
+            processFile(m_url);
+            return;
+        }
+
         QNetworkRequest req(m_url);
         req.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
         auto replyGet = get(req);
         connect(replyGet, &QNetworkReply::finished, this, [this, replyGet] {
             QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(replyGet);
-            const QUrl originalUrl = replyGet->request().url();
             if (replyGet->error() != QNetworkReply::NoError) {
-                qWarning() << "couldn't download" << originalUrl << replyGet->errorString();
+                qWarning() << "couldn't download" << m_url << replyGet->errorString();
                 Q_EMIT jobFinished(false, nullptr);
                 return;
             }
 
             const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::TempLocation) //
-                                                     + QLatin1Char('/') + originalUrl.fileName());
+                                                     + QLatin1Char('/') + m_url.fileName());
             auto replyPut = put(QNetworkRequest(fileUrl), replyGet->readAll());
-            connect(replyPut, &QNetworkReply::finished, this, [this, originalUrl, fileUrl, replyPut]() {
+            connect(replyPut, &QNetworkReply::finished, this, [this, fileUrl, replyPut]() {
                 QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(replyPut);
                 if (replyPut->error() != QNetworkReply::NoError) {
-                    qWarning() << "couldn't save" << originalUrl << replyPut->errorString();
+                    qWarning() << "couldn't save" << m_url << replyPut->errorString();
                     Q_EMIT jobFinished(false, nullptr);
                     return;
                 }
@@ -167,24 +171,32 @@ public:
                     return;
                 }
 
-                FlatpakResource *resource = nullptr;
-                if (fileUrl.path().endsWith(QLatin1String(".flatpak"))) {
-                    resource = m_backend->addAppFromFlatpakBundle(fileUrl);
-                } else if (fileUrl.path().endsWith(QLatin1String(".flatpakref"))) {
-                    resource = m_backend->addAppFromFlatpakRef(fileUrl);
-                } else if (fileUrl.path().endsWith(QLatin1String(".flatpakrepo"))) {
-                    resource = m_backend->addSourceFromFlatpakRepo(fileUrl);
-                }
-
-                if (resource) {
-                    resource->setResourceFile(originalUrl);
-                    Q_EMIT jobFinished(true, resource);
-                } else {
-                    qWarning() << "couldn't create resource from" << fileUrl.toLocalFile();
-                    Q_EMIT jobFinished(false, nullptr);
-                }
+                processFile(fileUrl);
             });
         });
+    }
+
+    void processFile(const QUrl &fileUrl)
+    {
+        FlatpakResource *resource = nullptr;
+        const auto path = fileUrl.toLocalFile();
+        if (path.endsWith(QLatin1String(".flatpak"))) {
+            resource = m_backend->addAppFromFlatpakBundle(fileUrl);
+        } else if (path.endsWith(QLatin1String(".flatpakref"))) {
+            resource = m_backend->addAppFromFlatpakRef(fileUrl);
+        } else if (path.endsWith(QLatin1String(".flatpakrepo"))) {
+            resource = m_backend->addSourceFromFlatpakRepo(fileUrl);
+        } else {
+            qWarning() << "unrecognized format" << fileUrl;
+        }
+
+        if (resource) {
+            resource->setResourceFile(m_url);
+            Q_EMIT jobFinished(true, resource);
+        } else {
+            qWarning() << "couldn't create resource from" << fileUrl << m_url;
+            Q_EMIT jobFinished(false, nullptr);
+        }
     }
 
 Q_SIGNALS:
