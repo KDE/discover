@@ -45,7 +45,9 @@ void SnapTransaction::finishTransaction()
     case QSnapdRequest::NeedsClassic:
         setStatus(SetupStatus);
         if (role() == Transaction::InstallRole) {
-            Q_EMIT proceedRequest(m_app->name(), i18n("This snap application needs security confinement measures disabled."));
+            Q_EMIT proceedRequest(m_app->name(),
+                                  i18n("This Snap application is not compatible with security sandboxing "
+                                       "and will have full access to this computer. Install it anyway?"));
             return;
         }
         break;
