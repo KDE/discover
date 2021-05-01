@@ -104,6 +104,11 @@ DiscoverPage {
 
     Kirigami.CardsListView {
         id: apps
+        activeFocusOnTab: true
+        currentIndex: -1
+        onActiveFocusChanged: if (activeFocus && currentIndex === -1) {
+            currentIndex = 0;
+        }
 
         section.delegate: Label {
             text: section
@@ -121,7 +126,6 @@ DiscoverPage {
                 apps.currentIndex = -1
             }
         }
-        currentIndex: -1
         delegate: ApplicationDelegate {
             application: model.application
             compact: !applicationWindow().wideScreen

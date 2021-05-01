@@ -94,7 +94,11 @@ DiscoverPage
     Kirigami.CardsListView {
         id: apps
         model: FeaturedModel {}
+        activeFocusOnTab: true
         Component.onCompleted: apps.bottomMargin = Kirigami.Units.largeSpacing * 2
+        onActiveFocusChanged: if (activeFocus && currentIndex === -1) {
+            currentIndex = 0;
+        }
         currentIndex: -1
         delegate: ApplicationDelegate {
             application: model.application
