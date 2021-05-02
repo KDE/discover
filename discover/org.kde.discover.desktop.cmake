@@ -157,6 +157,7 @@ Name[ca]=Mostra les actualitzacions disponibles
 Name[de]=Zeigt verfügbare Aktualisierungen
 Name[es]=Ver las actualizaciones disponibles
 Name[nl]=Zie beschikbare elementen voor bijwerken
+Name[pl]=Obejrzyj dostępne uaktualnienia
 Name[sl]=Poglej razpoložljive posodobitve
 Name[sv]=Se Tillgängliga uppdateringar
 Name[uk]=Перегляд доступних оновлень
