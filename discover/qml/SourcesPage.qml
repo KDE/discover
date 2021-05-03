@@ -163,7 +163,8 @@ DiscoverPage {
             visible: model.display.indexOf(page.search)>=0
             height: visible ? implicitHeight : 0
 
-            Keys.onReturnPressed: clicked()
+            Keys.onReturnPressed: enabledBox.clicked()
+            Keys.onSpacePressed: enabledBox.clicked()
             actions: [
                 Kirigami.Action {
                     iconName: "go-up"
