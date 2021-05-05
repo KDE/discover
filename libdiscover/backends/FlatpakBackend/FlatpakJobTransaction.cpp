@@ -25,7 +25,10 @@ FlatpakJobTransaction::FlatpakJobTransaction(FlatpakResource *app, Role role, bo
     }
 }
 
-FlatpakJobTransaction::~FlatpakJobTransaction() = default;
+FlatpakJobTransaction::~FlatpakJobTransaction()
+{
+    delete m_appJob;
+}
 
 void FlatpakJobTransaction::cancel()
 {
