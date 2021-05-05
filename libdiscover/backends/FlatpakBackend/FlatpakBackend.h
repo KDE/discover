@@ -53,14 +53,14 @@ public:
     {
         return true;
     }
-    FlatpakResource *addSourceFromFlatpakRepo(const QUrl &url);
     QStringList extends() const override
     {
         return m_extends;
     }
 
-    FlatpakResource *addAppFromFlatpakBundle(const QUrl &url);
-    FlatpakResource *addAppFromFlatpakRef(const QUrl &url);
+    void addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *stream);
+    void addAppFromFlatpakBundle(const QUrl &url, ResultsStream *stream);
+    void addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream);
     FlatpakResource *getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const;
 
     FlatpakSourcesBackend *sources() const

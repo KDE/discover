@@ -104,7 +104,11 @@ bool FlatpakSourcesBackend::addSource(const QString &id)
     };
 
     if (flatpakrepoUrl.isLocalFile()) {
-        addSource(backend->addSourceFromFlatpakRepo(flatpakrepoUrl));
+        auto stream = new ResultsStream(QStringLiteral("FlatpakSource-") + flatpakrepoUrl.toDisplayString());
+        backend->addSourceFromFlatpakRepo(flatpakrepoUrl, stream);
+        connect(stream, &ResultsStream::resourcesFound, this, [addSource](const QVector<AbstractResource *> &res) {
+            addSource(res.constFirst());
+        });
     } else {
         AbstractResourcesBackend::Filters filter;
         filter.resourceUrl = flatpakrepoUrl;

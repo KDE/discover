@@ -181,26 +181,16 @@ public:
 
     void processFile(const QUrl &fileUrl)
     {
-        FlatpakResource *resource = nullptr;
         const auto path = fileUrl.toLocalFile();
         if (path.endsWith(QLatin1String(".flatpak"))) {
-            resource = m_backend->addAppFromFlatpakBundle(fileUrl);
+            m_backend->addAppFromFlatpakBundle(fileUrl, m_stream);
         } else if (path.endsWith(QLatin1String(".flatpakref"))) {
-            resource = m_backend->addAppFromFlatpakRef(fileUrl);
+            m_backend->addAppFromFlatpakRef(fileUrl, m_stream);
         } else if (path.endsWith(QLatin1String(".flatpakrepo"))) {
-            resource = m_backend->addSourceFromFlatpakRepo(fileUrl);
+            m_backend->addSourceFromFlatpakRepo(fileUrl, m_stream);
         } else {
             qWarning() << "unrecognized format" << fileUrl;
         }
-
-        if (resource) {
-            resource->setResourceFile(fileUrl);
-            m_stream->resourcesFound({resource});
-        } else {
-            qWarning() << "couldn't create resource from" << fileUrl << m_url;
-        }
-        m_stream->finish();
-        deleteLater();
     }
 
 private:
@@ -281,8 +271,11 @@ FlatpakResource *FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) con
     return runtime;
 }
 
-FlatpakResource *FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
+void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *stream)
 {
+    auto x = qScopeGuard([stream] {
+        stream->finish();
+    });
     g_autoptr(GBytes) appstreamGz = nullptr;
     g_autoptr(GError) localError = nullptr;
     g_autoptr(GFile) file = nullptr;
@@ -294,7 +287,7 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
 
     if (!bundleRef) {
         qWarning() << "Failed to load bundle:" << localError->message;
-        return nullptr;
+        return;
     }
 
     gsize len = 0;
@@ -312,7 +305,7 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
         decompressor = g_zlib_decompressor_new(G_ZLIB_COMPRESSOR_FORMAT_GZIP);
         streamGz = g_memory_input_stream_new_from_bytes(appstreamGz);
         if (!streamGz) {
-            return nullptr;
+            return;
         }
 
         streamData = g_converter_input_stream_new(streamGz, G_CONVERTER(decompressor));
@@ -320,7 +313,7 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
         appstream = g_input_stream_read_bytes(streamData, 0x100000, m_cancellable, &localError);
         if (!appstream) {
             qWarning() << "Failed to extract appstream metadata from bundle:" << localError->message;
-            return nullptr;
+            return;
         }
 
         gsize len = 0;
@@ -331,7 +324,7 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
         AppStream::Metadata::MetadataError error = metadata.parse(QString::fromUtf8((char *)data, len), AppStream::Metadata::FormatKindXml);
         if (error != AppStream::Metadata::MetadataErrorNoError) {
             qWarning() << "Failed to parse appstream metadata: " << error;
-            return nullptr;
+            return;
         }
 
         const QList<AppStream::Component> components = metadata.components();
@@ -339,7 +332,7 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
             asComponent = AppStream::Component(components.first());
         } else {
             qWarning() << "Failed to parse appstream metadata";
-            return nullptr;
+            return;
         }
     } else {
         qWarning() << "No appstream metadata in bundle";
@@ -348,7 +341,7 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
         tempFile.setAutoRemove(false);
         if (!tempFile.open()) {
             qWarning() << "Failed to get metadata file";
-            return nullptr;
+            return;
         }
 
         tempFile.write(metadataContent);
@@ -367,7 +360,7 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
     if (!updateAppMetadata(resource, metadataContent)) {
         delete resource;
         qWarning() << "Failed to update metadata from app bundle";
-        return nullptr;
+        return;
     }
 
     g_autoptr(GBytes) iconData = flatpak_bundle_ref_get_icon(bundleRef, 128);
@@ -397,10 +390,10 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url)
     resource->setType(FlatpakResource::DesktopApp);
 
     addResource(resource);
-    return resource;
+    stream->resourcesFound({resource});
 }
 
-FlatpakResource *FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
+void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream)
 {
     QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
     const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
@@ -411,7 +404,9 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
         const auto resources = resourcesByAppstreamName(name);
         for (auto resource : resources) {
             if (resource->origin() == item->data(AbstractSourcesBackend::IdRole)) {
-                return static_cast<FlatpakResource *>(resource);
+                stream->resourcesFound({resource});
+                stream->finish();
+                return;
             }
         }
     }
@@ -421,7 +416,8 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     {
         QFile f(url.toLocalFile());
         if (!f.open(QFile::ReadOnly | QFile::Text)) {
-            return nullptr;
+            stream->finish();
+            return;
         }
 
         QByteArray contents = f.readAll();
@@ -432,10 +428,9 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
         if (!remoteRef) {
             qWarning() << "Failed to create install ref file:" << error->message;
             const auto resources = resourcesByAppstreamName(name);
-            if (!resources.isEmpty()) {
-                return qobject_cast<FlatpakResource *>(resources.constFirst());
-            }
-            return nullptr;
+            stream->resourcesFound(resources);
+            stream->finish();
+            return;
         }
     }
 
@@ -467,7 +462,8 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
     if (!runtimeUrl.isEmpty()) {
         // We need to fetch metadata to find information about required runtime
         auto fw = new QFutureWatcher<QByteArray>(this);
-        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, resource, fw, runtimeUrl]() {
+        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, resource, fw, runtimeUrl, stream]() {
+            fw->deleteLater();
             const auto metadata = fw->result();
             // Even when we failed to fetch information about runtime we still want to show the application
             if (metadata.isEmpty()) {
@@ -477,33 +473,40 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 
                 auto runtime = getRuntimeForApp(resource);
                 if (!runtime || (runtime && !runtime->isInstalled())) {
-                    auto stream = new ResultsStream(QLatin1String("FlatpakStream-searchrepo-") + runtimeUrl.toString());
-                    connect(stream, &ResultsStream::resourcesFound, this, [this, resource](const QVector<AbstractResource *> &resources) {
+                    auto repoStream = new ResultsStream(QLatin1String("FlatpakStream-searchrepo-") + runtimeUrl.toString());
+                    connect(repoStream, &ResultsStream::resourcesFound, this, [this, resource, stream](const QVector<AbstractResource *> &resources) {
                         for (auto res : resources) {
                             installApplication(res);
                         }
                         addResource(resource);
+                        stream->resourcesFound({resource});
+                        stream->finish();
                     });
 
-                    auto fetchRemoteResource = new FlatpakFetchRemoteResourceJob(runtimeUrl, stream, this);
+                    auto fetchRemoteResource = new FlatpakFetchRemoteResourceJob(runtimeUrl, repoStream, this);
                     fetchRemoteResource->start();
                     return;
                 } else {
                     addResource(resource);
                 }
             }
-            fw->deleteLater();
+            stream->resourcesFound({resource});
+            stream->finish();
         });
         fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, resource, m_cancellable));
     } else {
         addResource(resource);
+        stream->resourcesFound({resource});
+        stream->finish();
     }
 
-    return resource;
 }
 
-FlatpakResource *FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
+void FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *stream)
 {
+    auto x = qScopeGuard([stream] {
+        stream->finish();
+    });
     Q_ASSERT(url.isLocalFile());
     QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
 
@@ -512,11 +515,11 @@ FlatpakResource *FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
     const QString repoUrl = settings.value(QStringLiteral("Flatpak Repo/Url")).toString();
 
     if (gpgKey.isEmpty() || title.isEmpty() || repoUrl.isEmpty()) {
-        return nullptr;
+        return;
     }
 
     if (gpgKey.startsWith(QLatin1String("http://")) || gpgKey.startsWith(QLatin1String("https://"))) {
-        return nullptr;
+        return;
     }
 
     AppStream::Component asComponent;
@@ -549,7 +552,7 @@ FlatpakResource *FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url)
         resource->setState(AbstractResource::State::Installed);
     }
 
-    return resource;
+    stream->resourcesFound({resource});
 }
 
 void FlatpakBackend::addResource(FlatpakResource *resource)
