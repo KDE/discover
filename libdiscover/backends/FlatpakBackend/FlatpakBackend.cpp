@@ -427,9 +427,11 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
         remoteRef = flatpak_installation_install_ref_file(preferredInstallation(), bytes, m_cancellable, &error);
         if (!remoteRef) {
             qWarning() << "Failed to create install ref file:" << error->message;
-            const auto resources = resourcesByAppstreamName(name);
-            stream->resourcesFound(resources);
-            stream->finish();
+            AbstractResourcesBackend::Filters filter;
+            filter.resourceUrl = QUrl(QLatin1String("appstream://") + name);
+            auto streamKnown = search(filter);
+            connect(streamKnown, &ResultsStream::resourcesFound, stream, &ResultsStream::resourcesFound);
+            connect(streamKnown, &ResultsStream::destroyed, stream, &ResultsStream::finish);
             return;
         }
     }
