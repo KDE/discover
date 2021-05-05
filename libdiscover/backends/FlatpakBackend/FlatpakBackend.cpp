@@ -1333,8 +1333,8 @@ Transaction *FlatpakBackend::installApplication(AbstractResource *app, const Add
             m_refreshAppstreamMetadataJobs++;
             // Make sure we update appstream metadata first
             // FIXME we have to let flatpak to return the remote as the one created by FlatpakSourcesBackend will not have appstream directory
-            auto repo = flatpak_installation_get_remote_by_name(preferredInstallation(), flatpak_remote_get_name(remote), nullptr, nullptr);
-            refreshAppstreamMetadata(preferredInstallation(), repo);
+            auto repo = flatpak_installation_get_remote_by_name(resource->installation(), flatpak_remote_get_name(remote), m_cancellable, nullptr);
+            refreshAppstreamMetadata(resource->installation(), repo);
         }
         return nullptr;
     }
