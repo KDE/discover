@@ -131,17 +131,21 @@ class FlatpakFetchRemoteResourceJob : public QNetworkAccessManager
 {
     Q_OBJECT
 public:
-    FlatpakFetchRemoteResourceJob(const QUrl &url, FlatpakBackend *backend)
+    FlatpakFetchRemoteResourceJob(const QUrl &url, ResultsStream *stream, FlatpakBackend *backend)
         : QNetworkAccessManager(backend)
         , m_backend(backend)
+        , m_stream(stream)
         , m_url(url)
     {
+        connect(stream, &ResultsStream::destroyed, this, &QObject::deleteLater);
     }
 
     void start()
     {
         if (m_url.isLocalFile()) {
-            processFile(m_url);
+            QTimer::singleShot(0, m_stream, [this] {
+                processFile(m_url);
+            });
             return;
         }
 
@@ -152,10 +156,9 @@ public:
             QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(replyGet);
             if (replyGet->error() != QNetworkReply::NoError) {
                 qWarning() << "couldn't download" << m_url << replyGet->errorString();
-                Q_EMIT jobFinished(false, nullptr);
+                m_stream->finish();
                 return;
             }
-
             const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::TempLocation) //
                                                      + QLatin1Char('/') + m_url.fileName());
             auto replyPut = put(QNetworkRequest(fileUrl), replyGet->readAll());
@@ -163,11 +166,11 @@ public:
                 QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(replyPut);
                 if (replyPut->error() != QNetworkReply::NoError) {
                     qWarning() << "couldn't save" << m_url << replyPut->errorString();
-                    Q_EMIT jobFinished(false, nullptr);
+                    m_stream->finish();
                     return;
                 }
                 if (!fileUrl.isLocalFile()) {
-                    Q_EMIT jobFinished(false, nullptr);
+                    m_stream->finish();
                     return;
                 }
 
@@ -191,19 +194,18 @@ public:
         }
 
         if (resource) {
-            resource->setResourceFile(m_url);
-            Q_EMIT jobFinished(true, resource);
+            resource->setResourceFile(fileUrl);
+            m_stream->resourcesFound({resource});
         } else {
             qWarning() << "couldn't create resource from" << fileUrl << m_url;
-            Q_EMIT jobFinished(false, nullptr);
         }
+        m_stream->finish();
+        deleteLater();
     }
-
-Q_SIGNALS:
-    void jobFinished(bool success, FlatpakResource *resource);
 
 private:
     FlatpakBackend *const m_backend;
+    ResultsStream *const m_stream;
     const QUrl m_url;
 };
 
@@ -475,16 +477,15 @@ FlatpakResource *FlatpakBackend::addAppFromFlatpakRef(const QUrl &url)
 
                 auto runtime = getRuntimeForApp(resource);
                 if (!runtime || (runtime && !runtime->isInstalled())) {
-                    FlatpakFetchRemoteResourceJob *fetchRemoteResource = new FlatpakFetchRemoteResourceJob(runtimeUrl, this);
-                    connect(fetchRemoteResource,
-                            &FlatpakFetchRemoteResourceJob::jobFinished,
-                            this,
-                            [this, resource](bool success, FlatpakResource *repoResource) {
-                                if (success) {
-                                    installApplication(repoResource);
-                                }
-                                addResource(resource);
-                            });
+                    auto stream = new ResultsStream(QLatin1String("FlatpakStream-searchrepo-") + runtimeUrl.toString());
+                    connect(stream, &ResultsStream::resourcesFound, this, [this, resource](const QVector<AbstractResource *> &resources) {
+                        for (auto res : resources) {
+                            installApplication(res);
+                        }
+                        addResource(resource);
+                    });
+
+                    auto fetchRemoteResource = new FlatpakFetchRemoteResourceJob(runtimeUrl, stream, this);
                     fetchRemoteResource->start();
                     return;
                 } else {
@@ -1196,20 +1197,11 @@ bool FlatpakBackend::flatpakResourceLessThan(AbstractResource *l, AbstractResour
 
 ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
-    if (filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakrepo")) || filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpakref"))
-        || filter.resourceUrl.fileName().endsWith(QLatin1String(".flatpak"))) {
-        auto stream = new ResultsStream(QLatin1String("FlatpakStream-http-") + filter.resourceUrl.fileName());
-
-        FlatpakFetchRemoteResourceJob *fetchResourceJob = new FlatpakFetchRemoteResourceJob(filter.resourceUrl, this);
-        connect(fetchResourceJob, &FlatpakFetchRemoteResourceJob::jobFinished, this, [fetchResourceJob, stream](bool success, FlatpakResource *resource) {
-            if (success) {
-                Q_EMIT stream->resourcesFound({resource});
-            }
-            stream->finish();
-            fetchResourceJob->deleteLater();
-        });
+    const auto fileName = filter.resourceUrl.fileName();
+    if (fileName.endsWith(QLatin1String(".flatpakrepo")) || fileName.endsWith(QLatin1String(".flatpakref")) || fileName.endsWith(QLatin1String(".flatpak"))) {
+        auto stream = new ResultsStream(QLatin1String("FlatpakStream-http-") + fileName);
+        FlatpakFetchRemoteResourceJob *fetchResourceJob = new FlatpakFetchRemoteResourceJob(filter.resourceUrl, stream, this);
         fetchResourceJob->start();
-
         return stream;
     } else if (filter.resourceUrl.scheme() == QLatin1String("appstream")) {
         return findResourceByPackageName(filter.resourceUrl);
