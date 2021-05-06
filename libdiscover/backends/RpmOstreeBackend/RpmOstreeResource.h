@@ -42,6 +42,10 @@ public:
     {
         return QList<PackageState>();
     }
+    bool isRemovable() const override
+    {
+        return false;
+    }
     QString availableVersion() const override;
     void setNewVersion(QString);
     QString installedVersion() const override;

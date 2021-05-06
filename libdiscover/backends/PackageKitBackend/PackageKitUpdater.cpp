@@ -102,6 +102,10 @@ public:
     {
         return Technical;
     }
+    bool isRemovable() const override
+    {
+        return false;
+    }
 
     QVector<PackageKitResource *> withoutDuplicates() const
     {

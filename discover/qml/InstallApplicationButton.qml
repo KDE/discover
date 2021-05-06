@@ -41,6 +41,7 @@ ConditionalLoader
             name: application.isInstalled ? "edit-delete" : "download"
             color: !enabled ? Kirigami.Theme.backgroundColor : !listener.isActive ? (application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor) : Kirigami.Theme.backgroundColor
         }
+        visible: listener.isActive || !application.isInstalled || application.isRemovable
         enabled: !listener.isActive && root.isStateAvailable
         onTriggered: root.click()
     }

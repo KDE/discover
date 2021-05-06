@@ -69,6 +69,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString author READ author CONSTANT)
     Q_PROPERTY(QDate releaseDate READ releaseDate NOTIFY versionsChanged)
     Q_PROPERTY(QString upgradeText READ upgradeText NOTIFY versionsChanged)
+    Q_PROPERTY(bool isRemovable READ isRemovable CONSTANT)
 public:
     /**
      * This describes the state of the resource
@@ -214,6 +215,14 @@ public:
     }
 
     virtual QString upgradeText() const;
+
+    /**
+     * @returns whether the package can ever be removed
+     */
+    virtual bool isRemovable() const
+    {
+        return true;
+    }
 
 public Q_SLOTS:
     virtual void fetchScreenshots();

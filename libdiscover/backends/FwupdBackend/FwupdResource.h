@@ -115,6 +115,10 @@ public:
     }
 
     QString cacheFile() const;
+    bool isRemovable() const override
+    {
+        return false;
+    }
 
 private:
     void setDeviceDetails(FwupdDevice *device);
