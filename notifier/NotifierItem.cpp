@@ -47,7 +47,7 @@ void NotifierItem::setupNotifierItem()
 
     QMenu *menu = new QMenu;
     connect(m_item, &QObject::destroyed, menu, &QObject::deleteLater);
-    auto discoverAction = menu->addAction(QIcon::fromTheme(QStringLiteral("plasma-discover")), i18n("Open Discover..."));
+    auto discoverAction = menu->addAction(QIcon::fromTheme(QStringLiteral("plasmadiscover")), i18n("Open Discover..."));
     connect(discoverAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::showDiscover);
 
     auto updatesAction = menu->addAction(QIcon::fromTheme(QStringLiteral("system-software-update")), i18n("See Updates..."));
