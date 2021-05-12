@@ -65,32 +65,31 @@ DiscoverPage
 
     readonly property bool compact: page.width < 550 || !applicationWindow().wideScreen
 
+    footer: ColumnLayout {
+        spacing: 0
 
-    header: ToolBar {
-        width: page.width
-        height: visible ? youGotUpdatesHeaderMessage.height + Kirigami.Units.smallSpacing * 4 : 0
-        visible: page.compact && ResourcesModel.updatesCount>0
+        Kirigami.Separator {
+            Layout.fillWidth: true
+            visible: Kirigami.Settings.isMobile && inlineMessage.visible
+        }
+
         Kirigami.InlineMessage {
-            id: youGotUpdatesHeaderMessage
-            visible: true
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                leftMargin: Kirigami.Units.smallSpacing
-                rightMargin: Kirigami.Units.smallSpacing
-            }
+            id: inlineMessage
             icon.name: updateAction.icon.name
+            showCloseButton: true
+            Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.largeSpacing * 2
             text: i18n("Updates are available")
-            actions: [
-                Kirigami.Action {
-                    icon.name: "go-next"
-                    text: i18nc("Short for 'show updates'", "Show")
-                    onTriggered: { updateAction.trigger(); }
-                }
-            ]
+            visible: Kirigami.Settings.isMobile && ResourcesModel.updatesCount > 0
+            actions: Kirigami.Action {
+                icon.name: "go-next"
+                text: i18nc("Short for 'show updates'", "Show")
+                onTriggered: updateAction.trigger()
+            }
         }
     }
+
+
     Kirigami.CardsListView {
         id: apps
         model: FeaturedModel {}
@@ -99,6 +98,7 @@ DiscoverPage
         onActiveFocusChanged: if (activeFocus && currentIndex === -1) {
             currentIndex = 0;
         }
+
         currentIndex: -1
         delegate: ApplicationDelegate {
             application: model.application
