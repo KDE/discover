@@ -151,10 +151,9 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     }
 
     m_engine = new KNSCore::Engine(this);
-    connect(m_engine, &KNSCore::Engine::signalErrorCode, this, &KNSBackend::signalErrorCode);
+    connect(m_engine, &KNSCore::Engine::signalErrorCode, this, &KNSBackend::slotErrorCode);
+    connect(m_engine, &KNSCore::Engine::signalEntryEvent, this, &KNSBackend::slotEntryEvent);
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
-    connect(m_engine, &KNSCore::Engine::signalEntryChanged, this, &KNSBackend::statusChanged, Qt::QueuedConnection);
-    connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, this, &KNSBackend::detailsLoaded);
     connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
     connect(m_engine, &KNSCore::Engine::signalUpdateableEntriesLoaded, this, [this] {
         m_responsePending = false;
@@ -378,7 +377,7 @@ void KNSBackend::statusChanged(const KNSCore::EntryInternal &entry)
     resourceForEntry(entry);
 }
 
-void KNSBackend::signalErrorCode(const KNSCore::ErrorCode &errorCode, const QString &message, const QVariant &metadata)
+void KNSBackend::slotErrorCode(const KNSCore::ErrorCode &errorCode, const QString &message, const QVariant &metadata)
 {
     QString error = message;
     qDebug() << "KNS error in" << m_displayName << ":" << errorCode << message << metadata;
@@ -456,6 +455,22 @@ void KNSBackend::signalErrorCode(const KNSCore::ErrorCode &errorCode, const QStr
         Q_EMIT passiveMessage(i18n("%1: %2", name(), error));
 }
 
+void KNSBackend::slotEntryEvent(const KNSCore::EntryInternal &entry, KNSCore::EntryInternal::EntryEvent event)
+{
+    switch (event) {
+    case KNSCore::EntryInternal::StatusChangedEvent:
+        statusChanged(entry);
+        break;
+    case KNSCore::EntryInternal::DetailsLoadedEvent:
+        detailsLoaded(entry);
+        break;
+    case KNSCore::EntryInternal::AdoptedEvent:
+    case KNSCore::EntryInternal::UnknownEvent:
+    default:
+        break;
+    }
+}
+
 class KNSTransaction : public Transaction
 {
 public:
@@ -466,7 +481,18 @@ public:
         setCancellable(false);
 
         auto manager = res->knsBackend()->engine();
-        connect(manager, &KNSCore::Engine::signalEntryChanged, this, &KNSTransaction::anEntryChanged);
+        connect(manager, &KNSCore::Engine::signalEntryEvent, this, [this](const KNSCore::EntryInternal &entry, KNSCore::EntryInternal::EntryEvent event) {
+            switch (event) {
+            case KNSCore::EntryInternal::StatusChangedEvent:
+                anEntryChanged(entry);
+                break;
+            case KNSCore::EntryInternal::DetailsLoadedEvent:
+            case KNSCore::EntryInternal::AdoptedEvent:
+            case KNSCore::EntryInternal::UnknownEvent:
+            default:
+                break;
+            }
+        });
         TransactionModel::global()->addTransaction(this);
 
         std::function<void()> actionFunction;
@@ -648,15 +674,27 @@ ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)
         m_onePage = false;
 
         connect(m_engine, &KNSCore::Engine::signalErrorCode, stream, &ResultsStream::finish);
-        connect(m_engine, &KNSCore::Engine::signalEntryDetailsLoaded, stream, [this, stream, entryid, providerid](const KNSCore::EntryInternal &entry) {
-            if (entry.uniqueId() == entryid && providerid == QUrl(entry.providerId()).host()) {
-                Q_EMIT stream->resourcesFound({resourceForEntry(entry)});
-            } else
-                qWarning() << "found invalid" << entryid << entry.uniqueId() << providerid << QUrl(entry.providerId()).host();
-            m_responsePending = false;
-            QTimer::singleShot(0, this, &KNSBackend::availableForQueries);
-            stream->finish();
-        });
+        connect(m_engine,
+                &KNSCore::Engine::signalEntryEvent,
+                stream,
+                [this, stream, entryid, providerid](const KNSCore::EntryInternal &entry, KNSCore::EntryInternal::EntryEvent event) {
+                    switch (event) {
+                    case KNSCore::EntryInternal::StatusChangedEvent:
+                        if (entry.uniqueId() == entryid && providerid == QUrl(entry.providerId()).host()) {
+                            Q_EMIT stream->resourcesFound({resourceForEntry(entry)});
+                        } else
+                            qWarning() << "found invalid" << entryid << entry.uniqueId() << providerid << QUrl(entry.providerId()).host();
+                        m_responsePending = false;
+                        QTimer::singleShot(0, this, &KNSBackend::availableForQueries);
+                        stream->finish();
+                        break;
+                    case KNSCore::EntryInternal::DetailsLoadedEvent:
+                    case KNSCore::EntryInternal::AdoptedEvent:
+                    case KNSCore::EntryInternal::UnknownEvent:
+                    default:
+                        break;
+                    }
+                });
     };
     if (m_responsePending) {
         connect(this, &KNSBackend::availableForQueries, stream, start);

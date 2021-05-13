@@ -81,7 +81,8 @@ public Q_SLOTS:
     void receivedEntries(const KNSCore::EntryInternal::List &entries);
     void statusChanged(const KNSCore::EntryInternal &entry);
     void detailsLoaded(const KNSCore::EntryInternal &entry);
-    void signalErrorCode(const KNSCore::ErrorCode &errorCode, const QString &message, const QVariant &metadata);
+    void slotErrorCode(const KNSCore::ErrorCode &errorCode, const QString &message, const QVariant &metadata);
+    void slotEntryEvent(const KNSCore::EntryInternal &entry, KNSCore::EntryInternal::EntryEvent event);
 
 private:
     void fetchInstalled();
