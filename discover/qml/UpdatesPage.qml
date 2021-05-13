@@ -44,6 +44,7 @@ DiscoverPage
             Label {
                 id: desc
                 Layout.fillWidth: true
+                Layout.maximumWidth: Math.round(page.width*0.75)
                 textFormat: Text.StyledText
                 wrapMode: Text.WordWrap
             }
