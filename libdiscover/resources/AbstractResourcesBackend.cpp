@@ -101,7 +101,7 @@ QString AbstractResourcesBackend::name() const
 
 void AbstractResourcesBackend::emitRatingsReady()
 {
-    emit allDataChanged({"rating", "ratingPoints", "ratingCount", "sortableRating"});
+    Q_EMIT allDataChanged({"rating", "ratingPoints", "ratingCount", "sortableRating"});
 }
 
 bool AbstractResourcesBackend::Filters::shouldFilter(AbstractResource *res) const

@@ -209,7 +209,7 @@ void UpdateModel::integrateChangelog(const QString &changelog)
 
     const QModelIndex idx = indexFromItem(item);
     Q_ASSERT(idx.isValid());
-    emit dataChanged(idx, idx, {ChangelogRole});
+    Q_EMIT dataChanged(idx, idx, {ChangelogRole});
 }
 
 void UpdateModel::setResources(const QList<AbstractResource *> &resources)

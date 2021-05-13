@@ -18,5 +18,5 @@ DummyNotifier::~DummyNotifier()
 
 void DummyNotifier::recheckSystemUpdateNeeded()
 {
-    emit foundUpdates();
+    Q_EMIT foundUpdates();
 }

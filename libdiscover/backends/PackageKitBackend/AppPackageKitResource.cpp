@@ -256,5 +256,5 @@ QString AppPackageKitResource::author() const
 
 void AppPackageKitResource::fetchChangelog()
 {
-    emit changelogFetched(changelog());
+    Q_EMIT changelogFetched(changelog());
 }

@@ -57,7 +57,7 @@ void TransactionListener::setResourceInternal(AbstractResource *resource)
         return;
 
     m_resource = resource;
-    emit resourceChanged();
+    Q_EMIT resourceChanged();
 }
 
 void TransactionListener::transactionAdded(Transaction *trans)
@@ -128,7 +128,7 @@ void TransactionListener::transactionStatusChanged(Transaction::Status status)
     switch (status) {
     case Transaction::CancelledStatus:
         setTransaction(nullptr);
-        emit cancelled();
+        Q_EMIT cancelled();
         break;
     case Transaction::DoneWithErrorStatus:
     case Transaction::DoneStatus:
@@ -138,7 +138,7 @@ void TransactionListener::transactionStatusChanged(Transaction::Status status)
         break;
     }
 
-    emit statusTextChanged();
+    Q_EMIT statusTextChanged();
 }
 
 int TransactionListener::progress() const

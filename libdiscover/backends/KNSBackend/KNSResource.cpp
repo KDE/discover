@@ -185,12 +185,12 @@ void KNSResource::fetchScreenshots()
     appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig2)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall2)));
     appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig3)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall3)));
 
-    emit screenshotsFetched(preview, screenshots);
+    Q_EMIT screenshotsFetched(preview, screenshots);
 }
 
 void KNSResource::fetchChangelog()
 {
-    emit changelogFetched(m_entry.changelog());
+    Q_EMIT changelogFetched(m_entry.changelog());
 }
 
 QStringList KNSResource::extends() const

@@ -142,7 +142,7 @@ void FeaturedModel::acquireFetching(bool f)
         m_isFetching--;
 
     if ((!f && m_isFetching == 0) || (f && m_isFetching == 1)) {
-        emit isFetchingChanged();
+        Q_EMIT isFetchingChanged();
     }
     Q_ASSERT(m_isFetching >= 0);
 }

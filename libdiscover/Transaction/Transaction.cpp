@@ -65,7 +65,7 @@ void Transaction::setStatus(Status status)
 {
     if (m_status != status) {
         m_status = status;
-        emit statusChanged(m_status);
+        Q_EMIT statusChanged(m_status);
 
         if (m_status == DoneStatus || m_status == CancelledStatus || m_status == DoneWithErrorStatus) {
             setCancellable(false);
@@ -79,7 +79,7 @@ void Transaction::setCancellable(bool isCancellable)
 {
     if (m_isCancellable != isCancellable) {
         m_isCancellable = isCancellable;
-        emit cancellableChanged(m_isCancellable);
+        Q_EMIT cancellableChanged(m_isCancellable);
     }
 }
 
@@ -88,7 +88,7 @@ void Transaction::setProgress(int progress)
     if (m_progress != progress) {
         Q_ASSERT(qBound(0, progress, 100) == progress);
         m_progress = qBound(0, progress, 100);
-        emit progressChanged(m_progress);
+        Q_EMIT progressChanged(m_progress);
     }
 }
 

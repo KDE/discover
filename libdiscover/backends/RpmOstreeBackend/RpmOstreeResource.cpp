@@ -185,7 +185,7 @@ QString RpmOstreeResource::executeLabel() const
 void RpmOstreeResource::setState(AbstractResource::State state)
 {
     m_state = state;
-    emit stateChanged();
+    Q_EMIT stateChanged();
 }
 
 void RpmOstreeResource::rebaseToNewVersion()

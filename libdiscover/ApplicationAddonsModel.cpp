@@ -42,7 +42,7 @@ void ApplicationAddonsModel::setApplication(AbstractResource *app)
             setApplication(nullptr);
         });
     }
-    emit applicationChanged();
+    Q_EMIT applicationChanged();
 }
 
 void ApplicationAddonsModel::resetState()
@@ -52,7 +52,7 @@ void ApplicationAddonsModel::resetState()
     m_initial = m_app ? m_app->addonsInformation() : QList<PackageState>();
     endResetModel();
 
-    emit stateChanged();
+    Q_EMIT stateChanged();
 }
 
 AbstractResource *ApplicationAddonsModel::application() const
@@ -96,7 +96,7 @@ void ApplicationAddonsModel::discardChanges()
     // dataChanged should suffice, but it doesn't
     beginResetModel();
     m_state.clear();
-    emit stateChanged();
+    Q_EMIT stateChanged();
     endResetModel();
 }
 
@@ -121,7 +121,7 @@ void ApplicationAddonsModel::changeState(const QString &packageName, bool instal
     else
         m_state.addAddon(packageName, installed);
 
-    emit stateChanged();
+    Q_EMIT stateChanged();
 }
 
 bool ApplicationAddonsModel::hasChanges() const

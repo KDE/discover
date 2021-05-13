@@ -216,7 +216,7 @@ void DiscoverObject::openMode(const QString &_mode)
 
 void DiscoverObject::openMimeType(const QString &mime)
 {
-    emit listMimeInternal(mime);
+    Q_EMIT listMimeInternal(mime);
 }
 
 void DiscoverObject::showLoadingPage()
@@ -237,7 +237,7 @@ void DiscoverObject::openCategory(const QString &category)
         [this, category]() {
             Category *cat = CategoryModel::global()->findCategoryByName(category);
             if (cat) {
-                emit listCategoryInternal(cat);
+                Q_EMIT listCategoryInternal(cat);
             } else {
                 openMode(QStringLiteral("Browsing"));
                 showPassiveNotification(i18n("Could not find category '%1'", category));
@@ -267,7 +267,7 @@ void DiscoverObject::openLocalPackage(const QUrl &localfile)
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
             connect(stream, &StoredResultsStream::finishedResources, this, [this, localfile](const QVector<AbstractResource *> &res) {
                 if (res.count() == 1) {
-                    emit openApplicationInternal(res.first());
+                    Q_EMIT openApplicationInternal(res.first());
                 } else {
                     QMimeDatabase db;
                     auto mime = db.mimeTypeForUrl(localfile);
@@ -306,7 +306,7 @@ void DiscoverObject::openApplication(const QUrl &url)
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
             connect(stream, &StoredResultsStream::finishedResources, this, [this, url](const QVector<AbstractResource *> &res) {
                 if (res.count() >= 1) {
-                    emit openApplicationInternal(res.first());
+                    Q_EMIT openApplicationInternal(res.first());
                 } else if (url.scheme() == QLatin1String("snap")) {
                     openApplication(QUrl(QStringLiteral("appstream://org.kde.discover.snap")));
                     showPassiveNotification(i18n("Please make sure Snap support is installed"));

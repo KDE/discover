@@ -141,7 +141,7 @@ void TransactionModel::addTransaction(Transaction *trans)
         return;
 
     if (m_transactions.isEmpty())
-        emit startingFirstTransaction();
+        Q_EMIT startingFirstTransaction();
 
     int before = m_transactions.size();
     beginInsertRows(QModelIndex(), before, before + 1);
@@ -159,7 +159,7 @@ void TransactionModel::addTransaction(Transaction *trans)
         Q_EMIT progressChanged();
     });
 
-    emit transactionAdded(trans);
+    Q_EMIT transactionAdded(trans);
 }
 
 void TransactionModel::removeTransaction(Transaction *trans)
@@ -178,16 +178,16 @@ void TransactionModel::removeTransaction(Transaction *trans)
     m_transactions.removeAt(r);
     endRemoveRows();
 
-    emit transactionRemoved(trans);
+    Q_EMIT transactionRemoved(trans);
     if (m_transactions.isEmpty())
-        emit lastTransactionFinished();
+        Q_EMIT lastTransactionFinished();
 }
 
 void TransactionModel::transactionChanged(int role)
 {
     Transaction *trans = qobject_cast<Transaction *>(sender());
     QModelIndex transIdx = indexOf(trans);
-    emit dataChanged(transIdx, transIdx, {role});
+    Q_EMIT dataChanged(transIdx, transIdx, {role});
 }
 
 int TransactionModel::progress() const

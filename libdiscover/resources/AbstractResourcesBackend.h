@@ -211,7 +211,7 @@ Q_SIGNALS:
      */
     void updatesCountChanged();
     /**
-     * This should be emitted when all data of the backends resources changed. Internally it will emit
+     * This should be emitted when all data of the backends resources changed. Internally it will Q_EMIT
      * a signal in the model to show the view that all data of a certain backend changed.
      */
     void allDataChanged(const QVector<QByteArray> &propertyNames);

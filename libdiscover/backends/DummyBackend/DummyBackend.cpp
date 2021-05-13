@@ -77,7 +77,7 @@ void DummyBackend::toggleFetching()
 {
     m_fetching = !m_fetching;
     // qDebug() << "fetching..." << m_fetching;
-    emit fetchingChanged();
+    Q_EMIT fetchingChanged();
     if (!m_fetching)
         m_reviews->initialize();
 }

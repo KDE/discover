@@ -37,7 +37,7 @@ void PaginateModel::setFirstItem(int row)
         beginResetModel();
         d->m_firstItem = row;
         endResetModel();
-        emit firstItemChanged();
+        Q_EMIT firstItemChanged();
     }
 }
 
@@ -63,7 +63,7 @@ void PaginateModel::setPageSize(int count)
             d->m_pageSize = count;
             endRemoveRows();
         }
-        emit pageSizeChanged();
+        Q_EMIT pageSizeChanged();
     }
 }
 
@@ -107,7 +107,7 @@ void PaginateModel::setSourceModel(QAbstractItemModel *model)
             connect(d->m_sourceModel, &QAbstractItemModel::modelReset, this, &PaginateModel::pageCountChanged);
         }
         endResetModel();
-        emit sourceModelChanged();
+        Q_EMIT sourceModelChanged();
     }
 }
 
@@ -272,14 +272,14 @@ void PaginateModel::_k_sourceDataChanged(const QModelIndex &topLeft, const QMode
     if (!idxBottom.isValid())
         idxBottom = index(rowCount() - 1);
 
-    emit dataChanged(idxTop, idxBottom, roles);
+    Q_EMIT dataChanged(idxTop, idxBottom, roles);
 }
 
 void PaginateModel::_k_sourceHeaderDataChanged(Qt::Orientation orientation, int first, int last)
 {
     Q_UNUSED(last)
     if (first == 0)
-        emit headerDataChanged(orientation, 0, 0);
+        Q_EMIT headerDataChanged(orientation, 0, 0);
 }
 
 void PaginateModel::_k_sourceModelAboutToBeReset()

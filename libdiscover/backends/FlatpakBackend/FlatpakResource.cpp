@@ -420,7 +420,7 @@ void FlatpakResource::invokeApplication() const
 
 void FlatpakResource::fetchChangelog()
 {
-    emit changelogFetched(AppStreamUtils::changelogToHtml(m_appdata));
+    Q_EMIT changelogFetched(AppStreamUtils::changelogToHtml(m_appdata));
 }
 
 void FlatpakResource::fetchScreenshots()

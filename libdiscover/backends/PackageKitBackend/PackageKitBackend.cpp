@@ -146,9 +146,9 @@ void PackageKitBackend::acquireFetching(bool f)
         m_isFetching--;
 
     if ((!f && m_isFetching == 0) || (f && m_isFetching == 1)) {
-        emit fetchingChanged();
+        Q_EMIT fetchingChanged();
         if (m_isFetching == 0)
-            emit available();
+            Q_EMIT available();
     }
     Q_ASSERT(m_isFetching >= 0);
 }
@@ -337,7 +337,7 @@ void PackageKitBackend::includePackagesToAdd()
                         m_packages.extendedBy[ext].removeAll(ares);
                 }
 
-                emit resourceRemoved(res);
+                Q_EMIT resourceRemoved(res);
                 res->deleteLater();
             }
         }
@@ -729,12 +729,12 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
     if (isFetching()) {
         auto a = new OneTimeAction(
             [this] {
-                emit updatesCountChanged();
+                Q_EMIT updatesCountChanged();
             },
             this);
         connect(this, &PackageKitBackend::available, a, &OneTimeAction::trigger);
     } else
-        emit updatesCountChanged();
+        Q_EMIT updatesCountChanged();
 }
 
 bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource *res) const

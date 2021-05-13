@@ -68,7 +68,7 @@ bool AbstractResource::isInstalled()
 
 void AbstractResource::fetchScreenshots()
 {
-    emit screenshotsFetched({}, {});
+    Q_EMIT screenshotsFetched({}, {});
 }
 
 QStringList AbstractResource::mimetypes() const
@@ -137,7 +137,7 @@ void AbstractResource::reportNewState()
         return;
 
     static const QVector<QByteArray> ns = {"state", "status", "canUpgrade", "size", "sizeDescription", "installedVersion", "availableVersion"};
-    emit backend()->resourcesChanged(this, ns);
+    Q_EMIT backend()->resourcesChanged(this, ns);
 }
 
 static bool shouldFilter(AbstractResource *res, const QPair<FilterType, QString> &filter)

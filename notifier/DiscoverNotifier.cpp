@@ -121,7 +121,7 @@ void DiscoverNotifier::updateStatusNotifier()
         m_timer.start();
     }
 
-    emit stateChanged();
+    Q_EMIT stateChanged();
 }
 
 // we only want to do unattended updates when on an ethernet or wlan network
@@ -205,7 +205,7 @@ void DiscoverNotifier::recheckSystemUpdateNeeded()
         m_manager = new QNetworkConfigurationManager(this);
         connect(m_manager, &QNetworkConfigurationManager::onlineStateChanged, this, &DiscoverNotifier::stateChanged);
         if (!m_manager->isOnline()) {
-            emit stateChanged();
+            Q_EMIT stateChanged();
         }
     }
 

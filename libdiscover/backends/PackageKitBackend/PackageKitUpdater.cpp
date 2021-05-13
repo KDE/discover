@@ -432,7 +432,7 @@ void PackageKitUpdater::cancellableChanged()
 {
     if (m_isCancelable != m_transaction->allowCancel()) {
         m_isCancelable = m_transaction->allowCancel();
-        emit cancelableChanged(m_isCancelable);
+        Q_EMIT cancelableChanged(m_isCancelable);
     }
 }
 
@@ -441,7 +441,7 @@ void PackageKitUpdater::percentageChanged()
     const auto actualPercentage = percentageWithStatus(m_transaction->status(), m_transaction->percentage());
     if (actualPercentage >= 0 && m_percentage != actualPercentage) {
         m_percentage = actualPercentage;
-        emit progressChanged(m_percentage);
+        Q_EMIT progressChanged(m_percentage);
     }
 }
 
@@ -562,7 +562,7 @@ void PackageKitUpdater::setProgressing(bool progressing)
 {
     if (m_isProgressing != progressing) {
         m_isProgressing = progressing;
-        emit progressingChanged(m_isProgressing);
+        Q_EMIT progressingChanged(m_isProgressing);
     }
 }
 

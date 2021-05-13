@@ -56,7 +56,7 @@ void ScreenshotsModel::screenshotsFetched(const QList<QUrl> &thumbnails, const Q
     m_thumbnails += thumbnails;
     m_screenshots += screenshots;
     endInsertRows();
-    emit countChanged();
+    Q_EMIT countChanged();
 }
 
 QVariant ScreenshotsModel::data(const QModelIndex &index, int role) const
@@ -97,7 +97,7 @@ void ScreenshotsModel::remove(const QUrl &url)
         m_thumbnails.removeAt(idxRemove);
         m_screenshots.removeAt(idxRemove);
         endRemoveRows();
-        emit countChanged();
+        Q_EMIT countChanged();
 
         qDebug() << "screenshot removed" << url;
     }

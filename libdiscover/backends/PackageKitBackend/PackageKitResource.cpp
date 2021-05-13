@@ -153,7 +153,7 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
         m_packages[info].nonarchPkgIds.append(packageId);
 
     if (oldState != state())
-        emit stateChanged();
+        Q_EMIT stateChanged();
 
     Q_EMIT versionsChanged();
 }
@@ -203,7 +203,7 @@ void PackageKitResource::setDetails(const PackageKit::Details &details)
         m_details = details;
 
         if (oldState != state())
-            emit stateChanged();
+            Q_EMIT stateChanged();
 
         if (!backend()->isFetching())
             Q_EMIT backend()->resourcesChanged(this, {"size", "homepage", "license"});
@@ -234,7 +234,7 @@ void PackageKitResource::fetchUpdateDetails()
     connect(t, &PackageKit::Transaction::updateDetail, this, &PackageKitResource::updateDetail);
     connect(t, &PackageKit::Transaction::errorCode, this, [this](PackageKit::Transaction::Error err, const QString &error) {
         qWarning() << "error fetching updates:" << err << error;
-        emit changelogFetched(QString());
+        Q_EMIT changelogFetched(QString());
     });
 }
 
@@ -310,7 +310,7 @@ void PackageKitResource::updateDetail(const QString &packageID,
     if (!vendorUrls.isEmpty())
         addIfNotEmpty(i18n("Vendor:"), urlToLinks(vendorUrls).join(QLatin1String(", ")), info);
 
-    emit changelogFetched(changelog() + info);
+    Q_EMIT changelogFetched(changelog() + info);
 }
 
 PackageKitBackend *PackageKitResource::backend() const

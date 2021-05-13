@@ -276,8 +276,8 @@ void FwupdBackend::setDevices(GPtrArray *devices)
     addUpdates();
 
     m_fetching = false;
-    emit fetchingChanged();
-    emit initialized();
+    Q_EMIT fetchingChanged();
+    Q_EMIT initialized();
 }
 
 static void fwupd_client_get_remotes_cb(GObject * /*source*/, GAsyncResult *res, gpointer user_data)
@@ -327,7 +327,7 @@ void FwupdBackend::checkForUpdates()
     }
 
     m_fetching = true;
-    emit fetchingChanged();
+    Q_EMIT fetchingChanged();
 
     fwupd_client_get_devices_async(client, m_cancellable, fwupd_client_get_devices_cb, this);
     fwupd_client_get_remotes_async(client, m_cancellable, fwupd_client_get_remotes_cb, this);

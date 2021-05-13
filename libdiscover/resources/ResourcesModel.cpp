@@ -88,7 +88,7 @@ void ResourcesModel::init(bool load)
     m_allInitializedEmitter->setInterval(0);
     connect(m_allInitializedEmitter, &QTimer::timeout, this, [this]() {
         if (m_initializingBackends == 0)
-            emit allInitialized();
+            Q_EMIT allInitialized();
     });
 
     if (load)
@@ -240,7 +240,7 @@ void ResourcesModel::registerAllBackends()
         foreach (AbstractResourcesBackend *b, backends) {
             addResourcesBackend(b);
         }
-        emit backendsChanged();
+        Q_EMIT backendsChanged();
     }
 }
 
@@ -251,7 +251,7 @@ void ResourcesModel::registerBackendByName(const QString &name)
     for (auto b : backends)
         addResourcesBackend(b);
 
-    emit backendsChanged();
+    Q_EMIT backendsChanged();
 }
 
 bool ResourcesModel::isFetching() const

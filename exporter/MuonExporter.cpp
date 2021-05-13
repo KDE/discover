@@ -82,5 +82,5 @@ void MuonExporter::exportResources(const QVector<AbstractResource *> &resources)
         qWarning() << "Could not write to " << m_path;
     }
     qDebug() << "exported items: " << data.count() << " to " << m_path;
-    emit exportDone();
+    Q_EMIT exportDone();
 }

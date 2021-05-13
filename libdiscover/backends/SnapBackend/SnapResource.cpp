@@ -258,7 +258,7 @@ void SnapResource::setState(AbstractResource::State state)
 void SnapResource::fetchChangelog()
 {
     QString log;
-    emit changelogFetched(log);
+    Q_EMIT changelogFetched(log);
 }
 
 void SnapResource::fetchScreenshots()

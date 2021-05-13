@@ -44,7 +44,7 @@ void DummyReviewsBackend::fetchReviews(AbstractResource *app, int page)
                                        1,
                                        app->packageName()));
     }
-    emit reviewsReady(app, review, false);
+    Q_EMIT reviewsReady(app, review, false);
 }
 
 Rating *DummyReviewsBackend::ratingForApplication(AbstractResource *app) const
@@ -66,7 +66,7 @@ void DummyReviewsBackend::initialize()
         m_ratings.insert(app, rating);
         Q_EMIT app->ratingFetched();
     }
-    emit ratingsReady();
+    Q_EMIT ratingsReady();
 }
 
 void DummyReviewsBackend::submitUsefulness(Review *r, bool useful)

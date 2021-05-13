@@ -159,32 +159,32 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     /**
-     * The AbstractBackendUpdater should emit this signal when the progress changed.
+     * The AbstractBackendUpdater should Q_EMIT this signal when the progress changed.
      * @see progress
      */
     void progressChanged(qreal progress);
     /**
-     * The AbstractBackendUpdater should emit this signal when the cancelable property changed.
+     * The AbstractBackendUpdater should Q_EMIT this signal when the cancelable property changed.
      * @see isCancelable
      */
     void cancelableChanged(bool cancelable);
     /**
-     * The AbstractBackendUpdater should emit this signal when the progressing property changed.
+     * The AbstractBackendUpdater should Q_EMIT this signal when the progressing property changed.
      * @see isProgressing
      */
     void progressingChanged(bool progressing);
     /**
-     * The AbstractBackendUpdater should emit this signal when the status detail changed.
+     * The AbstractBackendUpdater should Q_EMIT this signal when the status detail changed.
      * @see statusDetail
      */
     void statusDetailChanged(const QString &msg);
     /**
-     * The AbstractBackendUpdater should emit this signal when the status message changed.
+     * The AbstractBackendUpdater should Q_EMIT this signal when the status message changed.
      * @see statusMessage
      */
     void statusMessageChanged(const QString &msg);
     /**
-     * The AbstractBackendUpdater should emit this signal when the download speed changed.
+     * The AbstractBackendUpdater should Q_EMIT this signal when the download speed changed.
      * @see downloadSpeed
      */
     void downloadSpeedChanged(quint64 downloadSpeed);

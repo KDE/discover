@@ -145,7 +145,7 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
 {
     static bool first = true;
     if (first) {
-        // PKQt will emit these signals when it starts (bug?) and would trigger the system recheck before we've ever checked at all
+        // PKQt will Q_EMIT these signals when it starts (bug?) and would trigger the system recheck before we've ever checked at all
         connect(PackageKit::Daemon::global(), &PackageKit::Daemon::networkStateChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
         connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
         first = false;

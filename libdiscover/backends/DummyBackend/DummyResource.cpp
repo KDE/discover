@@ -169,7 +169,7 @@ void DummyResource::fetchChangelog()
     QString log = longDescription();
     log.replace(QLatin1Char('\n'), QLatin1String("<br />"));
 
-    emit changelogFetched(log);
+    Q_EMIT changelogFetched(log);
 }
 
 void DummyResource::fetchScreenshots()
@@ -180,7 +180,7 @@ void DummyResource::fetchScreenshots()
 void DummyResource::setState(AbstractResource::State state)
 {
     m_state = state;
-    emit stateChanged();
+    Q_EMIT stateChanged();
 }
 
 void DummyResource::setAddons(const AddonList &addons)

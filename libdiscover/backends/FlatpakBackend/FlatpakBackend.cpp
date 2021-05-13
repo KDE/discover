@@ -1178,7 +1178,7 @@ void FlatpakBackend::acquireFetching(bool f)
         m_isFetching--;
 
     if ((!f && m_isFetching == 0) || (f && m_isFetching == 1)) {
-        emit fetchingChanged();
+        Q_EMIT fetchingChanged();
     }
 
     if (m_isFetching == 0)

@@ -140,7 +140,7 @@ void RpmOstreeBackend::getDeployments()
 void RpmOstreeBackend::toggleFetching()
 {
     m_fetching = !m_fetching;
-    emit fetchingChanged();
+    Q_EMIT fetchingChanged();
 }
 
 void RpmOstreeBackend::executeCheckUpdateProcess()

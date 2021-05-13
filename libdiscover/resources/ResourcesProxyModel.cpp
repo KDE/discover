@@ -265,7 +265,7 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 
     m_filters.category = category;
     invalidateFilter();
-    emit categoryChanged();
+    Q_EMIT categoryChanged();
 }
 
 void ResourcesProxyModel::fetchSubcategories()
@@ -365,7 +365,7 @@ void ResourcesProxyModel::setStateFilter(AbstractResource::State s)
     if (s != m_filters.state) {
         m_filters.state = s;
         invalidateFilter();
-        emit stateFilterChanged();
+        Q_EMIT stateFilterChanged();
     }
 }
 
@@ -564,7 +564,7 @@ void ResourcesProxyModel::refreshResource(AbstractResource *resource, const QVec
 
         sortedInsertion({resource});
     } else
-        emit dataChanged(idx, idx, roles);
+        Q_EMIT dataChanged(idx, idx, roles);
 }
 
 void ResourcesProxyModel::removeResource(AbstractResource *resource)

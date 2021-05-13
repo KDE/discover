@@ -104,8 +104,8 @@ void ReviewsModel::setResource(AbstractResource *app)
             QMetaObject::invokeMethod(this, "restartFetching", Qt::QueuedConnection);
         }
         endResetModel();
-        emit rowsChanged();
-        emit resourceChanged();
+        Q_EMIT rowsChanged();
+        Q_EMIT resourceChanged();
     }
 }
 
@@ -117,7 +117,7 @@ void ReviewsModel::restartFetching()
     m_canFetchMore = true;
     m_lastPage = 0;
     fetchMore();
-    emit rowsChanged();
+    Q_EMIT rowsChanged();
 }
 
 void ReviewsModel::fetchMore(const QModelIndex &parent)
@@ -142,7 +142,7 @@ void ReviewsModel::addReviews(AbstractResource *app, const QVector<ReviewPtr> &r
         beginInsertRows(QModelIndex(), rowCount(), rowCount() + reviews.size() - 1);
         m_reviews += reviews;
         endInsertRows();
-        emit rowsChanged();
+        Q_EMIT rowsChanged();
     }
 }
 
@@ -158,7 +158,7 @@ void ReviewsModel::markUseful(int row, bool useful)
     // qCDebug(LIBDISCOVER_LOG) << "submitting usefulness" << r->applicationName() << r->id() << useful;
     m_backend->submitUsefulness(r, useful);
     const QModelIndex ind = index(row, 0, QModelIndex());
-    emit dataChanged(ind, ind, {UsefulnessTotal, UsefulnessFavorable, UsefulChoice});
+    Q_EMIT dataChanged(ind, ind, {UsefulnessTotal, UsefulnessFavorable, UsefulChoice});
 }
 
 void ReviewsModel::deleteReview(int row)

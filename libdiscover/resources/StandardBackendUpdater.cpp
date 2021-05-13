@@ -50,7 +50,7 @@ bool StandardBackendUpdater::hasUpdates() const
 void StandardBackendUpdater::start()
 {
     m_settingUp = true;
-    emit progressingChanged(true);
+    Q_EMIT progressingChanged(true);
     setProgress(0);
     auto upgradeList = m_toUpgrade.values();
     std::sort(upgradeList.begin(), upgradeList.end(), [](const AbstractResource *a, const AbstractResource *b) {
@@ -192,7 +192,7 @@ void StandardBackendUpdater::setProgress(qreal p)
 {
     if (p > m_progress || p < 0) {
         m_progress = p;
-        emit progressChanged(p);
+        Q_EMIT progressChanged(p);
     }
 }
 
@@ -228,7 +228,7 @@ void StandardBackendUpdater::cleanup()
     m_toUpgrade.clear();
 
     refreshUpdateable();
-    emit progressingChanged(false);
+    Q_EMIT progressingChanged(false);
 }
 
 QList<AbstractResource *> StandardBackendUpdater::toUpdate() const

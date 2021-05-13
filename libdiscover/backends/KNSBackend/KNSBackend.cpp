@@ -300,7 +300,7 @@ void KNSBackend::setFetching(bool f)
 {
     if (m_fetching != f) {
         m_fetching = f;
-        emit fetchingChanged();
+        Q_EMIT fetchingChanged();
 
         if (!m_fetching) {
             Q_EMIT initialized();
