@@ -4,7 +4,9 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-paths.h.cmake ${CMAKE_CURRENT_
 
 add_subdirectory(backends)
 add_subdirectory(notifiers)
-add_subdirectory(tests)
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
 
 if (TARGET AppStreamQt)
     add_library(DiscoverAppStreamIntegration STATIC

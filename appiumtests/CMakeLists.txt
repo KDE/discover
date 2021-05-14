@@ -1,15 +1,6 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # SPDX-FileCopyrightText: 2022 Harald Sitter <sitter@kde.org>
 
-if(NOT Qt6_VERSION VERSION_GREATER_EQUAL "6.5.0")
-    # Before Qt 6.5 the AbstractButtons didn't trigger properly at all.
-    return()
-endif()
-
-if(NOT BUILD_TESTING OR NOT CMAKE_SYSTEM_NAME MATCHES "Linux")
-    return()
-endif()
-
 find_package(SeleniumWebDriverATSPI)
 set_package_properties(SeleniumWebDriverATSPI PROPERTIES
     DESCRIPTION "Server component for selenium tests using Linux accessibility infrastructure"

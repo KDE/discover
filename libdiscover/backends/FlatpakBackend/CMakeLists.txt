@@ -17,7 +17,9 @@ target_link_libraries(libdiscover-backend-flatpak-logging-category
         Qt::Core
 )
 
-add_subdirectory(tests)
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
 
 set(flatpak-backend_SRCS
     FlatpakResource.cpp
