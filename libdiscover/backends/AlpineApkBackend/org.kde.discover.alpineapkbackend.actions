@@ -1,5 +1,5 @@
 [org.kde.discover.alpineapkbackend.pkgmgmt]
 Name=Package management
-Description=Install or remove packages, upgrade system
-Policy=auth_admin
+Description=Install/remove/upgrade packages
+Policy=yes
 Persistence=session
