@@ -53,23 +53,13 @@ public:
     QVector<AbstractResourcesBackend *> newInstance(QObject *parent, const QString & /*name*/) const override
     {
         QVector<AbstractResourcesBackend *> ret;
-        const QStringList locations = KNSCore::Engine::configSearchLocations();
-        QSet<QString> files;
-        for (const QString &path : locations) {
-            QDirIterator dirIt(path, {QStringLiteral("*.knsrc")}, QDir::Files);
-            for (; dirIt.hasNext();) {
-                dirIt.next();
-
-                if (files.contains(dirIt.fileName()))
-                    continue;
-                files << dirIt.fileName();
-
-                auto bk = new KNSBackend(parent, QStringLiteral("plasma"), dirIt.filePath());
-                if (bk->isValid())
-                    ret += bk;
-                else
-                    delete bk;
-            }
+        const QStringList availableConfigFiles = KNSCore::Engine::availableConfigFiles();
+        for (const QString &configFile : availableConfigFiles) {
+            auto bk = new KNSBackend(parent, QStringLiteral("plasma"), configFile);
+            if (bk->isValid())
+                ret += bk;
+            else
+                delete bk;
         }
         return ret;
     }
