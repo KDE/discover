@@ -12,6 +12,7 @@ Name[eu]=Software eguneratzea
 Name[fr]=Mise à jour des logiciels 
 Name[ia]=Actualisationes de Software
 Name[it]=Aggiornamento software
+Name[ko]=소프트웨어 업데이트
 Name[nl]=Bijwerken van software
 Name[pl]=Uaktualnienia oprogramowania
 Name[pt]=Actualização de Aplicações
@@ -22,6 +23,7 @@ Name[sl]=Posodobi programe
 Name[sv]=Uppdatering av programvara
 Name[uk]=Оновлення програм
 Name[x-test]=xxSoftware Updatexx
+Name[zh_CN]=软件更新
 
 Icon=system-software-update
 Type=Service
