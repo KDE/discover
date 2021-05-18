@@ -21,8 +21,8 @@ Kirigami.AbstractCard {
     Layout.leftMargin: depth * Kirigami.Units.largeSpacing
 
     contentItem: Item {
-        implicitHeight: mainContent.implicitHeight
-        implicitWidth: mainContent.implicitWidth
+        implicitHeight: mainContent.childrenRect.height
+        implicitWidth: mainContent.childrenRect.width
         ColumnLayout {
             id: mainContent
             anchors {
