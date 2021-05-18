@@ -66,6 +66,7 @@ Kirigami.AbstractListItem {
 
                 delegate: Kirigami.AbstractListItem {
                     id: del
+                    width: tasksView.width
                     highlighted: false
                     separatorVisible: false
                     hoverEnabled: model.application
