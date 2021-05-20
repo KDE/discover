@@ -224,7 +224,7 @@ void UpdateModel::setResources(const QList<AbstractResource *> &resources)
     m_updateItems.clear();
 
     QVector<UpdateItem *> appItems, systemItems, addonItems;
-    foreach (AbstractResource *res, resources) {
+    for (AbstractResource *res : resources) {
         connect(res, &AbstractResource::changelogFetched, this, &UpdateModel::integrateChangelog, Qt::UniqueConnection);
 
         UpdateItem *updateItem = new UpdateItem(res);
@@ -268,7 +268,7 @@ int UpdateModel::toUpdateCount() const
 {
     int ret = 0;
     QSet<QString> packages;
-    foreach (UpdateItem *item, m_updateItems) {
+    for (UpdateItem *item : qAsConst(m_updateItems)) {
         const auto packageName = item->resource()->packageName();
         if (packages.contains(packageName)) {
             continue;
@@ -283,7 +283,7 @@ int UpdateModel::totalUpdatesCount() const
 {
     int ret = 0;
     QSet<QString> packages;
-    foreach (UpdateItem *item, m_updateItems) {
+    for (UpdateItem *item : qAsConst(m_updateItems)) {
         const auto packageName = item->resource()->packageName();
         if (packages.contains(packageName)) {
             continue;
@@ -296,7 +296,7 @@ int UpdateModel::totalUpdatesCount() const
 
 UpdateItem *UpdateModel::itemFromResource(AbstractResource *res)
 {
-    foreach (UpdateItem *item, m_updateItems) {
+    for (UpdateItem *item : qAsConst(m_updateItems)) {
         if (item->app() == res)
             return item;
     }

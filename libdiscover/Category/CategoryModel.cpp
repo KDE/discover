@@ -37,7 +37,7 @@ void CategoryModel::populateCategories()
 
     QVector<Category *> ret;
     CategoriesReader cr;
-    Q_FOREACH (const auto backend, backends) {
+    for (const auto backend : backends) {
         if (!backend->isValid())
             continue;
 
@@ -46,7 +46,7 @@ void CategoryModel::populateCategories()
         if (ret.isEmpty()) {
             ret = cats;
         } else {
-            Q_FOREACH (Category *c, cats)
+            for (Category *c : cats)
                 Category::addSubcategory(ret, c);
         }
     }
@@ -77,7 +77,7 @@ static Category *recFindCategory(Category *root, const QString &name)
         return root;
     else {
         const auto subs = root->subCategories();
-        Q_FOREACH (Category *c, subs) {
+        for (Category *c : subs) {
             Category *ret = recFindCategory(c, name);
             if (ret)
                 return ret;

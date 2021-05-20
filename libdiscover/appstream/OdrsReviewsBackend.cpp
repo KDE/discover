@@ -336,7 +336,7 @@ bool OdrsReviewsBackend::isResourceSupported(AbstractResource *res) const
 void OdrsReviewsBackend::emitRatingFetched(AbstractResourcesBackend *b, const QList<AbstractResource *> &resources) const
 {
     b->emitRatingsReady();
-    foreach (AbstractResource *res, resources) {
+    for (AbstractResource *res : resources) {
         if (m_ratings.contains(res->appstreamId())) {
             Q_EMIT res->ratingFetched();
         }

@@ -56,7 +56,8 @@ void DummyReviewsBackend::initialize()
 {
     int i = 11;
     DummyBackend *b = qobject_cast<DummyBackend *>(parent());
-    foreach (DummyResource *app, b->resources()) {
+    const auto resources = b->resources();
+    for (DummyResource *app : resources) {
         if (m_ratings.contains(app))
             continue;
         auto randomRating = qrand() % 10;

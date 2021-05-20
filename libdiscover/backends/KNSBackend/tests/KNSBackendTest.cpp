@@ -83,7 +83,7 @@ void KNSBackendTest::testRetrieval()
     QVERIFY(!m_backend->isFetching() || spy.wait());
 
     const auto resources = getAllResources(m_backend);
-    foreach (AbstractResource *res, resources) {
+    for (AbstractResource *res : resources) {
         QVERIFY(!res->name().isEmpty());
         QVERIFY(!res->categories().isEmpty());
         QVERIFY(!res->origin().isEmpty());
@@ -110,7 +110,7 @@ void KNSBackendTest::testReviews()
     const QVector<AbstractResource *> resources = getAllResources(m_backend);
     AbstractReviewsBackend *rev = m_backend->reviewsBackend();
     QVERIFY(!rev->hasCredentials());
-    foreach (AbstractResource *res, resources) {
+    for (AbstractResource *res : resources) {
         Rating *r = rev->ratingForApplication(res);
         QVERIFY(r);
         QCOMPARE(r->packageName(), res->packageName());

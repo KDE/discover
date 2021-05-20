@@ -56,7 +56,8 @@ QString AppPackageKitResource::longDescription()
 static QIcon componentIcon(const AppStream::Component &comp)
 {
     QIcon ret;
-    foreach (const AppStream::Icon &icon, comp.icons()) {
+    const auto icons = comp.icons();
+    for (const AppStream::Icon &icon : icons) {
         QStringList stock;
         switch (icon.kind()) {
         case AppStream::Icon::KindLocal:

@@ -197,7 +197,8 @@ void Category::addSubcategory(QVector<Category *> &list, Category *newcat)
             c->m_orFilters += newcat->orFilters();
             c->m_notFilters += newcat->notFilters();
             c->m_plugins.unite(newcat->m_plugins);
-            Q_FOREACH (Category *nc, newcat->subCategories()) {
+            const auto subCategories = newcat->subCategories();
+            for (Category *nc : subCategories) {
                 addSubcategory(c->m_subCategories, nc);
             }
             return;

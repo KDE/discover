@@ -26,7 +26,7 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
     : QObject(parent)
 {
     m_backends = BackendNotifierFactory().allBackends();
-    foreach (BackendNotifierModule *module, m_backends) {
+    for (BackendNotifierModule *module : qAsConst(m_backends)) {
         connect(module, &BackendNotifierModule::foundUpdates, this, &DiscoverNotifier::updateStatusNotifier);
         connect(module, &BackendNotifierModule::needsRebootChanged, this, [this]() {
             if (!m_needsReboot) {
@@ -209,7 +209,7 @@ void DiscoverNotifier::recheckSystemUpdateNeeded()
         }
     }
 
-    foreach (BackendNotifierModule *module, m_backends)
+    for (BackendNotifierModule *module : qAsConst(m_backends))
         module->recheckSystemUpdateNeeded();
 
     refreshUnattended();

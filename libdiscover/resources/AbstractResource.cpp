@@ -184,12 +184,14 @@ bool AbstractResource::categoryMatches(Category *cat)
             return false;
     }
 
-    Q_FOREACH (const auto &filter, cat->andFilters()) {
+    const auto andFilters = cat->andFilters();
+    for (const auto &filter : andFilters) {
         if (!shouldFilter(this, filter))
             return false;
     }
 
-    Q_FOREACH (const auto &filter, cat->notFilters()) {
+    const auto notFilters = cat->notFilters();
+    for (const auto &filter : notFilters) {
         if (shouldFilter(this, filter))
             return false;
     }
@@ -199,7 +201,7 @@ bool AbstractResource::categoryMatches(Category *cat)
 static QSet<Category *> walkCategories(AbstractResource *res, const QVector<Category *> &cats)
 {
     QSet<Category *> ret;
-    foreach (Category *cat, cats) {
+    for (Category *cat : cats) {
         if (res->categoryMatches(cat)) {
             const auto subcats = walkCategories(res, cat->subCategories());
             if (subcats.isEmpty()) {
@@ -222,7 +224,7 @@ QString AbstractResource::categoryDisplay() const
 {
     const auto matchedCategories = categoryObjects(CategoryModel::global()->rootCategories());
     QStringList ret;
-    foreach (auto cat, matchedCategories) {
+    for (auto cat : matchedCategories) {
         ret.append(cat->name());
     }
     ret.sort();

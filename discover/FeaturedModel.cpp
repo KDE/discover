@@ -108,7 +108,7 @@ void FeaturedModel::setUris(const QVector<QUrl> &uris)
         return;
 
     QSet<ResultsStream *> streams;
-    foreach (const auto &uri, uris) {
+    for (const auto &uri : uris) {
         AbstractResourcesBackend::Filters filter;
         filter.resourceUrl = uri;
         streams << m_backend->search(filter);

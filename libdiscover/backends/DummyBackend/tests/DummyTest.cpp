@@ -25,8 +25,8 @@ QTEST_MAIN(DummyTest)
 
 AbstractResourcesBackend *backendByName(ResourcesModel *m, const QString &name)
 {
-    QVector<AbstractResourcesBackend *> backends = m->backends();
-    foreach (AbstractResourcesBackend *backend, backends) {
+    const QVector<AbstractResourcesBackend *> backends = m->backends();
+    for (AbstractResourcesBackend *backend : backends) {
         if (QString::fromLatin1(backend->metaObject()->className()) == name) {
             return backend;
         }

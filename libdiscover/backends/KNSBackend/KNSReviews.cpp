@@ -62,10 +62,10 @@ void KNSReviews::fetchReviews(AbstractResource *app, int page)
     m_fetching++;
 }
 
-static QVector<ReviewPtr> createReviewList(AbstractResource *app, Attica::Comment::List comments, int depth = 0)
+static QVector<ReviewPtr> createReviewList(AbstractResource *app, const Attica::Comment::List comments, int depth = 0)
 {
     QVector<ReviewPtr> reviews;
-    foreach (const Attica::Comment &comment, comments) {
+    for (const Attica::Comment &comment : comments) {
         // TODO: language lookup?
         ReviewPtr r(new Review(app->name(),
                                app->packageName(),

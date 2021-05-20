@@ -17,9 +17,11 @@ QList<BackendNotifierModule *> BackendNotifierFactory::allBackends() const
 {
     QList<BackendNotifierModule *> ret;
 
-    foreach (const QString &path, QCoreApplication::instance()->libraryPaths()) {
+    const auto libraryPaths = QCoreApplication::instance()->libraryPaths();
+    for (const QString &path : libraryPaths) {
         QDir dir(path + QStringLiteral("/discover-notifier/"));
-        foreach (const QString &file, dir.entryList(QDir::Files)) {
+        const auto files = dir.entryList(QDir::Files);
+        for (const QString &file : files) {
             QString fullPath = dir.absoluteFilePath(file);
             QPluginLoader loader(fullPath);
             loader.load();

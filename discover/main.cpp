@@ -73,7 +73,8 @@ void processArgs(QCommandLineParser *parser, DiscoverObject *mainWindow)
     if (parser->isSet(QStringLiteral("local-filename")))
         mainWindow->openLocalPackage(QUrl::fromUserInput(parser->value(QStringLiteral("local-filename")), {}, QUrl::AssumeLocalFile));
 
-    foreach (const QString &arg, parser->positionalArguments()) {
+    const auto positionalArguments = parser->positionalArguments();
+    for (const QString &arg : positionalArguments) {
         const QUrl url = QUrl::fromUserInput(arg, {}, QUrl::AssumeLocalFile);
         if (url.isLocalFile())
             mainWindow->openLocalPackage(url);
@@ -130,7 +131,8 @@ int main(int argc, char **argv)
         if (parser->isSet(QStringLiteral("listbackends"))) {
             QTextStream(stdout) << i18n("Available backends:\n");
             DiscoverBackendsFactory f;
-            foreach (const QString &name, f.allBackendNames(false, true))
+            const auto backendNames = f.allBackendNames(false, true);
+            for (const QString &name : backendNames)
                 QTextStream(stdout) << " * " << name << '\n';
             return 0;
         }
@@ -173,7 +175,8 @@ int main(int argc, char **argv)
 
         if (parser->isSet(QStringLiteral("listmodes"))) {
             QTextStream(stdout) << i18n("Available modes:\n");
-            foreach (const QString &mode, mainWindow->modes())
+            const auto modes = mainWindow->modes();
+            for (const QString &mode : modes)
                 QTextStream(stdout) << " * " << mode << '\n';
             delete mainWindow;
             return 0;

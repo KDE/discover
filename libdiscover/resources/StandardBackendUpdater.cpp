@@ -58,7 +58,7 @@ void StandardBackendUpdater::start()
     });
 
     const bool couldCancel = m_canCancel;
-    foreach (AbstractResource *res, upgradeList) {
+    for (AbstractResource *res : qAsConst(upgradeList)) {
         m_pendingResources += res;
         auto t = m_backend->installApplication(res);
         t->setVisible(false);

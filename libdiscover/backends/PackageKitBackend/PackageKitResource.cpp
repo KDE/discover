@@ -248,7 +248,7 @@ static void addIfNotEmpty(const QString &title, const QString &content, QString 
 QString PackageKitResource::joinPackages(const QStringList &pkgids, const QString &_sep, const QString &shadowPackage)
 {
     QStringList ret;
-    foreach (const QString &pkgid, pkgids) {
+    for (const QString &pkgid : pkgids) {
         const auto pkgname = PackageKit::Daemon::packageName(pkgid);
         if (pkgname == shadowPackage)
             ret += PackageKit::Daemon::packageVersion(pkgid);
@@ -262,7 +262,7 @@ QString PackageKitResource::joinPackages(const QStringList &pkgids, const QStrin
 static QStringList urlToLinks(const QStringList &urls)
 {
     QStringList ret;
-    foreach (const QString &in, urls)
+    for (const QString &in : urls)
         ret += QStringLiteral("<a href='%1'>%1</a>").arg(in);
     return ret;
 }

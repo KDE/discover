@@ -27,7 +27,7 @@ public:
         , m_allUpdaters(updaters)
     {
         bool cancelable = false;
-        foreach (auto updater, m_allUpdaters) {
+        for (auto updater : qAsConst(m_allUpdaters)) {
             connect(updater, &AbstractBackendUpdater::progressingChanged, this, &UpdateTransaction::slotProgressingChanged);
             connect(updater, &AbstractBackendUpdater::downloadSpeedChanged, this, &UpdateTransaction::slotDownloadSpeedChanged);
             connect(updater, &AbstractBackendUpdater::progressChanged, this, &UpdateTransaction::slotUpdateProgress);
@@ -50,9 +50,9 @@ public:
 
     void cancel() override
     {
-        QVector<AbstractBackendUpdater *> toCancel = m_updatersWaitingForFeedback.isEmpty() ? m_allUpdaters : m_updatersWaitingForFeedback;
+        const QVector<AbstractBackendUpdater *> toCancel = m_updatersWaitingForFeedback.isEmpty() ? m_allUpdaters : m_updatersWaitingForFeedback;
 
-        foreach (auto updater, toCancel) {
+        for (auto updater : toCancel) {
             updater->cancel();
         }
     }
@@ -65,7 +65,7 @@ public:
     bool isProgressing() const
     {
         bool progressing = false;
-        foreach (AbstractBackendUpdater *upd, m_allUpdaters) {
+        for (AbstractBackendUpdater *upd : qAsConst(m_allUpdaters)) {
             progressing |= upd->isProgressing();
         }
         return progressing;
@@ -83,7 +83,7 @@ public:
     void slotUpdateProgress()
     {
         qreal total = 0;
-        foreach (AbstractBackendUpdater *updater, m_allUpdaters) {
+        for (AbstractBackendUpdater *updater : qAsConst(m_allUpdaters)) {
             total += updater->progress();
         }
         setProgress(total / m_allUpdaters.count());
@@ -92,7 +92,7 @@ public:
     void slotDownloadSpeedChanged()
     {
         quint64 total = 0;
-        foreach (AbstractBackendUpdater *updater, m_allUpdaters) {
+        for (AbstractBackendUpdater *updater : qAsConst(m_allUpdaters)) {
             total += updater->downloadSpeed();
         }
         setDownloadSpeed(total);
@@ -129,7 +129,7 @@ void ResourcesUpdatesModel::init()
 {
     const QVector<AbstractResourcesBackend *> backends = ResourcesModel::global()->backends();
     m_lastIsProgressing = false;
-    foreach (AbstractResourcesBackend *b, backends) {
+    for (AbstractResourcesBackend *b : backends) {
         AbstractBackendUpdater *updater = b->backendUpdater();
         if (updater && !m_updaters.contains(updater)) {
             connect(updater, &AbstractBackendUpdater::statusMessageChanged, this, &ResourcesUpdatesModel::message);
@@ -151,7 +151,8 @@ void ResourcesUpdatesModel::init()
     m_offlineUpdates = group.readEntry<bool>("UseOfflineUpdates", false);
 
     auto tm = TransactionModel::global();
-    foreach (auto t, tm->transactions()) {
+    const auto transactions = tm->transactions();
+    for (auto t : transactions) {
         auto updateTransaction = qobject_cast<UpdateTransaction *>(t);
         if (updateTransaction) {
             setTransaction(updateTransaction);
@@ -179,7 +180,7 @@ void ResourcesUpdatesModel::prepare()
         return;
     }
 
-    foreach (AbstractBackendUpdater *upd, m_updaters) {
+    for (AbstractBackendUpdater *upd : qAsConst(m_updaters)) {
         upd->setOfflineUpdates(m_offlineUpdates);
         upd->prepare();
     }
@@ -201,7 +202,7 @@ void ResourcesUpdatesModel::updateAll()
         m_transaction->setStatus(Transaction::SetupStatus);
         setTransaction(m_transaction);
         TransactionModel::global()->addTransaction(m_transaction);
-        Q_FOREACH (AbstractBackendUpdater *upd, updaters) {
+        for (AbstractBackendUpdater *upd : updaters) {
             QMetaObject::invokeMethod(upd, &AbstractBackendUpdater::start, Qt::QueuedConnection);
         }
 
@@ -223,7 +224,7 @@ bool ResourcesUpdatesModel::isProgressing() const
 QList<AbstractResource *> ResourcesUpdatesModel::toUpdate() const
 {
     QList<AbstractResource *> ret;
-    foreach (AbstractBackendUpdater *upd, m_updaters) {
+    for (AbstractBackendUpdater *upd : qAsConst(m_updaters)) {
         ret += upd->toUpdate();
     }
     return ret;
@@ -232,7 +233,7 @@ QList<AbstractResource *> ResourcesUpdatesModel::toUpdate() const
 void ResourcesUpdatesModel::addResources(const QList<AbstractResource *> &resources)
 {
     QHash<AbstractResourcesBackend *, QList<AbstractResource *>> sortedResources;
-    foreach (AbstractResource *res, resources) {
+    for (AbstractResource *res : resources) {
         sortedResources[res->backend()] += res;
     }
 
@@ -244,7 +245,7 @@ void ResourcesUpdatesModel::addResources(const QList<AbstractResource *> &resour
 void ResourcesUpdatesModel::removeResources(const QList<AbstractResource *> &resources)
 {
     QHash<AbstractResourcesBackend *, QList<AbstractResource *>> sortedResources;
-    foreach (AbstractResource *res, resources) {
+    for (AbstractResource *res : resources) {
         sortedResources[res->backend()] += res;
     }
 
@@ -256,7 +257,7 @@ void ResourcesUpdatesModel::removeResources(const QList<AbstractResource *> &res
 QDateTime ResourcesUpdatesModel::lastUpdate() const
 {
     QDateTime ret;
-    foreach (AbstractBackendUpdater *upd, m_updaters) {
+    for (AbstractBackendUpdater *upd : qAsConst(m_updaters)) {
         QDateTime current = upd->lastUpdate();
         if (!ret.isValid() || (current.isValid() && current > ret)) {
             ret = current;

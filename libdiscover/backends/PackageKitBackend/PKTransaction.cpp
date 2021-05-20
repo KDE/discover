@@ -24,7 +24,7 @@ PKTransaction::PKTransaction(const QVector<AbstractResource *> &apps, Transactio
     , m_apps(apps)
 {
     Q_ASSERT(!apps.contains(nullptr));
-    foreach (auto r, apps) {
+    for (auto r : apps) {
         PackageKitResource *res = qobject_cast<PackageKitResource *>(r);
         m_pkgnames.unite(kToSet(res->allPackageNames()));
     }
@@ -35,7 +35,7 @@ PKTransaction::PKTransaction(const QVector<AbstractResource *> &apps, Transactio
 static QStringList packageIds(const QVector<AbstractResource *> &res, std::function<QString(PackageKitResource *)> func)
 {
     QStringList ret;
-    foreach (auto r, res) {
+    for (auto r : res) {
         ret += func(qobject_cast<PackageKitResource *>(r));
     }
     ret.removeDuplicates();
@@ -257,7 +257,8 @@ void PKTransaction::submitResolve()
         if (state != PackageKit::Transaction::InfoInstalled && state != PackageKit::Transaction::InfoAvailable)
             continue;
 
-        foreach (const auto &pkgid, it.value()) {
+        const auto &itValue = it.value();
+        for (const auto &pkgid : itValue) {
             const auto resources = backend->resourcesByPackageName(PackageKit::Daemon::packageName(pkgid));
             for (auto res : resources) {
                 auto r = qobject_cast<PackageKitResource *>(res);

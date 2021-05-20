@@ -52,7 +52,8 @@ void MuonExporter::fetchResources()
 {
     ResourcesModel *m = ResourcesModel::global();
     QSet<ResultsStream *> streams;
-    foreach (auto backend, m->backends()) {
+    const auto backends = m->backends();
+    for (auto backend : backends) {
         streams << backend->search({});
     }
     auto stream = new StoredResultsStream(streams);
@@ -63,7 +64,7 @@ void MuonExporter::fetchResources()
 void MuonExporter::exportResources(const QVector<AbstractResource *> &resources)
 {
     QJsonArray data;
-    foreach (auto res, resources) {
+    for (auto res : resources) {
         data += itemDataToMap(res, m_exculdedProperties);
     }
 

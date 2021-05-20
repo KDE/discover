@@ -52,7 +52,7 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
     // Start fetching remote icons during initialization
     const auto icons = m_appdata.icons();
     if (!icons.isEmpty()) {
-        foreach (const AppStream::Icon &icon, icons) {
+        for (const AppStream::Icon &icon : icons) {
             if (icon.kind() == AppStream::Icon::KindRemote) {
                 const QString fileName = iconCachePath(icon);
                 if (!QFileInfo::exists(fileName)) {
@@ -177,7 +177,7 @@ QVariant FlatpakResource::icon() const
     } else if (icons.isEmpty()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     } else
-        foreach (const AppStream::Icon &icon, icons) {
+        for (const AppStream::Icon &icon : icons) {
             switch (icon.kind()) {
             case AppStream::Icon::KindLocal:
             case AppStream::Icon::KindCached: {

@@ -47,7 +47,7 @@ ResourcesModel::ResourcesModel(QObject *parent, bool load)
           [this] {
               {
                   int ret = 0;
-                  foreach (AbstractResourcesBackend *backend, m_backends) {
+                  for (AbstractResourcesBackend *backend : qAsConst(m_backends)) {
                       ret += backend->updatesCount();
                   }
                   return ret;
@@ -207,7 +207,7 @@ bool ResourcesModel::hasSecurityUpdates() const
 {
     bool ret = false;
 
-    foreach (AbstractResourcesBackend *backend, m_backends) {
+    for (AbstractResourcesBackend *backend : qAsConst(m_backends)) {
         ret |= backend->hasSecurityUpdates();
     }
 
@@ -237,7 +237,7 @@ void ResourcesModel::registerAllBackends()
         qCWarning(LIBDISCOVER_LOG) << "Couldn't find any backends";
         m_allInitializedEmitter->start();
     } else {
-        foreach (AbstractResourcesBackend *b, backends) {
+        for (AbstractResourcesBackend *b : backends) {
             addResourcesBackend(b);
         }
         Q_EMIT backendsChanged();
@@ -262,7 +262,7 @@ bool ResourcesModel::isFetching() const
 void ResourcesModel::slotFetching()
 {
     bool newFetching = false;
-    foreach (AbstractResourcesBackend *b, m_backends) {
+    for (AbstractResourcesBackend *b : qAsConst(m_backends)) {
         // isFetching should sort of be enough. However, sometimes the backend itself
         // will still be operating on things, which from a model point of view would
         // still mean something going on. So, interpret that as fetching as well, for
@@ -286,7 +286,7 @@ bool ResourcesModel::isBusy() const
 bool ResourcesModel::isExtended(const QString &id)
 {
     bool ret = true;
-    foreach (AbstractResourcesBackend *backend, m_backends) {
+    for (AbstractResourcesBackend *backend : qAsConst(m_backends)) {
         ret = backend->extends().contains(id);
         if (ret)
             break;

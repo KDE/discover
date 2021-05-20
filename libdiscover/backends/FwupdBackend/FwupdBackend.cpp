@@ -352,7 +352,7 @@ ResultsStream *FwupdBackend::search(const AbstractResourcesBackend::Filters &fil
     auto stream = new ResultsStream(QStringLiteral("FwupdStream"));
     auto f = [this, stream, filter]() {
         QVector<AbstractResource *> ret;
-        foreach (AbstractResource *r, m_resources) {
+        for (AbstractResource *r : qAsConst(m_resources)) {
             if (r->state() < filter.state)
                 continue;
 

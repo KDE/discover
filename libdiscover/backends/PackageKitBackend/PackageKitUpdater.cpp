@@ -308,7 +308,7 @@ QSet<AbstractResource *> PackageKitUpdater::packagesForPackageId(const QSet<QStr
     });
 
     QSet<AbstractResource *> ret;
-    foreach (AbstractResource *res, m_allUpgradeable) {
+    for (AbstractResource *res : qAsConst(m_allUpgradeable)) {
         if (auto upgrade = dynamic_cast<SystemUpgrade *>(res)) {
             if (packages.contains(upgrade->allPackageNames())) {
                 ret += upgrade;
@@ -329,7 +329,7 @@ QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource *>
 {
     QSet<QString> packageIds;
     packageIds.reserve(packages.size());
-    foreach (AbstractResource *res, packages) {
+    for (AbstractResource *res : packages) {
         if (SystemUpgrade *upgrade = dynamic_cast<SystemUpgrade *>(res)) {
             packageIds = involvedPackages(upgrade->resources());
             continue;
@@ -610,7 +610,7 @@ void PackageKitUpdater::itemProgress(const QString &itemID, PackageKit::Transact
 {
     const auto res = packagesForPackageId({itemID});
 
-    foreach (auto r, res) {
+    for (auto r : res) {
         Q_EMIT resourceProgressed(r, percentage, toUpdateState(status));
     }
 }
@@ -618,7 +618,7 @@ void PackageKitUpdater::itemProgress(const QString &itemID, PackageKit::Transact
 void PackageKitUpdater::fetchChangelog() const
 {
     QStringList pkgids;
-    foreach (AbstractResource *res, m_allUpgradeable) {
+    for (AbstractResource *res : qAsConst(m_allUpgradeable)) {
         if (auto upgrade = dynamic_cast<SystemUpgrade *>(res)) {
             upgrade->fetchChangelog();
         } else {
@@ -645,8 +645,8 @@ void PackageKitUpdater::updateDetail(const QString &packageID,
                                      const QDateTime &issued,
                                      const QDateTime &updated)
 {
-    auto res = packagesForPackageId({packageID});
-    foreach (auto r, res) {
+    const auto res = packagesForPackageId({packageID});
+    for (auto r : res) {
         static_cast<PackageKitResource *>(r)
             ->updateDetail(packageID, updates, obsoletes, vendorUrls, bugzillaUrls, cveUrls, restart, updateText, changelog, state, issued, updated);
     }

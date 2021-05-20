@@ -170,7 +170,7 @@ static DelayedAppStreamLoad loadAppStream(AppStream::Pool *appdata)
 
     const auto components = appdata->components();
     ret.components.reserve(components.size());
-    foreach (const AppStream::Component &component, components) {
+    for (const AppStream::Component &component : components) {
         if (component.kind() == AppStream::Component::KindFirmware)
             continue;
 
@@ -242,11 +242,12 @@ AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Componen
     } else {
         res->clearPackageIds();
     }
-    foreach (const QString &pkg, pkgNames) {
+    for (const QString &pkg : pkgNames) {
         m_packages.packageToApp[pkg] += component.id();
     }
 
-    foreach (const QString &pkg, component.extends()) {
+    const auto componentExtends = component.extends();
+    for (const QString &pkg : componentExtends) {
         m_packages.extendedBy[pkg] += res;
     }
     return res;
@@ -308,7 +309,7 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
         r = {pk};
         m_packagesToAdd.insert(pk);
     }
-    foreach (auto res, r)
+    for (auto res : qAsConst(r))
         static_cast<PackageKitResource *>(res)->addPackageId(info, packageId, arch);
 }
 
@@ -323,12 +324,12 @@ void PackageKitBackend::includePackagesToAdd()
         return;
 
     acquireFetching(true);
-    foreach (PackageKitResource *res, m_packagesToAdd) {
+    for (PackageKitResource *res : qAsConst(m_packagesToAdd)) {
         m_packages.packages[res->packageName()] = res;
     }
-    foreach (PackageKitResource *res, m_packagesToDelete) {
+    for (PackageKitResource *res : qAsConst(m_packagesToDelete)) {
         const auto pkgs = m_packages.packageToApp.value(res->packageName(), {res->packageName()});
-        foreach (const auto &pkg, pkgs) {
+        for (const auto &pkg : pkgs) {
             auto res = m_packages.packages.take(pkg);
             if (res) {
                 if (AppPackageKitResource *ares = qobject_cast<AppPackageKitResource *>(res)) {
@@ -359,7 +360,7 @@ void PackageKitBackend::packageDetails(const PackageKit::Details &details)
     if (resources.isEmpty())
         qWarning() << "couldn't find package for" << details.packageId();
 
-    foreach (AbstractResource *res, resources) {
+    for (AbstractResource *res : resources) {
         qobject_cast<PackageKitResource *>(res)->setDetails(details);
     }
 }
@@ -376,7 +377,7 @@ T PackageKitBackend::resourcesByPackageNames(const QStringList &pkgnames) const
     ret.reserve(pkgnames.size());
     for (const QString &name : pkgnames) {
         const QStringList names = m_packages.packageToApp.value(name, QStringList(name));
-        foreach (const QString &name, names) {
+        for (const QString &name : names) {
             AbstractResource *res = m_packages.packages.value(name);
             if (res)
                 ret += res;
@@ -684,7 +685,7 @@ QSet<AbstractResource *> PackageKitBackend::upgradeablePackages() const
 
     QSet<AbstractResource *> ret;
     ret.reserve(m_updatesPackageId.size());
-    Q_FOREACH (const QString &pkgid, m_updatesPackageId) {
+    for (const QString &pkgid : qAsConst(m_updatesPackageId)) {
         const QString pkgname = PackageKit::Daemon::packageName(pkgid);
         const auto pkgs = resourcesByPackageName(pkgname);
         if (pkgs.isEmpty()) {

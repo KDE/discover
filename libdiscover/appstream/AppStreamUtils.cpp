@@ -23,7 +23,7 @@ using namespace AppStreamUtils;
 QUrl AppStreamUtils::imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind)
 {
     QUrl ret;
-    Q_FOREACH (const AppStream::Image &i, images) {
+    for (const AppStream::Image &i : images) {
         if (i.kind() == kind) {
             ret = i.url();
             break;
@@ -49,7 +49,8 @@ QString AppStreamUtils::changelogToHtml(const AppStream::Component &appdata)
 QPair<QList<QUrl>, QList<QUrl>> AppStreamUtils::fetchScreenshots(const AppStream::Component &appdata)
 {
     QList<QUrl> screenshots, thumbnails;
-    Q_FOREACH (const AppStream::Screenshot &s, appdata.screenshots()) {
+    const auto appdataScreenshots = appdata.screenshots();
+    for (const AppStream::Screenshot &s : appdataScreenshots) {
         const auto images = s.images();
         const QUrl thumbnail = AppStreamUtils::imageOfKind(images, AppStream::Image::KindThumbnail);
         const QUrl plain = AppStreamUtils::imageOfKind(images, AppStream::Image::KindSource);

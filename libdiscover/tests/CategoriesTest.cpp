@@ -32,13 +32,13 @@ public:
 
         QVector<Category *> ret;
         CategoriesReader reader;
-        Q_FOREACH (const QString &name, categoryFiles) {
+        for (const QString &name : categoryFiles) {
             const QVector<Category *> cats = reader.loadCategoriesPath(name);
 
             if (ret.isEmpty()) {
                 ret = cats;
             } else {
-                Q_FOREACH (Category *c, cats)
+                for (Category *c : cats)
                     Category::addSubcategory(ret, c);
             }
         }

@@ -93,7 +93,7 @@ ResultsStream *DummyBackend::search(const AbstractResourcesBackend::Filters &fil
     if (!filter.resourceUrl.isEmpty())
         return findResourceByPackageName(filter.resourceUrl);
     else
-        foreach (AbstractResource *r, m_resources) {
+        for (AbstractResource *r : qAsConst(m_resources)) {
             if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable) {
                 continue;
             }

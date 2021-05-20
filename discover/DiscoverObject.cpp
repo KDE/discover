@@ -461,7 +461,7 @@ public:
 
     void processWarnings(const QList<QQmlError> &warnings)
     {
-        foreach (const QQmlError &warning, warnings) {
+        for (const QQmlError &warning : warnings) {
             if (warning.url().path().endsWith(QLatin1String("DiscoverTest.qml"))) {
                 qCWarning(DISCOVER_LOG) << "Test failed!" << warnings;
                 qGuiApp->exit(1);
