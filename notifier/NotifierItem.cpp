@@ -60,8 +60,6 @@ void NotifierItem::setupNotifierItem()
         m_item->setTitle(i18n("Restart to apply installed updates"));
         m_item->setToolTipTitle(i18n("Click to restart the device"));
         m_item->setIconByName(QStringLiteral("view-refresh"));
-        auto refreshAction = menu->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Restart..."));
-        connect(refreshAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::recheckSystemUpdateNeeded);
     };
     if (m_notifier.needsReboot())
         f();
