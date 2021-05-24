@@ -58,7 +58,7 @@ DiscoverPage
 
         icon.name: "network-disconnect"
         text: i18n("Unable to load applications")
-        explanation: ("Please verify Internet connectivity")
+        explanation: i18n("Please verify Internet connectivity")
     }
 
     signal clearSearch()
