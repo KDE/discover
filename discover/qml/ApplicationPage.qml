@@ -170,6 +170,7 @@ DiscoverPage {
             ScrollBar {
                 id: screenshotsScrollbar
                 Layout.fillWidth: true
+                visible: applicationScreenshots.visible
             }
         }
 
