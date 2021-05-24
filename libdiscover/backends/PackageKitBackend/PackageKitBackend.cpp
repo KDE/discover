@@ -478,7 +478,8 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
             const auto toResolve = kFilter<QVector<AbstractResource *>>(m_packages.packages, needsResolveFilter);
 
             auto installedAndNameFilter = [filter](AbstractResource *res) {
-                return res->state() >= AbstractResource::Installed && (res->name().contains(filter.search) || res->packageName() == filter.search);
+                return res->state() >= AbstractResource::Installed
+                    && (res->name().contains(filter.search, Qt::CaseInsensitive) || res->packageName().compare(filter.search, Qt::CaseInsensitive) == 0);
             };
             bool furtherSearch = false;
             if (!toResolve.isEmpty()) {
