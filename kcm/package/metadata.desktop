@@ -32,4 +32,6 @@ X-KDE-PluginInfo-Name=kcm_updates
 X-KDE-ServiceTypes=Plasma/Generic
 X-Plasma-API=declarativeappletscript
 
+X-KDE-FormFactors=tablet,handset,desktop
+
 X-Plasma-MainScript=ui/main.qml
