@@ -107,6 +107,7 @@ void PackageKitNotifier::checkOfflineUpdates()
         notification->setText(i18n("Offline Updates"));
         notification->setText(i18np("Failed to update %1 package\n%2", "Failed to update %1 packages\n%2", packages.count(), errorDetails));
         notification->setActions(QStringList{i18nc("@action:button", "Open Discover"), i18nc("@action:button", "Repair System")});
+        notification->setComponentName(QStringLiteral("discoverabstractnotifier"));
 
         connect(notification, &KNotification::action1Activated, this, []() {
             QProcess::startDetached(QStringLiteral("plasma-discover"), QStringList());
