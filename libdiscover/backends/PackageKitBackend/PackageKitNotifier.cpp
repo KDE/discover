@@ -102,7 +102,7 @@ void PackageKitNotifier::checkOfflineUpdates()
     if (!success) {
         const QString errorDetails = group.readEntry("ErrorDetails");
 
-        KNotification *notification = new KNotification(QStringLiteral("OfflineUpdateFailed"), KNotification::Persistent | KNotification::DefaultEvent);
+        auto *notification = new KNotification(QStringLiteral("OfflineUpdateFailed"), KNotification::Persistent);
         notification->setIconName(QStringLiteral("error"));
         notification->setTitle(i18n("Offline Updates"));
         notification->setText(i18np("Failed to update %1 package\n%2", "Failed to update %1 packages\n%2", packages.count(), errorDetails));
