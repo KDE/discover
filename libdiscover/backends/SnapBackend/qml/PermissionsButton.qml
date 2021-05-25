@@ -11,7 +11,7 @@ import org.kde.kirigami 2.14 as Kirigami
 Button
 {
     id: root
-    text: i18n("Configure permissions...")
+    text: i18n("Configure permissions…")
 
     onClicked: overlay.open()
     visible: resource.isInstalled && view.count > 0

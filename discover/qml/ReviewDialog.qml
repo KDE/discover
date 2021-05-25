@@ -66,7 +66,7 @@ Kirigami.OverlaySheet
                     if (rating < 2) return i18n("Enter a rating");
                     if (! titleInput.acceptableInput) return i18n("Write the title");
                     if (reviewInput.length === 0) return i18n("Write the review");
-                    if (reviewInput.length < 15) return i18n("Keep writing...");
+                    if (reviewInput.length < 15) return i18n("Keep writing…");
                     if (reviewInput.length > 3000) return i18n("Too long!");
                     return "";
                 }

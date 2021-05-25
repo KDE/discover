@@ -40,7 +40,7 @@ function openReviews(model) {
 }
 
 function openExtends(ext) {
-    window.stack.push("qrc:/qml/ApplicationsListPage.qml", { extending: ext, title: i18n("Extensions...") })
+    window.stack.push("qrc:/qml/ApplicationsListPage.qml", { extending: ext, title: i18n("Extensions…") })
 }
 
 function openHome() {

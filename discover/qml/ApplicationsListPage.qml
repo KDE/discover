@@ -155,7 +155,7 @@ DiscoverPage {
             Kirigami.Heading {
                 level: 2
                 Layout.alignment: Qt.AlignCenter
-                text: i18n("Still looking...")
+                text: i18n("Still looking…")
             }
             BusyIndicator {
                 running: parent.visible

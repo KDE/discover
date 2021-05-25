@@ -51,7 +51,7 @@ Kirigami.OverlaySheet {
 
                 visible: page.reviewsBackend != null
                 enabled: page.resource.isInstalled
-                text: i18n("Write a Review...")
+                text: i18n("Write a Review…")
                 onClicked: page.openReviewDialog()
             }
             Label {

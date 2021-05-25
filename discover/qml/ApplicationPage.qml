@@ -258,7 +258,7 @@ DiscoverPage {
                 Button {
                     visible: reviewsModel.count > visibleReviews
 
-                    text: i18np("Show %1 Review...", "Show All %1 Reviews...", reviewsModel.count)
+                    text: i18np("Show %1 Review…", "Show All %1 Reviews…", reviewsModel.count)
                     icon.name: "view-visible"
 
                     onClicked: {

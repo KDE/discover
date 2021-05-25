@@ -200,46 +200,46 @@ QString statusMessage(PackageKit::Transaction::Status status)
 {
     switch (status) {
     case PackageKit::Transaction::StatusWait:
-        return i18n("Waiting...");
+        return i18n("Waiting…");
     case PackageKit::Transaction::StatusRefreshCache:
-        return i18n("Refreshing Cache...");
+        return i18n("Refreshing Cache…");
     case PackageKit::Transaction::StatusSetup:
-        return i18n("Setup...");
+        return i18n("Setup…");
     case PackageKit::Transaction::StatusRunning:
-        return i18n("Processing...");
+        return i18n("Processing…");
     case PackageKit::Transaction::StatusRemove:
-        return i18n("Remove...");
+        return i18n("Remove…");
     case PackageKit::Transaction::StatusDownload:
-        return i18n("Downloading...");
+        return i18n("Downloading…");
     case PackageKit::Transaction::StatusInstall:
-        return i18n("Installing...");
+        return i18n("Installing…");
     case PackageKit::Transaction::StatusUpdate:
-        return i18n("Updating...");
+        return i18n("Updating…");
     case PackageKit::Transaction::StatusCleanup:
-        return i18n("Cleaning up...");
+        return i18n("Cleaning up…");
         // case PackageKit::Transaction::StatusObsolete:
     case PackageKit::Transaction::StatusDepResolve:
-        return i18n("Resolving dependencies...");
+        return i18n("Resolving dependencies…");
     case PackageKit::Transaction::StatusSigCheck:
-        return i18n("Checking signatures...");
+        return i18n("Checking signatures…");
     case PackageKit::Transaction::StatusTestCommit:
-        return i18n("Test committing...");
+        return i18n("Test committing…");
     case PackageKit::Transaction::StatusCommit:
-        return i18n("Committing...");
+        return i18n("Committing…");
     // StatusRequest,
     case PackageKit::Transaction::StatusFinished:
         return i18n("Finished");
     case PackageKit::Transaction::StatusCancel:
         return i18n("Canceled");
     case PackageKit::Transaction::StatusWaitingForLock:
-        return i18n("Waiting for lock...");
+        return i18n("Waiting for lock…");
     case PackageKit::Transaction::StatusWaitingForAuth:
-        return i18n("Waiting for authorization...");
+        return i18n("Waiting for authorization…");
         // StatusScanProcessList,
         // StatusCheckExecutableFiles,
         // StatusCheckLibraries,
     case PackageKit::Transaction::StatusCopyFiles:
-        return i18n("Copying files...");
+        return i18n("Copying files…");
     case PackageKit::Transaction::StatusUnknown:
     default:
         return i18n("Unknown Status");
@@ -252,44 +252,44 @@ QString statusDetail(PackageKit::Transaction::Status status)
     case PackageKit::Transaction::StatusWait:
         return i18n("We are waiting for something.");
     case PackageKit::Transaction::StatusSetup:
-        return i18n("Setting up transaction...");
+        return i18n("Setting up transaction…");
     case PackageKit::Transaction::StatusRunning:
-        return i18n("The transaction is currently working...");
+        return i18n("The transaction is currently working…");
     case PackageKit::Transaction::StatusRemove:
-        return i18n("The transaction is currently removing packages...");
+        return i18n("The transaction is currently removing packages…");
     case PackageKit::Transaction::StatusDownload:
-        return i18n("The transaction is currently downloading packages...");
+        return i18n("The transaction is currently downloading packages…");
     case PackageKit::Transaction::StatusInstall:
-        return i18n("The transactions is currently installing packages...");
+        return i18n("The transactions is currently installing packages…");
     case PackageKit::Transaction::StatusUpdate:
-        return i18n("The transaction is currently updating packages...");
+        return i18n("The transaction is currently updating packages…");
     case PackageKit::Transaction::StatusCleanup:
-        return i18n("The transaction is currently cleaning up...");
+        return i18n("The transaction is currently cleaning up…");
         // case PackageKit::Transaction::StatusObsolete,
     case PackageKit::Transaction::StatusDepResolve:
-        return i18n("The transaction is currently resolving the dependencies of the packages it will install...");
+        return i18n("The transaction is currently resolving the dependencies of the packages it will install…");
     case PackageKit::Transaction::StatusSigCheck:
-        return i18n("The transaction is currently checking the signatures of the packages...");
+        return i18n("The transaction is currently checking the signatures of the packages…");
     case PackageKit::Transaction::StatusTestCommit:
-        return i18n("The transaction is currently testing the commit of this set of packages...");
+        return i18n("The transaction is currently testing the commit of this set of packages…");
     case PackageKit::Transaction::StatusCommit:
-        return i18n("The transaction is currently committing its set of packages...");
+        return i18n("The transaction is currently committing its set of packages…");
         // StatusRequest,
     case PackageKit::Transaction::StatusFinished:
         return i18n("The transaction has finished!");
     case PackageKit::Transaction::StatusCancel:
         return i18n("The transaction was canceled");
     case PackageKit::Transaction::StatusWaitingForLock:
-        return i18n("The transaction is currently waiting for the lock...");
+        return i18n("The transaction is currently waiting for the lock…");
     case PackageKit::Transaction::StatusWaitingForAuth:
-        return i18n("Waiting for the user to authorize the transaction...");
+        return i18n("Waiting for the user to authorize the transaction…");
         // StatusScanProcessList,
         // StatusCheckExecutableFiles,
         // StatusCheckLibraries,
     case PackageKit::Transaction::StatusCopyFiles:
-        return i18n("The transaction is currently copying files...");
+        return i18n("The transaction is currently copying files…");
     case PackageKit::Transaction::StatusRefreshCache:
-        return i18n("Currently refreshing the repository cache...");
+        return i18n("Currently refreshing the repository cache…");
     case PackageKit::Transaction::StatusUnknown:
     default: {
         int idx = PackageKit::Transaction::staticMetaObject.indexOfEnumerator("Status");

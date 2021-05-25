@@ -12,11 +12,11 @@ UserFeedback.Provider
             tooltip: i18n("Sends anonymized usage information to KDE so we can better understand our users. For more information see https://kde.org/privacypolicy-apps.php.")
             onTriggered: {
                 provider.submit()
-                showPassiveNotification(i18n("Submitting usage information..."), "short", i18n("Configure"), provider.encouraged)
+                showPassiveNotification(i18n("Submitting usage information…"), "short", i18n("Configure"), provider.encouraged)
             }
         },
         Kirigami.Action {
-            text: i18n("Configure feedback...")
+            text: i18n("Configure feedback…")
             onTriggered: {
                 provider.encouraged()
             }
@@ -45,12 +45,12 @@ UserFeedback.Provider
     }
 
     onShowEncouragementMessage: {
-        showPassiveNotification(i18n("You can help us improving this application by sharing statistics and participate in surveys."), 5000, i18n("Contribute..."), encouraged)
+        showPassiveNotification(i18n("You can help us improving this application by sharing statistics and participate in surveys."), 5000, i18n("Contribute…"), encouraged)
     }
 
     onSurveyAvailable: {
         lastSurvey = survey
-        showPassiveNotification(i18n("We are looking for your feedback!"), 5000, i18n("Participate..."), openSurvey)
+        showPassiveNotification(i18n("We are looking for your feedback!"), 5000, i18n("Participate…"), openSurvey)
     }
 
     UserFeedback.ApplicationVersionSource { mode: UserFeedback.Provider.BasicSystemInformation }

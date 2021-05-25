@@ -9,7 +9,7 @@ import QtQuick.Controls 2.1
 import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.LinkButton {
-    text: i18n("Show Dependencies...")
+    text: i18n("Show Dependencies…")
 
     onClicked: overlay.open()
     visible: view.model.count > 0

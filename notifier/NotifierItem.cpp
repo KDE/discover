@@ -47,13 +47,13 @@ void NotifierItem::setupNotifierItem()
 
     QMenu *menu = new QMenu;
     connect(m_item, &QObject::destroyed, menu, &QObject::deleteLater);
-    auto discoverAction = menu->addAction(QIcon::fromTheme(QStringLiteral("plasmadiscover")), i18n("Open Discover..."));
+    auto discoverAction = menu->addAction(QIcon::fromTheme(QStringLiteral("plasmadiscover")), i18n("Open Discover…"));
     connect(discoverAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::showDiscover);
 
-    auto updatesAction = menu->addAction(QIcon::fromTheme(QStringLiteral("system-software-update")), i18n("See Updates..."));
+    auto updatesAction = menu->addAction(QIcon::fromTheme(QStringLiteral("system-software-update")), i18n("See Updates…"));
     connect(updatesAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::showDiscoverUpdates);
 
-    auto refreshAction = menu->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Refresh..."));
+    auto refreshAction = menu->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Refresh…"));
     connect(refreshAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::recheckSystemUpdateNeeded);
 
     auto f = [menu, this]() {

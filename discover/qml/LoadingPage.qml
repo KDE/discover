@@ -4,7 +4,7 @@ Kirigami.Page {
     title: label.text
     Kirigami.Heading {
         id: label
-        text: i18n("Loading...")
+        text: i18n("Loading…")
         anchors.centerIn: parent
     }
 }

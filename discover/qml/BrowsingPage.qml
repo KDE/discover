@@ -40,7 +40,7 @@ DiscoverPage
         Kirigami.Heading {
             level: 2
             Layout.alignment: Qt.AlignCenter
-            text: i18n("Loading...")
+            text: i18n("Loading…")
         }
         BusyIndicator {
             id: indicator

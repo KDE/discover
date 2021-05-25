@@ -19,7 +19,7 @@ ConditionalLoader
     readonly property alias listener: listener
     readonly property string text: {
         if (!root.isStateAvailable) {
-            return i18nc("State being fetched", "Loading...")
+            return i18nc("State being fetched", "Loading…")
         }
         if (!application.isInstalled) {
             // Must be from a non-default backend; tell the user where it's from

@@ -48,7 +48,7 @@ DiscoverPage {
                 alignment: Qt.AlignRight
                 Kirigami.Action {
                     id: addSource
-                    text: i18n("Add Source...")
+                    text: i18n("Add Source…")
                     icon.name: "list-add"
                     visible: backendItem.backend && backendItem.backend.supportsAdding
 

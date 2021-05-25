@@ -316,7 +316,7 @@ DiscoverPage
 
                 Button {
                     Layout.alignment: Qt.AlignRight
-                    text: i18n("More Information...")
+                    text: i18n("More Information…")
                     visible: layout.extended
                     enabled: !resourcesUpdatesModel.isProgressing
                     onClicked: Navigation.openApplication(resource)
@@ -344,7 +344,7 @@ DiscoverPage
     states: [
         State {
             name: "fetching"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates...") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates…") }
             PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: page; footerProgress: ResourcesModel.fetchingUpdatesProgress }
             PropertyChanges { target: page; isBusy: true }

@@ -52,7 +52,7 @@ Kirigami.OverlaySheet {
         readonly property bool active: addonsModel.hasChanges && !addonsView.isInstalling
 
         Button {
-            text: i18n("More...")
+            text: i18n("More…")
             visible: application.appstreamId.length>0 && addonsView.isExtended
             onClicked: Navigation.openExtends(application.appstreamId)
         }

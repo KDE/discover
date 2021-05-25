@@ -194,7 +194,7 @@ QString DiscoverNotifier::message() const
     case Offline:
         return i18n("Offline");
     case Busy:
-        return i18n("Applying unattended updates...");
+        return i18n("Applying unattended updates…");
     }
     return QString();
 }
