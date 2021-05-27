@@ -31,7 +31,6 @@ Kirigami.ApplicationWindow
     minimumHeight: 300
 
     pageStack.defaultColumnWidth: Kirigami.Units.gridUnit * 25
-    pageStack.globalToolBar.style: window.wideScreen ? Kirigami.ApplicationHeaderStyle.ToolBar : Kirigami.ApplicationHeaderStyle.Breadcrumb
 
     readonly property var leftPage: window.stack.depth>0 ? window.stack.get(0) : null
 
@@ -63,7 +62,7 @@ Kirigami.ApplicationWindow
         text: i18n("&Search")
         component: topSearchComp
         objectName: "discover"
-        shortcut: "Ctrl+F"
+        shortcut: StandardKey.Find
     }
     TopLevelPageData {
         id: installedAction
@@ -85,6 +84,7 @@ Kirigami.ApplicationWindow
         text: i18n("&About")
         component: topAboutComp
         objectName: "about"
+        shortcut: StandardKey.HelpContents
     }
     TopLevelPageData {
         id: sourcesAction
@@ -92,6 +92,7 @@ Kirigami.ApplicationWindow
         text: i18n("S&ettings")
         component: topSourcesComp
         objectName: "sources"
+        shortcut: StandardKey.Preferences
     }
 
     Kirigami.Action {
@@ -107,7 +108,7 @@ Kirigami.ApplicationWindow
         visible: window.wideScreen
         tooltip: shortcut
 
-        shortcut: "Ctrl+R"
+        shortcut: StandardKey.Refresh
     }
 
     Connections {
@@ -258,12 +259,7 @@ Kirigami.ApplicationWindow
         }
     }
 
-    ConditionalObject {
-        id: drawerObject
-        condition: window.wideScreen
-        componentFalse: Kirigami.ContextDrawer {}
-    }
-    contextDrawer: drawerObject.object
+    contextDrawer: Kirigami.ContextDrawer {}
 
     globalDrawer: DiscoverDrawer {
         wideScreen: window.wideScreen
