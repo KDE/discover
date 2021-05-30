@@ -4,7 +4,7 @@ set_source_files_properties(org.projectatomic.rpmostree1.xml PROPERTIES
    INCLUDE dbustypes.h
 )
 set(rpmostree1_xml ${CMAKE_INSTALL_PREFIX}/${DBUS_INTERFACES_INSTALL_DIR}/org.projectatomic.rpmostree1.xml)
-qt5_add_dbus_interface(ostree1_SRCS org.projectatomic.rpmostree1.xml rpmostree1)
+qt_add_dbus_interface(ostree1_SRCS org.projectatomic.rpmostree1.xml rpmostree1)
 
 add_library(rpmostree-backend MODULE RpmOstreeResource.cpp RpmOstreeBackend.cpp RpmOstreeTransaction.cpp RpmOstree.qrc ${ostree1_SRCS})
 target_link_libraries(rpmostree-backend PRIVATE Discover::Common Qt5::DBus KF5::CoreAddons KF5::I18n)
