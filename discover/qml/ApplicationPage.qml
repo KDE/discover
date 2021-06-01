@@ -170,8 +170,8 @@ DiscoverPage {
             ScrollBar {
                 id: screenshotsScrollbar
                 Layout.fillWidth: true
-                visible: applicationScreenshots.visible
             }
+            visible: applicationScreenshots.visible
         }
 
         Kirigami.FlexColumn {
