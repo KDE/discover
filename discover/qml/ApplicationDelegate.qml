@@ -22,11 +22,12 @@ Kirigami.AbstractCard
     showClickFeedback: true
 
     function trigger() {
-        if (delegateRecycler.ListView.view)
-            delegateRecycler.ListView.view.currentIndex = index
+        const view = typeof delegateRecycler !== 'undefined' ? delegateRecycler.ListView.view : ListView.view
+        if (view)
+            view.currentIndex = index
         Navigation.openApplication(application)
     }
-    highlighted: delegateRecycler && delegateRecycler.ListView.isCurrentItem
+    highlighted: ListView.isCurrentItem || (typeof delegateRecycler !== 'undefined' && delegateRecycler.ListView.isCurrentItem)
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
 
