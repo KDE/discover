@@ -38,7 +38,7 @@
   <name xml:lang="tg">Коркардкунандаи PackageKit</name>
   <name xml:lang="uk">Модуль PackageKit</name>
   <name xml:lang="x-test">xxPackageKit backendxx</name>
-  <name xml:lang="zh-CN">PackageKit 后端</name>
+  <name xml:lang="zh-CN">PackageKit 后端程序</name>
   <name xml:lang="zh-TW">PackageKit 後端</name>
   <summary>Integrates distribution applications into Discover</summary>
   <summary xml:lang="ar">يُكامل تطبيقات ”عُدّة الحزم“ في «استكشف»</summary>
@@ -76,7 +76,7 @@
   <summary xml:lang="tg">Барномаҳои низоми амалкунандаро ба барномаи Кашфиёт дарунсохт мекунад.</summary>
   <summary xml:lang="uk">Інтегрує програми зі сховищ дистрибутива до Discover</summary>
   <summary xml:lang="x-test">xxIntegrates distribution applications into Discoverxx</summary>
-  <summary xml:lang="zh-CN">将发行版应用程序集成到Discover中</summary>
+  <summary xml:lang="zh-CN">为 Discover 提供发行版应用程序的集成功能</summary>
   <summary xml:lang="zh-TW">將發行版的應用程式整合進 Discover 商店</summary>
   <extends>org.kde.discover.desktop</extends>
   <metadata_license>CC0-1.0</metadata_license>
