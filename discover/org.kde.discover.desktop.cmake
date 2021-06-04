@@ -100,7 +100,7 @@ GenericName[tg]=Маркази нармафзор
 GenericName[tr]=Yazılım Merkezi
 GenericName[uk]=Центр програм
 GenericName[x-test]=xxSoftware Centerxx
-GenericName[zh_CN]=软件中心
+GenericName[zh_CN]=软件管理中心程序
 GenericName[zh_TW]=軟體中心
 Categories=Qt;KDE;System;
 Keywords=program;software;repository;package;install;remove;update;apps;applications;
@@ -147,7 +147,7 @@ Keywords[tg]=барнома;нармафзор;анбори додаҳо;бас�
 Keywords[tr]=program;yazılım;depo;paket;yükle;kur;kaldır;güncelle;uygulama;uygulamalar;
 Keywords[uk]=program;software;repository;package;install;remove;update;app;apps;applications;програма;програмне забезпечення;сховище;архів;пакунок;встановити;встановлення;вилучити;вилучення;оновлення;оновити;
 Keywords[x-test]=xxprogramxx;xxsoftwarexx;xxrepositoryxx;xxpackagexx;xxinstallxx;xxremovexx;xxupdatexx;xxappsxx;xxapplicationsxx;
-Keywords[zh_CN]=程序;软件;软件源;包;安装;移除;更新;应用程序;应用;
+Keywords[zh_CN]=program;software;repository;package;install;remove;update;apps;applications;程序;软件;软件源;包;安装;移除;更新;应用程序;应用;
 Keywords[zh_TW]=program;software;repository;package;install;remove;update;apps;applications;
 
 [Desktop Action Updates]
