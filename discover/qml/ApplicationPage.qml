@@ -378,6 +378,7 @@ DiscoverPage {
 
                 // "User Guide" row
                 Kirigami.UrlButton {
+                    visible: application.helpURL != ""
                     Kirigami.FormData.label: i18n ("Documentation:")
                     text: i18n("Read the user guide")
                     url: application.helpURL
@@ -387,6 +388,7 @@ DiscoverPage {
 
                 // Homepage row
                 Kirigami.UrlButton {
+                    visible: application.homepage != ""
                     Kirigami.FormData.label: i18n("Get involved:")
                     text: i18n("Visit the app's website")
                     url: application.homepage
@@ -396,6 +398,7 @@ DiscoverPage {
 
                 // Donate row
                 Kirigami.UrlButton {
+                    visible: application.donationURL != ""
                     text: i18n("Make a donation")
                     url: application.donationURL
                     Layout.fillWidth: true
@@ -404,6 +407,7 @@ DiscoverPage {
 
                 // "Report a Problem" row
                 Kirigami.UrlButton {
+                    visible: application.bugURL != ""
                     text: i18n("Report a problem")
                     url: application.bugURL
                     Layout.fillWidth: true
