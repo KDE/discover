@@ -155,6 +155,7 @@ Name=See Available Updates
 Name[az]=Əlçatan yenilənmələrə baxın
 Name[ca]=Mostra les actualitzacions disponibles
 Name[de]=Zeigt verfügbare Aktualisierungen
+Name[en_GB]=See Available Updates
 Name[es]=Ver las actualizaciones disponibles
 Name[eu]=Ikusi eguneratze erabilgarriak
 Name[fr]=Consulter les mises à jour disponibles
