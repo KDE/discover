@@ -44,7 +44,7 @@ public:
         FlatpakInstallation *m_installation = nullptr;
     };
 
-    void onFetchUpdatesFinished(Installation *flatpakInstallation, GPtrArray *updates);
+    void onFetchUpdatesFinished(Installation *flatpakInstallation, bool hasUpdates);
     void loadRemoteUpdates(Installation *installation);
     bool setupFlatpakInstallations(GError **error);
     Installation m_user;

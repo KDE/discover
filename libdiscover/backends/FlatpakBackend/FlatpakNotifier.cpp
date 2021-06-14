@@ -72,23 +72,8 @@ void FlatpakNotifier::recheckSystemUpdateNeeded()
     }
 }
 
-void FlatpakNotifier::onFetchUpdatesFinished(Installation *installation, GPtrArray *updates)
+void FlatpakNotifier::onFetchUpdatesFinished(Installation *installation, bool hasUpdates)
 {
-    bool hasUpdates = false;
-
-    g_autoptr(GPtrArray) fetchedUpdates = updates;
-
-    for (uint i = 0; !hasUpdates && i < fetchedUpdates->len; i++) {
-        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(fetchedUpdates, i));
-        const QString refName = QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(ref)));
-        // FIXME right now I can't think of any other filter than this, in FlatpakBackend updates are matched
-        // with apps so .Locale/.Debug subrefs are not shown and updated automatically. Also this will show
-        // updates for refs we don't show in Discover if appstream metadata or desktop file for them is not found
-        if (refName.endsWith(QLatin1String(".Locale")) || refName.endsWith(QLatin1String(".Debug"))) {
-            continue;
-        }
-        hasUpdates = true;
-    }
     const bool changed = this->hasUpdates() != hasUpdates;
     installation->m_hasUpdates = hasUpdates;
 
@@ -99,21 +84,32 @@ void FlatpakNotifier::onFetchUpdatesFinished(Installation *installation, GPtrArr
 
 void FlatpakNotifier::loadRemoteUpdates(Installation *installation)
 {
-    auto fw = new QFutureWatcher<GPtrArray *>(this);
-    connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw]() {
-        g_autoptr(GPtrArray) refs = fw->result();
-        if (refs)
-            onFetchUpdatesFinished(installation, refs);
+    auto fw = new QFutureWatcher<bool>(this);
+    connect(fw, &QFutureWatcher<bool>::finished, this, [this, installation, fw]() {
+        onFetchUpdatesFinished(installation, fw->result());
         fw->deleteLater();
     });
-    fw->setFuture(QtConcurrent::run([installation]() -> GPtrArray * {
+    fw->setFuture(QtConcurrent::run([installation]() -> bool {
         g_autoptr(GCancellable) cancellable = g_cancellable_new();
         g_autoptr(GError) localError = nullptr;
-        GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation->m_installation, cancellable, &localError);
-        if (!refs) {
+        g_autoptr(GPtrArray) fetchedUpdates = flatpak_installation_list_installed_refs_for_update(installation->m_installation, cancellable, &localError);
+        bool hasUpdates = false;
+
+        for (uint i = 0; !hasUpdates && i < fetchedUpdates->len; i++) {
+            FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(fetchedUpdates, i));
+            const QString refName = QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(ref)));
+            // FIXME right now I can't think of any other filter than this, in FlatpakBackend updates are matched
+            // with apps so .Locale/.Debug subrefs are not shown and updated automatically. Also this will show
+            // updates for refs we don't show in Discover if appstream metadata or desktop file for them is not found
+            if (refName.endsWith(QLatin1String(".Locale")) || refName.endsWith(QLatin1String(".Debug"))) {
+                continue;
+            }
+            hasUpdates = true;
+        }
+        if (!fetchedUpdates) {
             qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
         }
-        return refs;
+        return fetchedUpdates;
     }));
 }
 
