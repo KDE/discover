@@ -1,6 +1,6 @@
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.1
-import QtQuick 2.4
+import QtQuick 2.15
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
@@ -201,6 +201,7 @@ DiscoverPage
     ListView {
         id: updatesView
         currentIndex: -1
+        reuseItems: true
 
         displaced: Transition {
             YAnimator {
