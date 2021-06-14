@@ -99,6 +99,7 @@ void PackageKitNotifier::checkOfflineUpdates()
     const bool success = group.readEntry("Success", false);
     const QString packagesJoined = group.readEntry("Packages");
     const auto packages = packagesJoined.splitRef(QLatin1Char(','));
+    const bool isMobile = QByteArrayList{"1", "true"}.contains(qgetenv("QT_QUICK_CONTROLS_MOBILE"));
     if (!success) {
         const QString errorDetails = group.readEntry("ErrorDetails");
 
@@ -126,18 +127,22 @@ void PackageKitNotifier::checkOfflineUpdates()
 
         notification->sendEvent();
     } else {
-        KNotification *notification = new KNotification(QStringLiteral("OfflineUpdateSuccessful"));
-        notification->setIconName(QStringLiteral("system-software-update"));
-        notification->setTitle(i18n("Offline Updates"));
-        notification->setText(i18np("Successfully updated %1 package", "Successfully updated %1 packages", packages.count()));
-        notification->setActions(QStringList{i18nc("@action:button", "Open Discover")});
-        notification->setComponentName(QStringLiteral("discoverabstractnotifier"));
+        // Apparently on mobile, people are accustomed to seeing notifications
+        // indicating success when a system update succeeded
+        if (isMobile){
+            KNotification *notification = new KNotification(QStringLiteral("OfflineUpdateSuccessful"));
+            notification->setIconName(QStringLiteral("system-software-update"));
+            notification->setTitle(i18n("Offline Updates"));
+            notification->setText(i18np("Successfully updated %1 package", "Successfully updated %1 packages", packages.count()));
+            notification->setActions(QStringList{i18nc("@action:button", "Open Discover")});
+            notification->setComponentName(QStringLiteral("discoverabstractnotifier"));
 
-        connect(notification, &KNotification::action1Activated, this, []() {
-            QProcess::startDetached(QStringLiteral("plasma-discover"), QStringList());
-        });
+            connect(notification, &KNotification::action1Activated, this, []() {
+                QProcess::startDetached(QStringLiteral("plasma-discover"), QStringList());
+            });
 
-        notification->sendEvent();
+            notification->sendEvent();
+        }
         PackageKit::Daemon::global()->offline()->clearResults();
     }
 }
