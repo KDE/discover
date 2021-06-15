@@ -22,6 +22,7 @@
 #include <AppStreamQt/bundle.h>
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/metadata.h>
+#include <AppStreamQt/pool.h>
 
 #include <KAboutData>
 #include <KConfigGroup>
@@ -672,9 +673,8 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
 
     const QString appstreamDirPath = source.appstreamDir();
     const QString appstreamIconsPath = source.appstreamDir() + QLatin1String("/icons/");
-    const QString appDirFileName = appstreamDirPath + QLatin1String("/appstream.xml.gz");
-    if (!QFile::exists(appDirFileName)) {
-        qWarning() << "No" << appDirFileName << "appstream metadata found for" << source.name();
+    if (!QFile::exists(appstreamDirPath)) {
+        qWarning() << "No" << appstreamDirPath << "appstream metadata found for" << source.name();
         metadataRefreshed();
         return;
     }
@@ -703,16 +703,20 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
         fw->deleteLater();
     });
     acquireFetching(true);
-    fw->setFuture(QtConcurrent::run(&m_threadPool, [appDirFileName]() -> QList<AppStream::Component> {
-        AppStream::Metadata metadata;
-        metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
-        AppStream::Metadata::MetadataError error = metadata.parseFile(appDirFileName, AppStream::Metadata::FormatKindXml);
-        if (error != AppStream::Metadata::MetadataErrorNoError) {
-            qWarning() << "Failed to parse appstream metadata: " << error;
+    AppStream::Pool *pool = new AppStream::Pool(this);
+    pool->clearMetadataLocations();
+    pool->addMetadataLocation(appstreamDirPath);
+    pool->setCacheFlags(AppStream::Pool::CacheFlagUseUser);
+
+    const QString subdir = flatpak_installation_get_id(flatpakInstallation) + QLatin1Char('/') + sourceName;
+    pool->setCacheLocation(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/flatpak-appstream/" + subdir);
+    QDir().mkpath(pool->cacheLocation());
+    fw->setFuture(QtConcurrent::run(&m_threadPool, [pool, appstreamDirPath]() -> QList<AppStream::Component> {
+        if (!pool->load()) {
+            qWarning() << "Could not open the AppStream metadata pool" << pool->lastError();
             return {};
         }
-
-        return metadata.components();
+        return pool->components();
     }));
 }
 
