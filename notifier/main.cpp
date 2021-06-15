@@ -12,7 +12,6 @@
 #include <KDBusService>
 #include <KLocalizedString>
 #include <KSharedConfig>
-#include <KStatusNotifierItem>
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDBusConnection>
