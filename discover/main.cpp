@@ -14,13 +14,15 @@
 #include <KDBusService>
 #include <KLocalizedString>
 #include <KQuickAddons/QtQuickSettings>
+#include <KStartupInfo>
+#include <KWindowSystem>
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QStandardPaths>
 #include <QTextStream>
 #include <QWindow>
-#include <kstartupinfo.h>
 
+#include <QProcessEnvironment>
 #include <QX11Info>
 
 typedef QHash<QString, DiscoverObject::CompactMode> StringCompactMode;
@@ -83,6 +85,17 @@ void processArgs(QCommandLineParser *parser, DiscoverObject *mainWindow)
         else
             mainWindow->openApplication(url);
     }
+}
+
+static void raiseWindow(QWindow *window)
+{
+    if (QX11Info::isPlatformX11()) {
+        KStartupInfo::setNewStartupId(window, QX11Info::nextStartupId());
+    } else if (KWindowSystem::isPlatformWayland()) {
+        KWindowSystem::setCurrentXdgActivationToken(qEnvironmentVariable("XDG_ACTIVATION_TOKEN"));
+        KWindowSystem::activateWindow(window->winId());
+    }
+    window->raise();
 }
 
 int main(int argc, char **argv)
@@ -154,14 +167,14 @@ int main(int argc, char **argv)
         }
         QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverObject::deleteLater);
         auto onActivateRequested = [mainWindow](const QStringList &arguments, const QString & /*workingDirectory*/) {
-            if (!mainWindow->rootObject())
-                QCoreApplication::instance()->quit();
-
             auto window = qobject_cast<QWindow *>(mainWindow->rootObject());
-            if (window && QX11Info::isPlatformX11()) {
-                KStartupInfo::setNewStartupId(window, QX11Info::nextStartupId());
+            if (!window) {
+                // Should never happen anyway
+                QCoreApplication::instance()->quit();
+                return;
             }
-            window->raise();
+
+            raiseWindow(window);
 
             if (arguments.isEmpty())
                 return;

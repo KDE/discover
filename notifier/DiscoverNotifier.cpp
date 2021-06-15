@@ -15,6 +15,7 @@
 #include <QDBusPendingCall>
 #include <QDebug>
 #include <QNetworkConfigurationManager>
+#include <QProcess>
 
 #include <KIO/ApplicationLauncherJob>
 #include <KIO/CommandLauncherJob>
@@ -55,9 +56,10 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
 
 DiscoverNotifier::~DiscoverNotifier() = default;
 
-void DiscoverNotifier::showDiscover()
+void DiscoverNotifier::showDiscover(const QString &xdgActivationToken)
 {
     auto *job = new KIO::ApplicationLauncherJob(KService::serviceByDesktopName(QStringLiteral("org.kde.discover")));
+    job->setXdgActivationToken(xdgActivationToken);
     job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
     job->start();
 
@@ -66,9 +68,14 @@ void DiscoverNotifier::showDiscover()
     }
 }
 
-void DiscoverNotifier::showDiscoverUpdates()
+void DiscoverNotifier::showDiscoverUpdates(const QString &xdgActivationToken)
 {
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    if (!xdgActivationToken.isEmpty()) {
+        env.insert("XDG_ACTIVATION_TOKEN", xdgActivationToken);
+    }
     auto *job = new KIO::CommandLauncherJob(QStringLiteral("plasma-discover"), {QStringLiteral("--mode"), QStringLiteral("update")});
+    job->setProcessEnvironment(env);
     job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
     job->setDesktopName(QStringLiteral("org.kde.discover"));
     job->start();
@@ -99,7 +106,9 @@ void DiscoverNotifier::showUpdatesNotification()
     const QString name = i18n("View Updates");
     m_updatesAvailableNotification->setDefaultAction(name);
     m_updatesAvailableNotification->setActions({name});
-    connect(m_updatesAvailableNotification, QOverload<unsigned int>::of(&KNotification::activated), this, &DiscoverNotifier::showDiscoverUpdates);
+    connect(m_updatesAvailableNotification, QOverload<unsigned int>::of(&KNotification::activated), this, [this] {
+        showDiscoverUpdates({});
+    });
 }
 
 void DiscoverNotifier::updateStatusNotifier()

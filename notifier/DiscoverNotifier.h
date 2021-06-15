@@ -68,8 +68,8 @@ public:
 
 public Q_SLOTS:
     void recheckSystemUpdateNeeded();
-    void showDiscover();
-    void showDiscoverUpdates();
+    void showDiscover(const QString &xdgActivationToken);
+    void showDiscoverUpdates(const QString &xdgActivationToken);
     void showUpdatesNotification();
     void reboot();
     void foundUpgradeAction(UpgradeAction *action);

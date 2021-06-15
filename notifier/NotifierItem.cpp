@@ -41,17 +41,21 @@ void NotifierItem::setupNotifierItem()
         if (m_notifier.needsReboot()) {
             m_notifier.reboot();
         } else {
-            m_notifier.showDiscoverUpdates();
+            m_notifier.showDiscoverUpdates(m_item->providedToken());
         }
     });
 
     QMenu *menu = new QMenu;
     connect(m_item, &QObject::destroyed, menu, &QObject::deleteLater);
     auto discoverAction = menu->addAction(QIcon::fromTheme(QStringLiteral("plasmadiscover")), i18n("Open Discover…"));
-    connect(discoverAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::showDiscover);
+    connect(discoverAction, &QAction::triggered, &m_notifier, [this] {
+        m_notifier.showDiscover(m_item->providedToken());
+    });
 
     auto updatesAction = menu->addAction(QIcon::fromTheme(QStringLiteral("system-software-update")), i18n("See Updates…"));
-    connect(updatesAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::showDiscoverUpdates);
+    connect(updatesAction, &QAction::triggered, &m_notifier, [this] {
+        m_notifier.showDiscoverUpdates(m_item->providedToken());
+    });
 
     auto refreshAction = menu->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Refresh…"));
     connect(refreshAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::recheckSystemUpdateNeeded);
