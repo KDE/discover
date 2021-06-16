@@ -109,7 +109,7 @@ void FlatpakNotifier::loadRemoteUpdates(Installation *installation)
         if (!fetchedUpdates) {
             qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
         }
-        return fetchedUpdates;
+        return hasUpdates;
     }));
 }
 
