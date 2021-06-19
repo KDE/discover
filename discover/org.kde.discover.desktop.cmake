@@ -154,6 +154,7 @@ Keywords[zh_TW]=program;software;repository;package;install;remove;update;apps;a
 Name=See Available Updates
 Name[az]=Əlçatan yenilənmələrə baxın
 Name[ca]=Mostra les actualitzacions disponibles
+Name[cs]=Zobrazit dostupné aktualizace
 Name[de]=Zeigt verfügbare Aktualisierungen
 Name[en_GB]=See Available Updates
 Name[es]=Ver las actualizaciones disponibles
