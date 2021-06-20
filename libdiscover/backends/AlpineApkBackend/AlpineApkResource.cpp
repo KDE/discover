@@ -220,7 +220,21 @@ void AlpineApkResource::fetchChangelog()
 void AlpineApkResource::fetchScreenshots()
 {
     if (hasAppStreamData()) {
-        const QPair<QList<QUrl>, QList<QUrl> > sc = AppStreamUtils::fetchScreenshots(m_appsC);
+        /*const*/ QPair<QList<QUrl>, QList<QUrl>> sc = AppStreamUtils::fetchScreenshots(m_appsC);
+        if (sc.first.size() > 0) {
+            const QUrl &url = sc.first.first();
+            if (url.isRelative()) {
+                // This is a hack to fix broken Alpine Linux appstream
+                // metadata: somehow generated thumbnails URLs are relative
+                // and always fail to load (not present in metadata at all)
+                // We work around this by using full url, which is veyr not
+                // good - they're fetched by http://...
+                // It would be great if thumbnails were hosted locally.
+                if (sc.second.size() > 0) {
+                    sc.first = sc.second;
+                }
+            }
+        }
         Q_EMIT screenshotsFetched(sc.first, sc.second);
     }
 }
