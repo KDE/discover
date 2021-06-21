@@ -164,6 +164,7 @@ Name[ia]=Vide actualisationes dispoibile
 Name[it]=Vedi gli aggiornamenti disponibili
 Name[ko]=사용 가능한 업데이트 보기
 Name[nl]=Zie beschikbare elementen voor bijwerken
+Name[pa]=ਮੌਜੂਦ ਅੱਪਡੇਟ ਵੇਖੋ
 Name[pl]=Obejrzyj dostępne uaktualnienia
 Name[pt]=Ver as Actualizações Disponíveis
 Name[pt_BR]=Ver as atualizações disponíveis
