@@ -13,7 +13,7 @@
 #include <QStorageInfo>
 
 CachedNetworkAccessManager::CachedNetworkAccessManager(const QString &path, QObject *parent)
-    : KIO::AccessManager(parent)
+    : QNetworkAccessManager(parent)
 {
     const QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1Char('/') + path;
     QNetworkDiskCache *cache = new QNetworkDiskCache(this);
@@ -27,5 +27,5 @@ QNetworkReply *CachedNetworkAccessManager::createRequest(Operation op, const QNe
 {
     QNetworkRequest req(request);
     req.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
-    return KIO::AccessManager::createRequest(op, request, outgoingData);
+    return QNetworkAccessManager::createRequest(op, request, outgoingData);
 }

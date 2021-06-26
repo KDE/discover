@@ -61,7 +61,8 @@ PUBLIC
 PRIVATE
     Qt::Xml
     KF5::CoreAddons
-    KF5::KIOWidgets # KIO/AccessManager
+    KF5::ConfigCore
+    KF5::KIOCore
 )
 add_library(Discover::Common ALIAS DiscoverCommon)
 

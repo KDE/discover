@@ -8,11 +8,10 @@
 #ifndef CACHEDNETWORKACCESSMANAGER_H
 #define CACHEDNETWORKACCESSMANAGER_H
 
-#include <KIO/AccessManager>
 #include <QNetworkAccessManager>
 #include <QQmlNetworkAccessManagerFactory>
 
-class Q_DECL_EXPORT CachedNetworkAccessManager : public KIO::AccessManager
+class Q_DECL_EXPORT CachedNetworkAccessManager : public QNetworkAccessManager
 {
     Q_OBJECT
 public:
