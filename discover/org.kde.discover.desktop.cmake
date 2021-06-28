@@ -159,6 +159,7 @@ Name[de]=Zeigt verfügbare Aktualisierungen
 Name[en_GB]=See Available Updates
 Name[es]=Ver las actualizaciones disponibles
 Name[eu]=Ikusi eguneratze erabilgarriak
+Name[fi]=Näytä saatavilla olevat päivitykset
 Name[fr]=Consulter les mises à jour disponibles
 Name[ia]=Vide actualisationes dispoibile
 Name[it]=Vedi gli aggiornamenti disponibili
