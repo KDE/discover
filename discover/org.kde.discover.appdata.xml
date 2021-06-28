@@ -19,6 +19,7 @@
   <name xml:lang="fi">Discover</name>
   <name xml:lang="fr">Discover</name>
   <name xml:lang="gl">Discover</name>
+  <name xml:lang="hi">डिस्कवर</name>
   <name xml:lang="hu">Discover</name>
   <name xml:lang="ia">Discoperi</name>
   <name xml:lang="id">Discover</name>
@@ -63,6 +64,7 @@
   <summary xml:lang="fi">Discover</summary>
   <summary xml:lang="fr">Discover</summary>
   <summary xml:lang="gl">Discover</summary>
+  <summary xml:lang="hi">डिस्कवर</summary>
   <summary xml:lang="hu">Discover</summary>
   <summary xml:lang="ia">Discoperi</summary>
   <summary xml:lang="id">Discover</summary>
@@ -106,6 +108,7 @@
     <p xml:lang="fi">Discover auttaa sinua etsimään ja asentamaan sovelluksia, pelejä ja apuohjelmia. Voit etsiä tai selata luokittain, katsella ruutukaappauskuvia ja lukea arvosteluja.</p>
     <p xml:lang="fr">Discover vous aide à trouver et à installer des applications, des jeux et des outils. Vous pouvez chercher ou naviguer par catégorie, ou consulter les captures d'écran et les avis d'utilisateurs pour vous aider à trouver l'appli parfaite.</p>
     <p xml:lang="gl">Discover axúdalle a atopar e instalar aplicacións, xogos e ferramentas. Pode buscar ou explorar por categoría, e ollar capturas de pantalla e ler recensións como axuda para escoller a aplicación perfecta.</p>
+    <p xml:lang="hi">डिस्कवर आपको अनुप्रयोग, खेल और उपकरणों को ढूंढने और संस्थापित करने में मदद करता है। आप श्रेणी के आधार पर खोज या ब्राउज़ कर सकते हैं, और स्क्रीनशॉट देख सकते हैं और समीक्षाएँ पढ़ सकते हैं ताकि आपको सही ऐप चुनने में मदद मिल सके।</p>
     <p xml:lang="hu">A Discover segít az alkalmazások, játékok és eszközök keresésében és telepítésében. Kereshet vagy böngészhet kategóriák szerint, nézhet képernyőképeket és olvashat értékeléseket, hogy könnyen megtalálja a tökéletes alkalmazást.</p>
     <p xml:lang="ia">Discover adjuta te a trovar e installar aplicationes, jocos, e instrumentos. Tu pote cercar e navigar per categoria, e reguardar a instantanee de schermo e lege reviews per adjutar te a colliger le perfect app.</p>
     <p xml:lang="id">Discover membantu kamu untuk menemukan dan menginstal aplikasi, permainan, dan peralatan. Kamu bisa mencari atau menelusuri berdasarkan kategori, dan melihat screenshot dan membaca ulasan untuk membantu kamu memilih aplikasi yang sempurna.</p>
@@ -141,6 +144,7 @@
     <p xml:lang="fi">Discoverilla voit hallita ohjelmia eri lähteistä: käyttöjärjestelmän tai Flatpakin asennuslähteistä, Snap-kaupasta tai jopa store.kde.orgin AppImageista.</p>
     <p xml:lang="fr">Grâce à Discover, vous pouvez gérer des logiciels provenant de plusieurs sources, dont le dépôt de logiciels de votre système d'exploitation, les dépôts Flatpak, la boutique Snap ou même des AppImages de store.kde.org.</p>
     <p xml:lang="gl">Con Discover pode xestionar software de varias fontes, entre elas o repositorio de software do seu sistema operativo, os repositorios de Flatpak, a tenda de Snap, ou mesmo as AppImage de store.kde.org.</p>
+    <p xml:lang="hi">डिस्कवर के साथ, आप अपने ऑपरेटिंग तंत्र के सॉफ़्टवेयर भंडार, फ़्लैटपैक भंडार, स्नैप स्टोर, या यहां तक कि store.kde.org से एपइमेजस सहित कई स्रोतों से सॉफ़्टवेयर का प्रबंधन कर सकते हैं।</p>
     <p xml:lang="hu">A Discoverrel egy helyen kezelheti több forrásból származó szoftvereit, legyen szó akár az operációs rendszer tárolóiról, a Flatpak tárolókról a Snap boltról vagy akár a store.kde.org-ról származó AppImage-ekről.</p>
     <p xml:lang="ia">Con Discover, tu pote gerer software ab multiple fontes, includente le repositorio de software de tusystema operative. repos de Flatpak, le magazin de Snap, o etiam Appimages ex store.kde.org.</p>
     <p xml:lang="id">Dengan Discover, kamu bisa mengelola perangkat lunak dari banyak sumber, termasuk repositori perangkat lunak operasi sistemmu, repo Flatpak, Snap store, atau bahkan AppImages dari store.kde.org.</p>
@@ -177,6 +181,7 @@
     <p xml:lang="fi">Discoverilla voit myös etsiä, asentaa ja hallita Plasman laajennusosia ja kaikkia suosikki-KDE-sovelluksiasi!</p>
     <p xml:lang="fr">Enfin, Discover vous permet de trouver, d'installer et de gérer des modules complémentaires pour Plasma et toutes vos applis KDE préférées !</p>
     <p xml:lang="gl">Por último, Discover tamén lle permite atopar, instalar e xestionar complementos de Plasma e das súas aplicacións favoritas de KDE!</p>
+    <p xml:lang="hi">अंत में, डिस्कवर आपको प्लाज़्मा और आपके सभी पसंदीदा केडीई ऐप्स के लिए ऐड-ऑन ढूंढने, संस्थापित करने और प्रबंधित करने मैं मदद करता है!</p>
     <p xml:lang="hu">Végül, de nem utolsósorban a Discoverrel kereshet, telepíthet és kezelhet kiegészítőket a Plasmához és a kedvenc KDE alkalmazásaihoz!</p>
     <p xml:lang="ia">Al fin, Discover anque te permitte trovar, installar, e gerer add-ons per Plasma e omne tu favorite apps de KDE!</p>
     <p xml:lang="id">Terakhir, Discover juga memungkinkan kamu untuk menemukan, menginstal, dan mengelola pernik untuk Plasma dan semua aplikasi KDE favoritmu.</p>
@@ -217,6 +222,7 @@
       <caption xml:lang="fi">Plasma Discover</caption>
       <caption xml:lang="fr">Plasma Discover</caption>
       <caption xml:lang="gl">Plasma Discover</caption>
+      <caption xml:lang="hi">प्लाज़्मा डिस्कवर</caption>
       <caption xml:lang="hu">Plasma Discover</caption>
       <caption xml:lang="ia">Plasma Discover (Discoperi de Plasma)</caption>
       <caption xml:lang="id">Discover Plasma</caption>
