@@ -17,6 +17,7 @@ Name[fi]=Discover
 Name[fr]=Discover
 Name[gl]=Descubrir
 Name[he]=Discover
+Name[hi]=डिस्कवर
 Name[hu]=Discover
 Name[ia]=Discover (Discoperi)
 Name[id]=Discover
