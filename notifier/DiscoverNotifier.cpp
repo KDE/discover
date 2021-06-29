@@ -59,7 +59,7 @@ DiscoverNotifier::~DiscoverNotifier() = default;
 void DiscoverNotifier::showDiscover(const QString &xdgActivationToken)
 {
     auto *job = new KIO::ApplicationLauncherJob(KService::serviceByDesktopName(QStringLiteral("org.kde.discover")));
-    job->setXdgActivationToken(xdgActivationToken);
+    job->setStartupId(xdgActivationToken.toUtf8());
     job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
     job->start();
 
@@ -70,14 +70,10 @@ void DiscoverNotifier::showDiscover(const QString &xdgActivationToken)
 
 void DiscoverNotifier::showDiscoverUpdates(const QString &xdgActivationToken)
 {
-    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-    if (!xdgActivationToken.isEmpty()) {
-        env.insert("XDG_ACTIVATION_TOKEN", xdgActivationToken);
-    }
     auto *job = new KIO::CommandLauncherJob(QStringLiteral("plasma-discover"), {QStringLiteral("--mode"), QStringLiteral("update")});
-    job->setProcessEnvironment(env);
     job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
     job->setDesktopName(QStringLiteral("org.kde.discover"));
+    job->setStartupId(xdgActivationToken.toUtf8());
     job->start();
 
     if (m_updatesAvailableNotification) {
