@@ -53,7 +53,11 @@ add_subdirectory(libdiscover)
 add_subdirectory(discover)
 add_subdirectory(exporter)
 add_subdirectory(update)
-add_subdirectory(kcm)
+
+option(WITH_KCM "Build and install the updates KCM" ON)
+if(WITH_KCM)
+    add_subdirectory(kcm)
+endif()
 
 option(WITH_NOTIFIER "Build and install the notifier plasmoid" ON)
 if(WITH_NOTIFIER)
