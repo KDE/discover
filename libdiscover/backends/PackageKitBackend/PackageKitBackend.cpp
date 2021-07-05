@@ -432,14 +432,16 @@ public:
         , backend(backend)
     {
         QTimer::singleShot(0, this, [resources, this]() {
-            if (!resources.isEmpty())
-                setResources(resources);
+            setResources(resources);
             finish();
         });
     }
 
     void setResources(const QVector<AbstractResource *> &res)
     {
+        if (res.isEmpty())
+            return;
+
         const auto toResolve = kFilter<QVector<AbstractResource *>>(res, needsResolveFilter);
         if (!toResolve.isEmpty())
             backend->resolvePackages(kTransform<QStringList>(toResolve, [](AbstractResource *res) {
@@ -462,9 +464,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
             const auto resources = kTransform<QVector<AbstractResource *>>(m_packages.extendedBy.value(filter.extends), [](AppPackageKitResource *a) {
                 return a;
             });
-            if (!resources.isEmpty()) {
-                stream->setResources(resources);
-            }
+            stream->setResources(resources);
             stream->finish();
         };
         runWhenInitialized(f, stream);
@@ -518,9 +518,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
             auto resources = kFilter<QVector<AbstractResource *>>(m_packages.packages, [](AbstractResource *res) {
                 return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource *>(res)->extendsItself();
             });
-            if (!resources.isEmpty()) {
-                stream->setResources(resources);
-            }
+            stream->setResources(resources);
             stream->finish();
         };
         runWhenInitialized(f, stream);
