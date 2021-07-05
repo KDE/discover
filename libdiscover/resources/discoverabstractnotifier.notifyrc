@@ -153,6 +153,7 @@ Action=Popup
 
 [Event/OfflineUpdateSuccessful]
 Name=Successful Offline Update
+Name[ar]=تحديث ناجح دون اتصال
 Name[az]=Uğurlu oflayn yenilənmə
 Name[ca]=Actualització amb èxit sense connexió
 Name[cs]=Úspěšná aktualizace offline
@@ -181,6 +182,7 @@ Name[uk]=Успішне автономне оновлення
 Name[x-test]=xxSuccessful Offline Updatexx
 Name[zh_CN]=离线更新成功
 Comment=System updated successfully
+Comment[ar]=حدث النظام بنجاح
 Comment[az]=Sistem uğurla yeniləndi
 Comment[ca]=El sistema s'ha actualitzat amb èxit
 Comment[cs]=Aktualizace systému byla úspěšná
@@ -213,6 +215,7 @@ Action=Popup
 
 [Event/OfflineUpdateFailed]
 Name=Failed Offline Update
+Name[ar]=فشل تحديث دون اتصال
 Name[az]=Uğursuz oflayn yenilənmə
 Name[ca]=Ha fallat en actualitzar sense connexió
 Name[cs]=Selhala aktualizace offline
@@ -241,6 +244,7 @@ Name[uk]=Не вдалося виконати автономне оновлен�
 Name[x-test]=xxFailed Offline Updatexx
 Name[zh_CN]=离线更新失败
 Comment=System update failed
+Comment[ar]=فشل تحديث النظام
 Comment[az]=Sistem yenilənməsi alınmadı
 Comment[ca]=Ha fallat en actualitzar el sistema
 Comment[cs]=Aktualizace systému selhala
@@ -273,6 +277,7 @@ Action=Popup
 
 [Event/OfflineUpdateRepairFailed]
 Name=Repair Failed
+Name[ar]=الإصلاح فشل
 Name[az]=Bərpa edilə bilmədi
 Name[ca]=Ha fallat en reparar
 Name[cs]=Oprava selhala
@@ -301,6 +306,7 @@ Name[uk]=Невдала спроба відновлення
 Name[x-test]=xxRepair Failedxx
 Name[zh_CN]=修复失败
 Comment=Repair failure after offline update
+Comment[ar]=فشل الإصلاح بعد التحديث دون اتصال
 Comment[az]=Oflayn yenilənmədən sonra bərpa edilə bilmədi
 Comment[ca]=Ha fallat en reparar després de l'actualització sense connexió
 Comment[de]=Reparatur nach Offline-Aktualisierung fehlgeschlagen

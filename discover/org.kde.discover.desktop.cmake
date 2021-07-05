@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Discover
-Name[ar]=استكشف
+Name[ar]=المستكشف
 Name[ast]=Discover
 Name[az]=Discover
 Name[ca]=Discover
@@ -106,7 +106,7 @@ GenericName[zh_CN]=软件管理中心程序
 GenericName[zh_TW]=軟體中心
 Categories=Qt;KDE;System;
 Keywords=program;software;repository;package;install;remove;update;apps;applications;
-Keywords[ar]=برنامج;برمجيّة;برمجية;مستودع;حزمة;تثبيت;إزالة;ازالة;تحديث;تطبيقات;تطبيق;
+Keywords[ar]=برنامج;برمجيّة;برمجية;مستودع;حزمة;تثبيت;إزالة;أرشيف;تحديث;تطبيقات;تطبيق;
 Keywords[ast]=programa;software;depósitu;paquete;instalar;instalación;desaniciar;desaniciu;anovar;anovamientu;aplicación;aplicaciones;
 Keywords[az]=pqorqam;proqram təminatı;repozitoriya;paket;quraşdırmaq;silmək;yeniləmək;tətbiqlər;tətbiqetmələr;
 Keywords[ca]=programa;programari;repositori;paquet;instal·la;suprimeix;actualitza;apps;aplicacions;
@@ -155,6 +155,7 @@ Keywords[zh_TW]=program;software;repository;package;install;remove;update;apps;a
 
 [Desktop Action Updates]
 Name=See Available Updates
+Name[ar]=اعرض التحديثات المتوفرة
 Name[az]=Əlçatan yenilənmələrə baxın
 Name[ca]=Mostra les actualitzacions disponibles
 Name[cs]=Zobrazit dostupné aktualizace

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Discover
-Name[ar]=استكشف
+Name[ar]=المستكشف
 Name[ast]=Discover
 Name[az]=Discover
 Name[ca]=Discover
