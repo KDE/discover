@@ -20,8 +20,15 @@
 #include "flatpak-helper.h"
 
 class FlatpakSourcesBackend;
+class FlatpakSource;
 class StandardBackendUpdater;
 class OdrsReviewsBackend;
+
+namespace AppStream
+{
+class Pool;
+}
+
 class FlatpakBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
@@ -34,10 +41,6 @@ public:
     AbstractReviewsBackend *reviewsBackend() const override;
     ResultsStream *search(const AbstractResourcesBackend::Filters &search) override;
     ResultsStream *findResourceByPackageName(const QUrl &search);
-    QList<FlatpakResource *> resources() const
-    {
-        return m_resources.values();
-    }
     bool isValid() const override;
 
     Transaction *installApplication(AbstractResource *app) override;
@@ -74,12 +77,13 @@ public:
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata);
     void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);
-    void onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *updates);
 
 Q_SIGNALS: // for tests
     void initialized();
 
 private:
+    friend class FlatpakSource;
+
     void metadataRefreshed();
     bool flatpakResourceLessThan(AbstractResource *l, AbstractResource *r) const;
     void announceRatingsReady();
@@ -90,14 +94,11 @@ private:
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     FlatpakRemote *getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
     FlatpakResource *getRuntimeForApp(FlatpakResource *resource) const;
+    FlatpakResource *resourceForComponent(const AppStream::Component &component, const QSharedPointer<FlatpakSource> &source) const;
 
-    void addResource(FlatpakResource *resource);
     void loadAppsFromAppstreamData();
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);
-    void loadInstalledApps();
-    bool loadInstalledApps(FlatpakInstallation *flatpakInstallation);
     void loadLocalUpdates(FlatpakInstallation *flatpakInstallation);
-    void loadRemoteUpdates(FlatpakInstallation *flatpakInstallation);
     bool parseMetadataFromAppBundle(FlatpakResource *resource);
     void refreshAppstreamMetadata(FlatpakInstallation *installation, FlatpakRemote *remote);
     bool setupFlatpakInstallations(GError **error);
@@ -107,11 +108,11 @@ private:
     bool updateAppMetadata(FlatpakResource *resource, const QString &path);
     bool updateAppSizeFromRemote(FlatpakResource *resource);
     void updateAppState(FlatpakResource *resource);
+    QSharedPointer<FlatpakSource> findSource(FlatpakInstallation *installation, const QString &origin) const;
 
     QVector<AbstractResource *> resourcesByAppstreamName(const QString &name) const;
     void acquireFetching(bool f);
 
-    QHash<FlatpakResource::Id, FlatpakResource *> m_resources;
     StandardBackendUpdater *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;
     QSharedPointer<OdrsReviewsBackend> m_reviews;
@@ -122,6 +123,8 @@ private:
     GCancellable *m_cancellable;
     QVector<FlatpakInstallation *> m_installations;
     QThreadPool m_threadPool;
+    QVector<QSharedPointer<FlatpakSource>> m_flatpakSources;
+    QSharedPointer<FlatpakSource> m_localSource;
 };
 
 #endif // FLATPAKBACKEND_H
