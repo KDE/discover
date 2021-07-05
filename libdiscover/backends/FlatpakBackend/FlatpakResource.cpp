@@ -47,6 +47,7 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
     , m_propertyStates({{DownloadSize, NotKnownYet}, {InstalledSize, NotKnownYet}, {RequiredRuntime, NotKnownYet}})
     , m_state(AbstractResource::None)
 {
+    qDebug() << "created..." << component.name() << installation;
     setObjectName(packageName());
 
     // Start fetching remote icons during initialization
@@ -180,17 +181,9 @@ QVariant FlatpakResource::icon() const
         for (const AppStream::Icon &icon : icons) {
             switch (icon.kind()) {
             case AppStream::Icon::KindLocal:
-            case AppStream::Icon::KindCached: {
-                const QString path = m_iconPath + icon.url().path();
-                if (QFileInfo::exists(path)) {
-                    ret.addFile(path, icon.size());
-                } else {
-                    const QString altPath = m_iconPath + QStringLiteral("%1x%2/").arg(icon.size().width()).arg(icon.size().height()) + icon.url().path();
-                    if (QFileInfo::exists(altPath)) {
-                        ret.addFile(altPath, icon.size());
-                    }
-                }
-            } break;
+            case AppStream::Icon::KindCached:
+                ret.addFile(icon.url().toLocalFile(), icon.size());
+                break;
             case AppStream::Icon::KindStock: {
                 const auto ret = QIcon::fromTheme(icon.name());
                 if (!ret.isNull())

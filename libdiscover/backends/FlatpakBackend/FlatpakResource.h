@@ -48,7 +48,7 @@ public:
     Q_ENUM(ResourceType)
 
     struct Id {
-        FlatpakInstallation *const installation;
+        FlatpakInstallation *const installation; // TODO installation doesn't need to be part of the id anymore
         QString origin;
         FlatpakResource::ResourceType type;
         const QString id;

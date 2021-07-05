@@ -50,6 +50,80 @@
 
 DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
 
+class FlatpakSource
+{
+public:
+    FlatpakSource(FlatpakBackend *backend, FlatpakInstallation *installation, FlatpakRemote *remote)
+        : m_remote(remote)
+        , m_installation(installation)
+        , m_backend(backend)
+    {
+        g_object_ref(m_remote);
+        g_object_ref(m_installation);
+    }
+
+    ~FlatpakSource()
+    {
+        g_object_unref(m_remote);
+        g_object_unref(m_installation);
+    }
+
+    bool isEnabled() const
+    {
+        return !flatpak_remote_get_disabled(m_remote);
+    }
+
+    QString appstreamDir() const
+    {
+        g_autoptr(GFile) appstreamDir = flatpak_remote_get_appstream_dir(m_remote, nullptr);
+        if (!appstreamDir) {
+            qWarning() << "No appstream dir for" << flatpak_remote_get_name(m_remote);
+            return {};
+        }
+        g_autofree char *path_str = g_file_get_path(appstreamDir);
+        return QString::fromUtf8(path_str);
+    }
+
+    QString name() const
+    {
+        return QString::fromUtf8(flatpak_remote_get_name(m_remote));
+    }
+
+    FlatpakInstallation *installation() const
+    {
+        return m_installation;
+    }
+
+    void addResource(FlatpakResource *resource)
+    {
+        // Update app with all possible information we have
+        if (!m_backend->parseMetadataFromAppBundle(resource)) {
+            qWarning() << "Failed to parse metadata from app bundle for" << resource->name();
+        }
+
+        m_backend->updateAppState(resource);
+
+        m_resources.insert(resource->uniqueId(), resource);
+        if (!resource->extends().isEmpty()) {
+            m_backend->m_extends.append(resource->extends());
+            m_backend->m_extends.removeDuplicates();
+        }
+
+        QObject::connect(resource, &FlatpakResource::sizeChanged, m_backend, [this, resource] {
+            if (!m_backend->isFetching())
+                Q_EMIT m_backend->resourcesChanged(resource, {"size", "sizeDescription"});
+        });
+    }
+
+    AppStream::Pool *m_pool = nullptr;
+    QHash<FlatpakResource::Id, FlatpakResource *> m_resources;
+
+private:
+    FlatpakRemote *const m_remote;
+    FlatpakInstallation *const m_installation;
+    FlatpakBackend *const m_backend;
+};
+
 QDebug operator<<(QDebug debug, const FlatpakResource::Id &id)
 {
     QDebugStateSaver saver(debug);
@@ -97,8 +171,8 @@ FlatpakBackend::FlatpakBackend(QObject *parent)
     }
 
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
-        m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource *>>(m_resources, [](AbstractResource *r) {
-                                         return r;
+        m_reviews->emitRatingFetched(this, kAppend<QList<AbstractResource *>>(m_flatpakSources, [](const auto &source) {
+                                         return kTransform<QList<AbstractResource *>>(source->m_resources.values());
                                      }));
     });
 
@@ -234,16 +308,90 @@ FlatpakInstalledRef *FlatpakBackend::getInstalledRefForApp(FlatpakResource *reso
     return ref;
 }
 
-FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const
+QString refToBundleId(FlatpakRef *ref)
 {
-    auto r = m_resources.value(idForInstalledRef(flatpakInstallation, ref, {}));
-    if (!r)
-        r = m_resources.value(idForInstalledRef(flatpakInstallation, ref, QStringLiteral(".desktop")));
+    return QString(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? "app/" : "runtime/") + flatpak_ref_get_name(ref) + '/' + flatpak_ref_get_arch(ref) + '/'
+        + flatpak_ref_get_branch(ref);
+}
 
-    // if (!r) {
+FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref) const
+{
+    auto id = idForInstalledRef(installation, ref, {});
+    for (const auto &source : m_flatpakSources) {
+        auto ret = source->m_resources.value(id);
+        if (ret) {
+            return ret;
+        }
+    }
+    auto id2 = idForInstalledRef(installation, ref, QStringLiteral(".desktop"));
+    for (const auto &source : m_flatpakSources) {
+        auto ret = source->m_resources.value(id2);
+        if (ret) {
+            return ret;
+        }
+    }
+
+    const QLatin1String name(flatpak_ref_get_name(FLATPAK_REF(ref)));
+
+    const QString origin = QString::fromUtf8(flatpak_installed_ref_get_origin(ref));
+    auto source = findSource(installation, origin);
+    const QString pathExports = FlatpakResource::installationPath(installation) + QLatin1String("/exports/");
+    const QString pathApps = pathExports + QLatin1String("share/applications/");
+    AppStream::Component cid;
+    if (source && source->m_pool) {
+        QList<AppStream::Component> comps = source->m_pool->componentsById(name);
+        if (comps.isEmpty()) {
+            comps = source->m_pool->componentsById(name + ".desktop");
+        }
+
+        if (comps.isEmpty()) {
+            const QString bundleId = refToBundleId(FLATPAK_REF(ref));
+            comps = kFilter<QList<AppStream::Component>>(comps, [&bundleId](const AppStream::Component &comp) -> bool {
+                return comp.bundle(AppStream::Bundle::Kind::KindFlatpak).id() == bundleId;
+            });
+        }
+
+        if (comps.count() >= 1) {
+            Q_ASSERT(comps.count() == 1);
+            cid = comps.constFirst();
+        }
+    }
+
+    if (!cid.isValid()) {
+        AppStream::Metadata metadata;
+        const QString fnDesktop = pathApps + name + QLatin1String(".desktop");
+        AppStream::Metadata::MetadataError error = metadata.parseFile(fnDesktop, AppStream::Metadata::FormatKindDesktopEntry);
+        if (error != AppStream::Metadata::MetadataErrorNoError) {
+            if (QFile::exists(fnDesktop))
+                qDebug() << "Failed to parse appstream metadata:" << error << fnDesktop;
+
+            cid.setId(QString::fromLatin1(flatpak_ref_get_name(FLATPAK_REF(ref))));
+#if FLATPAK_CHECK_VERSION(1, 1, 2)
+            cid.setName(QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref)));
+#endif
+        } else
+            cid = metadata.component();
+    }
+
+    FlatpakResource *resource = resourceForComponent(cid, source);
+    resource->setIconPath(pathExports);
+    resource->setState(AbstractResource::Installed);
+    resource->updateFromRef(FLATPAK_REF(ref));
+    source->addResource(resource);
+
     //     qDebug() << "no" << flatpak_ref_get_name(FLATPAK_REF(ref));
-    // }
-    return r;
+    return resource;
+}
+
+QSharedPointer<FlatpakSource> FlatpakBackend::findSource(FlatpakInstallation *installation, const QString &origin) const
+{
+    for (const auto &source : m_flatpakSources) {
+        if (source->installation() == installation && source->name() == origin) {
+            return source;
+        }
+    }
+
+    Q_UNREACHABLE();
 }
 
 FlatpakResource *FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) const
@@ -256,11 +404,13 @@ FlatpakResource *FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) con
         return runtime;
     }
 
-    for (auto it = m_resources.constBegin(), itEnd = m_resources.constEnd(); it != itEnd; ++it) {
-        const auto &id = it.key();
-        if (id.type == FlatpakResource::Runtime && id.id == runtimeInfo.at(0) && id.branch == runtimeInfo.at(2)) {
-            runtime = *it;
-            break;
+    for (const auto &source : m_flatpakSources) {
+        for (auto it = source->m_resources.constBegin(), itEnd = source->m_resources.constEnd(); it != itEnd; ++it) {
+            const auto &id = it.key();
+            if (id.type == FlatpakResource::Runtime && id.id == runtimeInfo.at(0) && id.branch == runtimeInfo.at(2)) {
+                runtime = *it;
+                break;
+            }
         }
     }
 
@@ -390,7 +540,11 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
     resource->setState(FlatpakResource::None);
     resource->setType(FlatpakResource::DesktopApp);
 
-    addResource(resource);
+    if (!m_localSource) {
+        m_localSource.reset(new FlatpakSource(this, preferredInstallation(), nullptr));
+        m_flatpakSources += m_localSource;
+    }
+    m_localSource->addResource(resource);
     stream->resourcesFound({resource});
 }
 
@@ -462,10 +616,12 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     resource->updateFromRef(ref);
 
     QUrl runtimeUrl = QUrl(settings.value(QStringLiteral("Flatpak Ref/RuntimeRepo")).toString());
+    auto refSource = QSharedPointer<FlatpakSource>::create(this, preferredInstallation(), nullptr);
+    m_flatpakSources += refSource;
     if (!runtimeUrl.isEmpty()) {
         // We need to fetch metadata to find information about required runtime
         auto fw = new QFutureWatcher<QByteArray>(this);
-        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, resource, fw, runtimeUrl, stream]() {
+        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, resource, fw, runtimeUrl, stream, refSource]() {
             fw->deleteLater();
             const auto metadata = fw->result();
             // Even when we failed to fetch information about runtime we still want to show the application
@@ -477,20 +633,23 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
                 auto runtime = getRuntimeForApp(resource);
                 if (!runtime || (runtime && !runtime->isInstalled())) {
                     auto repoStream = new ResultsStream(QLatin1String("FlatpakStream-searchrepo-") + runtimeUrl.toString());
-                    connect(repoStream, &ResultsStream::resourcesFound, this, [this, resource, stream](const QVector<AbstractResource *> &resources) {
-                        for (auto res : resources) {
-                            installApplication(res);
-                        }
-                        addResource(resource);
-                        stream->resourcesFound({resource});
-                        stream->finish();
-                    });
+                    connect(repoStream,
+                            &ResultsStream::resourcesFound,
+                            this,
+                            [this, resource, stream, refSource](const QVector<AbstractResource *> &resources) {
+                                for (auto res : resources) {
+                                    installApplication(res);
+                                }
+                                refSource->addResource(resource);
+                                stream->resourcesFound({resource});
+                                stream->finish();
+                            });
 
                     auto fetchRemoteResource = new FlatpakFetchRemoteResourceJob(runtimeUrl, repoStream, this);
                     fetchRemoteResource->start();
                     return;
                 } else {
-                    addResource(resource);
+                    refSource->addResource(resource);
                 }
             }
             stream->resourcesFound({resource});
@@ -498,7 +657,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
         });
         fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, resource, m_cancellable));
     } else {
-        addResource(resource);
+        refSource->addResource(resource);
         stream->resourcesFound({resource});
         stream->finish();
     }
@@ -558,60 +717,6 @@ void FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *st
     stream->resourcesFound({resource});
 }
 
-void FlatpakBackend::addResource(FlatpakResource *resource)
-{
-    // Update app with all possible information we have
-    if (!parseMetadataFromAppBundle(resource)) {
-        qWarning() << "Failed to parse metadata from app bundle for" << resource->name();
-    }
-
-    updateAppState(resource);
-
-    m_resources.insert(resource->uniqueId(), resource);
-    if (!resource->extends().isEmpty()) {
-        m_extends.append(resource->extends());
-        m_extends.removeDuplicates();
-    }
-
-    connect(resource, &FlatpakResource::sizeChanged, this, [this, resource] {
-        if (!isFetching())
-            Q_EMIT resourcesChanged(resource, {"size", "sizeDescription"});
-    });
-}
-
-class FlatpakSource
-{
-public:
-    FlatpakSource(FlatpakRemote *remote)
-        : m_remote(remote)
-    {
-    }
-
-    bool isEnabled() const
-    {
-        return !flatpak_remote_get_disabled(m_remote);
-    }
-
-    QString appstreamDir() const
-    {
-        g_autoptr(GFile) appstreamDir = flatpak_remote_get_appstream_dir(m_remote, nullptr);
-        if (!appstreamDir) {
-            qWarning() << "No appstream dir for" << flatpak_remote_get_name(m_remote);
-            return {};
-        }
-        g_autofree char *path_str = g_file_get_path(appstreamDir);
-        return QString::fromUtf8(path_str);
-    }
-
-    QString name() const
-    {
-        return QString::fromUtf8(flatpak_remote_get_name(m_remote));
-    }
-
-private:
-    FlatpakRemote *m_remote;
-};
-
 void FlatpakBackend::loadAppsFromAppstreamData()
 {
     for (auto installation : qAsConst(m_installations)) {
@@ -641,7 +746,7 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
         g_autoptr(GFile) fileTimestamp = flatpak_remote_get_appstream_timestamp(remote, flatpak_get_default_arch());
 
         g_autofree char *path_str = g_file_get_path(fileTimestamp);
-        QFileInfo fileInfo = QFileInfo(QString::fromUtf8(path_str));
+        QFileInfo fileInfo(QFile::encodeName(path_str));
         // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
         if (!fileInfo.exists() || fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
             refreshAppstreamMetadata(flatpakInstallation, remote);
@@ -656,7 +761,6 @@ void FlatpakBackend::metadataRefreshed()
 {
     m_refreshAppstreamMetadataJobs--;
     if (m_refreshAppstreamMetadataJobs == 0) {
-        loadInstalledApps();
         checkForUpdates();
     }
 }
@@ -665,45 +769,34 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
 {
     Q_ASSERT(m_refreshAppstreamMetadataJobs != 0);
 
-    FlatpakSource source(remote);
-    if (!source.isEnabled() || flatpak_remote_get_noenumerate(remote)) {
+    QSharedPointer<FlatpakSource> source(new FlatpakSource(this, flatpakInstallation, remote));
+    if (!source->isEnabled() || flatpak_remote_get_noenumerate(remote)) {
         metadataRefreshed();
         return;
     }
 
-    const QString appstreamDirPath = source.appstreamDir();
-    const QString appstreamIconsPath = source.appstreamDir() + QLatin1String("/icons/");
+    const QString appstreamDirPath = source->appstreamDir();
     if (!QFile::exists(appstreamDirPath)) {
-        qWarning() << "No" << appstreamDirPath << "appstream metadata found for" << source.name();
+        qWarning() << "No" << appstreamDirPath << "appstream metadata found for" << source->name();
         metadataRefreshed();
         return;
     }
 
-    auto fw = new QFutureWatcher<QList<AppStream::Component>>(this);
-    const auto sourceName = source.name();
-    connect(fw, &QFutureWatcher<QList<AppStream::Component>>::finished, this, [this, fw, flatpakInstallation, appstreamIconsPath, sourceName]() {
-        const auto components = fw->result();
-        QVector<FlatpakResource *> resources;
-        for (const AppStream::Component &appstreamComponent : components) {
-            FlatpakResource *resource = new FlatpakResource(appstreamComponent, flatpakInstallation, this);
-            resource->setIconPath(appstreamIconsPath);
-            resource->setOrigin(sourceName);
-            if (resource->resourceType() == FlatpakResource::Runtime) {
-                resources.prepend(resource);
-            } else {
-                resources.append(resource);
-            }
+    AppStream::Pool *pool = new AppStream::Pool(this);
+    source->m_pool = pool;
+    auto fw = new QFutureWatcher<bool>(this);
+    const auto sourceName = source->name();
+    connect(fw, &QFutureWatcher<bool>::finished, this, [this, fw, pool, source]() {
+        if (fw->result()) {
+            m_flatpakSources += source;
+        } else {
+            qWarning() << "Could not open the AppStream metadata pool" << pool->lastError();
         }
-        for (auto resource : qAsConst(resources)) {
-            addResource(resource);
-        }
-
         metadataRefreshed();
         acquireFetching(false);
         fw->deleteLater();
     });
     acquireFetching(true);
-    AppStream::Pool *pool = new AppStream::Pool(this);
     pool->clearMetadataLocations();
     pool->addMetadataLocation(appstreamDirPath);
     pool->setCacheFlags(AppStream::Pool::CacheFlagUseUser);
@@ -711,86 +804,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
     const QString subdir = flatpak_installation_get_id(flatpakInstallation) + QLatin1Char('/') + sourceName;
     pool->setCacheLocation(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/flatpak-appstream/" + subdir);
     QDir().mkpath(pool->cacheLocation());
-    fw->setFuture(QtConcurrent::run(&m_threadPool, [pool, appstreamDirPath]() -> QList<AppStream::Component> {
-        if (!pool->load()) {
-            qWarning() << "Could not open the AppStream metadata pool" << pool->lastError();
-            return {};
-        }
-        return pool->components();
-    }));
-}
-
-void FlatpakBackend::loadInstalledApps()
-{
-    for (auto installation : qAsConst(m_installations)) {
-        // Load installed applications and update existing resources with info from installed application
-        if (!loadInstalledApps(installation)) {
-            qWarning() << "Failed to load installed packages from installation" << installation;
-        }
-    }
-}
-
-bool FlatpakBackend::loadInstalledApps(FlatpakInstallation *flatpakInstallation)
-{
-    Q_ASSERT(flatpakInstallation);
-
-    g_autoptr(GError) localError = nullptr;
-    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(flatpakInstallation, m_cancellable, &localError);
-    if (!refs) {
-        qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
-        return false;
-    }
-
-    const QString pathExports = FlatpakResource::installationPath(flatpakInstallation) + QLatin1String("/exports/");
-    const QString pathApps = pathExports + QLatin1String("share/applications/");
-
-    QVector<FlatpakResource *> resources;
-    for (uint i = 0; i < refs->len; i++) {
-        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
-
-        const auto name = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref)));
-        if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp"))
-            || name.endsWith(QLatin1String(".Docs")))
-            continue;
-
-        const auto res = getAppForInstalledRef(flatpakInstallation, ref);
-        if (res) {
-            res->setState(AbstractResource::Installed);
-            continue;
-        }
-
-        AppStream::Component cid;
-        AppStream::Metadata metadata;
-        const QString fnDesktop = pathApps + name + QLatin1String(".desktop");
-        AppStream::Metadata::MetadataError error = metadata.parseFile(fnDesktop, AppStream::Metadata::FormatKindDesktopEntry);
-        if (error != AppStream::Metadata::MetadataErrorNoError) {
-            if (QFile::exists(fnDesktop))
-                qDebug() << "Failed to parse appstream metadata:" << error << fnDesktop;
-
-            cid.setId(QString::fromLatin1(flatpak_ref_get_name(FLATPAK_REF(ref))));
-#if FLATPAK_CHECK_VERSION(1, 1, 2)
-            cid.setName(QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref)));
-#endif
-        } else
-            cid = metadata.component();
-
-        FlatpakResource *resource = new FlatpakResource(cid, flatpakInstallation, this);
-
-        resource->setIconPath(pathExports);
-        resource->setState(AbstractResource::Installed);
-        resource->setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(ref)));
-        resource->updateFromRef(FLATPAK_REF(ref));
-
-        if (resource->resourceType() == FlatpakResource::Runtime) {
-            resources.prepend(resource);
-        } else {
-            resources.append(resource);
-        }
-    }
-    for (auto resource : qAsConst(resources))
-        addResource(resource);
-
-    return true;
+    fw->setFuture(QtConcurrent::run(&m_threadPool, pool, &AppStream::Pool::load));
 }
 
 void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
@@ -822,48 +836,6 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
             resource->setState(AbstractResource::Upgradeable);
             updateAppSize(resource);
         }
-    }
-}
-
-void FlatpakBackend::loadRemoteUpdates(FlatpakInstallation *installation)
-{
-    auto fw = new QFutureWatcher<GPtrArray *>(this);
-    connect(fw, &QFutureWatcher<GPtrArray *>::finished, this, [this, installation, fw]() {
-        g_autoptr(GPtrArray) refs = fw->result();
-        onFetchUpdatesFinished(installation, refs);
-        fw->deleteLater();
-        acquireFetching(false);
-    });
-    acquireFetching(true);
-    fw->setFuture(QtConcurrent::run(&m_threadPool, [installation, this]() -> GPtrArray * {
-        g_autoptr(GError) localError = nullptr;
-        if (g_cancellable_is_cancelled(m_cancellable)) {
-            qWarning() << "don't issue commands after cancelling";
-            return {};
-        }
-        GPtrArray *refs = flatpak_installation_list_installed_refs_for_update(installation, m_cancellable, &localError);
-        if (!refs) {
-            qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
-        }
-        return refs;
-    }));
-}
-
-void FlatpakBackend::onFetchUpdatesFinished(FlatpakInstallation *flatpakInstallation, GPtrArray *fetchedUpdates)
-{
-    if (!fetchedUpdates) {
-        qWarning() << "could not get updates for" << flatpakInstallation;
-        return;
-    }
-
-    for (uint i = 0; i < fetchedUpdates->len; i++) {
-        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(fetchedUpdates, i));
-        FlatpakResource *resource = getAppForInstalledRef(flatpakInstallation, ref);
-        if (resource) {
-            resource->setState(AbstractResource::Upgradeable);
-            updateAppSize(resource);
-        } else
-            qWarning() << "could not find updated resource" << flatpak_ref_get_name(FLATPAK_REF(ref)) << m_resources.size();
     }
 }
 
@@ -1216,30 +1188,117 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         return findResourceByPackageName(filter.resourceUrl);
     } else if (!filter.resourceUrl.isEmpty() || (!filter.extends.isEmpty() && !m_extends.contains(filter.extends)))
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
+    else if (filter.state == AbstractResource::Upgradeable) {
+        auto stream = new ResultsStream(QStringLiteral("FlatpakStream-upgradeable"));
+        auto f = [this, stream] {
+            QVector<AbstractResource *> resources;
+            for (auto installation : m_installations) {
+                g_autoptr(GError) localError = nullptr;
+                g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(installation, m_cancellable, &localError);
+                if (!refs) {
+                    qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
+                    continue;
+                }
+
+                resources.reserve(resources.size() + refs->len);
+                for (uint i = 0; i < refs->len; i++) {
+                    FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+                    auto resource = getAppForInstalledRef(installation, ref);
+                    resource->setState(AbstractResource::Upgradeable);
+                    updateAppSize(resource);
+                    if (resource->resourceType() == FlatpakResource::Runtime) {
+                        resources.prepend(resource);
+                    } else {
+                        resources.append(resource);
+                    }
+                }
+            }
+            if (!resources.isEmpty())
+                Q_EMIT stream->resourcesFound(resources);
+            stream->finish();
+        };
+
+        if (isFetching()) {
+            connect(this, &FlatpakBackend::initialized, stream, f);
+        } else {
+            QTimer::singleShot(0, this, f);
+        }
+        return stream;
+    } else if (filter.state == AbstractResource::Installed) {
+        auto stream = new ResultsStream(QStringLiteral("FlatpakStream-installed"));
+        auto f = [this, stream] {
+            QVector<AbstractResource *> resources;
+            for (auto installation : m_installations) {
+                g_autoptr(GError) localError = nullptr;
+                g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(installation, m_cancellable, &localError);
+                if (!refs) {
+                    qWarning() << "Failed to get list of installed refs for listing installed:" << localError->message;
+                    continue;
+                }
+
+                resources.reserve(resources.size() + refs->len);
+                for (uint i = 0; i < refs->len; i++) {
+                    FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+                    QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref));
+                    if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp"))
+                        || name.endsWith(QLatin1String(".Docs")))
+                        continue;
+
+                    auto resource = getAppForInstalledRef(installation, ref);
+                    if (resource->resourceType() == FlatpakResource::Runtime) {
+                        resources.prepend(resource);
+                    } else {
+                        resources.append(resource);
+                    }
+                }
+            }
+            if (!resources.isEmpty())
+                Q_EMIT stream->resourcesFound(resources);
+            stream->finish();
+        };
+
+        if (isFetching()) {
+            connect(this, &FlatpakBackend::initialized, stream, f);
+        } else {
+            QTimer::singleShot(0, this, f);
+        }
+        return stream;
+    }
 
     auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
     auto f = [this, stream, filter]() {
         QVector<AbstractResource *> prioritary, rest;
-        for (auto r : qAsConst(m_resources)) {
-            const bool matchById = r->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
-            if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
-                continue;
+        for (const auto &source : qAsConst(m_flatpakSources)) {
+            QVector<FlatpakResource *> resources;
+            if (source->m_pool) {
+                resources = kTransform<QVector<FlatpakResource *>>(source->m_pool->search(filter.search), [this, &source](const auto &comp) {
+                    return resourceForComponent(comp, source);
+                });
+            } else {
+                resources = source->m_resources.values().toVector();
             }
-            if (r->state() < filter.state)
-                continue;
 
-            if (!filter.extends.isEmpty() && !r->extends().contains(filter.extends))
-                continue;
+            for (auto r : resources) {
+                const bool matchById = r->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
+                if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
+                    continue;
+                }
+                if (r->state() < filter.state)
+                    continue;
 
-            if (!filter.mimetype.isEmpty() && !r->mimetypes().contains(filter.mimetype))
-                continue;
+                if (!filter.extends.isEmpty() && !r->extends().contains(filter.extends))
+                    continue;
 
-            if (filter.search.isEmpty() || matchById) {
-                rest += r;
-            } else if (r->name().contains(filter.search, Qt::CaseInsensitive)) {
-                prioritary += r;
-            } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
-                rest += r;
+                if (!filter.mimetype.isEmpty() && !r->mimetypes().contains(filter.mimetype))
+                    continue;
+
+                if (filter.search.isEmpty() || matchById) {
+                    rest += r;
+                } else if (r->name().contains(filter.search, Qt::CaseInsensitive)) {
+                    prioritary += r;
+                } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
+                    rest += r;
+                }
             }
         }
         auto f = [this](AbstractResource *l, AbstractResource *r) {
@@ -1264,19 +1323,11 @@ QVector<AbstractResource *> FlatpakBackend::resourcesByAppstreamName(const QStri
 {
     QVector<AbstractResource *> resources;
     const QString nameWithDesktop = name + QLatin1String(".desktop");
-    for (FlatpakResource *res : m_resources) {
-        if (QString::compare(res->appstreamId(), name, Qt::CaseInsensitive) == 0
-            || QString::compare(res->appstreamId(), nameWithDesktop, Qt::CaseInsensitive) == 0)
-            resources << res;
-        else {
-            const auto alts = res->alternativeAppstreamIds();
-            for (const auto &alt : alts) {
-                if (QString::compare(alt, name, Qt::CaseInsensitive) == 0 || QString::compare(alt, nameWithDesktop, Qt::CaseInsensitive) == 0) {
-                    resources << res;
-                    break;
-                }
-            }
-        }
+    for (const auto &source : m_flatpakSources) {
+        auto comps = source->m_pool->componentsById(name) + source->m_pool->componentsById(nameWithDesktop);
+        resources << kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
+            return resourceForComponent(comp, source);
+        });
     }
     auto f = [this](AbstractResource *l, AbstractResource *r) {
         return flatpakResourceLessThan(l, r);
@@ -1311,6 +1362,21 @@ ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
         }
     }
     return new ResultsStream(QStringLiteral("FlatpakStream-packageName-void"), {});
+}
+
+FlatpakResource *FlatpakBackend::resourceForComponent(const AppStream::Component &component, const QSharedPointer<FlatpakSource> &source) const
+{
+    for (auto res : source->m_resources) {
+        if (res->appstreamId() == component.id()) {
+            return res;
+        }
+    }
+
+    FlatpakResource *res = new FlatpakResource(component, source->installation(), const_cast<FlatpakBackend *>(this));
+    res->setOrigin(source->name());
+    res->setIconPath(source->appstreamDir() + QLatin1String("/icons/"));
+    source->addResource(res);
+    return res;
 }
 
 AbstractBackendUpdater *FlatpakBackend::backendUpdater() const
@@ -1384,12 +1450,6 @@ void FlatpakBackend::checkForUpdates()
     for (auto installation : qAsConst(m_installations)) {
         // Load local updates, comparing current and latest commit
         loadLocalUpdates(installation);
-
-        if (g_cancellable_is_cancelled(m_cancellable))
-            break;
-
-        // Load updates from remote repositories
-        loadRemoteUpdates(installation);
 
         if (g_cancellable_is_cancelled(m_cancellable))
             break;
