@@ -138,7 +138,7 @@ Kirigami.AbstractCard
                         id: sourceIconHover
                     }
 
-                    ToolTip.text: application.backend.displayName
+                    ToolTip.text: application.backend.displayName === application.origin || !application.origin ? application.backend.displayName : i18nc("system (repository name)", "%1 (%2)", application.backend.displayName, application.origin)
                     ToolTip.visible: sourceIconHover.hovered && soup.visible
                     ToolTip.delay: Kirigami.Units.toolTipDelay
 
