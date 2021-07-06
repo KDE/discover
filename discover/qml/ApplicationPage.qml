@@ -88,8 +88,8 @@ DiscoverPage {
     }
 
     actions {
-        main: appbutton.action
-        right: appbutton.isActive ? appbutton.cancelAction : invokeAction
+        main: appbutton.isActive ? appbutton.cancelAction : appbutton.action
+        right: invokeAction
     }
 
     InstallApplicationButton {
