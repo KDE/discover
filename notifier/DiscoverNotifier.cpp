@@ -230,12 +230,16 @@ QStringList DiscoverNotifier::loadedModules() const
 
 void DiscoverNotifier::showRebootNotification()
 {
-    KNotification *notification = new KNotification(QStringLiteral("notification"), KNotification::Persistent | KNotification::DefaultEvent);
-    notification->setIconName(QStringLiteral("system-software-update"));
-    notification->setActions(QStringList{i18nc("@action:button", "Restart")});
-    notification->setTitle(i18n("Restart is required"));
-    notification->setText(i18n("The system needs to be restarted for the updates to take effect."));
+    KNotification *notification = KNotification::event(QStringLiteral("UpdateRestart"),
+                                                       i18n("Restart is required"),
+                                                       i18n("The system needs to be restarted for the updates to take effect."),
+                                                       QStringLiteral("system-software-update"),
+                                                       nullptr,
+                                                       KNotification::Persistent | KNotification::DefaultEvent,
+                                                       QStringLiteral("discoverabstractnotifier"));
 
+    notification->setActions(QStringList{i18nc("@action:button", "Restart")});
+    notification->setDefaultAction(notification->actions().constFirst());
     connect(notification, &KNotification::action1Activated, this, &DiscoverNotifier::reboot);
 
     notification->sendEvent();
