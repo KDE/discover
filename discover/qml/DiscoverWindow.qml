@@ -61,7 +61,7 @@ Kirigami.ApplicationWindow
         iconName: "search"
         text: i18n("&Search")
         component: topSearchComp
-        objectName: "discover"
+        objectName: "search"
         shortcut: StandardKey.Find
     }
     TopLevelPageData {
