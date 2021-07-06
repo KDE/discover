@@ -49,6 +49,7 @@ ConditionalLoader
         text: i18n("Cancel")
         icon.name: "dialog-cancel"
         enabled: listener.isCancellable
+        tooltip: listener.statusText
         onTriggered: listener.cancel()
         visible: listener.isActive
     }
