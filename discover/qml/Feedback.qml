@@ -10,6 +10,7 @@ UserFeedback.Provider
         Kirigami.Action {
             text: i18n("Submit usage information")
             tooltip: i18n("Sends anonymized usage information to KDE so we can better understand our users. For more information see https://kde.org/privacypolicy-apps.php.")
+            displayHint: Kirigami.DisplayHint.AlwaysHide
             onTriggered: {
                 provider.submit()
                 showPassiveNotification(i18n("Submitting usage information…"), "short", i18n("Configure"), provider.encouraged)
@@ -17,6 +18,7 @@ UserFeedback.Provider
         },
         Kirigami.Action {
             text: i18n("Configure feedback…")
+            displayHint: Kirigami.DisplayHint.AlwaysHide
             onTriggered: {
                 provider.encouraged()
             }
