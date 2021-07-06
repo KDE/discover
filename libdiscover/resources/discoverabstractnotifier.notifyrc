@@ -341,3 +341,8 @@ Comment[x-test]=xxRepair failure after offline updatexx
 Comment[zh_CN]=离线更新后修复失败
 Urgency=High
 Action=Popup
+
+[Event/UpdateResart]
+Name=Restart is Required
+Urgency=High
+Action=Popup
