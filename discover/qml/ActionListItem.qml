@@ -27,9 +27,9 @@ Kirigami.BasicListItem
     Kirigami.MnemonicData.label: action.text
     label: Kirigami.MnemonicData.richTextLabel
 
-    readonly property var tooltip: QQC2.ToolTip {
-        text: action.shortcut ? action.shortcut : p0.nativeText
-    }
+    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+    QQC2.ToolTip.visible: hovered && p0.nativeText.length > 0
+    QQC2.ToolTip.text: p0.nativeText
 
     readonly property var p0: Shortcut {
         sequence: item.Kirigami.MnemonicData.sequence
