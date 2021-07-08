@@ -20,6 +20,7 @@ int main(int argc, char **argv)
     KAboutData about(QStringLiteral("discoverupdate"), i18n("Discover Update"), version, {}, KAboutLicense::GPL, i18n("© 2020 Aleix Pol Gonzalez"), {});
     about.addAuthor(QStringLiteral("Aleix Pol i Gonzàlez"), {}, QStringLiteral("aleixpolkde.org"));
     about.setProductName("discover/update");
+    KAboutData::setApplicationData(about);
 
     DiscoverUpdate exp;
     {
