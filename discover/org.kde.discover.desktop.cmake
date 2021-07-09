@@ -172,6 +172,7 @@ Name[ro]=Vezi actualizările disponibile
 Name[sk]=Zobraziť dostupné aktualizácie
 Name[sl]=Poglej razpoložljive posodobitve
 Name[sv]=Se Tillgängliga uppdateringar
+Name[tr]=Mevcut Güncellemeleri Gör
 Name[uk]=Перегляд доступних оновлень
 Name[x-test]=xxSee Available Updatesxx
 Name[zh_CN]=查看可用更新
