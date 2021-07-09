@@ -37,6 +37,7 @@
   <name xml:lang="sl">Zaledje Flatpak</name>
   <name xml:lang="sv">Gränssnitt för Flatpak</name>
   <name xml:lang="tg">Коркардкунандаи Flatpak</name>
+  <name xml:lang="tr">Flatpak arka ucu</name>
   <name xml:lang="uk">Модуль Flatpak</name>
   <name xml:lang="x-test">xxFlatpak backendxx</name>
   <name xml:lang="zh-CN">Flatpak 后端程序</name>
@@ -76,6 +77,7 @@
   <summary xml:lang="sl">V Discover vgradi programe Flatpack</summary>
   <summary xml:lang="sv">Integrerar Flatpak-program i Discover</summary>
   <summary xml:lang="tg">Барномаҳои Flatpak-ро ба барномаи Кашфиёт дарунсохт мекунад</summary>
+  <summary xml:lang="tr">Flatpak uygulamalarını Keşfet ile tümleştirir</summary>
   <summary xml:lang="uk">Інтеграція програм Flatpak з Discover</summary>
   <summary xml:lang="x-test">xxIntegrates Flatpak applications into Discoverxx</summary>
   <summary xml:lang="zh-CN">为 Discover 提供 Flatpak 应用程序的集成功能</summary>
@@ -119,6 +121,7 @@
   <developer_name xml:lang="sl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="tg">Алейкс Пол Гонзалес (Aleix Pol Gonzalez)</developer_name>
+  <developer_name xml:lang="tr">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="x-test">xxAleix Pol Gonzalezxx</developer_name>
   <developer_name xml:lang="zh-CN">Aleix Pol Gonzalez</developer_name>
