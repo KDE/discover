@@ -50,8 +50,12 @@ ConditionalLoader
         icon.name: "dialog-cancel"
         enabled: listener.isCancellable
         tooltip: listener.statusText
-        onTriggered: listener.cancel()
+        onTriggered: {
+            listener.cancel()
+            enabled = false
+        }
         visible: listener.isActive
+        onVisibleChanged: enabled = true
     }
 
     function click() {
