@@ -140,6 +140,7 @@ void FlatpakTransactionThread::run()
     }
 
     m_result = flatpak_transaction_run(m_transaction, m_cancellable, &localError);
+    m_cancelled = g_cancellable_is_cancelled(m_cancellable);
     if (!m_result) {
         m_errorMessage = QString::fromUtf8(localError->message);
 #if defined(FLATPAK_LIST_UNUSED_REFS)

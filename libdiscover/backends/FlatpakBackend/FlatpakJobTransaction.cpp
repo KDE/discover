@@ -27,13 +27,16 @@ FlatpakJobTransaction::FlatpakJobTransaction(FlatpakResource *app, Role role, bo
 
 FlatpakJobTransaction::~FlatpakJobTransaction()
 {
+    if (m_appJob->isRunning()) {
+        cancel();
+        m_appJob->wait();
+    }
     delete m_appJob;
 }
 
 void FlatpakJobTransaction::cancel()
 {
     m_appJob->cancel();
-    setStatus(CancelledStatus);
 }
 
 void FlatpakJobTransaction::start()
@@ -52,25 +55,19 @@ void FlatpakJobTransaction::start()
 
 void FlatpakJobTransaction::finishTransaction()
 {
+    if (static_cast<FlatpakBackend *>(m_app->backend())->getInstalledRefForApp(m_app)) {
+        m_app->setState(AbstractResource::Installed);
+    } else {
+        m_app->setState(AbstractResource::None);
+    }
+
+    if (!m_appJob->errorMessage().isEmpty()) {
+        Q_EMIT passiveMessage(m_appJob->errorMessage());
+    }
+
     if (m_appJob->result()) {
-        AbstractResource::State newState = AbstractResource::None;
-        switch (role()) {
-        case InstallRole:
-        case ChangeAddonsRole:
-            newState = AbstractResource::Installed;
-            break;
-        case RemoveRole:
-            newState = AbstractResource::None;
-            break;
-        }
-
-        m_app->setState(newState);
-
         setStatus(DoneStatus);
     } else {
-        if (!m_appJob->errorMessage().isEmpty()) {
-            Q_EMIT passiveMessage(m_appJob->errorMessage());
-        }
-        setStatus(DoneWithErrorStatus);
+        setStatus(m_appJob->cancelled() ? CancelledStatus : DoneWithErrorStatus);
     }
 }

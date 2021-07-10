@@ -69,6 +69,7 @@ public:
     }
 
     bool updateAppSize(FlatpakResource *resource);
+    FlatpakInstalledRef *getInstalledRefForApp(FlatpakResource *resource) const;
 
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata);
@@ -88,7 +89,6 @@ private:
     }
     void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     FlatpakRemote *getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
-    FlatpakInstalledRef *getInstalledRefForApp(FlatpakResource *resource) const;
     FlatpakResource *getRuntimeForApp(FlatpakResource *resource) const;
 
     void addResource(FlatpakResource *resource);
