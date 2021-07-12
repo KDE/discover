@@ -383,11 +383,6 @@ bool DiscoverObject::eventFilter(QObject *object, QEvent *event)
 
 void DiscoverObject::setupActions()
 {
-    if (KAuthorized::authorizeAction(QStringLiteral("help_report_bug")) && !KAboutData::applicationData().bugAddress().isEmpty()) {
-        auto mReportBugAction = KStandardAction::reportBug(this, &DiscoverObject::reportBug, this);
-        m_collection[mReportBugAction->objectName()] = mReportBugAction;
-    }
-
     if (KAuthorized::authorizeAction(QStringLiteral("help_about_app"))) {
         auto mAboutAppAction = KStandardAction::aboutApp(this, &DiscoverObject::aboutApplication, this);
         m_collection[mAboutAppAction->objectName()] = mAboutAppAction;
