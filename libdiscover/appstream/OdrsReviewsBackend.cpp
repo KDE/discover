@@ -46,7 +46,7 @@ OdrsReviewsBackend::OdrsReviewsBackend()
     const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
 
     // Create $HOME/.cache/discover/ratings folder
-    cacheDir.mkdir(QStringLiteral("ratings"));
+    cacheDir.mkpath(QStringLiteral("ratings"));
 
     if (QFileInfo::exists(fileUrl.toLocalFile())) {
         QFileInfo file(fileUrl.toLocalFile());
