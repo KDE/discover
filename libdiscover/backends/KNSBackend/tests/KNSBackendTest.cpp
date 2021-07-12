@@ -23,6 +23,8 @@
 
 QTEST_MAIN(KNSBackendTest)
 
+static QString s_knsrcName = QStringLiteral("ksplash.knsrc");
+
 KNSBackendTest::KNSBackendTest(QObject *parent)
     : QObject(parent)
     , m_r(nullptr)
@@ -33,11 +35,11 @@ KNSBackendTest::KNSBackendTest(QObject *parent)
     ResourcesModel *model = new ResourcesModel(QStringLiteral("kns-backend"), this);
     Q_ASSERT(!model->backends().isEmpty());
     auto findTestBackend = [](AbstractResourcesBackend *backend) {
-        return backend->name() == QLatin1String("discover_ktexteditor_codesnippets_core.knsrc");
+        return backend->name() == QLatin1String("ksplash.knsrc");
     };
-    m_backend = kFilter<QVector<AbstractResourcesBackend *>>(model->backends(), findTestBackend).at(0);
+    m_backend = kFilter<QVector<AbstractResourcesBackend *>>(model->backends(), findTestBackend).value(0);
 
-    if (!m_backend->isValid()) {
+    if (!m_backend || !m_backend->isValid()) {
         qWarning() << "couldn't run the test";
         exit(0);
     }
