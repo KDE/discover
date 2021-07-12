@@ -47,6 +47,13 @@ public:
     };
     Q_ENUM(ResourceType)
 
+    enum FlatpakFileType {
+        NotAFile,
+        FileFlatpak,
+        FileFlatpakRef,
+    };
+    Q_ENUM(FlatpakFileType)
+
     struct Id {
         FlatpakInstallation *const installation;
         QString origin;
@@ -101,7 +108,7 @@ public:
     QUrl helpURL() override;
     QUrl bugURL() override;
     QUrl donationURL() override;
-    QString flatpakFileType() const;
+    FlatpakFileType flatpakFileType() const;
     QString flatpakName() const;
     QJsonArray licenses() override;
     QString longDescription() override;
@@ -139,7 +146,7 @@ public:
     void setDownloadSize(int size);
     void setIconPath(const QString &path);
     void setInstalledSize(int size);
-    void setFlatpakFileType(const QString &fileType);
+    void setFlatpakFileType(FlatpakFileType fileType);
     void setFlatpakName(const QString &name);
     void setOrigin(const QString &origin);
     void setPropertyState(PropertyKind kind, PropertyState state);
@@ -168,7 +175,7 @@ private:
     QPixmap m_bundledIcon;
     QString m_commit;
     int m_downloadSize;
-    QString m_flatpakFileType;
+    FlatpakFileType m_flatpakFileType = FlatpakResource::NotAFile;
     QString m_flatpakName;
     QString m_iconPath;
     int m_installedSize;

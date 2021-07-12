@@ -95,7 +95,7 @@ void FlatpakTransactionThread::run()
         bool correct = false;
         if (m_app->state() == AbstractResource::Upgradeable && m_app->isInstalled()) {
             correct = flatpak_transaction_add_update(m_transaction, refName.toUtf8().constData(), nullptr, nullptr, &localError);
-        } else if (m_app->flatpakFileType() == QLatin1String("flatpak")) {
+        } else if (m_app->flatpakFileType() == FlatpakResource::FileFlatpak) {
             g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
             if (!file) {
                 qWarning() << "Failed to install bundled application" << refName;
@@ -103,7 +103,7 @@ void FlatpakTransactionThread::run()
                 return;
             }
             correct = flatpak_transaction_add_install_bundle(m_transaction, file, nullptr, &localError);
-        } else if (m_app->flatpakFileType() == QLatin1String("flatpakref") && m_app->resourceFile().isLocalFile()) {
+        } else if (m_app->flatpakFileType() == FlatpakResource::FileFlatpakRef && m_app->resourceFile().isLocalFile()) {
             g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
             if (!file) {
                 qWarning() << "Failed to install flatpakref application" << refName;

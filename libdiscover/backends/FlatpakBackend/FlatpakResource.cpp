@@ -264,7 +264,7 @@ QUrl FlatpakResource::donationURL()
     return m_appdata.url(AppStream::Component::UrlKindDonation);
 }
 
-QString FlatpakResource::flatpakFileType() const
+FlatpakResource::FlatpakFileType FlatpakResource::flatpakFileType() const
 {
     return m_flatpakFileType;
 }
@@ -458,7 +458,7 @@ void FlatpakResource::setDownloadSize(int size)
     Q_EMIT sizeChanged();
 }
 
-void FlatpakResource::setFlatpakFileType(const QString &fileType)
+void FlatpakResource::setFlatpakFileType(FlatpakFileType fileType)
 {
     m_flatpakFileType = fileType;
 }

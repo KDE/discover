@@ -383,7 +383,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
     resource->setInstalledSize(flatpak_bundle_ref_get_installed_size(bundleRef));
     resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::AlreadyKnown);
     resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::AlreadyKnown);
-    resource->setFlatpakFileType(QStringLiteral("flatpak"));
+    resource->setFlatpakFileType(FlatpakResource::FileFlatpak);
     resource->setOrigin(origin.isEmpty() ? i18n("Local bundle") : origin);
     resource->setResourceFile(url);
     resource->setState(FlatpakResource::None);
@@ -456,7 +456,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     }
 
     auto resource = new FlatpakResource(asComponent, preferredInstallation(), this);
-    resource->setFlatpakFileType(QStringLiteral("flatpakref"));
+    resource->setFlatpakFileType(FlatpakResource::FileFlatpakRef);
     resource->setOrigin(QString::fromUtf8(remoteName));
     resource->updateFromRef(ref);
 
