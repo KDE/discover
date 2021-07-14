@@ -240,6 +240,12 @@ void AppPackageKitResource::invokeApplication() const
     });
 }
 
+QString AppPackageKitResource::versionString()
+{
+    const QString version = isInstalled() ? installedVersion() : availableVersion();
+    return AppStreamUtils::versionString(version, m_appdata);
+}
+
 QDate AppPackageKitResource::releaseDate() const
 {
     if (!m_appdata.releases().isEmpty()) {

@@ -24,6 +24,8 @@ Q_DECL_EXPORT QJsonArray licenses(const AppStream::Component &appdata);
 
 Q_DECL_EXPORT QStringList appstreamIds(const QUrl &appstreamUrl);
 
+/// Helps implement AbstractResource::versionString
+Q_DECL_EXPORT QString versionString(const QString &version, const AppStream::Component &appdata);
 }
 
 #endif

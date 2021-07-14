@@ -270,3 +270,19 @@ QString AbstractResource::upgradeText() const
         return available;
     }
 }
+
+QString AbstractResource::versionString()
+{
+    const QString version = isInstalled() ? installedVersion() : availableVersion();
+    if (version.isEmpty()) {
+        return {};
+    } else {
+        QLocale l;
+        const QString releaseString = l.toString(releaseDate(), QLocale::ShortFormat);
+        if (!releaseString.isEmpty()) {
+            return i18n("%1, released on %2", version, releaseString);
+        } else {
+            return version;
+        }
+    }
+}

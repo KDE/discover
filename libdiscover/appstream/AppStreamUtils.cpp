@@ -103,3 +103,22 @@ QStringList AppStreamUtils::appstreamIds(const QUrl &appstreamUrl)
     }
     return ret;
 }
+
+QString AppStreamUtils::versionString(const QString &version, const AppStream::Component &appdata)
+{
+    if (version.isEmpty()) {
+        return {};
+    } else {
+        if (appdata.releases().isEmpty())
+            return version;
+
+        auto release = appdata.releases().constFirst();
+        if (release.timestamp().isValid() && version.startsWith(release.version())) {
+            QLocale l;
+            qDebug() << "versionversion" << version << release.version();
+            return i18n("%1, released on %2", version, l.toString(release.timestamp().date(), QLocale::ShortFormat));
+        } else {
+            return version;
+        }
+    }
+}

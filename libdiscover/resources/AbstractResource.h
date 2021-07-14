@@ -70,6 +70,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QDate releaseDate READ releaseDate NOTIFY versionsChanged)
     Q_PROPERTY(QString upgradeText READ upgradeText NOTIFY versionsChanged)
     Q_PROPERTY(bool isRemovable READ isRemovable CONSTANT)
+    Q_PROPERTY(QString versionString READ versionString NOTIFY versionsChanged)
 public:
     /**
      * This describes the state of the resource
@@ -223,6 +224,8 @@ public:
     {
         return true;
     }
+
+    virtual QString versionString();
 
 public Q_SLOTS:
     virtual void fetchScreenshots();

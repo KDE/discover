@@ -308,26 +308,11 @@ DiscoverPage {
 
                 // Version row
                 Label {
-                    readonly property string version: appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion
-                    readonly property string releaseDate: appInfo.application.releaseDate.toLocaleDateString(Locale.ShortFormat)
-
-                    function versionString() {
-                        if (version.length == 0) {
-                            return ""
-                        } else {
-                            if (releaseDate.length > 0) {
-                                return i18n("%1, released on %2", version, releaseDate)
-                            } else {
-                                return version
-                            }
-                        }
-                    }
-
                     Kirigami.FormData.label: i18n("Version:")
                     visible: text.length > 0
                     Layout.fillWidth: true
                     elide: Text.ElideRight
-                    text: versionString()
+                    text: appInfo.application.versionString
                 }
 
                 // Author row
