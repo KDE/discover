@@ -129,6 +129,7 @@ public:
     QDate releaseDate() const override;
     QString author() const override;
     QStringList extends() const override;
+    QString versionString() override;
 
     FlatpakInstallation *installation() const
     {

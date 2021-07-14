@@ -39,7 +39,7 @@ public:
     QDate releaseDate() const override;
     QString changelog() const override;
     QString author() const override;
-
+    QString versionString() override;
     void fetchChangelog() override;
     QSet<QString> alternativeAppstreamIds() const override;
 
