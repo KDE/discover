@@ -25,6 +25,7 @@
 #include "alpineapk_backend_logging.h"
 #include "utils.h"
 
+#include <kcoreaddons_version.h>
 #include <KAuthExecuteJob>
 #include <KLocalizedString>
 
@@ -166,9 +167,14 @@ void AlpineApkUpdater::start()
 
     QObject::connect(reply, &KAuth::ExecuteJob::result,
                      this, &AlpineApkUpdater::handleKAuthUpgradeHelperReply);
+#if KCOREADDONS_VERSION < QT_VERSION_CHECK(5,80,0)
     // qOverload is needed because of conflict with getter named percent()
     QObject::connect(reply, QOverload<KJob *, unsigned long>::of(&KAuth::ExecuteJob::percent),
                      this, &AlpineApkUpdater::handleKAuthUpgradeHelperProgress);
+#else
+    QObject::connect(reply, &KAuth::ExecuteJob::percentChanged,
+                     this, &AlpineApkUpdater::handleKAuthUpgradeHelperProgress);
+#endif
 
     m_progressing = true;
     m_upgradeProgress = 0.0;
@@ -197,9 +203,14 @@ void AlpineApkUpdater::startCheckForUpdates()
     if (!reply) return;
     QObject::connect(reply, &KAuth::ExecuteJob::result,
                      this, &AlpineApkUpdater::handleKAuthUpdateHelperReply);
+#if KCOREADDONS_VERSION < QT_VERSION_CHECK(5,80,0)
     // qOverload is needed because of conflict with getter named percent()
     QObject::connect(reply, QOverload<KJob *, unsigned long>::of(&KAuth::ExecuteJob::percent),
                      this, &AlpineApkUpdater::handleKAuthUpdateHelperProgress);
+#else
+    QObject::connect(reply, &KAuth::ExecuteJob::percentChanged,
+                     this, &AlpineApkUpdater::handleKAuthUpdateHelperProgress);
+#endif
 
     m_progressing = true;
     Q_EMIT progressingChanged(m_progressing);
