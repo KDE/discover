@@ -1,4 +1,5 @@
 find_package(KF5Auth CONFIG REQUIRED)  # Probably should be moved to top CMakeLists
+find_package(KF5JobWidgets CONFIG REQUIRED)
 
 set(alpineapkbackend_SRCS
     AlpineApkAuthActionFactory.h
@@ -37,9 +38,11 @@ target_link_libraries(
         Qt5::Core
         Qt5::Widgets
         Qt5::Concurrent
-        KF5::CoreAddons
-        KF5::ConfigCore
         KF5::AuthCore
+        KF5::ConfigCore
+        KF5::CoreAddons
+        KF5::JobWidgets
+        KF5::KIOCore
         Discover::Common
         ApkQt::ApkQt
         AppStreamQt
