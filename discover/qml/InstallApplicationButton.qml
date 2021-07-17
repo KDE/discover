@@ -9,6 +9,7 @@ ConditionalLoader
     id: root
     property Component additionalItem: null
     property bool compact: false
+    property bool appIsFromNonDefaultBackend: false
     property string backendName: ""
 
     property alias application: listener.resource
@@ -88,8 +89,31 @@ ConditionalLoader
 
     componentFalse: Button {
         enabled: application.state !== AbstractResource.Broken
-        text: compact ? "" : root.text
-        icon.name: compact ? root.action.icon.name : ""
+        // This uses a custom content item to be able to use an icon that's
+        // loaded from a remote location, which does not work with the standard
+        // button. This works around https://bugs.kde.org/show_bug.cgi?id=433433
+        // TODO: just set the button's icon.source property when that's fixed
+        implicitWidth: overrideLayout.implicitWidth
+        contentItem: RowLayout {
+            id: overrideLayout
+            Item { // Left padding
+                implicitWidth: Kirigami.Units.smallSpacing
+            }
+            Kirigami.Icon {
+                visible: source != ""
+                source: compact ? root.action.icon.name : (root.appIsFromNonDefaultBackend ? application.sourceIcon : "")
+                implicitWidth: Kirigami.Units.iconSizes.smallMedium
+                implicitHeight: Kirigami.Units.iconSizes.smallMedium
+                smooth: !compact
+            }
+            Label {
+                visible: !compact
+                text: compact ? "" : root.text
+            }
+            Item { // right padding
+                implicitWidth: Kirigami.Units.smallSpacing
+            }
+        }
         activeFocusOnTab: false
         onClicked: root.click()
     }

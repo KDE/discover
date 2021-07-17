@@ -88,6 +88,7 @@ Kirigami.AbstractCard
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 Layout.rowSpan: delegateArea.compact ? 3 : 1
                 compact: delegateArea.compact
+                appIsFromNonDefaultBackend: delegateArea.appIsFromNonDefaultBackend
                 backendName: delegateArea.appIsFromNonDefaultBackend ? application.backend.displayName : ""
 
                 // TODO: Show the backend icon inside the button for Flatpak
@@ -118,36 +119,10 @@ Kirigami.AbstractCard
                 Layout.columnSpan: delegateArea.compact ? 1 : 2
                 Layout.fillWidth: true
 
-                rightPadding: soup.visible ? soup.width + soup.anchors.rightMargin : 0
                 elide: Text.ElideRight
                 text: delegateArea.application.comment
                 maximumLineCount: 1
                 textFormat: Text.PlainText
-
-                // TODO: remove this once the backend icon is inside the install
-                // button (blocked by https://bugs.kde.org/show_bug.cgi?id=433433)
-                Kirigami.Icon {
-                    id: soup
-                    source: application.sourceIcon
-                    height: Kirigami.Units.gridUnit
-                    width: Kirigami.Units.gridUnit
-                    smooth: true
-                    visible: !delegateArea.compact && delegateArea.appIsFromNonDefaultBackend
-
-                    HoverHandler {
-                        id: sourceIconHover
-                    }
-
-                    ToolTip.text: application.backend.displayName === application.origin || !application.origin ? application.backend.displayName : i18nc("system (repository name)", "%1 (%2)", application.backend.displayName, application.origin)
-                    ToolTip.visible: sourceIconHover.hovered && soup.visible
-                    ToolTip.delay: Kirigami.Units.toolTipDelay
-
-                    anchors {
-                        bottom: parent.bottom
-                        right: parent.right
-                        rightMargin: Kirigami.Units.smallSpacing
-                    }
-                }
             }
         }
     }
