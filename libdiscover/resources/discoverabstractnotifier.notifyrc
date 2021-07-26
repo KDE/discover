@@ -344,13 +344,17 @@ Action=Popup
 
 [Event/UpdateResart]
 Name=Restart is Required
+Name[ar]=إعادة التّشغيل مطلوبة
 Name[az]=Yenidən başlatmaq tələb olunur
 Name[ca]=Es requereix reiniciar
 Name[cs]=Je vyžadován restart
+Name[en_GB]=Restart is Required
 Name[es]=Se necesita un reinicio
 Name[eu]=Berrabiatu beharra dago
+Name[fr]=Un redémarrage est nécessaire.
 Name[nl]=Een herstart is vereist
 Name[pt]=É Necessário Reiniciar
+Name[ro]=Repornire necesară
 Name[sv]=Omstart krävs
 Name[uk]=Потрібне перезавантаження
 Name[x-test]=xxRestart is Requiredxx
