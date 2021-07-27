@@ -18,10 +18,7 @@ Kirigami.OverlaySheet
 
     signal accepted()
 
-    header: Kirigami.Heading {
-        wrapMode: Text.WordWrap
-        text: i18n("Reviewing %1", application.name)
-    }
+    title: i18n("Reviewing %1", application.name)
 
     ColumnLayout {
         Layout.maximumWidth: Kirigami.Units.gridUnit * 24

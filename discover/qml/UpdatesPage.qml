@@ -38,7 +38,7 @@ DiscoverPage
         id: sheet
         parent: applicationWindow().overlay
 
-        header: Kirigami.Heading { text: i18n("Update Issue") }
+        title: i18n("Update Issue")
 
         ColumnLayout {
             Label {

@@ -181,14 +181,8 @@ Kirigami.ApplicationWindow
             id: sheet
             showCloseButton: false
             property QtObject transaction
-            property alias title: heading.text
             property alias description: desc.text
             property bool acted: false
-
-            header: Kirigami.Heading {
-                id: heading
-                wrapMode: Text.WordWrap
-            }
 
             // No need to add our own ScrollView since OverlaySheet includes
             // one automatically.

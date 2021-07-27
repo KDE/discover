@@ -36,14 +36,15 @@ Kirigami.AbstractListItem {
         id: sheet
         Kirigami.OverlaySheet {
             parent: applicationWindow().overlay
-            header: Kirigami.Heading {
-                text: i18n("Tasks")
-            }
+
+            title: i18n("Tasks")
+
             onSheetOpenChanged: {
                 if (!sheetOpen) {
                     sheetObject.destroy(100)
                 }
             }
+
             contentItem: ListView {
                 id: tasksView
                 spacing: 0

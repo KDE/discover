@@ -16,10 +16,7 @@ Kirigami.OverlaySheet
     property string displayName
     property QtObject source
 
-    header: Kirigami.Heading {
-        text: i18n("Add New %1 Repository", displayName)
-        wrapMode: Text.WordWrap
-    }
+    title: i18n("Add New %1 Repository", displayName)
 
     onSheetOpenChanged: {
         if (sheetOpen) {

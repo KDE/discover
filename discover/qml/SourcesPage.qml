@@ -108,14 +108,8 @@ DiscoverPage {
 
                 showCloseButton: false
                 property QtObject  sourcesBackend
-                property alias title: heading.text
                 property alias description: desc.text
                 property bool acted: false
-
-                header: Kirigami.Heading {
-                    id: heading
-                    wrapMode: Text.WordWrap
-                }
 
                 ColumnLayout {
                     Label {

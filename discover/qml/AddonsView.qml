@@ -15,7 +15,7 @@ Kirigami.OverlaySheet {
     readonly property bool containsAddons: listview.count > 0 || isExtended
     readonly property bool isExtended: ResourcesModel.isExtended(application.appstreamId)
 
-    header: Kirigami.Heading { text: i18n("Addons") }
+    title: i18n("Addons")
 
     ListView {
         id: listview
