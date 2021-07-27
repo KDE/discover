@@ -358,5 +358,6 @@ Name[ro]=Repornire necesară
 Name[sv]=Omstart krävs
 Name[uk]=Потрібне перезавантаження
 Name[x-test]=xxRestart is Requiredxx
+Name[zh_CN]=需要重启
 Urgency=High
 Action=Popup
