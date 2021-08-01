@@ -175,6 +175,7 @@ Name[pl]=Obejrzyj dostępne uaktualnienia
 Name[pt]=Ver as Actualizações Disponíveis
 Name[pt_BR]=Ver as atualizações disponíveis
 Name[ro]=Vezi actualizările disponibile
+Name[ru]=Просмотреть доступные обновления
 Name[sk]=Zobraziť dostupné aktualizácie
 Name[sl]=Poglej razpoložljive posodobitve
 Name[sv]=Se Tillgängliga uppdateringar
