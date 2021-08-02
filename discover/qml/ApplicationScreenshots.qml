@@ -147,7 +147,7 @@ ListView {
         width: Kirigami.Units.gridUnit * 2
         height: width
         icon.name: "arrow-left"
-        visible: !Kirigami.Settings.isMobile && root.currentIndex > 0
+        visible: !Kirigami.Settings.isMobile && root.currentIndex > 0 && root.ScrollBar.horizontal.visible
         Keys.forwardTo: [root]
         onClicked: root.currentIndex -= 1
     }
@@ -161,7 +161,7 @@ ListView {
         width: Kirigami.Units.gridUnit * 2
         height: width
         icon.name: "arrow-right"
-        visible: !Kirigami.Settings.isMobile && root.currentIndex < root.count - 1
+        visible: !Kirigami.Settings.isMobile && root.currentIndex < root.count - 1 && root.ScrollBar.horizontal.visible
         Keys.forwardTo: [root]
         onClicked: root.currentIndex += 1
     }
