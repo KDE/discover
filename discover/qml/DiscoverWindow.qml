@@ -105,9 +105,14 @@ Kirigami.ApplicationWindow
         // on the view to refresh, and this is the common and expected behavior
         //on that platform
         visible: window.wideScreen
-        tooltip: shortcut
+        tooltip: shortcut.nativeText
 
-        shortcut: "Ctrl+R"
+        // Need to define an explicit Shortcut object so we can get its text
+        // using shortcut.nativeText
+        shortcut: Shortcut {
+            sequence: StandardKey.Refresh
+            onActivated: refreshAction.trigger()
+        }
     }
 
     Connections {
