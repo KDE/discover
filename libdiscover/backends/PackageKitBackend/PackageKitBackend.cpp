@@ -210,8 +210,7 @@ void PackageKitBackend::reloadPackageList()
             });
         }
         for (const auto &component : data.components) {
-            const auto pkgNames = component.packageNames();
-            addComponent(component, pkgNames);
+            addComponent(component);
         }
 
         if (data.components.isEmpty()) {
@@ -229,9 +228,10 @@ void PackageKitBackend::reloadPackageList()
     fw->setFuture(QtConcurrent::run(&m_threadPool, &loadAppStream, m_appdata.get()));
 }
 
-AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Component &component, const QStringList &pkgNames)
+AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Component &component)
 {
     Q_ASSERT(isFetching());
+    const QStringList pkgNames = component.packageNames();
     Q_ASSERT(!pkgNames.isEmpty());
 
     auto &resPos = m_packages.packages[component.id()];

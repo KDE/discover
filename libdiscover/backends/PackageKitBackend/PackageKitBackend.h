@@ -104,7 +104,7 @@ private:
     void acquireFetching(bool f);
     void includePackagesToAdd();
     void performDetailsFetch();
-    AppPackageKitResource *addComponent(const AppStream::Component &component, const QStringList &pkgNames);
+    AppPackageKitResource *addComponent(const AppStream::Component &component);
     void updateProxy();
 
     QScopedPointer<AppStream::Pool> m_appdata;
