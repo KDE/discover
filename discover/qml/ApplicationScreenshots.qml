@@ -21,6 +21,7 @@ ListView {
     spacing: Kirigami.Units.largeSpacing
     focus: overlay.visible
     orientation: Qt.Horizontal
+    cacheBuffer: 10 // keep some screenshots in memory
 
     Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
     Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
@@ -147,7 +148,7 @@ ListView {
         width: Kirigami.Units.gridUnit * 2
         height: width
         icon.name: "arrow-left"
-        visible: !Kirigami.Settings.isMobile && root.currentIndex > 0 && root.ScrollBar.horizontal.visible
+        visible: !Kirigami.Settings.isMobile && root.count > 1 && root.currentIndex > 0
         Keys.forwardTo: [root]
         onClicked: root.currentIndex -= 1
     }
@@ -161,7 +162,7 @@ ListView {
         width: Kirigami.Units.gridUnit * 2
         height: width
         icon.name: "arrow-right"
-        visible: !Kirigami.Settings.isMobile && root.currentIndex < root.count - 1 && root.ScrollBar.horizontal.visible
+        visible: !Kirigami.Settings.isMobile && root.count > 1 && root.currentIndex < root.count - 1
         Keys.forwardTo: [root]
         onClicked: root.currentIndex += 1
     }

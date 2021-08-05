@@ -155,23 +155,20 @@ DiscoverPage {
             }
         }
 
-        ColumnLayout {
+
+        ScrollView {
+            visible: screenshots.count > 0
             Layout.topMargin: Kirigami.Units.gridUnit * 2
             Layout.fillWidth: true
+            Layout.preferredHeight: Math.min(Kirigami.Units.gridUnit * 20, Window.height * 0.4)
+            Layout.bottomMargin: Kirigami.Units.gridUnit * 2
+
+            ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+
             ApplicationScreenshots {
-                id: applicationScreenshots
-                visible: count > 0
+                id: screenshots
                 resource: appInfo.application
-                ScrollBar.horizontal: screenshotsScrollbar
-                Layout.bottomMargin: Kirigami.Units.gridUnit * 2
-                Layout.preferredHeight: Math.min(Kirigami.Units.gridUnit * 20, Window.height * 0.4)
-                Layout.fillWidth: true
             }
-            ScrollBar {
-                id: screenshotsScrollbar
-                Layout.fillWidth: true
-            }
-            visible: applicationScreenshots.visible
         }
 
         Kirigami.FlexColumn {
