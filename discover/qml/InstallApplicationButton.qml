@@ -18,13 +18,17 @@ ConditionalLoader
     readonly property alias progress: listener.progress
     readonly property bool isStateAvailable: application.state !== AbstractResource.Broken
     readonly property alias listener: listener
+    // Arbitrary "very long" limit of 15 characters; any longer than this and
+    // it's not a good idea to show the whole thing in the button or else it
+    // will elide the app name and may even overflow the layout!
+    readonly property bool backendNameIsVeryLong: backendName.length !== 0 && backendName.length > 15
     readonly property string text: {
         if (!root.isStateAvailable) {
             return i18nc("State being fetched", "Loading…")
         }
         if (!application.isInstalled) {
             // Must be from a non-default backend; tell the user where it's from
-            if (backendName.length !== 0) {
+            if (backendName.length !== 0 && !backendNameIsVeryLong) {
                 return i18nc("Install the version of an app that comes from Snap, Flatpak, etc", "Install from %1", backendName);
             }
             return i18n("Install");
@@ -116,5 +120,8 @@ ConditionalLoader
         }
         activeFocusOnTab: false
         onClicked: root.click()
+
+        ToolTip.visible: hovered && !application.isInstalled && root.backendNameIsVeryLong
+        ToolTip.text: i18nc("Install the version of an app that comes from Snap, Flatpak, etc", "Install from %1", backendName)
     }
 }
