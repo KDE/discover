@@ -90,11 +90,6 @@ Kirigami.AbstractCard
                 compact: delegateArea.compact
                 appIsFromNonDefaultBackend: delegateArea.appIsFromNonDefaultBackend
                 backendName: delegateArea.appIsFromNonDefaultBackend ? application.backend.displayName : ""
-
-                // TODO: Show the backend icon inside the button for Flatpak
-                // and Snap backend items in widescreen mode. Currently blocked
-                // by https://bugs.kde.org/show_bug.cgi?id=433433
-
             }
 
             RowLayout {
