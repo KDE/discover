@@ -16,7 +16,7 @@ const auto DisplayName = "DisplayName";
 const auto SourcesBackendId = "SourcesBackend";
 
 SourcesModel::SourcesModel(QObject *parent)
-    : KConcatenateRowsProxyModel(parent)
+    : QConcatenateTablesProxyModel(parent)
 {
 }
 
@@ -29,7 +29,7 @@ SourcesModel *SourcesModel::global()
 
 QHash<int, QByteArray> SourcesModel::roleNames() const
 {
-    QHash<int, QByteArray> roles = KConcatenateRowsProxyModel::roleNames();
+    QHash<int, QByteArray> roles = QConcatenateTablesProxyModel::roleNames();
     roles.insert(AbstractSourcesBackend::IdRole, "sourceId");
     roles.insert(Qt::DisplayRole, "display");
     roles.insert(Qt::ToolTipRole, "toolTip");
@@ -71,7 +71,7 @@ QVariant SourcesModel::data(const QModelIndex &index, int role) const
     case EnabledRole:
         return QVariant(flags(index) & Qt::ItemIsEnabled);
     default:
-        return KConcatenateRowsProxyModel::data(index, role);
+        return QConcatenateTablesProxyModel::data(index, role);
     }
 }
 

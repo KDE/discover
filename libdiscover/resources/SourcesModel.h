@@ -9,11 +9,11 @@
 
 #include "AbstractSourcesBackend.h"
 #include "discovercommon_export.h"
-#include <KConcatenateRowsProxyModel>
 #include <QAbstractListModel>
+#include <QConcatenateTablesProxyModel>
 #include <QSet>
 
-class DISCOVERCOMMON_EXPORT SourcesModel : public KConcatenateRowsProxyModel
+class DISCOVERCOMMON_EXPORT SourcesModel : public QConcatenateTablesProxyModel
 {
     Q_OBJECT
 public:
