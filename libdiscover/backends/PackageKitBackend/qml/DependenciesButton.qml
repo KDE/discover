@@ -16,10 +16,10 @@ Kirigami.LinkButton {
 
     Connections {
         target: resource
-        onDependenciesFound: {
+        function onDependenciesFound() {
             view.model.clear()
-            for (var v in dependencies) {
-                view.model.append(dependencies[v])
+            for (var v in resource.dependencies) {
+                view.model.append(resource.dependencies[v])
             }
         }
     }
