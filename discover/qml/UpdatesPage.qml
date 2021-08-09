@@ -367,7 +367,7 @@ DiscoverPage
         },
         State {
             name: "reboot"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "The system must be restarted to fully to apply the installed updates") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "The system must be restarted to fully apply the installed updates") }
             PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: restartButton; visible: true }
         },
