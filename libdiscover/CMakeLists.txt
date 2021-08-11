@@ -49,17 +49,6 @@ if(TARGET AppStreamQt)
         appstream/AppStreamUtils.cpp
     )
     target_link_libraries(DiscoverCommon PRIVATE Qt::Concurrent AppStreamQt)
-
-    if(AppStreamQt_VERSION VERSION_GREATER 0.12.4)
-        target_compile_definitions(DiscoverCommon PRIVATE -DAPPSTREAM_HAS_SPDX=1)
-    else()
-        target_compile_definitions(DiscoverCommon PRIVATE -DAPPSTREAM_HAS_SPDX=0)
-    endif()
-    if(AppStreamQt_VERSION VERSION_GREATER 0.12.7)
-        target_compile_definitions(DiscoverCommon PRIVATE -DAPPSTREAM_HAS_SPDX_LICENSEURL=1)
-    else()
-        target_compile_definitions(DiscoverCommon PRIVATE -DAPPSTREAM_HAS_SPDX_LICENSEURL=0)
-    endif()
 endif()
 
 target_link_libraries(DiscoverCommon
