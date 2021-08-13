@@ -16,6 +16,7 @@
   <name xml:lang="fi">Snap-taustaosa</name>
   <name xml:lang="fr">Moteur « Snap »</name>
   <name xml:lang="gl">Infraestrutura de Snap</name>
+  <name xml:lang="hi">स्नैप पृष्ठभाग</name>
   <name xml:lang="hu">Snap backend</name>
   <name xml:lang="ia">Retro-Administration de Snap</name>
   <name xml:lang="id">Backend Snap</name>
@@ -54,6 +55,7 @@
   <summary xml:lang="fi">Yhdistää Snap-sovellukset Discoveriin</summary>
   <summary xml:lang="fr">Intègre les applications « Snap » au sein de Discover</summary>
   <summary xml:lang="gl">Integra aplicacións de Snap con Discover</summary>
+  <summary xml:lang="hi">स्नैप अनुप्रयोगों को डिस्कवर में एकीकृत करता है</summary>
   <summary xml:lang="hu">Snap alkalmazások integrálása a Discoverbe</summary>
   <summary xml:lang="ia">Integra pplicationes de Snap in Discover</summary>
   <summary xml:lang="id">Aplikasi Snap terintegrasi ke dalam Discover</summary>
@@ -96,6 +98,7 @@
   <developer_name xml:lang="fi">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="gl">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="hi">एलिक्स पॉल गोंज़ालेज़</developer_name>
   <developer_name xml:lang="hu">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ia">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="id">Aleix Pol Gonzalez</developer_name>
