@@ -319,6 +319,7 @@ Comment=Repair failure after offline update
 Comment[ar]=فشل الإصلاح بعد التحديث دون اتصال
 Comment[az]=Oflayn yenilənmədən sonra bərpa edilə bilmədi
 Comment[ca]=Ha fallat en reparar després de l'actualització sense connexió
+Comment[cs]=Opravit selhání po aktualizaci offline
 Comment[de]=Reparatur nach Offline-Aktualisierung fehlgeschlagen
 Comment[en_GB]=Repair failure after offline update
 Comment[es]=Reparación fallida tras actualización en diferido
