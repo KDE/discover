@@ -375,7 +375,8 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
 
     FlatpakResource *resource = resourceForComponent(cid, source);
     resource->setIconPath(pathExports);
-    resource->setState(AbstractResource::Installed);
+    if (resource->state() < AbstractResource::Installed)
+        resource->setState(AbstractResource::Installed);
     resource->updateFromRef(FLATPAK_REF(ref));
     source->addResource(resource);
 
