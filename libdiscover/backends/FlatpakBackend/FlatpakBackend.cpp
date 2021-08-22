@@ -842,19 +842,13 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
 
 bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
 {
-    g_autoptr(FlatpakRef) ref = nullptr;
     g_autoptr(GError) localError = nullptr;
-    AppStream::Bundle bundle = resource->appstreamComponent().bundle(AppStream::Bundle::KindFlatpak);
-
-    // Get arch/branch/commit/name from FlatpakRef
-    if (!bundle.isEmpty()) {
-        ref = flatpak_ref_parse(bundle.id().toUtf8().constData(), &localError);
-        if (!ref) {
-            qWarning() << "Failed to parse" << bundle.id() << localError->message;
-            return false;
-        } else {
-            resource->updateFromRef(ref);
-        }
+    g_autoptr(FlatpakRef) ref = flatpak_ref_parse(resource->ref().toUtf8().constData(), &localError);
+    if (!ref) {
+        qWarning() << "Failed to parse" << resource->ref() << localError->message;
+        return false;
+    } else {
+        resource->updateFromRef(ref);
     }
 
     return true;
