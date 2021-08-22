@@ -1360,7 +1360,7 @@ ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
 FlatpakResource *FlatpakBackend::resourceForComponent(const AppStream::Component &component, const QSharedPointer<FlatpakSource> &source) const
 {
     for (auto res : source->m_resources) {
-        if (res->appstreamId() == component.id()) {
+        if (res->ref() == component.bundle(AppStream::Bundle::KindFlatpak).id()) {
             return res;
         }
     }
