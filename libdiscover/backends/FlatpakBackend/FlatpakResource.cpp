@@ -41,13 +41,13 @@ static QString iconCachePath(const AppStream::Icon &icon)
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent)
     : AbstractResource(parent)
     , m_appdata(component)
-    , m_id({installation, QString(), FlatpakResource::DesktopApp, component.id(), QString(), QString()})
+    , m_id({FlatpakResource::DesktopApp, component.id(), QString(), QString()})
     , m_downloadSize(0)
     , m_installedSize(0)
     , m_propertyStates({{DownloadSize, NotKnownYet}, {InstalledSize, NotKnownYet}, {RequiredRuntime, NotKnownYet}})
     , m_state(AbstractResource::None)
+    , m_installation(installation)
 {
-    qDebug() << "created..." << component.name() << installation;
     setObjectName(packageName());
 
     // Start fetching remote icons during initialization
@@ -311,7 +311,7 @@ QString FlatpakResource::name() const
 
 QString FlatpakResource::origin() const
 {
-    return m_id.origin;
+    return m_origin;
 }
 
 QString FlatpakResource::packageName() const
@@ -412,7 +412,7 @@ void FlatpakResource::invokeApplication() const
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
     g_autoptr(GError) localError = nullptr;
 
-    if (!flatpak_installation_launch(m_id.installation,
+    if (!flatpak_installation_launch(m_installation,
                                      flatpakName().toUtf8().constData(),
                                      arch().toUtf8().constData(),
                                      branch().toUtf8().constData(),
@@ -489,7 +489,7 @@ void FlatpakResource::setInstalledSize(int size)
 
 void FlatpakResource::setOrigin(const QString &origin)
 {
-    m_id.origin = origin;
+    m_origin = origin;
 }
 
 void FlatpakResource::setPropertyState(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState newState)
@@ -531,7 +531,7 @@ void FlatpakResource::setType(FlatpakResource::ResourceType type)
 
 QString FlatpakResource::installationPath() const
 {
-    return installationPath(m_id.installation);
+    return installationPath(m_installation);
 }
 
 QString FlatpakResource::installationPath(FlatpakInstallation *flatpakInstallation)

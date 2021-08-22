@@ -130,13 +130,12 @@ QDebug operator<<(QDebug debug, const FlatpakResource::Id &id)
     debug.nospace() << "FlatpakResource::Id(";
     debug.nospace() << "name:" << id.id << ',';
     debug.nospace() << "branch:" << id.branch << ',';
-    debug.nospace() << "origin:" << id.origin << ',';
     debug.nospace() << "type:" << id.type;
     debug.nospace() << ')';
     return debug;
 }
 
-static FlatpakResource::Id idForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref, const QString &postfix)
+static FlatpakResource::Id idForInstalledRef(FlatpakInstalledRef *ref, const QString &postfix)
 {
     const FlatpakResource::ResourceType appType = (flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP //
                                                        ? FlatpakResource::DesktopApp
@@ -145,7 +144,7 @@ static FlatpakResource::Id idForInstalledRef(FlatpakInstallation *installation, 
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
 
-    return {installation, QString::fromUtf8(flatpak_installed_ref_get_origin(ref)), appType, appId, branch, arch};
+    return {appType, appId, branch, arch};
 }
 
 FlatpakBackend::FlatpakBackend(QObject *parent)
@@ -316,14 +315,14 @@ QString refToBundleId(FlatpakRef *ref)
 
 FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref) const
 {
-    auto id = idForInstalledRef(installation, ref, {});
+    auto id = idForInstalledRef(ref, {});
     for (const auto &source : m_flatpakSources) {
         auto ret = source->m_resources.value(id);
         if (ret) {
             return ret;
         }
     }
-    auto id2 = idForInstalledRef(installation, ref, QStringLiteral(".desktop"));
+    auto id2 = idForInstalledRef(ref, QStringLiteral(".desktop"));
     for (const auto &source : m_flatpakSources) {
         auto ret = source->m_resources.value(id2);
         if (ret) {

@@ -55,8 +55,6 @@ public:
     Q_ENUM(FlatpakFileType)
 
     struct Id {
-        FlatpakInstallation *const installation; // TODO installation doesn't need to be part of the id anymore
-        QString origin;
         FlatpakResource::ResourceType type;
         const QString id;
         QString branch;
@@ -68,9 +66,7 @@ public:
         bool operator==(const Id &other) const
         {
             return &other == this
-                || (other.installation == installation //
-                    && other.origin == origin //
-                    && other.type == type //
+                || (other.type == type //
                     && other.id == id //
                     && other.branch == branch //
                     && other.arch == arch //
@@ -133,7 +129,7 @@ public:
 
     FlatpakInstallation *installation() const
     {
-        return m_id.installation;
+        return m_installation;
     }
 
     void invokeApplication() const override;
@@ -185,11 +181,13 @@ private:
     QUrl m_resourceFile;
     QString m_runtime;
     AbstractResource::State m_state;
+    FlatpakInstallation *const m_installation;
+    QString m_origin;
 };
 
 inline uint qHash(const FlatpakResource::Id &key)
 {
-    return qHash(key.installation) ^ qHash(key.origin) ^ qHash(key.type) ^ qHash(key.id) ^ qHash(key.branch) ^ qHash(key.arch);
+    return qHash(key.type) ^ qHash(key.id) ^ qHash(key.branch) ^ qHash(key.arch);
 }
 
 #endif // FLATPAKRESOURCE_H
