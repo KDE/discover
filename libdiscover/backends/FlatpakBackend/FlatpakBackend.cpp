@@ -373,14 +373,12 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
             cid = metadata.component();
     }
 
-    FlatpakResource *resource = resourceForComponent(cid, source);
+    FlatpakResource *resource = new FlatpakResource(cid, source->installation(), const_cast<FlatpakBackend *>(this));
+    resource->setOrigin(source->name());
     resource->setIconPath(pathExports);
-    if (resource->state() < AbstractResource::Installed)
-        resource->setState(AbstractResource::Installed);
     resource->updateFromRef(FLATPAK_REF(ref));
+    resource->setState(AbstractResource::Installed);
     source->addResource(resource);
-
-    //     qDebug() << "no" << flatpak_ref_get_name(FLATPAK_REF(ref));
     return resource;
 }
 
