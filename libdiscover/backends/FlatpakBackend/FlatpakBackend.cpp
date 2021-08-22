@@ -135,6 +135,18 @@ QDebug operator<<(QDebug debug, const FlatpakResource::Id &id)
     return debug;
 }
 
+static FlatpakResource::Id idForRefString(const QStringView &ref)
+{
+    auto parts = ref.split('/');
+    // app/app.getspace.Space/x86_64/stable
+    return {
+        parts[0] == QLatin1String("app") ? FlatpakResource::DesktopApp : FlatpakResource::Runtime,
+        parts[1].toString(),
+        parts[3].toString(),
+        parts[2].toString(),
+    };
+}
+
 static FlatpakResource::Id idForInstalledRef(FlatpakInstalledRef *ref, const QString &postfix)
 {
     const FlatpakResource::ResourceType appType = (flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP //
@@ -1358,10 +1370,9 @@ ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
 
 FlatpakResource *FlatpakBackend::resourceForComponent(const AppStream::Component &component, const QSharedPointer<FlatpakSource> &source) const
 {
-    for (auto res : source->m_resources) {
-        if (res->ref() == component.bundle(AppStream::Bundle::KindFlatpak).id()) {
-            return res;
-        }
+    auto resource = source->m_resources.value(idForRefString(component.bundle(AppStream::Bundle::KindFlatpak).id()));
+    if (resource) {
+        return resource;
     }
 
     FlatpakResource *res = new FlatpakResource(component, source->installation(), const_cast<FlatpakBackend *>(this));
