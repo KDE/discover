@@ -169,6 +169,7 @@ Name[hi]=उपलब्ध अद्यतन देखें
 Name[ia]=Vide actualisationes dispoibile
 Name[it]=Vedi gli aggiornamenti disponibili
 Name[ko]=사용 가능한 업데이트 보기
+Name[lt]=Rodyti prieinamus atnaujinimus
 Name[nl]=Zie beschikbare elementen voor bijwerken
 Name[pa]=ਮੌਜੂਦ ਅੱਪਡੇਟ ਵੇਖੋ
 Name[pl]=Obejrzyj dostępne uaktualnienia
