@@ -1368,6 +1368,7 @@ FlatpakResource *FlatpakBackend::resourceForComponent(const AppStream::Component
     FlatpakResource *res = new FlatpakResource(component, source->installation(), const_cast<FlatpakBackend *>(this));
     res->setOrigin(source->name());
     res->setIconPath(source->appstreamDir() + QLatin1String("/icons/"));
+    res->updateFromAppStream();
     source->addResource(res);
     return res;
 }

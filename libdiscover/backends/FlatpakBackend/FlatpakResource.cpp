@@ -135,6 +135,18 @@ void FlatpakResource::updateFromRef(FlatpakRef *ref)
     setObjectName(packageName());
 }
 
+void FlatpakResource::updateFromAppStream()
+{
+    const QString refstr = m_appdata.bundle(AppStream::Bundle::KindFlatpak).id();
+    g_autoptr(GError) localError = nullptr;
+    g_autoptr(FlatpakRef) ref = flatpak_ref_parse(refstr.toUtf8().constData(), &localError);
+    if (!ref) {
+        qDebug() << "failed to obtain ref" << refstr << localError->message;
+        return;
+    }
+    updateFromRef(ref);
+}
+
 QString FlatpakResource::ref() const
 {
     return typeAsString() + QLatin1Char('/') + flatpakName() + QLatin1Char('/') + arch() + QLatin1Char('/') + branch();

@@ -162,6 +162,7 @@ public:
     QString ref() const;
     QString sourceIcon() const override;
     QString installPath() const;
+    void updateFromAppStream();
 
 Q_SIGNALS:
     void propertyStateChanged(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state);
