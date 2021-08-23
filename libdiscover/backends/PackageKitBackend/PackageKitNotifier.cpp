@@ -123,6 +123,12 @@ void PackageKitNotifier::checkOfflineUpdates()
                                      KNotification::Persistent,
                                      QStringLiteral("org.kde.discovernotifier"));
             });
+            connect(trans, &PackageKit::Transaction::finished, this, [] (PackageKit::Transaction::Exit status, uint runtime) {
+                qInfo() << "repair finished!" << status << runtime;
+                if (status == PackageKit::Transaction::ExitSuccess) {
+                    PackageKit::Daemon::global()->offline()->clearResults();
+                }
+            });
         });
 
         notification->sendEvent();

@@ -25,7 +25,9 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend *parent)
     connect(m_backend, &AbstractResourcesBackend::fetchingChanged, this, &StandardBackendUpdater::refreshUpdateable);
     connect(m_backend, &AbstractResourcesBackend::resourcesChanged, this, &StandardBackendUpdater::resourcesChanged);
     connect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, [this](AbstractResource *resource) {
-        m_upgradeable.remove(resource);
+        if (m_upgradeable.remove(resource)) {
+            Q_EMIT updatesCountChanged(updatesCount());
+        }
         m_toUpgrade.remove(resource);
     });
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &StandardBackendUpdater::transactionRemoved);
