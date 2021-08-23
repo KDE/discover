@@ -115,7 +115,7 @@ int main(int argc, char **argv)
                      version,
                      i18n("An application explorer"),
                      KAboutLicense::GPL,
-                     i18n("© 2010-2020 Plasma Development Team"));
+                     i18n("© 2010-2021 Plasma Development Team"));
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), QStringLiteral("aleixpol@kde.org"), QStringLiteral("https://proli.net"), QStringLiteral("apol"));
     about.addAuthor(i18n("Nate Graham"),
                     i18n("Quality Assurance, Design and Usability"),
