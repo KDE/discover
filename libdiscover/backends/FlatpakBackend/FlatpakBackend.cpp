@@ -141,6 +141,8 @@ QDebug operator<<(QDebug debug, const FlatpakResource::Id &id)
 
 static FlatpakResource::Id idForRefString(const QStringView &ref)
 {
+    Q_ASSERT(!ref.isEmpty());
+
     auto parts = ref.split('/');
     // app/app.getspace.Space/x86_64/stable
     return {
@@ -818,6 +820,7 @@ void FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, F
     acquireFetching(true);
     pool->clearMetadataLocations();
     pool->addMetadataLocation(appstreamDirPath);
+    pool->setFlags(AppStream::Pool::FlagReadCollection);
     pool->setCacheFlags(AppStream::Pool::CacheFlagUseUser);
 
     const QString subdir = flatpak_installation_get_id(flatpakInstallation) + QLatin1Char('/') + sourceName;
