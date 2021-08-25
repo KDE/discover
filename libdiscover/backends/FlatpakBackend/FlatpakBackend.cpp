@@ -496,7 +496,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
 
         const QList<AppStream::Component> components = metadata.components();
         if (components.size()) {
-            asComponent = AppStream::Component(components.first());
+            asComponent = components.first();
         } else {
             qWarning() << "Failed to parse appstream metadata";
             return;
