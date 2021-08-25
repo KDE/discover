@@ -612,6 +612,11 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     asComponent.setSummary(settings.value(QStringLiteral("Flatpak Ref/Comment")).toString());
     asComponent.setId(name);
 
+    AppStream::Bundle b;
+    b.setKind(AppStream::Bundle::KindFlatpak);
+    b.setId(flatpak_ref_format_ref(ref));
+    asComponent.addBundle(b);
+
     const QString iconUrl = settings.value(QStringLiteral("Flatpak Ref/Icon")).toString();
     if (!iconUrl.isEmpty()) {
         AppStream::Icon icon;
