@@ -57,6 +57,7 @@ public:
         : m_remote(remote)
         , m_installation(installation)
         , m_backend(backend)
+        , m_appstreamIconsDir(appstreamDir() + QLatin1String("/icons"))
     {
         g_object_ref(m_remote);
         g_object_ref(m_installation);
@@ -73,8 +74,10 @@ public:
         return !flatpak_remote_get_disabled(m_remote);
     }
 
-    QString appstreamDir() const
-    {
+    QString appstreamIconsDir() const {
+        return m_appstreamIconsDir;
+    }
+    QString appstreamDir() const {
         g_autoptr(GFile) appstreamDir = flatpak_remote_get_appstream_dir(m_remote, nullptr);
         if (!appstreamDir) {
             qWarning() << "No appstream dir for" << flatpak_remote_get_name(m_remote);
@@ -122,6 +125,7 @@ private:
     FlatpakRemote *const m_remote;
     FlatpakInstallation *const m_installation;
     FlatpakBackend *const m_backend;
+    const QString m_appstreamIconsDir;
 };
 
 QDebug operator<<(QDebug debug, const FlatpakResource::Id &id)
@@ -1382,7 +1386,7 @@ FlatpakResource *FlatpakBackend::resourceForComponent(const AppStream::Component
 
     FlatpakResource *res = new FlatpakResource(component, source->installation(), const_cast<FlatpakBackend *>(this));
     res->setOrigin(source->name());
-    res->setIconPath(source->appstreamDir() + QLatin1String("/icons/"));
+    res->setIconPath(source->appstreamIconsDir());
     res->updateFromAppStream();
     source->addResource(res);
     return res;
