@@ -245,7 +245,12 @@ void KNSBackend::fetchInstalled()
             // The reason we are not doing a checkUpdates() overload for this is that the caching for this
             // information is done by KNSEngine, and we want to actually load it every time we initialize.
             auto updateChecker = new OneTimeAction(
-                [this]() {
+                [this] {
+                    //No need to check for updates if there's no resources
+                    if (m_resourcesByName.isEmpty()) {
+                        return;
+                    }
+
                     Q_EMIT startingSearch();
                     m_onePage = true;
                     m_responsePending = true;
