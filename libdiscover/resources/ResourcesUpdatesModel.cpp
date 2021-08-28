@@ -14,6 +14,7 @@
 #include <Transaction/TransactionModel.h>
 
 #include <KConfigGroup>
+#include <KConfigWatcher>
 #include <KFormat>
 #include <KLocalizedString>
 #include <KSharedConfig>
@@ -147,8 +148,17 @@ void ResourcesUpdatesModel::init()
 
     // To enable from command line use:
     // kwriteconfig5 --file discoverrc --group Software --key UseOfflineUpdates true
-    KConfigGroup group(KSharedConfig::openConfig(), "Software");
+    auto sharedConfig = KSharedConfig::openConfig();
+    KConfigGroup group(sharedConfig, "Software");
     m_offlineUpdates = group.readEntry<bool>("UseOfflineUpdates", false);
+
+    KConfigWatcher::Ptr watcher = KConfigWatcher::create(sharedConfig);
+    connect(watcher.data(), &KConfigWatcher::configChanged, [=]() {
+        if (m_offlineUpdates == group.readEntry<bool>("UseOfflineUpdates", false)) {
+            return;
+        }
+        Q_EMIT useUnattendedUpdatesChanged();
+    });
 
     auto tm = TransactionModel::global();
     const auto transactions = tm->transactions();
@@ -301,6 +311,11 @@ bool ResourcesUpdatesModel::needsReboot() const
             return true;
     }
     return false;
+}
+
+bool ResourcesUpdatesModel::useUnattendedUpdates() const
+{
+    return m_offlineUpdates;
 }
 
 void ResourcesUpdatesModel::setOfflineUpdates(bool offline)

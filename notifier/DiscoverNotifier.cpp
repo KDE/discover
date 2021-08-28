@@ -26,11 +26,18 @@
 DiscoverNotifier::DiscoverNotifier(QObject *parent)
     : QObject(parent)
 {
+    m_settings = new UpdatesSettings(this);
+    m_settingsWatcher = KConfigWatcher::create(m_settings->sharedConfig());
+    refreshUnattended();
+    connect(m_settingsWatcher.data(), &KConfigWatcher::configChanged, this, &DiscoverNotifier::refreshUnattended);
+
     m_backends = BackendNotifierFactory().allBackends();
     for (BackendNotifierModule *module : qAsConst(m_backends)) {
         connect(module, &BackendNotifierModule::foundUpdates, this, &DiscoverNotifier::updateStatusNotifier);
         connect(module, &BackendNotifierModule::needsRebootChanged, this, [this]() {
-            if (!m_needsReboot) {
+            // If we are using offline updates, there is no need to badger the user to
+            // reboot since it is safe to continue using the system in its current state
+            if (!m_needsReboot && !m_settings->useUnattendedUpdates()) {
                 m_needsReboot = true;
                 showRebootNotification();
                 Q_EMIT stateChanged();
@@ -47,11 +54,6 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
 
     // Only fetch updates after the system is comfortably booted
     QTimer::singleShot(20000, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
-
-    m_settings = new UpdatesSettings(this);
-    m_settingsWatcher = KConfigWatcher::create(m_settings->sharedConfig());
-    refreshUnattended();
-    connect(m_settingsWatcher.data(), &KConfigWatcher::configChanged, this, &DiscoverNotifier::refreshUnattended);
 }
 
 DiscoverNotifier::~DiscoverNotifier() = default;

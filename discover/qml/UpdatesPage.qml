@@ -367,7 +367,7 @@ DiscoverPage
         },
         State {
             name: "reboot"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "The system must be restarted to fully apply the installed updates") }
+            PropertyChanges { target: page; footerLabel: resourcesUpdatesModel.useUnattendedUpdates ? i18nc("@info", "The updates will be installed the next time the system is restarted") : i18nc("@info", "The system must be restarted to fully apply the installed updates") }
             PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: restartButton; visible: true }
         },

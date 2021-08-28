@@ -25,6 +25,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     Q_PROPERTY(qint64 secsToLastUpdate READ secsToLastUpdate NOTIFY progressingChanged)
     Q_PROPERTY(Transaction *transaction READ transaction NOTIFY progressingChanged)
     Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
+    Q_PROPERTY(bool useUnattendedUpdates READ useUnattendedUpdates NOTIFY useUnattendedUpdatesChanged)
 public:
     explicit ResourcesUpdatesModel(QObject *parent = nullptr);
 
@@ -45,6 +46,7 @@ public:
     }
     Transaction *transaction() const;
     bool needsReboot() const;
+    bool useUnattendedUpdates() const;
 
 Q_SIGNALS:
     void downloadSpeedChanged();
@@ -53,6 +55,7 @@ Q_SIGNALS:
     void resourceProgressed(AbstractResource *resource, qreal progress, AbstractBackendUpdater::State state);
     void passiveMessage(const QString &message);
     void needsRebootChanged();
+    void useUnattendedUpdatesChanged();
     void fetchingUpdatesProgressChanged(int percent);
 
 public Q_SLOTS:
