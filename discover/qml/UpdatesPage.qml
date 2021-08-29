@@ -189,7 +189,8 @@ DiscoverPage
         Button {
             id: restartButton
             Layout.alignment: Qt.AlignHCenter
-            text: i18n("Restart")
+            icon.name: "system-reboot"
+            text: i18n("Restart Now")
             visible: false
             onClicked: app.reboot()
         }
