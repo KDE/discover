@@ -347,7 +347,7 @@ DiscoverPage
         State {
             name: "fetching"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates…") }
-            PropertyChanges { target: statusLabel; opacity: 1 }
+            PropertyChanges { target: statusLabel; opacity: 0.5 }
             PropertyChanges { target: page; footerProgress: ResourcesModel.fetchingUpdatesProgress }
             PropertyChanges { target: page; isBusy: true }
             PropertyChanges { target: updatesView; opacity: 0 }
