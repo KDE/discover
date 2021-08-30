@@ -188,6 +188,7 @@ DiscoverPage
         }
         Button {
             id: restartButton
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
             Layout.alignment: Qt.AlignHCenter
             icon.name: "system-reboot"
             text: i18n("Restart Now")
