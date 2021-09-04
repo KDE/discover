@@ -151,7 +151,7 @@ Keywords[tr]=program;yazılım;depo;paket;yükle;kur;kaldır;güncelle;uygulama;
 Keywords[uk]=program;software;repository;package;install;remove;update;app;apps;applications;програма;програмне забезпечення;сховище;архів;пакунок;встановити;встановлення;вилучити;вилучення;оновлення;оновити;
 Keywords[x-test]=xxprogramxx;xxsoftwarexx;xxrepositoryxx;xxpackagexx;xxinstallxx;xxremovexx;xxupdatexx;xxappsxx;xxapplicationsxx;
 Keywords[zh_CN]=program;software;repository;package;install;remove;update;apps;applications;程序;软件;软件源;包;安装;移除;更新;应用程序;应用;
-Keywords[zh_TW]=program;software;repository;package;install;remove;update;apps;applications;
+Keywords[zh_TW]=program;software;repository;package;install;remove;update;apps;applications;軟體;程式;軟體包;軟體庫;安裝;移除;更新;
 
 [Desktop Action Updates]
 Name=See Available Updates
@@ -184,5 +184,6 @@ Name[tr]=Mevcut Güncellemeleri Gör
 Name[uk]=Перегляд доступних оновлень
 Name[x-test]=xxSee Available Updatesxx
 Name[zh_CN]=查看可用更新
+Name[zh_TW]=檢視可用的更新
 Icon=update-low
 Exec=plasma-discover --mode update

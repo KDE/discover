@@ -38,6 +38,7 @@ Name[tr]=Yazılım Güncellemesi
 Name[uk]=Оновлення програм
 Name[x-test]=xxSoftware Updatexx
 Name[zh_CN]=软件更新
+Name[zh_TW]=軟體更新
 Comment=Configure software update behavior
 Comment[ar]=اضبط سلوك تحديث البرنامج
 Comment[az]=Proqram təminatı yenilənməsi davranışını ayarlayın
@@ -68,5 +69,6 @@ Comment[tr]=Yazılım güncelleme davranışını yapılandır
 Comment[uk]=Налаштовування поведінки при оновленні програм
 Comment[x-test]=xxConfigure software update behaviorxx
 Comment[zh_CN]=配置软件更新行为
+Comment[zh_TW]=設定軟體更新的行為
 
 Categories=Qt;KDE;
