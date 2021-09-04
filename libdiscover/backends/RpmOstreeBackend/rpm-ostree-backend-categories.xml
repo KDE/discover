@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Menu>
+  <Menu>
+    <Name>Operating System</Name>
+    <Icon>application-x-rpm</Icon>
+    <!--<Image>pkcategories/applicationcrop.jpg</Image>-->
+    <Include>
+        <Or>
+            <AppstreamIdWildcard>ostree.*</AppstreamIdWildcard>
+        </Or>
+    </Include>
+  </Menu>
+</Menu>
