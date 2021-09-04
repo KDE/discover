@@ -92,6 +92,7 @@ ConditionalLoader
     }
 
     componentFalse: Button {
+        visible: !application.isInstalled || application.isRemovable
         enabled: application.state !== AbstractResource.Broken
         // This uses a custom content item to be able to use an icon that's
         // loaded from a remote location, which does not work with the standard
