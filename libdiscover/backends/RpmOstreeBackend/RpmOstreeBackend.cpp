@@ -7,6 +7,7 @@
 
 #include "RpmOstreeBackend.h"
 #include "RpmOstreeResource.h"
+#include "RpmOstreeSourcesBackend.h"
 #include "RpmOstreeTransaction.h"
 
 #include <QDBusInterface>
@@ -14,65 +15,17 @@
 #include <QDBusObjectPath>
 #include <QDBusPendingReply>
 #include <QDebug>
+#include <QFile>
 #include <QList>
 #include <QMap>
+#include <QProcess>
+#include <QStandardItemModel>
 #include <QStringList>
 #include <QVariant>
 #include <QVariantList>
-#include <QFile>
-#include <Transaction/Transaction.h>
-#include <resources/SourcesModel.h>
-#include <resources/StandardBackendUpdater.h>
 
-#include <QStandardItemModel>
 
 DISCOVER_BACKEND_PLUGIN(RpmOstreeBackend)
-
-class RpmOstreeSourcesBackend : public AbstractSourcesBackend
-{
-public:
-    explicit RpmOstreeSourcesBackend(AbstractResourcesBackend *parent)
-        : AbstractSourcesBackend(parent)
-        , m_model(new QStandardItemModel(this))
-    {
-        auto it = new QStandardItem(QStringLiteral("rpm-ostree"));
-        it->setData(QStringLiteral("rpm-ostree"), IdRole);
-        m_model->appendRow(it);
-    }
-
-    QAbstractItemModel *sources() override
-    {
-        return m_model;
-    }
-    bool addSource(const QString &) override
-    {
-        return false;
-    }
-    bool removeSource(const QString &) override
-    {
-        return false;
-    }
-    QString idDescription() override
-    {
-        return QStringLiteral("rpm-ostree");
-    }
-    QVariantList actions() const override
-    {
-        return {};
-    }
-
-    bool supportsAdding() const override
-    {
-        return false;
-    }
-    bool canMoveSources() const override
-    {
-        return false;
-    }
-
-private:
-    QStandardItemModel *const m_model;
-};
 
 RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     : AbstractResourcesBackend(parent)

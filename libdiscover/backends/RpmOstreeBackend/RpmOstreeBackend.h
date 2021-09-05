@@ -13,7 +13,6 @@
 #include "rpmostree1.h"
 #include <QDBusPendingReply>
 #include <QMetaType>
-#include <QProcess>
 #include <QSharedPointer>
 #include <QThreadPool>
 
