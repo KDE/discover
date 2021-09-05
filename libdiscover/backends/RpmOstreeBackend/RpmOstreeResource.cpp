@@ -3,35 +3,73 @@
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
- 
+
 #include "RpmOstreeResource.h"
 #include "RpmOstreeBackend.h"
-#include <QStandardItemModel>
-#include <QDebug>
+
+#include <appstream/AppStreamIntegration.h>
+
 #include <KLocalizedString>
+#include <KOSRelease>
+
+#include <QDebug>
+#include <QStandardItemModel>
 
 const QStringList RpmOstreeResource::m_objects({QStringLiteral("qrc:/qml/RemoteRefsButton.qml")});
 
-RpmOstreeResource::RpmOstreeResource(QString name,
-                                     QString baseVersion,
-                                     QString checkSum,
-                                     QString signature,
-                                     QString layeredPackages,
-                                     QString localPackages,
-                                     QString origin,
-                                     qulonglong timestamp,
-                                     RpmOstreeBackend *parent)
+RpmOstreeResource::RpmOstreeResource(const QMap<QString, QVariant>& map, RpmOstreeBackend *parent)
     : AbstractResource(parent)
-    , m_deploymentName(name)
-    , m_version(baseVersion)
-    , m_checkSum(checkSum)
-    , m_signature(signature)
-    , m_layeredPackages(layeredPackages)
-    , m_localPackages(localPackages)
     , m_state(AbstractResource::None)
-    , m_currentRefs(origin)
-    , m_releaseDate(QDateTime::fromSecsSinceEpoch(timestamp).date())
 {
+    // Use pretty name from os-release information
+    auto osrelease = AppStreamIntegration::global()->osRelease();
+    m_prettyname = osrelease->prettyName();
+
+    // Get everything else from rpm-ostree
+    m_name = map.value(QStringLiteral("osname")).toString();
+    m_version = map.value(QStringLiteral("base-version")).toString();
+    m_timestamp = QDateTime::fromSecsSinceEpoch(map.value(QStringLiteral("base-timestamp")).toULongLong()).date();
+
+    // Split remote and branch from origin
+    m_origin = map.value(QStringLiteral("origin")).toString();
+    auto split_ref = m_origin.split(':');
+    if (split_ref.length() != 2) {
+        qWarning() << "rpm-ostree-backend: Unknown origin format, ignoring:" << m_origin;
+        m_remote = QStringLiteral("unkonwn");
+        m_branch = QStringLiteral("unkonwn");
+    } else {
+        m_remote = split_ref[0];
+        m_branch = split_ref[1];
+    }
+
+    // Split branch into name / version / arch / variant
+    auto split_branch = m_branch.split('/');
+    if (split_branch.length() < 4) {
+        qWarning() << "rpm-ostree-backend: Unknown branch format, ignoring:" << m_branch;
+        m_branchName = QStringLiteral("unkonwn");
+        m_branchVersion = QStringLiteral("unkonwn");
+        m_branchArch = QStringLiteral("unkonwn");
+        m_branchVariant = QStringLiteral("unkonwn");
+    } else {
+        m_branchName = split_branch[0];
+        m_branchVersion = split_branch[1];
+        m_branchArch = split_branch[2];
+        auto variant = split_branch[3];
+        for (int i = 4; i < split_branch.size(); ++i) {
+            variant += "/" + split_branch[i];
+        }
+        m_branchVariant = variant;
+    }
+
+    // Use ostree as tld to differentiate those resources and append the current branch:
+    // Example: ostree.fedora-34-x86-64-kinoite
+    // https://freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-id-generic
+    m_appstreamid = m_branch;
+    m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-');
+
+    // TODO: Extract signature information
+    // TODO: Extract the list of layered packages
+
     connect(this, &RpmOstreeResource::buttonPressed, parent, &RpmOstreeBackend::perfromSystemUpgrade);
 }
 
@@ -48,18 +86,18 @@ QString RpmOstreeResource::getRecentRemoteRefs()
         return {};
     QString recentRefs = m_recentRefs;
     QStringList str = recentRefs.split(QStringLiteral("/"));
-    QString refs = QStringLiteral("Kinoite ") + str[1];
+    QString refs = QStringLiteral("Fedora Kinoite ") + str[1];
     return refs;
 }
 
 bool RpmOstreeResource::isRecentRefsAvaliable()
 {
-    QString currentRefsVersion = m_currentRefs;
+    QString currentRefsVersion = m_origin;
     QStringList str = currentRefsVersion.split(QStringLiteral("/"));
     int currentVersion = str[1].toInt();
 
     for (const QString &refs : m_remoteRefsList) {
-        if (refs == m_currentRefs)
+        if (refs == m_origin)
             continue;
         QString refssV = refs;
         QStringList refsNumber = refssV.split(QStringLiteral("/"));
@@ -86,7 +124,7 @@ void RpmOstreeResource::setNewVersion(QString newVersion)
 
 QString RpmOstreeResource::appstreamId() const
 {
-    return QStringLiteral("ostree.") + m_deploymentName;
+    return m_appstreamid;
 }
 
 bool RpmOstreeResource::canExecute() const
@@ -116,25 +154,33 @@ QUrl RpmOstreeResource::donationURL()
 
 QUrl RpmOstreeResource::homepage()
 {
-    return QUrl();
+    return QUrl("https://spins.fedoraproject.org/en/kde/");
+}
+
+QUrl RpmOstreeResource::helpURL()
+{
+    return QUrl("https://docs.fedoraproject.org/en-US/fedora-kinoite/");
+}
+
+QUrl RpmOstreeResource::bugURL()
+{
+    return QUrl("https://pagure.io/fedora-kde/SIG/issues");
 }
 
 QJsonArray RpmOstreeResource::licenses()
 {
-    return {QJsonObject{{QStringLiteral("name"), QString()}, {QStringLiteral("url"), QString()}}};
+    return {QJsonObject{{QStringLiteral("name"), i18n("GPL and other licenses")},
+                        {QStringLiteral("url"), QStringLiteral("https://fedoraproject.org/wiki/Legal:Licenses")}}};
 }
 
 QString RpmOstreeResource::longDescription()
 {
-    QString description = i18n("Version: ") + name() + installedVersion() + QStringLiteral("\n") + i18n("BaseCommit: ") + m_checkSum
-        + QStringLiteral("\n") + i18n("GPGSignature: Valid signature by ") + m_signature + QStringLiteral("\n") + i18n("Origin: ")
-        + m_currentRefs + QStringLiteral("\n");
-    return description;
+    return i18n("Remote: ") + m_origin;
 }
 
 QString RpmOstreeResource::name() const
 {
-    return m_deploymentName;
+    return m_prettyname;
 }
 
 QString RpmOstreeResource::origin() const
@@ -164,7 +210,7 @@ QString RpmOstreeResource::author() const
 
 QString RpmOstreeResource::comment()
 {
-    return i18n("The currently active deployment.");
+    return i18n("The currently running version of Fedora Kinoite.");
 }
 
 int RpmOstreeResource::size()
@@ -174,7 +220,7 @@ int RpmOstreeResource::size()
 
 QDate RpmOstreeResource::releaseDate() const
 {
-    return m_releaseDate;
+    return m_timestamp;
 }
 
 QString RpmOstreeResource::executeLabel() const
@@ -191,4 +237,58 @@ void RpmOstreeResource::setState(AbstractResource::State state)
 void RpmOstreeResource::rebaseToNewVersion()
 {
     Q_EMIT buttonPressed(m_recentRefs);
+}
+
+QString RpmOstreeResource::sourceIcon() const
+{
+    return QStringLiteral("application-x-rpm");
+}
+
+QStringList RpmOstreeResource::extends() const
+{
+    return {};
+}
+AbstractResource::Type RpmOstreeResource::type() const
+{
+    return Addon;
+}
+
+bool RpmOstreeResource::isRemovable() const
+{
+    return false;
+}
+
+QList<PackageState> RpmOstreeResource::addonsInformation()
+{
+    return QList<PackageState>();
+}
+
+QStringList RpmOstreeResource::categories()
+{
+    return {};
+}
+
+QString RpmOstreeResource::getRemote()
+{
+    return m_remote;
+}
+
+QString RpmOstreeResource::getBranchName()
+{
+    return m_branchName;
+}
+
+QString RpmOstreeResource::getBranchVersion()
+{
+    return m_branchVersion;
+}
+
+QString RpmOstreeResource::getBranchArch()
+{
+    return m_branchArch;
+}
+
+QString RpmOstreeResource::getBranchVariant()
+{
+    return m_branchVariant;
 }

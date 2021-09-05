@@ -16,36 +16,18 @@ class RpmOstreeResource : public AbstractResource
     Q_OBJECT
     Q_PROPERTY(QStringList objects MEMBER m_objects CONSTANT)
 public:
-    explicit RpmOstreeResource(QString name,
-                               QString baseVersion,
-                               QString checkSum,
-                               QString signature,
-                               QString layeredPackages,
-                               QString localPackages,
-                               QString origin,
-                               qulonglong timestamp,
-                               RpmOstreeBackend *parent);
+    explicit RpmOstreeResource(const QMap<QString, QVariant>&, RpmOstreeBackend *);
     QString appstreamId() const override;
     AbstractResource::State state() override;
     QVariant icon() const override;
     QString comment() override;
     QString name() const override;
     QString packageName() const override;
-    QStringList categories() override
-    {
-        return QStringList();
-    }
-    QUrl homepage() override;
+    QStringList categories() override;
     QJsonArray licenses() override;
     QString longDescription() override;
-    QList<PackageState> addonsInformation() override
-    {
-        return QList<PackageState>();
-    }
-    bool isRemovable() const override
-    {
-        return false;
-    }
+    QList<PackageState> addonsInformation() override;
+    bool isRemovable() const override;
     QString availableVersion() const override;
     void setNewVersion(QString);
     QString installedVersion() const override;
@@ -54,24 +36,18 @@ public:
     void fetchScreenshots() override {};
     int size() override;
     void fetchChangelog() override {};
-    QStringList extends() const override
-    {
-        return QStringList();
-    }
-    AbstractResource::Type type() const override
-    {
-        return Addon;
-    }
+    QStringList extends() const override;
+    AbstractResource::Type type() const override;
     QString author() const override;
     bool canExecute() const override;
     void invokeApplication() const override {};
 
     QUrl url() const override;
     QString executeLabel() const override;
-    QString sourceIcon() const override
-    {
-        return QStringLiteral("application-x-rpm");
-    }
+    QString sourceIcon() const override;
+    QUrl homepage() override;
+    QUrl helpURL() override;
+    QUrl bugURL() override;
     QDate releaseDate() const override;
     QUrl donationURL() override;
     void setState(AbstractResource::State);
@@ -97,6 +73,12 @@ public:
      */
     Q_SCRIPTABLE bool isRecentRefsAvaliable();
 
+    QString getRemote();
+    QString getBranchName();
+    QString getBranchVersion();
+    QString getBranchArch();
+    QString getBranchVariant();
+
 Q_SIGNALS:
 
     /*
@@ -105,18 +87,25 @@ Q_SIGNALS:
     void buttonPressed(QString);
 
 private:
-    QString m_deploymentName;
+    QString m_name;
+    QString m_prettyname;
     QString m_version;
-    QString m_newVersion;
-    QString m_checkSum;
-    QString m_signature;
-    QString m_layeredPackages;
-    QString m_localPackages;
+    QDate m_timestamp;
+    QString m_origin;
+    QString m_remote;
+    QString m_branch;
+    QString m_branchName;
+    QString m_branchVersion;
+    QString m_branchArch;
+    QString m_branchVariant;
+    QString m_appstreamid;
+
     AbstractResource::State m_state;
+
+    QString m_newVersion;
     QStringList m_remoteRefsList;
     QString m_currentRefs;
     QString m_recentRefs;
-    QDate m_releaseDate;
 };
 
 #endif

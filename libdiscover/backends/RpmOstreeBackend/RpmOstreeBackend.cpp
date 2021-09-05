@@ -61,33 +61,14 @@ void RpmOstreeBackend::getDeployments()
     while (!dbusArgs.atEnd()) {
         QMap<QString, QVariant> map;
         dbusArgs >> map;
-        QDBusArgument dbusArgsSignature = map[QStringLiteral("signatures")].value<QDBusArgument>();
-        dbusArgsSignature >> map[QStringLiteral("signatures")];
-        QDBusVariant dbvFirst1 = map[QStringLiteral("signatures")].value<QDBusVariant>();
-        QVariant vFirst1 = dbvFirst1.variant();
-        QDBusArgument dbusArgsSign = vFirst1.value<QDBusArgument>();
-        dbusArgsSign >> map[QStringLiteral("signatures")];
-
-        QString baseVersion = map[QStringLiteral("version")].toString();
-        QString deploymentName = baseVersion;
-        deploymentName.remove(8, deploymentName.size() - 1);
-        baseVersion.remove(0, 7);
-
-        const QString baseChecksum = map[QStringLiteral("checksum")].toString();
-        const QString signature = map[QStringLiteral("signatures")].toString();
-        const QString layeredPackages = map[QStringLiteral("packages")].toString();
-        const QString localPackages = map[QStringLiteral("requested-local-packages")].toString();
-        const QString origin = map[QStringLiteral("origin")].toString();
-        const qulonglong timestamp = map[QStringLiteral("timestamp")].toULongLong();
-
-        RpmOstreeResource *deploymentResource =
-            new RpmOstreeResource(deploymentName, baseVersion, baseChecksum, signature, layeredPackages, localPackages, origin, timestamp, this);
+        // Only include the currently booted deployment for now
         if (map[QStringLiteral("booted")].toBool()) {
+            RpmOstreeResource *deploymentResource = new RpmOstreeResource(map, this);
             // changing the state of the booted deployment resource to Installed.
             deploymentResource->setState(AbstractResource::Installed);
+            connect(deploymentResource, &RpmOstreeResource::stateChanged, this, &RpmOstreeBackend::updatesCountChanged);
+            m_resources.push_back(deploymentResource);
         }
-        connect(deploymentResource, &RpmOstreeResource::stateChanged, this, &RpmOstreeBackend::updatesCountChanged);
-        m_resources.push_back(deploymentResource);
     }
     dbusArgs.endArray();
 }
