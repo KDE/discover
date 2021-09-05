@@ -122,6 +122,6 @@ ConditionalLoader
         onClicked: root.click()
 
         ToolTip.visible: hovered && !application.isInstalled && root.backendNameIsVeryLong
-        ToolTip.text: i18nc("Install the version of an app that comes from Snap, Flatpak, etc", "Install from %1", backendName)
+        ToolTip.text: backendName ? i18nc("Install the version of an app that comes from Snap, Flatpak, etc", "Install from %1", backendName) : ""
     }
 }
