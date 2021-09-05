@@ -41,11 +41,6 @@ public:
     void executeCheckUpdateProcess();
 
     /*
-     * Getting the output resulting from executing the QProcess update check.
-     */
-    void readUpdateOutput(QIODevice *process);
-
-    /*
      * Calling UpdateDeployment method from the rpm-ostree DBus class when
      * there is a new deployment version avaliable .
      */

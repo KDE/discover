@@ -10,13 +10,7 @@
 
 #include <resources/SourcesModel.h>
 
-#include <QDebug>
-#include <QFile>
-#include <QList>
-#include <QMap>
 #include <QStandardItemModel>
-#include <QStringList>
-#include <QVariant>
 #include <QVariantList>
 
 class RpmOstreeSourcesBackend : public AbstractSourcesBackend

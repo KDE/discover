@@ -10,6 +10,9 @@
 #include "RpmOstreeSourcesBackend.h"
 #include "RpmOstreeTransaction.h"
 
+#include <Transaction/Transaction.h>
+#include <resources/StandardBackendUpdater.h>
+
 #include <QDBusInterface>
 #include <QDBusMessage>
 #include <QDBusObjectPath>
@@ -23,7 +26,6 @@
 #include <QStringList>
 #include <QVariant>
 #include <QVariantList>
-
 
 DISCOVER_BACKEND_PLUGIN(RpmOstreeBackend)
 
@@ -98,44 +100,44 @@ void RpmOstreeBackend::toggleFetching()
 
 void RpmOstreeBackend::executeCheckUpdateProcess()
 {
+    toggleFetching();
     QProcess *process = new QProcess(this);
 
     connect(process, &QProcess::readyReadStandardError, [process]() {
-        qDebug() << "rpm-ostree errors" << process->readAllStandardError().constData();
+        qWarning() << "rpm-ostree-backend: Error while calling rpm-ostree:" << process->readAllStandardError();
     });
-
-    toggleFetching();
-    // delete process instance when done, and get the exit status to handle errors.
     connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
-        qDebug() << "process exited with code " << exitCode << exitStatus;
-        if (exitCode == 0) {
-            readUpdateOutput(process);
+        if (exitStatus != QProcess::NormalExit) {
+            qWarning() << "rpm-ostree-backend: Error while calling rpm-ostree:" << process->readAllStandardError();
+            toggleFetching();
+            return;
+        }
+        if (exitCode != 0) {
+            qInfo() << "rpm-ostree-backend: No update available";
+            toggleFetching();
+            return;
+        }
+        QString newVersionFound;
+        QTextStream stream(process);
+        for (QString line = stream.readLine(); stream.readLineInto(&line);) {
+            if (line.contains(QLatin1String("Version"))) {
+                newVersionFound = line;
+            }
+        }
+
+        if (!newVersionFound.isEmpty()) {
+            newVersionFound.remove(0, 25);
+            newVersionFound.remove(13, newVersionFound.size() - 13);
+            m_resources[0]->setNewVersion(newVersionFound);
+            m_resources[0]->setState(AbstractResource::Upgradeable);
         }
         toggleFetching();
         process->deleteLater();
     });
-
     process->setProcessChannelMode(QProcess::MergedChannels);
-    process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("update"), QStringLiteral("--check")});
-}
-
-void RpmOstreeBackend::readUpdateOutput(QIODevice *device)
-{
-    QString newVersionFound;
-
-    QTextStream stream(device);
-    for (QString line = stream.readLine(); stream.readLineInto(&line);) {
-        if (line.contains(QLatin1String("Version"))) {
-            newVersionFound = line;
-        }
-    }
-
-    if (!newVersionFound.isEmpty()) {
-        newVersionFound.remove(0, 25);
-        newVersionFound.remove(13, newVersionFound.size() - 13);
-        m_resources[0]->setNewVersion(newVersionFound);
-        m_resources[0]->setState(AbstractResource::Upgradeable);
-    }
+    auto prog = QStringLiteral("rpm-ostree");
+    auto args = {QStringLiteral("update"), QStringLiteral("--check")};
+    process->start(prog, args);
 }
 
 void RpmOstreeBackend::executeRemoteRefsProcess()
@@ -143,35 +145,33 @@ void RpmOstreeBackend::executeRemoteRefsProcess()
     QProcess *process = new QProcess(this);
 
     connect(process, &QProcess::readyReadStandardError, [process]() {
-        qDebug() << "rpm-ostree errors" << process->readAllStandardError().constData();
+        qWarning() << "rpm-ostree-backend: Error while calling rpm-ostree:" << process->readAllStandardError().constData();
     });
-
-    // delete process instance when done, and get the exit status to handle errors.
     QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus exitStatus) {
-        qDebug() << "process exited with code " << exitCode << exitStatus;
-        if (exitCode == 0) {
-            readRefsOutput(process);
+        if (exitStatus != QProcess::NormalExit) {
+            qWarning() << "rpm-ostree-backend: Error while calling ostree:" << process->readAllStandardError();
+            return;
         }
+        if (exitCode != 0) {
+            qWarning() << "rpm-ostree-backend: Error while calling ostree:" << process->readAllStandardError();
+            return;
+        }
+        const QString kinoite = QStringLiteral("/kinoite");
+
+        QStringList remoteRefs;
+        QTextStream stream(process);
+        for (QString ref = stream.readLine(); stream.readLineInto(&ref);) {
+            if (ref.endsWith(kinoite))
+                continue;
+            remoteRefs.push_back(ref);
+        }
+        m_resources[0]->setRemoteRefsList(remoteRefs);
         process->deleteLater();
     });
-
     process->setProcessChannelMode(QProcess::MergedChannels);
-    process->start(QStringLiteral("ostree"),
-                   {QStringLiteral("--repo=/ostree/repo"), QStringLiteral("remote"), QStringLiteral("refs"), QStringLiteral("kinoite")});
-}
-
-void RpmOstreeBackend::readRefsOutput(QIODevice *device)
-{
-    const QString kinoite = QStringLiteral("/kinoite");
-
-    QStringList remoteRefs;
-    QTextStream stream(device);
-    for (QString ref = stream.readLine(); stream.readLineInto(&ref);) {
-        if (ref.endsWith(kinoite))
-            continue;
-        remoteRefs.push_back(ref);
-    }
-    m_resources[0]->setRemoteRefsList(remoteRefs);
+    auto prog = QStringLiteral("ostree");
+    auto args = {QStringLiteral("--repo=/ostree/repo"), QStringLiteral("remote"), QStringLiteral("refs"), QStringLiteral("fedora")};
+    process->start(prog, args);
 }
 
 int RpmOstreeBackend::updatesCount() const
@@ -231,7 +231,7 @@ void RpmOstreeBackend::updateCurrentDeployment()
     if (!reply.isError()) {
         m_transactionUpdatePath = reply.argumentAt(0).value<QString>();
     } else {
-        qDebug() << "Error occurs when performing the UpdateDeployment: " << reply.error();
+        qWarning() << "rpm-ostree-backend: Error occurs when performing the UpdateDeployment: " << reply.error();
     }
 }
 
@@ -259,7 +259,7 @@ void RpmOstreeBackend::perfromSystemUpgrade(QString selectedRefs)
         m_transactionUpdatePath = reply.argumentAt(0).value<QString>();
         installApplication(m_resources[0]);
     } else {
-        qDebug() << "Error occurs when performing the Rebase: " << reply.error();
+        qWarning() << "rpm-ostree-backend: Error occurs when performing the Rebase: " << reply.error();
     }
 }
 
