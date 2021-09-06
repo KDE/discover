@@ -25,7 +25,7 @@
 
     <!-- The values are (method-name, sender-name, object path) -->
     <property name="ActiveTransaction" type="(sss)" access="read">
-        <annotation name="org.qtproject.QtDBus.QtTypeName" value="QStringList"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName" value="QStringList"/>
     </property>
     <!-- A DBus address - connect to it to access its methods -->
     <property name="ActiveTransactionPath" type="s" access="read"/>
@@ -70,21 +70,19 @@
 
     <!-- Array of all deployments in boot order -->
     <property name="Deployments" type="aa{sv}" access="read">
-        <annotation name="org.qtproject.QtDBus.QtTypeName" value="QList&lt;QVariantMap>"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName" value="QList&lt;QVariantMap>"/>
     </property>
   </interface>
 
-  <annotation name="org.qtproject.QtDBus.QtTypeName" value="QVariantMap"/>
-
   <interface name="org.projectatomic.rpmostree1.OS">
     <property name="BootedDeployment" type="a{sv}" access="read">
-        <annotation name="org.qtproject.QtDBus.QtTypeName" value="QVariantMap"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName" value="QVariantMap"/>
     </property>
     <property name="DefaultDeployment" type="a{sv}" access="read">
-        <annotation name="org.qtproject.QtDBus.QtTypeName" value="QVariantMap"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName" value="QVariantMap"/>
     </property>
     <property name="RollbackDeployment" type="a{sv}" access="read">
-        <annotation name="org.qtproject.QtDBus.QtTypeName" value="QVariantMap"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName" value="QVariantMap"/>
     </property>
 
     <!-- CachedUpdate dictionary keys:
@@ -105,7 +103,7 @@
        'advisories' (type 'a(suuasa{sv})')
     -->
     <property name="CachedUpdate" type="a{sv}" access="read">
-        <annotation name="org.qtproject.QtDBus.QtTypeName" value="QVariantMap"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName" value="QVariantMap"/>
     </property>
     <property name="HasCachedUpdateRpmDiff" type="b" access="read"/>
 
@@ -334,6 +332,8 @@
          "install-packages" (type 'as')
          "uninstall-packages" (type 'as')
          "install-local-packages" (type 'ah')
+         "install-modules" (type 'as')
+         "uninstall-modules" (type 'as')
          "override-remove-packages" (type 'as')
          "override-reset-packages" (type 'as')
          "override-replace-packages" (type 'as')
@@ -341,6 +341,9 @@
          "custom-origin" (type '(ss)')
 
          Available options:
+         "apply-live" (type 'b')
+            Extend the running filesystem tree with queued changes.  This
+            does not allow replacing existing files/packages.
          "reboot" (type 'b')
             Initiate a reboot after transaction.
          "allow-downgrade" (type 'b')
@@ -350,6 +353,9 @@
          "skip-purge" (type 'b')
             Do not purge the old refspec. Only valid if "set-refspec" is
             specified.
+         "skip-branch-check" (type 'b')
+            When deploying by commit hash (using "set-revision"), do not
+            check if commit belongs on the same branch.
          "no-pull-base" (type 'b')
             Do not pull a base layer from the remote. Not valid if
             either "set-refspec" or "set-revision" is specified.
@@ -357,6 +363,9 @@
             Stop short of deploying the new tree. If layering packages,
             the pkg diff is printed but packages are not downloaded or
             imported.
+         "register-driver" (type 's')
+            Register the calling agent as the driver for updates. Takes
+            a human-readable string as the name for the update driver.
          "no-layering" (type 'b')
             Remove all package requests. Requests in "install-packages"
             are still subsequently processed if specified.
@@ -427,6 +436,12 @@
       <arg type="s" name="transaction_address" direction="out"/>
     </method>
 
+    <!-- Experimental DownloadPackages -->
+    <method name="DownloadPackages">
+      <!-- array of package names -->
+      <arg type="as" name="queries" direction="in"/>
+      <annotation name="org.gtk.GDBus.C.UnixFD" value="true"/>
+    </method>
   </interface>
 
   <interface name="org.projectatomic.rpmostree1.Transaction">
@@ -491,28 +506,28 @@
          metadata counts, format is:
          (scanned, fetched, outstanding)
       -->
-    	<arg name="metadata" type="(uuu)" direction="out"/>
-        <annotation name="org.qtproject.QtDBus.QtTypeName.Out2" value="QVariantList"/>
+      <arg name="metadata" type="(uuu)" direction="out"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out2" value="QVariantList"/>
 
       <!--
          delta data, format is:
          (total parts, fetched parts, total super blocks, total size)
       -->
-    	<arg name="delta" type="(uuut)" direction="out"/>
+      <arg name="delta" type="(uuut)" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out3" value="QVariantList"/>
 
       <!--
          content data, format is:
          (fetched, requested)
       -->
-    	<arg name="content" type="(uu)" direction="out"/>
+      <arg name="content" type="(uu)" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out4" value="QVariantList"/>
 
       <!--
          transfer data, format is:
          (bytes transfered, bytes/s)
       -->
-    	<arg name="transfer" type="(tt)" direction="out"/>
+      <arg name="transfer" type="(tt)" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out5" value="QVariantList"/>
     </signal>
 
@@ -520,9 +535,9 @@
       <!-- An ostree GVariant containing signature data
            see ostree_gpg_verify_result_get_all.
       -->
-    	<arg name="signature" type="av" direction="out"/>
+      <arg name="signature" type="av" direction="out"/>
       <!-- The signed commit -->
-    	<arg name="commit" type="s" direction="out"/>
+      <arg name="commit" type="s" direction="out"/>
     </signal>
 
     <!-- Indicates progress signals are done and subsequent
