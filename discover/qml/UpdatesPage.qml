@@ -227,7 +227,6 @@ DiscoverPage
 
         delegate: Kirigami.AbstractListItem {
             id: listItem
-            backgroundColor: Kirigami.Theme.backgroundColor
             highlighted: ListView.isCurrentItem
             onEnabledChanged: if (!enabled) {
                 layout.extended = false;
