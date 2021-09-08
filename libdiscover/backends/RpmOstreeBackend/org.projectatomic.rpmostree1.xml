@@ -131,7 +131,7 @@
       <arg type="s" name="deployid0"/>
       <arg type="s" name="deployid1"/>
       <arg type="a(sua{sv})" name="result" direction="out"/>
-      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="GetDeploymentsRpmDiffResult"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="QVariantList"/>
     </method>
 
     <!-- Revision may be a full checksum or version string.
@@ -159,7 +159,7 @@
       <arg type="s" name="revision"/>
       <arg type="as" name="packages"/>
       <arg type="a(sua{sv})" name="result" direction="out"/>
-      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="GetDeploymentsRpmDiffResult"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="QVariantList"/>
       <arg type="a{sv}" name="details" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out1" value="QVariantMap"/>
     </method>
@@ -192,7 +192,7 @@
     <method name="GetCachedUpdateRpmDiff">
       <arg type="s" name="deployid"/>
       <arg type="a(sua{sv})" name="result" direction="out"/>
-      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="GetDeploymentsRpmDiffResult"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="QVariantList"/>
       <arg type="a{sv}" name="details" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out1" value="QVariantMap"/>
     </method>
@@ -245,7 +245,7 @@
       <arg type="s" name="refspec"/>
       <arg type="as" name="packages"/>
       <arg type="a(sua{sv})" name="result" direction="out"/>
-      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="GetDeploymentsRpmDiffResult"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="QVariantList"/>
       <arg type="a{sv}" name="details" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out1" value="QVariantMap"/>
     </method>

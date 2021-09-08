@@ -7,7 +7,8 @@
 #ifndef OSTREERPMTRANSACTION_H
 #define OSTREERPMTRANSACTION_H
 
-#include "rpmostree1.h"
+#include "RpmOstreeDBusInterface.h"
+
 #include <QDBusPendingCallWatcher>
 #include <Transaction/Transaction.h>
 

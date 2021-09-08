@@ -8,9 +8,10 @@
 #ifndef RPMOSTREE1BACKEND_H
 #define RPMOSTREE1BACKEND_H
 
+#include "RpmOstreeDBusInterface.h"
+
 #include <resources/AbstractResourcesBackend.h>
 
-#include "rpmostree1.h"
 #include <QDBusPendingReply>
 #include <QMetaType>
 #include <QSharedPointer>
