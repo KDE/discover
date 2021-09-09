@@ -301,4 +301,14 @@ bool RpmOstreeBackend::hasApplications() const
     return true;
 }
 
+AbstractReviewsBackend *RpmOstreeBackend::reviewsBackend() const
+{
+    return nullptr;
+}
+
+bool RpmOstreeBackend::isFetching() const
+{
+    return m_fetching;
+}
+
 #include "RpmOstreeBackend.moc"

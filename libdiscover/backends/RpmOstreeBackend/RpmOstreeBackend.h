@@ -68,10 +68,7 @@ public:
 
     int updatesCount() const override;
     AbstractBackendUpdater *backendUpdater() const override;
-    AbstractReviewsBackend *reviewsBackend() const override
-    {
-        return nullptr;
-    }
+    AbstractReviewsBackend *reviewsBackend() const override;
     ResultsStream *search(const AbstractResourcesBackend::Filters &search) override;
 
     // return true when OSTreeRPMBackend is ready to be loaded
@@ -80,10 +77,7 @@ public:
     Transaction *installApplication(AbstractResource *) override;
     Transaction *installApplication(AbstractResource *, const AddonList &) override;
     Transaction *removeApplication(AbstractResource *) override;
-    bool isFetching() const override
-    {
-        return m_fetching;
-    }
+    bool isFetching() const override;
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override;
