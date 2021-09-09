@@ -27,6 +27,9 @@
 #include <QVariant>
 #include <QVariantList>
 
+#include <ostree-repo.h>
+#include <ostree.h>
+
 DISCOVER_BACKEND_PLUGIN(RpmOstreeBackend)
 
 RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
@@ -39,7 +42,7 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     getDeployments();
     SourcesModel::global()->addSourcesBackend(new RpmOstreeSourcesBackend(this));
     executeCheckUpdateProcess();
-    executeRemoteRefsProcess();
+    filterRemoteRefs();
 }
 
 void RpmOstreeBackend::getDeployments()
@@ -121,38 +124,77 @@ void RpmOstreeBackend::executeCheckUpdateProcess()
     process->start(prog, args);
 }
 
-void RpmOstreeBackend::executeRemoteRefsProcess()
+QStringList RpmOstreeBackend::getRemoteRefs(const QString &remote)
 {
-    QProcess *process = new QProcess(this);
+    QStringList r;
 
-    connect(process, &QProcess::readyReadStandardError, [process]() {
-        qWarning() << "rpm-ostree-backend: Error while calling rpm-ostree:" << process->readAllStandardError().constData();
-    });
-    QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus exitStatus) {
-        if (exitStatus != QProcess::NormalExit) {
-            qWarning() << "rpm-ostree-backend: Error while calling ostree:" << process->readAllStandardError();
-            return;
-        }
-        if (exitCode != 0) {
-            qWarning() << "rpm-ostree-backend: Error while calling ostree:" << process->readAllStandardError();
-            return;
-        }
-        const QString kinoite = QStringLiteral("/kinoite");
+    g_autoptr(GFile) path = g_file_new_for_path("/ostree/repo");
+    g_autoptr(OstreeRepo) repo = ostree_repo_new(path);
+    if (repo == NULL) {
+        qWarning() << "rpm-ostree-backend: Could not find ostree repo:" << path;
+        return r;
+    }
 
-        QStringList remoteRefs;
-        QTextStream stream(process);
-        for (QString ref = stream.readLine(); stream.readLineInto(&ref);) {
-            if (ref.endsWith(kinoite))
-                continue;
-            remoteRefs.push_back(ref);
+    g_autoptr(GError) err = NULL;
+    gboolean res = ostree_repo_open(repo, NULL, &err);
+    if (!res) {
+        qWarning() << "rpm-ostree-backend: Could not open ostree repo:" << path;
+        return r;
+    }
+
+    g_autoptr(GHashTable) refs;
+    QByteArray rem = remote.toLocal8Bit();
+    res = ostree_repo_remote_list_refs(repo, rem.data(), &refs, NULL, &err);
+    if (!res) {
+        qWarning() << "rpm-ostree-backend: Could not get the list of refs for ostree repo:" << path;
+        return r;
+    }
+
+    GHashTableIter iter;
+    gpointer key, value;
+    g_hash_table_iter_init(&iter, refs);
+    while (g_hash_table_iter_next(&iter, &key, &value)) {
+        r << QString((char *)key);
+    }
+
+    if (r.size() == 0) {
+        qWarning() << "rpm-ostree-backend: Could not find any remote red for ostree repo:" << path;
+    }
+
+    return r;
+}
+
+void RpmOstreeBackend::filterRemoteRefs()
+{
+    auto currentRemote = m_resources[0]->getRemote();
+    auto refs = getRemoteRefs(currentRemote);
+
+    QStringList remoteRefs;
+    auto name = m_resources[0]->getBranchName();
+    auto version = m_resources[0]->getBranchVersion();
+    auto arch = m_resources[0]->getBranchArch();
+    auto variant = m_resources[0]->getBranchVariant();
+
+    for (int i = 0; i < refs.size(); ++i) {
+        // Split branch into name / version / arch / variant
+        auto split_branch = refs.at(i).split('/');
+        if (split_branch.length() < 4) {
+            qWarning() << "rpm-ostree-backend: Unknown branch format, ignoring:" << refs.at(i);
+            continue;
+        } else {
+            auto refVariant = split_branch[3];
+            for (int i = 4; i < split_branch.size(); ++i) {
+                refVariant += "/" + split_branch[i];
+            }
+            if (split_branch[0] == name && split_branch[2] == arch && refVariant == variant) {
+                remoteRefs.push_back(refs.at(i));
+            }
         }
-        m_resources[0]->setRemoteRefsList(remoteRefs);
-        process->deleteLater();
-    });
-    process->setProcessChannelMode(QProcess::MergedChannels);
-    auto prog = QStringLiteral("ostree");
-    auto args = {QStringLiteral("--repo=/ostree/repo"), QStringLiteral("remote"), QStringLiteral("refs"), QStringLiteral("fedora")};
-    process->start(prog, args);
+    }
+    if (remoteRefs.size() == 0) {
+        qWarning() << "rpm-ostree-backend: Found no matching branch in remote:" << currentRemote;
+    }
+    m_resources[0]->setRemoteRefsList(remoteRefs);
 }
 
 int RpmOstreeBackend::updatesCount() const
@@ -221,7 +263,7 @@ void RpmOstreeBackend::checkForUpdates()
     if (m_fetching)
         return;
     executeCheckUpdateProcess();
-    executeRemoteRefsProcess();
+    filterRemoteRefs();
 }
 
 void RpmOstreeBackend::perfromSystemUpgrade(QString selectedRefs)

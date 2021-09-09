@@ -50,7 +50,10 @@ public:
      * Executing "ostree remote refs kinoite" using QProcess to get
      * a list of the avaliable remote refs list.
      */
-    void executeRemoteRefsProcess();
+    void filterRemoteRefs();
+
+    // List refs for a given remote
+    QStringList getRemoteRefs(const QString &);
 
     /*
      * Getting the output resulting from executing the QProcess remote refs list.
