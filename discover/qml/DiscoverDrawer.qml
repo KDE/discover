@@ -4,14 +4,219 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-import QtQuick 2.5
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.1
+import QtQuick 2.15
+import QtQuick.Controls 2.15 as QQC2
+import QtQuick.Layouts 1.15
+import org.kde.kirigami 2.15 as Kirigami
+import Qt.labs.qmlmodels 1.0
+
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.14 as Kirigami
 import "navigation.js" as Navigation
 
+Kirigami.OverlayDrawer {
+    id: sidebar
+
+    edge: Qt.application.layoutDirection === Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge
+    modal: !wideScreen
+    onModalChanged: drawerOpen = !modal
+    handleVisible: !wideScreen
+    handleClosedIcon.source: null
+    handleOpenIcon.source: null
+    drawerOpen: !Kirigami.Settings.isMobile
+    width: Kirigami.Units.gridUnit * 16
+
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+
+    leftPadding: 0
+    rightPadding: 0
+    topPadding: 0
+    bottomPadding: 0
+
+    property string currentSearchText: searchField.text
+
+    Component.onCompleted: {
+        if (searchField.visible)
+            searchField.forceActiveFocus();
+    }
+
+    function suggestSearchText(text) {
+        if (searchField.visible) {
+            searchField.text = text
+            searchField.forceActiveFocus()
+        }
+    }
+
+    contentItem: ColumnLayout {
+        id: container
+
+        QQC2.ToolBar {
+            id: toolbar
+            Layout.fillWidth: true
+            Layout.preferredHeight: pageStack.globalToolBar.preferredHeight
+
+            leftPadding: Kirigami.Units.smallSpacing
+            rightPadding: Kirigami.Units.smallSpacing
+            topPadding: 0
+            bottomPadding: 0
+
+            Kirigami.SearchField {
+                id: searchField
+                Layout.fillWidth: true
+                anchors {
+                    left: parent.left
+                    leftMargin: Kirigami.Units.smallSpacing
+                    right: parent.right
+                    rightMargin: Kirigami.Units.smallSpacing
+                    verticalCenter: parent.verticalCenter
+                }
+            }
+        }
+
+        QQC2.ScrollView {
+            id: generalView
+            implicitWidth: Kirigami.Units.gridUnit * 16
+            Layout.fillWidth: true
+            Layout.topMargin: toolbar.visible ? -Kirigami.Units.smallSpacing - 1 : 0
+            QQC2.ScrollBar.horizontal.policy: QQC2.ScrollBar.AlwaysOff
+            contentWidth: availableWidth
+
+            clip: true
+
+            ListView {
+                id: generalList
+                currentIndex: 0
+                property list<Kirigami.Action> actions: [
+                    Kirigami.Action {
+                        text: i18n("Home")
+                        icon.name: "go-home"
+                        property string component: topBrowsingComp
+                        checked: window.currentTopLevel==component
+
+                        onTriggered: {
+                            if(window.currentTopLevel!=component)
+                                window.currentTopLevel=component
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Installed")
+                        icon.name: "view-list-details"
+                        property string component: topInstalledComp
+                        checked: window.currentTopLevel==component
+
+                        onTriggered: {
+                            if(window.currentTopLevel!=component)
+                                window.currentTopLevel=component
+                        }
+                    },
+                    Kirigami.Action {
+                        text: ResourcesModel.updatesCount<=0 ? (ResourcesModel.isFetching ? i18n("Fetching updates…") : i18n("Up to date") ) : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
+                        icon.name: updateAction.icon.name
+                        property bool hasUpdates: ResourcesModel.updatesCount > 0
+
+                        property string component: topUpdateComp
+                        checked: window.currentTopLevel==component
+
+                        onTriggered: {
+                            if(window.currentTopLevel!=component)
+                                window.currentTopLevel=component
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Settings")
+                        icon.name: "settings-configure"
+                        shortcut: StandardKey.Preferences
+                        property string component: topSourcesComp
+                        checked: window.currentTopLevel==component
+
+                        onTriggered: {
+                            if(window.currentTopLevel!=component)
+                                window.currentTopLevel=component
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("About")
+                        icon.name: "help-about"
+                        property string component: topAboutComp
+                        checked: window.currentTopLevel==component
+
+                        onTriggered: {
+                            if(window.currentTopLevel!=component)
+                                window.currentTopLevel=component
+                        }
+                    }
+                ]
+                model: actions
+                delegate: Kirigami.BasicListItem {
+                    label: modelData.text
+                    icon: modelData.icon.name
+                    separatorVisible: false
+                    action: modelData
+                    backgroundColor: hasUpdates ? "orange" : Kirigami.Theme.viewBackgroundColor
+                    onClicked: categoriesList.currentIndex = -1;
+                }
+            }
+        }
+
+        QQC2.ScrollView {
+            id: categoriesView
+            implicitWidth: Kirigami.Units.gridUnit * 16
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
+            QQC2.ScrollBar.horizontal.policy: QQC2.ScrollBar.AlwaysOff
+            contentWidth: availableWidth
+
+            clip: true
+
+            ListView {
+                id: categoriesList
+
+                Layout.fillWidth: true
+                Layout.topMargin: Kirigami.Units.largeSpacing
+
+                header: Kirigami.Heading {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    leftPadding: Kirigami.Units.largeSpacing
+                    bottomPadding: Kirigami.Units.smallSpacing
+                    text: i18n("Categories")
+                    color: Kirigami.Theme.disabledTextColor
+                    level: 4
+                    z: 10
+                    background: Rectangle {color: Kirigami.Theme.backgroundColor}
+                }
+                headerPositioning: ListView.OverlayHeader
+
+                currentIndex: -1
+
+                model: CategoryModel.rootCategories[0].subcategories
+
+                delegate: Kirigami.BasicListItem {
+                    label: modelData.name
+                    separatorVisible: false
+                    trailing: Kirigami.Icon {
+                        width: Kirigami.Units.iconSizes.small
+                        height: Kirigami.Units.iconSizes.small
+                        source: CategoryModel.rootCategories[0].subcategories[index].subcategories.length > 0 ? 'arrow-right' : ''
+                    }
+                    onClicked: {
+                        onClicked: generalList.currentIndex = -1;
+                        if (CategoryModel.rootCategories[0].subcategories[index].subcategories.length > 0) {
+                            let category = CategoryModel.rootCategories[0].subcategories[index];
+                            Navigation.openCategory(category, currentSearchText);
+                        } else {
+                            let category = CategoryModel.rootCategories[0].subcategories[index];
+                            Navigation.openCategory(category, currentSearchText);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*
 Kirigami.GlobalDrawer {
     id: drawer
 
@@ -20,7 +225,7 @@ Kirigami.GlobalDrawer {
     topPadding: 0
     bottomPadding: 0
 
-    // FIXME: Dirty workaround for 385992
+    FIXME: Dirty workaround for 385992
     width: Kirigami.Units.gridUnit * 14
 
     property bool wideScreen: false
@@ -45,7 +250,7 @@ Kirigami.GlobalDrawer {
         }
     }
 
-    // Give the search field keyboard focus by default
+    Give the search field keyboard focus by default
     Component.onCompleted: {
         if (searchField.visible)
             searchField.forceActiveFocus();
@@ -194,3 +399,4 @@ Kirigami.GlobalDrawer {
     modal: !drawer.wideScreen
     handleVisible: !drawer.wideScreen
 }
+*/

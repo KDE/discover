@@ -261,7 +261,7 @@ Kirigami.ApplicationWindow
     contextDrawer: Kirigami.ContextDrawer {}
 
     globalDrawer: DiscoverDrawer {
-        wideScreen: window.wideScreen
+        //wideScreen: window.wideScreen
     }
 
     onCurrentTopLevelChanged: {
