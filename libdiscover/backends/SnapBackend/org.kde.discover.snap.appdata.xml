@@ -24,6 +24,7 @@
   <name xml:lang="ko">Snap 백엔드</name>
   <name xml:lang="lt">Snap vidinė pusė</name>
   <name xml:lang="ml">സ്നാപ്പ് ബാക്കെൻഡ്</name>
+  <name xml:lang="my">စနပ် အုတ်မြစ်ပရိုဂရမ်</name>
   <name xml:lang="nb">Snap-motor</name>
   <name xml:lang="nl">Snap-backend</name>
   <name xml:lang="nn">Snap-motor</name>
@@ -65,6 +66,7 @@
   <summary xml:lang="ko">Snap 프로그램을 Discover에 통합</summary>
   <summary xml:lang="lt">Integruoja Snap programas į Discover</summary>
   <summary xml:lang="ml">സ്നാപ്പ് ആപ്ലിക്കേഷനുകൾ ഡിസ്കവറിലേക്ക് സംയോജിപ്പിക്കുന്നു</summary>
+  <summary xml:lang="my">စနပ် အပ္ပလီကေးရှင်းများကို ဒစ်(စ)ကာဗာနှင့် ပူးပေါင်းဆက်နွယ်ပေးသည်</summary>
   <summary xml:lang="nb">Integrerer Snap-programmer i Discover</summary>
   <summary xml:lang="nl">Integreert Snap-toepassingen in Discover</summary>
   <summary xml:lang="nn">Integrerer Snap-program i Discover</summary>
@@ -108,6 +110,7 @@
   <developer_name xml:lang="it">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ko">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="lt">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="my">အဲလက်ပိုဂွန်ဇလက်</developer_name>
   <developer_name xml:lang="nb">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nn">Aleix Pol Gonzalez</developer_name>

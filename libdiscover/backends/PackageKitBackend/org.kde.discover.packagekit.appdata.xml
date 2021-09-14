@@ -24,6 +24,7 @@
   <name xml:lang="ko">PackageKit 백엔드</name>
   <name xml:lang="lt">PackageKit vidinė pusė</name>
   <name xml:lang="ml">PackageKit ബാക്കെൻഡ്</name>
+  <name xml:lang="my">ပတ်ကေ့ချ်ကစ် အုတ်မြစ်ပရိုဂရမ်</name>
   <name xml:lang="nb">PackageKit-motor</name>
   <name xml:lang="nl">PackageKit-backend</name>
   <name xml:lang="nn">PackageKit-motor</name>
@@ -65,6 +66,7 @@
   <summary xml:lang="ko">배포판 프로그램을 Discover에 통합</summary>
   <summary xml:lang="lt">Integruoja platinimo programas į Discover</summary>
   <summary xml:lang="ml">ഡിസ്‌കവറിലേക്ക് വിതരണ ആപ്ലിക്കേഷനുകൾ സംയോജിപ്പിക്കുന്നു</summary>
+  <summary xml:lang="my">ဒစ်စထရီဗျူးရှင်း အပ္ပလီကေးရှင်းများကို ဒစ်(စ)ကာဗာနှင့် ပူးပေါင်းဆက်နွယ်ပေးသည်</summary>
   <summary xml:lang="nb">Integrerer distribusjonsprogrammer i Discover</summary>
   <summary xml:lang="nl">Integreert distributie-toepassingen in Discover</summary>
   <summary xml:lang="nn">Integrerer distribusjonsprogram i Discover</summary>
@@ -109,6 +111,7 @@
   <developer_name xml:lang="ko">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="lt">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ml">അലെയ്‌സ് പോൽ ഗോൺസാലസ്</developer_name>
+  <developer_name xml:lang="my">အဲလက်ပိုဂွန်ဇလက်</developer_name>
   <developer_name xml:lang="nb">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="nn">Aleix Pol Gonzalez</developer_name>
