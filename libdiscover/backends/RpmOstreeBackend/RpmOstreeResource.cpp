@@ -250,7 +250,7 @@ QStringList RpmOstreeResource::extends() const
 }
 AbstractResource::Type RpmOstreeResource::type() const
 {
-    return Addon;
+    return Technical;
 }
 
 bool RpmOstreeResource::isRemovable() const
