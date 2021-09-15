@@ -62,6 +62,16 @@ Kirigami.GlobalDrawer {
                 rightMargin: Kirigami.Units.smallSpacing
             }
 
+            ToolButton {
+
+                icon.name: "go-home"
+                onClicked: Navigation.openHome()
+
+                ToolTip {
+                    text: i18n("Return to the Featured page")
+                }
+            }
+
             SearchField {
                 id: searchField
                 Layout.fillWidth: true
@@ -87,16 +97,6 @@ Kirigami.GlobalDrawer {
                         curr.search = currentSearchText;
                         curr.forceActiveFocus()
                     }
-                }
-            }
-
-            ToolButton {
-
-                icon.name: "go-home"
-                onClicked: Navigation.openHome()
-
-                ToolTip {
-                    text: i18n("Return to the Featured page")
                 }
             }
         }
