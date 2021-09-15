@@ -17,7 +17,12 @@ Kirigami.BasicListItem
     icon: action.iconName
     separatorVisible: false
     visible: action.enabled
-    onClicked: {
+
+    onClicked: trigger()
+    Keys.onEnterPressed: trigger()
+    Keys.onReturnPressed: trigger()
+
+    function trigger() {
         drawer.resetMenu()
         action.trigger()
     }
@@ -34,5 +39,23 @@ Kirigami.BasicListItem
     readonly property var p0: Shortcut {
         sequence: item.Kirigami.MnemonicData.sequence
         onActivated: item.clicked()
+    }
+
+    // Using the generic onPressed so individual instances can override
+    // behaviour using Keys.on{Up,Down}Pressed
+    Keys.onPressed: {
+        if (event.accepted) {
+            return
+        }
+
+        // Using forceActiveFocus here since the item may be in a focus scope
+        // and just setting focus won't focus the scope.
+        if (event.key === Qt.Key_Up) {
+            nextItemInFocusChain(false).forceActiveFocus()
+            event.accepted = true
+        } else if (event.key === Qt.Key_Down) {
+            nextItemInFocusChain(true).forceActiveFocus()
+            event.accepted = true
+        }
     }
 }

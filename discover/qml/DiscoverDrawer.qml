@@ -136,6 +136,10 @@ Kirigami.GlobalDrawer {
             action: updateAction
 
             backgroundColor: ResourcesModel.updatesCount>0 ? "orange" : Kirigami.Theme.backgroundColor
+
+            // Disable down navigation on the last item so we don't escape the
+            // actual list.
+            Keys.onDownPressed: event.accepted = true
         }
 
         states: [
