@@ -97,11 +97,11 @@ ConditionalLoader
         // loaded from a remote location, which does not work with the standard
         // button. This works around https://bugs.kde.org/show_bug.cgi?id=433433
         // TODO: just set the button's icon.source property when that's fixed
-        implicitWidth: overrideLayout.implicitWidth
+        rightPadding: Kirigami.Units.smallSpacing
+        leftPadding: Kirigami.Units.smallSpacing
         contentItem: RowLayout {
-            id: overrideLayout
             Item { // Left padding
-                implicitWidth: Kirigami.Units.smallSpacing
+                Layout.fillWidth: true
             }
             Kirigami.Icon {
                 visible: source != ""
@@ -115,7 +115,7 @@ ConditionalLoader
                 text: compact ? "" : root.text
             }
             Item { // right padding
-                implicitWidth: Kirigami.Units.smallSpacing
+                Layout.fillWidth: true
             }
         }
         activeFocusOnTab: false
