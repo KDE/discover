@@ -43,7 +43,7 @@ ConditionalLoader
     readonly property Kirigami.Action action: Kirigami.Action {
         text: root.text
         icon {
-            name: application.isInstalled ? "edit-delete" : "download"
+            name: application.isInstalled ? "uninstall" : "download"
             color: !enabled ? Kirigami.Theme.backgroundColor : !listener.isActive ? (application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor) : Kirigami.Theme.backgroundColor
         }
         visible: !listener.isActive && (!application.isInstalled || application.isRemovable)
