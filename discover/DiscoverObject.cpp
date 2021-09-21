@@ -32,17 +32,14 @@
 #include <qqml.h>
 
 // KDE includes
-#include <KAboutApplicationDialog>
 #include <KAboutData>
 #include <KAuthorized>
-#include <KBugReport>
 #include <KConcatenateRowsProxyModel>
 #include <KConfigGroup>
 #include <KCrash>
 #include <KLocalizedContext>
 #include <KLocalizedString>
 #include <KSharedConfig>
-#include <KStandardAction>
 #include <kcoreaddons_version.h>
 // #include <KSwitchLanguageDialog>
 
@@ -126,7 +123,6 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     qmlRegisterAnonymousType<KAboutPerson>("org.kde.discover.app", 1);
 
     qmlRegisterUncreatableType<DiscoverObject>("org.kde.discover.app", 1, 0, "DiscoverMainWindow", QStringLiteral("don't do that"));
-    setupActions();
 
     auto uri = "org.kde.discover";
     DiscoverDeclarativePlugin *plugin = new DiscoverDeclarativePlugin;
@@ -381,14 +377,6 @@ bool DiscoverObject::eventFilter(QObject *object, QEvent *event)
     return false;
 }
 
-void DiscoverObject::setupActions()
-{
-    if (KAuthorized::authorizeAction(QStringLiteral("help_about_app"))) {
-        auto mAboutAppAction = KStandardAction::aboutApp(this, &DiscoverObject::aboutApplication, this);
-        m_collection[mAboutAppAction->objectName()] = mAboutAppAction;
-    }
-}
-
 QAction *DiscoverObject::action(const QString &name) const
 {
     return m_collection.value(name);
@@ -397,26 +385,6 @@ QAction *DiscoverObject::action(const QString &name) const
 QString DiscoverObject::iconName(const QIcon &icon)
 {
     return icon.name();
-}
-
-void DiscoverObject::aboutApplication()
-{
-    static QPointer<QDialog> dialog;
-    if (!dialog) {
-        dialog = new KAboutApplicationDialog(KAboutData::applicationData(), nullptr);
-        dialog->setAttribute(Qt::WA_DeleteOnClose);
-    }
-    dialog->show();
-}
-
-void DiscoverObject::reportBug()
-{
-    static QPointer<QDialog> dialog;
-    if (!dialog) {
-        dialog = new KBugReport(KAboutData::applicationData(), nullptr);
-        dialog->setAttribute(Qt::WA_DeleteOnClose);
-    }
-    dialog->show();
 }
 
 void DiscoverObject::switchApplicationLanguage()

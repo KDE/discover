@@ -36,7 +36,6 @@ public:
     ~DiscoverObject() override;
 
     QStringList modes() const;
-    void setupActions();
 
     CompactMode compactMode() const
     {
@@ -68,9 +67,7 @@ public Q_SLOTS:
     void reboot();
 
 private Q_SLOTS:
-    void reportBug();
     void switchApplicationLanguage();
-    void aboutApplication();
 
 Q_SIGNALS:
     void openSearch(const QString &search);
