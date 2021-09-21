@@ -175,6 +175,7 @@ Name[ko]=사용 가능한 업데이트 보기
 Name[lt]=Rodyti prieinamus atnaujinimus
 Name[my]=ရရှိနိုင်သော အပ်ဒိတ်များ ကြည့်မည်
 Name[nl]=Zie beschikbare elementen voor bijwerken
+Name[nn]=Sjå tilgjengelege oppdateringar
 Name[pa]=ਮੌਜੂਦ ਅੱਪਡੇਟ ਵੇਖੋ
 Name[pl]=Obejrzyj dostępne uaktualnienia
 Name[pt]=Ver as Actualizações Disponíveis
