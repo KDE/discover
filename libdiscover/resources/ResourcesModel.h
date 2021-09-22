@@ -116,6 +116,8 @@ public:
         return m_fetchingUpdatesProgress.m_value;
     }
 
+    Q_INVOKABLE QUrl distroBugReportUrl();
+
 public Q_SLOTS:
     void installApplication(AbstractResource *app, const AddonList &addons);
     void installApplication(AbstractResource *app);

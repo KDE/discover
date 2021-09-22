@@ -176,6 +176,13 @@ Kirigami.ApplicationWindow
                 visible: page.error !== ""
                 icon.name: "error"
                 text: page.error
+                helpfulAction: Kirigami.Action {
+                    icon.name: "tools-report-bug"
+                    text: i18n("Report this issue")
+                    onTriggered: {
+                        Qt.openUrlExternally(ResourcesModel.distroBugReportUrl())
+                    }
+                }
             }
         }
     }

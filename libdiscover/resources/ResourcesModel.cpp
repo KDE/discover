@@ -16,6 +16,7 @@
 #include <DiscoverBackendsFactory.h>
 #include <KConfigGroup>
 #include <KLocalizedString>
+#include <KOSRelease>
 #include <KSharedConfig>
 #include <QCoreApplication>
 #include <QIcon>
@@ -416,4 +417,9 @@ QString ResourcesModel::applicationSourceName() const
 {
     KConfigGroup settings(KSharedConfig::openConfig(), "ResourcesModel");
     return settings.readEntry<QString>("currentApplicationBackend", QStringLiteral("packagekit-backend"));
+}
+
+QUrl ResourcesModel::distroBugReportUrl()
+{
+    return KOSRelease().bugReportUrl();
 }

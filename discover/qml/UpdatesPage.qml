@@ -45,17 +45,29 @@ DiscoverPage
                 id: desc
                 Layout.fillWidth: true
                 Layout.maximumWidth: Math.round(page.width*0.75)
+                Layout.bottomMargin: Kirigami.Units.largeSpacing
                 textFormat: Text.StyledText
                 wrapMode: Text.WordWrap
             }
 
-            Button {
-                id: okButton
+            RowLayout {
                 Layout.alignment: Qt.AlignRight
-                text: i18n("OK")
-                icon.name: "dialog-ok"
-                onClicked: {
-                    sheet.sheetOpen = false
+
+                Button {
+                    text: i18n("Report this issue")
+                    icon.name: "tools-report-bug"
+                    onClicked: {
+                        Qt.openUrlExternally(ResourcesModel.distroBugReportUrl())
+                        sheet.sheetOpen = false
+                    }
+                }
+                Button {
+                    id: okButton
+                    text: i18n("OK")
+                    icon.name: "dialog-ok"
+                    onClicked: {
+                        sheet.sheetOpen = false
+                    }
                 }
             }
         }

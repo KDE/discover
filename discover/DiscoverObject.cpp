@@ -153,7 +153,7 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
                 Q_EMIT openErrorPage(
                     i18n("Discover currently cannot be used to install any apps "
                          "because none of its app backends are available. Please "
-                         "report this error to your distribution."));
+                         "report this issue to the packagers of your distribution."));
         },
         this);
 
@@ -307,7 +307,11 @@ void DiscoverObject::openApplication(const QUrl &url)
                     openApplication(QUrl(QStringLiteral("appstream://org.kde.discover.snap")));
                     showPassiveNotification(i18n("Please make sure Snap support is installed"));
                 } else {
-                    Q_EMIT openErrorPage(i18n("Could not open %1", url.toDisplayString()));
+                    Q_EMIT openErrorPage(
+                        i18n("Could not open %1 because it was not found in any "
+                             "available software repositories. Please report this "
+                             "issue to the packagers of your distribution.",
+                             url.toDisplayString()));
                 }
             });
         },
