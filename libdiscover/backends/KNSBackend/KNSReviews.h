@@ -9,6 +9,7 @@
 
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <attica/provider.h>
+#include <knewstuffcore_version.h>
 
 class KNSBackend;
 class QUrl;
@@ -46,8 +47,10 @@ private Q_SLOTS:
 private:
     Attica::Provider provider() const;
     KNSBackend *const m_backend;
-    QUrl m_providerUrl;
     int m_fetching = 0;
+#if KNEWSTUFFCORE_VERSION < QT_VERSION_CHECK(5, 92, 0)
+    QUrl m_providerUrl;
+#endif
 };
 
 #endif // KNSREVIEWS_H
