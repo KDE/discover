@@ -12,23 +12,49 @@
 #include <KLocalizedString>
 #include <KOSRelease>
 
-#include <QDebug>
-#include <QStandardItemModel>
+#include <ostree-repo.h>
+#include <ostree.h>
 
 const QStringList RpmOstreeResource::m_objects({QStringLiteral("qrc:/qml/RemoteRefsButton.qml")});
 
-RpmOstreeResource::RpmOstreeResource(const QMap<QString, QVariant>& map, RpmOstreeBackend *parent)
+RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *parent)
     : AbstractResource(parent)
     , m_state(AbstractResource::None)
 {
-    // Use pretty name from os-release information
-    auto osrelease = AppStreamIntegration::global()->osRelease();
-    m_prettyname = osrelease->prettyName();
+#ifdef QT_DEBUG
+    qDebug() << "rpm-ostree-backend: Creating deployments from:";
+    QMapIterator<QString, QVariant> iter(map);
+    while (iter.hasNext()) {
+        iter.next();
+        qDebug() << "rpm-ostree-backend: " << iter.key() << ": " << iter.value();
+    }
+    qDebug() << "";
+#endif
 
-    // Get everything else from rpm-ostree
-    m_name = map.value(QStringLiteral("osname")).toString();
+    // All available deployments are by definition already installed.
+    m_state = AbstractResource::Installed;
+
+    // Get as much as possible from rpm-ostree
+    m_osname = map.value(QStringLiteral("osname")).toString();
     m_version = map.value(QStringLiteral("base-version")).toString();
     m_timestamp = QDateTime::fromSecsSinceEpoch(map.value(QStringLiteral("base-timestamp")).toULongLong()).date();
+
+    // Consider all deployments as pinned (and thus non-removable) until we
+    // support for un-pinning and removing selected deployments.
+    // TODO: Support for pinning, un-pinning and removing deployments
+    // m_pined = map.value(QStringLiteral("pinned")).toBool();
+    m_pinned = true;
+
+    m_booted = map.value(QStringLiteral("booted")).toBool();
+
+    if (m_booted) {
+        // We can directly read the pretty name & variant from os-release
+        // information if this is the currently booted deployment.
+        auto osrelease = AppStreamIntegration::global()->osRelease();
+        m_prettyname = osrelease->prettyName();
+        m_name = osrelease->name();
+        m_variant = osrelease->variant();
+    }
 
     // Split remote and branch from origin
     m_origin = map.value(QStringLiteral("origin")).toString();
@@ -68,48 +94,95 @@ RpmOstreeResource::RpmOstreeResource(const QMap<QString, QVariant>& map, RpmOstr
     m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-');
 
     // TODO: Extract signature information
+    // auto signatures = map.value(QStringLiteral("signatures")).value<QDBusArgument>();
+    // signatures.beginArray();
+    // while (!signatures.atEnd()) {
+    //     QList<QStringList> l;
+    //     signatures >> l;
+    //     qInfo() << l;
+    // }
+    // signatures.endArray();
+
     // TODO: Extract the list of layered packages
 
-    connect(this, &RpmOstreeResource::buttonPressed, parent, &RpmOstreeBackend::perfromSystemUpgrade);
+    connect(this, &RpmOstreeResource::buttonPressed, parent, &RpmOstreeBackend::rebaseToNewVersion);
 }
 
-void RpmOstreeResource::setRemoteRefsList(QStringList remoteRefs)
+void RpmOstreeResource::fetchRemoteRefs()
 {
-    if (!m_remoteRefsList.isEmpty())
-        m_remoteRefsList.clear();
-    m_remoteRefsList = remoteRefs;
-}
-
-QString RpmOstreeResource::getRecentRemoteRefs()
-{
-    if (!isRecentRefsAvaliable())
-        return {};
-    QString recentRefs = m_recentRefs;
-    QStringList str = recentRefs.split(QStringLiteral("/"));
-    QString refs = QStringLiteral("Fedora Kinoite ") + str[1];
-    return refs;
-}
-
-bool RpmOstreeResource::isRecentRefsAvaliable()
-{
-    QString currentRefsVersion = m_origin;
-    QStringList str = currentRefsVersion.split(QStringLiteral("/"));
-    int currentVersion = str[1].toInt();
-
-    for (const QString &refs : m_remoteRefsList) {
-        if (refs == m_origin)
-            continue;
-        QString refssV = refs;
-        QStringList refsNumber = refssV.split(QStringLiteral("/"));
-        int refsNumberV = refsNumber[1].toInt();
-        if (refsNumberV <= currentVersion)
-            continue;
-        m_recentRefs = refs;
+    g_autoptr(GFile) path = g_file_new_for_path("/ostree/repo");
+    g_autoptr(OstreeRepo) repo = ostree_repo_new(path);
+    if (repo == NULL) {
+        qWarning() << "rpm-ostree-backend: Could not find ostree repo:" << path;
+        return;
     }
 
-    if (m_recentRefs.isEmpty())
-        return false;
-    return true;
+    g_autoptr(GError) err = NULL;
+    gboolean res = ostree_repo_open(repo, NULL, &err);
+    if (!res) {
+        qWarning() << "rpm-ostree-backend: Could not open ostree repo:" << path;
+        return;
+    }
+
+    g_autoptr(GHashTable) refs;
+    QByteArray rem = m_remote.toLocal8Bit();
+    res = ostree_repo_remote_list_refs(repo, rem.data(), &refs, NULL, &err);
+    if (!res) {
+        qWarning() << "rpm-ostree-backend: Could not get the list of refs for ostree repo:" << path;
+        return;
+    }
+
+    // Clear out existing refs
+    m_remoteRefs.clear();
+
+    int currentVersion = m_branchVersion.toInt();
+
+    // Iterate over the remote refs to keep only the branches matching our
+    // variant and to find if there is a newer version available.
+    // TODO: Implement new release detection as currently this will offer to
+    // rebase to a newer version as soon as it is branched in the Fedora
+    // release process which is well before the official release.
+    GHashTableIter iter;
+    gpointer key, value;
+    g_hash_table_iter_init(&iter, refs);
+    while (g_hash_table_iter_next(&iter, &key, &value)) {
+        auto ref = QString((char *)key);
+        // Split branch into name / version / arch / variant
+        auto split_branch = ref.split('/');
+        if (split_branch.length() < 4) {
+            qWarning() << "rpm-ostree-backend: Unknown branch format, ignoring:" << ref;
+            continue;
+        } else {
+            auto refVariant = split_branch[3];
+            for (int i = 4; i < split_branch.size(); ++i) {
+                refVariant += "/" + split_branch[i];
+            }
+            if (split_branch[0] == m_branchName && split_branch[2] == m_branchArch && refVariant == m_branchVariant) {
+                // Add to the list of available refs
+                m_remoteRefs.push_back(ref);
+                // Look for the branch with the next version
+                // This will fail to parse "rawhide" and return 0 and will thus skip it
+                int version = split_branch[1].toInt();
+                if (version == currentVersion + 1) {
+                    m_nextMajorVersion = split_branch[1];
+                }
+            }
+        }
+    }
+
+    if (m_remoteRefs.size() == 0) {
+        qWarning() << "rpm-ostree-backend: Could not find any corresponding remote ref in ostree repo:" << path;
+    }
+}
+
+QString RpmOstreeResource::getNextMajorVersion()
+{
+    return m_nextMajorVersion;
+}
+
+bool RpmOstreeResource::isNextMajorVersionAvailable()
+{
+    return m_nextMajorVersion != "";
 }
 
 QString RpmOstreeResource::availableVersion() const
@@ -180,7 +253,15 @@ QString RpmOstreeResource::longDescription()
 
 QString RpmOstreeResource::name() const
 {
-    return m_prettyname;
+    // If we are the currently booted deployment then we have a pretty name
+    if (m_prettyname != "") {
+        return m_prettyname;
+    }
+    // Otherwise construct one from what we have
+    // TODO: Remove hardcoded values
+    QString name;
+    QTextStream(&name) << "Fedora Linux " << m_version << " (Kinoite)";
+    return name;
 }
 
 QString RpmOstreeResource::origin() const
@@ -190,7 +271,8 @@ QString RpmOstreeResource::origin() const
 
 QString RpmOstreeResource::packageName() const
 {
-    return {};
+    // TODO: Remove hardcoded values
+    return QStringLiteral("Fedora Kinoite");
 }
 
 QString RpmOstreeResource::section()
@@ -210,7 +292,10 @@ QString RpmOstreeResource::author() const
 
 QString RpmOstreeResource::comment()
 {
-    return i18n("The currently running version of Fedora Kinoite.");
+    if (m_booted) {
+        return i18n("The currently running version of %1.", packageName());
+    }
+    return i18n("Installed but not currently running version of %1.", packageName());
 }
 
 int RpmOstreeResource::size()
@@ -236,7 +321,9 @@ void RpmOstreeResource::setState(AbstractResource::State state)
 
 void RpmOstreeResource::rebaseToNewVersion()
 {
-    Q_EMIT buttonPressed(m_recentRefs);
+    QString ref;
+    QTextStream(&ref) << m_branchName << '/' << m_nextMajorVersion << '/' << m_branchArch << '/' << m_variant;
+    Q_EMIT buttonPressed(ref);
 }
 
 QString RpmOstreeResource::sourceIcon() const
@@ -255,7 +342,7 @@ AbstractResource::Type RpmOstreeResource::type() const
 
 bool RpmOstreeResource::isRemovable() const
 {
-    return false;
+    return !m_booted && !m_pinned;
 }
 
 QList<PackageState> RpmOstreeResource::addonsInformation()
@@ -268,27 +355,7 @@ QStringList RpmOstreeResource::categories()
     return {};
 }
 
-QString RpmOstreeResource::getRemote()
+bool RpmOstreeResource::isBooted()
 {
-    return m_remote;
-}
-
-QString RpmOstreeResource::getBranchName()
-{
-    return m_branchName;
-}
-
-QString RpmOstreeResource::getBranchVersion()
-{
-    return m_branchVersion;
-}
-
-QString RpmOstreeResource::getBranchArch()
-{
-    return m_branchArch;
-}
-
-QString RpmOstreeResource::getBranchVariant()
-{
-    return m_branchVariant;
+    return m_booted;
 }

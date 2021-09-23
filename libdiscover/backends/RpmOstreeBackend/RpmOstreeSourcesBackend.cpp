@@ -9,8 +9,6 @@
 
 #include <KLocalizedString>
 #include <QDebug>
-#include <QIODevice>
-#include <QProcess>
 
 #include <ostree-repo.h>
 #include <ostree.h>

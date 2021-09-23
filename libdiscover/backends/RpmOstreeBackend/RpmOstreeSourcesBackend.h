@@ -11,7 +11,6 @@
 #include <resources/SourcesModel.h>
 
 #include <QStandardItemModel>
-#include <QVariantList>
 
 class RpmOstreeSourcesBackend : public AbstractSourcesBackend
 {

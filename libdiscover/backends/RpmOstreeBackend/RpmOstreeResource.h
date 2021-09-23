@@ -16,20 +16,20 @@ class RpmOstreeResource : public AbstractResource
     Q_OBJECT
     Q_PROPERTY(QStringList objects MEMBER m_objects CONSTANT)
 public:
-    explicit RpmOstreeResource(const QMap<QString, QVariant>&, RpmOstreeBackend *);
+    explicit RpmOstreeResource(const QVariantMap &, RpmOstreeBackend *);
+
     QString appstreamId() const override;
     AbstractResource::State state() override;
     QVariant icon() const override;
     QString comment() override;
     QString name() const override;
-    QString packageName() const override;
+    Q_SCRIPTABLE QString packageName() const override;
     QStringList categories() override;
     QJsonArray licenses() override;
     QString longDescription() override;
     QList<PackageState> addonsInformation() override;
     bool isRemovable() const override;
     QString availableVersion() const override;
-    void setNewVersion(QString);
     QString installedVersion() const override;
     QString origin() const override;
     QString section() override;
@@ -41,7 +41,6 @@ public:
     QString author() const override;
     bool canExecute() const override;
     void invokeApplication() const override {};
-
     QUrl url() const override;
     QString executeLabel() const override;
     QString sourceIcon() const override;
@@ -50,8 +49,11 @@ public:
     QUrl bugURL() override;
     QDate releaseDate() const override;
     QUrl donationURL() override;
+
     void setState(AbstractResource::State);
-    void setRemoteRefsList(QStringList remoteRefs);
+    void fetchRemoteRefs();
+    void setNewVersion(QString);
+
     static const QStringList m_objects;
 
     /*
@@ -61,34 +63,28 @@ public:
      */
     Q_SCRIPTABLE void rebaseToNewVersion();
 
-    /*
-     * Filtering the kinoite remote refs list to get the recent kinoite refs
-     * and display it in the button of the current running deployment resource.
-     */
-    Q_SCRIPTABLE QString getRecentRemoteRefs();
+    /** Returns the next major version for the current deployment. */
+    Q_SCRIPTABLE QString getNextMajorVersion();
 
-    /*
-     * Indicating if there is a new refs or not and use it to enable/disable the button
-     * which telling the user that there is a new kinoite refs to switch to.
+    /**
+     * Returns true only if there is a newer ref available in the current remote.
+     * TODO: Only display this button when the new version is stable (and not just branched as it works today.
      */
-    Q_SCRIPTABLE bool isRecentRefsAvaliable();
+    Q_SCRIPTABLE bool isNextMajorVersionAvailable();
 
-    QString getRemote();
-    QString getBranchName();
-    QString getBranchVersion();
-    QString getBranchArch();
-    QString getBranchVariant();
+    /** Returns if a given deployment is the currently booted deployment. */
+    Q_SCRIPTABLE bool isBooted();
 
 Q_SIGNALS:
 
-    /*
-     * It is emitted when the user wants to switch to a new avaliable kinoite refs.
-     */
+    /** Signal emitted when the user requests the rebase to a newer version */
     void buttonPressed(QString);
 
 private:
-    QString m_name;
     QString m_prettyname;
+    QString m_name;
+    QString m_variant;
+    QString m_osname;
     QString m_version;
     QDate m_timestamp;
     QString m_origin;
@@ -99,13 +95,15 @@ private:
     QString m_branchArch;
     QString m_branchVariant;
     QString m_appstreamid;
+    bool m_booted;
+    bool m_pinned;
 
     AbstractResource::State m_state;
 
     QString m_newVersion;
-    QStringList m_remoteRefsList;
+    QString m_nextMajorVersion;
+    QStringList m_remoteRefs;
     QString m_currentRefs;
-    QString m_recentRefs;
 };
 
 #endif

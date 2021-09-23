@@ -12,9 +12,9 @@ import org.kde.kirigami 2.1 as Kirigami
 Button
 {
     id: root
-    text: i18n("Switch to %1", resource.getRecentRemoteRefs())
+    text: i18n("Switch to %1 %2", resource.packageName(), resource.getNextMajorVersion())
 
     onClicked: resource.rebaseToNewVersion()
-    visible: resource.isInstalled && resource.isRecentRefsAvaliable()
+    visible: resource.isInstalled && resource.isBooted && resource.isNextMajorVersionAvailable()
 }
 

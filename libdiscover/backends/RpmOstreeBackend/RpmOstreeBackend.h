@@ -9,30 +9,17 @@
 #define RPMOSTREE1BACKEND_H
 
 #include "RpmOstreeDBusInterface.h"
+#include "RpmOstreeResource.h"
+#include "RpmOstreeTransaction.h"
 
 #include <resources/AbstractResourcesBackend.h>
+#include <resources/StandardBackendUpdater.h>
 
-#include <QDBusPendingReply>
-#include <QMetaType>
-#include <QSharedPointer>
-#include <QThreadPool>
-
-class RpmOstreeReviewsBackend;
-class OdrsReviewsBackend;
-class RpmOstreeResource;
-class StandardBackendUpdater;
 class RpmOstreeBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
 public:
     explicit RpmOstreeBackend(QObject *parent = nullptr);
-
-    /*
-     * Getting the list of deployments from the rpm-ostree DBus class and
-     * converting each deployment to resource and detecting the currently running deployment.
-     * It is corresponding to "rpm-ostree status".
-     */
-    void getDeployments();
 
     /*
      * Executing "rpm-ostree update --check" using QProcess to check if
@@ -41,18 +28,12 @@ public:
     void executeCheckUpdateProcess();
 
     /*
-     * Calling UpdateDeployment method from the rpm-ostree DBus class when
-     * there is a new deployment version avaliable .
-     */
-    void updateCurrentDeployment();
-
-    /*
      * Executing "ostree remote refs kinoite" using QProcess to get
      * a list of the avaliable remote refs list.
      */
     void filterRemoteRefs();
 
-    // List refs for a given remote
+    /* List refs for a given remote */
     QStringList getRemoteRefs(const QString &);
 
     /*
@@ -64,19 +45,23 @@ public:
      * Calling Rebase method from the rpm-ostree DBus class when
      * there is a new kinoite refs.
      */
-    void perfromSystemUpgrade(QString);
+    void rebaseToNewVersion(QString);
+
+    /* Convenience function to set the fetching status and emit the corresponding signal */
+    void setFetching(bool);
 
     int updatesCount() const override;
     AbstractBackendUpdater *backendUpdater() const override;
     AbstractReviewsBackend *reviewsBackend() const override;
     ResultsStream *search(const AbstractResourcesBackend::Filters &search) override;
 
-    // return true when OSTreeRPMBackend is ready to be loaded
+    /* Returns true if we are running on an ostree/rpm-ostree managed system */
     bool isValid() const override;
 
     Transaction *installApplication(AbstractResource *) override;
     Transaction *installApplication(AbstractResource *, const AddonList &) override;
     Transaction *removeApplication(AbstractResource *) override;
+
     bool isFetching() const override;
     void checkForUpdates() override;
     QString displayName() const override;
@@ -86,17 +71,18 @@ public Q_SLOTS:
     void toggleFetching();
 
 private:
-    StandardBackendUpdater *m_updater;
+    /* Get the currently booted deployment */
+    RpmOstreeResource *currentlyBootedDeployment(void);
+
+    /* The list of available deployments */
     QVector<RpmOstreeResource *> m_resources;
+    /* The current transaction in progress, if any */
+    RpmOstreeTransaction *m_transaction;
+    /* DBus path to the currently booted OS DBus interface */
+    QString m_bootedObjectPath;
 
-    QString m_transactionUpdatePath;
+    StandardBackendUpdater *m_updater;
     bool m_fetching;
-
-    /*
-     * Checking if the required update is deployment update or system upgrade
-     * by default isDeploymentUpdate is true
-     */
-    bool m_isDeploymentUpdate;
 };
 
 #endif
