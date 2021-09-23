@@ -8,6 +8,7 @@
 #include "KNSBackend.h"
 #include "KNSResource.h"
 #include <KLocalizedString>
+#include <KNSCore/Engine>
 #include <KPasswordDialog>
 #include <QDebug>
 #include <QDesktopServices>
@@ -167,15 +168,21 @@ QString KNSReviews::userName() const
 
 void KNSReviews::setProviderUrl(const QUrl &url)
 {
+#if KNEWSTUFFCORE_VERSION < QT_VERSION_CHECK(5, 92, 0)
     m_providerUrl = url;
     if (!m_providerUrl.isEmpty() && !s_shared->atticaManager.providerFiles().contains(url)) {
         s_shared->atticaManager.addProviderFile(url);
     }
+#endif
 }
 
 Attica::Provider KNSReviews::provider() const
 {
+#if KNEWSTUFFCORE_VERSION < QT_VERSION_CHECK(5, 92, 0)
     return s_shared->atticaManager.providerFor(m_providerUrl);
+#else
+    return *m_backend->engine()->atticaProviders().constFirst();
+#endif
 }
 
 bool KNSReviews::isResourceSupported(AbstractResource *res) const
