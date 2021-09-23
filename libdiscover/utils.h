@@ -24,12 +24,16 @@ public:
 
     void trigger()
     {
+        if (m_done)
+            return;
+        m_done = true;
         m_function();
         deleteLater();
     }
 
 private:
     std::function<void()> m_function;
+    bool m_done = false;
 };
 
 template<typename T, typename Q, typename _UnaryOperation>
