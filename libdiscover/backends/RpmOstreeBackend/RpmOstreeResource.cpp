@@ -226,21 +226,22 @@ QUrl RpmOstreeResource::donationURL()
 
 QUrl RpmOstreeResource::homepage()
 {
-    return QUrl("https://spins.fedoraproject.org/en/kde/");
+    return QUrl(AppStreamIntegration::global()->osRelease()->homeUrl());
 }
 
 QUrl RpmOstreeResource::helpURL()
 {
-    return QUrl("https://docs.fedoraproject.org/en-US/fedora-kinoite/");
+    return QUrl(AppStreamIntegration::global()->osRelease()->documentationUrl());
 }
 
 QUrl RpmOstreeResource::bugURL()
 {
-    return QUrl("https://pagure.io/fedora-kde/SIG/issues");
+    return QUrl(AppStreamIntegration::global()->osRelease()->bugReportUrl());
 }
 
 QJsonArray RpmOstreeResource::licenses()
 {
+    // TODO: Remove hardcoded value
     return {QJsonObject{{QStringLiteral("name"), i18n("GPL and other licenses")},
                         {QStringLiteral("url"), QStringLiteral("https://fedoraproject.org/wiki/Legal:Licenses")}}};
 }
