@@ -9,6 +9,7 @@
 #include "resources/AbstractResourcesBackend.h"
 #include "resources/AbstractSourcesBackend.h"
 #include <QtGlobal>
+#include <utils.h>
 
 Q_GLOBAL_STATIC(SourcesModel, s_sources)
 
@@ -47,10 +48,20 @@ void SourcesModel::addSourcesBackend(AbstractSourcesBackend *sources)
     auto m = sources->sources();
     m->setProperty(DisplayName, backend->displayName());
     m->setProperty(SourcesBackendId, QVariant::fromValue<QObject *>(sources));
-    addSourceModel(m);
 
-    if (!m->rowCount())
+    // QConcatenateTablesProxyModel will consider empty models as column==0. Empty models
+    // will have 0 columns so it ends up showing nothing
+    if (m->rowCount() == 0) {
         qWarning() << "adding empty sources model" << m;
+        auto action = new OneTimeAction(
+            [this, m] {
+                addSourceModel(m);
+            },
+            this);
+        connect(m, &QAbstractItemModel::rowsInserted, action, &OneTimeAction::trigger);
+    } else {
+        addSourceModel(m);
+    }
 }
 
 const QAbstractItemModel *SourcesModel::modelAt(const QModelIndex &index) const
