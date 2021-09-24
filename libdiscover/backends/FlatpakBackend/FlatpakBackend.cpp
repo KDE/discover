@@ -53,6 +53,14 @@ DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
 class FlatpakSource
 {
 public:
+    FlatpakSource(FlatpakBackend *backend, FlatpakInstallation *installation)
+        : m_remote(nullptr)
+        , m_installation(installation)
+        , m_backend(backend)
+    {
+        g_object_ref(m_installation);
+    }
+
     FlatpakSource(FlatpakBackend *backend, FlatpakInstallation *installation, FlatpakRemote *remote)
         : m_remote(remote)
         , m_installation(installation)
@@ -65,19 +73,22 @@ public:
 
     ~FlatpakSource()
     {
-        g_object_unref(m_remote);
+        if (m_remote) {
+            g_object_unref(m_remote);
+        }
         g_object_unref(m_installation);
     }
 
     bool isEnabled() const
     {
-        return !flatpak_remote_get_disabled(m_remote);
+        return m_remote && !flatpak_remote_get_disabled(m_remote);
     }
 
     QString appstreamIconsDir() const {
         return m_appstreamIconsDir;
     }
     QString appstreamDir() const {
+        Q_ASSERT(m_remote);
         g_autoptr(GFile) appstreamDir = flatpak_remote_get_appstream_dir(m_remote, nullptr);
         if (!appstreamDir) {
             qWarning() << "No appstream dir for" << flatpak_remote_get_name(m_remote);
@@ -89,7 +100,7 @@ public:
 
     QString name() const
     {
-        return QString::fromUtf8(flatpak_remote_get_name(m_remote));
+        return m_remote ? QString::fromUtf8(flatpak_remote_get_name(m_remote)) : QString();
     }
 
     FlatpakInstallation *installation() const
@@ -557,7 +568,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
     resource->setType(FlatpakResource::DesktopApp);
 
     if (!m_localSource) {
-        m_localSource.reset(new FlatpakSource(this, preferredInstallation(), nullptr));
+        m_localSource.reset(new FlatpakSource(this, preferredInstallation()));
         m_flatpakSources += m_localSource;
     }
     m_localSource->addResource(resource);
@@ -637,7 +648,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     resource->updateFromRef(ref);
 
     QUrl runtimeUrl = QUrl(settings.value(QStringLiteral("Flatpak Ref/RuntimeRepo")).toString());
-    auto refSource = QSharedPointer<FlatpakSource>::create(this, preferredInstallation(), nullptr);
+    auto refSource = QSharedPointer<FlatpakSource>::create(this, preferredInstallation());
     m_flatpakSources += refSource;
     if (!runtimeUrl.isEmpty()) {
         // We need to fetch metadata to find information about required runtime
@@ -1340,10 +1351,12 @@ QVector<AbstractResource *> FlatpakBackend::resourcesByAppstreamName(const QStri
     QVector<AbstractResource *> resources;
     const QString nameWithDesktop = name + QLatin1String(".desktop");
     for (const auto &source : m_flatpakSources) {
-        auto comps = source->m_pool->componentsById(name) + source->m_pool->componentsById(nameWithDesktop);
-        resources << kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
-            return resourceForComponent(comp, source);
-        });
+        if (source->m_pool) {
+            const auto comps = source->m_pool->componentsById(name) + source->m_pool->componentsById(nameWithDesktop);
+            resources << kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
+                return resourceForComponent(comp, source);
+            });
+        }
     }
     auto f = [this](AbstractResource *l, AbstractResource *r) {
         return flatpakResourceLessThan(l, r);
