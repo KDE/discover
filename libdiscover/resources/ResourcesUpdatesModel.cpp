@@ -286,7 +286,7 @@ double ResourcesUpdatesModel::updateSize() const
 {
     double ret = 0.;
     for (AbstractBackendUpdater *upd : m_updaters) {
-        ret += upd->updateSize();
+        ret += std::max(0., upd->updateSize());
     }
     return ret;
 }

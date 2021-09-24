@@ -113,7 +113,7 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
     case Qt::CheckStateRole:
         return item->checked();
     case SizeRole:
-        return KFormat().formatByteSize(item->size());
+        return item->size() > 0 ? KFormat().formatByteSize(item->size()) : i18n("Unknown");
     case ResourceRole:
         return QVariant::fromValue<QObject *>(item->resource());
     case ResourceProgressRole:
@@ -305,7 +305,13 @@ UpdateItem *UpdateModel::itemFromResource(AbstractResource *res)
 
 QString UpdateModel::updateSize() const
 {
-    return m_updates ? KFormat().formatByteSize(m_updates->updateSize()) : QString();
+    if (!m_updates) {
+        return QString();
+    }
+    if (m_updates->updateSize() != 0) {
+        return KFormat().formatByteSize(m_updates->updateSize());
+    }
+    return i18n("Unknown");
 }
 
 QModelIndex UpdateModel::indexFromItem(UpdateItem *item) const
