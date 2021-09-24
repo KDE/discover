@@ -295,6 +295,11 @@ quint64 RpmOstreeResource::size()
     return 0;
 }
 
+QString RpmOstreeResource::sizeDescription()
+{
+    return QStringLiteral("Unknown");
+}
+
 QDate RpmOstreeResource::releaseDate() const
 {
     return m_timestamp;

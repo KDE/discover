@@ -35,6 +35,7 @@ public:
     QString section() override;
     void fetchScreenshots() override {};
     quint64 size() override;
+    QString sizeDescription() override;
     void fetchChangelog() override {};
     QStringList extends() const override;
     AbstractResource::Type type() const override;
