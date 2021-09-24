@@ -36,6 +36,7 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF5::KIOCore
                                      KF5::WindowSystem
                                      KF5::QuickAddons
+                                     Qt::Widgets
                                      Qt::Quick
                                      Qt::X11Extras
                                      Discover::Common
