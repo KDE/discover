@@ -51,7 +51,6 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
         // We can directly read the pretty name & variant from os-release
         // information if this is the currently booted deployment.
         auto osrelease = AppStreamIntegration::global()->osRelease();
-        m_prettyname = osrelease->prettyName();
         m_name = osrelease->name();
         m_variant = osrelease->variant();
     }
@@ -253,15 +252,7 @@ QString RpmOstreeResource::longDescription()
 
 QString RpmOstreeResource::name() const
 {
-    // If we are the currently booted deployment then we have a pretty name
-    if (m_prettyname != "") {
-        return m_prettyname;
-    }
-    // Otherwise construct one from what we have
-    // TODO: Remove hardcoded values
-    QString name;
-    QTextStream(&name) << "Fedora Linux " << m_version << " (Kinoite)";
-    return name;
+    return QStringLiteral("%1 %2").arg(packageName(), m_version);
 }
 
 QString RpmOstreeResource::origin() const

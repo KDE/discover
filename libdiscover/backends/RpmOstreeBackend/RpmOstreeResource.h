@@ -81,7 +81,6 @@ Q_SIGNALS:
     void buttonPressed(QString);
 
 private:
-    QString m_prettyname;
     QString m_name;
     QString m_variant;
     QString m_osname;
