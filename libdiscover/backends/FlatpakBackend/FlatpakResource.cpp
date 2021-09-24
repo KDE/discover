@@ -601,6 +601,9 @@ QStringList FlatpakResource::mimetypes() const
 QString FlatpakResource::versionString()
 {
     QString version;
+    if (resourceType() == Source) {
+        return {};
+    }
     if (isInstalled()) {
         auto ref = qobject_cast<FlatpakBackend *>(backend())->getInstalledRefForApp(this);
         version = flatpak_installed_ref_get_appdata_version(ref);

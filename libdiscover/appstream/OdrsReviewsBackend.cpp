@@ -106,6 +106,9 @@ static QString userHash()
 
 void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
 {
+    if (app->appstreamId().isEmpty()) {
+        return;
+    }
     Q_UNUSED(page)
     m_isFetching = true;
 

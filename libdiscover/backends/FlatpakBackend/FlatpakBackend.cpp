@@ -327,6 +327,7 @@ FlatpakRemote *FlatpakBackend::getFlatpakRemoteByUrl(const QString &url, Flatpak
 
 FlatpakInstalledRef *FlatpakBackend::getInstalledRefForApp(FlatpakResource *resource) const
 {
+    Q_ASSERT(resource->resourceType() != FlatpakResource::Source);
     g_autoptr(GError) localError = nullptr;
 
     const auto type = resource->resourceType() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME;
@@ -582,6 +583,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
 
 void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream)
 {
+    Q_ASSERT(url.isLocalFile());
     QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
     const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
     const QString name = settings.value(QStringLiteral("Flatpak Ref/Name")).toString();
@@ -1152,7 +1154,7 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakResource *resource)
             return false;
         }
         resource->setInstalledSize(flatpak_installed_ref_get_installed_size(ref));
-    } else {
+    } else if (resource->resourceType() != FlatpakResource::Source) {
         if (resource->origin().isEmpty()) {
             qWarning() << "Failed to get size of" << resource->name() << " because of missing origin";
             return false;
