@@ -91,7 +91,7 @@ private:
     {
         return m_installations.constFirst();
     }
-    void integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
+    QSharedPointer<FlatpakSource> integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     FlatpakRemote *getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
     FlatpakResource *getRuntimeForApp(FlatpakResource *resource) const;
     FlatpakResource *resourceForComponent(const AppStream::Component &component, const QSharedPointer<FlatpakSource> &source) const;
@@ -124,6 +124,7 @@ private:
     QVector<FlatpakInstallation *> m_installations;
     QThreadPool m_threadPool;
     QVector<QSharedPointer<FlatpakSource>> m_flatpakSources;
+    QVector<QSharedPointer<FlatpakSource>> m_flatpakLoadingSources;
     QSharedPointer<FlatpakSource> m_localSource;
 };
 
