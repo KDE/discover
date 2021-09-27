@@ -42,7 +42,6 @@ public:
     bool canExecute() const override;
     void invokeApplication() const override {};
     QUrl url() const override;
-    QString executeLabel() const override;
     QString sourceIcon() const override;
     QUrl homepage() override;
     QUrl helpURL() override;

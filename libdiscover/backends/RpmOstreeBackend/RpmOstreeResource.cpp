@@ -300,11 +300,6 @@ QDate RpmOstreeResource::releaseDate() const
     return m_timestamp;
 }
 
-QString RpmOstreeResource::executeLabel() const
-{
-    return {};
-}
-
 void RpmOstreeResource::setState(AbstractResource::State state)
 {
     m_state = state;
