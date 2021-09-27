@@ -600,7 +600,11 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
         auto source = integrateRemote(preferredInstallation(), remote);
         if (source) {
             auto searchComponent = [this, stream, source, name] {
-                const auto comps = source->m_pool->componentsById(name);
+                auto comps = source->m_pool->componentsById(name);
+                if (comps.isEmpty()) {
+                    const QString nameWithDesktop = name + QLatin1String(".desktop");
+                    comps = source->m_pool->componentsById(nameWithDesktop);
+                }
                 auto resources = kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
                     return resourceForComponent(comp, source);
                 });
