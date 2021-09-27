@@ -41,7 +41,6 @@ Kirigami.OverlaySheet {
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
             text: i18n("Reviews for %1", page.resource.name)
-            level: 2
         }
 
         RowLayout {
