@@ -36,6 +36,8 @@
 #include "utils.h"
 #include <resources/StandardBackendUpdater.h>
 
+static const int PAGE_SIZE = 100;
+
 class KNSBackendFactory : public AbstractResourcesBackendFactory
 {
     Q_OBJECT
@@ -102,9 +104,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     QTimer::singleShot(60000, this, [this]() {
         if (!m_initialized) {
             markInvalid(i18n("Backend %1 took too long to initialize", m_displayName));
-            m_responsePending = false;
-            Q_EMIT searchFinished();
-            Q_EMIT availableForQueries();
+            setResponsePending(false);
         }
     });
 
@@ -146,8 +146,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
     connect(m_engine, &KNSCore::Engine::signalUpdateableEntriesLoaded, this, [this] {
-        m_responsePending = false;
-        Q_EMIT availableForQueries();
+        setResponsePending(false);
     });
     connect(m_engine, &KNSCore::Engine::signalCategoriesMetadataLoded, this, [categories](const QList<KNSCore::Provider::CategoryMetadata> &categoryMetadatas) {
         for (const KNSCore::Provider::CategoryMetadata &category : categoryMetadatas) {
@@ -159,7 +158,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
             }
         }
     });
-    m_engine->setPageSize(100);
+    m_engine->setPageSize(PAGE_SIZE);
     m_engine->init(m_name);
 
     if (m_hasApplications) {
@@ -231,33 +230,57 @@ void KNSBackend::markInvalid(const QString &message)
     Q_EMIT initialized();
 }
 
+void KNSBackend::setResponsePending(bool pending)
+{
+    Q_ASSERT(m_responsePending != pending);
+    m_responsePending = pending;
+    if (pending) {
+        Q_EMIT startingSearch();
+    } else {
+        Q_EMIT availableForQueries();
+        setFetching(false);
+        m_onePage = false;
+    }
+}
+
 void KNSBackend::fetchInstalled()
 {
     auto search = new OneTimeAction(
+        666,
         [this]() {
             // First we ensure we've got data loaded on what we've got installed already
-            Q_EMIT startingSearch();
+            if (m_responsePending) {
+                // Slot already taken, will need to wait again
+                return false;
+            }
             m_onePage = true;
-            m_responsePending = true;
+            setResponsePending(true);
             m_engine->checkForInstalled();
             // And then we check for updates - we could do only one, if all we cared about was updates,
             // but to have both a useful initial list, /and/ information on updates, we want to get both.
             // The reason we are not doing a checkUpdates() overload for this is that the caching for this
             // information is done by KNSEngine, and we want to actually load it every time we initialize.
             auto updateChecker = new OneTimeAction(
+                666,
                 [this] {
                     //No need to check for updates if there's no resources
                     if (m_resourcesByName.isEmpty()) {
-                        return;
+                        return true;
                     }
 
-                    Q_EMIT startingSearch();
+                    if (m_responsePending) {
+                        // Slot already taken, will need to wait again
+                        return false;
+                    }
+
                     m_onePage = true;
-                    m_responsePending = true;
+                    setResponsePending(true);
                     m_engine->checkForUpdates();
+                    return true;
                 },
                 this);
             connect(this, &KNSBackend::availableForQueries, updateChecker, &OneTimeAction::trigger, Qt::QueuedConnection);
+            return true;
         },
         this);
 
@@ -274,11 +297,17 @@ void KNSBackend::checkForUpdates()
     // the machine with multiple of these, because that would just be silly.
     if (m_initialized) {
         auto updateChecker = new OneTimeAction(
-            [this]() {
-                Q_EMIT startingSearch();
+            666,
+            [this] {
+                if (m_responsePending) {
+                    // Slot already taken, will need to wait again
+                    return false;
+                }
+
                 m_onePage = true;
-                m_responsePending = true;
+                setResponsePending(true);
                 m_engine->checkForUpdates();
+                return true;
             },
             this);
 
@@ -335,7 +364,6 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List &entries)
     if (!m_isValid)
         return;
 
-    m_responsePending = false;
     const auto filtered = kFilter<KNSCore::EntryInternal::List>(entries, [](const KNSCore::EntryInternal &entry) {
         return entry.isValid();
     });
@@ -345,16 +373,11 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List &entries)
 
     if (!resources.isEmpty()) {
         Q_EMIT receivedResources(resources);
-    } else {
-        Q_EMIT searchFinished();
-        Q_EMIT availableForQueries();
-        setFetching(false);
-        return;
     }
-    // qDebug() << "received" << objectName() << this << m_resourcesByName.count();
-    if (m_onePage) {
-        Q_EMIT availableForQueries();
-        setFetching(false);
+
+    setResponsePending(false);
+    if (m_onePage || resources.count() >= PAGE_SIZE) {
+        Q_EMIT searchFinished();
     }
 }
 
@@ -366,7 +389,7 @@ void KNSBackend::fetchMore()
     // We _have_ to set this first. If we do not, we may run into a situation where the
     // data request will conclude immediately, causing m_responsePending to remain true
     // for perpetuity as the slots will be called before the function returns.
-    m_responsePending = true;
+    setResponsePending(true);
     m_engine->requestMoreData();
 }
 
@@ -378,7 +401,7 @@ void KNSBackend::statusChanged(const KNSCore::EntryInternal &entry)
 void KNSBackend::slotErrorCode(const KNSCore::ErrorCode &errorCode, const QString &message, const QVariant &metadata)
 {
     QString error = message;
-    qDebug() << "KNS error in" << m_displayName << ":" << errorCode << message << metadata;
+    qWarning() << "KNS error in" << m_displayName << ":" << errorCode << message << metadata;
     bool invalidFile = false;
     switch (errorCode) {
     case KNSCore::ErrorCode::UnknownError:
@@ -443,11 +466,7 @@ void KNSBackend::slotErrorCode(const KNSCore::ErrorCode &errorCode, const QStrin
         error = i18n("Unhandled error in %1 backend. Contact your distributor.", m_displayName);
         break;
     }
-    m_responsePending = false;
-    Q_EMIT searchFinished();
-    Q_EMIT availableForQueries();
-    // Setting setFetching to false when we get an error ensures we don't end up in an eternally-fetching state
-    this->setFetching(false);
+    setResponsePending(false);
     qWarning() << "kns error" << objectName() << error;
     if (!invalidFile)
         Q_EMIT passiveMessage(i18n("%1: %2", name(), error));
@@ -626,27 +645,35 @@ void KNSBackend::searchStream(ResultsStream *stream, const QString &searchText)
 {
     Q_EMIT startingSearch();
 
+    stream->setProperty("alreadyStarted", false);
     auto start = [this, stream, searchText]() {
         Q_ASSERT(!isFetching());
         if (!m_isValid) {
+            qWarning() << "querying an invalid backend";
             stream->finish();
             return;
         }
+
+        if (m_responsePending || stream->property("alreadyStarted").toBool()) {
+            return;
+        }
+        stream->setProperty("alreadyStarted", true);
+        setResponsePending(true);
+
         // No need to explicitly launch a search, setting the search term already does that for us
         m_engine->setSearchTerm(searchText);
         m_onePage = false;
-        m_responsePending = true;
 
         connect(stream, &ResultsStream::fetchMore, this, &KNSBackend::fetchMore);
         connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
         connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::finish);
         connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::finish);
     };
-
     if (m_responsePending) {
         connect(this, &KNSBackend::availableForQueries, stream, start, Qt::QueuedConnection);
     } else if (isFetching()) {
         connect(this, &KNSBackend::initialized, stream, start);
+        connect(this, &KNSBackend::availableForQueries, stream, start, Qt::QueuedConnection);
     } else {
         QTimer::singleShot(0, stream, start);
     }
@@ -667,9 +694,13 @@ ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)
 
     auto stream = new ResultsStream(QLatin1String("KNS-byname-") + entryid);
     auto start = [this, entryid, stream, providerid]() {
-        m_responsePending = true;
+        if (m_responsePending) {
+            // Slot already taken, will need to wait again
+            return;
+        }
+        setResponsePending(true);
         m_engine->fetchEntryById(entryid);
-        m_onePage = false;
+        m_onePage = true;
 
         connect(m_engine, &KNSCore::Engine::signalErrorCode, stream, &ResultsStream::finish);
         connect(m_engine,
@@ -682,8 +713,9 @@ ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)
                             Q_EMIT stream->resourcesFound({resourceForEntry(entry)});
                         } else
                             qWarning() << "found invalid" << entryid << entry.uniqueId() << providerid << QUrl(entry.providerId()).host();
-                        m_responsePending = false;
-                        QTimer::singleShot(0, this, &KNSBackend::availableForQueries);
+                        QTimer::singleShot(0, this, [this] {
+                            setResponsePending(false);
+                        });
                         stream->finish();
                         break;
                     case KNSCore::EntryInternal::DetailsLoadedEvent:

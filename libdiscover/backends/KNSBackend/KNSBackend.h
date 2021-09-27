@@ -91,9 +91,11 @@ private:
     void markInvalid(const QString &message);
     void searchStream(ResultsStream *stream, const QString &searchText);
     void fetchMore();
+    void setResponsePending(bool pending);
 
     bool m_onePage = false;
     bool m_responsePending = false;
+    QString m_pendingSearchQuery;
     bool m_fetching;
     bool m_isValid;
     KNSCore::Engine *m_engine;
