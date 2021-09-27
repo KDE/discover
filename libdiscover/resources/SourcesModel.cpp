@@ -66,8 +66,7 @@ void SourcesModel::addSourcesBackend(AbstractSourcesBackend *sources)
 
 const QAbstractItemModel *SourcesModel::modelAt(const QModelIndex &index) const
 {
-    const auto sidx = mapToSource(index);
-    return sidx.model();
+    return mapToSource(index).model();
 }
 
 QVariant SourcesModel::data(const QModelIndex &index, int role) const

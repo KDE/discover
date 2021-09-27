@@ -97,7 +97,6 @@ QString AppStreamUtils::versionString(const QString &version, const AppStream::C
         auto release = appdata.releases().constFirst();
         if (release.timestamp().isValid() && version.startsWith(release.version())) {
             QLocale l;
-            qDebug() << "versionversion" << version << release.version();
             return i18n("%1, released on %2", version, l.toString(release.timestamp().date(), QLocale::ShortFormat));
         } else {
             return version;

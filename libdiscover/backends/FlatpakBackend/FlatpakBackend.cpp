@@ -591,7 +591,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
             return;
         }
 
-        QByteArray contents = f.readAll();
+        const QByteArray contents = f.readAll();
 
         g_autoptr(GBytes) bytes = g_bytes_new(contents.data(), contents.size());
 
