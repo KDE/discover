@@ -16,9 +16,19 @@
 class OneTimeAction : public QObject
 {
 public:
-    OneTimeAction(const std::function<void()> &func, QObject *parent)
+    // the int argument is only so the compile knows to tell the constructors apart
+    OneTimeAction(int /*unnecessary*/, const std::function<bool()> &func, QObject *parent)
         : QObject(parent)
         , m_function(func)
+    {
+    }
+
+    OneTimeAction(const std::function<void()> &func, QObject *parent)
+        : QObject(parent)
+        , m_function([func] {
+            func();
+            return true;
+        })
     {
     }
 
@@ -26,13 +36,12 @@ public:
     {
         if (m_done)
             return;
-        m_done = true;
-        m_function();
+        m_done = m_function();
         deleteLater();
     }
 
 private:
-    std::function<void()> m_function;
+    std::function<bool()> m_function;
     bool m_done = false;
 };
 
