@@ -9,7 +9,6 @@
 #include <ApplicationAddonsModel.h>
 #include <Category/Category.h>
 #include <Category/CategoryModel.h>
-#include <QAction>
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
@@ -52,7 +51,6 @@ void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
     qmlRegisterType<ReadFile>("org.kde.discover", 2, 0, "ReadFile");
 
     qmlRegisterUncreatableType<DiscoverAction>("org.kde.discover", 2, 0, "DiscoverAction", QStringLiteral("Use QQC Action"));
-    qmlRegisterUncreatableType<QAction>("org.kde.discover", 2, 0, "QAction", QStringLiteral("Use QQC Action"));
     qmlRegisterUncreatableType<AbstractResource>("org.kde.discover", 2, 0, "AbstractResource", QStringLiteral("should come from the ResourcesModel"));
     qmlRegisterUncreatableType<AbstractSourcesBackend>("org.kde.discover", 2, 0, "AbstractSourcesBackend", QStringLiteral("should come from the SourcesModel"));
     qmlRegisterUncreatableType<Transaction>("org.kde.discover", 2, 0, "Transaction", QStringLiteral("should come from the backends"));
@@ -65,5 +63,4 @@ void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
     qmlRegisterAnonymousType<Category>("org.kde.discover", 1);
     qmlRegisterAnonymousType<ResourcesModel>("org.kde.discover", 1);
     qmlProtectModule("org.kde.discover", 2);
-    qRegisterMetaType<QList<QAction *>>();
 }

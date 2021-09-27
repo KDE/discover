@@ -14,7 +14,6 @@
 
 // Qt includes
 #include "discover_debug.h"
-#include <QAction>
 #include <QClipboard>
 #include <QDBusConnection>
 #include <QDBusMessage>
@@ -115,8 +114,6 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
         return r;
     });
     qmlRegisterAnonymousType<QQuickView>("org.kde.discover.app", 1);
-    qmlRegisterAnonymousType<QActionGroup>("org.kde.discover.app", 1);
-    qmlRegisterAnonymousType<QAction>("org.kde.discover.app", 1);
 
     qmlRegisterAnonymousType<KAboutData>("org.kde.discover.app", 1);
     qmlRegisterAnonymousType<KAboutLicense>("org.kde.discover.app", 1);
@@ -379,11 +376,6 @@ bool DiscoverObject::eventFilter(QObject *object, QEvent *event)
         //     qCWarning(DISCOVER_LOG) << "Action conflict" << event;
     }
     return false;
-}
-
-QAction *DiscoverObject::action(const QString &name) const
-{
-    return m_collection.value(name);
 }
 
 QString DiscoverObject::iconName(const QIcon &icon)

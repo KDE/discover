@@ -45,7 +45,6 @@ public:
 
     bool eventFilter(QObject *object, QEvent *event) override;
 
-    Q_SCRIPTABLE QAction *action(const QString &name) const;
     Q_SCRIPTABLE static QString iconName(const QIcon &icon);
 
     void loadTest(const QUrl &url);
@@ -88,7 +87,6 @@ private:
         return m_engine;
     }
 
-    QMap<QString, QAction *> m_collection;
     QQmlApplicationEngine *const m_engine;
 
     CompactMode m_mode;
