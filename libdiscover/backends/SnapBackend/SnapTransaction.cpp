@@ -31,7 +31,6 @@ SnapTransaction::SnapTransaction(QSnapdClient *client, SnapResource *app, Role r
 void SnapTransaction::cancel()
 {
     m_request->cancel();
-    setStatus(CancelledStatus);
 }
 
 void SnapTransaction::finishTransaction()
@@ -41,6 +40,9 @@ void SnapTransaction::finishTransaction()
         static_cast<SnapBackend *>(m_app->backend())->refreshStates();
         setStatus(DoneStatus);
         m_app->setState(m_newState);
+        break;
+    case QSnapdRequest::Cancelled:
+        setStatus(CancelledStatus);
         break;
     case QSnapdRequest::NeedsClassic:
         setStatus(SetupStatus);
