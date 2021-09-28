@@ -104,8 +104,8 @@ void PackageKitNotifier::checkOfflineUpdates()
         const QString errorDetails = group.readEntry("ErrorDetails");
 
         auto *notification = new KNotification(QStringLiteral("OfflineUpdateFailed"), KNotification::Persistent);
-        notification->setIconName(QStringLiteral("error"));
-        notification->setTitle(i18n("Offline Updates"));
+        notification->setIconName(QStringLiteral("dialog-error"));
+        notification->setTitle(i18n("Failed Offline Update"));
         notification->setText(i18np("Failed to update %1 package\n%2", "Failed to update %1 packages\n%2", packages.count(), errorDetails));
         notification->setActions(QStringList{i18nc("@action:button", "Open Discover"), i18nc("@action:button", "Repair System")});
         notification->setComponentName(QStringLiteral("discoverabstractnotifier"));
