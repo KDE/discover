@@ -240,6 +240,7 @@ DiscoverPage
         delegate: Kirigami.AbstractListItem {
             id: listItem
             highlighted: ListView.isCurrentItem
+            hoverEnabled: !page.isBusy
             onEnabledChanged: if (!enabled) {
                 layout.extended = false;
             }
