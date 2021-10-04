@@ -14,12 +14,16 @@ Control
 {
     id: root
     property alias text: theLabel.text
-    property real progress: 1.
+    property real progress: 1.0
+    readonly property bool inProgress: progress > 0
     padding: Kirigami.Units.smallSpacing * 1.5
 
     background: Item {
+        visible: root.inProgress
         Rectangle {
             color: Kirigami.Theme.disabledTextColor
+            border.width: 1
+            border.color: Qt.darker(Kirigami.Theme.disabledTextColor)
             anchors.fill: parent
             radius: root.padding
         }
@@ -27,17 +31,20 @@ Control
         Rectangle {
             anchors {
                 fill: parent
-                rightMargin: (1-root.progress) * parent.width
+                leftMargin: 1
+                rightMargin: ((1-root.progress) * parent.width) + 1
+                topMargin: 1
+                bottomMargin: 1
             }
             color: Kirigami.Theme.highlightColor
-            radius: root.padding
+            radius: root.padding-2
         }
     }
 
     contentItem: Label {
         id: theLabel
         horizontalAlignment: Text.AlignHCenter
-        color: Kirigami.Theme.highlightedTextColor
+        color: root.inProgress ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
     }
 
     ToolTip.visible: hovered
