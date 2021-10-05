@@ -4,7 +4,7 @@ import QtQuick.Controls 2.14
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 import "navigation.js" as Navigation
 
 Kirigami.ApplicationWindow
@@ -156,6 +156,16 @@ Kirigami.ApplicationWindow
         function onPassiveMessage (message) {
             showPassiveNotification(message)
             console.log("message:", message)
+        }
+    }
+
+    footer: Kirigami.NavigationTabBar {
+        visible: !window.wideScreen
+        actions: {
+            var ret = Array.from(globalDrawer.actions)
+            ret.push(installedAction)
+            ret.push(updateAction)
+            return ret
         }
     }
 

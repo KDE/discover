@@ -122,6 +122,7 @@ Kirigami.GlobalDrawer {
         }
         ActionListItem {
             action: installedAction
+            visible: drawer.wideScreen
         }
         ActionListItem {
             action: sourcesAction
@@ -134,6 +135,7 @@ Kirigami.GlobalDrawer {
         ActionListItem {
             objectName: "updateButton"
             action: updateAction
+            visible: drawer.wideScreen
 
             backgroundColor: ResourcesModel.updatesCount>0 ? "orange" : Kirigami.Theme.backgroundColor
 
