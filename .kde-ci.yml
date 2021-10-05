@@ -1,0 +1,29 @@
+# SPDX-FileCopyrightText: None
+# SPDX-License-Identifier: CC0-1.0
+
+Dependencies:
+- 'on': ['@all']
+  'require':
+    'frameworks/attica': '@latest'
+    'frameworks/extra-cmake-modules': '@latest'
+    'frameworks/karchive': '@latest'
+    'frameworks/kauth': '@latest'
+    'frameworks/kcmutils': '@latest'
+    'frameworks/kcodecs': '@latest'
+    'frameworks/kconfig': '@latest'
+    'frameworks/kconfigwidgets': '@latest'
+    'frameworks/kcoreaddons': '@latest'
+    'frameworks/kcrash': '@latest'
+    'frameworks/kdbusaddons': '@latest'
+    'frameworks/kdeclarative': '@latest'
+    'frameworks/ki18n': '@latest'
+    'frameworks/kidletime': '@latest'
+    'frameworks/kio': '@latest'
+    'frameworks/kitemmodels': '@latest'
+    'frameworks/knewstuff': '@latest'
+    'frameworks/knotifications': '@latest'
+    'frameworks/kservice': '@latest'
+    'frameworks/kwidgetsaddons': '@latest'
+    'frameworks/kwindowsystem': '@latest'
+    'frameworks/kxmlgui': '@latest'
+    'libraries/kuserfeedback': '@stable'
