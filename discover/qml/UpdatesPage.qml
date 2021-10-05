@@ -166,6 +166,7 @@ DiscoverPage
     readonly property Item report: ColumnLayout {
         parent: page
         anchors.fill: parent
+        anchors.margins: Kirigami.Units.largeSpacing * 2
         Item {
             Layout.fillHeight: true
             width: 1
@@ -173,8 +174,6 @@ DiscoverPage
         ProgressBar {
             Layout.alignment: Qt.AlignHCenter
             Layout.fillWidth: true
-            Layout.leftMargin: Kirigami.Units.largeSpacing * 2
-            Layout.rightMargin: Kirigami.Units.largeSpacing * 2
             Layout.maximumWidth: Kirigami.Units.gridUnit * 20
             value: page.footerProgress
             from: 0
