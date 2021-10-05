@@ -30,7 +30,7 @@ Kirigami.OverlaySheet
             }
             QQC2.Label {
                 Kirigami.FormData.label: i18n("Name:")
-                visible: reviewDialog.backend.userName.length > 0
+                visible: page.reviewsBackend !== null && reviewDialog.backend.userName.length > 0
                 Layout.fillWidth: true
                 elide: Text.ElideRight
                 text: visible ? reviewDialog.backend.userName : ""
