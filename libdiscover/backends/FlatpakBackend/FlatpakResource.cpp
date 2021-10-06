@@ -99,7 +99,7 @@ QString FlatpakResource::availableVersion() const
 
     if (!m_appdata.releases().isEmpty()) {
         auto release = m_appdata.releases().constFirst();
-        return i18n("%1 (%2)", release.version(), theBranch);
+        return i18nc("version (branch)", "%1 (%2)", release.version(), theBranch);
     }
 
     return theBranch;
@@ -229,7 +229,7 @@ QString FlatpakResource::installedVersion() const
     }
 
     if (auto ref = qobject_cast<FlatpakBackend *>(backend())->getInstalledRefForApp(this)) {
-        return i18n("%1 (%2)", flatpak_installed_ref_get_appdata_version(ref), version);
+        return i18nc("version (branch)", "%1 (%2)", flatpak_installed_ref_get_appdata_version(ref), version);
     }
     return version;
 }
