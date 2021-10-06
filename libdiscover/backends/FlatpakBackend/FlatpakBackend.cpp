@@ -325,7 +325,7 @@ FlatpakRemote *FlatpakBackend::getFlatpakRemoteByUrl(const QString &url, Flatpak
     return nullptr;
 }
 
-FlatpakInstalledRef *FlatpakBackend::getInstalledRefForApp(FlatpakResource *resource) const
+FlatpakInstalledRef *FlatpakBackend::getInstalledRefForApp(const FlatpakResource *resource) const
 {
     Q_ASSERT(resource->resourceType() != FlatpakResource::Source);
     g_autoptr(GError) localError = nullptr;

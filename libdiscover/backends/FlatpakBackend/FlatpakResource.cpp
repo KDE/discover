@@ -223,12 +223,14 @@ QVariant FlatpakResource::icon() const
 
 QString FlatpakResource::installedVersion() const
 {
-    // TODO check if there is actually version available
     QString version = branch();
     if (version.isEmpty()) {
         version = i18n("Unknown");
     }
 
+    if (auto ref = qobject_cast<FlatpakBackend *>(backend())->getInstalledRefForApp(this)) {
+        return i18n("%1 (%2)", flatpak_installed_ref_get_appdata_version(ref), version);
+    }
     return version;
 }
 
