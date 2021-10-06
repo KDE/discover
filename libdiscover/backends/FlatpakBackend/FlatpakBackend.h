@@ -72,7 +72,7 @@ public:
     }
 
     bool updateAppSize(FlatpakResource *resource);
-    FlatpakInstalledRef *getInstalledRefForApp(FlatpakResource *resource) const;
+    FlatpakInstalledRef *getInstalledRefForApp(const FlatpakResource *resource) const;
 
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata);
