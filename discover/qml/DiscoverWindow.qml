@@ -31,6 +31,7 @@ Kirigami.ApplicationWindow
     minimumHeight: 300
 
     pageStack.defaultColumnWidth: Kirigami.Units.gridUnit * 25
+    pageStack.globalToolBar.canContainHandles: true // mobile sidebar handles in header
 
     readonly property var leftPage: window.stack.depth>0 ? window.stack.get(0) : null
 
