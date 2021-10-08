@@ -21,7 +21,7 @@ DiscoverPage
     topPadding: 0
     bottomPadding: 0
 
-    actions.main: searchAction
+    actions.main: window.wideScreen ? searchAction : undefined
 
     readonly property bool isHome: true
 

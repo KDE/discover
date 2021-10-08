@@ -31,6 +31,7 @@ Kirigami.ApplicationWindow
     minimumHeight: 300
 
     pageStack.defaultColumnWidth: Kirigami.Units.gridUnit * 25
+    pageStack.globalToolBar.canContainHandles: true // mobile handles in header
 
     readonly property var leftPage: window.stack.depth>0 ? window.stack.get(0) : null
 
@@ -161,12 +162,12 @@ Kirigami.ApplicationWindow
 
     footer: Kirigami.NavigationTabBar {
         visible: !window.wideScreen
-        actions: {
-            var ret = Array.from(globalDrawer.actions)
-            ret.push(installedAction)
-            ret.push(updateAction)
-            return ret
-        }
+        actions: [
+            featuredAction,
+            searchAction,
+            installedAction,
+            updateAction
+        ]
     }
 
     Component {
