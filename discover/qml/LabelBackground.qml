@@ -46,7 +46,4 @@ Control
         horizontalAlignment: Text.AlignHCenter
         color: root.inProgress ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
     }
-
-    ToolTip.visible: hovered
-    ToolTip.text: theLabel.text
 }
