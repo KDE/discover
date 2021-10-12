@@ -137,6 +137,7 @@ DiscoverPage {
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
 
             opacity: apps.count == 0 && !appsModel.isBusy && (!page.searchPage || appsModel.search.length > 0) ? 1 : 0
+            visible: opacity > 0
             Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad } }
 
             icon.name: "edit-none"
