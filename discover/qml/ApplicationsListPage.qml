@@ -132,16 +132,40 @@ DiscoverPage {
             showRating: page.showRating
         }
 
-        Kirigami.PlaceholderMessage {
-            anchors.centerIn: parent
-            width: parent.width - (Kirigami.Units.largeSpacing * 4)
-
+        Item {
+            anchors.fill: parent
             opacity: apps.count == 0 && !appsModel.isBusy && (!page.searchPage || appsModel.search.length > 0) ? 1 : 0
             visible: opacity > 0
             Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad } }
 
-            icon.name: "edit-none"
-            text: i18n("Nothing found")
+            Kirigami.PlaceholderMessage {
+                visible: !searchedForThingNotFound.visible
+                anchors.centerIn: parent
+                width: parent.width - (Kirigami.Units.largeSpacing * 8)
+
+                icon.name: "edit-none"
+                text: i18n("Nothing found")
+            }
+
+            Kirigami.PlaceholderMessage {
+                id: searchedForThingNotFound
+
+                anchors.centerIn: parent
+                width: parent.width - (Kirigami.Units.largeSpacing * 8)
+
+                visible: appsModel.search.length > 0
+
+                icon.name: "edit-none"
+                text: i18nc("%1 is the name of an application", "\"%1\" was not found in the available sources", appsModel.search)
+                explanation: i18nc("%1 is the name of an application", "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution.", appsModel.search)
+                helpfulAction: Kirigami.Action {
+                    text: i18nc("%1 is the name of an application", "Search the web for \"%1\"", appsModel.search)
+                    icon.name: "internet-web-browser"
+                    onTriggered:  {
+                        Qt.openUrlExternally(`https://duckduckgo.com/?q=${encodeURIComponent("Linux " + appsModel.search)}`);
+                    }
+                }
+            }
         }
 
         footer: ColumnLayout {
