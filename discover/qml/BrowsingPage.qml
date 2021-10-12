@@ -16,10 +16,6 @@ DiscoverPage
 {
     id: page
     title: i18n("Featured")
-    leftPadding: 0
-    rightPadding: 0
-    topPadding: 0
-    bottomPadding: 0
 
     actions.main: window.wideScreen ? searchAction : undefined
 
@@ -90,19 +86,21 @@ DiscoverPage
     }
 
 
-    Kirigami.CardsListView {
+    Kirigami.CardsLayout {
         id: apps
-        model: FeaturedModel {}
-        activeFocusOnTab: true
-        Component.onCompleted: apps.bottomMargin = Kirigami.Units.largeSpacing * 2
-        onActiveFocusChanged: if (activeFocus && currentIndex === -1) {
-            currentIndex = 0;
-        }
+        minimumColumnWidth: Kirigami.Units.gridUnit * 22
+        maximumColumns: 5
 
-        currentIndex: -1
-        delegate: ApplicationDelegate {
-            application: model.application
-            compact: page.compact
+        Repeater {
+            onActiveFocusChanged: if (activeFocus && currentIndex === -1) {
+                currentIndex = 0;
+            }
+            activeFocusOnTab: true
+            model: FeaturedModel {}
+            delegate: ApplicationDelegate {
+                application: model.application
+                compact: page.compact
+            }
         }
     }
 }
