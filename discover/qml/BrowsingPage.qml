@@ -88,7 +88,7 @@ DiscoverPage
 
     Kirigami.CardsLayout {
         id: apps
-        minimumColumnWidth: Kirigami.Units.gridUnit * 22
+        minimumColumnWidth: Kirigami.Units.gridUnit * 20
         maximumColumns: 5
 
         Repeater {
