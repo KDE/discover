@@ -55,6 +55,8 @@ Kirigami.GlobalDrawer {
         visible: drawer.wideScreen
 
         contentItem: RowLayout {
+            spacing: Kirigami.Units.smallSpacing
+
             anchors {
                 left: parent.left
                 leftMargin: Kirigami.Units.smallSpacing
@@ -63,7 +65,6 @@ Kirigami.GlobalDrawer {
             }
 
             ToolButton {
-
                 icon.name: "go-home"
                 onClicked: Navigation.openHome()
 
