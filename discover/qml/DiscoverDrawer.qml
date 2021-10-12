@@ -20,6 +20,8 @@ Kirigami.GlobalDrawer {
     topPadding: 0
     bottomPadding: 0
 
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+
     // FIXME: Dirty workaround for 385992
     width: Kirigami.Units.gridUnit * 14
 
