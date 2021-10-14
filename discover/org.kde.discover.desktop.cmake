@@ -108,6 +108,12 @@ GenericName[zh_CN]=软件管理中心程序
 GenericName[zh_TW]=軟體中心
 Categories=Qt;KDE;System;
 Keywords=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
+Keywords[ca]=programa;programari;repositori;paquet;afegeix;instal·la;desinstal·la;elimina;actualitza;apps;aplicacions;jocs;flatpak;snap;complements;microprogramari;firmware;
+Keywords[es]=programa;software;repositorio;paquete;añadir;agregar;instalar;desinstalar;eliminar;borrar;actualizar;apps;aplicaciones;juegos;flatpak;snap;complementos;añadidos;firmware;
+Keywords[nl]=programma;software;opslagruimte;pakket;toevoegen;installeren;installatie ongedaan maken;verwijderen;bijwerken;apps;toepassingen;applicaties;spellen;flatpak;snap;add-ons;firmware;
+Keywords[sv]=program;programvara;arkiv;paket;lägg till;installera;avinstallera;ta bort;uppdatera;appar;program;spel;flatpak;snap;tillägg;fast programvara
+Keywords[uk]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;програма;програмне забезпечення;сховище;архів;пакунок;додати;встановити;встановлення;вилучити;вилучення;оновлення;оновити;ігри;флетпак;снеп;снап;додатки;мікропрограма;
+Keywords[x-test]=xxprogramxx;xxsoftwarexx;xxrepositoryxx;xxpackagexx;xxaddxx;xxinstallxx;xxuninstallxx;xxremovexx;xxupdatexx;xxappsxx;xxapplicationsxx;xxgamesxx;xxflatpakxx;xxsnapxx;xxaddonsxx;xxadd-onsxx;xxfirmwarexx;
 
 [Desktop Action Updates]
 Name=See Available Updates
