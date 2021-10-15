@@ -423,6 +423,11 @@ QSharedPointer<FlatpakSource> FlatpakBackend::findSource(FlatpakInstallation *in
             return source;
         }
     }
+    for (const auto &source : m_flatpakLoadingSources) {
+        if (source->installation() == installation && source->name() == origin) {
+            return source;
+        }
+    }
 
     Q_UNREACHABLE();
 }
@@ -842,6 +847,7 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
 
     auto source = QSharedPointer<FlatpakSource>::create(this, flatpakInstallation, remote);
     if (!source->isEnabled() || flatpak_remote_get_noenumerate(remote)) {
+        m_flatpakSources += source;
         metadataRefreshed();
         return {};
     }
