@@ -210,7 +210,7 @@ DiscoverPage {
                     readonly property variant idx: sourcesView.model.index(index, 0)
                     readonly property variant modelChecked: sourcesView.model.data(idx, Qt.CheckStateRole)
                     checked: modelChecked !== Qt.Unchecked
-                    enabled: modelChecked !== undefined
+                    enabled: sourcesView.model.flags(idx) & Qt.ItemIsUserCheckable
                     onClicked: {
                         sourcesView.model.setData(idx, checkState, Qt.CheckStateRole)
                         checked = Qt.binding(function() { return modelChecked !== Qt.Unchecked; })
