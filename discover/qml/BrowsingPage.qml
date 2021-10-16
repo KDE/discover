@@ -31,7 +31,7 @@ DiscoverPage
         anchors.centerIn: parent
         opacity: 0.5
 
-        visible: apps.count === 0 && apps.model.isFetching
+        visible: appsRep.count === 0 && appsRep.model.isFetching
 
         Kirigami.Heading {
             level: 2
@@ -50,7 +50,7 @@ DiscoverPage
         anchors.centerIn: parent
         width: parent.width - (Kirigami.Units.largeSpacing * 4)
 
-        visible: apps.count === 0 && !apps.model.isFetching
+        visible: appsRep.count === 0 && !appsRep.model.isFetching
 
         icon.name: "network-disconnect"
         text: i18n("Unable to load applications")
@@ -92,6 +92,7 @@ DiscoverPage
         maximumColumns: 5
 
         Repeater {
+            id: appsRep
             onActiveFocusChanged: if (activeFocus && currentIndex === -1) {
                 currentIndex = 0;
             }
