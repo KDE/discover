@@ -24,9 +24,16 @@
 class FlatpakSourceItem : public QStandardItem
 {
 public:
-    FlatpakSourceItem(const QString &text)
+    FlatpakSourceItem(const QString &text, FlatpakRemote *remote, FlatpakBackend *backend)
         : QStandardItem(text)
+        , m_remote(remote)
+        , m_backend(backend)
     {
+        g_object_ref(remote);
+    }
+    ~FlatpakSourceItem()
+    {
+        g_object_unref(m_remote);
     }
 
     void setFlatpakInstallation(FlatpakInstallation *installation)
@@ -39,8 +46,34 @@ public:
         return m_installation;
     }
 
+    void setData(const QVariant &value, int role) override
+    {
+        // We check isCheckable() so the initial setting of the item doesn't trigger a change
+        if (role == Qt::CheckStateRole && isCheckable()) {
+            const bool disabled = flatpak_remote_get_disabled(m_remote);
+            const bool requestedDisabled = Qt::Unchecked == value;
+            if (disabled != requestedDisabled) {
+                flatpak_remote_set_disabled(m_remote, requestedDisabled);
+                g_autoptr(GError) error = nullptr;
+                if (!flatpak_installation_modify_remote(m_installation, m_remote, nullptr, &error)) {
+                    qWarning() << "set disabled failed" << error->message;
+                    return;
+                }
+
+                if (requestedDisabled) {
+                    m_backend->unloadRemote(m_installation, m_remote);
+                } else {
+                    m_backend->loadRemote(m_installation, m_remote);
+                }
+            }
+        }
+        QStandardItem::setData(value, role);
+    }
+
 private:
-    FlatpakInstallation *m_installation;
+    FlatpakInstallation *m_installation = nullptr;
+    FlatpakRemote *const m_remote;
+    FlatpakBackend *const m_backend;
 };
 
 FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *> &installations, AbstractResourcesBackend *parent)
@@ -335,7 +368,9 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     if (flatpak_installation_get_is_user(installation)) {
         label = i18n("%1 (user)", label);
     }
-    FlatpakSourceItem *it = new FlatpakSourceItem(label);
+
+    FlatpakBackend *backend = qobject_cast<FlatpakBackend *>(parent());
+    FlatpakSourceItem *it = new FlatpakSourceItem(label, remote, backend);
     it->setData(remoteUrl.isLocalFile() ? remoteUrl.toLocalFile() : remoteUrl.host(), Qt::ToolTipRole);
     it->setData(remoteUrl, Qt::StatusTipRole);
     it->setData(id, IdRole);
@@ -343,6 +378,7 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
 #if FLATPAK_CHECK_VERSION(1, 4, 0)
     it->setData(QString::fromUtf8(flatpak_remote_get_icon(remote)), IconUrlRole);
 #endif
+    it->setCheckable(true);
     it->setFlatpakInstallation(installation);
 
     int idx = -1;
