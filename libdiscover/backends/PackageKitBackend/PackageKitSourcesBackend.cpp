@@ -123,6 +123,7 @@ void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QSt
     }
     item->setData(id, IdRole);
     item->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
+    item->setEnabled(true);
 
     if (add)
         m_sources->appendRow(item);
@@ -153,10 +154,21 @@ QVariantList PackageKitSourcesBackend::actions() const
 void PackageKitSourcesBackend::resetSources()
 {
     disconnect(SourcesModel::global(), &SourcesModel::showingNow, this, &PackageKitSourcesBackend::resetSources);
-    m_sources->clear();
+    for (int i = 0, c = m_sources->rowCount(); i < c; ++i) {
+        m_sources->item(i, 0)->setEnabled(false);
+    }
     auto transaction = PackageKit::Daemon::global()->getRepoList();
     connect(transaction, &PackageKit::Transaction::repoDetail, this, &PackageKitSourcesBackend::addRepositoryDetails);
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitSourcesBackend::transactionError);
+    connect(transaction, &PackageKit::Transaction::finished, this, [this] {
+        for (int i = 0; i < m_sources->rowCount();) {
+            if (!m_sources->item(i, 0)->isEnabled()) {
+                m_sources->removeRow(i);
+            } else {
+                ++i;
+            }
+        }
+    });
 }
 
 void PackageKitSourcesBackend::transactionError(PackageKit::Transaction::Error error, const QString &message)
