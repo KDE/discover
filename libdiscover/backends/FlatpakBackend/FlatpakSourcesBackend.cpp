@@ -225,7 +225,8 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
             qWarning() << "could not list refs in repo" << id << error->message;
         }
 
-        if (flatpak_installation_remove_remote(installation, id.toUtf8().constData(), cancellable, &error)) {
+        g_autoptr(GError) errorRemoveRemote = nullptr;
+        if (flatpak_installation_remove_remote(installation, id.toUtf8().constData(), cancellable, &errorRemoveRemote)) {
             m_sources->removeRow(sourceItem->row());
 
             if (m_sources->rowCount() == 0) {
@@ -233,7 +234,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
             }
             return true;
         } else {
-            Q_EMIT passiveMessage(i18n("Failed to remove %1 remote repository: %2", id, QString::fromUtf8(error->message)));
+            Q_EMIT passiveMessage(i18n("Failed to remove %1 remote repository: %2", id, QString::fromUtf8(errorRemoveRemote->message)));
             return false;
         }
     } else {
