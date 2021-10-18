@@ -9,5 +9,6 @@ import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.AboutPage
 {
+    readonly property bool isHome: true
     aboutData: discoverAboutData
 }
