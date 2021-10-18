@@ -34,6 +34,7 @@ QHash<int, QByteArray> SourcesModel::roleNames() const
     roles.insert(AbstractSourcesBackend::IdRole, "sourceId");
     roles.insert(Qt::DisplayRole, "display");
     roles.insert(Qt::ToolTipRole, "toolTip");
+    roles.insert(Qt::CheckStateRole, "checkState");
     roles.insert(SourceNameRole, "sourceName");
     roles.insert(SourcesBackend, "sourcesBackend");
     roles.insert(ResourcesBackend, "resourcesBackend");
