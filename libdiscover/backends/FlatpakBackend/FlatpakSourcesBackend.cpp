@@ -338,6 +338,7 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     it->setData(remoteUrl.isLocalFile() ? remoteUrl.toLocalFile() : remoteUrl.host(), Qt::ToolTipRole);
     it->setData(remoteUrl, Qt::StatusTipRole);
     it->setData(id, IdRole);
+    it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
 #if FLATPAK_CHECK_VERSION(1, 4, 0)
     it->setData(QString::fromUtf8(flatpak_remote_get_icon(remote)), IconUrlRole);
 #endif
