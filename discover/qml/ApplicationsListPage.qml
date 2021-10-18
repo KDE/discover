@@ -153,7 +153,7 @@ DiscoverPage {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 8)
 
-                visible: appsModel.search.length > 0
+                visible: appsModel.search.length > 0 && stateFilter !== AbstractResource.Installed
 
                 icon.name: "edit-none"
                 text: i18nc("%1 is the name of an application", "\"%1\" was not found in the available sources", appsModel.search)
@@ -161,7 +161,7 @@ DiscoverPage {
                 helpfulAction: Kirigami.Action {
                     text: i18nc("%1 is the name of an application", "Search the web for \"%1\"", appsModel.search)
                     icon.name: "internet-web-browser"
-                    onTriggered:  {
+                    onTriggered: {
                         Qt.openUrlExternally(`https://duckduckgo.com/?q=${encodeURIComponent("Linux " + appsModel.search)}`);
                     }
                 }
