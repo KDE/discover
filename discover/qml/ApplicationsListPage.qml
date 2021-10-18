@@ -162,7 +162,8 @@ DiscoverPage {
                     text: i18nc("%1 is the name of an application", "Search the web for \"%1\"", appsModel.search)
                     icon.name: "internet-web-browser"
                     onTriggered: {
-                        Qt.openUrlExternally(`https://duckduckgo.com/?q=${encodeURIComponent("Linux " + appsModel.search)}`);
+                        const searchTerm = encodeURIComponent("Linux " + appsModel.search);
+                        Qt.openUrlExternally(i18nc("If appropriate, localize this URL to be something more relevant to the language. %1 is the text that will be searched for.", "https://duckduckgo.com/?q=%1", searchTerm));
                     }
                 }
             }
