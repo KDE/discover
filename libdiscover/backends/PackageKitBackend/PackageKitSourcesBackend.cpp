@@ -118,6 +118,7 @@ void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QSt
                 item->setData(match.captured(1), Qt::ToolTipRole);
             }
         }
+        item->setCheckable(PackageKit::Daemon::roles() & PackageKit::Transaction::RoleRepoEnable);
         add = true;
     }
     item->setData(id, IdRole);
