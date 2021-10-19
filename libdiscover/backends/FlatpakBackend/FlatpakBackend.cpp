@@ -8,6 +8,7 @@
 #include "FlatpakBackend.h"
 #include "FlatpakFetchDataJob.h"
 #include "FlatpakJobTransaction.h"
+#include "FlatpakRefreshAppstreamMetadataJob.h"
 #include "FlatpakSourcesBackend.h"
 
 #include <ReviewsBackend/Rating.h>
@@ -801,22 +802,52 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
         return false;
     }
 
-    m_refreshAppstreamMetadataJobs += remotes->len;
-
     for (uint i = 0; i < remotes->len; i++) {
         FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
-        g_autoptr(GFile) fileTimestamp = flatpak_remote_get_appstream_timestamp(remote, flatpak_get_default_arch());
-
-        g_autofree char *path_str = g_file_get_path(fileTimestamp);
-        QFileInfo fileInfo(QFile::encodeName(path_str));
-        // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
-        if (!fileInfo.exists() || fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
-            refreshAppstreamMetadata(flatpakInstallation, remote);
-        } else {
-            integrateRemote(flatpakInstallation, remote);
-        }
+        loadRemote(flatpakInstallation, remote);
     }
     return true;
+}
+
+void FlatpakBackend::loadRemote(FlatpakInstallation *installation, FlatpakRemote *remote)
+{
+    g_autoptr(GFile) fileTimestamp = flatpak_remote_get_appstream_timestamp(remote, flatpak_get_default_arch());
+
+    g_autofree char *path_str = g_file_get_path(fileTimestamp);
+    QFileInfo fileInfo(QFile::encodeName(path_str));
+    // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
+    if (!fileInfo.exists() || fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
+        m_refreshAppstreamMetadataJobs++;
+        FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
+        connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, &FlatpakBackend::metadataRefreshed);
+        connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, [this](const QString &errorMessage) {
+            Q_EMIT passiveMessage(errorMessage);
+        });
+        connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
+        connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this] {
+            acquireFetching(false);
+        });
+
+        acquireFetching(true);
+        job->start();
+    } else {
+        m_refreshAppstreamMetadataJobs++;
+        integrateRemote(installation, remote);
+    }
+}
+
+void FlatpakBackend::unloadRemote(FlatpakInstallation *installation, FlatpakRemote *remote)
+{
+    acquireFetching(true);
+    for (auto it = m_flatpakSources.begin(); it != m_flatpakSources.end();) {
+        if ((*it)->url() == flatpak_remote_get_url(remote) && (*it)->installation() == installation) {
+            qDebug() << "unloading remote" << (*it) << remote;
+            it = m_flatpakSources.erase(it);
+        } else {
+            ++it;
+        }
+    }
+    acquireFetching(false);
 }
 
 void FlatpakBackend::metadataRefreshed()
@@ -831,15 +862,15 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
 {
     Q_ASSERT(m_refreshAppstreamMetadataJobs != 0);
     for (auto source : qAsConst(m_flatpakSources)) {
-        if (source->url() == flatpak_remote_get_url(remote)) {
-            qDebug() << "do not add a source twice" << source << remote;
+        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
+            qDebug() << "do not add a source twice1" << source << remote;
             metadataRefreshed();
             return source;
         }
     }
     for (auto source : qAsConst(m_flatpakLoadingSources)) {
-        if (source->url() == flatpak_remote_get_url(remote)) {
-            qDebug() << "do not add a source twice" << source << remote;
+        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
+            qDebug() << "do not add a source twice2" << source << remote;
             metadataRefreshed();
             return source;
         }
@@ -934,81 +965,9 @@ bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
     return true;
 }
 
-class FlatpakRefreshAppstreamMetadataJob : public QThread
-{
-    Q_OBJECT
-public:
-    FlatpakRefreshAppstreamMetadataJob(FlatpakInstallation *installation, FlatpakRemote *remote)
-        : QThread()
-        , m_cancellable(g_cancellable_new())
-        , m_installation(installation)
-        , m_remote(remote)
-    {
-        g_object_ref(m_remote);
-        connect(this, &FlatpakRefreshAppstreamMetadataJob::finished, this, &QObject::deleteLater);
-    }
-
-    ~FlatpakRefreshAppstreamMetadataJob()
-    {
-        g_object_unref(m_remote);
-        g_object_unref(m_cancellable);
-    }
-
-    void cancel()
-    {
-        g_cancellable_cancel(m_cancellable);
-    }
-
-    void run() override
-    {
-        g_autoptr(GError) localError = nullptr;
-
-#if FLATPAK_CHECK_VERSION(0, 9, 4)
-        // With Flatpak 0.9.4 we can use flatpak_installation_update_appstream_full_sync() providing progress reporting which we don't use at this moment, but
-        // still better to use newer function in case the previous one gets deprecated
-        if (!flatpak_installation_update_appstream_full_sync(m_installation,
-                                                             flatpak_remote_get_name(m_remote),
-                                                             nullptr,
-                                                             nullptr,
-                                                             nullptr,
-                                                             nullptr,
-                                                             m_cancellable,
-                                                             &localError)) {
-#else
-        if (!flatpak_installation_update_appstream_sync(m_installation, flatpak_remote_get_name(m_remote), nullptr, nullptr, m_cancellable, &localError)) {
-#endif
-            const QString error = localError ? QString::fromUtf8(localError->message) : QStringLiteral("<no error>");
-            qWarning() << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << error;
-            Q_EMIT jobRefreshAppstreamMetadataFailed(error);
-        } else {
-            Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
-        }
-    }
-
-Q_SIGNALS:
-    void jobRefreshAppstreamMetadataFailed(const QString &errorMessage);
-    void jobRefreshAppstreamMetadataFinished(FlatpakInstallation *installation, FlatpakRemote *remote);
-
-private:
-    GCancellable *m_cancellable;
-    FlatpakInstallation *m_installation;
-    FlatpakRemote *m_remote;
-};
-
 void FlatpakBackend::refreshAppstreamMetadata(FlatpakInstallation *installation, FlatpakRemote *remote)
 {
-    FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
-    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, &FlatpakBackend::metadataRefreshed);
-    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, [this](const QString &errorMessage) {
-        Q_EMIT passiveMessage(errorMessage);
-    });
-    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
-    connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this] {
-        acquireFetching(false);
-    });
 
-    acquireFetching(true);
-    job->start();
 }
 
 bool FlatpakBackend::setupFlatpakInstallations(GError **error)
@@ -1477,12 +1436,11 @@ Transaction *FlatpakBackend::installApplication(AbstractResource *app, const Add
         FlatpakRemote *remote = m_sources->installSource(resource);
         if (remote) {
             resource->setState(AbstractResource::Installed);
-            m_refreshAppstreamMetadataJobs++;
             // Make sure we update appstream metadata first
             // FIXME we have to let flatpak to return the remote as the one created by FlatpakSourcesBackend will not have appstream directory
             g_autoptr(FlatpakRemote) repo =
                 flatpak_installation_get_remote_by_name(resource->installation(), flatpak_remote_get_name(remote), m_cancellable, nullptr);
-            refreshAppstreamMetadata(resource->installation(), repo);
+            loadRemote(resource->installation(), repo);
         }
         return nullptr;
     }

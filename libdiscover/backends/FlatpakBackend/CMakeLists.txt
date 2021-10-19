@@ -7,6 +7,7 @@ set(flatpak-backend_SRCS
     FlatpakSourcesBackend.cpp
     FlatpakJobTransaction.cpp
     FlatpakTransactionThread.cpp
+    FlatpakRefreshAppstreamMetadataJob.cpp
 )
 
 add_library(flatpak-backend MODULE ${flatpak-backend_SRCS})
