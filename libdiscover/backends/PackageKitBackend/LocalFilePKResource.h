@@ -23,7 +23,6 @@ public:
         return m_state;
     }
     int size() override;
-    void markInstalled();
     QString origin() const override;
     void fetchDetails() override;
     bool canExecute() const override
@@ -37,9 +36,10 @@ public:
     }
 
     void setDetails(const PackageKit::Details &details);
+    void setState(AbstractResource::State state);
 
 private:
-    AbstractResource::State m_state = AbstractResource::None;
+    AbstractResource::State m_state = AbstractResource::Broken;
     QUrl m_path;
     QString m_exec;
 };

@@ -59,7 +59,7 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
         connect(m_trans.data(), &PackageKit::Transaction::finished, this, [this, app](PackageKit::Transaction::Exit status) {
             const bool simulate = m_trans->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
             if (!simulate && status == PackageKit::Transaction::ExitSuccess) {
-                app->markInstalled();
+                app->setState(AbstractResource::Installed);
             }
         });
     } else
