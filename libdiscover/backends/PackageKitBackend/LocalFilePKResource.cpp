@@ -36,12 +36,6 @@ QString LocalFilePKResource::comment()
     return m_path.toLocalFile();
 }
 
-void LocalFilePKResource::markInstalled()
-{
-    m_state = AbstractResource::Installed;
-    Q_EMIT stateChanged();
-}
-
 QString LocalFilePKResource::origin() const
 {
     return m_path.toLocalFile();
@@ -53,30 +47,42 @@ void LocalFilePKResource::fetchDetails()
         return;
     m_details.insert(QStringLiteral("fetching"), true); // we add an entry so it's not re-fetched.
 
-    PackageKit::Transaction *transaction = PackageKit::Daemon::getDetailsLocal(m_path.toLocalFile());
-    connect(transaction, &PackageKit::Transaction::details, this, &LocalFilePKResource::setDetails);
-    connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
+    if (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleGetDetailsLocal) {
+        PackageKit::Transaction *transaction = PackageKit::Daemon::getDetailsLocal(m_path.toLocalFile());
+        connect(transaction, &PackageKit::Transaction::details, this, &LocalFilePKResource::setDetails);
+        connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
+    }
 
-    PackageKit::Transaction *transaction2 = PackageKit::Daemon::getFilesLocal(m_path.toLocalFile());
-    connect(transaction2, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
-    connect(transaction2, &PackageKit::Transaction::files, this, [this](const QString & /*pkgid*/, const QStringList &files) {
-        const auto execIdx = kIndexOf(files, [](const QString &file) {
-            return file.endsWith(QLatin1String(".desktop")) && file.contains(QLatin1String("usr/share/applications"));
-        });
-        if (execIdx >= 0) {
-            m_exec = files[execIdx];
+    if (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleGetFilesLocal) {
+        PackageKit::Transaction *transaction2 = PackageKit::Daemon::getFilesLocal(m_path.toLocalFile());
+        connect(transaction2, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
+        connect(transaction2, &PackageKit::Transaction::files, this, [this](const QString & /*pkgid*/, const QStringList &files) {
+            const auto isFileInstalled = [](const QString &file) {
+                return QFileInfo::exists(QLatin1Char('/') + file);
+            };
+            const bool allFilesInstalled = std::all_of(files.constBegin(), files.constEnd(), isFileInstalled);
 
-            // sometimes aptcc provides paths like usr/share/applications/steam.desktop
-            if (!m_exec.startsWith(QLatin1Char('/'))) {
-                m_exec.prepend(QLatin1Char('/'));
+            // PackageKit can't tell us if a package coming from the a file is installed or not,
+            // so we inspect the files it wants to install and check if they're available on our running system
+            setState(allFilesInstalled ? Installed : None);
+            const auto execIdx = kIndexOf(files, [](const QString &file) {
+                return file.endsWith(QLatin1String(".desktop")) && file.contains(QLatin1String("usr/share/applications"));
+            });
+            if (execIdx >= 0) {
+                m_exec = files[execIdx];
+
+                // sometimes aptcc provides paths like usr/share/applications/steam.desktop
+                if (!m_exec.startsWith(QLatin1Char('/'))) {
+                    m_exec.prepend(QLatin1Char('/'));
+                }
+            } else {
+                qWarning() << "could not find an executable desktop file for" << m_path << "among" << files;
             }
-        } else {
-            qWarning() << "could not find an executable desktop file for" << m_path << "among" << files;
-        }
-    });
-    connect(transaction2, &PackageKit::Transaction::finished, this, [] {
-        qCDebug(LIBDISCOVER_BACKEND_LOG) << ".";
-    });
+        });
+    } else {
+        // If we don't get to know the installed files, assume it's not so at least it can be installed
+        setState(None);
+    }
 }
 
 void LocalFilePKResource::setDetails(const PackageKit::Details &details)
@@ -88,4 +94,13 @@ void LocalFilePKResource::setDetails(const PackageKit::Details &details)
 void LocalFilePKResource::invokeApplication() const
 {
     runService({m_exec});
+}
+
+void LocalFilePKResource::setState(AbstractResource::State state)
+{
+    if (m_state == state)
+        return;
+
+    m_state = state;
+    Q_EMIT stateChanged();
 }
