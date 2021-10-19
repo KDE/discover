@@ -99,6 +99,11 @@ ConditionalLoader
         // TODO: just set the button's icon.source property when that's fixed
         rightPadding: Kirigami.Units.smallSpacing
         leftPadding: Kirigami.Units.smallSpacing
+
+        // Remove when we depend on KF 5.87 (needs edc9094313e24d044c5fba2b2cfefc7db12fb187 qqc2-desktop-style)
+        implicitWidth: Math.max(implicitBackgroundWidth  + leftInset + rightInset,
+                                implicitContentWidth + leftPadding + rightPadding)
+
         contentItem: RowLayout {
             Item { // Left padding
                 Layout.fillWidth: true
