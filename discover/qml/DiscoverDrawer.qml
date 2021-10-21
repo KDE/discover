@@ -67,6 +67,7 @@ Kirigami.GlobalDrawer {
             ToolButton {
                 icon.name: "go-home"
                 onClicked: Navigation.openHome()
+                enabled: window.stack.currentItem.objectName !== "featured"
 
                 ToolTip {
                     text: i18n("Return to the Featured page")

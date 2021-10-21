@@ -16,6 +16,7 @@ DiscoverPage
 {
     id: page
     title: i18n("Featured")
+    objectName: "featured"
 
     actions.main: window.wideScreen ? searchAction : undefined
 
