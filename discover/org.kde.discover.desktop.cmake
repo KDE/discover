@@ -119,6 +119,7 @@ Keywords[sl]=program;programska oprema;skladišče;paket;dodaj;namesti;odstrani;
 Keywords[sv]=program;programvara;arkiv;paket;lägg till;installera;avinstallera;ta bort;uppdatera;appar;program;spel;flatpak;snap;tillägg;fast programvara
 Keywords[uk]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;програма;програмне забезпечення;сховище;архів;пакунок;додати;встановити;встановлення;вилучити;вилучення;оновлення;оновити;ігри;флетпак;снеп;снап;додатки;мікропрограма;
 Keywords[x-test]=xxprogramxx;xxsoftwarexx;xxrepositoryxx;xxpackagexx;xxaddxx;xxinstallxx;xxuninstallxx;xxremovexx;xxupdatexx;xxappsxx;xxapplicationsxx;xxgamesxx;xxflatpakxx;xxsnapxx;xxaddonsxx;xxadd-onsxx;xxfirmwarexx;
+Keywords[zh_CN]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;程序;软件;仓库;软件包;添加;安装;卸载;移除;升级;应用;应用程序;游戏;扩展程序;附加程序;固件;
 
 [Desktop Action Updates]
 Name=See Available Updates
