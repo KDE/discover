@@ -249,24 +249,19 @@ void PKTransaction::submitResolve()
     const auto backend = qobject_cast<PackageKitBackend *>(resource()->backend());
     QStringList needResolving;
     for (auto it = m_newPackageStates.constBegin(), itEnd = m_newPackageStates.constEnd(); it != itEnd; ++it) {
-        auto state = it.key();
-        if (state == PackageKit::Transaction::InfoInstalling)
-            state = PackageKit::Transaction::InfoInstalled;
-        if (state == PackageKit::Transaction::InfoRemoving)
-            state = PackageKit::Transaction::InfoAvailable;
-        if (state != PackageKit::Transaction::InfoInstalled && state != PackageKit::Transaction::InfoAvailable)
-            continue;
-
         const auto &itValue = it.value();
         for (const auto &pkgid : itValue) {
             const auto resources = backend->resourcesByPackageName(PackageKit::Daemon::packageName(pkgid));
             for (auto res : resources) {
                 auto r = qobject_cast<PackageKitResource *>(res);
                 r->clearPackageIds();
-                r->addPackageId(state, pkgid, true);
+                Q_EMIT r->stateChanged();
+                needResolving << r->allPackageNames();
             }
         }
     }
+    needResolving.removeDuplicates();
+    backend->resolvePackages(needResolving);
 }
 
 PackageKit::Transaction *PKTransaction::transaction()
