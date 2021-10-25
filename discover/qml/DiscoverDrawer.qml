@@ -101,10 +101,60 @@ Kirigami.GlobalDrawer {
                     }
                 }
             }
+
+            Kirigami.ActionToolBar {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                overflowIconName: "application-menu"
+
+                actions: [
+                    sourcesAction,
+                    aboutAction
+                ]
+
+                Component.onCompleted: {
+                    for (let i in actions) {
+                        let action = actions[i]
+                        action.displayHint = Kirigami.DisplayHint.AlwaysHide
+                    }
+                }
+            }
         }
     }
 
-    ColumnLayout {
+    topContent: [
+        ColumnLayout {
+            anchors.fill: parent
+            spacing: 0
+
+            ActionListItem {
+                id: installedItem
+                action: installedAction
+            }
+            ActionListItem {
+                id: updateItem
+                action: updateAction
+                backgroundColor: ResourcesModel.updatesCount > 0 ? "orange" : Kirigami.Theme.backgroundColor
+            }
+
+            RowLayout {
+                Layout.topMargin: Kirigami.Units.largeSpacing
+                Layout.leftMargin: Kirigami.Settings.isMobile ? Kirigami.Units.largeSpacing * 2 : Kirigami.Units.largeSpacing
+                spacing: Kirigami.Settings.isMobile ? Kirigami.Units.largeSpacing * 2 : Kirigami.Units.largeSpacing
+
+                Kirigami.Heading {
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignVCenter
+                    text: i18n("Categories")
+                    color: Kirigami.Theme.disabledTextColor
+
+                    level: 5
+                }
+            }
+        }
+    ]
+
+    /*ColumnLayout {
         spacing: 0
         Layout.fillWidth: true
 
@@ -158,7 +208,7 @@ Kirigami.GlobalDrawer {
                 PropertyChanges { target: drawer; drawerOpen: false }
             }
         ]
-    }
+    }*/
 
     Component {
         id: categoryActionComponent
@@ -175,6 +225,8 @@ Kirigami.GlobalDrawer {
                    || (category && category.contains(window.leftPage.subcategories))
                      )
             onTriggered: {
+                installedItem.checked = false;
+                updateItem.checked = false;
                 if (!window.leftPage.canNavigate)
                     Navigation.openCategory(category, currentSearchText)
                 else {
@@ -197,7 +249,7 @@ Kirigami.GlobalDrawer {
         return actions;
     }
 
-    actions: createCategoryActions(CategoryModel.rootCategories)
+    actions: createCategoryActions(CategoryModel.rootCategories[0].subcategories)
 
     modal: !drawer.wideScreen
     handleVisible: !drawer.wideScreen

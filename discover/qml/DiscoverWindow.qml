@@ -85,6 +85,7 @@ Kirigami.ApplicationWindow
         text: i18n("&About")
         component: topAboutComp
         objectName: "about"
+        enabled: window.currentTopLevel != topAboutComp
         shortcut: StandardKey.HelpContents
     }
     TopLevelPageData {
@@ -93,6 +94,7 @@ Kirigami.ApplicationWindow
         text: i18n("S&ettings")
         component: topSourcesComp
         objectName: "sources"
+        enabled: window.currentTopLevel != topSourcesComp
         shortcut: StandardKey.Preferences
     }
 

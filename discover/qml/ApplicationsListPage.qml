@@ -35,6 +35,8 @@ DiscoverPage {
     property bool showRating: true
     property bool searchPage: false
 
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories
 

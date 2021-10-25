@@ -11,8 +11,8 @@ Kirigami.ScrollablePage
 {
     id: root
 
-    Kirigami.Theme.colorSet: Kirigami.Theme.View
-    Kirigami.Theme.inherit: false
+//     Kirigami.Theme.colorSet: Kirigami.Theme.View
+    //Kirigami.Theme.inherit: false
 
     readonly property var s1: Shortcut {
         sequence: StandardKey.MoveToNextPage

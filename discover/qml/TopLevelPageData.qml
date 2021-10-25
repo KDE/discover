@@ -8,7 +8,7 @@ import org.kde.kirigami 2.0
 
 Action {
     property string component
-    checked: window.currentTopLevel==component
+    //checked: window.currentTopLevel==component
 
     onTriggered: {
         if(window.currentTopLevel!=component)
