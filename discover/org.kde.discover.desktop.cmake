@@ -117,6 +117,7 @@ Keywords[ia]=program;software;repository;package;add;install;uninstall;remove;up
 Keywords[it]=programma;software;deposito;pacchetto;installa;disinstalla;rimuovi;aggiorna;app;applicazioni;giochi;flatpak;snap;componenti aggiuntivi;firmware;
 Keywords[nl]=programma;software;opslagruimte;pakket;toevoegen;installeren;installatie ongedaan maken;verwijderen;bijwerken;apps;toepassingen;applicaties;spellen;flatpak;snap;add-ons;firmware;
 Keywords[pl]=program;oprogramowanie;repozytorium;archiwum;pakiet;paczka;dodaj;instaluj;zainstaluj;usuń;odinstaluj;uaktualnij;aktualizuj;programy;aplikacje;deb;gry;flatpak;snap;dodatki;oprogramowanie układowe;
+Keywords[pt_BR]=programa;software;repositório;pacote;adicionar;instalar;desinstalar;remover;atualizar;aplicativos;apps;aplicações;jogos;flatpak;snap;complemento;extensão;firmware;
 Keywords[sl]=program;programska oprema;skladišče;paket;dodaj;namesti;odstrani;posodobi;programi;aplikacije;igre;flatpak;posnetek;dodatki;vgrajeno programje;
 Keywords[sv]=program;programvara;arkiv;paket;lägg till;installera;avinstallera;ta bort;uppdatera;appar;program;spel;flatpak;snap;tillägg;fast programvara
 Keywords[uk]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;програма;програмне забезпечення;сховище;архів;пакунок;додати;встановити;встановлення;вилучити;вилучення;оновлення;оновити;ігри;флетпак;снеп;снап;додатки;мікропрограма;
