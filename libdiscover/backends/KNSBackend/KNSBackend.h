@@ -102,7 +102,7 @@ private:
     QHash<QString, AbstractResource *> m_resourcesByName;
     KNSReviews *const m_reviews;
     QString m_name;
-    QString m_iconName;
+    const QString m_iconName;
     StandardBackendUpdater *const m_updater;
     QStringList m_extends;
     QStringList m_categories;
