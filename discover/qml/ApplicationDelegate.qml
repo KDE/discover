@@ -35,6 +35,7 @@ Kirigami.AbstractCard
     contentItem: Item {
         implicitHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 2 : Kirigami.Units.gridUnit * 4
 
+        // App icon
         Kirigami.Icon {
             id: resourceIcon
             readonly property real contHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 5
@@ -47,78 +48,119 @@ Kirigami.AbstractCard
             }
         }
 
-        GridLayout {
-            columnSpacing: delegateArea.compact ? 0 : 5
-            rowSpacing: delegateArea.compact ? 0 : 5
+        // Container for everything but the app icon
+        ColumnLayout {
             anchors {
                 verticalCenter: parent.verticalCenter
                 right: parent.right
                 left: resourceIcon.right
                 leftMargin: Kirigami.Units.largeSpacing
             }
-            columns: 2
-            rows: delegateArea.compact ? 4 : 3
+            spacing: 0
 
+            // Container for app name and backend name labels
             RowLayout {
-                readonly property bool bigTitle: (head.implicitWidth + installButton.width) > parent.width
-                Layout.fillWidth: true
 
+                // App name label
                 Kirigami.Heading {
                     id: head
-                    Layout.fillWidth: !category.visible || parent.bigTitle
-                    level: delegateArea.compact ? 3 : 2
+                    Layout.fillWidth: true
+                    level: delegateArea.compact ? 2 : 1
+                    type: Kirigami.Heading.Type.Primary
                     text: delegateArea.application.name
                     elide: Text.ElideRight
                     maximumLineCount: 1
                 }
 
-                Kirigami.Heading {
-                    id: category
-                    Layout.fillWidth: true
-                    visible: delegateArea.application.categoryDisplay && delegateArea.application.categoryDisplay !== page.title && !parent.bigTitle
-                    level: 5
-                    opacity: 0.6
-                    text: i18nc("Part of a string like this: '<app name> - <category>'", "- %1", delegateArea.application.categoryDisplay)
-                    elide: Text.ElideRight
-                    maximumLineCount: 1
+                // Backend name label (shown if app is from a non-default backend)
+                RowLayout {
+                    Layout.alignment: Qt.AlignRight
+                    visible: delegateArea.appIsFromNonDefaultBackend
+                    spacing: 0
+
+                    Kirigami.Icon {
+                        source: application.sourceIcon
+                        implicitWidth: Kirigami.Units.iconSizes.smallMedium
+                        implicitHeight: Kirigami.Units.iconSizes.smallMedium
+                    }
+                    Label {
+                        text: application.backend.displayName
+                        font: Kirigami.Theme.smallFont
+                    }
                 }
             }
 
-            InstallApplicationButton {
-                id: installButton
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                Layout.rowSpan: delegateArea.compact ? 3 : 1
-                compact: delegateArea.compact
-                appIsFromNonDefaultBackend: delegateArea.appIsFromNonDefaultBackend
-                backendName: delegateArea.appIsFromNonDefaultBackend ? application.backend.displayName : ""
-            }
-
-            RowLayout {
-                Layout.fillWidth: true
-                visible: showRating
-                spacing: Kirigami.Units.largeSpacing
-
-                Rating {
-                    rating: delegateArea.application.rating ? delegateArea.application.rating.sortableRating : 0
-                    starSize: delegateArea.compact ? summary.font.pointSize : head.font.pointSize
-                }
-                Label {
-                    Layout.fillWidth: true
-                    visible: delegateArea.application.rating || (delegateArea.application.backend.reviewsBackend && delegateArea.application.backend.reviewsBackend.isResourceSupported(delegateArea.application))
-                    opacity: 0.5
-                    text: delegateArea.application.rating ? i18np("%1 rating", "%1 ratings", delegateArea.application.rating.ratingCount) : i18n("No ratings yet")
-                    elide: Text.ElideRight
-                }
-            }
-
+            // Description/"Comment" label
             Label {
-                id: summary
-                Layout.columnSpan: delegateArea.compact ? 1 : 2
+                id: description
                 Layout.fillWidth: true
                 text: delegateArea.application.comment
                 elide: Text.ElideRight
                 maximumLineCount: 1
                 textFormat: Text.PlainText
+            }
+
+            // Spacer
+            Item {
+                implicitHeight: delegateArea.compact ? Kirigami.Units.smallSpacing : Kirigami.Units.largeSpacing
+            }
+
+            // Container for rating, category, and install button
+            RowLayout {
+                Layout.fillWidth: true
+
+                // Container for rating and category labels
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    // Include height of category for full-sized view even when
+                    // the actual category label isn't visible. This tightens up
+                    // the layout and prevents the install button from appearing
+                    // at a different position based on whether or not the
+                    // category text is visible, because the base layout is
+                    // vertically centered rather than filling a distinct space.
+                    Layout.preferredHeight: delegateArea.compact ? -1 : rating.implicitHeight + category.implicitHeight
+                    spacing: 0
+
+                    // Rating stars + label
+                    RowLayout {
+                        id: rating
+                        Layout.fillWidth: true
+                        visible: showRating
+                        opacity: 0.6
+                        spacing: Kirigami.Units.largeSpacing
+
+                        Rating {
+                            rating: delegateArea.application.rating ? delegateArea.application.rating.sortableRating : 0
+                            starSize: delegateArea.compact ? description.font.pointSize : head.font.pointSize
+                        }
+                        Label {
+                            Layout.fillWidth: true
+                            visible: delegateArea.application.rating || (delegateArea.application.backend.reviewsBackend && delegateArea.application.backend.reviewsBackend.isResourceSupported(delegateArea.application))
+                            text: delegateArea.application.rating ? i18np("%1 rating", "%1 ratings", delegateArea.application.rating.ratingCount) : i18n("No ratings yet")
+                            font: Kirigami.Theme.smallFont
+                            elide: Text.ElideRight
+                        }
+                    }
+
+                    // Category label
+                    Label {
+                        id: category
+                        Layout.fillWidth: true
+                        visible: delegateArea.application.categoryDisplay && delegateArea.application.categoryDisplay !== page.title && !delegateArea.compact
+                        opacity: 0.6
+                        text: delegateArea.application.categoryDisplay
+                        font: Kirigami.Theme.smallFont
+                        elide: Text.ElideRight
+                        maximumLineCount: 1
+                    }
+                }
+
+                // Install button
+                InstallApplicationButton {
+                    id: installButton
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                    visible: !delegateArea.compact
+                }
             }
         }
     }
