@@ -1,5 +1,6 @@
 /*
  *   SPDX-FileCopyrightText: 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   SPDX-FileCopyrightText: 2018-2021 Nate Graham <nate@kde.org>
  *
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
