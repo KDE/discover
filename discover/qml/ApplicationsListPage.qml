@@ -169,6 +169,17 @@ DiscoverPage {
             }
         }
 
+        Kirigami.PlaceholderMessage {
+            anchors.centerIn: parent
+            width: parent.width - (Kirigami.Units.largeSpacing * 4)
+
+            opacity: apps.count == 0 && page.searchPage && appsModel.search.length == 0 ? 1 : 0
+            Behavior on opacity { NumberAnimation { duration: Kirigami.Units.shortDuration; easing.type: Easing.InOutQuad } }
+
+            icon.name: "search"
+            text: i18n("Search")
+        }
+
         footer: ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
             visible: appsModel.isBusy && apps.atYEnd
