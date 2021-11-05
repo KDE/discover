@@ -37,8 +37,8 @@ Kirigami.AbstractCard
 
         Kirigami.Icon {
             id: resourceIcon
-            source: application.icon
             readonly property real contHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 5
+            source: application.icon
             height: contHeight
             width: contHeight
             anchors {
@@ -60,27 +60,27 @@ Kirigami.AbstractCard
             rows: delegateArea.compact ? 4 : 3
 
             RowLayout {
-                Layout.fillWidth: true
                 readonly property bool bigTitle: (head.implicitWidth + installButton.width) > parent.width
+                Layout.fillWidth: true
 
                 Kirigami.Heading {
                     id: head
-                    level: delegateArea.compact ? 3 : 2
                     Layout.fillWidth: !category.visible || parent.bigTitle
-                    elide: Text.ElideRight
+                    level: delegateArea.compact ? 3 : 2
                     text: delegateArea.application.name
+                    elide: Text.ElideRight
                     maximumLineCount: 1
                 }
 
                 Kirigami.Heading {
                     id: category
-                    level: 5
                     Layout.fillWidth: true
-                    elide: Text.ElideRight
-                    text: i18nc("Part of a string like this: '<app name> - <category>'", "- %1", delegateArea.application.categoryDisplay)
-                    maximumLineCount: 1
-                    opacity: 0.6
                     visible: delegateArea.application.categoryDisplay && delegateArea.application.categoryDisplay !== page.title && !parent.bigTitle
+                    level: 5
+                    opacity: 0.6
+                    text: i18nc("Part of a string like this: '<app name> - <category>'", "- %1", delegateArea.application.categoryDisplay)
+                    elide: Text.ElideRight
+                    maximumLineCount: 1
                 }
             }
 
@@ -94,18 +94,19 @@ Kirigami.AbstractCard
             }
 
             RowLayout {
+                Layout.fillWidth: true
                 visible: showRating
                 spacing: Kirigami.Units.largeSpacing
-                Layout.fillWidth: true
+
                 Rating {
                     rating: delegateArea.application.rating ? delegateArea.application.rating.sortableRating : 0
                     starSize: delegateArea.compact ? summary.font.pointSize : head.font.pointSize
                 }
                 Label {
                     Layout.fillWidth: true
-                    text: delegateArea.application.rating ? i18np("%1 rating", "%1 ratings", delegateArea.application.rating.ratingCount) : i18n("No ratings yet")
                     visible: delegateArea.application.rating || (delegateArea.application.backend.reviewsBackend && delegateArea.application.backend.reviewsBackend.isResourceSupported(delegateArea.application))
                     opacity: 0.5
+                    text: delegateArea.application.rating ? i18np("%1 rating", "%1 ratings", delegateArea.application.rating.ratingCount) : i18n("No ratings yet")
                     elide: Text.ElideRight
                 }
             }
@@ -114,9 +115,8 @@ Kirigami.AbstractCard
                 id: summary
                 Layout.columnSpan: delegateArea.compact ? 1 : 2
                 Layout.fillWidth: true
-
-                elide: Text.ElideRight
                 text: delegateArea.application.comment
+                elide: Text.ElideRight
                 maximumLineCount: 1
                 textFormat: Text.PlainText
             }
