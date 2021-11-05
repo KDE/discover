@@ -466,7 +466,9 @@ void KNSBackend::slotErrorCode(const KNSCore::ErrorCode &errorCode, const QStrin
         error = i18n("Unhandled error in %1 backend. Contact your distributor.", m_displayName);
         break;
     }
-    setResponsePending(false);
+    if (m_responsePending) {
+        setResponsePending(false);
+    }
     qWarning() << "kns error" << objectName() << error;
     if (!invalidFile)
         Q_EMIT passiveMessage(i18n("%1: %2", name(), error));
