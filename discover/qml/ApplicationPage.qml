@@ -5,13 +5,13 @@
  */
 
 import QtQuick 2.15
-import QtQuick.Controls 2.3
-import QtQuick.Window 2.1
-import QtQuick.Layouts 1.1
-import QtGraphicalEffects 1.12
+import QtQuick.Controls 2.15
+import QtQuick.Window 2.15
+import QtQuick.Layouts 1.15
+import QtGraphicalEffects 1.15
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 import "navigation.js" as Navigation
 
 DiscoverPage {
@@ -149,20 +149,16 @@ DiscoverPage {
             }
         }
 
-
-        ScrollView {
+        ApplicationScreenshots {
+            id: screenshots
+            resource: appInfo.application
             visible: screenshots.count > 0
-            Layout.topMargin: Kirigami.Units.gridUnit * 2
             Layout.fillWidth: true
-            Layout.preferredHeight: Math.min(Kirigami.Units.gridUnit * 20, Window.height * 0.4)
-            Layout.bottomMargin: Kirigami.Units.gridUnit * 2
-
-            ScrollBar.vertical.policy: ScrollBar.AlwaysOff
-
-            ApplicationScreenshots {
-                id: screenshots
-                resource: appInfo.application
-            }
+            Layout.maximumHeight: Window.height * 0.4
+            Layout.leftMargin: Kirigami.Units.largeSpacing * 2
+            Layout.rightMargin: Layout.leftMargin
+            Layout.topMargin: Kirigami.Units.gridUnit * 2
+            Layout.bottomMargin: Layout.topMargin
         }
 
         Kirigami.FlexColumn {
