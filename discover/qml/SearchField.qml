@@ -13,8 +13,10 @@ Kirigami.SearchField
 {
     id: searchField
 
-    // Search operations are network-intensive, so delay the auto-accept
-    delaySearch: true
+    // Search operations are network-intensive, so we can't have search-as-you-type.
+    // This means we should just off auto-accept entirely, rather than having it on
+    // with a delay. The result just isn't good. See Bug 445142.
+    autoAccept: false
 
     property QtObject page
     property string currentSearchText
