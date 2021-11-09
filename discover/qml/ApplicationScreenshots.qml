@@ -7,10 +7,10 @@
 
 
 import QtQuick 2.15
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.1
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
 import org.kde.discover 2.0
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 
 ListView {
     id: root
