@@ -146,7 +146,9 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
     connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
     connect(m_engine, &KNSCore::Engine::signalUpdateableEntriesLoaded, this, [this] {
-        setResponsePending(false);
+        if (m_responsePending) {
+            setResponsePending(false);
+        }
     });
     connect(m_engine, &KNSCore::Engine::signalCategoriesMetadataLoded, this, [categories](const QList<KNSCore::Provider::CategoryMetadata> &categoryMetadatas) {
         for (const KNSCore::Provider::CategoryMetadata &category : categoryMetadatas) {
