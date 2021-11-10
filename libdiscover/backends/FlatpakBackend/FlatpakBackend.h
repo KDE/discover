@@ -102,7 +102,6 @@ private:
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);
     void loadLocalUpdates(FlatpakInstallation *flatpakInstallation);
     bool parseMetadataFromAppBundle(FlatpakResource *resource);
-    void refreshAppstreamMetadata(FlatpakInstallation *installation, FlatpakRemote *remote);
     bool setupFlatpakInstallations(GError **error);
     void updateAppInstalledMetadata(FlatpakInstalledRef *installedRef, FlatpakResource *resource);
     bool updateAppMetadata(FlatpakResource *resource);

@@ -965,11 +965,6 @@ bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
     return true;
 }
 
-void FlatpakBackend::refreshAppstreamMetadata(FlatpakInstallation *installation, FlatpakRemote *remote)
-{
-
-}
-
 bool FlatpakBackend::setupFlatpakInstallations(GError **error)
 {
     if (qEnvironmentVariableIsSet("FLATPAK_TEST_MODE")) {
