@@ -150,8 +150,7 @@ QDebug operator<<(QDebug debug, const FlatpakResource::Id &id)
     QDebugStateSaver saver(debug);
     debug.nospace() << "FlatpakResource::Id(";
     debug.nospace() << "name:" << id.id << ',';
-    debug.nospace() << "branch:" << id.branch << ',';
-    debug.nospace() << "type:" << id.type;
+    debug.nospace() << "branch:" << id.branch;
     debug.nospace() << ')';
     return debug;
 }
@@ -163,7 +162,6 @@ static FlatpakResource::Id idForRefString(const QStringView &ref)
     auto parts = ref.split('/');
     // app/app.getspace.Space/x86_64/stable
     return {
-        parts[0] == QLatin1String("app") ? FlatpakResource::DesktopApp : FlatpakResource::Runtime,
         parts[1].toString(),
         parts[3].toString(),
         parts[2].toString(),
@@ -179,7 +177,7 @@ static FlatpakResource::Id idForInstalledRef(FlatpakInstalledRef *ref, const QSt
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
 
-    return {appType, appId, branch, arch};
+    return {appId, branch, arch};
 }
 
 FlatpakBackend::FlatpakBackend(QObject *parent)
@@ -351,25 +349,20 @@ QString refToBundleId(FlatpakRef *ref)
 
 FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref) const
 {
-    auto id = idForInstalledRef(ref, {});
-    for (const auto &source : m_flatpakSources) {
-        auto ret = source->m_resources.value(id);
+    const QString origin = QString::fromUtf8(flatpak_installed_ref_get_origin(ref));
+    auto source = findSource(installation, origin);
+    if (source) {
+        auto ret = source->m_resources.value(idForInstalledRef(ref, {}));
         if (ret) {
             return ret;
         }
-    }
-    auto id2 = idForInstalledRef(ref, QStringLiteral(".desktop"));
-    for (const auto &source : m_flatpakSources) {
-        auto ret = source->m_resources.value(id2);
+        ret = source->m_resources.value(idForInstalledRef(ref, QStringLiteral(".desktop")));
         if (ret) {
             return ret;
         }
     }
 
     const QLatin1String name(flatpak_ref_get_name(FLATPAK_REF(ref)));
-
-    const QString origin = QString::fromUtf8(flatpak_installed_ref_get_origin(ref));
-    auto source = findSource(installation, origin);
     const QString pathExports = FlatpakResource::installationPath(installation) + QLatin1String("/exports/");
     const QString pathApps = pathExports + QLatin1String("share/applications/");
     AppStream::Component cid;
@@ -414,6 +407,8 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
     resource->updateFromRef(FLATPAK_REF(ref));
     resource->setState(AbstractResource::Installed);
     source->addResource(resource);
+
+    Q_ASSERT(resource->uniqueId() == idForInstalledRef(ref, {}) || resource->uniqueId() == idForInstalledRef(ref, {".desktop"}));
     return resource;
 }
 
@@ -446,7 +441,7 @@ FlatpakResource *FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) con
     for (const auto &source : m_flatpakSources) {
         for (auto it = source->m_resources.constBegin(), itEnd = source->m_resources.constEnd(); it != itEnd; ++it) {
             const auto &id = it.key();
-            if (id.type == FlatpakResource::Runtime && id.id == runtimeInfo.at(0) && id.branch == runtimeInfo.at(2)) {
+            if ((*it)->resourceType() == FlatpakResource::Runtime && id.id == runtimeInfo.at(0) && id.branch == runtimeInfo.at(2)) {
                 runtime = *it;
                 break;
             }

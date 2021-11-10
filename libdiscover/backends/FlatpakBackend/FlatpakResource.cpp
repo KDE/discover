@@ -41,7 +41,7 @@ static QString iconCachePath(const AppStream::Icon &icon)
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent)
     : AbstractResource(parent)
     , m_appdata(component)
-    , m_id({FlatpakResource::DesktopApp, component.id(), QString(), QString()})
+    , m_id({component.id(), QString(), QString()})
     , m_downloadSize(0)
     , m_installedSize(0)
     , m_propertyStates({{DownloadSize, NotKnownYet}, {InstalledSize, NotKnownYet}, {RequiredRuntime, NotKnownYet}})
@@ -122,7 +122,7 @@ QString FlatpakResource::branch() const
 
 bool FlatpakResource::canExecute() const
 {
-    return (m_id.type == DesktopApp && (m_state == AbstractResource::Installed || m_state == AbstractResource::Upgradeable));
+    return (m_type == DesktopApp && (m_state == AbstractResource::Installed || m_state == AbstractResource::Upgradeable));
 }
 
 void FlatpakResource::updateFromRef(FlatpakRef *ref)
@@ -241,7 +241,7 @@ int FlatpakResource::installedSize() const
 
 AbstractResource::Type FlatpakResource::type() const
 {
-    switch (m_id.type) {
+    switch (m_type) {
     case FlatpakResource::Runtime:
         return Technical;
     case FlatpakResource::Extension:
@@ -381,12 +381,12 @@ AbstractResource::State FlatpakResource::state()
 
 FlatpakResource::ResourceType FlatpakResource::resourceType() const
 {
-    return m_id.type;
+    return m_type;
 }
 
 QString FlatpakResource::typeAsString() const
 {
-    switch (m_id.type) {
+    switch (m_type) {
     case FlatpakResource::Runtime:
     case FlatpakResource::Extension:
         return QLatin1String("runtime");
@@ -528,7 +528,7 @@ void FlatpakResource::setState(AbstractResource::State state)
 
 void FlatpakResource::setType(FlatpakResource::ResourceType type)
 {
-    m_id.type = type;
+    m_type = type;
 }
 
 QString FlatpakResource::installationPath() const

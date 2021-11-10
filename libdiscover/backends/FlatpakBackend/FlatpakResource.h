@@ -55,7 +55,6 @@ public:
     Q_ENUM(FlatpakFileType)
 
     struct Id {
-        FlatpakResource::ResourceType type;
         const QString id;
         QString branch;
         QString arch;
@@ -66,8 +65,7 @@ public:
         bool operator==(const Id &other) const
         {
             return &other == this
-                || (other.type == type //
-                    && other.id == id //
+                || (other.id == id //
                     && other.branch == branch //
                     && other.arch == arch //
                 );
@@ -183,11 +181,12 @@ private:
     AbstractResource::State m_state;
     FlatpakInstallation *const m_installation;
     QString m_origin;
+    FlatpakResource::ResourceType m_type = DesktopApp;
 };
 
 inline uint qHash(const FlatpakResource::Id &key)
 {
-    return qHash(key.type) ^ qHash(key.id) ^ qHash(key.branch) ^ qHash(key.arch);
+    return qHash(key.id) ^ qHash(key.branch) ^ qHash(key.arch);
 }
 
 #endif // FLATPAKRESOURCE_H
