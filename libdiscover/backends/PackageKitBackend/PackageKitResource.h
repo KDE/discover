@@ -56,6 +56,11 @@ public:
 
     static QString joinPackages(const QStringList &pkgids, const QString &_sep, const QString &shadowPackageName);
 
+    /**
+     * Critical packages are those that might render an installation unusable if removed
+     */
+    virtual bool isCritical() const;
+
     void invokeApplication() const override
     {
     }

@@ -218,7 +218,7 @@ Kirigami.ApplicationWindow
                     id: desc
 
                     Layout.fillWidth: true
-                    Layout.maximumWidth: Kirigami.Units.gridUnit * 30
+                    Layout.maximumWidth: Math.round(window.width * 0.75)
 
                     textFormat: Text.StyledText
                     wrapMode: Text.WordWrap
@@ -261,6 +261,45 @@ Kirigami.ApplicationWindow
             }
         }
     }
+    Component {
+        id: distroErrorMessageDialog
+        Kirigami.OverlaySheet {
+            id: sheet
+            property alias message: desc.text
+            Keys.onEscapePressed: sheetOpen = false
+
+            // No need to add our own ScrollView since OverlaySheet includes
+            // one automatically.
+            // But we do need to put the label into a Layout of some sort so we
+            // can limit the width of the sheet.
+            contentItem: ColumnLayout {
+                Label {
+                    id: desc
+
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: Math.round(window.width * 0.75)
+
+                    textFormat: Text.StyledText
+                    wrapMode: Text.WordWrap
+                }
+
+                RowLayout {
+                    Item { Layout.fillWidth : true }
+                    Button {
+                        icon.name: "tools-report-bug"
+                        text: i18n("Report this issue")
+                        onClicked: {
+                            Qt.openUrlExternally(ResourcesModel.distroBugReportUrl())
+                        }
+                    }
+                }
+            }
+
+            onSheetOpenChanged: if(!sheetOpen) {
+                sheet.destroy(1000)
+            }
+        }
+    }
 
     Instantiator {
         model: TransactionModel
@@ -274,6 +313,10 @@ Kirigami.ApplicationWindow
             }
             function onPassiveMessage(message) {
                 window.showPassiveNotification(message)
+            }
+            function onDistroErrorMessage(message, actions) {
+                var dialog = distroErrorMessageDialog.createObject(window, {transaction: transaction, title: i18n("Error"), message: message})
+                dialog.open()
             }
         }
     }

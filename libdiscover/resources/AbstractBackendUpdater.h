@@ -206,6 +206,12 @@ Q_SIGNALS:
     void proceedRequest(const QString &title, const QString &description);
 
     /**
+     * A fatal error was found on distro packaging. Provide a @p message to show
+     * in a modal dialog that should lead the user towards reporting the problem..
+     */
+    void distroErrorMessage(const QString &message);
+
+    /**
      * emitted when the updater decides it needs to reboot
      */
     void needsRebootChanged();

@@ -399,3 +399,8 @@ void PackageKitResource::runService(const QStringList &desktopFilePaths) const
         p->start(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {desktopFilePath});
     }
 }
+
+bool PackageKitResource::isCritical() const
+{
+    return false;
+}

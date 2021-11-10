@@ -265,3 +265,8 @@ void AppPackageKitResource::fetchChangelog()
 {
     Q_EMIT changelogFetched(changelog());
 }
+
+bool AppPackageKitResource::isCritical() const
+{
+    return m_appdata.isCompulsoryForDesktop(qEnvironmentVariable("XDG_CURRENT_DESKTOP"));
+}

@@ -42,6 +42,7 @@ public:
     QString versionString() override;
     void fetchChangelog() override;
     QSet<QString> alternativeAppstreamIds() const override;
+    bool isCritical() const override;
 
 private:
     const AppStream::Component m_appdata;

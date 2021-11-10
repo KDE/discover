@@ -177,15 +177,25 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         }
         removedResources.subtract(kToSet(m_apps));
 
-        if (!packagesToRemove.isEmpty() || !removedResources.isEmpty()) {
-            QString msg = QLatin1String("<ul><li>") + PackageKitResource::joinPackages(packagesToRemove, QLatin1String("</li><li>"), {});
-            if (!removedResources.isEmpty()) {
-                const QStringList removedResourcesStr = kTransform<QStringList>(removedResources, [](AbstractResource *a) {
-                    return a->name();
-                });
-                msg += QLatin1Char('\n');
-                msg += removedResourcesStr.join(QLatin1String("</li><li>"));
-            }
+        auto isCritical = [](AbstractResource *r) { return static_cast<PackageKitResource *>(r)->isCritical(); };
+        auto criticals = kFilter<QSet<AbstractResource *>>(removedResources, isCritical);
+        criticals.unite(kFilter<QSet<AbstractResource *>>(m_apps, isCritical));
+        auto resourceName = [](AbstractResource *a) {
+            return a->name();
+        };
+        if (!criticals.isEmpty()) {
+            const QString msg = i18n(
+                "This action cannot be completed as it would remove the following software which is critical to the system's operation:<nl/>"
+                "<ul><li>%1</li></ul><nl/>"
+                "If you believe this is an error, please report it as a bug to the packagers of your distribution.",
+                resourceName(*criticals.begin()));
+            Q_EMIT distroErrorMessage(msg);
+            setStatus(Transaction::DoneWithErrorStatus);
+        } else if (!packagesToRemove.isEmpty() || !removedResources.isEmpty()) {
+            QString msg;
+            const QStringList removedResourcesStr = kTransform<QStringList>(removedResources, resourceName);
+            msg += QLatin1String("<ul><li>") + PackageKitResource::joinPackages(packagesToRemove, QLatin1String("</li><li>"), {}) + QLatin1Char('\n');
+            msg += removedResourcesStr.join(QLatin1String("</li><li>"));
             msg += QStringLiteral("</li></ul>");
 
             Q_EMIT proceedRequest(i18n("Confirm package removal"),

@@ -190,6 +190,12 @@ Q_SIGNALS:
 
     void passiveMessage(const QString &message);
 
+    /**
+     * A fatal error was found on distro packaging. Provide a @p message to show
+     * in a modal dialog that should lead the user towards reporting the problem..
+     */
+    void distroErrorMessage(const QString &message);
+
     void visibleChanged(bool visible);
 
     void downloadSpeedChanged(quint64 downloadSpeed);

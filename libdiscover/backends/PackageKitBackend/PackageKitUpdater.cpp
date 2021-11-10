@@ -409,10 +409,34 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
         if (!toremove.isEmpty()) {
             const auto toinstall = QStringList() << m_packagesModified.value(PackageKit::Transaction::InfoInstalling)
                                                  << m_packagesModified.value(PackageKit::Transaction::InfoUpdating);
-            Q_EMIT proceedRequest(i18n("Packages to remove"),
-                                  i18n("The following packages will be removed by the update:<ul><li>%1</li></ul><br/>in order to install:<ul><li>%2</li></ul>",
-                                       PackageKitResource::joinPackages(toremove, QStringLiteral("</li><li>"), {}),
-                                       PackageKitResource::joinPackages(toinstall, QStringLiteral("</li><li>"), {})));
+
+            QStringList criticals;
+            for (const auto &pkgid : toremove) {
+                auto res = kFilter<QVector<AbstractResource *>>(m_backend->resourcesByPackageName(pkgid), [](AbstractResource *res) {
+                    return static_cast<PackageKitResource *>(res)->isCritical();
+                });
+                criticals << kTransform<QStringList>(res, [](AbstractResource *a) {
+                    return a->name();
+                });
+                if (!criticals.isEmpty()) {
+                    break;
+                }
+            }
+
+            if (!criticals.isEmpty()) {
+                const QString msg = i18n(
+                    "This update cannot be completed as it would remove the following software which is critical to the system's operation:<nl/>"
+                    "<ul><li>%1</li></ul><nl/>"
+                    "If you believe this is an error, please report it as a bug to the packagers of your distribution.",
+                    criticals.constFirst());
+                Q_EMIT distroErrorMessage(msg);
+            } else {
+                Q_EMIT proceedRequest(
+                    i18n("Packages to remove"),
+                    i18n("The following packages will be removed by the update:<ul><li>%1</li></ul><br/>in order to install:<ul><li>%2</li></ul>",
+                         PackageKitResource::joinPackages(toremove, QStringLiteral("</li><li>"), {}),
+                         PackageKitResource::joinPackages(toinstall, QStringLiteral("</li><li>"), {})));
+            }
         } else {
             proceed();
         }
