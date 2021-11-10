@@ -135,6 +135,11 @@ public:
         });
     }
 
+    FlatpakRemote *remote() const
+    {
+        return m_remote;
+    }
+
     AppStream::Pool *m_pool = nullptr;
     QHash<FlatpakResource::Id, FlatpakResource *> m_resources;
 
@@ -812,19 +817,7 @@ void FlatpakBackend::loadRemote(FlatpakInstallation *installation, FlatpakRemote
     QFileInfo fileInfo(QFile::encodeName(path_str));
     // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
     if (!fileInfo.exists() || fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
-        m_refreshAppstreamMetadataJobs++;
-        FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
-        connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, &FlatpakBackend::metadataRefreshed);
-        connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, [this](const QString &errorMessage) {
-            Q_EMIT passiveMessage(errorMessage);
-        });
-        connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
-        connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this] {
-            acquireFetching(false);
-        });
-
-        acquireFetching(true);
-        job->start();
+        checkForUpdates(installation, remote);
     } else {
         m_refreshAppstreamMetadataJobs++;
         integrateRemote(installation, remote);
@@ -849,7 +842,13 @@ void FlatpakBackend::metadataRefreshed()
 {
     m_refreshAppstreamMetadataJobs--;
     if (m_refreshAppstreamMetadataJobs == 0) {
-        checkForUpdates();
+        for (auto installation : qAsConst(m_installations)) {
+            // Load local updates, comparing current and latest commit
+            loadLocalUpdates(installation);
+
+            if (g_cancellable_is_cancelled(m_cancellable))
+                break;
+        }
     }
 }
 
@@ -1473,13 +1472,29 @@ Transaction *FlatpakBackend::removeApplication(AbstractResource *app)
 
 void FlatpakBackend::checkForUpdates()
 {
-    for (auto installation : qAsConst(m_installations)) {
-        // Load local updates, comparing current and latest commit
-        loadLocalUpdates(installation);
-
-        if (g_cancellable_is_cancelled(m_cancellable))
-            break;
+    for (auto source : qAsConst(m_flatpakSources)) {
+        checkForUpdates(source->installation(), source->remote());
     }
+}
+
+void FlatpakBackend::checkForUpdates(FlatpakInstallation *installation, FlatpakRemote *remote)
+{
+    m_refreshAppstreamMetadataJobs++;
+    FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, &FlatpakBackend::metadataRefreshed);
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, [this](const QString &errorMessage) {
+        Q_EMIT passiveMessage(errorMessage);
+    });
+
+    if (!findSource(installation, flatpak_remote_get_name(remote))) {
+        connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
+    }
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this] {
+        acquireFetching(false);
+    });
+
+    acquireFetching(true);
+    job->start();
 }
 
 QString FlatpakBackend::displayName() const

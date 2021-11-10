@@ -113,6 +113,7 @@ private:
 
     QVector<AbstractResource *> resourcesByAppstreamName(const QString &name) const;
     void acquireFetching(bool f);
+    void checkForUpdates(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
 
     StandardBackendUpdater *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;
