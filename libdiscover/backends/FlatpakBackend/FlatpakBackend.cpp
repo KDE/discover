@@ -857,14 +857,12 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
     Q_ASSERT(m_refreshAppstreamMetadataJobs != 0);
     for (auto source : qAsConst(m_flatpakSources)) {
         if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
-            qDebug() << "do not add a source twice1" << source << remote;
             metadataRefreshed();
             return source;
         }
     }
     for (auto source : qAsConst(m_flatpakLoadingSources)) {
         if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
-            qDebug() << "do not add a source twice2" << source << remote;
             metadataRefreshed();
             return source;
         }
@@ -1486,9 +1484,7 @@ void FlatpakBackend::checkForUpdates(FlatpakInstallation *installation, FlatpakR
         Q_EMIT passiveMessage(errorMessage);
     });
 
-    if (!findSource(installation, flatpak_remote_get_name(remote))) {
-        connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
-    }
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
     connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this] {
         acquireFetching(false);
     });
