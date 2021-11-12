@@ -52,6 +52,7 @@ public:
     static bool isRoot();
     QQuickWindow *rootObject() const;
     void showPassiveNotification(const QString &msg);
+    Q_INVOKABLE void copyTextToClipboard(const QString text);
     QRect initialGeometry() const;
 
     QString describeSources() const;

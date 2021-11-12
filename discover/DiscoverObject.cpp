@@ -471,6 +471,12 @@ void DiscoverObject::showPassiveNotification(const QString &msg)
     });
 }
 
+void DiscoverObject::copyTextToClipboard(const QString text)
+{
+    QClipboard *clipboard = QGuiApplication::clipboard();
+    clipboard->setText(text);
+}
+
 void DiscoverObject::reboot()
 {
     auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),

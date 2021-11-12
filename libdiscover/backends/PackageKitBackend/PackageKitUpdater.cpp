@@ -504,10 +504,7 @@ void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QSt
 {
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
-    QString finalMessage = xi18nc("@info",
-                                  "%1:<nl/><nl/>%2<nl/><nl/>Please report this issue to the packagers of your distribution.",
-                                  PackageKitMessages::errorMessage(err),
-                                  error);
+    QString finalMessage = xi18nc("@info", "%1:<nl/><nl/>%2", PackageKitMessages::errorMessage(err), error);
     Q_EMIT passiveMessage(finalMessage);
     qWarning() << "Error happened" << err << error;
 }

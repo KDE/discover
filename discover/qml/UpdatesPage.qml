@@ -18,7 +18,7 @@ DiscoverPage
     readonly property var resourcesUpdatesModel: ResourcesUpdatesModel {
         id: resourcesUpdatesModel
         onPassiveMessage: {
-            desc.text = message;
+            sheet.errorMessage = message;
             sheet.sheetOpen = true;
         }
         onIsProgressingChanged: {
@@ -36,46 +36,89 @@ DiscoverPage
 
     readonly property var sheet: Kirigami.OverlaySheet {
         id: sheet
+
+        property string errorMessage: ""
+
         parent: applicationWindow().overlay
 
-        title: i18n("Update Issue")
+        title: contentLoader.sourceComponent === friendlyMessageComponent ? i18n("Update Issue") :  i18n("Technical details")
 
-        ColumnLayout {
-            Label {
-                id: desc
-                Layout.fillWidth: true
-                Layout.maximumWidth: Math.round(page.width*0.75)
-                Layout.bottomMargin: Kirigami.Units.largeSpacing
-                textFormat: Text.StyledText
-                wrapMode: Text.WordWrap
-            }
+        Loader {
+            id: contentLoader
+            active: true
+            sourceComponent: friendlyMessageComponent
 
-            RowLayout {
-                Layout.alignment: Qt.AlignRight
+            Component {
+                id: friendlyMessageComponent
 
-                Button {
-                    text: i18n("Report this issue")
-                    icon.name: "tools-report-bug"
-                    onClicked: {
-                        Qt.openUrlExternally(ResourcesModel.distroBugReportUrl())
-                        sheet.sheetOpen = false
+                ColumnLayout {
+                    Label {
+                        id: friendlyMessage
+                        Layout.fillWidth: true
+                        Layout.maximumWidth: Math.round(page.width*0.75)
+                        Layout.bottomMargin: Kirigami.Units.largeSpacing * 2
+                        text: i18n("There was an issue installing this update. Please try again later.")
+                        wrapMode: Text.WordWrap
+                    }
+                    Button {
+                        id: seeDetailsAndreportIssueButton
+                        Layout.alignment: Qt.AlignRight
+                        text: i18n("See technical details")
+                        icon.name: "view-process-system"
+                        onClicked: {
+                            contentLoader.sourceComponent = nerdyDetailsComponent;
+                        }
                     }
                 }
-                Button {
-                    id: okButton
-                    text: i18n("OK")
-                    icon.name: "dialog-ok"
-                    onClicked: {
-                        sheet.sheetOpen = false
+            }
+
+            Component {
+                id: nerdyDetailsComponent
+
+                ColumnLayout {
+                    Label {
+                        Layout.fillWidth: true
+                        Layout.maximumWidth: Math.round(page.width*0.75)
+                        text: i18n("If you would like to report the update issue to your distribution's packagers, include this information:")
+                        wrapMode: Text.WordWrap
+                    }
+
+                    TextArea {
+                        Layout.fillWidth: true
+                        text: sheet.errorMessage
+                        textFormat: Text.RichText
+                        wrapMode: Text.WordWrap
+                    }
+
+                    RowLayout {
+                        Layout.alignment: Qt.AlignRight
+
+                        Button {
+                            text: i18n("Copy to clipboard")
+                            icon.name: "edit-copy"
+                            onClicked: {
+                                app.copyTextToClipboard(sheet.errorMessage);
+                                window.showPassiveNotification(i18n("Error message copied to clipboard"));
+                            }
+                        }
+
+                        Button {
+                            text: i18n("Report this issue")
+                            icon.name: "tools-report-bug"
+                            onClicked: {
+                                Qt.openUrlExternally(ResourcesModel.distroBugReportUrl())
+                                sheet.sheetOpen = false
+                            }
+                        }
                     }
                 }
             }
         }
 
-        onSheetOpenChanged: if(!sheetOpen) {
-            desc.text = ""
-        } else {
-            okButton.focus = true
+        // Ensure that friendly message is shown if the user closes the sheet and
+        // then opens it again
+        onSheetOpenChanged: if (sheetOpen) {
+            contentLoader.sourceComponent = friendlyMessageComponent;
         }
     }
 
