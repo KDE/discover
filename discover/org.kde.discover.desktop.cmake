@@ -116,6 +116,7 @@ Keywords[es]=programa;software;repositorio;paquete;añadir;agregar;instalar;desi
 Keywords[fr]=programme ; logiciel ; dépôt ; paquet ; ajout ; installation ; désinstallation ; suppression ; mise à jour ; apps ; applications ; jeux ; flatpak ; snap ; modules externes ; micrologiciel ;
 Keywords[ia]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
 Keywords[it]=programma;software;deposito;pacchetto;installa;disinstalla;rimuovi;aggiorna;app;applicazioni;giochi;flatpak;snap;componenti aggiuntivi;firmware;
+Keywords[ko]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;프로그램;소프트웨어;저장소;리포지토리;패키지;꾸러미;추가;설치;삭제;업데이트;앱;게임;추가 기능;부가 기능;펌웨어;
 Keywords[nl]=programma;software;opslagruimte;pakket;toevoegen;installeren;installatie ongedaan maken;verwijderen;bijwerken;apps;toepassingen;applicaties;spellen;flatpak;snap;add-ons;firmware;
 Keywords[pl]=program;oprogramowanie;repozytorium;archiwum;pakiet;paczka;dodaj;instaluj;zainstaluj;usuń;odinstaluj;uaktualnij;aktualizuj;programy;aplikacje;deb;gry;flatpak;snap;dodatki;oprogramowanie układowe;
 Keywords[pt]=programa;software;repositório;pacote;instalar;remover;actualizar;aplicações;jogos;flatpak;snap;extensões;firmware;
