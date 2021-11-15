@@ -378,7 +378,7 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List &entries)
     }
 
     setResponsePending(false);
-    if (m_onePage || resources.count() >= PAGE_SIZE) {
+    if (m_onePage || resources.count() < PAGE_SIZE) {
         Q_EMIT searchFinished();
     }
 }
