@@ -95,6 +95,10 @@ void FlatpakNotifier::loadRemoteUpdates(Installation *installation)
         g_autoptr(GPtrArray) fetchedUpdates = flatpak_installation_list_installed_refs_for_update(installation->m_installation, cancellable, &localError);
         bool hasUpdates = false;
 
+        if (!fetchedUpdates) {
+            qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
+            return false;
+        }
         for (uint i = 0; !hasUpdates && i < fetchedUpdates->len; i++) {
             FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(fetchedUpdates, i));
             const QString refName = QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(ref)));
@@ -105,9 +109,6 @@ void FlatpakNotifier::loadRemoteUpdates(Installation *installation)
                 continue;
             }
             hasUpdates = true;
-        }
-        if (!fetchedUpdates) {
-            qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
         }
         return hasUpdates;
     }));
