@@ -123,8 +123,8 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
     case ChangelogRole:
         return item->changelog();
     case SectionRole: {
-        static const QString appUpdatesSection = i18nc("@item:inlistbox", "Application Updates");
-        static const QString systemUpdateSection = i18nc("@item:inlistbox", "System Updates");
+        static const QString appUpdatesSection = i18nc("@item:inlistbox", "Applications");
+        static const QString systemUpdateSection = i18nc("@item:inlistbox", "System Software");
         static const QString addonsSection = i18nc("@item:inlistbox", "Addons");
         switch (item->resource()->type()) {
         case AbstractResource::Application:

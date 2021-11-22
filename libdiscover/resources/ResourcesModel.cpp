@@ -97,7 +97,7 @@ void ResourcesModel::init(bool load)
 
     m_updateAction = new DiscoverAction(this);
     m_updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
-    m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    m_updateAction->setText(i18n("Refresh"));
     connect(this, &ResourcesModel::fetchingChanged, m_updateAction, [this](bool fetching) {
         m_updateAction->setEnabled(!fetching);
         m_fetchingUpdatesProgress.reevaluate();
