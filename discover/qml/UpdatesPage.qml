@@ -160,6 +160,7 @@ DiscoverPage
                 }
             }
         }
+
         ToolBar {
             id: footerToolbar
             Layout.fillWidth: true
@@ -167,23 +168,26 @@ DiscoverPage
 
             position: ToolBar.Footer
 
-            CheckBox {
-                anchors.left: parent.left
-                anchors.leftMargin: Kirigami.Units.gridUnit + Kirigami.Units.smallSpacing
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                text: page.unselected === 0 ? i18n("All updates selected (%1)", updateModel.updateSize) : i18np("%1/%2 update selected (%3)", "%1/%2 updates selected (%3)", updateModel.toUpdateCount, updateModel.totalUpdatesCount, updateModel.updateSize)
-                enabled: updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
-                tristate: true
-                checkState: updateModel.toUpdateCount === 0                             ? Qt.Unchecked
-                            : updateModel.toUpdateCount === updateModel.totalUpdatesCount ? Qt.Checked
-                                                                                        : Qt.PartiallyChecked
+            contentItem: RowLayout {
+                ToolButton {
+                    enabled: page.unselected > 0 && updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
+                    icon.name: "edit-select-all"
+                    text: i18n("Select All")
+                    onClicked: { updateModel.checkAll(); }
+                }
 
-                onClicked: {
-                    if (updateModel.toUpdateCount === 0)
-                        updateModel.checkAll()
-                    else
-                        updateModel.uncheckAll()
+                ToolButton {
+                    enabled: page.unselected !== updateModel.toUpdateCount && updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
+                    icon.name: "edit-select-none"
+                    text: i18n("Select None")
+                    onClicked: { updateModel.uncheckAll(); }
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.rightMargin: Kirigami.Units.largeSpacing
+                    horizontalAlignment: Text.AlignRight
+                    text: i18n("Total size: %1", updateModel.updateSize)
                 }
             }
         }
