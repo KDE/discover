@@ -405,11 +405,34 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     m_transaction = nullptr;
 
     if (!cancel && simulate) {
-        const auto toremove = m_packagesModified.value(PackageKit::Transaction::InfoRemoving);
-        if (!toremove.isEmpty()) {
-            const auto toinstall = QStringList() << m_packagesModified.value(PackageKit::Transaction::InfoInstalling)
-                                                 << m_packagesModified.value(PackageKit::Transaction::InfoUpdating);
+        auto toremoveOrig = m_packagesModified.value(PackageKit::Transaction::InfoRemoving);
+        auto toremove = toremoveOrig;
+        auto toinstall = QStringList() << m_packagesModified.value(PackageKit::Transaction::InfoInstalling)
+                                       << m_packagesModified.value(PackageKit::Transaction::InfoUpdating);
 
+        // some backends will treat upgrades as removal + install, which makes for terrible error messages.
+        for (auto it = toremove.begin(), itEnd = toremove.end(); it != itEnd;) {
+            const QString name = PackageKit::Transaction::packageName(*it);
+            auto itInstall = std::find_if(toinstall.begin(), toinstall.end(), [&](const QString &pkgid) {
+                return name == PackageKit::Transaction::packageName(pkgid);
+            });
+            if (itInstall != toinstall.end()) {
+                toinstall.erase(itInstall);
+                it = toremove.erase(it);
+            } else {
+                ++it;
+            }
+        };
+
+        if (PackageKit::Daemon::backendName() == "dnf") {
+            // Fedora has some packages that it uninstalls then eventually creates on its own. No need to
+            // notify about these.
+            toremove = kFilter<typeof(toremove)>(toremove, [](const QString &pkgid) {
+                return !PackageKit::Transaction::packageName(pkgid).startsWith(QLatin1String("kmod"));
+            });
+        }
+
+        if (!toremove.isEmpty()) {
             QStringList criticals;
             for (const auto &pkgid : toremove) {
                 auto res = kFilter<QVector<AbstractResource *>>(m_backend->resourcesByPackageName(pkgid), [](AbstractResource *res) {
