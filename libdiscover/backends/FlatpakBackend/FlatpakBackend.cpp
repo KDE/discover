@@ -898,6 +898,11 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
         fw->deleteLater();
     });
     acquireFetching(true);
+
+#ifdef APPSTREAM_NEW_POOL_API
+    pool->setLoadStdDataLocations(false);
+    pool->addExtraDataLocation(appstreamDirPath, AppStream::Metadata::FormatStyleCollection);
+#else
     pool->clearMetadataLocations();
     pool->addMetadataLocation(appstreamDirPath);
     pool->setFlags(AppStream::Pool::FlagReadCollection);
@@ -906,6 +911,8 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
     const QString subdir = flatpak_installation_get_id(flatpakInstallation) + QLatin1Char('/') + sourceName;
     pool->setCacheLocation(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/flatpak-appstream/" + subdir);
     QDir().mkpath(pool->cacheLocation());
+#endif
+
     fw->setFuture(QtConcurrent::run(&m_threadPool, pool, &AppStream::Pool::load));
     m_flatpakLoadingSources << source;
     return source;
