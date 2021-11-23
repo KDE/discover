@@ -1219,31 +1219,64 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     else if (filter.state == AbstractResource::Upgradeable) {
         auto stream = new ResultsStream(QStringLiteral("FlatpakStream-upgradeable"));
         auto f = [this, stream] {
-            QVector<AbstractResource *> resources;
-            for (auto installation : m_installations) {
-                g_autoptr(GError) localError = nullptr;
-                g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(installation, m_cancellable, &localError);
-                if (!refs) {
-                    qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
-                    continue;
+            auto fw = new QFutureWatcher<QMap<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>(this);
+            connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, fw, stream]() {
+                if (g_cancellable_is_cancelled(m_cancellable)) {
+                    stream->finish();
+                    fw->deleteLater();
+                    return;
                 }
 
-                resources.reserve(resources.size() + refs->len);
-                for (uint i = 0; i < refs->len; i++) {
-                    FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
-                    auto resource = getAppForInstalledRef(installation, ref);
-                    resource->setState(AbstractResource::Upgradeable);
-                    updateAppSize(resource);
-                    if (resource->resourceType() == FlatpakResource::Runtime) {
-                        resources.prepend(resource);
-                    } else {
-                        resources.append(resource);
+                const auto refs = fw->result();
+                QVector<AbstractResource *> resources;
+                for (auto it = refs.constBegin(), itEnd = refs.constEnd(); it != itEnd; ++it) {
+                    resources.reserve(resources.size() + it->size());
+                    for (auto ref : qAsConst(it.value())) {
+                        auto resource = getAppForInstalledRef(it.key(), ref);
+                        g_object_unref(ref);
+                        resource->setState(AbstractResource::Upgradeable);
+                        updateAppSize(resource);
+                        if (resource->resourceType() == FlatpakResource::Runtime) {
+                            resources.prepend(resource);
+                        } else {
+                            resources.append(resource);
+                        }
                     }
                 }
-            }
-            if (!resources.isEmpty())
-                Q_EMIT stream->resourcesFound(resources);
-            stream->finish();
+
+                if (!resources.isEmpty())
+                    Q_EMIT stream->resourcesFound(resources);
+                stream->finish();
+                fw->deleteLater();
+            });
+
+            QVector<FlatpakInstallation *> installations = m_installations;
+            auto cancellable = m_cancellable;
+            fw->setFuture(QtConcurrent::run(&m_threadPool, [installations, cancellable] {
+                QMap<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
+
+                for (auto installation : installations) {
+                    g_autoptr(GError) localError = nullptr;
+                    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
+                    if (!refs) {
+                        qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
+                        continue;
+                    }
+                    if (g_cancellable_is_cancelled(cancellable)) {
+                        qWarning() << "Job cancelled";
+                        return ret;
+                    }
+
+                    auto &current = ret[installation];
+                    current.reserve(refs->len);
+                    for (uint i = 0; i < refs->len; i++) {
+                        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+                        g_object_ref(ref);
+                        current.append(ref);
+                    }
+                }
+                return ret;
+            }));
         };
 
         if (isFetching()) {
