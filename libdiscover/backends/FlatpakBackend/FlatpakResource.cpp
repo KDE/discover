@@ -608,7 +608,9 @@ QString FlatpakResource::versionString()
     }
     if (isInstalled()) {
         auto ref = qobject_cast<FlatpakBackend *>(backend())->getInstalledRefForApp(this);
-        version = flatpak_installed_ref_get_appdata_version(ref);
+        if (ref) {
+            version = flatpak_installed_ref_get_appdata_version(ref);
+        }
     } else if (!m_appdata.releases().isEmpty()) {
         auto release = m_appdata.releases().constFirst();
         version = release.version();

@@ -61,7 +61,7 @@ void FlatpakJobTransaction::finishTransaction()
         m_app->setState(AbstractResource::None);
     }
 
-    if (!m_appJob->errorMessage().isEmpty()) {
+    if (!m_appJob->cancelled() && !m_appJob->errorMessage().isEmpty()) {
         Q_EMIT passiveMessage(m_appJob->errorMessage());
     }
 
