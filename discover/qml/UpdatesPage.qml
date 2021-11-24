@@ -177,7 +177,7 @@ DiscoverPage
                 }
 
                 ToolButton {
-                    enabled: page.unselected !== updateModel.toUpdateCount && updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
+                    enabled: page.unselected !== updateModel.totalUpdatesCount && updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
                     icon.name: "edit-select-none"
                     text: i18n("Select None")
                     onClicked: { updateModel.uncheckAll(); }
