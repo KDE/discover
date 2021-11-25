@@ -826,14 +826,14 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
 {
     Q_ASSERT(m_refreshAppstreamMetadataJobs != 0);
     for (auto source : qAsConst(m_flatpakSources)) {
-        if (source->url() == flatpak_remote_get_url(remote)) {
+        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
             qDebug() << "do not add a source twice" << source << remote;
             metadataRefreshed();
             return source;
         }
     }
     for (auto source : qAsConst(m_flatpakLoadingSources)) {
-        if (source->url() == flatpak_remote_get_url(remote)) {
+        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
             qDebug() << "do not add a source twice" << source << remote;
             metadataRefreshed();
             return source;
