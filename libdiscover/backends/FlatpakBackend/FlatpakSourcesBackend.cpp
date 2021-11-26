@@ -339,8 +339,9 @@ FlatpakRemote *FlatpakSourcesBackend::installSource(FlatpakResource *resource)
         flatpak_remote_set_default_branch(remote, resource->branch().toUtf8().constData());
     }
 
-    if (!flatpak_installation_modify_remote(m_preferredInstallation, remote, cancellable, nullptr)) {
-        qWarning() << "Failed to add source " << resource->flatpakName();
+    g_autoptr(GError) error = nullptr;
+    if (!flatpak_installation_modify_remote(m_preferredInstallation, remote, cancellable, error)) {
+        qWarning() << "Failed to add source " << resource->flatpakName() << error->message;
         return nullptr;
     }
 
