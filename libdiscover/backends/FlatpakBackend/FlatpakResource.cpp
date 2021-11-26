@@ -31,12 +31,15 @@
 #include <QProcess>
 #include <QStringList>
 #include <QTimer>
+#include <QUrlQuery>
 
 static QString iconCachePath(const AppStream::Icon &icon)
 {
     Q_ASSERT(icon.kind() == AppStream::Icon::KindRemote);
     return QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation), icon.url().fileName());
 }
+
+const QStringList FlatpakResource::m_objects{QStringLiteral("qrc:/qml/FlatpakAttention.qml")};
 
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent)
     : AbstractResource(parent)
@@ -294,7 +297,26 @@ QJsonArray FlatpakResource::licenses()
 
 QString FlatpakResource::longDescription()
 {
-    return m_appdata.description();
+    QString description = m_appdata.description();
+
+    return description;
+}
+
+QString FlatpakResource::attentionText() const
+{
+    if (m_flatpakFileType == FlatpakResource::FileFlatpakRef) {
+        QUrl loc = m_resourceLocation;
+        loc.setPath({});
+        loc.setQuery(QUrlQuery());
+        return xi18nc("@info",
+                      "<para>This application comes from \"%1\" (hosted at <link>%2</link>). Other software in this repository will also be made be available "
+                      "in Discover "
+                      "when the application is "
+                      "installed.</para>",
+                      m_origin,
+                      loc.toDisplayString());
+    }
+    return {};
 }
 
 QString FlatpakResource::name() const

@@ -165,6 +165,16 @@ DiscoverPage {
             }
         }
 
+        Repeater {
+            model: application.topObjects
+            delegate: Loader {
+                Layout.fillWidth: item.Layout.fillWidth
+                Layout.margins: Kirigami.Units.largeSpacing
+                property QtObject resource: appInfo.application
+                source: modelData
+            }
+        }
+
         Kirigami.FlexColumn {
             Layout.fillWidth: true
             Layout.margins: Kirigami.Units.largeSpacing

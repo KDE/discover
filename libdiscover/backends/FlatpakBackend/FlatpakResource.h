@@ -21,6 +21,8 @@ class FlatpakBackend;
 class FlatpakResource : public AbstractResource
 {
     Q_OBJECT
+    Q_PROPERTY(QStringList topObjects MEMBER m_objects CONSTANT)
+    Q_PROPERTY(QString attentionText READ attentionText CONSTANT)
 public:
     explicit FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent);
 
@@ -149,8 +151,10 @@ public:
     void setRuntime(const QString &runtime);
     void setState(State state);
     void setType(ResourceType type);
-    // void setAddons(const AddonList& addons);
-    // void setAddonInstalled(const QString& addon, bool installed);
+    void setResourceLocation(const QUrl &location)
+    {
+        m_resourceLocation = location;
+    }
 
     void updateFromRef(FlatpakRef *ref);
     QString ref() const;
@@ -158,6 +162,7 @@ public:
     QString installPath() const;
     void updateFromAppStream();
     void setArch(const QString &arch);
+    QString attentionText() const;
 
 Q_SIGNALS:
     void propertyStateChanged(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state);
@@ -177,11 +182,13 @@ private:
     int m_installedSize;
     QHash<PropertyKind, PropertyState> m_propertyStates;
     QUrl m_resourceFile;
+    QUrl m_resourceLocation;
     QString m_runtime;
     AbstractResource::State m_state;
     FlatpakInstallation *const m_installation;
     QString m_origin;
     FlatpakResource::ResourceType m_type = DesktopApp;
+    static const QStringList m_objects;
 };
 
 inline uint qHash(const FlatpakResource::Id &key)
