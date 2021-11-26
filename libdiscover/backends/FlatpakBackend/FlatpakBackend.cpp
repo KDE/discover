@@ -175,9 +175,6 @@ static FlatpakResource::Id idForRefString(const QStringView &ref)
 
 static FlatpakResource::Id idForInstalledRef(FlatpakInstalledRef *ref, const QString &postfix)
 {
-    const FlatpakResource::ResourceType appType = (flatpak_ref_get_kind(FLATPAK_REF(ref)) == FLATPAK_REF_KIND_APP //
-                                                       ? FlatpakResource::DesktopApp
-                                                       : FlatpakResource::Runtime);
     const QString appId = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))) + postfix;
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
