@@ -157,12 +157,12 @@ public:
     QString sourceIcon() const override;
     QString installPath() const;
     void updateFromAppStream();
+    void setArch(const QString &arch);
 
 Q_SIGNALS:
     void propertyStateChanged(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state);
 
 private:
-    void setArch(const QString &arch);
     void setCommit(const QString &commit);
 
     const AppStream::Component m_appdata;

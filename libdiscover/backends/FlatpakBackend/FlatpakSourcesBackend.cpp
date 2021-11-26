@@ -307,22 +307,12 @@ bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation *installation)
     return true;
 }
 
-FlatpakRemote *FlatpakSourcesBackend::installSource(FlatpakResource *resource)
+void FlatpakSourcesBackend::populateRemote(FlatpakRemote *remote, const QString &name, const QString &url, const QString &gpgKey)
 {
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
-
-    auto remote = flatpak_installation_get_remote_by_name(m_preferredInstallation, resource->flatpakName().toUtf8().constData(), cancellable, nullptr);
-    if (remote) {
-        qWarning() << "Source " << resource->flatpakName() << " already exists in" << flatpak_installation_get_path(m_preferredInstallation);
-        return nullptr;
-    }
-
-    remote = flatpak_remote_new(resource->flatpakName().toUtf8().constData());
-    flatpak_remote_set_url(remote, resource->getMetadata(QStringLiteral("repo-url")).toString().toUtf8().constData());
+    flatpak_remote_set_url(remote, url.toUtf8().constData());
     flatpak_remote_set_noenumerate(remote, false);
-    flatpak_remote_set_title(remote, resource->comment().toUtf8().constData());
+    flatpak_remote_set_title(remote, name.toUtf8().constData());
 
-    const QString gpgKey = resource->getMetadata(QStringLiteral("gpg-key")).toString();
     if (!gpgKey.isEmpty()) {
         gsize dataLen = 0;
         g_autofree guchar *data = nullptr;
@@ -334,7 +324,23 @@ FlatpakRemote *FlatpakSourcesBackend::installSource(FlatpakResource *resource)
     } else {
         flatpak_remote_set_gpg_verify(remote, false);
     }
+}
 
+FlatpakRemote *FlatpakSourcesBackend::installSource(FlatpakResource *resource)
+{
+    g_autoptr(GCancellable) cancellable = g_cancellable_new();
+
+    auto remote = flatpak_installation_get_remote_by_name(m_preferredInstallation, resource->flatpakName().toUtf8().constData(), cancellable, nullptr);
+    if (remote) {
+        qWarning() << "Source " << resource->flatpakName() << " already exists in" << flatpak_installation_get_path(m_preferredInstallation);
+        return nullptr;
+    }
+
+    remote = flatpak_remote_new(resource->flatpakName().toUtf8().constData());
+    populateRemote(remote,
+                   resource->comment(),
+                   resource->getMetadata(QStringLiteral("repo-url")).toString(),
+                   resource->getMetadata(QStringLiteral("gpg-key")).toString());
     if (!resource->branch().isEmpty()) {
         flatpak_remote_set_default_branch(remote, resource->branch().toUtf8().constData());
     }
