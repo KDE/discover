@@ -340,7 +340,7 @@ FlatpakRemote *FlatpakSourcesBackend::installSource(FlatpakResource *resource)
     }
 
     g_autoptr(GError) error = nullptr;
-    if (!flatpak_installation_modify_remote(m_preferredInstallation, remote, cancellable, error)) {
+    if (!flatpak_installation_modify_remote(m_preferredInstallation, remote, cancellable, &error)) {
         qWarning() << "Failed to add source " << resource->flatpakName() << error->message;
         return nullptr;
     }
