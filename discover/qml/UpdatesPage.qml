@@ -375,12 +375,33 @@ DiscoverPage
                     { PropertyAnimation { duration: Kirigami.Units.shortDuration } }
                 }
 
-                Button {
-                    Layout.alignment: Qt.AlignRight
-                    text: i18n("More Information…")
+                RowLayout {
+                    Layout.fillWidth: true
                     visible: layout.extended
-                    enabled: !resourcesUpdatesModel.isProgressing
-                    onClicked: Navigation.openApplication(resource)
+
+                    Label {
+                        Layout.leftMargin: Kirigami.Units.gridUnit
+                        text: i18n("Update from:")
+                    }
+                    // Backend icon
+                    Kirigami.Icon {
+                        source: resource.sourceIcon
+                        implicitWidth: Kirigami.Units.iconSizes.smallMedium
+                        implicitHeight: Kirigami.Units.iconSizes.smallMedium
+                    }
+                    // Backend label and origin/remote
+                    Label {
+                        Layout.fillWidth: true
+                        text: i18nc("%1 is the backend that provides this app, %2 is the specific repository or direction within that backend","%1 (%2)", resource.backend.displayName, resource.origin)
+                        elide: Text.ElideRight
+                    }
+
+                    Button {
+                        Layout.alignment: Qt.AlignRight
+                        text: i18n("More Information…")
+                        enabled: !resourcesUpdatesModel.isProgressing
+                        onClicked: Navigation.openApplication(resource)
+                    }
                 }
             }
 
