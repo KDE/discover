@@ -121,7 +121,7 @@ ListView {
 
         Kirigami.Action {
             id: leftAction
-            icon.name: "arrow-left"
+            icon.name: root.LayoutMirroring.enabled ? "arrow-right" : "arrow-left"
             enabled: overlay.visible && visible
             visible: root.currentIndex >= 1 && !indicator.running
             onTriggered: root.currentIndex = (root.currentIndex - 1) % screenshotsModel.count
@@ -129,7 +129,7 @@ ListView {
 
         Kirigami.Action {
             id: rightAction
-            icon.name: "arrow-right"
+            icon.name: root.LayoutMirroring.enabled ? "arrow-left" : "arrow-right"
             enabled: overlay.visible && visible
             visible: root.currentIndex < (root.count - 1) && !indicator.running
             onTriggered: root.currentIndex = (root.currentIndex + 1) % screenshotsModel.count
@@ -147,7 +147,7 @@ ListView {
         }
         width: Kirigami.Units.gridUnit * 2
         height: width
-        icon.name: "arrow-left"
+        icon.name: root.LayoutMirroring.enabled ? "arrow-right" : "arrow-left"
         visible: !Kirigami.Settings.isMobile && root.count > 1 && root.currentIndex > 0
         Keys.forwardTo: [root]
         onClicked: root.currentIndex -= 1
@@ -161,7 +161,7 @@ ListView {
         }
         width: Kirigami.Units.gridUnit * 2
         height: width
-        icon.name: "arrow-right"
+        icon.name: root.LayoutMirroring.enabled ? "arrow-left" : "arrow-right"
         visible: !Kirigami.Settings.isMobile && root.count > 1 && root.currentIndex < root.count - 1
         Keys.forwardTo: [root]
         onClicked: root.currentIndex += 1
