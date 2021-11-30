@@ -13,7 +13,6 @@ set(flatpak-backend_SRCS
 add_library(flatpak-backend MODULE ${flatpak-backend_SRCS})
 target_link_libraries(flatpak-backend Qt::Core Qt::Widgets Qt::Concurrent KF5::CoreAddons KF5::ConfigCore Discover::Common AppStreamQt PkgConfig::Flatpak)
 
-message(WARNING AppStreamQt_VERSION)
 if (AppStreamQt_VERSION VERSION_GREATER 0.14.6)
     target_compile_definitions(flatpak-backend PRIVATE -DAPPSTREAM_NEW_POOL_API)
 endif()
