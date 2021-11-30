@@ -80,4 +80,6 @@ Comment[x-test]=xxConfigure software update behaviorxx
 Comment[zh_CN]=配置软件更新行为
 Comment[zh_TW]=設定軟體更新的行為
 
+X-KDE-Keywords=updates
+
 Categories=Qt;KDE;
