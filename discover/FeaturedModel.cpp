@@ -72,6 +72,8 @@ void FeaturedModel::refreshCurrentApplicationBackend()
 
     if (backend && QFile::exists(*featuredCache))
         refresh();
+
+    Q_EMIT currentApplicationBackendChanged(m_backend);
 }
 
 void FeaturedModel::refresh()

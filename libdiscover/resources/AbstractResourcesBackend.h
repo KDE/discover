@@ -38,6 +38,26 @@ Q_SIGNALS:
     void fetchMore();
 };
 
+class DISCOVERCOMMON_EXPORT HelpfulError : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(QString iconName MEMBER m_iconName CONSTANT)
+    Q_PROPERTY(QString errorMessage MEMBER m_errorMessage CONSTANT)
+    Q_PROPERTY(QVariantList actions MEMBER m_actions CONSTANT)
+public:
+    HelpfulError(const QString &iconName, const QString &error, const QVariantList &actions = {})
+        : m_iconName(iconName)
+        , m_errorMessage(error)
+        , m_actions(actions)
+    {
+    }
+
+private:
+    QString m_iconName;
+    QString m_errorMessage;
+    QVariantList m_actions;
+};
+
 /**
  * \class AbstractResourcesBackend  AbstractResourcesBackend.h "AbstractResourcesBackend.h"
  *
@@ -199,6 +219,11 @@ public Q_SLOTS:
      * Notifies the backend that the user wants the information to be up to date
      */
     virtual void checkForUpdates() = 0;
+
+    /**
+     * Provides a guess why a search might not have offered satisfactory results
+     */
+    Q_SCRIPTABLE virtual HelpfulError *explainDysfunction() const;
 
 Q_SIGNALS:
     /**

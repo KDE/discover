@@ -7,6 +7,7 @@
 #include "AbstractResourcesBackend.h"
 #include "Category/Category.h"
 #include "libdiscover_debug.h"
+#include <KLocalizedString>
 #include <QHash>
 #include <QMetaObject>
 #include <QMetaProperty>
@@ -145,4 +146,9 @@ QStringList AbstractResourcesBackend::extends() const
 int AbstractResourcesBackend::fetchingUpdatesProgress() const
 {
     return isFetching() ? 42 : 100;
+}
+
+HelpfulError *AbstractResourcesBackend::explainDysfunction() const
+{
+    return new HelpfulError(QStringLiteral("network-disconnect"), i18n("Please verify Internet connectivity"));
 }

@@ -76,6 +76,8 @@ public:
     void loadRemote(FlatpakInstallation *installation, FlatpakRemote *remote);
     void unloadRemote(FlatpakInstallation *installation, FlatpakRemote *remote);
 
+    HelpfulError *explainDysfunction() const override;
+
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata);
     void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);

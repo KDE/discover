@@ -1535,4 +1535,17 @@ QString FlatpakBackend::displayName() const
     return QStringLiteral("Flatpak");
 }
 
+HelpfulError *FlatpakBackend::explainDysfunction() const
+{
+    if (m_flatpakSources.isEmpty()) {
+        return new HelpfulError(QStringLiteral("emblem-error"), i18n("There are no Flatpak sources."), m_sources->actions());
+    }
+    for (const auto &source : m_flatpakSources) {
+        if (!source->m_pool->lastError().isEmpty()) {
+            return new HelpfulError(QStringLiteral("emblem-error"), i18n("Failed to load \"%1\" source", source->name()));
+        }
+    }
+    return AbstractResourcesBackend::explainDysfunction();
+}
+
 #include "FlatpakBackend.moc"

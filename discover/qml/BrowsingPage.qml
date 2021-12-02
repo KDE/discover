@@ -47,15 +47,26 @@ DiscoverPage
         }
     }
 
-    Kirigami.PlaceholderMessage {
+    Loader {
+        active: appsRep.count === 0 && !appsRep.model.isFetching
         anchors.centerIn: parent
         width: parent.width - (Kirigami.Units.largeSpacing * 4)
+        sourceComponent: Kirigami.PlaceholderMessage {
+            readonly property var helpfulError: appsRep.model.currentApplicationBackend.explainDysfunction()
+            icon.name: helpfulError.iconName
+            text: i18n("Unable to load applications")
+            explanation: helpfulError.errorMessage
 
-        visible: appsRep.count === 0 && !appsRep.model.isFetching
-
-        icon.name: "network-disconnect"
-        text: i18n("Unable to load applications")
-        explanation: i18n("Please verify Internet connectivity")
+            Repeater {
+                model: helpfulError.actions
+                delegate: Button {
+                    Layout.alignment: Qt.AlignHCenter
+                    action: ConvertDiscoverAction {
+                        action: modelData
+                    }
+                }
+            }
+        }
     }
 
     signal clearSearch()

@@ -21,6 +21,7 @@ class FeaturedModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY isFetchingChanged)
+    Q_PROPERTY(AbstractResourcesBackend *currentApplicationBackend READ currentApplicationBackend NOTIFY currentApplicationBackendChanged)
 public:
     FeaturedModel();
     ~FeaturedModel() override
@@ -31,6 +32,10 @@ public:
     QVariant data(const QModelIndex &index, int role) const override;
     int rowCount(const QModelIndex &parent) const override;
     QHash<int, QByteArray> roleNames() const override;
+    AbstractResourcesBackend *currentApplicationBackend() const
+    {
+        return m_backend;
+    }
 
     bool isFetching() const
     {
@@ -39,6 +44,7 @@ public:
 
 Q_SIGNALS:
     void isFetchingChanged();
+    void currentApplicationBackendChanged(AbstractResourcesBackend *currentApplicationBackend);
 
 private:
     void refreshCurrentApplicationBackend();

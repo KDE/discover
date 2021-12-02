@@ -80,13 +80,7 @@ DiscoverPage {
 
                 Component {
                     id: kirigamiAction
-                    Kirigami.Action {
-                        property QtObject action
-                        text: action.text
-                        tooltip: action.toolTip
-                        visible: action.visible
-                        onTriggered: action.trigger()
-                    }
+                    ConvertDiscoverAction {}
                 }
 
                 function mergeActions(moreActions) {

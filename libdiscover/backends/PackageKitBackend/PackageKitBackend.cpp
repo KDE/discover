@@ -826,4 +826,13 @@ int PackageKitBackend::fetchingUpdatesProgress() const
     return percentage;
 }
 
+HelpfulError *PackageKitBackend::explainDysfunction() const
+{
+    const auto error = m_appdata->lastError();
+    if (!error.isEmpty()) {
+        return new HelpfulError(QStringLiteral("network-disconnect"), error);
+    }
+    return AbstractResourcesBackend::explainDysfunction();
+}
+
 #include "PackageKitBackend.moc"

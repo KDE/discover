@@ -75,6 +75,8 @@ public:
     void fetchUpdates();
     int fetchingUpdatesProgress() const override;
 
+    HelpfulError *explainDysfunction() const override;
+
     void addPackageArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
     void addPackageNotArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
 
