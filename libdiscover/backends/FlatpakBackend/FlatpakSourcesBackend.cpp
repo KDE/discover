@@ -80,7 +80,7 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
     : AbstractSourcesBackend(parent)
     , m_preferredInstallation(installations.constFirst())
     , m_sources(new QStandardItemModel(this))
-    , m_flathubAction(new DiscoverAction(i18n("Add Flathub"), this))
+    , m_flathubAction(new DiscoverAction("flatpak-discover", i18n("Add Flathub"), this))
     , m_noSourcesItem(new QStandardItem(QStringLiteral("-")))
 {
     m_flathubAction->setObjectName(QStringLiteral("flathub"));

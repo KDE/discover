@@ -11,7 +11,7 @@ DiscoverAction::DiscoverAction(QObject *parent)
 {
 }
 
-DiscoverAction::DiscoverAction(const QIcon icon, const QString &text, QObject *parent)
+DiscoverAction::DiscoverAction(const QString &icon, const QString &text, QObject *parent)
     : QObject(parent)
     , m_text(text)
     , m_icon(icon)
@@ -42,13 +42,13 @@ void DiscoverAction::setVisible(bool visible)
     Q_EMIT visibleChanged(visible);
 }
 
-void DiscoverAction::setIcon(const QIcon &icon)
+void DiscoverAction::setIconName(const QString &icon)
 {
-    if (icon.name() == m_icon.name() && !icon.name().isEmpty())
+    if (icon == m_icon)
         return;
 
     m_icon = icon;
-    Q_EMIT iconChanged(icon);
+    Q_EMIT iconNameChanged(icon);
 }
 
 void DiscoverAction::setText(const QString &text)

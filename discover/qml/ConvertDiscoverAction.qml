@@ -13,6 +13,7 @@ import org.kde.kirigami 2.15 as Kirigami
  */
 Kirigami.Action {
     property QtObject action
+    icon.name: action.iconName
     text: action.text
     tooltip: action.toolTip
     visible: action.visible

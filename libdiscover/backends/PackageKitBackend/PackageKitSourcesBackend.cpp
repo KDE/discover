@@ -52,7 +52,7 @@ static DiscoverAction *createActionForService(const QString &servicePath, QObjec
 {
     DiscoverAction *action = new DiscoverAction(parent);
     KDesktopFile parser(servicePath);
-    action->setIcon(QIcon::fromTheme(parser.readIcon()));
+    action->setIconName(parser.readIcon());
     action->setText(parser.readName());
     action->setToolTip(parser.readComment());
     QObject::connect(action, &DiscoverAction::triggered, action, [servicePath]() {
