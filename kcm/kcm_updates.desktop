@@ -90,4 +90,6 @@ X-KDE-Keywords[sv]=uppdateringar
 X-KDE-Keywords[uk]=оновлення
 X-KDE-Keywords[x-test]=xxupdatesxx
 
+X-KDE-FormFactors=tablet,handset,desktop
+
 Categories=Qt;KDE;
