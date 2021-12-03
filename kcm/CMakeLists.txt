@@ -28,8 +28,5 @@ target_link_libraries(kcm_updates
     KF5::QuickAddons
 )
 
-kcoreaddons_desktop_to_json(kcm_updates "kcm_updates.desktop")
-
-install(TARGETS kcm_updates DESTINATION ${KDE_INSTALL_PLUGINDIR}/kcms)
-install(FILES kcm_updates.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
+install(TARGETS kcm_updates DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
 kpackage_install_package(package kcm_updates kcms)
