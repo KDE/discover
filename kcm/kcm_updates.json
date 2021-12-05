@@ -2,6 +2,12 @@
     "Categories": "Qt;KDE;",
     "KPlugin": {
         "Description": "Configure software update behavior",
+        "Description[ca]": "Configura el comportament de l'actualització de programari",
+        "Description[nl]": "Gedrag van software bijwerken configureren",
+        "Description[sl]": "Nastavite obnašanje posodobitve programov",
+        "Description[sv]": "Anpassa beteende för uppdateringar av programvara",
+        "Description[uk]": "Налаштовування поведінки при оновленні програм",
+        "Description[x-test]": "xxConfigure software update behaviorxx",
         "FormFactors": [
             "tablet",
             "handset",
