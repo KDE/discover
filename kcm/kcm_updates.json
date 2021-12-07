@@ -2,7 +2,9 @@
     "Categories": "Qt;KDE;",
     "KPlugin": {
         "Description": "Configure software update behavior",
+        "Description[ar]": "اضبط سلوك تحديث التطبيقات",
         "Description[ca]": "Configura el comportament de l'actualització de programari",
+        "Description[es]": "Configurar el comportamiento de las actualizaciones de software",
         "Description[fr]": "Configurer le comportement pour les mises à jour des logiciels ",
         "Description[nl]": "Gedrag van software bijwerken configureren",
         "Description[pl]": "Ustawienia zachowania uaktualnień oprogramowania",
