@@ -3,9 +3,11 @@
     "KPlugin": {
         "Description": "Configure software update behavior",
         "Description[ar]": "اضبط سلوك تحديث التطبيقات",
+        "Description[az]": "Proqram təminatı yenilənməsi davranışını tənzimləyin",
         "Description[ca]": "Configura el comportament de l'actualització de programari",
         "Description[es]": "Configurar el comportamiento de las actualizaciones de software",
         "Description[fr]": "Configurer le comportement pour les mises à jour des logiciels ",
+        "Description[ko]": "소프트웨어 업데이트 행동 설정",
         "Description[nl]": "Gedrag van software bijwerken configureren",
         "Description[pl]": "Ustawienia zachowania uaktualnień oprogramowania",
         "Description[sl]": "Nastavite obnašanje posodobitve programov",
