@@ -29,6 +29,6 @@ public:
     DiscoverSettings *discoverSettings() const;
 
 private:
-    UpdatesData *m_data;
-    DiscoverData *m_discoverData;
+    UpdatesData *const m_data;
+    DiscoverData *const m_discoverData;
 };

@@ -11,10 +11,13 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QMetaProperty>
+#include <chrono>
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
 #include <resources/StoredResultsStream.h>
+
+using namespace std::chrono_literals;
 
 MuonExporter::MuonExporter()
     : QObject(nullptr)
@@ -58,7 +61,7 @@ void MuonExporter::fetchResources()
     }
     auto stream = new StoredResultsStream(streams);
     connect(stream, &StoredResultsStream::finishedResources, this, &MuonExporter::exportResources);
-    QTimer::singleShot(15000, stream, &AggregatedResultsStream::finished);
+    QTimer::singleShot(15s, stream, &AggregatedResultsStream::finished);
 }
 
 void MuonExporter::exportResources(const QVector<AbstractResource *> &resources)

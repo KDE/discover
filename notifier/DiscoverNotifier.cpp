@@ -22,6 +22,9 @@
 
 #include "../libdiscover/utils.h"
 #include "updatessettings.h"
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 DiscoverNotifier::DiscoverNotifier(QObject *parent)
     : QObject(parent)
@@ -49,11 +52,11 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
     }
     connect(&m_timer, &QTimer::timeout, this, &DiscoverNotifier::showUpdatesNotification);
     m_timer.setSingleShot(true);
-    m_timer.setInterval(1000);
+    m_timer.setInterval(1s);
     updateStatusNotifier();
 
     // Only fetch updates after the system is comfortably booted
-    QTimer::singleShot(20000, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
+    QTimer::singleShot(20s, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
 }
 
 DiscoverNotifier::~DiscoverNotifier() = default;

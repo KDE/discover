@@ -48,8 +48,8 @@ public:
 private:
     void setResourceInternal(AbstractResource *resource);
 
-    AbstractResource *m_resource;
-    Transaction *m_transaction;
+    AbstractResource *m_resource = nullptr;
+    Transaction *m_transaction = nullptr;
 
 private Q_SLOTS:
     void transactionAdded(Transaction *trans);

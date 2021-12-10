@@ -62,7 +62,7 @@ void Category::parseData(const QString &path, const QDomNode &data)
             m_decoration = QUrl(tempElement.text());
             if (m_decoration.isRelative()) {
                 m_decoration =
-                    QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("discover/") + tempElement.text()));
+                    QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("discover/") + tempElement.text()));
                 if (m_decoration.isEmpty())
                     qCWarning(LIBDISCOVER_LOG) << "couldn't find category decoration" << tempElement.text();
             }
@@ -132,7 +132,7 @@ QVector<QPair<FilterType, QString>> Category::andFilters() const
     return m_andFilters;
 }
 
-void Category::setAndFilter(QVector<QPair<FilterType, QString>> filters)
+void Category::setAndFilter(const QVector<QPair<FilterType, QString>> &filters)
 {
     m_andFilters = filters;
 }

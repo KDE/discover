@@ -68,11 +68,11 @@ Q_SIGNALS:
     void resourceChanged();
 
 private:
-    AbstractResource *m_app;
-    AbstractReviewsBackend *m_backend;
+    AbstractResource *m_app = nullptr;
+    AbstractReviewsBackend *m_backend = nullptr;
     QVector<ReviewPtr> m_reviews;
     int m_lastPage;
-    bool m_canFetchMore;
+    bool m_canFetchMore = true;
 };
 
 #endif // REVIEWSMODEL_H
