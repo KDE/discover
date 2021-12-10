@@ -392,7 +392,9 @@ DiscoverPage
                     // Backend label and origin/remote
                     Label {
                         Layout.fillWidth: true
-                        text: i18nc("%1 is the backend that provides this app, %2 is the specific repository or direction within that backend","%1 (%2)", resource.backend.displayName, resource.origin)
+                        text: resource.origin.length === 0 ? resource.backend.displayName
+                                : i18nc("%1 is the backend that provides this app, %2 is the specific repository or address within that backend","%1 (%2)",
+                                        resource.backend.displayName, resource.origin)
                         elide: Text.ElideRight
                     }
 
