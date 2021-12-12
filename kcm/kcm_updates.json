@@ -16,6 +16,7 @@
         "Description[sv]": "Anpassa beteende för uppdateringar av programvara",
         "Description[uk]": "Налаштовування поведінки при оновленні програм",
         "Description[x-test]": "xxConfigure software update behaviorxx",
+        "Description[zh_CN]": "配置软件更新行为",
         "FormFactors": [
             "tablet",
             "handset",
