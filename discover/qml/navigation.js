@@ -39,8 +39,8 @@ function openReviews(model) {
     window.stack.push("qrc:/qml/ReviewsPage.qml", { model: model })
 }
 
-function openExtends(ext) {
-    window.stack.push("qrc:/qml/ApplicationsListPage.qml", { extending: ext, title: i18n("Extensions…") })
+function openExtends(ext, appname) {
+    window.stack.push("qrc:/qml/ApplicationsListPage.qml", { extending: ext, title: i18n("Addons for %1", appname) })
 }
 
 function openHome() {

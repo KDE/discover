@@ -15,7 +15,7 @@ Kirigami.OverlaySheet {
     readonly property bool containsAddons: listview.count > 0 || isExtended
     readonly property bool isExtended: ResourcesModel.isExtended(application.appstreamId)
 
-    title: i18n("Addons")
+    title: i18n("Addons for %1", application.name)
 
     ListView {
         id: listview
@@ -54,7 +54,7 @@ Kirigami.OverlaySheet {
         Button {
             text: i18n("More…")
             visible: application.appstreamId.length>0 && addonsView.isExtended
-            onClicked: Navigation.openExtends(application.appstreamId)
+            onClicked: Navigation.openExtends(application.appstreamId, application.name)
         }
 
         Item { Layout.fillWidth: true }
