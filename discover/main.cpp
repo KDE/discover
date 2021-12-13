@@ -127,7 +127,6 @@ int main(int argc, char **argv)
                     QStringLiteral("admin@leinir.dk"),
                     QStringLiteral("https://leinir.dk/"),
                     QStringLiteral("leinir"));
-    about.setBugAddress("https://bugs.kde.org/enter_bug.cgi?product=Discover");
     about.setProductName("discover/discover");
     about.setProgramLogo(app.windowIcon());
 
