@@ -311,7 +311,6 @@ DiscoverPage
 
                     CheckBox {
                         id: itemChecked
-                        Layout.leftMargin: Kirigami.Units.gridUnit
                         Layout.alignment: Qt.AlignVCenter
                         checked: model.checked === Qt.Checked
                         onClicked: model.checked = (model.checked===Qt.Checked ? Qt.Unchecked : Qt.Checked)
@@ -326,6 +325,11 @@ DiscoverPage
                     }
 
                     ColumnLayout {
+                        Layout.fillWidth: true
+                        Layout.leftMargin: Kirigami.Units.smallSpacing
+                        Layout.alignment: Qt.AlignVCenter
+
+                        spacing: 0
 
                         // App name
                         Kirigami.Heading {
