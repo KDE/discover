@@ -1573,6 +1573,11 @@ void FlatpakBackend::checkForUpdates()
 void FlatpakBackend::checkForUpdates(FlatpakInstallation *installation, FlatpakRemote *remote)
 {
     m_refreshAppstreamMetadataJobs++;
+    if (flatpak_remote_get_disabled(remote)) {
+        integrateRemote(installation, remote);
+        return;
+    }
+
     FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
     connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, &FlatpakBackend::metadataRefreshed);
     connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, [this](const QString &errorMessage) {
