@@ -1296,7 +1296,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         return stream;
     } else if (filter.state == AbstractResource::Installed) {
         auto stream = new ResultsStream(QStringLiteral("FlatpakStream-installed"));
-        auto f = [this, stream] {
+        auto f = [this, stream, filter] {
             QVector<AbstractResource *> resources;
             for (auto installation : m_installations) {
                 g_autoptr(GError) localError = nullptr;
@@ -1315,6 +1315,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                         continue;
 
                     auto resource = getAppForInstalledRef(installation, ref);
+                    if (!filter.search.isEmpty() && !resource->name().contains(filter.search, Qt::CaseInsensitive))
+                        continue;
+
                     if (resource->resourceType() == FlatpakResource::Runtime) {
                         resources.prepend(resource);
                     } else {
