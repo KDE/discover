@@ -5,7 +5,7 @@
   <name xml:lang="ar">سَند عدّة الحزم</name>
   <name xml:lang="az">PackageKit modulu</name>
   <name xml:lang="ca">Dorsal del PackageKit</name>
-  <name xml:lang="ca-valencia">Dorsal de PackageKit</name>
+  <name xml:lang="ca-valencia">Dorsal del PackageKit</name>
   <name xml:lang="cs">Podpůrná vrstva PackageKit</name>
   <name xml:lang="da">PackageKit-motor</name>
   <name xml:lang="de">PackageKit-Backend</name>
@@ -47,7 +47,7 @@
   <summary xml:lang="ar">يُكامل تطبيقات ”عُدّة الحزم“ في «استكشف»</summary>
   <summary xml:lang="az">Distribütor tətbiqlərini Discover-ə inteqrasiya edir</summary>
   <summary xml:lang="ca">Integra les aplicacions de la distribució al Discover</summary>
-  <summary xml:lang="ca-valencia">Integra aplicacions de distribució a Discover</summary>
+  <summary xml:lang="ca-valencia">Integra les aplicacions de la distribució al Discover</summary>
   <summary xml:lang="cs">Integruje aplikace distribuce do Discover</summary>
   <summary xml:lang="da">Integrerer distributionsprogrammer i Discover</summary>
   <summary xml:lang="de">Integriert Distributions-Anwendungen in Discover</summary>
@@ -68,7 +68,7 @@
   <summary xml:lang="ml">ഡിസ്‌കവറിലേക്ക് വിതരണ ആപ്ലിക്കേഷനുകൾ സംയോജിപ്പിക്കുന്നു</summary>
   <summary xml:lang="my">ဒစ်စထရီဗျူးရှင်း အပ္ပလီကေးရှင်းများကို ဒစ်(စ)ကာဗာနှင့် ပူးပေါင်းဆက်နွယ်ပေးသည်</summary>
   <summary xml:lang="nb">Integrerer distribusjonsprogrammer i Discover</summary>
-  <summary xml:lang="nl">Integreert distributie-toepassingen in Discover</summary>
+  <summary xml:lang="nl">Integreert distributie-toepassingen in Ontdekken</summary>
   <summary xml:lang="nn">Integrerer distribusjonsprogram i Discover</summary>
   <summary xml:lang="pa">ਵੰਡਣ ਵਾਲੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ ਨੂੰ ਡਿਸਕਵਰ ਵਿੱਚ ਜੋੜਦਾ ਹੈ</summary>
   <summary xml:lang="pl">Integruje aplikacje dystrybucji w Odkrywcy</summary>

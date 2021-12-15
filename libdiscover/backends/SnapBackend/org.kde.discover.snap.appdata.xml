@@ -5,7 +5,7 @@
   <name xml:lang="ar">سَند سناپ</name>
   <name xml:lang="az">Snap modulları</name>
   <name xml:lang="ca">Dorsal de l'Snap</name>
-  <name xml:lang="ca-valencia">Dorsal de Snap</name>
+  <name xml:lang="ca-valencia">Dorsal de l'Snap</name>
   <name xml:lang="cs">Podpůrná vrstva Snap</name>
   <name xml:lang="da">Snap-motor</name>
   <name xml:lang="de">Snap-Backend</name>
@@ -47,7 +47,7 @@
   <summary xml:lang="ar">يُكامل تطبيقات ”سناپ“ في «استكشف»</summary>
   <summary xml:lang="az">Snap tətbiqlərini Discover-ə inteqrasiya edir</summary>
   <summary xml:lang="ca">Integra les aplicacions de l'Snap al Discover</summary>
-  <summary xml:lang="ca-valencia">Integra aplicacions de Snap a Discover</summary>
+  <summary xml:lang="ca-valencia">Integra les aplicacions de l'Snap al Discover</summary>
   <summary xml:lang="cs">Integruje aplikace Snap do Discover</summary>
   <summary xml:lang="da">Integrerer Snap-programmer i Discover</summary>
   <summary xml:lang="de">Integriert Snap-Anwendungen in Discover</summary>
@@ -68,7 +68,7 @@
   <summary xml:lang="ml">സ്നാപ്പ് ആപ്ലിക്കേഷനുകൾ ഡിസ്കവറിലേക്ക് സംയോജിപ്പിക്കുന്നു</summary>
   <summary xml:lang="my">စနပ် အပ္ပလီကေးရှင်းများကို ဒစ်(စ)ကာဗာနှင့် ပူးပေါင်းဆက်နွယ်ပေးသည်</summary>
   <summary xml:lang="nb">Integrerer Snap-programmer i Discover</summary>
-  <summary xml:lang="nl">Integreert Snap-toepassingen in Discover</summary>
+  <summary xml:lang="nl">Integreert Snap-toepassingen in Ontdekken</summary>
   <summary xml:lang="nn">Integrerer Snap-program i Discover</summary>
   <summary xml:lang="pa">ਸਨੈਪ ਐਪਲੀਕੇਸ਼ਨਾਂ ਨੂੰ ਡਿਸਕਵਰ ਵਿੱਚ ਜੋੜਦਾ ਹੈ</summary>
   <summary xml:lang="pl">Integruje aplikacje Snap w Odkrywcy</summary>
