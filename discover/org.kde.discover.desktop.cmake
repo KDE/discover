@@ -163,6 +163,7 @@ Name=See Available Updates
 Name[ar]=اعرض التحديثات المتوفرة
 Name[az]=Əlçatan yenilənmələrə baxın
 Name[ca]=Mostra les actualitzacions disponibles
+Name[ca@valencia]=Mostra les actualitzacions disponibles
 Name[cs]=Zobrazit dostupné aktualizace
 Name[de]=Zeigt verfügbare Aktualisierungen
 Name[en_GB]=See Available Updates
