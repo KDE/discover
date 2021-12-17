@@ -1274,6 +1274,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 for (uint i = 0; i < refs->len; i++) {
                     FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
                     auto resource = getAppForInstalledRef(installation, ref);
+#if FLATPAK_CHECK_VERSION(1, 1, 2)
+                    resource->setAvailableVersion(QString::fromUtf8(flatpak_installed_ref_get_appdata_version(ref)));
+#endif
                     resource->setState(AbstractResource::Upgradeable);
                     updateAppSize(resource);
                     if (resource->resourceType() == FlatpakResource::Runtime) {

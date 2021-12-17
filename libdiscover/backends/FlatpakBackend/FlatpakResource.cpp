@@ -97,9 +97,8 @@ QString FlatpakResource::availableVersion() const
         theBranch = i18n("Unknown");
     }
 
-    if (!m_appdata.releases().isEmpty()) {
-        auto release = m_appdata.releases().constFirst();
-        return i18n("%1 (%2)", release.version(), theBranch);
+    if (!m_availableVersion.isEmpty()) {
+        return i18nc("version (branch)", "%1 (%2)", m_availableVersion, theBranch);
     }
 
     return theBranch;

@@ -158,6 +158,11 @@ public:
     QString installPath() const;
     void updateFromAppStream();
 
+    void setAvailableVersion(const QString &version)
+    {
+        m_availableVersion = version;
+    }
+
 Q_SIGNALS:
     void propertyStateChanged(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state);
 
@@ -181,6 +186,7 @@ private:
     AbstractResource::State m_state;
     FlatpakInstallation *const m_installation;
     QString m_origin;
+    QString m_availableVersion;
     FlatpakResource::ResourceType m_type = DesktopApp;
 };
 
