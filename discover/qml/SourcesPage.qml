@@ -29,7 +29,6 @@ DiscoverPage {
             readonly property bool isDefault: ResourcesModel.currentApplicationBackend === resourcesBackend
 
             width: sourcesView.width
-            label: backendItem.isDefault ? i18n("%1 (Default)", resourcesBackend.displayName) : resourcesBackend.displayName
 
             readonly property var p0: Connections {
                 target: backendItem.backend
@@ -42,55 +41,76 @@ DiscoverPage {
                 }
             }
 
-            Kirigami.ActionToolBar {
-                id: actionBar
-                Layout.fillWidth: true
-                alignment: Qt.AlignRight
-                Kirigami.Action {
-                    id: addSource
-                    text: i18n("Add Source…")
-                    icon.name: "list-add"
-                    visible: backendItem.backend && backendItem.backend.supportsAdding
+            contentItem: RowLayout {
+                Kirigami.Heading {
+                    text: resourcesBackend.displayName
+                    level: 3
+                    font.weight: backendItem.isDefault ? Font.Bold : Font.Normal
+                }
 
-                    readonly property Component p0: Component {
-                        id: dialogComponent
-                        AddSourceDialog {
-                            source: backendItem.backend
+                Kirigami.ActionToolBar {
+                    id: actionBar
 
-                            onSheetOpenChanged: if(!sheetOpen) {
-                                destroy(1000)
-                            }
+                    alignment: Qt.AlignRight
+
+                    Kirigami.Action {
+                        id: isDefaultbackendLabelAction
+
+                        visible: backendItem.isDefault
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        displayComponent: Kirigami.Heading {
+                            text: i18n("Default source")
+                            level: 3
+                            font.weight: Font.Bold
                         }
                     }
+                    Kirigami.Action {
+                        id: addSourceAction
+                        text: i18n("Add Source…")
+                        icon.name: "list-add"
+                        visible: backendItem.backend && backendItem.backend.supportsAdding
 
-                    onTriggered: {
-                        var addSourceDialog = dialogComponent.createObject(window, {displayName: backendItem.backend.resourcesBackend.displayName })
-                        addSourceDialog.open()
+                        readonly property Component p0: Component {
+                            id: dialogComponent
+                            AddSourceDialog {
+                                source: backendItem.backend
+
+                                onSheetOpenChanged: if(!sheetOpen) {
+                                    destroy(1000)
+                                }
+                            }
+                        }
+
+                        onTriggered: {
+                            var addSourceDialog = dialogComponent.createObject(window, {displayName: backendItem.backend.resourcesBackend.displayName })
+                            addSourceDialog.open()
+                        }
                     }
-                }
-                Kirigami.Action {
-                    id: makeDefault
-                    visible: resourcesBackend && resourcesBackend.hasApplications
+                    Kirigami.Action {
+                        id: makeDefaultAction
+                        visible: resourcesBackend && resourcesBackend.hasApplications && !backendItem.isDefault
 
-                    enabled: !backendItem.isDefault
-                    text: i18n("Make default")
-                    icon.name: "favorite"
-                    onTriggered: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
-                }
-
-                Component {
-                    id: kirigamiAction
-                    ConvertDiscoverAction {}
-                }
-
-                function mergeActions(moreActions) {
-                    var actions = [makeDefault, addSource]
-                    for(var i in moreActions) {
-                        actions.push(kirigamiAction.createObject(actionBar, {action: moreActions[i]}))
+                        text: i18n("Make default")
+                        icon.name: "favorite"
+                        onTriggered: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
                     }
-                    return actions;
+
+                    Component {
+                        id: kirigamiAction
+                        ConvertDiscoverAction {}
+                    }
+
+                    function mergeActions(moreActions) {
+                        var actions = [isDefaultbackendLabelAction,
+                                       makeDefaultAction,
+                                       addSourceAction]
+                        for(var i in moreActions) {
+                            actions.push(kirigamiAction.createObject(actionBar, {action: moreActions[i]}))
+                        }
+                        return actions;
+                    }
+                    actions: mergeActions(backendItem.backend.actions)
                 }
-                actions: mergeActions(backendItem.backend.actions)
             }
         }
 
