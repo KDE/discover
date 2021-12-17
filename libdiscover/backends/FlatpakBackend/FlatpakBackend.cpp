@@ -1288,6 +1288,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     resources.reserve(resources.size() + it->size());
                     for (auto ref : qAsConst(it.value())) {
                         auto resource = getAppForInstalledRef(it.key(), ref);
+#if FLATPAK_CHECK_VERSION(1, 1, 2)
+                        resource->setAvailableVersion(QString::fromUtf8(flatpak_installed_ref_get_appdata_version(ref)));
+#endif
                         g_object_unref(ref);
                         resource->setState(AbstractResource::Upgradeable);
                         updateAppSize(resource);
