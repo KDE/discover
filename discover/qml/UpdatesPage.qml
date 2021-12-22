@@ -171,6 +171,7 @@ DiscoverPage
             contentItem: RowLayout {
                 ToolButton {
                     enabled: page.unselected > 0 && updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
+                    visible: !resourcesUpdatesModel.needsReboot
                     icon.name: "edit-select-all"
                     text: i18n("Select All")
                     onClicked: { updateModel.checkAll(); }
@@ -178,9 +179,16 @@ DiscoverPage
 
                 ToolButton {
                     enabled: page.unselected !== updateModel.totalUpdatesCount && updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
+                    visible: !resourcesUpdatesModel.needsReboot
                     icon.name: "edit-select-none"
                     text: i18n("Select None")
                     onClicked: { updateModel.uncheckAll(); }
+                }
+
+                CheckBox {
+                    id: rebootAtEnd
+                    visible: resourcesUpdatesModel.needsReboot
+                    text: i18n("Restart automatically after update has completed");
                 }
 
                 Label {
@@ -457,6 +465,11 @@ DiscoverPage
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Restart the system to complete the update process") }
             PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: restartButton; visible: true }
+            StateChangeScript {
+                script: if (rebootAtEnd.checked) {
+                    app.rebootNow()
+                }
+            }
         },
         State {
             name: "now-uptodate"

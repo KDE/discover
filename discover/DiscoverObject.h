@@ -65,6 +65,7 @@ public Q_SLOTS:
     void openLocalPackage(const QUrl &localfile);
 
     void reboot();
+    void rebootNow();
 
 private Q_SLOTS:
     void switchApplicationLanguage();

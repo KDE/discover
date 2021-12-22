@@ -486,6 +486,16 @@ void DiscoverObject::reboot()
     QDBusConnection::sessionBus().asyncCall(method);
 }
 
+void DiscoverObject::rebootNow()
+{
+    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.login1"),
+                                                 QStringLiteral("/org/freedesktop/login1"),
+                                                 QStringLiteral("org.freedesktop.login1.Manager"),
+                                                 QStringLiteral("Reboot"));
+    method.setArguments({true /*interactive*/});
+    QDBusConnection::systemBus().asyncCall(method);
+}
+
 QRect DiscoverObject::initialGeometry() const
 {
     KConfigGroup window(KSharedConfig::openConfig(), "Window");
