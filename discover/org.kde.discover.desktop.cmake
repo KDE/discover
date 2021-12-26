@@ -56,6 +56,7 @@ X-DocPath=plasma-discover/index.html
 InitialPreference=5
 NoDisplay=@DesktopNoDisplay@
 Actions=Updates;
+X-GNOME-SingleWindow=true
 GenericName=Software Center
 GenericName[ar]=مركز البرمجيّات
 GenericName[ast]=Centru de software
