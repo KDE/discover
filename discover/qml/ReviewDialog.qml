@@ -1,8 +1,6 @@
-import QtQuick 2.3
-import QtQuick.Controls 2.2
-import QtQuick.Dialogs 1.2
+import QtQuick 2.15
+import QtQuick.Controls 2.15 as QQC2
 import QtQuick.Layouts 1.1
-import QtQuick.Window 2.0
 import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.OverlaySheet
@@ -20,26 +18,24 @@ Kirigami.OverlaySheet
 
     title: i18n("Reviewing %1", application.name)
 
-    ColumnLayout {
+    contentItem: ColumnLayout {
         Layout.maximumWidth: Kirigami.Units.gridUnit * 24
-
         Kirigami.FormLayout {
-            id: contentLayout
-            Layout.fillHeight: true
+            Layout.fillWidth: true
 
             Rating {
                 id: ratingInput
                 Kirigami.FormData.label: i18n("Rating:")
                 editable: true
             }
-            Label {
+            QQC2.Label {
                 Kirigami.FormData.label: i18n("Name:")
                 visible: reviewDialog.backend.userName.length > 0
                 Layout.fillWidth: true
                 elide: Text.ElideRight
                 text: visible ? reviewDialog.backend.userName : ""
             }
-            TextField {
+            QQC2.TextField {
                 id: titleInput
                 Kirigami.FormData.label: i18n("Title:")
                 Layout.fillWidth: true
@@ -47,7 +43,7 @@ Kirigami.OverlaySheet
             }
         }
 
-        TextArea {
+        QQC2.TextArea {
             id: reviewInput
             readonly property bool acceptableInput: length > 15 && length < 3000
             Layout.fillWidth: true
@@ -55,8 +51,7 @@ Kirigami.OverlaySheet
         }
 
         RowLayout {
-
-            Label {
+            QQC2.Label {
                 id: instructionalLabel
                 Layout.fillWidth: true
                 text: {
@@ -75,7 +70,7 @@ Kirigami.OverlaySheet
                 Layout.fillWidth: true
                 visible: !instructionalLabel.visible
             }
-            Button {
+            QQC2.Button {
                 id: acceptButton
                 enabled: !instructionalLabel.visible
                 text: i18n("Submit review")
