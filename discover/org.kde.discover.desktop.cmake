@@ -173,6 +173,7 @@ Name[fi]=Näytä saatavilla olevat päivitykset
 Name[fr]=Consulter les mises à jour disponibles
 Name[hi]=उपलब्ध अद्यतन देखें
 Name[hsb]=Pokaž móžne aktualizowanja
+Name[hu]=Elérhető frissítések megtekintése
 Name[ia]=Vide actualisationes dispoibile
 Name[it]=Vedi gli aggiornamenti disponibili
 Name[ko]=사용 가능한 업데이트 보기
