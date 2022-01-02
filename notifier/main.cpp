@@ -39,7 +39,7 @@ int main(int argc, char **argv)
                          version,
                          i18n("System update status notifier"),
                          KAboutLicense::GPL,
-                         i18n("© 2010-2021 Plasma Development Team"));
+                         i18n("© 2010-2022 Plasma Development Team"));
         about.addAuthor(QStringLiteral("Aleix Pol Gonzalez"), {}, QStringLiteral("aleixpol@kde.org"));
         about.setProductName("discover/discover");
         about.setProgramLogo(app.windowIcon());
