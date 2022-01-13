@@ -36,7 +36,7 @@
 #include "utils.h"
 #include <resources/StandardBackendUpdater.h>
 
-static const int PAGE_SIZE = 100;
+static const int ENGINE_PAGE_SIZE = 100;
 
 class KNSBackendFactory : public AbstractResourcesBackendFactory
 {
@@ -160,7 +160,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
             }
         }
     });
-    m_engine->setPageSize(PAGE_SIZE);
+    m_engine->setPageSize(ENGINE_PAGE_SIZE);
     m_engine->init(m_name);
 
     if (m_hasApplications) {
@@ -378,7 +378,7 @@ void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List &entries)
     }
 
     setResponsePending(false);
-    if (m_onePage || resources.count() < PAGE_SIZE) {
+    if (m_onePage || resources.count() < ENGINE_PAGE_SIZE) {
         Q_EMIT searchFinished();
     }
 }
