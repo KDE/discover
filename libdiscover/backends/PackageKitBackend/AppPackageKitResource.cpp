@@ -192,8 +192,12 @@ QString AppPackageKitResource::changelog() const
 
 bool AppPackageKitResource::canExecute() const
 {
-    static QSet<QString> cannotExecute = {QStringLiteral("org.kde.development")};
-    return !cannotExecute.contains(m_appdata.id());
+    static const QSet<AppStream::Component::Kind> executeTypes = {
+        AppStream::Component::KindDesktopApp,
+        AppStream::Component::KindConsoleApp,
+        AppStream::Component::KindWebApp,
+    };
+    return executeTypes.contains(m_appdata.kind());
 }
 
 void AppPackageKitResource::invokeApplication() const
