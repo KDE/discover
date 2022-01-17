@@ -155,7 +155,7 @@ int main(int argc, char **argv)
             QStandardPaths::setTestModeEnabled(true);
         }
 
-        KDBusService *service = new KDBusService(KDBusService::Unique, &app);
+        KDBusService *service = !feedback ? new KDBusService(KDBusService::Unique, &app) : nullptr;
 
         {
             auto options = parser->optionNames();
@@ -169,24 +169,31 @@ int main(int argc, char **argv)
             }
             mainWindow = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full), initialProperties);
         }
+        if (feedback) {
+            QTextStream(stdout) << mainWindow->describeSources() << '\n';
+            delete mainWindow;
+            return 0;
+        } else {
+            auto onActivateRequested = [mainWindow](const QStringList &arguments, const QString & /*workingDirectory*/) {
+                auto window = qobject_cast<QWindow *>(mainWindow->rootObject());
+                if (!window) {
+                    // Should never happen anyway
+                    QCoreApplication::instance()->quit();
+                    return;
+                }
+
+                raiseWindow(window);
+
+                if (arguments.isEmpty())
+                    return;
+                QScopedPointer<QCommandLineParser> parser(createParser());
+                parser->parse(arguments);
+                processArgs(parser.data(), mainWindow);
+            };
+            QObject::connect(service, &KDBusService::activateRequested, mainWindow, onActivateRequested);
+        }
+
         QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverObject::deleteLater);
-        auto onActivateRequested = [mainWindow](const QStringList &arguments, const QString & /*workingDirectory*/) {
-            auto window = qobject_cast<QWindow *>(mainWindow->rootObject());
-            if (!window) {
-                // Should never happen anyway
-                QCoreApplication::instance()->quit();
-                return;
-            }
-
-            raiseWindow(window);
-
-            if (arguments.isEmpty())
-                return;
-            QScopedPointer<QCommandLineParser> parser(createParser());
-            parser->parse(arguments);
-            processArgs(parser.data(), mainWindow);
-        };
-        QObject::connect(service, &KDBusService::activateRequested, mainWindow, onActivateRequested);
 
         processArgs(parser.data(), mainWindow);
 
@@ -195,12 +202,6 @@ int main(int argc, char **argv)
             const auto modes = mainWindow->modes();
             for (const QString &mode : modes)
                 QTextStream(stdout) << " * " << mode << '\n';
-            delete mainWindow;
-            return 0;
-        }
-
-        if (parser->isSet(QStringLiteral("feedback"))) {
-            QTextStream(stdout) << mainWindow->describeSources() << '\n';
             delete mainWindow;
             return 0;
         }
