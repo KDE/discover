@@ -140,6 +140,7 @@ int main(int argc, char **argv)
         parser->process(app);
         about.processCommandLine(parser.data());
         DiscoverBackendsFactory::processCommandLine(parser.data(), parser->isSet(QStringLiteral("test")));
+        const bool feedback = parser->isSet(QStringLiteral("feedback"));
 
         if (parser->isSet(QStringLiteral("listbackends"))) {
             QTextStream(stdout) << i18n("Available backends:\n");
@@ -163,6 +164,9 @@ int main(int argc, char **argv)
             QVariantMap initialProperties;
             if (!options.isEmpty() || !parser->positionalArguments().isEmpty())
                 initialProperties = {{QStringLiteral("currentTopLevel"), QStringLiteral("qrc:/qml/LoadingPage.qml")}};
+            if (feedback) {
+                initialProperties.insert("visible", false);
+            }
             mainWindow = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full), initialProperties);
         }
         QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverObject::deleteLater);
