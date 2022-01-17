@@ -40,6 +40,10 @@ public:
     }
 
     void addErrorMessage(const QString &error);
+    QStringList addedRepositories() const
+    {
+        return m_addedRepositories;
+    }
 
 Q_SIGNALS:
     void progressChanged(int progress);
@@ -47,8 +51,10 @@ Q_SIGNALS:
     void passiveMessage(const QString &msg);
 
 private:
-    FlatpakTransaction *m_transaction;
+    static gboolean
+    add_new_remote_cb(FlatpakTransaction * /*object*/, gint /*reason*/, gchar *from_id, gchar *suggested_remote_name, gchar *url, gpointer user_data);
 
+    FlatpakTransaction *m_transaction;
     bool m_result = false;
     bool m_cancelled = false;
     int m_progress = 0;
@@ -57,6 +63,7 @@ private:
     GCancellable *m_cancellable;
     FlatpakResource *const m_app;
     const Transaction::Role m_role;
+    QStringList m_addedRepositories;
 };
 
 #endif // FLATPAKTRANSACTIONJOB_H

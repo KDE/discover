@@ -457,3 +457,19 @@ void FlatpakSourcesBackend::proceed()
 {
     m_proceedFunctions.pop()();
 }
+
+void FlatpakSourcesBackend::checkRepositories(const QStringList &repoNames)
+{
+    FlatpakBackend *backend = qobject_cast<FlatpakBackend *>(parent());
+    const auto insts = backend->installations();
+    for (const QString &repoName : repoNames) {
+        const QByteArray name = repoName.toUtf8();
+        for (auto installation : insts) {
+            g_autoptr(GError) error = nullptr;
+            auto remote = flatpak_installation_get_remote_by_name(installation, name, nullptr, &error);
+            if (remote) {
+                addRemote(remote, installation);
+            }
+        }
+    }
+}

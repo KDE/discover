@@ -1560,6 +1560,7 @@ Transaction *FlatpakBackend::removeApplication(AbstractResource *app)
     }
 
     FlatpakJobTransaction *transaction = new FlatpakJobTransaction(resource, Transaction::RemoveRole);
+    connect(transaction, &FlatpakJobTransaction::repositoriesAdded, m_sources, &FlatpakSourcesBackend::checkRepositories);
 
     connect(transaction, &FlatpakJobTransaction::statusChanged, this, [this, resource](Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
