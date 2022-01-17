@@ -154,7 +154,12 @@ void ResourcesUpdatesModel::init()
     m_offlineUpdates = group.readEntry<bool>("UseOfflineUpdates", false);
 
     KConfigWatcher::Ptr watcher = KConfigWatcher::create(sharedConfig);
-    connect(watcher.data(), &KConfigWatcher::configChanged, [=]() {
+    connect(watcher.data(), &KConfigWatcher::configChanged, [this](const KConfigGroup &group, const QByteArrayList &names) {
+        // Ensure it is for the right file
+        if (!names.contains("UseOfflineUpdates") || group.name() != "Software") {
+            return;
+        }
+
         if (m_offlineUpdates == group.readEntry<bool>("UseOfflineUpdates", false)) {
             return;
         }
