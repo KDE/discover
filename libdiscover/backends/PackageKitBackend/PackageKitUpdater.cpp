@@ -391,6 +391,10 @@ void PackageKitUpdater::start()
 
     setupTransaction(PackageKit::Transaction::TransactionFlagSimulate);
     setProgressing(true);
+
+    if (useOfflineUpdates()) {
+        enableNeedsReboot();
+    }
 }
 
 void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time*/)
