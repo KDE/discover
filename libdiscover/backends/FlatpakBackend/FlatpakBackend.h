@@ -77,6 +77,10 @@ public:
     void unloadRemote(FlatpakInstallation *installation, FlatpakRemote *remote);
 
     HelpfulError *explainDysfunction() const override;
+    QVector<FlatpakInstallation *> installations() const
+    {
+        return m_installations;
+    }
 
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata);

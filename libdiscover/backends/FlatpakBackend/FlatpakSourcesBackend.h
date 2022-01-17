@@ -57,6 +57,7 @@ public:
     void proceed() override;
 
     static void populateRemote(FlatpakRemote *remote, const QString &name, const QString &url, const QString &gpgkey);
+    void checkRepositories(const QStringList &repoNames);
 
 private:
     bool listRepositories(FlatpakInstallation *installation);

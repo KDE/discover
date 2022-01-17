@@ -31,6 +31,9 @@ public Q_SLOTS:
     void finishTransaction();
     void start();
 
+Q_SIGNALS:
+    void repositoriesAdded(const QStringList &repositoryNames);
+
 private:
     void updateProgress();
 
