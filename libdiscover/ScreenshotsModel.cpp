@@ -34,6 +34,11 @@ void ScreenshotsModel::setResource(AbstractResource *res)
     m_resource = res;
     Q_EMIT resourceChanged(res);
 
+    beginResetModel();
+    m_screenshots.clear();
+    m_thumbnails.clear();
+    endResetModel();
+
     if (res) {
         connect(m_resource, &AbstractResource::screenshotsFetched, this, &ScreenshotsModel::screenshotsFetched);
         res->fetchScreenshots();
