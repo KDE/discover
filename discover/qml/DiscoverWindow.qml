@@ -162,14 +162,17 @@ Kirigami.ApplicationWindow
         }
     }
 
-    footer: Kirigami.NavigationTabBar {
-        visible: !window.wideScreen
-        actions: [
-            featuredAction,
-            searchAction,
-            installedAction,
-            updateAction
-        ]
+    footer: Loader {
+        active: !window.wideScreen
+        visible: active // ensure that no height is used when not loaded
+        sourceComponent: Kirigami.NavigationTabBar {
+            actions: [
+                featuredAction,
+                searchAction,
+                installedAction,
+                updateAction
+            ]
+        }
     }
 
     Component {
