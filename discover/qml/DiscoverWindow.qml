@@ -162,8 +162,9 @@ Kirigami.ApplicationWindow
         }
     }
 
+    // footer navbar
     footer: Loader {
-        active: !window.wideScreen
+        active: !window.wideScreen && Kirigami.Settings.isMobile
         visible: active // ensure that no height is used when not loaded
         sourceComponent: Kirigami.NavigationTabBar {
             actions: [
