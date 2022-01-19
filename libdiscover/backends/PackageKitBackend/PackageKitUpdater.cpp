@@ -553,8 +553,10 @@ void PackageKitUpdater::cancel()
 
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString &error)
 {
-    if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
+    if (err == PackageKit::Transaction::ErrorNoLicenseAgreement || err == PackageKit::Transaction::ErrorTransactionCancelled
+        || err == PackageKit::Transaction::ErrorNotAuthorized) {
         return;
+    }
     QString finalMessage = xi18nc("@info", "%1:<nl/><nl/>%2", PackageKitMessages::errorMessage(err), error);
     Q_EMIT passiveMessage(finalMessage);
     qWarning() << "Error happened" << err << error;
