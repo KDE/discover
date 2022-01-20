@@ -18,7 +18,7 @@ DiscoverPage
     title: i18n("Featured")
     objectName: "featured"
 
-    actions.main: window.wideScreen ? searchAction : undefined
+    actions.main: window.wideScreen ? searchAction : null
 
     readonly property bool isHome: true
 
