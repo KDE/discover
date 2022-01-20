@@ -49,8 +49,6 @@ void FlatpakRefreshAppstreamMetadataJob::run()
 #endif
         const QString error = localError ? QString::fromUtf8(localError->message) : QStringLiteral("<no error>");
         qWarning() << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << error;
-        Q_EMIT jobRefreshAppstreamMetadataFailed(error);
-    } else {
-        Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
     }
+    Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
 }

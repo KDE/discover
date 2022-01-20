@@ -1586,8 +1586,6 @@ void FlatpakBackend::checkForUpdates(FlatpakInstallation *installation, FlatpakR
     }
 
     FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
-    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, &FlatpakBackend::metadataRefreshed);
-    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFailed, this, &FlatpakBackend::passiveMessage);
     connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
     connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this] {
         acquireFetching(false);
