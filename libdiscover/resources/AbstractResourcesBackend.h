@@ -10,6 +10,7 @@
 #include <QObject>
 #include <QPair>
 #include <QVector>
+#include <optional>
 
 #include "AbstractResource.h"
 #include "Transaction/AddonList.h"
@@ -102,6 +103,7 @@ public:
     struct Filters {
         Category *category = nullptr;
         AbstractResource::State state = AbstractResource::Broken;
+        std::optional<AbstractResource::Type> resourceType;
         QString mimetype;
         QString search;
         QString extends;

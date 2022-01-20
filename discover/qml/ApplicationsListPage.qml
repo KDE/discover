@@ -25,6 +25,7 @@ DiscoverPage {
     property alias extending: appsModel.extending
     property alias search: appsModel.search
     property alias resourcesUrl: appsModel.resourcesUrl
+    property alias resourceType: appsModel.resourceType
     property alias isBusy: appsModel.isBusy
     property alias allBackends: appsModel.allBackends
     property alias count: apps.count
@@ -34,6 +35,7 @@ DiscoverPage {
     property bool compact: page.width < 550 || !applicationWindow().wideScreen
     property bool showRating: true
     property bool searchPage: false
+    property bool allowFilterApps: false
 
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories
@@ -98,6 +100,16 @@ DiscoverPage {
                 }
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.ReleaseDateRole
+            }
+        },
+        Kirigami.Action {
+            text: i18n("Only Show Applications")
+            displayHint: Kirigami.DisplayHint.AlwaysHide
+            visible: page.allowFilter
+            checkable: true
+            checked: appsModel.resourceType === AbstractResource.Application
+            onCheckedChanged: {
+                appsModel.resourceType = checked ? AbstractResource.Application : null
             }
         }
     ]

@@ -17,6 +17,7 @@ ApplicationsListPage {
     compact: true
     showRating: false
     canNavigate: false
+    allowFilterApps: true
 
     listHeader: null
 }

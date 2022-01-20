@@ -125,6 +125,10 @@ bool AbstractResourcesBackend::Filters::shouldFilter(AbstractResource *res) cons
         return false;
     }
 
+    if (resourceType.has_value() && res->type() != resourceType.value()) {
+        return false;
+    }
+
     return !category || res->categoryMatches(category);
 }
 

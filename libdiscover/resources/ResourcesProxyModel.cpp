@@ -374,6 +374,25 @@ AbstractResource::State ResourcesProxyModel::stateFilter() const
     return m_filters.state;
 }
 
+void ResourcesProxyModel::setResourceType(const QVariant &resourceType)
+{
+    std::optional<AbstractResource::Type> rt;
+    if (!resourceType.isNull()) {
+        rt = resourceType.value<AbstractResource::Type>();
+    }
+
+    if (rt != m_filters.resourceType) {
+        m_filters.resourceType = rt;
+        invalidateFilter();
+        Q_EMIT resourceTypeChanged(resourceType);
+    }
+}
+
+QVariant ResourcesProxyModel::resourceType() const
+{
+    return m_filters.resourceType.has_value() ? m_filters.resourceType.value() : QVariant();
+}
+
 QString ResourcesProxyModel::mimeTypeFilter() const
 {
     return m_filters.mimetype;
