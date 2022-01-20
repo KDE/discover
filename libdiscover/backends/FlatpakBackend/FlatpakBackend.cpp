@@ -852,8 +852,10 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
 {
     Q_ASSERT(flatpakInstallation);
 
-    g_autoptr(GPtrArray) remotes = flatpak_installation_list_remotes(flatpakInstallation, m_cancellable, nullptr);
+    GError *error = nullptr;
+    g_autoptr(GPtrArray) remotes = flatpak_installation_list_remotes(flatpakInstallation, m_cancellable, &error);
     if (!remotes) {
+        qWarning() << "failed to list remotes" << error->message;
         return false;
     }
 
