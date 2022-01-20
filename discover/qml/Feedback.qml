@@ -22,6 +22,13 @@ UserFeedback.Provider
             onTriggered: {
                 provider.encouraged()
             }
+        },
+        Kirigami.Action {
+            text: i18n("Configure Updates…")
+            displayHint: Kirigami.DisplayHint.AlwaysHide
+            onTriggered: {
+                KQCA.KCMShell.open("kcm_updates");
+            }
         }
     ]
 

@@ -5,6 +5,7 @@ import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 2.14 as Kirigami
 import "navigation.js" as Navigation
+import org.kde.kquickcontrolsaddons 2.0 as KQCA
 
 DiscoverPage {
     id: page
@@ -12,7 +13,16 @@ DiscoverPage {
     title: i18n("Settings")
     property string search: ""
 
-    contextualActions: feedbackLoader.item ? feedbackLoader.item.actions : []
+    Kirigami.Action {
+        id: configureUpdatesAction
+        text: i18n("Configure Updates…")
+        displayHint: Kirigami.DisplayHint.AlwaysHide
+        onTriggered: {
+            KQCA.KCMShell.open("kcm_updates");
+        }
+    }
+
+    contextualActions: feedbackLoader.item ? feedbackLoader.item.actions : [configureUpdatesAction]
 
     mainItem: ListView {
         id: sourcesView
