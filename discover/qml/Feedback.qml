@@ -27,7 +27,7 @@ UserFeedback.Provider
             text: i18n("Configure Updates…")
             displayHint: Kirigami.DisplayHint.AlwaysHide
             onTriggered: {
-                KQCA.KCMShell.open("kcm_updates");
+                KQCA.KCMShell.openSystemSettings("kcm_updates");
             }
         }
     ]
@@ -43,7 +43,7 @@ UserFeedback.Provider
     telemetryMode: UserFeedbackSettings.feedbackLevel
 
     function encouraged() {
-        KQCA.KCMShell.open("kcm_feedback");
+        KQCA.KCMShell.openSystemSettings("kcm_feedback");
     }
 
     property var lastSurvey: null

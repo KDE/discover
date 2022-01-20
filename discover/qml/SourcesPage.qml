@@ -18,7 +18,7 @@ DiscoverPage {
         text: i18n("Configure Updates…")
         displayHint: Kirigami.DisplayHint.AlwaysHide
         onTriggered: {
-            KQCA.KCMShell.open("kcm_updates");
+            KQCA.KCMShell.openSystemSettings("kcm_updates");
         }
     }
 
