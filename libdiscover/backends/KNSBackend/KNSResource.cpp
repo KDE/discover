@@ -137,7 +137,7 @@ QJsonArray KNSResource::licenses()
 int KNSResource::size()
 {
     const auto downloadInfo = m_entry.downloadLinkInformationList();
-    return downloadInfo.isEmpty() ? 0 : downloadInfo.at(0).size;
+    return downloadInfo.isEmpty() ? 0 : downloadInfo.at(0).size * 1024;
 }
 
 QString KNSResource::installedVersion() const
