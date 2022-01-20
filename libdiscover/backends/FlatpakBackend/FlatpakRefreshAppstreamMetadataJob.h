@@ -22,7 +22,6 @@ public:
     void run() override;
 
 Q_SIGNALS:
-    void jobRefreshAppstreamMetadataFailed(const QString &errorMessage);
     void jobRefreshAppstreamMetadataFinished(FlatpakInstallation *installation, FlatpakRemote *remote);
 
 private:
