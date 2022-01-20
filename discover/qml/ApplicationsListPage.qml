@@ -99,6 +99,17 @@ DiscoverPage {
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.ReleaseDateRole
             }
+
+            Kirigami.Action {
+                separator: true
+            }
+
+            Action {
+                id: reverseAction
+                text: i18n("Invert Order")
+                checkable: true
+                checked: false
+            }
         }
     ]
 
@@ -119,8 +130,16 @@ DiscoverPage {
 
         model: ResourcesProxyModel {
             id: appsModel
+
+            function swapIfReverse(order, reverse) {
+                if (reverse)
+                    return order === Qt.DescendingOrder ? Qt.AscendingOrder : Qt.DescendingOrder;
+                else
+                    return order;
+            }
+
             sortRole: DiscoverSettings.appsListPageSorting
-            sortOrder: sortRole === ResourcesProxyModel.SortableRatingRole || sortRole === ResourcesProxyModel.ReleaseDateRole ? Qt.DescendingOrder : Qt.AscendingOrder
+            sortOrder: swapIfReverse(sortRole === ResourcesProxyModel.SortableRatingRole || sortRole === ResourcesProxyModel.ReleaseDateRole ? Qt.DescendingOrder : Qt.AscendingOrder, reverseAction.checked)
 
             onBusyChanged: if (isBusy) {
                 apps.currentIndex = -1
