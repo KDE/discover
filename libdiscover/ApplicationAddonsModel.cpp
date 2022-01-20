@@ -6,6 +6,7 @@
 
 #include "ApplicationAddonsModel.h"
 #include "libdiscover_debug.h"
+#include "utils.h"
 #include <Transaction/TransactionModel.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
@@ -17,6 +18,17 @@ ApplicationAddonsModel::ApplicationAddonsModel(QObject *parent)
     // new QAbstractItemModelTester(this, this);
 
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &ApplicationAddonsModel::transactionOver);
+    connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, [this](AbstractResource *resource, const QVector<QByteArray> &properties) {
+        if (!properties.contains("state"))
+            return;
+
+        const QString appstreamId = resource->appstreamId();
+        if (kContains(m_initial, [&appstreamId](const PackageState &state) {
+                return appstreamId == state.packageName();
+            })) {
+            resetState();
+        }
+    });
 }
 
 QHash<int, QByteArray> ApplicationAddonsModel::roleNames() const
