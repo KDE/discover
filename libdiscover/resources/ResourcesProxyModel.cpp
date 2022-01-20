@@ -9,10 +9,12 @@
 
 #include "libdiscover_debug.h"
 #include <QMetaProperty>
+#include <cmath>
 #include <utils.h>
 
 #include "ResourcesModel.h"
 #include <Category/CategoryModel.h>
+#include <KLocalizedString>
 #include <ReviewsBackend/Rating.h>
 #include <Transaction/TransactionModel.h>
 
@@ -55,6 +57,14 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     connect(this, &QAbstractItemModel::modelReset, this, &ResourcesProxyModel::countChanged);
     connect(this, &QAbstractItemModel::rowsInserted, this, &ResourcesProxyModel::countChanged);
     connect(this, &QAbstractItemModel::rowsRemoved, this, &ResourcesProxyModel::countChanged);
+
+    QTimer *roughCountTimer = new QTimer(this);
+    roughCountTimer->setInterval(10);
+    roughCountTimer->setSingleShot(true);
+
+    connect(roughCountTimer, &QTimer::timeout, this, &ResourcesProxyModel::roughCountChanged);
+    connect(this, &ResourcesProxyModel::countChanged, roughCountTimer, qOverload<>(&QTimer::start));
+    connect(this, &ResourcesProxyModel::busyChanged, roughCountTimer, qOverload<>(&QTimer::start));
 }
 
 void ResourcesProxyModel::componentComplete()
@@ -637,4 +647,22 @@ void ResourcesProxyModel::fetchMore(const QModelIndex &parent)
 bool ResourcesProxyModel::sortByRelevancy() const
 {
     return m_sortByRelevancy;
+}
+
+QString ResourcesProxyModel::roughCount() const
+{
+    const int rows = rowCount();
+    if (isBusy()) {
+        // We return an empty string because it's evidently confusing
+        if (rows == 0) {
+            return {};
+        }
+
+        // We convert rows=1234 into round=1000
+        const int round = std::pow(10, std::floor(std::log10(rows)));
+        if (round >= 1) {
+            return i18nc("an approximation number, like 3000+", "%1+", (rows / round) * round);
+        }
+    }
+    return QString::number(rows);
 }

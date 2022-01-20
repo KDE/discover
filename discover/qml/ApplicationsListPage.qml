@@ -27,6 +27,7 @@ DiscoverPage {
     property alias resourcesUrl: appsModel.resourcesUrl
     property alias isBusy: appsModel.isBusy
     property alias allBackends: appsModel.allBackends
+    property alias roughCount: appsModel.roughCount
     property alias count: apps.count
     property alias listHeader: apps.header
     property alias listHeaderPositioning: apps.headerPositioning
@@ -43,8 +44,28 @@ DiscoverPage {
         return input.replace(regex, "");
      }
 
-    title: search.length>0 ? i18n("Search: %1", stripHtml(search))
-         : category ? category.name : i18n("Search")
+    title: {
+        const rough = appsModel.roughCount;
+        if (search.length>0) {
+            if (rough.length > 0) {
+                return i18n("Search: %1 - %2 items", stripHtml(search), rough)
+            } else {
+                return i18n("Search: %1", stripHtml(search))
+            }
+        } else if (category) {
+            if (rough.length > 0) {
+                return i18n("%1 - %2 items", category.name, rough)
+            } else {
+                return category.name
+            }
+        } else {
+            if (rough.length > 0) {
+                return i18n("Search - %1 items", rough)
+            } else {
+                return i18n("Search")
+            }
+        }
+    }
 
     signal clearSearch()
 
@@ -156,8 +177,8 @@ DiscoverPage {
                 visible: appsModel.search.length > 0 && stateFilter !== AbstractResource.Installed
 
                 icon.name: "edit-none"
-                text: i18nc("%1 is the name of an application", "\"%1\" was not found in the available sources", appsModel.search)
-                explanation: i18nc("%1 is the name of an application", "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution.", appsModel.search)
+                text: visible ? i18nc("%1 is the name of an application", "\"%1\" was not found in the available sources", appsModel.search) : ""
+                explanation: visible ? i18nc("%1 is the name of an application", "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution.", appsModel.search) : ""
                 helpfulAction: Kirigami.Action {
                     text: i18nc("%1 is the name of an application", "Search the web for \"%1\"", appsModel.search)
                     icon.name: "internet-web-browser"

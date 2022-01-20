@@ -40,6 +40,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
     Q_PROPERTY(bool sortByRelevancy READ sortByRelevancy NOTIFY sortByRelevancyChanged)
+    Q_PROPERTY(QString roughCount READ roughCount NOTIFY roughCountChanged)
 public:
     explicit ResourcesProxyModel(QObject *parent = nullptr);
     enum Roles {
@@ -130,6 +131,8 @@ public:
     }
     void componentComplete() override;
 
+    QString roughCount() const;
+
 private Q_SLOTS:
     void refreshBackend(AbstractResourcesBackend *backend, const QVector<QByteArray> &properties);
     void refreshResource(AbstractResource *resource, const QVector<QByteArray> &properties);
@@ -159,6 +162,7 @@ private:
     AggregatedResultsStream *m_currentStream;
 
 Q_SIGNALS:
+    void roughCountChanged();
     void busyChanged(bool isBusy);
     void sortRoleChanged(int sortRole);
     void sortOrderChanged(Qt::SortOrder order);
