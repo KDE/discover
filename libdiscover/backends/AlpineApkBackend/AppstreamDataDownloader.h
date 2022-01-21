@@ -25,6 +25,7 @@
 #include <QHash>
 #include <QList>
 #include <QObject>
+#include <QSet>
 #include <QString>
 #include <QUrl>
 
@@ -135,8 +136,10 @@ Q_SIGNALS:
     void downloadFinished();
 
 private:
-    QString calcLocalFileSavePath(const QUrl &urlTodownload);
+    QString calcLocalFileSavePath(const QUrl &urlToDownload);
+    QString calcLocalFileSavePathOld(const QUrl &urlToDownload);
     void loadUrlsJson(const QString &path);
+    void cleanupOldCachedFiles();
 
 private Q_SLOTS:
     void onJobData(KIO::Job *job, const QByteArray &data);
@@ -146,6 +149,7 @@ protected:
     qint64 m_cacheExpireSeconds = 7 * 24 * 3600;
     QStringList m_urls;
     QStringList m_urlsToDownload;
+    QSet<QString> m_oldFormatFileNames;
     QHash<QString, QString> m_urlPrefixes;
     bool m_cacheWasUpdated = false;
 

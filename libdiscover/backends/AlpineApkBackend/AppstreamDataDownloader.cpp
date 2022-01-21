@@ -103,11 +103,46 @@ QString AppstreamDataDownloader::calcLocalFileSavePath(const QUrl &urlToDownload
 {
     // we are adding a prefix here to local file name to avoid possible
     //    file name clashes with files from other JSONs
+    // urlToDownload looks like:
+    //    "https://appstream.alpinelinux.org/data/edge/main/Components-main-aarch64.xml.gz"
+    //    "https://appstream.alpinelinux.org/data/edge/community/Components-community-aarch64.xml.gz"
+    // future update will change them to this form:
+    //   "https://appstream.alpinelinux.org/data/edge/main/Components-aarch64.xml.gz"
+    //   "https://appstream.alpinelinux.org/data/edge/community/Components-aarch64.xml.gz"
+    // so, file names will clash. We also need to have full URL to affect local file name
+    //   to avoid name clashes.
     const QString urlPrefix = m_urlPrefixes.value(urlToDownload.toString(), QString());
-    const QFileInfo urlInfo(urlToDownload.path());
-    const QString localCacheFile = AppstreamDataDownloader::appStreamCacheDir() + QDir::separator() + urlPrefix + QLatin1Char('_') + urlInfo.fileName();
-    // aka "~/.cache/discover/external_appstream_data/urlPrefix_fileName.xml.gz"
+    const QString urlPathHash = urlToDownload.path().replace(QLatin1Char('/'), QLatin1Char('_'));
+    const QString localCacheFile = AppstreamDataDownloader::appStreamCacheDir() + QDir::separator() + urlPrefix + QLatin1Char('_') + urlPathHash;
+
+    // new "~/.cache/discover/external_appstream_data/alpine-appstream-data__data_edge_main_Components-aarch64.xml.gz"
+
     return localCacheFile;
+}
+
+QString AppstreamDataDownloader::calcLocalFileSavePathOld(const QUrl &urlToDownload)
+{
+    // Calculate what file name was there for old format.
+    // We keep a list of "old" file names so we can delete them.
+    // "~/.cache/discover/external_appstream_data/alpine-appstream-data_Components-main-aarch64.xml.gz"
+    // ^                                        ^/|                   ^ ^
+    // | appstream cache dir -------------------|/|--- urlPrefix -----|_|-- file name
+    const QString urlPrefix = m_urlPrefixes.value(urlToDownload.toString(), QString());
+    const QString urlFileName = QFileInfo(urlToDownload.path()).fileName();
+    const QString oldFormatFileName = AppstreamDataDownloader::appStreamCacheDir() + QDir::separator() + urlPrefix + QLatin1Char('_') + urlFileName;
+    return oldFormatFileName;
+}
+
+void AppstreamDataDownloader::cleanupOldCachedFiles()
+{
+    if (m_oldFormatFileNames.isEmpty()) {
+        return;
+    }
+    qCDebug(LOG_ALPINEAPK) << "appstream_downloader: removing old files:";
+    for (const QString &oldFn : m_oldFormatFileNames) {
+        bool ok = QFile::remove(oldFn);
+        qCDebug(LOG_ALPINEAPK) << "    " << oldFn << (ok ? "OK" : "Fail");
+    }
 }
 
 void AppstreamDataDownloader::start()
@@ -138,7 +173,10 @@ void AppstreamDataDownloader::start()
     appStreamCacheDir(); // can create a cache dir if not exists
 
     const QDateTime dtNow = QDateTime::currentDateTime();
+
     m_urlsToDownload.clear();
+    m_oldFormatFileNames.clear();
+
     for (const QString &url : m_urls) {
         const QUrl urlToDownload(url, QUrl::TolerantMode);
         const QString localCacheFile = calcLocalFileSavePath(urlToDownload);
@@ -156,34 +194,38 @@ void AppstreamDataDownloader::start()
             qCDebug(LOG_ALPINEAPK) << " appstream metadata file: " << localFi.fileName()
                                    << " does not exist, queued for downloading";
         }
+
+        // create a set of possible cached files with old name format
+        const QString localCacheFileOld = calcLocalFileSavePathOld(urlToDownload);
+        m_oldFormatFileNames.insert(localCacheFileOld);
     }
 
-    if (!m_urlsToDownload.isEmpty()) {
-        // some files are outdated; download is needed
-        qCDebug(LOG_ALPINEAPK) << "appstream_downloader: We will need to download "
-                               << m_urlsToDownload.size() << " file(s)";
-
-        const QString discoverVersion(QStringLiteral("plasma-discover %1").arg(DiscoverVersion::version));
-
-        m_jobs.clear();
-        for (const QString &sUrl : qAsConst(m_urlsToDownload)) {
-            const QUrl url(sUrl, QUrl::TolerantMode);
-            KIO::TransferJob *job = KIO::get(url, KIO::LoadType::Reload, KIO::JobFlag::HideProgressInfo);
-            job->addMetaData(QLatin1String("UserAgent"), discoverVersion);
-
-            m_jobTracker->registerJob(job);
-
-            QObject::connect(job, &KJob::result, this, &AppstreamDataDownloader::onJobResult);
-            QObject::connect(job, &KIO::TransferJob::data, this, &AppstreamDataDownloader::onJobData);
-
-            m_jobs.push_back(job);
-        }
-    } else {
+    if (m_urlsToDownload.isEmpty()) {
         // no need to download anything
         qCDebug(LOG_ALPINEAPK) << "appstream_downloader: All appstream data files "
                                   "are up to date, not downloading anything";
+        cleanupOldCachedFiles();
         Q_EMIT downloadFinished();
         return;
+    }
+
+    // If we're here, some files are outdated; download is needed
+    qCDebug(LOG_ALPINEAPK) << "appstream_downloader: We will need to download " << m_urlsToDownload.size() << " file(s)";
+
+    const QString discoverVersion(QStringLiteral("plasma-discover %1").arg(DiscoverVersion::version));
+
+    m_jobs.clear();
+    for (const QString &sUrl : qAsConst(m_urlsToDownload)) {
+        const QUrl url(sUrl, QUrl::TolerantMode);
+        KIO::TransferJob *job = KIO::get(url, KIO::LoadType::Reload, KIO::JobFlag::HideProgressInfo);
+        job->addMetaData(QLatin1String("UserAgent"), discoverVersion);
+
+        m_jobTracker->registerJob(job);
+
+        QObject::connect(job, &KJob::result, this, &AppstreamDataDownloader::onJobResult);
+        QObject::connect(job, &KIO::TransferJob::data, this, &AppstreamDataDownloader::onJobData);
+
+        m_jobs.push_back(job);
     }
 }
 
@@ -232,6 +274,7 @@ void AppstreamDataDownloader::onJobResult(KJob *job)
 
     if (m_jobs.isEmpty()) {
         qCDebug(LOG_ALPINEAPK) << "appstream_downloader: all downloads have finished!";
+        cleanupOldCachedFiles();
         Q_EMIT downloadFinished();
     }
 }
