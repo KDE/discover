@@ -172,6 +172,10 @@ Kirigami.ApplicationWindow
                 installedAction,
                 updateAction
             ]
+            Component.onCompleted: {
+                // Exclusivity is already handled by the actions. This prevents BUG:448460
+                tabGroup.exclusive = false
+            }
         }
     }
 
