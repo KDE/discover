@@ -177,11 +177,27 @@ Kirigami.GlobalDrawer {
     }
 
     function createCategoryActions(categories) {
-        var actions = []
-        for(var i in categories) {
-            var cat = categories[i];
-            var catAction = categoryActionComponent.createObject(drawer, {category: cat, children: createCategoryActions(cat.subcategories)});
-            actions.push(catAction)
+        const actions = []
+        for(let i in categories) {
+            let cat = categories[i];
+            if (cat.name === "Applications") {
+                for (let j in cat.subcategories) {
+                    const subcat = cat.subcategories[j];
+               
+                    const catAction = categoryActionComponent.createObject(drawer, {
+                        category: subcat,
+                        children: createCategoryActions(subcat.subcategories)
+                    });
+                    actions.push(catAction);
+                }
+            } else {
+                const catAction = categoryActionComponent.createObject(drawer, {
+                    category: cat,
+                    children: createCategoryActions(cat.subcategories)
+                });
+                actions.push(catAction);
+            }
+
         }
         return actions;
     }
