@@ -38,13 +38,14 @@ Kirigami.AbstractCard
         // App icon
         Kirigami.Icon {
             id: resourceIcon
-            readonly property real contHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 5
+            readonly property real contHeight: delegateArea.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge
             source: application.icon
             height: contHeight
             width: contHeight
             anchors {
                 verticalCenter: parent.verticalCenter
                 left: parent.left
+                leftMargin: delegateArea.compact ? Kirigami.Units.largeSpacing : Kirigami.Units.largeSpacing * 2
             }
         }
 
@@ -54,7 +55,7 @@ Kirigami.AbstractCard
                 verticalCenter: parent.verticalCenter
                 right: parent.right
                 left: resourceIcon.right
-                leftMargin: Kirigami.Units.largeSpacing
+                leftMargin: Kirigami.Units.largeSpacing * 2
             }
             spacing: 0
 
