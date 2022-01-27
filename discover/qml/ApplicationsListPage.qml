@@ -42,7 +42,7 @@ DiscoverPage {
     function stripHtml(input) {
         var regex = /(<([^>]+)>)/ig
         return input.replace(regex, "");
-     }
+    }
 
     property string name: category ? category.name : ""
     title: {
