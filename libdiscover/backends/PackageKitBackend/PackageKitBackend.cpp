@@ -479,7 +479,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
             const auto toResolve = kFilter<QVector<AbstractResource *>>(m_packages.packages, needsResolveFilter);
 
             auto installedAndNameFilter = [filter](AbstractResource *res) {
-                return res->state() >= AbstractResource::Installed
+                return res->state() >= AbstractResource::Installed && !qobject_cast<PackageKitResource *>(res)->isCritical()
                     && (res->name().contains(filter.search, Qt::CaseInsensitive) || res->packageName().compare(filter.search, Qt::CaseInsensitive) == 0);
             };
             bool furtherSearch = false;
@@ -517,7 +517,8 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-all"));
         auto f = [this, filter, stream] {
             auto resources = kFilter<QVector<AbstractResource *>>(m_packages.packages, [](AbstractResource *res) {
-                return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource *>(res)->extendsItself();
+                return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource *>(res)->isCritical()
+                    && !qobject_cast<PackageKitResource *>(res)->extendsItself();
             });
             stream->setResources(resources);
             stream->finish();
