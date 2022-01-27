@@ -13,7 +13,7 @@ ApplicationsListPage {
     sortProperty: "installedPageSorting"
     sortRole: DiscoverSettings.installedPageSorting
 
-    title: i18n("Installed")
+    name: i18n("Installed")
     compact: true
     showRating: false
     canNavigate: false

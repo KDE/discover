@@ -44,6 +44,7 @@ DiscoverPage {
         return input.replace(regex, "");
      }
 
+    property string name: category ? category.name : ""
     title: {
         const rough = appsModel.roughCount;
         if (search.length>0) {
@@ -52,11 +53,11 @@ DiscoverPage {
             } else {
                 return i18n("Search: %1", stripHtml(search))
             }
-        } else if (category) {
+        } else if (name.length > 0) {
             if (rough.length > 0) {
-                return i18n("%1 - %2 items", category.name, rough)
+                return i18n("%1 - %2 items", name, rough)
             } else {
-                return category.name
+                return name
             }
         } else {
             if (rough.length > 0) {
