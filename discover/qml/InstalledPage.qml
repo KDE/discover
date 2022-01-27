@@ -8,10 +8,10 @@ import org.kde.kirigami 2.14 as Kirigami
 ApplicationsListPage {
     id: page
     stateFilter: AbstractResource.Installed
-    sortOrder: Qt.AscendingOrder
     allBackends: true
     sortProperty: "installedPageSorting"
     sortRole: DiscoverSettings.installedPageSorting
+    sortOrder: (sortRole == ResourcesProxyModel.NameRole) ? Qt.AscendingOrder : Qt.DescendingOrder
 
     name: i18n("Installed")
     compact: true
