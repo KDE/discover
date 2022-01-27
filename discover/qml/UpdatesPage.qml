@@ -14,6 +14,7 @@ DiscoverPage
     property string footerLabel: ""
     property int footerProgress: 0
     property bool isBusy: false
+    readonly property string name: title
 
     readonly property var resourcesUpdatesModel: ResourcesUpdatesModel {
         id: resourcesUpdatesModel

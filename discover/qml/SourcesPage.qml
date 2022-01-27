@@ -12,6 +12,7 @@ DiscoverPage {
     clip: true
     title: i18n("Settings")
     property string search: ""
+    readonly property string name: title
 
     Kirigami.Action {
         id: configureUpdatesAction
