@@ -142,7 +142,7 @@ DiscoverPage {
         model: ResourcesProxyModel {
             id: appsModel
             sortRole: DiscoverSettings.appsListPageSorting
-            sortOrder: sortRole === ResourcesProxyModel.SortableRatingRole || sortRole === ResourcesProxyModel.ReleaseDateRole ? Qt.DescendingOrder : Qt.AscendingOrder
+            sortOrder: sortRole === ResourcesProxyModel.NameRole ? Qt.AscendingOrder : Qt.DescendingOrder
 
             onBusyChanged: if (isBusy) {
                 apps.currentIndex = -1
