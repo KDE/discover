@@ -9,9 +9,8 @@
 
 #include "discovercommon_export.h"
 #include <QList>
-
+#include <QStringList>
 class QCommandLineParser;
-class QStringList;
 class AbstractResourcesBackend;
 
 class DISCOVERCOMMON_EXPORT DiscoverBackendsFactory
