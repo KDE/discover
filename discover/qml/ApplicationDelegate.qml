@@ -106,20 +106,20 @@ Kirigami.AbstractCard
                 implicitHeight: delegateArea.compact ? Kirigami.Units.smallSpacing : Kirigami.Units.largeSpacing
             }
 
-            // Container for rating, category, and install button
+            // Container for rating, category, size, and install button
             RowLayout {
                 Layout.fillWidth: true
 
-                // Container for rating and category labels
+                // Container for rating, category and size labels
                 ColumnLayout {
                     Layout.fillWidth: true
-                    // Include height of category for full-sized view even when
-                    // the actual category label isn't visible. This tightens up
+                    // Include height of compactInfo for full-sized view even when
+                    // the actual compactInfo layout isn't visible. This tightens up
                     // the layout and prevents the install button from appearing
                     // at a different position based on whether or not the
-                    // category text is visible, because the base layout is
+                    // compactInfo text is visible, because the base layout is
                     // vertically centered rather than filling a distinct space.
-                    Layout.preferredHeight: delegateArea.compact ? -1 : rating.implicitHeight + category.implicitHeight
+                    Layout.preferredHeight: delegateArea.compact ? -1 : rating.implicitHeight + compactInfo.implicitHeight
                     spacing: 0
 
                     // Rating stars + label
@@ -143,16 +143,37 @@ Kirigami.AbstractCard
                         }
                     }
 
-                    // Category label
-                    Label {
-                        id: category
+                    // Category and Size labels
+                    RowLayout {
+                        id: compactInfo
                         Layout.fillWidth: true
                         visible: delegateArea.application.categoryDisplay && delegateArea.application.categoryDisplay !== page.title && !delegateArea.compact
                         opacity: 0.6
-                        text: delegateArea.application.categoryDisplay
-                        font: Kirigami.Theme.smallFont
-                        elide: Text.ElideRight
-                        maximumLineCount: 1
+                        spacing: Kirigami.Units.largeSpacing
+
+                        Label {
+                            id: category
+                            Layout.fillWidth: true
+                            visible: delegateArea.application.categoryDisplay && delegateArea.application.categoryDisplay !== page.title && !delegateArea.compact
+                            opacity: 0.6
+                            text: delegateArea.application.categoryDisplay
+                            font: Kirigami.Theme.smallFont
+                            elide: Text.ElideRight
+                            maximumLineCount: 1
+                        }
+
+                        Label {
+                            id: size
+                            Layout.fillWidth: true
+                            visible: page.title.includes("Installed") && !delegateArea.compact
+                            horizontalAlignment: Text.AlignRight
+                            opacity: 0.6;
+                            // Without this check we end up in a binding loop when transitioning from desktop to mobile view in the applications page
+                            text: page.title.includes("Installed") && !delegateArea.compact ? delegateArea.application.sizeDescription : ""
+                            font: Kirigami.Theme.smallFont
+                            elide: Text.ElideRight
+                            maximumLineCount: 1
+                        }
                     }
                 }
 
