@@ -47,7 +47,10 @@ Kirigami.OverlaySheet
 
             // Cancel out built-in margins so it lines up with the rest of the
             // content in this sheet
-            Layout.margins: -Kirigami.Units.smallSpacing
+            leftPadding: 0
+            rightPadding: 0
+            bottomPadding: 0
+            topPadding: 0
 
             Button {
                 id: okButton
