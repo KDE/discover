@@ -18,6 +18,7 @@ Kirigami.AbstractCard
     property alias application: installButton.application
     property bool compact: false
     property bool showRating: true
+    property bool showSize: false
 
     readonly property bool appIsFromNonDefaultBackend: ResourcesModel.currentApplicationBackend !== application.backend && application.backend.hasApplications
     showClickFeedback: true
@@ -164,11 +165,10 @@ Kirigami.AbstractCard
                         Label {
                             id: size
                             Layout.fillWidth: true
-                            visible: page.title.includes("Installed") && !delegateArea.compact
+                            visible: showSize && !delegateArea.compact
+                            text: visible ? delegateArea.application.sizeDescription : ""
                             horizontalAlignment: Text.AlignRight
                             opacity: 0.6;
-                            // Without this check we end up in a binding loop when transitioning from desktop to mobile view in the applications page
-                            text: page.title.includes("Installed") && !delegateArea.compact ? delegateArea.application.sizeDescription : ""
                             font: Kirigami.Theme.smallFont
                             elide: Text.ElideRight
                             maximumLineCount: 1

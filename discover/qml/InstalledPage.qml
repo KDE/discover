@@ -15,6 +15,7 @@ ApplicationsListPage {
     name: i18n("Installed")
     compact: true
     showRating: false
+    showSize: true
     canNavigate: false
 
     listHeader: null

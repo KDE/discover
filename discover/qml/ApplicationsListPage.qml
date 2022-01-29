@@ -34,6 +34,7 @@ DiscoverPage {
     property string sortProperty: "appsListPageSorting"
     property bool compact: page.width < 550 || !applicationWindow().wideScreen
     property bool showRating: true
+    property bool showSize: false
     property bool searchPage: false
 
     property bool canNavigate: true
@@ -152,6 +153,7 @@ DiscoverPage {
             application: model.application
             compact: !applicationWindow().wideScreen
             showRating: page.showRating
+            showSize: page.showSize
         }
 
         Item {
