@@ -147,7 +147,6 @@ Kirigami.AbstractCard
                     RowLayout {
                         id: compactInfo
                         Layout.fillWidth: true
-                        visible: delegateArea.application.categoryDisplay && delegateArea.application.categoryDisplay !== page.title && !delegateArea.compact
                         opacity: 0.6
                         spacing: Kirigami.Units.largeSpacing
 
