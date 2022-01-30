@@ -115,7 +115,7 @@ QString PackageKitResource::installedVersion() const
     return PackageKit::Daemon::packageVersion(installedPackageId());
 }
 
-int PackageKitResource::size()
+quint64 PackageKitResource::size()
 {
     fetchDetails();
     return m_details.size();

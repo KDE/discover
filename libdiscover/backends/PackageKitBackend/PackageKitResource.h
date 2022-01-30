@@ -30,7 +30,7 @@ public:
     QString origin() const override;
     QString section() override;
     AbstractResource::Type type() const override;
-    int size() override;
+    quint64 size() override;
     void fetchChangelog() override;
     void fetchUpdateDetails() override;
 

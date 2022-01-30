@@ -177,7 +177,7 @@ QString FlatpakResource::commit() const
     return m_commit;
 }
 
-int FlatpakResource::downloadSize() const
+quint64 FlatpakResource::downloadSize() const
 {
     return m_downloadSize;
 }
@@ -236,7 +236,7 @@ QString FlatpakResource::installedVersion() const
     return version;
 }
 
-int FlatpakResource::installedSize() const
+quint64 FlatpakResource::installedSize() const
 {
     return m_installedSize;
 }
@@ -362,7 +362,7 @@ QString FlatpakResource::section()
     return QString();
 }
 
-int FlatpakResource::size()
+quint64 FlatpakResource::size()
 {
     if (m_state == Installed) {
         return m_installedSize;
@@ -477,7 +477,7 @@ void FlatpakResource::setCommit(const QString &commit)
     m_commit = commit;
 }
 
-void FlatpakResource::setDownloadSize(int size)
+void FlatpakResource::setDownloadSize(quint64 size)
 {
     m_downloadSize = size;
 
@@ -501,7 +501,7 @@ void FlatpakResource::setIconPath(const QString &path)
     m_iconPath = path;
 }
 
-void FlatpakResource::setInstalledSize(int size)
+void FlatpakResource::setInstalledSize(quint64 size)
 {
     m_installedSize = size;
 

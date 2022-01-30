@@ -53,7 +53,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString longDescription READ longDescription NOTIFY longDescriptionChanged)
     Q_PROPERTY(QString origin READ origin CONSTANT)
     Q_PROPERTY(QString displayOrigin READ displayOrigin CONSTANT)
-    Q_PROPERTY(int size READ size NOTIFY sizeChanged)
+    Q_PROPERTY(quint64 size READ size NOTIFY sizeChanged)
     Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY sizeChanged)
     Q_PROPERTY(QString installedVersion READ installedVersion NOTIFY versionsChanged)
     Q_PROPERTY(QString availableVersion READ availableVersion NOTIFY versionsChanged)
@@ -140,7 +140,7 @@ public:
     Q_ENUM(Type);
     virtual Type type() const = 0;
 
-    virtual int size() = 0;
+    virtual quint64 size() = 0;
     virtual QString sizeDescription();
 
     ///@returns a list of pairs with the name of the license and a URL pointing at it

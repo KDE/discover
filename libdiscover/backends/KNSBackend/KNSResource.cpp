@@ -134,7 +134,7 @@ QJsonArray KNSResource::licenses()
     return {QJsonObject{{QStringLiteral("name"), m_entry.license()}, {QStringLiteral("url"), QString()}}};
 }
 
-int KNSResource::size()
+quint64 KNSResource::size()
 {
     const auto downloadInfo = m_entry.downloadLinkInformationList();
     return downloadInfo.isEmpty() ? 0 : downloadInfo.at(0).size * 1024;

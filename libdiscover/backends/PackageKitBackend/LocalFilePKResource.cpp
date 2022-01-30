@@ -19,7 +19,7 @@ LocalFilePKResource::LocalFilePKResource(QUrl path, PackageKitBackend *parent)
 {
 }
 
-int LocalFilePKResource::size()
+quint64 LocalFilePKResource::size()
 {
     const QFileInfo info(m_path.toLocalFile());
     return info.size();

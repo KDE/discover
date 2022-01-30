@@ -23,7 +23,7 @@ public:
     QString availableVersion() const override;
     QString installedVersion() const override;
     QJsonArray licenses() override;
-    int size() override;
+    quint64 size() override;
     QUrl homepage() override;
     QUrl helpURL() override;
     QUrl bugURL() override;
@@ -51,7 +51,7 @@ public:
         return QStringLiteral("BananaPerson");
     }
     void setState(State state);
-    void setSize(int size)
+    void setSize(quint64 size)
     {
         m_size = size;
     }
@@ -75,7 +75,7 @@ public:
     QString m_iconName;
     QList<PackageState> m_addons;
     const AbstractResource::Type m_type;
-    int m_size;
+    quint64 m_size;
 };
 
 #endif // DUMMYRESOURCE_H
