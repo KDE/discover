@@ -45,7 +45,7 @@ QString FwupdResource::comment()
     return m_summary;
 }
 
-int FwupdResource::size()
+quint64 FwupdResource::size()
 {
     return m_size;
 }

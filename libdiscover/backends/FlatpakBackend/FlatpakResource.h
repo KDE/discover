@@ -95,10 +95,10 @@ public:
     QStringList categories() override;
     QString comment() override;
     QString commit() const;
-    int downloadSize() const;
+    quint64 downloadSize() const;
     QVariant icon() const override;
     QString installedVersion() const override;
-    int installedSize() const;
+    quint64 installedSize() const;
     AbstractResource::Type type() const override;
     QUrl homepage() override;
     QUrl helpURL() override;
@@ -115,7 +115,7 @@ public:
     QUrl resourceFile() const;
     QString runtime() const;
     QString section() override;
-    int size() override;
+    quint64 size() override;
     QString sizeDescription() override;
     AbstractResource::State state() override;
     ResourceType resourceType() const;
@@ -140,9 +140,9 @@ public:
 
     void setBranch(const QString &branch);
     void setBundledIcon(const QPixmap &pixmap);
-    void setDownloadSize(int size);
+    void setDownloadSize(quint64 size);
     void setIconPath(const QString &path);
-    void setInstalledSize(int size);
+    void setInstalledSize(quint64 size);
     void setFlatpakFileType(FlatpakFileType fileType);
     void setFlatpakName(const QString &name);
     void setOrigin(const QString &origin);
@@ -179,11 +179,11 @@ private:
     FlatpakRefKind m_flatpakRefKind;
     QPixmap m_bundledIcon;
     QString m_commit;
-    int m_downloadSize;
+    qint64 m_downloadSize;
     FlatpakFileType m_flatpakFileType = FlatpakResource::NotAFile;
     QString m_flatpakName;
     QString m_iconPath;
-    int m_installedSize;
+    qint64 m_installedSize;
     QHash<PropertyKind, PropertyState> m_propertyStates;
     QUrl m_resourceFile;
     QUrl m_resourceLocation;

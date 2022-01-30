@@ -65,7 +65,7 @@ QString DummyResource::comment()
     return QStringLiteral("A reasonably short comment ") + name();
 }
 
-int DummyResource::size()
+quint64 DummyResource::size()
 {
     return m_size;
 }

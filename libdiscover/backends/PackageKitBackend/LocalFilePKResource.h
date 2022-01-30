@@ -22,7 +22,7 @@ public:
     {
         return m_state;
     }
-    int size() override;
+    quint64 size() override;
     QString origin() const override;
     void fetchDetails() override;
     bool canExecute() const override

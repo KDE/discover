@@ -30,7 +30,7 @@ public:
     QString availableVersion() const override;
     QString installedVersion() const override;
     QJsonArray licenses() override;
-    int size() override;
+    quint64 size() override;
     QUrl homepage() override;
     QUrl helpURL() override;
     QUrl bugURL() override;
@@ -138,7 +138,7 @@ private:
     AbstractResource::State m_state = None;
     QUrl m_homepage;
     QString m_iconName;
-    int m_size = 0;
+    quint64 m_size = 0;
 
     QString m_updateURI;
     bool m_isDeviceLocked = false; // True if device is locked!

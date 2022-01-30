@@ -31,7 +31,7 @@ public:
     QString availableVersion() const override;
     QString installedVersion() const override;
     QJsonArray licenses() override;
-    int size() override;
+    quint64 size() override;
     QStringList categories() override;
     AbstractResource::State state() override;
     QVariant icon() const override;

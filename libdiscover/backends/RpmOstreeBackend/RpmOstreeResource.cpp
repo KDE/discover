@@ -298,7 +298,7 @@ QString RpmOstreeResource::comment()
     return i18n("Installed but not currently running version of %1.", packageName());
 }
 
-int RpmOstreeResource::size()
+quint64 RpmOstreeResource::size()
 {
     return 0;
 }

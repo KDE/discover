@@ -122,9 +122,9 @@ public:
         return ret;
     }
 
-    int size() override
+    quint64 size() override
     {
-        int ret = 0;
+        quint64 ret = 0;
         const auto resources = withoutDuplicates();
         for (auto res : resources) {
             ret += res->size();
