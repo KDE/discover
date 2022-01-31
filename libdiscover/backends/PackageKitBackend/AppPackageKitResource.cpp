@@ -192,56 +192,19 @@ QString AppPackageKitResource::changelog() const
 
 bool AppPackageKitResource::canExecute() const
 {
-    static const QSet<AppStream::Component::Kind> executeTypes = {
-        AppStream::Component::KindDesktopApp,
-        AppStream::Component::KindConsoleApp,
-        AppStream::Component::KindWebApp,
-    };
-    return executeTypes.contains(m_appdata.kind());
+    return !m_appdata.launchable(AppStream::Launchable::KindDesktopId).entries().isEmpty();
 }
 
 void AppPackageKitResource::invokeApplication() const
 {
-    auto trans = PackageKit::Daemon::getFiles({installedPackageId()});
-    connect(trans, &PackageKit::Transaction::errorCode, backend(), &PackageKitBackend::transactionError);
-    connect(trans, &PackageKit::Transaction::files, this, [this](const QString & /*packageID*/, const QStringList &_filenames) {
-        // This workarounds bug in zypper's backend (suse) https://github.com/hughsie/PackageKit/issues/351
-        QStringList filenames = _filenames;
-        if (filenames.count() == 1 && !QFile::exists(filenames.constFirst())) {
-            filenames = filenames.constFirst().split(QLatin1Char(';'));
-        }
-        const auto allServices = QStandardPaths::locateAll(QStandardPaths::ApplicationsLocation, m_appdata.id());
-        if (!allServices.isEmpty()) {
-            const auto packageServices = kFilter<QStringList>(allServices, [filenames](const QString &file) {
-                return filenames.contains(file);
-            });
-            runService(packageServices);
-            return;
-        } else {
-            const QStringList exes = m_appdata.provided(AppStream::Provided::KindBinary).items();
-            const auto packageExecutables = kFilter<QStringList>(exes, [filenames](const QString &exe) {
-                return filenames.contains(QLatin1Char('/') + exe);
-            });
-            if (!packageExecutables.isEmpty()) {
-                QProcess::startDetached(exes.constFirst(), QStringList());
-                return;
-            } else {
-                const auto locations = QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation);
-                const auto desktopFiles = kFilter<QStringList>(filenames, [locations](const QString &exe) {
-                    for (const auto &location : locations) {
-                        if (exe.startsWith(location))
-                            return exe.contains(QLatin1String(".desktop"));
-                    }
-                    return false;
-                });
-                if (!desktopFiles.isEmpty()) {
-                    runService(desktopFiles);
-                    return;
-                }
-            }
-            Q_EMIT backend()->passiveMessage(i18n("Cannot launch %1", name()));
-        }
-    });
+    const QString launchable = m_appdata.launchable(AppStream::Launchable::KindDesktopId).entries().constFirst();
+    const QString service = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, launchable);
+
+    if (service.isEmpty()) {
+        Q_EMIT backend()->passiveMessage(i18n("Cannot launch %1", name()));
+        return;
+    }
+    runService({service});
 }
 
 QString AppPackageKitResource::versionString()
