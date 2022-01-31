@@ -317,6 +317,15 @@ Comment[zh_TW]=系統更新失敗
 Urgency=High
 Action=Popup
 
+[Event/OfflineUpdateRepairStarted]
+Name=Repair Started
+Action=Popup
+
+[Event/OfflineUpdateRepairSuccessful]
+Name=Repaired Successfully
+Urgency=High
+Action=Popup
+
 [Event/OfflineUpdateRepairFailed]
 Name=Repair Failed
 Name[ar]=الإصلاح فشل
