@@ -230,7 +230,8 @@ QString FlatpakResource::installedVersion() const
         version = i18n("Unknown");
     }
 
-    if (auto ref = qobject_cast<FlatpakBackend *>(backend())->getInstalledRefForApp(this)) {
+    g_autoptr(FlatpakInstalledRef) ref = qobject_cast<FlatpakBackend *>(backend())->getInstalledRefForApp(this);
+    if (ref) {
         const char *appdataVersion = flatpak_installed_ref_get_appdata_version(ref);
         if (appdataVersion) {
             return i18nc("version (branch)", "%1 (%2)", appdataVersion, version);
