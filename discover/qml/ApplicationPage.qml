@@ -1,5 +1,6 @@
 /*
  *   SPDX-FileCopyrightText: 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   SPDX-FileCopyrightText: 2022 Nate Graham <nate@kde.org>
  *
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
@@ -8,7 +9,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 import QtQuick.Layouts 1.15
-import QtGraphicalEffects 1.15
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 2.19 as Kirigami
@@ -16,10 +16,14 @@ import "navigation.js" as Navigation
 
 DiscoverPage {
     id: appInfo
-    property QtObject application: null
-    readonly property int visibleReviews: 3
+
     title: appInfo.application.name
     clip: true
+
+    property QtObject application: null
+    readonly property int visibleReviews: 3
+    readonly property int internalSpacings: Kirigami.Units.largeSpacing
+    readonly property int pageContentMargins: Kirigami.Units.gridUnit
 
     // Usually this page is not the top level page, but when we are, isHome being
     // true will ensure that the search field suggests we are searching in the list
@@ -98,95 +102,318 @@ DiscoverPage {
     leftPadding: 0
     rightPadding: 0
 
-    // Icon, name, caption, screenshots, description and reviews
+    // Page content
     ColumnLayout {
-        spacing: 0
-        Kirigami.FlexColumn {
+        id: pageLayout
+
+        spacing: appInfo.internalSpacings
+
+        // Header and its background rectangle
+        Rectangle {
             Layout.fillWidth: true
-            maximumWidth: Kirigami.Units.gridUnit * 40
-            RowLayout {
-                Layout.margins: Kirigami.Units.largeSpacing
-                Kirigami.Icon {
-                    Layout.preferredHeight: 80
-                    Layout.preferredWidth: 80
-                    source: appInfo.application.icon
-                    Layout.rightMargin: Kirigami.Units.smallSpacing * 2
+
+            implicitHeight: headerLayout.height + (headerLayout.anchors.topMargin * 2)
+            color: Qt.darker(Kirigami.Theme.backgroundColor, 1.05)
+
+            // Header layout with App icon, name, author, rating,
+            // screenshots, and metadata
+            ColumnLayout {
+                id: headerLayout
+
+                anchors {
+                    topMargin: appInfo.internalSpacings
+                    top: parent.top
+                    left: parent.left
+                    right: parent.right
                 }
-                ColumnLayout {
-                    spacing: 0
-                    Kirigami.Heading {
-                        text: appInfo.application.name
-                        lineHeight: 1.0
-                        maximumLineCount: 1
-                        font.weight: Font.DemiBold
-                        elide: Text.ElideRight
-                        Layout.fillWidth: true
-                        Layout.alignment: Text.AlignBottom
+
+                spacing: appInfo.internalSpacings
+
+                // App icon, name, author, rating
+                RowLayout {
+                    Layout.leftMargin: appInfo.internalSpacings
+                    Layout.rightMargin: appInfo.internalSpacings
+
+                    spacing: 0 // Children bring their own
+
+                    // App icon
+                    Kirigami.Icon {
+                        readonly property int size : applicationWindow().wideScreen ? Kirigami.Units.iconSizes.large * 2 : Kirigami.Units.iconSizes.huge
+
+                        implicitWidth: size
+                        implicitHeight: size
+                        source: appInfo.application.icon
+                        Layout.rightMargin: appInfo.internalSpacings
                     }
-                    RowLayout {
-                        spacing: Kirigami.Units.largeSpacing
-                        Rating {
-                            rating: appInfo.application.rating ? appInfo.application.rating.sortableRating : 0
-                            starSize: summary.font.pointSize
+
+                    // App name, author, and rating
+                    ColumnLayout {
+                        Layout.fillWidth: true
+
+                        spacing: 0
+
+                        // App name
+                        Kirigami.Heading {
+                            Layout.fillWidth: true
+                            text: appInfo.application.name
+                            font.weight: Font.DemiBold
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 5
+                            elide: Text.ElideRight
+                        }
+
+                        // Author
+                        Label {
+                            id: author
+                            Layout.fillWidth: true
+                            visible: text.length > 0
+                            opacity: 0.8
+                            text: appInfo.application.author
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 5
+                            elide: Text.ElideRight
+                        }
+
+                        Item {
+                            implicitHeight: appInfo.internalSpacings
+                        }
+
+                        // Rating
+                        RowLayout {
+                            Layout.fillWidth: true
+
+                            Rating {
+                                opacity: 0.8
+                                rating: appInfo.application.rating ? appInfo.application.rating.sortableRating : 0
+                                starSize: author.font.pointSize
+                            }
+
+                            Label {
+                                opacity: 0.8
+                                text: appInfo.application.rating ? i18np("%1 rating", "%1 ratings", appInfo.application.rating.ratingCount) : i18n("No ratings yet")
+                            }
+                        }
+                    }
+                }
+
+                // Screenshots
+                ScrollView {
+                    visible: screenshots.count > 0
+                    Layout.fillWidth: screenshots.count > 1 ? true : false
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.preferredHeight: Math.min(Kirigami.Units.gridUnit * 20, Window.height * 0.25)
+
+                    ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+
+                    ApplicationScreenshots {
+                        id: screenshots
+                        resource: appInfo.application
+                    }
+                }
+
+                // Metadata
+                Flow {
+                    id: metadataLayout
+                    readonly property int itemWidth: Kirigami.Units.gridUnit * 6
+
+                    Layout.leftMargin: appInfo.internalSpacings
+                    Layout.rightMargin: appInfo.internalSpacings
+                    // This centers the Flow in the page, no matter how many items have
+                    // flowed onto other rows
+                    Layout.maximumWidth: ((itemWidth + spacing) * Math.min(children.length, Math.floor(headerLayout.width / (itemWidth + spacing)))) - spacing
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignHCenter
+
+                    spacing: appInfo.internalSpacings
+
+                    // Version
+                    ColumnLayout {
+                        id: versionColumn
+                        width: metadataLayout.itemWidth
+
+                        spacing: Kirigami.Units.smallSpacing
+
+                        Label {
+                            Layout.fillWidth: true
+                            opacity: 0.7
+                            text: i18n("Version")
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignBottom
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 2
                         }
                         Label {
-                            text: appInfo.application.rating ? i18np("%1 rating", "%1 ratings", appInfo.application.rating.ratingCount) : i18n("No ratings yet")
-                            opacity: 0.6
+                            Layout.fillWidth: true
+                            text: appInfo.application.versionString
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignTop
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 3
+                            elide: Text.ElideRight
                         }
                     }
-                    Kirigami.Heading {
-                        id: summary
-                        level: 4
-                        text: appInfo.application.author
-                        opacity: 0.7
-                        maximumLineCount: 2
-                        lineHeight: lineCount > 1 ? 0.75 : 1.2
-                        elide: Text.ElideRight
-                        Layout.fillWidth: true
-                        Layout.alignment: Qt.AlignTop
+
+                    // Size
+                    ColumnLayout {
+                        id: sizeColumn
+                        width: metadataLayout.itemWidth
+
+                        spacing: Kirigami.Units.smallSpacing
+
+                        Label {
+                            Layout.fillWidth: true
+                            opacity: 0.7
+                            text: i18n("Size")
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignBottom
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 2
+                        }
+                        Label {
+                            Layout.fillWidth: true
+                            text: appInfo.application.sizeDescription
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignTop
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 3
+                            elide: Text.ElideRight
+                        }
                     }
+
+                    // Distributor
+                    ColumnLayout {
+                        id: distributorColumn
+                        width: metadataLayout.itemWidth
+
+                        spacing: Kirigami.Units.smallSpacing
+
+                        Label {
+                            Layout.fillWidth: true
+                            opacity: 0.7
+                            text: i18n("Distributed by")
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignBottom
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 2
+                        }
+                        Label {
+                            Layout.fillWidth: true
+                            text: appInfo.application.displayOrigin
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignTop
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 3
+                            elide: Text.ElideRight
+                        }
+                    }
+
+                    // License(s)
+                    ColumnLayout {
+                        id: licenseColumn
+                        width: metadataLayout.itemWidth
+
+                        spacing: Kirigami.Units.smallSpacing
+
+                        Label {
+                            Layout.fillWidth: true
+                            opacity: 0.7
+                            text: i18np("License", "Licenses", appInfo.application.licenses.length)
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignBottom
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 2
+                        }
+                        Label {
+                            Layout.fillWidth: true
+                            visible : appInfo.application.licenses.length === 0
+                            text: i18nc("The app does not provide any licenses", "Unknown")
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignTop
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 3
+                            elide: Text.ElideRight
+                        }
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            visible : appInfo.application.licenses.length > 0
+                            spacing: 0
+
+                            Repeater {
+                                model: appInfo.application.licenses
+                                // FIXME: make this work
+                                // model: appInfo.application.licenses.length > 3 ? appInfo.application.firstTwoLicenses : appInfo.application.licenses
+                                delegate: Kirigami.UrlButton {
+                                    Layout.fillWidth: true
+                                    enabled: url !== ""
+                                    text: modelData.name
+                                    url: modelData.url
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignTop
+                                    elide: Text.ElideRight
+                                }
+                            }
+
+                            Kirigami.LinkButton {
+                                Layout.fillWidth: true
+                                visible: application.licenses.length > 3
+                                text: i18np("See more…", "See more…", appInfo.application.licenses.length)
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignTop
+                                elide: Text.ElideRight
+                                onClicked: allLicensesSheet.open();
+                            }
+                        }
+                    }
+                }
+            }
+
+            Kirigami.Separator {
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    top: parent.bottom
                 }
             }
         }
 
-
-        ScrollView {
-            visible: screenshots.count > 0
-            Layout.topMargin: Kirigami.Units.gridUnit * 2
-            Layout.fillWidth: true
-            Layout.preferredHeight: Math.min(Kirigami.Units.gridUnit * 20, Window.height * 0.4)
-            Layout.bottomMargin: Kirigami.Units.gridUnit * 2
-
-            ScrollBar.vertical.policy: ScrollBar.AlwaysOff
-
-            ApplicationScreenshots {
-                id: screenshots
-                resource: appInfo.application
-            }
-        }
 
         Repeater {
             model: application.topObjects
             delegate: Loader {
-                Layout.fillWidth: item.Layout.fillWidth
-                Layout.margins: Kirigami.Units.largeSpacing
                 property QtObject resource: appInfo.application
+
+                Layout.fillWidth: item.Layout.fillWidth
+                Layout.leftMargin: appInfo.pageContentMargins
+                Layout.rightMargin: appInfo.pageContentMargins
+
                 source: modelData
             }
         }
 
-        Kirigami.FlexColumn {
+        // Layout for textual content; this isn't in the main ColumnLayout
+        // because we want it to be bounded to a maximum width
+        ColumnLayout {
+            id: textualContentLayout
+
             Layout.fillWidth: true
-            Layout.margins: Kirigami.Units.largeSpacing
-            maximumWidth: Kirigami.Units.gridUnit * 40
+            Layout.maximumWidth: Kirigami.Units.gridUnit * 35
+            Layout.margins: appInfo.pageContentMargins
+            Layout.alignment: Qt.AlignHCenter
+
+            spacing: appInfo.internalSpacings
+
+            // Short description
             Kirigami.Heading {
-                text: appInfo.application.comment
+                Layout.fillWidth: true
                 level: 2
                 font.weight: Font.DemiBold
-                Layout.fillWidth: true
-                wrapMode: Text.WordWrap
+                text: appInfo.application.comment
+                wrapMode: Text.Wrap
+                maximumLineCount: 5
+                elide: Text.ElideRight
             }
 
+            // Long app description
             Label {
                 Layout.fillWidth: true
                 wrapMode: Text.WordWrap
@@ -194,17 +421,122 @@ DiscoverPage {
                 onLinkActivated: Qt.openUrlExternally(link);
             }
 
-            Kirigami.Heading {
-                Layout.topMargin: visible ? Kirigami.Units.largeSpacing : 0
-                text: i18n("What's New")
-                level: 2
-                visible: changelogLabel.text.length > 0
+            // External resources
+            Flow {
+                id: buttonLayout
+                readonly property int widestButton: Math.max(helpButton.implicitWidth,
+                                                             homepageButton.implicitWidth,
+                                                             donateButton.implicitWidth,
+                                                             addonsButton.implicitWidth,
+                                                             bugButton.implicitWidth)
+                readonly property int visibleButtons: (helpButton.visible ? 1 : 0) +
+                (homepageButton.visible ? 1: 0) +
+                (donateButton.visible ? 1 : 0) +
+                (addonsButton.visible ? 1 : 0) +
+                (bugButton.visible ? 1 : 0)
+
+                // This centers the Flow in the page, no matter how many items have
+                // flowed onto other rows
+                Layout.maximumWidth: widestButton * Math.min(visibleButtons, Math.floor(textualContentLayout.width / widestButton))
+                Layout.fillWidth: true
+                Layout.alignment: Qt.AlignHCenter
+
+                visible: visibleButtons > 0
+
+                spacing: 0 // Need to save horizontal space
+
+                ToolButton {
+                    id: helpButton
+                    width: buttonLayout.widestButton
+                    visible: application.helpURL != ""
+                    display: ToolButton.TextUnderIcon
+                    text: i18n("Documentation")
+                    icon.name: "documentation"
+                    onClicked: Qt.openUrlExternally(application.helpURL);
+
+                    ToolTip {
+                        text: application.helpURL
+                    }
+                }
+
+                ToolButton {
+                    id: homepageButton
+                    width: buttonLayout.widestButton
+                    visible: application.homepage != ""
+                    display: ToolButton.TextUnderIcon
+                    text: i18n("Website")
+                    icon.name: "internet-services"
+                    onClicked: Qt.openUrlExternally(application.homepage);
+
+                    ToolTip {
+                        text: application.homepage
+                    }
+                }
+
+                ToolButton {
+                    id: donateButton
+                    width: buttonLayout.widestButton
+                    visible: application.donationURL != ""
+                    display: ToolButton.TextUnderIcon
+                    text: i18n("Donate")
+                    icon.name: "help-donate"
+                    onClicked: Qt.openUrlExternally(application.donationURL);
+
+                    ToolTip {
+                        text: application.donationURL
+                    }
+                }
+
+                ToolButton {
+                    id: addonsButton
+                    width: buttonLayout.widestButton
+                    visible: addonsView.containsAddons
+                    display: ToolButton.TextUnderIcon
+                    text: i18n("Addons")
+                    icon.name: "extension-symbolic"
+                    onClicked: if (addonsView.addonsCount === 0) {
+                        Navigation.openExtends(application.appstreamId, appInfo.application.name)
+                    } else {
+                        addonsView.sheetOpen = true
+                    }
+
+                    ToolTip {
+                        text: i18n("Install or remove add-ons for %1", appInfo.application.name)
+                    }
+                }
+
+                ToolButton {
+                    id: bugButton
+                    width: buttonLayout.widestButton
+                    visible: application.bugURL != ""
+                    display: ToolButton.TextUnderIcon
+                    text: i18n("Report Bug")
+                    icon.name: "tools-report-bug"
+                    onClicked: Qt.openUrlExternally(application.bugURL);
+
+                    ToolTip {
+                        text: application.bugURL
+                    }
+                }
             }
 
+            Kirigami.Separator {
+                Layout.fillWidth: true
+                visible: buttonLayout.visible
+            }
+
+            Kirigami.Heading {
+                text: i18n("What's New")
+                level: 2
+                font.weight: Font.DemiBold
+                visible: changelogLabel.visible
+            }
+
+            // Changelog text
             Label {
                 id: changelogLabel
-                Layout.topMargin: text.length > 0 ? Kirigami.Units.largeSpacing : 0
                 Layout.fillWidth: true
+                visible: text.length > 0
                 wrapMode: Text.WordWrap
 
                 Component.onCompleted: appInfo.application.fetchChangelog()
@@ -216,27 +548,20 @@ DiscoverPage {
                 }
             }
 
-            Kirigami.LinkButton {
-                id: addonsButton
-                text: i18n("Addons")
-                visible: addonsView.containsAddons
-                onClicked: if (addonsView.addonsCount === 0) {
-                    Navigation.openExtends(application.appstreamId, appInfo.application.name)
-                } else {
-                    addonsView.sheetOpen = true
-                }
+            Kirigami.Separator {
+                Layout.fillWidth: true
+                visible: changelogLabel.visible
             }
 
             Kirigami.Heading {
                 Layout.fillWidth: true
-                Layout.topMargin: Kirigami.Units.largeSpacing
+                visible: rep.count > 0
                 font.weight: Font.DemiBold
                 text: i18n("Reviews")
-                Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
                 level: 2
-                visible: rep.count > 0
             }
 
+            // Top three reviews
             Repeater {
                 id: rep
                 model: PaginateModel {
@@ -244,22 +569,22 @@ DiscoverPage {
                     pageSize: visibleReviews
                 }
                 delegate: ReviewDelegate {
-                    Layout.topMargin: Kirigami.Units.largeSpacing
                     Layout.fillWidth: true
                     separator: false
                     compact: true
                 }
             }
 
-            RowLayout {
-                Layout.topMargin: Kirigami.Units.largeSpacing
-                Layout.bottomMargin: Kirigami.Units.largeSpacing
-                spacing: Kirigami.Units.largeSpacing
+            // Review-related buttons
+            Flow {
+                Layout.fillWidth: true
+
+                spacing: appInfo.internalSpacings
 
                 Button {
                     visible: reviewsModel.count > visibleReviews
 
-                    text: i18np("Show %1 Review…", "Show All %1 Reviews…", reviewsModel.count)
+                    text: i18np("Show all %1 Reviews", "Show all %1 Reviews", reviewsModel.count)
                     icon.name: "view-visible"
 
                     onClicked: {
@@ -287,124 +612,39 @@ DiscoverPage {
                     source: modelData
                 }
             }
-
-
-            // Details/metadata
-            Kirigami.Separator {
-                Layout.fillWidth: true
-                Layout.bottomMargin: Kirigami.Units.largeSpacing
-            }
-
-            Kirigami.FormLayout {
-                Layout.fillWidth: true
-
-                // Category row
-                Label {
-                    Kirigami.FormData.label: i18n("Category:")
-                    visible: text.length > 0
-                    Layout.fillWidth: true
-                    elide: Text.ElideRight
-                    text: appInfo.application.categoryDisplay
-                }
-
-                // Version row
-                Label {
-                    Kirigami.FormData.label: i18n("Version:")
-                    visible: text.length > 0
-                    Layout.fillWidth: true
-                    elide: Text.ElideRight
-                    text: appInfo.application.versionString
-                }
-
-                // Author row
-                Label {
-                    Kirigami.FormData.label: i18n("Author:")
-                    Layout.fillWidth: true
-                    elide: Text.ElideRight
-                    visible: text.length>0
-                    text: appInfo.application.author
-                }
-
-                // Size row
-                Label {
-                    Kirigami.FormData.label: i18n("Size:")
-                    Layout.fillWidth: true
-                    Layout.alignment: Text.AlignTop
-                    elide: Text.ElideRight
-                    text: appInfo.application.sizeDescription
-                }
-
-                // Source row
-                Label {
-                    Kirigami.FormData.label: i18n("Source:")
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignLeft
-                    text: appInfo.application.displayOrigin
-                    elide: Text.ElideRight
-                }
-
-                // License row
-                RowLayout {
-                    Kirigami.FormData.label: i18n("License:")
-                    visible: appInfo.application.licenses.length>0
-                    Layout.fillWidth: true
-                    Repeater {
-                        model: appInfo.application.licenses
-                        delegate: Kirigami.UrlButton {
-                            id: licenseButton
-                            horizontalAlignment: Text.AlignLeft
-                            ToolTip.text: i18n("See full license terms")
-                            ToolTip.visible: licenseButton.mouseArea.containsMouse
-                            text: modelData.name
-                            url: modelData.url
-                            enabled: url !== ""
-                        }
-                    }
-                }
-
-                // "User Guide" row
-                Kirigami.UrlButton {
-                    visible: application.helpURL != ""
-                    Kirigami.FormData.label: i18n ("Documentation:")
-                    text: i18n("Read the user guide")
-                    url: application.helpURL
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignLeft
-                }
-
-                // Homepage row
-                Kirigami.UrlButton {
-                    visible: application.homepage != ""
-                    Kirigami.FormData.label: i18n("Get involved:")
-                    text: i18n("Visit the app's website")
-                    url: application.homepage
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignLeft
-                }
-
-                // Donate row
-                Kirigami.UrlButton {
-                    visible: application.donationURL != ""
-                    text: i18n("Make a donation")
-                    url: application.donationURL
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignLeft
-                }
-
-                // "Report a Problem" row
-                Kirigami.UrlButton {
-                    visible: application.bugURL != ""
-                    text: i18n("Report a problem")
-                    url: application.bugURL
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignLeft
-                }
-            }
         }
     }
 
     readonly property var addons: AddonsView {
         id: addonsView
         application: appInfo.application
+    }
+
+    Kirigami.OverlaySheet {
+        id: allLicensesSheet
+        parent: applicationWindow().overlay
+
+        title: i18n("All Licenses")
+
+
+        ListView {
+            id: listview
+
+            implicitWidth: Kirigami.Units.gridUnit
+
+            model: appInfo.application.licenses
+
+            delegate: Kirigami.BasicListItem {
+                activeBackgroundColor: "transparent"
+                activeTextColor: Kirigami.Theme.textColor
+                separatorVisible: false
+                contentItem: Kirigami.UrlButton {
+                    enabled: url !== ""
+                    text: modelData.name
+                    url: modelData.url
+                    horizontalAlignment: Text.AlignLeft
+                }
+            }
+        }
     }
 }

@@ -36,7 +36,7 @@ ListView {
 
         implicitWidth: thumbnail.width
         implicitHeight: root.height
-        padding: Kirigami.Units.largeSpacing
+
         hoverEnabled: true
         onClicked: {
             root.currentIndex = model.row

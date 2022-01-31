@@ -239,7 +239,7 @@ QUrl AbstractResource::url() const
 
 QString AbstractResource::displayOrigin() const
 {
-    return i18nc("origin (backend name)", "%1 (%2)", origin(), backend()->displayName());
+    return origin();
 }
 
 QString AbstractResource::executeLabel() const
