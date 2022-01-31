@@ -169,7 +169,6 @@ void FlatpakTransactionThread::run()
             if (!flatpak_transaction_run(transaction, m_cancellable, &localError)) {
                 qWarning() << "could not properly clean the elements" << refs->len << localError->message;
             }
-            g_object_unref(m_transaction);
         }
 #endif
     }
