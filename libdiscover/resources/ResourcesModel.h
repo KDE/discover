@@ -134,6 +134,7 @@ Q_SIGNALS:
     void passiveMessage(const QString &message);
     void currentApplicationBackendChanged(AbstractResourcesBackend *currentApplicationBackend);
     void fetchingUpdatesProgressChanged(int fetchingUpdatesProgress);
+    void inlineMessage(InlineMessageType type, const QString &iconName, const QString &message);
 
 private Q_SLOTS:
     void callerFetchingChanged();

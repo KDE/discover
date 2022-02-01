@@ -14,6 +14,11 @@ Kirigami.ScrollablePage
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
 
+    header:  Kirigami.InlineMessage {
+        id: headerInlineMessage
+        visible: false
+    }
+
     readonly property var s1: Shortcut {
         sequence: StandardKey.MoveToNextPage
         enabled: root.isCurrentPage

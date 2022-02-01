@@ -58,6 +58,14 @@ private:
     QVariantList m_actions;
 };
 
+// Keep in sync with Kirigami's enums.h
+enum class InlineMessageType {
+    Information = 0,
+    Positive,
+    Warning,
+    Error,
+};
+
 /**
  * \class AbstractResourcesBackend  AbstractResourcesBackend.h "AbstractResourcesBackend.h"
  *
@@ -248,6 +256,7 @@ Q_SIGNALS:
     void resourceRemoved(AbstractResource *resource);
 
     void passiveMessage(const QString &message);
+    void inlineMessage(InlineMessageType type, const QString &iconName, const QString &message);
     void fetchingUpdatesProgressChanged();
 
 private:

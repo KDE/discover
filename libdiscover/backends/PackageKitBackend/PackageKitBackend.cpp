@@ -12,6 +12,8 @@
 #include "PKTransaction.h"
 #include "PackageKitSourcesBackend.h"
 #include "PackageKitUpdater.h"
+#include <AppStreamQt/release.h>
+#include <AppStreamQt/utils.h>
 #include <appstream/AppStreamIntegration.h>
 #include <appstream/AppStreamUtils.h>
 #include <appstream/OdrsReviewsBackend.h>
@@ -225,6 +227,23 @@ void PackageKitBackend::reloadPackageList()
             Q_EMIT loadedAppStream();
         }
         acquireFetching(false);
+
+        const QList<AppStream::Component> distroComponents = m_appdata->componentsById(AppStream::Utils::currentDistroComponentId());
+        for (const AppStream::Component &dc : distroComponents) {
+            const auto releases = dc.releases();
+            for (auto r : releases) {
+                if (AppStream::Utils::vercmpSimple(r.version(), AppStreamIntegration::global()->osRelease()->version()) == 0) {
+                    if (r.timestampEol() < QDateTime::currentDateTime()) {
+                        const QString releaseDate = QLocale().toString(r.timestampEol());
+                        Q_EMIT inlineMessage(InlineMessageType::Warning,
+                                             QStringLiteral("dialog-warning"),
+                                             i18nc("%1 is the date as formatted by the locale",
+                                                   "Your operating system ended support on %1. Consider upgrading to a supported version.",
+                                                   releaseDate));
+                    }
+                }
+            }
+        }
     });
     fw->setFuture(QtConcurrent::run(&m_threadPool, &loadAppStream, m_appdata.get()));
 }

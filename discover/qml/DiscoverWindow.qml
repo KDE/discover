@@ -160,6 +160,14 @@ Kirigami.ApplicationWindow
             showPassiveNotification(message)
             console.log("message:", message)
         }
+        function onInlineMessage (type, icon, message) {
+            leftPage.header.type = type
+            leftPage.header.icon.name = icon
+            leftPage.header.text = message
+            leftPage.header.visible = true
+
+            console.log("inline message:", message)
+        }
     }
 
     footer: Loader {
