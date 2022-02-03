@@ -172,7 +172,7 @@ DiscoverPage
             contentItem: RowLayout {
                 ToolButton {
                     enabled: page.unselected > 0 && updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
-                    visible: !resourcesUpdatesModel.needsReboot
+                    visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.needsReboot
                     icon.name: "edit-select-all"
                     text: i18n("Select All")
                     onClicked: { updateModel.checkAll(); }
@@ -180,7 +180,7 @@ DiscoverPage
 
                 ToolButton {
                     enabled: page.unselected !== updateModel.totalUpdatesCount && updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
-                    visible: !resourcesUpdatesModel.needsReboot
+                    visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.needsReboot
                     icon.name: "edit-select-none"
                     text: i18n("Select None")
                     onClicked: { updateModel.uncheckAll(); }
