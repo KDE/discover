@@ -9,7 +9,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 import "navigation.js" as Navigation
 
 Kirigami.GlobalDrawer {
@@ -41,14 +41,15 @@ Kirigami.GlobalDrawer {
     function suggestSearchText(text) {
         if (searchField.visible) {
             searchField.text = text
-            searchField.forceActiveFocus()
+            forceSearchFieldFocus()
         }
     }
 
     // Give the search field keyboard focus by default
-    Component.onCompleted: {
-        if (searchField.visible)
+    function forceSearchFieldFocus() {
+        if (searchField.visible && wideScreen && !Kirigami.InputMethod.willShowOnActive) {
             searchField.forceActiveFocus();
+        }
     }
 
     header: Kirigami.AbstractApplicationHeader {
