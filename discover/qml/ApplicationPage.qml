@@ -339,9 +339,7 @@ DiscoverPage {
                             spacing: 0
 
                             Repeater {
-                                model: appInfo.application.licenses
-                                // FIXME: make this work
-                                // model: appInfo.application.licenses.length > 3 ? appInfo.application.firstTwoLicenses : appInfo.application.licenses
+                                model: appInfo.application.licenses.slice(0, 2)
                                 delegate: Kirigami.UrlButton {
                                     Layout.fillWidth: true
                                     enabled: url !== ""
