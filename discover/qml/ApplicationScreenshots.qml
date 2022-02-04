@@ -65,6 +65,7 @@ ListView {
     Popup {
         id: overlay
         parent: applicationWindow().overlay
+        z: applicationWindow().globalDrawer.z + 10
         modal: true
         clip: false
 
