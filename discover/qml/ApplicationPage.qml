@@ -208,6 +208,7 @@ DiscoverPage {
                     ApplicationScreenshots {
                         id: screenshots
                         resource: appInfo.application
+                        delegateHeight: parent.Layout.preferredHeight * 0.8
                     }
                 }
 
