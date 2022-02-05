@@ -30,13 +30,16 @@ ListView {
         id: screenshotsModel
     }
 
+    property real delegateHeight: Kirigami.Units.gridUnit * 4
+
     delegate: AbstractButton {
         readonly property url imageSource: large_image_url
         readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
 
-        implicitWidth: thumbnail.width
-        implicitHeight: root.height
+        implicitWidth: root.delegateHeight / proportion
+        implicitHeight: root.delegateHeight
         padding: Kirigami.Units.largeSpacing
+
         hoverEnabled: true
         onClicked: {
             root.currentIndex = model.row
@@ -49,9 +52,6 @@ ListView {
 
         background: Image {
             id: thumbnail
-            readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
-            width: root.height / proportion
-            height: root.height
 
             BusyIndicator {
                 visible: running
