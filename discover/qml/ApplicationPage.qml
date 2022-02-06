@@ -198,8 +198,9 @@ DiscoverPage {
 
                 // Screenshots
                 ScrollView {
+                    id: screenshotsScroll
                     visible: screenshots.count > 0
-                    Layout.fillWidth: screenshots.count > 1 ? true : false
+                    Layout.maximumWidth: headerLayout.width
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredHeight: Math.min(Kirigami.Units.gridUnit * 20, Window.height * 0.25)
 
@@ -209,6 +210,7 @@ DiscoverPage {
                         id: screenshots
                         resource: appInfo.application
                         delegateHeight: parent.Layout.preferredHeight * 0.8
+                        showNavigationArrows: screenshotsScroll.width === headerLayout.width
                     }
                 }
 

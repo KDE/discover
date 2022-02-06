@@ -15,6 +15,7 @@ import org.kde.kirigami 2.19 as Kirigami
 ListView {
     id: root
     readonly property alias count: screenshotsModel.count
+    property bool showNavigationArrows: true
     property alias resource: screenshotsModel.application
     property var resource
 
@@ -148,7 +149,10 @@ ListView {
         width: Kirigami.Units.gridUnit * 2
         height: width
         icon.name: root.LayoutMirroring.enabled ? "arrow-right" : "arrow-left"
-        visible: !Kirigami.Settings.isMobile && root.count > 1 && root.currentIndex > 0
+        visible: !Kirigami.Settings.isMobile
+                 && root.count > 1
+                 && root.currentIndex > 0
+                 && root.showNavigationArrows
         Keys.forwardTo: [root]
         onClicked: root.currentIndex -= 1
     }
@@ -162,7 +166,10 @@ ListView {
         width: Kirigami.Units.gridUnit * 2
         height: width
         icon.name: root.LayoutMirroring.enabled ? "arrow-left" : "arrow-right"
-        visible: !Kirigami.Settings.isMobile && root.count > 1 && root.currentIndex < root.count - 1
+        visible: !Kirigami.Settings.isMobile
+                 && root.count > 1
+                 && root.currentIndex < root.count - 1
+                 && root.showNavigationArrows
         Keys.forwardTo: [root]
         onClicked: root.currentIndex += 1
     }
