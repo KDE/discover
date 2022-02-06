@@ -8,9 +8,9 @@ function(add_unit_test name)
         Qt5::Test Qt5::Core ${EXTRA_LIBS})
 endfunction()
 
-if(KF5Attica_FOUND AND KF5NewStuff_FOUND)
-   add_subdirectory(KNSBackend)
-endif()
+#if(KF5Attica_FOUND AND KF5NewStuff_FOUND)
+#   add_subdirectory(KNSBackend)
+#endif()
 
 if(packagekitqt5_FOUND AND AppStreamQt_FOUND)
     add_subdirectory(PackageKitBackend)
