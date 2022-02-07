@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Menu>
-
-  <Menu>
-    <Name>Applications</Name>
-    <Icon>applications-all</Icon>
-    <Image>pkcategories/applicationcrop.jpg</Image>
-    <Include>
-        <And>
-            <Category>Application</Category>
-        </And>
-    </Include>
     <Menu>
       <Name>Accessories</Name>
       <Icon>applications-utilities</Icon>
@@ -114,7 +104,6 @@
         </And>
       </Include>
     </Menu>
-
 
     <Menu>
       <Name>Science and Engineering</Name>
@@ -321,7 +310,6 @@
       </Menu>
 
     </Menu>
-
 
     <Menu>
       <Name>Graphics</Name>
@@ -546,6 +534,4 @@
         </Or>
       </Include>
     </Menu>
-  </Menu>
-
 </Menu>
