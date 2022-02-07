@@ -18,6 +18,7 @@
 class KNotification;
 class QNetworkConfigurationManager;
 class UnattendedUpdates;
+class UpdatesSettings;
 
 class DiscoverNotifier : public QObject
 {
@@ -65,6 +66,10 @@ public:
     {
         return m_isBusy;
     }
+    UpdatesSettings *settings() const
+    {
+        return m_settings;
+    }
 
 public Q_SLOTS:
     void recheckSystemUpdateNeeded();
@@ -95,7 +100,7 @@ private:
     QPointer<KNotification> m_updatesAvailableNotification;
     UnattendedUpdates *m_unattended = nullptr;
     KConfigWatcher::Ptr m_settingsWatcher;
-    class UpdatesSettings *m_settings;
+    UpdatesSettings *m_settings;
 };
 
 #endif // ABSTRACTKDEDMODULE_H

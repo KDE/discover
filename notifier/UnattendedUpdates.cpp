@@ -6,6 +6,7 @@
 
 #include "UnattendedUpdates.h"
 #include "DiscoverNotifier.h"
+#include "updatessettings.h"
 #include <KIdleTime>
 #include <QDateTime>
 #include <QDebug>
@@ -28,13 +29,27 @@ UnattendedUpdates::~UnattendedUpdates() noexcept
 
 void UnattendedUpdates::checkNewState()
 {
+    using namespace std::chrono_literals;
     DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
+
+    // Only allow offline updating every 3h. It should keep some peace to our users, especially on rolling distros
+    const QDateTime updateableTime = notifier->settings()->lastUnattendedTrigger().addSecs((3h).count());
+    if (updateableTime > QDateTime::currentDateTimeUtc()) {
+        qDebug() << "skipping update, already updated on" << notifier->settings()->lastUnattendedTrigger().toString();
+        return;
+    }
+
+    if (!KIdleTime::instance()->idleTimeouts().isEmpty()) {
+        qDebug() << "already waiting for an idle time";
+        return;
+    }
+
     if (notifier->hasUpdates()) {
         qDebug() << "waiting for an idle moment";
-        // If the system is untouched for 1 hour, trigger the unattened update
-        using namespace std::chrono_literals;
+        // If the system is untouched for 15 minutes, trigger the unattened update
         KIdleTime::instance()->addIdleTimeout(int(std::chrono::milliseconds(15min).count()));
     } else {
+        qDebug() << "nothing to do";
         KIdleTime::instance()->removeAllIdleTimeouts();
     }
 }
@@ -56,6 +71,7 @@ void UnattendedUpdates::triggerUpdate()
         DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
         notifier->setBusy(false);
         process->deleteLater();
+        notifier->settings()->setLastUnattendedTrigger(QDateTime::currentDateTimeUtc());
     });
 
     notifier->setBusy(true);
