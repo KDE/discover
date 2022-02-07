@@ -32,7 +32,11 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
     m_settings = new UpdatesSettings(this);
     m_settingsWatcher = KConfigWatcher::create(m_settings->sharedConfig());
     refreshUnattended();
-    connect(m_settingsWatcher.data(), &KConfigWatcher::configChanged, this, &DiscoverNotifier::refreshUnattended);
+    connect(m_settingsWatcher.data(), &KConfigWatcher::configChanged, this, [this](const KConfigGroup &group, const QByteArrayList &names) {
+        if (group.config()->name() == m_settings->config()->name() && group.name() == "Global" && names.contains("UseUnattendedUpdates")) {
+            refreshUnattended();
+        }
+    });
 
     m_backends = BackendNotifierFactory().allBackends();
     for (BackendNotifierModule *module : qAsConst(m_backends)) {
