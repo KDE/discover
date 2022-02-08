@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include <optional>
+
 #include <QObject>
 
 class DiscoverNotifier;
@@ -19,5 +21,7 @@ public:
 
 private:
     void checkNewState();
-    void triggerUpdate();
+    void triggerUpdate(int timeoutId);
+
+    std::optional<int> m_idleTimeoutId;
 };

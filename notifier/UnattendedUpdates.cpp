@@ -24,7 +24,9 @@ UnattendedUpdates::UnattendedUpdates(DiscoverNotifier *parent)
 
 UnattendedUpdates::~UnattendedUpdates() noexcept
 {
-    KIdleTime::instance()->removeAllIdleTimeouts();
+    if (m_idleTimeoutId.has_value()) {
+        KIdleTime::instance()->removeIdleTimeout(m_idleTimeoutId.value());
+    }
 }
 
 void UnattendedUpdates::checkNewState()
@@ -39,24 +41,27 @@ void UnattendedUpdates::checkNewState()
         return;
     }
 
-    if (!KIdleTime::instance()->idleTimeouts().isEmpty()) {
-        qDebug() << "already waiting for an idle time";
-        return;
-    }
-
-    if (notifier->hasUpdates()) {
+    const bool hasUpdates = notifier->hasUpdates();
+    if (hasUpdates && !m_idleTimeoutId.has_value()) {
         qDebug() << "waiting for an idle moment";
         // If the system is untouched for 15 minutes, trigger the unattened update
-        KIdleTime::instance()->addIdleTimeout(int(std::chrono::milliseconds(15min).count()));
-    } else {
+        m_idleTimeoutId = KIdleTime::instance()->addIdleTimeout(int(std::chrono::milliseconds(15min).count()));
+    } else if (!hasUpdates && m_idleTimeoutId.has_value()) {
         qDebug() << "nothing to do";
-        KIdleTime::instance()->removeAllIdleTimeouts();
+        KIdleTime::instance()->removeIdleTimeout(m_idleTimeoutId.value());
+        m_idleTimeoutId.reset();
     }
 }
 
-void UnattendedUpdates::triggerUpdate()
+void UnattendedUpdates::triggerUpdate(int timeoutId)
 {
-    KIdleTime::instance()->removeAllIdleTimeouts();
+    if (!m_idleTimeoutId.has_value() || timeoutId != m_idleTimeoutId.value()) {
+        return;
+    }
+
+    KIdleTime::instance()->removeIdleTimeout(m_idleTimeoutId.value());
+    m_idleTimeoutId.reset();
+
     DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
     if (!notifier->hasUpdates() || notifier->isBusy()) {
         return;
