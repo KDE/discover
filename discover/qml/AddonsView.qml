@@ -38,12 +38,7 @@ Kirigami.OverlaySheet {
 
             checked: model.checked
 
-            action: Action {
-                onTriggered: {
-                    checked = !checked
-                    addonsModel.changeState(packageName, listItem.checked)
-                }
-            }
+            onCheckedChanged: addonsModel.changeState(packageName, listItem.checked)
         }
     }
 
