@@ -47,7 +47,7 @@ if(NOT CMAKE_VERSION VERSION_LESS "3.10.0")
   list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
 endif()
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS)
 
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)
