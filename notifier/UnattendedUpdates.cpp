@@ -33,7 +33,7 @@ void UnattendedUpdates::checkNewState()
     DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
 
     // Only allow offline updating every 3h. It should keep some peace to our users, especially on rolling distros
-    const QDateTime updateableTime = notifier->settings()->lastUnattendedTrigger().addSecs((3h).count());
+    const QDateTime updateableTime = notifier->settings()->lastUnattendedTrigger().addSecs(std::chrono::seconds(3h).count());
     if (updateableTime > QDateTime::currentDateTimeUtc()) {
         qDebug() << "skipping update, already updated on" << notifier->settings()->lastUnattendedTrigger().toString();
         return;
