@@ -44,7 +44,7 @@ public:
     QString availableVersion() const override;
     QString installedVersion() const override;
     QJsonArray licenses() override;
-    int size() override;
+    quint64 size() override;
     QUrl homepage() override;
     QUrl helpURL() override;
     QUrl bugURL() override;

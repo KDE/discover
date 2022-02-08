@@ -72,9 +72,9 @@ QString AlpineApkResource::comment()
     return m_pkg.description;
 }
 
-int AlpineApkResource::size()
+quint64 AlpineApkResource::size()
 {
-    return static_cast<int>(m_pkg.size);
+    return m_pkg.size;
 }
 
 QUrl AlpineApkResource::homepage()
