@@ -77,6 +77,7 @@ void UnattendedUpdates::triggerUpdate(int timeoutId)
         notifier->setBusy(false);
         process->deleteLater();
         notifier->settings()->setLastUnattendedTrigger(QDateTime::currentDateTimeUtc());
+        notifier->settings()->save();
     });
 
     notifier->setBusy(true);
