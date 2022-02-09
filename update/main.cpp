@@ -8,6 +8,7 @@
 #include "DiscoverUpdate.h"
 #include <DiscoverBackendsFactory.h>
 #include <KAboutData>
+#include <KDBusService>
 #include <KLocalizedString>
 #include <QCommandLineParser>
 #include <QGuiApplication>
@@ -21,6 +22,8 @@ int main(int argc, char **argv)
     about.addAuthor(QStringLiteral("Aleix Pol i Gonzàlez"), {}, QStringLiteral("aleixpolkde.org"));
     about.setProductName("discover/update");
     KAboutData::setApplicationData(about);
+
+    KDBusService service(KDBusService::Unique);
 
     DiscoverUpdate exp;
     {
