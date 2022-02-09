@@ -74,10 +74,10 @@ void UnattendedUpdates::triggerUpdate(int timeoutId)
     connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
         qDebug() << "Finished running plasma-discover-update" << exitCode << exitStatus;
         DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
-        notifier->setBusy(false);
         process->deleteLater();
         notifier->settings()->setLastUnattendedTrigger(QDateTime::currentDateTimeUtc());
         notifier->settings()->save();
+        notifier->setBusy(false);
     });
 
     notifier->setBusy(true);
