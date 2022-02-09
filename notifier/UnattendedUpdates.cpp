@@ -41,12 +41,12 @@ void UnattendedUpdates::checkNewState()
         return;
     }
 
-    const bool hasUpdates = notifier->hasUpdates();
-    if (hasUpdates && !m_idleTimeoutId.has_value()) {
+    const bool doTrigger = notifier->hasUpdates() && !notifier->isBusy();
+    if (doTrigger && !m_idleTimeoutId.has_value()) {
         qDebug() << "waiting for an idle moment";
         // If the system is untouched for 15 minutes, trigger the unattened update
         m_idleTimeoutId = KIdleTime::instance()->addIdleTimeout(int(std::chrono::milliseconds(15min).count()));
-    } else if (!hasUpdates && m_idleTimeoutId.has_value()) {
+    } else if (!doTrigger && m_idleTimeoutId.has_value()) {
         qDebug() << "nothing to do";
         KIdleTime::instance()->removeIdleTimeout(m_idleTimeoutId.value());
         m_idleTimeoutId.reset();
