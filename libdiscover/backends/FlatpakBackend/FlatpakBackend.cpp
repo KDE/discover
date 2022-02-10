@@ -371,7 +371,7 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
     if (source && source->m_pool) {
         QList<AppStream::Component> comps = source->m_pool->componentsById(name);
         if (comps.isEmpty()) {
-            comps = source->m_pool->componentsById(name + ".desktop");
+            comps = source->m_pool->componentsByProvided(AppStream::Provided::KindId, name);
         }
 
         if (comps.isEmpty()) {
@@ -695,8 +695,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
             auto searchComponent = [this, stream, source, name] {
                 auto comps = source->m_pool->componentsById(name);
                 if (comps.isEmpty()) {
-                    const QString nameWithDesktop = name + QLatin1String(".desktop");
-                    comps = source->m_pool->componentsById(nameWithDesktop);
+                    comps = source->m_pool->componentsByProvided(AppStream::Provided::KindId, name);
                 }
                 auto resources = kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
                     return resourceForComponent(comp, source);
@@ -1446,10 +1445,12 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
 QVector<AbstractResource *> FlatpakBackend::resourcesByAppstreamName(const QString &name) const
 {
     QVector<AbstractResource *> resources;
-    const QString nameWithDesktop = name + QLatin1String(".desktop");
     for (const auto &source : m_flatpakSources) {
         if (source->m_pool) {
-            const auto comps = source->m_pool->componentsById(name) + source->m_pool->componentsById(nameWithDesktop);
+            auto comps = source->m_pool->componentsById(name);
+            if (comps.isEmpty()) {
+                comps = source->m_pool->componentsByProvided(AppStream::Provided::KindId, name);
+            }
             resources << kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
                 return resourceForComponent(comp, source);
             });
