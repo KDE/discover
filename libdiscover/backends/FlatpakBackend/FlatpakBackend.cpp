@@ -1446,10 +1446,10 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
 QVector<AbstractResource *> FlatpakBackend::resourcesByAppstreamName(const QString &name) const
 {
     QVector<AbstractResource *> resources;
-    const QString nameWithDesktop = name + QLatin1String(".desktop");
+    QString alternateName = name.endsWith(QLatin1String(".desktop")) ? name.left(name.indexOf(".desktop")) : name + QLatin1String(".desktop");
     for (const auto &source : m_flatpakSources) {
         if (source->m_pool) {
-            const auto comps = source->m_pool->componentsById(name) + source->m_pool->componentsById(nameWithDesktop);
+            const auto comps = source->m_pool->componentsById(name) + source->m_pool->componentsById(alternateName);
             resources << kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
                 return resourceForComponent(comp, source);
             });
