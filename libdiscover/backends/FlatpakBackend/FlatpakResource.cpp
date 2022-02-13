@@ -7,6 +7,8 @@
 
 #include "FlatpakResource.h"
 #include "FlatpakBackend.h"
+#include "FlatpakFetchDataJob.h"
+#include "FlatpakPermission.h"
 #include "FlatpakSourcesBackend.h"
 #include "config-paths.h"
 
@@ -39,7 +41,8 @@ static QString iconCachePath(const AppStream::Icon &icon)
     return QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation), icon.url().fileName());
 }
 
-const QStringList FlatpakResource::m_objects{QStringLiteral("qrc:/qml/FlatpakAttention.qml")};
+const QStringList FlatpakResource::m_objects({QStringLiteral("qrc:/qml/FlatpakAttention.qml")});
+const QStringList FlatpakResource::m_bottomObjects({QStringLiteral("qrc:/qml/PermissionsList.qml")});
 
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent)
     : AbstractResource(parent)
@@ -320,6 +323,22 @@ QString FlatpakResource::attentionText() const
                       loc.toDisplayString());
     }
     return {};
+}
+
+Q_INVOKABLE QAbstractListModel *FlatpakResource::showPermissions()
+{
+    if (m_permissions.empty()) {
+        loadPermissions();
+    }
+    return new FlatpakPermissionsModel(m_permissions);
+}
+
+Q_INVOKABLE int FlatpakResource::permissionCount()
+{
+    if (m_permissions.empty()) {
+        loadPermissions();
+    }
+    return m_permissions.count();
 }
 
 QString FlatpakResource::name() const
@@ -651,4 +670,180 @@ QString FlatpakResource::versionString()
     }
 
     return AppStreamUtils::versionString(version, m_appdata);
+}
+
+void FlatpakResource::loadPermissions()
+{
+    QByteArray metaDataBytes = FlatpakRunnables::fetchMetadata(this, NULL);
+    QString metaData(metaDataBytes);
+
+    QString name, category, brief, description, value = "on";
+
+    category = "shared";
+    if (metaData.contains("network")) {
+        name = i18n("network");
+        brief = i18n("Network Access");
+        description = i18n("Can access the internet");
+        m_permissions.push_back(FlatpakPermission(name, category, value, brief, description, "network-wireless"));
+    }
+
+    category = "socket";
+    if (metaData.contains("session-bus")) {
+        name = i18n("session-bus");
+        brief = i18n("Session Bus Access");
+        description = i18n("Access is granted to the entire Session Bus");
+        m_permissions.push_back(FlatpakPermission(name, category, value, brief, description, "system-save-session"));
+    }
+    if (metaData.contains("system-bus")) {
+        name = i18n("system-bus");
+        brief = i18n("System Bus Access");
+        description = i18n("Access is granted to the entire System Bus");
+        m_permissions.push_back(FlatpakPermission(name, category, value, brief, description, "system-save-session"));
+    }
+    if (metaData.contains("ssh-auth")) {
+        name = i18n("ssh-auth");
+        brief = i18n("Remote Login Access");
+        description = i18n("Can initiate remote login requests using the SSH protocol");
+        m_permissions.push_back(FlatpakPermission(name, category, value, brief, description, "x-shape-connection"));
+    }
+    if (metaData.contains("pcsc")) {
+        name = i18n("pspc");
+        brief = i18n("Smart Card Access");
+        description = i18n("Can integrate and communicate with smart cards");
+        m_permissions.push_back(FlatpakPermission(name, category, value, brief, description, "network-card"));
+    }
+
+    category = "devices";
+    if (metaData.contains("kvm")) {
+        name = i18n("kvm");
+        brief = i18n("Kernel-based Virtual Machine Access");
+        description = i18n("Allows running other operating systems as guests in virtual machines");
+        m_permissions.push_back(FlatpakPermission(name, category, value, brief, description, "virtualbox"));
+    }
+    if (metaData.contains("all")) {
+        name = i18n("all");
+        brief = i18n("Device Access");
+        description = i18n("Can communicate with and control built-in or connected hardware devices");
+        m_permissions.push_back(FlatpakPermission(name, category, value, brief, description, "preferences-devices-tree"));
+    }
+
+    category = "filesystems";
+    int fsStartIndex = metaData.indexOf(category);
+    int fsPermStartIndex = metaData.indexOf('=', fsStartIndex) + 1;
+    int fsPermEndIndex = metaData.indexOf('\n', fsPermStartIndex);
+    QString dirs;
+    for (int i = fsPermStartIndex; i < fsPermEndIndex; ++i) {
+        dirs.push_back(metaData[i]);
+    }
+    QStringList homeList, systemList;
+    bool home_ro = false, home_rw = false, home_cr = false, homeAccess = false;
+    bool system_ro = false, system_rw = false, system_cr = false, systemAccess = false;
+    for (int j = 0; j < dirs.count(';'); ++j) {
+        QString dir = dirs.section(';', j, j);
+
+        if ((dir.contains("home") || dir.contains("~"))) {
+            if (dir.contains(":ro")) {
+                homeList << dir.remove(":ro").append(i18n(" (read-only) "));
+                home_ro = true;
+            } else if (dir.contains(":create")) {
+                homeList << dir.remove(":create").append(i18n(" (can create files) "));
+                home_cr = true;
+            } else {
+                homeList << dir.remove(":rw").append(i18n(" (read & write) "));
+                home_rw = true;
+            }
+            homeAccess = true;
+        } else {
+            if (dir.contains(":ro")) {
+                systemList << dir.remove(":ro").append(i18n(" (read-only) "));
+                system_ro = true;
+            } else if (dir.contains(":create")) {
+                systemList << dir.remove(":create").append(i18n(" (can create files) "));
+                system_cr = true;
+            } else {
+                systemList << dir.remove(":rw").append(i18n(" (read & write) "));
+                system_rw = true;
+            }
+            systemAccess = true;
+        }
+    }
+
+    QString appendText = "\n- " + homeList.join("\n- ");
+    if (homeAccess) {
+        brief = i18n("Home Folder Access");
+        QString accessLevel;
+        if (home_rw && home_ro && home_cr) {
+            description = i18n("Can read, write, and create files in the following locations in your home folder without asking permission first:").append(appendText);
+        } else if (home_rw && !home_cr) {
+            description = i18n("Can read and write files in the following locations in your home folder without asking permission first:").append(appendText);
+        } else if (home_ro && !home_cr && !home_rw) {
+            description = i18n("Can read files in the following locations in your home folder without asking permission first:").append(appendText);
+        } else {
+            description = i18n("Can access files in the following locations in your home folder without asking permission first:").append(appendText);
+        }
+        m_permissions.push_back(FlatpakPermission(i18n("filesystems"), category, value, brief, description, "inode-directory", homeList));
+    }
+    appendText = "\n- " + systemList.join("\n- ");
+    if (systemAccess) {
+        brief = i18n("System Folder Access");
+        QString accessLevel;
+        if (system_rw && system_ro && system_cr) {
+            description = i18n("Can read, write, and create system files in the following locations without asking permission first:").append(appendText);
+        } else if (system_rw && !system_cr) {
+            description = i18n("Can read and write system files in the following locations without asking permission first:").append(appendText);
+        } else if (system_ro && !system_cr && !system_rw) {
+            description = i18n("Can read system files in the following locations without asking permission first:").append(appendText);
+        } else {
+            description = i18n("Can access system files in the following locations without asking permission first:").append(appendText);
+        }
+        m_permissions.push_back(FlatpakPermission(i18n("filesystems"), category, value, brief, description, "inode-directory", systemList));
+    }
+
+    category = "Session Bus Policy";
+    int index = metaData.indexOf(category);
+    if (index != -1) {
+        index = metaData.indexOf('\n', index);
+        QStringList busList;
+        while (true) {
+            QString policy;
+            int j;
+            for (j = index + 1; metaData[j] != '\n'; ++j) {
+                policy.push_back(metaData[j]);
+            }
+            if (policy.isEmpty()) {
+                break;
+            }
+            QStringList l = policy.split('=');
+            busList << l[0];
+            index = j;
+        }
+        name = i18n("Session Bus Policy");
+        brief = i18n("Session Bus Access");
+        description = i18n("Can communicate with other applications and processes in the same desktop session using the following communication protocols:").append("\n- " + busList.join("\n- "));
+        m_permissions.push_back(FlatpakPermission(name, category, value, brief, description, "system-save-session", busList));
+    }
+
+    category = "System Bus Policy";
+    index = metaData.indexOf(category);
+    if (index != -1) {
+        index = metaData.indexOf('\n', index);
+        QStringList busList;
+        while (true) {
+            QString policy;
+            int j;
+            for (j = index + 1; metaData[j] != '\n'; ++j) {
+                policy.push_back(metaData[j]);
+            }
+            if (policy.isEmpty()) {
+                break;
+            }
+            QStringList l = policy.split('=');
+            busList << l[0];
+            index = j;
+        }
+        name = i18n("System Bus Policy");
+        brief = i18n("System Bus Access");
+        description = i18n("Can communicate with all applications and system services using the following communication protocols:").append("\n- " + busList.join("\n- "));
+        m_permissions.push_back(FlatpakPermission(name, category, value, brief, description, "system-save-session", busList));
+    }
 }

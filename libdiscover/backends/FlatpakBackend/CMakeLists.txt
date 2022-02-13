@@ -8,6 +8,7 @@ set(flatpak-backend_SRCS
     FlatpakJobTransaction.cpp
     FlatpakTransactionThread.cpp
     FlatpakRefreshAppstreamMetadataJob.cpp
+    FlatpakPermission.cpp
     resources.qrc
 )
 

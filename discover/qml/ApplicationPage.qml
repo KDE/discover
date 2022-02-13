@@ -666,6 +666,7 @@ DiscoverPage {
                 delegate: Loader {
                     property QtObject resource: appInfo.application
                     source: modelData
+                    Layout.fillWidth: true
                 }
             }
         }

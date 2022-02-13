@@ -10,10 +10,12 @@
 
 #include <resources/AbstractResource.h>
 
+#include "FlatpakPermission.h"
 #include "flatpak-helper.h"
 
 #include <AppStreamQt/component.h>
 
+#include <QAbstractItemModel>
 #include <QPixmap>
 
 class AddonList;
@@ -24,7 +26,9 @@ class FlatpakResource : public AbstractResource
 {
     Q_OBJECT
     Q_PROPERTY(QStringList topObjects MEMBER m_objects CONSTANT)
+    Q_PROPERTY(QStringList objects MEMBER m_bottomObjects CONSTANT)
     Q_PROPERTY(QString attentionText READ attentionText CONSTANT)
+
 public:
     explicit FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent);
 
@@ -169,6 +173,8 @@ public:
     {
         m_availableVersion = version;
     }
+    Q_INVOKABLE QAbstractListModel *showPermissions();
+    Q_INVOKABLE int permissionCount();
 
     void setTemporarySource(const QSharedPointer<FlatpakSource> &temp)
     {
@@ -184,6 +190,7 @@ Q_SIGNALS:
 
 private:
     void setCommit(const QString &commit);
+    void loadPermissions();
 
     const AppStream::Component m_appdata;
     FlatpakResource::Id m_id;
@@ -205,7 +212,9 @@ private:
     QString m_availableVersion;
     FlatpakResource::ResourceType m_type = DesktopApp;
     QSharedPointer<FlatpakSource> m_temp;
+    QVector<FlatpakPermission> m_permissions;
     static const QStringList m_objects;
+    static const QStringList m_bottomObjects;
 };
 
 inline uint qHash(const FlatpakResource::Id &key)

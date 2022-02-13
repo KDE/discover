@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
- <qresource>
-    <file>qml/FlatpakAttention.qml</file>
- </qresource>
+    <qresource prefix="/">
+        <file>qml/FlatpakAttention.qml</file>
+        <file>qml/PermissionsList.qml</file>
+    </qresource>
 </RCC>
