@@ -197,6 +197,7 @@ DiscoverPage
                     Layout.rightMargin: Kirigami.Units.largeSpacing
                     horizontalAlignment: Text.AlignRight
                     text: i18n("Total size: %1", updateModel.updateSize)
+                    elide: Text.ElideLeft
                 }
             }
         }
