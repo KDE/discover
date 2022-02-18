@@ -20,7 +20,7 @@ kcmutils_generate_module_data(
 
 kconfig_add_kcfg_files(kcm_updates_PART_SRCS updatessettings.kcfgc GENERATE_MOC)
 kconfig_add_kcfg_files(kcm_updates_PART_SRCS discoversettings.kcfgc GENERATE_MOC)
-add_library(kcm_updates MODULE updates.cpp ${kcm_updates_PART_SRCS})
+add_library(kcm_updates MODULE updates.cpp updates.h ${kcm_updates_PART_SRCS})
 
 target_link_libraries(kcm_updates
     KF5::I18n

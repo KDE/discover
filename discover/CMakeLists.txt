@@ -22,6 +22,15 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
     UnityLauncher.cpp
     ReadFile.cpp
 
+    DiscoverObject.h
+    DiscoverDeclarativePlugin.h
+
+    FeaturedModel.h
+    PaginateModel.h
+    UnityLauncher.h
+    ReadFile.h
+
+
     resources.qrc
 )
 add_executable(Plasma::Discover ALIAS plasma-discover)

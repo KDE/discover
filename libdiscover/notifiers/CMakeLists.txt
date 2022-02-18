@@ -1,4 +1,4 @@
-add_library(DiscoverNotifiers BackendNotifierModule.cpp)
+add_library(DiscoverNotifiers BackendNotifierModule.cpp BackendNotifierModule.h)
 target_link_libraries(DiscoverNotifiers
     PUBLIC
         Qt::Core
