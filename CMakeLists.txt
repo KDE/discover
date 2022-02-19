@@ -48,7 +48,7 @@ if(NOT CMAKE_VERSION VERSION_LESS "3.10.0")
 endif()
 
 set(CMAKE_CXX_STANDARD 17)
-add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS)
+add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS -DQT_NO_URL_CAST_FROM_STRING)
 
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)
 

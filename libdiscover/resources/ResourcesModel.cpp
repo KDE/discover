@@ -421,5 +421,5 @@ QString ResourcesModel::applicationSourceName() const
 
 QUrl ResourcesModel::distroBugReportUrl()
 {
-    return KOSRelease().bugReportUrl();
+    return QUrl(KOSRelease().bugReportUrl());
 }
