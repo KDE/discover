@@ -725,7 +725,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     auto resource = new FlatpakResource(asComponent, preferredInstallation(), this);
     resource->setFlatpakFileType(FlatpakResource::FileFlatpakRef);
     resource->setResourceFile(url);
-    resource->setResourceLocation(refurl);
+    resource->setResourceLocation(QUrl(refurl));
     resource->setOrigin(remoteName);
     resource->setFlatpakName(name);
     resource->setArch(flatpak_get_default_arch());
