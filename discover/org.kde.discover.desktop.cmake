@@ -114,6 +114,7 @@ Keywords[ar]=برنامج;برمجيّة;برمجية;مستودع;حزمة;تث
 Keywords[az]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;proqram;proqram təminatı;anbar;paket;əlavə edin;quraşdırın;silin;ləğv edin;yeniləyin;tətbiqlər; tətbiqetmələr;oyunlar;əlavələr
 Keywords[ca]=programa;programari;repositori;paquet;afegeix;instal·la;desinstal·la;elimina;actualitza;apps;aplicacions;jocs;flatpak;snap;complements;microprogramari;firmware;
 Keywords[ca@valencia]=programa;programari;repositori;paquet;afig;instal·la;desinstal·la;elimina;actualitza;apps;aplicacions;jocs;flatpak;snap;complements;microprogramari;firmware;
+Keywords[de]=Programm;Software;Archiv;Paket;Installieren;Deinstallieren;Entfernen;Aktualisieren;Programme;Anwendungen;Spiele;
 Keywords[en_GB]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
 Keywords[es]=programa;software;repositorio;paquete;añadir;agregar;instalar;desinstalar;eliminar;borrar;actualizar;apps;aplicaciones;juegos;flatpak;snap;complementos;añadidos;firmware;
 Keywords[eu]=programa;softwarea;gordetegia;paketea;gehitu;instalatu;desinstalatu;kendu;eguneratu;appak;aplikazioak;jokoak;flatpak;snap;gehigarriak;firmwarea;
