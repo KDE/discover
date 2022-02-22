@@ -419,6 +419,7 @@ DiscoverPage {
                 Layout.fillWidth: true
                 wrapMode: Text.WordWrap
                 text: appInfo.application.longDescription
+                textFormat: Text.StyledText
                 onLinkActivated: Qt.openUrlExternally(link);
             }
 
