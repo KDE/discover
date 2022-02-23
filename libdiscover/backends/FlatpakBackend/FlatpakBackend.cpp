@@ -349,8 +349,10 @@ QString refToBundleId(FlatpakRef *ref)
         + flatpak_ref_get_branch(ref);
 }
 
-FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref) const
+FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref, bool *freshResource) const
 {
+    if (freshResource)
+        *freshResource = false;
     const QString origin = QString::fromUtf8(flatpak_installed_ref_get_origin(ref));
     auto source = findSource(installation, origin);
     if (source) {
@@ -409,6 +411,9 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
     resource->updateFromRef(FLATPAK_REF(ref));
     resource->setState(AbstractResource::Installed);
     source->addResource(resource);
+
+    if (freshResource)
+        *freshResource = true;
 
     Q_ASSERT(resource->uniqueId() == idForInstalledRef(ref, {}) || resource->uniqueId() == idForInstalledRef(ref, {".desktop"}));
     return resource;
@@ -1288,12 +1293,13 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 for (auto it = refs.constBegin(), itEnd = refs.constEnd(); it != itEnd; ++it) {
                     resources.reserve(resources.size() + it->size());
                     for (auto ref : qAsConst(it.value())) {
-                        auto resource = getAppForInstalledRef(it.key(), ref);
+                        bool fresh;
+                        auto resource = getAppForInstalledRef(it.key(), ref, &fresh);
 #if FLATPAK_CHECK_VERSION(1, 1, 2)
                         resource->setAvailableVersion(QString::fromUtf8(flatpak_installed_ref_get_appdata_version(ref)));
 #endif
                         g_object_unref(ref);
-                        resource->setState(AbstractResource::Upgradeable);
+                        resource->setState(AbstractResource::Upgradeable, !fresh);
                         updateAppSize(resource);
                         if (resource->resourceType() == FlatpakResource::Runtime) {
                             resources.prepend(resource);

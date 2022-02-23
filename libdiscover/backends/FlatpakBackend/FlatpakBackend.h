@@ -64,7 +64,7 @@ public:
     void addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *stream);
     void addAppFromFlatpakBundle(const QUrl &url, ResultsStream *stream);
     void addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream);
-    FlatpakResource *getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref) const;
+    FlatpakResource *getAppForInstalledRef(FlatpakInstallation *flatpakInstallation, FlatpakInstalledRef *ref, bool *freshResource = nullptr) const;
 
     FlatpakSourcesBackend *sources() const
     {

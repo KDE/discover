@@ -541,12 +541,12 @@ void FlatpakResource::setRuntime(const QString &runtime)
     setPropertyState(RequiredRuntime, AlreadyKnown);
 }
 
-void FlatpakResource::setState(AbstractResource::State state)
+void FlatpakResource::setState(AbstractResource::State state, bool shouldEmit)
 {
     if (m_state != state) {
         m_state = state;
 
-        if (qobject_cast<FlatpakBackend *>(backend())->isTracked(this)) {
+        if (shouldEmit && qobject_cast<FlatpakBackend *>(backend())->isTracked(this)) {
             Q_EMIT stateChanged();
         }
     }
