@@ -319,10 +319,24 @@ Action=Popup
 
 [Event/OfflineUpdateRepairStarted]
 Name=Repair Started
+Name[ar]=بدء الإصلاح
+Name[az]=Bərpa edilməyə başladı
+Name[ca]=S'ha iniciat la reparació
+Name[ia]=Reparation initiava
+Name[nl]=Repareren is gestart
+Name[uk]=Розпочато відновлення
+Name[x-test]=xxRepair Startedxx
 Action=Popup
 
 [Event/OfflineUpdateRepairSuccessful]
 Name=Repaired Successfully
+Name[ar]=نجح الإصلاح
+Name[az]=Sistem uğurla bərpa olundu
+Name[ca]=La reparació ha estat correcta
+Name[ia]=Systema reparate con successo
+Name[nl]=Met succes gerepareerd
+Name[uk]=Успішно відновлено
+Name[x-test]=xxRepaired Successfullyxx
 Urgency=High
 Action=Popup
 
