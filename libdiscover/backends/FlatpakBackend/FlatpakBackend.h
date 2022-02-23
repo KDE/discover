@@ -82,6 +82,8 @@ public:
         return m_installations;
     }
 
+    bool isTracked(FlatpakResource *resource) const;
+
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata);
     void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);

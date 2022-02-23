@@ -1442,6 +1442,17 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     return stream;
 }
 
+bool FlatpakBackend::isTracked(FlatpakResource *resource) const
+{
+    const auto uid = resource->uniqueId();
+    for (const auto &source : m_flatpakSources) {
+        if (source->m_resources.contains(uid)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 QVector<AbstractResource *> FlatpakBackend::resourcesByAppstreamName(const QString &name) const
 {
     QVector<AbstractResource *> resources;
