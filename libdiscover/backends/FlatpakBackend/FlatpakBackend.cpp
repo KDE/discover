@@ -47,6 +47,7 @@
 #include <QRegularExpression>
 #include <glib.h>
 
+#include <optional>
 #include <sys/stat.h>
 
 DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
@@ -180,6 +181,42 @@ static FlatpakResource::Id idForInstalledRef(FlatpakInstalledRef *ref, const QSt
     const QString branch = QString::fromUtf8(flatpak_ref_get_branch(FLATPAK_REF(ref)));
 
     return {appId, branch, arch};
+}
+
+static std::optional<AppStream::Metadata> metadataFromBytes(GBytes *appstreamGz, GCancellable *cancellable)
+{
+    g_autoptr(GError) localError = nullptr;
+    g_autoptr(GZlibDecompressor) decompressor = nullptr;
+    g_autoptr(GInputStream) streamGz = nullptr;
+    g_autoptr(GInputStream) streamData = nullptr;
+    g_autoptr(GBytes) appstream = nullptr;
+
+    /* decompress data */
+    decompressor = g_zlib_decompressor_new(G_ZLIB_COMPRESSOR_FORMAT_GZIP);
+    streamGz = g_memory_input_stream_new_from_bytes(appstreamGz);
+    if (!streamGz) {
+        return {};
+    }
+
+    streamData = g_converter_input_stream_new(streamGz, G_CONVERTER(decompressor));
+
+    appstream = g_input_stream_read_bytes(streamData, 0x100000, cancellable, &localError);
+    if (!appstream) {
+        qWarning() << "Failed to extract appstream metadata from bundle:" << localError->message;
+        return {};
+    }
+
+    gsize len = 0;
+    gconstpointer data = g_bytes_get_data(appstream, &len);
+
+    AppStream::Metadata metadata;
+    metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
+    AppStream::Metadata::MetadataError error = metadata.parse(QString::fromUtf8((char *)data, len), AppStream::Metadata::FormatKindXml);
+    if (error != AppStream::Metadata::MetadataErrorNoError) {
+        qWarning() << "Failed to parse appstream metadata: " << error;
+        return {};
+    }
+    return metadata;
 }
 
 FlatpakBackend::FlatpakBackend(QObject *parent)
@@ -383,6 +420,20 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
             });
         }
 
+        if (comps.isEmpty()) {
+            g_autoptr(GBytes) metadata = flatpak_installed_ref_load_appdata(ref, 0, 0);
+            auto meta = metadataFromBytes(metadata, m_cancellable);
+            const auto componentsProvided = meta->components();
+            if (!componentsProvided.isEmpty() && name != componentsProvided.constFirst().id()) {
+                qDebug() << "mismatch between flatpak and appstream" << name << componentsProvided.constFirst().id();
+                comps = source->m_pool->componentsById(componentsProvided.constFirst().id());
+            }
+
+            if (comps.isEmpty()) {
+                comps = componentsProvided;
+            }
+        }
+
         if (comps.count() >= 1) {
             Q_ASSERT(comps.count() == 1);
             cid = comps.constFirst();
@@ -488,38 +539,12 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
 
     appstreamGz = flatpak_bundle_ref_get_appstream(bundleRef);
     if (appstreamGz) {
-        g_autoptr(GZlibDecompressor) decompressor = nullptr;
-        g_autoptr(GInputStream) streamGz = nullptr;
-        g_autoptr(GInputStream) streamData = nullptr;
-        g_autoptr(GBytes) appstream = nullptr;
-
-        /* decompress data */
-        decompressor = g_zlib_decompressor_new(G_ZLIB_COMPRESSOR_FORMAT_GZIP);
-        streamGz = g_memory_input_stream_new_from_bytes(appstreamGz);
-        if (!streamGz) {
+        const auto metadata = metadataFromBytes(appstreamGz, m_cancellable);
+        if (!metadata.has_value()) {
             return;
         }
 
-        streamData = g_converter_input_stream_new(streamGz, G_CONVERTER(decompressor));
-
-        appstream = g_input_stream_read_bytes(streamData, 0x100000, m_cancellable, &localError);
-        if (!appstream) {
-            qWarning() << "Failed to extract appstream metadata from bundle:" << localError->message;
-            return;
-        }
-
-        gsize len = 0;
-        gconstpointer data = g_bytes_get_data(appstream, &len);
-
-        AppStream::Metadata metadata;
-        metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
-        AppStream::Metadata::MetadataError error = metadata.parse(QString::fromUtf8((char *)data, len), AppStream::Metadata::FormatKindXml);
-        if (error != AppStream::Metadata::MetadataErrorNoError) {
-            qWarning() << "Failed to parse appstream metadata: " << error;
-            return;
-        }
-
-        const QList<AppStream::Component> components = metadata.components();
+        const QList<AppStream::Component> components = metadata->components();
         if (components.size()) {
             asComponent = components.first();
         } else {
