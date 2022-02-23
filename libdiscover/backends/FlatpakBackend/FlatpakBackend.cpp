@@ -296,7 +296,7 @@ public:
         }
 
         QNetworkRequest req(m_url);
-        req.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+        req.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
         auto replyGet = get(req);
         connect(replyGet, &QNetworkReply::finished, this, [this, replyGet] {
             QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(replyGet);
