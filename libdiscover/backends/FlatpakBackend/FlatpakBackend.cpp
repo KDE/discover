@@ -422,15 +422,17 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
 
         if (comps.isEmpty()) {
             g_autoptr(GBytes) metadata = flatpak_installed_ref_load_appdata(ref, 0, 0);
-            auto meta = metadataFromBytes(metadata, m_cancellable);
-            const auto componentsProvided = meta->components();
-            if (!componentsProvided.isEmpty() && name != componentsProvided.constFirst().id()) {
-                qDebug() << "mismatch between flatpak and appstream" << name << componentsProvided.constFirst().id();
-                comps = source->m_pool->componentsById(componentsProvided.constFirst().id());
-            }
+            if (metadata) {
+                auto meta = metadataFromBytes(metadata, m_cancellable);
+                const auto componentsProvided = meta->components();
+                if (!componentsProvided.isEmpty() && name != componentsProvided.constFirst().id()) {
+                    qDebug() << "mismatch between flatpak and appstream" << name << componentsProvided.constFirst().id();
+                    comps = source->m_pool->componentsById(componentsProvided.constFirst().id());
+                }
 
-            if (comps.isEmpty()) {
-                comps = componentsProvided;
+                if (comps.isEmpty()) {
+                    comps = componentsProvided;
+                }
             }
         }
 
