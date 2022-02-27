@@ -327,6 +327,7 @@ Name[ar]=بدء الإصلاح
 Name[az]=Bərpa edilməyə başladı
 Name[ca]=S'ha iniciat la reparació
 Name[es]=Reparación iniciada
+Name[eu]=Konponketak hasi da
 Name[fr]=Démarrage de la réparation
 Name[ia]=Reparation initiava
 Name[id]=Perbaikan Dimulai
@@ -335,6 +336,7 @@ Name[sl]=Popravljanje začeto
 Name[sv]=Reparation påbörjad
 Name[uk]=Розпочато відновлення
 Name[x-test]=xxRepair Startedxx
+Name[zh_CN]=修复已开始
 Action=Popup
 
 [Event/OfflineUpdateRepairSuccessful]
@@ -343,6 +345,7 @@ Name[ar]=نجح الإصلاح
 Name[az]=Sistem uğurla bərpa olundu
 Name[ca]=La reparació ha estat correcta
 Name[es]=Reparado correctamente
+Name[eu]=Konponketa arrakastatsua
 Name[fr]=La réparation a été réalisée avec succès.
 Name[ia]=Systema reparate con successo
 Name[id]=Berhasil Memperbaiki
@@ -351,6 +354,7 @@ Name[sl]=Uspešno popravljeno
 Name[sv]=Reparation lyckades
 Name[uk]=Успішно відновлено
 Name[x-test]=xxRepaired Successfullyxx
+Name[zh_CN]=修复成功
 Urgency=High
 Action=Popup
 
