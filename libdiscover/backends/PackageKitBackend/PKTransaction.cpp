@@ -300,8 +300,8 @@ void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString
         || err == PackageKit::Transaction::ErrorNotAuthorized) {
         return;
     }
-    qWarning() << "PackageKit error:" << err << PackageKitMessages::errorMessage(err) << error;
-    Q_EMIT passiveMessage(PackageKitMessages::errorMessage(err));
+    qWarning() << "PackageKit error:" << err << PackageKitMessages::errorMessage(err, error) << error;
+    Q_EMIT passiveMessage(PackageKitMessages::errorMessage(err, error));
 }
 
 void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const QString &type, const QString &text)

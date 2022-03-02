@@ -11,7 +11,7 @@
 
 namespace PackageKitMessages
 {
-QString errorMessage(PackageKit::Transaction::Error error);
+QString errorMessage(PackageKit::Transaction::Error error, const QString &errorMessage);
 QString restartMessage(PackageKit::Transaction::Restart restart, const QString &p);
 QString restartMessage(PackageKit::Transaction::Restart restart);
 QString statusMessage(PackageKit::Transaction::Status status);

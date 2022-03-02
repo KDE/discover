@@ -11,7 +11,7 @@
 
 namespace PackageKitMessages
 {
-QString errorMessage(PackageKit::Transaction::Error error)
+QString errorMessage(PackageKit::Transaction::Error error, const QString &errorMessage)
 {
     switch (error) {
     case PackageKit::Transaction::ErrorOom:
@@ -20,8 +20,13 @@ QString errorMessage(PackageKit::Transaction::Error error)
         return i18n("No network connection available");
     case PackageKit::Transaction::ErrorNotSupported:
         return i18n("Operation not supported");
-    case PackageKit::Transaction::ErrorInternalError:
-        return i18n("Internal error");
+    case PackageKit::Transaction::ErrorInternalError: {
+        if (errorMessage.isEmpty()) {
+            return i18n("Internal error");
+        } else {
+            return i18n("Internal error: %1", errorMessage);
+        }
+    }
     case PackageKit::Transaction::ErrorGpgFailure:
         return i18n("GPG failure");
     case PackageKit::Transaction::ErrorPackageIdInvalid:

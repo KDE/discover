@@ -557,7 +557,7 @@ void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QSt
         || err == PackageKit::Transaction::ErrorNotAuthorized) {
         return;
     }
-    QString finalMessage = xi18nc("@info", "%1:<nl/><nl/>%2", PackageKitMessages::errorMessage(err), error);
+    QString finalMessage = xi18nc("@info", "%1:<nl/><nl/>%2", PackageKitMessages::errorMessage(err, QString()), error);
     Q_EMIT passiveMessage(finalMessage);
     qWarning() << "Error happened" << err << error;
 }
