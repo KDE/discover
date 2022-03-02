@@ -350,6 +350,8 @@ DiscoverPage {
                                     url: modelData.url
                                     horizontalAlignment: Text.AlignHCenter
                                     verticalAlignment: Text.AlignTop
+                                    wrapMode: Text.Wrap
+                                    maximumLineCount: 3
                                     elide: Text.ElideRight
                                 }
                             }
