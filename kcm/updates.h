@@ -9,11 +9,10 @@
 #include <KQuickAddons/ManagedConfigModule>
 
 #include <KSharedConfig>
-
+#include <discoversettings.h>
+#include <updatessettings.h>
 class UpdatesData;
-class UpdatesSettings;
 class DiscoverData;
-class DiscoverSettings;
 
 class Updates : public KQuickAddons::ManagedConfigModule
 {

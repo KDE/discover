@@ -5,14 +5,13 @@ set(PROJECT_VERSION_MAJOR 5)
 cmake_minimum_required(VERSION 3.16)
 
 set(QT_MIN_VERSION "5.15.0")
-set(KF5_MIN_VERSION "5.86")
+set(KF5_MIN_VERSION "5.90")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH}  "${CMAKE_SOURCE_DIR}/cmake")
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick X11Extras)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
@@ -23,6 +22,13 @@ include(GenerateExportHeader)
 include(ECMQtDeclareLoggingCategory)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick)
+
+if (QT_MAJOR_VERSION STREQUAL "5")
+        find_package(Qt5X11Extras REQUIRED)
+elseif (QT_MAJOR_VERSION STREQUAL "6")
+        find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Gui) # qtx11extras_p.h
+endif()
 
 find_package(PkgConfig REQUIRED)
 
@@ -41,11 +47,7 @@ pkg_check_modules(Ostree IMPORTED_TARGET ostree-1)
 pkg_check_modules(RpmOstree IMPORTED_TARGET rpm-ostree-1)
 find_package(KUserFeedback)
 
-if(NOT CMAKE_VERSION VERSION_LESS "3.10.0")
-  # CMake 3.9+ warns about automoc on files without Q_OBJECT, and doesn't know about other macros.
-  # 3.10+ lets us provide more macro names that require automoc.
-  list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
-endif()
+list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
 
 set(CMAKE_CXX_STANDARD 17)
 add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS -DQT_NO_URL_CAST_FROM_STRING)

@@ -47,9 +47,15 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF5::QuickAddons
                                      Qt::Widgets
                                      Qt::Quick
-                                     Qt::X11Extras
                                      Discover::Common
 )
+
+if (QT_MAJOR_VERSION STREQUAL "5")
+    target_link_libraries(plasma-discover PUBLIC Qt::X11Extras)
+elseif (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(plasma-discover PUBLIC Qt6::GuiPrivate)
+endif()
+
 
 if (TARGET KUserFeedbackCore)
     target_link_libraries(plasma-discover PRIVATE KUserFeedbackCore)

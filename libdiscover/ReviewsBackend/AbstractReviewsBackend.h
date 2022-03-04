@@ -9,8 +9,8 @@
 
 #include <QObject>
 
+#include "Review.h"
 #include "ReviewsModel.h"
-
 class Rating;
 class AbstractResource;
 

@@ -12,9 +12,8 @@
 #include <KPluginFactory>
 
 #include <discoverdata.h>
-#include <discoversettings.h>
+
 #include <updatesdata.h>
-#include <updatessettings.h>
 
 K_PLUGIN_FACTORY_WITH_JSON(UpdatesFactory, "kcm_updates.json", registerPlugin<Updates>(); registerPlugin<UpdatesData>();)
 
