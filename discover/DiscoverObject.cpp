@@ -33,7 +33,6 @@
 // KDE includes
 #include <KAboutData>
 #include <KAuthorized>
-#include <KConcatenateRowsProxyModel>
 #include <KConfigGroup>
 #include <KCrash>
 #include <KLocalizedContext>
@@ -99,7 +98,6 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
 
     qmlRegisterType<UnityLauncher>("org.kde.discover.app", 1, 0, "UnityLauncher");
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
-    qmlRegisterType<KConcatenateRowsProxyModel>("org.kde.discover.app", 1, 0, "KConcatenateRowsProxyModel");
     qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
     qmlRegisterType<OurSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
 #ifdef WITH_FEEDBACK
