@@ -11,11 +11,11 @@ qt_add_dbus_interface(RpmOstreeDBusInterface_SRCS org.projectatomic.rpmostree1.x
 add_library(rpm-ostree-backend MODULE RpmOstreeResource.cpp RpmOstreeBackend.cpp RpmOstreeSourcesBackend.cpp RpmOstreeTransaction.cpp RpmOstree.qrc ${RpmOstreeDBusInterface_SRCS})
 target_link_libraries(rpm-ostree-backend PRIVATE Discover::Common Qt5::DBus KF5::CoreAddons KF5::I18n PkgConfig::Ostree)
 
-install(TARGETS rpm-ostree-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
+install(TARGETS rpm-ostree-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 install(FILES rpm-ostree-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
 
 add_library(rpm-ostree-notifier MODULE RpmOstreeNotifier.cpp)
 target_link_libraries(rpm-ostree-notifier Discover::Notifiers PkgConfig::Ostree)
 set_target_properties(rpm-ostree-notifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
-install(TARGETS rpm-ostree-notifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
+install(TARGETS rpm-ostree-notifier DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover-notifier)
