@@ -237,6 +237,10 @@ void PackageKitBackend::reloadPackageList()
             for (auto r : releases) {
                 int cmp = AppStream::Utils::vercmpSimple(r.version(), AppStreamIntegration::global()->osRelease()->versionId());
                 if (cmp == 0) {
+                    // Ignore (likely) empty date_eol entries that are parsed as the UNIX Epoch
+                    if (r.timestampEol().isNull() || r.timestampEol().toSecsSinceEpoch() == 0) {
+                        continue;
+                    }
                     if (r.timestampEol() < QDateTime::currentDateTime()) {
                         const QString releaseDate = QLocale().toString(r.timestampEol());
                         Q_EMIT inlineMessage(InlineMessageType::Warning,
