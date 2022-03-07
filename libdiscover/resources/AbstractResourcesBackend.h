@@ -59,7 +59,7 @@ private:
 };
 
 // Keep in sync with Kirigami's enums.h
-enum class InlineMessageType {
+enum InlineMessageType {
     Information = 0,
     Positive,
     Warning,

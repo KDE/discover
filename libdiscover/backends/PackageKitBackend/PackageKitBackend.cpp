@@ -229,10 +229,14 @@ void PackageKitBackend::reloadPackageList()
         acquireFetching(false);
 
         const QList<AppStream::Component> distroComponents = m_appdata->componentsById(AppStream::Utils::currentDistroComponentId());
+        if (distroComponents.isEmpty()) {
+            qWarning() << "no component found for" << AppStream::Utils::currentDistroComponentId();
+        }
         for (const AppStream::Component &dc : distroComponents) {
             const auto releases = dc.releases();
             for (auto r : releases) {
-                if (AppStream::Utils::vercmpSimple(r.version(), AppStreamIntegration::global()->osRelease()->version()) == 0) {
+                int cmp = AppStream::Utils::vercmpSimple(r.version(), AppStreamIntegration::global()->osRelease()->versionId());
+                if (cmp == 0) {
                     if (r.timestampEol() < QDateTime::currentDateTime()) {
                         const QString releaseDate = QLocale().toString(r.timestampEol());
                         Q_EMIT inlineMessage(InlineMessageType::Warning,
