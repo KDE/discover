@@ -10,6 +10,7 @@
 #include "PackageKitResource.h"
 #include <AppStreamQt/pool.h>
 #include <PackageKit/Transaction>
+#include <QFile>
 #include <QPointer>
 #include <QSet>
 #include <QSharedPointer>
@@ -46,7 +47,7 @@ public:
     Transaction *removeApplication(AbstractResource *app) override;
     bool isValid() const override
     {
-        return true;
+        return !QFile::exists(QStringLiteral("/run/ostree-booted"));
     }
     QSet<AbstractResource *> upgradeablePackages() const;
     bool isFetching() const override;
