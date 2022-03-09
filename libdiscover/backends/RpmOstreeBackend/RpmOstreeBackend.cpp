@@ -21,6 +21,11 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_fetching(false)
 {
+    if (!this->isValid()) {
+        qWarning() << "rpm-ostree-backend: Was activated even though we are not running on an rpm-ostree managed system";
+        return;
+    }
+
     setFetching(true);
     qDBusRegisterMetaType<QList<QVariantMap>>();
 
