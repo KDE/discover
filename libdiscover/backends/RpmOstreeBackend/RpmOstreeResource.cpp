@@ -266,7 +266,7 @@ QString RpmOstreeResource::name() const
 
 QString RpmOstreeResource::origin() const
 {
-    return QStringLiteral("rpm-ostree");
+    return m_remote;
 }
 
 QString RpmOstreeResource::packageName() const
