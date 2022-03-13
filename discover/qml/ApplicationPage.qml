@@ -166,9 +166,8 @@ DiscoverPage {
                         Label {
                             id: author
                             Layout.fillWidth: true
-                            visible: text.length > 0
                             opacity: 0.8
-                            text: appInfo.application.author
+                            text: appInfo.application.author ? appInfo.application.author : i18n("Unknown author")
                             wrapMode: Text.Wrap
                             maximumLineCount: 5
                             elide: Text.ElideRight
@@ -353,9 +352,11 @@ DiscoverPage {
                                     wrapMode: Text.Wrap
                                     maximumLineCount: 3
                                     elide: Text.ElideRight
+                                    color: text.toLowerCase().includes(i18n("proprietary")) ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
                                 }
                             }
 
+                            // "See More licenses" link, in case there are a lot of them
                             Kirigami.LinkButton {
                                 Layout.fillWidth: true
                                 visible: application.licenses.length > 3
@@ -364,6 +365,23 @@ DiscoverPage {
                                 verticalAlignment: Text.AlignTop
                                 elide: Text.ElideRight
                                 onClicked: allLicensesSheet.open();
+                            }
+
+                            // "What's the risk of proprietary software?" link
+                            Kirigami.LinkButton {
+                                readonly property bool hasProprietaryLicense: {
+                                    const match = appInfo.application.licenses.find(element => {
+                                        return element.name.toLowerCase().includes(i18n("proprietary"));
+                                    });
+                                    return match;
+                                }
+                                Layout.fillWidth: true
+                                visible: hasProprietaryLicense
+                                text: i18n("What's the risk?")
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignTop
+                                elide: Text.ElideRight
+                                onClicked: properietarySoftwareRiskExplanationSheet.open();
                             }
                         }
                     }
@@ -647,8 +665,44 @@ DiscoverPage {
                     text: modelData.name
                     url: modelData.url
                     horizontalAlignment: Text.AlignLeft
+                    color: text.toLowerCase().includes(i18n("proprietary")) ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
                 }
             }
+        }
+    }
+
+    Kirigami.OverlaySheet {
+        id: properietarySoftwareRiskExplanationSheet
+        parent: applicationWindow().overlay
+
+        title: i18n("Risks of proprietary software")
+
+        ColumnLayout {
+            TextEdit {
+                readonly property string proprietarySoftwareExplanationPage: "https://www.gnu.org/proprietary"
+
+                Layout.fillWidth: true
+                Layout.maximumWidth: Kirigami.Units.gridUnit * 25
+
+                text: homepageButton.visible ?
+                    xi18nc("@info", "This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways--such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can learn more at <link url='%3'>%3</link>.", application.homepage, author.text, proprietarySoftwareExplanationPage) :
+                    xi18nc("@info", "This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways--such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (%1).<nl/><nl/>You can learn more at <link url='%2'>%2</link>.", author.text, proprietarySoftwareExplanationPage)
+                wrapMode: Text.Wrap
+                textFormat: TextEdit.RichText
+                readOnly: true
+
+                color: Kirigami.Theme.textColor
+                selectedTextColor: Kirigami.Theme.highlightedTextColor
+                selectionColor: Kirigami.Theme.highlightColor
+
+                onLinkActivated: (url) => Qt.openUrlExternally(url)
+
+                HoverHandler {
+                    acceptedButtons: Qt.NoButton
+                    cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+                }
+            }
+
         }
     }
 }
