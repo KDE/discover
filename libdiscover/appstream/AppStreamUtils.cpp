@@ -68,9 +68,19 @@ QJsonArray AppStreamUtils::licenses(const AppStream::Component &appdata)
     for (const auto &token : licenses) {
         QString license = token;
         license.remove(0, 1); // tokenize prefixes with an @ for some reason
+
+        QString name = license;
+        if (license == QLatin1String("LicenseRef-proprietary")) {
+            name = i18n("Proprietary");
+        }
+
         if (!AppStream::SPDX::isLicenseId(license))
             continue;
-        ret.append(QJsonObject{{QStringLiteral("name"), license}, {QStringLiteral("url"), {AppStream::SPDX::licenseUrl(license)}}});
+        ret.append(QJsonObject{
+            {QStringLiteral("name"), name},
+            {QStringLiteral("url"), {AppStream::SPDX::licenseUrl(license)}},
+            {QStringLiteral("free"), AppStream::SPDX::isFreeLicense(license)},
+        });
     }
     return ret;
 }

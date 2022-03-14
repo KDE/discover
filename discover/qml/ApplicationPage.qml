@@ -352,7 +352,7 @@ DiscoverPage {
                                     wrapMode: Text.Wrap
                                     maximumLineCount: 3
                                     elide: Text.ElideRight
-                                    color: text.toLowerCase().includes(i18n("proprietary")) ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
+                                    color: !modelData.free ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
                                 }
                             }
 
@@ -371,7 +371,7 @@ DiscoverPage {
                             Kirigami.LinkButton {
                                 readonly property bool hasProprietaryLicense: {
                                     const match = appInfo.application.licenses.find(element => {
-                                        return element.name.toLowerCase().includes(i18n("proprietary"));
+                                        return !element.free;
                                     });
                                     return match;
                                 }
