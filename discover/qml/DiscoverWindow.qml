@@ -52,7 +52,6 @@ Kirigami.ApplicationWindow
         id: featuredAction
         iconName: "go-home"
         text: i18n("&Home")
-        enabled: !window.wideScreen
         component: topBrowsingComp
         objectName: "discover"
     }

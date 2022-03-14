@@ -65,16 +65,6 @@ Kirigami.GlobalDrawer {
                 rightMargin: Kirigami.Units.smallSpacing
             }
 
-            ToolButton {
-                icon.name: "go-home"
-                onClicked: Navigation.openHome()
-                enabled: !window.stack.currentItem || window.stack.currentItem.objectName !== "featured"
-
-                ToolTip {
-                    text: i18n("Return to the Featured page")
-                }
-            }
-
             SearchField {
                 id: searchField
                 Layout.fillWidth: true
