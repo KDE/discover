@@ -145,7 +145,7 @@ Kirigami.ApplicationWindow
         }
 
         function onPreventedClose() {
-            showPassiveNotification(i18n("Could not close Discover, there are tasks that need to be done."), 20000, i18n("Quit Anyway"), function() { Qt.quit() })
+            showPassiveNotification(i18n("Could not close Discover because some tasks are still in progress."), 20000, i18n("Quit Anyway"), function() { Qt.quit() })
         }
         function onUnableToFind(resid) {
             showPassiveNotification(i18n("Unable to find resource: %1", resid));
