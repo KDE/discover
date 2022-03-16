@@ -55,8 +55,8 @@ Kirigami.GlobalDrawer {
     header: Kirigami.AbstractApplicationHeader {
         visible: drawer.wideScreen
 
-        contentItem: RowLayout {
-            spacing: Kirigami.Units.smallSpacing
+        contentItem: SearchField {
+            id: searchField
 
             anchors {
                 left: parent.left
@@ -65,31 +65,26 @@ Kirigami.GlobalDrawer {
                 rightMargin: Kirigami.Units.smallSpacing
             }
 
-            SearchField {
-                id: searchField
-                Layout.fillWidth: true
+            visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
 
-                visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
+            page: window.leftPage
 
-                page: window.leftPage
+            onCurrentSearchTextChanged: {
+                var curr = window.leftPage;
 
-                onCurrentSearchTextChanged: {
-                    var curr = window.leftPage;
+                if (pageStack.depth>1)
+                    pageStack.pop()
 
-                    if (pageStack.depth>1)
-                        pageStack.pop()
-
-                    if (currentSearchText === "" && window.currentTopLevel === "" && !window.leftPage.category) {
-                        Navigation.openHome()
-                    } else if (!curr.hasOwnProperty("search")) {
-                        if (currentSearchText) {
-                            Navigation.clearStack()
-                            Navigation.openApplicationList( { search: currentSearchText })
-                        }
-                    } else {
-                        curr.search = currentSearchText;
-                        curr.forceActiveFocus()
+                if (currentSearchText === "" && window.currentTopLevel === "" && !window.leftPage.category) {
+                    Navigation.openHome()
+                } else if (!curr.hasOwnProperty("search")) {
+                    if (currentSearchText) {
+                        Navigation.clearStack()
+                        Navigation.openApplicationList( { search: currentSearchText })
                     }
+                } else {
+                    curr.search = currentSearchText;
+                    curr.forceActiveFocus()
                 }
             }
         }
