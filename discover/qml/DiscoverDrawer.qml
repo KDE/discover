@@ -45,9 +45,8 @@ Kirigami.GlobalDrawer {
         }
     }
 
-    // Give the search field keyboard focus by default
     function forceSearchFieldFocus() {
-        if (searchField.visible && wideScreen && !Kirigami.InputMethod.willShowOnActive) {
+        if (searchField.visible && wideScreen) {
             searchField.forceActiveFocus();
         }
     }
@@ -64,6 +63,10 @@ Kirigami.GlobalDrawer {
                 right: parent.right
                 rightMargin: Kirigami.Units.smallSpacing
             }
+
+            // Give the search field keyboard focus by default, unless it would
+            // make the virtual keyboard appear, because we don't want that
+            focus: !Kirigami.InputMethod.willShowOnActive
 
             visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
 
