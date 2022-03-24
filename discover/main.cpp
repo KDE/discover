@@ -13,7 +13,6 @@
 #include <KCrash>
 #include <KDBusService>
 #include <KLocalizedString>
-#include <KQuickAddons/QtQuickSettings>
 #include <KStartupInfo>
 #include <KWindowSystem>
 #include <QApplication>
@@ -108,7 +107,6 @@ int main(int argc, char **argv)
     app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     KCrash::initialize();
-    KQuickAddons::QtQuickSettings::init();
     KLocalizedString::setApplicationDomain("plasma-discover");
     KAboutData about(QStringLiteral("discover"),
                      i18n("Discover"),

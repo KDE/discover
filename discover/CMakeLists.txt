@@ -44,7 +44,6 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF5::ConfigGui
                                      KF5::KIOCore
                                      KF5::WindowSystem
-                                     KF5::QuickAddons
                                      Qt::Widgets
                                      Qt::Quick
                                      Discover::Common
