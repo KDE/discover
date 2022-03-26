@@ -340,19 +340,41 @@ DiscoverPage {
                             visible : appInfo.application.licenses.length > 0
                             spacing: 0
 
-                            Repeater {
-                                model: appInfo.application.licenses.slice(0, 2)
-                                delegate: Kirigami.UrlButton {
-                                    Layout.fillWidth: true
-                                    enabled: url !== ""
-                                    text: modelData.name
-                                    url: modelData.url
-                                    horizontalAlignment: Text.AlignHCenter
-                                    verticalAlignment: Text.AlignTop
-                                    wrapMode: Text.Wrap
-                                    maximumLineCount: 3
-                                    elide: Text.ElideRight
-                                    color: !modelData.free ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
+                            RowLayout {
+                                Layout.fillWidth: true
+                                spacing: 0
+
+                                Repeater {
+                                    model: appInfo.application.licenses.slice(0, 2)
+                                    delegate: Kirigami.UrlButton {
+                                        Layout.fillWidth: true
+                                        enabled: url !== ""
+                                        text: modelData.name
+                                        url: modelData.url
+                                        horizontalAlignment: Text.AlignHCenter
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.Wrap
+                                        maximumLineCount: 3
+                                        elide: Text.ElideRight
+                                        color: !modelData.free ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
+                                    }
+                                }
+
+                                // Button to open "What's the risk of proprietary software?" sheet
+                                ToolButton {
+                                    readonly property bool hasProprietaryLicense: {
+                                        const match = appInfo.application.licenses.find(element => {
+                                            return !element.free;
+                                        });
+                                        return match;
+                                    }
+                                    visible: hasProprietaryLicense
+                                    icon.name: "help-contextual"
+                                    onClicked: properietarySoftwareRiskExplanationSheet.open();
+
+                                    ToolTip {
+                                        text: i18n("What's the risk?")
+                                    }
                                 }
                             }
 
@@ -367,22 +389,6 @@ DiscoverPage {
                                 onClicked: allLicensesSheet.open();
                             }
 
-                            // "What's the risk of proprietary software?" link
-                            Kirigami.LinkButton {
-                                readonly property bool hasProprietaryLicense: {
-                                    const match = appInfo.application.licenses.find(element => {
-                                        return !element.free;
-                                    });
-                                    return match;
-                                }
-                                Layout.fillWidth: true
-                                visible: hasProprietaryLicense
-                                text: i18n("What's the risk?")
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignTop
-                                elide: Text.ElideRight
-                                onClicked: properietarySoftwareRiskExplanationSheet.open();
-                            }
                         }
                     }
                 }
