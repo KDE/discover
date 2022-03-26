@@ -225,7 +225,13 @@ QDate AppPackageKitResource::releaseDate() const
 
 QString AppPackageKitResource::author() const
 {
-    return m_appdata.developerName();
+    QString name = m_appdata.developerName();
+
+    if (name.isEmpty()) {
+        name = m_appdata.projectGroup();
+    }
+
+    return name;
 }
 
 void AppPackageKitResource::fetchChangelog()

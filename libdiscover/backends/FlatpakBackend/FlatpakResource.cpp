@@ -605,7 +605,13 @@ QString FlatpakResource::sourceIcon() const
 
 QString FlatpakResource::author() const
 {
-    return m_appdata.developerName();
+    QString name = m_appdata.developerName();
+
+    if (name.isEmpty()) {
+        name = m_appdata.projectGroup();
+    }
+
+    return name;
 }
 
 QStringList FlatpakResource::extends() const
