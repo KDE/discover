@@ -52,7 +52,7 @@ public:
     bool isFetching() const override;
 
     bool isPackageNameUpgradeable(const PackageKitResource *res) const;
-    QString upgradeablePackageId(const PackageKitResource *res) const;
+    QSet<QString> upgradeablePackageId(const PackageKitResource *res) const;
     QVector<AppPackageKitResource *> extendedBy(const QString &id) const;
 
     void resolvePackages(const QStringList &packageNames);

@@ -755,14 +755,15 @@ static QStringRef TransactionpackageName(const QString &packageID)
     return ret;
 }
 
-QString PackageKitBackend::upgradeablePackageId(const PackageKitResource *res) const
+QSet<QString> PackageKitBackend::upgradeablePackageId(const PackageKitResource *res) const
 {
+    QSet<QString> ids;
     const QString name = res->packageName();
     for (const QString &pkgid : m_updatesPackageId) {
         if (TransactionpackageName(pkgid) == name)
-            return pkgid;
+            ids.insert(pkgid);
     }
-    return QString();
+    return ids;
 }
 
 void PackageKitBackend::fetchDetails(const QSet<QString> &pkgid)
