@@ -113,9 +113,9 @@ public:
         QSet<QString> donePkgs;
         for (auto res : qAsConst(m_resources)) {
             PackageKitResource *app = qobject_cast<PackageKitResource *>(res);
-            QString pkgid = m_backend->upgradeablePackageId(app);
-            if (!donePkgs.contains(pkgid)) {
-                donePkgs.insert(pkgid);
+            QString pkgname = app->packageName();
+            if (!donePkgs.contains(pkgname)) {
+                donePkgs.insert(pkgname);
                 ret += app;
             }
         }
@@ -336,13 +336,13 @@ QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource *>
         }
 
         PackageKitResource *app = qobject_cast<PackageKitResource *>(res);
-        const QString pkgid = m_backend->upgradeablePackageId(app);
-        if (pkgid.isEmpty()) {
+        const QSet<QString> ids = m_backend->upgradeablePackageId(app);
+        if (ids.isEmpty()) {
             qWarning() << "no upgradeablePackageId for" << app;
             continue;
         }
 
-        packageIds.insert(pkgid);
+        packageIds.unite(ids);
     }
     return packageIds;
 }
@@ -739,9 +739,9 @@ double PackageKitUpdater::updateSize() const
         }
 
         PackageKitResource *app = qobject_cast<PackageKitResource *>(res);
-        QString pkgid = m_backend->upgradeablePackageId(app);
-        if (!donePkgs.contains(pkgid)) {
-            donePkgs.insert(pkgid);
+        QString pkgname = app->packageName();
+        if (!donePkgs.contains(pkgname)) {
+            donePkgs.insert(pkgname);
             ret += app->size();
         }
     }
