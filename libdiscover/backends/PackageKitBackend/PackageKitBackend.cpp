@@ -771,10 +771,13 @@ bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource *res) 
     return !upgradeablePackageId(res).isEmpty();
 }
 
+namespace
+{
 // Copy of Transaction::packageName that doesn't create a copy but just pass a reference
 // It's an optimisation as there's a bunch of allocations that happen from packageName
 // Having packageName return a QStringRef or a QStringView would fix this issue.
 // TODO Qt 6: Have packageName and similars return a QStringView
+
 static QStringRef TransactionpackageName(const QString &packageID)
 {
     QStringRef ret;
@@ -782,9 +785,38 @@ static QStringRef TransactionpackageName(const QString &packageID)
     return ret;
 }
 
+QStringRef TransactionpackageArch(const QString &packageID)
+{
+    QStringRef ret;
+    int start = packageID.indexOf(QLatin1Char(';'));
+    if (start == -1) {
+        return ret;
+    }
+    start = packageID.indexOf(QLatin1Char(';'), ++start);
+    if (start == -1) {
+        return ret;
+    }
+    int end = packageID.indexOf(QLatin1Char(';'), ++start);
+    if (Q_UNLIKELY(end == -1)) {
+        ret = packageID.midRef(start);
+    } else {
+        ret = packageID.midRef(start, end - start);
+    }
+    return ret;
+}
+}
+
 QString PackageKitBackend::upgradeablePackageId(const PackageKitResource *res) const
 {
     const QString name = res->packageName();
+
+    const auto installedPkgid = res->installedPackageId();
+    const auto installedArch = TransactionpackageArch(installedPkgid);
+
+    for (const QString &pkgid : m_updatesPackageId) {
+        if (TransactionpackageName(pkgid) == name && TransactionpackageArch(pkgid) == installedArch)
+            return pkgid;
+    }
     for (const QString &pkgid : m_updatesPackageId) {
         if (TransactionpackageName(pkgid) == name)
             return pkgid;
