@@ -20,9 +20,10 @@ class FlatpakTransactionThread : public QThread
 {
     Q_OBJECT
 public:
-    FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role);
+    FlatpakTransactionThread(FlatpakInstallation *installation);
     ~FlatpakTransactionThread() override;
 
+    void add(FlatpakResource *app, Transaction::Role role);
     void cancel();
     void run() override;
 
@@ -43,12 +44,17 @@ public:
         return m_addedRepositories;
     }
 
+    void setCurrentRef(const QByteArray &ref)
+    {
+        m_currentRef = ref;
+    }
+
 Q_SIGNALS:
-    void progressChanged(int progress);
-    void speedChanged(quint64 speed);
-    void passiveMessage(const QString &msg);
-    void webflowStarted(const QUrl &url, int id);
-    void webflowDone(int id);
+    void progressChanged(const QByteArray &currentRef, int progress);
+    void speedChanged(const QByteArray &currentRef, quint64 speed);
+    void passiveMessage(const QByteArray &currentRef, const QString &msg);
+    void webflowStarted(const QByteArray &currentRef, const QUrl &url, int id);
+    void webflowDone(const QByteArray &currentRef, int id);
 
 private:
     static gboolean
@@ -60,15 +66,14 @@ private:
     static gboolean webflowStart(FlatpakTransaction *transaction, const char *remote, const char *url, GVariant *options, guint id, gpointer user_data);
     static void webflowDoneCallback(FlatpakTransaction *transaction, GVariant *options, guint id, gpointer user_data);
 
+    QByteArray m_currentRef;
     FlatpakTransaction *m_transaction;
     bool m_result = false;
     int m_progress = 0;
     quint64 m_speed = 0;
     QString m_errorMessage;
     GCancellable *m_cancellable;
-    FlatpakResource *const m_app;
-    const Transaction::Role m_role;
-    QMap<QString, QStringList> m_addedRepositories;
 
+    QMap<QString, QStringList> m_addedRepositories;
     QVector<int> m_webflows;
 };

@@ -25,7 +25,7 @@ gboolean FlatpakTransactionThread::add_new_remote_cb(FlatpakTransaction *object,
     // TODO ask instead
     auto name = QString::fromUtf8(suggested_remote_name);
     obj->m_addedRepositories[FlatpakResource::installationPath(flatpak_transaction_get_installation(object))].append(name);
-    Q_EMIT obj->passiveMessage(i18n("Adding remote '%1' in %2 from %3", name, QString::fromUtf8(url), QString::fromUtf8(from_id)));
+    Q_EMIT obj->passiveMessage(obj->m_currentRef, i18n("Adding remote '%1' in %2 from %3", name, QString::fromUtf8(url), QString::fromUtf8(from_id)));
     return true;
 }
 
@@ -49,11 +49,12 @@ void FlatpakTransactionThread::progress_changed_cb(FlatpakTransactionProgress *p
 }
 
 void FlatpakTransactionThread::new_operation_cb(FlatpakTransaction * /*object*/,
-                                                FlatpakTransactionOperation * /*operation*/,
+                                                FlatpakTransactionOperation * operation,
                                                 FlatpakTransactionProgress *progress,
                                                 gpointer user_data)
 {
     FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
+    obj->setCurrentRef(flatpak_transaction_operation_get_ref(operation));
 
     g_signal_connect(progress, "changed", G_CALLBACK(&FlatpakTransactionThread::progress_changed_cb), obj);
     flatpak_transaction_progress_set_update_frequency(progress, FLATPAK_CLI_UPDATE_FREQUENCY);
@@ -75,7 +76,7 @@ FlatpakTransactionThread::webflowStart(FlatpakTransaction *transaction, const ch
     qDebug() << "starting web flow" << webflowUrl << remote << id;
     FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
     obj->m_webflows << id;
-    Q_EMIT obj->webflowStarted(webflowUrl, id);
+    Q_EMIT obj->webflowStarted(obj->m_currentRef, webflowUrl, id);
     return true;
 }
 
@@ -85,20 +86,18 @@ void FlatpakTransactionThread::webflowDoneCallback(FlatpakTransaction *transacti
     Q_UNUSED(options);
     FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
     obj->m_webflows << id;
-    Q_EMIT obj->webflowDone(id);
+    Q_EMIT obj->webflowDone(obj->m_currentRef, id);
     qDebug() << "webflow done" << id;
 }
 
-FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role)
+FlatpakTransactionThread::FlatpakTransactionThread(FlatpakInstallation *installation)
     : QThread()
     , m_result(false)
-    , m_app(app)
-    , m_role(role)
 {
     m_cancellable = g_cancellable_new();
 
     g_autoptr(GError) localError = nullptr;
-    m_transaction = flatpak_transaction_new_for_installation(app->installation(), m_cancellable, &localError);
+    m_transaction = flatpak_transaction_new_for_installation(installation, m_cancellable, &localError);
     if (localError) {
         addErrorMessage(QString::fromUtf8(localError->message));
         qWarning() << "Failed to create transaction" << m_errorMessage;
@@ -114,25 +113,9 @@ FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transac
     }
 }
 
-FlatpakTransactionThread::~FlatpakTransactionThread()
+void FlatpakTransactionThread::add(FlatpakResource *m_app, Transaction::Role m_role)
 {
-    g_object_unref(m_transaction);
-    g_object_unref(m_cancellable);
-}
-
-void FlatpakTransactionThread::cancel()
-{
-    for (int id : std::as_const(m_webflows))
-        flatpak_transaction_abort_webflow(m_transaction, id);
-    g_cancellable_cancel(m_cancellable);
-}
-
-void FlatpakTransactionThread::run()
-{
-    if (!m_transaction)
-        return;
     g_autoptr(GError) localError = nullptr;
-
     const QString refName = m_app->ref();
 
     if (m_role == Transaction::Role::InstallRole) {
@@ -182,14 +165,28 @@ void FlatpakTransactionThread::run()
             return;
         }
     }
+}
 
+FlatpakTransactionThread::~FlatpakTransactionThread()
+{
+    g_object_unref(m_transaction);
+    g_object_unref(m_cancellable);
+}
+
+void FlatpakTransactionThread::cancel()
+{
+    g_cancellable_cancel(m_cancellable);
+}
+
+void FlatpakTransactionThread::run()
+{
+    if (!m_transaction)
+        return;
+
+    g_autoptr(GError) localError = nullptr;
     m_result = flatpak_transaction_run(m_transaction, m_cancellable, &localError);
     if (!m_result) {
-        if (localError->code == FLATPAK_ERROR_REF_NOT_FOUND) {
-            m_errorMessage = i18n("Could not find '%1' in '%2'; please make sure it's available.", refName, m_app->origin());
-        } else {
-            m_errorMessage = QString::fromUtf8(localError->message);
-        }
+        m_errorMessage = QString::fromUtf8(localError->message);
 #if defined(FLATPAK_LIST_UNUSED_REFS)
     } else {
         const auto installation = flatpak_transaction_get_installation(m_transaction);
@@ -203,7 +200,7 @@ void FlatpakTransactionThread::run()
                 g_autofree gchar *strRef = flatpak_ref_format_ref(ref);
                 qDebug() << "unused ref:" << strRef;
                 if (!flatpak_transaction_add_uninstall(transaction, strRef, &localError)) {
-                    qDebug() << "failed to uninstall unused ref" << refName << localError->message;
+                    qDebug() << "failed to uninstall unused ref" << strRef << localError->message;
                     break;
                 }
             }
@@ -222,7 +219,7 @@ void FlatpakTransactionThread::setProgress(int progress)
     Q_ASSERT(qBound(0, progress, 100) == progress);
     if (m_progress != progress) {
         m_progress = progress;
-        Q_EMIT progressChanged(m_progress);
+        Q_EMIT progressChanged(m_currentRef, m_progress);
     }
 }
 
@@ -230,7 +227,7 @@ void FlatpakTransactionThread::setSpeed(quint64 speed)
 {
     if (m_speed != speed) {
         m_speed = speed;
-        Q_EMIT speedChanged(m_speed);
+        Q_EMIT speedChanged(m_currentRef, m_speed);
     }
 }
 
