@@ -1581,6 +1581,7 @@ Transaction *FlatpakBackend::installApplication(AbstractResource *app, const Add
     }
 
     FlatpakJobTransaction *transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole);
+    connect(transaction, &FlatpakJobTransaction::repositoriesAdded, m_sources, &FlatpakSourcesBackend::checkRepositories);
     connect(transaction, &FlatpakJobTransaction::statusChanged, this, [this, resource](Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
             updateAppState(resource);
