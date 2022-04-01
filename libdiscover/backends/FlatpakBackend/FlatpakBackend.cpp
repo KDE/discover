@@ -141,6 +141,24 @@ public:
         return m_remote;
     }
 
+    QList<AppStream::Component> componentsByName(const QString &name)
+    {
+        QList<AppStream::Component> comps;
+        auto findComponents = [&](const QString &name) {
+            comps = m_pool->componentsById(name);
+            if (!comps.isEmpty())
+                return;
+
+            comps = m_pool->componentsByProvided(AppStream::Provided::KindId, name);
+        };
+
+        findComponents(name);
+        if (comps.isEmpty()) {
+            findComponents(name + QLatin1String(".desktop"));
+        }
+        return comps;
+    }
+
     AppStream::Pool *m_pool = nullptr;
     QHash<FlatpakResource::Id, FlatpakResource *> m_resources;
 
@@ -408,11 +426,7 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
     const QString pathApps = pathExports + QLatin1String("share/applications/");
     AppStream::Component cid;
     if (source && source->m_pool) {
-        QList<AppStream::Component> comps = source->m_pool->componentsById(name);
-        if (comps.isEmpty()) {
-            comps = source->m_pool->componentsByProvided(AppStream::Provided::KindId, name);
-        }
-
+        QList<AppStream::Component> comps = source->componentsByName(name);
         if (comps.isEmpty()) {
             const QString bundleId = refToBundleId(FLATPAK_REF(ref));
             comps = kFilter<QList<AppStream::Component>>(comps, [&bundleId](const AppStream::Component &comp) -> bool {
@@ -725,10 +739,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
         auto source = integrateRemote(preferredInstallation(), remote);
         if (source) {
             auto searchComponent = [this, stream, source, name] {
-                auto comps = source->m_pool->componentsById(name);
-                if (comps.isEmpty()) {
-                    comps = source->m_pool->componentsByProvided(AppStream::Provided::KindId, name);
-                }
+                auto comps = source->componentsByName(name);
                 auto resources = kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
                     return resourceForComponent(comp, source);
                 });
@@ -1491,10 +1502,7 @@ QVector<AbstractResource *> FlatpakBackend::resourcesByAppstreamName(const QStri
     QVector<AbstractResource *> resources;
     for (const auto &source : m_flatpakSources) {
         if (source->m_pool) {
-            auto comps = source->m_pool->componentsById(name);
-            if (comps.isEmpty()) {
-                comps = source->m_pool->componentsByProvided(AppStream::Provided::KindId, name);
-            }
+            auto comps = source->componentsByName(name);
             resources << kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
                 return resourceForComponent(comp, source);
             });
@@ -1654,7 +1662,7 @@ HelpfulError *FlatpakBackend::explainDysfunction() const
         return new HelpfulError(QStringLiteral("emblem-error"), i18n("There are no Flatpak sources."), m_sources->actions());
     }
     for (const auto &source : m_flatpakSources) {
-        if (!source->m_pool->lastError().isEmpty()) {
+        if (source->m_pool && !source->m_pool->lastError().isEmpty()) {
             return new HelpfulError(QStringLiteral("emblem-error"), i18n("Failed to load \"%1\" source", source->name()));
         }
     }
