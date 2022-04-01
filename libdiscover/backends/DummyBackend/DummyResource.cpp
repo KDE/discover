@@ -90,6 +90,11 @@ QUrl DummyResource::donationURL()
     return QUrl(QStringLiteral("https://youtu.be/0o8XMlL8rqY"));
 }
 
+QUrl DummyResource::contributeURL()
+{
+    return QUrl(QStringLiteral("https://techbase.kde.org/Contribute"));
+}
+
 QVariant DummyResource::icon() const
 {
     static const QVector<QVariant> icons = {QStringLiteral("device-notifier"), QStringLiteral("media-floppy"), QStringLiteral("drink-beer")};

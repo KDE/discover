@@ -46,6 +46,11 @@ QUrl AbstractResource::donationURL()
     return QUrl();
 }
 
+QUrl AbstractResource::contributeURL()
+{
+    return {};
+}
+
 void AbstractResource::addMetadata(const QString &key, const QJsonValue &value)
 {
     m_metadata.insert(key, value);

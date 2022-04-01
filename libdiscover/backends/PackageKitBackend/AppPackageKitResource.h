@@ -28,6 +28,7 @@ public:
     QUrl helpURL() override;
     QUrl bugURL() override;
     QUrl donationURL() override;
+    QUrl contributeURL() override;
     QString comment() override;
     QJsonArray licenses() override;
     QStringList allPackageNames() const override;

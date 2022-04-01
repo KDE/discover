@@ -47,6 +47,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QUrl helpURL READ helpURL CONSTANT)
     Q_PROPERTY(QUrl bugURL READ bugURL CONSTANT)
     Q_PROPERTY(QUrl donationURL READ donationURL CONSTANT)
+    Q_PROPERTY(QUrl contributeURL READ contributeURL CONSTANT)
     Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY stateChanged)
     Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY stateChanged)
     Q_PROPERTY(QJsonArray licenses READ licenses NOTIFY licensesChanged)
@@ -131,6 +132,8 @@ public:
     virtual QUrl bugURL();
     ///@returns a URL that points to the place where you can donate money to the app developer
     virtual QUrl donationURL();
+    ///@returns a URL that points to the place where you can contribute to develop the app
+    virtual QUrl contributeURL();
 
     enum Type {
         Application,

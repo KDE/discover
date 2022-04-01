@@ -111,6 +111,7 @@ public:
     QUrl helpURL() override;
     QUrl bugURL() override;
     QUrl donationURL() override;
+    QUrl contributeURL() override;
     FlatpakFileType flatpakFileType() const;
     QString flatpakName() const;
     QJsonArray licenses() override;

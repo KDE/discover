@@ -148,6 +148,11 @@ QUrl AppPackageKitResource::donationURL()
     return m_appdata.url(AppStream::Component::UrlKindDonation);
 }
 
+QUrl AppPackageKitResource::contributeURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindContribute);
+}
+
 AbstractResource::Type AppPackageKitResource::type() const
 {
     static QString desktop = QString::fromUtf8(qgetenv("XDG_CURRENT_DESKTOP"));

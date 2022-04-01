@@ -622,9 +622,11 @@ DiscoverPage {
 
                 readonly property int visibleButtons: (donateButton.visible ? 1 : 0)
                                                     + (bugButton.visible ? 1: 0)
+                                                    + (contributeButton.visible ? 1: 0)
                 readonly property int buttonWidth: Math.round(textualContentLayout.width / visibleButtons)
                 readonly property int tallestButtonHeight: Math.max(donateButton.implicitHeight,
-                                                                    bugButton.implicitHeight)
+                                                                    bugButton.implicitHeight,
+                                                                    contributeButton.implicitHeight)
 
                 Layout.fillWidth: true
                 Layout.bottomMargin: appInfo.internalSpacings * 2
@@ -664,6 +666,21 @@ DiscoverPage {
                     tooltipText: application.bugURL
 
                     onClicked: Qt.openUrlExternally(application.bugURL);
+                }
+
+                ApplicationResourceButton {
+                    id: contributeButton
+
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: getInvolvedLayout.buttonWidth
+                    Layout.minimumHeight: getInvolvedLayout.tallestButtonHeight
+
+                    visible: application.contributeURL != ""
+                    title: i18n("Contribute")
+                    subtitle: i18n("Help the developers by coding, designing, testing, or translating")
+                    tooltipText: application.contributeURL
+                    buttonIcon: "project-development"
+                    onClicked: Qt.openUrlExternally(application.contributeURL);
                 }
             }
 
