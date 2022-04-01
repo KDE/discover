@@ -18,6 +18,8 @@
 
 class AddonList;
 class FlatpakBackend;
+class FlatpakSource;
+
 class FlatpakResource : public AbstractResource
 {
     Q_OBJECT
@@ -168,6 +170,15 @@ public:
         m_availableVersion = version;
     }
 
+    void setTemporarySource(const QSharedPointer<FlatpakSource> &temp)
+    {
+        m_temp = temp;
+    }
+    QSharedPointer<FlatpakSource> temporarySource() const
+    {
+        return m_temp;
+    }
+
 Q_SIGNALS:
     void propertyStateChanged(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state);
 
@@ -193,6 +204,7 @@ private:
     QString m_origin;
     QString m_availableVersion;
     FlatpakResource::ResourceType m_type = DesktopApp;
+    QSharedPointer<FlatpakSource> m_temp;
     static const QStringList m_objects;
 };
 

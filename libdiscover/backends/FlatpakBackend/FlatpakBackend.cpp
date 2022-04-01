@@ -169,6 +169,25 @@ private:
     const QString m_appstreamIconsDir;
 };
 
+static void populateRemote(FlatpakRemote *remote, const QString &name, const QString &url, const QString &gpgKey)
+{
+    flatpak_remote_set_url(remote, url.toUtf8().constData());
+    flatpak_remote_set_noenumerate(remote, false);
+    flatpak_remote_set_title(remote, name.toUtf8().constData());
+
+    if (!gpgKey.isEmpty()) {
+        gsize dataLen = 0;
+        g_autofree guchar *data = nullptr;
+        g_autoptr(GBytes) bytes = nullptr;
+        data = g_base64_decode(gpgKey.toUtf8().constData(), &dataLen);
+        bytes = g_bytes_new(data, dataLen);
+        flatpak_remote_set_gpg_verify(remote, true);
+        flatpak_remote_set_gpg_key(remote, bytes);
+    } else {
+        flatpak_remote_set_gpg_verify(remote, false);
+    }
+}
+
 QDebug operator<<(QDebug debug, const FlatpakResource::Id &id)
 {
     QDebugStateSaver saver(debug);
@@ -252,9 +271,9 @@ FlatpakBackend::FlatpakBackend(QObject *parent)
     if (!setupFlatpakInstallations(&error)) {
         qWarning() << "Failed to setup flatpak installations:" << error->message;
     } else {
+        m_sources = new FlatpakSourcesBackend(m_installations, this);
         loadAppsFromAppstreamData();
 
-        m_sources = new FlatpakSourcesBackend(m_installations, this);
         SourcesModel::global()->addSourcesBackend(m_sources);
     }
 
@@ -650,7 +669,7 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
     // There we will fetch the appstream metadata and then delete that temporary installation.
 
     g_autoptr(GError) localError = nullptr;
-    const QString path = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-temporary") + remoteName;
+    const QString path = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-temporary-") + remoteName;
     qDebug() << "Creating temporary installation" << path;
     g_autoptr(GFile) file = g_file_new_for_path(QFile::encodeName(path).constData());
     g_autoptr(FlatpakInstallation) tempInstallation = flatpak_installation_new_for_path(file, true, cancellable, &localError);
@@ -662,10 +681,10 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
     });
 
     g_autoptr(FlatpakRemote) tempRemote = flatpak_remote_new(remoteName.toUtf8());
-    FlatpakSourcesBackend::populateRemote(tempRemote,
-                                          remoteName,
-                                          settings.value(QStringLiteral("Flatpak Ref/Url")).toString(),
-                                          settings.value(QStringLiteral("Flatpak Ref/GPGKey")).toString().toUtf8());
+    populateRemote(tempRemote,
+                   remoteName,
+                   settings.value(QStringLiteral("Flatpak Ref/Url")).toString(),
+                   settings.value(QStringLiteral("Flatpak Ref/GPGKey")).toString().toUtf8());
     if (!flatpak_installation_modify_remote(tempInstallation, tempRemote, cancellable, &localError)) {
         qDebug() << "error adding temporary remote" << localError->message;
         return {asComponent};
@@ -775,6 +794,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
 
     QUrl runtimeUrl = QUrl(settings.value(QStringLiteral("Flatpak Ref/RuntimeRepo")).toString());
     auto refSource = QSharedPointer<FlatpakSource>::create(this, preferredInstallation());
+    resource->setTemporarySource(refSource);
     m_flatpakSources += refSource;
     if (!runtimeUrl.isEmpty()) {
         // We need to fetch metadata to find information about required runtime
@@ -911,14 +931,14 @@ void FlatpakBackend::loadRemote(FlatpakInstallation *installation, FlatpakRemote
 {
     g_autoptr(GFile) fileTimestamp = flatpak_remote_get_appstream_timestamp(remote, flatpak_get_default_arch());
 
+    m_refreshAppstreamMetadataJobs++;
+    integrateRemote(installation, remote);
+
     g_autofree char *path_str = g_file_get_path(fileTimestamp);
     QFileInfo fileInfo(QFile::encodeName(path_str));
     // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
     if (!fileInfo.exists() || fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
         checkForUpdates(installation, remote);
-    } else {
-        m_refreshAppstreamMetadataJobs++;
-        integrateRemote(installation, remote);
     }
 }
 
@@ -950,34 +970,17 @@ void FlatpakBackend::metadataRefreshed()
     }
 }
 
-QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)
+void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
 {
-    Q_ASSERT(m_refreshAppstreamMetadataJobs != 0);
-    for (auto source : qAsConst(m_flatpakSources)) {
-        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
-            metadataRefreshed();
-            return source;
-        }
-    }
-    for (auto source : qAsConst(m_flatpakLoadingSources)) {
-        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
-            metadataRefreshed();
-            return source;
-        }
-    }
-
-    auto source = QSharedPointer<FlatpakSource>::create(this, flatpakInstallation, remote);
-    if (!source->isEnabled() || flatpak_remote_get_noenumerate(remote)) {
-        m_flatpakSources += source;
-        metadataRefreshed();
-        return {};
+    if (source->m_pool) {
+        return;
     }
 
     const QString appstreamDirPath = source->appstreamDir();
     if (!QFile::exists(appstreamDirPath)) {
         qWarning() << "No" << appstreamDirPath << "appstream metadata found for" << source->name();
         metadataRefreshed();
-        return {};
+        return;
     }
 
     AppStream::Pool *pool = new AppStream::Pool(this);
@@ -1006,12 +1009,41 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
     pool->setFlags(AppStream::Pool::FlagReadCollection);
     pool->setCacheFlags(AppStream::Pool::CacheFlagUseUser);
 
-    const QString subdir = flatpak_installation_get_id(flatpakInstallation) + QLatin1Char('/') + sourceName;
+    const QString subdir = flatpak_installation_get_id(source->installation()) + QLatin1Char('/') + sourceName;
     pool->setCacheLocation(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/flatpak-appstream/" + subdir);
     QDir().mkpath(pool->cacheLocation());
 #endif
 
     fw->setFuture(QtConcurrent::run(&m_threadPool, pool, &AppStream::Pool::load));
+}
+
+QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)
+{
+    m_sources->addRemote(remote, flatpakInstallation);
+    Q_ASSERT(m_refreshAppstreamMetadataJobs != 0);
+    for (auto source : qAsConst(m_flatpakSources)) {
+        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
+            metadataRefreshed();
+            createPool(source);
+            return source;
+        }
+    }
+    for (auto source : qAsConst(m_flatpakLoadingSources)) {
+        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
+            metadataRefreshed();
+            createPool(source);
+            return source;
+        }
+    }
+
+    auto source = QSharedPointer<FlatpakSource>::create(this, flatpakInstallation, remote);
+    if (!source->isEnabled() || flatpak_remote_get_noenumerate(remote)) {
+        m_flatpakSources += source;
+        metadataRefreshed();
+        return {};
+    }
+
+    createPool(source);
     m_flatpakLoadingSources << source;
     return source;
 }
@@ -1019,9 +1051,9 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
 void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
 {
     g_autoptr(GError) localError = nullptr;
-    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(flatpakInstallation, m_cancellable, &localError);
+    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(flatpakInstallation, m_cancellable, &localError);
     if (!refs) {
-        qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
+        qWarning() << "Failed to get list of installed refs for listing local updates:" << localError->message;
         return;
     }
 
@@ -1567,6 +1599,59 @@ AbstractReviewsBackend *FlatpakBackend::reviewsBackend() const
     return m_reviews.data();
 }
 
+void FlatpakBackend::checkRepositories(const QMap<QString, QStringList> &names)
+{
+    auto flatpakInstallationByPath = [this](const QString &path) -> FlatpakInstallation * {
+        for (auto inst : m_installations) {
+            if (FlatpakResource::installationPath(inst) == path)
+                return inst;
+        }
+        return nullptr;
+    };
+
+    g_autoptr(GError) localError = nullptr;
+    for (auto it = names.begin(), itEnd = names.end(); it != itEnd; ++it) {
+        FlatpakInstallation *installation = flatpakInstallationByPath(it.key());
+        for (const QString &name : qAsConst(*it)) {
+            auto remote = flatpak_installation_get_remote_by_name(installation, name.toUtf8(), m_cancellable, &localError);
+            if (!remote) {
+                qWarning() << "Could not find remote" << name << "in" << it.key();
+                continue;
+            }
+            m_refreshAppstreamMetadataJobs++;
+            loadRemote(installation, remote);
+        }
+    }
+}
+
+FlatpakRemote *FlatpakBackend::installSource(FlatpakResource *resource)
+{
+    g_autoptr(GCancellable) cancellable = g_cancellable_new();
+
+    auto remote = flatpak_installation_get_remote_by_name(preferredInstallation(), resource->flatpakName().toUtf8().constData(), cancellable, nullptr);
+    if (remote) {
+        qWarning() << "Source " << resource->flatpakName() << " already exists in" << flatpak_installation_get_path(preferredInstallation());
+        return nullptr;
+    }
+
+    remote = flatpak_remote_new(resource->flatpakName().toUtf8().constData());
+    populateRemote(remote,
+                   resource->comment(),
+                   resource->getMetadata(QStringLiteral("repo-url")).toString(),
+                   resource->getMetadata(QStringLiteral("gpg-key")).toString());
+    if (!resource->branch().isEmpty()) {
+        flatpak_remote_set_default_branch(remote, resource->branch().toUtf8().constData());
+    }
+
+    g_autoptr(GError) error = nullptr;
+    if (!flatpak_installation_add_remote(preferredInstallation(), remote, false, cancellable, &error)) {
+        Q_EMIT passiveMessage(i18n("Failed to add source '%1': %2", resource->flatpakName(), error->message));
+        qWarning() << "Failed to add source " << resource->flatpakName() << error->message;
+        return nullptr;
+    }
+    return remote;
+}
+
 Transaction *FlatpakBackend::installApplication(AbstractResource *app, const AddonList &addons)
 {
     Q_UNUSED(addons);
@@ -1575,22 +1660,32 @@ Transaction *FlatpakBackend::installApplication(AbstractResource *app, const Add
 
     if (resource->resourceType() == FlatpakResource::Source) {
         // Let source backend handle this
-        FlatpakRemote *remote = m_sources->installSource(resource);
+        FlatpakRemote *remote = installSource(resource);
         if (remote) {
             resource->setState(AbstractResource::Installed);
-            // Make sure we update appstream metadata first
-            // FIXME we have to let flatpak to return the remote as the one created by FlatpakSourcesBackend will not have appstream directory
-            g_autoptr(FlatpakRemote) repo =
-                flatpak_installation_get_remote_by_name(resource->installation(), flatpak_remote_get_name(remote), m_cancellable, nullptr);
-            loadRemote(resource->installation(), repo);
+            auto name = flatpak_remote_get_name(remote);
+            g_autoptr(FlatpakRemote) remote = flatpak_installation_get_remote_by_name(resource->installation(), name, m_cancellable, nullptr);
+            loadRemote(resource->installation(), remote);
         }
         return nullptr;
     }
 
     FlatpakJobTransaction *transaction = new FlatpakJobTransaction(resource, Transaction::InstallRole);
-    connect(transaction, &FlatpakJobTransaction::repositoriesAdded, m_sources, &FlatpakSourcesBackend::checkRepositories);
+    connect(transaction, &FlatpakJobTransaction::repositoriesAdded, this, &FlatpakBackend::checkRepositories);
     connect(transaction, &FlatpakJobTransaction::statusChanged, this, [this, resource](Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
+            if (auto tempSource = resource->temporarySource()) {
+                auto source = findSource(resource->installation(), resource->origin());
+                resource->setTemporarySource({});
+                const auto id = resource->uniqueId();
+                source->m_resources.insert(id, resource);
+
+                tempSource->m_resources.remove(id);
+                if (tempSource->m_resources.isEmpty()) {
+                    const bool removed = m_flatpakSources.removeAll(tempSource) || m_flatpakLoadingSources.removeAll(tempSource);
+                    Q_ASSERT(removed);
+                }
+            }
             updateAppState(resource);
         }
     });
@@ -1615,8 +1710,7 @@ Transaction *FlatpakBackend::removeApplication(AbstractResource *app)
     }
 
     FlatpakJobTransaction *transaction = new FlatpakJobTransaction(resource, Transaction::RemoveRole);
-    connect(transaction, &FlatpakJobTransaction::repositoriesAdded, m_sources, &FlatpakSourcesBackend::checkRepositories);
-
+    connect(transaction, &FlatpakJobTransaction::repositoriesAdded, this, &FlatpakBackend::checkRepositories);
     connect(transaction, &FlatpakJobTransaction::statusChanged, this, [this, resource](Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
             updateAppSize(resource);
@@ -1628,12 +1722,15 @@ Transaction *FlatpakBackend::removeApplication(AbstractResource *app)
 void FlatpakBackend::checkForUpdates()
 {
     for (auto source : qAsConst(m_flatpakSources)) {
-        checkForUpdates(source->installation(), source->remote());
+        if (source->remote()) {
+            checkForUpdates(source->installation(), source->remote());
+        }
     }
 }
 
 void FlatpakBackend::checkForUpdates(FlatpakInstallation *installation, FlatpakRemote *remote)
 {
+    Q_ASSERT(remote);
     m_refreshAppstreamMetadataJobs++;
     if (flatpak_remote_get_disabled(remote)) {
         integrateRemote(installation, remote);

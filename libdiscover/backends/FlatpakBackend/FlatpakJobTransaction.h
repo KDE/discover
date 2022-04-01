@@ -32,7 +32,7 @@ public Q_SLOTS:
     void start();
 
 Q_SIGNALS:
-    void repositoriesAdded(const QStringList &repositoryNames);
+    void repositoriesAdded(const QMap<QString, QStringList> &repositoryNames);
 
 private:
     void updateProgress();

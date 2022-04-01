@@ -11,6 +11,8 @@
 #include <gio/gio.h>
 #include <glib.h>
 
+#include <QMap>
+#include <QStringList>
 #include <QThread>
 #include <Transaction/Transaction.h>
 
@@ -40,7 +42,7 @@ public:
     }
 
     void addErrorMessage(const QString &error);
-    QStringList addedRepositories() const
+    QMap<QString, QStringList> addedRepositories() const
     {
         return m_addedRepositories;
     }
@@ -63,7 +65,7 @@ private:
     GCancellable *m_cancellable;
     FlatpakResource *const m_app;
     const Transaction::Role m_role;
-    QStringList m_addedRepositories;
+    QMap<QString, QStringList> m_addedRepositories;
 };
 
 #endif // FLATPAKTRANSACTIONJOB_H
