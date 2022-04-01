@@ -49,7 +49,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QUrl donationURL READ donationURL CONSTANT)
     Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY stateChanged)
     Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY stateChanged)
-    Q_PROPERTY(QJsonArray licenses READ licenses CONSTANT)
+    Q_PROPERTY(QJsonArray licenses READ licenses NOTIFY licensesChanged)
     Q_PROPERTY(QString longDescription READ longDescription NOTIFY longDescriptionChanged)
     Q_PROPERTY(QString origin READ origin CONSTANT)
     Q_PROPERTY(QString displayOrigin READ displayOrigin CONSTANT)
@@ -239,6 +239,7 @@ Q_SIGNALS:
     void iconChanged();
     void sizeChanged();
     void stateChanged();
+    void licensesChanged();
     void ratingFetched();
     void longDescriptionChanged();
     void versionsChanged();
