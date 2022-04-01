@@ -200,6 +200,8 @@ void PackageKitResource::setDetails(const PackageKit::Details &details)
     if (m_details != details) {
         const auto oldState = state();
         const auto oldSize = m_details.size();
+        const auto oldLicense = m_details.license();
+        const auto oldDescription = m_details.description();
         m_details = details;
 
         if (oldState != state())
@@ -210,6 +212,14 @@ void PackageKitResource::setDetails(const PackageKit::Details &details)
 
         if (oldSize != uint(size())) {
             Q_EMIT sizeChanged();
+        }
+
+        if (oldLicense != m_details.license()) {
+            Q_EMIT licensesChanged();
+        }
+
+        if (oldDescription != m_details.description()) {
+            Q_EMIT longDescriptionChanged();
         }
     }
 }
