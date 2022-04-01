@@ -12,7 +12,7 @@
 
 static int FLATPAK_CLI_UPDATE_FREQUENCY = 150;
 
-gboolean FlatpakTransactionThread::add_new_remote_cb(FlatpakTransaction * /*object*/,
+gboolean FlatpakTransactionThread::add_new_remote_cb(FlatpakTransaction *object,
                                                      gint /*reason*/,
                                                      gchar *from_id,
                                                      gchar *suggested_remote_name,
@@ -22,9 +22,9 @@ gboolean FlatpakTransactionThread::add_new_remote_cb(FlatpakTransaction * /*obje
     FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
 
     // TODO ask instead
-    obj->m_addedRepositories << QString::fromUtf8(suggested_remote_name);
-    Q_EMIT obj->passiveMessage(
-        i18n("Adding remote '%1' in %2 from %3", obj->m_addedRepositories.constLast(), QString::fromUtf8(url), QString::fromUtf8(from_id)));
+    auto name = QString::fromUtf8(suggested_remote_name);
+    obj->m_addedRepositories[FlatpakResource::installationPath(flatpak_transaction_get_installation(object))].append(name);
+    Q_EMIT obj->passiveMessage(i18n("Adding remote '%1' in %2 from %3", name, QString::fromUtf8(url), QString::fromUtf8(from_id)));
     return true;
 }
 

@@ -105,6 +105,7 @@ private:
     FlatpakRemote *getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
     FlatpakResource *getRuntimeForApp(FlatpakResource *resource) const;
     FlatpakResource *resourceForComponent(const AppStream::Component &component, const QSharedPointer<FlatpakSource> &source) const;
+    void checkRepositories(const QMap<QString, QStringList> &names);
 
     void loadAppsFromAppstreamData();
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);
@@ -122,6 +123,8 @@ private:
     QVector<AbstractResource *> resourcesByAppstreamName(const QString &name) const;
     void acquireFetching(bool f);
     void checkForUpdates(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
+    void createPool(QSharedPointer<FlatpakSource> source);
+    FlatpakRemote *installSource(FlatpakResource *resource);
 
     StandardBackendUpdater *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;

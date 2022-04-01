@@ -88,11 +88,6 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
     connect(m_flathubAction, &DiscoverAction::triggered, this, [this]() {
         addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
     });
-    for (auto installation : installations) {
-        if (!listRepositories(installation)) {
-            qWarning() << "Failed to list repositories from installation" << installation;
-        }
-    }
 
     m_noSourcesItem->setEnabled(false);
     if (m_sources->rowCount() == 0) {
@@ -283,81 +278,11 @@ QVariantList FlatpakSourcesBackend::actions() const
     return {QVariant::fromValue<QObject *>(m_flathubAction)};
 }
 
-bool FlatpakSourcesBackend::listRepositories(FlatpakInstallation *installation)
-{
-    Q_ASSERT(installation);
-
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
-    g_autoptr(GPtrArray) remotes = flatpak_installation_list_remotes(installation, cancellable, nullptr);
-
-    if (!remotes) {
-        return false;
-    }
-
-    for (uint i = 0; i < remotes->len; i++) {
-        FlatpakRemote *remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
-
-        if (flatpak_remote_get_noenumerate(remote)) {
-            continue;
-        }
-
-        addRemote(remote, installation);
-    }
-
-    return true;
-}
-
-void FlatpakSourcesBackend::populateRemote(FlatpakRemote *remote, const QString &name, const QString &url, const QString &gpgKey)
-{
-    flatpak_remote_set_url(remote, url.toUtf8().constData());
-    flatpak_remote_set_noenumerate(remote, false);
-    flatpak_remote_set_title(remote, name.toUtf8().constData());
-
-    if (!gpgKey.isEmpty()) {
-        gsize dataLen = 0;
-        g_autofree guchar *data = nullptr;
-        g_autoptr(GBytes) bytes = nullptr;
-        data = g_base64_decode(gpgKey.toUtf8().constData(), &dataLen);
-        bytes = g_bytes_new(data, dataLen);
-        flatpak_remote_set_gpg_verify(remote, true);
-        flatpak_remote_set_gpg_key(remote, bytes);
-    } else {
-        flatpak_remote_set_gpg_verify(remote, false);
-    }
-}
-
-FlatpakRemote *FlatpakSourcesBackend::installSource(FlatpakResource *resource)
-{
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
-
-    auto remote = flatpak_installation_get_remote_by_name(m_preferredInstallation, resource->flatpakName().toUtf8().constData(), cancellable, nullptr);
-    if (remote) {
-        qWarning() << "Source " << resource->flatpakName() << " already exists in" << flatpak_installation_get_path(m_preferredInstallation);
-        return nullptr;
-    }
-
-    remote = flatpak_remote_new(resource->flatpakName().toUtf8().constData());
-    populateRemote(remote,
-                   resource->comment(),
-                   resource->getMetadata(QStringLiteral("repo-url")).toString(),
-                   resource->getMetadata(QStringLiteral("gpg-key")).toString());
-    if (!resource->branch().isEmpty()) {
-        flatpak_remote_set_default_branch(remote, resource->branch().toUtf8().constData());
-    }
-
-    g_autoptr(GError) error = nullptr;
-    if (!flatpak_installation_modify_remote(m_preferredInstallation, remote, cancellable, &error)) {
-        qWarning() << "Failed to add source " << resource->flatpakName() << error->message;
-        return nullptr;
-    }
-
-    addRemote(remote, m_preferredInstallation);
-
-    return remote;
-}
-
 void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation *installation)
 {
+    if (flatpak_remote_get_noenumerate(remote)) {
+        return;
+    }
     const QString id = QString::fromUtf8(flatpak_remote_get_name(remote));
     const QString title = QString::fromUtf8(flatpak_remote_get_title(remote));
     const QUrl remoteUrl(QString::fromUtf8(flatpak_remote_get_url(remote)));
@@ -374,6 +299,14 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     QString label = !title.isEmpty() ? title : id;
     if (flatpak_installation_get_is_user(installation)) {
         label = i18n("%1 (user)", label);
+    }
+
+    for (int i = 0, c = m_sources->rowCount(); i < c; ++i) {
+        FlatpakSourceItem *item = static_cast<FlatpakSourceItem *>(m_sources->item(i));
+        if (item->data(Qt::StatusTipRole) == remoteUrl && item->flatpakInstallation() == installation) {
+            qDebug() << "we already have an item for this" << remoteUrl;
+            return;
+        }
     }
 
     FlatpakBackend *backend = qobject_cast<FlatpakBackend *>(parent());
@@ -456,20 +389,4 @@ void FlatpakSourcesBackend::cancel()
 void FlatpakSourcesBackend::proceed()
 {
     m_proceedFunctions.pop()();
-}
-
-void FlatpakSourcesBackend::checkRepositories(const QStringList &repoNames)
-{
-    FlatpakBackend *backend = qobject_cast<FlatpakBackend *>(parent());
-    const auto insts = backend->installations();
-    for (const QString &repoName : repoNames) {
-        const QByteArray name = repoName.toUtf8();
-        for (auto installation : insts) {
-            g_autoptr(GError) error = nullptr;
-            auto remote = flatpak_installation_get_remote_by_name(installation, name, nullptr, &error);
-            if (remote) {
-                addRemote(remote, installation);
-            }
-        }
-    }
 }

@@ -56,13 +56,9 @@ public:
     void cancel() override;
     void proceed() override;
 
-    static void populateRemote(FlatpakRemote *remote, const QString &name, const QString &url, const QString &gpgkey);
-    void checkRepositories(const QStringList &repoNames);
-
-private:
-    bool listRepositories(FlatpakInstallation *installation);
     void addRemote(FlatpakRemote *remote, FlatpakInstallation *installation);
 
+private:
     FlatpakInstallation *m_preferredInstallation;
     QStandardItemModel *m_sources;
     DiscoverAction *const m_flathubAction;
