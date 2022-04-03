@@ -373,7 +373,7 @@ DiscoverPage {
                                     onClicked: properietarySoftwareRiskExplanationSheet.open();
 
                                     ToolTip {
-                                        text: i18n("What's the risk?")
+                                        text: i18n("What does this mean?")
                                     }
                                 }
                             }
