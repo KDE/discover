@@ -362,13 +362,7 @@ DiscoverPage {
 
                                     // Button to open "What's the risk of proprietary software?" sheet
                                     ToolButton {
-                                        readonly property bool hasProprietaryLicense: {
-                                            const match = appInfo.application.licenses.find(element => {
-                                                return !element.hasFreedom;
-                                            });
-                                            return match;
-                                        }
-                                        visible: hasProprietaryLicense
+                                        visible: !modelData.hasFreedom
                                         icon.name: "help-contextual"
                                         onClicked: properietarySoftwareRiskExplanationSheet.open();
 
