@@ -231,7 +231,10 @@ QString FlatpakResource::installedVersion() const
     }
 
     if (auto ref = qobject_cast<FlatpakBackend *>(backend())->getInstalledRefForApp(this)) {
-        return i18nc("version (branch)", "%1 (%2)", flatpak_installed_ref_get_appdata_version(ref), version);
+        const char *appdataVersion = flatpak_installed_ref_get_appdata_version(ref);
+        if (appdataVersion) {
+            return i18nc("version (branch)", "%1 (%2)", appdataVersion, version);
+        }
     }
     return version;
 }
