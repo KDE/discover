@@ -205,7 +205,6 @@ FlatpakBackend::FlatpakBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(AppStreamIntegration::global()->reviews())
-    , m_refreshAppstreamMetadataJobs(0)
     , m_cancellable(g_cancellable_new())
     , m_threadPool(new QThreadPool(this))
 {
@@ -451,6 +450,7 @@ QSharedPointer<FlatpakSource> FlatpakBackend::findSource(FlatpakInstallation *in
         }
     }
 
+    qWarning() << "Could not find source:" << installation << origin;
     Q_UNREACHABLE();
 }
 
@@ -713,7 +713,8 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
         remote = nullptr;
     }
     if (remote) {
-        m_refreshAppstreamMetadataJobs++;
+        Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(remote));
+        m_refreshAppstreamMetadataJobs.insert(remote);
         auto source = integrateRemote(preferredInstallation(), remote);
         if (source) {
             auto searchComponent = [this, stream, source, name] {
@@ -893,14 +894,17 @@ void FlatpakBackend::loadRemote(FlatpakInstallation *installation, FlatpakRemote
 {
     g_autoptr(GFile) fileTimestamp = flatpak_remote_get_appstream_timestamp(remote, flatpak_get_default_arch());
 
-    m_refreshAppstreamMetadataJobs++;
-    integrateRemote(installation, remote);
+    Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(remote));
+    m_refreshAppstreamMetadataJobs.insert(remote);
 
     g_autofree char *path_str = g_file_get_path(fileTimestamp);
     QFileInfo fileInfo(QFile::encodeName(path_str));
     // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
     if (!fileInfo.exists() || fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
         checkForUpdates(installation, remote);
+    } else {
+        auto source = integrateRemote(installation, remote);
+        Q_ASSERT(findSource(installation, flatpak_remote_get_name(remote)) == source);
     }
 }
 
@@ -918,10 +922,11 @@ void FlatpakBackend::unloadRemote(FlatpakInstallation *installation, FlatpakRemo
     acquireFetching(false);
 }
 
-void FlatpakBackend::metadataRefreshed()
+void FlatpakBackend::metadataRefreshed(FlatpakRemote *remote)
 {
-    m_refreshAppstreamMetadataJobs--;
-    if (m_refreshAppstreamMetadataJobs == 0) {
+    const bool removed = m_refreshAppstreamMetadataJobs.remove(remote);
+    Q_ASSERT(removed);
+    if (m_refreshAppstreamMetadataJobs.isEmpty()) {
         for (auto installation : qAsConst(m_installations)) {
             // Load local updates, comparing current and latest commit
             loadLocalUpdates(installation);
@@ -941,7 +946,7 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
     const QString appstreamDirPath = source->appstreamDir();
     if (!QFile::exists(appstreamDirPath)) {
         qWarning() << "No" << appstreamDirPath << "appstream metadata found for" << source->name();
-        metadataRefreshed();
+        metadataRefreshed(source->remote());
         return;
     }
 
@@ -956,7 +961,7 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
         } else {
             qWarning() << "Could not open the AppStream metadata pool" << pool->lastError();
         }
-        metadataRefreshed();
+        metadataRefreshed(source->remote());
         acquireFetching(false);
         fw->deleteLater();
     });
@@ -981,18 +986,18 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
 
 QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)
 {
+    Q_ASSERT(m_refreshAppstreamMetadataJobs.contains(remote));
     m_sources->addRemote(remote, flatpakInstallation);
-    Q_ASSERT(m_refreshAppstreamMetadataJobs != 0);
     for (auto source : qAsConst(m_flatpakSources)) {
-        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
-            metadataRefreshed();
+        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation
+            && source->name() == flatpak_remote_get_name(remote)) {
             createPool(source);
             return source;
         }
     }
     for (auto source : qAsConst(m_flatpakLoadingSources)) {
-        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation) {
-            metadataRefreshed();
+        if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation
+            && source->name() == flatpak_remote_get_name(remote)) {
             createPool(source);
             return source;
         }
@@ -1001,8 +1006,8 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
     auto source = QSharedPointer<FlatpakSource>::create(this, flatpakInstallation, remote);
     if (!source->isEnabled() || flatpak_remote_get_noenumerate(remote)) {
         m_flatpakSources += source;
-        metadataRefreshed();
-        return {};
+        metadataRefreshed(remote);
+        return source;
     }
 
     createPool(source);
@@ -1581,7 +1586,6 @@ void FlatpakBackend::checkRepositories(const QMap<QString, QStringList> &names)
                 qWarning() << "Could not find remote" << name << "in" << it.key();
                 continue;
             }
-            m_refreshAppstreamMetadataJobs++;
             loadRemote(installation, remote);
         }
     }
@@ -1686,6 +1690,8 @@ void FlatpakBackend::checkForUpdates()
 {
     for (auto source : qAsConst(m_flatpakSources)) {
         if (source->remote()) {
+            Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(source->remote()));
+            m_refreshAppstreamMetadataJobs.insert(source->remote());
             checkForUpdates(source->installation(), source->remote());
         }
     }
@@ -1694,15 +1700,19 @@ void FlatpakBackend::checkForUpdates()
 void FlatpakBackend::checkForUpdates(FlatpakInstallation *installation, FlatpakRemote *remote)
 {
     Q_ASSERT(remote);
-    m_refreshAppstreamMetadataJobs++;
-    if (flatpak_remote_get_disabled(remote)) {
-        integrateRemote(installation, remote);
+    const bool needsIntegration = m_refreshAppstreamMetadataJobs.contains(remote);
+    if (flatpak_remote_get_disabled(remote) || flatpak_remote_get_noenumerate(remote)) {
+        if (needsIntegration) {
+            integrateRemote(installation, remote);
+        }
         return;
     }
 
     FlatpakRefreshAppstreamMetadataJob *job = new FlatpakRefreshAppstreamMetadataJob(installation, remote);
-    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
-    connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this] {
+    if (needsIntegration) {
+        connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, this, &FlatpakBackend::integrateRemote);
+    }
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [=] {
         acquireFetching(false);
     });
 
