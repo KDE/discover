@@ -71,7 +71,7 @@ QJsonArray AppStreamUtils::licenses(const AppStream::Component &appdata)
 
         bool publicLicense = false;
         QString name = license;
-        if (license == QLatin1String("LicenseRef-proprietary")) {
+        if (license.startsWith(QLatin1String("LicenseRef-proprietary"))) {
             name = i18n("Proprietary");
         } else if (license == QLatin1String("LicenseRef-public-domain")) {
             name = i18n("Public Domain");
