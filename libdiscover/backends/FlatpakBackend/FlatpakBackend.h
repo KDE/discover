@@ -94,7 +94,7 @@ Q_SIGNALS: // for tests
 private:
     friend class FlatpakSource;
 
-    void metadataRefreshed();
+    void metadataRefreshed(FlatpakRemote *remote);
     bool flatpakResourceLessThan(AbstractResource *l, AbstractResource *r) const;
     void announceRatingsReady();
     FlatpakInstallation *preferredInstallation() const
@@ -130,7 +130,7 @@ private:
     FlatpakSourcesBackend *m_sources = nullptr;
     QSharedPointer<OdrsReviewsBackend> m_reviews;
     uint m_isFetching = 0;
-    uint m_refreshAppstreamMetadataJobs;
+    QSet<FlatpakRemote *> m_refreshAppstreamMetadataJobs;
     QStringList m_extends;
 
     GCancellable *m_cancellable;
