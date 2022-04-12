@@ -445,107 +445,79 @@ DiscoverPage {
             }
 
             // External resources
-            Flow {
-                id: buttonLayout
-                readonly property int widestButton: Math.max(helpButton.implicitWidth,
-                                                             homepageButton.implicitWidth,
-                                                             donateButton.implicitWidth,
-                                                             addonsButton.implicitWidth,
-                                                             bugButton.implicitWidth)
-                readonly property int visibleButtons: (helpButton.visible ? 1 : 0) +
-                (homepageButton.visible ? 1: 0) +
-                (donateButton.visible ? 1 : 0) +
-                (addonsButton.visible ? 1 : 0) +
-                (bugButton.visible ? 1 : 0)
+            RowLayout {
+                id: externalResourcesLayout
+                readonly property int visibleButtons: (helpButton.visible ? 1 : 0)
+                                                    + (homepageButton.visible ? 1: 0)
+                                                    + (addonsButton.visible ? 1 : 0)
+                readonly property int buttonWidth: Math.round(textualContentLayout.width / visibleButtons)
+                readonly property int tallestButtonHeight: Math.max(helpButton.implicitHeight,
+                                                                    homepageButton.implicitHeight,
+                                                                    addonsButton.implicitHeight)
 
-                // This centers the Flow in the page, no matter how many items have
-                // flowed onto other rows
-                Layout.maximumWidth: widestButton * Math.min(visibleButtons, Math.floor(textualContentLayout.width / widestButton))
                 Layout.fillWidth: true
-                Layout.alignment: Qt.AlignHCenter
-
+                spacing: Kirigami.Units.smallSpacing
                 visible: visibleButtons > 0
 
-                spacing: 0 // Need to save horizontal space
-
-                ToolButton {
+                ApplicationResourceButton {
                     id: helpButton
-                    width: buttonLayout.widestButton
+
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: externalResourcesLayout.buttonWidth
+                    Layout.minimumHeight: externalResourcesLayout.tallestButtonHeight
+
                     visible: application.helpURL != ""
-                    display: ToolButton.TextUnderIcon
-                    text: i18n("Documentation")
-                    icon.name: "documentation"
+
+                    buttonIcon: "documentation"
+                    title: i18n("Documentation")
+                    subtitle: i18n("Read the project's official documentation")
+                    tooltipText: application.helpURL
+
                     onClicked: Qt.openUrlExternally(application.helpURL);
-
-                    ToolTip {
-                        text: application.helpURL
-                    }
                 }
 
-                ToolButton {
+                ApplicationResourceButton {
                     id: homepageButton
-                    width: buttonLayout.widestButton
+
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: externalResourcesLayout.buttonWidth
+                    Layout.minimumHeight: externalResourcesLayout.tallestButtonHeight
+
                     visible: application.homepage != ""
-                    display: ToolButton.TextUnderIcon
-                    text: i18n("Website")
-                    icon.name: "internet-services"
+
+                    buttonIcon: "internet-services"
+                    title: i18n("Website")
+                    subtitle: i18n("Visit the project's website")
+                    tooltipText: application.homepage
+
                     onClicked: Qt.openUrlExternally(application.homepage);
-
-                    ToolTip {
-                        text: application.homepage
-                    }
                 }
 
-                ToolButton {
-                    id: donateButton
-                    width: buttonLayout.widestButton
-                    visible: application.donationURL != ""
-                    display: ToolButton.TextUnderIcon
-                    text: i18n("Donate")
-                    icon.name: "help-donate"
-                    onClicked: Qt.openUrlExternally(application.donationURL);
-
-                    ToolTip {
-                        text: application.donationURL
-                    }
-                }
-
-                ToolButton {
+                ApplicationResourceButton {
                     id: addonsButton
-                    width: buttonLayout.widestButton
+
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: externalResourcesLayout.buttonWidth
+                    Layout.minimumHeight: externalResourcesLayout.tallestButtonHeight
+
                     visible: addonsView.containsAddons
-                    display: ToolButton.TextUnderIcon
-                    text: i18n("Addons")
-                    icon.name: "extension-symbolic"
-                    onClicked: if (addonsView.addonsCount === 0) {
-                        Navigation.openExtends(application.appstreamId, appInfo.application.name)
-                    } else {
-                        addonsView.sheetOpen = true
-                    }
 
-                    ToolTip {
-                        text: i18n("Install or remove add-ons for %1", appInfo.application.name)
-                    }
-                }
+                    buttonIcon: "extension-symbolic"
+                    title: i18n("Addons")
+                    subtitle: i18n("Install or remove additional functionality")
 
-                ToolButton {
-                    id: bugButton
-                    width: buttonLayout.widestButton
-                    visible: application.bugURL != ""
-                    display: ToolButton.TextUnderIcon
-                    text: i18n("Report Bug")
-                    icon.name: "tools-report-bug"
-                    onClicked: Qt.openUrlExternally(application.bugURL);
-
-                    ToolTip {
-                        text: application.bugURL
+                    onClicked: {
+                        if (addonsView.addonsCount === 0) {
+                            Navigation.openExtends(application.appstreamId, appInfo.application.name)
+                        } else {
+                            addonsView.sheetOpen = true
+                        }
                     }
                 }
             }
 
             Kirigami.Separator {
                 Layout.fillWidth: true
-                visible: buttonLayout.visible
             }
 
             Kirigami.Heading {
@@ -625,6 +597,67 @@ DiscoverPage {
                     onClicked: {
                         reviewsSheet.openReviewDialog()
                     }
+                }
+            }
+
+            // "Get Involved" section
+            Kirigami.Separator {
+                Layout.fillWidth: true
+                visible: getInvolvedLayout.visible
+            }
+
+            Kirigami.Heading {
+                text: i18n("Get Involved")
+                level: 2
+                font.weight: Font.DemiBold
+                visible: getInvolvedLayout.visible
+            }
+
+            RowLayout {
+                id: getInvolvedLayout
+
+                readonly property int visibleButtons: (donateButton.visible ? 1 : 0)
+                                                    + (bugButton.visible ? 1: 0)
+                readonly property int buttonWidth: Math.round(textualContentLayout.width / visibleButtons)
+                readonly property int tallestButtonHeight: Math.max(donateButton.implicitHeight,
+                                                                    bugButton.implicitHeight)
+
+                Layout.fillWidth: true
+                spacing: Kirigami.Units.smallSpacing
+                visible: visibleButtons > 0
+
+                ApplicationResourceButton {
+                    id: donateButton
+
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: getInvolvedLayout.buttonWidth
+                    Layout.minimumHeight: getInvolvedLayout.tallestButtonHeight
+
+                    visible: application.donationURL != ""
+
+                    buttonIcon: "help-donate"
+                    title: i18n("Donate")
+                    subtitle: i18n("Support and thank the developers by donating to their project")
+                    tooltipText: application.donationURL
+
+                    onClicked: Qt.openUrlExternally(application.donationURL);
+                }
+
+                ApplicationResourceButton {
+                    id: bugButton
+
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: getInvolvedLayout.buttonWidth
+                    Layout.minimumHeight: getInvolvedLayout.tallestButtonHeight
+
+                    visible: application.bugURL != ""
+
+                    buttonIcon: "tools-report-bug"
+                    title: i18n("Report Bug")
+                    subtitle: i18n("Log an issue you found to help get it fixed")
+                    tooltipText: application.bugURL
+
+                    onClicked: Qt.openUrlExternally(application.bugURL);
                 }
             }
 
