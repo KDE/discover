@@ -10,7 +10,7 @@ import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 
 DiscoverPage
 {
@@ -28,23 +28,9 @@ DiscoverPage
         Navigation.openCategory(null, "")
     }
 
-    ColumnLayout {
-        anchors.centerIn: parent
-        opacity: 0.5
-
+    Kirigami.LoadingPlaceholder {
         visible: appsRep.count === 0 && appsRep.model.isFetching
-
-        Kirigami.Heading {
-            level: 2
-            Layout.alignment: Qt.AlignCenter
-            text: i18n("Loading…")
-        }
-        BusyIndicator {
-            id: indicator
-            Layout.alignment: Qt.AlignCenter
-            Layout.preferredWidth: Kirigami.Units.gridUnit * 4
-            Layout.preferredHeight: Kirigami.Units.gridUnit * 4
-        }
+        anchors.centerIn: parent
     }
 
     Loader {
