@@ -34,6 +34,7 @@
 #include <KLocalizedString>
 
 #include <AppStreamQt/pool.h>
+#include <AppStreamQt/version.h>
 
 #include <QAction>
 #include <QtConcurrentRun>
@@ -90,14 +91,20 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
 void AlpineApkBackend::loadAppStreamComponents()
 {
     AppStream::Pool *appStreamPool = new AppStream::Pool();
+#if ASQ_CHECK_VERSION(0, 15, 0)
+    // use newer API and flags available only since 0.15.0
+    appStreamPool->setFlags(AppStream::Pool::FlagLoadOsCollection | AppStream::Pool::FlagLoadOsMetainfo | AppStream::Pool::FlagLoadOsDesktopFiles);
+
+    // AS_FORMAT_STYLE_COLLECTION - Parse AppStream metadata collections (shipped by software distributors)
+    appStreamPool->addExtraDataLocation(AppstreamDataDownloader::appStreamCacheDir(), AppStream::Metadata::FormatStyleCollection);
+#else
     appStreamPool->setFlags(AppStream::Pool::FlagReadCollection |
                             AppStream::Pool::FlagReadMetainfo |
                             AppStream::Pool::FlagReadDesktopFiles);
     appStreamPool->setCacheFlags(AppStream::Pool::CacheFlagUseUser |
                                  AppStream::Pool::CacheFlagUseSystem);
-
-    // hey hey! cool stuff
     appStreamPool->addMetadataLocation(AppstreamDataDownloader::appStreamCacheDir());
+#endif
 
     if (!appStreamPool->load()) {
         qCWarning(LOG_ALPINEAPK) << "backend: Failed to load appstream data:"
