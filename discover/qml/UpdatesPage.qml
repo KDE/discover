@@ -4,7 +4,7 @@ import QtQuick 2.15
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 
 DiscoverPage
 {
@@ -228,41 +228,28 @@ DiscoverPage
             Layout.fillHeight: true
             width: 1
         }
-        ProgressBar {
-            Layout.alignment: Qt.AlignHCenter
-            Layout.fillWidth: true
-            Layout.maximumWidth: Kirigami.Units.gridUnit * 20
-            value: page.footerProgress
-            from: 0
-            to: 100
-            visible: page.isBusy
-        }
-        Kirigami.Icon {
-            Layout.alignment: Qt.AlignHCenter
-            visible: page.footerProgress === 0 && page.footerLabel !== "" && !page.isBusy
-            source: "update-none"
-            implicitWidth: Kirigami.Units.gridUnit * 4
-            implicitHeight: Kirigami.Units.gridUnit * 4
-            opacity: 0.5
-        }
-        Kirigami.Heading {
-            id: statusLabel
-            Layout.fillWidth: true
-            Layout.alignment: Qt.AlignHCenter
-            horizontalAlignment: Text.AlignHCenter
-            text: page.footerLabel
-            wrapMode: Text.WordWrap
-            level: 2
-        }
-        Button {
-            id: restartButton
-            Layout.topMargin: Kirigami.Units.largeSpacing * 2
-            Layout.alignment: Qt.AlignHCenter
+
+        Kirigami.Action {
+            id: restartAction
             icon.name: "system-reboot"
             text: i18n("Restart Now")
             visible: false
-            onClicked: app.reboot()
+            onTriggered: app.reboot()
         }
+        Kirigami.LoadingPlaceholder {
+            id: statusLabel
+            icon.name: {
+                if (page.footerProgress === 0 && page.footerLabel !== "" && !page.isBusy) {
+                    return "update-none"
+                } else {
+                    return ""
+                }
+            }
+            text: page.footerLabel
+            determinate: true
+            progressBar.value: page.footerProgress
+        }
+
         Item {
             Layout.fillHeight: true
             width: 1
@@ -443,7 +430,6 @@ DiscoverPage
         State {
             name: "fetching"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates…") }
-            PropertyChanges { target: statusLabel; opacity: 0.5 }
             PropertyChanges { target: page; footerProgress: ResourcesModel.fetchingUpdatesProgress }
             PropertyChanges { target: page; isBusy: true }
             PropertyChanges { target: updatesView; opacity: 0 }
@@ -452,6 +438,7 @@ DiscoverPage
             name: "progressing"
             PropertyChanges { target: page; supportsRefreshing: false }
             PropertyChanges { target: page.actions; main: cancelUpdateAction }
+            PropertyChanges { target: statusLabel; visible: false }
         },
         State {
             name: "has-updates"
@@ -461,12 +448,14 @@ DiscoverPage
             // be better to have "Update" be the right-most action
             PropertyChanges { target: page.actions; main: applicationWindow().wideScreen ? refreshAction : updateAction}
             PropertyChanges { target: page.actions; left: applicationWindow().wideScreen ? updateAction : refreshAction}
+            PropertyChanges { target: statusLabel; visible: false }
         },
         State {
             name: "reboot"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Restart the system to complete the update process") }
-            PropertyChanges { target: statusLabel; opacity: 1 }
-            PropertyChanges { target: restartButton; visible: true }
+            PropertyChanges { target: statusLabel; helpfulAction: restartAction }
+            PropertyChanges { target: statusLabel; explanation: "" }
+            PropertyChanges { target: statusLabel.progressBar; visible: false }
             StateChangeScript {
                 script: if (rebootAtEnd.checked) {
                     app.rebootNow()
@@ -476,31 +465,26 @@ DiscoverPage
         State {
             name: "now-uptodate"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
-            PropertyChanges { target: statusLabel; opacity: 0.5 }
             PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "uptodate"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
-            PropertyChanges { target: statusLabel; opacity: 0.5 }
             PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "medium"
             PropertyChanges { target: page; title: i18nc("@info", "Up to date") }
-            PropertyChanges { target: statusLabel; opacity: 0.5 }
             PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "low"
             PropertyChanges { target: page; title: i18nc("@info", "Should check for updates") }
-            PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: page.actions; main: refreshAction }
         },
         State {
             name: "unknown"
             PropertyChanges { target: page; title: i18nc("@info", "Time of last update unknown") }
-            PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: page.actions; main: refreshAction }
         }
     ]
