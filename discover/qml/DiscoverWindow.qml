@@ -1,4 +1,4 @@
-import QtQuick 2.5
+import QtQuick 2.15
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.14
 import org.kde.discover 2.0
@@ -113,7 +113,7 @@ Kirigami.ApplicationWindow
         // Need to define an explicit Shortcut object so we can get its text
         // using shortcut.nativeText
         shortcut: Shortcut {
-            sequence: StandardKey.Refresh
+            sequences: [ StandardKey.Refresh ]
             onActivated: refreshAction.trigger()
         }
     }

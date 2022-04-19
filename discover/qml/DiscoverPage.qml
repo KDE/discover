@@ -4,7 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.5
+import QtQuick 2.15
 import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.ScrollablePage
@@ -20,7 +20,7 @@ Kirigami.ScrollablePage
     }
 
     readonly property var s1: Shortcut {
-        sequence: StandardKey.MoveToNextPage
+        sequences: [ StandardKey.MoveToNextPage ]
         enabled: root.isCurrentPage
         onActivated: {
             root.flickable.contentY = Math.min(root.flickable.contentHeight - root.flickable.height,
@@ -29,7 +29,7 @@ Kirigami.ScrollablePage
     }
 
     readonly property var s2: Shortcut {
-        sequence: StandardKey.MoveToPreviousPage
+        sequences: [ StandardKey.MoveToPreviousPage ]
         enabled: root.isCurrentPage
         onActivated: {
             root.flickable.contentY = Math.max(0, root.flickable.contentY - root.flickable.height);
@@ -37,7 +37,7 @@ Kirigami.ScrollablePage
     }
 
     readonly property var sClose: Shortcut {
-        sequence: StandardKey.Cancel
+        sequences: [ StandardKey.Cancel ]
         enabled: root.isCurrentPage && applicationWindow().pageStack.depth>1
         onActivated: {
             applicationWindow().pageStack.pop()
@@ -45,7 +45,7 @@ Kirigami.ScrollablePage
     }
 
     readonly property var sRefresh: Shortcut {
-        sequence: StandardKey.Refresh
+        sequences: [ StandardKey.Refresh ]
         enabled: root.isCurrentPage && root.supportsRefreshing
         onActivated: {
             if (root.supportsRefreshing)
