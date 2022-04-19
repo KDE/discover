@@ -466,26 +466,36 @@ DiscoverPage
             name: "now-uptodate"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
             PropertyChanges { target: page.actions; main: refreshAction }
+            PropertyChanges { target: statusLabel; explanation: "" }
+            PropertyChanges { target: statusLabel.progressBar; visible: false }
         },
         State {
             name: "uptodate"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
             PropertyChanges { target: page.actions; main: refreshAction }
+            PropertyChanges { target: statusLabel; explanation: "" }
+            PropertyChanges { target: statusLabel.progressBar; visible: false }
         },
         State {
             name: "medium"
             PropertyChanges { target: page; title: i18nc("@info", "Up to date") }
             PropertyChanges { target: page.actions; main: refreshAction }
+            PropertyChanges { target: statusLabel; explanation: "" }
+            PropertyChanges { target: statusLabel.progressBar; visible: false }
         },
         State {
             name: "low"
             PropertyChanges { target: page; title: i18nc("@info", "Should check for updates") }
             PropertyChanges { target: page.actions; main: refreshAction }
+            PropertyChanges { target: statusLabel; explanation: "" }
+            PropertyChanges { target: statusLabel.progressBar; visible: false }
         },
         State {
             name: "unknown"
             PropertyChanges { target: page; title: i18nc("@info", "Time of last update unknown") }
             PropertyChanges { target: page.actions; main: refreshAction }
+            PropertyChanges { target: statusLabel; explanation: "" }
+            PropertyChanges { target: statusLabel.progressBar; visible: false }
         }
     ]
 }
