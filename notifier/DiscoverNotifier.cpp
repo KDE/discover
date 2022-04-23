@@ -14,7 +14,11 @@
 #include <QDBusMessage>
 #include <QDBusPendingCall>
 #include <QDebug>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QNetworkConfigurationManager>
+#else
+#include <QNetworkInformation>
+#endif
 #include <QProcess>
 
 #include <KIO/ApplicationLauncherJob>
@@ -31,6 +35,12 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
 {
     m_settings = new UpdatesSettings(this);
     m_settingsWatcher = KConfigWatcher::create(m_settings->sharedConfig());
+#if QT_VERSION >= QT_VERSION_CHECK(6, 3, 0)
+    QNetworkInformation::instance()->load(QNetworkInformation::Feature::Reachability | QNetworkInformation::Feature::TransportMedium);
+    connect(QNetworkInformation::instance(), &QNetworkInformation::reachabilityChanged, this, &DiscoverNotifier::stateChanged);
+    connect(QNetworkInformation::instance(), &QNetworkInformation::transportMediumChanged, this, &DiscoverNotifier::stateChanged);
+#endif
+
     refreshUnattended();
     connect(m_settingsWatcher.data(), &KConfigWatcher::configChanged, this, [this](const KConfigGroup &group, const QByteArrayList &names) {
         if (group.config()->name() == m_settings->config()->name() && group.name() == "Global" && names.contains("UseUnattendedUpdates")) {
@@ -139,15 +149,28 @@ void DiscoverNotifier::updateStatusNotifier()
 }
 
 // we only want to do unattended updates when on an ethernet or wlan network
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 static bool isConnectionAdequate(const QNetworkConfiguration &network)
 {
     return (network.bearerType() == QNetworkConfiguration::BearerEthernet || network.bearerType() == QNetworkConfiguration::BearerWLAN);
 }
+#elif QT_VERSION >= QT_VERSION_CHECK(6, 3, 0)
+static bool isConnectionAdequate()
+{
+    const auto transport = QNetworkInformation::instance()->transportMedium();
+    return transport == QNetworkInformation::TransportMedium::Ethernet || transport == QNetworkInformation::TransportMedium::WiFi;
+}
+#endif
 
 void DiscoverNotifier::refreshUnattended()
 {
     m_settings->read();
-    const auto enabled = m_settings->useUnattendedUpdates() && m_manager->isOnline() && isConnectionAdequate(m_manager->defaultConfiguration());
+    const auto enabled = m_settings->useUnattendedUpdates()
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+        && m_manager->isOnline() && isConnectionAdequate(m_manager->defaultConfiguration());
+#elif QT_VERSION >= QT_VERSION_CHECK(6, 3, 0)
+        && QNetworkInformation::instance()->reachability() == QNetworkInformation::Reachability::Online && isConnectionAdequate();
+#endif
     if (bool(m_unattended) == enabled)
         return;
 
@@ -165,7 +188,11 @@ DiscoverNotifier::State DiscoverNotifier::state() const
         return RebootRequired;
     else if (m_isBusy)
         return Busy;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     else if (m_manager && !m_manager->isOnline())
+#else
+    else if (QNetworkInformation::instance()->reachability() != QNetworkInformation::Reachability::Online)
+#endif
         return Offline;
     else if (m_hasSecurityUpdates)
         return SecurityUpdates;
@@ -215,6 +242,7 @@ QString DiscoverNotifier::message() const
 
 void DiscoverNotifier::recheckSystemUpdateNeeded()
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     if (!m_manager) {
         m_manager = new QNetworkConfigurationManager(this);
         connect(m_manager, &QNetworkConfigurationManager::onlineStateChanged, this, &DiscoverNotifier::stateChanged);
@@ -222,6 +250,7 @@ void DiscoverNotifier::recheckSystemUpdateNeeded()
             Q_EMIT stateChanged();
         }
     }
+#endif
 
     for (BackendNotifierModule *module : qAsConst(m_backends))
         module->recheckSystemUpdateNeeded();
