@@ -169,3 +169,5 @@ void ReviewsModel::flagReview(int row, const QString &reason, const QString &tex
     Review *r = m_reviews[row].data();
     m_backend->flagReview(r, reason, text);
 }
+
+#include "moc_ReviewsModel.cpp"

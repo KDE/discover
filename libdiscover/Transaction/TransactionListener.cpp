@@ -7,6 +7,7 @@
 
 #include "TransactionListener.h"
 
+#include "../resources/AbstractResource.h"
 #include "TransactionModel.h"
 #include "libdiscover_debug.h"
 #include <QMetaProperty>
@@ -145,3 +146,5 @@ int TransactionListener::progress() const
 {
     return m_transaction ? m_transaction->progress() : 0;
 }
+
+#include "moc_TransactionListener.cpp"

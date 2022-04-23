@@ -107,3 +107,5 @@ void ScreenshotsModel::remove(const QUrl &url)
         qDebug() << "screenshot removed" << url;
     }
 }
+
+#include "moc_ScreenshotsModel.cpp"

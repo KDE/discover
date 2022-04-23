@@ -196,3 +196,5 @@ QHash<int, QByteArray> FeaturedModel::roleNames() const
 {
     return {{Qt::UserRole, "application"}};
 }
+
+#include "moc_FeaturedModel.cpp"

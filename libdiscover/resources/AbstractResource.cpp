@@ -286,3 +286,5 @@ QString AbstractResource::versionString()
         }
     }
 }
+
+#include "moc_AbstractResource.cpp"

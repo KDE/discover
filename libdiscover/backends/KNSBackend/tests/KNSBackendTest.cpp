@@ -166,3 +166,5 @@ void KNSBackendTest::testResourceByUrlResourcesModel()
     });
     QCOMPARE(res.count(), 0);
 }
+
+#include "moc_KNSBackendTest.cpp"

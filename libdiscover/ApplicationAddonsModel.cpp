@@ -153,3 +153,5 @@ void ApplicationAddonsModel::transactionOver(Transaction *t)
 
     resetState();
 }
+
+#include "moc_ApplicationAddonsModel.cpp"

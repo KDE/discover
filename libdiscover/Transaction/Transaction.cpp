@@ -145,3 +145,5 @@ QString Transaction::remainingTimeString() const
 {
     return KFormat().formatSpelloutDuration(m_remainingTime * 1000);
 }
+
+#include "moc_Transaction.cpp"

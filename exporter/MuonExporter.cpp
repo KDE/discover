@@ -88,3 +88,5 @@ void MuonExporter::exportResources(const QVector<AbstractResource *> &resources)
     qDebug() << "exported items: " << data.count() << " to " << m_path;
     Q_EMIT exportDone();
 }
+
+#include "moc_MuonExporter.cpp"

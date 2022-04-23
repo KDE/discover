@@ -352,3 +352,5 @@ void UpdateModel::uncheckAll()
         if (index(i, 0).data(Qt::CheckStateRole) != Qt::Unchecked)
             setData(index(i, 0), Qt::Unchecked, Qt::CheckStateRole);
 }
+
+#include "moc_UpdateModel.cpp"
