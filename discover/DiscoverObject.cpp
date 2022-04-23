@@ -19,6 +19,7 @@
 #include <QDBusMessage>
 #include <QDBusPendingCall>
 #include <QDesktopServices>
+#include <QFile>
 #include <QGuiApplication>
 #include <QPointer>
 #include <QQmlApplicationEngine>

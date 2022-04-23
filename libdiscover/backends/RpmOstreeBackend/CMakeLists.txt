@@ -4,7 +4,7 @@ find_file(RpmOstreeDBusInterface org.projectatomic.rpmostree1.xml /usr/share/dbu
 qt_add_dbus_interface(RpmOstreeDBusInterface_SRCS ${RpmOstreeDBusInterface} RpmOstreeDBusInterface)
 
 add_library(rpm-ostree-backend MODULE RpmOstreeResource.cpp RpmOstreeBackend.cpp RpmOstreeSourcesBackend.cpp RpmOstreeTransaction.cpp RpmOstree.qrc ${RpmOstreeDBusInterface_SRCS})
-target_link_libraries(rpm-ostree-backend PRIVATE Discover::Common Qt5::DBus KF5::CoreAddons KF5::I18n PkgConfig::Ostree)
+target_link_libraries(rpm-ostree-backend PRIVATE Discover::Common Qt::DBus KF5::CoreAddons KF5::I18n PkgConfig::Ostree)
 
 install(TARGETS rpm-ostree-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 install(FILES rpm-ostree-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)

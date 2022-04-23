@@ -68,7 +68,7 @@ ResourcesModel::ResourcesModel(QObject *parent, bool load)
                   for (auto backend : qAsConst(m_backends)) {
                       sum += backend->fetchingUpdatesProgress();
                   }
-                  return sum / m_backends.count();
+                  return sum / (int)m_backends.count();
               }
           },
           [this](int progress) {

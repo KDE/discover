@@ -360,7 +360,13 @@ bool ResourcesProxyModel::lessThan(AbstractResource *leftPackage, AbstractResour
     } else if (role == CanUpgrade) {
         ret = leftValue.toBool();
     } else {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         ret = leftValue < rightValue;
+#else
+        const auto order = QVariant::compare(leftValue, rightValue);
+        Q_ASSERT(order != QPartialOrdering::Unordered);
+        return order == QPartialOrdering::Less;
+#endif
     }
     return ret != (order != Qt::AscendingOrder);
 }

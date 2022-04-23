@@ -107,5 +107,5 @@ if(EXISTS "/etc/debian_version")
     install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.apt.urlhandler.desktop DESTINATION ${KDE_INSTALL_APPDIR} )
 endif()
 
-install(FILES plasmadiscoverui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/plasmadiscover)
+install(FILES plasmadiscoverui.rc DESTINATION ${KDE_INSTALL_KXMLGUIDIR}/plasmadiscover)
 install(FILES org.kde.discover.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
