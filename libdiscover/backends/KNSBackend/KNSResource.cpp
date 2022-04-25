@@ -13,7 +13,6 @@
 #include <QRegularExpression>
 
 #include "ReviewsBackend/Rating.h"
-#include <knewstuff_version.h>
 
 KNSResource::KNSResource(const KNSCore::EntryInternal &entry, QStringList categories, KNSBackend *parent)
     : AbstractResource(parent)
