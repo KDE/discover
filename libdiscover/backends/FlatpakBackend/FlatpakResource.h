@@ -151,7 +151,7 @@ public:
     void setPropertyState(PropertyKind kind, PropertyState state);
     void setResourceFile(const QUrl &url);
     void setRuntime(const QString &runtime);
-    void setState(State state, bool shouldEmit = false);
+    void setState(State state, bool shouldEmit = true);
     void setType(ResourceType type);
     void setResourceLocation(const QUrl &location)
     {
