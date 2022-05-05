@@ -476,6 +476,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
 
     if (useOfflineUpdates() && exit == PackageKit::Transaction::ExitSuccess) {
         PackageKit::Daemon::global()->offline()->trigger(PackageKit::Offline::ActionReboot);
+        enableReadyToReboot();
     }
 }
 

@@ -319,6 +319,13 @@ bool ResourcesUpdatesModel::needsReboot() const
     return false;
 }
 
+bool ResourcesUpdatesModel::readyToReboot() const
+{
+    return kContains(m_updaters, [](AbstractBackendUpdater *updater) {
+        return !updater->needsReboot() || updater->isReadyToReboot();
+    });
+}
+
 bool ResourcesUpdatesModel::useUnattendedUpdates() const
 {
     return m_offlineUpdates;

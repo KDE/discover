@@ -457,7 +457,7 @@ DiscoverPage
             PropertyChanges { target: statusLabel; explanation: "" }
             PropertyChanges { target: statusLabel.progressBar; visible: false }
             StateChangeScript {
-                script: if (rebootAtEnd.checked) {
+                script: if (rebootAtEnd.checked && resourcesUpdatesModel.readyToReboot) {
                     app.rebootNow()
                 }
             }
