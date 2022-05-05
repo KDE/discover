@@ -35,9 +35,19 @@ void AbstractBackendUpdater::enableNeedsReboot()
     Q_EMIT needsRebootChanged();
 }
 
+void AbstractBackendUpdater::enableReadyToReboot()
+{
+    m_readyToReboot = true;
+}
+
 bool AbstractBackendUpdater::needsReboot() const
 {
     return m_needsReboot;
+}
+
+bool AbstractBackendUpdater::isReadyToReboot() const
+{
+    return m_readyToReboot;
 }
 
 void AbstractBackendUpdater::setOfflineUpdates(bool useOfflineUpdates)

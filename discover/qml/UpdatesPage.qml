@@ -467,7 +467,7 @@ DiscoverPage
             PropertyChanges { target: statusLabel; opacity: 1 }
             PropertyChanges { target: restartButton; visible: true }
             StateChangeScript {
-                script: if (rebootAtEnd.checked) {
+                script: if (rebootAtEnd.checked && resourcesUpdatesModel.readyToReboot) {
                     app.rebootNow()
                 }
             }

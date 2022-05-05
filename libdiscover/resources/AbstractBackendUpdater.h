@@ -124,7 +124,9 @@ public:
     virtual quint64 downloadSpeed() const = 0;
 
     void enableNeedsReboot();
+    void enableReadyToReboot();
 
+    bool isReadyToReboot() const;
     bool needsReboot() const;
 
     virtual void setOfflineUpdates(bool useOfflineUpdates);
@@ -218,6 +220,7 @@ Q_SIGNALS:
 
 private:
     bool m_needsReboot = false;
+    bool m_readyToReboot = false;
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H

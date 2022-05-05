@@ -132,11 +132,15 @@ void StandardBackendUpdater::transactionRemoved(Transaction *t)
     }
 
     const bool found = fromOurBackend && m_pendingResources.remove(t->resource());
+    m_anyTransactionFailed |= t->status() != Transaction::DoneStatus;
 
     if (found && !m_settingUp) {
         refreshProgress();
         if (m_pendingResources.isEmpty()) {
             cleanup();
+            if (needsReboot() && !m_anyTransactionFailed) {
+                enableReadyToReboot();
+            }
         }
     }
     refreshUpdateable();

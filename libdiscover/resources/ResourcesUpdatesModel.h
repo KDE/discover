@@ -25,6 +25,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     Q_PROPERTY(qint64 secsToLastUpdate READ secsToLastUpdate NOTIFY progressingChanged)
     Q_PROPERTY(Transaction *transaction READ transaction NOTIFY progressingChanged)
     Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
+    Q_PROPERTY(bool readyToReboot READ readyToReboot)
     Q_PROPERTY(bool useUnattendedUpdates READ useUnattendedUpdates NOTIFY useUnattendedUpdatesChanged)
 public:
     explicit ResourcesUpdatesModel(QObject *parent = nullptr);
@@ -46,6 +47,7 @@ public:
     }
     Transaction *transaction() const;
     bool needsReboot() const;
+    bool readyToReboot() const;
     bool useUnattendedUpdates() const;
 
 Q_SIGNALS:
