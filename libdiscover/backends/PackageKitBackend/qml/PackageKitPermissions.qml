@@ -1,0 +1,30 @@
+/*
+ *   SPDX-FileCopyrightText: 2022 Aleix Pol Gonzalez <aleixpol@kde.org>
+ *
+ *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.12
+import QtQml.Models 2.15
+import org.kde.kirigami 2.14 as Kirigami
+
+ColumnLayout {
+    Kirigami.Heading {
+        text: i18nc("%1 is the name of the application", "Permissions for %1", resource.name)
+        font.weight: Font.DemiBold
+        level: 2
+        Layout.fillWidth: true
+        wrapMode: Text.Wrap
+    }
+
+    Kirigami.BasicListItem {
+        Layout.fillWidth: true
+        text: i18n("Full Access")
+        subtitle: i18n("Can access everything on the system")
+        icon: "security-medium"
+        subtitleItem.wrapMode: Text.WordWrap
+        hoverEnabled: false
+    }
+}
