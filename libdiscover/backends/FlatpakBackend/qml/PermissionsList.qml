@@ -23,7 +23,7 @@ ColumnLayout {
 
     Repeater {
         id: list
-        model: resource.showPermissions()
+        model: resource.permissionsModel()
 
         delegate: Kirigami.BasicListItem {
             Layout.fillWidth: true

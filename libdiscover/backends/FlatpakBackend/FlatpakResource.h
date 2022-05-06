@@ -173,7 +173,7 @@ public:
     {
         m_availableVersion = version;
     }
-    Q_INVOKABLE QAbstractListModel *showPermissions();
+    Q_INVOKABLE QAbstractListModel *permissionsModel();
     Q_INVOKABLE int permissionCount();
 
     void setTemporarySource(const QSharedPointer<FlatpakSource> &temp)
