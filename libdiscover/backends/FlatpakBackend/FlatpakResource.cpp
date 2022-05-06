@@ -679,6 +679,12 @@ QString translateSymbolicName(const QStringView &name)
 {
     if (name == QLatin1String("host")) {
         return i18n("All Files");
+    } else if (name == QLatin1String("home")) {
+        return i18n("Home");
+    } else if (name == QLatin1String("xdg-download")) {
+        return i18n("Downloads");
+    } else if (name == QLatin1String("xdg-music")) {
+        return i18n("Music");
     }
     return name.toString();
 }
