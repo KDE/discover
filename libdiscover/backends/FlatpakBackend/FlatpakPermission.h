@@ -15,23 +15,15 @@
 class FlatpakPermission
 {
 public:
-    FlatpakPermission(QString name, QString category, QString value, QString brief, QString description, QString icon, QStringList list = QStringList());
-    QString name() const;
-    QString value() const;
-    QString category() const;
+    FlatpakPermission(QString brief, QString description, QString icon);
     QString icon() const;
     QString brief() const;
     QString description() const;
-    QStringList list() const;
 
 private:
-    QString m_name;
-    QString m_category;
-    QString m_value; // on/off, talk/own, environment variables etc
-    QString m_brief;
-    QString m_description;
-    QString m_icon;
-    QStringList m_list; // to store all buses/directories
+    const QString m_brief;
+    const QString m_description;
+    const QString m_icon;
 };
 
 class FlatpakPermissionsModel : public QAbstractListModel
@@ -43,11 +35,7 @@ public:
         BriefRole = Qt::UserRole + 1,
         DescriptionRole,
         ListRole,
-        NameRole,
-        ValueRole,
-        EmptyListRole,
         IconRole,
-        CategoryRole
     };
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;

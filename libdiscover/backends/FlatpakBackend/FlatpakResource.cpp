@@ -696,55 +696,48 @@ void FlatpakResource::loadPermissions()
 
     KDesktopFile parser(f.fileName());
 
-    QString name, brief, description;
+    QString brief, description;
     const QString valueOn = "on";
 
     const KConfigGroup contextGroup = parser.group("Context");
     const QString shared = contextGroup.readEntry("shared", QString());
     if (shared.contains("network")) {
-        name = i18n("network");
         brief = i18n("Network Access");
         description = i18n("Can access the internet");
-        m_permissions.append(FlatpakPermission(name, "shared", valueOn, brief, description, "network-wireless"));
+        m_permissions.append(FlatpakPermission(brief, description, "network-wireless"));
     }
     if (shared.contains("session-bus")) {
-        name = i18n("session-bus");
         brief = i18n("Session Bus Access");
         description = i18n("Access is granted to the entire Session Bus");
-        m_permissions.append(FlatpakPermission(name, "socket", valueOn, brief, description, "system-save-session"));
+        m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
     }
     if (shared.contains("system-bus")) {
-        name = i18n("system-bus");
         brief = i18n("System Bus Access");
         description = i18n("Access is granted to the entire System Bus");
-        m_permissions.append(FlatpakPermission(name, "socket", valueOn, brief, description, "system-save-session"));
+        m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
     }
     if (shared.contains("ssh-auth")) {
-        name = i18n("ssh-auth");
         brief = i18n("Remote Login Access");
         description = i18n("Can initiate remote login requests using the SSH protocol");
-        m_permissions.append(FlatpakPermission(name, "socket", valueOn, brief, description, "x-shape-connection"));
+        m_permissions.append(FlatpakPermission(brief, description, "x-shape-connection"));
     }
     if (shared.contains("pcsc")) {
-        name = i18n("pspc");
         brief = i18n("Smart Card Access");
         description = i18n("Can integrate and communicate with smart cards");
-        m_permissions.append(FlatpakPermission(name, "socket", valueOn, brief, description, "network-card"));
+        m_permissions.append(FlatpakPermission(brief, description, "network-card"));
     }
 
     if (shared.contains("kvm")) {
-        name = i18n("kvm");
         brief = i18n("Kernel-based Virtual Machine Access");
         description = i18n("Allows running other operating systems as guests in virtual machines");
-        m_permissions.append(FlatpakPermission(name, "devices", valueOn, brief, description, "virtualbox"));
+        m_permissions.append(FlatpakPermission(brief, description, "virtualbox"));
     }
 
     const QString devices = contextGroup.readEntry("devices", QString());
     if (devices.contains("all")) {
-        name = i18n("all");
         brief = i18n("Device Access");
         description = i18n("Can communicate with and control built-in or connected hardware devices");
-        m_permissions.append(FlatpakPermission(name, "devices", valueOn, brief, description, "preferences-devices-tree"));
+        m_permissions.append(FlatpakPermission(brief, description, "preferences-devices-tree"));
     }
 
     const QString filesystems = contextGroup.readEntry("filesystems", QString());
@@ -807,7 +800,7 @@ void FlatpakResource::loadPermissions()
         } else {
             description = i18n("Can access files in the following locations in your home folder without asking permission first: %1", appendText);
         }
-        m_permissions.append(FlatpakPermission(i18n("filesystems"), "filesystems", valueOn, brief, description, "inode-directory", homeList));
+        m_permissions.append(FlatpakPermission(brief, description, "inode-directory"));
     }
     appendText = "\n- " + systemList.join("\n- ");
     if (systemAccess) {
@@ -822,26 +815,24 @@ void FlatpakResource::loadPermissions()
         } else {
             description = i18n("Can access system files in the following locations without asking permission first: %1", appendText);
         }
-        m_permissions.append(FlatpakPermission(i18n("filesystems"), "filesystems", valueOn, brief, description, "inode-directory", systemList));
+        m_permissions.append(FlatpakPermission(brief, description, "inode-directory"));
     }
 
     const KConfigGroup sessionBusGroup = parser.group("Session Bus Policy");
     if (sessionBusGroup.exists()) {
         const QStringList busList = sessionBusGroup.keyList();
-        name = i18n("Session Bus Policy");
         brief = i18n("Session Bus Access");
         description = i18n("Can communicate with other applications and processes in the same desktop session using the following communication protocols: %1",
                            "\n- " + busList.join("\n- "));
-        m_permissions.append(FlatpakPermission(name, sessionBusGroup.name(), valueOn, brief, description, "system-save-session", busList));
+        m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
     }
 
     const KConfigGroup systemBusGroup = parser.group("System Bus Policy");
     if (systemBusGroup.exists()) {
         const QStringList busList = systemBusGroup.keyList();
-        name = i18n("System Bus Policy");
         brief = i18n("System Bus Access");
         description =
             i18n("Can communicate with all applications and system services using the following communication protocols: %1", "\n- " + busList.join("\n- "));
-        m_permissions.append(FlatpakPermission(name, systemBusGroup.name(), valueOn, brief, description, "system-save-session", busList));
+        m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
     }
 }
