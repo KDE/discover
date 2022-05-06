@@ -43,7 +43,7 @@ FeaturedModel::FeaturedModel()
 
     static const QString fileName = featuredFileName();
     *featuredCache = dir + '/' + fileName;
-    const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover") + fileName);
+    const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover/") + fileName);
     auto *fetchJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
     acquireFetching(true);
     connect(fetchJob, &KIO::StoredTransferJob::result, this, [this, fetchJob]() {
