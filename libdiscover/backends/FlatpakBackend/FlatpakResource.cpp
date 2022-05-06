@@ -749,6 +749,11 @@ void FlatpakResource::loadPermissions()
     bool hasHostRW = false;
 
     for (const QStringView &dir : dirs) {
+        if (dir == QLatin1String("xdg-config/kdeglobals:ro")) {
+            // Ignore notifying about the global file being visible, since it's intended by design
+            continue;
+        }
+
         int separator = dir.lastIndexOf(':');
         const QStringView postfix = separator > 0 ? dir.mid(separator) : QStringView();
         const QStringView symbolicName = dir.left(separator);
