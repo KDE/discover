@@ -28,7 +28,8 @@ class FlatpakResource : public AbstractResource
     Q_PROPERTY(QStringList topObjects MEMBER m_objects CONSTANT)
     Q_PROPERTY(QStringList objects MEMBER m_bottomObjects CONSTANT)
     Q_PROPERTY(QString attentionText READ attentionText CONSTANT)
-
+    Q_PROPERTY(QString dataLocation READ dataLocation CONSTANT)
+    Q_PROPERTY(bool hasDataButUninstalled READ hasDataButUninstalled NOTIFY hasDataButUninstalledChanged)
 public:
     explicit FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent);
 
@@ -169,6 +170,8 @@ public:
     void updateFromAppStream();
     void setArch(const QString &arch);
     QString attentionText() const;
+    QString dataLocation() const;
+    bool hasDataButUninstalled() const;
     void setAvailableVersion(const QString &version)
     {
         m_availableVersion = version;
@@ -185,7 +188,10 @@ public:
         return m_temp;
     }
 
+    Q_INVOKABLE void clearUserData();
+
 Q_SIGNALS:
+    void hasDataButUninstalledChanged();
     void propertyStateChanged(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state);
 
 private:

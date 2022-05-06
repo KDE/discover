@@ -44,7 +44,7 @@ static QString iconCachePath(const AppStream::Icon &icon)
     return QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation), icon.url().fileName());
 }
 
-const QStringList FlatpakResource::m_objects({QStringLiteral("qrc:/qml/FlatpakAttention.qml")});
+const QStringList FlatpakResource::m_objects({QStringLiteral("qrc:/qml/FlatpakAttention.qml"), QStringLiteral("qrc:/qml/FlatpakRemoveData.qml")});
 const QStringList FlatpakResource::m_bottomObjects({QStringLiteral("qrc:/qml/PermissionsList.qml")});
 
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent)
@@ -87,6 +87,8 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
             }
         }
     }
+
+    connect(this, &FlatpakResource::stateChanged, this, &FlatpakResource::hasDataButUninstalledChanged);
 }
 
 AppStream::Component FlatpakResource::appstreamComponent() const
@@ -846,4 +848,21 @@ void FlatpakResource::loadPermissions()
             i18n("Can communicate with all applications and system services using the following communication protocols: %1", "\n- " + busList.join("\n- "));
         m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
     }
+}
+
+QString FlatpakResource::dataLocation() const
+{
+    auto id = m_appdata.bundle(AppStream::Bundle::KindFlatpak).id();
+    return QDir::homePath() + QLatin1String("/.var/") + id.section('/', 0, 1);
+}
+
+bool FlatpakResource::hasDataButUninstalled() const
+{
+    return m_state == None && QDir(dataLocation()).exists();
+}
+
+void FlatpakResource::clearUserData()
+{
+    QDir(dataLocation()).removeRecursively();
+    Q_EMIT hasDataButUninstalledChanged();
 }
