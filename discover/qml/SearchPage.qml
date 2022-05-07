@@ -37,6 +37,7 @@ ApplicationsListPage {
         contentItem: SearchField {
             id: searchField
             focus: true
+            visible: !window.wideScreen
             z: 100
             Component.onCompleted: forceActiveFocus()
 
