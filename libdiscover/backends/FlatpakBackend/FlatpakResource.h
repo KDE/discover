@@ -25,8 +25,8 @@ class FlatpakSource;
 class FlatpakResource : public AbstractResource
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList topObjects MEMBER m_objects CONSTANT)
-    Q_PROPERTY(QStringList objects MEMBER m_bottomObjects CONSTANT)
+    Q_PROPERTY(QStringList topObjects MEMBER s_objects CONSTANT)
+    Q_PROPERTY(QStringList objects MEMBER s_bottomObjects CONSTANT)
     Q_PROPERTY(QString attentionText READ attentionText CONSTANT)
     Q_PROPERTY(QString dataLocation READ dataLocation CONSTANT)
     Q_PROPERTY(bool hasDataButUninstalled READ hasDataButUninstalled NOTIFY hasDataButUninstalledChanged)
@@ -219,8 +219,8 @@ private:
     FlatpakResource::ResourceType m_type = DesktopApp;
     QSharedPointer<FlatpakSource> m_temp;
     QVector<FlatpakPermission> m_permissions;
-    static const QStringList m_objects;
-    static const QStringList m_bottomObjects;
+    static const QStringList s_objects;
+    static const QStringList s_bottomObjects;
 };
 
 inline uint qHash(const FlatpakResource::Id &key)
