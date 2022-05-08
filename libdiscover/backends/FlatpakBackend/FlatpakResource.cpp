@@ -330,7 +330,7 @@ QString FlatpakResource::attentionText() const
     return {};
 }
 
-Q_INVOKABLE QAbstractListModel *FlatpakResource::permissionsModel()
+QAbstractListModel *FlatpakResource::permissionsModel()
 {
     if (m_permissions.empty()) {
         loadPermissions();
@@ -338,7 +338,7 @@ Q_INVOKABLE QAbstractListModel *FlatpakResource::permissionsModel()
     return new FlatpakPermissionsModel(m_permissions);
 }
 
-Q_INVOKABLE int FlatpakResource::permissionCount()
+int FlatpakResource::permissionCount()
 {
     if (m_permissions.empty()) {
         loadPermissions();
