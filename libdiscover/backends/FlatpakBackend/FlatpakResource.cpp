@@ -338,14 +338,6 @@ QAbstractListModel *FlatpakResource::permissionsModel()
     return new FlatpakPermissionsModel(m_permissions);
 }
 
-int FlatpakResource::permissionCount()
-{
-    if (m_permissions.empty()) {
-        loadPermissions();
-    }
-    return m_permissions.count();
-}
-
 QString FlatpakResource::name() const
 {
     QString name = m_appdata.name();
