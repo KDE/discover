@@ -1366,7 +1366,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     else if (filter.state == AbstractResource::Upgradeable) {
         auto stream = new ResultsStream(QStringLiteral("FlatpakStream-upgradeable"));
         auto f = [this, stream] {
-            auto fw = new QFutureWatcher<QMap<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>(this);
+            auto fw = new QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>(this);
             connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, fw, stream]() {
                 if (g_cancellable_is_cancelled(m_cancellable)) {
                     stream->finish();
@@ -1404,7 +1404,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
             QVector<FlatpakInstallation *> installations = m_installations;
             auto cancellable = m_cancellable;
             fw->setFuture(QtConcurrent::run(&m_threadPool, [installations, cancellable] {
-                QMap<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
+                QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
 
                 for (auto installation : installations) {
                     g_autoptr(GError) localError = nullptr;
