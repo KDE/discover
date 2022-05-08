@@ -705,7 +705,6 @@ void FlatpakResource::loadPermissions()
     KDesktopFile parser(f.fileName());
 
     QString brief, description;
-    const QString valueOn = "on";
 
     const KConfigGroup contextGroup = parser.group("Context");
     const QString shared = contextGroup.readEntry("shared", QString());
@@ -802,7 +801,6 @@ void FlatpakResource::loadPermissions()
     QString appendText = "\n- " + homeList.join("\n- ");
     if (homeAccess) {
         brief = i18n("Home Folder Access");
-        QString accessLevel;
         if (home_rw && home_ro && home_cr) {
             description =
                 i18n("Can read, write, and create files in the following locations in your home folder without asking permission first: %1", appendText);
@@ -818,7 +816,6 @@ void FlatpakResource::loadPermissions()
     appendText = "\n- " + systemList.join("\n- ");
     if (systemAccess) {
         brief = i18n("System Folder Access");
-        QString accessLevel;
         if (system_rw && system_ro && system_cr) {
             description = i18n("Can read, write, and create system files in the following locations without asking permission first: %1", appendText);
         } else if (system_rw && !system_cr) {

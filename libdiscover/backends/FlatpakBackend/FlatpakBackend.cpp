@@ -1003,7 +1003,6 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
 
     AppStream::Pool *pool = new AppStream::Pool(this);
     auto fw = new QFutureWatcher<bool>(this);
-    const auto sourceName = source->name();
     connect(fw, &QFutureWatcher<bool>::finished, this, [this, fw, pool, source]() {
         source->m_pool = pool;
         m_flatpakLoadingSources.removeAll(source);
