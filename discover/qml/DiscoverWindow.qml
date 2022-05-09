@@ -34,6 +34,7 @@ Kirigami.ApplicationWindow
     pageStack.globalToolBar.style: Kirigami.Settings.isMobile ? Kirigami.ApplicationHeaderStyle.Titles : Kirigami.ApplicationHeaderStyle.Auto
     pageStack.globalToolBar.showNavigationButtons: pageStack.currentIndex == 0 ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ShowBackButton
     pageStack.globalToolBar.canContainHandles: true // mobile handles in header
+    pageStack.globalToolBar.toolbarActionHeightMode: Kirigami.ToolBarLayout.AlwaysFill
 
     readonly property var leftPage: window.stack.depth>0 ? window.stack.get(0) : null
 
