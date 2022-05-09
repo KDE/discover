@@ -29,4 +29,5 @@ target_link_libraries(kcm_updates
 )
 
 install(TARGETS kcm_updates DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
+install(FILES kcm_updates.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 kpackage_install_package(package kcm_updates kcms)
