@@ -1026,7 +1026,7 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
     pool->setFlags(AppStream::Pool::FlagReadCollection);
     pool->setCacheFlags(AppStream::Pool::CacheFlagUseUser);
 
-    const QString subdir = flatpak_installation_get_id(source->installation()) + QLatin1Char('/') + sourceName;
+    const QString subdir = flatpak_installation_get_id(source->installation()) + QLatin1Char('/') + source->name();
     pool->setCacheLocation(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/flatpak-appstream/" + subdir);
     QDir().mkpath(pool->cacheLocation());
 #endif
