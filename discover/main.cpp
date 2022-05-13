@@ -92,13 +92,8 @@ void processArgs(QCommandLineParser *parser, DiscoverObject *mainWindow)
 
 static void raiseWindow(QWindow *window)
 {
-    if (QX11Info::isPlatformX11()) {
-        KStartupInfo::setNewStartupId(window, QX11Info::nextStartupId());
-    } else if (KWindowSystem::isPlatformWayland()) {
-        KWindowSystem::setCurrentXdgActivationToken(qEnvironmentVariable("XDG_ACTIVATION_TOKEN"));
-        KWindowSystem::activateWindow(window->winId());
-    }
-    window->raise();
+    KWindowSystem::updateStartupId(window);
+    KWindowSystem::activateWindow(window);
 }
 
 int main(int argc, char **argv)
