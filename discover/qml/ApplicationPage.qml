@@ -11,7 +11,7 @@ import QtQuick.Window 2.15
 import QtQuick.Layouts 1.15
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami 2.20 as Kirigami
 import "navigation.js" as Navigation
 
 DiscoverPage {
@@ -436,11 +436,11 @@ DiscoverPage {
             }
 
             // Long app description
-            Label {
+            Kirigami.SelectableLabel {
                 Layout.fillWidth: true
                 wrapMode: Text.WordWrap
                 text: appInfo.application.longDescription
-                textFormat: Text.StyledText
+                textFormat: TextEdit.RichText
                 onLinkActivated: Qt.openUrlExternally(link);
             }
 
