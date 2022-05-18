@@ -8,6 +8,7 @@ function clearStack()
 {
     window.currentTopLevel = ""
     window.stack.clear();
+    window.pageStack.layers.clear();
 }
 
 function openApplicationListSource(origin) {
