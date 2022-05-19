@@ -202,7 +202,7 @@ Kirigami.ApplicationWindow
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 8)
                 visible: page.errorMessage !== ""
-                icon.name: "dialog-error"
+                icon.name: "emblem-warning"
                 text: page.errorMessage
                 explanation: page.errorExplanation
                 helpfulAction: Kirigami.Action {

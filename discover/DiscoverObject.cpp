@@ -150,12 +150,32 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
                 found |= b->hasApplications();
 
             if (!found) {
-                const QString errorText = i18n("Discover currently cannot be used to install "
-                "any apps because none of its app backends are available.");
-                const QString errorExplanation;
-                const QString buttonIcon = QStringLiteral("tools-report-bug");
-                const QString buttonText = i18n("Report This Issue");
-                const QString buttonUrl = KOSRelease().bugReportUrl();
+                QString errorText = i18n(
+                    "Discover currently cannot be used to install any apps or "
+                    "perform system updates because none of its app backends are "
+                    "available.");
+                QString errorExplanation = xi18nc("@info",
+                    "You can install some on the Settings page, under the "
+                    "<interface>Missing Backends</interface> section.<nl/><nl/>"
+                    "Also please consider reporting this as a packaging issue to "
+                    "your distribution.");
+                QString buttonIcon = QStringLiteral("tools-report-bug");
+                QString buttonText = i18n("Report This Issue");
+                QString buttonUrl = KOSRelease().bugReportUrl();
+
+                if (KOSRelease().name().contains(QStringLiteral("Arch Linux"))) {
+                    errorExplanation = xi18nc("@info",
+                        "You can use <command>pacman</command> to "
+                        "install the optional dependencies that are needed to "
+                        "enable the application backends.<nl/><nl/>Please note "
+                        "that Arch Linux developers recommend using "
+                        "<command>pacman</command> for managing software because "
+                        "the PackageKit backend is not well-integrated on Arch "
+                        "Linux.");
+                    buttonIcon = QStringLiteral("help-about");
+                    buttonText = i18n("Learn More");
+                    buttonUrl = KOSRelease().supportUrl();
+                }
 
                 Q_EMIT openErrorPage(errorText, errorExplanation, buttonText, buttonIcon, buttonUrl);
             }
