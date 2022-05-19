@@ -39,6 +39,7 @@
 #include <KCrash>
 #include <KLocalizedContext>
 #include <KLocalizedString>
+#include <KOSRelease>
 #include <KSharedConfig>
 #include <KStatusNotifierItem>
 #include <KUiServerV2JobTracker>
@@ -148,11 +149,16 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
             for (auto b : backends)
                 found |= b->hasApplications();
 
-            if (!found)
-                Q_EMIT openErrorPage(
-                    i18n("Discover currently cannot be used to install any apps "
-                         "because none of its app backends are available. Please "
-                         "report this issue to the packagers of your distribution."));
+            if (!found) {
+                const QString errorText = i18n("Discover currently cannot be used to install "
+                "any apps because none of its app backends are available.");
+                const QString errorExplanation;
+                const QString buttonIcon = QStringLiteral("tools-report-bug");
+                const QString buttonText = i18n("Report This Issue");
+                const QString buttonUrl = KOSRelease().bugReportUrl();
+
+                Q_EMIT openErrorPage(errorText, errorExplanation, buttonText, buttonIcon, buttonUrl);
+            }
         },
         this);
 
@@ -306,11 +312,15 @@ void DiscoverObject::openApplication(const QUrl &url)
                     openApplication(QUrl(QStringLiteral("appstream://org.kde.discover.snap")));
                     showPassiveNotification(i18n("Please make sure Snap support is installed"));
                 } else {
-                    Q_EMIT openErrorPage(
-                        i18n("Could not open %1 because it was not found in any "
-                             "available software repositories. Please report this "
-                             "issue to the packagers of your distribution.",
-                             url.toDisplayString()));
+                    const QString errorText = i18n("Could not open %1 because it "
+                    "was not found in any available software repositories.",
+                    url.toDisplayString());
+                    const QString errorExplanation = i18n("Please report this "
+                    "issue to the packagers of your distribution.");
+                    QString buttonIcon = QStringLiteral("tools-report-bug");
+                    QString buttonText = i18n("Report This Issue");
+                    QString buttonUrl = KOSRelease().bugReportUrl();
+                    Q_EMIT openErrorPage(errorText, errorExplanation, buttonText, buttonIcon, buttonUrl);
                 }
             });
         },

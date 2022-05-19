@@ -80,7 +80,7 @@ Q_SIGNALS:
 
     void compactModeChanged(DiscoverObject::CompactMode compactMode);
     void unableToFind(const QString &resid);
-    void openErrorPage(const QString &errorMessage);
+    void openErrorPage(const QString &errorMessage, const QString &errorExplanation, const QString &buttonText, const QString &buttonIcon, const QString &buttonURL);
 
 private:
     void showLoadingPage();

@@ -138,10 +138,10 @@ Kirigami.ApplicationWindow
             Navigation.openApplicationList({search: search})
         }
 
-        function onOpenErrorPage(errorMessage) {
+        function onOpenErrorPage(errorMessage, errorExplanation, buttonText, buttonIcon, buttonUrl) {
             Navigation.clearStack()
-            console.warn("error", errorMessage)
-            window.stack.push(errorPageComponent, { error: errorMessage, title: i18n("Error") })
+            console.warn("Error: " + errorMessage + "\n" + errorExplanation + "\n" + "Please visit " + buttonUrl)
+            window.stack.push(errorPageComponent, { title: i18n("Error"), errorMessage: errorMessage, errorExplanation: errorExplanation, buttonText: buttonText, buttonIcon: buttonIcon, buttonUrl: buttonUrl })
         }
 
         function onUnableToFind(resid) {
@@ -187,7 +187,11 @@ Kirigami.ApplicationWindow
         id: errorPageComponent
         Kirigami.Page {
             id: page
-            property string error: ""
+            property string errorMessage: ""
+            property string errorExplanation: ""
+            property string buttonText: ""
+            property string buttonIcon: ""
+            property string buttonUrl: ""
             readonly property bool isHome: true
             function searchFor(text) {
                 if (text.length === 0)
@@ -197,14 +201,15 @@ Kirigami.ApplicationWindow
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 8)
-                visible: page.error !== ""
-                icon.name: "error"
-                text: page.error
+                visible: page.errorMessage !== ""
+                icon.name: "dialog-error"
+                text: page.errorMessage
+                explanation: page.errorExplanation
                 helpfulAction: Kirigami.Action {
-                    icon.name: "tools-report-bug"
-                    text: i18n("Report this issue")
+                    icon.name: page.buttonIcon
+                    text: page.buttonText
                     onTriggered: {
-                        Qt.openUrlExternally(ResourcesModel.distroBugReportUrl())
+                        Qt.openUrlExternally(page.buttonUrl)
                     }
                 }
             }
