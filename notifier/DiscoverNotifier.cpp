@@ -122,7 +122,7 @@ void DiscoverNotifier::showUpdatesNotification()
     m_updatesAvailableNotification->setDefaultAction(name);
     m_updatesAvailableNotification->setActions({name});
     connect(m_updatesAvailableNotification, QOverload<unsigned int>::of(&KNotification::activated), this, [this] {
-        showDiscoverUpdates({});
+        showDiscoverUpdates(m_updatesAvailableNotification->xdgActivationToken());
     });
 }
 
