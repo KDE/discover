@@ -13,6 +13,7 @@
 
 class AbstractResource;
 class Category;
+class KStatusNotifierItem;
 class QWindow;
 class QQmlApplicationEngine;
 class CachedNetworkAccessManagerFactory;
@@ -56,6 +57,7 @@ public:
     QRect initialGeometry() const;
 
     QString describeSources() const;
+    Q_SCRIPTABLE void restore();
 
 public Q_SLOTS:
     void openApplication(const QUrl &app);
@@ -77,13 +79,14 @@ Q_SIGNALS:
     void listCategoryInternal(Category *cat);
 
     void compactModeChanged(DiscoverObject::CompactMode compactMode);
-    void preventedClose();
     void unableToFind(const QString &resid);
     void openErrorPage(const QString &errorMessage);
 
 private:
     void showLoadingPage();
     void integrateObject(QObject *object);
+    bool quitWhenIdle();
+    void reconsiderQuit();
     QQmlApplicationEngine *engine() const
     {
         return m_engine;
@@ -93,6 +96,7 @@ private:
 
     CompactMode m_mode;
     QScopedPointer<CachedNetworkAccessManagerFactory> m_networkAccessManagerFactory;
+    KStatusNotifierItem *m_sni = nullptr;
 };
 
 #endif // DISCOVEROBJECT_H

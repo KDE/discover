@@ -44,6 +44,8 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF5::ConfigGui
                                      KF5::KIOCore
                                      KF5::WindowSystem
+                                     KF5::Notifications
+                                     KF5::JobWidgets
                                      Qt::Widgets
                                      Qt::Quick
                                      Discover::Common

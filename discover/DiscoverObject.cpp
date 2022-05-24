@@ -11,6 +11,7 @@
 #include "FeaturedModel.h"
 #include "PaginateModel.h"
 #include "UnityLauncher.h"
+#include <Transaction/TransactionModel.h>
 
 // Qt includes
 #include "discover_debug.h"
@@ -39,6 +40,8 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 #include <KSharedConfig>
+#include <KStatusNotifierItem>
+#include <KUiServerV2JobTracker>
 #include <kcoreaddons_version.h>
 // #include <KSwitchLanguageDialog>
 
@@ -320,6 +323,84 @@ void DiscoverObject::openApplication(const QUrl &url)
     }
 }
 
+class TransactionsJob : public KJob
+{
+public:
+    void start() override
+    {
+        // no-op, this is just observing
+
+        setTotalAmount(Items, TransactionModel::global()->rowCount());
+        setPercent(TransactionModel::global()->progress());
+        connect(TransactionModel::global(), &TransactionModel::lastTransactionFinished, this, &TransactionsJob::emitResult);
+        connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &TransactionsJob::refreshInfo);
+        connect(TransactionModel::global(), &TransactionModel::progressChanged, this, [this] {
+            setPercent(TransactionModel::global()->progress());
+        });
+        refreshInfo();
+    }
+
+    void refreshInfo()
+    {
+        if (TransactionModel::global()->rowCount() == 0) {
+            return;
+        }
+
+        setProcessedAmount(Items, totalAmount(Items) - TransactionModel::global()->rowCount());
+
+        auto firstTransaction = TransactionModel::global()->transactions().constFirst();
+        Q_EMIT description(this, firstTransaction->name());
+    }
+};
+
+bool DiscoverObject::quitWhenIdle()
+{
+    if (!ResourcesModel::global()->isBusy()) {
+        return true;
+    }
+
+    if (!m_sni) {
+        auto tracker = new KUiServerV2JobTracker(m_sni);
+        auto job = new TransactionsJob;
+        tracker->registerJob(job);
+        job->start();
+
+        m_sni = new KStatusNotifierItem(this);
+        m_sni->setStatus(KStatusNotifierItem::Active);
+        m_sni->setIconByName("plasmadiscover");
+        m_sni->setTitle(i18n("Discover"));
+        m_sni->setToolTip("process-working-symbolic", i18n("Discover"), i18n("Discover was closed before certain tasks were done, waiting for it to finish."));
+        m_sni->setStandardActionsEnabled(false);
+
+        connect(TransactionModel::global(), &TransactionModel::countChanged, this, &DiscoverObject::reconsiderQuit);
+        connect(m_sni, &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
+
+        rootObject()->hide();
+    }
+    return false;
+}
+
+void DiscoverObject::restore()
+{
+    disconnect(TransactionModel::global(), &TransactionModel::countChanged, this, &DiscoverObject::reconsiderQuit);
+    disconnect(m_sni, &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
+
+    rootObject()->show();
+    m_sni->deleteLater();
+    m_sni = nullptr;
+}
+
+void DiscoverObject::reconsiderQuit()
+{
+    if (ResourcesModel::global()->isBusy()) {
+        return;
+    }
+
+    m_sni->deleteLater();
+    // Let the job UI to finalise properly
+    QTimer::singleShot(20, qGuiApp, &QCoreApplication::quit);
+}
+
 void DiscoverObject::integrateObject(QObject *object)
 {
     if (!object) {
@@ -349,8 +430,7 @@ void DiscoverObject::integrateObject(QObject *object)
 
     object->setParent(m_engine);
     connect(qGuiApp, &QGuiApplication::commitDataRequest, this, [this](QSessionManager &sessionManager) {
-        if (ResourcesModel::global()->isBusy()) {
-            Q_EMIT preventedClose();
+        if (!quitWhenIdle()) {
             sessionManager.cancel();
         }
     });
@@ -362,9 +442,7 @@ bool DiscoverObject::eventFilter(QObject *object, QEvent *event)
         return false;
 
     if (event->type() == QEvent::Close) {
-        if (ResourcesModel::global()->isBusy()) {
-            qCWarning(DISCOVER_LOG) << "not closing because there's still pending tasks";
-            Q_EMIT preventedClose();
+        if (!quitWhenIdle()) {
             return true;
         }
 

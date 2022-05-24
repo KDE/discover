@@ -144,9 +144,6 @@ Kirigami.ApplicationWindow
             window.stack.push(errorPageComponent, { error: errorMessage, title: i18n("Error") })
         }
 
-        function onPreventedClose() {
-            showPassiveNotification(i18n("Could not close Discover because some tasks are still in progress."), 20000, i18n("Quit Anyway"), function() { Qt.quit() })
-        }
         function onUnableToFind(resid) {
             showPassiveNotification(i18n("Unable to find resource: %1", resid));
             Navigation.openHome()
@@ -324,13 +321,16 @@ Kirigami.ApplicationWindow
             function onProceedRequest(title, description) {
                 var dialog = proceedDialog.createObject(window, {transaction: transaction, title: title, description: description})
                 dialog.open()
+                app.restore()
             }
             function onPassiveMessage(message) {
                 window.showPassiveNotification(message)
+                app.restore()
             }
             function onDistroErrorMessage(message, actions) {
                 var dialog = distroErrorMessageDialog.createObject(window, {transaction: transaction, title: i18n("Error"), message: message})
                 dialog.open()
+                app.restore()
             }
         }
     }

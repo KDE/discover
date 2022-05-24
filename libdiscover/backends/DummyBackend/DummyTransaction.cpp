@@ -39,14 +39,15 @@ void DummyTransaction::iterateTransaction()
     } else if (status() == DownloadingStatus) {
         setStatus(CommittingStatus);
         QTimer::singleShot(/*KRandom::random()%*/ 100, this, &DummyTransaction::iterateTransaction);
-    } else
 #ifdef TEST_PROCEED
+    } else if (resource()->name() == "Dummy 101") {
         Q_EMIT proceedRequest(QStringLiteral("yadda yadda"),
                               QStringLiteral("Biii BOooo<ul><li>A</li><li>A</li>") + QStringLiteral("<li>A</li>").repeated(2)
                                   + QStringLiteral("<li>A</li></ul>"));
-#else
-        finishTransaction();
 #endif
+    } else {
+        finishTransaction();
+    }
 }
 
 void DummyTransaction::proceed()
