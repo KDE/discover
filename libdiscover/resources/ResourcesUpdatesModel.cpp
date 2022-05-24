@@ -106,7 +106,7 @@ public:
     }
     QString name() const override
     {
-        return i18n("Updates");
+        return i18n("Updating");
     }
 
 Q_SIGNALS:
