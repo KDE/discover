@@ -165,16 +165,15 @@ DiscoverPage {
                         // Author
                         Label {
                             id: author
+
                             Layout.fillWidth: true
+                            Layout.bottomMargin: appInfo.internalSpacings
+
                             opacity: 0.8
                             text: appInfo.application.author ? appInfo.application.author : i18n("Unknown author")
                             wrapMode: Text.Wrap
                             maximumLineCount: 5
                             elide: Text.ElideRight
-                        }
-
-                        Item {
-                            implicitHeight: appInfo.internalSpacings
                         }
 
                         // Rating
@@ -400,6 +399,8 @@ DiscoverPage {
 
 
         Repeater {
+            Layout.bottomMargin: appInfo.internalSpacings * 2
+
             model: application.topObjects
             delegate: Loader {
                 property QtObject resource: appInfo.application
@@ -456,6 +457,8 @@ DiscoverPage {
                                                                     addonsButton.implicitHeight)
 
                 Layout.fillWidth: true
+                Layout.bottomMargin: appInfo.internalSpacings * 2
+
                 spacing: Kirigami.Units.smallSpacing
                 visible: visibleButtons > 0
 
@@ -516,10 +519,6 @@ DiscoverPage {
                 }
             }
 
-            Kirigami.Separator {
-                Layout.fillWidth: true
-            }
-
             Kirigami.Heading {
                 text: i18n("What's New")
                 level: 2
@@ -530,7 +529,10 @@ DiscoverPage {
             // Changelog text
             Label {
                 id: changelogLabel
+
                 Layout.fillWidth: true
+                Layout.bottomMargin: appInfo.internalSpacings * 2
+
                 visible: text.length > 0
                 wrapMode: Text.WordWrap
 
@@ -541,11 +543,6 @@ DiscoverPage {
                         changelogLabel.text = changelog
                     }
                 }
-            }
-
-            Kirigami.Separator {
-                Layout.fillWidth: true
-                visible: changelogLabel.visible
             }
 
             Kirigami.Heading {
@@ -573,6 +570,7 @@ DiscoverPage {
             // Review-related buttons
             Flow {
                 Layout.fillWidth: true
+                Layout.bottomMargin: appInfo.internalSpacings *2
 
                 spacing: appInfo.internalSpacings
 
@@ -601,11 +599,6 @@ DiscoverPage {
             }
 
             // "Get Involved" section
-            Kirigami.Separator {
-                Layout.fillWidth: true
-                visible: getInvolvedLayout.visible
-            }
-
             Kirigami.Heading {
                 text: i18n("Get Involved")
                 level: 2
@@ -623,6 +616,8 @@ DiscoverPage {
                                                                     bugButton.implicitHeight)
 
                 Layout.fillWidth: true
+                Layout.bottomMargin: appInfo.internalSpacings * 2
+
                 spacing: Kirigami.Units.smallSpacing
                 visible: visibleButtons > 0
 
