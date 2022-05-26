@@ -140,7 +140,7 @@ bool FlatpakNotifier::setupFlatpakInstallations(GError **error)
         return false;
     if (!m_user.ensureInitialized(
             [this, error] {
-                return flatpak_installation_new_system(m_cancellable, error);
+                return flatpak_installation_new_user(m_cancellable, error);
             },
             m_cancellable,
             error))
