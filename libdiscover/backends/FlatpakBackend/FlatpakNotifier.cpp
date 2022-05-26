@@ -74,10 +74,13 @@ void FlatpakNotifier::recheckSystemUpdateNeeded()
 
 void FlatpakNotifier::onFetchUpdatesFinished(Installation *installation, bool hasUpdates)
 {
-    const bool changed = this->hasUpdates() != hasUpdates;
+    if (installation->m_hasUpdates == hasUpdates) {
+        return;
+    }
+    bool hadUpdates = this->hasUpdates();
     installation->m_hasUpdates = hasUpdates;
 
-    if (changed) {
+    if (hadUpdates != this->hasUpdates()) {
         Q_EMIT foundUpdates();
     }
 }

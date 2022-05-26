@@ -50,6 +50,7 @@ public:
     Installation m_user;
     Installation m_system;
     GCancellable *const m_cancellable;
+    bool m_lastHasUpdates = false;
 };
 
 #endif
