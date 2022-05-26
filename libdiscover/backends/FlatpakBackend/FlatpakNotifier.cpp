@@ -14,6 +14,8 @@
 #include <QTimer>
 #include <QtConcurrentRun>
 
+using namespace std::chrono_literals;
+
 static void installationChanged(GFileMonitor *monitor, GFile *child, GFile *other_file, GFileMonitorEvent event_type, gpointer self)
 {
     Q_UNUSED(monitor);
@@ -36,7 +38,7 @@ FlatpakNotifier::FlatpakNotifier(QObject *parent)
     , m_cancellable(g_cancellable_new())
 {
     QTimer *dailyCheck = new QTimer(this);
-    dailyCheck->setInterval(24 * 60 * 60 * 1000); // refresh at least once every day
+    dailyCheck->setInterval(24h); // refresh at least once every day
     connect(dailyCheck, &QTimer::timeout, this, &FlatpakNotifier::recheckSystemUpdateNeeded);
 }
 

@@ -26,6 +26,8 @@
 #include "libdiscover_backend_debug.h"
 #include "pk-offline-private.h"
 
+using namespace std::chrono_literals;
+
 PackageKitNotifier::PackageKitNotifier(QObject *parent)
     : BackendNotifierModule(parent)
     , m_securityUpdates(0)
@@ -40,7 +42,7 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
     });
 
     // Check if there's packages after 5'
-    QTimer::singleShot(5 * 60 * 1000, this, &PackageKitNotifier::refreshDatabase);
+    QTimer::singleShot(5min, this, &PackageKitNotifier::refreshDatabase);
 
     QTimer *regularCheck = new QTimer(this);
     connect(regularCheck, &QTimer::timeout, this, &PackageKitNotifier::refreshDatabase);
@@ -51,7 +53,7 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
             bool ok;
             const int days = value.toInt(&ok);
             if (!ok || days == 0) {
-                regularCheck->setInterval(24 * 60 * 60 * 1000); // refresh at least once every day
+                regularCheck->setInterval(24h); // refresh at least once every day
                 regularCheck->start();
                 if (!value.isEmpty())
                     qWarning() << "couldn't understand value for timer:" << value;
@@ -61,11 +63,11 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
             // https://wiki.debian.org/UnattendedUpgrades
         });
     } else {
-        regularCheck->setInterval(24 * 60 * 60 * 1000); // refresh at least once every day
+        regularCheck->setInterval(24h); // refresh at least once every day
         regularCheck->start();
     }
 
-    QTimer::singleShot(3000, this, &PackageKitNotifier::checkOfflineUpdates);
+    QTimer::singleShot(3s, this, &PackageKitNotifier::checkOfflineUpdates);
 
     m_recheckTimer = new QTimer(this);
     m_recheckTimer->setInterval(200);
