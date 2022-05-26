@@ -42,6 +42,7 @@ private Q_SLOTS:
 
 private:
     void nowNeedsReboot();
+    void getUpdates();
     void recheckSystemUpdate();
     void checkOfflineUpdates();
     void setupGetUpdatesTransaction(PackageKit::Transaction *transaction);

@@ -177,11 +177,16 @@ void PackageKitNotifier::checkOfflineUpdates()
 
 void PackageKitNotifier::recheckSystemUpdateNeeded()
 {
+    refreshDatabase();
+}
+
+void PackageKitNotifier::getUpdates()
+{
     static bool first = true;
     if (first) {
         // PKQt will Q_EMIT these signals when it starts (bug?) and would trigger the system recheck before we've ever checked at all
-        connect(PackageKit::Daemon::global(), &PackageKit::Daemon::networkStateChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
-        connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
+        connect(PackageKit::Daemon::global(), &PackageKit::Daemon::networkStateChanged, this, &PackageKitNotifier::getUpdates);
+        connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitNotifier::getUpdates);
         first = false;
     }
 
@@ -262,8 +267,12 @@ void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade 
 void PackageKitNotifier::refreshDatabase()
 {
     if (!m_refresher) {
-        m_refresher = PackageKit::Daemon::refreshCache(false);
-        connect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
+        if (std::chrono::seconds(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache)) > 24h) {
+            m_refresher = PackageKit::Daemon::refreshCache(false);
+            connect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitNotifier::getUpdates);
+        } else {
+            getUpdates();
+        }
     }
 
     if (!m_distUpgrades && (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleUpgradeSystem)) {
