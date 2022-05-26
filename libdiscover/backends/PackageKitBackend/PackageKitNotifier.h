@@ -45,7 +45,7 @@ private:
     void recheckSystemUpdate();
     void checkOfflineUpdates();
     void setupGetUpdatesTransaction(PackageKit::Transaction *transaction);
-    QProcess *checkAptVariable(const QString &aptconfig, const QLatin1String &varname, const std::function<void(const QStringRef &val)> &func);
+    QProcess *checkAptVariable(const QString &aptconfig, const QLatin1String &varname, const std::function<void(const QStringView &val)> &func);
 
     bool m_needsReboot = false;
     uint m_securityUpdates;

@@ -47,7 +47,7 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
 
     const QString aptconfig = QStandardPaths::findExecutable(QStringLiteral("apt-config"));
     if (!aptconfig.isEmpty()) {
-        checkAptVariable(aptconfig, QLatin1String("Apt::Periodic::Update-Package-Lists"), [regularCheck](const QStringRef &value) {
+        checkAptVariable(aptconfig, QLatin1String("Apt::Periodic::Update-Package-Lists"), [regularCheck](const QStringView &value) {
             bool ok;
             const int days = value.toInt(&ok);
             if (!ok || days == 0) {
@@ -265,7 +265,7 @@ void PackageKitNotifier::refreshDatabase()
     }
 }
 
-QProcess *PackageKitNotifier::checkAptVariable(const QString &aptconfig, const QLatin1String &varname, const std::function<void(const QStringRef &val)> &func)
+QProcess *PackageKitNotifier::checkAptVariable(const QString &aptconfig, const QLatin1String &varname, const std::function<void(const QStringView &val)> &func)
 {
     QProcess *process = new QProcess;
     process->start(aptconfig, {QStringLiteral("dump")});
@@ -279,7 +279,7 @@ QProcess *PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
         while (stream.readLineInto(&line)) {
             const auto match = rx.match(line);
             if (match.hasMatch()) {
-                func(match.capturedRef(1));
+                func(match.capturedView(1));
                 return;
             }
         }
