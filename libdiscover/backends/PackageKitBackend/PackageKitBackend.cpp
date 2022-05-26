@@ -775,11 +775,9 @@ bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource *res) 
 // It's an optimisation as there's a bunch of allocations that happen from packageName
 // Having packageName return a QStringRef or a QStringView would fix this issue.
 // TODO Qt 6: Have packageName and similars return a QStringView
-static QStringRef TransactionpackageName(const QString &packageID)
+static QStringView TransactionpackageName(const QString &packageID)
 {
-    QStringRef ret;
-    ret = packageID.leftRef(packageID.indexOf(QLatin1Char(';')));
-    return ret;
+    return QStringView(packageID).left(packageID.indexOf(QLatin1Char(';')));
 }
 
 QSet<QString> PackageKitBackend::upgradeablePackageId(const PackageKitResource *res) const
