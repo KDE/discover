@@ -269,7 +269,7 @@ QProcess *PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
 {
     QProcess *process = new QProcess;
     process->start(aptconfig, {QStringLiteral("dump")});
-    connect(process, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, [func, process, varname](int code) {
+    connect(process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, [func, process, varname](int code) {
         if (code != 0)
             return;
 
@@ -285,7 +285,7 @@ QProcess *PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
         }
         func({});
     });
-    connect(process, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), process, &QObject::deleteLater);
+    connect(process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), process, &QObject::deleteLater);
     return process;
 }
 
