@@ -156,7 +156,7 @@ DiscoverPage {
                         Kirigami.Heading {
                             Layout.fillWidth: true
                             text: appInfo.application.name
-                            font.weight: Font.DemiBold
+                            type: Kirigami.Heading.Type.Primary
                             wrapMode: Text.Wrap
                             maximumLineCount: 5
                             elide: Text.ElideRight
@@ -428,9 +428,9 @@ DiscoverPage {
             // Short description
             Kirigami.Heading {
                 Layout.fillWidth: true
-                level: 2
-                font.weight: Font.DemiBold
                 text: appInfo.application.comment
+                type: Kirigami.Heading.Type.Primary
+                level: 2
                 wrapMode: Text.Wrap
                 maximumLineCount: 5
                 elide: Text.ElideRight
@@ -520,10 +520,11 @@ DiscoverPage {
             }
 
             Kirigami.Heading {
+                visible: changelogLabel.visible
                 text: i18n("What's New")
                 level: 2
-                font.weight: Font.DemiBold
-                visible: changelogLabel.visible
+                type: Kirigami.Heading.Type.Primary
+                wrapMode: Text.Wrap
             }
 
             // Changelog text
@@ -548,9 +549,10 @@ DiscoverPage {
             Kirigami.Heading {
                 Layout.fillWidth: true
                 visible: rep.count > 0
-                font.weight: Font.DemiBold
                 text: i18n("Reviews")
                 level: 2
+                type: Kirigami.Heading.Type.Primary
+                wrapMode: Text.Wrap
             }
 
             // Top three reviews
@@ -600,10 +602,11 @@ DiscoverPage {
 
             // "Get Involved" section
             Kirigami.Heading {
+                visible: getInvolvedLayout.visible
                 text: i18n("Get Involved")
                 level: 2
-                font.weight: Font.DemiBold
-                visible: getInvolvedLayout.visible
+                type: Kirigami.Heading.Type.Primary
+                wrapMode: Text.Wrap
             }
 
             RowLayout {

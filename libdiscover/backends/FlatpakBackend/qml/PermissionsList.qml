@@ -14,10 +14,10 @@ ColumnLayout {
     visible: list.model.rowCount() > 0
 
     Kirigami.Heading {
-        text: i18nc("%1 is the name of the application", "Permissions for %1", resource.name)
-        font.weight: Font.DemiBold
-        level: 2
         Layout.fillWidth: true
+        text: i18nc("%1 is the name of the application", "Permissions for %1", resource.name)
+        level: 2
+        type: Kirigami.Heading.Type.Primary
         wrapMode: Text.Wrap
     }
 
