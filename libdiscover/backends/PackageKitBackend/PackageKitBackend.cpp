@@ -627,7 +627,9 @@ PKResultsStream *PackageKitBackend::findResourceByPackageName(const QUrl &url)
                         return it.key().compare(id, Qt::CaseInsensitive) == 0 ||
                             // doing (id == id.key()+".desktop") without allocating
                             (id.size() == (desktopPostfix.size() + it.key().size()) && id.endsWith(desktopPostfix)
-                             && id.startsWith(it.key(), Qt::CaseInsensitive));
+                             && id.startsWith(it.key(), Qt::CaseInsensitive)) ||
+                            (it.key().size() == (desktopPostfix.size() + id.size()) && it.key().endsWith(desktopPostfix)
+                             && it.key().startsWith(id, Qt::CaseInsensitive));
                     });
                     if (matches) {
                         pkg = it.value();
