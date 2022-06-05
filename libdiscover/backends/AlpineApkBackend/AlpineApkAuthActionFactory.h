@@ -24,9 +24,9 @@
 #include <QString>
 #include <QVariant>
 
-#include <KAuthAction>
-#include <KAuthActionReply>
-#include <KAuthExecuteJob>
+#include <KAuth/Action>
+#include <KAuth/ActionReply>
+#include <KAuth/ExecuteJob>
 
 namespace ActionFactory {
 

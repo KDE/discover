@@ -25,9 +25,9 @@
 #include "alpineapk_backend_logging.h"
 #include "utils.h"
 
-#include <kcoreaddons_version.h>
-#include <KAuthExecuteJob>
+#include <KAuth/ExecuteJob>
 #include <KLocalizedString>
+#include <kcoreaddons_version.h>
 
 #include <QtApk>
 

@@ -29,9 +29,9 @@
 #include <QTimer>
 
 // KF5
-#include <kcoreaddons_version.h>
-#include <KAuthExecuteJob>
+#include <KAuth/ExecuteJob>
 #include <KLocalizedString>
+#include <kcoreaddons_version.h>
 
 AlpineApkTransaction::AlpineApkTransaction(AlpineApkResource *res, Role role)
     : AlpineApkTransaction(res, {}, role)

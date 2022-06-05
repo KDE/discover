@@ -25,7 +25,7 @@
 #include <QScopedPointer>
 #include <QFile>
 
-#include <KAuthHelperSupport>
+#include <KAuth/HelperSupport>
 #include <kauth_version.h>
 
 #include "AlpineApkAuthHelper.h"

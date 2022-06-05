@@ -29,7 +29,7 @@
 #include <QVector>
 
 // KF5
-#include <KAuthExecuteJob>
+#include <KAuth/ExecuteJob>
 #include <KLocalizedString>
 
 // libapk-qt

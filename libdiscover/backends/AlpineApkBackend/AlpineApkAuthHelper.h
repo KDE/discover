@@ -21,7 +21,8 @@
 #include <QEventLoop>
 #include <QObject>
 #include <QVariant>
-#include <KAuthActionReply>
+
+#include <KAuth/ActionReply>
 
 #include <QtApk>
 
