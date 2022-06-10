@@ -129,7 +129,12 @@ Kirigami.GlobalDrawer {
             action: updateAction
             visible: drawer.wideScreen
 
-            backgroundColor: ResourcesModel.updatesCount>0 ? "orange" : Kirigami.Theme.backgroundColor
+            trailing: Kirigami.Icon {
+                visible: ResourcesModel.updatesCount > 0
+                width: Kirigami.Units.iconSizes.sizeForLabels
+                height: Kirigami.Units.iconSizes.sizeForLabels
+                source: "emblem-important"
+            }
 
             // Disable down navigation on the last item so we don't escape the
             // actual list.
