@@ -22,11 +22,6 @@
 #include <QWindow>
 
 #include <QProcessEnvironment>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <QX11Info>
-#else
-#include <private/qtx11extras_p.h>
-#endif
 
 typedef QHash<QString, DiscoverObject::CompactMode> StringCompactMode;
 Q_GLOBAL_STATIC_WITH_ARGS(StringCompactMode,
