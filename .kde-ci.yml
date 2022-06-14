@@ -19,7 +19,6 @@ Dependencies:
     'frameworks/ki18n': '@latest'
     'frameworks/kidletime': '@latest'
     'frameworks/kio': '@latest'
-    'frameworks/kitemmodels': '@latest'
     'frameworks/knewstuff': '@latest'
     'frameworks/knotifications': '@latest'
     'frameworks/kservice': '@latest'

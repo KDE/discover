@@ -57,7 +57,6 @@ PUBLIC
     Qt::Qml
     Qt::Gui
     KF5::I18n
-    KF5::ItemModels
 PRIVATE
     Qt::Xml
     KF5::CoreAddons

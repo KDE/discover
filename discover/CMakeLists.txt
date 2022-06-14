@@ -40,7 +40,6 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF5::Crash
                                      KF5::DBusAddons
                                      KF5::I18n
-                                     KF5::ItemModels
                                      KF5::ConfigGui
                                      KF5::KIOCore
                                      KF5::WindowSystem

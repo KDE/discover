@@ -26,7 +26,7 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS 
 
 find_package(PkgConfig REQUIRED)
 
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui ItemModels KIO Declarative KCMUtils IdleTime Notifications)
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui KIO Declarative KCMUtils IdleTime Notifications)
 find_package(KF5Kirigami2 2.7.0)
 
 find_package(packagekitqt5 1.0.1 CONFIG)
