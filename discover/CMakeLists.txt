@@ -49,13 +49,6 @@ target_link_libraries(plasma-discover PUBLIC
                                      Discover::Common
 )
 
-if (QT_MAJOR_VERSION STREQUAL "5")
-    target_link_libraries(plasma-discover PUBLIC Qt::X11Extras)
-elseif (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(plasma-discover PUBLIC Qt6::GuiPrivate)
-endif()
-
-
 if (TARGET KUserFeedbackCore)
     target_link_libraries(plasma-discover PRIVATE KUserFeedbackCore)
     target_compile_definitions(plasma-discover PRIVATE WITH_FEEDBACK=1)

@@ -24,12 +24,6 @@ include(KDEClangFormat)
 include(KDEGitCommitHooks)
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick)
 
-if (QT_MAJOR_VERSION STREQUAL "5")
-        find_package(Qt5X11Extras REQUIRED)
-elseif (QT_MAJOR_VERSION STREQUAL "6")
-        find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Gui) # qtx11extras_p.h
-endif()
-
 find_package(PkgConfig REQUIRED)
 
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui ItemModels KIO Declarative KCMUtils IdleTime)
