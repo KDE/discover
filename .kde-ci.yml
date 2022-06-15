@@ -26,3 +26,5 @@ Dependencies:
     'frameworks/kwindowsystem': '@latest'
     'frameworks/kxmlgui': '@latest'
     'libraries/kuserfeedback': '@stable'
+Options:
+  require-passing-tests-on: [ 'Linux', 'FreeBSD']
