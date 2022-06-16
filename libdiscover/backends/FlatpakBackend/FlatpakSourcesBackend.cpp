@@ -311,9 +311,11 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
 
     FlatpakBackend *backend = qobject_cast<FlatpakBackend *>(parent());
     FlatpakSourceItem *it = new FlatpakSourceItem(label, remote, backend);
+    const int prio = flatpak_remote_get_prio(remote);
     it->setData(remoteUrl.isLocalFile() ? remoteUrl.toLocalFile() : remoteUrl.host(), Qt::ToolTipRole);
     it->setData(remoteUrl, Qt::StatusTipRole);
     it->setData(id, IdRole);
+    it->setData(prio, PrioRole);
     it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
 #if FLATPAK_CHECK_VERSION(1, 4, 0)
     it->setData(QString::fromUtf8(flatpak_remote_get_icon(remote)), IconUrlRole);
@@ -321,24 +323,22 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     it->setCheckable(true);
     it->setFlatpakInstallation(installation);
 
-    int idx = -1;
-    {
-        const auto conf = KSharedConfig::openConfig();
-        const KConfigGroup group = conf->group("FlatpakSources");
-        const auto ids = group.readEntry<QStringList>("Sources", QStringList());
+    // Add the remotes before those with lower priorities, after the rest.
+    // We disambiguate with internal discover settings
+    const auto conf = KSharedConfig::openConfig();
+    const KConfigGroup group = conf->group("FlatpakSources");
+    const auto ids = group.readEntry<QStringList>("Sources", QStringList());
+    const int ourIdx = ids.indexOf(id);
 
-        const auto ourIdx = ids.indexOf(id);
-        if (ourIdx < 0) { // If not present, we put it on top
-            idx = 0;
-        } else {
-            idx = 0;
-            for (int c = m_sources->rowCount(); idx < c; ++idx) {
-                const auto compIt = m_sources->item(idx);
-                const int compIdx = ids.indexOf(compIt->data(IdRole).toString());
-                if (compIdx >= ourIdx) {
-                    break;
-                }
-            }
+    int idx, c;
+    for (c = m_sources->rowCount(), idx = c; idx < c; ++idx) {
+        const auto compIt = m_sources->item(idx);
+        if (prio > compIt->data(PrioRole).toInt()) {
+            break;
+        }
+        const int compIdx = ids.indexOf(compIt->data(IdRole).toString());
+        if (compIdx >= ourIdx) {
+            break;
         }
     }
 

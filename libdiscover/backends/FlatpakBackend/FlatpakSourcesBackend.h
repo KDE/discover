@@ -26,6 +26,7 @@ public:
 
     enum Roles {
         IconUrlRole = LastRole + 1,
+        PrioRole,
     };
 
     QAbstractItemModel *sources() override;
