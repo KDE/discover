@@ -70,6 +70,11 @@ public:
         QStandardItem::setData(value, role);
     }
 
+    FlatpakRemote *remote() const
+    {
+        return m_remote;
+    }
+
 private:
     FlatpakInstallation *m_installation = nullptr;
     FlatpakRemote *const m_remote;
@@ -81,8 +86,13 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
     , m_preferredInstallation(installations.constFirst())
     , m_sources(new QStandardItemModel(this))
     , m_flathubAction(new DiscoverAction("flatpak-discover", i18n("Add Flathub"), this))
+    , m_saveAction(new DiscoverAction("dialog-ok-apply", i18n("Apply Changes"), this))
     , m_noSourcesItem(new QStandardItem(QStringLiteral("-")))
 {
+    m_saveAction->setVisible(false);
+    m_saveAction->setToolTip(i18n("Changes to the priority of these sources must be applied before they will take effect."));
+    connect(m_saveAction, &DiscoverAction::triggered, this, &FlatpakSourcesBackend::save);
+
     m_flathubAction->setObjectName(QStringLiteral("flathub"));
     m_flathubAction->setToolTip(i18n("Makes it possible to easily install the applications listed in https://flathub.org"));
     connect(m_flathubAction, &DiscoverAction::triggered, this, [this]() {
@@ -109,6 +119,22 @@ FlatpakSourcesBackend::~FlatpakSourcesBackend()
 
     if (!m_noSourcesItem->model())
         delete m_noSourcesItem;
+}
+
+void FlatpakSourcesBackend::save()
+{
+    int last = INT_MIN;
+    for (int i = m_sources->rowCount() - 1; i >= 0; --i) {
+        auto it = m_sources->item(i);
+        const int prio = it->data(PrioRole).toInt();
+        if (prio <= last) {
+            FlatpakSourceItem *sourceItem = static_cast<FlatpakSourceItem *>(it);
+            flatpak_remote_set_prio(sourceItem->remote(), ++last);
+            flatpak_installation_modify_remote(sourceItem->flatpakInstallation(), sourceItem->remote(), nullptr, nullptr);
+        } else {
+            last = prio;
+        }
+    }
 }
 
 QAbstractItemModel *FlatpakSourcesBackend::sources()
@@ -275,7 +301,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
 
 QVariantList FlatpakSourcesBackend::actions() const
 {
-    return {QVariant::fromValue<QObject *>(m_flathubAction)};
+    return {QVariant::fromValue<QObject *>(m_flathubAction), QVariant::fromValue<QObject *>(m_saveAction)};
 }
 
 void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation *installation)
@@ -372,6 +398,7 @@ bool FlatpakSourcesBackend::moveSource(const QString &sourceId, int delta)
         Q_EMIT firstSourceIdChanged();
     if (destRow == m_sources->rowCount() - 1 || row == m_sources->rowCount() - 1)
         Q_EMIT lastSourceIdChanged();
+    m_saveAction->setVisible(true);
     return true;
 }
 

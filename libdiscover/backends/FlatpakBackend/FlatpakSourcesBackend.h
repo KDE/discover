@@ -57,12 +57,14 @@ public:
     void cancel() override;
     void proceed() override;
 
+    void save();
     void addRemote(FlatpakRemote *remote, FlatpakInstallation *installation);
 
 private:
     FlatpakInstallation *m_preferredInstallation;
     QStandardItemModel *m_sources;
     DiscoverAction *const m_flathubAction;
+    DiscoverAction *const m_saveAction;
     QStandardItem *m_noSourcesItem;
     QStack<std::function<void()>> m_proceedFunctions;
 };
