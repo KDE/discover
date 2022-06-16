@@ -8,7 +8,6 @@
 #include "FlatpakResource.h"
 #include "FlatpakBackend.h"
 #include "FlatpakFetchDataJob.h"
-#include "FlatpakPermission.h"
 #include "FlatpakSourcesBackend.h"
 #include "config-paths.h"
 

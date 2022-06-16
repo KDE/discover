@@ -22,7 +22,6 @@
 #include <resources/StandardBackendUpdater.h>
 
 #include <QDebug>
-#include <QFile>
 #include <QFileSystemWatcher>
 #include <QFutureWatcher>
 #include <QMimeDatabase>

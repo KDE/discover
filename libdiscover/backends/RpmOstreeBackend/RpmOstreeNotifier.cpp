@@ -5,7 +5,6 @@
  */
 
 #include "RpmOstreeNotifier.h"
-#include <QDebug>
 #include <QFileSystemWatcher>
 #include <QProcess>
 #include <QTimer>
