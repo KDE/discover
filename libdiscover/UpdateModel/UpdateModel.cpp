@@ -53,6 +53,7 @@ QHash<int, QByteArray> UpdateModel::roleNames() const
     ret.insert(SectionRole, "section");
     ret.insert(ChangelogRole, "changelog");
     ret.insert(UpgradeTextRole, "upgradeText");
+    ret.insert(ExtendedRole, "extended");
     return ret;
 }
 
@@ -122,6 +123,8 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return item->state();
     case ChangelogRole:
         return item->changelog();
+    case ExtendedRole:
+        return item->isExtended();
     case SectionRole: {
         static const QString appUpdatesSection = i18nc("@item:inlistbox", "Applications");
         static const QString systemUpdateSection = i18nc("@item:inlistbox", "System Software");
@@ -182,6 +185,12 @@ bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int rol
         Q_EMIT toUpdateChanged();
 
         return true;
+    } else if (role == ExtendedRole) {
+        UpdateItem *item = itemFromIndex(idx);
+        if (item->isExtended() != value.toBool()) {
+            item->setExtended(value.toBool());
+            Q_EMIT dataChanged(idx, idx, {ExtendedRole});
+        }
     }
 
     return false;

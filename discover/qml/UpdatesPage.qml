@@ -285,7 +285,7 @@ DiscoverPage
             highlighted: ListView.isCurrentItem
             hoverEnabled: !page.isBusy
             onEnabledChanged: if (!enabled) {
-                layout.extended = false;
+                model.extended = false;
             }
 
             visible: resourceState < 3 //3=AbstractBackendUpdater.Done
@@ -293,12 +293,12 @@ DiscoverPage
             Keys.onReturnPressed: {
                 itemChecked.clicked()
             }
-            Keys.onPressed: if (event.key===Qt.Key_Alt) layout.extended = true
-            Keys.onReleased: if (event.key===Qt.Key_Alt)  layout.extended = false
+            Keys.onPressed: if (event.key===Qt.Key_Alt) model.extended = true
+            Keys.onReleased: if (event.key===Qt.Key_Alt) model.extended = false
 
             ColumnLayout {
                 id: layout
-                property bool extended: false
+                property bool extended: model.extended
                 onExtendedChanged: if (extended) {
                     updateModel.fetchUpdateDetails(index)
                 }
@@ -409,7 +409,7 @@ DiscoverPage
             }
 
             onClicked: {
-                layout.extended = !layout.extended
+                model.extended = !model.extended
             }
         }
     }

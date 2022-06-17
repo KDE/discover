@@ -34,6 +34,7 @@ public:
         ChangelogRole,
         SectionRole,
         UpgradeTextRole,
+        ExtendedRole,
     };
     Q_ENUM(Roles)
 

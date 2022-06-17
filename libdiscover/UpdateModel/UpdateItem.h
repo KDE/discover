@@ -44,6 +44,10 @@ public:
     qint64 size() const;
     Qt::CheckState checked() const;
 
+    void setExtended(bool extended)
+    {
+        m_isExtended = extended;
+    }
     AbstractResource *resource() const
     {
         return m_app;
@@ -51,6 +55,10 @@ public:
     bool isVisible() const
     {
         return m_visible;
+    }
+    bool isExtended() const
+    {
+        return m_isExtended;
     }
     void setVisible(bool visible)
     {
@@ -66,6 +74,7 @@ private:
     bool m_visible = true;
     AbstractBackendUpdater::State m_state = AbstractBackendUpdater::None;
     QString m_changelog;
+    bool m_isExtended = false;
 };
 
 #endif // UPDATEITEM_H
