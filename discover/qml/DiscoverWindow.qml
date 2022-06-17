@@ -30,7 +30,7 @@ Kirigami.ApplicationWindow
     minimumWidth: 300
     minimumHeight: 300
 
-    pageStack.defaultColumnWidth: Kirigami.Units.gridUnit * 25
+    pageStack.defaultColumnWidth: Math.max(Kirigami.Units.gridUnit * 25, pageStack.width / 4)
     pageStack.globalToolBar.style: Kirigami.Settings.isMobile ? Kirigami.ApplicationHeaderStyle.Titles : Kirigami.ApplicationHeaderStyle.Auto
     pageStack.globalToolBar.showNavigationButtons: pageStack.currentIndex == 0 ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ShowBackButton
     pageStack.globalToolBar.canContainHandles: true // mobile handles in header
