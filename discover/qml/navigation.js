@@ -32,15 +32,15 @@ function openCategory(cat, search) {
 
 function openApplication(app) {
     console.assert(app)
-    window.stack.push("qrc:/qml/ApplicationPage.qml", { application: app })
+    window.stack.layers.push("qrc:/qml/ApplicationPage.qml", { application: app })
 }
 
 function openReviews(model) {
-    window.stack.push("qrc:/qml/ReviewsPage.qml", { model: model })
+    window.stack.layers.push("qrc:/qml/ReviewsPage.qml", { model: model })
 }
 
 function openExtends(ext, appname) {
-    window.stack.push("qrc:/qml/ApplicationsListPage.qml", { extending: ext, title: i18n("Addons for %1", appname) })
+    window.stack.layers.push("qrc:/qml/ApplicationsListPage.qml", { extending: ext, title: i18n("Addons for %1", appname) })
 }
 
 function openHome() {
