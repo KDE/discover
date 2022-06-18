@@ -41,6 +41,5 @@ set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAK
 install(TARGETS DiscoverPackageKitNotifier DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover-notifier)
 
 install(FILES packagekit-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
-add_subdirectory(categoryimages)
 
 install( FILES org.kde.discover.packagekit.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
