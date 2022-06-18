@@ -102,14 +102,10 @@ Kirigami.AbstractCard
                 textFormat: Text.PlainText
             }
 
-            // Spacer
-            Item {
-                implicitHeight: delegateArea.compact ? Kirigami.Units.smallSpacing : Kirigami.Units.largeSpacing
-            }
-
             // Container for rating, category, size, and install button
             RowLayout {
                 Layout.fillWidth: true
+                Layout.topMargin: delegateArea.compact ? Kirigami.Units.smallSpacing : Kirigami.Units.largeSpacing
 
                 // Container for rating, category and size labels
                 ColumnLayout {
@@ -149,12 +145,13 @@ Kirigami.AbstractCard
                         id: compactInfo
                         Layout.fillWidth: true
                         opacity: 0.6
+                        visible: !delegateArea.compact
                         spacing: Kirigami.Units.largeSpacing
 
                         Label {
                             id: category
                             Layout.fillWidth: true
-                            visible: delegateArea.application.categoryDisplay && delegateArea.application.categoryDisplay !== page.title && !delegateArea.compact
+                            visible: delegateArea.application.categoryDisplay && delegateArea.application.categoryDisplay !== page.title
                             opacity: 0.6
                             text: delegateArea.application.categoryDisplay
                             font: Kirigami.Theme.smallFont
@@ -165,7 +162,7 @@ Kirigami.AbstractCard
                         Label {
                             id: size
                             Layout.fillWidth: true
-                            visible: showSize && !delegateArea.compact
+                            visible: showSize
                             text: visible ? delegateArea.application.sizeDescription : ""
                             horizontalAlignment: Text.AlignRight
                             opacity: 0.6;
