@@ -53,6 +53,10 @@ public:
     int originIndex(const QString &sourceId) const;
     QStandardItem *sourceByUrl(const QString &url) const;
     QStandardItem *sourceById(const QString &sourceId) const;
+    DiscoverAction *inlineAction() const override
+    {
+        return m_saveAction;
+    }
 
     void cancel() override;
     void proceed() override;

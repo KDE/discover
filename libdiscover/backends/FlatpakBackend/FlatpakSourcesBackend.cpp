@@ -135,6 +135,7 @@ void FlatpakSourcesBackend::save()
             last = prio;
         }
     }
+    m_saveAction->setVisible(false);
 }
 
 QAbstractItemModel *FlatpakSourcesBackend::sources()
@@ -301,7 +302,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
 
 QVariantList FlatpakSourcesBackend::actions() const
 {
-    return {QVariant::fromValue<QObject *>(m_flathubAction), QVariant::fromValue<QObject *>(m_saveAction)};
+    return {QVariant::fromValue<QObject *>(m_flathubAction)};
 }
 
 void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation *installation)

@@ -10,6 +10,7 @@
 #include "discovercommon_export.h"
 #include <QObject>
 
+class DiscoverAction;
 class QAbstractItemModel;
 class AbstractResourcesBackend;
 
@@ -20,6 +21,7 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
     Q_PROPERTY(QAbstractItemModel *sources READ sources CONSTANT)
     Q_PROPERTY(QString idDescription READ idDescription CONSTANT)
     Q_PROPERTY(QVariantList actions READ actions CONSTANT) // TODO Make it a QVector<DiscoverAction*> again when we depend on newer than Qt 5.12
+    Q_PROPERTY(DiscoverAction *inlineAction READ inlineAction CONSTANT) // TODO Make it a QVector<DiscoverAction*> again when we depend on newer than Qt 5.12
     Q_PROPERTY(bool supportsAdding READ supportsAdding CONSTANT)
     Q_PROPERTY(bool canMoveSources READ canMoveSources CONSTANT)
     Q_PROPERTY(bool canFilterSources READ canFilterSources CONSTANT)
@@ -44,6 +46,10 @@ public:
     virtual QVariantList actions() const = 0;
 
     virtual bool supportsAdding() const = 0;
+    virtual DiscoverAction *inlineAction() const
+    {
+        return nullptr;
+    }
 
     AbstractResourcesBackend *resourcesBackend() const;
 
