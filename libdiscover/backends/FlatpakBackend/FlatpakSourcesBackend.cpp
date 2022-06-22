@@ -130,7 +130,12 @@ void FlatpakSourcesBackend::save()
         if (prio <= last) {
             FlatpakSourceItem *sourceItem = static_cast<FlatpakSourceItem *>(it);
             flatpak_remote_set_prio(sourceItem->remote(), ++last);
-            flatpak_installation_modify_remote(sourceItem->flatpakInstallation(), sourceItem->remote(), nullptr, nullptr);
+            g_autoptr(GError) error = nullptr;
+            if (!flatpak_installation_modify_remote(sourceItem->flatpakInstallation(), sourceItem->remote(), nullptr, &error)) {
+                qDebug() << "failed setting priorities" << error->message;
+            }
+
+            it->setData(last, PrioRole);
         } else {
             last = prio;
         }
