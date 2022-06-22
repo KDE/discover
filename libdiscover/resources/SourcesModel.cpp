@@ -57,11 +57,13 @@ void SourcesModel::addSourcesBackend(AbstractSourcesBackend *sources)
         auto action = new OneTimeAction(
             [this, m] {
                 addSourceModel(m);
+                sourcesChanged();
             },
             this);
         connect(m, &QAbstractItemModel::rowsInserted, action, &OneTimeAction::trigger);
     } else {
         addSourceModel(m);
+        sourcesChanged();
     }
 }
 
@@ -95,4 +97,17 @@ AbstractSourcesBackend *SourcesModel::sourcesBackendByName(const QString &id) co
         }
     }
     return nullptr;
+}
+
+QVector<AbstractSourcesBackend *> SourcesModel::sources() const
+{
+    QVector<AbstractSourcesBackend *> sources;
+    for (int i = 0, c = rowCount(); i < c; ++i) {
+        const auto idx = index(i, 0);
+        auto source = qobject_cast<AbstractSourcesBackend *>(modelAt(idx)->property(SourcesBackendId).value<QObject *>());
+        if (!sources.contains(source)) {
+            sources += source;
+        }
+    }
+    return sources;
 }

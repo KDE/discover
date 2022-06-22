@@ -90,7 +90,7 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
     , m_noSourcesItem(new QStandardItem(QStringLiteral("-")))
 {
     m_saveAction->setVisible(false);
-    m_saveAction->setToolTip(i18n("Changes to the priority of these sources must be applied before they will take effect."));
+    m_saveAction->setToolTip(i18n("Changes to the priority of Flatpak sources must be applied before they will take effect."));
     connect(m_saveAction, &DiscoverAction::triggered, this, &FlatpakSourcesBackend::save);
 
     m_flathubAction->setObjectName(QStringLiteral("flathub"));
