@@ -398,7 +398,7 @@ bool FlatpakSourcesBackend::moveSource(const QString &sourceId, int delta)
     auto prevRow = m_sources->takeRow(row);
     Q_ASSERT(!prevRow.isEmpty());
 
-    const auto destRow = row + (delta > 0 ? delta : delta);
+    const auto destRow = row + delta;
     m_sources->insertRow(destRow, prevRow);
     if (destRow == 0 || row == 0)
         Q_EMIT firstSourceIdChanged();
