@@ -50,7 +50,7 @@ public:
         Installing,
         Done,
     };
-    Q_ENUM(State);
+    Q_ENUM(State)
 
     /**
      * Constructs an AbstractBackendUpdater

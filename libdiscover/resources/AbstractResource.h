@@ -137,7 +137,7 @@ public:
         Addon,
         Technical,
     };
-    Q_ENUM(Type);
+    Q_ENUM(Type)
     virtual Type type() const = 0;
 
     virtual quint64 size() = 0;
