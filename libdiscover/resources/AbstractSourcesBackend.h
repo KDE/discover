@@ -7,10 +7,10 @@
 #ifndef ABSTRACTSOURCESBACKEND_H
 #define ABSTRACTSOURCESBACKEND_H
 
+#include "DiscoverAction.h"
 #include "discovercommon_export.h"
 #include <QObject>
 
-class DiscoverAction;
 class QAbstractItemModel;
 class AbstractResourcesBackend;
 
