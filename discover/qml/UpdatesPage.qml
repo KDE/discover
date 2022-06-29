@@ -64,7 +64,7 @@ DiscoverPage
                     Button {
                         id: seeDetailsAndreportIssueButton
                         Layout.alignment: Qt.AlignRight
-                        text: i18n("See technical details")
+                        text: i18n("See Technical Details")
                         icon.name: "view-process-system"
                         onClicked: {
                             contentLoader.sourceComponent = nerdyDetailsComponent;
@@ -95,7 +95,7 @@ DiscoverPage
                         Layout.alignment: Qt.AlignRight
 
                         Button {
-                            text: i18n("Copy to clipboard")
+                            text: i18n("Copy to Clipboard")
                             icon.name: "edit-copy"
                             onClicked: {
                                 app.copyTextToClipboard(sheet.errorMessage);
@@ -104,7 +104,7 @@ DiscoverPage
                         }
 
                         Button {
-                            text: i18n("Report this issue")
+                            text: i18n("Report This Issue")
                             icon.name: "tools-report-bug"
                             onClicked: {
                                 Qt.openUrlExternally(ResourcesModel.distroBugReportUrl())
