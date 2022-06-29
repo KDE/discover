@@ -57,8 +57,7 @@ QQC2.Button {
             opacity: 0.6
         }
     }
-    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-    QQC2.ToolTip.timeout: Kirigami.Units.veryLongDuration
-    QQC2.ToolTip.visible: root.tooltipText ? (Kirigami.Settings.isMobile ? pressed : hovered) : false
-    QQC2.ToolTip.text: root.tooltipText ? root.tooltipText : ""
+    QQC2.ToolTip {
+        text: root.tooltipText ? root.tooltipText : ""
+    }
 }
