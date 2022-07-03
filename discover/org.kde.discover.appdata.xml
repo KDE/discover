@@ -48,7 +48,7 @@
   <name xml:lang="tr">Keşfet</name>
   <name xml:lang="uk">Discover</name>
   <name xml:lang="x-test">xxDiscoverxx</name>
-  <name xml:lang="zh-CN">Discover</name>
+  <name xml:lang="zh-CN">Discover 软件管理中心</name>
   <name xml:lang="zh-TW">Discover</name>
   <summary>Discover</summary>
   <summary xml:lang="ar">المستكشف</summary>
@@ -95,7 +95,7 @@
   <summary xml:lang="tr">Keşfet</summary>
   <summary xml:lang="uk">Discover</summary>
   <summary xml:lang="x-test">xxDiscoverxx</summary>
-  <summary xml:lang="zh-CN">Discover</summary>
+  <summary xml:lang="zh-CN">Discover 软件管理中心</summary>
   <summary xml:lang="zh-TW">Discover</summary>
   <description>
     <p>Discover helps you find and install applications, games, and tools. You can search or browse by category, and look at screenshots and read reviews to help you pick the perfect app.</p>
