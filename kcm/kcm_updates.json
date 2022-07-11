@@ -34,6 +34,7 @@
         "Description[uk]": "Налаштовування поведінки при оновленні програм",
         "Description[x-test]": "xxConfigure software update behaviorxx",
         "Description[zh_CN]": "配置软件更新行为",
+        "Description[zh_TW]": "設定軟體更新行為",
         "FormFactors": [
             "tablet",
             "handset",

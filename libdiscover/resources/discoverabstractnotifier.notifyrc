@@ -357,6 +357,7 @@ Name[tr]=Onarım Başlatıldı
 Name[uk]=Розпочато відновлення
 Name[x-test]=xxRepair Startedxx
 Name[zh_CN]=修复已开始
+Name[zh_TW]=開始修復
 Action=Popup
 
 [Event/OfflineUpdateRepairSuccessful]
@@ -388,6 +389,7 @@ Name[tr]=Başarıyla Onarıldı
 Name[uk]=Успішно відновлено
 Name[x-test]=xxRepaired Successfullyxx
 Name[zh_CN]=修复成功
+Name[zh_TW]=修復成功
 Urgency=High
 Action=Popup
 
@@ -431,7 +433,7 @@ Name[tr]=Onarım Başarısız
 Name[uk]=Невдала спроба відновлення
 Name[x-test]=xxRepair Failedxx
 Name[zh_CN]=修复失败
-Name[zh_TW]=還原失敗
+Name[zh_TW]=修復失敗
 Comment=Repair failure after offline update
 Comment[ar]=فشل الإصلاح بعد التحديث دون اتصال
 Comment[az]=Oflayn yenilənmədən sonra bərpa edilə bilmədi
@@ -471,7 +473,7 @@ Comment[tr]=Çevrimdışı güncellemeden sonra onarım hatası
 Comment[uk]=Не вдалося відновитися після автономного оновлення
 Comment[x-test]=xxRepair failure after offline updatexx
 Comment[zh_CN]=离线更新后修复失败
-Comment[zh_TW]=離線更新後還原失敗
+Comment[zh_TW]=離線更新後修復失敗
 Urgency=High
 Action=Popup
 
