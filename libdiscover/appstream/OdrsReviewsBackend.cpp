@@ -110,13 +110,17 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
         return;
     }
     Q_UNUSED(page)
+    const QString version = app->isInstalled() ? app->installedVersion() : app->availableVersion();
+    if (version.isEmpty()) {
+        return;
+    }
     m_isFetching = true;
 
     const QJsonDocument document(QJsonObject{
         {QStringLiteral("app_id"), app->appstreamId()},
         {QStringLiteral("distro"), osName()},
         {QStringLiteral("user_hash"), userHash()},
-        {QStringLiteral("version"), app->isInstalled() ? app->installedVersion() : app->availableVersion()},
+        {QStringLiteral("version"), version},
         {QStringLiteral("locale"), QLocale::system().name()},
         {QStringLiteral("limit"), -1},
     });
