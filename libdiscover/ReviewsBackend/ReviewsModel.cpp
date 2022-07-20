@@ -98,7 +98,7 @@ void ReviewsModel::setResource(AbstractResource *app)
         if (m_backend) {
             connect(m_backend, &AbstractReviewsBackend::reviewsReady, this, &ReviewsModel::addReviews);
 
-            QMetaObject::invokeMethod(this, "restartFetching", Qt::QueuedConnection);
+            QMetaObject::invokeMethod(this, &ReviewsModel::restartFetching, Qt::QueuedConnection);
         }
         endResetModel();
         Q_EMIT rowsChanged();
