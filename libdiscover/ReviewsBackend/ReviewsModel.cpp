@@ -92,11 +92,13 @@ void ReviewsModel::setResource(AbstractResource *app)
 
         if (m_backend) {
             disconnect(m_backend, &AbstractReviewsBackend::reviewsReady, this, &ReviewsModel::addReviews);
+            disconnect(m_app, &AbstractResource::versionsChanged, this, &ReviewsModel::restartFetching);
         }
         m_app = app;
         m_backend = app ? app->backend()->reviewsBackend() : nullptr;
         if (m_backend) {
             connect(m_backend, &AbstractReviewsBackend::reviewsReady, this, &ReviewsModel::addReviews);
+            connect(m_app, &AbstractResource::versionsChanged, this, &ReviewsModel::restartFetching);
 
             QMetaObject::invokeMethod(this, "restartFetching", Qt::QueuedConnection);
         }
