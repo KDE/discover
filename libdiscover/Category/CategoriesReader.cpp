@@ -22,7 +22,7 @@ QVector<Category *> CategoriesReader::loadCategoriesFile(AbstractResourcesBacken
     if (path.isEmpty()) {
         auto cat = backend->category();
         if (cat.isEmpty())
-            qCWarning(LIBDISCOVER_LOG) << "Couldn't find a category for " << backend->name();
+            qCDebug(LIBDISCOVER_LOG) << "Couldn't find a category for " << backend->name();
 
         Category::sortCategories(cat);
         return cat;
