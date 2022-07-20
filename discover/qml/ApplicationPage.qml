@@ -698,7 +698,7 @@ DiscoverPage {
                     text: modelData.name
                     url: modelData.url
                     horizontalAlignment: Text.AlignLeft
-                    color: text.toLowerCase().includes(i18n("proprietary")) ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
+                    color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
                 }
             }
         }

@@ -8,7 +8,9 @@
 #include "PackageKitResource.h"
 #include "PackageKitBackend.h"
 #include "PackageKitMessages.h"
+#include "appstream/AppStreamUtils.h"
 #include "config-paths.h"
+#include <AppStreamQt/spdx.h>
 #include <KLocalizedString>
 #include <KShell>
 #include <PackageKit/Daemon>
@@ -89,12 +91,45 @@ QVariant PackageKitResource::icon() const
     return QStringLiteral("applications-other");
 }
 
+static QMap<QString, QString> s_translation = {
+    {"AGPL", "AGPL-3.0"},
+    {"AGPL3", "AGPL-3.0"},
+    {"Artistic2.0", "Artistic-2.0"},
+    {"Apache", "Apache-2.0"},
+    {"APACHE", "Apache-2.0"},
+    {"CCPL", "CC0-1.0"},
+    {"GPL2", "GPL-2.0"},
+    {"GPL3", "GPL-3.0"},
+    {"FDL1.2", "GFDL-1.2-only"},
+    {"FDL1.3", "GFDL-1.3-only"},
+    {"LGPL", "LGPL-2.1"},
+    {"LGPL3", "LGPL-3.0"},
+    {"MPL", "MPL-1.1"},
+    {"MPL2", "MPL-2.0"},
+    {"PerlArtistic", "Artistic-1.0-Perl"},
+    {"PHP", "PHP-3.01"},
+    {"PSF", "Python-2.0"},
+    {"RUBY", "Ruby"},
+    {"ZPL", "ZPL-2.1"},
+};
+
 QJsonArray PackageKitResource::licenses()
 {
     fetchDetails();
 
     if (!m_details.license().isEmpty()) {
-        return {QJsonObject{{QStringLiteral("name"), m_details.license()}}};
+        QString id = m_details.license();
+        if (!AppStream::SPDX::isLicenseId(id)) {
+            auto spdxId = AppStream::SPDX::asSpdxId(id);
+            if (!spdxId.isEmpty()) {
+                id = spdxId;
+            }
+        }
+
+        if (!AppStream::SPDX::isLicenseId(id)) {
+            id = s_translation.value(id, id);
+        }
+        return {AppStreamUtils::license(id)};
     }
 
     return {QJsonObject{{QStringLiteral("name"), {}}}};
