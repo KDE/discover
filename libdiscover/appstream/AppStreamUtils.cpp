@@ -66,27 +66,32 @@ QJsonArray AppStreamUtils::licenses(const AppStream::Component &appdata)
     QJsonArray ret;
     const auto licenses = AppStream::SPDX::tokenizeLicense(appdata.projectLicense());
     for (const auto &token : licenses) {
-        QString license = token;
-        license.remove(0, 1); // tokenize prefixes with an @ for some reason
-
-        bool publicLicense = false;
-        QString name = license;
-        if (license.startsWith(QLatin1String("LicenseRef-proprietary"))) {
-            name = i18n("Proprietary");
-        } else if (license == QLatin1String("LicenseRef-public-domain")) {
-            name = i18n("Public Domain");
-            publicLicense = true;
-        }
-
-        if (!AppStream::SPDX::isLicenseId(license))
-            continue;
-        ret.append(QJsonObject{
-            {QStringLiteral("name"), name},
-            {QStringLiteral("url"), {AppStream::SPDX::licenseUrl(license)}},
-            {QStringLiteral("hasFreedom"), AppStream::SPDX::isFreeLicense(license) || publicLicense},
-        });
+        ret += license(token.mid(1)); // tokenize prefixes with an @ for some reason
     }
     return ret;
+}
+
+QJsonObject AppStreamUtils::license(const QString &license)
+{
+    bool publicLicense = false;
+    QString name = license;
+    if (license.startsWith(QLatin1String("LicenseRef-proprietary"))) {
+        name = i18n("Proprietary");
+    } else if (license == QLatin1String("LicenseRef-public-domain")) {
+        name = i18n("Public Domain");
+        publicLicense = true;
+    }
+
+    if (!AppStream::SPDX::isLicenseId(license))
+        return {
+            {QStringLiteral("name"), name},
+            {QStringLiteral("hasFreedom"), true}, // give it the benefit of the doubt
+        };
+    return {
+        {QStringLiteral("name"), name},
+        {QStringLiteral("url"), {AppStream::SPDX::licenseUrl(license)}},
+        {QStringLiteral("hasFreedom"), AppStream::SPDX::isFreeLicense(license) || publicLicense},
+    };
 }
 
 QStringList AppStreamUtils::appstreamIds(const QUrl &appstreamUrl)
