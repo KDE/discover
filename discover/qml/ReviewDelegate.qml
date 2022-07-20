@@ -11,7 +11,7 @@ import org.kde.discover 2.0
 import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.AbstractCard {
-    id: item
+    id: reviewDelegateItem
     visible: model.shouldShow
     property bool compact: false
     property bool separator: true
@@ -85,10 +85,10 @@ Kirigami.AbstractCard {
     }
 
     footer: Loader {
-        active: !item.compact
+        active: !reviewDelegateItem.compact
         sourceComponent: RowLayout {
             id: rateTheReviewLayout
-            visible: !item.compact
+            visible: !reviewDelegateItem.compact
             Label {
                 Layout.leftMargin: Kirigami.Units.largeSpacing
                 visible: usefulnessTotal !== 0
@@ -117,7 +117,7 @@ Kirigami.AbstractCard {
                 checked: usefulChoice === ReviewsModel.Yes
                 onClicked: {
                     noButton.checked = false
-                    item.markUseful(true)
+                    reviewDelegateItem.markUseful(true)
                 }
             }
             Button {
@@ -134,7 +134,7 @@ Kirigami.AbstractCard {
                 checked: usefulChoice === ReviewsModel.No
                 onClicked: {
                     yesButton.checked = false
-                    item.markUseful(false)
+                    reviewDelegateItem.markUseful(false)
                 }
             }
         }
