@@ -24,6 +24,7 @@ Kirigami.GlobalDrawer {
     width: Kirigami.Units.gridUnit * 14
 
     property bool wideScreen: false
+    readonly property real minimumHeight: header.implicitHeight + content.height + footer.implicitHeight
 
     resetMenuOnTriggered: false
 
