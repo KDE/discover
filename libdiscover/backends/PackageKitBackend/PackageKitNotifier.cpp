@@ -102,7 +102,12 @@ void PackageKitNotifier::checkOfflineUpdates()
     const QString packagesJoined = group.readEntry("Packages");
     const auto packages = packagesJoined.splitRef(QLatin1Char(','));
     const bool isMobile = QByteArrayList{"1", "true"}.contains(qgetenv("QT_QUICK_CONTROLS_MOBILE"));
-    if (!success) {
+    const QString errorCode = group.readEntry("ErrorCode");
+    static QSet<QString> allowedAlreadyInstalled = {
+        QStringLiteral("package-already-installed"),
+        QStringLiteral("all-packages-already-installed"),
+    };
+    if (!success && !allowedAlreadyInstalled.contains(errorCode)) {
         const QString errorDetails = group.readEntry("ErrorDetails");
 
         auto *notification = new KNotification(QStringLiteral("OfflineUpdateFailed"), KNotification::Persistent);
