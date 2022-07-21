@@ -68,12 +68,13 @@ Q_SIGNALS:
     void ratingsReady();
 
 private:
+    void setFetching(bool);
     QNetworkAccessManager *nam();
     void parseRatings();
     void parseReviews(const QJsonDocument &document, AbstractResource *resource);
 
     QHash<QString, Rating *> m_ratings;
-    bool m_isFetching;
+    bool m_isFetching = false;
     CachedNetworkAccessManager *m_delayedNam = nullptr;
 };
 

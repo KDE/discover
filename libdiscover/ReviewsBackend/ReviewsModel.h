@@ -22,6 +22,7 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
     Q_PROPERTY(AbstractReviewsBackend *backend READ backend NOTIFY resourceChanged)
     Q_PROPERTY(AbstractResource *resource READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY rowsChanged)
+    Q_PROPERTY(bool fetching READ isFetching NOTIFY fetchingChanged)
 public:
     enum Roles {
         ShouldShow = Qt::UserRole + 1,
@@ -53,6 +54,7 @@ public:
     void fetchMore(const QModelIndex &parent = QModelIndex()) override;
     bool canFetchMore(const QModelIndex & /*parent*/) const override;
     QHash<int, QByteArray> roleNames() const override;
+    bool isFetching() const;
 
 public Q_SLOTS:
     void deleteReview(int row);
@@ -66,6 +68,7 @@ private Q_SLOTS:
 Q_SIGNALS:
     void rowsChanged();
     void resourceChanged();
+    void fetchingChanged(bool fetching);
 
 private:
     AbstractResource *m_app = nullptr;

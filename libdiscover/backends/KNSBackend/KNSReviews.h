@@ -46,6 +46,8 @@ private Q_SLOTS:
 
 private:
     Attica::Provider provider() const;
+    void acquireFetching(bool f);
+
     KNSBackend *const m_backend;
     int m_fetching = 0;
 #if KNEWSTUFFCORE_VERSION < QT_VERSION_CHECK(5, 92, 0)

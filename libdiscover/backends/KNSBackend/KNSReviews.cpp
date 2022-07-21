@@ -60,7 +60,20 @@ void KNSReviews::fetchReviews(AbstractResource *app, int page)
     job->setProperty("app", QVariant::fromValue<AbstractResource *>(app));
     connect(job, &Attica::BaseJob::finished, this, &KNSReviews::commentsReceived);
     job->start();
-    m_fetching++;
+    acquireFetching(true);
+}
+
+void KNSReviews::acquireFetching(bool f)
+{
+    if (f)
+        m_fetching++;
+    else
+        m_fetching--;
+
+    if ((!f && m_fetching == 0) || (f && m_fetching == 1)) {
+        Q_EMIT fetchingChanged(m_fetching != 0);
+    }
+    Q_ASSERT(m_fetching >= 0);
 }
 
 static QVector<ReviewPtr> createReviewList(AbstractResource *app, const Attica::Comment::List comments, int depth = 0)
@@ -92,7 +105,7 @@ static QVector<ReviewPtr> createReviewList(AbstractResource *app, const Attica::
 
 void KNSReviews::commentsReceived(Attica::BaseJob *j)
 {
-    m_fetching--;
+    acquireFetching(false);
     Attica::ListJob<Attica::Comment> *job = static_cast<Attica::ListJob<Attica::Comment> *>(j);
 
     AbstractResource *app = job->property("app").value<AbstractResource *>();

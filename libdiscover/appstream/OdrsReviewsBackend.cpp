@@ -38,7 +38,6 @@
 
 OdrsReviewsBackend::OdrsReviewsBackend()
     : AbstractReviewsBackend(nullptr)
-    , m_isFetching(false)
 {
     bool fetchRatings = false;
     const QUrl ratingsUrl(QStringLiteral(APIURL "/ratings"));
@@ -59,7 +58,7 @@ OdrsReviewsBackend::OdrsReviewsBackend()
     }
 
     if (fetchRatings) {
-        m_isFetching = true;
+        setFetching(true);
         KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl, fileUrl, -1, KIO::Overwrite | KIO::HideProgressInfo);
         connect(getJob, &KIO::FileCopyJob::result, this, &OdrsReviewsBackend::ratingsFetched);
     } else {
@@ -72,9 +71,18 @@ OdrsReviewsBackend::~OdrsReviewsBackend() noexcept
     qDeleteAll(m_ratings);
 }
 
+void OdrsReviewsBackend::setFetching(bool fetching)
+{
+    if (fetching == m_isFetching) {
+        return;
+    }
+    m_isFetching = fetching;
+    Q_EMIT fetchingChanged(fetching);
+}
+
 void OdrsReviewsBackend::ratingsFetched(KJob *job)
 {
-    m_isFetching = false;
+    setFetching(false);
     if (job->error()) {
         qCWarning(LIBDISCOVER_LOG) << "Failed to fetch ratings " << job->errorString();
     } else {
@@ -114,7 +122,7 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
     if (version.isEmpty()) {
         return;
     }
-    m_isFetching = true;
+    setFetching(true);
 
     const QJsonDocument document(QJsonObject{
         {QStringLiteral("app_id"), app->appstreamId()},
@@ -145,7 +153,7 @@ void OdrsReviewsBackend::reviewsFetched()
     if (networkError != QNetworkReply::NoError) {
         qCWarning(LIBDISCOVER_LOG) << "error fetching reviews:" << reply->errorString() << data;
         Q_EMIT error(i18n("Error while fetching reviews: %1", reply->errorString()));
-        m_isFetching = false;
+        setFetching(false);
         return;
     }
 
@@ -290,7 +298,7 @@ void OdrsReviewsBackend::parseRatings()
 
 void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractResource *resource)
 {
-    m_isFetching = false;
+    setFetching(false);
     Q_ASSERT(resource);
     if (!resource) {
         return;

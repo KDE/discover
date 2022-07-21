@@ -92,12 +92,14 @@ void ReviewsModel::setResource(AbstractResource *app)
 
         if (m_backend) {
             disconnect(m_backend, &AbstractReviewsBackend::reviewsReady, this, &ReviewsModel::addReviews);
+            disconnect(m_backend, &AbstractReviewsBackend::fetchingChanged, this, &ReviewsModel::fetchingChanged);
             disconnect(m_app, &AbstractResource::versionsChanged, this, &ReviewsModel::restartFetching);
         }
         m_app = app;
         m_backend = app ? app->backend()->reviewsBackend() : nullptr;
         if (m_backend) {
             connect(m_backend, &AbstractReviewsBackend::reviewsReady, this, &ReviewsModel::addReviews);
+            connect(m_backend, &AbstractReviewsBackend::fetchingChanged, this, &ReviewsModel::fetchingChanged);
             connect(m_app, &AbstractResource::versionsChanged, this, &ReviewsModel::restartFetching);
 
             QMetaObject::invokeMethod(this, &ReviewsModel::restartFetching, Qt::QueuedConnection);
@@ -135,7 +137,7 @@ void ReviewsModel::addReviews(AbstractResource *app, const QVector<ReviewPtr> &r
         return;
 
     m_canFetchMore = canFetchMore;
-    // qCDebug(LIBDISCOVER_LOG) << "reviews arrived..." << m_lastPage << reviews.size();
+    qCDebug(LIBDISCOVER_LOG) << "reviews arrived..." << m_lastPage << reviews.size();
 
     if (!reviews.isEmpty()) {
         beginInsertRows(QModelIndex(), rowCount(), rowCount() + reviews.size() - 1);
@@ -170,6 +172,11 @@ void ReviewsModel::flagReview(int row, const QString &reason, const QString &tex
 {
     Review *r = m_reviews[row].data();
     m_backend->flagReview(r, reason, text);
+}
+
+bool ReviewsModel::isFetching() const
+{
+    return m_backend && m_backend->isFetching();
 }
 
 #include "moc_ReviewsModel.cpp"

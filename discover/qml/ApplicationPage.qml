@@ -550,8 +550,7 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.maximumWidth: Kirigami.Units.gridUnit * 15
                 Layout.bottomMargin: appInfo.internalSpacings * 2
-                // FIXME: how do we distinguish between "reviews are empty because they haven't loaded" and "reviews are empty because there are no reviews"?
-                visible: !rep.count > 0 /*&& reviewsModel.count > 0*/
+                visible: reviewsModel.fetching
                 text: i18n("Loading reviews for %1", appInfo.application.name)
             }
 

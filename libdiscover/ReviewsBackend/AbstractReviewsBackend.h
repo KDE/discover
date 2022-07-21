@@ -46,6 +46,7 @@ Q_SIGNALS:
     void reviewsReady(AbstractResource *app, const QVector<ReviewPtr> &reviews, bool canFetchMore);
     void loginStateChanged();
     void error(const QString &message);
+    void fetchingChanged(bool fetching);
 };
 
 #endif // ABSTRACTREVIEWSBACKEND_H
