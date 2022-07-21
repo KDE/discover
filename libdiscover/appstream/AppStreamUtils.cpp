@@ -63,9 +63,13 @@ QPair<QList<QUrl>, QList<QUrl>> AppStreamUtils::fetchScreenshots(const AppStream
 
 QJsonArray AppStreamUtils::licenses(const AppStream::Component &appdata)
 {
+    static const QSet<QChar> tokens = {'&', '+', '|', '^', '(', ')'};
+
     QJsonArray ret;
     const auto licenses = AppStream::SPDX::tokenizeLicense(appdata.projectLicense());
     for (const auto &token : licenses) {
+        if (token.size() == 1 && tokens.contains(token.at(0)))
+            continue;
         ret += license(token.mid(1)); // tokenize prefixes with an @ for some reason
     }
     return ret;
