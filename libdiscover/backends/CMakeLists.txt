@@ -8,7 +8,7 @@ function(add_unit_test name)
         Qt::Test Qt::Core ${EXTRA_LIBS})
 endfunction()
 
-if(KF5Attica_FOUND AND KF5NewStuff_FOUND)
+if(KF5Attica_FOUND AND KF5NewStuff_FOUND AND AppStreamQt_FOUND)
    add_subdirectory(KNSBackend)
 endif()
 
