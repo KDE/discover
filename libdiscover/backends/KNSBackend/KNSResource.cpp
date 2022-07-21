@@ -13,6 +13,7 @@
 #include <QRegularExpression>
 
 #include "ReviewsBackend/Rating.h"
+#include <appstream/AppStreamUtils.h>
 
 KNSResource::KNSResource(const KNSCore::EntryInternal &entry, QStringList categories, KNSBackend *parent)
     : AbstractResource(parent)
@@ -130,7 +131,7 @@ KNSCore::EntryInternal KNSResource::entry() const
 
 QJsonArray KNSResource::licenses()
 {
-    return {QJsonObject{{QStringLiteral("name"), m_entry.license()}, {QStringLiteral("url"), QString()}}};
+    return {{AppStreamUtils::license(m_entry.license())}};
 }
 
 quint64 KNSResource::size()
