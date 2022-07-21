@@ -82,6 +82,12 @@ QJsonObject AppStreamUtils::license(const QString &license)
         publicLicense = true;
     }
 
+    if (license.isEmpty()) {
+        return {
+            {QStringLiteral("name"), i18n("Unknown")},
+            {QStringLiteral("hasFreedom"), true}, // give it the benefit of the doubt
+        };
+    }
     if (!AppStream::SPDX::isLicenseId(license))
         return {
             {QStringLiteral("name"), name},
