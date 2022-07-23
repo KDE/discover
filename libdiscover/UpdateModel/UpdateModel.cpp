@@ -350,16 +350,36 @@ void UpdateModel::resourceDataChanged(AbstractResource *res, const QVector<QByte
 
 void UpdateModel::checkAll()
 {
-    for (int i = 0, c = rowCount(); i < c; ++i)
-        if (index(i, 0).data(Qt::CheckStateRole) != Qt::Checked)
-            setData(index(i, 0), Qt::Checked, Qt::CheckStateRole);
+    QList<AbstractResource *> updatedItems;
+
+    for (int i = 0, c = rowCount(); i < c; ++i) {
+        auto idx = index(i);
+        if (idx.data(Qt::CheckStateRole) != Qt::Checked) {
+            updatedItems.append(itemFromIndex(idx)->app());
+        }
+    }
+
+    checkResources(updatedItems, true);
+
+    Q_EMIT dataChanged(index(0), index(rowCount() - 1), {Qt::CheckStateRole});
+    Q_EMIT toUpdateChanged();
 }
 
 void UpdateModel::uncheckAll()
 {
-    for (int i = 0, c = rowCount(); i < c; ++i)
-        if (index(i, 0).data(Qt::CheckStateRole) != Qt::Unchecked)
-            setData(index(i, 0), Qt::Unchecked, Qt::CheckStateRole);
+    QList<AbstractResource *> updatedItems;
+
+    for (int i = 0, c = rowCount(); i < c; ++i) {
+        auto idx = index(i);
+        if (idx.data(Qt::CheckStateRole) != Qt::Unchecked) {
+            updatedItems.append(itemFromIndex(idx)->app());
+        }
+    }
+
+    checkResources(updatedItems, false);
+
+    Q_EMIT dataChanged(index(0), index(rowCount() - 1), {Qt::CheckStateRole});
+    Q_EMIT toUpdateChanged();
 }
 
 #include "moc_UpdateModel.cpp"
