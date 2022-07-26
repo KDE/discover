@@ -356,6 +356,11 @@ QString FlatpakResource::origin() const
     return m_origin;
 }
 
+QString FlatpakResource::displayOrigin() const
+{
+    return !m_displayOrigin.isEmpty() ? m_displayOrigin : m_origin;
+}
+
 QString FlatpakResource::packageName() const
 {
     return flatpakName() + QLatin1Char('/') + arch() + QLatin1Char('/') + branch();
@@ -532,6 +537,11 @@ void FlatpakResource::setInstalledSize(quint64 size)
 void FlatpakResource::setOrigin(const QString &origin)
 {
     m_origin = origin;
+}
+
+void FlatpakResource::setDisplayOrigin(const QString &displayOrigin)
+{
+    m_displayOrigin = displayOrigin;
 }
 
 void FlatpakResource::setPropertyState(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState newState)

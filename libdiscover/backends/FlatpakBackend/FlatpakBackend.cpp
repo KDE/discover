@@ -110,6 +110,11 @@ public:
         return m_remote ? QString::fromUtf8(flatpak_remote_get_name(m_remote)) : QString();
     }
 
+    QString title() const
+    {
+        return m_remote ? QString::fromUtf8(flatpak_remote_get_title(m_remote)) : QString();
+    }
+
     FlatpakInstallation *installation() const
     {
         return m_installation;
@@ -491,6 +496,7 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
 
     FlatpakResource *resource = new FlatpakResource(cid, source->installation(), const_cast<FlatpakBackend *>(this));
     resource->setOrigin(source->name());
+    resource->setDisplayOrigin(source->title());
     resource->setIconPath(pathExports);
     resource->updateFromRef(FLATPAK_REF(ref));
     resource->setState(AbstractResource::Installed);
@@ -801,6 +807,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     resource->setResourceFile(url);
     resource->setResourceLocation(QUrl(refurl));
     resource->setOrigin(remoteName);
+    resource->setDisplayOrigin(remote ? QString::fromUtf8(flatpak_remote_get_title(remote)) : QString());
     resource->setFlatpakName(name);
     resource->setArch(flatpak_get_default_arch());
     resource->setBranch(settings.value(QStringLiteral("Flatpak Ref/Branch")).toString());
@@ -1600,6 +1607,7 @@ FlatpakResource *FlatpakBackend::resourceForComponent(const AppStream::Component
 
     FlatpakResource *res = new FlatpakResource(component, source->installation(), const_cast<FlatpakBackend *>(this));
     res->setOrigin(source->name());
+    res->setDisplayOrigin(source->title());
     res->setIconPath(source->appstreamIconsDir());
     res->updateFromAppStream();
     source->addResource(res);

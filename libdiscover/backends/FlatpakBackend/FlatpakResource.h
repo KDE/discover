@@ -117,6 +117,7 @@ public:
     QString longDescription() override;
     QString name() const override;
     QString origin() const override;
+    QString displayOrigin() const override;
     QString packageName() const override;
     PropertyState propertyState(PropertyKind kind) const;
     QUrl resourceFile() const;
@@ -153,6 +154,7 @@ public:
     void setFlatpakFileType(FlatpakFileType fileType);
     void setFlatpakName(const QString &name);
     void setOrigin(const QString &origin);
+    void setDisplayOrigin(const QString &displayOrigin);
     void setPropertyState(PropertyKind kind, PropertyState state);
     void setResourceFile(const QUrl &url);
     void setRuntime(const QString &runtime);
@@ -214,6 +216,7 @@ private:
     AbstractResource::State m_state;
     FlatpakInstallation *const m_installation;
     QString m_origin;
+    QString m_displayOrigin;
     QString m_availableVersion;
     FlatpakResource::ResourceType m_type = DesktopApp;
     QSharedPointer<FlatpakSource> m_temp;
