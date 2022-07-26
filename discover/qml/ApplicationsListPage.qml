@@ -173,6 +173,7 @@ DiscoverPage {
             anchors.centerIn: parent
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
 
+            visible: opacity !== 0
             opacity: apps.count == 0 && page.searchPage && appsModel.search.length == 0 ? 1 : 0
             Behavior on opacity { NumberAnimation { duration: Kirigami.Units.shortDuration; easing.type: Easing.InOutQuad } }
 
