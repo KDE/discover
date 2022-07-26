@@ -14,8 +14,7 @@ Kirigami.ScrollablePage
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
 
-    header:  Kirigami.InlineMessage {
-        id: headerInlineMessage
+    header: Kirigami.InlineMessage {
         visible: false
     }
 
