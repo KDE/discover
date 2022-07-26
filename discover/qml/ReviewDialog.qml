@@ -74,6 +74,7 @@ Kirigami.OverlaySheet
                 id: acceptButton
                 enabled: !instructionalLabel.visible
                 text: i18n("Submit review")
+                icon.name: "document-send"
                 onClicked: {
                     reviewDialog.accepted()
                     reviewDialog.sheetOpen = false
