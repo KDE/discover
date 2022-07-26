@@ -1075,7 +1075,7 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
 void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
 {
     g_autoptr(GError) localError = nullptr;
-    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(flatpakInstallation, m_cancellable, &localError);
+    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(flatpakInstallation, m_cancellable, &localError);
     if (!refs) {
         qWarning() << "Failed to get list of installed refs for listing local updates:" << localError->message;
         return;
