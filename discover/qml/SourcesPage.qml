@@ -34,6 +34,7 @@ DiscoverPage {
         section.property: "sourceName"
         section.delegate: Kirigami.ListSectionHeader {
             id: backendItem
+            height: Math.max(Kirigami.Units.gridUnit * 2.5, contentItem.height)
 
             readonly property QtObject backend: SourcesModel.sourcesBackendByName(section)
             readonly property QtObject resourcesBackend: backend.resourcesBackend
