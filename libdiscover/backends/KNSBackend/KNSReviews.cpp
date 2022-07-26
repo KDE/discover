@@ -181,6 +181,9 @@ Attica::Provider KNSReviews::provider() const
 #if KNEWSTUFFCORE_VERSION < QT_VERSION_CHECK(5, 92, 0)
     return s_shared->atticaManager.providerFor(m_providerUrl);
 #else
+    if (m_backend->engine()->atticaProviders().isEmpty()) {
+        return {};
+    }
     return *m_backend->engine()->atticaProviders().constFirst();
 #endif
 }
