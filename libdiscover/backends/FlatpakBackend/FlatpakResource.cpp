@@ -15,6 +15,7 @@
 
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/screenshot.h>
+#include <AppStreamQt/utils.h>
 #include <appstream/AppStreamUtils.h>
 
 #include <KConfigGroup>
@@ -870,4 +871,10 @@ void FlatpakResource::clearUserData()
 {
     QDir(dataLocation()).removeRecursively();
     Q_EMIT hasDataButUninstalledChanged();
+}
+
+bool FlatpakResource::isOlderThan(FlatpakResource *resource) const
+{
+    const QString other = resource->availableVersion();
+    return AppStream::Utils::vercmpSimple(installedVersion(), other) < 0;
 }

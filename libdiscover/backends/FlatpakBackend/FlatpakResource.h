@@ -192,6 +192,7 @@ public:
     }
 
     Q_INVOKABLE void clearUserData();
+    Q_INVOKABLE bool isOlderThan(FlatpakResource *resource) const;
 
 Q_SIGNALS:
     void hasDataButUninstalledChanged();

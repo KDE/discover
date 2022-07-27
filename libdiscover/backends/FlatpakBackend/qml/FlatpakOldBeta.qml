@@ -17,9 +17,12 @@ Kirigami.InlineMessage
     // resource is set by the creator of the element in ApplicationPage.
     //required property AbstractResource resource
     Layout.fillWidth: true
-    text: i18n("There is a stable version of %1", resource.name)
+    text: betaOlderThanStable ? i18nc("@label %1 is the name of an application", "This development version of %1 is outdated. Using the stable version is highly recommended.", resource.name) : i18nc("@label %1 is the name of an application", "A more stable version of %1 is available.", resource.name)
     height: visible ? implicitHeight : 0
     visible: actionsArray.filter(action => action.visible).length > 0
+    type: betaOlderThanStable ? Kirigami.MessageType.Warning : Kirigami.MessageType.Information
+
+    property bool betaOlderThanStable: false
 
     Instantiator {
         id: inst
@@ -34,6 +37,11 @@ Kirigami.InlineMessage
             onTriggered: {
                 applicationWindow().pageStack.pop();
                 Navigation.openApplication(model.application)
+            }
+            Component.onCompleted: {
+                if (visible) {
+                    betaOlderThanStable |= resource.isOlderThan(model.application)
+                }
             }
         }
 
