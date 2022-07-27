@@ -34,7 +34,7 @@ void DummyTransaction::iterateTransaction()
         return;
 
     if (progress() < 100) {
-        setProgress(qBound(0, progress() + (KRandom::random() % 30), 100));
+        setProgress(qBound(0, progress() + (KRandom::random() % 5), 100));
         QTimer::singleShot(/*KRandom::random()%*/ 100, this, &DummyTransaction::iterateTransaction);
     } else if (status() == DownloadingStatus) {
         setStatus(CommittingStatus);

@@ -17,6 +17,7 @@ class KStatusNotifierItem;
 class QWindow;
 class QQmlApplicationEngine;
 class CachedNetworkAccessManagerFactory;
+class TransactionsJob;
 
 class DiscoverObject : public QObject
 {

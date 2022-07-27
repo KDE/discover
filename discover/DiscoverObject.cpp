@@ -380,6 +380,12 @@ public:
         auto firstTransaction = TransactionModel::global()->transactions().constFirst();
         Q_EMIT description(this, firstTransaction->name());
     }
+
+    void cancel()
+    {
+        setError(KJob::KilledJobError /*KIO::ERR_USER_CANCELED*/);
+        deleteLater();
+    }
 };
 
 bool DiscoverObject::quitWhenIdle()
@@ -390,9 +396,6 @@ bool DiscoverObject::quitWhenIdle()
 
     if (!m_sni) {
         auto tracker = new KUiServerV2JobTracker(m_sni);
-        auto job = new TransactionsJob;
-        tracker->registerJob(job);
-        job->start();
 
         m_sni = new KStatusNotifierItem(this);
         m_sni->setStatus(KStatusNotifierItem::Active);
@@ -403,6 +406,12 @@ bool DiscoverObject::quitWhenIdle()
 
         connect(TransactionModel::global(), &TransactionModel::countChanged, this, &DiscoverObject::reconsiderQuit);
         connect(m_sni, &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
+
+        auto job = new TransactionsJob;
+        job->setParent(this);
+        tracker->registerJob(job);
+        job->start();
+        connect(m_sni, &KStatusNotifierItem::activateRequested, job, &TransactionsJob::cancel);
 
         rootObject()->hide();
     }
