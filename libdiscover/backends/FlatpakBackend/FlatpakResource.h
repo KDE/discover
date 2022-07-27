@@ -29,6 +29,7 @@ class FlatpakResource : public AbstractResource
     Q_PROPERTY(QStringList objects MEMBER s_bottomObjects CONSTANT)
     Q_PROPERTY(QString attentionText READ attentionText CONSTANT)
     Q_PROPERTY(QString dataLocation READ dataLocation CONSTANT)
+    Q_PROPERTY(QString branch READ branch CONSTANT)
     Q_PROPERTY(bool hasDataButUninstalled READ hasDataButUninstalled NOTIFY hasDataButUninstalledChanged)
 public:
     explicit FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent);

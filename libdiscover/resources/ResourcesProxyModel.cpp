@@ -316,7 +316,7 @@ void ResourcesProxyModel::invalidateFilter()
         delete m_currentStream;
     }
 
-    m_currentStream = ResourcesModel::global()->search(m_filters);
+    m_currentStream = m_filters.backend ? m_filters.backend->search(m_filters) : ResourcesModel::global()->search(m_filters);
     Q_EMIT busyChanged(true);
 
     if (!m_displayedResources.isEmpty()) {
@@ -325,8 +325,8 @@ void ResourcesProxyModel::invalidateFilter()
         endResetModel();
     }
 
-    connect(m_currentStream, &AggregatedResultsStream::resourcesFound, this, &ResourcesProxyModel::addResources);
-    connect(m_currentStream, &AggregatedResultsStream::finished, this, [this]() {
+    connect(m_currentStream, &ResultsStream::resourcesFound, this, &ResourcesProxyModel::addResources);
+    connect(m_currentStream, &ResultsStream::destroyed, this, [this]() {
         m_currentStream = nullptr;
         Q_EMIT busyChanged(false);
     });
@@ -451,6 +451,16 @@ bool ResourcesProxyModel::allBackends() const
 void ResourcesProxyModel::setAllBackends(bool allBackends)
 {
     m_filters.allBackends = allBackends;
+}
+
+AbstractResourcesBackend *ResourcesProxyModel::backendFilter() const
+{
+    return m_filters.backend;
+}
+
+void ResourcesProxyModel::setBackendFilter(AbstractResourcesBackend *filtered)
+{
+    m_filters.backend = filtered;
 }
 
 QVariant ResourcesProxyModel::data(const QModelIndex &index, int role) const

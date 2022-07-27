@@ -43,7 +43,9 @@ static QString iconCachePath(const AppStream::Icon &icon)
     return QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation), icon.url().fileName());
 }
 
-const QStringList FlatpakResource::s_objects({QStringLiteral("qrc:/qml/FlatpakAttention.qml"), QStringLiteral("qrc:/qml/FlatpakRemoveData.qml")});
+const QStringList FlatpakResource::s_objects({QStringLiteral("qrc:/qml/FlatpakAttention.qml"),
+                                              QStringLiteral("qrc:/qml/FlatpakRemoveData.qml"),
+                                              QStringLiteral("qrc:/qml/FlatpakOldBeta.qml")});
 const QStringList FlatpakResource::s_bottomObjects({QStringLiteral("qrc:/qml/PermissionsList.qml")});
 
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent)

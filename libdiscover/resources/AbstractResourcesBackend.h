@@ -117,6 +117,7 @@ public:
         QString origin;
         bool allBackends = false;
         bool filterMinimumState = true;
+        AbstractResourcesBackend *backend = nullptr;
 
         bool isEmpty() const
         {

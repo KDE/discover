@@ -32,6 +32,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter NOTIFY stateFilterChanged)
     Q_PROPERTY(bool filterMinimumState READ filterMinimumState WRITE setFilterMinimumState NOTIFY filterMinimumStateChanged)
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
+    Q_PROPERTY(AbstractResourcesBackend *backendFilter READ backendFilter WRITE setBackendFilter)
     Q_PROPERTY(QString search READ lastSearch WRITE setSearch NOTIFY searchChanged)
     Q_PROPERTY(QUrl resourcesUrl READ resourcesUrl WRITE setResourcesUrl NOTIFY resourcesUrlChanged)
     Q_PROPERTY(QString extending READ extends WRITE setExtends)
@@ -105,6 +106,9 @@ public:
     bool allBackends() const;
     void setAllBackends(bool allBackends);
 
+    AbstractResourcesBackend *backendFilter() const;
+    void setBackendFilter(AbstractResourcesBackend *filtered);
+
     QVariantList subcategories() const;
 
     QVariant data(const QModelIndex &index, int role) const override;
@@ -159,7 +163,7 @@ private:
 
     QVector<AbstractResource *> m_displayedResources;
     const QHash<int, QByteArray> m_roles;
-    AggregatedResultsStream *m_currentStream;
+    ResultsStream *m_currentStream;
 
 Q_SIGNALS:
     void roughCountChanged();
