@@ -88,8 +88,10 @@ void ResourcesModel::init(bool load)
     m_allInitializedEmitter->setSingleShot(true);
     m_allInitializedEmitter->setInterval(0);
     connect(m_allInitializedEmitter, &QTimer::timeout, this, [this]() {
-        if (m_initializingBackends == 0)
+        if (m_initializingBackends == 0) {
+            m_initializingBackends = false;
             Q_EMIT allInitialized();
+        }
     });
 
     if (load)
@@ -259,6 +261,11 @@ void ResourcesModel::registerBackendByName(const QString &name)
 bool ResourcesModel::isFetching() const
 {
     return m_isFetching;
+}
+
+bool ResourcesModel::isInitializing() const
+{
+    return m_isInitializing;
 }
 
 void ResourcesModel::slotFetching()

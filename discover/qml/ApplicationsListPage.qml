@@ -157,8 +157,10 @@ DiscoverPage {
         }
 
         Item {
+            readonly property bool nothingFound: apps.count == 0 && !appsModel.isBusy && !ResourcesModel.isInitializing && (!page.searchPage || appsModel.search.length > 0)
+
             anchors.fill: parent
-            opacity: apps.count == 0 && !appsModel.isBusy && (!page.searchPage || appsModel.search.length > 0) ? 1 : 0
+            opacity: nothingFound ? 1 : 0
             visible: opacity > 0
             Behavior on opacity { NumberAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad } }
 

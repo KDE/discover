@@ -74,6 +74,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(bool hasSecurityUpdates READ hasSecurityUpdates NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
+    Q_PROPERTY(bool isInitializing READ isInitializing NOTIFY allInitialized)
     Q_PROPERTY(AbstractResourcesBackend *currentApplicationBackend READ currentApplicationBackend WRITE setCurrentApplicationBackend NOTIFY
                    currentApplicationBackendChanged)
     Q_PROPERTY(DiscoverAction *updateAction READ updateAction CONSTANT)
@@ -96,6 +97,7 @@ public:
 
     bool isBusy() const;
     bool isFetching() const;
+    bool isInitializing() const;
 
     Q_SCRIPTABLE bool isExtended(const QString &id);
 
@@ -151,6 +153,7 @@ private:
     void slotFetching();
 
     bool m_isFetching;
+    bool m_isInitializing = true;
     QVector<AbstractResourcesBackend *> m_backends;
     int m_initializingBackends;
     DiscoverAction *m_updateAction = nullptr;
