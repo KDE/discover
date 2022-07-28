@@ -38,6 +38,7 @@ public:
     QString availableVersion() const override;
     QString installedVersion() const override;
     QString origin() const override;
+    QString displayOrigin() const override;
     QString section() override;
     void fetchScreenshots() override;
     quint64 size() override;

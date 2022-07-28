@@ -14,6 +14,7 @@
 
 #include "ReviewsBackend/Rating.h"
 #include <appstream/AppStreamUtils.h>
+#include <attica/provider.h>
 
 KNSResource::KNSResource(const KNSCore::EntryInternal &entry, QStringList categories, KNSBackend *parent)
     : AbstractResource(parent)
@@ -156,6 +157,18 @@ QString KNSResource::availableVersion() const
 QString KNSResource::origin() const
 {
     return m_entry.providerId();
+}
+
+QString KNSResource::displayOrigin() const
+{
+    if (auto providers = knsBackend()->engine()->atticaProviders(); !providers.isEmpty()) {
+        auto provider = providers.constFirst();
+        if (provider->name() == QLatin1String("api.kde-look.org")) {
+            return i18nc("The name of the KDE Store", "KDE Store");
+        }
+        return providers.constFirst()->name();
+    }
+    return QUrl(m_entry.providerId()).host();
 }
 
 QString KNSResource::section()
