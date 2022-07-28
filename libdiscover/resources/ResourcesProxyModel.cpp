@@ -191,7 +191,7 @@ void ResourcesProxyModel::removeDuplicates(QVector<AbstractResource *> &resource
                 }
                 ++it;
             } else {
-                if ((*it)->backend() == cab) {
+                if ((*it)->backend() == cab && (*it)->backend() != (**at)->backend()) {
                     qSwap(*it, **at);
                 }
                 it = resources.erase(it);
