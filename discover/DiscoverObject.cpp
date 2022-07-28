@@ -376,8 +376,7 @@ public:
             return;
         }
 
-        setProcessedAmount(Items, totalAmount(Items) - TransactionModel::global()->rowCount());
-
+        setProcessedAmount(Items, totalAmount(Items) - TransactionModel::global()->rowCount() + 1);
         auto firstTransaction = TransactionModel::global()->transactions().constFirst();
         Q_EMIT description(this, firstTransaction->name());
     }
