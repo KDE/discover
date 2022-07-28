@@ -112,7 +112,11 @@ public:
 
     QString title() const
     {
-        return m_remote ? QString::fromUtf8(flatpak_remote_get_title(m_remote)) : QString();
+        auto ret = m_remote ? QString::fromUtf8(flatpak_remote_get_title(m_remote)) : QString();
+        if (flatpak_installation_get_is_user(m_installation)) {
+            ret = i18nc("user denotes this as user-scoped flatpak repo", "%1 (user)", ret);
+        }
+        return ret;
     }
 
     FlatpakInstallation *installation() const
