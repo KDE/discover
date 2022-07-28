@@ -412,6 +412,10 @@ bool DiscoverObject::quitWhenIdle()
 
 void DiscoverObject::restore()
 {
+    if (!m_sni) {
+        return;
+    }
+
     disconnect(TransactionModel::global(), &TransactionModel::countChanged, this, &DiscoverObject::reconsiderQuit);
     disconnect(m_sni, &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
 

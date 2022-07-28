@@ -169,6 +169,7 @@ int main(int argc, char **argv)
             return 0;
         } else {
             auto onActivateRequested = [mainWindow](const QStringList &arguments, const QString & /*workingDirectory*/) {
+                mainWindow->restore();
                 auto window = qobject_cast<QWindow *>(mainWindow->rootObject());
                 if (!window) {
                     // Should never happen anyway
