@@ -191,7 +191,7 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
 
 DiscoverObject::~DiscoverObject()
 {
-    delete m_engine;
+    m_engine->deleteLater();
 }
 
 bool DiscoverObject::isRoot()
