@@ -214,6 +214,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
         };
         const auto iconName = knsrcPlasma.contains(fileName) ? QStringLiteral("plasma") : QStringLiteral("applications-other");
         auto actualCategory = new Category(m_displayName, iconName, filters, backendName, categories, QUrl(), true);
+        actualCategory->setParent(this);
 
         const auto topLevelName = knsrcPlasma.contains(fileName) ? i18n("Plasma Addons") : i18n("Application Addons");
         auto addonsCategory = new Category(topLevelName, iconName, filters, backendName, {actualCategory}, QUrl(), true);

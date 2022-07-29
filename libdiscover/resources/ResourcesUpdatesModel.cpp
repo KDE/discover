@@ -178,7 +178,12 @@ void ResourcesUpdatesModel::init()
 
 void ResourcesUpdatesModel::updaterDestroyed(QObject *obj)
 {
-    m_updaters.removeAll(static_cast<AbstractBackendUpdater *>(obj));
+    for (auto it = m_updaters.begin(); it != m_updaters.end();) {
+        if (*it == obj)
+            it = m_updaters.erase(it);
+        else
+            ++it;
+    }
 }
 
 void ResourcesUpdatesModel::message(const QString &msg)

@@ -334,6 +334,11 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     }
 
     for (int i = 0, c = m_sources->rowCount(); i < c; ++i) {
+        auto genItem = m_sources->item(i);
+        if (genItem == m_noSourcesItem) {
+            continue;
+        }
+
         FlatpakSourceItem *item = static_cast<FlatpakSourceItem *>(m_sources->item(i));
         if (item->data(Qt::StatusTipRole) == remoteUrl && item->flatpakInstallation() == installation) {
             qDebug() << "we already have an item for this" << remoteUrl;
