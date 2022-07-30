@@ -22,6 +22,7 @@ kconfig_add_kcfg_files(kcm_updates_PART_SRCS updatessettings.kcfgc GENERATE_MOC)
 kconfig_add_kcfg_files(kcm_updates_PART_SRCS discoversettings.kcfgc GENERATE_MOC)
 add_library(kcm_updates MODULE updates.cpp updates.h ${kcm_updates_PART_SRCS})
 
+kcmutils_generate_desktop_file(kcm_updates)
 target_link_libraries(kcm_updates
     KF5::I18n
     KF5::KCMUtils
@@ -29,5 +30,4 @@ target_link_libraries(kcm_updates
 )
 
 install(TARGETS kcm_updates DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
-install(FILES kcm_updates.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 kpackage_install_package(package kcm_updates kcms)
