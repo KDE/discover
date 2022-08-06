@@ -39,7 +39,7 @@ Kirigami.OverlaySheet
                 id: titleInput
                 Kirigami.FormData.label: i18n("Title:")
                 Layout.fillWidth: true
-                validator: RegExpValidator { regExp: /.{3,70}/ }
+                validator: RegularExpressionValidator { regularExpression: /.{3,70}/ }
             }
         }
 
