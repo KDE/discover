@@ -6,7 +6,7 @@
   <name xml:lang="az">Snap modulları</name>
   <name xml:lang="bg">Бекенд на Snap</name>
   <name xml:lang="ca">Dorsal de l'Snap</name>
-  <name xml:lang="ca-valencia">Dorsal de Snap</name>
+  <name xml:lang="ca-valencia">Dorsal d'Snap</name>
   <name xml:lang="cs">Podpůrná vrstva Snap</name>
   <name xml:lang="da">Snap-motor</name>
   <name xml:lang="de">Snap-Backend</name>
@@ -49,7 +49,7 @@
   <summary xml:lang="az">Snap tətbiqlərini Discover-ə inteqrasiya edir</summary>
   <summary xml:lang="bg">Интегрира Snap приложения в Discover</summary>
   <summary xml:lang="ca">Integra les aplicacions de l'Snap al Discover</summary>
-  <summary xml:lang="ca-valencia">Integra les aplicacions de Snap a Discover</summary>
+  <summary xml:lang="ca-valencia">Integra les aplicacions d'Snap a Discover</summary>
   <summary xml:lang="cs">Integruje aplikace Snap do Discover</summary>
   <summary xml:lang="da">Integrerer Snap-programmer i Discover</summary>
   <summary xml:lang="de">Integriert Snap-Anwendungen in Discover</summary>
