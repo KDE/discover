@@ -173,6 +173,10 @@ Kirigami.GlobalDrawer {
                     pageStack.currentIndex = 0
                     window.leftPage.category = category
                 }
+
+                if (!drawer.wideScreen && category.subcategories.length === 0) {
+                    drawer.close();
+                }
             }
         }
     }
