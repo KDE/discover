@@ -89,7 +89,7 @@ void ResourcesModel::init(bool load)
     m_allInitializedEmitter->setInterval(0);
     connect(m_allInitializedEmitter, &QTimer::timeout, this, [this]() {
         if (m_initializingBackends == 0) {
-            m_initializingBackends = false;
+            m_isInitializing = false;
             Q_EMIT allInitialized();
         }
     });
