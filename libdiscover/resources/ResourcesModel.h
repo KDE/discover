@@ -155,7 +155,7 @@ private:
     bool m_isFetching;
     bool m_isInitializing = true;
     QVector<AbstractResourcesBackend *> m_backends;
-    int m_initializingBackends;
+    int m_initializingBackendsCount;
     DiscoverAction *m_updateAction = nullptr;
     AbstractResourcesBackend *m_currentApplicationBackend;
     QTimer *m_allInitializedEmitter;

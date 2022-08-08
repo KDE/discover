@@ -40,7 +40,7 @@ ResourcesModel *ResourcesModel::global()
 ResourcesModel::ResourcesModel(QObject *parent, bool load)
     : QObject(parent)
     , m_isFetching(false)
-    , m_initializingBackends(0)
+    , m_initializingBackendsCount(0)
     , m_currentApplicationBackend(nullptr)
     , m_allInitializedEmitter(new QTimer(this))
     , m_updatesCount(
@@ -88,7 +88,7 @@ void ResourcesModel::init(bool load)
     m_allInitializedEmitter->setSingleShot(true);
     m_allInitializedEmitter->setInterval(0);
     connect(m_allInitializedEmitter, &QTimer::timeout, this, [this]() {
-        if (m_initializingBackends == 0) {
+        if (m_initializingBackendsCount == 0) {
             m_isInitializing = false;
             Q_EMIT allInitialized();
         }
@@ -136,7 +136,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend *backend)
     if (!backend->isFetching()) {
         m_updatesCount.reevaluate();
     } else {
-        m_initializingBackends++;
+        m_initializingBackendsCount++;
     }
 
     connect(backend, &AbstractResourcesBackend::fetchingChanged, this, &ResourcesModel::callerFetchingChanged);
@@ -160,7 +160,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend *backend)
     // pre-filled, we still need for the rest of the backends to be added before trying
     // to send out the initialized signal. To ensure this happens, schedule it for the
     // start of the next run of the event loop.
-    if (m_initializingBackends == 0) {
+    if (m_initializingBackendsCount == 0) {
         m_allInitializedEmitter->start();
     } else {
         slotFetching();
@@ -184,11 +184,11 @@ void ResourcesModel::callerFetchingChanged()
     }
 
     if (backend->isFetching()) {
-        m_initializingBackends++;
+        m_initializingBackendsCount++;
         slotFetching();
     } else {
-        m_initializingBackends--;
-        if (m_initializingBackends == 0)
+        m_initializingBackendsCount--;
+        if (m_initializingBackendsCount == 0)
             m_allInitializedEmitter->start();
         else
             slotFetching();
@@ -237,7 +237,7 @@ void ResourcesModel::registerAllBackends()
 {
     DiscoverBackendsFactory f;
     const auto backends = f.allBackends();
-    if (m_initializingBackends == 0 && backends.isEmpty()) {
+    if (m_initializingBackendsCount == 0 && backends.isEmpty()) {
         qCWarning(LIBDISCOVER_LOG) << "Couldn't find any backends";
         m_allInitializedEmitter->start();
     } else {
