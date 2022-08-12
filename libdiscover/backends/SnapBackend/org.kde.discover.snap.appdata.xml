@@ -4,6 +4,7 @@
   <name>Snap backend</name>
   <name xml:lang="ar">سَند سناپ</name>
   <name xml:lang="az">Snap modulları</name>
+  <name xml:lang="bg">Бекенд на Snap</name>
   <name xml:lang="ca">Dorsal de l'Snap</name>
   <name xml:lang="ca-valencia">Dorsal de Snap</name>
   <name xml:lang="cs">Podpůrná vrstva Snap</name>
@@ -46,6 +47,7 @@
   <summary>Integrates Snap applications into Discover</summary>
   <summary xml:lang="ar">يُكامل تطبيقات ”سناپ“ في «استكشف»</summary>
   <summary xml:lang="az">Snap tətbiqlərini Discover-ə inteqrasiya edir</summary>
+  <summary xml:lang="bg">Интегрира Snap приложения в Discover</summary>
   <summary xml:lang="ca">Integra les aplicacions de l'Snap al Discover</summary>
   <summary xml:lang="ca-valencia">Integra les aplicacions de Snap a Discover</summary>
   <summary xml:lang="cs">Integruje aplikace Snap do Discover</summary>
@@ -91,6 +93,7 @@
   <developer_name>Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ar">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="az">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="bg">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="cs">Aleix Pol Gonzalez</developer_name>
