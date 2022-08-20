@@ -50,7 +50,7 @@ ListView {
             cursorShape: Qt.PointingHandCursor
         }
 
-        background: Image {
+        background: AnimatedImage {
             id: thumbnail
 
             BusyIndicator {
@@ -82,7 +82,7 @@ ListView {
             anchors.fill: parent
         }
 
-        Image {
+        AnimatedImage {
             id: overlayImage
             anchors.fill: parent
             source: root.currentItem ? root.currentItem.imageSource : ""
