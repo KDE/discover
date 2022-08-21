@@ -10,6 +10,7 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.1
 import "navigation.js" as Navigation
+import org.kde.discover 2.0
 import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.AbstractCard

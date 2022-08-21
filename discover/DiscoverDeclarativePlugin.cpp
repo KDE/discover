@@ -29,15 +29,6 @@
 #include <resources/ResourcesUpdatesModel.h>
 #include <resources/SourcesModel.h>
 
-void DiscoverDeclarativePlugin::initializeEngine(QQmlEngine *engine, const char *uri)
-{
-    engine->rootContext()->setContextProperty(QStringLiteral("ResourcesModel"), ResourcesModel::global());
-    engine->rootContext()->setContextProperty(QStringLiteral("TransactionModel"), TransactionModel::global());
-    engine->rootContext()->setContextProperty(QStringLiteral("SourcesModel"), SourcesModel::global());
-    engine->rootContext()->setContextProperty(QStringLiteral("CategoryModel"), CategoryModel::global());
-    QQmlExtensionPlugin::initializeEngine(engine, uri);
-}
-
 void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
 {
     qmlRegisterType<TransactionListener>("org.kde.discover", 2, 0, "TransactionListener");
@@ -63,5 +54,10 @@ void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
     qmlRegisterAnonymousType<AbstractReviewsBackend>("org.kde.discover", 1);
     qmlRegisterAnonymousType<Category>("org.kde.discover", 1);
     qmlRegisterAnonymousType<ResourcesModel>("org.kde.discover", 1);
+    qmlRegisterSingletonInstance("org.kde.discover", 2, 0, "CategoryModel", CategoryModel::global());
+    qmlRegisterSingletonInstance("org.kde.discover", 2, 0, "ResourcesModel", ResourcesModel::global());
+    qmlRegisterSingletonInstance("org.kde.discover", 2, 0, "TransactionModel", TransactionModel::global());
+    qmlRegisterSingletonInstance("org.kde.discover", 2, 0, "SourcesModel", SourcesModel::global());
+
     qmlProtectModule("org.kde.discover", 2);
 }
