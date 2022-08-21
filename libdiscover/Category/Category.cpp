@@ -26,12 +26,10 @@ Category::Category(const QString &name,
                    const QVector<QPair<FilterType, QString>> &orFilters,
                    const QSet<QString> &pluginName,
                    const QVector<Category *> &subCategories,
-                   const QUrl &decoration,
                    bool isAddons)
     : QObject(nullptr)
     , m_name(name)
     , m_iconString(iconName)
-    , m_decoration(decoration)
     , m_orFilters(orFilters)
     , m_subCategories(subCategories)
     , m_plugins(pluginName)
@@ -58,14 +56,6 @@ void Category::parseData(const QString &path, const QDomNode &data)
         } else if (tempElement.tagName() == QLatin1String("Menu")) {
             m_subCategories << new Category(m_plugins, this);
             m_subCategories.last()->parseData(path, node);
-        } else if (tempElement.tagName() == QLatin1String("Image")) {
-            m_decoration = QUrl(tempElement.text());
-            if (m_decoration.isRelative()) {
-                m_decoration =
-                    QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("discover/") + tempElement.text()));
-                if (m_decoration.isEmpty())
-                    qCWarning(LIBDISCOVER_LOG) << "couldn't find category decoration" << tempElement.text();
-            }
         } else if (tempElement.tagName() == QLatin1String("Addons")) {
             m_isAddons = true;
         } else if (tempElement.tagName() == QLatin1String("Icon") && tempElement.hasChildNodes()) {
@@ -245,17 +235,6 @@ bool Category::blacklistPlugins(const QSet<QString> &pluginNames)
     if (blacklistPluginsInVector(pluginNames, m_subCategories))
         Q_EMIT subCategoriesChanged();
     return false;
-}
-
-QUrl Category::decoration() const
-{
-    if (m_decoration.isEmpty()) {
-        Category *c = qobject_cast<Category *>(parent());
-        return c ? c->decoration() : QUrl();
-    } else {
-        Q_ASSERT(!m_decoration.isLocalFile() || QFile::exists(m_decoration.toLocalFile()));
-        return m_decoration;
-    }
 }
 
 QVariantList Category::subCategoriesVariant() const
