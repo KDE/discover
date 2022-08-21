@@ -5,7 +5,7 @@
  */
 
 #include "ui_SnapMacaroonDialog.h"
-#include <KAuthExecuteJob>
+#include <KAuth/ExecuteJob>
 #include <QApplication>
 #include <QBuffer>
 #include <QDebug>
