@@ -95,10 +95,6 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     const KConfigGroup group = conf.group("KNewStuff3");
     m_extends = group.readEntry("Extends", QStringList());
 
-#if KNEWSTUFFCORE_VERSION < QT_VERSION_CHECK(5, 92, 0)
-    m_reviews->setProviderUrl(QUrl(group.readEntry("ProvidersUrl", QString())));
-#endif
-
     setFetching(true);
 
     // This ensures we have something to track when checking after the initialization timeout

@@ -18,21 +18,6 @@
 #include <attica/providermanager.h>
 #include <resources/AbstractResource.h>
 
-class SharedManager : public QObject
-{
-    Q_OBJECT
-public:
-    SharedManager()
-    {
-        atticaManager.loadDefaultProviders();
-    }
-
-public:
-    Attica::ProviderManager atticaManager;
-};
-
-Q_GLOBAL_STATIC(SharedManager, s_shared)
-
 KNSReviews::KNSReviews(KNSBackend *backend)
     : AbstractReviewsBackend(backend)
     , m_backend(backend)
@@ -179,31 +164,15 @@ QString KNSReviews::userName() const
     return user;
 }
 
-void KNSReviews::setProviderUrl(const QUrl &url)
-{
-#if KNEWSTUFFCORE_VERSION < QT_VERSION_CHECK(5, 92, 0)
-    m_providerUrl = url;
-    if (!m_providerUrl.isEmpty() && !s_shared->atticaManager.providerFiles().contains(url)) {
-        s_shared->atticaManager.addProviderFile(url);
-    }
-#endif
-}
-
 Attica::Provider KNSReviews::provider() const
 {
-#if KNEWSTUFFCORE_VERSION < QT_VERSION_CHECK(5, 92, 0)
-    return s_shared->atticaManager.providerFor(m_providerUrl);
-#else
     if (m_backend->engine()->atticaProviders().isEmpty()) {
         return {};
     }
     return *m_backend->engine()->atticaProviders().constFirst();
-#endif
 }
 
 bool KNSReviews::isResourceSupported(AbstractResource *res) const
 {
     return qobject_cast<KNSResource *>(res);
 }
-
-#include "KNSReviews.moc"

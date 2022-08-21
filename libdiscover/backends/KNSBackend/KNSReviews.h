@@ -37,7 +37,6 @@ public:
     bool hasCredentials() const override;
     QString userName() const override;
 
-    void setProviderUrl(const QUrl &url);
     bool isResourceSupported(AbstractResource *res) const override;
 
 private Q_SLOTS:
@@ -50,9 +49,6 @@ private:
 
     KNSBackend *const m_backend;
     int m_fetching = 0;
-#if KNEWSTUFFCORE_VERSION < QT_VERSION_CHECK(5, 92, 0)
-    QUrl m_providerUrl;
-#endif
 };
 
 #endif // KNSREVIEWS_H
