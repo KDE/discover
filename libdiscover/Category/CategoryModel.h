@@ -13,6 +13,8 @@
 
 #include "discovercommon_export.h"
 
+class QTimer;
+
 class DISCOVERCOMMON_EXPORT CategoryModel : public QObject
 {
     Q_OBJECT
@@ -35,6 +37,7 @@ Q_SIGNALS:
     void rootCategoriesChanged();
 
 private:
+    QTimer *m_rootCategoriesChanged;
     QVector<Category *> m_rootCategories;
 };
 
