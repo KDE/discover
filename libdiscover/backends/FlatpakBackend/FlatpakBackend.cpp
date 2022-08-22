@@ -1495,13 +1495,13 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     auto f = [this, stream, filter]() {
         QVector<AbstractResource *> prioritary, rest;
         for (const auto &source : qAsConst(m_flatpakSources)) {
-            QVector<FlatpakResource *> resources;
+            QList<FlatpakResource *> resources;
             if (source->m_pool) {
-                resources = kTransform<QVector<FlatpakResource *>>(source->m_pool->search(filter.search), [this, &source](const auto &comp) {
+                resources = kTransform<QList<FlatpakResource *>>(source->m_pool->search(filter.search), [this, &source](const auto &comp) {
                     return resourceForComponent(comp, source);
                 });
             } else {
-                resources = source->m_resources.values().toVector();
+                resources = source->m_resources.values();
             }
 
             for (auto r : std::as_const(resources)) {
