@@ -437,7 +437,7 @@ void PackageKitResource::runService(const QStringList &desktopFilePaths) const
         auto p = new QProcess(parent());
         connect(p, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, p](int exitCode, QProcess::ExitStatus /*exitStatus*/) {
             if (exitCode != 0) {
-                backend()->passiveMessage(i18n("Failed to start '%1'", KShell::joinArgs(p->arguments())));
+                Q_EMIT backend()->passiveMessage(i18n("Failed to start '%1'", KShell::joinArgs(p->arguments())));
             }
             p->deleteLater();
         });

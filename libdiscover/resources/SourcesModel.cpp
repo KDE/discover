@@ -57,13 +57,13 @@ void SourcesModel::addSourcesBackend(AbstractSourcesBackend *sources)
         auto action = new OneTimeAction(
             [this, m] {
                 addSourceModel(m);
-                sourcesChanged();
+                Q_EMIT sourcesChanged();
             },
             this);
         connect(m, &QAbstractItemModel::rowsInserted, action, &OneTimeAction::trigger);
     } else {
         addSourceModel(m);
-        sourcesChanged();
+        Q_EMIT sourcesChanged();
     }
 }
 

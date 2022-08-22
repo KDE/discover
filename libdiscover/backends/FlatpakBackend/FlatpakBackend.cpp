@@ -668,7 +668,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
         m_flatpakSources += m_localSource;
     }
     m_localSource->addResource(resource);
-    stream->resourcesFound({resource});
+    Q_EMIT stream->resourcesFound({resource});
 }
 
 AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancellable *cancellable)
@@ -785,7 +785,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
                 auto resources = kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
                     return resourceForComponent(comp, source);
                 });
-                stream->resourcesFound(resources);
+                Q_EMIT stream->resourcesFound(resources);
                 stream->finish();
             };
             if (source->m_pool) {
@@ -829,7 +829,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
             const auto metadata = fw->result();
             // Even when we failed to fetch information about runtime we still want to show the application
             if (metadata.isEmpty()) {
-                Q_EMIT onFetchMetadataFinished(resource, metadata);
+                onFetchMetadataFinished(resource, metadata);
             } else {
                 updateAppMetadata(resource, metadata);
 
@@ -844,7 +844,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
                                     installApplication(res);
                                 }
                                 refSource->addResource(resource);
-                                stream->resourcesFound({resource});
+                                Q_EMIT stream->resourcesFound({resource});
                                 stream->finish();
                             });
 
@@ -855,13 +855,13 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
                     refSource->addResource(resource);
                 }
             }
-            stream->resourcesFound({resource});
+            Q_EMIT stream->resourcesFound({resource});
             stream->finish();
         });
         fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, resource, m_cancellable));
     } else {
         refSource->addResource(resource);
-        stream->resourcesFound({resource});
+        Q_EMIT stream->resourcesFound({resource});
         stream->finish();
     }
 
@@ -918,7 +918,7 @@ void FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *st
         resource->setState(AbstractResource::State::Installed);
     }
 
-    stream->resourcesFound({resource});
+    Q_EMIT stream->resourcesFound({resource});
 }
 
 void FlatpakBackend::loadAppsFromAppstreamData()
