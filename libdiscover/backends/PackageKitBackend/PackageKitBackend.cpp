@@ -233,7 +233,7 @@ void PackageKitBackend::reloadPackageList()
         }
         for (const AppStream::Component &dc : distroComponents) {
             const auto releases = dc.releases();
-            for (auto r : releases) {
+            for (const auto &r : releases) {
                 int cmp = AppStream::Utils::vercmpSimple(r.version(), AppStreamIntegration::global()->osRelease()->versionId());
                 if (cmp == 0) {
                     // Ignore (likely) empty date_eol entries that are parsed as the UNIX Epoch

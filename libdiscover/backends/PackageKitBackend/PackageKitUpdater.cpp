@@ -217,7 +217,8 @@ public:
 
     void setCandidates(const QSet<AbstractResource *> &candidates)
     {
-        for (auto res : (m_resources - candidates)) {
+        const auto toDisconnect = (m_resources - candidates);
+        for (auto res : toDisconnect) {
             disconnect(res, &AbstractResource::sizeChanged, this, &SystemUpgrade::refreshResource);
         }
 
@@ -438,7 +439,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
 
         if (!toremove.isEmpty()) {
             QStringList criticals;
-            for (const auto &pkgid : toremove) {
+            for (const auto &pkgid : std::as_const(toremove)) {
                 auto res = kFilter<QVector<AbstractResource *>>(m_backend->resourcesByPackageName(pkgid), [](AbstractResource *res) {
                     return static_cast<PackageKitResource *>(res)->isCritical();
                 });

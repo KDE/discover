@@ -1451,7 +1451,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         auto stream = new ResultsStream(QStringLiteral("FlatpakStream-installed"));
         auto f = [this, stream, filter] {
             QVector<AbstractResource *> resources;
-            for (auto installation : m_installations) {
+            for (auto installation : std::as_const(m_installations)) {
                 g_autoptr(GError) localError = nullptr;
                 g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(installation, m_cancellable, &localError);
                 if (!refs) {
@@ -1504,7 +1504,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 resources = source->m_resources.values().toVector();
             }
 
-            for (auto r : resources) {
+            for (auto r : std::as_const(resources)) {
                 const bool matchById = r->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
                 if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
                     continue;
@@ -1631,7 +1631,7 @@ AbstractReviewsBackend *FlatpakBackend::reviewsBackend() const
 void FlatpakBackend::checkRepositories(const QMap<QString, QStringList> &names)
 {
     auto flatpakInstallationByPath = [this](const QString &path) -> FlatpakInstallation * {
-        for (auto inst : m_installations) {
+        for (auto inst : std::as_const(m_installations)) {
             if (FlatpakResource::installationPath(inst) == path)
                 return inst;
         }
@@ -1749,7 +1749,7 @@ Transaction *FlatpakBackend::removeApplication(AbstractResource *app)
 
 void FlatpakBackend::checkForUpdates()
 {
-    for (auto source : qAsConst(m_flatpakSources)) {
+    for (const auto &source : qAsConst(m_flatpakSources)) {
         if (source->remote()) {
             Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(source->remote()));
             m_refreshAppstreamMetadataJobs.insert(source->remote());
