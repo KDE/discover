@@ -20,6 +20,13 @@ CategoryModel::CategoryModel(QObject *parent)
     t->setSingleShot(true);
     connect(t, &QTimer::timeout, this, &CategoryModel::populateCategories);
     connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, t, QOverload<>::of(&QTimer::start));
+
+    // Use a timer so to compress the rootCategoriesChanged signal
+    // It generally triggers when KNS is unavailable at large (as explained in bug 454442)
+    m_rootCategoriesChanged = new QTimer(this);
+    m_rootCategoriesChanged->setInterval(0);
+    m_rootCategoriesChanged->setSingleShot(true);
+    connect(m_rootCategoriesChanged, &QTimer::timeout, this, &CategoryModel::rootCategoriesChanged);
 }
 
 CategoryModel *CategoryModel::global()
@@ -52,7 +59,7 @@ void CategoryModel::populateCategories()
     }
     if (m_rootCategories != ret) {
         m_rootCategories = ret;
-        Q_EMIT rootCategoriesChanged();
+        m_rootCategoriesChanged->start();
     }
 }
 
@@ -67,7 +74,7 @@ void CategoryModel::blacklistPlugin(const QString &name)
 {
     const bool ret = Category::blacklistPluginsInVector({name}, m_rootCategories);
     if (ret) {
-        Q_EMIT rootCategoriesChanged();
+        m_rootCategoriesChanged->start();
     }
 }
 
