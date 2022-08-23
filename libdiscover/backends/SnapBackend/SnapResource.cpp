@@ -17,6 +17,7 @@
 #include <Snapd/MarkdownParser>
 #endif
 
+#include <appstream/AppStreamUtils.h>
 #include <utils.h>
 
 QDebug operator<<(QDebug debug, const QSnapdPlug &plug)
@@ -149,7 +150,7 @@ QString SnapResource::installedVersion() const
 
 QJsonArray SnapResource::licenses()
 {
-    return {QJsonObject{{QStringLiteral("name"), m_snap->license()}}};
+    return AppStreamUtils::licenses(m_snap->license());
 }
 
 #ifdef SNAP_MARKDOWN
