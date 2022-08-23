@@ -59,6 +59,7 @@
 #ifdef WITH_FEEDBACK
 #include "plasmauserfeedback.h"
 #endif
+#include "PowerManagementInterface.h"
 #include "discoversettings.h"
 
 class CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
@@ -101,6 +102,7 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
     qmlRegisterType<KConcatenateRowsProxyModel>("org.kde.discover.app", 1, 0, "KConcatenateRowsProxyModel");
     qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
+    qmlRegisterType<PowerManagementInterface>("org.kde.discover.app", 1, 0, "PowerManagementInterface");
     qmlRegisterType<OurSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
 #ifdef WITH_FEEDBACK
     qmlRegisterSingletonType<PlasmaUserFeedback>("org.kde.discover.app", 1, 0, "UserFeedbackSettings", [](QQmlEngine *, QJSEngine *) -> QObject * {

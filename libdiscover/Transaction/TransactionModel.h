@@ -18,6 +18,7 @@ class DISCOVERCOMMON_EXPORT TransactionModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
+    Q_PROPERTY(QString mainTransactionText READ mainTransactionText NOTIFY mainTransactionTextChanged)
 public:
     enum Roles {
         TransactionRoleRole = Qt::UserRole,
@@ -54,6 +55,8 @@ public:
         return m_transactions;
     }
 
+    QString mainTransactionText() const;
+
 private:
     QVector<Transaction *> m_transactions;
 
@@ -65,6 +68,7 @@ Q_SIGNALS:
     void countChanged();
     void progressChanged();
     void proceedRequest(Transaction *transaction, const QString &title, const QString &description);
+    void mainTransactionTextChanged();
 
 private Q_SLOTS:
     void transactionChanged(int role);
