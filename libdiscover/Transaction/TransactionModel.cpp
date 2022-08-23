@@ -146,6 +146,10 @@ void TransactionModel::addTransaction(Transaction *trans)
     int before = m_transactions.size();
     beginInsertRows(QModelIndex(), before, before + 1);
     m_transactions.append(trans);
+
+    if (before == 0) { // Should emit before count changes
+        Q_EMIT mainTransactionTextChanged();
+    }
     endInsertRows();
 
     connect(trans, &Transaction::statusChanged, this, [this]() {
@@ -181,6 +185,10 @@ void TransactionModel::removeTransaction(Transaction *trans)
     Q_EMIT transactionRemoved(trans);
     if (m_transactions.isEmpty())
         Q_EMIT lastTransactionFinished();
+
+    if (r == 0) {
+        Q_EMIT mainTransactionTextChanged();
+    }
 }
 
 void TransactionModel::transactionChanged(int role)
@@ -201,4 +209,9 @@ int TransactionModel::progress() const
         }
     }
     return count == 0 ? 0 : sum / count;
+}
+
+QString TransactionModel::mainTransactionText() const
+{
+    return m_transactions.isEmpty() ? QString() : m_transactions.constFirst()->name();
 }
