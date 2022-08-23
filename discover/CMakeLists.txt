@@ -21,6 +21,7 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
     PaginateModel.cpp
     UnityLauncher.cpp
     ReadFile.cpp
+    PowerManagementInterface.cpp
 
     DiscoverObject.h
     DiscoverDeclarativePlugin.h

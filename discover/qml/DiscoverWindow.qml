@@ -335,6 +335,11 @@ Kirigami.ApplicationWindow
         }
     }
 
+    PowerManagementInterface {
+        reason: TransactionModel.mainTransactionText
+        preventSleep: TransactionModel.count > 0
+    }
+
     contextDrawer: Kirigami.ContextDrawer {}
 
     globalDrawer: DiscoverDrawer {
