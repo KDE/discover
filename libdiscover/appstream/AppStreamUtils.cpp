@@ -63,10 +63,15 @@ QPair<QList<QUrl>, QList<QUrl>> AppStreamUtils::fetchScreenshots(const AppStream
 
 QJsonArray AppStreamUtils::licenses(const AppStream::Component &appdata)
 {
+    return licenses(appdata.projectLicense());
+}
+
+QJsonArray AppStreamUtils::licenses(const QString &spdx)
+{
     static const QSet<QChar> tokens = {'&', '+', '|', '^', '(', ')'};
 
     QJsonArray ret;
-    const auto licenses = AppStream::SPDX::tokenizeLicense(appdata.projectLicense());
+    const auto licenses = AppStream::SPDX::tokenizeLicense(spdx);
     for (const auto &token : licenses) {
         if (token.size() == 1 && tokens.contains(token.at(0)))
             continue;
