@@ -62,13 +62,23 @@ SimpleKCM {
         }
 
         QQC2.ComboBox {
-            Kirigami.FormData.label: i18nc("@title:group", "Notification frequency:")
-            model: [
+            Kirigami.FormData.label: kcm.updatesSettings.useUnattendedUpdates ? i18nc("@title:group", "Update frequency:") : i18nc("@title:group", "Notification frequency:")
+
+            readonly property var updatesFrequencyModel: [
                 i18nc("@item:inlistbox", "Daily"),
                 i18nc("@item:inlistbox", "Weekly"),
                 i18nc("@item:inlistbox", "Monthly"),
                 i18nc("@item:inlistbox", "Never")
             ]
+
+            // Same as updatesFrequencyModel but without "Never"
+            readonly property var unattendedUpdatesFrequencyModel: [
+                updatesFrequencyModel[0],
+                updatesFrequencyModel[1],
+                updatesFrequencyModel[2],
+            ]
+
+            model: kcm.updatesSettings.useUnattendedUpdates ? unattendedUpdatesFrequencyModel : updatesFrequencyModel
 
             readonly property var options: [
                 60 * 60 * 24,

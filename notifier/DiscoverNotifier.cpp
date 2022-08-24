@@ -100,24 +100,36 @@ void DiscoverNotifier::showDiscoverUpdates(const QString &xdgActivationToken)
     }
 }
 
-void DiscoverNotifier::showUpdatesNotification()
+bool DiscoverNotifier::notifyAboutUpdates() const
 {
-    if (m_updatesAvailableNotification) {
-        m_updatesAvailableNotification->close();
-    }
     if (state() != NormalUpdates && state() != SecurityUpdates) {
         // it's not very helpful to notify that everything is in order
-        return;
+        return false;
     }
 
     if (m_settings->requiredNotificationInterval() < 0) {
-        return;
+        return false;
     }
 
     // To configure to a random value, execute:
     // kwriteconfig5 --file PlasmaDiscoverUpdates --group Global --key RequiredNotificationInterval 3600
     const QDateTime timeSinceLastRefresh = m_settings->lastNotificationTime().addSecs(m_settings->requiredNotificationInterval());
     if (!timeSinceLastRefresh.isValid() || timeSinceLastRefresh > QDateTime::currentDateTimeUtc()) {
+        return false;
+    }
+
+    m_settings->setLastNotificationTime(QDateTime::currentDateTimeUtc());
+    m_settings->save();
+    return true;
+}
+
+void DiscoverNotifier::showUpdatesNotification()
+{
+    if (m_updatesAvailableNotification) {
+        m_updatesAvailableNotification->close();
+    }
+
+    if (!notifyAboutUpdates()) {
         return;
     }
 
@@ -135,8 +147,6 @@ void DiscoverNotifier::showUpdatesNotification()
     connect(m_updatesAvailableNotification, QOverload<unsigned int>::of(&KNotification::activated), this, [this] {
         showDiscoverUpdates(m_updatesAvailableNotification->xdgActivationToken());
     });
-    m_settings->setLastNotificationTime(QDateTime::currentDateTimeUtc());
-    m_settings->save();
 }
 
 void DiscoverNotifier::updateStatusNotifier()
@@ -178,6 +188,11 @@ static bool isConnectionAdequate()
 void DiscoverNotifier::refreshUnattended()
 {
     m_settings->read();
+
+    if (!notifyAboutUpdates()) {
+        return;
+    }
+
     const auto enabled = m_settings->useUnattendedUpdates()
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         && m_manager->isOnline() && isConnectionAdequate(m_manager->defaultConfiguration());

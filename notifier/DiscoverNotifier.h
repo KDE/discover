@@ -92,6 +92,8 @@ private:
     void updateStatusNotifier();
     void refreshUnattended();
 
+    bool notifyAboutUpdates() const;
+
     QList<BackendNotifierModule *> m_backends;
     QTimer m_timer;
     bool m_hasSecurityUpdates = false;
