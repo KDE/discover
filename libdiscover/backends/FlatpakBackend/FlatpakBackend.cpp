@@ -24,6 +24,7 @@
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/metadata.h>
 #include <AppStreamQt/pool.h>
+#include <AppStreamQt/release.h>
 
 #include <KAboutData>
 #include <KConfigGroup>
@@ -1392,9 +1393,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     for (auto ref : qAsConst(it.value())) {
                         bool fresh;
                         auto resource = getAppForInstalledRef(it.key(), ref, &fresh);
-#if FLATPAK_CHECK_VERSION(1, 1, 2)
-                        resource->setAvailableVersion(QString::fromUtf8(flatpak_installed_ref_get_appdata_version(ref)));
-#endif
+                        resource->setAvailableVersion(resource->appdata().releases().constFirst().version());
                         g_object_unref(ref);
                         resource->setState(AbstractResource::Upgradeable, !fresh);
                         updateAppSize(resource);

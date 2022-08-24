@@ -194,6 +194,11 @@ public:
     Q_INVOKABLE void clearUserData();
     Q_INVOKABLE bool isOlderThan(FlatpakResource *resource) const;
 
+    const AppStream::Component appdata() const
+    {
+        return m_appdata;
+    }
+
 Q_SIGNALS:
     void hasDataButUninstalledChanged();
     void propertyStateChanged(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state);
