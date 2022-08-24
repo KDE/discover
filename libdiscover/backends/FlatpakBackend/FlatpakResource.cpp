@@ -105,16 +105,11 @@ QList<PackageState> FlatpakResource::addonsInformation()
 
 QString FlatpakResource::availableVersion() const
 {
-    QString theBranch = branch();
-    if (theBranch.isEmpty()) {
-        theBranch = i18n("Unknown");
-    }
-
     if (!m_availableVersion.isEmpty()) {
-        return i18nc("version (branch)", "%1 (%2)", m_availableVersion, theBranch);
+        return m_availableVersion;
     }
 
-    return theBranch;
+    return branch();
 }
 
 QString FlatpakResource::appstreamId() const
@@ -235,19 +230,15 @@ QVariant FlatpakResource::icon() const
 
 QString FlatpakResource::installedVersion() const
 {
-    QString version = branch();
-    if (version.isEmpty()) {
-        version = i18n("Unknown");
-    }
-
     g_autoptr(FlatpakInstalledRef) ref = qobject_cast<FlatpakBackend *>(backend())->getInstalledRefForApp(this);
     if (ref) {
         const char *appdataVersion = flatpak_installed_ref_get_appdata_version(ref);
+
         if (appdataVersion) {
-            return i18nc("version (branch)", "%1 (%2)", appdataVersion, version);
+            return appdataVersion;
         }
     }
-    return version;
+    return branch();
 }
 
 quint64 FlatpakResource::installedSize() const
