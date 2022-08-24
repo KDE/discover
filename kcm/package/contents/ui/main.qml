@@ -63,11 +63,6 @@ SimpleKCM {
             text: xi18nc("@info", "Software updates will be downloaded automatically when they become available. Updates for applications will be installed immediately, while system updates will be installed the next time the computer is restarted.")
         }
 
-        Kirigami.Separator {
-            Layout.fillWidth: true
-            Layout.margins: Kirigami.Units.gridUnit
-        }
-
         Kirigami.FormLayout {
             Layout.fillWidth: true
             twinFormLayouts: unattendedUpdatesLayout
@@ -105,6 +100,10 @@ SimpleKCM {
                     configObject: kcm.updatesSettings
                     settingName: "requiredNotificationInterval"
                 }
+            }
+
+            Item {
+                Kirigami.FormData.isSection: true
             }
 
             QQC2.CheckBox {
