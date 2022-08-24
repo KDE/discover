@@ -15,5 +15,9 @@ SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted
             <default>false</default>
         </entry>
         <entry name="LastUnattendedTrigger" type="DateTime" />
+        <entry name="RequiredNotificationInterval" type="Int" >
+            <default code="true">60 * 60 * 24</default>
+        </entry>
+        <entry name="LastNotificationTime" type="DateTime" />
     </group>
 </kcfg>

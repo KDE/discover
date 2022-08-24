@@ -70,7 +70,7 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
     updateStatusNotifier();
 
     // Only fetch updates after the system is comfortably booted
-    QTimer::singleShot(20s, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
+    QTimer::singleShot(0s, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
 }
 
 DiscoverNotifier::~DiscoverNotifier() = default;
@@ -110,6 +110,17 @@ void DiscoverNotifier::showUpdatesNotification()
         return;
     }
 
+    if (m_settings->requiredNotificationInterval() < 0) {
+        return;
+    }
+
+    // To configure to a random value, execute:
+    // kwriteconfig5 --file PlasmaDiscoverUpdates --group Global --key RequiredNotificationInterval 3600
+    const QDateTime timeSinceLastRefresh = m_settings->lastNotificationTime().addSecs(m_settings->requiredNotificationInterval());
+    if (!timeSinceLastRefresh.isValid() || timeSinceLastRefresh > QDateTime::currentDateTimeUtc()) {
+        return;
+    }
+
     m_updatesAvailableNotification = KNotification::event(QStringLiteral("Update"),
                                                           message(),
                                                           {},
@@ -124,6 +135,8 @@ void DiscoverNotifier::showUpdatesNotification()
     connect(m_updatesAvailableNotification, QOverload<unsigned int>::of(&KNotification::activated), this, [this] {
         showDiscoverUpdates(m_updatesAvailableNotification->xdgActivationToken());
     });
+    m_settings->setLastNotificationTime(QDateTime::currentDateTimeUtc());
+    m_settings->save();
 }
 
 void DiscoverNotifier::updateStatusNotifier()
