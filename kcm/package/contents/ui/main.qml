@@ -51,10 +51,6 @@ SimpleKCM {
             }
         }
 
-        Item {
-            Kirigami.FormData.isSection: true
-        }
-
         SettingStateBinding {
             configObject: kcm.updatesSettings
             settingName: "useUnattendedUpdates"
@@ -107,16 +103,12 @@ SimpleKCM {
         }
 
         Item {
-            Kirigami.FormData.isSection: true
+            implicitHeight: Kirigami.Units.largeSpacing
         }
 
         RowLayout {
             spacing: Kirigami.Units.smallSpacing
             Kirigami.FormData.label: i18n("Use offline updates:")
-
-            Item {
-                Kirigami.FormData.isSection: true
-            }
 
             QQC2.CheckBox {
                 id: offlineUpdatesBox
