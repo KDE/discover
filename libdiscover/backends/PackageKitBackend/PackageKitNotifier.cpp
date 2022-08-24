@@ -11,6 +11,7 @@
 #include <KDesktopFile>
 #include <KLocalizedString>
 #include <KNotification>
+#include <KSharedConfig>
 #include <PackageKit/Daemon>
 #include <PackageKit/Offline>
 #include <QDBusInterface>
@@ -267,7 +268,15 @@ void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade 
 void PackageKitNotifier::refreshDatabase()
 {
     if (!m_refresher) {
-        if (std::chrono::seconds(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache)) > 24h) {
+        const auto timeSinceLastRefresh = std::chrono::seconds(PackageKit::Daemon::getTimeSinceAction(PackageKit::Transaction::RoleRefreshCache));
+
+        // kwriteconfig5 --file DiscoverNotifierrc --group PackageKit --key RefreshTime 3600
+        const auto config = KSharedConfig::openConfig();
+        const KConfigGroup group(config, "PackageKit");
+        const auto refreshTime = std::chrono::seconds(group.readEntry<int>("RefreshTime", std::chrono::duration_cast<std::chrono::seconds>(24h).count()));
+        qCDebug(LIBDISCOVER_BACKEND_LOG) << "Time since last refresh" << timeSinceLastRefresh.count() << refreshTime.count();
+
+        if (timeSinceLastRefresh > refreshTime) {
             m_refresher = PackageKit::Daemon::refreshCache(false);
             connect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitNotifier::getUpdates);
         } else {
