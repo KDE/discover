@@ -71,6 +71,42 @@ SimpleKCM {
         Kirigami.FormLayout {
             Layout.fillWidth: true
             twinFormLayouts: unattendedUpdatesLayout
+
+            QQC2.ComboBox {
+                Kirigami.FormData.label: i18nc("@title:group", "Notification frequency:")
+                model: [
+                    i18nc("@item:inlistbox", "Daily"),
+                    i18nc("@item:inlistbox", "Weekly"),
+                    i18nc("@item:inlistbox", "Monthly"),
+                    i18nc("@item:inlistbox", "Never")
+                ]
+
+                readonly property var options: [
+                    60 * 60 * 24,
+                    60 * 60 * 24 * 7,
+                    60 * 60 * 24 * 30,
+                    -1
+                ]
+
+                currentIndex: {
+                    let index = -1
+                    for (const i in options) {
+                        if (options[i] === kcm.updatesSettings.requiredNotificationInterval) {
+                            index = i
+                        }
+                    }
+                    return index
+                }
+                onActivated: {
+                    kcm.updatesSettings.requiredNotificationInterval = options[index]
+                }
+                SettingStateProxy {
+                    id: settingState
+                    configObject: kcm.updatesSettings
+                    settingName: "requiredNotificationInterval"
+                }
+            }
+
             QQC2.CheckBox {
                 id: offlineUpdatesBox
                 Kirigami.FormData.label: i18n("Use offline updates:")
