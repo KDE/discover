@@ -263,7 +263,7 @@ QString AbstractResource::upgradeText() const
     if (installed == available) {
         // Update of the same version; show when old and new are
         // the same (common with Flatpak runtimes)
-        return i18n("Update to version %1", available);
+        return i18nc("@info 'Refresh' is used as a noun here, and %1 is an app's version number", "Refresh of version %1", available);
     } else if (!installed.isEmpty() && !available.isEmpty()) {
         // Old and new version numbers
         // This thing with \u009C is a fancy feature in QML text handling:
