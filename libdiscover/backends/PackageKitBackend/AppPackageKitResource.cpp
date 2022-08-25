@@ -248,3 +248,23 @@ bool AppPackageKitResource::isCritical() const
 {
     return m_appdata.isCompulsoryForDesktop(qEnvironmentVariable("XDG_CURRENT_DESKTOP"));
 }
+
+QString AppPackageKitResource::contentRatingDescription() const
+{
+    return AppStreamUtils::contentRatingDescription(m_appdata);
+}
+
+QString AppPackageKitResource::contentRatingText() const
+{
+    return AppStreamUtils::contentRatingText(m_appdata);
+}
+
+AbstractResource::ContentIntensity AppPackageKitResource::contentRatingIntensity() const
+{
+    return AppStreamUtils::contentRatingIntensity(m_appdata);
+}
+
+uint AppPackageKitResource::contentRatingMinimumAge() const
+{
+    return AppStreamUtils::contentRatingMinimumAge(m_appdata);
+}

@@ -45,6 +45,11 @@ public:
     QSet<QString> alternativeAppstreamIds() const override;
     bool isCritical() const override;
 
+    QString contentRatingText() const override;
+    QString contentRatingDescription() const override;
+    ContentIntensity contentRatingIntensity() const override;
+    uint contentRatingMinimumAge() const override;
+
 private:
     const AppStream::Component m_appdata;
     mutable QString m_name;

@@ -199,6 +199,11 @@ public:
         return m_appdata;
     }
 
+    QString contentRatingText() const override;
+    QString contentRatingDescription() const override;
+    ContentIntensity contentRatingIntensity() const override;
+    uint contentRatingMinimumAge() const override;
+
 Q_SIGNALS:
     void hasDataButUninstalledChanged();
     void propertyStateChanged(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state);

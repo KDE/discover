@@ -9,8 +9,10 @@
 
 #include <AppStreamQt/component.h>
 #include <AppStreamQt/image.h>
+#include <QColor>
 #include <QList>
 #include <QUrl>
+#include <resources/AbstractResource.h>
 
 namespace AppStreamUtils
 {
@@ -30,6 +32,11 @@ Q_DECL_EXPORT QStringList appstreamIds(const QUrl &appstreamUrl);
 
 /// Helps implement AbstractResource::versionString
 Q_DECL_EXPORT QString versionString(const QString &version, const AppStream::Component &appdata);
+
+Q_DECL_EXPORT QString contentRatingText(const AppStream::Component &appdata);
+Q_DECL_EXPORT QString contentRatingDescription(const AppStream::Component &appdata);
+Q_DECL_EXPORT AbstractResource::ContentIntensity contentRatingIntensity(const AppStream::Component &appdata);
+Q_DECL_EXPORT uint contentRatingMinimumAge(const AppStream::Component &appdata);
 }
 
 #endif

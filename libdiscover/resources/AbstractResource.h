@@ -8,6 +8,7 @@
 #define ABSTRACTRESOURCE_H
 
 #include <QCollatorSortKey>
+#include <QColor>
 #include <QDate>
 #include <QJsonArray>
 #include <QJsonObject>
@@ -72,6 +73,10 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString upgradeText READ upgradeText NOTIFY versionsChanged)
     Q_PROPERTY(bool isRemovable READ isRemovable CONSTANT)
     Q_PROPERTY(QString versionString READ versionString NOTIFY versionsChanged)
+    Q_PROPERTY(QString contentRatingText READ contentRatingText CONSTANT)
+    Q_PROPERTY(QString contentRatingDescription READ contentRatingDescription CONSTANT)
+    Q_PROPERTY(ContentIntensity contentRatingIntensity READ contentRatingIntensity CONSTANT)
+    Q_PROPERTY(uint contentRatingMinimumAge READ contentRatingMinimumAge CONSTANT)
 public:
     /**
      * This describes the state of the resource
@@ -95,6 +100,12 @@ public:
         Upgradeable,
     };
     Q_ENUM(State)
+
+    enum ContentIntensity {
+        Mild,
+        Intense,
+    };
+    Q_ENUM(ContentIntensity)
 
     /**
      * Constructs the AbstractResource with its corresponding backend
@@ -229,6 +240,11 @@ public:
     }
 
     virtual QString versionString();
+
+    virtual QString contentRatingText() const;
+    virtual ContentIntensity contentRatingIntensity() const;
+    virtual QString contentRatingDescription() const;
+    virtual uint contentRatingMinimumAge() const;
 
 public Q_SLOTS:
     virtual void fetchScreenshots();

@@ -221,7 +221,19 @@ DiscoverPage {
                     Layout.rightMargin: appInfo.internalSpacings
                     // This centers the Flow in the page, no matter how many items have
                     // flowed onto other rows
-                    Layout.maximumWidth: ((itemWidth + spacing) * Math.min(children.length, Math.floor(headerLayout.width / (itemWidth + spacing)))) - spacing
+
+                    readonly property int visibleChildren: countVisibleChildren(children)
+                    function countVisibleChildren(items) {
+                        let ret = 0;
+                        for (const itemPos in items) {
+                            const item = items[itemPos];
+                            ret += item.visible;
+                        }
+                        return ret;
+                    }
+                    onImplicitWidthChanged: visibleChildrenChanged()
+
+                    Layout.maximumWidth: ((itemWidth + spacing) * Math.min(visibleChildren, Math.floor(headerLayout.width / (itemWidth + spacing)))) - spacing
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignHCenter
 
@@ -383,6 +395,61 @@ DiscoverPage {
                                 onClicked: allLicensesSheet.open();
                             }
 
+                        }
+                    }
+                    // Content Rating
+                    ColumnLayout {
+                        width: metadataLayout.itemWidth
+                        visible: appInfo.application.contentRatingText.length > 0
+                        spacing: Kirigami.Units.smallSpacing
+
+                        Label {
+                            Layout.fillWidth: true
+                            opacity: 0.7
+                            text: i18n("Content Rating")
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignBottom
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 2
+                        }
+
+                        Label {
+                            Layout.fillWidth: true
+                            visible: text.length > 0
+                            text: appInfo.application.contentRatingMinimumAge === 0 ? "" : i18n("Age: %1+", appInfo.application.contentRatingMinimumAge)
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignTop
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 3
+                            elide: Text.ElideRight
+                        }
+
+                        Label {
+                            Layout.fillWidth: true
+                            text: appInfo.application.contentRatingText
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignTop
+                            wrapMode: Text.Wrap
+                            maximumLineCount: 3
+                            elide: Text.ElideRight
+
+                            readonly property var colors: [ Kirigami.Theme.textColor, Kirigami.Theme.neutralTextColor ]
+                            color: colors[appInfo.application.contentRatingIntensity]
+                        }
+
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            spacing: 0
+                            visible: appInfo.application.contentRatingDescription.length > 0
+
+                            Kirigami.LinkButton {
+                                Layout.fillWidth: true
+                                text: i18n("Show more...")
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignTop
+                                elide: Text.ElideRight
+                                onClicked: contentRatingSheet.open();
+                            }
                         }
                     }
                 }
@@ -726,6 +793,18 @@ DiscoverPage {
                     color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
                 }
             }
+        }
+    }
+
+    Kirigami.OverlaySheet {
+        id: contentRatingSheet
+        parent: applicationWindow().overlay
+
+        title: i18n("Content Rating")
+
+        Label {
+            text: appInfo.application.contentRatingDescription
+            textFormat: Text.MarkdownText
         }
     }
 
