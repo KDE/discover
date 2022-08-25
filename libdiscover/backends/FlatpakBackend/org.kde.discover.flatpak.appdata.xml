@@ -22,6 +22,7 @@
   <name xml:lang="ia">Retro-Administration de Flatpak</name>
   <name xml:lang="id">Backend Flatpak</name>
   <name xml:lang="it">Motore Flatpak</name>
+  <name xml:lang="ka">Flatpak -ის უკანაბოლო</name>
   <name xml:lang="ko">Flatpak 백엔드</name>
   <name xml:lang="lt">Flatpak vidinė pusė</name>
   <name xml:lang="ml">ഫ്ലാറ്റ്പ്പാക്ക് ബാക്കെൻഡ്</name>
@@ -65,6 +66,7 @@
   <summary xml:lang="ia">Integra pplicationes de Flatpak in Discover</summary>
   <summary xml:lang="id">Aplikasi Flatpak terintegrasi ke dalam Discover</summary>
   <summary xml:lang="it">Integra le applicazioni Flatpak in Discover</summary>
+  <summary xml:lang="ka">Discover-ში Flatpak-ის ინტეგრაცია</summary>
   <summary xml:lang="ko">Flatpak 프로그램을 Discover에 통합</summary>
   <summary xml:lang="lt">Integruoja Flatpak programas į Discover</summary>
   <summary xml:lang="ml">ഡിസ്കവറിൽ ഫ്ലാറ്റ്പ്പാക്ക് ആപ്ലിക്കേഷൻ സംയോജിപ്പിക്കുന്നു</summary>
@@ -111,6 +113,7 @@
   <developer_name xml:lang="ia">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="id">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="it">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ka">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ko">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="lt">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ml">Aleix Pol Gonzalez</developer_name>

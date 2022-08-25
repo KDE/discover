@@ -25,6 +25,7 @@
   <name xml:lang="ia">Discoperi</name>
   <name xml:lang="id">Discover</name>
   <name xml:lang="it">Discover</name>
+  <name xml:lang="ka">Discover</name>
   <name xml:lang="ko">Discover</name>
   <name xml:lang="lt">Discover</name>
   <name xml:lang="ml">ഡിസ്കവർ</name>
@@ -72,6 +73,7 @@
   <summary xml:lang="ia">Discoperi</summary>
   <summary xml:lang="id">Discover</summary>
   <summary xml:lang="it">Discover</summary>
+  <summary xml:lang="ka">Discover</summary>
   <summary xml:lang="ko">Discover</summary>
   <summary xml:lang="lt">Discover</summary>
   <summary xml:lang="ml">ഡിസ്കവർ</summary>
@@ -246,6 +248,7 @@
       <caption xml:lang="ia">Plasma Discover (Discoperi de Plasma)</caption>
       <caption xml:lang="id">Discover Plasma</caption>
       <caption xml:lang="it">Plasma Discover</caption>
+      <caption xml:lang="ka">Plasma Discover</caption>
       <caption xml:lang="ko">Plasma Discover</caption>
       <caption xml:lang="lt">Plasma Discover</caption>
       <caption xml:lang="ml">പ്ലാസ്മ ഡിസ്കവർ</caption>
