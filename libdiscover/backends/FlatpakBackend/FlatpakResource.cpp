@@ -315,9 +315,7 @@ QJsonArray FlatpakResource::licenses()
 
 QString FlatpakResource::longDescription()
 {
-    QString description = m_appdata.description();
-
-    return description;
+    return m_appdata.description();
 }
 
 QString FlatpakResource::attentionText() const
