@@ -119,8 +119,13 @@ void FwupdBackend::addUpdates()
                     FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(rels, j);
                     if (!fwupd_release_get_description(release))
                         continue;
-                    longdescription += QStringLiteral("Version %1\n").arg(QString::fromUtf8(fwupd_release_get_version(release)));
-                    longdescription += QString::fromUtf8(fwupd_release_get_description(release)) + QLatin1Char('\n');
+                    if (rels->len > 1) {
+                        longdescription += QStringLiteral("Version %1\n").arg(QString::fromUtf8(fwupd_release_get_version(release)));
+                    }
+                    longdescription += QString::fromUtf8(fwupd_release_get_description(release));
+                    if (rels->len > 1) {
+                        longdescription += QLatin1Char('\n');
+                    }
                 }
                 res->setDescription(longdescription);
                 addResource(res);
