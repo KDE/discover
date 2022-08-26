@@ -13,6 +13,8 @@
 #include <QSet>
 
 #include <KConfigGroup>
+#include <KFormat>
+#include <KIO/FileSystemFreeSpaceJob>
 #include <KLocalizedString>
 #include <KSharedConfig>
 
@@ -269,6 +271,13 @@ void PackageKitUpdater::prepare()
     } else {
         m_toUpgrade = candidates;
     }
+
+    auto j = KIO::fileSystemFreeSpace(QUrl::fromLocalFile("/usr"));
+    connect(j, &KIO::FileSystemFreeSpaceJob::result, this, [this](KIO::Job * /*job*/, KIO::filesize_t /*size*/, KIO::filesize_t available) {
+        if (available < updateSize()) {
+            setErrorMessage(i18n("Not enough space to perform the update. Only have %1 available.", KFormat().formatByteSize(available)));
+        }
+    });
     m_allUpgradeable = m_toUpgrade;
 }
 

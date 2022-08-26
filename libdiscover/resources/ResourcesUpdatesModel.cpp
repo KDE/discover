@@ -141,6 +141,7 @@ void ResourcesUpdatesModel::init()
             connect(updater, &AbstractBackendUpdater::passiveMessage, this, &ResourcesUpdatesModel::passiveMessage);
             connect(updater, &AbstractBackendUpdater::needsRebootChanged, this, &ResourcesUpdatesModel::needsRebootChanged);
             connect(updater, &AbstractBackendUpdater::destroyed, this, &ResourcesUpdatesModel::updaterDestroyed);
+            connect(updater, &AbstractBackendUpdater::errorMessageChanged, this, &ResourcesUpdatesModel::errorMessagesChanged);
             m_updaters += updater;
 
             m_lastIsProgressing |= updater->isProgressing();
@@ -174,6 +175,8 @@ void ResourcesUpdatesModel::init()
             setTransaction(updateTransaction);
         }
     }
+
+    Q_EMIT errorMessagesChanged();
 }
 
 void ResourcesUpdatesModel::updaterDestroyed(QObject *obj)
@@ -339,6 +342,19 @@ bool ResourcesUpdatesModel::useUnattendedUpdates() const
 void ResourcesUpdatesModel::setOfflineUpdates(bool offline)
 {
     m_offlineUpdates = offline;
+}
+
+QStringList ResourcesUpdatesModel::errorMessages() const
+{
+    QStringList ret;
+    for (auto updater : m_updaters) {
+        const auto error = updater->errorMessage();
+        if (!error.isEmpty()) {
+            ret << error;
+        }
+    }
+    ret.removeDuplicates();
+    return ret;
 }
 
 #include "ResourcesUpdatesModel.moc"

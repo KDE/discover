@@ -54,3 +54,12 @@ void AbstractBackendUpdater::setOfflineUpdates(bool useOfflineUpdates)
 {
     Q_UNUSED(useOfflineUpdates);
 }
+
+void AbstractBackendUpdater::setErrorMessage(const QString &errorMessage)
+{
+    if (errorMessage == m_errorMessage) {
+        return;
+    }
+    m_errorMessage = errorMessage;
+    Q_EMIT errorMessageChanged();
+}

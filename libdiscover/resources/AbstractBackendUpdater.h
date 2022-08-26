@@ -43,6 +43,7 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
     Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
     Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
+    Q_PROPERTY(QString errorMessage READ errorMessage NOTIFY errorMessageChanged)
 public:
     enum State {
         None,
@@ -159,6 +160,12 @@ public Q_SLOTS:
     {
     }
 
+    void setErrorMessage(const QString &errorMessage);
+    QString errorMessage() const
+    {
+        return m_errorMessage;
+    }
+
 Q_SIGNALS:
     /**
      * The AbstractBackendUpdater should Q_EMIT this signal when the progress changed.
@@ -218,9 +225,13 @@ Q_SIGNALS:
      */
     void needsRebootChanged();
 
+    /** emitted when we find a new errorMessage to display */
+    void errorMessageChanged();
+
 private:
     bool m_needsReboot = false;
     bool m_readyToReboot = false;
+    QString m_errorMessage;
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H

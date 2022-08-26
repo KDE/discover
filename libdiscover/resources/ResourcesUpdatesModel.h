@@ -27,6 +27,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
     Q_PROPERTY(bool readyToReboot READ readyToReboot)
     Q_PROPERTY(bool useUnattendedUpdates READ useUnattendedUpdates NOTIFY useUnattendedUpdatesChanged)
+    Q_PROPERTY(QStringList errorMessages READ errorMessages NOTIFY errorMessagesChanged)
 public:
     explicit ResourcesUpdatesModel(QObject *parent = nullptr);
 
@@ -49,6 +50,7 @@ public:
     bool needsReboot() const;
     bool readyToReboot() const;
     bool useUnattendedUpdates() const;
+    QStringList errorMessages() const;
 
 Q_SIGNALS:
     void downloadSpeedChanged();
@@ -59,6 +61,7 @@ Q_SIGNALS:
     void needsRebootChanged();
     void useUnattendedUpdatesChanged();
     void fetchingUpdatesProgressChanged(int percent);
+    void errorMessagesChanged();
 
 public Q_SLOTS:
     void updateAll();
@@ -75,6 +78,7 @@ private:
     bool m_lastIsProgressing;
     bool m_offlineUpdates = false;
     QPointer<UpdateTransaction> m_transaction;
+    QStringList m_errorMessages;
 };
 
 #endif // RESOURCESUPDATESMODEL_H

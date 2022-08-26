@@ -134,8 +134,45 @@ DiscoverPage
         text: page.unselected>0 ? i18n("Update Selected") : i18n("Update All")
         visible: updateModel.toUpdateCount
         iconName: "update-none"
-        enabled: !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
+
+        function anyVisible(items) {
+            for (const itemPos in items) {
+                const item = items[itemPos];
+                if (item.visible && item instanceof Kirigami.InlineMessage) {
+                    return true
+                }
+            }
+            return false;
+        }
+
+        enabled: !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching && !anyVisible(page.header.children)
         onTriggered: resourcesUpdatesModel.updateAll()
+    }
+
+    header: ColumnLayout {
+        id: errorsColumn
+        Repeater {
+            model: resourcesUpdatesModel.errorMessages
+            delegate: Kirigami.InlineMessage {
+                id: inline
+                Layout.fillWidth: true
+                Layout.margins: Kirigami.Units.smallSpacing
+                text: modelData
+                visible: true
+                type: Kirigami.MessageType.Error
+                onVisibleChanged: errorsColumn.childrenChanged()
+
+                actions: [
+                    Kirigami.Action {
+                        icon.name: "dialog-cancel"
+                        text: i18n("Ignore")
+                        onTriggered: {
+                            inline.visible = false
+                        }
+                    }
+                ]
+            }
+        }
     }
 
     footer: ColumnLayout {
