@@ -75,6 +75,10 @@ public:
     {
         m_description = description;
     }
+    void setInstalledVersion(const QString &version)
+    {
+        m_installedVersion = version;
+    }
 
     void setState(AbstractResource::State state);
     void setReleaseDetails(FwupdRelease *release);
@@ -128,7 +132,8 @@ private:
     const QString m_deviceID;
     QString m_summary;
     QString m_description;
-    QString m_version;
+    QString m_installedVersion;
+    QString m_availableVersion;
     QString m_vendor;
     QStringList m_categories;
     QString m_license;

@@ -32,7 +32,7 @@ FwupdResource::FwupdResource(FwupdDevice *device, const QString &id, AbstractRes
 
 QString FwupdResource::availableVersion() const
 {
-    return m_version;
+    return m_availableVersion;
 }
 
 QStringList FwupdResource::categories()
@@ -77,7 +77,7 @@ QVariant FwupdResource::icon() const
 
 QString FwupdResource::installedVersion() const
 {
-    return m_version;
+    return m_installedVersion;
 }
 
 QJsonArray FwupdResource::licenses()
@@ -157,7 +157,7 @@ void FwupdResource::setReleaseDetails(FwupdRelease *release)
     m_summary = QString::fromUtf8(fwupd_release_get_summary(release));
     m_vendor = QString::fromUtf8(fwupd_release_get_vendor(release));
     m_size = fwupd_release_get_size(release);
-    m_version = QString::fromUtf8(fwupd_release_get_version(release));
+    m_availableVersion = QString::fromUtf8(fwupd_release_get_version(release));
     m_description = QString::fromUtf8((fwupd_release_get_description(release)));
     m_homepage = QUrl(QString::fromUtf8(fwupd_release_get_homepage(release)));
     m_license = QString::fromUtf8(fwupd_release_get_license(release));
@@ -181,7 +181,7 @@ void FwupdResource::setDeviceDetails(FwupdDevice *dev)
     m_summary = QString::fromUtf8(fwupd_device_get_summary(dev));
     m_vendor = QString::fromUtf8(fwupd_device_get_vendor(dev));
     m_releaseDate = QDateTime::fromSecsSinceEpoch(fwupd_device_get_created(dev)).date();
-    m_version = QString::fromUtf8(fwupd_device_get_version(dev));
+    m_availableVersion = QString::fromUtf8(fwupd_device_get_version(dev));
     m_description = QString::fromUtf8((fwupd_device_get_description(dev)));
 
     if (fwupd_device_get_icons(dev)->len >= 1)

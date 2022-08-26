@@ -128,6 +128,13 @@ void FwupdBackend::addUpdates()
                     }
                 }
                 res->setDescription(longdescription);
+
+                // Make sure to set the installed version of the current thing so
+                // they can both be shown in the update page UI
+                auto installedResource = m_resources[res->packageName()];
+                if (installedResource) {
+                    res->setInstalledVersion(installedResource->availableVersion());
+                }
                 addResource(res);
             }
         } else {
