@@ -704,6 +704,9 @@ void FlatpakResource::loadPermissions()
 
     QString brief, description;
 
+    bool fullSessionBusAccess = false;
+    bool fullSystemBusAccess = false;
+
     const KConfigGroup contextGroup = parser.group("Context");
     const QString shared = contextGroup.readEntry("shared", QString());
     if (shared.contains("network")) {
@@ -711,31 +714,29 @@ void FlatpakResource::loadPermissions()
         description = i18n("Can access the internet");
         m_permissions.append(FlatpakPermission(brief, description, "network-wireless"));
     }
-    if (shared.contains("session-bus")) {
+
+    const QString sockets = contextGroup.readEntry("sockets", QString());
+    if (sockets.contains("session-bus")) {
         brief = i18n("Session Bus Access");
         description = i18n("Access is granted to the entire Session Bus");
         m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
+        fullSessionBusAccess = true;
     }
-    if (shared.contains("system-bus")) {
+    if (sockets.contains("system-bus")) {
         brief = i18n("System Bus Access");
         description = i18n("Access is granted to the entire System Bus");
         m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
+        fullSystemBusAccess = true;
     }
-    if (shared.contains("ssh-auth")) {
+    if (sockets.contains("ssh-auth")) {
         brief = i18n("Remote Login Access");
         description = i18n("Can initiate remote login requests using the SSH protocol");
         m_permissions.append(FlatpakPermission(brief, description, "x-shape-connection"));
     }
-    if (shared.contains("pcsc")) {
+    if (sockets.contains("pcsc")) {
         brief = i18n("Smart Card Access");
         description = i18n("Can integrate and communicate with smart cards");
         m_permissions.append(FlatpakPermission(brief, description, "network-card"));
-    }
-
-    if (shared.contains("kvm")) {
-        brief = i18n("Kernel-based Virtual Machine Access");
-        description = i18n("Allows running other operating systems as guests in virtual machines");
-        m_permissions.append(FlatpakPermission(brief, description, "virtualbox"));
     }
 
     const QString devices = contextGroup.readEntry("devices", QString());
@@ -743,6 +744,11 @@ void FlatpakResource::loadPermissions()
         brief = i18n("Device Access");
         description = i18n("Can communicate with and control built-in or connected hardware devices");
         m_permissions.append(FlatpakPermission(brief, description, "preferences-devices-tree"));
+    }
+    if (devices.contains("kvm")) {
+        brief = i18n("Kernel-based Virtual Machine Access");
+        description = i18n("Allows running other operating systems as guests in virtual machines");
+        m_permissions.append(FlatpakPermission(brief, description, "virtualbox"));
     }
 
     const QString filesystems = contextGroup.readEntry("filesystems", QString());
@@ -826,22 +832,26 @@ void FlatpakResource::loadPermissions()
         m_permissions.append(FlatpakPermission(brief, description, "inode-directory"));
     }
 
-    const KConfigGroup sessionBusGroup = parser.group("Session Bus Policy");
-    if (sessionBusGroup.exists()) {
-        const QStringList busList = sessionBusGroup.keyList();
-        brief = i18n("Session Bus Access");
-        description = i18n("Can communicate with other applications and processes in the same desktop session using the following communication protocols: %1",
+    if (!fullSessionBusAccess) {
+        const KConfigGroup sessionBusGroup = parser.group("Session Bus Policy");
+        if (sessionBusGroup.exists()) {
+            const QStringList busList = sessionBusGroup.keyList();
+            brief = i18n("Session Bus Access");
+            description = i18n("Can communicate with other applications and processes in the same desktop session using the following communication protocols: %1",
                            "\n- " + busList.join("\n- "));
-        m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
+            m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
+        }
     }
 
-    const KConfigGroup systemBusGroup = parser.group("System Bus Policy");
-    if (systemBusGroup.exists()) {
-        const QStringList busList = systemBusGroup.keyList();
-        brief = i18n("System Bus Access");
-        description =
-            i18n("Can communicate with all applications and system services using the following communication protocols: %1", "\n- " + busList.join("\n- "));
-        m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
+    if (!fullSystemBusAccess) {
+        const KConfigGroup systemBusGroup = parser.group("System Bus Policy");
+        if (systemBusGroup.exists()) {
+            const QStringList busList = systemBusGroup.keyList();
+            brief = i18n("System Bus Access");
+            description =
+                i18n("Can communicate with all applications and system services using the following communication protocols: %1", "\n- " + busList.join("\n- "));
+            m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
+        }
     }
 }
 
