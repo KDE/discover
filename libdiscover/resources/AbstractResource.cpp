@@ -86,6 +86,11 @@ AbstractResourcesBackend *AbstractResource::backend() const
     return static_cast<AbstractResourcesBackend *>(parent());
 }
 
+QObject *AbstractResource::backendObject() const
+{
+    return parent();
+}
+
 QString AbstractResource::status()
 {
     switch (state()) {

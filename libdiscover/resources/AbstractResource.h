@@ -61,7 +61,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString availableVersion READ availableVersion NOTIFY versionsChanged)
     Q_PROPERTY(QString section READ section CONSTANT)
     Q_PROPERTY(QStringList mimetypes READ mimetypes CONSTANT)
-    Q_PROPERTY(AbstractResourcesBackend *backend READ backend CONSTANT)
+    Q_PROPERTY(QObject *backend READ backendObject CONSTANT)
     Q_PROPERTY(QVariant rating READ ratingVariant NOTIFY ratingFetched)
     Q_PROPERTY(QString appstreamId READ appstreamId CONSTANT)
     Q_PROPERTY(QString categoryDisplay READ categoryDisplay CONSTANT)
@@ -189,6 +189,7 @@ public:
     virtual QString status();
 
     AbstractResourcesBackend *backend() const;
+    QObject *backendObject() const;
 
     /**
      * @returns a name sort key for faster sorting
