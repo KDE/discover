@@ -444,7 +444,7 @@ DiscoverPage {
 
                             Kirigami.LinkButton {
                                 Layout.fillWidth: true
-                                text: i18n("Show more...")
+                                text: i18nc("@action", "See details…")
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignTop
                                 elide: Text.ElideRight
