@@ -857,18 +857,29 @@ void FlatpakResource::loadPermissions()
 
 QString FlatpakResource::dataLocation() const
 {
-    auto id = m_appdata.bundle(AppStream::Bundle::KindFlatpak).id();
-    return QDir::homePath() + QLatin1String("/.var/") + id.section('/', 0, 1);
+    auto id = m_appdata.bundle(AppStream::Bundle::KindFlatpak).id().section('/', 0, 1);
+    if (id.isEmpty()) {
+        return {};
+    }
+    return QDir::homePath() + QLatin1String("/.var/") + id;
 }
 
 bool FlatpakResource::hasDataButUninstalled() const
 {
-    return m_state == None && QDir(dataLocation()).exists();
+    return m_state == None && !dataLocation().isEmpty() && QDir(dataLocation()).exists();
 }
 
 void FlatpakResource::clearUserData()
 {
-    QDir(dataLocation()).removeRecursively();
+    const auto location = dataLocation();
+    if (location.isEmpty()) {
+        qWarning() << "Failed find location for" << name();
+        return;
+    }
+
+    if (!QDir(location).removeRecursively()) {
+        qWarning() << "Failed to remove location" << location;
+    }
     Q_EMIT hasDataButUninstalledChanged();
 }
 
