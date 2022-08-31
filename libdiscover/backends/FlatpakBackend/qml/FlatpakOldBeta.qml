@@ -23,6 +23,13 @@ Kirigami.InlineMessage
     type: betaOlderThanStable ? Kirigami.MessageType.Warning : Kirigami.MessageType.Information
 
     property bool betaOlderThanStable: false
+    property var app: resource
+    onAppChanged: {
+        betaOlderThanStable = false
+        for (const action in actionsArray) {
+            actionsArray[action].reset()
+        }
+    }
 
     Instantiator {
         id: inst
@@ -32,16 +39,16 @@ Kirigami.InlineMessage
             resourcesUrl: resource.url
         }
         delegate: Kirigami.Action {
-            visible: model.application !== resource && model.application.branch !== "beta" && model.application.branch !== "master"
+            visible: model.application !== resource && model.application.branch !== "beta" && model.application.branch !== "master" && versionCompare !== 0
             text: i18nc("@action: button %1 is the name of a Flatpak repo", "View Stable Version on %1", displayOrigin)
             onTriggered: {
                 applicationWindow().pageStack.pop();
                 Navigation.openApplication(model.application)
             }
-            Component.onCompleted: {
-                if (visible) {
-                    betaOlderThanStable |= resource.isOlderThan(model.application)
-                }
+            readonly property int versionCompare: resource.versionCompare(model.application)
+            Component.onCompleted: reset()
+            function reset() {
+                oldBetaItem.betaOlderThanStable |= versionCompare > 0
             }
         }
 

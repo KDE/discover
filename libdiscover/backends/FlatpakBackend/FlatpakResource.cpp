@@ -888,10 +888,10 @@ void FlatpakResource::clearUserData()
     Q_EMIT hasDataButUninstalledChanged();
 }
 
-bool FlatpakResource::isOlderThan(FlatpakResource *resource) const
+int FlatpakResource::versionCompare(FlatpakResource *resource) const
 {
     const QString other = resource->availableVersion();
-    return AppStream::Utils::vercmpSimple(installedVersion(), other) < 0;
+    return AppStream::Utils::vercmpSimple(availableVersion(), other);
 }
 
 QString FlatpakResource::contentRatingDescription() const

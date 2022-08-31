@@ -188,7 +188,7 @@ public:
     }
 
     Q_INVOKABLE void clearUserData();
-    Q_INVOKABLE bool isOlderThan(FlatpakResource *resource) const;
+    Q_INVOKABLE int versionCompare(FlatpakResource *resource) const;
 
     const AppStream::Component appdata() const
     {
