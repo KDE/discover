@@ -114,7 +114,7 @@ void KNSReviews::deleteReview(Review * /*r*/)
     qWarning() << "cannot delete comments";
 }
 
-void KNSReviews::submitReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating)
+void KNSReviews::sendReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating, const QString &userName)
 {
     provider().voteForContent(app->packageName(), rating.toUInt() * 20);
     if (!summary.isEmpty())

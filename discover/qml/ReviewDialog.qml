@@ -10,6 +10,7 @@ Kirigami.OverlaySheet
 
     property QtObject application
     readonly property alias rating: ratingInput.rating
+    readonly property alias name: nameInput.text
     readonly property alias summary: titleInput.text
     readonly property alias review: reviewInput.text
     property QtObject backend: null
@@ -28,12 +29,13 @@ Kirigami.OverlaySheet
                 Kirigami.FormData.label: i18n("Rating:")
                 editable: true
             }
-            QQC2.Label {
+            QQC2.TextField {
+                id: nameInput
                 Kirigami.FormData.label: i18n("Name:")
-                visible: page.reviewsBackend !== null && reviewDialog.backend.userName.length > 0
+                visible: page.reviewsBackend !== null && reviewDialog.backend.preferredUserName.length > 0
                 Layout.fillWidth: true
-                elide: Text.ElideRight
-                text: visible ? reviewDialog.backend.userName : ""
+                readOnly: !reviewDialog.backend.supportsNameChange
+                text: visible ? reviewDialog.backend.preferredUserName : ""
             }
             QQC2.TextField {
                 id: titleInput
@@ -60,6 +62,7 @@ Kirigami.OverlaySheet
                     if (reviewInput.length === 0) return i18n("Write the review");
                     if (reviewInput.length < 15) return i18n("Keep writing…");
                     if (reviewInput.length > 3000) return i18n("Too long!");
+                    if (nameInput.length < 1) return i18nc("@info:usagetip", "Insert a name");
                     return "";
                 }
                 wrapMode: Text.WordWrap

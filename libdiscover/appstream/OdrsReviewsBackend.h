@@ -26,7 +26,6 @@ public:
     explicit OdrsReviewsBackend();
     ~OdrsReviewsBackend() override;
 
-    QString userName() const override;
     void login() override
     {
     }
@@ -42,6 +41,10 @@ public:
     {
         return false;
     }
+    bool supportsNameChange() const override
+    {
+        return true;
+    }
     void deleteReview(Review *) override
     {
     }
@@ -50,7 +53,6 @@ public:
     {
         return m_isFetching;
     }
-    void submitReview(AbstractResource *, const QString &summary, const QString &description, const QString &rating) override;
     void flagReview(Review *, const QString &, const QString &) override
     {
     }
@@ -66,6 +68,10 @@ private Q_SLOTS:
 
 Q_SIGNALS:
     void ratingsReady();
+
+protected:
+    void sendReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating, const QString &userName) override;
+    QString userName() const override;
 
 private:
     void setFetching(bool);

@@ -46,7 +46,7 @@ public:
     {
         return false;
     }
-    void submitReview(AbstractResource *, const QString &, const QString &, const QString &) override;
+
     void flagReview(Review *, const QString &, const QString &) override
     {
     }
@@ -57,6 +57,9 @@ public:
 
 Q_SIGNALS:
     void ratingsReady();
+
+protected:
+    void sendReview(AbstractResource *, const QString &, const QString &, const QString &, const QString &) override;
 
 private:
     QHash<AbstractResource *, Rating *> m_ratings;

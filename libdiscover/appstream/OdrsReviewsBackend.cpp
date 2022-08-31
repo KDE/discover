@@ -208,7 +208,7 @@ QString OdrsReviewsBackend::userName() const
     return KUser().property(KUser::FullName).toString();
 }
 
-void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summary, const QString &description, const QString &rating)
+void OdrsReviewsBackend::sendReview(AbstractResource *res, const QString &summary, const QString &description, const QString &rating, const QString &userName)
 {
     Q_ASSERT(res);
     QJsonObject map = {
@@ -218,7 +218,7 @@ void OdrsReviewsBackend::submitReview(AbstractResource *res, const QString &summ
         {QStringLiteral("version"), res->isInstalled() ? res->installedVersion() : res->availableVersion()},
         {QStringLiteral("locale"), QLocale::system().name()},
         {QStringLiteral("distro"), osName()},
-        {QStringLiteral("user_display"), QJsonValue::fromVariant(KUser().property(KUser::FullName))},
+        {QStringLiteral("user_display"), QJsonValue::fromVariant(userName)},
         {QStringLiteral("summary"), summary},
         {QStringLiteral("description"), description},
         {QStringLiteral("rating"), rating.toInt() * 10},

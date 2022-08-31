@@ -76,9 +76,9 @@ void DummyReviewsBackend::submitUsefulness(Review *r, bool useful)
     r->setUsefulChoice(useful ? ReviewsModel::Yes : ReviewsModel::No);
 }
 
-void DummyReviewsBackend::submitReview(AbstractResource *res, const QString &a, const QString &b, const QString &c)
+void DummyReviewsBackend::sendReview(AbstractResource *res, const QString &a, const QString &b, const QString &c, const QString &d)
 {
-    qDebug() << "dummy submit review" << res->name() << a << b << c;
+    qDebug() << "dummy submit review" << res->name() << a << b << c << d;
 }
 
 bool DummyReviewsBackend::isResourceSupported(AbstractResource * /*res*/) const

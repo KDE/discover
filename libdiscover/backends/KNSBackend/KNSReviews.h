@@ -28,16 +28,18 @@ public:
     bool isFetching() const override;
     void flagReview(Review *r, const QString &reason, const QString &text) override;
     void deleteReview(Review *r) override;
-    void submitReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating) override;
     void submitUsefulness(Review *r, bool useful) override;
     void logout() override;
     void registerAndLogin() override;
     void login() override;
     Rating *ratingForApplication(AbstractResource *app) const override;
     bool hasCredentials() const override;
-    QString userName() const override;
 
     bool isResourceSupported(AbstractResource *res) const override;
+
+protected:
+    void sendReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating, const QString &userName) override;
+    QString userName() const override;
 
 private Q_SLOTS:
     void commentsReceived(Attica::BaseJob *job);
