@@ -1393,10 +1393,6 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     for (auto ref : qAsConst(it.value())) {
                         bool fresh;
                         auto resource = getAppForInstalledRef(it.key(), ref, &fresh);
-                        const auto releases = resource->appdata().releases();
-                        if (!releases.isEmpty()) {
-                            resource->setAvailableVersion(releases.constFirst().version());
-                        }
                         g_object_unref(ref);
                         resource->setState(AbstractResource::Upgradeable, !fresh);
                         updateAppSize(resource);

@@ -176,10 +176,6 @@ public:
     QString attentionText() const;
     QString dataLocation() const;
     bool hasDataButUninstalled() const;
-    void setAvailableVersion(const QString &version)
-    {
-        m_availableVersion = version;
-    }
     Q_INVOKABLE QAbstractListModel *permissionsModel();
 
     void setTemporarySource(const QSharedPointer<FlatpakSource> &temp)
@@ -230,7 +226,7 @@ private:
     FlatpakInstallation *const m_installation;
     QString m_origin;
     QString m_displayOrigin;
-    QString m_availableVersion;
+    mutable QString m_availableVersion;
     FlatpakResource::ResourceType m_type = DesktopApp;
     QSharedPointer<FlatpakSource> m_temp;
     QVector<FlatpakPermission> m_permissions;

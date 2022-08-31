@@ -105,10 +105,15 @@ QList<PackageState> FlatpakResource::addonsInformation()
 
 QString FlatpakResource::availableVersion() const
 {
-    if (!m_availableVersion.isEmpty()) {
+    if (m_availableVersion.isEmpty()) {
+        const auto releases = m_appdata.releases();
+        if (!releases.isEmpty()) {
+            m_availableVersion = releases.constFirst().version();
+            return m_availableVersion;
+        }
+    } else {
         return m_availableVersion;
     }
-
     return branch();
 }
 
