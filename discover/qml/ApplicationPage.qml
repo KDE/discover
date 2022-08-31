@@ -437,19 +437,14 @@ DiscoverPage {
                             color: colors[appInfo.application.contentRatingIntensity]
                         }
 
-                        ColumnLayout {
+                        Kirigami.LinkButton {
                             Layout.fillWidth: true
-                            spacing: 0
                             visible: appInfo.application.contentRatingDescription.length > 0
-
-                            Kirigami.LinkButton {
-                                Layout.fillWidth: true
-                                text: i18nc("@action", "See details…")
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignTop
-                                elide: Text.ElideRight
-                                onClicked: contentRatingSheet.open();
-                            }
+                            text: i18nc("@action", "See details…")
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignTop
+                            elide: Text.ElideRight
+                            onClicked: contentRatingSheet.open();
                         }
                     }
                 }
