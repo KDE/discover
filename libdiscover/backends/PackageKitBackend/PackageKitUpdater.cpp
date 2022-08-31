@@ -275,7 +275,9 @@ void PackageKitUpdater::prepare()
     auto j = KIO::fileSystemFreeSpace(QUrl::fromLocalFile("/usr"));
     connect(j, &KIO::FileSystemFreeSpaceJob::result, this, [this](KIO::Job * /*job*/, KIO::filesize_t /*size*/, KIO::filesize_t available) {
         if (available < updateSize()) {
-            setErrorMessage(i18n("Not enough space to perform the update. Only have %1 available.", KFormat().formatByteSize(available)));
+            setErrorMessage(i18nc("@info:status %1 is a formatted disk space string e.g. '240 MiB'",
+                                  "Not enough space to perform the update; only %1 of space are available.",
+                                  KFormat().formatByteSize(available)));
         }
     });
     m_allUpgradeable = m_toUpgrade;
