@@ -143,17 +143,17 @@ QString AppStreamUtils::contentRatingDescription(const AppStream::Component &app
 {
 #if ASQ_CHECK_VERSION(0, 15, 6)
     const auto ratings = appdata.contentRatings();
-    QStringList ret;
+    QString ret;
     for (const auto &r : ratings) {
         const auto ratingIds = r.ratingIds();
         for (const auto &id : ratingIds) {
             if (r.value(id) != AppStream::ContentRating::RatingValueNone) {
-                ret += r.description(id);
+                ret += QLatin1String("* ") + r.description(id) + QLatin1Char('\n');
             }
         }
     }
 
-    return "* " + ret.join("\n* ");
+    return ret;
 #else
     return {};
 #endif
