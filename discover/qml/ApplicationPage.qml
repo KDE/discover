@@ -12,6 +12,7 @@ import QtQuick.Layouts 1.15
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 2.20 as Kirigami
+import org.kde.purpose 1.0 as Purpose
 import "navigation.js" as Navigation
 
 DiscoverPage {
@@ -513,9 +514,11 @@ DiscoverPage {
                 readonly property int visibleButtons: (helpButton.visible ? 1 : 0)
                                                     + (homepageButton.visible ? 1: 0)
                                                     + (addonsButton.visible ? 1 : 0)
+                                                    + (shareButton.visible ? 1 : 0)
                 readonly property int buttonWidth: Math.round(textualContentLayout.width / visibleButtons)
                 readonly property int tallestButtonHeight: Math.max(helpButton.implicitHeight,
                                                                     homepageButton.implicitHeight,
+                                                                    shareButton.implicitHeight,
                                                                     addonsButton.implicitHeight)
 
                 Layout.fillWidth: true
@@ -577,6 +580,48 @@ DiscoverPage {
                         } else {
                             addonsView.sheetOpen = true
                         }
+                    }
+                }
+
+                ApplicationResourceButton {
+                    id: shareButton
+
+                    Layout.fillWidth: true
+                    Layout.maximumWidth: externalResourcesLayout.buttonWidth
+                    Layout.minimumHeight: externalResourcesLayout.tallestButtonHeight
+
+                    buttonIcon: "document-share"
+                    title: i18nc("Exports the application's URL to an external service", "Share")
+                    subtitle: i18n("Send a link to the application")
+                    tooltipText: application.url.toString()
+                    visible: tooltipText.length > 0
+
+                    Kirigami.PromptDialog {
+                        id: shareSheet
+                        parent: applicationWindow().overlay
+                        title: shareButton.title
+                        standardButtons: Kirigami.Dialog.None
+
+                        Purpose.AlternativesView {
+                            id: alts
+                            implicitWidth: Kirigami.Units.gridUnit
+                            pluginType: "ShareUrl"
+                            inputData: {
+                                "urls": [ application.url.toString() ],
+                                "title": i18nc("The subject line for an email. %1 is the name of an application", "Check out the %1 app!", application.name)
+                            }
+                            onFinished: {
+                                shareSheet.close()
+                                if (error !== 0) {
+                                    console.error("job finished with error", error, message)
+                                }
+                                alts.reset()
+                            }
+                        }
+                    }
+
+                    onClicked: {
+                        shareSheet.open();
                     }
                 }
             }
@@ -771,8 +816,6 @@ DiscoverPage {
 
         ListView {
             id: listview
-
-            implicitWidth: Kirigami.Units.gridUnit
 
             model: appInfo.application.licenses
 
