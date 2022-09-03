@@ -668,6 +668,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
         resource->setBundledIcon(pixmap);
     }
 
+    resource->updateFromRef(FLATPAK_REF(bundleRef));
     resource->setDownloadSize(0);
     resource->setInstalledSize(flatpak_bundle_ref_get_installed_size(bundleRef));
     resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::AlreadyKnown);
@@ -676,7 +677,6 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
     resource->setOrigin(origin.isEmpty() ? i18n("Local bundle") : origin);
     resource->setResourceFile(url);
     resource->setState(FlatpakResource::None);
-    resource->setType(FlatpakResource::DesktopApp);
 
     if (!m_localSource) {
         m_localSource.reset(new FlatpakSource(this, preferredInstallation()));
