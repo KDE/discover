@@ -631,6 +631,22 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
         tempFile.remove();
     }
 
+    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(preferredInstallation(), m_cancellable, &localError);
+    if (!refs) {
+        qWarning() << "Failed to get list of installed refs for listing local updates:" << localError->message;
+        return;
+    }
+
+    const QString origin = QString::fromUtf8(flatpak_bundle_ref_get_origin(bundleRef));
+    for (uint i = 0; i < refs->len; i++) {
+        FlatpakRef *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
+        FlatpakInstalledRef *iref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+        if (qstrcmp(flatpak_ref_get_commit(ref), flatpak_ref_get_commit(FLATPAK_REF(bundleRef))) == 0) {
+            Q_EMIT stream->resourcesFound({getAppForInstalledRef(preferredInstallation(), iref, nullptr)});
+            return;
+        }
+    }
+
     FlatpakResource *resource = new FlatpakResource(asComponent, preferredInstallation(), this);
     if (!updateAppMetadata(resource, metadataContent)) {
         delete resource;
@@ -651,8 +667,6 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
         pixmap.loadFromData(QByteArray(data, len), "PNG");
         resource->setBundledIcon(pixmap);
     }
-
-    const QString origin = QString::fromUtf8(flatpak_bundle_ref_get_origin(bundleRef));
 
     resource->setDownloadSize(0);
     resource->setInstalledSize(flatpak_bundle_ref_get_installed_size(bundleRef));
