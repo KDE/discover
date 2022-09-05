@@ -155,6 +155,7 @@ QString AppStreamUtils::contentRatingDescription(const AppStream::Component &app
 
     return ret;
 #else
+    Q_UNUSED(appdata);
     return {};
 #endif
 }
@@ -180,6 +181,7 @@ QString AppStreamUtils::contentRatingText(const AppStream::Component &appdata)
     };
     return texts[intensity];
 #else
+    Q_UNUSED(appdata);
     return {};
 #endif
 }
@@ -205,6 +207,7 @@ AbstractResource::ContentIntensity AppStreamUtils::contentRatingIntensity(const 
     };
     return intensities[intensity];
 #else
+    Q_UNUSED(appdata);
     return {};
 #endif
 }
@@ -219,6 +222,7 @@ uint AppStreamUtils::contentRatingMinimumAge(const AppStream::Component &appdata
     }
     return minimumAge;
 #else
+    Q_UNUSED(appdata);
     return 0;
 #endif
 }
