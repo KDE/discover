@@ -201,6 +201,9 @@ Q_SIGNALS:
     void downloadSpeedChanged(quint64 downloadSpeed);
 
     void remainingTimeChanged(uint remainingTime);
+
+    void webflowStarted(const QUrl &url, int id);
+    void webflowDone(int id);
 };
 
 #endif // TRANSACTION_H

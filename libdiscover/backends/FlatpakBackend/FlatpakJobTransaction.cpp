@@ -49,6 +49,8 @@ void FlatpakJobTransaction::start()
     connect(m_appJob, &FlatpakTransactionThread::progressChanged, this, &FlatpakJobTransaction::setProgress);
     connect(m_appJob, &FlatpakTransactionThread::speedChanged, this, &FlatpakJobTransaction::setDownloadSpeed);
     connect(m_appJob, &FlatpakTransactionThread::passiveMessage, this, &FlatpakJobTransaction::passiveMessage);
+    connect(m_appJob, &FlatpakTransactionThread::webflowStarted, this, &FlatpakJobTransaction::webflowStarted);
+    connect(m_appJob, &FlatpakTransactionThread::webflowDone, this, &FlatpakJobTransaction::webflowDone);
 
     m_appJob->start();
 }

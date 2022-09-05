@@ -22,7 +22,7 @@ include(GenerateExportHeader)
 include(ECMQtDeclareLoggingCategory)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick)
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick WebView)
 
 find_package(PkgConfig REQUIRED)
 

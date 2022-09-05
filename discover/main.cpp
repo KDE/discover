@@ -20,6 +20,7 @@
 #include <QStandardPaths>
 #include <QTextStream>
 #include <QWindow>
+#include <QtWebView>
 
 #include <QProcessEnvironment>
 
@@ -95,6 +96,7 @@ int main(int argc, char **argv)
 {
     // needs to be set before we create the QGuiApplication
     QCoreApplication::setAttribute(Qt::AA_DisableSessionManager, true);
+    QtWebView::initialize();
 
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("plasmadiscover")));

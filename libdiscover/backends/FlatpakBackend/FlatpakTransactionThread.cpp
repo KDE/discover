@@ -9,6 +9,7 @@
 
 #include <KLocalizedString>
 #include <QDebug>
+#include <QDesktopServices>
 
 static int FLATPAK_CLI_UPDATE_FREQUENCY = 150;
 
@@ -58,6 +59,30 @@ void operation_error_cb(FlatpakTransaction * /*object*/, FlatpakTransactionOpera
     obj->addErrorMessage(QString::fromUtf8(error->message));
 }
 
+gboolean
+FlatpakTransactionThread::webflowStart(FlatpakTransaction *transaction, const char *remote, const char *url, GVariant *options, guint id, gpointer user_data)
+{
+    Q_UNUSED(transaction);
+    Q_UNUSED(options);
+
+    QUrl webflowUrl(QString::fromUtf8(url));
+    qDebug() << "starting web flow" << webflowUrl << remote << id;
+    FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
+    obj->m_webflows << id;
+    Q_EMIT obj->webflowStarted(webflowUrl, id);
+    return true;
+}
+
+void FlatpakTransactionThread::webflowDoneCallback(FlatpakTransaction *transaction, GVariant *options, guint id, gpointer user_data)
+{
+    Q_UNUSED(transaction);
+    Q_UNUSED(options);
+    FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
+    obj->m_webflows << id;
+    Q_EMIT obj->webflowDone(id);
+    qDebug() << "webflow done" << id;
+}
+
 FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role)
     : QThread()
     , m_result(false)
@@ -75,6 +100,11 @@ FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transac
         g_signal_connect(m_transaction, "add-new-remote", G_CALLBACK(add_new_remote_cb), this);
         g_signal_connect(m_transaction, "new-operation", G_CALLBACK(new_operation_cb), this);
         g_signal_connect(m_transaction, "operation-error", G_CALLBACK(operation_error_cb), this);
+
+        if (qEnvironmentVariableIntValue("DISCOVER_FLATPAK_WEBFLOW")) {
+            g_signal_connect(m_transaction, "webflow-start", G_CALLBACK(webflowStart), this);
+            g_signal_connect(m_transaction, "webflow-done", G_CALLBACK(webflowDoneCallback), this);
+        }
     }
 }
 
@@ -86,6 +116,8 @@ FlatpakTransactionThread::~FlatpakTransactionThread()
 
 void FlatpakTransactionThread::cancel()
 {
+    for (int id : m_webflows)
+        flatpak_transaction_abort_webflow(m_transaction, id);
     g_cancellable_cancel(m_cancellable);
 }
 

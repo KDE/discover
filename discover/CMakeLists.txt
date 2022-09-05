@@ -48,6 +48,7 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF5::JobWidgets
                                      Qt::Widgets
                                      Qt::Quick
+                                     Qt::WebView
                                      Discover::Common
 )
 

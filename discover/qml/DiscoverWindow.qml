@@ -337,6 +337,15 @@ Kirigami.ApplicationWindow
                 dialog.open()
                 app.restore()
             }
+            function onWebflowStarted(url) {
+                var component = Qt.createComponent("WebflowDialog.qml");
+                if (component.status == Component.Error) {
+                    console.error("Webflow Error", component.errorString())
+                } else if (component.status == Component.Ready) {
+                    const sheet = component.createObject(window, {transaction: transaction, url: url });
+                    sheet.open()
+                }
+            }
         }
     }
 

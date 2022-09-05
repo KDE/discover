@@ -34,6 +34,7 @@
     <file>qml/AboutPage.qml</file>
     <file>qml/Feedback.qml</file>
     <file>qml/ConvertDiscoverAction.qml</file>
+    <file>qml/WebflowDialog.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>

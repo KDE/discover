@@ -51,10 +51,15 @@ Q_SIGNALS:
     void progressChanged(int progress);
     void speedChanged(quint64 speed);
     void passiveMessage(const QString &msg);
+    void webflowStarted(const QUrl &url, int id);
+    void webflowDone(int id);
 
 private:
     static gboolean
     add_new_remote_cb(FlatpakTransaction * /*object*/, gint /*reason*/, gchar *from_id, gchar *suggested_remote_name, gchar *url, gpointer user_data);
+
+    static gboolean webflowStart(FlatpakTransaction *transaction, const char *remote, const char *url, GVariant *options, guint id, gpointer user_data);
+    static void webflowDoneCallback(FlatpakTransaction *transaction, GVariant *options, guint id, gpointer user_data);
 
     FlatpakTransaction *m_transaction;
     bool m_result = false;
@@ -66,6 +71,8 @@ private:
     FlatpakResource *const m_app;
     const Transaction::Role m_role;
     QMap<QString, QStringList> m_addedRepositories;
+
+    QVector<int> m_webflows;
 };
 
 #endif // FLATPAKTRANSACTIONJOB_H
