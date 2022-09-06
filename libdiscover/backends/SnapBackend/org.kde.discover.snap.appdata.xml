@@ -135,9 +135,9 @@
   <developer_name xml:lang="zh-TW">Aleix Pol Gonzalez</developer_name>
   <icon type="stock">system-software-install</icon>
   <releases>
+    <release version="5.25.5" date="2022-09-06"/>
     <release version="5.25.4" date="2022-08-08"/>
     <release version="5.25.3" date="2022-07-12"/>
     <release version="5.25.2" date="2022-06-28"/>
-    <release version="5.25.1" date="2022-06-21"/>
   </releases>
 </component>
