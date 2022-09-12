@@ -27,6 +27,7 @@
 #include <QDebug>
 #include <QDesktopServices>
 #include <QDir>
+#include <QDirIterator>
 #include <QFileInfo>
 #include <QIcon>
 #include <QNetworkAccessManager>
@@ -205,9 +206,21 @@ QVariant FlatpakResource::icon() const
         for (const AppStream::Icon &icon : icons) {
             switch (icon.kind()) {
             case AppStream::Icon::KindLocal:
-            case AppStream::Icon::KindCached:
-                ret.addFile(icon.url().toLocalFile(), icon.size());
-                break;
+            case AppStream::Icon::KindCached: {
+                const QString path = icon.url().toLocalFile();
+                if (QDir::isRelativePath(path)) {
+                    const QString appstreamLocation = installationPath() + "/appstream/" + origin() + '/' + flatpak_get_default_arch() + "/active/icons/";
+                    QDirIterator dit(appstreamLocation, QDirIterator::Subdirectories);
+                    while (dit.hasNext()) {
+                        const auto currentPath = dit.next();
+                        if (dit.fileName() == path) {
+                            ret.addFile(currentPath, icon.size());
+                        }
+                    }
+                } else {
+                    ret.addFile(path, icon.size());
+                }
+            } break;
             case AppStream::Icon::KindStock: {
                 const auto ret = QIcon::fromTheme(icon.name());
                 if (!ret.isNull())
