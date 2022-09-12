@@ -629,7 +629,6 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
         return;
     }
 
-    const QString origin = QString::fromUtf8(flatpak_bundle_ref_get_origin(bundleRef));
     for (uint i = 0; i < refs->len; i++) {
         FlatpakRef *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
         FlatpakInstalledRef *iref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
@@ -660,6 +659,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
         resource->setBundledIcon(pixmap);
     }
 
+    const QString origin = QString::fromUtf8(flatpak_bundle_ref_get_origin(bundleRef));
     resource->updateFromRef(FLATPAK_REF(bundleRef));
     resource->setDownloadSize(0);
     resource->setInstalledSize(flatpak_bundle_ref_get_installed_size(bundleRef));
