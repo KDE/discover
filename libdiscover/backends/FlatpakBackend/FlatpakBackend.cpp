@@ -520,7 +520,7 @@ QSharedPointer<FlatpakSource> FlatpakBackend::findSource(FlatpakInstallation *in
     }
 
     qWarning() << "Could not find source:" << installation << origin;
-    Q_UNREACHABLE();
+    return {};
 }
 
 FlatpakResource *FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) const
@@ -1708,6 +1708,7 @@ Transaction *FlatpakBackend::installApplication(AbstractResource *app, const Add
         if (status == Transaction::Status::DoneStatus) {
             if (auto tempSource = resource->temporarySource()) {
                 auto source = findSource(resource->installation(), resource->origin());
+                Q_ASSERT(source);
                 resource->setTemporarySource({});
                 const auto id = resource->uniqueId();
                 source->m_resources.insert(id, resource);
