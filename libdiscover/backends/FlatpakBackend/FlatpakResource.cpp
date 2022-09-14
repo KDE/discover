@@ -464,7 +464,16 @@ FlatpakResource::Id FlatpakResource::uniqueId() const
 
 void FlatpakResource::invokeApplication() const
 {
-    const QString desktopFile = installPath() + QLatin1String("/export/share/applications/") + appstreamId();
+    QString desktopFileName;
+    auto launchables = m_appdata.launchable(AppStream::Launchable::KindDesktopId).entries();
+    if (!launchables.isEmpty()) {
+        desktopFileName = launchables.constFirst();
+    } else {
+        qWarning() << "Failed to find launchable for " << m_appdata.name() << ", using AppStream identifier instead";
+        desktopFileName = appstreamId();
+    }
+
+    const QString desktopFile = installPath() + QLatin1String("/export/share/applications/") + desktopFileName;
     const QString runservice = QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice");
     if (QFile::exists(desktopFile) && QFile::exists(runservice)) {
         QProcess::startDetached(runservice, {desktopFile});
