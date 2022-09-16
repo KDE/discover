@@ -93,7 +93,13 @@ void LocalFilePKResource::setDetails(const PackageKit::Details &details)
 
 void LocalFilePKResource::invokeApplication() const
 {
-    runService({m_exec});
+    KService::Ptr service = KService::Ptr(new KService(m_exec));
+
+    if (!service) {
+        return;
+    }
+
+    runService(service);
 }
 
 void LocalFilePKResource::setState(AbstractResource::State state)

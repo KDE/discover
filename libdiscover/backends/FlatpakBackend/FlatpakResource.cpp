@@ -21,6 +21,7 @@
 #include <KConfigGroup>
 #include <KDesktopFile>
 #include <KFormat>
+#include <KIO/ApplicationLauncherJob>
 #include <KLocalizedString>
 
 #include <AppStreamQt/release.h>
@@ -473,25 +474,21 @@ void FlatpakResource::invokeApplication() const
         desktopFileName = appstreamId();
     }
 
-    const QString desktopFile = installPath() + QLatin1String("/export/share/applications/") + desktopFileName;
-    const QString runservice = QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice");
-    if (QFile::exists(desktopFile) && QFile::exists(runservice)) {
-        QProcess::startDetached(runservice, {desktopFile});
+    KService::Ptr service = KService::serviceByStorageId(desktopFileName);
+
+    if (!service) {
+        qWarning() << "Failed to find service" << desktopFileName;
         return;
     }
 
-    g_autoptr(GCancellable) cancellable = g_cancellable_new();
-    g_autoptr(GError) localError = nullptr;
+    auto *job = new KIO::ApplicationLauncherJob(service);
+    connect(job, &KJob::finished, this, [this, service](KJob *job) {
+        if (job->error()) {
+            Q_EMIT backend()->passiveMessage(i18n("Failed to start '%1': %2", service->name(), job->errorString()));
+        }
+    });
 
-    if (!flatpak_installation_launch(m_installation,
-                                     flatpakName().toUtf8().constData(),
-                                     arch().toUtf8().constData(),
-                                     branch().toUtf8().constData(),
-                                     nullptr,
-                                     cancellable,
-                                     &localError)) {
-        qWarning() << "Failed to launch " << m_appdata.name() << ": " << localError->message;
-    }
+    job->start();
 }
 
 void FlatpakResource::fetchChangelog()

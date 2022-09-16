@@ -7,6 +7,7 @@
 #ifndef PACKAGEKITRESOURCE_H
 #define PACKAGEKITRESOURCE_H
 
+#include <KService>
 #include <PackageKit/Details>
 #include <PackageKit/Transaction>
 #include <resources/AbstractResource.h>
@@ -86,7 +87,7 @@ public:
 
     bool extendsItself() const;
 
-    void runService(const QStringList &desktopFilePaths) const;
+    void runService(KService::Ptr service) const;
 
 Q_SIGNALS:
     void dependenciesFound(const QJsonArray &dependencies);

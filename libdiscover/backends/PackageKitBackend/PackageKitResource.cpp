@@ -11,7 +11,9 @@
 #include "appstream/AppStreamUtils.h"
 #include "config-paths.h"
 #include <AppStreamQt/spdx.h>
+#include <KIO/ApplicationLauncherJob>
 #include <KLocalizedString>
+#include <KService>
 #include <KShell>
 #include <PackageKit/Daemon>
 #include <QDebug>
@@ -431,18 +433,16 @@ bool PackageKitResource::extendsItself() const
     return true;
 }
 
-void PackageKitResource::runService(const QStringList &desktopFilePaths) const
+void PackageKitResource::runService(KService::Ptr service) const
 {
-    for (const QString &desktopFilePath : desktopFilePaths) {
-        auto p = new QProcess(parent());
-        connect(p, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, p](int exitCode, QProcess::ExitStatus /*exitStatus*/) {
-            if (exitCode != 0) {
-                Q_EMIT backend()->passiveMessage(i18n("Failed to start '%1'", KShell::joinArgs(p->arguments())));
-            }
-            p->deleteLater();
-        });
-        p->start(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {desktopFilePath});
-    }
+    auto *job = new KIO::ApplicationLauncherJob(service);
+    connect(job, &KJob::finished, this, [this, service](KJob *job) {
+        if (job->error()) {
+            Q_EMIT backend()->passiveMessage(i18n("Failed to start '%1': %2", service->name(), job->errorString()));
+        }
+    });
+
+    job->start();
 }
 
 bool PackageKitResource::isCritical() const

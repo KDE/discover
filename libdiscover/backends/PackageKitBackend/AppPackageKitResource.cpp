@@ -11,6 +11,7 @@
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/screenshot.h>
 #include <KLocalizedString>
+#include <KService>
 #include <PackageKit/Daemon>
 #include <QDebug>
 #include <QFile>
@@ -203,13 +204,14 @@ bool AppPackageKitResource::canExecute() const
 void AppPackageKitResource::invokeApplication() const
 {
     const QString launchable = m_appdata.launchable(AppStream::Launchable::KindDesktopId).entries().constFirst();
-    const QString service = QStandardPaths::locate(QStandardPaths::ApplicationsLocation, launchable);
 
-    if (service.isEmpty()) {
+    KService::Ptr service = KService::serviceByStorageId(launchable);
+
+    if (!service) {
         Q_EMIT backend()->passiveMessage(i18n("Cannot launch %1", name()));
         return;
     }
-    runService({service});
+    runService(service);
 }
 
 QString AppPackageKitResource::versionString()
