@@ -180,8 +180,13 @@ static bool isConnectionAdequate(const QNetworkConfiguration &network)
 #elif QT_VERSION >= QT_VERSION_CHECK(6, 3, 0)
 static bool isConnectionAdequate()
 {
-    const auto transport = QNetworkInformation::instance()->transportMedium();
-    return transport == QNetworkInformation::TransportMedium::Ethernet || transport == QNetworkInformation::TransportMedium::WiFi;
+    const info = QNetworkInformation::instance();
+    if (info->supports(QNetworkInformation::Feature::Metered)) {
+        return !info->isMetered();
+    } else {
+        const auto transport = info->transportMedium();
+        return transport == QNetworkInformation::TransportMedium::Ethernet || transport == QNetworkInformation::TransportMedium::WiFi;
+    }
 }
 #endif
 
