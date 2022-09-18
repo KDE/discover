@@ -315,36 +315,33 @@ QVector<Category *> AlpineApkBackend::category() const
 
     // Display a single root category
     // we could add more, but Alpine apk does not have this concept
-    static Category *s_rootCat = new Category(
-            i18nc("Root category name", "Alpine Linux packages"),
-            QStringLiteral("package-x-generic"), // icon
-            { s_apkFlt },      // orFilters - include packages that match filter
-            { displayName() }, // pluginName
-            {},                // subCategories - none
-            QUrl(),            // decoration (what is it?)
-            false              // isAddons
+    static Category *s_rootCat = new Category(i18nc("Root category name", "Alpine Linux packages"),
+                                              QStringLiteral("package-x-generic"), // icon
+                                              {s_apkFlt}, // orFilters - include packages that match filter
+                                              {displayName()}, // pluginName
+                                              {}, // subCategories - none
+                                              false // isAddons
     );
 
     return { s_rootCat };
 
-//    static QVector<Category *> s_cats;
-//    if (s_cats.isEmpty()) {
-//        // fill only once
-//        s_cats << s_rootCat;
-//        for (const QString &scat : m_collectedCategories) {
-//            Category *cat = new Category(
-//                        scat,   // name
-//                        QStringLiteral("package-x-generic"), // icon
-//                        {},     // orFilters
-//                        { displayName() }, // pluginName
-//                        {},     // subcategories
-//                        QUrl(), // decoration
-//                        false   // isAddons
-//            );
-//            s_cats << cat;
-//        }
-//    }
-//    return s_cats;
+    //    static QVector<Category *> s_cats;
+    //    if (s_cats.isEmpty()) {
+    //        // fill only once
+    //        s_cats << s_rootCat;
+    //        for (const QString &scat : m_collectedCategories) {
+    //            Category *cat = new Category(
+    //                        scat,   // name
+    //                        QStringLiteral("package-x-generic"), // icon
+    //                        {},     // orFilters
+    //                        { displayName() }, // pluginName
+    //                        {},     // subcategories
+    //                        false   // isAddons
+    //            );
+    //            s_cats << cat;
+    //        }
+    //    }
+    //    return s_cats;
     // ^^ causes deep hang in discover in recalculating QML bindings
 }
 
