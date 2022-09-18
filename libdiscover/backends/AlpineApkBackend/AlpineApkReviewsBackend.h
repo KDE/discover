@@ -32,7 +32,6 @@ class AlpineApkReviewsBackend : public AbstractReviewsBackend
 public:
     explicit AlpineApkReviewsBackend(AlpineApkBackend *parent = nullptr);
 
-    QString userName() const override { return QStringLiteral("dummy"); }
     void login() override {}
     void logout() override {}
     void registerAndLogin() override {}
@@ -42,11 +41,26 @@ public:
     void deleteReview(Review *) override {}
     void fetchReviews(AbstractResource *app, int page = 1) override;
     bool isFetching() const override { return false; }
-    bool isReviewable() const override { return false; }
-    void submitReview(AbstractResource *, const QString &, const QString &, const QString &) override {}
+    bool isReviewable() const override
+    {
+        return false;
+    }
     void flagReview(Review *, const QString&, const QString&) override {}
     void submitUsefulness(Review *, bool) override {}
     bool isResourceSupported(AbstractResource *) const override { return false; }
+    bool supportsNameChange() const override
+    {
+        return false;
+    }
+
+protected:
+    void sendReview(AbstractResource *, const QString &, const QString &, const QString &, const QString &) override
+    {
+    }
+    QString userName() const override
+    {
+        return QStringLiteral("dummy");
+    }
 };
 
 #endif // ALPINEAPKREVIEWSBACKEND_H
