@@ -341,6 +341,7 @@ Kirigami.ApplicationWindow
             function onWebflowStarted(url) {
                 var component = Qt.createComponent("WebflowDialog.qml");
                 if (component.status == Component.Error) {
+                    Qt.openUrlExternally(url);
                     console.error("Webflow Error", component.errorString())
                 } else if (component.status == Component.Ready) {
                     const sheet = component.createObject(window, {transaction: transaction, url: url });
