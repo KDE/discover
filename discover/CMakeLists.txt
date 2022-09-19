@@ -48,9 +48,15 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF5::JobWidgets
                                      Qt::Widgets
                                      Qt::Quick
-                                     Qt::WebView
                                      Discover::Common
 )
+
+if (TARGET Qt::WebView)
+    target_link_libraries(plasma-discover PUBLIC Qt::WebView)
+    target_compile_definitions(plasma-discover PUBLIC -DWITH_QTWEBVIEW=1)
+else()
+    target_compile_definitions(plasma-discover PUBLIC -DWITH_QTWEBVIEW=0)
+endif()
 
 if (TARGET KUserFeedbackCore)
     target_link_libraries(plasma-discover PRIVATE KUserFeedbackCore)
