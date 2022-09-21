@@ -18,6 +18,7 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QStandardPaths>
+#include <QSurfaceFormat>
 #include <QTextStream>
 #include <QWindow>
 #if WITH_QTWEBVIEW
@@ -101,6 +102,10 @@ int main(int argc, char **argv)
 #if WITH_QTWEBVIEW
     QtWebView::initialize();
 #endif
+
+    auto format = QSurfaceFormat::defaultFormat();
+    format.setOption(QSurfaceFormat::ResetNotification);
+    QSurfaceFormat::setDefaultFormat(format);
 
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("plasmadiscover")));
