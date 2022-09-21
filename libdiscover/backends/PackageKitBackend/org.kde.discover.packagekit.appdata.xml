@@ -39,6 +39,7 @@
   <name xml:lang="sk">Podporný program pre PackageKit</name>
   <name xml:lang="sl">Zaledje PackageKit</name>
   <name xml:lang="sv">Gränssnitt för PackageKit</name>
+  <name xml:lang="ta">PackageKit பின்நிலை</name>
   <name xml:lang="tg">Коркардкунандаи PackageKit</name>
   <name xml:lang="tr">PackageKit arka ucu</name>
   <name xml:lang="uk">Модуль PackageKit</name>
@@ -83,6 +84,7 @@
   <summary xml:lang="sk">Integruje aplikácie z distribúcie do aplikácie Discover</summary>
   <summary xml:lang="sl">V Discover vgradi programe distribucije</summary>
   <summary xml:lang="sv">Integrerar distributionsprogram i Discover</summary>
+  <summary xml:lang="ta">இயக்குதள செயலிகளை டிஸ்கவருக்குள் ஒருங்கிணைக்கும்</summary>
   <summary xml:lang="tg">Барномаҳои низоми амалкунандаро ба барномаи Кашфиёт дарунсохт мекунад.</summary>
   <summary xml:lang="tr">Dağıtım uygulamalarını Keşfet ile bütünleştirir</summary>
   <summary xml:lang="uk">Інтегрує програми зі сховищ дистрибутива до Discover</summary>
@@ -130,6 +132,7 @@
   <developer_name xml:lang="sk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ta">அலெயிக்சு போல் கொன்ஸாலெசு</developer_name>
   <developer_name xml:lang="tg">Алейкс Пол Гонзалес (Aleix Pol Gonzalez)</developer_name>
   <developer_name xml:lang="tr">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
