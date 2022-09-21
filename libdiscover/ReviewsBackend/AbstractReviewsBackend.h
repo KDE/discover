@@ -20,7 +20,7 @@ class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
     Q_PROPERTY(bool isReviewable READ isReviewable CONSTANT)
     Q_PROPERTY(bool supportsNameChange READ supportsNameChange CONSTANT)
     Q_PROPERTY(bool hasCredentials READ hasCredentials)
-    Q_PROPERTY(QString preferredUserName READ preferredUserName)
+    Q_PROPERTY(QString preferredUserName READ preferredUserName NOTIFY preferredUserNameChanged)
 public:
     explicit AbstractReviewsBackend(QObject *parent = nullptr);
 
@@ -54,6 +54,7 @@ Q_SIGNALS:
     void reviewsReady(AbstractResource *app, const QVector<ReviewPtr> &reviews, bool canFetchMore);
     void error(const QString &message);
     void fetchingChanged(bool fetching);
+    void preferredUserNameChanged();
 
 protected:
     virtual void sendReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating, const QString &userName) = 0;
