@@ -49,6 +49,7 @@
 #include <glib.h>
 
 #include <optional>
+#include <set>
 #include <sys/stat.h>
 
 DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
@@ -1585,13 +1586,21 @@ ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
         if (appstreamIds.isEmpty())
             Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
-            auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
-            auto f = [this, stream, appstreamIds]() {
-                const auto resources = kAppend<QVector<AbstractResource *>>(appstreamIds, [this](const QString &appstreamId) {
-                    return resourcesByAppstreamName(appstreamId);
-                });
-                if (!resources.isEmpty())
-                    Q_EMIT stream->resourcesFound(resources);
+            auto stream = new ResultsStream(QStringLiteral("FlatpakStream-AppStreamUrl"));
+            auto f = [this, stream, appstreamIds] {
+                std::set<AbstractResource *> resources;
+                QVector<AbstractResource *> resourcesVector;
+                for (const auto &appstreamId : appstreamIds) {
+                    const auto resourcesFound = resourcesByAppstreamName(appstreamId);
+                    for (auto res : resourcesFound) {
+                        auto [x, inserted] = resources.insert(res);
+                        if (inserted) {
+                            resourcesVector.append(res);
+                        }
+                    }
+                }
+                if (!resourcesVector.isEmpty())
+                    Q_EMIT stream->resourcesFound(resourcesVector);
                 stream->finish();
             };
 
