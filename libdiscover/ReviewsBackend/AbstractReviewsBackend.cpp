@@ -37,11 +37,13 @@ QString AbstractReviewsBackend::preferredUserName() const
 
 void AbstractReviewsBackend::submitReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating, const QString &userName)
 {
-    if (supportsNameChange()) {
+    if (supportsNameChange() && !userName.isEmpty()) {
         auto config = KSharedConfig::openConfig();
         auto configGroup = KConfigGroup(config, "Identity");
         configGroup.writeEntry("Name", userName);
         configGroup.config()->sync();
+
+        Q_EMIT preferredUserNameChanged();
     }
     sendReview(app, summary, review_text, rating, userName);
 }
