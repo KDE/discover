@@ -44,6 +44,7 @@ Name[sr@ijekavian]=Oткривач
 Name[sr@ijekavianlatin]=Otkrivač
 Name[sr@latin]=Otkrivač
 Name[sv]=Upptäck
+Name[ta]=டிஸ்கவர்
 Name[tg]=Кашфиёт
 Name[tr]=Keşfet
 Name[uk]=Discover
