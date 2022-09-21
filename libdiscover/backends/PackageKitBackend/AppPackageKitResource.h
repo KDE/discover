@@ -24,6 +24,7 @@ public:
     QStringList mimetypes() const override;
     QStringList categories() override;
     QString longDescription() override;
+    QUrl url() const override;
     QUrl homepage() override;
     QUrl helpURL() override;
     QUrl bugURL() override;

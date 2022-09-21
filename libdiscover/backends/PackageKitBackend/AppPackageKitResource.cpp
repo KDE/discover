@@ -18,6 +18,7 @@
 #include <QIcon>
 #include <QProcess>
 #include <QStandardPaths>
+#include <QUrlQuery>
 #include <appstream/AppStreamUtils.h>
 
 AppPackageKitResource::AppPackageKitResource(const AppStream::Component &data, const QString &packageName, PackageKitBackend *parent)
@@ -127,6 +128,19 @@ QSet<QString> AppPackageKitResource::alternativeAppstreamIds() const
     const AppStream::Provided::Kind AppStream_Provided_KindId = (AppStream::Provided::Kind)12; // Should be AppStream::Provided::KindId when released
     const auto ret = m_appdata.provided(AppStream_Provided_KindId).items();
     return QSet<QString>(ret.begin(), ret.end());
+}
+
+QUrl AppPackageKitResource::url() const
+{
+    QUrl ret(QStringLiteral("appstream://") + appstreamId());
+    const AppStream::Provided::Kind AppStream_Provided_KindId = (AppStream::Provided::Kind)12; // Should be AppStream::Provided::KindId when released
+    const auto provided = m_appdata.provided(AppStream_Provided_KindId).items();
+    if (!provided.isEmpty()) {
+        QUrlQuery qq;
+        qq.addQueryItem("alt", provided.join(QLatin1Char(',')));
+        ret.setQuery(qq);
+    }
+    return ret;
 }
 
 QUrl AppPackageKitResource::homepage()

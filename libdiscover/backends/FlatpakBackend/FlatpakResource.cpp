@@ -622,7 +622,19 @@ QString FlatpakResource::installPath() const
 
 QUrl FlatpakResource::url() const
 {
-    return m_resourceFile.isEmpty() ? QUrl(QStringLiteral("appstream://") + appstreamId()) : m_resourceFile;
+    if (!m_resourceFile.isEmpty()) {
+        return m_resourceFile;
+    }
+
+    QUrl ret(QStringLiteral("appstream://") + appstreamId());
+    const AppStream::Provided::Kind AppStream_Provided_KindId = (AppStream::Provided::Kind)12; // Should be AppStream::Provided::KindId when released
+    const auto provided = m_appdata.provided(AppStream_Provided_KindId).items();
+    if (!provided.isEmpty()) {
+        QUrlQuery qq;
+        qq.addQueryItem("alt", provided.join(QLatin1Char(',')));
+        ret.setQuery(qq);
+    }
+    return ret;
 }
 
 QDate FlatpakResource::releaseDate() const

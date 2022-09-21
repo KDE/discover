@@ -531,6 +531,8 @@ bool ResourcesProxyModel::isSorted(const QVector<AbstractResource *> &resources)
 
 void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource *> &_res)
 {
+    Q_ASSERT(_res.size() == QSet(_res.constBegin(), _res.constEnd()).size());
+
     auto resources = _res;
     Q_ASSERT(!resources.isEmpty());
 
