@@ -600,7 +600,7 @@ DiscoverPage {
                         id: shareSheet
                         parent: applicationWindow().overlay
                         title: shareButton.title
-                        standardButtons: Kirigami.Dialog.None
+                        standardButtons: Dialog.NoButton
 
                         Purpose.AlternativesView {
                             id: alts
