@@ -216,7 +216,7 @@ DiscoverPage {
                 // Metadata
                 Flow {
                     id: metadataLayout
-                    readonly property int itemWidth: Kirigami.Units.gridUnit * 6
+                    readonly property int itemWidth: Kirigami.Units.gridUnit * 7
 
                     Layout.leftMargin: appInfo.internalSpacings
                     Layout.rightMargin: appInfo.internalSpacings
@@ -238,7 +238,7 @@ DiscoverPage {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignHCenter
 
-                    spacing: appInfo.internalSpacings
+                    spacing: Kirigami.Units.smallSpacing
 
                     // Version
                     ColumnLayout {
@@ -354,7 +354,6 @@ DiscoverPage {
 
                             Repeater {
                                 model: appInfo.application.licenses.slice(0, 2)
-
                                 delegate: RowLayout {
                                     Layout.fillWidth: true
                                     spacing: 0
