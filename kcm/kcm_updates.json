@@ -1,6 +1,7 @@
 {
     "Categories": "Qt;KDE;",
     "KPlugin": {
+        "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=systemsettings&component=kcm_updates",
         "Description": "Configure software update behavior",
         "Description[ar]": "اضبط سلوك تحديث التطبيقات",
         "Description[az]": "Proqram təminatı yenilənməsi davranışını tənzimləyin",
