@@ -83,6 +83,15 @@ public:
     }
 
     bool isTracked(FlatpakResource *resource) const;
+    QThreadPool *threadPool()
+    {
+        return &m_threadPool;
+    }
+
+    GCancellable *cancellable() const
+    {
+        return m_cancellable;
+    }
 
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata);

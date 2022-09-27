@@ -2,6 +2,7 @@
 <RCC version="1.0">
     <qresource prefix="/">
         <file>qml/FlatpakAttention.qml</file>
+        <file>qml/FlatpakEolReason.qml</file>
         <file>qml/FlatpakRemoveData.qml</file>
         <file>qml/FlatpakOldBeta.qml</file>
         <file>qml/PermissionsList.qml</file>

@@ -30,6 +30,7 @@
 #include <QDir>
 #include <QDirIterator>
 #include <QFileInfo>
+#include <QFutureWatcher>
 #include <QIcon>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -39,6 +40,7 @@
 #include <QTemporaryFile>
 #include <QTimer>
 #include <QUrlQuery>
+#include <QtConcurrentRun>
 
 static QString iconCachePath(const AppStream::Icon &icon)
 {
@@ -46,9 +48,12 @@ static QString iconCachePath(const AppStream::Icon &icon)
     return QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation), icon.url().fileName());
 }
 
-const QStringList FlatpakResource::s_objects({QStringLiteral("qrc:/qml/FlatpakAttention.qml"),
-                                              QStringLiteral("qrc:/qml/FlatpakRemoveData.qml"),
-                                              QStringLiteral("qrc:/qml/FlatpakOldBeta.qml")});
+const QStringList FlatpakResource::s_objects({
+    QStringLiteral("qrc:/qml/FlatpakAttention.qml"),
+    QStringLiteral("qrc:/qml/FlatpakRemoveData.qml"),
+    QStringLiteral("qrc:/qml/FlatpakOldBeta.qml"),
+    QStringLiteral("qrc:/qml/FlatpakEolReason.qml"),
+});
 const QStringList FlatpakResource::s_bottomObjects({QStringLiteral("qrc:/qml/PermissionsList.qml")});
 
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent)
@@ -723,6 +728,26 @@ QString translateSymbolicName(const QStringView &name)
         return i18n("Music");
     }
     return name.toString();
+}
+
+QString FlatpakResource::eolReason()
+{
+    if (!m_eolReason.has_value()) {
+        auto futureWatcher = new QFutureWatcher<FlatpakRemoteRef *>(this);
+        connect(futureWatcher, &QFutureWatcher<FlatpakRemoteRef *>::finished, this, [this, futureWatcher]() {
+            g_autoptr(FlatpakRemoteRef) rref = futureWatcher->result();
+            m_eolReason = QString::fromUtf8(flatpak_remote_ref_get_eol(rref));
+            Q_EMIT eolReasonChanged();
+            futureWatcher->deleteLater();
+        });
+
+        futureWatcher->setFuture(QtConcurrent::run(qobject_cast<FlatpakBackend *>(backend())->threadPool(),
+                                                   &FlatpakRunnables::findRemoteRef,
+                                                   this,
+                                                   qobject_cast<FlatpakBackend *>(backend())->cancellable()));
+        return {};
+    }
+    return m_eolReason.value_or(QString());
 }
 
 void FlatpakResource::loadPermissions()

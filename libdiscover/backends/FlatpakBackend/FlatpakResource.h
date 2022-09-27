@@ -17,6 +17,7 @@
 
 #include <QAbstractItemModel>
 #include <QPixmap>
+#include <optional>
 
 class AddonList;
 class FlatpakBackend;
@@ -31,6 +32,7 @@ class FlatpakResource : public AbstractResource
     Q_PROPERTY(QString dataLocation READ dataLocation CONSTANT)
     Q_PROPERTY(QString branch READ branch CONSTANT)
     Q_PROPERTY(bool isDesktopApp READ isDesktopApp CONSTANT)
+    Q_PROPERTY(QString eolReason READ eolReason NOTIFY eolReasonChanged)
     Q_PROPERTY(bool hasDataButUninstalled READ hasDataButUninstalled NOTIFY hasDataButUninstalledChanged)
 public:
     explicit FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent);
@@ -204,10 +206,12 @@ public:
     {
         return m_type == DesktopApp;
     }
+    QString eolReason();
 
 Q_SIGNALS:
     void hasDataButUninstalledChanged();
     void propertyStateChanged(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state);
+    void eolReasonChanged();
 
 private:
     void setCommit(const QString &commit);
@@ -235,6 +239,7 @@ private:
     FlatpakResource::ResourceType m_type = DesktopApp;
     QSharedPointer<FlatpakSource> m_temp;
     QVector<FlatpakPermission> m_permissions;
+    std::optional<QString> m_eolReason;
     static const QStringList s_objects;
     static const QStringList s_bottomObjects;
 };
