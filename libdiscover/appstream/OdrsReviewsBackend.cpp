@@ -157,7 +157,12 @@ void OdrsReviewsBackend::reviewsFetched()
         return;
     }
 
-    const QJsonDocument document = QJsonDocument::fromJson(data);
+    QJsonParseError error;
+    const QJsonDocument document = QJsonDocument::fromJson(data, &error);
+    if (error.error) {
+        qWarning() << "odrs: error parsing reviews" << reply->url() << error.errorString();
+    }
+
     AbstractResource *resource = qobject_cast<AbstractResource *>(reply->request().originatingObject());
     Q_ASSERT(resource);
     parseReviews(document, resource);
@@ -290,9 +295,16 @@ void OdrsReviewsBackend::parseRatings()
     fw->setFuture(QtConcurrent::run([] {
         QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings/ratings"));
         if (!ratingsDocument.open(QIODevice::ReadOnly)) {
+            qWarning() << "odrs: Could not open file" << ratingsDocument.fileName();
             return QJsonDocument::fromJson({});
         }
-        return QJsonDocument::fromJson(ratingsDocument.readAll());
+
+        QJsonParseError error;
+        const auto ret = QJsonDocument::fromJson(ratingsDocument.readAll(), &error);
+        if (error.error) {
+            qWarning() << "odrs: error parsing ratings" << ratingsDocument.errorString() << error.errorString();
+        }
+        return ret;
     }));
 }
 
