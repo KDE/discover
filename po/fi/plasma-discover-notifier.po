@@ -1,0 +1,203 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Lasse Liehu <lasse.liehu@gmail.com>, 2015.
+# Tommi Nieminen <translator@legisign.org>, 2018, 2019, 2020, 2021, 2022.
+#
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-01-11 22:43+0200\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 20.04.2\n"
+
+#: notifier/DiscoverNotifier.cpp:144
+#, kde-format
+msgid "View Updates"
+msgstr "Näytä päivitykset"
+
+#: notifier/DiscoverNotifier.cpp:256
+#, kde-format
+msgid "Security updates available"
+msgstr "Turvallisuuspäivityksiä saatavilla"
+
+#: notifier/DiscoverNotifier.cpp:258
+#, kde-format
+msgid "Updates available"
+msgstr "Päivityksiä saatavilla"
+
+#: notifier/DiscoverNotifier.cpp:260
+#, kde-format
+msgid "System up to date"
+msgstr "Järjestelmä on ajan tasalla"
+
+#: notifier/DiscoverNotifier.cpp:262
+#, kde-format
+msgid "Computer needs to restart"
+msgstr "Tietokone on käynnistettävä uudelleen"
+
+#: notifier/DiscoverNotifier.cpp:264
+#, kde-format
+msgid "Offline"
+msgstr "Ei verkossa"
+
+#: notifier/DiscoverNotifier.cpp:266
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr "Toteutetaan automaattisia päivityksiä…"
+
+#: notifier/DiscoverNotifier.cpp:300
+#, kde-format
+msgid "Restart is required"
+msgstr "Uudellenkäynnistys vaaditaan"
+
+#: notifier/DiscoverNotifier.cpp:301
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr ""
+"Järjestelmä on käynnistettävä uudelleen, jotta päivitykset tulevat voimaan."
+
+#: notifier/DiscoverNotifier.cpp:307
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart"
+msgstr "Käynnistä uudelleen"
+
+#: notifier/DiscoverNotifier.cpp:327
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "Päivitä"
+
+#: notifier/DiscoverNotifier.cpp:328
+#, kde-format
+msgid "Upgrade available"
+msgstr "Päivitys saatavilla"
+
+#: notifier/DiscoverNotifier.cpp:329
+#, kde-format
+msgid "New version: %1"
+msgstr "Uusi versio: %1"
+
+#: notifier/main.cpp:39
+#, kde-format
+msgid "Discover Notifier"
+msgstr "Discoverin ilmoitukset"
+
+#: notifier/main.cpp:41
+#, kde-format
+msgid "System update status notifier"
+msgstr "Järjestelmäpäivityksen tilailmoitukset"
+
+#: notifier/main.cpp:43
+#, kde-format
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© 2010–2022 Plasman kehitysryhmä"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Tommi Nieminen"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "translator@legisign.org"
+
+#: notifier/main.cpp:52
+#, kde-format
+msgid "Replace an existing instance"
+msgstr "Korvaa aiempi instanssi"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "Do not show the notifier"
+msgstr "Älä näytä ilmoituksia"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "hidden"
+msgstr "piilotettu"
+
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#, kde-format
+msgid "Updates"
+msgstr "Päivitykset"
+
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Open Discover…"
+msgstr "Avaa Discover…"
+
+#: notifier/NotifierItem.cpp:55
+#, kde-format
+msgid "See Updates…"
+msgstr "Näytä päivitykset…"
+
+#: notifier/NotifierItem.cpp:60
+#, kde-format
+msgid "Refresh…"
+msgstr "Virkistä…"
+
+#: notifier/NotifierItem.cpp:64
+#, kde-format
+msgid "Restart to apply installed updates"
+msgstr "Ota asennetut päivitykset käyttöön käynnistämällä uudelleen"
+
+#: notifier/NotifierItem.cpp:65
+#, kde-format
+msgid "Click to restart the device"
+msgstr "Käynnistä laite uudelleen napsauttamalla"
+
+#~ msgid "Restart..."
+#~ msgstr "Käynnistä uudelleen…"
+
+#~ msgid "Update"
+#~ msgstr "Päivitä"
+
+#~ msgid "Open Software Center..."
+#~ msgstr "Avaa ohjelmistonhallinta…"
+
+#~ msgctxt "First part of '%1, %2'"
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "1 päivitettävä paketti"
+#~ msgstr[1] "%1 päivitettävää pakettia"
+
+#~ msgctxt "Second part of '%1, %2'"
+#~ msgid "of which 1 is security update"
+#~ msgid_plural "of which %1 are security updates"
+#~ msgstr[0] "joista 1 on turvallisuuspäivitys"
+#~ msgstr[1] "joista %1 on turvallisuuspäivitystä"
+
+#~ msgctxt ""
+#~ "%1 is '%1 packages to update' and %2 is 'of which %1 is security updates'"
+#~ msgid "%1, %2"
+#~ msgstr "%1, %2"
+
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "1 päivitettävä paketti"
+#~ msgstr[1] "%1 päivitettävää pakettia"
+
+#~ msgid "1 security update"
+#~ msgid_plural "%1 security updates"
+#~ msgstr[0] "1 turvallisuuspäivitys"
+#~ msgstr[1] "%1 turvallisuuspäivitystä"
+
+#~ msgid "No packages to update"
+#~ msgstr "Ei päivitettäviä paketteja"
+
+#~ msgid "%1 packages to update, of which %2 are security updates"
+#~ msgstr "%1 päivitettävää pakettia, joista %2 on turvallisuuspäivityksiä"

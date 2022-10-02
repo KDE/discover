@@ -1,0 +1,107 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the discover package.
+# Vincenzo Reale <smart2128vr@gmail.com>, 2020, 2021, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-08-25 16:48+0200\n"
+"Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 22.08.0\n"
+
+#: kcm/package/contents/ui/main.qml:32
+#, kde-format
+msgid "Update software:"
+msgstr "Aggiorna software:"
+
+#: kcm/package/contents/ui/main.qml:33
+#, kde-format
+msgid "Manually"
+msgstr "Manualmente"
+
+#: kcm/package/contents/ui/main.qml:43
+#, kde-format
+msgid "Automatically"
+msgstr "Automaticamente"
+
+#: kcm/package/contents/ui/main.qml:50
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Software updates will be downloaded automatically when they become "
+"available. Updates for applications will be installed immediately, while "
+"system updates will be installed the next time the computer is restarted."
+msgstr ""
+"Gli aggiornamenti software saranno scaricati automaticamente quando saranno "
+"disponibili. Gli aggiornamenti per le applicazioni saranno installati "
+"immediatamente, mentre gli aggiornamenti di sistema saranno installati al "
+"successivo riavvio del computer."
+
+#: kcm/package/contents/ui/main.qml:61
+#, kde-format
+msgctxt "@title:group"
+msgid "Update frequency:"
+msgstr "Frequenza di aggiornamento:"
+
+#: kcm/package/contents/ui/main.qml:61
+#, kde-format
+msgctxt "@title:group"
+msgid "Notification frequency:"
+msgstr "Frequenza di notifica:"
+
+#: kcm/package/contents/ui/main.qml:64
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Daily"
+msgstr "Quotidiana"
+
+#: kcm/package/contents/ui/main.qml:65
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Weekly"
+msgstr "Settimanale"
+
+#: kcm/package/contents/ui/main.qml:66
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Monthly"
+msgstr "Mensile"
+
+#: kcm/package/contents/ui/main.qml:67
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Never"
+msgstr "Mai"
+
+#: kcm/package/contents/ui/main.qml:111
+#, kde-format
+msgid "Use offline updates:"
+msgstr "Usa aggiornamenti non in linea:"
+
+#: kcm/package/contents/ui/main.qml:123
+#, kde-format
+msgid ""
+"Offline updates maximize system stability by applying changes while "
+"restarting the system. Using this update mode is strongly recommended."
+msgstr ""
+"Gli aggiornamenti non in linea massimizzano la stabilità del sistema "
+"applicando le modifiche durante il riavvio del sistema. Si consiglia "
+"vivamente di utilizzare questa modalità di aggiornamento."
+
+#: kcm/updates.cpp:31
+#, kde-format
+msgid "Software Update"
+msgstr "Aggiornamento software"
+
+#: kcm/updates.cpp:33
+#, kde-format
+msgid "Configure software update settings"
+msgstr "Configura le impostazioni di aggiornamento del software"

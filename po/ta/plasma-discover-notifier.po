@@ -1,0 +1,157 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the discover package.
+#
+# Kishore G <kishore96@gmail.com>, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-03-30 21:42+0530\n"
+"Last-Translator: Kishore G <kishore96@gmail.com>\n"
+"Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.03.80\n"
+
+#: notifier/DiscoverNotifier.cpp:144
+#, kde-format
+msgid "View Updates"
+msgstr "புதுப்பிப்புகளை காட்டு"
+
+#: notifier/DiscoverNotifier.cpp:256
+#, kde-format
+msgid "Security updates available"
+msgstr "பாதுகாப்பு புதுப்பிப்புகள் உள்ளன"
+
+#: notifier/DiscoverNotifier.cpp:258
+#, kde-format
+msgid "Updates available"
+msgstr "புதுப்பிப்புகள் உள்ளன"
+
+#: notifier/DiscoverNotifier.cpp:260
+#, kde-format
+msgid "System up to date"
+msgstr "கணினி புதுப்பித்த நிலையில் உள்ளது"
+
+#: notifier/DiscoverNotifier.cpp:262
+#, kde-format
+msgid "Computer needs to restart"
+msgstr "கணினியை மீள்துவக்க வேண்டும்"
+
+#: notifier/DiscoverNotifier.cpp:264
+#, kde-format
+msgid "Offline"
+msgstr "கணினியை நிறுத்தும்போது"
+
+#: notifier/DiscoverNotifier.cpp:266
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr "பின்னணி புதுப்பிப்புகள் நிறுவப்படுகின்றன..."
+
+#: notifier/DiscoverNotifier.cpp:300
+#, kde-format
+msgid "Restart is required"
+msgstr "மீள்துவக்க வேண்டும்"
+
+#: notifier/DiscoverNotifier.cpp:301
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr "புதுப்பிப்புகள் செயல்பெற கணினியை மீள்துவக்க வேண்டும்."
+
+#: notifier/DiscoverNotifier.cpp:307
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart"
+msgstr "மீள்துவக்கு"
+
+#: notifier/DiscoverNotifier.cpp:327
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "புதுப்பி"
+
+#: notifier/DiscoverNotifier.cpp:328
+#, kde-format
+msgid "Upgrade available"
+msgstr "புதுப்பிப்பு உள்ளது"
+
+#: notifier/DiscoverNotifier.cpp:329
+#, kde-format
+msgid "New version: %1"
+msgstr "புதிய பதிப்பு: %1"
+
+#: notifier/main.cpp:39
+#, kde-format
+msgid "Discover Notifier"
+msgstr "டிஸ்கவர் அறிவிப்பான்"
+
+#: notifier/main.cpp:41
+#, kde-format
+msgid "System update status notifier"
+msgstr "கணினி புதுப்பிப்பு நிலை அறிவிப்பான்"
+
+#: notifier/main.cpp:43
+#, kde-format
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2022 பிளாஸ்மா நிரலாக்க குழு"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "கோ. கிஷோர்"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "Kde-l10n-ta@kde.org"
+
+#: notifier/main.cpp:52
+#, kde-format
+msgid "Replace an existing instance"
+msgstr "ஏற்கனவே உள்ளதற்கு பதிலாக இது இயங்கட்டும்"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "Do not show the notifier"
+msgstr "அறிவிப்பானை காட்டாதே"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "hidden"
+msgstr "மறைந்தது"
+
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#, kde-format
+msgid "Updates"
+msgstr "புதுப்பிப்புகள்"
+
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Open Discover…"
+msgstr "டிஸ்கவரை திற…"
+
+#: notifier/NotifierItem.cpp:55
+#, kde-format
+msgid "See Updates…"
+msgstr "புதுப்பிப்புகளை காட்டு…"
+
+#: notifier/NotifierItem.cpp:60
+#, kde-format
+msgid "Refresh…"
+msgstr "புதுப்பிப்புகளை தேடு..."
+
+#: notifier/NotifierItem.cpp:64
+#, kde-format
+msgid "Restart to apply installed updates"
+msgstr "நிறுவியுள்ள புதுப்பிப்புகள் செயல்பட மீள்துவக்கவும்"
+
+#: notifier/NotifierItem.cpp:65
+#, kde-format
+msgid "Click to restart the device"
+msgstr "சாதனத்தை மீள்துவக்க அழுத்துங்கள்"

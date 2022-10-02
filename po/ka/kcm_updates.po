@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the discover package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-08-27 04:07+0200\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: kcm/package/contents/ui/main.qml:32
+#, kde-format
+msgid "Update software:"
+msgstr "პროგრამების განახლებa:"
+
+#: kcm/package/contents/ui/main.qml:33
+#, kde-format
+msgid "Manually"
+msgstr "ხელით"
+
+#: kcm/package/contents/ui/main.qml:43
+#, kde-format
+msgid "Automatically"
+msgstr "ავტომატურად"
+
+#: kcm/package/contents/ui/main.qml:50
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Software updates will be downloaded automatically when they become "
+"available. Updates for applications will be installed immediately, while "
+"system updates will be installed the next time the computer is restarted."
+msgstr ""
+"სისტემური პროგრამების განახლებები გადმოიწერება მაშინვე, როგორც კი ისინი "
+"ხელმისაწვდომი გახდებიან. აპლიკაციების განახლებები მაშინვე გადმოიწერება, "
+"მაგრამ გადატარდება მხოლოდ კომპიუტერის გადატვირთვის შემდეგ."
+
+#: kcm/package/contents/ui/main.qml:61
+#, kde-format
+msgctxt "@title:group"
+msgid "Update frequency:"
+msgstr "განახლების სიხშირე:"
+
+#: kcm/package/contents/ui/main.qml:61
+#, kde-format
+msgctxt "@title:group"
+msgid "Notification frequency:"
+msgstr "გაფრთხილების სიხშირე:"
+
+#: kcm/package/contents/ui/main.qml:64
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Daily"
+msgstr "დღიურად"
+
+#: kcm/package/contents/ui/main.qml:65
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Weekly"
+msgstr "კვირაში ერთხელ"
+
+#: kcm/package/contents/ui/main.qml:66
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Monthly"
+msgstr "თვეში ერთხელ"
+
+#: kcm/package/contents/ui/main.qml:67
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Never"
+msgstr "არასდროს"
+
+#: kcm/package/contents/ui/main.qml:111
+#, kde-format
+msgid "Use offline updates:"
+msgstr "გათიშული განახლებების გამოყენება:"
+
+#: kcm/package/contents/ui/main.qml:123
+#, kde-format
+msgid ""
+"Offline updates maximize system stability by applying changes while "
+"restarting the system. Using this update mode is strongly recommended."
+msgstr ""
+"ოფლაინ განახლებები მაქსიმალურად იცავენ სისტემის სტაბილურობას განახლებების "
+"ჩატვირთვისას გადატარების გზით. განახლების ეს მეთოდი ძალიან რეკომენდებულია."
+
+#: kcm/updates.cpp:31
+#, kde-format
+msgid "Software Update"
+msgstr "პროგრამების განახლება"
+
+#: kcm/updates.cpp:33
+#, kde-format
+msgid "Configure software update settings"
+msgstr "პროგრამების განახლებების ქცევის მორგება"

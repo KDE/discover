@@ -1,0 +1,208 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Safa Alfulaij <safa1996alfulaij@gmail.com>, ٢٠١٥, 2017, 2018.
+# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-01-08 22:03+0400\n"
+"Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
+"Language-Team: ar\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 21.07.70\n"
+
+#: notifier/DiscoverNotifier.cpp:144
+#, kde-format
+msgid "View Updates"
+msgstr "اعرض التحديثات"
+
+#: notifier/DiscoverNotifier.cpp:256
+#, kde-format
+msgid "Security updates available"
+msgstr "تتوفّر تحديثات أمنيّة"
+
+#: notifier/DiscoverNotifier.cpp:258
+#, kde-format
+msgid "Updates available"
+msgstr "تتوفّر تحديثات"
+
+#: notifier/DiscoverNotifier.cpp:260
+#, kde-format
+msgid "System up to date"
+msgstr "النّظام محدّث"
+
+#: notifier/DiscoverNotifier.cpp:262
+#, kde-format
+msgid "Computer needs to restart"
+msgstr "الحاسوب بحاجة لإعادة تشغيل"
+
+#: notifier/DiscoverNotifier.cpp:264
+#, kde-format
+msgid "Offline"
+msgstr "غير متّصل"
+
+#: notifier/DiscoverNotifier.cpp:266
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr "يطبق الآن التحديثات غير المراقبة ..."
+
+#: notifier/DiscoverNotifier.cpp:300
+#, kde-format
+msgid "Restart is required"
+msgstr "إعادة التّشغيل مطلوبة"
+
+#: notifier/DiscoverNotifier.cpp:301
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr "يجب إعادة تشغيل النظام لتأخذ التحديثات مفعولها."
+
+#: notifier/DiscoverNotifier.cpp:307
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart"
+msgstr "أعد التّشغيل"
+
+#: notifier/DiscoverNotifier.cpp:327
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "رقِّ"
+
+#: notifier/DiscoverNotifier.cpp:328
+#, kde-format
+msgid "Upgrade available"
+msgstr "تتوفّر ترقية"
+
+#: notifier/DiscoverNotifier.cpp:329
+#, kde-format
+msgid "New version: %1"
+msgstr "الإصدارة الجديدة:‏ %1"
+
+#: notifier/main.cpp:39
+#, kde-format
+msgid "Discover Notifier"
+msgstr "مُخْطر المستكشف"
+
+#: notifier/main.cpp:41
+#, kde-format
+msgid "System update status notifier"
+msgstr "مُخْطر حالة تحديث النظام"
+
+#: notifier/main.cpp:43
+#, kde-format
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2022 لفريق تطوير بلازما"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "زايد السعيدي"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "zayed.alsaidi@gmail.com"
+
+#: notifier/main.cpp:52
+#, kde-format
+msgid "Replace an existing instance"
+msgstr "استبدل نسخة موجودة"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "Do not show the notifier"
+msgstr "لا تظهر المُخْطر"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "hidden"
+msgstr "مخفي"
+
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#, kde-format
+msgid "Updates"
+msgstr "التّحديثات"
+
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Open Discover…"
+msgstr "افتح المستكشف..."
+
+#: notifier/NotifierItem.cpp:55
+#, kde-format
+msgid "See Updates…"
+msgstr "اعرض التحديثات..."
+
+#: notifier/NotifierItem.cpp:60
+#, kde-format
+msgid "Refresh…"
+msgstr "أنعش..."
+
+#: notifier/NotifierItem.cpp:64
+#, kde-format
+msgid "Restart to apply installed updates"
+msgstr "أعد التشغيل لتطبق التحديثات المثبتة"
+
+#: notifier/NotifierItem.cpp:65
+#, kde-format
+msgid "Click to restart the device"
+msgstr "انقر لتعيد تشغيل الجهاز"
+
+#~ msgid "Update"
+#~ msgstr "حدّث"
+
+#~ msgctxt "First part of '%1, %2'"
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "لا حزم لتحديثها"
+#~ msgstr[1] "حزمة واحدة لتحديثها"
+#~ msgstr[2] "حزمتان لتحديثهما"
+#~ msgstr[3] "%1 حزم لتحديثها"
+#~ msgstr[4] "%1 حزمة لتحديثها"
+#~ msgstr[5] "%1 حزمة لتحديثها"
+
+#~ msgctxt "Second part of '%1, %2'"
+#~ msgid "of which 1 is security update"
+#~ msgid_plural "of which %1 are security updates"
+#~ msgstr[0] "فقط"
+#~ msgstr[1] "وواحدة منها تحديث أمنيّ"
+#~ msgstr[2] "واثنتين منها تحديثات أمنيّة"
+#~ msgstr[3] "و%1 منها تحديثات أمنيّة"
+#~ msgstr[4] "و%1 منها تحديثات أمنيّة"
+#~ msgstr[5] "و%1 منها تحديثات أمنيّة"
+
+#~ msgctxt ""
+#~ "%1 is '%1 packages to update' and %2 is 'of which %1 is security updates'"
+#~ msgid "%1, %2"
+#~ msgstr "%1، %2"
+
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "لا حزم لتحديثها"
+#~ msgstr[1] "حزمة واحدة لتحديثها"
+#~ msgstr[2] "حزمتان لتحديثهما"
+#~ msgstr[3] "%1 حزم لتحديثها"
+#~ msgstr[4] "%1 حزمة لتحديثها"
+#~ msgstr[5] "%1 حزمة لتحديثها"
+
+#~ msgid "1 security update"
+#~ msgid_plural "%1 security updates"
+#~ msgstr[0] "لا تحديثات أمنيّة"
+#~ msgstr[1] "تحديث أمنيّ واحد"
+#~ msgstr[2] "تحديثان أمنيّان"
+#~ msgstr[3] "%1 تحديثات أمنيّة"
+#~ msgstr[4] "%1 تحديثًا أمنيًّا"
+#~ msgstr[5] "%1 تحديث أمنيّ"
+
+#~ msgid "No packages to update"
+#~ msgstr "لا حزم لتحديثها"

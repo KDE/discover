@@ -1,0 +1,1603 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Kristóf Kiszel <ulysses@kubuntu.org>, 2012, 2014, 2015, 2019.
+# Balázs Úr <urbalazs@gmail.com>, 2012, 2013, 2014.
+# Kiszel Kristóf <kiszel.kristof@gmail.com>, 2017, 2020.
+# Kristof Kiszel <ulysses@fsf.hu>, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:46+0000\n"
+"PO-Revision-Date: 2022-02-07 10:40+0100\n"
+"Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.07.70\n"
+
+#: discover/DiscoverObject.cpp:156
+#, fuzzy, kde-format
+#| msgid ""
+#| "Discover currently cannot be used to install any apps because none of its "
+#| "app backends are available. Please report this issue to the packagers of "
+#| "your distribution."
+msgid ""
+"Discover currently cannot be used to install any apps or perform system "
+"updates because none of its app backends are available."
+msgstr ""
+"A Discover jelenleg nem használható alkalmazások telepítésére, mert egyik "
+"háttérprogramja sem érhető el. Kérjük, jelentse ezt a hibát a disztribúciója "
+"csomagolójának."
+
+#: discover/DiscoverObject.cpp:160
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can install some on the Settings page, under the <interface>Missing "
+"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
+"as a packaging issue to your distribution."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:165 discover/DiscoverObject.cpp:343
+#: discover/qml/UpdatesPage.qml:107
+#, fuzzy, kde-format
+#| msgid "Report this issue"
+msgid "Report This Issue"
+msgstr "Jelentse ezt a hibát"
+
+#: discover/DiscoverObject.cpp:170
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can use <command>pacman</command> to install the optional dependencies "
+"that are needed to enable the application backends.<nl/><nl/>Please note "
+"that Arch Linux developers recommend using <command>pacman</command> for "
+"managing software because the PackageKit backend is not well-integrated on "
+"Arch Linux."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:178
+#, kde-format
+msgid "Learn More"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:266
+#, kde-format
+msgid "Could not find category '%1'"
+msgstr "Nem található kategória: „%1”"
+
+#: discover/DiscoverObject.cpp:303
+#, kde-format
+msgid ""
+"Cannot interact with flatpak resources without the flatpak backend %1. "
+"Please install it first."
+msgstr ""
+"Nem lehet dolgozni Flatpak erőforrásokkal a(z) %1 backend nélkül. Kérjük, "
+"telepítse azt."
+
+#: discover/DiscoverObject.cpp:307
+#, kde-format
+msgid "Could not open %1"
+msgstr "A(z) %1 nem nyitható meg"
+
+#: discover/DiscoverObject.cpp:335
+#, kde-format
+msgid "Please make sure Snap support is installed"
+msgstr "Ellenőrizze, hogy a Snap támogatás telepítve van-e"
+
+#: discover/DiscoverObject.cpp:337
+#, fuzzy, kde-format
+#| msgid ""
+#| "Could not open %1 because it was not found in any available software "
+#| "repositories. Please report this issue to the packagers of your "
+#| "distribution."
+msgid ""
+"Could not open %1 because it was not found in any available software "
+"repositories."
+msgstr ""
+"Nem sikerült a(z) %1 megnyitása, mivel nem található meg egyik elérhető "
+"szoftvertárolóban sem. Kérjük, jelentse ezt a hibát a disztribúciója "
+"csomagolójának."
+
+#: discover/DiscoverObject.cpp:340
+#, fuzzy, kde-format
+#| msgid ""
+#| "Could not open %1 because it was not found in any available software "
+#| "repositories. Please report this issue to the packagers of your "
+#| "distribution."
+msgid "Please report this issue to the packagers of your distribution."
+msgstr ""
+"Nem sikerült a(z) %1 megnyitása, mivel nem található meg egyik elérhető "
+"szoftvertárolóban sem. Kérjük, jelentse ezt a hibát a disztribúciója "
+"csomagolójának."
+
+#: discover/DiscoverObject.cpp:405 discover/DiscoverObject.cpp:406
+#: discover/main.cpp:119
+#, kde-format
+msgid "Discover"
+msgstr "Discover"
+
+#: discover/DiscoverObject.cpp:406
+#, kde-format
+msgid ""
+"Discover was closed before certain tasks were done, waiting for it to finish."
+msgstr ""
+
+#: discover/main.cpp:43
+#, kde-format
+msgid "Directly open the specified application by its appstream:// URI."
+msgstr ""
+"A megadott alkalmazás közvetlen megnyitása az appstream:// URI-je szerint."
+
+#: discover/main.cpp:44
+#, kde-format
+msgid "Open with a search for programs that can deal with the given mimetype."
+msgstr "Megnyitás a megadott MIME-típust kezelni képes program keresésével."
+
+#: discover/main.cpp:45
+#, kde-format
+msgid "Display a list of entries with a category."
+msgstr "Bejegyzések listájának megjelenítése kategóriával."
+
+#: discover/main.cpp:46
+#, kde-format
+msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
+msgstr ""
+"A Discover megnyitása biztonságos módban. A módoknak az eszköztár gombjai "
+"felelnek meg."
+
+#: discover/main.cpp:47
+#, kde-format
+msgid "List all the available modes."
+msgstr "Az összes elérhető mód listázása."
+
+#: discover/main.cpp:48
+#, kde-format
+msgid "Compact Mode (auto/compact/full)."
+msgstr "Kompakt mód (automatikus/kompakt/teljes)."
+
+#: discover/main.cpp:49
+#, kde-format
+msgid "Local package file to install"
+msgstr "Helyi csomagfájlok telepítése"
+
+#: discover/main.cpp:50
+#, kde-format
+msgid "List all the available backends."
+msgstr "Az összes elérhető backend listázása."
+
+#: discover/main.cpp:51
+#, kde-format
+msgid "Search string."
+msgstr "Szöveg keresése."
+
+#: discover/main.cpp:52
+#, kde-format
+msgid "Lists the available options for user feedback"
+msgstr "Felsorolja a felhasználói visszajelzés lehetőségeit"
+
+#: discover/main.cpp:54
+#, kde-format
+msgid "Supports appstream: url scheme"
+msgstr "Az appstream: url séma támogatása"
+
+#: discover/main.cpp:121
+#, kde-format
+msgid "An application explorer"
+msgstr "Egy alkalmazásfelfedező"
+
+#: discover/main.cpp:123
+#, kde-format
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© A Plasma fejlesztői, 2010-2022."
+
+#: discover/main.cpp:124
+#, kde-format
+msgid "Aleix Pol Gonzalez"
+msgstr "Aleix Pol Gonzalez"
+
+#: discover/main.cpp:125
+#, kde-format
+msgid "Nate Graham"
+msgstr "Nate Graham"
+
+#: discover/main.cpp:126
+#, kde-format
+msgid "Quality Assurance, Design and Usability"
+msgstr "Minőségbiztosítás, design és használhatóság"
+
+#: discover/main.cpp:130
+#, kde-format
+msgid "Dan Leinir Turthra Jensen"
+msgstr "Dan Leinir Turthra Jensen"
+
+#: discover/main.cpp:131
+#, kde-format
+msgid "KNewStuff"
+msgstr "KNewStuff"
+
+#: discover/main.cpp:138
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Kiszel Kristóf"
+
+#: discover/main.cpp:138
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "ulysses@kubuntu.org"
+
+#: discover/main.cpp:151
+#, kde-format
+msgid "Available backends:\n"
+msgstr "Elérhető háttérprogramok:\n"
+
+#: discover/main.cpp:207
+#, kde-format
+msgid "Available modes:\n"
+msgstr "Elérhető módok:\n"
+
+#: discover/qml/AddonsView.qml:18 discover/qml/navigation.js:43
+#, kde-format
+msgid "Addons for %1"
+msgstr "%1 bővítmények"
+
+#: discover/qml/AddonsView.qml:50
+#, kde-format
+msgid "More…"
+msgstr "Több…"
+
+#: discover/qml/AddonsView.qml:59
+#, kde-format
+msgid "Apply Changes"
+msgstr "Változtatások alkalmazása"
+
+#: discover/qml/AddonsView.qml:66
+#, kde-format
+msgid "Reset"
+msgstr "Visszaállítás"
+
+#: discover/qml/AddSourceDialog.qml:19
+#, kde-format
+msgid "Add New %1 Repository"
+msgstr "Új %1 tároló hozzáadása"
+
+#: discover/qml/AddSourceDialog.qml:58
+#, kde-format
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:263
+#: discover/qml/InstallApplicationButton.qml:41
+#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:181
+#: discover/qml/UpdatesPage.qml:247 discover/qml/WebflowDialog.qml:39
+#, kde-format
+msgid "Cancel"
+msgstr "Mégsem"
+
+#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationPage.qml:192
+#, kde-format
+msgid "%1 rating"
+msgid_plural "%1 ratings"
+msgstr[0] "%1 értékelés"
+msgstr[1] "%1 értékelés"
+
+#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationPage.qml:192
+#, kde-format
+msgid "No ratings yet"
+msgstr "Nincsenek értékelések"
+
+#: discover/qml/ApplicationPage.qml:59
+#, kde-format
+msgid "Sources"
+msgstr "Források"
+
+#: discover/qml/ApplicationPage.qml:70
+#, kde-format
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: discover/qml/ApplicationPage.qml:174
+#, fuzzy, kde-format
+#| msgctxt "The app does not provide any licenses"
+#| msgid "Unknown"
+msgid "Unknown author"
+msgstr "Ismeretlen"
+
+#: discover/qml/ApplicationPage.qml:253
+#, kde-format
+msgid "Version"
+msgstr "Verzió"
+
+#: discover/qml/ApplicationPage.qml:280
+#: discover/qml/ApplicationsListPage.qml:109
+#, kde-format
+msgid "Size"
+msgstr "Méret"
+
+#: discover/qml/ApplicationPage.qml:307
+#, kde-format
+msgid "Distributed by"
+msgstr "Disztribútor:"
+
+#: discover/qml/ApplicationPage.qml:334
+#, kde-format
+msgid "License"
+msgid_plural "Licenses"
+msgstr[0] "Licenc"
+msgstr[1] "Licencek"
+
+#: discover/qml/ApplicationPage.qml:343
+#, kde-format
+msgctxt "The app does not provide any licenses"
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+#: discover/qml/ApplicationPage.qml:381
+#, fuzzy, kde-format
+#| msgid "What's New"
+msgid "What does this mean?"
+msgstr "Újdonságok"
+
+#: discover/qml/ApplicationPage.qml:391
+#, kde-format
+msgid "See more…"
+msgid_plural "See more…"
+msgstr[0] "Több…"
+msgstr[1] "Több…"
+
+#: discover/qml/ApplicationPage.qml:409 discover/qml/ApplicationPage.qml:840
+#, fuzzy, kde-format
+#| msgid "Enter a rating"
+msgid "Content Rating"
+msgstr "Adjon értékelést"
+
+#: discover/qml/ApplicationPage.qml:419
+#, kde-format
+msgid "Age: %1+"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:443
+#, fuzzy, kde-format
+#| msgid "See more…"
+#| msgid_plural "See more…"
+msgctxt "@action"
+msgid "See details…"
+msgstr "Több…"
+
+#: discover/qml/ApplicationPage.qml:539
+#, kde-format
+msgid "Documentation"
+msgstr "Dokumentáció"
+
+#: discover/qml/ApplicationPage.qml:540
+#, kde-format
+msgid "Read the project's official documentation"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:556
+#, kde-format
+msgid "Website"
+msgstr "Weboldal"
+
+#: discover/qml/ApplicationPage.qml:557
+#, fuzzy, kde-format
+#| msgid "Visit the app's website"
+msgid "Visit the project's website"
+msgstr "Az alkalmazás weboldalának meglátogatása"
+
+#: discover/qml/ApplicationPage.qml:573
+#, kde-format
+msgid "Addons"
+msgstr "Bővítmények"
+
+#: discover/qml/ApplicationPage.qml:574
+#, fuzzy, kde-format
+#| msgid "Install or remove add-ons for %1"
+msgid "Install or remove additional functionality"
+msgstr "%1 bővítmények telepítése vagy eltávolítása"
+
+#: discover/qml/ApplicationPage.qml:593
+#, kde-format
+msgctxt "Exports the application's URL to an external service"
+msgid "Share"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:594
+#, fuzzy, kde-format
+#| msgid "Unable to load applications"
+msgid "Send a link to the application"
+msgstr "Nem lehet betölteni alkalmazásokat"
+
+#: discover/qml/ApplicationPage.qml:610
+#, kde-format
+msgctxt "The subject line for an email. %1 is the name of an application"
+msgid "Check out the %1 app!"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:630
+#, kde-format
+msgid "What's New"
+msgstr "Újdonságok"
+
+#: discover/qml/ApplicationPage.qml:660
+#, fuzzy, kde-format
+#| msgid "Reviews for %1"
+msgid "Loading reviews for %1"
+msgstr "Értékelések ehhez: %1"
+
+#: discover/qml/ApplicationPage.qml:666
+#, kde-format
+msgid "Reviews"
+msgstr "Vélemények"
+
+#: discover/qml/ApplicationPage.qml:696
+#, kde-format
+msgid "Show all %1 Reviews"
+msgid_plural "Show all %1 Reviews"
+msgstr[0] "Összes %1 értékelés megjelenítése…"
+msgstr[1] "Összes %1 értékelés megjelenítése…"
+
+#: discover/qml/ApplicationPage.qml:708
+#, kde-format
+msgid "Write a Review"
+msgstr "Írjon értékelést"
+
+#: discover/qml/ApplicationPage.qml:708
+#, kde-format
+msgid "Install to Write a Review"
+msgstr "Telepítse értékelés írásához"
+
+#: discover/qml/ApplicationPage.qml:720
+#, fuzzy, kde-format
+#| msgid "Get involved:"
+msgid "Get Involved"
+msgstr "Csatlakozzon:"
+
+#: discover/qml/ApplicationPage.qml:753
+#, kde-format
+msgid "Donate"
+msgstr "Támogatás"
+
+#: discover/qml/ApplicationPage.qml:754
+#, kde-format
+msgid "Support and thank the developers by donating to their project"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:770
+#, kde-format
+msgid "Report Bug"
+msgstr "Hiba bejelentése"
+
+#: discover/qml/ApplicationPage.qml:771
+#, kde-format
+msgid "Log an issue you found to help get it fixed"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:785
+#, fuzzy, kde-format
+#| msgid "Contribute…"
+msgid "Contribute"
+msgstr "Hozzájárulás…"
+
+#: discover/qml/ApplicationPage.qml:786
+#, kde-format
+msgid "Help the developers by coding, designing, testing, or translating"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:813
+#, kde-format
+msgid "All Licenses"
+msgstr "Minden licenc"
+
+#: discover/qml/ApplicationPage.qml:852
+#, kde-format
+msgid "Risks of proprietary software"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:862
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
+"learn more at <link url='%3'>%3</link>."
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:863
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
+"url='%2'>%2</link>."
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:53
+#, kde-format
+msgid "Search: %1 - %2 items"
+msgstr "Keresés: %1 - %2 elem"
+
+#: discover/qml/ApplicationsListPage.qml:55
+#, kde-format
+msgid "Search: %1"
+msgstr "Keresés: %1"
+
+#: discover/qml/ApplicationsListPage.qml:59
+#, kde-format
+msgid "%1 - %2 items"
+msgstr "%1 - %2 elem"
+
+#: discover/qml/ApplicationsListPage.qml:65
+#, kde-format
+msgid "Search - %1 items"
+msgstr "Keresés - %1 elem"
+
+#: discover/qml/ApplicationsListPage.qml:67
+#: discover/qml/ApplicationsListPage.qml:207
+#, kde-format
+msgid "Search"
+msgstr "Keresés"
+
+#: discover/qml/ApplicationsListPage.qml:88
+#, kde-format
+msgid "Sort: %1"
+msgstr "Rendezés: %1"
+
+#: discover/qml/ApplicationsListPage.qml:91
+#, kde-format
+msgid "Name"
+msgstr "Név"
+
+#: discover/qml/ApplicationsListPage.qml:100
+#, kde-format
+msgid "Rating"
+msgstr "Értékelés"
+
+#: discover/qml/ApplicationsListPage.qml:118
+#, kde-format
+msgid "Release Date"
+msgstr "Kiadás ideje"
+
+#: discover/qml/ApplicationsListPage.qml:173
+#, kde-format
+msgid "Nothing found"
+msgstr "Nincs találat"
+
+#: discover/qml/ApplicationsListPage.qml:185
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid "\"%1\" was not found in the available sources"
+msgstr "A(z) „%1” nem található az elérhető forrásokban"
+
+#: discover/qml/ApplicationsListPage.qml:186
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid ""
+"\"%1\" may be available on the web. Software acquired from the web has not "
+"been reviewed by your distributor for functionality or stability. Use with "
+"caution."
+msgstr ""
+"A(z) „%1” talán elérhető az interneten. Az onnan letöltött szoftvereket nem "
+"ellenőrizte a disztribúciója stabilitás vagy funkcionalitás szempontjából, "
+"ezért használja azokat fokozott óvatossággal."
+
+#: discover/qml/ApplicationsListPage.qml:188
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid "Search the web for \"%1\""
+msgstr "„%1” keresése az interneten"
+
+#: discover/qml/ApplicationsListPage.qml:192
+#, kde-format
+msgctxt ""
+"If appropriate, localize this URL to be something more relevant to the "
+"language. %1 is the text that will be searched for."
+msgid "https://duckduckgo.com/?q=%1"
+msgstr "https://duckduckgo.com/?q=%1"
+
+#: discover/qml/ApplicationsListPage.qml:222
+#, kde-format
+msgid "Still looking…"
+msgstr "Még keressük…"
+
+#: discover/qml/BrowsingPage.qml:18
+#, kde-format
+msgid "Featured"
+msgstr "Kiemelt alkalmazások"
+
+#: discover/qml/BrowsingPage.qml:43
+#, kde-format
+msgid "Unable to load applications"
+msgstr "Nem lehet betölteni alkalmazásokat"
+
+#: discover/qml/BrowsingPage.qml:76
+#, kde-format
+msgid "Updates are available"
+msgstr "Frissítések érhetőek el"
+
+#: discover/qml/BrowsingPage.qml:80
+#, kde-format
+msgctxt "Short for 'show updates'"
+msgid "Show"
+msgstr "Megjelenítés"
+
+#: discover/qml/DiscoverWindow.qml:42
+#, kde-format
+msgid "Running as <em>root</em> is discouraged and unnecessary."
+msgstr "A <em>root</em> felhasználóként futtatás nem javasolt és szükségtelen."
+
+#: discover/qml/DiscoverWindow.qml:54
+#, kde-format
+msgid "&Home"
+msgstr "&Kezdőlap"
+
+#: discover/qml/DiscoverWindow.qml:64
+#, kde-format
+msgid "&Search"
+msgstr "K&eresés"
+
+#: discover/qml/DiscoverWindow.qml:72
+#, kde-format
+msgid "&Installed"
+msgstr "&Telepített"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgid "Fetching &updates…"
+msgstr "&Frissítések letöltése…"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgid "&Up to date"
+msgstr "&Naprakész"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgctxt "Update section name"
+msgid "&Update (%1)"
+msgstr "F&rissítés (%1)"
+
+#: discover/qml/DiscoverWindow.qml:86
+#, kde-format
+msgid "&About"
+msgstr "Né&vjegy"
+
+#: discover/qml/DiscoverWindow.qml:94
+#, kde-format
+msgid "S&ettings"
+msgstr "&Beállítások"
+
+#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:337
+#, kde-format
+msgid "Error"
+msgstr "Hiba"
+
+#: discover/qml/DiscoverWindow.qml:148
+#, kde-format
+msgid "Unable to find resource: %1"
+msgstr "Nem található erőforrás: %1"
+
+#: discover/qml/DiscoverWindow.qml:250 discover/qml/SourcesPage.qml:171
+#, kde-format
+msgid "Proceed"
+msgstr "Folytatás"
+
+#: discover/qml/DiscoverWindow.qml:307
+#, kde-format
+msgid "Report this issue"
+msgstr "Jelentse ezt a hibát"
+
+#: discover/qml/Feedback.qml:12
+#, kde-format
+msgid "Submit usage information"
+msgstr "Használati statisztikák elküldése"
+
+#: discover/qml/Feedback.qml:13
+#, kde-format
+msgid ""
+"Sends anonymized usage information to KDE so we can better understand our "
+"users. For more information see https://kde.org/privacypolicy-apps.php."
+msgstr ""
+"Névtelen használati statisztikák küldése a KDE-nek, hogy jobban megérthessék "
+"a felhasználók szokásait. További információkért keresse fel a https://kde."
+"org/privacypolicy-apps.php oldalt."
+
+#: discover/qml/Feedback.qml:17
+#, kde-format
+msgid "Submitting usage information…"
+msgstr "Használati statisztikák küldése…"
+
+#: discover/qml/Feedback.qml:17
+#, kde-format
+msgid "Configure"
+msgstr "Beállítások"
+
+#: discover/qml/Feedback.qml:21
+#, kde-format
+msgid "Configure feedback…"
+msgstr "Visszajelzés beállítása…"
+
+#: discover/qml/Feedback.qml:28 discover/qml/SourcesPage.qml:19
+#, kde-format
+msgid "Configure Updates…"
+msgstr "Frissítések beállítása…"
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid ""
+"You can help us improving this application by sharing statistics and "
+"participate in surveys."
+msgstr ""
+"A statisztikák megosztásával és felmérésekben való részvétellel segítheti az "
+"alkalmazás fejlesztését."
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid "Contribute…"
+msgstr "Hozzájárulás…"
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "We are looking for your feedback!"
+msgstr "Kíváncsiak vagyunk a véleményére!"
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "Participate…"
+msgstr "Részvétel…"
+
+#: discover/qml/InstallApplicationButton.qml:25
+#, kde-format
+msgctxt "State being fetched"
+msgid "Loading…"
+msgstr "Betöltés…"
+
+#: discover/qml/InstallApplicationButton.qml:28
+#, kde-format
+msgid "Install"
+msgstr "Telepítés"
+
+#: discover/qml/InstallApplicationButton.qml:30
+#, kde-format
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: discover/qml/InstalledPage.qml:15
+#, kde-format
+msgid "Installed"
+msgstr "Telepített"
+
+#: discover/qml/navigation.js:19
+#, kde-format
+msgid "Resources for '%1'"
+msgstr "Erőforrások ehhez: „%1”"
+
+#: discover/qml/ProgressView.qml:17
+#, kde-format
+msgid "Tasks (%1%)"
+msgstr "Feladatok (%1%)"
+
+#: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:40
+#, kde-format
+msgid "Tasks"
+msgstr "Feladatok"
+
+#: discover/qml/ProgressView.qml:97
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed, remaining time"
+msgid "%1 - %2: %3, %4 remaining"
+msgstr "%1 - %2: %3, %4 van hátra"
+
+#: discover/qml/ProgressView.qml:98
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed"
+msgid "%1 - %2: %3"
+msgstr "%1 - %2: %3"
+
+#: discover/qml/ProgressView.qml:99
+#, kde-format
+msgctxt "TransactioName - TransactionStatus"
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: discover/qml/ReviewDelegate.qml:61
+#, kde-format
+msgid "unknown reviewer"
+msgstr "ismeretlen értékelő"
+
+#: discover/qml/ReviewDelegate.qml:62
+#, kde-format
+msgid "<b>%1</b> by %2"
+msgstr "<b>%1</b>, szerző: %2"
+
+#: discover/qml/ReviewDelegate.qml:62
+#, kde-format
+msgid "Comment by %1"
+msgstr "Megjegyzés, tőle: %1"
+
+#: discover/qml/ReviewDelegate.qml:80
+#, kde-format
+msgid "Version: %1"
+msgstr "Verzió: %1"
+
+#: discover/qml/ReviewDelegate.qml:80
+#, kde-format
+msgid "Version: unknown"
+msgstr "Verzió: ismeretlen"
+
+#: discover/qml/ReviewDelegate.qml:95
+#, kde-format
+msgid "Votes: %1 out of %2"
+msgstr "Szavazatok: %1 / %2"
+
+#: discover/qml/ReviewDelegate.qml:102
+#, kde-format
+msgid "Was this review useful?"
+msgstr "Hasznos ez az értékelés?"
+
+#: discover/qml/ReviewDelegate.qml:114
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "Yes"
+msgstr "Igen"
+
+#: discover/qml/ReviewDelegate.qml:131
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "No"
+msgstr "Nem"
+
+#: discover/qml/ReviewDialog.qml:20
+#, kde-format
+msgid "Reviewing %1"
+msgstr "A(z) %1 értékelése"
+
+#: discover/qml/ReviewDialog.qml:29
+#, kde-format
+msgid "Rating:"
+msgstr "Értékelés:"
+
+#: discover/qml/ReviewDialog.qml:34
+#, kde-format
+msgid "Name:"
+msgstr "Név:"
+
+#: discover/qml/ReviewDialog.qml:42
+#, kde-format
+msgid "Title:"
+msgstr "Cím:"
+
+#: discover/qml/ReviewDialog.qml:60
+#, kde-format
+msgid "Enter a rating"
+msgstr "Adjon értékelést"
+
+#: discover/qml/ReviewDialog.qml:61
+#, kde-format
+msgid "Write the title"
+msgstr "Írja be a címet"
+
+#: discover/qml/ReviewDialog.qml:62
+#, kde-format
+msgid "Write the review"
+msgstr "Írjon értékelést"
+
+#: discover/qml/ReviewDialog.qml:63
+#, kde-format
+msgid "Keep writing…"
+msgstr "Írja tovább…"
+
+#: discover/qml/ReviewDialog.qml:64
+#, kde-format
+msgid "Too long!"
+msgstr "Túl hosszú!"
+
+#: discover/qml/ReviewDialog.qml:65
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Insert a name"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:79
+#, kde-format
+msgid "Submit review"
+msgstr "Értékelés elküldése"
+
+#: discover/qml/ReviewsPage.qml:43
+#, kde-format
+msgid "Reviews for %1"
+msgstr "Értékelések ehhez: %1"
+
+#: discover/qml/ReviewsPage.qml:54
+#, kde-format
+msgid "Write a Review…"
+msgstr "Írjon értékelést…"
+
+#: discover/qml/ReviewsPage.qml:59
+#, kde-format
+msgid "Install this app to write a review"
+msgstr "Telepítse ezt az alkalmazást, és írjon értékelést róla"
+
+#: discover/qml/SearchField.qml:24
+#, kde-format
+msgid "Search…"
+msgstr "Keresés…"
+
+#: discover/qml/SearchField.qml:24
+#, kde-format
+msgid "Search in '%1'…"
+msgstr "Keresés itt: „%1”…"
+
+#: discover/qml/SourcesPage.qml:13
+#, kde-format
+msgid "Settings"
+msgstr "Beállítások"
+
+#: discover/qml/SourcesPage.qml:95
+#, kde-format
+msgid "Default source"
+msgstr "Alapértelmezett forrás"
+
+#: discover/qml/SourcesPage.qml:102
+#, kde-format
+msgid "Add Source…"
+msgstr "Forrás hozzáadása…"
+
+#: discover/qml/SourcesPage.qml:126
+#, kde-format
+msgid "Make default"
+msgstr "Legyen alapértelmezett"
+
+#: discover/qml/SourcesPage.qml:212
+#, kde-format
+msgid "Increase priority"
+msgstr "Prioritás növelése"
+
+#: discover/qml/SourcesPage.qml:218
+#, kde-format
+msgid "Failed to increase '%1' preference"
+msgstr "Nem sikerült növelni a(z) „%1” prioritását"
+
+#: discover/qml/SourcesPage.qml:223
+#, kde-format
+msgid "Decrease priority"
+msgstr "Prioritás csökkentése"
+
+#: discover/qml/SourcesPage.qml:229
+#, kde-format
+msgid "Failed to decrease '%1' preference"
+msgstr "Nem sikerült csökkenteni a(z) „%1” prioritását"
+
+#: discover/qml/SourcesPage.qml:234
+#, kde-format
+msgid "Remove repository"
+msgstr "Tároló eltávolítása"
+
+#: discover/qml/SourcesPage.qml:245
+#, kde-format
+msgid "Show contents"
+msgstr "Tartalom megjelenítése"
+
+#: discover/qml/SourcesPage.qml:284
+#, kde-format
+msgid "Missing Backends"
+msgstr "Hiányzó backendek"
+
+#: discover/qml/UpdatesPage.qml:12
+#, kde-format
+msgid "Updates"
+msgstr "Frissítések"
+
+#: discover/qml/UpdatesPage.qml:45
+#, kde-format
+msgid "Update Issue"
+msgstr "Frissítési probléma"
+
+#: discover/qml/UpdatesPage.qml:45
+#, kde-format
+msgid "Technical details"
+msgstr "Technikai részletek"
+
+#: discover/qml/UpdatesPage.qml:61
+#, kde-format
+msgid "There was an issue installing this update. Please try again later."
+msgstr ""
+"Hiba történt a frissítés telepítése során. Kérjük, próbálkozzon később."
+
+#: discover/qml/UpdatesPage.qml:67
+#, fuzzy, kde-format
+#| msgid "See technical details"
+msgid "See Technical Details"
+msgstr "Technikai részletek megtekintése"
+
+#: discover/qml/UpdatesPage.qml:83
+#, kde-format
+msgid ""
+"If you would like to report the update issue to your distribution's "
+"packagers, include this information:"
+msgstr ""
+"Ha szeretné jelenteni a frissítési hibát a dsiztribúciója csomagolóinak, "
+"mindenképp adja meg az alábbi információt:"
+
+#: discover/qml/UpdatesPage.qml:98
+#, fuzzy, kde-format
+#| msgid "Copy to clipboard"
+msgid "Copy to Clipboard"
+msgstr "Másolás a vágólapra"
+
+#: discover/qml/UpdatesPage.qml:102
+#, kde-format
+msgid "Error message copied to clipboard"
+msgstr "Hibaüzenet másolva a vágólapra"
+
+#: discover/qml/UpdatesPage.qml:134
+#, kde-format
+msgid "Update Selected"
+msgstr "Kijelöltek frissítése"
+
+#: discover/qml/UpdatesPage.qml:134
+#, kde-format
+msgid "Update All"
+msgstr "Összes frissítése"
+
+#: discover/qml/UpdatesPage.qml:168
+#, kde-format
+msgid "Ignore"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:214
+#, kde-format
+msgid "Select All"
+msgstr "Összes kijelölése"
+
+#: discover/qml/UpdatesPage.qml:222
+#, kde-format
+msgid "Select None"
+msgstr "Kijelölés megszüntetése"
+
+#: discover/qml/UpdatesPage.qml:229
+#, kde-format
+msgid "Restart automatically after update has completed"
+msgstr "Automatikus újraindítás a frissítés befejeződése után"
+
+#: discover/qml/UpdatesPage.qml:236
+#, kde-format
+msgid "Total size: %1"
+msgstr "Teljes méret: %1"
+
+#: discover/qml/UpdatesPage.qml:272
+#, kde-format
+msgid "Restart Now"
+msgstr "Újraindítás most"
+
+#: discover/qml/UpdatesPage.qml:371
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+#: discover/qml/UpdatesPage.qml:387
+#, kde-format
+msgid "Installing"
+msgstr "Telepítés"
+
+#: discover/qml/UpdatesPage.qml:422
+#, kde-format
+msgid "Update from:"
+msgstr "Frissítés innen:"
+
+#: discover/qml/UpdatesPage.qml:434
+#, kde-format
+msgctxt ""
+"%1 is the backend that provides this app, %2 is the specific repository or "
+"address within that backend"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: discover/qml/UpdatesPage.qml:441
+#, kde-format
+msgid "More Information…"
+msgstr "További információk…"
+
+#: discover/qml/UpdatesPage.qml:469
+#, kde-format
+msgctxt "@info"
+msgid "Fetching updates…"
+msgstr "Frissítések letöltése…"
+
+#: discover/qml/UpdatesPage.qml:482
+#, kde-format
+msgctxt "@info"
+msgid "Updates"
+msgstr "Frissítések"
+
+#: discover/qml/UpdatesPage.qml:492
+#, kde-format
+msgctxt "@info"
+msgid "Restart the system to complete the update process"
+msgstr "Indítsa újra a rendszert a frissítési folyamat befejezéséhez"
+
+#: discover/qml/UpdatesPage.qml:504 discover/qml/UpdatesPage.qml:511
+#: discover/qml/UpdatesPage.qml:518
+#, kde-format
+msgctxt "@info"
+msgid "Up to date"
+msgstr "Naprakész"
+
+#: discover/qml/UpdatesPage.qml:525
+#, kde-format
+msgctxt "@info"
+msgid "Should check for updates"
+msgstr "Frissítések keresése szükséges"
+
+#: discover/qml/UpdatesPage.qml:532
+#, kde-format
+msgctxt "@info"
+msgid "Time of last update unknown"
+msgstr "Az utolsó frissítés időpontja ismeretlen"
+
+#, fuzzy
+#~| msgid "More..."
+#~ msgid "Show more..."
+#~ msgstr "Több…"
+
+#, fuzzy
+#~| msgid "Could not close Discover, there are tasks that need to be done."
+#~ msgid "Could not close Discover because some tasks are still in progress."
+#~ msgstr "Nem lehet bezárni a Discovert, még vannak befejezendő feladatok."
+
+#~ msgid "Quit Anyway"
+#~ msgstr "Kilépés mindenképp"
+
+#~ msgid "Loading…"
+#~ msgstr "Betöltés…"
+
+#~ msgid "Return to the Featured page"
+#~ msgstr "Vissza a kiemelt alkalmazásokhoz"
+
+#~ msgid "Category:"
+#~ msgstr "Kategória:"
+
+#~ msgid "Author:"
+#~ msgstr "Szerző:"
+
+#~ msgid "Size:"
+#~ msgstr "Méret:"
+
+#~ msgid "Source:"
+#~ msgstr "Forrás:"
+
+#~ msgid "See full license terms"
+#~ msgstr "Teljes licenc megjelenítése"
+
+#~ msgid "Read the user guide"
+#~ msgstr "Felhasználói kézikönyv elolvasása"
+
+#~ msgid "Make a donation"
+#~ msgstr "Pénzadomány küldése"
+
+#~ msgid "Report a problem"
+#~ msgstr "Hiba bejelentése"
+
+#~ msgid "%1 (Default)"
+#~ msgstr "%1 (alapértelmezett)"
+
+#, fuzzy
+#~| msgid "Extensions..."
+#~ msgid "Extensions…"
+#~ msgstr "Bővítmények…"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "Unable to load applications.<nl/>Please verify Internet connectivity."
+#~ msgid "Please verify Internet connectivity"
+#~ msgstr ""
+#~ "Nem lehet betölteni az alkalmazásokat.<nl/>Ellenőrizze az internet-"
+#~ "kapcsolatát."
+
+#~ msgid "All updates selected (%1)"
+#~ msgstr "Összes frissítés kijelölve (%1)"
+
+#~ msgid "%1/%2 update selected (%3)"
+#~ msgid_plural "%1/%2 updates selected (%3)"
+#~ msgstr[0] "%1/%2 frissítés kijelölve (%3)"
+#~ msgstr[1] "%1/%2 frissítés kijelölve (%3)"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgctxt "Part of a string like this: '<app name> - <category>'"
+#~ msgid "- %1"
+#~ msgstr "- %1"
+
+#, fuzzy
+#~| msgid "Install"
+#~ msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
+#~ msgid "Install from %1"
+#~ msgstr "Telepítés"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid "The system requires a restart to apply updates"
+#~ msgctxt "@info"
+#~ msgid "The system must be restarted to fully apply the installed updates"
+#~ msgstr "A frissítések alkalmazásához a rendszer újraindítása szükséges"
+
+#~ msgid "%1, released on %2"
+#~ msgstr "%1, megjelent ekkor: %2"
+
+#, fuzzy
+#~| msgid "Loading..."
+#~ msgctxt "State being fetched"
+#~ msgid "Loading..."
+#~ msgstr "Betöltés…"
+
+#~ msgid "Write a Review..."
+#~ msgstr "Írjon értékelést…"
+
+#~ msgid "Search..."
+#~ msgstr "Keresés…"
+
+#~ msgctxt "@info"
+#~ msgid "It is unknown when the last check for updates was"
+#~ msgstr "A frissítések utolsó keresésének időpontja ismeretlen"
+
+#~ msgid "No application back-ends found, please report to your distribution."
+#~ msgstr ""
+#~ "Nem találhatóak alkalmazásbackendek, kérjük, jelentse a disztribúciójának."
+
+#~ msgid "Sorry..."
+#~ msgstr "Elnézést…"
+
+#~ msgid "Useful?"
+#~ msgstr "Hasznos?"
+
+#~ msgid "Update to version %1"
+#~ msgstr "Frissítés erre a verzióra: %1"
+
+#~ msgctxt "Do not translate or alter \\x9C"
+#~ msgid "%1 → %2%1 → %2%2"
+#~ msgstr "%1 → %2%1 → %2%2"
+
+#~ msgid "Delete the origin"
+#~ msgstr "Eredet törlése"
+
+#~ msgid "Write a review!"
+#~ msgstr "Írjon értékelést!"
+
+#~ msgid "Be the first to write a review!"
+#~ msgstr "Legyen az első, aki értékeli!"
+
+#, fuzzy
+#~| msgid "Install this app and be the first to write a review!"
+#~ msgid "Install and be the first to write a review!"
+#~ msgstr ""
+#~ "Telepítse ezt az alkalmazást, és legyen az első, aki értékelést ír róla!"
+
+#~ msgid "Jonathan Thomas"
+#~ msgstr "Jonathan Thomas"
+
+#~ msgid "Discard"
+#~ msgstr "Eldobás"
+
+#~ msgid "Hide"
+#~ msgstr "Elrejtés"
+
+#~ msgid "Homepage:"
+#~ msgstr "Honlap:"
+
+#~ msgid "User Guide:"
+#~ msgstr "Leírás:"
+
+#~ msgid "Failed to remove the source '%1'"
+#~ msgstr "Nem sikerült eltávolítani a forrást: „%1”"
+
+#~ msgid "Fetching Updates..."
+#~ msgstr "Frissítések letöltése…"
+
+#~ msgctxt "@info"
+#~ msgid "Fetching Updates..."
+#~ msgstr "Frissítések letöltése…"
+
+#~ msgctxt "@info"
+#~ msgid "Up to Date"
+#~ msgstr "Naprakész"
+
+#~ msgid "<em>Tell us about this review!</em>"
+#~ msgstr "<em>Meséljen erről a véleményről!</em>"
+
+#~ msgid "<em>%1 out of %2 people found this review useful</em>"
+#~ msgstr "<em>%1 / %2 ember hasznosnak találta ezt a véleményt</em>"
+
+#~ msgid ""
+#~ "<em>Useful? <a href='true'><b>Yes</b></a>/<a href='false'>No</a></em>"
+#~ msgstr ""
+#~ "<em>Hasznos? <a href='true'><b>Igen</b></a>/<a href='false'>Nem</a></em>"
+
+#~ msgid ""
+#~ "<em>Useful? <a href='true'>Yes</a>/<a href='false'><b>No</b></a></em>"
+#~ msgstr ""
+#~ "<em>Hasznos? <a href='true'>Igen</a>/<a href='false'><b>Nem</b></a></em>"
+
+#~ msgid "<em>Useful? <a href='true'>Yes</a>/<a href='false'>No</a></em>"
+#~ msgstr "<em>Hasznos? <a href='true'>Igen</a>/<a href='false'>Nem</a></em>"
+
+#~ msgctxt "@info"
+#~ msgid "Submission name:<nl/>%1"
+#~ msgstr "Beküldő neve:<nl/>%1"
+
+#~ msgid "Review:"
+#~ msgstr "Értékelés:"
+
+#~ msgid "Review..."
+#~ msgstr "Értékelés…"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid "Should check for updates"
+#~ msgid "Checking for updates..."
+#~ msgstr "Frissítések keresése szükséges"
+
+#~ msgid "No Updates"
+#~ msgstr "Nincsenek frissítések"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid "Updating..."
+#~ msgctxt "@info"
+#~ msgid "Fetching..."
+#~ msgstr "Frissítés…"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid "Should check for updates"
+#~ msgctxt "@info"
+#~ msgid "Checking for updates..."
+#~ msgstr "Frissítések keresése szükséges"
+
+#~ msgctxt "@info"
+#~ msgid "Updating..."
+#~ msgstr "Frissítés…"
+
+#~ msgctxt "@info"
+#~ msgid "The system is up to date"
+#~ msgstr "A rendszer naprakész"
+
+#~ msgctxt "@info"
+#~ msgid "No updates"
+#~ msgstr "Nincsenek frissítések"
+
+#~ msgid "updates not selected"
+#~ msgstr "frissítés nincs kijelölve"
+
+#, fuzzy
+#~| msgid "Help..."
+#~ msgid "Help"
+#~ msgstr "Súgó…"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid "Should check for updates"
+#~ msgctxt "@info"
+#~ msgid "Looking for updates"
+#~ msgstr "Frissítések keresése szükséges"
+
+#~ msgid "Summary:"
+#~ msgstr "Összegzés:"
+
+#~ msgid "Back"
+#~ msgstr "Vissza"
+
+#~ msgid "Launch"
+#~ msgstr "Indítás"
+
+#~ msgid "Accept"
+#~ msgstr "Jóváhagyás"
+
+#~ msgid "Browse the origin's resources"
+#~ msgstr "Az eredet erőforrásainak böngészése"
+
+#~ msgid "Description"
+#~ msgstr "Leírás"
+
+#, fuzzy
+#~| msgid "An application explorer"
+#~ msgid "Application Sources"
+#~ msgstr "Egy alkalmazásfelfedező"
+
+#~ msgid "Open"
+#~ msgstr "Megnyitás"
+
+#, fuzzy
+#~| msgid "Description"
+#~ msgid "Close Description"
+#~ msgstr "Leírás"
+
+#~ msgid "Got it"
+#~ msgstr "Értettem"
+
+#, fuzzy
+#~| msgid "%1 (%2)"
+#~ msgid "Origin: %1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#, fuzzy
+#~| msgid "Popularity"
+#~ msgid "Most Popular"
+#~ msgstr "Népszerűség"
+
+#, fuzzy
+#~| msgid "Loading..."
+#~ msgctxt "@info"
+#~ msgid "Loading..."
+#~ msgstr "Betöltés…"
+
+#~ msgid ""
+#~ "<p style='margin: 0 0 0 0'><b>%1</b> by %2</p><p style='margin: 0 0 0 0'>"
+#~ "%3</p><p style='margin: 0 0 0 0'>%4</p>"
+#~ msgstr ""
+#~ "<p style='margin: 0 0 0 0'><b>%1</b> - %2</p><p style='margin: 0 0 0 0'>"
+#~ "%3</p><p style='margin: 0 0 0 0'>%4</p>"
+
+#~ msgid "Popularity"
+#~ msgstr "Népszerűség"
+
+#~ msgid "Buzz"
+#~ msgstr "Kulcsszó"
+
+#~ msgid "Origin"
+#~ msgstr "Eredet"
+
+#~ msgid "List"
+#~ msgstr "Lista"
+
+#~ msgid "Grid"
+#~ msgstr "Rács"
+
+#, fuzzy
+#~| msgid "Installed"
+#~ msgid "items installed"
+#~ msgstr "Telepített"
+
+#, fuzzy
+#~| msgid "Update"
+#~ msgid "System Update"
+#~ msgstr "Frissítés"
+
+#~ msgid "Advanced..."
+#~ msgstr "Speciális…"
+
+#~ msgid ""
+#~ "Found some errors while setting up the GUI, the application can't proceed."
+#~ msgstr ""
+#~ "Hibák történtek a grafikus felület beállításakor, az alkalmazás nem "
+#~ "folytatható."
+
+#~ msgid "Initialization error"
+#~ msgstr "Inicializálási hiba"
+
+#~ msgid "Muon Discover"
+#~ msgstr "Muon Discover"
+
+#~ msgid ""
+#~ "Welcome to\n"
+#~ "Muon Discover!"
+#~ msgstr ""
+#~ "Üdvözli a\n"
+#~ "Muon Discover!"
+
+#~ msgid "Configure and learn about Muon Discover"
+#~ msgstr "A Muon Discover beállítása és megismerése"
+
+#~ msgid "points: %1"
+#~ msgstr "pontok: %1"
+
+#~ msgid "Installed (%1 update)"
+#~ msgid_plural "Installed (%1 updates)"
+#~ msgstr[0] "Telepítve (%1 frissítés)"
+#~ msgstr[1] "Telepítve (%1 frissítés)"
+
+#~ msgid "Menu"
+#~ msgstr "Menü"
+
+#~ msgid "Origin enabled"
+#~ msgstr "Eredet engedélyezve"
+
+#~ msgid "©2010-2012 Jonathan Thomas"
+#~ msgstr "© Jonathan Thomas, 2010-2012."
+
+#~ msgid ""
+#~ "List all the backends we'll want to have loaded, separated by coma ','."
+#~ msgstr ""
+#~ "Az összes betöltendő háttérprogram listázása, vesszővel „,” elválasztva."
+
+#~ msgid "Close"
+#~ msgstr "Bezárás"
+
+#~ msgid ""
+#~ "<sourceline> - The apt repository source line to add. This is one of:\n"
+#~ msgstr ""
+#~ "<sourceline> - A hozzáadandó apt tároló forrássora, az alábbiak egyike:\n"
+
+#~ msgid "%1 (Binary)"
+#~ msgstr "%1 (bináris)"
+
+#~ msgid "%1. %2"
+#~ msgstr "%1. %2"
+
+#~ msgid "Popularity Contest"
+#~ msgstr "Népszerűségi felmérés"
+
+#~ msgid "<qt>%1<br/><em>%2</em></qt>"
+#~ msgstr "<qt>%1<br/><em>%2</em></qt>"
+
+#~ msgid "Apply"
+#~ msgstr "Alkalmazás"
+
+#~ msgid "%1 reviews"
+#~ msgstr "%1 vélemény"
+
+#~ msgid "Overview"
+#~ msgstr "Áttekintés"
+
+#~ msgid "Add-ons"
+#~ msgstr "Bővítmények"
+
+#~ msgid "<b>Reviews:</b>"
+#~ msgstr "<b>Vélemények:</b>"
+
+#~ msgid "<b>%1</b> by %2<p/>%3<br/>%4"
+#~ msgstr "<b>%1</b>, szerző: %2<p/>%3<br/>%4"
+
+#~ msgid "Adding Origins..."
+#~ msgstr "Eredetek hozzáadása…"
+
+#~ msgid "Removing Origins..."
+#~ msgstr "Eredetek eltávolítása…"
+
+#~ msgid "Ok"
+#~ msgstr "OK"
+
+#~ msgid "%1. <em>%2</em>"
+#~ msgstr "%1. <em>%2</em>"
+
+#~ msgid "Login"
+#~ msgstr "Bejelentkezés"
+
+#~ msgid "Register"
+#~ msgstr "Regisztráció"
+
+#~ msgid "Logout"
+#~ msgstr "Kijelentkezés"
+
+#~ msgid "Signed in as <em>%1</em>"
+#~ msgstr "Bejelentkezve <em>%1</em> néven"
+
+#~ msgid "Sign in is required"
+#~ msgstr "Bejelentkezés szükséges"
+
+#~ msgid "Upgrade"
+#~ msgstr "Frissítés"

@@ -1,0 +1,164 @@
+# Translation of plasma-discover-notifier.po to Catalan
+# Copyright (C) 2015-2022 This_file_is_part_of_KDE
+# This file is distributed under the license LGPL version 2.1 or
+# version 3 or later versions approved by the membership of KDE e.V.
+#
+# Josep M. Ferrer <txemaq@gmail.com>, 2015, 2018, 2019, 2020, 2022.
+# Antoni Bella Pérez <antonibella5@yahoo.com>, 2018, 2019, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-07-08 15:50+0200\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
+"Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Accelerator-Marker: &\n"
+"X-Generator: Lokalize 20.12.0\n"
+
+#: notifier/DiscoverNotifier.cpp:144
+#, kde-format
+msgid "View Updates"
+msgstr "Visualització de les actualitzacions"
+
+#: notifier/DiscoverNotifier.cpp:256
+#, kde-format
+msgid "Security updates available"
+msgstr "Actualitzacions de seguretat disponibles"
+
+#: notifier/DiscoverNotifier.cpp:258
+#, kde-format
+msgid "Updates available"
+msgstr "Actualitzacions disponibles"
+
+#: notifier/DiscoverNotifier.cpp:260
+#, kde-format
+msgid "System up to date"
+msgstr "El sistema està actualitzat"
+
+#: notifier/DiscoverNotifier.cpp:262
+#, kde-format
+msgid "Computer needs to restart"
+msgstr "Cal reiniciar l'ordinador"
+
+#: notifier/DiscoverNotifier.cpp:264
+#, kde-format
+msgid "Offline"
+msgstr "Desconnectat"
+
+#: notifier/DiscoverNotifier.cpp:266
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr "S'estan aplicant les actualitzacions desateses…"
+
+#: notifier/DiscoverNotifier.cpp:300
+#, kde-format
+msgid "Restart is required"
+msgstr "Cal reiniciar"
+
+#: notifier/DiscoverNotifier.cpp:301
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr "Cal reiniciar el sistema perquè les actualitzacions tinguin efecte."
+
+#: notifier/DiscoverNotifier.cpp:307
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart"
+msgstr "Reinicia"
+
+#: notifier/DiscoverNotifier.cpp:327
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "Actualitza"
+
+#: notifier/DiscoverNotifier.cpp:328
+#, kde-format
+msgid "Upgrade available"
+msgstr "Hi ha una actualització disponible"
+
+#: notifier/DiscoverNotifier.cpp:329
+#, kde-format
+msgid "New version: %1"
+msgstr "Versió nova: %1"
+
+#: notifier/main.cpp:39
+#, kde-format
+msgid "Discover Notifier"
+msgstr "Notificador del Discover"
+
+#: notifier/main.cpp:41
+#, kde-format
+msgid "System update status notifier"
+msgstr "Notificador de l'estat d'actualització del sistema"
+
+#: notifier/main.cpp:43
+#, kde-format
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2022, L'equip de desenvolupament del Plasma"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Josep M. Ferrer"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "txemaq@gmail.com"
+
+#: notifier/main.cpp:52
+#, kde-format
+msgid "Replace an existing instance"
+msgstr "Substitueix una instància existent"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "Do not show the notifier"
+msgstr "No mostris el notificador"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "hidden"
+msgstr "ocult"
+
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#, kde-format
+msgid "Updates"
+msgstr "Actualitzacions"
+
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Open Discover…"
+msgstr "Obre el Discover…"
+
+#: notifier/NotifierItem.cpp:55
+#, kde-format
+msgid "See Updates…"
+msgstr "Veure les actualitzacions…"
+
+#: notifier/NotifierItem.cpp:60
+#, kde-format
+msgid "Refresh…"
+msgstr "Actualitza…"
+
+#: notifier/NotifierItem.cpp:64
+#, kde-format
+msgid "Restart to apply installed updates"
+msgstr "Reinicieu per a aplicar les actualitzacions instal·lades"
+
+#: notifier/NotifierItem.cpp:65
+#, kde-format
+msgid "Click to restart the device"
+msgstr "Feu clic per a reiniciar el dispositiu"
+
+#~ msgid "Restart..."
+#~ msgstr "Reinicia..."

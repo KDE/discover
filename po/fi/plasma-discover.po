@@ -1,0 +1,1660 @@
+# KDE Finnish translation sprint participants:
+# Author: Artnay
+# Author: Lliehu
+# Lasse Liehu <lasse.liehu@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2022.
+# Tommi Nieminen <translator@legisign.org>, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: muon-discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:46+0000\n"
+"PO-Revision-Date: 2022-08-11 22:54+0300\n"
+"Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-POT-Import-Date: 2012-12-01 22:21:39+0000\n"
+"X-Generator: Lokalize 22.04.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: discover/DiscoverObject.cpp:156
+#, kde-format
+msgid ""
+"Discover currently cannot be used to install any apps or perform system "
+"updates because none of its app backends are available."
+msgstr ""
+"Discoveria ei voi juuri nyt käyttää sovellusten asennukseen tai "
+"järjestelmäpäivityksiin, koska yhtäkään sen taustaosaa ei ole käytettävissä."
+
+#: discover/DiscoverObject.cpp:160
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can install some on the Settings page, under the <interface>Missing "
+"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
+"as a packaging issue to your distribution."
+msgstr ""
+"Voit asentaa joitakin asetussivun <interface>Puuttuvat taustajärjestelmät</"
+"interface> -osiosta.<nl/><nl/>Harkitse myös tämän ilmoittamista jakelullesi "
+"paketointiongelmana."
+
+#: discover/DiscoverObject.cpp:165 discover/DiscoverObject.cpp:343
+#: discover/qml/UpdatesPage.qml:107
+#, kde-format
+msgid "Report This Issue"
+msgstr "Ilmoita ongelmasta"
+
+#: discover/DiscoverObject.cpp:170
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can use <command>pacman</command> to install the optional dependencies "
+"that are needed to enable the application backends.<nl/><nl/>Please note "
+"that Arch Linux developers recommend using <command>pacman</command> for "
+"managing software because the PackageKit backend is not well-integrated on "
+"Arch Linux."
+msgstr ""
+"<command>pacman</command>-komennolla voi asentaa sovelluksen "
+"taustajärjestelmien vaatimia valinnaisia riippuvuuksia.<nl/><nl/>Huomaa, "
+"että Arch Linuxin kehittäjät suosittelevat ohjelmistohallintaan "
+"<command>pacman</command>ia, koska PackageKit-taustajärjestelmää ei ole "
+"täysin integroitu Arch Linuxiin."
+
+#: discover/DiscoverObject.cpp:178
+#, kde-format
+msgid "Learn More"
+msgstr "Lisätietoa"
+
+#: discover/DiscoverObject.cpp:266
+#, kde-format
+msgid "Could not find category '%1'"
+msgstr "Luokkaa ”%1” ei löytynyt"
+
+#: discover/DiscoverObject.cpp:303
+#, kde-format
+msgid ""
+"Cannot interact with flatpak resources without the flatpak backend %1. "
+"Please install it first."
+msgstr ""
+"Flatpak-resursseja ei voi käyttää ilman Flatpak-taustaosaa %1. Asenna se "
+"ensin."
+
+#: discover/DiscoverObject.cpp:307
+#, kde-format
+msgid "Could not open %1"
+msgstr "Ei voitu avata: %1"
+
+#: discover/DiscoverObject.cpp:335
+#, kde-format
+msgid "Please make sure Snap support is installed"
+msgstr "Varmista, että Snap-tuki on asennettu"
+
+#: discover/DiscoverObject.cpp:337
+#, kde-format
+msgid ""
+"Could not open %1 because it was not found in any available software "
+"repositories."
+msgstr "%1: ei voida avata, koska ei löydy käytössä olevista ohjelmalähteistä."
+
+#: discover/DiscoverObject.cpp:340
+#, kde-format
+msgid "Please report this issue to the packagers of your distribution."
+msgstr "Ilmoita jakelusi paketoijille tästä ongelmasta."
+
+# HUOM! Tämä on ohjelman nimi!
+#: discover/DiscoverObject.cpp:405 discover/DiscoverObject.cpp:406
+#: discover/main.cpp:119
+#, kde-format
+msgid "Discover"
+msgstr "Discover"
+
+#: discover/DiscoverObject.cpp:406
+#, kde-format
+msgid ""
+"Discover was closed before certain tasks were done, waiting for it to finish."
+msgstr ""
+"Discover suljettiin joidenkin tehtävien ollessa kesken: odotetaan niiden "
+"valmistumista."
+
+#: discover/main.cpp:43
+#, kde-format
+msgid "Directly open the specified application by its appstream:// URI."
+msgstr "Avaa määräsovellus suoraan sen appstream://-URIn perusteella"
+
+#: discover/main.cpp:44
+#, kde-format
+msgid "Open with a search for programs that can deal with the given mimetype."
+msgstr ""
+"Avaa etsimällä ohjelmaa, joka osaa käsitellä annetun MIME-tyypin tiedostoja."
+
+#: discover/main.cpp:45
+#, kde-format
+msgid "Display a list of entries with a category."
+msgstr "Näyttää luettelon luokan sovelluksista."
+
+#: discover/main.cpp:46
+#, kde-format
+msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
+msgstr ""
+"Avaa Discover mainitussa tilassa. Tilat vastaavat työkalurivin painikkeita."
+
+#: discover/main.cpp:47
+#, kde-format
+msgid "List all the available modes."
+msgstr "Luettele kaikki käytettävissä olevat tilat."
+
+#: discover/main.cpp:48
+#, kde-format
+msgid "Compact Mode (auto/compact/full)."
+msgstr "Tiivis tila (automaattinen/tiivis/täysi)."
+
+#: discover/main.cpp:49
+#, kde-format
+msgid "Local package file to install"
+msgstr "Asennettava paikallinen pakettitiedosto"
+
+#: discover/main.cpp:50
+#, kde-format
+msgid "List all the available backends."
+msgstr "Luettele kaikki käytettävissä olevat taustajärjestelmät."
+
+#: discover/main.cpp:51
+#, kde-format
+msgid "Search string."
+msgstr "Hakujono."
+
+#: discover/main.cpp:52
+#, kde-format
+msgid "Lists the available options for user feedback"
+msgstr "Luettelee eri käyttäjäpalautemahdollisuudet"
+
+#: discover/main.cpp:54
+#, kde-format
+msgid "Supports appstream: url scheme"
+msgstr "Tukee appstream:-verkko-osoitemallia"
+
+#: discover/main.cpp:121
+#, kde-format
+msgid "An application explorer"
+msgstr "Sovellushaku"
+
+#: discover/main.cpp:123
+#, kde-format
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2022 Plasman kehitysryhmä"
+
+#: discover/main.cpp:124
+#, kde-format
+msgid "Aleix Pol Gonzalez"
+msgstr "Aleix Pol Gonzalez"
+
+#: discover/main.cpp:125
+#, kde-format
+msgid "Nate Graham"
+msgstr "Nate Graham"
+
+#: discover/main.cpp:126
+#, kde-format
+msgid "Quality Assurance, Design and Usability"
+msgstr "Laadunvalvonta, suunnittelu ja käytettävyys"
+
+#: discover/main.cpp:130
+#, kde-format
+msgid "Dan Leinir Turthra Jensen"
+msgstr "Dan Leinir Turthra Jensen"
+
+#: discover/main.cpp:131
+#, kde-format
+msgid "KNewStuff"
+msgstr "KNewStuff"
+
+#: discover/main.cpp:138
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Tommi Nieminen"
+
+#: discover/main.cpp:138
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "translator@legisign.org"
+
+#: discover/main.cpp:151
+#, kde-format
+msgid "Available backends:\n"
+msgstr "Käytettävissä olevat taustajärjestelmät:\n"
+
+#: discover/main.cpp:207
+#, kde-format
+msgid "Available modes:\n"
+msgstr "Käytettävissä olevat tilat:\n"
+
+#: discover/qml/AddonsView.qml:18 discover/qml/navigation.js:43
+#, kde-format
+msgid "Addons for %1"
+msgstr "Lisäosat – %1"
+
+#: discover/qml/AddonsView.qml:50
+#, kde-format
+msgid "More…"
+msgstr "Lisää…"
+
+#: discover/qml/AddonsView.qml:59
+#, kde-format
+msgid "Apply Changes"
+msgstr "Toteuta muutokset"
+
+#: discover/qml/AddonsView.qml:66
+#, kde-format
+msgid "Reset"
+msgstr "Palauta"
+
+# *** TARKISTA: Helpottaisi, kun tietäisi mitä %1 on!
+#: discover/qml/AddSourceDialog.qml:19
+#, kde-format
+msgid "Add New %1 Repository"
+msgstr "Lisää uusi %1-lähde"
+
+#: discover/qml/AddSourceDialog.qml:58
+#, kde-format
+msgid "Add"
+msgstr "Lisää"
+
+#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:263
+#: discover/qml/InstallApplicationButton.qml:41
+#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:181
+#: discover/qml/UpdatesPage.qml:247 discover/qml/WebflowDialog.qml:39
+#, kde-format
+msgid "Cancel"
+msgstr "Peru"
+
+#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationPage.qml:192
+#, kde-format
+msgid "%1 rating"
+msgid_plural "%1 ratings"
+msgstr[0] "%1 arvostelu"
+msgstr[1] "%1 arvostelua"
+
+#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationPage.qml:192
+#, kde-format
+msgid "No ratings yet"
+msgstr "Ei vielä arvosteluja"
+
+#: discover/qml/ApplicationPage.qml:59
+#, kde-format
+msgid "Sources"
+msgstr "Lähteet"
+
+#: discover/qml/ApplicationPage.qml:70
+#, kde-format
+msgid "%1 - %2"
+msgstr "%1 – %2"
+
+#: discover/qml/ApplicationPage.qml:174
+#, kde-format
+msgid "Unknown author"
+msgstr "Tuntematon tekijä"
+
+#: discover/qml/ApplicationPage.qml:253
+#, kde-format
+msgid "Version"
+msgstr "Versio"
+
+#: discover/qml/ApplicationPage.qml:280
+#: discover/qml/ApplicationsListPage.qml:109
+#, kde-format
+msgid "Size"
+msgstr "Koko"
+
+#: discover/qml/ApplicationPage.qml:307
+#, kde-format
+msgid "Distributed by"
+msgstr "Jakelija"
+
+#: discover/qml/ApplicationPage.qml:334
+#, kde-format
+msgid "License"
+msgid_plural "Licenses"
+msgstr[0] "Lisenssi"
+msgstr[1] "Lisenssit"
+
+#: discover/qml/ApplicationPage.qml:343
+#, kde-format
+msgctxt "The app does not provide any licenses"
+msgid "Unknown"
+msgstr "Tuntematon"
+
+#: discover/qml/ApplicationPage.qml:381
+#, kde-format
+msgid "What does this mean?"
+msgstr "Mitä tämä tarkoittaa?"
+
+#: discover/qml/ApplicationPage.qml:391
+#, kde-format
+msgid "See more…"
+msgid_plural "See more…"
+msgstr[0] "Lisää…"
+msgstr[1] "Lisää…"
+
+#: discover/qml/ApplicationPage.qml:409 discover/qml/ApplicationPage.qml:840
+#, fuzzy, kde-format
+#| msgid "Enter a rating"
+msgid "Content Rating"
+msgstr "Anna arvostelu"
+
+#: discover/qml/ApplicationPage.qml:419
+#, kde-format
+msgid "Age: %1+"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:443
+#, fuzzy, kde-format
+#| msgid "See more…"
+#| msgid_plural "See more…"
+msgctxt "@action"
+msgid "See details…"
+msgstr "Lisää…"
+
+#: discover/qml/ApplicationPage.qml:539
+#, kde-format
+msgid "Documentation"
+msgstr "Ohjeistus"
+
+#: discover/qml/ApplicationPage.qml:540
+#, kde-format
+msgid "Read the project's official documentation"
+msgstr "Lue projektin virallinen ohjeistus"
+
+#: discover/qml/ApplicationPage.qml:556
+#, kde-format
+msgid "Website"
+msgstr "Sivusto"
+
+#: discover/qml/ApplicationPage.qml:557
+#, kde-format
+msgid "Visit the project's website"
+msgstr "Käy sovelluksen verkkosivulla"
+
+#: discover/qml/ApplicationPage.qml:573
+#, kde-format
+msgid "Addons"
+msgstr "Lisäosat"
+
+#: discover/qml/ApplicationPage.qml:574
+#, kde-format
+msgid "Install or remove additional functionality"
+msgstr "Asenna tai poista lisäosia"
+
+#: discover/qml/ApplicationPage.qml:593
+#, kde-format
+msgctxt "Exports the application's URL to an external service"
+msgid "Share"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:594
+#, fuzzy, kde-format
+#| msgid "Unable to load applications"
+msgid "Send a link to the application"
+msgstr "Sovelluksia ei voi ladata"
+
+#: discover/qml/ApplicationPage.qml:610
+#, kde-format
+msgctxt "The subject line for an email. %1 is the name of an application"
+msgid "Check out the %1 app!"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:630
+#, kde-format
+msgid "What's New"
+msgstr "Mikä on uutta"
+
+#: discover/qml/ApplicationPage.qml:660
+#, kde-format
+msgid "Loading reviews for %1"
+msgstr "Ladataan arvosteluja: %1"
+
+#: discover/qml/ApplicationPage.qml:666
+#, kde-format
+msgid "Reviews"
+msgstr "Arvostelut"
+
+#: discover/qml/ApplicationPage.qml:696
+#, kde-format
+msgid "Show all %1 Reviews"
+msgid_plural "Show all %1 Reviews"
+msgstr[0] "Näytä %1 arvostelu"
+msgstr[1] "Näytä kaikki %1 arvostelua"
+
+#: discover/qml/ApplicationPage.qml:708
+#, kde-format
+msgid "Write a Review"
+msgstr "Kirjoita arvostelu"
+
+#: discover/qml/ApplicationPage.qml:708
+#, kde-format
+msgid "Install to Write a Review"
+msgstr "Asenna arvostellaksesi"
+
+#: discover/qml/ApplicationPage.qml:720
+#, kde-format
+msgid "Get Involved"
+msgstr "Osallistu toimintaan"
+
+#: discover/qml/ApplicationPage.qml:753
+#, kde-format
+msgid "Donate"
+msgstr "Lahjoita"
+
+#: discover/qml/ApplicationPage.qml:754
+#, kde-format
+msgid "Support and thank the developers by donating to their project"
+msgstr "Tue ja kiitä kehittäjiä lahjoittamalla projektiin"
+
+#: discover/qml/ApplicationPage.qml:770
+#, kde-format
+msgid "Report Bug"
+msgstr "Ilmoita viasta"
+
+#: discover/qml/ApplicationPage.qml:771
+#, kde-format
+msgid "Log an issue you found to help get it fixed"
+msgstr "Ilmoita havaitsemastasi ongelmasta, jotta se korjattaisiin"
+
+#: discover/qml/ApplicationPage.qml:785
+#, kde-format
+msgid "Contribute"
+msgstr "Osallistu"
+
+#: discover/qml/ApplicationPage.qml:786
+#, kde-format
+msgid "Help the developers by coding, designing, testing, or translating"
+msgstr ""
+"Auta kehittäjiä koodaamalla, suunnittelemalla, testaamalla tai kääntämällä"
+
+#: discover/qml/ApplicationPage.qml:813
+#, kde-format
+msgid "All Licenses"
+msgstr "Kaikki lisenssit"
+
+#: discover/qml/ApplicationPage.qml:852
+#, kde-format
+msgid "Risks of proprietary software"
+msgstr "Suljetun lähdekoodin vaarat"
+
+#: discover/qml/ApplicationPage.qml:862
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
+"learn more at <link url='%3'>%3</link>."
+msgstr ""
+"Tämän sovelluksen lähdekoodi on osin tai kokonaan suljettu julkiselta "
+"tarkastelulta ja parannuksilta. Kolmannet osapuolet tai kaltaisesi käyttäjät "
+"eivät näin voi tarkistaa sen toimintaa, tietoturvaa tai luotettavuutta "
+"eivätkä jakaa muokattua koodia ilman tekijöiden lupaa.<nl/><nl/>Sovellus voi "
+"olla täysin turvallinen käyttää tai se voi toimia sinua vastaan eri tavoin "
+"kuten keräämällä henkilökohtaisia tietojasi, jäljittämällä sijaintiasi tai "
+"välittämällä tiedostojesi sisältöä muille. Ei ole helppoa tapaa olla varma, "
+"joten sovellus tulisi asentaa vain, jos luotat täysin sen tekijöihin (<link "
+"url='%1'>%2</link>).<nl/><nl/>Lisätietoa: <link url='%3'>%3</link>."
+
+#: discover/qml/ApplicationPage.qml:863
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
+"url='%2'>%2</link>."
+msgstr ""
+"Tämän sovelluksen lähdekoodi on osin tai kokonaan suljettu julkiselta "
+"tarkastelulta ja parannuksilta. Kolmannet osapuolet tai kaltaisesi käyttäjät "
+"eivät näin voi tarkistaa sen toimintaa, tietoturvaa tai luotettavuutta "
+"eivätkä jakaa muokattua koodia ilman tekijöiden lupaa.<nl/><nl/>Sovellus voi "
+"olla täysin turvallinen käyttää tai se voi toimia sinua vastaan eri tavoin "
+"kuten keräämällä henkilökohtaisia tietojasi, jäljittämällä sijaintiasi tai "
+"välittämällä tiedostojesi sisältöä muille. Ei ole helppoa tapaa olla varma, "
+"joten sovellus tulisi asentaa vain, jos luotat täysin sen tekijöihin (%1)."
+"<nl/><nl/>Lisätietoa: <link url='%2'>%2</link>."
+
+#: discover/qml/ApplicationsListPage.qml:53
+#, kde-format
+msgid "Search: %1 - %2 items"
+msgstr "Etsi: %1–%2 kohdetta"
+
+#: discover/qml/ApplicationsListPage.qml:55
+#, kde-format
+msgid "Search: %1"
+msgstr "Etsi: %1"
+
+#: discover/qml/ApplicationsListPage.qml:59
+#, kde-format
+msgid "%1 - %2 items"
+msgstr "%1–%2 kohdetta"
+
+#: discover/qml/ApplicationsListPage.qml:65
+#, kde-format
+msgid "Search - %1 items"
+msgstr "Etsi – %1 kohdetta"
+
+#: discover/qml/ApplicationsListPage.qml:67
+#: discover/qml/ApplicationsListPage.qml:207
+#, kde-format
+msgid "Search"
+msgstr "Etsi"
+
+#: discover/qml/ApplicationsListPage.qml:88
+#, kde-format
+msgid "Sort: %1"
+msgstr "Lajittelu: %1"
+
+#: discover/qml/ApplicationsListPage.qml:91
+#, kde-format
+msgid "Name"
+msgstr "Nimi"
+
+#: discover/qml/ApplicationsListPage.qml:100
+#, kde-format
+msgid "Rating"
+msgstr "Arvostelu"
+
+#: discover/qml/ApplicationsListPage.qml:118
+#, kde-format
+msgid "Release Date"
+msgstr "Julkaisuaika"
+
+#: discover/qml/ApplicationsListPage.qml:173
+#, kde-format
+msgid "Nothing found"
+msgstr "Mitään ei löytynyt"
+
+#: discover/qml/ApplicationsListPage.qml:185
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid "\"%1\" was not found in the available sources"
+msgstr "Sovellusta ”%1” ei löytynyt käytettävissä olevista lähteistä"
+
+#: discover/qml/ApplicationsListPage.qml:186
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid ""
+"\"%1\" may be available on the web. Software acquired from the web has not "
+"been reviewed by your distributor for functionality or stability. Use with "
+"caution."
+msgstr ""
+"”%1” voi olla saatavilla verkosta. Jakelusi ei ole tarkistanut verkosta "
+"ladattavien ohjelmien toiminnallisuutta ja vakautta. Käytä niitä varoen."
+
+#: discover/qml/ApplicationsListPage.qml:188
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid "Search the web for \"%1\""
+msgstr "Etsi ”%1” verkosta"
+
+#: discover/qml/ApplicationsListPage.qml:192
+#, kde-format
+msgctxt ""
+"If appropriate, localize this URL to be something more relevant to the "
+"language. %1 is the text that will be searched for."
+msgid "https://duckduckgo.com/?q=%1"
+msgstr "https://duckduckgo.com/?q=%1"
+
+#: discover/qml/ApplicationsListPage.qml:222
+#, kde-format
+msgid "Still looking…"
+msgstr "Etsitään yhä…"
+
+#: discover/qml/BrowsingPage.qml:18
+#, kde-format
+msgid "Featured"
+msgstr "Esitellyt"
+
+#: discover/qml/BrowsingPage.qml:43
+#, kde-format
+msgid "Unable to load applications"
+msgstr "Sovelluksia ei voi ladata"
+
+#: discover/qml/BrowsingPage.qml:76
+#, kde-format
+msgid "Updates are available"
+msgstr "Päivityksiä saatavilla"
+
+#: discover/qml/BrowsingPage.qml:80
+#, kde-format
+msgctxt "Short for 'show updates'"
+msgid "Show"
+msgstr "Näytä"
+
+#: discover/qml/DiscoverWindow.qml:42
+#, kde-format
+msgid "Running as <em>root</em> is discouraged and unnecessary."
+msgstr ""
+"Ohjelman suorittamista <em>pääkäyttäjänä</em> ei suositella, ja se on "
+"tarpeetonta."
+
+#: discover/qml/DiscoverWindow.qml:54
+#, kde-format
+msgid "&Home"
+msgstr "&Koti"
+
+#: discover/qml/DiscoverWindow.qml:64
+#, kde-format
+msgid "&Search"
+msgstr "&Etsi"
+
+# Viittaa asennettuijen ohjelmien luetteloon.
+#: discover/qml/DiscoverWindow.qml:72
+#, kde-format
+msgid "&Installed"
+msgstr "&Asennetut"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgid "Fetching &updates…"
+msgstr "&Noudetaan päivityksiä…"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgid "&Up to date"
+msgstr "&Ajan tasalla"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgctxt "Update section name"
+msgid "&Update (%1)"
+msgstr "Päi&vitä (%1)"
+
+#: discover/qml/DiscoverWindow.qml:86
+#, kde-format
+msgid "&About"
+msgstr "&Tietoa"
+
+#: discover/qml/DiscoverWindow.qml:94
+#, kde-format
+msgid "S&ettings"
+msgstr "A&setukset"
+
+#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:337
+#, kde-format
+msgid "Error"
+msgstr "Virhe"
+
+#: discover/qml/DiscoverWindow.qml:148
+#, kde-format
+msgid "Unable to find resource: %1"
+msgstr "Resurssia ei löydy: %1"
+
+#: discover/qml/DiscoverWindow.qml:250 discover/qml/SourcesPage.qml:171
+#, kde-format
+msgid "Proceed"
+msgstr "Jatka"
+
+#: discover/qml/DiscoverWindow.qml:307
+#, kde-format
+msgid "Report this issue"
+msgstr "Ilmoita tästä ongelmasta"
+
+#: discover/qml/Feedback.qml:12
+#, kde-format
+msgid "Submit usage information"
+msgstr "Lähetä käyttötiedot"
+
+#: discover/qml/Feedback.qml:13
+#, kde-format
+msgid ""
+"Sends anonymized usage information to KDE so we can better understand our "
+"users. For more information see https://kde.org/privacypolicy-apps.php."
+msgstr ""
+"Lähettää KDE:lle nimettömät käyttötiedot, jotta saamme paremmin tietoa "
+"käyttäjistämme. Lisätietoa: https://kde.org/privacypolicy-apps.php.Lähettää "
+"KDE:lle nimettömät käyttötiedot, jotta saamme paremmin tietoa "
+"käyttäjistämme. Lisätietoa: https://kde.org/privacypolicy-apps.php."
+
+#: discover/qml/Feedback.qml:17
+#, kde-format
+msgid "Submitting usage information…"
+msgstr "Lähetetään käyttötietoja…"
+
+#: discover/qml/Feedback.qml:17
+#, kde-format
+msgid "Configure"
+msgstr "Asetukset"
+
+#: discover/qml/Feedback.qml:21
+#, kde-format
+msgid "Configure feedback…"
+msgstr "Määritä palauteasetukset…"
+
+#: discover/qml/Feedback.qml:28 discover/qml/SourcesPage.qml:19
+#, kde-format
+msgid "Configure Updates…"
+msgstr "Päivitysasetukset…"
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid ""
+"You can help us improving this application by sharing statistics and "
+"participate in surveys."
+msgstr ""
+"Voit auttaa meitä parantamaan tätä sovellusta jakamalla tilastoja ja "
+"osallistumalla kyselyihin.Voit auttaa meitä parantamaan tätä sovellusta "
+"jakamalla tilastoja ja osallistumalla kyselyihin."
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid "Contribute…"
+msgstr "Avusta…"
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "We are looking for your feedback!"
+msgstr "Odotamme palautettasi!"
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "Participate…"
+msgstr "Osallistu…"
+
+#: discover/qml/InstallApplicationButton.qml:25
+#, kde-format
+msgctxt "State being fetched"
+msgid "Loading…"
+msgstr "Ladataan…"
+
+#: discover/qml/InstallApplicationButton.qml:28
+#, kde-format
+msgid "Install"
+msgstr "Asenna"
+
+#: discover/qml/InstallApplicationButton.qml:30
+#, kde-format
+msgid "Remove"
+msgstr "Poista"
+
+# Viittaa asennettuijen ohjelmien luetteloon.
+#: discover/qml/InstalledPage.qml:15
+#, kde-format
+msgid "Installed"
+msgstr "Asennetut"
+
+#: discover/qml/navigation.js:19
+#, kde-format
+msgid "Resources for '%1'"
+msgstr "Resurssit: %1"
+
+#: discover/qml/ProgressView.qml:17
+#, kde-format
+msgid "Tasks (%1%)"
+msgstr "Tehtävät (%1 %)"
+
+#: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:40
+#, kde-format
+msgid "Tasks"
+msgstr "Tehtävät"
+
+#: discover/qml/ProgressView.qml:97
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed, remaining time"
+msgid "%1 - %2: %3, %4 remaining"
+msgstr "%1 – %2: %3, %4 jäljellä"
+
+#: discover/qml/ProgressView.qml:98
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed"
+msgid "%1 - %2: %3"
+msgstr "%1 – %2: %3"
+
+#: discover/qml/ProgressView.qml:99
+#, kde-format
+msgctxt "TransactioName - TransactionStatus"
+msgid "%1 - %2"
+msgstr "%1 – %2"
+
+#: discover/qml/ReviewDelegate.qml:61
+#, kde-format
+msgid "unknown reviewer"
+msgstr "tuntematon tarkastaja"
+
+#: discover/qml/ReviewDelegate.qml:62
+#, kde-format
+msgid "<b>%1</b> by %2"
+msgstr "<b>%1</b> tekijältä %2"
+
+#: discover/qml/ReviewDelegate.qml:62
+#, kde-format
+msgid "Comment by %1"
+msgstr "Kommentti käyttäjältä %1"
+
+#: discover/qml/ReviewDelegate.qml:80
+#, kde-format
+msgid "Version: %1"
+msgstr "Versio: %1"
+
+#: discover/qml/ReviewDelegate.qml:80
+#, kde-format
+msgid "Version: unknown"
+msgstr "Versio: tuntematon"
+
+#: discover/qml/ReviewDelegate.qml:95
+#, kde-format
+msgid "Votes: %1 out of %2"
+msgstr "Äänet: %1 / %2"
+
+#: discover/qml/ReviewDelegate.qml:102
+#, kde-format
+msgid "Was this review useful?"
+msgstr "Oliko tästä arvostelusta hyötyä?"
+
+#: discover/qml/ReviewDelegate.qml:114
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "Yes"
+msgstr "Kyllä"
+
+#: discover/qml/ReviewDelegate.qml:131
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "No"
+msgstr "Ei"
+
+# @title:window
+#: discover/qml/ReviewDialog.qml:20
+#, kde-format
+msgid "Reviewing %1"
+msgstr "%1 – arvosteleminen"
+
+#: discover/qml/ReviewDialog.qml:29
+#, kde-format
+msgid "Rating:"
+msgstr "Arvostelu:"
+
+#: discover/qml/ReviewDialog.qml:34
+#, kde-format
+msgid "Name:"
+msgstr "Nimi:"
+
+#: discover/qml/ReviewDialog.qml:42
+#, kde-format
+msgid "Title:"
+msgstr "Otsikko:"
+
+#: discover/qml/ReviewDialog.qml:60
+#, kde-format
+msgid "Enter a rating"
+msgstr "Anna arvostelu"
+
+#: discover/qml/ReviewDialog.qml:61
+#, kde-format
+msgid "Write the title"
+msgstr "Kirjoita otsikko"
+
+#: discover/qml/ReviewDialog.qml:62
+#, kde-format
+msgid "Write the review"
+msgstr "Kirjoita arvostelu"
+
+#: discover/qml/ReviewDialog.qml:63
+#, kde-format
+msgid "Keep writing…"
+msgstr "Jatka kirjoittamista…"
+
+#: discover/qml/ReviewDialog.qml:64
+#, kde-format
+msgid "Too long!"
+msgstr "Liian pitkä!"
+
+#: discover/qml/ReviewDialog.qml:65
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Insert a name"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:79
+#, kde-format
+msgid "Submit review"
+msgstr "Lähetä arvostelu"
+
+#: discover/qml/ReviewsPage.qml:43
+#, kde-format
+msgid "Reviews for %1"
+msgstr "Arvostelut: %1"
+
+#: discover/qml/ReviewsPage.qml:54
+#, kde-format
+msgid "Write a Review…"
+msgstr "Kirjoita arvostelu…"
+
+#: discover/qml/ReviewsPage.qml:59
+#, kde-format
+msgid "Install this app to write a review"
+msgstr "Asenna sovellus arvostellaksesi sen"
+
+#: discover/qml/SearchField.qml:24
+#, kde-format
+msgid "Search…"
+msgstr "Etsi…"
+
+#: discover/qml/SearchField.qml:24
+#, kde-format
+msgid "Search in '%1'…"
+msgstr "Etsi luokasta ”%1”…"
+
+#: discover/qml/SourcesPage.qml:13
+#, kde-format
+msgid "Settings"
+msgstr "Asetukset"
+
+#: discover/qml/SourcesPage.qml:95
+#, kde-format
+msgid "Default source"
+msgstr "Oletuslähde"
+
+#: discover/qml/SourcesPage.qml:102
+#, kde-format
+msgid "Add Source…"
+msgstr "Lisää lähde…"
+
+#: discover/qml/SourcesPage.qml:126
+#, kde-format
+msgid "Make default"
+msgstr "Aseta oletukseksi"
+
+#: discover/qml/SourcesPage.qml:212
+#, kde-format
+msgid "Increase priority"
+msgstr "Nosta etusijaisuutta"
+
+#: discover/qml/SourcesPage.qml:218
+#, kde-format
+msgid "Failed to increase '%1' preference"
+msgstr "Ei voitu lisätä suositummuutta: %1"
+
+#: discover/qml/SourcesPage.qml:223
+#, kde-format
+msgid "Decrease priority"
+msgstr "Laske etusijaisuutta"
+
+#: discover/qml/SourcesPage.qml:229
+#, kde-format
+msgid "Failed to decrease '%1' preference"
+msgstr "Ei voitu vähentää suositummuutta: %1"
+
+#: discover/qml/SourcesPage.qml:234
+#, kde-format
+msgid "Remove repository"
+msgstr "Poista asennuslähde"
+
+#: discover/qml/SourcesPage.qml:245
+#, kde-format
+msgid "Show contents"
+msgstr "Näytä sisältö"
+
+#: discover/qml/SourcesPage.qml:284
+#, kde-format
+msgid "Missing Backends"
+msgstr "Puuttuvat taustajärjestelmät"
+
+#: discover/qml/UpdatesPage.qml:12
+#, kde-format
+msgid "Updates"
+msgstr "Päivitykset"
+
+#: discover/qml/UpdatesPage.qml:45
+#, kde-format
+msgid "Update Issue"
+msgstr "Päivitysongelma"
+
+#: discover/qml/UpdatesPage.qml:45
+#, kde-format
+msgid "Technical details"
+msgstr "Tekniset tiedot"
+
+#: discover/qml/UpdatesPage.qml:61
+#, kde-format
+msgid "There was an issue installing this update. Please try again later."
+msgstr "Päivityksen asentamisessa esiintyi ongelma. Yritä myöhemmin uudelleen."
+
+#: discover/qml/UpdatesPage.qml:67
+#, kde-format
+msgid "See Technical Details"
+msgstr "Näytä tekniset tiedot"
+
+#: discover/qml/UpdatesPage.qml:83
+#, kde-format
+msgid ""
+"If you would like to report the update issue to your distribution's "
+"packagers, include this information:"
+msgstr ""
+"Jos haluat ilmoittaa päivitysongelmasta jakelusi paketoijille, mainitse nämä "
+"tiedot:"
+
+#: discover/qml/UpdatesPage.qml:98
+#, kde-format
+msgid "Copy to Clipboard"
+msgstr "Kopioi leikepöydälle"
+
+#: discover/qml/UpdatesPage.qml:102
+#, kde-format
+msgid "Error message copied to clipboard"
+msgstr "Virheviesti kopioitu leikepöydälle"
+
+#: discover/qml/UpdatesPage.qml:134
+#, kde-format
+msgid "Update Selected"
+msgstr "Päivitä valitut"
+
+#: discover/qml/UpdatesPage.qml:134
+#, kde-format
+msgid "Update All"
+msgstr "Päivitä kaikki"
+
+#: discover/qml/UpdatesPage.qml:168
+#, kde-format
+msgid "Ignore"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:214
+#, kde-format
+msgid "Select All"
+msgstr "Valitse kaikki"
+
+#: discover/qml/UpdatesPage.qml:222
+#, kde-format
+msgid "Select None"
+msgstr "Poista valinnat"
+
+#: discover/qml/UpdatesPage.qml:229
+#, kde-format
+msgid "Restart automatically after update has completed"
+msgstr "Käynnistä uudelleen automaattisesti päivityksen valmistuttua"
+
+#: discover/qml/UpdatesPage.qml:236
+#, kde-format
+msgid "Total size: %1"
+msgstr "Koko kaikkiaan: %1"
+
+#: discover/qml/UpdatesPage.qml:272
+#, kde-format
+msgid "Restart Now"
+msgstr "Käynnistä uudelleen nyt"
+
+#: discover/qml/UpdatesPage.qml:371
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+#: discover/qml/UpdatesPage.qml:387
+#, kde-format
+msgid "Installing"
+msgstr "Asennetaan"
+
+#: discover/qml/UpdatesPage.qml:422
+#, kde-format
+msgid "Update from:"
+msgstr "Päivitä lähteestä:"
+
+#: discover/qml/UpdatesPage.qml:434
+#, kde-format
+msgctxt ""
+"%1 is the backend that provides this app, %2 is the specific repository or "
+"address within that backend"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: discover/qml/UpdatesPage.qml:441
+#, kde-format
+msgid "More Information…"
+msgstr "Lisätietoa…"
+
+#: discover/qml/UpdatesPage.qml:469
+#, kde-format
+msgctxt "@info"
+msgid "Fetching updates…"
+msgstr "Noudetaan päivityksiä…"
+
+#: discover/qml/UpdatesPage.qml:482
+#, kde-format
+msgctxt "@info"
+msgid "Updates"
+msgstr "Päivitykset"
+
+#: discover/qml/UpdatesPage.qml:492
+#, kde-format
+msgctxt "@info"
+msgid "Restart the system to complete the update process"
+msgstr "Viimeistele päivitys käynnistämällä järjestelmä uudelleen"
+
+#: discover/qml/UpdatesPage.qml:504 discover/qml/UpdatesPage.qml:511
+#: discover/qml/UpdatesPage.qml:518
+#, kde-format
+msgctxt "@info"
+msgid "Up to date"
+msgstr "Ajan tasalla"
+
+#: discover/qml/UpdatesPage.qml:525
+#, kde-format
+msgctxt "@info"
+msgid "Should check for updates"
+msgstr "Päivitykset tulisi tarkistaa"
+
+#: discover/qml/UpdatesPage.qml:532
+#, kde-format
+msgctxt "@info"
+msgid "Time of last update unknown"
+msgstr "Viimeisin päivitysaika ei ole tiedossa"
+
+#, fuzzy
+#~| msgid "More..."
+#~ msgid "Show more..."
+#~ msgstr "Lisää…"
+
+#~ msgid "proprietary"
+#~ msgstr "suljettu lähdekoodi"
+
+#~ msgid "Could not close Discover because some tasks are still in progress."
+#~ msgstr "Discoveria ei voitu sulkea, koska tehtäviä on vielä kesken."
+
+#~ msgid "Quit Anyway"
+#~ msgstr "Lopeta silti"
+
+#~ msgid "Loading…"
+#~ msgstr "Ladataan…"
+
+#~ msgid "Return to the Featured page"
+#~ msgstr "Palaa Esitellyt-sivulle"
+
+#~ msgid "Category:"
+#~ msgstr "Luokka:"
+
+#~ msgid "Author:"
+#~ msgstr "Tekijä:"
+
+#~ msgid "Size:"
+#~ msgstr "Koko:"
+
+#~ msgid "Source:"
+#~ msgstr "Lähde:"
+
+#~ msgid "See full license terms"
+#~ msgstr "Katso kaikki käyttöehdot"
+
+#~ msgid "Read the user guide"
+#~ msgstr "Lue käyttöopas"
+
+#~ msgid "Make a donation"
+#~ msgstr "Lahjoita"
+
+#~ msgid "Report a problem"
+#~ msgstr "Ilmoita ongelmasta"
+
+#~ msgid "%1 (Default)"
+#~ msgstr "%1 (oletus)"
+
+#~ msgid "Extensions…"
+#~ msgstr "Laajennukset…"
+
+#~ msgid "Please verify Internet connectivity"
+#~ msgstr "Tarkista verkkoyhteytesi"
+
+#~ msgid "All updates selected (%1)"
+#~ msgstr "Kaikki päivitykset valittu (%1)"
+
+#~ msgid "%1/%2 update selected (%3)"
+#~ msgid_plural "%1/%2 updates selected (%3)"
+#~ msgstr[0] "%1/%2 päivitys valittu (%3)"
+#~ msgstr[1] "%1/%2 päivitystä valittu (%3)"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgctxt "Part of a string like this: '<app name> - <category>'"
+#~ msgid "- %1"
+#~ msgstr "– %1"
+
+#~ msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
+#~ msgid "Install from %1"
+#~ msgstr "Asenna lähteestä %1"
+
+#~ msgctxt "@info"
+#~ msgid "The updates will be installed the next time the system is restarted"
+#~ msgstr ""
+#~ "Päivitykset asennetaan, kun järjestelmä seuraavan kerran käynnistetään"
+
+#~ msgctxt "@info"
+#~ msgid "The system must be restarted to fully apply the installed updates"
+#~ msgstr ""
+#~ "Järjestelmä on käynnistettävä uudelleen, jotta päivitykset tulevat täysin "
+#~ "voimaan"
+
+#~ msgid "%1, released on %2"
+#~ msgstr "%1, julkaistu %2"
+
+#~ msgctxt "State being fetched"
+#~ msgid "Loading..."
+#~ msgstr "Ladataan…"
+
+#~ msgid "Write a Review..."
+#~ msgstr "Kirjoita arvostelu…"
+
+#~ msgid "Search..."
+#~ msgstr "Etsi…"
+
+#~ msgctxt "@info"
+#~ msgid "It is unknown when the last check for updates was"
+#~ msgstr "Ei tiedetä, milloin päivitykset on viimeksi tarkistettu"
+
+#~ msgid "No application back-ends found, please report to your distribution."
+#~ msgstr "Sovellustaustaosia ei löytynyt: ota yhteyttä jakelusi valmistajaan."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Unable to load applications.<nl/>Please verify Internet connectivity."
+#~ msgstr "Sovelluksia ei voi ladata.<nl/>Tarkista internetyhteys."
+
+#~ msgid "Sorry..."
+#~ msgstr "Pahoittelut…"
+
+#~ msgid "Useful?"
+#~ msgstr "Hyödyllinen?"
+
+#~ msgid "Update to version %1"
+#~ msgstr "Päivitä versioon %1"
+
+#~ msgctxt "Do not translate or alter \\x9C"
+#~ msgid "%1 → %2%1 → %2%2"
+#~ msgstr "%1 → %2%1 → %2%2"
+
+#~ msgid "Delete the origin"
+#~ msgstr "Poista lähde"
+
+#~ msgid "Write a review!"
+#~ msgstr "Kirjoita arvostelu!"
+
+#~ msgid "Be the first to write a review!"
+#~ msgstr "Kirjoita ensimmäisenä arvostelu!"
+
+#~ msgid "Install and be the first to write a review!"
+#~ msgstr "Asenna ja ole ensimmainen arvioija!"
+
+#~ msgid "Jonathan Thomas"
+#~ msgstr "Jonathan Thomas"
+
+#~ msgid "Discard"
+#~ msgstr "Hylkää"
+
+#~ msgid "Hide"
+#~ msgstr "Piilota"
+
+#~ msgid "Homepage:"
+#~ msgstr "Kotisivu:"
+
+#~ msgid "User Guide:"
+#~ msgstr "Käyttöopas:"
+
+#~ msgid "Failed to remove the source '%1'"
+#~ msgstr "Lähteen ”%1” poisto epäonnistui"
+
+#~ msgid "Fetching Updates..."
+#~ msgstr "Noudetaan päivityksiä…"
+
+#~ msgid "Up to Date"
+#~ msgstr "Ajan tasalla"
+
+#~ msgctxt "@info"
+#~ msgid "Fetching Updates..."
+#~ msgstr "Noudetaan päivityksiä…"
+
+#~ msgctxt "@info"
+#~ msgid "Up to Date"
+#~ msgstr "Ajan tasalla"
+
+#~ msgid "<em>Tell us about this review!</em>"
+#~ msgstr "<em>Kerro meille tästä arvostelusta!</em>"
+
+#~ msgid "<em>%1 out of %2 people found this review useful</em>"
+#~ msgstr "<em>%1/%2 ihmisen mielestä tämä arvostelu on hyödyllinen</em>"
+
+#~ msgid ""
+#~ "<em>Useful? <a href='true'><b>Yes</b></a>/<a href='false'>No</a></em>"
+#~ msgstr ""
+#~ "<em>Hyödyllinen? <a href='true'><b>Kyllä</b></a>/<a href='false'>Ei</a></"
+#~ "em>"
+
+#~ msgid ""
+#~ "<em>Useful? <a href='true'>Yes</a>/<a href='false'><b>No</b></a></em>"
+#~ msgstr ""
+#~ "<em>Hyödyllinen? <a href='true'>Kyllä</a>/<a href='false'><b>Ei</b></a></"
+#~ "em>"
+
+#~ msgid "<em>Useful? <a href='true'>Yes</a>/<a href='false'>No</a></em>"
+#~ msgstr ""
+#~ "<em>Hyödyllinen? <a href='true'>Kyllä</a>/<a href='false'>Ei</a></em>"
+
+#~ msgctxt "@info"
+#~ msgid "Submission name:<nl/>%1"
+#~ msgstr "Lähetyksen nimi:<nl/>%1"
+
+#~ msgid "Review:"
+#~ msgstr "Arvostelu:"
+
+#~ msgid "Review..."
+#~ msgstr "Arvostelu…"
+
+#~ msgid "Checking for updates..."
+#~ msgstr "Tarkistetaan päivityksiä…"
+
+#~ msgid "No Updates"
+#~ msgstr "Ei päivityksiä"
+
+#~ msgctxt "@info"
+#~ msgid "Fetching..."
+#~ msgstr "Noudetaan…"
+
+#~ msgctxt "@info"
+#~ msgid "Checking for updates..."
+#~ msgstr "Tarkistetaan päivityksiä…"
+
+#~ msgctxt "@info"
+#~ msgid "Updating..."
+#~ msgstr "Päivitetään…"
+
+#~ msgctxt "@info"
+#~ msgid "The system is up to date"
+#~ msgstr "Järjestelmä on ajan tasalla"
+
+#~ msgctxt "@info"
+#~ msgid "No updates"
+#~ msgstr "Ei päivityksiä"
+
+#~ msgctxt "@info"
+#~ msgid "Reboot"
+#~ msgstr "Käynnistä uudelleen"
+
+#~ msgid "updates not selected"
+#~ msgstr "päivitystä ei valittu"
+
+#~ msgid "%1 ⮕ %2"
+#~ msgstr "%1 ⮕ %2"
+
+#~ msgid ""
+#~ "<ul><li>KDE Frameworks %1</li><li>Qt %2 (built against %3)</li><li>The "
+#~ "<em>%4</em> windowing system</li></ul>"
+#~ msgstr ""
+#~ "<ul><li>KDE Frameworks %1</li><li>Qt %2 (koostettu kirjastolla %3)</"
+#~ "li><li>Ikkunointijärjestelmä <em>%4</em></li></ul>"
+
+#~ msgid "Libraries"
+#~ msgstr "Kirjastot"
+
+#~ msgid "Authors"
+#~ msgstr "Tekijät"
+
+#~ msgid "Please use <a href=\"%1\">%2</a> to report bugs.\n"
+#~ msgstr "Ilmoita ohjelmavirheistä sivulla <a href=\"%1\">%2</a>.\n"
+
+#~ msgid "%1 <%2>"
+#~ msgstr "%1 <%2>"
+
+#~ msgid "Help"
+#~ msgstr "Ohje"
+
+#~ msgid "Copy link address"
+#~ msgstr "Kopioi linkin osoite"
+
+#~ msgctxt "@info"
+#~ msgid "Looking for updates"
+#~ msgstr "Etsitään päivityksiä"
+
+#~ msgctxt "TransactioName TransactionStatus"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgid ""
+#~ "\n"
+#~ "Also available in %1"
+#~ msgstr ""
+#~ "\n"
+#~ "Saatavilla myös luokassa %1"
+
+#~ msgid "Summary:"
+#~ msgstr "Yhteenveto:"
+
+#~ msgid "Comment too short"
+#~ msgstr "Liian lyhyt kommentti"
+
+#~ msgid "Improve summary"
+#~ msgstr "Paranna yhteenvetoa"
+
+#~ msgid "Back"
+#~ msgstr "Takaisin"
+
+#~ msgid "Launch"
+#~ msgstr "Käynnistä"
+
+#~ msgid "Accept"
+#~ msgstr "Hyväksy"
+
+#~ msgid "Browse the origin's resources"
+#~ msgstr "Selaa lähteen resursseja"
+
+#~ msgid "Description"
+#~ msgstr "Kuvaus"
+
+#~ msgid "Application Sources"
+#~ msgstr "Sovelluslähteet"
+
+#~ msgid ""
+#~ "Allows to choose the source that will be used for browsing applications"
+#~ msgstr "Antaa valita lähteen, jota sovellusten selaamiseen käytetään"
+
+#~ msgid "Open"
+#~ msgstr "Avaa"
+
+#~ msgid "Close Description"
+#~ msgstr "Sulje kuvaus"
+
+#~ msgid "Got it"
+#~ msgstr "Selvä"
+
+#, fuzzy
+#~| msgid "%1 (%2)"
+#~ msgid "Origin: %1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgid "Most Popular"
+#~ msgstr "Suosituimmat"
+
+#~ msgctxt "@info"
+#~ msgid "Loading..."
+#~ msgstr "Ladataan…"
+
+#~ msgid ""
+#~ "Discover\n"
+#~ "all the possibilities!"
+#~ msgstr ""
+#~ "Löydä\n"
+#~ "kaikki mahdollisuudet!"
+
+#~ msgid ""
+#~ "<p style='margin: 0 0 0 0'><b>%1</b> by %2</p><p style='margin: 0 0 0 0'>"
+#~ "%3</p><p style='margin: 0 0 0 0'>%4</p>"
+#~ msgstr ""
+#~ "<p style='margin: 0 0 0 0'><b>%1</b> by %2</p><p style='margin: 0 0 0 0'>"
+#~ "%3</p><p style='margin: 0 0 0 0'>%4</p>"
+
+#~ msgid "Details"
+#~ msgstr "Tiedot"
+
+#~ msgid "Popularity"
+#~ msgstr "Suosio"
+
+#~ msgid "Buzz"
+#~ msgstr "Kuhina"
+
+#~ msgid "Origin"
+#~ msgstr "Lähde"
+
+#~ msgid "List"
+#~ msgstr "Luettelo"
+
+#~ msgid "Grid"
+#~ msgstr "Ruudukko"
+
+#~ msgid "All"
+#~ msgstr "Kaikki"
+
+#~ msgid "%1 item"
+#~ msgid_plural "%1 items"
+#~ msgstr[0] "%1 kohde"
+#~ msgstr[1] "%1 kohdetta"
+
+#~ msgid "items installed"
+#~ msgstr "asennettua"
+
+#~ msgid "%1 job pending..."
+#~ msgid_plural "%1 jobs pending..."
+#~ msgstr[0] "%1 työ odottamassa…"
+#~ msgstr[1] "%1 työtä odottamassa…"
+
+#~ msgid "System Update"
+#~ msgstr "Järjestelmäpäivitys"
+
+#~ msgctxt "@info"
+#~ msgid "Last checked %1 ago."
+#~ msgstr "Viimeksi tarkistettu %1 sitten."
+
+#~ msgctxt "@info"
+#~ msgid "The last check for updates was over a week ago."
+#~ msgstr "Päivitykset on tarkistettu viimeksi yli viikko sitten."
+
+#~ msgctxt "@info"
+#~ msgid "Please click <em>Check for Updates</em> to check."
+#~ msgstr "Tarkista painamalla <em>Tarkista päivitykset</em>."
+
+#~ msgid "Advanced..."
+#~ msgstr "Lisäasetukset…"
+
+#~ msgid ""
+#~ "Found some errors while setting up the GUI, the application can't proceed."
+#~ msgstr ""
+#~ "Käyttöliittymän valmistelemisessa tapahtui virhe. Sovellus ei voi jatkaa."
+
+#~ msgid "Initialization error"
+#~ msgstr "Alustusvirhe"
+
+#~ msgid "Hola"
+#~ msgstr "Hola"
+
+# pmap: =:gen=Muon Discoverin:
+# pmap: =:elat=Muon Discoverista:
+#~ msgid "Muon Discover"
+#~ msgstr "Muon Discover"
+
+#~ msgid ""
+#~ "Welcome to\n"
+#~ "Muon Discover!"
+#~ msgstr ""
+#~ "Tervetuloa\n"
+#~ "Muon Discoveriin!"
+
+#~ msgid "Configure and learn about Muon Discover"
+#~ msgstr "Muuta asetuksia ja perehdy Muon Discoveriin"
+
+#~ msgid "points: %1"
+#~ msgstr "pisteet: %1"
+
+# Viittaa asennettuijen ohjelmien luetteloon.
+#~ msgid "Installed (%1 update)"
+#~ msgid_plural "Installed (%1 updates)"
+#~ msgstr[0] "Asennetut (%1 päivitys)"
+#~ msgstr[1] "Asennetut (%1 päivitystä)"
+
+#~ msgid "Menu"
+#~ msgstr "Valikko"
+
+#~ msgid "Origin enabled"
+#~ msgstr "Lähde käytössä"
+
+#~ msgid "©2010-2012 Jonathan Thomas"
+#~ msgstr "© 2010–2012 Jonathan Thomas"
+
+#~ msgid ""
+#~ "List all the backends we'll want to have loaded, separated by coma ','."
+#~ msgstr ""
+#~ "Luettele kaikki taustajärjestelmät, jotka halutaan ladattavan (pilkuin "
+#~ "eroteltuna)."
+
+#~ msgid "Close"
+#~ msgstr "Sulje"
+
+#~ msgid ""
+#~ "<sourceline> - The apt repository source line to add. This is one of:\n"
+#~ msgstr ""
+#~ "<lähderivi> – lisättävä apt-ohjelmalähderivi, joka on jokin seuraavista:\n"
+
+#~ msgid "%1 (Binary)"
+#~ msgstr "%1 (binaari)"
+
+#~ msgid "%1. %2"
+#~ msgstr "%1. %2"
+
+#~ msgid "Popularity Contest"
+#~ msgstr "Suosiokilpailu"
+
+#~ msgid "<qt>%1<br/><em>%2</em></qt>"
+#~ msgstr "<qt>%1<br/><em>%2</em></qt>"
+
+#~ msgid "Apply"
+#~ msgstr "Käytä"
+
+#~ msgid "%1 reviews"
+#~ msgstr "%1 arvostelua"
+
+#~ msgid "Overview"
+#~ msgstr "Yleiskatsaus"
+
+#~ msgid "Add-ons"
+#~ msgstr "Lisäosat"
+
+#~ msgid "<b>Reviews:</b>"
+#~ msgstr "<b>Arvostelut:</b>"
+
+#~ msgid "Ok"
+#~ msgstr "OK"
+
+#~ msgid "%1. <em>%2</em>"
+#~ msgstr "%1. <em>%2</em>"
+
+#~ msgid "Login"
+#~ msgstr "Kirjaudu sisään"
+
+#~ msgid "Register"
+#~ msgstr "Rekisteröidy"
+
+#~ msgid "Logout"
+#~ msgstr "Kirjaudu ulos"
+
+#~ msgid "Signed in as <em>%1</em>"
+#~ msgstr "Kirjautuneena käyttäjänä <em>%1</em>"
+
+#~ msgid "Sign in is required"
+#~ msgstr "Sisäänkirjautuminen vaaditaan"

@@ -1,0 +1,205 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2018, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2019-11-01 11:57+0100\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 19.11.70\n"
+
+#: notifier/DiscoverNotifier.cpp:144
+#, fuzzy, kde-format
+#| msgid "Updates"
+msgid "View Updates"
+msgstr "Actualizacións"
+
+#: notifier/DiscoverNotifier.cpp:256
+#, kde-format
+msgid "Security updates available"
+msgstr "Hai dispoñíbeis actualizacións de seguranza."
+
+#: notifier/DiscoverNotifier.cpp:258
+#, kde-format
+msgid "Updates available"
+msgstr "Hai actualizacións dispoñíbeis."
+
+#: notifier/DiscoverNotifier.cpp:260
+#, kde-format
+msgid "System up to date"
+msgstr "O sistema está ao día."
+
+#: notifier/DiscoverNotifier.cpp:262
+#, kde-format
+msgid "Computer needs to restart"
+msgstr "Hai que reiniciar o computador"
+
+#: notifier/DiscoverNotifier.cpp:264
+#, kde-format
+msgid "Offline"
+msgstr "Sen Internet"
+
+#: notifier/DiscoverNotifier.cpp:266
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr ""
+
+#: notifier/DiscoverNotifier.cpp:300
+#, kde-format
+msgid "Restart is required"
+msgstr "É necesario reiniciar"
+
+#: notifier/DiscoverNotifier.cpp:301
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr "Debe reiniciarse o sistema para que as actualizacións xurdan efecto."
+
+#: notifier/DiscoverNotifier.cpp:307
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: notifier/DiscoverNotifier.cpp:327
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "Anovar"
+
+#: notifier/DiscoverNotifier.cpp:328
+#, kde-format
+msgid "Upgrade available"
+msgstr "Anovación dispoñíbel"
+
+#: notifier/DiscoverNotifier.cpp:329
+#, kde-format
+msgid "New version: %1"
+msgstr "Nova versión: %1"
+
+#: notifier/main.cpp:39
+#, kde-format
+msgid "Discover Notifier"
+msgstr "Notificador de Discover"
+
+#: notifier/main.cpp:41
+#, kde-format
+msgid "System update status notifier"
+msgstr "Notificador do estado das actualizacións do sistema"
+
+#: notifier/main.cpp:43
+#, fuzzy, kde-format
+#| msgid "© 2010-2019 Plasma Development Team"
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2019 Equipo de desenvolvemento de Plasma"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Adrian Chaves (Gallaecio)"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "adrian@chaves.io"
+
+#: notifier/main.cpp:52
+#, kde-format
+msgid "Replace an existing instance"
+msgstr "Substituír unha instancia existente"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "Do not show the notifier"
+msgstr "Non mostrar o notificador"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "hidden"
+msgstr "agochado"
+
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#, kde-format
+msgid "Updates"
+msgstr "Actualizacións"
+
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Open Discover…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:55
+#, fuzzy, kde-format
+#| msgid "See Updates..."
+msgid "See Updates…"
+msgstr "Ver as actualizacións…"
+
+#: notifier/NotifierItem.cpp:60
+#, fuzzy, kde-format
+#| msgid "Refresh..."
+msgid "Refresh…"
+msgstr "Actualizar…"
+
+#: notifier/NotifierItem.cpp:64
+#, kde-format
+msgid "Restart to apply installed updates"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:65
+#, kde-format
+msgid "Click to restart the device"
+msgstr ""
+
+#~ msgid "Restart..."
+#~ msgstr "Reiniciar…"
+
+#~ msgid "Update"
+#~ msgstr "Actualizar"
+
+#~ msgid "Open Software Center..."
+#~ msgstr "Abrir o centro de software…"
+
+#~ msgctxt "First part of '%1, %2'"
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "1 paquete para actualizar"
+#~ msgstr[1] "%1 paquetes para actualizar."
+
+#~ msgctxt "Second part of '%1, %2'"
+#~ msgid "of which 1 is security update"
+#~ msgid_plural "of which %1 are security updates"
+#~ msgstr[0] "dos que 1 é unha actualización de seguranza"
+#~ msgstr[1] "dos que %1 son actualizacións de seguranza."
+
+#~ msgctxt ""
+#~ "%1 is '%1 packages to update' and %2 is 'of which %1 is security updates'"
+#~ msgid "%1, %2"
+#~ msgstr "%1, %2"
+
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "1 paquete para actualizar"
+#~ msgstr[1] "%1 paquetes para actualizar."
+
+#~ msgid "1 security update"
+#~ msgid_plural "%1 security updates"
+#~ msgstr[0] "Actualización de seguridade"
+#~ msgstr[1] "%1 actualizacións de seguranza."
+
+#~ msgid "No packages to update"
+#~ msgstr "Non hai ningún paquete para actualizar."
+
+#~ msgid "%1 packages to update, of which %2 are security updates"
+#~ msgstr ""
+#~ "%1 paquetes para actualizar, dos que %2 son actualizacións de seguranza."

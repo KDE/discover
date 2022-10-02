@@ -1,0 +1,3879 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Kristóf Kiszel <ulysses@kubuntu.org>, 2010, 2011, 2012, 2014, 2015, 2019, 2020, 2021.
+# Kiszel Kristóf, 2011, 2017.
+# Balázs Úr <urbalazs@gmail.com>, 2012, 2013, 2014.
+# Kristof Kiszel <ulysses@fsf.hu>, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-29 00:47+0000\n"
+"PO-Revision-Date: 2022-08-29 11:34+0200\n"
+"Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.07.70\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Kiszel Kristóf"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "ulysses@fsf.hu"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:89
+#, kde-format
+msgid "Proprietary"
+msgstr "Zárt"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:91
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Publishing"
+msgid "Public Domain"
+msgstr "Kiadványszerkesztés"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:97
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
+#: libdiscover/UpdateModel/UpdateModel.cpp:117
+#: libdiscover/UpdateModel/UpdateModel.cpp:323
+#, kde-format
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:135
+#: libdiscover/resources/AbstractResource.cpp:293
+#, kde-format
+msgid "%1, released on %2"
+msgstr "%1, kiadva: %2"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:177
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Installed Files"
+msgid "All Audiences"
+msgstr "Telepített fájlok"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:178
+#, kde-format
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Mild Content"
+msgstr ""
+
+#: libdiscover/appstream/AppStreamUtils.cpp:179
+#, kde-format
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Moderate Content"
+msgstr ""
+
+#: libdiscover/appstream/AppStreamUtils.cpp:180
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Internet"
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Intense Content"
+msgstr "Internet"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:155
+#, kde-format
+msgid "Error while fetching reviews: %1"
+msgstr "Hiba történt az értékelések lekérésekor: %1"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:206
+#, kde-format
+msgid "Error while submitting usefulness: %1"
+msgstr "Hiba történt a hasznosság küldésekor: %1"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:263
+#, kde-format
+msgid "Error while submitting review: %1"
+msgstr "Hiba történt az értékelés elküldésekor: %1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Dummy Category"
+msgstr "Üres kategória"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:10
+#, kde-format
+msgctxt "Category"
+msgid "dummy"
+msgstr "üres"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#, kde-format
+msgctxt "Category"
+msgid "dummy addons"
+msgstr "üres bővítmények"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:27
+#, kde-format
+msgctxt "Category"
+msgid "dummy 1"
+msgstr "üres1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:35
+#, kde-format
+msgctxt "Category"
+msgid "dummy with stuff"
+msgstr "üres, dolgokkal"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:42
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:57
+#, kde-format
+msgctxt "Category"
+msgid "dummy 2.1"
+msgstr "üres 2.1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:50
+#, kde-format
+msgctxt "Category"
+msgid "dummy with quite some stuff"
+msgstr "üres, néhány dologgal"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:66
+#, kde-format
+msgctxt "Category"
+msgid "dummy 3"
+msgstr "üres 3"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:76
+#, kde-format
+msgctxt "Category"
+msgid "dummy 4"
+msgstr "üres 4"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:4
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Accessories"
+msgstr "Kellékek"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:16
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:16
+#, kde-format
+msgctxt "Category"
+msgid "Accessibility"
+msgstr "Akadálymentesítés"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:28
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:28
+#, kde-format
+msgctxt "Category"
+msgid "Developer Tools"
+msgstr "Fejlesztőeszközök"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:38
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:38
+#, kde-format
+msgctxt "Category"
+msgid "Debugging"
+msgstr "Hibakeresés"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:48
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:48
+#, kde-format
+msgctxt "Category"
+msgid "Graphic Interface Design"
+msgstr "Grafikus felhasználóifelület-tervezés"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:57
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:57
+#, kde-format
+msgctxt "Category"
+msgid "IDEs"
+msgstr "Integrált fejlesztőkörnyezetek"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:66
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:66
+#, kde-format
+msgctxt "Category"
+msgid "Localization"
+msgstr "Honosítás"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:76
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:76
+#, kde-format
+msgctxt "Category"
+msgid "Profiling"
+msgstr "Profilozás"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:85
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:85
+#, kde-format
+msgctxt "Category"
+msgid "Web Development"
+msgstr "Webfejlesztés"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
+#, kde-format
+msgctxt "Category"
+msgid "Education"
+msgstr "Oktatás"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:109
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:110
+#, kde-format
+msgctxt "Category"
+msgid "Science and Engineering"
+msgstr "Tudományos és műszaki"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:119
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:120
+#, kde-format
+msgctxt "Category"
+msgid "Astronomy"
+msgstr "Csillagászat"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:127
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:128
+#, kde-format
+msgctxt "Category"
+msgid "Biology"
+msgstr "Biológia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:135
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:136
+#, kde-format
+msgctxt "Category"
+msgid "Chemistry"
+msgstr "Kémia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:144
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:145
+#, kde-format
+msgctxt "Category"
+msgid "Computer Science and Robotics"
+msgstr "Számítógép-tudomány és robotika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:156
+#, kde-format
+msgctxt "Category"
+msgid "Electronics"
+msgstr "Elektronika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:165
+#, kde-format
+msgctxt "Category"
+msgid "Engineering"
+msgstr "Mérnöki"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:173
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
+#, kde-format
+msgctxt "Category"
+msgid "Geography"
+msgstr "Földrajz"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:181
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:182
+#, kde-format
+msgctxt "Category"
+msgid "Geology"
+msgstr "Geológia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:190
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:191
+#, kde-format
+msgctxt "Category"
+msgid "Mathematics"
+msgstr "Matematika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:202
+#, kde-format
+msgctxt "Category"
+msgid "Physics"
+msgstr "Fizika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:212
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:213
+#, kde-format
+msgctxt "Category"
+msgid "Games"
+msgstr "Játékok"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:222
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:223
+#, kde-format
+msgctxt "Category"
+msgid "Arcade"
+msgstr "Arcade"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:231
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:232
+#, kde-format
+msgctxt "Category"
+msgid "Board Games"
+msgstr "Táblajátékok"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:240
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:241
+#, kde-format
+msgctxt "Category"
+msgid "Card Games"
+msgstr "Kártyajátékok"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:249
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:250
+#, kde-format
+msgctxt "Category"
+msgid "Puzzles"
+msgstr "Kirakósok"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:258
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:259
+#, kde-format
+msgctxt "Category"
+msgid "Role Playing"
+msgstr "Szerepjáték"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:267
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:268
+#, kde-format
+msgctxt "Category"
+msgid "Simulation"
+msgstr "Szimuláció"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:276
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:277
+#, kde-format
+msgctxt "Category"
+msgid "Strategy"
+msgstr "Stratégiai"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:285
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:286
+#, kde-format
+msgctxt "Category"
+msgid "Sports"
+msgstr "Sportok"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:294
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:295
+#, kde-format
+msgctxt "Category"
+msgid "Action"
+msgstr "Akció"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:303
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:304
+#, kde-format
+msgctxt "Category"
+msgid "Emulators"
+msgstr "Emulátorok"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:315
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:317
+#, kde-format
+msgctxt "Category"
+msgid "Graphics"
+msgstr "Grafika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:324
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:326
+#, kde-format
+msgctxt "Category"
+msgid "3D"
+msgstr "3D"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:332
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
+#, kde-format
+msgctxt "Category"
+msgid "Drawing"
+msgstr "Rajzolás"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:344
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:346
+#, kde-format
+msgctxt "Category"
+msgid "Painting and Editing"
+msgstr "Festés és szerkesztés"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:357
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:359
+#, kde-format
+msgctxt "Category"
+msgid "Photography"
+msgstr "Fényképészet"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:366
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:368
+#, kde-format
+msgctxt "Category"
+msgid "Publishing"
+msgstr "Kiadványszerkesztés"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:377
+#, kde-format
+msgctxt "Category"
+msgid "Scanning and OCR"
+msgstr "Szkennelés és OCR"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:385
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:387
+#, kde-format
+msgctxt "Category"
+msgid "Viewers"
+msgstr "Megjelenítők"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:397
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:399
+#, kde-format
+msgctxt "Category"
+msgid "Internet"
+msgstr "Internet"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:406
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:408
+#, kde-format
+msgctxt "Category"
+msgid "Chat"
+msgstr "Csevegés"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:416
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:418
+#, kde-format
+msgctxt "Category"
+msgid "File Sharing"
+msgstr "Fájlmegosztás"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:425
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:427
+#, kde-format
+msgctxt "Category"
+msgid "Mail"
+msgstr "Levelezés"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:434
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:436
+#, kde-format
+msgctxt "Category"
+msgid "Web Browsers"
+msgstr "Webböngészők"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:446
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:448
+#, kde-format
+msgctxt "Category"
+msgid "Multimedia"
+msgstr "Multimédia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:456
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:458
+#, kde-format
+msgctxt "Category"
+msgid "Audio and Video Editors"
+msgstr "Hang- és videoszerkesztők"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:465
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:467
+#, kde-format
+msgctxt "Category"
+msgid "Audio Players"
+msgstr "Zenelejátszók"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:486
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:488
+#, kde-format
+msgctxt "Category"
+msgid "Video Players"
+msgstr "Videolejátszók"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:504
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:506
+#, kde-format
+msgctxt "Category"
+msgid "CD and DVD"
+msgstr "CD és DVD"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:516
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:518
+#, kde-format
+msgctxt "Category"
+msgid "Office"
+msgstr "Iroda"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:527
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:529
+#, kde-format
+msgctxt "Category"
+msgid "System Settings"
+msgstr "Rendszerbeállítások"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:119
+#, fuzzy, kde-format
+#| msgid "%1 (user)"
+msgctxt "user denotes this as user-scoped flatpak repo"
+msgid "%1 (user)"
+msgstr "%1 (felhasználó)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:670
+#, kde-format
+msgid "Local bundle"
+msgstr "Helyi csomag"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1587
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
+#, kde-format
+msgid "Malformed appstream url '%1'"
+msgstr "Hibás appstream URL: „%1”"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1689
+#, fuzzy, kde-format
+#| msgid "Failed to start '%1'"
+msgid "Failed to add source '%1': %2"
+msgstr "Nem sikerült elindítani: „%1”"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1806
+#, kde-format
+msgid "There are no Flatpak sources."
+msgstr "Nincsenek Flatpak források."
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
+#, kde-format
+msgid "Failed to load \"%1\" source"
+msgstr "A(z) „%1” forrás betöltése sikertelen"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:338
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"<para>This application comes from \"%1\" (hosted at <link>%2</link>). Other "
+"software in this repository will also be made be available in Discover when "
+"the application is installed.</para>"
+msgstr ""
+"<para>Az alkalmazás származási helye: „%1” (tárolva itt: <link>%2</link>). A "
+"tárolóban található egyéb alkalmazások is léerhetők lesznek a Discoverben, "
+"miután telepítette az alkalmazást.</para>"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:421
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:429
+#, kde-format
+msgid "Retrieving size information"
+msgstr "Méretinformáció lekérdezése"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:423
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:431
+#, kde-format
+msgid "Unknown size"
+msgstr "Ismeretlen méret"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:425
+#, kde-format
+msgctxt "@info app size"
+msgid "%1 to download, %2 on disk"
+msgstr "%1 letöltendő, %2 a lemezen"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:433
+#, kde-format
+msgctxt "@info app size"
+msgid "%1 on disk"
+msgstr "%1 a lemezen"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:487
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:441
+#, fuzzy, kde-format
+#| msgid "Failed to start '%1'"
+msgid "Failed to start '%1': %2"
+msgstr "Nem sikerült elindítani: „%1”"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:717
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Installed Files"
+msgid "All Files"
+msgstr "Telepített fájlok"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:719
+#, kde-format
+msgid "Home"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:721
+#, fuzzy, kde-format
+#| msgid "Downloading"
+msgid "Downloads"
+msgstr "Letöltés"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:723
+#, kde-format
+msgid "Music"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:749
+#, kde-format
+msgid "Network Access"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:750
+#, kde-format
+msgid "Can access the internet"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:756
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
+#, kde-format
+msgid "Session Bus Access"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:757
+#, kde-format
+msgid "Access is granted to the entire Session Bus"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:762
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
+#, kde-format
+msgid "System Bus Access"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:763
+#, kde-format
+msgid "Access is granted to the entire System Bus"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:768
+#, kde-format
+msgid "Remote Login Access"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:769
+#, kde-format
+msgid "Can initiate remote login requests using the SSH protocol"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:773
+#, kde-format
+msgid "Smart Card Access"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:774
+#, kde-format
+msgid "Can integrate and communicate with smart cards"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:780
+#, kde-format
+msgid "Device Access"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:781
+#, kde-format
+msgid "Can communicate with and control built-in or connected hardware devices"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:785
+#, kde-format
+msgid "Kernel-based Virtual Machine Access"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:786
+#, kde-format
+msgid "Allows running other operating systems as guests in virtual machines"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
+#, kde-format
+msgid "%1 (read-only)"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:813
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
+#, kde-format
+msgid "%1 (can create files)"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
+#, kde-format
+msgid "%1 (read & write) "
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
+#, kde-format
+msgid "Home Folder Access"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:846
+#, kde-format
+msgid ""
+"Can read, write, and create files in the following locations in your home "
+"folder without asking permission first: %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#, kde-format
+msgid ""
+"Can read and write files in the following locations in your home folder "
+"without asking permission first: %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
+#, kde-format
+msgid ""
+"Can read files in the following locations in your home folder without asking "
+"permission first: %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
+#, kde-format
+msgid ""
+"Can access files in the following locations in your home folder without "
+"asking permission first: %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
+#, kde-format
+msgid "System Folder Access"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#, kde-format
+msgid ""
+"Can read, write, and create system files in the following locations without "
+"asking permission first: %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
+#, kde-format
+msgid ""
+"Can read and write system files in the following locations without asking "
+"permission first: %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#, kde-format
+msgid ""
+"Can read system files in the following locations without asking permission "
+"first: %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:866
+#, kde-format
+msgid ""
+"Can access system files in the following locations without asking permission "
+"first: %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:876
+#, kde-format
+msgid ""
+"Can communicate with other applications and processes in the same desktop "
+"session using the following communication protocols: %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:888
+#, kde-format
+msgid ""
+"Can communicate with all applications and system services using the "
+"following communication protocols: %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:88
+#, kde-format
+msgid "Add Flathub"
+msgstr "Flathub hozzáadása"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:89
+#, fuzzy, kde-format
+#| msgctxt "@info Status information, widget title"
+#| msgid "Applying Changes"
+msgid "Apply Changes"
+msgstr "Változtatások alkalmazása"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:93
+#, kde-format
+msgid ""
+"Changes to the priority of Flatpak sources must be applied before they will "
+"take effect."
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
+#, kde-format
+msgid ""
+"Makes it possible to easily install the applications listed in https://"
+"flathub.org"
+msgstr ""
+"Lehetővé teszi a https://flathub.org oldalon listázott alkalmazások egyszerű "
+"telepítését"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:163
+#, kde-format
+msgid "Could not add the source %1"
+msgstr "Nem sikerült hozzáadni a forrást: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:279
+#, kde-format
+msgid "Removing '%1'"
+msgstr "A(z) „%1” eltávolítása"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:280
+#, kde-format
+msgid ""
+"To remove this repository, the following applications must be uninstalled:"
+"<ul><li>%1</li></ul>"
+msgstr ""
+"A tároló eltávolításához a következő alkalmazások eltávolítása szükséges: "
+"<ul><li>%1</li></ul>"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#, kde-format
+msgid "Failed to remove %1 remote repository: %2"
+msgstr "A(z) %1 távoli tároló eltávolítása meghiúsult: %2"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:301
+#, kde-format
+msgid "Could not find %1"
+msgstr "A(z) %1 nem található"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:333
+#, kde-format
+msgid "%1 (user)"
+msgstr "%1 (felhasználó)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:394
+#, kde-format
+msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
+msgstr "Adjon meg egy Flatpak tároló URI-t (*.flatpakrepo)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
+#, kde-format
+msgid "Adding remote '%1' in %2 from %3"
+msgstr "„%1” hozzáadása itt: %2, innen: %3"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
+#, kde-format
+msgid ""
+"The remote %1 require that you accept their license:\n"
+" %2"
+msgstr ""
+"A(z) %1 kéri a licenc elfogadását:\n"
+"%2"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
+#, kde-format
+msgid "Review EULA"
+msgstr "EULA áttekintése"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
+#, fuzzy, kde-format
+#| msgid "Could not add the source %1"
+msgid "Could not enable remote %1: %2"
+msgstr "Nem sikerült hozzáadni a forrást: %1"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:107
+#, kde-format
+msgid "Backend %1 took too long to initialize"
+msgstr "A(z) %1 backend inicializálása túl sokáig tartott"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:169
+#, kde-format
+msgid "Applications"
+msgstr "Alkalmazások"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#, kde-format
+msgid "Plasma Addons"
+msgstr "Plasma bővítmények"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#, kde-format
+msgid "Application Addons"
+msgstr "Alkalmazás-bővítmények"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#, kde-format
+msgid "Network error in backend %1: %2"
+msgstr "Hálózati hiba a(z) %1 backendben: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:422
+#, kde-format
+msgid ""
+"Too many requests sent to the server for backend %1. Please try again in a "
+"few minutes."
+msgstr ""
+"A(z) %1 backend túl sok kérést küldött a szerver felé. Próbálja újra néhány "
+"perc múlva."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:425
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:431
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:436
+#, kde-format
+msgid "Invalid %1 backend, contact your distributor."
+msgstr ""
+"A(z) %1 backend érvénytelen, lépjen kapcsolatba a disztribúció készítőivel."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
+#, kde-format
+msgid ""
+"Unable to complete the update of %1. You can try and perform this action "
+"through the Get Hot New Stuff dialog, which grants tighter control. The "
+"reported error was:\n"
+"%2"
+msgstr ""
+"Nem lehet befejezni a(z) %1 frissítését. Megpróbálhatja végrehajtani a "
+"műveletet az új dolgok letöltése párbeszédablakban is, ami nagyobb "
+"felügyeletet biztosít. A jelzett hiba:\n"
+"%2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:465
+#, kde-format
+msgid "Could not fetch screenshot for the entry %1 in backend %2"
+msgstr ""
+"Nem sikerült letölteni a képernyőképet a(z) %1 bejegyzéshez a(z) %2 "
+"backendben"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:469
+#, kde-format
+msgid "Unhandled error in %1 backend. Contact your distributor."
+msgstr "Nem kezelt hiba a(z) %1 backendben. Lépjen kapcsolatba a terjesztővel."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:477
+#, kde-format
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:694
+#, kde-format
+msgid "Wrong KNewStuff URI: %1"
+msgstr "Hibás KNewStuff URI: %1"
+
+#: libdiscover/backends/KNSBackend/KNSResource.cpp:167
+#, kde-format
+msgctxt "The name of the KDE Store"
+msgid "KDE Store"
+msgstr ""
+
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:144
+#, kde-format
+msgid "Log in information for %1"
+msgstr "Bejelentkezési adatok ehhez: %1"
+
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
+#, kde-format
+msgid "Cannot launch %1"
+msgstr "Nem lehet elindítani ezt: %1"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:540
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Addons"
+msgstr "Plasma bővítmények"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:551
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Widgets"
+msgstr "Plasma widgetek"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
+#, kde-format
+msgctxt "Category"
+msgid "Fonts"
+msgstr "Betűkészletek"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:211
+#, kde-format
+msgid "Please make sure that Appstream is properly set up on your system"
+msgstr ""
+"Ellenőrizze, hogy az Appstream megfelelően van-e telepítve a rendszeren"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:248
+#, kde-format
+msgctxt "%1 is the date as formatted by the locale"
+msgid ""
+"Your operating system ended support on %1. Consider upgrading to a supported "
+"version."
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:703
+#, kde-format
+msgid "Cannot remove '%1'"
+msgstr "Nem lehet eltávolítani ezt: „%1”"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
+#, kde-format
+msgid "Out of memory"
+msgstr "Nincs elég memória"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
+#, kde-format
+msgid "No network connection available"
+msgstr "Nem érhető el hálózati kapcsolat"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
+#, kde-format
+msgid "Operation not supported"
+msgstr "A művelet nem támogatott"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:25
+#, kde-format
+msgid "Internal error"
+msgstr "Belső hiba"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
+#, fuzzy, kde-format
+#| msgid "Internal error"
+msgid "Internal error: %1"
+msgstr "Belső hiba"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
+#, kde-format
+msgid "GPG failure"
+msgstr "GPG hiba"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
+#, kde-format
+msgid "PackageID invalid"
+msgstr "A csomagazonosító érvénytelen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
+#, kde-format
+msgid "Package not installed"
+msgstr "A csomag nincs telepítve"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:37
+#, kde-format
+msgid "Package not found"
+msgstr "A csomag nem található"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
+#, kde-format
+msgid "Package is already installed"
+msgstr "A csomag már telepítve van"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
+#, kde-format
+msgid "Package download failed"
+msgstr "A csomag letöltése meghiúsult"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:43
+#, kde-format
+msgid "Package group not found"
+msgstr "A csomagcsoport nem található"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
+#, kde-format
+msgid "Package group list invalid"
+msgstr "A csomag csoportlista érvénytelen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
+#, kde-format
+msgid "Dependency resolution failed"
+msgstr "A függőségfeloldás nem sikerült"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
+#, kde-format
+msgid "Filter invalid"
+msgstr "A szűrő érvénytelen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
+#, kde-format
+msgid "Failed while creating a thread"
+msgstr "Meghiúsult a szál létrehozása közben"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
+#, kde-format
+msgid "Transaction failure"
+msgstr "Tranzakcióhiba"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:55
+#, kde-format
+msgid "Transaction canceled"
+msgstr "A tranzakció megszakítva"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
+#, kde-format
+msgid "No Cache available"
+msgstr "Nem érhető el gyorsítótár"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
+#, kde-format
+msgid "Cannot find repository"
+msgstr "Nem található a tároló"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
+#, kde-format
+msgid "Cannot remove system package"
+msgstr "Nem lehet eltávolítani rendszercsomagot"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:63
+#, kde-format
+msgid "The PackageKit daemon has crashed"
+msgstr "A PackageKit démon összeomlott"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:65
+#, kde-format
+msgid "Initialization failure"
+msgstr "Inicializálási hiba"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:67
+#, kde-format
+msgid "Failed to finalize transaction"
+msgstr "Nem sikerült befejezni a tranzakciót"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
+#, kde-format
+msgid "Config parsing failed"
+msgstr "A beállítás feldolgozása nem sikerült"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
+#, kde-format
+msgid "Cannot cancel transaction"
+msgstr "Nem lehet megszakítani a tranzakciót"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
+#, kde-format
+msgid "Cannot obtain lock"
+msgstr "Nem lehet megszerezni a zárat"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
+#, kde-format
+msgid "No packages to update"
+msgstr "Nincsenek frissítendő csomagok"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
+#, kde-format
+msgid "Cannot write repo config"
+msgstr "Nem lehet írni a tároló beállítást"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:79
+#, kde-format
+msgid "Local install failed"
+msgstr "A helyi telepítés nem sikerült"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:81
+#, kde-format
+msgid "Bad GPG signature found"
+msgstr "Rossz GPG-aláírás található"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:83
+#, kde-format
+msgid "No GPG signature found"
+msgstr "Nem található GPG-aláírás"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:85
+#, kde-format
+msgid "Cannot install source package"
+msgstr "Nem sikerült telepíteni a forrás csomagot"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
+#, kde-format
+msgid "Repo configuration error"
+msgstr "Tároló beállítási hiba"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:89
+#, kde-format
+msgid "No license agreement"
+msgstr "Nincs licencegyezmény"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:91
+#, kde-format
+msgid "File conflicts found"
+msgstr "Fájlütközések találhatók"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:93
+#, kde-format
+msgid "Package conflict found"
+msgstr "Csomagütközés található"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:95
+#, kde-format
+msgid "Repo not available"
+msgstr "A tároló nem érhető el"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:97
+#, kde-format
+msgid "Invalid package file"
+msgstr "Érvénytelen csomagfájl"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
+#, kde-format
+msgid "Package install blocked"
+msgstr "A csomag telepítése blokkolva"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
+#, kde-format
+msgid "Corrupt package found"
+msgstr "Sérült csomag található"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
+#, kde-format
+msgid "All packages already installed"
+msgstr "Már minden csomag telepítve van"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
+#, kde-format
+msgid "File not found"
+msgstr "A fájl nem található"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
+#, kde-format
+msgid "No more mirrors available"
+msgstr "Nem érhető el több tükör"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
+#, kde-format
+msgid "No distro upgrade data"
+msgstr "Nincs disztribúció frissítési adat"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
+#, kde-format
+msgid "Incompatible architecture"
+msgstr "Nem kompatibilis architektúra"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
+#, kde-format
+msgid "No space on device left"
+msgstr "Nincs szabad hely az eszközön"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:115
+#, kde-format
+msgid "A media change is required"
+msgstr "Adathordozó-csere szükséges"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:117
+#, kde-format
+msgid "You have no authorization to execute this operation"
+msgstr "Nincs felhatalmazása ennek a műveletnek a végrehajtására"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:119
+#, kde-format
+msgid "Update not found"
+msgstr "Nem található frissítés"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
+#, kde-format
+msgid "Cannot install from unsigned repo"
+msgstr "Nem lehet telepíteni aláírás nélküli tárolóból"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
+#, kde-format
+msgid "Cannot update from unsigned repo"
+msgstr "Nem lehet frissíteni aláírás nélküli tárolóból"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
+#, kde-format
+msgid "Cannot get file list"
+msgstr "Nem kérhető le a fájllista"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:127
+#, kde-format
+msgid "Cannot get requires"
+msgstr "Nem kérhetők le követelmények"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:129
+#, kde-format
+msgid "Cannot disable repository"
+msgstr "Nem lehet letiltani a tárolót"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
+#, kde-format
+msgid "Restricted download detected"
+msgstr "Korlátozott letöltés észlelhető"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
+#, kde-format
+msgid "Package failed to configure"
+msgstr "A csomag beállítása meghiúsult"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:135
+#, kde-format
+msgid "Package failed to build"
+msgstr "A csomag fordítása meghiúsult"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:137
+#, kde-format
+msgid "Package failed to install"
+msgstr "A csomag telepítése meghiúsult"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:139
+#, kde-format
+msgid "Package failed to remove"
+msgstr "A csomag eltávolítása meghiúsult"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:141
+#, kde-format
+msgid "Update failed due to running process"
+msgstr "A frissítés futó folyamat miatt megszakadt"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
+#, kde-format
+msgid "The package database changed"
+msgstr "A csomagadatbázis megváltozott"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
+#, kde-format
+msgid "The provided type is not supported"
+msgstr "A megadott típus nem támogatott"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
+#, kde-format
+msgid "Install root is invalid"
+msgstr "A telepítési gyökér érvénytelen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:149
+#, kde-format
+msgctxt ""
+"Failed to sync your Linux distro repositories or other sources of packages"
+msgid "Cannot fetch sources"
+msgstr "Nem lehet letölteni a forrásokat"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:151
+#, kde-format
+msgid "Canceled priority"
+msgstr "Megszakított prioritás"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
+#, kde-format
+msgid "Unfinished transaction"
+msgstr "Befejezetlen tranzakció"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
+#, kde-format
+msgid "Lock required"
+msgstr "Zárolás szükséges"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
+#, kde-format
+msgid "Unknown error %1."
+msgstr "Ismeretlen hiba: %1."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
+#, kde-format
+msgid "'%1' was changed and suggests to be restarted."
+msgstr "A(z) „%1” megváltozott és újraindítása javasolt."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
+#, kde-format
+msgid "A change by '%1' suggests your session to be restarted."
+msgstr "A(z) „%1” módosítása a munkamenet újraindítását javasolja."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
+#, kde-format
+msgid ""
+"'%1' was updated for security reasons, a restart of the session is "
+"recommended."
+msgstr ""
+"A(z) „%1” biztonsági okok miatt frissítve lett, javasolt a munkamenet "
+"újraindítása."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
+#, kde-format
+msgid ""
+"'%1' was updated for security reasons, a restart of the system is "
+"recommended."
+msgstr ""
+"A(z) „%1” biztonsági okok miatt frissítve lett, javasolt a rendszer "
+"újraindítása."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
+#, kde-format
+msgid "A change by '%1' suggests your system to be restarted."
+msgstr "A(z) „%1” módosítása a rendszer újraindítását javasolja."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
+#, kde-format
+msgid "The application will have to be restarted."
+msgstr "Az alkalmazást újra kell indítani."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
+#, kde-format
+msgid "The session will have to be restarted"
+msgstr "A munkamenetet újra kell indítani"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:192
+#, kde-format
+msgid "The system will have to be restarted."
+msgstr "A rendszert újra kell indítani."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:194
+#, kde-format
+msgid "For security, the session will have to be restarted."
+msgstr "Biztonsági okokból a munkamenetet újra kell indítani."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:196
+#, kde-format
+msgid "For security, the system will have to be restarted."
+msgstr "Biztonsági okokból a rendszert újra kell indítani."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
+#, kde-format
+msgid "Waiting…"
+msgstr "Várakozás…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
+#, kde-format
+msgid "Refreshing Cache…"
+msgstr "Gyorsítótár frissítése…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
+#, kde-format
+msgid "Setup…"
+msgstr "Beállítás…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
+#, kde-format
+msgid "Processing…"
+msgstr "Feldolgozás…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
+#, kde-format
+msgid "Remove…"
+msgstr "Eltávolítás…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
+#, kde-format
+msgid "Downloading…"
+msgstr "Letöltés…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
+#, kde-format
+msgid "Installing…"
+msgstr "Telepítés…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
+#, kde-format
+msgid "Updating…"
+msgstr "Frissítés…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
+#, kde-format
+msgid "Cleaning up…"
+msgstr "Tisztítás…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
+#, kde-format
+msgid "Resolving dependencies…"
+msgstr "Függőségek feloldása…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
+#, kde-format
+msgid "Checking signatures…"
+msgstr "Aláírások ellenőrzése…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
+#, kde-format
+msgid "Test committing…"
+msgstr "A véglegesítés tesztelése…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
+#, kde-format
+msgid "Committing…"
+msgstr "Véglegesítés…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
+#, kde-format
+msgid "Finished"
+msgstr "Befejezve"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:238
+#, kde-format
+msgid "Canceled"
+msgstr "Megszakítva"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
+#, kde-format
+msgid "Waiting for lock…"
+msgstr "Várakozás a zárolásra…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
+#, kde-format
+msgid "Waiting for authorization…"
+msgstr "Várakozás hitelesítésre…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
+#, kde-format
+msgid "Copying files…"
+msgstr "Fájlok másolása…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
+#, kde-format
+msgid "Unknown Status"
+msgstr "Ismeretlen állapot"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:258
+#, kde-format
+msgid "We are waiting for something."
+msgstr "Várunk valamire."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
+#, kde-format
+msgid "Setting up transaction…"
+msgstr "Tranzakció beállítása…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
+#, kde-format
+msgid "The transaction is currently working…"
+msgstr "A tranzakció jelenleg dolgozik…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
+#, kde-format
+msgid "The transaction is currently removing packages…"
+msgstr "A tranzakció jelenleg csomagokat távolít el…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
+#, kde-format
+msgid "The transaction is currently downloading packages…"
+msgstr "A tranzakció jelenleg csomagokat tölt le…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
+#, kde-format
+msgid "The transactions is currently installing packages…"
+msgstr "A tranzakciók jelenleg csomagokat telepítenek…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
+#, kde-format
+msgid "The transaction is currently updating packages…"
+msgstr "A tranzakció jelenleg csomagokat frissít…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
+#, kde-format
+msgid "The transaction is currently cleaning up…"
+msgstr "A tranzakció jelenleg tisztít…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
+#, kde-format
+msgid ""
+"The transaction is currently resolving the dependencies of the packages it "
+"will install…"
+msgstr ""
+"A tranzakció jelenleg azon csomagok függőségeit oldja fel, amelyeket "
+"telepíteni fog…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
+#, kde-format
+msgid "The transaction is currently checking the signatures of the packages…"
+msgstr "A tranzakció jelenleg a csomagok aláírásait ellenőrzi…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
+#, kde-format
+msgid ""
+"The transaction is currently testing the commit of this set of packages…"
+msgstr ""
+"A tranzakció jelenleg a csomagok beállításainak véglegesítését teszteli…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
+#, kde-format
+msgid "The transaction is currently committing its set of packages…"
+msgstr "A tranzakció jelenleg a csomagok beállítását véglegesíti…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
+#, kde-format
+msgid "The transaction has finished!"
+msgstr "A tranzakció befejeződött!"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
+#, kde-format
+msgid "The transaction was canceled"
+msgstr "A tranzakció meg lett szakítva"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
+#, kde-format
+msgid "The transaction is currently waiting for the lock…"
+msgstr "A tranzakció jelenleg a zárolásra várakozik…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
+#, kde-format
+msgid "Waiting for the user to authorize the transaction…"
+msgstr "Várakozás, hogy a felhasználó felhatalmazza a tranzakciót…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
+#, kde-format
+msgid "The transaction is currently copying files…"
+msgstr "A tranzakció jelenleg fájlokat másol…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
+#, kde-format
+msgid "Currently refreshing the repository cache…"
+msgstr "A tároló gyorsítótárának frissítése folyamatban…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
+#, kde-format
+msgid "Unknown status %1."
+msgstr "Ismeretlen állapot: %1."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:313
+#, kde-format
+msgctxt "update state"
+msgid "Stable"
+msgstr "Stabil"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:315
+#, kde-format
+msgctxt "update state"
+msgid "Unstable"
+msgstr "Instabil"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:317
+#, kde-format
+msgctxt "update state"
+msgid "Testing"
+msgstr "Teszt"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
+#: libdiscover/resources/AbstractResource.cpp:102
+#, kde-format
+msgid "Installed"
+msgstr "Telepítve"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
+#, kde-format
+msgid "Not Installed"
+msgstr "Nincs telepítve"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
+#, kde-format
+msgid "Low"
+msgstr "Alacsony"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:334
+#, kde-format
+msgid "Enhancement"
+msgstr "Továbbfejlesztés"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:336
+#, kde-format
+msgid "Normal"
+msgstr "Normál"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:338
+#, kde-format
+msgid "Bugfix"
+msgstr "Hibajavítás"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:340
+#, kde-format
+msgid "Important"
+msgstr "Fontos"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:342
+#, kde-format
+msgid "Security"
+msgstr "Biztonsági"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:344
+#, kde-format
+msgid "Blocked"
+msgstr "Blokkolt"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:346
+#, kde-format
+msgid "Downloading"
+msgstr "Letöltés"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#, kde-format
+msgid "Updating"
+msgstr "Frissítés"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:350
+#, kde-format
+msgid "Installing"
+msgstr "Telepítés"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:352
+#, kde-format
+msgid "Removing"
+msgstr "Eltávolítás"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:354
+#, kde-format
+msgid "Cleanup"
+msgstr "Tisztítás"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:356
+#, kde-format
+msgid "Obsoleting"
+msgstr "Elavulttá tétel"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:358
+#, kde-format
+msgid "Collection Installed"
+msgstr "Gyűjtemény telepítve"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:360
+#, kde-format
+msgid "Collection Available"
+msgstr "Gyűjtemény érhető el"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:364
+#, kde-format
+msgid "Reinstalling"
+msgstr "Újratelepítés"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:366
+#, kde-format
+msgid "Downgrading"
+msgstr "Előző verzió visszaállítása"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:368
+#, kde-format
+msgid "Preparing"
+msgstr "Előkészítés"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:370
+#, kde-format
+msgid "Decompressing"
+msgstr "Kibontás"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:372
+#, kde-format
+msgid "Untrusted"
+msgstr "Nem megbízható"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:374
+#, kde-format
+msgid "Trusted"
+msgstr "Megbízható"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:376
+#, kde-format
+msgid "Unavailable"
+msgstr "Nem érhető el"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
+#, kde-format
+msgid "Failed Offline Update"
+msgstr "Sikertelen offline frissítés"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
+#, kde-format
+msgid ""
+"Failed to update %1 package\n"
+"%2"
+msgid_plural ""
+"Failed to update %1 packages\n"
+"%2"
+msgstr[0] ""
+"%1 csomag frissítése meghiúsult\n"
+"%2"
+msgstr[1] ""
+"%1 csomag frissítése meghiúsult\n"
+"%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
+#, kde-format
+msgctxt "@action:button"
+msgid "Open Discover"
+msgstr "Discover megnyitása"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#, kde-format
+msgctxt "@action:button"
+msgid "Repair System"
+msgstr "Rendszer javítása"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#, fuzzy, kde-format
+#| msgid "Failed Offline Update"
+msgid "Repairing failed offline update"
+msgstr "Sikertelen offline frissítés"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#, kde-format
+msgid "Repair Failed"
+msgstr "A javítás nem sikerült"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
+#, kde-kuit-format
+msgctxt "@info"
+msgid "%1<nl/>Please report this error to your distribution."
+msgstr "%1<nl/>Kérjük, jelentse ezt a hibát a disztribúciójának."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
+#, kde-format
+msgid "Repaired Successfully"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#, kde-format
+msgid "Offline Updates"
+msgstr "Offline frissítések"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
+#, kde-format
+msgid "Successfully updated %1 package"
+msgid_plural "Successfully updated %1 packages"
+msgstr[0] "%1 csomag sikeresen frissítve"
+msgstr[1] "%1 csomag sikeresen frissítve"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:303
+#, kde-format
+msgctxt "package-name (version)"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:305
+#, kde-format
+msgctxt "comma separating package names"
+msgid ", "
+msgstr ", "
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
+#, kde-format
+msgid "Obsoletes:"
+msgstr "Elavult:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
+#, kde-format
+msgid "Release Notes:"
+msgstr "Kiadási megjegyzések:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
+#, kde-format
+msgid "Update State:"
+msgstr "Frissítés állapota:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:355
+#, kde-format
+msgid "Restart:"
+msgstr "Újraindítás:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#, kde-format
+msgid "Vendor:"
+msgstr "Gyártó:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:378
+#, kde-format
+msgid "%2 (plus %1 dependency)"
+msgid_plural "%2 (plus %1 dependencies)"
+msgstr[0] "%2 (plusz %1 függőség)"
+msgstr[1] "%2 (plusz %1 függőség)"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#, kde-format
+msgid "Repository URL:"
+msgstr "Tároló:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:78
+#, kde-format
+msgid "System upgrade"
+msgstr "Rendszerfrissítés"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:169
+#, kde-format
+msgid "1 package to upgrade"
+msgid_plural "%1 packages to upgrade"
+msgstr[0] "1 frissítendő csomag"
+msgstr[1] "%1 frissítendő csomag"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#, kde-format
+msgid "Present"
+msgstr "Jelenlegi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:190
+#, kde-format
+msgid "Future"
+msgstr "Jövőbeli"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:279
+#, kde-format
+msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
+msgid "Not enough space to perform the update; only %1 of space are available."
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:467
+#, kde-format
+msgid ""
+"This update cannot be completed as it would remove the following software "
+"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"you believe this is an error, please report it as a bug to the packagers of "
+"your distribution."
+msgstr ""
+"A frissítés nem fejezhető be, mivel az alábbi szoftvereket távolítaná el, "
+"amik kritikusak a rendszer működése szempontjából:<nl/><ul><li>%1</li></"
+"ul><nl/>Ha úgy gondolja, hogy ez egy hiba, kérjük, jelentse azt a "
+"disztribúciója csomagolójának."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:474
+#, kde-format
+msgid "Packages to remove"
+msgstr "Eltávolítandó csomagok"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
+#, kde-format
+msgid ""
+"The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
+">in order to install:<ul><li>%2</li></ul>"
+msgstr ""
+"A frissítés az alábbi csomagokat távolítja el:<ul><li>%1</li></ul><br/>az "
+"alábbiak telepítéséhez:<ul><li>%2</li></ul>"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
+#, kde-kuit-format
+msgctxt "@info"
+msgid "%1:<nl/><nl/>%2"
+msgstr "%1:<nl/><nl/>%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
+#, kde-format
+msgid ""
+"Media Change of type '%1' is requested.\n"
+"%2"
+msgstr ""
+"A(z) „%1” típus adathordozó-cseréje szükséges.\n"
+"%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:614
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
+#, kde-format
+msgid "Accept EULA"
+msgstr "EULA elfogadása"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:615
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
+#, kde-format
+msgid ""
+"The package %1 and its vendor %2 require that you accept their license:\n"
+" %3"
+msgstr ""
+"A(z) %1 csomag és annak gyártója (%2) megköveteli, hogy elfogadja a "
+"licencet:\n"
+" %3"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:732
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
+#, kde-format
+msgid "Missing signature for %1 in %2"
+msgstr "A(z) %1 csomag aláírása hiányzik a(z) %2 tárolóban"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
+#, kde-format
+msgid ""
+"Do you trust the following key?\n"
+"\n"
+"Url: %1\n"
+"User: %2\n"
+"Key: %3\n"
+"Fingerprint: %4\n"
+"Timestamp: %4\n"
+msgstr ""
+"Megbízik az alábbi kulcsban?\n"
+"\n"
+"URL: %1\n"
+"Felhasználó: %2\n"
+"Kulcs: %3\n"
+"Ujjlenyomat: %4\n"
+"Időbélyegző: %4\n"
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:188
+#, kde-format
+msgid ""
+"This action cannot be completed as it would remove the following software "
+"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"you believe this is an error, please report it as a bug to the packagers of "
+"your distribution."
+msgstr ""
+"A művelet nem fejezhető be, mivel az alábbi szoftvereket távolítaná el, amik "
+"kritikusak a rendszer működése szempontjából:<nl/><ul><li>%1</li></ul><nl/"
+">Ha úgy gondolja, hogy ez egy hiba, kérjük, jelentse azt a disztribúciója "
+"csomagolójának."
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
+#, kde-format
+msgid "Confirm package removal"
+msgstr "Csomageltávolítás megerősítése"
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
+#, kde-format
+msgid ""
+"This action will also remove the following package:\n"
+"%2"
+msgid_plural ""
+"This action will also remove the following packages:\n"
+"%2"
+msgstr[0] ""
+"A művelet az alábbi csomagot is eltávolítja:\n"
+"%2"
+msgstr[1] ""
+"A művelet az alábbi csomagokat is eltávolítja:\n"
+"%2"
+
+#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Operating System"
+msgstr "Operációs rendszer"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:245
+#, kde-format
+msgid "GPL and other licenses"
+msgstr "GPL és egyéb licencek"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:251
+#, kde-format
+msgid "Remote: "
+msgstr "Távoli: "
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:288
+#, kde-format
+msgid "The currently running version of %1."
+msgstr "A(z) %1 jelenleg futó verziója."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:290
+#, kde-format
+msgid "Installed but not currently running version of %1."
+msgstr "Telepítve, de jelenleg nem a(z) %1 verzió fut."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:73
+#, kde-format
+msgid "ostree remotes"
+msgstr "ostree távoliak"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:119
+#, kde-format
+msgid "Current rpm-ostree transaction in progress:"
+msgstr "Jelenleg folyamatban lévő rpm-ostree tranzakció:"
+
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#, kde-format
+msgid "Snap"
+msgstr "Snap"
+
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:353
+#, kde-format
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
+#, kde-format
+msgid ""
+"This Snap application is not compatible with security sandboxing and will "
+"have full access to this computer. Install it anyway?"
+msgstr ""
+"Ez a Snap alkalmazás nem kompatibilis a biztonsági tesztkörnyezettel, és "
+"teljes hozzáférés lesz a számítógéphez. Biztosan telepíti?"
+
+#: libdiscover/DiscoverBackendsFactory.cpp:111
+#, kde-format
+msgid ""
+"List all the backends we'll want to have loaded, separated by comma ','."
+msgstr ""
+"Az összes betöltendő háttérprogram listázása, vesszővel „,” elválasztva."
+
+#: libdiscover/resources/AbstractResource.cpp:98
+#, kde-format
+msgid "Broken"
+msgstr "Törött"
+
+#: libdiscover/resources/AbstractResource.cpp:100
+#, kde-format
+msgid "Available"
+msgstr "Elérhető"
+
+#: libdiscover/resources/AbstractResource.cpp:104
+#, kde-format
+msgid "Upgradeable"
+msgstr "Frissíthető"
+
+#: libdiscover/resources/AbstractResource.cpp:257
+#, kde-format
+msgid "Launch"
+msgstr "Indítás"
+
+#: libdiscover/resources/AbstractResource.cpp:266
+#, fuzzy, kde-format
+#| msgid "Update to version %1"
+msgctxt ""
+"@info 'Refresh' is used as a noun here, and %1 is an app's version number"
+msgid "Refresh of version %1"
+msgstr "Frissítés erre a verzióra: %1"
+
+#: libdiscover/resources/AbstractResource.cpp:276
+#, kde-format
+msgctxt "Do not translate or alter \\u009C"
+msgid "%1 → %2%1 → %2%2"
+msgstr "%1 → %2%1 → %2%2"
+
+#: libdiscover/resources/AbstractResourcesBackend.cpp:153
+#, kde-format
+msgid "Please verify Internet connectivity"
+msgstr "Ellenőrizze az internetkapcsolatot"
+
+#: libdiscover/resources/ResourcesModel.cpp:102
+#, kde-format
+msgid "Refresh"
+msgstr "Frissítés"
+
+#: libdiscover/resources/ResourcesProxyModel.cpp:682
+#, kde-format
+msgctxt "an approximation number, like 3000+"
+msgid "%1+"
+msgstr "%1+"
+
+#: libdiscover/Transaction/Transaction.cpp:133
+#, kde-format
+msgctxt "@label Download rate"
+msgid "%1/s"
+msgstr "%1/s"
+
+#: libdiscover/Transaction/TransactionModel.cpp:74
+#, kde-format
+msgctxt "@info:status"
+msgid "Starting"
+msgstr "Kezdés"
+
+#: libdiscover/Transaction/TransactionModel.cpp:76
+#, kde-format
+msgctxt "@info:status"
+msgid "Waiting"
+msgstr "Várakozás"
+
+#: libdiscover/Transaction/TransactionModel.cpp:78
+#, kde-format
+msgctxt "@info:status"
+msgid "Downloading"
+msgstr "Letöltés"
+
+#: libdiscover/Transaction/TransactionModel.cpp:82
+#, kde-format
+msgctxt "@info:status"
+msgid "Installing"
+msgstr "Telepítés"
+
+#: libdiscover/Transaction/TransactionModel.cpp:84
+#, kde-format
+msgctxt "@info:status"
+msgid "Removing"
+msgstr "Eltávolítás"
+
+#: libdiscover/Transaction/TransactionModel.cpp:86
+#, kde-format
+msgctxt "@info:status"
+msgid "Changing Addons"
+msgstr "Bővítmények módosítása"
+
+#: libdiscover/Transaction/TransactionModel.cpp:90
+#, kde-format
+msgctxt "@info:status"
+msgid "Done"
+msgstr "Kész"
+
+#: libdiscover/Transaction/TransactionModel.cpp:92
+#, kde-format
+msgctxt "@info:status"
+msgid "Failed"
+msgstr "Sikertelen"
+
+#: libdiscover/Transaction/TransactionModel.cpp:94
+#, kde-format
+msgctxt "@info:status"
+msgid "Cancelled"
+msgstr "Megszakítva"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:129
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Applications"
+msgstr "Alkalmazások"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "System Software"
+msgstr "Rendszerszoftver"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Addons"
+msgstr "Bővítmények"
+
+#~ msgctxt "version (branch)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "Category"
+#~ msgid "Applications"
+#~ msgstr "Alkalmazások"
+
+#~ msgid "Updates"
+#~ msgstr "Frissítések"
+
+#~ msgctxt "origin (backend name)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "@action Checks the Internet for updates"
+#~ msgid "Check for Updates"
+#~ msgstr "Frissítések keresése"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Application Updates"
+#~ msgstr "Alkalmazásfrissítések"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "System Updates"
+#~ msgstr "Rendszerfrissítések"
+
+#, fuzzy
+#~| msgid "Please report to your distribution: %1"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "%1:<nl/><nl/>%2<nl/><nl/>Please report this issue to the packagers of "
+#~ "your distribution."
+#~ msgstr "Jelentse a disztribúciójának: %1"
+
+#, fuzzy
+#~| msgctxt "@title:tab"
+#~| msgid "Versions"
+#~ msgid "Version: "
+#~ msgstr "Verziók"
+
+#, fuzzy
+#~| msgctxt "@label The software source that this package comes from"
+#~| msgid "Origin:"
+#~ msgid "Origin: "
+#~ msgstr "Eredet:"
+
+#~ msgid "Waiting..."
+#~ msgstr "Várakozás…"
+
+#~ msgid "Remove..."
+#~ msgstr "Eltávolítás…"
+
+#~ msgid "Downloading..."
+#~ msgstr "Letöltés…"
+
+#~ msgid "Installing..."
+#~ msgstr "Telepítés…"
+
+#~ msgid "Updating..."
+#~ msgstr "Frissítés…"
+
+#~ msgid "This snap application needs security confinement measures disabled."
+#~ msgstr "Ez a Snap alkalmazás a biztonsági funkciók kikapcsolását kéri."
+
+#~ msgid "View Updates"
+#~ msgstr "Frissítések megtekintése"
+
+#~ msgid "Please restart the device to finish the update"
+#~ msgstr "Indítsa újra az eszközt a frissítés befejezéséhez"
+
+#~ msgid "Use"
+#~ msgstr "Használat"
+
+#~ msgid "Update"
+#~ msgstr "Frissítés"
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Lock at Current Version"
+#~ msgid "Current Version:"
+#~ msgstr "Jelenlegi verzió zárolása"
+
+#, fuzzy
+#~| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
+#~| msgid "Version %1:"
+#~ msgid "New Version:"
+#~ msgstr "Verzió %1:"
+
+#, fuzzy
+#~| msgctxt "@info:status Package state"
+#~| msgid "Not Installed"
+#~ msgid "Not Invokable"
+#~ msgstr "Nem telepített"
+
+#, fuzzy
+#~| msgid "Upgradeable"
+#~ msgid "Upgrade available"
+#~ msgstr "Frissíthető"
+
+#, fuzzy
+#~| msgid "PackageKit restart required"
+#~ msgid "Restart is required"
+#~ msgstr "A PackageKit újraindítása szükséges"
+
+#, fuzzy
+#~| msgid "PackageKit restart required"
+#~ msgid "Session restart is required"
+#~ msgstr "A PackageKit újraindítása szükséges"
+
+#~ msgid "Reason:"
+#~ msgstr "Ok:"
+
+#~ msgid "Updates:"
+#~ msgstr "Frissítések:"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Important Security Updates"
+#~ msgstr "Fontos biztonsági frissítések"
+
+#~ msgid "Confirm..."
+#~ msgstr "Megerősítés…"
+
+#~ msgid ""
+#~ "To proceed with this action, the following package needs removal:\n"
+#~ "%2"
+#~ msgid_plural ""
+#~ "To proceed with this action, the following packages need removal:\n"
+#~ "%2"
+#~ msgstr[0] ""
+#~ "A művelet folytatásához az alábbi csomagok eltávolítása szükséges:\n"
+#~ "%2"
+#~ msgstr[1] ""
+#~ "A művelet folytatásához az alábbi csomagok eltávolítása szükséges:\n"
+#~ "%2"
+
+#, fuzzy
+#~| msgctxt "package-name (version)"
+#~| msgid "%1 (%2)"
+#~ msgctxt "description (url)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgid "Change Log:"
+#~ msgstr "Változások listája:"
+
+#~ msgid "Software Management"
+#~ msgstr "Szoftverkezelés"
+
+#~ msgctxt "Category"
+#~ msgid "Science & Engineering"
+#~ msgstr "Tudományos és műszaki"
+
+#~ msgctxt "Category"
+#~ msgid "Computer Science & Robotics"
+#~ msgstr "Számítógép-tudomány és robotika"
+
+#~ msgctxt "Category"
+#~ msgid "Painting & Editing"
+#~ msgstr "Festés és szerkesztés"
+
+#~ msgctxt "Category"
+#~ msgid "Scanning & OCR"
+#~ msgstr "Szkennelés és OCR"
+
+#~ msgctxt "Category"
+#~ msgid "System & Settings"
+#~ msgstr "Rendszer és beállítások"
+
+#~ msgctxt "Category"
+#~ msgid "Science Engineering"
+#~ msgstr "Tudományos és műszaki"
+
+#~ msgctxt "Category"
+#~ msgid "Computer Science Robotics"
+#~ msgstr "Számítógép-tudomány és robotika"
+
+#~ msgctxt "Category"
+#~ msgid "Painting Editing"
+#~ msgstr "Festés és szerkesztés"
+
+#~ msgctxt "Category"
+#~ msgid "Scanning OCR"
+#~ msgstr "Szkennelés és OCR"
+
+#~ msgctxt "@item:intext Unknown remaining time"
+#~ msgid "Updating..."
+#~ msgstr "Frissítés…"
+
+#~ msgctxt "@item:intext Remaining time"
+#~ msgid "%1 remaining"
+#~ msgstr "%1 van hátra"
+
+#~ msgid "%1 has been updated"
+#~ msgstr "%1 frissítve lett"
+
+#~ msgid "Setting up for install..."
+#~ msgstr "Beállítás a telepítéshez…"
+
+#~ msgid "List all the available backends."
+#~ msgstr "Az összes elérhető háttérprogram listázása."
+
+#~ msgid "Available backends:\n"
+#~ msgstr "Elérhető háttérprogramok:\n"
+
+#, fuzzy
+#~| msgid "Applications"
+#~ msgctxt "Category"
+#~ msgid "Application Addons"
+#~ msgstr "Alkalmazások"
+
+#~ msgctxt "Category"
+#~ msgid "Comics"
+#~ msgstr "Képregények"
+
+#~ msgid "%1 requires user to accept its license"
+#~ msgstr "%1 igényli, hogy a felhasználó elfogadja a licencét"
+
+#~ msgctxt "Category"
+#~ msgid "Haskell"
+#~ msgstr "Haskell"
+
+#~ msgctxt "Category"
+#~ msgid "Java"
+#~ msgstr "Java"
+
+#~ msgctxt "Category"
+#~ msgid "Perl"
+#~ msgstr "Perl"
+
+#~ msgctxt "Category"
+#~ msgid "Python"
+#~ msgstr "Python"
+
+#~ msgctxt "Category"
+#~ msgid "Version Control"
+#~ msgstr "Verziókezelés"
+
+#~ msgctxt "@info license"
+#~ msgid "Open Source"
+#~ msgstr "Nyílt forrású"
+
+#~ msgctxt "@info license"
+#~ msgid "Unknown"
+#~ msgstr "Ismeretlen"
+
+#~ msgctxt "@info/rich"
+#~ msgid ""
+#~ "The list of changes is not yet available. Please use <link "
+#~ "url='%1'>Launchpad</link> instead."
+#~ msgstr ""
+#~ "A változások listája nem érhető el, használja inkább a <link "
+#~ "url='%1'>Launchpadot</link>."
+
+#~ msgctxt "@info"
+#~ msgid "The list of changes is not yet available."
+#~ msgstr "A változások listája nem érhető el."
+
+#~ msgctxt "@info:label"
+#~ msgid "This update was issued on %1"
+#~ msgstr "Ez a frissítés ekkor lett kiadva: %1"
+
+#~ msgid "System update available!"
+#~ msgstr "Rendszerfrissítés érhető el!"
+
+#~ msgctxt "Notification when a new version of Kubuntu is available"
+#~ msgid "A new version of Kubuntu is available"
+#~ msgstr "Új Kubuntu kiadás érhető el"
+
+#~ msgid "Upgrade"
+#~ msgstr "Frissítés"
+
+#~ msgctxt "@title:window"
+#~ msgid "Media Change Required"
+#~ msgstr "Adathordozó-csere szükséges"
+
+#~ msgctxt "@label"
+#~ msgid "Please insert %1 into <filename>%2</filename>"
+#~ msgstr "Helyezze be ezt: %1 ide: <filename>%2</filename>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Warning - Unverified Software"
+#~ msgstr "Figyelmeztetés - nem ellenőrzött szoftver"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The following piece of software cannot be verified. <warning>Installing "
+#~ "unverified software represents a security risk, as the presence of "
+#~ "unverifiable software can be a sign of tampering.</warning> Do you wish "
+#~ "to continue?"
+#~ msgid_plural ""
+#~ "The following pieces of software cannot be verified. <warning>Installing "
+#~ "unverified software represents a security risk, as the presence of "
+#~ "unverifiable software can be a sign of tampering.</warning> Do you wish "
+#~ "to continue?"
+#~ msgstr[0] ""
+#~ "Az alábbi szoftver nem hitelesíthető. <warning>Nem ellenőrzött szoftverek "
+#~ "telepítése biztonsági kockázatot jelent, mivel az ellenőrizhetetlen "
+#~ "szoftverek jelenléte illetéktelen módosítás jele lehet.</warning> Kívánja "
+#~ "folytatni?"
+#~ msgstr[1] ""
+#~ "Az alábbi szoftverek nem hitelesíthetők. <warning>Nem ellenőrzött "
+#~ "szoftverek telepítése biztonsági kockázatot jelent, mivel az "
+#~ "ellenőrizhetetlen szoftverek jelenléte illetéktelen módosítás jele lehet."
+#~ "</warning> Kívánja folytatni?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Configuration File Changed"
+#~ msgstr "A beállítófájl megváltozott"
+
+#~ msgctxt "@label Notifies a config file change"
+#~ msgid ""
+#~ "A new version of the configuration file <filename>%1</filename> is "
+#~ "available, but your version has been modified. Would you like to keep "
+#~ "your current version or install the new version?"
+#~ msgstr ""
+#~ "Új verzió érhető el a(z) <filename>%1</filename> beállítófájlból, de az "
+#~ "Ön verziója módosított. Szeretné megtartani a jelenlegi verziót, vagy "
+#~ "telepíti az újat?"
+
+#~ msgctxt "@action Use the new config file"
+#~ msgid "Use New Version"
+#~ msgstr "Új verzió használata"
+
+#~ msgctxt "@action Keep the old config file"
+#~ msgid "Keep Old Version"
+#~ msgstr "Régi verzió megtartása"
+
+#~ msgctxt "@info Status info, widget title"
+#~ msgid "Starting"
+#~ msgstr "Kezdés"
+
+#~ msgctxt "@info Status info, widget title"
+#~ msgid "Waiting for Authentication"
+#~ msgstr "Várakozás hitelesítésre"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Waiting"
+#~ msgstr "Várakozás"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for other transactions to finish"
+#~ msgstr "Várakozás más tranzakciók befejezésére"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for other software managers to quit"
+#~ msgstr "Várakozás más szoftverkezelők kilépésére"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for required medium"
+#~ msgstr "Várakozás a szükséges adathordozóra"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for configuration file"
+#~ msgstr "Várakozás a beállítófájlra"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Loading Software List"
+#~ msgstr "Szoftverlista betöltése"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Updating software sources"
+#~ msgstr "Szoftverforrások frissítése"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Downloading Packages"
+#~ msgstr "Csomagok letöltése"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Finished"
+#~ msgstr "Kész"
+
+#~ msgid "Adding Origins..."
+#~ msgstr "Eredetik hozzáadása…"
+
+#~ msgid "Removing Origins..."
+#~ msgstr "Eredetik eltávolítása…"
+
+#~ msgid "%1 (Binary)"
+#~ msgstr "%1 (bináris)"
+
+#~ msgid ""
+#~ "<sourceline> - The apt repository source line to add. This is one of:\n"
+#~ "  a complete apt line, \n"
+#~ "  a repo url and areas (areas defaults to 'main')\n"
+#~ "  a PPA shortcut.\n"
+#~ "\n"
+#~ "  Examples:\n"
+#~ "    deb http://myserver/path/to/repo stable myrepo\n"
+#~ "    http://myserver/path/to/repo myrepo\n"
+#~ "    https://packages.medibuntu.org free non-free\n"
+#~ "    http://extras.ubuntu.com/ubuntu\n"
+#~ "    ppa:user/repository"
+#~ msgstr ""
+#~ "<sourceline> - A hozzáadandó apt tároló forrássora, ez az alábbiak "
+#~ "egyike:\n"
+#~ "  egy teljes apt sor, \n"
+#~ "  a tároló URL-címe és részei (alapértelmezetten „main”)\n"
+#~ "  egy PPA rövidítés.\n"
+#~ "\n"
+#~ "  Példák:\n"
+#~ "    deb http://myserver/path/to/repo stable myrepo\n"
+#~ "    http://myserver/path/to/repo myrepo\n"
+#~ "    https://packages.medibuntu.org free non-free\n"
+#~ "    http://extras.ubuntu.com/ubuntu\n"
+#~ "    ppa:user/repository"
+
+#~ msgctxt "@title:window"
+#~ msgid "Confirm Additional Changes"
+#~ msgstr "További változtatások megerősítése"
+
+#~ msgctxt "@info"
+#~ msgid "<h2>Mark additional changes?</h2>"
+#~ msgstr "<h2>Jelöl meg további változtatásokat?</h2>"
+
+#~ msgid "This action requires a change to another package:"
+#~ msgid_plural "This action requires changes to other packages:"
+#~ msgstr[0] "Ez a művelet egy másik csomag módosítását kéri:"
+#~ msgstr[1] "Ez a művelet más csomagok módosítását kéri:"
+
+#~ msgctxt "@info"
+#~ msgid "<title>History</title>"
+#~ msgstr "<title>Előzmények</title>"
+
+#~ msgctxt "@label Line edit click message"
+#~ msgid "Search"
+#~ msgstr "Keresés"
+
+#~ msgctxt "@item:inlistbox Filters all changes in the history view"
+#~ msgid "All changes"
+#~ msgstr "Minden változtatás"
+
+#~ msgctxt "@item:inlistbox Filters installations in the history view"
+#~ msgid "Installations"
+#~ msgstr "Telepítések"
+
+#~ msgctxt "@item:inlistbox Filters removals in the history view"
+#~ msgid "Removals"
+#~ msgstr "Eltávolítások"
+
+#~ msgctxt "@title:column"
+#~ msgid "Date"
+#~ msgstr "Dátum"
+
+#~ msgctxt "@info:status describes a past-tense action"
+#~ msgid "Installed"
+#~ msgstr "Telepítve"
+
+#~ msgctxt "@info:status describes a past-tense action"
+#~ msgid "Upgraded"
+#~ msgstr "frissítve"
+
+#~ msgctxt "@status describes a past-tense action"
+#~ msgid "Downgraded"
+#~ msgstr "visszaléptetve alacsonyabb verzióra"
+
+#~ msgctxt "@status describes a past-tense action"
+#~ msgid "Purged"
+#~ msgstr "teljesen eltávolítva"
+
+#~ msgctxt "@item example: muon installed at 16:00"
+#~ msgid "%1 %2 at %3"
+#~ msgstr "A(z) %1 %2 ekkor: %3"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "No Change"
+#~ msgstr "Nincs változás"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Install"
+#~ msgstr "Telepítésre"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Upgrade"
+#~ msgstr "Frissítésre"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Downgrade"
+#~ msgstr "Visszalépés alacsonyabb verzióra"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Held"
+#~ msgstr "Tartott"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Installed"
+#~ msgstr "Telepített"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Upgradeable"
+#~ msgstr "Frissíthető"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Broken"
+#~ msgstr "Törött"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Install Broken"
+#~ msgstr "Törött telepítése"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Orphaned"
+#~ msgstr "Árva"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "New in repository"
+#~ msgstr "Új a tárolóban"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Residual Configuration"
+#~ msgstr "Beállításra vár"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Not Downloadable"
+#~ msgstr "Nem letölthető"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Purge"
+#~ msgstr "Teljes eltávolításra"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Important for base install"
+#~ msgstr "Fontos az alaptelepítéshez"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Version overridden"
+#~ msgstr "Verzió felülbírálva"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Required by other packages"
+#~ msgstr "Szükséges más csomagokhoz"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Installed (auto-removable)"
+#~ msgstr "Telepített (automatikusan eltávolítható)"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Policy Broken"
+#~ msgstr "Törött szabály"
+
+#~ msgctxt "@info:status Package locked at a certain version"
+#~ msgid "Locked"
+#~ msgstr "zárolt"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Manually held back"
+#~ msgstr "Kézzel visszatartott"
+
+#~ msgctxt "@title:window"
+#~ msgid "Initialization Error"
+#~ msgstr "Inicializálási hiba"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unable to Obtain Package System Lock"
+#~ msgstr "A csomagrendszer nem zárolható"
+
+#~ msgctxt "@title:window"
+#~ msgid "Low Disk Space"
+#~ msgstr "Kevés a lemezterület"
+
+#~ msgctxt "@title:window"
+#~ msgid "Failed to Apply Changes"
+#~ msgstr "A változtatások alkalmazása meghiúsult"
+
+#~ msgctxt "@title:window"
+#~ msgid "Authentication error"
+#~ msgstr "Hitelesítési hiba"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unexpected Error"
+#~ msgstr "Váratlan hiba"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unknown Error"
+#~ msgstr "Ismeretlen hiba"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The package system could not be initialized, your configuration may be "
+#~ "broken."
+#~ msgstr ""
+#~ "A csomagrendszer nem inicializálható, a beállítások valószínűleg sérültek."
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Another application seems to be using the package system at this time. "
+#~ "You must close all other package managers before you will be able to "
+#~ "install or remove any packages."
+#~ msgstr ""
+#~ "Úgy tűnik, hogy már fut egy másik csomagkezelő. Zárjon be minden egyéb "
+#~ "csomagkezelőt csomagok telepítéséhez vagy eltávolításához."
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "You do not have enough disk space in the directory at %1 to continue with "
+#~ "this operation."
+#~ msgstr ""
+#~ "Nincs elegendő szabad hely a művelet folytatásához a következő "
+#~ "könyvtárban: %1."
+
+#~ msgctxt "@label"
+#~ msgid "Could not download packages"
+#~ msgstr "A csomagok nem tölthetők le"
+
+#~ msgctxt "@label"
+#~ msgid "An error occurred while applying changes:"
+#~ msgstr "Hiba történt a változtatások alkalmazása során:"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "This operation cannot continue since proper authorization was not provided"
+#~ msgstr "A művelet megfelelő jogosultságok hiányában nem folytatható"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "It appears that the QApt worker has either crashed or disappeared. Please "
+#~ "report a bug to the QApt maintainers"
+#~ msgstr ""
+#~ "Úgy tűnik, hogy a QApt munkaszál összeomlott, vagy eltűnt. Jelentse a "
+#~ "hibát a QApt karbantartóinak"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The following package has not been verified by its author. Downloading "
+#~ "untrusted packages has been disallowed by your current configuration."
+#~ msgid_plural ""
+#~ "The following packages have not been verified by their authors. "
+#~ "Downloading untrusted packages has been disallowed by your current "
+#~ "configuration."
+#~ msgstr[0] ""
+#~ "A szerzők nem ellenőrizték a következő csomagot. A jelenlegi beállítások "
+#~ "nem engedélyezik a megbízhatatlan csomagok letöltését."
+#~ msgstr[1] ""
+#~ "A szerzők nem ellenőrizték a következő csomagokat. A jelenlegi "
+#~ "beállítások nem engedélyezik a megbízhatatlan csomagok letöltését."
+
+#~ msgctxt "@action Reverts all potential changes to the cache"
+#~ msgid "Unmark All"
+#~ msgstr "A jelölés megszüntetése"
+
+#~ msgctxt "@action Opens the software sources configuration dialog"
+#~ msgid "Configure Software Sources"
+#~ msgstr "Szoftverforrások beállítása"
+
+#~ msgctxt "@action"
+#~ msgid "Read Markings..."
+#~ msgstr "Jelölések olvasása…"
+
+#~ msgctxt "@action"
+#~ msgid "Save Markings As..."
+#~ msgstr "Jelölések mentése másként…"
+
+#~ msgctxt "@action"
+#~ msgid "Save Package Download List..."
+#~ msgstr "Csomag letöltési lista mentése…"
+
+#~ msgctxt "@action"
+#~ msgid "Download Packages From List..."
+#~ msgstr "Csomagok letöltése listából…"
+
+#~ msgctxt "@action"
+#~ msgid "Add Downloaded Packages"
+#~ msgstr "Letöltött csomagok hozzáadása"
+
+#~ msgctxt "@action"
+#~ msgid "Save Installed Packages List..."
+#~ msgstr "Telepített csomagok listájának mentése…"
+
+#~ msgctxt "@action::inmenu"
+#~ msgid "History..."
+#~ msgstr "Előzmények…"
+
+#~ msgctxt "@action"
+#~ msgid "Upgrade"
+#~ msgstr "Frissítés"
+
+#~ msgctxt "Notification when a new version of Kubuntu is available"
+#~ msgid "A new version of Kubuntu is available."
+#~ msgstr "Új Kubuntu kiadás érhető el."
+
+#~ msgctxt "@title:window"
+#~ msgid "Save Markings As"
+#~ msgstr "Jelölések mentése másként"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The document could not be saved, as it was not possible to write to "
+#~ "<filename>%1</filename>\n"
+#~ "\n"
+#~ "Check that you have write access to this file or that enough disk space "
+#~ "is available."
+#~ msgstr ""
+#~ "A dokumentum nem menthető, nem sikerült írni a(z) <filename>%1</filename> "
+#~ "fájlba.\n"
+#~ "\n"
+#~ "Ellenőrizze, hogy jogosult-e a fájl írására, vagy elérhető-e elég szabad "
+#~ "lemezterület."
+
+#~ msgctxt "@title:window"
+#~ msgid "Save Installed Packages List As"
+#~ msgstr "Csomaglita mentése másként"
+
+#~ msgctxt "@title:window"
+#~ msgid "Save Download List As"
+#~ msgstr "Letöltési lista mentése másként"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Could not mark changes. Please make sure that the file is a markings file "
+#~ "created by either the Muon Package Manager or the Synaptic Package "
+#~ "Manager."
+#~ msgstr ""
+#~ "Nem jelölhetők ki a változtatások. Ellenőrizze, hogy a fájl egy, a Muon "
+#~ "vagy a Synaptic csomagkezelő által létrehozott jelölőfájl-e."
+
+#~ msgctxt "@title:window"
+#~ msgid "Choose a Directory"
+#~ msgstr "Válasszon egy könyvtárat"
+
+#~ msgctxt "@label"
+#~ msgid "%1 package was successfully added to the cache"
+#~ msgid_plural "%1 packages were successfully added to the cache"
+#~ msgstr[0] "%1 csomag sikeresen hozzáadva a gyorsítótárhoz"
+#~ msgstr[1] "%1 csomag sikeresen hozzáadva a gyorsítótárhoz"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "No valid packages could be found in this directory. Please make sure the "
+#~ "packages are compatible with your computer and are at the latest version."
+#~ msgstr ""
+#~ "Nem találhatók érvényes csomagok a könyvtárban. Ellenőrizze, hogy a "
+#~ "csomagok kompatibilisek-e a számítógépével, és hogy a legújabb verziójúak-"
+#~ "e."
+
+#~ msgctxt "@title:window"
+#~ msgid "Packages Could Not be Found"
+#~ msgstr "A csomagok nem találhatók"
+
+#~ msgctxt "@title:window"
+#~ msgid "Package History"
+#~ msgstr "Csomag előzmények"
+
+#~ msgid "No reviews available for Debian."
+#~ msgstr "Nem érhetők el értékelések Debianhoz."
+
+#~ msgid "Log in to the Ubuntu SSO service"
+#~ msgstr "Bejelentkezés az Ubuntu SSO szolgáltatásba"
+
+#~ msgid "PackageKit error found"
+#~ msgstr "PackageKit hiba történt"
+
+#~ msgid "PackageKit media change"
+#~ msgstr "PackageKit médiacsere"
+
+#~ msgid "PackageKit Error"
+#~ msgstr "PackageKit hiba"
+
+#, fuzzy
+#~| msgctxt "Category"
+#~| msgid "dummy"
+#~ msgctxt "Category"
+#~ msgid "dummy 5"
+#~ msgstr "üres"
+
+#, fuzzy
+#~| msgctxt "Category"
+#~| msgid "dummy"
+#~ msgctxt "Category"
+#~ msgid "dummy 6"
+#~ msgstr "üres"
+
+#, fuzzy
+#~| msgctxt "Category"
+#~| msgid "dummy"
+#~ msgctxt "Category"
+#~ msgid "dummy 7"
+#~ msgstr "üres"
+
+#, fuzzy
+#~| msgctxt "Category"
+#~| msgid "dummy"
+#~ msgctxt "Category"
+#~ msgid "dummy 8"
+#~ msgstr "üres"
+
+#, fuzzy
+#~| msgctxt "Category"
+#~| msgid "dummy"
+#~ msgctxt "Category"
+#~ msgid "dummy 9"
+#~ msgstr "üres"
+
+#, fuzzy
+#~| msgctxt "Category"
+#~| msgid "dummy"
+#~ msgctxt "Category"
+#~ msgid "dummy 10"
+#~ msgstr "üres"
+
+#, fuzzy
+#~| msgctxt "Category"
+#~| msgid "dummy"
+#~ msgctxt "Category"
+#~ msgid "dummy 11"
+#~ msgstr "üres"
+
+#~ msgctxt "@label The label used for viewing all members of this category"
+#~ msgid "All"
+#~ msgstr "Összes"
+
+#~ msgctxt "Category"
+#~ msgid "Unknown"
+#~ msgstr "Ismeretlen"
+
+#~ msgid "Something went wrong!"
+#~ msgstr "Valami elromlott!"
+
+#~ msgid "Error"
+#~ msgstr "Hiba"
+
+#~ msgid "There are a couple of transaction messages:"
+#~ msgstr "Van egy pár tranzakciós üzenet:"
+
+#~ msgid "Transaction messages"
+#~ msgstr "Tranzakció üzenetek"
+
+#~ msgid "Another transaction is still running!"
+#~ msgstr "Egy másik tranzakció még mindig fut!"
+
+#~ msgid "Started downloading packages..."
+#~ msgstr "Csomagok letöltése elindítva…"
+
+#~ msgid "Started processing packages..."
+#~ msgstr "Csomagok feldolgozása elindítva…"
+
+#~ msgid "Started downloading %1..."
+#~ msgstr "%1 letöltése elindítva…"
+
+#~ msgid "Started processing %1..."
+#~ msgstr "%1 feldolgozása elindítva…"
+
+#~ msgctxt "Category"
+#~ msgid "Wallpapers"
+#~ msgstr "Háttérképek"
+
+#~ msgid "Enter %1 credentials for MakePlayLive (http://makeplaylive.com)"
+#~ msgstr ""
+#~ "%1 hitelesítési adatainak megadása a MakePlayLive-hoz (http://"
+#~ "makeplaylive.com)"
+
+#, fuzzy
+#~| msgctxt "@info:status"
+#~| msgid "Downloading"
+#~ msgctxt "@label Column label"
+#~ msgid "Download Size"
+#~ msgstr "Letöltés"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"admin"
+#~ "\""
+#~ msgid "System Administration"
+#~ msgstr "Rendszeradminisztráció"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"cli-"
+#~ "mono\""
+#~ msgid "Mono/CLI Infrastructure"
+#~ msgstr "Mono/CLI infrastruktúra"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"comm"
+#~ "\""
+#~ msgid "Communication"
+#~ msgstr "Kommunikáció"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"database\""
+#~ msgid "Databases"
+#~ msgstr "Adatbázisok"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"devel"
+#~ "\""
+#~ msgid "Development"
+#~ msgstr "Fejlesztés"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"doc\""
+#~ msgid "Documentation"
+#~ msgstr "Dokumentáció"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"debug"
+#~ "\""
+#~ msgid "Debug"
+#~ msgstr "Hibakeresés"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"editors\""
+#~ msgid "Editors"
+#~ msgstr "Szerkesztők"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"electronics\""
+#~ msgid "Electronics"
+#~ msgstr "Elektronika"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"embedded\""
+#~ msgid "Embedded Devices"
+#~ msgstr "Beágyazott eszközök"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"fonts"
+#~ "\""
+#~ msgid "Fonts"
+#~ msgstr "Betűkészletek"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"games"
+#~ "\""
+#~ msgid "Games and Amusement"
+#~ msgstr "Játék és szórakozás"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"gnome"
+#~ "\""
+#~ msgid "GNOME Desktop Environment"
+#~ msgstr "GNOME asztali környezet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"graphics\""
+#~ msgid "Graphics"
+#~ msgstr "Grafika"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"gnu-r"
+#~ "\""
+#~ msgid "GNU R Statistical System"
+#~ msgstr "GNU R statisztikai rendszer"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"gnustep\""
+#~ msgid "Gnustep Desktop Environment"
+#~ msgstr "Gnustep asztali környezet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"hamradio\""
+#~ msgid "Amateur Radio"
+#~ msgstr "Amatőr rádiózás"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"haskell\""
+#~ msgid "Haskell Programming Language"
+#~ msgstr "Haskell programozási nyelv"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"httpd"
+#~ "\""
+#~ msgid "Web Servers"
+#~ msgstr "Webkiszolgálók"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"interpreters\""
+#~ msgid "Interpreted Computer Languages"
+#~ msgstr "Értelmezett programozási nyelvek"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"java"
+#~ "\""
+#~ msgid "Java Programming Language"
+#~ msgstr "Java programozási nyelv"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"kde\""
+#~ msgid "KDE Software Compilation"
+#~ msgstr "KDE Software Compilation"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"kernel\""
+#~ msgid "Kernel and Modules"
+#~ msgstr "Kernel és modulok"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"libdevel\""
+#~ msgid "Libraries - Development"
+#~ msgstr "Fejlesztői függvénytárak"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"libs"
+#~ "\""
+#~ msgid "Libraries"
+#~ msgstr "Függvénytárak"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"lisp"
+#~ "\""
+#~ msgid "Lisp Programming Language"
+#~ msgstr "Lisp programozási nyelv"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"localization\""
+#~ msgid "Localization"
+#~ msgstr "Honosítás"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"mail"
+#~ "\""
+#~ msgid "Email"
+#~ msgstr "E-mail"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"math"
+#~ "\""
+#~ msgid "Mathematics"
+#~ msgstr "Matematika"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"misc"
+#~ "\""
+#~ msgid "Miscellaneous - Text-based"
+#~ msgstr "Egyéb - szöveg-alapú"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"net\""
+#~ msgid "Networking"
+#~ msgstr "Hálózatkezelés"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"news"
+#~ "\""
+#~ msgid "Newsgroups"
+#~ msgstr "Hírcsoportok"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"ocaml"
+#~ "\""
+#~ msgid "OCaml Programming Language"
+#~ msgstr "OCaml programozási nyelv"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"oldlibs\""
+#~ msgid "Libraries - Old"
+#~ msgstr "Elavult függvénytárak"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"otherosfs\""
+#~ msgid "Cross Platform"
+#~ msgstr "Keresztplatform"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"perl"
+#~ "\""
+#~ msgid "Perl Programming Language"
+#~ msgstr "Perl programozási nyelv"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"php\""
+#~ msgid "PHP Programming Language"
+#~ msgstr "PHP programozási nyelv"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"python\""
+#~ msgid "Python Programming Language"
+#~ msgstr "Python programozási nyelv"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"ruby"
+#~ "\""
+#~ msgid "Ruby Programming Language"
+#~ msgstr "Ruby programozási nyelv"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"science\""
+#~ msgid "Science"
+#~ msgstr "Tudomány"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"shells\""
+#~ msgid "Shells"
+#~ msgstr "Parancsértelmezők"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"sound"
+#~ "\""
+#~ msgid "Multimedia"
+#~ msgstr "Multimédia"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"tex\""
+#~ msgid "TeX Authoring"
+#~ msgstr "TeX-szerkesztés"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"text"
+#~ "\""
+#~ msgid "Word Processing"
+#~ msgstr "Szövegszerkesztés"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"utils"
+#~ "\""
+#~ msgid "Utilities"
+#~ msgstr "Segédprogramok"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"vcs\""
+#~ msgid "Version Control Systems"
+#~ msgstr "Verziókezelő rendszerek"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"web\""
+#~ msgid "Internet"
+#~ msgstr "Internet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"x11\""
+#~ msgid "Miscellaneous - Graphical"
+#~ msgstr "Egyéb - grafikus"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"xfce"
+#~ "\""
+#~ msgid "Xfce Desktop Environment"
+#~ msgstr "Xfce asztali környezet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"zope"
+#~ "\""
+#~ msgid "Zope/Plone Environment"
+#~ msgstr "Zope/Plone-környezet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"unknown\""
+#~ msgid "Unknown"
+#~ msgstr "Ismeretlen"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"alien"
+#~ "\""
+#~ msgid "Converted from RPM by Alien"
+#~ msgstr "RPM-ből átalakítva Aliennel"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"translations\""
+#~ msgid "Internationalization and Localization"
+#~ msgstr "Nemzetköziség és honosítás"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"metapackages\""
+#~ msgid "Meta Packages"
+#~ msgstr "Metacsomagok"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Debian package section \"non-US\", for packages that "
+#~ "cannot be shipped in the US"
+#~ msgid "Restricted On Export"
+#~ msgstr "Exportkorlátozás alatti"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"non-"
+#~ "free\""
+#~ msgid "Non-free"
+#~ msgstr "Nem szabad"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"contrib\""
+#~ msgid "Contrib"
+#~ msgstr "Külső"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"education\""
+#~ msgid "Education"
+#~ msgstr "Oktatás"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"introspection\""
+#~ msgid "GObject Introspection Data"
+#~ msgstr "GObject betekintési adatok"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Common"
+#~ msgstr "Általános"
+
+#~ msgctxt "@item:inlistbox CPU architecture"
+#~ msgid "32-bit"
+#~ msgstr "32 bit"
+
+#~ msgctxt "@item:inlistbox CPU architecture"
+#~ msgid "64-bit"
+#~ msgstr "64 bit"
+
+#~ msgctxt "@item:inlistbox PU architecture"
+#~ msgid "Power PC"
+#~ msgstr "PowerPC"
+
+#~ msgctxt "@label Easter Egg"
+#~ msgid "This Muon has super cow powers"
+#~ msgstr "A Muon a Szupertehén erejével rendelkezik"
+
+#~ msgid "Show notifications for available updates"
+#~ msgstr "Értesítések megjelenítése az elérhető frissítésekhez"
+
+#~ msgid "Show the number of available updates"
+#~ msgstr "Elérhető frissítések számának megjelenítése"
+
+#~ msgid "Checking for bugs..."
+#~ msgstr "Hibák keresése…"
+
+#~ msgid "Cannot kill process"
+#~ msgstr "Nem lehet kilőni a folyamatot"
+
+#~ msgid ""
+#~ "PackageKit does not tell us a useful status right now! Its status is %1."
+#~ msgstr ""
+#~ "A PackageKit mostanáig nem közölt velünk hasznos állapotot! Az állapota: "
+#~ "%1."
+
+#~ msgid "Muon Notification Daemon"
+#~ msgstr "Muon értesítés démon"
+
+#~ msgid "A Notification Daemon for Muon"
+#~ msgstr "Egy értesítés démon a Muonhoz"
+
+#~ msgid ""
+#~ "(C) 2013 Lukas Appelhans, (C) 2009-2012 Jonathan Thomas, (C) 2009 Harald "
+#~ "Sitter"
+#~ msgstr ""
+#~ "© Lukas Appelhans, 2013., © Jonathan Thomas, 2009-2012., © Harald Sitter, "
+#~ "2009."
+
+#~ msgid "%1 update notifier"
+#~ msgstr "%1 frissítés értesítő"
+
+#~ msgid "Muon %1 update notifier"
+#~ msgstr "Muon %1 frissítés értesítő"
+
+#~ msgid "Open Muon..."
+#~ msgstr "Muon megnyitása…"
+
+#~ msgid "Quit notifier..."
+#~ msgstr "Kilépés az értesítőből…"
+
+#~ msgid "A security update is available for your system."
+#~ msgstr "Egy biztonsági frissítés érhető el a rendszerhez."
+
+#~ msgid "An update is available for your system!"
+#~ msgstr "Egy frissítés érhető el a rendszerhez!"
+
+#~ msgid ""
+#~ "There are %1 updated packages, of which %2 were updated for security "
+#~ "reasons!"
+#~ msgstr ""
+#~ "%1 frissített csomag van, ezek közül %2 biztonsági okok miatt lett "
+#~ "frissítve!"
+
+#~ msgid "%1 packages were updated for security reasons"
+#~ msgstr "%1 csomag biztonsági okok miatt lett frissítve"
+
+#~ msgid "A system update is recommended"
+#~ msgstr "A rendszerfrissítés javasolt"
+
+#~ msgid "System update available"
+#~ msgstr "Rendszerfrissítés érhető el"
+
+#~ msgid "Your system is up-to-date!"
+#~ msgstr "A rendszere naprakész!"
+
+#~ msgid "No system update available"
+#~ msgstr "Nem érhetők el rendszerfrissítések"
+
+#~ msgid "Akabei Backend"
+#~ msgstr "Akabei háttérprogram"
+
+#~ msgid "Chakra-Applications in your system"
+#~ msgstr "Chakra-alkalmazások az ön rendszerén"
+
+#~ msgid "Applications Backend"
+#~ msgstr "Alkalmazások modul"
+
+#~ msgid "Applications in your system"
+#~ msgstr "A rendszer alkalmazásai"
+
+#~ msgid "Bodega Backend"
+#~ msgstr "Bodega modul"
+
+#~ msgid "Install Bodega data in your system"
+#~ msgstr "Bodega adatok telepítése a rendszerére"
+
+#~ msgid "Dummy Backend"
+#~ msgstr "Névtelen háttérprogram"
+
+#~ msgid "Dummy backend to test muon frontends"
+#~ msgstr "Névtelen háttérprogram a muon előtétprogramok teszteléséhez"
+
+#~ msgid "KNewStuff Backend"
+#~ msgstr "KNewStuff modul"
+
+#~ msgid "Install KNewStuff data in your system"
+#~ msgstr "A KNewStuff modul telepítése"
+
+#~ msgid "Install PackageKit data in your system"
+#~ msgstr "PackageKit adatok telepítése a rendszerére"
+
+#~ msgid "Finished."
+#~ msgstr "Befejeződött."
+
+#~ msgid "Available updates"
+#~ msgstr "Elérhető frissítések"
+
+#~ msgid "Distribution upgrades"
+#~ msgstr "Disztribúciófrissítések"
+
+#~ msgid "Use both popups and tray icons"
+#~ msgstr "Felugró értesítések és ikon a Paneltálcán"
+
+#~ msgid "Tray icons only"
+#~ msgstr "Csak ikon"
+
+#~ msgid "Popup notifications only"
+#~ msgstr "Csak felugró értesítések"
+
+#~ msgid "Enter %1 credentials"
+#~ msgstr "%1 hitelesítési adatainak megadása"
+
+#~ msgctxt "@info:status Progress text when done"
+#~ msgid "Done"
+#~ msgstr "Kész"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "There are marked changes that have not yet been applied. Do you want to "
+#~ "save your changes or discard them?"
+#~ msgstr ""
+#~ "Kijelölt változtatások vannak, amiket még nem alkalmazott. Menti a "
+#~ "változtatásokat, vagy eldobja őket?"
+
+#~ msgctxt "@info:status"
+#~ msgid "Muon is making system changes"
+#~ msgstr "A Muon változtatásokat hajt végre a rendszeren"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Changes could not be applied since some packages could not be downloaded."
+#~ msgstr ""
+#~ "A változtatások nem alkalmazhatók, mert néhány csomag nem tölthető le."
+
+#~ msgctxt "@label"
+#~ msgid "The size of the downloaded items did not equal the expected size."
+#~ msgstr "A letöltött elemek mérete nem egyezik a várt mérettel."
+
+#~ msgctxt "@title:window"
+#~ msgid "Size Mismatch"
+#~ msgstr "Méreteltérés"
+
+#~ msgctxt "@title:window"
+#~ msgid "Some Packages Could not be Downloaded"
+#~ msgstr "Néhány csomag nem tölthető le"
+
+#~ msgctxt "@label Shows which package failed"
+#~ msgid "Package: %1"
+#~ msgstr "Csomag: %1"
+
+#~ msgctxt "@title:window"
+#~ msgid "Commit error"
+#~ msgstr "Végrehajtási hiba"
+
+#~ msgid "Working..."
+#~ msgstr "Munka…"
+
+#~ msgctxt "@label Formatted: username, date"
+#~ msgid "%1, %2"
+#~ msgstr "%1, %2"
+
+#~ msgctxt "@label"
+#~ msgid "This review was written for an older version (Version: %1)"
+#~ msgstr "Ez az értékelés egy korábbi verzióhoz (%1) íródott."
+
+#~ msgctxt "@label"
+#~ msgid "%1 out of %2 person found this review useful"
+#~ msgid_plural "%1 out of %2 people found this review useful"
+#~ msgstr[0] "%2 emberből %1 találta hasznosnak ezt az értékelést"
+#~ msgstr[1] "%2 emberből %1 találta hasznosnak ezt az értékelést"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Muon always selects the most applicable version available. If you force a "
+#~ "different version from the default one, errors in the dependency handling "
+#~ "can occur."
+#~ msgstr ""
+#~ "A Muon mindig a legmegfelelőbb verziót választja ki. Ha az "
+#~ "alapértelmezettől eltérő verziót kényszerít, hibák léphetnek fel a "
+#~ "függőségkezelésben."
+
+#~ msgctxt "@action:button"
+#~ msgid "Force Version"
+#~ msgstr "Verzió kényszerítése"
+
+#~ msgctxt "@label Label preceding the package maintainer"
+#~ msgid "Maintainer:"
+#~ msgstr "Karbantartó:"
+
+#~ msgctxt "@label The parent package that this package comes from"
+#~ msgid "Source Package:"
+#~ msgstr "Forráscsomag:"
+
+#~ msgctxt "@label Label preceding the package size"
+#~ msgid "Installed Size:"
+#~ msgstr "Telepített méret:"
+
+#~ msgctxt "@title:group"
+#~ msgid "Available Version"
+#~ msgstr "Elérhető verzió"
+
+#~ msgctxt "@label"
+#~ msgid "Mark for:"
+#~ msgstr "Megjelölés:"
+
+#~ msgctxt "@action:button"
+#~ msgid "Installation"
+#~ msgstr "Telepítésre"
+
+#~ msgctxt "@action:button"
+#~ msgid "Removal"
+#~ msgstr "Eltávolításra"
+
+#~ msgctxt "@action:button"
+#~ msgid "Upgrade"
+#~ msgstr "Frissítésre"
+
+#~ msgctxt "@action:button"
+#~ msgid "Reinstallation"
+#~ msgstr "Újratelepítésre"
+
+#~ msgctxt "@action:button"
+#~ msgid "Purge"
+#~ msgstr "Teljes eltávolításra"
+
+#~ msgctxt "@action:button"
+#~ msgid "Unmark"
+#~ msgstr "A jelölés megszüntetése"
+
+#~ msgctxt "@info Tells how long Canonical, Ltd. will support a package"
+#~ msgid "Canonical provides critical updates for %1 until %2."
+#~ msgstr ""
+#~ "A Canonical %2-ig biztosít kritikus frissítéseket a következőhöz: %1."
+
+#~ msgctxt "@info Tells how long Canonical, Ltd. will support a package"
+#~ msgid ""
+#~ "Canonical does not provide updates for %1. Some updates may be provided "
+#~ "by the Ubuntu community."
+#~ msgstr ""
+#~ "A Canonical nem biztosít frissítéseket a következőhöz: %1. Néhány "
+#~ "frissítést az Ubuntu közösség biztosíthat."
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Dependencies of the Current Version"
+#~ msgstr "A jelenlegi verzió függőségei"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Dependencies of the Latest Version"
+#~ msgstr "A legutóbbi verzió függőségei"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Dependants (Reverse Dependencies)"
+#~ msgstr "Függő (fordított függőségek)"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Virtual Packages Provided"
+#~ msgstr "Virtuális csomagok"
+
+#~ msgctxt "@label"
+#~ msgid "This package does not have any dependencies"
+#~ msgstr "Ennek a csomagnak nincsenek függőségei"
+
+#~ msgctxt "@label"
+#~ msgid "This package has no dependents. (Nothing depends on it.)"
+#~ msgstr "Ez a csomag nem függősége egyetlen másik csomagnak sem."
+
+#~ msgctxt "@label"
+#~ msgid "This package does not provide any virtual packages"
+#~ msgstr "Ez a csomag nem biztosít egyetlen virtuális csomagot sem"
+
+#~ msgctxt "@title:column"
+#~ msgid "Package"
+#~ msgstr "Csomag"
+
+#~ msgctxt "@title:column"
+#~ msgid "Size"
+#~ msgstr "Méret"
+
+#~ msgctxt "@title:column"
+#~ msgid "Progress"
+#~ msgstr "Folyamat"
+
+#~ msgctxt "@info:status Progress text when a download is ignored"
+#~ msgid "Ignored"
+#~ msgstr "Mellőzve"
+
+#~ msgid "Status"
+#~ msgstr "Állapot"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Mark for Installation"
+#~ msgstr "Telepítésre"
+
+#~ msgctxt "@action:button"
+#~ msgid "Mark for Removal"
+#~ msgstr "Eltávolításra"
+
+#~ msgctxt "@action:button"
+#~ msgid "Mark for Upgrade"
+#~ msgstr "Frissítésre"
+
+#~ msgctxt "@action:button"
+#~ msgid "Mark for Reinstallation"
+#~ msgstr "Újratelepítésre"
+
+#~ msgctxt "@action:button"
+#~ msgid "Mark for Purge"
+#~ msgstr "Teljes eltávolításra"
+
+#~ msgctxt "@action:button"
+#~ msgid "Lock Package at Current Version"
+#~ msgstr "Jelenlegi csomagverzió zárolása"
+
+#~ msgctxt "@action:button"
+#~ msgid "Unlock package"
+#~ msgstr "Csomag feloldása"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Removing this package may break your system. Are you sure you want to "
+#~ "remove it?"
+#~ msgstr ""
+#~ "Ezen csomag eltávolítása károsíthatja a rendszerét. Biztosan eltávolítja?"
+
+#~ msgctxt "@label"
+#~ msgid "Warning - Removing Important Package"
+#~ msgstr "Figyelmeztetés - Fontos csomag eltávolítása"
+
+#~ msgctxt "@label"
+#~ msgid "The \"%1\" package could not be marked for installation or upgrade:"
+#~ msgstr "A(z) „%1” csomag nem jelölhető ki telepítésre vagy frissítésre:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unable to Mark Package"
+#~ msgstr "A csomag nem jelölhető ki"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The \"%1\" package has no available version, but exists in the database.\n"
+#~ "\tThis typically means that the package was mentioned in a dependency and "
+#~ "never uploaded, has been obsoleted, or is not available from the "
+#~ "currently-enabled repositories."
+#~ msgstr ""
+#~ "A(z) „%1” csomagnak nincs elérhető verziója, de szerepel az "
+#~ "adatbázisban.\n"
+#~ "\tEz azt jelenti, hogy a csomag függősége egy másik csomagnak, de soha "
+#~ "nem töltötték fel, elavult, vagy nem érhető el a jelenleg engedélyezett "
+#~ "tárolókból."
+
+#~ msgctxt "@label Example: Depends: libqapt 0.1, but 0.2 is to be installed"
+#~ msgid "%1: %2 %3, but %4 is to be installed"
+#~ msgstr "%1: %2, %3, de %4 kerül telepítésre"
+
+#~ msgctxt "@label Example: or libqapt 0.1, but 0.2 is to be installed"
+#~ msgid "or %1 %2, but %3 is to be installed"
+#~ msgstr "vagy %1, %2, de %3 kerül telepítésre"
+
+#~ msgctxt "@label Example: Depends: libqapt, but is not installable"
+#~ msgid "%1: %2, but it is not installable"
+#~ msgstr "%1: %2, de az nem telepíthető"
+
+#~ msgctxt "@label Example: or libqapt, but is not installable"
+#~ msgid "or %1, but is not installable"
+#~ msgstr "vagy %1, de az nem telepíthető"
+
+#~ msgctxt "@label Example: Depends: libqapt, but it is a virtual package"
+#~ msgid "%1: %2, but it is a virtual package"
+#~ msgstr "%1: %2, de az egy virtuális csomag"
+
+#~ msgctxt "@label Example: or libqapt, but it is a virtual package"
+#~ msgid "or %1, but it is a virtual package"
+#~ msgstr "vagy %1, de az egy virtuális csomag"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Details"
+#~ msgstr "Részletek"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Technical Details"
+#~ msgstr "Technikai részletek"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Dependencies"
+#~ msgstr "Függőségek"
+
+#~ msgctxt "@label Download rate"
+#~ msgid "Download rate: %1/s"
+#~ msgstr "Letöltési sebesség: %1/s"
+
+#~ msgctxt "@info:status"
+#~ msgid "Rebuilding Search Index"
+#~ msgstr "Keresési index újraépítése"
+
+#~ msgctxt "@info:status"
+#~ msgid "%1 installed, "
+#~ msgstr "%1 telepített, "
+
+#~ msgctxt "@info:status"
+#~ msgid "%1 upgradeable,"
+#~ msgstr "%1 frissíthető,"
+
+#~ msgctxt "@info:status"
+#~ msgid "%1 upgradeable"
+#~ msgstr "%1 frissíthető"
+
+#~ msgctxt "@info:status Part of the status label"
+#~ msgid " %1 to install/upgrade"
+#~ msgstr " %1 telepítendő/frissítendő"
+
+#~ msgctxt ""
+#~ "@info:status Label for the number of packages pending removal when "
+#~ "packages are also pending upgrade"
+#~ msgid ", %1 to remove"
+#~ msgstr ", %1 eltávolítandó"
+
+#~ msgctxt ""
+#~ "@info:status Label for the number of packages pending removal when there "
+#~ "are only removals"
+#~ msgid " %1 to remove"
+#~ msgstr " %1 eltávolítandó"
+
+#~ msgctxt "@label showing download and install size"
+#~ msgid "%1 to download, %2 of space to be freed"
+#~ msgstr "%1 letöltendő, %2 hely szabadul fel"
+
+#~ msgctxt "@item:intext Label for when the remaining time is unknown"
+#~ msgid " - Unknown time remaining"
+#~ msgstr " - A hátralévő idő ismeretlen"
+
+#~ msgctxt "@action:button"
+#~ msgid "Get Screenshot..."
+#~ msgstr "Képernyőkép letöltése…"
+
+#~ msgctxt "@title:window"
+#~ msgid "Screenshot"
+#~ msgstr "Képernyőkép"

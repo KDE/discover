@@ -1,0 +1,202 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Sergiu Bivol <sergiu@cip.md>, 2015, 2020, 2021, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-02-15 21:32+0000\n"
+"Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Lokalize 21.12.2\n"
+
+#: notifier/DiscoverNotifier.cpp:144
+#, kde-format
+msgid "View Updates"
+msgstr "Vezi actualizările"
+
+#: notifier/DiscoverNotifier.cpp:256
+#, kde-format
+msgid "Security updates available"
+msgstr "Actualizări de securitate disponibile"
+
+#: notifier/DiscoverNotifier.cpp:258
+#, kde-format
+msgid "Updates available"
+msgstr "Actualizări disponibile"
+
+#: notifier/DiscoverNotifier.cpp:260
+#, kde-format
+msgid "System up to date"
+msgstr "Sistem la zi"
+
+#: notifier/DiscoverNotifier.cpp:262
+#, kde-format
+msgid "Computer needs to restart"
+msgstr "Calculatorul trebuie repornit"
+
+#: notifier/DiscoverNotifier.cpp:264
+#, kde-format
+msgid "Offline"
+msgstr "Deconectat"
+
+#: notifier/DiscoverNotifier.cpp:266
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr "Se aplică actualizări nesupravegheate…"
+
+#: notifier/DiscoverNotifier.cpp:300
+#, kde-format
+msgid "Restart is required"
+msgstr "Repornire necesară"
+
+#: notifier/DiscoverNotifier.cpp:301
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr "Sistemul trebuie repornit pentru ca actualizările să intre în vigoare."
+
+#: notifier/DiscoverNotifier.cpp:307
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart"
+msgstr "Repornește"
+
+#: notifier/DiscoverNotifier.cpp:327
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "Înnoire"
+
+#: notifier/DiscoverNotifier.cpp:328
+#, kde-format
+msgid "Upgrade available"
+msgstr "Înnoiri disponibile"
+
+#: notifier/DiscoverNotifier.cpp:329
+#, kde-format
+msgid "New version: %1"
+msgstr "Versiune nouă: %1"
+
+#: notifier/main.cpp:39
+#, kde-format
+msgid "Discover Notifier"
+msgstr "Notificator Discover"
+
+#: notifier/main.cpp:41
+#, kde-format
+msgid "System update status notifier"
+msgstr "Notificator pentru actualizări de sistem"
+
+#: notifier/main.cpp:43
+#, kde-format
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2022 Echipa de dezvoltatori Plasma"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Sergiu Bivol"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sergiu@cip.md"
+
+#: notifier/main.cpp:52
+#, kde-format
+msgid "Replace an existing instance"
+msgstr "Înlocuiește o instanță existentă"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "Do not show the notifier"
+msgstr "Nu arăta notificatorul"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "hidden"
+msgstr "ascuns"
+
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#, kde-format
+msgid "Updates"
+msgstr "Actualizări"
+
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Open Discover…"
+msgstr "Deschide Discover…"
+
+#: notifier/NotifierItem.cpp:55
+#, kde-format
+msgid "See Updates…"
+msgstr "Vezi actualizările…"
+
+#: notifier/NotifierItem.cpp:60
+#, kde-format
+msgid "Refresh…"
+msgstr "Împrospătează…"
+
+#: notifier/NotifierItem.cpp:64
+#, kde-format
+msgid "Restart to apply installed updates"
+msgstr "Reporniți pentru a aplica actualizările instalate"
+
+#: notifier/NotifierItem.cpp:65
+#, kde-format
+msgid "Click to restart the device"
+msgstr "Apăsați pentru a reporni dispozitivul"
+
+#~ msgid "Restart..."
+#~ msgstr "Repornire..."
+
+#, fuzzy
+#~| msgid "%1 packages to update"
+#~ msgctxt "First part of '%1, %2'"
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "%1 pachete de actualizat"
+#~ msgstr[1] "%1 pachete de actualizat"
+#~ msgstr[2] "%1 pachete de actualizat"
+
+#, fuzzy
+#~| msgid "%1 security updates"
+#~ msgctxt "Second part of '%1, %2'"
+#~ msgid "of which 1 is security update"
+#~ msgid_plural "of which %1 are security updates"
+#~ msgstr[0] "%1 actualizări de securitate"
+#~ msgstr[1] "%1 actualizări de securitate"
+#~ msgstr[2] "%1 actualizări de securitate"
+
+#, fuzzy
+#~| msgid "%1 packages to update"
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "%1 pachete de actualizat"
+#~ msgstr[1] "%1 pachete de actualizat"
+#~ msgstr[2] "%1 pachete de actualizat"
+
+#, fuzzy
+#~| msgid "%1 security updates"
+#~ msgid "1 security update"
+#~ msgid_plural "%1 security updates"
+#~ msgstr[0] "%1 actualizări de securitate"
+#~ msgstr[1] "%1 actualizări de securitate"
+#~ msgstr[2] "%1 actualizări de securitate"
+
+#~ msgid "No packages to update"
+#~ msgstr "Niciun pachet de actualizat"
+
+#~ msgid "%1 packages to update, of which %2 are security updates"
+#~ msgstr ""
+#~ "%1 pachete de actualizat, dintre care %2 sunt actualizări de securitate"

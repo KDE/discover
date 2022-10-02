@@ -1,0 +1,2221 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# wantoyo <wantoyo@yahoo.com>, 2014.
+# Wantoyo <wantoyek@gmail.com>, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Linerly <linerly@protonmail.com>, 2022.
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: KDE Frameworks 5 Applications\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-29 00:47+0000\n"
+"PO-Revision-Date: 2022-09-23 07:47+0700\n"
+"Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
+"Language-Team: https://matrix.to/#/#i18n_kde_id:matrix.org\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.12.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Wantoyèk"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "wantoyek@gmail.com"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:89
+#, kde-format
+msgid "Proprietary"
+msgstr "Proprietari"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:91
+#, kde-format
+msgid "Public Domain"
+msgstr "Domain Publik"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:97
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
+#: libdiscover/UpdateModel/UpdateModel.cpp:117
+#: libdiscover/UpdateModel/UpdateModel.cpp:323
+#, kde-format
+msgid "Unknown"
+msgstr "Tak diketahui"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:135
+#: libdiscover/resources/AbstractResource.cpp:293
+#, kde-format
+msgid "%1, released on %2"
+msgstr "%1, dirilis pada %2"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:177
+#, kde-format
+msgid "All Audiences"
+msgstr "Semua Audiences"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:178
+#, kde-format
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Mild Content"
+msgstr "Konten Ringan"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:179
+#, kde-format
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Moderate Content"
+msgstr "Konten Sedang"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:180
+#, kde-format
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Intense Content"
+msgstr "Konten Intens"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:155
+#, kde-format
+msgid "Error while fetching reviews: %1"
+msgstr "Galat ketika sedang mengambil ulasan: %1"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:206
+#, kde-format
+msgid "Error while submitting usefulness: %1"
+msgstr "Galat ketika sedang mengajukan kebergunaan: %1"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:263
+#, kde-format
+msgid "Error while submitting review: %1"
+msgstr "Galat ketika sedang mengajukan ulasan: %1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Dummy Category"
+msgstr "Kategori Dumi"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:10
+#, kde-format
+msgctxt "Category"
+msgid "dummy"
+msgstr "dumi"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#, kde-format
+msgctxt "Category"
+msgid "dummy addons"
+msgstr "pernik dumi"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:27
+#, kde-format
+msgctxt "Category"
+msgid "dummy 1"
+msgstr "dumi 1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:35
+#, kde-format
+msgctxt "Category"
+msgid "dummy with stuff"
+msgstr "dumi dengan hal"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:42
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:57
+#, kde-format
+msgctxt "Category"
+msgid "dummy 2.1"
+msgstr "dumi 2.1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:50
+#, kde-format
+msgctxt "Category"
+msgid "dummy with quite some stuff"
+msgstr "dumi dengan beberapa hal"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:66
+#, kde-format
+msgctxt "Category"
+msgid "dummy 3"
+msgstr "dumi 3"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:76
+#, kde-format
+msgctxt "Category"
+msgid "dummy 4"
+msgstr "dumi 4"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:4
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Accessories"
+msgstr "Aksesoris"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:16
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:16
+#, kde-format
+msgctxt "Category"
+msgid "Accessibility"
+msgstr "Aksesibilitas"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:28
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:28
+#, kde-format
+msgctxt "Category"
+msgid "Developer Tools"
+msgstr "Peralatan Pengembang"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:38
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:38
+#, kde-format
+msgctxt "Category"
+msgid "Debugging"
+msgstr "Pendebugan"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:48
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:48
+#, kde-format
+msgctxt "Category"
+msgid "Graphic Interface Design"
+msgstr "Grafis Desain Antarmuka"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:57
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:57
+#, kde-format
+msgctxt "Category"
+msgid "IDEs"
+msgstr "IDE"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:66
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:66
+#, kde-format
+msgctxt "Category"
+msgid "Localization"
+msgstr "Pelokalan"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:76
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:76
+#, kde-format
+msgctxt "Category"
+msgid "Profiling"
+msgstr "Perprofilan"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:85
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:85
+#, kde-format
+msgctxt "Category"
+msgid "Web Development"
+msgstr "Pengembangan Web"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
+#, kde-format
+msgctxt "Category"
+msgid "Education"
+msgstr "Pendidikan"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:109
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:110
+#, kde-format
+msgctxt "Category"
+msgid "Science and Engineering"
+msgstr "Ilmu Pengetahuan dan Rancang-bangun"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:119
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:120
+#, kde-format
+msgctxt "Category"
+msgid "Astronomy"
+msgstr "Ilmu Perbintangan"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:127
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:128
+#, kde-format
+msgctxt "Category"
+msgid "Biology"
+msgstr "Biologi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:135
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:136
+#, kde-format
+msgctxt "Category"
+msgid "Chemistry"
+msgstr "Ilmu Kimia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:144
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:145
+#, kde-format
+msgctxt "Category"
+msgid "Computer Science and Robotics"
+msgstr "Ilmu Pengetahuan Komputer dan Robotik"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:156
+#, kde-format
+msgctxt "Category"
+msgid "Electronics"
+msgstr "Elektronika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:165
+#, kde-format
+msgctxt "Category"
+msgid "Engineering"
+msgstr "Rancang-bangun"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:173
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
+#, kde-format
+msgctxt "Category"
+msgid "Geography"
+msgstr "Geografi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:181
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:182
+#, kde-format
+msgctxt "Category"
+msgid "Geology"
+msgstr "Geologi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:190
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:191
+#, kde-format
+msgctxt "Category"
+msgid "Mathematics"
+msgstr "Matematika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:202
+#, kde-format
+msgctxt "Category"
+msgid "Physics"
+msgstr "Fisika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:212
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:213
+#, kde-format
+msgctxt "Category"
+msgid "Games"
+msgstr "Permainan"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:222
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:223
+#, kde-format
+msgctxt "Category"
+msgid "Arcade"
+msgstr "Arkade"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:231
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:232
+#, kde-format
+msgctxt "Category"
+msgid "Board Games"
+msgstr "Permainan Papan"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:240
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:241
+#, kde-format
+msgctxt "Category"
+msgid "Card Games"
+msgstr "Permainan Kartu"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:249
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:250
+#, kde-format
+msgctxt "Category"
+msgid "Puzzles"
+msgstr "Teka-teki"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:258
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:259
+#, kde-format
+msgctxt "Category"
+msgid "Role Playing"
+msgstr "Bermain Peran"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:267
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:268
+#, kde-format
+msgctxt "Category"
+msgid "Simulation"
+msgstr "Simulasi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:276
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:277
+#, kde-format
+msgctxt "Category"
+msgid "Strategy"
+msgstr "Strategi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:285
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:286
+#, kde-format
+msgctxt "Category"
+msgid "Sports"
+msgstr "Olah raga"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:294
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:295
+#, kde-format
+msgctxt "Category"
+msgid "Action"
+msgstr "Aksi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:303
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:304
+#, kde-format
+msgctxt "Category"
+msgid "Emulators"
+msgstr "Emulator"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:315
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:317
+#, kde-format
+msgctxt "Category"
+msgid "Graphics"
+msgstr "Grafik"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:324
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:326
+#, kde-format
+msgctxt "Category"
+msgid "3D"
+msgstr "3D"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:332
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
+#, kde-format
+msgctxt "Category"
+msgid "Drawing"
+msgstr "Menggambar"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:344
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:346
+#, kde-format
+msgctxt "Category"
+msgid "Painting and Editing"
+msgstr "Melukis dan Mengedit"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:357
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:359
+#, kde-format
+msgctxt "Category"
+msgid "Photography"
+msgstr "Fotografi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:366
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:368
+#, kde-format
+msgctxt "Category"
+msgid "Publishing"
+msgstr "Menerbitkan"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:377
+#, kde-format
+msgctxt "Category"
+msgid "Scanning and OCR"
+msgstr "Pemindaian dan OCR"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:385
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:387
+#, kde-format
+msgctxt "Category"
+msgid "Viewers"
+msgstr "Pirsawan"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:397
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:399
+#, kde-format
+msgctxt "Category"
+msgid "Internet"
+msgstr "Internet"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:406
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:408
+#, kde-format
+msgctxt "Category"
+msgid "Chat"
+msgstr "Obrolan"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:416
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:418
+#, kde-format
+msgctxt "Category"
+msgid "File Sharing"
+msgstr "Berbagi File"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:425
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:427
+#, kde-format
+msgctxt "Category"
+msgid "Mail"
+msgstr "Mail"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:434
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:436
+#, kde-format
+msgctxt "Category"
+msgid "Web Browsers"
+msgstr "Penelusur Web"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:446
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:448
+#, kde-format
+msgctxt "Category"
+msgid "Multimedia"
+msgstr "Multimedia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:456
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:458
+#, kde-format
+msgctxt "Category"
+msgid "Audio and Video Editors"
+msgstr "Pengeditan Video dan Audio"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:465
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:467
+#, kde-format
+msgctxt "Category"
+msgid "Audio Players"
+msgstr "Pemutar Audio"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:486
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:488
+#, kde-format
+msgctxt "Category"
+msgid "Video Players"
+msgstr "Pemutar Video"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:504
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:506
+#, kde-format
+msgctxt "Category"
+msgid "CD and DVD"
+msgstr "CD dan DVD"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:516
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:518
+#, kde-format
+msgctxt "Category"
+msgid "Office"
+msgstr "Perkantoran"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:527
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:529
+#, kde-format
+msgctxt "Category"
+msgid "System Settings"
+msgstr "System Settings"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:119
+#, kde-format
+msgctxt "user denotes this as user-scoped flatpak repo"
+msgid "%1 (user)"
+msgstr "%1 (pengguna)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:670
+#, kde-format
+msgid "Local bundle"
+msgstr "Bundel lokal"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1587
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
+#, kde-format
+msgid "Malformed appstream url '%1'"
+msgstr "Url appstream yang rusak '%1'"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1689
+#, kde-format
+msgid "Failed to add source '%1': %2"
+msgstr "Gagal menambahkan sumber '%1': %2"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1806
+#, kde-format
+msgid "There are no Flatpak sources."
+msgstr "Tidak adanya sumber Flatpak."
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
+#, kde-format
+msgid "Failed to load \"%1\" source"
+msgstr "Gagal memuat sumber \"%1\""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:338
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"<para>This application comes from \"%1\" (hosted at <link>%2</link>). Other "
+"software in this repository will also be made be available in Discover when "
+"the application is installed.</para>"
+msgstr ""
+"<para>Aplikasi ini berasal dari \"%1\" (dihosting di <link>%2</link>). "
+"Perangkat lunak lain dalam repositori ini juga akan tersedia di Discover "
+"ketika aplikasi sudah terinstal.</para>"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:421
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:429
+#, kde-format
+msgid "Retrieving size information"
+msgstr "Mengambil informasi ukuran"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:423
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:431
+#, kde-format
+msgid "Unknown size"
+msgstr "Ukuran tak diketahui"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:425
+#, kde-format
+msgctxt "@info app size"
+msgid "%1 to download, %2 on disk"
+msgstr "%1 unduh, %2 pada disk"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:433
+#, kde-format
+msgctxt "@info app size"
+msgid "%1 on disk"
+msgstr "%1 pada disk"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:487
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:441
+#, kde-format
+msgid "Failed to start '%1': %2"
+msgstr "Gagal memulai ' %1': %2'"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:717
+#, kde-format
+msgid "All Files"
+msgstr "Semua File"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:719
+#, kde-format
+msgid "Home"
+msgstr "Beranda"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:721
+#, kde-format
+msgid "Downloads"
+msgstr "Unduhan"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:723
+#, kde-format
+msgid "Music"
+msgstr "Musik"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:749
+#, kde-format
+msgid "Network Access"
+msgstr "Akses Jaringan"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:750
+#, kde-format
+msgid "Can access the internet"
+msgstr "Bisa mengakses internet"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:756
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
+#, kde-format
+msgid "Session Bus Access"
+msgstr "Akses Bus Sesi"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:757
+#, kde-format
+msgid "Access is granted to the entire Session Bus"
+msgstr "Akses diberikan ke seluruh Bus Sesi"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:762
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
+#, kde-format
+msgid "System Bus Access"
+msgstr "Akses Bus Sistem"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:763
+#, kde-format
+msgid "Access is granted to the entire System Bus"
+msgstr "Akses diberikan ke seluruh Bus Sistem"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:768
+#, kde-format
+msgid "Remote Login Access"
+msgstr "Akses Login Jarak Jauh"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:769
+#, kde-format
+msgid "Can initiate remote login requests using the SSH protocol"
+msgstr "Bisa memulai permintaan login jarak jauh menggunakan protokol SSH"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:773
+#, kde-format
+msgid "Smart Card Access"
+msgstr "Akses Kartu Smart"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:774
+#, kde-format
+msgid "Can integrate and communicate with smart cards"
+msgstr "Bisa berintegrasi dan berkomunikasi dengan kartu-kartu smart"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:780
+#, kde-format
+msgid "Device Access"
+msgstr "Akses Peranti"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:781
+#, kde-format
+msgid "Can communicate with and control built-in or connected hardware devices"
+msgstr ""
+"Bisa berkomunikasi dengan dan mengontrol bawaan atau peranti peranti keras "
+"yang terkoneksi"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:785
+#, kde-format
+msgid "Kernel-based Virtual Machine Access"
+msgstr "Akses Mesin Virtual Berbasis Kernel"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:786
+#, kde-format
+msgid "Allows running other operating systems as guests in virtual machines"
+msgstr ""
+"Membolehkan berjalannya operasi sistem lainnya sebagai tamu di mesin virtual"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
+#, kde-format
+msgid "%1 (read-only)"
+msgstr "%1 (hanya baca)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:813
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
+#, kde-format
+msgid "%1 (can create files)"
+msgstr "%1 (bisa membuat file)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
+#, kde-format
+msgid "%1 (read & write) "
+msgstr "%1 (baca & tulis)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
+#, kde-format
+msgid "Home Folder Access"
+msgstr "Akses Folder Beranda"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:846
+#, kde-format
+msgid ""
+"Can read, write, and create files in the following locations in your home "
+"folder without asking permission first: %1"
+msgstr ""
+"Bisa membaca, menulis, dan membuat file di lokasi berikut di folder "
+"berandamu tanpa menanyakan perizinan terlebih dahulu: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#, kde-format
+msgid ""
+"Can read and write files in the following locations in your home folder "
+"without asking permission first: %1"
+msgstr ""
+"Bisa membaca, menulis file di lokasi berikut di folder berandamu tanpa "
+"menanyakan perizinan terlebih dahulu: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
+#, kde-format
+msgid ""
+"Can read files in the following locations in your home folder without asking "
+"permission first: %1"
+msgstr ""
+"Bisa membaca file di lokasi berikut di folder berandamu tanpa menanyakan "
+"perizinan terlebih dahulu: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
+#, kde-format
+msgid ""
+"Can access files in the following locations in your home folder without "
+"asking permission first: %1"
+msgstr ""
+"Bisa mengakses file di lokasi berikut di folder berandamu tanpa menanyakan "
+"perizinan terlebih dahulu: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
+#, kde-format
+msgid "System Folder Access"
+msgstr "Akses Folder Sistem"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#, kde-format
+msgid ""
+"Can read, write, and create system files in the following locations without "
+"asking permission first: %1"
+msgstr ""
+"Bisa membaca, menulis, dan membuat file-file sistem di lokasi berikut tanpa "
+"menanyakan perizinan terlebih dahulu: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
+#, kde-format
+msgid ""
+"Can read and write system files in the following locations without asking "
+"permission first: %1"
+msgstr ""
+"Bisa membaca, menulis file-file sistem di lokasi berikut tanpa menanyakan "
+"perizinan terlebih dahulu: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#, kde-format
+msgid ""
+"Can read system files in the following locations without asking permission "
+"first: %1"
+msgstr ""
+"Bisa membaca file-file sistem di lokasi berikut tanpa menanyakan perizinan "
+"terlebih dahulu: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:866
+#, kde-format
+msgid ""
+"Can access system files in the following locations without asking permission "
+"first: %1"
+msgstr ""
+"Bisa mengakses file-file sistem di lokasi berikut tanpa menanyakan perizinan "
+"terlebih dahulu: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:876
+#, kde-format
+msgid ""
+"Can communicate with other applications and processes in the same desktop "
+"session using the following communication protocols: %1"
+msgstr ""
+"Bisa berkomunikasi dengan aplikasi dan proses lain dalam sesi desktop yang "
+"sama menggunakan protokol komunikasi berikut: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:888
+#, kde-format
+msgid ""
+"Can communicate with all applications and system services using the "
+"following communication protocols: %1"
+msgstr ""
+"Bisa berkomunikasi dengan semua aplikasi dan layanan sistem menggunakan "
+"protokol komunikasi berikut: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:88
+#, kde-format
+msgid "Add Flathub"
+msgstr "Tambahkan Flathub"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:89
+#, kde-format
+msgid "Apply Changes"
+msgstr "Terapkan Perubahan"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:93
+#, kde-format
+msgid ""
+"Changes to the priority of Flatpak sources must be applied before they will "
+"take effect."
+msgstr ""
+"Ubah ke prioritas sumber Flatpak musti diterapkan sebelum mereka berlaku."
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
+#, kde-format
+msgid ""
+"Makes it possible to easily install the applications listed in https://"
+"flathub.org"
+msgstr ""
+"Memungkinkan secara mudah menginstal sebuah aplikasi yang terdaftar di "
+"https://flathub.org"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:163
+#, kde-format
+msgid "Could not add the source %1"
+msgstr "Tidak dapat menambahkan sumber %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:279
+#, kde-format
+msgid "Removing '%1'"
+msgstr "Menghapus '%1'"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:280
+#, kde-format
+msgid ""
+"To remove this repository, the following applications must be uninstalled:"
+"<ul><li>%1</li></ul>"
+msgstr ""
+"Untuk menghapus repositori ini, aplikasi berikut mestinya diuninstal:<ul><li>"
+"%1</li></ul>"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#, kde-format
+msgid "Failed to remove %1 remote repository: %2"
+msgstr "Gagal menghapus repositori jarak jauh %1: %2"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:301
+#, kde-format
+msgid "Could not find %1"
+msgstr "Tidak bisa menemukan %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:333
+#, kde-format
+msgid "%1 (user)"
+msgstr "%1 (pengguna)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:394
+#, kde-format
+msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
+msgstr "Masukkanlah URI repositori Flatpak (*.flatpakrepo):"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
+#, kde-format
+msgid "Adding remote '%1' in %2 from %3"
+msgstr "Penambahan jarak jauh '%1' di %2 dari %3"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
+#, kde-format
+msgid ""
+"The remote %1 require that you accept their license:\n"
+" %2"
+msgstr ""
+"%1 jarak jauh memerlukan persetujuanmu atas lisensinya:\n"
+" %2"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
+#, kde-format
+msgid "Review EULA"
+msgstr "Tinjauan EULA"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
+#, kde-format
+msgid "Could not enable remote %1: %2"
+msgstr "Tidak bisa memfungsikan %1 jarak jauh: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:107
+#, kde-format
+msgid "Backend %1 took too long to initialize"
+msgstr "Backend %1 terlalu lama untuk diinisialisasi"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:169
+#, kde-format
+msgid "Applications"
+msgstr "Aplikasi"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#, kde-format
+msgid "Plasma Addons"
+msgstr "Pernik Plasma"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#, kde-format
+msgid "Application Addons"
+msgstr "Pernik Aplikasi"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#, kde-format
+msgid "Network error in backend %1: %2"
+msgstr "Galat jaringan di dalam backend %1: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:422
+#, kde-format
+msgid ""
+"Too many requests sent to the server for backend %1. Please try again in a "
+"few minutes."
+msgstr ""
+"Terlalu banyak permintaan yang dikirim ke server untuk backend %1. Silakan "
+"coba lagi dalam beberapa menit."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:425
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:431
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:436
+#, kde-format
+msgid "Invalid %1 backend, contact your distributor."
+msgstr "Backend %1 tidak absah, hubungi distibutormu."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
+#, kde-format
+msgid ""
+"Unable to complete the update of %1. You can try and perform this action "
+"through the Get Hot New Stuff dialog, which grants tighter control. The "
+"reported error was:\n"
+"%2"
+msgstr ""
+"Tidak mampu merampungkan pembaruan %1. Kamu bisa coba dan melakukan aksi ini "
+"melalui dialog Get Hot New Stuff, yang memberikan kontrol lebih ketat. Galat "
+"yang dilaporkan adalah:\n"
+"%2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:465
+#, kde-format
+msgid "Could not fetch screenshot for the entry %1 in backend %2"
+msgstr "Tidak dapat mengambil skrinsut untuk entri %1 dalam backend %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:469
+#, kde-format
+msgid "Unhandled error in %1 backend. Contact your distributor."
+msgstr "Galat yang tak tertangani dalam backend %1. Kontak distibutormu."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:477
+#, kde-format
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:694
+#, kde-format
+msgid "Wrong KNewStuff URI: %1"
+msgstr "URI KNewStuff yang salah: %1"
+
+#: libdiscover/backends/KNSBackend/KNSResource.cpp:167
+#, kde-format
+msgctxt "The name of the KDE Store"
+msgid "KDE Store"
+msgstr "KDE Store"
+
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:144
+#, kde-format
+msgid "Log in information for %1"
+msgstr "Log informasi untuk %1"
+
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
+#, kde-format
+msgid "Cannot launch %1"
+msgstr "Tak bisa meluncurkan %1"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:540
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Addons"
+msgstr "Pernik Plasma"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:551
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Widgets"
+msgstr "Widgets Plasma"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
+#, kde-format
+msgctxt "Category"
+msgid "Fonts"
+msgstr "Font"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:211
+#, kde-format
+msgid "Please make sure that Appstream is properly set up on your system"
+msgstr "Silakan pastikan Appstream telah disiapkan dengan benar pada sistemmu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:248
+#, kde-format
+msgctxt "%1 is the date as formatted by the locale"
+msgid ""
+"Your operating system ended support on %1. Consider upgrading to a supported "
+"version."
+msgstr ""
+"Operasi sistemmu berakhir dukungan pada %1. Dianjurkan memutakhirkan ke "
+"versi yang didukung."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:703
+#, kde-format
+msgid "Cannot remove '%1'"
+msgstr "Tidak bisa menghapus '%1'"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
+#, kde-format
+msgid "Out of memory"
+msgstr "Kehabisan memori"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
+#, kde-format
+msgid "No network connection available"
+msgstr "Tidak ada koneksi jaringan yang tersedia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
+#, kde-format
+msgid "Operation not supported"
+msgstr "Operasi tidak didukung"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:25
+#, kde-format
+msgid "Internal error"
+msgstr "Galat internal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
+#, kde-format
+msgid "Internal error: %1"
+msgstr "Galat internal: %1"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
+#, kde-format
+msgid "GPG failure"
+msgstr "Kegagalan GPG"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
+#, kde-format
+msgid "PackageID invalid"
+msgstr "ID paket tidak absah"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
+#, kde-format
+msgid "Package not installed"
+msgstr "Paket enggak terinstal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:37
+#, kde-format
+msgid "Package not found"
+msgstr "Paket enggak ketemu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
+#, kde-format
+msgid "Package is already installed"
+msgstr "Paket sudah terinstal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
+#, kde-format
+msgid "Package download failed"
+msgstr "Unduh paket gagal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:43
+#, kde-format
+msgid "Package group not found"
+msgstr "Kelompok paket tidak ditemukan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
+#, kde-format
+msgid "Package group list invalid"
+msgstr "Daftar kelompok paket tidak absah"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
+#, kde-format
+msgid "Dependency resolution failed"
+msgstr "Gagal pemberesan ketergantungan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
+#, kde-format
+msgid "Filter invalid"
+msgstr "Filter tidak absah"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
+#, kde-format
+msgid "Failed while creating a thread"
+msgstr "Gagal saat menciptakan sebuah tapak"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
+#, kde-format
+msgid "Transaction failure"
+msgstr "Kegagalan transaksi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:55
+#, kde-format
+msgid "Transaction canceled"
+msgstr "Transaksi dibatalkan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
+#, kde-format
+msgid "No Cache available"
+msgstr "Tidak ada Cache yang tersedia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
+#, kde-format
+msgid "Cannot find repository"
+msgstr "Tak bisa menemukan repositori"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
+#, kde-format
+msgid "Cannot remove system package"
+msgstr "Tak bisa menghapus paket sistem"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:63
+#, kde-format
+msgid "The PackageKit daemon has crashed"
+msgstr "Daemon PackageKit telah mogok"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:65
+#, kde-format
+msgid "Initialization failure"
+msgstr "Kegagalan inisialisasi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:67
+#, kde-format
+msgid "Failed to finalize transaction"
+msgstr "Gagal menyelesaikan transaksi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
+#, kde-format
+msgid "Config parsing failed"
+msgstr "Mengurai konfig gagal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
+#, kde-format
+msgid "Cannot cancel transaction"
+msgstr "Tak bisa membatalkan transaksi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
+#, kde-format
+msgid "Cannot obtain lock"
+msgstr "Tak bisa merengkuh kunci"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
+#, kde-format
+msgid "No packages to update"
+msgstr "Tidak ada paket-paket untuk diperbarui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
+#, kde-format
+msgid "Cannot write repo config"
+msgstr "Tak bisa menulis config repo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:79
+#, kde-format
+msgid "Local install failed"
+msgstr "Pemasangan lokal gagal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:81
+#, kde-format
+msgid "Bad GPG signature found"
+msgstr "Ditemukan tandatangan GPG buruk"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:83
+#, kde-format
+msgid "No GPG signature found"
+msgstr "Tidak ada tandatangan GPG yang ditemukan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:85
+#, kde-format
+msgid "Cannot install source package"
+msgstr "Tak bisa menginstal paket sumber"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
+#, kde-format
+msgid "Repo configuration error"
+msgstr "Galat konfigurasi repo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:89
+#, kde-format
+msgid "No license agreement"
+msgstr "Tidak ada persetujuan lisensi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:91
+#, kde-format
+msgid "File conflicts found"
+msgstr "Ditemukan file bentrok"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:93
+#, kde-format
+msgid "Package conflict found"
+msgstr "Ditemukan paket bentrok"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:95
+#, kde-format
+msgid "Repo not available"
+msgstr "Repo tidak tersedia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:97
+#, kde-format
+msgid "Invalid package file"
+msgstr "File paket tidak absah"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
+#, kde-format
+msgid "Package install blocked"
+msgstr "Pemasangan paket terhalang"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
+#, kde-format
+msgid "Corrupt package found"
+msgstr "Ditemukan paket korup"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
+#, kde-format
+msgid "All packages already installed"
+msgstr "Semua paket siap diinstal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
+#, kde-format
+msgid "File not found"
+msgstr "File tidak ditemukan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
+#, kde-format
+msgid "No more mirrors available"
+msgstr "Tidak ada lagi cermin tersedia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
+#, kde-format
+msgid "No distro upgrade data"
+msgstr "Tidak ada data upgrade distro"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
+#, kde-format
+msgid "Incompatible architecture"
+msgstr "Arsitektur tak kompatibel"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
+#, kde-format
+msgid "No space on device left"
+msgstr "Tidak ada ruang pada peranti yang tersisa"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:115
+#, kde-format
+msgid "A media change is required"
+msgstr "Sebuah perubahan media diperlukan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:117
+#, kde-format
+msgid "You have no authorization to execute this operation"
+msgstr "Anda tidak memiliki otorisasi untuk melakukan operasi ini"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:119
+#, kde-format
+msgid "Update not found"
+msgstr "Pembaruan tidak ditemukan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
+#, kde-format
+msgid "Cannot install from unsigned repo"
+msgstr "Tak bisa menginstal dari repo yang tanpa ditandatangani"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
+#, kde-format
+msgid "Cannot update from unsigned repo"
+msgstr "Tak bisa memperbarui dari repo yang tanpa ditandatangani"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
+#, kde-format
+msgid "Cannot get file list"
+msgstr "Tak bisa mendapatkan daftar file "
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:127
+#, kde-format
+msgid "Cannot get requires"
+msgstr "Tak bisa mendapatkan yang dibutuhkan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:129
+#, kde-format
+msgid "Cannot disable repository"
+msgstr "Tak bisa menonfungsikan repositori"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
+#, kde-format
+msgid "Restricted download detected"
+msgstr "Pembatasan unduh terdeteksi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
+#, kde-format
+msgid "Package failed to configure"
+msgstr "Paket gagal untuk dikonfigurasi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:135
+#, kde-format
+msgid "Package failed to build"
+msgstr "Gagal membangun paket"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:137
+#, kde-format
+msgid "Package failed to install"
+msgstr "Gagal menginstal paket"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:139
+#, kde-format
+msgid "Package failed to remove"
+msgstr "Paket gagal dihapus"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:141
+#, kde-format
+msgid "Update failed due to running process"
+msgstr "Perbarui gagal karena menjalankan proses"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
+#, kde-format
+msgid "The package database changed"
+msgstr "Database paket diubah"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
+#, kde-format
+msgid "The provided type is not supported"
+msgstr "Jenis yang tersedia tidak didukung"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
+#, kde-format
+msgid "Install root is invalid"
+msgstr "Instal root tidak absah"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:149
+#, kde-format
+msgctxt ""
+"Failed to sync your Linux distro repositories or other sources of packages"
+msgid "Cannot fetch sources"
+msgstr "Tidak bisa mengambil sumber"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:151
+#, kde-format
+msgid "Canceled priority"
+msgstr "Prioritas dibatalkan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
+#, kde-format
+msgid "Unfinished transaction"
+msgstr "Transaksi tidak terselesaikan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
+#, kde-format
+msgid "Lock required"
+msgstr "Kunci diperlukan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
+#, kde-format
+msgid "Unknown error %1."
+msgstr "Galat %1tak diketahui."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
+#, kde-format
+msgid "'%1' was changed and suggests to be restarted."
+msgstr "'%1' telah diubah dan menyarankan agar dijalankan ulang."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
+#, kde-format
+msgid "A change by '%1' suggests your session to be restarted."
+msgstr ""
+"Sebuah perubahan berdasarkan '%1' menyarankan agar sesimu untuk dimulai "
+"ulang."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
+#, kde-format
+msgid ""
+"'%1' was updated for security reasons, a restart of the session is "
+"recommended."
+msgstr ""
+"'%1' telah diperbarui untuk alasan keamanan, dianjurkan pemulaian ulang sesi."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
+#, kde-format
+msgid ""
+"'%1' was updated for security reasons, a restart of the system is "
+"recommended."
+msgstr ""
+"'%1' telah diperbarui untuk alasan keamanan, dianjurkan penyalaan ulang "
+"sistem."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
+#, kde-format
+msgid "A change by '%1' suggests your system to be restarted."
+msgstr ""
+"Sebuah perubahan berdasarkan '%1' menyarankan agar sistemmu untuk dinyalakan "
+"ulang."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
+#, kde-format
+msgid "The application will have to be restarted."
+msgstr "Aplikasi akan dijalankan ulang."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
+#, kde-format
+msgid "The session will have to be restarted"
+msgstr "Sesi akan dimulai ulang"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:192
+#, kde-format
+msgid "The system will have to be restarted."
+msgstr "Sistem akan dinyalakan ulang."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:194
+#, kde-format
+msgid "For security, the session will have to be restarted."
+msgstr "Demi keamanan, sesi akan dimulai ulang."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:196
+#, kde-format
+msgid "For security, the system will have to be restarted."
+msgstr "Demi keamanan, sistem akan dinyalakan ulang."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
+#, kde-format
+msgid "Waiting…"
+msgstr "Tunggu..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
+#, kde-format
+msgid "Refreshing Cache…"
+msgstr "Menyegarkan Cache..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
+#, kde-format
+msgid "Setup…"
+msgstr "Pengesetan..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
+#, kde-format
+msgid "Processing…"
+msgstr "Memroses..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
+#, kde-format
+msgid "Remove…"
+msgstr "Hapus..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
+#, kde-format
+msgid "Downloading…"
+msgstr "Mengunduh..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
+#, kde-format
+msgid "Installing…"
+msgstr "Menginstal..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
+#, kde-format
+msgid "Updating…"
+msgstr "Memperbarui..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
+#, kde-format
+msgid "Cleaning up…"
+msgstr "Membersihkan..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
+#, kde-format
+msgid "Resolving dependencies…"
+msgstr "Penanggulangan ketergantungan..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
+#, kde-format
+msgid "Checking signatures…"
+msgstr "Mengecek tandatangan..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
+#, kde-format
+msgid "Test committing…"
+msgstr "Melakukan uji..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
+#, kde-format
+msgid "Committing…"
+msgstr "Melakukan..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
+#, kde-format
+msgid "Finished"
+msgstr "Selesai"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:238
+#, kde-format
+msgid "Canceled"
+msgstr "Dibatalkan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
+#, kde-format
+msgid "Waiting for lock…"
+msgstr "Menunggu kunci..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
+#, kde-format
+msgid "Waiting for authorization…"
+msgstr "Menunggu otorisasi..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
+#, kde-format
+msgid "Copying files…"
+msgstr "Menyalin file..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
+#, kde-format
+msgid "Unknown Status"
+msgstr "Status Tidak Diketahui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:258
+#, kde-format
+msgid "We are waiting for something."
+msgstr "Kami sedang menunggu sesuatu."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
+#, kde-format
+msgid "Setting up transaction…"
+msgstr "Persiapan transaksi..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
+#, kde-format
+msgid "The transaction is currently working…"
+msgstr "Transaksi saat ini sedang bekerja..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
+#, kde-format
+msgid "The transaction is currently removing packages…"
+msgstr "Transaksi saat ini sedang menghapus paket-paket..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
+#, kde-format
+msgid "The transaction is currently downloading packages…"
+msgstr "Transaksi saat ini sedang mengunduh paket-paket..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
+#, kde-format
+msgid "The transactions is currently installing packages…"
+msgstr "Transaksi saat ini sedang menginstal paket-paket..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
+#, kde-format
+msgid "The transaction is currently updating packages…"
+msgstr "Transaksi saat ini sedang memperbarui paket-paket..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
+#, kde-format
+msgid "The transaction is currently cleaning up…"
+msgstr "Transaksi saat ini sedang membersihkan..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
+#, kde-format
+msgid ""
+"The transaction is currently resolving the dependencies of the packages it "
+"will install…"
+msgstr ""
+"Transaksi saat ini sedang menanggulangi ketergantungan paket yang akan "
+"dipasang..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
+#, kde-format
+msgid "The transaction is currently checking the signatures of the packages…"
+msgstr "Transaksi saat ini sedang memeriksa tandatanganan paket-paket..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
+#, kde-format
+msgid ""
+"The transaction is currently testing the commit of this set of packages…"
+msgstr ""
+"Transaksi saat ini sedang menguji komit dari himpunan paket-paket ini..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
+#, kde-format
+msgid "The transaction is currently committing its set of packages…"
+msgstr "Transaksi saat ini sedang mengkomit himpunannya paket-paket..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
+#, kde-format
+msgid "The transaction has finished!"
+msgstr "Transaksi terselesaikan!"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
+#, kde-format
+msgid "The transaction was canceled"
+msgstr "Transaksi dibatalkan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
+#, kde-format
+msgid "The transaction is currently waiting for the lock…"
+msgstr "Transaksi saat ini sedang menunggu kunci..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
+#, kde-format
+msgid "Waiting for the user to authorize the transaction…"
+msgstr "Menunggu pengguna untuk otorisasi transaksi..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
+#, kde-format
+msgid "The transaction is currently copying files…"
+msgstr "Transaksi saat ini sedang menyalin file..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
+#, kde-format
+msgid "Currently refreshing the repository cache…"
+msgstr "Saat ini sedang menyegarkan cache repositori..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
+#, kde-format
+msgid "Unknown status %1."
+msgstr "Status %1 tak diketahui."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:313
+#, kde-format
+msgctxt "update state"
+msgid "Stable"
+msgstr "Stabil"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:315
+#, kde-format
+msgctxt "update state"
+msgid "Unstable"
+msgstr "Labil"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:317
+#, kde-format
+msgctxt "update state"
+msgid "Testing"
+msgstr "Pengujian"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
+#: libdiscover/resources/AbstractResource.cpp:102
+#, kde-format
+msgid "Installed"
+msgstr "Terinstal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
+#, kde-format
+msgid "Not Installed"
+msgstr "Tidak Terinstal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
+#, kde-format
+msgid "Low"
+msgstr "Rendah"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:334
+#, kde-format
+msgid "Enhancement"
+msgstr "Peningkatan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:336
+#, kde-format
+msgid "Normal"
+msgstr "Normal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:338
+#, kde-format
+msgid "Bugfix"
+msgstr "Perbaikan bug"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:340
+#, kde-format
+msgid "Important"
+msgstr "Penting"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:342
+#, kde-format
+msgid "Security"
+msgstr "Keamanan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:344
+#, kde-format
+msgid "Blocked"
+msgstr "Diblokir"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:346
+#, kde-format
+msgid "Downloading"
+msgstr "Mengunduh"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#, kde-format
+msgid "Updating"
+msgstr "Memperbarui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:350
+#, kde-format
+msgid "Installing"
+msgstr "Menginstal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:352
+#, kde-format
+msgid "Removing"
+msgstr "Menghapus"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:354
+#, kde-format
+msgid "Cleanup"
+msgstr "Membersihkan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:356
+#, kde-format
+msgid "Obsoleting"
+msgstr "Usang"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:358
+#, kde-format
+msgid "Collection Installed"
+msgstr "Koleksi Terinstal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:360
+#, kde-format
+msgid "Collection Available"
+msgstr "Koleksi Tersedia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:364
+#, kde-format
+msgid "Reinstalling"
+msgstr "Memasang Ulang"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:366
+#, kde-format
+msgid "Downgrading"
+msgstr "Menurunkan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:368
+#, kde-format
+msgid "Preparing"
+msgstr "Persiapan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:370
+#, kde-format
+msgid "Decompressing"
+msgstr "Pendekompresan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:372
+#, kde-format
+msgid "Untrusted"
+msgstr "Tidak Dipercayai"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:374
+#, kde-format
+msgid "Trusted"
+msgstr "Dipercaya"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:376
+#, kde-format
+msgid "Unavailable"
+msgstr "Tidak Tersedia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
+#, kde-format
+msgid "Failed Offline Update"
+msgstr "Pembaruan Luring Gagal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
+#, kde-format
+msgid ""
+"Failed to update %1 package\n"
+"%2"
+msgid_plural ""
+"Failed to update %1 packages\n"
+"%2"
+msgstr[0] ""
+"Gagal memperbarui %1 paket\n"
+"%2"
+msgstr[1] ""
+"Gagal memperbarui %1 paket\n"
+"%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
+#, kde-format
+msgctxt "@action:button"
+msgid "Open Discover"
+msgstr "Buka Discover"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#, kde-format
+msgctxt "@action:button"
+msgid "Repair System"
+msgstr "Reparasi Sistem"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#, kde-format
+msgid "Repairing failed offline update"
+msgstr "Memperbaiki pembaruan luring gagal"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#, kde-format
+msgid "Repair Failed"
+msgstr "Gagal Mereparasi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
+#, kde-kuit-format
+msgctxt "@info"
+msgid "%1<nl/>Please report this error to your distribution."
+msgstr "%1<nl/>Mohon laporkan kesalahan ini ke distribusimu."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
+#, kde-format
+msgid "Repaired Successfully"
+msgstr "Berhasil Diperbaiki"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#, kde-format
+msgid "Offline Updates"
+msgstr "Pembaruan Luring"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
+#, kde-format
+msgid "Successfully updated %1 package"
+msgid_plural "Successfully updated %1 packages"
+msgstr[0] "Berhasil memperbarui %1 paket"
+msgstr[1] "%1 paket berhasil diperbarui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:303
+#, kde-format
+msgctxt "package-name (version)"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:305
+#, kde-format
+msgctxt "comma separating package names"
+msgid ", "
+msgstr ", "
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
+#, kde-format
+msgid "Obsoletes:"
+msgstr "Usang:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
+#, kde-format
+msgid "Release Notes:"
+msgstr "Catatan Rilis:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
+#, kde-format
+msgid "Update State:"
+msgstr "Keadaan Pembaruan:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:355
+#, kde-format
+msgid "Restart:"
+msgstr "Nyalakan ulang:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#, kde-format
+msgid "Vendor:"
+msgstr "Vendor:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:378
+#, kde-format
+msgid "%2 (plus %1 dependency)"
+msgid_plural "%2 (plus %1 dependencies)"
+msgstr[0] "%2 (plus %1 ketergantungan)"
+msgstr[1] "%2 (plus %1 ketergantungan)"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#, kde-format
+msgid "Repository URL:"
+msgstr "URL repositori:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:78
+#, kde-format
+msgid "System upgrade"
+msgstr "Peningkatan sistem"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:169
+#, kde-format
+msgid "1 package to upgrade"
+msgid_plural "%1 packages to upgrade"
+msgstr[0] "1 paket untuk ditingkatkan"
+msgstr[1] "%1 paket untuk ditingkatkan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#, kde-format
+msgid "Present"
+msgstr "Kini"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:190
+#, kde-format
+msgid "Future"
+msgstr "Nanti"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:279
+#, kde-format
+msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
+msgid "Not enough space to perform the update; only %1 of space are available."
+msgstr ""
+"Tidak cukupnya ruang untuk melakukan pembaruan; hanya %1 ruang yang tersedia."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:467
+#, kde-format
+msgid ""
+"This update cannot be completed as it would remove the following software "
+"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"you believe this is an error, please report it as a bug to the packagers of "
+"your distribution."
+msgstr ""
+"Pembaruan ini tidak bisa dirampungkan karena akan menghapus perangkat lunak "
+"yang diperlukan operasi sistem: <nl/><ul><li>%1</li></ul><nl/>Jika kamu "
+"yakin ini adalah galat, mohon melaporkannya sebagai bug kepada pemaket "
+"distribusimu."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:474
+#, kde-format
+msgid "Packages to remove"
+msgstr "Paket untuk dihapus"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
+#, kde-format
+msgid ""
+"The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
+">in order to install:<ul><li>%2</li></ul>"
+msgstr ""
+"Paket-paket berikut ini akan dihapus oleh karena pembaruan:<ul><li>%1</li></"
+"ul><br/>agar dapat menginstal:<ul><li>%2</li></ul>"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
+#, kde-kuit-format
+msgctxt "@info"
+msgid "%1:<nl/><nl/>%2"
+msgstr "%1:<nl/><nl/>%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
+#, kde-format
+msgid ""
+"Media Change of type '%1' is requested.\n"
+"%2"
+msgstr ""
+"Perubahan Media dari jenis '%1' telah diminta.\n"
+"%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:614
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
+#, kde-format
+msgid "Accept EULA"
+msgstr "Setujui EULA"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:615
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
+#, kde-format
+msgid ""
+"The package %1 and its vendor %2 require that you accept their license:\n"
+" %3"
+msgstr ""
+"Paket %1 dan vendor-nya %2 mewajibkan anda untuk menyetujui lisensi mereka:\n"
+" %3"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:732
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
+#, kde-format
+msgid "Missing signature for %1 in %2"
+msgstr "Tandatangan hilang untuk %1 dalam %2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
+#, kde-format
+msgid ""
+"Do you trust the following key?\n"
+"\n"
+"Url: %1\n"
+"User: %2\n"
+"Key: %3\n"
+"Fingerprint: %4\n"
+"Timestamp: %4\n"
+msgstr ""
+"Apakah kamu percaya kunci berikut ini?\n"
+"\n"
+"Url: %1\n"
+"User: %2\n"
+"Key: %3\n"
+"Fingerprint: %4\n"
+"Timestamp: %4\n"
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:188
+#, kde-format
+msgid ""
+"This action cannot be completed as it would remove the following software "
+"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"you believe this is an error, please report it as a bug to the packagers of "
+"your distribution."
+msgstr ""
+"Aksi ini tidak bisa dirampungkan karena akan menghapus perangkat lunak yang "
+"diperlukan operasi sistem: <nl/><ul><li>%1</li></ul><nl/>Jika kamu yakin ini "
+"adalah galat, mohon melaporkannya sebagai bug kepada pemaket distribusimu."
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
+#, kde-format
+msgid "Confirm package removal"
+msgstr "Konfirmasi penghapusan paket"
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
+#, kde-format
+msgid ""
+"This action will also remove the following package:\n"
+"%2"
+msgid_plural ""
+"This action will also remove the following packages:\n"
+"%2"
+msgstr[0] ""
+"Aksi ini juga akan menghapus paket berikut ini:\n"
+"%2"
+msgstr[1] ""
+"Aksi ini juga akan menghapus paket-paket berikut ini:\n"
+"%2"
+
+#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Operating System"
+msgstr "Sistem Operasi"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:245
+#, kde-format
+msgid "GPL and other licenses"
+msgstr "GPL dan lisensi lainnya"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:251
+#, kde-format
+msgid "Remote: "
+msgstr "Jarak Jauh:"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:288
+#, kde-format
+msgid "The currently running version of %1."
+msgstr "Saat ini menjalankan versi %1."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:290
+#, kde-format
+msgid "Installed but not currently running version of %1."
+msgstr "Terinstal tetapi saat ini tidak menjalankan versi %1."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:73
+#, kde-format
+msgid "ostree remotes"
+msgstr "ostree remotes"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:119
+#, kde-format
+msgid "Current rpm-ostree transaction in progress:"
+msgstr "Transaksi rpm-ostree saat ini sedang dalam progres:"
+
+# Name
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#, kde-format
+msgid "Snap"
+msgstr "Snap"
+
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:353
+#, kde-format
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
+#, kde-format
+msgid ""
+"This Snap application is not compatible with security sandboxing and will "
+"have full access to this computer. Install it anyway?"
+msgstr ""
+"Aplikasi Snap ini tidaklah kompatibel dengan security sandboxing dan akan "
+"diakses penuh ke komputer ini. Tetap instal meskipun begitu?"
+
+#: libdiscover/DiscoverBackendsFactory.cpp:111
+#, kde-format
+msgid ""
+"List all the backends we'll want to have loaded, separated by comma ','."
+msgstr ""
+"Cantumkan semua backend yang ingin kami muatkan, dipisahkan dengan koma ','."
+
+#: libdiscover/resources/AbstractResource.cpp:98
+#, kde-format
+msgid "Broken"
+msgstr "Rusak"
+
+#: libdiscover/resources/AbstractResource.cpp:100
+#, kde-format
+msgid "Available"
+msgstr "Tersedia"
+
+#: libdiscover/resources/AbstractResource.cpp:104
+#, kde-format
+msgid "Upgradeable"
+msgstr "Dapat ditingkatkan"
+
+#: libdiscover/resources/AbstractResource.cpp:257
+#, kde-format
+msgid "Launch"
+msgstr "Luncurkan"
+
+#: libdiscover/resources/AbstractResource.cpp:266
+#, kde-format
+msgctxt ""
+"@info 'Refresh' is used as a noun here, and %1 is an app's version number"
+msgid "Refresh of version %1"
+msgstr "Segarkan versi %1"
+
+#: libdiscover/resources/AbstractResource.cpp:276
+#, kde-format
+msgctxt "Do not translate or alter \\u009C"
+msgid "%1 → %2%1 → %2%2"
+msgstr "%1 → %2%1 → %2%2"
+
+#: libdiscover/resources/AbstractResourcesBackend.cpp:153
+#, kde-format
+msgid "Please verify Internet connectivity"
+msgstr "Mohon memverifikasi konektivitas Internet"
+
+#: libdiscover/resources/ResourcesModel.cpp:102
+#, kde-format
+msgid "Refresh"
+msgstr "Segarkan"
+
+#: libdiscover/resources/ResourcesProxyModel.cpp:682
+#, kde-format
+msgctxt "an approximation number, like 3000+"
+msgid "%1+"
+msgstr "%1+"
+
+#: libdiscover/Transaction/Transaction.cpp:133
+#, kde-format
+msgctxt "@label Download rate"
+msgid "%1/s"
+msgstr "%1/d"
+
+#: libdiscover/Transaction/TransactionModel.cpp:74
+#, kde-format
+msgctxt "@info:status"
+msgid "Starting"
+msgstr "Memulai"
+
+#: libdiscover/Transaction/TransactionModel.cpp:76
+#, kde-format
+msgctxt "@info:status"
+msgid "Waiting"
+msgstr "Menunggu"
+
+#: libdiscover/Transaction/TransactionModel.cpp:78
+#, kde-format
+msgctxt "@info:status"
+msgid "Downloading"
+msgstr "Mengunduh"
+
+#: libdiscover/Transaction/TransactionModel.cpp:82
+#, kde-format
+msgctxt "@info:status"
+msgid "Installing"
+msgstr "Menginstal"
+
+#: libdiscover/Transaction/TransactionModel.cpp:84
+#, kde-format
+msgctxt "@info:status"
+msgid "Removing"
+msgstr "Menghapus"
+
+#: libdiscover/Transaction/TransactionModel.cpp:86
+#, kde-format
+msgctxt "@info:status"
+msgid "Changing Addons"
+msgstr "Perubahan Pernik"
+
+#: libdiscover/Transaction/TransactionModel.cpp:90
+#, kde-format
+msgctxt "@info:status"
+msgid "Done"
+msgstr "Selesai"
+
+#: libdiscover/Transaction/TransactionModel.cpp:92
+#, kde-format
+msgctxt "@info:status"
+msgid "Failed"
+msgstr "Gagal"
+
+#: libdiscover/Transaction/TransactionModel.cpp:94
+#, kde-format
+msgctxt "@info:status"
+msgid "Cancelled"
+msgstr "Dibatalkan"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:129
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Applications"
+msgstr "Aplikasi"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "System Software"
+msgstr "Perangkat Lunak Sistem"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Addons"
+msgstr "Pernik"
+
+#~ msgctxt "version (branch)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "Category"
+#~ msgid "Applications"
+#~ msgstr "Aplikasi"

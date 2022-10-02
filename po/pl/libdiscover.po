@@ -1,0 +1,3900 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Artur Chłond <eugenewolfe@o2.pl>, 2011.
+# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
+# Ignacy Kajdan <ignacy.kajdan@gmail.com>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-29 00:47+0000\n"
+"PO-Revision-Date: 2022-09-23 10:36+0200\n"
+"Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
+"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 22.04.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Łukasz Wojniłowicz"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "lukasz.wojnilowicz@gmail.com"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:89
+#, kde-format
+msgid "Proprietary"
+msgstr "Własnościowe"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:91
+#, kde-format
+msgid "Public Domain"
+msgstr "Domena publiczna"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:97
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
+#: libdiscover/UpdateModel/UpdateModel.cpp:117
+#: libdiscover/UpdateModel/UpdateModel.cpp:323
+#, kde-format
+msgid "Unknown"
+msgstr "Nieznane"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:135
+#: libdiscover/resources/AbstractResource.cpp:293
+#, kde-format
+msgid "%1, released on %2"
+msgstr "%1, wydany w dniu %2"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:177
+#, kde-format
+msgid "All Audiences"
+msgstr "Wszyscy odbiorcy"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:178
+#, kde-format
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Mild Content"
+msgstr "Łagodna treść"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:179
+#, kde-format
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Moderate Content"
+msgstr "Umiarkowana treść"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:180
+#, kde-format
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Intense Content"
+msgstr "Ostra treść"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:155
+#, kde-format
+msgid "Error while fetching reviews: %1"
+msgstr "Błąd przy pobieraniu ocen: %1"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:206
+#, kde-format
+msgid "Error while submitting usefulness: %1"
+msgstr "Błąd przy wysyłaniu użyteczności: %1"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:263
+#, kde-format
+msgid "Error while submitting review: %1"
+msgstr "Błąd przy wysyłaniu oceny: %1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Dummy Category"
+msgstr "Fikcyjna kategoria"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:10
+#, kde-format
+msgctxt "Category"
+msgid "dummy"
+msgstr "fikcyjny"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#, kde-format
+msgctxt "Category"
+msgid "dummy addons"
+msgstr "fikcyjne dodatki"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:27
+#, kde-format
+msgctxt "Category"
+msgid "dummy 1"
+msgstr "fikcyjny 1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:35
+#, kde-format
+msgctxt "Category"
+msgid "dummy with stuff"
+msgstr "fikcyjny z zawartością"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:42
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:57
+#, kde-format
+msgctxt "Category"
+msgid "dummy 2.1"
+msgstr "fikcyjny 2.1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:50
+#, kde-format
+msgctxt "Category"
+msgid "dummy with quite some stuff"
+msgstr "fikcyjny z dużą zawartością"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:66
+#, kde-format
+msgctxt "Category"
+msgid "dummy 3"
+msgstr "fikcyjny 3"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:76
+#, kde-format
+msgctxt "Category"
+msgid "dummy 4"
+msgstr "fikcyjny 4"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:4
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Accessories"
+msgstr "Akcesoria"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:16
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:16
+#, kde-format
+msgctxt "Category"
+msgid "Accessibility"
+msgstr "Dostępność"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:28
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:28
+#, kde-format
+msgctxt "Category"
+msgid "Developer Tools"
+msgstr "Narzędzia programistyczne"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:38
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:38
+#, kde-format
+msgctxt "Category"
+msgid "Debugging"
+msgstr "Diagnozowanie"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:48
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:48
+#, kde-format
+msgctxt "Category"
+msgid "Graphic Interface Design"
+msgstr "Projektowanie interfejsu graficznego"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:57
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:57
+#, kde-format
+msgctxt "Category"
+msgid "IDEs"
+msgstr "IDE"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:66
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:66
+#, kde-format
+msgctxt "Category"
+msgid "Localization"
+msgstr "Tłumaczenia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:76
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:76
+#, kde-format
+msgctxt "Category"
+msgid "Profiling"
+msgstr "Profilowanie"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:85
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:85
+#, kde-format
+msgctxt "Category"
+msgid "Web Development"
+msgstr "Programowanie internetu"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
+#, kde-format
+msgctxt "Category"
+msgid "Education"
+msgstr "Edukacja"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:109
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:110
+#, kde-format
+msgctxt "Category"
+msgid "Science and Engineering"
+msgstr "Nauka i inżynieria"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:119
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:120
+#, kde-format
+msgctxt "Category"
+msgid "Astronomy"
+msgstr "Astronomia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:127
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:128
+#, kde-format
+msgctxt "Category"
+msgid "Biology"
+msgstr "Biologia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:135
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:136
+#, kde-format
+msgctxt "Category"
+msgid "Chemistry"
+msgstr "Chemia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:144
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:145
+#, kde-format
+msgctxt "Category"
+msgid "Computer Science and Robotics"
+msgstr "Informatyka i robotyka"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:156
+#, kde-format
+msgctxt "Category"
+msgid "Electronics"
+msgstr "Elektronika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:165
+#, kde-format
+msgctxt "Category"
+msgid "Engineering"
+msgstr "Inżynieria"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:173
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
+#, kde-format
+msgctxt "Category"
+msgid "Geography"
+msgstr "Geografia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:181
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:182
+#, kde-format
+msgctxt "Category"
+msgid "Geology"
+msgstr "Geologia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:190
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:191
+#, kde-format
+msgctxt "Category"
+msgid "Mathematics"
+msgstr "Matematyka"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:202
+#, kde-format
+msgctxt "Category"
+msgid "Physics"
+msgstr "Fizyka"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:212
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:213
+#, kde-format
+msgctxt "Category"
+msgid "Games"
+msgstr "Gry"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:222
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:223
+#, kde-format
+msgctxt "Category"
+msgid "Arcade"
+msgstr "Gry zręcznościowe"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:231
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:232
+#, kde-format
+msgctxt "Category"
+msgid "Board Games"
+msgstr "Gry planszowe"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:240
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:241
+#, kde-format
+msgctxt "Category"
+msgid "Card Games"
+msgstr "Gry karciane"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:249
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:250
+#, kde-format
+msgctxt "Category"
+msgid "Puzzles"
+msgstr "Puzzle"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:258
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:259
+#, kde-format
+msgctxt "Category"
+msgid "Role Playing"
+msgstr "Gry RPG"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:267
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:268
+#, kde-format
+msgctxt "Category"
+msgid "Simulation"
+msgstr "Symulacje"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:276
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:277
+#, kde-format
+msgctxt "Category"
+msgid "Strategy"
+msgstr "Strategie"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:285
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:286
+#, kde-format
+msgctxt "Category"
+msgid "Sports"
+msgstr "Sporty"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:294
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:295
+#, kde-format
+msgctxt "Category"
+msgid "Action"
+msgstr "Działanie"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:303
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:304
+#, kde-format
+msgctxt "Category"
+msgid "Emulators"
+msgstr "Emulatory"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:315
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:317
+#, kde-format
+msgctxt "Category"
+msgid "Graphics"
+msgstr "Grafika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:324
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:326
+#, kde-format
+msgctxt "Category"
+msgid "3D"
+msgstr "3D"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:332
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
+#, kde-format
+msgctxt "Category"
+msgid "Drawing"
+msgstr "Rysowanie"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:344
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:346
+#, kde-format
+msgctxt "Category"
+msgid "Painting and Editing"
+msgstr "Malowanie i edycja"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:357
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:359
+#, kde-format
+msgctxt "Category"
+msgid "Photography"
+msgstr "Fotografia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:366
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:368
+#, kde-format
+msgctxt "Category"
+msgid "Publishing"
+msgstr "Publikowanie"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:377
+#, kde-format
+msgctxt "Category"
+msgid "Scanning and OCR"
+msgstr "Skanowanie i OCR"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:385
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:387
+#, kde-format
+msgctxt "Category"
+msgid "Viewers"
+msgstr "Przeglądarki"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:397
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:399
+#, kde-format
+msgctxt "Category"
+msgid "Internet"
+msgstr "Internet"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:406
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:408
+#, kde-format
+msgctxt "Category"
+msgid "Chat"
+msgstr "Rozmowa"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:416
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:418
+#, kde-format
+msgctxt "Category"
+msgid "File Sharing"
+msgstr "Współdzielenie plików"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:425
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:427
+#, kde-format
+msgctxt "Category"
+msgid "Mail"
+msgstr "Poczta"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:434
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:436
+#, kde-format
+msgctxt "Category"
+msgid "Web Browsers"
+msgstr "Przeglądarki sieciowe"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:446
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:448
+#, kde-format
+msgctxt "Category"
+msgid "Multimedia"
+msgstr "Multimedia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:456
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:458
+#, kde-format
+msgctxt "Category"
+msgid "Audio and Video Editors"
+msgstr "Edytory dźwięku i obrazu"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:465
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:467
+#, kde-format
+msgctxt "Category"
+msgid "Audio Players"
+msgstr "Odtwarzacze muzyki"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:486
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:488
+#, kde-format
+msgctxt "Category"
+msgid "Video Players"
+msgstr "Odtwarzacze filmów"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:504
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:506
+#, kde-format
+msgctxt "Category"
+msgid "CD and DVD"
+msgstr "CD i DVD"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:516
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:518
+#, kde-format
+msgctxt "Category"
+msgid "Office"
+msgstr "Biuro"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:527
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:529
+#, kde-format
+msgctxt "Category"
+msgid "System Settings"
+msgstr "Ustawienia systemowe"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:119
+#, kde-format
+msgctxt "user denotes this as user-scoped flatpak repo"
+msgid "%1 (user)"
+msgstr "%1 (użytkownik)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:670
+#, kde-format
+msgid "Local bundle"
+msgstr "Lokalny pęk"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1587
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
+#, kde-format
+msgid "Malformed appstream url '%1'"
+msgstr "Zniekształcony adres url appstream '%1'"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1689
+#, kde-format
+msgid "Failed to add source '%1': %2"
+msgstr "Nie udało dodać źródła '%1': %2"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1806
+#, kde-format
+msgid "There are no Flatpak sources."
+msgstr "Nie ma źródeł Flatpak."
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
+#, kde-format
+msgid "Failed to load \"%1\" source"
+msgstr "Nie udało wczytać źródła \"%1\""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:338
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"<para>This application comes from \"%1\" (hosted at <link>%2</link>). Other "
+"software in this repository will also be made be available in Discover when "
+"the application is installed.</para>"
+msgstr ""
+"<para>Ten program pochodzi z \"%1\" (umieszczonego na <link>%2</link>). Inne "
+"oprogramowanie z tego repozytorium także będzie dostępne w Odkrywcy po "
+"wgraniu tego programu.</para>"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:421
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:429
+#, kde-format
+msgid "Retrieving size information"
+msgstr "Pobieranie informacji o rozmiarze"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:423
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:431
+#, kde-format
+msgid "Unknown size"
+msgstr "Nieznany rozmiar"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:425
+#, kde-format
+msgctxt "@info app size"
+msgid "%1 to download, %2 on disk"
+msgstr "%1 do pobrania, %2 na dysku"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:433
+#, kde-format
+msgctxt "@info app size"
+msgid "%1 on disk"
+msgstr "%1 na dysku"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:487
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:441
+#, fuzzy, kde-format
+#| msgid "Failed to start '%1'"
+msgid "Failed to start '%1': %2"
+msgstr "Nie udało się uruchomić '%1'"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:717
+#, kde-format
+msgid "All Files"
+msgstr "Wszystkie pliki"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:719
+#, kde-format
+msgid "Home"
+msgstr "Domowy"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:721
+#, kde-format
+msgid "Downloads"
+msgstr "Pobrane"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:723
+#, kde-format
+msgid "Music"
+msgstr "Muzyka"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:749
+#, kde-format
+msgid "Network Access"
+msgstr "Dostęp do sieci"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:750
+#, kde-format
+msgid "Can access the internet"
+msgstr "Dozwolony dostęp do sieci"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:756
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
+#, kde-format
+msgid "Session Bus Access"
+msgstr "Dostęp do szyny sesji"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:757
+#, kde-format
+msgid "Access is granted to the entire Session Bus"
+msgstr "Dostęp jest przyznany dla całej szyny sesji"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:762
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
+#, kde-format
+msgid "System Bus Access"
+msgstr "Dostęp do szyny systemowej"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:763
+#, kde-format
+msgid "Access is granted to the entire System Bus"
+msgstr "Dostęp jest przyznany dla całej szyny systemowej"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:768
+#, kde-format
+msgid "Remote Login Access"
+msgstr "Dostęp do zdalnego wchodzenia"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:769
+#, kde-format
+msgid "Can initiate remote login requests using the SSH protocol"
+msgstr ""
+"Może zapoczątkowywać żądania wejścia zdalnego przy użyciu protokołu SSH"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:773
+#, kde-format
+msgid "Smart Card Access"
+msgstr "Dostęp do kart inteligentnych"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:774
+#, kde-format
+msgid "Can integrate and communicate with smart cards"
+msgstr "Może integrować się i porozumiewać z karami inteligentnymi"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:780
+#, kde-format
+msgid "Device Access"
+msgstr "Dostęp do urządzeń"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:781
+#, kde-format
+msgid "Can communicate with and control built-in or connected hardware devices"
+msgstr ""
+"Może porozumiewać się oraz sterować wbudowanymi lub podłączonymi urządzeniami"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:785
+#, kde-format
+msgid "Kernel-based Virtual Machine Access"
+msgstr "Dostęp do maszyn wirtualnych opartych na jądrze"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:786
+#, kde-format
+msgid "Allows running other operating systems as guests in virtual machines"
+msgstr ""
+"Umożliwia uruchamianie innych systemów operacyjnych jako gości na maszynach "
+"wirtualnych"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
+#, kde-format
+msgid "%1 (read-only)"
+msgstr "%1 (tylko do odczytu)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:813
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
+#, kde-format
+msgid "%1 (can create files)"
+msgstr "%1 (może tworzyć pliki)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
+#, kde-format
+msgid "%1 (read & write) "
+msgstr "%1 (odczyt i zapis) "
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
+#, kde-format
+msgid "Home Folder Access"
+msgstr "Dostęp do katalogu domowego"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:846
+#, kde-format
+msgid ""
+"Can read, write, and create files in the following locations in your home "
+"folder without asking permission first: %1"
+msgstr ""
+"Może odczytywać, zapisywać i tworzyć pliki w następujących miejscach w twoim "
+"katalogu domowym bez uprzedniego pytania o pozwolenie: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#, kde-format
+msgid ""
+"Can read and write files in the following locations in your home folder "
+"without asking permission first: %1"
+msgstr ""
+"Może odczytywać i zapisywać pliki w następujących miejscach w twoim katalogu "
+"domowym bez uprzedniego pytania o pozwolenie: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
+#, kde-format
+msgid ""
+"Can read files in the following locations in your home folder without asking "
+"permission first: %1"
+msgstr ""
+"Może odczytywać pliki w następujących miejscach w twoim katalogu domowym bez "
+"uprzedniego pytania o pozwolenie: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
+#, kde-format
+msgid ""
+"Can access files in the following locations in your home folder without "
+"asking permission first: %1"
+msgstr ""
+"Może uzyskiwać dostęp do następujących miejsc w twoim katalogu domowym bez "
+"uprzedniego pytania o pozwolenie: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
+#, kde-format
+msgid "System Folder Access"
+msgstr "Dostęp do katalogów systemowych"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#, kde-format
+msgid ""
+"Can read, write, and create system files in the following locations without "
+"asking permission first: %1"
+msgstr ""
+"Może odczytywać, zapisywać i tworzyć pliki systemowe w następujących "
+"miejscach bez uprzedniego pytania o pozwolenie: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
+#, kde-format
+msgid ""
+"Can read and write system files in the following locations without asking "
+"permission first: %1"
+msgstr ""
+"Może odczytywać i zapisywać pliki systemowe w następujących miejscach bez "
+"uprzedniego pytania o pozwolenie: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#, kde-format
+msgid ""
+"Can read system files in the following locations without asking permission "
+"first: %1"
+msgstr ""
+"Może odczytywać i pliki systemowe w następujących miejscach bez uprzedniego "
+"pytania o pozwolenie: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:866
+#, kde-format
+msgid ""
+"Can access system files in the following locations without asking permission "
+"first: %1"
+msgstr ""
+"Może uzyskiwać dostęp do plików systemowych w następujących miejscach bez "
+"uprzedniego pytania o pozwolenie: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:876
+#, kde-format
+msgid ""
+"Can communicate with other applications and processes in the same desktop "
+"session using the following communication protocols: %1"
+msgstr ""
+"Może porozumiewać się z innymi aplikacjami i procesami w tej samej sesji "
+"przy użyciu następującego protokołów porozumiewania: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:888
+#, kde-format
+msgid ""
+"Can communicate with all applications and system services using the "
+"following communication protocols: %1"
+msgstr ""
+"Może porozumiewać się ze wszystkimi aplikacjami i usługami systemowymi przy "
+"użyciu następującego protokołów porozumiewania: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:88
+#, kde-format
+msgid "Add Flathub"
+msgstr "Dodaj Flathub"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:89
+#, kde-format
+msgid "Apply Changes"
+msgstr "Zastosuj zmiany"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:93
+#, kde-format
+msgid ""
+"Changes to the priority of Flatpak sources must be applied before they will "
+"take effect."
+msgstr ""
+"Zanim zmiany odniosą skutek, należy je zastosować do priorytetów źródeł "
+"Flatpak."
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
+#, kde-format
+msgid ""
+"Makes it possible to easily install the applications listed in https://"
+"flathub.org"
+msgstr "Ułatwia wgrywanie programów wymienionych na https://flathub.org"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:163
+#, kde-format
+msgid "Could not add the source %1"
+msgstr "Nie można dodać źródła %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:279
+#, kde-format
+msgid "Removing '%1'"
+msgstr "Usuwanie '%1'"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:280
+#, kde-format
+msgid ""
+"To remove this repository, the following applications must be uninstalled:"
+"<ul><li>%1</li></ul>"
+msgstr ""
+"Aby usunąć to repozytorium, muszą zostać usunięte następujące aplikacje: "
+"<ul><li>%1</li></ul>"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#, kde-format
+msgid "Failed to remove %1 remote repository: %2"
+msgstr "Nie udało się usunąć zdalnego repozytorium %1: %2"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:301
+#, kde-format
+msgid "Could not find %1"
+msgstr "Nie można znaleźć %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:333
+#, kde-format
+msgid "%1 (user)"
+msgstr "%1 (użytkownik)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:394
+#, kde-format
+msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
+msgstr "Wpisz URI repozytorium Flatpak (*.flatpakrepo):"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
+#, kde-format
+msgid "Adding remote '%1' in %2 from %3"
+msgstr "Dodawanie zdalnego źródła '%1' w %2 z %3"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
+#, kde-format
+msgid ""
+"The remote %1 require that you accept their license:\n"
+" %2"
+msgstr ""
+"Strona trzecia %1 wymaga zgody na ich licencję:\n"
+" %2"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
+#, kde-format
+msgid "Review EULA"
+msgstr "EULA oceny"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
+#, kde-format
+msgid "Could not enable remote %1: %2"
+msgstr "Nie można dodać źródła %1: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:107
+#, kde-format
+msgid "Backend %1 took too long to initialize"
+msgstr "Silnikowi %1 zajmuje zbyt dużo, żeby się uruchomić"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:169
+#, kde-format
+msgid "Applications"
+msgstr "Programy"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#, kde-format
+msgid "Plasma Addons"
+msgstr "Dodatki do Plazmy"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#, kde-format
+msgid "Application Addons"
+msgstr "Dodatki do programów"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#, kde-format
+msgid "Network error in backend %1: %2"
+msgstr "Błąd sieci w silniku %1: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:422
+#, kde-format
+msgid ""
+"Too many requests sent to the server for backend %1. Please try again in a "
+"few minutes."
+msgstr ""
+"Wysłano zbyt wiele żądań do serwera dla silnika %1. Spróbuj ponownie za "
+"kilka minut."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:425
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:431
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:436
+#, kde-format
+msgid "Invalid %1 backend, contact your distributor."
+msgstr "Nieprawidłowy silnik %1, napisz do swojego dystrybutora."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
+#, kde-format
+msgid ""
+"Unable to complete the update of %1. You can try and perform this action "
+"through the Get Hot New Stuff dialog, which grants tighter control. The "
+"reported error was:\n"
+"%2"
+msgstr ""
+"Nie można ukończyć uaktualnienia %1. Możesz spróbować wykonać to działanie w "
+"oknie dialogowym Get Hot New Stuff, który umożliwia większy nadzór. Zwrócony "
+"błąd to:\n"
+"%2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:465
+#, kde-format
+msgid "Could not fetch screenshot for the entry %1 in backend %2"
+msgstr "Nie można pobrać zrzutu ekranu dla wpisu %1 w silniku %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:469
+#, kde-format
+msgid "Unhandled error in %1 backend. Contact your distributor."
+msgstr "Nieobsługiwany błąd w silniku %1. Napisz do swojego dystrybutora."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:477
+#, kde-format
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:694
+#, kde-format
+msgid "Wrong KNewStuff URI: %1"
+msgstr "Zły adres URI KNewStuff: %1"
+
+#: libdiscover/backends/KNSBackend/KNSResource.cpp:167
+#, kde-format
+msgctxt "The name of the KDE Store"
+msgid "KDE Store"
+msgstr "Sklep KDE"
+
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:144
+#, kde-format
+msgid "Log in information for %1"
+msgstr "Dane logowania dla %1"
+
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
+#, kde-format
+msgid "Cannot launch %1"
+msgstr "Nie można uruchomić %1"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:540
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Addons"
+msgstr "Dodatki do Plazmy"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:551
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Widgets"
+msgstr "Elementy interfejsu Plazmy"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
+#, kde-format
+msgctxt "Category"
+msgid "Fonts"
+msgstr "Czcionki"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:211
+#, kde-format
+msgid "Please make sure that Appstream is properly set up on your system"
+msgstr "Upewnij się, że Appstream został poprawnie wgrany do twojego systemu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:248
+#, kde-format
+msgctxt "%1 is the date as formatted by the locale"
+msgid ""
+"Your operating system ended support on %1. Consider upgrading to a supported "
+"version."
+msgstr ""
+"Twój system operacyjny zakończył wsparcie dnia %1. Rozważ uaktualnienie do "
+"wspieranego wydania."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:703
+#, kde-format
+msgid "Cannot remove '%1'"
+msgstr "Nie usunąć '%1'"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
+#, kde-format
+msgid "Out of memory"
+msgstr "Brak pamięci"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
+#, kde-format
+msgid "No network connection available"
+msgstr "Brak połączenia z siecią"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
+#, kde-format
+msgid "Operation not supported"
+msgstr "Działanie jest nieobsługiwane"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:25
+#, kde-format
+msgid "Internal error"
+msgstr "Błąd wewnętrzny"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
+#, kde-format
+msgid "Internal error: %1"
+msgstr "Błąd wewnętrzny: %1"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
+#, kde-format
+msgid "GPG failure"
+msgstr "Niepowodzenie GPG"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
+#, kde-format
+msgid "PackageID invalid"
+msgstr "Nieprawidłowy identyfikator pakietu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
+#, kde-format
+msgid "Package not installed"
+msgstr "Nie wgrano pakietu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:37
+#, kde-format
+msgid "Package not found"
+msgstr "Nie znaleziono pakietu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
+#, kde-format
+msgid "Package is already installed"
+msgstr "Pakiet jest już wgrany"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
+#, kde-format
+msgid "Package download failed"
+msgstr "Pobieranie pakietu nie powiodło się"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:43
+#, kde-format
+msgid "Package group not found"
+msgstr "Nie znaleziono grupy pakietów"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
+#, kde-format
+msgid "Package group list invalid"
+msgstr "Wykaz grup pakietów jest nieprawidłowy"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
+#, kde-format
+msgid "Dependency resolution failed"
+msgstr "Rozwiązywanie kwestii zależności nie powiodło się"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
+#, kde-format
+msgid "Filter invalid"
+msgstr "Nieprawidłowy filtr"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
+#, kde-format
+msgid "Failed while creating a thread"
+msgstr "Niepowodzenie przy tworzeniu wątku"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
+#, kde-format
+msgid "Transaction failure"
+msgstr "Niepowodzenie transakcji"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:55
+#, kde-format
+msgid "Transaction canceled"
+msgstr "Porzucono transakcję"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
+#, kde-format
+msgid "No Cache available"
+msgstr "Brak pamięci podręcznej"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
+#, kde-format
+msgid "Cannot find repository"
+msgstr "Nie można znaleźć repozytorium"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
+#, kde-format
+msgid "Cannot remove system package"
+msgstr "Nie można usunąć pakietu systemowego"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:63
+#, kde-format
+msgid "The PackageKit daemon has crashed"
+msgstr "Usługa PackageKit uległa awarii"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:65
+#, kde-format
+msgid "Initialization failure"
+msgstr "Niepowodzenie inicjalizacji"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:67
+#, kde-format
+msgid "Failed to finalize transaction"
+msgstr "Niepowodzenie przy kończeniu transakcji"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
+#, kde-format
+msgid "Config parsing failed"
+msgstr "Niepowodzenie przetwarzania ustawień"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
+#, kde-format
+msgid "Cannot cancel transaction"
+msgstr "Nie można zaniechać transakcji"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
+#, kde-format
+msgid "Cannot obtain lock"
+msgstr "Nie można uzyskać blokady"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
+#, kde-format
+msgid "No packages to update"
+msgstr "Brak pakietów do uaktualnienia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
+#, kde-format
+msgid "Cannot write repo config"
+msgstr "Nie można zapisać ustawień repozytorium"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:79
+#, kde-format
+msgid "Local install failed"
+msgstr "Wgrywanie lokalne nie powiodło się"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:81
+#, kde-format
+msgid "Bad GPG signature found"
+msgstr "Znaleziono zły podpis GPG"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:83
+#, kde-format
+msgid "No GPG signature found"
+msgstr "Nie znaleziono podpisu GPG"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:85
+#, kde-format
+msgid "Cannot install source package"
+msgstr "Nie można wgrać pakietu źródłowego"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
+#, kde-format
+msgid "Repo configuration error"
+msgstr "Błąd ustawień repozytorium"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:89
+#, kde-format
+msgid "No license agreement"
+msgstr "Brak umowy licencyjnej"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:91
+#, kde-format
+msgid "File conflicts found"
+msgstr "Znaleziono niezgodność plików"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:93
+#, kde-format
+msgid "Package conflict found"
+msgstr "Znaleziono niezgodność pakietów"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:95
+#, kde-format
+msgid "Repo not available"
+msgstr "Repozytorium jest niedostępne"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:97
+#, kde-format
+msgid "Invalid package file"
+msgstr "Niepoprawny plik pakietu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
+#, kde-format
+msgid "Package install blocked"
+msgstr "Zablokowano wgrywanie pakietu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
+#, kde-format
+msgid "Corrupt package found"
+msgstr "Znaleziono uszkodzony pakiet"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
+#, kde-format
+msgid "All packages already installed"
+msgstr "Wszystkie pakiety wgrano wcześniej"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
+#, kde-format
+msgid "File not found"
+msgstr "Nie znaleziono pliku"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
+#, kde-format
+msgid "No more mirrors available"
+msgstr "Brak dodatkowych serwerów lustrzanych"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
+#, kde-format
+msgid "No distro upgrade data"
+msgstr "Brak danych do uaktualnienia dystrybucji"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
+#, kde-format
+msgid "Incompatible architecture"
+msgstr "Niezgodna architektura"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
+#, kde-format
+msgid "No space on device left"
+msgstr "Brak wolnego miejsca na urządzeniu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:115
+#, kde-format
+msgid "A media change is required"
+msgstr "Wymagana zmiana nośnika"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:117
+#, kde-format
+msgid "You have no authorization to execute this operation"
+msgstr "Nie masz upoważnienia do wykonana tego działania"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:119
+#, kde-format
+msgid "Update not found"
+msgstr "Nie znaleziono uaktualnienia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
+#, kde-format
+msgid "Cannot install from unsigned repo"
+msgstr "Nie można wgrać z niepodpisanego repozytorium"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
+#, kde-format
+msgid "Cannot update from unsigned repo"
+msgstr "Nie można uaktualnić z niepodpisanego repozytorium"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
+#, kde-format
+msgid "Cannot get file list"
+msgstr "Nie można uzyskać wykazu plików"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:127
+#, kde-format
+msgid "Cannot get requires"
+msgstr "Nie można uzyskać zależności"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:129
+#, kde-format
+msgid "Cannot disable repository"
+msgstr "Nie można wyłączyć repozytorium"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
+#, kde-format
+msgid "Restricted download detected"
+msgstr "Wykryto ograniczone pobieranie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
+#, kde-format
+msgid "Package failed to configure"
+msgstr "Ustawienie pakietu nie powiodło się"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:135
+#, kde-format
+msgid "Package failed to build"
+msgstr "Budowa pliku nie powiodła się"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:137
+#, kde-format
+msgid "Package failed to install"
+msgstr "Wgrywanie pakietu nie powiodło się"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:139
+#, kde-format
+msgid "Package failed to remove"
+msgstr "Nieudane usuwanie pakietu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:141
+#, kde-format
+msgid "Update failed due to running process"
+msgstr "Uaktualnienie nie powiodło się z powodu działającego procesu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
+#, kde-format
+msgid "The package database changed"
+msgstr "Baza danych pakietów uległa zmianie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
+#, kde-format
+msgid "The provided type is not supported"
+msgstr "Podany rodzaj jest nieobsługiwany"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
+#, kde-format
+msgid "Install root is invalid"
+msgstr "Główny katalog wgrywania jest nieprawidłowy"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:149
+#, kde-format
+msgctxt ""
+"Failed to sync your Linux distro repositories or other sources of packages"
+msgid "Cannot fetch sources"
+msgstr "Nie można pobrać źródeł"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:151
+#, kde-format
+msgid "Canceled priority"
+msgstr "Porzucono priorytet"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
+#, kde-format
+msgid "Unfinished transaction"
+msgstr "Nieukończone transakcje"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
+#, kde-format
+msgid "Lock required"
+msgstr "Wymagana blokada"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
+#, kde-format
+msgid "Unknown error %1."
+msgstr "Nieznany błąd %1."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
+#, kde-format
+msgid "'%1' was changed and suggests to be restarted."
+msgstr "'%1' został zmieniony i sugeruje ponowne uruchomienie."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
+#, kde-format
+msgid "A change by '%1' suggests your session to be restarted."
+msgstr "Zmiana '%1' sugeruje ponowne uruchomienie sesji."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
+#, kde-format
+msgid ""
+"'%1' was updated for security reasons, a restart of the session is "
+"recommended."
+msgstr ""
+"'%1' został uaktualniony ze względów bezpieczeństwa, zalecane jest ponowne "
+"uruchomienie sesji."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
+#, kde-format
+msgid ""
+"'%1' was updated for security reasons, a restart of the system is "
+"recommended."
+msgstr ""
+"'%1' został uaktualniony ze względów bezpieczeństwa, zalecane jest ponowne "
+"uruchomienie systemu."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
+#, kde-format
+msgid "A change by '%1' suggests your system to be restarted."
+msgstr "Zmiana '%1' zaleca ponowne uruchomienie systemu."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
+#, kde-format
+msgid "The application will have to be restarted."
+msgstr "Program będzie musiał być uruchomiony ponownie."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
+#, kde-format
+msgid "The session will have to be restarted"
+msgstr "Sesję będzie trzeba uruchomić ponownie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:192
+#, kde-format
+msgid "The system will have to be restarted."
+msgstr "System będzie trzeba uruchomić ponownie."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:194
+#, kde-format
+msgid "For security, the session will have to be restarted."
+msgstr "Dla bezpieczeństwa, sesję tę należy będzie uruchomić ponownie."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:196
+#, kde-format
+msgid "For security, the system will have to be restarted."
+msgstr "Dla bezpieczeństwa, system ten należy będzie uruchomić ponownie."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
+#, kde-format
+msgid "Waiting…"
+msgstr "Oczekiwanie..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
+#, kde-format
+msgid "Refreshing Cache…"
+msgstr "Odświeżanie pamięci podręcznej pakietów…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
+#, kde-format
+msgid "Setup…"
+msgstr "Ustawienia…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
+#, kde-format
+msgid "Processing…"
+msgstr "Przetwarzanie…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
+#, kde-format
+msgid "Remove…"
+msgstr "Usuń…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
+#, kde-format
+msgid "Downloading…"
+msgstr "Pobieranie…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
+#, kde-format
+msgid "Installing…"
+msgstr "Wgrywanie…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
+#, kde-format
+msgid "Updating…"
+msgstr "Uaktualnianie…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
+#, kde-format
+msgid "Cleaning up…"
+msgstr "Czyszczenie…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
+#, kde-format
+msgid "Resolving dependencies…"
+msgstr "Rozwiązywanie zależności…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
+#, kde-format
+msgid "Checking signatures…"
+msgstr "Sprawdzanie podpisów…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
+#, kde-format
+msgid "Test committing…"
+msgstr "Próba wdrożenia..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
+#, kde-format
+msgid "Committing…"
+msgstr "Wdrażanie…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
+#, kde-format
+msgid "Finished"
+msgstr "Ukończono"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:238
+#, kde-format
+msgid "Canceled"
+msgstr "Porzucona"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
+#, kde-format
+msgid "Waiting for lock…"
+msgstr "Oczekiwanie na blokadę…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
+#, kde-format
+msgid "Waiting for authorization…"
+msgstr "Oczekiwanie na uwierzytelnienie…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
+#, kde-format
+msgid "Copying files…"
+msgstr "Kopiowanie plików…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
+#, kde-format
+msgid "Unknown Status"
+msgstr "Nieznany stan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:258
+#, kde-format
+msgid "We are waiting for something."
+msgstr "Czekamy na coś."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
+#, kde-format
+msgid "Setting up transaction…"
+msgstr "Ustawianie transakcji…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
+#, kde-format
+msgid "The transaction is currently working…"
+msgstr "Transakcja jest obecnie w trakcie…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
+#, kde-format
+msgid "The transaction is currently removing packages…"
+msgstr "Transakcja obecnie usuwa pakiety…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
+#, kde-format
+msgid "The transaction is currently downloading packages…"
+msgstr "Transakcja obecnie pobiera pakiety…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
+#, kde-format
+msgid "The transactions is currently installing packages…"
+msgstr "Transakcja obecnie wgrywa pakiety…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
+#, kde-format
+msgid "The transaction is currently updating packages…"
+msgstr "Transakcja obecnie uaktualnia pakiety…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
+#, kde-format
+msgid "The transaction is currently cleaning up…"
+msgstr "Transakcja obecnie czyści…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
+#, kde-format
+msgid ""
+"The transaction is currently resolving the dependencies of the packages it "
+"will install…"
+msgstr "Transakcja obecnie rozwiązuje zależności pakietów, które wgra…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
+#, kde-format
+msgid "The transaction is currently checking the signatures of the packages…"
+msgstr "Transakcja obecnie sprawdza podpisy pakietów…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
+#, kde-format
+msgid ""
+"The transaction is currently testing the commit of this set of packages…"
+msgstr "Transakcja obecnie sprawdza wynik zastosowania tego zestawu pakietów…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
+#, kde-format
+msgid "The transaction is currently committing its set of packages…"
+msgstr "Transakcja obecnie zastosowuje zestaw pakietów…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
+#, kde-format
+msgid "The transaction has finished!"
+msgstr "Transakcja ukończyła!"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
+#, kde-format
+msgid "The transaction was canceled"
+msgstr "Porzucono transakcję"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
+#, kde-format
+msgid "The transaction is currently waiting for the lock…"
+msgstr "Transakcja obecnie czeka na blokadę…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
+#, kde-format
+msgid "Waiting for the user to authorize the transaction…"
+msgstr "Czekanie na zatwierdzenie transakcji przez użytkownika…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
+#, kde-format
+msgid "The transaction is currently copying files…"
+msgstr "Transakcja obecnie kopiuje pliki…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
+#, kde-format
+msgid "Currently refreshing the repository cache…"
+msgstr "Obecnie odświeża pamięć podręczną pakietów…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
+#, kde-format
+msgid "Unknown status %1."
+msgstr "Nieznany stan %1."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:313
+#, kde-format
+msgctxt "update state"
+msgid "Stable"
+msgstr "Stabilne"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:315
+#, kde-format
+msgctxt "update state"
+msgid "Unstable"
+msgstr "Niestabilne"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:317
+#, kde-format
+msgctxt "update state"
+msgid "Testing"
+msgstr "Testowe"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
+#: libdiscover/resources/AbstractResource.cpp:102
+#, kde-format
+msgid "Installed"
+msgstr "Wgrany"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
+#, kde-format
+msgid "Not Installed"
+msgstr "Niezainstalowane "
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
+#, kde-format
+msgid "Low"
+msgstr "Niska"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:334
+#, kde-format
+msgid "Enhancement"
+msgstr "Ulepszenie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:336
+#, kde-format
+msgid "Normal"
+msgstr "Normalny"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:338
+#, kde-format
+msgid "Bugfix"
+msgstr "Poprawka błędów"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:340
+#, kde-format
+msgid "Important"
+msgstr "Ważna"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:342
+#, kde-format
+msgid "Security"
+msgstr "Bezpieczeństwo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:344
+#, kde-format
+msgid "Blocked"
+msgstr "Zablokowany"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:346
+#, kde-format
+msgid "Downloading"
+msgstr "Pobieranie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#, kde-format
+msgid "Updating"
+msgstr "Uaktualnianie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:350
+#, kde-format
+msgid "Installing"
+msgstr "Wgrywanie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:352
+#, kde-format
+msgid "Removing"
+msgstr "Usuwanie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:354
+#, kde-format
+msgid "Cleanup"
+msgstr "Porządkowanie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:356
+#, kde-format
+msgid "Obsoleting"
+msgstr "Zastępowanie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:358
+#, kde-format
+msgid "Collection Installed"
+msgstr "Wgrane zbiory"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:360
+#, kde-format
+msgid "Collection Available"
+msgstr "Dostępne zbiory"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:364
+#, kde-format
+msgid "Reinstalling"
+msgstr "Ponowne wgrywanie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:366
+#, kde-format
+msgid "Downgrading"
+msgstr "Obniżanie wersji"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:368
+#, kde-format
+msgid "Preparing"
+msgstr "Przygotowywanie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:370
+#, kde-format
+msgid "Decompressing"
+msgstr "Rozpakowywanie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:372
+#, kde-format
+msgid "Untrusted"
+msgstr "Niezaufana"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:374
+#, kde-format
+msgid "Trusted"
+msgstr "Zaufane"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:376
+#, kde-format
+msgid "Unavailable"
+msgstr "Niedostępny"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
+#, kde-format
+msgid "Failed Offline Update"
+msgstr "Nie udało się uaktualnić bez sieci"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
+#, kde-format
+msgid ""
+"Failed to update %1 package\n"
+"%2"
+msgid_plural ""
+"Failed to update %1 packages\n"
+"%2"
+msgstr[0] ""
+"Nie można uaktualnić %1 pakietów\n"
+"%2"
+msgstr[1] ""
+"Nie można uaktualnić %1 pakietów\n"
+"%2"
+msgstr[2] ""
+"Nie można uaktualnić %1 pakietów\n"
+"%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
+#, kde-format
+msgctxt "@action:button"
+msgid "Open Discover"
+msgstr "Otwórz Odkrywcę"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#, kde-format
+msgctxt "@action:button"
+msgid "Repair System"
+msgstr "Napraw system"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#, kde-format
+msgid "Repairing failed offline update"
+msgstr "Naprawianie nieudanego uaktualnienia bez sieci"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#, kde-format
+msgid "Repair Failed"
+msgstr "Nie udało się naprawić"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
+#, kde-kuit-format
+msgctxt "@info"
+msgid "%1<nl/>Please report this error to your distribution."
+msgstr "%1<nl/>Zgłoś ten błąd swojej dystrybucji."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
+#, kde-format
+msgid "Repaired Successfully"
+msgstr "Pomyślnie uaktualniono"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#, kde-format
+msgid "Offline Updates"
+msgstr "Uaktualnienia bez sieci"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
+#, kde-format
+msgid "Successfully updated %1 package"
+msgid_plural "Successfully updated %1 packages"
+msgstr[0] "Pomyślnie uaktualniono %1 pakiet"
+msgstr[1] "Pomyślnie uaktualniono %1 pakiety"
+msgstr[2] "Pomyślnie uaktualniono %1 pakiety"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:303
+#, kde-format
+msgctxt "package-name (version)"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:305
+#, kde-format
+msgctxt "comma separating package names"
+msgid ", "
+msgstr ", "
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
+#, kde-format
+msgid "Obsoletes:"
+msgstr "Przestarzałe: "
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
+#, kde-format
+msgid "Release Notes:"
+msgstr "Uwagi do wydania:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
+#, kde-format
+msgid "Update State:"
+msgstr "Stan uaktualnienia:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:355
+#, kde-format
+msgid "Restart:"
+msgstr "Ponowne uruchomienie:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#, kde-format
+msgid "Vendor:"
+msgstr "Wytwórca:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:378
+#, kde-format
+msgid "%2 (plus %1 dependency)"
+msgid_plural "%2 (plus %1 dependencies)"
+msgstr[0] "%2 (plus %1 zależność)"
+msgstr[1] "%2 (plus %1 zależności)"
+msgstr[2] "%2 (plus %1 zależności)"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#, kde-format
+msgid "Repository URL:"
+msgstr "Adres URL repozytorium:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:78
+#, kde-format
+msgid "System upgrade"
+msgstr "Uaktualnienia systemu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:169
+#, kde-format
+msgid "1 package to upgrade"
+msgid_plural "%1 packages to upgrade"
+msgstr[0] "1 pakiet do uaktualnienia"
+msgstr[1] "%1 pakiety do uaktualnienia"
+msgstr[2] "%1 pakietów do uaktualnienia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#, kde-format
+msgid "Present"
+msgstr "Obecnie"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:190
+#, kde-format
+msgid "Future"
+msgstr "W przyszłości"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:279
+#, kde-format
+msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
+msgid "Not enough space to perform the update; only %1 of space are available."
+msgstr ""
+"Niewystarczająco miejsca, aby uaktualnić; dostępne tylko %1 wolnej "
+"przestrzeni."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:467
+#, kde-format
+msgid ""
+"This update cannot be completed as it would remove the following software "
+"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"you believe this is an error, please report it as a bug to the packagers of "
+"your distribution."
+msgstr ""
+"Nie można ukończyć tego uaktualnienia, bo usunęłoby ono oprogramowanie, "
+"które jest niezbędne do działania systemu:<nl/><ul><li>%1</li></ul><nl/"
+">Jeśli uważasz, że to błąd, to zalecamy zgłoszenie tego jako do osób "
+"zajmujących się pakietami w twojej dystrybucji."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:474
+#, kde-format
+msgid "Packages to remove"
+msgstr "Pakiety do usunięcia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
+#, kde-format
+msgid ""
+"The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
+">in order to install:<ul><li>%2</li></ul>"
+msgstr ""
+"Uaktualnienie usunie następujące pakiety:<ul><li>%1</li></ul><br/>aby wgrać:"
+"<ul><li>%2</li></ul>"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
+#, kde-kuit-format
+msgctxt "@info"
+msgid "%1:<nl/><nl/>%2"
+msgstr "%1:<nl/><nl/>%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
+#, kde-format
+msgid ""
+"Media Change of type '%1' is requested.\n"
+"%2"
+msgstr "Wymagana zmiana nośnika rodzaju '%1'.\\ %2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:614
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
+#, kde-format
+msgid "Accept EULA"
+msgstr "Akceptuj EULA"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:615
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
+#, kde-format
+msgid ""
+"The package %1 and its vendor %2 require that you accept their license:\n"
+" %3"
+msgstr ""
+"Pakiet %1 i jego wydawca %2 wymagają od ciebie zgodzenia się na ich "
+"licencję:\n"
+" %3"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:732
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
+#, kde-format
+msgid "Missing signature for %1 in %2"
+msgstr "Brak podpisu dla %1 w %2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
+#, kde-format
+msgid ""
+"Do you trust the following key?\n"
+"\n"
+"Url: %1\n"
+"User: %2\n"
+"Key: %3\n"
+"Fingerprint: %4\n"
+"Timestamp: %4\n"
+msgstr ""
+"Czy ufasz poniższemu kluczowi?\n"
+"\n"
+"Adres URL: %1\n"
+"Użytkownik: %2\n"
+"Klucz: %3\n"
+"Odcisk klucza: %4\n"
+"Znacznik czasu: %4\n"
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:188
+#, kde-format
+msgid ""
+"This action cannot be completed as it would remove the following software "
+"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"you believe this is an error, please report it as a bug to the packagers of "
+"your distribution."
+msgstr ""
+"Nie można ukończyć tego działania, bo usunęłoby ono oprogramowanie, które "
+"jest niezbędne do działania systemu:<nl/><ul><li>%1</li></ul><nl/>Jeśli "
+"uważasz, że to błąd, to zalecamy zgłoszenie tego jako do osób zajmujących "
+"się pakietami w twojej dystrybucji."
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
+#, kde-format
+msgid "Confirm package removal"
+msgstr "Potwierdź usunięcie pakietu"
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
+#, kde-format
+msgid ""
+"This action will also remove the following package:\n"
+"%2"
+msgid_plural ""
+"This action will also remove the following packages:\n"
+"%2"
+msgstr[0] ""
+"Działanie to usunie także następujący pakiet:\n"
+"%2"
+msgstr[1] ""
+"Działanie to usunie także następujące pakiety:\n"
+"%2"
+msgstr[2] ""
+"Działanie to usunie także następujące pakiety:\n"
+"%2"
+
+#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Operating System"
+msgstr "System operacyjny"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:245
+#, kde-format
+msgid "GPL and other licenses"
+msgstr "GPL i inne licencje"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:251
+#, kde-format
+msgid "Remote: "
+msgstr "Zdalne: "
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:288
+#, kde-format
+msgid "The currently running version of %1."
+msgstr "Obecnie uruchomiona wersja %1."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:290
+#, kde-format
+msgid "Installed but not currently running version of %1."
+msgstr "Wgrana, lecz nie obecnie uruchomiona wersja %1."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:73
+#, kde-format
+msgid "ostree remotes"
+msgstr "serwery zdalne ostree"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:119
+#, kde-format
+msgid "Current rpm-ostree transaction in progress:"
+msgstr "W trakcie jest transakcja rpm-ostree:"
+
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#, kde-format
+msgid "Snap"
+msgstr "Snap"
+
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:353
+#, kde-format
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
+#, kde-format
+msgid ""
+"This Snap application is not compatible with security sandboxing and will "
+"have full access to this computer. Install it anyway?"
+msgstr ""
+"Ten program Snap jest niezgodny z zasadami bezpieczeństwa polegającymi na "
+"umieszczaniu programów w piaskownicy, więc będzie miał pełny dostęp do tego "
+"komputera. Czy mimo to go wgrać?"
+
+#: libdiscover/DiscoverBackendsFactory.cpp:111
+#, kde-format
+msgid ""
+"List all the backends we'll want to have loaded, separated by comma ','."
+msgstr ""
+"Wyszczególnij wszystkie silniki, które mają zostać wczytane i rozdziel je "
+"przecinkami ','."
+
+#: libdiscover/resources/AbstractResource.cpp:98
+#, kde-format
+msgid "Broken"
+msgstr "Uszkodzony"
+
+#: libdiscover/resources/AbstractResource.cpp:100
+#, kde-format
+msgid "Available"
+msgstr "Dostępny"
+
+#: libdiscover/resources/AbstractResource.cpp:104
+#, kde-format
+msgid "Upgradeable"
+msgstr "Do uaktualnienia"
+
+#: libdiscover/resources/AbstractResource.cpp:257
+#, kde-format
+msgid "Launch"
+msgstr "Uruchom"
+
+#: libdiscover/resources/AbstractResource.cpp:266
+#, kde-format
+msgctxt ""
+"@info 'Refresh' is used as a noun here, and %1 is an app's version number"
+msgid "Refresh of version %1"
+msgstr "Uaktualnienie wersji %1"
+
+#: libdiscover/resources/AbstractResource.cpp:276
+#, kde-format
+msgctxt "Do not translate or alter \\u009C"
+msgid "%1 → %2%1 → %2%2"
+msgstr "%1 → %2%1 → %2%2"
+
+#: libdiscover/resources/AbstractResourcesBackend.cpp:153
+#, kde-format
+msgid "Please verify Internet connectivity"
+msgstr "Sprawdź swoje połączenie"
+
+#: libdiscover/resources/ResourcesModel.cpp:102
+#, kde-format
+msgid "Refresh"
+msgstr "Odśwież"
+
+#: libdiscover/resources/ResourcesProxyModel.cpp:682
+#, kde-format
+msgctxt "an approximation number, like 3000+"
+msgid "%1+"
+msgstr "%1+"
+
+#: libdiscover/Transaction/Transaction.cpp:133
+#, kde-format
+msgctxt "@label Download rate"
+msgid "%1/s"
+msgstr "%1/s"
+
+#: libdiscover/Transaction/TransactionModel.cpp:74
+#, kde-format
+msgctxt "@info:status"
+msgid "Starting"
+msgstr "Uruchamianie"
+
+#: libdiscover/Transaction/TransactionModel.cpp:76
+#, kde-format
+msgctxt "@info:status"
+msgid "Waiting"
+msgstr "Oczekiwanie"
+
+#: libdiscover/Transaction/TransactionModel.cpp:78
+#, kde-format
+msgctxt "@info:status"
+msgid "Downloading"
+msgstr "Pobieranie"
+
+#: libdiscover/Transaction/TransactionModel.cpp:82
+#, kde-format
+msgctxt "@info:status"
+msgid "Installing"
+msgstr "Wgrywanie"
+
+#: libdiscover/Transaction/TransactionModel.cpp:84
+#, kde-format
+msgctxt "@info:status"
+msgid "Removing"
+msgstr "Usuwanie"
+
+#: libdiscover/Transaction/TransactionModel.cpp:86
+#, kde-format
+msgctxt "@info:status"
+msgid "Changing Addons"
+msgstr "Zmienianie dodatków"
+
+#: libdiscover/Transaction/TransactionModel.cpp:90
+#, kde-format
+msgctxt "@info:status"
+msgid "Done"
+msgstr "Gotowe"
+
+#: libdiscover/Transaction/TransactionModel.cpp:92
+#, kde-format
+msgctxt "@info:status"
+msgid "Failed"
+msgstr "Niepowodzenie"
+
+#: libdiscover/Transaction/TransactionModel.cpp:94
+#, kde-format
+msgctxt "@info:status"
+msgid "Cancelled"
+msgstr "Porzucona"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:129
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Applications"
+msgstr "Programy"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "System Software"
+msgstr "Oprogramowanie systemowe"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Addons"
+msgstr "Dodatki"
+
+#~ msgctxt "version (branch)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "Category"
+#~ msgid "Applications"
+#~ msgstr "Programy"
+
+#~ msgid "Updates"
+#~ msgstr "Uaktualnienia"
+
+#~ msgctxt "origin (backend name)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "@action Checks the Internet for updates"
+#~ msgid "Check for Updates"
+#~ msgstr "Szukaj uaktualnień"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Application Updates"
+#~ msgstr "Uaktualnienia programów"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "System Updates"
+#~ msgstr "Uaktualnienia systemu"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "%1:<nl/><nl/>%2<nl/><nl/>Please report this issue to the packagers of "
+#~ "your distribution."
+#~ msgstr ""
+#~ "%1:<nl/><nl/>%2<nl/><nl/>Zgłoś ten błąd ludziom, przygotowującym pakiety "
+#~ "w twojej dystrybucji."
+
+#~ msgid "Version: "
+#~ msgstr "Wersja: "
+
+#~ msgid "BaseCommit: "
+#~ msgstr "Podstawowe wdrożenie:"
+
+#~ msgid "GPGSignature: Valid signature by "
+#~ msgstr "Podpis GPG: Prawidłowy podpis osoby "
+
+#~ msgid "Origin: "
+#~ msgstr "Pochodzenie: "
+
+#~ msgid "The currently active deployment."
+#~ msgstr "Obecnie przeprowadzane wdrożenie."
+
+#~ msgid "Waiting..."
+#~ msgstr "Oczekiwanie..."
+
+#~ msgid "Remove..."
+#~ msgstr "Usuń..."
+
+#~ msgid "Downloading..."
+#~ msgstr "Pobieranie..."
+
+#~ msgid "Installing..."
+#~ msgstr "Wgrywanie..."
+
+#~ msgid "Updating..."
+#~ msgstr "Uaktualnianie..."
+
+#~ msgid "This snap application needs security confinement measures disabled."
+#~ msgstr "Ta aplikacja snap wymaga wyłączenia ustawień bezpieczeństwa."
+
+#~ msgid "View Updates"
+#~ msgstr "Zobacz uaktualnienia"
+
+#, fuzzy
+#~| msgid "Please restart the computer to finish the update"
+#~ msgid "Please restart the device to finish the update"
+#~ msgstr "Uruchom komputer ponownie, aby ukończyć uaktualnianie"
+
+#~ msgid "Use"
+#~ msgstr "Użyj"
+
+#~ msgid "Update"
+#~ msgstr "Uaktualnij"
+
+#~ msgid "Current Version:"
+#~ msgstr "Bieżąca wersja:"
+
+#~ msgid "New Version:"
+#~ msgstr "Nowa wersja:"
+
+#~ msgid "Not Invokable"
+#~ msgstr "Niewywoływalny"
+
+#~ msgid "Upgrade available"
+#~ msgstr "Dostępne uaktualnienie"
+
+#~ msgid "New unstable version: %1"
+#~ msgstr "Nowa niestabilna wersja: %1"
+
+#~ msgid "FWUPD ERROR ALREADY PENDING!"
+#~ msgstr "BŁĄD FWUPD: W TRAKCIE!"
+
+#~ msgid "FWUPD ERROR INVALID FILE"
+#~ msgstr "BŁĄD FWUPD: NIEPRAWIDŁOWY PLIK"
+
+#~ msgid "FWUPD ERROR NOT SUPPORTED"
+#~ msgstr "BŁĄD FWUPD: NIEOBSŁUGIWANE"
+
+#~ msgid "FWUPD ERROR AUTH FAILED"
+#~ msgstr "BŁĄD FWUPD: NIEPOWODZENIE UWIERZYTELNIENIA"
+
+#~ msgid "FWUPD ERROR SIGNATURE INVALID"
+#~ msgstr "BŁĄD FWUPD: NIEPRAWIDŁOWY PODPIS"
+
+#~ msgid "FWUPD ERROR AC POWER REQUIRED"
+#~ msgstr "BŁĄD FWUPD: WYMAGANE ZASILANIE Z SIECI"
+
+#~ msgid "Restart is required"
+#~ msgstr "Wymagane ponowne uruchomienie"
+
+#~ msgid "The system needs to be restarted for the updates to take effect."
+#~ msgstr "Należy ponownie uruchomić system, aby zmiany były widoczne."
+
+#~ msgid "Session restart is required"
+#~ msgstr "Wymagane ponowne uruchomienie"
+
+#~ msgid "You will need to log out and back in for the update to take effect."
+#~ msgstr "Należy ponownie się zalogować, aby zmiany były widoczne."
+
+#~ msgid "Reason:"
+#~ msgstr "Powód:"
+
+#~ msgid "Updates:"
+#~ msgstr "Uaktualnienia:"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Important Security Updates"
+#~ msgstr "Ważne uaktualnienia bezpieczeństwa"
+
+#~ msgid "Confirm..."
+#~ msgstr "Potwierdź..."
+
+#~ msgid ""
+#~ "To proceed with this action, the following package needs removal:\n"
+#~ "%2"
+#~ msgid_plural ""
+#~ "To proceed with this action, the following packages need removal:\n"
+#~ "%2"
+#~ msgstr[0] ""
+#~ "Aby kontynuować to działanie, trzeba usunąć następujący pakiet:\n"
+#~ "%2"
+#~ msgstr[1] ""
+#~ "Aby kontynuować to działanie, trzeba usunąć następujące pakiety:\n"
+#~ "%2"
+#~ msgstr[2] ""
+#~ "Aby kontynuować to działanie, trzeba usunąć następujące pakiety:\n"
+#~ "%2"
+
+#~ msgctxt "description (url)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgid "Change Log:"
+#~ msgstr "Dziennik zmian:"
+
+#~ msgid "Software Management"
+#~ msgstr "Zarządzanie oprogramowaniem"
+
+#~ msgctxt "Category"
+#~ msgid "Science & Engineering"
+#~ msgstr "Nauka i inżynieria"
+
+#~ msgctxt "Category"
+#~ msgid "Computer Science & Robotics"
+#~ msgstr "Informatyka i robotyka"
+
+#~ msgctxt "Category"
+#~ msgid "Painting & Editing"
+#~ msgstr "Malowanie i edycja"
+
+#~ msgctxt "Category"
+#~ msgid "Scanning & OCR"
+#~ msgstr "Skanowanie i OCR"
+
+#~ msgctxt "Category"
+#~ msgid "System & Settings"
+#~ msgstr "System i ustawienia"
+
+#~ msgctxt "Category"
+#~ msgid "Science Engineering"
+#~ msgstr "Nauka i inżynieria"
+
+#~ msgctxt "Category"
+#~ msgid "Computer Science Robotics"
+#~ msgstr "Informatyka i robotyka"
+
+#~ msgctxt "Category"
+#~ msgid "Painting Editing"
+#~ msgstr "Malowanie i edycja"
+
+#~ msgctxt "Category"
+#~ msgid "Scanning OCR"
+#~ msgstr "Skanowanie i OCR"
+
+#~ msgctxt "@item:intext Unknown remaining time"
+#~ msgid "Updating..."
+#~ msgstr "Uaktualnianie..."
+
+#~ msgctxt "@item:intext Remaining time"
+#~ msgid "%1 remaining"
+#~ msgstr "Pozostało %1"
+
+#~ msgid "%1 has been updated"
+#~ msgstr "%1 zostało uaktualnione"
+
+#~ msgid "Setting up for install..."
+#~ msgstr "Ustawianie do wgrywania..."
+
+#~ msgid "List all the available backends."
+#~ msgstr "Wymień wszystkie dostępne silniki."
+
+#~ msgid "Available backends:\n"
+#~ msgstr "Dostępne silniki:\n"
+
+#~ msgid ""
+#~ "Would you like to add remote '%1'?\n"
+#~ "\n"
+#~ "From: %2\n"
+#~ "With GPG key=%3..."
+#~ msgstr ""
+#~ "Czy chcesz dodać serwer zdalny '%1'?\n"
+#~ "\n"
+#~ "Z: %2\n"
+#~ "Z kluczem GPG=%3..."
+
+#~ msgctxt "Category"
+#~ msgid "Application Addons"
+#~ msgstr "Dodatki do programów"
+
+#~ msgctxt "Category"
+#~ msgid "Kate Snippets"
+#~ msgstr "Wstawki Kate"
+
+#~ msgctxt "Category"
+#~ msgid "Comics"
+#~ msgstr "Komiksy"
+
+#~ msgid "Got it"
+#~ msgstr "Rozumiem"
+
+#~ msgid "%1 requires user to accept its license"
+#~ msgstr "%1 wymaga od użytkownika zgody na licencję"
+
+#~ msgctxt "Category"
+#~ msgid "Haskell"
+#~ msgstr "Haskell"
+
+#~ msgctxt "Category"
+#~ msgid "Java"
+#~ msgstr "Java"
+
+#~ msgctxt "Category"
+#~ msgid "Perl"
+#~ msgstr "Perl"
+
+#~ msgctxt "Category"
+#~ msgid "Python"
+#~ msgstr "Python"
+
+#~ msgctxt "Category"
+#~ msgid "Version Control"
+#~ msgstr "Systemy sterowania wersją"
+
+#~ msgctxt "@info license"
+#~ msgid "Open Source"
+#~ msgstr "O otwartym źródle"
+
+#~ msgctxt "@info license"
+#~ msgid "Unknown"
+#~ msgstr "Nieznane"
+
+#~ msgctxt "@info/rich"
+#~ msgid ""
+#~ "The list of changes is not yet available. Please use <link "
+#~ "url='%1'>Launchpad</link> instead."
+#~ msgstr ""
+#~ "Wykaz zmian nie jest jeszcze dostępny. W zastępstwie użyj strony <link "
+#~ "url='%1'>Launchpad</link>."
+
+#~ msgctxt "@info"
+#~ msgid "The list of changes is not yet available."
+#~ msgstr "Wykaz zmian nie jest jeszcze dostępny."
+
+#~ msgctxt "@info:label"
+#~ msgid "This update was issued on %1"
+#~ msgstr "To uaktualnienie zostało wydane %1"
+
+#~ msgid "System update available!"
+#~ msgstr "Dostępne uaktualnienie systemu!"
+
+#~ msgctxt "Notification when a new version of Kubuntu is available"
+#~ msgid "A new version of Kubuntu is available"
+#~ msgstr "Dostępna jest nowa wersja Kubuntu"
+
+#~ msgid "Upgrade"
+#~ msgstr "Unowocześnij"
+
+#~ msgctxt "@title:window"
+#~ msgid "Media Change Required"
+#~ msgstr "Wymagana zmiana nośnika"
+
+#~ msgctxt "@label"
+#~ msgid "Please insert %1 into <filename>%2</filename>"
+#~ msgstr "Proszę włożyć %1 do <filename>%2</filename>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Warning - Unverified Software"
+#~ msgstr "Ostrzeżenie - niepotwierdzone oprogramowanie"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The following piece of software cannot be verified. <warning>Installing "
+#~ "unverified software represents a security risk, as the presence of "
+#~ "unverifiable software can be a sign of tampering.</warning> Do you wish "
+#~ "to continue?"
+#~ msgid_plural ""
+#~ "The following pieces of software cannot be verified. <warning>Installing "
+#~ "unverified software represents a security risk, as the presence of "
+#~ "unverifiable software can be a sign of tampering.</warning> Do you wish "
+#~ "to continue?"
+#~ msgstr[0] ""
+#~ "Nie można potwierdzić następującej części oprogramowania. "
+#~ "<warning>Wgrywanie niezaufanego oprogramowania jest ryzykowne z punktu "
+#~ "widzenia bezpieczeństwa, jako że brak potwierdzenia może być oznaką "
+#~ "fałszerstwa.</warning> Czy chcesz kontynuować?"
+#~ msgstr[1] ""
+#~ "Nie można potwierdzić następujących części oprogramowania. "
+#~ "<warning>Wgrywanie niezaufanego oprogramowania jest ryzykowne z punktu "
+#~ "widzenia bezpieczeństwa, jako że brak potwierdzenia może być oznaką "
+#~ "fałszerstwa.</warning> Czy chcesz kontynuować?"
+#~ msgstr[2] ""
+#~ "Nie można potwierdzić następujących części oprogramowania. "
+#~ "<warning>Wgrywanie niezaufanego oprogramowania jest ryzykowne z punktu "
+#~ "widzenia bezpieczeństwa, jako że brak potwierdzenia może być oznaką "
+#~ "fałszerstwa.</warning> Czy chcesz kontynuować?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Configuration File Changed"
+#~ msgstr "Plik ustawień uległ zmianie"
+
+#~ msgctxt "@label Notifies a config file change"
+#~ msgid ""
+#~ "A new version of the configuration file <filename>%1</filename> is "
+#~ "available, but your version has been modified. Would you like to keep "
+#~ "your current version or install the new version?"
+#~ msgstr ""
+#~ "Dostępna jest nowa wersja pliku ustawień <filename>%1</filename>, ale "
+#~ "twoja wersja została zmieniona. Wgrać twoją obecną, czy może nową wersję?"
+
+#~ msgctxt "@action Use the new config file"
+#~ msgid "Use New Version"
+#~ msgstr "Użyj nowej wersji"
+
+#~ msgctxt "@action Keep the old config file"
+#~ msgid "Keep Old Version"
+#~ msgstr "Zachowaj starą wersję"
+
+#~ msgctxt "@info Status info, widget title"
+#~ msgid "Starting"
+#~ msgstr "Uruchamianie"
+
+#~ msgctxt "@info Status info, widget title"
+#~ msgid "Waiting for Authentication"
+#~ msgstr "Oczekiwanie na uwierzytelnienie"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Waiting"
+#~ msgstr "Oczekiwanie"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for other transactions to finish"
+#~ msgstr "Oczekiwanie na ukończenie innych transakcji"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for other software managers to quit"
+#~ msgstr ""
+#~ "Oczekiwanie na zakończenie innych programów zarządzających pakietami"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for required medium"
+#~ msgstr "Oczekiwanie na wymagany nośnik"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for configuration file"
+#~ msgstr "Oczekiwanie na plik ustawień"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Loading Software List"
+#~ msgstr "Wczytywanie wykazu oprogramowania"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Updating software sources"
+#~ msgstr "Uaktualnianie źródeł oprogramowania"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Downloading Packages"
+#~ msgstr "Pobieranie pakietów"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Finished"
+#~ msgstr "Zakończono"
+
+#~ msgid "Adding Origins..."
+#~ msgstr "Dodawanie źródeł..."
+
+#~ msgid "Removing Origins..."
+#~ msgstr "Usuwanie źródeł..."
+
+#~ msgid "%1 (Binary)"
+#~ msgstr "%1 (Dwójkowy)"
+
+#~ msgid ""
+#~ "<sourceline> - The apt repository source line to add. This is one of:\n"
+#~ "  a complete apt line, \n"
+#~ "  a repo url and areas (areas defaults to 'main')\n"
+#~ "  a PPA shortcut.\n"
+#~ "\n"
+#~ "  Examples:\n"
+#~ "    deb http://myserver/path/to/repo stable myrepo\n"
+#~ "    http://myserver/path/to/repo myrepo\n"
+#~ "    https://packages.medibuntu.org free non-free\n"
+#~ "    http://extras.ubuntu.com/ubuntu\n"
+#~ "    ppa:user/repository"
+#~ msgstr ""
+#~ "<sourceline> - Wiersz repozytorium źródłowego do dodania. Może to być:\n"
+#~ "  całkowity wiersz apt, \n"
+#~ "  adres url repozytorium i obszary (domyślnym obszarem jest 'main')\n"
+#~ "  skrót PPA.\n"
+#~ "\n"
+#~ "  Przykłady:\n"
+#~ "    deb http://mójserwer/ścieżka/do/repozytorium stable mojerepozytorium\n"
+#~ "    http://mójserwer/ścieżka/do/repozytorium mojerepozytorium\n"
+#~ "    https://packages.medibuntu.org free non-free\n"
+#~ "    http://extras.ubuntu.com/ubuntu\n"
+#~ "    ppa:user/repository"
+
+#~ msgctxt "@title:window"
+#~ msgid "Confirm Additional Changes"
+#~ msgstr "Potwierdź dodatkowe zmiany"
+
+#~ msgctxt "@info"
+#~ msgid "<h2>Mark additional changes?</h2>"
+#~ msgstr "<h2>Czy oznaczyć dodatkowe zmiany?</h2>"
+
+#~ msgid "This action requires a change to another package:"
+#~ msgid_plural "This action requires changes to other packages:"
+#~ msgstr[0] "Działanie wymaga zmiany w innym pakiecie:"
+#~ msgstr[1] "Działanie wymaga zmiany w innych pakietach:"
+#~ msgstr[2] "Działanie wymaga zmiany w innych pakietach:"
+
+#~ msgctxt "@info"
+#~ msgid "<title>History</title>"
+#~ msgstr "<title>Historia</title>"
+
+#~ msgctxt "@label Line edit click message"
+#~ msgid "Search"
+#~ msgstr "Szukaj"
+
+#~ msgctxt "@item:inlistbox Filters all changes in the history view"
+#~ msgid "All changes"
+#~ msgstr "Wszystkie zmiany"
+
+#~ msgctxt "@item:inlistbox Filters installations in the history view"
+#~ msgid "Installations"
+#~ msgstr "Instalacje"
+
+#~ msgctxt "@item:inlistbox Filters removals in the history view"
+#~ msgid "Removals"
+#~ msgstr "Usunięcia"
+
+#~ msgctxt "@title:column"
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgctxt "@info:status describes a past-tense action"
+#~ msgid "Installed"
+#~ msgstr "Wgrany"
+
+#~ msgctxt "@info:status describes a past-tense action"
+#~ msgid "Upgraded"
+#~ msgstr "Uaktualniony"
+
+#~ msgctxt "@status describes a past-tense action"
+#~ msgid "Downgraded"
+#~ msgstr "Cofnięty"
+
+#~ msgctxt "@status describes a past-tense action"
+#~ msgid "Purged"
+#~ msgstr "Wyczyszczony"
+
+#~ msgctxt "@item example: muon installed at 16:00"
+#~ msgid "%1 %2 at %3"
+#~ msgstr "%1 %2 o %3"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "No Change"
+#~ msgstr "Bez zmian"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Install"
+#~ msgstr "Wgraj"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Upgrade"
+#~ msgstr "Uaktualnij"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Downgrade"
+#~ msgstr "Przywróć starszą wersję"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Held"
+#~ msgstr "Wstrzymany"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Installed"
+#~ msgstr "Wgrany"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Upgradeable"
+#~ msgstr "Do uaktualnienia"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Broken"
+#~ msgstr "Uszkodzony"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Install Broken"
+#~ msgstr "Wgraj uszkodzony"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Orphaned"
+#~ msgstr "Porzucony"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "New in repository"
+#~ msgstr "Nowy w repozytorium"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Residual Configuration"
+#~ msgstr "Pozostałe ustawienia"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Not Downloadable"
+#~ msgstr "Nie do pobrania"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Purge"
+#~ msgstr "Wyczyść"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Important for base install"
+#~ msgstr "Ważny dla podstawowej instalacji"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Version overridden"
+#~ msgstr "Zastąpiona wersja"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Required by other packages"
+#~ msgstr "Wymagany przez inne pakiety"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Installed (auto-removable)"
+#~ msgstr "Wgrany (samoczynnie usuwalny)"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Policy Broken"
+#~ msgstr "Zasady uszkodzonych"
+
+#~ msgctxt "@info:status Package locked at a certain version"
+#~ msgid "Locked"
+#~ msgstr "Zablokowany"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Manually held back"
+#~ msgstr "Ręcznie powstrzymywany"
+
+#~ msgctxt "@title:window"
+#~ msgid "Initialization Error"
+#~ msgstr "Błąd inicjalizacji"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unable to Obtain Package System Lock"
+#~ msgstr ""
+#~ "Nie można uzyskać dostępu do systemu pakietów ze względu na jego blokadę"
+
+#~ msgctxt "@title:window"
+#~ msgid "Low Disk Space"
+#~ msgstr "Mało miejsca na dysku"
+
+#~ msgctxt "@title:window"
+#~ msgid "Failed to Apply Changes"
+#~ msgstr "Niepowiedzenie przy stosowaniu zmian"
+
+#~ msgctxt "@title:window"
+#~ msgid "Authentication error"
+#~ msgstr "Błąd uwierzytelnienia"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unexpected Error"
+#~ msgstr "Nieoczekiwany błąd"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unknown Error"
+#~ msgstr "Nieznany błąd"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The package system could not be initialized, your configuration may be "
+#~ "broken."
+#~ msgstr ""
+#~ "System pakietów nie może być zainicjowany, twoje ustawienia mogą być "
+#~ "uszkodzone."
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Another application seems to be using the package system at this time. "
+#~ "You must close all other package managers before you will be able to "
+#~ "install or remove any packages."
+#~ msgstr ""
+#~ "Wygląda na to, że inny program używa w tym momencie systemu pakietów. "
+#~ "Musisz zamknąć wszystkie inne programy zarządzające pakietami zanim "
+#~ "przystąpisz do wgrywania lub usuwania jakichkolwiek pakietów."
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "You do not have enough disk space in the directory at %1 to continue with "
+#~ "this operation."
+#~ msgstr ""
+#~ "Nie posiadasz wystarczającej ilości wolnego miejsca w katalogu na %1 aby "
+#~ "kontynuować tę operację."
+
+#~ msgctxt "@label"
+#~ msgid "Could not download packages"
+#~ msgstr "Nie można pobrać pakietów"
+
+#~ msgctxt "@label"
+#~ msgid "An error occurred while applying changes:"
+#~ msgstr "Wystąpił błąd podczas zatwierdzania zmian:"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "This operation cannot continue since proper authorization was not provided"
+#~ msgstr ""
+#~ "Nie można kontynuować wykonywania tego działania, bo nie zapewniono "
+#~ "właściwego uwierzytelnienia"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "It appears that the QApt worker has either crashed or disappeared. Please "
+#~ "report a bug to the QApt maintainers"
+#~ msgstr ""
+#~ "Wygląda na to, że system roboczy QApt uległ awarii lub zniknął. Proszę "
+#~ "zgłosić ten błąd opiekunom QApt"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The following package has not been verified by its author. Downloading "
+#~ "untrusted packages has been disallowed by your current configuration."
+#~ msgid_plural ""
+#~ "The following packages have not been verified by their authors. "
+#~ "Downloading untrusted packages has been disallowed by your current "
+#~ "configuration."
+#~ msgstr[0] ""
+#~ "Następujący pakiet nie został potwierdzony przez jego autora. Pobieranie "
+#~ "niezaufanych pakietów zostało wyłączone w bieżących ustawieniach."
+#~ msgstr[1] ""
+#~ "Następujące pakiety nie zostały potwierdzone przez jego autora. "
+#~ "Pobieranie niezaufanych pakietów zostało wyłączone w bieżących "
+#~ "ustawieniach."
+#~ msgstr[2] ""
+#~ "Następujące pakiety nie zostały potwierdzone przez jego autora. "
+#~ "Pobieranie niezaufanych pakietów zostało wyłączone w bieżących "
+#~ "ustawieniach."
+
+#~ msgctxt "@action Reverts all potential changes to the cache"
+#~ msgid "Unmark All"
+#~ msgstr "Odznacz wszystko"
+
+#~ msgctxt "@action Opens the software sources configuration dialog"
+#~ msgid "Configure Software Sources"
+#~ msgstr "Ustawienia źródeł oprogramowania"
+
+#~ msgctxt "@action"
+#~ msgid "Read Markings..."
+#~ msgstr "Wczytaj oznaczenia..."
+
+#~ msgctxt "@action"
+#~ msgid "Save Markings As..."
+#~ msgstr "Zapisz oznaczenia jako..."
+
+#~ msgctxt "@action"
+#~ msgid "Save Package Download List..."
+#~ msgstr "Zapisz wykaz pakietów do pobierania..."
+
+#~ msgctxt "@action"
+#~ msgid "Download Packages From List..."
+#~ msgstr "Pobierz pakiety z wykazu..."
+
+#~ msgctxt "@action"
+#~ msgid "Add Downloaded Packages"
+#~ msgstr "Dodaj pobrane pakiety"
+
+#~ msgctxt "@action"
+#~ msgid "Save Installed Packages List..."
+#~ msgstr "Zapisz wykaz wgranych pakietów..."
+
+#~ msgctxt "@action::inmenu"
+#~ msgid "History..."
+#~ msgstr "Historia..."
+
+#~ msgctxt "@action"
+#~ msgid "Upgrade"
+#~ msgstr "Uaktualnij"
+
+#~ msgctxt "Notification when a new version of Kubuntu is available"
+#~ msgid "A new version of Kubuntu is available."
+#~ msgstr "Nowa wersja Kubuntu jest dostępna."
+
+#~ msgctxt "@title:window"
+#~ msgid "Save Markings As"
+#~ msgstr "Zapisz oznaczone jako"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The document could not be saved, as it was not possible to write to "
+#~ "<filename>%1</filename>\n"
+#~ "\n"
+#~ "Check that you have write access to this file or that enough disk space "
+#~ "is available."
+#~ msgstr ""
+#~ "Dokument nie mógł zostać zapisany, ponieważ nie można zapisywać "
+#~ "do<filename>%1</filename>\n"
+#~ "\n"
+#~ "Sprawdź, czy posiadasz prawa zapisu dla tego pliku oraz czy jest "
+#~ "wystarczająco dużo miejsca na dysku."
+
+#~ msgctxt "@title:window"
+#~ msgid "Save Installed Packages List As"
+#~ msgstr "Zapisz wykaz wgranych pakietów jako"
+
+#~ msgctxt "@title:window"
+#~ msgid "Save Download List As"
+#~ msgstr "Zapisz wykaz pakietów do pobrania jako"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Could not mark changes. Please make sure that the file is a markings file "
+#~ "created by either the Muon Package Manager or the Synaptic Package "
+#~ "Manager."
+#~ msgstr ""
+#~ "Nie można oznaczyć zmian. Upewnij się, czy wybrany plik jest plikiem "
+#~ "oznaczeń utworzonym przez program do zarządzania pakietami Muon lub "
+#~ "Synaptic."
+
+#~ msgctxt "@title:window"
+#~ msgid "Choose a Directory"
+#~ msgstr "Wybierz katalog"
+
+#~ msgctxt "@label"
+#~ msgid "%1 package was successfully added to the cache"
+#~ msgid_plural "%1 packages were successfully added to the cache"
+#~ msgstr[0] "%1 pakiet został pomyślnie dodany do pamięci podręcznej"
+#~ msgstr[1] "%1 pakiety zostały pomyślnie dodane do pamięci podręcznej"
+#~ msgstr[2] "%1 pakietów zostało pomyślnie dodanych do pamięci podręcznej"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "No valid packages could be found in this directory. Please make sure the "
+#~ "packages are compatible with your computer and are at the latest version."
+#~ msgstr ""
+#~ "Nie można znaleźć prawidłowych pakietów w tym katalogu. Upewnij się, że "
+#~ "pakiety są zgodne z twoim komputerem i że są w najnowszej wersji."
+
+#~ msgctxt "@title:window"
+#~ msgid "Packages Could Not be Found"
+#~ msgstr "Nie można znaleźć pakietów"
+
+#~ msgctxt "@title:window"
+#~ msgid "Package History"
+#~ msgstr "Historia pakietu"
+
+#~ msgid "No reviews available for Debian."
+#~ msgstr "Brak recenzji dla Debiana."
+
+#~ msgid "Log in to the Ubuntu SSO service"
+#~ msgstr "Logowanie do usługi Ubuntu SSO"
+
+#~ msgid "PackageKit error found"
+#~ msgstr "Znaleziono błąd PackageKit"
+
+#~ msgid "PackageKit media change"
+#~ msgstr "Zmiana nośnika PackageKit"
+
+#~ msgid "PackageKit Error"
+#~ msgstr "Błąd PackageKit"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 5"
+#~ msgstr "fikcyjny 5"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 6"
+#~ msgstr "fikcyjny 6"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 7"
+#~ msgstr "fikcyjny 7"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 8"
+#~ msgstr "fikcyjny 8"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 9"
+#~ msgstr "fikcyjny 9"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 10"
+#~ msgstr "fikcyjny 10"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 11"
+#~ msgstr "fikcyjny 11"
+
+#~ msgctxt "@label The label used for viewing all members of this category"
+#~ msgid "All"
+#~ msgstr "Wszystkie"
+
+#~ msgctxt "Category"
+#~ msgid "Unknown"
+#~ msgstr "Nieznane"
+
+#~ msgid "Something went wrong!"
+#~ msgstr "Coś poszło nie tak!"
+
+#~ msgid "Error"
+#~ msgstr "Błąd"
+
+#~ msgid "There are a couple of transaction messages:"
+#~ msgstr "Istnieje kilka wiadomości transakcji:"
+
+#~ msgid "Transaction messages"
+#~ msgstr "Wiadomości transakcji"
+
+#~ msgid "Another transaction is still running!"
+#~ msgstr "Inna transakcja nadal działa!"
+
+#~ msgid "Started downloading packages..."
+#~ msgstr "Rozpoczęto pobieranie pakietów..."
+
+#~ msgid "Started processing packages..."
+#~ msgstr "Rozpoczęto przetwarzanie pakietów..."
+
+#~ msgid "Started downloading %1..."
+#~ msgstr "Rozpoczęto pobieranie %1..."
+
+#~ msgid "Started processing %1..."
+#~ msgstr "Rozpoczęto przetwarzanie %1..."
+
+#~ msgctxt "Category"
+#~ msgid "Wallpapers"
+#~ msgstr "Tapety"
+
+#~ msgid "Enter %1 credentials for MakePlayLive (http://makeplaylive.com)"
+#~ msgstr "Podaj dane poufne %1 dla MakePlayLive (http://makeplaylive.com)"
+
+#~ msgctxt "@label Column label"
+#~ msgid "Download Size"
+#~ msgstr "Rozmiar pobierania"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"admin"
+#~ "\""
+#~ msgid "System Administration"
+#~ msgstr "Administracja systemu"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"cli-"
+#~ "mono\""
+#~ msgid "Mono/CLI Infrastructure"
+#~ msgstr "Infrastruktura Mono/CLI"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"comm"
+#~ "\""
+#~ msgid "Communication"
+#~ msgstr "Komunikacja"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"database\""
+#~ msgid "Databases"
+#~ msgstr "Bazy danych"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"devel"
+#~ "\""
+#~ msgid "Development"
+#~ msgstr "Narzędzia programistów"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"doc\""
+#~ msgid "Documentation"
+#~ msgstr "Dokumentacja"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"debug"
+#~ "\""
+#~ msgid "Debug"
+#~ msgstr "Diagnostyka"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"editors\""
+#~ msgid "Editors"
+#~ msgstr "Edytory"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"electronics\""
+#~ msgid "Electronics"
+#~ msgstr "Elektronika"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"embedded\""
+#~ msgid "Embedded Devices"
+#~ msgstr "Urządzenia wbudowane"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"fonts"
+#~ "\""
+#~ msgid "Fonts"
+#~ msgstr "Czcionki"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"games"
+#~ "\""
+#~ msgid "Games and Amusement"
+#~ msgstr "Gry i Rozrywka"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"gnome"
+#~ "\""
+#~ msgid "GNOME Desktop Environment"
+#~ msgstr "Środowisko pulpitu GNOME"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"graphics\""
+#~ msgid "Graphics"
+#~ msgstr "Grafika"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"gnu-r"
+#~ "\""
+#~ msgid "GNU R Statistical System"
+#~ msgstr "System statystyczny GNU R"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"gnustep\""
+#~ msgid "Gnustep Desktop Environment"
+#~ msgstr "Środowisko pulpitu Gnustep"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"hamradio\""
+#~ msgid "Amateur Radio"
+#~ msgstr "Krótkofalarstwo"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"haskell\""
+#~ msgid "Haskell Programming Language"
+#~ msgstr "Język programowania Haskell "
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"httpd"
+#~ "\""
+#~ msgid "Web Servers"
+#~ msgstr "Serwery internetowe"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"interpreters\""
+#~ msgid "Interpreted Computer Languages"
+#~ msgstr "Interpretowane języki komputerowe"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"java"
+#~ "\""
+#~ msgid "Java Programming Language"
+#~ msgstr "Język programowania Java"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"kde\""
+#~ msgid "KDE Software Compilation"
+#~ msgstr "Zestawienie oprogramowania KDE"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"kernel\""
+#~ msgid "Kernel and Modules"
+#~ msgstr "Jądro i moduły"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"libdevel\""
+#~ msgid "Libraries - Development"
+#~ msgstr "Biblioteki - programistyczne"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"libs"
+#~ "\""
+#~ msgid "Libraries"
+#~ msgstr "Biblioteki"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"lisp"
+#~ "\""
+#~ msgid "Lisp Programming Language"
+#~ msgstr "Język programowania Lisp"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"localization\""
+#~ msgid "Localization"
+#~ msgstr "Tłumaczenia"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"mail"
+#~ "\""
+#~ msgid "Email"
+#~ msgstr "Poczta"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"math"
+#~ "\""
+#~ msgid "Mathematics"
+#~ msgstr "Matematyka"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"misc"
+#~ "\""
+#~ msgid "Miscellaneous - Text-based"
+#~ msgstr "Różne - tryb tekstowy"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"net\""
+#~ msgid "Networking"
+#~ msgstr "Sieciowe"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"news"
+#~ "\""
+#~ msgid "Newsgroups"
+#~ msgstr "Grupy dyskusyjne"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"ocaml"
+#~ "\""
+#~ msgid "OCaml Programming Language"
+#~ msgstr "Język programowania OCaml"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"oldlibs\""
+#~ msgid "Libraries - Old"
+#~ msgstr "Biblioteki - stare"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"otherosfs\""
+#~ msgid "Cross Platform"
+#~ msgstr "Między-platformowe"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"perl"
+#~ "\""
+#~ msgid "Perl Programming Language"
+#~ msgstr "Język programowania Perl"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"php\""
+#~ msgid "PHP Programming Language"
+#~ msgstr "Język programowania PHP"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"python\""
+#~ msgid "Python Programming Language"
+#~ msgstr "Język programowania Python"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"ruby"
+#~ "\""
+#~ msgid "Ruby Programming Language"
+#~ msgstr "Język programowania Ruby"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"science\""
+#~ msgid "Science"
+#~ msgstr "Nauka"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"shells\""
+#~ msgid "Shells"
+#~ msgstr "Powłoki"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"sound"
+#~ "\""
+#~ msgid "Multimedia"
+#~ msgstr "Multimedia"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"tex\""
+#~ msgid "TeX Authoring"
+#~ msgstr "Skład tekstu TeX"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"text"
+#~ "\""
+#~ msgid "Word Processing"
+#~ msgstr "Przetwarzanie tekstu"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"utils"
+#~ "\""
+#~ msgid "Utilities"
+#~ msgstr "Narzędzia"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"vcs\""
+#~ msgid "Version Control Systems"
+#~ msgstr "Systemy sterowania wersją"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"web\""
+#~ msgid "Internet"
+#~ msgstr "Internet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"x11\""
+#~ msgid "Miscellaneous - Graphical"
+#~ msgstr "Różne - graficzne"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"xfce"
+#~ "\""
+#~ msgid "Xfce Desktop Environment"
+#~ msgstr "Środowisko pulpitu Xfce"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"zope"
+#~ "\""
+#~ msgid "Zope/Plone Environment"
+#~ msgstr "Środowisko Zope/Plone"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"unknown\""
+#~ msgid "Unknown"
+#~ msgstr "Nieznane"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"alien"
+#~ "\""
+#~ msgid "Converted from RPM by Alien"
+#~ msgstr "Przekształcanie z RPM przy użyciu Alien"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"translations\""
+#~ msgid "Internationalization and Localization"
+#~ msgstr "Regionalizacja i tłumaczenia"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"metapackages\""
+#~ msgid "Meta Packages"
+#~ msgstr "Metapakiety"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Debian package section \"non-US\", for packages that "
+#~ "cannot be shipped in the US"
+#~ msgid "Restricted On Export"
+#~ msgstr "Ograniczone do eksportu"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"non-"
+#~ "free\""
+#~ msgid "Non-free"
+#~ msgstr "Nie-wolne"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"contrib\""
+#~ msgid "Contrib"
+#~ msgstr "Contrib"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"education\""
+#~ msgid "Education"
+#~ msgstr "Edukacja"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"introspection\""
+#~ msgid "GObject Introspection Data"
+#~ msgstr "Dane introspekcyjne GObject"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Common"
+#~ msgstr "Wspólna"
+
+#~ msgctxt "@item:inlistbox CPU architecture"
+#~ msgid "32-bit"
+#~ msgstr "32-bit"
+
+#~ msgctxt "@item:inlistbox CPU architecture"
+#~ msgid "64-bit"
+#~ msgstr "64-bit"
+
+#~ msgctxt "@item:inlistbox PU architecture"
+#~ msgid "Power PC"
+#~ msgstr "Power PC"
+
+#~ msgctxt "@label Easter Egg"
+#~ msgid "This Muon has super cow powers"
+#~ msgstr "Ten Muon ma moc superkrowy"
+
+#~ msgid "Show notifications for available updates"
+#~ msgstr "Pokaż powiadomienia o uaktualnieniach"
+
+#~ msgid "Show the number of available updates"
+#~ msgstr "Pokaż liczbę dostępnych uaktualnień"
+
+#~ msgid "Bugs found"
+#~ msgstr "Znalezione błędy"
+
+#~ msgid "Checking for bugs..."
+#~ msgstr "Sprawdzanie błędów..."
+
+#~ msgid "Cannot kill process"
+#~ msgstr "Nie można zniszczyć procesu"
+
+#~ msgid ""
+#~ "PackageKit does not tell us a useful status right now! Its status is %1."
+#~ msgstr ""
+#~ "PackageKit nie informuje w sposób użyteczny o stanie! Jego stan to %1."
+
+#~ msgid "Muon Notification Daemon"
+#~ msgstr "Usługa powiadamiania Muon"
+
+#~ msgid "A Notification Daemon for Muon"
+#~ msgstr "Usługa powiadamiania dla Muona"
+
+#~ msgid ""
+#~ "(C) 2013 Lukas Appelhans, (C) 2009-2012 Jonathan Thomas, (C) 2009 Harald "
+#~ "Sitter"
+#~ msgstr ""
+#~ "(C) 2013 Lukas Appelhans, (C) 2009-2012 Jonathan Thomas, (C) 2009 Harald "
+#~ "Sitter"
+
+#~ msgid "%1 update notifier"
+#~ msgstr "Powiadomienie o uaktualnieniu %1"
+
+#~ msgid "Muon %1 update notifier"
+#~ msgstr "Powiadomienie o uaktualnieniu %1 Muon"
+
+#~ msgid "Open Muon..."
+#~ msgstr "Otwórz Muon..."
+
+#~ msgid "Quit notifier..."
+#~ msgstr "Wyjdź z powiadamiania..."
+
+#~ msgid "A security update is available for your system."
+#~ msgstr "Dostępne jest uaktualnienie bezpieczeństwa dla twojego systemu."
+
+#~ msgid "An update is available for your system!"
+#~ msgstr "Dostępne jest uaktualnienie dla twojego systemu!"
+
+#~ msgid ""
+#~ "There are %1 updated packages, of which %2 were updated for security "
+#~ "reasons!"
+#~ msgstr ""
+#~ "%1 pakietów zostało uaktualnionych z czego %2 ze względów bezpieczeństwa!"
+
+#~ msgid "%1 packages were updated for security reasons"
+#~ msgstr "%1 pakietów zostało uaktualnionych ze względów bezpieczeństwa"
+
+#~ msgid "A system update is recommended"
+#~ msgstr "Zalecane jest uaktualnienie systemu"
+
+#~ msgid "System update available"
+#~ msgstr "Dostępne uaktualnienie systemu"
+
+#~ msgid "Your system is up-to-date!"
+#~ msgstr "Twój system jest aktualny!"
+
+#~ msgid "No system update available"
+#~ msgstr "Brak uaktualnień systemu"
+
+#~ msgid "Akabei Backend"
+#~ msgstr "Silnik Akabei"
+
+#~ msgid "Chakra-Applications in your system"
+#~ msgstr "Programy Chakra w twoim systemie"
+
+#~ msgid "Applications Backend"
+#~ msgstr "Silnik programów"
+
+#~ msgid "Applications in your system"
+#~ msgstr "Programy w twoim systemie"
+
+#~ msgid "Bodega Backend"
+#~ msgstr "Silnik Bodega"
+
+#~ msgid "Install Bodega data in your system"
+#~ msgstr "Wgraj dane Bodega na swój system"
+
+#~ msgid "Dummy Backend"
+#~ msgstr "Fikcyjny silnik"
+
+#~ msgid "Dummy backend to test muon frontends"
+#~ msgstr "Fikcyjny silnik do testowania nakładek na muon"
+
+#~ msgid "KNewStuff Backend"
+#~ msgstr "Silnik KNewStuff"
+
+#~ msgid "Install KNewStuff data in your system"
+#~ msgstr "Wgraj dane KNewStuff na swój system"
+
+#~ msgid "Install PackageKit data in your system"
+#~ msgstr "Wgraj dane PackageKit na swój system"
+
+#~ msgid "Finished."
+#~ msgstr "Zakończono."
+
+#~ msgid "Available updates"
+#~ msgstr "Dostępne uaktualnienia"
+
+#~ msgid "Distribution upgrades"
+#~ msgstr "Uaktualnienia dystrybucji"
+
+#~ msgid "Use both popups and tray icons"
+#~ msgstr "Używaj zarówno okien wyskakujących jak i ikon w tacce systemowej"
+
+#~ msgid "Tray icons only"
+#~ msgstr "Tylko ikony w tacce systemowej"
+
+#~ msgid "Popup notifications only"
+#~ msgstr "Tylko wyskakujące okna"
+
+#~ msgid "Enter %1 credentials"
+#~ msgstr "Podaj dane poufne %1"
+
+#~ msgctxt "@info:status Progress text when done"
+#~ msgid "Done"
+#~ msgstr "Gotowe"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "There are marked changes that have not yet been applied. Do you want to "
+#~ "save your changes or discard them?"
+#~ msgstr ""
+#~ "Oznaczono zmiany, które nie zostały jeszcze zastosowane. Chcesz je "
+#~ "zachować czy porzucić?"
+
+#~ msgctxt "@info:status"
+#~ msgid "Muon is making system changes"
+#~ msgstr "Muon dokonuje zmian w systemie"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Changes could not be applied since some packages could not be downloaded."
+#~ msgstr ""
+#~ "Nie można zastosować zmian, bo pewne pakiety nie mogły zostać pobrane."
+
+#~ msgctxt "@label"
+#~ msgid "The size of the downloaded items did not equal the expected size."
+#~ msgstr "Rozmiar pobranych elementów jest niezgodny z rozmiarem oczekiwanym."
+
+#~ msgctxt "@title:window"
+#~ msgid "Size Mismatch"
+#~ msgstr "Niezgodność rozmiaru"
+
+#~ msgctxt "@title:window"
+#~ msgid "Some Packages Could not be Downloaded"
+#~ msgstr "Niektóre pakiety nie mogą zostać pobrane"
+
+#~ msgctxt "@label Shows which package failed"
+#~ msgid "Package: %1"
+#~ msgstr "Pakiet: %1"
+
+#~ msgctxt "@title:window"
+#~ msgid "Commit error"
+#~ msgstr "Zgłoś błąd"
+
+#~ msgid "Working..."
+#~ msgstr "Pracowanie..."
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Muon always selects the most applicable version available. If you force a "
+#~ "different version from the default one, errors in the dependency handling "
+#~ "can occur."
+#~ msgstr ""
+#~ "Muon zawsze wybiera najodpowiedniejszą dostępną wersję pakietu. Jeśli "
+#~ "wymusisz wersję inną od domyślnej, mogą wystąpić błędy w obsłudze "
+#~ "zależności."
+
+#~ msgctxt "@action:button"
+#~ msgid "Force Version"
+#~ msgstr "Wymuś wersję"
+
+#~ msgctxt "@label Label preceding the package maintainer"
+#~ msgid "Maintainer:"
+#~ msgstr "Opiekun:"
+
+#~ msgctxt "@label The parent package that this package comes from"
+#~ msgid "Source Package:"
+#~ msgstr "Pakiet z kodem źródłowym:"
+
+#~ msgctxt "@label Label preceding the package size"
+#~ msgid "Installed Size:"
+#~ msgstr "Rozmiar na dysku:"
+
+#~ msgctxt "@title:group"
+#~ msgid "Available Version"
+#~ msgstr "Dostępna wersja"
+
+#~ msgctxt "@label"
+#~ msgid "Mark for:"
+#~ msgstr "Zaznacz w celu:"
+
+#~ msgctxt "@action:button"
+#~ msgid "Removal"
+#~ msgstr "Usunięcie"
+
+#~ msgctxt "@action:button"
+#~ msgid "Upgrade"
+#~ msgstr "Aktualizacja"
+
+#~ msgctxt "@action:button"
+#~ msgid "Reinstallation"
+#~ msgstr "Powtórna instalacja"
+
+#~ msgctxt "@action:button"
+#~ msgid "Purge"
+#~ msgstr "Wyczyść"
+
+#~ msgctxt "@action:button"
+#~ msgid "Unmark"
+#~ msgstr "Odznacz"
+
+#~ msgctxt "@info Tells how long Canonical, Ltd. will support a package"
+#~ msgid "Canonical provides critical updates for %1 until %2."
+#~ msgstr "Canonical dostarcza aktualizacje krytyczne dla %1 do %2"
+
+#~ msgctxt "@info Tells how long Canonical, Ltd. will support a package"
+#~ msgid ""
+#~ "Canonical does not provide updates for %1. Some updates may be provided "
+#~ "by the Ubuntu community."
+#~ msgstr ""
+#~ "Canonical nie dostarcza aktualizacji dla %1. Niektóre aktualizacje mogą "
+#~ "być dostarczane przez społeczność Ubuntu."
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Dependencies of the Current Version"
+#~ msgstr "Zależności bieżącej wersji"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Dependencies of the Latest Version"
+#~ msgstr "Zależności najnowszej wersji"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Dependants (Reverse Dependencies)"
+#~ msgstr "Wymagane (zależności odwrotne)"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Virtual Packages Provided"
+#~ msgstr "Dostarczane wirtualne pakiety"
+
+#~ msgctxt "@label"
+#~ msgid "This package does not have any dependencies"
+#~ msgstr "Ten pakiet nie posiada żadnych zależności"
+
+#~ msgctxt "@label"
+#~ msgid "This package has no dependents. (Nothing depends on it.)"
+#~ msgstr "Ten pakiet nie jest niczyją zależnością (Nic od niego nie zależy.)"
+
+#~ msgctxt "@label"
+#~ msgid "This package does not provide any virtual packages"
+#~ msgstr "Ten pakiet nie dostarcza żadnych wirtualnych pakietów"
+
+#~ msgctxt "@title:column"
+#~ msgid "Package"
+#~ msgstr "Pakiet"
+
+#~ msgctxt "@title:column"
+#~ msgid "Size"
+#~ msgstr "Rozmiar"
+
+#~ msgctxt "@title:column"
+#~ msgid "Progress"
+#~ msgstr "Postęp"
+
+#~ msgctxt "@info:status Progress text when a download is ignored"
+#~ msgid "Ignored"
+#~ msgstr "Ignorowany"
+
+#~ msgid "Status"
+#~ msgstr "Stan"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Mark for Installation"
+#~ msgstr "Oznacz do instalacji"
+
+#~ msgctxt "@action:button"
+#~ msgid "Mark for Removal"
+#~ msgstr "Oznacz do usunięcia"
+
+#~ msgctxt "@action:button"
+#~ msgid "Mark for Upgrade"
+#~ msgstr "Oznacz do aktualizacji"
+
+#~ msgctxt "@action:button"
+#~ msgid "Mark for Reinstallation"
+#~ msgstr "Oznacz do ponownej instalacji"
+
+#~ msgctxt "@action:button"
+#~ msgid "Mark for Purge"
+#~ msgstr "Oznacz do wyczyszczenia"
+
+#~ msgctxt "@action:button"
+#~ msgid "Lock Package at Current Version"
+#~ msgstr "Zablokuj pakiet na bieżącej wersji"
+
+#~ msgctxt "@action:button"
+#~ msgid "Unlock package"
+#~ msgstr "Odblokuj pakiet"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Removing this package may break your system. Are you sure you want to "
+#~ "remove it?"
+#~ msgstr ""
+#~ "Usunięcie tego pakietu może uszkodzić Twój system. Czy masz pewność, że "
+#~ "chcesz go usunąć?"
+
+#~ msgctxt "@label"
+#~ msgid "Warning - Removing Important Package"
+#~ msgstr "Ostrzeżenie - usuwanie ważnego pakietu"
+
+#~ msgctxt "@label"
+#~ msgid "The \"%1\" package could not be marked for installation or upgrade:"
+#~ msgstr ""
+#~ "Pakiet \"%1\" nie może być zaznaczony do instalacji lub aktualizacji:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unable to Mark Package"
+#~ msgstr "Nie można oznaczyć pakietu"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The \"%1\" package has no available version, but exists in the database.\n"
+#~ "\tThis typically means that the package was mentioned in a dependency and "
+#~ "never uploaded, has been obsoleted, or is not available from the "
+#~ "currently-enabled repositories."
+#~ msgstr ""
+#~ "Pakiet \"%1\" nie posiada żadnej dostępnej wersji, jednak widnieje w "
+#~ "bazie danych.\n"
+#~ "\tZazwyczaj oznacza to, że pakiet został wymieniony w zależnościach, ale "
+#~ "nigdy nie zamieszczony na serwerze, został zastąpiony innym pakietem lub "
+#~ "nie jest dostępny w obecnie wykorzystywanych repozytoriach."
+
+#~ msgctxt "@label Example: Depends: libqapt 0.1, but 0.2 is to be installed"
+#~ msgid "%1: %2 %3, but %4 is to be installed"
+#~ msgstr "%1: %2 %3, jednak %4 ma być zainstalowany"
+
+#~ msgctxt "@label Example: or libqapt 0.1, but 0.2 is to be installed"
+#~ msgid "or %1 %2, but %3 is to be installed"
+#~ msgstr "lub %1 %2, jednak %3 ma być zainstalowany"
+
+#~ msgctxt "@label Example: Depends: libqapt, but is not installable"
+#~ msgid "%1: %2, but it is not installable"
+#~ msgstr "%1: %2, jednak nie można go zainstalować"
+
+#~ msgctxt "@label Example: or libqapt, but is not installable"
+#~ msgid "or %1, but is not installable"
+#~ msgstr "lub %1, jednak nie można go zainstalować"
+
+#~ msgctxt "@label Example: Depends: libqapt, but it is a virtual package"
+#~ msgid "%1: %2, but it is a virtual package"
+#~ msgstr "%1: %2, jednak jest on pakietem wirtualnym"
+
+#~ msgctxt "@label Example: or libqapt, but it is a virtual package"
+#~ msgid "or %1, but it is a virtual package"
+#~ msgstr "lub %1, jednak jest on pakietem wirtualnym"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Details"
+#~ msgstr "Szczegóły"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Technical Details"
+#~ msgstr "Szczegóły techniczne"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Dependencies"
+#~ msgstr "Zależności"
+
+#~ msgctxt "@label Download rate"
+#~ msgid "Download rate: %1/s"
+#~ msgstr "Szybkość pobierania: %1/s"
+
+#~ msgctxt "@info:status"
+#~ msgid "Rebuilding Search Index"
+#~ msgstr "Przebudowywanie indeksu wyszukiwania"
+
+#~ msgctxt "@info:status"
+#~ msgid "%1 installed, "
+#~ msgstr "%1 zainstalowane, "
+
+#~ msgctxt "@info:status"
+#~ msgid "%1 upgradeable,"
+#~ msgstr "%1 do aktualizacji,"
+
+#~ msgctxt "@info:status"
+#~ msgid "%1 upgradeable"
+#~ msgstr "%1 do aktualizacji"
+
+#~ msgctxt "@info:status Part of the status label"
+#~ msgid " %1 to install/upgrade"
+#~ msgstr " %1 do instalacji/aktualizacji"
+
+#~ msgctxt ""
+#~ "@info:status Label for the number of packages pending removal when "
+#~ "packages are also pending upgrade"
+#~ msgid ", %1 to remove"
+#~ msgstr ", %1 do usunięcia"
+
+#~ msgctxt ""
+#~ "@info:status Label for the number of packages pending removal when there "
+#~ "are only removals"
+#~ msgid " %1 to remove"
+#~ msgstr ", %1 do usunięcia"
+
+#~ msgctxt "@label showing download and install size"
+#~ msgid "%1 to download, %2 of space to be freed"
+#~ msgstr "%1 do pobrania, %2 miejsca zostanie zwolnione"
+
+#~ msgctxt "@item:intext Label for when the remaining time is unknown"
+#~ msgid " - Unknown time remaining"
+#~ msgstr " - Pozostały czas nieznany"
+
+#~ msgctxt "@action:button"
+#~ msgid "Get Screenshot..."
+#~ msgstr "Pobierz zrzut ekranu..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Screenshot"
+#~ msgstr "Zrzut ekranu"

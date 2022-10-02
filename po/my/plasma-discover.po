@@ -1,0 +1,1207 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the discover package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:46+0000\n"
+"PO-Revision-Date: 2021-09-19 20:01+0630\n"
+"Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
+"Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
+"Language: my\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0\n"
+
+#: discover/DiscoverObject.cpp:156
+#, fuzzy, kde-format
+#| msgid ""
+#| "Discover currently cannot be used to install any apps because none of its "
+#| "app backends are available. Please report this error to your distribution."
+msgid ""
+"Discover currently cannot be used to install any apps or perform system "
+"updates because none of its app backends are available."
+msgstr ""
+"ဒစ်(စ)ကာဗာ အနေဖြင့် ၎င်း၏အုတ်မြစ်ပရိုဂရမ်များ တစ်ခုမှ မရှိသောကြောင့် အပ်များ တပ်ဆင်၍မရနိုင်ပါ။ "
+"ဤအမှားအယွင်းကို သင်၏ဒစ်စထရီဗျူးရှင်းထံ တင်ပြပါ။"
+
+#: discover/DiscoverObject.cpp:160
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can install some on the Settings page, under the <interface>Missing "
+"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
+"as a packaging issue to your distribution."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:165 discover/DiscoverObject.cpp:343
+#: discover/qml/UpdatesPage.qml:107
+#, kde-format
+msgid "Report This Issue"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:170
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can use <command>pacman</command> to install the optional dependencies "
+"that are needed to enable the application backends.<nl/><nl/>Please note "
+"that Arch Linux developers recommend using <command>pacman</command> for "
+"managing software because the PackageKit backend is not well-integrated on "
+"Arch Linux."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:178
+#, kde-format
+msgid "Learn More"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:266
+#, kde-format
+msgid "Could not find category '%1'"
+msgstr "အမျိုးအစား '%1' ကိုရှာမတွေ့ခဲ့ပါ"
+
+#: discover/DiscoverObject.cpp:303
+#, kde-format
+msgid ""
+"Cannot interact with flatpak resources without the flatpak backend %1. "
+"Please install it first."
+msgstr ""
+"ဖလက်ပတ်ခ်-အုတ်မြစ်ပရိုဂရမ် %1 မရှိဘဲ ဖလက်ပတ်ခ်အပ်များ တပ်ဆင်၍မရပါ။ ကျေးဇူးပြု၍ ၎င်းအား အရင်တပ်ဆင်ပါ။"
+
+#: discover/DiscoverObject.cpp:307
+#, kde-format
+msgid "Could not open %1"
+msgstr "%1 ကိုမဖွင့်နိုင်ခဲ့ပါ"
+
+#: discover/DiscoverObject.cpp:335
+#, kde-format
+msgid "Please make sure Snap support is installed"
+msgstr "စနပ် ထောက်ပံမှု တပ်ဆင်ပါ"
+
+#: discover/DiscoverObject.cpp:337
+#, kde-format
+msgid ""
+"Could not open %1 because it was not found in any available software "
+"repositories."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:340
+#, kde-format
+msgid "Please report this issue to the packagers of your distribution."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:405 discover/DiscoverObject.cpp:406
+#: discover/main.cpp:119
+#, kde-format
+msgid "Discover"
+msgstr "ဒစ်(စ)ကာဗာ"
+
+#: discover/DiscoverObject.cpp:406
+#, kde-format
+msgid ""
+"Discover was closed before certain tasks were done, waiting for it to finish."
+msgstr ""
+
+#: discover/main.cpp:43
+#, kde-format
+msgid "Directly open the specified application by its appstream:// URI."
+msgstr "သတ်မှတ်ဖော်ပြထားသော အပ္ပလီကေးရှင်းကို ယင်း၏ appstream:// ယူအာအိုင် ဖြင့် တန်းဖွင့်ပါ။"
+
+#: discover/main.cpp:44
+#, kde-format
+msgid "Open with a search for programs that can deal with the given mimetype."
+msgstr "ပေးထားသော အမ်အိုင်အမ်အီးတိုက်ကို ကိုင်တွယ်နိုင်သော ပရိုဂရမ်များ ရှာဖွေမည်"
+
+#: discover/main.cpp:45
+#, kde-format
+msgid "Display a list of entries with a category."
+msgstr "အမျိုးအစားတစ်ခုဖြင့် အပ်စာရင်းပြမည်"
+
+#: discover/main.cpp:46
+#, kde-format
+msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
+msgstr ""
+"ပြောထားသော ထုံးနည်းဖြင့် ဒစ်(စ)ကာဗာကို ဖွင့်မည်။ ထုံးနည်းများသည် ကိရိယာတန်းခလုတ်များနှင့် သက်ဆိုင်သည်။"
+
+#: discover/main.cpp:47
+#, kde-format
+msgid "List all the available modes."
+msgstr "ရရှိနိုင်သော ထုံးနည်းများအားလုံးကိုပြပါ။"
+
+#: discover/main.cpp:48
+#, kde-format
+msgid "Compact Mode (auto/compact/full)."
+msgstr "ကျစ်လစ်-ထုံးနည်း (အလိုအလျောက်/ ကျစ်လစ်/ အပြည့်အဝ)။"
+
+#: discover/main.cpp:49
+#, kde-format
+msgid "Local package file to install"
+msgstr "တပ်ဆင်ရမည့် စက်တွင်းပတ်ကေ့ချ်ဖိုင်လ်"
+
+#: discover/main.cpp:50
+#, kde-format
+msgid "List all the available backends."
+msgstr "ရရှိနိုင်သော ထုံးနည်းများအားလုံးကိုပြပါ။"
+
+#: discover/main.cpp:51
+#, kde-format
+msgid "Search string."
+msgstr "စာသား ရှာဖွေမည်။"
+
+#: discover/main.cpp:52
+#, kde-format
+msgid "Lists the available options for user feedback"
+msgstr "အသုံးပြုသူတုံ့ပြန်ချက်အတွက် ရရှိနိုင်သော ရွေးချယ်စရာများ ပြမည်"
+
+#: discover/main.cpp:54
+#, kde-format
+msgid "Supports appstream: url scheme"
+msgstr "အပ်စထရင်း-ယူအာအယ်လ် အစီအစဥ်ပြပုံ ထောက်ပံ့သည်"
+
+#: discover/main.cpp:121
+#, kde-format
+msgid "An application explorer"
+msgstr "အပ္ပလီကေးရှင်း-ရှာဖွေကိရိယာ"
+
+#: discover/main.cpp:123
+#, fuzzy, kde-format
+#| msgid "© 2010-2021 Plasma Development Team"
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© ၂၀၁၀-၂၀၂၁ ပလက်စမာ တိုးတက်မှု ဆောင်ရွက်သော အဖွဲ့"
+
+#: discover/main.cpp:124
+#, kde-format
+msgid "Aleix Pol Gonzalez"
+msgstr "အဲလက်ပိုဂွန်ဇလက်"
+
+#: discover/main.cpp:125
+#, kde-format
+msgid "Nate Graham"
+msgstr "နိတ်ဂရေဟမ်"
+
+#: discover/main.cpp:126
+#, kde-format
+msgid "Quality Assurance, Design and Usability"
+msgstr "အရည်အသွေးစိတ်ချရမှု၊ ဒီဇိုင်းနှင့် အသုံးပြုရလွယ်ကူမှု"
+
+#: discover/main.cpp:130
+#, kde-format
+msgid "Dan Leinir Turthra Jensen"
+msgstr "ဒန်လိန်နာတာသရာဂျန်ဆန်"
+
+#: discover/main.cpp:131
+#, kde-format
+msgid "KNewStuff"
+msgstr "ကေနယူးစတပ်ဖ်"
+
+#: discover/main.cpp:138
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ဇေယျာလွင်"
+
+#: discover/main.cpp:138
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "lw1nzayar@yandex.com"
+
+#: discover/main.cpp:151
+#, kde-format
+msgid "Available backends:\n"
+msgstr "ရရှိနိုင်သော အုတ်မြစ်ပရိုဂရမ်များ-\n"
+
+#: discover/main.cpp:207
+#, kde-format
+msgid "Available modes:\n"
+msgstr "ရရှိနိုင်သော ထုံးနည်းများ-\n"
+
+#: discover/qml/AddonsView.qml:18 discover/qml/navigation.js:43
+#, fuzzy, kde-format
+#| msgid "Addons"
+msgid "Addons for %1"
+msgstr "အက်အွန်များ"
+
+#: discover/qml/AddonsView.qml:50
+#, kde-format
+msgid "More…"
+msgstr "နောက်ထပ်…"
+
+#: discover/qml/AddonsView.qml:59
+#, kde-format
+msgid "Apply Changes"
+msgstr "ပြောင်းလဲမှုများ သက်ဝင်စေမည်"
+
+#: discover/qml/AddonsView.qml:66
+#, kde-format
+msgid "Reset"
+msgstr "ရီဆက်"
+
+#: discover/qml/AddSourceDialog.qml:19
+#, kde-format
+msgid "Add New %1 Repository"
+msgstr "%1 အဝေးရီပိုစစ်တိုရီအသစ်ကို ထည့်သွင်းမည်"
+
+#: discover/qml/AddSourceDialog.qml:58
+#, kde-format
+msgid "Add"
+msgstr "ထည့်သွင်းမည်"
+
+#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:263
+#: discover/qml/InstallApplicationButton.qml:41
+#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:181
+#: discover/qml/UpdatesPage.qml:247 discover/qml/WebflowDialog.qml:39
+#, kde-format
+msgid "Cancel"
+msgstr "ပယ်ဖျက်မည်"
+
+#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationPage.qml:192
+#, kde-format
+msgid "%1 rating"
+msgid_plural "%1 ratings"
+msgstr[0] "အကဲဖြတ်ချက် %1ခု"
+
+#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationPage.qml:192
+#, kde-format
+msgid "No ratings yet"
+msgstr "အကဲဖြတ်ချက်မရှိသေးပါ"
+
+#: discover/qml/ApplicationPage.qml:59
+#, kde-format
+msgid "Sources"
+msgstr "ပရိုဂရမ်ဇစ်မြစ်များ"
+
+#: discover/qml/ApplicationPage.qml:70
+#, kde-format
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: discover/qml/ApplicationPage.qml:174
+#, kde-format
+msgid "Unknown author"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:253
+#, fuzzy, kde-format
+#| msgid "Version:"
+msgid "Version"
+msgstr "ဗားရှင်း -"
+
+#: discover/qml/ApplicationPage.qml:280
+#: discover/qml/ApplicationsListPage.qml:109
+#, kde-format
+msgid "Size"
+msgstr "အရွယ်အစား"
+
+#: discover/qml/ApplicationPage.qml:307
+#, kde-format
+msgid "Distributed by"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:334
+#, fuzzy, kde-format
+#| msgid "License:"
+msgid "License"
+msgid_plural "Licenses"
+msgstr[0] "လိုင်စင် -"
+
+#: discover/qml/ApplicationPage.qml:343
+#, kde-format
+msgctxt "The app does not provide any licenses"
+msgid "Unknown"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:381
+#, fuzzy, kde-format
+#| msgid "What's New"
+msgid "What does this mean?"
+msgstr "ဘာထူးသလဲ"
+
+#: discover/qml/ApplicationPage.qml:391
+#, fuzzy, kde-format
+#| msgid "More…"
+msgid "See more…"
+msgid_plural "See more…"
+msgstr[0] "နောက်ထပ်…"
+
+#: discover/qml/ApplicationPage.qml:409 discover/qml/ApplicationPage.qml:840
+#, fuzzy, kde-format
+#| msgid "Enter a rating"
+msgid "Content Rating"
+msgstr "အကဲဖြတ်ချက် ရေးသွင်းပါ"
+
+#: discover/qml/ApplicationPage.qml:419
+#, kde-format
+msgid "Age: %1+"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:443
+#, fuzzy, kde-format
+#| msgid "More…"
+msgctxt "@action"
+msgid "See details…"
+msgstr "နောက်ထပ်…"
+
+#: discover/qml/ApplicationPage.qml:539
+#, fuzzy, kde-format
+#| msgid "Documentation:"
+msgid "Documentation"
+msgstr "ဒိုကူမန်တေးရှင်း -"
+
+#: discover/qml/ApplicationPage.qml:540
+#, kde-format
+msgid "Read the project's official documentation"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:556
+#, kde-format
+msgid "Website"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:557
+#, fuzzy, kde-format
+#| msgid "Visit the app's website"
+msgid "Visit the project's website"
+msgstr "အပ်၏ဝက်ဘ်ဆိုက်သို့ သွားမည်"
+
+#: discover/qml/ApplicationPage.qml:573
+#, kde-format
+msgid "Addons"
+msgstr "အက်အွန်များ"
+
+#: discover/qml/ApplicationPage.qml:574
+#, kde-format
+msgid "Install or remove additional functionality"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:593
+#, kde-format
+msgctxt "Exports the application's URL to an external service"
+msgid "Share"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:594
+#, fuzzy, kde-format
+#| msgid "Unable to load applications"
+msgid "Send a link to the application"
+msgstr "အပ္ပလီကေးရှင်းများ မတင်သွင်းနိုင်ပါ"
+
+#: discover/qml/ApplicationPage.qml:610
+#, kde-format
+msgctxt "The subject line for an email. %1 is the name of an application"
+msgid "Check out the %1 app!"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:630
+#, kde-format
+msgid "What's New"
+msgstr "ဘာထူးသလဲ"
+
+#: discover/qml/ApplicationPage.qml:660
+#, fuzzy, kde-format
+#| msgid "Reviews for %1"
+msgid "Loading reviews for %1"
+msgstr "%1အတွက် သုံးသပ်ချက်များ"
+
+#: discover/qml/ApplicationPage.qml:666
+#, kde-format
+msgid "Reviews"
+msgstr "သုံးသပ်ချက်များ"
+
+#: discover/qml/ApplicationPage.qml:696
+#, fuzzy, kde-format
+#| msgid "Show %1 Review…"
+#| msgid_plural "Show All %1 Reviews…"
+msgid "Show all %1 Reviews"
+msgid_plural "Show all %1 Reviews"
+msgstr[0] "သုံးသပ်ချက် %1ခု ပြမည်…"
+
+#: discover/qml/ApplicationPage.qml:708
+#, kde-format
+msgid "Write a Review"
+msgstr "သုံးသပ်ချက်ရေးမည်"
+
+#: discover/qml/ApplicationPage.qml:708
+#, kde-format
+msgid "Install to Write a Review"
+msgstr "သုံးသပ်ချက်ရေးရန် တပ်ဆင်ပါ"
+
+#: discover/qml/ApplicationPage.qml:720
+#, fuzzy, kde-format
+#| msgid "Get involved:"
+msgid "Get Involved"
+msgstr "ပါဝင်မည် -"
+
+#: discover/qml/ApplicationPage.qml:753
+#, kde-format
+msgid "Donate"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:754
+#, kde-format
+msgid "Support and thank the developers by donating to their project"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:770
+#, kde-format
+msgid "Report Bug"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:771
+#, kde-format
+msgid "Log an issue you found to help get it fixed"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:785
+#, fuzzy, kde-format
+#| msgid "Contribute…"
+msgid "Contribute"
+msgstr "ပါဝင်ကူညီမည်…"
+
+#: discover/qml/ApplicationPage.qml:786
+#, kde-format
+msgid "Help the developers by coding, designing, testing, or translating"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:813
+#, fuzzy, kde-format
+#| msgid "License:"
+msgid "All Licenses"
+msgstr "လိုင်စင် -"
+
+#: discover/qml/ApplicationPage.qml:852
+#, kde-format
+msgid "Risks of proprietary software"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:862
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
+"learn more at <link url='%3'>%3</link>."
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:863
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
+"url='%2'>%2</link>."
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:53
+#, fuzzy, kde-format
+#| msgid "Search: %1"
+msgid "Search: %1 - %2 items"
+msgstr "ရှာဖွေ- %1"
+
+#: discover/qml/ApplicationsListPage.qml:55
+#, kde-format
+msgid "Search: %1"
+msgstr "ရှာဖွေ- %1"
+
+#: discover/qml/ApplicationsListPage.qml:59
+#, fuzzy, kde-format
+#| msgid "%1 - %2"
+msgid "%1 - %2 items"
+msgstr "%1 - %2"
+
+#: discover/qml/ApplicationsListPage.qml:65
+#, fuzzy, kde-format
+#| msgid "Search: %1"
+msgid "Search - %1 items"
+msgstr "ရှာဖွေ- %1"
+
+#: discover/qml/ApplicationsListPage.qml:67
+#: discover/qml/ApplicationsListPage.qml:207
+#, kde-format
+msgid "Search"
+msgstr "ရှာဖွေမည်"
+
+#: discover/qml/ApplicationsListPage.qml:88
+#, kde-format
+msgid "Sort: %1"
+msgstr "စီ- %1"
+
+#: discover/qml/ApplicationsListPage.qml:91
+#, kde-format
+msgid "Name"
+msgstr "အမည်"
+
+#: discover/qml/ApplicationsListPage.qml:100
+#, kde-format
+msgid "Rating"
+msgstr "အကဲဖြတ်ချက်"
+
+#: discover/qml/ApplicationsListPage.qml:118
+#, kde-format
+msgid "Release Date"
+msgstr "ထုတ်လွှင့်သော ရက်စွဲ"
+
+#: discover/qml/ApplicationsListPage.qml:173
+#, kde-format
+msgid "Nothing found"
+msgstr "ဘာမှမတွေ့"
+
+#: discover/qml/ApplicationsListPage.qml:185
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid "\"%1\" was not found in the available sources"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:186
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid ""
+"\"%1\" may be available on the web. Software acquired from the web has not "
+"been reviewed by your distributor for functionality or stability. Use with "
+"caution."
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:188
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid "Search the web for \"%1\""
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:192
+#, kde-format
+msgctxt ""
+"If appropriate, localize this URL to be something more relevant to the "
+"language. %1 is the text that will be searched for."
+msgid "https://duckduckgo.com/?q=%1"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:222
+#, kde-format
+msgid "Still looking…"
+msgstr "ရှာနေဆဲ…"
+
+#: discover/qml/BrowsingPage.qml:18
+#, kde-format
+msgid "Featured"
+msgstr "ကြော်ငြာများ"
+
+#: discover/qml/BrowsingPage.qml:43
+#, kde-format
+msgid "Unable to load applications"
+msgstr "အပ္ပလီကေးရှင်းများ မတင်သွင်းနိုင်ပါ"
+
+#: discover/qml/BrowsingPage.qml:76
+#, kde-format
+msgid "Updates are available"
+msgstr "အပ်ဒိတ်များ ရရှိနေပါပြီ"
+
+#: discover/qml/BrowsingPage.qml:80
+#, kde-format
+msgctxt "Short for 'show updates'"
+msgid "Show"
+msgstr "ပြမည်"
+
+#: discover/qml/DiscoverWindow.qml:42
+#, kde-format
+msgid "Running as <em>root</em> is discouraged and unnecessary."
+msgstr "<em>root</em> အဖြစ်မောင်းနှင်ခြင်းသည် မလိုအပ်၍ အားမပေးပါ။"
+
+#: discover/qml/DiscoverWindow.qml:54
+#, kde-format
+msgid "&Home"
+msgstr "&Hအိမ်"
+
+#: discover/qml/DiscoverWindow.qml:64
+#, kde-format
+msgid "&Search"
+msgstr "&Sရှာဖွေမည်"
+
+#: discover/qml/DiscoverWindow.qml:72
+#, kde-format
+msgid "&Installed"
+msgstr "&Iတပ်ဆင်ပြီး"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgid "Fetching &updates…"
+msgstr "&uအပ်ဒိတ်များရယူနေသည်…"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgid "&Up to date"
+msgstr "&Uနောက်ဆုံးပေါ်"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgctxt "Update section name"
+msgid "&Update (%1)"
+msgstr "&Uအပ်ဒိတ် (%1)"
+
+#: discover/qml/DiscoverWindow.qml:86
+#, kde-format
+msgid "&About"
+msgstr "&Aအကြောင်း"
+
+#: discover/qml/DiscoverWindow.qml:94
+#, kde-format
+msgid "S&ettings"
+msgstr "&eဆက်တင်များ"
+
+#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:337
+#, kde-format
+msgid "Error"
+msgstr "အမှား"
+
+#: discover/qml/DiscoverWindow.qml:148
+#, kde-format
+msgid "Unable to find resource: %1"
+msgstr "ရင်းမြစ်ကိုမရှာနိုင်ခဲ့ပါ - %1"
+
+#: discover/qml/DiscoverWindow.qml:250 discover/qml/SourcesPage.qml:171
+#, kde-format
+msgid "Proceed"
+msgstr "ဆက်လုပ်မည်"
+
+#: discover/qml/DiscoverWindow.qml:307
+#, kde-format
+msgid "Report this issue"
+msgstr ""
+
+#: discover/qml/Feedback.qml:12
+#, kde-format
+msgid "Submit usage information"
+msgstr "အသုံးပြုအချက်အလက််များ ပေးပို့မည်"
+
+#: discover/qml/Feedback.qml:13
+#, kde-format
+msgid ""
+"Sends anonymized usage information to KDE so we can better understand our "
+"users. For more information see https://kde.org/privacypolicy-apps.php."
+msgstr ""
+"ကျွန်ုပ်တို့အနေဖြင့် အသုံးပြုသူများ၏လိုလားချက်များကို သိရှိရန် အမည်ဖျောက်ထားသော အသုံးပြုအချက်အလက်များကို "
+"ကေဒီအီးသို့ ပေးပို့ပါ။ ပိုမိုသိလိုပါက https://kde.org/privacypolicy-apps.php သို့သွားပါ။"
+
+#: discover/qml/Feedback.qml:17
+#, kde-format
+msgid "Submitting usage information…"
+msgstr "အသုံးပြုအချက်အလက််များ ပေးပို့နေသည်"
+
+#: discover/qml/Feedback.qml:17
+#, kde-format
+msgid "Configure"
+msgstr "ပြင်ဆင်မည်"
+
+#: discover/qml/Feedback.qml:21
+#, kde-format
+msgid "Configure feedback…"
+msgstr "တုံ့ပြန်ချက်ပြင်ဆင်မည်…"
+
+#: discover/qml/Feedback.qml:28 discover/qml/SourcesPage.qml:19
+#, fuzzy, kde-format
+#| msgid "Configure feedback…"
+msgid "Configure Updates…"
+msgstr "တုံ့ပြန်ချက်ပြင်ဆင်မည်…"
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid ""
+"You can help us improving this application by sharing statistics and "
+"participate in surveys."
+msgstr ""
+"ဤအပ္ပလီကေးရှင်း တိုးတက်စေရန် ဆောင်ရွက်ရာတွင် အသုံးပြုစာရင်းအင်းများ မျှဝေ၍ စစ်တမ်းကောက်ချက်များတွင် "
+"ဖြေဆို၍ ပါဝင်ကူညီနိုင်သည်။"
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid "Contribute…"
+msgstr "ပါဝင်ကူညီမည်…"
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "We are looking for your feedback!"
+msgstr "သင့်တုံ့ပြန်ချက်များကို ကြိုဆိုပါသည်။"
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "Participate…"
+msgstr "ပါဝင်ကူညီမည်…"
+
+#: discover/qml/InstallApplicationButton.qml:25
+#, kde-format
+msgctxt "State being fetched"
+msgid "Loading…"
+msgstr "တင်သွင်းနေသည်…"
+
+#: discover/qml/InstallApplicationButton.qml:28
+#, kde-format
+msgid "Install"
+msgstr "တပ်ဆင်မည်"
+
+#: discover/qml/InstallApplicationButton.qml:30
+#, kde-format
+msgid "Remove"
+msgstr "ဖယ်ရှားမည်"
+
+#: discover/qml/InstalledPage.qml:15
+#, kde-format
+msgid "Installed"
+msgstr "တပ်ဆင်ပြီး"
+
+#: discover/qml/navigation.js:19
+#, kde-format
+msgid "Resources for '%1'"
+msgstr "'%1' အတွက်ရင်းမြစ်များ"
+
+#: discover/qml/ProgressView.qml:17
+#, kde-format
+msgid "Tasks (%1%)"
+msgstr "အလုပ်များ (%1%)"
+
+#: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:40
+#, kde-format
+msgid "Tasks"
+msgstr "အလုပ်များ"
+
+#: discover/qml/ProgressView.qml:97
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed, remaining time"
+msgid "%1 - %2: %3, %4 remaining"
+msgstr "%1 - %2: %3၊ %4 ကျန်"
+
+#: discover/qml/ProgressView.qml:98
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed"
+msgid "%1 - %2: %3"
+msgstr "%1 - %2: %3"
+
+#: discover/qml/ProgressView.qml:99
+#, kde-format
+msgctxt "TransactioName - TransactionStatus"
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: discover/qml/ReviewDelegate.qml:61
+#, kde-format
+msgid "unknown reviewer"
+msgstr "အမည်မသိသုံးသပ်သူ"
+
+#: discover/qml/ReviewDelegate.qml:62
+#, kde-format
+msgid "<b>%1</b> by %2"
+msgstr "%2 မှ <b>%1</b>"
+
+#: discover/qml/ReviewDelegate.qml:62
+#, kde-format
+msgid "Comment by %1"
+msgstr "%1 မှရေးခဲ့သောမှတ်ချက်"
+
+#: discover/qml/ReviewDelegate.qml:80
+#, kde-format
+msgid "Version: %1"
+msgstr "ဗားရှင်း- %1"
+
+#: discover/qml/ReviewDelegate.qml:80
+#, kde-format
+msgid "Version: unknown"
+msgstr "ဗားရှင်း- မသိ"
+
+#: discover/qml/ReviewDelegate.qml:95
+#, kde-format
+msgid "Votes: %1 out of %2"
+msgstr "မဲများ- %2 ထဲက %1"
+
+#: discover/qml/ReviewDelegate.qml:102
+#, kde-format
+msgid "Was this review useful?"
+msgstr "ဤသုံးသပ်ချက်သည် အသုံးဝင်ပါသလား။"
+
+#: discover/qml/ReviewDelegate.qml:114
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "Yes"
+msgstr "အွန်း"
+
+#: discover/qml/ReviewDelegate.qml:131
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "No"
+msgstr "ဟင်အင့်"
+
+#: discover/qml/ReviewDialog.qml:20
+#, kde-format
+msgid "Reviewing %1"
+msgstr "%1 ကိုသုံးသပ်နေသည်"
+
+#: discover/qml/ReviewDialog.qml:29
+#, kde-format
+msgid "Rating:"
+msgstr "အကဲဖြတ်ချက် -"
+
+#: discover/qml/ReviewDialog.qml:34
+#, kde-format
+msgid "Name:"
+msgstr "အမည် -"
+
+#: discover/qml/ReviewDialog.qml:42
+#, kde-format
+msgid "Title:"
+msgstr "ခေါင်းစဥ် -"
+
+#: discover/qml/ReviewDialog.qml:60
+#, kde-format
+msgid "Enter a rating"
+msgstr "အကဲဖြတ်ချက် ရေးသွင်းပါ"
+
+#: discover/qml/ReviewDialog.qml:61
+#, kde-format
+msgid "Write the title"
+msgstr "ခေါင်းစဥ်ရေးပါ"
+
+#: discover/qml/ReviewDialog.qml:62
+#, kde-format
+msgid "Write the review"
+msgstr "သုံးသပ်ချက်ရေးပါ"
+
+#: discover/qml/ReviewDialog.qml:63
+#, kde-format
+msgid "Keep writing…"
+msgstr "ဆက်ရေးမည်…"
+
+#: discover/qml/ReviewDialog.qml:64
+#, kde-format
+msgid "Too long!"
+msgstr "ရှည်လွန်းသည်။"
+
+#: discover/qml/ReviewDialog.qml:65
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Insert a name"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:79
+#, kde-format
+msgid "Submit review"
+msgstr "သုံးသပ်ချက် တင်မည်"
+
+#: discover/qml/ReviewsPage.qml:43
+#, kde-format
+msgid "Reviews for %1"
+msgstr "%1အတွက် သုံးသပ်ချက်များ"
+
+#: discover/qml/ReviewsPage.qml:54
+#, kde-format
+msgid "Write a Review…"
+msgstr "သုံးသပ်ချက်ရေးမည်…"
+
+#: discover/qml/ReviewsPage.qml:59
+#, kde-format
+msgid "Install this app to write a review"
+msgstr "သုံးသပ်ချက်ရေးရန် ဤအပ်ကို တပ်ဆင်ပါ"
+
+#: discover/qml/SearchField.qml:24
+#, kde-format
+msgid "Search…"
+msgstr "ရှာဖွေမည်…"
+
+#: discover/qml/SearchField.qml:24
+#, kde-format
+msgid "Search in '%1'…"
+msgstr "'%1'တွင်ရှာဖွေမည်…"
+
+#: discover/qml/SourcesPage.qml:13
+#, kde-format
+msgid "Settings"
+msgstr "ဆက်တင်များ"
+
+#: discover/qml/SourcesPage.qml:95
+#, kde-format
+msgid "Default source"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:102
+#, kde-format
+msgid "Add Source…"
+msgstr "ပရိုဂရမ်ဇစ်မြစ် ထည့်သွင်းမည်…"
+
+#: discover/qml/SourcesPage.qml:126
+#, kde-format
+msgid "Make default"
+msgstr "မူလသတ်မှတ်ချက်အဖြစ်မှတ်မည်"
+
+#: discover/qml/SourcesPage.qml:212
+#, kde-format
+msgid "Increase priority"
+msgstr "ဦးစားပေး-အဆင့် တိုးမည်"
+
+#: discover/qml/SourcesPage.qml:218
+#, kde-format
+msgid "Failed to increase '%1' preference"
+msgstr "'%1' နှစ်သက်-သတ်မှတ်ချက်ကို မတိုးနိုင်ခဲ့ပါ"
+
+#: discover/qml/SourcesPage.qml:223
+#, kde-format
+msgid "Decrease priority"
+msgstr "ဦးစားပေး-အဆင့် လျော့မည်"
+
+#: discover/qml/SourcesPage.qml:229
+#, kde-format
+msgid "Failed to decrease '%1' preference"
+msgstr "'%1' နှစ်သက်-သတ်မှတ်ချက်ကို မလျော့နိုင်ခဲ့ပါ"
+
+#: discover/qml/SourcesPage.qml:234
+#, kde-format
+msgid "Remove repository"
+msgstr "ရီပိုစစ်တိုရီကို ဖယ်ရှားမည်"
+
+#: discover/qml/SourcesPage.qml:245
+#, kde-format
+msgid "Show contents"
+msgstr "ပါဝင်အကြောင်းအရာများ ပြမည်"
+
+#: discover/qml/SourcesPage.qml:284
+#, kde-format
+msgid "Missing Backends"
+msgstr "အုတ်မြစ်ပရိုဂရမ်များ မရှိပါ"
+
+#: discover/qml/UpdatesPage.qml:12
+#, kde-format
+msgid "Updates"
+msgstr "အပ်ဒိတ်များ"
+
+#: discover/qml/UpdatesPage.qml:45
+#, kde-format
+msgid "Update Issue"
+msgstr "အပ်ဒိတ်ပြဿနာ"
+
+#: discover/qml/UpdatesPage.qml:45
+#, kde-format
+msgid "Technical details"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:61
+#, kde-format
+msgid "There was an issue installing this update. Please try again later."
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:67
+#, kde-format
+msgid "See Technical Details"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:83
+#, kde-format
+msgid ""
+"If you would like to report the update issue to your distribution's "
+"packagers, include this information:"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:98
+#, kde-format
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:102
+#, kde-format
+msgid "Error message copied to clipboard"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:134
+#, kde-format
+msgid "Update Selected"
+msgstr "ရွေးထားသည်များသာ အပ်ဒိတ်တင်မည်"
+
+#: discover/qml/UpdatesPage.qml:134
+#, kde-format
+msgid "Update All"
+msgstr "အကုန်အပ်ဒိတ်တင်မည်"
+
+#: discover/qml/UpdatesPage.qml:168
+#, kde-format
+msgid "Ignore"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:214
+#, kde-format
+msgid "Select All"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:222
+#, kde-format
+msgid "Select None"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:229
+#, kde-format
+msgid "Restart automatically after update has completed"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:236
+#, kde-format
+msgid "Total size: %1"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:272
+#, kde-format
+msgid "Restart Now"
+msgstr "ယခုချက်ချင်းပြန်စတင်မည်"
+
+#: discover/qml/UpdatesPage.qml:371
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+#: discover/qml/UpdatesPage.qml:387
+#, kde-format
+msgid "Installing"
+msgstr "တပ်ဆင်နေသည်"
+
+#: discover/qml/UpdatesPage.qml:422
+#, fuzzy, kde-format
+#| msgid "Update All"
+msgid "Update from:"
+msgstr "အကုန်အပ်ဒိတ်တင်မည်"
+
+#: discover/qml/UpdatesPage.qml:434
+#, kde-format
+msgctxt ""
+"%1 is the backend that provides this app, %2 is the specific repository or "
+"address within that backend"
+msgid "%1 (%2)"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:441
+#, kde-format
+msgid "More Information…"
+msgstr "နောက်ထပ်အချက်အလက်များ…"
+
+#: discover/qml/UpdatesPage.qml:469
+#, kde-format
+msgctxt "@info"
+msgid "Fetching updates…"
+msgstr "အပ်ဒိတ်များရယူနေသည်…"
+
+#: discover/qml/UpdatesPage.qml:482
+#, kde-format
+msgctxt "@info"
+msgid "Updates"
+msgstr "အပ်ဒိတ်များ"
+
+#: discover/qml/UpdatesPage.qml:492
+#, kde-format
+msgctxt "@info"
+msgid "Restart the system to complete the update process"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:504 discover/qml/UpdatesPage.qml:511
+#: discover/qml/UpdatesPage.qml:518
+#, kde-format
+msgctxt "@info"
+msgid "Up to date"
+msgstr "နောက်ဆုံးပေါ်"
+
+#: discover/qml/UpdatesPage.qml:525
+#, kde-format
+msgctxt "@info"
+msgid "Should check for updates"
+msgstr "အပ်ဒိတ်ရှိ၊မရှိ စစ်ဆေးသင့်"
+
+#: discover/qml/UpdatesPage.qml:532
+#, kde-format
+msgctxt "@info"
+msgid "Time of last update unknown"
+msgstr "နောက်ဆုံးအကြိမ်အပ်ဒိတ်တင်ခဲ့သောအချိန်မသိ"
+
+#, fuzzy
+#~| msgid "Could not close Discover, there are tasks that need to be done."
+#~ msgid "Could not close Discover because some tasks are still in progress."
+#~ msgstr "မပြီးသေးသောအလုပ်များ ကျန်ရှိနေသောကြောင့် ဒစ်(စ)ကာဗာကို မပိတ်နိုင်ခဲ့ပါ။"
+
+#~ msgid "Quit Anyway"
+#~ msgstr "ဘာဖြစ်ဖြစ်ထွက်မည်"
+
+#~ msgid "Loading…"
+#~ msgstr "တင်သွင်းနေသည်…"
+
+#~ msgid "Return to the Featured page"
+#~ msgstr "ကြော်ငြာစာမျက်နှာသို့ပြန်မည်"
+
+#~ msgid "Category:"
+#~ msgstr "အမျိုးအစား -"
+
+#~ msgid "Author:"
+#~ msgstr "ရေးသားသူ -"
+
+#~ msgid "Size:"
+#~ msgstr "အရွယ်အစား -"
+
+#~ msgid "Source:"
+#~ msgstr "ပရိုဂရမ်ဇစ်မြစ် -"
+
+#~ msgid "See full license terms"
+#~ msgstr "လိုင်စင်ပါ လိုက်နာရမည့်အချက်များ အပြည့်အစုံ့ ကြည့်မည်"
+
+#~ msgid "Read the user guide"
+#~ msgstr "အသုံးပြုလမ်းညွှန်စာအုပ်ဖတ်ပါ"
+
+#~ msgid "Make a donation"
+#~ msgstr "လှူဒါန်းမည်"
+
+#~ msgid "Report a problem"
+#~ msgstr "ပြဿနာကို တင်ပြမည်"
+
+#~ msgid "%1 (Default)"
+#~ msgstr "%1 (မူလသတ်မှတ်ချက်)"
+
+#~ msgid "Extensions…"
+#~ msgstr "တိုးချဲ့အပ်များ…"
+
+#~ msgid "Please verify Internet connectivity"
+#~ msgstr "အင်တာနက်ရှိ၊ မရှိ စစ်ဆေးပါ"
+
+#~ msgid "All updates selected (%1)"
+#~ msgstr "အပ်ဒိတ်အားလုံးရွေးချယ်ထားသည် (%1)"
+
+#~ msgid "%1/%2 update selected (%3)"
+#~ msgid_plural "%1/%2 updates selected (%3)"
+#~ msgstr[0] "%1/%2 အပ်ဒိတ်ရွေးချယ်ထားသည် (%3)"
+
+#~ msgid "OK"
+#~ msgstr "အိုကေ"
+
+#~ msgctxt "Part of a string like this: '<app name> - <category>'"
+#~ msgid "- %1"
+#~ msgstr "- %1"
+
+#~ msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
+#~ msgid "Install from %1"
+#~ msgstr "%1မှ တပ်ဆင်မည်"
+
+#~ msgctxt "@info"
+#~ msgid "The updates will be installed the next time the system is restarted"
+#~ msgstr "စစ်စတမ်နောက်အခါပြန်စတင်သည့်အခါ အပ်ဒိတ်များကို တပ်ဆင်သွားမည်"
+
+#~ msgctxt "@info"
+#~ msgid "The system must be restarted to fully apply the installed updates"
+#~ msgstr "တပ်ဆင်ခဲ့သော အပ်ဒိတ်များ အပြည့်အဝသက်ဝင်စေရန် စစ်စတမ်ကိုပြန်စတင်ရမည်"

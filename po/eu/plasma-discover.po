@@ -1,0 +1,1449 @@
+# Translation for plasma-discover.po to Euskara/Basque (eu).
+# Copyright (C) 2017-2018, The Free Software Foundation.
+# Copyright (C) 2019-2022, This file is copyright:
+# This file is distributed under the same license as the discover package.
+# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+#
+# Translators:
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:46+0000\n"
+"PO-Revision-Date: 2022-09-02 08:13+0200\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 22.08.0\n"
+
+#: discover/DiscoverObject.cpp:156
+#, kde-format
+msgid ""
+"Discover currently cannot be used to install any apps or perform system "
+"updates because none of its app backends are available."
+msgstr ""
+"Discover ezin da une honetan aplikazioak instalatzeko edo sistemako "
+"eguneratzeak gauzatzeko erabili, bere bizkarraldeko aplikazioetako batere "
+"erabilgarri ez dagoelako."
+
+#: discover/DiscoverObject.cpp:160
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can install some on the Settings page, under the <interface>Missing "
+"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
+"as a packaging issue to your distribution."
+msgstr ""
+"Ezarpenak orrian batzuk instalatu ditzakezu, <interface>Falta diren "
+"bizkarraldekoak</interface> sailean.<nl/><nl/>hausnartu ezazu zure "
+"banaketara paketatze arazo gisa berri ematea."
+
+#: discover/DiscoverObject.cpp:165 discover/DiscoverObject.cpp:343
+#: discover/qml/UpdatesPage.qml:107
+#, kde-format
+msgid "Report This Issue"
+msgstr "Eman arazo honen berri"
+
+#: discover/DiscoverObject.cpp:170
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can use <command>pacman</command> to install the optional dependencies "
+"that are needed to enable the application backends.<nl/><nl/>Please note "
+"that Arch Linux developers recommend using <command>pacman</command> for "
+"managing software because the PackageKit backend is not well-integrated on "
+"Arch Linux."
+msgstr ""
+"Aplikazioen bizkarraldekoak gaitzeko behar diren hautazko mendekotasunak "
+"instalatzeko <command>pacman</command> erabil dezakezu.<nl/><nl/>Jakizu Arch "
+"Linux-eko garatzaileek softwarea kudeatzeko <command>pacman</command> "
+"erabiltzea gomendatzen dutela, PackageKit bizkarraldekoa ez baitago Arch "
+"Linux-en ondo bateratuta."
+
+#: discover/DiscoverObject.cpp:178
+#, kde-format
+msgid "Learn More"
+msgstr "Jakizu gehiago"
+
+#: discover/DiscoverObject.cpp:266
+#, kde-format
+msgid "Could not find category '%1'"
+msgstr "Ez da aurkitu kategoria: '%1'"
+
+#: discover/DiscoverObject.cpp:303
+#, kde-format
+msgid ""
+"Cannot interact with flatpak resources without the flatpak backend %1. "
+"Please install it first."
+msgstr ""
+"Ezin da «flatpak» baliabideekin elkarreraginean aritu %1 «flatpak» "
+"bizkarraldekorik gabe. Aurrena hura instalatu."
+
+#: discover/DiscoverObject.cpp:307
+#, kde-format
+msgid "Could not open %1"
+msgstr "Ezin da %1 ireki"
+
+#: discover/DiscoverObject.cpp:335
+#, kde-format
+msgid "Please make sure Snap support is installed"
+msgstr "Mesedez, ziurtatu Snap euskarria instalatuta dagoela"
+
+#: discover/DiscoverObject.cpp:337
+#, kde-format
+msgid ""
+"Could not open %1 because it was not found in any available software "
+"repositories."
+msgstr ""
+"Ezin izan du %1 ireki, eskuragarri dauden software gordetegietan ez delako "
+"aurkitu."
+
+#: discover/DiscoverObject.cpp:340
+#, kde-format
+msgid "Please report this issue to the packagers of your distribution."
+msgstr "Mesedez, eman arazo honen berri zure banaketaren paketatzaileei."
+
+#: discover/DiscoverObject.cpp:405 discover/DiscoverObject.cpp:406
+#: discover/main.cpp:119
+#, kde-format
+msgid "Discover"
+msgstr "Discover"
+
+#: discover/DiscoverObject.cpp:406
+#, kde-format
+msgid ""
+"Discover was closed before certain tasks were done, waiting for it to finish."
+msgstr "Discover zenbait ataza burutu aurretik itxi da, itxi dadin itxoiten."
+
+#: discover/main.cpp:43
+#, kde-format
+msgid "Directly open the specified application by its appstream:// URI."
+msgstr "Ireki zehaztutako aplikazioa zuzenean bere appstream:// URIaren bidez."
+
+#: discover/main.cpp:44
+#, kde-format
+msgid "Open with a search for programs that can deal with the given mimetype."
+msgstr ""
+"Ireki emandako mime-motarekin lan egin dezaketen programen bilaketa batekin."
+
+#: discover/main.cpp:45
+#, kde-format
+msgid "Display a list of entries with a category."
+msgstr "Bistaratu kategoria bat duen sarrera-zerrenda bat."
+
+#: discover/main.cpp:46
+#, kde-format
+msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
+msgstr ""
+"Ireki Discover esandako moduan. Moduak tresna-barrako botoiei dagozkie."
+
+#: discover/main.cpp:47
+#, kde-format
+msgid "List all the available modes."
+msgstr "Zerrendatu modu erabilgarri guztiak."
+
+#: discover/main.cpp:48
+#, kde-format
+msgid "Compact Mode (auto/compact/full)."
+msgstr "Modu trinkoa (automatikoa/trinkoa/osoa)."
+
+#: discover/main.cpp:49
+#, kde-format
+msgid "Local package file to install"
+msgstr "Instalatu beharreko fitxategi lokala"
+
+#: discover/main.cpp:50
+#, kde-format
+msgid "List all the available backends."
+msgstr "Zerrendatu bizkarraldeko erabilgarri guztiak."
+
+#: discover/main.cpp:51
+#, kde-format
+msgid "Search string."
+msgstr "Bilatu beharreko katea."
+
+#: discover/main.cpp:52
+#, kde-format
+msgid "Lists the available options for user feedback"
+msgstr ""
+"Erabiltzaileen erreakzioak bidaltzeko aukera erabilgarriak zerrendatzen ditu"
+
+#: discover/main.cpp:54
+#, kde-format
+msgid "Supports appstream: url scheme"
+msgstr "«appstream:» url antolaera onartzen du"
+
+#: discover/main.cpp:121
+#, kde-format
+msgid "An application explorer"
+msgstr "Aplikazioen esploratzaile bat"
+
+#: discover/main.cpp:123
+#, kde-format
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2022 Plasma garapen taldea"
+
+#: discover/main.cpp:124
+#, kde-format
+msgid "Aleix Pol Gonzalez"
+msgstr "Aleix Pol Gonzalez"
+
+#: discover/main.cpp:125
+#, kde-format
+msgid "Nate Graham"
+msgstr "Nate Graham"
+
+#: discover/main.cpp:126
+#, kde-format
+msgid "Quality Assurance, Design and Usability"
+msgstr "Kalitate-bermatzea, diseinua eta erabilerraztasuna"
+
+#: discover/main.cpp:130
+#, kde-format
+msgid "Dan Leinir Turthra Jensen"
+msgstr "Dan Leinir Turthra Jensen"
+
+#: discover/main.cpp:131
+#, kde-format
+msgid "KNewStuff"
+msgstr "KNewStuff"
+
+#: discover/main.cpp:138
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Iñigo Salvador Azurmendi"
+
+#: discover/main.cpp:138
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "xalba@euskalnet.net"
+
+#: discover/main.cpp:151
+#, kde-format
+msgid "Available backends:\n"
+msgstr "Bizkarraldeko erabilgarriak:\n"
+
+#: discover/main.cpp:207
+#, kde-format
+msgid "Available modes:\n"
+msgstr "Modu erabilgarriak:\n"
+
+#: discover/qml/AddonsView.qml:18 discover/qml/navigation.js:43
+#, kde-format
+msgid "Addons for %1"
+msgstr "%1(e)n gehigarriak"
+
+#: discover/qml/AddonsView.qml:50
+#, kde-format
+msgid "More…"
+msgstr "Gehiago…"
+
+#: discover/qml/AddonsView.qml:59
+#, kde-format
+msgid "Apply Changes"
+msgstr "Ezarri aldaketak"
+
+#: discover/qml/AddonsView.qml:66
+#, kde-format
+msgid "Reset"
+msgstr "Berrezarri"
+
+#: discover/qml/AddSourceDialog.qml:19
+#, kde-format
+msgid "Add New %1 Repository"
+msgstr "Gehitu %1 gordetegi berri bat"
+
+#: discover/qml/AddSourceDialog.qml:58
+#, kde-format
+msgid "Add"
+msgstr "Gehitu"
+
+#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:263
+#: discover/qml/InstallApplicationButton.qml:41
+#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:181
+#: discover/qml/UpdatesPage.qml:247 discover/qml/WebflowDialog.qml:39
+#, kde-format
+msgid "Cancel"
+msgstr "Utzi"
+
+#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationPage.qml:192
+#, kde-format
+msgid "%1 rating"
+msgid_plural "%1 ratings"
+msgstr[0] "%1 balorazioa"
+msgstr[1] "%1 balorazioa"
+
+#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationPage.qml:192
+#, kde-format
+msgid "No ratings yet"
+msgstr "Oraindik baloraziorik ez"
+
+#: discover/qml/ApplicationPage.qml:59
+#, kde-format
+msgid "Sources"
+msgstr "Iturburuak"
+
+#: discover/qml/ApplicationPage.qml:70
+#, kde-format
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: discover/qml/ApplicationPage.qml:174
+#, kde-format
+msgid "Unknown author"
+msgstr "Egile ezezaguna"
+
+#: discover/qml/ApplicationPage.qml:253
+#, kde-format
+msgid "Version"
+msgstr "Bertsioa"
+
+#: discover/qml/ApplicationPage.qml:280
+#: discover/qml/ApplicationsListPage.qml:109
+#, kde-format
+msgid "Size"
+msgstr "Neurria"
+
+#: discover/qml/ApplicationPage.qml:307
+#, kde-format
+msgid "Distributed by"
+msgstr "Banatzailea, "
+
+#: discover/qml/ApplicationPage.qml:334
+#, kde-format
+msgid "License"
+msgid_plural "Licenses"
+msgstr[0] "Lizentzia"
+msgstr[1] "Lizentziak"
+
+#: discover/qml/ApplicationPage.qml:343
+#, kde-format
+msgctxt "The app does not provide any licenses"
+msgid "Unknown"
+msgstr "Ezezaguna"
+
+#: discover/qml/ApplicationPage.qml:381
+#, kde-format
+msgid "What does this mean?"
+msgstr "Horrek zer esan nahi du?"
+
+#: discover/qml/ApplicationPage.qml:391
+#, kde-format
+msgid "See more…"
+msgid_plural "See more…"
+msgstr[0] "Ikusi gehiago…"
+msgstr[1] "Ikusi gehiago…"
+
+#: discover/qml/ApplicationPage.qml:409 discover/qml/ApplicationPage.qml:840
+#, kde-format
+msgid "Content Rating"
+msgstr "Edukiaren balorazioa"
+
+#: discover/qml/ApplicationPage.qml:419
+#, kde-format
+msgid "Age: %1+"
+msgstr "Adina: %1+"
+
+#: discover/qml/ApplicationPage.qml:443
+#, kde-format
+msgctxt "@action"
+msgid "See details…"
+msgstr "Ikusi xehetasunak…"
+
+#: discover/qml/ApplicationPage.qml:539
+#, kde-format
+msgid "Documentation"
+msgstr "Dokumentazioa"
+
+#: discover/qml/ApplicationPage.qml:540
+#, kde-format
+msgid "Read the project's official documentation"
+msgstr "Irakurri proiektuko dokumentazio ofiziala"
+
+#: discover/qml/ApplicationPage.qml:556
+#, kde-format
+msgid "Website"
+msgstr "Webgunea"
+
+#: discover/qml/ApplicationPage.qml:557
+#, kde-format
+msgid "Visit the project's website"
+msgstr "Bisitatu aplikazioaren webgunea"
+
+#: discover/qml/ApplicationPage.qml:573
+#, kde-format
+msgid "Addons"
+msgstr "Gehigarriak"
+
+#: discover/qml/ApplicationPage.qml:574
+#, kde-format
+msgid "Install or remove additional functionality"
+msgstr "Instalatu edo kendu funtzionalitate osagarria"
+
+#: discover/qml/ApplicationPage.qml:593
+#, kde-format
+msgctxt "Exports the application's URL to an external service"
+msgid "Share"
+msgstr "Partekatu"
+
+#: discover/qml/ApplicationPage.qml:594
+#, kde-format
+msgid "Send a link to the application"
+msgstr "Bidali esteka bat aplikazioari"
+
+#: discover/qml/ApplicationPage.qml:610
+#, kde-format
+msgctxt "The subject line for an email. %1 is the name of an application"
+msgid "Check out the %1 app!"
+msgstr "Begira %1 aplikazioari!"
+
+#: discover/qml/ApplicationPage.qml:630
+#, kde-format
+msgid "What's New"
+msgstr "Zer berri"
+
+#: discover/qml/ApplicationPage.qml:660
+#, kde-format
+msgid "Loading reviews for %1"
+msgstr "«%1»ren gaineko iritziak zamatzen"
+
+#: discover/qml/ApplicationPage.qml:666
+#, kde-format
+msgid "Reviews"
+msgstr "Iritziak"
+
+#: discover/qml/ApplicationPage.qml:696
+#, kde-format
+msgid "Show all %1 Reviews"
+msgid_plural "Show all %1 Reviews"
+msgstr[0] "Erakutsi denak, aipamen %1"
+msgstr[1] "Erakutsi denak, %1 aipamen"
+
+#: discover/qml/ApplicationPage.qml:708
+#, kde-format
+msgid "Write a Review"
+msgstr "Idatzi iritzi bat"
+
+#: discover/qml/ApplicationPage.qml:708
+#, kde-format
+msgid "Install to Write a Review"
+msgstr "Instalatu iritzi bat idazteko"
+
+#: discover/qml/ApplicationPage.qml:720
+#, kde-format
+msgid "Get Involved"
+msgstr "Engaia zaitez"
+
+#: discover/qml/ApplicationPage.qml:753
+#, kde-format
+msgid "Donate"
+msgstr "Dohaintza egin"
+
+#: discover/qml/ApplicationPage.qml:754
+#, kde-format
+msgid "Support and thank the developers by donating to their project"
+msgstr ""
+"Eman sostengua eta eskerrak garatzaileei haien proiektuetan dohaintza eginez"
+
+#: discover/qml/ApplicationPage.qml:770
+#, kde-format
+msgid "Report Bug"
+msgstr "Eman errorearen berri"
+
+#: discover/qml/ApplicationPage.qml:771
+#, kde-format
+msgid "Log an issue you found to help get it fixed"
+msgstr "Erregistratu aurkitu duzun arazo bat hura konpontzen laguntzeko"
+
+#: discover/qml/ApplicationPage.qml:785
+#, kde-format
+msgid "Contribute"
+msgstr "Lagundu"
+
+#: discover/qml/ApplicationPage.qml:786
+#, kde-format
+msgid "Help the developers by coding, designing, testing, or translating"
+msgstr ""
+"Lagundu garatzaileei kodetuz, diseinatuz, probak eginez, edo itzulpenak "
+"eginez"
+
+#: discover/qml/ApplicationPage.qml:813
+#, kde-format
+msgid "All Licenses"
+msgstr "Lizentzia guztiak"
+
+#: discover/qml/ApplicationPage.qml:852
+#, kde-format
+msgid "Risks of proprietary software"
+msgstr "Software jabedunaren arriskua"
+
+#: discover/qml/ApplicationPage.qml:862
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
+"learn more at <link url='%3'>%3</link>."
+msgstr ""
+"Aplikazio honen sorburu kodea ikuskapen eta hobekuntza publikoetara zati "
+"batean edo osorik itxia dago. Horrek esan nahi du hirugarrenek eta zure "
+"gisako erabiltzaileek ezin dituztela bere eragiketak, segurtasuna, eta "
+"fidagarritasuna egiaztatu, edo aldatu eta berriz banatu egileen berariazko "
+"baimenik gabe.<nl/><nl/>Aplikazioa erabiltzea segurua izan daiteke, edo zure "
+"aurkako era ezberdineko ekintzak egin litzake—zure datu pertsonalak biltzea, "
+"zure kokapenari jarraipena egitea, edo zure fitxategien edukia beste "
+"norbaiti transmititzea esaterako. Ez dago ziur egoteko era errazik, hori "
+"dela ez zenuke aplikazio hau instalatu behar non eta bere egileengan "
+"erabateko konfiantza ez baduzu (<link url='%1'>%2</link>).<nl/><nl/>Gehiago "
+"jakiteko hona jo dezakezu, <link url='%3'>%3</link>."
+
+#: discover/qml/ApplicationPage.qml:863
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
+"url='%2'>%2</link>."
+msgstr ""
+"Aplikazio honen sorburu kodea ikuskapen eta hobekuntza publikoetara zati "
+"batean edo osorik itxia dago. Horrek esan nahi du hirugarrenek eta zure "
+"gisako erabiltzaileek ezin dituztela bere eragiketak, segurtasuna, eta "
+"fidagarritasuna egiaztatu, edo aldatu eta berriz banatu egileen berariazko "
+"baimenik gabe.<nl/><nl/>Aplikazioa erabiltzea segurua izan daiteke, edo zure "
+"aurkako era ezberdineko ekintzak egin litzake—zure datu pertsonalak biltzea, "
+"zure kokapenari jarraipena egitea, edo zure fitxategien edukia beste "
+"norbaiti transmititzea esaterako. Ez dago ziur egoteko era errazik, hori "
+"dela ez zenuke aplikazio hau instalatu behar non eta bere egileengan "
+"erabateko konfiantza ez baduzu (%1).<nl/><nl/>Gehiago jakiteko hona jo "
+"dezakezu, <link url='%2'>%2</link>."
+
+#: discover/qml/ApplicationsListPage.qml:53
+#, kde-format
+msgid "Search: %1 - %2 items"
+msgstr "Bilatu: %1 - %2 elementu"
+
+#: discover/qml/ApplicationsListPage.qml:55
+#, kde-format
+msgid "Search: %1"
+msgstr "Bilatu: %1"
+
+#: discover/qml/ApplicationsListPage.qml:59
+#, kde-format
+msgid "%1 - %2 items"
+msgstr "%1 - %2 elementu"
+
+#: discover/qml/ApplicationsListPage.qml:65
+#, kde-format
+msgid "Search - %1 items"
+msgstr "Bilatu - %1 elementu"
+
+#: discover/qml/ApplicationsListPage.qml:67
+#: discover/qml/ApplicationsListPage.qml:207
+#, kde-format
+msgid "Search"
+msgstr "Bilatu"
+
+#: discover/qml/ApplicationsListPage.qml:88
+#, kde-format
+msgid "Sort: %1"
+msgstr "Sailkatu: %1"
+
+#: discover/qml/ApplicationsListPage.qml:91
+#, kde-format
+msgid "Name"
+msgstr "Izena"
+
+#: discover/qml/ApplicationsListPage.qml:100
+#, kde-format
+msgid "Rating"
+msgstr "Balorazioa"
+
+#: discover/qml/ApplicationsListPage.qml:118
+#, kde-format
+msgid "Release Date"
+msgstr "Kaleratze data"
+
+#: discover/qml/ApplicationsListPage.qml:173
+#, kde-format
+msgid "Nothing found"
+msgstr "Ez da ezer aurkitu"
+
+#: discover/qml/ApplicationsListPage.qml:185
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid "\"%1\" was not found in the available sources"
+msgstr "«%1» ez da sorburu erabilgarrietan aurkitu"
+
+#: discover/qml/ApplicationsListPage.qml:186
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid ""
+"\"%1\" may be available on the web. Software acquired from the web has not "
+"been reviewed by your distributor for functionality or stability. Use with "
+"caution."
+msgstr ""
+"«%1» webean erabilgarri egon liteke. Zure banatzaileak ez du webetik "
+"eskuratutako softwarearen funtzionaltasun edo egonkortasun berrikuspenik "
+"egin. Kontuz erabili."
+
+#: discover/qml/ApplicationsListPage.qml:188
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid "Search the web for \"%1\""
+msgstr "Bilatu webean «%1»"
+
+#: discover/qml/ApplicationsListPage.qml:192
+#, kde-format
+msgctxt ""
+"If appropriate, localize this URL to be something more relevant to the "
+"language. %1 is the text that will be searched for."
+msgid "https://duckduckgo.com/?q=%1"
+msgstr "https://duckduckgo.com/?q=%1"
+
+#: discover/qml/ApplicationsListPage.qml:222
+#, kde-format
+msgid "Still looking…"
+msgstr "Oraindik bilatzen..."
+
+#: discover/qml/BrowsingPage.qml:18
+#, kde-format
+msgid "Featured"
+msgstr "Aipagarria"
+
+#: discover/qml/BrowsingPage.qml:43
+#, kde-format
+msgid "Unable to load applications"
+msgstr "Ezin ditu aplikazioak zamatu"
+
+#: discover/qml/BrowsingPage.qml:76
+#, kde-format
+msgid "Updates are available"
+msgstr "Eguneratzeak eskuragarri daude"
+
+#: discover/qml/BrowsingPage.qml:80
+#, kde-format
+msgctxt "Short for 'show updates'"
+msgid "Show"
+msgstr "Erakutsi"
+
+#: discover/qml/DiscoverWindow.qml:42
+#, kde-format
+msgid "Running as <em>root</em> is discouraged and unnecessary."
+msgstr ""
+"<em>root</em> gisa exekutatzea ez da beharrezkoa ezta gomendagarria ere."
+
+#: discover/qml/DiscoverWindow.qml:54
+#, kde-format
+msgid "&Home"
+msgstr "&Hasiera"
+
+#: discover/qml/DiscoverWindow.qml:64
+#, kde-format
+msgid "&Search"
+msgstr "&Bilatu"
+
+#: discover/qml/DiscoverWindow.qml:72
+#, kde-format
+msgid "&Installed"
+msgstr "&Instalatuta"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgid "Fetching &updates…"
+msgstr "Eg&uneratzeak ekartzen..."
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgid "&Up to date"
+msgstr "Eg&uneratuta"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, kde-format
+msgctxt "Update section name"
+msgid "&Update (%1)"
+msgstr "Eg&uneratu (%1)"
+
+#: discover/qml/DiscoverWindow.qml:86
+#, kde-format
+msgid "&About"
+msgstr "Honi &buruz"
+
+#: discover/qml/DiscoverWindow.qml:94
+#, kde-format
+msgid "S&ettings"
+msgstr "&Ezarpenak"
+
+#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:337
+#, kde-format
+msgid "Error"
+msgstr "Errorea"
+
+#: discover/qml/DiscoverWindow.qml:148
+#, kde-format
+msgid "Unable to find resource: %1"
+msgstr "Ezin da aurkitu baliabidea: %1"
+
+#: discover/qml/DiscoverWindow.qml:250 discover/qml/SourcesPage.qml:171
+#, kde-format
+msgid "Proceed"
+msgstr "Jarraitu"
+
+#: discover/qml/DiscoverWindow.qml:307
+#, kde-format
+msgid "Report this issue"
+msgstr "Eman arazo honen berri"
+
+#: discover/qml/Feedback.qml:12
+#, kde-format
+msgid "Submit usage information"
+msgstr "Bidali erabileraren gaineko informazioa"
+
+#: discover/qml/Feedback.qml:13
+#, kde-format
+msgid ""
+"Sends anonymized usage information to KDE so we can better understand our "
+"users. For more information see https://kde.org/privacypolicy-apps.php."
+msgstr ""
+"Anonimo bilakatutako erabileraren gaineko informazioa bidaltzen du KDEra "
+"gure erabiltzaileak hobeto ulertze aldera. Informazio zabalagoa hemen, "
+"https://kde.org/privacypolicy-apps.php."
+
+#: discover/qml/Feedback.qml:17
+#, kde-format
+msgid "Submitting usage information…"
+msgstr "Erabileraren gaineko informazioa bidaltzen..."
+
+#: discover/qml/Feedback.qml:17
+#, kde-format
+msgid "Configure"
+msgstr "Konfiguratu"
+
+#: discover/qml/Feedback.qml:21
+#, kde-format
+msgid "Configure feedback…"
+msgstr "Konfiguratu erreakzioak..."
+
+#: discover/qml/Feedback.qml:28 discover/qml/SourcesPage.qml:19
+#, kde-format
+msgid "Configure Updates…"
+msgstr "Konfiguratu eguneratzeak..."
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid ""
+"You can help us improving this application by sharing statistics and "
+"participate in surveys."
+msgstr ""
+"Aplikazio hau hobetzen lagun diezagukezu estatistikak partekatuz eta "
+"inkestetan parte hartuz."
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid "Contribute…"
+msgstr "Lagundu..."
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "We are looking for your feedback!"
+msgstr "Erreakzioak bidal ditzazuen zain gaude!"
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "Participate…"
+msgstr "Parte hartu..."
+
+#: discover/qml/InstallApplicationButton.qml:25
+#, kde-format
+msgctxt "State being fetched"
+msgid "Loading…"
+msgstr "Zamatzen..."
+
+#: discover/qml/InstallApplicationButton.qml:28
+#, kde-format
+msgid "Install"
+msgstr "Instalatu"
+
+#: discover/qml/InstallApplicationButton.qml:30
+#, kde-format
+msgid "Remove"
+msgstr "Ezabatu"
+
+#: discover/qml/InstalledPage.qml:15
+#, kde-format
+msgid "Installed"
+msgstr "Instalatuta"
+
+#: discover/qml/navigation.js:19
+#, kde-format
+msgid "Resources for '%1'"
+msgstr "Honetarako baliabideak: '%1'"
+
+#: discover/qml/ProgressView.qml:17
+#, kde-format
+msgid "Tasks (%1%)"
+msgstr "Atazak (%%1)"
+
+#: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:40
+#, kde-format
+msgid "Tasks"
+msgstr "Atazak"
+
+#: discover/qml/ProgressView.qml:97
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed, remaining time"
+msgid "%1 - %2: %3, %4 remaining"
+msgstr "%1 - %2: %3, %4 amaitzeko"
+
+#: discover/qml/ProgressView.qml:98
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed"
+msgid "%1 - %2: %3"
+msgstr "%1 - %2: %3"
+
+#: discover/qml/ProgressView.qml:99
+#, kde-format
+msgctxt "TransactioName - TransactionStatus"
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: discover/qml/ReviewDelegate.qml:61
+#, kde-format
+msgid "unknown reviewer"
+msgstr "Iritzi emaile ezezaguna"
+
+#: discover/qml/ReviewDelegate.qml:62
+#, kde-format
+msgid "<b>%1</b> by %2"
+msgstr "<b>%1</b> egilea %2"
+
+#: discover/qml/ReviewDelegate.qml:62
+#, kde-format
+msgid "Comment by %1"
+msgstr "Iruzkina %1(e)k"
+
+#: discover/qml/ReviewDelegate.qml:80
+#, kde-format
+msgid "Version: %1"
+msgstr "Bertsioa: %1"
+
+#: discover/qml/ReviewDelegate.qml:80
+#, kde-format
+msgid "Version: unknown"
+msgstr "Bertsioa: ezezaguna"
+
+#: discover/qml/ReviewDelegate.qml:95
+#, kde-format
+msgid "Votes: %1 out of %2"
+msgstr "Bozkak: %1 / %2"
+
+#: discover/qml/ReviewDelegate.qml:102
+#, kde-format
+msgid "Was this review useful?"
+msgstr "Iritzi hau baliagarria izan da?"
+
+#: discover/qml/ReviewDelegate.qml:114
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "Yes"
+msgstr "Bai"
+
+#: discover/qml/ReviewDelegate.qml:131
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "No"
+msgstr "Ez"
+
+#: discover/qml/ReviewDialog.qml:20
+#, kde-format
+msgid "Reviewing %1"
+msgstr "%«%1»ren gaineko iritzi ematea"
+
+#: discover/qml/ReviewDialog.qml:29
+#, kde-format
+msgid "Rating:"
+msgstr "Balorazioa:"
+
+#: discover/qml/ReviewDialog.qml:34
+#, kde-format
+msgid "Name:"
+msgstr "Izena:"
+
+#: discover/qml/ReviewDialog.qml:42
+#, kde-format
+msgid "Title:"
+msgstr "Izenburua:"
+
+#: discover/qml/ReviewDialog.qml:60
+#, kde-format
+msgid "Enter a rating"
+msgstr "Sartu balorazio bat"
+
+#: discover/qml/ReviewDialog.qml:61
+#, kde-format
+msgid "Write the title"
+msgstr "Idatzi izenburua"
+
+#: discover/qml/ReviewDialog.qml:62
+#, kde-format
+msgid "Write the review"
+msgstr "Idatzi iritzia"
+
+#: discover/qml/ReviewDialog.qml:63
+#, kde-format
+msgid "Keep writing…"
+msgstr "Jarraitu idazten..."
+
+#: discover/qml/ReviewDialog.qml:64
+#, kde-format
+msgid "Too long!"
+msgstr "Luzeegia!"
+
+#: discover/qml/ReviewDialog.qml:65
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Insert a name"
+msgstr "Sartu izen bat"
+
+#: discover/qml/ReviewDialog.qml:79
+#, kde-format
+msgid "Submit review"
+msgstr "Bidali iritzia"
+
+#: discover/qml/ReviewsPage.qml:43
+#, kde-format
+msgid "Reviews for %1"
+msgstr "«%1»ren gaineko iritziak"
+
+#: discover/qml/ReviewsPage.qml:54
+#, kde-format
+msgid "Write a Review…"
+msgstr "Idatzi iritzi bat..."
+
+#: discover/qml/ReviewsPage.qml:59
+#, kde-format
+msgid "Install this app to write a review"
+msgstr "Instalatu aplikazio hau, iritzi bat idazteko"
+
+#: discover/qml/SearchField.qml:24
+#, kde-format
+msgid "Search…"
+msgstr "Bilatu..."
+
+#: discover/qml/SearchField.qml:24
+#, kde-format
+msgid "Search in '%1'…"
+msgstr "Bilatu «%1»(e)an..."
+
+#: discover/qml/SourcesPage.qml:13
+#, kde-format
+msgid "Settings"
+msgstr "Ezarpenak"
+
+#: discover/qml/SourcesPage.qml:95
+#, kde-format
+msgid "Default source"
+msgstr "Sorburu lehenetsia"
+
+#: discover/qml/SourcesPage.qml:102
+#, kde-format
+msgid "Add Source…"
+msgstr "Gehitu sorburua..."
+
+#: discover/qml/SourcesPage.qml:126
+#, kde-format
+msgid "Make default"
+msgstr "Lehenetsi"
+
+#: discover/qml/SourcesPage.qml:212
+#, kde-format
+msgid "Increase priority"
+msgstr "Handitu lehentasuna"
+
+#: discover/qml/SourcesPage.qml:218
+#, kde-format
+msgid "Failed to increase '%1' preference"
+msgstr "'%1' hobespena handiagotzea huts egin du"
+
+#: discover/qml/SourcesPage.qml:223
+#, kde-format
+msgid "Decrease priority"
+msgstr "Txikitu lehentasuna"
+
+#: discover/qml/SourcesPage.qml:229
+#, kde-format
+msgid "Failed to decrease '%1' preference"
+msgstr "'%1' hobespena txikiagotzea huts egin du"
+
+#: discover/qml/SourcesPage.qml:234
+#, kde-format
+msgid "Remove repository"
+msgstr "Kendu gordetegia"
+
+#: discover/qml/SourcesPage.qml:245
+#, kde-format
+msgid "Show contents"
+msgstr "Erakutsi edukia"
+
+#: discover/qml/SourcesPage.qml:284
+#, kde-format
+msgid "Missing Backends"
+msgstr "Falta diren bizkarraldekoak"
+
+#: discover/qml/UpdatesPage.qml:12
+#, kde-format
+msgid "Updates"
+msgstr "Eguneratzeak"
+
+#: discover/qml/UpdatesPage.qml:45
+#, kde-format
+msgid "Update Issue"
+msgstr "Eguneratzeko arazoa"
+
+#: discover/qml/UpdatesPage.qml:45
+#, kde-format
+msgid "Technical details"
+msgstr "Xehetasun teknikoak"
+
+#: discover/qml/UpdatesPage.qml:61
+#, kde-format
+msgid "There was an issue installing this update. Please try again later."
+msgstr ""
+"Eguneratze hau instalatzean arazo bat egon da. Saiatu berriz beranduago."
+
+#: discover/qml/UpdatesPage.qml:67
+#, kde-format
+msgid "See Technical Details"
+msgstr "Ikusi xehetasun teknikoak"
+
+#: discover/qml/UpdatesPage.qml:83
+#, kde-format
+msgid ""
+"If you would like to report the update issue to your distribution's "
+"packagers, include this information:"
+msgstr ""
+"Eguneratze arazoa zure banaketaren paketatzaileei jakinarazi nahi badiezu, "
+"erantsi informazio hau:"
+
+#: discover/qml/UpdatesPage.qml:98
+#, kde-format
+msgid "Copy to Clipboard"
+msgstr "Kopiatu arbelera"
+
+#: discover/qml/UpdatesPage.qml:102
+#, kde-format
+msgid "Error message copied to clipboard"
+msgstr "Errore mezua arbelera kopiatu da"
+
+#: discover/qml/UpdatesPage.qml:134
+#, kde-format
+msgid "Update Selected"
+msgstr "Eguneratu hautatutakoak"
+
+#: discover/qml/UpdatesPage.qml:134
+#, kde-format
+msgid "Update All"
+msgstr "Eguneratu denak"
+
+#: discover/qml/UpdatesPage.qml:168
+#, kde-format
+msgid "Ignore"
+msgstr "Ez ikusi egin"
+
+#: discover/qml/UpdatesPage.qml:214
+#, kde-format
+msgid "Select All"
+msgstr "Hautatu denak"
+
+#: discover/qml/UpdatesPage.qml:222
+#, kde-format
+msgid "Select None"
+msgstr "Bat ere ez hautatu"
+
+#: discover/qml/UpdatesPage.qml:229
+#, kde-format
+msgid "Restart automatically after update has completed"
+msgstr "Berrabiarazi automatikoki eguneratzea osatu ondoren"
+
+#: discover/qml/UpdatesPage.qml:236
+#, kde-format
+msgid "Total size: %1"
+msgstr "Neurria guztira: %1"
+
+#: discover/qml/UpdatesPage.qml:272
+#, kde-format
+msgid "Restart Now"
+msgstr "Berrabiarazi orain"
+
+#: discover/qml/UpdatesPage.qml:371
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+#: discover/qml/UpdatesPage.qml:387
+#, kde-format
+msgid "Installing"
+msgstr "Instalatzen"
+
+#: discover/qml/UpdatesPage.qml:422
+#, kde-format
+msgid "Update from:"
+msgstr "Eguneratu hemendik:"
+
+#: discover/qml/UpdatesPage.qml:434
+#, kde-format
+msgctxt ""
+"%1 is the backend that provides this app, %2 is the specific repository or "
+"address within that backend"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: discover/qml/UpdatesPage.qml:441
+#, kde-format
+msgid "More Information…"
+msgstr "Informazio gehiago..."
+
+#: discover/qml/UpdatesPage.qml:469
+#, kde-format
+msgctxt "@info"
+msgid "Fetching updates…"
+msgstr "Eguneratzeak ekartzen..."
+
+#: discover/qml/UpdatesPage.qml:482
+#, kde-format
+msgctxt "@info"
+msgid "Updates"
+msgstr "Eguneratzeak"
+
+#: discover/qml/UpdatesPage.qml:492
+#, kde-format
+msgctxt "@info"
+msgid "Restart the system to complete the update process"
+msgstr "Berrabiatu sistema eguneratze prozesua osatzeko"
+
+#: discover/qml/UpdatesPage.qml:504 discover/qml/UpdatesPage.qml:511
+#: discover/qml/UpdatesPage.qml:518
+#, kde-format
+msgctxt "@info"
+msgid "Up to date"
+msgstr "Eguneratua"
+
+#: discover/qml/UpdatesPage.qml:525
+#, kde-format
+msgctxt "@info"
+msgid "Should check for updates"
+msgstr "Eguneratzeak dauden egiaztatu beharko litzateke"
+
+#: discover/qml/UpdatesPage.qml:532
+#, kde-format
+msgctxt "@info"
+msgid "Time of last update unknown"
+msgstr "Azken eguneratze ordua ezezaguna"
+
+#~| msgid "More..."
+#~ msgid "Show more..."
+#~ msgstr "Erakutsi gehiago..."
+
+#~ msgid "proprietary"
+#~ msgstr "jabeduna"
+
+#, fuzzy
+#~| msgid "Could not close Discover, there are tasks that need to be done."
+#~ msgid "Could not close Discover because some tasks are still in progress."
+#~ msgstr "Ezin da Discover itxi, burutu beharreko atazak daude."
+
+#~ msgid "Quit Anyway"
+#~ msgstr "Irten hala ere"
+
+#~ msgid "Loading…"
+#~ msgstr "Zamatzen..."
+
+# xalba 2019-06-05 az. cat, es, pt, itzulpenetan "destacados" erabiltzen dute.
+#~ msgid "Return to the Featured page"
+#~ msgstr "Itzuli nabarmendutakoen orrira"
+
+#~ msgid "Category:"
+#~ msgstr "Kategoria:"
+
+#~ msgid "Author:"
+#~ msgstr "Egilea:"
+
+#~ msgid "Size:"
+#~ msgstr "Neurria:"
+
+#~ msgid "Source:"
+#~ msgstr "Iturburua:"
+
+#~ msgid "See full license terms"
+#~ msgstr "Begiratu lizentziaren baldintza guztiak"
+
+#~ msgid "Read the user guide"
+#~ msgstr "Irakurri erabiltzailearen gida"
+
+#~ msgid "Make a donation"
+#~ msgstr "Egin dohaintza"
+
+#~ msgid "Report a problem"
+#~ msgstr "Eman arazo baten berri"
+
+#~ msgid "%1 (Default)"
+#~ msgstr "%1 (lehenetsia)"
+
+#~ msgid "Extensions…"
+#~ msgstr "Hedapenak..."
+
+#~ msgid "Please verify Internet connectivity"
+#~ msgstr "Ikuskatu Interneterako zure konektagarritasuna"
+
+#~ msgid "All updates selected (%1)"
+#~ msgstr "Hautatutako eguneratze guztiak (%1)"
+
+#~ msgid "%1/%2 update selected (%3)"
+#~ msgid_plural "%1/%2 updates selected (%3)"
+#~ msgstr[0] "%1/%2 eguneratze hautatuta (%3)"
+#~ msgstr[1] "%1/%2 eguneratze hautatuta (%3)"
+
+#~ msgid "OK"
+#~ msgstr "Ados"
+
+#~ msgctxt "Part of a string like this: '<app name> - <category>'"
+#~ msgid "- %1"
+#~ msgstr "- %1"
+
+#~ msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
+#~ msgid "Install from %1"
+#~ msgstr "Instalatu %1-(e)tik"
+
+#~ msgctxt "@info"
+#~ msgid "The updates will be installed the next time the system is restarted"
+#~ msgstr ""
+#~ "Eguneratzeak sistema berrabiatzen den hurrengo aldian instalatuko dira"
+
+#~ msgctxt "@info"
+#~ msgid "The system must be restarted to fully apply the installed updates"
+#~ msgstr ""
+#~ "Sistema berrabiatu beharra dago instalatutako eguneraketak guztiz "
+#~ "ezartzeko"
+
+#~ msgid "%1, released on %2"
+#~ msgstr "%1, %2-ean kaleratua"
+
+#~ msgctxt "State being fetched"
+#~ msgid "Loading..."
+#~ msgstr "Zamatzen..."
+
+#~ msgid "Write a Review..."
+#~ msgstr "Idatzi iritzi bat..."
+
+#~ msgid "Search..."
+#~ msgstr "Bilatu..."
+
+#~ msgctxt "@info"
+#~ msgid "It is unknown when the last check for updates was"
+#~ msgstr ""
+#~ "Ez da ezagutzen eguneratzeak bilatzeko azken egiaztatzea noiz egin zen"
+
+#~ msgid "No application back-ends found, please report to your distribution."
+#~ msgstr ""
+#~ "Ez da aplikazio-bizkarraldekorik aurkitu, mesedez, zure banaketari "
+#~ "jakinarazi iezaiozu."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Unable to load applications.<nl/>Please verify Internet connectivity."
+#~ msgstr ""
+#~ "Ezin dira aplikazioak zamatu.<nl/>Egiaztatu zure Interneteko "
+#~ "konektibitatea."
+
+#~ msgid "Sorry..."
+#~ msgstr "Barkatu..."
+
+#~ msgid "Useful?"
+#~ msgstr "Baliagarria?"
+
+#~ msgid "Update to version %1"
+#~ msgstr "Eguneratu %1 bertsiora"
+
+#~ msgctxt "Do not translate or alter \\x9C"
+#~ msgid "%1 → %2%1 → %2%2"
+#~ msgstr "%1 → %2%1 → %2%2"
+
+#~ msgid "Delete the origin"
+#~ msgstr "Ezabatu jatorria"
+
+#~ msgid "Write a review!"
+#~ msgstr "Idatzi iritzi bat!"
+
+#~ msgid "Be the first to write a review!"
+#~ msgstr "Izan iritzi bat idazten lehena!"
+
+#~ msgid "Install and be the first to write a review!"
+#~ msgstr "Instalatu eta izan iritzi bat idazten lehena!"
+
+#~ msgid "Jonathan Thomas"
+#~ msgstr "Jonathan Thomas"
+
+#~ msgid "Discard"
+#~ msgstr "Baztertu"
+
+#~ msgid "Hide"
+#~ msgstr "Ezkutatu"
+
+#~ msgid "Homepage:"
+#~ msgstr "Etxeko-orria:"
+
+#~ msgid "User Guide:"
+#~ msgstr "Erabiltzailearen gida:"
+
+#~ msgid "Failed to remove the source '%1'"
+#~ msgstr "Huts egin du iturburua kentzea: %1"
+
+#~ msgid "Fetching Updates..."
+#~ msgstr "Eguneratzeak ekartzen..."
+
+#~ msgid "Up to Date"
+#~ msgstr "Eguneratua"
+
+#~ msgctxt "@info"
+#~ msgid "Fetching Updates..."
+#~ msgstr "Eguneratzeak ekartzen..."
+
+#~ msgctxt "@info"
+#~ msgid "Up to Date"
+#~ msgstr "Eguneratua"
+
+#~ msgid "<em>Tell us about this review!</em>"
+#~ msgstr "<em>Zer diozu iritzi honi buruz?</em>"
+
+#~ msgid "<em>%1 out of %2 people found this review useful</em>"
+#~ msgstr "<em>%2-(e)tik %1-ri izan zaie baliagarri iritzi hau</em>"
+
+#~ msgid ""
+#~ "<em>Useful? <a href='true'><b>Yes</b></a>/<a href='false'>No</a></em>"
+#~ msgstr ""
+#~ "<em>Baliagarria? <a href='true'><b>Bai</b></a>/<a href='false'>Ez</a></em>"
+
+#~ msgid ""
+#~ "<em>Useful? <a href='true'>Yes</a>/<a href='false'><b>No</b></a></em>"
+#~ msgstr ""
+#~ "<em>Baliagarria? <a href='true'>Bai</a>/<a href='false'><b>Ez</b></a></em>"
+
+#~ msgid "<em>Useful? <a href='true'>Yes</a>/<a href='false'>No</a></em>"
+#~ msgstr "<em>Baliagarria? <a href='true'>Bai</a>/<a href='false'>Ez</a></em>"
+
+#~ msgctxt "@info"
+#~ msgid "Submission name:<nl/>%1"
+#~ msgstr "Bidalketaren izena:<nl/>%1"
+
+#~ msgid "Review:"
+#~ msgstr "Iritzia:"
+
+#~ msgid "Review..."
+#~ msgstr "Iritzia..."
+
+#~ msgid "Checking for updates..."
+#~ msgstr "Eguneratzeak egiaztatzen..."
+
+#~ msgid "No Updates"
+#~ msgstr "Eguneratzerik ez"
+
+#~ msgctxt "@info"
+#~ msgid "Fetching..."
+#~ msgstr "Ekartzen..."
+
+#, fuzzy
+#~| msgid "Checking for updates..."
+#~ msgctxt "@info"
+#~ msgid "Checking for updates..."
+#~ msgstr "Eguneratzeak egiaztatzen..."
+
+#~ msgctxt "@info"
+#~ msgid "Updating..."
+#~ msgstr "Eguneratzen..."
+
+#~ msgctxt "@info"
+#~ msgid "The system is up to date"
+#~ msgstr "Sistema eguneratuta dago"
+
+#~ msgctxt "@info"
+#~ msgid "No updates"
+#~ msgstr "Eguneratzerik ez"
+
+#~ msgid "updates not selected"
+#~ msgstr "eguneratzeak ez dira hautatu"
+
+#, fuzzy
+#~| msgid "Help..."
+#~ msgid "Help"
+#~ msgstr "Laguntza..."
+
+#~ msgid "Copy link address"
+#~ msgstr "Kopiatu estekaren helbidea"
+
+#~ msgctxt "@info"
+#~ msgid "Looking for updates"
+#~ msgstr "Eguneratze bila"
+
+#~ msgctxt "TransactioName TransactionStatus"
+#~ msgid "%1 %2"
+#~ msgstr "%1 %2"
+
+#~ msgid ""
+#~ "\n"
+#~ "Also available in %1"
+#~ msgstr ""
+#~ "\n"
+#~ "Erabilgarri dago ere hemen: %1"
+
+#~ msgid "Summary:"
+#~ msgstr "Laburpena:"
+
+#~ msgid "Launch"
+#~ msgstr "Abiarazi"
+
+#~ msgid "Accept"
+#~ msgstr "Onartu"
+
+#~ msgid "Browse the origin's resources"
+#~ msgstr "Arakatu jatorrizko baliabideak"
+
+#~ msgid "Description"
+#~ msgstr "Azalpena"
+
+#~ msgid "Application Sources"
+#~ msgstr "Aplikazioen iturburuak"
+
+#~ msgid ""
+#~ "Allows to choose the source that will be used for browsing applications"
+#~ msgstr "Baimendu aplikazioak arakatzeko erabiliko den iturburua aukeratzea"
+
+#~ msgid "Open"
+#~ msgstr "Ireki"
+
+#~ msgid "Close Description"
+#~ msgstr "Itxi azalpena"
+
+#~ msgid "Got it"
+#~ msgstr "Ulertu dut"

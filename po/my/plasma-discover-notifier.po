@@ -1,0 +1,159 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the discover package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2021-09-19 20:01+0630\n"
+"Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
+"Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
+"Language: my\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0\n"
+
+#: notifier/DiscoverNotifier.cpp:144
+#, kde-format
+msgid "View Updates"
+msgstr "အပ်ဒိတ်များကြည့်မည်"
+
+#: notifier/DiscoverNotifier.cpp:256
+#, kde-format
+msgid "Security updates available"
+msgstr "လုံခြုံရေးအပ်ဒိတ်များရရှိနေပါပြီ"
+
+#: notifier/DiscoverNotifier.cpp:258
+#, kde-format
+msgid "Updates available"
+msgstr "အပ်ဒိတ်များရရှိနေပါပြီ"
+
+#: notifier/DiscoverNotifier.cpp:260
+#, kde-format
+msgid "System up to date"
+msgstr "နောက်ဆုံးပေါ် စစ်စတမ်"
+
+#: notifier/DiscoverNotifier.cpp:262
+#, kde-format
+msgid "Computer needs to restart"
+msgstr "စစ်စတမ်ပြန်စတင်ရန်လိုအပ်သည်"
+
+#: notifier/DiscoverNotifier.cpp:264
+#, kde-format
+msgid "Offline"
+msgstr "အော့ဖ်လိုင်း"
+
+#: notifier/DiscoverNotifier.cpp:266
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr "မတင်ရသေးသော အပ်ဒိတ်များတင်နေသည်..."
+
+#: notifier/DiscoverNotifier.cpp:300
+#, kde-format
+msgid "Restart is required"
+msgstr "စစ်စတမ်ပြန်စတင်ရန်လိုအပ်သည်"
+
+#: notifier/DiscoverNotifier.cpp:301
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr "အပ်ဒိတ်များသက်ဝင်စေရန် စစ်စတမ်ပြန်စတင်ရမည်"
+
+#: notifier/DiscoverNotifier.cpp:307
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart"
+msgstr "ပြန်စတင်မည်"
+
+#: notifier/DiscoverNotifier.cpp:327
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "အပ်ဂရိတ်တင်မည်"
+
+#: notifier/DiscoverNotifier.cpp:328
+#, kde-format
+msgid "Upgrade available"
+msgstr "အပ်ဂရိတ်ရရှိနေပါပြီ"
+
+#: notifier/DiscoverNotifier.cpp:329
+#, kde-format
+msgid "New version: %1"
+msgstr "ဗားရှင်းအသစ် - %1"
+
+#: notifier/main.cpp:39
+#, kde-format
+msgid "Discover Notifier"
+msgstr "ဒစ်(စ)ကာဗာ အကြောင်းကြားကိရိယာ"
+
+#: notifier/main.cpp:41
+#, kde-format
+msgid "System update status notifier"
+msgstr "စစ်စတမ်အပ်ဒိတ်တင်မှုအခြေအနေ အကြောင်းကြားကိရိယာ"
+
+#: notifier/main.cpp:43
+#, fuzzy, kde-format
+#| msgid "© 2010-2021 Plasma Development Team"
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© ၂၀၁၀-၂၀၂၁ ပလက်စမာ တိုးတက်ရေး အဖွဲ့"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ဇေယျာလွင်"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "lw1nzayar@yandex.com"
+
+#: notifier/main.cpp:52
+#, kde-format
+msgid "Replace an existing instance"
+msgstr "ရှိနှင့်ပြီး လုပ်ဆောင်မှုကိ အစားထိုးမည်"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "Do not show the notifier"
+msgstr "အကြောင်းကြားကိရိယာ မပြပါနှင့်"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "hidden"
+msgstr "ဖွက်ထား"
+
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#, kde-format
+msgid "Updates"
+msgstr "အပ်ဒိတ်များ"
+
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Open Discover…"
+msgstr "ဒစ်(စ)ကာဗာ ဖွင့်မည်..."
+
+#: notifier/NotifierItem.cpp:55
+#, kde-format
+msgid "See Updates…"
+msgstr "အပ်ဒိတ်များ ကြည့်မည်..."
+
+#: notifier/NotifierItem.cpp:60
+#, kde-format
+msgid "Refresh…"
+msgstr "ပြန်ရယူရန်..."
+
+#: notifier/NotifierItem.cpp:64
+#, kde-format
+msgid "Restart to apply installed updates"
+msgstr "စစ်စတမ်ပြန်လည်စတင်ပါ"
+
+#: notifier/NotifierItem.cpp:65
+#, kde-format
+msgid "Click to restart the device"
+msgstr "စစ်စတမ်ပြန်စတင်ရန် နှိပ်ပါ"

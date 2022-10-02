@@ -1,0 +1,1183 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# HeroP <herophuong93@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:46+0000\n"
+"PO-Revision-Date: 2012-06-13 10:17+0800\n"
+"Last-Translator: HeroP <herophuong93@gmail.com>\n"
+"Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: discover/DiscoverObject.cpp:156
+#, kde-format
+msgid ""
+"Discover currently cannot be used to install any apps or perform system "
+"updates because none of its app backends are available."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:160
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can install some on the Settings page, under the <interface>Missing "
+"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
+"as a packaging issue to your distribution."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:165 discover/DiscoverObject.cpp:343
+#: discover/qml/UpdatesPage.qml:107
+#, kde-format
+msgid "Report This Issue"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:170
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can use <command>pacman</command> to install the optional dependencies "
+"that are needed to enable the application backends.<nl/><nl/>Please note "
+"that Arch Linux developers recommend using <command>pacman</command> for "
+"managing software because the PackageKit backend is not well-integrated on "
+"Arch Linux."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:178
+#, kde-format
+msgid "Learn More"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:266
+#, kde-format
+msgid "Could not find category '%1'"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:303
+#, kde-format
+msgid ""
+"Cannot interact with flatpak resources without the flatpak backend %1. "
+"Please install it first."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:307
+#, kde-format
+msgid "Could not open %1"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:335
+#, kde-format
+msgid "Please make sure Snap support is installed"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:337
+#, kde-format
+msgid ""
+"Could not open %1 because it was not found in any available software "
+"repositories."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:340
+#, kde-format
+msgid "Please report this issue to the packagers of your distribution."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:405 discover/DiscoverObject.cpp:406
+#: discover/main.cpp:119
+#, kde-format
+msgid "Discover"
+msgstr "Khám phá"
+
+#: discover/DiscoverObject.cpp:406
+#, kde-format
+msgid ""
+"Discover was closed before certain tasks were done, waiting for it to finish."
+msgstr ""
+
+#: discover/main.cpp:43
+#, fuzzy, kde-format
+#| msgid "Directly open the specified application by its package name."
+msgid "Directly open the specified application by its appstream:// URI."
+msgstr "Mở trực tiếp ứng dụng được chỉ định bằng tên gói của nó"
+
+#: discover/main.cpp:44
+#, kde-format
+msgid "Open with a search for programs that can deal with the given mimetype."
+msgstr ""
+
+#: discover/main.cpp:45
+#, kde-format
+msgid "Display a list of entries with a category."
+msgstr ""
+
+#: discover/main.cpp:46
+#, kde-format
+msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
+msgstr ""
+
+#: discover/main.cpp:47
+#, kde-format
+msgid "List all the available modes."
+msgstr ""
+
+#: discover/main.cpp:48
+#, kde-format
+msgid "Compact Mode (auto/compact/full)."
+msgstr ""
+
+#: discover/main.cpp:49
+#, kde-format
+msgid "Local package file to install"
+msgstr ""
+
+#: discover/main.cpp:50
+#, kde-format
+msgid "List all the available backends."
+msgstr ""
+
+#: discover/main.cpp:51
+#, fuzzy, kde-format
+#| msgid "Search in '%1'..."
+msgid "Search string."
+msgstr "Tìm kiếm trong '%1'..."
+
+#: discover/main.cpp:52
+#, kde-format
+msgid "Lists the available options for user feedback"
+msgstr ""
+
+#: discover/main.cpp:54
+#, kde-format
+msgid "Supports appstream: url scheme"
+msgstr ""
+
+#: discover/main.cpp:121
+#, fuzzy, kde-format
+#| msgid "An application discoverer"
+msgid "An application explorer"
+msgstr "Một trình khám phá ứng dụng"
+
+#: discover/main.cpp:123
+#, kde-format
+msgid "© 2010-2022 Plasma Development Team"
+msgstr ""
+
+#: discover/main.cpp:124
+#, kde-format
+msgid "Aleix Pol Gonzalez"
+msgstr ""
+
+#: discover/main.cpp:125
+#, kde-format
+msgid "Nate Graham"
+msgstr ""
+
+#: discover/main.cpp:126
+#, kde-format
+msgid "Quality Assurance, Design and Usability"
+msgstr ""
+
+#: discover/main.cpp:130
+#, kde-format
+msgid "Dan Leinir Turthra Jensen"
+msgstr ""
+
+#: discover/main.cpp:131
+#, kde-format
+msgid "KNewStuff"
+msgstr ""
+
+#: discover/main.cpp:138
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#: discover/main.cpp:138
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#: discover/main.cpp:151
+#, kde-format
+msgid "Available backends:\n"
+msgstr ""
+
+#: discover/main.cpp:207
+#, kde-format
+msgid "Available modes:\n"
+msgstr ""
+
+#: discover/qml/AddonsView.qml:18 discover/qml/navigation.js:43
+#, kde-format
+msgid "Addons for %1"
+msgstr ""
+
+#: discover/qml/AddonsView.qml:50
+#, kde-format
+msgid "More…"
+msgstr ""
+
+#: discover/qml/AddonsView.qml:59
+#, kde-format
+msgid "Apply Changes"
+msgstr ""
+
+#: discover/qml/AddonsView.qml:66
+#, kde-format
+msgid "Reset"
+msgstr ""
+
+#: discover/qml/AddSourceDialog.qml:19
+#, kde-format
+msgid "Add New %1 Repository"
+msgstr ""
+
+#: discover/qml/AddSourceDialog.qml:58
+#, fuzzy, kde-format
+#| msgid "Add-ons"
+msgid "Add"
+msgstr "Phần mở rộng"
+
+#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:263
+#: discover/qml/InstallApplicationButton.qml:41
+#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:181
+#: discover/qml/UpdatesPage.qml:247 discover/qml/WebflowDialog.qml:39
+#, kde-format
+msgid "Cancel"
+msgstr "Huỷ"
+
+#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationPage.qml:192
+#, fuzzy, kde-format
+#| msgid "Rating"
+msgid "%1 rating"
+msgid_plural "%1 ratings"
+msgstr[0] "Đánh giá"
+
+#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationPage.qml:192
+#, kde-format
+msgid "No ratings yet"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:59
+#, fuzzy, kde-format
+#| msgid "Sources"
+msgid "Sources"
+msgstr "Nguồn"
+
+#: discover/qml/ApplicationPage.qml:70
+#, kde-format
+msgid "%1 - %2"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:174
+#, kde-format
+msgid "Unknown author"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:253
+#, kde-format
+msgid "Version"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:280
+#: discover/qml/ApplicationsListPage.qml:109
+#, fuzzy, kde-format
+#| msgid "<b>Total Size:</b> %1<br/>"
+msgid "Size"
+msgstr "<b>Tổng kích thước:</b> %1 <br/>"
+
+#: discover/qml/ApplicationPage.qml:307
+#, kde-format
+msgid "Distributed by"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:334
+#, fuzzy, kde-format
+#| msgid "points: %1"
+msgid "License"
+msgid_plural "Licenses"
+msgstr[0] "điểm: %1"
+
+#: discover/qml/ApplicationPage.qml:343
+#, kde-format
+msgctxt "The app does not provide any licenses"
+msgid "Unknown"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:381
+#, kde-format
+msgid "What does this mean?"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:391
+#, kde-format
+msgid "See more…"
+msgid_plural "See more…"
+msgstr[0] ""
+
+#: discover/qml/ApplicationPage.qml:409 discover/qml/ApplicationPage.qml:840
+#, fuzzy, kde-format
+#| msgid "Rating"
+msgid "Content Rating"
+msgstr "Đánh giá"
+
+#: discover/qml/ApplicationPage.qml:419
+#, kde-format
+msgid "Age: %1+"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:443
+#, kde-format
+msgctxt "@action"
+msgid "See details…"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:539
+#, kde-format
+msgid "Documentation"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:540
+#, kde-format
+msgid "Read the project's official documentation"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:556
+#, kde-format
+msgid "Website"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:557
+#, kde-format
+msgid "Visit the project's website"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:573
+#, kde-format
+msgid "Addons"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:574
+#, kde-format
+msgid "Install or remove additional functionality"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:593
+#, kde-format
+msgctxt "Exports the application's URL to an external service"
+msgid "Share"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:594
+#, kde-format
+msgid "Send a link to the application"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:610
+#, kde-format
+msgctxt "The subject line for an email. %1 is the name of an application"
+msgid "Check out the %1 app!"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:630
+#, kde-format
+msgid "What's New"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:660
+#, fuzzy, kde-format
+#| msgid "Rating"
+msgid "Loading reviews for %1"
+msgstr "Đánh giá"
+
+#: discover/qml/ApplicationPage.qml:666
+#, kde-format
+msgid "Reviews"
+msgstr "Nhận xét"
+
+#: discover/qml/ApplicationPage.qml:696
+#, fuzzy, kde-format
+#| msgid "%1 reviews"
+msgid "Show all %1 Reviews"
+msgid_plural "Show all %1 Reviews"
+msgstr[0] "%1 nhận xét"
+
+#: discover/qml/ApplicationPage.qml:708
+#, fuzzy, kde-format
+#| msgid "Submit"
+msgid "Write a Review"
+msgstr "Gửi"
+
+#: discover/qml/ApplicationPage.qml:708
+#, fuzzy, kde-format
+#| msgid "Submit"
+msgid "Install to Write a Review"
+msgstr "Gửi"
+
+#: discover/qml/ApplicationPage.qml:720
+#, kde-format
+msgid "Get Involved"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:753
+#, kde-format
+msgid "Donate"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:754
+#, kde-format
+msgid "Support and thank the developers by donating to their project"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:770
+#, kde-format
+msgid "Report Bug"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:771
+#, kde-format
+msgid "Log an issue you found to help get it fixed"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:785
+#, kde-format
+msgid "Contribute"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:786
+#, kde-format
+msgid "Help the developers by coding, designing, testing, or translating"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:813
+#, fuzzy, kde-format
+#| msgid "points: %1"
+msgid "All Licenses"
+msgstr "điểm: %1"
+
+#: discover/qml/ApplicationPage.qml:852
+#, kde-format
+msgid "Risks of proprietary software"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:862
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
+"learn more at <link url='%3'>%3</link>."
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:863
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
+"url='%2'>%2</link>."
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:53
+#, fuzzy, kde-format
+#| msgid "Search in '%1'..."
+msgid "Search: %1 - %2 items"
+msgstr "Tìm kiếm trong '%1'..."
+
+#: discover/qml/ApplicationsListPage.qml:55
+#, fuzzy, kde-format
+#| msgid "Search in '%1'..."
+msgid "Search: %1"
+msgstr "Tìm kiếm trong '%1'..."
+
+#: discover/qml/ApplicationsListPage.qml:59
+#, kde-format
+msgid "%1 - %2 items"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:65
+#, fuzzy, kde-format
+#| msgid "Search in '%1'..."
+msgid "Search - %1 items"
+msgstr "Tìm kiếm trong '%1'..."
+
+#: discover/qml/ApplicationsListPage.qml:67
+#: discover/qml/ApplicationsListPage.qml:207
+#, fuzzy, kde-format
+#| msgid "Search..."
+msgid "Search"
+msgstr "Tìm kiếm..."
+
+#: discover/qml/ApplicationsListPage.qml:88
+#, fuzzy, kde-format
+#| msgid "Search in '%1'..."
+msgid "Sort: %1"
+msgstr "Tìm kiếm trong '%1'..."
+
+#: discover/qml/ApplicationsListPage.qml:91
+#, kde-format
+msgid "Name"
+msgstr "Tên"
+
+#: discover/qml/ApplicationsListPage.qml:100
+#, kde-format
+msgid "Rating"
+msgstr "Đánh giá"
+
+#: discover/qml/ApplicationsListPage.qml:118
+#, kde-format
+msgid "Release Date"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:173
+#, kde-format
+msgid "Nothing found"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:185
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid "\"%1\" was not found in the available sources"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:186
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid ""
+"\"%1\" may be available on the web. Software acquired from the web has not "
+"been reviewed by your distributor for functionality or stability. Use with "
+"caution."
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:188
+#, kde-format
+msgctxt "%1 is the name of an application"
+msgid "Search the web for \"%1\""
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:192
+#, kde-format
+msgctxt ""
+"If appropriate, localize this URL to be something more relevant to the "
+"language. %1 is the text that will be searched for."
+msgid "https://duckduckgo.com/?q=%1"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:222
+#, fuzzy, kde-format
+#| msgid "Install"
+msgid "Still looking…"
+msgstr "Cài đặt"
+
+#: discover/qml/BrowsingPage.qml:18
+#, kde-format
+msgid "Featured"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:43
+#, kde-format
+msgid "Unable to load applications"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:76
+#, kde-format
+msgid "Updates are available"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:80
+#, kde-format
+msgctxt "Short for 'show updates'"
+msgid "Show"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:42
+#, kde-format
+msgid "Running as <em>root</em> is discouraged and unnecessary."
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:54
+#, kde-format
+msgid "&Home"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:64
+#, fuzzy, kde-format
+#| msgid "Search..."
+msgid "&Search"
+msgstr "Tìm kiếm..."
+
+#: discover/qml/DiscoverWindow.qml:72
+#, fuzzy, kde-format
+#| msgid "Installed"
+msgid "&Installed"
+msgstr "Đã cài "
+
+#: discover/qml/DiscoverWindow.qml:79
+#, fuzzy, kde-format
+#| msgid "Update"
+msgid "Fetching &updates…"
+msgstr "Cập nhật"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, fuzzy, kde-format
+#| msgid "Update"
+msgid "&Up to date"
+msgstr "Cập nhật"
+
+#: discover/qml/DiscoverWindow.qml:79
+#, fuzzy, kde-format
+#| msgid "Update"
+msgctxt "Update section name"
+msgid "&Update (%1)"
+msgstr "Cập nhật"
+
+#: discover/qml/DiscoverWindow.qml:86
+#, kde-format
+msgid "&About"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:94
+#, fuzzy, kde-format
+#| msgid "<b>Best Ratings</b>"
+msgid "S&ettings"
+msgstr "<b>Đánh giá cao</b>"
+
+#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:337
+#, kde-format
+msgid "Error"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:148
+#, kde-format
+msgid "Unable to find resource: %1"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:250 discover/qml/SourcesPage.qml:171
+#, kde-format
+msgid "Proceed"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:307
+#, kde-format
+msgid "Report this issue"
+msgstr ""
+
+#: discover/qml/Feedback.qml:12
+#, kde-format
+msgid "Submit usage information"
+msgstr ""
+
+#: discover/qml/Feedback.qml:13
+#, kde-format
+msgid ""
+"Sends anonymized usage information to KDE so we can better understand our "
+"users. For more information see https://kde.org/privacypolicy-apps.php."
+msgstr ""
+
+#: discover/qml/Feedback.qml:17
+#, kde-format
+msgid "Submitting usage information…"
+msgstr ""
+
+#: discover/qml/Feedback.qml:17
+#, kde-format
+msgid "Configure"
+msgstr ""
+
+#: discover/qml/Feedback.qml:21
+#, kde-format
+msgid "Configure feedback…"
+msgstr ""
+
+#: discover/qml/Feedback.qml:28 discover/qml/SourcesPage.qml:19
+#, fuzzy, kde-format
+#| msgid "Update"
+msgid "Configure Updates…"
+msgstr "Cập nhật"
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid ""
+"You can help us improving this application by sharing statistics and "
+"participate in surveys."
+msgstr ""
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid "Contribute…"
+msgstr ""
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "We are looking for your feedback!"
+msgstr ""
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "Participate…"
+msgstr ""
+
+#: discover/qml/InstallApplicationButton.qml:25
+#, kde-format
+msgctxt "State being fetched"
+msgid "Loading…"
+msgstr ""
+
+#: discover/qml/InstallApplicationButton.qml:28
+#, kde-format
+msgid "Install"
+msgstr "Cài đặt"
+
+#: discover/qml/InstallApplicationButton.qml:30
+#, kde-format
+msgid "Remove"
+msgstr "Gỡ bỏ"
+
+#: discover/qml/InstalledPage.qml:15
+#, kde-format
+msgid "Installed"
+msgstr "Đã cài "
+
+#: discover/qml/navigation.js:19
+#, kde-format
+msgid "Resources for '%1'"
+msgstr ""
+
+#: discover/qml/ProgressView.qml:17
+#, fuzzy, kde-format
+#| msgid "Update"
+msgid "Tasks (%1%)"
+msgstr "Cập nhật"
+
+#: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:40
+#, kde-format
+msgid "Tasks"
+msgstr ""
+
+#: discover/qml/ProgressView.qml:97
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed, remaining time"
+msgid "%1 - %2: %3, %4 remaining"
+msgstr ""
+
+#: discover/qml/ProgressView.qml:98
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed"
+msgid "%1 - %2: %3"
+msgstr ""
+
+#: discover/qml/ProgressView.qml:99
+#, kde-format
+msgctxt "TransactioName - TransactionStatus"
+msgid "%1 - %2"
+msgstr ""
+
+#: discover/qml/ReviewDelegate.qml:61
+#, kde-format
+msgid "unknown reviewer"
+msgstr ""
+
+#: discover/qml/ReviewDelegate.qml:62
+#, kde-format
+msgid "<b>%1</b> by %2"
+msgstr ""
+
+#: discover/qml/ReviewDelegate.qml:62
+#, kde-format
+msgid "Comment by %1"
+msgstr ""
+
+#: discover/qml/ReviewDelegate.qml:80
+#, kde-format
+msgid "Version: %1"
+msgstr ""
+
+#: discover/qml/ReviewDelegate.qml:80
+#, kde-format
+msgid "Version: unknown"
+msgstr ""
+
+#: discover/qml/ReviewDelegate.qml:95
+#, kde-format
+msgid "Votes: %1 out of %2"
+msgstr ""
+
+#: discover/qml/ReviewDelegate.qml:102
+#, kde-format
+msgid "Was this review useful?"
+msgstr ""
+
+#: discover/qml/ReviewDelegate.qml:114
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "Yes"
+msgstr ""
+
+#: discover/qml/ReviewDelegate.qml:131
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "No"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:20
+#, fuzzy, kde-format
+#| msgid "Reviewing %1"
+msgid "Reviewing %1"
+msgstr "Nhận xét %1"
+
+#: discover/qml/ReviewDialog.qml:29
+#, kde-format
+msgid "Rating:"
+msgstr "Đánh giá:"
+
+#: discover/qml/ReviewDialog.qml:34
+#, fuzzy, kde-format
+#| msgid "Name"
+msgid "Name:"
+msgstr "Tên"
+
+#: discover/qml/ReviewDialog.qml:42
+#, kde-format
+msgid "Title:"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:60
+#, kde-format
+msgid "Enter a rating"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:61
+#, fuzzy, kde-format
+#| msgid "Submit"
+msgid "Write the title"
+msgstr "Gửi"
+
+#: discover/qml/ReviewDialog.qml:62
+#, fuzzy, kde-format
+#| msgid "Submit"
+msgid "Write the review"
+msgstr "Gửi"
+
+#: discover/qml/ReviewDialog.qml:63
+#, kde-format
+msgid "Keep writing…"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:64
+#, kde-format
+msgid "Too long!"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:65
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Insert a name"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:79
+#, fuzzy, kde-format
+#| msgid "Submit"
+msgid "Submit review"
+msgstr "Gửi"
+
+#: discover/qml/ReviewsPage.qml:43
+#, fuzzy, kde-format
+#| msgid "Rating"
+msgid "Reviews for %1"
+msgstr "Đánh giá"
+
+#: discover/qml/ReviewsPage.qml:54
+#, fuzzy, kde-format
+#| msgid "Submit"
+msgid "Write a Review…"
+msgstr "Gửi"
+
+#: discover/qml/ReviewsPage.qml:59
+#, kde-format
+msgid "Install this app to write a review"
+msgstr ""
+
+#: discover/qml/SearchField.qml:24
+#, fuzzy, kde-format
+#| msgid "Search..."
+msgid "Search…"
+msgstr "Tìm kiếm..."
+
+#: discover/qml/SearchField.qml:24
+#, fuzzy, kde-format
+#| msgid "Search in '%1'..."
+msgid "Search in '%1'…"
+msgstr "Tìm kiếm trong '%1'..."
+
+#: discover/qml/SourcesPage.qml:13
+#, fuzzy, kde-format
+#| msgid "<b>Best Ratings</b>"
+msgid "Settings"
+msgstr "<b>Đánh giá cao</b>"
+
+#: discover/qml/SourcesPage.qml:95
+#, kde-format
+msgid "Default source"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:102
+#, fuzzy, kde-format
+#| msgid "Add Source"
+msgid "Add Source…"
+msgstr "Thêm nguồn"
+
+#: discover/qml/SourcesPage.qml:126
+#, kde-format
+msgid "Make default"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:212
+#, kde-format
+msgid "Increase priority"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:218
+#, kde-format
+msgid "Failed to increase '%1' preference"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:223
+#, kde-format
+msgid "Decrease priority"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:229
+#, kde-format
+msgid "Failed to decrease '%1' preference"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:234
+#, kde-format
+msgid "Remove repository"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:245
+#, kde-format
+msgid "Show contents"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:284
+#, kde-format
+msgid "Missing Backends"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:12
+#, fuzzy, kde-format
+#| msgid "Update"
+msgid "Updates"
+msgstr "Cập nhật"
+
+#: discover/qml/UpdatesPage.qml:45
+#, fuzzy, kde-format
+#| msgid "Update"
+msgid "Update Issue"
+msgstr "Cập nhật"
+
+#: discover/qml/UpdatesPage.qml:45
+#, kde-format
+msgid "Technical details"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:61
+#, kde-format
+msgid "There was an issue installing this update. Please try again later."
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:67
+#, kde-format
+msgid "See Technical Details"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:83
+#, kde-format
+msgid ""
+"If you would like to report the update issue to your distribution's "
+"packagers, include this information:"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:98
+#, kde-format
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:102
+#, kde-format
+msgid "Error message copied to clipboard"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Upgrade All!"
+msgid "Update Selected"
+msgstr "Nâng cấp tất cả!"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Upgrade All!"
+msgid "Update All"
+msgstr "Nâng cấp tất cả!"
+
+#: discover/qml/UpdatesPage.qml:168
+#, kde-format
+msgid "Ignore"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:214
+#, kde-format
+msgid "Select All"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:222
+#, kde-format
+msgid "Select None"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:229
+#, kde-format
+msgid "Restart automatically after update has completed"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:236
+#, kde-format
+msgid "Total size: %1"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:272
+#, kde-format
+msgid "Restart Now"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:371
+#, kde-format
+msgid "%1"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:387
+#, fuzzy, kde-format
+#| msgid "Install"
+msgid "Installing"
+msgstr "Cài đặt"
+
+#: discover/qml/UpdatesPage.qml:422
+#, fuzzy, kde-format
+#| msgid "Upgrade All!"
+msgid "Update from:"
+msgstr "Nâng cấp tất cả!"
+
+#: discover/qml/UpdatesPage.qml:434
+#, kde-format
+msgctxt ""
+"%1 is the backend that provides this app, %2 is the specific repository or "
+"address within that backend"
+msgid "%1 (%2)"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:441
+#, kde-format
+msgid "More Information…"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:469
+#, fuzzy, kde-format
+#| msgid "Update"
+msgctxt "@info"
+msgid "Fetching updates…"
+msgstr "Cập nhật"
+
+#: discover/qml/UpdatesPage.qml:482
+#, fuzzy, kde-format
+#| msgid "Update"
+msgctxt "@info"
+msgid "Updates"
+msgstr "Cập nhật"
+
+#: discover/qml/UpdatesPage.qml:492
+#, kde-format
+msgctxt "@info"
+msgid "Restart the system to complete the update process"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:504 discover/qml/UpdatesPage.qml:511
+#: discover/qml/UpdatesPage.qml:518
+#, fuzzy, kde-format
+#| msgid "Update"
+msgctxt "@info"
+msgid "Up to date"
+msgstr "Cập nhật"
+
+#: discover/qml/UpdatesPage.qml:525
+#, kde-format
+msgctxt "@info"
+msgid "Should check for updates"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:532
+#, kde-format
+msgctxt "@info"
+msgid "Time of last update unknown"
+msgstr ""
+
+#, fuzzy
+#~| msgid "<b>Total Size:</b> %1<br/>"
+#~ msgid "Size:"
+#~ msgstr "<b>Tổng kích thước:</b> %1 <br/>"
+
+#, fuzzy
+#~| msgid "Sources"
+#~ msgid "Source:"
+#~ msgstr "Nguồn"
+
+#, fuzzy
+#~| msgid "Upgrade All!"
+#~ msgid "All updates selected (%1)"
+#~ msgstr "Nâng cấp tất cả!"
+
+#, fuzzy
+#~| msgid "Upgrade All!"
+#~ msgid "%1/%2 update selected (%3)"
+#~ msgid_plural "%1/%2 updates selected (%3)"
+#~ msgstr[0] "Nâng cấp tất cả!"
+
+#, fuzzy
+#~| msgid "Install"
+#~ msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
+#~ msgid "Install from %1"
+#~ msgstr "Cài đặt"
+
+#, fuzzy
+#~| msgid "Submit"
+#~ msgid "Write a Review..."
+#~ msgstr "Gửi"
+
+#~ msgid "Search..."
+#~ msgstr "Tìm kiếm..."

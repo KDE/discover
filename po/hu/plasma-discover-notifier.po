@@ -1,0 +1,201 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Kiszel Kristóf <ulysses@kubuntu.org>, 2015, 2017, 2019.
+# Kristof Kiszel <kiszel.kristof@gmail.com>, 2018, 2020, 2021.
+# Kristóf Kiszel <ulysses@fsf.hu>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-01-14 10:51+0100\n"
+"Last-Translator: Kristóf Kiszel <ulysses@fsf.hu>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.07.70\n"
+
+#: notifier/DiscoverNotifier.cpp:144
+#, kde-format
+msgid "View Updates"
+msgstr "Frissítések megtekintése"
+
+#: notifier/DiscoverNotifier.cpp:256
+#, kde-format
+msgid "Security updates available"
+msgstr "Biztonsági frissítések érhetők el"
+
+#: notifier/DiscoverNotifier.cpp:258
+#, kde-format
+msgid "Updates available"
+msgstr "Frissítések érhetők el"
+
+#: notifier/DiscoverNotifier.cpp:260
+#, kde-format
+msgid "System up to date"
+msgstr "A rendszer napra kész"
+
+#: notifier/DiscoverNotifier.cpp:262
+#, kde-format
+msgid "Computer needs to restart"
+msgstr "A számítógépet újra kell indítani"
+
+#: notifier/DiscoverNotifier.cpp:264
+#, kde-format
+msgid "Offline"
+msgstr "Offline"
+
+#: notifier/DiscoverNotifier.cpp:266
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr "Beavatkozás nélküli frissítések alkalmazása…"
+
+#: notifier/DiscoverNotifier.cpp:300
+#, kde-format
+msgid "Restart is required"
+msgstr "Újraindítás szükséges"
+
+#: notifier/DiscoverNotifier.cpp:301
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr "A rendszert újra kell indítani a frissítések alkalmazásához."
+
+#: notifier/DiscoverNotifier.cpp:307
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart"
+msgstr "Újraindítás"
+
+#: notifier/DiscoverNotifier.cpp:327
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "Frissítés"
+
+#: notifier/DiscoverNotifier.cpp:328
+#, kde-format
+msgid "Upgrade available"
+msgstr "Frissítés érhetők el"
+
+#: notifier/DiscoverNotifier.cpp:329
+#, kde-format
+msgid "New version: %1"
+msgstr "Új verzió: %1"
+
+#: notifier/main.cpp:39
+#, kde-format
+msgid "Discover Notifier"
+msgstr "Discover értesítő"
+
+#: notifier/main.cpp:41
+#, kde-format
+msgid "System update status notifier"
+msgstr "Rendszerfrissítés állapotértesítő"
+
+#: notifier/main.cpp:43
+#, kde-format
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© A Plasma fejlesztői, 2010-2022."
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Kiszel Kristóf"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "ulysses@kubuntu.org"
+
+#: notifier/main.cpp:52
+#, kde-format
+msgid "Replace an existing instance"
+msgstr "Meglévő példány cseréje"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "Do not show the notifier"
+msgstr "Ne mutassa az értesítőt"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "hidden"
+msgstr "rejtett"
+
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#, kde-format
+msgid "Updates"
+msgstr "Frissítések"
+
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Open Discover…"
+msgstr "Discover megnyitása…"
+
+#: notifier/NotifierItem.cpp:55
+#, kde-format
+msgid "See Updates…"
+msgstr "Frissítések megtekintése…"
+
+#: notifier/NotifierItem.cpp:60
+#, kde-format
+msgid "Refresh…"
+msgstr "Frissítés…"
+
+#: notifier/NotifierItem.cpp:64
+#, kde-format
+msgid "Restart to apply installed updates"
+msgstr "Indítsa újra a telepített frissítések alkalmazásához"
+
+#: notifier/NotifierItem.cpp:65
+#, kde-format
+msgid "Click to restart the device"
+msgstr "Kattintson az eszköz újraindításához"
+
+#~ msgid "Restart..."
+#~ msgstr "Újraindítás…"
+
+#~ msgid "Update"
+#~ msgstr "Frissítés"
+
+#~ msgid "Open Software Center..."
+#~ msgstr "Szoftverközpont megnyitása…"
+
+#~ msgctxt "First part of '%1, %2'"
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "1 frissítendő csomag"
+#~ msgstr[1] "%1 frissítendő csomag"
+
+#~ msgctxt "Second part of '%1, %2'"
+#~ msgid "of which 1 is security update"
+#~ msgid_plural "of which %1 are security updates"
+#~ msgstr[0] "1 biztonsági frissítés"
+#~ msgstr[1] "%1 biztonsági frissítés"
+
+#~ msgctxt ""
+#~ "%1 is '%1 packages to update' and %2 is 'of which %1 is security updates'"
+#~ msgid "%1, %2"
+#~ msgstr "%1, %2"
+
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "1 frissítendő csomag"
+#~ msgstr[1] "%1 frissítendő csomag"
+
+#~ msgid "1 security update"
+#~ msgid_plural "%1 security updates"
+#~ msgstr[0] "1 biztonsági frissítés"
+#~ msgstr[1] "%1 biztonsági frissítés"
+
+#~ msgid "No packages to update"
+#~ msgstr "Nincsenek frissítendő csomagok"
+
+#~ msgid "%1 packages to update, of which %2 are security updates"
+#~ msgstr "%1 frissítendő csomag, melyből %2 biztonsági frissítés"

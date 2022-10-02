@@ -1,0 +1,3881 @@
+# Finnish messages for libmuon.
+# Copyright © 2011, 2012 This_file_is_part_of_KDE
+# This file is distributed under the same license as the extragear_sysadmin package.
+# Tommi Nieminen <translator@legisign.org>, 2011, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Jorma Karvonen <karvonen.jorma@gmail.com>, 2011.
+# Lasse Liehu <lasse.liehu@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2022.
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2012.
+#
+# KDE Finnish translation sprint participants:
+# Author: Artnay
+# Author: Lliehu
+msgid ""
+msgstr ""
+"Project-Id-Version: libmuon\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-29 00:47+0000\n"
+"PO-Revision-Date: 2022-08-11 22:55+0300\n"
+"Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-POT-Import-Date: 2013-01-13 20:43:19+0000\n"
+"X-Generator: Lokalize 22.04.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Tommi Nieminen"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "translator@legisign.org"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:89
+#, kde-format
+msgid "Proprietary"
+msgstr "Suljettu lähdekoodi"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:91
+#, kde-format
+msgid "Public Domain"
+msgstr "Public domain"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:97
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
+#: libdiscover/UpdateModel/UpdateModel.cpp:117
+#: libdiscover/UpdateModel/UpdateModel.cpp:323
+#, kde-format
+msgid "Unknown"
+msgstr "Tuntematon"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:135
+#: libdiscover/resources/AbstractResource.cpp:293
+#, kde-format
+msgid "%1, released on %2"
+msgstr "%1, julkaistu %2"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:177
+#, fuzzy, kde-format
+#| msgid "All Files"
+msgid "All Audiences"
+msgstr "Kaikki tiedostot"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:178
+#, kde-format
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Mild Content"
+msgstr ""
+
+#: libdiscover/appstream/AppStreamUtils.cpp:179
+#, kde-format
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Moderate Content"
+msgstr ""
+
+#: libdiscover/appstream/AppStreamUtils.cpp:180
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Internet"
+msgctxt "As specified in OARS, intensity of contents"
+msgid "Intense Content"
+msgstr "Internet"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:155
+#, kde-format
+msgid "Error while fetching reviews: %1"
+msgstr "Virhe noudettaessa arvosteluja: %1"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:206
+#, kde-format
+msgid "Error while submitting usefulness: %1"
+msgstr "Virhe lähetettäessä käytettävyysarviota: %1"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:263
+#, kde-format
+msgid "Error while submitting review: %1"
+msgstr "Virhe lähetettäessä arvostelua: %1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Dummy Category"
+msgstr "Testiluokka"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:10
+#, kde-format
+msgctxt "Category"
+msgid "dummy"
+msgstr "testi"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#, kde-format
+msgctxt "Category"
+msgid "dummy addons"
+msgstr "testilisäosat"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:27
+#, kde-format
+msgctxt "Category"
+msgid "dummy 1"
+msgstr "testi 1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:35
+#, kde-format
+msgctxt "Category"
+msgid "dummy with stuff"
+msgstr "testi jutuilla"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:42
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:57
+#, kde-format
+msgctxt "Category"
+msgid "dummy 2.1"
+msgstr "testi 2.1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:50
+#, kde-format
+msgctxt "Category"
+msgid "dummy with quite some stuff"
+msgstr "testi aika monella jutulla"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:66
+#, kde-format
+msgctxt "Category"
+msgid "dummy 3"
+msgstr "testi 3"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:76
+#, kde-format
+msgctxt "Category"
+msgid "dummy 4"
+msgstr "testi 4"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:4
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Accessories"
+msgstr "Apuohjelmat"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:16
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:16
+#, kde-format
+msgctxt "Category"
+msgid "Accessibility"
+msgstr "Esteettömyys"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:28
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:28
+#, kde-format
+msgctxt "Category"
+msgid "Developer Tools"
+msgstr "Kehitystyökalut"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:38
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:38
+#, kde-format
+msgctxt "Category"
+msgid "Debugging"
+msgstr "Virheenpaikannus"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:48
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:48
+#, kde-format
+msgctxt "Category"
+msgid "Graphic Interface Design"
+msgstr "Graafisten käyttöliittymien suunnittelu"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:57
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:57
+#, kde-format
+msgctxt "Category"
+msgid "IDEs"
+msgstr "Kehitysympäristöt"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:66
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:66
+#, kde-format
+msgctxt "Category"
+msgid "Localization"
+msgstr "Lokalisointi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:76
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:76
+#, kde-format
+msgctxt "Category"
+msgid "Profiling"
+msgstr "Profilointi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:85
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:85
+#, kde-format
+msgctxt "Category"
+msgid "Web Development"
+msgstr "Web-kehitys"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
+#, kde-format
+msgctxt "Category"
+msgid "Education"
+msgstr "Koulutus"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:109
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:110
+#, kde-format
+msgctxt "Category"
+msgid "Science and Engineering"
+msgstr "Tieteet ja suunnittelu"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:119
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:120
+#, kde-format
+msgctxt "Category"
+msgid "Astronomy"
+msgstr "Tähtitiede"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:127
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:128
+#, kde-format
+msgctxt "Category"
+msgid "Biology"
+msgstr "Biologia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:135
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:136
+#, kde-format
+msgctxt "Category"
+msgid "Chemistry"
+msgstr "Kemia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:144
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:145
+#, kde-format
+msgctxt "Category"
+msgid "Computer Science and Robotics"
+msgstr "Tietojenkäsittelytiede ja robotiikka"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:156
+#, kde-format
+msgctxt "Category"
+msgid "Electronics"
+msgstr "Elektroniikka"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:165
+#, kde-format
+msgctxt "Category"
+msgid "Engineering"
+msgstr "Insinöörityökalut"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:173
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
+#, kde-format
+msgctxt "Category"
+msgid "Geography"
+msgstr "Maantiede"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:181
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:182
+#, kde-format
+msgctxt "Category"
+msgid "Geology"
+msgstr "Geologia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:190
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:191
+#, kde-format
+msgctxt "Category"
+msgid "Mathematics"
+msgstr "Matematiikka"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:202
+#, kde-format
+msgctxt "Category"
+msgid "Physics"
+msgstr "Fysiikka"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:212
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:213
+#, kde-format
+msgctxt "Category"
+msgid "Games"
+msgstr "Pelit"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:222
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:223
+#, kde-format
+msgctxt "Category"
+msgid "Arcade"
+msgstr "Pelihallipelit"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:231
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:232
+#, kde-format
+msgctxt "Category"
+msgid "Board Games"
+msgstr "Lautapelit"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:240
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:241
+#, kde-format
+msgctxt "Category"
+msgid "Card Games"
+msgstr "Korttipelit"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:249
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:250
+#, kde-format
+msgctxt "Category"
+msgid "Puzzles"
+msgstr "Pulmapelit"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:258
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:259
+#, kde-format
+msgctxt "Category"
+msgid "Role Playing"
+msgstr "Roolipelit"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:267
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:268
+#, kde-format
+msgctxt "Category"
+msgid "Simulation"
+msgstr "Simulaatio"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:276
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:277
+#, kde-format
+msgctxt "Category"
+msgid "Strategy"
+msgstr "Strategia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:285
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:286
+#, kde-format
+msgctxt "Category"
+msgid "Sports"
+msgstr "Urheilu"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:294
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:295
+#, kde-format
+msgctxt "Category"
+msgid "Action"
+msgstr "Toiminta"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:303
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:304
+#, kde-format
+msgctxt "Category"
+msgid "Emulators"
+msgstr "Emulaattorit"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:315
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:317
+#, kde-format
+msgctxt "Category"
+msgid "Graphics"
+msgstr "Grafiikka"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:324
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:326
+#, kde-format
+msgctxt "Category"
+msgid "3D"
+msgstr "3D"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:332
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
+#, kde-format
+msgctxt "Category"
+msgid "Drawing"
+msgstr "Piirtäminen"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:344
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:346
+#, kde-format
+msgctxt "Category"
+msgid "Painting and Editing"
+msgstr "Piirustus ja kuvankäsittely"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:357
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:359
+#, kde-format
+msgctxt "Category"
+msgid "Photography"
+msgstr "Valokuvaus"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:366
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:368
+#, kde-format
+msgctxt "Category"
+msgid "Publishing"
+msgstr "Julkaiseminen"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:377
+#, kde-format
+msgctxt "Category"
+msgid "Scanning and OCR"
+msgstr "Kuvanluku ja tekstintunnistus"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:385
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:387
+#, kde-format
+msgctxt "Category"
+msgid "Viewers"
+msgstr "Katselimet"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:397
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:399
+#, kde-format
+msgctxt "Category"
+msgid "Internet"
+msgstr "Internet"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:406
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:408
+#, kde-format
+msgctxt "Category"
+msgid "Chat"
+msgstr "Keskustelu"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:416
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:418
+#, kde-format
+msgctxt "Category"
+msgid "File Sharing"
+msgstr "Tiedostojen jako"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:425
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:427
+#, kde-format
+msgctxt "Category"
+msgid "Mail"
+msgstr "Sähköposti"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:434
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:436
+#, kde-format
+msgctxt "Category"
+msgid "Web Browsers"
+msgstr "Verkkoselaimet"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:446
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:448
+#, kde-format
+msgctxt "Category"
+msgid "Multimedia"
+msgstr "Multimedia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:456
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:458
+#, kde-format
+msgctxt "Category"
+msgid "Audio and Video Editors"
+msgstr "Ääni- ja videomuokkaimet"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:465
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:467
+#, kde-format
+msgctxt "Category"
+msgid "Audio Players"
+msgstr "Äänisoittimet"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:486
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:488
+#, kde-format
+msgctxt "Category"
+msgid "Video Players"
+msgstr "Videosoittimet"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:504
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:506
+#, kde-format
+msgctxt "Category"
+msgid "CD and DVD"
+msgstr "CD ja DVD"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:516
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:518
+#, kde-format
+msgctxt "Category"
+msgid "Office"
+msgstr "Toimisto"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:527
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:529
+#, kde-format
+msgctxt "Category"
+msgid "System Settings"
+msgstr "Järjestelmäasetukset"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:119
+#, kde-format
+msgctxt "user denotes this as user-scoped flatpak repo"
+msgid "%1 (user)"
+msgstr "%1 (käyttäjä)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:670
+#, kde-format
+msgid "Local bundle"
+msgstr "Paikallinen nippu"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1587
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
+#, kde-format
+msgid "Malformed appstream url '%1'"
+msgstr "Virheellinen appstream-osoite ”%1”"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1689
+#, kde-format
+msgid "Failed to add source '%1': %2"
+msgstr "Lähteen ”%1” lisääminen epäonnistui: %2"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1806
+#, kde-format
+msgid "There are no Flatpak sources."
+msgstr "Flatpak-lähteitä ei ole."
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
+#, kde-format
+msgid "Failed to load \"%1\" source"
+msgstr "Ei voitu ladata lähdettä: ”%1”"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:338
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"<para>This application comes from \"%1\" (hosted at <link>%2</link>). Other "
+"software in this repository will also be made be available in Discover when "
+"the application is installed.</para>"
+msgstr ""
+"<para>Tämän sovelluksen ohjelmalähde on ”%1” (palvelimella <link>%2</link>). "
+"Saman ohjelmalähteen muut ohjelmat tulevat myös saatavilla Discoveriin, kun "
+"sovellus asennetaan.</para>"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:421
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:429
+#, kde-format
+msgid "Retrieving size information"
+msgstr "Noudetaan kokotietoa"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:423
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:431
+#, kde-format
+msgid "Unknown size"
+msgstr "Tuntematon koko"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:425
+#, kde-format
+msgctxt "@info app size"
+msgid "%1 to download, %2 on disk"
+msgstr "%1 ladattavaa, %2 levyllä"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:433
+#, kde-format
+msgctxt "@info app size"
+msgid "%1 on disk"
+msgstr "%1 levyllä"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:487
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:441
+#, fuzzy, kde-format
+#| msgid "Failed to start '%1'"
+msgid "Failed to start '%1': %2"
+msgstr "Käynnistys epäonnistui: ”%1”"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:717
+#, kde-format
+msgid "All Files"
+msgstr "Kaikki tiedostot"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:719
+#, kde-format
+msgid "Home"
+msgstr "Koti"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:721
+#, kde-format
+msgid "Downloads"
+msgstr "Lataukset"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:723
+#, kde-format
+msgid "Music"
+msgstr "Musiikki"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:749
+#, kde-format
+msgid "Network Access"
+msgstr "Verkkokäyttö"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:750
+#, kde-format
+msgid "Can access the internet"
+msgstr "Internetiä saa käyttää"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:756
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
+#, kde-format
+msgid "Session Bus Access"
+msgstr "Istuntoväylän käyttö"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:757
+#, kde-format
+msgid "Access is granted to the entire Session Bus"
+msgstr "Koko istuntoväylää saa käyttää"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:762
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
+#, kde-format
+msgid "System Bus Access"
+msgstr "Järjestelmäväylän käyttö"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:763
+#, kde-format
+msgid "Access is granted to the entire System Bus"
+msgstr "Koko järjestelmäväylää saa käyttää"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:768
+#, kde-format
+msgid "Remote Login Access"
+msgstr "Etäkirjautumiskäyttö"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:769
+#, kde-format
+msgid "Can initiate remote login requests using the SSH protocol"
+msgstr "SSH-yhteyskäytäntö saa valmistella etäkirjautumispyynnön"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:773
+#, kde-format
+msgid "Smart Card Access"
+msgstr "Älykortin käyttö"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:774
+#, kde-format
+msgid "Can integrate and communicate with smart cards"
+msgstr "Älykortteihin saa yhdistää ja käyttää"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:780
+#, kde-format
+msgid "Device Access"
+msgstr "Laitteiden käyttö"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:781
+#, kde-format
+msgid "Can communicate with and control built-in or connected hardware devices"
+msgstr "Sisään rakennettuja tai kytkettyjä laitteita saa käyttää ja hallita"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:785
+#, kde-format
+msgid "Kernel-based Virtual Machine Access"
+msgstr "Ydinperustaisten virtuaalikoneiden käyttö"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:786
+#, kde-format
+msgid "Allows running other operating systems as guests in virtual machines"
+msgstr "Käyttöjärjestelmän saa suorittaa virtuaalikoneena (asiakkaana)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
+#, kde-format
+msgid "%1 (read-only)"
+msgstr "%1 (vain luku)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:813
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
+#, kde-format
+msgid "%1 (can create files)"
+msgstr "%1 (voi luoda tiedostoja)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
+#, kde-format
+msgid "%1 (read & write) "
+msgstr "%1 (luku ja kirjoitus)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
+#, kde-format
+msgid "Home Folder Access"
+msgstr "Kotikansion käyttö"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:846
+#, kde-format
+msgid ""
+"Can read, write, and create files in the following locations in your home "
+"folder without asking permission first: %1"
+msgstr ""
+"Voi lupaa kysymättä lukea, kirjoittaa ja luoda tiedostoja kotikansiossa "
+"seuraavissa kansioissa: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#, kde-format
+msgid ""
+"Can read and write files in the following locations in your home folder "
+"without asking permission first: %1"
+msgstr ""
+"Voi lupaa kysymättä lukea ja kirjoittaa tiedostoja kotikansiossa seuraavissa "
+"kansioissa: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
+#, kde-format
+msgid ""
+"Can read files in the following locations in your home folder without asking "
+"permission first: %1"
+msgstr ""
+"Voi lupaa kysymättä lukea tiedostoja kotikansiossa seuraavista kansioista: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
+#, kde-format
+msgid ""
+"Can access files in the following locations in your home folder without "
+"asking permission first: %1"
+msgstr ""
+"Voi lupaa kysymättä käyttää tiedostoja kotikansiossa seuraavista kansioista: "
+"%1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
+#, kde-format
+msgid "System Folder Access"
+msgstr "Järjestelmäkansion käyttö"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#, kde-format
+msgid ""
+"Can read, write, and create system files in the following locations without "
+"asking permission first: %1"
+msgstr ""
+"Voi lupaa kysymättä lukea, kirjoittaa ja luoda järjestelmätiedostoja "
+"seuraavissa kansioissa: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
+#, kde-format
+msgid ""
+"Can read and write system files in the following locations without asking "
+"permission first: %1"
+msgstr ""
+"Voi lupaa kysymättä lukea ja kirjoittaa järjestelmätiedostoja seuraavissa "
+"kansioissa: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#, kde-format
+msgid ""
+"Can read system files in the following locations without asking permission "
+"first: %1"
+msgstr ""
+"Voi lupaa kysymättä lukea järjestelmätiedostoja seuraavista kansioista: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:866
+#, kde-format
+msgid ""
+"Can access system files in the following locations without asking permission "
+"first: %1"
+msgstr "Voi lupaa käyttää järjestelmätiedostoja seuraavista kansioista: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:876
+#, kde-format
+msgid ""
+"Can communicate with other applications and processes in the same desktop "
+"session using the following communication protocols: %1"
+msgstr ""
+"Voi viestiä saman työpöytäistunnon toisten sovellusten ja prosessien kanssa "
+"seuraavilla yhteyskäytännöillä: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:888
+#, kde-format
+msgid ""
+"Can communicate with all applications and system services using the "
+"following communication protocols: %1"
+msgstr ""
+"Voi viestiä kaikkien sovellusten ja järjestelmäpalvelujen kanssa seuraavilla "
+"yhteyskäytännöillä: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:88
+#, kde-format
+msgid "Add Flathub"
+msgstr "Lisää Flathub"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:89
+#, kde-format
+msgid "Apply Changes"
+msgstr "Toteuta muutokset"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:93
+#, kde-format
+msgid ""
+"Changes to the priority of Flatpak sources must be applied before they will "
+"take effect."
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
+#, kde-format
+msgid ""
+"Makes it possible to easily install the applications listed in https://"
+"flathub.org"
+msgstr "Mahdollistaa sovellusten helpon asennuksen https://flathub.org’ista"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:163
+#, kde-format
+msgid "Could not add the source %1"
+msgstr "Ei voitu lisätä lähdettä %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:279
+#, kde-format
+msgid "Removing '%1'"
+msgstr "Poistetaan ”%1”"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:280
+#, kde-format
+msgid ""
+"To remove this repository, the following applications must be uninstalled:"
+"<ul><li>%1</li></ul>"
+msgstr ""
+"Jotta tämän pakettilähteen voisi poistaa, seuraavien sovellusten asennus on "
+"poistettava:<ul><li>%1</li></ul>"
+
+# *** TARKISTA: %1, %2 arvailujen varassa
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#, kde-format
+msgid "Failed to remove %1 remote repository: %2"
+msgstr "Etäpakettilähteen %1 poistaminen epäonnistui: %2"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:301
+#, kde-format
+msgid "Could not find %1"
+msgstr "Ei löydy: ”%1”"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:333
+#, kde-format
+msgid "%1 (user)"
+msgstr "%1 (käyttäjä)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:394
+#, kde-format
+msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
+msgstr "Anna Flatpak-pakettilähteen URI (*.flatpakrepo):"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
+#, kde-format
+msgid "Adding remote '%1' in %2 from %3"
+msgstr "Lisätään pakettilähde ”%1” osoitteesta %2, jota %3 ehdotti"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
+#, kde-format
+msgid ""
+"The remote %1 require that you accept their license:\n"
+" %2"
+msgstr ""
+"Etäpalvelin %1 vaatii hyväksymään heidän lisenssinsä:\n"
+" %2"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
+#, kde-format
+msgid "Review EULA"
+msgstr "Lue käyttöoikeussopimus"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
+#, fuzzy, kde-format
+#| msgid "Could not add the source %1"
+msgid "Could not enable remote %1: %2"
+msgstr "Ei voitu lisätä lähdettä %1"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:107
+#, kde-format
+msgid "Backend %1 took too long to initialize"
+msgstr "Taustaosan %1 alustus kesti liian kauan"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:169
+#, kde-format
+msgid "Applications"
+msgstr "Sovellukset"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#, kde-format
+msgid "Plasma Addons"
+msgstr "Plasma-lisäosat"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#, kde-format
+msgid "Application Addons"
+msgstr "Sovellusten lisäosat"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#, kde-format
+msgid "Network error in backend %1: %2"
+msgstr "Verkkovirhe taustaosassa %1: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:422
+#, kde-format
+msgid ""
+"Too many requests sent to the server for backend %1. Please try again in a "
+"few minutes."
+msgstr ""
+"Liian monta lähetettyä pyyntöä taustaosan %1 palvelimeen. Yritä uudelleen "
+"hetken kuluttua."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:425
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:431
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:436
+#, kde-format
+msgid "Invalid %1 backend, contact your distributor."
+msgstr "Virheellinen %1-taustaosa: ota yhteyttä jakelusi tekijään."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
+#, kde-format
+msgid ""
+"Unable to complete the update of %1. You can try and perform this action "
+"through the Get Hot New Stuff dialog, which grants tighter control. The "
+"reported error was:\n"
+"%2"
+msgstr ""
+"Päivityksen viimeistely epäonnistui: %1. Voit yrittää tehdä tämän Hae "
+"verkosta -ikkunassa, joka mahdollistaa tiukemman hallinnan. Ilmoitettu virhe "
+"oli:\n"
+"%2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:465
+#, kde-format
+msgid "Could not fetch screenshot for the entry %1 in backend %2"
+msgstr "Tietueelle %1 ei saatu ruutukaappausta taustaosasta %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:469
+#, kde-format
+msgid "Unhandled error in %1 backend. Contact your distributor."
+msgstr ""
+"Käsittelemätön virhe taustaosassa %1. Ota yhteyttä jakelun valmistajaan."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:477
+#, kde-format
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:694
+#, kde-format
+msgid "Wrong KNewStuff URI: %1"
+msgstr "Väärä KNewStuff-URI: %1"
+
+#: libdiscover/backends/KNSBackend/KNSResource.cpp:167
+#, kde-format
+msgctxt "The name of the KDE Store"
+msgid "KDE Store"
+msgstr ""
+
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:144
+#, kde-format
+msgid "Log in information for %1"
+msgstr "Kirjautumistiedot – %1"
+
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
+#, kde-format
+msgid "Cannot launch %1"
+msgstr "Ei voida käynnistää: %1"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:540
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Addons"
+msgstr "Plasma-lisäosat"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:551
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Widgets"
+msgstr "Plasma-sovelmat"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
+#, kde-format
+msgctxt "Category"
+msgid "Fonts"
+msgstr "Fontit"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:211
+#, kde-format
+msgid "Please make sure that Appstream is properly set up on your system"
+msgstr "Varmista, että AppStream on asennettu oikein järjestelmääsi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:248
+#, kde-format
+msgctxt "%1 is the date as formatted by the locale"
+msgid ""
+"Your operating system ended support on %1. Consider upgrading to a supported "
+"version."
+msgstr ""
+"Käyttöjärjestelmäsi tuki päättyi %1. Harkitse päivittämistä tuettuun "
+"versioon."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:703
+#, kde-format
+msgid "Cannot remove '%1'"
+msgstr "Ei voida poistaa: ”%1”"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
+#, kde-format
+msgid "Out of memory"
+msgstr "Muisti loppui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
+#, kde-format
+msgid "No network connection available"
+msgstr "Ei verkkoyhteyttä käytettävissä"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
+#, kde-format
+msgid "Operation not supported"
+msgstr "Toimintoa ei tueta"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:25
+#, kde-format
+msgid "Internal error"
+msgstr "Sisäinen virhe"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
+#, kde-format
+msgid "Internal error: %1"
+msgstr "Sisäinen virhe: %1"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
+#, kde-format
+msgid "GPG failure"
+msgstr "GPG-virhe"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
+#, kde-format
+msgid "PackageID invalid"
+msgstr "PackageID on virheellinen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
+#, kde-format
+msgid "Package not installed"
+msgstr "Pakettia ei ole asennettu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:37
+#, kde-format
+msgid "Package not found"
+msgstr "Pakettia ei löytynyt"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
+#, kde-format
+msgid "Package is already installed"
+msgstr "Paketti on jo asennettu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
+#, kde-format
+msgid "Package download failed"
+msgstr "Paketin lataus epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:43
+#, kde-format
+msgid "Package group not found"
+msgstr "Pakettiryhmää ei löytynyt"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
+#, kde-format
+msgid "Package group list invalid"
+msgstr "Pakettiryhmäluettelo on virheellinen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
+#, kde-format
+msgid "Dependency resolution failed"
+msgstr "Riippuvuuksien ratkaisu epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
+#, kde-format
+msgid "Filter invalid"
+msgstr "Suodatin on virheellinen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
+#, kde-format
+msgid "Failed while creating a thread"
+msgstr "Epäonnistui luotaessa säiettä"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
+#, kde-format
+msgid "Transaction failure"
+msgstr "Toimenpide epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:55
+#, kde-format
+msgid "Transaction canceled"
+msgstr "Toimenpide peruttiin"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
+#, kde-format
+msgid "No Cache available"
+msgstr "Välimuistia ei saatavilla"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
+#, kde-format
+msgid "Cannot find repository"
+msgstr "Ohjelmalähdettä ei löydy"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
+#, kde-format
+msgid "Cannot remove system package"
+msgstr "Järjestelmäpakettia ei voi poistaa"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:63
+#, kde-format
+msgid "The PackageKit daemon has crashed"
+msgstr "PackageKit-palvelu kaatui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:65
+#, kde-format
+msgid "Initialization failure"
+msgstr "Alustusvirhe"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:67
+#, kde-format
+msgid "Failed to finalize transaction"
+msgstr "Toimenpiteen päättäminen epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
+#, kde-format
+msgid "Config parsing failed"
+msgstr "Asetusten jäsentäminen epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
+#, kde-format
+msgid "Cannot cancel transaction"
+msgstr "Toimenpidettä ei voida peruuttaa"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
+#, kde-format
+msgid "Cannot obtain lock"
+msgstr "Lukitus epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
+#, kde-format
+msgid "No packages to update"
+msgstr "Ei päivitettäviä paketteja"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
+#, kde-format
+msgid "Cannot write repo config"
+msgstr "Ohjelmalähdeasetusten tallentaminen epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:79
+#, kde-format
+msgid "Local install failed"
+msgstr "Paikallisasennus epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:81
+#, kde-format
+msgid "Bad GPG signature found"
+msgstr "Virheellinen GPG-allekirjoitus löytyi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:83
+#, kde-format
+msgid "No GPG signature found"
+msgstr "GPG-allekirjoitusta ei löytynyt"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:85
+#, kde-format
+msgid "Cannot install source package"
+msgstr "Lähdepakettia ei voida asentaa"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
+#, kde-format
+msgid "Repo configuration error"
+msgstr "Ohjelmalähdeasetusten virhe"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:89
+#, kde-format
+msgid "No license agreement"
+msgstr "Ei lisenssisopimusta"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:91
+#, kde-format
+msgid "File conflicts found"
+msgstr "Löytyi tiedostoristiriitoja"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:93
+#, kde-format
+msgid "Package conflict found"
+msgstr "Löytyi pakettiristiriita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:95
+#, kde-format
+msgid "Repo not available"
+msgstr "Ohjelmalähde ei ole saatavilla"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:97
+#, kde-format
+msgid "Invalid package file"
+msgstr "Virheellinen pakettitiedosto"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
+#, kde-format
+msgid "Package install blocked"
+msgstr "Paketin asennus estetty"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
+#, kde-format
+msgid "Corrupt package found"
+msgstr "Löytyi vioittunut paketti"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
+#, kde-format
+msgid "All packages already installed"
+msgstr "Kaikki paketit on jo asennettu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
+#, kde-format
+msgid "File not found"
+msgstr "Tiedostoa ei löydy"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
+#, kde-format
+msgid "No more mirrors available"
+msgstr "Peilipalvelimia ei ole enempää saatavilla"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
+#, kde-format
+msgid "No distro upgrade data"
+msgstr "Ei jakelupäivitystietoa"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
+#, kde-format
+msgid "Incompatible architecture"
+msgstr "Yhteensopimaton arkkitehtuuri"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
+#, kde-format
+msgid "No space on device left"
+msgstr "Laitteessa ei ole tilaa vapaana"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:115
+#, kde-format
+msgid "A media change is required"
+msgstr "Tietovälineen vaihto tarpeen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:117
+#, kde-format
+msgid "You have no authorization to execute this operation"
+msgstr "Sinulla ei ole lupaa suorittaa tätä toimintoa"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:119
+#, kde-format
+msgid "Update not found"
+msgstr "Päivitystä ei löytynyt"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
+#, kde-format
+msgid "Cannot install from unsigned repo"
+msgstr "Allekirjoittamattomasta ohjelmalähteestä ei voi asentaa"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
+#, kde-format
+msgid "Cannot update from unsigned repo"
+msgstr "Allekirjoittamattomasta ohjelmalähteestä ei voi päivittää"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
+#, kde-format
+msgid "Cannot get file list"
+msgstr "Tiedostoluettelon noutaminen epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:127
+#, kde-format
+msgid "Cannot get requires"
+msgstr "Requires-arvon noutaminen epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:129
+#, kde-format
+msgid "Cannot disable repository"
+msgstr "Paketin poistaminen käytöstä epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
+#, kde-format
+msgid "Restricted download detected"
+msgstr "Rajoitettu lataus havaittu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
+#, kde-format
+msgid "Package failed to configure"
+msgstr "Paketin asetusten tekeminen epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:135
+#, kde-format
+msgid "Package failed to build"
+msgstr "Paketin koostaminen epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:137
+#, kde-format
+msgid "Package failed to install"
+msgstr "Paketin asentaminen epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:139
+#, kde-format
+msgid "Package failed to remove"
+msgstr "Paketin poistaminen epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:141
+#, kde-format
+msgid "Update failed due to running process"
+msgstr "Päivitys epäonnistui käynnissä olevan prosessin takia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
+#, kde-format
+msgid "The package database changed"
+msgstr "Pakettitietokanta muuttui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
+#, kde-format
+msgid "The provided type is not supported"
+msgstr "Tarjottua tyyppiä ei tueta"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
+#, kde-format
+msgid "Install root is invalid"
+msgstr "Asennuksen pääkansio on virheellinen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:149
+#, kde-format
+msgctxt ""
+"Failed to sync your Linux distro repositories or other sources of packages"
+msgid "Cannot fetch sources"
+msgstr "Lähteiden nouto epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:151
+#, kde-format
+msgid "Canceled priority"
+msgstr "Peruttu prioriteetti"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
+#, kde-format
+msgid "Unfinished transaction"
+msgstr "Keskeneräinen toimenpide"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
+#, kde-format
+msgid "Lock required"
+msgstr "Lukitusta vaaditaan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
+#, kde-format
+msgid "Unknown error %1."
+msgstr "Tuntematon virhe %1."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
+#, kde-format
+msgid "'%1' was changed and suggests to be restarted."
+msgstr "”%1” on muuttunut ja se tulisi käynnistää uudelleen."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
+#, kde-format
+msgid "A change by '%1' suggests your session to be restarted."
+msgstr "Ohjelman ”%1” tekemä muutos ehdottaa uudelleenkirjautumista."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
+#, kde-format
+msgid ""
+"'%1' was updated for security reasons, a restart of the session is "
+"recommended."
+msgstr ""
+"”%1” päivitettiin turvallisuussyistä. Uudelleenkirjautumista suositellaan."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
+#, kde-format
+msgid ""
+"'%1' was updated for security reasons, a restart of the system is "
+"recommended."
+msgstr ""
+"”%1” päivitettiin turvallisuussyistä. Järjestelmän uudelleenkäynnistystä "
+"suositellaan."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
+#, kde-format
+msgid "A change by '%1' suggests your system to be restarted."
+msgstr ""
+"Ohjelman ”%1” tekemä muutos ehdottaa järjestelmän uudelleenkäynnistämistä."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
+#, kde-format
+msgid "The application will have to be restarted."
+msgstr "Sovellus tarvitsee käynnistää uudelleen."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
+#, kde-format
+msgid "The session will have to be restarted"
+msgstr "Istunto tarvitsee käynnistää uudelleen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:192
+#, kde-format
+msgid "The system will have to be restarted."
+msgstr "Järjestelmä on käynnistettävä uudelleen."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:194
+#, kde-format
+msgid "For security, the session will have to be restarted."
+msgstr "Turvallisuuden vuoksi istunto tarvitsee käynnistää uudelleen."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:196
+#, kde-format
+msgid "For security, the system will have to be restarted."
+msgstr "Turvallisuuden vuoksi järjestelmä tarvitsee käynnistää uudelleen."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
+#, kde-format
+msgid "Waiting…"
+msgstr "Odotetaan…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
+#, kde-format
+msgid "Refreshing Cache…"
+msgstr "Virkistetään välimuistia…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
+#, kde-format
+msgid "Setup…"
+msgstr "Valmistellaan…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
+#, kde-format
+msgid "Processing…"
+msgstr "Käsitellään…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
+#, kde-format
+msgid "Remove…"
+msgstr "Poistetaan…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
+#, kde-format
+msgid "Downloading…"
+msgstr "Ladataan…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
+#, kde-format
+msgid "Installing…"
+msgstr "Asennetaan…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
+#, kde-format
+msgid "Updating…"
+msgstr "Päivitetään…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
+#, kde-format
+msgid "Cleaning up…"
+msgstr "Siivotaan…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
+#, kde-format
+msgid "Resolving dependencies…"
+msgstr "Ratkotaan riippuvuuksia…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
+#, kde-format
+msgid "Checking signatures…"
+msgstr "Tarkistetaan allekirjoituksia…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
+#, kde-format
+msgid "Test committing…"
+msgstr "Kokeillaan muutosten toteutusta…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
+#, kde-format
+msgid "Committing…"
+msgstr "Toteutetaan…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
+#, kde-format
+msgid "Finished"
+msgstr "Valmis"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:238
+#, kde-format
+msgid "Canceled"
+msgstr "Peruttu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
+#, kde-format
+msgid "Waiting for lock…"
+msgstr "Odotetaan lukitusta…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
+#, kde-format
+msgid "Waiting for authorization…"
+msgstr "Odotetaan valtuutusta…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
+#, kde-format
+msgid "Copying files…"
+msgstr "Kopioidaan tiedostoja…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
+#, kde-format
+msgid "Unknown Status"
+msgstr "Tuntematon tila"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:258
+#, kde-format
+msgid "We are waiting for something."
+msgstr "Jonkin odotetaan tapahtuvan."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
+#, kde-format
+msgid "Setting up transaction…"
+msgstr "Toimenpidettä valmistellaan…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
+#, kde-format
+msgid "The transaction is currently working…"
+msgstr "Toimenpidettä suoritetaan…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
+#, kde-format
+msgid "The transaction is currently removing packages…"
+msgstr "Toimenpide poistaa paketteja…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
+#, kde-format
+msgid "The transaction is currently downloading packages…"
+msgstr "Toimenpide lataa paketteja…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
+#, kde-format
+msgid "The transactions is currently installing packages…"
+msgstr "Toimenpide asentaa paketteja…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
+#, kde-format
+msgid "The transaction is currently updating packages…"
+msgstr "Toimenpide päivittää paketteja…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
+#, kde-format
+msgid "The transaction is currently cleaning up…"
+msgstr "Toimenpide siivoaa…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
+#, kde-format
+msgid ""
+"The transaction is currently resolving the dependencies of the packages it "
+"will install…"
+msgstr "Toimenpide ratkoo parhaillaan asennettavien pakettien riippuvuuksia…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
+#, kde-format
+msgid "The transaction is currently checking the signatures of the packages…"
+msgstr "Toimenpide tarkistaa pakettien allekirjoituksia…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
+#, kde-format
+msgid ""
+"The transaction is currently testing the commit of this set of packages…"
+msgstr "Toimenpide testaa pakettien muutosten toteuttamista…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
+#, kde-format
+msgid "The transaction is currently committing its set of packages…"
+msgstr "Toimenpide toteuttaa pakettien muutoksia…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
+#, kde-format
+msgid "The transaction has finished!"
+msgstr "Toimenpide on valmis"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
+#, kde-format
+msgid "The transaction was canceled"
+msgstr "Toimenpide peruttiin"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
+#, kde-format
+msgid "The transaction is currently waiting for the lock…"
+msgstr "Toimenpide odottaa lukitusta…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
+#, kde-format
+msgid "Waiting for the user to authorize the transaction…"
+msgstr "Odotetaan käyttäjän valtuutusta toimenpiteelle…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
+#, kde-format
+msgid "The transaction is currently copying files…"
+msgstr "Toimenpide kopioi tiedostoja…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
+#, kde-format
+msgid "Currently refreshing the repository cache…"
+msgstr "Virkistetään ohjelmalähteiden välimuistia…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
+#, kde-format
+msgid "Unknown status %1."
+msgstr "Tuntematon tila %1."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:313
+#, kde-format
+msgctxt "update state"
+msgid "Stable"
+msgstr "Vakaa"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:315
+#, kde-format
+msgctxt "update state"
+msgid "Unstable"
+msgstr "Epävakaa"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:317
+#, kde-format
+msgctxt "update state"
+msgid "Testing"
+msgstr "Testattavana"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
+#: libdiscover/resources/AbstractResource.cpp:102
+#, kde-format
+msgid "Installed"
+msgstr "Asennettu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
+#, kde-format
+msgid "Not Installed"
+msgstr "Ei asennettu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
+#, kde-format
+msgid "Low"
+msgstr "Vähäinen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:334
+#, kde-format
+msgid "Enhancement"
+msgstr "Parannus"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:336
+#, kde-format
+msgid "Normal"
+msgstr "Tavallinen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:338
+#, kde-format
+msgid "Bugfix"
+msgstr "Viankorjaus"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:340
+#, kde-format
+msgid "Important"
+msgstr "Tärkeä"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:342
+#, kde-format
+msgid "Security"
+msgstr "Tietoturva"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:344
+#, kde-format
+msgid "Blocked"
+msgstr "Estetty"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:346
+#, kde-format
+msgid "Downloading"
+msgstr "Ladataan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#, kde-format
+msgid "Updating"
+msgstr "Päivitetään"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:350
+#, kde-format
+msgid "Installing"
+msgstr "Asennetaan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:352
+#, kde-format
+msgid "Removing"
+msgstr "Poistetaan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:354
+#, kde-format
+msgid "Cleanup"
+msgstr "Siivous"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:356
+#, kde-format
+msgid "Obsoleting"
+msgstr "Vanhennetaan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:358
+#, kde-format
+msgid "Collection Installed"
+msgstr "Kokoelma asennettu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:360
+#, kde-format
+msgid "Collection Available"
+msgstr "Kokoelma saatavilla"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:364
+#, kde-format
+msgid "Reinstalling"
+msgstr "Asennetaan uudelleen"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:366
+#, kde-format
+msgid "Downgrading"
+msgstr "Päivitetään alaspäin"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:368
+#, kde-format
+msgid "Preparing"
+msgstr "Valmistellaan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:370
+#, kde-format
+msgid "Decompressing"
+msgstr "Puretaan"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:372
+#, kde-format
+msgid "Untrusted"
+msgstr "Ei-luotettu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:374
+#, kde-format
+msgid "Trusted"
+msgstr "Luotettu"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:376
+#, kde-format
+msgid "Unavailable"
+msgstr "Ei saatavilla"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
+#, kde-format
+msgid "Failed Offline Update"
+msgstr "Epäonnistunut sammutuksen aikainen päivitys"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
+#, kde-format
+msgid ""
+"Failed to update %1 package\n"
+"%2"
+msgid_plural ""
+"Failed to update %1 packages\n"
+"%2"
+msgstr[0] ""
+"%1 paketin päivitys epäonnistui\n"
+"%2"
+msgstr[1] ""
+"%1 paketin päivitys epäonnistui\n"
+"%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
+#, kde-format
+msgctxt "@action:button"
+msgid "Open Discover"
+msgstr "Avaa Discover"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#, kde-format
+msgctxt "@action:button"
+msgid "Repair System"
+msgstr "Korjaa järjestelmä"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#, kde-format
+msgid "Repairing failed offline update"
+msgstr "Korjataan epäonnistunutta sammutuksen aikainen päivitystä"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#, kde-format
+msgid "Repair Failed"
+msgstr "Korjaus epäonnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
+#, kde-kuit-format
+msgctxt "@info"
+msgid "%1<nl/>Please report this error to your distribution."
+msgstr "%1<nl/>Ilmoita tästä virheestä jakelusi ylläpidolle."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
+#, kde-format
+msgid "Repaired Successfully"
+msgstr "Korjaus onnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#, kde-format
+msgid "Offline Updates"
+msgstr "Sammutuksen aikaiset päivitykset"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
+#, kde-format
+msgid "Successfully updated %1 package"
+msgid_plural "Successfully updated %1 packages"
+msgstr[0] "%1 paketin päivitys onnistui"
+msgstr[1] "%1 paketin päivitys onnistui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:303
+#, kde-format
+msgctxt "package-name (version)"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:305
+#, kde-format
+msgctxt "comma separating package names"
+msgid ", "
+msgstr ", "
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
+#, kde-format
+msgid "Obsoletes:"
+msgstr "Vanhentaa:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
+#, kde-format
+msgid "Release Notes:"
+msgstr "Julkaisutiedot:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
+#, kde-format
+msgid "Update State:"
+msgstr "Päivityksen tila:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:355
+#, kde-format
+msgid "Restart:"
+msgstr "Uudelleenkäynnistys:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#, kde-format
+msgid "Vendor:"
+msgstr "Toimittaja:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:378
+#, kde-format
+msgid "%2 (plus %1 dependency)"
+msgid_plural "%2 (plus %1 dependencies)"
+msgstr[0] "%2 (sekä %1 riippuvuus)"
+msgstr[1] "%2 (sekä %1 riippuvuutta)"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#, kde-format
+msgid "Repository URL:"
+msgstr "Ohjelmalähteen osoite:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:78
+#, kde-format
+msgid "System upgrade"
+msgstr "Järjestelmäpäivitys"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:169
+#, kde-format
+msgid "1 package to upgrade"
+msgid_plural "%1 packages to upgrade"
+msgstr[0] "1 päivitettävä paketti"
+msgstr[1] "%1 päivitettävää pakettia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#, kde-format
+msgid "Present"
+msgstr "Nykyhetki"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:190
+#, kde-format
+msgid "Future"
+msgstr "Tulevaisuus"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:279
+#, kde-format
+msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
+msgid "Not enough space to perform the update; only %1 of space are available."
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:467
+#, kde-format
+msgid ""
+"This update cannot be completed as it would remove the following software "
+"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"you believe this is an error, please report it as a bug to the packagers of "
+"your distribution."
+msgstr ""
+"Tätä päivitystä ei voi saattaa loppuun, koska se poistaisi seuraavat "
+"järjestelmän toiminnalle välttämättömät ohjelmat:<nl/><ul><li>%1</li></"
+"ul><nl/>Jos pidät tätä virheellisenä, ilmoita tämä ohjelmavirheenä jakelusi "
+"paketoijille."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:474
+#, kde-format
+msgid "Packages to remove"
+msgstr "Poistettavat paketit"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
+#, kde-format
+msgid ""
+"The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
+">in order to install:<ul><li>%2</li></ul>"
+msgstr ""
+"Päivitys poistaa seuraavat paketit:\n"
+"<ul><li>%1</li></ul><br/>jotta voidaan asentaa:\n"
+"<ul><li>%2</li></ul>"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
+#, kde-kuit-format
+msgctxt "@info"
+msgid "%1:<nl/><nl/>%2"
+msgstr "%1:<nl/><nl/>%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
+#, kde-format
+msgid ""
+"Media Change of type '%1' is requested.\n"
+"%2"
+msgstr ""
+"Pyydetään tyypin ”%1” tietovälineen vaihtoa.\n"
+"%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:614
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
+#, kde-format
+msgid "Accept EULA"
+msgstr "Hyväksy käyttöoikeussopimus"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:615
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
+#, kde-format
+msgid ""
+"The package %1 and its vendor %2 require that you accept their license:\n"
+" %3"
+msgstr ""
+"Paketti %1 ja sen toimittaja %2 vaativat, että hyväksyt heidän lisenssinsä:\n"
+" %3"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:732
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
+#, kde-format
+msgid "Missing signature for %1 in %2"
+msgstr "Puuttuva allekirjoitus: %1 kohteessa %2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
+#, kde-format
+msgid ""
+"Do you trust the following key?\n"
+"\n"
+"Url: %1\n"
+"User: %2\n"
+"Key: %3\n"
+"Fingerprint: %4\n"
+"Timestamp: %4\n"
+msgstr ""
+"Luotetaanko seuraavaan avaimeen?\n"
+"\n"
+"Verkko-osoite: %1\n"
+"Käyttäjä: %2\n"
+"Avain: %3\n"
+"Sormenjälki: %4\n"
+"Aikaleima: %4\n"
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:188
+#, kde-format
+msgid ""
+"This action cannot be completed as it would remove the following software "
+"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"you believe this is an error, please report it as a bug to the packagers of "
+"your distribution."
+msgstr ""
+"Tätä toimenpidettä ei voi saattaa loppuun, koska se poistaisi seuraavat "
+"järjestelmän toiminnalle välttämättömät ohjelmat:<nl/><ul><li>%1</li></"
+"ul><nl/>Jos pidät tätä virheellisenä, ilmoita tästä ohjelmavirheenä jakelusi "
+"paketoijille."
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
+#, kde-format
+msgid "Confirm package removal"
+msgstr "Vahvista paketin poistaminen"
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
+#, kde-format
+msgid ""
+"This action will also remove the following package:\n"
+"%2"
+msgid_plural ""
+"This action will also remove the following packages:\n"
+"%2"
+msgstr[0] ""
+"Toimenpide poistaa myös seuraavan paketin:\n"
+"%2"
+msgstr[1] ""
+"Toimenpide poistaa myös seuraavat paketit:\n"
+"%2"
+
+#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Operating System"
+msgstr "Käyttöjärjestelmä"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:245
+#, kde-format
+msgid "GPL and other licenses"
+msgstr "GPL ja muut lisenssit"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:251
+#, kde-format
+msgid "Remote: "
+msgstr "Etäyhteys: "
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:288
+#, kde-format
+msgid "The currently running version of %1."
+msgstr "Ohjelman %1 käynnissä oleva versio."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:290
+#, kde-format
+msgid "Installed but not currently running version of %1."
+msgstr "Ohjelman %1 asennettu muttei käynnissä oleva versio."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:73
+#, kde-format
+msgid "ostree remotes"
+msgstr "ostree-etäyhteydet"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:119
+#, kde-format
+msgid "Current rpm-ostree transaction in progress:"
+msgstr "Meneillään oleva rpm-ostree-toimenpide:"
+
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#, kde-format
+msgid "Snap"
+msgstr "Snap"
+
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:353
+#, kde-format
+msgid "%1 - %2"
+msgstr "%1 – %2"
+
+#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
+#, kde-format
+msgid ""
+"This Snap application is not compatible with security sandboxing and will "
+"have full access to this computer. Install it anyway?"
+msgstr ""
+"Tämä Snap-sovellus ei ole yhteensopiva tietoturvahiekkalaatikon kanssa, "
+"joten sillä on tietokoneeseen täydet käyttöoikeudet. Asennetaanko se silti?"
+
+#: libdiscover/DiscoverBackendsFactory.cpp:111
+#, kde-format
+msgid ""
+"List all the backends we'll want to have loaded, separated by comma ','."
+msgstr ""
+"Luettele kaikki taustajärjestelmät, jotka halutaan ladattavan (pilkuin "
+"eroteltuna)."
+
+#: libdiscover/resources/AbstractResource.cpp:98
+#, kde-format
+msgid "Broken"
+msgstr "Rikki"
+
+#: libdiscover/resources/AbstractResource.cpp:100
+#, kde-format
+msgid "Available"
+msgstr "Saatavilla"
+
+#: libdiscover/resources/AbstractResource.cpp:104
+#, kde-format
+msgid "Upgradeable"
+msgstr "Päivitettävissä"
+
+#: libdiscover/resources/AbstractResource.cpp:257
+#, kde-format
+msgid "Launch"
+msgstr "Käynnistä"
+
+#: libdiscover/resources/AbstractResource.cpp:266
+#, fuzzy, kde-format
+#| msgid "Update to version %1"
+msgctxt ""
+"@info 'Refresh' is used as a noun here, and %1 is an app's version number"
+msgid "Refresh of version %1"
+msgstr "Päivitä versioon %1"
+
+#: libdiscover/resources/AbstractResource.cpp:276
+#, kde-format
+msgctxt "Do not translate or alter \\u009C"
+msgid "%1 → %2%1 → %2%2"
+msgstr "%1 → %2%1 → %2%2"
+
+#: libdiscover/resources/AbstractResourcesBackend.cpp:153
+#, kde-format
+msgid "Please verify Internet connectivity"
+msgstr "Tarkista verkkoyhteys"
+
+#: libdiscover/resources/ResourcesModel.cpp:102
+#, kde-format
+msgid "Refresh"
+msgstr "Virkistä"
+
+#: libdiscover/resources/ResourcesProxyModel.cpp:682
+#, kde-format
+msgctxt "an approximation number, like 3000+"
+msgid "%1+"
+msgstr "%1+"
+
+#: libdiscover/Transaction/Transaction.cpp:133
+#, kde-format
+msgctxt "@label Download rate"
+msgid "%1/s"
+msgstr "%1/s"
+
+#: libdiscover/Transaction/TransactionModel.cpp:74
+#, kde-format
+msgctxt "@info:status"
+msgid "Starting"
+msgstr "Aloitetaan"
+
+#: libdiscover/Transaction/TransactionModel.cpp:76
+#, kde-format
+msgctxt "@info:status"
+msgid "Waiting"
+msgstr "Odotetaan"
+
+#: libdiscover/Transaction/TransactionModel.cpp:78
+#, kde-format
+msgctxt "@info:status"
+msgid "Downloading"
+msgstr "Ladataan"
+
+#: libdiscover/Transaction/TransactionModel.cpp:82
+#, kde-format
+msgctxt "@info:status"
+msgid "Installing"
+msgstr "Asennetaan"
+
+#: libdiscover/Transaction/TransactionModel.cpp:84
+#, kde-format
+msgctxt "@info:status"
+msgid "Removing"
+msgstr "Poistetaan"
+
+#: libdiscover/Transaction/TransactionModel.cpp:86
+#, kde-format
+msgctxt "@info:status"
+msgid "Changing Addons"
+msgstr "Muutetaan lisäosia…"
+
+#: libdiscover/Transaction/TransactionModel.cpp:90
+#, kde-format
+msgctxt "@info:status"
+msgid "Done"
+msgstr "Valmis"
+
+#: libdiscover/Transaction/TransactionModel.cpp:92
+#, kde-format
+msgctxt "@info:status"
+msgid "Failed"
+msgstr "Epäonnistui"
+
+#: libdiscover/Transaction/TransactionModel.cpp:94
+#, kde-format
+msgctxt "@info:status"
+msgid "Cancelled"
+msgstr "Peruttu"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:129
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Applications"
+msgstr "Sovellukset"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "System Software"
+msgstr "Järjestelmäohjelmisto"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Addons"
+msgstr "Lisäosat"
+
+#~ msgctxt "version (branch)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "Category"
+#~ msgid "Applications"
+#~ msgstr "Sovellukset"
+
+#~ msgid "Updates"
+#~ msgstr "Päivitykset"
+
+#~ msgctxt "origin (backend name)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgctxt "@action Checks the Internet for updates"
+#~ msgid "Check for Updates"
+#~ msgstr "Tarkista päivitykset"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Application Updates"
+#~ msgstr "Sovelluspäivitykset"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "System Updates"
+#~ msgstr "Järjestelmäpäivitykset"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "%1:<nl/><nl/>%2<nl/><nl/>Please report this issue to the packagers of "
+#~ "your distribution."
+#~ msgstr ""
+#~ "%1:<nl/><nl/>%2<nl/><nl/>Ilmoita tästä ongelmasta jakelun paketoijille."
+
+#~ msgid "Version: "
+#~ msgstr "Versio: "
+
+#~ msgid "BaseCommit: "
+#~ msgstr "Pohjatoimitus: "
+
+#~ msgid "GPGSignature: Valid signature by "
+#~ msgstr "GPG-allekirjoitus: kelvollinen allekirjoitus: "
+
+#~ msgid "Origin: "
+#~ msgstr "Alkuperä:"
+
+#~ msgid "The currently active deployment."
+#~ msgstr "Aktiivisessa käytössä oleva osa."
+
+#~ msgid "Waiting..."
+#~ msgstr "Odotetaan…"
+
+#~ msgid "Remove..."
+#~ msgstr "Poistetaan…"
+
+#~ msgid "Downloading..."
+#~ msgstr "Ladataan…"
+
+#~ msgid "Installing..."
+#~ msgstr "Asennetaan…"
+
+#~ msgid "Updating..."
+#~ msgstr "Päivitetään…"
+
+#~ msgid "This snap application needs security confinement measures disabled."
+#~ msgstr "Tämä Snap-sovellus vaatii turvaeristystoimien poistamista käytöstä."
+
+#~ msgid "View Updates"
+#~ msgstr "Näytä päivitykset"
+
+#, fuzzy
+#~| msgid "Please restart the computer to finish the update"
+#~ msgid "Please restart the device to finish the update"
+#~ msgstr "Käynnistä tietokone uudelleen päivityksen viimeistelemiseksi"
+
+#~ msgid "Use"
+#~ msgstr "Käytä"
+
+#~ msgid "Update"
+#~ msgstr "Päivitä"
+
+#~ msgid "Current Version:"
+#~ msgstr "Nykyinen versio:"
+
+#~ msgid "New Version:"
+#~ msgstr "Uusi versio:"
+
+#~ msgid "Not Invokable"
+#~ msgstr "Ei kutsuttavissa"
+
+#~ msgid "Upgrade available"
+#~ msgstr "Päivitys saatavilla"
+
+#~ msgid "New unstable version: %1"
+#~ msgstr "Uusi epävakaa versio: %1"
+
+# *** TARKISTA: Pitääkökään näitä FWUPD-viestejä kääntää?
+#~ msgid "FWUPD ERROR ALREADY PENDING!"
+#~ msgstr "FWUPD VIRHE JO JONOSSA!"
+
+#~ msgid "FWUPD ERROR INVALID FILE"
+#~ msgstr "FWUPD VIRHE VIRHEELLINEN TIEDOSTO"
+
+#~ msgid "FWUPD ERROR NOT SUPPORTED"
+#~ msgstr "FWUPD VIRHE EI TUETTU"
+
+#~ msgid "FWUPD ERROR AUTH FAILED"
+#~ msgstr "FWUPD VIRHE TUNNISTAUTUMINEN EPÄONNISTUI"
+
+#~ msgid "FWUPD ERROR SIGNATURE INVALID"
+#~ msgstr "FWUPD VIRHE VIRHEELLINEN ALLEKIRJOITUS"
+
+#~ msgid "FWUPD ERROR AC POWER REQUIRED"
+#~ msgstr "FWUPD VIRHE VAADITAAN VERKKOVIRTA"
+
+#~ msgid "Restart is required"
+#~ msgstr "Uudelleenkäynnistys vaaditaan"
+
+#~ msgid "The system needs to be restarted for the updates to take effect."
+#~ msgstr ""
+#~ "Päivitykset tulevat käyttöön, kun järjestelmä on käynnistetty uudelleen."
+
+#~ msgid "Session restart is required"
+#~ msgstr "Istunnon uudelleenkäynnistys vaaditaan"
+
+#~ msgid "You will need to log out and back in for the update to take effect."
+#~ msgstr ""
+#~ "Päivitykset tulevat käyttöön kirjauduttuasi ulos ja takaisin sisään."
+
+#~ msgid "Reason:"
+#~ msgstr "Syy:"
+
+#~ msgid "Updates:"
+#~ msgstr "Päivittää:"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Important Security Updates"
+#~ msgstr "Tärkeät turvallisuuspäivitykset"
+
+#~ msgid "Confirm..."
+#~ msgstr "Vahvista…"
+
+#~ msgid ""
+#~ "To proceed with this action, the following package needs removal:\n"
+#~ "%2"
+#~ msgid_plural ""
+#~ "To proceed with this action, the following packages need removal:\n"
+#~ "%2"
+#~ msgstr[0] ""
+#~ "Toimenpiteen jatkamiseksi seuraava paketti täytyy poistaa:\n"
+#~ "%2"
+#~ msgstr[1] ""
+#~ "Toimenpiteen jatkamiseksi seuraavat paketit täytyy poistaa:\n"
+#~ "%2"
+
+#~ msgctxt "description (url)"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#~ msgid "Change Log:"
+#~ msgstr "Muutosloki:"
+
+#~ msgid "Software Management"
+#~ msgstr "Ohjelmistonhallinta"
+
+#~ msgctxt "Category"
+#~ msgid "Science & Engineering"
+#~ msgstr "Tieteet ja suunnittelu"
+
+#~ msgctxt "Category"
+#~ msgid "Computer Science & Robotics"
+#~ msgstr "Tietojenkäsittelytiede ja robotiikka"
+
+#~ msgctxt "Category"
+#~ msgid "Painting & Editing"
+#~ msgstr "Piirustus ja kuvankäsittely"
+
+#~ msgctxt "Category"
+#~ msgid "Scanning & OCR"
+#~ msgstr "Kuvanluku ja tekstintunnistus"
+
+#~ msgctxt "Category"
+#~ msgid "System & Settings"
+#~ msgstr "Järjestelmä ja asetukset"
+
+#~ msgctxt "Category"
+#~ msgid "Science Engineering"
+#~ msgstr "Tieteet ja suunnittelu"
+
+#~ msgctxt "Category"
+#~ msgid "Computer Science Robotics"
+#~ msgstr "Tietojenkäsittelytiede ja robotiikka"
+
+#~ msgctxt "Category"
+#~ msgid "Painting Editing"
+#~ msgstr "Maalaus ja muokkaus"
+
+#~ msgctxt "Category"
+#~ msgid "Scanning OCR"
+#~ msgstr "Kuvanluku ja tekstintunnistus"
+
+#~ msgctxt "@item:intext Unknown remaining time"
+#~ msgid "Updating..."
+#~ msgstr "Päivitetään…"
+
+#~ msgctxt "@item:intext Remaining time"
+#~ msgid "%1 remaining"
+#~ msgstr "%1 jäljellä"
+
+#~ msgid "%1 has been updated"
+#~ msgstr "%1 on päivitetty"
+
+#~ msgid "Setting up for install..."
+#~ msgstr "Valmistellaan asennusta…"
+
+#~ msgid "List all the available backends."
+#~ msgstr "Luettele kaikki käytettävissä olevat taustajärjestelmät."
+
+#~ msgid "Available backends:\n"
+#~ msgstr "Käytettävissä olevat taustajärjestelmät:\n"
+
+#~ msgctxt "Category"
+#~ msgid "Application Addons"
+#~ msgstr "Sovellusten lisäosat"
+
+#~ msgctxt "Category"
+#~ msgid "Kate Snippets"
+#~ msgstr "Kate-katkelmat"
+
+#~ msgctxt "Category"
+#~ msgid "Comics"
+#~ msgstr "Sarjakuvat"
+
+#~ msgid "Got it"
+#~ msgstr "Selvä"
+
+#~ msgid "%1 requires user to accept its license"
+#~ msgstr "%1 vaatii käyttäjää hyväksymään sen lisenssin"
+
+#~ msgctxt "Category"
+#~ msgid "Haskell"
+#~ msgstr "Haskell"
+
+#~ msgctxt "Category"
+#~ msgid "Java"
+#~ msgstr "Java"
+
+#~ msgctxt "Category"
+#~ msgid "Perl"
+#~ msgstr "Perl"
+
+#~ msgctxt "Category"
+#~ msgid "Python"
+#~ msgstr "Python"
+
+#~ msgctxt "Category"
+#~ msgid "Version Control"
+#~ msgstr "Versionhallinta"
+
+#~ msgctxt "@info license"
+#~ msgid "Open Source"
+#~ msgstr "Avoin lähdekoodi"
+
+#~ msgctxt "@info license"
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"
+
+#~ msgctxt "@info/rich"
+#~ msgid ""
+#~ "The list of changes is not yet available. Please use <link "
+#~ "url='%1'>Launchpad</link> instead."
+#~ msgstr ""
+#~ "Muutosluetteloa ei ole vielä saatavilla. Käytä <link "
+#~ "url='%1'>Launchpadia</link> nähdäksesi muutokset."
+
+#~ msgctxt "@info"
+#~ msgid "The list of changes is not yet available."
+#~ msgstr "Muutosluetteloa ei ole vielä saatavilla."
+
+#~ msgctxt "@info:label"
+#~ msgid "This update was issued on %1"
+#~ msgstr "Päivityksen julkaisuaika: %1"
+
+#~ msgid "System update available!"
+#~ msgstr "Järjestelmäpäivitys saatavilla"
+
+#~ msgctxt "Notification when a new version of Kubuntu is available"
+#~ msgid "A new version of Kubuntu is available"
+#~ msgstr "Uusi Kubuntun versio on saatavilla"
+
+#~ msgid "Upgrade"
+#~ msgstr "Päivitä"
+
+#~ msgctxt "@title:window"
+#~ msgid "Media Change Required"
+#~ msgstr "Tietovälineen vaihto tarpeen"
+
+#~ msgctxt "@label"
+#~ msgid "Please insert %1 into <filename>%2</filename>"
+#~ msgstr "Laita %1 asemaan <filename>%2</filename>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Warning - Unverified Software"
+#~ msgstr "Varoitus – varmentamattomia ohjelmia"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The following piece of software cannot be verified. <warning>Installing "
+#~ "unverified software represents a security risk, as the presence of "
+#~ "unverifiable software can be a sign of tampering.</warning> Do you wish "
+#~ "to continue?"
+#~ msgid_plural ""
+#~ "The following pieces of software cannot be verified. <warning>Installing "
+#~ "unverified software represents a security risk, as the presence of "
+#~ "unverifiable software can be a sign of tampering.</warning> Do you wish "
+#~ "to continue?"
+#~ msgstr[0] ""
+#~ "Seuraavaa ohjelmaa ei voida varmentaa. <warning>Varmentamattoman ohjelman "
+#~ "asentaminen on turvallisuusriski, koska varmentamattomuus on usein merkki "
+#~ "väärentämisestä.</warning> Haluatko jatkaa?"
+#~ msgstr[1] ""
+#~ "Seuraavia ohjelmia ei voida varmentaa. <warning>Varmentamattomien "
+#~ "ohjelmien asentaminen on turvallisuusriski, koska varmentamattomuus on "
+#~ "usein merkki väärentämisestä.</warning> Haluatko jatkaa?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Configuration File Changed"
+#~ msgstr "Asetustiedosto on muuttunut"
+
+#~ msgctxt "@label Notifies a config file change"
+#~ msgid ""
+#~ "A new version of the configuration file <filename>%1</filename> is "
+#~ "available, but your version has been modified. Would you like to keep "
+#~ "your current version or install the new version?"
+#~ msgstr ""
+#~ "Asetustiedostosta <filename>%1</filename> on saatavilla uusi versio, "
+#~ "mutta versiotasi on muutettu. Haluatko pitää nykyisen version vai asentaa "
+#~ "uuden version?"
+
+#~ msgctxt "@action Use the new config file"
+#~ msgid "Use New Version"
+#~ msgstr "Käytä uutta versiota"
+
+#~ msgctxt "@action Keep the old config file"
+#~ msgid "Keep Old Version"
+#~ msgstr "Pidä vanha versio"
+
+#~ msgctxt "@info Status info, widget title"
+#~ msgid "Starting"
+#~ msgstr "Aloitetaan"
+
+#~ msgctxt "@info Status info, widget title"
+#~ msgid "Waiting for Authentication"
+#~ msgstr "Odotetaan tunnistautumista"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Waiting"
+#~ msgstr "Odotetaan"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for other transactions to finish"
+#~ msgstr "Odotetaan muiden toimenpiteiden valmistumista"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for other software managers to quit"
+#~ msgstr "Odotetaan muiden ohjelmistonhallintojen päättymistä"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for required medium"
+#~ msgstr "Odotetaan vaadittua tietovälinettä"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Waiting for configuration file"
+#~ msgstr "Odotetaan asetustiedostoa"
+
+#~ msgctxt "@info Status info"
+#~ msgid "Loading Software List"
+#~ msgstr "Ladataan ohjelmaluetteloa"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Updating software sources"
+#~ msgstr "Päivitetään ohjelmalähteitä"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Downloading Packages"
+#~ msgstr "Ladataan paketteja"
+
+#~ msgctxt "@info Status information, widget title"
+#~ msgid "Finished"
+#~ msgstr "Valmis"
+
+#~ msgid "Adding Origins..."
+#~ msgstr "Lisätään alkuperiä…"
+
+#~ msgid "Removing Origins..."
+#~ msgstr "Poistetaan alkuperiä…"
+
+#~ msgid "%1 (Binary)"
+#~ msgstr "%1 (binaari)"
+
+#~ msgid ""
+#~ "<sourceline> - The apt repository source line to add. This is one of:\n"
+#~ "  a complete apt line, \n"
+#~ "  a repo url and areas (areas defaults to 'main')\n"
+#~ "  a PPA shortcut.\n"
+#~ "\n"
+#~ "  Examples:\n"
+#~ "    deb http://myserver/path/to/repo stable myrepo\n"
+#~ "    http://myserver/path/to/repo myrepo\n"
+#~ "    https://packages.medibuntu.org free non-free\n"
+#~ "    http://extras.ubuntu.com/ubuntu\n"
+#~ "    ppa:user/repository"
+#~ msgstr ""
+#~ "<lähderivi> – lisättävä apt-ohjelmalähderivi, joka on jokin seuraavista:\n"
+#~ "  täydellinen apt-rivi, \n"
+#~ "  ohjelmalähteen URL-soite ja alue (oletusalue on ”main”)\n"
+#~ "  PPA-oikotie.\n"
+#~ "\n"
+#~ "  Esimerkkejä:\n"
+#~ "    deb http://omapalvelin/polku/ohjelmalähteeseen stable omalähde\n"
+#~ "    http://omapalvelin/polku/ohjelmalähteeseen omalähde\n"
+#~ "    https://packages.medibuntu.org free non-free\n"
+#~ "    http://extras.ubuntu.com/ubuntu\n"
+#~ "    ppa:käyttäjä/ohjelmalähde"
+
+#~ msgctxt "@title:window"
+#~ msgid "Confirm Additional Changes"
+#~ msgstr "Vahvista lisämuutokset"
+
+#~ msgctxt "@info"
+#~ msgid "<h2>Mark additional changes?</h2>"
+#~ msgstr "<h2>Merkitäänkö lisämuutokset?</h2>"
+
+#~ msgid "This action requires a change to another package:"
+#~ msgid_plural "This action requires changes to other packages:"
+#~ msgstr[0] "Tämä toiminto vaatii muutosta toiseen pakettiin:"
+#~ msgstr[1] "Tämä toiminto vaatii muutoksia muihin paketteihin:"
+
+#~ msgctxt "@info"
+#~ msgid "<title>History</title>"
+#~ msgstr "<title>Historia</title>"
+
+#~ msgctxt "@label Line edit click message"
+#~ msgid "Search"
+#~ msgstr "Etsi"
+
+#~ msgctxt "@item:inlistbox Filters all changes in the history view"
+#~ msgid "All changes"
+#~ msgstr "Kaikki muutokset"
+
+#~ msgctxt "@item:inlistbox Filters installations in the history view"
+#~ msgid "Installations"
+#~ msgstr "Asennukset"
+
+#~ msgctxt "@item:inlistbox Filters removals in the history view"
+#~ msgid "Removals"
+#~ msgstr "Poistot"
+
+#~ msgctxt "@title:column"
+#~ msgid "Date"
+#~ msgstr "Päiväys"
+
+#~ msgctxt "@info:status describes a past-tense action"
+#~ msgid "Installed"
+#~ msgstr "Asennettu"
+
+#~ msgctxt "@info:status describes a past-tense action"
+#~ msgid "Upgraded"
+#~ msgstr "Päivitetty"
+
+#~ msgctxt "@status describes a past-tense action"
+#~ msgid "Downgraded"
+#~ msgstr "Päivitetty alaspäin"
+
+#~ msgctxt "@status describes a past-tense action"
+#~ msgid "Purged"
+#~ msgstr "Hävitetty"
+
+# ”muon Asennettu klo 16:00” →  ”muon asennettu klo 16:00”
+#~ msgctxt "@item example: muon installed at 16:00"
+#~ msgid "%1 %2 at %3"
+#~ msgstr "%1 %2 klo %3|/|%1 $[pieni_alkukirjain %2] klo %3"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "No Change"
+#~ msgstr "Ei muutosta"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Install"
+#~ msgstr "Asenna"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Upgrade"
+#~ msgstr "Päivitä"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Downgrade"
+#~ msgstr "Päivitä alaspäin"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Held"
+#~ msgstr "Pidossa"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Installed"
+#~ msgstr "Asennettu"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Upgradeable"
+#~ msgstr "Päivitettävissä"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Broken"
+#~ msgstr "Rikki"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Install Broken"
+#~ msgstr "Rikkinäinen asennus"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Orphaned"
+#~ msgstr "Orpo"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "New in repository"
+#~ msgstr "Uusi ohjelmalähteessä"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Residual Configuration"
+#~ msgstr "Asetusjäännökset"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Not Downloadable"
+#~ msgstr "Ei ladattavissa"
+
+#~ msgctxt "@info:status Requested action"
+#~ msgid "Purge"
+#~ msgstr "Hävitä"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Important for base install"
+#~ msgstr "Tärkeä perusasennukselle"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Version overridden"
+#~ msgstr "Korvattu versio"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Required by other packages"
+#~ msgstr "Muiden pakettien vaatima"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Installed (auto-removable)"
+#~ msgstr "Asennettu (automaattipoistettavissa)"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Policy Broken"
+#~ msgstr "Rikkinäinen käytäntö"
+
+#~ msgctxt "@info:status Package locked at a certain version"
+#~ msgid "Locked"
+#~ msgstr "Lukittu"
+
+#~ msgctxt "@info:status Package state"
+#~ msgid "Manually held back"
+#~ msgstr "Manuaalisesti pidossa"
+
+#~ msgctxt "@title:window"
+#~ msgid "Initialization Error"
+#~ msgstr "Alustusvirhe"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unable to Obtain Package System Lock"
+#~ msgstr "Paketinhallintajärjestelmää ei saada lukituksi"
+
+#~ msgctxt "@title:window"
+#~ msgid "Low Disk Space"
+#~ msgstr "Levytila vähissä"
+
+#~ msgctxt "@title:window"
+#~ msgid "Failed to Apply Changes"
+#~ msgstr "Muutosten toteutus epäonnistui"
+
+#~ msgctxt "@title:window"
+#~ msgid "Authentication error"
+#~ msgstr "Tunnistautumisvirhe"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unexpected Error"
+#~ msgstr "Odottamaton virhe"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unknown Error"
+#~ msgstr "Tuntematon virhe"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The package system could not be initialized, your configuration may be "
+#~ "broken."
+#~ msgstr ""
+#~ "Pakettijärjestelmää ei voitu valmistella. Asennus saattaa olla rikki."
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Another application seems to be using the package system at this time. "
+#~ "You must close all other package managers before you will be able to "
+#~ "install or remove any packages."
+#~ msgstr ""
+#~ "Toinen sovellus vaikuttaa käyttävän pakettienhallintaa juuri nyt. Sulje "
+#~ "kaikki muut pakettienhallintaohjelmat ennen kuin yrität asentaa tai "
+#~ "poistaa paketteja."
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "You do not have enough disk space in the directory at %1 to continue with "
+#~ "this operation."
+#~ msgstr ""
+#~ "Kansiossa %1 ei ole tarpeeksi levytilaa, jotta toimintoa voisi jatkaa."
+
+#~ msgctxt "@label"
+#~ msgid "Could not download packages"
+#~ msgstr "Pakettien lataaminen epäonnistui"
+
+#~ msgctxt "@label"
+#~ msgid "An error occurred while applying changes:"
+#~ msgstr "Tapahtui virhe toteutettaessa muutoksia:"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "This operation cannot continue since proper authorization was not provided"
+#~ msgstr "Toimintoa ei voi jatkaa, koska tarvittavaa valtuutusta ei saatu"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "It appears that the QApt worker has either crashed or disappeared. Please "
+#~ "report a bug to the QApt maintainers"
+#~ msgstr ""
+#~ "Vaikuttaa siltä, että QApt-osa on joko kaatunut tai kadonnut. Ilmoita "
+#~ "viasta QAptin ylläpitäjille"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The following package has not been verified by its author. Downloading "
+#~ "untrusted packages has been disallowed by your current configuration."
+#~ msgid_plural ""
+#~ "The following packages have not been verified by their authors. "
+#~ "Downloading untrusted packages has been disallowed by your current "
+#~ "configuration."
+#~ msgstr[0] ""
+#~ "Tekijä ei ole tarkistanut seuraavaa pakettia. Asetuksesi estävät "
+#~ "lataamasta ei-luotettuja paketteja."
+#~ msgstr[1] ""
+#~ "Tekijä ei ole tarkistanut seuraavia paketteja. Asetuksesi estävät "
+#~ "lataamasta ei-luotettuja paketteja."
+
+#~ msgctxt "@action Reverts all potential changes to the cache"
+#~ msgid "Unmark All"
+#~ msgstr "Poista kaikki merkinnät"
+
+#~ msgctxt "@action Opens the software sources configuration dialog"
+#~ msgid "Configure Software Sources"
+#~ msgstr "Muokkaa ohjelmalähteitä"
+
+#~ msgctxt "@action"
+#~ msgid "Read Markings..."
+#~ msgstr "Lue merkinnät…"
+
+#~ msgctxt "@action"
+#~ msgid "Save Markings As..."
+#~ msgstr "Tallenna merkinnät nimellä…"
+
+#~ msgctxt "@action"
+#~ msgid "Save Package Download List..."
+#~ msgstr "Tallenna pakettien latausluettelo nimellä…"
+
+#~ msgctxt "@action"
+#~ msgid "Download Packages From List..."
+#~ msgstr "Lataa paketit listalta…"
+
+#~ msgctxt "@action"
+#~ msgid "Add Downloaded Packages"
+#~ msgstr "Lisää ladatut paketit"
+
+#~ msgctxt "@action"
+#~ msgid "Save Installed Packages List..."
+#~ msgstr "Tallenna asennettujen pakettien luettelo nimellä…"
+
+#~ msgctxt "@action::inmenu"
+#~ msgid "History..."
+#~ msgstr "Historia…"
+
+#~ msgctxt "@action"
+#~ msgid "Upgrade"
+#~ msgstr "Päivitä"
+
+#~ msgctxt "Notification when a new version of Kubuntu is available"
+#~ msgid "A new version of Kubuntu is available."
+#~ msgstr "Uusi Kubuntun versio on saatavilla."
+
+#~ msgctxt "@title:window"
+#~ msgid "Save Markings As"
+#~ msgstr "Tallenna merkinnät nimellä"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The document could not be saved, as it was not possible to write to "
+#~ "<filename>%1</filename>\n"
+#~ "\n"
+#~ "Check that you have write access to this file or that enough disk space "
+#~ "is available."
+#~ msgstr ""
+#~ "Tiedostoa ei voitu tallentaa, koska kohteeseen <filename>%1</filename> ei "
+#~ "voi kirjoittaa.\n"
+#~ "\n"
+#~ "Tarkista, että sinulla on kirjoitusoikeudet tiedostoon ja ettei levytila "
+#~ "ole lopussa."
+
+#~ msgctxt "@title:window"
+#~ msgid "Save Installed Packages List As"
+#~ msgstr "Tallenna asennettujen pakettien luettelo nimellä"
+
+#~ msgctxt "@title:window"
+#~ msgid "Save Download List As"
+#~ msgstr "Tallenna latausluettelo nimellä"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Could not mark changes. Please make sure that the file is a markings file "
+#~ "created by either the Muon Package Manager or the Synaptic Package "
+#~ "Manager."
+#~ msgstr ""
+#~ "Muutoksia ei voitu merkitä. Varmista, että tiedosto on Muon- tai Synaptic-"
+#~ "paketinhallinnan tuottama merkintätiedosto."
+
+#~ msgctxt "@title:window"
+#~ msgid "Choose a Directory"
+#~ msgstr "Valitse hakemisto"
+
+#~ msgctxt "@label"
+#~ msgid "%1 package was successfully added to the cache"
+#~ msgid_plural "%1 packages were successfully added to the cache"
+#~ msgstr[0] "%1 paketin lisäys välimuistiin onnistui"
+#~ msgstr[1] "%1 paketin lisäys välimuistiin onnistui"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "No valid packages could be found in this directory. Please make sure the "
+#~ "packages are compatible with your computer and are at the latest version."
+#~ msgstr ""
+#~ "Tästä hakemistosta ei löytynyt kelvollisia paketteja. Varmista, että "
+#~ "paketit ovat yhteensopivia koneesi kanssa ja ne ovet viimeisintä versiota."
+
+#~ msgctxt "@title:window"
+#~ msgid "Packages Could Not be Found"
+#~ msgstr "Joitakin paketteja ei voitu löytää"
+
+#~ msgctxt "@title:window"
+#~ msgid "Package History"
+#~ msgstr "Pakettihistoria"
+
+#~ msgid "No reviews available for Debian."
+#~ msgstr "Ei Debian-arvioita."
+
+#~ msgid "Log in to the Ubuntu SSO service"
+#~ msgstr "Kirjaudu Ubuntun kertakirjautumispalveluun"
+
+#~ msgid "PackageKit error found"
+#~ msgstr "Havaittiin PackageKit-virhe"
+
+#~ msgid "PackageKit media change"
+#~ msgstr "PackageKit-tietovälineen vaihto"
+
+#~ msgid "PackageKit Error"
+#~ msgstr "PackageKit-virhe"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 5"
+#~ msgstr "testi 5"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 6"
+#~ msgstr "testi 6"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 7"
+#~ msgstr "testi 7"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 8"
+#~ msgstr "testi 8"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 9"
+#~ msgstr "testi 9"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 10"
+#~ msgstr "testi 10"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 11"
+#~ msgstr "testi 11"
+
+#~ msgctxt "@label The label used for viewing all members of this category"
+#~ msgid "All"
+#~ msgstr "Kaikki"
+
+#~ msgctxt "Category"
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"
+
+#~ msgid "Something went wrong!"
+#~ msgstr "Jotain meni pieleen"
+
+#~ msgid "Error"
+#~ msgstr "Virhe"
+
+#~ msgid "There are a couple of transaction messages:"
+#~ msgstr "On useita toimenpiteiden viestejä:"
+
+#~ msgid "Transaction messages"
+#~ msgstr "Toimenpiteiden viestit"
+
+#~ msgid "Another transaction is still running!"
+#~ msgstr "Muu toimenpide on vielä meneillään"
+
+#~ msgid "Started downloading packages..."
+#~ msgstr "Alettiin ladata paketteja…"
+
+#~ msgid "Started processing packages..."
+#~ msgstr "Alettiin käsitellä paketteja…"
+
+#~ msgid "Started downloading %1..."
+#~ msgstr "Alettiin ladata pakettia %1…"
+
+#~ msgid "Started processing %1..."
+#~ msgstr "Alettiin käsitellä pakettia %1…"
+
+#~ msgctxt "Category"
+#~ msgid "Wallpapers"
+#~ msgstr "Taustakuvat"
+
+#~ msgid "Enter %1 credentials for MakePlayLive (http://makeplaylive.com)"
+#~ msgstr ""
+#~ "Anna %1-tunnistautumistiedot MakePlayLiveen (http://makeplaylive.com)"
+
+#~ msgctxt "@label Column label"
+#~ msgid "Download Size"
+#~ msgstr "Latauksen koko"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"admin"
+#~ "\""
+#~ msgid "System Administration"
+#~ msgstr "Järjestelmänhallinta"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"cli-"
+#~ "mono\""
+#~ msgid "Mono/CLI Infrastructure"
+#~ msgstr "Mono/CLI-infrastruktuuri"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"comm"
+#~ "\""
+#~ msgid "Communication"
+#~ msgstr "Viestintä"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"database\""
+#~ msgid "Databases"
+#~ msgstr "Tietokannat"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"devel"
+#~ "\""
+#~ msgid "Development"
+#~ msgstr "Kehitys"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"doc\""
+#~ msgid "Documentation"
+#~ msgstr "Ohjeet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"debug"
+#~ "\""
+#~ msgid "Debug"
+#~ msgstr "Vianjäljitys"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"editors\""
+#~ msgid "Editors"
+#~ msgstr "Muokkaimet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"electronics\""
+#~ msgid "Electronics"
+#~ msgstr "Elektroniikka"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"embedded\""
+#~ msgid "Embedded Devices"
+#~ msgstr "Upotetut laitteet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"fonts"
+#~ "\""
+#~ msgid "Fonts"
+#~ msgstr "Fontit"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"games"
+#~ "\""
+#~ msgid "Games and Amusement"
+#~ msgstr "Pelit ja viihde"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"gnome"
+#~ "\""
+#~ msgid "GNOME Desktop Environment"
+#~ msgstr "Gnome-työpöytäympäristö"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"graphics\""
+#~ msgid "Graphics"
+#~ msgstr "Grafiikka"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"gnu-r"
+#~ "\""
+#~ msgid "GNU R Statistical System"
+#~ msgstr "GNU R -tilastolaskentajärjestelmä"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"gnustep\""
+#~ msgid "Gnustep Desktop Environment"
+#~ msgstr "Gnustep-työpöytäympäristö"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"hamradio\""
+#~ msgid "Amateur Radio"
+#~ msgstr "Amatööriradio"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"haskell\""
+#~ msgid "Haskell Programming Language"
+#~ msgstr "Haskell-ohjelmointikieli"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"httpd"
+#~ "\""
+#~ msgid "Web Servers"
+#~ msgstr "Web-palvelimet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"interpreters\""
+#~ msgid "Interpreted Computer Languages"
+#~ msgstr "Tulkatut ohjelmointikielet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"java"
+#~ "\""
+#~ msgid "Java Programming Language"
+#~ msgstr "Java-ohjelmointikieli"
+
+# Onko tälle ”oikeaa” käännöstä vai pitäisikö jättää kääntämättä?
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"kde\""
+#~ msgid "KDE Software Compilation"
+#~ msgstr "KDE-ohjelmistokokonaisuus"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"kernel\""
+#~ msgid "Kernel and Modules"
+#~ msgstr "Ydin ja moduulit"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"libdevel\""
+#~ msgid "Libraries - Development"
+#~ msgstr "Kirjastot – Kehitys"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"libs"
+#~ "\""
+#~ msgid "Libraries"
+#~ msgstr "Kirjastot"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"lisp"
+#~ "\""
+#~ msgid "Lisp Programming Language"
+#~ msgstr "Lisp-ohjelmointikieli"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"localization\""
+#~ msgid "Localization"
+#~ msgstr "Lokalisointi"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"mail"
+#~ "\""
+#~ msgid "Email"
+#~ msgstr "Sähköposti"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"math"
+#~ "\""
+#~ msgid "Mathematics"
+#~ msgstr "Matematiikka"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"misc"
+#~ "\""
+#~ msgid "Miscellaneous - Text-based"
+#~ msgstr "Sekalaiset – Tekstipohjaiset"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"net\""
+#~ msgid "Networking"
+#~ msgstr "Verkko"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"news"
+#~ "\""
+#~ msgid "Newsgroups"
+#~ msgstr "Keskusteluryhmät"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"ocaml"
+#~ "\""
+#~ msgid "OCaml Programming Language"
+#~ msgstr "OCaml-ohjelmointikieli"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"oldlibs\""
+#~ msgid "Libraries - Old"
+#~ msgstr "Kirjastot – Vanhat"
+
+# packages.debian.org:in suomennos
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"otherosfs\""
+#~ msgid "Cross Platform"
+#~ msgstr "Muut käyttö- ja tiedostojärjestelmät"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"perl"
+#~ "\""
+#~ msgid "Perl Programming Language"
+#~ msgstr "Perl-ohjelmointikieli"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"php\""
+#~ msgid "PHP Programming Language"
+#~ msgstr "PHP-ohjelmointikieli"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"python\""
+#~ msgid "Python Programming Language"
+#~ msgstr "Python-ohjelmointikieli"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"ruby"
+#~ "\""
+#~ msgid "Ruby Programming Language"
+#~ msgstr "Ruby-ohjelmointikieli"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"science\""
+#~ msgid "Science"
+#~ msgstr "Tiede"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"shells\""
+#~ msgid "Shells"
+#~ msgstr "Komentotulkit"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"sound"
+#~ "\""
+#~ msgid "Multimedia"
+#~ msgstr "Multimedia"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"tex\""
+#~ msgid "TeX Authoring"
+#~ msgstr "TeX-tekstinkäsittely"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"text"
+#~ "\""
+#~ msgid "Word Processing"
+#~ msgstr "Tekstinkäsittely"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"utils"
+#~ "\""
+#~ msgid "Utilities"
+#~ msgstr "Apuohjelmat"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"vcs\""
+#~ msgid "Version Control Systems"
+#~ msgstr "Versionhallintajärjestelmät"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"web\""
+#~ msgid "Internet"
+#~ msgstr "Internet"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"x11\""
+#~ msgid "Miscellaneous - Graphical"
+#~ msgstr "Sekalaiset – Graafiset"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"xfce"
+#~ "\""
+#~ msgid "Xfce Desktop Environment"
+#~ msgstr "Xfce-työpöytäympäristö"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"zope"
+#~ "\""
+#~ msgid "Zope/Plone Environment"
+#~ msgstr "Zope/Plone-ympäristö"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"unknown\""
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"alien"
+#~ "\""
+#~ msgid "Converted from RPM by Alien"
+#~ msgstr "Alienin RPM:stä muuntama"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"translations\""
+#~ msgid "Internationalization and Localization"
+#~ msgstr "Kansainvälistys ja lokalisointi"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"metapackages\""
+#~ msgid "Meta Packages"
+#~ msgstr "Metapaketit"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Debian package section \"non-US\", for packages that "
+#~ "cannot be shipped in the US"
+#~ msgid "Restricted On Export"
+#~ msgstr "Vientirajoituksiset"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section \"non-"
+#~ "free\""
+#~ msgid "Non-free"
+#~ msgstr "Ei-vapaat"
+
+# Debian.org ei tätä suomenna ja open-tran.eu:n mukaan ei juuri muukaan.
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"contrib\""
+#~ msgid "Contrib"
+#~ msgstr "Contrib"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"education\""
+#~ msgid "Education"
+#~ msgstr "Koulutus"
+
+#~ msgctxt ""
+#~ "@item:inlistbox Human-readable name for the Debian package section "
+#~ "\"introspection\""
+#~ msgid "GObject Introspection Data"
+#~ msgstr "GObject-introspektiodata"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Common"
+#~ msgstr "Yleinen"
+
+#~ msgctxt "@item:inlistbox CPU architecture"
+#~ msgid "32-bit"
+#~ msgstr "32-bittinen"
+
+#~ msgctxt "@item:inlistbox CPU architecture"
+#~ msgid "64-bit"
+#~ msgstr "64-bittinen"
+
+#~ msgctxt "@item:inlistbox PU architecture"
+#~ msgid "Power PC"
+#~ msgstr "Power PC"
+
+#~ msgctxt "@label Easter Egg"
+#~ msgid "This Muon has super cow powers"
+#~ msgstr "Tällä Muon-ohjelmalla on superlehmävoimat"
+
+#~ msgid "Show notifications for available updates"
+#~ msgstr "Näytä ilmoitukset saatavilla olevista päivityksistä"
+
+#~ msgid "Show the number of available updates"
+#~ msgstr "Näytä saatavilla olevien päivitysten lukumäärä"
+
+#~ msgid "Bugs found"
+#~ msgstr "Vikoja löytyi"
+
+#~ msgid "Checking for bugs..."
+#~ msgstr "Tarkistetaan vikoja…"
+
+#~ msgid "Cannot kill process"
+#~ msgstr "Prosessia ei voi tappaa"
+
+#~ msgid ""
+#~ "PackageKit does not tell us a useful status right now! Its status is %1."
+#~ msgstr ""
+#~ "PackageKit ei kerro tällä hetkellä mitään hyödyllistä tilaa. Sen tila on "
+#~ "%1."
+
+#~ msgid "Muon Notification Daemon"
+#~ msgstr "Muon-ilmoituspalvelu"
+
+#~ msgid "A Notification Daemon for Muon"
+#~ msgstr "Muonin ilmoituspalvelu"
+
+#~ msgid ""
+#~ "(C) 2013 Lukas Appelhans, (C) 2009-2012 Jonathan Thomas, (C) 2009 Harald "
+#~ "Sitter"
+#~ msgstr ""
+#~ "© 2013 Lukas Appelhans, © 2009–2012 Jonathan Thomas, © 2009 Harald Sitter"
+
+#~ msgid "%1 update notifier"
+#~ msgstr "%1-päivitysilmoitukset"
+
+#~ msgid "Muon %1 update notifier"
+#~ msgstr "Muonin %1-päivitysilmoitukset"
+
+#~ msgid "Open Muon..."
+#~ msgstr "Avaa Muon…"
+
+#~ msgid "Quit notifier..."
+#~ msgstr "Lopeta ilmoitusohjelma…"
+
+#~ msgid "A security update is available for your system."
+#~ msgstr "Järjestelmääsi on saatavilla turvallisuuspäivitys."
+
+#~ msgid "An update is available for your system!"
+#~ msgstr "Järjestelmääsi on saatavilla päivitys"
+
+#~ msgid ""
+#~ "There are %1 updated packages, of which %2 were updated for security "
+#~ "reasons!"
+#~ msgstr ""
+#~ "Saatavilla on %1 päivittynyttä pakettia, joista %2 on päivitetty "
+#~ "tietoturvasyistä"
+
+#~ msgid "%1 packages were updated for security reasons"
+#~ msgstr "%1 pakettia on päivitetty tietoturvasyistä"
+
+#~ msgid "A system update is recommended"
+#~ msgstr "Järjestelmäpäivitystä suositellaan"
+
+#~ msgid "System update available"
+#~ msgstr "Järjestelmäpäivitys saatavilla"
+
+#~ msgid "Your system is up-to-date!"
+#~ msgstr "Järjestelmäsi on ajan tasalla"
+
+#~ msgid "No system update available"
+#~ msgstr "Järjestelmäpäivitystä ei saatavilla"
+
+#~ msgid "Akabei Backend"
+#~ msgstr "Akabei-taustajärjestelmä"
+
+#~ msgid "Chakra-Applications in your system"
+#~ msgstr "Järjestelmäsi Chakra-sovellukset"
+
+#~ msgid "Applications Backend"
+#~ msgstr "Sovellukset-taustajärjestelmä"
+
+#~ msgid "Applications in your system"
+#~ msgstr "Järjestelmäsi sovellukset"
+
+#~ msgid "Bodega Backend"
+#~ msgstr "Bodega-taustajärjestelmä"
+
+#~ msgid "Install Bodega data in your system"
+#~ msgstr "Asenna Bodega-dataa järjestelmääsi"
+
+#~ msgid "Dummy Backend"
+#~ msgstr "Testitaustajärjestelmä"
+
+#~ msgid "Dummy backend to test muon frontends"
+#~ msgstr "Taustajärjestelmä muon-käyttöliittymien testaukseen"
+
+#~ msgid "KNewStuff Backend"
+#~ msgstr "KNewStuff-taustajärjestelmä"
+
+#~ msgid "Install KNewStuff data in your system"
+#~ msgstr "Asenna KNewStuff-dataa järjestelmääsi"
+
+#~ msgid "Install PackageKit data in your system"
+#~ msgstr "Asenna PackageKit-dataa järjestelmääsi"
+
+#~ msgid "Finished."
+#~ msgstr "Valmis."
+
+#~ msgid "Available updates"
+#~ msgstr "Saatavilla olevista päivityksistä"
+
+#~ msgid "Distribution upgrades"
+#~ msgstr "Jakelupäivityksistä"
+
+#~ msgid "Use both popups and tray icons"
+#~ msgstr "Sekä ponnahdusilmoitus että ilmoitusaluekuvake"
+
+#~ msgid "Tray icons only"
+#~ msgstr "Vain ilmoitusaluekuvake"
+
+#~ msgid "Popup notifications only"
+#~ msgstr "Vain ponnahdusilmoitus"
+
+#~ msgid "Enter %1 credentials"
+#~ msgstr ""
+#~ "Anna %1-tunnistautumistiedot|/|Anna $[yhdysmerkki %1 tunnistautumistiedot]"
+
+#~ msgctxt "@info:status Progress text when done"
+#~ msgid "Done"
+#~ msgstr "Valmis"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "There are marked changes that have not yet been applied. Do you want to "
+#~ "save your changes or discard them?"
+#~ msgstr ""
+#~ "Kaikkia merkittyjä muutoksia ei ole toteutettu. Haluatko tallentaa "
+#~ "muutokset vai hylätä ne?"
+
+#~ msgctxt "@info:status"
+#~ msgid "Muon is making system changes"
+#~ msgstr "Muon muuttaa järjestelmää"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Changes could not be applied since some packages could not be downloaded."
+#~ msgstr ""
+#~ "Muutoksien toteutus ei onnistunut, koska kaikkien pakettien lataus ei "
+#~ "onnistunut."
+
+#~ msgctxt "@label"
+#~ msgid "The size of the downloaded items did not equal the expected size."
+#~ msgstr "Ladattujen osien koko ei täsmää odotettuun."
+
+#~ msgctxt "@title:window"
+#~ msgid "Size Mismatch"
+#~ msgstr "Koot eivät täsmää"
+
+#~ msgctxt "@title:window"
+#~ msgid "Some Packages Could not be Downloaded"
+#~ msgstr "Joitakin paketteja ei voitu ladata"
+
+#~ msgctxt "@label Shows which package failed"
+#~ msgid "Package: %1"
+#~ msgstr "Paketti: %1"
+
+#~ msgctxt "@title:window"
+#~ msgid "Commit error"
+#~ msgstr "Toteutusvirhe"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Muon always selects the most applicable version available. If you force a "
+#~ "different version from the default one, errors in the dependency handling "
+#~ "can occur."
+#~ msgstr ""
+#~ "Muon valitsee aina sopivimman saatavilla olevan version. Jos pakotat muun "
+#~ "version oletuksen sijaan, riippuvuuksien hallinnassa voi sattua virheitä."
+
+#~ msgctxt "@action:button"
+#~ msgid "Force Version"
+#~ msgstr "Pakota versio"
+
+#~ msgctxt "@label Label preceding the package maintainer"
+#~ msgid "Maintainer:"
+#~ msgstr "Ylläpitäjä:"
+
+#~ msgctxt "@label The parent package that this package comes from"
+#~ msgid "Source Package:"
+#~ msgstr "Lähdepaketti:"
+
+#~ msgctxt "@label Label preceding the package size"
+#~ msgid "Installed Size:"
+#~ msgstr "Koko asennettuna:"
+
+#~ msgctxt "@title:group"
+#~ msgid "Available Version"
+#~ msgstr "Saatavilla oleva versio"
+
+#~ msgctxt "@action:button"
+#~ msgid "Installation"
+#~ msgstr "Asennus"
+
+#~ msgctxt "@action:button"
+#~ msgid "Removal"
+#~ msgstr "Poisto"
+
+#~ msgctxt "@action:button"
+#~ msgid "Upgrade"
+#~ msgstr "Päivitys"
+
+#~ msgctxt "@action:button"
+#~ msgid "Reinstallation"
+#~ msgstr "Uudelleenasennus"
+
+#~ msgctxt "@action:button"
+#~ msgid "Purge"
+#~ msgstr "Puhdistus"
+
+#~ msgctxt "@action:button"
+#~ msgid "Unmark"
+#~ msgstr "Merkinnän poisto"
+
+#, fuzzy
+#~| msgctxt "@info Tells how long Canonical, Ltd. will support a package"
+#~| msgid "Canonical provides critical updates for %1 until %2"
+#~ msgctxt "@info Tells how long Canonical, Ltd. will support a package"
+#~ msgid "Canonical provides critical updates for %1 until %2."
+#~ msgstr "Canonical tarjoaa kriittisiä päivityksiä versioon %1 %2 asti"
+
+#, fuzzy
+#~| msgctxt "@info Tells how long Canonical, Ltd. will support a package"
+#~| msgid ""
+#~| "Canonical does not provide updates for %1. Some updates may be provided "
+#~| "by the Ubuntu community"
+#~ msgctxt "@info Tells how long Canonical, Ltd. will support a package"
+#~ msgid ""
+#~ "Canonical does not provide updates for %1. Some updates may be provided "
+#~ "by the Ubuntu community."
+#~ msgstr ""
+#~ "Canonical ei tarjoa päivityksiä versioon %1. Ubuntu-yhteisö voi tarjota "
+#~ "joitakin päivityksiä"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Dependencies of the Current Version"
+#~ msgstr "Nykyisen version riippuvuudet"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Dependencies of the Latest Version"
+#~ msgstr "Viimeisimmän version riippuvuudet"
+
+#~ msgctxt "@item:inlistbox"
+#~ msgid "Virtual Packages Provided"
+#~ msgstr "Tarjotut virtuaalipaketit"
+
+#~ msgctxt "@label"
+#~ msgid "This package does not have any dependencies"
+#~ msgstr "Tällä paketilla ei ole riippuvuuksia"
+
+#~ msgctxt "@label"
+#~ msgid "This package does not provide any virtual packages"
+#~ msgstr "Paketti ei tarjoa virtuaalipaketteja"
+
+#~ msgctxt "@title:column"
+#~ msgid "Package"
+#~ msgstr "Paketti"
+
+#~ msgctxt "@title:column"
+#~ msgid "Size"
+#~ msgstr "Koko"
+
+#~ msgctxt "@title:column"
+#~ msgid "Progress"
+#~ msgstr "Edistyminen"
+
+#~ msgctxt "@info:status Progress text when a download is ignored"
+#~ msgid "Ignored"
+#~ msgstr "Ohitettu"
+
+#~ msgid "Status"
+#~ msgstr "Tila"
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Installation"
+#~ msgctxt "@action:inmenu"
+#~ msgid "Mark for Installation"
+#~ msgstr "Asennus"
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Removal"
+#~ msgctxt "@action:button"
+#~ msgid "Mark for Removal"
+#~ msgstr "Poisto"
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Upgrade"
+#~ msgctxt "@action:button"
+#~ msgid "Mark for Upgrade"
+#~ msgstr "Päivitys"
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Reinstallation"
+#~ msgctxt "@action:button"
+#~ msgid "Mark for Reinstallation"
+#~ msgstr "Uudelleenasennus"
+
+#, fuzzy
+#~| msgctxt "@item:inlistbox"
+#~| msgid "Dependencies of the Current Version"
+#~ msgctxt "@action:button"
+#~ msgid "Lock Package at Current Version"
+#~ msgstr "Nykyisen version riippuvuudet"
+
+#, fuzzy
+#~| msgctxt "@title:window"
+#~| msgid "Unable to Mark Package"
+#~ msgctxt "@action:button"
+#~ msgid "Unlock package"
+#~ msgstr "Pakettia ei voi merkitä"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "Removing this package may break your system. Are you sure you want to "
+#~ "remove it?"
+#~ msgstr ""
+#~ "Paketin poistaminen voi särkeä järjestelmäsi. Haluatko varmasti poistaa "
+#~ "sen?"
+
+#~ msgctxt "@label"
+#~ msgid "Warning - Removing Important Package"
+#~ msgstr "Varoitus – Poistetaan tärkeää pakettia"
+
+#~ msgctxt "@label"
+#~ msgid "The \"%1\" package could not be marked for installation or upgrade:"
+#~ msgstr "Pakettia ”%1” ei voitu merkitä asennettavaksi tai päivitettäväksi:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Unable to Mark Package"
+#~ msgstr "Pakettia ei voi merkitä"
+
+#~ msgctxt "@label"
+#~ msgid ""
+#~ "The \"%1\" package has no available version, but exists in the database.\n"
+#~ "\tThis typically means that the package was mentioned in a dependency and "
+#~ "never uploaded, has been obsoleted, or is not available from the "
+#~ "currently-enabled repositories."
+#~ msgstr ""
+#~ "Paketista ”%1” ei ole saatavilla olevaa versiota mutta se on "
+#~ "tietokannassa.\n"
+#~ "\tTämä merkitsee yleensä, että paketti mainittiin riippuvuuksissa eikä "
+#~ "sitä ladattu, se on vanhentunut tai sitä ei ole saatavilla nyt käytössä "
+#~ "olevista asennuslähteistä."
+
+#~ msgctxt "@label Example: Depends: libqapt 0.1, but 0.2 is to be installed"
+#~ msgid "%1: %2 %3, but %4 is to be installed"
+#~ msgstr "%1: %2 %3, mutta %4 aiotaan asentaa"
+
+#~ msgctxt "@label Example: or libqapt 0.1, but 0.2 is to be installed"
+#~ msgid "or %1 %2, but %3 is to be installed"
+#~ msgstr "tai %1 %2, mutta %3 aiotaan asentaa"
+
+#~ msgctxt "@label Example: Depends: libqapt, but is not installable"
+#~ msgid "%1: %2, but it is not installable"
+#~ msgstr "%1: %2, mutta sitä ei voi asentaa"
+
+#~ msgctxt "@label Example: or libqapt, but is not installable"
+#~ msgid "or %1, but is not installable"
+#~ msgstr "tai %1, mutta sitä ei voi asentaa"
+
+#~ msgctxt "@label Example: Depends: libqapt, but it is a virtual package"
+#~ msgid "%1: %2, but it is a virtual package"
+#~ msgstr "%1: %2, mutta se on virtuaalipaketti"
+
+#~ msgctxt "@label Example: or libqapt, but it is a virtual package"
+#~ msgid "or %1, but it is a virtual package"
+#~ msgstr "tai %1, mutta se on virtuaalipaketti"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Details"
+#~ msgstr "Yksityiskohdat"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Technical Details"
+#~ msgstr "Tekniset yksityiskohdat"
+
+#~ msgctxt "@title:tab"
+#~ msgid "Dependencies"
+#~ msgstr "Riippuvuudet"
+
+#~ msgctxt "@label Download rate"
+#~ msgid "Download rate: %1/s"
+#~ msgstr "Latausnopeus: %1/s"
+
+#~ msgctxt "@info:status"
+#~ msgid "Rebuilding Search Index"
+#~ msgstr "Rakennetaan hakuindeksiä uudelleen"
+
+#~ msgctxt "@info:status"
+#~ msgid "%1 installed, "
+#~ msgstr "%1 asennettu, "
+
+#~ msgctxt "@info:status"
+#~ msgid "%1 upgradeable,"
+#~ msgstr "%1 päivitettävissä,"
+
+#~ msgctxt "@info:status"
+#~ msgid "%1 upgradeable"
+#~ msgstr "%1 päivitettävissä"
+
+#~ msgctxt "@info:status Part of the status label"
+#~ msgid " %1 to install/upgrade"
+#~ msgstr "%1 asennettavissa tai päivitettävissä"
+
+#~ msgctxt ""
+#~ "@info:status Label for the number of packages pending removal when "
+#~ "packages are also pending upgrade"
+#~ msgid ", %1 to remove"
+#~ msgstr ", %1 poistetaan"
+
+#, fuzzy
+#~| msgctxt ""
+#~| "@info:statsus Label for the number of packages pending removal when "
+#~| "there are only removals"
+#~| msgid " %1 to remove"
+#~ msgctxt ""
+#~ "@info:status Label for the number of packages pending removal when there "
+#~ "are only removals"
+#~ msgid " %1 to remove"
+#~ msgstr " %1 poistetaan"
+
+#~ msgctxt "@label showing download and install size"
+#~ msgid "%1 to download, %2 of space to be freed"
+#~ msgstr "%1 ladattavaa, %2 tilasta vapautetaan"
+
+#~ msgctxt "@item:intext Label for when the remaining time is unknown"
+#~ msgid " - Unknown time remaining"
+#~ msgstr " – Jäljellä oleva aika ei tiedossa"
+
+#~ msgctxt "@action:button"
+#~ msgid "Get Screenshot..."
+#~ msgstr "Ota ruutukaappaus..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Screenshot"
+#~ msgstr "Ruutukaappaus"

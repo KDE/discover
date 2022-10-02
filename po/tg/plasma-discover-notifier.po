@@ -1,0 +1,171 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the discover package.
+#
+# Victor Ibragimov <victor.ibragimov@gmail.com>, 2019, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2020-08-24 22:54+0500\n"
+"Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
+"Language-Team: English <kde-i18n-doc@kde.org>\n"
+"Language: tg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 20.04.2\n"
+
+#: notifier/DiscoverNotifier.cpp:144
+#, kde-format
+msgid "View Updates"
+msgstr "Дидани навсозиҳо"
+
+#: notifier/DiscoverNotifier.cpp:256
+#, kde-format
+msgid "Security updates available"
+msgstr "Навсозиҳои амниятӣ дастрасанд"
+
+#: notifier/DiscoverNotifier.cpp:258
+#, kde-format
+msgid "Updates available"
+msgstr "Навсозиҳо дастрасанд"
+
+#: notifier/DiscoverNotifier.cpp:260
+#, kde-format
+msgid "System up to date"
+msgstr "Низом нав аст"
+
+#: notifier/DiscoverNotifier.cpp:262
+#, kde-format
+msgid "Computer needs to restart"
+msgstr "Компютер бояд аз нав оғоз карда шавад"
+
+#: notifier/DiscoverNotifier.cpp:264
+#, kde-format
+msgid "Offline"
+msgstr "Дар алоқа нест"
+
+#: notifier/DiscoverNotifier.cpp:266
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr ""
+
+#: notifier/DiscoverNotifier.cpp:300
+#, kde-format
+msgid "Restart is required"
+msgstr "Бозоғозӣ лозим аст"
+
+#: notifier/DiscoverNotifier.cpp:301
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr "Барои татбиқ кардани навсозиҳо, низом бояд аз нав оғоз карда шавад."
+
+#: notifier/DiscoverNotifier.cpp:307
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart"
+msgstr "Аз нав оғоз кардан..."
+
+#: notifier/DiscoverNotifier.cpp:327
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "Такмил додан"
+
+#: notifier/DiscoverNotifier.cpp:328
+#, kde-format
+msgid "Upgrade available"
+msgstr "Навсозӣ дастрас аст"
+
+#: notifier/DiscoverNotifier.cpp:329
+#, kde-format
+msgid "New version: %1"
+msgstr "Нашри нав: %1"
+
+#: notifier/main.cpp:39
+#, kde-format
+msgid "Discover Notifier"
+msgstr "Огоҳкунандаи Кашфиёт"
+
+#: notifier/main.cpp:41
+#, kde-format
+msgid "System update status notifier"
+msgstr "Огоҳкунандаи вазъияти навсозии низом"
+
+#: notifier/main.cpp:43
+#, fuzzy, kde-format
+#| msgid "© 2010-2019 Plasma Development Team"
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2019 Дастаи барномарезии Plasma"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Victor Ibragimov"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "victor.ibragimov@gmail.com"
+
+#: notifier/main.cpp:52
+#, kde-format
+msgid "Replace an existing instance"
+msgstr "Ҷойгузин кардани намунаи мавҷудбуда"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "Do not show the notifier"
+msgstr "Огоҳкунанда нишон дода нашавад"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "hidden"
+msgstr "ноаён"
+
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#, kde-format
+msgid "Updates"
+msgstr "Навсозиҳо"
+
+#: notifier/NotifierItem.cpp:50
+#, fuzzy, kde-format
+#| msgid "Open Discover..."
+msgid "Open Discover…"
+msgstr "Кушодани Кашфиёт..."
+
+#: notifier/NotifierItem.cpp:55
+#, fuzzy, kde-format
+#| msgid "See Updates..."
+msgid "See Updates…"
+msgstr "Дидани навсозиҳо..."
+
+#: notifier/NotifierItem.cpp:60
+#, fuzzy, kde-format
+#| msgid "Refresh..."
+msgid "Refresh…"
+msgstr "Бозсозӣ..."
+
+#: notifier/NotifierItem.cpp:64
+#, kde-format
+msgid "Restart to apply installed updates"
+msgstr "Барои татбиқ кардани навсозиҳо низомро аз нав оғоз намоед"
+
+#: notifier/NotifierItem.cpp:65
+#, fuzzy, kde-format
+#| msgid "Click to restart the computer"
+msgid "Click to restart the device"
+msgstr "Зер кунед, то ки компютер аз нав оғоз карда шавад"
+
+#~ msgid "Restart..."
+#~ msgstr "Аз нав оғоз кардан..."
+
+#~ msgid "Update"
+#~ msgstr "Навсозӣ кардан"
+
+#~ msgid "Open Software Center..."
+#~ msgstr "Маркази нармафзори кушод..."

@@ -1,0 +1,107 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the discover package.
+#
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-08-25 12:36+0200\n"
+"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.08.0\n"
+
+#: kcm/package/contents/ui/main.qml:32
+#, kde-format
+msgid "Update software:"
+msgstr "Software bijwerken:"
+
+#: kcm/package/contents/ui/main.qml:33
+#, kde-format
+msgid "Manually"
+msgstr "Handmatig"
+
+#: kcm/package/contents/ui/main.qml:43
+#, kde-format
+msgid "Automatically"
+msgstr "Automatisch"
+
+#: kcm/package/contents/ui/main.qml:50
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Software updates will be downloaded automatically when they become "
+"available. Updates for applications will be installed immediately, while "
+"system updates will be installed the next time the computer is restarted."
+msgstr ""
+"Elementen voor bijwerken van software zullen automatisch worden gedownload "
+"wanneer ze beschikbaar komen. Deze voor toepassingen zullen onmiddellijk "
+"geïnstalleerd worden, terwijl deze voor het systeem geïnstalleerd zullen "
+"worden bij de volgende keer dat de computer opnieuw wordt gestart."
+
+#: kcm/package/contents/ui/main.qml:61
+#, kde-format
+msgctxt "@title:group"
+msgid "Update frequency:"
+msgstr "Frequentie van bijwerken:"
+
+#: kcm/package/contents/ui/main.qml:61
+#, kde-format
+msgctxt "@title:group"
+msgid "Notification frequency:"
+msgstr "Frequentie van melding:"
+
+#: kcm/package/contents/ui/main.qml:64
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Daily"
+msgstr "Dagelijks"
+
+#: kcm/package/contents/ui/main.qml:65
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Weekly"
+msgstr "Wekelijks"
+
+#: kcm/package/contents/ui/main.qml:66
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Monthly"
+msgstr "Maandelijks"
+
+#: kcm/package/contents/ui/main.qml:67
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Never"
+msgstr "Nooit"
+
+#: kcm/package/contents/ui/main.qml:111
+#, kde-format
+msgid "Use offline updates:"
+msgstr "Offline elementen voor bijwerken gebruiken:"
+
+#: kcm/package/contents/ui/main.qml:123
+#, kde-format
+msgid ""
+"Offline updates maximize system stability by applying changes while "
+"restarting the system. Using this update mode is strongly recommended."
+msgstr ""
+"Offline elementen voor bijwerken maximaliseert systeemstabiliteit door "
+"wijzigingen toe te passen tijdens het opnieuw starten van het systeem. Deze "
+"methode van bijwerken gebruiken wordt sterk aanbevolen."
+
+#: kcm/updates.cpp:31
+#, kde-format
+msgid "Software Update"
+msgstr "Bijwerken van software"
+
+#: kcm/updates.cpp:33
+#, kde-format
+msgid "Configure software update settings"
+msgstr "Instellingen voor software bijwerken configureren"

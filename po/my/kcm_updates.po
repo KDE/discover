@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the discover package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2021-09-13 03:15+0630\n"
+"Last-Translator: \n"
+"Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
+"Language: my\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#: kcm/package/contents/ui/main.qml:32
+#, kde-format
+msgid "Update software:"
+msgstr "ဆော့ဖ်ဝဲလ်အပ်ဒိတ်တင်မည် -"
+
+#: kcm/package/contents/ui/main.qml:33
+#, kde-format
+msgid "Manually"
+msgstr "ကိုယ်တိုင်"
+
+#: kcm/package/contents/ui/main.qml:43
+#, kde-format
+msgid "Automatically"
+msgstr "အလိုအလျောက်"
+
+#: kcm/package/contents/ui/main.qml:50
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Software updates will be downloaded automatically when they become "
+"available. Updates for applications will be installed immediately, while "
+"system updates will be installed the next time the computer is restarted."
+msgstr ""
+"ဆော့ဖ်ဝဲလ်အပ်ဒိတ်များကို ရရှိနိုင်သောအခါ အလိုအလျောက်ဒေါင်းလုတ်ဆွဲသွားမည်။ အပ္ပလီကေးရှင်းများအတွက် "
+"အပ်ဒိတ်များကို ချက်ချင်းတင်မည်ဖြစ်ပြီး စစ်စတမ်အပ်ဒိတ်များကို ကွန်ပြူတာ ပြန်စတင်ချိန်တွင် တင်မည်။"
+
+#: kcm/package/contents/ui/main.qml:61
+#, fuzzy, kde-format
+#| msgid "Update software:"
+msgctxt "@title:group"
+msgid "Update frequency:"
+msgstr "ဆော့ဖ်ဝဲလ်အပ်ဒိတ်တင်မည် -"
+
+#: kcm/package/contents/ui/main.qml:61
+#, kde-format
+msgctxt "@title:group"
+msgid "Notification frequency:"
+msgstr ""
+
+#: kcm/package/contents/ui/main.qml:64
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Daily"
+msgstr ""
+
+#: kcm/package/contents/ui/main.qml:65
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Weekly"
+msgstr ""
+
+#: kcm/package/contents/ui/main.qml:66
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Monthly"
+msgstr ""
+
+#: kcm/package/contents/ui/main.qml:67
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Never"
+msgstr ""
+
+#: kcm/package/contents/ui/main.qml:111
+#, kde-format
+msgid "Use offline updates:"
+msgstr "အော့ဖ်လိုင်းအပ်ဒိတ်များအသုံးပြုမည် -"
+
+#: kcm/package/contents/ui/main.qml:123
+#, kde-format
+msgid ""
+"Offline updates maximize system stability by applying changes while "
+"restarting the system. Using this update mode is strongly recommended."
+msgstr ""
+
+#: kcm/updates.cpp:31
+#, kde-format
+msgid "Software Update"
+msgstr "ဆော့ဖ်ဝဲလ်အပ်ဒိတ်"
+
+#: kcm/updates.cpp:33
+#, kde-format
+msgid "Configure software update settings"
+msgstr "ဆော့ဖ်ဝဲလ်အပ်ဒိတ်တင်မှုဆိုင်ရာသတ်မှတ်ချက်များကို ပြင်ဆင်မည်"

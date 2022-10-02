@@ -1,0 +1,191 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# A S Alam <aalam@fedoraproject.org>, 2016, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-01-01 09:30-0800\n"
+"Last-Translator: A S Alam <aalam@satluj.org>\n"
+"Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
+"Language: pa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 21.04.3\n"
+
+#: notifier/DiscoverNotifier.cpp:144
+#, kde-format
+msgid "View Updates"
+msgstr "ਅੱਪਡੇਟ ਵੇਖੋ"
+
+#: notifier/DiscoverNotifier.cpp:256
+#, kde-format
+msgid "Security updates available"
+msgstr "ਸੁਰੱਖਿਆ ਅੱਪਡੇਟ ਮੌਜੂਦ ਹਨ"
+
+#: notifier/DiscoverNotifier.cpp:258
+#, kde-format
+msgid "Updates available"
+msgstr "ਅੱਪਡੇਟ ਮੌਜੂਦ ਹਨ"
+
+#: notifier/DiscoverNotifier.cpp:260
+#, kde-format
+msgid "System up to date"
+msgstr "ਸਿਸਟਮ ਅੱਪ ਟੂ ਡੇਟ ਹੈ"
+
+#: notifier/DiscoverNotifier.cpp:262
+#, kde-format
+msgid "Computer needs to restart"
+msgstr "ਕੰਪਿਊਟਰ ਨੂੰ ਮੁੜ-ਚਾਲੂ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"
+
+#: notifier/DiscoverNotifier.cpp:264
+#, kde-format
+msgid "Offline"
+msgstr "ਆਫਲਾਈਨ"
+
+#: notifier/DiscoverNotifier.cpp:266
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr "…ਬਿਨ-ਨਿਗਰਾਨੀ ਅੱਪਡੇਟ ਲਾਗੂ ਕੀਤੇ ਜਾ ਰਹੇ ਹਨ"
+
+#: notifier/DiscoverNotifier.cpp:300
+#, kde-format
+msgid "Restart is required"
+msgstr "ਮੁੜ-ਚਾਲੂ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"
+
+#: notifier/DiscoverNotifier.cpp:301
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr "ਅੱਪਡੇਟ ਲਾਗੂ ਕਰਨ ਲਈ ਸਿਸਟਮ ਨੂੰ ਮੁੜ-ਚਾਲੂ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ।"
+
+#: notifier/DiscoverNotifier.cpp:307
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart"
+msgstr "ਮੁੜ-ਚਾਲੂ ਕਰੋ"
+
+#: notifier/DiscoverNotifier.cpp:327
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "ਅੱਪਗਰੇਡ"
+
+#: notifier/DiscoverNotifier.cpp:328
+#, kde-format
+msgid "Upgrade available"
+msgstr "ਅੱਪਗਰੇਡ ਮੌਜੂਦ ਹੈ"
+
+#: notifier/DiscoverNotifier.cpp:329
+#, kde-format
+msgid "New version: %1"
+msgstr "ਨਵਾਂ ਵਰਜ਼ਨ: %1"
+
+#: notifier/main.cpp:39
+#, kde-format
+msgid "Discover Notifier"
+msgstr "ਡਿਸਕਵਰ ਸੂਚਕ"
+
+#: notifier/main.cpp:41
+#, kde-format
+msgid "System update status notifier"
+msgstr "ਸਿਸਟਮ ਅੱਪਡੇਟ ਸਥਿਤੀ ਸੂਚਕ"
+
+#: notifier/main.cpp:43
+#, fuzzy, kde-format
+#| msgid "© 2010-2021 Plasma Development Team"
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2021 Plasma Development Team"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ ੨੦੨੨"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "alam.yellow@gmail.com"
+
+#: notifier/main.cpp:52
+#, kde-format
+msgid "Replace an existing instance"
+msgstr "ਮੌਜੂਦਾ ਮੌਕੇ ਨੂੰ ਬਦਲੋ"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "Do not show the notifier"
+msgstr "ਸੂਚਕ ਨਾ ਵੇਖਾਓ"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "hidden"
+msgstr "ਓਹਲੇ"
+
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#, kde-format
+msgid "Updates"
+msgstr "ਅੱਪਡੇਟ"
+
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Open Discover…"
+msgstr "…ਡਿਸਕਵਰ ਖੋਲ੍ਹੋ"
+
+#: notifier/NotifierItem.cpp:55
+#, kde-format
+msgid "See Updates…"
+msgstr "…ਅੱਪਡੇਟ ਵੇਖੋ"
+
+#: notifier/NotifierItem.cpp:60
+#, kde-format
+msgid "Refresh…"
+msgstr "…ਤਾਜ਼ਾ ਕਰੋ"
+
+#: notifier/NotifierItem.cpp:64
+#, kde-format
+msgid "Restart to apply installed updates"
+msgstr "ਇੰਸਟਾਲ ਕੀਤੇ ਅੱਪਡੇਟ ਲਾਗੂ ਕਰਨ ਲਈ ਮੁੜ-ਚਾਲੂ ਕਰੋ"
+
+#: notifier/NotifierItem.cpp:65
+#, kde-format
+msgid "Click to restart the device"
+msgstr "ਡਿਵਾਈਸ ਨੂੰ ਮੁੜ-ਚਾਲੂ ਕਰਨ ਲਈ ਕਲਿੱਕ ਕਰੋ"
+
+#~ msgid "Restart..."
+#~ msgstr "...ਮੁੜ-ਚਾਲੂ ਕਰੋ"
+
+#~ msgctxt "First part of '%1, %2'"
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "ਅੱਪਡੇਟ ਲਈ 1 ਪੈਕੇਜ"
+#~ msgstr[1] "ਅੱਪਡੇਟ ਲਈ %1 ਪੈਕੇਜ"
+
+#~ msgctxt "Second part of '%1, %2'"
+#~ msgid "of which 1 is security update"
+#~ msgid_plural "of which %1 are security updates"
+#~ msgstr[0] "1 ਸੁਰੱਖਿਆ ਅੱਪਡੇਟ"
+#~ msgstr[1] "%1 ਸੁਰੱਖਿਆ ਅੱਪਡੇਟ"
+
+#~ msgctxt ""
+#~ "%1 is '%1 packages to update' and %2 is 'of which %1 is security updates'"
+#~ msgid "%1, %2"
+#~ msgstr "%1, %2"
+
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "ਅੱਪਡੇਟ ਲਈ 1 ਪੈਕੇਜ"
+#~ msgstr[1] "ਅੱਪਡੇਟ ਲਈ %1 ਪੈਕੇਜ"
+
+#~ msgid "1 security update"
+#~ msgid_plural "%1 security updates"
+#~ msgstr[0] "1 ਸੁਰੱਖਿਆ ਅੱਪਡੇਟ"
+#~ msgstr[1] "%1 ਸੁਰੱਖਿਆ ਅੱਪਡੇਟ"
+
+#~ msgid "No packages to update"
+#~ msgstr "ਅੱਪਡੇਟ ਲਈ ਕੋਈ ਪੈਕੇਜ ਨਹੀਂ ਹੈ"

@@ -1,0 +1,105 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the discover package.
+#
+# Kishore G <kishore96@gmail.com>, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-08-25 21:33+0530\n"
+"Last-Translator: Kishore G <kishore96@gmail.com>\n"
+"Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.08.0\n"
+
+#: kcm/package/contents/ui/main.qml:32
+#, kde-format
+msgid "Update software:"
+msgstr "மென்பொருட்களை புதுப்பித்தல்:"
+
+#: kcm/package/contents/ui/main.qml:33
+#, kde-format
+msgid "Manually"
+msgstr "கைமுறையாக"
+
+#: kcm/package/contents/ui/main.qml:43
+#, kde-format
+msgid "Automatically"
+msgstr "தானாக"
+
+#: kcm/package/contents/ui/main.qml:50
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Software updates will be downloaded automatically when they become "
+"available. Updates for applications will be installed immediately, while "
+"system updates will be installed the next time the computer is restarted."
+msgstr ""
+"புதுப்பிப்புகள் கிடைக்கும்போது அவை தானாகவே பதிவிறக்கப்படும். செயலிகளுக்கான "
+"புதுப்பிப்புகள் உடனே நிறுவப்படும். மாறாக, இயங்குதள புதுப்பிப்புகள், அடுத்த முறை கணினி "
+"துவக்கப்படும்போது நிறுவப்படும்."
+
+#: kcm/package/contents/ui/main.qml:61
+#, kde-format
+msgctxt "@title:group"
+msgid "Update frequency:"
+msgstr "எவ்வளவு அடிக்கடி புதுப்பிக்க வேண்டும்:"
+
+#: kcm/package/contents/ui/main.qml:61
+#, kde-format
+msgctxt "@title:group"
+msgid "Notification frequency:"
+msgstr "எவ்வளவு அடிக்கடி அறிவிக்க வேண்டும்:"
+
+#: kcm/package/contents/ui/main.qml:64
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Daily"
+msgstr "ஒவ்வொரு நாளும்"
+
+#: kcm/package/contents/ui/main.qml:65
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Weekly"
+msgstr "ஒவ்வொரு வாரமும்"
+
+#: kcm/package/contents/ui/main.qml:66
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Monthly"
+msgstr "ஒவ்வொரு மாதமும்"
+
+#: kcm/package/contents/ui/main.qml:67
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Never"
+msgstr "ஒருபோதும் வேண்டாம்"
+
+#: kcm/package/contents/ui/main.qml:111
+#, kde-format
+msgid "Use offline updates:"
+msgstr "அமர்வுக்கு வெளியே புதுப்பி:"
+
+#: kcm/package/contents/ui/main.qml:123
+#, kde-format
+msgid ""
+"Offline updates maximize system stability by applying changes while "
+"restarting the system. Using this update mode is strongly recommended."
+msgstr ""
+"கணினியை மீள்துவக்கும்போது, அமர்வினுள் நுழையுமுன் புதுப்பிப்புகள் நடைபெறுமாறு இத்தேர்வு "
+"அமைக்கும். இதுவே பரிந்துரைக்கப்படும் பயன்முறையாகும்."
+
+#: kcm/updates.cpp:31
+#, kde-format
+msgid "Software Update"
+msgstr "மென்பொருள் புதுப்பிப்புகள்"
+
+#: kcm/updates.cpp:33
+#, kde-format
+msgid "Configure software update settings"
+msgstr "புதுப்பிப்புகளுக்கான விருப்பத்தேர்வுகளை அமையுங்கள்"

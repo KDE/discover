@@ -1,0 +1,203 @@
+# Burkhard Lück <lueck@hube-lueck.de>, 2015, 2018, 2019, 2020, 2021.
+# Frederik Schwarzer <schwarzer@kde.org>, 2015, 2022.
+# Frank Steinmetzger <dev@felsenfleischer.de>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"PO-Revision-Date: 2022-04-14 18:46+0200\n"
+"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"Language-Team: German <kde-i18n-doc@kde.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 21.12.3\n"
+
+#: notifier/DiscoverNotifier.cpp:144
+#, kde-format
+msgid "View Updates"
+msgstr "Aktualisierungen ansehen"
+
+#: notifier/DiscoverNotifier.cpp:256
+#, kde-format
+msgid "Security updates available"
+msgstr "Sicherheitskritische Aktualisierungen sind verfügbar"
+
+#: notifier/DiscoverNotifier.cpp:258
+#, kde-format
+msgid "Updates available"
+msgstr "Verfügbare Aktualisierungen"
+
+#: notifier/DiscoverNotifier.cpp:260
+#, kde-format
+msgid "System up to date"
+msgstr "Das System ist auf dem neuesten Stand"
+
+#: notifier/DiscoverNotifier.cpp:262
+#, kde-format
+msgid "Computer needs to restart"
+msgstr "Der Rechner muss neu gestartet werden"
+
+#: notifier/DiscoverNotifier.cpp:264
+#, kde-format
+msgid "Offline"
+msgstr "Offline"
+
+#: notifier/DiscoverNotifier.cpp:266
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr "Unbeaufsichtigte Aktualisierungen werden angewendet ..."
+
+#: notifier/DiscoverNotifier.cpp:300
+#, kde-format
+msgid "Restart is required"
+msgstr "Ein Neustart ist erforderlich"
+
+#: notifier/DiscoverNotifier.cpp:301
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr ""
+"Das System muss neu gestartet werden, damit die Aktualisierungen wirksam "
+"werden."
+
+#: notifier/DiscoverNotifier.cpp:307
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart"
+msgstr "Neu starten"
+
+# Hier gibt es drei verschiedene englische Vokabeln, die wir alle mit Aktualisieren/-ung übersetzen. Irgendwie bin ich nicht so glücklich damit.
+#: notifier/DiscoverNotifier.cpp:327
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "Aktualisieren"
+
+#: notifier/DiscoverNotifier.cpp:328
+#, kde-format
+msgid "Upgrade available"
+msgstr "Paketaktualisierung verfügbar"
+
+#: notifier/DiscoverNotifier.cpp:329
+#, kde-format
+msgid "New version: %1"
+msgstr "Neue Version: %1"
+
+#: notifier/main.cpp:39
+#, kde-format
+msgid "Discover Notifier"
+msgstr "Discover-Benachrichtigungen"
+
+#: notifier/main.cpp:41
+#, kde-format
+msgid "System update status notifier"
+msgstr "Statusbenachrichtigungen für Systemaktualisierungen"
+
+#: notifier/main.cpp:43
+#, kde-format
+msgid "© 2010-2022 Plasma Development Team"
+msgstr "Copyright © 2010-2022 Plasma-Entwicklerteam"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Deutsches KDE-Übersetzerteam"
+
+#: notifier/main.cpp:47
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde-i18n-de@kde.org"
+
+#: notifier/main.cpp:52
+#, kde-format
+msgid "Replace an existing instance"
+msgstr "Eine bestehende Instanz ersetzen"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "Do not show the notifier"
+msgstr "Benachrichtigungen nicht anzeigen"
+
+#: notifier/main.cpp:54
+#, kde-format
+msgid "hidden"
+msgstr "Ausgeblendet"
+
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#, kde-format
+msgid "Updates"
+msgstr "Aktualisierungen"
+
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Open Discover…"
+msgstr "Discover öffnen ..."
+
+#: notifier/NotifierItem.cpp:55
+#, kde-format
+msgid "See Updates…"
+msgstr "Aktualisierungen ansehen ..."
+
+#: notifier/NotifierItem.cpp:60
+#, kde-format
+msgid "Refresh…"
+msgstr "Aktualisieren ..."
+
+#: notifier/NotifierItem.cpp:64
+#, kde-format
+msgid "Restart to apply installed updates"
+msgstr "Neustart um die installierten Aktualisierungen zu verwenden"
+
+#: notifier/NotifierItem.cpp:65
+#, kde-format
+msgid "Click to restart the device"
+msgstr "Klicken Sie, um den Rechner neu zu starten"
+
+#~ msgid "Restart..."
+#~ msgstr "Neu starten ..."
+
+#~ msgid "Update"
+#~ msgstr "Aktualisierung"
+
+#~ msgid "Open Software Center..."
+#~ msgstr "Programmverwaltung öffnen ..."
+
+#~ msgctxt "First part of '%1, %2'"
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "1 Paket kann aktualisiert werden"
+#~ msgstr[1] "%1 Pakete können aktualisiert werden"
+
+#~ msgctxt "Second part of '%1, %2'"
+#~ msgid "of which 1 is security update"
+#~ msgid_plural "of which %1 are security updates"
+#~ msgstr[0] "1 davon ist sicherheitskritisch"
+#~ msgstr[1] "%1 davon sind sicherheitskritisch"
+
+#~ msgctxt ""
+#~ "%1 is '%1 packages to update' and %2 is 'of which %1 is security updates'"
+#~ msgid "%1, %2"
+#~ msgstr "%1, %2"
+
+#~ msgid "1 package to update"
+#~ msgid_plural "%1 packages to update"
+#~ msgstr[0] "1 Paket kann aktualisiert werden"
+#~ msgstr[1] "%1 Pakete können aktualisiert werden"
+
+#~ msgid "1 security update"
+#~ msgid_plural "%1 security updates"
+#~ msgstr[0] "1 Sicherheitsrelevante Aktualisierung"
+#~ msgstr[1] "%1 Sicherheitsrelevante Aktualisierungen"
+
+#~ msgid "No packages to update"
+#~ msgstr "Keine Pakete für Aktualisierung verfügbar"
+
+#~ msgid "%1 packages to update, of which %2 are security updates"
+#~ msgstr ""
+#~ "Aktualisierungen für %1 Pakete, davon sind %2 sicherheitskritische "
+#~ "Aktualisierungen"
