@@ -110,3 +110,5 @@ ecm_qt_install_logging_categories(
         FILE discover.categories
         DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
         )
+
+ki18n_install(po)
