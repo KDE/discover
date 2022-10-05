@@ -128,7 +128,7 @@ void PackageKitNotifier::checkOfflineUpdates()
                                  {},
                                  {},
                                  KNotification::CloseOnTimeout,
-                                 QStringLiteral("org.kde.discovernotifier"));
+                                 QStringLiteral("discoverabstractnotifier"));
 
             connect(trans, &PackageKit::Transaction::errorCode, this, [](PackageKit::Transaction::Error /*error*/, const QString &details) {
                 KNotification::event(QStringLiteral("OfflineUpdateRepairFailed"),
@@ -136,7 +136,7 @@ void PackageKitNotifier::checkOfflineUpdates()
                                      xi18nc("@info", "%1<nl/>Please report this error to your distribution.", details),
                                      {},
                                      KNotification::Persistent,
-                                     QStringLiteral("org.kde.discovernotifier"));
+                                     QStringLiteral("discoverabstractnotifier"));
             });
             connect(trans, &PackageKit::Transaction::finished, this, [] (PackageKit::Transaction::Exit status, uint runtime) {
                 qInfo() << "repair finished!" << status << runtime;
@@ -148,7 +148,7 @@ void PackageKitNotifier::checkOfflineUpdates()
                                          {},
                                          {},
                                          KNotification::CloseOnTimeout,
-                                         QStringLiteral("org.kde.discovernotifier"));
+                                         QStringLiteral("discoverabstractnotifier"));
                 }
             });
         });
