@@ -36,9 +36,9 @@ public:
     double sortableRating() const;
 
 private:
-    const QString m_packageName;
-    const quint64 m_ratingCount = 0;
-    const float m_rating = 0;
+    QString m_packageName;
+    quint64 m_ratingCount = 0;
+    float m_rating = 0;
     int m_ratingPoints = 0;
     double m_sortableRating = 0;
 };
