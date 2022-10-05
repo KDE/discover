@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-29 00:47+0000\n"
-"PO-Revision-Date: 2022-08-09 13:12+0200\n"
+"PO-Revision-Date: 2022-10-04 15:21+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -52,30 +52,27 @@ msgid "%1, released on %2"
 msgstr "%1, %2에 출시됨"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:177
-#, fuzzy, kde-format
-#| msgid "All Files"
+#, kde-format
 msgid "All Audiences"
-msgstr "모든 파일"
+msgstr "모두를 대상으로 함"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:178
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Mild Content"
-msgstr ""
+msgstr "부드러운 콘텐츠"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:179
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Moderate Content"
-msgstr ""
+msgstr "보통 콘텐츠"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:180
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Intense Content"
-msgstr "인터넷"
+msgstr "강력한 콘텐츠"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:155
 #, kde-format
@@ -581,10 +578,9 @@ msgstr "설치 크기 %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:487
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:441
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "'%1'을(를) 시작할 수 없음"
+msgstr "'%1'을(를) 시작할 수 없음: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:717
 #, kde-format
@@ -1874,7 +1870,7 @@ msgstr "미래"
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
-msgstr ""
+msgstr "업데이트를 할 공간이 부족합니다. 현재 %1 공간이 비어 있습니다."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:467
 #, kde-format
@@ -2071,12 +2067,11 @@ msgid "Launch"
 msgstr "실행"
 
 #: libdiscover/resources/AbstractResource.cpp:266
-#, fuzzy, kde-format
-#| msgid "Update to version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "버전 %1(으)로 업데이트"
+msgstr "버전 %1의 리프레시"
 
 #: libdiscover/resources/AbstractResource.cpp:276
 #, kde-format

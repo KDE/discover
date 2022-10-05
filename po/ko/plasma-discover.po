@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:46+0000\n"
-"PO-Revision-Date: 2022-08-09 13:12+0200\n"
+"PO-Revision-Date: 2022-10-04 15:20+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -333,23 +333,20 @@ msgid_plural "See more…"
 msgstr[0] "더 보기…"
 
 #: discover/qml/ApplicationPage.qml:409 discover/qml/ApplicationPage.qml:840
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "별점 입력"
+msgstr "내용 등급"
 
 #: discover/qml/ApplicationPage.qml:419
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "나이: %1+"
 
 #: discover/qml/ApplicationPage.qml:443
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr "더 보기…"
+msgstr "자세한 정보 보기…"
 
 #: discover/qml/ApplicationPage.qml:539
 #, kde-format
@@ -385,19 +382,18 @@ msgstr "추가 기능 설치 및 삭제"
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "공유"
 
 #: discover/qml/ApplicationPage.qml:594
-#, fuzzy, kde-format
-#| msgid "Unable to load applications"
+#, kde-format
 msgid "Send a link to the application"
-msgstr "프로그램을 불러올 수 없음"
+msgstr "앱 링크 보내기"
 
 #: discover/qml/ApplicationPage.qml:610
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "%1 앱을 확인해 보세요!"
 
 #: discover/qml/ApplicationPage.qml:630
 #, kde-format
@@ -846,7 +842,7 @@ msgstr "투표: %1/%2"
 #: discover/qml/ReviewDelegate.qml:102
 #, kde-format
 msgid "Was this review useful?"
-msgstr "이 리뷰가 유용합니까ㅗ"
+msgstr "이 리뷰가 유용합니까?"
 
 #: discover/qml/ReviewDelegate.qml:114
 #, kde-format
@@ -909,7 +905,7 @@ msgstr "너무 깁니다!"
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "이름 입력"
 
 #: discover/qml/ReviewDialog.qml:79
 #, kde-format
@@ -1053,7 +1049,7 @@ msgstr "모두 업데이트"
 #: discover/qml/UpdatesPage.qml:168
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "무시"
 
 #: discover/qml/UpdatesPage.qml:214
 #, kde-format
