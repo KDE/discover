@@ -175,9 +175,9 @@ QString AppStreamUtils::contentRatingText(const AppStream::Component &appdata)
     static QStringList texts = {
         {},
         i18n("All Audiences"),
-        i18nc("As specified in OARS, intensity of contents", "Mild Content"),
-        i18nc("As specified in OARS, intensity of contents", "Moderate Content"),
-        i18nc("As specified in OARS, intensity of contents", "Intense Content"),
+        i18nc("As specified in OARS, intensity of contents", "Mild or Infrequent Use of Profanity"),
+        i18nc("As specified in OARS, intensity of contents", "Moderate Use of Profanity"),
+        i18nc("As specified in OARS, intensity of contents", "Strong or Frequent Use of Profanity"),
     };
     return texts[intensity];
 #else
