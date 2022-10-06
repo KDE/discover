@@ -682,7 +682,7 @@ msgstr "Ú&ltima versió"
 #, kde-format
 msgctxt "Update section name"
 msgid "&Update (%1)"
-msgstr "Act&ualisa (%1)"
+msgstr "Act&ualitza (%1)"
 
 #: discover/qml/DiscoverWindow.qml:86
 #, kde-format
