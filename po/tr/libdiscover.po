@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-29 00:47+0000\n"
-"PO-Revision-Date: 2022-09-05 17:23+0300\n"
+"PO-Revision-Date: 2022-10-08 12:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.0\n"
+"X-Generator: Lokalize 22.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1429,7 +1429,7 @@ msgstr "Bekleniyor…"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
 #, kde-format
 msgid "Refreshing Cache…"
-msgstr "Önbellek Tazeleniyor…"
+msgstr "Önbellek Yenileniyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
 #, kde-format
@@ -1530,55 +1530,55 @@ msgstr "İşlem ayarlanıyor…"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
 #, kde-format
 msgid "The transaction is currently working…"
-msgstr "İşlem şu anda çalışıyor…"
+msgstr "İşlem, şu anda çalışıyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
 #, kde-format
 msgid "The transaction is currently removing packages…"
-msgstr "İşlem şu anda paketleri kaldırıyor…"
+msgstr "İşlem, şu anda paketleri kaldırıyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
 #, kde-format
 msgid "The transaction is currently downloading packages…"
-msgstr "İşlem şu anda paketleri indiriyor…"
+msgstr "İşlem, şu anda paketleri indiriyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
 #, kde-format
 msgid "The transactions is currently installing packages…"
-msgstr "İşlem şu anda paketleri kuruyor…"
+msgstr "İşlem, şu anda paketleri kuruyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
 #, kde-format
 msgid "The transaction is currently updating packages…"
-msgstr "İşlem şu anda paketleri güncelleştiriyor…"
+msgstr "İşlem, şu anda paketleri güncelleştiriyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
 #, kde-format
 msgid "The transaction is currently cleaning up…"
-msgstr "İşlem şu anda temizleme yapıyor…"
+msgstr "İşlem, şu anda temizleme yapıyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
 #, kde-format
 msgid ""
 "The transaction is currently resolving the dependencies of the packages it "
 "will install…"
-msgstr "İşlem şu anda kurulacak paketlerin bağımlılıkları çözüyor…"
+msgstr "İşlem, şu anda kurulacak paketlerin bağımlılıkları çözüyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
 #, kde-format
 msgid "The transaction is currently checking the signatures of the packages…"
-msgstr "İşlem şu anda paketlerin imzalarını denetliyor…"
+msgstr "İşlem, şu anda paketlerin imzalarını denetliyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
 #, kde-format
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
-msgstr "İşlem şu anda bu paket dizisi gönderisini sınıyor…"
+msgstr "İşlem, şu anda bu paket dizisi gönderisini sınıyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
-msgstr "İşlem şu anda paket kümesini işliyor…"
+msgstr "İşlem, şu anda paket kümesini işliyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
@@ -1608,7 +1608,7 @@ msgstr "İşlem şu anda dosyaları kopyalıyor…"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
 #, kde-format
 msgid "Currently refreshing the repository cache…"
-msgstr "Depo ön belleği şimdi tazeleniyor…"
+msgstr "Depo ön belleği şimdi yenileniyor…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
 #, kde-format
