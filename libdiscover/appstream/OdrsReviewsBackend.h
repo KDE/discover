@@ -59,6 +59,10 @@ public:
     void submitUsefulness(Review *review, bool useful) override;
     bool isResourceSupported(AbstractResource *res) const override;
     void emitRatingFetched(AbstractResourcesBackend *backend, const QList<AbstractResource *> &res) const;
+    QString errorMessage() const override
+    {
+        return m_errorMessage;
+    }
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
@@ -74,11 +78,13 @@ protected:
     QString userName() const override;
 
 private:
+    void fetchRatings();
     void setFetching(bool);
     QNetworkAccessManager *nam();
     void parseRatings();
     void parseReviews(const QJsonDocument &document, AbstractResource *resource);
 
+    QString m_errorMessage;
     QHash<QString, Rating *> m_ratings;
     bool m_isFetching = false;
     CachedNetworkAccessManager *m_delayedNam = nullptr;

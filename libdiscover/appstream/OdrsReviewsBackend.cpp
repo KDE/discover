@@ -31,6 +31,8 @@
 #include <QStandardPaths>
 
 #include <QFutureWatcher>
+#include <QNetworkConfiguration>
+#include <QNetworkConfigurationManager>
 #include <QtConcurrentRun>
 
 // #define APIURL "http://127.0.0.1:5000/1.0/reviews/api"
@@ -38,6 +40,27 @@
 
 OdrsReviewsBackend::OdrsReviewsBackend()
     : AbstractReviewsBackend(nullptr)
+{
+    fetchRatings();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    QNetworkConfigurationManager *manager = new QNetworkConfigurationManager(this);
+
+    connect(manager, &QNetworkConfigurationManager::onlineStateChanged, this, [this](bool online) {
+        if (online && !m_errorMessage.isEmpty()) {
+            m_errorMessage.clear();
+            Q_EMIT errorMessageChanged();
+            fetchRatings();
+        }
+    });
+#endif
+}
+
+OdrsReviewsBackend::~OdrsReviewsBackend() noexcept
+{
+    qDeleteAll(m_ratings);
+}
+
+void OdrsReviewsBackend::fetchRatings()
 {
     bool fetchRatings = false;
     const QUrl ratingsUrl(QStringLiteral(APIURL "/ratings"));
@@ -57,6 +80,7 @@ OdrsReviewsBackend::OdrsReviewsBackend()
         fetchRatings = true;
     }
 
+    qDebug() << "fetch ratings!" << fetchRatings;
     if (fetchRatings) {
         setFetching(true);
         KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl, fileUrl, -1, KIO::Overwrite | KIO::HideProgressInfo);
@@ -64,11 +88,6 @@ OdrsReviewsBackend::OdrsReviewsBackend()
     } else {
         parseRatings();
     }
-}
-
-OdrsReviewsBackend::~OdrsReviewsBackend() noexcept
-{
-    qDeleteAll(m_ratings);
 }
 
 void OdrsReviewsBackend::setFetching(bool fetching)
@@ -152,7 +171,8 @@ void OdrsReviewsBackend::reviewsFetched()
     const auto networkError = reply->error();
     if (networkError != QNetworkReply::NoError) {
         qCWarning(LIBDISCOVER_LOG) << "error fetching reviews:" << reply->errorString() << data;
-        Q_EMIT error(i18n("Error while fetching reviews: %1", reply->errorString()));
+        m_errorMessage = i18n("Error while fetching reviews: %1", reply->errorString());
+        Q_EMIT errorMessageChanged();
         setFetching(false);
         return;
     }

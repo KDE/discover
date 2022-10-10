@@ -656,17 +656,25 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.maximumWidth: Kirigami.Units.gridUnit * 15
                 Layout.bottomMargin: appInfo.internalSpacings * 2
-                visible: reviewsModel.fetching
+                visible: reviewsModel.fetching && !reviewsError.visible
                 text: i18n("Loading reviews for %1", appInfo.application.name)
             }
 
             Kirigami.Heading {
                 Layout.fillWidth: true
-                visible: rep.count > 0
+                visible: rep.count > 0 || reviewsError.visible
                 text: i18n("Reviews")
                 level: 2
                 type: Kirigami.Heading.Type.Primary
                 wrapMode: Text.Wrap
+            }
+
+            Kirigami.InlineMessage {
+                id: reviewsError
+                type: Kirigami.MessageType.Warning
+                Layout.fillWidth: true
+                visible: reviewsModel.backend && text.length > 0
+                text: reviewsModel.backend ? reviewsModel.backend.errorMessage : ""
             }
 
             // Top three reviews
@@ -702,7 +710,7 @@ DiscoverPage {
                 }
 
                 Button {
-                    visible: appbutton.isStateAvailable && reviewsModel.backend && reviewsModel.backend.isResourceSupported(appInfo.application)
+                    visible: appbutton.isStateAvailable && reviewsModel.backend && !reviewsError.visible && reviewsModel.backend.isResourceSupported(appInfo.application)
                     enabled: appInfo.application.isInstalled
 
                     text: appInfo.application.isInstalled ? i18n("Write a Review") : i18n("Install to Write a Review")
