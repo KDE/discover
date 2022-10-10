@@ -8,6 +8,7 @@
 #include "DummyBackend.h"
 #include "DummyResource.h"
 #include <QDebug>
+#include <QRandomGenerator>
 #include <QTimer>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
@@ -60,9 +61,8 @@ void DummyReviewsBackend::initialize()
     for (DummyResource *app : resources) {
         if (m_ratings.contains(app))
             continue;
-        auto randomRating = qrand() % 10;
 
-        int ratings[] = {0, 0, 0, 0, 0, randomRating};
+        int ratings[] = {0, 0, 0, 0, 0, QRandomGenerator::global()->bounded(0, 10)};
         Rating *rating = new Rating(app->packageName(), ++i, ratings);
         m_ratings.insert(app, rating);
         Q_EMIT app->ratingFetched();

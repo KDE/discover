@@ -1422,7 +1422,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
             fw->setFuture(QtConcurrent::run(&m_threadPool, [installations, cancellable] {
                 QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
 
-                for (auto installation : installations) {
+                for (auto installation : std::as_const(installations)) {
                     g_autoptr(GError) localError = nullptr;
                     g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
                     if (!refs) {
