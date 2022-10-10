@@ -18,6 +18,8 @@ ListView {
     property bool showNavigationArrows: true
     property alias resource: screenshotsModel.application
     property var resource
+    property int failedCount: 0
+    readonly property bool hasFailed: failedCount === count
 
     spacing: Kirigami.Units.largeSpacing
     focus: overlay.visible
@@ -35,10 +37,11 @@ ListView {
 
     delegate: AbstractButton {
         readonly property url imageSource: large_image_url
-        readonly property real proportion: thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
+        readonly property real proportion: thumbnail.status === Image.Ready && thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
 
         implicitWidth: root.delegateHeight / proportion
         implicitHeight: root.delegateHeight
+        opacity: hovered ? 0.7 : 1
 
         hoverEnabled: true
         onClicked: {
@@ -55,10 +58,21 @@ ListView {
 
             BusyIndicator {
                 visible: running
-                running: thumbnail.status == Image.Loading
+                running: thumbnail.status === Image.Loading
                 anchors.centerIn: parent
             }
+            Kirigami.Icon {
+                anchors.fill: parent
+                anchors.margins: Kirigami.Units.gridUnit
+                visible: thumbnail.status === Image.Error
+                source: "emblem-error"
+            }
             source: small_image_url
+            onStatusChanged: {
+                if (status === Image.Error) {
+                    root.failedCount += 1;
+                }
+            }
         }
     }
 
@@ -72,14 +86,20 @@ ListView {
         x: (parent.width - width)/2
         y: (parent.height - height)/2
         readonly property real proportion: overlayImage.sourceSize.width>1 ? overlayImage.sourceSize.height/overlayImage.sourceSize.width : 1
-        height: overlayImage.status == Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
+        height: overlayImage.status >= Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
         width: (height - 2 * padding)/proportion
 
         BusyIndicator {
             id: indicator
             visible: running
-            running: overlayImage.status == Image.Loading
+            running: overlayImage.status === Image.Loading
+            anchors.centerIn: parent
+        }
+
+        Kirigami.Icon {
             anchors.fill: parent
+            visible: overlayImage.status === Image.Error
+            source: "emblem-error"
         }
 
         AnimatedImage {

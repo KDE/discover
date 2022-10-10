@@ -196,9 +196,17 @@ DiscoverPage {
                 }
 
                 // Screenshots
+                Kirigami.InlineMessage {
+                    type: Kirigami.MessageType.Warning
+                    Layout.fillWidth: true
+                    Layout.margins: Kirigami.Units.smallSpacing
+                    visible: screenshots.hasFailed
+                    text: i18n("Could not access the screenshots")
+                }
+
                 ScrollView {
                     id: screenshotsScroll
-                    visible: screenshots.count > 0
+                    visible: screenshots.count > 0 && !screenshots.hasFailed
                     Layout.maximumWidth: headerLayout.width
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredHeight: Math.min(Kirigami.Units.gridUnit * 20, Window.height * 0.25)
