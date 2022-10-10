@@ -179,7 +179,11 @@ void FlatpakTransactionThread::run()
 
     m_result = flatpak_transaction_run(m_transaction, m_cancellable, &localError);
     if (!m_result) {
-        m_errorMessage = QString::fromUtf8(localError->message);
+        if (localError->code == FLATPAK_ERROR_REF_NOT_FOUND) {
+            m_errorMessage = i18n("Could not find '%1' in '%2'; please make sure it's available.", refName, m_app->origin());
+        } else {
+            m_errorMessage = QString::fromUtf8(localError->message);
+        }
 #if defined(FLATPAK_LIST_UNUSED_REFS)
     } else {
         const auto installation = flatpak_transaction_get_installation(m_transaction);
