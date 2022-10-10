@@ -1434,6 +1434,10 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                         return ret;
                     }
 
+                    if (refs->len == 0) {
+                        continue;
+                    }
+
                     auto &current = ret[installation];
                     current.reserve(refs->len);
                     for (uint i = 0; i < refs->len; i++) {
