@@ -179,10 +179,16 @@ QString AppStreamUtils::contentRatingText(const AppStream::Component &appdata)
 
     static QStringList texts = {
         {},
-        i18n("All Audiences"),
-        i18nc("As specified in OARS, intensity of contents", "Mild Content"),
-        i18nc("As specified in OARS, intensity of contents", "Moderate Content"),
-        i18nc("As specified in OARS, intensity of contents", "Intense Content"),
+        i18nc("Open Age Ratings Service (https://hughsie.github.io/oars) description of content suitable for everyone", "All Audiences"),
+        i18nc("Open Age Ratings Service (https://hughsie.github.io/oars) description of content with relatively benign themes only unsuitable for very young "
+              "children, such as minor cartoon violence or mild profanity",
+              "Mild Content"),
+        i18nc("Open Age Ratings Service (https://hughsie.github.io/oars) description of content with some intense themes, such as somewhat realistic "
+              "violence, references to sexuality, or adult profanity",
+              "Moderate Content"),
+        i18nc("Open Age Ratings Service (https://hughsie.github.io/oars) description of mature content that could be quite objectionable or unsuitable for "
+              "young audiences, such as realistic graphic violence, extreme profanity or nudity, or glorification of drug use",
+              "Intense Content"),
     };
     return texts[intensity];
 #else
