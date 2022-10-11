@@ -35,6 +35,8 @@ public:
     FlatpakTest(QObject *parent = nullptr)
         : QObject(parent)
     {
+        QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-test")).removeRecursively();
+
         QStandardPaths::setTestModeEnabled(true);
         qputenv("FLATPAK_TEST_MODE", "ON");
         m_model = new ResourcesModel(QStringLiteral("flatpak-backend"), this);
@@ -44,8 +46,6 @@ public:
 private Q_SLOTS:
     void initTestCase()
     {
-        QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-test")).removeRecursively();
-
         QVERIFY(m_appBackend);
         while (m_appBackend->isFetching()) {
             QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::fetchingChanged);
@@ -128,7 +128,7 @@ private:
         });
         while (t && spyInstalled.count() == 0) {
             qDebug() << "waiting, currently" << ret << spyInstalled.count() << destructionSpy.count();
-            spyInstalled.wait(100);
+            spyInstalled.wait(1000);
         }
         Q_ASSERT(destructionSpy.count() || destructionSpy.wait());
         return ret;
