@@ -304,13 +304,14 @@ FlatpakBackend::FlatpakBackend(QObject *parent)
 FlatpakBackend::~FlatpakBackend()
 {
     g_cancellable_cancel(m_cancellable);
-    for (auto inst : qAsConst(m_installations))
-        g_object_unref(inst);
     if (!m_threadPool.waitForDone(200)) {
         qDebug() << "could not kill them all" << m_threadPool.activeThreadCount();
     }
     m_threadPool.clear();
 
+    for (auto inst : qAsConst(m_installations))
+        g_object_unref(inst);
+    m_installations.clear();
     g_object_unref(m_cancellable);
 }
 
@@ -1421,6 +1422,10 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
             auto cancellable = m_cancellable;
             fw->setFuture(QtConcurrent::run(&m_threadPool, [installations, cancellable] {
                 QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
+                if (g_cancellable_is_cancelled(cancellable)) {
+                    qWarning() << "Job cancelled";
+                    return ret;
+                }
 
                 for (auto installation : std::as_const(installations)) {
                     g_autoptr(GError) localError = nullptr;
@@ -1431,7 +1436,8 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     }
                     if (g_cancellable_is_cancelled(cancellable)) {
                         qWarning() << "Job cancelled";
-                        return ret;
+                        ret.clear();
+                        break;
                     }
 
                     if (refs->len == 0) {
