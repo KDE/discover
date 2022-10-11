@@ -121,8 +121,10 @@ private:
         QSignalSpy destructionSpy(t, &QObject::destroyed);
 
         Transaction::Status ret = t->status();
-        connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, [t, &ret] {
-            ret = t->status();
+        connect(TransactionModel::global(), &TransactionModel::transactionRemoved, t, [t, &ret](Transaction *trans) {
+            if (trans == t) {
+                ret = trans->status();
+            }
         });
         while (t && spyInstalled.count() == 0) {
             qDebug() << "waiting, currently" << ret << spyInstalled.count() << destructionSpy.count();
