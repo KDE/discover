@@ -1137,7 +1137,7 @@ bool FlatpakBackend::setupFlatpakInstallations(GError **error)
         qDebug() << "running flatpak backend on test mode" << path;
         g_autoptr(GFile) file = g_file_new_for_path(QFile::encodeName(path).constData());
         m_installations << flatpak_installation_new_for_path(file, true, m_cancellable, error);
-        return true;
+        return m_installations.constLast() != nullptr;
     }
 
     g_autoptr(GPtrArray) installations = flatpak_get_system_installations(m_cancellable, error);
