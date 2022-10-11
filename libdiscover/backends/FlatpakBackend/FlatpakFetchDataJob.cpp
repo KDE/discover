@@ -28,7 +28,7 @@ FlatpakRemoteRef *findRemoteRef(FlatpakResource *app, GCancellable *cancellable)
                                                                FLATPAK_QUERY_FLAGS_ONLY_CACHED,
                                                                cancellable,
                                                                &localError);
-    if (!ret) {
+    if (!ret && !g_cancellable_is_cancelled(cancellable)) {
         qWarning() << "Failed to find:" << name << arch << branch << "in" << origin << localError->message;
         return {};
     }
