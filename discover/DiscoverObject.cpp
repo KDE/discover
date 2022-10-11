@@ -112,8 +112,9 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
         return new PlasmaUserFeedback(KSharedConfig::openConfig(QStringLiteral("PlasmaUserFeedback"), KConfig::NoGlobals));
     });
 #endif
-    qmlRegisterSingletonType<DiscoverSettings>("org.kde.discover.app", 1, 0, "DiscoverSettings", [](QQmlEngine *, QJSEngine *) -> QObject * {
+    qmlRegisterSingletonType<DiscoverSettings>("org.kde.discover.app", 1, 0, "DiscoverSettings", [](QQmlEngine *engine, QJSEngine *) -> QObject * {
         auto r = new DiscoverSettings;
+        r->setParent(engine);
         connect(r, &DiscoverSettings::installedPageSortingChanged, r, &DiscoverSettings::save);
         connect(r, &DiscoverSettings::appsListPageSortingChanged, r, &DiscoverSettings::save);
         return r;
