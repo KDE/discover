@@ -12,7 +12,7 @@ namespace FlatpakRunnables
 FlatpakRemoteRef *findRemoteRef(FlatpakResource *app, GCancellable *cancellable)
 {
     if (app->origin().isEmpty()) {
-        qWarning() << "Failed to get metadata file because of missing origin";
+        qWarning("Failed to get metadata file because of missing origin");
         return nullptr;
     }
 
@@ -28,9 +28,8 @@ FlatpakRemoteRef *findRemoteRef(FlatpakResource *app, GCancellable *cancellable)
                                                                FLATPAK_QUERY_FLAGS_ONLY_CACHED,
                                                                cancellable,
                                                                &localError);
-    if (!ret) {
-        qWarning() << "Failed to find:" << app->ref() << "in" << origin << localError->message;
-        return {};
+    if (localError) {
+        qWarning("Failed to find ref");
     }
     return ret;
 }
@@ -39,7 +38,10 @@ QByteArray fetchMetadata(FlatpakResource *app, GCancellable *cancellable)
 {
     FlatpakRemoteRef *remoteRef = findRemoteRef(app, cancellable);
     if (!remoteRef) {
-        qDebug() << "failed to find the remote" << app->name();
+        if (!g_cancellable_is_cancelled(cancellable)) {
+            qDebug() << "failed to find the remote" << app->name();
+        }
+
         return {};
     }
 
