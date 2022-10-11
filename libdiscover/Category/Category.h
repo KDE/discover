@@ -16,6 +16,7 @@
 #include "discovercommon_export.h"
 
 class QDomNode;
+class QTimer;
 
 enum FilterType {
     InvalidFilter,
@@ -93,6 +94,7 @@ private:
     QVector<QPair<FilterType, QString>> parseIncludes(const QDomNode &data);
     QSet<QString> m_plugins;
     bool m_isAddons = false;
+    QTimer *m_subCategoriesChanged;
 };
 
 #endif
