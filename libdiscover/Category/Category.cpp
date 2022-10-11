@@ -7,6 +7,7 @@
 #include "Category.h"
 
 #include <QDomNode>
+#include <QTimer>
 
 #include "libdiscover_debug.h"
 #include <KLocalizedString>
@@ -19,6 +20,12 @@ Category::Category(QSet<QString> pluginName, QObject *parent)
     , m_iconString(QStringLiteral("applications-other"))
     , m_plugins(std::move(pluginName))
 {
+    // Use a timer so to compress the rootCategoriesChanged signal
+    // It generally triggers when KNS is unavailable at large (as explained in bug 454442)
+    m_subCategoriesChanged = new QTimer(this);
+    m_subCategoriesChanged->setInterval(0);
+    m_subCategoriesChanged->setSingleShot(true);
+    connect(m_subCategoriesChanged, &QTimer::timeout, this, &Category::subCategoriesChanged);
 }
 
 Category::Category(const QString &name,
@@ -36,6 +43,13 @@ Category::Category(const QString &name,
     , m_isAddons(isAddons)
 {
     setObjectName(m_name);
+
+    // Use a timer so to compress the rootCategoriesChanged signal
+    // It generally triggers when KNS is unavailable at large (as explained in bug 454442)
+    m_subCategoriesChanged = new QTimer(this);
+    m_subCategoriesChanged->setInterval(0);
+    m_subCategoriesChanged->setSingleShot(true);
+    connect(m_subCategoriesChanged, &QTimer::timeout, this, &Category::subCategoriesChanged);
 }
 
 Category::~Category() = default;
@@ -232,8 +246,9 @@ bool Category::blacklistPlugins(const QSet<QString> &pluginNames)
         return true;
     }
 
-    if (blacklistPluginsInVector(pluginNames, m_subCategories))
-        Q_EMIT subCategoriesChanged();
+    if (blacklistPluginsInVector(pluginNames, m_subCategories)) {
+        m_subCategoriesChanged->start();
+    }
     return false;
 }
 
