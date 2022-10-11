@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-29 00:47+0000\n"
+"POT-Creation-Date: 2022-10-11 00:48+0000\n"
 "PO-Revision-Date: 2021-08-21 16:08+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -530,24 +530,24 @@ msgstr "%1 (naudotojas)"
 msgid "Local bundle"
 msgstr "Vietinis paketas"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1587
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1591
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Netaisyklingas appstream url „%1“"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1689
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1693
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to add source '%1': %2"
 msgstr "Nepavyko paleisti „%1“"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1806
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1814
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to load \"%1\" source"
@@ -954,7 +954,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:144
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
 #, kde-format
 msgid "Log in information for %1"
 msgstr "%1 prisijungimo informacija"
