@@ -160,6 +160,6 @@ private:
     AbstractResourcesBackend *m_appBackend;
 };
 
-QTEST_MAIN(FlatpakTest)
+QTEST_GUILESS_MAIN(FlatpakTest)
 
 #include "FlatpakTest.moc"
