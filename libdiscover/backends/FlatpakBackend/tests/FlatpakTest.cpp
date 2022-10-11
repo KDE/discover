@@ -83,16 +83,16 @@ private Q_SLOTS:
     void testInstallApp()
     {
         AbstractResourcesBackend::Filters f;
-        f.resourceUrl = QUrl(QStringLiteral("appstream://com.github.rssguard.desktop"));
+        f.resourceUrl = QUrl(QStringLiteral("appstream://dosbox.desktop"));
         const auto res = getResources(m_appBackend->search(f));
         QCOMPARE(res.count(), 1);
 
-        const auto resRssguard = res.constFirst();
-        QCOMPARE(resRssguard->state(), AbstractResource::None);
-        QCOMPARE(waitTransaction(m_appBackend->installApplication(resRssguard)), Transaction::DoneStatus);
-        QCOMPARE(resRssguard->state(), AbstractResource::Installed);
-        QCOMPARE(waitTransaction(m_appBackend->removeApplication(resRssguard)), Transaction::DoneStatus);
-        QCOMPARE(resRssguard->state(), AbstractResource::None);
+        const auto ourResource = res.constFirst();
+        QCOMPARE(ourResource->state(), AbstractResource::None);
+        QCOMPARE(waitTransaction(m_appBackend->installApplication(ourResource)), Transaction::DoneStatus);
+        QCOMPARE(ourResource->state(), AbstractResource::Installed);
+        QCOMPARE(waitTransaction(m_appBackend->removeApplication(ourResource)), Transaction::DoneStatus);
+        QCOMPARE(ourResource->state(), AbstractResource::None);
     }
     /*
         void testCancelInstallation()
