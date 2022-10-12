@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:46+0000\n"
+"POT-Creation-Date: 2022-10-12 00:47+0000\n"
 "PO-Revision-Date: 2022-07-24 14:43+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 22.07.70\n"
 
-#: discover/DiscoverObject.cpp:156
+#: discover/DiscoverObject.cpp:157
 #, fuzzy, kde-format
 #| msgid ""
 #| "Discover currently cannot be used to install any apps because none of its "
@@ -29,7 +29,7 @@ msgstr ""
 "werden, da keines seiner Anwendungen-Backends verfügbar ist. Berichten Sie "
 "bitte dieses Problem an das entsprechende Paket-Team Ihrer Distribution."
 
-#: discover/DiscoverObject.cpp:160
+#: discover/DiscoverObject.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -38,13 +38,13 @@ msgid ""
 "as a packaging issue to your distribution."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:165 discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr "Dieses Problem berichten"
 
-#: discover/DiscoverObject.cpp:170
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -55,17 +55,17 @@ msgid ""
 "Arch Linux."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:178
+#: discover/DiscoverObject.cpp:179
 #, kde-format
 msgid "Learn More"
 msgstr "Mehr erfahren"
 
-#: discover/DiscoverObject.cpp:266
+#: discover/DiscoverObject.cpp:267
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Die Kategorie „%1“ wurde nicht gefunden"
 
-#: discover/DiscoverObject.cpp:303
+#: discover/DiscoverObject.cpp:304
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -74,18 +74,18 @@ msgstr ""
 "Die Bearbeitung von Flatpack-Ressourcen ist ohne das Flatpak-Backend %1 "
 "nicht möglich. Installieren Sie es zuerst."
 
-#: discover/DiscoverObject.cpp:307
+#: discover/DiscoverObject.cpp:308
 #, kde-format
 msgid "Could not open %1"
 msgstr "„%1“ kann nicht geöffnet werden"
 
-#: discover/DiscoverObject.cpp:335
+#: discover/DiscoverObject.cpp:336
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr ""
 "Bitten stellen Sie sicher, dass Unterstützung für Snaps installiert ist"
 
-#: discover/DiscoverObject.cpp:337
+#: discover/DiscoverObject.cpp:338
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid ""
@@ -98,18 +98,18 @@ msgstr ""
 "%1<nl/>Berichten Sie bitte diesen Fehler an die Paketbetreuer Ihrer "
 "Distribution."
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:341
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Berichten Sie bitte diesen Fehler an Ihre Distribution."
 
-#: discover/DiscoverObject.cpp:405 discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
 #: discover/main.cpp:119
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:407
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:46+0000\n"
+"POT-Creation-Date: 2022-10-12 00:47+0000\n"
 "PO-Revision-Date: 2022-08-20 23:24-0700\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Text-Markup: kde4\n"
 "X-Generator: Lokalize 22.04.1\n"
 
-#: discover/DiscoverObject.cpp:156
+#: discover/DiscoverObject.cpp:157
 #, kde-format
 msgid ""
 "Discover currently cannot be used to install any apps or perform system "
@@ -27,7 +27,7 @@ msgstr ""
 "いずれのバックエンドも利用できないため、現在 Discover はアプリケーションのイ"
 "ンストールやシステムの更新ができません。"
 
-#: discover/DiscoverObject.cpp:160
+#: discover/DiscoverObject.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -39,13 +39,13 @@ msgstr ""
 "interface>セクションでインストールできます。<nl/><nl/>これをパッケージの問題"
 "としてご使用のディストリビューションに報告することもご検討ください。"
 
-#: discover/DiscoverObject.cpp:165 discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr "この問題を報告する"
 
-#: discover/DiscoverObject.cpp:170
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -61,17 +61,17 @@ msgstr ""
 "<command>pacman</command> を使用したパッケージの管理を推奨していることに注意"
 "してください。"
 
-#: discover/DiscoverObject.cpp:178
+#: discover/DiscoverObject.cpp:179
 #, kde-format
 msgid "Learn More"
 msgstr "詳細を確認する"
 
-#: discover/DiscoverObject.cpp:266
+#: discover/DiscoverObject.cpp:267
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "カテゴリ '%1' が見つかりませんでした。"
 
-#: discover/DiscoverObject.cpp:303
+#: discover/DiscoverObject.cpp:304
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -80,17 +80,17 @@ msgstr ""
 "flatpak バックエンドの %1 がないと、flatpak リソースと対話できません。最初に"
 "インストールしてください。"
 
-#: discover/DiscoverObject.cpp:307
+#: discover/DiscoverObject.cpp:308
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 を開けませんでした。"
 
-#: discover/DiscoverObject.cpp:335
+#: discover/DiscoverObject.cpp:336
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Snap サポートがインストールされていることを確認してください"
 
-#: discover/DiscoverObject.cpp:337
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -99,18 +99,18 @@ msgstr ""
 "利用可能なソフトウェアリポジトリに見つからなかったため、%1 を開けませんでし"
 "た。"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:341
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "この問題をディストリビューションのパッケージャに報告してください。"
 
-#: discover/DiscoverObject.cpp:405 discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
 #: discover/main.cpp:119
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:407
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

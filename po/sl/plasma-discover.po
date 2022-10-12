@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:46+0000\n"
+"POT-Creation-Date: 2022-10-12 00:47+0000\n"
 "PO-Revision-Date: 2022-09-19 12:01+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: discover/DiscoverObject.cpp:156
+#: discover/DiscoverObject.cpp:157
 #, kde-format
 msgid ""
 "Discover currently cannot be used to install any apps or perform system "
@@ -29,7 +29,7 @@ msgstr ""
 "Discover trenutno ne more namestiti nobene aplikacije, ker ni na voljo "
 "nobene aplikacije v ozadju."
 
-#: discover/DiscoverObject.cpp:160
+#: discover/DiscoverObject.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -41,13 +41,13 @@ msgstr ""
 "<interface>Manjkajoča ozadja</interface>. <nl/><nl/> Prav tako razmislite o "
 "poročanju o tem kot o težavi pakiranja za vašo distribucijo."
 
-#: discover/DiscoverObject.cpp:165 discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr "Poročajte o tem"
 
-#: discover/DiscoverObject.cpp:170
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -63,17 +63,17 @@ msgstr ""
 "upravljanje programske opreme, ker zaledje PackageKit ni dobro integrirano v "
 "Arch Linux."
 
-#: discover/DiscoverObject.cpp:178
+#: discover/DiscoverObject.cpp:179
 #, kde-format
 msgid "Learn More"
 msgstr "Naučite se več"
 
-#: discover/DiscoverObject.cpp:266
+#: discover/DiscoverObject.cpp:267
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Ni bilo mogoče najti kategorije '%1'"
 
-#: discover/DiscoverObject.cpp:303
+#: discover/DiscoverObject.cpp:304
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -82,17 +82,17 @@ msgstr ""
 "Ni mogoče komunicirati z viri flatpack brez programa za flatback v ozadju "
 "%1. Prosimo, da ga najprej namestite."
 
-#: discover/DiscoverObject.cpp:307
+#: discover/DiscoverObject.cpp:308
 #, kde-format
 msgid "Could not open %1"
 msgstr "Ni bilo mogoče odpreti %1"
 
-#: discover/DiscoverObject.cpp:335
+#: discover/DiscoverObject.cpp:336
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Zagotovite, da je nameščena podpora Snap"
 
-#: discover/DiscoverObject.cpp:337
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -101,18 +101,18 @@ msgstr ""
 "Ni bilo mogoče odpreti %1, ker ni bila najdena v nobenem razpoložljivem "
 "skladišču programja."
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:341
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Prijavite to težavo vzdrževalcem paketov vaše distribucije."
 
-#: discover/DiscoverObject.cpp:405 discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
 #: discover/main.cpp:119
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:407
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

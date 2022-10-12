@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:46+0000\n"
+"POT-Creation-Date: 2022-10-12 00:47+0000\n"
 "PO-Revision-Date: 2022-09-25 09:29+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 20.08.1\n"
 
-#: discover/DiscoverObject.cpp:156
+#: discover/DiscoverObject.cpp:157
 #, kde-format
 msgid ""
 "Discover currently cannot be used to install any apps or perform system "
@@ -27,7 +27,7 @@ msgstr ""
 "eller utföra systemuppdateringar, eftersom ingen av dess programgränssnitt "
 "är tillgängliga."
 
-#: discover/DiscoverObject.cpp:160
+#: discover/DiscoverObject.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -39,13 +39,13 @@ msgstr ""
 "<interface>Saknade gränssnitt</interface>.<nl/><nl/>Överväg också gärna att "
 "rapportera detta som ett paketeringsproblem till din distribution."
 
-#: discover/DiscoverObject.cpp:165 discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr "Rapportera problemet"
 
-#: discover/DiscoverObject.cpp:170
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -61,17 +61,17 @@ msgstr ""
 "används för att hantera programvara, eftersom PackageKit-gränssnittet inte "
 "är väl integrerat i Arch Linux."
 
-#: discover/DiscoverObject.cpp:178
+#: discover/DiscoverObject.cpp:179
 #, kde-format
 msgid "Learn More"
 msgstr "Ta reda på mer"
 
-#: discover/DiscoverObject.cpp:266
+#: discover/DiscoverObject.cpp:267
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Kunde inte hitta kategori '%1'"
 
-#: discover/DiscoverObject.cpp:303
+#: discover/DiscoverObject.cpp:304
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -80,17 +80,17 @@ msgstr ""
 "Kan inte interagera med flatpak-resurser utan flatpak-gränssnitt %1. "
 "Installera det först."
 
-#: discover/DiscoverObject.cpp:307
+#: discover/DiscoverObject.cpp:308
 #, kde-format
 msgid "Could not open %1"
 msgstr "Kunde inte öppna %1"
 
-#: discover/DiscoverObject.cpp:335
+#: discover/DiscoverObject.cpp:336
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Säkerställ att stöd för Snap är installerat"
 
-#: discover/DiscoverObject.cpp:337
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -99,18 +99,18 @@ msgstr ""
 "Kunde inte öppna %1 eftersom det inte hittades i något tillgängligt "
 "programvaruarkiv."
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:341
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Rapportera gärna problemet till distributionspaketerarna."
 
-#: discover/DiscoverObject.cpp:405 discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
 #: discover/main.cpp:119
 #, kde-format
 msgid "Discover"
 msgstr "Upptäck"
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:407
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

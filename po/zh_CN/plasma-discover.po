@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:46+0000\n"
+"POT-Creation-Date: 2022-10-12 00:47+0000\n"
 "PO-Revision-Date: 2022-10-02 15:49\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -17,14 +17,14 @@ msgstr ""
 "X-Crowdin-File: /kf5-trunk/messages/discover/plasma-discover.pot\n"
 "X-Crowdin-File-ID: 4111\n"
 
-#: discover/DiscoverObject.cpp:156
+#: discover/DiscoverObject.cpp:157
 #, kde-format
 msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr "Discover 的所有后端程序均不可用，因此无法进行软件安装或系统升级。"
 
-#: discover/DiscoverObject.cpp:160
+#: discover/DiscoverObject.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -35,13 +35,13 @@ msgstr ""
 "您可以在设置页面中的<interface>缺少后端程序</interface>处安装后端程序。<nl/"
 "><nl/>同时请考虑将此情况作为打包问题报告给您正在使用的发行版项目。"
 
-#: discover/DiscoverObject.cpp:165 discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr "报告此问题"
 
-#: discover/DiscoverObject.cpp:170
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -55,52 +55,52 @@ msgstr ""
 "件包。<nl/><nl/>请注意，由于 PackageKit 后端程序在 Arch Linux 上没有进行良好"
 "的集成，Arch Linux 的开发者建议使用 <command>pacman</command> 来管理软件。"
 
-#: discover/DiscoverObject.cpp:178
+#: discover/DiscoverObject.cpp:179
 #, kde-format
 msgid "Learn More"
 msgstr "了解详情"
 
-#: discover/DiscoverObject.cpp:266
+#: discover/DiscoverObject.cpp:267
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "找不到“%1”分类"
 
-#: discover/DiscoverObject.cpp:303
+#: discover/DiscoverObject.cpp:304
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr "缺少 flatpak 后端程序 %1，无法处理 flatpak 资源。请先安装它。"
 
-#: discover/DiscoverObject.cpp:307
+#: discover/DiscoverObject.cpp:308
 #, kde-format
 msgid "Could not open %1"
 msgstr "无法打开 %1"
 
-#: discover/DiscoverObject.cpp:335
+#: discover/DiscoverObject.cpp:336
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "请确保 Snap 支持已经安装"
 
-#: discover/DiscoverObject.cpp:337
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "无法打开 %1，在所有可用的软件仓库中均未发现该软件包。"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:341
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "请将此问题报告给您使用的发行版的软件打包人员。"
 
-#: discover/DiscoverObject.cpp:405 discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
 #: discover/main.cpp:119
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:407
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:46+0000\n"
+"POT-Creation-Date: 2022-10-12 00:47+0000\n"
 "PO-Revision-Date: 2022-09-02 04:54+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 "X-POFile-SpellExtra: KNewStuff Graham Nate Leinir Snap pacman Arch\n"
 "X-POFile-SpellExtra: PackageKit\n"
 
-#: discover/DiscoverObject.cpp:156
+#: discover/DiscoverObject.cpp:157
 #, kde-format
 msgid ""
 "Discover currently cannot be used to install any apps or perform system "
@@ -35,7 +35,7 @@ msgstr ""
 "aplicações, dado que nenhuma das suas infra-estruturas de aplicações estão "
 "disponíveis."
 
-#: discover/DiscoverObject.cpp:160
+#: discover/DiscoverObject.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -47,13 +47,13 @@ msgstr ""
 "<interface>Infra-Estruturas em Falta</interface>.<nl/><nl/>Pense também em "
 "relatar isto como um problema no pacote da sua distribuição."
 
-#: discover/DiscoverObject.cpp:165 discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr "Comunicar Este Problema"
 
-#: discover/DiscoverObject.cpp:170
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -69,17 +69,17 @@ msgstr ""
 "utilização do <command>pacman</command> para gerir as aplicações, porque a "
 "infra-estrutura de PackageKit não está bem integrada no Arch Linux."
 
-#: discover/DiscoverObject.cpp:178
+#: discover/DiscoverObject.cpp:179
 #, kde-format
 msgid "Learn More"
 msgstr "Saber Mais"
 
-#: discover/DiscoverObject.cpp:266
+#: discover/DiscoverObject.cpp:267
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Não foi possível encontrar a categoria '%1'"
 
-#: discover/DiscoverObject.cpp:303
+#: discover/DiscoverObject.cpp:304
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -88,17 +88,17 @@ msgstr ""
 "Não é possível interagir com os recursos de Flatpak sem a infra-estrutura de "
 "Flatpak %1. Instale-a primeiro, por favor."
 
-#: discover/DiscoverObject.cpp:307
+#: discover/DiscoverObject.cpp:308
 #, kde-format
 msgid "Could not open %1"
 msgstr "Não foi possível abrir o %1"
 
-#: discover/DiscoverObject.cpp:335
+#: discover/DiscoverObject.cpp:336
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Por favor, certifique-se que o suporte de Snap está instalado"
 
-#: discover/DiscoverObject.cpp:337
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -107,20 +107,20 @@ msgstr ""
 "Não foi possível aceder ao %1, porque não foi encontrado nos repositórios de "
 "aplicações disponíveis."
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:341
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 "Por favor comunique este problema aos gestores de pacotes da sua "
 "distribuição."
 
-#: discover/DiscoverObject.cpp:405 discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
 #: discover/main.cpp:119
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:407
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
