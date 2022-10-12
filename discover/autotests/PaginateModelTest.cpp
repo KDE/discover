@@ -76,7 +76,9 @@ private Q_SLOTS:
     void testItemAdded()
     {
         PaginateModel pm;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         new QAbstractItemModelTester(&pm, &pm);
+#endif
         pm.setSourceModel(m_testModel);
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 3);
@@ -118,7 +120,9 @@ private Q_SLOTS:
     void testItemRemoved()
     {
         PaginateModel pm;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         new QAbstractItemModelTester(&pm, &pm);
+#endif
         pm.setSourceModel(m_testModel);
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 5);
@@ -145,6 +149,6 @@ private:
     QStringListModel *const m_testModel;
 };
 
-QTEST_MAIN(PaginateModelTest)
+QTEST_GUILESS_MAIN(PaginateModelTest)
 
 #include "PaginateModelTest.moc"
