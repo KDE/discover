@@ -492,6 +492,11 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
             cid = metadata.component();
     }
 
+    if (!source) {
+        qWarning() << "could not find source for" << flatpak_ref_format_ref(FLATPAK_REF(ref)) << flatpak_installed_ref_get_origin(ref);
+    }
+
+    Q_ASSERT(source);
     FlatpakResource *resource = new FlatpakResource(cid, source->installation(), const_cast<FlatpakBackend *>(this));
     resource->setOrigin(source->name());
     resource->setDisplayOrigin(source->title());
