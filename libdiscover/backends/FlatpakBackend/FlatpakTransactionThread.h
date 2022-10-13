@@ -57,6 +57,9 @@ Q_SIGNALS:
 private:
     static gboolean
     add_new_remote_cb(FlatpakTransaction * /*object*/, gint /*reason*/, gchar *from_id, gchar *suggested_remote_name, gchar *url, gpointer user_data);
+    static void progress_changed_cb(FlatpakTransactionProgress *progress, gpointer user_data);
+    static void
+    new_operation_cb(FlatpakTransaction * /*object*/, FlatpakTransactionOperation *operation, FlatpakTransactionProgress *progress, gpointer user_data);
 
     static gboolean webflowStart(FlatpakTransaction *transaction, const char *remote, const char *url, GVariant *options, guint id, gpointer user_data);
     static void webflowDoneCallback(FlatpakTransaction *transaction, GVariant *options, guint id, gpointer user_data);

@@ -29,11 +29,14 @@ gboolean FlatpakTransactionThread::add_new_remote_cb(FlatpakTransaction *object,
     return true;
 }
 
-static void progress_changed_cb(FlatpakTransactionProgress *progress, gpointer user_data)
+void FlatpakTransactionThread::progress_changed_cb(FlatpakTransactionProgress *progress, gpointer user_data)
 {
     FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
 
-    obj->setProgress(qMin(99, flatpak_transaction_progress_get_progress(progress)));
+    g_autolist(GObject) ops = flatpak_transaction_get_operations(obj->m_transaction);
+    g_autoptr(FlatpakTransactionOperation) op = flatpak_transaction_get_current_operation(obj->m_transaction);
+    const int idx = g_list_index(ops, op);
+    obj->setProgress(qMin<int>(99, (100 * idx + flatpak_transaction_progress_get_progress(progress)) / g_list_length(ops)));
 
 #ifdef FLATPAK_VERBOSE_PROGRESS
     guint64 start_time = flatpak_transaction_progress_get_start_time(progress);
@@ -45,11 +48,14 @@ static void progress_changed_cb(FlatpakTransactionProgress *progress, gpointer u
 #endif
 }
 
-void new_operation_cb(FlatpakTransaction * /*object*/, FlatpakTransactionOperation * /*operation*/, FlatpakTransactionProgress *progress, gpointer user_data)
+void FlatpakTransactionThread::new_operation_cb(FlatpakTransaction * /*object*/,
+                                                FlatpakTransactionOperation * /*operation*/,
+                                                FlatpakTransactionProgress *progress,
+                                                gpointer user_data)
 {
     FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
 
-    g_signal_connect(progress, "changed", G_CALLBACK(progress_changed_cb), obj);
+    g_signal_connect(progress, "changed", G_CALLBACK(&FlatpakTransactionThread::progress_changed_cb), obj);
     flatpak_transaction_progress_set_update_frequency(progress, FLATPAK_CLI_UPDATE_FREQUENCY);
 }
 
