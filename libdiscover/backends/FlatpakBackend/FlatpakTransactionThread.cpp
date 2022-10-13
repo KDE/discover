@@ -116,7 +116,7 @@ FlatpakTransactionThread::~FlatpakTransactionThread()
 
 void FlatpakTransactionThread::cancel()
 {
-    for (int id : m_webflows)
+    for (int id : std::as_const(m_webflows))
         flatpak_transaction_abort_webflow(m_transaction, id);
     g_cancellable_cancel(m_cancellable);
 }
@@ -178,7 +178,6 @@ void FlatpakTransactionThread::run()
     }
 
     m_result = flatpak_transaction_run(m_transaction, m_cancellable, &localError);
-    m_cancelled = g_cancellable_is_cancelled(m_cancellable);
     if (!m_result) {
         m_errorMessage = QString::fromUtf8(localError->message);
 #if defined(FLATPAK_LIST_UNUSED_REFS)
@@ -240,4 +239,9 @@ void FlatpakTransactionThread::addErrorMessage(const QString &error)
     if (!m_errorMessage.isEmpty())
         m_errorMessage.append(QLatin1Char('\n'));
     m_errorMessage.append(error);
+}
+
+bool FlatpakTransactionThread::cancelled() const
+{
+    return g_cancellable_is_cancelled(m_cancellable);
 }

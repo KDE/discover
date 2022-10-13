@@ -36,10 +36,7 @@ public:
 
     QString errorMessage() const;
     bool result() const;
-    bool cancelled() const
-    {
-        return m_cancelled;
-    }
+    bool cancelled() const;
 
     void addErrorMessage(const QString &error);
     QMap<QString, QStringList> addedRepositories() const
@@ -63,7 +60,6 @@ private:
 
     FlatpakTransaction *m_transaction;
     bool m_result = false;
-    bool m_cancelled = false;
     int m_progress = 0;
     quint64 m_speed = 0;
     QString m_errorMessage;
