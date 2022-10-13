@@ -116,6 +116,12 @@ private Q_SLOTS:
 private:
     Transaction::Status waitTransaction(Transaction *t)
     {
+        int lastProgress = -1;
+        connect(t, &Transaction::progressChanged, this, [t, &lastProgress] {
+            Q_ASSERT(lastProgress <= t->progress());
+            lastProgress = t->progress();
+        });
+
         TransactionModel::global()->addTransaction(t);
         QSignalSpy spyInstalled(TransactionModel::global(), &TransactionModel::transactionRemoved);
         QSignalSpy destructionSpy(t, &QObject::destroyed);
