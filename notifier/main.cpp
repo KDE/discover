@@ -44,7 +44,7 @@ int main(int argc, char **argv)
         about.addAuthor(QStringLiteral("Aleix Pol Gonzalez"), {}, QStringLiteral("aleixpol@kde.org"));
         about.setProductName("discover/discover");
         about.setProgramLogo(app.windowIcon());
-        about.setTranslator(i18ndc(nullptr, "NAME OF TRANSLATORS", "Your names"), i18ndc(nullptr, "EMAIL OF TRANSLATORS", "Your emails"));
+        about.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
 
         KAboutData::setApplicationData(about);
 
