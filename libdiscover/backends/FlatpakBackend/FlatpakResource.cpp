@@ -774,6 +774,28 @@ void FlatpakResource::loadPermissions()
         description = i18n("Can integrate and communicate with smart cards");
         m_permissions.append(FlatpakPermission(brief, description, "network-card"));
     }
+    if (sockets.contains("cups")) {
+        brief = i18n("Printer Access");
+        description = i18n("Can integrate and communicate with printers");
+        m_permissions.append(FlatpakPermission(brief, description, "document-print"));
+    }
+    if (sockets.contains("gpg-agent")) {
+        brief = i18n("GPG Agent");
+        description = i18n("Allows access to the GPG cryptography service, generally used for signing and reading signed documents");
+        m_permissions.append(FlatpakPermission(brief, description, "gpg"));
+    }
+
+    const QString features = contextGroup.readEntry("features", QString());
+    if (features.contains("bluetooth")) {
+        brief = i18n("Bluetooth Access");
+        description = i18n("Can integrate and communicate with Bluetooth devices");
+        m_permissions.append(FlatpakPermission(brief, description, "network-bluetooth"));
+    }
+    if (features.contains("devel")) {
+        brief = i18n("Low-Level System Access");
+        description = i18n("Can make low-level system calls (e.g. ptrace)");
+        m_permissions.append(FlatpakPermission(brief, description, "project-development"));
+    }
 
     const QString devices = contextGroup.readEntry("devices", QString());
     if (devices.contains("all")) {
