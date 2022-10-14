@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-12 00:47+0000\n"
+"POT-Creation-Date: 2022-10-14 00:48+0000\n"
 "PO-Revision-Date: 2022-04-30 12:12+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -309,23 +309,28 @@ msgstr "%1 - %2"
 msgid "Unknown author"
 msgstr "Autor necunoscut"
 
-#: discover/qml/ApplicationPage.qml:253
+#: discover/qml/ApplicationPage.qml:204
+#, kde-format
+msgid "Could not access the screenshots"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:261
 #, kde-format
 msgid "Version"
 msgstr "Versiune"
 
-#: discover/qml/ApplicationPage.qml:280
+#: discover/qml/ApplicationPage.qml:288
 #: discover/qml/ApplicationsListPage.qml:109
 #, kde-format
 msgid "Size"
 msgstr "Dimensiune"
 
-#: discover/qml/ApplicationPage.qml:307
+#: discover/qml/ApplicationPage.qml:315
 #, kde-format
 msgid "Distributed by"
 msgstr "Distribuit de"
 
-#: discover/qml/ApplicationPage.qml:334
+#: discover/qml/ApplicationPage.qml:342
 #, kde-format
 msgid "License"
 msgid_plural "Licenses"
@@ -333,18 +338,18 @@ msgstr[0] "Licență"
 msgstr[1] "Licențe"
 msgstr[2] "Licențe"
 
-#: discover/qml/ApplicationPage.qml:343
+#: discover/qml/ApplicationPage.qml:351
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Necunoscută"
 
-#: discover/qml/ApplicationPage.qml:381
+#: discover/qml/ApplicationPage.qml:389
 #, kde-format
 msgid "What does this mean?"
 msgstr "Ce înseamnă aceasta?"
 
-#: discover/qml/ApplicationPage.qml:391
+#: discover/qml/ApplicationPage.qml:399
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
@@ -352,18 +357,18 @@ msgstr[0] "Vezi mai multe…"
 msgstr[1] "Vezi mai multe…"
 msgstr[2] "Vezi mai multe…"
 
-#: discover/qml/ApplicationPage.qml:409 discover/qml/ApplicationPage.qml:840
+#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:856
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
 msgstr "Introduceți o evaluare"
 
-#: discover/qml/ApplicationPage.qml:419
+#: discover/qml/ApplicationPage.qml:427
 #, kde-format
 msgid "Age: %1+"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:443
+#: discover/qml/ApplicationPage.qml:451
 #, fuzzy, kde-format
 #| msgid "See more…"
 #| msgid_plural "See more…"
@@ -371,71 +376,71 @@ msgctxt "@action"
 msgid "See details…"
 msgstr "Vezi mai multe…"
 
-#: discover/qml/ApplicationPage.qml:539
+#: discover/qml/ApplicationPage.qml:547
 #, kde-format
 msgid "Documentation"
 msgstr "Documentație"
 
-#: discover/qml/ApplicationPage.qml:540
+#: discover/qml/ApplicationPage.qml:548
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Citește documentația oficială a proiectului"
 
-#: discover/qml/ApplicationPage.qml:556
+#: discover/qml/ApplicationPage.qml:564
 #, kde-format
 msgid "Website"
 msgstr "Sait"
 
-#: discover/qml/ApplicationPage.qml:557
+#: discover/qml/ApplicationPage.qml:565
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Vizitează pagina proiectului"
 
-#: discover/qml/ApplicationPage.qml:573
+#: discover/qml/ApplicationPage.qml:581
 #, kde-format
 msgid "Addons"
 msgstr "Suplimente"
 
-#: discover/qml/ApplicationPage.qml:574
+#: discover/qml/ApplicationPage.qml:582
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Instalează sau elimină funcționalitate suplimentară"
 
-#: discover/qml/ApplicationPage.qml:593
+#: discover/qml/ApplicationPage.qml:601
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:594
+#: discover/qml/ApplicationPage.qml:602
 #, fuzzy, kde-format
 #| msgid "Unable to load applications"
 msgid "Send a link to the application"
 msgstr "Nu se pot încărca aplicațiile"
 
-#: discover/qml/ApplicationPage.qml:610
+#: discover/qml/ApplicationPage.qml:618
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:630
+#: discover/qml/ApplicationPage.qml:638
 #, kde-format
 msgid "What's New"
 msgstr "Ce-i nou"
 
-#: discover/qml/ApplicationPage.qml:660
+#: discover/qml/ApplicationPage.qml:668
 #, fuzzy, kde-format
 #| msgid "Reviews for %1"
 msgid "Loading reviews for %1"
 msgstr "Recenzii pentru %1"
 
-#: discover/qml/ApplicationPage.qml:666
+#: discover/qml/ApplicationPage.qml:674
 #, kde-format
 msgid "Reviews"
 msgstr "Recenzii"
 
-#: discover/qml/ApplicationPage.qml:696
+#: discover/qml/ApplicationPage.qml:712
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
@@ -443,64 +448,64 @@ msgstr[0] "Arată %1 recenzie"
 msgstr[1] "Arată toate %1 recenzii"
 msgstr[2] "Arată toate %1 de recenzii"
 
-#: discover/qml/ApplicationPage.qml:708
+#: discover/qml/ApplicationPage.qml:724
 #, kde-format
 msgid "Write a Review"
 msgstr "Scrie o recenzie"
 
-#: discover/qml/ApplicationPage.qml:708
+#: discover/qml/ApplicationPage.qml:724
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Instalează pentru a scrie o recenzie"
 
-#: discover/qml/ApplicationPage.qml:720
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Get Involved"
 msgstr "Implică-te"
 
-#: discover/qml/ApplicationPage.qml:753
+#: discover/qml/ApplicationPage.qml:769
 #, kde-format
 msgid "Donate"
 msgstr "Donează"
 
-#: discover/qml/ApplicationPage.qml:754
+#: discover/qml/ApplicationPage.qml:770
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Susțineți dezvoltatorul și mulțumiți-i donând la proiectul acestuia"
 
-#: discover/qml/ApplicationPage.qml:770
+#: discover/qml/ApplicationPage.qml:786
 #, kde-format
 msgid "Report Bug"
 msgstr "Raportează defect"
 
-#: discover/qml/ApplicationPage.qml:771
+#: discover/qml/ApplicationPage.qml:787
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr ""
 "Raportați o problemă identificată pentru a ajuta la corectarea acesteia"
 
-#: discover/qml/ApplicationPage.qml:785
+#: discover/qml/ApplicationPage.qml:801
 #, fuzzy, kde-format
 #| msgid "Contribute…"
 msgid "Contribute"
 msgstr "Contribuie…"
 
-#: discover/qml/ApplicationPage.qml:786
+#: discover/qml/ApplicationPage.qml:802
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:813
+#: discover/qml/ApplicationPage.qml:829
 #, kde-format
 msgid "All Licenses"
 msgstr "Toate licențele"
 
-#: discover/qml/ApplicationPage.qml:852
+#: discover/qml/ApplicationPage.qml:868
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Riscurile programelor proprietare"
 
-#: discover/qml/ApplicationPage.qml:862
+#: discover/qml/ApplicationPage.qml:878
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -528,7 +533,7 @@ msgstr ""
 "(<link url='%1'>%2</link>).<nl/><nl/>Puteți afla mai multe la <link url='%3'>"
 "%3</link>."
 
-#: discover/qml/ApplicationPage.qml:863
+#: discover/qml/ApplicationPage.qml:879
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
