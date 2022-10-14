@@ -209,14 +209,15 @@ QDebug operator<<(QDebug debug, const FlatpakResource::Id &id)
     return debug;
 }
 
-static FlatpakResource::Id idForRefString(const QStringView &ref)
+static FlatpakResource::Id idForComponent(const AppStream::Component &component)
 {
-    Q_ASSERT(!ref.isEmpty());
-
-    auto parts = ref.split('/');
     // app/app.getspace.Space/x86_64/stable
+    const auto bundleId = component.bundle(AppStream::Bundle::KindFlatpak).id();
+    auto parts = bundleId.splitRef('/');
+    Q_ASSERT(!parts.isEmpty());
+
     return {
-        parts[1].toString(),
+        component.id(),
         parts[3].toString(),
         parts[2].toString(),
     };
@@ -1623,7 +1624,8 @@ ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
 
 FlatpakResource *FlatpakBackend::resourceForComponent(const AppStream::Component &component, const QSharedPointer<FlatpakSource> &source) const
 {
-    auto resource = source->m_resources.value(idForRefString(component.bundle(AppStream::Bundle::KindFlatpak).id()));
+    const auto ref = idForComponent(component);
+    auto resource = source->m_resources.value(ref);
     if (resource) {
         return resource;
     }
@@ -1634,6 +1636,7 @@ FlatpakResource *FlatpakBackend::resourceForComponent(const AppStream::Component
     res->setIconPath(source->appstreamIconsDir());
     res->updateFromAppStream();
     source->addResource(res);
+    Q_ASSERT(ref == res->uniqueId());
     return res;
 }
 
