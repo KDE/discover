@@ -68,8 +68,6 @@ void processArgs(QCommandLineParser *parser, DiscoverObject *mainWindow)
         mainWindow->openCategory(parser->value(QStringLiteral("category")));
     else if (parser->isSet(QStringLiteral("mode")))
         mainWindow->openMode(parser->value(QStringLiteral("mode")));
-    else
-        mainWindow->openMode(QStringLiteral("Browsing"));
 
     if (parser->isSet(QStringLiteral("search")))
         Q_EMIT mainWindow->openSearch(parser->value(QStringLiteral("search")));
@@ -86,6 +84,10 @@ void processArgs(QCommandLineParser *parser, DiscoverObject *mainWindow)
             Q_EMIT mainWindow->openSearch(url.host());
         else
             mainWindow->openApplication(url);
+    }
+
+    if (mainWindow->rootObject()->property("currentTopLevel").isNull()) {
+        mainWindow->openMode(QStringLiteral("Browsing"));
     }
 }
 
