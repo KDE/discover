@@ -50,7 +50,7 @@ Kirigami.ApplicationWindow
 
     TopLevelPageData {
         id: featuredAction
-        iconName: "go-home"
+        iconName: "go-home-symbolic"
         text: i18n("&Home")
         component: topBrowsingComp
         objectName: "discover"
