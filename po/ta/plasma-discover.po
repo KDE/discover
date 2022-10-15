@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-14 00:48+0000\n"
+"POT-Creation-Date: 2022-10-15 00:48+0000\n"
 "PO-Revision-Date: 2022-09-06 19:48+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -101,7 +101,7 @@ msgid "Please report this issue to the packagers of your distribution."
 msgstr "உங்கள் இயக்குதளத்தின் பராமரிப்பாளர்களிடம் இதைத் தெரிவியுங்கள்."
 
 #: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
-#: discover/main.cpp:119
+#: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "டிஸ்கவர்"
@@ -169,59 +169,59 @@ msgstr "பயனர் பின்னூட்டத்துக்கு உ�
 msgid "Supports appstream: url scheme"
 msgstr "appstream: முகவரி திட்டமுறையை ஆதரிக்கும்"
 
-#: discover/main.cpp:121
+#: discover/main.cpp:123
 #, kde-format
 msgid "An application explorer"
 msgstr "செயலி உலாவி"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:125
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2022 பிளாஸ்மா நிரலாக்க குழு"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:126
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "அலேயிக்சு போல் கொன்ஸாலெசு"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:127
 #, kde-format
 msgid "Nate Graham"
 msgstr "நேட் கிரஹாம்"
 
-#: discover/main.cpp:126
+#: discover/main.cpp:128
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "தரச்சோதனை, வடிவமைப்பு, மற்றும் பயன்படுதன்மை"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:132
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "டான் லெய்னிர் டுர்துரா ஜென்சன்"
 
-#: discover/main.cpp:131
+#: discover/main.cpp:133
 #, kde-format
 msgid "KNewStuff"
 msgstr ""
 
-#: discover/main.cpp:138
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "கோ. கிஷோர்"
 
-#: discover/main.cpp:138
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Kde-l10n-ta@kde.org"
 
-#: discover/main.cpp:151
+#: discover/main.cpp:153
 #, kde-format
 msgid "Available backends:\n"
 msgstr "பயன்படுத்தக்கூடிய பின்னிலைகள்:\n"
 
-#: discover/main.cpp:207
+#: discover/main.cpp:209
 #, kde-format
 msgid "Available modes:\n"
 msgstr "பயன்படுத்தக்கூடிய பயன்முறைகள்:\n"

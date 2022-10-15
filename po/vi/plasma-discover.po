@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-14 00:48+0000\n"
+"POT-Creation-Date: 2022-10-15 00:48+0000\n"
 "PO-Revision-Date: 2012-06-13 10:17+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -90,7 +90,7 @@ msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 
 #: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
-#: discover/main.cpp:119
+#: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Khám phá"
@@ -158,60 +158,60 @@ msgstr ""
 msgid "Supports appstream: url scheme"
 msgstr ""
 
-#: discover/main.cpp:121
+#: discover/main.cpp:123
 #, fuzzy, kde-format
 #| msgid "An application discoverer"
 msgid "An application explorer"
 msgstr "Một trình khám phá ứng dụng"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:125
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr ""
 
-#: discover/main.cpp:124
+#: discover/main.cpp:126
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr ""
 
-#: discover/main.cpp:125
+#: discover/main.cpp:127
 #, kde-format
 msgid "Nate Graham"
 msgstr ""
 
-#: discover/main.cpp:126
+#: discover/main.cpp:128
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr ""
 
-#: discover/main.cpp:130
+#: discover/main.cpp:132
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr ""
 
-#: discover/main.cpp:131
+#: discover/main.cpp:133
 #, kde-format
 msgid "KNewStuff"
 msgstr ""
 
-#: discover/main.cpp:138
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: discover/main.cpp:138
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: discover/main.cpp:151
+#: discover/main.cpp:153
 #, kde-format
 msgid "Available backends:\n"
 msgstr ""
 
-#: discover/main.cpp:207
+#: discover/main.cpp:209
 #, kde-format
 msgid "Available modes:\n"
 msgstr ""

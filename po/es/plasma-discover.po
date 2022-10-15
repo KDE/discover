@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-14 00:48+0000\n"
-"PO-Revision-Date: 2022-09-05 12:38+0200\n"
+"POT-Creation-Date: 2022-10-15 00:48+0000\n"
+"PO-Revision-Date: 2022-10-14 21:46+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.08.0\n"
+"X-Generator: Lokalize 22.08.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: discover/DiscoverObject.cpp:157
@@ -106,7 +106,7 @@ msgid "Please report this issue to the packagers of your distribution."
 msgstr "Notifique este problema a los empaquetadores de su distribución."
 
 #: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
-#: discover/main.cpp:119
+#: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -177,59 +177,59 @@ msgstr "Lista todas las opciones disponibles para los comentarios del usuario"
 msgid "Supports appstream: url scheme"
 msgstr "Permite el esquema de URL «appstream:»"
 
-#: discover/main.cpp:121
+#: discover/main.cpp:123
 #, kde-format
 msgid "An application explorer"
 msgstr "Un explorador de aplicaciones"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:125
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2022 El equipo de desarrollo de Plasma"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:126
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:127
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:126
+#: discover/main.cpp:128
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Seguro de calidad, diseño y usabilidad"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:132
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:131
+#: discover/main.cpp:133
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:138
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Eloy Cuadra"
 
-#: discover/main.cpp:138
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ecuadra@eloihr.net"
 
-#: discover/main.cpp:151
+#: discover/main.cpp:153
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Motores disponibles:\n"
 
-#: discover/main.cpp:207
+#: discover/main.cpp:209
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Modos disponibles:\n"
@@ -304,7 +304,7 @@ msgstr "Autor desconocido"
 #: discover/qml/ApplicationPage.qml:204
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "No se puede acceder a las capturas de pantalla"
 
 #: discover/qml/ApplicationPage.qml:261
 #, kde-format

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-14 00:48+0000\n"
+"POT-Creation-Date: 2022-10-15 00:48+0000\n"
 "PO-Revision-Date: 2022-09-05 19:01+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -106,7 +106,7 @@ msgid "Please report this issue to the packagers of your distribution."
 msgstr "Segnala questo problema alla tua distribuzione."
 
 #: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
-#: discover/main.cpp:119
+#: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -178,59 +178,59 @@ msgstr "Elenca le opzioni disponibili per le segnalazioni degli utenti"
 msgid "Supports appstream: url scheme"
 msgstr "Supporta appstream: url scheme"
 
-#: discover/main.cpp:121
+#: discover/main.cpp:123
 #, kde-format
 msgid "An application explorer"
 msgstr "Esploratore di applicazioni"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:125
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2022 La squadra di sviluppo di Plasma"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:126
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:127
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:126
+#: discover/main.cpp:128
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Controllo di qualità, design e usabilità"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:132
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:131
+#: discover/main.cpp:133
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:138
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Vincenzo Reale"
 
-#: discover/main.cpp:138
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "smart2128vr@gmail.com"
 
-#: discover/main.cpp:151
+#: discover/main.cpp:153
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Motori disponibili:\n"
 
-#: discover/main.cpp:207
+#: discover/main.cpp:209
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Modi disponibili:\n"

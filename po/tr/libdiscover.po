@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-14 00:48+0000\n"
-"PO-Revision-Date: 2022-10-08 12:45+0300\n"
+"PO-Revision-Date: 2022-10-14 21:15+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -526,7 +526,7 @@ msgstr "Yerel paket"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
 #, kde-format
 msgid "Malformed appstream url '%1'"
-msgstr "Bozulmuş appstream adresi '%1%'"
+msgstr "Bozulmuş Appstream adresi '%1%'"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
 #, kde-format
@@ -658,21 +658,19 @@ msgid "Can integrate and communicate with smart cards"
 msgstr "Akıllı kartlarla tümleşebilir ve haberleşebilir"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:778
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "Aygıt Erişimi"
+msgstr "Yazıcı Erişimi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:779
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Akıllı kartlarla tümleşebilir ve haberleşebilir"
+msgstr "Yazıcılarla tümleşebilir ve haberleşebilir"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:783
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG Aracısı"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:784
 #, kde-format
@@ -680,29 +678,28 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Genelde imzalı belgeleri imzalamanızı ve okumanızı sağlayan GPG kriptografi "
+"hizmetine erişmenize izin verir"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:790
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "Ağ Erişimi"
+msgstr "Bluetooth Erişimi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:791
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Akıllı kartlarla tümleşebilir ve haberleşebilir"
+msgstr "Bluetooth aygıtlarıyla tümleşebilir ve haberleşebilir"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "Sistem Veriyolu Erişimi"
+msgstr "Düşük Düzeyli Sistem Erişimi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:796
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Düşük düzeyli sistem çağrıları yapabilir (örn. ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #, kde-format
@@ -916,7 +913,7 @@ msgstr "%2 içindeki '%1' uzak sunucusu %3 konumundan ekleniyor"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "'%2' içinde '%1' bulunamadı; kullanılabilir olduğundan emin olun."
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
