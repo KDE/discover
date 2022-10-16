@@ -36,7 +36,7 @@ set_package_properties(Snapd PROPERTIES
     TYPE OPTIONAL)
 
 option(BUILD_SnapBackend "Build Snap support." "ON")
-if(BUILD_SnapBackend AND Snapd_FOUND)
+if(BUILD_SnapBackend AND AppStreamQt_FOUND AND Snapd_FOUND)
     add_subdirectory(SnapBackend)
 endif()
 

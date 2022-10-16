@@ -85,7 +85,7 @@ set_package_properties(packagekitqt5 PROPERTIES
 set_package_properties(AppStreamQt PROPERTIES
     DESCRIPTION "Library that lists Appstream resources"
     URL "https://www.freedesktop.org"
-    PURPOSE "Required to build the PackageKit and Flatpak backends"
+    PURPOSE "Required to build the PackageKit, Flatpak and Snap backends"
     TYPE OPTIONAL)
 add_feature_info(Flatpak Flatpak_FOUND
                 "Library that exposes flatpak repositories. Required to build the Flatpak backend"
