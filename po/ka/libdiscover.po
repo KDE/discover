@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-14 00:48+0000\n"
-"PO-Revision-Date: 2022-09-15 10:24+0200\n"
+"PO-Revision-Date: 2022-10-15 06:16+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -554,7 +554,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:429
 #, kde-format
 msgid "Retrieving size information"
-msgstr ""
+msgstr "ზომის ინფორმაციის მიღება"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:423
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:431
@@ -578,7 +578,7 @@ msgstr "%1 დისკზე"
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:441
 #, kde-format
 msgid "Failed to start '%1': %2"
-msgstr ""
+msgstr "\"%1\"-ის გაშვების შეცდომა: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:717
 #, kde-format
@@ -635,7 +635,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:768
 #, kde-format
 msgid "Remote Login Access"
-msgstr ""
+msgstr "დაშორებულად შესვლის წვდომა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:769
 #, kde-format
@@ -645,7 +645,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:773
 #, kde-format
 msgid "Smart Card Access"
-msgstr ""
+msgstr "ჭკვიანი ბარათით წვდომა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:774
 #, kde-format
@@ -653,10 +653,9 @@ msgid "Can integrate and communicate with smart cards"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:778
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "მოწყობილობასთან წვდომა"
+msgstr "პრინტერთან წვდომა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:779
 #, kde-format
@@ -666,7 +665,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:783
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG აგენტი"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:784
 #, kde-format
@@ -676,10 +675,9 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:790
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "ქსელური წვდომა"
+msgstr "Bluetooth-თან წვდომა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:791
 #, kde-format
@@ -687,10 +685,9 @@ msgid "Can integrate and communicate with Bluetooth devices"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "წვდომა სისტემურ მატარებელთნ"
+msgstr "სისტემის ქვედა დონესთან წვდომა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:796
 #, kde-format
@@ -710,7 +707,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:807
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr ""
+msgstr "KVM-ზე დაფუძნებულ ვირტუალურ მანქანებთან წვდომა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:808
 #, kde-format
@@ -818,7 +815,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:88
 #, kde-format
 msgid "Add Flathub"
-msgstr ""
+msgstr "Flathub-ის დამატება"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:89
 #, kde-format
@@ -842,7 +839,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:163
 #, kde-format
 msgid "Could not add the source %1"
-msgstr ""
+msgstr "წყაროს (%1) დამატების შეცდომა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:279
 #, kde-format
@@ -1031,7 +1028,7 @@ msgstr "არასაკმარისი მეხსიერება"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
 #, kde-format
 msgid "No network connection available"
-msgstr ""
+msgstr "ქსელური შეერთებების გარეშე"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
 #, kde-format
@@ -1061,7 +1058,7 @@ msgstr "არასწორი PackageID"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
 #, kde-format
 msgid "Package not installed"
-msgstr ""
+msgstr "პაკეტი დაყენებული არაა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:37
 #, kde-format
@@ -1071,27 +1068,27 @@ msgstr "პაკეტი ვერ ვიპოვე"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
 #, kde-format
 msgid "Package is already installed"
-msgstr ""
+msgstr "პაკეტი უკვე დაყენებულია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
 #, kde-format
 msgid "Package download failed"
-msgstr ""
+msgstr "პაკეტის გადმოწერის შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:43
 #, kde-format
 msgid "Package group not found"
-msgstr ""
+msgstr "პაკეტების ჯგუფი ვერ ვიპოვე"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
 #, kde-format
 msgid "Package group list invalid"
-msgstr ""
+msgstr "პაკეტების ჯგუფის სია არასწორია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
 #, kde-format
 msgid "Dependency resolution failed"
-msgstr ""
+msgstr "დამოკიდებულებების ამოხსნის შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
 #, kde-format
@@ -1101,7 +1098,7 @@ msgstr "არასწორი ფილტრი"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
 #, kde-format
 msgid "Failed while creating a thread"
-msgstr ""
+msgstr "შეცდომა ნაკადის შექმნისას"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
 #, kde-format
@@ -1176,22 +1173,22 @@ msgstr "ლოკალურად დაყენების შეცდო�
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:81
 #, kde-format
 msgid "Bad GPG signature found"
-msgstr ""
+msgstr "ნაპოვნია ცუდი GPG ხელმოწერა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:83
 #, kde-format
 msgid "No GPG signature found"
-msgstr ""
+msgstr "GPG ხელმოწერა ნაპოვნი არაა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:85
 #, kde-format
 msgid "Cannot install source package"
-msgstr ""
+msgstr "წყაროს პაკეტის დაყენება შეუძლებელია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
 #, kde-format
 msgid "Repo configuration error"
-msgstr ""
+msgstr "რეპოს კონფიგურაციის შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:89
 #, kde-format
@@ -1231,7 +1228,7 @@ msgstr "ნაპოვნია დაზიანებული პაკე�
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
 #, kde-format
 msgid "All packages already installed"
-msgstr ""
+msgstr "ყველა პაკეტი უკვე დაყენებულია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
 #, kde-format
@@ -1241,134 +1238,134 @@ msgstr "ფაილი ვერ მოიძებნა"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
 #, kde-format
 msgid "No more mirrors available"
-msgstr ""
+msgstr "მეტი სარკე მიუწვდომელია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
 #, kde-format
 msgid "No distro upgrade data"
-msgstr ""
+msgstr "დისტრიბუტივის ვერსიის აწევის ინფორმაცია მიუწვდომელია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
 #, kde-format
 msgid "Incompatible architecture"
-msgstr ""
+msgstr "შეუთავსებელი არქიტექტურა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
 #, kde-format
 msgid "No space on device left"
-msgstr ""
+msgstr "მოწყობილობაზე ადგილი არ დარჩა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:115
 #, kde-format
 msgid "A media change is required"
-msgstr ""
+msgstr "საჭიროა დისკის შეცვლა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:117
 #, kde-format
 msgid "You have no authorization to execute this operation"
-msgstr ""
+msgstr "თქვენ არ გაქვთ ამ ოპერაციის შესრულების ნებართვა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:119
 #, kde-format
 msgid "Update not found"
-msgstr ""
+msgstr "განახლება ვერ ვიპოვე"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
 #, kde-format
 msgid "Cannot install from unsigned repo"
-msgstr ""
+msgstr "ხელმოუწერელი წყაროდან დაყენება შეუძლებელია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
 #, kde-format
 msgid "Cannot update from unsigned repo"
-msgstr ""
+msgstr "ხელმოუწერელი წყაროდან განახლება შეუძლებელია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
 #, kde-format
 msgid "Cannot get file list"
-msgstr ""
+msgstr "ფაილების სიის მიღების შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:127
 #, kde-format
 msgid "Cannot get requires"
-msgstr ""
+msgstr "პაკეტების საჭიროებების მიღების შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:129
 #, kde-format
 msgid "Cannot disable repository"
-msgstr ""
+msgstr "რეპოზიტორიის გათიშვის შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
 #, kde-format
 msgid "Restricted download detected"
-msgstr ""
+msgstr "ნაპოვნია გადმოწერის შეზღუდვა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
 #, kde-format
 msgid "Package failed to configure"
-msgstr ""
+msgstr "პაკეტის მორგების შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:135
 #, kde-format
 msgid "Package failed to build"
-msgstr ""
+msgstr "პაკეტის აგების შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:137
 #, kde-format
 msgid "Package failed to install"
-msgstr ""
+msgstr "პაკეტის დაყენების შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:139
 #, kde-format
 msgid "Package failed to remove"
-msgstr ""
+msgstr "პაკეტის წაშლის შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:141
 #, kde-format
 msgid "Update failed due to running process"
-msgstr ""
+msgstr "განახლების შეცდომა გაშვებული პროცესის გამო"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
 #, kde-format
 msgid "The package database changed"
-msgstr ""
+msgstr "პაკეტების ბაზა შეიცვალა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
 #, kde-format
 msgid "The provided type is not supported"
-msgstr ""
+msgstr "მიწოდებული ტიპი მხარდაუჭერელია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
 #, kde-format
 msgid "Install root is invalid"
-msgstr ""
+msgstr "დაყენების root საქაღალდე არასწორია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:149
 #, kde-format
 msgctxt ""
 "Failed to sync your Linux distro repositories or other sources of packages"
 msgid "Cannot fetch sources"
-msgstr ""
+msgstr "წყაროების მოპოვება შეუძლებელია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:151
 #, kde-format
 msgid "Canceled priority"
-msgstr ""
+msgstr "გაუქმებული პრიორიტეტი"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
 #, kde-format
 msgid "Unfinished transaction"
-msgstr ""
+msgstr "დაუსრულებელი ტრანზაქცია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
 #, kde-format
 msgid "Lock required"
-msgstr ""
+msgstr "საჭიროა დაბლოკვა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
 #, kde-format
 msgid "Unknown error %1."
-msgstr ""
+msgstr "უცნობი შეცდომა %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
@@ -1402,17 +1399,17 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
 msgid "The application will have to be restarted."
-msgstr ""
+msgstr "აპლიკაცია უნდა გადატვირთოთ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
 #, kde-format
 msgid "The session will have to be restarted"
-msgstr ""
+msgstr "სესია უნდა გადატვირთოთ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:192
 #, kde-format
 msgid "The system will have to be restarted."
-msgstr ""
+msgstr "სისტემა უნდა გადატვირთოთ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:194
 #, kde-format
@@ -1432,7 +1429,7 @@ msgstr "მოლოდინი…"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
 #, kde-format
 msgid "Refreshing Cache…"
-msgstr ""
+msgstr "პაკეტების ქეშის განახლება…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
 #, kde-format
@@ -1472,7 +1469,7 @@ msgstr "მოსუფთავება…"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
 #, kde-format
 msgid "Resolving dependencies…"
-msgstr ""
+msgstr "ურთიერთდამოკიდებულებების ამოხსნა…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
 #, kde-format
@@ -1503,12 +1500,12 @@ msgstr "გაუქმებულია"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
 #, kde-format
 msgid "Waiting for lock…"
-msgstr ""
+msgstr "ბლოკის მოლოდინი…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
 #, kde-format
 msgid "Waiting for authorization…"
-msgstr ""
+msgstr "ავტორიზაციის მოლოდინი…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
 #, kde-format
@@ -1523,42 +1520,42 @@ msgstr "უცნობი სტატუსი"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:258
 #, kde-format
 msgid "We are waiting for something."
-msgstr ""
+msgstr "რაღაც კარგს ველოდებით."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
 #, kde-format
 msgid "Setting up transaction…"
-msgstr ""
+msgstr "ტრანზაქციის მორგება…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
 #, kde-format
 msgid "The transaction is currently working…"
-msgstr ""
+msgstr "ტრანზაქცია ამჟამად მიმდინარეობს…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
 #, kde-format
 msgid "The transaction is currently removing packages…"
-msgstr ""
+msgstr "ტრანზაქცია ამჟამად პაკეტებს შლის…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
 #, kde-format
 msgid "The transaction is currently downloading packages…"
-msgstr ""
+msgstr "ტრანზაქცია ამჟამად პაკეტებს იწერს…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
 #, kde-format
 msgid "The transactions is currently installing packages…"
-msgstr ""
+msgstr "ტრანზაქცია ამჟამად პაკეტებს იწერს…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
 #, kde-format
 msgid "The transaction is currently updating packages…"
-msgstr ""
+msgstr "ტრანზაქცია ამჟამად პაკეტებს ანახლებს…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
 #, kde-format
 msgid "The transaction is currently cleaning up…"
-msgstr ""
+msgstr "ტრანზაქცია ამჟამად თავის ნამოქმედარს ასუფთავებს…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
 #, kde-format
@@ -1586,12 +1583,12 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
 msgid "The transaction has finished!"
-msgstr ""
+msgstr "ტრანზაქცია დასრულდა!"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
 #, kde-format
 msgid "The transaction was canceled"
-msgstr ""
+msgstr "ტრანზაქცია გაუქმდა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
 #, kde-format
@@ -1811,14 +1808,14 @@ msgstr "წარმატებით შეკეთდა"
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
 #, kde-format
 msgid "Offline Updates"
-msgstr ""
+msgstr "გათიშული განახლებები"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 პაკეტი წარმატებით განახლდა"
+msgstr[1] "%1 პაკეტი წარმატებით განახლდა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:303
 #, kde-format
@@ -1878,8 +1875,8 @@ msgstr "სისტემის განახლება"
 #, kde-format
 msgid "1 package to upgrade"
 msgid_plural "%1 packages to upgrade"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 გასაახლებელი პაკეტი"
+msgstr[1] "%1 გასაახლებელი პაკეტი"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
 #, kde-format
@@ -1909,7 +1906,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:474
 #, kde-format
 msgid "Packages to remove"
-msgstr ""
+msgstr "წასაშლელი პაკეტი"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
 #, kde-format
@@ -1936,7 +1933,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
 #, kde-format
 msgid "Accept EULA"
-msgstr ""
+msgstr "EULA-ის დათანხმება"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:615
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
@@ -1999,12 +1996,12 @@ msgstr "ოპერაციული სისტემა"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:245
 #, kde-format
 msgid "GPL and other licenses"
-msgstr ""
+msgstr "GPL და სხვა ლიცენზიები"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:251
 #, kde-format
 msgid "Remote: "
-msgstr ""
+msgstr "დაშორებული: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:288
 #, kde-format
@@ -2062,7 +2059,7 @@ msgstr "ხელმისაწვდომი"
 #: libdiscover/resources/AbstractResource.cpp:104
 #, kde-format
 msgid "Upgradeable"
-msgstr ""
+msgstr "განახლებადი"
 
 #: libdiscover/resources/AbstractResource.cpp:257
 #, kde-format
@@ -2074,7 +2071,7 @@ msgstr "გაშვება"
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr ""
+msgstr "%1-ის ვერსიის განახლება"
 
 #: libdiscover/resources/AbstractResource.cpp:276
 #, kde-format
@@ -2085,7 +2082,7 @@ msgstr "%1 → %2%1 → %2%2"
 #: libdiscover/resources/AbstractResourcesBackend.cpp:153
 #, kde-format
 msgid "Please verify Internet connectivity"
-msgstr ""
+msgstr "გთხოვთ გადაამოწმოთ ინტერნეტკავშირი"
 
 #: libdiscover/resources/ResourcesModel.cpp:102
 #, kde-format

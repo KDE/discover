@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-14 00:48+0000\n"
-"PO-Revision-Date: 2022-09-19 12:01+0200\n"
+"PO-Revision-Date: 2022-10-15 09:29+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.1.1\n"
 
@@ -658,21 +658,19 @@ msgid "Can integrate and communicate with smart cards"
 msgstr "Lahko integrira in komunicira s pametnimi karticami"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:778
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "Dostop do naprave"
+msgstr "Dostop do tiskalnika"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:779
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Lahko integrira in komunicira s pametnimi karticami"
+msgstr "Lahko se integrira in komunicira s tiskalniki"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:783
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "Agent GPG"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:784
 #, kde-format
@@ -680,29 +678,28 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Dovoljuje dostop do kriptografskih storitev GPG, ki se v splošnem "
+"uporabljajo za podpisovanje in branje podpisanih dokumentov"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:790
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "Mrežni dostop"
+msgstr "Bluetooth dostop"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:791
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Lahko integrira in komunicira s pametnimi karticami"
+msgstr "Se lahko integrira in komunicira z napravami Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "Sistemski dostop do vodila"
+msgstr "Nizko-nivojski sistemski dostop"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:796
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Lahko uporablja nizko-nivojske sistemske klice (npr. ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #, kde-format
@@ -918,7 +915,7 @@ msgstr "Dodajanje oddaljenega '%1' v %2 iz %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "Ni bilo mogoče najti  '%1' v '%2'; zagotovite, da so na voljo."
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
