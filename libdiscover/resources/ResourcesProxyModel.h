@@ -162,7 +162,7 @@ private:
     QVariantList m_subcategories;
 
     QVector<AbstractResource *> m_displayedResources;
-    const QHash<int, QByteArray> m_roles;
+    static const QHash<int, QByteArray> s_roles;
     ResultsStream *m_currentStream;
 
 Q_SIGNALS:

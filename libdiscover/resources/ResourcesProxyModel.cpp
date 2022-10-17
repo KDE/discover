@@ -18,33 +18,34 @@
 #include <ReviewsBackend/Rating.h>
 #include <Transaction/TransactionModel.h>
 
+const QHash<int, QByteArray> ResourcesProxyModel::s_roles = {{NameRole, "name"},
+                                                             {IconRole, "icon"},
+                                                             {CommentRole, "comment"},
+                                                             {StateRole, "state"},
+                                                             {RatingRole, "rating"},
+                                                             {RatingPointsRole, "ratingPoints"},
+                                                             {RatingCountRole, "ratingCount"},
+                                                             {SortableRatingRole, "sortableRating"},
+                                                             {InstalledRole, "isInstalled"},
+                                                             {ApplicationRole, "application"},
+                                                             {OriginRole, "origin"},
+                                                             {DisplayOriginRole, "displayOrigin"},
+                                                             {CanUpgrade, "canUpgrade"},
+                                                             {PackageNameRole, "packageName"},
+                                                             {CategoryRole, "category"},
+                                                             {CategoryDisplayRole, "categoryDisplay"},
+                                                             {SectionRole, "section"},
+                                                             {MimeTypes, "mimetypes"},
+                                                             {LongDescriptionRole, "longDescription"},
+                                                             {SourceIconRole, "sourceIcon"},
+                                                             {SizeRole, "size"},
+                                                             {ReleaseDateRole, "releaseDate"}};
+
 ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_sortRole(NameRole)
     , m_sortOrder(Qt::AscendingOrder)
     , m_sortByRelevancy(false)
-    , m_roles({{NameRole, "name"},
-               {IconRole, "icon"},
-               {CommentRole, "comment"},
-               {StateRole, "state"},
-               {RatingRole, "rating"},
-               {RatingPointsRole, "ratingPoints"},
-               {RatingCountRole, "ratingCount"},
-               {SortableRatingRole, "sortableRating"},
-               {InstalledRole, "isInstalled"},
-               {ApplicationRole, "application"},
-               {OriginRole, "origin"},
-               {DisplayOriginRole, "displayOrigin"},
-               {CanUpgrade, "canUpgrade"},
-               {PackageNameRole, "packageName"},
-               {CategoryRole, "category"},
-               {CategoryDisplayRole, "categoryDisplay"},
-               {SectionRole, "section"},
-               {MimeTypes, "mimetypes"},
-               {LongDescriptionRole, "longDescription"},
-               {SourceIconRole, "sourceIcon"},
-               {SizeRole, "size"},
-               {ReleaseDateRole, "releaseDate"}})
     , m_currentStream(nullptr)
 {
     // new QAbstractItemModelTester(this, this);
@@ -75,7 +76,7 @@ void ResourcesProxyModel::componentComplete()
 
 QHash<int, QByteArray> ResourcesProxyModel::roleNames() const
 {
-    return m_roles;
+    return s_roles;
 }
 
 void ResourcesProxyModel::setSortRole(Roles sortRole)
@@ -624,7 +625,7 @@ void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend *backend, cons
         found = true;
     }
 
-    if (found && properties.contains(m_roles.value(m_sortRole))) {
+    if (found && properties.contains(s_roles.value(m_sortRole))) {
         invalidateSorting();
     }
 }
