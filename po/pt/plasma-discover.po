@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-15 00:48+0000\n"
-"PO-Revision-Date: 2022-09-02 04:54+0100\n"
+"PO-Revision-Date: 2022-10-16 11:50+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -316,7 +316,7 @@ msgstr "Autor desconhecido"
 #: discover/qml/ApplicationPage.qml:204
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "Não foi possível aceder às imagens"
 
 #: discover/qml/ApplicationPage.qml:261
 #, kde-format

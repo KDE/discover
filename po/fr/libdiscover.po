@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-14 00:48+0000\n"
-"PO-Revision-Date: 2022-09-18 20:43+0200\n"
+"PO-Revision-Date: 2022-10-16 14:38+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
 "Language: fr\n"
@@ -668,21 +668,19 @@ msgid "Can integrate and communicate with smart cards"
 msgstr "Peut intégrer et communiquer avec des cartes de mémoire."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:778
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "Accès au périphérique"
+msgstr "Accès au périphérique d'impression"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:779
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Peut intégrer et communiquer avec des cartes de mémoire."
+msgstr "Peut intégrer et communiquer avec des périphériques d'impression."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:783
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "Agent « GPG »"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:784
 #, kde-format
@@ -690,29 +688,29 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Permet d’accéder au service de cryptographie « GPG », généralement utilisé "
+"pour la signature et la lecture de documents signés"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:790
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "Accès au réseau"
+msgstr "Accès au périphérique Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:791
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Peut intégrer et communiquer avec des cartes de mémoire."
+msgstr "Peut intégrer et communiquer avec des périphériques Bluetooth."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "Accès au bus du système"
+msgstr "Accès de bas niveau au système"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:796
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr ""
+"Pouvoir réaliser des appels de bas niveau au système (Par exemple, ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #, kde-format
@@ -932,6 +930,8 @@ msgstr "Ajoute le distant « %1 » dans %2 depuis %3"
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
+"Impossible de trouver « %1 » dans « %2 ». Veuillez vérifier qu'il est bien "
+"disponible."
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format

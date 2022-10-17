@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-14 00:48+0000\n"
-"PO-Revision-Date: 2022-09-18 23:21+0100\n"
+"PO-Revision-Date: 2022-10-16 11:50+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-POFile-SpellExtra: stable deb main ppa Appstream Kate AppStream Flatpak\n"
 "X-POFile-SpellExtra: flatpakrepo Flathub Snap FWUPD Discover ostree Smart\n"
 "X-POFile-IgnoreConsistency: Snap\n"
-"X-POFile-SpellExtra: Cards smart card\n"
+"X-POFile-SpellExtra: Cards smart card ptrace\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -659,21 +659,19 @@ msgid "Can integrate and communicate with smart cards"
 msgstr "Consegue integrar e comunicar com cartões 'smart card'"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:778
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "Acesso a Dispositivos"
+msgstr "Acesso à Impressora"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:779
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Consegue integrar e comunicar com cartões 'smart card'"
+msgstr "Consegue integrar e comunicar com impressoras"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:783
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "Agente GPG"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:784
 #, kde-format
@@ -681,29 +679,28 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Permite o acesso ao serviço de criptografia do GPG, usando normalmente para "
+"assinar e ler documentos assinados"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:790
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "Acesso à Rede"
+msgstr "Acesso ao Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:791
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Consegue integrar e comunicar com cartões 'smart card'"
+msgstr "Consegue integrar e comunicar com dispositivos 'bluetooth'"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "Acesso ao Barramento do Sistema"
+msgstr "Acesso de Baixo Nível ao Sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:796
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Pode criar chamadas ao sistema de baixo nível (p.ex., 'ptrace')"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #, kde-format
@@ -923,6 +920,7 @@ msgstr "A adicionar o repositório remoto '%1' em %2 de %3"
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
+"Não foi possível encontrar o '%1' em '%2'; verifique se está disponível."
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format

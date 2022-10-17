@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-14 00:48+0000\n"
-"PO-Revision-Date: 2022-09-20 12:06+0200\n"
+"PO-Revision-Date: 2022-10-16 13:37+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -655,21 +655,19 @@ msgid "Can integrate and communicate with smart cards"
 msgstr "Може да се интегрира и комуникира със смарт карти"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:778
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "Достъп до устройства"
+msgstr "Достъп до принтер"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:779
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Може да се интегрира и комуникира със смарт карти"
+msgstr "Може да се интегрира и комуникира с принтер"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:783
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "Агент GPG"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:784
 #, kde-format
@@ -677,29 +675,28 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Позволява достъп до криптографската услуга GPG, която обикновено се използва "
+"за подписване и четене на подписани документи"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:790
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "Мрежов достъп"
+msgstr "Достъп до Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:791
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Може да се интегрира и комуникира със смарт карти"
+msgstr "Може да се интегрира и комуникира с Bluetooth устройства"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "Достъп до системния Bus"
+msgstr "Системен достъп на ниско ниво"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:796
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Може да извършва системни извиквания на ниско ниво (напр. ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #, kde-format
@@ -917,7 +914,7 @@ msgstr "Добавяне на отдалечено '%1' в %2 от %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "Не може да се намери '%1' в '%2'; моля, уверете се, че е наличен."
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
