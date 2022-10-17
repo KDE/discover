@@ -16,22 +16,20 @@ Button
     onClicked: overlay.open()
     visible: resource.isInstalled && view.count > 0
 
-    DiscoverPopup {
+    Kirigami.OverlaySheet {
         id: overlay
+        parent: applicationWindow().overlay
+        title: i18n("Permissions for %1", resource.name)
 
         ListView {
             id: view
-            anchors.fill: parent
-            header: Kirigami.ItemViewHeader {
-                title: i18n ("Permissions for %1", resource.name)
-            }
             model: resource.plugs(root)
             delegate: CheckDelegate {
                 id: delegate
                 width: view.width
                 text: model.display
                 checked: model.checked
-                onClicked: {
+                onToggled: {
                     model.checked = delegate.checked
                 }
             }
