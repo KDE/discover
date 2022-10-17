@@ -17,24 +17,20 @@ Button
     onClicked: overlay.open()
     visible: resource.isInstalled /*&& view.count > 0*/
 
-    DiscoverPopup {
+    Kirigami.OverlaySheet {
         id: overlay
+        parent: applicationWindow().overlay
+        title: i18n ("%1 channels", resource.name)
 
         ListView {
             id: view
-            anchors.fill: parent
-            header: Kirigami.ItemViewHeader {
-                title: i18n ("%1 channels", resource.name)
-            }
+
             model: resource.channels(root).channels
-            delegate: RowLayout {
-                width: view.width
+            delegate: Kirigami.BasicListItem {
                 readonly property bool current: resource.channel === modelData.name
-                Label {
-                    Layout.fillWidth: true
-                    text: i18n("%1 - %2", modelData.name, modelData.version)
-                }
-                Button {
+                label: i18n("%1 - %2", modelData.name, modelData.version)
+
+                trailing: Button {
                     text: i18n("Switch")
                     enabled: !parent.current
                     onClicked: resource.channel = modelData.name
