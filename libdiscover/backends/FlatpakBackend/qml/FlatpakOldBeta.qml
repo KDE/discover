@@ -38,8 +38,9 @@ Kirigami.InlineMessage
             backendFilter: resource.backend
             resourcesUrl: resource.url
         }
+        active: resource.isDesktopApp
         delegate: Kirigami.Action {
-            visible: model.application !== resource && model.application.branch !== "beta" && model.application.branch !== "master" && versionCompare !== 0
+            visible: inst.active && model.application !== resource && model.application.branch !== "beta" && model.application.branch !== "master" && versionCompare !== 0
             text: i18nc("@action: button %1 is the name of a Flatpak repo", "View Stable Version on %1", displayOrigin)
             onTriggered: {
                 applicationWindow().pageStack.pop();

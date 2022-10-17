@@ -30,6 +30,7 @@ class FlatpakResource : public AbstractResource
     Q_PROPERTY(QString attentionText READ attentionText CONSTANT)
     Q_PROPERTY(QString dataLocation READ dataLocation CONSTANT)
     Q_PROPERTY(QString branch READ branch CONSTANT)
+    Q_PROPERTY(bool isDesktopApp READ isDesktopApp CONSTANT)
     Q_PROPERTY(bool hasDataButUninstalled READ hasDataButUninstalled NOTIFY hasDataButUninstalledChanged)
 public:
     explicit FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent);
@@ -199,6 +200,10 @@ public:
     QString contentRatingDescription() const override;
     ContentIntensity contentRatingIntensity() const override;
     uint contentRatingMinimumAge() const override;
+    bool isDesktopApp() const
+    {
+        return m_type == DesktopApp;
+    }
 
 Q_SIGNALS:
     void hasDataButUninstalledChanged();
