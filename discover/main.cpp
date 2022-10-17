@@ -86,7 +86,7 @@ void processArgs(QCommandLineParser *parser, DiscoverObject *mainWindow)
             mainWindow->openApplication(url);
     }
 
-    if (mainWindow->rootObject()->property("currentTopLevel").isNull()) {
+    if (mainWindow->rootObject()->property("pageStack").value<QObject *>()->property("depth").toInt() == 0) {
         mainWindow->openMode(QStringLiteral("Browsing"));
     }
 }
