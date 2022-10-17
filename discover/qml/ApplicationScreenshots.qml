@@ -19,7 +19,7 @@ ListView {
     property alias resource: screenshotsModel.application
     property var resource
     property int failedCount: 0
-    readonly property bool hasFailed: failedCount === count
+    readonly property bool hasFailed: count !== 0 && failedCount === count
 
     spacing: Kirigami.Units.largeSpacing
     focus: overlay.visible
