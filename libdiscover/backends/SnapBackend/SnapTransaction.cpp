@@ -80,9 +80,9 @@ void SnapTransaction::finishTransaction()
     }
         return;
     default:
-        setStatus(DoneWithErrorStatus);
         qDebug() << "snap error" << m_request << m_request->error() << m_request->errorString();
         Q_EMIT passiveMessage(m_request->errorString());
+        setStatus(DoneWithErrorStatus);
         break;
     }
 }
