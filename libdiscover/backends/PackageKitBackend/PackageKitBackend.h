@@ -98,8 +98,8 @@ Q_SIGNALS:
 
 private:
     friend class PackageKitResource;
-    template<typename T>
-    T resourcesByPackageNames(const QStringList &names) const;
+    template<typename T, typename W>
+    T resourcesByPackageNames(const W &names) const;
 
     void runWhenInitialized(const std::function<void()> &f, QObject *stream);
 

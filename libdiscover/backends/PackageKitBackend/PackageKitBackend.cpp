@@ -394,11 +394,11 @@ void PackageKitBackend::packageDetails(const PackageKit::Details &details)
 
 QSet<AbstractResource *> PackageKitBackend::resourcesByPackageName(const QString &name) const
 {
-    return resourcesByPackageNames<QSet<AbstractResource *>>({name});
+    return resourcesByPackageNames<QSet<AbstractResource *>>(QStringList{name});
 }
 
-template<typename T>
-T PackageKitBackend::resourcesByPackageNames(const QStringList &pkgnames) const
+template<typename T, typename W>
+T PackageKitBackend::resourcesByPackageNames(const W &pkgnames) const
 {
     T ret;
     ret.reserve(pkgnames.size());
@@ -469,6 +469,7 @@ public:
         if (res.isEmpty())
             return;
 
+        Q_ASSERT(res.size() == QSet(res.constBegin(), res.constEnd()).size());
         const auto toResolve = kFilter<QVector<AbstractResource *>>(res, needsResolveFilter);
         if (!toResolve.isEmpty())
             backend->resolvePackages(kTransform<QStringList>(toResolve, [](AbstractResource *res) {
@@ -555,7 +556,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-search"));
         const auto f = [this, stream, filter]() {
             const QList<AppStream::Component> components = m_appdata->search(filter.search);
-            const QStringList ids = kTransform<QStringList>(components, [](const AppStream::Component &comp) {
+            const QSet<QString> ids = kTransform<QSet<QString>>(components, [](const AppStream::Component &comp) {
                 return comp.id();
             });
             if (!ids.isEmpty()) {
