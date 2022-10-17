@@ -49,7 +49,7 @@ Kirigami.InlineMessage
             readonly property int versionCompare: resource.versionCompare(model.application)
             Component.onCompleted: reset()
             function reset() {
-                oldBetaItem.betaOlderThanStable |= versionCompare > 0
+                oldBetaItem.betaOlderThanStable |= versionCompare < 0
             }
         }
 
