@@ -62,7 +62,7 @@ Kirigami.OverlaySheet
                     if (reviewInput.length === 0) return i18n("Write the review");
                     if (reviewInput.length < 15) return i18n("Keep writing…");
                     if (reviewInput.length > 3000) return i18n("Too long!");
-                    if (nameInput.length < 1) return i18nc("@info:usagetip", "Insert a name");
+                    if (nameInput.visible && nameInput.length < 1) return i18nc("@info:usagetip", "Insert a name");
                     return "";
                 }
                 wrapMode: Text.WordWrap
