@@ -242,11 +242,12 @@ void PackageKitBackend::reloadPackageList()
                     }
                     if (r.timestampEol() < QDateTime::currentDateTime()) {
                         const QString releaseDate = QLocale().toString(r.timestampEol());
-                        Q_EMIT inlineMessage(InlineMessageType::Warning,
-                                             QStringLiteral("dialog-warning"),
-                                             i18nc("%1 is the date as formatted by the locale",
-                                                   "Your operating system ended support on %1. Consider upgrading to a supported version.",
-                                                   releaseDate));
+                        Q_EMIT inlineMessageChanged(
+                            QSharedPointer<InlineMessage>::create(InlineMessage::Warning,
+                                                                  QStringLiteral("dialog-warning"),
+                                                                  i18nc("%1 is the date as formatted by the locale",
+                                                                        "Your operating system ended support on %1. Consider upgrading to a supported version.",
+                                                                        releaseDate)));
                     }
                 }
             }

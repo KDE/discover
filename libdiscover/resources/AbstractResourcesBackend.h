@@ -58,12 +58,32 @@ private:
     QVariantList m_actions;
 };
 
-// Keep in sync with Kirigami's enums.h
-enum InlineMessageType {
-    Information = 0,
-    Positive,
-    Warning,
-    Error,
+class DISCOVERCOMMON_EXPORT InlineMessage : public QObject
+{
+    Q_OBJECT
+public:
+    // Keep in sync with Kirigami's in enums.h
+    enum InlineMessageType {
+        Information = 0,
+        Positive,
+        Warning,
+        Error,
+    };
+    Q_ENUM(InlineMessageType)
+    Q_PROPERTY(InlineMessageType type MEMBER type CONSTANT)
+    Q_PROPERTY(QString iconName MEMBER iconName CONSTANT)
+    Q_PROPERTY(QString message MEMBER message CONSTANT)
+
+    InlineMessage(InlineMessageType type, const QString &iconName, const QString &message)
+        : type(type)
+        , iconName(iconName)
+        , message(message)
+    {
+    }
+
+    InlineMessageType type;
+    const QString iconName;
+    const QString message;
 };
 
 /**
@@ -257,7 +277,7 @@ Q_SIGNALS:
     void resourceRemoved(AbstractResource *resource);
 
     void passiveMessage(const QString &message);
-    void inlineMessage(InlineMessageType type, const QString &iconName, const QString &message);
+    void inlineMessageChanged(const QSharedPointer<InlineMessage> &inlineMessage);
     void fetchingUpdatesProgressChanged();
 
 private:

@@ -80,6 +80,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_PROPERTY(DiscoverAction *updateAction READ updateAction CONSTANT)
     Q_PROPERTY(int fetchingUpdatesProgress READ fetchingUpdatesProgress NOTIFY fetchingUpdatesProgressChanged)
     Q_PROPERTY(QString applicationSourceName READ applicationSourceName NOTIFY currentApplicationBackendChanged)
+    Q_PROPERTY(InlineMessage *inlineMessage READ inlineMessage NOTIFY inlineMessageChanged)
 public:
     /** This constructor should be only used by unit tests.
      *  @p backendName defines what backend will be loaded when the backend is constructed.
@@ -120,6 +121,12 @@ public:
 
     Q_INVOKABLE QUrl distroBugReportUrl();
 
+    void setInlineMessage(const QSharedPointer<InlineMessage> &inlineMessage);
+    InlineMessage *inlineMessage() const
+    {
+        return m_inlineMessage.data();
+    }
+
 public Q_SLOTS:
     void installApplication(AbstractResource *app, const AddonList &addons);
     void installApplication(AbstractResource *app);
@@ -136,7 +143,7 @@ Q_SIGNALS:
     void passiveMessage(const QString &message);
     void currentApplicationBackendChanged(AbstractResourcesBackend *currentApplicationBackend);
     void fetchingUpdatesProgressChanged(int fetchingUpdatesProgress);
-    void inlineMessage(int type, const QString &iconName, const QString &message);
+    void inlineMessageChanged(const QSharedPointer<InlineMessage> &inlineMessage);
 
 private Q_SLOTS:
     void callerFetchingChanged();
@@ -162,6 +169,7 @@ private:
 
     EmitWhenChanged<int> m_updatesCount;
     EmitWhenChanged<int> m_fetchingUpdatesProgress;
+    QSharedPointer<InlineMessage> m_inlineMessage;
 
     static ResourcesModel *s_self;
 };

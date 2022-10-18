@@ -32,11 +32,11 @@ DiscoverPage {
             delegate: Kirigami.InlineMessage {
                 Layout.fillWidth: true
                 Layout.margins: Kirigami.Units.smallSpacing
-                text: modelData.inlineAction.toolTip
+                text: modelData.inlineAction ? modelData.inlineAction.toolTip : ""
                 visible: modelData.inlineAction && modelData.inlineAction.visible
                 actions: Kirigami.Action {
-                    icon.name: modelData.inlineAction.iconName || ""
-                    text: modelData.inlineAction.text || ""
+                    icon.name: modelData.inlineAction ? modelData.inlineAction.iconName : ""
+                    text: modelData.inlineAction ? modelData.inlineAction.text : ""
                     onTriggered: modelData.inlineAction.trigger()
                 }
 

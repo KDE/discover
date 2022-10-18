@@ -151,6 +151,18 @@ DiscoverPage
 
     header: ColumnLayout {
         id: errorsColumn
+        Loader {
+            Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.smallSpacing
+            active: ResourcesModel.inlineMessage
+            sourceComponent: Kirigami.InlineMessage {
+                text: ResourcesModel.inlineMessage.message
+                type: ResourcesModel.inlineMessage.type
+                icon.name: ResourcesModel.inlineMessage.iconName
+                visible: true
+            }
+        }
+
         Repeater {
             model: resourcesUpdatesModel.errorMessages
             delegate: Kirigami.InlineMessage {

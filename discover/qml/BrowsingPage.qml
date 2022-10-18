@@ -20,6 +20,16 @@ DiscoverPage
 
     actions.main: window.wideScreen ? searchAction : null
 
+    header: Loader {
+        active: ResourcesModel.inlineMessage
+        sourceComponent: Kirigami.InlineMessage {
+            text: ResourcesModel.inlineMessage.message
+            type: ResourcesModel.inlineMessage.type
+            icon.name: ResourcesModel.inlineMessage.iconName
+            visible: true
+        }
+    }
+
     readonly property bool isHome: true
 
     function searchFor(text) {

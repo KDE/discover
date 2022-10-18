@@ -150,7 +150,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend *backend)
     });
     connect(backend, &AbstractResourcesBackend::resourceRemoved, this, &ResourcesModel::resourceRemoved);
     connect(backend, &AbstractResourcesBackend::passiveMessage, this, &ResourcesModel::passiveMessage);
-    connect(backend, &AbstractResourcesBackend::inlineMessage, this, &ResourcesModel::inlineMessage);
+    connect(backend, &AbstractResourcesBackend::inlineMessageChanged, this, &ResourcesModel::setInlineMessage);
     connect(backend->backendUpdater(), &AbstractBackendUpdater::progressingChanged, this, &ResourcesModel::slotFetching);
     if (backend->reviewsBackend()) {
         connect(backend->reviewsBackend(), &AbstractReviewsBackend::error, this, &ResourcesModel::passiveMessage, Qt::UniqueConnection);
@@ -430,4 +430,14 @@ QString ResourcesModel::applicationSourceName() const
 QUrl ResourcesModel::distroBugReportUrl()
 {
     return QUrl(KOSRelease().bugReportUrl());
+}
+
+void ResourcesModel::setInlineMessage(const QSharedPointer<InlineMessage> &inlineMessage)
+{
+    if (inlineMessage == m_inlineMessage) {
+        return;
+    }
+
+    m_inlineMessage = inlineMessage;
+    Q_EMIT inlineMessageChanged(inlineMessage);
 }

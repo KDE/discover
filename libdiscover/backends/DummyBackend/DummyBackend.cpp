@@ -81,6 +81,9 @@ void DummyBackend::toggleFetching()
     Q_EMIT fetchingChanged();
     if (!m_fetching)
         m_reviews->initialize();
+
+    Q_EMIT inlineMessageChanged(
+        QSharedPointer<InlineMessage>::create(InlineMessage::Warning, QStringLiteral("dialog-warning"), QStringLiteral("Happy unbirthday 🎂, probably.")));
 }
 
 int DummyBackend::updatesCount() const
