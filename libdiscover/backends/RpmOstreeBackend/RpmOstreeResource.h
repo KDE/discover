@@ -102,6 +102,11 @@ private:
     bool m_booted;
     bool m_pinned;
     bool m_pending;
+    QStringList m_requested_base_local_replacements;
+    QStringList m_requested_base_removals;
+    QStringList m_requested_local_packages;
+    QStringList m_requested_modules;
+    QStringList m_requested_packages;
     QString m_base_checksum;
     QString m_checksum;
 

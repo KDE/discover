@@ -86,6 +86,20 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
         m_branchVariant = variant;
     }
 
+    // Replaced & added packages
+    m_requested_base_local_replacements = map.value(QStringLiteral("requested-base-local-replacements")).toStringList();
+    m_requested_base_removals = map.value(QStringLiteral("requested-base-removals")).toStringList();
+    m_requested_local_packages = map.value(QStringLiteral("requested-local-packages")).toStringList();
+    m_requested_modules = map.value(QStringLiteral("requested-modules")).toStringList();
+    m_requested_packages = map.value(QStringLiteral("requested-packages")).toStringList();
+    m_requested_base_local_replacements.sort();
+    m_requested_base_removals.sort();
+    m_requested_local_packages.sort();
+    m_requested_modules.sort();
+    m_requested_packages.sort();
+
+    // TODO: Extract signature information
+
     // Store base-commit and current commit to be able to differentiate between deployments
     m_base_checksum = map.value(QStringLiteral("base-checksum")).toString();
     m_checksum = map.value(QStringLiteral("checksum")).toString();
@@ -243,7 +257,43 @@ QJsonArray RpmOstreeResource::licenses()
 
 QString RpmOstreeResource::longDescription()
 {
-    return i18n("Remote: ") + m_origin;
+    QString desc;
+    if (!m_requested_packages.isEmpty()) {
+        QTextStream(&desc) << i18n("Additionnal packages: ") << "\n<ul>";
+        for (const QString &package : qAsConst(m_requested_packages)) {
+            QTextStream(&desc) << "<li>" << package << "</li>\n";
+        }
+        QTextStream(&desc) << "</ul>\n";
+    }
+    if (!m_requested_modules.isEmpty()) {
+        QTextStream(&desc) << i18n("Additionnal modules: ") << "\n<ul>";
+        for (const QString &package : qAsConst(m_requested_modules)) {
+            QTextStream(&desc) << "<li>" << package << "</li>\n";
+        }
+        QTextStream(&desc) << "</ul>\n";
+    }
+    if (!m_requested_local_packages.isEmpty()) {
+        QTextStream(&desc) << i18n("Local packages: ") << "\n<ul>";
+        for (const QString &package : qAsConst(m_requested_local_packages)) {
+            QTextStream(&desc) << "<li>" << package << "</li>\n";
+        }
+        QTextStream(&desc) << "</ul>\n";
+    }
+    if (!m_requested_base_local_replacements.isEmpty()) {
+        QTextStream(&desc) << i18n("Replaced packages:") << "\n<ul>";
+        for (const QString &package : qAsConst(m_requested_base_local_replacements)) {
+            QTextStream(&desc) << "<li>" << package << "</li>\n";
+        }
+        QTextStream(&desc) << "</ul>\n";
+    }
+    if (!m_requested_base_removals.isEmpty()) {
+        QTextStream(&desc) << i18n("Removed packages:") << "\n<ul>";
+        for (const QString &package : qAsConst(m_requested_base_removals)) {
+            QTextStream(&desc) << "<li>" << package << "</li>\n";
+        }
+        QTextStream(&desc) << "</ul>\n";
+    }
+    return desc;
 }
 
 QString RpmOstreeResource::name() const
