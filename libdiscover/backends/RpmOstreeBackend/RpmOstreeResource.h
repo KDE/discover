@@ -74,6 +74,11 @@ public:
 
     /** Returns if a given deployment is the currently booted deployment. */
     Q_SCRIPTABLE bool isBooted();
+    /**
+     * Returns if a given deployment is currently pending.
+     * TODO: Turn this into a Q_PROPERTY and add a NOTIFY with a signal to trigger updates when/if it changes.
+     */
+    Q_SCRIPTABLE bool isPending();
 
 Q_SIGNALS:
 
@@ -96,6 +101,9 @@ private:
     QString m_appstreamid;
     bool m_booted;
     bool m_pinned;
+    bool m_pending;
+    QString m_base_checksum;
+    QString m_checksum;
 
     AbstractResource::State m_state;
 

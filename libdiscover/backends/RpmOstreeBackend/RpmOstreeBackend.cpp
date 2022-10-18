@@ -182,10 +182,7 @@ ResultsStream *RpmOstreeBackend::search(const AbstractResourcesBackend::Filters 
     QVector<AbstractResource *> res;
     for (RpmOstreeResource *r : m_resources) {
         if (r->state() >= filter.state) {
-            // Let's only include the booted deployment until we have better support for multiple deployments
-            if (r->isBooted()) {
-                res.push_back(r);
-            }
+            res << r;
         }
     }
     return new ResultsStream(QStringLiteral("rpm-ostree"), res);

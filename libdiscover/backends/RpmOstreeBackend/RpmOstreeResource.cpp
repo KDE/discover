@@ -44,7 +44,7 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     // TODO: Support for pinning, un-pinning and removing deployments
     // m_pined = map.value(QStringLiteral("pinned")).toBool();
     m_pinned = true;
-
+    m_pending = map.value(QStringLiteral("staged")).toBool();
     m_booted = map.value(QStringLiteral("booted")).toBool();
 
     if (m_booted) {
@@ -86,23 +86,18 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
         m_branchVariant = variant;
     }
 
+    // Store base-commit and current commit to be able to differentiate between deployments
+    m_base_checksum = map.value(QStringLiteral("base-checksum")).toString();
+    m_checksum = map.value(QStringLiteral("checksum")).toString();
+    if (m_checksum.isEmpty()) {
+        m_checksum = m_base_checksum;
+    }
+
     // Use ostree as tld to differentiate those resources and append the current branch:
     // Example: ostree.fedora-34-x86-64-kinoite
     // https://freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-id-generic
     m_appstreamid = m_branch;
-    m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-');
-
-    // TODO: Extract signature information
-    // auto signatures = map.value(QStringLiteral("signatures")).value<QDBusArgument>();
-    // signatures.beginArray();
-    // while (!signatures.atEnd()) {
-    //     QList<QStringList> l;
-    //     signatures >> l;
-    //     qInfo() << l;
-    // }
-    // signatures.endArray();
-
-    // TODO: Extract the list of layered packages
+    m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-') + "." + m_checksum;
 
     connect(this, &RpmOstreeResource::buttonPressed, parent, &RpmOstreeBackend::rebaseToNewVersion);
 }
@@ -285,9 +280,12 @@ QString RpmOstreeResource::author() const
 QString RpmOstreeResource::comment()
 {
     if (m_booted) {
-        return i18n("The currently running version of %1.", packageName());
+        return i18n("Currently booted version");
     }
-    return i18n("Installed but not currently running version of %1.", packageName());
+    if (m_pending) {
+        return i18n("Next version used after reboot");
+    }
+    return i18n("Fallback version");
 }
 
 quint64 RpmOstreeResource::size()
@@ -350,4 +348,9 @@ QStringList RpmOstreeResource::categories()
 bool RpmOstreeResource::isBooted()
 {
     return m_booted;
+}
+
+bool RpmOstreeResource::isPending()
+{
+    return m_pending;
 }
