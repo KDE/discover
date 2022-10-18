@@ -34,19 +34,12 @@ DiscoverPage {
                 Layout.margins: Kirigami.Units.smallSpacing
                 text: modelData.inlineAction.toolTip
                 visible: modelData.inlineAction && modelData.inlineAction.visible
-
-                actions: [
-                    Kirigami.Action {
-                        icon.name: modelData.inlineAction.iconName
-                        text: modelData.inlineAction.text
-                        onTriggered: modelData.inlineAction.trigger()
-                    }
-                ]
+                actions: modelData.inlineAction ? [ modelData.inlineAction ] : []
             }
         }
     }
 
-    mainItem: ListView {
+    ListView {
         id: sourcesView
         model: SourcesModel
         Component.onCompleted: Qt.callLater(SourcesModel.showingNow)
@@ -55,7 +48,7 @@ DiscoverPage {
         section.property: "sourceName"
         section.delegate: Kirigami.ListSectionHeader {
             id: backendItem
-            height: Math.max(Kirigami.Units.gridUnit * 2.5, contentItem.height)
+            height: Math.max(Kirigami.Units.gridUnit * 2.5, contentItem.implicitHeight)
 
             readonly property QtObject backend: SourcesModel.sourcesBackendByName(section)
             readonly property QtObject resourcesBackend: backend.resourcesBackend
