@@ -166,7 +166,7 @@ DiscoverPage {
 
             Kirigami.PlaceholderMessage {
                 visible: !searchedForThingNotFound.visible
-                anchors.centerIn: parent
+                anchors.centerIn: visible ? parent : undefined
                 width: parent.width - (Kirigami.Units.largeSpacing * 8)
 
                 icon.name: "edit-none"
