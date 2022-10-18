@@ -34,7 +34,12 @@ DiscoverPage {
                 Layout.margins: Kirigami.Units.smallSpacing
                 text: modelData.inlineAction.toolTip
                 visible: modelData.inlineAction && modelData.inlineAction.visible
-                actions: modelData.inlineAction ? [ modelData.inlineAction ] : []
+                actions: Kirigami.Action {
+                    icon.name: modelData.inlineAction.iconName || ""
+                    text: modelData.inlineAction.text || ""
+                    onTriggered: modelData.inlineAction.trigger()
+                }
+
             }
         }
     }
