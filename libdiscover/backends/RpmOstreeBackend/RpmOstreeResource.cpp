@@ -324,7 +324,8 @@ AbstractResource::State RpmOstreeResource::state()
 
 QString RpmOstreeResource::author() const
 {
-    return {};
+    // TODO: Remove hardcoded values
+    return QStringLiteral("Fedora Project");
 }
 
 QString RpmOstreeResource::comment()
