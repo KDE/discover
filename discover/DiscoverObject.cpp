@@ -279,7 +279,7 @@ void DiscoverObject::openCategory(const QString &category)
 void DiscoverObject::openLocalPackage(const QUrl &localfile)
 {
     if (!QFile::exists(localfile.toLocalFile())) {
-        showPassiveNotification(i18n("Trying to open unexisting file '%1'", localfile.toString()));
+        showPassiveNotification(i18n("Trying to open inexisting file '%1'", localfile.toString()));
         openMode(QStringLiteral("Browsing"));
         return;
     }
