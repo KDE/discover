@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-15 00:48+0000\n"
+"POT-Creation-Date: 2022-10-18 00:46+0000\n"
 "PO-Revision-Date: 2022-10-14 12:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -74,6 +74,11 @@ msgstr "Daha Fazla Öğren"
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "'%1' kategorisi bulunamadı"
+
+#: discover/DiscoverObject.cpp:282
+#, kde-format
+msgid "Trying to open unexisting file '%1'"
+msgstr ""
 
 #: discover/DiscoverObject.cpp:304
 #, kde-format

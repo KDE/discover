@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-15 00:48+0000\n"
+"POT-Creation-Date: 2022-10-18 00:46+0000\n"
 "PO-Revision-Date: 2022-07-02 20:23+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -69,6 +69,11 @@ msgstr "了解更多"
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "找不到分類「%1」"
+
+#: discover/DiscoverObject.cpp:282
+#, kde-format
+msgid "Trying to open unexisting file '%1'"
+msgstr ""
 
 #: discover/DiscoverObject.cpp:304
 #, kde-format

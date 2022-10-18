@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-14 00:48+0000\n"
+"POT-Creation-Date: 2022-10-18 00:46+0000\n"
 "PO-Revision-Date: 2013-10-03 04:53+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -544,7 +544,7 @@ msgid "Local bundle"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1597
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:610
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
@@ -1073,7 +1073,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:703
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:704
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr ""
@@ -2305,7 +2305,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:682
+#: libdiscover/resources/ResourcesProxyModel.cpp:683
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

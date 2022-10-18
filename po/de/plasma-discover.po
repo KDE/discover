@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-15 00:48+0000\n"
+"POT-Creation-Date: 2022-10-18 00:46+0000\n"
 "PO-Revision-Date: 2022-07-24 14:43+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -64,6 +64,11 @@ msgstr "Mehr erfahren"
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Die Kategorie „%1“ wurde nicht gefunden"
+
+#: discover/DiscoverObject.cpp:282
+#, kde-format
+msgid "Trying to open unexisting file '%1'"
+msgstr ""
 
 #: discover/DiscoverObject.cpp:304
 #, kde-format

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-14 00:48+0000\n"
+"POT-Creation-Date: 2022-10-18 00:46+0000\n"
 "PO-Revision-Date: 2019-11-01 11:57+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -528,7 +528,7 @@ msgid "Local bundle"
 msgstr "Fardo local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1597
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:610
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de appstream incorrecto «%1»"
@@ -1066,7 +1066,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:703
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:704
 #, fuzzy, kde-format
 #| msgid "Cannot remove system package"
 msgid "Cannot remove '%1'"
@@ -2247,7 +2247,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:682
+#: libdiscover/resources/ResourcesProxyModel.cpp:683
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-15 00:48+0000\n"
+"POT-Creation-Date: 2022-10-18 00:46+0000\n"
 "PO-Revision-Date: 2022-08-19 15:30-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -70,6 +70,11 @@ msgstr "Saiba mais"
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Não foi possível encontrar a categoria '%1'"
+
+#: discover/DiscoverObject.cpp:282
+#, kde-format
+msgid "Trying to open unexisting file '%1'"
+msgstr ""
 
 #: discover/DiscoverObject.cpp:304
 #, kde-format

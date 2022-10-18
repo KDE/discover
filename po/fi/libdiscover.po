@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-14 00:48+0000\n"
+"POT-Creation-Date: 2022-10-18 00:46+0000\n"
 "PO-Revision-Date: 2022-08-11 22:55+0300\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -531,7 +531,7 @@ msgid "Local bundle"
 msgstr "Paikallinen nippu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1597
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:610
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Virheellinen appstream-osoite ”%1”"
@@ -1065,7 +1065,7 @@ msgstr ""
 "Käyttöjärjestelmäsi tuki päättyi %1. Harkitse päivittämistä tuettuun "
 "versioon."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:703
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:704
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ei voida poistaa: ”%1”"
@@ -2178,7 +2178,7 @@ msgstr "Tarkista verkkoyhteys"
 msgid "Refresh"
 msgstr "Virkistä"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:682
+#: libdiscover/resources/ResourcesProxyModel.cpp:683
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

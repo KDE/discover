@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-14 00:48+0000\n"
+"POT-Creation-Date: 2022-10-18 00:46+0000\n"
 "PO-Revision-Date: 2022-10-14 21:15+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -523,7 +523,7 @@ msgid "Local bundle"
 msgstr "Yerel paket"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1597
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:610
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Bozulmuş Appstream adresi '%1%'"
@@ -1058,7 +1058,7 @@ msgstr ""
 "İşletim sisteminiz %1 tarihinde desteği sonlandırdı. Desteklenen bir sürüme "
 "geçmeyi düşünün."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:703
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:704
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' kaldırılamıyor"
@@ -2171,7 +2171,7 @@ msgstr "Lütfen internet bağlantınızı doğrulayın"
 msgid "Refresh"
 msgstr "Yenile"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:682
+#: libdiscover/resources/ResourcesProxyModel.cpp:683
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

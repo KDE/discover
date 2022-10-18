@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-14 00:48+0000\n"
+"POT-Creation-Date: 2022-10-18 00:46+0000\n"
 "PO-Revision-Date: 2022-10-16 13:37+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -520,7 +520,7 @@ msgid "Local bundle"
 msgstr "Локален пакет"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1597
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:610
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Неправилен URL адрес на потока на приложението \"%1\""
@@ -1058,7 +1058,7 @@ msgstr ""
 "Поддръжката на вашата операционна система приключи на %1. Помислете за "
 "обновяване до поддържана версия."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:703
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:704
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Не може да се премахне \"%1\""
@@ -2173,7 +2173,7 @@ msgstr "Моля, проверете интернет връзката"
 msgid "Refresh"
 msgstr "Обновяване"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:682
+#: libdiscover/resources/ResourcesProxyModel.cpp:683
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

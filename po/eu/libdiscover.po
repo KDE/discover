@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-14 00:48+0000\n"
+"POT-Creation-Date: 2022-10-18 00:46+0000\n"
 "PO-Revision-Date: 2022-10-14 07:43+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -524,7 +524,7 @@ msgid "Local bundle"
 msgstr "Bertako sorta"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1597
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:609
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:610
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Gaizki eratutako 'appstream' url '%1'"
@@ -1067,7 +1067,7 @@ msgstr ""
 "Zure sistema eragileak %1(a)ren gaineko euskarria bukatu du. Kontuan izan "
 "euskarria duen bertsio batera bertsio-berritzeko aukera."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:703
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:704
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ezin da kendu «%1»"
@@ -2185,7 +2185,7 @@ msgstr "Mesedez, egiaztatu Interneteko konektibitatea"
 msgid "Refresh"
 msgstr "Freskatu"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:682
+#: libdiscover/resources/ResourcesProxyModel.cpp:683
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
