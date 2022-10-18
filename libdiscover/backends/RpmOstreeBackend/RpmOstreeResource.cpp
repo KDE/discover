@@ -303,7 +303,7 @@ QString RpmOstreeResource::name() const
 
 QString RpmOstreeResource::origin() const
 {
-    return m_remote;
+    return m_remote.at(0).toUpper() + m_remote.mid(1);
 }
 
 QString RpmOstreeResource::packageName() const
