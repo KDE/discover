@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-18 00:46+0000\n"
+"POT-Creation-Date: 2022-10-19 00:47+0000\n"
 "PO-Revision-Date: 2022-09-05 19:01+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -74,7 +74,7 @@ msgstr "Impossibile trovare la categoria «%1»"
 
 #: discover/DiscoverObject.cpp:282
 #, kde-format
-msgid "Trying to open unexisting file '%1'"
+msgid "Trying to open inexisting file '%1'"
 msgstr ""
 
 #: discover/DiscoverObject.cpp:304
@@ -270,10 +270,10 @@ msgstr "Aggiungi nuovo deposito di %1"
 msgid "Add"
 msgstr "Aggiungi"
 
-#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:263
+#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:255
 #: discover/qml/InstallApplicationButton.qml:41
-#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:181
-#: discover/qml/UpdatesPage.qml:247 discover/qml/WebflowDialog.qml:39
+#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
+#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:39
 #, kde-format
 msgid "Cancel"
 msgstr "Annulla"
@@ -641,17 +641,17 @@ msgstr "Ricerca ancora in corso..."
 msgid "Featured"
 msgstr "In primo piano"
 
-#: discover/qml/BrowsingPage.qml:43
+#: discover/qml/BrowsingPage.qml:53
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Impossibile caricare le applicazioni"
 
-#: discover/qml/BrowsingPage.qml:76
+#: discover/qml/BrowsingPage.qml:86
 #, kde-format
 msgid "Updates are available"
 msgstr "Sono disponibili aggiornamenti"
 
-#: discover/qml/BrowsingPage.qml:80
+#: discover/qml/BrowsingPage.qml:90
 #, kde-format
 msgctxt "Short for 'show updates'"
 msgid "Show"
@@ -703,7 +703,7 @@ msgstr "Inform&azioni"
 msgid "S&ettings"
 msgstr "Im&postazioni"
 
-#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:337
+#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:329
 #, kde-format
 msgid "Error"
 msgstr "Errore"
@@ -713,12 +713,12 @@ msgstr "Errore"
 msgid "Unable to find resource: %1"
 msgstr "Impossibile trovare la risorsa: %1"
 
-#: discover/qml/DiscoverWindow.qml:250 discover/qml/SourcesPage.qml:171
+#: discover/qml/DiscoverWindow.qml:242 discover/qml/SourcesPage.qml:169
 #, kde-format
 msgid "Proceed"
 msgstr "Procedi"
 
-#: discover/qml/DiscoverWindow.qml:307
+#: discover/qml/DiscoverWindow.qml:299
 #, kde-format
 msgid "Report this issue"
 msgstr "Segnala questo problema"
@@ -969,52 +969,52 @@ msgstr "Cerca in «%1»..."
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: discover/qml/SourcesPage.qml:95
+#: discover/qml/SourcesPage.qml:93
 #, kde-format
 msgid "Default source"
 msgstr "Fonte predefinita"
 
-#: discover/qml/SourcesPage.qml:102
+#: discover/qml/SourcesPage.qml:100
 #, kde-format
 msgid "Add Source…"
 msgstr "Aggiungi fonte…"
 
-#: discover/qml/SourcesPage.qml:126
+#: discover/qml/SourcesPage.qml:124
 #, kde-format
 msgid "Make default"
 msgstr "Rendi predefinito"
 
-#: discover/qml/SourcesPage.qml:212
+#: discover/qml/SourcesPage.qml:210
 #, kde-format
 msgid "Increase priority"
 msgstr "Aumenta priorità"
 
-#: discover/qml/SourcesPage.qml:218
+#: discover/qml/SourcesPage.qml:216
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "Incremento della preferenza «%1» non riuscito"
 
-#: discover/qml/SourcesPage.qml:223
+#: discover/qml/SourcesPage.qml:221
 #, kde-format
 msgid "Decrease priority"
 msgstr "Riduci priorità"
 
-#: discover/qml/SourcesPage.qml:229
+#: discover/qml/SourcesPage.qml:227
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "Riduzione della preferenza «%1» non riuscita"
 
-#: discover/qml/SourcesPage.qml:234
+#: discover/qml/SourcesPage.qml:232
 #, kde-format
 msgid "Remove repository"
 msgstr "Rimuovi deposito"
 
-#: discover/qml/SourcesPage.qml:245
+#: discover/qml/SourcesPage.qml:243
 #, kde-format
 msgid "Show contents"
 msgstr "Mostra i contenuti"
 
-#: discover/qml/SourcesPage.qml:284
+#: discover/qml/SourcesPage.qml:282
 #, kde-format
 msgid "Missing Backends"
 msgstr "Motori mancanti"
@@ -1075,52 +1075,52 @@ msgstr "Aggiorna selezionati"
 msgid "Update All"
 msgstr "Aggiorna tutto"
 
-#: discover/qml/UpdatesPage.qml:168
+#: discover/qml/UpdatesPage.qml:180
 #, kde-format
 msgid "Ignore"
 msgstr "Ignora"
 
-#: discover/qml/UpdatesPage.qml:214
+#: discover/qml/UpdatesPage.qml:226
 #, kde-format
 msgid "Select All"
 msgstr "Seleziona tutto"
 
-#: discover/qml/UpdatesPage.qml:222
+#: discover/qml/UpdatesPage.qml:234
 #, kde-format
 msgid "Select None"
 msgstr "Nessuna selezione"
 
-#: discover/qml/UpdatesPage.qml:229
+#: discover/qml/UpdatesPage.qml:241
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "Riavvia automaticamente dopo il completamento dell'aggiornamento"
 
-#: discover/qml/UpdatesPage.qml:236
+#: discover/qml/UpdatesPage.qml:248
 #, kde-format
 msgid "Total size: %1"
 msgstr "Dimensione totale: %1"
 
-#: discover/qml/UpdatesPage.qml:272
+#: discover/qml/UpdatesPage.qml:284
 #, kde-format
 msgid "Restart Now"
 msgstr "Riavvia adesso"
 
-#: discover/qml/UpdatesPage.qml:371
+#: discover/qml/UpdatesPage.qml:383
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:387
+#: discover/qml/UpdatesPage.qml:399
 #, kde-format
 msgid "Installing"
 msgstr "Installazione"
 
-#: discover/qml/UpdatesPage.qml:422
+#: discover/qml/UpdatesPage.qml:434
 #, kde-format
 msgid "Update from:"
 msgstr "Aggiorna da:"
 
-#: discover/qml/UpdatesPage.qml:434
+#: discover/qml/UpdatesPage.qml:446
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1128,43 +1128,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:441
+#: discover/qml/UpdatesPage.qml:453
 #, kde-format
 msgid "More Information…"
 msgstr "Ulteriori informazioni…"
 
-#: discover/qml/UpdatesPage.qml:469
+#: discover/qml/UpdatesPage.qml:481
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Recupero degli aggiornamenti..."
 
-#: discover/qml/UpdatesPage.qml:482
+#: discover/qml/UpdatesPage.qml:494
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Aggiornamenti"
 
-#: discover/qml/UpdatesPage.qml:492
+#: discover/qml/UpdatesPage.qml:504
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Riavvia il sistema per completare il processo di aggiornamento"
 
-#: discover/qml/UpdatesPage.qml:504 discover/qml/UpdatesPage.qml:511
-#: discover/qml/UpdatesPage.qml:518
+#: discover/qml/UpdatesPage.qml:516 discover/qml/UpdatesPage.qml:523
+#: discover/qml/UpdatesPage.qml:530
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Aggiornato"
 
-#: discover/qml/UpdatesPage.qml:525
+#: discover/qml/UpdatesPage.qml:537
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Dovresti controllare gli aggiornamenti"
 
-#: discover/qml/UpdatesPage.qml:532
+#: discover/qml/UpdatesPage.qml:544
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

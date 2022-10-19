@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-18 00:46+0000\n"
-"PO-Revision-Date: 2022-09-06 19:48+0530\n"
+"POT-Creation-Date: 2022-10-19 00:47+0000\n"
+"PO-Revision-Date: 2022-10-18 21:41+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.0\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: discover/DiscoverObject.cpp:157
 #, kde-format
@@ -69,9 +69,10 @@ msgid "Could not find category '%1'"
 msgstr "'%1 என்ற பகுப்பை கண்டுபிடிக்க முடியவில்லை"
 
 #: discover/DiscoverObject.cpp:282
-#, kde-format
-msgid "Trying to open unexisting file '%1'"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Trying to open unexisting file '%1'"
+msgid "Trying to open inexisting file '%1'"
+msgstr "'%1' எனும் இல்லாத கோப்பின் திறப்பு முயற்சிக்கப்பட்டது"
 
 #: discover/DiscoverObject.cpp:304
 #, kde-format
@@ -261,10 +262,10 @@ msgstr "புதிய %1 களஞ்சியத்தை சேர்"
 msgid "Add"
 msgstr "சேர்"
 
-#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:263
+#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:255
 #: discover/qml/InstallApplicationButton.qml:41
-#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:181
-#: discover/qml/UpdatesPage.qml:247 discover/qml/WebflowDialog.qml:39
+#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
+#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:39
 #, kde-format
 msgid "Cancel"
 msgstr "ரத்து செய்"
@@ -301,7 +302,7 @@ msgstr "தெரியாத நிரலாளர்"
 #: discover/qml/ApplicationPage.qml:204
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "திரைப்பிடிப்புகளை அணுக முடியவில்லை"
 
 #: discover/qml/ApplicationPage.qml:261
 #, kde-format
@@ -627,17 +628,17 @@ msgstr "இன்னும் தேடுகிறது…"
 msgid "Featured"
 msgstr "சிறப்பானவை"
 
-#: discover/qml/BrowsingPage.qml:43
+#: discover/qml/BrowsingPage.qml:53
 #, kde-format
 msgid "Unable to load applications"
 msgstr "செயலிகளை ஏற்ற முடியவில்லை"
 
-#: discover/qml/BrowsingPage.qml:76
+#: discover/qml/BrowsingPage.qml:86
 #, kde-format
 msgid "Updates are available"
 msgstr "புதுப்பிப்புகள் உள்ளன"
 
-#: discover/qml/BrowsingPage.qml:80
+#: discover/qml/BrowsingPage.qml:90
 #, kde-format
 msgctxt "Short for 'show updates'"
 msgid "Show"
@@ -689,7 +690,7 @@ msgstr "&பற்றி"
 msgid "S&ettings"
 msgstr "&அமைப்புகள்"
 
-#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:337
+#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:329
 #, kde-format
 msgid "Error"
 msgstr "சிக்கல்"
@@ -699,12 +700,12 @@ msgstr "சிக்கல்"
 msgid "Unable to find resource: %1"
 msgstr "இதை கண்டுபிடிக்க முடியவில்லை: %1"
 
-#: discover/qml/DiscoverWindow.qml:250 discover/qml/SourcesPage.qml:171
+#: discover/qml/DiscoverWindow.qml:242 discover/qml/SourcesPage.qml:169
 #, kde-format
 msgid "Proceed"
 msgstr "தொடர்"
 
-#: discover/qml/DiscoverWindow.qml:307
+#: discover/qml/DiscoverWindow.qml:299
 #, kde-format
 msgid "Report this issue"
 msgstr "இச்சிக்கலை தெரிவி"
@@ -955,52 +956,52 @@ msgstr "'%1' என்பதில் தேடு…"
 msgid "Settings"
 msgstr "அமைப்புகள்"
 
-#: discover/qml/SourcesPage.qml:95
+#: discover/qml/SourcesPage.qml:93
 #, kde-format
 msgid "Default source"
 msgstr "இயல்பிருப்பு மூலம்"
 
-#: discover/qml/SourcesPage.qml:102
+#: discover/qml/SourcesPage.qml:100
 #, kde-format
 msgid "Add Source…"
 msgstr "மூலத்தை சேர்…"
 
-#: discover/qml/SourcesPage.qml:126
+#: discover/qml/SourcesPage.qml:124
 #, kde-format
 msgid "Make default"
 msgstr "இயல்பிருப்பாக்கு"
 
-#: discover/qml/SourcesPage.qml:212
+#: discover/qml/SourcesPage.qml:210
 #, kde-format
 msgid "Increase priority"
 msgstr "முன்னிலை அளவை கூட்டு"
 
-#: discover/qml/SourcesPage.qml:218
+#: discover/qml/SourcesPage.qml:216
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "'%1' என்பதன் முதன்மையை கூட்ட முடியவில்லை"
 
-#: discover/qml/SourcesPage.qml:223
+#: discover/qml/SourcesPage.qml:221
 #, kde-format
 msgid "Decrease priority"
 msgstr "முன்னிலை அளவை குறை"
 
-#: discover/qml/SourcesPage.qml:229
+#: discover/qml/SourcesPage.qml:227
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "'%1' என்பதன் முதன்மையை குறைக்க முடியவில்லை"
 
-#: discover/qml/SourcesPage.qml:234
+#: discover/qml/SourcesPage.qml:232
 #, kde-format
 msgid "Remove repository"
 msgstr "களஞ்சியத்தை நீக்கு"
 
-#: discover/qml/SourcesPage.qml:245
+#: discover/qml/SourcesPage.qml:243
 #, kde-format
 msgid "Show contents"
 msgstr "உள்ளடக்கத்தை காட்டு"
 
-#: discover/qml/SourcesPage.qml:284
+#: discover/qml/SourcesPage.qml:282
 #, kde-format
 msgid "Missing Backends"
 msgstr "இல்லாத பின்நிலைகள்"
@@ -1061,52 +1062,52 @@ msgstr "தேர்ந்தெடுத்தவற்றை புதுப�
 msgid "Update All"
 msgstr "அனைத்தையும் புதுப்பி"
 
-#: discover/qml/UpdatesPage.qml:168
+#: discover/qml/UpdatesPage.qml:180
 #, kde-format
 msgid "Ignore"
 msgstr "பொருட்படுத்தாதே"
 
-#: discover/qml/UpdatesPage.qml:214
+#: discover/qml/UpdatesPage.qml:226
 #, kde-format
 msgid "Select All"
 msgstr "அனைத்தையும் தேர்ந்தெடு"
 
-#: discover/qml/UpdatesPage.qml:222
+#: discover/qml/UpdatesPage.qml:234
 #, kde-format
 msgid "Select None"
 msgstr "ஒன்றையும் தேர்ந்தெடுக்க வேண்டாம்"
 
-#: discover/qml/UpdatesPage.qml:229
+#: discover/qml/UpdatesPage.qml:241
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "புதுப்பித்தபின் தானாக மீள்துவக்கு"
 
-#: discover/qml/UpdatesPage.qml:236
+#: discover/qml/UpdatesPage.qml:248
 #, kde-format
 msgid "Total size: %1"
 msgstr "மொத்த அளவு: %1"
 
-#: discover/qml/UpdatesPage.qml:272
+#: discover/qml/UpdatesPage.qml:284
 #, kde-format
 msgid "Restart Now"
 msgstr "இப்போதே மீள்துவக்கு"
 
-#: discover/qml/UpdatesPage.qml:371
+#: discover/qml/UpdatesPage.qml:383
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:387
+#: discover/qml/UpdatesPage.qml:399
 #, kde-format
 msgid "Installing"
 msgstr "நிறுவப்படுகிறது"
 
-#: discover/qml/UpdatesPage.qml:422
+#: discover/qml/UpdatesPage.qml:434
 #, kde-format
 msgid "Update from:"
 msgstr "இங்கிருந்து புதுப்பி:"
 
-#: discover/qml/UpdatesPage.qml:434
+#: discover/qml/UpdatesPage.qml:446
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1114,43 +1115,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:441
+#: discover/qml/UpdatesPage.qml:453
 #, kde-format
 msgid "More Information…"
 msgstr "மேலும் விவரங்கள்…"
 
-#: discover/qml/UpdatesPage.qml:469
+#: discover/qml/UpdatesPage.qml:481
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "புதுப்பிப்புகளின் பட்டியல் பதிவிறக்கப்படுகிறது…"
 
-#: discover/qml/UpdatesPage.qml:482
+#: discover/qml/UpdatesPage.qml:494
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "புதுப்பிப்புகள்"
 
-#: discover/qml/UpdatesPage.qml:492
+#: discover/qml/UpdatesPage.qml:504
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "புதுப்பிப்பை முடிக்க கணினியை மீள்துவக்குங்கள்"
 
-#: discover/qml/UpdatesPage.qml:504 discover/qml/UpdatesPage.qml:511
-#: discover/qml/UpdatesPage.qml:518
+#: discover/qml/UpdatesPage.qml:516 discover/qml/UpdatesPage.qml:523
+#: discover/qml/UpdatesPage.qml:530
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "புதுப்பிப்புகள் இல்லை"
 
-#: discover/qml/UpdatesPage.qml:525
+#: discover/qml/UpdatesPage.qml:537
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "புதுப்பிப்புகள் உள்ளனவா என்று பார்க்க வேண்டும்"
 
-#: discover/qml/UpdatesPage.qml:532
+#: discover/qml/UpdatesPage.qml:544
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

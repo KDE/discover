@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-18 00:46+0000\n"
-"PO-Revision-Date: 2022-10-14 07:34+0200\n"
+"POT-Creation-Date: 2022-10-19 00:47+0000\n"
+"PO-Revision-Date: 2022-10-18 06:28+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -28,8 +28,8 @@ msgid ""
 "updates because none of its app backends are available."
 msgstr ""
 "Discover ezin da une honetan aplikazioak instalatzeko edo sistemako "
-"eguneratzeak gauzatzeko erabili, bere bizkarraldeko aplikazioetako batere "
-"erabilgarri ez dagoelako."
+"eguneratzeak gauzatzeko erabili, bere aplikazioetarako bizkarraldekoetako "
+"batere erabilgarri ez dagoelako."
 
 #: discover/DiscoverObject.cpp:161
 #, kde-kuit-format
@@ -76,9 +76,10 @@ msgid "Could not find category '%1'"
 msgstr "Ez da aurkitu kategoria: '%1'"
 
 #: discover/DiscoverObject.cpp:282
-#, kde-format
-msgid "Trying to open unexisting file '%1'"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Trying to open unexisting file '%1'"
+msgid "Trying to open inexisting file '%1'"
+msgstr "Existitzen ez den '%1' fitxategia irekitzea saiatzen"
 
 #: discover/DiscoverObject.cpp:304
 #, kde-format
@@ -270,10 +271,10 @@ msgstr "Gehitu %1 gordetegi berri bat"
 msgid "Add"
 msgstr "Gehitu"
 
-#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:263
+#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:255
 #: discover/qml/InstallApplicationButton.qml:41
-#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:181
-#: discover/qml/UpdatesPage.qml:247 discover/qml/WebflowDialog.qml:39
+#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
+#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:39
 #, kde-format
 msgid "Cancel"
 msgstr "Utzi"
@@ -643,17 +644,17 @@ msgstr "Oraindik bilatzen..."
 msgid "Featured"
 msgstr "Aipagarria"
 
-#: discover/qml/BrowsingPage.qml:43
+#: discover/qml/BrowsingPage.qml:53
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Ezin ditu aplikazioak zamatu"
 
-#: discover/qml/BrowsingPage.qml:76
+#: discover/qml/BrowsingPage.qml:86
 #, kde-format
 msgid "Updates are available"
 msgstr "Eguneratzeak eskuragarri daude"
 
-#: discover/qml/BrowsingPage.qml:80
+#: discover/qml/BrowsingPage.qml:90
 #, kde-format
 msgctxt "Short for 'show updates'"
 msgid "Show"
@@ -706,7 +707,7 @@ msgstr "Honi &buruz"
 msgid "S&ettings"
 msgstr "&Ezarpenak"
 
-#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:337
+#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:329
 #, kde-format
 msgid "Error"
 msgstr "Errorea"
@@ -716,12 +717,12 @@ msgstr "Errorea"
 msgid "Unable to find resource: %1"
 msgstr "Ezin da aurkitu baliabidea: %1"
 
-#: discover/qml/DiscoverWindow.qml:250 discover/qml/SourcesPage.qml:171
+#: discover/qml/DiscoverWindow.qml:242 discover/qml/SourcesPage.qml:169
 #, kde-format
 msgid "Proceed"
 msgstr "Jarraitu"
 
-#: discover/qml/DiscoverWindow.qml:307
+#: discover/qml/DiscoverWindow.qml:299
 #, kde-format
 msgid "Report this issue"
 msgstr "Eman arazo honen berri"
@@ -972,52 +973,52 @@ msgstr "Bilatu «%1»(e)an..."
 msgid "Settings"
 msgstr "Ezarpenak"
 
-#: discover/qml/SourcesPage.qml:95
+#: discover/qml/SourcesPage.qml:93
 #, kde-format
 msgid "Default source"
 msgstr "Sorburu lehenetsia"
 
-#: discover/qml/SourcesPage.qml:102
+#: discover/qml/SourcesPage.qml:100
 #, kde-format
 msgid "Add Source…"
 msgstr "Gehitu sorburua..."
 
-#: discover/qml/SourcesPage.qml:126
+#: discover/qml/SourcesPage.qml:124
 #, kde-format
 msgid "Make default"
 msgstr "Lehenetsi"
 
-#: discover/qml/SourcesPage.qml:212
+#: discover/qml/SourcesPage.qml:210
 #, kde-format
 msgid "Increase priority"
 msgstr "Handitu lehentasuna"
 
-#: discover/qml/SourcesPage.qml:218
+#: discover/qml/SourcesPage.qml:216
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "'%1' hobespena handiagotzea huts egin du"
 
-#: discover/qml/SourcesPage.qml:223
+#: discover/qml/SourcesPage.qml:221
 #, kde-format
 msgid "Decrease priority"
 msgstr "Txikitu lehentasuna"
 
-#: discover/qml/SourcesPage.qml:229
+#: discover/qml/SourcesPage.qml:227
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "'%1' hobespena txikiagotzea huts egin du"
 
-#: discover/qml/SourcesPage.qml:234
+#: discover/qml/SourcesPage.qml:232
 #, kde-format
 msgid "Remove repository"
 msgstr "Kendu gordetegia"
 
-#: discover/qml/SourcesPage.qml:245
+#: discover/qml/SourcesPage.qml:243
 #, kde-format
 msgid "Show contents"
 msgstr "Erakutsi edukia"
 
-#: discover/qml/SourcesPage.qml:284
+#: discover/qml/SourcesPage.qml:282
 #, kde-format
 msgid "Missing Backends"
 msgstr "Falta diren bizkarraldekoak"
@@ -1077,52 +1078,52 @@ msgstr "Eguneratu hautatutakoak"
 msgid "Update All"
 msgstr "Eguneratu denak"
 
-#: discover/qml/UpdatesPage.qml:168
+#: discover/qml/UpdatesPage.qml:180
 #, kde-format
 msgid "Ignore"
 msgstr "Ez ikusi egin"
 
-#: discover/qml/UpdatesPage.qml:214
+#: discover/qml/UpdatesPage.qml:226
 #, kde-format
 msgid "Select All"
 msgstr "Hautatu denak"
 
-#: discover/qml/UpdatesPage.qml:222
+#: discover/qml/UpdatesPage.qml:234
 #, kde-format
 msgid "Select None"
 msgstr "Bat ere ez hautatu"
 
-#: discover/qml/UpdatesPage.qml:229
+#: discover/qml/UpdatesPage.qml:241
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "Berrabiarazi automatikoki eguneratzea osatu ondoren"
 
-#: discover/qml/UpdatesPage.qml:236
+#: discover/qml/UpdatesPage.qml:248
 #, kde-format
 msgid "Total size: %1"
 msgstr "Neurria guztira: %1"
 
-#: discover/qml/UpdatesPage.qml:272
+#: discover/qml/UpdatesPage.qml:284
 #, kde-format
 msgid "Restart Now"
 msgstr "Berrabiarazi orain"
 
-#: discover/qml/UpdatesPage.qml:371
+#: discover/qml/UpdatesPage.qml:383
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:387
+#: discover/qml/UpdatesPage.qml:399
 #, kde-format
 msgid "Installing"
 msgstr "Instalatzen"
 
-#: discover/qml/UpdatesPage.qml:422
+#: discover/qml/UpdatesPage.qml:434
 #, kde-format
 msgid "Update from:"
 msgstr "Eguneratu hemendik:"
 
-#: discover/qml/UpdatesPage.qml:434
+#: discover/qml/UpdatesPage.qml:446
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1130,43 +1131,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:441
+#: discover/qml/UpdatesPage.qml:453
 #, kde-format
 msgid "More Information…"
 msgstr "Informazio gehiago..."
 
-#: discover/qml/UpdatesPage.qml:469
+#: discover/qml/UpdatesPage.qml:481
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Eguneratzeak ekartzen..."
 
-#: discover/qml/UpdatesPage.qml:482
+#: discover/qml/UpdatesPage.qml:494
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Eguneratzeak"
 
-#: discover/qml/UpdatesPage.qml:492
+#: discover/qml/UpdatesPage.qml:504
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Berrabiatu sistema eguneratze prozesua osatzeko"
 
-#: discover/qml/UpdatesPage.qml:504 discover/qml/UpdatesPage.qml:511
-#: discover/qml/UpdatesPage.qml:518
+#: discover/qml/UpdatesPage.qml:516 discover/qml/UpdatesPage.qml:523
+#: discover/qml/UpdatesPage.qml:530
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Eguneratua"
 
-#: discover/qml/UpdatesPage.qml:525
+#: discover/qml/UpdatesPage.qml:537
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Eguneratzeak dauden egiaztatu beharko litzateke"
 
-#: discover/qml/UpdatesPage.qml:532
+#: discover/qml/UpdatesPage.qml:544
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
