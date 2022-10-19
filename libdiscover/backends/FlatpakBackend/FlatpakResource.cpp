@@ -736,8 +736,10 @@ QString FlatpakResource::eolReason()
         auto futureWatcher = new QFutureWatcher<FlatpakRemoteRef *>(this);
         connect(futureWatcher, &QFutureWatcher<FlatpakRemoteRef *>::finished, this, [this, futureWatcher]() {
             g_autoptr(FlatpakRemoteRef) rref = futureWatcher->result();
-            m_eolReason = QString::fromUtf8(flatpak_remote_ref_get_eol(rref));
-            Q_EMIT eolReasonChanged();
+            if (rref) {
+                m_eolReason = QString::fromUtf8(flatpak_remote_ref_get_eol(rref));
+                Q_EMIT eolReasonChanged();
+            }
             futureWatcher->deleteLater();
         });
 
