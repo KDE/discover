@@ -259,14 +259,14 @@ QString RpmOstreeResource::longDescription()
 {
     QString desc;
     if (!m_requested_packages.isEmpty()) {
-        QTextStream(&desc) << i18n("Additionnal packages: ") << "\n<ul>";
+        QTextStream(&desc) << i18n("Additional packages: ") << "\n<ul>";
         for (const QString &package : qAsConst(m_requested_packages)) {
             QTextStream(&desc) << "<li>" << package << "</li>\n";
         }
         QTextStream(&desc) << "</ul>\n";
     }
     if (!m_requested_modules.isEmpty()) {
-        QTextStream(&desc) << i18n("Additionnal modules: ") << "\n<ul>";
+        QTextStream(&desc) << i18n("Additional modules: ") << "\n<ul>";
         for (const QString &package : qAsConst(m_requested_modules)) {
             QTextStream(&desc) << "<li>" << package << "</li>\n";
         }
