@@ -5,7 +5,6 @@
   <project_license>GPL-2.0+</project_license>
   <name>Discover</name>
   <name xml:lang="ar">المستكشف</name>
-  <name xml:lang="ast">Discover</name>
   <name xml:lang="az">Discover</name>
   <name xml:lang="bg">Discover</name>
   <name xml:lang="ca">Discover</name>
@@ -54,7 +53,6 @@
   <name xml:lang="zh-TW">Discover</name>
   <summary>Discover</summary>
   <summary xml:lang="ar">المستكشف</summary>
-  <summary xml:lang="ast">Discover</summary>
   <summary xml:lang="az">Discover</summary>
   <summary xml:lang="bg">Discover</summary>
   <summary xml:lang="ca">Discover</summary>
@@ -104,7 +102,6 @@
   <description>
     <p>Discover helps you find and install applications, games, and tools. You can search or browse by category, and look at screenshots and read reviews to help you pick the perfect app.</p>
     <p xml:lang="ar">يساعدك المستكشف في العثور على التطبيقات والألعاب والأدوات وتثبيتها. يمكنك البحث أو التصفح حسب الفئة، وإلقاء نظرة على لقطات الشاشة وقراءة المراجعات لمساعدتك في اختيار التطبيق المثالي.</p>
-    <p xml:lang="ast">Discover ayúdate a atopar ya instalar aplicaciones y ferramientes. Pues buscar o restolar por estayes, mirar captures de pantalla y lleer reseñes p'ayudate a escoyer l'aplicación perfeuta.</p>
     <p xml:lang="az">Discover sizə tətbiqləri, oyunları və digər alət və vasitələri tapmağa və quraşdırmağa kömək edir. Siz kateqoriyalar üzrə axtararaq, ekran şəkillərinə baxmaqla və rəyləri oxumaqla istəyinizə uyğun ən mükəmməl tətbiqi və ya əlavələri seçə bilərsiniz.</p>
     <p xml:lang="bg">Discover ви помага да намерите и инсталирате приложения, игри и инструменти. Можете да търсите или разглеждате по категории и да погледнете снимки на екрана и да прочетете ревютата, за да ви помогнат да изберете перфектното приложение.</p>
     <p xml:lang="ca">El Discover ajuda a instal·lar aplicacions, jocs i eines. Podeu cercar o explorar per categoria, i veure les captures de pantalla i llegir els comentaris com a ajuda per a triar l'aplicació perfecta.</p>
@@ -185,7 +182,6 @@
     <p xml:lang="zh-TW">Discover 能幫助您管理各色來源的軟體，無論是系統內建的軟體庫、Flatpak 軟體庫、Snap 商店，甚或是來自 store.kde.org 的 AppImage。</p>
     <p>Finally, Discover also allows you to find, install, and manage add-ons for Plasma and all your favorite KDE apps!</p>
     <p xml:lang="ar">أخيرًا ، يتيح لك المستكشف أيضًا العثور على الوظائف الإضافية وتثبيتها وإدارتها لبلازما وجميع تطبيقات كدي المفضلة لديك!</p>
-    <p xml:lang="ast">P'acabar, Discover tamién te permite atopar, instalar y xestionar complementos de Plasma y toles aplicaciones de KDE.</p>
     <p xml:lang="az">Nəhayət, Discover həmçinin Plazma və bütün sevdiyiniz KDE tətbiqlərini tapmaq, quraşdırmaq və idarə etməyə imkan verir!</p>
     <p xml:lang="bg">Накрая, Discover ви позволява също да намирате, инсталирате и управлявате разширения за Plasma и всички ваши любими приложения на KDE.</p>
     <p xml:lang="ca">Finalment, el Discover també permet cercar, instal·lar i gestionar complements per al Plasma i totes les aplicacions preferides del KDE!</p>
@@ -230,7 +226,6 @@
     <screenshot type="default">
       <caption>Plasma Discover</caption>
       <caption xml:lang="ar">مستكشف بلازما</caption>
-      <caption xml:lang="ast">Plasma Discover</caption>
       <caption xml:lang="az">Plasma Discover</caption>
       <caption xml:lang="bg">Plasma Discover</caption>
       <caption xml:lang="ca">Discover del Plasma</caption>
