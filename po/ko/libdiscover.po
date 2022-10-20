@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-19 00:47+0000\n"
+"POT-Creation-Date: 2022-10-20 00:50+0000\n"
 "PO-Revision-Date: 2022-10-04 15:21+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -602,149 +602,149 @@ msgstr "다운로드"
 msgid "Music"
 msgstr "음악"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:774
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:776
 #, kde-format
 msgid "Network Access"
 msgstr "네트워크 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:775
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:777
 #, kde-format
 msgid "Can access the internet"
 msgstr "인터넷에 접근할 수 있음"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:781
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:783
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:924
 #, kde-format
 msgid "Session Bus Access"
 msgstr "세션 버스 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:782
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:784
 #, kde-format
 msgid "Access is granted to the entire Session Bus"
 msgstr "전체 세션 버스에 접근할 수 있음"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:787
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:789
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid "System Bus Access"
 msgstr "시스템 버스 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:788
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:790
 #, kde-format
 msgid "Access is granted to the entire System Bus"
 msgstr "전체 시스템 버스에 접근할 수 있음"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:793
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
 #, kde-format
 msgid "Remote Login Access"
 msgstr "원격 로그인 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:794
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:796
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "SSH 프로토콜을 사용하여 원격 로그인 접근 요청을 할 수 있음"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:798
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:800
 #, kde-format
 msgid "Smart Card Access"
 msgstr "스마트카드 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:799
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:801
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "스마트카드와 통합되어 통신할 수 있음"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:803
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
 #, fuzzy, kde-format
 #| msgid "Device Access"
 msgid "Printer Access"
 msgstr "장치 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:804
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
 #, fuzzy, kde-format
 #| msgid "Can integrate and communicate with smart cards"
 msgid "Can integrate and communicate with printers"
 msgstr "스마트카드와 통합되어 통신할 수 있음"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:808
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
 #, kde-format
 msgid "GPG Agent"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:809
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:815
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, fuzzy, kde-format
 #| msgid "Network Access"
 msgid "Bluetooth Access"
 msgstr "네트워크 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, fuzzy, kde-format
 #| msgid "Can integrate and communicate with smart cards"
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "스마트카드와 통합되어 통신할 수 있음"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #, fuzzy, kde-format
 #| msgid "System Bus Access"
 msgid "Low-Level System Access"
 msgstr "시스템 버스 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:821
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:827
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Device Access"
 msgstr "장치 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr "내장 또는 연결된 하드웨어 장치와 통신하고 제어할 수 있음"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:832
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "KVM(커널 기반 가상 머신) 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr "다른 운영 체제를 가상 머신의 게스트로 실행할 수 있음"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:857
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:871
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1(읽기 전용)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:872
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1(파일 생성 가능)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:881
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:865
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:883
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1(읽기/쓰기)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:890
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
 #, kde-format
 msgid "Home Folder Access"
 msgstr "홈 폴더 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:893
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -753,7 +753,7 @@ msgstr ""
 "권한을 요청하지 않고 홈 폴더의 다음 위치에 파일을 읽기, 쓰기, 생성할 수 있"
 "음: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -761,14 +761,14 @@ msgid ""
 msgstr ""
 "권한을 요청하지 않고 홈 폴더의 다음 위치에서 파일을 읽거나 쓸 수 있음: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:899
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
 msgstr "권한을 요청하지 않고 홈 폴더의 다음 위치에서 파일을 읽을 수 있음: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:899
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -776,12 +776,12 @@ msgid ""
 msgstr ""
 "권한을 요청하지 않고 홈 폴더의 다음 위치에 있는 파일에 접근할 수 있음: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:907
 #, kde-format
 msgid "System Folder Access"
 msgstr "시스템 폴더 접근"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:907
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:909
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -789,28 +789,28 @@ msgid ""
 msgstr ""
 "권한을 요청하지 않고 다음 위치에 시스템 파일을 읽기, 쓰기, 생성할 수 있음: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:909
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:911
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr "권한을 요청하지 않고 다음 위치에서 시스템 파일을 읽거나 쓸 수 있음: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:911
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr "권한을 요청하지 않고 다음 위치에서 시스템 파일을 읽을 수 있음: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:915
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr "권한을 요청하지 않고 다음 위치에 있는 시스템 파일에 접근할 수 있음: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:923
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -819,7 +819,7 @@ msgstr ""
 "다음 통신 프로토콜을 사용하여 같은 데스크톱 세션에서 실행 중인 다른 프로그램"
 "이나 프로세스와 통신할 수 있음: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -2052,13 +2052,15 @@ msgstr "GPL과 기타 라이선스"
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
-msgid "Additionnal packages: "
+msgid "Additional packages: "
 msgstr "추가 변경 사항 확인"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:269
-#, kde-format
-msgid "Additionnal modules: "
-msgstr ""
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Confirm Additional Changes"
+msgid "Additional modules: "
+msgstr "추가 변경 사항 확인"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:276
 #, fuzzy, kde-format

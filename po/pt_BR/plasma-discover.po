@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-19 00:47+0000\n"
-"PO-Revision-Date: 2022-08-19 15:30-0300\n"
+"PO-Revision-Date: 2022-10-19 14:52-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -22,18 +22,14 @@ msgstr ""
 "X-Generator: Lokalize 21.12.3\n"
 
 #: discover/DiscoverObject.cpp:157
-#, fuzzy, kde-format
-#| msgid ""
-#| "Discover currently cannot be used to install any apps because none of its "
-#| "app backends are available. Please report this issue to the packagers of "
-#| "your distribution."
+#, kde-format
 msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr ""
 "O Discover atualmente não pode ser usado para instalar qualquer aplicativo "
-"porque nenhuma das infraestruturas do aplicativo está disponível. Relate "
-"este erro para os empacotadores de sua distribuição."
+"ou fazer atualizações do sistema porque nenhuma das infraestruturas do "
+"aplicativo está disponível."
 
 #: discover/DiscoverObject.cpp:161
 #, kde-kuit-format
@@ -43,6 +39,9 @@ msgid ""
 "Backends</interface> section.<nl/><nl/>Also please consider reporting this "
 "as a packaging issue to your distribution."
 msgstr ""
+"Você pode instalar algumas na página de configurações, que fica na seção "
+"<interface>Infraestruturas faltantes</interface>.<nl/><nl/>Considere relatar "
+"isto como erro no empacotamento da sua distribuição."
 
 #: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
 #: discover/qml/UpdatesPage.qml:107
@@ -60,6 +59,11 @@ msgid ""
 "managing software because the PackageKit backend is not well-integrated on "
 "Arch Linux."
 msgstr ""
+"Você pode usar o <command>pacman</command> para instalar as dependências "
+"opcionais que são necessárias para habilitar as infraestruturas do "
+"aplicativo.<nl/><nl/>Note que os desenvolvedores do Arch Linux recomendam "
+"usar o <command>pacman</command> para gerenciar software porque a "
+"infraestrutura PackageKit não está bem integrada no Arch Linux."
 
 #: discover/DiscoverObject.cpp:179
 #, kde-format
@@ -74,7 +78,7 @@ msgstr "Não foi possível encontrar a categoria '%1'"
 #: discover/DiscoverObject.cpp:282
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "Tentando abrir o arquivo inexistente '%1'"
 
 #: discover/DiscoverObject.cpp:304
 #, kde-format
@@ -120,6 +124,8 @@ msgstr "Discover"
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
+"O Discover foi fechado antes que certas tarefas fossem concluídas, "
+"aguardando sua conclusão."
 
 #: discover/main.cpp:43
 #, kde-format
@@ -307,7 +313,7 @@ msgstr "Autor desconhecido"
 #: discover/qml/ApplicationPage.qml:204
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "Não foi possível acessar as capturas de tela"
 
 #: discover/qml/ApplicationPage.qml:261
 #, kde-format
@@ -351,23 +357,20 @@ msgstr[0] "Veja mais..."
 msgstr[1] "Veja mais..."
 
 #: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:856
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "Insira uma avaliação"
+msgstr "Classificação do conteúdo"
 
 #: discover/qml/ApplicationPage.qml:427
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "Idade: %1+"
 
 #: discover/qml/ApplicationPage.qml:451
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr "Veja mais..."
+msgstr "Ver detalhes…"
 
 #: discover/qml/ApplicationPage.qml:547
 #, kde-format
@@ -403,19 +406,18 @@ msgstr "Instalar ou remover funcionalidade adicional"
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "Compartilhar"
 
 #: discover/qml/ApplicationPage.qml:602
-#, fuzzy, kde-format
-#| msgid "Unable to load applications"
+#, kde-format
 msgid "Send a link to the application"
-msgstr "Não foi possível carregar os aplicativos"
+msgstr "Enviar um link para o aplicativo"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "Confira o aplicativo %1!"
 
 #: discover/qml/ApplicationPage.qml:638
 #, kde-format
@@ -423,10 +425,9 @@ msgid "What's New"
 msgstr "O que há de novo"
 
 #: discover/qml/ApplicationPage.qml:668
-#, fuzzy, kde-format
-#| msgid "Reviews for %1"
+#, kde-format
 msgid "Loading reviews for %1"
-msgstr "Análises de %1"
+msgstr "Carregando análises de %1"
 
 #: discover/qml/ApplicationPage.qml:674
 #, kde-format
@@ -473,7 +474,7 @@ msgstr "Relatar erro"
 #: discover/qml/ApplicationPage.qml:787
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr ""
+msgstr "Registre um problema que encontrou para o ajudar a resolver"
 
 #: discover/qml/ApplicationPage.qml:801
 #, kde-format
@@ -483,7 +484,7 @@ msgstr "Contribuir"
 #: discover/qml/ApplicationPage.qml:802
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
-msgstr ""
+msgstr "Ajude os desenvolvedores com código, design, teste ou traduções "
 
 #: discover/qml/ApplicationPage.qml:829
 #, kde-format
@@ -510,6 +511,16 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
+"O código-fonte deste aplicativo está parcial ou totalmente fechado para "
+"inspeção e aprimoramento público. Isso significa que terceiros e usuários "
+"como você não podem verificar sua operação, segurança e confiabilidade, ou "
+"modificá-lo e redistribuí-lo sem a permissão expressa dos autores.<nl/><nl/"
+">O aplicativo pode ser perfeitamente seguro de usar ou pode estar agindo "
+"contra você de várias maneiras, como coletar suas informações pessoais, "
+"rastrear sua localização ou transmitir o conteúdo de seus arquivos para "
+"outra pessoa. Não há uma maneira fácil de ter certeza, então você só deve "
+"instalar este aplicativo se confiar completamente em seus autores (<link "
+"url='%1'>%2</link>).<nl/><nl/> Saiba mais em: <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:879
 #, kde-kuit-format
@@ -526,6 +537,16 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
+"O código-fonte deste aplicativo está parcial ou totalmente fechado para "
+"inspeção e aprimoramento público. Isso significa que terceiros e usuários "
+"como você não podem verificar sua operação, segurança e confiabilidade, ou "
+"modificá-lo e redistribuí-lo sem a permissão expressa dos autores.<nl/><nl/"
+">O aplicativo pode ser perfeitamente seguro de usar ou pode estar agindo "
+"contra você de várias maneiras, como coletar suas informações pessoais, "
+"rastrear sua localização ou transmitir o conteúdo de seus arquivos para "
+"outra pessoa. Não há uma maneira fácil de ter certeza, então você só deve "
+"instalar este aplicativo se confiar completamente em seus autores (%1).<nl/"
+"><nl/>Saiba mais em: <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -911,7 +932,7 @@ msgstr "Muito longo!"
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "Inserir um nome"
 
 #: discover/qml/ReviewDialog.qml:79
 #, kde-format
@@ -1056,7 +1077,7 @@ msgstr "Atualizar tudo"
 #: discover/qml/UpdatesPage.qml:180
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorar"
 
 #: discover/qml/UpdatesPage.qml:226
 #, kde-format

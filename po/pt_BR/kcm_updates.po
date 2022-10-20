@@ -1,21 +1,21 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2021.
+# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-08-25 00:48+0000\n"
-"PO-Revision-Date: 2021-05-06 14:33-0300\n"
+"PO-Revision-Date: 2022-10-19 15:08-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
-"Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
+"Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: kcm/package/contents/ui/main.qml:32
 #, kde-format
@@ -46,41 +46,40 @@ msgstr ""
 "computador for reiniciado."
 
 #: kcm/package/contents/ui/main.qml:61
-#, fuzzy, kde-format
-#| msgid "Update software:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
-msgstr "Atualizar aplicativo:"
+msgstr "Frequência de atualização:"
 
 #: kcm/package/contents/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
-msgstr ""
+msgstr "Frequência de notificação:"
 
 #: kcm/package/contents/ui/main.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
-msgstr ""
+msgstr "Diariamente"
 
 #: kcm/package/contents/ui/main.qml:65
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
-msgstr ""
+msgstr "Semanalmente"
 
 #: kcm/package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
-msgstr ""
+msgstr "Mensalmente"
 
 #: kcm/package/contents/ui/main.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
-msgstr ""
+msgstr "Nunca"
 
 #: kcm/package/contents/ui/main.qml:111
 #, kde-format

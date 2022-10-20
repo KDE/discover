@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-19 00:47+0000\n"
-"PO-Revision-Date: 2022-10-16 13:29+0200\n"
+"PO-Revision-Date: 2022-10-19 12:10+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -75,7 +75,7 @@ msgstr "Неуспешно намиране на категория \"%1\""
 #: discover/DiscoverObject.cpp:282
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "Опитва се отваряне на несъществуващ файл \"%1\""
 
 #: discover/DiscoverObject.cpp:304
 #, kde-format

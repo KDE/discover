@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-19 00:47+0000\n"
-"PO-Revision-Date: 2022-10-02 15:49\n"
+"PO-Revision-Date: 2022-10-19 13:22\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -339,18 +339,18 @@ msgstr[0] "查看更多…"
 #: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:856
 #, kde-format
 msgid "Content Rating"
-msgstr ""
+msgstr "内容分级"
 
 #: discover/qml/ApplicationPage.qml:427
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "年龄：%1+"
 
 #: discover/qml/ApplicationPage.qml:451
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr ""
+msgstr "查看详情…"
 
 #: discover/qml/ApplicationPage.qml:547
 #, kde-format
@@ -386,18 +386,18 @@ msgstr "安装或移除附加功能"
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "分享"
 
 #: discover/qml/ApplicationPage.qml:602
 #, kde-format
 msgid "Send a link to the application"
-msgstr ""
+msgstr "发送链接到应用程序"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "查看 %1 应用程序！"
 
 #: discover/qml/ApplicationPage.qml:638
 #, kde-format
@@ -899,7 +899,7 @@ msgstr "文字过长！"
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "插入名称"
 
 #: discover/qml/ReviewDialog.qml:79
 #, kde-format
@@ -1041,7 +1041,7 @@ msgstr "更新全部"
 #: discover/qml/UpdatesPage.qml:180
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "忽略"
 
 #: discover/qml/UpdatesPage.qml:226
 #, kde-format
