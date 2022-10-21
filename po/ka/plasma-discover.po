@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-19 00:47+0000\n"
-"PO-Revision-Date: 2022-09-12 20:08+0200\n"
+"PO-Revision-Date: 2022-10-20 06:29+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -728,7 +728,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "Participate…"
-msgstr ""
+msgstr "მონაწილეობის მიღება…"
 
 #: discover/qml/InstallApplicationButton.qml:25
 #, kde-format
@@ -754,7 +754,7 @@ msgstr "ჩადგმულია"
 #: discover/qml/navigation.js:19
 #, kde-format
 msgid "Resources for '%1'"
-msgstr ""
+msgstr "რესურსები '%1'-სთვის"
 
 #: discover/qml/ProgressView.qml:17
 #, kde-format
@@ -812,7 +812,7 @@ msgstr "უცნობი ვერსია"
 #: discover/qml/ReviewDelegate.qml:95
 #, kde-format
 msgid "Votes: %1 out of %2"
-msgstr ""
+msgstr "ხმები: %1-ი %2-დან"
 
 #: discover/qml/ReviewDelegate.qml:102
 #, kde-format
@@ -880,7 +880,7 @@ msgstr "ძალიან გრძელია!"
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "სახელის ჩასმა"
 
 #: discover/qml/ReviewDialog.qml:79
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-20 00:50+0000\n"
-"PO-Revision-Date: 2022-10-19 17:02+0200\n"
+"PO-Revision-Date: 2022-10-20 18:14+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2092,14 +2092,12 @@ msgid "GPL and other licenses"
 msgstr "GPL y otras licencias"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:262
-#, fuzzy, kde-format
-#| msgid "Additionnal packages: "
+#, kde-format
 msgid "Additional packages: "
 msgstr "Paquetes adicionales: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:269
-#, fuzzy, kde-format
-#| msgid "Additionnal modules: "
+#, kde-format
 msgid "Additional modules: "
 msgstr "Módulos adicionales: "
 

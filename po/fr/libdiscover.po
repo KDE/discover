@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-20 00:50+0000\n"
-"PO-Revision-Date: 2022-10-16 14:38+0200\n"
+"PO-Revision-Date: 2022-10-19 18:53+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
 "Language: fr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.08.2\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -2124,45 +2124,34 @@ msgid "Additional modules: "
 msgstr "Confirmer les changements additionnels"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:276
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Local packages: "
-msgstr "Méta-paquets"
+msgstr "Paquets locaux :"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:283
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Replaced packages:"
-msgstr "Méta-paquets"
+msgstr "Paquets remplacés :"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:290
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Required by other packages"
+#, kde-format
 msgid "Removed packages:"
-msgstr "Nécessité par un autre paquet"
+msgstr "Paquets supprimés :"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:334
-#, fuzzy, kde-format
-#| msgid "Current Version:"
+#, kde-format
 msgid "Currently booted version"
-msgstr "Version actuelle :"
+msgstr "Version actuellement démarrée"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
 #, kde-format
 msgid "Next version used after reboot"
-msgstr ""
+msgstr "Prochaine version utilisée après le re-démarrage"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "Version de repli"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:73
 #, kde-format

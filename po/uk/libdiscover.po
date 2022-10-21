@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-20 00:50+0000\n"
-"PO-Revision-Date: 2022-10-19 14:55+0300\n"
+"PO-Revision-Date: 2022-10-20 16:23+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -2108,14 +2108,12 @@ msgid "GPL and other licenses"
 msgstr "GPL та інші умови ліцензування"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:262
-#, fuzzy, kde-format
-#| msgid "Additionnal packages: "
+#, kde-format
 msgid "Additional packages: "
 msgstr "Додаткові пакунки:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:269
-#, fuzzy, kde-format
-#| msgid "Additionnal modules: "
+#, kde-format
 msgid "Additional modules: "
 msgstr "Додаткові модулі:"
 

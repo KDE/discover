@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-20 00:50+0000\n"
-"PO-Revision-Date: 2022-10-15 06:16+0200\n"
+"PO-Revision-Date: 2022-10-20 06:28+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -100,50 +100,50 @@ msgstr ""
 #, kde-format
 msgctxt "Category"
 msgid "dummy"
-msgstr ""
+msgstr "სათამაშო"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
 #, kde-format
 msgctxt "Category"
 msgid "dummy addons"
-msgstr ""
+msgstr "სათამაშო დამატებები"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:27
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
-msgstr ""
+msgstr "სათამაშო 1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:35
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
-msgstr ""
+msgstr "სათამაშო დამატებებით"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:42
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:57
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
-msgstr ""
+msgstr "სათამაშო 2.1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:50
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
-msgstr ""
+msgstr "სათამაშო საკმაო რაოდენობის დამატებებით"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:66
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
-msgstr ""
+msgstr "სათამაშო 3"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:76
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"
-msgstr ""
+msgstr "სათამაშო 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:4
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:4
@@ -1999,10 +1999,9 @@ msgid "GPL and other licenses"
 msgstr "GPL და სხვა ლიცენზიები"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:262
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Additional packages: "
-msgstr "პაკეტის არასწორი ფაილი"
+msgstr "დამატებითი პაკეტები: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:269
 #, kde-format
@@ -2010,10 +2009,9 @@ msgid "Additional modules: "
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:276
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Local packages: "
-msgstr "პაკეტის არასწორი ფაილი"
+msgstr "ლოკალური პაკეტები: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:283
 #, kde-format

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-19 00:47+0000\n"
-"PO-Revision-Date: 2022-10-18 21:41+0530\n"
+"PO-Revision-Date: 2022-10-20 21:46+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -69,8 +69,7 @@ msgid "Could not find category '%1'"
 msgstr "'%1 என்ற பகுப்பை கண்டுபிடிக்க முடியவில்லை"
 
 #: discover/DiscoverObject.cpp:282
-#, fuzzy, kde-format
-#| msgid "Trying to open unexisting file '%1'"
+#, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "'%1' எனும் இல்லாத கோப்பின் திறப்பு முயற்சிக்கப்பட்டது"
 
