@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-20 00:50+0000\n"
-"PO-Revision-Date: 2022-10-19 12:14+0200\n"
+"PO-Revision-Date: 2022-10-22 07:07+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -2079,16 +2079,14 @@ msgid "GPL and other licenses"
 msgstr "GPL и други лицензи"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:262
-#, fuzzy, kde-format
-#| msgid "Additionnal packages: "
+#, kde-format
 msgid "Additional packages: "
-msgstr "Допълнителни пакети:"
+msgstr "Допълнителни пакети: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:269
-#, fuzzy, kde-format
-#| msgid "Additionnal modules: "
+#, kde-format
 msgid "Additional modules: "
-msgstr "Допълнителни модули:"
+msgstr "Допълнителни модули: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:276
 #, kde-format
