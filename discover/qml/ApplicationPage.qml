@@ -599,7 +599,7 @@ DiscoverPage {
 
                     buttonIcon: "document-share"
                     title: i18nc("Exports the application's URL to an external service", "Share")
-                    subtitle: i18n("Send a link to the application")
+                    subtitle: i18n("Send a link for this application")
                     tooltipText: application.url.toString()
                     visible: tooltipText.length > 0
 
