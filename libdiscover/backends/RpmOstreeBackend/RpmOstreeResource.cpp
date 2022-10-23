@@ -250,9 +250,11 @@ QUrl RpmOstreeResource::bugURL()
 
 QJsonArray RpmOstreeResource::licenses()
 {
-    // TODO: Remove hardcoded value
-    return {QJsonObject{{QStringLiteral("name"), i18n("GPL and other licenses")},
-                        {QStringLiteral("url"), QStringLiteral("https://fedoraproject.org/wiki/Legal:Licenses")}}};
+    if (m_osname == QStringLiteral("fedora")) {
+        return {QJsonObject{{QStringLiteral("name"), i18n("GPL and other licenses")},
+                            {QStringLiteral("url"), QStringLiteral("https://fedoraproject.org/wiki/Legal:Licenses")}}};
+    }
+    return {QJsonObject{{QStringLiteral("name"), i18n("Unknown")}}};
 }
 
 QString RpmOstreeResource::longDescription()
@@ -308,8 +310,10 @@ QString RpmOstreeResource::origin() const
 
 QString RpmOstreeResource::packageName() const
 {
-    // TODO: Remove hardcoded values
-    return QStringLiteral("Fedora Kinoite");
+    if (m_osname == QStringLiteral("fedora")) {
+        return QStringLiteral("Fedora Kinoite");
+    }
+    return m_osname;
 }
 
 QString RpmOstreeResource::section()
@@ -324,8 +328,10 @@ AbstractResource::State RpmOstreeResource::state()
 
 QString RpmOstreeResource::author() const
 {
-    // TODO: Remove hardcoded values
-    return QStringLiteral("Fedora Project");
+    if (m_osname == QStringLiteral("fedora")) {
+        return QStringLiteral("Fedora Project");
+    }
+    return i18n("Unknown");
 }
 
 QString RpmOstreeResource::comment()
