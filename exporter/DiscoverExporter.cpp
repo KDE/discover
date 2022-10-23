@@ -4,7 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#include "MuonExporter.h"
+#include "DiscoverExporter.h"
 #include <QDebug>
 #include <QFile>
 #include <QJsonArray>
@@ -19,16 +19,16 @@
 
 using namespace std::chrono_literals;
 
-MuonExporter::MuonExporter()
+DiscoverExporter::DiscoverExporter()
     : QObject(nullptr)
     , m_exculdedProperties({"executables", "canExecute"})
 {
-    connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &MuonExporter::fetchResources);
+    connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &DiscoverExporter::fetchResources);
 }
 
-MuonExporter::~MuonExporter() = default;
+DiscoverExporter::~DiscoverExporter() = default;
 
-void MuonExporter::setExportPath(const QUrl &url)
+void DiscoverExporter::setExportPath(const QUrl &url)
 {
     m_path = url;
 }
@@ -51,7 +51,7 @@ QJsonObject itemDataToMap(const AbstractResource *res, const QSet<QByteArray> &e
     return ret;
 }
 
-void MuonExporter::fetchResources()
+void DiscoverExporter::fetchResources()
 {
     ResourcesModel *m = ResourcesModel::global();
     QSet<ResultsStream *> streams;
@@ -60,11 +60,11 @@ void MuonExporter::fetchResources()
         streams << backend->search({});
     }
     auto stream = new StoredResultsStream(streams);
-    connect(stream, &StoredResultsStream::finishedResources, this, &MuonExporter::exportResources);
+    connect(stream, &StoredResultsStream::finishedResources, this, &DiscoverExporter::exportResources);
     QTimer::singleShot(15s, stream, &AggregatedResultsStream::finished);
 }
 
-void MuonExporter::exportResources(const QVector<AbstractResource *> &resources)
+void DiscoverExporter::exportResources(const QVector<AbstractResource *> &resources)
 {
     QJsonArray data;
     for (auto res : resources) {
@@ -89,4 +89,4 @@ void MuonExporter::exportResources(const QVector<AbstractResource *> &resources)
     Q_EMIT exportDone();
 }
 
-#include "moc_MuonExporter.cpp"
+#include "moc_DiscoverExporter.cpp"

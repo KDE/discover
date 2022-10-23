@@ -4,8 +4,8 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef MUONEXPORTER_H
-#define MUONEXPORTER_H
+#ifndef DISCOVEREXPORTER_H
+#define DISCOVEREXPORTER_H
 
 #include <QSet>
 #include <QTimer>
@@ -13,12 +13,12 @@
 
 class AbstractResource;
 
-class MuonExporter : public QObject
+class DiscoverExporter : public QObject
 {
     Q_OBJECT
 public:
-    explicit MuonExporter();
-    ~MuonExporter() override;
+    explicit DiscoverExporter();
+    ~DiscoverExporter() override;
 
     void setExportPath(const QUrl &url);
 
@@ -34,4 +34,4 @@ private:
     const QSet<QByteArray> m_exculdedProperties;
 };
 
-#endif // MUONEXPORTER_H
+#endif // DISCOVEREXPORTER_H

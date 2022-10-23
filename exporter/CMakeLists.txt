@@ -1,3 +1,3 @@
-add_executable(plasma-discover-exporter main.cpp MuonExporter.cpp MuonExporter.h)
+add_executable(plasma-discover-exporter main.cpp DiscoverExporter.cpp DiscoverExporter.h)
 
 target_link_libraries(plasma-discover-exporter Discover::Common KF5::CoreAddons KF5::I18n)
