@@ -60,8 +60,8 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     auto split_ref = m_origin.split(':');
     if (split_ref.length() != 2) {
         qWarning() << "rpm-ostree-backend: Unknown origin format, ignoring:" << m_origin;
-        m_remote = QStringLiteral("unkonwn");
-        m_branch = QStringLiteral("unkonwn");
+        m_remote = QStringLiteral("unknown");
+        m_branch = QStringLiteral("unknown");
     } else {
         m_remote = split_ref[0];
         m_branch = split_ref[1];
@@ -71,10 +71,10 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     auto split_branch = m_branch.split('/');
     if (split_branch.length() < 4) {
         qWarning() << "rpm-ostree-backend: Unknown branch format, ignoring:" << m_branch;
-        m_branchName = QStringLiteral("unkonwn");
-        m_branchVersion = QStringLiteral("unkonwn");
-        m_branchArch = QStringLiteral("unkonwn");
-        m_branchVariant = QStringLiteral("unkonwn");
+        m_branchName = QStringLiteral("unknown");
+        m_branchVersion = QStringLiteral("unknown");
+        m_branchArch = QStringLiteral("unknown");
+        m_branchVariant = QStringLiteral("unknown");
     } else {
         m_branchName = split_branch[0];
         m_branchVersion = split_branch[1];
