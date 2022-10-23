@@ -22,7 +22,7 @@ class AbstractResource;
  *
  * \brief This is the base class of all transactions.
  *
- * When there are transactions running inside Muon, the backends should
+ * When there are transactions running inside Discover, the backends should
  * provide the corresponding Transaction objects with proper information.
  */
 class DISCOVERCOMMON_EXPORT Transaction : public QObject

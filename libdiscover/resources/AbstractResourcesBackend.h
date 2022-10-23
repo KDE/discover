@@ -98,7 +98,7 @@ public:
  * As this is the base class of a backend, we save all the created resources here and also
  * accept calls to install and remove applications or to cancel transactions.
  *
- * To show resources in Muon, we need to initialize all resources we want to show beforehand,
+ * To show resources in Discover, we need to initialize all resources we want to show beforehand,
  * we should not create resources in the search function. When we reload the resources
  * (e.g. when initializing), the backend needs change the fetching property throughout the
  * process.

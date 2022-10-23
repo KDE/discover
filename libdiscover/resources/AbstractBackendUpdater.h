@@ -59,7 +59,7 @@ public:
     explicit AbstractBackendUpdater(QObject *parent = nullptr);
 
     /**
-     * This method is called, when Muon switches to the updates view.
+     * This method is called, when Discover switches to the updates view.
      * Here the backend should mark all upgradeable packages as to be upgraded.
      */
     virtual void prepare() = 0;
