@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-20 00:50+0000\n"
-"PO-Revision-Date: 2022-09-19 18:48+0400\n"
+"PO-Revision-Date: 2022-10-22 19:51+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -656,21 +656,19 @@ msgid "Can integrate and communicate with smart cards"
 msgstr "يمكنه التكامل والتواصل مع البطاقات الذكية"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "الوصول للجهاز"
+msgstr "الوصول إلى الطابعة"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "يمكنه التكامل والتواصل مع البطاقات الذكية"
+msgstr "يمكنه التكامل والتواصل مع الطابعات"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "عميل GPG"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
@@ -678,29 +676,28 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"يسمح بالوصول إلى خدمة تشفير GPG ، وتستخدم عمومًا لتوقيع المستندات وقراءة "
+"الموقع منها."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "نفاذ الشّبكة"
+msgstr "الوصول إلى بلوتوث"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "يمكنه التكامل والتواصل مع البطاقات الذكية"
+msgstr "يمكنه التكامل والتواصل مع أجهزة بلوتوث"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "الوصول لناقل النظام"
+msgstr "الوصول إلى وظائف النظام الدُنيا"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "يمكنه أن ينادى وظائف النظام الدُنيا (مثل ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
@@ -907,7 +904,7 @@ msgstr "يضيف '%1' البعيد في %2 من %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "تعثر العثور على '%1' في '%2'، الرجاء تأكد من توفره."
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2095,60 +2092,44 @@ msgid "GPL and other licenses"
 msgstr "ترخيص جي بي ال وتراخيص غيرها"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:262
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional packages: "
-msgstr "يؤكّد التّغييرات الإضافيّة"
+msgstr "الحزم الإضافيّة: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:269
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional modules: "
-msgstr "يؤكّد التّغييرات الإضافيّة"
+msgstr "الوحدات الإضافيّة: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:276
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Local packages: "
-msgstr "الحزم الوصفيّة"
+msgstr "الحزم المحلية: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:283
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Replaced packages:"
-msgstr "الحزم الوصفيّة"
+msgstr "الحزم المستبدلة:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:290
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Required by other packages"
+#, kde-format
 msgid "Removed packages:"
-msgstr "تطلبها حزم أخرى"
+msgstr "الحزم المزالة:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:334
-#, fuzzy, kde-format
-#| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
-#| msgid "Version %1:"
+#, kde-format
 msgid "Currently booted version"
-msgstr "الإصدار %1:"
+msgstr "الإصدار المشغلة حاليا"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
 #, kde-format
 msgid "Next version used after reboot"
-msgstr ""
+msgstr "الإصدارة التالية المستخدمة بعد إعادة بدء التشغيل"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "الإصدارة الاحتياطيّة"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:73
 #, kde-format
