@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-19 00:47+0000\n"
+"POT-Creation-Date: 2022-10-24 00:49+0000\n"
 "PO-Revision-Date: 2022-10-19 16:12+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -406,8 +406,9 @@ msgid "Share"
 msgstr "Delen"
 
 #: discover/qml/ApplicationPage.qml:602
-#, kde-format
-msgid "Send a link to the application"
+#, fuzzy, kde-format
+#| msgid "Send a link to the application"
+msgid "Send a link for this application"
 msgstr "Eek koppeling naar de toepassingen sturen"
 
 #: discover/qml/ApplicationPage.qml:618

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-19 00:47+0000\n"
+"POT-Creation-Date: 2022-10-24 00:49+0000\n"
 "PO-Revision-Date: 2022-09-05 10:57+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -422,8 +422,9 @@ msgid "Share"
 msgstr "Опубликовать"
 
 #: discover/qml/ApplicationPage.qml:602
-#, kde-format
-msgid "Send a link to the application"
+#, fuzzy, kde-format
+#| msgid "Send a link to the application"
+msgid "Send a link for this application"
 msgstr "Отправить ссылку на приложение"
 
 #: discover/qml/ApplicationPage.qml:618

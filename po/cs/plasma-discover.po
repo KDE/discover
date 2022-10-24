@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-19 00:47+0000\n"
+"POT-Creation-Date: 2022-10-24 00:49+0000\n"
 "PO-Revision-Date: 2021-09-27 20:16+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -387,9 +387,10 @@ msgid "Share"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:602
-#, kde-format
-msgid "Send a link to the application"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Unable to load applications"
+msgid "Send a link for this application"
+msgstr "Aplikace nelze načíst"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format

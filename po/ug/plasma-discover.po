@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-19 00:47+0000\n"
+"POT-Creation-Date: 2022-10-24 00:49+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -389,7 +389,7 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:602
 #, kde-format
-msgid "Send a link to the application"
+msgid "Send a link for this application"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:618

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-19 00:47+0000\n"
+"POT-Creation-Date: 2022-10-24 00:49+0000\n"
 "PO-Revision-Date: 2020-08-27 11:51+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -394,7 +394,7 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:602
 #, kde-format
-msgid "Send a link to the application"
+msgid "Send a link for this application"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:618

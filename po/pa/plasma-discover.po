@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-19 00:47+0000\n"
+"POT-Creation-Date: 2022-10-24 00:49+0000\n"
 "PO-Revision-Date: 2022-01-01 09:32-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -400,7 +400,7 @@ msgstr ""
 #: discover/qml/ApplicationPage.qml:602
 #, fuzzy, kde-format
 #| msgid "Unable to load applications"
-msgid "Send a link to the application"
+msgid "Send a link for this application"
 msgstr "ਐਪਲੀਕੇਸ਼ਨਾਂ ਲੋਡ ਕਰਨ ਲਈ ਅਸਮਰੱਥ ਹੈ"
 
 #: discover/qml/ApplicationPage.qml:618

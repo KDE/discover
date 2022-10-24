@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-19 00:47+0000\n"
+"POT-Creation-Date: 2022-10-24 00:49+0000\n"
 "PO-Revision-Date: 2022-08-11 22:54+0300\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -409,7 +409,7 @@ msgstr ""
 #: discover/qml/ApplicationPage.qml:602
 #, fuzzy, kde-format
 #| msgid "Unable to load applications"
-msgid "Send a link to the application"
+msgid "Send a link for this application"
 msgstr "Sovelluksia ei voi ladata"
 
 #: discover/qml/ApplicationPage.qml:618

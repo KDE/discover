@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-19 00:47+0000\n"
+"POT-Creation-Date: 2022-10-24 00:49+0000\n"
 "PO-Revision-Date: 2022-01-27 09:56+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -425,7 +425,7 @@ msgstr ""
 #: discover/qml/ApplicationPage.qml:602
 #, fuzzy, kde-format
 #| msgid "Unable to load applications"
-msgid "Send a link to the application"
+msgid "Send a link for this application"
 msgstr "Nepodarilo sa načítať aplikcie"
 
 #: discover/qml/ApplicationPage.qml:618
