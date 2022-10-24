@@ -38,12 +38,7 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     m_osname = map.value(QStringLiteral("osname")).toString();
     m_version = map.value(QStringLiteral("base-version")).toString();
     m_timestamp = QDateTime::fromSecsSinceEpoch(map.value(QStringLiteral("base-timestamp")).toULongLong()).date();
-
-    // Consider all deployments as pinned (and thus non-removable) until we
-    // support for un-pinning and removing selected deployments.
-    // TODO: Support for pinning, un-pinning and removing deployments
-    // m_pined = map.value(QStringLiteral("pinned")).toBool();
-    m_pinned = true;
+    m_pinned = map.value(QStringLiteral("pinned")).toBool();
     m_pending = map.value(QStringLiteral("staged")).toBool();
     m_booted = map.value(QStringLiteral("booted")).toBool();
 
@@ -295,6 +290,9 @@ QString RpmOstreeResource::longDescription()
         }
         QTextStream(&desc) << "</ul>\n";
     }
+    if (m_pinned) {
+        desc += "<br/>This version is pinned and won't be automatically removed on updates.";
+    }
     return desc;
 }
 
@@ -337,10 +335,15 @@ QString RpmOstreeResource::author() const
 QString RpmOstreeResource::comment()
 {
     if (m_booted) {
-        return i18n("Currently booted version");
-    }
-    if (m_pending) {
-        return i18n("Next version used after reboot");
+        if (m_pinned) {
+            return i18n("Currently booted version (pinned)");
+        } else {
+            return i18n("Currently booted version");
+        }
+    } else if (m_pending) {
+        return i18n("Version that will be used after reboot");
+    } else if (m_pinned) {
+        return i18n("Fallback version (pinned)");
     }
     return i18n("Fallback version");
 }
@@ -389,7 +392,11 @@ AbstractResource::Type RpmOstreeResource::type() const
 
 bool RpmOstreeResource::isRemovable() const
 {
-    return !m_booted && !m_pinned;
+    // TODO: Add support for pinning, un-pinning and removing a specific
+    // deployments. Until we have that, we consider all deployments as pinned by
+    // default (and thus non-removable).
+    // return !m_booted && !m_pinned;
+    return false;
 }
 
 QList<PackageState> RpmOstreeResource::addonsInformation()
