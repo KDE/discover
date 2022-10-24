@@ -439,7 +439,11 @@ void PackageKitBackend::checkForUpdates()
 QList<AppStream::Component> PackageKitBackend::componentsById(const QString &id) const
 {
     Q_ASSERT(m_appstreamInitialized);
-    return m_appdata->componentsById(id);
+    auto comps = m_appdata->componentsById(id);
+    if (comps.isEmpty()) {
+        comps = m_appdata->componentsByProvided(AppStream::Provided::KindId, id);
+    }
+    return comps;
 }
 
 static const auto needsResolveFilter = [](AbstractResource *res) {
@@ -596,58 +600,43 @@ PKResultsStream *PackageKitBackend::findResourceByPackageName(const QUrl &url)
             return new PKResultsStream(this, QStringLiteral("PackageKitStream-localpkg"), {new LocalFilePKResource(url, this)});
         }
     } else if (url.scheme() == QLatin1String("appstream")) {
-        static const QMap<QString, QString> deprecatedAppstreamIds = {
-            {QStringLiteral("org.kde.krita.desktop"), QStringLiteral("krita.desktop")},
-            {QStringLiteral("org.kde.digikam.desktop"), QStringLiteral("digikam.desktop")},
-            {QStringLiteral("org.kde.ktorrent.desktop"), QStringLiteral("ktorrent.desktop")},
-            {QStringLiteral("org.kde.gcompris.desktop"), QStringLiteral("gcompris.desktop")},
-            {QStringLiteral("org.kde.kmymoney.desktop"), QStringLiteral("kmymoney.desktop")},
-            {QStringLiteral("org.kde.kolourpaint.desktop"), QStringLiteral("kolourpaint.desktop")},
-            {QStringLiteral("org.blender.blender.desktop"), QStringLiteral("blender.desktop")},
-        };
-
         const auto appstreamIds = AppStreamUtils::appstreamIds(url);
         if (appstreamIds.isEmpty())
             Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
             auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-appstream-url"));
             const auto f = [this, appstreamIds, stream]() {
-                AbstractResource *pkg = nullptr;
-
-                QStringList allAppStreamIds = appstreamIds;
-                {
-                    auto it = deprecatedAppstreamIds.constFind(appstreamIds.first());
-                    if (it != deprecatedAppstreamIds.constEnd()) {
-                        allAppStreamIds << *it;
+                for (const auto &appstreamId : appstreamIds) {
+                    const auto comps = componentsById(appstreamId);
+                    if (comps.isEmpty()) {
+                        continue;
                     }
+                    stream->setResources(resourcesByComponents<QVector<AbstractResource *>>(comps));
                 }
-
-                for (auto it = m_packages.packages.constBegin(), itEnd = m_packages.packages.constEnd(); it != itEnd; ++it) {
-                    const bool matches = kContains(allAppStreamIds, [&it](const QString &id) {
-                        static const QLatin1String desktopPostfix(".desktop");
-                        return it.key().compare(id, Qt::CaseInsensitive) == 0 ||
-                            // doing (id == id.key()+".desktop") without allocating
-                            (id.size() == (desktopPostfix.size() + it.key().size()) && id.endsWith(desktopPostfix)
-                             && id.startsWith(it.key(), Qt::CaseInsensitive)) ||
-                            (it.key().size() == (desktopPostfix.size() + id.size()) && it.key().endsWith(desktopPostfix)
-                             && it.key().startsWith(id, Qt::CaseInsensitive));
-                    });
-                    if (matches) {
-                        pkg = it.value();
-                        break;
-                    }
-                }
-                if (pkg)
-                    stream->setResources({pkg});
                 stream->finish();
-                //         if (!pkg)
-                //             qCDebug(LIBDISCOVER_BACKEND_LOG) << "could not find" << host << deprecatedHost;
             };
             runWhenInitialized(f, stream);
             return stream;
         }
     }
     return new PKResultsStream(this, QStringLiteral("PackageKitStream-unknown-url"), {});
+}
+
+template<typename T>
+T PackageKitBackend::resourcesByComponents(const QList<AppStream::Component> &comps) const
+{
+    T ret;
+    ret.reserve(comps.size());
+    QSet<QString> done;
+    for (const auto &comp : comps) {
+        if (comp.packageNames().isEmpty() || done.contains(comp.id())) {
+            continue;
+        }
+        done += comp.id();
+        ret << m_packages.packages.value(comp.id());
+        Q_ASSERT(ret.constLast());
+    }
+    return ret;
 }
 
 bool PackageKitBackend::hasSecurityUpdates() const

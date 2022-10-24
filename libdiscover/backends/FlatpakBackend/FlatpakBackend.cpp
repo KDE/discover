@@ -164,9 +164,6 @@ public:
         };
 
         findComponents(name);
-        if (comps.isEmpty()) {
-            findComponents(name + QLatin1String(".desktop"));
-        }
         return comps;
     }
 
@@ -442,10 +439,6 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
     auto source = findSource(installation, origin);
     if (source) {
         auto ret = source->m_resources.value(idForInstalledRef(ref, {}));
-        if (ret) {
-            return ret;
-        }
-        ret = source->m_resources.value(idForInstalledRef(ref, QStringLiteral(".desktop")));
         if (ret) {
             return ret;
         }

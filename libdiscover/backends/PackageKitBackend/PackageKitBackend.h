@@ -101,6 +101,9 @@ private:
     template<typename T, typename W>
     T resourcesByPackageNames(const W &names) const;
 
+    template<typename T>
+    T resourcesByComponents(const QList<AppStream::Component> &names) const;
+
     void runWhenInitialized(const std::function<void()> &f, QObject *stream);
 
     void checkDaemonRunning();
