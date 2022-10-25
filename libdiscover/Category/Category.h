@@ -15,7 +15,7 @@
 
 #include "discovercommon_export.h"
 
-class QDomNode;
+class QXmlStreamReader;
 class QTimer;
 
 enum FilterType {
@@ -65,7 +65,7 @@ public:
      * root category to the global root category model.
      */
     void addSubcategory(Category *cat);
-    void parseData(const QString &path, const QDomNode &data);
+    void parseData(const QString &path, QXmlStreamReader *xml);
     bool blacklistPlugins(const QSet<QString> &pluginName);
     bool isAddons() const
     {
@@ -91,7 +91,7 @@ private:
     QVector<QPair<FilterType, QString>> m_notFilters;
     QVector<Category *> m_subCategories;
 
-    QVector<QPair<FilterType, QString>> parseIncludes(const QDomNode &data);
+    QVector<QPair<FilterType, QString>> parseIncludes(QXmlStreamReader *xml);
     QSet<QString> m_plugins;
     bool m_isAddons = false;
     QTimer *m_subCategoriesChanged;

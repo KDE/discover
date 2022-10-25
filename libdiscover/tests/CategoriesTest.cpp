@@ -20,19 +20,14 @@ public:
     QVector<Category *> populateCategories()
     {
         const QVector<QString> categoryFiles = {
-            QFINDTESTDATA("../backends/BodegaBackend/muon-bodegawallpapers-backend-categories.xml"),
             QFINDTESTDATA("../backends/PackageKitBackend/packagekit-backend-categories.xml"),
-            QFINDTESTDATA("../backends/AkabeiBackend/akabei-backend-categories.xml"),
-            QFINDTESTDATA("../backends/KNSBackend/knscomic-backend-categories.xml"),
-            QFINDTESTDATA("../backends/KNSBackend/knsplasmoids-backend-categories.xml"),
-            QFINDTESTDATA("../backends/ApplicationBackend/ubuntu_sso_dbus_interface.xml"),
-            QFINDTESTDATA("../backends/ApplicationBackend/qapt-backend-categories.xml"),
-            QFINDTESTDATA("../backends/DummyBackend/dummy-backend-categories.xml"),
+            QFINDTESTDATA("../backends/FlatpakBackend/flatpak-backend-categories.xml"),
         };
 
         QVector<Category *> ret;
         CategoriesReader reader;
         for (const QString &name : categoryFiles) {
+            qDebug() << "doing..." << name;
             const QVector<Category *> cats = reader.loadCategoriesPath(name);
 
             if (ret.isEmpty()) {

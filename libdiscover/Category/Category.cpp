@@ -6,13 +6,13 @@
 
 #include "Category.h"
 
-#include <QDomNode>
 #include <QTimer>
 
 #include "libdiscover_debug.h"
 #include <KLocalizedString>
 #include <QFile>
 #include <QStandardPaths>
+#include <QXmlStreamReader>
 #include <utils.h>
 
 Category::Category(QSet<QString> pluginName, QObject *parent)
@@ -54,62 +54,87 @@ Category::Category(const QString &name,
 
 Category::~Category() = default;
 
-void Category::parseData(const QString &path, const QDomNode &data)
+void Category::parseData(const QString &path, QXmlStreamReader *xml)
 {
-    for (QDomNode node = data.firstChild(); !node.isNull(); node = node.nextSibling()) {
-        if (!node.isElement()) {
-            if (!node.isComment())
-                qCWarning(LIBDISCOVER_LOG) << "unknown node found at " << QStringLiteral("%1:%2").arg(path).arg(node.lineNumber());
+    Q_ASSERT(xml->name() == QLatin1String("Menu"));
+    while (!xml->atEnd() && !xml->hasError()) {
+        xml->readNext();
+
+        if (xml->isEndElement() && xml->name() == QLatin1String("Menu")) {
+            break;
+        } else if (!xml->isStartElement()) {
+            if (xml->isCharacters() && xml->text().trimmed().isEmpty())
+                ;
+            else if (!xml->isComment())
+                qDebug() << "skipping" << xml->tokenString() << xml->name();
             continue;
         }
-        QDomElement tempElement = node.toElement();
 
-        if (tempElement.tagName() == QLatin1String("Name")) {
-            m_name = i18nc("Category", tempElement.text().toUtf8().constData());
+        if (xml->name() == QLatin1String("Name")) {
+            m_name = i18nc("Category", xml->readElementText().toUtf8().constData());
             setObjectName(m_name);
-        } else if (tempElement.tagName() == QLatin1String("Menu")) {
+        } else if (xml->name() == QLatin1String("Menu")) {
             m_subCategories << new Category(m_plugins, this);
-            m_subCategories.last()->parseData(path, node);
-        } else if (tempElement.tagName() == QLatin1String("Addons")) {
+            m_subCategories.last()->parseData(path, xml);
+        } else if (xml->name() == QLatin1String("Addons")) {
             m_isAddons = true;
-        } else if (tempElement.tagName() == QLatin1String("Icon") && tempElement.hasChildNodes()) {
-            m_iconString = tempElement.text();
-        } else if (tempElement.tagName() == QLatin1String("Include")) { // previous muon format
-            parseIncludes(tempElement);
-        } else if (tempElement.tagName() == QLatin1String("Categories")) { // as provided by appstream
-            parseIncludes(tempElement);
+            xml->readNext();
+        } else if (xml->name() == QLatin1String("Icon")) {
+            m_iconString = xml->readElementText();
+        } else if (xml->name() == QLatin1String("Include")) { // previous muon format
+            parseIncludes(xml);
+        } else if (xml->name() == QLatin1String("Categories")) { // as provided by appstream
+            parseIncludes(xml);
+        } else if (xml->name() == QLatin1String("Image")) {
+            xml->skipCurrentElement();
         }
+        Q_ASSERT(xml->isEndElement());
     }
+    Q_ASSERT(xml->isEndElement() && xml->name() == QLatin1String("Menu"));
 }
 
-QVector<QPair<FilterType, QString>> Category::parseIncludes(const QDomNode &data)
+QVector<QPair<FilterType, QString>> Category::parseIncludes(QXmlStreamReader *xml)
 {
-    QDomNode node = data.firstChild();
-    QVector<QPair<FilterType, QString>> filter;
-    while (!node.isNull()) {
-        QDomElement tempElement = node.toElement();
+    const QString opening = xml->name().toString();
 
-        if (tempElement.tagName() == QLatin1String("And")) {
-            // Parse children
-            m_andFilters.append(parseIncludes(node));
-        } else if (tempElement.tagName() == QLatin1String("Or")) {
-            m_orFilters.append(parseIncludes(node));
-        } else if (tempElement.tagName() == QLatin1String("Not")) {
-            m_notFilters.append(parseIncludes(node));
-        } else if (tempElement.tagName() == QLatin1String("PkgSection")) {
-            filter.append({PkgSectionFilter, tempElement.text()});
-        } else if (tempElement.tagName() == QLatin1String("Category")) {
-            filter.append({CategoryFilter, tempElement.text()});
-        } else if (tempElement.tagName() == QLatin1String("PkgWildcard")) {
-            filter.append({PkgWildcardFilter, tempElement.text()});
-        } else if (tempElement.tagName() == QLatin1String("AppstreamIdWildcard")) {
-            filter.append({AppstreamIdWildcardFilter, tempElement.text()});
-        } else if (tempElement.tagName() == QLatin1String("PkgName")) {
-            filter.append({PkgNameFilter, tempElement.text()});
-        } else {
-            qCWarning(LIBDISCOVER_LOG) << "unknown" << tempElement.tagName();
+    QVector<QPair<FilterType, QString>> filter;
+    while (!xml->atEnd() && !xml->hasError()) {
+        xml->readNext();
+
+        if (xml->isEndElement() && xml->name() == opening) {
+            break;
+        } else if (!xml->isStartElement()) {
+            if (xml->isCharacters() && xml->text().trimmed().isEmpty())
+                ;
+            else if (!xml->isComment())
+                qDebug() << "skipping" << xml->tokenString() << xml->name() << opening << xml->lineNumber();
+            continue;
         }
-        node = node.nextSibling();
+
+        if (xml->name() == QLatin1String("And")) {
+            m_andFilters.append(parseIncludes(xml));
+        } else if (xml->name() == QLatin1String("Or")) {
+            m_orFilters.append(parseIncludes(xml));
+        } else if (xml->name() == QLatin1String("Not")) {
+            m_notFilters.append(parseIncludes(xml));
+        } else if (xml->name() == QLatin1String("PkgSection")) {
+            filter.append({PkgSectionFilter, xml->readElementText()});
+        } else if (xml->name() == QLatin1String("Category")) {
+            filter.append({CategoryFilter, xml->readElementText()});
+            Q_ASSERT(xml->isEndElement() && xml->name() == QLatin1String("Category"));
+        } else if (xml->name() == QLatin1String("PkgWildcard")) {
+            filter.append({PkgWildcardFilter, xml->readElementText()});
+        } else if (xml->name() == QLatin1String("AppstreamIdWildcard")) {
+            filter.append({AppstreamIdWildcardFilter, xml->readElementText()});
+        } else if (xml->name() == QLatin1String("PkgName")) {
+            filter.append({PkgNameFilter, xml->readElementText()});
+        } else {
+            qCWarning(LIBDISCOVER_LOG) << "unknown" << xml->name() << xml->lineNumber();
+        }
+        Q_ASSERT(xml->isEndElement());
+
+        if (xml->name() == opening)
+            break;
     }
 
     return filter;

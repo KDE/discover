@@ -58,7 +58,6 @@ PUBLIC
     Qt::Gui
     KF5::I18n
 PRIVATE
-    Qt::Xml
     KF5::CoreAddons
     KF5::ConfigCore
     KF5::KIOCore

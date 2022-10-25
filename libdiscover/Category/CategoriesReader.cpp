@@ -8,9 +8,9 @@
 #include "Category.h"
 #include "libdiscover_debug.h"
 #include <QCoreApplication>
-#include <QDomNode>
 #include <QFile>
 #include <QStandardPaths>
+#include <QXmlStreamReader>
 
 #include <DiscoverBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
@@ -39,24 +39,22 @@ QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path)
         return ret;
     }
 
-    QDomDocument menuDocument;
-    QString error;
-    int line;
-    bool correct = menuDocument.setContent(&menuFile, &error, &line);
-    if (!correct)
-        qCWarning(LIBDISCOVER_LOG) << "error while parsing the categories file:" << error << " at: " << path << ':' << line;
+    QXmlStreamReader xml(&menuFile);
+    xml.readNextStartElement(); // We want to skip the first <Menu> overall
 
-    QDomElement root = menuDocument.documentElement();
+    while (!xml.atEnd() && !xml.hasError()) {
+        xml.readNext();
 
-    QDomNode node = root.firstChild();
-    while (!node.isNull()) {
-        if (node.nodeType() == QDomNode::ElementNode) {
+        if (xml.isStartElement() && xml.name() == QLatin1String("Menu")) {
             ret << new Category({path}, qApp);
-            ret.last()->parseData(path, node);
+            ret.last()->parseData(path, &xml);
         }
-
-        node = node.nextSibling();
     }
+
+    if (xml.hasError()) {
+        qCWarning(LIBDISCOVER_LOG) << "error while parsing the categories file:" << path << ':' << xml.lineNumber() << xml.errorString();
+    }
+
     Category::sortCategories(ret);
     return ret;
 }
