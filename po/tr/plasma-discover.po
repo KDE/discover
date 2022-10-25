@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-24 00:49+0000\n"
-"PO-Revision-Date: 2022-10-19 12:58+0300\n"
+"PO-Revision-Date: 2022-10-24 16:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -404,10 +404,9 @@ msgid "Share"
 msgstr "Paylaş"
 
 #: discover/qml/ApplicationPage.qml:602
-#, fuzzy, kde-format
-#| msgid "Send a link to the application"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Uygulamaya bir bağlantı gönder"
+msgstr "Bu uygulama için bir bağlantı gönder"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format
@@ -972,7 +971,7 @@ msgstr "Ayarlar"
 #: discover/qml/SourcesPage.qml:93
 #, kde-format
 msgid "Default source"
-msgstr "Varsayılan kaynak"
+msgstr "Öntanımlı kaynak"
 
 #: discover/qml/SourcesPage.qml:100
 #, kde-format

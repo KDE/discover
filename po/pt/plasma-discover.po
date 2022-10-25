@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-24 00:49+0000\n"
-"PO-Revision-Date: 2022-10-19 09:25+0100\n"
+"PO-Revision-Date: 2022-10-24 11:41+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -417,10 +417,9 @@ msgid "Share"
 msgstr "Partilhar"
 
 #: discover/qml/ApplicationPage.qml:602
-#, fuzzy, kde-format
-#| msgid "Send a link to the application"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Enviar uma ligação para a aplicação"
+msgstr "Enviar uma ligação para esta aplicação"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format
