@@ -1,6 +1,6 @@
 # Translation for plasma-discover.po to Euskara/Basque (eu).
-# Copyright (C) 2017-2018, The Free Software Foundation.
-# Copyright (C) 2019-2022, This file is copyright:
+# Copyright (C) 2017-2018 The Free Software Foundation.
+# Copyright (C) 2019-2022 This file is copyright:
 # This file is distributed under the same license as the discover package.
 # KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-24 00:49+0000\n"
-"PO-Revision-Date: 2022-10-19 06:10+0200\n"
+"PO-Revision-Date: 2022-10-25 07:15+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -406,10 +406,9 @@ msgid "Share"
 msgstr "Partekatu"
 
 #: discover/qml/ApplicationPage.qml:602
-#, fuzzy, kde-format
-#| msgid "Send a link to the application"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Bidali esteka bat aplikazioari"
+msgstr "Bidali aplikazio honetarako esteka bat"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format

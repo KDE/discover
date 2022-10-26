@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-24 00:49+0000\n"
-"PO-Revision-Date: 2022-10-20 21:46+0530\n"
+"PO-Revision-Date: 2022-10-25 21:34+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -397,10 +397,9 @@ msgid "Share"
 msgstr "பகிர்"
 
 #: discover/qml/ApplicationPage.qml:602
-#, fuzzy, kde-format
-#| msgid "Send a link to the application"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "செயலிக்கான இணைப்பைப் பகிருங்கள்"
+msgstr "இச்செயலிக்கான இணைப்பைப் பகிருங்கள்"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format
