@@ -133,7 +133,8 @@ QUrl AppPackageKitResource::url() const
 {
     QUrl ret(QStringLiteral("appstream://") + appstreamId());
     const AppStream::Provided::Kind AppStream_Provided_KindId = (AppStream::Provided::Kind)12; // Should be AppStream::Provided::KindId when released
-    const auto provided = m_appdata.provided(AppStream_Provided_KindId).items();
+    auto provided = m_appdata.provided(AppStream_Provided_KindId).items();
+    provided.removeAll(appstreamId()); // Just in case, it has happened before
     if (!provided.isEmpty()) {
         QUrlQuery qq;
         qq.addQueryItem("alt", provided.join(QLatin1Char(',')));

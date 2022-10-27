@@ -118,6 +118,9 @@ QStringList AppStreamUtils::appstreamIds(const QUrl &appstreamUrl)
         QUrlQuery query(appstreamUrl);
         ret << query.queryItemValue(QStringLiteral("alt")).split(QLatin1Char(','), Qt::SkipEmptyParts);
     }
+    if (ret.removeDuplicates() != 0) {
+        qDebug() << "received malformed url" << appstreamUrl;
+    }
     return ret;
 }
 
