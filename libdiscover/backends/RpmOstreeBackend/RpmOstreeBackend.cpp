@@ -274,12 +274,6 @@ bool RpmOstreeBackend::isFetching() const
     return m_fetching;
 }
 
-void RpmOstreeBackend::toggleFetching()
-{
-    m_fetching = !m_fetching;
-    Q_EMIT fetchingChanged();
-}
-
 void RpmOstreeBackend::setFetching(bool fetching)
 {
     if (m_fetching != fetching) {

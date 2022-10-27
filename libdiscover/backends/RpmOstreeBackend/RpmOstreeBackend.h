@@ -68,7 +68,6 @@ public:
     bool hasApplications() const override;
 
 public Q_SLOTS:
-    void toggleFetching();
 
 private:
     /* Get the currently booted deployment */
