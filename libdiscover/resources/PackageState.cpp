@@ -20,6 +20,14 @@ PackageState::PackageState(QString packageName, QString name, QString descriptio
 {
 }
 
+PackageState::PackageState(const PackageState &ps)
+    : m_packageName(ps.m_packageName)
+    , m_name(ps.m_name)
+    , m_description(ps.m_description)
+    , m_installed(ps.m_installed)
+{
+}
+
 QString PackageState::name() const
 {
     return m_name;

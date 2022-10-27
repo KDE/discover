@@ -20,6 +20,7 @@ class DISCOVERCOMMON_EXPORT PackageState
 public:
     PackageState(QString packageName, QString name, QString description, bool installed);
     PackageState(const QString &name, const QString &description, bool installed);
+    PackageState(const PackageState &ps);
     PackageState &operator=(const PackageState &other);
 
     QString packageName() const;
