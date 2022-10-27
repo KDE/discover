@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-24 00:49+0000\n"
-"PO-Revision-Date: 2022-09-05 19:01+0200\n"
+"PO-Revision-Date: 2022-10-26 12:12+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.0\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: discover/DiscoverObject.cpp:157
 #, kde-format
@@ -75,7 +75,7 @@ msgstr "Impossibile trovare la categoria «%1»"
 #: discover/DiscoverObject.cpp:282
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "Tentativo di aprire il file «%1» inesistente"
 
 #: discover/DiscoverObject.cpp:304
 #, kde-format
@@ -310,7 +310,7 @@ msgstr "Autore sconosciuto"
 #: discover/qml/ApplicationPage.qml:204
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "Impossibile accedere alle schermate"
 
 #: discover/qml/ApplicationPage.qml:261
 #, kde-format
@@ -406,10 +406,9 @@ msgid "Share"
 msgstr "Condividi"
 
 #: discover/qml/ApplicationPage.qml:602
-#, fuzzy, kde-format
-#| msgid "Send a link to the application"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Invia un collegamento all'applicazione"
+msgstr "Invia un collegamento per questa applicazione"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format

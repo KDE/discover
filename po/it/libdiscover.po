@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-20 00:50+0000\n"
-"PO-Revision-Date: 2022-09-18 20:53+0200\n"
+"PO-Revision-Date: 2022-10-22 15:31+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -657,21 +657,19 @@ msgid "Can integrate and communicate with smart cards"
 msgstr "Può integrarsi e comunicare con le smartcard"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "Accesso a dispositivo"
+msgstr "Accesso stampante"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Può integrarsi e comunicare con le smartcard"
+msgstr "Può integrarsi e comunicare con le stampanti"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG Agent"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
@@ -679,29 +677,28 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Consente l'accesso al servizio di crittografia GPG, generalmente utilizzato "
+"per la firma e la lettura di documenti firmati"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "Accesso alla rete"
+msgstr "Accesso Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Può integrarsi e comunicare con le smartcard"
+msgstr "Può integrarsi e comunicare con i dispositivi Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "Accesso al bus di sistema"
+msgstr "Accesso al sistema di basso livello"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Può effettuare chiamate di sistema di basso livello (es. ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
@@ -919,7 +916,7 @@ msgstr "Aggiunta «%1» remoto in %2 da %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "Impossibile trovare «%1» in «%2»; assicurati che sia disponibile."
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2084,59 +2081,44 @@ msgid "GPL and other licenses"
 msgstr "GPL e altre licenze"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:262
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional packages: "
-msgstr "Conferma le modifiche aggiuntive"
+msgstr "Pacchetti aggiuntivi: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:269
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional modules: "
-msgstr "Conferma le modifiche aggiuntive"
+msgstr "Moduli aggiuntivi: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:276
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Unlock package"
+#, kde-format
 msgid "Local packages: "
-msgstr "Sblocca il pacchetto"
+msgstr "Pacchetti locali: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:283
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Replaced packages:"
-msgstr "Pacchetti aggiuntivi"
+msgstr "Pacchetti sostituiti:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:290
-#, fuzzy, kde-format
-#| msgctxt "@label The parent package that this package comes from"
-#| msgid "Source Package:"
+#, kde-format
 msgid "Removed packages:"
-msgstr "Pacchetto sorgente:"
+msgstr "Pacchetti rimossi:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:334
-#, fuzzy, kde-format
-#| msgid "Current Version:"
+#, kde-format
 msgid "Currently booted version"
-msgstr "Versione attuale:"
+msgstr "Versione attualmente avviata"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
 #, kde-format
 msgid "Next version used after reboot"
-msgstr ""
+msgstr "Versione successiva utilizzata dopo il riavvio"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Force Version"
+#, kde-format
 msgid "Fallback version"
-msgstr "Forza versione"
+msgstr "Versione di ripiego"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:73
 #, kde-format
