@@ -193,6 +193,11 @@ QString RpmOstreeResource::availableVersion() const
     return m_newVersion;
 }
 
+QString RpmOstreeResource::version()
+{
+    return m_version;
+}
+
 void RpmOstreeResource::setNewVersion(QString newVersion)
 {
     m_newVersion = newVersion;

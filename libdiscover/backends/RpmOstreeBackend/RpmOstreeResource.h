@@ -52,6 +52,11 @@ public:
 
     void setState(AbstractResource::State);
     void fetchRemoteRefs();
+
+    /* Get the current version */
+    QString version();
+
+    /* Set the target version for updates */
     void setNewVersion(QString);
 
     static const QStringList m_objects;
