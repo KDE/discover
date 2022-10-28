@@ -26,8 +26,6 @@ public:
 
 private:
     QStandardItemModel *const m_model;
-
-    QHash<QString, QString> m_remotes;
 };
 
 #endif // RPMOSTREESOURCESBACKEND_H

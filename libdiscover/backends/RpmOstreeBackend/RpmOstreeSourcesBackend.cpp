@@ -34,19 +34,20 @@ RpmOstreeSourcesBackend::RpmOstreeSourcesBackend(AbstractResourcesBackend *paren
     guint remote_count = 0;
     char **remotes = ostree_repo_remote_list(repo, &remote_count);
     for (guint r = 0; r < remote_count; ++r) {
+        auto remote = new QStandardItem(QString(remotes[r]));
+
         char *url = NULL;
         res = ostree_repo_remote_get_url(repo, remotes[r], &url, &err);
         if (res) {
-            m_remotes[QString(remotes[r])] = QString(url);
+            remote->setData(QString(url), Qt::ToolTipRole);
+            free(url);
         } else {
             qWarning() << "rpm-ostree-backend: Could not get the URL for ostree remote:" << remotes[r];
-            continue;
         }
-        auto remote = new QStandardItem(QString(remotes[r]));
-        remote->setData(QString(url), Qt::ToolTipRole);
+
         m_model->appendRow(remote);
-        free(url);
     }
+
     for (guint r = 0; r < remote_count; ++r) {
         free(remotes[r]);
     }
