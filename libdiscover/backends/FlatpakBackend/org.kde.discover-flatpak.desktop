@@ -21,6 +21,7 @@ Name[hi]=डिस्कवर
 Name[hu]=Discover
 Name[ia]=Discover (Discoperi)
 Name[id]=Discover
+Name[ie]=Discover
 Name[it]=Discover
 Name[ja]=Discover
 Name[ka]=Discover
