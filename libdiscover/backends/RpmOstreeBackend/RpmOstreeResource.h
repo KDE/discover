@@ -16,7 +16,7 @@ class RpmOstreeResource : public AbstractResource
     Q_OBJECT
     Q_PROPERTY(QStringList objects MEMBER m_objects CONSTANT)
 public:
-    explicit RpmOstreeResource(const QVariantMap &, RpmOstreeBackend *);
+    RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *parent);
 
     QString appstreamId() const override;
     AbstractResource::State state() override;
@@ -57,7 +57,7 @@ public:
     QString version();
 
     /* Set the target version for updates */
-    void setNewVersion(QString);
+    void setNewVersion(const QString &newVersion);
 
     static const QStringList m_objects;
 

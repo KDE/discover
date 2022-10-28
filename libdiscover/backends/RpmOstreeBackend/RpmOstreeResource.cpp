@@ -19,7 +19,8 @@ const QStringList RpmOstreeResource::m_objects({QStringLiteral("qrc:/qml/RemoteR
 
 RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *parent)
     : AbstractResource(parent)
-    , m_state(AbstractResource::None)
+    // All available deployments are by definition already installed
+    , m_state(AbstractResource::Installed)
 {
 #ifdef QT_DEBUG
     qDebug() << "rpm-ostree-backend: Creating deployments from:";
@@ -30,9 +31,6 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     }
     qDebug() << "";
 #endif
-
-    // All available deployments are by definition already installed.
-    m_state = AbstractResource::Installed;
 
     // Get as much as possible from rpm-ostree
     m_osname = map.value(QStringLiteral("osname")).toString();
@@ -165,8 +163,8 @@ void RpmOstreeResource::fetchRemoteRefs()
                 m_remoteRefs.push_back(ref);
                 // Look for the branch with the next version
                 // This will fail to parse "rawhide" and return 0 and will thus skip it
-                int version = split_branch[1].toInt();
-                if (version == currentVersion + 1) {
+                int branchVersion = split_branch[1].toInt();
+                if (branchVersion == currentVersion + 1) {
                     m_nextMajorVersion = split_branch[1];
                 }
             }
@@ -198,7 +196,7 @@ QString RpmOstreeResource::version()
     return m_version;
 }
 
-void RpmOstreeResource::setNewVersion(QString newVersion)
+void RpmOstreeResource::setNewVersion(const QString &newVersion)
 {
     m_newVersion = newVersion;
 }
