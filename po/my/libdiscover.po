@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:50+0000\n"
+"POT-Creation-Date: 2022-10-28 00:46+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -48,30 +48,30 @@ msgstr "ထုတ်ဝေမှုဆိုင်ရာ"
 msgid "Unknown"
 msgstr "မသိ"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:135
+#: libdiscover/appstream/AppStreamUtils.cpp:138
 #: libdiscover/resources/AbstractResource.cpp:293
 #, kde-format
 msgid "%1, released on %2"
 msgstr "%2 တွင်ထုတ်လွှင့်ခဲ့သော %1"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:177
+#: libdiscover/appstream/AppStreamUtils.cpp:180
 #, kde-format
 msgid "All Audiences"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:178
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Mild Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:182
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Moderate Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:180
+#: libdiscover/appstream/AppStreamUtils.cpp:183
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"
@@ -520,29 +520,29 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (အသုံးပြုသူ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:672
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:665
 #, kde-format
 msgid "Local bundle"
 msgstr "စက်တွင်းအထုပ်"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1598
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:611
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1591
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "ပုံပျက်-အပ်စထရင်း-ယူအာအယ်လ် '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1702
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1695
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' ကို မစတင်နိုင်ခဲ့ပါ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1819
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1812
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1823
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to load \"%1\" source"
@@ -993,7 +993,7 @@ msgstr ""
 msgid "Log in information for %1"
 msgstr "%1အတွက် အချက်အလက်"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:226
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 ကိုမလွှင့်တင်နိုင်ပါ"
@@ -1029,7 +1029,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:705
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' ကိုမဖယ်ရှားနိုင်ပါ"

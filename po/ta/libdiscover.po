@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:50+0000\n"
+"POT-Creation-Date: 2022-10-28 00:46+0000\n"
 "PO-Revision-Date: 2022-10-20 21:53+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -45,30 +45,30 @@ msgstr "பொதுவுடைமை"
 msgid "Unknown"
 msgstr "தெரியாதது"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:135
+#: libdiscover/appstream/AppStreamUtils.cpp:138
 #: libdiscover/resources/AbstractResource.cpp:293
 #, kde-format
 msgid "%1, released on %2"
 msgstr "%1, %2 அன்று வெளியிடப்பட்டது"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:177
+#: libdiscover/appstream/AppStreamUtils.cpp:180
 #, kde-format
 msgid "All Audiences"
 msgstr "அனைவரும்"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:178
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Mild Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:182
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Moderate Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:180
+#: libdiscover/appstream/AppStreamUtils.cpp:183
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Intense Content"
@@ -514,28 +514,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (பயனர்)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:672
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:665
 #, kde-format
 msgid "Local bundle"
 msgstr "உள்ளமை தொகுப்பு"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1598
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:611
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1591
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "முறையற்ற appstream முகவரி '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1702
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1695
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' என்ற மூலத்தை சேர்ப்பதில் சிக்கல்: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1819
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1812
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Flatpak-க்கான மூலம் ஏதுமில்லை."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1823
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" என்ற மூலத்தை ஏற்றுவது தோல்வியடைந்தது"
@@ -1006,7 +1006,7 @@ msgstr "கே.டீ.யீ. களஞ்சியம்"
 msgid "Log in information for %1"
 msgstr "%1 என்பதற்கான நுழைவு விவரங்கள்"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:226
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 என்பதை இயக்க முடியவில்லை"
@@ -1043,7 +1043,7 @@ msgid ""
 msgstr ""
 "உங்கள் இயங்குதளத்திற்கான ஆதரவு %1 அன்று நிறைவடைந்த‍து. ஆதரவுள்ள பதிப்பிற்கு மாறுங்கள்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:705
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' என்பதை நீக்க முடியாது"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:50+0000\n"
+"POT-Creation-Date: 2022-10-28 00:46+0000\n"
 "PO-Revision-Date: 2022-10-18 17:53+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -49,30 +49,30 @@ msgstr "Domena publiczna"
 msgid "Unknown"
 msgstr "Nieznane"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:135
+#: libdiscover/appstream/AppStreamUtils.cpp:138
 #: libdiscover/resources/AbstractResource.cpp:293
 #, kde-format
 msgid "%1, released on %2"
 msgstr "%1, wydany w dniu %2"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:177
+#: libdiscover/appstream/AppStreamUtils.cpp:180
 #, kde-format
 msgid "All Audiences"
 msgstr "Wszyscy odbiorcy"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:178
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Mild Content"
 msgstr "Łagodna treść"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:182
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Moderate Content"
 msgstr "Umiarkowana treść"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:180
+#: libdiscover/appstream/AppStreamUtils.cpp:183
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Intense Content"
@@ -518,28 +518,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (użytkownik)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:672
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:665
 #, kde-format
 msgid "Local bundle"
 msgstr "Lokalny pęk"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1598
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:611
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1591
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Zniekształcony adres url appstream '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1702
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1695
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Nie udało dodać źródła '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1819
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1812
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Nie ma źródeł Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1823
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Nie udało wczytać źródła \"%1\""
@@ -1023,7 +1023,7 @@ msgstr "Sklep KDE"
 msgid "Log in information for %1"
 msgstr "Dane logowania dla %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:226
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Nie można uruchomić %1"
@@ -1061,7 +1061,7 @@ msgstr ""
 "Twój system operacyjny zakończył wsparcie dnia %1. Rozważ uaktualnienie do "
 "wspieranego wydania."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:705
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nie usunąć '%1'"

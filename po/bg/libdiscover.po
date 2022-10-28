@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:50+0000\n"
+"POT-Creation-Date: 2022-10-28 00:46+0000\n"
 "PO-Revision-Date: 2022-10-22 07:07+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -45,30 +45,30 @@ msgstr "Публичен домейн"
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:135
+#: libdiscover/appstream/AppStreamUtils.cpp:138
 #: libdiscover/resources/AbstractResource.cpp:293
 #, kde-format
 msgid "%1, released on %2"
 msgstr "%1, пуснато на %2"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:177
+#: libdiscover/appstream/AppStreamUtils.cpp:180
 #, kde-format
 msgid "All Audiences"
 msgstr "Всички аудитории"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:178
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Mild Content"
 msgstr "Леко съдържание"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:182
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Moderate Content"
 msgstr "Умерено съдържание"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:180
+#: libdiscover/appstream/AppStreamUtils.cpp:183
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Intense Content"
@@ -514,28 +514,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (потребител)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:672
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:665
 #, kde-format
 msgid "Local bundle"
 msgstr "Локален пакет"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1598
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:611
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1591
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Неправилен URL адрес на потока на приложението \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1702
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1695
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Неуспешно добавяне на източник '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1819
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1812
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Няма източници на Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1823
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Неуспешно зареждане на източник '%1'"
@@ -1020,7 +1020,7 @@ msgstr "Магазин KDE"
 msgid "Log in information for %1"
 msgstr "Информация за влизане на %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:226
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Не може да се стартира %1"
@@ -1058,7 +1058,7 @@ msgstr ""
 "Поддръжката на вашата операционна система приключи на %1. Помислете за "
 "обновяване до поддържана версия."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:705
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Не може да се премахне \"%1\""

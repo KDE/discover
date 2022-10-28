@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:50+0000\n"
+"POT-Creation-Date: 2022-10-28 00:46+0000\n"
 "PO-Revision-Date: 2022-10-20 06:35+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -49,30 +49,30 @@ msgstr "Domeinu publikoa"
 msgid "Unknown"
 msgstr "Ezezaguna"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:135
+#: libdiscover/appstream/AppStreamUtils.cpp:138
 #: libdiscover/resources/AbstractResource.cpp:293
 #, kde-format
 msgid "%1, released on %2"
 msgstr "%1, %2(e)an argitaratua"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:177
+#: libdiscover/appstream/AppStreamUtils.cpp:180
 #, kde-format
 msgid "All Audiences"
 msgstr "publiko guztiarentzat"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:178
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Mild Content"
 msgstr "Eduki arina"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:182
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Moderate Content"
 msgstr "Eduki ertaina"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:180
+#: libdiscover/appstream/AppStreamUtils.cpp:183
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Intense Content"
@@ -518,28 +518,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (erabiltzailea)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:672
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:665
 #, kde-format
 msgid "Local bundle"
 msgstr "Bertako sorta"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1598
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:611
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1591
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Gaizki eratutako 'appstream' url '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1702
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1695
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "«%1» sorburua gehitzea huts egin du: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1819
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1812
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Ez dago Flatpak sorbururik."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1823
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "«%1» sorburua abiatzea huts egin du"
@@ -1029,7 +1029,7 @@ msgstr "KDE biltegia"
 msgid "Log in information for %1"
 msgstr "Saioa hasteko informazioa honentzako: %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:226
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Ezin da abiarazi %1"
@@ -1067,7 +1067,7 @@ msgstr ""
 "Zure sistema eragileak %1(a)ren gaineko euskarria bukatu du. Kontuan izan "
 "euskarria duen bertsio batera bertsio-berritzeko aukera."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:705
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ezin da kendu «%1»"
