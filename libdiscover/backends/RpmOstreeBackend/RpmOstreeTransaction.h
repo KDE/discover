@@ -71,6 +71,12 @@ private:
     /* Operation requested for this transaction */
     Operation m_operation;
 
+    /* QProcess used to call rpm-ostree */
+    QProcess m_process;
+
+    /* Set when we cancel an in progress transaction */
+    bool m_cancelled;
+
     /* Argument used for some rpm-ostree command. Currently only used for rebase
      * operation */
     QStringList m_arg;

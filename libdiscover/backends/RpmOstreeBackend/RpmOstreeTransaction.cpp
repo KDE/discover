@@ -20,6 +20,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
                                            QString arg)
     : Transaction(parent, resource, Transaction::Role::InstallRole, {})
     , m_operation(operation)
+    , m_cancelled(false)
     , m_arg(arg)
     , m_interface(interface)
 {
@@ -78,39 +79,46 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
     }
 
     // Directly run the rpm-ostree command via QProcess
-    QProcess *process = new QProcess(this);
+    QProcess *m_process = new QProcess(this);
 
     // Store stderr output for later
-    connect(process, &QProcess::readyReadStandardError, [this, process]() {
-        QByteArray message = process->readAllStandardError();
+    connect(m_process, &QProcess::readyReadStandardError, [this, m_process]() {
+        QByteArray message = m_process->readAllStandardError();
         qWarning() << "rpm-ostree-backend: Error message from rpm-ostree:" << message;
         m_stderr += message;
     });
 
     // Store stdout output for later and process it to fake progress
-    connect(process, &QProcess::readyReadStandardOutput, [this, process]() {
-        QByteArray message = process->readAllStandardOutput();
+    connect(m_process, &QProcess::readyReadStandardOutput, [this, m_process]() {
+        QByteArray message = m_process->readAllStandardOutput();
         qInfo() << "rpm-ostree:" << message;
         m_stdout += message;
         fakeProgress();
     });
 
     // Process the result of the transaction once rpm-ostree is done
-    connect(process,
+    connect(m_process,
             QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            [this, process, args, operation](int exitCode, QProcess::ExitStatus exitStatus) {
+            [this, m_process, args, operation](int exitCode, QProcess::ExitStatus exitStatus) {
+                m_process->deleteLater();
                 if (exitStatus != QProcess::NormalExit) {
-                    qWarning() << "rpm-ostree-backend: Error while calling: rpm-ostree " << args;
-                    qWarning() << "rpm-ostree-backend:" << m_stderr;
+                    if (m_cancelled) {
+                        // If the user requested the transaction to be cancelled
+                        // then we don't need to show any error.
+                        qWarning() << "rpm-ostree-backend: Transaction cancelled: rpm-ostree " << args;
+                    } else {
+                        // The transaction was cancelled unexpectedly so let's
+                        // display the error to the user.
+                        qWarning() << "rpm-ostree-backend: Error while calling: rpm-ostree " << args;
+                        qWarning() << "rpm-ostree-backend:" << m_stderr;
+                        passiveMessage(i18n("rpm-ostree transaction failed with:") + "\n" + m_stderr);
+                    }
                     setStatus(Status::CancelledStatus);
-                    process->deleteLater();
-                    passiveMessage(m_stderr);
                     return;
                 }
                 if (exitCode != 0) {
                     qInfo() << "rpm-ostree-backend: Return sucessfully with a non zero return code:" << exitCode;
                     setStatus(Status::DoneWithErrorStatus);
-                    process->deleteLater();
                     return;
                 }
 
@@ -154,12 +162,11 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
                     passiveMessage("rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.");
                 }
                 setStatus(Status::DoneStatus);
-                process->deleteLater();
             });
 
     // Effectivly start the rpm-ostree transaction
     auto prog = QStringLiteral("rpm-ostree");
-    process->start(prog, args);
+    m_process->start(prog, args);
 
     // Setup a status that matches the transaction type
     switch (operation) {
@@ -238,13 +245,24 @@ void RpmOstreeTransaction::fakeProgress()
 void RpmOstreeTransaction::cancel()
 {
     qInfo() << "rpm-ostree-backend: Cancelling current transaction";
+    passiveMessage(i18n("Cancelling rpm-ostree transaction. This may take some time. Please wait."));
+
+    // Cancel directly using the DBus interface to work in all casesn whether we
+    // sstarted the transaction or if it's an externally started one.
     QString transaction = m_interface->activeTransactionPath();
     QDBusConnection peerConnection = QDBusConnection::connectToPeer(transaction, TransactionConnection);
     OrgProjectatomicRpmostree1TransactionInterface transactionInterface(DBusServiceName, QStringLiteral("/"), peerConnection, this);
-    // TODO: Replace by an async call
-    transactionInterface.Cancel().waitForFinished();
-    QDBusConnection::disconnectFromPeer(TransactionConnection);
-    setStatus(Status::CancelledStatus);
+    auto reply = transactionInterface.Cancel();
+
+    // Cancelled marker that is used to avoid displaying an error message to the
+    // user when they asked to cancel a transaction.
+    m_cancelled = true;
+
+    QDBusPendingCallWatcher *callWatcher = new QDBusPendingCallWatcher(reply, this);
+    connect(callWatcher, &QDBusPendingCallWatcher::finished, [callWatcher]() {
+        callWatcher->deleteLater();
+        QDBusConnection::disconnectFromPeer(TransactionConnection);
+    });
 }
 
 void RpmOstreeTransaction::proceed()
