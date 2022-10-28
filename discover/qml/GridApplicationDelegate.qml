@@ -20,7 +20,7 @@ Kirigami.AbstractCard {
     bottomPadding: 0
 
     contentItem: Item {
-        implicitHeight: Kirigami.Units.gridUnit * 6
+        implicitHeight: Kirigami.Units.gridUnit * 5
         Kirigami.Icon {
             id: icon
             anchors {
@@ -33,15 +33,15 @@ Kirigami.AbstractCard {
         }
 
         ColumnLayout {
-            spacing: Kirigami.Units.smallSpacing
+            spacing: 0
             anchors {
                 right: parent.right
                 top: parent.top
                 bottom: parent.bottom
                 left: icon.right
                 leftMargin: Kirigami.Units.largeSpacing
-                topMargin: Kirigami.Units.largeSpacing
-                bottomMargin: Kirigami.Units.largeSpacing
+                topMargin: Kirigami.Units.smallSpacing
+                bottomMargin: Kirigami.Units.smallSpacing
             }
 
             Kirigami.Heading {
