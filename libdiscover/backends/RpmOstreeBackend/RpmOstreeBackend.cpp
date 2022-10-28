@@ -8,6 +8,10 @@
 #include "RpmOstreeBackend.h"
 #include "RpmOstreeSourcesBackend.h"
 
+#include "Transaction/TransactionModel.h"
+
+#include <KLocalizedString>
+
 DISCOVER_BACKEND_PLUGIN(RpmOstreeBackend)
 
 Q_DECLARE_METATYPE(QList<QVariantMap>)
@@ -18,6 +22,7 @@ static const QString TransactionConnection = QStringLiteral("discover_transactio
 
 RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
+    , m_watcher(new QDBusServiceWatcher(this))
     , m_updater(new StandardBackendUpdater(this))
     , m_fetching(false)
 {
@@ -29,37 +34,106 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     setFetching(true);
     qDBusRegisterMetaType<QList<QVariantMap>>();
 
-    // Manually Call 'rpm-ostree status' to ensure the daemon is properly started.
-    // TODO: Replace this by proper DBus activation and waiting code.
-    QProcess process(this);
-    process.start(QStringLiteral("rpm-ostree"), {QStringLiteral("status")});
-    process.waitForFinished();
+    // Setup watcher for rpm-ostree DBus service
+    m_watcher->setConnection(QDBusConnection::systemBus());
+    m_watcher->addWatchedService(DBusServiceName);
+    connect(m_watcher, &QDBusServiceWatcher::serviceOwnerChanged, [this](const QString &serviceName, const QString &oldOwner, const QString &newOwner) {
+        qInfo() << "rpm-ostree-backend: Acting on DBus service owner change";
 
-    OrgProjectatomicRpmostree1SysrootInterface interface(DBusServiceName, SysrootObjectPath, QDBusConnection::systemBus(), this);
-    if (!interface.isValid()) {
-        qWarning() << "rpm-ostree-backend: Could not connect to rpm-ostree daemon:" << qPrintable(QDBusConnection::systemBus().lastError().message());
+        if (serviceName != DBusServiceName) {
+            qWarning() << "rpm-ostree-backend: Got an unexpected event for service:" << serviceName;
+            return;
+        }
+        // Re-activate the service as needed
+        if (newOwner.isEmpty()) {
+            qWarning() << "rpm-ostree-backend: Got an unexpected unregister event for service:" << serviceName;
+            m_dbusActivationTimer->start();
+            return;
+        }
+        if (oldOwner.isEmpty()) {
+            initializeBackend();
+            return;
+        }
+        qWarning() << "rpm-ostree-backend: Got an unexpected event for service:" << serviceName << oldOwner << newOwner;
+    });
+
+    // Setup timer for activation retries
+    m_dbusActivationTimer = new QTimer(this);
+    m_dbusActivationTimer->setSingleShot(true);
+    m_dbusActivationTimer->setInterval(1000);
+    connect(m_dbusActivationTimer, &QTimer::timeout, [this]() {
+        QDBusConnection::systemBus().interface()->startService(DBusServiceName);
+        qInfo() << "rpm-ostree-backend: DBus activating rpm-ostree service";
+    });
+
+    // Look for rpm-ostree's DBus interface among registered services
+    const auto reply = QDBusConnection::systemBus().interface()->registeredServiceNames();
+    if (!reply.isValid()) {
+        qWarning() << "rpm-ostree-backend: Failed to get the list of registered DBus services";
         return;
     }
+    const auto registeredServices = reply.value();
+    if (registeredServices.contains(DBusServiceName)) {
+        // rpm-ostree is running, let's register ourselves as update driver
+        initializeBackend();
+    } else {
+        // Activate the rpm-ostreed daemon via DBus service activation
+        QDBusConnection::systemBus().interface()->startService(DBusServiceName);
+        qInfo() << "rpm-ostree-backend: DBus activating rpm-ostree service";
+    }
+}
 
-    // Registrer ourselves to make sure that rpm-ostreed does not exit while we are running.
-    QVariantMap options;
-    auto id = QVariant(QStringLiteral("id"));
-    options["id"] = "discover";
-    interface.RegisterClient(options);
-
-    // Get the path for the curently booted OS DBus interface.
-    m_bootedObjectPath = interface.booted().path();
+void RpmOstreeBackend::initializeBackend()
+{
+    // Connect to the main interface
+    m_interface = new OrgProjectatomicRpmostree1SysrootInterface(DBusServiceName, SysrootObjectPath, QDBusConnection::systemBus(), this);
+    if (!m_interface->isValid()) {
+        qWarning() << "rpm-ostree-backend: Could not connect to rpm-ostree daemon:" << qPrintable(QDBusConnection::systemBus().lastError().message());
+        m_dbusActivationTimer->start();
+        return;
+    }
 
     // List configured remotes from the system repo and display them in the settings page.
     SourcesModel::global()->addSourcesBackend(new RpmOstreeSourcesBackend(this));
 
-    // Get the list of currently available deployments
-    QList<QVariantMap> deployments = interface.deployments();
+    // Fetch existing deployments
+    refreshDeployments();
+
+    // Look for a potentially already in-progress rpm-ostree transaction that
+    // was started outside of Discover
+    const QString transaction = m_interface->activeTransactionPath();
+    if (!transaction.isEmpty()) {
+        qInfo() << "rpm-ostree-backend: A transaction is already in progress";
+        m_transaction = new RpmOstreeTransaction(this, currentlyBootedDeployment(), m_interface, RpmOstreeTransaction::Unknown);
+        TransactionModel::global()->addTransaction(m_transaction);
+        return;
+    }
+
+    // Start the check for a new version of the current deployment if there is
+    // no transaction in progress
+    checkForUpdates();
+}
+
+void RpmOstreeBackend::refreshDeployments()
+{
+    setFetching(true);
+
+    // Get the path for the curently booted OS DBus interface.
+    m_bootedObjectPath = m_interface->booted().path();
+
+    // Reset the list of deployments
+    m_resources.clear();
+
+    // Get the list of currently available deployments. This is a DBus property
+    // and not a method call so we should not need to do it async.
+    const QList<QVariantMap> deployments = m_interface->deployments();
     for (QVariantMap d : deployments) {
         RpmOstreeResource *deployment = new RpmOstreeResource(d, this);
         m_resources << deployment;
         if (deployment->isBooted()) {
-            connect(deployment, &RpmOstreeResource::stateChanged, this, &RpmOstreeBackend::updatesCountChanged);
+            connect(deployment, &RpmOstreeResource::stateChanged, [this]() {
+                Q_EMIT updatesCountChanged();
+            });
         }
     }
 
@@ -70,35 +144,13 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
         }
     }
 
-    connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &RpmOstreeBackend::updatesCountChanged);
+    // The number of updates might have changed if we're called after an update
+    Q_EMIT updatesCountChanged();
 
-    // For now, we start fresh: Cancel any in-progress transaction
-    // TODO: Do not cancel existing a running transation but show it in the UI
-    QString transaction = interface.activeTransactionPath();
-    if (!transaction.isEmpty()) {
-        qInfo() << "rpm-ostree-backend: A transaction is already in progress";
-        QStringList transactionInfo = interface.activeTransaction();
-        if (transactionInfo.length() != 3) {
-            qInfo() << "rpm-ostree-backend: Unsupported transaction info format:" << transactionInfo;
-        } else {
-            qInfo() << "rpm-ostree-backend: Operation '" << transactionInfo.at(0) << "' requested by '" << transactionInfo.at(1);
-        }
-        QDBusConnection peerConnection = QDBusConnection::connectToPeer(transaction, TransactionConnection);
-        OrgProjectatomicRpmostree1TransactionInterface transactionInterface(DBusServiceName, QStringLiteral("/"), peerConnection, this);
-        qInfo() << "rpm-ostree-backend: Cancelling currently active transaction";
-        transactionInterface.Cancel().waitForFinished();
-        QDBusConnection::disconnectFromPeer(TransactionConnection);
-    }
-
-    // Do not block the UI while we check for updates via rpm-ostree as this
-    // can take a while and thus be fustrating for the user
     setFetching(false);
-
-    // Start the check for a new version of the current deployment
-    checkForUpdates();
 }
 
-RpmOstreeResource *RpmOstreeBackend::currentlyBootedDeployment()
+RpmOstreeResource *RpmOstreeBackend::currentlyBootedDeployment() const
 {
     for (RpmOstreeResource *deployment : m_resources) {
         if (deployment->isBooted()) {
@@ -111,65 +163,31 @@ RpmOstreeResource *RpmOstreeBackend::currentlyBootedDeployment()
 
 void RpmOstreeBackend::checkForUpdates()
 {
-    // TODO: Use the code below once we have full Transaction support
-    QProcess *process = new QProcess(this);
-    connect(process, &QProcess::readyReadStandardError, [process]() {
-        qWarning() << "rpm-ostree-backend: Error while calling rpm-ostree:" << process->readAllStandardError();
-    });
-    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
-        if (exitStatus != QProcess::NormalExit) {
-            qWarning() << "rpm-ostree-backend: Error while calling rpm-ostree:" << process->readAllStandardError();
-            return;
-        }
-        if (exitCode != 0) {
-            qInfo() << "rpm-ostree-backend: No update available";
-            return;
-        }
-        QString newVersionFound;
-        QTextStream stream(process);
-        for (QString line = stream.readLine(); stream.readLineInto(&line);) {
-            if (line.contains(QLatin1String("Version"))) {
-                newVersionFound = line;
+    m_transaction = new RpmOstreeTransaction(this, currentlyBootedDeployment(), m_interface, RpmOstreeTransaction::CheckForUpdate);
+    connect(m_transaction, &RpmOstreeTransaction::newVersionFound, [this](QString newVersion) {
+        // Look for an existing deployment for the new version
+        QVectorIterator<RpmOstreeResource *> iterator(m_resources);
+        while (iterator.hasNext()) {
+            RpmOstreeResource *deployment = iterator.next();
+            if (deployment->version() == newVersion) {
+                qInfo() << "rpm-ostree-backend: Found existing deployment for new version. Skipping.";
+                return;
             }
         }
-        if (!newVersionFound.isEmpty()) {
-            newVersionFound.remove(0, QStringLiteral("        Version: ").length() - 1);
-            newVersionFound.remove(newVersionFound.size() - QStringLiteral(" (XXXX-XX-XXTXX:XX:XXZ)").length(), newVersionFound.size() - 1);
-            currentlyBootedDeployment()->setNewVersion(newVersionFound);
-            currentlyBootedDeployment()->setState(AbstractResource::Upgradeable);
-        }
-        process->deleteLater();
+        // No existing deployment found. Let's offer the update
+        currentlyBootedDeployment()->setNewVersion(newVersion);
+        currentlyBootedDeployment()->setState(AbstractResource::Upgradeable);
     });
-    process->setProcessChannelMode(QProcess::MergedChannels);
-    auto prog = QStringLiteral("rpm-ostree");
-    auto args = {QStringLiteral("update"), QStringLiteral("--check")};
-    process->start(prog, args);
-
-    // OrgProjectatomicRpmostree1OSInterface OSInterface(DBusServiceName, m_bootedObjectPath, QDBusConnection::systemBus(), this);
-    // if (!OSInterface.isValid()) {
-    //     qWarning() << "rpm-ostree-backend: Could not connect to rpm-ostree daemon:" << qPrintable(QDBusConnection::systemBus().lastError().message());
-    //     return;
-    // };
-    //
-    // QVariantMap options;
-    // options["mode"] = QVariant(QStringLiteral("check"));
-    // options["output-to-self"] = QVariant(false);
-    // QVariantMap modifiers;
-    //
-    // QDBusPendingReply<bool, QString> reply = OSInterface.AutomaticUpdateTrigger(options);
-    // reply.waitForFinished();
-    // if (reply.isError()) {
-    //     qWarning() << "rpm-ostree-backend: Error while calling 'update' in '--check' mode" << reply.error();
-    //     return;
-    // }
-    //
-    // m_transaction = new RpmOstreeTransaction(this, currentlyBootedDeployment(), reply.argumentAt<1>());
-    // TODO: Register the transaction in the UI
+    TransactionModel::global()->addTransaction(m_transaction);
 }
 
 int RpmOstreeBackend::updatesCount() const
 {
-    return m_updater->updatesCount();
+    auto curr = currentlyBootedDeployment();
+    if (curr->state() == AbstractResource::Upgradeable) {
+        return 1;
+    }
+    return 0;
 }
 
 bool RpmOstreeBackend::isValid() const
@@ -202,21 +220,10 @@ Transaction *RpmOstreeBackend::installApplication(AbstractResource *app)
         return nullptr;
     }
 
-    OrgProjectatomicRpmostree1OSInterface OSInterface(DBusServiceName, m_bootedObjectPath, QDBusConnection::systemBus(), this);
-    if (!OSInterface.isValid()) {
-        qWarning() << "rpm-ostree-backend: Could not connect to rpm-ostree daemon:" << qPrintable(QDBusConnection::systemBus().lastError().message());
-        return nullptr;
-    };
-
-    QVariantMap options;
-    QDBusPendingReply<QString> reply = OSInterface.Upgrade(options);
-    reply.waitForFinished();
-    if (reply.isError()) {
-        qWarning() << "rpm-ostree-backend: Error while calling 'update' in '--check' mode" << reply.error();
-        return nullptr;
-    }
-
-    m_transaction = new RpmOstreeTransaction(this, curr, reply.value());
+    m_transaction = new RpmOstreeTransaction(this, currentlyBootedDeployment(), m_interface, RpmOstreeTransaction::Update);
+    connect(m_transaction, &RpmOstreeTransaction::deploymentsUpdated, [this]() {
+        refreshDeployments();
+    });
     return m_transaction;
 }
 
@@ -229,24 +236,23 @@ Transaction *RpmOstreeBackend::removeApplication(AbstractResource *)
 void RpmOstreeBackend::rebaseToNewVersion(QString ref)
 {
     auto curr = currentlyBootedDeployment();
-
-    OrgProjectatomicRpmostree1OSInterface OSInterface(DBusServiceName, m_bootedObjectPath, QDBusConnection::systemBus(), this);
-    if (!OSInterface.isValid()) {
-        qWarning() << "rpm-ostree-backend: Could not connect to rpm-ostree daemon:" << qPrintable(QDBusConnection::systemBus().lastError().message());
-        return;
-    };
-
-    QVariantMap options;
-    QStringList packages;
-    QDBusPendingReply<QString> reply = OSInterface.Rebase(options, ref, packages);
-    reply.waitForFinished();
-    if (reply.isError()) {
-        qWarning() << "rpm-ostree-backend: Error while calling 'update' in '--check' mode" << reply.error();
+    if (curr->state() == AbstractResource::Upgradeable) {
+        qInfo() << "rpm-ostree-backend: Refusing to rebase with pending updates for current version";
+        passiveMessage(i18n("Please update to the latest version before rebasing to a major version"));
         return;
     }
 
-    m_transaction = new RpmOstreeTransaction(this, curr, reply.value());
-    // TODO: Register the transaction in the UI
+    if (ref.isEmpty()) {
+        qWarning() << "rpm-ostree-backend: Error: Empty ref to rebase to";
+        passiveMessage(i18n("Missing remote ref for rebase operation. Please file a bug."));
+        return;
+    }
+
+    m_transaction = new RpmOstreeTransaction(this, currentlyBootedDeployment(), m_interface, RpmOstreeTransaction::Rebase, ref);
+    connect(m_transaction, &RpmOstreeTransaction::deploymentsUpdated, [this]() {
+        refreshDeployments();
+    });
+    TransactionModel::global()->addTransaction(m_transaction);
 }
 
 AbstractBackendUpdater *RpmOstreeBackend::backendUpdater() const
