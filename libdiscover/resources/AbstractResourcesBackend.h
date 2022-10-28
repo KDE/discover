@@ -161,7 +161,7 @@ public:
     virtual AbstractReviewsBackend *reviewsBackend() const = 0; // FIXME: Have a standard impl which returns 0?
 
     /**
-     * @returns the class which is used by muon to update the users system, if you are unsure what to do
+     * @returns the class which is used by Discover to update the users system, if you are unsure what to do
      * just return the StandardBackendUpdater
      */
     virtual AbstractBackendUpdater *backendUpdater() const = 0; // FIXME: Standard impl returning the standard updater?
