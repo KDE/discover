@@ -21,6 +21,7 @@
   <name xml:lang="hu">Snap backend</name>
   <name xml:lang="ia">Retro-Administration de Snap</name>
   <name xml:lang="id">Backend Snap</name>
+  <name xml:lang="ie">Infrastructura Snap</name>
   <name xml:lang="it">Motore Snap</name>
   <name xml:lang="ka">Snap-ის უკანაბოლო</name>
   <name xml:lang="ko">Snap 백엔드</name>
@@ -65,6 +66,7 @@
   <summary xml:lang="hu">Snap alkalmazások integrálása a Discoverbe</summary>
   <summary xml:lang="ia">Integra pplicationes de Snap in Discover</summary>
   <summary xml:lang="id">Aplikasi Snap terintegrasi ke dalam Discover</summary>
+  <summary xml:lang="ie">Integra applicationes Snap con Discover</summary>
   <summary xml:lang="it">Integra le applicazioni Snap in Discover</summary>
   <summary xml:lang="ka">Snap-ის ინტეგრაცია Discover-ში</summary>
   <summary xml:lang="ko">Snap 프로그램을 Discover에 통합</summary>
@@ -112,6 +114,7 @@
   <developer_name xml:lang="hu">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ia">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="id">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ie">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="it">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ka">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ko">Aleix Pol Gonzalez</developer_name>
