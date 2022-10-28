@@ -47,6 +47,7 @@ Kirigami.AbstractCard {
             Kirigami.Heading {
                 id: head
                 level: delegateArea.compact ? 3 : 2
+                type: Kirigami.Heading.Type.Primary
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignBottom
                 wrapMode: Text.WordWrap
@@ -59,7 +60,7 @@ Kirigami.AbstractCard {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignTop
                 maximumLineCount: 2
-                opacity: 0.5
+                opacity: 0.6
                 wrapMode: Text.WordWrap
 
                 text: model.application.comment
