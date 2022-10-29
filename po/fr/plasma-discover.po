@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-24 00:49+0000\n"
+"POT-Creation-Date: 2022-10-29 00:48+0000\n"
 "PO-Revision-Date: 2022-10-25 15:45+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: discover/DiscoverObject.cpp:157
+#: discover/DiscoverObject.cpp:159
 #, kde-format
 msgid ""
 "Discover currently cannot be used to install any apps or perform system "
@@ -38,7 +38,7 @@ msgstr ""
 "n'importe quelle application  ou de mises à jour du système. En effet, aucun "
 "moteur d'applications n'est disponible."
 
-#: discover/DiscoverObject.cpp:161
+#: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -51,13 +51,13 @@ msgstr ""
 "également envisager de signaler ceci comme un problème de mise en paquet "
 "concernant votre distribution."
 
-#: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:346
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr "Signaler ce problème"
 
-#: discover/DiscoverObject.cpp:171
+#: discover/DiscoverObject.cpp:173
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -74,22 +74,22 @@ msgstr ""
 "logiciels car le moteur « PackageKit » n'est pas correctement intégré avec "
 "Arch Linux."
 
-#: discover/DiscoverObject.cpp:179
+#: discover/DiscoverObject.cpp:181
 #, kde-format
 msgid "Learn More"
 msgstr "En apprendre plus"
 
-#: discover/DiscoverObject.cpp:267
+#: discover/DiscoverObject.cpp:269
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Impossible de trouver la catégorie « %1 »"
 
-#: discover/DiscoverObject.cpp:282
+#: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Tentative d'ouverture du fichier non existant « %1 » "
 
-#: discover/DiscoverObject.cpp:304
+#: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -98,19 +98,19 @@ msgstr ""
 "Impossible d'interagir avec les ressources flatpak sans le moteur flatpak "
 "%1. Veuillez l'installer."
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:310
 #, kde-format
 msgid "Could not open %1"
 msgstr "Impossible d'ouvrir « %1 »"
 
-#: discover/DiscoverObject.cpp:336
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr ""
 "Veuillez vous assurer que la prise en charge de « Snap » est réalisée "
 "correctement."
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:340
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -119,20 +119,20 @@ msgstr ""
 "Impossible d'ouvrir %1 car ce dernier n'a été trouvé dans aucun dépôt "
 "disponible de logiciels."
 
-#: discover/DiscoverObject.cpp:341
+#: discover/DiscoverObject.cpp:343
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 "Veuillez signaler ce problème aux personnes en charge des paquets de votre "
 "distribution."
 
-#: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
-#: discover/main.cpp:121
+#: discover/DiscoverObject.cpp:408 discover/DiscoverObject.cpp:409
+#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:409
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -660,26 +660,43 @@ msgstr "https://duckduckgo.com/?q=%1"
 msgid "Still looking…"
 msgstr "Recherche toujours en cours…"
 
-#: discover/qml/BrowsingPage.qml:18
-#, kde-format
-msgid "Featured"
-msgstr "Applications phares"
-
-#: discover/qml/BrowsingPage.qml:53
+#: discover/qml/BrowsingPage.qml:55
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Impossible de charger des applications"
 
-#: discover/qml/BrowsingPage.qml:86
+#: discover/qml/BrowsingPage.qml:95
 #, kde-format
-msgid "Updates are available"
-msgstr "Des mises à jour sont disponibles"
+msgctxt "@title:group"
+msgid "Editor's Choice"
+msgstr ""
 
-#: discover/qml/BrowsingPage.qml:90
+#: discover/qml/BrowsingPage.qml:109
+#, fuzzy, kde-format
+#| msgid "Most Popular"
+msgctxt "@title:group"
+msgid "Most Popular"
+msgstr "Popularité"
+
+#: discover/qml/BrowsingPage.qml:127
 #, kde-format
-msgctxt "Short for 'show updates'"
-msgid "Show"
-msgstr "Afficher"
+msgctxt "@title:group"
+msgid "Highest-Rated Developer Tools"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
+#, fuzzy, kde-format
+#| msgid "See more…"
+#| msgid_plural "See more…"
+msgctxt "@action:button"
+msgid "See More"
+msgstr "Voir plus d'informations..."
+
+#: discover/qml/BrowsingPage.qml:156
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Games"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format
@@ -1198,6 +1215,16 @@ msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Date inconnue de la dernière mise à jour"
 
+#~ msgid "Featured"
+#~ msgstr "Applications phares"
+
+#~ msgid "Updates are available"
+#~ msgstr "Des mises à jour sont disponibles"
+
+#~ msgctxt "Short for 'show updates'"
+#~ msgid "Show"
+#~ msgstr "Afficher"
+
 #, fuzzy
 #~| msgid "More..."
 #~ msgid "Show more..."
@@ -1503,9 +1530,6 @@ msgstr "Date inconnue de la dernière mise à jour"
 
 #~ msgid "Unrecognized url: %1"
 #~ msgstr "URL mal formée : %1"
-
-#~ msgid "Most Popular"
-#~ msgstr "Popularité"
 
 #~ msgctxt "@info"
 #~ msgid "Loading..."

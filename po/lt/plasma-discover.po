@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-24 00:49+0000\n"
+"POT-Creation-Date: 2022-10-29 00:48+0000\n"
 "PO-Revision-Date: 2021-08-31 18:57+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 "X-Generator: Poedit 2.3\n"
 
-#: discover/DiscoverObject.cpp:157
+#: discover/DiscoverObject.cpp:159
 #, fuzzy, kde-format
 #| msgid ""
 #| "Discover currently cannot be used to install any apps because none of its "
@@ -36,7 +36,7 @@ msgstr ""
 "prieinamų programoms skirtų vidinių pusių. Praneškite apie šią klaidą savo "
 "platinamojo paketo atstovams."
 
-#: discover/DiscoverObject.cpp:161
+#: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -45,13 +45,13 @@ msgid ""
 "as a packaging issue to your distribution."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:346
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:171
+#: discover/DiscoverObject.cpp:173
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -62,22 +62,22 @@ msgid ""
 "Arch Linux."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:179
+#: discover/DiscoverObject.cpp:181
 #, kde-format
 msgid "Learn More"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:267
+#: discover/DiscoverObject.cpp:269
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Nepavyko rasti kategorijos „%1“"
 
-#: discover/DiscoverObject.cpp:282
+#: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:304
+#: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -86,35 +86,35 @@ msgstr ""
 "Nepavyksta sąveikauti su flatpak ištekliais be flatpak vidinės pusės %1. Iš "
 "pradžių, ją įdiekite."
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:310
 #, kde-format
 msgid "Could not open %1"
 msgstr "Nepavyko atverti %1"
 
-#: discover/DiscoverObject.cpp:336
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Įsitikinkite, kad Snap yra įdiegta"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:340
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:341
+#: discover/DiscoverObject.cpp:343
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
-#: discover/main.cpp:121
+#: discover/DiscoverObject.cpp:408 discover/DiscoverObject.cpp:409
+#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:409
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -634,26 +634,42 @@ msgstr ""
 msgid "Still looking…"
 msgstr "Vis dar ieškoma…"
 
-#: discover/qml/BrowsingPage.qml:18
-#, kde-format
-msgid "Featured"
-msgstr "Pasižymėjusios"
-
-#: discover/qml/BrowsingPage.qml:53
+#: discover/qml/BrowsingPage.qml:55
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Nepavyko įkelti programų"
 
-#: discover/qml/BrowsingPage.qml:86
+#: discover/qml/BrowsingPage.qml:95
 #, kde-format
-msgid "Updates are available"
-msgstr "Yra prieinami atnaujinimai"
+msgctxt "@title:group"
+msgid "Editor's Choice"
+msgstr ""
 
-#: discover/qml/BrowsingPage.qml:90
+#: discover/qml/BrowsingPage.qml:109
+#, fuzzy, kde-format
+#| msgid "Popularity"
+msgctxt "@title:group"
+msgid "Most Popular"
+msgstr "Populiarumas"
+
+#: discover/qml/BrowsingPage.qml:127
 #, kde-format
-msgctxt "Short for 'show updates'"
-msgid "Show"
-msgstr "Rodyti"
+msgctxt "@title:group"
+msgid "Highest-Rated Developer Tools"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
+#, fuzzy, kde-format
+#| msgid "More…"
+msgctxt "@action:button"
+msgid "See More"
+msgstr "Daugiau…"
+
+#: discover/qml/BrowsingPage.qml:156
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Games"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format
@@ -1171,6 +1187,16 @@ msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Paskutinio atnaujinimo laikas nežinomas"
 
+#~ msgid "Featured"
+#~ msgstr "Pasižymėjusios"
+
+#~ msgid "Updates are available"
+#~ msgstr "Yra prieinami atnaujinimai"
+
+#~ msgctxt "Short for 'show updates'"
+#~ msgid "Show"
+#~ msgstr "Rodyti"
+
 #, fuzzy
 #~| msgid "More..."
 #~ msgid "Show more..."
@@ -1459,11 +1485,6 @@ msgstr "Paskutinio atnaujinimo laikas nežinomas"
 #~| msgid "%1 (%2)"
 #~ msgid "Origin: %1 (%2)"
 #~ msgstr "%1 (%2)"
-
-#, fuzzy
-#~| msgid "Popularity"
-#~ msgid "Most Popular"
-#~ msgstr "Populiarumas"
 
 #, fuzzy
 #~| msgid "Loading..."

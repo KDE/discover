@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-24 00:49+0000\n"
+"POT-Creation-Date: 2022-10-29 00:48+0000\n"
 "PO-Revision-Date: 2022-10-22 05:28\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -17,14 +17,14 @@ msgstr ""
 "X-Crowdin-File: /kf5-trunk/messages/discover/plasma-discover.pot\n"
 "X-Crowdin-File-ID: 4111\n"
 
-#: discover/DiscoverObject.cpp:157
+#: discover/DiscoverObject.cpp:159
 #, kde-format
 msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr "Discover 的所有后端程序均不可用，因此无法进行软件安装或系统升级。"
 
-#: discover/DiscoverObject.cpp:161
+#: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -35,13 +35,13 @@ msgstr ""
 "您可以在设置页面中的<interface>缺少后端程序</interface>处安装后端程序。<nl/"
 "><nl/>同时请考虑将此情况作为打包问题报告给您正在使用的发行版项目。"
 
-#: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:346
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr "报告此问题"
 
-#: discover/DiscoverObject.cpp:171
+#: discover/DiscoverObject.cpp:173
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -55,57 +55,57 @@ msgstr ""
 "件包。<nl/><nl/>请注意，由于 PackageKit 后端程序在 Arch Linux 上没有进行良好"
 "的集成，Arch Linux 的开发者建议使用 <command>pacman</command> 来管理软件。"
 
-#: discover/DiscoverObject.cpp:179
+#: discover/DiscoverObject.cpp:181
 #, kde-format
 msgid "Learn More"
 msgstr "了解详情"
 
-#: discover/DiscoverObject.cpp:267
+#: discover/DiscoverObject.cpp:269
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "找不到“%1”分类"
 
-#: discover/DiscoverObject.cpp:282
+#: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:304
+#: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr "缺少 flatpak 后端程序 %1，无法处理 flatpak 资源。请先安装它。"
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:310
 #, kde-format
 msgid "Could not open %1"
 msgstr "无法打开 %1"
 
-#: discover/DiscoverObject.cpp:336
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "请确保 Snap 支持已经安装"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:340
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "无法打开 %1，在所有可用的软件仓库中均未发现该软件包。"
 
-#: discover/DiscoverObject.cpp:341
+#: discover/DiscoverObject.cpp:343
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "请将此问题报告给您使用的发行版的软件打包人员。"
 
-#: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
-#: discover/main.cpp:121
+#: discover/DiscoverObject.cpp:408 discover/DiscoverObject.cpp:409
+#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:409
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -607,26 +607,42 @@ msgstr "https://cn.bing.com/search?q=%1"
 msgid "Still looking…"
 msgstr "仍在查找…"
 
-#: discover/qml/BrowsingPage.qml:18
-#, kde-format
-msgid "Featured"
-msgstr "精选软件"
-
-#: discover/qml/BrowsingPage.qml:53
+#: discover/qml/BrowsingPage.qml:55
 #, kde-format
 msgid "Unable to load applications"
 msgstr "无法加载应用程序"
 
-#: discover/qml/BrowsingPage.qml:86
+#: discover/qml/BrowsingPage.qml:95
 #, kde-format
-msgid "Updates are available"
-msgstr "有可用的更新"
+msgctxt "@title:group"
+msgid "Editor's Choice"
+msgstr ""
 
-#: discover/qml/BrowsingPage.qml:90
+#: discover/qml/BrowsingPage.qml:109
 #, kde-format
-msgctxt "Short for 'show updates'"
-msgid "Show"
-msgstr "显示"
+msgctxt "@title:group"
+msgid "Most Popular"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:127
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Developer Tools"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
+#, fuzzy, kde-format
+#| msgid "See more…"
+#| msgid_plural "See more…"
+msgctxt "@action:button"
+msgid "See More"
+msgstr "查看更多…"
+
+#: discover/qml/BrowsingPage.qml:156
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Games"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format
@@ -1133,3 +1149,13 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
+
+#~ msgid "Featured"
+#~ msgstr "精选软件"
+
+#~ msgid "Updates are available"
+#~ msgstr "有可用的更新"
+
+#~ msgctxt "Short for 'show updates'"
+#~ msgid "Show"
+#~ msgstr "显示"

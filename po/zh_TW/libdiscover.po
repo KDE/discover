@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-28 00:46+0000\n"
+"POT-Creation-Date: 2022-10-29 00:48+0000\n"
 "PO-Revision-Date: 2022-06-27 01:29+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -518,35 +518,35 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "系統設定"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:119
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:120
 #, fuzzy, kde-format
 #| msgid "%1 (user)"
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (使用者)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:665
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:666
 #, kde-format
 msgid "Local bundle"
 msgstr "本機 Bundle"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1591
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正確的 appstream 網址 '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1695
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "新增來源「%1」失敗：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1812
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "沒有 Flatpak 來源。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "載入來源「%1」失敗"
@@ -2159,7 +2159,7 @@ msgstr "請檢查網際網路連線"
 msgid "Refresh"
 msgstr "重新整理"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:683
+#: libdiscover/resources/ResourcesProxyModel.cpp:710
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-24 00:49+0000\n"
+"POT-Creation-Date: 2022-10-29 00:48+0000\n"
 "PO-Revision-Date: 2022-08-16 17:05+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.04.3\n"
 
-#: discover/DiscoverObject.cpp:157
+#: discover/DiscoverObject.cpp:159
 #, kde-format
 msgid ""
 "Discover currently cannot be used to install any apps or perform system "
@@ -27,7 +27,7 @@ msgstr ""
 "bilməz və ya tətbiq modullarının əlçatmaz olması səbəbindən sistem "
 "yenilənməsini yerinə yetirə bilmir."
 
-#: discover/DiscoverObject.cpp:161
+#: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -39,13 +39,13 @@ msgstr ""
 "interface> bölməsində quraşdıra bilərsiniz.<nl/><nl/> Həmçinin lütfən bunu "
 "bir paketləmə problemi kimi distributorunuzun müəllifinə göndərin."
 
-#: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:346
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr "Bu problemi bildirin"
 
-#: discover/DiscoverObject.cpp:171
+#: discover/DiscoverObject.cpp:173
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -61,22 +61,22 @@ msgstr ""
 "etmək üçün <command>pacman</command> istifadə etməyi tövsiyyə edirlər, çünki "
 "PackageKit modulu Arch Linux-a lazımi səviyyədə inteqrasiya olunmayıb."
 
-#: discover/DiscoverObject.cpp:179
+#: discover/DiscoverObject.cpp:181
 #, kde-format
 msgid "Learn More"
 msgstr "Daha çox öyrənin"
 
-#: discover/DiscoverObject.cpp:267
+#: discover/DiscoverObject.cpp:269
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "\"%1\" kateqoriyası tapılmadı"
 
-#: discover/DiscoverObject.cpp:282
+#: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:304
+#: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -85,35 +85,35 @@ msgstr ""
 "%1 flatpack geri izi olmadan flatpak resursları ilə qarşılıqlı əlaqə "
 "yaradıla bilmir. Lütfən ilk öncə bunu quraşdırırn."
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:310
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 açıla bilmədi"
 
-#: discover/DiscoverObject.cpp:336
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Snap dəstəyinin quraşdırıldığına əmin olun"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:340
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "%1 tapılmadı, çünki o, heç bir proram təminatı anbarlarında tapılmadı."
 
-#: discover/DiscoverObject.cpp:341
+#: discover/DiscoverObject.cpp:343
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Lütfən bu problemi distributorunuzun paketləyicisinə bildirin."
 
-#: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
-#: discover/main.cpp:121
+#: discover/DiscoverObject.cpp:408 discover/DiscoverObject.cpp:409
+#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:409
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -636,26 +636,42 @@ msgstr "https://duckduckgo.com/?q=%1"
 msgid "Still looking…"
 msgstr "Hələ də axtarılır..."
 
-#: discover/qml/BrowsingPage.qml:18
-#, kde-format
-msgid "Featured"
-msgstr "Məsləhət görülən"
-
-#: discover/qml/BrowsingPage.qml:53
+#: discover/qml/BrowsingPage.qml:55
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Tətbiqləri yükləmək alınmadı"
 
-#: discover/qml/BrowsingPage.qml:86
+#: discover/qml/BrowsingPage.qml:95
 #, kde-format
-msgid "Updates are available"
-msgstr "Yenilənmələr mövcuddur"
+msgctxt "@title:group"
+msgid "Editor's Choice"
+msgstr ""
 
-#: discover/qml/BrowsingPage.qml:90
+#: discover/qml/BrowsingPage.qml:109
 #, kde-format
-msgctxt "Short for 'show updates'"
-msgid "Show"
-msgstr "Göstərmək"
+msgctxt "@title:group"
+msgid "Most Popular"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:127
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Developer Tools"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
+#, fuzzy, kde-format
+#| msgid "See more…"
+#| msgid_plural "See more…"
+msgctxt "@action:button"
+msgid "See More"
+msgstr "Daha çox…"
+
+#: discover/qml/BrowsingPage.qml:156
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Games"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format
@@ -1170,6 +1186,16 @@ msgstr "Yenilənmə olub olmadığını yoxlamaq lazımdır"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Sonuncu yenilənmə vaxtı naməlumdur"
+
+#~ msgid "Featured"
+#~ msgstr "Məsləhət görülən"
+
+#~ msgid "Updates are available"
+#~ msgstr "Yenilənmələr mövcuddur"
+
+#~ msgctxt "Short for 'show updates'"
+#~ msgid "Show"
+#~ msgstr "Göstərmək"
 
 #, fuzzy
 #~| msgid "More..."

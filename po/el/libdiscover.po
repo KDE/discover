@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-28 00:46+0000\n"
+"POT-Creation-Date: 2022-10-29 00:48+0000\n"
 "PO-Revision-Date: 2017-09-08 16:13+0200\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -525,7 +525,7 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Ρυθμίσεις συστήματος"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:119
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:120
 #, fuzzy, kde-format
 #| msgctxt "package-name (version)"
 #| msgid "%1 (%2)"
@@ -533,18 +533,18 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:665
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:666
 #, kde-format
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1591
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Κακοδιατυπωμένο appstream url '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1695
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -557,13 +557,13 @@ msgstr ""
 "%2\n"
 "\n"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1812
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, fuzzy, kde-format
 #| msgid "There are %1 updated packages!"
 msgid "There are no Flatpak sources."
 msgstr "Ενημερώθηκαν %1 πακέτα!"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -2329,7 +2329,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:683
+#: libdiscover/resources/ResourcesProxyModel.cpp:710
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

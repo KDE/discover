@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-28 00:46+0000\n"
+"POT-Creation-Date: 2022-10-29 00:48+0000\n"
 "PO-Revision-Date: 2021-09-09 13:59+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/"
@@ -514,36 +514,36 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "സിസ്റ്റം സജ്ജീകരണങ്ങൾ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:119
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:120
 #, fuzzy, kde-format
 #| msgid "%1 (user)"
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (ഉപയോക്താവ്)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:665
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:666
 #, kde-format
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1591
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1695
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' ആരംഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1812
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to load \"%1\" source"
@@ -2130,7 +2130,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:683
+#: libdiscover/resources/ResourcesProxyModel.cpp:710
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

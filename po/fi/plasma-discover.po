@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-24 00:49+0000\n"
+"POT-Creation-Date: 2022-10-29 00:48+0000\n"
 "PO-Revision-Date: 2022-08-11 22:54+0300\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Lokalize 22.04.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: discover/DiscoverObject.cpp:157
+#: discover/DiscoverObject.cpp:159
 #, kde-format
 msgid ""
 "Discover currently cannot be used to install any apps or perform system "
@@ -28,7 +28,7 @@ msgstr ""
 "Discoveria ei voi juuri nyt käyttää sovellusten asennukseen tai "
 "järjestelmäpäivityksiin, koska yhtäkään sen taustaosaa ei ole käytettävissä."
 
-#: discover/DiscoverObject.cpp:161
+#: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -40,13 +40,13 @@ msgstr ""
 "interface> -osiosta.<nl/><nl/>Harkitse myös tämän ilmoittamista jakelullesi "
 "paketointiongelmana."
 
-#: discover/DiscoverObject.cpp:166 discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:346
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr "Ilmoita ongelmasta"
 
-#: discover/DiscoverObject.cpp:171
+#: discover/DiscoverObject.cpp:173
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -62,22 +62,22 @@ msgstr ""
 "<command>pacman</command>ia, koska PackageKit-taustajärjestelmää ei ole "
 "täysin integroitu Arch Linuxiin."
 
-#: discover/DiscoverObject.cpp:179
+#: discover/DiscoverObject.cpp:181
 #, kde-format
 msgid "Learn More"
 msgstr "Lisätietoa"
 
-#: discover/DiscoverObject.cpp:267
+#: discover/DiscoverObject.cpp:269
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Luokkaa ”%1” ei löytynyt"
 
-#: discover/DiscoverObject.cpp:282
+#: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:304
+#: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -86,36 +86,36 @@ msgstr ""
 "Flatpak-resursseja ei voi käyttää ilman Flatpak-taustaosaa %1. Asenna se "
 "ensin."
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:310
 #, kde-format
 msgid "Could not open %1"
 msgstr "Ei voitu avata: %1"
 
-#: discover/DiscoverObject.cpp:336
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Varmista, että Snap-tuki on asennettu"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:340
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "%1: ei voida avata, koska ei löydy käytössä olevista ohjelmalähteistä."
 
-#: discover/DiscoverObject.cpp:341
+#: discover/DiscoverObject.cpp:343
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Ilmoita jakelusi paketoijille tästä ongelmasta."
 
 # HUOM! Tämä on ohjelman nimi!
-#: discover/DiscoverObject.cpp:406 discover/DiscoverObject.cpp:407
-#: discover/main.cpp:121
+#: discover/DiscoverObject.cpp:408 discover/DiscoverObject.cpp:409
+#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:409
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -633,26 +633,43 @@ msgstr "https://duckduckgo.com/?q=%1"
 msgid "Still looking…"
 msgstr "Etsitään yhä…"
 
-#: discover/qml/BrowsingPage.qml:18
-#, kde-format
-msgid "Featured"
-msgstr "Esitellyt"
-
-#: discover/qml/BrowsingPage.qml:53
+#: discover/qml/BrowsingPage.qml:55
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Sovelluksia ei voi ladata"
 
-#: discover/qml/BrowsingPage.qml:86
+#: discover/qml/BrowsingPage.qml:95
 #, kde-format
-msgid "Updates are available"
-msgstr "Päivityksiä saatavilla"
+msgctxt "@title:group"
+msgid "Editor's Choice"
+msgstr ""
 
-#: discover/qml/BrowsingPage.qml:90
+#: discover/qml/BrowsingPage.qml:109
+#, fuzzy, kde-format
+#| msgid "Most Popular"
+msgctxt "@title:group"
+msgid "Most Popular"
+msgstr "Suosituimmat"
+
+#: discover/qml/BrowsingPage.qml:127
 #, kde-format
-msgctxt "Short for 'show updates'"
-msgid "Show"
-msgstr "Näytä"
+msgctxt "@title:group"
+msgid "Highest-Rated Developer Tools"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
+#, fuzzy, kde-format
+#| msgid "See more…"
+#| msgid_plural "See more…"
+msgctxt "@action:button"
+msgid "See More"
+msgstr "Lisää…"
+
+#: discover/qml/BrowsingPage.qml:156
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Games"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format
@@ -1172,6 +1189,16 @@ msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Viimeisin päivitysaika ei ole tiedossa"
 
+#~ msgid "Featured"
+#~ msgstr "Esitellyt"
+
+#~ msgid "Updates are available"
+#~ msgstr "Päivityksiä saatavilla"
+
+#~ msgctxt "Short for 'show updates'"
+#~ msgid "Show"
+#~ msgstr "Näytä"
+
 #, fuzzy
 #~| msgid "More..."
 #~ msgid "Show more..."
@@ -1489,9 +1516,6 @@ msgstr "Viimeisin päivitysaika ei ole tiedossa"
 #~| msgid "%1 (%2)"
 #~ msgid "Origin: %1 (%2)"
 #~ msgstr "%1 (%2)"
-
-#~ msgid "Most Popular"
-#~ msgstr "Suosituimmat"
 
 #~ msgctxt "@info"
 #~ msgid "Loading..."
