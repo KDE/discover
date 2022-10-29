@@ -27,8 +27,8 @@ Kirigami.ApplicationWindow
 
     visible: true
 
-    minimumWidth: 300
-    minimumHeight: 300
+    minimumWidth: Kirigami.Units.gridUnit * 17
+    minimumHeight: Kirigami.Units.gridUnit * 17
 
     pageStack.defaultColumnWidth: Math.max(Kirigami.Units.gridUnit * 25, pageStack.width / 4)
     pageStack.globalToolBar.style: Kirigami.Settings.isMobile ? Kirigami.ApplicationHeaderStyle.Titles : Kirigami.ApplicationHeaderStyle.Auto
