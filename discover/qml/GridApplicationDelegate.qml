@@ -25,10 +25,11 @@ Kirigami.AbstractCard {
             id: icon
             anchors {
                 left: parent.left
+                leftMargin: Kirigami.Units.smallSpacing
                 top: parent.top
                 bottom: parent.bottom
             }
-            width: Kirigami.Units.gridUnit * 4
+            width: Kirigami.Units.iconSizes.huge
             source: model.application.icon
         }
 
