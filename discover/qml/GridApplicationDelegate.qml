@@ -60,7 +60,7 @@ Kirigami.AbstractCard {
             Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignTop
-                maximumLineCount: 2
+                maximumLineCount: head.lineCount === 1 ? 3 : 2
                 opacity: 0.6
                 wrapMode: Text.WordWrap
 
