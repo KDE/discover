@@ -90,7 +90,6 @@ DiscoverPage
         Layout.preferredWidth: Math.max(maximumColumnWidth, Math.min((width / columns) - columnSpacing))
 
         Kirigami.Heading {
-            Layout.topMargin: Kirigami.Units.largeSpacing * 2
             Layout.columnSpan: apps.columns
             text: i18nc("@title:group", "Editor's Choice")
             visible: !featuredModel.isFetching
