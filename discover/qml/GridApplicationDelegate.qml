@@ -21,52 +21,47 @@ Kirigami.AbstractCard {
 
     contentItem: Item {
         implicitHeight: Kirigami.Units.gridUnit * 5
-        Kirigami.Icon {
-            id: icon
-            anchors {
-                left: parent.left
-                leftMargin: Kirigami.Units.smallSpacing
-                top: parent.top
-                bottom: parent.bottom
+
+        RowLayout {
+            anchors.fill: parent
+            anchors.margins: Kirigami.Units.smallSpacing
+            spacing: Kirigami.Units.largeSpacing
+
+            Kirigami.Icon {
+                implicitWidth: Kirigami.Units.iconSizes.huge
+                implicitHeight: Kirigami.Units.iconSizes.huge
+                source: model.application.icon
             }
-            width: Kirigami.Units.iconSizes.huge
-            source: model.application.icon
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                spacing: 0
+
+                Kirigami.Heading {
+                    id: head
+                    level: delegateArea.compact ? 3 : 2
+                    type: Kirigami.Heading.Type.Primary
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignBottom
+                    wrapMode: Text.WordWrap
+                    maximumLineCount: 2
+
+                    text: model.application.name
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignTop
+                    maximumLineCount: head.lineCount === 1 ? 3 : 2
+                    opacity: 0.6
+                    wrapMode: Text.WordWrap
+
+                    text: model.application.comment
+                }
+            }
         }
 
-        ColumnLayout {
-            spacing: 0
-            anchors {
-                right: parent.right
-                top: parent.top
-                bottom: parent.bottom
-                left: icon.right
-                leftMargin: Kirigami.Units.largeSpacing
-                topMargin: Kirigami.Units.smallSpacing
-                bottomMargin: Kirigami.Units.smallSpacing
-            }
-
-            Kirigami.Heading {
-                id: head
-                level: delegateArea.compact ? 3 : 2
-                type: Kirigami.Heading.Type.Primary
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignBottom
-                wrapMode: Text.WordWrap
-                maximumLineCount: 2
-
-                text: model.application.name
-            }
-
-            Label {
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignTop
-                maximumLineCount: head.lineCount === 1 ? 3 : 2
-                opacity: 0.6
-                wrapMode: Text.WordWrap
-
-                text: model.application.comment
-            }
-        }
     }
 
     onClicked: Navigation.openApplication(model.application)
