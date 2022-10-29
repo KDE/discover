@@ -91,20 +91,6 @@ DiscoverPage
 
         Kirigami.Heading {
             Layout.columnSpan: apps.columns
-            text: i18nc("@title:group", "Editor's Choice")
-            visible: !featuredModel.isFetching
-        }
-
-        Repeater {
-            model: FeaturedModel {
-                id: featuredModel
-            }
-            delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
-        }
-
-        Kirigami.Heading {
-            Layout.topMargin: Kirigami.Units.largeSpacing * 2
-            Layout.columnSpan: apps.columns
             text: i18nc("@title:group", "Most Popular")
             visible: popRep.count > 0 && !featuredModel.isFetching
         }
@@ -123,30 +109,15 @@ DiscoverPage
         Kirigami.Heading {
             Layout.topMargin: Kirigami.Units.largeSpacing * 2
             Layout.columnSpan: apps.columns
-            text: i18nc("@title:group", "Highest-Rated Developer Tools")
-            visible: devRep.count > 0 && !featuredModel.isFetching
+            text: i18nc("@title:group", "Editor's Choice")
+            visible: !featuredModel.isFetching
         }
 
         Repeater {
-            id: devRep
-            model: PaginateModel {
-                pageSize: apps.maximumColumns
-                sourceModel: ResourcesProxyModel {
-                    filteredCategoryName: "Developer Tools"
-                    backendFilter: ResourcesModel.currentApplicationBackend
-                    sortRole: ResourcesProxyModel.SortableRatingRole
-                    sortOrder: Qt.DescendingOrder
-                }
+            model: FeaturedModel {
+                id: featuredModel
             }
             delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
-        }
-
-        Button {
-            text: i18nc("@action:button", "See More")
-            icon.name: "go-next-view"
-            Layout.columnSpan: apps.columns
-            onClicked: Navigation.openCategory(CategoryModel.findCategoryByName("Developer Tools"))
-            visible: devRep.count > 0 && !featuredModel.isFetching
         }
 
         Kirigami.Heading {
@@ -176,6 +147,35 @@ DiscoverPage
             Layout.columnSpan: apps.columns
             onClicked: Navigation.openCategory(CategoryModel.findCategoryByName("Games"))
             visible: gamesRep.count > 0 && !featuredModel.isFetching
+        }
+
+        Kirigami.Heading {
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
+            Layout.columnSpan: apps.columns
+            text: i18nc("@title:group", "Highest-Rated Developer Tools")
+            visible: devRep.count > 0 && !featuredModel.isFetching
+        }
+
+        Repeater {
+            id: devRep
+            model: PaginateModel {
+                pageSize: apps.maximumColumns
+                sourceModel: ResourcesProxyModel {
+                    filteredCategoryName: "Developer Tools"
+                    backendFilter: ResourcesModel.currentApplicationBackend
+                    sortRole: ResourcesProxyModel.SortableRatingRole
+                    sortOrder: Qt.DescendingOrder
+                }
+            }
+            delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
+        }
+
+        Button {
+            text: i18nc("@action:button", "See More")
+            icon.name: "go-next-view"
+            Layout.columnSpan: apps.columns
+            onClicked: Navigation.openCategory(CategoryModel.findCategoryByName("Developer Tools"))
+            visible: devRep.count > 0 && !featuredModel.isFetching
         }
     }
 }
