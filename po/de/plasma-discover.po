@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-29 00:48+0000\n"
+"POT-Creation-Date: 2022-10-30 00:47+0000\n"
 "PO-Revision-Date: 2022-07-24 14:43+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -617,26 +617,26 @@ msgstr "Suchen ..."
 msgid "Unable to load applications"
 msgstr "Anwendungen können nicht geladen werden"
 
-#: discover/qml/BrowsingPage.qml:95
-#, kde-format
-msgctxt "@title:group"
-msgid "Editor's Choice"
-msgstr ""
-
-#: discover/qml/BrowsingPage.qml:109
+#: discover/qml/BrowsingPage.qml:94
 #, fuzzy, kde-format
 #| msgid "Most Popular"
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Am beliebtesten"
 
-#: discover/qml/BrowsingPage.qml:127
+#: discover/qml/BrowsingPage.qml:112
 #, kde-format
 msgctxt "@title:group"
-msgid "Highest-Rated Developer Tools"
+msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
+#: discover/qml/BrowsingPage.qml:126
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Games"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:145 discover/qml/BrowsingPage.qml:174
 #, fuzzy, kde-format
 #| msgid "See more…"
 #| msgid_plural "See more…"
@@ -644,10 +644,10 @@ msgctxt "@action:button"
 msgid "See More"
 msgstr "Mehr ..."
 
-#: discover/qml/BrowsingPage.qml:156
+#: discover/qml/BrowsingPage.qml:155
 #, kde-format
 msgctxt "@title:group"
-msgid "Highest-Rated Games"
+msgid "Highest-Rated Developer Tools"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:42

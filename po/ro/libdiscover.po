@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-29 00:48+0000\n"
+"POT-Creation-Date: 2022-10-30 00:47+0000\n"
 "PO-Revision-Date: 2022-04-30 12:11+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -40,6 +40,9 @@ msgstr "Domeniu public"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:97
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:255
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:335
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:296
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -2063,7 +2066,17 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Sistem de operare"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:254
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:241
+#, kde-format
+msgid "Please update to the latest version before rebasing to a major version"
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:247
+#, kde-format
+msgid "Missing remote ref for rebase operation. Please file a bug."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:252
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL și alte licențe"
@@ -2105,34 +2118,86 @@ msgstr "Metapachete"
 msgid "Removed packages:"
 msgstr "Pachet-sursă:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:334
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:342
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "Dependencies of the Current Version"
+msgid "Currently booted version (pinned)"
+msgstr "Dependențele versiunii curente"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox"
 #| msgid "Dependencies of the Current Version"
 msgid "Currently booted version"
 msgstr "Dependențele versiunii curente"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
 #, kde-format
-msgid "Next version used after reboot"
+msgid "Version that will be used after reboot"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Force Version"
+msgid "Fallback version (pinned)"
+msgstr "Forțează versiunea"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Force Version"
 msgid "Fallback version"
 msgstr "Forțează versiunea"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:73
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
 msgid "ostree remotes"
 msgstr "Distante ostree"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:119
-#, kde-format
-msgid "Current rpm-ostree transaction in progress:"
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:114
+#, fuzzy, kde-format
+#| msgid "Current rpm-ostree transaction in progress:"
+msgid "rpm-ostree transaction failed with:"
 msgstr "Tranzacție actuală rpm-ostree în curs:"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:248
+#, kde-format
+msgid ""
+"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:277
+#, fuzzy, kde-format
+#| msgctxt "@action Checks the Internet for updates"
+#| msgid "Check for Updates"
+msgid "Checking for a system update"
+msgstr "Caută actualizări"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:280
+#, fuzzy, kde-format
+#| msgctxt "@info Status information, widget title"
+#| msgid "Downloading Packages"
+msgid "Downloading system update"
+msgstr "Descărcare pachete"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:283
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Operating System"
+msgid "Updating the system"
+msgstr "Sistem de operare"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:286
+#, kde-format
+msgid "Updating to the next major version"
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:289
+#, kde-format
+msgid "Transaction in progress (started outside of Discover)"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2312,10 +2377,6 @@ msgstr "Suplimente"
 #~ msgctxt "origin (backend name)"
 #~ msgid "%1 (%2)"
 #~ msgstr "%1 (%2)"
-
-#~ msgctxt "@action Checks the Internet for updates"
-#~ msgid "Check for Updates"
-#~ msgstr "Caută actualizări"
 
 #~ msgctxt "@item:inlistbox"
 #~ msgid "Application Updates"
@@ -2661,10 +2722,6 @@ msgstr "Suplimente"
 #~ msgctxt "@info Status information, widget title"
 #~ msgid "Updating software sources"
 #~ msgstr "Se actualizează sursele de programe"
-
-#~ msgctxt "@info Status information, widget title"
-#~ msgid "Downloading Packages"
-#~ msgstr "Descărcare pachete"
 
 #~ msgctxt "@info Status information, widget title"
 #~ msgid "Finished"

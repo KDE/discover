@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-29 00:48+0000\n"
+"POT-Creation-Date: 2022-10-30 00:47+0000\n"
 "PO-Revision-Date: 2022-10-04 15:20+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -625,26 +625,26 @@ msgstr "계속 찾는 중…"
 msgid "Unable to load applications"
 msgstr "프로그램을 불러올 수 없음"
 
-#: discover/qml/BrowsingPage.qml:95
-#, kde-format
-msgctxt "@title:group"
-msgid "Editor's Choice"
-msgstr ""
-
-#: discover/qml/BrowsingPage.qml:109
+#: discover/qml/BrowsingPage.qml:94
 #, fuzzy, kde-format
 #| msgid "Most Popular"
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "인기 있는 항목"
 
-#: discover/qml/BrowsingPage.qml:127
+#: discover/qml/BrowsingPage.qml:112
 #, kde-format
 msgctxt "@title:group"
-msgid "Highest-Rated Developer Tools"
+msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
+#: discover/qml/BrowsingPage.qml:126
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Games"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:145 discover/qml/BrowsingPage.qml:174
 #, fuzzy, kde-format
 #| msgid "See more…"
 #| msgid_plural "See more…"
@@ -652,10 +652,10 @@ msgctxt "@action:button"
 msgid "See More"
 msgstr "더 보기…"
 
-#: discover/qml/BrowsingPage.qml:156
+#: discover/qml/BrowsingPage.qml:155
 #, kde-format
 msgctxt "@title:group"
-msgid "Highest-Rated Games"
+msgid "Highest-Rated Developer Tools"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:42

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-29 00:48+0000\n"
-"PO-Revision-Date: 2022-10-24 16:53+0300\n"
+"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"PO-Revision-Date: 2022-10-29 12:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -640,37 +640,35 @@ msgstr "Aranıyor…"
 msgid "Unable to load applications"
 msgstr "Uygulamalar yüklenemiyor"
 
-#: discover/qml/BrowsingPage.qml:95
-#, kde-format
-msgctxt "@title:group"
-msgid "Editor's Choice"
-msgstr ""
-
-#: discover/qml/BrowsingPage.qml:109
+#: discover/qml/BrowsingPage.qml:94
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "En Popüler"
 
-#: discover/qml/BrowsingPage.qml:127
+#: discover/qml/BrowsingPage.qml:112
 #, kde-format
 msgctxt "@title:group"
-msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgid "Editor's Choice"
+msgstr "Editörün Seçimi"
 
-#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
-msgctxt "@action:button"
-msgid "See More"
-msgstr "Daha fazla…"
-
-#: discover/qml/BrowsingPage.qml:156
+#: discover/qml/BrowsingPage.qml:126
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "En Çok Beğenilen Oyunlar"
+
+#: discover/qml/BrowsingPage.qml:145 discover/qml/BrowsingPage.qml:174
+#, kde-format
+msgctxt "@action:button"
+msgid "See More"
+msgstr "Daha Fazlasını Gör"
+
+#: discover/qml/BrowsingPage.qml:155
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Developer Tools"
+msgstr "En Çok Beğenilen Geliştirici Araçları"
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format

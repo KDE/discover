@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-29 00:48+0000\n"
-"PO-Revision-Date: 2022-10-24 10:28+0200\n"
+"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"PO-Revision-Date: 2022-10-29 12:16+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -642,37 +642,35 @@ msgstr "Encara s'està buscant…"
 msgid "Unable to load applications"
 msgstr "No es poden carregar les aplicacions"
 
-#: discover/qml/BrowsingPage.qml:95
-#, kde-format
-msgctxt "@title:group"
-msgid "Editor's Choice"
-msgstr ""
-
-#: discover/qml/BrowsingPage.qml:109
+#: discover/qml/BrowsingPage.qml:94
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "Més popular"
 
-#: discover/qml/BrowsingPage.qml:127
+#: discover/qml/BrowsingPage.qml:112
 #, kde-format
 msgctxt "@title:group"
-msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgid "Editor's Choice"
+msgstr "Seleccioneu l'editor"
 
-#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
-msgctxt "@action:button"
-msgid "See More"
-msgstr "Vegeu-ne més…"
-
-#: discover/qml/BrowsingPage.qml:156
+#: discover/qml/BrowsingPage.qml:126
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "Jocs amb la puntuació més alta"
+
+#: discover/qml/BrowsingPage.qml:145 discover/qml/BrowsingPage.qml:174
+#, kde-format
+msgctxt "@action:button"
+msgid "See More"
+msgstr "Vegeu-ne més"
+
+#: discover/qml/BrowsingPage.qml:155
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Developer Tools"
+msgstr "Eines de desenvolupament amb la puntuació més alta"
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format
@@ -1185,13 +1183,3 @@ msgstr "Cal comprovar si hi ha actualitzacions"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Es desconeix l'hora de l'última actualització"
-
-#~ msgid "Featured"
-#~ msgstr "Cal destacar"
-
-#~ msgid "Updates are available"
-#~ msgstr "Hi ha actualitzacions disponibles"
-
-#~ msgctxt "Short for 'show updates'"
-#~ msgid "Show"
-#~ msgstr "Mostra"

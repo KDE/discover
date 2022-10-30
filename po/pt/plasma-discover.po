@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-29 00:48+0000\n"
-"PO-Revision-Date: 2022-10-24 11:41+0100\n"
+"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"PO-Revision-Date: 2022-10-29 13:13+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -652,37 +652,35 @@ msgstr "Ainda à procura…"
 msgid "Unable to load applications"
 msgstr "Não foi possível carregar as aplicações"
 
-#: discover/qml/BrowsingPage.qml:95
-#, kde-format
-msgctxt "@title:group"
-msgid "Editor's Choice"
-msgstr ""
-
-#: discover/qml/BrowsingPage.qml:109
+#: discover/qml/BrowsingPage.qml:94
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "Mais Populares"
 
-#: discover/qml/BrowsingPage.qml:127
+#: discover/qml/BrowsingPage.qml:112
 #, kde-format
 msgctxt "@title:group"
-msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgid "Editor's Choice"
+msgstr "Escolha do Editor"
 
-#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
-msgctxt "@action:button"
-msgid "See More"
-msgstr "Ver mais…"
-
-#: discover/qml/BrowsingPage.qml:156
+#: discover/qml/BrowsingPage.qml:126
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "Jogos Melhor Classificados"
+
+#: discover/qml/BrowsingPage.qml:145 discover/qml/BrowsingPage.qml:174
+#, kde-format
+msgctxt "@action:button"
+msgid "See More"
+msgstr "Ver Mais"
+
+#: discover/qml/BrowsingPage.qml:155
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Developer Tools"
+msgstr "Ferramentas de Desenvolvimento Melhor Classificadas"
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format
@@ -1196,13 +1194,3 @@ msgstr "Se deve procurar por actualizações"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Hora da última actualização desconhecida"
-
-#~ msgid "Featured"
-#~ msgstr "Em Destaque"
-
-#~ msgid "Updates are available"
-#~ msgstr "Estão disponíveis actualizações"
-
-#~ msgctxt "Short for 'show updates'"
-#~ msgid "Show"
-#~ msgstr "Mostrar"

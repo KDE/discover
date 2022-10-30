@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-29 00:48+0000\n"
-"PO-Revision-Date: 2022-10-24 22:12+0400\n"
+"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"PO-Revision-Date: 2022-10-29 19:05+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -639,38 +639,35 @@ msgstr "ما زلنا نبحث..."
 msgid "Unable to load applications"
 msgstr "لم يتمكن من تحميل التطبيقات"
 
-#: discover/qml/BrowsingPage.qml:95
+#: discover/qml/BrowsingPage.qml:94
+#, kde-format
+msgctxt "@title:group"
+msgid "Most Popular"
+msgstr "الأكثر شعبيّة"
+
+#: discover/qml/BrowsingPage.qml:112
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "اختيار المحررين"
 
-#: discover/qml/BrowsingPage.qml:109
-#, fuzzy, kde-format
-#| msgid "Popularity"
-msgctxt "@title:group"
-msgid "Most Popular"
-msgstr "الشعبيّة"
-
-#: discover/qml/BrowsingPage.qml:127
-#, kde-format
-msgctxt "@title:group"
-msgid "Highest-Rated Developer Tools"
-msgstr ""
-
-#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
-msgctxt "@action:button"
-msgid "See More"
-msgstr "الكل…"
-
-#: discover/qml/BrowsingPage.qml:156
+#: discover/qml/BrowsingPage.qml:126
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "الألعاب الأعلى تقييماً"
+
+#: discover/qml/BrowsingPage.qml:145 discover/qml/BrowsingPage.qml:174
+#, kde-format
+msgctxt "@action:button"
+msgid "See More"
+msgstr "المزيد"
+
+#: discover/qml/BrowsingPage.qml:155
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Developer Tools"
+msgstr "أدوات المطوّر الأعلى تقييماً"
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format

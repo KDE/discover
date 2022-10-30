@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-29 00:48+0000\n"
+"POT-Creation-Date: 2022-10-30 00:47+0000\n"
 "PO-Revision-Date: 2020-10-04 16:59+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -619,35 +619,35 @@ msgstr "Søger stadig..."
 msgid "Unable to load applications"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:95
-#, kde-format
-msgctxt "@title:group"
-msgid "Editor's Choice"
-msgstr ""
-
-#: discover/qml/BrowsingPage.qml:109
+#: discover/qml/BrowsingPage.qml:94
 #, fuzzy, kde-format
 #| msgid "Most Popular"
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Mest populære"
 
-#: discover/qml/BrowsingPage.qml:127
+#: discover/qml/BrowsingPage.qml:112
 #, kde-format
 msgctxt "@title:group"
-msgid "Highest-Rated Developer Tools"
+msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:146 discover/qml/BrowsingPage.qml:175
+#: discover/qml/BrowsingPage.qml:126
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Games"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:145 discover/qml/BrowsingPage.qml:174
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:156
+#: discover/qml/BrowsingPage.qml:155
 #, kde-format
 msgctxt "@title:group"
-msgid "Highest-Rated Games"
+msgid "Highest-Rated Developer Tools"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:42
