@@ -40,6 +40,7 @@
 #include "config-paths.h"
 #include "libdiscover_backend_debug.h"
 #include "utils.h"
+#include <Category/Category.h>
 
 DISCOVER_BACKEND_PLUGIN(PackageKitBackend)
 
@@ -545,7 +546,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         };
         runWhenInitialized(f, stream);
         return stream;
-    } else if (filter.search.isEmpty()) {
+    } else if (filter.search.isEmpty() && !filter.category) {
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-all"));
         auto f = [this, filter, stream] {
             auto resources = kFilter<QVector<AbstractResource *>>(m_packages.packages, [](AbstractResource *res) {
@@ -560,7 +561,9 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
     } else {
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-search"));
         const auto f = [this, stream, filter]() {
-            const QList<AppStream::Component> components = m_appdata->search(filter.search);
+            const auto components = !filter.search.isEmpty() ? m_appdata->search(filter.search)
+                                  : filter.category          ? m_appdata->componentsByCategories(filter.category->involvedCategories())
+                                                             : m_appdata->components();
             const QSet<QString> ids = kTransform<QSet<QString>>(components, [](const AppStream::Component &comp) {
                 return comp.id();
             });
