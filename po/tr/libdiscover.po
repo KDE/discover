@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-10-20 11:11+0300\n"
+"PO-Revision-Date: 2022-10-30 21:22+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2079,11 +2079,15 @@ msgstr "İşletim Sistemi"
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Majör bir sürüme yeniden temellendirmeden önce lütfen en son sürüme "
+"güncelleyin"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:247
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Yeniden temellendirme işlemi için uzak başvuru eksik. Lütfen bunu bir hata "
+"olarak bildirin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:252
 #, kde-format
@@ -2116,10 +2120,9 @@ msgid "Removed packages:"
 msgstr "Kaldırılan paketler:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:342
-#, fuzzy, kde-format
-#| msgid "Currently booted version"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "Geçerli önyüklenmiş sürüm"
+msgstr "Geçerli önyüklenmiş sürüm (sabitlenmiş)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, kde-format
@@ -2127,16 +2130,14 @@ msgid "Currently booted version"
 msgstr "Geçerli önyüklenmiş sürüm"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
-#, fuzzy, kde-format
-#| msgid "Next version used after reboot"
+#, kde-format
 msgid "Version that will be used after reboot"
-msgstr "Sonraki sürüm, yeniden başlatma sonrası kullanılır"
+msgstr "Yeniden başlatma sonrası kullanılacak sürüm"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
-#, fuzzy, kde-format
-#| msgid "Fallback version"
+#, kde-format
 msgid "Fallback version (pinned)"
-msgstr "Yedek sürüm"
+msgstr "Yedek sürüm (sabitlenmiş)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
 #, kde-format
@@ -2149,44 +2150,41 @@ msgid "ostree remotes"
 msgstr "ostree uzak konumları"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:114
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "İlerlemekte olan geçerli rpm-ostree işlemi:"
+msgstr "rpm-ostree işlemi, şu hatayı vererek başarısız oldu:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:248
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"rpm-ostree işlemi iptal ediliyor. Bu biraz vakit alabilir. Lütfen bekleyin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:277
 #, kde-format
 msgid "Checking for a system update"
-msgstr ""
+msgstr "Sistem güncellemeleri denetleniyor"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:280
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading system update"
-msgstr "İndiriliyor"
+msgstr "Sistem güncellemesi indiriliyor"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:283
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "İşletim Sistemi"
+msgstr "Sistem güncelleniyor"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:286
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Sonraki majör sürüme güncelleniyor"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:289
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
-msgstr ""
+msgstr "İşlem sürüyor (Keşfet'ten bağımsız olarak başlatıldı)"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

@@ -1,6 +1,5 @@
 # Translation for libdiscover.po to Euskara/Basque (eu).
-# Copyright (C) 2017-2018, Free Software Foundation.
-# Copyright (C) 2019-2022, This file is copyright:
+# Copyright (C) 2017-2022, This file is copyright:
 # This file is distributed under the same license as the discover package.
 # KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
@@ -11,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-10-20 06:35+0200\n"
+"PO-Revision-Date: 2022-10-30 06:19+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -2090,11 +2089,15 @@ msgstr "Sistema eragilea"
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Mesedez, eguneratu azken bertsiora, oinarria bertsio nagusi berriago batera "
+"aldatu aurretik"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:247
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"oinarria aldatzeko eragiketarako urruneko erreferentzia falta da. Mesedez, "
+"aurkeztu akats-txosten bat."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:252
 #, kde-format
@@ -2127,10 +2130,9 @@ msgid "Removed packages:"
 msgstr "Kendutako paketeak:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:342
-#, fuzzy, kde-format
-#| msgid "Currently booted version"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "Abiatutako uneko bertsioa"
+msgstr "Abiatutako uneko bertsioa (iltzatuta)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, kde-format
@@ -2138,16 +2140,14 @@ msgid "Currently booted version"
 msgstr "Abiatutako uneko bertsioa"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
-#, fuzzy, kde-format
-#| msgid "Next version used after reboot"
+#, kde-format
 msgid "Version that will be used after reboot"
-msgstr "Berrabiatu ondoren erabilitako hurrengo bertsioa"
+msgstr "Berrabiatu ondoren erabiliko den hurrengo bertsioa"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
-#, fuzzy, kde-format
-#| msgid "Fallback version"
+#, kde-format
 msgid "Fallback version (pinned)"
-msgstr "Erreserbako bertsioa"
+msgstr "Erreserbako bertsioa (iltzatuta)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
 #, kde-format
@@ -2160,46 +2160,42 @@ msgid "ostree remotes"
 msgstr "«ostree» urrunekoak"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:114
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "Uneko «rpm-ostree» itzulpena abian da:"
+msgstr "«rpm-ostree» transakzioak honekin huts egin du:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:248
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"«rpm-ostree» transakzioa bertan behera uzten. Honek denboratxo bat eraman "
+"dezake. Itxoin mesedez."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "Egiaztatu eguneratzeak dauden"
+msgstr "Sistemaren eguneratze baten bila behatzen"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:280
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Zama-jaisten"
+msgstr "Sistemaren eguneratzea zama-jaisten"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:283
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Sistema eragilea"
+msgstr "Sistema eguneratzen"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:286
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Hurrengo bertsio nagusira eguneratzen"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:289
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
-msgstr ""
+msgstr "Transakzioa martxan (Discover-ren kanpotik hasi da)"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

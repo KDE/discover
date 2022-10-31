@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-10-22 05:28\n"
+"PO-Revision-Date: 2022-10-30 07:47\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -68,7 +68,7 @@ msgstr "找不到“%1”分类"
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "尝试打开不存在的文件‘%1’"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -295,7 +295,7 @@ msgstr "未知作者"
 #: discover/qml/ApplicationPage.qml:204
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "无法访问屏幕截图"
 
 #: discover/qml/ApplicationPage.qml:261
 #, kde-format
@@ -389,10 +389,9 @@ msgid "Share"
 msgstr "分享"
 
 #: discover/qml/ApplicationPage.qml:602
-#, fuzzy, kde-format
-#| msgid "Send a link to the application"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "发送链接到应用程序"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format
@@ -631,12 +630,10 @@ msgid "Highest-Rated Games"
 msgstr ""
 
 #: discover/qml/BrowsingPage.qml:145 discover/qml/BrowsingPage.qml:174
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "查看更多…"
+msgstr ""
 
 #: discover/qml/BrowsingPage.qml:155
 #, kde-format
@@ -1149,13 +1146,3 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
-
-#~ msgid "Featured"
-#~ msgstr "精选软件"
-
-#~ msgid "Updates are available"
-#~ msgstr "有可用的更新"
-
-#~ msgctxt "Short for 'show updates'"
-#~ msgid "Show"
-#~ msgstr "显示"

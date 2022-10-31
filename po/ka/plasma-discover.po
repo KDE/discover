@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-10-25 06:50+0200\n"
+"PO-Revision-Date: 2022-10-30 06:23+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -38,7 +38,7 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
-msgstr ""
+msgstr "ამ პრობლემის რეპორტი"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-kuit-format
@@ -59,12 +59,12 @@ msgstr "დაწვრილებით"
 #: discover/DiscoverObject.cpp:269
 #, kde-format
 msgid "Could not find category '%1'"
-msgstr ""
+msgstr "კატეგორია \"%1\" ვერ ვიპოვე"
 
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "არარსებული ფაილის (%1) გახსნის მცდელობა"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -81,7 +81,7 @@ msgstr "%1-ის გახსნა შეუძლებელია"
 #: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid "Please make sure Snap support is installed"
-msgstr ""
+msgstr "დარწმუნდით, რომ Snap-ის მხარდაჭერა დაყენებულია"
 
 #: discover/DiscoverObject.cpp:340
 #, kde-format
@@ -120,7 +120,7 @@ msgstr ""
 #: discover/main.cpp:45
 #, kde-format
 msgid "Display a list of entries with a category."
-msgstr ""
+msgstr "კატეგორიის მქონე ჩანაწერების სიის ჩვენება."
 
 #: discover/main.cpp:46
 #, kde-format
@@ -136,16 +136,17 @@ msgstr "ხელმისაწვდომი რეჟიმების ს�
 #, kde-format
 msgid "Compact Mode (auto/compact/full)."
 msgstr ""
+"კომპაქტური რეჟიმი (auto (ავტომატური)/compact (კომპაქტური)/full (სრული))."
 
 #: discover/main.cpp:49
 #, kde-format
 msgid "Local package file to install"
-msgstr ""
+msgstr "ლოკალური პაკეტი დასაყენებლად"
 
 #: discover/main.cpp:50
 #, kde-format
 msgid "List all the available backends."
-msgstr ""
+msgstr "ხელმისაწვდომი უკანაბოლოების სია."
 
 #: discover/main.cpp:51
 #, kde-format
@@ -165,7 +166,7 @@ msgstr ""
 #: discover/main.cpp:123
 #, kde-format
 msgid "An application explorer"
-msgstr ""
+msgstr "აპლიკაციების ბრაუზერი"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -289,7 +290,7 @@ msgstr "უცნობი შეცდომა"
 #: discover/qml/ApplicationPage.qml:204
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდებთან წვდომა აკრძალულია"
 
 #: discover/qml/ApplicationPage.qml:261
 #, kde-format
@@ -356,7 +357,7 @@ msgstr "დოკუმენტაცია"
 #: discover/qml/ApplicationPage.qml:548
 #, kde-format
 msgid "Read the project's official documentation"
-msgstr ""
+msgstr "წაიკითხეთ პროექტის ოფიციალური დოკუმენტაცია"
 
 #: discover/qml/ApplicationPage.qml:564
 #, kde-format
@@ -393,7 +394,7 @@ msgstr "ამ აპლიკაციის ბმულის გაგზა
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "იხილეთ %1 აპი!"
 
 #: discover/qml/ApplicationPage.qml:638
 #, kde-format
@@ -470,7 +471,7 @@ msgstr "ყველა ლიცენზია"
 #: discover/qml/ApplicationPage.qml:868
 #, kde-format
 msgid "Risks of proprietary software"
-msgstr ""
+msgstr "დახურული კოდის მქონე პროგრამების რისკი"
 
 #: discover/qml/ApplicationPage.qml:878
 #, kde-kuit-format
@@ -559,7 +560,7 @@ msgstr "ვერაფერი ვიპოვე"
 #, kde-format
 msgctxt "%1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
-msgstr ""
+msgstr "%1 ხელმისაწვდომ წყაროებში აღმოჩენილი არაა"
 
 #: discover/qml/ApplicationsListPage.qml:186
 #, kde-format
@@ -574,7 +575,7 @@ msgstr ""
 #, kde-format
 msgctxt "%1 is the name of an application"
 msgid "Search the web for \"%1\""
-msgstr ""
+msgstr "\"%1\"-ის ვებზე ძებნა"
 
 #: discover/qml/ApplicationsListPage.qml:192
 #, kde-format
@@ -598,33 +599,31 @@ msgstr "აპლიკაციების ჩატვირთვის შ�
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "პოპულარული"
 
 #: discover/qml/BrowsingPage.qml:112
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "რედაქტორის არჩევანი"
 
 #: discover/qml/BrowsingPage.qml:126
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "უმაღლესი-რეიტინგის თამაშები"
 
 #: discover/qml/BrowsingPage.qml:145 discover/qml/BrowsingPage.qml:174
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "იხილეთ მეტი…"
+msgstr "იხილეთ მეტი"
 
 #: discover/qml/BrowsingPage.qml:155
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "უმაღლესი-რეიტინგის პროგრამები პროგრამისტებისთვის"
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format
@@ -690,12 +689,12 @@ msgstr "გაგრძელება"
 #: discover/qml/DiscoverWindow.qml:299
 #, kde-format
 msgid "Report this issue"
-msgstr ""
+msgstr "ამ პრობლემის რეპორტი"
 
 #: discover/qml/Feedback.qml:12
 #, kde-format
 msgid "Submit usage information"
-msgstr ""
+msgstr "გამოყენების მონაცემების გადაცემა"
 
 #: discover/qml/Feedback.qml:13
 #, kde-format
@@ -707,7 +706,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:17
 #, kde-format
 msgid "Submitting usage information…"
-msgstr ""
+msgstr "გამოყენების ინფორმაციის გადაცემა…"
 
 #: discover/qml/Feedback.qml:17
 #, kde-format
@@ -717,7 +716,7 @@ msgstr "მორგება"
 #: discover/qml/Feedback.qml:21
 #, kde-format
 msgid "Configure feedback…"
-msgstr ""
+msgstr "უკუპასუხის მორგება…"
 
 #: discover/qml/Feedback.qml:28 discover/qml/SourcesPage.qml:19
 #, kde-format
@@ -1023,7 +1022,7 @@ msgstr "ბუფერში კოპირება"
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Error message copied to clipboard"
-msgstr ""
+msgstr "შეცდომის შეტყობინება გაცვლის ბუფერში დაკოპირდა"
 
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
@@ -1053,7 +1052,7 @@ msgstr "მონიშვნის მოხსნა"
 #: discover/qml/UpdatesPage.qml:241
 #, kde-format
 msgid "Restart automatically after update has completed"
-msgstr ""
+msgstr "ავტომატური გადატვირთვა განახლების შემდეგ"
 
 #: discover/qml/UpdatesPage.qml:248
 #, kde-format

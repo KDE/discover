@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-10-22 05:28\n"
+"PO-Revision-Date: 2022-10-30 07:47\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -661,44 +661,44 @@ msgstr "允许集成智能卡功能并与智能卡通信"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
 #, kde-format
 msgid "Printer Access"
-msgstr ""
+msgstr "打印机连接"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr ""
+msgstr "可以与打印机集成和通信"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG 代理"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
-msgstr ""
+msgstr "允许访问 GPG 加密服务，通常用于签名和读取已签名文档"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, kde-format
 msgid "Bluetooth Access"
-msgstr ""
+msgstr "蓝牙连接"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr ""
+msgstr "可以与蓝牙设备集成和通信"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #, kde-format
 msgid "Low-Level System Access"
-msgstr ""
+msgstr "底层系统访问权限"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "可以进行底层系统调用 (例如跟踪)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
@@ -889,7 +889,7 @@ msgstr "在“%2”中添加来自“%3”的远程“%1”"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "无法在'%1'中找到'%2'; 请确保它是可用的。"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2042,52 +2042,55 @@ msgstr "GPL 和其他许可证"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:262
 #, kde-format
 msgid "Additional packages: "
-msgstr ""
+msgstr "可选的软件包： "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:269
 #, kde-format
 msgid "Additional modules: "
-msgstr ""
+msgstr "附加模块： "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:276
 #, kde-format
 msgid "Local packages: "
-msgstr ""
+msgstr "本地软件包： "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:283
 #, kde-format
 msgid "Replaced packages:"
-msgstr ""
+msgstr "已替换的软件包： "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:290
 #, kde-format
 msgid "Removed packages:"
-msgstr ""
+msgstr "已删除的软件包："
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:342
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Currently booted version"
 msgid "Currently booted version (pinned)"
-msgstr ""
+msgstr "当前使用的版本"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, kde-format
 msgid "Currently booted version"
-msgstr ""
+msgstr "当前使用的版本"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Next version used after reboot"
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "重启后使用的版本"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Fallback version"
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "备用版本"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "备用版本"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
