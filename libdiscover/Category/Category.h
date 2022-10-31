@@ -81,6 +81,10 @@ public:
     static bool blacklistPluginsInVector(const QSet<QString> &pluginNames, QVector<Category *> &subCategories);
 
     QStringList involvedCategories() const;
+    QString untranslatedName() const
+    {
+        return m_untranslatedName;
+    }
 
 Q_SIGNALS:
     void subCategoriesChanged();
@@ -88,6 +92,7 @@ Q_SIGNALS:
 
 private:
     QString m_name;
+    QString m_untranslatedName;
     QString m_iconString;
     QVector<QPair<FilterType, QString>> m_andFilters;
     QVector<QPair<FilterType, QString>> m_orFilters;

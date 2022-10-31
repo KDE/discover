@@ -71,8 +71,9 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml)
         }
 
         if (xml->name() == QLatin1String("Name")) {
-            m_name = i18nc("Category", xml->readElementText().toUtf8().constData());
-            setObjectName(m_name);
+            m_untranslatedName = xml->readElementText();
+            m_name = i18nc("Category", m_untranslatedName.toUtf8().constData());
+            setObjectName(m_untranslatedName);
         } else if (xml->name() == QLatin1String("Menu")) {
             m_subCategories << new Category(m_plugins, this);
             m_subCategories.last()->parseData(path, xml);

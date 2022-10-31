@@ -80,7 +80,7 @@ void CategoryModel::blacklistPlugin(const QString &name)
 
 static Category *recFindCategory(Category *root, const QString &name)
 {
-    if (root->name() == name)
+    if (root->untranslatedName() == name)
         return root;
     else {
         const auto subs = root->subCategories();
