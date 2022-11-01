@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"POT-Creation-Date: 2022-11-01 00:48+0000\n"
 "PO-Revision-Date: 2017-09-08 16:13+0200\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -542,7 +542,7 @@ msgid "Local bundle"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:608
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Κακοδιατυπωμένο appstream url '%1'"
@@ -1069,12 +1069,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Γραμματοσειρές"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:211
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Βεβαιωθείτε ότι το Appstream έχει εγκατασταθεί σωστά στο σύστημά σας"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:249
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1082,7 +1082,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:697
 #, fuzzy, kde-format
 #| msgid "Cannot remove system package"
 msgid "Cannot remove '%1'"

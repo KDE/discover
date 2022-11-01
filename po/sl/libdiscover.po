@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-10-30 06:50+0100\n"
+"POT-Creation-Date: 2022-11-01 00:48+0000\n"
+"PO-Revision-Date: 2022-10-31 07:12+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -526,7 +526,7 @@ msgid "Local bundle"
 msgstr "Krajevna zbirka"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:608
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Napačno oblikovan URL appstream '%1'"
@@ -1048,12 +1048,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Pisave"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:211
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Prepričajte se, da je Appstream pravilno nastavljen na vašem sistemu"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:249
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1063,7 +1063,7 @@ msgstr ""
 "Vaš operacijski sistem nima več podpore na %1. Razmislite o nadgradnji na "
 "podprto različico."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:697
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ni mogoče odstraniti '%1'"
@@ -2096,12 +2096,13 @@ msgstr "Operacijski sistem"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:241
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr ""
+msgstr "Posodobite na zadnjo različico pred spremembo osnovne različice"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:247
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Manjka oddaljeni sklic za operacijo spremembe osnove. Poročajte o napaki."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:252
 #, kde-format
@@ -2134,10 +2135,9 @@ msgid "Removed packages:"
 msgstr "Odstranjeni paketi:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:342
-#, fuzzy, kde-format
-#| msgid "Currently booted version"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "Trenutno pognana različica"
+msgstr "Trenutno pognana različica (pripeta)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, kde-format
@@ -2145,16 +2145,14 @@ msgid "Currently booted version"
 msgstr "Trenutno pognana različica"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
-#, fuzzy, kde-format
-#| msgid "Next version used after reboot"
+#, kde-format
 msgid "Version that will be used after reboot"
-msgstr "Naslednja različica po zagonu"
+msgstr "Različica, ki bo uporabljena po ponovnem zagonu"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
-#, fuzzy, kde-format
-#| msgid "Fallback version"
+#, kde-format
 msgid "Fallback version (pinned)"
-msgstr "Rezervna različica"
+msgstr "Rezervna različica (pripeta)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
 #, kde-format
@@ -2167,44 +2165,41 @@ msgid "ostree remotes"
 msgstr "ostree oddaljeni"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:114
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "Trenutna transakcija rpm-ostree v teku:"
+msgstr "Transakcija rpm-ostree je izpadla z:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:248
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"Preklic transakcije rpm-ostree. To lahko traja nekaj časa. Prosimo počakajte."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:277
 #, kde-format
 msgid "Checking for a system update"
-msgstr ""
+msgstr "Preverjanje za posodobitvijo sistema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:280
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Prejemam"
+msgstr "Prejemanje sistemske posodobitve"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:283
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Operacijski sistem"
+msgstr "Posodabljanje sistema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:286
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Posodabljanje na naslednjo osnovno različico"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:289
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
-msgstr ""
+msgstr "Transakcija v teku (pognana izven programa Discover)"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

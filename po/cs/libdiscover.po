@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"POT-Creation-Date: 2022-11-01 00:48+0000\n"
 "PO-Revision-Date: 2021-10-08 14:32+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -525,7 +525,7 @@ msgid "Local bundle"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:608
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Neplatná URL appstream '%1'"
@@ -1006,12 +1006,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Písma"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:211
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Prosím ujistěte se, že máte řádně nastaven Appstream"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:249
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1019,7 +1019,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:697
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Zprávu odstranit '%1'"

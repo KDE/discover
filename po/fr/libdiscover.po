@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"POT-Creation-Date: 2022-11-01 00:48+0000\n"
 "PO-Revision-Date: 2022-10-21 07:15+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -534,7 +534,7 @@ msgid "Local bundle"
 msgstr "Paquet local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:608
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL « AppStream » malformée « %1 »"
@@ -1066,13 +1066,13 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Polices"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:211
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 "Veuillez vérifier que Appstream est correctement configuré sur votre système"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:249
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1082,7 +1082,7 @@ msgstr ""
 "Votre système d'exploitation n'est plus pris en charge depuis %1. Veuillez "
 "prendre en compte une mise à jour vers une version prise en charge."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:697
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Impossible de supprimer « %1 »"

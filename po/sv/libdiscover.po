@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"POT-Creation-Date: 2022-11-01 00:48+0000\n"
 "PO-Revision-Date: 2022-09-25 09:30+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -523,7 +523,7 @@ msgid "Local bundle"
 msgstr "Lokal packe"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:608
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Felaktig webbadress för appstream '%1'"
@@ -1047,12 +1047,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Teckensnitt"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:211
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Försäkra dig om att Appstream är rätt inställd på systemet"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:249
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1062,7 +1062,7 @@ msgstr ""
 "Stöd för operativsystemet slutade %1. Överväg att uppgradera till en version "
 "som stöds."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:697
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Kan inte ta bort '%1'"

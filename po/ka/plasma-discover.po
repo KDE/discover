@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-10-30 06:23+0100\n"
+"PO-Revision-Date: 2022-10-31 05:13+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -832,7 +832,7 @@ msgstr "ხმები: %1-ი %2-დან"
 #: discover/qml/ReviewDelegate.qml:102
 #, kde-format
 msgid "Was this review useful?"
-msgstr ""
+msgstr "მიმოხილვა სასარგებლო იყო?"
 
 #: discover/qml/ReviewDelegate.qml:114
 #, kde-format
@@ -915,7 +915,7 @@ msgstr "შეფასების დაწერა…"
 #: discover/qml/ReviewsPage.qml:59
 #, kde-format
 msgid "Install this app to write a review"
-msgstr ""
+msgstr "მიმოხილვის დასაწერად ეს აპი დააყენეთ"
 
 #: discover/qml/SearchField.qml:24
 #, kde-format
@@ -1108,7 +1108,7 @@ msgstr "განახლებები"
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
-msgstr ""
+msgstr "განახლების დასასრულებლად გადატვირთეთ კომპიუტერი"
 
 #: discover/qml/UpdatesPage.qml:516 discover/qml/UpdatesPage.qml:523
 #: discover/qml/UpdatesPage.qml:530
@@ -1121,13 +1121,13 @@ msgstr "განახლებულია"
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
-msgstr ""
+msgstr "უნდა შემოწმდეს განახლებები, თუ არა"
 
 #: discover/qml/UpdatesPage.qml:544
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
-msgstr ""
+msgstr "ბოლო განახლების თარიღი უცნობია"
 
 #~ msgid "Featured"
 #~ msgstr "პოპულარული"

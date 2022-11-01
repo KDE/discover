@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-10-20 06:28+0200\n"
+"POT-Creation-Date: 2022-11-01 00:48+0000\n"
+"PO-Revision-Date: 2022-10-31 05:16+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -64,19 +64,19 @@ msgstr "ნებისმიერი საზოგადოებისთ�
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Mild Content"
-msgstr ""
+msgstr "რბილი შემცველობა"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Moderate Content"
-msgstr ""
+msgstr "საშუალო შემცველობა"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:183
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Intense Content"
-msgstr ""
+msgstr "დაძაბული შემცველობა"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:174
 #, kde-format
@@ -97,7 +97,7 @@ msgstr "მიმოხილვის გადაცემის შეცდ�
 #, kde-format
 msgctxt "Category"
 msgid "Dummy Category"
-msgstr ""
+msgstr "ცარიელი კატეგორია"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:10
 #, kde-format
@@ -521,10 +521,10 @@ msgstr "%1 (მომხმარებელი)"
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:666
 #, kde-format
 msgid "Local bundle"
-msgstr ""
+msgstr "ლოკალური პაკეტი"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:608
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
@@ -969,7 +969,7 @@ msgstr "%1: %2"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:694
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
-msgstr ""
+msgstr "KNewStuff -ის არასწორი URI: %1"
 
 #: libdiscover/backends/KNSBackend/KNSResource.cpp:167
 #, kde-format
@@ -1005,20 +1005,22 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "ფონტები"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:211
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:249
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
 "Your operating system ended support on %1. Consider upgrading to a supported "
 "version."
 msgstr ""
+"თქვენი ოპერაციული სისტემის მხარდაჭერა %1-ზე დასრულდა. სჯობს მხარდაჭერილ "
+"ვერსიამდე განახლდეთ."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:697
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "%1-ის წაშლის შეცდომა"
@@ -1417,12 +1419,12 @@ msgstr "სისტემა უნდა გადატვირთოთ."
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:194
 #, kde-format
 msgid "For security, the session will have to be restarted."
-msgstr ""
+msgstr "უსაფრთხოებისთვის სესია უნდა გადატვირთოთ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:196
 #, kde-format
 msgid "For security, the system will have to be restarted."
-msgstr ""
+msgstr "უსაფრთხოებისთვის, სისტემა უნდა გადატვირთოთ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
 #, kde-format
@@ -1482,7 +1484,7 @@ msgstr "ხელმოწერების შემოწმება…"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
 #, kde-format
 msgid "Test committing…"
-msgstr ""
+msgstr "გადაცემის ტესტირება…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
 #, kde-format
@@ -1596,22 +1598,22 @@ msgstr "ტრანზაქცია გაუქმდა"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
 #, kde-format
 msgid "The transaction is currently waiting for the lock…"
-msgstr ""
+msgstr "ამჟამად ტრანზაქცია ბლოკირებას ელოდება…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
 #, kde-format
 msgid "Waiting for the user to authorize the transaction…"
-msgstr ""
+msgstr "მომხმარებლის მიერ ტრანზაქციის ავტორიზაციის მოლოდინი…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
 #, kde-format
 msgid "The transaction is currently copying files…"
-msgstr ""
+msgstr "ტრანზაქცია ფაილებს აკოპირებს…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
 #, kde-format
 msgid "Currently refreshing the repository cache…"
-msgstr ""
+msgstr "მიმდინარეობს პაკეტების ქეშის განახლება…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
 #, kde-format
@@ -1977,7 +1979,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
 #, kde-format
 msgid "Confirm package removal"
-msgstr ""
+msgstr "პაკეტის წაშლის დადასტურება"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
 #, kde-format
@@ -2019,7 +2021,7 @@ msgstr "დამატებითი პაკეტები: "
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:269
 #, kde-format
 msgid "Additional modules: "
-msgstr ""
+msgstr "დამატებითი მოდულები: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:276
 #, kde-format
@@ -2029,12 +2031,12 @@ msgstr "ლოკალური პაკეტები: "
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:283
 #, kde-format
 msgid "Replaced packages:"
-msgstr ""
+msgstr "ჩანაცვლებული პაკეტები:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:290
 #, kde-format
 msgid "Removed packages:"
-msgstr ""
+msgstr "წაშლილი პაკეტები:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:342
 #, kde-format
@@ -2044,12 +2046,12 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, kde-format
 msgid "Currently booted version"
-msgstr ""
+msgstr "ამჟამად ჩატვირთული ვერსია"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "გადატვირთვის შემდეგ გამოსაყენებელი ვერსია"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
 #, kde-format
@@ -2080,25 +2082,22 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:277
 #, kde-format
 msgid "Checking for a system update"
-msgstr ""
+msgstr "სისტემის განახლების შემოწმება"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:280
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading system update"
-msgstr "გადმოწერა"
+msgstr "სისტემის განახლების გადმოწერა"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:283
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "ოპერაციული სისტემა"
+msgstr "ოპერაციული სისტემის განახლება"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:286
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "შედეგ ძირითად ვერსიამე განახლება"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:289
 #, kde-format
@@ -2108,7 +2107,7 @@ msgstr ""
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
 msgid "Snap"
-msgstr ""
+msgstr "Snap"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:353
 #, kde-format
@@ -2131,7 +2130,7 @@ msgstr ""
 #: libdiscover/resources/AbstractResource.cpp:98
 #, kde-format
 msgid "Broken"
-msgstr ""
+msgstr "გაფუჭებული"
 
 #: libdiscover/resources/AbstractResource.cpp:100
 #, kde-format

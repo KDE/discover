@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:47+0000\n"
-"PO-Revision-Date: 2022-10-20 10:10+0200\n"
+"POT-Creation-Date: 2022-11-01 00:48+0000\n"
+"PO-Revision-Date: 2022-10-30 13:06+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -524,7 +524,7 @@ msgid "Local bundle"
 msgstr "Lokale bundel"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:605
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:608
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Misvormde appstream-URL '%1'"
@@ -1049,12 +1049,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Lettertypen"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:211
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Ga na dat Appstream op de juiste manier is geïnstalleerd."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:249
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1064,7 +1064,7 @@ msgstr ""
 "Uw besturingssysteem heeft ondersteuning op %1 beëindigd. Overweeg "
 "opwaardering naar een ondersteunde versie."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:694
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:697
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Kan '%1' niet verwijderen"
@@ -2083,12 +2083,14 @@ msgstr "Besturingssysteem"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:241
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr ""
+msgstr "bijwerken tot de laatste versie alvorens naar een hoofdversie te gaan"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:247
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Referentie op afstand ontbreekt voor overgang naar een nieuwe hoofdversie. "
+"Rapporteer een bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:252
 #, kde-format
@@ -2121,10 +2123,9 @@ msgid "Removed packages:"
 msgstr "Verwijderde pakketten:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:342
-#, fuzzy, kde-format
-#| msgid "Currently booted version"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "Nu draaiende versie"
+msgstr "Nu draaiende versie (vastgepind)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, kde-format
@@ -2132,16 +2133,14 @@ msgid "Currently booted version"
 msgstr "Nu draaiende versie"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
-#, fuzzy, kde-format
-#| msgid "Next version used after reboot"
+#, kde-format
 msgid "Version that will be used after reboot"
-msgstr "Volgende gebruikte versie na een herstart"
+msgstr "Versie die gebruikt zal worden na een herstart"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
-#, fuzzy, kde-format
-#| msgid "Fallback version"
+#, kde-format
 msgid "Fallback version (pinned)"
-msgstr "Versie om op terug te vallen"
+msgstr "Versie om op terug te vallen (vastgepind)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
 #, kde-format
@@ -2154,47 +2153,42 @@ msgid "ostree remotes"
 msgstr "ostree remotes"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:114
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "Nu transactie van rpm-ostree bezig:"
+msgstr "Transactie van rpm-ostree is mislukt met:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:248
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"Transactie van rpm-ostree wordt geannuleerd. Dit kan enige tijd kosten. Even "
+"geduld."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:277
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "Controleren op updates"
+msgstr "Controleren op bijwerken van het systeem"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:280
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Downloading Packages"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Downloaden van pakketten"
+msgstr "Downloaden voor bijwerken van systeem"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:283
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Besturingssysteem"
+msgstr "Het systeem wordt bijgewerkt"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:286
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Opwaarderen naar de volgende hoofdversie"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:289
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
-msgstr ""
+msgstr "Transactie is bezig (gestart buiten Ontdekken)"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
