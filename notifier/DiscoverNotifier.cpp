@@ -114,7 +114,7 @@ bool DiscoverNotifier::notifyAboutUpdates() const
     // To configure to a random value, execute:
     // kwriteconfig5 --file PlasmaDiscoverUpdates --group Global --key RequiredNotificationInterval 3600
     const QDateTime timeSinceLastRefresh = m_settings->lastNotificationTime().addSecs(m_settings->requiredNotificationInterval());
-    if (!timeSinceLastRefresh.isValid() || timeSinceLastRefresh > QDateTime::currentDateTimeUtc()) {
+    if (timeSinceLastRefresh.isValid() && timeSinceLastRefresh > QDateTime::currentDateTimeUtc()) {
         return false;
     }
 
