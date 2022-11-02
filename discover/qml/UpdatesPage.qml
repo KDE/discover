@@ -156,7 +156,7 @@ DiscoverPage
             delegate: Kirigami.InlineMessage {
                 id: inline
                 Layout.fillWidth: true
-                Layout.margins: Kirigami.Units.smallSpacing
+                Layout.margins: visible ? Kirigami.Units.smallSpacing : 0
                 text: modelData
                 visible: true
                 type: Kirigami.MessageType.Error
