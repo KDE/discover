@@ -160,6 +160,13 @@ DiscoverPage
                 text: ResourcesModel.inlineMessage.message
                 type: ResourcesModel.inlineMessage.type
                 icon.name: ResourcesModel.inlineMessage.iconName
+                Component {
+                    id: comp
+                    ConvertDiscoverAction {
+                        action: ResourcesModel.inlineMessage.action
+                    }
+                }
+                actions: ResourcesModel.inlineMessage.action ? comp.createObject(this) : []
                 visible: true
             }
         }

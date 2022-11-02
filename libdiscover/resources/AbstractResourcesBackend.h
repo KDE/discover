@@ -12,6 +12,7 @@
 #include <QVector>
 
 #include "AbstractResource.h"
+#include "DiscoverAction.h"
 #include "Transaction/AddonList.h"
 
 #include "discovercommon_export.h"
@@ -73,17 +74,20 @@ public:
     Q_PROPERTY(InlineMessageType type MEMBER type CONSTANT)
     Q_PROPERTY(QString iconName MEMBER iconName CONSTANT)
     Q_PROPERTY(QString message MEMBER message CONSTANT)
+    Q_PROPERTY(DiscoverAction *action MEMBER action CONSTANT)
 
-    InlineMessage(InlineMessageType type, const QString &iconName, const QString &message)
+    InlineMessage(InlineMessageType type, const QString &iconName, const QString &message, DiscoverAction *action = nullptr)
         : type(type)
         , iconName(iconName)
         , message(message)
+        , action(action)
     {
     }
 
     InlineMessageType type;
     const QString iconName;
     const QString message;
+    DiscoverAction *const action;
 };
 
 /**

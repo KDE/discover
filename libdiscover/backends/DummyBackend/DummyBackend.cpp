@@ -82,8 +82,15 @@ void DummyBackend::toggleFetching()
     if (!m_fetching)
         m_reviews->initialize();
 
-    Q_EMIT inlineMessageChanged(
-        QSharedPointer<InlineMessage>::create(InlineMessage::Warning, QStringLiteral("dialog-warning"), QStringLiteral("Happy unbirthday 🎂, probably.")));
+    DiscoverAction *celebrate = new DiscoverAction("wine", QStringLiteral("To who?"), this);
+    connect(celebrate, &DiscoverAction::triggered, this, [this] {
+        Q_EMIT passiveMessage(QStringLiteral("To you!"));
+    });
+
+    Q_EMIT inlineMessageChanged(QSharedPointer<InlineMessage>::create(InlineMessage::Warning,
+                                                                      QStringLiteral("dialog-warning"),
+                                                                      QStringLiteral("Happy unbirthday 🎂, probably."),
+                                                                      celebrate));
 }
 
 int DummyBackend::updatesCount() const
