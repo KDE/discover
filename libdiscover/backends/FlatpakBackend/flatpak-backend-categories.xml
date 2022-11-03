@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Menu>
+
+    <Menu>
+      <Name>All Applications</Name>
+      <Icon>applications-all</Icon>
+      <Include>
+        <Or>
+          <!--All of them-->
+          <Category>Accessibility</Category>
+          <Category>AudioVideo</Category>
+          <Category>Development</Category>
+          <Category>Education</Category>
+          <Category>Engineering</Category>
+          <Category>Game</Category>
+          <Category>Graphics</Category>
+          <Category>Network</Category>
+          <Category>Office</Category>
+          <Category>Science</Category>
+          <Category>Settings</Category>
+          <Category>System</Category>
+          <Category>Utility</Category>
+        </Or>
+      </Include>
+    </Menu>
+
     <Menu>
       <Name>Accessories</Name>
       <Icon>applications-utilities</Icon>
