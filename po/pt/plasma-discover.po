@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"POT-Creation-Date: 2022-11-03 00:47+0000\n"
 "PO-Revision-Date: 2022-10-29 13:13+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -284,7 +284,7 @@ msgstr "Adicionar"
 #: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:255
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
-#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:39
+#: discover/qml/UpdatesPage.qml:260 discover/qml/WebflowDialog.qml:39
 #, kde-format
 msgid "Cancel"
 msgstr "Cancelar"
@@ -1100,52 +1100,52 @@ msgstr "Actualizar os Seleccionados"
 msgid "Update All"
 msgstr "Actualizar Tudo"
 
-#: discover/qml/UpdatesPage.qml:180
+#: discover/qml/UpdatesPage.qml:181
 #, kde-format
 msgid "Ignore"
 msgstr "Ignorar"
 
-#: discover/qml/UpdatesPage.qml:226
+#: discover/qml/UpdatesPage.qml:227
 #, kde-format
 msgid "Select All"
 msgstr "Seleccionar Tudo"
 
-#: discover/qml/UpdatesPage.qml:234
+#: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Select None"
 msgstr "Deseleccionar Tudo"
 
-#: discover/qml/UpdatesPage.qml:241
+#: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "Reiniciar automaticamente após terminar a actualização"
 
-#: discover/qml/UpdatesPage.qml:248
+#: discover/qml/UpdatesPage.qml:249
 #, kde-format
 msgid "Total size: %1"
 msgstr "Tamanho total: %1"
 
-#: discover/qml/UpdatesPage.qml:284
+#: discover/qml/UpdatesPage.qml:285
 #, kde-format
 msgid "Restart Now"
 msgstr "Reiniciar Agora"
 
-#: discover/qml/UpdatesPage.qml:383
+#: discover/qml/UpdatesPage.qml:384
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:399
+#: discover/qml/UpdatesPage.qml:400
 #, kde-format
 msgid "Installing"
 msgstr "A Instalar"
 
-#: discover/qml/UpdatesPage.qml:434
+#: discover/qml/UpdatesPage.qml:435
 #, kde-format
 msgid "Update from:"
 msgstr "Actualizar de:"
 
-#: discover/qml/UpdatesPage.qml:446
+#: discover/qml/UpdatesPage.qml:447
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1153,43 +1153,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:453
+#: discover/qml/UpdatesPage.qml:454
 #, kde-format
 msgid "More Information…"
 msgstr "Mais Informações…"
 
-#: discover/qml/UpdatesPage.qml:481
+#: discover/qml/UpdatesPage.qml:482
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "A obter as actualizações…"
 
-#: discover/qml/UpdatesPage.qml:494
+#: discover/qml/UpdatesPage.qml:495
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Actualizações"
 
-#: discover/qml/UpdatesPage.qml:504
+#: discover/qml/UpdatesPage.qml:505
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Reiniciar o sistema para terminar o processo de actualização"
 
-#: discover/qml/UpdatesPage.qml:516 discover/qml/UpdatesPage.qml:523
-#: discover/qml/UpdatesPage.qml:530
+#: discover/qml/UpdatesPage.qml:517 discover/qml/UpdatesPage.qml:524
+#: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Actualizado"
 
-#: discover/qml/UpdatesPage.qml:537
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Se deve procurar por actualizações"
 
-#: discover/qml/UpdatesPage.qml:544
+#: discover/qml/UpdatesPage.qml:545
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

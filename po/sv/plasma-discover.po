@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"POT-Creation-Date: 2022-11-03 00:47+0000\n"
 "PO-Revision-Date: 2022-09-25 09:29+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -270,7 +270,7 @@ msgstr "Lägg till"
 #: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:255
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
-#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:39
+#: discover/qml/UpdatesPage.qml:260 discover/qml/WebflowDialog.qml:39
 #, kde-format
 msgid "Cancel"
 msgstr "Avbryt"
@@ -1087,52 +1087,52 @@ msgstr "Uppdatera markerade"
 msgid "Update All"
 msgstr "Uppdatera alla"
 
-#: discover/qml/UpdatesPage.qml:180
+#: discover/qml/UpdatesPage.qml:181
 #, kde-format
 msgid "Ignore"
 msgstr "Ignorera"
 
-#: discover/qml/UpdatesPage.qml:226
+#: discover/qml/UpdatesPage.qml:227
 #, kde-format
 msgid "Select All"
 msgstr "Markera alla"
 
-#: discover/qml/UpdatesPage.qml:234
+#: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Select None"
 msgstr "Avmarkera alla"
 
-#: discover/qml/UpdatesPage.qml:241
+#: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "Starta om automatiskt efter uppdateringen är färdig"
 
-#: discover/qml/UpdatesPage.qml:248
+#: discover/qml/UpdatesPage.qml:249
 #, kde-format
 msgid "Total size: %1"
 msgstr "Total storlek: %1"
 
-#: discover/qml/UpdatesPage.qml:284
+#: discover/qml/UpdatesPage.qml:285
 #, kde-format
 msgid "Restart Now"
 msgstr "Starta om nu"
 
-#: discover/qml/UpdatesPage.qml:383
+#: discover/qml/UpdatesPage.qml:384
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:399
+#: discover/qml/UpdatesPage.qml:400
 #, kde-format
 msgid "Installing"
 msgstr "Installerar"
 
-#: discover/qml/UpdatesPage.qml:434
+#: discover/qml/UpdatesPage.qml:435
 #, kde-format
 msgid "Update from:"
 msgstr "Uppdatera från:"
 
-#: discover/qml/UpdatesPage.qml:446
+#: discover/qml/UpdatesPage.qml:447
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1140,43 +1140,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:453
+#: discover/qml/UpdatesPage.qml:454
 #, kde-format
 msgid "More Information…"
 msgstr "Mer information…"
 
-#: discover/qml/UpdatesPage.qml:481
+#: discover/qml/UpdatesPage.qml:482
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Hämtar uppdateringar…"
 
-#: discover/qml/UpdatesPage.qml:494
+#: discover/qml/UpdatesPage.qml:495
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Uppdateringar"
 
-#: discover/qml/UpdatesPage.qml:504
+#: discover/qml/UpdatesPage.qml:505
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Starta om systemet för att färdigställa uppdateringsprocessen"
 
-#: discover/qml/UpdatesPage.qml:516 discover/qml/UpdatesPage.qml:523
-#: discover/qml/UpdatesPage.qml:530
+#: discover/qml/UpdatesPage.qml:517 discover/qml/UpdatesPage.qml:524
+#: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Uppdaterad"
 
-#: discover/qml/UpdatesPage.qml:537
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Bör kontrollera uppdateringar"
 
-#: discover/qml/UpdatesPage.qml:544
+#: discover/qml/UpdatesPage.qml:545
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

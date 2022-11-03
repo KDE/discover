@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:47+0000\n"
+"POT-Creation-Date: 2022-11-03 00:47+0000\n"
 "PO-Revision-Date: 2022-10-04 15:20+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -265,7 +265,7 @@ msgstr "추가"
 #: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:255
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
-#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:39
+#: discover/qml/UpdatesPage.qml:260 discover/qml/WebflowDialog.qml:39
 #, kde-format
 msgid "Cancel"
 msgstr "취소"
@@ -1074,52 +1074,52 @@ msgstr "업데이트 선택됨"
 msgid "Update All"
 msgstr "모두 업데이트"
 
-#: discover/qml/UpdatesPage.qml:180
+#: discover/qml/UpdatesPage.qml:181
 #, kde-format
 msgid "Ignore"
 msgstr "무시"
 
-#: discover/qml/UpdatesPage.qml:226
+#: discover/qml/UpdatesPage.qml:227
 #, kde-format
 msgid "Select All"
 msgstr "모두 선택"
 
-#: discover/qml/UpdatesPage.qml:234
+#: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Select None"
 msgstr "선택 해제"
 
-#: discover/qml/UpdatesPage.qml:241
+#: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "업데이트 후 자동으로 다시 시작"
 
-#: discover/qml/UpdatesPage.qml:248
+#: discover/qml/UpdatesPage.qml:249
 #, kde-format
 msgid "Total size: %1"
 msgstr "총 크기: %1"
 
-#: discover/qml/UpdatesPage.qml:284
+#: discover/qml/UpdatesPage.qml:285
 #, kde-format
 msgid "Restart Now"
 msgstr "지금 다시 시작"
 
-#: discover/qml/UpdatesPage.qml:383
+#: discover/qml/UpdatesPage.qml:384
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:399
+#: discover/qml/UpdatesPage.qml:400
 #, kde-format
 msgid "Installing"
 msgstr "설치 중..."
 
-#: discover/qml/UpdatesPage.qml:434
+#: discover/qml/UpdatesPage.qml:435
 #, kde-format
 msgid "Update from:"
 msgstr "업데이트 위치:"
 
-#: discover/qml/UpdatesPage.qml:446
+#: discover/qml/UpdatesPage.qml:447
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1127,43 +1127,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1(%2)"
 
-#: discover/qml/UpdatesPage.qml:453
+#: discover/qml/UpdatesPage.qml:454
 #, kde-format
 msgid "More Information…"
 msgstr "자세한 정보…"
 
-#: discover/qml/UpdatesPage.qml:481
+#: discover/qml/UpdatesPage.qml:482
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "업데이트 가져오는 중…"
 
-#: discover/qml/UpdatesPage.qml:494
+#: discover/qml/UpdatesPage.qml:495
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "업데이트"
 
-#: discover/qml/UpdatesPage.qml:504
+#: discover/qml/UpdatesPage.qml:505
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "업데이트 과정을 완료하려면 시스템을 다시 시작해야 합니다"
 
-#: discover/qml/UpdatesPage.qml:516 discover/qml/UpdatesPage.qml:523
-#: discover/qml/UpdatesPage.qml:530
+#: discover/qml/UpdatesPage.qml:517 discover/qml/UpdatesPage.qml:524
+#: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "최신 상태"
 
-#: discover/qml/UpdatesPage.qml:537
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "업데이트 확인 여부"
 
-#: discover/qml/UpdatesPage.qml:544
+#: discover/qml/UpdatesPage.qml:545
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
