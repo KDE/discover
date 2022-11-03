@@ -331,33 +331,32 @@ void PackageKitResource::updateDetail(const QString &packageID,
     const QByteArray xx = _updateText.toUtf8();
     MMIOT *markdownHandle = mkd_string(xx.constData(), _updateText.size(), 0);
 
-    QString updateText;
     if (!mkd_compile(markdownHandle, MKD_FENCEDCODE | MKD_GITHUBTAGS | MKD_AUTOLINK)) {
-        updateText = _updateText;
+        m_changelog = _updateText;
     } else {
         char *htmlDocument;
         const int size = mkd_document(markdownHandle, &htmlDocument);
 
-        updateText = QString::fromUtf8(htmlDocument, size);
+        m_changelog = QString::fromUtf8(htmlDocument, size);
     }
     mkd_cleanup(markdownHandle);
 
 #else
-    const auto &updateText = _updateText;
+    m_changelog = _updateText;
 #endif
 
     const auto name = PackageKit::Daemon::packageName(packageID);
 
     QString info;
     addIfNotEmpty(i18n("Obsoletes:"), joinPackages(obsoletes, {}, name), info);
-    addIfNotEmpty(i18n("Release Notes:"), updateText, info);
+    addIfNotEmpty(i18n("Release Notes:"), changelog(), info);
     addIfNotEmpty(i18n("Update State:"), PackageKitMessages::updateStateMessage(state), info);
     addIfNotEmpty(i18n("Restart:"), PackageKitMessages::restartMessage(restart), info);
 
     if (!vendorUrls.isEmpty())
         addIfNotEmpty(i18n("Vendor:"), urlToLinks(vendorUrls).join(QLatin1String(", ")), info);
 
-    Q_EMIT changelogFetched(changelog() + info);
+    Q_EMIT changelogFetched(info);
 }
 
 PackageKitBackend *PackageKitResource::backend() const

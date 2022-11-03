@@ -82,7 +82,7 @@ public:
 
     virtual QString changelog() const
     {
-        return {};
+        return m_changelog;
     }
 
     bool extendsItself() const;
@@ -136,6 +136,7 @@ private:
     QMap<PackageKit::Transaction::Info, Ids> m_packages;
     const QString m_summary;
     const QString m_name;
+    QString m_changelog;
     int m_dependenciesCount = -1;
     static const QStringList m_objects;
 };

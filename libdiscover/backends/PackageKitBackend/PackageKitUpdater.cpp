@@ -148,10 +148,6 @@ public:
     {
         return {};
     }
-    QString longDescription() override
-    {
-        return {};
-    }
     QString origin() const override
     {
         return {};
@@ -168,17 +164,27 @@ public:
     {
         return i18np("1 package to upgrade", "%1 packages to upgrade", withoutDuplicates().count());
     }
-    void fetchChangelog() override
+    QString longDescription() override
     {
         QStringList changes;
         const auto resources = withoutDuplicates();
         for (auto res : resources) {
-            const auto versions = res->upgradeText();
-            const auto idx = versions.indexOf(u'\u009C');
-            changes += QStringLiteral("<li>") + res->packageName() + QStringLiteral(": ") + versions.leftRef(idx) + QStringLiteral("</li>\n");
+            const auto changelog = res->changelog();
+            if (changelog.isEmpty()) {
+                changes += i18n("<li>%1 (%2): No changelog information</li>\n", res->packageName(), res->availableVersion());
+            } else {
+                changes += i18n("<li>%1 (%2): %3</li>\n", res->packageName(), res->availableVersion(), changelog);
+            }
         }
         changes.sort();
-        Q_EMIT changelogFetched(QStringLiteral("<ul>") + changes.join(QString()) + QStringLiteral("</ul>\n"));
+        return QStringLiteral("<ul>") + changes.join(QString()) + QStringLiteral("</ul>\n");
+    }
+    void fetchChangelog() override
+    {
+        for (auto res : qAsConst(m_resources)) {
+            res->fetchUpdateDetails();
+        }
+        Q_EMIT changelogFetched({});
     }
 
     QString installedVersion() const override
@@ -222,12 +228,14 @@ public:
         const auto toDisconnect = (m_resources - candidates);
         for (auto res : toDisconnect) {
             disconnect(res, &AbstractResource::sizeChanged, this, &SystemUpgrade::refreshResource);
+            disconnect(res, &AbstractResource::changelogFetched, this, &SystemUpgrade::longDescriptionChanged);
         }
 
         const auto newCandidates = (candidates - m_resources);
         m_resources = candidates;
         for (auto res : newCandidates) {
             connect(res, &AbstractResource::sizeChanged, this, &SystemUpgrade::refreshResource);
+            connect(res, &AbstractResource::changelogFetched, this, &SystemUpgrade::longDescriptionChanged);
         }
     }
 

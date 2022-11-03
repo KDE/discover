@@ -208,7 +208,7 @@ QStringList AppPackageKitResource::extends() const
 
 QString AppPackageKitResource::changelog() const
 {
-    return AppStreamUtils::changelogToHtml(m_appdata);
+    return PackageKitResource::changelog() + QLatin1String("<br />") + AppStreamUtils::changelogToHtml(m_appdata);
 }
 
 bool AppPackageKitResource::canExecute() const
