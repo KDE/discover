@@ -15,8 +15,6 @@
 #include <ostree-repo.h>
 #include <ostree.h>
 
-const QStringList RpmOstreeResource::m_objects({QStringLiteral("qrc:/qml/RemoteRefsButton.qml")});
-
 RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *parent)
     : AbstractResource(parent)
     // All available deployments are by definition already installed

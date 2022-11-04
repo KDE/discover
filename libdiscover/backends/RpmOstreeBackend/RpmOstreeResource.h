@@ -14,7 +14,6 @@ class QAbstractItemModel;
 class RpmOstreeResource : public AbstractResource
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList objects MEMBER m_objects CONSTANT)
 public:
     RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *parent);
 
