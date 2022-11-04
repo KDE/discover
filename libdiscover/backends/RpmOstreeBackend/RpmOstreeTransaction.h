@@ -23,7 +23,8 @@ public:
     enum Operation {
         /// Only check if an update is available. Note that this is unreliable
         /// but good enough for now:
-        /// "Note: --check and --preview may be unreliable.  See https://github.com/coreos/rpm-ostree/issues/1579"
+        /// Note: --check and --preview may be unreliable.
+        /// See https://github.com/coreos/rpm-ostree/issues/1579
         CheckForUpdate = 0,
         /// Only download update but do not apply it.
         DownloadOnly,
@@ -37,6 +38,8 @@ public:
     };
     Q_ENUM(Operation)
 
+    /* Note: arg is only used to pass a reference for the rebase operation. it
+     * is ignored in all other cases. */
     RpmOstreeTransaction(QObject *parent,
                          AbstractResource *resource,
                          OrgProjectatomicRpmostree1SysrootInterface *interface,
@@ -50,19 +53,31 @@ public:
     QString name() const override;
     QVariant icon() const override;
 
+    /* Efectively start the transaction when calling an rpm-ostree command */
+    void start();
+
 Q_SIGNALS:
     /* Emitted when a new version is found and an update can be started */
     void newVersionFound(QString version);
 
-    /* Emitted when an operation completed and the backend should refresh the listed deployments */
+    /* Emitted if no update is found and if the backend should look for a new
+     * major version */
+    void lookForNextMajorVersion();
+
+    /* Emitted when an operation completed and the backend should refresh the
+     * listed deployments */
     void deploymentsUpdated();
+
+public Q_SLOTS:
+    /* Process the result of rpm-ostree commands */
+    void processCommand(int exitCode, QProcess::ExitStatus exitStatu);
 
 private:
     /* Timer setup for transactions started externally from Discover */
     void setupExternalTransaction();
 
     /* We don't have clear progress info, so we're faking it */
-    void fakeProgress();
+    void fakeProgress(const QByteArray &message);
 
     /* Timer wokaround for Transaction updates when the transaction has not been
      * started by Discover */
@@ -72,14 +87,17 @@ private:
     Operation m_operation;
 
     /* QProcess used to call rpm-ostree */
-    QProcess m_process;
+    QProcess *m_process;
 
     /* Set when we cancel an in progress transaction */
     bool m_cancelled;
 
-    /* Argument used for some rpm-ostree command. Currently only used for rebase
-     * operation */
-    QStringList m_arg;
+    /* Argument used for some rpm-ostree command. Currently only used to pass
+     * the reference for the rebase operation */
+    QString m_ref;
+
+    /* Arguments effectively passed to the rpm-ostree command */
+    QStringList m_args;
 
     /* rpm-ostree DBus interface, used to cancel running transactions */
     OrgProjectatomicRpmostree1SysrootInterface *m_interface;

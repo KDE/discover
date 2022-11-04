@@ -21,7 +21,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
     : Transaction(parent, resource, Transaction::Role::InstallRole, {})
     , m_operation(operation)
     , m_cancelled(false)
-    , m_arg(arg)
+    , m_ref(arg)
     , m_interface(interface)
 {
     setStatus(Status::SetupStatus);
@@ -35,37 +35,34 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
         return;
     }
 
-    // Arguments to pass to rpm-ostree command line
-    QStringList args = {};
-
     // Make sure we are asking for a supported operation and set up arguments
-    switch (operation) {
+    switch (m_operation) {
     case Operation::CheckForUpdate:
         qInfo() << "rpm-ostree-backend: Starting transaction to check for updates";
-        args.append({QStringLiteral("update"), QStringLiteral("--check")});
+        m_args.append({QStringLiteral("update"), QStringLiteral("--check")});
         break;
     case Operation::DownloadOnly:
         qInfo() << "rpm-ostree-backend: Starting transaction to only download updates";
-        args.append({QStringLiteral("update"), QStringLiteral("--download-only ")});
+        m_args.append({QStringLiteral("update"), QStringLiteral("--download-only ")});
         break;
     case Operation::Update:
         qInfo() << "rpm-ostree-backend: Starting transaction to update";
-        args.append({QStringLiteral("update")});
+        m_args.append({QStringLiteral("update")});
         break;
     case Operation::Rebase:
         // This should never happen
-        if (arg.isEmpty()) {
+        if (m_ref.isEmpty()) {
             qWarning() << "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug.";
             passiveMessage("rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug.");
             setStatus(Status::CancelledStatus);
             return;
         }
-        qInfo() << "rpm-ostree-backend: Starting transaction to rebase to:" << arg;
-        args.append({QStringLiteral("rebase"), arg});
+        qInfo() << "rpm-ostree-backend: Starting transaction to rebase to:" << m_ref;
+        m_args.append({QStringLiteral("rebase"), m_ref});
         break;
     case Operation::Unknown:
-        // This is a transaction started externally to Discover. We'll just display
-        // it as best as we can.
+        // This is a transaction started externally to Discover. We'll just
+        // display it as best as we can.
         qInfo() << "rpm-ostree-backend: Creating a transaction for an operation not started by Discover";
         setupExternalTransaction();
         return;
@@ -78,118 +75,134 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
         return;
     }
 
-    // Directly run the rpm-ostree command via QProcess
-    QProcess *m_process = new QProcess(this);
+    // Directly run the rpm-ostree command via a QProcess
+    m_process = new QProcess(this);
 
     // Store stderr output for later
-    connect(m_process, &QProcess::readyReadStandardError, [this, m_process]() {
+    connect(m_process, &QProcess::readyReadStandardError, [this]() {
         QByteArray message = m_process->readAllStandardError();
-        qWarning() << "rpm-ostree-backend: Error message from rpm-ostree:" << message;
+        qWarning() << "rpm-ostree (error):" << message;
         m_stderr += message;
     });
 
     // Store stdout output for later and process it to fake progress
-    connect(m_process, &QProcess::readyReadStandardOutput, [this, m_process]() {
+    connect(m_process, &QProcess::readyReadStandardOutput, [this]() {
         QByteArray message = m_process->readAllStandardOutput();
         qInfo() << "rpm-ostree:" << message;
         m_stdout += message;
-        fakeProgress();
+        fakeProgress(message);
     });
 
     // Process the result of the transaction once rpm-ostree is done
-    connect(m_process,
-            QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            [this, m_process, args, operation](int exitCode, QProcess::ExitStatus exitStatus) {
-                m_process->deleteLater();
-                if (exitStatus != QProcess::NormalExit) {
-                    if (m_cancelled) {
-                        // If the user requested the transaction to be cancelled
-                        // then we don't need to show any error.
-                        qWarning() << "rpm-ostree-backend: Transaction cancelled: rpm-ostree " << args;
-                    } else {
-                        // The transaction was cancelled unexpectedly so let's
-                        // display the error to the user.
-                        qWarning() << "rpm-ostree-backend: Error while calling: rpm-ostree " << args;
-                        qWarning() << "rpm-ostree-backend:" << m_stderr;
-                        passiveMessage(i18n("rpm-ostree transaction failed with:") + "\n" + m_stderr);
-                    }
-                    setStatus(Status::CancelledStatus);
-                    return;
-                }
-                if (exitCode != 0) {
-                    qInfo() << "rpm-ostree-backend: Return sucessfully with a non zero return code:" << exitCode;
-                    setStatus(Status::DoneWithErrorStatus);
-                    return;
-                }
+    connect(m_process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &RpmOstreeTransaction::processCommand);
 
-                qInfo() << "rpm-ostree-backend: Return sucessfully with a zero return code";
-                switch (operation) {
-                case Operation::CheckForUpdate: {
-                    // Look for new version in rpm-ostree stdout
-                    QString newVersion, line;
-                    QString output = QString(m_stdout);
-                    QTextStream stream(&output);
-                    while (stream.readLineInto(&line)) {
-                        if (line.contains(QLatin1String("Version: "))) {
-                            newVersion = line;
-                            break;
-                        }
-                    }
-                    if (!newVersion.isEmpty()) {
-                        newVersion = newVersion.trimmed();
-                        newVersion.remove(0, QStringLiteral("Version: ").length());
-                        newVersion.remove(newVersion.size() - QStringLiteral(" (XXXX-XX-XXTXX:XX:XXZ)").length(), newVersion.size() - 1);
-                        qInfo() << "rpm-ostree-backend: Found new version:" << newVersion;
-                        Q_EMIT newVersionFound(newVersion);
-                    }
-                    break;
-                }
-                case Operation::DownloadOnly:
-                    // Nothing to do here
-                    break;
-                case Operation::Update:
-                    // Refresh ressources (deployments) and update state
-                    Q_EMIT deploymentsUpdated();
-                    break;
-                case Operation::Rebase:
-                    // Refresh ressources (deployments) and update state
-                    Q_EMIT deploymentsUpdated();
-                    break;
-                case Operation::Unknown:
-                default:
-                    // This should never happen
-                    qWarning() << "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.";
-                    passiveMessage("rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.");
-                }
-                setStatus(Status::DoneStatus);
-            });
+    // Wait for the start command to effectively start the transaction so that
+    // the caller has the time to setup signal/slots connections.
+}
 
-    // Effectivly start the rpm-ostree transaction
-    auto prog = QStringLiteral("rpm-ostree");
-    m_process->start(prog, args);
+RpmOstreeTransaction::~RpmOstreeTransaction()
+{
+}
 
-    // Setup a status that matches the transaction type
-    switch (operation) {
-    case Operation::CheckForUpdate:
-    case Operation::DownloadOnly:
+void RpmOstreeTransaction::start()
+{
+    // Calling this function only makes sense if we have a QProcess for the
+    // current transaction.
+    if (m_process != nullptr) {
+        QString prog = QStringLiteral("rpm-ostree");
+        m_process->start(prog, m_args);
         setStatus(Status::DownloadingStatus);
+        setProgress(5);
+    }
+}
+
+void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exitStatus)
+{
+    m_process->deleteLater();
+    if (exitStatus != QProcess::NormalExit) {
+        if (m_cancelled) {
+            // If the user requested the transaction to be cancelled then we
+            // don't need to show any error
+            qWarning() << "rpm-ostree-backend: Transaction cancelled: rpm-ostree " << m_args;
+        } else {
+            // The transaction was cancelled unexpectedly so let's display the
+            // error to the user
+            qWarning() << "rpm-ostree-backend: Error while calling: rpm-ostree " << m_args;
+            passiveMessage(i18n("rpm-ostree transaction failed with:") + "\n" + m_stderr);
+        }
+        setStatus(Status::CancelledStatus);
+        return;
+    }
+    if (exitCode != 0) {
+        if ((m_operation == Operation::CheckForUpdate) && (exitCode == 77)) {
+            // rpm-ostree may exit with status 77 when no updates are available
+            qInfo() << "rpm-ostree-backend: No updates available";
+            // Tell the backend to look for a new major version
+            Q_EMIT lookForNextMajorVersion();
+            setStatus(Status::DoneStatus);
+            return;
+        } else if (m_cancelled) {
+            // If the user requested the transaction to be cancelled then we
+            // don't need to show any error
+            qInfo() << "rpm-ostree-backend: Transaction cancelled: rpm-ostree " << m_args;
+            setStatus(Status::DoneWithErrorStatus);
+            return;
+        } else {
+            // The transaction failed unexpectedly so let's display the error to
+            // the user
+            qWarning() << "rpm-ostree-backend: rpm-ostree" << m_args << "returned with an error code:" << exitCode;
+            passiveMessage(i18n("rpm-ostree transaction failed with:") + "\n" + m_stderr);
+            setStatus(Status::DoneWithErrorStatus);
+            return;
+        }
+    }
+
+    // The transaction was successful. Let's process the result.
+    switch (m_operation) {
+    case Operation::CheckForUpdate: {
+        // Look for new version in rpm-ostree stdout
+        QString newVersion, line;
+        QString output = QString(m_stdout);
+        QTextStream stream(&output);
+        while (stream.readLineInto(&line)) {
+            if (line.contains(QLatin1String("Version: "))) {
+                newVersion = line;
+                break;
+            }
+        }
+        // If we found a new version then offer it as an update
+        if (!newVersion.isEmpty()) {
+            newVersion = newVersion.trimmed();
+            newVersion.remove(0, QStringLiteral("Version: ").length());
+            newVersion.remove(newVersion.size() - QStringLiteral(" (XXXX-XX-XXTXX:XX:XXZ)").length(), newVersion.size() - 1);
+            qInfo() << "rpm-ostree-backend: Found new version:" << newVersion;
+            Q_EMIT newVersionFound(newVersion);
+        }
+        // Tell the backend to look for a new major version
+        Q_EMIT lookForNextMajorVersion();
+        break;
+    }
+    case Operation::DownloadOnly:
+        // Nothing to do here after downloading pending updates.
         break;
     case Operation::Update:
+        // Refresh ressources (deployments) and update state
+        Q_EMIT deploymentsUpdated();
+        break;
     case Operation::Rebase:
-        setStatus(Status::CommittingStatus);
+        // Refresh ressources (deployments) and update state
+        Q_EMIT deploymentsUpdated();
+        // Tell the backend to refresh the new major version message now that
+        // we've reabsed to the new version
+        Q_EMIT lookForNextMajorVersion();
         break;
     case Operation::Unknown:
     default:
         // This should never happen
         qWarning() << "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.";
         passiveMessage("rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.");
-        setStatus(Status::CancelledStatus);
-        return;
     }
-}
-
-RpmOstreeTransaction::~RpmOstreeTransaction()
-{
+    setStatus(Status::DoneStatus);
 }
 
 void RpmOstreeTransaction::setupExternalTransaction()
@@ -218,26 +231,59 @@ void RpmOstreeTransaction::setupExternalTransaction()
         } else {
             qInfo() << "rpm-ostree-backend: External transaction '" << transactionInfo.at(0) << "' requested by '" << transactionInfo.at(1);
         }
-        fakeProgress();
+        fakeProgress("");
 
         // Restart the timer
         m_timer->start();
     });
 
     // Setup status, fake progress and start the timer
-    setStatus(Transaction::Status::DownloadingStatus);
-    fakeProgress();
+    setStatus(Status::DownloadingStatus);
+    setProgress(5);
     m_timer->start();
 }
 
-void RpmOstreeTransaction::fakeProgress()
+void RpmOstreeTransaction::fakeProgress(const QByteArray &msg)
 {
+    QString message = QString(msg);
     int progress = this->progress();
-    if (progress < 50) {
+    if (message.contains("Receiving metadata objects")) {
+        setProgress(progress + 10);
+    } else if (message.contains("Checking out tree")) {
         setProgress(progress + 5);
-    } else if (progress < 90) {
-        setProgress(progress + 2);
-    } else if (progress < 99) {
+    } else if (message.contains("Enabled rpm-md repositories:")) {
+        setProgress(progress + 1);
+    } else if (message.contains("Updating metadata for")) {
+        setProgress(progress + 1);
+    } else if (message.contains("rpm-md repo")) {
+        setProgress(progress + 1);
+    } else if (message.contains("Resolving dependencies")) {
+        setProgress(progress + 5);
+    } else if (message.contains("Applying") && (message.contains("overrides") || message.contains("overlays"))) {
+        setProgress(progress + 5);
+        setStatus(Status::CommittingStatus);
+    } else if (message.contains("Processing packages")) {
+        setProgress(progress + 5);
+    } else if (message.contains("Running pre scripts")) {
+        setProgress(progress + 5);
+    } else if (message.contains("Running post scripts")) {
+        setProgress(progress + 5);
+    } else if (message.contains("Running posttrans scripts")) {
+        setProgress(progress + 5);
+    } else if (message.contains("Writing rpmdb")) {
+        setProgress(progress + 5);
+    } else if (message.contains("Generating initramfs")) {
+        setProgress(progress + 10);
+    } else if (message.contains("Writing OSTree commit")) {
+        setProgress(progress + 10);
+        setCancellable(false);
+    } else if (message.contains("Staging deployment")) {
+        setProgress(progress + 5);
+    } else if (message.contains("Freed")) {
+        setProgress(progress + 1);
+    } else if (message.contains("Upgraded")) {
+        setProgress(99);
+    } else {
         setProgress(progress + 1);
     }
 }
@@ -247,8 +293,8 @@ void RpmOstreeTransaction::cancel()
     qInfo() << "rpm-ostree-backend: Cancelling current transaction";
     passiveMessage(i18n("Cancelling rpm-ostree transaction. This may take some time. Please wait."));
 
-    // Cancel directly using the DBus interface to work in all casesn whether we
-    // sstarted the transaction or if it's an externally started one.
+    // Cancel directly using the DBus interface to work in all cases whether we
+    // started the transaction or if it's an externally started one.
     QString transaction = m_interface->activeTransactionPath();
     QDBusConnection peerConnection = QDBusConnection::connectToPeer(transaction, TransactionConnection);
     OrgProjectatomicRpmostree1TransactionInterface transactionInterface(DBusServiceName, QStringLiteral("/"), peerConnection, this);
@@ -292,8 +338,7 @@ QString RpmOstreeTransaction::name() const
         break;
     }
     // This should never happen
-    qWarning() << "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.";
-    return i18n("Unknown");
+    return i18n("Unknown transaction type");
 }
 
 QVariant RpmOstreeTransaction::icon() const
