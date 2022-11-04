@@ -33,6 +33,9 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     // Get as much as possible from rpm-ostree
     m_osname = map.value(QStringLiteral("osname")).toString();
     m_version = map.value(QStringLiteral("base-version")).toString();
+    if (m_version.isEmpty()) {
+        m_version = map.value(QStringLiteral("version")).toString();
+    }
     m_timestamp = QDateTime::fromSecsSinceEpoch(map.value(QStringLiteral("base-timestamp")).toULongLong()).date();
     m_pinned = map.value(QStringLiteral("pinned")).toBool();
     m_pending = map.value(QStringLiteral("staged")).toBool();
