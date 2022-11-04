@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-01 00:48+0000\n"
+"POT-Creation-Date: 2022-11-04 00:47+0000\n"
 "PO-Revision-Date: 2022-10-30 07:47\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -581,7 +581,7 @@ msgid "%1 on disk"
 msgstr "安装后占用 %1 磁盘空间"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:441
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:440
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "启动“%1”失败：%2"
@@ -1843,32 +1843,32 @@ msgctxt "comma separating package names"
 msgid ", "
 msgstr "，"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:351
 #, kde-format
 msgid "Obsoletes:"
 msgstr "已废弃："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
 #, kde-format
 msgid "Release Notes:"
 msgstr "发行说明："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
 #, kde-format
 msgid "Update State:"
 msgstr "更新状态："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:355
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
 #, kde-format
 msgid "Restart:"
 msgstr "重新启动："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:357
 #, kde-format
 msgid "Vendor:"
 msgstr "发行者："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:378
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:377
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -1884,29 +1884,39 @@ msgstr "仓库 URL："
 msgid "System upgrade"
 msgstr "系统升级"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:169
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:165
 #, kde-format
 msgid "1 package to upgrade"
 msgid_plural "%1 packages to upgrade"
 msgstr[0] "需要升级 %1 个软件包"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
+#, kde-format
+msgid "<li>%1 (%2): No changelog information</li>\n"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
+#, kde-format
+msgid "<li>%1 (%2): %3</li>\n"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
 #, kde-format
 msgid "Present"
 msgstr "当前"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:190
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:196
 #, kde-format
 msgid "Future"
 msgstr "今后"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:279
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:287
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "没有足够的空间进行更新；只有 %1 可用空间。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:467
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -1918,12 +1928,12 @@ msgstr ""
 "li></ul><nl/>如果您认为这是一个错误，请将它作为一个程序缺陷报告给发行版的打包"
 "人员。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:474
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:482
 #, kde-format
 msgid "Packages to remove"
 msgstr "要移除的软件包"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:483
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -1931,13 +1941,13 @@ msgid ""
 msgstr ""
 "更新将删除以下软件包：<ul><li>%1</li></ul><br/>以安装：<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:589
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
 #, kde-format
 msgid ""
@@ -1947,13 +1957,13 @@ msgstr ""
 "需要更换类型“%1”的安装介质。\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:614
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:622
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
 #, kde-format
 msgid "Accept EULA"
 msgstr "接受最终用户许可协议"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:615
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:623
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
 #, kde-format
 msgid ""
@@ -1963,13 +1973,13 @@ msgstr ""
 "软件包 %1 和它的发行者 %2 要求您必须接受他们的许可证：\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:732
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "缺少 %2 中 %1 的签名"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
 #, kde-format
 msgid ""

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-01 00:48+0000\n"
-"PO-Revision-Date: 2022-10-20 21:53+0530\n"
+"POT-Creation-Date: 2022-11-04 00:47+0000\n"
+"PO-Revision-Date: 2022-11-03 21:28+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -580,7 +580,7 @@ msgid "%1 on disk"
 msgstr "வட்டில் %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:441
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:440
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "'%1' என்பதை துவக்குவது தோல்வியடைந்தது: %2"
@@ -1274,12 +1274,12 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
 #, kde-format
 msgid "No distro upgrade data"
-msgstr ""
+msgstr "இயங்குதளப் புதுப்பிகளைப் பற்றிய விவரங்கள் இல்லை"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
 #, kde-format
 msgid "Incompatible architecture"
-msgstr ""
+msgstr "முரண்படும் கட்டமைப்பு (architecture)"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
 #, kde-format
@@ -1289,7 +1289,7 @@ msgstr "கணினியில் இடமில்லை"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:115
 #, kde-format
 msgid "A media change is required"
-msgstr ""
+msgstr "ஊடக மாற்றம் தேவை"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:117
 #, kde-format
@@ -1329,7 +1329,7 @@ msgstr "களஞ்சியத்தை முடக்க முடியவ�
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
 #, kde-format
 msgid "Restricted download detected"
-msgstr ""
+msgstr "பதிவிறக்கம் தடைசெய்யப்பட்டுள்ளதாக கண்டறியப்பட்டுள்ளது"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
 #, kde-format
@@ -1866,32 +1866,32 @@ msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:351
 #, kde-format
 msgid "Obsoletes:"
 msgstr "வழக்கற்றவை:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
 #, kde-format
 msgid "Release Notes:"
 msgstr "வெளியீட்டு குறிப்புகள்:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
 #, kde-format
 msgid "Update State:"
 msgstr "புதுப்பித்தலின் நிலை"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:355
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
 #, kde-format
 msgid "Restart:"
 msgstr "மீள்துவக்கம்:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:357
 #, kde-format
 msgid "Vendor:"
 msgstr "வியாபாரி:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:378
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:377
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -1908,30 +1908,40 @@ msgstr "களஞ்சிய முகவரி:"
 msgid "System upgrade"
 msgstr "கணினி புதுப்பிப்புகள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:169
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:165
 #, kde-format
 msgid "1 package to upgrade"
 msgid_plural "%1 packages to upgrade"
 msgstr[0] "புதுப்பிக்க 1 நிரல்"
 msgstr[1] "புதுப்பிக்க %1 நிரல்கள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
+#, kde-format
+msgid "<li>%1 (%2): No changelog information</li>\n"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
+#, kde-format
+msgid "<li>%1 (%2): %3</li>\n"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
 #, kde-format
 msgid "Present"
 msgstr "தற்போது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:190
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:196
 #, kde-format
 msgid "Future"
 msgstr "வரவிருப்பது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:279
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:287
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "புதிப்பிப்பதற்கு போதுமான காலியிடம் இல்லை; %1-யே காலியாக உள்ளது."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:467
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -1940,12 +1950,12 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:474
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:482
 #, kde-format
 msgid "Packages to remove"
 msgstr "நீக்கவேண்டியவை"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:483
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -1954,13 +1964,13 @@ msgstr ""
 "புதுப்பிப்பு பின்வருபவற்றை நீக்கும்:<ul><li>%1</li></ul><br/>பின்வருவதை நிறுவ அவ்வாறு "
 "செய்ய வேண்டும்:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:589
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
 #, kde-format
 msgid ""
@@ -1968,13 +1978,13 @@ msgid ""
 "%2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:614
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:622
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
 #, kde-format
 msgid "Accept EULA"
 msgstr "நிபந்தனைகளை ஏற்கவும்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:615
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:623
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
 #, kde-format
 msgid ""
@@ -1982,13 +1992,13 @@ msgid ""
 " %3"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:732
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2 என்பதில் %1 என்பதற்கான கையொப்பம் காணவில்லை"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
 #, kde-format
 msgid ""

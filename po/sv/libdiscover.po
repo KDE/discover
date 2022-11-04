@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-01 00:48+0000\n"
+"POT-Creation-Date: 2022-11-04 00:47+0000\n"
 "PO-Revision-Date: 2022-09-25 09:30+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -580,7 +580,7 @@ msgid "%1 on disk"
 msgstr "%1 på disk"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:441
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:440
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "Misslyckades starta '%1': %2"
@@ -1888,32 +1888,32 @@ msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:351
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Föråldrade:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
 #, kde-format
 msgid "Release Notes:"
 msgstr "Versionsfakta:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
 #, kde-format
 msgid "Update State:"
 msgstr "Uppdateringstillstånd:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:355
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
 #, kde-format
 msgid "Restart:"
 msgstr "Starta om:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:357
 #, kde-format
 msgid "Vendor:"
 msgstr "Tillverkare:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:378
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:377
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -1930,24 +1930,34 @@ msgstr "Arkivets webbadress:"
 msgid "System upgrade"
 msgstr "Systemuppgradering"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:169
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:165
 #, kde-format
 msgid "1 package to upgrade"
 msgid_plural "%1 packages to upgrade"
 msgstr[0] "1 paket att uppgradera"
 msgstr[1] "%1 paket att uppgradera"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
+#, kde-format
+msgid "<li>%1 (%2): No changelog information</li>\n"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
+#, kde-format
+msgid "<li>%1 (%2): %3</li>\n"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
 #, kde-format
 msgid "Present"
 msgstr "Nutid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:190
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:196
 #, kde-format
 msgid "Future"
 msgstr "Framtid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:279
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:287
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
@@ -1955,7 +1965,7 @@ msgstr ""
 "Utrymmet räcker inte till för att utföra uppdateringen: bara %1 utrymme "
 "tillgängligt."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:467
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -1968,12 +1978,12 @@ msgstr ""
 "ul><nl/>Om du anser att det är felaktigt, rapportera det gärna som ett fel "
 "till distributionens paketerare."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:474
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:482
 #, kde-format
 msgid "Packages to remove"
 msgstr "Paket att ta bort"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:483
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -1982,13 +1992,13 @@ msgstr ""
 "Följande paket kommer att tas bort av uppdateringen:<ul><li>%1</li></ul>\n"
 "för att installera:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:589
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
 #, kde-format
 msgid ""
@@ -1998,13 +2008,13 @@ msgstr ""
 "Mediabyte av typ '%1' begärs.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:614
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:622
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
 #, kde-format
 msgid "Accept EULA"
 msgstr "Acceptera slutanvändarlicensavtal"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:615
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:623
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
 #, kde-format
 msgid ""
@@ -2014,13 +2024,13 @@ msgstr ""
 "Paketet %1 och dess leverantör %2 kräver att du accepterar deras licens:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:732
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Saknar signatur för %1 i %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
 #, kde-format
 msgid ""

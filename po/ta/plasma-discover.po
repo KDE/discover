@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-03 00:47+0000\n"
-"PO-Revision-Date: 2022-10-25 21:34+0530\n"
+"PO-Revision-Date: 2022-11-03 21:26+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -631,33 +631,31 @@ msgstr "செயலிகளை ஏற்ற முடியவில்லை"
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "மக்கள் விரும்புபவை"
 
 #: discover/qml/BrowsingPage.qml:112
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "தொகுப்பாளரின் விருப்பம்"
 
 #: discover/qml/BrowsingPage.qml:126
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "அதிகமாக மதிப்பிடப்பட்டுள்ள ஆட்டங்கள்"
 
 #: discover/qml/BrowsingPage.qml:145 discover/qml/BrowsingPage.qml:174
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "மேலும் காட்டு…"
+msgstr "மேலும் காட்டு"
 
 #: discover/qml/BrowsingPage.qml:155
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "அதிகமாக மதிப்பிடப்பட்டுள்ள நிரலாக்க கருவிகள்"
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format
