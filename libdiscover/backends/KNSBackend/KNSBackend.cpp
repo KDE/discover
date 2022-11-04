@@ -109,7 +109,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
         }
     });
 
-    const QVector<QPair<Category::FilterType, QString>> filters = {{Category::CategoryFilter, fileName}};
+    const CategoryFilter filter = {CategoryFilter::CategoryNameFilter, fileName};
     const QSet<QString> backendName = {name()};
     m_displayName = group.readEntry("Name", QString());
     if (m_displayName.isEmpty()) {
@@ -124,9 +124,9 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
         m_categories += cats;
         for (const auto &cat : cats) {
             if (m_hasApplications)
-                categories << new Category(cat, QStringLiteral("applications-other"), {{Category::CategoryFilter, cat}}, backendName, {}, true);
+                categories << new Category(cat, QStringLiteral("applications-other"), {CategoryFilter::CategoryNameFilter, cat}, backendName, {}, true);
             else
-                categories << new Category(cat, QStringLiteral("plasma"), {{Category::CategoryFilter, cat}}, backendName, {}, true);
+                categories << new Category(cat, QStringLiteral("plasma"), {CategoryFilter::CategoryNameFilter, cat}, backendName, {}, true);
         }
     }
 
@@ -154,7 +154,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     connect(m_engine, &KNSCore::Engine::signalCategoriesMetadataLoded, this, [categories](const QList<KNSCore::Provider::CategoryMetadata> &categoryMetadatas) {
         for (const KNSCore::Provider::CategoryMetadata &category : categoryMetadatas) {
             for (Category *cat : qAsConst(categories)) {
-                if (cat->orFilters().count() > 0 && cat->orFilters().constFirst().second == category.name) {
+                if (cat->matchesCategoryName(category.name)) {
                     cat->setName(category.displayName);
                     break;
                 }
@@ -165,14 +165,15 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     m_engine->init(m_name);
 
     if (m_hasApplications) {
-        auto actualCategory = new Category(m_displayName, QStringLiteral("applications-other"), filters, backendName, topCategories, false);
+        auto actualCategory = new Category(m_displayName, QStringLiteral("applications-other"), filter, backendName, topCategories, false);
         auto applicationCategory = new Category(i18n("Applications"), //
                                                 QStringLiteral("applications-internet"),
-                                                filters,
+                                                filter,
                                                 backendName,
                                                 {actualCategory},
                                                 false);
-        applicationCategory->setAndFilter({{Category::CategoryFilter, QLatin1String("Application")}});
+        const QVector<CategoryFilter> filters = {{CategoryFilter::CategoryNameFilter, QLatin1String("Application")}, filter};
+        applicationCategory->setFilter({CategoryFilter::AndFilter, filters});
         m_categories.append(applicationCategory->name());
         m_rootCategories = {applicationCategory};
         // Make sure we filter out any apps which won't run on the current system architecture
@@ -208,11 +209,11 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
             QStringLiteral("ksplash.knsrc"),       QStringLiteral("window-decorations.knsrc"),
         };
         const auto iconName = knsrcPlasma.contains(fileName) ? QStringLiteral("plasma") : QStringLiteral("applications-other");
-        auto actualCategory = new Category(m_displayName, iconName, filters, backendName, categories, true);
+        auto actualCategory = new Category(m_displayName, iconName, filter, backendName, categories, true);
         actualCategory->setParent(this);
 
         const auto topLevelName = knsrcPlasma.contains(fileName) ? i18n("Plasma Addons") : i18n("Application Addons");
-        auto addonsCategory = new Category(topLevelName, iconName, filters, backendName, {actualCategory}, true);
+        auto addonsCategory = new Category(topLevelName, iconName, filter, backendName, {actualCategory}, true);
         m_rootCategories = {addonsCategory};
     }
 

@@ -13,6 +13,7 @@
 #include <KShell>
 #include <QList>
 #include <QProcess>
+#include <QString>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
 
@@ -150,62 +151,57 @@ void AbstractResource::reportNewState()
     Q_EMIT backend()->resourcesChanged(this, ns);
 }
 
-static bool shouldFilter(AbstractResource *res, const QPair<Category::FilterType, QString> &filter)
+static bool shouldFilter(AbstractResource *res, const CategoryFilter &filter)
 {
     bool ret = true;
-    switch (filter.first) {
-    case Category::CategoryFilter:
-        ret = res->categories().contains(filter.second);
+    switch (filter.type) {
+    case CategoryFilter::CategoryNameFilter:
+        ret = res->categories().contains(std::get<QString>(filter.value));
         break;
-    case Category::PkgSectionFilter:
-        ret = res->section() == filter.second;
+    case CategoryFilter::PkgSectionFilter:
+        ret = res->section() == std::get<QString>(filter.value);
         break;
-    case Category::PkgWildcardFilter: {
-        QString wildcard = filter.second;
+    case CategoryFilter::PkgWildcardFilter: {
+        QString wildcard = std::get<QString>(filter.value);
         wildcard.remove(QLatin1Char('*'));
         ret = res->packageName().contains(wildcard);
     } break;
-    case Category::AppstreamIdWildcardFilter: {
-        QString wildcard = filter.second;
+    case CategoryFilter::AppstreamIdWildcardFilter: {
+        QString wildcard = std::get<QString>(filter.value);
         wildcard.remove(QLatin1Char('*'));
         ret = res->appstreamId().contains(wildcard);
     } break;
-    case Category::PkgNameFilter: // Only useful in the not filters
-        ret = res->packageName() == filter.second;
+    case CategoryFilter::PkgNameFilter: // Only useful in the not filters
+        ret = res->packageName() == std::get<QString>(filter.value);
         break;
-    case Category::InvalidFilter:
+    case CategoryFilter::AndFilter: {
+        const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
+        ret = std::all_of(filters.begin(), filters.end(), [res](const CategoryFilter &f) {
+            return shouldFilter(res, f);
+        });
         break;
+    }
+    case CategoryFilter::OrFilter: {
+        const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
+        ret = std::any_of(filters.begin(), filters.end(), [res](const CategoryFilter &f) {
+            return shouldFilter(res, f);
+        });
+        break;
+    }
+    case CategoryFilter::NotFilter: {
+        const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
+        ret = !std::any_of(filters.begin(), filters.end(), [res](const CategoryFilter &f) {
+            return shouldFilter(res, f);
+        });
+        break;
+    }
     }
     return ret;
 }
 
 bool AbstractResource::categoryMatches(Category *cat)
 {
-    {
-        const auto orFilters = cat->orFilters();
-        bool orValue = orFilters.isEmpty();
-        for (const auto &filter : orFilters) {
-            if (shouldFilter(this, filter)) {
-                orValue = true;
-                break;
-            }
-        }
-        if (!orValue)
-            return false;
-    }
-
-    const auto andFilters = cat->andFilters();
-    for (const auto &filter : andFilters) {
-        if (!shouldFilter(this, filter))
-            return false;
-    }
-
-    const auto notFilters = cat->notFilters();
-    for (const auto &filter : notFilters) {
-        if (shouldFilter(this, filter))
-            return false;
-    }
-    return true;
+    return shouldFilter(this, cat->filter());
 }
 
 static QSet<Category *> walkCategories(AbstractResource *res, const QVector<Category *> &cats)

@@ -10,13 +10,41 @@
 #include <QObject>
 #include <QPair>
 #include <QSet>
+#include <QString>
 #include <QUrl>
 #include <QVector>
+#include <variant>
 
 #include "discovercommon_export.h"
 
 class QXmlStreamReader;
 class QTimer;
+
+class CategoryFilter
+{
+    Q_GADGET
+public:
+    enum FilterType {
+        CategoryNameFilter,
+        PkgSectionFilter,
+        PkgWildcardFilter,
+        PkgNameFilter,
+        AppstreamIdWildcardFilter,
+        OrFilter,
+        AndFilter,
+        NotFilter,
+    };
+    Q_ENUM(FilterType)
+
+    FilterType type;
+    std::variant<QString, QVector<CategoryFilter>> value;
+
+    bool operator==(const CategoryFilter &other) const;
+    bool operator!=(const CategoryFilter &other) const
+    {
+        return !operator==(other);
+    }
+};
 
 class DISCOVERCOMMON_EXPORT Category : public QObject
 {
@@ -28,19 +56,9 @@ public:
     Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant NOTIFY subCategoriesChanged)
     explicit Category(QSet<QString> pluginNames, QObject *parent = nullptr);
 
-    enum FilterType {
-        InvalidFilter,
-        CategoryFilter,
-        PkgSectionFilter,
-        PkgWildcardFilter,
-        PkgNameFilter,
-        AppstreamIdWildcardFilter,
-    };
-    Q_ENUM(FilterType)
-
     Category(const QString &name,
              const QString &iconName,
-             const QVector<QPair<FilterType, QString>> &orFilters,
+             const CategoryFilter &filters,
              const QSet<QString> &pluginName,
              const QVector<Category *> &subCategories,
              bool isAddons);
@@ -51,10 +69,8 @@ public:
     // as the results could be potentially detremental to the function of the category filters
     void setName(const QString &name);
     QString icon() const;
-    QVector<QPair<FilterType, QString>> andFilters() const;
-    void setAndFilter(const QVector<QPair<FilterType, QString>> &filters);
-    QVector<QPair<FilterType, QString>> orFilters() const;
-    QVector<QPair<FilterType, QString>> notFilters() const;
+    void setFilter(const CategoryFilter &filter);
+    CategoryFilter filter() const;
     QVector<Category *> subCategories() const;
     QVariantList subCategoriesVariant() const;
 
@@ -94,12 +110,10 @@ private:
     QString m_name;
     QString m_untranslatedName;
     QString m_iconString;
-    QVector<QPair<FilterType, QString>> m_andFilters;
-    QVector<QPair<FilterType, QString>> m_orFilters;
-    QVector<QPair<FilterType, QString>> m_notFilters;
+    CategoryFilter m_filter;
     QVector<Category *> m_subCategories;
 
-    QVector<QPair<FilterType, QString>> parseIncludes(QXmlStreamReader *xml);
+    CategoryFilter parseIncludes(QXmlStreamReader *xml);
     QSet<QString> m_plugins;
     bool m_isAddons = false;
     QTimer *m_subCategoriesChanged;

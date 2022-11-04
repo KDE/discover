@@ -30,14 +30,14 @@ Category::Category(QSet<QString> pluginName, QObject *parent)
 
 Category::Category(const QString &name,
                    const QString &iconName,
-                   const QVector<QPair<FilterType, QString>> &orFilters,
+                   const CategoryFilter &filter,
                    const QSet<QString> &pluginName,
                    const QVector<Category *> &subCategories,
                    bool isAddons)
     : QObject(nullptr)
     , m_name(name)
     , m_iconString(iconName)
-    , m_orFilters(orFilters)
+    , m_filter(filter)
     , m_subCategories(subCategories)
     , m_plugins(pluginName)
     , m_isAddons(isAddons)
@@ -82,10 +82,42 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml)
             xml->readNext();
         } else if (xml->name() == QLatin1String("Icon")) {
             m_iconString = xml->readElementText();
-        } else if (xml->name() == QLatin1String("Include")) { // previous muon format
-            parseIncludes(xml);
+        } else if (xml->name() == QLatin1String("Include")) {
+            const QString opening = xml->name().toString();
+            while (!xml->atEnd() && !xml->hasError()) {
+                xml->readNext();
+
+                if (xml->isEndElement() && xml->name() == opening) {
+                    qDebug() << "weird, let's go" << opening;
+                    break;
+                } else if (!xml->isStartElement()) {
+                    if (xml->isCharacters() && xml->text().trimmed().isEmpty())
+                        ;
+                    else if (!xml->isComment())
+                        qDebug() << "include skipping" << xml->tokenString() << xml->text() << xml->name() << opening << xml->lineNumber();
+                    continue;
+                }
+                break;
+            }
+            m_filter = parseIncludes(xml);
+
+            // Here we are at the end of the last item in the group, we need to finish what we started
+            while (!xml->atEnd() && !xml->hasError()) {
+                xml->readNext();
+
+                if (xml->isEndElement() && xml->name() == opening) {
+                    break;
+                } else {
+                    if (xml->isCharacters() && xml->text().trimmed().isEmpty())
+                        ;
+                    else if (!xml->isComment())
+                        qDebug() << "include2 skipping" << xml->tokenString() << xml->text() << xml->name() << opening << xml->lineNumber();
+                    continue;
+                }
+                break;
+            }
         } else if (xml->name() == QLatin1String("Categories")) { // as provided by appstream
-            parseIncludes(xml);
+            m_filter = parseIncludes(xml);
         } else if (xml->name() == QLatin1String("Image")) {
             xml->skipCurrentElement();
         }
@@ -94,49 +126,55 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml)
     Q_ASSERT(xml->isEndElement() && xml->name() == QLatin1String("Menu"));
 }
 
-QVector<QPair<Category::FilterType, QString>> Category::parseIncludes(QXmlStreamReader *xml)
+CategoryFilter Category::parseIncludes(QXmlStreamReader *xml)
 {
     const QString opening = xml->name().toString();
+    Q_ASSERT(xml->isStartElement());
 
-    QVector<QPair<FilterType, QString>> filter;
-    while (!xml->atEnd() && !xml->hasError()) {
-        xml->readNext();
+    auto subIncludes = [&]() {
+        QVector<CategoryFilter> filters;
 
-        if (xml->isEndElement() && xml->name() == opening) {
-            break;
-        } else if (!xml->isStartElement()) {
-            if (xml->isCharacters() && xml->text().trimmed().isEmpty())
-                ;
-            else if (!xml->isComment())
-                qDebug() << "skipping" << xml->tokenString() << xml->name() << opening << xml->lineNumber();
-            continue;
-        }
+        Q_ASSERT(xml->isStartElement());
+        const QString opening = xml->name().toString();
 
-        if (xml->name() == QLatin1String("And")) {
-            m_andFilters.append(parseIncludes(xml));
-        } else if (xml->name() == QLatin1String("Or")) {
-            m_orFilters.append(parseIncludes(xml));
-        } else if (xml->name() == QLatin1String("Not")) {
-            m_notFilters.append(parseIncludes(xml));
-        } else if (xml->name() == QLatin1String("PkgSection")) {
-            filter.append({PkgSectionFilter, xml->readElementText()});
-        } else if (xml->name() == QLatin1String("Category")) {
-            filter.append({CategoryFilter, xml->readElementText()});
-            Q_ASSERT(xml->isEndElement() && xml->name() == QLatin1String("Category"));
-        } else if (xml->name() == QLatin1String("PkgWildcard")) {
-            filter.append({PkgWildcardFilter, xml->readElementText()});
-        } else if (xml->name() == QLatin1String("AppstreamIdWildcard")) {
-            filter.append({AppstreamIdWildcardFilter, xml->readElementText()});
-        } else if (xml->name() == QLatin1String("PkgName")) {
-            filter.append({PkgNameFilter, xml->readElementText()});
-        } else {
-            qCWarning(LIBDISCOVER_LOG) << "unknown" << xml->name() << xml->lineNumber();
+        while (!xml->atEnd() && !xml->hasError()) {
+            xml->readNext();
+
+            if (xml->isEndElement()) {
+                break;
+            } else if (xml->isStartElement()) {
+                filters.append(parseIncludes(xml));
+            }
         }
         Q_ASSERT(xml->isEndElement());
+        Q_ASSERT(xml->name() == opening);
+        return filters;
+    };
 
-        if (xml->name() == opening)
-            break;
+    CategoryFilter filter;
+    if (xml->name() == QLatin1String("And")) {
+        filter = {CategoryFilter::AndFilter, subIncludes()};
+    } else if (xml->name() == QLatin1String("Or")) {
+        filter = {CategoryFilter::OrFilter, subIncludes()};
+    } else if (xml->name() == QLatin1String("Not")) {
+        filter = {CategoryFilter::NotFilter, subIncludes()};
+    } else if (xml->name() == QLatin1String("PkgSection")) {
+        filter = {CategoryFilter::PkgSectionFilter, xml->readElementText()};
+    } else if (xml->name() == QLatin1String("Category")) {
+        filter = {CategoryFilter::CategoryNameFilter, xml->readElementText()};
+        Q_ASSERT(xml->isEndElement() && xml->name() == QLatin1String("Category"));
+    } else if (xml->name() == QLatin1String("PkgWildcard")) {
+        filter = {CategoryFilter::PkgWildcardFilter, xml->readElementText()};
+    } else if (xml->name() == QLatin1String("AppstreamIdWildcard")) {
+        filter = {CategoryFilter::AppstreamIdWildcardFilter, xml->readElementText()};
+    } else if (xml->name() == QLatin1String("PkgName")) {
+        filter = {CategoryFilter::PkgNameFilter, xml->readElementText()};
+    } else {
+        qCWarning(LIBDISCOVER_LOG) << "unknown" << xml->name() << xml->lineNumber();
     }
+
+    Q_ASSERT(xml->isEndElement());
+    Q_ASSERT(xml->name() == opening);
 
     return filter;
 }
@@ -157,24 +195,14 @@ QString Category::icon() const
     return m_iconString;
 }
 
-QVector<QPair<Category::FilterType, QString>> Category::andFilters() const
+CategoryFilter Category::filter() const
 {
-    return m_andFilters;
+    return m_filter;
 }
 
-void Category::setAndFilter(const QVector<QPair<FilterType, QString>> &filters)
+void Category::setFilter(const CategoryFilter &filter)
 {
-    m_andFilters = filters;
-}
-
-QVector<QPair<Category::FilterType, QString>> Category::orFilters() const
-{
-    return m_orFilters;
-}
-
-QVector<QPair<Category::FilterType, QString>> Category::notFilters() const
-{
-    return m_notFilters;
+    m_filter = filter;
 }
 
 QVector<Category *> Category::subCategories() const
@@ -207,6 +235,21 @@ void Category::sortCategories(QVector<Category *> &cats)
     Q_ASSERT(isSorted(cats));
 }
 
+QDebug operator<<(QDebug debug, const CategoryFilter &filter)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "Filter(";
+    debug << filter.type << ", ";
+
+    if (auto x = std::get_if<QString>(&filter.value)) {
+        debug << std::get<QString>(filter.value);
+    } else {
+        debug << std::get<QVector<CategoryFilter>>(filter.value);
+    }
+    debug.nospace() << ')';
+    return debug;
+}
+
 void Category::addSubcategory(QVector<Category *> &list, Category *newcat)
 {
     Q_ASSERT(isSorted(list));
@@ -219,13 +262,12 @@ void Category::addSubcategory(QVector<Category *> &list, Category *newcat)
 
     auto c = *it;
     if (c->name() == newcat->name()) {
-        if (c->icon() != newcat->icon() || c->m_andFilters != newcat->m_andFilters || c->m_isAddons != newcat->m_isAddons) {
+        if (c->icon() != newcat->icon() || c->m_isAddons != newcat->m_isAddons) {
             qCWarning(LIBDISCOVER_LOG) << "the following categories seem to be the same but they're not entirely" << c->icon() << newcat->icon() << "--"
-                                       << c->name() << newcat->name() << "--" << c->andFilters() << newcat->andFilters() << "--" << c->isAddons()
-                                       << newcat->isAddons();
+                                       << c->name() << newcat->name() << "--" << c->isAddons() << newcat->isAddons();
         } else {
-            c->m_orFilters += newcat->orFilters();
-            c->m_notFilters += newcat->notFilters();
+            CategoryFilter newFilter = {CategoryFilter::OrFilter, QVector<CategoryFilter>{c->m_filter, newcat->m_filter}};
+            c->m_filter = newFilter;
             c->m_plugins.unite(newcat->m_plugins);
             const auto subCategories = newcat->subCategories();
             for (Category *nc : subCategories) {
@@ -287,11 +329,7 @@ QVariantList Category::subCategoriesVariant() const
 
 bool Category::matchesCategoryName(const QString &name) const
 {
-    for (const auto &filter : m_orFilters) {
-        if (filter.first == CategoryFilter && filter.second == name)
-            return true;
-    }
-    return false;
+    return involvedCategories().contains(name);
 }
 
 bool Category::contains(Category *cat) const
@@ -312,16 +350,47 @@ bool Category::contains(const QVariantList &cats) const
     return ret;
 }
 
+static QStringList involvedCategories(const CategoryFilter &f)
+{
+    switch (f.type) {
+    case CategoryFilter::CategoryNameFilter:
+        return {std::get<QString>(f.value)};
+    case CategoryFilter::OrFilter:
+    case CategoryFilter::AndFilter: {
+        const auto filters = std::get<QVector<CategoryFilter>>(f.value);
+        QStringList ret;
+        ret.reserve(filters.size());
+        for (const auto &subFilters : filters) {
+            ret << involvedCategories(subFilters);
+        }
+        ret.removeDuplicates();
+        return ret;
+    } break;
+    case CategoryFilter::AppstreamIdWildcardFilter:
+    case CategoryFilter::NotFilter:
+    case CategoryFilter::PkgSectionFilter:
+    case CategoryFilter::PkgWildcardFilter:
+    case CategoryFilter::PkgNameFilter:
+        break;
+    }
+    qCWarning(LIBDISCOVER_LOG) << "cannot infer categories from" << f.type;
+    return {};
+}
+
 QStringList Category::involvedCategories() const
 {
-    QStringList ret;
-    for (const auto &filter : m_orFilters) {
-        if (filter.first == CategoryFilter)
-            ret << filter.second;
+    return ::involvedCategories(m_filter);
+}
+
+bool CategoryFilter::operator==(const CategoryFilter &other) const
+{
+    if (other.type != type) {
+        return false;
     }
-    for (const auto &filter : m_andFilters) {
-        if (filter.first == CategoryFilter)
-            ret << filter.second;
+
+    if (auto x = std::get_if<QString>(&value)) {
+        return *x == std::get<QString>(other.value);
+    } else {
+        return std::get<QVector<CategoryFilter>>(value) == std::get<QVector<CategoryFilter>>(other.value);
     }
-    return ret;
 }
