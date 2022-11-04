@@ -110,8 +110,9 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     connect(this, &RpmOstreeResource::buttonPressed, parent, &RpmOstreeBackend::rebaseToNewVersion);
 }
 
-void RpmOstreeResource::fetchRemoteRefs()
+void RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
 {
+    // Fetch the list of refs available on the remote for the deployment
     g_autoptr(GFile) path = g_file_new_for_path("/ostree/repo");
     g_autoptr(OstreeRepo) repo = ostree_repo_new(path);
     if (repo == NULL) {
@@ -134,16 +135,9 @@ void RpmOstreeResource::fetchRemoteRefs()
         return;
     }
 
-    // Clear out existing refs
-    m_remoteRefs.clear();
-
-    int currentVersion = m_branchVersion.toInt();
-
-    // Iterate over the remote refs to keep only the branches matching our
-    // variant and to find if there is a newer version available.
-    // TODO: Implement new release detection as currently this will offer to
-    // rebase to a newer version as soon as it is branched in the Fedora
-    // release process which is well before the official release.
+    // Iterate over the remote refs, keeping only the branches matching our
+    // variant, to find if there is a indeed a branch available for the new
+    // version.
     GHashTableIter iter;
     gpointer key, value;
     g_hash_table_iter_init(&iter, refs);
@@ -160,31 +154,20 @@ void RpmOstreeResource::fetchRemoteRefs()
                 refVariant += "/" + split_branch[i];
             }
             if (split_branch[0] == m_branchName && split_branch[2] == m_branchArch && refVariant == m_branchVariant) {
-                // Add to the list of available refs
-                m_remoteRefs.push_back(ref);
-                // Look for the branch with the next version
-                // This will fail to parse "rawhide" and return 0 and will thus skip it
-                int branchVersion = split_branch[1].toInt();
-                if (branchVersion == currentVersion + 1) {
-                    m_nextMajorVersion = split_branch[1];
+                // Look for the branch matching the newMajorVersion.
+                // This assumes that ostree branch names are lowercase.
+                QString branchVersion = split_branch[1];
+                if (branchVersion == newMajorVersion.toLower()) {
+                    m_nextMajorVersion = newMajorVersion;
+                    return;
                 }
             }
         }
     }
 
-    if (m_remoteRefs.size() == 0) {
-        qWarning() << "rpm-ostree-backend: Could not find any corresponding remote ref in ostree repo:" << path;
-    }
-}
-
-QString RpmOstreeResource::getNextMajorVersion()
-{
-    return m_nextMajorVersion;
-}
-
-bool RpmOstreeResource::isNextMajorVersionAvailable()
-{
-    return m_nextMajorVersion != "";
+    // If we reach here, it means that we could not find a matching branch. This
+    // is unexpected and we should find a way to inform the user.
+    qWarning() << "rpm-ostree-backend: Could not find a remote ref for the new major version in ostree repo";
 }
 
 QString RpmOstreeResource::availableVersion() const
@@ -200,6 +183,24 @@ QString RpmOstreeResource::version()
 void RpmOstreeResource::setNewVersion(const QString &newVersion)
 {
     m_newVersion = newVersion;
+}
+
+QString RpmOstreeResource::getNewVersion() const
+{
+    return m_newVersion;
+}
+
+QString RpmOstreeResource::getNextMajorVersion() const
+{
+    return m_nextMajorVersion;
+}
+
+QString RpmOstreeResource::getNextMajorVersionRef() const
+{
+    // This assumes that ostree branch names are lowercase.
+    QString ref;
+    QTextStream(&ref) << m_branchName.toLower() << '/' << m_nextMajorVersion.toLower() << '/' << m_branchArch.toLower() << '/' << m_variant.toLower();
+    return ref;
 }
 
 QString RpmOstreeResource::appstreamId() const
@@ -371,13 +372,6 @@ void RpmOstreeResource::setState(AbstractResource::State state)
 {
     m_state = state;
     Q_EMIT stateChanged();
-}
-
-void RpmOstreeResource::rebaseToNewVersion()
-{
-    QString ref;
-    QTextStream(&ref) << m_branchName << '/' << m_nextMajorVersion << '/' << m_branchArch << '/' << m_variant;
-    Q_EMIT buttonPressed(ref);
 }
 
 QString RpmOstreeResource::sourceIcon() const

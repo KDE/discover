@@ -11,6 +11,11 @@
 
 class RpmOstreeBackend;
 class QAbstractItemModel;
+
+/*
+ * Represents an ostree deployment (an installed version of the system) as a
+ * resource in Discover.
+ */
 class RpmOstreeResource : public AbstractResource
 {
     Q_OBJECT
@@ -50,7 +55,6 @@ public:
     QUrl donationURL() override;
 
     void setState(AbstractResource::State);
-    void fetchRemoteRefs();
 
     /* Get the current version */
     QString version();
@@ -58,35 +62,27 @@ public:
     /* Set the target version for updates */
     void setNewVersion(const QString &newVersion);
 
-    static const QStringList m_objects;
+    /* Get the target version for updates */
+    QString getNewVersion() const;
 
-    /*
-     * It is called when the user clicks on the button to switch to a new kinoite refs and
-     * it emits buttonPressed() so that the corresponding system upgrade function
-     * is executed in the backend.
-     */
-    Q_SCRIPTABLE void rebaseToNewVersion();
+    /* Validate and set the target major version for rebase */
+    void setNewMajorVersion(const QString &newMajorVersion);
 
-    /** Returns the next major version for the current deployment. */
-    Q_SCRIPTABLE QString getNextMajorVersion();
+    /* Returns the next major version for the deployment */
+    QString getNextMajorVersion() const;
 
-    /**
-     * Returns true only if there is a newer ref available in the current remote.
-     * TODO: Only display this button when the new version is stable (and not just branched as it works today.
-     */
-    Q_SCRIPTABLE bool isNextMajorVersionAvailable();
+    /* Returns the ostree ref for the next major version for the deployment */
+    QString getNextMajorVersionRef() const;
 
-    /** Returns if a given deployment is the currently booted deployment. */
+    /* Returns if a given deployment is the currently booted deployment */
     Q_SCRIPTABLE bool isBooted();
-    /**
-     * Returns if a given deployment is currently pending.
-     * TODO: Turn this into a Q_PROPERTY and add a NOTIFY with a signal to trigger updates when/if it changes.
-     */
+
+    /* Returns if a given deployment is currently pending */
     Q_SCRIPTABLE bool isPending();
 
 Q_SIGNALS:
 
-    /** Signal emitted when the user requests the rebase to a newer version */
+    /* Signal emitted when the user requests the rebase to a newer version */
     void buttonPressed(QString);
 
 private:
@@ -118,8 +114,6 @@ private:
 
     QString m_newVersion;
     QString m_nextMajorVersion;
-    QStringList m_remoteRefs;
-    QString m_currentRefs;
 };
 
 #endif
