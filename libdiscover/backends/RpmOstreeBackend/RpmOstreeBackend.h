@@ -15,7 +15,10 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/StandardBackendUpdater.h>
 
+#include <AppStreamQt/pool.h>
 #include <QTimer>
+
+class DiscoverAction;
 
 /*
  * This backend currently uses a mix of DBus calls and direct `rpm-ostree`
@@ -31,33 +34,8 @@ class RpmOstreeBackend : public AbstractResourcesBackend
 public:
     explicit RpmOstreeBackend(QObject *parent = nullptr);
 
-    /*
-     * Executing "rpm-ostree update --check" using QProcess to check if
-     * there is a new deployment version avaliable.
-     */
-    void executeCheckUpdateProcess();
-
-    /*
-     * Executing "ostree remote refs kinoite" using QProcess to get
-     * a list of the avaliable remote refs list.
-     */
-    void filterRemoteRefs();
-
-    /* List refs for a given remote */
-    QStringList getRemoteRefs(const QString &);
-
-    /*
-     * Getting the output resulting from executing the QProcess remote refs list.
-     */
-    void readRefsOutput(QIODevice *device);
-
-    /*
-     * Calling Rebase method from the rpm-ostree DBus class when
-     * there is a new kinoite refs.
-     */
-    void rebaseToNewVersion(QString);
-
-    /* Convenience function to set the fetching status and emit the corresponding signal */
+    /* Convenience function to set the fetching status and emit the
+     * corresponding signal */
     void setFetching(bool);
 
     int updatesCount() const override;
@@ -78,20 +56,29 @@ public:
     bool hasApplications() const override;
 
 public Q_SLOTS:
-
     /* Fetch or refresh the list of deployments */
     void refreshDeployments();
 
+    /* Look for a new Major version and offer it as an update */
+    void lookForNextMajorVersion();
+
+    /* Rebase to the next major version */
+    void rebaseToNewVersion();
+
 private:
-    /*
-     * Once rpm-ostree has effectively stated, registrer ourselves as update
+    /* Once rpm-ostree has effectively stated, registrer ourselves as update
      * driver to the rpm-ostreed daemon to make sure that it does not exit while
-     * we are running and then initialize the rest of the backend.
-     */
+     * we are running and then initialize the rest of the backend. */
     void initializeBackend();
 
     /* Get the currently booted deployment */
     RpmOstreeResource *currentlyBootedDeployment() const;
+
+    /* Called when a new major version is found to setup user facing actions */
+    void foundNewMajorVersion(const QString &newMajorVersion);
+
+    /* Set to true once we've successfully registrered with rpm-ostree */
+    bool m_registrered;
 
     /* The list of available deployments */
     QVector<RpmOstreeResource *> m_resources;
@@ -116,6 +103,35 @@ private:
 
     /* Used when refreshing the list of deployments */
     bool m_fetching;
+
+    /* AppStream pool to be able to the distribution major release versions */
+    QScopedPointer<AppStream::Pool> m_appdata;
+
+    /* Enable development branches and releases. This is mostly usuelful for
+     * testing and should not be enabled by default. We might add an hidden
+     * option in the future.
+     * Behaviour for Fedora: Enable rebasing to Rawhide */
+    bool m_developmentEnabled;
+
+    /* Message to display when:
+     * - No new major version is available
+     * - An update to the current version is pending a reboot */
+    QSharedPointer<InlineMessage> m_updatePendingMessage;
+
+    /* Message to display when:
+     * - A new major version is available
+     * - An update to the current version is available or pending a reboot */
+    QSharedPointer<InlineMessage> m_updateRebaseMessage;
+
+    /* Message to display when:
+     * - A new major version is available
+     * - No update to the current version are available or pending a reboot */
+    QSharedPointer<InlineMessage> m_rebaseMessage;
+
+    /* Message to display when:
+     * - A new major version is available
+     * - A rebase to this new major version is pending a reboot */
+    QSharedPointer<InlineMessage> m_rebasePendingMessage;
 };
 
 #endif
