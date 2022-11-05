@@ -135,7 +135,7 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
     }
     if (exitCode != 0) {
         if ((m_operation == Operation::CheckForUpdate) && (exitCode == 77)) {
-            // rpm-ostree may exit with status 77 when no updates are available
+            // rpm-ostree will exit with status 77 when no updates are available
             qInfo() << "rpm-ostree-backend: No updates available";
             // Tell the backend to look for a new major version
             Q_EMIT lookForNextMajorVersion();
