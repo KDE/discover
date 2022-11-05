@@ -432,6 +432,20 @@ QString refToBundleId(FlatpakRef *ref)
         + flatpak_ref_get_branch(ref);
 }
 
+void extendsIfPostfixed(AppStream::Component &cid,
+                        QLatin1String postfix,
+                        FlatpakInstallation *installation,
+                        FlatpakInstalledRef *ref,
+                        GCancellable *cancellable)
+{
+    if (!cid.id().endsWith(postfix)) {
+        return;
+    }
+    QString id = cid.id();
+    id.remove(postfix);
+    cid.addExtends(postfix);
+}
+
 FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref, bool *freshResource) const
 {
     if (freshResource)
@@ -484,6 +498,9 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
 #if FLATPAK_CHECK_VERSION(1, 1, 2)
             cid.setName(QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref)));
 #endif
+            extendsIfPostfixed(cid, QLatin1String(".Locale"), installation, ref, m_cancellable);
+            extendsIfPostfixed(cid, QLatin1String(".Debug"), installation, ref, m_cancellable);
+            extendsIfPostfixed(cid, QLatin1String(".Docs"), installation, ref, m_cancellable);
         } else
             cid = metadata.component();
     }
@@ -1472,7 +1489,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 resources.reserve(resources.size() + refs->len);
                 for (uint i = 0; i < refs->len; i++) {
                     FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
-                    QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref));
+                    QString name = QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(ref)));
                     if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp"))
                         || name.endsWith(QLatin1String(".Docs")))
                         continue;
@@ -1481,7 +1498,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     if (!filter.search.isEmpty() && !resource->name().contains(filter.search, Qt::CaseInsensitive))
                         continue;
 
-                    if (resource->resourceType() == FlatpakResource::Runtime) {
+                    if (resource->isDesktopApp()) {
                         resources.prepend(resource);
                     } else {
                         resources.append(resource);
