@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-04 00:47+0000\n"
-"PO-Revision-Date: 2022-10-30 11:04+0100\n"
+"POT-Creation-Date: 2022-11-05 00:47+0000\n"
+"PO-Revision-Date: 2022-11-04 13:35+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -43,9 +43,8 @@ msgstr "Domini públic"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:97
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:255
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:335
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:296
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:257
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -1946,12 +1945,12 @@ msgstr[1] "%1 paquets a actualitzar"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
 #, kde-format
 msgid "<li>%1 (%2): No changelog information</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): No hi ha informació en el registre de canvis</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
 #, kde-format
 msgid "<li>%1 (%2): %3</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): %3</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
 #, kde-format
@@ -2096,70 +2095,107 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Sistema operatiu"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:241
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:143
+#, kde-format
+msgid ""
+"An update has been successfully installed. Reboot your system at your "
+"convenience to start using it."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
+#, kde-format
+msgid ""
+"<b>A new major version of %1 has been released!</b>\n"
+"To be able to update to this new version, make sure to apply all pending "
+"updates and reboot your system."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
+#, kde-format
+msgid "Upgrade to %1 %2"
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
+#, kde-format
+msgid "<b>A new major version has been released!</b>"
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:329
+#, kde-format
+msgid ""
+"The update to %1 %2 has been successfully installed. Reboot your system at "
+"your convenience to start using it."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:439
+#, kde-format
+msgid "You have pending updates for the current version. Proceeding anyway."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:442
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Actualitzeu a la versió més recent abans de moure de base («rebasing») a una "
 "versió major"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:247
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:450
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 "Manca la «ref» remota per a l'operació de «rebase». Informeu de l'error."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:252
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:254
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL i altres llicències"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:262
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:264
 #, kde-format
 msgid "Additional packages: "
 msgstr "Paquets addicionals: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:269
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:271
 #, kde-format
 msgid "Additional modules: "
 msgstr "Mòduls addicionals: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:276
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:278
 #, kde-format
 msgid "Local packages: "
 msgstr "Paquets locals: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:283
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:285
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Paquets substituïts:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:290
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:292
 #, kde-format
 msgid "Removed packages:"
 msgstr "Paquets eliminats:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:342
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Versió actualment arrencada (fixada)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
 #, kde-format
 msgid "Currently booted version"
 msgstr "Versió actualment arrencada"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "Versió que s'emprarà després de tornar a arrencar"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Versió alternativa de reserva (fixada)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:353
 #, kde-format
 msgid "Fallback version"
 msgstr "Versió alternativa de reserva"
@@ -2169,12 +2205,13 @@ msgstr "Versió alternativa de reserva"
 msgid "ostree remotes"
 msgstr "Remots d'«ostree»"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:114
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:131
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:154
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
 msgstr "La transacció «rpm-ostree» ha fallat per:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:248
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:294
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
@@ -2182,30 +2219,36 @@ msgstr ""
 "S'està cancel·lant la transacció «rpm-ostree». Això pot trigar una estona. "
 "Espereu."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:277
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:323
 #, kde-format
 msgid "Checking for a system update"
 msgstr "S'està comprovant si hi ha una actualització del sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:280
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:326
 #, kde-format
 msgid "Downloading system update"
 msgstr "S'està baixant una actualització del sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:283
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:329
 #, kde-format
 msgid "Updating the system"
 msgstr "S'està actualitzant el sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:286
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:332
 #, kde-format
 msgid "Updating to the next major version"
 msgstr "S'està actualitzant a la versió major següent"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:289
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:335
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
 msgstr "La transacció és en curs (s'ha iniciat fora del Discover)"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:341
+#, fuzzy, kde-format
+#| msgid "Cannot cancel transaction"
+msgid "Unknown transaction type"
+msgstr "No s'ha pogut cancel·lar la transacció"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

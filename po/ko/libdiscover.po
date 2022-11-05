@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-04 00:47+0000\n"
+"POT-Creation-Date: 2022-11-05 00:47+0000\n"
 "PO-Revision-Date: 2022-10-04 15:21+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -39,9 +39,8 @@ msgstr "공개 도메인"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:97
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:255
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:335
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:296
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:257
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -2056,36 +2055,74 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "운영 체제"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:241
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:143
+#, kde-format
+msgid ""
+"An update has been successfully installed. Reboot your system at your "
+"convenience to start using it."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
+#, kde-format
+msgid ""
+"<b>A new major version of %1 has been released!</b>\n"
+"To be able to update to this new version, make sure to apply all pending "
+"updates and reboot your system."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
+#, fuzzy, kde-format
+#| msgid "Upgrade"
+msgid "Upgrade to %1 %2"
+msgstr "업그레이드"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
+#, kde-format
+msgid "<b>A new major version has been released!</b>"
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:329
+#, kde-format
+msgid ""
+"The update to %1 %2 has been successfully installed. Reboot your system at "
+"your convenience to start using it."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:439
+#, kde-format
+msgid "You have pending updates for the current version. Proceeding anyway."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:442
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:247
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:450
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:252
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:254
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL과 기타 라이선스"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:262
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:264
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional packages: "
 msgstr "추가 변경 사항 확인"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:269
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:271
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional modules: "
 msgstr "추가 변경 사항 확인"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:276
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:278
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -2094,7 +2131,7 @@ msgstr "추가 변경 사항 확인"
 msgid "Local packages: "
 msgstr "메타 패키지"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:283
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:285
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -2103,36 +2140,36 @@ msgstr "메타 패키지"
 msgid "Replaced packages:"
 msgstr "메타 패키지"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:290
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:292
 #, fuzzy, kde-format
 #| msgctxt "@info:status Package state"
 #| msgid "Required by other packages"
 msgid "Removed packages:"
 msgstr "다른 패키지에서 필요함"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:342
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, fuzzy, kde-format
 #| msgid "Current Version:"
 msgid "Currently booted version (pinned)"
 msgstr "현재 버전:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
 #, fuzzy, kde-format
 #| msgid "Current Version:"
 msgid "Currently booted version"
 msgstr "현재 버전:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:353
 #, kde-format
 msgid "Fallback version"
 msgstr ""
@@ -2142,48 +2179,55 @@ msgstr ""
 msgid "ostree remotes"
 msgstr "ostree 원격"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:114
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:131
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:154
 #, fuzzy, kde-format
 #| msgid "Current rpm-ostree transaction in progress:"
 msgid "rpm-ostree transaction failed with:"
 msgstr "현재 진행 중인 rpm-ostree 트랜잭션:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:248
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:294
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:277
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:323
 #, fuzzy, kde-format
 #| msgctxt "@action Checks the Internet for updates"
 #| msgid "Check for Updates"
 msgid "Checking for a system update"
 msgstr "업데이트 확인"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:280
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:326
 #, fuzzy, kde-format
 #| msgctxt "@info Status information, widget title"
 #| msgid "Downloading Packages"
 msgid "Downloading system update"
 msgstr "패키지 다운로드 중"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:283
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:329
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Operating System"
 msgid "Updating the system"
 msgstr "운영 체제"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:286
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:332
 #, kde-format
 msgid "Updating to the next major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:289
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:335
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
 msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:341
+#, fuzzy, kde-format
+#| msgid "Cannot cancel transaction"
+msgid "Unknown transaction type"
+msgstr "트랜잭션을 취소할 수 없음"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2620,9 +2664,6 @@ msgstr "부가 기능"
 #~ msgctxt "Notification when a new version of Kubuntu is available"
 #~ msgid "A new version of Kubuntu is available"
 #~ msgstr "Kubuntu 새 버전을 사용할 수 있습니다"
-
-#~ msgid "Upgrade"
-#~ msgstr "업그레이드"
 
 #~ msgctxt "@title:window"
 #~ msgid "Media Change Required"
