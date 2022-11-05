@@ -113,25 +113,15 @@ private:
      * Behaviour for Fedora: Enable rebasing to Rawhide */
     bool m_developmentEnabled;
 
-    /* Message to display when:
-     * - No new major version is available
-     * - An update to the current version is pending a reboot */
-    QSharedPointer<InlineMessage> m_updatePendingMessage;
-
-    /* Message to display when:
+    /* Custom message that takes into account major upgrades. To display when:
      * - A new major version is available
      * - An update to the current version is available or pending a reboot */
-    QSharedPointer<InlineMessage> m_updateRebaseMessage;
+    QSharedPointer<InlineMessage> m_rebootBeforeRebaseMessage;
 
-    /* Message to display when:
+    /* Custom message that takes into account major upgrades. To display when:
      * - A new major version is available
      * - No update to the current version are available or pending a reboot */
-    QSharedPointer<InlineMessage> m_rebaseMessage;
-
-    /* Message to display when:
-     * - A new major version is available
-     * - A rebase to this new major version is pending a reboot */
-    QSharedPointer<InlineMessage> m_rebasePendingMessage;
+    QSharedPointer<InlineMessage> m_rebaseAvailableMessage;
 };
 
 #endif

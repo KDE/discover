@@ -139,10 +139,6 @@ void RpmOstreeBackend::initializeBackend()
     // Fetch existing deployments
     refreshDeployments();
 
-    // Create status message for reboot suggestion
-    QString info = i18n("An update has been successfully installed. Reboot your system at your convenience to start using it.");
-    m_updatePendingMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info);
-
     // Look for a potentially already in-progress rpm-ostree transaction that
     // was started outside of Discover
     const QString transaction = m_interface->activeTransactionPath();
@@ -178,6 +174,9 @@ void RpmOstreeBackend::refreshDeployments()
             connect(deployment, &RpmOstreeResource::stateChanged, [this]() {
                 Q_EMIT updatesCountChanged();
             });
+        } else if (deployment->isPending()) {
+            // Signal that we have a pending update
+            m_updater->enableNeedsReboot();
         }
     }
 
@@ -212,10 +211,11 @@ void RpmOstreeBackend::checkForUpdates()
             if (deployment->version() == newVersion) {
                 qInfo() << "rpm-ostree-backend: Found existing deployment for new version. Skipping.";
                 // Let the user know that the update is pending a reboot
+                m_updater->enableNeedsReboot();
                 if (currentlyBootedDeployment()->getNextMajorVersion().isEmpty()) {
-                    Q_EMIT inlineMessageChanged(m_updatePendingMessage);
+                    Q_EMIT inlineMessageChanged(nullptr);
                 } else {
-                    Q_EMIT inlineMessageChanged(m_updateRebaseMessage);
+                    Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
                 }
                 return;
             }
@@ -226,7 +226,7 @@ void RpmOstreeBackend::checkForUpdates()
         if (currentlyBootedDeployment()->getNextMajorVersion().isEmpty()) {
             Q_EMIT inlineMessageChanged(nullptr);
         } else {
-            Q_EMIT inlineMessageChanged(m_updateRebaseMessage);
+            Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
         }
     });
     connect(m_transaction, &RpmOstreeTransaction::lookForNextMajorVersion, this, &RpmOstreeBackend::lookForNextMajorVersion);
@@ -313,7 +313,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
         "<b>A new major version of %1 has been released!</b>\n"
         "To be able to update to this new version, make sure to apply all pending updates and reboot your system.",
         currentlyBootedDeployment()->packageName());
-    m_updateRebaseMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info);
+    m_rebootBeforeRebaseMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info);
 
     // Message to display when:
     // - A new major version is available
@@ -321,15 +321,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
     DiscoverAction *rebase = new DiscoverAction(i18n("Upgrade to %1 %2", currentlyBootedDeployment()->packageName(), newMajorVersion), this);
     connect(rebase, &DiscoverAction::triggered, this, &RpmOstreeBackend::rebaseToNewVersion);
     info = i18n("<b>A new major version has been released!</b>");
-    m_rebaseMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info, rebase);
-
-    // Message to display when:
-    // - A new major version is available
-    // - A rebase to this new major version is pending a reboot
-    info = i18n("The update to %1 %2 has been successfully installed. Reboot your system at your convenience to start using it.",
-                currentlyBootedDeployment()->packageName(),
-                newMajorVersion);
-    m_rebasePendingMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info);
+    m_rebaseAvailableMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info, rebase);
 
     // Look for an existing deployment for the new major version
     QVectorIterator<RpmOstreeResource *> iterator(m_resources);
@@ -342,7 +334,8 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
         }
         if (deploymentVersion == newMajorVersion) {
             qInfo() << "rpm-ostree-backend: Found existing deployment for new major version";
-            Q_EMIT inlineMessageChanged(m_rebasePendingMessage);
+            m_updater->enableNeedsReboot();
+            Q_EMIT inlineMessageChanged(nullptr);
             return;
         }
     }
@@ -355,7 +348,8 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
         RpmOstreeResource *deployment = iterator.next();
         if ((deployment->version() == newVersion) || deployment->isPending()) {
             qInfo() << "rpm-ostree-backend: Found pending or updated deployment for current version";
-            Q_EMIT inlineMessageChanged(m_updateRebaseMessage);
+            m_updater->enableNeedsReboot();
+            Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
             return;
         }
     }
@@ -366,13 +360,14 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
     // version.
     if (currentlyBootedDeployment()->state() == AbstractResource::Upgradeable) {
         qInfo() << "rpm-ostree-backend: Found pending update for current version";
-        Q_EMIT inlineMessageChanged(m_updateRebaseMessage);
+        m_updater->enableNeedsReboot();
+        Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
         return;
     }
 
     // No updates pending or avaiable. We are good to offer the rebase to the
     // next major version!
-    Q_EMIT inlineMessageChanged(m_rebaseMessage);
+    Q_EMIT inlineMessageChanged(m_rebaseAvailableMessage);
     // Finally set the new major version for the resource only when we are truly
     // ready to offer to rebase to it
     currentlyBootedDeployment()->setNewMajorVersion(newMajorVersion);
