@@ -109,6 +109,7 @@ SimpleKCM {
         RowLayout {
             spacing: Kirigami.Units.smallSpacing
             Kirigami.FormData.label: i18n("Use offline updates:")
+            visible: !kcm.isRpmOstree
 
             QQC2.CheckBox {
                 id: offlineUpdatesBox
