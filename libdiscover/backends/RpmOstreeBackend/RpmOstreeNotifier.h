@@ -8,8 +8,14 @@
 #define RPMOSTREENOTIFIER_H
 
 #include <BackendNotifierModule.h>
-#include <QDebug>
 
+#include <QDebug>
+#include <QProcess>
+
+/* Look for new system updates with rpm-ostree.
+ * Uses only the rpm-ostree command line to simplify logic for now.
+ * TODO: Use the DBus interface.
+ */
 class RpmOstreeNotifier : public BackendNotifierModule
 {
     Q_OBJECT
@@ -20,29 +26,31 @@ public:
     ~RpmOstreeNotifier() override;
 
     void recheckSystemUpdateNeeded() override;
-    bool hasSecurityUpdates() override
-    {
-        return false;
-    }
+    bool hasSecurityUpdates() override;
     bool hasUpdates() override;
     bool needsReboot() const override;
 
 private:
-    bool m_hasUpdates = false;
-    bool m_needsReboot = false;
+    /* Tracks the rpm-ostree command used to check for updates or to look at the
+     * status. */
+    QProcess *m_process;
 
-    /*
-     * Getting the output resulting from executing the QProcess update check.
-     * and setting m_newUpdate to true if there is a new version.
-     */
-    void readUpdateOutput(QIODevice *device);
+    /* Store standard output from rpm-ostree command line calls */
+    QByteArray m_stdout;
 
-    /*
-     * It is executed whenever there is a change in the tracked file (/tmp/discover-ostree-changed)
-     * to check if the installation of the new update is finished and
-     * the system needs to be rebooted.
-     */
-    void nowNeedsReboot();
+    /* The update version that we've already found in a previous check. Used to
+     * only notify once about an update for a given version. */
+    QString m_updateVersion;
+
+    /* Check if we already have a pending deployment for the version avaialbe
+     * for update */
+    void checkForPendingDeployment();
+
+    /* Do we have updates available? */
+    bool m_hasUpdates;
+
+    /* Do we need to reboot to apply updates? */
+    bool m_needsReboot;
 };
 
 #endif
