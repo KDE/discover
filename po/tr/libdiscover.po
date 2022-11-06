@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-05 00:47+0000\n"
-"PO-Revision-Date: 2022-11-04 10:08+0300\n"
+"PO-Revision-Date: 2022-11-05 20:38+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2090,6 +2090,8 @@ msgid ""
 "An update has been successfully installed. Reboot your system at your "
 "convenience to start using it."
 msgstr ""
+"Güncellemeler başarıyla kuruldu. Kullanmaya başlamak için uygun bir zamanda "
+"bilgisayarınızı yeniden başlatın."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
 #, kde-format
@@ -2098,16 +2100,19 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>%1 uygulamasının yeni majör bir sürümü yayımlandı!</b>\n"
+"Bu yeni sürümü kullanmaya başlamak için, lütfen bekleyen tüm güncellemeleri "
+"uygulayın ve sisteminizi yeniden başlatın."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr ""
+msgstr "Güncellenecek sürüm: %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>Yeni bir majör sürüm yayımlandı!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:329
 #, kde-format
@@ -2115,11 +2120,14 @@ msgid ""
 "The update to %1 %2 has been successfully installed. Reboot your system at "
 "your convenience to start using it."
 msgstr ""
+"%1 %2 güncellemesi başarıyla kuruldu. Bu yeni sürümü kullanmaya başlamak "
+"için, lütfen bekleyen tüm güncellemeleri uygulayın ve sisteminizi yeniden "
+"başlatın."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:439
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr ""
+msgstr "Geçerli sürüm için bekleyen güncellemeler var. İşlem sürdürülüyor."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:442
 #, kde-format
@@ -2234,10 +2242,9 @@ msgid "Transaction in progress (started outside of Discover)"
 msgstr "İşlem sürüyor (Keşfet'ten bağımsız olarak başlatıldı)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:341
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "İşlem iptal edilemiyor"
+msgstr "Bilinmeyen işlem türü"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

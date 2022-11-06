@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-05 00:47+0000\n"
-"PO-Revision-Date: 2022-11-04 06:19+0100\n"
+"PO-Revision-Date: 2022-11-05 11:10+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -2100,6 +2100,8 @@ msgid ""
 "An update has been successfully installed. Reboot your system at your "
 "convenience to start using it."
 msgstr ""
+"Eguneraketa ondo instalatu da. Berrabiarazi zure sistema ondo datorkizunean, "
+"hura erabiltzen hasteko."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
 #, kde-format
@@ -2108,16 +2110,19 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>%1(e)n bertsio nagusi berri bat argitaratu da!</b>\n"
+"Bertsio berri horretara eguneratu ahal izateko, ezar itzazu egiteko dauden "
+"eguneratze guztiak eta berrabiatu zure sistema."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr ""
+msgstr "Bertsio-berritu %1 %2(e)ra"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>Bertsio nagusi berri bat argitaratu da!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:329
 #, kde-format
@@ -2125,11 +2130,13 @@ msgid ""
 "The update to %1 %2 has been successfully installed. Reboot your system at "
 "your convenience to start using it."
 msgstr ""
+"%1 %2(e)rako eguneratzea ondo instalatu da. Berrabiatu sistema ondo "
+"datorkizunean hura erabiltzen hasteko."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:439
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr ""
+msgstr "Uneko bertsioan egin beharreko eguneratzeak dituzu. Aurrera hala ere."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:442
 #, kde-format
@@ -2245,10 +2252,9 @@ msgid "Transaction in progress (started outside of Discover)"
 msgstr "Transakzioa martxan (Discover-ren kanpotik hasi da)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:341
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Ezin transakzioa bertan behera utzi"
+msgstr "Transakzioa mota ezezaguna"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

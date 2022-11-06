@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-05 00:47+0000\n"
-"PO-Revision-Date: 2022-11-04 12:59+0200\n"
+"PO-Revision-Date: 2022-11-05 19:23+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -2120,6 +2120,8 @@ msgid ""
 "An update has been successfully installed. Reboot your system at your "
 "convenience to start using it."
 msgstr ""
+"Оновлення успішно встановлено. Перезавантажте вашу систему у зручний для вас "
+"час, щоб почати користуватися ним."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
 #, kde-format
@@ -2128,17 +2130,19 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>Випущено нову основну версію %1!</b>\n"
+"Щоб мати змогу оновитися до цієї нової версії, переконайтеся, що застосовано "
+"усі оновлення з черги оновлень і перезавантажте вашу систему."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
-#, fuzzy, kde-format
-#| msgid "Upgrade"
+#, kde-format
 msgid "Upgrade to %1 %2"
-msgstr "Оновлення"
+msgstr "Оновлення до %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>Випущено нову основну версію!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:329
 #, kde-format
@@ -2146,11 +2150,13 @@ msgid ""
 "The update to %1 %2 has been successfully installed. Reboot your system at "
 "your convenience to start using it."
 msgstr ""
+"Оновлення до %1 %2 успішно встановлено. Перезавантажте вашу систему у "
+"зручний для вас час, щоб почати користуватися ним."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:439
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr ""
+msgstr "У черзі оновлень є оновлення поточної версії. Продовжуємо попри це."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:442
 #, kde-format
@@ -2266,10 +2272,9 @@ msgid "Transaction in progress (started outside of Discover)"
 msgstr "Виконуємо операцію (розпочато поза Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:341
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Не вдалося скасувати дію"
+msgstr "Невідомий тип дії"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

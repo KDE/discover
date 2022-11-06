@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-05 00:47+0000\n"
-"PO-Revision-Date: 2022-11-02 23:01+0100\n"
+"PO-Revision-Date: 2022-11-05 17:29+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 22.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1936,12 +1936,12 @@ msgstr[1] "%1 пакета за актуализиране"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
 #, kde-format
 msgid "<li>%1 (%2): No changelog information</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): Няма информация на changelog </li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
 #, kde-format
 msgid "<li>%1 (%2): %3</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): %3</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
 #, kde-format
@@ -2091,6 +2091,8 @@ msgid ""
 "An update has been successfully installed. Reboot your system at your "
 "convenience to start using it."
 msgstr ""
+"Успешно е инсталирана актуализация. Рестартирайте системата си в удобно за "
+"вас време, за да започнете да я използвате."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
 #, kde-format
@@ -2099,16 +2101,19 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>Издадена е нова основна версия на %1!</b>\n"
+"За да можете да актуализирате до тази нова версия, уверете се, че сте "
+"приложили всички чакащи актуализации и рестартирайте системата си."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr ""
+msgstr "Актуализиране до %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>Издадена е нова основна версия!/b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:329
 #, kde-format
@@ -2116,11 +2121,13 @@ msgid ""
 "The update to %1 %2 has been successfully installed. Reboot your system at "
 "your convenience to start using it."
 msgstr ""
+"Актуализацията на %1 %2 е инсталирана успешно. Рестартирайте системата си в "
+"удобно за вас време, за да започнете да я използвате."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:439
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr ""
+msgstr "Имате чакащи актуализации за текущата версия. Продължаваме все пак."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:442
 #, kde-format
@@ -2236,10 +2243,9 @@ msgid "Transaction in progress (started outside of Discover)"
 msgstr "Транзакция в процес на изпълнение (започната извън Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:341
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Транзакцията не може да бъде отменена"
+msgstr "Неизвестен вид транзакция"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
