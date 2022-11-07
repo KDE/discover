@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:47+0000\n"
+"POT-Creation-Date: 2022-11-07 00:45+0000\n"
 "PO-Revision-Date: 2011-12-28 12:28-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -2160,13 +2160,6 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Bunchóras"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:143
-#, kde-format
-msgid ""
-"An update has been successfully installed. Reboot your system at your "
-"convenience to start using it."
-msgstr ""
-
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
 #, kde-format
 msgid ""
@@ -2187,24 +2180,17 @@ msgstr "Uasghrádaigh"
 msgid "<b>A new major version has been released!</b>"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:329
-#, kde-format
-msgid ""
-"The update to %1 %2 has been successfully installed. Reboot your system at "
-"your convenience to start using it."
-msgstr ""
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:439
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:434
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:442
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:437
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:450
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:445
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""

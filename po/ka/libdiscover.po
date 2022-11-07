@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:47+0000\n"
-"PO-Revision-Date: 2022-10-31 05:16+0100\n"
+"POT-Creation-Date: 2022-11-07 00:45+0000\n"
+"PO-Revision-Date: 2022-11-06 05:15+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -526,22 +526,22 @@ msgstr "ლოკალური პაკეტი"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:608
 #, kde-format
 msgid "Malformed appstream url '%1'"
-msgstr ""
+msgstr "აღმავლის არასწორი URL '%1'"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr ""
+msgstr "წყაროს (%1) დამატების შეცდომა: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, kde-format
 msgid "There are no Flatpak sources."
-msgstr ""
+msgstr "FlatPak-ის წყარო არ არსებობს."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
 #, kde-format
 msgid "Failed to load \"%1\" source"
-msgstr ""
+msgstr "\"%1\"-ის წყაროს ჩატვირთვის შეცდომა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:343
 #, kde-kuit-format
@@ -694,7 +694,7 @@ msgstr "სისტემის ქვედა დონესთან წვ
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "შეუძლია დაბალი დონის სისტემური ფუნქციების გამოძახება (მაგ: ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
@@ -705,6 +705,7 @@ msgstr "მოწყობილობასთან წვდომა"
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
+"ჩადგმული ან მიერთებული აპარატურული მოწყობილობების მართვა და მათთან ურთიერთობა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
@@ -714,7 +715,7 @@ msgstr "KVM-ზე დაფუძნებულ ვირტუალურ �
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
-msgstr ""
+msgstr "ვირტუალურ მანქანებში სხვა ოპერაციული სისტემების გაშვების უფლება"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:871
@@ -900,12 +901,12 @@ msgstr "ლიცენზიის გადახედვა"
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
 #, kde-format
 msgid "Could not enable remote %1: %2"
-msgstr ""
+msgstr "დაშორებულის (%1) ჩართვის შეცდომა: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:107
 #, kde-format
 msgid "Backend %1 took too long to initialize"
-msgstr ""
+msgstr "უკანაბოლოს %1 ინიციალიზაციისთვის მეტისმეტად დიდი დრო დასჭირდა"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:169
 #, kde-format
@@ -939,7 +940,7 @@ msgstr ""
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:436
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
-msgstr ""
+msgstr "არასწორი %1 უკანაბოლო. დაუკავშირდით თქვენს დისტრიბუტორს."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
 #, kde-format
@@ -979,7 +980,7 @@ msgstr "KDE -ის მაღაზია"
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
 #, kde-format
 msgid "Log in information for %1"
-msgstr ""
+msgstr "შესვლის ინფორმაცია %1-სთვის"
 
 #: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:226
 #, kde-format
@@ -1885,12 +1886,12 @@ msgstr[1] "%1 გასაახლებელი პაკეტი"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
 #, kde-format
 msgid "<li>%1 (%2): No changelog information</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): ცვლილებების შესახებ ინფორმაციის გარეშე</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
 #, kde-format
 msgid "<li>%1 (%2): %3</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): %3</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
 #, kde-format
@@ -2007,13 +2008,6 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "ოპერაციული სისტემა"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:143
-#, kde-format
-msgid ""
-"An update has been successfully installed. Reboot your system at your "
-"convenience to start using it."
-msgstr ""
-
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
 #, kde-format
 msgid ""
@@ -2032,24 +2026,17 @@ msgstr ""
 msgid "<b>A new major version has been released!</b>"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:329
-#, kde-format
-msgid ""
-"The update to %1 %2 has been successfully installed. Reboot your system at "
-"your convenience to start using it."
-msgstr ""
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:439
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:434
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:442
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:437
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:450
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:445
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2087,7 +2074,7 @@ msgstr "წაშლილი პაკეტები:"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr ""
+msgstr "ამჟამად ჩატვირთული ვერსია (მიმაგრებული)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
 #, kde-format
@@ -2107,7 +2094,7 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:353
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "შეცდომის შემთხვევაში გადასართველი ვერსია"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
@@ -2152,10 +2139,9 @@ msgid "Transaction in progress (started outside of Discover)"
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:341
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "ტრანზაქციის გაუქმება შეუძლებელია"
+msgstr "ტრანზაქციის უცნობი ტიპი"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

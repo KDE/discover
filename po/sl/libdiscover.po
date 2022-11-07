@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:47+0000\n"
+"POT-Creation-Date: 2022-11-07 00:45+0000\n"
 "PO-Revision-Date: 2022-11-05 08:44+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
-"%100<=4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.1.1\n"
 
@@ -2102,15 +2102,6 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Operacijski sistem"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:143
-#, kde-format
-msgid ""
-"An update has been successfully installed. Reboot your system at your "
-"convenience to start using it."
-msgstr ""
-"Posodobitev je bila uspešna. Ponovno zaženite svoj sistem, da ga začnete "
-"uporabljati."
-
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
 #, kde-format
 msgid ""
@@ -2132,26 +2123,17 @@ msgstr "Posodobi na %1 %2"
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Izšla je novejša večja različica!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:329
-#, kde-format
-msgid ""
-"The update to %1 %2 has been successfully installed. Reboot your system at "
-"your convenience to start using it."
-msgstr ""
-"Posodobitev na %1 %2 je bila uspešno nameščena. Znova zaženite svoj sistem, "
-"da ga začnete uporabljati."
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:439
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:434
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Za trenutno različico imate čakajoče posodobitve. Vseeno nadaljujem."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:442
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:437
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "Posodobite na zadnjo različico pred spremembo osnovne različice"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:450
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:445
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2411,6 +2393,20 @@ msgstr "Sistemsko programje"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Dodatki"
+
+#~ msgid ""
+#~ "An update has been successfully installed. Reboot your system at your "
+#~ "convenience to start using it."
+#~ msgstr ""
+#~ "Posodobitev je bila uspešna. Ponovno zaženite svoj sistem, da ga začnete "
+#~ "uporabljati."
+
+#~ msgid ""
+#~ "The update to %1 %2 has been successfully installed. Reboot your system "
+#~ "at your convenience to start using it."
+#~ msgstr ""
+#~ "Posodobitev na %1 %2 je bila uspešno nameščena. Znova zaženite svoj "
+#~ "sistem, da ga začnete uporabljati."
 
 #~ msgid "Remote: "
 #~ msgstr "Oddaljeno: "

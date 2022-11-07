@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:47+0000\n"
+"POT-Creation-Date: 2022-11-07 00:45+0000\n"
 "PO-Revision-Date: 2022-11-05 19:23+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2114,15 +2114,6 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Операційна система"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:143
-#, kde-format
-msgid ""
-"An update has been successfully installed. Reboot your system at your "
-"convenience to start using it."
-msgstr ""
-"Оновлення успішно встановлено. Перезавантажте вашу систему у зручний для вас "
-"час, щоб почати користуватися ним."
-
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
 #, kde-format
 msgid ""
@@ -2144,28 +2135,19 @@ msgstr "Оновлення до %1 %2"
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Випущено нову основну версію!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:329
-#, kde-format
-msgid ""
-"The update to %1 %2 has been successfully installed. Reboot your system at "
-"your convenience to start using it."
-msgstr ""
-"Оновлення до %1 %2 успішно встановлено. Перезавантажте вашу систему у "
-"зручний для вас час, щоб почати користуватися ним."
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:439
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:434
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "У черзі оновлень є оновлення поточної версії. Продовжуємо попри це."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:442
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:437
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Будь ласка, виконайте оновлення до найсвіжішої версії до переходу до "
 "основної версії"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:450
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:445
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2427,6 +2409,20 @@ msgstr "Програмне забезпечення системи"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Додатки"
+
+#~ msgid ""
+#~ "An update has been successfully installed. Reboot your system at your "
+#~ "convenience to start using it."
+#~ msgstr ""
+#~ "Оновлення успішно встановлено. Перезавантажте вашу систему у зручний для "
+#~ "вас час, щоб почати користуватися ним."
+
+#~ msgid ""
+#~ "The update to %1 %2 has been successfully installed. Reboot your system "
+#~ "at your convenience to start using it."
+#~ msgstr ""
+#~ "Оновлення до %1 %2 успішно встановлено. Перезавантажте вашу систему у "
+#~ "зручний для вас час, щоб почати користуватися ним."
 
 #~ msgid "Remote: "
 #~ msgstr "Віддалене сховище:"
