@@ -1,0 +1,278 @@
+<!DOCTYPE node PUBLIC
+"-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+
+
+<!--
+  Copyright © 2021-2022 Collabora Ltd.
+  SPDX-License-Identifier: MIT
+
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to
+  the following conditions:
+
+  The above copyright notice and this permission notice shall be included
+  in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+<node name="/" xmlns:doc="http://www.freedesktop.org/dbus/1.0/doc.dtd">
+  <!--
+      com.steampowered.Atomupd1:
+      @short_description: Interface to control an atomic update
+  -->
+  <interface name="com.steampowered.Atomupd1">
+
+    <!--
+        Version:
+
+        The version of this interface implemented by this object.
+        This file documents version 1 of the interface.
+    -->
+    <property name="Version" type="u" access="read"/>
+
+    <!--
+        ProgressPercentage:
+
+        Percentage of how much of the update process has been completed.
+    -->
+    <property name="ProgressPercentage" type="d" access="read">
+      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+    </property>
+
+    <!--
+        EstimatedCompletionTime:
+
+        A Unix timestamp with seconds precision, that indicates when the update
+        process is expected to complete.
+        0 if no estimate is available.
+    -->
+    <property name="EstimatedCompletionTime" type="t" access="read">
+      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+    </property>
+
+    <!--
+        UpdateStatus:
+
+        An UpdateStatus enum, representing the status of the update.
+        The possible values are:
+        0 = IDLE, the update has not been launched yet
+        1 = IN_PROGRESS, the update is currently being applied
+        2 = PAUSED, the update has been paused
+        3 = SUCCESSFUL, the update process successfully completed
+        4 = FAILED, an error occurred during the update
+        5 = CANCELLED, a special case of FAILED where the update attempt has been cancelled
+    -->
+    <property name="UpdateStatus" type="u" access="read">
+      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+    </property>
+
+    <!--
+        UpdateVersion:
+
+        String representing the version ID of the update that has been chosen
+        when `StartUpdate` method was executed.
+        It is the empty string if `StartUpdate` has not been called yet.
+    -->
+    <property name="UpdateVersion" type="s" access="read"/>
+
+    <!--
+        Variant:
+
+        String that represents the chosen update variant that is currently
+        being tracked.
+        This value is updated every time a new variant is chosen with
+        `SwitchToVariant` method or via the CLI tool steamos-select-branch.
+        Typical values include `steamdeck` and `steamdeck-beta`.
+        It defaults to the variant value from the steamos-atomupd manifest JSON
+        if the text file is empty or missing.
+    -->
+    <property name="Variant" type="s" access="read">
+      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+    </property>
+
+    <!--
+        FailureCode:
+
+        A D-Bus error name like `org.freedesktop.DBus.Failed`, or the empty string
+        if the status of UpdateStatus is not FAILED.
+    -->
+    <property name="FailureCode" type="s" access="read">
+      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+    </property>
+
+    <!--
+        FailureMessage:
+
+        A human-readable error message, or the empty string if the status of
+        UpdateStatus is not FAILED.
+    -->
+    <property name="FailureMessage" type="s" access="read">
+      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+    </property>
+
+    <!--
+        VersionsAvailable:
+
+        Map of available update IDs (i.e. version number) to their keys and
+        values. It is an empty map if either there aren't any available
+        updates or if `CheckForUpdates` has not been called yet.
+
+        The values of this map are vardicts that include the following keys:
+        <variablelist>
+          <varlistentry>
+            <term>variant s</term>
+            <listitem><para>
+              Represents the variant of this update. Possible values include
+              `steamdeck` and `steamdeck-beta`.
+            </para></listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>estimated_size t</term>
+            <listitem><para>
+              Estimated download size, in Bytes, to perform the update.
+            </para></listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>update_type u</term>
+            <listitem><para>
+              An enum representing the update type.
+              Possible values are:
+              <simplelist>
+                <member>0: MINOR_UPDATE</member>
+                <member>1: MAJOR_UPDATE</member>
+              </simplelist>
+            </para></listitem>
+          </varlistentry>
+        </variablelist>
+    -->
+    <property name="VersionsAvailable" type="a{sa{sv}}" access="read">
+        <annotation name="org.qtproject.QtDBus.QtTypeName" type="a{sa{sv}}" value="VariantMapMap"/>
+    </property>
+
+    <!--
+        VersionsAvailableLater:
+
+        Map of available update IDs (i.e. version number) to their keys and
+        values. These updates can't be directly installed because they require
+        a base system version that is newer than the current one.
+        It is an empty map if either there aren't any available
+        later updates or if `CheckForUpdates` has not been called yet.
+
+        The values of this map are the same as for `VersionsAvailable`,
+        plus additional vardicts with the following keys:
+        <variablelist>
+          <varlistentry>
+            <term>requires s</term>
+            <listitem><para>
+              Version ID that must be installed before this update.
+            </para></listitem>
+          </varlistentry>
+        </variablelist>
+
+        Please note that here the key `estimated_size` represents the estimated
+        download size, under the assumption that the update will be performed
+        with a system running the version specified in the `requires` key.
+    -->
+    <property name="VersionsAvailableLater" type="a{sa{sv}}" access="read">
+        <annotation name="org.qtproject.QtDBus.QtTypeName" type="a{sa{sv}}" value="VariantMapMap"/>
+    </property>
+
+    <!--
+        CurrentVersion:
+
+        String representing the system version that is currently in use.
+    -->
+    <property name="CurrentVersion" type="s" access="read"/>
+
+    <!--
+        SwitchToVariant:
+        @variant: Desired update variant. Possible values include `steamdeck` and
+          and `steamdeck-beta`
+
+        Change the update variant to @variant.
+        This value is stored in the same text file that the CLI tool
+        steamos-select-branch uses.
+    -->
+    <method name="SwitchToVariant">
+      <arg type="s" name="variant" direction="in"/>
+    </method>
+
+    <!--
+        CheckForUpdates:
+        @options: Vardict with configuration options. None currently available,
+          reserved for future use
+        @versions_available: Map of available update IDs to their keys and values
+        @versions_available_later: Map of available update IDs, to their keys and
+          values, that require a newer system version
+
+        At least one update is available, for the current system version, when
+        @versions_available is not the empty map.
+
+        For more information about the content of @versions_available and
+        @versions_available_later, please refer to the description of the
+        properties `VersionsAvailable` and `VersionsAvailableLater` respectively.
+    -->
+    <method name="CheckForUpdates">
+      <arg type="a{sv}" name="options" direction="in"/>
+      <arg type="a{sa{sv}}" name="versions_available" direction="out"/>
+      <arg type="a{sa{sv}}" name="versions_available_later" direction="out"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.In0" type="a{sv}" value="QVariantMap"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" type="a{sa{sv}}" value="VariantMapMap"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out1" type="a{sa{sv}}" value="VariantMapMap"/>
+    </method>
+
+    <!--
+        StartUpdate:
+        @id: Chosen update ID (i.e. version number) that needs be installed
+
+        Start to apply the @id update.
+        This method is expected to be called after `CheckForUpdates`, with an
+        @id taken from the returned `versions_available`.
+
+        If the provided @id is not a valid update, either because not available
+        or because it requires a newer system version, this method will fail.
+    -->
+    <method name="StartUpdate">
+      <arg type="s" name="id" direction="in"/>
+    </method>
+
+    <!--
+        PauseUpdate:
+
+        Pauses the update that is currently in progress, if any.
+    -->
+    <method name="PauseUpdate">
+    </method>
+
+    <!--
+        ResumeUpdate:
+
+        Resumes a previously paused update. If UpdateStatus is not set to
+        UPDATE_PAUSED, this method is expected to fail.
+    -->
+    <method name="ResumeUpdate">
+    </method>
+
+    <!--
+        CancelUpdate:
+
+        Cancel the update that is currently in progress, if any.
+    -->
+    <method name="CancelUpdate">
+    </method>
+
+  </interface>
+
+</node>

@@ -35,6 +35,11 @@ set_package_properties(Snapd PROPERTIES
     PURPOSE "Required to build the Snap backend"
     TYPE OPTIONAL)
 
+option(BUILD_SteamOSBackend "Build SteamOS support." "OFF")
+if(BUILD_SteamOSBackend)
+    add_subdirectory(SteamOSBackend)
+endif()
+
 option(BUILD_SnapBackend "Build Snap support." "ON")
 if(BUILD_SnapBackend AND AppStreamQt_FOUND AND Snapd_FOUND)
     add_subdirectory(SnapBackend)
