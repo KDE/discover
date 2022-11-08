@@ -562,7 +562,9 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-search"));
         const auto f = [this, stream, filter]() {
             const auto components = !filter.search.isEmpty() ? m_appdata->search(filter.search)
-                                  : filter.category          ? m_appdata->componentsByCategories(filter.category->involvedCategories())
+                                  : filter.category          ? AppStreamUtils::componentsByCategories(m_appdata.get(),
+                                                                                                      filter.category,
+                                                                                                      AppStream::Bundle::KindUnknown)
                                                              : m_appdata->components();
             const QSet<QString> ids = kTransform<QSet<QString>>(components, [](const AppStream::Component &comp) {
                 return comp.id();

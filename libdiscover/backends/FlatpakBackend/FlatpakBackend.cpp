@@ -1508,7 +1508,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
             QList<FlatpakResource *> resources;
             if (source->m_pool) {
                 const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search)
-                    : filter.category                   ? source->m_pool->componentsByCategories(filter.category->involvedCategories())
+                    : filter.category                   ? AppStreamUtils::componentsByCategories(source->m_pool,
+                                                                                                 filter.category,
+                                                                                                 AppStream::Bundle::KindFlatpak)
                                                         : source->m_pool->components();
                 resources = kTransform<QList<FlatpakResource *>>(a, [this, &source](const auto &comp) {
                     return resourceForComponent(comp, source);

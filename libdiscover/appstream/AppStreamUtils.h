@@ -9,6 +9,7 @@
 
 #include <AppStreamQt/component.h>
 #include <AppStreamQt/image.h>
+#include <AppStreamQt/pool.h>
 #include <QColor>
 #include <QList>
 #include <QUrl>
@@ -37,6 +38,8 @@ Q_DECL_EXPORT QString contentRatingText(const AppStream::Component &appdata);
 Q_DECL_EXPORT QString contentRatingDescription(const AppStream::Component &appdata);
 Q_DECL_EXPORT AbstractResource::ContentIntensity contentRatingIntensity(const AppStream::Component &appdata);
 Q_DECL_EXPORT uint contentRatingMinimumAge(const AppStream::Component &appdata);
+
+Q_DECL_EXPORT QList<AppStream::Component> componentsByCategories(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind);
 }
 
 #endif

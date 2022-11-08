@@ -7,10 +7,12 @@
 #include "AppStreamUtils.h"
 
 #include "utils.h"
+#include <AppStreamQt/pool.h>
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/screenshot.h>
 #include <AppStreamQt/spdx.h>
 #include <AppStreamQt/version.h>
+#include <Category/Category.h>
 #include <KLocalizedString>
 #include <QDebug>
 #include <QJsonArray>
@@ -228,4 +230,28 @@ uint AppStreamUtils::contentRatingMinimumAge(const AppStream::Component &appdata
     Q_UNUSED(appdata);
     return 0;
 #endif
+}
+
+static void kRemoveDuplicates(QList<AppStream::Component> &input, AppStream::Bundle::Kind kind)
+{
+    QSet<QString> ret;
+    for (auto it = input.begin(); it != input.end();) {
+        const auto key = kind == AppStream::Bundle::KindUnknown ? it->id() : it->bundle(kind).id();
+        if (!ret.contains(key)) {
+            ret << key;
+            ++it;
+        } else {
+            it = input.erase(it);
+        }
+    }
+}
+
+QList<AppStream::Component> AppStreamUtils::componentsByCategories(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind)
+{
+    QList<AppStream::Component> ret;
+    for (const auto &categoryName : cat->involvedCategories()) {
+        ret += pool->componentsByCategories({categoryName});
+    }
+    kRemoveDuplicates(ret, kind);
+    return ret;
 }
