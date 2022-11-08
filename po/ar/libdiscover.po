@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-07 00:45+0000\n"
-"PO-Revision-Date: 2022-11-01 12:35+0400\n"
+"PO-Revision-Date: 2022-11-07 20:12+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1941,12 +1941,12 @@ msgstr[5] "%1 حزمة للترقية"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
 #, kde-format
 msgid "<li>%1 (%2): No changelog information</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): لا يوجد معلومات عن التغييرات</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
 #, kde-format
 msgid "<li>%1 (%2): %3</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): %3</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
 #, kde-format
@@ -2105,22 +2105,24 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>صدرت إصدارة رئيسة لـ %1!</b>\n"
+"لتكون قادرًا على التحديث إلى هذا الإصدار الجديد، تأكد من تطبيق جميع التحديثات "
+"المعلقة وإعادة تشغيل نظامك."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
-#, fuzzy, kde-format
-#| msgid "Upgrade"
+#, kde-format
 msgid "Upgrade to %1 %2"
-msgstr "رقِّ"
+msgstr "رقِّ إلى %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>صدر إصدار رئيسي جديد!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:434
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr ""
+msgstr "لديك تحديثات معلقة للإصدارة الحالية. سيتابع على أية حالة."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:437
 #, kde-format
@@ -2230,10 +2232,9 @@ msgid "Transaction in progress (started outside of Discover)"
 msgstr "عملية قيد التنفيذ ( بدأت خارج المستكشف)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:341
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "تعذّر إلغاء العمليّة"
+msgstr "نوع معاملة مجهول"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
