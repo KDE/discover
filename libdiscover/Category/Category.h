@@ -88,6 +88,10 @@ public:
     {
         return m_isAddons;
     }
+    qint8 priority() const
+    {
+        return m_priority;
+    }
     bool matchesCategoryName(const QString &name) const;
 
     Q_SCRIPTABLE bool contains(Category *cat) const;
@@ -116,6 +120,7 @@ private:
     CategoryFilter parseIncludes(QXmlStreamReader *xml);
     QSet<QString> m_plugins;
     bool m_isAddons = false;
+    qint8 m_priority = 0;
     QTimer *m_subCategoriesChanged;
 };
 

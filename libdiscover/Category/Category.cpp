@@ -41,6 +41,7 @@ Category::Category(const QString &name,
     , m_subCategories(subCategories)
     , m_plugins(pluginName)
     , m_isAddons(isAddons)
+    , m_priority(isAddons ? 5 : 0)
 {
     setObjectName(m_name);
 
@@ -79,6 +80,7 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml)
             m_subCategories.last()->parseData(path, xml);
         } else if (xml->name() == QLatin1String("Addons")) {
             m_isAddons = true;
+            m_priority = 5;
             xml->readNext();
         } else if (xml->name() == QLatin1String("Icon")) {
             m_iconString = xml->readElementText();
@@ -118,7 +120,11 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml)
             }
         } else if (xml->name() == QLatin1String("Categories")) { // as provided by appstream
             m_filter = parseIncludes(xml);
-        } else if (xml->name() == QLatin1String("Image")) {
+        } else if (xml->name() == QLatin1String("Top")) {
+            xml->skipCurrentElement();
+            m_priority = -5;
+        } else {
+            qDebug() << "unknown element" << xml->name();
             xml->skipCurrentElement();
         }
         Q_ASSERT(xml->isEndElement());
@@ -212,7 +218,7 @@ QVector<Category *> Category::subCategories() const
 
 bool Category::categoryLessThan(Category *c1, const Category *c2)
 {
-    return (!c1->isAddons() && c2->isAddons()) || (c1->isAddons() == c2->isAddons() && QString::localeAwareCompare(c1->name(), c2->name()) < 0);
+    return (c1->priority() < c2->priority()) || (c1->priority() == c2->priority() && QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
 
 static bool isSorted(const QVector<Category *> &vector)
@@ -262,7 +268,7 @@ void Category::addSubcategory(QVector<Category *> &list, Category *newcat)
 
     auto c = *it;
     if (c->name() == newcat->name()) {
-        if (c->icon() != newcat->icon() || c->m_isAddons != newcat->m_isAddons) {
+        if (c->icon() != newcat->icon() || c->m_priority != newcat->m_priority) {
             qCWarning(LIBDISCOVER_LOG) << "the following categories seem to be the same but they're not entirely" << c->icon() << newcat->icon() << "--"
                                        << c->name() << newcat->name() << "--" << c->isAddons() << newcat->isAddons();
         } else {

@@ -4,6 +4,7 @@
   <Menu>
     <Name>All Applications</Name>
     <Icon>applications-all</Icon>
+    <Top />
     <Include>
       <Or>
         <!--All of them-->
