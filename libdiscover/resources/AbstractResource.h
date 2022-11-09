@@ -64,7 +64,6 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QObject *backend READ backendObject CONSTANT)
     Q_PROPERTY(QVariant rating READ ratingVariant NOTIFY ratingFetched)
     Q_PROPERTY(QString appstreamId READ appstreamId CONSTANT)
-    Q_PROPERTY(QString categoryDisplay READ categoryDisplay CONSTANT)
     Q_PROPERTY(QUrl url READ url CONSTANT)
     Q_PROPERTY(QString executeLabel READ executeLabel CONSTANT)
     Q_PROPERTY(QString sourceIcon READ sourceIcon CONSTANT)
@@ -203,11 +202,6 @@ public:
      */
     Rating *rating() const;
     QVariant ratingVariant() const;
-
-    /**
-     * @returns a string defining the categories the resource belongs to
-     */
-    QString categoryDisplay() const;
 
     bool categoryMatches(Category *cat);
 

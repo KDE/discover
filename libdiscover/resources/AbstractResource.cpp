@@ -226,17 +226,6 @@ QSet<Category *> AbstractResource::categoryObjects(const QVector<Category *> &ca
     return walkCategories(const_cast<AbstractResource *>(this), cats);
 }
 
-QString AbstractResource::categoryDisplay() const
-{
-    const auto matchedCategories = categoryObjects(CategoryModel::global()->rootCategories());
-    QStringList ret;
-    for (auto cat : matchedCategories) {
-        ret.append(cat->name());
-    }
-    ret.sort();
-    return ret.join(QLatin1String(", "));
-}
-
 QUrl AbstractResource::url() const
 {
     const QString asid = appstreamId();

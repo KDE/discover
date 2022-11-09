@@ -35,7 +35,7 @@ Kirigami.AbstractCard
     onClicked: trigger()
 
     contentItem: Item {
-        implicitHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 2 : Kirigami.Units.gridUnit * 4
+        implicitHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 2 : Math.round(Kirigami.Units.gridUnit * 3.5)
 
         // App icon
         Kirigami.Icon {
@@ -103,27 +103,28 @@ Kirigami.AbstractCard
                 textFormat: Text.PlainText
             }
 
-            // Container for rating, category, size, and install button
+            // Container for rating, size, and install button
             RowLayout {
                 Layout.fillWidth: true
                 Layout.topMargin: delegateArea.compact ? Kirigami.Units.smallSpacing : Kirigami.Units.largeSpacing
 
-                // Container for rating, category and size labels
+                // Container for rating and size labels
                 ColumnLayout {
                     Layout.fillWidth: true
-                    // Include height of compactInfo for full-sized view even when
-                    // the actual compactInfo layout isn't visible. This tightens up
+                    // Include height of sizeInfo for full-sized view even when
+                    // the actual sizeInfo layout isn't visible. This tightens up
                     // the layout and prevents the install button from appearing
                     // at a different position based on whether or not the
-                    // compactInfo text is visible, because the base layout is
+                    // sizeInfo text is visible, because the base layout is
                     // vertically centered rather than filling a distinct space.
-                    Layout.preferredHeight: delegateArea.compact ? -1 : rating.implicitHeight + compactInfo.implicitHeight
+                    Layout.preferredHeight: delegateArea.compact ? -1 : rating.implicitHeight + sizeInfo.implicitHeight
                     spacing: 0
 
                     // Rating stars + label
                     RowLayout {
                         id: rating
                         Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignTop
                         visible: showRating
                         opacity: 0.6
                         spacing: Kirigami.Units.largeSpacing
@@ -141,36 +142,17 @@ Kirigami.AbstractCard
                         }
                     }
 
-                    // Category and Size labels
-                    RowLayout {
-                        id: compactInfo
+                    // Size label
+                    Label {
+                        id: sizeInfo
                         Layout.fillWidth: true
-                        opacity: 0.6
-                        visible: !delegateArea.compact
-                        spacing: Kirigami.Units.largeSpacing
-
-                        Label {
-                            id: category
-                            Layout.fillWidth: true
-                            visible: delegateArea.application.categoryDisplay && delegateArea.application.categoryDisplay !== page.title
-                            opacity: 0.6
-                            text: delegateArea.application.categoryDisplay
-                            font: Kirigami.Theme.smallFont
-                            elide: Text.ElideRight
-                            maximumLineCount: 1
-                        }
-
-                        Label {
-                            id: size
-                            Layout.fillWidth: true
-                            visible: showSize
-                            text: visible ? delegateArea.application.sizeDescription : ""
-                            horizontalAlignment: Text.AlignRight
-                            opacity: 0.6;
-                            font: Kirigami.Theme.smallFont
-                            elide: Text.ElideRight
-                            maximumLineCount: 1
-                        }
+                        visible: !delegateArea.compact && showSize
+                        text: visible ? delegateArea.application.sizeDescription : ""
+                        horizontalAlignment: Text.AlignRight
+                        opacity: 0.6;
+                        font: Kirigami.Theme.smallFont
+                        elide: Text.ElideRight
+                        maximumLineCount: 1
                     }
                 }
 

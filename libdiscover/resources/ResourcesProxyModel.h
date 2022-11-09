@@ -61,7 +61,6 @@ public:
         CanUpgrade,
         PackageNameRole,
         CategoryRole,
-        CategoryDisplayRole,
         SectionRole,
         MimeTypes,
         SizeRole,
