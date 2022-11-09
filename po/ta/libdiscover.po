@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-07 00:45+0000\n"
-"PO-Revision-Date: 2022-11-03 21:28+0530\n"
+"PO-Revision-Date: 2022-11-08 21:20+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 22.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -618,23 +618,23 @@ msgstr "இணையத்தை அணுகலாம்"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:924
 #, kde-format
 msgid "Session Bus Access"
-msgstr ""
+msgstr "அமர்வுப் பாட்டை அணுகல்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:784
 #, kde-format
 msgid "Access is granted to the entire Session Bus"
-msgstr ""
+msgstr "அமர்வுப் பாட்டைக்கான (session bus-க்கான) முழு அணுகல் வழங்கப்படும்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:789
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid "System Bus Access"
-msgstr ""
+msgstr "கணினிப் பாட்டை அணுகல்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:790
 #, kde-format
 msgid "Access is granted to the entire System Bus"
-msgstr ""
+msgstr "கணினிப் பாட்டைக்கான (system bus-க்கான) முழு அணுகல் வழங்கப்படும்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
 #, kde-format
@@ -649,12 +649,12 @@ msgstr "SSH நெறிமுறையின் மூலம் தொலை �
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:800
 #, kde-format
 msgid "Smart Card Access"
-msgstr ""
+msgstr "நுண்ணறி அட்டை அணுகல்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:801
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr ""
+msgstr "நுண்ணறி (ஸ்மார்ட்) அட்டைகளை பயன்படுத்தலாம்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
 #, kde-format
@@ -1917,12 +1917,12 @@ msgstr[1] "புதுப்பிக்க %1 நிரல்கள்"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
 #, kde-format
 msgid "<li>%1 (%2): No changelog information</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): மாற்றப்பதிவு இல்லை</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
 #, kde-format
 msgid "<li>%1 (%2): %3</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): %3</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
 #, kde-format
@@ -1948,6 +1948,9 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"கணினிக்கு முக்கியமான பின்வரும் நிரல்களை இப்புதுப்பிப்பு நீக்க முயற்சிப்பதால் இதைத் தொடர "
+"முடியாது:<nl/><ul><li>%1</li></ul><nl/> இது பிழையெனில், உங்கள் இயங்குதள "
+"பராமரிப்பாளர்களிடம் இச்சிக்கலைத் தெரிவியுங்கள்."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:482
 #, kde-format
@@ -2025,6 +2028,9 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"கணினிக்கு முக்கியமான பின்வரும் நிரல்களை இச்செயல் நீக்க முயற்சிப்பதால் இதைத் தொடர முடியாது:"
+"<nl/><ul><li>%1</li></ul><nl/> இது பிழையெனில், உங்கள் இயங்குதள பராமரிப்பாளர்களிடம் "
+"இச்சிக்கலைத் தெரிவியுங்கள்."
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
 #, kde-format
@@ -2059,11 +2065,14 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>%1 என்பதன் புதிய பதிப்பு வெளியிடப்பட்டுள்ளது!</b>\n"
+"மீதமுள்ள நிரல் புதுப்பிப்புகளை நிறுவி உங்கள் கணினியை மீள்துவக்கியபின் நீங்கள் விரும்பினால் "
+"அப்புதிய பதிப்பை நிறுவலாம்."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr ""
+msgstr "%1 %2 தனை நிறுவு"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
