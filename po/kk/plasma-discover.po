@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:47+0000\n"
+"POT-Creation-Date: 2022-11-10 00:47+0000\n"
 "PO-Revision-Date: 2013-10-03 05:07+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -266,7 +266,7 @@ msgstr "Қосымшалар"
 msgid "Cancel"
 msgstr "Қайту"
 
-#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationDelegate.qml:139
 #: discover/qml/ApplicationPage.qml:192
 #, fuzzy, kde-format
 #| msgid "Rating"
@@ -274,7 +274,7 @@ msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "Ұпайы"
 
-#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationDelegate.qml:139
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "No ratings yet"

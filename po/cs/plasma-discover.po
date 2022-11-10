@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:47+0000\n"
+"POT-Creation-Date: 2022-11-10 00:47+0000\n"
 "PO-Revision-Date: 2021-09-27 20:16+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -256,7 +256,7 @@ msgstr "Přidat"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationDelegate.qml:139
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "%1 rating"
@@ -265,7 +265,7 @@ msgstr[0] "%1 hodnocení"
 msgstr[1] "%1 hodnocení"
 msgstr[2] "%1 hodnocení"
 
-#: discover/qml/ApplicationDelegate.qml:138
+#: discover/qml/ApplicationDelegate.qml:139
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "No ratings yet"

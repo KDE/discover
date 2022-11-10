@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:45+0000\n"
+"POT-Creation-Date: 2022-11-10 00:47+0000\n"
 "PO-Revision-Date: 2022-11-06 01:05\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -29,17 +29,17 @@ msgstr ""
 "kde-china@kde.org, charles.dong@kde.org, fang.zheng@kde.org, i@guoyunhe.me, "
 "honghao.li@kde.org, tysontan@tysontan.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:89
+#: libdiscover/appstream/AppStreamUtils.cpp:91
 #, kde-format
 msgid "Proprietary"
 msgstr "专有软件"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:91
+#: libdiscover/appstream/AppStreamUtils.cpp:93
 #, kde-format
 msgid "Public Domain"
 msgstr "公共领域"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:97
+#: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:257
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
@@ -49,30 +49,30 @@ msgstr "公共领域"
 msgid "Unknown"
 msgstr "未知"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:138
-#: libdiscover/resources/AbstractResource.cpp:293
+#: libdiscover/appstream/AppStreamUtils.cpp:140
+#: libdiscover/resources/AbstractResource.cpp:278
 #, kde-format
 msgid "%1, released on %2"
 msgstr "%1，发布日期：%2"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:180
+#: libdiscover/appstream/AppStreamUtils.cpp:182
 #, kde-format
 msgid "All Audiences"
 msgstr "适合所有受众"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:181
+#: libdiscover/appstream/AppStreamUtils.cpp:183
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Mild Content"
 msgstr "少量粗俗语言"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:182
+#: libdiscover/appstream/AppStreamUtils.cpp:184
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Moderate Content"
 msgstr "中等数量的粗俗语言"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:183
+#: libdiscover/appstream/AppStreamUtils.cpp:185
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Intense Content"
@@ -148,365 +148,373 @@ msgctxt "Category"
 msgid "dummy 4"
 msgstr "虚设项 4"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:4
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:4
-#, kde-format
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
+#, fuzzy, kde-format
+#| msgid "Applications"
 msgctxt "Category"
-msgid "Accessories"
-msgstr "系统附件"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:16
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:16
-#, kde-format
-msgctxt "Category"
-msgid "Accessibility"
-msgstr "无障碍辅助"
+msgid "All Applications"
+msgstr "应用程序"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:28
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:28
 #, kde-format
 msgctxt "Category"
+msgid "Accessories"
+msgstr "系统附件"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:39
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:39
+#, kde-format
+msgctxt "Category"
+msgid "Accessibility"
+msgstr "无障碍辅助"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:50
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:50
+#, kde-format
+msgctxt "Category"
 msgid "Developer Tools"
 msgstr "开发工具"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:38
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:38
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:59
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:59
 #, kde-format
 msgctxt "Category"
 msgid "Debugging"
 msgstr "调试"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:48
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:48
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:69
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:69
 #, kde-format
 msgctxt "Category"
 msgid "Graphic Interface Design"
 msgstr "图形界面设计"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:57
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:57
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:78
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:78
 #, kde-format
 msgctxt "Category"
 msgid "IDEs"
 msgstr "集成开发环境"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:66
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:66
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:87
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:87
 #, kde-format
 msgctxt "Category"
 msgid "Localization"
 msgstr "本地化"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:76
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:76
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:97
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:97
 #, kde-format
 msgctxt "Category"
 msgid "Profiling"
 msgstr "分析"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:85
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:85
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:106
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:106
 #, kde-format
 msgctxt "Category"
 msgid "Web Development"
 msgstr "网络开发"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:119
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:118
 #, kde-format
 msgctxt "Category"
 msgid "Education"
 msgstr "教育"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:109
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:110
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:129
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:128
 #, kde-format
 msgctxt "Category"
 msgid "Science and Engineering"
 msgstr "科学和工程"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:119
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:120
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:138
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:137
 #, kde-format
 msgctxt "Category"
 msgid "Astronomy"
 msgstr "天文"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:127
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:128
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:146
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:145
 #, kde-format
 msgctxt "Category"
 msgid "Biology"
 msgstr "生物"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:135
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:136
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:154
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:153
 #, kde-format
 msgctxt "Category"
 msgid "Chemistry"
 msgstr "化学"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:144
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:145
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:163
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:162
 #, kde-format
 msgctxt "Category"
 msgid "Computer Science and Robotics"
 msgstr "计算机科学和机器人学"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:156
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:174
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:173
 #, kde-format
 msgctxt "Category"
 msgid "Electronics"
 msgstr "电子"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:165
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:183
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:182
 #, kde-format
 msgctxt "Category"
 msgid "Engineering"
 msgstr "工程"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:173
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:192
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:191
 #, kde-format
 msgctxt "Category"
 msgid "Geography"
 msgstr "地理"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:181
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:182
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:200
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:199
 #, kde-format
 msgctxt "Category"
 msgid "Geology"
 msgstr "地质"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:190
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:191
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:209
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:208
 #, kde-format
 msgctxt "Category"
 msgid "Mathematics"
 msgstr "数学"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:202
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:220
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:219
 #, kde-format
 msgctxt "Category"
 msgid "Physics"
 msgstr "物理"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:212
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:213
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:231
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:230
 #, kde-format
 msgctxt "Category"
 msgid "Games"
 msgstr "游戏"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:222
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:223
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:240
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:239
 #, kde-format
 msgctxt "Category"
 msgid "Arcade"
 msgstr "街机风格"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:231
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:232
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:249
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:248
 #, kde-format
 msgctxt "Category"
 msgid "Board Games"
 msgstr "棋类"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:240
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:241
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:258
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:257
 #, kde-format
 msgctxt "Category"
 msgid "Card Games"
 msgstr "卡牌"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:249
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:250
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:267
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:266
 #, kde-format
 msgctxt "Category"
 msgid "Puzzles"
 msgstr "解谜"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:258
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:259
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:276
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:275
 #, kde-format
 msgctxt "Category"
 msgid "Role Playing"
 msgstr "角色扮演"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:267
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:268
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:285
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:284
 #, kde-format
 msgctxt "Category"
 msgid "Simulation"
 msgstr "模拟"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:276
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:277
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:294
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:293
 #, kde-format
 msgctxt "Category"
 msgid "Strategy"
 msgstr "策略"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:285
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:286
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:303
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:302
 #, kde-format
 msgctxt "Category"
 msgid "Sports"
 msgstr "运动"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:294
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:295
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:312
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:311
 #, kde-format
 msgctxt "Category"
 msgid "Action"
 msgstr "操作"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:303
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:304
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:321
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:320
 #, kde-format
 msgctxt "Category"
 msgid "Emulators"
 msgstr "模拟"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:315
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:317
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:333
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:333
 #, kde-format
 msgctxt "Category"
 msgid "Graphics"
 msgstr "图形图像处理"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:324
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:326
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:341
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:341
 #, kde-format
 msgctxt "Category"
 msgid "3D"
 msgstr "3D"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:332
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:349
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:349
 #, kde-format
 msgctxt "Category"
 msgid "Drawing"
 msgstr "作图"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:344
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:346
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:361
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:361
 #, kde-format
 msgctxt "Category"
 msgid "Painting and Editing"
 msgstr "绘画和编辑"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:357
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:359
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:374
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:374
 #, kde-format
 msgctxt "Category"
 msgid "Photography"
 msgstr "摄影"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:366
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:368
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:383
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:383
 #, kde-format
 msgctxt "Category"
 msgid "Publishing"
 msgstr "出版"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:377
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:392
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:392
 #, kde-format
 msgctxt "Category"
 msgid "Scanning and OCR"
 msgstr "扫描和文字识别"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:385
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:387
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:402
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:402
 #, kde-format
 msgctxt "Category"
 msgid "Viewers"
 msgstr "看图"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:397
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:399
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:414
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:414
 #, kde-format
 msgctxt "Category"
 msgid "Internet"
 msgstr "互联网"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:406
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:408
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:422
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:422
 #, kde-format
 msgctxt "Category"
 msgid "Chat"
 msgstr "聊天"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:416
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:418
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:432
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:432
 #, kde-format
 msgctxt "Category"
 msgid "File Sharing"
 msgstr "文件分享"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:425
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:427
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:441
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:441
 #, kde-format
 msgctxt "Category"
 msgid "Mail"
 msgstr "电子邮件"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:434
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:436
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:450
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:450
 #, kde-format
 msgctxt "Category"
 msgid "Web Browsers"
 msgstr "网页浏览器"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:446
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:448
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:462
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:462
 #, kde-format
 msgctxt "Category"
 msgid "Multimedia"
 msgstr "多媒体"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:456
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:458
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:471
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:471
 #, kde-format
 msgctxt "Category"
 msgid "Audio and Video Editors"
 msgstr "音频和视频编辑器"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:465
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:467
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:480
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:480
 #, kde-format
 msgctxt "Category"
 msgid "Audio Players"
 msgstr "音频播放器"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:486
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:488
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:501
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:501
 #, kde-format
 msgctxt "Category"
 msgid "Video Players"
 msgstr "视频播放器"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:504
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:506
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:519
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:519
 #, kde-format
 msgctxt "Category"
 msgid "CD and DVD"
 msgstr "CD 和 DVD"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:516
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:518
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:531
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:531
 #, kde-format
 msgctxt "Category"
 msgid "Office"
 msgstr "办公"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:527
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:529
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:541
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:541
 #, kde-format
 msgctxt "Category"
 msgid "System Settings"
@@ -523,23 +531,23 @@ msgstr "%1 (用户)"
 msgid "Local bundle"
 msgstr "本地包"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:608
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1597
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:610
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "错误的 AppStream URL “%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1701
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "无法添加来源“%1”：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1818
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "没有 Flatpak 来源。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1822
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "加载“%1”来源失败"
@@ -919,36 +927,36 @@ msgstr "后端 %1 初始化时间过长"
 msgid "Applications"
 msgstr "应用程序"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma 附加组件"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
 #, kde-format
 msgid "Application Addons"
 msgstr "应用程序附加组件"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 后端网络错误：%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:422
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:423
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr "%1 后端的服务器请求发送过多。请过几分钟之后再试。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:425
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:431
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:436
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:426
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:432
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:437
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "无效的 %1 后端。请联系您的发行版。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:456
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -960,22 +968,22 @@ msgstr ""
 "为：\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:465
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:466
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "无法从 %2 后端获取 %1 的屏幕截图"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:469
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:470
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 后端出现无法处理的错误。请联系您的发行版。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:477
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
 #, kde-format
 msgid "%1: %2"
 msgstr "%1：%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:694
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:695
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "错误的 KNewStuff URI：%1"
@@ -996,19 +1004,19 @@ msgstr "%1 的登录信息"
 msgid "Cannot launch %1"
 msgstr "无法启动 %1"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:540
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:551
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
 msgstr "Plasma 附加组件"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:551
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:562
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Plasma 挂件"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:574
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
@@ -1028,7 +1036,7 @@ msgid ""
 msgstr ""
 "本机安装的操作系统已于 %1 结束支持。请考虑升级到仍受支持的新版操作系统。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:697
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:699
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "无法移除“%1”"
@@ -1647,7 +1655,7 @@ msgid "Testing"
 msgstr "测试"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:102
+#: libdiscover/resources/AbstractResource.cpp:103
 #, kde-format
 msgid "Installed"
 msgstr "已安装"
@@ -2192,34 +2200,34 @@ msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr "列出所有需要加载的后端程序，以半角逗号“,”分隔。"
 
-#: libdiscover/resources/AbstractResource.cpp:98
+#: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Broken"
 msgstr "已损坏"
 
-#: libdiscover/resources/AbstractResource.cpp:100
+#: libdiscover/resources/AbstractResource.cpp:101
 #, kde-format
 msgid "Available"
 msgstr "可用"
 
-#: libdiscover/resources/AbstractResource.cpp:104
+#: libdiscover/resources/AbstractResource.cpp:105
 #, kde-format
 msgid "Upgradeable"
 msgstr "可升级"
 
-#: libdiscover/resources/AbstractResource.cpp:257
+#: libdiscover/resources/AbstractResource.cpp:242
 #, kde-format
 msgid "Launch"
 msgstr "启动"
 
-#: libdiscover/resources/AbstractResource.cpp:266
+#: libdiscover/resources/AbstractResource.cpp:251
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
 msgstr "更新版本 %1"
 
-#: libdiscover/resources/AbstractResource.cpp:276
+#: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
@@ -2235,7 +2243,7 @@ msgstr "请检查网络连接"
 msgid "Refresh"
 msgstr "刷新"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:710
+#: libdiscover/resources/ResourcesProxyModel.cpp:709
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
