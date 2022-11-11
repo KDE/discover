@@ -329,7 +329,41 @@ void DiscoverObject::openApplication(const QUrl &url)
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
             connect(stream, &StoredResultsStream::finishedResources, this, [this, url](const QVector<AbstractResource *> &res) {
                 if (res.count() >= 1) {
-                    Q_EMIT openApplicationInternal(res.first());
+                    QPointer<QTimer> timeout = new QTimer(this);
+                    timeout->setSingleShot(true);
+                    timeout->setInterval(20000);
+                    connect(timeout, &QTimer::timeout, timeout, &QTimer::deleteLater);
+
+                    auto openResourceOrWait = [this, res, timeout] {
+                        auto idx = kIndexOf(res, [](auto res) {
+                            return res->isInstalled();
+                        });
+                        if (idx < 0) {
+                            bool oneBroken = kContains(res, [](auto res) {
+                                return res->state() == AbstractResource::Broken;
+                            });
+                            if (oneBroken && timeout) {
+                                return false;
+                            }
+
+                            idx = 0;
+                        }
+                        Q_EMIT openApplicationInternal(res[idx]);
+                        return true;
+                    };
+
+                    if (!openResourceOrWait()) {
+                        auto f = new OneTimeAction(0, openResourceOrWait, this);
+                        for (auto r : res) {
+                            if (r->state() == AbstractResource::Broken) {
+                                connect(r, &AbstractResource::stateChanged, f, &OneTimeAction::trigger);
+                            }
+                        }
+                        timeout->start();
+                        connect(timeout, &QTimer::destroyed, f, &OneTimeAction::trigger);
+                    } else {
+                        delete timeout;
+                    }
                 } else if (url.scheme() == QLatin1String("snap")) {
                     openApplication(QUrl(QStringLiteral("appstream://org.kde.discover.snap")));
                     showPassiveNotification(i18n("Please make sure Snap support is installed"));
