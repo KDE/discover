@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-10 00:47+0000\n"
+"POT-Creation-Date: 2022-11-11 00:47+0000\n"
 "PO-Revision-Date: 2021-09-09 13:59+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/"
@@ -160,365 +160,365 @@ msgctxt "Category"
 msgid "All Applications"
 msgstr "ആപ്ലീക്കേഷനുകൾ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:28
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:28
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
 msgid "Accessories"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:39
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:39
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
 #, kde-format
 msgctxt "Category"
 msgid "Accessibility"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:50
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:50
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
 #, kde-format
 msgctxt "Category"
 msgid "Developer Tools"
 msgstr "ഡെവലപ്പർ ഉപകരണങ്ങൾ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:59
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:59
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
 #, kde-format
 msgctxt "Category"
 msgid "Debugging"
 msgstr "ഡീബഗ്ഗിംഗ്"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:69
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:69
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
 #, kde-format
 msgctxt "Category"
 msgid "Graphic Interface Design"
 msgstr "ഗ്രാഫിക് ഇന്റർഫേസ് ഡിസൈൻ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:78
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:78
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
 #, kde-format
 msgctxt "Category"
 msgid "IDEs"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:87
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:87
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
 #, kde-format
 msgctxt "Category"
 msgid "Localization"
 msgstr "പ്രാദേശികവൽക്കരണം"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:97
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:97
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
 #, kde-format
 msgctxt "Category"
 msgid "Profiling"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:106
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:106
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
 #, kde-format
 msgctxt "Category"
 msgid "Web Development"
 msgstr "വെബ് ഡെവലപ്മെന്റ്"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:119
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:118
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
 #, kde-format
 msgctxt "Category"
 msgid "Education"
 msgstr "വിദ്യാഭ്യാസം"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:129
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:128
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
 #, kde-format
 msgctxt "Category"
 msgid "Science and Engineering"
 msgstr "ശാസ്ത്രവും എഞ്ചിനീയറിംഗും"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:138
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:137
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
 #, kde-format
 msgctxt "Category"
 msgid "Astronomy"
 msgstr "ജ്യോതിശാസ്ത്രം"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:146
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:145
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
 #, kde-format
 msgctxt "Category"
 msgid "Biology"
 msgstr "ജീവശാസ്ത്രം"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:154
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:153
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
 #, kde-format
 msgctxt "Category"
 msgid "Chemistry"
 msgstr "രസതന്ത്രം"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:163
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:162
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
 #, kde-format
 msgctxt "Category"
 msgid "Computer Science and Robotics"
 msgstr "കമ്പ്യൂട്ടർ സയൻസും റോബോട്ടിക്സും"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:174
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:173
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
 #, kde-format
 msgctxt "Category"
 msgid "Electronics"
 msgstr "ഇലക്ട്രോണിക്സ്"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:183
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:182
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
 #, kde-format
 msgctxt "Category"
 msgid "Engineering"
 msgstr "എഞ്ചിനിയറിങ്ങ്"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:192
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:191
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
 #, kde-format
 msgctxt "Category"
 msgid "Geography"
 msgstr "ഭൂമിശാസ്ത്രം"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:200
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:199
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
 #, kde-format
 msgctxt "Category"
 msgid "Geology"
 msgstr "ഭൂഗർഭശാസ്ത്രം"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:209
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:208
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
 #, kde-format
 msgctxt "Category"
 msgid "Mathematics"
 msgstr "ഗണിതം"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:220
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:219
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
 #, kde-format
 msgctxt "Category"
 msgid "Physics"
 msgstr "ഭൗതികശാസ്ത്രം"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:231
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:230
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
 #, kde-format
 msgctxt "Category"
 msgid "Games"
 msgstr "കളികൾ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:240
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:239
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
 #, kde-format
 msgctxt "Category"
 msgid "Arcade"
 msgstr "ആർക്കേഡ്"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:249
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:248
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
 #, kde-format
 msgctxt "Category"
 msgid "Board Games"
 msgstr "ബോർഡ് കളികൾ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:258
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:257
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
 #, kde-format
 msgctxt "Category"
 msgid "Card Games"
 msgstr "കാർഡ് കളികൾ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:267
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:266
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
 #, kde-format
 msgctxt "Category"
 msgid "Puzzles"
 msgstr "പസിലുകൾ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:276
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:275
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
 #, kde-format
 msgctxt "Category"
 msgid "Role Playing"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:285
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:284
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
 #, kde-format
 msgctxt "Category"
 msgid "Simulation"
 msgstr "സിമുലേഷൻ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:294
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:293
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
 #, kde-format
 msgctxt "Category"
 msgid "Strategy"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:303
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:302
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
 #, kde-format
 msgctxt "Category"
 msgid "Sports"
 msgstr "കായിക വിനോദങ്ങൾ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:312
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:311
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
 #, kde-format
 msgctxt "Category"
 msgid "Action"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:321
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:320
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
 #, kde-format
 msgctxt "Category"
 msgid "Emulators"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:333
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:333
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
 #, kde-format
 msgctxt "Category"
 msgid "Graphics"
 msgstr "ഗ്രാഫിക്സ്"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:341
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:341
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
 #, kde-format
 msgctxt "Category"
 msgid "3D"
 msgstr "3ഡി"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:349
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:349
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
 #, kde-format
 msgctxt "Category"
 msgid "Drawing"
 msgstr "ചിത്രകല"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:361
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:361
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
 #, kde-format
 msgctxt "Category"
 msgid "Painting and Editing"
 msgstr "പെയിന്റിംഗും എഡിറ്റിംഗും"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:374
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:374
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
 #, kde-format
 msgctxt "Category"
 msgid "Photography"
 msgstr "ഫോട്ടോഗ്രാഫി"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:383
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:383
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
 #, kde-format
 msgctxt "Category"
 msgid "Publishing"
 msgstr "പ്രസിദ്ധീകരണം"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:392
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:392
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
 #, kde-format
 msgctxt "Category"
 msgid "Scanning and OCR"
 msgstr "സ്കാനിംഗും OCRഉം"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:402
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:402
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
 #, kde-format
 msgctxt "Category"
 msgid "Viewers"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:414
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:414
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
 #, kde-format
 msgctxt "Category"
 msgid "Internet"
 msgstr "ഇന്റർനെറ്റ്"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:422
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:422
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
 #, kde-format
 msgctxt "Category"
 msgid "Chat"
 msgstr "ചാറ്റ്"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:432
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:432
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
 #, kde-format
 msgctxt "Category"
 msgid "File Sharing"
 msgstr "ഫയൽ പങ്കിടൽ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:441
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:441
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
 #, kde-format
 msgctxt "Category"
 msgid "Mail"
 msgstr "മെയിൽ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:450
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:450
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
 #, kde-format
 msgctxt "Category"
 msgid "Web Browsers"
 msgstr "വെബ് ബ്രൗസറുകൾ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:462
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:462
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
 #, kde-format
 msgctxt "Category"
 msgid "Multimedia"
 msgstr "മൾട്ടിമീഡിയ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:471
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:471
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
 #, kde-format
 msgctxt "Category"
 msgid "Audio and Video Editors"
 msgstr "ഓഡിയോ, വീഡിയോ എഡിറ്ററുകൾ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:480
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:480
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
 #, kde-format
 msgctxt "Category"
 msgid "Audio Players"
 msgstr "ഓഡിയോ പ്ലെയറുകൾ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:501
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:501
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
 #, kde-format
 msgctxt "Category"
 msgid "Video Players"
 msgstr "വീഡിയോ പ്ലെയറുകൾ"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:519
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:519
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
 #, kde-format
 msgctxt "Category"
 msgid "CD and DVD"
 msgstr "സിഡിയും ഡിവിഡിയും"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:531
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:531
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
 #, kde-format
 msgctxt "Category"
 msgid "Office"
 msgstr "ഓഫീസ്"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:541
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:541
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
 msgid "System Settings"
@@ -1004,19 +1004,19 @@ msgstr ""
 msgid "Cannot launch %1"
 msgstr "%1 സമാരംഭിക്കാനാകില്ല"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:551
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
 msgstr "പ്ലാസ്മ ആഡ്ഓണുകൾ"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:562
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "പ്ലാസ്മ വിഡ്ജറ്റുകൾ"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:574
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"

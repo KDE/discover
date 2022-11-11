@@ -1180,31 +1180,3 @@ msgstr "Güncellemeler denetlenmeli"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Son güncelleme zamanı bilinmiyor"
-
-#~ msgid "Featured"
-#~ msgstr "Öne Çıkanlar"
-
-#~ msgid "Updates are available"
-#~ msgstr "Güncellemeler var"
-
-#~ msgctxt "Short for 'show updates'"
-#~ msgid "Show"
-#~ msgstr "Göster"
-
-#~ msgid "Show more..."
-#~ msgstr "Daha fazla göster..."
-
-#~ msgid "proprietary"
-#~ msgstr "tescilli"
-
-#~ msgid "Could not close Discover because some tasks are still in progress."
-#~ msgstr "Discover kapatılamadı; çünkü bazı görevler hâlâ çalışıyor."
-
-#~ msgid "Quit Anyway"
-#~ msgstr "Yine de Çık"
-
-#~ msgid "Loading…"
-#~ msgstr "Yükleniyor…"
-
-#~ msgid "Return to the Featured page"
-#~ msgstr "Öne Çıkanlar sayfasına dön"
