@@ -25,6 +25,7 @@
 #include <AppStreamQt/metadata.h>
 #include <AppStreamQt/pool.h>
 #include <AppStreamQt/release.h>
+#include <AppStreamQt/version.h>
 
 #include <KAboutData>
 #include <KConfigGroup>
@@ -1508,9 +1509,11 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
             QList<FlatpakResource *> resources;
             if (source->m_pool) {
                 const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search)
+#if ASQ_MAJOR_VERSION >= 0 && ASQ_MINOR_VERSION >= 15 && ASQ_MICRO_VERSION >= 6
                     : filter.category                   ? AppStreamUtils::componentsByCategories(source->m_pool,
                                                                                                  filter.category,
                                                                                                  AppStream::Bundle::KindFlatpak)
+#endif
                                                         : source->m_pool->components();
                 resources = kTransform<QList<FlatpakResource *>>(a, [this, &source](const auto &comp) {
                     return resourceForComponent(comp, source);

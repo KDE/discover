@@ -14,6 +14,7 @@
 #include "PackageKitUpdater.h"
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/utils.h>
+#include <AppStreamQt/version.h>
 #include <appstream/AppStreamIntegration.h>
 #include <appstream/AppStreamUtils.h>
 #include <appstream/OdrsReviewsBackend.h>
@@ -562,9 +563,11 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-search"));
         const auto f = [this, stream, filter]() {
             const auto components = !filter.search.isEmpty() ? m_appdata->search(filter.search)
+#if ASQ_MAJOR_VERSION >= 0 && ASQ_MINOR_VERSION >= 15 && ASQ_MICRO_VERSION >= 6
                                   : filter.category          ? AppStreamUtils::componentsByCategories(m_appdata.get(),
                                                                                                       filter.category,
                                                                                                       AppStream::Bundle::KindUnknown)
+#endif
                                                              : m_appdata->components();
             const QSet<QString> ids = kTransform<QSet<QString>>(components, [](const AppStream::Component &comp) {
                 return comp.id();
