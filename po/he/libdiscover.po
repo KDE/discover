@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-11 00:47+0000\n"
+"POT-Creation-Date: 2022-11-12 00:48+0000\n"
 "PO-Revision-Date: 2020-10-21 13:36+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -524,25 +524,25 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "הגדרות מערכת"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:120
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:121
 #, fuzzy, kde-format
 #| msgid "%1 (%2)"
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:666
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
 #, kde-format
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1597
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:610
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:613
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1701
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1704
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -555,12 +555,12 @@ msgstr ""
 "עדכון חבילה %1 נכשל\n"
 "%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1818
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1821
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1822
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -1047,12 +1047,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "גופנים"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:213
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:251
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1060,7 +1060,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:699
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:702
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr ""

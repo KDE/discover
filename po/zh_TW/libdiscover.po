@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-11 00:47+0000\n"
+"POT-Creation-Date: 2022-11-12 00:48+0000\n"
 "PO-Revision-Date: 2022-11-10 22:39+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -528,35 +528,35 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "系統設定"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:120
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:121
 #, fuzzy, kde-format
 #| msgid "%1 (user)"
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (使用者)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:666
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
 #, kde-format
 msgid "Local bundle"
 msgstr "本機 Bundle"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1597
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:610
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:613
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正確的 appstream 網址 '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1701
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1704
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "新增來源「%1」失敗：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1818
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1821
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "沒有 Flatpak 來源。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1822
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "載入來源「%1」失敗"
@@ -1032,12 +1032,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "字型"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:213
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "請確認 Appstream 已經在您的系統上設定好了"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:251
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1045,7 +1045,7 @@ msgid ""
 "version."
 msgstr "您的作業系統自 %1 起已不再受支援。請考慮更新到受支援的版本。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:699
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:702
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "無法移除 %1"

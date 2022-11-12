@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-11 00:47+0000\n"
-"PO-Revision-Date: 2022-11-07 14:46+0100\n"
+"POT-Creation-Date: 2022-11-12 00:48+0000\n"
+"PO-Revision-Date: 2022-11-10 21:51+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
 "Language: fr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 22.08.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -159,11 +159,10 @@ msgstr "factice 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Applications"
+msgstr "Toutes les applications"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -529,34 +528,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Configuration du système"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:120
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:121
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (Utilisateur)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:666
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
 #, kde-format
 msgid "Local bundle"
 msgstr "Paquet local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1597
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:610
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:613
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL « AppStream » malformée « %1 »"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1701
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1704
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Impossible d'ajouter la source « %1 » : %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1818
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1821
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Il n'y a aucune source « Flatpak »."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1822
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Impossible de charger la source « %1 »."
@@ -1073,13 +1072,13 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Polices"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:213
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 "Veuillez vérifier que Appstream est correctement configuré sur votre système"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:251
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1089,7 +1088,7 @@ msgstr ""
 "Votre système d'exploitation n'est plus pris en charge depuis %1. Veuillez "
 "prendre en compte une mise à jour vers une version prise en charge."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:699
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:702
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Impossible de supprimer « %1 »"

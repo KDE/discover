@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-11 00:47+0000\n"
-"PO-Revision-Date: 2022-11-06 05:15+0100\n"
+"POT-Creation-Date: 2022-11-12 00:48+0000\n"
+"PO-Revision-Date: 2022-11-11 06:28+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -149,11 +149,10 @@ msgstr "სათამაშო 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "აპლიკაციები"
+msgstr "ყველა აპლიკაცია"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -519,34 +518,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "სისტემის მორგება"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:120
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:121
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (მომხმარებელი)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:666
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
 #, kde-format
 msgid "Local bundle"
 msgstr "ლოკალური პაკეტი"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1597
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:610
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:613
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "აღმავლის არასწორი URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1701
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1704
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "წყაროს (%1) დამატების შეცდომა: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1818
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1821
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "FlatPak-ის წყარო არ არსებობს."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1822
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\"-ის წყაროს ჩატვირთვის შეცდომა"
@@ -629,7 +628,7 @@ msgstr "სესიის მატარებლის წვდომა"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:784
 #, kde-format
 msgid "Access is granted to the entire Session Bus"
-msgstr ""
+msgstr "წვდომა მინიჭებულია სრულ სესიის მატარებელზე"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:789
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
@@ -640,7 +639,7 @@ msgstr "წვდომა სისტემურ მატარებელ�
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:790
 #, kde-format
 msgid "Access is granted to the entire System Bus"
-msgstr ""
+msgstr "წვდომა მინიჭებულია სრულ სისტემურ მატარებელზე"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
 #, kde-format
@@ -650,7 +649,7 @@ msgstr "დაშორებულად შესვლის წვდომ�
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:796
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
-msgstr ""
+msgstr "შეუძლია დაშორებულ ჰოსტებზე შესვლა SSH პროტოკოლით"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:800
 #, kde-format
@@ -660,7 +659,7 @@ msgstr "ჭკვიანი ბარათით წვდომა"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:801
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr ""
+msgstr "შეუძლია ინტეგრაცია და კომუნიკაცია ჭკვიან ბარათებთან"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
 #, kde-format
@@ -670,7 +669,7 @@ msgstr "პრინტერთან წვდომა"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr ""
+msgstr "შეუძლია ინტეგრაცია და კომუნიკაცია პრინტერებთან"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
 #, kde-format
@@ -1013,12 +1012,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "ფონტები"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:213
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:251
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1028,7 +1027,7 @@ msgstr ""
 "თქვენი ოპერაციული სისტემის მხარდაჭერა %1-ზე დასრულდა. სჯობს მხარდაჭერილ "
 "ვერსიამდე განახლდეთ."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:699
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:702
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "%1-ის წაშლის შეცდომა"
@@ -2027,7 +2026,7 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr ""
+msgstr "განახლება ვერსიამდე %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
