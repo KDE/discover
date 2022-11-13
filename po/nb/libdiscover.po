@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:45+0000\n"
+"POT-Creation-Date: 2022-11-12 00:48+0000\n"
 "PO-Revision-Date: 2015-06-13 21:56+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -29,17 +29,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:89
+#: libdiscover/appstream/AppStreamUtils.cpp:91
 #, kde-format
 msgid "Proprietary"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:91
+#: libdiscover/appstream/AppStreamUtils.cpp:93
 #, kde-format
 msgid "Public Domain"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:97
+#: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:257
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
@@ -49,30 +49,30 @@ msgstr ""
 msgid "Unknown"
 msgstr "Ukjent"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:138
-#: libdiscover/resources/AbstractResource.cpp:293
+#: libdiscover/appstream/AppStreamUtils.cpp:140
+#: libdiscover/resources/AbstractResource.cpp:278
 #, kde-format
 msgid "%1, released on %2"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:180
+#: libdiscover/appstream/AppStreamUtils.cpp:182
 #, kde-format
 msgid "All Audiences"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:181
+#: libdiscover/appstream/AppStreamUtils.cpp:183
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Mild Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:182
+#: libdiscover/appstream/AppStreamUtils.cpp:184
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Moderate Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:183
+#: libdiscover/appstream/AppStreamUtils.cpp:185
 #, kde-format
 msgctxt "As specified in OARS, intensity of contents"
 msgid "Intense Content"
@@ -148,398 +148,405 @@ msgctxt "Category"
 msgid "dummy 4"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:4
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:4
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
+#, kde-format
+msgctxt "Category"
+msgid "All Applications"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
 msgid "Accessories"
 msgstr "Tilbehør"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:16
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:16
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
 #, kde-format
 msgctxt "Category"
 msgid "Accessibility"
 msgstr "Tilgjengelighet"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:28
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:28
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
 #, kde-format
 msgctxt "Category"
 msgid "Developer Tools"
 msgstr "Utviklerverktøy"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:38
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:38
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
 #, kde-format
 msgctxt "Category"
 msgid "Debugging"
 msgstr "Feilsøking"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:48
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:48
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
 #, kde-format
 msgctxt "Category"
 msgid "Graphic Interface Design"
 msgstr "Grensesnittdesign"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:57
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:57
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
 #, kde-format
 msgctxt "Category"
 msgid "IDEs"
 msgstr "IDE-er"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:66
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:66
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
 #, kde-format
 msgctxt "Category"
 msgid "Localization"
 msgstr "Lokalisering"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:76
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:76
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
 #, kde-format
 msgctxt "Category"
 msgid "Profiling"
 msgstr "Profilering"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:85
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:85
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
 #, kde-format
 msgctxt "Category"
 msgid "Web Development"
 msgstr "Vevutvikling"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
 #, kde-format
 msgctxt "Category"
 msgid "Education"
 msgstr "Opplæring"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:109
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:110
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
 #, kde-format
 msgctxt "Category"
 msgid "Science and Engineering"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:119
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:120
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
 #, kde-format
 msgctxt "Category"
 msgid "Astronomy"
 msgstr "Astronomi"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:127
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:128
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
 #, kde-format
 msgctxt "Category"
 msgid "Biology"
 msgstr "Biologi"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:135
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:136
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
 #, kde-format
 msgctxt "Category"
 msgid "Chemistry"
 msgstr "Kjemi"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:144
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:145
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
 #, kde-format
 msgctxt "Category"
 msgid "Computer Science and Robotics"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:156
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
 #, kde-format
 msgctxt "Category"
 msgid "Electronics"
 msgstr "Elektronikk"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:165
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
 #, kde-format
 msgctxt "Category"
 msgid "Engineering"
 msgstr "Teknikk"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:173
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
 #, kde-format
 msgctxt "Category"
 msgid "Geography"
 msgstr "Geografi"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:181
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:182
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
 #, kde-format
 msgctxt "Category"
 msgid "Geology"
 msgstr "Geologi"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:190
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:191
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
 #, kde-format
 msgctxt "Category"
 msgid "Mathematics"
 msgstr "Matematikk"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:202
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
 #, kde-format
 msgctxt "Category"
 msgid "Physics"
 msgstr "Fysikk"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:212
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:213
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
 #, kde-format
 msgctxt "Category"
 msgid "Games"
 msgstr "Spill"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:222
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:223
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
 #, kde-format
 msgctxt "Category"
 msgid "Arcade"
 msgstr "Arkade"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:231
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:232
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
 #, kde-format
 msgctxt "Category"
 msgid "Board Games"
 msgstr "Brettspill"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:240
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:241
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
 #, kde-format
 msgctxt "Category"
 msgid "Card Games"
 msgstr "Kortspill"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:249
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:250
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
 #, kde-format
 msgctxt "Category"
 msgid "Puzzles"
 msgstr "Puslespill"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:258
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:259
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
 #, kde-format
 msgctxt "Category"
 msgid "Role Playing"
 msgstr "Rollespill"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:267
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:268
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
 #, kde-format
 msgctxt "Category"
 msgid "Simulation"
 msgstr "Simulering"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:276
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:277
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
 #, kde-format
 msgctxt "Category"
 msgid "Strategy"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:285
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:286
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
 #, kde-format
 msgctxt "Category"
 msgid "Sports"
 msgstr "Sport"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:294
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:295
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
 #, kde-format
 msgctxt "Category"
 msgid "Action"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:303
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:304
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
 #, kde-format
 msgctxt "Category"
 msgid "Emulators"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:315
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:317
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
 #, kde-format
 msgctxt "Category"
 msgid "Graphics"
 msgstr "Grafikk"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:324
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:326
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
 #, kde-format
 msgctxt "Category"
 msgid "3D"
 msgstr "3D"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:332
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
 #, kde-format
 msgctxt "Category"
 msgid "Drawing"
 msgstr "Tegning"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:344
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:346
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
 #, kde-format
 msgctxt "Category"
 msgid "Painting and Editing"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:357
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:359
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
 #, kde-format
 msgctxt "Category"
 msgid "Photography"
 msgstr "Fotografering"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:366
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:368
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
 #, kde-format
 msgctxt "Category"
 msgid "Publishing"
 msgstr "Forlagsvirksomhet"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:377
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
 #, kde-format
 msgctxt "Category"
 msgid "Scanning and OCR"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:385
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:387
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
 #, kde-format
 msgctxt "Category"
 msgid "Viewers"
 msgstr "Framvisning"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:397
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:399
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
 #, kde-format
 msgctxt "Category"
 msgid "Internet"
 msgstr "Internett"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:406
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:408
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
 #, kde-format
 msgctxt "Category"
 msgid "Chat"
 msgstr "Prat"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:416
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:418
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
 #, kde-format
 msgctxt "Category"
 msgid "File Sharing"
 msgstr "Fildeling"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:425
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:427
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
 #, kde-format
 msgctxt "Category"
 msgid "Mail"
 msgstr "E-post"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:434
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:436
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
 #, kde-format
 msgctxt "Category"
 msgid "Web Browsers"
 msgstr "Nettlesere"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:446
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:448
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
 #, kde-format
 msgctxt "Category"
 msgid "Multimedia"
 msgstr "Multimedia"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:456
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:458
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
 #, kde-format
 msgctxt "Category"
 msgid "Audio and Video Editors"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:465
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:467
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
 #, kde-format
 msgctxt "Category"
 msgid "Audio Players"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:486
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:488
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
 #, kde-format
 msgctxt "Category"
 msgid "Video Players"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:504
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:506
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
 #, kde-format
 msgctxt "Category"
 msgid "CD and DVD"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:516
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:518
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
 #, kde-format
 msgctxt "Category"
 msgid "Office"
 msgstr "Kontor"
 
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:527
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:529
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
 msgid "System Settings"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:120
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:121
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:666
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
 #, kde-format
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:608
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:613
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1704
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1821
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr ""
@@ -913,36 +920,36 @@ msgstr ""
 msgid "Applications"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
 #, kde-format
 msgid "Plasma Addons"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
 #, kde-format
 msgid "Application Addons"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:422
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:423
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:425
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:431
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:436
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:426
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:432
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:437
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:456
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -951,22 +958,22 @@ msgid ""
 "%2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:465
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:466
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:469
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:470
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:477
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
 #, kde-format
 msgid "%1: %2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:694
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:695
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr ""
@@ -987,30 +994,30 @@ msgstr "Logg i informasjon for %1"
 msgid "Cannot launch %1"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:540
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:551
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
 msgstr "Skrifter"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:212
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:213
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:250
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:251
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1018,7 +1025,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:697
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:702
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr ""
@@ -1640,7 +1647,7 @@ msgid "Testing"
 msgstr "Tester"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:102
+#: libdiscover/resources/AbstractResource.cpp:103
 #, kde-format
 msgid "Installed"
 msgstr "Installert"
@@ -2171,34 +2178,34 @@ msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:98
+#: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Broken"
 msgstr "Ødelagt"
 
-#: libdiscover/resources/AbstractResource.cpp:100
+#: libdiscover/resources/AbstractResource.cpp:101
 #, kde-format
 msgid "Available"
 msgstr "Tilgjengelig"
 
-#: libdiscover/resources/AbstractResource.cpp:104
+#: libdiscover/resources/AbstractResource.cpp:105
 #, kde-format
 msgid "Upgradeable"
 msgstr "Oppgraderbar"
 
-#: libdiscover/resources/AbstractResource.cpp:257
+#: libdiscover/resources/AbstractResource.cpp:242
 #, kde-format
 msgid "Launch"
 msgstr "Start"
 
-#: libdiscover/resources/AbstractResource.cpp:266
+#: libdiscover/resources/AbstractResource.cpp:251
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:276
+#: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
@@ -2214,7 +2221,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:710
+#: libdiscover/resources/ResourcesProxyModel.cpp:709
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
