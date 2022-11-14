@@ -77,13 +77,6 @@ Kirigami.AbstractListItem {
                     separatorVisible: false
                     hoverEnabled: false
 
-                    onClicked: {
-                        if (model.application) {
-                            Navigation.clearStack()
-                            Navigation.openApplication(model.application)
-                        }
-                    }
-
                     readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource} : {transaction: model.transaction}))
 
                     contentItem: ColumnLayout {
