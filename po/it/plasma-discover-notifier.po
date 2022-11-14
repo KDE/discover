@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"POT-Creation-Date: 2022-11-14 00:47+0000\n"
 "PO-Revision-Date: 2022-01-06 03:03+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -23,65 +23,65 @@ msgstr ""
 msgid "View Updates"
 msgstr "Visualizza aggiornamenti"
 
-#: notifier/DiscoverNotifier.cpp:256
+#: notifier/DiscoverNotifier.cpp:261
 #, kde-format
 msgid "Security updates available"
 msgstr "Aggiornamenti di sicurezza disponibili"
 
-#: notifier/DiscoverNotifier.cpp:258
+#: notifier/DiscoverNotifier.cpp:263
 #, kde-format
 msgid "Updates available"
 msgstr "Aggiornamenti disponibili"
 
-#: notifier/DiscoverNotifier.cpp:260
+#: notifier/DiscoverNotifier.cpp:265
 #, kde-format
 msgid "System up to date"
 msgstr "Sistema aggiornato"
 
-#: notifier/DiscoverNotifier.cpp:262
+#: notifier/DiscoverNotifier.cpp:267
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Il computer deve essere riavviato"
 
-#: notifier/DiscoverNotifier.cpp:264
+#: notifier/DiscoverNotifier.cpp:269
 #, kde-format
 msgid "Offline"
 msgstr "Non in linea"
 
-#: notifier/DiscoverNotifier.cpp:266
+#: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Applicazione automatica degli aggiornamenti..."
 
-#: notifier/DiscoverNotifier.cpp:300
+#: notifier/DiscoverNotifier.cpp:305
 #, kde-format
 msgid "Restart is required"
 msgstr "È necessario un riavvio"
 
-#: notifier/DiscoverNotifier.cpp:301
+#: notifier/DiscoverNotifier.cpp:306
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr ""
 "Il sistema deve essere riavviato affinché gli aggiornamenti abbiano effetto."
 
-#: notifier/DiscoverNotifier.cpp:307
+#: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Riavvia"
 
-#: notifier/DiscoverNotifier.cpp:327
+#: notifier/DiscoverNotifier.cpp:332
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Aggiorna"
 
-#: notifier/DiscoverNotifier.cpp:328
+#: notifier/DiscoverNotifier.cpp:333
 #, kde-format
 msgid "Upgrade available"
 msgstr "Aggiornamento disponibile"
 
-#: notifier/DiscoverNotifier.cpp:329
+#: notifier/DiscoverNotifier.cpp:334
 #, kde-format
 msgid "New version: %1"
 msgstr "Nuova versione: %1"

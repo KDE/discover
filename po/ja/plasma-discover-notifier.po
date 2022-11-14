@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-25 00:48+0000\n"
+"POT-Creation-Date: 2022-11-14 00:47+0000\n"
 "PO-Revision-Date: 2020-09-28 23:48+0900\n"
 "Last-Translator: Tomohiro Hyakutake <tomhioo@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -23,64 +23,64 @@ msgstr ""
 msgid "View Updates"
 msgstr "更新"
 
-#: notifier/DiscoverNotifier.cpp:256
+#: notifier/DiscoverNotifier.cpp:261
 #, kde-format
 msgid "Security updates available"
 msgstr "セキュリティの更新が利用可能です"
 
-#: notifier/DiscoverNotifier.cpp:258
+#: notifier/DiscoverNotifier.cpp:263
 #, kde-format
 msgid "Updates available"
 msgstr "更新が利用可能です"
 
-#: notifier/DiscoverNotifier.cpp:260
+#: notifier/DiscoverNotifier.cpp:265
 #, kde-format
 msgid "System up to date"
 msgstr "システムは最新です"
 
-#: notifier/DiscoverNotifier.cpp:262
+#: notifier/DiscoverNotifier.cpp:267
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "コンピュータを再起動する必要があります。"
 
-#: notifier/DiscoverNotifier.cpp:264
+#: notifier/DiscoverNotifier.cpp:269
 #, kde-format
 msgid "Offline"
 msgstr "オフライン"
 
-#: notifier/DiscoverNotifier.cpp:266
+#: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:300
+#: notifier/DiscoverNotifier.cpp:305
 #, kde-format
 msgid "Restart is required"
 msgstr "再起動が必要です。"
 
-#: notifier/DiscoverNotifier.cpp:301
+#: notifier/DiscoverNotifier.cpp:306
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "アップデートを有効にするには、システムを再起動する必要があります。"
 
-#: notifier/DiscoverNotifier.cpp:307
+#: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "再起動"
 
-#: notifier/DiscoverNotifier.cpp:327
+#: notifier/DiscoverNotifier.cpp:332
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:328
+#: notifier/DiscoverNotifier.cpp:333
 #, kde-format
 msgid "Upgrade available"
 msgstr "アップグレード可能"
 
-#: notifier/DiscoverNotifier.cpp:329
+#: notifier/DiscoverNotifier.cpp:334
 #, kde-format
 msgid "New version: %1"
 msgstr "新しいバージョン : %1"
