@@ -68,15 +68,22 @@ Kirigami.AbstractListItem {
                 delegate: Kirigami.AbstractListItem {
                     id: del
                     width: tasksView.width
+
+                    // Don't need a highlight or hover effects as it can make the
+                    // progress bar a bit hard to see
                     highlighted: false
+                    activeBackgroundColor: "transparent"
+                    activeTextColor: Kirigami.Theme.textColor
                     separatorVisible: false
-                    hoverEnabled: model.application
+                    hoverEnabled: false
+
                     onClicked: {
                         if (model.application) {
                             Navigation.clearStack()
                             Navigation.openApplication(model.application)
                         }
                     }
+
                     readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource} : {transaction: model.transaction}))
 
                     contentItem: ColumnLayout {
