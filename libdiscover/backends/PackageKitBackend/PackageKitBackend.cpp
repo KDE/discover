@@ -285,6 +285,10 @@ AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Componen
 
 void PackageKitBackend::resolvePackages(const QStringList &packageNames)
 {
+    if (packageNames.isEmpty()) {
+        return;
+    }
+
     if (!m_resolveTransaction) {
         m_resolveTransaction = new PKResolveTransaction(this);
         connect(m_resolveTransaction, &PKResolveTransaction::allFinished, this, &PackageKitBackend::getPackagesFinished);
