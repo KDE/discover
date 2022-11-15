@@ -248,44 +248,46 @@ void RpmOstreeTransaction::fakeProgress(const QByteArray &msg)
     QString message = QString(msg);
     int progress = this->progress();
     if (message.contains("Receiving metadata objects")) {
-        setProgress(progress + 10);
+        progress += 10;
     } else if (message.contains("Checking out tree")) {
-        setProgress(progress + 5);
+        progress += 5;
     } else if (message.contains("Enabled rpm-md repositories:")) {
-        setProgress(progress + 1);
+        progress += 1;
     } else if (message.contains("Updating metadata for")) {
-        setProgress(progress + 1);
+        progress += 1;
     } else if (message.contains("rpm-md repo")) {
-        setProgress(progress + 1);
+        progress += 1;
     } else if (message.contains("Resolving dependencies")) {
-        setProgress(progress + 5);
+        progress += 5;
     } else if (message.contains("Applying") && (message.contains("overrides") || message.contains("overlays"))) {
-        setProgress(progress + 5);
+        progress += 5;
         setStatus(Status::CommittingStatus);
     } else if (message.contains("Processing packages")) {
-        setProgress(progress + 5);
+        progress += 5;
     } else if (message.contains("Running pre scripts")) {
-        setProgress(progress + 5);
+        progress += 5;
     } else if (message.contains("Running post scripts")) {
-        setProgress(progress + 5);
+        progress += 5;
     } else if (message.contains("Running posttrans scripts")) {
-        setProgress(progress + 5);
+        progress += 5;
     } else if (message.contains("Writing rpmdb")) {
-        setProgress(progress + 5);
+        progress += 5;
     } else if (message.contains("Generating initramfs")) {
-        setProgress(progress + 10);
+        progress += 10;
     } else if (message.contains("Writing OSTree commit")) {
-        setProgress(progress + 10);
+        progress += 10;
         setCancellable(false);
     } else if (message.contains("Staging deployment")) {
-        setProgress(progress + 5);
+        progress += 5;
     } else if (message.contains("Freed")) {
-        setProgress(progress + 1);
+        progress += 1;
     } else if (message.contains("Upgraded")) {
-        setProgress(99);
+        progress = 99;
     } else {
-        setProgress(progress + 1);
+        progress += 1;
     }
+    // As we're faking progress, let's make sure that it stays in expected bounds
+    setProgress(qBound(1, progress, 99));
 }
 
 void RpmOstreeTransaction::cancel()
