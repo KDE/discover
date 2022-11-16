@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-10 00:47+0000\n"
-"PO-Revision-Date: 2022-10-29 12:16+0200\n"
-"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
+"PO-Revision-Date: 2022-11-15 18:09+0100\n"
+"Last-Translator: Antoni Bella <antonibella5@yahoo.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
@@ -60,9 +60,9 @@ msgid ""
 "Arch Linux."
 msgstr ""
 "Podeu utilitzar el <command>pacman</command> per a instal·lar les "
-"dependències opcionals que es necessiten per activar els dorsals d'aplicació."
-"<nl/><nl/>Cal tindre en compte que els desenvolupadors d'Arch Linux "
-"recomanen utilitzar el <command>pacman</command> per a gestionar el "
+"dependències opcionals que es necessiten per a activar els dorsals "
+"d'aplicació.<nl/><nl/>Cal tindre en compte que els desenvolupadors d'Arch "
+"Linux recomanen utilitzar el <command>pacman</command> per a gestionar el "
 "programari perquè el dorsal de PackageKit no està ben integrat en Arch Linux."
 
 #: discover/DiscoverObject.cpp:181
@@ -411,7 +411,7 @@ msgstr "Compartix"
 #: discover/qml/ApplicationPage.qml:602
 #, kde-format
 msgid "Send a link for this application"
-msgstr "Envia un enllaç per esta l'aplicació"
+msgstr "Envia un enllaç per a esta aplicació"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format
@@ -474,7 +474,7 @@ msgstr "Informeu d'un error"
 #: discover/qml/ApplicationPage.qml:787
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr "Enregistreu una incidència que heu trobat per ajudar a solucionar-la"
+msgstr "Enregistreu una incidència que heu trobat per a ajudar a solucionar-la"
 
 #: discover/qml/ApplicationPage.qml:801
 #, kde-format

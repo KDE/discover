@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-12 00:48+0000\n"
-"PO-Revision-Date: 2022-11-05 13:20+0000\n"
+"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"PO-Revision-Date: 2022-11-15 18:24+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -152,11 +152,10 @@ msgstr "teste 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Aplicações"
+msgstr "Todas as Aplicações"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -534,7 +533,7 @@ msgid "Local bundle"
 msgstr "Grupo local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:613
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL do AppStream inválido '%1'"
@@ -1078,7 +1077,7 @@ msgstr ""
 "O suporte para o seu sistema operativo terminou a %1. Pense em actualizar "
 "para uma versão suportada."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:702
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:706
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Não é possível remover o '%1'"
@@ -2404,17 +2403,3 @@ msgstr "Aplicações do Sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Extensões"
-
-#~ msgid ""
-#~ "An update has been successfully installed. Reboot your system at your "
-#~ "convenience to start using it."
-#~ msgstr ""
-#~ "Foi instalada uma actualização com sucesso. Reinicie o seu sistema, "
-#~ "quando lhe for conveniente, para a começar a usar."
-
-#~ msgid ""
-#~ "The update to %1 %2 has been successfully installed. Reboot your system "
-#~ "at your convenience to start using it."
-#~ msgstr ""
-#~ "A sua actualização para o %1 %2 foi instalada com sucesso. Reinicie o seu "
-#~ "sistema, quando lhe for conveniente, para a começar a usar."

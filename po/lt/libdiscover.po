@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-12 00:48+0000\n"
+"POT-Creation-Date: 2022-11-16 00:48+0000\n"
 "PO-Revision-Date: 2021-08-21 16:08+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -541,7 +541,7 @@ msgid "Local bundle"
 msgstr "Vietinis paketas"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:613
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Netaisyklingas appstream url „%1“"
@@ -1052,7 +1052,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:702
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:706
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nepavyksta pašalinti „%1“"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-10 00:47+0000\n"
-"PO-Revision-Date: 2022-10-26 12:12+0200\n"
+"PO-Revision-Date: 2022-11-03 12:36+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -642,8 +642,7 @@ msgid "Unable to load applications"
 msgstr "Impossibile caricare le applicazioni"
 
 #: discover/qml/BrowsingPage.qml:102
-#, fuzzy, kde-format
-#| msgid "Most Popular"
+#, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Più popolari"
@@ -652,27 +651,25 @@ msgstr "Più popolari"
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "Scelta dell'editore"
 
 #: discover/qml/BrowsingPage.qml:134
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "Giochi con il punteggio più votati"
 
 #: discover/qml/BrowsingPage.qml:153 discover/qml/BrowsingPage.qml:182
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "Vedi altro…"
+msgstr "Vedi altro"
 
 #: discover/qml/BrowsingPage.qml:163
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "Strumenti per sviluppatori più votati"
 
 #: discover/qml/DiscoverWindow.qml:42
 #, kde-format

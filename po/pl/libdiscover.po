@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-12 00:48+0000\n"
+"POT-Creation-Date: 2022-11-16 00:48+0000\n"
 "PO-Revision-Date: 2022-10-18 17:53+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -534,7 +534,7 @@ msgid "Local bundle"
 msgstr "Lokalny pęk"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:613
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Zniekształcony adres url appstream '%1'"
@@ -1071,7 +1071,7 @@ msgstr ""
 "Twój system operacyjny zakończył wsparcie dnia %1. Rozważ uaktualnienie do "
 "wspieranego wydania."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:702
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:706
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nie usunąć '%1'"

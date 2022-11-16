@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Marek Laane <qiilaq69@gmail.com>, 2016, 2019, 2020.
-# Mihkel Tõnnov <mihhkel@gmail.com>, 2020.
+# Mihkel Tõnnov <mihhkel@gmail.com>, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-14 00:47+0000\n"
-"PO-Revision-Date: 2020-10-11 00:08+0200\n"
+"PO-Revision-Date: 2022-11-15 20:51+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
 "Language: et\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Lokalize 22.08.3\n"
 
 #: notifier/DiscoverNotifier.cpp:144
 #, kde-format
@@ -96,10 +96,9 @@ msgid "System update status notifier"
 msgstr "Süsteemi uuenduste oleku teadustaja"
 
 #: notifier/main.cpp:43
-#, fuzzy, kde-format
-#| msgid "© 2010-2019 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "© 2010-2019: Plasma arendusmeeskond"
+msgstr "© 2010-2022: Plasma arendusmeeskond"
 
 #: notifier/main.cpp:47
 #, kde-format
@@ -134,22 +133,19 @@ msgid "Updates"
 msgstr "Uuendused"
 
 #: notifier/NotifierItem.cpp:50
-#, fuzzy, kde-format
-#| msgid "Open Discover..."
+#, kde-format
 msgid "Open Discover…"
-msgstr "Ava Discover ..."
+msgstr "Ava Discover …"
 
 #: notifier/NotifierItem.cpp:55
-#, fuzzy, kde-format
-#| msgid "See Updates..."
+#, kde-format
 msgid "See Updates…"
-msgstr "Vaata uuendusi ..."
+msgstr "Vaata uuendusi …"
 
 #: notifier/NotifierItem.cpp:60
-#, fuzzy, kde-format
-#| msgid "Refresh..."
+#, kde-format
 msgid "Refresh…"
-msgstr "Värskenda ..."
+msgstr "Värskenda …"
 
 #: notifier/NotifierItem.cpp:64
 #, kde-format
@@ -157,10 +153,9 @@ msgid "Restart to apply installed updates"
 msgstr "Paigaldatud uuenduste rakendamiseks tuleb arvuti taaskäivitada"
 
 #: notifier/NotifierItem.cpp:65
-#, fuzzy, kde-format
-#| msgid "Click to restart the computer"
+#, kde-format
 msgid "Click to restart the device"
-msgstr "Arvuti taaskäivitamiseks klõpsa siin"
+msgstr "Taaskäivitamiseks klõpsa siin"
 
 #~ msgid "Restart..."
 #~ msgstr "Taaskäivita ..."

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-12 00:48+0000\n"
-"PO-Revision-Date: 2022-10-22 15:31+0200\n"
+"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"PO-Revision-Date: 2022-11-11 10:58+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 22.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -150,11 +150,10 @@ msgstr "fittizio 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Applicazioni"
+msgstr "Tutte le applicazioni"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -532,7 +531,7 @@ msgid "Local bundle"
 msgstr "Pacchetto locale"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:613
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL di appstream «%1» non corretto"
@@ -821,8 +820,8 @@ msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr ""
-"Può leggere i file di sistema nei seguenti percorsi senza chiedere "
-"primal'autorizzazione: %1"
+"Può leggere i file di sistema nei seguenti percorsi senza chiedere prima "
+"l'autorizzazione: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:915
 #, kde-format
@@ -1070,7 +1069,7 @@ msgstr ""
 "Il tuo sistema operativo ha terminato il supporto il %1. Considera "
 "l'aggiornamento a una versione supportata."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:702
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:706
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Impossibile rimuovere «%1»"
@@ -1946,12 +1945,12 @@ msgstr[1] "%1 pacchetti da aggiornare"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
 #, kde-format
 msgid "<li>%1 (%2): No changelog information</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): nessuna informazione sul registro delle modifiche</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
 #, kde-format
 msgid "<li>%1 (%2): %3</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): %3</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
 #, kde-format
@@ -2102,32 +2101,37 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>È stata rilasciata una nuova versione principale di %1!</b>\n"
+"Per poter eseguire l'aggiornamento a questa nuova versione, assicurati di "
+"applicare tutti gli aggiornamenti in sospeso e riavvia il sistema."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
-#, fuzzy, kde-format
-#| msgid "Upgrade"
+#, kde-format
 msgid "Upgrade to %1 %2"
-msgstr "Aggiorna"
+msgstr "Aggiornamento a %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>È stata rilasciata una nuova versione principale!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:434
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
+"Hai aggiornamenti in sospeso per la versione attuale. Procedo comunque."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:437
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Aggiorna all'ultima versione prima del rebase a una versione principale"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:445
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Riferimento remoto mancante per l'operazione di rebase. Segnala un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:254
 #, kde-format
@@ -2160,10 +2164,9 @@ msgid "Removed packages:"
 msgstr "Pacchetti rimossi:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
-#, fuzzy, kde-format
-#| msgid "Currently booted version"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "Versione attualmente avviata"
+msgstr "Versione attualmente avviata (appuntata)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
 #, kde-format
@@ -2171,16 +2174,14 @@ msgid "Currently booted version"
 msgstr "Versione attualmente avviata"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
-#, fuzzy, kde-format
-#| msgid "Next version used after reboot"
+#, kde-format
 msgid "Version that will be used after reboot"
-msgstr "Versione successiva utilizzata dopo il riavvio"
+msgstr "Versione che sarà utilizzata dopo il riavvio"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
-#, fuzzy, kde-format
-#| msgid "Fallback version"
+#, kde-format
 msgid "Fallback version (pinned)"
-msgstr "Versione di ripiego"
+msgstr "Versione di ripiego (appuntata)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:353
 #, kde-format
@@ -2194,53 +2195,47 @@ msgstr "Remoti ostree"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:131
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:154
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "Transazione rpm-ostree attuale in corso:"
+msgstr "Transazione rpm-ostree non riuscita con:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:294
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"Annullamento della transazione rpm-ostree. Questo potrebbe richiedere del "
+"tempo. Attendi."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:323
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "Controlla aggiornamenti"
+msgstr "Verifica della presenza di un aggiornamento di sistema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:326
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Downloading Packages"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Scaricamento dei pacchetti"
+msgstr "Scaricamento dell'aggiornamento del sistema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:329
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Sistema operativo"
+msgstr "Aggiornamento del sistema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:332
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Aggiornamento alla versione principale successiva"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:335
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
-msgstr ""
+msgstr "Transazione in corso (iniziata al di fuori di Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:341
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Impossibile annullare la transazione"
+msgstr "Tipo di transazione sconosciuto"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

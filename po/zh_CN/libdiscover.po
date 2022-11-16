@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-12 00:48+0000\n"
+"POT-Creation-Date: 2022-11-16 00:48+0000\n"
 "PO-Revision-Date: 2022-11-06 01:05\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -532,7 +532,7 @@ msgid "Local bundle"
 msgstr "本地包"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:613
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "错误的 AppStream URL “%1”"
@@ -1036,7 +1036,7 @@ msgid ""
 msgstr ""
 "本机安装的操作系统已于 %1 结束支持。请考虑升级到仍受支持的新版操作系统。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:702
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:706
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "无法移除“%1”"
