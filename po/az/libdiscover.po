@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:48+0000\n"
+"POT-Creation-Date: 2022-11-17 00:47+0000\n"
 "PO-Revision-Date: 2022-08-16 17:03+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -2201,43 +2201,43 @@ msgstr "serverəki OSTree"
 msgid "rpm-ostree transaction failed with:"
 msgstr "Hazırda ostree köçürülməsi icra olunur:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:294
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:296
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:323
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:325
 #, fuzzy, kde-format
 #| msgctxt "@action Checks the Internet for updates"
 #| msgid "Check for Updates"
 msgid "Checking for a system update"
 msgstr "Yenilənmələri yoxlamaq"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:326
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:328
 #, fuzzy, kde-format
 #| msgid "Downloading"
 msgid "Downloading system update"
 msgstr "Yüklənir"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:329
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:331
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Operating System"
 msgid "Updating the system"
 msgstr "Əməliyyat Sistemi"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:332
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:334
 #, kde-format
 msgid "Updating to the next major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:335
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:337
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:341
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:343
 #, fuzzy, kde-format
 #| msgid "Cannot cancel transaction"
 msgid "Unknown transaction type"
