@@ -3,13 +3,10 @@
   <Menu>
     <Name>Dummy Category</Name>
     <Icon>applications</Icon>
-    <Image>https://c1.staticflickr.com/1/44/155013466_a8596ed65a_o.jpg</Image>
-    <Include />
 
     <Menu>
       <Name>dummy</Name>
       <Icon>kalarm</Icon>
-      <Image>https://c2.staticflickr.com/6/5308/5876407905_6f31082232_o.jpg</Image>
       <Include>
           <Category>dummy1</Category>
       </Include>
@@ -17,7 +14,6 @@
     <Menu>
       <Name>dummy addons</Name>
       <Icon>plasma</Icon>
-      <Image>https://c2.staticflickr.com/4/3221/2897450915_a1fcde62b7_o.jpg</Image>
       <Addons />
       <Include>
           <Category>dummy2</Category>
@@ -26,7 +22,6 @@
     <Menu>
       <Name>dummy 1</Name>
       <Icon>kontact</Icon>
-      <Image>https://c2.staticflickr.com/2/1347/955467402_be4f5970b2_o.jpg</Image>
       <Include>
           <Category>dummy3</Category>
       </Include>
@@ -66,8 +61,8 @@
       <Name>dummy 3</Name>
       <Icon>kig</Icon>
       <Include>
-          <Category>dummy</Category>
           <Or>
+            <Category>dummy</Category>
             <Category>three</Category>
           </Or>
       </Include>
@@ -76,8 +71,8 @@
       <Name>dummy 4</Name>
       <Icon>kdeconnect</Icon>
       <Include>
-          <Category>dummy</Category>
           <And>
+            <Category>dummy</Category>
             <Category>notthree</Category>
           </And>
       </Include>

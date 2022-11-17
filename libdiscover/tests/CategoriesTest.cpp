@@ -22,6 +22,7 @@ public:
         const QVector<QString> categoryFiles = {
             QFINDTESTDATA("../backends/PackageKitBackend/packagekit-backend-categories.xml"),
             QFINDTESTDATA("../backends/FlatpakBackend/flatpak-backend-categories.xml"),
+            QFINDTESTDATA("../backends/DummyBackend/dummy-backend-categories.xml"),
         };
 
         QVector<Category *> ret;

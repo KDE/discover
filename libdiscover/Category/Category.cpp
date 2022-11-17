@@ -90,7 +90,7 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml)
                 xml->readNext();
 
                 if (xml->isEndElement() && xml->name() == opening) {
-                    qDebug() << "weird, let's go" << opening;
+                    qDebug() << "weird, let's go" << opening << xml->lineNumber();
                     break;
                 } else if (!xml->isStartElement()) {
                     if (xml->isCharacters() && xml->text().trimmed().isEmpty())
