@@ -24,6 +24,7 @@
     <file>qml/ConditionalObject.qml</file>
     <file>qml/ApplicationScreenshots.qml</file>
     <file>qml/LabelBackground.qml</file>
+    <file>qml/DiscoverInlineMessage.qml</file>
     <file>qml/DiscoverPage.qml</file>
     <file>qml/DiscoverWindow.qml</file>
     <file>qml/DiscoverDrawer.qml</file>

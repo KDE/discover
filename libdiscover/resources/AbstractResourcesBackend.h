@@ -9,6 +9,7 @@
 
 #include <QObject>
 #include <QPair>
+#include <QVariantList>
 #include <QVector>
 
 #include "AbstractResource.h"
@@ -39,26 +40,6 @@ Q_SIGNALS:
     void fetchMore();
 };
 
-class DISCOVERCOMMON_EXPORT HelpfulError : public QObject
-{
-    Q_OBJECT
-    Q_PROPERTY(QString iconName MEMBER m_iconName CONSTANT)
-    Q_PROPERTY(QString errorMessage MEMBER m_errorMessage CONSTANT)
-    Q_PROPERTY(QVariantList actions MEMBER m_actions CONSTANT)
-public:
-    HelpfulError(const QString &iconName, const QString &error, const QVariantList &actions = {})
-        : m_iconName(iconName)
-        , m_errorMessage(error)
-        , m_actions(actions)
-    {
-    }
-
-private:
-    QString m_iconName;
-    QString m_errorMessage;
-    QVariantList m_actions;
-};
-
 class DISCOVERCOMMON_EXPORT InlineMessage : public QObject
 {
     Q_OBJECT
@@ -74,20 +55,28 @@ public:
     Q_PROPERTY(InlineMessageType type MEMBER type CONSTANT)
     Q_PROPERTY(QString iconName MEMBER iconName CONSTANT)
     Q_PROPERTY(QString message MEMBER message CONSTANT)
-    Q_PROPERTY(DiscoverAction *action MEMBER action CONSTANT)
+    Q_PROPERTY(QVariantList actions MEMBER actions CONSTANT)
 
     InlineMessage(InlineMessageType type, const QString &iconName, const QString &message, DiscoverAction *action = nullptr)
         : type(type)
         , iconName(iconName)
         , message(message)
-        , action(action)
+        , actions(action ? QVariantList{QVariant::fromValue<QObject *>(action)} : QVariantList())
+    {
+    }
+
+    InlineMessage(InlineMessageType type, const QString &iconName, const QString &message, const QVariantList &actions)
+        : type(type)
+        , iconName(iconName)
+        , message(message)
+        , actions(actions)
     {
     }
 
     InlineMessageType type;
     const QString iconName;
     const QString message;
-    DiscoverAction *const action;
+    const QVariantList actions;
 };
 
 /**
@@ -256,7 +245,7 @@ public Q_SLOTS:
     /**
      * Provides a guess why a search might not have offered satisfactory results
      */
-    Q_SCRIPTABLE virtual HelpfulError *explainDysfunction() const;
+    Q_SCRIPTABLE virtual InlineMessage *explainDysfunction() const;
 
 Q_SIGNALS:
     /**

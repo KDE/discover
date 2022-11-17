@@ -857,11 +857,11 @@ int PackageKitBackend::fetchingUpdatesProgress() const
     return percentage;
 }
 
-HelpfulError *PackageKitBackend::explainDysfunction() const
+InlineMessage *PackageKitBackend::explainDysfunction() const
 {
     const auto error = m_appdata->lastError();
     if (!error.isEmpty()) {
-        return new HelpfulError(QStringLiteral("network-disconnect"), error);
+        return new InlineMessage(InlineMessage::Error, QStringLiteral("network-disconnect"), error);
     }
     return AbstractResourcesBackend::explainDysfunction();
 }

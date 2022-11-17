@@ -44,7 +44,7 @@ public:
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override;
-
+    InlineMessage *explainDysfunction() const override;
 public Q_SLOTS:
     void toggleFetching();
 

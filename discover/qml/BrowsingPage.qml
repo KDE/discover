@@ -22,22 +22,8 @@ DiscoverPage
 
     actions.main: window.wideScreen ? searchAction : null
 
-    header: Loader {
-        active: ResourcesModel.inlineMessage
-        sourceComponent: Kirigami.InlineMessage {
-            text: ResourcesModel.inlineMessage.message
-            type: ResourcesModel.inlineMessage.type
-            icon.name: ResourcesModel.inlineMessage.iconName
-
-            Component {
-                id: comp
-                ConvertDiscoverAction {
-                    action: ResourcesModel.inlineMessage.action
-                }
-            }
-            actions: ResourcesModel.inlineMessage.action ? comp.createObject(this) : []
-            visible: true
-        }
+    header: DiscoverInlineMessage {
+        inlineMessage: ResourcesModel.inlineMessage
     }
 
     readonly property bool isHome: true
@@ -61,7 +47,7 @@ DiscoverPage
             readonly property var helpfulError: featuredModel.currentApplicationBackend.explainDysfunction()
             icon.name: helpfulError.iconName
             text: i18n("Unable to load applications")
-            explanation: helpfulError.errorMessage
+            explanation: helpfulError.message
 
             Repeater {
                 model: helpfulError.actions

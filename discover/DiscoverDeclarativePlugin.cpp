@@ -47,7 +47,6 @@ void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
     qmlRegisterUncreatableType<Transaction>("org.kde.discover", 2, 0, "Transaction", QStringLiteral("should come from the backends"));
     qmlRegisterUncreatableType<SourcesModel>("org.kde.discover", 2, 0, "SourcesModelClass", QStringLiteral("should come from the backends"));
     qmlRegisterUncreatableType<AbstractBackendUpdater>("org.kde.discover", 2, 0, "AbstractBackendUpdater", QStringLiteral("should come from the backends"));
-    qmlRegisterUncreatableType<HelpfulError>("org.kde.discover", 2, 0, "HelpfulError", QStringLiteral("should come from the backend"));
     qmlRegisterUncreatableType<InlineMessage>("org.kde.discover", 2, 0, "InlineMessage", QStringLiteral("should come from the backend"));
     qmlRegisterAnonymousType<TransactionModel>("org.kde.discover", 1);
     qmlRegisterAnonymousType<Rating>("org.kde.discover", 1);

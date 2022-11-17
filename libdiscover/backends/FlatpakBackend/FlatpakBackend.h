@@ -76,7 +76,7 @@ public:
     void loadRemote(FlatpakInstallation *installation, FlatpakRemote *remote);
     void unloadRemote(FlatpakInstallation *installation, FlatpakRemote *remote);
 
-    HelpfulError *explainDysfunction() const override;
+    InlineMessage *explainDysfunction() const override;
     QVector<FlatpakInstallation *> installations() const
     {
         return m_installations;

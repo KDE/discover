@@ -183,4 +183,9 @@ bool DummyBackend::hasApplications() const
     return true;
 }
 
+InlineMessage *DummyBackend::explainDysfunction() const
+{
+    return new InlineMessage(InlineMessage::Error, QStringLiteral("emblem-error"), QStringLiteral("There are no Dummy sources."));
+}
+
 #include "DummyBackend.moc"

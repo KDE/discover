@@ -152,23 +152,9 @@ DiscoverPage
     header: ColumnLayout {
         id: errorsColumn
 
-        Loader {
+        DiscoverInlineMessage {
             Layout.fillWidth: true
-            Layout.margins: active ? Kirigami.Units.smallSpacing : 0
-            active: ResourcesModel.inlineMessage
-            sourceComponent: Kirigami.InlineMessage {
-                text: ResourcesModel.inlineMessage.message
-                type: ResourcesModel.inlineMessage.type
-                icon.name: ResourcesModel.inlineMessage.iconName
-                Component {
-                    id: comp
-                    ConvertDiscoverAction {
-                        action: ResourcesModel.inlineMessage.action
-                    }
-                }
-                actions: ResourcesModel.inlineMessage.action ? comp.createObject(this) : []
-                visible: true
-            }
+            inlineMessage: ResourcesModel.inlineMessage
         }
 
         Repeater {
