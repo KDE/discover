@@ -182,16 +182,12 @@ Kirigami.GlobalDrawer {
     }
 
     function createCategoryActions(categories) {
-        const actions = []
-        for(let i in categories) {
-            let cat = categories[i];
-            const catAction = categoryActionComponent.createObject(drawer, {
+        return categories.map((cat) => {
+            return categoryActionComponent.createObject(drawer, {
                 category: cat,
                 children: createCategoryActions(cat.subcategories)
             });
-            actions.push(catAction);
-        }
-        return actions;
+        });
     }
 
     actions: createCategoryActions(CategoryModel.rootCategories)
