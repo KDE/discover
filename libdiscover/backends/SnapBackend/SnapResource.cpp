@@ -311,6 +311,7 @@ QDate SnapResource::releaseDate() const
 
 class PlugsModel : public QStandardItemModel
 {
+    Q_OBJECT
 public:
     enum Roles {
         PlugNameRole = Qt::UserRole + 1,
@@ -365,6 +366,9 @@ public:
         }
     }
 
+Q_SIGNALS:
+    void error(InlineMessage *message);
+
 private:
     bool setData(const QModelIndex &index, const QVariant &value, int role) override
     {
@@ -388,7 +392,7 @@ private:
         req->runSync();
         if (req->error()) {
             qWarning() << "snapd error" << req->errorString();
-            Q_EMIT m_res->backend()->passiveMessage(req->errorString());
+            Q_EMIT error(new InlineMessage(InlineMessage::Error, "error", req->errorString()));
         }
         return req->error() == QSnapdRequest::NoError;
     }
@@ -400,7 +404,7 @@ private:
 QAbstractItemModel *SnapResource::plugs(QObject *p)
 {
     if (!isInstalled())
-        return new QStandardItemModel(p);
+        return nullptr;
 
     return new PlugsModel(this, qobject_cast<SnapBackend *>(parent()), p);
 }

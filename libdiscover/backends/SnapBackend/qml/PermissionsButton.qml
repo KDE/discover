@@ -21,9 +21,18 @@ Button
         parent: applicationWindow().overlay
         title: i18n("Permissions for %1", resource.name)
 
+        property QtObject errorMessage: null
+
         ListView {
             id: view
             model: resource.plugs(root)
+            Connections {
+                target: view.model
+                function onError(message) { overlay.errorMessage = message }
+            }
+            header: DiscoverInlineMessage {
+                inlineMessage: overlay.errorMessage
+            }
             delegate: CheckDelegate {
                 id: delegate
                 width: view.width
