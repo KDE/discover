@@ -17,9 +17,9 @@ Loader
         text: root.inlineMessage.message
         type: root.inlineMessage.type
         icon.name: root.inlineMessage.iconName
-        leftInset: active ? Kirigami.Units.smallSpacing : 0
-        rightInset: active ? Kirigami.Units.smallSpacing : 0
-        topInset: active ? Kirigami.Units.smallSpacing : 0
+        leftPadding: active ? Kirigami.Units.smallSpacing : 0
+        rightPadding: active ? Kirigami.Units.smallSpacing : 0
+        topPadding: active ? Kirigami.Units.smallSpacing : 0
 
         Component {
             id: comp
