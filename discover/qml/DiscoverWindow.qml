@@ -1,6 +1,7 @@
 import QtQuick 2.15
-import QtQuick.Layouts 1.1
+import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.14
+import QtQml.Models 2.15
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
@@ -38,8 +39,9 @@ Kirigami.ApplicationWindow
     readonly property var leftPage: window.stack.depth>0 ? window.stack.get(0) : null
 
     Component.onCompleted: {
-        if (app.isRoot)
-            showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
+        if (app.isRoot) {
+            messagesSheet.addMessage(i18n("Running as <em>root</em> is discouraged and unnecessary."));
+        }
     }
 
     readonly property string describeSources: feedbackLoader.item ? feedbackLoader.item.describeDataSources : ""
@@ -145,16 +147,16 @@ Kirigami.ApplicationWindow
         }
 
         function onUnableToFind(resid) {
-            showPassiveNotification(i18n("Unable to find resource: %1", resid));
+            messagesSheet.addMessage(i18n("Unable to find resource: %1", resid));
             Navigation.openHome()
         }
     }
 
     Connections {
         target: ResourcesModel
-        function onPassiveMessage (message) {
-            showPassiveNotification(message)
-            console.log("message:", message)
+
+        function onPassiveMessage(message) {
+            messagesSheet.addMessage(message);
         }
     }
 
@@ -227,7 +229,7 @@ Kirigami.ApplicationWindow
                     id: desc
 
                     Layout.fillWidth: true
-                    Layout.maximumWidth: Math.round(window.width * 0.75)
+                    Layout.maximumWidth: Kirigami.Units.gridUnit * 20
 
                     textFormat: Text.StyledText
                     wrapMode: Text.WordWrap
@@ -270,6 +272,7 @@ Kirigami.ApplicationWindow
             }
         }
     }
+
     Component {
         id: distroErrorMessageDialog
         Kirigami.OverlaySheet {
@@ -286,7 +289,7 @@ Kirigami.ApplicationWindow
                     id: desc
 
                     Layout.fillWidth: true
-                    Layout.maximumWidth: Math.round(window.width * 0.75)
+                    Layout.maximumWidth: Kirigami.Units.gridUnit * 20
 
                     textFormat: Text.StyledText
                     wrapMode: Text.WordWrap
@@ -310,6 +313,107 @@ Kirigami.ApplicationWindow
         }
     }
 
+    Kirigami.OverlaySheet {
+        id: messagesSheet
+
+        property bool copyButtonEnabled: true
+
+        function addMessage(message: string) {
+            messages.append({message: message});
+        }
+
+        title: messages.count > 1 ? i18n("Error %1 of %2", messagesSheetView.currentIndex + 1, messages.count) : i18n("Error")
+
+        Keys.onEscapePressed: sheetOpen = false
+
+        // No need to add our own ScrollView since OverlaySheet includes
+        // one automatically.
+        // But we do need to put the label into a Layout of some sort so we
+        // can limit the width of the sheet.
+        contentItem: ColumnLayout {
+            Item {
+                Layout.fillWidth: true
+                Layout.maximumWidth: Kirigami.Units.gridUnit * 20
+            }
+
+            StackLayout {
+                id: messagesSheetView
+
+                Layout.fillWidth: true
+                Layout.bottomMargin: Kirigami.Units.gridUnit
+
+                Repeater {
+                    model: ListModel {
+                        id: messages
+
+                        onCountChanged: {
+                            messagesSheet.sheetOpen = (count > 0);
+
+                            if (count > 0 && messagesSheetView.currentIndex === -1) {
+                                messagesSheetView.currentIndex = 0;
+                            }
+                        }
+                    }
+
+                    delegate: Label {
+                        Layout.fillWidth: true
+
+                        text: model.message
+                        textFormat: Text.StyledText
+                        wrapMode: Text.WordWrap
+                    }
+                }
+            }
+
+            RowLayout {
+                Layout.fillWidth: true
+
+                Button {
+                    text: i18nc("@action:button", "Show Previous")
+                    icon.name: "go-previous"
+                    visible: messages.count > 1
+                    enabled: visible && messagesSheetView.currentIndex > 0
+
+                    onClicked: {
+                        if (messagesSheetView.currentIndex > 0) {
+                            messagesSheetView.currentIndex--;
+                        }
+                    }
+                }
+
+                Button {
+                    text: i18nc("@action:button", "Show Next")
+                    icon.name: "go-next"
+                    visible: messages.count > 1
+                    enabled: visible && messagesSheetView.currentIndex < messages.count - 1
+
+                    onClicked: {
+                        if (messagesSheetView.currentIndex < messages.count) {
+                            messagesSheetView.currentIndex++;
+                        }
+                    }
+                }
+
+                Item { Layout.fillWidth: true }
+
+                Button {
+                    Layout.alignment: Qt.AlignRight
+                    text: i18n("Copy to Clipboard")
+                    icon.name: "edit-copy"
+
+                    onClicked: {
+                        app.copyTextToClipboard(messages.get(messagesSheetView.currentIndex).message);
+                    }
+                }
+            }
+        }
+
+        onSheetOpenChanged: if (!sheetOpen) {
+            messagesSheetView.currentIndex = -1;
+            messages.clear();
+        }
+    }
+
     Instantiator {
         model: TransactionModel
 
@@ -321,10 +425,12 @@ Kirigami.ApplicationWindow
                 dialog.open()
                 app.restore()
             }
+
             function onPassiveMessage(message) {
-                window.showPassiveNotification(message)
+                messagesSheet.addMessage(message);
                 app.restore()
             }
+
             function onDistroErrorMessage(message, actions) {
                 var dialog = distroErrorMessageDialog.createObject(window, {transaction: transaction, title: i18n("Error"), message: message})
                 dialog.open()
