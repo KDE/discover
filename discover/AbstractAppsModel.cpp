@@ -147,6 +147,7 @@ void AbstractAppsModel::setResources(const QVector<AbstractResource *> &_resourc
         beginResetModel();
         m_resources = resources;
         endResetModel();
+        Q_EMIT appsCountChanged();
     }
 
     acquireFetching(false);
