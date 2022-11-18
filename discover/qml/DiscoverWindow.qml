@@ -319,6 +319,7 @@ Kirigami.ApplicationWindow
 
         function addMessage(message: string) {
             messages.append({message: message});
+            app.restore()
         }
 
         title: messages.count > 1 ? i18n("Error %1 of %2", messagesSheetView.currentIndex + 1, messages.count) : i18n("Error")
@@ -425,7 +426,6 @@ Kirigami.ApplicationWindow
 
             function onPassiveMessage(message) {
                 messagesSheet.addMessage(message);
-                app.restore()
             }
 
             function onDistroErrorMessage(message, actions) {
