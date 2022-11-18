@@ -278,7 +278,6 @@ Kirigami.ApplicationWindow
         Kirigami.OverlaySheet {
             id: sheet
             property alias message: desc.text
-            Keys.onEscapePressed: sheetOpen = false
 
             // No need to add our own ScrollView since OverlaySheet includes
             // one automatically.
@@ -323,8 +322,6 @@ Kirigami.ApplicationWindow
         }
 
         title: messages.count > 1 ? i18n("Error %1 of %2", messagesSheetView.currentIndex + 1, messages.count) : i18n("Error")
-
-        Keys.onEscapePressed: sheetOpen = false
 
         // No need to add our own ScrollView since OverlaySheet includes
         // one automatically.
