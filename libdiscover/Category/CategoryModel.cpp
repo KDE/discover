@@ -100,6 +100,8 @@ Category *CategoryModel::findCategoryByName(const QString &name) const
         if (ret)
             return ret;
     }
-    qDebug() << "could not find category" << name << m_rootCategories;
+    if (!m_rootCategories.isEmpty()) {
+        qDebug() << "could not find category" << name << m_rootCategories;
+    }
     return nullptr;
 }
