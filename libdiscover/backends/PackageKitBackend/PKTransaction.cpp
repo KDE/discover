@@ -209,7 +209,9 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         return;
     }
 
-    this->submitResolve();
+    if (!simulate) {
+        submitResolve();
+    }
     if (failed)
         setStatus(Transaction::DoneWithErrorStatus);
     else if (cancel)
