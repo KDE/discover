@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-17 00:47+0000\n"
+"POT-Creation-Date: 2022-11-19 00:47+0000\n"
 "PO-Revision-Date: 2021-09-09 13:59+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/"
@@ -103,50 +103,50 @@ msgctxt "Category"
 msgid "Dummy Category"
 msgstr "ഡമ്മി വിഭാഗം"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:10
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:8
 #, kde-format
 msgctxt "Category"
 msgid "dummy"
 msgstr "ഡമ്മി"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:15
 #, kde-format
 msgctxt "Category"
 msgid "dummy addons"
 msgstr "ഡമ്മി ആഡ്ഓണുകൾ"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:27
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:23
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
 msgstr "ഡമ്മി 1"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:35
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:30
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
 msgstr "സാധനങ്ങൾ ഉള്ള ഡമ്മി"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:42
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:57
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:37
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:52
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
 msgstr "ഡമ്മി 2.1"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:50
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:45
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
 msgstr "കുറച്ച് സാധനങ്ങളുമായി ഡമ്മി"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:66
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:61
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
 msgstr "ഡമ്മി 3"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:76
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:71
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"
@@ -2172,7 +2172,7 @@ msgstr "ഇടപാട് റദ്ദാക്കാൻ കഴിയില്�
 msgid "Snap"
 msgstr "സ്നാപ്പ്"
 
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:353
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:354
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"

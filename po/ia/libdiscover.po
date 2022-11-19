@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-17 00:47+0000\n"
+"POT-Creation-Date: 2022-11-19 00:47+0000\n"
 "PO-Revision-Date: 2022-10-12 15:32+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -98,50 +98,50 @@ msgctxt "Category"
 msgid "Dummy Category"
 msgstr "Categoria ficte"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:10
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:8
 #, kde-format
 msgctxt "Category"
 msgid "dummy"
 msgstr "ficte"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:15
 #, kde-format
 msgctxt "Category"
 msgid "dummy addons"
 msgstr "adjuncte ficte"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:27
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:23
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
 msgstr "ficte 1"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:35
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:30
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
 msgstr "ficte con cosa"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:42
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:57
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:37
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:52
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
 msgstr "ficte 2.1"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:50
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:45
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
 msgstr "ficte con quasi alcun cosa"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:66
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:61
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
 msgstr "ficte 3"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:76
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:71
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"
@@ -2255,7 +2255,7 @@ msgstr "Non pote cancellar transaction"
 msgid "Snap"
 msgstr "Snap"
 
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:353
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:354
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"

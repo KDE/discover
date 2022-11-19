@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-10 00:47+0000\n"
+"POT-Creation-Date: 2022-11-19 00:47+0000\n"
 "PO-Revision-Date: 2020-10-16 09:44+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -255,10 +255,10 @@ msgstr "הוספת מאגר %1 חדש"
 msgid "Add"
 msgstr "הוספה"
 
-#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:255
+#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:257
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
-#: discover/qml/UpdatesPage.qml:267 discover/qml/WebflowDialog.qml:39
+#: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:39
 #, kde-format
 msgid "Cancel"
 msgstr "ביטול"
@@ -614,76 +614,76 @@ msgstr ""
 msgid "Still looking…"
 msgstr "עדיין בחיפוש..."
 
-#: discover/qml/BrowsingPage.qml:63
+#: discover/qml/BrowsingPage.qml:49
 #, kde-format
 msgid "Unable to load applications"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:102
+#: discover/qml/BrowsingPage.qml:88
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:120
+#: discover/qml/BrowsingPage.qml:106
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:134
+#: discover/qml/BrowsingPage.qml:120
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:153 discover/qml/BrowsingPage.qml:182
+#: discover/qml/BrowsingPage.qml:139 discover/qml/BrowsingPage.qml:168
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:163
+#: discover/qml/BrowsingPage.qml:149
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:42
+#: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "הרצה בתור <em>משתמש־על (root)</em> היא מסוכנת ומיותרת."
 
-#: discover/qml/DiscoverWindow.qml:54
+#: discover/qml/DiscoverWindow.qml:56
 #, fuzzy, kde-format
 msgid "&Home"
 msgstr "דך הבית"
 
-#: discover/qml/DiscoverWindow.qml:64
+#: discover/qml/DiscoverWindow.qml:66
 #, fuzzy, kde-format
 #| msgid "Search"
 msgid "&Search"
 msgstr "חיפוש"
 
-#: discover/qml/DiscoverWindow.qml:72
+#: discover/qml/DiscoverWindow.qml:74
 #, fuzzy, kde-format
 #| msgid "Installed"
 msgid "&Installed"
 msgstr "מותקן"
 
-#: discover/qml/DiscoverWindow.qml:79
+#: discover/qml/DiscoverWindow.qml:81
 #, fuzzy, kde-format
 #| msgid "Fetching updates..."
 msgid "Fetching &updates…"
 msgstr "באחזור העדכונים..."
 
-#: discover/qml/DiscoverWindow.qml:79
+#: discover/qml/DiscoverWindow.qml:81
 #, fuzzy, kde-format
 #| msgid "Up to date"
 msgid "&Up to date"
 msgstr "המערכת מעודכנת"
 
-#: discover/qml/DiscoverWindow.qml:79
+#: discover/qml/DiscoverWindow.qml:81
 #, fuzzy, kde-format
 #| msgctxt "Update section name"
 #| msgid "Update (%1)"
@@ -691,36 +691,61 @@ msgctxt "Update section name"
 msgid "&Update (%1)"
 msgstr "עדכון (%1)"
 
-#: discover/qml/DiscoverWindow.qml:86
+#: discover/qml/DiscoverWindow.qml:88
 #, fuzzy, kde-format
 #| msgid "About"
 msgid "&About"
 msgstr "אודות"
 
-#: discover/qml/DiscoverWindow.qml:94
+#: discover/qml/DiscoverWindow.qml:96
 #, fuzzy, kde-format
 #| msgid "Settings"
 msgid "S&ettings"
 msgstr "הגדרות"
 
-#: discover/qml/DiscoverWindow.qml:144 discover/qml/DiscoverWindow.qml:329
+#: discover/qml/DiscoverWindow.qml:146 discover/qml/DiscoverWindow.qml:325
+#: discover/qml/DiscoverWindow.qml:432
 #, kde-format
 msgid "Error"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:148
+#: discover/qml/DiscoverWindow.qml:150
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "אין יכולת למצוא את המשאב: %1"
 
-#: discover/qml/DiscoverWindow.qml:242 discover/qml/SourcesPage.qml:169
+#: discover/qml/DiscoverWindow.qml:244 discover/qml/SourcesPage.qml:169
 #, kde-format
 msgid "Proceed"
 msgstr "המשך"
 
-#: discover/qml/DiscoverWindow.qml:299
+#: discover/qml/DiscoverWindow.qml:301
 #, kde-format
 msgid "Report this issue"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:325
+#, fuzzy, kde-format
+#| msgid "Votes: %1 out of %2"
+msgid "Error %1 of %2"
+msgstr "הצבעות: %1 מתוך %2"
+
+#: discover/qml/DiscoverWindow.qml:370
+#, kde-format
+msgctxt "@action:button"
+msgid "Show Previous"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:383
+#, fuzzy, kde-format
+#| msgid "Show contents"
+msgctxt "@action:button"
+msgid "Show Next"
+msgstr "הצגת תוכן"
+
+#: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
+#, kde-format
+msgid "Copy to Clipboard"
 msgstr ""
 
 #: discover/qml/Feedback.qml:12
@@ -1064,11 +1089,6 @@ msgid ""
 "packagers, include this information:"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:98
-#, kde-format
-msgid "Copy to Clipboard"
-msgstr ""
-
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Error message copied to clipboard"
@@ -1084,54 +1104,54 @@ msgstr "עדכון הנבחרים"
 msgid "Update All"
 msgstr "עדכון הכל"
 
-#: discover/qml/UpdatesPage.qml:188
+#: discover/qml/UpdatesPage.qml:174
 #, kde-format
 msgid "Ignore"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:234
+#: discover/qml/UpdatesPage.qml:220
 #, kde-format
 msgid "Select All"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:242
+#: discover/qml/UpdatesPage.qml:228
 #, kde-format
 msgid "Select None"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:249
+#: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:256
+#: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Total size: %1"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:292
+#: discover/qml/UpdatesPage.qml:278
 #, fuzzy, kde-format
 #| msgid "Restart"
 msgid "Restart Now"
 msgstr "הפעלה מחדש"
 
-#: discover/qml/UpdatesPage.qml:391
+#: discover/qml/UpdatesPage.qml:377
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:407
+#: discover/qml/UpdatesPage.qml:393
 #, kde-format
 msgid "Installing"
 msgstr "בהתקנה"
 
-#: discover/qml/UpdatesPage.qml:442
+#: discover/qml/UpdatesPage.qml:428
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgid "Update from:"
 msgstr "עדכון הכל"
 
-#: discover/qml/UpdatesPage.qml:454
+#: discover/qml/UpdatesPage.qml:440
 #, fuzzy, kde-format
 #| msgid "%1 (%2)"
 msgctxt ""
@@ -1140,13 +1160,13 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:461
+#: discover/qml/UpdatesPage.qml:447
 #, fuzzy, kde-format
 #| msgid "More Information..."
 msgid "More Information…"
 msgstr "מידע נוסף..."
 
-#: discover/qml/UpdatesPage.qml:489
+#: discover/qml/UpdatesPage.qml:475
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Fetching updates..."
@@ -1154,32 +1174,32 @@ msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "באחזור העדכונים..."
 
-#: discover/qml/UpdatesPage.qml:502
+#: discover/qml/UpdatesPage.qml:488
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "עדכונים"
 
-#: discover/qml/UpdatesPage.qml:512
+#: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:524 discover/qml/UpdatesPage.qml:531
-#: discover/qml/UpdatesPage.qml:538
+#: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
+#: discover/qml/UpdatesPage.qml:524
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "המערכת מעודכנת"
 
-#: discover/qml/UpdatesPage.qml:545
+#: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "כדאי לבדוק אם יש עדכונים"
 
-#: discover/qml/UpdatesPage.qml:552
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

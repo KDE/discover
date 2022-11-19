@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-17 00:47+0000\n"
+"POT-Creation-Date: 2022-11-19 00:47+0000\n"
 "PO-Revision-Date: 2022-08-11 22:55+0300\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -108,50 +108,50 @@ msgctxt "Category"
 msgid "Dummy Category"
 msgstr "Testiluokka"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:10
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:8
 #, kde-format
 msgctxt "Category"
 msgid "dummy"
 msgstr "testi"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:15
 #, kde-format
 msgctxt "Category"
 msgid "dummy addons"
 msgstr "testilisäosat"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:27
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:23
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
 msgstr "testi 1"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:35
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:30
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
 msgstr "testi jutuilla"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:42
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:57
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:37
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:52
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
 msgstr "testi 2.1"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:50
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:45
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
 msgstr "testi aika monella jutulla"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:66
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:61
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
 msgstr "testi 3"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:76
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:71
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"
@@ -2264,7 +2264,7 @@ msgstr "Toimenpidettä ei voida peruuttaa"
 msgid "Snap"
 msgstr "Snap"
 
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:353
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:354
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 – %2"

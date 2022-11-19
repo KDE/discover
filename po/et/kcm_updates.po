@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-07 00:45+0000\n"
-"PO-Revision-Date: 2022-11-15 20:59+0100\n"
+"PO-Revision-Date: 2022-11-17 23:26+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
 "Language: et\n"
@@ -83,7 +83,7 @@ msgstr "Mitte kunagi"
 #: kcm/package/contents/ui/main.qml:111
 #, kde-format
 msgid "Use offline updates:"
-msgstr ""
+msgstr "Uuendamine taaskäivitusel:"
 
 #: kcm/package/contents/ui/main.qml:124
 #, kde-format
@@ -91,6 +91,9 @@ msgid ""
 "Offline updates maximize system stability by applying changes while "
 "restarting the system. Using this update mode is strongly recommended."
 msgstr ""
+"Uuenduste paigaldamisega oodatakse kuni arvuti taaskäivitamiseni, tagades "
+"nii võimalikult stabiilse süsteemi. Selle uuendamisrežiimi kasutamine on "
+"soojalt soovitatav."
 
 #: kcm/updates.cpp:31
 #, kde-format
