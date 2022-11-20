@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-19 00:47+0000\n"
-"PO-Revision-Date: 2022-10-31 05:13+0100\n"
+"PO-Revision-Date: 2022-11-19 06:38+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -161,7 +161,7 @@ msgstr "მომხმარებლის უკუკავშირის �
 #: discover/main.cpp:54
 #, kde-format
 msgid "Supports appstream: url scheme"
-msgstr ""
+msgstr "აქვს აღმავალის მხარდაჭერა: url scheme"
 
 #: discover/main.cpp:123
 #, kde-format
@@ -186,7 +186,7 @@ msgstr "Nate Graham"
 #: discover/main.cpp:128
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
-msgstr ""
+msgstr "დიზაინი და ხარისხის დამოწმება"
 
 #: discover/main.cpp:132
 #, kde-format
@@ -693,23 +693,21 @@ msgid "Report this issue"
 msgstr "ამ პრობლემის რეპორტი"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "ხმები: %1-ი %2-დან"
+msgstr "შეცდომა %1 %2-დან"
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "წინას ჩვენება"
 
 #: discover/qml/DiscoverWindow.qml:383
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "შემცველობის ჩვენება"
+msgstr "შემდეგის ჩვენება"
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
@@ -763,7 +761,7 @@ msgstr "შემოწირულობა…"
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "We are looking for your feedback!"
-msgstr ""
+msgstr "ჩვენ ველოდებით თქვენს გამოხმაურებას!"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
@@ -980,7 +978,7 @@ msgstr "პრიორიტეტის გაზრდა"
 #: discover/qml/SourcesPage.qml:216
 #, kde-format
 msgid "Failed to increase '%1' preference"
-msgstr ""
+msgstr "'%1'-ის უპირატესობის გაზრდის შეცდომა"
 
 #: discover/qml/SourcesPage.qml:221
 #, kde-format
@@ -990,7 +988,7 @@ msgstr "პრიორიტეტის დაწევა"
 #: discover/qml/SourcesPage.qml:227
 #, kde-format
 msgid "Failed to decrease '%1' preference"
-msgstr ""
+msgstr "'%1'-ის უპირატესობის შემცირების შეცდომა"
 
 #: discover/qml/SourcesPage.qml:232
 #, kde-format
@@ -1025,7 +1023,7 @@ msgstr "ტექნიკური დეტალები"
 #: discover/qml/UpdatesPage.qml:61
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
-msgstr ""
+msgstr "პრობლემა ამ განახლების დაყენებისას. მოგვიანებით სცადეთ."
 
 #: discover/qml/UpdatesPage.qml:67
 #, kde-format

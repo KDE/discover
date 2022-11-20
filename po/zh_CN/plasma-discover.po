@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-19 00:47+0000\n"
-"PO-Revision-Date: 2022-11-06 01:05\n"
+"PO-Revision-Date: 2022-11-19 14:48\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -709,10 +709,9 @@ msgid "Report this issue"
 msgstr "报告此问题"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "支持率：%1/%2"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
@@ -721,11 +720,10 @@ msgid "Show Previous"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:383
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "显示内容"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format

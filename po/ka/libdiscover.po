@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-19 00:47+0000\n"
-"PO-Revision-Date: 2022-11-11 06:28+0100\n"
+"PO-Revision-Date: 2022-11-19 06:36+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1781,7 +1781,11 @@ msgid_plural ""
 "Failed to update %1 packages\n"
 "%2"
 msgstr[0] ""
+"%1 პაკეტის განახების შეცდომა\n"
+"%2"
 msgstr[1] ""
+"%1 პაკეტის განახების შეცდომა\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
@@ -1810,7 +1814,7 @@ msgstr "შეკეთების შეცდომა"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
-msgstr ""
+msgstr "%1<nl/>გთხოვთ, შეატყობინეთ ეს შეცდომა თქვენს დისტრიბუტორს.."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
 #, kde-format
@@ -1870,8 +1874,8 @@ msgstr "მომწოდებელი:"
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 (და %1 დამოკიდებულება)"
+msgstr[1] "%2 (და %1 დამოკიდებულება)"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
 #, kde-format
@@ -1969,7 +1973,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid "Missing signature for %1 in %2"
-msgstr ""
+msgstr "%1-სთვის ხელმოწერა %2-ში არ არსებობს"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
@@ -1983,6 +1987,13 @@ msgid ""
 "Fingerprint: %4\n"
 "Timestamp: %4\n"
 msgstr ""
+"ენდობით ამ გასაღებს?\n"
+"\n"
+"ბმული: %1\n"
+"მომხმარებელი: %2\n"
+"გასაღები: %3\n"
+"ანაბეჭდი: %4\n"
+"დროის შტამპი: %4\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:188
 #, kde-format
@@ -2106,13 +2117,13 @@ msgstr "შეცდომის შემთხვევაში გადა�
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
 msgid "ostree remotes"
-msgstr ""
+msgstr "ostree -ის დაშორებულები"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:131
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:154
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr ""
+msgstr "rpm-ostree ტრანზაქცია შეცდომით დასრულდა:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:296
 #, kde-format

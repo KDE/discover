@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-19 00:47+0000\n"
-"PO-Revision-Date: 2022-11-06 01:05\n"
+"PO-Revision-Date: 2022-11-19 14:48\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -150,11 +150,10 @@ msgstr "虚设项 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "应用程序"
+msgstr "全部应用程序"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -1900,12 +1899,12 @@ msgstr[0] "需要升级 %1 个软件包"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
 #, kde-format
 msgid "<li>%1 (%2): No changelog information</li>\n"
-msgstr ""
+msgstr "<li>%1(%2): 没有更新日志信息</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
 #, kde-format
 msgid "<li>%1 (%2): %3</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): %3</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
 #, kde-format
@@ -2048,31 +2047,33 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>一个新版本 %1 已发布！</b>\n"
+"若要更新到此版本，请确保应用所有待处理的更新并重启您的系统。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr ""
+msgstr "升级到 %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>新的主要版本已经发布！</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:434
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr ""
+msgstr "当前您有待决的更新，需要继续进行。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:437
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr ""
+msgstr "在rebase到主要版本前，请更新到最新版本"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:445
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
-msgstr ""
+msgstr "缺少rebase所需的远程ref。请提交漏洞。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:254
 #, kde-format
@@ -2107,7 +2108,7 @@ msgstr "已删除的软件包："
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr ""
+msgstr "当前使用的版本(固定)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
 #, kde-format
@@ -2117,12 +2118,12 @@ msgstr "当前使用的版本"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "重启后将使用的版本"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "备用版本 (固定)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:353
 #, kde-format
@@ -2138,28 +2139,28 @@ msgstr "ostree 远程服务器"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:154
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr ""
+msgstr "rpm-ostree 安装失败："
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:296
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
-msgstr ""
+msgstr "正在取消 rpm-ostree 的安装进程。这可能需要一些时间。请稍候。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:325
 #, kde-format
 msgid "Checking for a system update"
-msgstr ""
+msgstr "正在检查系统更新"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:328
 #, kde-format
 msgid "Downloading system update"
-msgstr ""
+msgstr "正在下载系统更新"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:331
 #, kde-format
 msgid "Updating the system"
-msgstr ""
+msgstr "正在升级系统"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:334
 #, kde-format

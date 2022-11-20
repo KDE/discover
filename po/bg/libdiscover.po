@@ -2389,26 +2389,3 @@ msgstr "Системен софтуер"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Добавки"
-
-#~ msgid ""
-#~ "An update has been successfully installed. Reboot your system at your "
-#~ "convenience to start using it."
-#~ msgstr ""
-#~ "Успешно е инсталирана актуализация. Рестартирайте системата си в удобно "
-#~ "за вас време, за да започнете да я използвате."
-
-#~ msgid ""
-#~ "The update to %1 %2 has been successfully installed. Reboot your system "
-#~ "at your convenience to start using it."
-#~ msgstr ""
-#~ "Актуализацията на %1 %2 е инсталирана успешно. Рестартирайте системата си "
-#~ "в удобно за вас време, за да започнете да я използвате."
-
-#~ msgid "Remote: "
-#~ msgstr "Отдалечени: "
-
-#~ msgid "The currently running version of %1."
-#~ msgstr "Текущата версия на %1."
-
-#~ msgid "Installed but not currently running version of %1."
-#~ msgstr "Инсталирано, но не се използва текущата версия на %1."

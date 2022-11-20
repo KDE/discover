@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-18 00:46+0000\n"
+"POT-Creation-Date: 2022-11-19 00:47+0000\n"
 "PO-Revision-Date: 2022-09-11 19:53+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -258,7 +258,7 @@ msgstr "Legg til"
 #: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:257
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
-#: discover/qml/UpdatesPage.qml:267 discover/qml/WebflowDialog.qml:39
+#: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:39
 #, kde-format
 msgid "Cancel"
 msgstr "Avbryt"
@@ -598,36 +598,36 @@ msgstr "https://duckduckgo.com/?q=%1"
 msgid "Still looking…"
 msgstr "Leitar framleis …"
 
-#: discover/qml/BrowsingPage.qml:63
+#: discover/qml/BrowsingPage.qml:49
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Klarte ikkje lasta programoversikt"
 
-#: discover/qml/BrowsingPage.qml:102
+#: discover/qml/BrowsingPage.qml:88
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:120
+#: discover/qml/BrowsingPage.qml:106
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:134
+#: discover/qml/BrowsingPage.qml:120
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:153 discover/qml/BrowsingPage.qml:182
+#: discover/qml/BrowsingPage.qml:139 discover/qml/BrowsingPage.qml:168
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:163
+#: discover/qml/BrowsingPage.qml:149
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
@@ -680,7 +680,7 @@ msgid "S&ettings"
 msgstr "&Innstillingar"
 
 #: discover/qml/DiscoverWindow.qml:146 discover/qml/DiscoverWindow.qml:325
-#: discover/qml/DiscoverWindow.qml:435
+#: discover/qml/DiscoverWindow.qml:432
 #, kde-format
 msgid "Error"
 msgstr "Feil"
@@ -695,7 +695,7 @@ msgstr "Finn ikkje ressurs: %1"
 msgid "Proceed"
 msgstr "Hald fram"
 
-#: discover/qml/DiscoverWindow.qml:302
+#: discover/qml/DiscoverWindow.qml:301
 #, kde-format
 msgid "Report this issue"
 msgstr "Meld frå om feilen"
@@ -705,19 +705,19 @@ msgstr "Meld frå om feilen"
 msgid "Error %1 of %2"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:372
+#: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:385
+#: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:401 discover/qml/UpdatesPage.qml:98
+#: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Kopier til utklippstavla"
@@ -1067,52 +1067,52 @@ msgstr "Oppdater valde"
 msgid "Update All"
 msgstr "Oppdater alle"
 
-#: discover/qml/UpdatesPage.qml:188
+#: discover/qml/UpdatesPage.qml:174
 #, kde-format
 msgid "Ignore"
 msgstr "Ignorer"
 
-#: discover/qml/UpdatesPage.qml:234
+#: discover/qml/UpdatesPage.qml:220
 #, kde-format
 msgid "Select All"
 msgstr "Merk alle"
 
-#: discover/qml/UpdatesPage.qml:242
+#: discover/qml/UpdatesPage.qml:228
 #, kde-format
 msgid "Select None"
 msgstr "Fjern merking"
 
-#: discover/qml/UpdatesPage.qml:249
+#: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "Start på nytt automatisk etter fullført oppdatering"
 
-#: discover/qml/UpdatesPage.qml:256
+#: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Total size: %1"
 msgstr "Total storleik: %1"
 
-#: discover/qml/UpdatesPage.qml:292
+#: discover/qml/UpdatesPage.qml:278
 #, kde-format
 msgid "Restart Now"
 msgstr "Start på nytt"
 
-#: discover/qml/UpdatesPage.qml:391
+#: discover/qml/UpdatesPage.qml:377
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:407
+#: discover/qml/UpdatesPage.qml:393
 #, kde-format
 msgid "Installing"
 msgstr "Installerer"
 
-#: discover/qml/UpdatesPage.qml:442
+#: discover/qml/UpdatesPage.qml:428
 #, kde-format
 msgid "Update from:"
 msgstr "Oppdater frå:"
 
-#: discover/qml/UpdatesPage.qml:454
+#: discover/qml/UpdatesPage.qml:440
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1120,43 +1120,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:461
+#: discover/qml/UpdatesPage.qml:447
 #, kde-format
 msgid "More Information…"
 msgstr "Meir informasjon …"
 
-#: discover/qml/UpdatesPage.qml:489
+#: discover/qml/UpdatesPage.qml:475
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Hentar oppdateringar …"
 
-#: discover/qml/UpdatesPage.qml:502
+#: discover/qml/UpdatesPage.qml:488
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Oppdateringar"
 
-#: discover/qml/UpdatesPage.qml:512
+#: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Maskina må startast på nytt for å fullføra oppdateringa."
 
-#: discover/qml/UpdatesPage.qml:524 discover/qml/UpdatesPage.qml:531
-#: discover/qml/UpdatesPage.qml:538
+#: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
+#: discover/qml/UpdatesPage.qml:524
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "À jour"
 
-#: discover/qml/UpdatesPage.qml:545
+#: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Skal sjå etter oppdateringar"
 
-#: discover/qml/UpdatesPage.qml:552
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

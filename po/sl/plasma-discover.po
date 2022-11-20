@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-19 00:47+0000\n"
-"PO-Revision-Date: 2022-11-18 11:50+0100\n"
+"PO-Revision-Date: 2022-11-19 19:04+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -742,23 +742,21 @@ msgid "Report this issue"
 msgstr "Poročajte o tem"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "Glasov: %1 od vseh %2"
+msgstr "Napaka %1 od %2"
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "Prikaži prejšnjo"
 
 #: discover/qml/DiscoverWindow.qml:383
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "Prikaži vsebino"
+msgstr "Prikaži naslednjo"
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
