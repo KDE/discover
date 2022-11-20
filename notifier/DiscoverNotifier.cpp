@@ -180,7 +180,7 @@ static bool isConnectionAdequate(const QNetworkConfiguration &network)
 #elif QT_VERSION >= QT_VERSION_CHECK(6, 3, 0)
 static bool isConnectionAdequate()
 {
-    const info = QNetworkInformation::instance();
+    const auto info = QNetworkInformation::instance();
     if (info->supports(QNetworkInformation::Feature::Metered)) {
         return !info->isMetered();
     } else {
