@@ -27,6 +27,7 @@ public:
     ~PackageKitUpdater() override;
 
     void prepare() override;
+    void checkFreeSpace();
 
     bool hasUpdates() const override;
     qreal progress() const override;
