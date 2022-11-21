@@ -59,14 +59,20 @@ static void kRemoveDuplicates(QJsonArray &input, std::function<QString(const QJs
 
 class SystemUpgrade : public AbstractResource
 {
+    Q_OBJECT
 public:
     SystemUpgrade(PackageKitBackend *backend)
         : AbstractResource(backend)
         , m_backend(backend)
+        , m_updateSizeTimer(new QTimer(this))
     {
         connect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, [this](AbstractResource *res) {
             m_resources.remove(res);
         });
+
+        m_updateSizeTimer->setInterval(100);
+        m_updateSizeTimer->setSingleShot(true);
+        connect(m_updateSizeTimer, &QTimer::timeout, this, &SystemUpgrade::updateSizeChanged);
     }
 
     QString packageName() const override
@@ -215,6 +221,7 @@ public:
     void refreshResource()
     {
         Q_EMIT m_backend->resourcesChanged(this, {"size", "license"});
+        m_updateSizeTimer->start();
     }
 
     void setCandidates(const QSet<AbstractResource *> &candidates)
@@ -231,9 +238,13 @@ public:
         }
     }
 
+Q_SIGNALS:
+    void updateSizeChanged();
+
 private:
     QSet<AbstractResource *> m_resources;
     PackageKitBackend *const m_backend;
+    QTimer *m_updateSizeTimer;
 };
 
 PackageKitUpdater::PackageKitUpdater(PackageKitBackend *parent)
@@ -268,10 +279,17 @@ void PackageKitUpdater::prepare()
         m_upgrade->setCandidates(candidates);
 
         m_toUpgrade = {m_upgrade};
+        connect(m_upgrade, &SystemUpgrade::updateSizeChanged, this, &PackageKitUpdater::checkFreeSpace);
     } else {
         m_toUpgrade = candidates;
     }
 
+    checkFreeSpace();
+    m_allUpgradeable = m_toUpgrade;
+}
+
+void PackageKitUpdater::checkFreeSpace()
+{
     auto j = KIO::fileSystemFreeSpace(QUrl::fromLocalFile("/usr"));
     connect(j, &KIO::FileSystemFreeSpaceJob::result, this, [this](KIO::Job * /*job*/, KIO::filesize_t /*size*/, KIO::filesize_t available) {
         if (available < updateSize()) {
@@ -280,7 +298,6 @@ void PackageKitUpdater::prepare()
                                   KFormat().formatByteSize(available)));
         }
     });
-    m_allUpgradeable = m_toUpgrade;
 }
 
 void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFlags flags)
@@ -765,3 +782,5 @@ quint64 PackageKitUpdater::downloadSpeed() const
 {
     return m_transaction ? m_transaction->speed() : 0;
 }
+
+#include "PackageKitUpdater.moc"
