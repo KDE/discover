@@ -55,6 +55,7 @@ const QStringList FlatpakResource::s_objects({
     QStringLiteral("qrc:/qml/FlatpakEolReason.qml"),
 });
 const QStringList FlatpakResource::s_bottomObjects({QStringLiteral("qrc:/qml/PermissionsList.qml")});
+Q_GLOBAL_STATIC(QNetworkAccessManager, manager)
 
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent)
     : AbstractResource(parent)
@@ -70,30 +71,29 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
 
     // Start fetching remote icons during initialization
     const auto icons = m_appdata.icons();
-    if (!icons.isEmpty()) {
-        for (const AppStream::Icon &icon : icons) {
-            if (icon.kind() == AppStream::Icon::KindRemote) {
-                const QString fileName = iconCachePath(icon);
-                if (!QFileInfo::exists(fileName)) {
-                    const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
-                    // Create $HOME/.cache/discover/icons folder
-                    cacheDir.mkdir(QStringLiteral("icons"));
-                    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-                    connect(manager, &QNetworkAccessManager::finished, this, [this, icon, fileName, manager](QNetworkReply *reply) {
-                        if (reply->error() == QNetworkReply::NoError) {
-                            QByteArray iconData = reply->readAll();
-                            QFile file(fileName);
-                            if (file.open(QIODevice::WriteOnly)) {
-                                file.write(iconData);
-                            }
-                            file.close();
-                            Q_EMIT iconChanged();
-                        }
-                        manager->deleteLater();
-                    });
-                    manager->get(QNetworkRequest(icon.url()));
+    if (icons.count() == 1 && icons.constFirst().kind() == AppStream::Icon::KindRemote) {
+        const auto icon = icons.constFirst();
+        const QString fileName = iconCachePath(icon);
+        if (!QFileInfo::exists(fileName)) {
+            const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
+            // Create $HOME/.cache/discover/icons folder
+            cacheDir.mkdir(QStringLiteral("icons"));
+            auto reply = manager->get(QNetworkRequest(icon.url()));
+            connect(reply, &QNetworkReply::finished, this, [this, icon, fileName, reply] {
+                if (reply->error() == QNetworkReply::NoError) {
+                    QByteArray iconData = reply->readAll();
+                    QFile file(fileName);
+                    if (file.open(QIODevice::WriteOnly)) {
+                        file.write(iconData);
+                    } else {
+                        qDebug() << "could not find icon for" << packageName() << reply->url();
+                        QIcon::fromTheme(QStringLiteral("package-x-generic")).pixmap(32, 32).toImage().save(fileName);
+                    }
+                    file.close();
+                    Q_EMIT iconChanged();
+                    reply->deleteLater();
                 }
-            }
+            });
         }
     }
 
