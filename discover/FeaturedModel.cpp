@@ -36,8 +36,6 @@ static QString featuredFileName()
 
 FeaturedModel::FeaturedModel()
 {
-    connect(ResourcesModel::global(), &ResourcesModel::currentApplicationBackendChanged, this, &FeaturedModel::refreshCurrentApplicationBackend);
-
     const QString dir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
     QDir().mkpath(dir);
 
@@ -59,14 +57,6 @@ FeaturedModel::FeaturedModel()
             qCWarning(DISCOVER_LOG) << "could not open" << *featuredCache << f.errorString();
         f.write(fetchJob->data());
         f.close();
-    });
-
-    refreshCurrentApplicationBackend();
-
-    connect(this, &AbstractAppsModel::currentApplicationBackendChanged, this, [this] {
-        auto backend = currentApplicationBackend();
-        if (backend && QFile::exists(*featuredCache))
-            refresh();
     });
 }
 

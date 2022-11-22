@@ -97,6 +97,11 @@ void AbstractAppsModel::setUris(const QVector<QUrl> &uris)
     if (!m_backend)
         return;
 
+    if (m_uris == uris) {
+        return;
+    }
+    m_uris = uris;
+
     QSet<ResultsStream *> streams;
     for (const auto &uri : uris) {
         AbstractResourcesBackend::Filters filter;

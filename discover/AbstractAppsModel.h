@@ -55,6 +55,7 @@ private:
     QVector<AbstractResource *> m_resources;
     int m_isFetching = 0;
     AbstractResourcesBackend *m_backend = nullptr;
+    QVector<QUrl> m_uris;
 };
 
 #endif // ABSTRACTAPPSMODEL_H
