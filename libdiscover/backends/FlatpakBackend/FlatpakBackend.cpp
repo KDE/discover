@@ -267,6 +267,7 @@ FlatpakBackend::FlatpakBackend(QObject *parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(AppStreamIntegration::global()->reviews())
     , m_cancellable(g_cancellable_new())
+    , m_checkForUpdatesTimer(new QTimer(this))
 {
     g_autoptr(GError) error = nullptr;
 
@@ -287,6 +288,10 @@ FlatpakBackend::FlatpakBackend(QObject *parent)
                                          return kTransform<QList<AbstractResource *>>(source->m_resources.values());
                                      }));
     });
+
+    m_checkForUpdatesTimer->setInterval(1000);
+    m_checkForUpdatesTimer->setSingleShot(true);
+    connect(m_checkForUpdatesTimer, &QTimer::timeout, this, &FlatpakBackend::checkForUpdates);
 
     /* Override the umask to 022 to make it possible to share files between
      * the plasma-discover process and flatpak system helper process.
@@ -961,9 +966,13 @@ void FlatpakBackend::loadRemote(FlatpakInstallation *installation, FlatpakRemote
 
     g_autofree char *path_str = g_file_get_path(fileTimestamp);
     QFileInfo fileInfo(QFile::encodeName(path_str));
-    // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
-    if (!fileInfo.exists() || fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
-        checkForUpdates(installation, remote);
+    if (!fileInfo.exists()) {
+        checkForRemoteUpdates(installation, remote);
+
+        // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
+        if (fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
+            connect(this, &FlatpakBackend::initialized, m_checkForUpdatesTimer, qOverload<>(&QTimer::start));
+        }
     } else {
         auto source = integrateRemote(installation, remote);
         Q_ASSERT(findSource(installation, flatpak_remote_get_name(remote)) == source);
@@ -1777,12 +1786,12 @@ void FlatpakBackend::checkForUpdates()
         if (source->remote()) {
             Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(source->remote()));
             m_refreshAppstreamMetadataJobs.insert(source->remote());
-            checkForUpdates(source->installation(), source->remote());
+            checkForRemoteUpdates(source->installation(), source->remote());
         }
     }
 }
 
-void FlatpakBackend::checkForUpdates(FlatpakInstallation *installation, FlatpakRemote *remote)
+void FlatpakBackend::checkForRemoteUpdates(FlatpakInstallation *installation, FlatpakRemote *remote)
 {
     Q_ASSERT(remote);
     const bool needsIntegration = m_refreshAppstreamMetadataJobs.contains(remote);

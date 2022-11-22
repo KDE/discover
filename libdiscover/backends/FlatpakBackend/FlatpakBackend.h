@@ -131,7 +131,7 @@ private:
 
     QVector<AbstractResource *> resourcesByAppstreamName(const QString &name) const;
     void acquireFetching(bool f);
-    void checkForUpdates(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
+    void checkForRemoteUpdates(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     void createPool(QSharedPointer<FlatpakSource> source);
     FlatpakRemote *installSource(FlatpakResource *resource);
 
@@ -148,6 +148,7 @@ private:
     QVector<QSharedPointer<FlatpakSource>> m_flatpakSources;
     QVector<QSharedPointer<FlatpakSource>> m_flatpakLoadingSources;
     QSharedPointer<FlatpakSource> m_localSource;
+    QTimer *const m_checkForUpdatesTimer;
 };
 
 #endif // FLATPAKBACKEND_H
