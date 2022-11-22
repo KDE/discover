@@ -336,6 +336,11 @@ void ResourcesProxyModel::invalidateFilter()
         return;
     }
 
+    if (!m_categoryName.isEmpty() && m_filters.category == nullptr) {
+        qDebug() << "looking up wrong category or too early" << m_categoryName;
+        return;
+    }
+
     if (m_currentStream) {
         qCWarning(LIBDISCOVER_LOG) << "last stream isn't over yet" << m_filters << this;
         delete m_currentStream;
