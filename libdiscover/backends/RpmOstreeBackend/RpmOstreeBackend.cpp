@@ -291,14 +291,24 @@ void RpmOstreeBackend::lookForNextMajorVersion()
             }
         }
     }
-    if (!nextVersion.isEmpty()) {
-        // Offer the newly found major version to rebase to
-        foundNewMajorVersion(nextVersion);
-    } else if (m_developmentEnabled) {
-        // If development mode is enabled, always offer Rawhide as an option if
-        // we are already on the latest major version.
-        foundNewMajorVersion(DevelopmentVersionName);
+
+    if (nextVersion.isEmpty()) {
+        if (m_developmentEnabled) {
+            // If development mode is enabled, always offer Rawhide as an option if
+            // we are already on the latest major version.
+            nextVersion = DevelopmentVersionName;
+        } else {
+            // No new version found, and not in development mode: we're done here
+            return;
+        }
     }
+    // Validate that the branch exists for the version to move to and set it for the resource
+    if (!currentlyBootedDeployment()->setNewMajorVersion(nextVersion)) {
+        qWarning() << "rpm-ostree-backend: Found new major release but could not validate it via ostree. File a bug to your distribution.";
+        return;
+    }
+    // Offer the newly found major version to rebase to
+    foundNewMajorVersion(nextVersion);
 }
 
 void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
@@ -368,9 +378,6 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
     // No updates pending or avaiable. We are good to offer the rebase to the
     // next major version!
     Q_EMIT inlineMessageChanged(m_rebaseAvailableMessage);
-    // Finally set the new major version for the resource only when we are truly
-    // ready to offer to rebase to it
-    currentlyBootedDeployment()->setNewMajorVersion(newMajorVersion);
 }
 
 int RpmOstreeBackend::updatesCount() const

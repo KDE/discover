@@ -110,21 +110,21 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     connect(this, &RpmOstreeResource::buttonPressed, parent, &RpmOstreeBackend::rebaseToNewVersion);
 }
 
-void RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
+bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
 {
     // Fetch the list of refs available on the remote for the deployment
     g_autoptr(GFile) path = g_file_new_for_path("/ostree/repo");
     g_autoptr(OstreeRepo) repo = ostree_repo_new(path);
     if (repo == NULL) {
         qWarning() << "rpm-ostree-backend: Could not find ostree repo:" << path;
-        return;
+        return false;
     }
 
     g_autoptr(GError) err = NULL;
     gboolean res = ostree_repo_open(repo, NULL, &err);
     if (!res) {
         qWarning() << "rpm-ostree-backend: Could not open ostree repo:" << path;
-        return;
+        return false;
     }
 
     g_autoptr(GHashTable) refs;
@@ -132,7 +132,7 @@ void RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
     res = ostree_repo_remote_list_refs(repo, rem.data(), &refs, NULL, &err);
     if (!res) {
         qWarning() << "rpm-ostree-backend: Could not get the list of refs for ostree repo:" << path;
-        return;
+        return false;
     }
 
     // Iterate over the remote refs, keeping only the branches matching our
@@ -159,15 +159,16 @@ void RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
                 QString branchVersion = split_branch[1];
                 if (branchVersion == newMajorVersion.toLower()) {
                     m_nextMajorVersion = newMajorVersion;
-                    return;
+                    return true;
                 }
             }
         }
     }
 
     // If we reach here, it means that we could not find a matching branch. This
-    // is unexpected and we should find a way to inform the user.
+    // is unexpected and we should inform the user.
     qWarning() << "rpm-ostree-backend: Could not find a remote ref for the new major version in ostree repo";
+    return false;
 }
 
 QString RpmOstreeResource::availableVersion() const

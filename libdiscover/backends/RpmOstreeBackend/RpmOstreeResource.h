@@ -66,7 +66,7 @@ public:
     QString getNewVersion() const;
 
     /* Validate and set the target major version for rebase */
-    void setNewMajorVersion(const QString &newMajorVersion);
+    bool setNewMajorVersion(const QString &newMajorVersion);
 
     /* Returns the next major version for the deployment */
     QString getNextMajorVersion() const;
