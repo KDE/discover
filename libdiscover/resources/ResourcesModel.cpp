@@ -46,13 +46,11 @@ ResourcesModel::ResourcesModel(QObject *parent, bool load)
     , m_updatesCount(
           0,
           [this] {
-              {
-                  int ret = 0;
-                  for (AbstractResourcesBackend *backend : qAsConst(m_backends)) {
-                      ret += backend->updatesCount();
-                  }
-                  return ret;
+              int ret = 0;
+              for (AbstractResourcesBackend *backend : qAsConst(m_backends)) {
+                  ret += backend->updatesCount();
               }
+              return ret;
           },
           [this](int count) {
               Q_EMIT updatesCountChanged(count);
@@ -60,16 +58,14 @@ ResourcesModel::ResourcesModel(QObject *parent, bool load)
     , m_fetchingUpdatesProgress(
           0,
           [this] {
-              {
-                  if (m_backends.isEmpty())
-                      return 0;
+              if (m_backends.isEmpty())
+                  return 0;
 
-                  int sum = 0;
-                  for (auto backend : qAsConst(m_backends)) {
-                      sum += backend->fetchingUpdatesProgress();
-                  }
-                  return sum / (int)m_backends.count();
+              int sum = 0;
+              for (auto backend : qAsConst(m_backends)) {
+                  sum += backend->fetchingUpdatesProgress();
               }
+              return sum / (int)m_backends.count();
           },
           [this](int progress) {
               Q_EMIT fetchingUpdatesProgressChanged(progress);

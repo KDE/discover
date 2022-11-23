@@ -156,16 +156,11 @@ public:
 
     QList<AppStream::Component> componentsByName(const QString &name)
     {
-        QList<AppStream::Component> comps;
-        auto findComponents = [&](const QString &name) {
-            comps = m_pool->componentsById(name);
-            if (!comps.isEmpty())
-                return;
+        QList<AppStream::Component> comps = m_pool->componentsById(name);
+        if (!comps.isEmpty())
+            return comps;
 
-            comps = m_pool->componentsByProvided(AppStream::Provided::KindId, name);
-        };
-
-        findComponents(name);
+        comps = m_pool->componentsByProvided(AppStream::Provided::KindId, name);
         return comps;
     }
 
