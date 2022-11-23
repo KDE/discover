@@ -27,6 +27,9 @@ CategoryModel::CategoryModel(QObject *parent)
     m_rootCategoriesChanged->setInterval(0);
     m_rootCategoriesChanged->setSingleShot(true);
     connect(m_rootCategoriesChanged, &QTimer::timeout, this, &CategoryModel::rootCategoriesChanged);
+    if (!ResourcesModel::global()->backends().isEmpty()) {
+        populateCategories();
+    }
 }
 
 CategoryModel *CategoryModel::global()

@@ -284,6 +284,7 @@ void ResourcesProxyModel::setFilteredCategoryName(const QString &cat)
     if (category) {
         setFiltersFromCategory(category);
     } else {
+        qDebug() << "looking up wrong category or too early" << m_categoryName;
         auto f = [this, cat] {
             auto category = CategoryModel::global()->findCategoryByName(cat);
             setFiltersFromCategory(category);
@@ -337,7 +338,6 @@ void ResourcesProxyModel::invalidateFilter()
     }
 
     if (!m_categoryName.isEmpty() && m_filters.category == nullptr) {
-        qDebug() << "looking up wrong category or too early" << m_categoryName;
         return;
     }
 

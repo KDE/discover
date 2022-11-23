@@ -71,9 +71,9 @@ ResourcesModel::ResourcesModel(QObject *parent, bool load)
               Q_EMIT fetchingUpdatesProgressChanged(progress);
           })
 {
-    init(load);
     connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::slotFetching);
     connect(this, &ResourcesModel::backendsChanged, this, &ResourcesModel::initApplicationsBackend);
+    init(load);
 }
 
 void ResourcesModel::init(bool load)
@@ -90,8 +90,9 @@ void ResourcesModel::init(bool load)
         }
     });
 
-    if (load)
-        QMetaObject::invokeMethod(this, "registerAllBackends", Qt::QueuedConnection);
+    if (load) {
+        registerAllBackends();
+    }
 
     m_updateAction = new DiscoverAction(this);
     m_updateAction->setIconName(QStringLiteral("system-software-update"));

@@ -46,7 +46,7 @@ QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::backend(const QStri
 
 QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::backendForFile(const QString &libname, const QString &name) const
 {
-    QPluginLoader *loader = new QPluginLoader(QLatin1String("discover/") + libname, ResourcesModel::global());
+    QPluginLoader *loader = new QPluginLoader(QLatin1String("discover/") + libname, QCoreApplication::instance());
 
     // qCDebug(LIBDISCOVER_LOG) << "trying to load plugin:" << loader->fileName();
     AbstractResourcesBackendFactory *f = qobject_cast<AbstractResourcesBackendFactory *>(loader->instance());
@@ -54,7 +54,7 @@ QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::backendForFile(cons
         qCWarning(LIBDISCOVER_LOG) << "error loading" << libname << loader->errorString() << loader->metaData();
         return {};
     }
-    auto instances = f->newInstance(ResourcesModel::global(), name);
+    auto instances = f->newInstance(QCoreApplication::instance(), name);
     if (instances.isEmpty()) {
         qCWarning(LIBDISCOVER_LOG) << "Couldn't find the backend: " << libname << "among" << allBackendNames(false, true);
         return instances;
