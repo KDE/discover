@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-19 00:47+0000\n"
+"POT-Creation-Date: 2022-11-23 00:49+0000\n"
 "PO-Revision-Date: 2022-11-15 18:24+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -2320,7 +2320,7 @@ msgstr "Verifique por favor a ligação à Internet"
 msgid "Refresh"
 msgstr "Actualizar"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:709
+#: libdiscover/resources/ResourcesProxyModel.cpp:714
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
