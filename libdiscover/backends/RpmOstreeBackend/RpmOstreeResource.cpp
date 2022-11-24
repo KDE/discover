@@ -32,8 +32,11 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
 
     // Get as much as possible from rpm-ostree
     m_osname = map.value(QStringLiteral("osname")).toString();
+
+    // Look for the base-version first. This is the case where we have changes layered
     m_version = map.value(QStringLiteral("base-version")).toString();
     if (m_version.isEmpty()) {
+        // If empty, look for the regular version (no layered changes)
         m_version = map.value(QStringLiteral("version")).toString();
     }
 
@@ -61,6 +64,10 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
         auto osrelease = AppStreamIntegration::global()->osRelease();
         m_name = osrelease->name();
         m_variant = osrelease->variant();
+        // Also extract the version if we could not find it earlier
+        if (m_version.isEmpty()) {
+            m_version = osrelease->versionId();
+        }
     }
 
     // Look for "classic" ostree origin format first
