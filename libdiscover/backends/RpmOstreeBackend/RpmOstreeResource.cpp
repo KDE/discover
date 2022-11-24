@@ -49,16 +49,43 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
         m_variant = osrelease->variant();
     }
 
-    // Split remote and branch from origin
+    // Look for "classic" ostree origin format first
     m_origin = map.value(QStringLiteral("origin")).toString();
-    auto split_ref = m_origin.split(':');
-    if (split_ref.length() != 2) {
-        qWarning() << "rpm-ostree-backend: Unknown origin format, ignoring:" << m_origin;
-        m_remote = QStringLiteral("unknown");
-        m_branch = QStringLiteral("unknown");
+    if (m_origin.isEmpty()) {
+        // If it's emmpty, then look for container origin format.
+        // See https://github.com/ostreedev/ostree-rs-ext and
+        // https://coreos.github.io/rpm-ostree/container/
+        m_origin = map.value(QStringLiteral("container-image-reference")).toString();
+        auto split_ref = m_origin.split(':');
+        if ((split_ref.length() < 2) || (split_ref.length() > 3)) {
+            qWarning() << "rpm-ostree-backend: Unknown container-image-reference format, ignoring:" << m_origin;
+            m_remote = QStringLiteral("unknown");
+            m_branch = QStringLiteral("unknown");
+        } else {
+            if (split_ref[0] != QStringLiteral("ostree-unverified-registry")) {
+                qWarning() << "rpm-ostree-backend: Unknown container-image-reference format, ignoring:" << m_origin;
+                m_remote = QStringLiteral("unknown");
+                m_branch = QStringLiteral("unknown");
+            } else {
+                m_remote = split_ref[1];
+                if (split_ref.length() == 3) {
+                    m_branch = split_ref[2];
+                } else {
+                    m_branch = QStringLiteral("latest");
+                }
+            }
+        }
     } else {
-        m_remote = split_ref[0];
-        m_branch = split_ref[1];
+        // Found "classic" ostreee origin format. Get remote and branch from it
+        auto split_ref = m_origin.split(':');
+        if (split_ref.length() != 2) {
+            qWarning() << "rpm-ostree-backend: Unknown origin format, ignoring:" << m_origin;
+            m_remote = QStringLiteral("unknown");
+            m_branch = QStringLiteral("unknown");
+        } else {
+            m_remote = split_ref[0];
+            m_branch = split_ref[1];
+        }
     }
 
     // Split branch into name / version / arch / variant
