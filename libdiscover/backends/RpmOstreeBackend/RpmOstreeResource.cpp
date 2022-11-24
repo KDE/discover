@@ -36,7 +36,21 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     if (m_version.isEmpty()) {
         m_version = map.value(QStringLiteral("version")).toString();
     }
-    m_timestamp = QDateTime::fromSecsSinceEpoch(map.value(QStringLiteral("base-timestamp")).toULongLong()).date();
+
+    // Look for the base-timestamp first. This is the case where we have changes layered
+    auto timestamp = map.value(QStringLiteral("base-timestamp")).toULongLong();
+    if (timestamp == 0) {
+        // If "empty", look for the regular timestamp (no layered changes)
+        timestamp = map.value(QStringLiteral("timestamp")).toULongLong();
+    }
+    if (timestamp == 0) {
+        // If it's still empty, set an "empty" date
+        m_timestamp = QDate();
+    } else {
+        // Otherwise, convert the timestamp to a date
+        m_timestamp = QDateTime::fromSecsSinceEpoch(timestamp).date();
+    }
+
     m_pinned = map.value(QStringLiteral("pinned")).toBool();
     m_pending = map.value(QStringLiteral("staged")).toBool();
     m_booted = map.value(QStringLiteral("booted")).toBool();
