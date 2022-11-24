@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-23 00:49+0000\n"
+"POT-Creation-Date: 2022-11-24 00:46+0000\n"
 "PO-Revision-Date: 2019-11-01 11:57+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -44,8 +44,8 @@ msgstr "Publicación"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:257
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:258
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -532,18 +532,18 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:662
 #, kde-format
 msgid "Local bundle"
 msgstr "Fardo local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de appstream incorrecto «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1704
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -556,13 +556,13 @@ msgstr ""
 "Non se puido actualizar %1 paquete.\n"
 "%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1821
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, fuzzy, kde-format
 #| msgid "There are %1 update packages!"
 msgid "There are no Flatpak sources."
 msgstr "Hai %1 paquetes actualizados!"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -1797,7 +1797,6 @@ msgid "Downloading"
 msgstr "Descargando"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
 #, fuzzy, kde-format
 #| msgid "Updating..."
 msgid "Updating"
@@ -2167,7 +2166,7 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Reparar o sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
@@ -2175,52 +2174,52 @@ msgid ""
 "updates and reboot your system."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:331
 #, fuzzy, kde-format
 #| msgid "Upgrade"
 msgid "Upgrade to %1 %2"
 msgstr "Anovar"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:333
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:434
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:441
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:437
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:444
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:445
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:452
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:254
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:255
 #, kde-format
 msgid "GPL and other licenses"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:264
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:265
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional packages: "
 msgstr "Confirmar os cambios adicionais"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:271
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:272
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional modules: "
 msgstr "Confirmar os cambios adicionais"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:278
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:279
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -2229,7 +2228,7 @@ msgstr "Confirmar os cambios adicionais"
 msgid "Local packages: "
 msgstr "Metapaquetes"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:285
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:286
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -2238,36 +2237,36 @@ msgstr "Metapaquetes"
 msgid "Replaced packages:"
 msgstr "Metapaquetes"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:292
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
 #, fuzzy, kde-format
 #| msgctxt "@info:status Package state"
 #| msgid "Required by other packages"
 msgid "Removed packages:"
 msgstr "Requirido por outros paquetes"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:345
 #, fuzzy, kde-format
 #| msgid "Current Version:"
 msgid "Currently booted version (pinned)"
 msgstr "Versión actual:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
 #, fuzzy, kde-format
 #| msgid "Current Version:"
 msgid "Currently booted version"
 msgstr "Versión actual:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:350
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:352
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:353
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:354
 #, kde-format
 msgid "Fallback version"
 msgstr ""
@@ -2389,7 +2388,7 @@ msgstr ""
 msgid "Please verify Internet connectivity"
 msgstr ""
 
-#: libdiscover/resources/ResourcesModel.cpp:102
+#: libdiscover/resources/ResourcesModel.cpp:98
 #, kde-format
 msgid "Refresh"
 msgstr ""
@@ -2399,6 +2398,13 @@ msgstr ""
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr ""
+
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#, fuzzy, kde-format
+#| msgctxt "@label Column label"
+#| msgid "Updates"
+msgid "Updates"
+msgstr "Actualizacións"
 
 #: libdiscover/Transaction/Transaction.cpp:133
 #, kde-format
@@ -2498,12 +2504,6 @@ msgstr "Complementos"
 #~ msgctxt "Category"
 #~ msgid "Applications"
 #~ msgstr "Aplicacións"
-
-#, fuzzy
-#~| msgctxt "@label Column label"
-#~| msgid "Updates"
-#~ msgid "Updates"
-#~ msgstr "Actualizacións"
 
 #~ msgctxt "origin (backend name)"
 #~ msgid "%1 (%2)"

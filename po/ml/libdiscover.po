@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-23 00:49+0000\n"
+"POT-Creation-Date: 2022-11-24 00:46+0000\n"
 "PO-Revision-Date: 2021-09-09 13:59+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/"
@@ -43,8 +43,8 @@ msgstr "പ്രസിദ്ധീകരണം"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:257
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:258
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -531,29 +531,29 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (ഉപയോക്താവ്)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:662
 #, kde-format
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1704
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' ആരംഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1821
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to load \"%1\" source"
@@ -1706,7 +1706,6 @@ msgid "Downloading"
 msgstr "ഡൗൺലോഡുന്നു"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
 #, kde-format
 msgid "Updating"
 msgstr "അപ്ഡേറ്റുന്നു"
@@ -2026,7 +2025,7 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
@@ -2034,84 +2033,84 @@ msgid ""
 "updates and reboot your system."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:331
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:333
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:434
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:441
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:437
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:444
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:445
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:452
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:254
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:255
 #, kde-format
 msgid "GPL and other licenses"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:264
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:265
 #, fuzzy, kde-format
 #| msgid "Invalid package file"
 msgid "Additional packages: "
 msgstr "തെറ്റായ പാക്കേജ് ഫയൽ"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:271
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:272
 #, kde-format
 msgid "Additional modules: "
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:278
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:279
 #, fuzzy, kde-format
 #| msgid "Invalid package file"
 msgid "Local packages: "
 msgstr "തെറ്റായ പാക്കേജ് ഫയൽ"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:285
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:286
 #, kde-format
 msgid "Replaced packages:"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:292
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
 #, kde-format
 msgid "Removed packages:"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:345
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
 #, kde-format
 msgid "Currently booted version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:350
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:352
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:353
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:354
 #, kde-format
 msgid "Fallback version"
 msgstr ""
@@ -2229,7 +2228,7 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr ""
 
-#: libdiscover/resources/ResourcesModel.cpp:102
+#: libdiscover/resources/ResourcesModel.cpp:98
 #, kde-format
 msgid "Refresh"
 msgstr ""
@@ -2239,6 +2238,11 @@ msgstr ""
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr ""
+
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#, kde-format
+msgid "Updates"
+msgstr "അപ്ഡേറ്റുകൾ"
 
 #: libdiscover/Transaction/Transaction.cpp:133
 #, kde-format
@@ -2329,9 +2333,6 @@ msgstr "ആഡ്ഓണുകൾ"
 #~ msgctxt "Category"
 #~ msgid "Applications"
 #~ msgstr "ആപ്പുകൾ"
-
-#~ msgid "Updates"
-#~ msgstr "അപ്ഡേറ്റുകൾ"
 
 #~ msgctxt "origin (backend name)"
 #~ msgid "%1 (%2)"

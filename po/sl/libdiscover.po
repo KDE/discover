@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-23 00:49+0000\n"
+"POT-Creation-Date: 2022-11-24 00:46+0000\n"
 "PO-Revision-Date: 2022-11-19 19:04+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -42,8 +42,8 @@ msgstr "Javna domena"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:257
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:258
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -526,28 +526,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (uporabnik)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:662
 #, kde-format
 msgid "Local bundle"
 msgstr "Krajevna zbirka"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1600
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Napačno oblikovan URL appstream '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1704
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Ni bilo mogoče dodati vira '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1821
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Ni virov za Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Ni bilo mogoče naložiti vira '%1'"
@@ -1743,7 +1743,6 @@ msgid "Downloading"
 msgstr "Prejemam"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
 #, kde-format
 msgid "Updating"
 msgstr "Posodabljam"
@@ -2109,7 +2108,7 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Operacijski sistem"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:313
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
@@ -2120,83 +2119,83 @@ msgstr ""
 "Če želite posodobiti na to novo različico sistema, zagotovite čakajoče "
 "posodobitve in ponovno zaženite sistem."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:321
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:331
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Posodobi na %1 %2"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:333
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Izšla je novejša večja različica!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:434
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:441
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Za trenutno različico imate čakajoče posodobitve. Vseeno nadaljujem."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:437
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:444
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "Posodobite na zadnjo različico pred spremembo osnovne različice"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:445
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:452
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 "Manjka oddaljeni sklic za operacijo spremembe osnove. Poročajte o napaki."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:254
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:255
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL in ostale licence"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:264
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:265
 #, kde-format
 msgid "Additional packages: "
 msgstr "Dodatni paketi: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:271
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:272
 #, kde-format
 msgid "Additional modules: "
 msgstr "Dodatni moduli: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:278
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:279
 #, kde-format
 msgid "Local packages: "
 msgstr "Lokalni paketi: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:285
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:286
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Zamenjani paketi:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:292
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
 #, kde-format
 msgid "Removed packages:"
 msgstr "Odstranjeni paketi:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:345
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Trenutno pognana različica (pripeta)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
 #, kde-format
 msgid "Currently booted version"
 msgstr "Trenutno pognana različica"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:349
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:350
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "Različica, ki bo uporabljena po ponovnem zagonu"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:351
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:352
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Rezervna različica (pripeta)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:353
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:354
 #, kde-format
 msgid "Fallback version"
 msgstr "Rezervna različica"
@@ -2312,7 +2311,7 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr "Preverite povezavo z internetom"
 
-#: libdiscover/resources/ResourcesModel.cpp:102
+#: libdiscover/resources/ResourcesModel.cpp:98
 #, kde-format
 msgid "Refresh"
 msgstr "Osveži"
@@ -2322,6 +2321,11 @@ msgstr "Osveži"
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr "%1+"
+
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#, kde-format
+msgid "Updates"
+msgstr "Posodobitve"
 
 #: libdiscover/Transaction/Transaction.cpp:133
 #, kde-format
@@ -2431,9 +2435,6 @@ msgstr "Dodatki"
 #~ msgctxt "Category"
 #~ msgid "Applications"
 #~ msgstr "Programi"
-
-#~ msgid "Updates"
-#~ msgstr "Posodobitve"
 
 #~ msgctxt "origin (backend name)"
 #~ msgid "%1 (%2)"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-19 00:47+0000\n"
+"POT-Creation-Date: 2022-11-23 00:49+0000\n"
 "PO-Revision-Date: 2015-06-13 21:56+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -2221,7 +2221,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:709
+#: libdiscover/resources/ResourcesProxyModel.cpp:714
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
