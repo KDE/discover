@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-24 00:46+0000\n"
+"POT-Creation-Date: 2022-11-25 00:48+0000\n"
 "PO-Revision-Date: 2022-11-15 18:24+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -43,8 +43,8 @@ msgstr "Domínio Público"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:258
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:306
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -2145,57 +2145,57 @@ msgstr ""
 "Falta a referência remota da operação de avanço. Por favor, comunique este "
 "erro."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:255
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL e outras licenças"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:265
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:313
 #, kde-format
 msgid "Additional packages: "
 msgstr "Pacotes adicionais: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:272
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:320
 #, kde-format
 msgid "Additional modules: "
 msgstr "Módulos adicionais: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:279
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:327
 #, kde-format
 msgid "Local packages: "
 msgstr "Pacotes locais: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:286
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:334
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Pacotes substituídos:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:341
 #, kde-format
 msgid "Removed packages:"
 msgstr "Pacotes removidos:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:345
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Versão iniciada no arranque (fixa)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
 #, kde-format
 msgid "Currently booted version"
 msgstr "Versão actualmente em uso"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:350
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "A versão que será usada após reiniciar"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:352
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Versão de salvaguarda (fixa)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:354
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Fallback version"
 msgstr "Versão de salvaguarda"
@@ -2314,7 +2314,7 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr "Verifique por favor a ligação à Internet"
 
-#: libdiscover/resources/ResourcesModel.cpp:98
+#: libdiscover/resources/ResourcesModel.cpp:99
 #, kde-format
 msgid "Refresh"
 msgstr "Actualizar"

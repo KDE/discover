@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-24 00:46+0000\n"
+"POT-Creation-Date: 2022-11-25 00:48+0000\n"
 "PO-Revision-Date: 2022-08-29 11:34+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -44,8 +44,8 @@ msgstr "Kiadványszerkesztés"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:258
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:306
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -2121,33 +2121,33 @@ msgstr ""
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:255
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL és egyéb licencek"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:265
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:313
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional packages: "
 msgstr "További változtatások megerősítése"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:272
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:320
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional modules: "
 msgstr "További változtatások megerősítése"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:279
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:327
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Unlock package"
 msgid "Local packages: "
 msgstr "Csomag feloldása"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:286
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:334
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -2156,40 +2156,40 @@ msgstr "Csomag feloldása"
 msgid "Replaced packages:"
 msgstr "Metacsomagok"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:341
 #, fuzzy, kde-format
 #| msgctxt "@label The parent package that this package comes from"
 #| msgid "Source Package:"
 msgid "Removed packages:"
 msgstr "Forráscsomag:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:345
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Lock at Current Version"
 msgid "Currently booted version (pinned)"
 msgstr "Jelenlegi verzió zárolása"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Lock at Current Version"
 msgid "Currently booted version"
 msgstr "Jelenlegi verzió zárolása"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:350
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:352
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Force Version"
 msgid "Fallback version (pinned)"
 msgstr "Verzió kényszerítése"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:354
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Force Version"
@@ -2316,7 +2316,7 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr "Ellenőrizze az internetkapcsolatot"
 
-#: libdiscover/resources/ResourcesModel.cpp:98
+#: libdiscover/resources/ResourcesModel.cpp:99
 #, kde-format
 msgid "Refresh"
 msgstr "Frissítés"

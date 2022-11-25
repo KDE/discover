@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-24 00:46+0000\n"
+"POT-Creation-Date: 2022-11-25 00:48+0000\n"
 "PO-Revision-Date: 2022-09-18 12:04+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -40,8 +40,8 @@ msgstr "Public Domain"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:258
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:306
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -2128,33 +2128,33 @@ msgstr ""
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:255
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL and other licenses"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:265
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:313
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional packages: "
 msgstr "Confirm Additional Changes"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:272
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:320
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional modules: "
 msgstr "Confirm Additional Changes"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:279
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:327
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Unlock package"
 msgid "Local packages: "
 msgstr "Unlock package"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:286
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:334
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -2163,38 +2163,38 @@ msgstr "Unlock package"
 msgid "Replaced packages:"
 msgstr "Meta Packages"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:341
 #, fuzzy, kde-format
 #| msgctxt "@label The parent package that this package comes from"
 #| msgid "Source Package:"
 msgid "Removed packages:"
 msgstr "Source Package:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:345
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, fuzzy, kde-format
 #| msgid "Current Version:"
 msgid "Currently booted version (pinned)"
 msgstr "Current Version:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
 #, fuzzy, kde-format
 #| msgid "Current Version:"
 msgid "Currently booted version"
 msgstr "Current Version:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:350
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:352
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Force Version"
 msgid "Fallback version (pinned)"
 msgstr "Force Version"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:354
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Force Version"
@@ -2320,7 +2320,7 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr "Please verify Internet connectivity"
 
-#: libdiscover/resources/ResourcesModel.cpp:98
+#: libdiscover/resources/ResourcesModel.cpp:99
 #, kde-format
 msgid "Refresh"
 msgstr "Refresh"

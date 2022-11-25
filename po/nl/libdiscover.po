@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-24 00:46+0000\n"
+"POT-Creation-Date: 2022-11-25 00:48+0000\n"
 "PO-Revision-Date: 2022-11-10 18:44-0400\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -40,8 +40,8 @@ msgstr "Publiek domein"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:258
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:306
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -2135,57 +2135,57 @@ msgstr ""
 "Referentie op afstand ontbreekt voor overgang naar een nieuwe hoofdversie. "
 "Rapporteer een bug."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:255
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL en andere licenties"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:265
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:313
 #, kde-format
 msgid "Additional packages: "
 msgstr "Extra pakketten: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:272
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:320
 #, kde-format
 msgid "Additional modules: "
 msgstr "Extra modules: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:279
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:327
 #, kde-format
 msgid "Local packages: "
 msgstr "Lokale pakketten: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:286
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:334
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Vervangen pakketten:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:341
 #, kde-format
 msgid "Removed packages:"
 msgstr "Verwijderde pakketten:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:345
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Nu draaiende versie (vastgepind)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
 #, kde-format
 msgid "Currently booted version"
 msgstr "Nu draaiende versie"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:350
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "Versie die gebruikt zal worden na een herstart"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:352
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Versie om op terug te vallen (vastgepind)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:354
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Fallback version"
 msgstr "Versie om op terug te vallen"
@@ -2304,7 +2304,7 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr "Controleer uw internetverbinding"
 
-#: libdiscover/resources/ResourcesModel.cpp:98
+#: libdiscover/resources/ResourcesModel.cpp:99
 #, kde-format
 msgid "Refresh"
 msgstr "Vernieuwen"

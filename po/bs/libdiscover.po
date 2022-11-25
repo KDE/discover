@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-24 00:46+0000\n"
+"POT-Creation-Date: 2022-11-25 00:48+0000\n"
 "PO-Revision-Date: 2014-01-31 20:46+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -48,8 +48,8 @@ msgstr "Izdavaštvo"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:258
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:306
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, fuzzy, kde-format
@@ -2163,26 +2163,26 @@ msgstr ""
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:255
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
 msgid "GPL and other licenses"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:265
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:313
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional packages: "
 msgstr "Potvrdi dodatne izmjene"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:272
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:320
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional modules: "
 msgstr "Potvrdi dodatne izmjene"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:279
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:327
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -2191,7 +2191,7 @@ msgstr "Potvrdi dodatne izmjene"
 msgid "Local packages: "
 msgstr "Meta paketi"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:286
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:334
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -2200,36 +2200,36 @@ msgstr "Meta paketi"
 msgid "Replaced packages:"
 msgstr "Meta paketi"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:341
 #, kde-format
 msgid "Removed packages:"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:345
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, fuzzy, kde-format
 #| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
 #| msgid "Version %1:"
 msgid "Currently booted version (pinned)"
 msgstr "Verzija %1:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:347
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
 #, fuzzy, kde-format
 #| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
 #| msgid "Version %1:"
 msgid "Currently booted version"
 msgstr "Verzija %1:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:350
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:352
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:354
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Fallback version"
 msgstr ""
@@ -2354,7 +2354,7 @@ msgstr ""
 msgid "Please verify Internet connectivity"
 msgstr ""
 
-#: libdiscover/resources/ResourcesModel.cpp:98
+#: libdiscover/resources/ResourcesModel.cpp:99
 #, kde-format
 msgid "Refresh"
 msgstr ""
