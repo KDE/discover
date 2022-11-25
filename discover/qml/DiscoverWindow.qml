@@ -442,6 +442,7 @@ Kirigami.ApplicationWindow
                     const sheet = component.createObject(window, {transaction: transaction, url: url });
                     sheet.open()
                 }
+                component.destroy();
             }
         }
     }
