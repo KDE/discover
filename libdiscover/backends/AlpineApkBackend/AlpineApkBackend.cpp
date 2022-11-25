@@ -310,16 +310,15 @@ void AlpineApkBackend::onAppstreamDataDownloaded()
 
 QVector<Category *> AlpineApkBackend::category() const
 {
-    static QPair<FilterType, QString> s_apkFlt(
-                FilterType::CategoryFilter, QLatin1String("alpine_packages"));
+    static CategoryFilter s_apkFlt{CategoryFilter::FilterType::CategoryNameFilter, QLatin1String("alpine_packages")};
 
     // Display a single root category
     // we could add more, but Alpine apk does not have this concept
-    static Category *s_rootCat = new Category(i18nc("Root category name", "Alpine Linux packages"),
-                                              QStringLiteral("package-x-generic"), // icon
-                                              {s_apkFlt}, // orFilters - include packages that match filter
+    static Category *s_rootCat = new Category(i18nc("Root category name", "Alpine Linux packages"), // name
+                                              QStringLiteral("package-x-generic"), // icon name
+                                              s_apkFlt, // const CategoryFilter& filters
                                               {displayName()}, // pluginName
-                                              {}, // subCategories - none
+                                              {}, // QVector<Category *> subCategories - none
                                               false // isAddons
     );
 
