@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-25 00:48+0000\n"
-"PO-Revision-Date: 2022-11-23 06:12+0100\n"
+"PO-Revision-Date: 2022-11-25 06:40+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -866,7 +866,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
-msgstr ""
+msgstr "%1-ის დაშორებული რეპოზიტორიის წაშლის შეცდომა: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:301
 #, kde-format
@@ -886,7 +886,7 @@ msgstr "შეიყვანეთ Flatpak რეპოზიტორიის
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
-msgstr ""
+msgstr "დაშორებულის '%1' დამატება %2-ში, %3-დან"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
@@ -2235,10 +2235,9 @@ msgid "%1+"
 msgstr "%1+"
 
 #: libdiscover/resources/ResourcesUpdatesModel.cpp:109
-#, fuzzy, kde-format
-#| msgid "Updating"
+#, kde-format
 msgid "Updates"
-msgstr "განახლება"
+msgstr "განახლებები"
 
 #: libdiscover/Transaction/Transaction.cpp:133
 #, kde-format

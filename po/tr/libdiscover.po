@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-25 00:48+0000\n"
-"PO-Revision-Date: 2022-11-24 16:40+0300\n"
+"PO-Revision-Date: 2022-11-25 19:12+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -48,7 +48,7 @@ msgstr "Kamu Malı"
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
 msgid "Unknown"
-msgstr "Bilinmeyen"
+msgstr "Bilinmiyor"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:140
 #: libdiscover/resources/AbstractResource.cpp:278
