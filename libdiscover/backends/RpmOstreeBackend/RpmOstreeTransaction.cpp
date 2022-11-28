@@ -113,6 +113,7 @@ void RpmOstreeTransaction::start()
         m_process->start(prog, m_args);
         setStatus(Status::DownloadingStatus);
         setProgress(5);
+        setDownloadSpeed(0);
     }
 }
 
@@ -240,6 +241,7 @@ void RpmOstreeTransaction::setupExternalTransaction()
     // Setup status, fake progress and start the timer
     setStatus(Status::DownloadingStatus);
     setProgress(5);
+    setDownloadSpeed(0);
     m_timer->start();
 }
 
