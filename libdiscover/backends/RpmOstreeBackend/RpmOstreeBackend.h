@@ -71,9 +71,6 @@ private:
      * we are running and then initialize the rest of the backend. */
     void initializeBackend();
 
-    /* Get the currently booted deployment */
-    RpmOstreeResource *currentlyBootedDeployment() const;
-
     /* Called when a new major version is found to setup user facing actions */
     void foundNewMajorVersion(const QString &newMajorVersion);
 
@@ -82,6 +79,9 @@ private:
 
     /* The list of available deployments */
     QVector<RpmOstreeResource *> m_resources;
+
+    /* The currently booted deployment */
+    RpmOstreeResource *m_currentlyBootedDeployment;
 
     /* The current transaction in progress, if any */
     RpmOstreeTransaction *m_transaction;

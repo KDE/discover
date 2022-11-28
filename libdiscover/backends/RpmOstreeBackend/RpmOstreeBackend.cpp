@@ -26,6 +26,7 @@ static const QString DevelopmentVersionName = QStringLiteral("Rawhide");
 
 RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
+    , m_currentlyBootedDeployment(nullptr)
     , m_watcher(new QDBusServiceWatcher(this))
     , m_interface(nullptr)
     , m_updater(new StandardBackendUpdater(this))
@@ -144,7 +145,9 @@ void RpmOstreeBackend::initializeBackend()
     const QString transaction = m_interface->activeTransactionPath();
     if (!transaction.isEmpty()) {
         qInfo() << "rpm-ostree-backend: A transaction is already in progress";
-        m_transaction = new RpmOstreeTransaction(this, currentlyBootedDeployment(), m_interface, RpmOstreeTransaction::Unknown);
+        // We don't check that m_currentlyBootedDeployment is != nullptr here as we've
+        // initialized it right above in refreshDeployments.
+        m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, RpmOstreeTransaction::Unknown);
         TransactionModel::global()->addTransaction(m_transaction);
         return;
     }
@@ -162,6 +165,7 @@ void RpmOstreeBackend::refreshDeployments()
     m_bootedObjectPath = m_interface->booted().path();
 
     // Reset the list of deployments
+    m_currentlyBootedDeployment = nullptr;
     m_resources.clear();
 
     // Get the list of currently available deployments. This is a DBus property
@@ -174,10 +178,22 @@ void RpmOstreeBackend::refreshDeployments()
             connect(deployment, &RpmOstreeResource::stateChanged, [this]() {
                 Q_EMIT updatesCountChanged();
             });
+            if (m_currentlyBootedDeployment) {
+                qWarning() << "rpm-ostree-backend: We already have a booted deployment. This is a bug.";
+                passiveMessage(i18n("rpm-ostree: Multiple booted deployments found. Please file a bug."));
+                return;
+            }
+            m_currentlyBootedDeployment = deployment;
         } else if (deployment->isPending()) {
             // Signal that we have a pending update
             m_updater->enableNeedsReboot();
         }
+    }
+
+    if (!m_currentlyBootedDeployment) {
+        qWarning() << "rpm-ostree-backend: We have not found the booted deployment. This is a bug.";
+        passiveMessage(i18n("rpm-ostree: No booted deployment found. Please file a bug."));
+        return;
     }
 
     // The number of updates might have changed if we're called after an update
@@ -186,23 +202,17 @@ void RpmOstreeBackend::refreshDeployments()
     setFetching(false);
 }
 
-RpmOstreeResource *RpmOstreeBackend::currentlyBootedDeployment() const
-{
-    for (RpmOstreeResource *deployment : m_resources) {
-        if (deployment->isBooted()) {
-            return deployment;
-        }
-    }
-    qWarning() << "rpm-ostree-backend: Requested the currently booted deployment but none found";
-    return nullptr;
-}
-
 void RpmOstreeBackend::checkForUpdates()
 {
-    m_transaction = new RpmOstreeTransaction(this, currentlyBootedDeployment(), m_interface, RpmOstreeTransaction::CheckForUpdate);
+    if (!m_currentlyBootedDeployment) {
+        qInfo() << "rpm-ostree-backend: Called checkForUpdates before the backend is done getting deployments";
+        return;
+    }
+
+    m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, RpmOstreeTransaction::CheckForUpdate);
     connect(m_transaction, &RpmOstreeTransaction::newVersionFound, [this](QString newVersion) {
         // Mark that there is a newer version for the current deployment
-        currentlyBootedDeployment()->setNewVersion(newVersion);
+        m_currentlyBootedDeployment->setNewVersion(newVersion);
 
         // Look for an existing deployment for the new version
         QVectorIterator<RpmOstreeResource *> iterator(m_resources);
@@ -212,7 +222,7 @@ void RpmOstreeBackend::checkForUpdates()
                 qInfo() << "rpm-ostree-backend: Found existing deployment for new version. Skipping.";
                 // Let the user know that the update is pending a reboot
                 m_updater->enableNeedsReboot();
-                if (currentlyBootedDeployment()->getNextMajorVersion().isEmpty()) {
+                if (m_currentlyBootedDeployment->getNextMajorVersion().isEmpty()) {
                     Q_EMIT inlineMessageChanged(nullptr);
                 } else {
                     Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
@@ -222,8 +232,8 @@ void RpmOstreeBackend::checkForUpdates()
         }
 
         // No existing deployment found. Let's offer the update
-        currentlyBootedDeployment()->setState(AbstractResource::Upgradeable);
-        if (currentlyBootedDeployment()->getNextMajorVersion().isEmpty()) {
+        m_currentlyBootedDeployment->setState(AbstractResource::Upgradeable);
+        if (m_currentlyBootedDeployment->getNextMajorVersion().isEmpty()) {
             Q_EMIT inlineMessageChanged(nullptr);
         } else {
             Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
@@ -302,8 +312,14 @@ void RpmOstreeBackend::lookForNextMajorVersion()
             return;
         }
     }
+
+    if (!m_currentlyBootedDeployment) {
+        qInfo() << "rpm-ostree-backend: Called lookForNextMajorVersion before the backend is done getting deployments";
+        return;
+    }
+
     // Validate that the branch exists for the version to move to and set it for the resource
-    if (!currentlyBootedDeployment()->setNewMajorVersion(nextVersion)) {
+    if (!m_currentlyBootedDeployment->setNewMajorVersion(nextVersion)) {
         qWarning() << "rpm-ostree-backend: Found new major release but could not validate it via ostree. File a bug to your distribution.";
         return;
     }
@@ -315,6 +331,11 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
 {
     qDebug() << "rpm-ostree-backend: Found new release:" << newMajorVersion;
 
+    if (!m_currentlyBootedDeployment) {
+        qInfo() << "rpm-ostree-backend: Called foundNewMajorVersion before the backend is done getting deployments";
+        return;
+    }
+
     QString info;
     // Message to display when:
     // - A new major version is available
@@ -322,13 +343,13 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
     info = i18n(
         "<b>A new major version of %1 has been released!</b>\n"
         "To be able to update to this new version, make sure to apply all pending updates and reboot your system.",
-        currentlyBootedDeployment()->packageName());
+        m_currentlyBootedDeployment->packageName());
     m_rebootBeforeRebaseMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info);
 
     // Message to display when:
     // - A new major version is available
     // - No update to the current version are available or pending a reboot
-    DiscoverAction *rebase = new DiscoverAction(i18n("Upgrade to %1 %2", currentlyBootedDeployment()->packageName(), newMajorVersion), this);
+    DiscoverAction *rebase = new DiscoverAction(i18n("Upgrade to %1 %2", m_currentlyBootedDeployment->packageName(), newMajorVersion), this);
     connect(rebase, &DiscoverAction::triggered, this, &RpmOstreeBackend::rebaseToNewVersion);
     info = i18n("<b>A new major version has been released!</b>");
     m_rebaseAvailableMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info, rebase);
@@ -352,7 +373,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
 
     // Look for an existing updated deployment or a pending deployment for the
     // current version
-    QString newVersion = currentlyBootedDeployment()->getNewVersion();
+    QString newVersion = m_currentlyBootedDeployment->getNewVersion();
     iterator = QVectorIterator<RpmOstreeResource *>(m_resources);
     while (iterator.hasNext()) {
         RpmOstreeResource *deployment = iterator.next();
@@ -368,7 +389,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
     // them upgrade only if they are running the latest version of the current
     // release so let's check if there is an update available for the current
     // version.
-    if (currentlyBootedDeployment()->state() == AbstractResource::Upgradeable) {
+    if (m_currentlyBootedDeployment->state() == AbstractResource::Upgradeable) {
         qInfo() << "rpm-ostree-backend: Found pending update for current version";
         m_updater->enableNeedsReboot();
         Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
@@ -382,8 +403,11 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
 
 int RpmOstreeBackend::updatesCount() const
 {
-    auto curr = currentlyBootedDeployment();
-    if (curr->state() == AbstractResource::Upgradeable) {
+    if (!m_currentlyBootedDeployment) {
+        // Not yet initialized
+        return 0;
+    }
+    if (m_currentlyBootedDeployment->state() == AbstractResource::Upgradeable) {
         return 1;
     }
     return 0;
@@ -414,12 +438,17 @@ Transaction *RpmOstreeBackend::installApplication(AbstractResource *app, const A
 Transaction *RpmOstreeBackend::installApplication(AbstractResource *app)
 {
     Q_UNUSED(app);
-    auto curr = currentlyBootedDeployment();
-    if (curr->state() != AbstractResource::Upgradeable) {
+
+    if (!m_currentlyBootedDeployment) {
+        qInfo() << "rpm-ostree-backend: Called installApplication before the backend is done getting deployments";
         return nullptr;
     }
 
-    m_transaction = new RpmOstreeTransaction(this, currentlyBootedDeployment(), m_interface, RpmOstreeTransaction::Update);
+    if (m_currentlyBootedDeployment->state() != AbstractResource::Upgradeable) {
+        return nullptr;
+    }
+
+    m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, RpmOstreeTransaction::Update);
     connect(m_transaction, &RpmOstreeTransaction::deploymentsUpdated, this, &RpmOstreeBackend::refreshDeployments);
     m_transaction->start();
     return m_transaction;
@@ -434,8 +463,12 @@ Transaction *RpmOstreeBackend::removeApplication(AbstractResource *)
 
 void RpmOstreeBackend::rebaseToNewVersion()
 {
-    auto curr = currentlyBootedDeployment();
-    if (curr->state() == AbstractResource::Upgradeable) {
+    if (!m_currentlyBootedDeployment) {
+        qInfo() << "rpm-ostree-backend: Called rebaseToNewVersion before the backend is done getting deployments";
+        return;
+    }
+
+    if (m_currentlyBootedDeployment->state() == AbstractResource::Upgradeable) {
         if (m_developmentEnabled) {
             qInfo() << "rpm-ostree-backend: You have pending updates for current version. Proceeding anyway.";
             passiveMessage(i18n("You have pending updates for the current version. Proceeding anyway."));
@@ -446,7 +479,7 @@ void RpmOstreeBackend::rebaseToNewVersion()
         }
     }
 
-    const QString ref = curr->getNextMajorVersionRef();
+    const QString ref = m_currentlyBootedDeployment->getNextMajorVersionRef();
     if (ref.isEmpty()) {
         qWarning() << "rpm-ostree-backend: Error: Empty ref to rebase to";
         passiveMessage(i18n("Missing remote ref for rebase operation. Please file a bug."));
@@ -455,7 +488,7 @@ void RpmOstreeBackend::rebaseToNewVersion()
 
     // Only start one rebase operation at a time
     Q_EMIT inlineMessageChanged(nullptr);
-    m_transaction = new RpmOstreeTransaction(this, currentlyBootedDeployment(), m_interface, RpmOstreeTransaction::Rebase, ref);
+    m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, RpmOstreeTransaction::Rebase, ref);
     connect(m_transaction, &RpmOstreeTransaction::deploymentsUpdated, this, &RpmOstreeBackend::refreshDeployments);
     connect(m_transaction, &RpmOstreeTransaction::lookForNextMajorVersion, this, &RpmOstreeBackend::lookForNextMajorVersion);
     m_transaction->start();
