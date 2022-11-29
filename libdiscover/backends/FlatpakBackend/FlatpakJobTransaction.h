@@ -8,9 +8,9 @@
 #ifndef FLATPAKJOBTRANSACTION_H
 #define FLATPAKJOBTRANSACTION_H
 
+#include "flatpak-helper.h"
 #include <QPointer>
 #include <Transaction/Transaction.h>
-#include "flatpak-helper.h"
 
 #include <gio/gio.h>
 #include <glib.h>
