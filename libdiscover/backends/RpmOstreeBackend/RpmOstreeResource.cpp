@@ -355,7 +355,10 @@ QString RpmOstreeResource::name() const
 
 QString RpmOstreeResource::origin() const
 {
-    return m_remote.at(0).toUpper() + m_remote.mid(1);
+    if (m_remote == QStringLiteral("fedora")) {
+        return QStringLiteral("Fedora Project");
+    }
+    return m_remote;
 }
 
 QString RpmOstreeResource::packageName() const
