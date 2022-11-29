@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-19 00:47+0000\n"
-"PO-Revision-Date: 2022-10-12 15:33+0200\n"
+"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"PO-Revision-Date: 2022-11-28 22:07+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.11.80\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -39,7 +39,7 @@ msgstr ""
 "<interface>RetroAdministrationes Mancante</interface>.<nl/><nl/>Anque "
 "considera reportar isto como unproblema de impacchettamento a tudistribution."
 
-#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:346
+#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
@@ -90,12 +90,12 @@ msgstr ""
 msgid "Could not open %1"
 msgstr "Non pote aperir %1."
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:372
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Pro favor assecura te  que le supporto de Snap es installate"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:374
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -104,20 +104,20 @@ msgstr ""
 "Non poteva aperir %1 proque non esseva trovate in ulle repositorios "
 "disponibile de software."
 
-#: discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 "Pro favor tu reporta iste problema al creator de pacchetos de tu "
 "distribution."
 
-#: discover/DiscoverObject.cpp:408 discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
 #: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover (Discoperi)"
 
-#: discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:443
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -407,10 +407,9 @@ msgid "Share"
 msgstr "Comparti"
 
 #: discover/qml/ApplicationPage.qml:602
-#, fuzzy, kde-format
-#| msgid "Send a link to the application"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Invia un ligamine a application"
+msgstr "Invia un ligamine per iste application"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format
@@ -661,12 +660,10 @@ msgid "Highest-Rated Games"
 msgstr ""
 
 #: discover/qml/BrowsingPage.qml:139 discover/qml/BrowsingPage.qml:168
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "Vide plus…"
+msgstr "Vide plus"
 
 #: discover/qml/BrowsingPage.qml:149
 #, kde-format
@@ -742,23 +739,21 @@ msgid "Report this issue"
 msgstr "Reporta iste question"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "Votos: %1 de %2"
+msgstr "Error %1 de %2"
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "Monstra previe"
 
 #: discover/qml/DiscoverWindow.qml:383
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "Monstra contentos"
+msgstr "Monstra proxime"
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format

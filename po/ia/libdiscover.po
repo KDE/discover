@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-25 00:48+0000\n"
-"PO-Revision-Date: 2022-10-12 15:32+0200\n"
+"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"PO-Revision-Date: 2022-11-28 22:12+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.11.80\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -149,11 +149,10 @@ msgstr "ficte 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Applicationes"
+msgstr "Omne Applicationes"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -525,28 +524,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (usator)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:662
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
 #, kde-format
 msgid "Local bundle"
 msgstr "Fasce local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1604
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Url de Appstream  '%1' malformate"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1708
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Falleva a adder '%1':%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Il ha nulle fontes de Flatpack"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1829
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Falleva a cargar fonte '%1'"
@@ -663,24 +662,22 @@ msgstr "Accesso de Carta Intelligente (Smart Card)"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:801
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr "POote integrar e communicar con cartas intelligente"
+msgstr "Pote integrar e communicar con cartas intelligente"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "Accesso de dispositivo"
+msgstr "Accesso de Imprimitor"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "POote integrar e communicar con cartas intelligente"
+msgstr "Pote integrar e communicar con cartas imprimitores"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "Agente de GPG"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
@@ -690,22 +687,19 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "Accesso de rete"
+msgstr "Accesso de Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "POote integrar e communicar con cartas intelligente"
+msgstr "Pote integrar e communicar con dispositivos Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "Accesso de Bus de Systema"
+msgstr "Accesso de Systema de basse nivello"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
@@ -1941,39 +1935,39 @@ msgstr[1] "%2 (plus %1 dependentias)"
 msgid "Repository URL:"
 msgstr "URL de repositorio:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:78
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:84
 #, kde-format
 msgid "System upgrade"
 msgstr "Actualisationes de systema"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:165
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
 #, kde-format
 msgid "1 package to upgrade"
 msgid_plural "%1 packages to upgrade"
 msgstr[0] "1 pacchetto de remover"
 msgstr[1] "%1 pacchettos de remover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<li>%1 (%2): No changelog information</li>\n"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
 msgid "<li>%1 (%2): %3</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): %3</li>\n"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:198
 #, kde-format
 msgid "Present"
 msgstr "Presente"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:196
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:202
 #, kde-format
 msgid "Future"
 msgstr "Futuro"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:287
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:305
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
@@ -1981,7 +1975,7 @@ msgstr ""
 "Spatio non sufficiente per executar le actualisation. Il ha solmente %1 de "
 "spatiodisponibile."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:492
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -1994,12 +1988,12 @@ msgstr ""
 ">Si tuu crede que isto es un error, profavor tu reporta lo como un bug al "
 "impacchettator de tu distribution."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:482
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:499
 #, kde-format
 msgid "Packages to remove"
 msgstr "Pcchettos de remover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:483
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:500
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2008,13 +2002,13 @@ msgstr ""
 "Le pacchettos sequente essera removite per le actualisation:<ul><li>%1</li></"
 "ul><br/>pro installar:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:589
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:606
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
 #, kde-format
 msgid ""
@@ -2024,13 +2018,13 @@ msgstr ""
 "Cambio de Multimedia de typo '%1' es requirite.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:622
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:639
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
 #, kde-format
 msgid "Accept EULA"
 msgstr "Accepta EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:623
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:640
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
 #, kde-format
 msgid ""
@@ -2040,13 +2034,13 @@ msgstr ""
 "Le pacchetto %1 e su venditor %2 require que tu accepta lor licentia:\n"
 "%3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Signatura mancante per %1 in %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:758
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
 #, kde-format
 msgid ""
@@ -2116,7 +2110,7 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:331
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr ""
+msgstr "Actualisa a %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:333
 #, kde-format
@@ -2144,10 +2138,9 @@ msgid "GPL and other licenses"
 msgstr "GPL e altere licentias"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:313
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Additional packages: "
-msgstr "File de pacchetto invalide"
+msgstr "Pacchettos additional: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:320
 #, kde-format
@@ -2155,20 +2148,19 @@ msgid "Additional modules: "
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:327
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Local packages: "
-msgstr "File de pacchetto invalide"
+msgstr "Pacchettos localisation: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:334
 #, kde-format
 msgid "Replaced packages:"
-msgstr ""
+msgstr "Pacchettos reimplaciate:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:341
 #, kde-format
 msgid "Removed packages:"
-msgstr ""
+msgstr "Pacchettos Removite:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, kde-format
@@ -2202,10 +2194,9 @@ msgstr "ostree remotes"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:131
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:154
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "Transaction currente de rpm-ostree in progresso:"
+msgstr "Transaction  de rpm-ostree falleva con:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:296
 #, kde-format
@@ -2214,24 +2205,19 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:325
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "Marcar per actualisationes"
+msgstr "Verificante un actualisation de systema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:328
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Discargante"
+msgstr "Discargante actualisation de systema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:331
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Systema operative o operational"
+msgstr "Actualisante le systema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:334
 #, kde-format
@@ -2244,10 +2230,9 @@ msgid "Transaction in progress (started outside of Discover)"
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:343
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Non pote cancellar transaction"
+msgstr "Typo de transaction incognite"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

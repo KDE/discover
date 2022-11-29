@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-19 00:47+0000\n"
+"POT-Creation-Date: 2022-11-29 00:48+0000\n"
 "PO-Revision-Date: 2022-11-19 14:48\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -35,7 +35,7 @@ msgstr ""
 "您可以在设置页面中的<interface>缺少后端程序</interface>处安装后端程序。<nl/"
 "><nl/>同时请考虑将此情况作为打包问题报告给您正在使用的发行版项目。"
 
-#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:346
+#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
@@ -82,30 +82,30 @@ msgstr "缺少 flatpak 后端程序 %1，无法处理 flatpak 资源。请先安
 msgid "Could not open %1"
 msgstr "无法打开 %1"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:372
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "请确保 Snap 支持已经安装"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:374
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "无法打开 %1，在所有可用的软件仓库中均未发现该软件包。"
 
-#: discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "请将此问题报告给您使用的发行版的软件打包人员。"
 
-#: discover/DiscoverObject.cpp:408 discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
 #: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:443
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

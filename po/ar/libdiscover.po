@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-25 00:48+0000\n"
+"POT-Creation-Date: 2022-11-29 00:48+0000\n"
 "PO-Revision-Date: 2022-11-21 19:10+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -525,28 +525,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "‏%1 (المستخدم)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:662
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
 #, kde-format
 msgid "Local bundle"
 msgstr "حزمة محليّة"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1604
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "مسار appstream ‏’%1‘ مشوّه"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1708
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "فشل في إضافة مصدر '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "لا يوجد مصادر للفلات باك"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1829
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "فشل تحميل المصدر '%1'"
@@ -1928,12 +1928,12 @@ msgstr[5] "‏%2 (و%1 اعتماديّة)"
 msgid "Repository URL:"
 msgstr "مسار المستودع:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:78
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:84
 #, kde-format
 msgid "System upgrade"
 msgstr "ترقية النّظام"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:165
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
 #, kde-format
 msgid "1 package to upgrade"
 msgid_plural "%1 packages to upgrade"
@@ -1944,33 +1944,33 @@ msgstr[3] "%1 حزم للترقية"
 msgstr[4] "%1 حزمة للترقية"
 msgstr[5] "%1 حزمة للترقية"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<li>%1 (%2): No changelog information</li>\n"
 msgstr "<li>%1 (%2): لا يوجد معلومات عن التغييرات</li>\n"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
 msgid "<li>%1 (%2): %3</li>\n"
 msgstr "<li>%1 (%2): %3</li>\n"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:198
 #, kde-format
 msgid "Present"
 msgstr "موجود"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:196
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:202
 #, kde-format
 msgid "Future"
 msgstr "المستقبل"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:287
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:305
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "لا يوجد مساحة كافية للتحديث. المتوفر لديك %1."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:492
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -1982,12 +1982,12 @@ msgstr ""
 "بالغة الأهمية لتشغيل النظام: <nl/><ul><li>‏%1</li></ul><nl/>إذا كنت تعتقد أن "
 "هذا خطأ ، فالرجاء الإبلاغ عنه على أنه خطأ إلى محزمي التطبيقات  في توزيعتك."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:482
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:499
 #, kde-format
 msgid "Packages to remove"
 msgstr "الحزم لإزالتها"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:483
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:500
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -1996,13 +1996,13 @@ msgstr ""
 "سيُزيل التّحديث الحزم الآتية:<ul><li>%1</li></ul><br/>لتثبيت:<ul><li>%2</li></"
 "ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "‏%1:<nl/><nl/>‏%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:589
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:606
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
 #, kde-format
 msgid ""
@@ -2012,13 +2012,13 @@ msgstr ""
 "تغيير الوسيط من نوع ’%1‘ مطلوب.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:622
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:639
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
 #, kde-format
 msgid "Accept EULA"
 msgstr "اقبل اتّفاقيّة المستخدم النّهائي"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:623
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:640
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
 #, kde-format
 msgid ""
@@ -2028,13 +2028,13 @@ msgstr ""
 "تطلب الحزمة %1 وبائعها %2 قبول رخصتهم:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "توقيع %1 ناقص في %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:758
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
 #, kde-format
 msgid ""

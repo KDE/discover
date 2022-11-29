@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-19 00:47+0000\n"
+"POT-Creation-Date: 2022-11-29 00:48+0000\n"
 "PO-Revision-Date: 2022-11-21 19:11+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -40,7 +40,7 @@ msgstr ""
 "المفقودة</interface> <nl/><nl/> كذلك يمكنك التبليغ عن هذا كعلة تحزيم إلى "
 "توزيعتك."
 
-#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:346
+#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
@@ -90,30 +90,30 @@ msgstr ""
 msgid "Could not open %1"
 msgstr "تعذّر فتح %1"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:372
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "يرجى التأكد من تثبيت دعم سناب"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:374
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "لا يمكن فتح %1 بسبب عدم العثور عليه في أي مستودع تطبيقات."
 
-#: discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "الرجاء الإبلاغ عن هذه المشكلة لمحزمي التطبيقات في توزيعتك."
 
-#: discover/DiscoverObject.cpp:408 discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
 #: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "استكشف"
 
-#: discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:443
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-19 00:47+0000\n"
+"POT-Creation-Date: 2022-11-29 00:48+0000\n"
 "PO-Revision-Date: 2022-07-24 14:43+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -38,7 +38,7 @@ msgid ""
 "as a packaging issue to your distribution."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:346
+#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
@@ -84,13 +84,13 @@ msgstr ""
 msgid "Could not open %1"
 msgstr "„%1“ kann nicht geöffnet werden"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:372
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr ""
 "Bitten stellen Sie sicher, dass Unterstützung für Snaps installiert ist"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:374
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid ""
@@ -103,18 +103,18 @@ msgstr ""
 "%1<nl/>Berichten Sie bitte diesen Fehler an die Paketbetreuer Ihrer "
 "Distribution."
 
-#: discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Berichten Sie bitte diesen Fehler an Ihre Distribution."
 
-#: discover/DiscoverObject.cpp:408 discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
 #: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:443
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

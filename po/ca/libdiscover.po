@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-25 00:48+0000\n"
+"POT-Creation-Date: 2022-11-29 00:48+0000\n"
 "PO-Revision-Date: 2022-11-24 09:05+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -528,28 +528,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (usuari)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:662
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
 #, kde-format
 msgid "Local bundle"
 msgstr "Paquet local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1595
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1604
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de l'«appstream» amb format incorrecte «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1699
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1708
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Ha fallat en afegir la font «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1816
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "No hi ha cap font de Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1820
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1829
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Ha fallat en carregar la font «%1»"
@@ -1936,39 +1936,39 @@ msgstr[1] "%2 (més %1 dependències)"
 msgid "Repository URL:"
 msgstr "URL del repositori:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:78
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:84
 #, kde-format
 msgid "System upgrade"
 msgstr "Actualització del sistema"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:165
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
 #, kde-format
 msgid "1 package to upgrade"
 msgid_plural "%1 packages to upgrade"
 msgstr[0] "1 paquet a actualitzar"
 msgstr[1] "%1 paquets a actualitzar"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:174
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<li>%1 (%2): No changelog information</li>\n"
 msgstr "<li>%1 (%2): No hi ha informació en el registre de canvis</li>\n"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:176
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
 msgid "<li>%1 (%2): %3</li>\n"
 msgstr "<li>%1 (%2): %3</li>\n"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:192
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:198
 #, kde-format
 msgid "Present"
 msgstr "Present"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:196
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:202
 #, kde-format
 msgid "Future"
 msgstr "Futur"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:287
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:305
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
@@ -1976,7 +1976,7 @@ msgstr ""
 "No hi ha prou espai per portar a terme l'actualització. Només queden %1 "
 "d'espai disponible."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:475
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:492
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -1989,12 +1989,12 @@ msgstr ""
 "%1</li></ul><nl/>Si creieu que es tracta d'un error, si us plau, informeu-ne "
 "com a error als empaquetadors de la vostra distribució."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:482
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:499
 #, kde-format
 msgid "Packages to remove"
 msgstr "Paquets a eliminar"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:483
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:500
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2003,13 +2003,13 @@ msgstr ""
 "L'actualització eliminarà els paquets següents:<ul><li>%1</li></ul><br/>per "
 "tal d'instal·lar:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:589
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:606
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
 #, kde-format
 msgid ""
@@ -2019,13 +2019,13 @@ msgstr ""
 "Es requereix un canvi de suport del tipus «%1».\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:622
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:639
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
 #, kde-format
 msgid "Accept EULA"
 msgstr "Accepta EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:623
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:640
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
 #, kde-format
 msgid ""
@@ -2036,13 +2036,13 @@ msgstr ""
 "llicència:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Manca la signatura per a %1 a %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:758
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
 #, kde-format
 msgid ""
