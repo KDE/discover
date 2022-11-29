@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include "OstreeFormat.h"
+
 #include <resources/AbstractResource.h>
 
 class RpmOstreeBackend;
@@ -79,20 +81,12 @@ public:
     /* Returns if a given deployment is currently pending */
     Q_SCRIPTABLE bool isPending();
 
-
 private:
     QString m_name;
     QString m_variant;
     QString m_osname;
     QString m_version;
     QDate m_timestamp;
-    QString m_origin;
-    QString m_remote;
-    QString m_branch;
-    QString m_branchName;
-    QString m_branchVersion;
-    QString m_branchArch;
-    QString m_branchVariant;
     QString m_appstreamid;
     bool m_booted;
     bool m_pinned;
@@ -104,8 +98,12 @@ private:
     QStringList m_requested_packages;
     QString m_checksum;
 
+    /* Store the format used by ostree to pull each deployment*/
+    QScopedPointer<OstreeFormat> m_ostreeFormat;
+
     AbstractResource::State m_state;
 
     QString m_newVersion;
     QString m_nextMajorVersion;
+    QString m_nextMajorVersionRef;
 };

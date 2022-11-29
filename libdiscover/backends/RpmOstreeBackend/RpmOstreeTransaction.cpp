@@ -19,6 +19,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
                                            Operation operation,
                                            QString arg)
     : Transaction(parent, resource, Transaction::Role::InstallRole, {})
+    , m_timer(nullptr)
     , m_operation(operation)
     , m_cancelled(false)
     , m_ref(arg)
@@ -102,6 +103,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
 
 RpmOstreeTransaction::~RpmOstreeTransaction()
 {
+    delete m_timer;
 }
 
 void RpmOstreeTransaction::start()

@@ -78,62 +78,45 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     }
 
     // Look for "classic" ostree origin format first
-    m_origin = map.value(QStringLiteral("origin")).toString();
-    if (m_origin.isEmpty()) {
-        // If it's emmpty, then look for container origin format.
-        // See https://github.com/ostreedev/ostree-rs-ext and
-        // https://coreos.github.io/rpm-ostree/container/
-        m_origin = map.value(QStringLiteral("container-image-reference")).toString();
-        auto split_ref = m_origin.split(':');
-        if ((split_ref.length() < 2) || (split_ref.length() > 3)) {
-            qWarning() << "rpm-ostree-backend: Unknown container-image-reference format, ignoring:" << m_origin;
-            m_remote = QStringLiteral("unknown");
-            m_branch = QStringLiteral("unknown");
-        } else {
-            if (split_ref[0] != QStringLiteral("ostree-unverified-registry")) {
-                qWarning() << "rpm-ostree-backend: Unknown container-image-reference format, ignoring:" << m_origin;
-                m_remote = QStringLiteral("unknown");
-                m_branch = QStringLiteral("unknown");
-            } else {
-                m_remote = split_ref[1];
-                if (split_ref.length() == 3) {
-                    m_branch = split_ref[2];
-                } else {
-                    m_branch = QStringLiteral("latest");
-                }
-            }
+    QString origin = map.value(QStringLiteral("origin")).toString();
+    if (!origin.isEmpty()) {
+        m_ostreeFormat.reset(new OstreeFormat(OstreeFormat::Format::Classic, origin));
+        if (!m_ostreeFormat->isValid()) {
+            // This should never happen
+            qWarning() << "rpm-ostree-backend: Invalid origin for classic ostree format:" << origin;
         }
     } else {
-        // Found "classic" ostreee origin format. Get remote and branch from it
-        auto split_ref = m_origin.split(':');
-        if (split_ref.length() != 2) {
-            qWarning() << "rpm-ostree-backend: Unknown origin format, ignoring:" << m_origin;
-            m_remote = QStringLiteral("unknown");
-            m_branch = QStringLiteral("unknown");
+        // Then look for OCI container format
+        origin = map.value(QStringLiteral("container-image-reference")).toString();
+        if (!origin.isEmpty()) {
+            m_ostreeFormat.reset(new OstreeFormat(OstreeFormat::Format::OCI, origin));
+            if (!m_ostreeFormat->isValid()) {
+                // This should never happen
+                qWarning() << "rpm-ostree-backend: Invalid reference for OCI container ostree format:" << origin;
+            }
         } else {
-            m_remote = split_ref[0];
-            m_branch = split_ref[1];
+            // This should never happen
+            m_ostreeFormat.reset(new OstreeFormat(OstreeFormat::Format::Unknown, QStringLiteral("")));
+            qWarning() << "rpm-ostree-backend: Could not find a valid remote for this deployment:" << m_checksum;
         }
     }
 
-    // Split branch into name / version / arch / variant
-    auto split_branch = m_branch.split('/');
-    if (split_branch.length() < 4) {
-        qWarning() << "rpm-ostree-backend: Unknown branch format, ignoring:" << m_branch;
-        m_branchName = QStringLiteral("unknown");
-        m_branchVersion = QStringLiteral("unknown");
-        m_branchArch = QStringLiteral("unknown");
-        m_branchVariant = QStringLiteral("unknown");
+    // Use ostree as tld for all ostree deployments and differentiate between them with the
+    // remote/repo, ref/tag and commit..
+    // Example: ostree.fedora.fedora-34-x86-64-kinoite.abcd1234567890
+    // Example: ostree.quay.io-fedora-ostree-desktops-kinoite.abcd1234567890
+    // https://freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-id-generic
+    if (m_ostreeFormat->isClassic()) {
+        m_appstreamid = m_ostreeFormat->remote() + "." + m_ostreeFormat->ref();
+    } else if (m_ostreeFormat->isOCI()) {
+        m_appstreamid = m_ostreeFormat->repo() + "." + m_ostreeFormat->tag();
     } else {
-        m_branchName = split_branch[0];
-        m_branchVersion = split_branch[1];
-        m_branchArch = split_branch[2];
-        auto variant = split_branch[3];
-        for (int i = 4; i < split_branch.size(); ++i) {
-            variant += "/" + split_branch[i];
-        }
-        m_branchVariant = variant;
+        m_appstreamid = QStringLiteral("");
     }
+    m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-') + "." + m_checksum;
+#ifdef QT_DEBUG
+    qInfo() << "rpm-ostree-backend: Found deployment:" << m_appstreamid;
+#endif
 
     // Replaced & added packages
     m_requested_base_local_replacements = map.value(QStringLiteral("requested-base-local-replacements")).toStringList();
@@ -148,16 +131,40 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     m_requested_packages.sort();
 
     // TODO: Extract signature information
-
-    // Use ostree as tld to differentiate those resources and append the current branch:
-    // Example: ostree.fedora-34-x86-64-kinoite
-    // https://freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-id-generic
-    m_appstreamid = m_branch;
-    m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-') + "." + m_checksum;
 }
 
 bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
 {
+    if (!m_ostreeFormat->isValid()) {
+        // Only operate on valid origin format
+        return false;
+    }
+
+    // This check mostly makes sense for the classic Ostree format. Skip most of it for the
+    // OCI  format case: it will fail later if the container tag does not exist.
+    if (m_ostreeFormat->isOCI()) {
+        // If we are using the latest tag then it means that we are not following a specific
+        // major release and thus we don't need to rebase: it will automatically happen once
+        // the latest tag points to a version build with the new major release.
+        if (m_ostreeFormat->tag() == QStringLiteral("latest")) {
+            return false;
+        }
+
+        // Set the new major version
+        m_nextMajorVersion = newMajorVersion;
+        // Replace the current version in the container tag by the new major version to find
+        // the new tag to rebase to. This assumes that container tag names are lowercase.
+        QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
+        m_nextMajorVersionRef = m_ostreeFormat->tag().replace(currentVersion, newMajorVersion.toLower(), Qt::CaseInsensitive);
+        return true;
+    }
+
+    // Assume we're using the classic format from now on
+    if (!m_ostreeFormat->isClassic()) {
+        // Only operate on valid origin format
+        return false;
+    }
+
     // Fetch the list of refs available on the remote for the deployment
     g_autoptr(GFile) path = g_file_new_for_path("/ostree/repo");
     g_autoptr(OstreeRepo) repo = ostree_repo_new(path);
@@ -174,40 +181,28 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
     }
 
     g_autoptr(GHashTable) refs;
-    QByteArray rem = m_remote.toLocal8Bit();
+    QByteArray rem = m_ostreeFormat->remote().toLocal8Bit();
     res = ostree_repo_remote_list_refs(repo, rem.data(), &refs, NULL, &err);
     if (!res) {
         qWarning() << "rpm-ostree-backend: Could not get the list of refs for ostree repo:" << path;
         return false;
     }
 
-    // Iterate over the remote refs, keeping only the branches matching our
-    // variant, to find if there is a indeed a branch available for the new
-    // version.
+    // Replace the current version in current branch by the new major version to find the
+    // new branch. This assumes that ostree branch names are lowercase.
+    QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
+    QString newVersionBranch = m_ostreeFormat->ref().replace(currentVersion, newMajorVersion.toLower(), Qt::CaseInsensitive);
+
+    // Iterate over the remote refs to verify that the new verions has a branch available
     GHashTableIter iter;
     gpointer key, value;
     g_hash_table_iter_init(&iter, refs);
     while (g_hash_table_iter_next(&iter, &key, &value)) {
         auto ref = QString((char *)key);
-        // Split branch into name / version / arch / variant
-        auto split_branch = ref.split('/');
-        if (split_branch.length() < 4) {
-            qWarning() << "rpm-ostree-backend: Unknown branch format, ignoring:" << ref;
-            continue;
-        } else {
-            auto refVariant = split_branch[3];
-            for (int i = 4; i < split_branch.size(); ++i) {
-                refVariant += "/" + split_branch[i];
-            }
-            if (split_branch[0] == m_branchName && split_branch[2] == m_branchArch && refVariant == m_branchVariant) {
-                // Look for the branch matching the newMajorVersion.
-                // This assumes that ostree branch names are lowercase.
-                QString branchVersion = split_branch[1];
-                if (branchVersion == newMajorVersion.toLower()) {
-                    m_nextMajorVersion = newMajorVersion;
-                    return true;
-                }
-            }
+        if (ref == newVersionBranch) {
+            m_nextMajorVersion = newMajorVersion;
+            m_nextMajorVersionRef = newVersionBranch;
+            return true;
         }
     }
 
@@ -244,10 +239,7 @@ QString RpmOstreeResource::getNextMajorVersion() const
 
 QString RpmOstreeResource::getNextMajorVersionRef() const
 {
-    // This assumes that ostree branch names are lowercase.
-    QString ref;
-    QTextStream(&ref) << m_branchName.toLower() << '/' << m_nextMajorVersion.toLower() << '/' << m_branchArch.toLower() << '/' << m_variant.toLower();
-    return ref;
+    return m_nextMajorVersionRef;
 }
 
 QString RpmOstreeResource::appstreamId() const
@@ -355,10 +347,16 @@ QString RpmOstreeResource::name() const
 
 QString RpmOstreeResource::origin() const
 {
-    if (m_remote == QStringLiteral("fedora")) {
-        return QStringLiteral("Fedora Project");
+    if (m_ostreeFormat->isClassic()) {
+        if (m_ostreeFormat->remote() == QStringLiteral("fedora")) {
+            return QStringLiteral("Fedora Project");
+        } else {
+            return m_ostreeFormat->remote();
+        }
+    } else if (m_ostreeFormat->isOCI()) {
+        return m_ostreeFormat->repo();
     }
-    return m_remote;
+    return i18n("Unknown");
 }
 
 QString RpmOstreeResource::packageName() const
