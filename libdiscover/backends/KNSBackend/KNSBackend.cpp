@@ -267,7 +267,7 @@ void KNSBackend::fetchInstalled()
             auto updateChecker = new OneTimeAction(
                 666,
                 [this] {
-                    //No need to check for updates if there's no resources
+                    // No need to check for updates if there's no resources
                     if (m_resourcesByName.isEmpty()) {
                         return true;
                     }

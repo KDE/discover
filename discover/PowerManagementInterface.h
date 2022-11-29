@@ -16,22 +16,15 @@ class PowerManagementInterfacePrivate;
 
 class PowerManagementInterface : public QObject
 {
-
     Q_OBJECT
 
     Q_PROPERTY(QString reason READ reason WRITE setReason)
 
-    Q_PROPERTY(bool preventSleep
-               READ preventSleep
-               WRITE setPreventSleep
-               NOTIFY preventSleepChanged)
+    Q_PROPERTY(bool preventSleep READ preventSleep WRITE setPreventSleep NOTIFY preventSleepChanged)
 
-    Q_PROPERTY(bool sleepInhibited
-               READ sleepInhibited
-               NOTIFY sleepInhibitedChanged)
+    Q_PROPERTY(bool sleepInhibited READ sleepInhibited NOTIFY sleepInhibitedChanged)
 
 public:
-
     explicit PowerManagementInterface(QObject *parent = nullptr);
 
     ~PowerManagementInterface() override;
@@ -64,13 +57,11 @@ private Q_SLOTS:
     void uninhibitDBusCallFinished(QDBusPendingCallWatcher *aWatcher);
 
 private:
-
     void inhibitSleep();
 
     void uninhibitSleep();
 
     std::unique_ptr<PowerManagementInterfacePrivate> d;
-
 };
 
 #endif // POWERMANAGEMENTINTERFACE_H

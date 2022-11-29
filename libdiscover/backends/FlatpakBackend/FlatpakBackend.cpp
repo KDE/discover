@@ -95,10 +95,12 @@ public:
         return m_remote && !flatpak_remote_get_disabled(m_remote);
     }
 
-    QString appstreamIconsDir() const {
+    QString appstreamIconsDir() const
+    {
         return m_appstreamIconsDir;
     }
-    QString appstreamDir() const {
+    QString appstreamDir() const
+    {
         Q_ASSERT(m_remote);
         g_autoptr(GFile) appstreamDir = flatpak_remote_get_appstream_dir(m_remote, nullptr);
         if (!appstreamDir) {
@@ -869,7 +871,6 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
         Q_EMIT stream->resourcesFound({resource});
         stream->finish();
     }
-
 }
 
 void FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *stream)

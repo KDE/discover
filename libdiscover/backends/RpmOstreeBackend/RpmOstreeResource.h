@@ -3,7 +3,7 @@
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
- 
+
 #ifndef OSTREERPMRESOURCE_H
 #define OSTREERPMRESOURCE_H
 
@@ -37,15 +37,15 @@ public:
     QString installedVersion() const override;
     QString origin() const override;
     QString section() override;
-    void fetchScreenshots() override {};
+    void fetchScreenshots() override{};
     quint64 size() override;
     QString sizeDescription() override;
-    void fetchChangelog() override {};
+    void fetchChangelog() override{};
     QStringList extends() const override;
     AbstractResource::Type type() const override;
     QString author() const override;
     bool canExecute() const override;
-    void invokeApplication() const override {};
+    void invokeApplication() const override{};
     QUrl url() const override;
     QString sourceIcon() const override;
     QUrl homepage() override;

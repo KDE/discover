@@ -138,7 +138,7 @@ void PackageKitNotifier::checkOfflineUpdates()
                                      KNotification::Persistent,
                                      QStringLiteral("discoverabstractnotifier"));
             });
-            connect(trans, &PackageKit::Transaction::finished, this, [] (PackageKit::Transaction::Exit status, uint runtime) {
+            connect(trans, &PackageKit::Transaction::finished, this, [](PackageKit::Transaction::Exit status, uint runtime) {
                 qInfo() << "repair finished!" << status << runtime;
                 if (status == PackageKit::Transaction::ExitSuccess) {
                     PackageKit::Daemon::global()->offline()->clearResults();
@@ -157,7 +157,7 @@ void PackageKitNotifier::checkOfflineUpdates()
     } else {
         // Apparently on mobile, people are accustomed to seeing notifications
         // indicating success when a system update succeeded
-        if (isMobile){
+        if (isMobile) {
             KNotification *notification = new KNotification(QStringLiteral("OfflineUpdateSuccessful"));
             notification->setIconName(QStringLiteral("system-software-update"));
             notification->setTitle(i18n("Offline Updates"));

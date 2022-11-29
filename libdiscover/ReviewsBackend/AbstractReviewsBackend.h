@@ -43,7 +43,7 @@ public Q_SLOTS:
     // is the user_name the user typed in the review dialog, which defaults to what
     // the backend returns in userName() or the last username used
     // if the backend supports changing it (that is what the preferredUserName is).
-    //If the backend returns true for "supportsNameChange()", then the review dialog won't let them change it,
+    // If the backend returns true for "supportsNameChange()", then the review dialog won't let them change it,
     // therefore making the user_name here the same as "userName()".
     void submitReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating, const QString &userName);
     QString preferredUserName() const;

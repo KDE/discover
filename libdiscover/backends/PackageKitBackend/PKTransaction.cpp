@@ -177,7 +177,9 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         }
         removedResources.subtract(kToSet(m_apps));
 
-        auto isCritical = [](AbstractResource *r) { return static_cast<PackageKitResource *>(r)->isCritical(); };
+        auto isCritical = [](AbstractResource *r) {
+            return static_cast<PackageKitResource *>(r)->isCritical();
+        };
         auto criticals = kFilter<QSet<AbstractResource *>>(removedResources, isCritical);
         criticals.unite(kFilter<QSet<AbstractResource *>>(m_apps, isCritical));
         auto resourceName = [](AbstractResource *a) {

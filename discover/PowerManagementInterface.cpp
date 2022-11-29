@@ -24,7 +24,6 @@
 class PowerManagementInterfacePrivate
 {
 public:
-
     bool mPreventSleep = false;
 
     bool mInhibitedSleep = false;
@@ -34,14 +33,18 @@ public:
     QString m_reason;
 };
 
-PowerManagementInterface::PowerManagementInterface(QObject *parent) : QObject(parent), d(std::make_unique<PowerManagementInterfacePrivate>())
+PowerManagementInterface::PowerManagementInterface(QObject *parent)
+    : QObject(parent)
+    , d(std::make_unique<PowerManagementInterfacePrivate>())
 {
     auto sessionBus = QDBusConnection::sessionBus();
 
     sessionBus.connect(QStringLiteral("org.freedesktop.PowerManagement.Inhibit"),
                        QStringLiteral("/org/freedesktop/PowerManagement/Inhibit"),
                        QStringLiteral("org.freedesktop.PowerManagement.Inhibit"),
-                       QStringLiteral("HasInhibitChanged"), this, SLOT(hostSleepInhibitChanged()));
+                       QStringLiteral("HasInhibitChanged"),
+                       this,
+                       SLOT(hostSleepInhibitChanged()));
 }
 
 PowerManagementInterface::~PowerManagementInterface() = default;
@@ -125,8 +128,7 @@ void PowerManagementInterface::inhibitSleep()
 
     auto replyWatcher = new QDBusPendingCallWatcher(asyncReply, this);
 
-    QObject::connect(replyWatcher, &QDBusPendingCallWatcher::finished,
-                     this, &PowerManagementInterface::inhibitDBusCallFinished);
+    QObject::connect(replyWatcher, &QDBusPendingCallWatcher::finished, this, &PowerManagementInterface::inhibitDBusCallFinished);
 }
 
 void PowerManagementInterface::uninhibitSleep()
@@ -134,9 +136,9 @@ void PowerManagementInterface::uninhibitSleep()
     auto sessionBus = QDBusConnection::sessionBus();
 
     auto uninhibitCall = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.PowerManagement.Inhibit"),
-                                                      QStringLiteral("/org/freedesktop/PowerManagement/Inhibit"),
-                                                      QStringLiteral("org.freedesktop.PowerManagement.Inhibit"),
-                                                      QStringLiteral("UnInhibit"));
+                                                        QStringLiteral("/org/freedesktop/PowerManagement/Inhibit"),
+                                                        QStringLiteral("org.freedesktop.PowerManagement.Inhibit"),
+                                                        QStringLiteral("UnInhibit"));
 
     uninhibitCall.setArguments({{d->mInhibitSleepCookie}});
 
@@ -144,8 +146,7 @@ void PowerManagementInterface::uninhibitSleep()
 
     auto replyWatcher = new QDBusPendingCallWatcher(asyncReply, this);
 
-    QObject::connect(replyWatcher, &QDBusPendingCallWatcher::finished,
-                     this, &PowerManagementInterface::uninhibitDBusCallFinished);
+    QObject::connect(replyWatcher, &QDBusPendingCallWatcher::finished, this, &PowerManagementInterface::uninhibitDBusCallFinished);
 }
 
 QString PowerManagementInterface::reason() const
