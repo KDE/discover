@@ -33,6 +33,13 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     // Get as much as possible from rpm-ostree
     m_osname = map.value(QStringLiteral("osname")).toString();
 
+    // Look for the base-checksum first. This is the case where we have changes layered
+    m_checksum = map.value(QStringLiteral("base-checksum")).toString();
+    if (m_checksum.isEmpty()) {
+        // If empty, look for the regular checksum (no layered changes)
+        m_checksum = map.value(QStringLiteral("checksum")).toString();
+    }
+
     // Look for the base-version first. This is the case where we have changes layered
     m_version = map.value(QStringLiteral("base-version")).toString();
     if (m_version.isEmpty()) {
@@ -141,13 +148,6 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     m_requested_packages.sort();
 
     // TODO: Extract signature information
-
-    // Store base-commit and current commit to be able to differentiate between deployments
-    m_base_checksum = map.value(QStringLiteral("base-checksum")).toString();
-    m_checksum = map.value(QStringLiteral("checksum")).toString();
-    if (m_checksum.isEmpty()) {
-        m_checksum = m_base_checksum;
-    }
 
     // Use ostree as tld to differentiate those resources and append the current branch:
     // Example: ostree.fedora-34-x86-64-kinoite

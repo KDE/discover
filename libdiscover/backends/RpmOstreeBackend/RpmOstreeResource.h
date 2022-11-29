@@ -103,7 +103,6 @@ private:
     QStringList m_requested_local_packages;
     QStringList m_requested_modules;
     QStringList m_requested_packages;
-    QString m_base_checksum;
     QString m_checksum;
 
     AbstractResource::State m_state;
