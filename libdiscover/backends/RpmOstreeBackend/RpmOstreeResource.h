@@ -80,10 +80,6 @@ public:
     /* Returns if a given deployment is currently pending */
     Q_SCRIPTABLE bool isPending();
 
-Q_SIGNALS:
-
-    /* Signal emitted when the user requests the rebase to a newer version */
-    void buttonPressed(QString);
 
 private:
     QString m_name;

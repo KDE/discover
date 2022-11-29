@@ -154,8 +154,6 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     // https://freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-id-generic
     m_appstreamid = m_branch;
     m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-') + "." + m_checksum;
-
-    connect(this, &RpmOstreeResource::buttonPressed, parent, &RpmOstreeBackend::rebaseToNewVersion);
 }
 
 bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
