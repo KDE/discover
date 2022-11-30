@@ -97,7 +97,7 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
         }
     }
 
-    connect(this, &FlatpakResource::stateChanged, this, &FlatpakResource::hasDataButUninstalledChanged);
+    connect(this, &FlatpakResource::stateChanged, this, &FlatpakResource::hasDataChanged);
 }
 
 AppStream::Component FlatpakResource::appstreamComponent() const
@@ -949,9 +949,9 @@ QString FlatpakResource::dataLocation() const
     return QDir::homePath() + QLatin1String("/.var/") + id;
 }
 
-bool FlatpakResource::hasDataButUninstalled() const
+bool FlatpakResource::hasData() const
 {
-    return m_state == None && !dataLocation().isEmpty() && QDir(dataLocation()).exists();
+    return !dataLocation().isEmpty() && QDir(dataLocation()).exists();
 }
 
 void FlatpakResource::clearUserData()
@@ -965,7 +965,7 @@ void FlatpakResource::clearUserData()
     if (!QDir(location).removeRecursively()) {
         qWarning() << "Failed to remove location" << location;
     }
-    Q_EMIT hasDataButUninstalledChanged();
+    Q_EMIT hasDataChanged();
 }
 
 int FlatpakResource::versionCompare(FlatpakResource *resource) const

@@ -6,6 +6,7 @@
 
 import QtQuick 2.15
 import QtQuick.Layouts 1.1
+import org.kde.discover 2.0
 import org.kde.kirigami 2.10 as Kirigami
 
 Kirigami.InlineMessage
@@ -14,8 +15,15 @@ Kirigami.InlineMessage
     //required property AbstractResource resource
     Layout.fillWidth: true
     text: i18n("%1 is not installed but it still has data present.", resource.name)
-    visible: resource.hasDataButUninstalled
+    visible: resource.hasData && query.count === 0
     height: visible ? implicitHeight : 0
+
+    ResourcesProxyModel {
+        id: query
+        backendFilter: resource.backend
+        resourcesUrl: resource.url
+        stateFilter: AbstractResource.Installed
+    }
 
     actions: [
         Kirigami.Action {

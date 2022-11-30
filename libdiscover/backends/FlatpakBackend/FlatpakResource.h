@@ -33,7 +33,7 @@ class FlatpakResource : public AbstractResource
     Q_PROPERTY(QString branch READ branch CONSTANT)
     Q_PROPERTY(bool isDesktopApp READ isDesktopApp CONSTANT)
     Q_PROPERTY(QString eolReason READ eolReason NOTIFY eolReasonChanged)
-    Q_PROPERTY(bool hasDataButUninstalled READ hasDataButUninstalled NOTIFY hasDataButUninstalledChanged)
+    Q_PROPERTY(bool hasData READ hasData NOTIFY hasDataChanged)
 public:
     explicit FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent);
 
@@ -178,7 +178,7 @@ public:
     void setArch(const QString &arch);
     QString attentionText() const;
     QString dataLocation() const;
-    bool hasDataButUninstalled() const;
+    bool hasData() const;
     Q_INVOKABLE QAbstractListModel *permissionsModel();
 
     void setTemporarySource(const QSharedPointer<FlatpakSource> &temp)
@@ -209,7 +209,7 @@ public:
     QString eolReason();
 
 Q_SIGNALS:
-    void hasDataButUninstalledChanged();
+    void hasDataChanged();
     void propertyStateChanged(FlatpakResource::PropertyKind kind, FlatpakResource::PropertyState state);
     void eolReasonChanged();
 
