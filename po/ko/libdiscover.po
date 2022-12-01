@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"POT-Creation-Date: 2022-12-01 00:48+0000\n"
 "PO-Revision-Date: 2022-10-04 15:21+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -518,34 +518,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "시스템 설정"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:121
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:123
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1(사용자)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:669
 #, kde-format
 msgid "Local bundle"
 msgstr "로컬 번들"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1604
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1605
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "잘못된 AppStream URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1708
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1709
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' 원본을 추가할 수 없음: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1826
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Flatpak 원본이 없습니다."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1829
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1830
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" 원본을 불러올 수 없음"
@@ -1976,7 +1976,7 @@ msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:606
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
 "Media Change of type '%1' is requested.\n"
@@ -1986,13 +1986,13 @@ msgstr ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:639
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "EULA 수락"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:640
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2002,13 +2002,13 @@ msgstr ""
 " %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2의 %1에 서명이 없음"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:758
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2027,7 +2027,7 @@ msgstr ""
 "지문: %4\n"
 "타임스탬프: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:188
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:190
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2039,12 +2039,12 @@ msgstr ""
 "할 수 없습니다:<nl/><ul><li>%1</li></ul><nl/>오류로 인해서 메시지가 표시된 "
 "것 같으면 배포판 패키지 관리자에게 버그를 보그하십시오."
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
 #, kde-format
 msgid "Confirm package removal"
 msgstr "패키지 삭제 확인"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:204
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"
@@ -2062,7 +2062,17 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "운영 체제"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
+#, kde-format
+msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
+#, kde-format
+msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
@@ -2070,28 +2080,28 @@ msgid ""
 "updates and reboot your system."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:331
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, fuzzy, kde-format
 #| msgid "Upgrade"
 msgid "Upgrade to %1 %2"
 msgstr "업그레이드"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:333
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:441
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:474
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:444
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:477
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:452
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:485
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""

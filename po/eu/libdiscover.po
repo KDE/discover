@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"POT-Creation-Date: 2022-12-01 00:48+0000\n"
 "PO-Revision-Date: 2022-11-10 06:33+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -520,34 +520,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Sistemaren ezarpenak"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:121
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:123
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (erabiltzailea)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:669
 #, kde-format
 msgid "Local bundle"
 msgstr "Bertako sorta"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1604
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1605
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Gaizki eratutako 'appstream' url '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1708
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1709
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "«%1» sorburua gehitzea huts egin du: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1826
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Ez dago Flatpak sorbururik."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1829
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1830
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "«%1» sorburua abiatzea huts egin du"
@@ -2009,7 +2009,7 @@ msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:606
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
 "Media Change of type '%1' is requested.\n"
@@ -2019,13 +2019,13 @@ msgstr ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:639
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Onartu AELK (Azken Erabiltzailearen Lizentzia-Kontratua)"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:640
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2036,13 +2036,13 @@ msgstr ""
 "%3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Sinadura falta da %1-rentzako %2-n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:758
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2061,7 +2061,7 @@ msgstr ""
 "Hatz-marka: %4\n"
 "Ordu-zigilua: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:188
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:190
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2074,12 +2074,12 @@ msgstr ""
 "dela uste baduzu, mesedez, eman iezaiezu horren berri, akats gisa, zure "
 "banaketako paketatzaileei."
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
 #, kde-format
 msgid "Confirm package removal"
 msgstr "Baieztatu pakete kentzea"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:204
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"
@@ -2100,7 +2100,20 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Sistema eragilea"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
+#, kde-format
+msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
+#, fuzzy, kde-format
+#| msgid "Missing remote ref for rebase operation. Please file a bug."
+msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgstr ""
+"oinarria aldatzeko eragiketarako urruneko erreferentzia falta da. Mesedez, "
+"aurkeztu akats-txosten bat."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
@@ -2111,29 +2124,29 @@ msgstr ""
 "Bertsio berri horretara eguneratu ahal izateko, ezar itzazu egiteko dauden "
 "eguneratze guztiak eta berrabiatu zure sistema."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:331
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Bertsio-berritu %1 %2(e)ra"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:333
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Bertsio nagusi berri bat argitaratu da!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:441
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:474
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Uneko bertsioan egin beharreko eguneratzeak dituzu. Aurrera hala ere."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:444
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:477
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Mesedez, eguneratu azken bertsiora, oinarria bertsio nagusi berriago batera "
 "aldatu aurretik"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:452
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:485
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""

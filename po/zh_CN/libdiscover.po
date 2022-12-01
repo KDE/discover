@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"POT-Creation-Date: 2022-12-01 00:48+0000\n"
 "PO-Revision-Date: 2022-11-19 14:48\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -519,34 +519,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "系统设置"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:121
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:123
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (用户)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:669
 #, kde-format
 msgid "Local bundle"
 msgstr "本地包"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1604
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1605
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "错误的 AppStream URL “%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1708
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1709
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "无法添加来源“%1”：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1826
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "没有 Flatpak 来源。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1829
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1830
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "加载“%1”来源失败"
@@ -1953,7 +1953,7 @@ msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:606
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
 "Media Change of type '%1' is requested.\n"
@@ -1963,13 +1963,13 @@ msgstr ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:639
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "接受最终用户许可协议"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:640
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -1979,13 +1979,13 @@ msgstr ""
 " %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "缺少 %2 中 %1 的签名"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:758
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2004,7 +2004,7 @@ msgstr ""
 "指纹：%4\n"
 "时间戳：%4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:188
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:190
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2016,12 +2016,12 @@ msgstr ""
 "li></ul><nl/>如果您认为这是一个错误，请将它作为一个程序缺陷报告给发行版的打包"
 "人员。"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
 #, kde-format
 msgid "Confirm package removal"
 msgstr "确认移除软件包"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:204
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"
@@ -2039,7 +2039,18 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "操作系统"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
+#, kde-format
+msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
+#, fuzzy, kde-format
+#| msgid "Missing remote ref for rebase operation. Please file a bug."
+msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgstr "缺少rebase所需的远程ref。请提交漏洞。"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
@@ -2049,27 +2060,27 @@ msgstr ""
 "<b>一个新版本 %1 已发布！</b>\n"
 "若要更新到此版本，请确保应用所有待处理的更新并重启您的系统。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:331
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "升级到 %1 %2"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:333
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>新的主要版本已经发布！</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:441
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:474
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "当前您有待决的更新，需要继续进行。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:444
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:477
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "在rebase到主要版本前，请更新到最新版本"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:452
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:485
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "缺少rebase所需的远程ref。请提交漏洞。"

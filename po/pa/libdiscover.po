@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"POT-Creation-Date: 2022-12-01 00:48+0000\n"
 "PO-Revision-Date: 2022-01-01 09:30-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -522,36 +522,36 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "ਸਿਸਟਮ ਸੈਟਿੰਗਾਂ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:121
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:123
 #, fuzzy, kde-format
 #| msgid "%1 (user)"
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (ਵਰਤੋਂਕਾਰ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:667
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:669
 #, kde-format
 msgid "Local bundle"
 msgstr "ਲੋਕਲ ਬੰਡਲ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1604
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1605
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1708
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1709
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ ਹੈ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1825
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1826
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "ਕੋਈ ਫਲੈਟਪੈਕ ਸਰੋਤ ਨਹੀਂ ਹੈ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1829
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1830
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" ਸਰੋਤ ਲੋਡ ਕਰਨ ਲਈ ਫੇਲ੍ਹ"
@@ -1963,7 +1963,7 @@ msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:606
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:310
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
 "Media Change of type '%1' is requested.\n"
@@ -1971,13 +1971,13 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:639
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:287
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "EULA ਮਨਜ਼ੂਰ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:640
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:288
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -1987,13 +1987,13 @@ msgstr ""
 "%3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:758
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2012,7 +2012,7 @@ msgstr ""
 "ਫਿੰਗਰਪਰਿੰਟ: %4\n"
 "ਸਮਾਂ-ਮੋਹਰ: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:188
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:190
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2021,12 +2021,12 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
 #, kde-format
 msgid "Confirm package removal"
 msgstr "ਪੈਕੇਜ ਹਟਾਉਣ ਦੀ ਪੁਸ਼ਟੀ"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:204
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"
@@ -2047,7 +2047,17 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "ਓਪਰੇਟਿੰਗ ਸਿਸਟਮ"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:323
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
+#, kde-format
+msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
+#, kde-format
+msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
@@ -2055,29 +2065,29 @@ msgid ""
 "updates and reboot your system."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:331
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
 #| msgid "Upgrade"
 msgid "Upgrade to %1 %2"
 msgstr "ਅੱਪਗਰੇਡ"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:333
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:441
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:474
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:444
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:477
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:452
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:485
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
