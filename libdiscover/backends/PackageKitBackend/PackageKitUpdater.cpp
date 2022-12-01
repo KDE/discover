@@ -387,6 +387,7 @@ QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource *>
 void PackageKitUpdater::processProceedFunction()
 {
     auto t = m_proceedFunctions.takeFirst()();
+    qDebug() << "starting proceed function" << t << t->role();
     connect(t, &PackageKit::Transaction::finished, this, [this](PackageKit::Transaction::Exit status) {
         if (status != PackageKit::Transaction::Exit::ExitSuccess) {
             qWarning() << "transaction failed" << sender() << status;
@@ -591,6 +592,7 @@ void PackageKitUpdater::cancel()
 
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString &error)
 {
+    qDebug() << "found an error!" << err << error;
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement || err == PackageKit::Transaction::ErrorTransactionCancelled
         || err == PackageKit::Transaction::ErrorNotAuthorized) {
         return;
@@ -616,12 +618,15 @@ EulaHandling handleEula(const QString &eulaID, const QString &licenseAgreement)
 
     EulaHandling ret;
     ret.request = licenseGroup.readEntry("Hash", QByteArray()) != hashHex;
+    qDebug() << "do we need to agree" << eulaID << ret.request << licenseGroup.readEntry("Hash", QByteArray()) << hashHex;
     if (!ret.request) {
         ret.proceedFunction = [eulaID] {
+            qDebug() << "already accepted, proceed with" << eulaID;
             return PackageKit::Daemon::acceptEula(eulaID);
         };
     } else {
         ret.proceedFunction = [eulaID, hashHex] {
+            qDebug() << "accepted, recording and proceeding" << eulaID;
             KConfigGroup group(KSharedConfig::openConfig(), "EULA");
             KConfigGroup licenseGroup = group.group(eulaID);
             licenseGroup.writeEntry<QByteArray>("Hash", hashHex);
@@ -635,6 +640,7 @@ void PackageKitUpdater::eulaRequired(const QString &eulaID, const QString &packa
 {
     const auto handle = handleEula(eulaID, licenseAgreement);
     m_proceedFunctions << handle.proceedFunction;
+    qDebug() << "eula required" << m_proceedFunctions.count();
     if (handle.request) {
         Q_EMIT proceedRequest(i18n("Accept EULA"),
                               i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
