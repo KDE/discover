@@ -32,12 +32,14 @@ ResourcesModel *ResourcesModel::s_self = nullptr;
 
 ResourcesModel *ResourcesModel::global()
 {
-    if (!s_self)
+    if (!s_self) {
         s_self = new ResourcesModel;
+        s_self->init(true);
+    }
     return s_self;
 }
 
-ResourcesModel::ResourcesModel(QObject *parent, bool load)
+ResourcesModel::ResourcesModel(QObject *parent)
     : QObject(parent)
     , m_isFetching(false)
     , m_initializingBackendsCount(0)
@@ -73,12 +75,10 @@ ResourcesModel::ResourcesModel(QObject *parent, bool load)
 {
     connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::slotFetching);
     connect(this, &ResourcesModel::backendsChanged, this, &ResourcesModel::initApplicationsBackend);
-    init(load);
 }
 
 void ResourcesModel::init(bool load)
 {
-    Q_ASSERT(!s_self);
     Q_ASSERT(QCoreApplication::instance()->thread() == QThread::currentThread());
 
     m_allInitializedEmitter->setSingleShot(true);
@@ -107,10 +107,11 @@ void ResourcesModel::init(bool load)
 }
 
 ResourcesModel::ResourcesModel(const QString &backendName, QObject *parent)
-    : ResourcesModel(parent, false)
+    : ResourcesModel(parent)
 {
     s_self = this;
     registerBackendByName(backendName);
+    init(false);
 }
 
 ResourcesModel::~ResourcesModel()
