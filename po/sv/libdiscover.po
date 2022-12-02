@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-01 00:48+0000\n"
+"POT-Creation-Date: 2022-12-02 00:48+0000\n"
 "PO-Revision-Date: 2022-09-25 09:30+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -39,8 +39,8 @@ msgstr "Allmänt tillgänglig"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:306
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:387
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -2139,26 +2139,26 @@ msgstr ""
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL och andra licenser"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:313
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional packages: "
 msgstr "Bekräfta ytterligare ändringar"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:320
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional modules: "
 msgstr "Bekräfta ytterligare ändringar"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:327
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -2167,7 +2167,7 @@ msgstr "Bekräfta ytterligare ändringar"
 msgid "Local packages: "
 msgstr "Metapaket"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:334
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -2176,36 +2176,36 @@ msgstr "Metapaket"
 msgid "Replaced packages:"
 msgstr "Metapaket"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:341
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
 #, fuzzy, kde-format
 #| msgctxt "@info:status Package state"
 #| msgid "Required by other packages"
 msgid "Removed packages:"
 msgstr "Krävs av andra paket"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
 #, fuzzy, kde-format
 #| msgid "Current Version:"
 msgid "Currently booted version (pinned)"
 msgstr "Nuvarande version:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:396
 #, fuzzy, kde-format
 #| msgid "Current Version:"
 msgid "Currently booted version"
 msgstr "Nuvarande version:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:403
 #, kde-format
 msgid "Fallback version"
 msgstr ""
@@ -2215,51 +2215,51 @@ msgstr ""
 msgid "ostree remotes"
 msgstr "ostree fjärrkommandon"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:131
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:154
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:132
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:155
 #, fuzzy, kde-format
 #| msgid "Current rpm-ostree transaction in progress:"
 msgid "rpm-ostree transaction failed with:"
 msgstr "Nuvarande rpm-ostree transaktion som pågår:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:296
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:298
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:325
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:327
 #, fuzzy, kde-format
 #| msgctxt "@action Checks the Internet for updates"
 #| msgid "Check for Updates"
 msgid "Checking for a system update"
 msgstr "Titta efter uppdateringar"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:328
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:330
 #, fuzzy, kde-format
 #| msgctxt "@info Status information, widget title"
 #| msgid "Downloading Packages"
 msgid "Downloading system update"
 msgstr "Laddar ner paket"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:331
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:333
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Operating System"
 msgid "Updating the system"
 msgstr "Operativsystem"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:334
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:336
 #, kde-format
 msgid "Updating to the next major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:337
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:339
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:343
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:345
 #, fuzzy, kde-format
 #| msgid "Cannot cancel transaction"
 msgid "Unknown transaction type"
