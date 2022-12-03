@@ -33,6 +33,7 @@
 #include "KNSBackend.h"
 #include "KNSResource.h"
 #include "KNSReviews.h"
+#include "KNSTransaction.h"
 #include "utils.h"
 #include <resources/StandardBackendUpdater.h>
 
@@ -46,9 +47,30 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory
 public:
     KNSBackendFactory()
     {
-        connect(KNSCore::QuestionManager::instance(), &KNSCore::QuestionManager::askQuestion, this, [](KNSCore::Question *q) {
-            qWarning() << q->question() << q->questionType();
-            q->setResponse(KNSCore::Question::InvalidResponse);
+        connect(KNSCore::QuestionManager::instance(), &KNSCore::QuestionManager::askQuestion, this, [](KNSCore::Question *question) {
+            const auto transactions = TransactionModel::global()->transactions();
+            for (auto t : transactions) {
+                const auto transaction = dynamic_cast<KNSTransaction *>(t);
+                if (!transaction) {
+                    continue;
+                }
+
+                if (question->entry().uniqueId() == transaction->uniqueId()) {
+                    switch (question->questionType()) {
+                    case KNSCore::Question::ContinueCancelQuestion:
+                        transaction->addQuestion(question);
+                        return;
+                    default:
+                        transaction->passiveMessage(i18n("Unsupported question:\n%1", question->question()));
+                        question->setResponse(KNSCore::Question::InvalidResponse);
+                        transaction->setStatus(Transaction::CancelledStatus);
+                        break;
+                    }
+                    return;
+                }
+            }
+            qWarning() << "Question for unknown resource" << question->question() << question->questionType();
+            question->setResponse(KNSCore::Question::InvalidResponse);
         });
     }
 
@@ -493,85 +515,6 @@ void KNSBackend::slotEntryEvent(const KNSCore::EntryInternal &entry, KNSCore::En
         break;
     }
 }
-
-class KNSTransaction : public Transaction
-{
-public:
-    KNSTransaction(QObject *parent, KNSResource *res, Transaction::Role role)
-        : Transaction(parent, res, role)
-        , m_id(res->entry().uniqueId())
-    {
-        setCancellable(false);
-
-        auto manager = res->knsBackend()->engine();
-        connect(manager, &KNSCore::Engine::signalEntryEvent, this, [this](const KNSCore::EntryInternal &entry, KNSCore::EntryInternal::EntryEvent event) {
-            switch (event) {
-            case KNSCore::EntryInternal::StatusChangedEvent:
-                anEntryChanged(entry);
-                break;
-            case KNSCore::EntryInternal::DetailsLoadedEvent:
-            case KNSCore::EntryInternal::AdoptedEvent:
-            case KNSCore::EntryInternal::UnknownEvent:
-            default:
-                break;
-            }
-        });
-        TransactionModel::global()->addTransaction(this);
-
-        std::function<void()> actionFunction;
-        auto engine = res->knsBackend()->engine();
-        if (role == RemoveRole)
-            actionFunction = [res, engine]() {
-                engine->uninstall(res->entry());
-            };
-        else if (res->entry().status() == KNS3::Entry::Updateable)
-            actionFunction = [res, engine]() {
-                engine->install(res->entry(), -1);
-            };
-        else if (res->linkIds().isEmpty())
-            actionFunction = [res]() {
-                qWarning() << "No installable candidates in the KNewStuff entry" << res->entry().name() << "with id" << res->entry().uniqueId()
-                           << "on the backend" << res->backend()->name()
-                           << "There should always be at least one downloadable item in an OCS entry, and if there isn't, we should consider it broken. OCS "
-                              "can technically show them, but if there is nothing to install, it cannot be installed.";
-            };
-        else
-            actionFunction = [res, engine]() {
-                engine->install(res->entry());
-            };
-        QTimer::singleShot(0, res, actionFunction);
-    }
-
-    void anEntryChanged(const KNSCore::EntryInternal &entry)
-    {
-        if (entry.uniqueId() == m_id) {
-            switch (entry.status()) {
-            case KNS3::Entry::Invalid:
-                qWarning() << "invalid status for" << entry.uniqueId() << entry.status();
-                break;
-            case KNS3::Entry::Installing:
-            case KNS3::Entry::Updating:
-                setStatus(CommittingStatus);
-                break;
-            case KNS3::Entry::Downloadable:
-            case KNS3::Entry::Installed:
-            case KNS3::Entry::Deleted:
-            case KNS3::Entry::Updateable:
-                if (status() != DoneStatus) {
-                    setStatus(DoneStatus);
-                }
-                break;
-            }
-        }
-    }
-
-    void cancel() override
-    {
-    }
-
-private:
-    const QString m_id;
-};
 
 Transaction *KNSBackend::removeApplication(AbstractResource *app)
 {
