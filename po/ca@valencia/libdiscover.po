@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-02 00:48+0000\n"
-"PO-Revision-Date: 2022-11-24 09:05+0100\n"
+"PO-Revision-Date: 2022-12-01 12:35+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -2108,13 +2108,15 @@ msgstr "Sistema operatiu"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"«rpm-ostree»: S'han trobat diversos desplegaments d'arrancada. Informeu de "
+"l'error."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
-#, fuzzy, kde-format
-#| msgid "Missing remote ref for rebase operation. Please file a bug."
+#, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
-"Falta la «ref» remota per a l'operació de «rebase». Informeu de l'error."
+"«rpm-ostree»: No s'ha trobat cap desplegament d'arrancada. Informeu de "
+"l'error."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
