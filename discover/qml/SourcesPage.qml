@@ -51,15 +51,14 @@ DiscoverPage {
         currentIndex: -1
 
         section.property: "sourceName"
-        section.delegate: Kirigami.ListSectionHeader {
+        section.delegate: RowLayout {
             id: backendItem
-            height: Math.max(Kirigami.Units.gridUnit * 2.5, contentItem.implicitHeight)
-
+            spacing: 0
+            width: sourcesView.width
+            
             readonly property QtObject backend: SourcesModel.sourcesBackendByName(section)
             readonly property QtObject resourcesBackend: backend.resourcesBackend
             readonly property bool isDefault: ResourcesModel.currentApplicationBackend === resourcesBackend
-
-            width: sourcesView.width
 
             readonly property var p0: Connections {
                 target: backendItem.backend
@@ -71,77 +70,64 @@ DiscoverPage {
                     dialog.open()
                 }
             }
-
-            contentItem: RowLayout {
-                Kirigami.Heading {
-                    text: resourcesBackend.displayName
-                    level: 3
-                    font.weight: backendItem.isDefault ? Font.Bold : Font.Normal
-                }
-
-                Kirigami.ActionToolBar {
-                    id: actionBar
-
-                    alignment: Qt.AlignRight
-
-                    Kirigami.Action {
-                        id: isDefaultbackendLabelAction
-
-                        visible: backendItem.isDefault
-                        displayHint: Kirigami.DisplayHint.KeepVisible
-                        displayComponent: Kirigami.Heading {
-                            text: i18n("Default source")
-                            level: 3
-                            font.weight: Font.Bold
-                        }
-                    }
-                    Kirigami.Action {
-                        id: addSourceAction
-                        text: i18n("Add Source…")
-                        icon.name: "list-add"
-                        visible: backendItem.backend && backendItem.backend.supportsAdding
-
-                        readonly property Component p0: Component {
-                            id: dialogComponent
-                            AddSourceDialog {
-                                source: backendItem.backend
-
-                                onSheetOpenChanged: if(!sheetOpen) {
-                                    destroy(1000)
-                                }
+            
+            Kirigami.ListSectionHeader {
+                Layout.fillWidth: true
+                Layout.alignment: Qt.AlignVCenter
+                label: backendItem.isDefault ? i18n("%1 (Default source)", resourcesBackend.displayName) : resourcesBackend.displayName
+            }
+            
+            Kirigami.ActionToolBar {
+                id: actionBar
+                Layout.leftMargin: Kirigami.Units.smallSpacing
+                Layout.rightMargin: Kirigami.Units.largeSpacing
+                Layout.topMargin: Kirigami.Units.smallSpacing
+                alignment: Qt.AlignRight
+            
+                Kirigami.Action {
+                    id: addSourceAction
+                    text: i18n("Add Source…")
+                    icon.name: "list-add"
+                    visible: backendItem.backend && backendItem.backend.supportsAdding
+            
+                    readonly property Component p0: Component {
+                        id: dialogComponent
+                        AddSourceDialog {
+                            source: backendItem.backend
+            
+                            onSheetOpenChanged: if(!sheetOpen) {
+                                destroy(1000)
                             }
                         }
-
-                        onTriggered: {
-                            var addSourceDialog = dialogComponent.createObject(window, {displayName: backendItem.backend.resourcesBackend.displayName })
-                            addSourceDialog.open()
-                        }
                     }
-                    Kirigami.Action {
-                        id: makeDefaultAction
-                        visible: resourcesBackend && resourcesBackend.hasApplications && !backendItem.isDefault
-
-                        text: i18n("Make default")
-                        icon.name: "favorite"
-                        onTriggered: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
+            
+                    onTriggered: {
+                        var addSourceDialog = dialogComponent.createObject(window, {displayName: backendItem.backend.resourcesBackend.displayName })
+                        addSourceDialog.open()
                     }
-
-                    Component {
-                        id: kirigamiAction
-                        ConvertDiscoverAction {}
-                    }
-
-                    function mergeActions(moreActions) {
-                        var actions = [isDefaultbackendLabelAction,
-                                    makeDefaultAction,
-                                    addSourceAction]
-                        for(var i in moreActions) {
-                            actions.push(kirigamiAction.createObject(actionBar, {action: moreActions[i]}))
-                        }
-                        return actions;
-                    }
-                    actions: mergeActions(backendItem.backend.actions)
                 }
+                Kirigami.Action {
+                    id: makeDefaultAction
+                    visible: resourcesBackend && resourcesBackend.hasApplications && !backendItem.isDefault
+            
+                    text: i18n("Make default")
+                    icon.name: "favorite"
+                    onTriggered: ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
+                }
+            
+                Component {
+                    id: kirigamiAction
+                    ConvertDiscoverAction {}
+                }
+            
+                function mergeActions(moreActions) {
+                    var actions = [makeDefaultAction, addSourceAction]
+                    for (var i in moreActions) {
+                        actions.push(kirigamiAction.createObject(actionBar, {action: moreActions[i]}))
+                    }
+                    return actions;
+                }
+                actions: mergeActions(backendItem.backend.actions)
             }
         }
 
