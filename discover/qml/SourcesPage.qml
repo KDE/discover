@@ -106,7 +106,7 @@ DiscoverPage {
                             AddSourceDialog {
                                 source: backendItem.backend
 
-                                onSheetOpenChanged: if(!sheetOpen) {
+                                onVisibleChanged: if(!visible) {
                                     destroy(1000)
                                 }
                             }

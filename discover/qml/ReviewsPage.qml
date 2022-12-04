@@ -21,7 +21,6 @@ Kirigami.OverlaySheet {
 
     readonly property var rd: ReviewDialog {
         id: reviewDialog
-        parent: applicationWindow().overlay
 
         application: page.resource
         backend: page.reviewsBackend
@@ -29,8 +28,8 @@ Kirigami.OverlaySheet {
     }
 
     function openReviewDialog() {
-        reviewDialog.sheetOpen = true
         page.sheetOpen = false
+        reviewDialog.open()
     }
 
     header: ColumnLayout {

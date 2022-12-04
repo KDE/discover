@@ -7,25 +7,39 @@
 import QtQuick 2.1
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami 2.20 as Kirigami
 
-Kirigami.OverlaySheet
+Kirigami.PromptDialog
 {
     id: newSourceDialog
+    preferredWidth: Kirigami.Units.gridUnit * 20
 
     property string displayName
     property QtObject source
 
     title: i18n("Add New %1 Repository", displayName)
 
-    onSheetOpenChanged: {
-        if (sheetOpen) {
+    onVisibleChanged: {
+        if (visible) {
             repository.forceActiveFocus();
         }
     }
+    
+    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+    
+    onAccepted: {
+        if (source.addSource(repository.text)) {
+            newSourceDialog.close()
+        } else {
+            repository.color = Kirigami.Theme.negativeTextColor
+        }
+    }
+    
+    onRejected: {
+        newSourceDialog.close()
+    }
 
     ColumnLayout {
-
         Label {
             Layout.fillWidth: true
             wrapMode: Text.Wrap
@@ -36,41 +50,9 @@ Kirigami.OverlaySheet
         TextField {
             id: repository
             Layout.fillWidth: true
-            onAccepted: okButton.clicked()
+            onAccepted: newSourceDialog.accept()
             focus: true
             onTextChanged: color = Kirigami.Theme.textColor
-        }
-
-        DialogButtonBox {
-            Layout.topMargin: Kirigami.Units.largeSpacing
-            Layout.fillWidth: true
-
-            // Cancel out built-in margins so it lines up with the rest of the
-            // content in this sheet
-            leftPadding: 0
-            rightPadding: 0
-            bottomPadding: 0
-            topPadding: 0
-
-            Button {
-                id: okButton
-                DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
-                text: i18n("Add")
-                icon.name: "list-add"
-                onClicked: if (source.addSource(repository.text)) {
-                    newSourceDialog.close()
-                } else {
-                    repository.color = Kirigami.Theme.negativeTextColor
-                }
-            }
-
-            Button {
-                id: cancelButton
-                DialogButtonBox.buttonRole: DialogButtonBox.DestructiveRole
-                text: i18n("Cancel")
-                icon.name: "dialog-cancel"
-                onClicked: newSourceDialog.close()
-            }
         }
     }
 }

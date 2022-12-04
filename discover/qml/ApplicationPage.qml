@@ -383,7 +383,7 @@ DiscoverPage {
                                     ToolButton {
                                         visible: !modelData.hasFreedom
                                         icon.name: "help-contextual"
-                                        onClicked: properietarySoftwareRiskExplanationSheet.open();
+                                        onClicked: properietarySoftwareRiskExplanationDialog.open();
 
                                         ToolTip {
                                             text: i18n("What does this mean?")
@@ -452,7 +452,7 @@ DiscoverPage {
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignTop
                             elide: Text.ElideRight
-                            onClicked: contentRatingSheet.open();
+                            onClicked: contentRatingDialog.open();
                         }
                     }
                 }
@@ -822,12 +822,11 @@ DiscoverPage {
         application: appInfo.application
     }
 
-    Kirigami.OverlaySheet {
+    Kirigami.Dialog {
         id: allLicensesSheet
-        parent: applicationWindow().overlay
-
         title: i18n("All Licenses")
-
+        preferredWidth: Kirigami.Units.gridUnit * 16
+        preferredHeight: Kirigami.Units.gridUnit * 20
 
         ListView {
             id: listview
@@ -849,10 +848,8 @@ DiscoverPage {
         }
     }
 
-    Kirigami.OverlaySheet {
-        id: contentRatingSheet
-        parent: applicationWindow().overlay
-
+    Kirigami.PromptDialog {
+        id: contentRatingDialog
         title: i18n("Content Rating")
 
         Label {
@@ -861,38 +858,32 @@ DiscoverPage {
         }
     }
 
-    Kirigami.OverlaySheet {
-        id: properietarySoftwareRiskExplanationSheet
-        parent: applicationWindow().overlay
+    Kirigami.PromptDialog {
+        id: properietarySoftwareRiskExplanationDialog
+        preferredWidth: Kirigami.Units.gridUnit * 25
 
         title: i18n("Risks of proprietary software")
 
-        ColumnLayout {
-            TextEdit {
-                readonly property string proprietarySoftwareExplanationPage: "https://www.gnu.org/proprietary"
+        TextEdit {
+            readonly property string proprietarySoftwareExplanationPage: "https://www.gnu.org/proprietary"
 
-                Layout.fillWidth: true
-                Layout.maximumWidth: Kirigami.Units.gridUnit * 25
+            text: homepageButton.visible ?
+                xi18nc("@info", "This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can learn more at <link url='%3'>%3</link>.", application.homepage, author.text, proprietarySoftwareExplanationPage) :
+                xi18nc("@info", "This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (%1).<nl/><nl/>You can learn more at <link url='%2'>%2</link>.", author.text, proprietarySoftwareExplanationPage)
+            wrapMode: Text.Wrap
+            textFormat: TextEdit.RichText
+            readOnly: true
 
-                text: homepageButton.visible ?
-                    xi18nc("@info", "This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can learn more at <link url='%3'>%3</link>.", application.homepage, author.text, proprietarySoftwareExplanationPage) :
-                    xi18nc("@info", "This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (%1).<nl/><nl/>You can learn more at <link url='%2'>%2</link>.", author.text, proprietarySoftwareExplanationPage)
-                wrapMode: Text.Wrap
-                textFormat: TextEdit.RichText
-                readOnly: true
+            color: Kirigami.Theme.textColor
+            selectedTextColor: Kirigami.Theme.highlightedTextColor
+            selectionColor: Kirigami.Theme.highlightColor
 
-                color: Kirigami.Theme.textColor
-                selectedTextColor: Kirigami.Theme.highlightedTextColor
-                selectionColor: Kirigami.Theme.highlightColor
+            onLinkActivated: (url) => Qt.openUrlExternally(url)
 
-                onLinkActivated: (url) => Qt.openUrlExternally(url)
-
-                HoverHandler {
-                    acceptedButtons: Qt.NoButton
-                    cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
-                }
+            HoverHandler {
+                acceptedButtons: Qt.NoButton
+                cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
             }
-
         }
     }
 }
