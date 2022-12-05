@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-02 00:48+0000\n"
-"PO-Revision-Date: 2022-11-10 21:51+0100\n"
+"PO-Revision-Date: 2022-12-04 07:47+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
 "Language: fr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.11.90\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -2128,14 +2128,15 @@ msgstr "Système d'exploitation"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree : plusieurs configurations de démarrage ont été trouvées. "
+"Veuillez rédiger un rapport de bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
-#, fuzzy, kde-format
-#| msgid "Missing remote ref for rebase operation. Please file a bug."
+#, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
-"Référence distante manquante pour l’opération de re-localisation. Veuillez "
-"signaler un bogue."
+"rpm-ostree : il a été impossible de trouver une configuration de démarrage. "
+"Veuillez rédiger un rapport de bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
