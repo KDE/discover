@@ -17,7 +17,16 @@ Kirigami.PromptDialog
 
     title: i18n("Reviewing %1", application.name)
 
-    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+    standardButtons: Kirigami.Dialog.NoButton
+    
+    customFooterActions: [
+        Kirigami.Action {
+            text: i18n("Submit review")
+            icon.name: "document-send"
+            enabled: !instructionalLabel.visible
+            onTriggered: reviewDialog.accept();
+        }
+    ]
     
     ColumnLayout {
         Kirigami.FormLayout {

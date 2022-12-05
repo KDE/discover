@@ -825,24 +825,29 @@ DiscoverPage {
     Kirigami.Dialog {
         id: allLicensesSheet
         title: i18n("All Licenses")
+        standardButtons: Kirigami.Dialog.NoButton
         preferredWidth: Kirigami.Units.gridUnit * 16
-        preferredHeight: Kirigami.Units.gridUnit * 20
+        maximumHeight: Kirigami.Units.gridUnit * 20
 
-        ListView {
-            id: listview
+        ColumnLayout {
+            spacing: 0
+            
+            Repeater {
+                id: listview
 
-            model: appInfo.application.licenses
+                model: appInfo.application.licenses
 
-            delegate: Kirigami.BasicListItem {
-                activeBackgroundColor: "transparent"
-                activeTextColor: Kirigami.Theme.textColor
-                separatorVisible: false
-                contentItem: Kirigami.UrlButton {
-                    enabled: url !== ""
-                    text: modelData.name
-                    url: modelData.url
-                    horizontalAlignment: Text.AlignLeft
-                    color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
+                delegate: Kirigami.BasicListItem {
+                    activeBackgroundColor: "transparent"
+                    activeTextColor: Kirigami.Theme.textColor
+                    separatorVisible: false
+                    contentItem: Kirigami.UrlButton {
+                        enabled: url !== ""
+                        text: modelData.name
+                        url: modelData.url
+                        horizontalAlignment: Text.AlignLeft
+                        color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
+                    }
                 }
             }
         }
@@ -851,6 +856,7 @@ DiscoverPage {
     Kirigami.PromptDialog {
         id: contentRatingDialog
         title: i18n("Content Rating")
+        standardButtons: Kirigami.Dialog.NoButton
 
         Label {
             text: appInfo.application.contentRatingDescription
@@ -861,6 +867,7 @@ DiscoverPage {
     Kirigami.PromptDialog {
         id: properietarySoftwareRiskExplanationDialog
         preferredWidth: Kirigami.Units.gridUnit * 25
+        standardButtons: Kirigami.Dialog.NoButton
 
         title: i18n("Risks of proprietary software")
 

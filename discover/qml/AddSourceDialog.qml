@@ -25,7 +25,7 @@ Kirigami.PromptDialog
         }
     }
     
-    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+    standardButtons: Kirigami.Dialog.NoButton
     
     onAccepted: {
         if (source.addSource(repository.text)) {
@@ -38,6 +38,19 @@ Kirigami.PromptDialog
     onRejected: {
         newSourceDialog.close()
     }
+    
+    customFooterActions: [
+        Kirigami.Action {
+            text: i18n("Add")
+            icon.name: "list-add"
+            onTriggered: newSourceDialog.accept();
+        },
+        Kirigami.Action {
+            text: i18n("Cancel")
+            icon.name: "dialog-cancel"
+            onTriggered: newSourceDialog.reject();
+        }
+    ]
 
     ColumnLayout {
         Label {
