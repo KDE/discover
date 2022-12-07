@@ -20,6 +20,7 @@
 #include <QStandardPaths>
 
 Q_GLOBAL_STATIC(QStringList, s_requestedBackends)
+Q_GLOBAL_STATIC(bool, s_isFeedback)
 
 void DiscoverBackendsFactory::setRequestedBackends(const QStringList &backends)
 {
@@ -67,7 +68,7 @@ QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist, bool allowD
 {
     if (whitelist) {
         QStringList whitelistNames = *s_requestedBackends;
-        if (!whitelistNames.isEmpty())
+        if (s_isFeedback || !whitelistNames.isEmpty())
             return whitelistNames;
     }
 
@@ -114,6 +115,12 @@ void DiscoverBackendsFactory::setupCommandLine(QCommandLineParser *parser)
 
 void DiscoverBackendsFactory::processCommandLine(QCommandLineParser *parser, bool test)
 {
+    if (parser->isSet(QStringLiteral("feedback"))) {
+        *s_isFeedback = true;
+        s_requestedBackends->clear();
+        return;
+    }
+
     QStringList backends = test //
         ? QStringList{QStringLiteral("dummy-backend")} //
         : parser->value(QStringLiteral("backends")).split(QLatin1Char(','), Qt::SkipEmptyParts);
