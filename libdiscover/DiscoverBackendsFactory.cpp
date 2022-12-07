@@ -116,7 +116,7 @@ void DiscoverBackendsFactory::setupCommandLine(QCommandLineParser *parser)
 void DiscoverBackendsFactory::processCommandLine(QCommandLineParser *parser, bool test)
 {
     if (parser->isSet(QStringLiteral("feedback"))) {
-        *s_isFeedback = true;
+        s_isFeedback = true;
         s_requestedBackends->clear();
         return;
     }
