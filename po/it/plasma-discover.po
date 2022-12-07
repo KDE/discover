@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2022-11-19 10:11+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -260,17 +260,17 @@ msgstr "Applica le modifiche"
 msgid "Reset"
 msgstr "Ripristina"
 
-#: discover/qml/AddSourceDialog.qml:19
+#: discover/qml/AddSourceDialog.qml:20
 #, kde-format
 msgid "Add New %1 Repository"
 msgstr "Aggiungi nuovo deposito di %1"
 
-#: discover/qml/AddSourceDialog.qml:58
+#: discover/qml/AddSourceDialog.qml:44
 #, kde-format
 msgid "Add"
 msgstr "Aggiungi"
 
-#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:257
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:257
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
 #: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:39
@@ -353,7 +353,7 @@ msgid_plural "See more…"
 msgstr[0] "Vedi altro…"
 msgstr[1] "Vedi altri…"
 
-#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgid "Content Rating"
 msgstr "Valutazione dei contenuti"
@@ -484,12 +484,12 @@ msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Aiuta gli sviluppatori scrivendo codice, progettando, testando o traducendo"
 
-#: discover/qml/ApplicationPage.qml:829
+#: discover/qml/ApplicationPage.qml:827
 #, kde-format
 msgid "All Licenses"
 msgstr "Tutte le licenze"
 
-#: discover/qml/ApplicationPage.qml:868
+#: discover/qml/ApplicationPage.qml:872
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Rischi del software proprietario"
@@ -920,73 +920,73 @@ msgctxt "Keep this string as short as humanly possible"
 msgid "No"
 msgstr "No"
 
-#: discover/qml/ReviewDialog.qml:20
+#: discover/qml/ReviewDialog.qml:18
 #, kde-format
 msgid "Reviewing %1"
 msgstr "Recensione di %1"
 
-#: discover/qml/ReviewDialog.qml:29
+#: discover/qml/ReviewDialog.qml:24
+#, kde-format
+msgid "Submit review"
+msgstr "Invia recensione"
+
+#: discover/qml/ReviewDialog.qml:37
 #, kde-format
 msgid "Rating:"
 msgstr "Valutazione:"
 
-#: discover/qml/ReviewDialog.qml:34
+#: discover/qml/ReviewDialog.qml:42
 #, kde-format
 msgid "Name:"
 msgstr "Nome:"
 
-#: discover/qml/ReviewDialog.qml:42
+#: discover/qml/ReviewDialog.qml:50
 #, kde-format
 msgid "Title:"
 msgstr "Titolo:"
 
-#: discover/qml/ReviewDialog.qml:60
+#: discover/qml/ReviewDialog.qml:67
 #, kde-format
 msgid "Enter a rating"
 msgstr "Inserisci una valutazione"
 
-#: discover/qml/ReviewDialog.qml:61
+#: discover/qml/ReviewDialog.qml:68
 #, kde-format
 msgid "Write the title"
 msgstr "Scrivi il titolo"
 
-#: discover/qml/ReviewDialog.qml:62
+#: discover/qml/ReviewDialog.qml:69
 #, kde-format
 msgid "Write the review"
 msgstr "Scrivi la recensione"
 
-#: discover/qml/ReviewDialog.qml:63
+#: discover/qml/ReviewDialog.qml:70
 #, kde-format
 msgid "Keep writing…"
 msgstr "Continua a scrivere..."
 
-#: discover/qml/ReviewDialog.qml:64
+#: discover/qml/ReviewDialog.qml:71
 #, kde-format
 msgid "Too long!"
 msgstr "Troppo lunga!"
 
-#: discover/qml/ReviewDialog.qml:65
+#: discover/qml/ReviewDialog.qml:72
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
 msgstr "Digita un nome"
 
-#: discover/qml/ReviewDialog.qml:79
-#, kde-format
-msgid "Submit review"
-msgstr "Invia recensione"
-
-#: discover/qml/ReviewsPage.qml:43
+#: discover/qml/ReviewsPage.qml:42
 #, kde-format
 msgid "Reviews for %1"
 msgstr "Revisioni per %1"
 
-#: discover/qml/ReviewsPage.qml:54
+#: discover/qml/ReviewsPage.qml:53
 #, kde-format
 msgid "Write a Review…"
 msgstr "Scrivi una recensione..."
 
-#: discover/qml/ReviewsPage.qml:59
+#: discover/qml/ReviewsPage.qml:58
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "Installa questa applicazione per scrivere una recensione"

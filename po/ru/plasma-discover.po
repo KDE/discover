@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2022-09-05 10:57+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -270,17 +270,17 @@ msgstr "Применить изменения"
 msgid "Reset"
 msgstr "Сброс"
 
-#: discover/qml/AddSourceDialog.qml:19
+#: discover/qml/AddSourceDialog.qml:20
 #, kde-format
 msgid "Add New %1 Repository"
 msgstr "Добавление репозитория %1"
 
-#: discover/qml/AddSourceDialog.qml:58
+#: discover/qml/AddSourceDialog.qml:44
 #, kde-format
 msgid "Add"
 msgstr "Добавить"
 
-#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:257
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:257
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
 #: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:39
@@ -369,7 +369,7 @@ msgstr[1] "Дополнительно…"
 msgstr[2] "Дополнительно…"
 msgstr[3] "Дополнительно…"
 
-#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgid "Content Rating"
 msgstr "Оценка содержимого"
@@ -505,12 +505,12 @@ msgstr ""
 "Помочь разработчикам, приняв участие в написании кода, разработке дизайна, "
 "тестировании или переводе"
 
-#: discover/qml/ApplicationPage.qml:829
+#: discover/qml/ApplicationPage.qml:827
 #, kde-format
 msgid "All Licenses"
 msgstr "Все лицензии"
 
-#: discover/qml/ApplicationPage.qml:868
+#: discover/qml/ApplicationPage.qml:872
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Риск использования проприетарного ПО"
@@ -950,73 +950,73 @@ msgctxt "Keep this string as short as humanly possible"
 msgid "No"
 msgstr "Нет"
 
-#: discover/qml/ReviewDialog.qml:20
+#: discover/qml/ReviewDialog.qml:18
 #, kde-format
 msgid "Reviewing %1"
 msgstr "Отзыв о «%1»"
 
-#: discover/qml/ReviewDialog.qml:29
+#: discover/qml/ReviewDialog.qml:24
+#, kde-format
+msgid "Submit review"
+msgstr "Отправить отзыв"
+
+#: discover/qml/ReviewDialog.qml:37
 #, kde-format
 msgid "Rating:"
 msgstr "Оценка:"
 
-#: discover/qml/ReviewDialog.qml:34
+#: discover/qml/ReviewDialog.qml:42
 #, kde-format
 msgid "Name:"
 msgstr "Имя:"
 
-#: discover/qml/ReviewDialog.qml:42
+#: discover/qml/ReviewDialog.qml:50
 #, kde-format
 msgid "Title:"
 msgstr "Заголовок:"
 
-#: discover/qml/ReviewDialog.qml:60
+#: discover/qml/ReviewDialog.qml:67
 #, kde-format
 msgid "Enter a rating"
 msgstr "Поставьте оценку"
 
-#: discover/qml/ReviewDialog.qml:61
+#: discover/qml/ReviewDialog.qml:68
 #, kde-format
 msgid "Write the title"
 msgstr "Введите заголовок"
 
-#: discover/qml/ReviewDialog.qml:62
+#: discover/qml/ReviewDialog.qml:69
 #, kde-format
 msgid "Write the review"
 msgstr "Напишите отзыв"
 
-#: discover/qml/ReviewDialog.qml:63
+#: discover/qml/ReviewDialog.qml:70
 #, kde-format
 msgid "Keep writing…"
 msgstr "Продолжайте писать..."
 
-#: discover/qml/ReviewDialog.qml:64
+#: discover/qml/ReviewDialog.qml:71
 #, kde-format
 msgid "Too long!"
 msgstr "Слишком длинный отзыв!"
 
-#: discover/qml/ReviewDialog.qml:65
+#: discover/qml/ReviewDialog.qml:72
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
 msgstr "Введите название"
 
-#: discover/qml/ReviewDialog.qml:79
-#, kde-format
-msgid "Submit review"
-msgstr "Отправить отзыв"
-
-#: discover/qml/ReviewsPage.qml:43
+#: discover/qml/ReviewsPage.qml:42
 #, kde-format
 msgid "Reviews for %1"
 msgstr "Отзывы о %1"
 
-#: discover/qml/ReviewsPage.qml:54
+#: discover/qml/ReviewsPage.qml:53
 #, kde-format
 msgid "Write a Review…"
 msgstr "Оставить отзыв..."
 
-#: discover/qml/ReviewsPage.qml:59
+#: discover/qml/ReviewsPage.qml:58
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "Чтобы оставить отзыв, нужно установить это приложение."

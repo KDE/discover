@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2022-11-18 19:18+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -279,17 +279,17 @@ msgstr "Appliquer les changements"
 msgid "Reset"
 msgstr "Ré-initialiser"
 
-#: discover/qml/AddSourceDialog.qml:19
+#: discover/qml/AddSourceDialog.qml:20
 #, kde-format
 msgid "Add New %1 Repository"
 msgstr "Ajouter un nouveau dépôt %1"
 
-#: discover/qml/AddSourceDialog.qml:58
+#: discover/qml/AddSourceDialog.qml:44
 #, kde-format
 msgid "Add"
 msgstr "Ajouter"
 
-#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:257
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:257
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
 #: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:39
@@ -372,7 +372,7 @@ msgid_plural "See more…"
 msgstr[0] "Voir plus d'informations..."
 msgstr[1] "Voir plus d'informations..."
 
-#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgid "Content Rating"
 msgstr "Notation des contenus"
@@ -506,12 +506,12 @@ msgstr ""
 "Aidez l'équipe de développement pour le codage, la conception, les tests ou "
 "les traductions."
 
-#: discover/qml/ApplicationPage.qml:829
+#: discover/qml/ApplicationPage.qml:827
 #, kde-format
 msgid "All Licenses"
 msgstr "Toutes les licences"
 
-#: discover/qml/ApplicationPage.qml:868
+#: discover/qml/ApplicationPage.qml:872
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Risques des logiciels propriétaires"
@@ -948,73 +948,73 @@ msgctxt "Keep this string as short as humanly possible"
 msgid "No"
 msgstr "Non"
 
-#: discover/qml/ReviewDialog.qml:20
+#: discover/qml/ReviewDialog.qml:18
 #, kde-format
 msgid "Reviewing %1"
 msgstr "Évaluation %1"
 
-#: discover/qml/ReviewDialog.qml:29
+#: discover/qml/ReviewDialog.qml:24
+#, kde-format
+msgid "Submit review"
+msgstr "Envoyer mon avis"
+
+#: discover/qml/ReviewDialog.qml:37
 #, kde-format
 msgid "Rating:"
 msgstr "Note :"
 
-#: discover/qml/ReviewDialog.qml:34
+#: discover/qml/ReviewDialog.qml:42
 #, kde-format
 msgid "Name:"
 msgstr "Nom :"
 
-#: discover/qml/ReviewDialog.qml:42
+#: discover/qml/ReviewDialog.qml:50
 #, kde-format
 msgid "Title:"
 msgstr "Titre : "
 
-#: discover/qml/ReviewDialog.qml:60
+#: discover/qml/ReviewDialog.qml:67
 #, kde-format
 msgid "Enter a rating"
 msgstr "Saisissez une note"
 
-#: discover/qml/ReviewDialog.qml:61
+#: discover/qml/ReviewDialog.qml:68
 #, kde-format
 msgid "Write the title"
 msgstr "Saisissez le titre"
 
-#: discover/qml/ReviewDialog.qml:62
+#: discover/qml/ReviewDialog.qml:69
 #, kde-format
 msgid "Write the review"
 msgstr "Donnez votre avis"
 
-#: discover/qml/ReviewDialog.qml:63
+#: discover/qml/ReviewDialog.qml:70
 #, kde-format
 msgid "Keep writing…"
 msgstr "Continuez à écrire…"
 
-#: discover/qml/ReviewDialog.qml:64
+#: discover/qml/ReviewDialog.qml:71
 #, kde-format
 msgid "Too long!"
 msgstr "Trop long !"
 
-#: discover/qml/ReviewDialog.qml:65
+#: discover/qml/ReviewDialog.qml:72
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
 msgstr "Insérer un nom"
 
-#: discover/qml/ReviewDialog.qml:79
-#, kde-format
-msgid "Submit review"
-msgstr "Envoyer mon avis"
-
-#: discover/qml/ReviewsPage.qml:43
+#: discover/qml/ReviewsPage.qml:42
 #, kde-format
 msgid "Reviews for %1"
 msgstr "Revues pour %1"
 
-#: discover/qml/ReviewsPage.qml:54
+#: discover/qml/ReviewsPage.qml:53
 #, kde-format
 msgid "Write a Review…"
 msgstr "Écrire un avis…"
 
-#: discover/qml/ReviewsPage.qml:59
+#: discover/qml/ReviewsPage.qml:58
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "Installez cette appli et donnez votre avis"

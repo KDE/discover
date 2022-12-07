@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2022-01-01 09:32-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -244,17 +244,17 @@ msgstr "ਬਦਲਾਅ ਲਾਗੂ ਕਰੋ"
 msgid "Reset"
 msgstr "ਮੁੜ-ਸੈੱਟ ਕਰੋ"
 
-#: discover/qml/AddSourceDialog.qml:19
+#: discover/qml/AddSourceDialog.qml:20
 #, kde-format
 msgid "Add New %1 Repository"
 msgstr "ਨਵੀਂ %1 ਰਿਪੋਜ਼ਟਰੀ ਜੋੜੋ"
 
-#: discover/qml/AddSourceDialog.qml:58
+#: discover/qml/AddSourceDialog.qml:44
 #, kde-format
 msgid "Add"
 msgstr "ਜੋੜੋ"
 
-#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:257
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:257
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
 #: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:39
@@ -341,7 +341,7 @@ msgid_plural "See more…"
 msgstr[0] "…ਹੋਰ"
 msgstr[1] "…ਹੋਰ"
 
-#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:858
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
@@ -481,13 +481,13 @@ msgstr "…ਯੋਗਦਾਨ"
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:829
+#: discover/qml/ApplicationPage.qml:827
 #, fuzzy, kde-format
 #| msgid "License:"
 msgid "All Licenses"
 msgstr "ਲਸੰਸ:"
 
-#: discover/qml/ApplicationPage.qml:868
+#: discover/qml/ApplicationPage.qml:872
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr ""
@@ -896,73 +896,73 @@ msgctxt "Keep this string as short as humanly possible"
 msgid "No"
 msgstr "ਨਹੀਂ"
 
-#: discover/qml/ReviewDialog.qml:20
+#: discover/qml/ReviewDialog.qml:18
 #, kde-format
 msgid "Reviewing %1"
 msgstr "ਪੜਤਾਲ %1"
 
-#: discover/qml/ReviewDialog.qml:29
+#: discover/qml/ReviewDialog.qml:24
+#, kde-format
+msgid "Submit review"
+msgstr "ਪੜਤਾਲ ਭੇਜੋ"
+
+#: discover/qml/ReviewDialog.qml:37
 #, kde-format
 msgid "Rating:"
 msgstr "ਰੇਟਿੰਗ:"
 
-#: discover/qml/ReviewDialog.qml:34
+#: discover/qml/ReviewDialog.qml:42
 #, kde-format
 msgid "Name:"
 msgstr "ਨਾਂ:"
 
-#: discover/qml/ReviewDialog.qml:42
+#: discover/qml/ReviewDialog.qml:50
 #, kde-format
 msgid "Title:"
 msgstr "ਟਾਈਟਲ:"
 
-#: discover/qml/ReviewDialog.qml:60
+#: discover/qml/ReviewDialog.qml:67
 #, kde-format
 msgid "Enter a rating"
 msgstr "ਰੇਟਿੰਗ ਦਿਓ"
 
-#: discover/qml/ReviewDialog.qml:61
+#: discover/qml/ReviewDialog.qml:68
 #, kde-format
 msgid "Write the title"
 msgstr "ਸਿਰਲੇਖ ਲਿਖੋ"
 
-#: discover/qml/ReviewDialog.qml:62
+#: discover/qml/ReviewDialog.qml:69
 #, kde-format
 msgid "Write the review"
 msgstr "ਪੜਤਾਲ ਲਿਖੋ"
 
-#: discover/qml/ReviewDialog.qml:63
+#: discover/qml/ReviewDialog.qml:70
 #, kde-format
 msgid "Keep writing…"
 msgstr "…ਲਿਖਦੇ ਰਹੋ"
 
-#: discover/qml/ReviewDialog.qml:64
+#: discover/qml/ReviewDialog.qml:71
 #, kde-format
 msgid "Too long!"
 msgstr "ਲਿਖਤ ਲੰਮੀ ਹੋਈ!"
 
-#: discover/qml/ReviewDialog.qml:65
+#: discover/qml/ReviewDialog.qml:72
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:79
-#, kde-format
-msgid "Submit review"
-msgstr "ਪੜਤਾਲ ਭੇਜੋ"
-
-#: discover/qml/ReviewsPage.qml:43
+#: discover/qml/ReviewsPage.qml:42
 #, kde-format
 msgid "Reviews for %1"
 msgstr "%1 ਲਈ ਪੜਤਾਲ"
 
-#: discover/qml/ReviewsPage.qml:54
+#: discover/qml/ReviewsPage.qml:53
 #, kde-format
 msgid "Write a Review…"
 msgstr "…ਪੜਤਾਲ ਲਿਖੋ"
 
-#: discover/qml/ReviewsPage.qml:59
+#: discover/qml/ReviewsPage.qml:58
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "ਪੜਤਾਲ ਲਿਖਣ ਲਈ ਇਹ ਐਪ ਇੰਸਟਾਲ ਕਰੋ"

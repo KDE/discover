@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -240,18 +240,18 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: discover/qml/AddSourceDialog.qml:19
+#: discover/qml/AddSourceDialog.qml:20
 #, kde-format
 msgid "Add New %1 Repository"
 msgstr ""
 
-#: discover/qml/AddSourceDialog.qml:58
+#: discover/qml/AddSourceDialog.qml:44
 #, fuzzy, kde-format
 #| msgid "Add-ons"
 msgid "Add"
 msgstr "قىستۇرمىلار"
 
-#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:257
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:257
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
 #: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:39
@@ -334,7 +334,7 @@ msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] ""
 
-#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:858
 #, fuzzy, kde-format
 #| msgid "Rating:"
 msgid "Content Rating"
@@ -468,12 +468,12 @@ msgstr ""
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:829
+#: discover/qml/ApplicationPage.qml:827
 #, kde-format
 msgid "All Licenses"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:868
+#: discover/qml/ApplicationPage.qml:872
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr ""
@@ -891,81 +891,81 @@ msgctxt "Keep this string as short as humanly possible"
 msgid "No"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:20
+#: discover/qml/ReviewDialog.qml:18
 #, fuzzy, kde-format
 #| msgid "Review"
 msgid "Reviewing %1"
 msgstr "تەكشۈر"
 
-#: discover/qml/ReviewDialog.qml:29
-#, kde-format
-msgid "Rating:"
-msgstr "باھالاش:"
-
-#: discover/qml/ReviewDialog.qml:34
-#, fuzzy, kde-format
-#| msgid "Name"
-msgid "Name:"
-msgstr "ئاتى"
-
-#: discover/qml/ReviewDialog.qml:42
-#, kde-format
-msgid "Title:"
-msgstr ""
-
-#: discover/qml/ReviewDialog.qml:60
-#, kde-format
-msgid "Enter a rating"
-msgstr ""
-
-#: discover/qml/ReviewDialog.qml:61
-#, fuzzy, kde-format
-#| msgid "Submit"
-msgid "Write the title"
-msgstr "تاپشۇر"
-
-#: discover/qml/ReviewDialog.qml:62
-#, fuzzy, kde-format
-#| msgid "Submit"
-msgid "Write the review"
-msgstr "تاپشۇر"
-
-#: discover/qml/ReviewDialog.qml:63
-#, fuzzy, kde-format
-#| msgid "Loading..."
-msgid "Keep writing…"
-msgstr "ئوقۇۋاتىدۇ…"
-
-#: discover/qml/ReviewDialog.qml:64
-#, kde-format
-msgid "Too long!"
-msgstr ""
-
-#: discover/qml/ReviewDialog.qml:65
-#, kde-format
-msgctxt "@info:usagetip"
-msgid "Insert a name"
-msgstr ""
-
-#: discover/qml/ReviewDialog.qml:79
+#: discover/qml/ReviewDialog.qml:24
 #, fuzzy, kde-format
 #| msgid "Submit"
 msgid "Submit review"
 msgstr "تاپشۇر"
 
-#: discover/qml/ReviewsPage.qml:43
+#: discover/qml/ReviewDialog.qml:37
+#, kde-format
+msgid "Rating:"
+msgstr "باھالاش:"
+
+#: discover/qml/ReviewDialog.qml:42
+#, fuzzy, kde-format
+#| msgid "Name"
+msgid "Name:"
+msgstr "ئاتى"
+
+#: discover/qml/ReviewDialog.qml:50
+#, kde-format
+msgid "Title:"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:67
+#, kde-format
+msgid "Enter a rating"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:68
+#, fuzzy, kde-format
+#| msgid "Submit"
+msgid "Write the title"
+msgstr "تاپشۇر"
+
+#: discover/qml/ReviewDialog.qml:69
+#, fuzzy, kde-format
+#| msgid "Submit"
+msgid "Write the review"
+msgstr "تاپشۇر"
+
+#: discover/qml/ReviewDialog.qml:70
+#, fuzzy, kde-format
+#| msgid "Loading..."
+msgid "Keep writing…"
+msgstr "ئوقۇۋاتىدۇ…"
+
+#: discover/qml/ReviewDialog.qml:71
+#, kde-format
+msgid "Too long!"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:72
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Insert a name"
+msgstr ""
+
+#: discover/qml/ReviewsPage.qml:42
 #, fuzzy, kde-format
 #| msgid "Rating"
 msgid "Reviews for %1"
 msgstr "باھالاش"
 
-#: discover/qml/ReviewsPage.qml:54
+#: discover/qml/ReviewsPage.qml:53
 #, fuzzy, kde-format
 #| msgid "Submit"
 msgid "Write a Review…"
 msgstr "تاپشۇر"
 
-#: discover/qml/ReviewsPage.qml:59
+#: discover/qml/ReviewsPage.qml:58
 #, kde-format
 msgid "Install this app to write a review"
 msgstr ""

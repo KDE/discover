@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-29 00:48+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2020-10-16 09:44+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -245,17 +245,17 @@ msgstr "החלת הגדרות"
 msgid "Reset"
 msgstr ""
 
-#: discover/qml/AddSourceDialog.qml:19
+#: discover/qml/AddSourceDialog.qml:20
 #, kde-format
 msgid "Add New %1 Repository"
 msgstr "הוספת מאגר %1 חדש"
 
-#: discover/qml/AddSourceDialog.qml:58
+#: discover/qml/AddSourceDialog.qml:44
 #, kde-format
 msgid "Add"
 msgstr "הוספה"
 
-#: discover/qml/AddSourceDialog.qml:70 discover/qml/DiscoverWindow.qml:257
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:257
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
 #: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:39
@@ -341,7 +341,7 @@ msgid_plural "See more…"
 msgstr[0] ""
 msgstr[1] ""
 
-#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:858
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
@@ -481,13 +481,13 @@ msgstr "תרומה..."
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:829
+#: discover/qml/ApplicationPage.qml:827
 #, fuzzy, kde-format
 #| msgid "License:"
 msgid "All Licenses"
 msgstr "רישיון:"
 
-#: discover/qml/ApplicationPage.qml:868
+#: discover/qml/ApplicationPage.qml:872
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr ""
@@ -916,75 +916,75 @@ msgctxt "Keep this string as short as humanly possible"
 msgid "No"
 msgstr "לא"
 
-#: discover/qml/ReviewDialog.qml:20
+#: discover/qml/ReviewDialog.qml:18
 #, kde-format
 msgid "Reviewing %1"
 msgstr "בביקורת על %1"
 
-#: discover/qml/ReviewDialog.qml:29
+#: discover/qml/ReviewDialog.qml:24
+#, kde-format
+msgid "Submit review"
+msgstr "שליחת ביקורת"
+
+#: discover/qml/ReviewDialog.qml:37
 #, kde-format
 msgid "Rating:"
 msgstr "דירוג:"
 
-#: discover/qml/ReviewDialog.qml:34
+#: discover/qml/ReviewDialog.qml:42
 #, kde-format
 msgid "Name:"
 msgstr "שם:"
 
-#: discover/qml/ReviewDialog.qml:42
+#: discover/qml/ReviewDialog.qml:50
 #, kde-format
 msgid "Title:"
 msgstr "כותרת:"
 
-#: discover/qml/ReviewDialog.qml:60
+#: discover/qml/ReviewDialog.qml:67
 #, kde-format
 msgid "Enter a rating"
 msgstr "נא להזין דירוג"
 
-#: discover/qml/ReviewDialog.qml:61
+#: discover/qml/ReviewDialog.qml:68
 #, kde-format
 msgid "Write the title"
 msgstr "נא לכתוב את הכותרת"
 
-#: discover/qml/ReviewDialog.qml:62
+#: discover/qml/ReviewDialog.qml:69
 #, kde-format
 msgid "Write the review"
 msgstr "נא לכתוב את הביקורת"
 
-#: discover/qml/ReviewDialog.qml:63
+#: discover/qml/ReviewDialog.qml:70
 #, fuzzy, kde-format
 #| msgid "Keep writing..."
 msgid "Keep writing…"
 msgstr "להמשיך לכתוב..."
 
-#: discover/qml/ReviewDialog.qml:64
+#: discover/qml/ReviewDialog.qml:71
 #, kde-format
 msgid "Too long!"
 msgstr "ארוך מדי!"
 
-#: discover/qml/ReviewDialog.qml:65
+#: discover/qml/ReviewDialog.qml:72
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:79
-#, kde-format
-msgid "Submit review"
-msgstr "שליחת ביקורת"
-
-#: discover/qml/ReviewsPage.qml:43
+#: discover/qml/ReviewsPage.qml:42
 #, kde-format
 msgid "Reviews for %1"
 msgstr "ביקורות על %1"
 
-#: discover/qml/ReviewsPage.qml:54
+#: discover/qml/ReviewsPage.qml:53
 #, fuzzy, kde-format
 #| msgid "Write a Review..."
 msgid "Write a Review…"
 msgstr "כתיבת ביקורת..."
 
-#: discover/qml/ReviewsPage.qml:59
+#: discover/qml/ReviewsPage.qml:58
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "יש להתקין יישום זה לכתיבת ביקורת"
