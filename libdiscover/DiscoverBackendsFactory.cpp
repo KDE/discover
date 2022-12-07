@@ -20,7 +20,7 @@
 #include <QStandardPaths>
 
 Q_GLOBAL_STATIC(QStringList, s_requestedBackends)
-Q_GLOBAL_STATIC(bool, s_isFeedback)
+static bool s_isFeedback = false;
 
 void DiscoverBackendsFactory::setRequestedBackends(const QStringList &backends)
 {
