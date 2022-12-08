@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-02 00:48+0000\n"
+"POT-Creation-Date: 2022-12-08 00:47+0000\n"
 "PO-Revision-Date: 2022-11-21 19:10+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -2272,7 +2272,7 @@ msgstr ""
 "تطبيق سناب هذا غير متوافق مع وضع الحماية للأمان وسيكون له حق الوصول الكامل "
 "إلى هذا الحاسوب. أتثبته على أي حال؟"
 
-#: libdiscover/DiscoverBackendsFactory.cpp:111
+#: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."

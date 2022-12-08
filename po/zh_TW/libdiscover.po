@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-02 00:48+0000\n"
+"POT-Creation-Date: 2022-12-08 00:47+0000\n"
 "PO-Revision-Date: 2022-11-10 22:39+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -2221,7 +2221,7 @@ msgstr ""
 "本 Snap 應用程式不相容於安全性沙盒，所以能取得本機的完整存取權，依然繼續安"
 "裝？"
 
-#: libdiscover/DiscoverBackendsFactory.cpp:111
+#: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."

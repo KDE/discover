@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-02 00:48+0000\n"
+"POT-Creation-Date: 2022-12-08 00:47+0000\n"
 "PO-Revision-Date: 2022-12-04 12:25+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -2282,7 +2282,7 @@ msgstr ""
 "Esta aplicação do Snap não é compatível com as áreas isoladas de segurança e "
 "terá acesso total a este computador. Deseja instalá-la à mesma?"
 
-#: libdiscover/DiscoverBackendsFactory.cpp:111
+#: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."

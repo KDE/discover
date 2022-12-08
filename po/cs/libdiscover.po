@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-02 00:48+0000\n"
+"POT-Creation-Date: 2022-12-08 00:47+0000\n"
 "PO-Revision-Date: 2021-10-08 14:32+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -2195,7 +2195,7 @@ msgid ""
 "have full access to this computer. Install it anyway?"
 msgstr ""
 
-#: libdiscover/DiscoverBackendsFactory.cpp:111
+#: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."

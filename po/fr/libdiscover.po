@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-02 00:48+0000\n"
+"POT-Creation-Date: 2022-12-08 00:47+0000\n"
 "PO-Revision-Date: 2022-12-04 07:47+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -2304,7 +2304,7 @@ msgstr ""
 "Elle n'aura pas un accès total à cet ordinateur. Voulez-vous vraiment "
 "l'installer ?"
 
-#: libdiscover/DiscoverBackendsFactory.cpp:111
+#: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
