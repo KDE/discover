@@ -75,10 +75,11 @@ Kirigami.AbstractCard
                     maximumLineCount: 1
                 }
 
-                // Backend name label (shown if app is from a non-default backend)
+                // Backend name label (shown if app is from a non-default backend and
+                // we're not using the compact view, where there's no space for it)
                 RowLayout {
                     Layout.alignment: Qt.AlignRight
-                    visible: delegateArea.appIsFromNonDefaultBackend
+                    visible: delegateArea.appIsFromNonDefaultBackend && !delegateArea.compact
                     spacing: 0
 
                     Kirigami.Icon {
