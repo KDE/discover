@@ -22,6 +22,9 @@ DiscoverPage
 
     actions.main: window.wideScreen ? searchAction : null
 
+    Kirigami.Theme.inherit: false
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+
     header: DiscoverInlineMessage {
         inlineMessage: ResourcesModel.inlineMessage
     }

@@ -69,6 +69,9 @@ DiscoverPage {
         }
     }
 
+    Kirigami.Theme.inherit: false
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+
     signal clearSearch()
 
     supportsRefreshing: true
