@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-09 00:47+0000\n"
 "PO-Revision-Date: 2022-11-18 13:09+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -281,7 +281,7 @@ msgstr "Afegeix"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "%1 rating"
@@ -289,7 +289,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 valoració"
 msgstr[1] "%1 valoracions"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "No ratings yet"

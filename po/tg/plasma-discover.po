@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-09 00:47+0000\n"
 "PO-Revision-Date: 2020-08-27 11:51+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -260,7 +260,7 @@ msgstr "Илова кардан"
 msgid "Cancel"
 msgstr "Бекор кардан"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "%1 rating"
@@ -268,7 +268,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 баҳо"
 msgstr[1] "%1 баҳо"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "No ratings yet"

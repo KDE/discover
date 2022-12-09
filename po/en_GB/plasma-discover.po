@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-09 00:47+0000\n"
 "PO-Revision-Date: 2022-11-26 13:59+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -271,7 +271,7 @@ msgstr "Add"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "%1 rating"
@@ -279,7 +279,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 rating"
 msgstr[1] "%1 ratings"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "No ratings yet"

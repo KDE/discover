@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-09 00:47+0000\n"
 "PO-Revision-Date: 2022-08-20 23:24-0700\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -275,7 +275,7 @@ msgstr "追加"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "%1 rating"
@@ -283,7 +283,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 の評価"
 msgstr[1] "%1 の評価"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "No ratings yet"

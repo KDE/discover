@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-09 00:47+0000\n"
 "PO-Revision-Date: 2012-06-13 10:17+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -260,7 +260,7 @@ msgstr "Phần mở rộng"
 msgid "Cancel"
 msgstr "Huỷ"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, fuzzy, kde-format
 #| msgid "Rating"
@@ -268,7 +268,7 @@ msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "Đánh giá"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "No ratings yet"

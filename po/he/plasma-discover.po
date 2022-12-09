@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-09 00:47+0000\n"
 "PO-Revision-Date: 2020-10-16 09:44+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -263,7 +263,7 @@ msgstr "הוספה"
 msgid "Cancel"
 msgstr "ביטול"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "%1 rating"
@@ -271,7 +271,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "דירוג %1"
 msgstr[1] "%1 דירוגים"
 
-#: discover/qml/ApplicationDelegate.qml:139
+#: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:192
 #, kde-format
 msgid "No ratings yet"
