@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include "OstreeFormat.h"
+
 #include <BackendNotifierModule.h>
 
 #include <QDebug>
@@ -31,6 +33,20 @@ public:
 private:
     /* Only run this code if we are on an rpm-ostree managed system */
     bool isValid() const;
+
+    /* Called by recheckSystemUpdateNeeded to check for system update when the classic
+     * ostree format is used. */
+    void checkSystemUpdateClassic();
+
+    /* Called by recheckSystemUpdateNeeded to check for system update when the OCI
+     * ostree format is used. */
+    void checkSystemUpdateOCI();
+
+    /* Store which format is used for the ostree image */
+    QScopedPointer<::OstreeFormat> m_ostreeFormat;
+
+    /* Store the version of the currently booted deployment */
+    QString m_version;
 
     /* Tracks the rpm-ostree command used to check for updates or to look at the
      * status. */

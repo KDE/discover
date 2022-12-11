@@ -13,9 +13,11 @@
 #include <QJsonObject>
 #include <QProcess>
 #include <QTimer>
+#include <QVersionNumber>
 
 RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
     : BackendNotifierModule(parent)
+    , m_version("")
     , m_hasUpdates(false)
     , m_needsReboot(false)
 {
@@ -24,10 +26,87 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
         qWarning() << "rpm-ostree-notifier: Not starting on a system not managed by rpm-ostree";
         return;
     }
-}
 
-RpmOstreeNotifier::~RpmOstreeNotifier()
-{
+    qInfo() << "rpm-ostree-notifier: Looking for ostree format";
+    m_process = new QProcess(this);
+    m_stdout = QByteArray();
+
+    // Display stderr
+    connect(m_process, &QProcess::readyReadStandardError, [this]() {
+        qWarning() << "rpm-ostree (error):" << m_process->readAllStandardError();
+    });
+
+    // Store stdout to process as JSON
+    connect(m_process, &QProcess::readyReadStandardOutput, [this]() {
+        m_stdout += m_process->readAllStandardOutput();
+    });
+
+    // Process command result
+    connect(m_process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), [this](int exitCode, QProcess::ExitStatus exitStatus) {
+        m_process->deleteLater();
+        m_process = nullptr;
+        if (exitStatus != QProcess::NormalExit) {
+            qWarning() << "rpm-ostree-notifier: Failed to check for existing deployments";
+            return;
+        }
+        if (exitCode != 0) {
+            // Unexpected error
+            qWarning() << "rpm-ostree-notifier: Failed to check for existing deployments. Exit code:" << exitCode;
+            return;
+        }
+
+        // Parse stdout as JSON and look at the currently booted deployments to figure out
+        // the format used by ostree
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(m_stdout);
+        if (!jsonDocument.isObject()) {
+            qWarning() << "rpm-ostree-notifier: Could not parse 'rpm-ostree status' output as JSON";
+            return;
+        }
+        const QJsonArray deployments = jsonDocument.object().value("deployments").toArray();
+        if (deployments.isEmpty()) {
+            qWarning() << "rpm-ostree-notifier: Could not find the deployments in 'rpm-ostree status' JSON output";
+            return;
+        }
+        bool booted;
+        for (const QJsonValue &deployment : deployments) {
+            booted = deployment.toObject()["booted"].toBool();
+            if (!booted) {
+                continue;
+            }
+            // Look for "classic" ostree origin format first
+            QString origin = deployment.toObject()["origin"].toString();
+            if (!origin.isEmpty()) {
+                m_ostreeFormat.reset(new ::OstreeFormat(::OstreeFormat::Format::Classic, origin));
+                if (!m_ostreeFormat->isValid()) {
+                    // This should never happen
+                    qWarning() << "rpm-ostree-notifier: Invalid origin for classic ostree format:" << origin;
+                }
+            } else {
+                // Then look for OCI container format
+                origin = deployment.toObject()["container-image-reference"].toString();
+                if (!origin.isEmpty()) {
+                    m_ostreeFormat.reset(new ::OstreeFormat(::OstreeFormat::Format::OCI, origin));
+                    if (!m_ostreeFormat->isValid()) {
+                        // This should never happen
+                        qWarning() << "rpm-ostree-notifier: Invalid reference for OCI container ostree format:" << origin;
+                    }
+                } else {
+                    // This should never happen
+                    m_ostreeFormat.reset(new ::OstreeFormat(::OstreeFormat::Format::Unknown, {}));
+                    qWarning() << "rpm-ostree-notifier: Could not find a valid remote ostree format for the booted deployment";
+                }
+            }
+            // Look for the base-version first. This is the case where we have changes layered
+            m_version = deployment.toObject()["base-version"].toString();
+            if (m_version.isEmpty()) {
+                // If empty, look for the regular version (no layered changes)
+                m_version = deployment.toObject()["version"].toString();
+            }
+        }
+    });
+
+    m_process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("status"), QStringLiteral("--json")});
+    m_process->waitForFinished();
 }
 
 bool RpmOstreeNotifier::isValid() const
@@ -44,13 +123,23 @@ void RpmOstreeNotifier::recheckSystemUpdateNeeded()
     }
 
     qInfo() << "rpm-ostree-notifier: Checking for system update";
+    if (m_ostreeFormat->isClassic()) {
+        checkSystemUpdateClassic();
+    } else if (m_ostreeFormat->isOCI()) {
+        checkSystemUpdateOCI();
+    }
+}
+
+void RpmOstreeNotifier::checkSystemUpdateClassic()
+{
+    qInfo() << "rpm-ostree-notifier: Checking for system update (classic format)";
+
     m_process = new QProcess(this);
     m_stdout = QByteArray();
 
     // Display stderr
     connect(m_process, &QProcess::readyReadStandardError, [this]() {
-        QByteArray message = m_process->readAllStandardError();
-        qWarning() << "rpm-ostree (error):" << message;
+        qWarning() << "rpm-ostree (error):" << m_process->readAllStandardError();
     });
 
     // Display and store stdout
@@ -115,6 +204,72 @@ void RpmOstreeNotifier::recheckSystemUpdateNeeded()
     });
 
     m_process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("update"), QStringLiteral("--check")});
+}
+
+void RpmOstreeNotifier::checkSystemUpdateOCI()
+{
+    qInfo() << "rpm-ostree-notifier: Checking for system update (OCI format)";
+
+    m_process = new QProcess(this);
+    m_stdout = QByteArray();
+
+    // Display stderr
+    connect(m_process, &QProcess::readyReadStandardError, [this]() {
+        qWarning() << "skopeo (error):" << m_process->readAllStandardError();
+    });
+
+    // Store stdout to process as JSON
+    connect(m_process, &QProcess::readyReadStandardOutput, [this]() {
+        m_stdout += m_process->readAllStandardOutput();
+    });
+
+    // Process command result
+    connect(m_process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), [this](int exitCode, QProcess::ExitStatus exitStatus) {
+        m_process->deleteLater();
+        m_process = nullptr;
+        if (exitStatus != QProcess::NormalExit) {
+            qWarning() << "rpm-ostree-notifier: Failed to check for updates via skopeo";
+            return;
+        }
+        if (exitCode != 0) {
+            // Unexpected error
+            qWarning() << "rpm-ostree-notifier: Failed to check for updates via skopeo. Exit code:" << exitCode;
+            return;
+        }
+
+        // Parse stdout as JSON and look at the container image labels for the version
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(m_stdout);
+        if (!jsonDocument.isObject()) {
+            qWarning() << "rpm-ostree-notifier: Could not parse 'rpm-ostree status' output as JSON";
+            return;
+        }
+
+        // Get the version stored in .Labels.version
+        const QString newVersion = jsonDocument.object().value("Labels").toObject().value("version").toString();
+        if (newVersion.isEmpty()) {
+            qInfo() << "rpm-ostree-notifier: Could not get the version from the container labels";
+            return;
+        }
+
+        QVersionNumber newVersionNumber = QVersionNumber::fromString(newVersion);
+        QVersionNumber currentVersionNumber = QVersionNumber::fromString(m_version);
+        if (newVersionNumber <= currentVersionNumber) {
+            qInfo() << "rpm-ostree-notifier: No new version found";
+            return;
+        }
+
+        // Have we already notified the user about this update?
+        if (newVersion == m_updateVersion) {
+            qInfo() << "rpm-ostree-notifier: New version has already been offered. Skipping.";
+            return;
+        }
+        m_updateVersion = newVersion;
+
+        // Look for an existing deployment with this version
+        checkForPendingDeployment();
+    });
+
+    m_process->start(QStringLiteral("skopeo"), {QStringLiteral("inspect"), "docker://" + m_ostreeFormat->repo() + ":" + m_ostreeFormat->tag()});
 }
 
 void RpmOstreeNotifier::checkForPendingDeployment()
