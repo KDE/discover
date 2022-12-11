@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-09 00:47+0000\n"
-"PO-Revision-Date: 2022-10-18 17:54+0200\n"
+"PO-Revision-Date: 2022-12-10 10:55+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.08.3\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -74,8 +74,7 @@ msgid "Could not find category '%1'"
 msgstr "Nie można znaleźć kategorii '%1'"
 
 #: discover/DiscoverObject.cpp:284
-#, fuzzy, kde-format
-#| msgid "Trying to open unexisting file '%1'"
+#, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Próbowano otworzyć nieistniejący plik '%1'"
 
@@ -409,10 +408,9 @@ msgid "Share"
 msgstr "Udostępnij"
 
 #: discover/qml/ApplicationPage.qml:602
-#, fuzzy, kde-format
-#| msgid "Send a link to the application"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Wyślij odnośnik do aplikacji"
+msgstr "Wyślij odnośnik do tej aplikacji"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format
@@ -647,8 +645,7 @@ msgid "Unable to load applications"
 msgstr "Nie można wczytać programów"
 
 #: discover/qml/BrowsingPage.qml:88
-#, fuzzy, kde-format
-#| msgid "Most Popular"
+#, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Najpopularniejsze"
@@ -657,27 +654,25 @@ msgstr "Najpopularniejsze"
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "Wybór twórców"
 
 #: discover/qml/BrowsingPage.qml:120
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "Najwyżej ocenianie gry"
 
 #: discover/qml/BrowsingPage.qml:139 discover/qml/BrowsingPage.qml:168
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "Zobacz więcej..."
+msgstr "Zobacz więcej"
 
 #: discover/qml/BrowsingPage.qml:149
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "Najwyżej oceniane narzędzia programistyczne"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -747,23 +742,21 @@ msgid "Report this issue"
 msgstr "Zgłoś ten błąd"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "Głosy: %1 z %2"
+msgstr "Błąd %1 z %2"
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "Pokaż poprzedni"
 
 #: discover/qml/DiscoverWindow.qml:383
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "Pokaż zawartość"
+msgstr "Pokaż następne"
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
