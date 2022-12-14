@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-08 00:47+0000\n"
-"PO-Revision-Date: 2022-12-01 06:51\n"
+"PO-Revision-Date: 2022-12-13 12:20\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -2045,10 +2045,9 @@ msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
-#, fuzzy, kde-format
-#| msgid "Missing remote ref for rebase operation. Please file a bug."
+#, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
-msgstr "缺少rebase所需的远程ref。请提交漏洞。"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format

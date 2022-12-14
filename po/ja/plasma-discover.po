@@ -1202,13 +1202,3 @@ msgstr "更新の確認が必要です"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "最後の更新時刻は不明です"
-
-#~ msgid "Featured"
-#~ msgstr "おすすめ"
-
-#~ msgid "Updates are available"
-#~ msgstr "更新が利用可能です"
-
-#~ msgctxt "Short for 'show updates'"
-#~ msgid "Show"
-#~ msgstr "表示"
