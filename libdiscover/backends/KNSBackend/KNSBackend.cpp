@@ -621,7 +621,7 @@ void KNSBackend::searchStream(ResultsStream *stream, const QString &searchText)
     if (m_responsePending) {
         connect(this, &KNSBackend::availableForQueries, stream, start, Qt::QueuedConnection);
     } else if (isFetching()) {
-        connect(this, &KNSBackend::initialized, stream, start);
+        connect(this, &KNSBackend::initialized, stream, start, Qt::QueuedConnection);
         connect(this, &KNSBackend::availableForQueries, stream, start, Qt::QueuedConnection);
     } else {
         QTimer::singleShot(0, stream, start);
