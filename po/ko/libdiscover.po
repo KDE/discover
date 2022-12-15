@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-08 00:47+0000\n"
+"POT-Creation-Date: 2022-12-15 00:49+0000\n"
 "PO-Revision-Date: 2022-10-04 15:21+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -930,32 +930,39 @@ msgstr "EULA 검토"
 msgid "Could not enable remote %1: %2"
 msgstr "원격 %1을(를) 추가할 수 없음: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:107
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#, kde-format
+msgid ""
+"Unsupported question:\n"
+"%1"
+msgstr ""
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "%1 백엔드 초기화에 시간이 너무 오래 걸림"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:169
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
 #, kde-format
 msgid "Applications"
 msgstr "프로그램"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma 부가 기능"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Application Addons"
 msgstr "프로그램 부가 기능"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 백엔드 네트워크 오류: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:423
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -964,14 +971,14 @@ msgstr ""
 "%1 백엔드에서 서버에 너무 많은 요청을 보냈습니다. 잠시 후에 다시 시도하십시"
 "오."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:426
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:432
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:437
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "%1 백엔드가 잘못되었습니다. 배포판에 문의하십시오."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:456
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -983,23 +990,23 @@ msgstr ""
 "이 작업을 다시 수행할 수 있습니다. 보고된 오류는 다음과 같습니다:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:466
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "%2 백엔드의 항목 %1의 스크린샷을 가져올 수 없음"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:470
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "%1 백엔드에서 처리할 수 없는 오류가 발생했습니다. 배포판에 문의하십시오."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:695
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "잘못된 KNewStuff URI: %1"

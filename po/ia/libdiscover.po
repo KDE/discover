@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-08 00:47+0000\n"
-"PO-Revision-Date: 2022-11-28 22:12+0100\n"
+"POT-Creation-Date: 2022-12-15 00:49+0000\n"
+"PO-Revision-Date: 2022-12-14 15:31+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.11.80\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -685,6 +685,8 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Permitte accesso al servicio de cryptographia GPG, generalmente usate per "
+"signar e leger documentos signate"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, kde-format
@@ -704,7 +706,7 @@ msgstr "Accesso de Systema de basse nivello"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Pote facer appellos (call) de systema de basse nivello (p.ex. ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
@@ -922,6 +924,8 @@ msgstr "Addente remote '%1' in %2 ex %3"
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
+"Non poteva trovar '%1' in '%2': pro favor tu assecura te que illo es "
+"disponibile"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -942,32 +946,39 @@ msgstr "Revide EULA"
 msgid "Could not enable remote %1: %2"
 msgstr "Non pote habilitar remote %1:%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:107
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#, kde-format
+msgid ""
+"Unsupported question:\n"
+"%1"
+msgstr ""
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Retroadministration %1 prendeva troppo tempore per initialisar"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:169
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
 #, kde-format
 msgid "Applications"
 msgstr "Applicationes"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Addons(Elementos adjunte o additiones) de Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Application Addons"
 msgstr "Addons (additiones) de application"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Error de rete in retroadministration %1:  %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:423
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -976,14 +987,14 @@ msgstr ""
 "Troppe requestas inviate al servitor per retroadministration %1. Pro favor "
 "essaya de nove in alcun minutas."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:426
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:432
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:437
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Invalide retroadministration %1, tu continge tu distributor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:456
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -996,25 +1007,25 @@ msgstr ""
 "controlo plus stricte. Le error reportate esseva:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:466
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Non poteva trovar instantanee de schermo per le entrata %1 in retro-"
 "administration (backend) %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:470
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Error non maneate in retroadministration %1. Tu continge tu distributor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:695
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Errate KNewStuff URI: %1"
@@ -1950,7 +1961,7 @@ msgstr[1] "%1 pacchettos de remover"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<li>%1 (%2): No changelog information</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): Nulle information de  changelog</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
@@ -2103,11 +2114,12 @@ msgstr "Systema operative o operational"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree: Trovate un Multiple booted deployments .Pro favor invia un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree: Trovate nulle booted deployments .Pro favor invia un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
@@ -2116,6 +2128,9 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>Un nove major version de %1 ha essite liberate!</b>\n"
+"Per poter te actualisar a iste noveversion, assecura te de applicar omne "
+"actualisationes pendente e restarta tu systema."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, kde-format
@@ -2125,22 +2140,26 @@ msgstr "Actualisa a %1 %2"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>Un nove version major ha essite liberate!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:474
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
+"Tu ha actualisationes pendente per le version currente. On procede de omne "
+"modo."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:477
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Pro favor actualisa al ultime version ante facer le rebase a un version major"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:485
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Remote ref mancante per le operation de rebase. Pro favor invia un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #, kde-format
@@ -2155,7 +2174,7 @@ msgstr "Pacchettos additional: "
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
 #, kde-format
 msgid "Additional modules: "
-msgstr ""
+msgstr "Modulos aditional:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
 #, kde-format
@@ -2175,27 +2194,27 @@ msgstr "Pacchettos Removite:"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr ""
+msgstr "Version currentemente startate (i.e. booted) (pinned-con spinula)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:396
 #, kde-format
 msgid "Currently booted version"
-msgstr ""
+msgstr "Version currentemente startate (i.e. booted) "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Version que essera usate post restartar (i.e. reboot)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "Version de reserva (con spinula-i.e. pinned)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:403
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "Version de reserva"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
@@ -2213,6 +2232,8 @@ msgstr "Transaction  de rpm-ostree falleva con:"
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"Cancellante transation de rpm-ostree. Isto pote prender alcun tempore. Pro "
+"favor tu attende."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:327
 #, kde-format
@@ -2232,12 +2253,12 @@ msgstr "Actualisante le systema"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:336
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Actualisante al proxime version major"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:339
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
-msgstr ""
+msgstr "Transaction in progresso (initiate foras de Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:345
 #, kde-format

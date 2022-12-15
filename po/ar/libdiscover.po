@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-08 00:47+0000\n"
+"POT-Creation-Date: 2022-12-15 00:49+0000\n"
 "PO-Revision-Date: 2022-11-21 19:10+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -934,32 +934,39 @@ msgstr "راجع رخصة المستخدم النهائي"
 msgid "Could not enable remote %1: %2"
 msgstr "تعذّر تمكين %1 البعيد: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:107
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#, kde-format
+msgid ""
+"Unsupported question:\n"
+"%1"
+msgstr ""
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "أخذت الخلفية %1 وقت طويل للبدء"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:169
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
 #, kde-format
 msgid "Applications"
 msgstr "التّطبيقات"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Plasma Addons"
 msgstr "إضافات بلازما"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Application Addons"
 msgstr "إضافات التّطبيقات"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "خطأ شبكيّ في الخلفية %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:423
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -967,14 +974,14 @@ msgid ""
 msgstr ""
 "العديد من الطلبات أرسلت إلى الخادم لخلفية %1 . رجاء حاول مجددا بعد بضع دقائق."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:426
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:432
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:437
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "خلفية %1 غير صالح، راجع توزيعتك."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:456
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -987,22 +994,22 @@ msgstr ""
 "الإبلاغ عنه هو: \n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:466
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "لم يستطع جلب لقطات للمدخلة %1 في خلفية %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:470
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "خطأ لا يمكن التعامل معه في خلفية %1. راجع توزيعتك."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
 #, kde-format
 msgid "%1: %2"
 msgstr "‏%1:‏ %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:695
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "معرّف «أشياء جديدة» خطأ: %1"
