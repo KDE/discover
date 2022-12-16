@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-15 00:49+0000\n"
-"PO-Revision-Date: 2022-12-04 12:25+0000\n"
+"PO-Revision-Date: 2022-12-15 09:37+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -956,6 +956,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"Questão não suportada:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format

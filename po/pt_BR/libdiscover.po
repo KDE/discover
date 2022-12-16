@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-15 00:49+0000\n"
-"PO-Revision-Date: 2022-10-19 15:07-0300\n"
+"PO-Revision-Date: 2022-12-15 11:02-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -152,11 +152,10 @@ msgstr "teste 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Aplicativos"
+msgstr "Todos os aplicativos"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -1959,7 +1958,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
 msgid "<li>%1 (%2): %3</li>\n"
-msgstr ""
+msgstr "<li>%1 (%2): %3</li>\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:198
 #, kde-format
@@ -2124,7 +2123,7 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr ""
+msgstr "Atualizar para %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format
@@ -2152,14 +2151,12 @@ msgid "GPL and other licenses"
 msgstr "GPL e outras licenças"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
-#, fuzzy, kde-format
-#| msgid "Additionnal packages: "
+#, kde-format
 msgid "Additional packages: "
 msgstr "Pacotes adicionais: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
-#, fuzzy, kde-format
-#| msgid "Additionnal modules: "
+#, kde-format
 msgid "Additional modules: "
 msgstr "Módulos adicionais: "
 
@@ -2222,24 +2219,19 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:327
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "Procurar atualizações"
+msgstr "Verificando por uma atualização do sistema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:330
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Baixando"
+msgstr "Baixando atualização do sistema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:333
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Sistema operacional"
+msgstr "Atualizando o sistema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:336
 #, kde-format
@@ -2249,13 +2241,12 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:339
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
-msgstr ""
+msgstr "Transação em progresso (iniciada fora do Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:345
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Não foi possível cancelar a transação"
+msgstr "Tipo de transação desconhecida"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
