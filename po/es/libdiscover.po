@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:49+0000\n"
+"POT-Creation-Date: 2022-12-17 00:51+0000\n"
 "PO-Revision-Date: 2022-12-15 03:06+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -2287,6 +2287,11 @@ msgstr ""
 "Esta aplicación Snap no es compatible con el aislamiento de procesos de "
 "seguridad y tendrá acceso completo a este equipo. ¿Desea instalarla de todos "
 "modos?"
+
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:62
+#, kde-format
+msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+msgstr ""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format

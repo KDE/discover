@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:49+0000\n"
+"POT-Creation-Date: 2022-12-17 00:51+0000\n"
 "PO-Revision-Date: 2022-12-15 08:50+0200\n"
 "Last-Translator: Fracture dept <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2305,6 +2305,11 @@ msgid ""
 msgstr ""
 "Ця програма Snap є несумісною із безпечною ізоляцією у «пісочниці», вона "
 "матиме повний доступ до системи цього комп'ютера. Встановити її попри це?"
+
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:62
+#, kde-format
+msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+msgstr ""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format

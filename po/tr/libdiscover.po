@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:49+0000\n"
+"POT-Creation-Date: 2022-12-17 00:51+0000\n"
 "PO-Revision-Date: 2022-12-15 19:32+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -2272,6 +2272,11 @@ msgid ""
 msgstr ""
 "Bu Snap uygulaması, güvenlik korumalı alanı ile uyumlu değildir ve bu "
 "bilgisayarda tam erişime sahip olacaktır. Yine de yüklensin mi?"
+
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:62
+#, kde-format
+msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+msgstr ""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format

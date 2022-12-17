@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:49+0000\n"
+"POT-Creation-Date: 2022-12-17 00:51+0000\n"
 "PO-Revision-Date: 2022-12-01 23:50+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -2274,6 +2274,11 @@ msgid ""
 msgstr ""
 "Това Snap приложение не е съвместимо със sandboxing сигурност и ще има пълен "
 "достъп до този компютър. Да се инсталира ли въпреки това?"
+
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:62
+#, kde-format
+msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+msgstr ""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format

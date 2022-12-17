@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-09 00:47+0000\n"
-"PO-Revision-Date: 2022-11-18 10:31+0300\n"
+"PO-Revision-Date: 2022-12-16 20:26+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -433,8 +433,8 @@ msgstr "İncelemeler"
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
-msgstr[0] "%1 incelemeyi göster…"
-msgstr[1] "%1 incelemeyi göster…"
+msgstr[0] "%1 İncelemeyi Göster…"
+msgstr[1] "%1 İncelemeyi Göster…"
 
 #: discover/qml/ApplicationPage.qml:724
 #, kde-format
@@ -444,7 +444,7 @@ msgstr "İnceleme Yaz"
 #: discover/qml/ApplicationPage.qml:724
 #, kde-format
 msgid "Install to Write a Review"
-msgstr "İnceleme Yazmak için Kurun"
+msgstr "İnceleme Yazmak için Kur"
 
 #: discover/qml/ApplicationPage.qml:736
 #, kde-format
