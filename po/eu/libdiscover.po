@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-17 00:51+0000\n"
-"PO-Revision-Date: 2022-12-15 06:56+0100\n"
+"PO-Revision-Date: 2022-12-17 09:08+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque\n"
 "Language: eu\n"
@@ -1008,9 +1008,9 @@ msgid ""
 "reported error was:\n"
 "%2"
 msgstr ""
-"Ezin da «%1»(r)en eguneratzea osatu. Ekintza hau «Berrikuntzak eskuratu» "
-"elkarrizketa-koadroa erabiliz gauzatzen saia zaitezke, kontrol estuagoa "
-"ematen baitu. Jakinarazi den errorea:\n"
+"Ez da «%1»(r)en eguneratzea osatzeko gai. Ekintza hau «Berrikuntzak "
+"eskuratu» elkarrizketa-koadroaren bidez egiten saia zaitezke, kontrol "
+"estuagoa ematen baitu. Jakinarazi den errorea:\n"
 "%2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
@@ -2290,7 +2290,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:62
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "SteamOS: Ez da SteamOSetik «atomupd» itauntzeko gai"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
