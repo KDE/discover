@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FLATPAKREFRESHAPPSTREAMMETADATAJOB_H
-#define FLATPAKREFRESHAPPSTREAMMETADATAJOB_H
+#pragma once
 
 #include "flatpak-helper.h"
 #include <QThread>
@@ -29,5 +28,3 @@ private:
     FlatpakInstallation *m_installation;
     FlatpakRemote *m_remote;
 };
-
-#endif

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef SNAPBACKEND_H
-#define SNAPBACKEND_H
+#pragma once
 
 #include <QThreadPool>
 #include <QVariantList>
@@ -84,5 +83,3 @@ private:
     QSnapdClient m_client;
     QThreadPool m_threadPool;
 };
-
-#endif // SNAPBACKEND_H

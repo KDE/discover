@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef SNAPRESOURCE_H
-#define SNAPRESOURCE_H
+#pragma once
 
 #include <QJsonObject>
 #include <QSharedPointer>
@@ -87,5 +86,3 @@ public:
     mutable QVariant m_icon;
     static const QStringList m_objects;
 };
-
-#endif // SNAPRESOURCE_H

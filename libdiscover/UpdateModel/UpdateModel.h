@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef UPDATEMODEL_H
-#define UPDATEMODEL_H
+#pragma once
 
 #include "discovercommon_export.h"
 #include "resources/AbstractBackendUpdater.h"
@@ -90,5 +89,3 @@ private:
     ResourcesUpdatesModel *m_updates;
     QList<AbstractResource *> m_resources;
 };
-
-#endif // UPDATEMODEL_H

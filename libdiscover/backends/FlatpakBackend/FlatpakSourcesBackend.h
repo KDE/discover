@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FLATPAKSOURCESBACKEND_H
-#define FLATPAKSOURCESBACKEND_H
+#pragma once
 
 #include <QStack>
 #include <QStandardItemModel>
@@ -72,5 +71,3 @@ private:
     QStandardItem *m_noSourcesItem;
     QStack<std::function<void()>> m_proceedFunctions;
 };
-
-#endif // FLATPAKSOURCESBACKEND_H

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef REVIEW_H
-#define REVIEW_H
+#pragma once
 
 #include <QDateTime>
 #include <QVariant>
@@ -70,5 +69,3 @@ private:
     QString m_packageVersion;
     QVariantMap m_metadata;
 };
-
-#endif

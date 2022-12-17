@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef RPMOSTREE1BACKEND_H
-#define RPMOSTREE1BACKEND_H
+#pragma once
 
 #include "RpmOstreeDBusInterface.h"
 #include "RpmOstreeResource.h"
@@ -123,5 +122,3 @@ private:
      * - No update to the current version are available or pending a reboot */
     QSharedPointer<InlineMessage> m_rebaseAvailableMessage;
 };
-
-#endif

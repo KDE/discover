@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FLATPAKRESOURCE_H
-#define FLATPAKRESOURCE_H
+#pragma once
 
 #include <resources/AbstractResource.h>
 
@@ -248,5 +247,3 @@ inline uint qHash(const FlatpakResource::Id &key)
 {
     return qHash(key.id) ^ qHash(key.branch) ^ qHash(key.arch);
 }
-
-#endif // FLATPAKRESOURCE_H

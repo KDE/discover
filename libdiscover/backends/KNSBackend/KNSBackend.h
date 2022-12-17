@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef KNSBACKEND_H
-#define KNSBACKEND_H
+#pragma once
 
 #include <KNSCore/EntryInternal>
 #include <KNSCore/ErrorCode>
@@ -111,5 +110,3 @@ private:
     bool m_initialized = false;
     bool m_hasApplications = false;
 };
-
-#endif // KNSBACKEND_H

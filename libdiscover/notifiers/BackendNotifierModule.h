@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef BACKENDNOTIFIERMODULE_H
-#define BACKENDNOTIFIERMODULE_H
+#pragma once
 
 #include "discovernotifiers_export.h"
 #include <QObject>
@@ -80,5 +79,3 @@ Q_SIGNALS:
 };
 
 Q_DECLARE_INTERFACE(BackendNotifierModule, "org.kde.discover.BackendNotifierModule")
-
-#endif

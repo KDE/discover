@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef SNAPTRANSACTION_H
-#define SNAPTRANSACTION_H
+#pragma once
 
 #include <QPointer>
 #include <Transaction/Transaction.h>
@@ -36,5 +35,3 @@ private:
     QScopedPointer<QSnapdRequest> m_request;
     const AbstractResource::State m_newState;
 };
-
-#endif // SNAPTRANSACTION_H

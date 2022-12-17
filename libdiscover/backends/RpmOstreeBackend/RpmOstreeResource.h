@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef OSTREERPMRESOURCE_H
-#define OSTREERPMRESOURCE_H
+#pragma once
 
 #include <resources/AbstractResource.h>
 
@@ -110,5 +109,3 @@ private:
     QString m_newVersion;
     QString m_nextMajorVersion;
 };
-
-#endif

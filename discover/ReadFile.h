@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef READFILE_H
-#define READFILE_H
+#pragma once
 
 #include <QFile>
 #include <QFileSystemWatcher>
@@ -59,5 +58,3 @@ private:
     QRegularExpression m_filter;
     qint64 m_sizeOnSet = 0;
 };
-
-#endif // READFILE_H

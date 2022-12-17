@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef __PK_OFFLINE_PRIVATE_H
-#define __PK_OFFLINE_PRIVATE_H
+#pragma once
 
 // NOTE: please don't modify, comes from upstream PackageKit/lib/packagekit-glib2/pk-offline-private.h
 
@@ -30,5 +29,3 @@
 
 /* the group name for the offline updates results keyfile */
 #define PK_OFFLINE_RESULTS_GROUP "PackageKit Offline Update Results"
-
-#endif

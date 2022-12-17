@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef OSTREERPMTRANSACTION_H
-#define OSTREERPMTRANSACTION_H
+#pragma once
 
 #include "RpmOstreeDBusInterface.h"
 
@@ -108,5 +107,3 @@ private:
     /* Store standard error output from rpm-ostree command line calls */
     QByteArray m_stderr;
 };
-
-#endif

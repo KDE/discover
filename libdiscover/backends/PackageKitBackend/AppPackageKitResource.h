@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef APPPACKAGEKITRESOURCE_H
-#define APPPACKAGEKITRESOURCE_H
+#pragma once
 
 #include "PackageKitBackend.h"
 #include "PackageKitResource.h"
@@ -55,5 +54,3 @@ private:
     const AppStream::Component m_appdata;
     mutable QString m_name;
 };
-
-#endif // APPPACKAGEKITRESOURCE_H

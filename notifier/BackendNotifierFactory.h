@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef BACKENDNOTIFIERFACTORY_H
-#define BACKENDNOTIFIERFACTORY_H
+#pragma once
 
 #include <QList>
 #include <QString>
@@ -19,5 +18,3 @@ public:
 
     QList<BackendNotifierModule *> allBackends() const;
 };
-
-#endif // BACKENDNOTIFIERFACTORY_H

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FEATUREDMODEL_H
-#define FEATUREDMODEL_H
+#pragma once
 
 #include "AbstractAppsModel.h"
 #include <QPointer>
@@ -26,5 +25,3 @@ public:
 
     void refresh() override;
 };
-
-#endif // FEATUREDMODEL_H

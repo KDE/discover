@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ABSTRACTAPPSMODEL_H
-#define ABSTRACTAPPSMODEL_H
+#pragma once
 
 #include "resources/AbstractResourcesBackend.h"
 #include <QAbstractListModel>
@@ -57,5 +56,3 @@ private:
     AbstractResourcesBackend *m_backend = nullptr;
     QVector<QUrl> m_uris;
 };
-
-#endif // ABSTRACTAPPSMODEL_H

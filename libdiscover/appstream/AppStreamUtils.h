@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef APPSTREAMUTILS_H
-#define APPSTREAMUTILS_H
+#pragma once
 
 #include <AppStreamQt/component.h>
 #include <AppStreamQt/image.h>
@@ -41,5 +40,3 @@ Q_DECL_EXPORT uint contentRatingMinimumAge(const AppStream::Component &appdata);
 
 Q_DECL_EXPORT QList<AppStream::Component> componentsByCategories(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind);
 }
-
-#endif

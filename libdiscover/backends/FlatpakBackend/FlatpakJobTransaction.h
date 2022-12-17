@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FLATPAKJOBTRANSACTION_H
-#define FLATPAKJOBTRANSACTION_H
+#pragma once
 
 #include "flatpak-helper.h"
 #include <QPointer>
@@ -40,5 +39,3 @@ private:
     QPointer<FlatpakResource> m_app;
     QPointer<FlatpakTransactionThread> m_appJob;
 };
-
-#endif // FLATPAKJOBTRANSACTION_H

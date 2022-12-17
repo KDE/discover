@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef PACKAGEKITBACKEND_H
-#define PACKAGEKITBACKEND_H
+#pragma once
 
 #include "PackageKitResource.h"
 #include <AppStreamQt/pool.h>
@@ -136,5 +135,3 @@ private:
     QThreadPool m_threadPool;
     QPointer<PKResolveTransaction> m_resolveTransaction;
 };
-
-#endif // PACKAGEKITBACKEND_H

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ABSTRACTREVIEWSBACKEND_H
-#define ABSTRACTREVIEWSBACKEND_H
+#pragma once
 
 #include <QObject>
 
@@ -62,5 +61,3 @@ protected:
     virtual void sendReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating, const QString &userName) = 0;
     virtual QString userName() const = 0;
 };
-
-#endif // ABSTRACTREVIEWSBACKEND_H

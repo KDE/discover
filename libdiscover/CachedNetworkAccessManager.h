@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef CACHEDNETWORKACCESSMANAGER_H
-#define CACHEDNETWORKACCESSMANAGER_H
+#pragma once
 
 #include <QNetworkAccessManager>
 #include <QQmlNetworkAccessManagerFactory>
@@ -19,5 +18,3 @@ public:
 
     virtual QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = nullptr) override;
 };
-
-#endif // CACHEDNETWORKACCESSMANAGER_H

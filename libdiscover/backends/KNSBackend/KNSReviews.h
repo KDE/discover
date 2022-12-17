@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef KNSREVIEWS_H
-#define KNSREVIEWS_H
+#pragma once
 
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <attica/provider.h>
@@ -52,5 +51,3 @@ private:
     KNSBackend *const m_backend;
     int m_fetching = 0;
 };
-
-#endif // KNSREVIEWS_H

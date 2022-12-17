@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef RESOURCESMODEL_H
-#define RESOURCESMODEL_H
+#pragma once
 
 #include <QSet>
 #include <QTimer>
@@ -173,5 +172,3 @@ private:
 
     static ResourcesModel *s_self;
 };
-
-#endif // RESOURCESMODEL_H

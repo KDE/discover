@@ -5,8 +5,7 @@
  *
  */
 
-#ifndef KDEVPLATFORM_UNITYLAUNCHER_H
-#define KDEVPLATFORM_UNITYLAUNCHER_H
+#pragma once
 
 #include <QObject>
 
@@ -37,5 +36,3 @@ private:
     bool m_progressVisible = false;
     int m_progress = 0;
 };
-
-#endif // KDEVPLATFORM_UNITYLAUNCHER_H

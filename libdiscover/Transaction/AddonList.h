@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ADDONLIST_H
-#define ADDONLIST_H
+#pragma once
 
 #include <QStringList>
 #include <QVector>
@@ -38,5 +37,3 @@ private:
 };
 
 DISCOVERCOMMON_EXPORT QDebug operator<<(QDebug dbg, const AddonList &addons);
-
-#endif // ADDONLIST_H

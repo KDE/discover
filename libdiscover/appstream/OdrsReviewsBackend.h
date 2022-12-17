@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ODRSREVIEWSBACKEND_H
-#define ODRSREVIEWSBACKEND_H
+#pragma once
 
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/ReviewsModel.h>
@@ -96,5 +95,3 @@ private:
 
     QVector<Rating *> m_top;
 };
-
-#endif // ODRSREVIEWSBACKEND_H

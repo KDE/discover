@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef PKTRANSACTION_H
-#define PKTRANSACTION_H
+#pragma once
 
 #include <PackageKit/Transaction>
 #include <QPointer>
@@ -55,5 +54,3 @@ private:
 
     QMap<PackageKit::Transaction::Info, QStringList> m_newPackageStates;
 };
-
-#endif // PKTRANSACTION_H

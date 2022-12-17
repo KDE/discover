@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FLATPAKPERMISSION_H
-#define FLATPAKPERMISSION_H
+#pragma once
 
 #include <QAbstractListModel>
 #include <QString>
@@ -45,5 +44,3 @@ public:
 private:
     QVector<FlatpakPermission> m_permissions;
 };
-
-#endif // FLATPAKPERMISSION_H

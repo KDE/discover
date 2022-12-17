@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef PACKAGEKITRESOURCE_H
-#define PACKAGEKITRESOURCE_H
+#pragma once
 
 #include <KService>
 #include <PackageKit/Details>
@@ -140,5 +139,3 @@ private:
     int m_dependenciesCount = -1;
     static const QStringList m_objects;
 };
-
-#endif // PACKAGEKITRESOURCE_H

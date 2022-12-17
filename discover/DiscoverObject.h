@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef DISCOVEROBJECT_H
-#define DISCOVEROBJECT_H
+#pragma once
 
 #include <QUrl>
 
@@ -99,5 +98,3 @@ private:
     QScopedPointer<CachedNetworkAccessManagerFactory> m_networkAccessManagerFactory;
     KStatusNotifierItem *m_sni = nullptr;
 };
-
-#endif // DISCOVEROBJECT_H

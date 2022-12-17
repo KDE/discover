@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef PACKAGEKITSOURCESBACKEND_H
-#define PACKAGEKITSOURCESBACKEND_H
+#pragma once
 
 #include <PackageKit/Transaction>
 #include <resources/AbstractSourcesBackend.h>
@@ -41,5 +40,3 @@ private:
     PKSourcesModel *m_sources;
     QVariantList m_actions;
 };
-
-#endif // PACKAGEKITSOURCESBACKEND_H

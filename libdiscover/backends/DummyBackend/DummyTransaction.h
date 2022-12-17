@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef DUMMYTRANSACTION_H
-#define DUMMYTRANSACTION_H
+#pragma once
 
 #include <Transaction/Transaction.h>
 
@@ -28,5 +27,3 @@ private:
     bool m_iterate = true;
     DummyResource *m_app;
 };
-
-#endif // DUMMYTRANSACTION_H

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef APPLICATIONADDONSMODEL_H
-#define APPLICATIONADDONSMODEL_H
+#pragma once
 
 #include "Transaction/AddonList.h"
 #include <QAbstractListModel>
@@ -55,5 +54,3 @@ private:
     QList<PackageState> m_initial;
     AddonList m_state;
 };
-
-#endif // APPLICATIONADDONSMODEL_H

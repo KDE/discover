@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef STANDARDBACKENDUPDATER_H
-#define STANDARDBACKENDUPDATER_H
+#pragma once
 
 #include "AbstractResourcesBackend.h"
 #include "discovercommon_export.h"
@@ -68,5 +67,3 @@ private:
     bool m_canCancel = false;
     bool m_anyTransactionFailed = false;
 };
-
-#endif // STANDARDBACKENDUPDATER_H

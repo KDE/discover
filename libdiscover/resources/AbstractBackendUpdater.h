@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ABSTRACTBACKENDUPDATER_H
-#define ABSTRACTBACKENDUPDATER_H
+#pragma once
 
 #include "discovercommon_export.h"
 #include <QObject>
@@ -233,5 +232,3 @@ private:
     bool m_readyToReboot = false;
     QString m_errorMessage;
 };
-
-#endif // ABSTRACTBACKENDUPDATER_H

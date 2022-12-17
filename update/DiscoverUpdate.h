@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef DISCOVERUPDATE_H
-#define DISCOVERUPDATE_H
+#pragma once
 
 #include <QObject>
 #include <QSet>
@@ -36,5 +35,3 @@ private:
     bool m_done = false;
     bool m_offlineUpdates = false;
 };
-
-#endif // DISCOVERUPDATE_H

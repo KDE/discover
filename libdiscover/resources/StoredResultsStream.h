@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef STOREDRESULTSSTREAM_H
-#define STOREDRESULTSSTREAM_H
+#pragma once
 
 #include "ResourcesModel.h"
 
@@ -23,5 +22,3 @@ Q_SIGNALS:
 private:
     QVector<AbstractResource *> m_resources;
 };
-
-#endif

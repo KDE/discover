@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef TRANSACTION_H
-#define TRANSACTION_H
+#pragma once
 
 // Qt includes
 #include <QObject>
@@ -205,5 +204,3 @@ Q_SIGNALS:
     void webflowStarted(const QUrl &url, int id);
     void webflowDone(int id);
 };
-
-#endif // TRANSACTION_H

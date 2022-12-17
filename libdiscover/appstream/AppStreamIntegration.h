@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef APPSTREAMINTEGRATION_H
-#define APPSTREAMINTEGRATION_H
+#pragma once
 
 #include "OdrsReviewsBackend.h"
 #include "discovercommon_export.h"
@@ -32,5 +31,3 @@ private:
     {
     }
 };
-
-#endif // APPSTREAMINTEGRATION_H

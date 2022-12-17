@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef PACKAGEKITMESSAGES_H
-#define PACKAGEKITMESSAGES_H
+#pragma once
 
 #include <PackageKit/Transaction>
 
@@ -19,5 +18,3 @@ QString statusDetail(PackageKit::Transaction::Status status);
 QString updateStateMessage(PackageKit::Transaction::UpdateState state);
 QString info(PackageKit::Transaction::Info info);
 }
-
-#endif // PACKAGEKITMESSAGES_H

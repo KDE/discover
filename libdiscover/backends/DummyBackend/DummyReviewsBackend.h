@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef DUMMYREVIEWSBACKEND_H
-#define DUMMYREVIEWSBACKEND_H
+#pragma once
 
 #include <QMap>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
@@ -64,5 +63,3 @@ protected:
 private:
     QHash<AbstractResource *, Rating *> m_ratings;
 };
-
-#endif // DUMMYREVIEWSBACKEND_H

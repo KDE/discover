@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef RESOURCESPROXYMODEL_H
-#define RESOURCESPROXYMODEL_H
+#pragma once
 
 #include <QQmlParserStatus>
 #include <QSortFilterProxyModel>
@@ -182,5 +181,3 @@ Q_SIGNALS:
     void filterMinimumStateChanged(bool filterMinimumState);
     void sortByRelevancyChanged(bool sortByRelevancy);
 };
-
-#endif

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef DUMMYSOURCESBACKEND_H
-#define DUMMYSOURCESBACKEND_H
+#pragma once
 
 #include <QStandardItemModel>
 #include <resources/AbstractSourcesBackend.h>
@@ -42,5 +41,3 @@ private:
     QStandardItemModel *m_sources;
     DiscoverAction *m_testAction;
 };
-
-#endif // DUMMYSOURCESBACKEND_H

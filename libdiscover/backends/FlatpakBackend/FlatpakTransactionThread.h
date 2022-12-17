@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FLATPAKTRANSACTIONTHREAD_H
-#define FLATPAKTRANSACTIONTHREAD_H
+#pragma once
 
 #include "flatpak-helper.h"
 #include <gio/gio.h>
@@ -73,5 +72,3 @@ private:
 
     QVector<int> m_webflows;
 };
-
-#endif // FLATPAKTRANSACTIONJOB_H

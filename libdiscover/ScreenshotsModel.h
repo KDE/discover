@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef SCREENSHOTSMODEL_H
-#define SCREENSHOTSMODEL_H
+#pragma once
 
 #include "discovercommon_export.h"
 #include <QModelIndex>
@@ -49,5 +48,3 @@ private:
     QList<QUrl> m_thumbnails;
     QList<QUrl> m_screenshots;
 };
-
-#endif // SCREENSHOTSMODEL_H

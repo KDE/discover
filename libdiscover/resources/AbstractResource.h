@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ABSTRACTRESOURCE_H
-#define ABSTRACTRESOURCE_H
+#pragma once
 
 #include <QCollatorSortKey>
 #include <QColor>
@@ -272,5 +271,3 @@ private:
 };
 
 Q_DECLARE_METATYPE(QVector<AbstractResource *>)
-
-#endif // ABSTRACTRESOURCE_H

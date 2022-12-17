@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef OARSAPPSMODEL_H
-#define OARSAPPSMODEL_H
+#pragma once
 
 #include "AbstractAppsModel.h"
 
@@ -17,5 +16,3 @@ public:
 
     void refresh() override;
 };
-
-#endif // OARSAPPSMODEL_H

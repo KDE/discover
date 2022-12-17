@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef DISCOVERDECLARATIVEPLUGIN_H
-#define DISCOVERDECLARATIVEPLUGIN_H
+#pragma once
 
 #include <QQmlExtensionPlugin>
 
@@ -16,5 +15,3 @@ class DiscoverDeclarativePlugin : public QQmlExtensionPlugin
 public:
     void registerTypes(const char *uri) override;
 };
-
-#endif

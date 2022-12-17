@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef CATEGORYMODEL_H
-#define CATEGORYMODEL_H
+#pragma once
 
 #include "Category.h"
 #include <QAbstractListModel>
@@ -40,5 +39,3 @@ private:
     QTimer *m_rootCategoriesChanged;
     QVector<Category *> m_rootCategories;
 };
-
-#endif // CATEGORYMODEL_H

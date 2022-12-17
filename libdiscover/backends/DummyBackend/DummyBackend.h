@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef DUMMYBACKEND_H
-#define DUMMYBACKEND_H
+#pragma once
 
 #include <QVariantList>
 #include <resources/AbstractResourcesBackend.h>
@@ -57,5 +56,3 @@ private:
     bool m_fetching;
     int m_startElements;
 };
-
-#endif // DUMMYBACKEND_H

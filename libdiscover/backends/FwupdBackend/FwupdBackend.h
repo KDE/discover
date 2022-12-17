@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FWUPDBACKEND_H
-#define FWUPDBACKEND_H
+#pragma once
 
 #include <resources/AbstractResourcesBackend.h>
 
@@ -97,5 +96,3 @@ private:
     QList<AbstractResource *> m_toUpdate;
     GCancellable *m_cancellable;
 };
-
-#endif // FWUPDBACKEND_H

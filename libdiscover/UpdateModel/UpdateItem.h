@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef UPDATEITEM_H
-#define UPDATEITEM_H
+#pragma once
 
 // Qt includes
 #include "discovercommon_export.h"
@@ -76,5 +75,3 @@ private:
     QString m_changelog;
     bool m_isExtended = false;
 };
-
-#endif // UPDATEITEM_H

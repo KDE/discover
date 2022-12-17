@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef DISCOVERNOTIFIERMODULE_H
-#define DISCOVERNOTIFIERMODULE_H
+#pragma once
 
 #include <BackendNotifierModule.h>
 #include <QPointer>
@@ -108,5 +107,3 @@ private:
     KConfigWatcher::Ptr m_settingsWatcher;
     UpdatesSettings *m_settings;
 };
-
-#endif // ABSTRACTKDEDMODULE_H

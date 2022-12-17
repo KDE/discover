@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef DUMMYRESOURCE_H
-#define DUMMYRESOURCE_H
+#pragma once
 
 #include <resources/AbstractResource.h>
 
@@ -78,5 +77,3 @@ public:
     const AbstractResource::Type m_type;
     quint64 m_size;
 };
-
-#endif // DUMMYRESOURCE_H

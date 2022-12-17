@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef NOTIFIERITEM_H
-#define NOTIFIERITEM_H
+#pragma once
 
 #include "DiscoverNotifier.h"
 #include <KStatusNotifierItem>
@@ -31,5 +30,3 @@ private:
     DiscoverNotifier m_notifier;
     QPointer<KStatusNotifierItem> m_item;
 };
-
-#endif // NOTIFIERITEM_H

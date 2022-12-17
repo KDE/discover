@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef REVIEWSMODEL_H
-#define REVIEWSMODEL_H
+#pragma once
 
 #include "discovercommon_export.h"
 #include <QModelIndex>
@@ -77,5 +76,3 @@ private:
     int m_lastPage;
     bool m_canFetchMore = true;
 };
-
-#endif // REVIEWSMODEL_H

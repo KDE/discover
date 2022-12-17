@@ -3,8 +3,7 @@
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
-#ifndef PACKAGEKITNOTIFIER_H
-#define PACKAGEKITNOTIFIER_H
+#pragma once
 
 #include <BackendNotifierModule.h>
 #include <PackageKit/Transaction>
@@ -56,5 +55,3 @@ private:
 
     QHash<QString, PackageKit::Transaction *> m_transactions;
 };
-
-#endif

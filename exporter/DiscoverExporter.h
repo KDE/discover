@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef DISCOVEREXPORTER_H
-#define DISCOVEREXPORTER_H
+#pragma once
 
 #include <QSet>
 #include <QTimer>
@@ -33,5 +32,3 @@ private:
     QUrl m_path;
     const QSet<QByteArray> m_exculdedProperties;
 };
-
-#endif // DISCOVEREXPORTER_H

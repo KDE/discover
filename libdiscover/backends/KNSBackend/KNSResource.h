@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef KNSRESOURCE_H
-#define KNSRESOURCE_H
+#pragma once
 
 #include <KNSCore/EntryInternal>
 #include <QPointer>
@@ -76,5 +75,3 @@ private:
     KNS3::Entry::Status m_lastStatus;
     QScopedPointer<Rating> m_rating;
 };
-
-#endif // KNSRESOURCE_H

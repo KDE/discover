@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef DISCOVERBACKENDSFACTORY_H
-#define DISCOVERBACKENDSFACTORY_H
+#pragma once
 
 #include "discovercommon_export.h"
 #include <QList>
@@ -31,5 +30,3 @@ public:
 private:
     QVector<AbstractResourcesBackend *> backendForFile(const QString &path, const QString &name) const;
 };
-
-#endif // MUONBACKENDSFACTORY_H

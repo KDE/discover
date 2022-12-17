@@ -4,8 +4,7 @@
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
-#ifndef FLATPAKNOTIFIER_H
-#define FLATPAKNOTIFIER_H
+#pragma once
 
 #include <BackendNotifierModule.h>
 #include <functional>
@@ -52,5 +51,3 @@ public:
     GCancellable *const m_cancellable;
     bool m_lastHasUpdates = false;
 };
-
-#endif

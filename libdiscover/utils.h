@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef UTILS_H
-#define UTILS_H
+#pragma once
 
 #include <QElapsedTimer>
 #include <QJsonValue>
@@ -161,5 +160,3 @@ inline void swap(QJsonValueRef v1, QJsonValueRef v2)
     v1 = QJsonValue(v2);
     v2 = temp;
 }
-
-#endif

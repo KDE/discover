@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FWUPDRESOURCE_H
-#define FWUPDRESOURCE_H
+#pragma once
 
 #include "FwupdBackend.h"
 
@@ -152,5 +151,3 @@ private:
     bool m_needsReboot = false; // True if device needs Reboot
     QString m_origin;
 };
-
-#endif // FWUPDRESOURCE_H

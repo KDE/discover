@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef LOCALFILEPKRESOURCE_H
-#define LOCALFILEPKRESOURCE_H
+#pragma once
 
 #include "PackageKitResource.h"
 
@@ -43,5 +42,3 @@ private:
     QUrl m_path;
     QString m_exec;
 };
-
-#endif // LOCALFILEPKRESOURCE_H

@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ABSTRACTSOURCESBACKEND_H
-#define ABSTRACTSOURCESBACKEND_H
+#pragma once
 
 #include "DiscoverAction.h"
 #include "discovercommon_export.h"
@@ -82,5 +81,3 @@ Q_SIGNALS:
     void passiveMessage(const QString &message);
     void proceedRequest(const QString &title, const QString &description);
 };
-
-#endif // ABSTRACTRESOURCESBACKEND_H

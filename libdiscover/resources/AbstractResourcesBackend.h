@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef ABSTRACTRESOURCESBACKEND_H
-#define ABSTRACTRESOURCESBACKEND_H
+#pragma once
 
 #include <QObject>
 #include <QPair>
@@ -305,5 +304,3 @@ public:
     };
 
 Q_DECLARE_INTERFACE(AbstractResourcesBackendFactory, "org.kde.muon.AbstractResourcesBackendFactory")
-
-#endif // ABSTRACTRESOURCESBACKEND_H

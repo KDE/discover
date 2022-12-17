@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FLATPAKBACKEND_H
-#define FLATPAKBACKEND_H
+#pragma once
 
 #include "FlatpakResource.h"
 
@@ -150,5 +149,3 @@ private:
     QSharedPointer<FlatpakSource> m_localSource;
     QTimer *const m_checkForUpdatesTimer;
 };
-
-#endif // FLATPAKBACKEND_H

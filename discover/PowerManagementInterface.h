@@ -4,8 +4,7 @@
    SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-#ifndef POWERMANAGEMENTINTERFACE_H
-#define POWERMANAGEMENTINTERFACE_H
+#pragma once
 
 #include <QObject>
 
@@ -63,5 +62,3 @@ private:
 
     std::unique_ptr<PowerManagementInterfacePrivate> d;
 };
-
-#endif // POWERMANAGEMENTINTERFACE_H

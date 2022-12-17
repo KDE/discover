@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FLATPAKFETCHDATAJOB_H
-#define FLATPAKFETCHDATAJOB_H
+#pragma once
 
 #include "flatpak-helper.h"
 #include <QByteArray>
@@ -19,5 +18,3 @@ FlatpakRemoteRef *findRemoteRef(FlatpakResource *app, GCancellable *cancellable)
 
 QByteArray fetchMetadata(FlatpakResource *app, GCancellable *cancellable);
 }
-
-#endif // FLATPAKFETCHDATAJOB_H

@@ -5,8 +5,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#ifndef FWUPDSOURCESBACKEND_H
-#define FWUPDSOURCESBACKEND_H
+#pragma once
 
 #include "FwupdBackend.h"
 #include <QStandardItemModel>
@@ -44,5 +43,3 @@ public:
 private:
     FwupdSourcesModel *m_sources;
 };
-
-#endif // FWUPDSOURCESBACKEND_H
