@@ -18,7 +18,11 @@ QQC2.Button {
     required property string subtitle
     property string tooltipText
     readonly property int implicitMinWidth: leftPadding +
-                                            metrics.width +
+                                            layout.spacing +
+                                            text.width +
+                                            layout.spacing +
+                                            icon.Layout.preferredWidth +
+                                            layout.spacing +
                                             rightPadding
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
@@ -32,37 +36,48 @@ QQC2.Button {
     bottomPadding: Kirigami.Units.largeSpacing
 
     TextMetrics {
-        id: metrics
+        id: text
         text: root.title
     }
 
     contentItem: ColumnLayout {
         spacing: 0
+        RowLayout {
+            id: layout
+            spacing: Kirigami.Units.smallSpacing
+            Layout.minimumHeight: Kirigami.Units.gridUnit * 2 + spacing
 
-        // Icon
-        Kirigami.Icon {
-            Layout.preferredWidth: Kirigami.Units.iconSizes.medium
-            Layout.preferredHeight: Kirigami.Units.iconSizes.medium
-            Layout.bottomMargin: Kirigami.Units.largeSpacing
-            Layout.alignment: Qt.AlignLeft
-            source: root.buttonIcon
+            // Icon
+            Kirigami.Icon {
+                id: icon
+                Layout.preferredWidth: Kirigami.Units.iconSizes.medium
+                Layout.preferredHeight: Kirigami.Units.iconSizes.medium
+                Layout.alignment: Qt.AlignVCenter
+                source: root.buttonIcon
+            }
+
+            // Title
+            Kirigami.Heading {
+                Layout.fillWidth: true
+                level: 4
+                text: root.title
+                verticalAlignment: Text.AlignVCenter
+                maximumLineCount: 2
+                elide: Text.ElideRight
+                wrapMode: Text.Wrap
+            }
         }
-        // Title
-        Kirigami.Heading {
-            Layout.fillWidth: true
-            level: 4
-            text: root.title
-            elide: Text.ElideRight
-            wrapMode: Text.Wrap
-        }
+
         // Subtitle
         QQC2.Label {
             Layout.fillWidth: true
+            Layout.fillHeight: true
             visible: root.subtitle
             text: root.subtitle
             elide: Text.ElideRight
             wrapMode: Text.Wrap
             opacity: 0.6
+            verticalAlignment: Text.AlignTop
         }
     }
     QQC2.ToolTip {
