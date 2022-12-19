@@ -13,7 +13,6 @@
 #include <KCrash>
 #include <KDBusService>
 #include <KLocalizedString>
-#include <KStartupInfo>
 #include <KWindowSystem>
 #include <QApplication>
 #include <QCommandLineParser>
