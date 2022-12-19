@@ -6,26 +6,52 @@
 
 #include "SteamOSTransaction.h"
 #include "SteamOSResource.h"
+#include <KLocalizedString>
 #include <QDebug>
 #include <QTimer>
 #include <QtGlobal>
-#include <resources/AbstractResourcesBackend.h>
+
+#include "SteamOSBackend.h"
+#include "dbusproperties_interface.h"
 
 SteamOSTransaction::SteamOSTransaction(SteamOSResource *app, Transaction::Role role, ComSteampoweredAtomupd1Interface *interface)
     : Transaction(app->backend(), app, role, {})
     , m_app(app)
     , m_interface(interface)
-    , m_timer(new QTimer(this))
 {
     setCancellable(true);
     setStatus(Status::SetupStatus);
 
-    m_timer->setSingleShot(true);
-    m_timer->setInterval(1000); // Poll every second for now
-    connect(m_timer, &QTimer::timeout, this, &SteamOSTransaction::pollStatus);
-    m_timer->start();
+    auto steamosProperties = new OrgFreedesktopDBusPropertiesInterface(SteamOSBackend::service(), SteamOSBackend::path(), QDBusConnection::systemBus(), this);
+    connect(steamosProperties,
+            &OrgFreedesktopDBusPropertiesInterface::PropertiesChanged,
+            this,
+            [this](const QString &interface_name, const QVariantMap &changed_properties, const QStringList &invalidated_properties) {
+                if (interface_name != SteamOSBackend::service()) {
+                    return;
+                }
+
+                auto changed = [&](const QString &property) {
+                    return changed_properties.contains(property) || invalidated_properties.contains(property);
+                };
+                if (changed("ProgressPercentage")) {
+                    // Get percentage and pass on to gui
+                    double percent = m_interface->progressPercentage();
+                    qDebug() << "steamos-backend: Progress percentage: " << percent;
+                    setProgress(qBound(0.0, percent, 100.0));
+                }
+                if (changed("EstimatedCompletionTime")) {
+                    qulonglong timeRemaining = m_interface->estimatedCompletionTime();
+                    qDebug() << "steamos-backend: Estimated completion time: " << timeRemaining;
+                    setRemainingTime(timeRemaining);
+                }
+                if (changed("UpdateStatus")) {
+                    refreshStatus();
+                }
+            });
 
     m_interface->StartUpdate(m_app->getBuild());
+    refreshStatus();
 }
 
 void SteamOSTransaction::cancel()
@@ -59,20 +85,11 @@ void SteamOSTransaction::finishTransaction()
     deleteLater();
 }
 
-void SteamOSTransaction::pollStatus()
+void SteamOSTransaction::refreshStatus()
 {
-    // Get percentage and pass on to gui
-    double percent = m_interface->progressPercentage();
-    qDebug() << "steamos-backend: Progress percentage: " << percent;
-    setProgress(qBound(0.0, percent, 100.0));
     // Get update state and update our state
     uint status = m_interface->updateStatus();
     qDebug() << "steamos-backend: New state: " << status;
-
-    qulonglong timeRemaining = m_interface->estimatedCompletionTime();
-    qDebug() << "steamos-backend: Estimated completion time: " << timeRemaining;
-
-    setRemainingTime(timeRemaining);
 
     // Status is one of these from the xml definition:
     //    0 = IDLE, the update has not been launched yet
@@ -86,11 +103,9 @@ void SteamOSTransaction::pollStatus()
         break;
     case 1: // IN_PROGRESS
         setStatus(Status::DownloadingStatus);
-        m_timer->start();
         break;
     case 2: // PAUSED
         setStatus(Status::QueuedStatus);
-        m_timer->start();
         break;
     case 3: // SUCCESSFUL
         setStatus(Status::DoneStatus);

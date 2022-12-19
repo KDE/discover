@@ -26,14 +26,13 @@ Q_SIGNALS:
     void needReboot();
 
 private Q_SLOTS:
-    void pollStatus();
+    void refreshStatus();
 
 private:
     void finishTransaction();
 
-    SteamOSResource *m_app;
+    SteamOSResource *const m_app;
     QPointer<ComSteampoweredAtomupd1Interface> m_interface; // Interface to atomupd dbus api
-    QTimer *m_timer; // Timer to poll for progress, state, etc.
 };
 
 #endif // STEAMOSTRANSACTION_H

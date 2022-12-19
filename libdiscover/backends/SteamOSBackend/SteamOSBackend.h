@@ -36,6 +36,9 @@ public:
     void checkForUpdates() override;
     QString displayName() const override;
 
+    static QString service();
+    static QString path();
+
 public Q_SLOTS:
     void checkForUpdatesFinished(QDBusPendingCallWatcher *call);
 

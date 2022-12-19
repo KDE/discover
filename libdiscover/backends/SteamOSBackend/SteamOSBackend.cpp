@@ -33,6 +33,16 @@ DISCOVER_BACKEND_PLUGIN(SteamOSBackend)
 // We expect 2 results, updates and later updates
 #define CHECK_UPDATES_RETURN_COUNT 2
 
+QString SteamOSBackend::service()
+{
+    return QStringLiteral("com.steampowered.Atomupd1");
+}
+
+QString SteamOSBackend::path()
+{
+    return QStringLiteral("com.steampowered.Atomupd1");
+}
+
 SteamOSBackend::SteamOSBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
@@ -44,7 +54,7 @@ SteamOSBackend::SteamOSBackend(QObject *parent)
 
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &SteamOSBackend::updatesCountChanged);
 
-    m_interface = new ComSteampoweredAtomupd1Interface("com.steampowered.Atomupd1", "/com/steampowered/Atomupd1", QDBusConnection::systemBus(), this);
+    m_interface = new ComSteampoweredAtomupd1Interface(service(), path(), QDBusConnection::systemBus(), this);
 
     // First try to get the current version, only check valid after that since
     // this could wake up the service
