@@ -9,7 +9,6 @@
 
 #include <QDBusMessage>
 #include <QPointer>
-#include <QProcess>
 #include <QVariantList>
 #include <resources/AbstractResourcesBackend.h>
 
@@ -52,7 +51,6 @@ private:
     StandardBackendUpdater *m_updater;
     uint m_fetching = 0;
 
-    QPointer<QProcess> m_checkProcess;
     QString m_updateVersion; // Next update version, can use once we get from dbus.
     QString m_updateBuild; // Next build version.
     quint64 m_updateSize; // Estimated size of next update
