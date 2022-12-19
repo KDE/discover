@@ -31,7 +31,8 @@ SteamOSTransaction::SteamOSTransaction(SteamOSResource *app, Transaction::Role r
 void SteamOSTransaction::cancel()
 {
     if (!m_interface) {
-        passiveMessage("steamos-backend: Error: No DBus interface provided to cancel. Please file a bug.");
+        // This should never happen
+        qWarning() << "steamos-backend: Error: No DBus interface provided to cancel. Please file a bug.";
         return;
     }
 
