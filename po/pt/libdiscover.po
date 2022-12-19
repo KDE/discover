@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-17 00:51+0000\n"
-"PO-Revision-Date: 2022-12-15 09:37+0000\n"
+"PO-Revision-Date: 2022-12-18 14:02+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-POFile-SpellExtra: stable deb main ppa Appstream Kate AppStream Flatpak\n"
 "X-POFile-SpellExtra: flatpakrepo Flathub Snap FWUPD Discover ostree Smart\n"
 "X-POFile-IgnoreConsistency: Snap\n"
-"X-POFile-SpellExtra: Cards smart card ptrace\n"
+"X-POFile-SpellExtra: Cards smart card ptrace SteamOS atomupd\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2295,6 +2295,8 @@ msgstr ""
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""
+"SteamOS: Não é possível consultar o 'atomupd' para obter actualizações do "
+"SteamOS..."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
