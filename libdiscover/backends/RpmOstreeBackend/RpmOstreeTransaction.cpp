@@ -22,7 +22,6 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
     , m_timer(nullptr)
     , m_operation(operation)
     , m_cancelled(false)
-    , m_ref(arg)
     , m_interface(interface)
 {
     setStatus(Status::SetupStatus);
@@ -52,14 +51,14 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
         break;
     case Operation::Rebase:
         // This should never happen
-        if (m_ref.isEmpty()) {
+        if (arg.isEmpty()) {
             qWarning() << "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug.";
             passiveMessage("rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug.");
             setStatus(Status::CancelledStatus);
             return;
         }
-        qInfo() << "rpm-ostree-backend: Starting transaction to rebase to:" << m_ref;
-        m_args.append({QStringLiteral("rebase"), m_ref});
+        qInfo() << "rpm-ostree-backend: Starting transaction to rebase to:" << arg;
+        m_args.append({QStringLiteral("rebase"), arg});
         break;
     case Operation::Unknown:
         // This is a transaction started externally to Discover. We'll just

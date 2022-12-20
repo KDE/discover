@@ -91,9 +91,6 @@ private:
     /* Set when we cancel an in progress transaction */
     bool m_cancelled;
 
-    /* Argument used for some rpm-ostree command. Currently only used to pass
-     * the reference for the rebase operation */
-    QString m_ref;
 
     /* Arguments effectively passed to the rpm-ostree command */
     QStringList m_args;
