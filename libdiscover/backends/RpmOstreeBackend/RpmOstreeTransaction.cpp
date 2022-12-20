@@ -9,6 +9,10 @@
 #include <KLocalizedString>
 
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QVersionNumber>
 
 static const QString TransactionConnection = QStringLiteral("discover_transaction");
 static const QString DBusServiceName = QStringLiteral("org.projectatomic.rpmostree1");
@@ -21,6 +25,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
     : Transaction(parent, resource, Transaction::Role::InstallRole, {})
     , m_timer(nullptr)
     , m_operation(operation)
+    , m_resource((RpmOstreeResource *)resource)
     , m_cancelled(false)
     , m_interface(interface)
 {
@@ -37,16 +42,31 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
 
     // Make sure we are asking for a supported operation and set up arguments
     switch (m_operation) {
-    case Operation::CheckForUpdate:
+    case Operation::CheckForUpdate: {
         qInfo() << "rpm-ostree-backend: Starting transaction to check for updates";
-        m_args.append({QStringLiteral("update"), QStringLiteral("--check")});
+        if (m_resource->isClassic()) {
+            m_prog = QStringLiteral("rpm-ostree");
+            m_args.append({QStringLiteral("update"), QStringLiteral("--check")});
+        } else if (m_resource->isOCI()) {
+            m_prog = QStringLiteral("skopeo");
+            m_args.append({QStringLiteral("inspect"), m_resource->OCIUrl()});
+        } else {
+            // Should never happen
+            qWarning() << "rpm-ostree-backend: Error: Can not start a transaction for resource with an invalid format. Please file a bug.";
+            passiveMessage("rpm-ostree-backend: Error: Can not start a transaction for resource with an invalid format. Please file a bug.");
+            setStatus(Status::CancelledStatus);
+            return;
+        }
         break;
+    }
     case Operation::DownloadOnly:
         qInfo() << "rpm-ostree-backend: Starting transaction to only download updates";
+        m_prog = QStringLiteral("rpm-ostree");
         m_args.append({QStringLiteral("update"), QStringLiteral("--download-only ")});
         break;
     case Operation::Update:
         qInfo() << "rpm-ostree-backend: Starting transaction to update";
+        m_prog = QStringLiteral("rpm-ostree");
         m_args.append({QStringLiteral("update")});
         break;
     case Operation::Rebase:
@@ -58,6 +78,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
             return;
         }
         qInfo() << "rpm-ostree-backend: Starting transaction to rebase to:" << arg;
+        m_prog = QStringLiteral("rpm-ostree");
         m_args.append({QStringLiteral("rebase"), arg});
         break;
     case Operation::Unknown:
@@ -75,20 +96,22 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
         return;
     }
 
-    // Directly run the rpm-ostree command via a QProcess
+    // Directly run the command via a QProcess
     m_process = new QProcess(this);
+    m_process->setProgram(m_prog);
+    m_process->setArguments(m_args);
 
     // Store stderr output for later
     connect(m_process, &QProcess::readyReadStandardError, [this]() {
         QByteArray message = m_process->readAllStandardError();
-        qWarning() << "rpm-ostree (error):" << message;
+        qWarning() << (m_prog + " (error):") << message;
         m_stderr += message;
     });
 
     // Store stdout output for later and process it to fake progress
     connect(m_process, &QProcess::readyReadStandardOutput, [this]() {
         QByteArray message = m_process->readAllStandardOutput();
-        qInfo() << "rpm-ostree:" << message;
+        qInfo() << (m_prog + ":") << message;
         m_stdout += message;
         fakeProgress(message);
     });
@@ -110,8 +133,7 @@ void RpmOstreeTransaction::start()
     // Calling this function only makes sense if we have a QProcess for the
     // current transaction.
     if (m_process != nullptr) {
-        QString prog = QStringLiteral("rpm-ostree");
-        m_process->start(prog, m_args);
+        m_process->start();
         setStatus(Status::DownloadingStatus);
         setProgress(5);
         setDownloadSpeed(0);
@@ -163,26 +185,57 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
     // The transaction was successful. Let's process the result.
     switch (m_operation) {
     case Operation::CheckForUpdate: {
-        // Look for new version in rpm-ostree stdout
-        QString newVersion, line;
-        QString output = QString(m_stdout);
-        QTextStream stream(&output);
-        while (stream.readLineInto(&line)) {
-            if (line.contains(QLatin1String("Version: "))) {
-                newVersion = line;
-                break;
+        if (m_resource->isClassic()) {
+            // Look for new version in rpm-ostree stdout
+            QString newVersion, line;
+            QString output = QString(m_stdout);
+            QTextStream stream(&output);
+            while (stream.readLineInto(&line)) {
+                if (line.contains(QLatin1String("Version: "))) {
+                    newVersion = line;
+                    break;
+                }
             }
+            // If we found a new version then offer it as an update
+            if (!newVersion.isEmpty()) {
+                newVersion = newVersion.trimmed();
+                newVersion.remove(0, QStringLiteral("Version: ").length());
+                newVersion.remove(newVersion.size() - QStringLiteral(" (XXXX-XX-XXTXX:XX:XXZ)").length(), newVersion.size() - 1);
+                qInfo() << "rpm-ostree-backend: Found new version:" << newVersion;
+                Q_EMIT newVersionFound(newVersion);
+            }
+        } else if (m_resource->isOCI()) {
+            // Parse stdout as JSON and look at the container image labels for the version
+            const QJsonDocument jsonDocument = QJsonDocument::fromJson(m_stdout);
+            if (!jsonDocument.isObject()) {
+                qWarning() << "rpm-ostree-backend: Could not parse output as JSON:" << m_prog << m_args;
+                return;
+            }
+
+            // Get the version stored in .Labels.version
+            const QString newVersion = jsonDocument.object().value("Labels").toObject().value("version").toString();
+            if (newVersion.isEmpty()) {
+                qInfo() << "rpm-ostree-backend: Could not get the version from the container labels";
+                return;
+            }
+
+            QVersionNumber newVersionNumber = QVersionNumber::fromString(newVersion);
+            QVersionNumber currentVersionNumber = QVersionNumber::fromString(m_resource->version());
+            if (newVersionNumber <= currentVersionNumber) {
+                qInfo() << "rpm-ostree-backend: No new version found";
+            } else {
+                qInfo() << "rpm-ostree-backend: Found new version:" << newVersion;
+                Q_EMIT newVersionFound(newVersion);
+            }
+        } else {
+            // Should never happen
+            qWarning() << "rpm-ostree-backend: Error: Unknown resource format. Please file a bug.";
+            passiveMessage("rpm-ostree-backend: Error: Unknown resource format. Please file a bug.");
         }
-        // If we found a new version then offer it as an update
-        if (!newVersion.isEmpty()) {
-            newVersion = newVersion.trimmed();
-            newVersion.remove(0, QStringLiteral("Version: ").length());
-            newVersion.remove(newVersion.size() - QStringLiteral(" (XXXX-XX-XXTXX:XX:XXZ)").length(), newVersion.size() - 1);
-            qInfo() << "rpm-ostree-backend: Found new version:" << newVersion;
-            Q_EMIT newVersionFound(newVersion);
-        }
-        // Tell the backend to look for a new major version
+
+        // Always tell the backend to look for a new major version
         Q_EMIT lookForNextMajorVersion();
+
         break;
     }
     case Operation::DownloadOnly:

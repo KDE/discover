@@ -81,6 +81,15 @@ public:
     /* Returns if a given deployment is currently pending */
     Q_SCRIPTABLE bool isPending();
 
+    /* Returns true only if the deployment is from a classic Ostree format */
+    bool isClassic();
+
+    /* Returns true only if the deployment is from an OCI based format */
+    bool isOCI();
+
+    /* Get the full repo:tag reference, only if it's OCI */
+    QString OCIUrl();
+
 private:
     QString m_name;
     QString m_variant;

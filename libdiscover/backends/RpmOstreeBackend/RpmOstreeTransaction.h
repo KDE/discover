@@ -7,6 +7,7 @@
 #pragma once
 
 #include "RpmOstreeDBusInterface.h"
+#include "RpmOstreeResource.h"
 
 #include <Transaction/Transaction.h>
 
@@ -85,14 +86,19 @@ private:
     /* Operation requested for this transaction */
     Operation m_operation;
 
+    /* The resource (deployment) we're working on */
+    RpmOstreeResource *m_resource;
+
     /* QProcess used to call rpm-ostree */
     QProcess *m_process;
 
     /* Set when we cancel an in progress transaction */
     bool m_cancelled;
 
+    /* Command line application called to perform the transaction (usually rpm-ostree) */
+    QString m_prog;
 
-    /* Arguments effectively passed to the rpm-ostree command */
+    /* Arguments passed to the command performing the transaction (usually rpm-ostree) */
     QStringList m_args;
 
     /* rpm-ostree DBus interface, used to cancel running transactions */

@@ -464,3 +464,23 @@ bool RpmOstreeResource::isPending()
 {
     return m_pending;
 }
+
+bool RpmOstreeResource::isClassic()
+{
+    return m_ostreeFormat->isValid() && m_ostreeFormat->isClassic();
+}
+
+bool RpmOstreeResource::isOCI()
+{
+    return m_ostreeFormat->isValid() && m_ostreeFormat->isOCI();
+}
+
+QString RpmOstreeResource::OCIUrl()
+{
+    if (m_ostreeFormat->isValid() && m_ostreeFormat->isOCI()) {
+        return QLatin1String("docker://") + m_ostreeFormat->repo() + ':' + m_ostreeFormat->tag();
+        ;
+    }
+    // Should never happen
+    return {};
+}
