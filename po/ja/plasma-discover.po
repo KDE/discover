@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-09 00:47+0000\n"
+"POT-Creation-Date: 2022-12-20 00:47+0000\n"
 "PO-Revision-Date: 2022-08-20 23:24-0700\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -110,7 +110,7 @@ msgid "Please report this issue to the packagers of your distribution."
 msgstr "この問題をディストリビューションのパッケージャに報告してください。"
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
-#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
+#: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -123,116 +123,116 @@ msgstr ""
 "Discover はタスクが完了する前に閉じられました。タスクが完了するのを待っていま"
 "す。"
 
-#: discover/main.cpp:43
+#: discover/main.cpp:42
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "指定したアプリケーションを appstream:// URI で直接開きます。"
 
-#: discover/main.cpp:44
+#: discover/main.cpp:43
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr "与えられた MIME タイプを扱うことができるプログラムを探して開きます。"
 
-#: discover/main.cpp:45
+#: discover/main.cpp:44
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "カテゴリを付けてエントリの一覧を表示します。"
 
-#: discover/main.cpp:46
+#: discover/main.cpp:45
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "Discover を指示されたモードで開きます。モードはツールバーのボタンに対応しま"
 "す。"
 
-#: discover/main.cpp:47
+#: discover/main.cpp:46
 #, kde-format
 msgid "List all the available modes."
 msgstr "利用可能なすべてのモードを一覧表示します。"
 
-#: discover/main.cpp:48
+#: discover/main.cpp:47
 #, kde-format
 msgid "Compact Mode (auto/compact/full)."
 msgstr "コンパクトモード (オート/コンパクト/フル)"
 
-#: discover/main.cpp:49
+#: discover/main.cpp:48
 #, kde-format
 msgid "Local package file to install"
 msgstr "インストールするローカルパッケージファイル"
 
-#: discover/main.cpp:50
+#: discover/main.cpp:49
 #, kde-format
 msgid "List all the available backends."
 msgstr "利用可能なすべてのバックエンドを一覧表示します。"
 
-#: discover/main.cpp:51
+#: discover/main.cpp:50
 #, kde-format
 msgid "Search string."
 msgstr "文字列を検索"
 
-#: discover/main.cpp:52
+#: discover/main.cpp:51
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "ユーザ フィードバックのために利用可能なオプションのリスト"
 
-#: discover/main.cpp:54
+#: discover/main.cpp:53
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "appstream をサポート: URL スキーム"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:122
 #, kde-format
 msgid "An application explorer"
 msgstr "アプリケーション エクスプローラ"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2022 Plasma Development Team"
 
-#: discover/main.cpp:126
+#: discover/main.cpp:125
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:126
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:127
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "品質保証、デザインとユーザビリティ"
 
-#: discover/main.cpp:132
+#: discover/main.cpp:131
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:133
+#: discover/main.cpp:132
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:140
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Ryuichi Yamada"
 
-#: discover/main.cpp:140
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ryuichi_ya220@outlook.jp"
 
-#: discover/main.cpp:153
+#: discover/main.cpp:152
 #, kde-format
 msgid "Available backends:\n"
 msgstr "利用可能なバックエンド:\n"
 
-#: discover/main.cpp:209
+#: discover/main.cpp:208
 #, kde-format
 msgid "Available modes:\n"
 msgstr "利用可能なモード:\n"

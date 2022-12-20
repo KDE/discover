@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-09 00:47+0000\n"
+"POT-Creation-Date: 2022-12-20 00:47+0000\n"
 "PO-Revision-Date: 2022-12-13 12:20\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -100,7 +100,7 @@ msgid "Please report this issue to the packagers of your distribution."
 msgstr "请将此问题报告给您使用的发行版的软件打包人员。"
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
-#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
+#: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -111,104 +111,104 @@ msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr "Discover 在某些任务完成之前被关闭，正在等待该任务完成。"
 
-#: discover/main.cpp:43
+#: discover/main.cpp:42
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "通过 appstream:// URI 直接打开指定的应用程序。"
 
-#: discover/main.cpp:44
+#: discover/main.cpp:43
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr "使用能处理指定 MIME 类型的程序打开。"
 
-#: discover/main.cpp:45
+#: discover/main.cpp:44
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "显示某个分类的项目列表。"
 
-#: discover/main.cpp:46
+#: discover/main.cpp:45
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr "在指定模式下打开Discover。模式与工具栏按钮对应。"
 
-#: discover/main.cpp:47
+#: discover/main.cpp:46
 #, kde-format
 msgid "List all the available modes."
 msgstr "列出所有可用模式。"
 
-#: discover/main.cpp:48
+#: discover/main.cpp:47
 #, kde-format
 msgid "Compact Mode (auto/compact/full)."
 msgstr "紧凑模式 (自动/紧凑/完整)。"
 
-#: discover/main.cpp:49
+#: discover/main.cpp:48
 #, kde-format
 msgid "Local package file to install"
 msgstr "要安装的本地软件包文件"
 
-#: discover/main.cpp:50
+#: discover/main.cpp:49
 #, kde-format
 msgid "List all the available backends."
 msgstr "列出所有可用的后端程序。"
 
-#: discover/main.cpp:51
+#: discover/main.cpp:50
 #, kde-format
 msgid "Search string."
 msgstr "搜索字符串。"
 
-#: discover/main.cpp:52
+#: discover/main.cpp:51
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "列出用户反馈的可用选项"
 
-#: discover/main.cpp:54
+#: discover/main.cpp:53
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "支持 appstream: URL 格式"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:122
 #, kde-format
 msgid "An application explorer"
 msgstr "应用程序浏览器与管理程序"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2022 Plasma Development Team"
 
-#: discover/main.cpp:126
+#: discover/main.cpp:125
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:126
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:127
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "软件质量保障、设计和易用性"
 
-#: discover/main.cpp:132
+#: discover/main.cpp:131
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:133
+#: discover/main.cpp:132
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:140
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 "KDE 中国, Charles Dong, CoelacanthusHex, DuckSoft, Guo Yunhe, Tyson Tan"
 
-#: discover/main.cpp:140
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -216,12 +216,12 @@ msgstr ""
 "kde-china@kde.org, dy55@kde.org, CoelacanthusHex@kde.org, DuckSoft@kde.org, "
 "i@guoyunhe.me, tysontan@tysontan.com"
 
-#: discover/main.cpp:153
+#: discover/main.cpp:152
 #, kde-format
 msgid "Available backends:\n"
 msgstr "可用后端程序：\n"
 
-#: discover/main.cpp:209
+#: discover/main.cpp:208
 #, kde-format
 msgid "Available modes:\n"
 msgstr "可用模式：\n"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-09 00:47+0000\n"
+"POT-Creation-Date: 2022-12-20 00:47+0000\n"
 "PO-Revision-Date: 2019-12-29 20:50+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -99,7 +99,7 @@ msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
-#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
+#: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "ഡിസ്കവർ "
@@ -110,115 +110,115 @@ msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
 
-#: discover/main.cpp:43
+#: discover/main.cpp:42
 #, fuzzy, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "നിർദ്ദിഷ്ട ആപ്ലിക്കേഷന്റെ പാക്കേജ് നാമം ഉപയോഗിച്ച് നേരിട്ട് തുറക്കുക."
 
-#: discover/main.cpp:44
+#: discover/main.cpp:43
 #, fuzzy, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr "തന്നിരിക്കുന്ന മൈംറ്റൈപ്പ് കൈകാര്യം ചെയ്യാൻ കഴിയുന്ന ഒരു ആപ്പ് ഉപയോഗിച്ച് തുറക്കുക."
 
-#: discover/main.cpp:45
+#: discover/main.cpp:44
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "ഒരു തരം വിഭാഗമുള്ള ഇനങ്ങളുടെ പട്ടിക പ്രദർശിപ്പിക്കുക."
 
-#: discover/main.cpp:46
+#: discover/main.cpp:45
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr "പറഞ്ഞ രീതിയിൽ ഡിസ്കവർ തുറക്കുക. ഉപകരണപ്പട്ടയിലെ ബട്ടണുകളുമായി മോഡുകൾ യോജിക്കുന്നു."
 
-#: discover/main.cpp:47
+#: discover/main.cpp:46
 #, kde-format
 msgid "List all the available modes."
 msgstr "ലഭ്യമായ എല്ലാ രീതികളും പട്ടികപ്പെടുത്തുക."
 
-#: discover/main.cpp:48
+#: discover/main.cpp:47
 #, kde-format
 msgid "Compact Mode (auto/compact/full)."
 msgstr "കോം‌പാക്റ്റ് രീതി (യാന്ത്രികം / കോം‌പാക്റ്റ് / പൂർണ്ണം)."
 
-#: discover/main.cpp:49
+#: discover/main.cpp:48
 #, kde-format
 msgid "Local package file to install"
 msgstr "ഇൻസ്റ്റാൾ ചെയ്യാനുള്ള തദ്ദേശ പാക്കേജ് ഫയൽ"
 
-#: discover/main.cpp:50
+#: discover/main.cpp:49
 #, kde-format
 msgid "List all the available backends."
 msgstr "ലഭ്യമായ എല്ലാ ബാക്കെൻഡുകളും പ്രദര്‍ഷിപ്പിക്കുക."
 
-#: discover/main.cpp:51
+#: discover/main.cpp:50
 #, kde-format
 msgid "Search string."
 msgstr "സ്ട്രിംഗ് തിരയുക."
 
-#: discover/main.cpp:52
+#: discover/main.cpp:51
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr ""
 
-#: discover/main.cpp:54
+#: discover/main.cpp:53
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "ആപ്സ്ട്രീം പിന്തുണയ്ക്കുന്നു: url പദ്ധതി"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:122
 #, kde-format
 msgid "An application explorer"
 msgstr "ഒരു ആപ്ലിക്കേഷൻ പരിവേക്ഷക"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:124
 #, fuzzy, kde-format
 #| msgid "© 2010-2019 Plasma Development Team"
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2019 പ്ലാസ്മ വികസന ടീം"
 
-#: discover/main.cpp:126
+#: discover/main.cpp:125
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr ""
 
-#: discover/main.cpp:127
+#: discover/main.cpp:126
 #, kde-format
 msgid "Nate Graham"
 msgstr ""
 
-#: discover/main.cpp:128
+#: discover/main.cpp:127
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr ""
 
-#: discover/main.cpp:132
+#: discover/main.cpp:131
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr ""
 
-#: discover/main.cpp:133
+#: discover/main.cpp:132
 #, kde-format
 msgid "KNewStuff"
 msgstr ""
 
-#: discover/main.cpp:140
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "നിസരി കെ കെ,പ്രേയസ് പ്രതാപ് "
 
-#: discover/main.cpp:140
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "nisarikoolath@gmail.com,preyasprathap@yahoo.com"
 
-#: discover/main.cpp:153
+#: discover/main.cpp:152
 #, kde-format
 msgid "Available backends:\n"
 msgstr "ലഭ്യമായ ബാക്കെൻഡുകൾ:\n"
 
-#: discover/main.cpp:209
+#: discover/main.cpp:208
 #, kde-format
 msgid "Available modes:\n"
 msgstr "ലഭ്യമായ രീതികൾ:\n"

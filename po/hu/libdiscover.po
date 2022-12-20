@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-17 00:51+0000\n"
+"POT-Creation-Date: 2022-12-20 00:47+0000\n"
 "PO-Revision-Date: 2022-08-29 11:34+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -914,6 +914,47 @@ msgstr "„%1” hozzáadása itt: %2, innen: %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#, kde-format
+msgctxt "@label %1 is the name of an application"
+msgid ""
+"This development version of %1 is outdated. Using the stable version is "
+"highly recommended."
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#, fuzzy, kde-format
+#| msgctxt "Notification when a new version of Kubuntu is available"
+#| msgid "A new version of Kubuntu is available."
+msgctxt "@label %1 is the name of an application"
+msgid "A more stable version of %1 is available."
+msgstr "Új Kubuntu kiadás érhető el."
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Available Version"
+msgctxt "@action: button %1 is the name of a Flatpak repo"
+msgid "View Stable Version on %1"
+msgstr "Elérhető verzió"
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
+#, kde-format
+msgid "%1 is not installed but it still has data present."
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
+#, kde-format
+msgid "Delete settings and user data"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
+#, kde-format
+msgctxt "%1 is the name of the application"
+msgid "Permissions for %1"
 msgstr ""
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
@@ -2088,6 +2129,28 @@ msgstr[1] ""
 "A művelet az alábbi csomagokat is eltávolítja:\n"
 "%2"
 
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Dependencies"
+msgid "Show Dependencies…"
+msgstr "Függőségek"
+
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#, kde-format
+msgid "Dependencies for package: %1"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
+#, kde-format
+msgid "Full Access"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#, kde-format
+msgid "Can access everything on the system"
+msgstr ""
+
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
 msgctxt "Category"
@@ -2268,15 +2331,43 @@ msgstr ""
 msgid "Unknown transaction type"
 msgstr "Nem lehet megszakítani a tranzakciót"
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
-msgid "Snap"
-msgstr "Snap"
+msgid "Channels…"
+msgstr ""
 
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox Filters all changes in the history view"
+#| msgid "All changes"
+msgid "%1 channels"
+msgstr "Minden változtatás"
+
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
+
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
+#, kde-format
+msgid "Switch"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
+#, kde-format
+msgid "Configure permissions…"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
+#, kde-format
+msgid "Permissions for %1"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#, kde-format
+msgid "Snap"
+msgstr "Snap"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
 #, kde-format
@@ -2845,10 +2936,6 @@ msgstr "Bővítmények"
 #~ msgid "Search"
 #~ msgstr "Keresés"
 
-#~ msgctxt "@item:inlistbox Filters all changes in the history view"
-#~ msgid "All changes"
-#~ msgstr "Minden változtatás"
-
 #~ msgctxt "@item:inlistbox Filters installations in the history view"
 #~ msgid "Installations"
 #~ msgstr "Telepítések"
@@ -3092,10 +3179,6 @@ msgstr "Bővítmények"
 #~ msgctxt "@action"
 #~ msgid "Upgrade"
 #~ msgstr "Frissítés"
-
-#~ msgctxt "Notification when a new version of Kubuntu is available"
-#~ msgid "A new version of Kubuntu is available."
-#~ msgstr "Új Kubuntu kiadás érhető el."
 
 #~ msgctxt "@title:window"
 #~ msgid "Save Markings As"
@@ -3836,10 +3919,6 @@ msgstr "Bővítmények"
 #~ msgid "Installed Size:"
 #~ msgstr "Telepített méret:"
 
-#~ msgctxt "@title:group"
-#~ msgid "Available Version"
-#~ msgstr "Elérhető verzió"
-
 #~ msgctxt "@label"
 #~ msgid "Mark for:"
 #~ msgstr "Megjelölés:"
@@ -4015,10 +4094,6 @@ msgstr "Bővítmények"
 #~ msgctxt "@title:tab"
 #~ msgid "Technical Details"
 #~ msgstr "Technikai részletek"
-
-#~ msgctxt "@title:tab"
-#~ msgid "Dependencies"
-#~ msgstr "Függőségek"
 
 #~ msgctxt "@label Download rate"
 #~ msgid "Download rate: %1/s"

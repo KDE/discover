@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-17 00:51+0000\n"
+"POT-Creation-Date: 2022-12-20 00:47+0000\n"
 "PO-Revision-Date: 2022-01-04 20:04+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -909,6 +909,46 @@ msgstr "Pridáva sa vzdialený zdroj \"%1\" do %2 z %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#, kde-format
+msgctxt "@label %1 is the name of an application"
+msgid ""
+"This development version of %1 is outdated. Using the stable version is "
+"highly recommended."
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#, fuzzy, kde-format
+#| msgctxt "Notification when a new version of Kubuntu is available"
+#| msgid "A new version of Kubuntu is available."
+msgctxt "@label %1 is the name of an application"
+msgid "A more stable version of %1 is available."
+msgstr "Nová verzia Kubuntu je dostupná."
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
+#, fuzzy, kde-format
+#| msgid "New unstable version: %1"
+msgctxt "@action: button %1 is the name of a Flatpak repo"
+msgid "View Stable Version on %1"
+msgstr "Nová nestabilná verzia: %1"
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
+#, kde-format
+msgid "%1 is not installed but it still has data present."
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
+#, kde-format
+msgid "Delete settings and user data"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
+#, kde-format
+msgctxt "%1 is the name of the application"
+msgid "Permissions for %1"
 msgstr ""
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
@@ -2089,6 +2129,27 @@ msgstr[2] ""
 "Touto akciou sa tiež odstránia nasledovné balíky:\n"
 "%2"
 
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
+#, fuzzy, kde-format
+#| msgid "Resolving dependencies…"
+msgid "Show Dependencies…"
+msgstr "Riešia sa závislosti..."
+
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#, kde-format
+msgid "Dependencies for package: %1"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
+#, kde-format
+msgid "Full Access"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#, kde-format
+msgid "Can access everything on the system"
+msgstr ""
+
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
 msgctxt "Category"
@@ -2265,15 +2326,43 @@ msgstr ""
 msgid "Unknown transaction type"
 msgstr "Nedá sa zrušiť transakcia"
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
-msgid "Snap"
-msgstr "Snap"
+msgid "Channels…"
+msgstr ""
 
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox Filters all changes in the history view"
+#| msgid "All changes"
+msgid "%1 channels"
+msgstr "Všetky zmeny"
+
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
+
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
+#, kde-format
+msgid "Switch"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
+#, kde-format
+msgid "Configure permissions…"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
+#, kde-format
+msgid "Permissions for %1"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#, kde-format
+msgid "Snap"
+msgstr "Snap"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
 #, kde-format
@@ -2519,9 +2608,6 @@ msgstr "Doplnky"
 
 #~ msgid "Upgrade available"
 #~ msgstr "Aktualizácia dostupná"
-
-#~ msgid "New unstable version: %1"
-#~ msgstr "Nová nestabilná verzia: %1"
 
 #~ msgid "FWUPD ERROR ALREADY PENDING!"
 #~ msgstr "CHYBA FWUPD: Už prebieha!"
@@ -2861,10 +2947,6 @@ msgstr "Doplnky"
 #~ msgid "Search"
 #~ msgstr "Hľadať"
 
-#~ msgctxt "@item:inlistbox Filters all changes in the history view"
-#~ msgid "All changes"
-#~ msgstr "Všetky zmeny"
-
 #~ msgctxt "@item:inlistbox Filters installations in the history view"
 #~ msgid "Installations"
 #~ msgstr "Inštalácie"
@@ -3109,10 +3191,6 @@ msgstr "Doplnky"
 #~ msgctxt "@action"
 #~ msgid "Upgrade"
 #~ msgstr "Aktualizovať"
-
-#~ msgctxt "Notification when a new version of Kubuntu is available"
-#~ msgid "A new version of Kubuntu is available."
-#~ msgstr "Nová verzia Kubuntu je dostupná."
 
 #~ msgctxt "@title:window"
 #~ msgid "Save Markings As"
