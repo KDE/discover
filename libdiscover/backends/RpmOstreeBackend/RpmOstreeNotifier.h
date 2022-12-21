@@ -30,6 +30,9 @@ public:
     bool needsReboot() const override;
 
 private:
+    /* Only run this code if we are on an rpm-ostree managed system */
+    bool isValid() const;
+
     /* Tracks the rpm-ostree command used to check for updates or to look at the
      * status. */
     QProcess *m_process;

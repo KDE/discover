@@ -6,6 +6,7 @@
 
 #include "RpmOstreeNotifier.h"
 
+#include <QFile>
 #include <QFileSystemWatcher>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -18,14 +19,30 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
     , m_hasUpdates(false)
     , m_needsReboot(false)
 {
+    // Refuse to run on systems not managed by rpm-ostree
+    if (!isValid()) {
+        qWarning() << "rpm-ostree-notifier: Not starting on a system not managed by rpm-ostree";
+        return;
+    }
 }
 
 RpmOstreeNotifier::~RpmOstreeNotifier()
 {
 }
 
+bool RpmOstreeNotifier::isValid() const
+{
+    return QFile::exists(QStringLiteral("/run/ostree-booted"));
+}
+
 void RpmOstreeNotifier::recheckSystemUpdateNeeded()
 {
+    // Refuse to run on systems not managed by rpm-ostree
+    if (!isValid()) {
+        qWarning() << "rpm-ostree-notifier: Not starting on a system not managed by rpm-ostree";
+        return;
+    }
+
     qInfo() << "rpm-ostree-notifier: Checking for system update";
     m_process = new QProcess(this);
     m_stdout = QByteArray();
