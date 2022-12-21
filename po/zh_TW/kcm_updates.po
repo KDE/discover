@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-07 00:45+0000\n"
-"PO-Revision-Date: 2022-06-19 22:06+0900\n"
+"PO-Revision-Date: 2022-12-21 05:37+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: kcm/package/contents/ui/main.qml:32
 #, kde-format
@@ -46,41 +46,40 @@ msgstr ""
 "安裝。"
 
 #: kcm/package/contents/ui/main.qml:61
-#, fuzzy, kde-format
-#| msgid "Update software:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
-msgstr "軟體更新方式："
+msgstr "更新頻率："
 
 #: kcm/package/contents/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
-msgstr ""
+msgstr "通知頻率："
 
 #: kcm/package/contents/ui/main.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
-msgstr ""
+msgstr "每天"
 
 #: kcm/package/contents/ui/main.qml:65
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
-msgstr ""
+msgstr "每週"
 
 #: kcm/package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
-msgstr ""
+msgstr "每月"
 
 #: kcm/package/contents/ui/main.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
-msgstr ""
+msgstr "永不"
 
 #: kcm/package/contents/ui/main.qml:111
 #, kde-format

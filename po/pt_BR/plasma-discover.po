@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-20 00:47+0000\n"
-"PO-Revision-Date: 2022-10-19 14:52-0300\n"
+"PO-Revision-Date: 2022-12-20 11:09-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -409,10 +409,9 @@ msgid "Share"
 msgstr "Compartilhar"
 
 #: discover/qml/ApplicationPage.qml:602
-#, fuzzy, kde-format
-#| msgid "Send a link to the application"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Enviar um link para o aplicativo"
+msgstr "Enviar um link para este aplicativo"
 
 #: discover/qml/ApplicationPage.qml:618
 #, kde-format
@@ -646,33 +645,31 @@ msgstr "Não foi possível carregar os aplicativos"
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "Mais popular"
 
 #: discover/qml/BrowsingPage.qml:106
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "Escolha do editor"
 
 #: discover/qml/BrowsingPage.qml:120
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "Jogos melhores avaliados"
 
 #: discover/qml/BrowsingPage.qml:139 discover/qml/BrowsingPage.qml:168
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "Veja mais..."
+msgstr "Veja mais"
 
 #: discover/qml/BrowsingPage.qml:149
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "Ferramentas de desenvolvimento melhores avaliadas"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -742,23 +739,21 @@ msgid "Report this issue"
 msgstr "Relatar este problema"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "Votos: %1 em %2"
+msgstr "Erro %1 de %2"
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "Mostrar anterior"
 
 #: discover/qml/DiscoverWindow.qml:383
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "Mostrar conteúdos"
+msgstr "Mostrar próximo"
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
