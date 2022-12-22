@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-20 00:47+0000\n"
-"PO-Revision-Date: 2022-11-19 06:38+0100\n"
+"PO-Revision-Date: 2022-12-21 08:08+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -24,6 +24,8 @@ msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr ""
+"ამჟამად Discover -ის გამოყენება აპლიკაციების დასაყენებლად ან სისტემის "
+"განახლებისთვის შეუძლებელია, რადგან მისი უკანაბოლოები ხელმისაწვდომი არაა."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -93,7 +95,7 @@ msgstr ""
 #: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
-msgstr ""
+msgstr "შეატყობინეთ ეს შეცდომა თქვენს დისტრიბუტორს."
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
 #: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
@@ -106,6 +108,7 @@ msgstr "აღმოაჩინეთ"
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
+"Discover დაიხურა ზოგიერთი ამოცანის დამთავრებამდე. ველოდები მათ დასრულებას."
 
 #: discover/main.cpp:42
 #, kde-format
@@ -451,7 +454,7 @@ msgstr "შეცდომის ანგარიში"
 #: discover/qml/ApplicationPage.qml:787
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr ""
+msgstr "ჩაიწერეთ ჟურნალში აღმოჩენილი შეცდომა, რათა ის გასწორდეს"
 
 #: discover/qml/ApplicationPage.qml:801
 #, kde-format
@@ -461,7 +464,7 @@ msgstr "შემოწირულობა"
 #: discover/qml/ApplicationPage.qml:802
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
-msgstr ""
+msgstr "დაეხმარეთ პროგრამისტებს კოდით, დიზაინით, ტესტირებით ან თარგმნით"
 
 #: discover/qml/ApplicationPage.qml:827
 #, kde-format
@@ -488,6 +491,16 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
+"ამ აპლიკაციის საწყისი კოდი ნაწილობრივ ან სრულად დახურულია საჯარო შემოწმებისა "
+"და გაუმჯობესებისათვის. ეს ნიშნავს, რომ მესამე პირებს და მომხმარებლებს "
+"(მაგალითად, თქვენ) არ შეუძლიათ გადაამოწმონ მისი ოპერაციები, უსაფრთხოება და "
+"სანდოობა. ან შეცვალონ და გადასცენ სხვას ავტორის ნებართვის გარეშე.<nl/><nl/"
+">აპლიკაცია შეიძლება ძალიანაც უსაფრთხო იყოს, მაგრამ ასევე შეიძლება უცნაურად "
+"იქცეოდეს - მაგალითად მოაგროვოს ინფორმაცია თქვენს შესახებ, თვალყური ადევნოს "
+"თქვენს მდებარეობას ან თქვენი ფაილები სხვას გადაუგზავნოს. ადვილი საშუალება, "
+"გაიგოთ ეს, არ არსებობს. ამიტომ მხოლოდ სანდო ავტორების პროგრამები უნდა "
+"დააყენოთ (<link url='%1'>%2</link>).<nl/><nl/>გაიგეთ მეტი <link url='%3'>%3</"
+"link>."
 
 #: discover/qml/ApplicationPage.qml:879
 #, kde-kuit-format
@@ -504,6 +517,15 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
+"ამ აპლიკაციის საწყისი კოდი ნაწილობრივ ან სრულად დახურულია საჯარო შემოწმებისა "
+"და გაუმჯობესებისათვის. ეს ნიშნავს, რომ მესამე პირებს და მომხმარებლებს "
+"(მაგალითად, თქვენ) არ შეუძლიათ გადაამოწმონ მისი ოპერაციები, უსაფრთხოება და "
+"სანდოობა. ან შეცვალონ და გადასცენ სხვას ავტორის ნებართვის გარეშე.<nl/><nl/"
+">აპლიკაცია შეიძლება ძალიანაც უსაფრთხო იყოს, მაგრამ ასევე შეიძლება უცნაურად "
+"იქცეოდეს - მაგალითად მოაგროვოს ინფორმაცია თქვენს შესახებ, თვალყური ადევნოს "
+"თქვენს მდებარეობას ან თქვენი ფაილები სხვას გადაუგზავნოს. ადვილი საშუალება, "
+"გაიგოთ ეს, არ არსებობს. ამიტომ მხოლოდ სანდო ავტორების პროგრამები უნდა "
+"დააყენოთ (%1).<nl/><nl/>გაიგეთ მეტი <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -570,6 +592,9 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
+"\"%1\" შეიძლება ინტერნეტში იყოს ხელმისაწვდომი. ინტერნეტიდან გადმოწერილი "
+"პროგრამები არაა შემოწმებული თქვენი დისტრიბუტორის მიერ. ფრთხილად გამოიყენეთ "
+"ის."
 
 #: discover/qml/ApplicationsListPage.qml:188
 #, kde-format
@@ -628,7 +653,7 @@ msgstr "უმაღლესი-რეიტინგის პროგრა�
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
-msgstr ""
+msgstr "<em>root</em> -ით გაშვება რეკომენდებული და საჭირო არაა."
 
 #: discover/qml/DiscoverWindow.qml:56
 #, kde-format

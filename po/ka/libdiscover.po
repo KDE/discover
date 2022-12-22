@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-20 00:47+0000\n"
-"PO-Revision-Date: 2022-12-10 07:29+0100\n"
+"POT-Creation-Date: 2022-12-22 00:48+0000\n"
+"PO-Revision-Date: 2022-12-21 08:20+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -682,6 +682,8 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"წვდომა GPG კრიპტოგრაფიის სერვისთან. ჩვეულებრივ ხელმოწერისა და ხელმოწერილი "
+"დოკუმენტების წასაკითხად გამოიყენება"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, kde-format
@@ -691,7 +693,7 @@ msgstr "Bluetooth-თან წვდომა"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr ""
+msgstr "შეუძლია ინტეგრაცია და კომუნიკაცია Bluetooth მოწყობილობებთან"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #, kde-format
@@ -800,6 +802,8 @@ msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr ""
+"შეუძლია შემდეგ ადგილებში მდებარე სისტემური ფაილების წაკითხვა წვდომების "
+"მოთხოვნის გარეშე: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:915
 #, kde-format
@@ -807,6 +811,8 @@ msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr ""
+"აქვს წვდომების შესახებ კითხვის გარეშე შემდეგ ბილიკებზე მდებარე სისტემური "
+"ფაილებთან წვდომა: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
 #, kde-format
@@ -889,9 +895,9 @@ msgid "Adding remote '%1' in %2 from %3"
 msgstr "დაშორებულის '%1' დამატება %2-ში, %3-დან"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
-#, kde-format
+#, fuzzy, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "'%2'-ში '%1' ვერ ვიპოვე. დარწმუნდით, რომ ის ხელმისაწვდომია"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
@@ -900,35 +906,37 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"%1-ის სატესტო ვერსია მოძველებულია. რეკომენდებულია სტაბილური ვერსიის "
+"გამოყენება."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr ""
+msgstr "ხელმისაწვდომია %1-ის უფრო სტაბილური ვერსია."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr ""
+msgstr "%1-ზე სტაბილური ვერსიის ნახვა"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "%1 დაყენებული არაა, მაგრამ მისი მონაცემები ჯერ კიდევ ხელმისაწვდომია."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "პარამეტრებისა და მომხმარებლის მონაცემების წაშლა"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "%1-ის წვდომები"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -936,6 +944,8 @@ msgid ""
 "The remote %1 require that you accept their license:\n"
 " %2"
 msgstr ""
+"დაშორებულ %1-ს ესაჭიროება, რომ მის ლიცენზიას დაეთანხმოთ:\n"
+"%2"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
 #, kde-format
@@ -947,53 +957,55 @@ msgstr "ლიცენზიის გადახედვა"
 msgid "Could not enable remote %1: %2"
 msgstr "დაშორებულის (%1) ჩართვის შეცდომა: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:67
 #, kde-format
 msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"მხარდაუჭერელი კითხვა:\n"
+"%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:133
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "უკანაბოლოს %1 ინიციალიზაციისთვის მეტისმეტად დიდი დრო დასჭირდა"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:195
 #, kde-format
 msgid "Applications"
 msgstr "აპლიკაციები"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma -ის დამატებები"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
 #, kde-format
 msgid "Application Addons"
 msgstr "აპლიკაციის დამატებები"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "ქსელის შეცდომა უკანაბოლოში %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:463
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "არასწორი %1 უკანაბოლო. დაუკავშირდით თქვენს დისტრიბუტორს."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:482
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1002,22 +1014,22 @@ msgid ""
 "%2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
-#, kde-format
-msgid "Could not fetch screenshot for the entry %1 in backend %2"
-msgstr ""
-
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
-msgid "Unhandled error in %1 backend. Contact your distributor."
-msgstr ""
+msgid "Could not fetch screenshot for the entry %1 in backend %2"
+msgstr "ჩანაწერის %1 ეკრანის ანაბეჭდების გამოთხოვის შეცდომა უკანაბოლოში %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
+#, kde-format
+msgid "Unhandled error in %1 backend. Contact your distributor."
+msgstr "%1 უკანაბოლოს დაუმუშავებელი შეცდომა. დაუკავშირდით დისტრიბუტორს."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:504
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:642
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "KNewStuff -ის არასწორი URI: %1"
@@ -1059,7 +1071,7 @@ msgstr "ფონტები"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:213
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
-msgstr ""
+msgstr "დარწმუნდით, რომ AppStream სწორად აყენია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:251
 #, kde-format
@@ -1619,23 +1631,23 @@ msgstr "ტრანზაქცია ამჟამად თავის ნ
 msgid ""
 "The transaction is currently resolving the dependencies of the packages it "
 "will install…"
-msgstr ""
+msgstr "ტრანზაქცია ამჟამად ხსნის დასაყენებელი პაკეტების დამოკიდებულებებს…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
 #, kde-format
 msgid "The transaction is currently checking the signatures of the packages…"
-msgstr ""
+msgstr "ტრანზაქცია ამჟამად პაკეტების ხელმოწერას ამოწმებს…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
 #, kde-format
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
-msgstr ""
+msgstr "ტრანზაქცია ამჟამად პაკეტების ნაკრების გადაცემის ტესტირებას ახდენს…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
-msgstr ""
+msgstr "ტრანზაქცია ამჟამად პაკეტებს ნაკრებს გადასცემს…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
@@ -1847,7 +1859,7 @@ msgstr "სისტემის შეკეთება"
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
 msgid "Repairing failed offline update"
-msgstr ""
+msgstr "შეცდომით დასრულებული გათიშული განახლების ჩასწორება"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
 #, kde-format
@@ -1999,6 +2011,8 @@ msgid ""
 "Media Change of type '%1' is requested.\n"
 "%2"
 msgstr ""
+"მოთხოვილია '%1' მედიის ცვლილება.\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:639
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
@@ -2013,6 +2027,8 @@ msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
 " %3"
 msgstr ""
+"პაკეტი %1 და მისი მომწოდებელი %2 ითხოვენ, რომ მათ ლიცენზიას დაეთანხმოთ:\n"
+"%3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
@@ -2063,30 +2079,31 @@ msgid_plural ""
 "This action will also remove the following packages:\n"
 "%2"
 msgstr[0] ""
+"ეს ქმედება ასევე წაშლის შემდეგ პაკეტსაც:\n"
+"%2"
 msgstr[1] ""
+"ეს ქმედება ასევე წაშლის შემდეგ პაკეტებსაც:\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
-#, fuzzy, kde-format
-#| msgid "Resolving dependencies…"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "ურთიერთდამოკიდებულებების ამოხსნა…"
+msgstr "დამოკიდებულებების ჩვენება…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "დამოკიდებულებები პაკეტისთვის: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
-#, fuzzy, kde-format
-#| msgid "Home Folder Access"
+#, kde-format
 msgid "Full Access"
-msgstr "საწყის საქაღალდესთან წვდომა"
+msgstr "სრული წვდომა"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
-#, fuzzy, kde-format
-#| msgid "Can access the internet"
+#, kde-format
 msgid "Can access everything on the system"
-msgstr "წვდომა ინტერნეტთან"
+msgstr "შეუძლია სისტემაში ყველაფერთან წვდომა"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2098,11 +2115,12 @@ msgstr "ოპერაციული სისტემა"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree: ნაპოვნია მრავალჩატვირთვადი გაშლები. შეავსეთ შეცდომის ანგარიში."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree: ჩატვირთული გაშლა ნაპოვნი არაა. შეავსეთ შეცდომის ანგარიში."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
@@ -2130,12 +2148,14 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:477
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr ""
+msgstr "ძირითად ვერსიაზე გადასვლისთვის საჭიროა უახლეს ვერსიამდე განახლება"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:485
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"ბაზის შეცვლის ოპერაციისთვის დაშორებული მიმართვა არ არსებობს. შეავსეთ "
+"შეცდომის ანგარიში."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #, kde-format
@@ -2242,12 +2262,12 @@ msgstr "ტრანზაქციის უცნობი ტიპი"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "არხები…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
 #, kde-format
 msgid "%1 channels"
-msgstr ""
+msgstr "%1 არხი"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
@@ -2258,17 +2278,17 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "გადართვა"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "წვდომების მორგება…"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "%1-ის წვდომები"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2285,7 +2305,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:62
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "SteamOS: atomupd -დან SteamOS -ის განახლებების გამოთხოვის შეცდომა..."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format

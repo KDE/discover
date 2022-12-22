@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-20 00:47+0000\n"
+"POT-Creation-Date: 2022-12-22 00:48+0000\n"
 "PO-Revision-Date: 2022-12-17 18:00+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -980,7 +980,7 @@ msgstr "EULA'yı gözden geçir"
 msgid "Could not enable remote %1: %2"
 msgstr "%1 uzak kaynağı etkinleştirilemedi: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:67
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -989,32 +989,32 @@ msgstr ""
 "Desteklenmeyen soru:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:133
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Arka uç %1 başlaması çok zaman aldı"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:195
 #, kde-format
 msgid "Applications"
 msgstr "Uygulamalar"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma Eklentileri"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
 #, kde-format
 msgid "Application Addons"
 msgstr "Uygulama Eklentileri"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 arka ucunda ağ hatası: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1023,14 +1023,14 @@ msgstr ""
 "Arka uç  %1 için sunucuya çok istek gönderildi. Birkaç dakika içinde lütfen "
 "yeniden deneyin."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:463
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Geçersiz %1 arka uç, dağıtıcınızla iletişime geçin."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:482
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1043,22 +1043,22 @@ msgstr ""
 "gerçekleştirebilirsiniz. Bildirilen hata şuydu:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "%2 arka ucundan %1 girdisi için ekran görüntüsü alınamadı"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 arka ucunda ele alınmamış hata. Dağıtıcınız ile iletişime geçin."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:504
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:642
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Hatalı KNewStuff URI: %1"
