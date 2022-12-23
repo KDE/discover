@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-22 00:48+0000\n"
-"PO-Revision-Date: 2022-11-21 19:10+0400\n"
+"PO-Revision-Date: 2022-12-22 13:48+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -922,38 +922,37 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"أصبحت هذه الإصدارة التطويرية من %1 قديمة. من المستحسن أن تستعمل الإصدارة "
+"المستقرة."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
-#, fuzzy, kde-format
-#| msgctxt "Notification when a new version of Kubuntu is available"
-#| msgid "A new version of Kubuntu is available."
+#, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr "يتوفّر تحديث جديد من كوبونتو."
+msgstr "يتوفّر إصدارة أكثر استقراراً من %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
-#, fuzzy, kde-format
-#| msgid "New unstable version: %1"
+#, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr "إصدارة غير مستقرّة جديدة: %1"
+msgstr "اعرض الإصدارة المستقرّة على %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "التطبيق %1 غير مثبت ولكنه يملك بيانات على النظام."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "احذف الإعدادات وبيانات المستخدم"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "صلاحيات لـ %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -980,6 +979,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"سؤال غير مدعوم:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:133
 #, kde-format
@@ -2146,27 +2147,24 @@ msgstr[5] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
-#, fuzzy, kde-format
-#| msgid "Resolving dependencies…"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "يحلّ الاعتماديّات…"
+msgstr "أظهر الاعتماديّات…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "اعتماديات حزمة: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
-#, fuzzy, kde-format
-#| msgid "Home Folder Access"
+#, kde-format
 msgid "Full Access"
-msgstr "الوصول إلى مجلد المنزل"
+msgstr "الوصول كامل"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
-#, fuzzy, kde-format
-#| msgid "Can access the internet"
+#, kde-format
 msgid "Can access everything on the system"
-msgstr "يمكنه الوصول إلى الشابكة"
+msgstr "يمكنه الوصول لكامل النظام"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2177,13 +2175,12 @@ msgstr "نظام التشغيل"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree: عثر على عمليات نشر قابلة للإقلاع متعددة. يرجى تقديم خطأ."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
-#, fuzzy, kde-format
-#| msgid "Missing remote ref for rebase operation. Please file a bug."
+#, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
-msgstr "ينقص إحالة بعيدة إلى عملية إعادة تأسيس النظام. الرجاء أبلغ عنها."
+msgstr "rpm-ostree: لم يعثر على عملية نشر قابلة للإقلاع. الرجاء أبلغ عنها."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
@@ -2326,14 +2323,12 @@ msgstr "نوع معاملة مجهول"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "القنوات…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters all changes in the history view"
-#| msgid "All changes"
+#, kde-format
 msgid "%1 channels"
-msgstr "كلّ التّغييرات"
+msgstr "%1 قناة"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
@@ -2344,17 +2339,17 @@ msgstr "‏%1 -‏ %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "بدّل"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "اضبط الصلاحيات…"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "صلاحيات لـ %1"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2373,7 +2368,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:62
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "ستيم او اس: لم يتمكن من استعلام atomupd لتحديثات ستيم او اس…"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
