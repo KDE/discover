@@ -225,12 +225,6 @@ DiscoverPage {
                 Flow {
                     id: metadataLayout
                     readonly property int itemWidth: Kirigami.Units.gridUnit * 7
-
-                    Layout.leftMargin: appInfo.internalSpacings
-                    Layout.rightMargin: appInfo.internalSpacings
-                    // This centers the Flow in the page, no matter how many items have
-                    // flowed onto other rows
-
                     readonly property int visibleChildren: countVisibleChildren(children)
                     function countVisibleChildren(items) {
                         let ret = 0;
@@ -240,13 +234,18 @@ DiscoverPage {
                         }
                         return ret;
                     }
-                    onImplicitWidthChanged: visibleChildrenChanged()
 
+                    // This centers the Flow in the page, no matter how many items have
+                    // flowed onto other rows
                     Layout.maximumWidth: ((itemWidth + spacing) * Math.min(visibleChildren, Math.floor(headerLayout.width / (itemWidth + spacing)))) - spacing
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignHCenter
+                    Layout.leftMargin: appInfo.internalSpacings
+                    Layout.rightMargin: appInfo.internalSpacings
 
                     spacing: Kirigami.Units.smallSpacing
+
+                    onImplicitWidthChanged: visibleChildrenChanged()
 
                     // Version
                     ColumnLayout {
