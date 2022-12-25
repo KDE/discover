@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-22 00:48+0000\n"
-"PO-Revision-Date: 2022-12-18 14:02+0000\n"
+"PO-Revision-Date: 2022-12-23 22:59+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -938,35 +938,37 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"Esta versão de desenvolvimento do %1 está desactualizado. É altamente "
+"recomendado usar a versão estável."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr ""
+msgstr "Está disponível uma versão mais estável do %1."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr ""
+msgstr "Ver a Versão Estável no %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "O %1 não está instalado, mas ainda tem dados presentes."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "Apagar as configurações e dados do utilizador"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "Permissões do %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2145,27 +2147,24 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
-#, fuzzy, kde-format
-#| msgid "Resolving dependencies…"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "A resolver as dependências…"
+msgstr "Mostrar as Dependências…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "Dependências do pacote: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
-#, fuzzy, kde-format
-#| msgid "Home Folder Access"
+#, kde-format
 msgid "Full Access"
-msgstr "Acesso à Pasta Pessoal"
+msgstr "Acesso Total"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
-#, fuzzy, kde-format
-#| msgid "Can access the internet"
+#, kde-format
 msgid "Can access everything on the system"
-msgstr "Consegue aceder à Internet"
+msgstr "Consegue aceder a tudo no sistema"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2335,7 +2334,7 @@ msgstr "Tipo de transacção desconhecido"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "Canais…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
 #, kde-format
@@ -2356,12 +2355,12 @@ msgstr "Mudar"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "Configurar as permissões…"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "Permissões do %1"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

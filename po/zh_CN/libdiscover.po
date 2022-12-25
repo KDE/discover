@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-22 00:48+0000\n"
-"PO-Revision-Date: 2022-12-13 12:20\n"
+"PO-Revision-Date: 2022-12-24 11:42\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -2078,10 +2078,9 @@ msgstr[0] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
-#, fuzzy, kde-format
-#| msgid "Resolving dependencies…"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "正在解决依赖关系…"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
@@ -2089,16 +2088,14 @@ msgid "Dependencies for package: %1"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
-#, fuzzy, kde-format
-#| msgid "Home Folder Access"
+#, kde-format
 msgid "Full Access"
-msgstr "主文件夹访问"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
-#, fuzzy, kde-format
-#| msgid "Can access the internet"
+#, kde-format
 msgid "Can access everything on the system"
-msgstr "允许访问网络"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-22 00:48+0000\n"
-"PO-Revision-Date: 2022-12-23 06:51+0100\n"
+"PO-Revision-Date: 2022-12-24 06:31+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2014,6 +2014,9 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"ამ განახლების დასრულება შეუძლებელია, რადგან ის აპირებს, სისტემისთვის "
+"ფუნქციონირებისათვის კრიტიკული პროგრამები წაშალოს: <nl/><ul><li>%1</li></"
+"ul><nl/>თუ გჯერათ, რომ ეს შეცდომაა, თქვენი დისტრიბუტივის მომწოდებელს მიწერეთ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:499
 #, kde-format
@@ -2026,6 +2029,7 @@ msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
 ">in order to install:<ul><li>%2</li></ul>"
 msgstr ""
+"<ul><li>%2</li></ul>-ის დასაყენებლად წაიშლება <ul><li>%1</li></ul><br/>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
 #, kde-kuit-format
@@ -2093,6 +2097,9 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"ამ განახლების დასრულება შეუძლებელია, რადგან ის აპირებს, სისტემისთვის "
+"ფუნქციონირებისათვის კრიტიკული პროგრამები წაშალოს: <nl/><ul><li>%1</li></"
+"ul><nl/>თუ გჯერათ, რომ ეს შეცდომაა, თქვენი დისტრიბუტივის მომწოდებელს მიწერეთ."
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
 #, kde-format
@@ -2158,6 +2165,9 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>ხელმისაწვდომია %1-ის ახალი ძირითადი ვერსია!</b>\n"
+"ამ ვერსიამდე განახლებისთვის დარწმუნდით, რომ ყველა დარჩენილი განახლება "
+"დააყენეთ და გადატვირთეთ სისტემა."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, kde-format
@@ -2330,6 +2340,8 @@ msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this computer. Install it anyway?"
 msgstr ""
+"ეს Snap აპლიკაცია უსაფრთხო შემოსაზღვრასთან თავსებადი არაა და მას "
+"კომპიუტერთან სრული წვდომა ექნება. გნებავთ, მაინც დავაყენოთ?"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:62
 #, kde-format
