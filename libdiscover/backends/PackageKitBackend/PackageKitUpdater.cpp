@@ -168,7 +168,7 @@ public:
     }
     QString upgradeText() const override
     {
-        return i18np("1 package to upgrade", "%1 packages to upgrade", withoutDuplicates().count());
+        return i18np("1 package will be upgraded", "%1 packages will be upgraded", withoutDuplicates().count());
     }
     QString longDescription() override
     {
@@ -177,13 +177,16 @@ public:
         for (auto res : resources) {
             const auto changelog = res->changelog();
             if (changelog.isEmpty()) {
-                changes += i18n("<li>%1 (%2): No changelog information</li>\n", res->packageName(), res->availableVersion());
+                changes += i18n("<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided", res->packageName(), res->availableVersion());
             } else {
-                changes += i18n("<li>%1 (%2): %3</li>\n", res->packageName(), res->availableVersion(), changelog);
+                changes += i18n("<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</blockquote>",
+                                res->packageName(),
+                                res->availableVersion(),
+                                changelog);
             }
         }
         changes.sort();
-        return QStringLiteral("<ul>") + changes.join(QString()) + QStringLiteral("</ul>\n");
+        return changes.join(QString());
     }
     void fetchChangelog() override
     {

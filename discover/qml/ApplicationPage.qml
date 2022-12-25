@@ -32,6 +32,9 @@ DiscoverPage {
     // Discover is launched e.g. from krunner or otherwise requested to show a
     // specific application on launch.
     readonly property bool isHome: true
+
+    readonly property bool isOfflineUpgrade: application.packageName === "discover-offline-upgrade"
+
     function searchFor(text) {
         if (text.length === 0)
             return;
@@ -130,7 +133,7 @@ DiscoverPage {
 
                 spacing: appInfo.internalSpacings
 
-                // App icon, name, author, rating
+                // App icon, name, author or update info, rating
                 RowLayout {
                     Layout.leftMargin: appInfo.internalSpacings
                     Layout.rightMargin: appInfo.internalSpacings
@@ -163,15 +166,25 @@ DiscoverPage {
                             elide: Text.ElideRight
                         }
 
-                        // Author
+                        // Author (for apps) or upgrade info (for offline upgrades)
                         Label {
                             id: author
 
                             Layout.fillWidth: true
                             Layout.bottomMargin: appInfo.internalSpacings
 
+                            visible: text.length > 0
+
                             opacity: 0.8
-                            text: appInfo.application.author ? appInfo.application.author : i18n("Unknown author")
+                            text: {
+                                if (appInfo.isOfflineUpgrade) {
+                                    return appInfo.application.upgradeText.length > 0 ? appInfo.application.upgradeText : "";
+                                } else if (appInfo.application.author.length > 0) {
+                                    return appInfo.application.author;
+                                } else {
+                                    return i18n("Unknown author");
+                                }
+                            }
                             wrapMode: Text.Wrap
                             maximumLineCount: 5
                             elide: Text.ElideRight
@@ -180,6 +193,9 @@ DiscoverPage {
                         // Rating
                         RowLayout {
                             Layout.fillWidth: true
+
+                            // Not relevant to the offline upgrade use case
+                            visible: !appInfo.isOfflineUpgrade
 
                             Rating {
                                 opacity: 0.8
@@ -244,6 +260,9 @@ DiscoverPage {
                     Layout.rightMargin: appInfo.internalSpacings
 
                     spacing: Kirigami.Units.smallSpacing
+
+                    // Not relevant to the offline upgrade use case
+                    visible: !appInfo.isOfflineUpgrade
 
                     onImplicitWidthChanged: visibleChildrenChanged()
 
@@ -497,6 +516,9 @@ DiscoverPage {
             // Short description
             Kirigami.Heading {
                 Layout.fillWidth: true
+                // Not relevant to the offline upgrade use case because we
+                // display the info in the header instead
+                visible: !appInfo.isOfflineUpgrade
                 text: appInfo.application.comment
                 type: Kirigami.Heading.Type.Primary
                 level: 2
@@ -600,7 +622,7 @@ DiscoverPage {
                     title: i18nc("Exports the application's URL to an external service", "Share")
                     subtitle: i18n("Send a link for this application")
                     tooltipText: application.url.toString()
-                    visible: tooltipText.length > 0
+                    visible: tooltipText.length > 0 && !appInfo.isOfflineUpgrade
 
                     Kirigami.PromptDialog {
                         id: shareSheet
