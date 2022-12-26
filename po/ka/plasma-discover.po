@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-20 00:47+0000\n"
-"PO-Revision-Date: 2022-12-24 06:32+0100\n"
+"PO-Revision-Date: 2022-12-25 07:31+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -35,6 +35,9 @@ msgid ""
 "Backends</interface> section.<nl/><nl/>Also please consider reporting this "
 "as a packaging issue to your distribution."
 msgstr ""
+"ზოგიერთი შეგიძლიათ პარამეტრების გვერდიდან დააყენოთ,<interface>ნაკლული "
+"უკანაბოლოების</interface> სექციიდან. <nl/><nl/>ასევე, ალბათ, დაგჭირდებათ "
+"თქვენს დისტრიბუტივის მომწოდებელს პაკეტების პრობლემის შესახებ შეატყობინოთ."
 
 #: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
@@ -52,6 +55,11 @@ msgid ""
 "managing software because the PackageKit backend is not well-integrated on "
 "Arch Linux."
 msgstr ""
+"აპლიკაციის უკანაბოლოების ჩასართავად ბრძანება <command>pacman</command> "
+"შეგიძლიათ გამოიყენოთ. <nl/><nl/>დაიმახსოვრეთ, რომ Arch Linux-ის "
+"პროგრამისტები პროგრამების სამართავად გირჩევენ <command>pacman</command>-ი "
+"გამოიყენოთ, რადგან უკანაბოლო PackageKit -ი Arch Linux-ში მთლად კარგად "
+"ინტეგრირებულიც არაა."
 
 #: discover/DiscoverObject.cpp:181
 #, kde-format
@@ -74,6 +82,8 @@ msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
+"Flatpack-ის რესურსებთან Flatpack-ის უკანაბოლო %1-ის გარეშე ურთიერთობა "
+"შეუძლებელია. ჯერ ის დააყენეთ."
 
 #: discover/DiscoverObject.cpp:310
 #, kde-format
@@ -90,7 +100,7 @@ msgstr "დარწმუნდით, რომ Snap-ის მხარდა
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
-msgstr ""
+msgstr "%1-ის გასნა შეუძლებელია. ის არც ერთი რეპოზიტორიიდანაა ხელმისაწვდომი."
 
 #: discover/DiscoverObject.cpp:377
 #, kde-format
@@ -113,12 +123,13 @@ msgstr ""
 #: discover/main.cpp:42
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
-msgstr ""
+msgstr "მითითებული აპლიკაციის პირდაპირ გახსნა appstream:// URI-ის გამოყენებით."
 
 #: discover/main.cpp:43
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
+"ისეთი პროგრამების მოძებნა, რომელსაც მითითებულ mimetype-ზე მუშაობა შეუძლიათ."
 
 #: discover/main.cpp:44
 #, kde-format
@@ -751,6 +762,9 @@ msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
+"KDE-სთვის მოხმარების ანონიმური მონაცემების გაგზავნა, რათა ჩვენი "
+"მომხმარებლების უკეთ გვესმოდეს. მეტი ინფორმაციისთვის იხილეთ https://kde.org/"
+"privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:17
 #, kde-format
@@ -778,6 +792,8 @@ msgid ""
 "You can help us improving this application by sharing statistics and "
 "participate in surveys."
 msgstr ""
+"თქვენი სტატისტიკის გაზიარებით შეგიძლიათ აპლიკაციების გაუმჯობესებაში "
+"დაგვეხმაროთ."
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -1062,6 +1078,8 @@ msgid ""
 "If you would like to report the update issue to your distribution's "
 "packagers, include this information:"
 msgstr ""
+"თუ გნებავთ, რომ თქვენი დისტრიბუტივის პაკეტების შეცდომის შესახებ ანგარიში "
+"გააგზავნოთ, ჩასვით ეს ინფორმაციაც:"
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format

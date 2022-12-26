@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-20 00:47+0000\n"
+"POT-Creation-Date: 2022-12-26 00:54+0000\n"
 "PO-Revision-Date: 2022-11-22 21:38+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -303,188 +303,188 @@ msgstr "தெரியாத நிரலாளர்"
 msgid "Could not access the screenshots"
 msgstr "திரைப்பிடிப்புகளை அணுக முடியவில்லை"
 
-#: discover/qml/ApplicationPage.qml:261
+#: discover/qml/ApplicationPage.qml:260
 #, kde-format
 msgid "Version"
 msgstr "பதிப்பு"
 
-#: discover/qml/ApplicationPage.qml:288
+#: discover/qml/ApplicationPage.qml:287
 #: discover/qml/ApplicationsListPage.qml:109
 #, kde-format
 msgid "Size"
 msgstr "அளவு"
 
-#: discover/qml/ApplicationPage.qml:315
+#: discover/qml/ApplicationPage.qml:314
 #, kde-format
 msgid "Distributed by"
 msgstr "விநியோகிப்பவர்"
 
-#: discover/qml/ApplicationPage.qml:342
+#: discover/qml/ApplicationPage.qml:341
 #, kde-format
 msgid "License"
 msgid_plural "Licenses"
 msgstr[0] "உரிமம்"
 msgstr[1] "உரிமங்கள்"
 
-#: discover/qml/ApplicationPage.qml:351
+#: discover/qml/ApplicationPage.qml:350
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "தெரியாதது"
 
-#: discover/qml/ApplicationPage.qml:389
+#: discover/qml/ApplicationPage.qml:388
 #, kde-format
 msgid "What does this mean?"
 msgstr "இதன் பொருள் என்ன?"
 
-#: discover/qml/ApplicationPage.qml:399
+#: discover/qml/ApplicationPage.qml:398
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "மேலும் காட்டு…"
 msgstr[1] "மேலும் காட்டு…"
 
-#: discover/qml/ApplicationPage.qml:417 discover/qml/ApplicationPage.qml:858
+#: discover/qml/ApplicationPage.qml:416 discover/qml/ApplicationPage.qml:857
 #, kde-format
 msgid "Content Rating"
 msgstr "வயதுவரம்பு"
 
-#: discover/qml/ApplicationPage.qml:427
+#: discover/qml/ApplicationPage.qml:426
 #, kde-format
 msgid "Age: %1+"
 msgstr "வயது: %1+"
 
-#: discover/qml/ApplicationPage.qml:451
+#: discover/qml/ApplicationPage.qml:450
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "விவரங்களைக் காட்டு…"
 
-#: discover/qml/ApplicationPage.qml:547
+#: discover/qml/ApplicationPage.qml:546
 #, kde-format
 msgid "Documentation"
 msgstr "கையேடு"
 
-#: discover/qml/ApplicationPage.qml:548
+#: discover/qml/ApplicationPage.qml:547
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "செயலியின் அதிகாரப்பூர்வ கையேட்டை காட்டும்"
 
-#: discover/qml/ApplicationPage.qml:564
+#: discover/qml/ApplicationPage.qml:563
 #, kde-format
 msgid "Website"
 msgstr "இணையதளம்"
 
-#: discover/qml/ApplicationPage.qml:565
+#: discover/qml/ApplicationPage.qml:564
 #, kde-format
 msgid "Visit the project's website"
 msgstr "செயலியின் இணையதளத்தைக் காட்டு"
 
-#: discover/qml/ApplicationPage.qml:581
+#: discover/qml/ApplicationPage.qml:580
 #, kde-format
 msgid "Addons"
 msgstr "துணை நிரல்கள்"
 
-#: discover/qml/ApplicationPage.qml:582
+#: discover/qml/ApplicationPage.qml:581
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "கூடுதல் அம்சங்களை நீக்க/நிறுவ உதவும்"
 
-#: discover/qml/ApplicationPage.qml:601
+#: discover/qml/ApplicationPage.qml:600
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "பகிர்"
 
-#: discover/qml/ApplicationPage.qml:602
+#: discover/qml/ApplicationPage.qml:601
 #, kde-format
 msgid "Send a link for this application"
 msgstr "இச்செயலிக்கான இணைப்பைப் பகிருங்கள்"
 
-#: discover/qml/ApplicationPage.qml:618
+#: discover/qml/ApplicationPage.qml:617
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "%1 செயலியைப் பயன்படுத்திப் பாருங்கள்!"
 
-#: discover/qml/ApplicationPage.qml:638
+#: discover/qml/ApplicationPage.qml:637
 #, kde-format
 msgid "What's New"
 msgstr "புதியவை"
 
-#: discover/qml/ApplicationPage.qml:668
+#: discover/qml/ApplicationPage.qml:667
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "%1 என்பதற்கான விமர்சனங்கள் ஏற்றபடுகின்றன"
 
-#: discover/qml/ApplicationPage.qml:674
+#: discover/qml/ApplicationPage.qml:673
 #, kde-format
 msgid "Reviews"
 msgstr "விமர்சனங்கள்"
 
-#: discover/qml/ApplicationPage.qml:712
+#: discover/qml/ApplicationPage.qml:711
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "%1 விமர்சனத்தை காட்டு…"
 msgstr[1] "%1 விமர்சனங்களை காட்டு…"
 
-#: discover/qml/ApplicationPage.qml:724
+#: discover/qml/ApplicationPage.qml:723
 #, kde-format
 msgid "Write a Review"
 msgstr "விமர்சனம் எழுது"
 
-#: discover/qml/ApplicationPage.qml:724
+#: discover/qml/ApplicationPage.qml:723
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "விமர்சனம் எழுத நிறுவ‍வும்"
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:735
 #, kde-format
 msgid "Get Involved"
 msgstr "பங்களி"
 
-#: discover/qml/ApplicationPage.qml:769
+#: discover/qml/ApplicationPage.qml:768
 #, kde-format
 msgid "Donate"
 msgstr "நன்கொடை அளி"
 
-#: discover/qml/ApplicationPage.qml:770
+#: discover/qml/ApplicationPage.qml:769
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "நிரலாளர்களுக்கு நன்கொடை அளித்து நன்றி கூறுங்கள்"
 
-#: discover/qml/ApplicationPage.qml:786
+#: discover/qml/ApplicationPage.qml:785
 #, kde-format
 msgid "Report Bug"
 msgstr "பிழையை தெரிவி"
 
-#: discover/qml/ApplicationPage.qml:787
+#: discover/qml/ApplicationPage.qml:786
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "நீங்கள் கண்டுபிடித்த ஓர் நிரலாக்க பிழையை தெரிவியுங்கள்"
 
-#: discover/qml/ApplicationPage.qml:801
+#: discover/qml/ApplicationPage.qml:800
 #, kde-format
 msgid "Contribute"
 msgstr "பங்களி…"
 
-#: discover/qml/ApplicationPage.qml:802
+#: discover/qml/ApplicationPage.qml:801
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "நிரலாக்கியோ, சோதித்தோ, வடிவமைத்தோ, மொழிபெயர்த்தோ, இதன் நிரலாளர்களுக்கு உதவுங்கள்"
 
-#: discover/qml/ApplicationPage.qml:827
+#: discover/qml/ApplicationPage.qml:826
 #, kde-format
 msgid "All Licenses"
 msgstr "அனைத்து உரிமங்கள்"
 
-#: discover/qml/ApplicationPage.qml:872
+#: discover/qml/ApplicationPage.qml:871
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "தனியுடைமை மென்பொருட்களால் ஏற்படும் ஆபத்து"
 
-#: discover/qml/ApplicationPage.qml:878
+#: discover/qml/ApplicationPage.qml:877
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -509,7 +509,7 @@ msgstr ""
 "முழுதாக நம்பும் பட்சத்திலேயே இந்நிரலை நிறுவ வேண்டும்.<nl/><nl/><link url='%3'>%3</"
 "link> என்ற இணைப்பில் சென்று மேலும் அறியலாம்."
 
-#: discover/qml/ApplicationPage.qml:879
+#: discover/qml/ApplicationPage.qml:878
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
