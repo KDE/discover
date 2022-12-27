@@ -21,10 +21,8 @@
 #include <KConfigGroup>
 #include <KLocalizedString>
 #include <KNSCore/Engine>
-#include <knewstuffcore_version.h>
-#if KNEWSTUFFCORE_VERSION >= QT_VERSION_CHECK(5, 102, 0)
 #include <KNSCore/QuestionManager>
-#endif
+#include <knewstuffcore_version.h>
 
 // DiscoverCommon includes
 #include "Category/Category.h"
@@ -49,7 +47,6 @@ class KNSBackendFactory : public AbstractResourcesBackendFactory
 public:
     KNSBackendFactory()
     {
-#if KNEWSTUFFCORE_VERSION >= QT_VERSION_CHECK(5, 102, 0)
         connect(KNSCore::QuestionManager::instance(), &KNSCore::QuestionManager::askQuestion, this, [](KNSCore::Question *question) {
             const auto transactions = TransactionModel::global()->transactions();
             for (auto t : transactions) {
@@ -75,7 +72,6 @@ public:
             qWarning() << "Question for unknown resource" << question->question() << question->questionType();
             question->setResponse(KNSCore::Question::InvalidResponse);
         });
-#endif
     }
 
     QVector<AbstractResourcesBackend *> newInstance(QObject *parent, const QString & /*name*/) const override
