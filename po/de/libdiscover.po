@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-22 00:48+0000\n"
+"POT-Creation-Date: 2022-12-27 00:49+0000\n"
 "PO-Revision-Date: 2022-07-24 14:44+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -57,26 +57,41 @@ msgstr "%1, veröffentlicht am %2"
 #: libdiscover/appstream/AppStreamUtils.cpp:182
 #, fuzzy, kde-format
 #| msgid "All Files"
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content suitable for everyone"
 msgid "All Audiences"
 msgstr "Alle Dateien"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:183
+#: libdiscover/appstream/AppStreamUtils.cpp:185
 #, kde-format
-msgctxt "As specified in OARS, intensity of contents"
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content with relatively benign themes only unsuitable for very young "
+"children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:184
-#, kde-format
-msgctxt "As specified in OARS, intensity of contents"
-msgid "Moderate Content"
-msgstr ""
-
-#: libdiscover/appstream/AppStreamUtils.cpp:185
+#: libdiscover/appstream/AppStreamUtils.cpp:188
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"
-msgctxt "As specified in OARS, intensity of contents"
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content with some intense themes, such as somewhat realistic violence, "
+"references to sexuality, or adult profanity"
+msgid "Moderate Content"
+msgstr "Internet"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:191
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Internet"
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"mature content that could be quite objectionable or unsuitable for young "
+"audiences, such as realistic graphic violence, extreme profanity or nudity, "
+"or glorification of drug use"
 msgid "Intense Content"
 msgstr "Internet"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-22 00:48+0000\n"
+"POT-Creation-Date: 2022-12-27 00:49+0000\n"
 "PO-Revision-Date: 2022-11-26 14:00+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -55,25 +55,45 @@ msgid "%1, released on %2"
 msgstr "%1, released on %2"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "All Audiences"
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content suitable for everyone"
 msgid "All Audiences"
 msgstr "All Audiences"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:183
-#, kde-format
-msgctxt "As specified in OARS, intensity of contents"
+#: libdiscover/appstream/AppStreamUtils.cpp:185
+#, fuzzy, kde-format
+#| msgctxt "As specified in OARS, intensity of contents"
+#| msgid "Mild Content"
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content with relatively benign themes only unsuitable for very young "
+"children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
 msgstr "Mild Content"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:184
-#, kde-format
-msgctxt "As specified in OARS, intensity of contents"
+#: libdiscover/appstream/AppStreamUtils.cpp:188
+#, fuzzy, kde-format
+#| msgctxt "As specified in OARS, intensity of contents"
+#| msgid "Moderate Content"
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content with some intense themes, such as somewhat realistic violence, "
+"references to sexuality, or adult profanity"
 msgid "Moderate Content"
 msgstr "Moderate Content"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:185
-#, kde-format
-msgctxt "As specified in OARS, intensity of contents"
+#: libdiscover/appstream/AppStreamUtils.cpp:191
+#, fuzzy, kde-format
+#| msgctxt "As specified in OARS, intensity of contents"
+#| msgid "Intense Content"
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"mature content that could be quite objectionable or unsuitable for young "
+"audiences, such as realistic graphic violence, extreme profanity or nudity, "
+"or glorification of drug use"
 msgid "Intense Content"
 msgstr "Intense Content"
 
