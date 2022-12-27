@@ -22,7 +22,6 @@ class RpmOstreeNotifier : public BackendNotifierModule
     Q_INTERFACES(BackendNotifierModule)
 public:
     explicit RpmOstreeNotifier(QObject *parent = nullptr);
-    ~RpmOstreeNotifier() override;
 
     void recheckSystemUpdateNeeded() override;
     bool hasSecurityUpdates() override;
