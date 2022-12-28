@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-27 00:49+0000\n"
+"POT-Creation-Date: 2022-12-28 00:50+0000\n"
 "PO-Revision-Date: 2022-12-20 20:40+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1003,7 +1003,7 @@ msgstr "Преглед на  EULA"
 msgid "Could not enable remote %1: %2"
 msgstr "Не може да се активира отдалечен %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:67
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1012,32 +1012,32 @@ msgstr ""
 "Неподдържан въпрос:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:133
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Бекенд  %1 отне твърде много време за инициализиране"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:195
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
 #, kde-format
 msgid "Applications"
 msgstr "Приложения"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Добавки на Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Application Addons"
 msgstr "Добавки за приложения"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Грешка в мрежата в бекенд %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1046,14 +1046,14 @@ msgstr ""
 "Твърде много заявки, изпратени до сървъра за бекенд %1. Моля, опитайте "
 "отново след няколко минути."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:463
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Невалиден %1 бекенд, свържете се с вашия дистрибутор."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:482
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1066,22 +1066,22 @@ msgstr ""
 "добър контрол. Отчетената грешка беше:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Неуспешно изтегляне на екранна снимка за записа %1 в бекенд %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Необработена грешка в %1 бекенд. Свържете се с вашия дистрибутор."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:504
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:642
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Грешен адрес на KNewStuff: %1"

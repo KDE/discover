@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-27 00:49+0000\n"
-"PO-Revision-Date: 2022-12-24 06:31+0100\n"
+"POT-Creation-Date: 2022-12-28 00:50+0000\n"
+"PO-Revision-Date: 2022-12-27 08:36+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -55,8 +55,7 @@ msgid "%1, released on %2"
 msgstr "%1. რელიზის თარიღი: %2"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
-#, fuzzy, kde-format
-#| msgid "All Audiences"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
@@ -64,9 +63,7 @@ msgid "All Audiences"
 msgstr "ნებისმიერი საზოგადოებისთვის"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:185
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Mild Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with relatively benign themes only unsuitable for very young "
@@ -75,9 +72,7 @@ msgid "Mild Content"
 msgstr "რბილი შემცველობა"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Moderate Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
@@ -86,9 +81,7 @@ msgid "Moderate Content"
 msgstr "საშუალო შემცველობა"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:191
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Intense Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
@@ -1001,7 +994,7 @@ msgstr "ლიცენზიის გადახედვა"
 msgid "Could not enable remote %1: %2"
 msgstr "დაშორებულის (%1) ჩართვის შეცდომა: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:67
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1010,32 +1003,32 @@ msgstr ""
 "მხარდაუჭერელი კითხვა:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:133
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "უკანაბოლოს %1 ინიციალიზაციისთვის მეტისმეტად დიდი დრო დასჭირდა"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:195
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
 #, kde-format
 msgid "Applications"
 msgstr "აპლიკაციები"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma -ის დამატებები"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Application Addons"
 msgstr "აპლიკაციის დამატებები"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "ქსელის შეცდომა უკანაბოლოში %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1044,14 +1037,14 @@ msgstr ""
 "სერვერთან უკანაბოლოსთვის %1 მეტისმეტად ბევრი მოთხოვნა გაიგზავნა. რამდენიმე "
 "წუთში თავიდან სცადეთ."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:463
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "არასწორი %1 უკანაბოლო. დაუკავშირდით თქვენს დისტრიბუტორს."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:482
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1063,22 +1056,22 @@ msgstr ""
 "რამეების მიღების ფანჯრიდან შეასრულოთ, რომელიც მეტ უფლებას გაძლევთ. შეცდომა:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "ჩანაწერის %1 ეკრანის ანაბეჭდების გამოთხოვის შეცდომა უკანაბოლოში %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 უკანაბოლოს დაუმუშავებელი შეცდომა. დაუკავშირდით დისტრიბუტორს."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:504
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:642
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "KNewStuff -ის არასწორი URI: %1"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-27 00:49+0000\n"
+"POT-Creation-Date: 2022-12-28 00:50+0000\n"
 "PO-Revision-Date: 2022-12-24 11:42\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -973,53 +973,53 @@ msgstr "查看最终用户许可协议"
 msgid "Could not enable remote %1: %2"
 msgstr "无法启用远程 %1：%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:67
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
 msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:133
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "后端 %1 初始化时间过长"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:195
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
 #, kde-format
 msgid "Applications"
 msgstr "应用程序"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma 附加组件"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Application Addons"
 msgstr "应用程序附加组件"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 后端网络错误：%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr "%1 后端的服务器请求发送过多。请过几分钟之后再试。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:463
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "无效的 %1 后端。请联系您的发行版。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:482
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1031,22 +1031,22 @@ msgstr ""
 "为：\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "无法从 %2 后端获取 %1 的屏幕截图"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 后端出现无法处理的错误。请联系您的发行版。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:504
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
 #, kde-format
 msgid "%1: %2"
 msgstr "%1：%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:642
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "错误的 KNewStuff URI：%1"

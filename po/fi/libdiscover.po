@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-27 00:49+0000\n"
+"POT-Creation-Date: 2022-12-28 00:50+0000\n"
 "PO-Revision-Date: 2022-08-11 22:55+0300\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1006,39 +1006,39 @@ msgstr "Lue käyttöoikeussopimus"
 msgid "Could not enable remote %1: %2"
 msgstr "Ei voitu lisätä lähdettä %1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:67
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
 msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:133
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Taustaosan %1 alustus kesti liian kauan"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:195
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
 #, kde-format
 msgid "Applications"
 msgstr "Sovellukset"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma-lisäosat"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Application Addons"
 msgstr "Sovellusten lisäosat"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Verkkovirhe taustaosassa %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1047,14 +1047,14 @@ msgstr ""
 "Liian monta lähetettyä pyyntöä taustaosan %1 palvelimeen. Yritä uudelleen "
 "hetken kuluttua."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:463
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Virheellinen %1-taustaosa: ota yhteyttä jakelusi tekijään."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:482
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1067,23 +1067,23 @@ msgstr ""
 "oli:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Tietueelle %1 ei saatu ruutukaappausta taustaosasta %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Käsittelemätön virhe taustaosassa %1. Ota yhteyttä jakelun valmistajaan."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:504
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:642
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Väärä KNewStuff-URI: %1"

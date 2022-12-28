@@ -10,14 +10,15 @@
 # William Oprandi <william.oprandi@gmail.com>, 2019.
 # Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
 #
+# Xavier BESNARD <xavier.besnard]neuf.fr>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-27 00:49+0000\n"
-"PO-Revision-Date: 2022-12-22 19:02+0100\n"
-"Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
-"Language-Team: French <kde-francophone@kde.org>\n"
+"POT-Creation-Date: 2022-12-28 00:50+0000\n"
+"PO-Revision-Date: 2022-12-27 17:49+0100\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
+"Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,8 +66,7 @@ msgid "%1, released on %2"
 msgstr "%1, publié le %2"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
-#, fuzzy, kde-format
-#| msgid "All Audiences"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
@@ -74,9 +74,7 @@ msgid "All Audiences"
 msgstr "Tout public"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:185
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Mild Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with relatively benign themes only unsuitable for very young "
@@ -85,9 +83,7 @@ msgid "Mild Content"
 msgstr "Contenu léger"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Moderate Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
@@ -96,9 +92,7 @@ msgid "Moderate Content"
 msgstr "Contenu modéré"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:191
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Intense Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
@@ -1020,7 +1014,7 @@ msgstr "Lire les conditions « EULA »"
 msgid "Could not enable remote %1: %2"
 msgstr "Impossible d''activer le dépôt %1 : %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:67
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1029,32 +1023,32 @@ msgstr ""
 "Question non prise en charge :\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:133
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Le moteur %1 prends trop de temps à s'initialiser"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:195
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
 #, kde-format
 msgid "Applications"
 msgstr "Applications"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Modules Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:241
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Application Addons"
 msgstr "Modules d'applications"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Erreur de réseau dans le moteur %1 : %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1063,14 +1057,14 @@ msgstr ""
 "Trop de requêtes envoyées vers le serveur pour le moteur %1. Veuillez "
 "essayer à nouveau dans quelques minutes."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:463
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Moteur %1 incorrect, veuillez contacter votre distributeur."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:482
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1083,25 +1077,25 @@ msgstr ""
 "plus strict. L'erreur signalée était : \n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Impossible d'atteindre la capture d'écran pour l'élément %1 depuis le moteur "
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Erreur non gérée dans le moteur %1. Veuillez contacter votre distributeur."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:504
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
 #, kde-format
 msgid "%1: %2"
 msgstr "%1 : %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:642
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Mauvaise URI KNewStuff : %1"
