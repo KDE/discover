@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-28 00:50+0000\n"
-"PO-Revision-Date: 2022-12-23 06:58+0100\n"
+"PO-Revision-Date: 2022-12-28 22:57+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -57,18 +57,15 @@ msgid "%1, released on %2"
 msgstr "%1, %2(e)an argitaratua"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
-#, fuzzy, kde-format
-#| msgid "All Audiences"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr "publiko guztiarentzat"
+msgstr "Adin guztietarako"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:185
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Mild Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with relatively benign themes only unsuitable for very young "
@@ -77,20 +74,16 @@ msgid "Mild Content"
 msgstr "Eduki arina"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Moderate Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "Eduki ertaina"
+msgstr "Eduki moderatua"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:191
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Intense Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
