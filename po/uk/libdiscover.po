@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-30 00:54+0000\n"
-"PO-Revision-Date: 2022-12-27 08:36+0200\n"
+"PO-Revision-Date: 2022-12-30 08:57+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -2016,20 +2016,19 @@ msgid "System upgrade"
 msgstr "Оновлення системи"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "%1 пакунок для оновлення"
-msgstr[1] "%1 пакунки для оновлення"
-msgstr[2] "%1 пакунків для оновлення"
-msgstr[3] "один пакунок для оновлення"
+msgstr[0] "Буде оновлено %1 пакунок"
+msgstr[1] "Буде оновлено %1 пакунки"
+msgstr[2] "Буде оновлено %1 пакунків"
+msgstr[3] "Буде оновлено %1 пакунок"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Оновлення до нової версії %2<br/>Нотаток щодо випуску не надано"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
@@ -2037,6 +2036,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Оновлення до нової версії %2<br/>Нотатки щодо випуску:<blockquote>"
+"%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format
