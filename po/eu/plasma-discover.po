@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-26 00:54+0000\n"
+"POT-Creation-Date: 2022-12-30 00:54+0000\n"
 "PO-Revision-Date: 2022-11-18 07:51+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -278,7 +278,7 @@ msgid "Cancel"
 msgstr "Utzi"
 
 #: discover/qml/ApplicationDelegate.qml:140
-#: discover/qml/ApplicationPage.qml:192
+#: discover/qml/ApplicationPage.qml:208
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -286,216 +286,216 @@ msgstr[0] "%1 balorazioa"
 msgstr[1] "%1 balorazioa"
 
 #: discover/qml/ApplicationDelegate.qml:140
-#: discover/qml/ApplicationPage.qml:192
+#: discover/qml/ApplicationPage.qml:208
 #, kde-format
 msgid "No ratings yet"
 msgstr "Oraindik baloraziorik ez"
 
-#: discover/qml/ApplicationPage.qml:59
+#: discover/qml/ApplicationPage.qml:62
 #, kde-format
 msgid "Sources"
 msgstr "Iturburuak"
 
-#: discover/qml/ApplicationPage.qml:70
+#: discover/qml/ApplicationPage.qml:73
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:174
+#: discover/qml/ApplicationPage.qml:185
 #, kde-format
 msgid "Unknown author"
 msgstr "Egile ezezaguna"
 
-#: discover/qml/ApplicationPage.qml:204
+#: discover/qml/ApplicationPage.qml:220
 #, kde-format
 msgid "Could not access the screenshots"
 msgstr "Ezin izan ditu pantaila-argazkiak atzitu"
 
-#: discover/qml/ApplicationPage.qml:260
+#: discover/qml/ApplicationPage.qml:279
 #, kde-format
 msgid "Version"
 msgstr "Bertsioa"
 
-#: discover/qml/ApplicationPage.qml:287
+#: discover/qml/ApplicationPage.qml:306
 #: discover/qml/ApplicationsListPage.qml:109
 #, kde-format
 msgid "Size"
 msgstr "Neurria"
 
-#: discover/qml/ApplicationPage.qml:314
+#: discover/qml/ApplicationPage.qml:333
 #, kde-format
 msgid "Distributed by"
 msgstr "Banatzailea, "
 
-#: discover/qml/ApplicationPage.qml:341
+#: discover/qml/ApplicationPage.qml:360
 #, kde-format
 msgid "License"
 msgid_plural "Licenses"
 msgstr[0] "Lizentzia"
 msgstr[1] "Lizentziak"
 
-#: discover/qml/ApplicationPage.qml:350
+#: discover/qml/ApplicationPage.qml:369
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Ezezaguna"
 
-#: discover/qml/ApplicationPage.qml:388
+#: discover/qml/ApplicationPage.qml:407
 #, kde-format
 msgid "What does this mean?"
 msgstr "Horrek zer esan nahi du?"
 
-#: discover/qml/ApplicationPage.qml:398
+#: discover/qml/ApplicationPage.qml:417
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "Ikusi gehiago…"
 msgstr[1] "Ikusi gehiago…"
 
-#: discover/qml/ApplicationPage.qml:416 discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:879
 #, kde-format
 msgid "Content Rating"
 msgstr "Edukiaren balorazioa"
 
-#: discover/qml/ApplicationPage.qml:426
+#: discover/qml/ApplicationPage.qml:445
 #, kde-format
 msgid "Age: %1+"
 msgstr "Adina: %1+"
 
-#: discover/qml/ApplicationPage.qml:450
+#: discover/qml/ApplicationPage.qml:469
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "Ikusi xehetasunak…"
 
-#: discover/qml/ApplicationPage.qml:546
+#: discover/qml/ApplicationPage.qml:568
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentazioa"
 
-#: discover/qml/ApplicationPage.qml:547
+#: discover/qml/ApplicationPage.qml:569
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Irakurri proiektuko dokumentazio ofiziala"
 
-#: discover/qml/ApplicationPage.qml:563
+#: discover/qml/ApplicationPage.qml:585
 #, kde-format
 msgid "Website"
 msgstr "Webgunea"
 
-#: discover/qml/ApplicationPage.qml:564
+#: discover/qml/ApplicationPage.qml:586
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Bisitatu aplikazioaren webgunea"
 
-#: discover/qml/ApplicationPage.qml:580
+#: discover/qml/ApplicationPage.qml:602
 #, kde-format
 msgid "Addons"
 msgstr "Gehigarriak"
 
-#: discover/qml/ApplicationPage.qml:581
+#: discover/qml/ApplicationPage.qml:603
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Instalatu edo kendu funtzionalitate osagarria"
 
-#: discover/qml/ApplicationPage.qml:600
+#: discover/qml/ApplicationPage.qml:622
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Partekatu"
 
-#: discover/qml/ApplicationPage.qml:601
+#: discover/qml/ApplicationPage.qml:623
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Bidali aplikazio honetarako esteka bat"
 
-#: discover/qml/ApplicationPage.qml:617
+#: discover/qml/ApplicationPage.qml:639
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Begira %1 aplikazioari!"
 
-#: discover/qml/ApplicationPage.qml:637
+#: discover/qml/ApplicationPage.qml:659
 #, kde-format
 msgid "What's New"
 msgstr "Zer berri"
 
-#: discover/qml/ApplicationPage.qml:667
+#: discover/qml/ApplicationPage.qml:689
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "«%1»ren gaineko iritziak zamatzen"
 
-#: discover/qml/ApplicationPage.qml:673
+#: discover/qml/ApplicationPage.qml:695
 #, kde-format
 msgid "Reviews"
 msgstr "Iritziak"
 
-#: discover/qml/ApplicationPage.qml:711
+#: discover/qml/ApplicationPage.qml:733
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "Erakutsi denak, aipamen %1"
 msgstr[1] "Erakutsi denak, %1 aipamen"
 
-#: discover/qml/ApplicationPage.qml:723
+#: discover/qml/ApplicationPage.qml:745
 #, kde-format
 msgid "Write a Review"
 msgstr "Idatzi iritzi bat"
 
-#: discover/qml/ApplicationPage.qml:723
+#: discover/qml/ApplicationPage.qml:745
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Instalatu iritzi bat idazteko"
 
-#: discover/qml/ApplicationPage.qml:735
+#: discover/qml/ApplicationPage.qml:757
 #, kde-format
 msgid "Get Involved"
 msgstr "Engaia zaitez"
 
-#: discover/qml/ApplicationPage.qml:768
+#: discover/qml/ApplicationPage.qml:790
 #, kde-format
 msgid "Donate"
 msgstr "Dohaintza egin"
 
-#: discover/qml/ApplicationPage.qml:769
+#: discover/qml/ApplicationPage.qml:791
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 "Eman sostengua eta eskerrak garatzaileei haien proiektuetan dohaintza eginez"
 
-#: discover/qml/ApplicationPage.qml:785
+#: discover/qml/ApplicationPage.qml:807
 #, kde-format
 msgid "Report Bug"
 msgstr "Eman errorearen berri"
 
-#: discover/qml/ApplicationPage.qml:786
+#: discover/qml/ApplicationPage.qml:808
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Erregistratu aurkitu duzun arazo bat hura konpontzen laguntzeko"
 
-#: discover/qml/ApplicationPage.qml:800
+#: discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Contribute"
 msgstr "Lagundu"
 
-#: discover/qml/ApplicationPage.qml:801
+#: discover/qml/ApplicationPage.qml:823
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Lagundu garatzaileei kodetuz, diseinatuz, probak eginez, edo itzulpenak "
 "eginez"
 
-#: discover/qml/ApplicationPage.qml:826
+#: discover/qml/ApplicationPage.qml:848
 #, kde-format
 msgid "All Licenses"
 msgstr "Lizentzia guztiak"
 
-#: discover/qml/ApplicationPage.qml:871
+#: discover/qml/ApplicationPage.qml:893
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Software jabedunaren arriskua"
 
-#: discover/qml/ApplicationPage.qml:877
+#: discover/qml/ApplicationPage.qml:899
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -522,7 +522,7 @@ msgstr ""
 "erabateko konfiantza ez baduzu (<link url='%1'>%2</link>).<nl/><nl/>Gehiago "
 "jakiteko hona jo dezakezu, <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:878
+#: discover/qml/ApplicationPage.qml:900
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

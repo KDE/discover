@@ -9,16 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-28 00:50+0000\n"
-"PO-Revision-Date: 2022-09-23 07:47+0700\n"
+"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"PO-Revision-Date: 2022-12-29 20:53+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
-"Language-Team: https://matrix.to/#/#i18n_kde_id:matrix.org\n"
+"Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -57,18 +57,15 @@ msgid "%1, released on %2"
 msgstr "%1, dirilis pada %2"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
-#, fuzzy, kde-format
-#| msgid "All Audiences"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr "Semua Audiences"
+msgstr "Semua Audien"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:185
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Mild Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with relatively benign themes only unsuitable for very young "
@@ -77,9 +74,7 @@ msgid "Mild Content"
 msgstr "Konten Ringan"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Moderate Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
@@ -88,9 +83,7 @@ msgid "Moderate Content"
 msgstr "Konten Sedang"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:191
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Intense Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
@@ -171,11 +164,10 @@ msgstr "dumi 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Aplikasi"
+msgstr "Semua Aplikasi"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -420,14 +412,14 @@ msgstr "3D"
 #, kde-format
 msgctxt "Category"
 msgid "Drawing"
-msgstr "Menggambar"
+msgstr "Penggambaran"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
 #, kde-format
 msgctxt "Category"
 msgid "Painting and Editing"
-msgstr "Melukis dan Mengedit"
+msgstr "Pelukisan dan Pengeditan"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
@@ -441,7 +433,7 @@ msgstr "Fotografi"
 #, kde-format
 msgctxt "Category"
 msgid "Publishing"
-msgstr "Menerbitkan"
+msgstr "Penerbitan"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
@@ -455,7 +447,7 @@ msgstr "Pemindaian dan OCR"
 #, kde-format
 msgctxt "Category"
 msgid "Viewers"
-msgstr "Pirsawan"
+msgstr "Pemirsa"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
@@ -539,7 +531,7 @@ msgstr "Perkantoran"
 #, kde-format
 msgctxt "Category"
 msgid "System Settings"
-msgstr "System Settings"
+msgstr "Pengaturan Sistem"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:123
 #, kde-format
@@ -688,21 +680,19 @@ msgid "Can integrate and communicate with smart cards"
 msgstr "Bisa berintegrasi dan berkomunikasi dengan kartu-kartu smart"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "Akses Peranti"
+msgstr "Akses Printer"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Bisa berintegrasi dan berkomunikasi dengan kartu-kartu smart"
+msgstr "Bisa berintegrasi dan berkomunikasi dengan peranti printer"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "Agen GPG"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
@@ -710,29 +700,28 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Izinkan akses ke layanan kriptografi GPG, biasanya digunakan untuk "
+"menandatangani dan membaca dokumen yang ditandatangani"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "Akses Jaringan"
+msgstr "Akses Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Bisa berintegrasi dan berkomunikasi dengan kartu-kartu smart"
+msgstr "Bisa berintegrasi dan berkomunikasi dengan peranti Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "Akses Bus Sistem"
+msgstr "Akses Sistem Tingkat Rendah"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Bisa membuat panggilan sistem tingkat rendah (mis. ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
@@ -949,7 +938,7 @@ msgstr "Penambahan jarak jauh '%1' di %2 dari %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "Tidak bisa menemukan '%1' di '%2'; mohon pastikan bahwa itu tersedia."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
@@ -958,35 +947,37 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"Pengembangan %1 versi ini telah kedaluwarsa. Menggunakan versi stabil adalah "
+"yang sangat dianjurkan."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr ""
+msgstr "Sebuah versi stabil %1 selebihnya telah tersedia."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr ""
+msgstr "Tampilan Versi Stabil di %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "%1 belum terinstal tetapi ia masih memiliki data yang ada."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "Hapus pengaturan dan data pengguna"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "Perizinan untuk %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1013,6 +1004,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"Pertanyaan tak didukung:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
@@ -2007,40 +2000,44 @@ msgid "System upgrade"
 msgstr "Peningkatan sistem"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
-#, kde-format
-msgid "1 package to upgrade"
-msgid_plural "%1 packages to upgrade"
+#, fuzzy, kde-format
+#| msgid "1 package to upgrade"
+#| msgid_plural "%1 packages to upgrade"
+msgid "1 package will be upgraded"
+msgid_plural "%1 packages will be upgraded"
 msgstr[0] "1 paket untuk ditingkatkan"
 msgstr[1] "%1 paket untuk ditingkatkan"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
-msgid "<li>%1 (%2): No changelog information</li>\n"
+msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
-msgid "<li>%1 (%2): %3</li>\n"
+msgid ""
+"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+"blockquote>"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:198
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format
 msgid "Present"
 msgstr "Kini"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:202
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
 #, kde-format
 msgid "Future"
 msgstr "Nanti"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:305
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:308
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 "Tidak cukupnya ruang untuk melakukan pembaruan; hanya %1 ruang yang tersedia."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:492
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:495
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2053,12 +2050,12 @@ msgstr ""
 "yakin ini adalah galat, mohon melaporkannya sebagai bug kepada pemaket "
 "distribusimu."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:499
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:502
 #, kde-format
 msgid "Packages to remove"
 msgstr "Paket untuk dihapus"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:500
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:503
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2067,13 +2064,13 @@ msgstr ""
 "Paket-paket berikut ini akan dihapus oleh karena pembaruan:<ul><li>%1</li></"
 "ul><br/>agar dapat menginstal:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:601
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:606
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:609
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2083,13 +2080,13 @@ msgstr ""
 "Perubahan Media dari jenis '%1' telah diminta.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:639
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:642
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Setujui EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:640
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:643
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2099,13 +2096,13 @@ msgstr ""
 "Paket %1 dan vendor-nya %2 mewajibkan anda untuk menyetujui lisensi mereka:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:760
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Tandatangan hilang untuk %1 dalam %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:758
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:761
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
@@ -2158,27 +2155,24 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
-#, fuzzy, kde-format
-#| msgid "Resolving dependencies…"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "Penanggulangan ketergantungan..."
+msgstr "Tampilkan Dependensi..."
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "Dependensi untuk paket: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
-#, fuzzy, kde-format
-#| msgid "Home Folder Access"
+#, kde-format
 msgid "Full Access"
-msgstr "Akses Folder Beranda"
+msgstr "Akses Penuh"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
-#, fuzzy, kde-format
-#| msgid "Can access the internet"
+#, kde-format
 msgid "Can access everything on the system"
-msgstr "Bisa mengakses internet"
+msgstr "Bisa mengakses segalanya di sistem"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2189,12 +2183,13 @@ msgstr "Sistem Operasi"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree: Beberapa penerapan di-boot ditemukan. Harap laporkan bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
+"rpm-ostree: Tidak ada penerapan di-boot yang ditemukan. Harap laporkan bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
@@ -2203,31 +2198,37 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>Sebuah versi utama baru %1 telah dirilis!</b>\n"
+"Agar bisa memperbarui ke versi baru ini, pastikan untuk menerapkan semua "
+"pembaruan yang tertunda dan menyalakan ulang sistem Anda."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr ""
+msgstr "Tingkatkan ke %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>Sebuah versi pokok baru telah dirilis!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:474
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
+"Anda memiliki pembaruan yang tertunda untuk versi saat ini. Tetap "
+"memprosesnya meski demikian."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:477
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Harap perbarui ke versi terbaru sebelum melakukan rebase ke versi pokok"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:485
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
-msgstr ""
+msgstr "Ref jarak jauh tidak ada untuk operasi rebase. Harap laporkan bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #, kde-format
@@ -2235,56 +2236,54 @@ msgid "GPL and other licenses"
 msgstr "GPL dan lisensi lainnya"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Additional packages: "
-msgstr "File paket tidak absah"
+msgstr "Paket tambahan: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
 #, kde-format
 msgid "Additional modules: "
-msgstr ""
+msgstr "Modul tambahan: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Local packages: "
-msgstr "File paket tidak absah"
+msgstr "Paket-paket lokal: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
 msgid "Replaced packages:"
-msgstr ""
+msgstr "Paket-paket yang diganti: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
 #, kde-format
 msgid "Removed packages:"
-msgstr ""
+msgstr "Paket-paket yang dihapus: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr ""
+msgstr "Versi yang di-boot baru-baru ini (dipines)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:396
 #, kde-format
 msgid "Currently booted version"
-msgstr ""
+msgstr "Versi yang di-boot baru-baru ini"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Versi yang akan digunakan sesudah boot ulang"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "Versi semula (dipines)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:403
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "Versi semula"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
@@ -2293,60 +2292,56 @@ msgstr "ostree remotes"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:132
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:155
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "Transaksi rpm-ostree saat ini sedang dalam progres:"
+msgstr "Transaksi rpm-ostree gagal dengan:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:298
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"Membatalkan transaksi rpm-ostree. Ini memakan beberapa waktu. Mohon tunggu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:327
 #, kde-format
 msgid "Checking for a system update"
-msgstr ""
+msgstr "Memeriksa pembaruan sistem"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:330
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Mengunduh"
+msgstr "Mengunduh pembaruan sistem"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:333
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Sistem Operasi"
+msgstr "Memperbarui sistem"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:336
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Memperbarui ke versi pokok selanjutnya"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:339
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
-msgstr ""
+msgstr "Transaksi sedang dalam progres (dimulai di luar Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:345
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Tak bisa membatalkan transaksi"
+msgstr "Jenis transaksi tak diketahui"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "Kanal..."
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
 #, kde-format
 msgid "%1 channels"
-msgstr ""
+msgstr "%1 kanal"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
@@ -2357,17 +2352,17 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "Alihkan"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "Atur perizinan..."
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "Perizinan untuk %1"
 
 # Name
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
@@ -2387,7 +2382,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:62
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "SteamOS: Tidak dapat mengkueri automupd untuk Pembaruan SteamOS..."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
@@ -2527,6 +2522,12 @@ msgstr "Perangkat Lunak Sistem"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Pernik"
+
+#~ msgid "<li>%1 (%2): No changelog information</li>\n"
+#~ msgstr "<li>%1 (%2): Tidak ada informasi catatan perubahan</li>\n"
+
+#~ msgid "<li>%1 (%2): %3</li>\n"
+#~ msgstr "<li>%1 (%2): %3</li>\n"
 
 #~ msgid "Remote: "
 #~ msgstr "Jarak Jauh:"
