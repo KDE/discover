@@ -660,13 +660,19 @@ PKResultsStream *PackageKitBackend::findResourceByPackageName(const QUrl &url)
         else {
             auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-appstream-url"));
             const auto f = [this, appstreamIds, stream]() {
+                auto toSend = QSet<AbstractResource *>();
+                toSend.reserve(appstreamIds.size());
                 for (const auto &appstreamId : appstreamIds) {
                     const auto comps = componentsById(appstreamId);
                     if (comps.isEmpty()) {
                         continue;
                     }
-                    stream->setResources(resourcesByComponents<QVector<AbstractResource *>>(comps));
+                    auto resources = resourcesByComponents<QVector<AbstractResource *>>(comps);
+                    for (const auto &r : resources) {
+                        toSend.insert(r);
+                    }
                 }
+                stream->setResources(QVector(toSend.constBegin(), toSend.constEnd()));
                 stream->finish();
             };
             runWhenInitialized(f, stream);
