@@ -25,6 +25,14 @@ class OdrsReviewsBackend;
 class PKResultsStream;
 class PKResolveTransaction;
 
+/** This is either a package name or an appstream id */
+struct PackageOrAppId {
+    QString id;
+    bool isPackageName;
+};
+PackageOrAppId makePackageId(const QString &id);
+PackageOrAppId makeAppId(const QString &id);
+
 class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
@@ -100,6 +108,9 @@ private:
     template<typename T, typename W>
     T resourcesByPackageNames(const W &names) const;
 
+    template<typename T, typename W>
+    T resourcesByAppNames(const W &names) const;
+
     template<typename T>
     T resourcesByComponents(const QList<AppStream::Component> &names) const;
 
@@ -123,7 +134,7 @@ private:
     bool m_appstreamInitialized = false;
 
     struct {
-        QHash<QString, AbstractResource *> packages;
+        QHash<PackageOrAppId, AbstractResource *> packages;
         QHash<QString, QStringList> packageToApp;
         QHash<QString, QVector<AppPackageKitResource *>> extendedBy;
     } m_packages;

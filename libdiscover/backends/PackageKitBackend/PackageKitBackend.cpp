@@ -25,6 +25,7 @@
 #include <QDebug>
 #include <QFileSystemWatcher>
 #include <QFutureWatcher>
+#include <QHash>
 #include <QMimeDatabase>
 #include <QProcess>
 #include <QStandardPaths>
@@ -44,6 +45,26 @@
 #include <Category/Category.h>
 
 DISCOVER_BACKEND_PLUGIN(PackageKitBackend)
+
+bool operator==(const PackageOrAppId &a, const PackageOrAppId &b)
+{
+    return a.isPackageName == b.isPackageName && a.id == b.id;
+}
+
+uint qHash(const PackageOrAppId &id, uint seed)
+{
+    return qHash(id.id, seed) ^ qHash(id.isPackageName, seed);
+}
+
+PackageOrAppId makeAppId(const QString &id)
+{
+    return {id, false};
+}
+
+PackageOrAppId makePackageId(const QString &id)
+{
+    return {id, true};
+}
 
 template<typename T, typename W>
 static void setWhenAvailable(const QDBusPendingReply<T> &pending, W func, QObject *parent)
@@ -264,7 +285,7 @@ AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Componen
     const QStringList pkgNames = component.packageNames();
     Q_ASSERT(!pkgNames.isEmpty());
 
-    auto &resPos = m_packages.packages[component.id()];
+    auto &resPos = m_packages.packages[makeAppId(component.id())];
     AppPackageKitResource *res = qobject_cast<AppPackageKitResource *>(resPos);
     if (!res) {
         res = new AppPackageKitResource(component, pkgNames.at(0), this);
@@ -359,12 +380,12 @@ void PackageKitBackend::includePackagesToAdd()
 
     acquireFetching(true);
     for (PackageKitResource *res : qAsConst(m_packagesToAdd)) {
-        m_packages.packages[res->packageName()] = res;
+        m_packages.packages[makePackageId(res->packageName())] = res;
     }
     for (PackageKitResource *res : qAsConst(m_packagesToDelete)) {
         const auto pkgs = m_packages.packageToApp.value(res->packageName(), {res->packageName()});
         for (const auto &pkg : pkgs) {
-            auto res = m_packages.packages.take(pkg);
+            auto res = m_packages.packages.take(makePackageId(pkg));
             if (res) {
                 if (AppPackageKitResource *ares = qobject_cast<AppPackageKitResource *>(res)) {
                     const auto extends = res->extends();
@@ -405,16 +426,38 @@ QSet<AbstractResource *> PackageKitBackend::resourcesByPackageName(const QString
 }
 
 template<typename T, typename W>
+T PackageKitBackend::resourcesByAppNames(const W &appNames) const
+{
+    T ret;
+    ret.reserve(appNames.size());
+    for (const QString &name : appNames) {
+        AbstractResource *res = m_packages.packages.value(makeAppId(name));
+        if (res) {
+            ret += res;
+        }
+    }
+    return ret;
+}
+
+template<typename T, typename W>
 T PackageKitBackend::resourcesByPackageNames(const W &pkgnames) const
 {
     T ret;
     ret.reserve(pkgnames.size());
-    for (const QString &name : pkgnames) {
-        const QStringList names = m_packages.packageToApp.value(name, QStringList(name));
-        for (const QString &name : names) {
-            AbstractResource *res = m_packages.packages.value(name);
-            if (res)
+    for (const QString &pkg_name : pkgnames) {
+        const QStringList app_names = m_packages.packageToApp.value(pkg_name, QStringList());
+        if (app_names.isEmpty()) {
+            AbstractResource *res = m_packages.packages.value(makePackageId(pkg_name));
+            if (res) {
                 ret += res;
+            }
+        } else {
+            for (const QString &app_id : app_names) {
+                AbstractResource *res = m_packages.packages.value(makeAppId(app_id));
+                if (res) {
+                    ret += res;
+                }
+            }
         }
     }
     return ret;
@@ -577,10 +620,9 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 return comp.id();
             });
             if (!ids.isEmpty()) {
-                const auto resources =
-                    kFilter<QVector<AbstractResource *>>(resourcesByPackageNames<QVector<AbstractResource *>>(ids), [](AbstractResource *res) {
-                        return !qobject_cast<PackageKitResource *>(res)->extendsItself();
-                    });
+                const auto resources = kFilter<QVector<AbstractResource *>>(resourcesByAppNames<QVector<AbstractResource *>>(ids), [](AbstractResource *res) {
+                    return !qobject_cast<PackageKitResource *>(res)->extendsItself();
+                });
                 stream->setResources(resources);
             }
             stream->finish();
@@ -645,7 +687,7 @@ T PackageKitBackend::resourcesByComponents(const QList<AppStream::Component> &co
             continue;
         }
         done += comp.id();
-        ret << m_packages.packages.value(comp.id());
+        ret << m_packages.packages.value(makeAppId(comp.id()));
         Q_ASSERT(ret.constLast());
     }
     return ret;
