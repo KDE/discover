@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2022-12-31 00:52+0000\n"
 "PO-Revision-Date: 2022-12-30 04:51+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -547,7 +547,7 @@ msgid "Local bundle"
 msgstr "Paquet local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1605
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:659
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de l'«appstream» amb format incorrecte «%1»"
@@ -1120,12 +1120,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Tipus de lletra"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:213
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:234
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Assegureu-vos que l'Appstream està ben instal·lat en el sistema"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:251
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:272
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1135,7 +1135,7 @@ msgstr ""
 "El vostre sistema operatiu ha finalitzat el suport el %1. Considereu "
 "l'actualització a una versió suportada."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:706
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:748
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "No s'ha pogut eliminar «%1»"

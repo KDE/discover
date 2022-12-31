@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2022-12-31 00:52+0000\n"
 "PO-Revision-Date: 2022-12-30 06:10+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -543,7 +543,7 @@ msgid "Local bundle"
 msgstr "ლოკალური პაკეტი"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1605
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:659
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "აღმავლის არასწორი URL '%1'"
@@ -1110,12 +1110,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "ფონტები"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:213
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:234
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "დარწმუნდით, რომ AppStream სწორად აყენია"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:251
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:272
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1125,7 +1125,7 @@ msgstr ""
 "თქვენი ოპერაციული სისტემის მხარდაჭერა %1-ზე დასრულდა. სჯობს მხარდაჭერილ "
 "ვერსიამდე განახლდეთ."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:706
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:748
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "%1-ის წაშლის შეცდომა"
