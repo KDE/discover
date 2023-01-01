@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-31 00:52+0000\n"
-"PO-Revision-Date: 2022-12-27 11:36+0100\n"
+"PO-Revision-Date: 2022-12-31 10:51+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2007,18 +2007,18 @@ msgid "System upgrade"
 msgstr "Renovación del sistema"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 paquete a renovar"
-msgstr[1] "%1 paquetes a renovar"
+msgstr[0] "Se renovará 1 paquete"
+msgstr[1] "Se renovarán %1 paquetes"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Renovación a la nueva versión %2<br/>No se han proporcionado "
+"notas de la versión"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
@@ -2026,6 +2026,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Renovación a la nueva versión %2<br/>Notas de la versión:"
+"<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format

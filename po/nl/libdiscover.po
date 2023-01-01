@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-31 00:52+0000\n"
-"PO-Revision-Date: 2022-12-27 10:22+0100\n"
+"PO-Revision-Date: 2022-12-30 09:52+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1997,18 +1997,18 @@ msgid "System upgrade"
 msgstr "Opwaardering van systeem"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 op te waarderen pakket"
-msgstr[1] "%1 op te waarderen pakketten"
+msgstr[0] "1 pakket zal opgewaardeerd worden"
+msgstr[1] "%1 pakketten zullen opgewaardeerd worden"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Opwaarderen naar een nieuwe versie %2<br/>Geen uitgavenotities "
+"geleverd"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
@@ -2016,6 +2016,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Opwaarderen naar een nieuwe versie %2<br/>Uitgavenotities:"
+"<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format
