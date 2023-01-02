@@ -391,7 +391,7 @@ QString RpmOstreeTransaction::name() const
         return i18n("Updating to the next major version");
         break;
     case Operation::Unknown:
-        return i18n("Transaction in progress (started outside of Discover)");
+        return i18n("Operation in progress (started outside of Discover)");
         break;
     default:
         break;
