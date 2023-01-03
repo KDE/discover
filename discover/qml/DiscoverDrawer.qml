@@ -198,5 +198,4 @@ Kirigami.GlobalDrawer {
     actions: createCategoryActions(CategoryModel.rootCategories)
 
     modal: !drawer.wideScreen
-    handleVisible: !drawer.wideScreen
 }
