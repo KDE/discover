@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:52+0000\n"
+"POT-Creation-Date: 2023-01-03 00:48+0000\n"
 "PO-Revision-Date: 2022-01-04 20:04+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1117,7 +1117,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:748
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:754
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nedá sa odstrániť '%1'"

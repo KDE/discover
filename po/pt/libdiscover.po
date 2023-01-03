@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:52+0000\n"
+"POT-Creation-Date: 2023-01-03 00:48+0000\n"
 "PO-Revision-Date: 2022-12-28 18:41+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -1138,7 +1138,7 @@ msgstr ""
 "O suporte para o seu sistema operativo terminou a %1. Pense em actualizar "
 "para uma versão suportada."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:748
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:754
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Não é possível remover o '%1'"

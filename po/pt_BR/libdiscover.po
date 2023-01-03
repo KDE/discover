@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:52+0000\n"
+"POT-Creation-Date: 2023-01-03 00:48+0000\n"
 "PO-Revision-Date: 2022-12-20 09:37-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1137,7 +1137,7 @@ msgstr ""
 "O suporte do seu sistema operacional encerrou em %1. Considere atualizar "
 "para uma versão suportada."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:748
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:754
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Não foi possível remover '%1'"

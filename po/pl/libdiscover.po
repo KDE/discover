@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:52+0000\n"
+"POT-Creation-Date: 2023-01-03 00:48+0000\n"
 "PO-Revision-Date: 2022-12-29 11:05+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -1131,7 +1131,7 @@ msgstr ""
 "Twój system operacyjny zakończył wsparcie dnia %1. Rozważ uaktualnienie do "
 "wspieranego wydania."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:748
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:754
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nie usunąć '%1'"

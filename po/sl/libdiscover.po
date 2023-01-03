@@ -2,21 +2,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Andrej Mernik <andrejm@ubuntu.si>, 2012, 2013, 2014, 2015, 2016, 2017, 2018.
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022.
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:52+0000\n"
-"PO-Revision-Date: 2022-12-21 08:06+0100\n"
+"POT-Creation-Date: 2023-01-03 00:48+0000\n"
+"PO-Revision-Date: 2023-01-02 19:59+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.2.2\n"
 
@@ -57,8 +57,7 @@ msgid "%1, released on %2"
 msgstr "%1, izdan na %2"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
-#, fuzzy, kde-format
-#| msgid "All Audiences"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
@@ -66,9 +65,7 @@ msgid "All Audiences"
 msgstr "Vse javnosti"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:185
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Mild Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with relatively benign themes only unsuitable for very young "
@@ -77,9 +74,7 @@ msgid "Mild Content"
 msgstr "Mehka vsebina"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Moderate Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
@@ -88,9 +83,7 @@ msgid "Moderate Content"
 msgstr "Srednja vsebina"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:191
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Intense Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
@@ -1137,7 +1130,7 @@ msgstr ""
 "Vaš operacijski sistem nima več podpore na %1. Razmislite o nadgradnji na "
 "podprto različico."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:748
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:754
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ni mogoče odstraniti '%1'"
@@ -2011,20 +2004,19 @@ msgid "System upgrade"
 msgstr "Nadgradnja sistema"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "%1 paket za nadgradnjo"
-msgstr[1] "%1 paketa za nadgradnjo"
-msgstr[2] "%1 paketi za nadgradnjo"
-msgstr[3] "%1 paketov za nadgradnjo"
+msgstr[0] "%1 paket bo nadgrajen"
+msgstr[1] "%1 paketa bosta nadgrajena"
+msgstr[2] "%1 paketi bodo nadgrajeni"
+msgstr[3] "%1 paketov bo nadgrajeno"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Nadgradi na novo različico %2<br/>Ni zagotovljenih opomb ob izdaji"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
@@ -2032,6 +2024,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Nadgradi na novo različico %2<br/>Opombe ob izdaji:<blockquote>"
+"%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format

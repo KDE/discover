@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:52+0000\n"
-"PO-Revision-Date: 2022-12-24 11:42\n"
+"POT-Creation-Date: 2023-01-03 00:48+0000\n"
+"PO-Revision-Date: 2023-01-02 07:11\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -56,47 +56,40 @@ msgid "%1, released on %2"
 msgstr "%1，发布日期：%2"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
-#, fuzzy, kde-format
-#| msgid "All Audiences"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr "适合所有受众"
+msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:185
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Mild Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr "少量粗俗语言"
+msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Moderate Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "中等数量的粗俗语言"
+msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:191
-#, fuzzy, kde-format
-#| msgctxt "As specified in OARS, intensity of contents"
-#| msgid "Intense Content"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "大量粗俗语言"
+msgstr ""
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:174
 #, kde-format
@@ -1099,7 +1092,7 @@ msgid ""
 msgstr ""
 "本机安装的操作系统已于 %1 结束支持。请考虑升级到仍受支持的新版操作系统。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:748
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:754
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "无法移除“%1”"
@@ -1954,12 +1947,10 @@ msgid "System upgrade"
 msgstr "系统升级"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "需要升级 %1 个软件包"
+msgstr[0] ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
@@ -2460,9 +2451,3 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
-
-#~ msgid "<li>%1 (%2): No changelog information</li>\n"
-#~ msgstr "<li>%1(%2): 没有更新日志信息</li>\n"
-
-#~ msgid "<li>%1 (%2): %3</li>\n"
-#~ msgstr "<li>%1 (%2): %3</li>\n"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:52+0000\n"
+"POT-Creation-Date: 2023-01-03 00:48+0000\n"
 "PO-Revision-Date: 2022-12-29 20:53+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -1130,7 +1130,7 @@ msgstr ""
 "Operasi sistemmu berakhir dukungan pada %1. Dianjurkan memutakhirkan ke "
 "versi yang didukung."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:748
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:754
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Tidak bisa menghapus '%1'"
