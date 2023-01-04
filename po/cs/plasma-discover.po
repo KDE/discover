@@ -387,10 +387,9 @@ msgid "Share"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:623
-#, fuzzy, kde-format
-#| msgid "Unable to load applications"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Aplikace nelze načíst"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:639
 #, kde-format
@@ -617,11 +616,10 @@ msgid "Highest-Rated Games"
 msgstr ""
 
 #: discover/qml/BrowsingPage.qml:139 discover/qml/BrowsingPage.qml:168
-#, fuzzy, kde-format
-#| msgid "Learn More"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "Chcete se dozvědět více?"
+msgstr ""
 
 #: discover/qml/BrowsingPage.qml:149
 #, kde-format
@@ -697,10 +695,9 @@ msgid "Report this issue"
 msgstr "Nahlásit tuto chybu"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "Hlasy: %1 z %2"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
@@ -709,11 +706,10 @@ msgid "Show Previous"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:383
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "Zobrazit obsah"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
@@ -1152,10 +1148,3 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#~ msgid "Updates are available"
-#~ msgstr "Jsou dostupné aktualizace"
-
-#~ msgctxt "Short for 'show updates'"
-#~ msgid "Show"
-#~ msgstr "Zobrazit"

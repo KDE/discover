@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# Kishore G <kishore96@gmail.com>, 2022.
+# Kishore G <kishore96@gmail.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-03 00:48+0000\n"
-"PO-Revision-Date: 2022-12-27 21:50+0530\n"
+"PO-Revision-Date: 2023-01-03 21:41+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -1804,7 +1804,7 @@ msgstr "நீக்கப்படுகிறது"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:354
 #, kde-format
 msgid "Cleanup"
-msgstr ""
+msgstr "சுத்தம் செய்கிறது"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:356
 #, kde-format
@@ -1829,7 +1829,7 @@ msgstr "மீள்நிறுவப்படுகிறது"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:366
 #, kde-format
 msgid "Downgrading"
-msgstr ""
+msgstr "பழைய பதிப்பு மீட்டமைக்கப்படுகிறது"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:368
 #, kde-format
@@ -1977,18 +1977,16 @@ msgid "System upgrade"
 msgstr "கணினி புதுப்பிப்புகள்"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "புதுப்பிக்க 1 நிரல்"
-msgstr[1] "புதுப்பிக்க %1 நிரல்கள்"
+msgstr[0] "1 தொகுப்பு புதுப்பிக்கப்படும்"
+msgstr[1] "%1 தொகுப்புகள் புதுப்பிக்கப்படும்"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-msgstr ""
+msgstr "<h3>%1</h3>புதிய பதிப்பான %2<br/>வெளியீட்டுக் குறிப்புகள் இல்லை"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
@@ -1996,6 +1994,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>புதிய பதிப்பான %2<br/>வெளியீட்டுக் குறிப்புகள்:<blockquote>%3</"
+"blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format

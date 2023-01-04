@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-17 00:51+0000\n"
+"POT-Creation-Date: 2023-01-03 00:48+0000\n"
 "PO-Revision-Date: 2022-09-11 19:52+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -58,26 +58,39 @@ msgstr "%1, utgjeven %2"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
 #, kde-format
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content suitable for everyone"
 msgid "All Audiences"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:183
-#, kde-format
-msgctxt "As specified in OARS, intensity of contents"
-msgid "Mild Content"
-msgstr "Mildt innhald"
-
-#: libdiscover/appstream/AppStreamUtils.cpp:184
-#, kde-format
-msgctxt "As specified in OARS, intensity of contents"
-msgid "Moderate Content"
-msgstr "Moderat innhald"
-
 #: libdiscover/appstream/AppStreamUtils.cpp:185
 #, kde-format
-msgctxt "As specified in OARS, intensity of contents"
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content with relatively benign themes only unsuitable for very young "
+"children, such as minor cartoon violence or mild profanity"
+msgid "Mild Content"
+msgstr ""
+
+#: libdiscover/appstream/AppStreamUtils.cpp:188
+#, kde-format
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content with some intense themes, such as somewhat realistic violence, "
+"references to sexuality, or adult profanity"
+msgid "Moderate Content"
+msgstr ""
+
+#: libdiscover/appstream/AppStreamUtils.cpp:191
+#, kde-format
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"mature content that could be quite objectionable or unsuitable for young "
+"audiences, such as realistic graphic violence, extreme profanity or nudity, "
+"or glorification of drug use"
 msgid "Intense Content"
-msgstr "Intenst innhald"
+msgstr ""
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:174
 #, kde-format
@@ -532,7 +545,7 @@ msgid "Local bundle"
 msgstr "Lokal samling"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1605
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:617
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:659
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Ugyldig appstream-adresse «%1»"
@@ -898,6 +911,43 @@ msgstr "Legg til fjernkjelde «%1» i %2 frå %3"
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
 
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#, kde-format
+msgctxt "@label %1 is the name of an application"
+msgid ""
+"This development version of %1 is outdated. Using the stable version is "
+"highly recommended."
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#, kde-format
+msgctxt "@label %1 is the name of an application"
+msgid "A more stable version of %1 is available."
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
+#, kde-format
+msgctxt "@action: button %1 is the name of a Flatpak repo"
+msgid "View Stable Version on %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
+#, kde-format
+msgid "%1 is not installed but it still has data present."
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
+#, kde-format
+msgid "Delete settings and user data"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
+#, kde-format
+msgctxt "%1 is the name of the application"
+msgid "Permissions for %1"
+msgstr ""
+
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
 msgid ""
@@ -1032,12 +1082,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Skrifter"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:213
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:234
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Sjå til at AppStream er rett sett opp på systemet"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:251
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:272
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1045,7 +1095,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:706
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:754
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Kan ikkje fjerna «%1»"
@@ -1910,38 +1960,40 @@ msgstr "System­oppgradering"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
 #, kde-format
-msgid "1 package to upgrade"
-msgid_plural "%1 packages to upgrade"
-msgstr[0] "1 pakke som skal oppgraderast"
-msgstr[1] "%1 pakkar som skal oppgraderast"
+msgid "1 package will be upgraded"
+msgid_plural "%1 packages will be upgraded"
+msgstr[0] ""
+msgstr[1] ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
-msgid "<li>%1 (%2): No changelog information</li>\n"
+msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
-msgid "<li>%1 (%2): %3</li>\n"
+msgid ""
+"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+"blockquote>"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:198
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format
 msgid "Present"
 msgstr "Notid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:202
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
 #, kde-format
 msgid "Future"
 msgstr "Framtid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:305
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:308
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:492
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:495
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -1950,12 +2002,12 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:499
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:502
 #, kde-format
 msgid "Packages to remove"
 msgstr "Pakkar å fjerna"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:500
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:503
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -1964,13 +2016,13 @@ msgstr ""
 "Desse pakkane vert fjerna av oppdateringa:<ul><li>%1</li></ul><br/>Dette er "
 "for å kunna installera:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:601
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:606
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:609
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -1980,13 +2032,13 @@ msgstr ""
 "Må byta medium type «%1».\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:639
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:642
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Godta EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:640
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:643
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -1996,13 +2048,13 @@ msgstr ""
 "Pakken %1 og pakkeleverandøren %2 krev at du godtek lisensavtala:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:760
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Manglar signatur for %1 i %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:758
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:761
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
@@ -2050,6 +2102,26 @@ msgstr[0] ""
 msgstr[1] ""
 "Handlinga vil òg fjerna desse pakkane:\n"
 "%2"
+
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
+#, kde-format
+msgid "Show Dependencies…"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#, kde-format
+msgid "Dependencies for package: %1"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
+#, kde-format
+msgid "Full Access"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#, kde-format
+msgid "Can access everything on the system"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2202,15 +2274,41 @@ msgstr ""
 msgid "Unknown transaction type"
 msgstr ""
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
-msgid "Snap"
-msgstr "Snap"
+msgid "Channels…"
+msgstr ""
 
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
+#, kde-format
+msgid "%1 channels"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 – %2"
+
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
+#, kde-format
+msgid "Switch"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
+#, kde-format
+msgid "Configure permissions…"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
+#, kde-format
+msgid "Permissions for %1"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#, kde-format
+msgid "Snap"
+msgstr "Snap"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
 #, kde-format

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Vít Pelčák <vit@pelcak.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017.
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
-# Vit Pelcak <vpelcak@suse.cz>, 2017, 2018, 2019, 2020, 2021.
+# Vit Pelcak <vit@pelcak.org>, 2017, 2018, 2019, 2020, 2021.
 #
 msgid ""
 msgstr ""
@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-03 00:48+0000\n"
 "PO-Revision-Date: 2021-10-08 14:32+0200\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -56,13 +56,12 @@ msgid "%1, released on %2"
 msgstr "%1, vydáno %2"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
-#, fuzzy, kde-format
-#| msgid "All Files"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr "Všechny soubory"
+msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:185
 #, kde-format
@@ -83,16 +82,14 @@ msgid "Moderate Content"
 msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:191
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "Internet"
+msgstr ""
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:174
 #, kde-format
@@ -166,11 +163,10 @@ msgstr "falešný 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Aplikace"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -1945,14 +1941,12 @@ msgid "System upgrade"
 msgstr "Aktualizace systému"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 balíček k aktualizaci"
-msgstr[1] "%1 balíčky k aktualizaci"
-msgstr[2] "%1 balíčků k aktualizaci"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
@@ -2085,10 +2079,9 @@ msgstr[2] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
-#, fuzzy, kde-format
-#| msgid "Resolving dependencies…"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "Probíhá řešení závislostí…"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
@@ -2160,10 +2153,9 @@ msgid "GPL and other licenses"
 msgstr "GPL a další licence"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Additional packages: "
-msgstr "Neplatný balíček"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
 #, kde-format
@@ -2171,10 +2163,9 @@ msgid "Additional modules: "
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Local packages: "
-msgstr "Neplatný balíček"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
@@ -2218,10 +2209,9 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:132
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:155
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "Současná běžící transakce rpm-ostree:"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:298
 #, kde-format
@@ -2235,17 +2225,14 @@ msgid "Checking for a system update"
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:330
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Stahování"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:333
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Operační systém"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:336
 #, kde-format
@@ -2258,10 +2245,9 @@ msgid "Transaction in progress (started outside of Discover)"
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:345
-#, fuzzy, kde-format
-#| msgid "Unfinished transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Nedokončená transakce"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
@@ -2271,7 +2257,7 @@ msgstr ""
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
 #, kde-format
 msgid "%1 channels"
-msgstr ""
+msgstr "%1 kanály"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
@@ -2282,7 +2268,7 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "Přepnout"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
@@ -2367,10 +2353,9 @@ msgid "%1+"
 msgstr ""
 
 #: libdiscover/resources/ResourcesUpdatesModel.cpp:109
-#, fuzzy, kde-format
-#| msgid "Updating"
+#, kde-format
 msgid "Updates"
-msgstr "Aktualizuji"
+msgstr "Aktualizace"
 
 #: libdiscover/Transaction/Transaction.cpp:133
 #, kde-format
@@ -2449,12 +2434,3 @@ msgstr ""
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplňky"
-
-#~ msgid "Remote: "
-#~ msgstr "Vzdálené: "
-
-#~ msgid "The currently running version of %1."
-#~ msgstr "Současná běžící verze %1."
-
-#~ msgid "Installed but not currently running version of %1."
-#~ msgstr "Nainstalován, ale právě běží verze %1."
