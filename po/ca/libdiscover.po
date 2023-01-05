@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-03 00:48+0000\n"
+"POT-Creation-Date: 2023-01-05 00:49+0000\n"
 "PO-Revision-Date: 2022-12-30 04:51+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -43,8 +43,9 @@ msgstr "Domini públic"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:387
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:296
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:359
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:385
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -2242,57 +2243,57 @@ msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 "Manca la «ref» remota per a l'operació de «rebase». Informeu de l'error."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL i altres llicències"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
 msgid "Additional packages: "
 msgstr "Paquets addicionals: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
 #, kde-format
 msgid "Additional modules: "
 msgstr "Mòduls addicionals: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
 #, kde-format
 msgid "Local packages: "
 msgstr "Paquets locals: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Paquets substituïts:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
 #, kde-format
 msgid "Removed packages:"
 msgstr "Paquets eliminats:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Versió actualment arrencada (fixada)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:396
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
 #, kde-format
 msgid "Currently booted version"
 msgstr "Versió actualment arrencada"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "Versió que s'emprarà després de tornar a arrencar"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Versió alternativa de reserva (fixada)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:403
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, kde-format
 msgid "Fallback version"
 msgstr "Versió alternativa de reserva"
@@ -2302,13 +2303,13 @@ msgstr "Versió alternativa de reserva"
 msgid "ostree remotes"
 msgstr "Remots d'«ostree»"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:132
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:155
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:133
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
 msgstr "La transacció «rpm-ostree» ha fallat per:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:298
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:299
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
@@ -2316,32 +2317,32 @@ msgstr ""
 "S'està cancel·lant la transacció «rpm-ostree». Això pot trigar una estona. "
 "Espereu."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:327
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:328
 #, kde-format
 msgid "Checking for a system update"
 msgstr "S'està comprovant si hi ha una actualització del sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:330
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:331
 #, kde-format
 msgid "Downloading system update"
 msgstr "S'està baixant una actualització del sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:333
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:334
 #, kde-format
 msgid "Updating the system"
 msgstr "S'està actualitzant el sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:336
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:337
 #, kde-format
 msgid "Updating to the next major version"
 msgstr "S'està actualitzant a la versió major següent"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:339
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:340
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
 msgstr "La transacció és en curs (s'ha iniciat fora del Discover)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:345
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:346
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "Tipus de transacció desconeguda"

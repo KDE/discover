@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-03 00:48+0000\n"
+"POT-Creation-Date: 2023-01-05 00:49+0000\n"
 "PO-Revision-Date: 2022-12-30 23:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -42,8 +42,9 @@ msgstr "Kamu Malı"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:387
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:296
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:359
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:385
 #: libdiscover/UpdateModel/UpdateModel.cpp:117
 #: libdiscover/UpdateModel/UpdateModel.cpp:323
 #, kde-format
@@ -2227,57 +2228,57 @@ msgstr ""
 "Yeniden temellendirme işlemi için uzak başvuru eksik. Lütfen bunu bir hata "
 "olarak bildirin."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL ve diğer lisanslar"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
 msgid "Additional packages: "
 msgstr "Ek paketler: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
 #, kde-format
 msgid "Additional modules: "
 msgstr "Ek modüller: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
 #, kde-format
 msgid "Local packages: "
 msgstr "Yerel paketler: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Değiştirilen paketler:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
 #, kde-format
 msgid "Removed packages:"
 msgstr "Kaldırılan paketler:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Geçerli önyüklenmiş sürüm (sabitlenmiş)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:396
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
 #, kde-format
 msgid "Currently booted version"
 msgstr "Geçerli önyüklenmiş sürüm"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "Yeniden başlatma sonrası kullanılacak sürüm"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Yedek sürüm (sabitlenmiş)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:403
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, kde-format
 msgid "Fallback version"
 msgstr "Yedek sürüm"
@@ -2287,45 +2288,45 @@ msgstr "Yedek sürüm"
 msgid "ostree remotes"
 msgstr "ostree uzak konumları"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:132
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:155
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:133
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
 msgstr "rpm-ostree işlemi, şu hatayı vererek başarısız oldu:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:298
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:299
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 "rpm-ostree işlemi iptal ediliyor. Bu biraz vakit alabilir. Lütfen bekleyin."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:327
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:328
 #, kde-format
 msgid "Checking for a system update"
 msgstr "Sistem güncellemeleri denetleniyor"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:330
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:331
 #, kde-format
 msgid "Downloading system update"
 msgstr "Sistem güncellemesi indiriliyor"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:333
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:334
 #, kde-format
 msgid "Updating the system"
 msgstr "Sistem güncelleniyor"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:336
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:337
 #, kde-format
 msgid "Updating to the next major version"
 msgstr "Sonraki majör sürüme güncelleniyor"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:339
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:340
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
 msgstr "İşlem sürüyor (Keşfet'ten bağımsız olarak başlatıldı)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:345
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:346
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "Bilinmeyen işlem türü"
