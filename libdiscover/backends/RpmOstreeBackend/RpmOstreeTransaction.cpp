@@ -234,7 +234,7 @@ void RpmOstreeTransaction::setupExternalTransaction()
         } else {
             qInfo() << "rpm-ostree-backend: External transaction '" << transactionInfo.at(0) << "' requested by '" << transactionInfo.at(1);
         }
-        fakeProgress("");
+        fakeProgress({});
 
         // Restart the timer
         m_timer->start();

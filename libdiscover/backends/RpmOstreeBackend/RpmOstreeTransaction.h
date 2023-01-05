@@ -43,7 +43,7 @@ public:
                          AbstractResource *resource,
                          OrgProjectatomicRpmostree1SysrootInterface *interface,
                          Operation operation,
-                         QString arg = QStringLiteral(""));
+                         QString arg = {});
     ~RpmOstreeTransaction();
 
     Q_SCRIPTABLE void cancel() override;

@@ -96,7 +96,7 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
             }
         } else {
             // This should never happen
-            m_ostreeFormat.reset(new OstreeFormat(OstreeFormat::Format::Unknown, QStringLiteral("")));
+            m_ostreeFormat.reset(new OstreeFormat(OstreeFormat::Format::Unknown, {}));
             qWarning() << "rpm-ostree-backend: Could not find a valid remote for this deployment:" << m_checksum;
         }
     }
@@ -113,7 +113,7 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     } else {
         m_appstreamid = QStringLiteral("");
     }
-    m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-') + "." + m_checksum;
+    m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-') + '.' + m_checksum;
 #ifdef QT_DEBUG
     qInfo() << "rpm-ostree-backend: Found deployment:" << m_appstreamid;
 #endif
