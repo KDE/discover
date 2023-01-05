@@ -152,12 +152,12 @@ void RpmOstreeNotifier::checkForPendingDeployment()
         // Parse stdout as JSON and look at the deployments for a pending
         // deployment for the new version.
         const QJsonDocument jsonDocument = QJsonDocument::fromJson(m_stdout);
-        if (jsonDocument.isObject() == false) {
+        if (!jsonDocument.isObject()) {
             qWarning() << "rpm-ostree-notifier: Could not parse 'rpm-ostree status' output as JSON";
             return;
         }
         const QJsonArray deployments = jsonDocument.object().value("deployments").toArray();
-        if (deployments.size() == 0) {
+        if (deployments.isEmpty()) {
             qWarning() << "rpm-ostree-notifier: Could not find the deployments in 'rpm-ostree status' JSON output";
             return;
         }
