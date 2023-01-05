@@ -121,6 +121,7 @@ void RpmOstreeTransaction::start()
 void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exitStatus)
 {
     m_process->deleteLater();
+    m_process = nullptr;
     if (exitStatus != QProcess::NormalExit) {
         if (m_cancelled) {
             // If the user requested the transaction to be cancelled then we

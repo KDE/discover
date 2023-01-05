@@ -63,6 +63,7 @@ void RpmOstreeNotifier::recheckSystemUpdateNeeded()
     // Process command result
     connect(m_process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), [this](int exitCode, QProcess::ExitStatus exitStatus) {
         m_process->deleteLater();
+        m_process = nullptr;
         if (exitStatus != QProcess::NormalExit) {
             qWarning() << "rpm-ostree-notifier: Failed to check for system update";
             return;
@@ -137,6 +138,7 @@ void RpmOstreeNotifier::checkForPendingDeployment()
     // Process command result
     connect(m_process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), [this](int exitCode, QProcess::ExitStatus exitStatus) {
         m_process->deleteLater();
+        m_process = nullptr;
         if (exitStatus != QProcess::NormalExit) {
             qWarning() << "rpm-ostree-notifier: Failed to check for existing deployments";
             return;
