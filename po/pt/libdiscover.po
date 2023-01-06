@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-05 00:49+0000\n"
+"POT-Creation-Date: 2023-01-06 00:49+0000\n"
 "PO-Revision-Date: 2022-12-28 18:41+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -2305,13 +2305,13 @@ msgstr "Versão de salvaguarda"
 msgid "ostree remotes"
 msgstr "remotos do 'ostree'"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:133
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
 msgstr "A transacção do 'rpm-ostree' falhou com:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:299
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
@@ -2319,32 +2319,32 @@ msgstr ""
 "A cancelar a transacção do 'rpm-ostree'. Isto poderá levar algum tempo. "
 "Espere por favor."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:328
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
 #, kde-format
 msgid "Checking for a system update"
 msgstr "A procurar por actualizações do sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:331
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:385
 #, kde-format
 msgid "Downloading system update"
 msgstr "A obter a actualização do sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:334
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:388
 #, kde-format
 msgid "Updating the system"
 msgstr "A actualizar o sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:337
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Updating to the next major version"
 msgstr "A actualizar para a versão principal seguinte"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:340
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
 msgid "Transaction in progress (started outside of Discover)"
 msgstr "Transacção em curso (iniciada fora do Discover)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:346
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "Tipo de transacção desconhecido"
