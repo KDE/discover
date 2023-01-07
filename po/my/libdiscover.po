@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-06 00:49+0000\n"
+"POT-Creation-Date: 2023-01-07 00:50+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -2324,7 +2324,7 @@ msgstr ""
 "ဤစနပ်အပ္ပလီကေးရှင်းသည် သီးသန့်ကန့်ထားခြင်း မရှိဘဲ သင်၏ကွန်ပြူတာကို အပြည့်အဝအသုံးပြုခွင့်ရရှိလိမ့်မည်။ ၎င်းကို "
 "ဘာဖြစ်ဖြစ်တပ်ဆင်မှာလား။"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:62
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""
