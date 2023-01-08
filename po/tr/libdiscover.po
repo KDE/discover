@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-07 00:50+0000\n"
+"POT-Creation-Date: 2023-01-08 01:00+0000\n"
 "PO-Revision-Date: 2022-12-30 23:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -2322,8 +2322,9 @@ msgid "Updating to the next major version"
 msgstr "Sonraki majör sürüme güncelleniyor"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, kde-format
-msgid "Transaction in progress (started outside of Discover)"
+#, fuzzy, kde-format
+#| msgid "Transaction in progress (started outside of Discover)"
+msgid "Operation in progress (started outside of Discover)"
 msgstr "İşlem sürüyor (Keşfet'ten bağımsız olarak başlatıldı)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400

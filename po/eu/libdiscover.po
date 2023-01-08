@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-07 00:50+0000\n"
+"POT-Creation-Date: 2023-01-08 01:00+0000\n"
 "PO-Revision-Date: 2022-12-30 20:02+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2337,8 +2337,9 @@ msgid "Updating to the next major version"
 msgstr "Hurrengo bertsio nagusira eguneratzen"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, kde-format
-msgid "Transaction in progress (started outside of Discover)"
+#, fuzzy, kde-format
+#| msgid "Transaction in progress (started outside of Discover)"
+msgid "Operation in progress (started outside of Discover)"
 msgstr "Transakzioa martxan (Discover-ren kanpotik hasi da)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400

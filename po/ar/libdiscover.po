@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-07 00:50+0000\n"
+"POT-Creation-Date: 2023-01-08 01:00+0000\n"
 "PO-Revision-Date: 2022-12-31 18:40+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -2329,8 +2329,9 @@ msgid "Updating to the next major version"
 msgstr "يحدّث إلى الإصدارة الرئيسة التالية"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, kde-format
-msgid "Transaction in progress (started outside of Discover)"
+#, fuzzy, kde-format
+#| msgid "Transaction in progress (started outside of Discover)"
+msgid "Operation in progress (started outside of Discover)"
 msgstr "عملية قيد التنفيذ ( بدأت خارج المستكشف)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400

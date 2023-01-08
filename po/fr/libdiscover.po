@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-07 00:50+0000\n"
+"POT-Creation-Date: 2023-01-08 01:00+0000\n"
 "PO-Revision-Date: 2022-12-31 15:03+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -2362,8 +2362,9 @@ msgid "Updating to the next major version"
 msgstr "Mise à jour vers la prochaine version majeure"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, kde-format
-msgid "Transaction in progress (started outside of Discover)"
+#, fuzzy, kde-format
+#| msgid "Transaction in progress (started outside of Discover)"
+msgid "Operation in progress (started outside of Discover)"
 msgstr "Transaction en cours (Débutée en dehors de Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
