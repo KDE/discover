@@ -50,19 +50,19 @@ DiscoverPage {
         const rough = appsModel.roughCount;
         if (search.length>0) {
             if (rough.length > 0) {
-                return i18n("Search: %1 - %2 items", stripHtml(search), rough)
+                return i18np("Search: %2 - %1 item", "Search: %2 - %1 items", rough, stripHtml(search))
             } else {
                 return i18n("Search: %1", stripHtml(search))
             }
         } else if (name.length > 0) {
             if (rough.length > 0) {
-                return i18n("%1 - %2 items", name, rough)
+                return i18np("%2 - %1 item", "%2 - %1 items", rough, name)
             } else {
                 return name
             }
         } else {
             if (rough.length > 0) {
-                return i18n("Search - %1 items", rough)
+                return i18np("Search - %1 item", "Search - %1 items", rough)
             } else {
                 return i18n("Search")
             }
