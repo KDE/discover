@@ -1,16 +1,16 @@
 # Translation of libdiscover.po to Catalan
-# Copyright (C) 2011-2022 This_file_is_part_of_KDE
+# Copyright (C) 2011-2023 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-08 01:00+0000\n"
-"PO-Revision-Date: 2022-12-30 04:51+0100\n"
+"PO-Revision-Date: 2023-01-08 11:50+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -2338,10 +2338,9 @@ msgid "Updating to the next major version"
 msgstr "S'està actualitzant a la versió major següent"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, fuzzy, kde-format
-#| msgid "Transaction in progress (started outside of Discover)"
+#, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "La transacció és en curs (s'ha iniciat fora del Discover)"
+msgstr "L'operació és en curs (s'ha iniciat fora del Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
@@ -2540,9 +2539,3 @@ msgstr "Programari del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complements"
-
-#~ msgid "<li>%1 (%2): No changelog information</li>\n"
-#~ msgstr "<li>%1 (%2): No hi ha informació en el registre de canvis</li>\n"
-
-#~ msgid "<li>%1 (%2): %3</li>\n"
-#~ msgstr "<li>%1 (%2): %3</li>\n"
