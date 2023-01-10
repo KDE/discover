@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-01-10 00:57+0000\n"
 "PO-Revision-Date: 2022-11-21 19:11+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -548,9 +548,16 @@ msgstr ""
 "مؤلفيه (%1). <nl/> <nl/> يمكنك معرفة المزيد على <link url = '%2'>%2 </link>. "
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, kde-format
-msgid "Search: %1 - %2 items"
-msgstr "ابحث عن: %1 - %2 عنصر"
+#, fuzzy, kde-format
+#| msgid "Search: %1 - %2 items"
+msgid "Search: %2 - %1 item"
+msgid_plural "Search: %2 - %1 items"
+msgstr[0] "ابحث عن: %1 - %2 عنصر"
+msgstr[1] "ابحث عن: %1 - %2 عنصر"
+msgstr[2] "ابحث عن: %1 - %2 عنصر"
+msgstr[3] "ابحث عن: %1 - %2 عنصر"
+msgstr[4] "ابحث عن: %1 - %2 عنصر"
+msgstr[5] "ابحث عن: %1 - %2 عنصر"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -558,14 +565,28 @@ msgid "Search: %1"
 msgstr "‏ابحث عن ‏%1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, kde-format
-msgid "%1 - %2 items"
-msgstr "‏%1 -‏ %2 عنصر"
+#, fuzzy, kde-format
+#| msgid "%1 - %2 items"
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "‏%1 -‏ %2 عنصر"
+msgstr[1] "‏%1 -‏ %2 عنصر"
+msgstr[2] "‏%1 -‏ %2 عنصر"
+msgstr[3] "‏%1 -‏ %2 عنصر"
+msgstr[4] "‏%1 -‏ %2 عنصر"
+msgstr[5] "‏%1 -‏ %2 عنصر"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, kde-format
-msgid "Search - %1 items"
-msgstr "‏ابحث عن - ‏%1"
+#, fuzzy, kde-format
+#| msgid "Search - %1 items"
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "‏ابحث عن - ‏%1"
+msgstr[1] "‏ابحث عن - ‏%1"
+msgstr[2] "‏ابحث عن - ‏%1"
+msgstr[3] "‏ابحث عن - ‏%1"
+msgstr[4] "‏ابحث عن - ‏%1"
+msgstr[5] "‏ابحث عن - ‏%1"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-01-10 00:57+0000\n"
 "PO-Revision-Date: 2022-07-24 14:43+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -528,9 +528,12 @@ msgid ""
 msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, kde-format
-msgid "Search: %1 - %2 items"
-msgstr "Suche: Elemente %1 - %2"
+#, fuzzy, kde-format
+#| msgid "Search: %1 - %2 items"
+msgid "Search: %2 - %1 item"
+msgid_plural "Search: %2 - %1 items"
+msgstr[0] "Suche: Elemente %1 - %2"
+msgstr[1] "Suche: Elemente %1 - %2"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -538,14 +541,20 @@ msgid "Search: %1"
 msgstr "Suchen : %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, kde-format
-msgid "%1 - %2 items"
-msgstr "%1 -%2 Elemente"
+#, fuzzy, kde-format
+#| msgid "%1 - %2 items"
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "%1 -%2 Elemente"
+msgstr[1] "%1 -%2 Elemente"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, kde-format
-msgid "Search - %1 items"
-msgstr "Suche - %1 Einträge"
+#, fuzzy, kde-format
+#| msgid "Search - %1 items"
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "Suche - %1 Einträge"
+msgstr[1] "Suche - %1 Einträge"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207

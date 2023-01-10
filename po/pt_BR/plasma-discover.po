@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-01-10 00:57+0000\n"
 "PO-Revision-Date: 2022-12-20 11:09-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -549,9 +549,12 @@ msgstr ""
 "><nl/>Saiba mais em: <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, kde-format
-msgid "Search: %1 - %2 items"
-msgstr "Pesquisar: %1 - %2 itens"
+#, fuzzy, kde-format
+#| msgid "Search: %1 - %2 items"
+msgid "Search: %2 - %1 item"
+msgid_plural "Search: %2 - %1 items"
+msgstr[0] "Pesquisar: %1 - %2 itens"
+msgstr[1] "Pesquisar: %1 - %2 itens"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -559,14 +562,20 @@ msgid "Search: %1"
 msgstr "Pesquisar: %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, kde-format
-msgid "%1 - %2 items"
-msgstr "%1 - %2 itens"
+#, fuzzy, kde-format
+#| msgid "%1 - %2 items"
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "%1 - %2 itens"
+msgstr[1] "%1 - %2 itens"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, kde-format
-msgid "Search - %1 items"
-msgstr "Pesquisar - %1 itens"
+#, fuzzy, kde-format
+#| msgid "Search - %1 items"
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "Pesquisar - %1 itens"
+msgstr[1] "Pesquisar - %1 itens"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207

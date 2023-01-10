@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-01-10 00:57+0000\n"
 "PO-Revision-Date: 2019-11-26 22:56+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -532,8 +532,10 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:53
 #, fuzzy, kde-format
 #| msgid "Search: %1 + %2"
-msgid "Search: %1 - %2 items"
-msgstr "Busca: %1 + %2"
+msgid "Search: %2 - %1 item"
+msgid_plural "Search: %2 - %1 items"
+msgstr[0] "Busca: %1 + %2"
+msgstr[1] "Busca: %1 + %2"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -543,14 +545,18 @@ msgstr "Busca: %1"
 #: discover/qml/ApplicationsListPage.qml:59
 #, fuzzy, kde-format
 #| msgid "%1 - %2"
-msgid "%1 - %2 items"
-msgstr "%1 - %2"
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "%1 - %2"
+msgstr[1] "%1 - %2"
 
 #: discover/qml/ApplicationsListPage.qml:65
 #, fuzzy, kde-format
 #| msgid "Search: %1"
-msgid "Search - %1 items"
-msgstr "Busca: %1"
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "Busca: %1"
+msgstr[1] "Busca: %1"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207

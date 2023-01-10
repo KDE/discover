@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-01-10 00:57+0000\n"
 "PO-Revision-Date: 2022-08-16 17:05+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -548,9 +548,12 @@ msgstr ""
 "buradan əldə edə bilərsiniz: <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, kde-format
-msgid "Search: %1 - %2 items"
-msgstr "Axtarış: %1 - %2 elementlər"
+#, fuzzy, kde-format
+#| msgid "Search: %1 - %2 items"
+msgid "Search: %2 - %1 item"
+msgid_plural "Search: %2 - %1 items"
+msgstr[0] "Axtarış: %1 - %2 elementlər"
+msgstr[1] "Axtarış: %1 - %2 elementlər"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -558,14 +561,20 @@ msgid "Search: %1"
 msgstr "Axtarış: %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, kde-format
-msgid "%1 - %2 items"
-msgstr "%1 - %2 elementlər"
+#, fuzzy, kde-format
+#| msgid "%1 - %2 items"
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "%1 - %2 elementlər"
+msgstr[1] "%1 - %2 elementlər"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, kde-format
-msgid "Search - %1 items"
-msgstr "Axtarış: %1 element"
+#, fuzzy, kde-format
+#| msgid "Search - %1 items"
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "Axtarış: %1 element"
+msgstr[1] "Axtarış: %1 element"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207

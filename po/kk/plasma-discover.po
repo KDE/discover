@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-01-10 00:57+0000\n"
 "PO-Revision-Date: 2013-10-03 05:07+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -522,8 +522,9 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:53
 #, fuzzy, kde-format
 #| msgid "Search in '%1'..."
-msgid "Search: %1 - %2 items"
-msgstr "'%1' дегенде іздеу..."
+msgid "Search: %2 - %1 item"
+msgid_plural "Search: %2 - %1 items"
+msgstr[0] "'%1' дегенде іздеу..."
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, fuzzy, kde-format
@@ -532,15 +533,18 @@ msgid "Search: %1"
 msgstr "'%1' дегенде іздеу..."
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, kde-format
-msgid "%1 - %2 items"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Search in '%1'..."
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "'%1' дегенде іздеу..."
 
 #: discover/qml/ApplicationsListPage.qml:65
 #, fuzzy, kde-format
 #| msgid "Search in '%1'..."
-msgid "Search - %1 items"
-msgstr "'%1' дегенде іздеу..."
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "'%1' дегенде іздеу..."
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207

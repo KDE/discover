@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-01-10 00:57+0000\n"
 "PO-Revision-Date: 2023-01-02 19:59+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -552,9 +552,14 @@ msgstr ""
 "(%1).<nl/><nl/>Več o tem se lahko poučite na <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, kde-format
-msgid "Search: %1 - %2 items"
-msgstr "Iskanje: %1 - %2 elementov"
+#, fuzzy, kde-format
+#| msgid "Search: %1 - %2 items"
+msgid "Search: %2 - %1 item"
+msgid_plural "Search: %2 - %1 items"
+msgstr[0] "Iskanje: %1 - %2 elementov"
+msgstr[1] "Iskanje: %1 - %2 elementov"
+msgstr[2] "Iskanje: %1 - %2 elementov"
+msgstr[3] "Iskanje: %1 - %2 elementov"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -562,14 +567,24 @@ msgid "Search: %1"
 msgstr "Poišči: %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, kde-format
-msgid "%1 - %2 items"
-msgstr "%1 - %2 elementov"
+#, fuzzy, kde-format
+#| msgid "%1 - %2 items"
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "%1 - %2 elementov"
+msgstr[1] "%1 - %2 elementov"
+msgstr[2] "%1 - %2 elementov"
+msgstr[3] "%1 - %2 elementov"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, kde-format
-msgid "Search - %1 items"
-msgstr "Iskanje - %1 elementov"
+#, fuzzy, kde-format
+#| msgid "Search - %1 items"
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "Iskanje - %1 elementov"
+msgstr[1] "Iskanje - %1 elementov"
+msgstr[2] "Iskanje - %1 elementov"
+msgstr[3] "Iskanje - %1 elementov"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207

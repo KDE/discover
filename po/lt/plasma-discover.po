@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-01-10 00:57+0000\n"
 "PO-Revision-Date: 2021-08-31 18:57+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -548,8 +548,12 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:53
 #, fuzzy, kde-format
 #| msgid "Search: %1 + %2"
-msgid "Search: %1 - %2 items"
-msgstr "Ieškoti: „%1“ + „%2“"
+msgid "Search: %2 - %1 item"
+msgid_plural "Search: %2 - %1 items"
+msgstr[0] "Ieškoti: „%1“ + „%2“"
+msgstr[1] "Ieškoti: „%1“ + „%2“"
+msgstr[2] "Ieškoti: „%1“ + „%2“"
+msgstr[3] "Ieškoti: „%1“ + „%2“"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -559,14 +563,22 @@ msgstr "Ieškoti: %1"
 #: discover/qml/ApplicationsListPage.qml:59
 #, fuzzy, kde-format
 #| msgid "%1 - %2"
-msgid "%1 - %2 items"
-msgstr "%1 - %2"
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "%1 - %2"
+msgstr[1] "%1 - %2"
+msgstr[2] "%1 - %2"
+msgstr[3] "%1 - %2"
 
 #: discover/qml/ApplicationsListPage.qml:65
 #, fuzzy, kde-format
 #| msgid "Search: %1"
-msgid "Search - %1 items"
-msgstr "Ieškoti: %1"
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "Ieškoti: %1"
+msgstr[1] "Ieškoti: %1"
+msgstr[2] "Ieškoti: %1"
+msgstr[3] "Ieškoti: %1"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207

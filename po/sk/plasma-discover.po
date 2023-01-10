@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-01-10 00:57+0000\n"
 "PO-Revision-Date: 2022-01-27 09:56+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -554,8 +554,11 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:53
 #, fuzzy, kde-format
 #| msgid "Search: %1 + %2"
-msgid "Search: %1 - %2 items"
-msgstr "Hľadať: %1 + %2"
+msgid "Search: %2 - %1 item"
+msgid_plural "Search: %2 - %1 items"
+msgstr[0] "Hľadať: %1 + %2"
+msgstr[1] "Hľadať: %1 + %2"
+msgstr[2] "Hľadať: %1 + %2"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -565,14 +568,20 @@ msgstr "Vyhľadať: %1"
 #: discover/qml/ApplicationsListPage.qml:59
 #, fuzzy, kde-format
 #| msgid "%1 - %2"
-msgid "%1 - %2 items"
-msgstr "%1 - %2"
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "%1 - %2"
+msgstr[1] "%1 - %2"
+msgstr[2] "%1 - %2"
 
 #: discover/qml/ApplicationsListPage.qml:65
 #, fuzzy, kde-format
 #| msgid "Search: %1"
-msgid "Search - %1 items"
-msgstr "Vyhľadať: %1"
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "Vyhľadať: %1"
+msgstr[1] "Vyhľadať: %1"
+msgstr[2] "Vyhľadať: %1"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207

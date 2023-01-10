@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-01-10 00:57+0000\n"
 "PO-Revision-Date: 2022-01-01 09:32-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -527,8 +527,10 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:53
 #, fuzzy, kde-format
 #| msgid "Search: %1"
-msgid "Search: %1 - %2 items"
-msgstr "ਖੋਜੋ: %1"
+msgid "Search: %2 - %1 item"
+msgid_plural "Search: %2 - %1 items"
+msgstr[0] "ਖੋਜੋ: %1"
+msgstr[1] "ਖੋਜੋ: %1"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -538,14 +540,18 @@ msgstr "ਖੋਜੋ: %1"
 #: discover/qml/ApplicationsListPage.qml:59
 #, fuzzy, kde-format
 #| msgid "%1 - %2"
-msgid "%1 - %2 items"
-msgstr "%1 - %2"
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "%1 - %2"
+msgstr[1] "%1 - %2"
 
 #: discover/qml/ApplicationsListPage.qml:65
 #, fuzzy, kde-format
 #| msgid "Search: %1"
-msgid "Search - %1 items"
-msgstr "ਖੋਜੋ: %1"
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "ਖੋਜੋ: %1"
+msgstr[1] "ਖੋਜੋ: %1"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207

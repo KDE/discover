@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-08 01:00+0000\n"
-"PO-Revision-Date: 2022-12-28 18:41+0000\n"
+"PO-Revision-Date: 2023-01-09 18:43+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -2008,18 +2008,18 @@ msgid "System upgrade"
 msgstr "Actualização do sistema"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 pacote para actualizar"
-msgstr[1] "%1 pacotes para actualizar"
+msgstr[0] "será actualizado 1 pacote"
+msgstr[1] "serão actualizados %1 pacotes"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Actualizar para a nova versão %2<br/>Não existem notas de "
+"lançamento"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
@@ -2027,6 +2027,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Actualizar para a nova versão %2<br/>Notas de lançamento:"
+"<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format
@@ -2340,10 +2342,9 @@ msgid "Updating to the next major version"
 msgstr "A actualizar para a versão principal seguinte"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, fuzzy, kde-format
-#| msgid "Transaction in progress (started outside of Discover)"
+#, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "Transacção em curso (iniciada fora do Discover)"
+msgstr "Operação em curso (iniciada fora do Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
@@ -2541,9 +2542,3 @@ msgstr "Aplicações do Sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Extensões"
-
-#~ msgid "<li>%1 (%2): No changelog information</li>\n"
-#~ msgstr "<li>%1 (%2): Sem informações de registo das alterações</li>\n"
-
-#~ msgid "<li>%1 (%2): %3</li>\n"
-#~ msgstr "<li>%1 (%2): %3</li>\n"

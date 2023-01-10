@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:54+0000\n"
+"POT-Creation-Date: 2023-01-10 00:57+0000\n"
 "PO-Revision-Date: 2012-05-14 16:25-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -524,8 +524,13 @@ msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
-msgid "Search: %1 - %2 items"
-msgstr ""
+msgid "Search: %2 - %1 item"
+msgid_plural "Search: %2 - %1 items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -534,13 +539,23 @@ msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:59
 #, kde-format
-msgid "%1 - %2 items"
-msgstr ""
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
 
 #: discover/qml/ApplicationsListPage.qml:65
 #, kde-format
-msgid "Search - %1 items"
-msgstr ""
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207
