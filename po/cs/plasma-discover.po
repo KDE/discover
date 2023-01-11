@@ -1,21 +1,21 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Vit Pelcak <vit@pelcak.org>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
+# Vit Pelcak <vit@pelcak.org>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-10 00:57+0000\n"
-"PO-Revision-Date: 2021-09-27 20:16+0200\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"PO-Revision-Date: 2023-01-06 10:48+0100\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.08.1\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -37,7 +37,7 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
-msgstr ""
+msgstr "Nahlásit tuto chybu"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-kuit-format
@@ -63,7 +63,7 @@ msgstr "Nelze nalézt kategorii '%1'"
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "Dialog pro otevření neexistujícího souboru '%1'"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -92,7 +92,7 @@ msgstr ""
 #: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
-msgstr ""
+msgstr "Prosím nahlaste tuto chybu správcům vaší distribuce."
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
 #: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
@@ -169,7 +169,7 @@ msgstr "Prohlížeč aplikací"
 #: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr ""
+msgstr "© 2010-2022 Vývojový tým Plasma"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -221,7 +221,7 @@ msgstr "Dostupné režimy:\n"
 #: discover/qml/AddonsView.qml:18 discover/qml/navigation.js:43
 #, kde-format
 msgid "Addons for %1"
-msgstr ""
+msgstr "Doplňky pro %1"
 
 #: discover/qml/AddonsView.qml:50
 #, kde-format
@@ -284,12 +284,12 @@ msgstr "%1 - %2"
 #: discover/qml/ApplicationPage.qml:185
 #, kde-format
 msgid "Unknown author"
-msgstr ""
+msgstr "Neznámý autor"
 
 #: discover/qml/ApplicationPage.qml:220
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "Ke snímkům obrazovky nelze přistupovat"
 
 #: discover/qml/ApplicationPage.qml:279
 #, kde-format
@@ -311,15 +311,15 @@ msgstr ""
 #, kde-format
 msgid "License"
 msgid_plural "Licenses"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Licence"
+msgstr[1] "Licence"
+msgstr[2] "Licence"
 
 #: discover/qml/ApplicationPage.qml:369
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
-msgstr ""
+msgstr "Neznámý"
 
 #: discover/qml/ApplicationPage.qml:407
 #, kde-format
@@ -330,25 +330,25 @@ msgstr "Co to znamená?"
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Více…"
+msgstr[1] "Více…"
+msgstr[2] "Více…"
 
 #: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:879
 #, kde-format
 msgid "Content Rating"
-msgstr ""
+msgstr "Hodnocení obsahu"
 
 #: discover/qml/ApplicationPage.qml:445
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "Věk: %1+"
 
 #: discover/qml/ApplicationPage.qml:469
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr ""
+msgstr "Podrobnosti…"
 
 #: discover/qml/ApplicationPage.qml:568
 #, kde-format
@@ -358,7 +358,7 @@ msgstr "Dokumentace"
 #: discover/qml/ApplicationPage.qml:569
 #, kde-format
 msgid "Read the project's official documentation"
-msgstr ""
+msgstr "Přečtěte si oficiální dokumentaci projektu"
 
 #: discover/qml/ApplicationPage.qml:585
 #, kde-format
@@ -368,7 +368,7 @@ msgstr "Webová stránka"
 #: discover/qml/ApplicationPage.qml:586
 #, kde-format
 msgid "Visit the project's website"
-msgstr ""
+msgstr "Přejít na stránku projektu"
 
 #: discover/qml/ApplicationPage.qml:602
 #, kde-format
@@ -378,18 +378,18 @@ msgstr "Doplňky"
 #: discover/qml/ApplicationPage.qml:603
 #, kde-format
 msgid "Install or remove additional functionality"
-msgstr ""
+msgstr "Instalace nebo odstranění dodatečné funkčnosti"
 
 #: discover/qml/ApplicationPage.qml:622
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "Sdílet"
 
 #: discover/qml/ApplicationPage.qml:623
 #, kde-format
 msgid "Send a link for this application"
-msgstr ""
+msgstr "Poslat odkaz pro tuto aplikaci"
 
 #: discover/qml/ApplicationPage.qml:639
 #, kde-format
@@ -405,7 +405,7 @@ msgstr "Co je nového"
 #: discover/qml/ApplicationPage.qml:689
 #, kde-format
 msgid "Loading reviews for %1"
-msgstr ""
+msgstr "Načítají se recenze pro %1"
 
 #: discover/qml/ApplicationPage.qml:695
 #, kde-format
@@ -416,9 +416,9 @@ msgstr "Recenze"
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Zobrazit %1 recenzi..."
+msgstr[1] "Zobrazit všechny %1 recenze..."
+msgstr[2] "Zobrazit všech %1 recenzí..."
 
 #: discover/qml/ApplicationPage.qml:745
 #, kde-format
@@ -468,12 +468,12 @@ msgstr ""
 #: discover/qml/ApplicationPage.qml:848
 #, kde-format
 msgid "All Licenses"
-msgstr ""
+msgstr "Všechny licence"
 
 #: discover/qml/ApplicationPage.qml:893
 #, kde-format
 msgid "Risks of proprietary software"
-msgstr ""
+msgstr "Rizika proprietárního software"
 
 #: discover/qml/ApplicationPage.qml:899
 #, kde-kuit-format
@@ -508,13 +508,12 @@ msgid ""
 msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgid "Search: %2 - %1 item"
 msgid_plural "Search: %2 - %1 items"
-msgstr[0] "Hledat: %1"
-msgstr[1] "Hledat: %1"
-msgstr[2] "Hledat: %1"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -530,13 +529,12 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Hledat: %1"
-msgstr[1] "Hledat: %1"
-msgstr[2] "Hledat: %1"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207
@@ -596,7 +594,7 @@ msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
 "language. %1 is the text that will be searched for."
 msgid "https://duckduckgo.com/?q=%1"
-msgstr ""
+msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:222
 #, kde-format
@@ -612,31 +610,31 @@ msgstr "Aplikace nelze načíst"
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "Nejoblíbenější"
 
 #: discover/qml/BrowsingPage.qml:106
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "Výběr editorů"
 
 #: discover/qml/BrowsingPage.qml:120
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "Nejlépe hodnocené hry"
 
 #: discover/qml/BrowsingPage.qml:139 discover/qml/BrowsingPage.qml:168
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr ""
+msgstr "Více"
 
 #: discover/qml/BrowsingPage.qml:149
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "Nejlépe hodnocené vVývojové nástroje"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -708,19 +706,19 @@ msgstr "Nahlásit tuto chybu"
 #: discover/qml/DiscoverWindow.qml:325
 #, kde-format
 msgid "Error %1 of %2"
-msgstr ""
+msgstr "Chyba %1 z %2"
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "Zobrazit předchozí"
 
 #: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr ""
+msgstr "Zobrazit následující"
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
@@ -757,7 +755,7 @@ msgstr "Nastavit zpětnou vazbu…"
 #: discover/qml/Feedback.qml:28 discover/qml/SourcesPage.qml:19
 #, kde-format
 msgid "Configure Updates…"
-msgstr ""
+msgstr "Nastavit aktualizace..."
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -936,7 +934,7 @@ msgstr "Příliš dlouhé"
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "Vložte název"
 
 #: discover/qml/ReviewsPage.qml:42
 #, kde-format
@@ -971,7 +969,7 @@ msgstr "Nastavení"
 #: discover/qml/SourcesPage.qml:93
 #, kde-format
 msgid "Default source"
-msgstr ""
+msgstr "Výchozí zdroj"
 
 #: discover/qml/SourcesPage.qml:100
 #, kde-format
@@ -1041,7 +1039,7 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:67
 #, kde-format
 msgid "See Technical Details"
-msgstr ""
+msgstr "Zobrazit technické podrobnosti"
 
 #: discover/qml/UpdatesPage.qml:83
 #, kde-format
@@ -1083,12 +1081,12 @@ msgstr "Zrušit výběr"
 #: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Restart automatically after update has completed"
-msgstr ""
+msgstr "Automaticky restartovat po dokončení aktualizace"
 
 #: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Total size: %1"
-msgstr ""
+msgstr "Celková velikost: %1"
 
 #: discover/qml/UpdatesPage.qml:278
 #, kde-format
@@ -1108,7 +1106,7 @@ msgstr "Instaluje se"
 #: discover/qml/UpdatesPage.qml:428
 #, kde-format
 msgid "Update from:"
-msgstr ""
+msgstr "Aktualizace z:"
 
 #: discover/qml/UpdatesPage.qml:440
 #, kde-format
@@ -1116,7 +1114,7 @@ msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
 "address within that backend"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:447
 #, kde-format
@@ -1139,7 +1137,7 @@ msgstr "Aktualizace"
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
-msgstr ""
+msgstr "Pro dokončení aktualizace restartujte systém"
 
 #: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
 #: discover/qml/UpdatesPage.qml:524

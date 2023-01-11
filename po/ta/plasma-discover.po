@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# Kishore G <kishore96@gmail.com>, 2021, 2022.
+# Kishore G <kishore96@gmail.com>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-10 00:57+0000\n"
-"PO-Revision-Date: 2022-11-22 21:38+0530\n"
+"PO-Revision-Date: 2023-01-10 21:41+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -535,12 +535,11 @@ msgstr ""
 "மேலும் அறியலாம்."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %1 item"
 msgid_plural "Search: %2 - %1 items"
-msgstr[0] "தேடல்: %1 - %2 உருப்படிகள்"
-msgstr[1] "தேடல்: %1 - %2 உருப்படிகள்"
+msgstr[0] "தேடல்: %2 - %1 உருப்படி"
+msgstr[1] "தேடல்: %2 - %1 உருப்படிகள்"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -548,19 +547,17 @@ msgid "Search: %1"
 msgstr "தேடல்: %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 -%2 உருப்படிகள்"
-msgstr[1] "%1 -%2 உருப்படிகள்"
+msgstr[0] "%2 -%1 உருப்படி"
+msgstr[1] "%2 -%1 உருப்படிகள்"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "தேடல்: %1 உருப்படிகள்"
+msgstr[0] "தேடல்: %1 உருப்படி"
 msgstr[1] "தேடல்: %1 உருப்படிகள்"
 
 #: discover/qml/ApplicationsListPage.qml:67

@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Yuri Chornoivan <yurchor@ukr.net>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-10 00:57+0000\n"
-"PO-Revision-Date: 2022-11-18 08:42+0200\n"
+"PO-Revision-Date: 2023-01-10 21:36+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -560,14 +560,13 @@ msgstr ""
 "це на сторінці <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %1 item"
 msgid_plural "Search: %2 - %1 items"
-msgstr[0] "Пошук: %1 – %2 записів"
-msgstr[1] "Пошук: %1 – %2 записів"
-msgstr[2] "Пошук: %1 – %2 записів"
-msgstr[3] "Пошук: %1 – %2 записів"
+msgstr[0] "Пошук: %2 – %1 запис"
+msgstr[1] "Пошук: %2 – %1 записи"
+msgstr[2] "Пошук: %2 – %1 записів"
+msgstr[3] "Пошук: %2 – %1 запис"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -575,24 +574,22 @@ msgid "Search: %1"
 msgstr "Пошук: %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 — %2 записів"
-msgstr[1] "%1 — %2 записів"
-msgstr[2] "%1 — %2 записів"
-msgstr[3] "%1 — %2 записів"
+msgstr[0] "%2 – %1 запис"
+msgstr[1] "%2 – %1 записи"
+msgstr[2] "%2 — %1 записів"
+msgstr[3] "%2 — %1 запис"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Пошук — %1 записів"
-msgstr[1] "Пошук — %1 записів"
+msgstr[0] "Пошук — %1 запис"
+msgstr[1] "Пошук — %1 записи"
 msgstr[2] "Пошук — %1 записів"
-msgstr[3] "Пошук — %1 записів"
+msgstr[3] "Пошук — %1 запис"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207

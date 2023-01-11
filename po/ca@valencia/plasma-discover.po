@@ -1,16 +1,16 @@
 # Translation of plasma-discover.po to Catalan (Valencian)
-# Copyright (C) 2012-2022 This_file_is_part_of_KDE
+# Copyright (C) 2012-2023 This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Orestes Mas <orestes@tsc.upc.edu>, 2012.
-# Josep M. Ferrer <txemaq@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-10 00:57+0000\n"
-"PO-Revision-Date: 2022-11-18 13:09+0100\n"
+"PO-Revision-Date: 2023-01-10 10:31+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -551,12 +551,11 @@ msgstr ""
 "><nl/>Podeu aprendre'n més a <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %1 item"
 msgid_plural "Search: %2 - %1 items"
-msgstr[0] "Busca: %1 - %2 elements"
-msgstr[1] "Busca: %1 - %2 elements"
+msgstr[0] "Busca: %2 - %1 element"
+msgstr[1] "Busca: %2 - %1 elements"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -564,19 +563,17 @@ msgid "Search: %1"
 msgstr "Busca: %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - %2 elements"
-msgstr[1] "%1 - %2 elements"
+msgstr[0] "%2 - %1 element"
+msgstr[1] "%2 - %1 elements"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Busca - %1 elements"
+msgstr[0] "Busca - %1 element"
 msgstr[1] "Busca - %1 elements"
 
 #: discover/qml/ApplicationsListPage.qml:67
