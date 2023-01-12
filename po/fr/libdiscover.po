@@ -10,13 +10,13 @@
 # William Oprandi <william.oprandi@gmail.com>, 2019.
 # Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
 #
-# Xavier BESNARD <xavier.besnard]neuf.fr>, 2022.
+# Xavier BESNARD <xavier.besnard]neuf.fr>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-08 01:00+0000\n"
-"PO-Revision-Date: 2022-12-31 15:03+0100\n"
+"PO-Revision-Date: 2023-01-10 18:23+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -219,7 +219,7 @@ msgstr "Conception d'interfaces graphiques"
 #, kde-format
 msgctxt "Category"
 msgid "IDEs"
-msgstr "IDEs"
+msgstr "IDE"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
@@ -261,7 +261,7 @@ msgstr "Science et ingénierie"
 #, kde-format
 msgctxt "Category"
 msgid "Astronomy"
-msgstr "Astronomy"
+msgstr "Astronomie"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
@@ -1189,7 +1189,7 @@ msgstr "Échec GPG"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
 #, kde-format
 msgid "PackageID invalid"
-msgstr "PackageID non valable"
+msgstr "Identifiant de paquet non valable"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
 #, kde-format
@@ -2232,7 +2232,7 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
-"<b>Une nouvelle version majeure de %1 a été publiée ! </b> nPour effectuer "
+"<b>Une nouvelle version majeure de %1 a été publiée ! </b> Pour effectuer "
 "une mise à jour vers cette nouvelle version, veuillez vous assurer d'avoir "
 "appliqué toutes les mises à jour en attente puis re-démarrer votre système."
 
@@ -2270,7 +2270,7 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
 #, kde-format
 msgid "GPL and other licenses"
-msgstr "Licence « GPL » et autres licenses"
+msgstr "Licence « GPL » et autres licenses"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
@@ -2362,10 +2362,9 @@ msgid "Updating to the next major version"
 msgstr "Mise à jour vers la prochaine version majeure"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, fuzzy, kde-format
-#| msgid "Transaction in progress (started outside of Discover)"
+#, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "Transaction en cours (Débutée en dehors de Discover)"
+msgstr "Opération en cours (Débutée en dehors de Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format

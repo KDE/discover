@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# Mincho Kondarev <mkondarev@yahoo.de>, 2022.
+# Mincho Kondarev <mkondarev@yahoo.de>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-10 00:57+0000\n"
-"PO-Revision-Date: 2022-11-19 22:06+0100\n"
+"PO-Revision-Date: 2023-01-10 16:53+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -549,12 +549,11 @@ msgstr ""
 "<nl/><nl/>Можете да да научите повече на адрес <link url='%2'>%</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %1 item"
 msgid_plural "Search: %2 - %1 items"
-msgstr[0] "Търсене: %1 - %2 елемента"
-msgstr[1] "Търсене: %1 - %2 елемента"
+msgstr[0] "Търсене: %2 - %1 елемент"
+msgstr[1] "Търсене: %2 - %1 елемента"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -562,19 +561,17 @@ msgid "Search: %1"
 msgstr "Търсене: %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - %2 елемента"
-msgstr[1] "%1 - %2 елемента"
+msgstr[0] "%2 - %1 елемент"
+msgstr[1] "%2 - %1 елемента"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Търсене - %1 елемента"
+msgstr[0] "Търсене - %1 елемент"
 msgstr[1] "Търсене - %1 елемента"
 
 #: discover/qml/ApplicationsListPage.qml:67
