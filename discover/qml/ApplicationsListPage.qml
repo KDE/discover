@@ -176,22 +176,40 @@ DiscoverPage {
             Kirigami.PlaceholderMessage {
                 id: searchedForThingNotFound
 
-                anchors.centerIn: parent
-                width: parent.width - (Kirigami.Units.largeSpacing * 8)
-
-                visible: appsModel.search.length > 0 && stateFilter !== AbstractResource.Installed
-
-                icon.name: "edit-none"
-                text: visible ? i18nc("%1 is the name of an application", "\"%1\" was not found in the available sources", appsModel.search) : ""
-                explanation: visible ? i18nc("%1 is the name of an application", "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution.", appsModel.search) : ""
-                helpfulAction: Kirigami.Action {
-                    text: i18nc("%1 is the name of an application", "Search the web for \"%1\"", appsModel.search)
+                property var searchAllCategoriesAction: Kirigami.Action {
+                    text: i18nc("@action:button", "Search in All Categories")
+                    icon.name: "search"
+                    onTriggered: {
+                        window.globalDrawer.resetMenu();
+                        Navigation.clearStack()
+                        Navigation.openApplicationList( { search: page.search } );
+                    }
+                }
+                property var searchTheWebAction: Kirigami.Action {
+                    text: i18nc("@action:button %1 is the name of an application", "Search the Web for \"%1\"", appsModel.search)
                     icon.name: "internet-web-browser"
                     onTriggered: {
                         const searchTerm = encodeURIComponent("Linux " + appsModel.search);
                         Qt.openUrlExternally(i18nc("If appropriate, localize this URL to be something more relevant to the language. %1 is the text that will be searched for.", "https://duckduckgo.com/?q=%1", searchTerm));
                     }
                 }
+
+                anchors.centerIn: parent
+                width: parent.width - (Kirigami.Units.largeSpacing * 8)
+
+                visible: appsModel.search.length > 0 && stateFilter !== AbstractResource.Installed
+
+                icon.name: "edit-none"
+                text: page.category ? i18nc("@info:placeholder %1 is the name of an application; %2 is the name of a category of apps or add-ons",
+                                            "\"%1\" was not found in the \"%2\" category", appsModel.search, page.category.name)
+                                    : i18nc("@info:placeholder %1 is the name of an application",
+                                            "\"%1\" was not found in the available sources", appsModel.search)
+                explanation: page.category ? "" : i18nc("@info:placeholder%1 is the name of an application", "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution.", appsModel.search)
+
+                // If we're in a category, first direct the user to search globally,
+                // because they might not have realized they were in a category and
+                // therefore the results were limited to just what was in the category
+                helpfulAction: page.category ? searchAllCategoriesAction : searchTheWebAction
             }
         }
 
