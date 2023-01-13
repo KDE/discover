@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-08 01:00+0000\n"
-"PO-Revision-Date: 2023-01-02 07:11\n"
+"PO-Revision-Date: 2023-01-12 10:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -20,14 +20,17 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "KDE China, Charles Dong, Fang Zheng, Guo Yunhe, Honghao Li, Tyson Tan"
+msgstr ""
+"KDE China, Charles Dong, Fang Zheng, fusionfuture, Guo Yunhe, Honghao Li, Li "
+"Yulin, tang142857, Tyson Tan"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-"kde-china@kde.org, charles.dong@kde.org, fang.zheng@kde.org, i@guoyunhe.me, "
-"honghao.li@kde.org, tysontan@tysontan.com"
+"kde-china@kde.org, charles.dong@kde.org, fang.zheng@kde.org, "
+"fusionfuture@kde.org, i@guoyunhe.me, honghao.li@kde.org, LiYulin@kde.org, "
+"tang142857@kde.org, tysontan@tysontan.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:91
 #, kde-format
@@ -62,7 +65,7 @@ msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr ""
+msgstr "适合所有受众"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:185
 #, kde-format
@@ -71,7 +74,7 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr ""
+msgstr "包含轻微不雅内容"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:188
 #, kde-format
@@ -80,7 +83,7 @@ msgctxt ""
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr ""
+msgstr "包含中等不雅内容"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:191
 #, kde-format
@@ -90,7 +93,7 @@ msgctxt ""
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr ""
+msgstr "包含强烈不雅内容"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:174
 #, kde-format
@@ -681,12 +684,12 @@ msgstr "允许集成智能卡功能并与智能卡通信"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
 #, kde-format
 msgid "Printer Access"
-msgstr "打印机连接"
+msgstr "打印机访问"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "可以与打印机集成和通信"
+msgstr "允许与打印机集成和通信"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
 #, kde-format
@@ -703,22 +706,22 @@ msgstr "允许访问 GPG 加密服务，通常用于签名和读取已签名文�
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, kde-format
 msgid "Bluetooth Access"
-msgstr "蓝牙连接"
+msgstr "蓝牙访问"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "可以与蓝牙设备集成和通信"
+msgstr "允许与蓝牙设备集成和通信"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #, kde-format
 msgid "Low-Level System Access"
-msgstr "底层系统访问权限"
+msgstr "底层系统访问"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr "可以进行底层系统调用 (例如跟踪)"
+msgstr "允许进行底层系统调用 (例如 ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
@@ -909,7 +912,7 @@ msgstr "在“%2”中添加来自“%3”的远程“%1”"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr "无法在'%1'中找到'%2'; 请确保它是可用的。"
+msgstr "无法在“%2”中找到“%1”；请确保它是可用的。"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
@@ -917,36 +920,36 @@ msgctxt "@label %1 is the name of an application"
 msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
-msgstr ""
+msgstr "%1 的这个开发版本已经过时。强烈建议使用稳定版本。"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr ""
+msgstr "%1 已有更稳定的版本可供升级。"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr ""
+msgstr "查看 %1 上的稳定版本"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "%1 在本机上没有安装，但它在本机上存有数据。"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "删除设置和用户数据"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "%1 的的权限"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -973,6 +976,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"不支持的问题：\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
@@ -1951,19 +1956,19 @@ msgstr "系统升级"
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] ""
+msgstr[0] "将要升级 %1 个软件包"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-msgstr ""
+msgstr "<h3>%1</h3>升级到新版本 %2<br/>没有提供发行说明"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
-msgstr ""
+msgstr "<h3>%1</h3>升级到新版本 %2<br/>发行说明：<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format
@@ -2096,22 +2101,22 @@ msgstr[0] ""
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
 #, kde-format
 msgid "Show Dependencies…"
-msgstr ""
+msgstr "显示依赖关系…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "%1 软件包的依赖关系"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
 #, kde-format
 msgid "Full Access"
-msgstr ""
+msgstr "完全访问"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Can access everything on the system"
-msgstr ""
+msgstr "允许访问系统中的所有内容"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2122,12 +2127,12 @@ msgstr "操作系统"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree：发现多个已启动的部署。请提交一个程序缺陷报告。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
@@ -2136,8 +2141,8 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
-"<b>一个新版本 %1 已发布！</b>\n"
-"若要更新到此版本，请确保应用所有待处理的更新并重启您的系统。"
+"<b>%1 的新主要版本已经发布！</b>\n"
+"如需更新到此版本，请确保应用所有待处理的更新，并重启您的系统。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, kde-format
@@ -2152,17 +2157,17 @@ msgstr "<b>新的主要版本已经发布！</b>"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:474
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr "当前您有待决的更新，需要继续进行。"
+msgstr "当前版本有待处理的更新。将无视它们继续进行操作。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:477
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr "在rebase到主要版本前，请更新到最新版本"
+msgstr "在重新定位到一个主要版本之前，请更新到最新版本"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:485
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
-msgstr "缺少rebase所需的远程ref。请提交漏洞。"
+msgstr "缺少重新定位操作所需的远程参考源。请提交一个程序缺陷报告。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
 #, kde-format
@@ -2172,37 +2177,37 @@ msgstr "GPL 和其他许可证"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
 msgid "Additional packages: "
-msgstr "可选的软件包： "
+msgstr "额外软件包："
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
 #, kde-format
 msgid "Additional modules: "
-msgstr "附加模块： "
+msgstr "额外模块："
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
 #, kde-format
 msgid "Local packages: "
-msgstr "本地软件包： "
+msgstr "本地软件包："
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
 #, kde-format
 msgid "Replaced packages:"
-msgstr "已替换的软件包： "
+msgstr "已替换软件包："
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
 #, kde-format
 msgid "Removed packages:"
-msgstr "已删除的软件包："
+msgstr "已移除软件包："
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "当前使用的版本(固定)"
+msgstr "当前的已启动版本 (已固定)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
 #, kde-format
 msgid "Currently booted version"
-msgstr "当前使用的版本"
+msgstr "当前的已启动版本"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
 #, kde-format
@@ -2212,7 +2217,7 @@ msgstr "重启后将使用的版本"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr "备用版本 (固定)"
+msgstr "备用版本 (已固定)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, kde-format
@@ -2228,7 +2233,7 @@ msgstr "ostree 远程服务器"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "rpm-ostree 安装失败："
+msgstr "rpm-ostree 安装进程失败："
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
@@ -2254,7 +2259,7 @@ msgstr "正在升级系统"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "正在更新到下一个主要版本"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
@@ -2264,17 +2269,17 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
 msgid "Unknown transaction type"
-msgstr ""
+msgstr "未知的安装进程类型"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "频道…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
 #, kde-format
 msgid "%1 channels"
-msgstr ""
+msgstr "%1 个频道"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
@@ -2285,17 +2290,17 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "切换"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "配置权限…"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "%1 的的权限"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2313,7 +2318,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "SteamOS：无法查询用于 SteamOS 更新的 atomupd..."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
@@ -2346,7 +2351,7 @@ msgstr "启动"
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "更新版本 %1"
+msgstr "%1 的更新版本"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
@@ -2373,7 +2378,7 @@ msgstr "%1+"
 #: libdiscover/resources/ResourcesUpdatesModel.cpp:109
 #, kde-format
 msgid "Updates"
-msgstr ""
+msgstr "更新"
 
 #: libdiscover/Transaction/Transaction.cpp:133
 #, kde-format

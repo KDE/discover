@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-10 00:57+0000\n"
-"PO-Revision-Date: 2023-01-02 07:11\n"
+"PO-Revision-Date: 2023-01-12 10:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -68,7 +68,7 @@ msgstr "找不到“%1”分类"
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr "尝试打开不存在的文件‘%1’"
+msgstr "正在尝试打开不存在的文件“%1”"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -391,7 +391,7 @@ msgstr "分享"
 #: discover/qml/ApplicationPage.qml:623
 #, kde-format
 msgid "Send a link for this application"
-msgstr ""
+msgstr "发送链接到应用程序"
 
 #: discover/qml/ApplicationPage.qml:639
 #, kde-format
@@ -520,11 +520,10 @@ msgstr ""
 "见<link url='%2'>%2</link>。"
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %1 item"
 msgid_plural "Search: %2 - %1 items"
-msgstr[0] "搜索：%1 - %2 个项目"
+msgstr[0] ""
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -532,18 +531,16 @@ msgid "Search: %1"
 msgstr "搜索：%1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - %2 个项目"
+msgstr[0] ""
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "搜索 - %1 个项目"
+msgstr[0] ""
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:207
@@ -621,31 +618,31 @@ msgstr "无法加载应用程序"
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "最热门"
 
 #: discover/qml/BrowsingPage.qml:106
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "编辑推荐"
 
 #: discover/qml/BrowsingPage.qml:120
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "最高评分的游戏"
 
 #: discover/qml/BrowsingPage.qml:139 discover/qml/BrowsingPage.qml:168
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr ""
+msgstr "查看更多"
 
 #: discover/qml/BrowsingPage.qml:149
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "最高评分的开发者工具"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -717,19 +714,19 @@ msgstr "报告此问题"
 #: discover/qml/DiscoverWindow.qml:325
 #, kde-format
 msgid "Error %1 of %2"
-msgstr ""
+msgstr "错误 %1 / %2"
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "显示上一个"
 
 #: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr ""
+msgstr "显示下一个"
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
