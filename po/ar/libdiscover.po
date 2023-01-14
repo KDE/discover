@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Safa Alfulaij <safaalfulaij@hotmail.com>, 2013, 2015, ٢٠١٥, 2018.
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022.
+# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-08 01:00+0000\n"
-"PO-Revision-Date: 2022-12-31 18:40+0400\n"
+"PO-Revision-Date: 2023-01-14 16:51+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -2329,10 +2329,9 @@ msgid "Updating to the next major version"
 msgstr "يحدّث إلى الإصدارة الرئيسة التالية"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, fuzzy, kde-format
-#| msgid "Transaction in progress (started outside of Discover)"
+#, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "عملية قيد التنفيذ ( بدأت خارج المستكشف)"
+msgstr "عملية قيد التنفيذ (بدأت خارج المستكشف)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format

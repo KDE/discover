@@ -630,8 +630,6 @@ msgstr "Шукати в усіх категоріях"
 
 #: discover/qml/ApplicationsListPage.qml:189
 #, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "Search the web for \"%1\""
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Шукати «%1» в інтернеті"
@@ -646,8 +644,6 @@ msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:204
 #, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
@@ -656,19 +652,12 @@ msgstr "«%1» не було виявлено у категорії «%2»"
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "«%1» не знайдено серед доступних джерел"
 
 #: discover/qml/ApplicationsListPage.qml:207
 #, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
 msgctxt "@info:placeholder%1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
