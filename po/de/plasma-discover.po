@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-10 00:57+0000\n"
+"POT-Creation-Date: 2023-01-14 00:57+0000\n"
 "PO-Revision-Date: 2022-07-24 14:43+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -557,7 +557,7 @@ msgstr[0] "Suche - %1 Einträge"
 msgstr[1] "Suche - %1 Einträge"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:207
+#: discover/qml/ApplicationsListPage.qml:225
 #, kde-format
 msgid "Search"
 msgstr "Suchen"
@@ -587,28 +587,21 @@ msgstr "Freigabedatum"
 msgid "Nothing found"
 msgstr "Nichts gefunden"
 
-#: discover/qml/ApplicationsListPage.qml:185
+#: discover/qml/ApplicationsListPage.qml:180
 #, kde-format
-msgctxt "%1 is the name of an application"
-msgid "\"%1\" was not found in the available sources"
-msgstr "„%1“ kann in den verfügbaren Quellen nicht gefunden werden"
-
-#: discover/qml/ApplicationsListPage.qml:186
-#, kde-format
-msgctxt "%1 is the name of an application"
-msgid ""
-"\"%1\" may be available on the web. Software acquired from the web has not "
-"been reviewed by your distributor for functionality or stability. Use with "
-"caution."
+msgctxt "@action:button"
+msgid "Search in All Categories"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:188
-#, kde-format
-msgctxt "%1 is the name of an application"
-msgid "Search the web for \"%1\""
+#: discover/qml/ApplicationsListPage.qml:189
+#, fuzzy, kde-format
+#| msgctxt "%1 is the name of an application"
+#| msgid "Search the web for \"%1\""
+msgctxt "@action:button %1 is the name of an application"
+msgid "Search the Web for \"%1\""
 msgstr "Im Internet nach „%1“ suchen"
 
-#: discover/qml/ApplicationsListPage.qml:192
+#: discover/qml/ApplicationsListPage.qml:193
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -616,7 +609,34 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:204
+#, fuzzy, kde-format
+#| msgctxt "%1 is the name of an application"
+#| msgid "\"%1\" was not found in the available sources"
+msgctxt ""
+"@info:placeholder %1 is the name of an application; %2 is the name of a "
+"category of apps or add-ons"
+msgid "\"%1\" was not found in the \"%2\" category"
+msgstr "„%1“ kann in den verfügbaren Quellen nicht gefunden werden"
+
+#: discover/qml/ApplicationsListPage.qml:206
+#, fuzzy, kde-format
+#| msgctxt "%1 is the name of an application"
+#| msgid "\"%1\" was not found in the available sources"
+msgctxt "@info:placeholder %1 is the name of an application"
+msgid "\"%1\" was not found in the available sources"
+msgstr "„%1“ kann in den verfügbaren Quellen nicht gefunden werden"
+
+#: discover/qml/ApplicationsListPage.qml:207
+#, kde-format
+msgctxt "@info:placeholder%1 is the name of an application"
+msgid ""
+"\"%1\" may be available on the web. Software acquired from the web has not "
+"been reviewed by your distributor for functionality or stability. Use with "
+"caution."
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:240
 #, kde-format
 msgid "Still looking…"
 msgstr "Suchen ..."

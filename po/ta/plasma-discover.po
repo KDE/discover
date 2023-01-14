@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-10 00:57+0000\n"
+"POT-Creation-Date: 2023-01-14 00:57+0000\n"
 "PO-Revision-Date: 2023-01-10 21:41+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -561,7 +561,7 @@ msgstr[0] "தேடல்: %1 உருப்படி"
 msgstr[1] "தேடல்: %1 உருப்படிகள்"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:207
+#: discover/qml/ApplicationsListPage.qml:225
 #, kde-format
 msgid "Search"
 msgstr "தேடல்"
@@ -591,15 +591,54 @@ msgstr "வெளியிட்ட தேதி"
 msgid "Nothing found"
 msgstr "எதுவும் கண்டுபிடிக்கப்படவில்லை"
 
-#: discover/qml/ApplicationsListPage.qml:185
+#: discover/qml/ApplicationsListPage.qml:180
 #, kde-format
-msgctxt "%1 is the name of an application"
+msgctxt "@action:button"
+msgid "Search in All Categories"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:189
+#, fuzzy, kde-format
+#| msgctxt "%1 is the name of an application"
+#| msgid "Search the web for \"%1\""
+msgctxt "@action:button %1 is the name of an application"
+msgid "Search the Web for \"%1\""
+msgstr "\"%1\" என்பதை இணையத்தில் தேடு"
+
+#: discover/qml/ApplicationsListPage.qml:193
+#, kde-format
+msgctxt ""
+"If appropriate, localize this URL to be something more relevant to the "
+"language. %1 is the text that will be searched for."
+msgid "https://duckduckgo.com/?q=%1"
+msgstr "https://duckduckgo.com/?q=%1"
+
+#: discover/qml/ApplicationsListPage.qml:204
+#, fuzzy, kde-format
+#| msgctxt "%1 is the name of an application"
+#| msgid "\"%1\" was not found in the available sources"
+msgctxt ""
+"@info:placeholder %1 is the name of an application; %2 is the name of a "
+"category of apps or add-ons"
+msgid "\"%1\" was not found in the \"%2\" category"
+msgstr "இயக்கப்பட்டிருக்கும் மூலங்களில் \"%1\" என்பதை கண்டுபிடிக்க முடியவில்லை"
+
+#: discover/qml/ApplicationsListPage.qml:206
+#, fuzzy, kde-format
+#| msgctxt "%1 is the name of an application"
+#| msgid "\"%1\" was not found in the available sources"
+msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "இயக்கப்பட்டிருக்கும் மூலங்களில் \"%1\" என்பதை கண்டுபிடிக்க முடியவில்லை"
 
-#: discover/qml/ApplicationsListPage.qml:186
-#, kde-format
-msgctxt "%1 is the name of an application"
+#: discover/qml/ApplicationsListPage.qml:207
+#, fuzzy, kde-format
+#| msgctxt "%1 is the name of an application"
+#| msgid ""
+#| "\"%1\" may be available on the web. Software acquired from the web has "
+#| "not been reviewed by your distributor for functionality or stability. Use "
+#| "with caution."
+msgctxt "@info:placeholder%1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
 "been reviewed by your distributor for functionality or stability. Use with "
@@ -609,21 +648,7 @@ msgstr ""
 "சரியாக வேலை செய்யுமா என்பதை உங்கள் இயங்குதள பராமரிப்பாளர்கள் சரிபார்த்திருக்க மாட்டார்கள். "
 "அப்படிப்பட்ட செயலிகளை கவனமாக பயன்படுத்துங்கள்."
 
-#: discover/qml/ApplicationsListPage.qml:188
-#, kde-format
-msgctxt "%1 is the name of an application"
-msgid "Search the web for \"%1\""
-msgstr "\"%1\" என்பதை இணையத்தில் தேடு"
-
-#: discover/qml/ApplicationsListPage.qml:192
-#, kde-format
-msgctxt ""
-"If appropriate, localize this URL to be something more relevant to the "
-"language. %1 is the text that will be searched for."
-msgid "https://duckduckgo.com/?q=%1"
-msgstr "https://duckduckgo.com/?q=%1"
-
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:240
 #, kde-format
 msgid "Still looking…"
 msgstr "இன்னும் தேடுகிறது…"
