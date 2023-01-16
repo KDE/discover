@@ -1,13 +1,13 @@
 # Translation of plasma-discover to Norwegian Nynorsk
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Karl Ove Hufthammer <karl@huftis.org>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail.com>, 2018, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-10 00:57+0000\n"
-"PO-Revision-Date: 2022-09-11 19:53+0200\n"
+"POT-Creation-Date: 2023-01-14 00:57+0000\n"
+"PO-Revision-Date: 2023-01-15 10:46+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.12.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -66,7 +66,7 @@ msgstr "Fann ikkje kategorien «%1»"
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "Prøver å opna den ikkje-eksisterande fila «%1»"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -93,6 +93,7 @@ msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr ""
+"Klarte ikkje opna %1, då programmet ikkje finst i nokon av pakkebrønnane."
 
 #: discover/DiscoverObject.cpp:377
 #, kde-format
@@ -111,6 +112,7 @@ msgstr "Discover"
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
+"Discover vart lukka før alle oppgåvene var gjennomførte. Ventar på oppgåvene."
 
 #: discover/main.cpp:42
 #, kde-format
@@ -295,7 +297,7 @@ msgstr "Ukjend opphavsperson"
 #: discover/qml/ApplicationPage.qml:220
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "Fekk ikkje tilgang til skjermbiletet"
 
 #: discover/qml/ApplicationPage.qml:279
 #, kde-format
@@ -338,10 +340,11 @@ msgid_plural "See more…"
 msgstr[0] "Vis fleire …"
 msgstr[1] "Vis fleire …"
 
+# Er snakk om OARS, altså i praksis aldersgrenser (med info om vald, nakenheit, språkbruk osv.).
 #: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:879
 #, kde-format
 msgid "Content Rating"
-msgstr ""
+msgstr "Aldergrense"
 
 #: discover/qml/ApplicationPage.qml:445
 #, kde-format
@@ -537,7 +540,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:207
+#: discover/qml/ApplicationsListPage.qml:225
 #, kde-format
 msgid "Search"
 msgstr "Søk"
@@ -567,31 +570,19 @@ msgstr "Utgjevingsdato"
 msgid "Nothing found"
 msgstr "Fann ingenting"
 
-#: discover/qml/ApplicationsListPage.qml:185
+#: discover/qml/ApplicationsListPage.qml:180
 #, kde-format
-msgctxt "%1 is the name of an application"
-msgid "\"%1\" was not found in the available sources"
-msgstr "Fann ikkje «%1» i dei tilgjengelege kjeldene"
-
-#: discover/qml/ApplicationsListPage.qml:186
-#, kde-format
-msgctxt "%1 is the name of an application"
-msgid ""
-"\"%1\" may be available on the web. Software acquired from the web has not "
-"been reviewed by your distributor for functionality or stability. Use with "
-"caution."
+msgctxt "@action:button"
+msgid "Search in All Categories"
 msgstr ""
-"Kan henda er «%1» tilgjengeleg frå nettet. Leverandøren din granskar ikkje "
-"stabiliteten på eller funksjonane til program som vert lasta ned frå nettet. "
-"Ver derfor varsam."
 
-#: discover/qml/ApplicationsListPage.qml:188
+#: discover/qml/ApplicationsListPage.qml:189
 #, kde-format
-msgctxt "%1 is the name of an application"
-msgid "Search the web for \"%1\""
-msgstr "Søk på nettet etter «%1»"
+msgctxt "@action:button %1 is the name of an application"
+msgid "Search the Web for \"%1\""
+msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:192
+#: discover/qml/ApplicationsListPage.qml:193
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -599,7 +590,30 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:204
+#, kde-format
+msgctxt ""
+"@info:placeholder %1 is the name of an application; %2 is the name of a "
+"category of apps or add-ons"
+msgid "\"%1\" was not found in the \"%2\" category"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:206
+#, kde-format
+msgctxt "@info:placeholder %1 is the name of an application"
+msgid "\"%1\" was not found in the available sources"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:207
+#, kde-format
+msgctxt "@info:placeholder%1 is the name of an application"
+msgid ""
+"\"%1\" may be available on the web. Software acquired from the web has not "
+"been reviewed by your distributor for functionality or stability. Use with "
+"caution."
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:240
 #, kde-format
 msgid "Still looking…"
 msgstr "Leitar framleis …"

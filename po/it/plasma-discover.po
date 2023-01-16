@@ -1,14 +1,15 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Valter Mura <valtermura@gmail.com>, 2012, 2013, 2014, 2015.
-# Vincenzo Reale <smart2128vr@gmail.com>, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Vincenzo Reale <smart2128vr@gmail.com>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Paolo Zamponi <zapaolo@email.it>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-14 00:57+0000\n"
-"PO-Revision-Date: 2022-11-19 10:11+0100\n"
+"PO-Revision-Date: 2023-01-15 13:26+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -510,7 +511,7 @@ msgid ""
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
 "Il codice sorgente di questa applicazione è parzialmente o interamente "
-"chiuso all'ispezione e al miglioramento pubblici. Ciò significa che terze "
+"chiuso all'ispezione e ai miglioramenti pubblici. Ciò significa che terze "
 "parti e utenti come te non possono verificarne il funzionamento, la "
 "sicurezza e l'affidabilità, o modificarlo e ridistribuirlo senza l'espresso "
 "consenso degli autori.<nl/><nl/>L'applicazione potrebbe essere perfettamente "
@@ -537,7 +538,7 @@ msgid ""
 "url='%2'>%2</link>."
 msgstr ""
 "Il codice sorgente di questa applicazione è parzialmente o interamente "
-"chiuso all'ispezione e al miglioramento pubblici. Ciò significa che terze "
+"chiuso all'ispezione e ai miglioramenti pubblici. Ciò significa che terze "
 "parti e utenti come te non possono verificarne il funzionamento, la "
 "sicurezza e l'affidabilità, o modificarlo e ridistribuirlo senza l'espresso "
 "consenso degli autori.<nl/><nl/>L'applicazione potrebbe essere perfettamente "
@@ -549,12 +550,11 @@ msgstr ""
 "ulteriori informazioni su <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %1 item"
 msgid_plural "Search: %2 - %1 items"
-msgstr[0] "Cerca: %1 - %2 elementi"
-msgstr[1] "Cerca: %1 - %2 elementi"
+msgstr[0] "Cerca: %2 - %1 elemento"
+msgstr[1] "Cerca: %2 - %1 elementi"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -562,19 +562,17 @@ msgid "Search: %1"
 msgstr "Cerca: %1»"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - %2 elementi"
-msgstr[1] "%1 - %2 elementi"
+msgstr[0] "%2 - %1 elemento"
+msgstr[1] "%2 - %1 elementi"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Cerca - %1 elementi"
+msgstr[0] "Cerca - %1 elemento"
 msgstr[1] "Cerca - %1 elementi"
 
 #: discover/qml/ApplicationsListPage.qml:67
@@ -612,15 +610,13 @@ msgstr "Non è stato trovato niente"
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "Cerca in tutte le categorie"
 
 #: discover/qml/ApplicationsListPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "Search the web for \"%1\""
+#, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
-msgstr "Cerca «%1» nel web"
+msgstr "Cerca nel web «%1»"
 
 #: discover/qml/ApplicationsListPage.qml:193
 #, kde-format
@@ -631,30 +627,21 @@ msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:204
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr "«%1» non è stato trovato nelle fonti disponibili"
+msgstr "\"%1\" non trovato nella categoria «%2»."
 
 #: discover/qml/ApplicationsListPage.qml:206
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "«%1» non è stato trovato nelle fonti disponibili"
 
 #: discover/qml/ApplicationsListPage.qml:207
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder%1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
