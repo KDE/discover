@@ -78,8 +78,8 @@ Kirigami.OverlaySheet {
         reuseItems: true
 
         delegate: ReviewDelegate {
-            width: reviewsView.width
-            separator: index != ListView.view.count-1
+            width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
+            separator: index !== ListView.view.count - 1
             onMarkUseful: page.model.markUseful(index, useful)
         }
     }
