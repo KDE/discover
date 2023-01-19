@@ -43,7 +43,7 @@ Kirigami.LinkButton {
             section.delegate: Kirigami.ListSectionHeader {
                 width: view.width
                 // FIXME: Workaround for https://bugs.kde.org/show_bug.cgi?id=435546
-                height: Kirigami.Units.fontMetrics.xHeight * 4
+                height: implicitHeight
                 label: section
             }
             delegate: Kirigami.BasicListItem {
