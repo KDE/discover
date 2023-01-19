@@ -19,6 +19,7 @@
 
 #include <QGuiApplication>
 
+#include "discover_debug.h"
 #include <QLoggingCategory>
 
 class PowerManagementInterfacePrivate
@@ -104,7 +105,7 @@ void PowerManagementInterface::uninhibitDBusCallFinished(QDBusPendingCallWatcher
 {
     QDBusPendingReply<> reply = *aWatcher;
     if (reply.isError()) {
-        qDebug() << "PowerManagementInterface::uninhibitDBusCallFinished" << reply.error();
+        qCWarning(DISCOVER_LOG) << "PowerManagementInterface::uninhibitDBusCallFinished" << reply.error();
     } else {
         d->mInhibitedSleep = false;
 
