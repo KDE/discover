@@ -670,7 +670,8 @@ DiscoverPage {
                 Layout.fillWidth: true
                 Layout.bottomMargin: appInfo.internalSpacings * 2
 
-                visible: text.length > 0
+                // some backends are known to provide single empty br tag
+                visible: text.length > 0 && text !== "<br />"
                 wrapMode: Text.WordWrap
 
                 Component.onCompleted: appInfo.application.fetchChangelog()
