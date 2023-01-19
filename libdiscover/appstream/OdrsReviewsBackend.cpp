@@ -80,7 +80,7 @@ void OdrsReviewsBackend::fetchRatings()
         fetchRatings = true;
     }
 
-    qDebug() << "fetch ratings!" << fetchRatings;
+    qCWarning(LIBDISCOVER_LOG) << "fetch ratings!" << fetchRatings;
     if (fetchRatings) {
         setFetching(true);
         KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl, fileUrl, -1, KIO::Overwrite | KIO::HideProgressInfo);
@@ -103,7 +103,7 @@ void OdrsReviewsBackend::ratingsFetched(KJob *job)
 {
     setFetching(false);
     if (job->error()) {
-        qCWarning(LIBDISCOVER_LOG) << "Failed to fetch ratings " << job->errorString();
+        qCWarning(LIBDISCOVER_LOG) << "Failed to fetch ratings" << job->errorString();
     } else {
         parseRatings();
     }
