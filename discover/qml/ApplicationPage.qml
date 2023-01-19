@@ -706,6 +706,11 @@ DiscoverPage {
                 Layout.fillWidth: true
                 visible: reviewsModel.backend && text.length > 0
                 text: reviewsModel.backend ? reviewsModel.backend.errorMessage : ""
+                actions: Kirigami.Action {
+                    icon.name: "view-refresh"
+                    text: i18n("Refresh")
+                    onTriggered: reviewsModel.restartFetching()
+                }
             }
 
             // Top three reviews

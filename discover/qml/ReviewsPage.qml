@@ -74,7 +74,7 @@ Kirigami.OverlaySheet {
         bottomMargin: Kirigami.Units.largeSpacing
         spacing: Kirigami.Units.smallSpacing
         implicitWidth: Kirigami.Units.gridUnit * 25
-        cacheBuffer: Math.max(0, contentHeight)
+        cacheBuffer: 10000
         reuseItems: true
 
         delegate: ReviewDelegate {

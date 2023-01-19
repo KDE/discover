@@ -59,10 +59,10 @@ public Q_SLOTS:
     void deleteReview(int row);
     void flagReview(int row, const QString &reason, const QString &text);
     void markUseful(int row, bool useful);
+    void restartFetching();
 
 private Q_SLOTS:
     void addReviews(AbstractResource *app, const QVector<ReviewPtr> &reviews, bool canFetchMore);
-    void restartFetching();
 
 Q_SIGNALS:
     void rowsChanged();

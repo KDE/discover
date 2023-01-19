@@ -176,6 +176,8 @@ void OdrsReviewsBackend::reviewsFetched()
         setFetching(false);
         return;
     }
+    m_errorMessage.clear();
+    Q_EMIT errorMessageChanged();
 
     QJsonParseError error;
     const QJsonDocument document = QJsonDocument::fromJson(data, &error);
