@@ -365,7 +365,7 @@ DiscoverPage {
                         }
                         Label {
                             Layout.fillWidth: true
-                            visible : appInfo.application.licenses.length === 0
+                            visible: appInfo.application.licenses.length === 0
                             text: i18nc("The app does not provide any licenses", "Unknown")
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignTop
@@ -375,7 +375,7 @@ DiscoverPage {
                         }
                         ColumnLayout {
                             Layout.fillWidth: true
-                            visible : appInfo.application.licenses.length > 0
+                            visible: appInfo.application.licenses.length > 0
                             spacing: 0
 
                             Repeater {
@@ -394,7 +394,8 @@ DiscoverPage {
                                         wrapMode: Text.Wrap
                                         maximumLineCount: 3
                                         elide: Text.ElideRight
-                                        color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
+                                        color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor :
+                                            enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
                                     }
 
                                     // Button to open "What's the risk of proprietary software?" sheet
@@ -711,7 +712,7 @@ DiscoverPage {
                 id: rep
                 model: PaginateModel {
                     sourceModel: reviewsSheet.model
-                    pageSize: visibleReviews
+                    pageSize: appInfo.visibleReviews
                 }
                 delegate: ReviewDelegate {
                     Layout.fillWidth: true
@@ -764,8 +765,8 @@ DiscoverPage {
                 id: getInvolvedLayout
 
                 readonly property int visibleButtons: (donateButton.visible ? 1 : 0)
-                                                    + (bugButton.visible ? 1: 0)
-                                                    + (contributeButton.visible ? 1: 0)
+                                                    + (bugButton.visible ? 1 : 0)
+                                                    + (contributeButton.visible ? 1 : 0)
                 readonly property int buttonWidth: Math.round(textualContentLayout.width / visibleButtons)
                 readonly property int tallestButtonHeight: Math.max(donateButton.implicitHeight,
                                                                     bugButton.implicitHeight,
@@ -852,7 +853,7 @@ DiscoverPage {
 
         ColumnLayout {
             spacing: 0
-            
+
             Repeater {
                 id: listview
 
@@ -867,7 +868,8 @@ DiscoverPage {
                         text: modelData.name
                         url: modelData.url
                         horizontalAlignment: Text.AlignLeft
-                        color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
+                        color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor :
+                            enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
                     }
                 }
             }
@@ -906,7 +908,7 @@ DiscoverPage {
             selectedTextColor: Kirigami.Theme.highlightedTextColor
             selectionColor: Kirigami.Theme.highlightColor
 
-            onLinkActivated: (url) => Qt.openUrlExternally(url)
+            onLinkActivated: url => Qt.openUrlExternally(url)
 
             HoverHandler {
                 acceptedButtons: Qt.NoButton
