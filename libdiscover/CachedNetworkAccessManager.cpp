@@ -21,6 +21,8 @@ CachedNetworkAccessManager::CachedNetworkAccessManager(const QString &path, QObj
     cache->setCacheDirectory(cacheDir);
     cache->setMaximumCacheSize(storageInfo.bytesTotal() / 1000);
     setCache(cache);
+
+    setTransferTimeout();
 }
 
 QNetworkReply *CachedNetworkAccessManager::createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData)
