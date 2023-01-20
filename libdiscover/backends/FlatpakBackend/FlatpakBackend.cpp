@@ -166,6 +166,21 @@ public:
         return comps;
     }
 
+    QList<AppStream::Component> componentsByFlatpakId(const QString &name)
+    {
+        QList<AppStream::Component> comps = m_pool->components();
+        // TODO optimise, this lookup should happen in libappstream
+        comps = kFilter<QList<AppStream::Component>>(comps, [name](const AppStream::Component &component) {
+            const QString id = component.bundle(AppStream::Bundle::KindFlatpak).id();
+            return id.section('/', 1, 1) == name;
+        });
+        if (!comps.isEmpty())
+            return comps;
+
+        comps = m_pool->componentsByProvided(AppStream::Provided::KindId, name);
+        return comps;
+    }
+
     AppStream::Pool *m_pool = nullptr;
     QHash<FlatpakResource::Id, FlatpakResource *> m_resources;
 
@@ -453,7 +468,7 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
     const QString pathApps = pathExports + QLatin1String("share/applications/");
     AppStream::Component cid;
     if (source && source->m_pool) {
-        QList<AppStream::Component> comps = source->componentsByName(name);
+        QList<AppStream::Component> comps = source->componentsByFlatpakId(name);
         if (!comps.isEmpty()) {
             const QString bundleId = refToBundleId(FLATPAK_REF(ref));
             comps = kFilter<QList<AppStream::Component>>(comps, [&bundleId](const AppStream::Component &comp) -> bool {
@@ -754,13 +769,13 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
 
     const QString branch = settings.value(QStringLiteral("Flatpak Ref/Branch")).toString();
 
-    auto comps = pool.componentsById(name);
-    if (!branch.isEmpty()) {
-        const QString suffix = QLatin1Char('/') + branch;
-        comps = kFilter<QList<AppStream::Component>>(comps, [&suffix](const AppStream::Component &component) {
-            return component.bundle(AppStream::Bundle::KindFlatpak).id().endsWith(suffix);
-        });
-    }
+    // TODO optimise, this lookup should happen in libappstream
+    auto comps = pool.components();
+    comps = kFilter<QList<AppStream::Component>>(comps, [name, branch](const AppStream::Component &component) {
+        const QString id = component.bundle(AppStream::Bundle::KindFlatpak).id();
+        // app/app.getspace.Space/x86_64/stable
+        return id.section(QLatin1Char('/'), 1, 1) == name && (branch.isEmpty() || id.section(QLatin1Char('/'), 3, 3) == branch);
+    });
     if (comps.isEmpty()) {
         qDebug() << "could not find" << name << "in" << remoteName;
         return asComponent;
@@ -788,7 +803,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
         auto source = integrateRemote(preferredInstallation(), remote);
         if (source) {
             auto searchComponent = [this, stream, source, name] {
-                auto comps = source->componentsByName(name);
+                auto comps = source->componentsByFlatpakId(name);
                 auto resources = kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
                     return resourceForComponent(comp, source);
                 });
@@ -1115,6 +1130,7 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
             resource->setState(AbstractResource::Upgradeable);
             updateAppSize(resource);
         }
+        Q_ASSERT(!resource->temporarySource());
     }
 }
 
@@ -1737,7 +1753,10 @@ Transaction *FlatpakBackend::installApplication(AbstractResource *app, const Add
         if (status == Transaction::Status::DoneStatus) {
             if (auto tempSource = resource->temporarySource()) {
                 auto source = findSource(resource->installation(), resource->origin());
-                Q_ASSERT(source);
+                if (!source) {
+                    // It could mean that it's still integrating after checkRepositories It should update itself
+                    return;
+                }
                 resource->setTemporarySource({});
                 const auto id = resource->uniqueId();
                 source->m_resources.insert(id, resource);
