@@ -94,6 +94,22 @@ private Q_SLOTS:
         QCOMPARE(waitTransaction(m_appBackend->removeApplication(ourResource)), Transaction::DoneStatus);
         QCOMPARE(ourResource->state(), AbstractResource::None);
     }
+
+    void testInstallFlatpakref()
+    {
+        AbstractResourcesBackend::Filters f;
+        f.resourceUrl = QUrl(QStringLiteral("https://dl.flathub.org/repo/appstream/com.dosbox.DOSBox.flatpakref"));
+        const auto res = getResources(m_appBackend->search(f));
+        QCOMPARE(res.count(), 1);
+
+        const auto ourResource = res.constFirst();
+        QCOMPARE(ourResource->state(), AbstractResource::None);
+        QCOMPARE(waitTransaction(m_appBackend->installApplication(ourResource)), Transaction::DoneStatus);
+        QCOMPARE(ourResource->state(), AbstractResource::Installed);
+        QCOMPARE(waitTransaction(m_appBackend->removeApplication(ourResource)), Transaction::DoneStatus);
+        QCOMPARE(ourResource->state(), AbstractResource::None);
+    }
+
     /*
         void testCancelInstallation()
         {
@@ -148,7 +164,7 @@ private:
         connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QVector<AbstractResource *> &res) {
             resources += res;
         });
-        Q_ASSERT(spyResources.wait(10000));
+        Q_ASSERT(spyResources.wait(100000));
         Q_ASSERT(!resources.isEmpty() || canBeEmpty);
         return resources;
     }
