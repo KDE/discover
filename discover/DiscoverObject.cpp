@@ -266,7 +266,7 @@ void DiscoverObject::openCategory(const QString &category)
                 Q_EMIT listCategoryInternal(cat);
             } else {
                 openMode(QStringLiteral("Browsing"));
-                showPassiveNotification(i18n("Could not find category '%1'", category));
+                showError(i18n("Could not find category '%1'", category));
             }
         },
         this);
@@ -281,7 +281,7 @@ void DiscoverObject::openCategory(const QString &category)
 void DiscoverObject::openLocalPackage(const QUrl &localfile)
 {
     if (!QFile::exists(localfile.toLocalFile())) {
-        showPassiveNotification(i18n("Trying to open inexisting file '%1'", localfile.toString()));
+        showError(i18n("Trying to open inexisting file '%1'", localfile.toString()));
         openMode(QStringLiteral("Browsing"));
         return;
     }
@@ -303,11 +303,11 @@ void DiscoverObject::openLocalPackage(const QUrl &localfile)
                     if (mime.name().startsWith(QLatin1String("application/vnd.flatpak"))
                         && !kContains(ResourcesModel::global()->backends(), fIsFlatpakBackend)) {
                         openApplication(QUrl(QStringLiteral("appstream://org.kde.discover.flatpak")));
-                        showPassiveNotification(i18n("Cannot interact with flatpak resources without the flatpak backend %1. Please install it first.",
-                                                     localfile.toDisplayString()));
+                        showError(i18n("Cannot interact with flatpak resources without the flatpak backend %1. Please install it first.",
+                                       localfile.toDisplayString()));
                     } else {
                         openMode(QStringLiteral("Browsing"));
-                        showPassiveNotification(i18n("Could not open %1", localfile.toDisplayString()));
+                        showError(i18n("Could not open %1", localfile.toDisplayString()));
                     }
                 }
             });
@@ -369,7 +369,7 @@ void DiscoverObject::openApplication(const QUrl &url)
                     }
                 } else if (url.scheme() == QLatin1String("snap")) {
                     openApplication(QUrl(QStringLiteral("appstream://org.kde.discover.snap")));
-                    showPassiveNotification(i18n("Please make sure Snap support is installed"));
+                    showError(i18n("Please make sure Snap support is installed"));
                 } else {
                     const QString errorText = i18n("Could not open %1 because it "
                     "was not found in any available software repositories.",
@@ -611,16 +611,10 @@ QQuickWindow *DiscoverObject::rootObject() const
     return qobject_cast<QQuickWindow *>(m_engine->rootObjects().at(0));
 }
 
-void DiscoverObject::showPassiveNotification(const QString &msg)
+void DiscoverObject::showError(const QString &msg)
 {
-    QTimer::singleShot(100, this, [this, msg]() {
-        QMetaObject::invokeMethod(rootObject(),
-                                  "showPassiveNotification",
-                                  Qt::QueuedConnection,
-                                  Q_ARG(QVariant, msg),
-                                  Q_ARG(QVariant, {}),
-                                  Q_ARG(QVariant, {}),
-                                  Q_ARG(QVariant, {}));
+    QTimer::singleShot(100, this, [msg]() {
+        Q_EMIT ResourcesModel::global()->passiveMessage(msg);
     });
 }
 
