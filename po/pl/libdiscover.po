@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Artur Chłond <eugenewolfe@o2.pl>, 2011.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
 # Ignacy Kajdan <ignacy.kajdan@gmail.com>, 2021.
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-21 02:38+0000\n"
-"PO-Revision-Date: 2022-12-29 11:05+0100\n"
+"PO-Revision-Date: 2023-01-21 09:59+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2001,19 +2001,19 @@ msgid "System upgrade"
 msgstr "Uaktualnienia systemu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 pakiet do uaktualnienia"
-msgstr[1] "%1 pakiety do uaktualnienia"
-msgstr[2] "%1 pakietów do uaktualnienia"
+msgstr[0] "1 pakiet zostanie uaktualniony"
+msgstr[1] "%1 pakiety zostaną uaktualnione"
+msgstr[2] "%1 pakietów zostanie uaktualnionych"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Uaktualnienie do nowej wersji %2<br/>Nie ma jeszcze żadnych uwag "
+"do wydania"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
@@ -2021,6 +2021,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Uaktualnienie do nowej wersji %2<br/>Uwagi do wydania:<blockquote>"
+"%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format
@@ -2331,10 +2333,9 @@ msgid "Updating to the next major version"
 msgstr "Uaktualnianie do następnej głównej wersji"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, fuzzy, kde-format
-#| msgid "Transaction in progress (started outside of Discover)"
+#, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "W trakcie jest transakcja (rozpoczęta poza Discover)"
+msgstr "Działanie w trakcie (rozpoczęte poza Odkrywcą)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
