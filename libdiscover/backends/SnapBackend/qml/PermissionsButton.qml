@@ -11,7 +11,7 @@ import org.kde.kirigami 2.14 as Kirigami
 Button
 {
     id: root
-    text: i18n("Configure permissions…")
+    text: i18nd("libdiscover", "Configure permissions…")
 
     onClicked: overlay.open()
     visible: resource.isInstalled && view.count > 0
@@ -19,7 +19,7 @@ Button
     Kirigami.OverlaySheet {
         id: overlay
         parent: applicationWindow().overlay
-        title: i18n("Permissions for %1", resource.name)
+        title: i18nd("libdiscover", "Permissions for %1", resource.name)
 
         property QtObject errorMessage: null
 

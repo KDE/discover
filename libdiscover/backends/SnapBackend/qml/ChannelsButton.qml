@@ -12,7 +12,7 @@ import org.kde.kirigami 2.14 as Kirigami
 Button
 {
     id: root
-    text: i18n("Channels…")
+    text: i18nd("libdiscover", "Channels…")
 
     onClicked: overlay.open()
     visible: resource.isInstalled /*&& view.count > 0*/
@@ -20,7 +20,7 @@ Button
     Kirigami.OverlaySheet {
         id: overlay
         parent: applicationWindow().overlay
-        title: i18n ("%1 channels", resource.name)
+        title: i18nd("libdiscover", "%1 channels", resource.name)
 
         ListView {
             id: view
@@ -28,10 +28,10 @@ Button
             model: resource.channels(root).channels
             delegate: Kirigami.BasicListItem {
                 readonly property bool current: resource.channel === modelData.name
-                label: i18n("%1 - %2", modelData.name, modelData.version)
+                label: i18nd("libdiscover", "%1 - %2", modelData.name, modelData.version)
 
                 trailing: Button {
-                    text: i18n("Switch")
+                    text: i18nd("libdiscover", "Switch")
                     enabled: !parent.current
                     onClicked: resource.channel = modelData.name
                 }
