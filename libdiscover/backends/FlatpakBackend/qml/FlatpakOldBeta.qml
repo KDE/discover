@@ -17,7 +17,7 @@ Kirigami.InlineMessage
     // resource is set by the creator of the element in ApplicationPage.
     //required property AbstractResource resource
     Layout.fillWidth: true
-    text: betaOlderThanStable ? i18nc("@label %1 is the name of an application", "This development version of %1 is outdated. Using the stable version is highly recommended.", resource.name) : i18nc("@label %1 is the name of an application", "A more stable version of %1 is available.", resource.name)
+    text: betaOlderThanStable ? i18ndc("libdiscover", "@label %1 is the name of an application", "This development version of %1 is outdated. Using the stable version is highly recommended.", resource.name) : i18ndc("libdiscover", "@label %1 is the name of an application", "A more stable version of %1 is available.", resource.name)
     height: visible ? implicitHeight : 0
     visible: actionsArray.filter(action => action.visible).length > 0
     type: betaOlderThanStable ? Kirigami.MessageType.Warning : Kirigami.MessageType.Information
@@ -41,7 +41,7 @@ Kirigami.InlineMessage
         active: resource.isDesktopApp
         delegate: Kirigami.Action {
             visible: inst.active && model.application !== resource && model.application.branch !== "beta" && model.application.branch !== "master" && versionCompare !== 0
-            text: i18nc("@action: button %1 is the name of a Flatpak repo", "View Stable Version on %1", displayOrigin)
+            text: i18ndc("libdiscover", "@action: button %1 is the name of a Flatpak repo", "View Stable Version on %1", displayOrigin)
             onTriggered: {
                 applicationWindow().pageStack.pop();
                 Navigation.openApplication(model.application)

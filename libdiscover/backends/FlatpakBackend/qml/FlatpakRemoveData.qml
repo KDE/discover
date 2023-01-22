@@ -14,7 +14,7 @@ Kirigami.InlineMessage
     // resource is set by the creator of the element in ApplicationPage.
     //required property AbstractResource resource
     Layout.fillWidth: true
-    text: i18n("%1 is not installed but it still has data present.", resource.name)
+    text: i18nd("libdiscover", "%1 is not installed but it still has data present.", resource.name)
     visible: resource.hasData && query.count === 0
     height: visible ? implicitHeight : 0
 
@@ -28,7 +28,7 @@ Kirigami.InlineMessage
     actions: [
         Kirigami.Action {
             icon.name: "delete"
-            text: i18n("Delete settings and user data")
+            text: i18nd("libdiscover", "Delete settings and user data")
             onTriggered: {
                 resource.clearUserData()
             }

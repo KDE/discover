@@ -13,7 +13,7 @@ import org.kde.kirigami 2.14 as Kirigami
 ColumnLayout {
     Kirigami.Heading {
         Layout.fillWidth: true
-        text: i18nc("%1 is the name of the application", "Permissions for %1", resource.name)
+        text: i18ndc("libdiscover", "%1 is the name of the application", "Permissions for %1", resource.name)
         level: 2
         type: Kirigami.Heading.Type.Primary
         wrapMode: Text.Wrap
@@ -21,8 +21,8 @@ ColumnLayout {
 
     Kirigami.BasicListItem {
         Layout.fillWidth: true
-        text: i18n("Full Access")
-        subtitle: i18n("Can access everything on the system")
+        text: i18nd("libdiscover","Full Access")
+        subtitle: i18nd("libdiscover", "Can access everything on the system")
         icon: "security-medium"
         subtitleItem.wrapMode: Text.WordWrap
         hoverEnabled: false
