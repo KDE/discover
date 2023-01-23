@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # wantoyo <wantoyo@yahoo.com>, 2014.
-# Wantoyo <wantoyek@gmail.com>, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Wantoyo <wantoyek@gmail.com>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Linerly <linerly@protonmail.com>, 2022.
 #
 # Translators:
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-22 00:58+0000\n"
-"PO-Revision-Date: 2022-12-29 20:53+0700\n"
+"PO-Revision-Date: 2023-01-22 17:01+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2001,18 +2001,18 @@ msgid "System upgrade"
 msgstr "Peningkatan sistem"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 paket untuk ditingkatkan"
-msgstr[1] "%1 paket untuk ditingkatkan"
+msgstr[0] "1 paket akan ditingkatkan"
+msgstr[1] "%1 paket akan ditingkatkan"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Tingkatkan ke versi yang baru %2<br/> Tidak ada catatan rilis "
+"yang disediakan"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
 #, kde-format
@@ -2020,6 +2020,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Tingkatkan ke versi yang baru %2<br/>Catatan rilis:<blockquote>"
+"%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format
@@ -2325,10 +2327,9 @@ msgid "Updating to the next major version"
 msgstr "Memperbarui ke versi pokok selanjutnya"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, fuzzy, kde-format
-#| msgid "Transaction in progress (started outside of Discover)"
+#, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "Transaksi sedang dalam progres (dimulai di luar Discover)"
+msgstr "Operasi sedang dalam progres (dimulai di luar Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format

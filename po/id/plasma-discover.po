@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-14 00:57+0000\n"
-"PO-Revision-Date: 2023-01-02 07:25+0700\n"
+"PO-Revision-Date: 2023-01-22 17:05+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -550,12 +550,11 @@ msgstr ""
 "mempelajari lebih lanjut di <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %1 item"
 msgid_plural "Search: %2 - %1 items"
-msgstr[0] "Cari: %1 - %2 item"
-msgstr[1] "Cari: %1 - %2 item"
+msgstr[0] "Cari: %2 - %1 item"
+msgstr[1] "Cari: %2 - %1 item"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -563,16 +562,14 @@ msgid "Search: %1"
 msgstr "Cari: '%1'"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - %2 item"
-msgstr[1] "%1 - %2 item"
+msgstr[0] "%2 - %1 item"
+msgstr[1] "%2 - %1 item"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
 msgstr[0] "Cari - %1 item"
@@ -613,15 +610,13 @@ msgstr "Tidak menemukan apa-apa"
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "Cari di Semua Kategori"
 
 #: discover/qml/ApplicationsListPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "Search the web for \"%1\""
+#, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
-msgstr "Telusuri web untuk \"%1\""
+msgstr "Cari Web untuk \"%1\""
 
 #: discover/qml/ApplicationsListPage.qml:193
 #, kde-format
@@ -632,30 +627,21 @@ msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:204
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr "\"%1\" tidak ditemukan di dalam sumber yang tersedia"
+msgstr "\"%1\" tidak ditemukan dalam kategori \"%2\""
 
 #: discover/qml/ApplicationsListPage.qml:206
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
-msgstr "\"%1\" tidak ditemukan di dalam sumber yang tersedia"
+msgstr "\"%1\" tidak ditemukan di sumber yang tersedia"
 
 #: discover/qml/ApplicationsListPage.qml:207
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder%1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
