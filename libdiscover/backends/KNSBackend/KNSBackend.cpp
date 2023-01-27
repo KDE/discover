@@ -583,18 +583,16 @@ ResultsStream *KNSBackend::search(const AbstractResourcesBackend::Filters &filte
                || (filter.category && kContains(m_categories, [&filter](const QString &cat) {
                        return filter.category->matchesCategoryName(cat);
                    }))) {
-        auto r = new ResultsStream(QLatin1String("KNS-search-") + name());
-        searchStream(r, filter.search);
-        return r;
+        return searchStream(filter.search);
     }
     return voidStream();
 }
 
-void KNSBackend::searchStream(ResultsStream *stream, const QString &searchText)
+ResultsStream *KNSBackend::searchStream(const QString &searchText)
 {
     Q_EMIT startingSearch();
 
-    stream->setProperty("alreadyStarted", false);
+    auto stream = new ResultsStream(QLatin1String("KNS-search-") + name());
     auto start = [this, stream, searchText]() {
         Q_ASSERT(!isFetching());
         if (!m_isValid) {
@@ -603,12 +601,12 @@ void KNSBackend::searchStream(ResultsStream *stream, const QString &searchText)
             return;
         }
 
-        if (m_responsePending || stream->property("alreadyStarted").toBool()) {
+        if (m_responsePending) {
             return;
         }
-        stream->setProperty("alreadyStarted", true);
         setResponsePending(true);
 
+        disconnect(this, nullptr, stream, nullptr);
         // No need to explicitly launch a search, setting the search term already does that for us
         m_engine->setSearchTerm(searchText);
         m_onePage = false;
@@ -626,6 +624,7 @@ void KNSBackend::searchStream(ResultsStream *stream, const QString &searchText)
     } else {
         QTimer::singleShot(0, stream, start);
     }
+    return stream;
 }
 
 ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)

@@ -88,7 +88,7 @@ private:
     KNSResource *resourceForEntry(const KNSCore::EntryInternal &entry);
     void setFetching(bool f);
     void markInvalid(const QString &message);
-    void searchStream(ResultsStream *stream, const QString &searchText);
+    ResultsStream *searchStream(const QString &searchText);
     void fetchMore();
     void setResponsePending(bool pending);
 
