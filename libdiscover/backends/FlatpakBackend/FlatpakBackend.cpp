@@ -913,7 +913,7 @@ void FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *st
     asComponent.setSummary(settings.value(QStringLiteral("Flatpak Repo/Comment")).toString());
     asComponent.setDescription(settings.value(QStringLiteral("Flatpak Repo/Description")).toString());
     asComponent.setName(title);
-    asComponent.setId(settings.value(QStringLiteral("Flatpak Ref/Name")).toString());
+    asComponent.setId(settings.value(QStringLiteral("Flatpak Repo/Title")).toString());
 
     const QString iconUrl = settings.value(QStringLiteral("Flatpak Repo/Icon")).toString();
     if (!iconUrl.isEmpty()) {
