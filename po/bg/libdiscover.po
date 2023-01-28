@@ -2527,9 +2527,3 @@ msgstr "Системен софтуер"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Добавки"
-
-#~ msgid "<li>%1 (%2): No changelog information</li>\n"
-#~ msgstr "<li>%1 (%2): Няма информация на changelog </li>\n"
-
-#~ msgid "<li>%1 (%2): %3</li>\n"
-#~ msgstr "<li>%1 (%2): %3</li>\n"
