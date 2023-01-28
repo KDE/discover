@@ -139,6 +139,7 @@ public:
 
         m_backend->updateAppState(resource);
 
+        Q_ASSERT(!m_resources.contains(resource->uniqueId()));
         m_resources.insert(resource->uniqueId(), resource);
         if (!resource->extends().isEmpty()) {
             m_backend->m_extends.append(resource->extends());
@@ -504,6 +505,13 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
 #endif
         } else
             cid = metadata.component();
+    }
+
+    if (source && cid.isValid()) {
+        auto ret = source->m_resources.value(idForComponent(cid));
+        if (ret) {
+            return ret;
+        }
     }
 
     FlatpakResource *resource = new FlatpakResource(cid, source->installation(), const_cast<FlatpakBackend *>(this));

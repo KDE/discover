@@ -108,6 +108,14 @@ private Q_SLOTS:
         QCOMPARE(ourResource->state(), AbstractResource::Installed);
         QCOMPARE(waitTransaction(m_appBackend->removeApplication(ourResource)), Transaction::DoneStatus);
         QCOMPARE(ourResource->state(), AbstractResource::None);
+
+        f.resourceUrl = QUrl(QStringLiteral("appstream://dosbox.desktop"));
+        const auto res2 = getResources(m_appBackend->search(f));
+        QCOMPARE(res2, res);
+
+        f.resourceUrl = QUrl(QStringLiteral("appstream://com.dosbox.DOSBox.desktop"));
+        const auto res3 = getResources(m_appBackend->search(f));
+        QCOMPARE(res3, res);
     }
 
     /*
