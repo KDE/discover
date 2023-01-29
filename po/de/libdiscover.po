@@ -1,6 +1,6 @@
 # Panagiotis Papadopoulos <pano_90@gmx.net>, 2010.
 # Jonathan Raphael Joachim Kolberg <bulldog98@kubuntu-de.org>, 2010.
-# Frederik Schwarzer <schwarzer@kde.org>, 2010, 2011, 2015, 2016, 2018, 2020, 2021, 2022.
+# Frederik Schwarzer <schwarzer@kde.org>, 2010, 2011, 2015, 2016, 2018, 2020, 2021, 2022, 2023.
 # Burkhard Lück <lueck@hube-lueck.de>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
 # Frank Steinmetzger <dev@felsenfleischer.de>, 2021.
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-22 00:58+0000\n"
-"PO-Revision-Date: 2022-07-24 14:44+0200\n"
+"PO-Revision-Date: 2023-01-14 23:48+0100\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.07.70\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -56,13 +56,12 @@ msgid "%1, released on %2"
 msgstr "%1, veröffentlicht am %2"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
-#, fuzzy, kde-format
-#| msgid "All Files"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr "Alle Dateien"
+msgstr "Alle Altersgruppen"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:185
 #, kde-format
@@ -168,11 +167,10 @@ msgstr "Dummy 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Anwendungen"
+msgstr "Alle Anwendungen"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -539,8 +537,7 @@ msgid "System Settings"
 msgstr "Systemeinstellungen"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:123
-#, fuzzy, kde-format
-#| msgid "%1 (user)"
+#, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (Benutzer)"
@@ -607,10 +604,9 @@ msgstr "%1 auf der Festplatte"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:440
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "„%1“ kann nicht gestartet werden"
+msgstr "„%1“ kann nicht gestartet werden: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:722
 #, kde-format
