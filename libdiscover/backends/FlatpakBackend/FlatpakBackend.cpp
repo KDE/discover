@@ -470,13 +470,6 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
     AppStream::Component cid;
     if (source && source->m_pool) {
         QList<AppStream::Component> comps = source->componentsByFlatpakId(name);
-        if (!comps.isEmpty()) {
-            const QString bundleId = refToBundleId(FLATPAK_REF(ref));
-            comps = kFilter<QList<AppStream::Component>>(comps, [&bundleId](const AppStream::Component &comp) -> bool {
-                return comp.bundle(AppStream::Bundle::Kind::KindFlatpak).id() == bundleId;
-            });
-        }
-
         if (comps.isEmpty()) {
             g_autoptr(GBytes) metadata = flatpak_installed_ref_load_appdata(ref, 0, 0);
             if (metadata) {
