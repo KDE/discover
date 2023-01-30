@@ -139,7 +139,7 @@ public:
 
         m_backend->updateAppState(resource);
 
-        Q_ASSERT(!m_resources.contains(resource->uniqueId()));
+        Q_ASSERT(!m_resources.contains(resource->uniqueId()) || m_resources.value(resource->uniqueId()) == resource);
         m_resources.insert(resource->uniqueId(), resource);
         if (!resource->extends().isEmpty()) {
             m_backend->m_extends.append(resource->extends());
@@ -167,13 +167,13 @@ public:
         return comps;
     }
 
-    QList<AppStream::Component> componentsByFlatpakId(const QString &name)
+    QList<AppStream::Component> componentsByFlatpakId(const QString &name, const QString &branch)
     {
         QList<AppStream::Component> comps = m_pool->components();
         // TODO optimise, this lookup should happen in libappstream
-        comps = kFilter<QList<AppStream::Component>>(comps, [name](const AppStream::Component &component) {
+        comps = kFilter<QList<AppStream::Component>>(comps, [&name, &branch](const AppStream::Component &component) {
             const QString id = component.bundle(AppStream::Bundle::KindFlatpak).id();
-            return id.section('/', 1, 1) == name;
+            return id.section('/', 1, 1) == name && id.section('/', 3, 3) == branch;
         });
         if (!comps.isEmpty())
             return comps;
@@ -226,7 +226,7 @@ static FlatpakResource::Id idForComponent(const AppStream::Component &component)
     // app/app.getspace.Space/x86_64/stable
     const auto bundleId = component.bundle(AppStream::Bundle::KindFlatpak).id();
     auto parts = bundleId.splitRef('/');
-    Q_ASSERT(!parts.isEmpty());
+    Q_ASSERT(parts.size() == 4);
 
     return {
         component.id(),
@@ -465,11 +465,12 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
     }
 
     const QLatin1String name(flatpak_ref_get_name(FLATPAK_REF(ref)));
+    const QLatin1String branch(flatpak_ref_get_branch(FLATPAK_REF(ref)));
     const QString pathExports = FlatpakResource::installationPath(installation) + QLatin1String("/exports/");
     const QString pathApps = pathExports + QLatin1String("share/applications/");
     AppStream::Component cid;
     if (source && source->m_pool) {
-        QList<AppStream::Component> comps = source->componentsByFlatpakId(name);
+        QList<AppStream::Component> comps = source->componentsByFlatpakId(name, branch);
         if (comps.isEmpty()) {
             g_autoptr(GBytes) metadata = flatpak_installed_ref_load_appdata(ref, 0, 0);
             if (metadata) {
@@ -492,12 +493,19 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
             if (QFile::exists(fnDesktop))
                 qDebug() << "Failed to parse appstream metadata:" << error << fnDesktop;
 
-            cid.setId(QString::fromLatin1(flatpak_ref_get_name(FLATPAK_REF(ref))));
+            cid.setId(name);
 #if FLATPAK_CHECK_VERSION(1, 1, 2)
             cid.setName(QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref)));
 #endif
         } else
             cid = metadata.component();
+    }
+
+    if (cid.bundle(AppStream::Bundle::KindFlatpak).isEmpty()) {
+        AppStream::Bundle b;
+        b.setKind(AppStream::Bundle::KindFlatpak);
+        b.setId(refToBundleId(FLATPAK_REF(ref)));
+        cid.addBundle(b);
     }
 
     if (source && cid.isValid()) {
@@ -697,7 +705,9 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
 AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancellable *cancellable)
 {
     const QString name = settings.value(QStringLiteral("Flatpak Ref/Name")).toString();
+    const QString branch = settings.value(QStringLiteral("Flatpak Ref/Branch")).toString();
     const QString remoteName = settings.value(QStringLiteral("Flatpak Ref/SuggestRemoteName")).toString();
+    const bool isRuntime = settings.value(QStringLiteral("Flatpak Ref/IsRuntime")).toBool();
 
     AppStream::Component asComponent;
     asComponent.addUrl(AppStream::Component::UrlKindHomepage, settings.value(QStringLiteral("Flatpak Ref/Homepage")).toString());
@@ -708,7 +718,7 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
 
     AppStream::Bundle b;
     b.setKind(AppStream::Bundle::KindFlatpak);
-    b.setId(asComponent.name());
+    b.setId((isRuntime ? "runtime/" : "app/") + asComponent.name() + '/' + flatpak_get_default_arch() + '/' + branch);
     asComponent.addBundle(b);
 
     // We are going to create a temporary installation and add the remote to it.
@@ -768,8 +778,6 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
         return {asComponent};
     }
 
-    const QString branch = settings.value(QStringLiteral("Flatpak Ref/Branch")).toString();
-
     // TODO optimise, this lookup should happen in libappstream
     auto comps = pool.components();
     comps = kFilter<QList<AppStream::Component>>(comps, [name, branch](const AppStream::Component &component) {
@@ -791,6 +799,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
     const QString name = settings.value(QStringLiteral("Flatpak Ref/Name")).toString();
     const QString remoteName = settings.value(QStringLiteral("Flatpak Ref/SuggestRemoteName")).toString();
+    const QString branch = settings.value(QStringLiteral("Flatpak Ref/Branch")).toString();
     g_autoptr(GError) error = nullptr;
 
     // If we already added the remote, just go with it
@@ -803,8 +812,8 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
         m_refreshAppstreamMetadataJobs.insert(remote);
         auto source = integrateRemote(preferredInstallation(), remote);
         if (source) {
-            auto searchComponent = [this, stream, source, name] {
-                auto comps = source->componentsByFlatpakId(name);
+            auto searchComponent = [this, stream, source, name, branch] {
+                auto comps = source->componentsByFlatpakId(name, branch);
                 auto resources = kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
                     return resourceForComponent(comp, source);
                 });
@@ -837,7 +846,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     resource->setDisplayOrigin(remote ? QString::fromUtf8(flatpak_remote_get_title(remote)) : QString());
     resource->setFlatpakName(name);
     resource->setArch(flatpak_get_default_arch());
-    resource->setBranch(settings.value(QStringLiteral("Flatpak Ref/Branch")).toString());
+    resource->setBranch(branch);
     resource->setType(settings.value(QStringLiteral("Flatpak Ref/IsRuntime")).toBool() ? FlatpakResource::Runtime : FlatpakResource::DesktopApp);
 
     QUrl runtimeUrl = QUrl(settings.value(QStringLiteral("Flatpak Ref/RuntimeRepo")).toString());
