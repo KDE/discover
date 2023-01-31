@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-22 00:58+0000\n"
-"PO-Revision-Date: 2023-01-08 12:25+0300\n"
+"POT-Creation-Date: 2023-01-31 00:59+0000\n"
+"PO-Revision-Date: 2023-01-31 00:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -540,28 +540,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (kullanıcı)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:684
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:685
 #, kde-format
 msgid "Local bundle"
 msgstr "Yerel paket"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1621
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1622
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:659
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Hatalı oluşturulmuş Appstream adresi '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1725
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1726
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' kaynağı eklenemedi: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1845
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1846
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Bir Flatpak kaynağı yok."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1849
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1850
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" kaynağı yüklenemedi"
@@ -575,8 +575,8 @@ msgid ""
 "the application is installed.</para>"
 msgstr ""
 "<para>Bu uygulama, %1 konumundan gelir (<link>%2</link> adresinde "
-"barındırılır). Uygulama yüklendiğinde bu depodaki diğer uygulamalar da "
-"Keşfet üzerinden erişilebilir olacaktır.</para>"
+"barındırılır). Uygulama kurulduğunda bu depodaki diğer uygulamalar da Keşfet "
+"üzerinden erişilebilir olacaktır.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:426
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:434
@@ -1332,7 +1332,7 @@ msgstr "Geçersiz paket dosyası"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
 #, kde-format
 msgid "Package install blocked"
-msgstr "Paket yüklemesi engellendi"
+msgstr "Paket kurulumu engellendi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
 #, kde-format
@@ -2374,7 +2374,7 @@ msgid ""
 "have full access to this computer. Install it anyway?"
 msgstr ""
 "Bu Snap uygulaması, güvenlik korumalı alanı ile uyumlu değildir ve bu "
-"bilgisayarda tam erişime sahip olacaktır. Yine de yüklensin mi?"
+"bilgisayarda tam erişime sahip olacaktır. Yine de kurulsun mu?"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
 #, kde-format
