@@ -50,7 +50,7 @@ DiscoverPage {
         const rough = appsModel.roughCount;
         if (search.length>0) {
             if (rough.length > 0) {
-                return i18np("Search: %2 - %1 item", "Search: %2 - %1 items", rough, stripHtml(search))
+                return i18np("Search: %2 - %3 item", "Search: %2 - %3 items", appsModel.count, stripHtml(search), rough)
             } else {
                 return i18n("Search: %1", stripHtml(search))
             }
