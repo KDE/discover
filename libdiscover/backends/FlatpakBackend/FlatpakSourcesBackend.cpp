@@ -96,7 +96,7 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
     m_flathubAction->setObjectName(QStringLiteral("flathub"));
     m_flathubAction->setToolTip(i18n("Makes it possible to easily install the applications listed in https://flathub.org"));
     connect(m_flathubAction, &DiscoverAction::triggered, this, [this]() {
-        addSource(QStringLiteral("https://flathub.org/repo/flathub.flatpakrepo"));
+        addSource(QStringLiteral("https://dl.flathub.org/repo/flathub.flatpakrepo"));
     });
 
     m_noSourcesItem->setEnabled(false);
