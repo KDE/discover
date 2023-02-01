@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-31 02:43+0000\n"
+"POT-Creation-Date: 2023-02-01 02:42+0000\n"
 "PO-Revision-Date: 2023-01-31 00:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -540,28 +540,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (kullanıcı)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:685
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:693
 #, kde-format
 msgid "Local bundle"
 msgstr "Yerel paket"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1622
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1631
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:659
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Hatalı oluşturulmuş Appstream adresi '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1726
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1735
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' kaynağı eklenemedi: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1846
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1855
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Bir Flatpak kaynağı yok."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1850
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1859
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" kaynağı yüklenemedi"

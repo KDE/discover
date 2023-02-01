@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-14 00:57+0000\n"
+"POT-Creation-Date: 2023-02-01 02:42+0000\n"
 "PO-Revision-Date: 2013-10-03 05:07+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -522,8 +522,8 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:53
 #, fuzzy, kde-format
 #| msgid "Search in '%1'..."
-msgid "Search: %2 - %1 item"
-msgid_plural "Search: %2 - %1 items"
+msgid "Search: %2 - %3 item"
+msgid_plural "Search: %2 - %3 items"
 msgstr[0] "'%1' дегенде іздеу..."
 
 #: discover/qml/ApplicationsListPage.qml:55

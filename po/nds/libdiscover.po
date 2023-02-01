@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-31 02:43+0000\n"
+"POT-Creation-Date: 2023-02-01 02:42+0000\n"
 "PO-Revision-Date: 2014-07-06 22:08+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -604,18 +604,18 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:685
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:693
 #, kde-format
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1622
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1631
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:659
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1726
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1735
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -628,12 +628,12 @@ msgstr ""
 "%2\n"
 "\n"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1846
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1855
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1850
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1859
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""

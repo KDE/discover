@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-14 00:57+0000\n"
+"POT-Creation-Date: 2023-02-01 02:42+0000\n"
 "PO-Revision-Date: 2023-01-22 17:05+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -550,9 +550,11 @@ msgstr ""
 "mempelajari lebih lanjut di <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, kde-format
-msgid "Search: %2 - %1 item"
-msgid_plural "Search: %2 - %1 items"
+#, fuzzy, kde-format
+#| msgid "Search: %2 - %1 item"
+#| msgid_plural "Search: %2 - %1 items"
+msgid "Search: %2 - %3 item"
+msgid_plural "Search: %2 - %3 items"
 msgstr[0] "Cari: %2 - %1 item"
 msgstr[1] "Cari: %2 - %1 item"
 
