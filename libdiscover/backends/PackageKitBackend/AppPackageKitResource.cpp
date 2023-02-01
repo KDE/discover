@@ -197,7 +197,7 @@ QList<PackageState> AppPackageKitResource::addonsInformation()
         return r->allPackageNames() != allPackageNames();
     });
     return kTransform<QList<PackageState>>(res, [](AppPackageKitResource *r) {
-        return PackageState(r->appstreamId(), r->name(), r->comment(), r->isInstalled());
+        return PackageState(r->packageName(), r->name(), r->comment(), r->isInstalled());
     });
 }
 
