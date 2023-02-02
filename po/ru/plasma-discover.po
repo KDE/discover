@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-14 00:57+0000\n"
+"POT-Creation-Date: 2023-02-02 00:59+0000\n"
 "PO-Revision-Date: 2023-01-22 15:39+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -569,9 +569,11 @@ msgstr ""
 "<link url='%2'>%</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, kde-format
-msgid "Search: %2 - %1 item"
-msgid_plural "Search: %2 - %1 items"
+#, fuzzy, kde-format
+#| msgid "Search: %2 - %1 item"
+#| msgid_plural "Search: %2 - %1 items"
+msgid "Search: %2 - %3 item"
+msgid_plural "Search: %2 - %3 items"
 msgstr[0] "Поиск: %1 — %2 объект"
 msgstr[1] "Поиск: %1 — %2 объекта"
 msgstr[2] "Поиск: %1 — %2 объектов"
