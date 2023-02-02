@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-01 02:42+0000\n"
-"PO-Revision-Date: 2023-01-15 00:31+0100\n"
+"PO-Revision-Date: 2023-02-01 12:25+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -550,13 +550,11 @@ msgstr ""
 "información en <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %2 - %1 item"
-#| msgid_plural "Search: %2 - %1 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Buscar: %2 - %1 elemento"
-msgstr[1] "Buscar: %2 - %1 elementos"
+msgstr[0] "Buscar: %2 - %3 elemento"
+msgstr[1] "Buscar: %2 - %3 elementos"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
