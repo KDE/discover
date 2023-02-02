@@ -669,7 +669,8 @@ DiscoverPage {
                 Layout.fillWidth: true
                 Layout.bottomMargin: appInfo.internalSpacings * 2
 
-                visible: text.length > 0
+                // Some backends are known to produce empty line break as a text
+                visible: text !== "" && text !== "<br />"
                 wrapMode: Text.WordWrap
 
                 Component.onCompleted: appInfo.application.fetchChangelog()
