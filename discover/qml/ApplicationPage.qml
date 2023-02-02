@@ -852,7 +852,7 @@ DiscoverPage {
 
         ColumnLayout {
             spacing: 0
-            
+
             Repeater {
                 id: listview
 
