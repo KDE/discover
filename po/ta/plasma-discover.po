@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-02 00:59+0000\n"
-"PO-Revision-Date: 2023-01-17 21:42+0530\n"
+"PO-Revision-Date: 2023-02-02 19:34+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -535,13 +535,11 @@ msgstr ""
 "மேலும் அறியலாம்."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %2 - %1 item"
-#| msgid_plural "Search: %2 - %1 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "தேடல்: %2 - %1 உருப்படி"
-msgstr[1] "தேடல்: %2 - %1 உருப்படிகள்"
+msgstr[0] "தேடல்: %2 - %3 உருப்படி"
+msgstr[1] "தேடல்: %2 - %3 உருப்படிகள்"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-02 00:59+0000\n"
-"PO-Revision-Date: 2023-02-01 20:03+0300\n"
+"PO-Revision-Date: 2023-02-02 19:08+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -548,13 +548,11 @@ msgstr ""
 "><nl/>Daha fazla bilgiyi <link url='%2'>%2</link> adresinden alabilirsiniz."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %2 - %1 item"
-#| msgid_plural "Search: %2 - %1 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Ara: %2 - %1 öge"
-msgstr[1] "Ara: %2 - %1 öge"
+msgstr[0] "Ara: %2 - %3 öge"
+msgstr[1] "Ara: %2 - %3 öge"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format

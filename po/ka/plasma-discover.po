@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-02 00:59+0000\n"
-"PO-Revision-Date: 2023-01-15 03:33+0100\n"
+"PO-Revision-Date: 2023-02-02 08:36+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -540,13 +540,11 @@ msgstr ""
 "დააყენოთ (%1).<nl/><nl/>გაიგეთ მეტი <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %2 - %1 item"
-#| msgid_plural "Search: %2 - %1 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "ძებნა: %1 - %2 ჩანაწერი"
-msgstr[1] "ძებნა: %1 - %2 ჩანაწერი"
+msgstr[0] "ძებნა: %2 - %3 ჩანაწერი"
+msgstr[1] "ძებნა: %2 - %3 ჩანაწერი"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format

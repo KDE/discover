@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-02 00:59+0000\n"
-"PO-Revision-Date: 2023-01-14 16:12+0100\n"
+"PO-Revision-Date: 2023-02-02 10:25+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -549,13 +549,11 @@ msgstr ""
 "<link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %2 - %1 item"
-#| msgid_plural "Search: %2 - %1 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Zoeken: %2 + %1 item"
-msgstr[1] "Zoeken: %2 + %1 items"
+msgstr[0] "Zoeken: %2 + %3 item"
+msgstr[1] "Zoeken: %2 + %3 items"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
