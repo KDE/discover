@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-01 02:42+0000\n"
-"PO-Revision-Date: 2023-01-14 09:20+0200\n"
+"PO-Revision-Date: 2023-02-02 10:55+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -560,15 +560,13 @@ msgstr ""
 "це на сторінці <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %2 - %1 item"
-#| msgid_plural "Search: %2 - %1 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Пошук: %2 – %1 запис"
-msgstr[1] "Пошук: %2 – %1 записи"
-msgstr[2] "Пошук: %2 – %1 записів"
-msgstr[3] "Пошук: %2 – %1 запис"
+msgstr[0] "Пошук: %2 – %3 запис"
+msgstr[1] "Пошук: %2 – %3 записи"
+msgstr[2] "Пошук: %2 – %3 записів"
+msgstr[3] "Пошук: %2 – %3 запис"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
