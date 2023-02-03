@@ -33,6 +33,8 @@ class FlatpakResource : public AbstractResource
     Q_PROPERTY(bool isDesktopApp READ isDesktopApp CONSTANT)
     Q_PROPERTY(QString eolReason READ eolReason NOTIFY eolReasonChanged)
     Q_PROPERTY(bool hasData READ hasData NOTIFY hasDataChanged)
+    Q_PROPERTY(QString ref READ ref CONSTANT)
+
 public:
     explicit FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent);
 

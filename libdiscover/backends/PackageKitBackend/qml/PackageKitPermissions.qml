@@ -25,6 +25,9 @@ ColumnLayout {
         subtitle: i18nd("libdiscover", "Can access everything on the system")
         icon: "security-medium"
         subtitleItem.wrapMode: Text.WordWrap
+
+        // so that it gets neither hover nor pressed appearance
         hoverEnabled: false
+        down: false
     }
 }
