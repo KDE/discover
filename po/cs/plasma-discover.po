@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-01 02:42+0000\n"
-"PO-Revision-Date: 2023-01-06 10:48+0100\n"
+"POT-Creation-Date: 2023-02-04 03:17+0000\n"
+"PO-Revision-Date: 2023-02-01 10:34+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -334,7 +334,7 @@ msgstr[0] "Více…"
 msgstr[1] "Více…"
 msgstr[2] "Více…"
 
-#: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:879
+#: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:880
 #, kde-format
 msgid "Content Rating"
 msgstr "Hodnocení obsahu"
@@ -402,17 +402,17 @@ msgstr ""
 msgid "What's New"
 msgstr "Co je nového"
 
-#: discover/qml/ApplicationPage.qml:689
+#: discover/qml/ApplicationPage.qml:690
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Načítají se recenze pro %1"
 
-#: discover/qml/ApplicationPage.qml:695
+#: discover/qml/ApplicationPage.qml:696
 #, kde-format
 msgid "Reviews"
 msgstr "Recenze"
 
-#: discover/qml/ApplicationPage.qml:733
+#: discover/qml/ApplicationPage.qml:734
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
@@ -420,62 +420,62 @@ msgstr[0] "Zobrazit %1 recenzi..."
 msgstr[1] "Zobrazit všechny %1 recenze..."
 msgstr[2] "Zobrazit všech %1 recenzí..."
 
-#: discover/qml/ApplicationPage.qml:745
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Write a Review"
 msgstr "Napište hodnocení..."
 
-#: discover/qml/ApplicationPage.qml:745
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Install to Write a Review"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:757
+#: discover/qml/ApplicationPage.qml:758
 #, kde-format
 msgid "Get Involved"
 msgstr "Přidejte se"
 
-#: discover/qml/ApplicationPage.qml:790
+#: discover/qml/ApplicationPage.qml:791
 #, kde-format
 msgid "Donate"
 msgstr "Přispět"
 
-#: discover/qml/ApplicationPage.qml:791
+#: discover/qml/ApplicationPage.qml:792
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:807
+#: discover/qml/ApplicationPage.qml:808
 #, kde-format
 msgid "Report Bug"
 msgstr "Nahlásit chybu"
 
-#: discover/qml/ApplicationPage.qml:808
+#: discover/qml/ApplicationPage.qml:809
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:822
+#: discover/qml/ApplicationPage.qml:823
 #, kde-format
 msgid "Contribute"
 msgstr "Přispět"
 
-#: discover/qml/ApplicationPage.qml:823
+#: discover/qml/ApplicationPage.qml:824
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:848
+#: discover/qml/ApplicationPage.qml:849
 #, kde-format
 msgid "All Licenses"
 msgstr "Všechny licence"
 
-#: discover/qml/ApplicationPage.qml:893
+#: discover/qml/ApplicationPage.qml:894
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Rizika proprietárního software"
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:900
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -491,7 +491,7 @@ msgid ""
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:900
+#: discover/qml/ApplicationPage.qml:901
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -508,13 +508,12 @@ msgid ""
 msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Hledat: %1"
-msgstr[1] "Hledat: %1"
-msgstr[2] "Hledat: %1"
+msgstr[0] "Hledat: %2 - %3 položku"
+msgstr[1] "Hledat: %2 - %3 položky"
+msgstr[2] "Hledat: %2 - %3 položek"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -525,17 +524,17 @@ msgstr "Hledat: %1"
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%2 - %1 položka"
+msgstr[1] "%2 - %1 položky"
+msgstr[2] "%2 - %1 položek"
 
 #: discover/qml/ApplicationsListPage.qml:65
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Hledat - %1 položku"
+msgstr[1] "Hledat - %1 položky"
+msgstr[2] "Hledat - %1 položek"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:225
@@ -572,13 +571,13 @@ msgstr "Nic nenalezeno"
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "Hledat ve všech kategoriích"
 
 #: discover/qml/ApplicationsListPage.qml:189
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
-msgstr ""
+msgstr "Hledat \"%1\" na webu"
 
 #: discover/qml/ApplicationsListPage.qml:193
 #, kde-format
@@ -594,13 +593,13 @@ msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr ""
+msgstr "\"%1\" nebylo nalezeno v kategorii \"%2\""
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
-msgstr ""
+msgstr "\"%1\" nebylo v dostupných zdrojích nalezeno"
 
 #: discover/qml/ApplicationsListPage.qml:207
 #, kde-format
