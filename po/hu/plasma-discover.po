@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-02 00:59+0000\n"
+"POT-Creation-Date: 2023-02-04 01:00+0000\n"
 "PO-Revision-Date: 2022-02-07 10:40+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -364,7 +364,7 @@ msgid_plural "See more…"
 msgstr[0] "Több…"
 msgstr[1] "Több…"
 
-#: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:879
+#: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:880
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
@@ -438,82 +438,82 @@ msgstr ""
 msgid "What's New"
 msgstr "Újdonságok"
 
-#: discover/qml/ApplicationPage.qml:689
+#: discover/qml/ApplicationPage.qml:690
 #, fuzzy, kde-format
 #| msgid "Reviews for %1"
 msgid "Loading reviews for %1"
 msgstr "Értékelések ehhez: %1"
 
-#: discover/qml/ApplicationPage.qml:695
+#: discover/qml/ApplicationPage.qml:696
 #, kde-format
 msgid "Reviews"
 msgstr "Vélemények"
 
-#: discover/qml/ApplicationPage.qml:733
+#: discover/qml/ApplicationPage.qml:734
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "Összes %1 értékelés megjelenítése…"
 msgstr[1] "Összes %1 értékelés megjelenítése…"
 
-#: discover/qml/ApplicationPage.qml:745
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Write a Review"
 msgstr "Írjon értékelést"
 
-#: discover/qml/ApplicationPage.qml:745
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Telepítse értékelés írásához"
 
-#: discover/qml/ApplicationPage.qml:757
+#: discover/qml/ApplicationPage.qml:758
 #, fuzzy, kde-format
 #| msgid "Get involved:"
 msgid "Get Involved"
 msgstr "Csatlakozzon:"
 
-#: discover/qml/ApplicationPage.qml:790
+#: discover/qml/ApplicationPage.qml:791
 #, kde-format
 msgid "Donate"
 msgstr "Támogatás"
 
-#: discover/qml/ApplicationPage.qml:791
+#: discover/qml/ApplicationPage.qml:792
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:807
+#: discover/qml/ApplicationPage.qml:808
 #, kde-format
 msgid "Report Bug"
 msgstr "Hiba bejelentése"
 
-#: discover/qml/ApplicationPage.qml:808
+#: discover/qml/ApplicationPage.qml:809
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:822
+#: discover/qml/ApplicationPage.qml:823
 #, fuzzy, kde-format
 #| msgid "Contribute…"
 msgid "Contribute"
 msgstr "Hozzájárulás…"
 
-#: discover/qml/ApplicationPage.qml:823
+#: discover/qml/ApplicationPage.qml:824
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:848
+#: discover/qml/ApplicationPage.qml:849
 #, kde-format
 msgid "All Licenses"
 msgstr "Minden licenc"
 
-#: discover/qml/ApplicationPage.qml:893
+#: discover/qml/ApplicationPage.qml:894
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:900
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -529,7 +529,7 @@ msgid ""
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:900
+#: discover/qml/ApplicationPage.qml:901
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
