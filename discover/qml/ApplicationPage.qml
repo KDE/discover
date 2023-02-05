@@ -18,13 +18,14 @@ import "navigation.js" as Navigation
 DiscoverPage {
     id: appInfo
 
-    title: appInfo.application.name
+    title: "" // It would duplicate the text in the header right below it
     clip: true
 
     property QtObject application: null
     readonly property int visibleReviews: 3
     readonly property int internalSpacings: Kirigami.Units.largeSpacing
     readonly property int pageContentMargins: Kirigami.Units.gridUnit
+    readonly property bool availableFromOnlySingleSource: !originsMenuAction.visible
 
     // Usually this page is not the top level page, but when we are, isHome being
     // true will ensure that the search field suggests we are searching in the list
@@ -57,11 +58,12 @@ DiscoverPage {
         exclusive: true
     }
 
+    // Multi-source origin display and switcher
     Kirigami.Action {
         id: originsMenuAction
 
-        text: i18n("Sources")
-        visible: children.length>1
+        text: i18nc("@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu\"", "From %1", appInfo.application.displayOrigin)
+        visible: children.length > 1
         children: sourcesGroup.actions
         readonly property var r0: Instantiator {
             model: ResourcesProxyModel {
@@ -100,6 +102,12 @@ DiscoverPage {
         Layout.rightMargin: Kirigami.Units.smallSpacing
         application: appInfo.application
         visible: false
+        availableFromOnlySingleSource: appInfo.availableFromOnlySingleSource
+    }
+
+    Kirigami.ImageColors {
+        id: appImageColorExtractor
+        source: appInfo.application.icon
     }
 
     topPadding: 0
@@ -107,53 +115,56 @@ DiscoverPage {
     leftPadding: 0
     rightPadding: 0
 
-    // Page content
+
+    // Scrollable page content
     ColumnLayout {
         id: pageLayout
 
+        anchors.fill: parent
         spacing: appInfo.internalSpacings
 
-        // Header and its background rectangle
+        // Colored header with app icon, name, and metadata
         Rectangle {
             Layout.fillWidth: true
+            implicitHeight: headerLayout.implicitHeight + (headerLayout.anchors.topMargin * 2)
+            color: Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, appImageColorExtractor.dominant, 0.1)
 
-            implicitHeight: headerLayout.height + (headerLayout.anchors.topMargin * 2)
-            color: Qt.darker(Kirigami.Theme.backgroundColor, 1.05)
-
-            // Header layout with App icon, name, author, rating,
-            // screenshots, and metadata
-            ColumnLayout {
+            GridLayout {
                 id: headerLayout
 
+                readonly property bool stackedMode: appBasicInfoLayout.implicitWidth + columnSpacing + appMetadataLayout.implicitWidth > (pageLayout.width - anchors.leftMargin - anchors.rightMargin)
+
+                columns: stackedMode ? 1 : 2
+                rows: stackedMode ? 2 : 1
+                columnSpacing: appInfo.internalSpacings
+                rowSpacing: appInfo.internalSpacings
+
                 anchors {
-                    topMargin: appInfo.internalSpacings
                     top: parent.top
+                    topMargin: appInfo.internalSpacings
                     left: parent.left
+                    leftMargin: appInfo.internalSpacings
                     right: parent.right
+                    rightMargin: appInfo.internalSpacings
                 }
 
-                spacing: appInfo.internalSpacings
 
-                // App icon, name, author or update info, rating
+                // App icon, name, author, and rating
                 RowLayout {
-                    Layout.leftMargin: appInfo.internalSpacings
-                    Layout.rightMargin: appInfo.internalSpacings
-
-                    spacing: 0 // Children bring their own
+                    id: appBasicInfoLayout
+                    Layout.maximumWidth: headerLayout.implicitWidth
+                    Layout.alignment: headerLayout.stackedMode ? Qt.AlignHCenter : Qt.AlignLeft
+                    spacing: appInfo.internalSpacings
 
                     // App icon
                     Kirigami.Icon {
-                        readonly property int size : applicationWindow().wideScreen ? Kirigami.Units.iconSizes.large * 2 : Kirigami.Units.iconSizes.huge
-
-                        implicitWidth: size
-                        implicitHeight: size
+                        implicitWidth: Kirigami.Units.iconSizes.huge
+                        implicitHeight: Kirigami.Units.iconSizes.huge
                         source: appInfo.application.icon
-                        Layout.rightMargin: appInfo.internalSpacings
                     }
 
                     // App name, author, and rating
                     ColumnLayout {
-                        Layout.fillWidth: true
 
                         spacing: 0
 
@@ -172,11 +183,8 @@ DiscoverPage {
                             id: author
 
                             Layout.fillWidth: true
-                            Layout.bottomMargin: appInfo.internalSpacings
-
                             visible: text.length > 0
 
-                            opacity: 0.8
                             text: {
                                 if (appInfo.isOfflineUpgrade) {
                                     return appInfo.application.upgradeText.length > 0 ? appInfo.application.upgradeText : "";
@@ -193,255 +201,130 @@ DiscoverPage {
 
                         // Rating
                         RowLayout {
-                            Layout.fillWidth: true
 
                             // Not relevant to the offline upgrade use case
                             visible: !appInfo.isOfflineUpgrade
 
                             Rating {
-                                opacity: 0.8
                                 rating: appInfo.application.rating ? appInfo.application.rating.sortableRating : 0
                                 starSize: author.font.pointSize
                             }
 
                             Label {
-                                opacity: 0.8
                                 text: appInfo.application.rating ? i18np("%1 rating", "%1 ratings", appInfo.application.rating.ratingCount) : i18n("No ratings yet")
                             }
                         }
                     }
                 }
 
-                // Screenshots
-                Kirigami.InlineMessage {
-                    type: Kirigami.MessageType.Warning
-                    Layout.fillWidth: true
-                    Layout.margins: Kirigami.Units.smallSpacing
-                    visible: screenshots.hasFailed
-                    text: i18n("Could not access the screenshots")
-                }
-
-                ScrollView {
-                    id: screenshotsScroll
-                    visible: screenshots.count > 0 && !screenshots.hasFailed
-                    Layout.maximumWidth: headerLayout.width
-                    Layout.alignment: Qt.AlignHCenter
-                    Layout.preferredHeight: Math.min(Kirigami.Units.gridUnit * 20, Window.height * 0.25)
-
-                    ScrollBar.vertical.policy: ScrollBar.AlwaysOff
-
-                    ApplicationScreenshots {
-                        id: screenshots
-                        resource: appInfo.application
-                        delegateHeight: parent.Layout.preferredHeight * 0.8
-                        showNavigationArrows: screenshotsScroll.width === headerLayout.width
-                    }
-                }
-
                 // Metadata
-                Flow {
-                    id: metadataLayout
-                    readonly property int itemWidth: Kirigami.Units.gridUnit * 7
-                    readonly property int visibleChildren: countVisibleChildren(children)
-                    function countVisibleChildren(items) {
-                        let ret = 0;
-                        for (const itemPos in items) {
-                            const item = items[itemPos];
-                            ret += item.visible;
-                        }
-                        return ret;
-                    }
+                // Not using Kirigami.FormLayout here because we never want it to move into Mobile
+                // mode and we also want to customize the spacing, neither of which it lets us do
+                GridLayout {
+                    id: appMetadataLayout
 
-                    // This centers the Flow in the page, no matter how many items have
-                    // flowed onto other rows
-                    Layout.maximumWidth: ((itemWidth + spacing) * Math.min(visibleChildren, Math.floor(headerLayout.width / (itemWidth + spacing)))) - spacing
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignHCenter
-                    Layout.leftMargin: appInfo.internalSpacings
-                    Layout.rightMargin: appInfo.internalSpacings
+                    Layout.alignment: headerLayout.stackedMode ? Qt.AlignHCenter : Qt.AlignRight
 
-                    spacing: Kirigami.Units.smallSpacing
+                    columns: 2
+                    rows: Math.ceil(appMetadataLayout.visibleChildren.count / 2)
+                    columnSpacing: Kirigami.Units.smallSpacing
+                    rowSpacing: 0
 
-                    // Not relevant to the offline upgrade use case
+                    // Not relevant to offline updates
                     visible: !appInfo.isOfflineUpgrade
 
-                    onImplicitWidthChanged: visibleChildrenChanged()
-
                     // Version
-                    ColumnLayout {
-                        id: versionColumn
-                        width: metadataLayout.itemWidth
-
-                        spacing: Kirigami.Units.smallSpacing
-
-                        Label {
-                            Layout.fillWidth: true
-                            opacity: 0.7
-                            text: i18n("Version")
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignBottom
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 2
-                        }
-                        Label {
-                            Layout.fillWidth: true
-                            text: appInfo.application.versionString
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignTop
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 3
-                            elide: Text.ElideRight
-                        }
+                    Label {
+                        text: i18n("Version:")
+                        Layout.alignment: Qt.AlignRight
+                    }
+                    Label {
+                        text: appInfo.application.versionString
+                        wrapMode: Text.Wrap
+                        maximumLineCount: 3
+                        elide: Text.ElideRight
                     }
 
                     // Size
-                    ColumnLayout {
-                        id: sizeColumn
-                        width: metadataLayout.itemWidth
-
-                        spacing: Kirigami.Units.smallSpacing
-
-                        Label {
-                            Layout.fillWidth: true
-                            opacity: 0.7
-                            text: i18n("Size")
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignBottom
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 2
-                        }
-                        Label {
-                            Layout.fillWidth: true
-                            text: appInfo.application.sizeDescription
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignTop
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 3
-                            elide: Text.ElideRight
-                        }
+                    Label {
+                        text: i18n("Size:")
+                        Layout.alignment: Qt.AlignRight
+                    }
+                    Label {
+                        text: appInfo.application.sizeDescription
+                        wrapMode: Text.Wrap
+                        maximumLineCount: 3
+                        elide: Text.ElideRight
                     }
 
-                    // Distributor
-                    ColumnLayout {
-                        id: distributorColumn
-                        width: metadataLayout.itemWidth
-
-                        spacing: Kirigami.Units.smallSpacing
-
-                        Label {
-                            Layout.fillWidth: true
-                            opacity: 0.7
-                            text: i18n("Distributed by")
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignBottom
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 2
-                        }
-                        Label {
-                            Layout.fillWidth: true
-                            text: appInfo.application.displayOrigin
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignTop
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 3
-                            elide: Text.ElideRight
-                        }
+                    // Licenses
+                    Label {
+                        text: i18np("License:", "Licenses:", appInfo.application.licenses.length)
+                        Layout.alignment: Qt.AlignRight
                     }
-
-                    // License(s)
-                    ColumnLayout {
-                        id: licenseColumn
-                        width: metadataLayout.itemWidth
-
+                    RowLayout {
                         spacing: Kirigami.Units.smallSpacing
 
                         Label {
-                            Layout.fillWidth: true
-                            opacity: 0.7
-                            text: i18np("License", "Licenses", appInfo.application.licenses.length)
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignBottom
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 2
-                        }
-                        Label {
-                            Layout.fillWidth: true
                             visible : appInfo.application.licenses.length === 0
                             text: i18nc("The app does not provide any licenses", "Unknown")
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignTop
                             wrapMode: Text.Wrap
-                            maximumLineCount: 3
                             elide: Text.ElideRight
                         }
-                        ColumnLayout {
-                            Layout.fillWidth: true
+
+                        Repeater {
                             visible : appInfo.application.licenses.length > 0
-                            spacing: 0
+                            model: appInfo.application.licenses.slice(0, 2)
+                            delegate: RowLayout {
+                                spacing: 0
 
-                            Repeater {
-                                model: appInfo.application.licenses.slice(0, 2)
-                                delegate: RowLayout {
-                                    Layout.fillWidth: true
-                                    spacing: 0
+                                Kirigami.UrlButton {
+                                    enabled: url !== ""
+                                    text: modelData.name
+                                    url: modelData.url
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignTop
+                                    wrapMode: Text.Wrap
+                                    maximumLineCount: 3
+                                    elide: Text.ElideRight
+                                    color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
+                                }
 
-                                    Kirigami.UrlButton {
-                                        Layout.fillWidth: true
-                                        enabled: url !== ""
-                                        text: modelData.name
-                                        url: modelData.url
-                                        horizontalAlignment: Text.AlignHCenter
-                                        verticalAlignment: Text.AlignTop
-                                        wrapMode: Text.Wrap
-                                        maximumLineCount: 3
-                                        elide: Text.ElideRight
-                                        color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
-                                    }
+                                // Button to open "What's the risk of proprietary software?" sheet
+                                ToolButton {
+                                    visible: !modelData.hasFreedom
+                                    icon.name: "help-contextual"
+                                    onClicked: properietarySoftwareRiskExplanationDialog.open();
 
-                                    // Button to open "What's the risk of proprietary software?" sheet
-                                    ToolButton {
-                                        visible: !modelData.hasFreedom
-                                        icon.name: "help-contextual"
-                                        onClicked: properietarySoftwareRiskExplanationDialog.open();
-
-                                        ToolTip {
-                                            text: i18n("What does this mean?")
-                                        }
+                                    ToolTip {
+                                        text: i18n("What does this mean?")
                                     }
                                 }
                             }
+                        }
 
-                            // "See More licenses" link, in case there are a lot of them
-                            Kirigami.LinkButton {
-                                Layout.fillWidth: true
-                                visible: application.licenses.length > 3
-                                text: i18np("See more…", "See more…", appInfo.application.licenses.length)
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignTop
-                                elide: Text.ElideRight
-                                onClicked: allLicensesSheet.open();
-                            }
-
+                        // "See More licenses" link, in case there are a lot of them
+                        Kirigami.LinkButton {
+                            visible: application.licenses.length > 3
+                            text: i18np("See more…", "See more…", appInfo.application.licenses.length)
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignTop
+                            elide: Text.ElideRight
+                            onClicked: allLicensesSheet.open();
                         }
                     }
+
                     // Content Rating
-                    ColumnLayout {
-                        width: metadataLayout.itemWidth
+                    Label {
+                        visible: appInfo.application.contentRatingText.length > 0
+                        text: i18n("Content Rating:")
+                        Layout.alignment: Qt.AlignRight
+                    }
+                    RowLayout {
                         visible: appInfo.application.contentRatingText.length > 0
                         spacing: Kirigami.Units.smallSpacing
 
                         Label {
-                            Layout.fillWidth: true
-                            opacity: 0.7
-                            text: i18n("Content Rating")
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignBottom
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 2
-                        }
-
-                        Label {
-                            Layout.fillWidth: true
                             visible: text.length > 0
                             text: appInfo.application.contentRatingMinimumAge === 0 ? "" : i18n("Age: %1+", appInfo.application.contentRatingMinimumAge)
                             horizontalAlignment: Text.AlignHCenter
@@ -478,14 +361,37 @@ DiscoverPage {
             }
 
             Kirigami.Separator {
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    top: parent.bottom
-                }
+                width: parent.width
+                anchors.top: parent.bottom
             }
         }
 
+        // Screenshots
+        Kirigami.InlineMessage {
+            type: Kirigami.MessageType.Warning
+            Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.smallSpacing
+            visible: screenshots.hasFailed
+            text: i18n("Could not access the screenshots")
+        }
+
+        ScrollView {
+            id: screenshotsScroll
+            visible: screenshots.count > 0 && !screenshots.hasFailed
+            Layout.maximumWidth: headerLayout.width
+            Layout.topMargin: appInfo.internalSpacings
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredHeight: Math.min(Kirigami.Units.gridUnit * 20, Window.height * 0.25)
+
+            ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+
+            ApplicationScreenshots {
+                id: screenshots
+                resource: appInfo.application
+                delegateHeight: parent.Layout.preferredHeight * 0.8
+                showNavigationArrows: screenshotsScroll.width === headerLayout.width
+            }
+        }
 
         Repeater {
             Layout.bottomMargin: appInfo.internalSpacings * 2

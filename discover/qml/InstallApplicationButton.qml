@@ -1,6 +1,6 @@
-import QtQuick 2.1
-import QtQuick.Controls 2.3
-import QtQuick.Layouts 1.1
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.13
 import org.kde.discover 2.0
 import org.kde.kirigami 2.14 as Kirigami
 
@@ -14,6 +14,7 @@ ConditionalLoader {
     readonly property alias progress: listener.progress
     readonly property bool isStateAvailable: application.state !== AbstractResource.Broken
     readonly property alias listener: listener
+    property bool availableFromOnlySingleSource: false
 
     TransactionListener {
         id: listener
@@ -25,7 +26,10 @@ ConditionalLoader {
                 return i18nc("State being fetched", "Loading…")
             }
             if (!application.isInstalled) {
-                return i18n("Install");
+                if (root.availableFromOnlySingleSource) {
+                    return i18nc("@action:button %1 is the name of a software repository", "Install from %1", application.displayOrigin);
+                }
+                return i18nc("@action:button", "Install");
             }
             return i18n("Remove");
         }
