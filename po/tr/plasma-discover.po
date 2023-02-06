@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-04 01:00+0000\n"
-"PO-Revision-Date: 2023-02-02 19:08+0300\n"
+"PO-Revision-Date: 2023-02-05 12:30+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -281,8 +281,8 @@ msgstr "İptal"
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
-msgstr[0] "%1 değerlendirme"
-msgstr[1] "%1 değerlendirme"
+msgstr[0] "%1 derecelendirme"
+msgstr[1] "%1 derecelendirme"
 
 #: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:208
@@ -454,7 +454,7 @@ msgstr "Katıl"
 #: discover/qml/ApplicationPage.qml:791
 #, kde-format
 msgid "Donate"
-msgstr "Bağış yapın"
+msgstr "Bağış Yap"
 
 #: discover/qml/ApplicationPage.qml:792
 #, kde-format
@@ -592,7 +592,7 @@ msgstr "Ad"
 #: discover/qml/ApplicationsListPage.qml:100
 #, kde-format
 msgid "Rating"
-msgstr "Beğeni"
+msgstr "Derecelendirme"
 
 #: discover/qml/ApplicationsListPage.qml:118
 #, kde-format
@@ -952,7 +952,7 @@ msgstr "İnceleme gönder"
 #: discover/qml/ReviewDialog.qml:37
 #, kde-format
 msgid "Rating:"
-msgstr "Beğeni:"
+msgstr "Derecelendirme:"
 
 #: discover/qml/ReviewDialog.qml:42
 #, kde-format
