@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-01 02:42+0000\n"
-"PO-Revision-Date: 2023-01-12 10:29\n"
+"PO-Revision-Date: 2023-02-07 11:06\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/discover/libdiscover.pot\n"
-"X-Crowdin-File-ID: 4109\n"
+"X-Crowdin-File: /kf5-stable/messages/discover/libdiscover.pot\n"
+"X-Crowdin-File-ID: 2320\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2264,7 +2264,7 @@ msgstr "正在更新到下一个主要版本"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr ""
+msgstr "操作正在进行中 (在 Discover 外部启动)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
