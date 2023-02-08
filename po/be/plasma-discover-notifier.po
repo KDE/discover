@@ -1,159 +1,161 @@
+# Zmicier <zmicerturok@gmail.com>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: kdeorg\n"
+"Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-14 00:47+0000\n"
-"PO-Revision-Date: 2023-02-07 11:01\n"
-"Last-Translator: \n"
-"Language-Team: Chinese Simplified\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: 2023-02-06 14:02\n"
+"Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
+"Language-Team: Belarusian\n"
+"Language: be_BY\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: kdeorg\n"
-"X-Crowdin-Project-ID: 269464\n"
-"X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/discover/plasma-discover-notifier.pot\n"
-"X-Crowdin-File-ID: 4482\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n"
+"%100>=11 && n%100<=14 ? 2 : 3);\n"
+"X-Generator: Lokalize 22.12.1\n"
+"X-Crowdin-Project: 86ff119b1606fcaa910d6b44fc14b611\n"
+"X-Crowdin-Project-ID: 127\n"
+"X-Crowdin-Language: be\n"
+"X-Crowdin-File: /main/be/discover/plasma-discover-notifier.po\n"
+"X-Crowdin-File-ID: 9164\n"
 
 #: notifier/DiscoverNotifier.cpp:144
 #, kde-format
 msgid "View Updates"
-msgstr "查看更新"
+msgstr "Паглядзець абнаўленні"
 
 #: notifier/DiscoverNotifier.cpp:261
 #, kde-format
 msgid "Security updates available"
-msgstr "安全更新可用"
+msgstr "Даступны абнаўленні бяспекі"
 
 #: notifier/DiscoverNotifier.cpp:263
 #, kde-format
 msgid "Updates available"
-msgstr "更新可用"
+msgstr "Даступныя абнаўленні"
 
 #: notifier/DiscoverNotifier.cpp:265
 #, kde-format
 msgid "System up to date"
-msgstr "系统已为最新"
+msgstr "Сістэма абноўленая"
 
 #: notifier/DiscoverNotifier.cpp:267
 #, kde-format
 msgid "Computer needs to restart"
-msgstr "计算机需要重新启动"
+msgstr "Трэба перазапусціць камп'ютар"
 
 #: notifier/DiscoverNotifier.cpp:269
 #, kde-format
 msgid "Offline"
-msgstr "离线"
+msgstr "Па-за сецівам"
 
 #: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Applying unattended updates…"
-msgstr "正在应用无人职守更新…"
+msgstr "Ужыванне аўтаматычных абнаўленняў…"
 
 #: notifier/DiscoverNotifier.cpp:305
 #, kde-format
 msgid "Restart is required"
-msgstr "需要重新启动"
+msgstr "Патрабуецца перазапуск"
 
 #: notifier/DiscoverNotifier.cpp:306
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
-msgstr "系统需要重新启动才能使更新生效。"
+msgstr "Каб абнаўленні былі ўжытыя, трэба перазапусціць сістэму."
 
 #: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
-msgstr "重新启动"
+msgstr "Перазапусціць"
 
 #: notifier/DiscoverNotifier.cpp:332
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
-msgstr "升级"
+msgstr "Абнавіць"
 
 #: notifier/DiscoverNotifier.cpp:333
 #, kde-format
 msgid "Upgrade available"
-msgstr "有可用升级"
+msgstr "Даступна абнаўленне"
 
 #: notifier/DiscoverNotifier.cpp:334
 #, kde-format
 msgid "New version: %1"
-msgstr "新版本：%1"
+msgstr "Новая версія: %1"
 
 #: notifier/main.cpp:39
 #, kde-format
 msgid "Discover Notifier"
-msgstr "Discover 通知"
+msgstr "Апавяшчальнік Discover"
 
 #: notifier/main.cpp:41
 #, kde-format
 msgid "System update status notifier"
-msgstr "系统更新状态通知"
+msgstr "Апавяшчэнне пра стан абнаўлення сістэмы"
 
 #: notifier/main.cpp:43
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2022 Каманда распрацоўвання Plasma"
 
 #: notifier/main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "KDE 中国, CoelacanthusHex, Guo Yunhe, Tyson Tan"
+msgstr "Antikruk"
 
 #: notifier/main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-"kde-china@kde.org, coelacanthusHex@kde.org, i@guoyunhe.me, tysontan@tysontan."
-"com"
+msgstr "nashtlumach@gmail.com"
 
 #: notifier/main.cpp:52
 #, kde-format
 msgid "Replace an existing instance"
-msgstr "替换已有实例"
+msgstr "Замяніць наяўны асобнік"
 
 #: notifier/main.cpp:54
 #, kde-format
 msgid "Do not show the notifier"
-msgstr "不显示通知"
+msgstr "Не паказваць апавяшчальнік"
 
 #: notifier/main.cpp:54
 #, kde-format
 msgid "hidden"
-msgstr "隐藏"
+msgstr "схавана"
 
 #: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
 #, kde-format
 msgid "Updates"
-msgstr "更新"
+msgstr "Абнаўленні"
 
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Open Discover…"
-msgstr "打开 Discover…"
+msgstr "Адкрыць Discover…"
 
 #: notifier/NotifierItem.cpp:55
 #, kde-format
 msgid "See Updates…"
-msgstr "查看…"
+msgstr "Паглядзець абнаўленні…"
 
 #: notifier/NotifierItem.cpp:60
 #, kde-format
 msgid "Refresh…"
-msgstr "刷新…"
+msgstr "Абнавіць…"
 
 #: notifier/NotifierItem.cpp:64
 #, kde-format
 msgid "Restart to apply installed updates"
-msgstr "重新启动以使已安装的更新生效"
+msgstr "Перазапусціць, каб ужыць усталяваныя абнаўленні"
 
 #: notifier/NotifierItem.cpp:65
 #, kde-format
 msgid "Click to restart the device"
-msgstr "点击重新启动设备"
+msgstr "Пстрыкніце, каб перазапусціць прыладу"

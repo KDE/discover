@@ -1,25 +1,25 @@
-# Translation of plasma-discover.po to Brazilian Portuguese
-# Copyright (C) 2012-2020 This file is copyright:
-# This file is distributed under the same license as the discover package.
-#
-# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2012, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
-# André Marcelo Alvarenga <alvarenga@kde.org>, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
-# Marcus Gama <marcus.gama@gmail.com>, 2012.
-# Blumen Herzenschein <herzenschein@gmail.com>, 2020, 2021.
+# Zmicier <zmicerturok@gmail.com>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: discover\n"
+"Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-04 01:00+0000\n"
-"PO-Revision-Date: 2023-02-07 10:58-0300\n"
-"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
-"Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
-"Language: pt_BR\n"
+"PO-Revision-Date: 2023-02-07 10:31\n"
+"Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
+"Language-Team: Belarusian\n"
+"Language: be_BY\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n"
+"%100>=11 && n%100<=14 ? 2 : 3);\n"
+"X-Generator: Lokalize 22.12.1\n"
+"X-Crowdin-Project: 86ff119b1606fcaa910d6b44fc14b611\n"
+"X-Crowdin-Project-ID: 127\n"
+"X-Crowdin-Language: be\n"
+"X-Crowdin-File: /main/be/discover/plasma-discover.po\n"
+"X-Crowdin-File-ID: 9166\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -27,9 +27,8 @@ msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr ""
-"O Discover atualmente não pode ser usado para instalar qualquer aplicativo "
-"ou fazer atualizações do sistema porque nenhuma das infraestruturas do "
-"aplicativo está disponível."
+"Зараз Discover нельга выкарыстаць для ўсталявання якіх-небудзь праграм або "
+"выканання абнаўлення сістэмы, бо ўсе яго рухавікі недаступныя."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -39,15 +38,15 @@ msgid ""
 "Backends</interface> section.<nl/><nl/>Also please consider reporting this "
 "as a packaging issue to your distribution."
 msgstr ""
-"Você pode instalar algumas na página de configurações, que fica na seção "
-"<interface>Infraestruturas faltantes</interface>.<nl/><nl/>Considere relatar "
-"isto como erro no empacotamento da sua distribuição."
+"Вы можаце ўсталяваць некаторыя з іх на старонцы налад у раздзеле "
+"<interface>Адсутныя рухавікі</interface>.<nl/><nl/>Падумайце пра тое, каб "
+"псведааміць пра праблему ў службу падтрымкі вашага дыстрыбутыва."
 
 #: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
-msgstr "Relate este problema"
+msgstr "Паведаміць пра праблему"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-kuit-format
@@ -59,26 +58,26 @@ msgid ""
 "managing software because the PackageKit backend is not well-integrated on "
 "Arch Linux."
 msgstr ""
-"Você pode usar o <command>pacman</command> para instalar as dependências "
-"opcionais que são necessárias para habilitar as infraestruturas do "
-"aplicativo.<nl/><nl/>Note que os desenvolvedores do Arch Linux recomendam "
-"usar o <command>pacman</command> para gerenciar software porque a "
-"infraestrutura PackageKit não está bem integrada no Arch Linux."
+"Вы можаце выкарыстаць <command>pacman</command>, каб усталяваць дадатковыя "
+"залежнасці, неабходныя для ўключэння рухавікоў.<nl/><nl/>Звярніце ўвагу на "
+"тое, што распрацоўнікі Arch Linux для кіравання праграмным забеспячэннем "
+"рэкамендуюць выкарыстоўваць <command>pacman</command>, бо PackageKit дрэнна "
+"інтэграваны ў Arch Linux."
 
 #: discover/DiscoverObject.cpp:181
 #, kde-format
 msgid "Learn More"
-msgstr "Saiba mais"
+msgstr "Даведацца падрабязней"
 
 #: discover/DiscoverObject.cpp:269
 #, kde-format
 msgid "Could not find category '%1'"
-msgstr "Não foi possível encontrar a categoria '%1'"
+msgstr "Не ўдалося знайсці катэгорыю \"%1\""
 
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr "Tentando abrir o arquivo inexistente '%1'"
+msgstr "Спроба адкрыцця файла \"%1\", які не існуе"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -86,18 +85,18 @@ msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
-"Não é possível interagir com os recursos de Flatpak sem a infraestrutura "
-"flatpak %1. Faça a instalação primeiro."
+"Немагчыма ўзаемадзейнічаць з рэсурсамі Flatpak без рухавіка Flatpak %1. "
+"Спачатку ўсталюйце яго."
 
 #: discover/DiscoverObject.cpp:310
 #, kde-format
 msgid "Could not open %1"
-msgstr "Não foi possível abrir %1"
+msgstr "Не ўдалося адкрыць %1"
 
 #: discover/DiscoverObject.cpp:372
 #, kde-format
 msgid "Please make sure Snap support is installed"
-msgstr "Certifique-se de que o suporte a Snap está instalado"
+msgstr "Пераканайцеся, што падтрымка Snap усталяваная"
 
 #: discover/DiscoverObject.cpp:374
 #, kde-format
@@ -105,13 +104,14 @@ msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr ""
-"Não foi possível abrir %1 pois não foi encontrado em nenhum repositório de "
-"software disponível."
+"Немагчыма адкрыць %1, бо яго не ўдалося знайсці ні ў адным з даступных "
+"рэпазіторыяў праграмнага забеспячэння."
 
 #: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
-msgstr "Relate este erro para os empacotadores de sua distribuição."
+msgstr ""
+"Адпраўце справаздачу пра памылку ў службу падтрымкі вашага дыстрыбутыва."
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
 #: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
@@ -124,77 +124,75 @@ msgstr "Discover"
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
-"O Discover foi fechado antes que certas tarefas fossem concluídas, "
-"aguardando sua conclusão."
+"Discover быў закрыты да таго, як былі выкананы пэўныя задачы, таму зараз "
+"чакаецца іх завяршэнне."
 
 #: discover/main.cpp:42
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
-msgstr "Abre diretamente o aplicativo especificado pela sua URI appstream://."
+msgstr "Адкрыць вызначаную праграму непасрэдна з дапамогай appstream:// URI."
 
 #: discover/main.cpp:43
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
-msgstr ""
-"Abrir com a pesquisa por programas que consigam lidar com o tipo MIME "
-"indicado."
+msgstr "Пошук праграм, якія могуць працаваць з дадзеным тыпам mime."
 
 #: discover/main.cpp:44
 #, kde-format
 msgid "Display a list of entries with a category."
-msgstr "Mostrar uma lista de itens com determinada categoria."
+msgstr "Паказаць спіс запісаў з катэгорыямі."
 
 #: discover/main.cpp:45
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
-"Abre o Discover no modo informado. Os modos correspondem aos botões da barra "
-"de ferramentas."
+"Адкрыць Discover у вызначаным рэжыме. Рэжымы адпавядаюць кнопкам панэлі "
+"інструментаў."
 
 #: discover/main.cpp:46
 #, kde-format
 msgid "List all the available modes."
-msgstr "Listar todos os modos disponíveis."
+msgstr "Спіс усіх даступных рэжымаў."
 
 #: discover/main.cpp:47
 #, kde-format
 msgid "Compact Mode (auto/compact/full)."
-msgstr "Modo compacto (automático/compacto/completo)."
+msgstr "Кампактны рэжым (аўтаматычны/кампактны/поўны)."
 
 #: discover/main.cpp:48
 #, kde-format
 msgid "Local package file to install"
-msgstr "Arquivo de pacote local a instalar"
+msgstr "Файл лакальнага пакунка для ўсталявання"
 
 #: discover/main.cpp:49
 #, kde-format
 msgid "List all the available backends."
-msgstr "Lista todas as infraestruturas disponíveis."
+msgstr "Спіс усіх даступных рухавікоў."
 
 #: discover/main.cpp:50
 #, kde-format
 msgid "Search string."
-msgstr "Texto de pesquisa."
+msgstr "Радок пошуку."
 
 #: discover/main.cpp:51
 #, kde-format
 msgid "Lists the available options for user feedback"
-msgstr "Lista as opções disponíveis para os comentários dos usuários"
+msgstr "Спіс даступных параметраў для водгукаў"
 
 #: discover/main.cpp:53
 #, kde-format
 msgid "Supports appstream: url scheme"
-msgstr "Suporta o esquema de URLs 'appstream:'"
+msgstr "Падтрымка appstream: схема Url"
 
 #: discover/main.cpp:122
 #, kde-format
 msgid "An application explorer"
-msgstr "Um explorador de aplicativos"
+msgstr "Агляд праграм"
 
 #: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "© 2010-2022 Equipe de desenvolvimento do Plasma"
+msgstr "© 2010-2022 Каманда распрацоўвання Plasma"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -209,7 +207,7 @@ msgstr "Nate Graham"
 #: discover/main.cpp:127
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
-msgstr "Garantia de qualidade, design e usabilidade"
+msgstr "Забеспячэнне якасці, дызайн і зручнасць выкарыстання"
 
 #: discover/main.cpp:131
 #, kde-format
@@ -225,53 +223,53 @@ msgstr "KNewStuff"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Luiz Fernando Ranghetti"
+msgstr "Antikruk"
 
 #: discover/main.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "elchevive@opensuse.org"
+msgstr "nashtlumach@gmail.com"
 
 #: discover/main.cpp:152
 #, kde-format
 msgid "Available backends:\n"
-msgstr "Infraestruturas disponíveis:\n"
+msgstr "Даступныя рухавікі: \n"
 
 #: discover/main.cpp:208
 #, kde-format
 msgid "Available modes:\n"
-msgstr "Modos disponíveis:\n"
+msgstr "Даступныя рэжымы: \n"
 
 #: discover/qml/AddonsView.qml:18 discover/qml/navigation.js:43
 #, kde-format
 msgid "Addons for %1"
-msgstr "Extensões para %1"
+msgstr "Дапаўненні для %1"
 
 #: discover/qml/AddonsView.qml:50
 #, kde-format
 msgid "More…"
-msgstr "Mais..."
+msgstr "Яшчэ…"
 
 #: discover/qml/AddonsView.qml:59
 #, kde-format
 msgid "Apply Changes"
-msgstr "Aplicar alterações"
+msgstr "Ужыць змены"
 
 #: discover/qml/AddonsView.qml:66
 #, kde-format
 msgid "Reset"
-msgstr "Restaurar"
+msgstr "Скінуць"
 
 #: discover/qml/AddSourceDialog.qml:20
 #, kde-format
 msgid "Add New %1 Repository"
-msgstr "Adicionar novo repositório %1"
+msgstr "Дадаць новы рэпазіторый \"%1\""
 
 #: discover/qml/AddSourceDialog.qml:44
 #, kde-format
 msgid "Add"
-msgstr "Adicionar"
+msgstr "Дадаць"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:257
 #: discover/qml/InstallApplicationButton.qml:41
@@ -279,26 +277,28 @@ msgstr "Adicionar"
 #: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:39
 #, kde-format
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Скасаваць"
 
 #: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:208
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
-msgstr[0] "%1 avaliação"
-msgstr[1] "%1 avaliações"
+msgstr[0] "%1 адзнака"
+msgstr[1] "%1 адзнакі"
+msgstr[2] "%1 адзнак"
+msgstr[3] "%1 адзнакі"
 
 #: discover/qml/ApplicationDelegate.qml:140
 #: discover/qml/ApplicationPage.qml:208
 #, kde-format
 msgid "No ratings yet"
-msgstr "Sem avaliações ainda"
+msgstr "Пакуль што няма адзнак"
 
 #: discover/qml/ApplicationPage.qml:62
 #, kde-format
 msgid "Sources"
-msgstr "Fontes"
+msgstr "Крыніцы"
 
 #: discover/qml/ApplicationPage.qml:73
 #, kde-format
@@ -308,193 +308,200 @@ msgstr "%1 - %2"
 #: discover/qml/ApplicationPage.qml:185
 #, kde-format
 msgid "Unknown author"
-msgstr "Autor desconhecido"
+msgstr "Невядомы аўтар"
 
 #: discover/qml/ApplicationPage.qml:220
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr "Não foi possível acessar as capturas de tela"
+msgstr "Не ўдалося атрымаць доступ да здымкаў экрана"
 
 #: discover/qml/ApplicationPage.qml:279
 #, kde-format
 msgid "Version"
-msgstr "Versão"
+msgstr "Версія"
 
 #: discover/qml/ApplicationPage.qml:306
 #: discover/qml/ApplicationsListPage.qml:109
 #, kde-format
 msgid "Size"
-msgstr "Tamanho"
+msgstr "Памер"
 
 #: discover/qml/ApplicationPage.qml:333
 #, kde-format
 msgid "Distributed by"
-msgstr "Distribuído por"
+msgstr "Распаўсюджана"
 
 #: discover/qml/ApplicationPage.qml:360
 #, kde-format
 msgid "License"
 msgid_plural "Licenses"
-msgstr[0] "Licença"
-msgstr[1] "Licenças"
+msgstr[0] "Ліцэнзія"
+msgstr[1] "Ліцэнзіі"
+msgstr[2] "Ліцэнзіі"
+msgstr[3] "Ліцэнзіі"
 
 #: discover/qml/ApplicationPage.qml:369
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
-msgstr "Desconhecida"
+msgstr "Невядома"
 
 #: discover/qml/ApplicationPage.qml:407
 #, kde-format
 msgid "What does this mean?"
-msgstr "O que isto significa?"
+msgstr "Што гэта азначае?"
 
 #: discover/qml/ApplicationPage.qml:417
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
-msgstr[0] "Veja mais..."
-msgstr[1] "Veja mais..."
+msgstr[0] "Паказаць яшчэ…"
+msgstr[1] "Паказаць яшчэ…"
+msgstr[2] "Паказаць яшчэ…"
+msgstr[3] "Паказаць яшчэ…"
 
 #: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:880
 #, kde-format
 msgid "Content Rating"
-msgstr "Classificação do conteúdo"
+msgstr "Рэйтынг змесціва"
 
 #: discover/qml/ApplicationPage.qml:445
 #, kde-format
 msgid "Age: %1+"
-msgstr "Idade: %1+"
+msgstr "Узрост: %1+"
 
 #: discover/qml/ApplicationPage.qml:469
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr "Ver detalhes…"
+msgstr "Падрабязнасці…"
 
 #: discover/qml/ApplicationPage.qml:568
 #, kde-format
 msgid "Documentation"
-msgstr "Documentação"
+msgstr "Дакументацыя"
 
 #: discover/qml/ApplicationPage.qml:569
 #, kde-format
 msgid "Read the project's official documentation"
-msgstr "Ler a documentação oficial do projeto"
+msgstr "Пачытаць афіцыйную дакументацыю праекта"
 
 #: discover/qml/ApplicationPage.qml:585
 #, kde-format
 msgid "Website"
-msgstr "Site"
+msgstr "Вэб-сайт"
 
 #: discover/qml/ApplicationPage.qml:586
 #, kde-format
 msgid "Visit the project's website"
-msgstr "Visitar o site do projeto"
+msgstr "Наведаць сайт праекта"
 
 #: discover/qml/ApplicationPage.qml:602
 #, kde-format
 msgid "Addons"
-msgstr "Extensões"
+msgstr "Дапаўненні"
 
 #: discover/qml/ApplicationPage.qml:603
 #, kde-format
 msgid "Install or remove additional functionality"
-msgstr "Instalar ou remover funcionalidade adicional"
+msgstr "Усталяваць або выдаліць ​​дадатковыя функцыі"
 
 #: discover/qml/ApplicationPage.qml:622
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr "Compartilhar"
+msgstr "Падзяліцца"
 
 #: discover/qml/ApplicationPage.qml:623
 #, kde-format
 msgid "Send a link for this application"
-msgstr "Enviar um link para este aplicativo"
+msgstr "Адправіць спасылку на гэтую праграму"
 
 #: discover/qml/ApplicationPage.qml:639
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr "Confira o aplicativo %1!"
+msgstr "Праверце праграму %1!"
 
 #: discover/qml/ApplicationPage.qml:659
 #, kde-format
 msgid "What's New"
-msgstr "O que há de novo"
+msgstr "Што новага"
 
 #: discover/qml/ApplicationPage.qml:690
 #, kde-format
 msgid "Loading reviews for %1"
-msgstr "Carregando análises de %1"
+msgstr "Загрузка водгукаў для %1"
 
 #: discover/qml/ApplicationPage.qml:696
 #, kde-format
 msgid "Reviews"
-msgstr "Análises"
+msgstr "Водгукі"
 
 #: discover/qml/ApplicationPage.qml:734
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
-msgstr[0] "Mostrar %1 análise"
-msgstr[1] "Mostrar todas as %1 análises"
+msgstr[0] "Паказаць %1 водгук"
+msgstr[1] "Паказаць %1 водгукі"
+msgstr[2] "Паказаць %1 водгукаў"
+msgstr[3] "Паказаць %1 водгукі"
 
 #: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Write a Review"
-msgstr "Escreva uma análise"
+msgstr "Напісаць водгук"
 
 #: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Install to Write a Review"
-msgstr "Instale este aplicativo para escrever uma análise"
+msgstr "Каб напісаць водгук, усталюйце"
 
 #: discover/qml/ApplicationPage.qml:758
 #, kde-format
 msgid "Get Involved"
-msgstr "Participe"
+msgstr "Далучыцца"
 
 #: discover/qml/ApplicationPage.qml:791
 #, kde-format
 msgid "Donate"
-msgstr "Doar"
+msgstr "Ахвяраваць"
 
 #: discover/qml/ApplicationPage.qml:792
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
-msgstr "Suporte e agradeça os desenvolvedores doando para o projeto"
+msgstr "Вы можаце падтрымаць распрацоўнікаў, калі ахвяруеце на іх праект"
 
 #: discover/qml/ApplicationPage.qml:808
 #, kde-format
 msgid "Report Bug"
-msgstr "Relatar erro"
+msgstr "Паведаміць пра хібу"
 
 #: discover/qml/ApplicationPage.qml:809
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr "Registre um problema que encontrou para o ajudar a resolver"
+msgstr "Захавайце журнал праблемы, якую вы знайшлі, каб дапамагчы яе выправіць"
 
 #: discover/qml/ApplicationPage.qml:823
 #, kde-format
 msgid "Contribute"
-msgstr "Contribuir"
+msgstr "Удзельнічаць"
 
 #: discover/qml/ApplicationPage.qml:824
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
-msgstr "Ajude os desenvolvedores com código, design, teste ou traduções "
+msgstr ""
+"Дапамагайце распрацоўнікам з кадаваннем, дызайнам, тэставаннем або перакладам"
 
 #: discover/qml/ApplicationPage.qml:849
 #, kde-format
 msgid "All Licenses"
-msgstr "Todas as licenças"
+msgstr "Усе ліцэнзіі"
 
 #: discover/qml/ApplicationPage.qml:894
 #, kde-format
 msgid "Risks of proprietary software"
-msgstr "Riscos do software proprietário"
+msgstr "Імавернасць несвабоднага праграмнага забеспячэння"
 
 #: discover/qml/ApplicationPage.qml:900
 #, kde-kuit-format
@@ -511,16 +518,16 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
-"O código-fonte deste aplicativo está parcial ou totalmente fechado para "
-"inspeção e aprimoramento público. Isso significa que terceiros e usuários "
-"como você não podem verificar sua operação, segurança e confiabilidade, ou "
-"modificá-lo e redistribuí-lo sem a permissão expressa dos autores.<nl/><nl/"
-">O aplicativo pode ser perfeitamente seguro de usar ou pode estar agindo "
-"contra você de várias maneiras, como coletar suas informações pessoais, "
-"rastrear sua localização ou transmitir o conteúdo de seus arquivos para "
-"outra pessoa. Não há uma maneira fácil de ter certeza, então você só deve "
-"instalar este aplicativo se confiar completamente em seus autores (<link "
-"url='%1'>%2</link>).<nl/><nl/> Saiba mais em: <link url='%3'>%3</link>."
+"Зыходны код гэтай праграмы часткова або цалкам закрыты для правярання і "
+"паляпшэння. Гэта азначае, што трэція асобы не могуць правяраць функцыянал, "
+"бяспеку і надзейнасць, а таксама змяняць і распаўсюджваць яго без "
+"відавочнага дазволу аўтараў.<nl/><nl/>Праграма можа быць цалкам бяспечнай у "
+"выкарыстанні або можа дзейнічаць супраць вас рознымі спосабамі: збіраць "
+"вашыя асабістыя звесткі, адсочваць вашае месцазнаходжанне або перадаваць "
+"змесціва вашых файлаў іншым асобам. Няма простага спосабу праверыць гэта, "
+"таму вам варта ўсталёўваць гэтую праграму, толькі калі вы цалкам давяраеце "
+"яе аўтарам (<link url='%1'>%2</link>).<nl/><nl/>Падрабязней можна даведацца "
+"на <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:901
 #, kde-kuit-format
@@ -537,85 +544,93 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
-"O código-fonte deste aplicativo está parcial ou totalmente fechado para "
-"inspeção e aprimoramento público. Isso significa que terceiros e usuários "
-"como você não podem verificar sua operação, segurança e confiabilidade, ou "
-"modificá-lo e redistribuí-lo sem a permissão expressa dos autores.<nl/><nl/"
-">O aplicativo pode ser perfeitamente seguro de usar ou pode estar agindo "
-"contra você de várias maneiras, como coletar suas informações pessoais, "
-"rastrear sua localização ou transmitir o conteúdo de seus arquivos para "
-"outra pessoa. Não há uma maneira fácil de ter certeza, então você só deve "
-"instalar este aplicativo se confiar completamente em seus autores (%1).<nl/"
-"><nl/>Saiba mais em: <link url='%2'>%2</link>."
+"Зыходны код гэтай праграмы часткова або цалкам закрыты для правярання і "
+"паляпшэння. Гэта азначае, што трэція асобы не могуць правяраць функцыянал, "
+"бяспеку і надзейнасць, а таксама змяняць і распаўсюджваць яго без "
+"відавочнага дазволу аўтараў.<nl/><nl/>Праграма можа быць цалкам бяспечнай у "
+"выкарыстанні або можа дзейнічаць супраць вас рознымі спосабамі: збіраць "
+"вашыя асабістыя звесткі, адсочваць вашае месцазнаходжанне або перадаваць "
+"змесціва вашых файлаў іншым асобам. Няма простага спосабу праверыць гэта, "
+"таму вам варта ўсталёўваць гэтую праграму, толькі калі вы цалкам давяраеце "
+"яе аўтарам (%1).<nl/><nl/>Падрабязней можна даведацца на <link url='%2'>%2</"
+"link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Search: %2 - %1 item"
+#| msgid_plural "Search: %2 - %1 items"
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Pesquisar: %2 - %3 item"
-msgstr[1] "Pesquisar: %2 - %3 itens"
+msgstr[0] "Пошук: %2 - %1 элемент"
+msgstr[1] "Пошук: %2 - %1 элементы"
+msgstr[2] "Пошук: %2 - %1 элементаў"
+msgstr[3] "Пошук: %2 - %1 элементы"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
 msgid "Search: %1"
-msgstr "Pesquisar: %1"
+msgstr "Пошук: %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%2 - %1 item"
-msgstr[1] "%2 - %1 itens"
+msgstr[0] "%2 - %1 элемент"
+msgstr[1] "%2 - %1 элементы"
+msgstr[2] "%2 - %1 элементаў"
+msgstr[3] "%2 - %1 элементы"
 
 #: discover/qml/ApplicationsListPage.qml:65
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Pesquisar - %1 item"
-msgstr[1] "Pesquisar - %1 itens"
+msgstr[0] "Пошук - %1 элемент"
+msgstr[1] "Пошук - %1 элементы"
+msgstr[2] "Пошук - %1 элементаў"
+msgstr[3] "Пошук - %1 элементы"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:225
 #, kde-format
 msgid "Search"
-msgstr "Pesquisar"
+msgstr "Пошук"
 
 #: discover/qml/ApplicationsListPage.qml:88
 #, kde-format
 msgid "Sort: %1"
-msgstr "Ordenar: %1"
+msgstr "Сартаванне: %1"
 
 #: discover/qml/ApplicationsListPage.qml:91
 #, kde-format
 msgid "Name"
-msgstr "Nome"
+msgstr "Назва"
 
 #: discover/qml/ApplicationsListPage.qml:100
 #, kde-format
 msgid "Rating"
-msgstr "Avaliação"
+msgstr "Рэйтынг"
 
 #: discover/qml/ApplicationsListPage.qml:118
 #, kde-format
 msgid "Release Date"
-msgstr "Data de lançamento"
+msgstr "Дата выпуску"
 
 #: discover/qml/ApplicationsListPage.qml:173
 #, kde-format
 msgid "Nothing found"
-msgstr "Nada encontrado"
+msgstr "Нічога не знойдзена"
 
 #: discover/qml/ApplicationsListPage.qml:180
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr "Pesquisar em todas as categorias"
+msgstr "Пошук ва ўсіх катэгорыях"
 
 #: discover/qml/ApplicationsListPage.qml:189
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
-msgstr "Pesquisar na internet por \"%1\""
+msgstr "Знайсці \"%1\" у інтэрнэце"
 
 #: discover/qml/ApplicationsListPage.qml:193
 #, kde-format
@@ -631,13 +646,13 @@ msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr "\"%1\" não foi encontrado na categoria \"%2\""
+msgstr "Не ўдалося знайсці \"%1\" у катэгорыі \"%2\""
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
-msgstr "\"%1\" não foi encontrado nas fontes disponíveis"
+msgstr "Не ўдалося знайсці \"%1\" у даступных крыніцах"
 
 #: discover/qml/ApplicationsListPage.qml:207
 #, kde-format
@@ -647,143 +662,143 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
-"\"%1\" pode estar disponível na internet. Softwares baixados da internet não "
-"foram revisados pela sua distribuição por funcionalidade ou estabilidade. "
-"Use com cuidado."
+"Можна паспрабаваць знайсці \"%1\" у інтэрнэце. Праграмнае забеспячэнне з "
+"інтэрнэту не правяралася вашым дыстрыбутывам на функцыянальнасць або "
+"стабільнасць. Выкарыстоўвайце з асцярожнасцю."
 
 #: discover/qml/ApplicationsListPage.qml:240
 #, kde-format
 msgid "Still looking…"
-msgstr "Ainda procurando..."
+msgstr "Пошук працягваецца…"
 
 #: discover/qml/BrowsingPage.qml:49
 #, kde-format
 msgid "Unable to load applications"
-msgstr "Não foi possível carregar os aplicativos"
+msgstr "Не ўдалося загрузіць праграмы"
 
 #: discover/qml/BrowsingPage.qml:88
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr "Mais popular"
+msgstr "Найбольш папулярныя"
 
 #: discover/qml/BrowsingPage.qml:106
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr "Escolha do editor"
+msgstr "Выбар рэдакцыі"
 
 #: discover/qml/BrowsingPage.qml:120
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr "Jogos melhores avaliados"
+msgstr "Гульні з самым высокім рэйтынгам"
 
 #: discover/qml/BrowsingPage.qml:139 discover/qml/BrowsingPage.qml:168
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "Veja mais"
+msgstr "Паказаць яшчэ"
 
 #: discover/qml/BrowsingPage.qml:149
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr "Ferramentas de desenvolvimento melhores avaliadas"
+msgstr "Інструменты для распрацоўвання з самым высокім рэйтынгам"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
-msgstr "A execução como <em>root</em> não é recomendada nem necessária."
+msgstr "Не рэкамендуецца запускаць ад імя <em>суперкарыстальніка (root)</em>."
 
 #: discover/qml/DiscoverWindow.qml:56
 #, kde-format
 msgid "&Home"
-msgstr "I&nício"
+msgstr "&Хатняя старонка"
 
 #: discover/qml/DiscoverWindow.qml:66
 #, kde-format
 msgid "&Search"
-msgstr "&Pesquisar"
+msgstr "&Пошук"
 
 #: discover/qml/DiscoverWindow.qml:74
 #, kde-format
 msgid "&Installed"
-msgstr "&Instalado"
+msgstr "&Усталявана"
 
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgid "Fetching &updates…"
-msgstr "Obtendo &atualizações..."
+msgstr "Атрыманне &абнаўленняў…"
 
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgid "&Up to date"
-msgstr "&Atualizado"
+msgstr "&Абноўлена"
 
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgctxt "Update section name"
 msgid "&Update (%1)"
-msgstr "&Atualizar (%1)"
+msgstr "&Абнавіць (%1)"
 
 #: discover/qml/DiscoverWindow.qml:88
 #, kde-format
 msgid "&About"
-msgstr "&Sobre"
+msgstr "&Пра праграму"
 
 #: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "S&ettings"
-msgstr "&Configurações"
+msgstr "&Налады"
 
 #: discover/qml/DiscoverWindow.qml:146 discover/qml/DiscoverWindow.qml:325
 #: discover/qml/DiscoverWindow.qml:432
 #, kde-format
 msgid "Error"
-msgstr "Erro"
+msgstr "Памылка"
 
 #: discover/qml/DiscoverWindow.qml:150
 #, kde-format
 msgid "Unable to find resource: %1"
-msgstr "Não foi possível encontrar o recurso: %1"
+msgstr "Не ўдалося знайсці рэсурс: %1"
 
 #: discover/qml/DiscoverWindow.qml:244 discover/qml/SourcesPage.qml:169
 #, kde-format
 msgid "Proceed"
-msgstr "Prosseguir"
+msgstr "Працягнуць"
 
 #: discover/qml/DiscoverWindow.qml:301
 #, kde-format
 msgid "Report this issue"
-msgstr "Relatar este problema"
+msgstr "Паведаміць пра гэтую праблему"
 
 #: discover/qml/DiscoverWindow.qml:325
 #, kde-format
 msgid "Error %1 of %2"
-msgstr "Erro %1 de %2"
+msgstr "Памылка %1 з %2"
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr "Mostrar anterior"
+msgstr "Паказаць папярэдняе"
 
 #: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "Mostrar próximo"
+msgstr "Паказаць наступнае"
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
 msgid "Copy to Clipboard"
-msgstr "Copiar para a área de transferência"
+msgstr "Скапіяваць у буфер абмену"
 
 #: discover/qml/Feedback.qml:12
 #, kde-format
 msgid "Submit usage information"
-msgstr "Enviar informações de uso"
+msgstr "Адправіць інфармацыю пра выкарыстанне"
 
 #: discover/qml/Feedback.qml:13
 #, kde-format
@@ -791,29 +806,29 @@ msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
-"Envia informações de uso anônimas para o KDE, para entendermos melhor os "
-"nossos usuários. Para mais informações, consulte https://kde.org/"
-"privacypolicy-apps.php."
+"Адпраўляе ананімную інфармацыю пра выкарыстанне KDE, каб мы маглі лепш "
+"разумець нашых карыстальнікаў. Каб даведацца падрабязней, глядзіце https://"
+"kde.org/privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:17
 #, kde-format
 msgid "Submitting usage information…"
-msgstr "Enviando informações de uso..."
+msgstr "Адпраўленне інфармацыі пра выкарыстанне…"
 
 #: discover/qml/Feedback.qml:17
 #, kde-format
 msgid "Configure"
-msgstr "Configurar"
+msgstr "Наладжванне"
 
 #: discover/qml/Feedback.qml:21
 #, kde-format
 msgid "Configure feedback…"
-msgstr "Configurar sugestões..."
+msgstr "Наладжванне зваротнай сувязі…"
 
 #: discover/qml/Feedback.qml:28 discover/qml/SourcesPage.qml:19
 #, kde-format
 msgid "Configure Updates…"
-msgstr "Configurar atualizações..."
+msgstr "Наладжванне абнаўленняў…"
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -821,65 +836,65 @@ msgid ""
 "You can help us improving this application by sharing statistics and "
 "participate in surveys."
 msgstr ""
-"Você pode nos ajudar a melhorar este aplicativo, compartilhando estatísticas "
-"e participando de enquetes."
+"Вы можаце дапамагчы нам палепшыць гэтую праграму, калі будзеце дзяліцца "
+"статыстыкай і ўдзельнічаць у апытаннях."
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
 msgid "Contribute…"
-msgstr "Contribuir..."
+msgstr "Дапамагчы…"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "We are looking for your feedback!"
-msgstr "Estamos procurando suas sugestões!"
+msgstr "Мы чакаем вашых водгукаў!"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "Participate…"
-msgstr "Participar..."
+msgstr "Удзельнічаць…"
 
 #: discover/qml/InstallApplicationButton.qml:25
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
-msgstr "Carregando..."
+msgstr "Загрузка…"
 
 #: discover/qml/InstallApplicationButton.qml:28
 #, kde-format
 msgid "Install"
-msgstr "Instalar"
+msgstr "Усталяваць"
 
 #: discover/qml/InstallApplicationButton.qml:30
 #, kde-format
 msgid "Remove"
-msgstr "Remover"
+msgstr "Выдаліць"
 
 #: discover/qml/InstalledPage.qml:15
 #, kde-format
 msgid "Installed"
-msgstr "Instalado"
+msgstr "Усталявана"
 
 #: discover/qml/navigation.js:19
 #, kde-format
 msgid "Resources for '%1'"
-msgstr "Recursos de '%1'"
+msgstr "Рэсурсы для \"%1\""
 
 #: discover/qml/ProgressView.qml:17
 #, kde-format
 msgid "Tasks (%1%)"
-msgstr "Tarefas (%1%)"
+msgstr "Задачы (%1%)"
 
 #: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:40
 #, kde-format
 msgid "Tasks"
-msgstr "Tarefas"
+msgstr "Задачы"
 
 #: discover/qml/ProgressView.qml:97
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
-msgstr "%1 - %2: %3, %4 restantes"
+msgstr "%1 - %2: %3, %4 засталося"
 
 #: discover/qml/ProgressView.qml:98
 #, kde-format
@@ -896,211 +911,212 @@ msgstr "%1 - %2"
 #: discover/qml/ReviewDelegate.qml:61
 #, kde-format
 msgid "unknown reviewer"
-msgstr "analista desconhecido"
+msgstr "невядомы рэцэнзент"
 
 #: discover/qml/ReviewDelegate.qml:62
 #, kde-format
 msgid "<b>%1</b> by %2"
-msgstr "<b>%1</b> por %2"
+msgstr "<b>%1</b> ад %2"
 
 #: discover/qml/ReviewDelegate.qml:62
 #, kde-format
 msgid "Comment by %1"
-msgstr "Comentado por %1"
+msgstr "Каментар ад %1"
 
 #: discover/qml/ReviewDelegate.qml:80
 #, kde-format
 msgid "Version: %1"
-msgstr "Versão: %1"
+msgstr "Версія: %1"
 
 #: discover/qml/ReviewDelegate.qml:80
 #, kde-format
 msgid "Version: unknown"
-msgstr "Versão: desconhecida"
+msgstr "Версія: невядома"
 
 #: discover/qml/ReviewDelegate.qml:95
 #, kde-format
 msgid "Votes: %1 out of %2"
-msgstr "Votos: %1 em %2"
+msgstr "Галасы: %1 з %2"
 
 #: discover/qml/ReviewDelegate.qml:102
 #, kde-format
 msgid "Was this review useful?"
-msgstr "Esta análise foi útil?"
+msgstr "Гэты водгук быў карысным?"
 
 #: discover/qml/ReviewDelegate.qml:114
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
-msgstr "Sim"
+msgstr "Так"
 
 #: discover/qml/ReviewDelegate.qml:131
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"
-msgstr "Não"
+msgstr "Не"
 
 #: discover/qml/ReviewDialog.qml:18
 #, kde-format
 msgid "Reviewing %1"
-msgstr "Analisando %1"
+msgstr "Водгук на %1"
 
 #: discover/qml/ReviewDialog.qml:24
 #, kde-format
 msgid "Submit review"
-msgstr "Enviar análise"
+msgstr "Адправіць водгук"
 
 #: discover/qml/ReviewDialog.qml:37
 #, kde-format
 msgid "Rating:"
-msgstr "Avaliação:"
+msgstr "Рэйтынг:"
 
 #: discover/qml/ReviewDialog.qml:42
 #, kde-format
 msgid "Name:"
-msgstr "Nome:"
+msgstr "Назва:"
 
 #: discover/qml/ReviewDialog.qml:50
 #, kde-format
 msgid "Title:"
-msgstr "Título:"
+msgstr "Загаловак:"
 
 #: discover/qml/ReviewDialog.qml:67
 #, kde-format
 msgid "Enter a rating"
-msgstr "Insira uma avaliação"
+msgstr "Паставіць адзнаку"
 
 #: discover/qml/ReviewDialog.qml:68
 #, kde-format
 msgid "Write the title"
-msgstr "Escreva o título"
+msgstr "Напішыце загаловак"
 
 #: discover/qml/ReviewDialog.qml:69
 #, kde-format
 msgid "Write the review"
-msgstr "Escreva a análise"
+msgstr "Напішыце водгук"
 
 #: discover/qml/ReviewDialog.qml:70
 #, kde-format
 msgid "Keep writing…"
-msgstr "Continue escrevendo..."
+msgstr "Працягнуць напісанне…"
 
 #: discover/qml/ReviewDialog.qml:71
 #, kde-format
 msgid "Too long!"
-msgstr "Muito longo!"
+msgstr "Занадта доўгі!"
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr "Inserir um nome"
+msgstr "Уставіць назву"
 
 #: discover/qml/ReviewsPage.qml:42
 #, kde-format
 msgid "Reviews for %1"
-msgstr "Análises de %1"
+msgstr "Водгукі для %1"
 
 #: discover/qml/ReviewsPage.qml:53
 #, kde-format
 msgid "Write a Review…"
-msgstr "Escreva uma análise..."
+msgstr "Напісаць водгук…"
 
 #: discover/qml/ReviewsPage.qml:58
 #, kde-format
 msgid "Install this app to write a review"
-msgstr "Instale este aplicativo para escrever uma análise"
+msgstr "Каб напісаць водгук, усталюйце гэтую праграму"
 
 #: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search…"
-msgstr "Pesquisar..."
+msgstr "Пошук…"
 
 #: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search in '%1'…"
-msgstr "Pesquisar em '%1'..."
+msgstr "Пошук у \"%1\"…"
 
 #: discover/qml/SourcesPage.qml:13
 #, kde-format
 msgid "Settings"
-msgstr "Configurações"
+msgstr "Налады"
 
 #: discover/qml/SourcesPage.qml:93
 #, kde-format
 msgid "Default source"
-msgstr "Fonte padrão"
+msgstr "Прадвызначаная крыніца"
 
 #: discover/qml/SourcesPage.qml:100
 #, kde-format
 msgid "Add Source…"
-msgstr "Adicionar fonte..."
+msgstr "Дадаць крыніцу…"
 
 #: discover/qml/SourcesPage.qml:124
 #, kde-format
 msgid "Make default"
-msgstr "Tornar padrão"
+msgstr "Зрабіць прадвызначанай"
 
 #: discover/qml/SourcesPage.qml:210
 #, kde-format
 msgid "Increase priority"
-msgstr "Aumentar prioridade"
+msgstr "Павысіць прыярытэт"
 
 #: discover/qml/SourcesPage.qml:216
 #, kde-format
 msgid "Failed to increase '%1' preference"
-msgstr "Falha ao aumentar a preferência de '%1'"
+msgstr "Не ўдалося павысіць параметр \"%1\""
 
 #: discover/qml/SourcesPage.qml:221
 #, kde-format
 msgid "Decrease priority"
-msgstr "Diminuir prioridade"
+msgstr "Панізіць прыярытэт"
 
 #: discover/qml/SourcesPage.qml:227
 #, kde-format
 msgid "Failed to decrease '%1' preference"
-msgstr "Falha ao diminuir a preferência de '%1'"
+msgstr "Не ўдалося панізіць параметр \"%1\""
 
 #: discover/qml/SourcesPage.qml:232
 #, kde-format
 msgid "Remove repository"
-msgstr "Remover repositório"
+msgstr "Выдаліць рэпазіторый"
 
 #: discover/qml/SourcesPage.qml:243
 #, kde-format
 msgid "Show contents"
-msgstr "Mostrar conteúdos"
+msgstr "Паказаць змесціва"
 
 #: discover/qml/SourcesPage.qml:282
 #, kde-format
 msgid "Missing Backends"
-msgstr "Infraestruturas faltantes"
+msgstr "Адсутныя рухавікі"
 
 #: discover/qml/UpdatesPage.qml:12
 #, kde-format
 msgid "Updates"
-msgstr "Atualizações"
+msgstr "Абнаўленні"
 
 #: discover/qml/UpdatesPage.qml:45
 #, kde-format
 msgid "Update Issue"
-msgstr "Problema da atualização"
+msgstr "Праблема з абнаўленнем"
 
 #: discover/qml/UpdatesPage.qml:45
 #, kde-format
 msgid "Technical details"
-msgstr "Detalhes técnicos"
+msgstr "Тэхнічныя падрабязнасці"
 
 #: discover/qml/UpdatesPage.qml:61
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
-"Ocorreu um problema ao instalar esta atualização. Tente novamente mais tarde."
+"Падчас усталявання гэтага абнаўлення паўстала праблема. Паўтарыце спробу "
+"пазней."
 
 #: discover/qml/UpdatesPage.qml:67
 #, kde-format
 msgid "See Technical Details"
-msgstr "Veja os detalhes técnicos"
+msgstr "Паглядзець тэхнічныя падрабязнасці"
 
 #: discover/qml/UpdatesPage.qml:83
 #, kde-format
@@ -1108,53 +1124,53 @@ msgid ""
 "If you would like to report the update issue to your distribution's "
 "packagers, include this information:"
 msgstr ""
-"Se você quiser relatar este problema para os empacotadores de sua "
-"distribuição, inclua esta informação:"
+"Калі вы хочаце паведаміць пра праблему з абнаўленнем у службу падтрымкі "
+"вашага дыстрыбутыва, уключыце ў справаздачу наступную інфармацыю:"
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Error message copied to clipboard"
-msgstr "Mensagem de erro copiada para a área de transferência"
+msgstr "Паведамленне памылкі скапіявана ў буфер абмену"
 
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgid "Update Selected"
-msgstr "Atualizar selecionados"
+msgstr "Абнавіць абранае"
 
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgid "Update All"
-msgstr "Atualizar tudo"
+msgstr "Абнавіць усё"
 
 #: discover/qml/UpdatesPage.qml:174
 #, kde-format
 msgid "Ignore"
-msgstr "Ignorar"
+msgstr "Ігнараваць"
 
 #: discover/qml/UpdatesPage.qml:220
 #, kde-format
 msgid "Select All"
-msgstr "Selecionar tudo"
+msgstr "Абраць усе"
 
 #: discover/qml/UpdatesPage.qml:228
 #, kde-format
 msgid "Select None"
-msgstr "Selecionar nenhum"
+msgstr "Адкінуць выбар"
 
 #: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Restart automatically after update has completed"
-msgstr "Reiniciar automaticamente após a atualização ser concluída"
+msgstr "Пасля завяршэння абнаўлення аўтаматычна перазапусціць камп'ютар"
 
 #: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Total size: %1"
-msgstr "Tamanho total: %1"
+msgstr "Агульны памер: %1"
 
 #: discover/qml/UpdatesPage.qml:278
 #, kde-format
 msgid "Restart Now"
-msgstr "Reiniciar agora"
+msgstr "Перазапусціць"
 
 #: discover/qml/UpdatesPage.qml:377
 #, kde-format
@@ -1164,12 +1180,12 @@ msgstr "%1"
 #: discover/qml/UpdatesPage.qml:393
 #, kde-format
 msgid "Installing"
-msgstr "Instalando"
+msgstr "Усталяванне"
 
 #: discover/qml/UpdatesPage.qml:428
 #, kde-format
 msgid "Update from:"
-msgstr "Atualizar de:"
+msgstr "Крыніца абнаўлення:"
 
 #: discover/qml/UpdatesPage.qml:440
 #, kde-format
@@ -1182,207 +1198,41 @@ msgstr "%1 (%2)"
 #: discover/qml/UpdatesPage.qml:447
 #, kde-format
 msgid "More Information…"
-msgstr "Mais informações..."
+msgstr "Больш інфармацыі…"
 
 #: discover/qml/UpdatesPage.qml:475
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "Obtendo atualizações..."
+msgstr "Атрыманне абнаўленняў…"
 
 #: discover/qml/UpdatesPage.qml:488
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
-msgstr "Atualizações"
+msgstr "Абнаўленні"
 
 #: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
-msgstr "Reinicie o sistema para concluir o processo de atualização"
+msgstr "Каб завяршыць працэс абнаўлення, перазапусціце сістэму"
 
 #: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
 #: discover/qml/UpdatesPage.qml:524
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
-msgstr "Atualizado"
+msgstr "Абноўлена"
 
 #: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
-msgstr "Deve verificar por atualizações"
+msgstr "Варта праверыць на наяўнасць абнаўленняў"
 
 #: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
-msgstr "Hora da última atualização desconhecida"
-
-#~ msgid "Featured"
-#~ msgstr "Em destaque"
-
-#~ msgid "Updates are available"
-#~ msgstr "Atualizações estão disponíveis"
-
-#~ msgctxt "Short for 'show updates'"
-#~ msgid "Show"
-#~ msgstr "Mostrar"
-
-#, fuzzy
-#~| msgid "More..."
-#~ msgid "Show more..."
-#~ msgstr "Mais..."
-
-#~ msgid "proprietary"
-#~ msgstr "proprietário"
-
-#~ msgid "Could not close Discover because some tasks are still in progress."
-#~ msgstr ""
-#~ "Não foi possível fechar o Discover porque algumas tarefas ainda estão em "
-#~ "andamento."
-
-#~ msgid "Quit Anyway"
-#~ msgstr "Sair mesmo assim"
-
-#~ msgid "Loading…"
-#~ msgstr "Carregando..."
-
-#~ msgid "Return to the Featured page"
-#~ msgstr "Voltar à página Em destaque"
-
-#~ msgid "Category:"
-#~ msgstr "Categoria:"
-
-#~ msgid "Author:"
-#~ msgstr "Autor:"
-
-#~ msgid "Size:"
-#~ msgstr "Tamanho:"
-
-#~ msgid "Source:"
-#~ msgstr "Fonte:"
-
-#~ msgid "See full license terms"
-#~ msgstr "Mostrar a licença completa"
-
-#~ msgid "Read the user guide"
-#~ msgstr "Leia o manual do usuário"
-
-#~ msgid "Make a donation"
-#~ msgstr "Faça uma doação"
-
-#~ msgid "Report a problem"
-#~ msgstr "Relatar um problema:"
-
-#~ msgid "%1 (Default)"
-#~ msgstr "%1 (Padrão)"
-
-#~ msgid "Extensions…"
-#~ msgstr "Extensões..."
-
-#~ msgid "Please verify Internet connectivity"
-#~ msgstr "Verifique a sua conexão com a Internet"
-
-#~ msgid "All updates selected (%1)"
-#~ msgstr "Todas as atualizações selecionadas (%1)"
-
-#~ msgid "%1/%2 update selected (%3)"
-#~ msgid_plural "%1/%2 updates selected (%3)"
-#~ msgstr[0] "%1/%2 atualização selecionada (%3)"
-#~ msgstr[1] "%1/%2 atualizações selecionadas (%3)"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgctxt "Part of a string like this: '<app name> - <category>'"
-#~ msgid "- %1"
-#~ msgstr "- %1"
-
-#~ msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
-#~ msgid "Install from %1"
-#~ msgstr "Instalar de %1"
-
-#~ msgctxt "@info"
-#~ msgid "The updates will be installed the next time the system is restarted"
-#~ msgstr ""
-#~ "As atualizações serão instaladas na próxima vez que o sistema for "
-#~ "reiniciado"
-
-#~ msgctxt "@info"
-#~ msgid "The system must be restarted to fully apply the installed updates"
-#~ msgstr ""
-#~ "O sistema deve ser reiniciado para aplicar totalmente as atualizações "
-#~ "instaladas"
-
-#~ msgid "%1, released on %2"
-#~ msgstr "%1, lançado em %2"
-
-#~ msgctxt "State being fetched"
-#~ msgid "Loading..."
-#~ msgstr "Carregando..."
-
-#~ msgid "Write a Review..."
-#~ msgstr "Escreva uma análise..."
-
-#~ msgid "Search..."
-#~ msgstr "Pesquisar..."
-
-#~ msgctxt "@info"
-#~ msgid "It is unknown when the last check for updates was"
-#~ msgstr ""
-#~ "Não é conhecido quando a última verificação por atualizações foi feita"
-
-#~ msgid "No application back-ends found, please report to your distribution."
-#~ msgstr ""
-#~ "Nenhuma infraestrutura do aplicativo encontrada. Informe sua distribuição."
-
-#~ msgid "Sorry..."
-#~ msgstr "Desculpe..."
-
-#~ msgid "Useful?"
-#~ msgstr "Útil?"
-
-#~ msgid "Update to version %1"
-#~ msgstr "Atualizar para a versão %1"
-
-#~ msgctxt "Do not translate or alter \\x9C"
-#~ msgid "%1 → %2%1 → %2%2"
-#~ msgstr "%1 → %2%1 → %2%2"
-
-#~ msgid "Delete the origin"
-#~ msgstr "Excluir a origem"
-
-#~ msgid "Write a review!"
-#~ msgstr "Escreva uma análise!"
-
-#~ msgid "Be the first to write a review!"
-#~ msgstr "Seja o primeiro a escrever uma análise!"
-
-#~ msgid "Install and be the first to write a review!"
-#~ msgstr "Instale este aplicativo e seja o primeiro a escrever uma análise!"
-
-#~ msgid "Jonathan Thomas"
-#~ msgstr "Jonathan Thomas"
-
-#~ msgid "Discard"
-#~ msgstr "Descartar"
-
-#~ msgid "Hide"
-#~ msgstr "Ocultar"
-
-#~ msgid "User Guide:"
-#~ msgstr "Guia do usuário:"
-
-#~ msgid "Failed to remove the source '%1'"
-#~ msgstr "Falha ao remover a fonte: '%1'"
-
-#~ msgctxt "@info"
-#~ msgid "Fetching Updates..."
-#~ msgstr "Obtendo atualizações..."
-
-#~ msgctxt "@info"
-#~ msgid "Up to Date"
-#~ msgstr "Atualizado"
+msgstr "Час апошняга абнаўлення невядомы"
