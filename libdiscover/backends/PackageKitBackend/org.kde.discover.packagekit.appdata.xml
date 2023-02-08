@@ -4,6 +4,7 @@
   <name>PackageKit backend</name>
   <name xml:lang="ar">سَند عدّة الحزم</name>
   <name xml:lang="az">PackageKit modulu</name>
+  <name xml:lang="be">Рухавік PackageKit</name>
   <name xml:lang="bg">Бекенд на PackageKit</name>
   <name xml:lang="ca">Dorsal del PackageKit</name>
   <name xml:lang="ca-valencia">Dorsal de PackageKit</name>
@@ -50,6 +51,7 @@
   <summary>Integrates distribution applications into Discover</summary>
   <summary xml:lang="ar">يُكامل تطبيقات ”عُدّة الحزم“ في «استكشف»</summary>
   <summary xml:lang="az">Distribütor tətbiqlərini Discover-ə inteqrasiya edir</summary>
+  <summary xml:lang="be">Інтэграванне праграм распаўсюджвання ў Discover</summary>
   <summary xml:lang="bg">Интегрира приложения на дистрибуцията в Discover</summary>
   <summary xml:lang="ca">Integra les aplicacions de la distribució al Discover</summary>
   <summary xml:lang="ca-valencia">Integra les aplicacions de la distribució a Discover</summary>
@@ -99,6 +101,7 @@
   <developer_name>Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ar">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="az">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="be">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="bg">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ca-valencia">Aleix Pol Gonzalez</developer_name>
