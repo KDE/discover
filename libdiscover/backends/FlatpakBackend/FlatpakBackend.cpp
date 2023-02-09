@@ -448,10 +448,13 @@ FlatpakInstalledRef *FlatpakBackend::getInstalledRefForApp(const FlatpakResource
     return ref;
 }
 
-QString refToBundleId(FlatpakRef *ref)
+static QString refToBundleId(FlatpakRef *ref)
 {
-    return QString(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? "app/" : "runtime/") + flatpak_ref_get_name(ref) + '/' + flatpak_ref_get_arch(ref) + '/'
-        + flatpak_ref_get_branch(ref);
+    const QString typeAsString = flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? QStringLiteral("app") : QStringLiteral("runtime");
+    const QString flatpakName = QString::fromUtf8(flatpak_ref_get_name(ref));
+    const QString arch = QString::fromUtf8(flatpak_ref_get_arch(ref));
+    const QString branch = QString::fromUtf8(flatpak_ref_get_branch(ref));
+    return QStringLiteral("%1/%2/%3/%4").arg(typeAsString, flatpakName, arch, branch);
 }
 
 FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *installation, FlatpakInstalledRef *ref, bool *freshResource) const

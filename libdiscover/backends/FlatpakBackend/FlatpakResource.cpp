@@ -166,11 +166,6 @@ void FlatpakResource::updateFromAppStream()
     updateFromRef(ref);
 }
 
-QString FlatpakResource::ref() const
-{
-    return typeAsString() + QLatin1Char('/') + flatpakName() + QLatin1Char('/') + arch() + QLatin1Char('/') + branch();
-}
-
 QStringList FlatpakResource::categories()
 {
     auto cats = m_appdata.categories();
@@ -382,9 +377,21 @@ QString FlatpakResource::displayOrigin() const
     return !m_displayOrigin.isEmpty() ? m_displayOrigin : m_origin;
 }
 
+// Note: The following three methods are not using each other for optimization purposes:
+// use string builder with arguments directly instead of temporary allocated strings.
 QString FlatpakResource::packageName() const
 {
-    return flatpakName() + QLatin1Char('/') + arch() + QLatin1Char('/') + branch();
+    return QStringLiteral("%1/%2/%3").arg(flatpakName(), arch(), branch());
+}
+
+QString FlatpakResource::ref() const
+{
+    return QStringLiteral("%1/%2/%3/%4").arg(typeAsString(), flatpakName(), arch(), branch());
+}
+
+QString FlatpakResource::installPath() const
+{
+    return QStringLiteral("%1/%2/%3/%4/%5/active").arg(installationPath(), typeAsString(), flatpakName(), arch(), branch());
 }
 
 FlatpakResource::PropertyState FlatpakResource::propertyState(FlatpakResource::PropertyKind kind) const
@@ -618,11 +625,6 @@ QString FlatpakResource::installationPath(FlatpakInstallation *flatpakInstallati
     g_autoptr(GFile) path = flatpak_installation_get_path(flatpakInstallation);
     g_autofree char *path_str = g_file_get_path(path);
     return QString::fromUtf8(path_str);
-}
-
-QString FlatpakResource::installPath() const
-{
-    return installationPath() + QStringLiteral("/app/%1/%2/%3/active").arg(flatpakName(), arch(), branch());
 }
 
 QUrl FlatpakResource::url() const
