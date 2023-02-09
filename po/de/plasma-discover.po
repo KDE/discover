@@ -1,33 +1,30 @@
 # Frederik Schwarzer <schwarzer@kde.org>, 2012, 2013, 2015, 2016, 2018, 2020, 2021, 2022, 2023.
 # Burkhard Lück <lueck@hube-lueck.de>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
+# Jannick Kuhr <opensource@kuhr.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-04 01:00+0000\n"
-"PO-Revision-Date: 2023-01-14 23:49+0100\n"
-"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"PO-Revision-Date: 2023-02-07 21:55+0100\n"
+"Last-Translator: Jannick Kuhr <opensource@kuhr.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: discover/DiscoverObject.cpp:159
-#, fuzzy, kde-format
-#| msgid ""
-#| "Discover currently cannot be used to install any apps because none of its "
-#| "app backends are available. Please report this issue to the packagers of "
-#| "your distribution."
+#, kde-format
 msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr ""
-"Discover kann derzeit nicht zur Installation von Anwendungen verwendet "
-"werden, da keines seiner Anwendungen-Backends verfügbar ist. Berichten Sie "
-"bitte dieses Problem an das entsprechende Paket-Team Ihrer Distribution."
+"Discover kann derzeit nicht zur Installation von Anwendungen oder "
+"Systemaktualisierungen verwendet werden, da keines seiner Anwendungen-"
+"Backends verfügbar ist."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -37,6 +34,9 @@ msgid ""
 "Backends</interface> section.<nl/><nl/>Also please consider reporting this "
 "as a packaging issue to your distribution."
 msgstr ""
+"Sie können diese auf der Einstellungsseite im Abschnitt <interface>Fehlende "
+"Backends</interface> installieren.<nl/><nl/>Ziehen Sie bitte in Erwägung, "
+"dies als Paketierungsproblem Ihrer Distribution zu melden."
 
 #: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
@@ -54,6 +54,12 @@ msgid ""
 "managing software because the PackageKit backend is not well-integrated on "
 "Arch Linux."
 msgstr ""
+"Sie können <command>pacman</command> verwenden, um die für die Aktivierung "
+"der Anwendungen-Backends erforderlichen optionalen Abhängigkeiten zu "
+"installieren.<nl/><nl/>Bitte beachte Sie, dass die Entwickler von Arch Linux "
+"die Verwendung von <command>pacman</command> zur Software-Verwaltung "
+"empfehlen, da das PackageKit-Backend in Arch Linux nur eingeschränkt "
+"implementiert ist."
 
 #: discover/DiscoverObject.cpp:181
 #, kde-format
@@ -68,7 +74,7 @@ msgstr "Die Kategorie „%1“ wurde nicht gefunden"
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "Es wird versucht, die nicht vorhandene Datei „%1“ zu öffnen"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -91,17 +97,13 @@ msgstr ""
 "Bitten stellen Sie sicher, dass Unterstützung für Snaps installiert ist"
 
 #: discover/DiscoverObject.cpp:374
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1<nl/><nl/>Please report this issue to the packagers of your "
-#| "distribution."
+#, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr ""
-"%1<nl/>Berichten Sie bitte diesen Fehler an die Paketbetreuer Ihrer "
-"Distribution."
+"%1 kann nicht geöffnet werden, da es in keiner verfügbaren Paketquelle "
+"gefunden wurde."
 
 #: discover/DiscoverObject.cpp:377
 #, kde-format
@@ -119,6 +121,8 @@ msgstr "Discover"
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
+"Discover wurde geschlossen, bevor einige Aufgaben abgeschlossen wurden. Es "
+"wird gewartet, bis der Vorgang beendet ist."
 
 #: discover/main.cpp:42
 #, kde-format
@@ -291,7 +295,7 @@ msgstr "Noch keine Bewertungen"
 #: discover/qml/ApplicationPage.qml:62
 #, kde-format
 msgid "Sources"
-msgstr "Quellen"
+msgstr "Paketquellen"
 
 #: discover/qml/ApplicationPage.qml:73
 #, kde-format
@@ -306,7 +310,7 @@ msgstr "Unbekannter Autor"
 #: discover/qml/ApplicationPage.qml:220
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "Zugriff auf Bildschirmfotos nicht möglich"
 
 #: discover/qml/ApplicationPage.qml:279
 #, kde-format
@@ -350,10 +354,9 @@ msgstr[0] "Mehr ..."
 msgstr[1] "Mehr …"
 
 #: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:880
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "Geben Sie eine Bewertung ein"
+msgstr "Inhaltsbewertungen"
 
 #: discover/qml/ApplicationPage.qml:445
 #, kde-format
@@ -361,12 +364,10 @@ msgid "Age: %1+"
 msgstr "Alter: %1+"
 
 #: discover/qml/ApplicationPage.qml:469
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr "Mehr ..."
+msgstr "Details ansehen ..."
 
 #: discover/qml/ApplicationPage.qml:568
 #, kde-format
@@ -376,7 +377,7 @@ msgstr "Dokumentation"
 #: discover/qml/ApplicationPage.qml:569
 #, kde-format
 msgid "Read the project's official documentation"
-msgstr ""
+msgstr "Offizielle Projektdokumentation lesen"
 
 #: discover/qml/ApplicationPage.qml:585
 #, kde-format
@@ -402,19 +403,18 @@ msgstr "Zusätzliche Funktionalität installieren und entfernen"
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "Teilen"
 
 #: discover/qml/ApplicationPage.qml:623
-#, fuzzy, kde-format
-#| msgid "Unable to load applications"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Anwendungen können nicht geladen werden"
+msgstr "Eine Verknüpfung für diese Anwendungen senden"
 
 #: discover/qml/ApplicationPage.qml:639
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "Probieren Sie die Anwendung %1 aus!"
 
 #: discover/qml/ApplicationPage.qml:659
 #, kde-format
@@ -422,10 +422,9 @@ msgid "What's New"
 msgstr "Was ist neu?"
 
 #: discover/qml/ApplicationPage.qml:690
-#, fuzzy, kde-format
-#| msgid "Reviews for %1"
+#, kde-format
 msgid "Loading reviews for %1"
-msgstr "Bewertungen für „%1“"
+msgstr "Bewertungen für %1 laden"
 
 #: discover/qml/ApplicationPage.qml:696
 #, kde-format
@@ -463,6 +462,8 @@ msgstr "Spenden"
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
+"Danken Sie den Entwicklern und unterstützen Sie diese, indem Sie für ihre "
+"Projekte spenden"
 
 #: discover/qml/ApplicationPage.qml:808
 #, kde-format
@@ -472,7 +473,7 @@ msgstr "Probleme oder Wünsche berichten"
 #: discover/qml/ApplicationPage.qml:809
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr ""
+msgstr "Melden Sie ein Problem, um bei der Lösung zu helfen"
 
 #: discover/qml/ApplicationPage.qml:823
 #, kde-format
@@ -483,6 +484,8 @@ msgstr "Mitmachen"
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
+"Unterstützen Sie die Entwickler beim Programmieren, Design, Testen oder "
+"Übersetzen"
 
 #: discover/qml/ApplicationPage.qml:849
 #, kde-format
@@ -509,6 +512,19 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
+"Der Quelltext dieser Anwendung ist teilweise oder vollständig gegenüber "
+"öffentlicher Einsichtnahme und Verbesserung geschlossen. Das bedeutet, dass "
+"Dritte oder Benutzer wie Sie weder die Funktionsweise, Sicherheit oder "
+"Vertrauenswürdigkeit prüfen können, noch die Anwendung ohne die "
+"ausdrückliche Erlaubnis des Autors verändern oder weitergeben dürfen.<nl/"
+"><nl/>Es ist sowohl möglich, dass die Anwendung absolut sicher ist, als "
+"auch, dass sie auf verschiedene Weise gegen Ihre Interessen handelt. Denkbar "
+"wäre beispielsweise das Sammeln persönlicher Informationen, die Verfolgung "
+"des Standorts oder das Übertragen von Inhalten Ihrer Dateien an Dritte. Es "
+"gibt keinen einfachen Weg, diesbezüglich sicher zu sein. Sie sollten die "
+"Anwendung deshalb nur installieren, wenn Sie den Autoren (<link url='%1'>%2</"
+"link>) vollständig vertrauen.<nl/><nl/>Sie können mehr über das Thema unter "
+"<link url='%3'>%3</link> erfahren."
 
 #: discover/qml/ApplicationPage.qml:901
 #, kde-kuit-format
@@ -525,34 +541,44 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
+"Der Quelltext dieser Anwendung ist teilweise oder vollständig gegenüber "
+"öffentlicher Einsichtnahme und Verbesserung geschlossen. Das bedeutet, dass "
+"Dritte oder Benutzer wie Sie weder die Funktionsweise, Sicherheit oder "
+"Vertrauenswürdigkeit prüfen können, noch die Anwendung ohne die "
+"ausdrückliche Erlaubnis des Autors verändern oder weitergeben dürfen.<nl/"
+"><nl/>Es ist sowohl möglich, dass die Anwendung absolut sicher ist, als "
+"auch, dass sie auf verschiedene Weise gegen Ihre Interessen handelt. Denkbar "
+"wäre beispielsweise das Sammeln persönlicher Informationen, die Verfolgung "
+"des Standorts oder das Übertragen von Inhalten Ihrer Dateien an Dritte. Es "
+"gibt keinen einfachen Weg, diesbezüglich sicher zu sein. Sie sollten die "
+"Anwendung deshalb nur installieren, wenn Sie den Autoren (%1) vollständig "
+"vertrauen.<nl/><nl/>Sie können mehr über das Thema unter <link url='%2'>%2</"
+"link> erfahren."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Suche: Elemente %1 - %2"
-msgstr[1] "Suche: Elemente %1 - %2"
+msgstr[0] "Suche: %2 - %3 Eintrag"
+msgstr[1] "Suche: %2 - %3 Einträge"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
 msgid "Search: %1"
-msgstr "Suchen : %1"
+msgstr "Suche : %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 -%2 Elemente"
-msgstr[1] "%1 -%2 Elemente"
+msgstr[0] "%2 - %1 Eintrag"
+msgstr[1] "%2 - %1 Einträge"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Suche - %1 Einträge"
+msgstr[0] "Suche - %1 Eintrag"
 msgstr[1] "Suche - %1 Einträge"
 
 #: discover/qml/ApplicationsListPage.qml:67
@@ -564,7 +590,7 @@ msgstr "Suchen"
 #: discover/qml/ApplicationsListPage.qml:88
 #, kde-format
 msgid "Sort: %1"
-msgstr "Sortieren: %1"
+msgstr "Sortieren nach: %1"
 
 #: discover/qml/ApplicationsListPage.qml:91
 #, kde-format
@@ -590,12 +616,10 @@ msgstr "Nichts gefunden"
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "In allen Kategorien suchen"
 
 #: discover/qml/ApplicationsListPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "Search the web for \"%1\""
+#, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Im Internet nach „%1“ suchen"
@@ -609,22 +633,18 @@ msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:204
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr "„%1“ kann in den verfügbaren Quellen nicht gefunden werden"
+msgstr "„%1“ kann in der Kategorie „%2” nicht gefunden werden"
 
 #: discover/qml/ApplicationsListPage.qml:206
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
-msgstr "„%1“ kann in den verfügbaren Quellen nicht gefunden werden"
+msgstr "„%1“ kann in den verfügbaren Paketquellen nicht gefunden werden"
 
 #: discover/qml/ApplicationsListPage.qml:207
 #, kde-format
@@ -634,6 +654,9 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
+"„%1” könnte im Internet verfügbar sein. So bezogene Software wurde von Ihrer "
+"Distribution nicht im Hinblick auf Funktionalität oder Stabilität geprüft. "
+"Verwenden Sie sie mit Vorsicht."
 
 #: discover/qml/ApplicationsListPage.qml:240
 #, kde-format
@@ -646,37 +669,34 @@ msgid "Unable to load applications"
 msgstr "Anwendungen können nicht geladen werden"
 
 #: discover/qml/BrowsingPage.qml:88
-#, fuzzy, kde-format
-#| msgid "Most Popular"
+#, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr "Am beliebtesten"
+msgstr "Beliebteste"
 
 #: discover/qml/BrowsingPage.qml:106
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "Empfehlungen"
 
 #: discover/qml/BrowsingPage.qml:120
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "Am besten bewertete Spiele"
 
 #: discover/qml/BrowsingPage.qml:139 discover/qml/BrowsingPage.qml:168
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "Mehr ..."
+msgstr "Mehr"
 
 #: discover/qml/BrowsingPage.qml:149
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "Am besten bewertete Entwicklungswerkzeuge"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -748,27 +768,24 @@ msgid "Report this issue"
 msgstr "Dieses Problem berichten"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "Stimmen: %1 von %2"
+msgstr "Fehler %1 von %2"
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "Vorherigen anzeigen"
 
 #: discover/qml/DiscoverWindow.qml:383
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "Inhalt anzeigen"
+msgstr "Nächsten anzeigen"
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
-#, fuzzy, kde-format
-#| msgid "Copy to clipboard"
+#, kde-format
 msgid "Copy to Clipboard"
 msgstr "In die Zwischenablage kopieren"
 
@@ -986,12 +1003,12 @@ msgstr "Zu lang."
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "Namen eingeben"
 
 #: discover/qml/ReviewsPage.qml:42
 #, kde-format
 msgid "Reviews for %1"
-msgstr "Bewertungen für „%1“"
+msgstr "Bewertungen für %1"
 
 #: discover/qml/ReviewsPage.qml:53
 #, kde-format
@@ -1021,12 +1038,12 @@ msgstr "Einstellungen"
 #: discover/qml/SourcesPage.qml:93
 #, kde-format
 msgid "Default source"
-msgstr "Standardquelle"
+msgstr "Standard-Paketquelle"
 
 #: discover/qml/SourcesPage.qml:100
 #, kde-format
 msgid "Add Source…"
-msgstr "Quelle hinzufügen ..."
+msgstr "Paketquelle hinzufügen ..."
 
 #: discover/qml/SourcesPage.qml:124
 #, kde-format
@@ -1091,10 +1108,9 @@ msgstr ""
 "Bitte versuchen Sie es später erneut."
 
 #: discover/qml/UpdatesPage.qml:67
-#, fuzzy, kde-format
-#| msgid "See technical details"
+#, kde-format
 msgid "See Technical Details"
-msgstr "Siehe technische Details"
+msgstr "Technische Details ansehen"
 
 #: discover/qml/UpdatesPage.qml:83
 #, kde-format
@@ -1102,6 +1118,8 @@ msgid ""
 "If you would like to report the update issue to your distribution's "
 "packagers, include this information:"
 msgstr ""
+"Wenn Sie das Problem bei der Aktualisierung Ihrer Distribution melden "
+"möchten, schließen Sie diese Informationen mit ein:"
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
@@ -1122,7 +1140,7 @@ msgstr "Alle aktualisieren"
 #: discover/qml/UpdatesPage.qml:174
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorieren"
 
 #: discover/qml/UpdatesPage.qml:220
 #, kde-format
