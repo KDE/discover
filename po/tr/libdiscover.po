@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-01 02:42+0000\n"
-"PO-Revision-Date: 2023-01-31 00:54+0300\n"
+"PO-Revision-Date: 2023-02-08 13:52+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -663,12 +663,12 @@ msgstr "Tüm Sistem Veriyolu'na erişim sağlandı"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
 #, kde-format
 msgid "Remote Login Access"
-msgstr "Uzaktan Giriş Erişimi"
+msgstr "Uzaktan Oturum Açma Erişimi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:796
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
-msgstr "SSH protokolünü kullanarak uzaktan giriş istekleri oluşturabilir"
+msgstr "SSH protokolünü kullanarak uzaktan oturum açma istekleri oluşturabilir"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:800
 #, kde-format
