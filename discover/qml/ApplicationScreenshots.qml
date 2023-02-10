@@ -36,6 +36,7 @@ ListView {
     property real delegateHeight: Kirigami.Units.gridUnit * 4
 
     delegate: AbstractButton {
+        readonly property bool animated: isAnimated
         readonly property url imageSource: large_image_url
         readonly property real proportion: thumbnail.status === Image.Ready && thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
 
@@ -53,9 +54,7 @@ ListView {
             cursorShape: Qt.PointingHandCursor
         }
 
-        background: AnimatedImage {
-            id: thumbnail
-
+        background: Item {
             BusyIndicator {
                 visible: running
                 running: thumbnail.status === Image.Loading
@@ -67,10 +66,28 @@ ListView {
                 visible: thumbnail.status === Image.Error
                 source: "emblem-error"
             }
-            source: small_image_url
-            onStatusChanged: {
-                if (status === Image.Error) {
-                    root.failedCount += 1;
+            ConditionalLoader {
+                id: thumbnail
+                anchors.fill: parent
+                readonly property var status: item.status
+                readonly property var sourceSize: item.sourceSize
+                condition: isAnimated
+
+                componentFalse: Component {
+                    Image {
+                        source: small_image_url
+                    }
+                }
+                componentTrue: Component {
+                    AnimatedImage {
+                        source: small_image_url
+                    }
+                }
+
+                onStatusChanged: {
+                    if (status === Image.Error) {
+                        root.failedCount += 1;
+                    }
                 }
             }
         }
@@ -102,12 +119,33 @@ ListView {
             source: "emblem-error"
         }
 
-        AnimatedImage {
+        ConditionalLoader {
             id: overlayImage
             anchors.fill: parent
-            source: root.currentItem ? root.currentItem.imageSource : ""
-            fillMode: Image.PreserveAspectFit
-            smooth: true
+            readonly property var status: item.status
+            readonly property var sourceSize: item.sourceSize
+            condition: root.currentItem.animated
+
+            componentFalse: Component {
+                Image {
+                    source: root.currentItem ? root.currentItem.imageSource : ""
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
+                }
+            }
+            componentTrue: Component {
+                AnimatedImage {
+                    source: root.currentItem ? root.currentItem.imageSource : ""
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
+                }
+            }
+
+            onStatusChanged: {
+                if (status === Image.Error) {
+                    root.failedCount += 1;
+                }
+            }
         }
 
         Button {

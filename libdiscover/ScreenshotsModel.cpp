@@ -6,6 +6,7 @@
 
 #include "ScreenshotsModel.h"
 #include "libdiscover_debug.h"
+#include "utils.h"
 #include <resources/AbstractResource.h>
 // #include <QAbstractItemModelTester>
 
@@ -20,6 +21,7 @@ QHash<int, QByteArray> ScreenshotsModel::roleNames() const
     QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
     roles.insert(ThumbnailUrl, "small_image_url");
     roles.insert(ScreenshotUrl, "large_image_url");
+    roles.insert(IsAnimatedRole, "isAnimated");
     return roles;
 }
 
@@ -36,7 +38,6 @@ void ScreenshotsModel::setResource(AbstractResource *res)
 
     beginResetModel();
     m_screenshots.clear();
-    m_thumbnails.clear();
     endResetModel();
 
     if (res) {
@@ -51,14 +52,12 @@ AbstractResource *ScreenshotsModel::resource() const
     return m_resource;
 }
 
-void ScreenshotsModel::screenshotsFetched(const QList<QUrl> &thumbnails, const QList<QUrl> &screenshots)
+void ScreenshotsModel::screenshotsFetched(const Screenshots &screenshots)
 {
-    Q_ASSERT(thumbnails.count() == screenshots.count());
-    if (thumbnails.isEmpty())
+    if (screenshots.isEmpty())
         return;
 
-    beginInsertRows(QModelIndex(), m_thumbnails.size(), m_thumbnails.size() + thumbnails.size() - 1);
-    m_thumbnails += thumbnails;
+    beginInsertRows(QModelIndex(), m_screenshots.size(), m_screenshots.size() + screenshots.size() - 1);
     m_screenshots += screenshots;
     endInsertRows();
     Q_EMIT countChanged();
@@ -71,9 +70,11 @@ QVariant ScreenshotsModel::data(const QModelIndex &index, int role) const
 
     switch (role) {
     case ThumbnailUrl:
-        return m_thumbnails[index.row()];
+        return m_screenshots[index.row()].thumbnail;
     case ScreenshotUrl:
-        return m_screenshots[index.row()];
+        return m_screenshots[index.row()].screenshot;
+    case IsAnimatedRole:
+        return m_screenshots[index.row()].isAnimated;
     }
 
     return QVariant();
@@ -86,7 +87,7 @@ int ScreenshotsModel::rowCount(const QModelIndex &parent) const
 
 QUrl ScreenshotsModel::screenshotAt(int row) const
 {
-    return m_screenshots[row];
+    return m_screenshots[row].screenshot;
 }
 
 int ScreenshotsModel::count() const
@@ -96,10 +97,11 @@ int ScreenshotsModel::count() const
 
 void ScreenshotsModel::remove(const QUrl &url)
 {
-    int idxRemove = m_thumbnails.indexOf(url);
+    int idxRemove = kIndexOf(m_screenshots, [url](const Screenshot &s) {
+        return s.thumbnail == url || s.screenshot == url;
+    });
     if (idxRemove >= 0) {
         beginRemoveRows({}, idxRemove, idxRemove);
-        m_thumbnails.removeAt(idxRemove);
         m_screenshots.removeAt(idxRemove);
         endRemoveRows();
         Q_EMIT countChanged();

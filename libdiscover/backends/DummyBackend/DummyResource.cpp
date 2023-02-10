@@ -28,7 +28,7 @@ DummyResource::DummyResource(QString name, AbstractResource::Type type, Abstract
 {
     const int nofScreenshots = KRandom::random() % 5;
     m_screenshots =
-        QList<QUrl>{
+        Screenshots{
             QUrl(QStringLiteral("https://screenshots.debian.net/screenshots/000/014/863/large.png")),
             QUrl(QStringLiteral("https://c1.staticflickr.com/9/8479/8166397343_b78106f353_k.jpg")),
             QUrl(QStringLiteral("https://c2.staticflickr.com/4/3685/9954407993_dad10a6943_k.jpg")),
@@ -42,7 +42,6 @@ DummyResource::DummyResource(QString name, AbstractResource::Type type, Abstract
 
         }
             .mid(nofScreenshots);
-    m_screenshotThumbnails = m_screenshots;
 }
 
 QList<PackageState> DummyResource::addonsInformation()
@@ -179,7 +178,7 @@ void DummyResource::fetchChangelog()
 
 void DummyResource::fetchScreenshots()
 {
-    Q_EMIT screenshotsFetched(m_screenshotThumbnails, m_screenshots);
+    Q_EMIT screenshotsFetched(m_screenshots);
 }
 
 void DummyResource::setState(AbstractResource::State state)

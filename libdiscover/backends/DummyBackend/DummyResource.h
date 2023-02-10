@@ -70,8 +70,7 @@ public:
 public:
     const QString m_name;
     AbstractResource::State m_state;
-    QList<QUrl> m_screenshots;
-    QList<QUrl> m_screenshotThumbnails;
+    Screenshots m_screenshots;
     QString m_iconName;
     QList<PackageState> m_addons;
     const AbstractResource::Type m_type;

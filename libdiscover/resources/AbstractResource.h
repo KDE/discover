@@ -25,6 +25,27 @@ class Category;
 class Rating;
 class AbstractResourcesBackend;
 
+struct Screenshot {
+    Screenshot(const QUrl &screenshot)
+        : thumbnail(screenshot)
+        , screenshot(screenshot)
+    {
+    }
+
+    Screenshot(const QUrl &thumbnail, const QUrl &screenshot, bool isAnimated)
+        : thumbnail(thumbnail)
+        , screenshot(screenshot)
+        , isAnimated(isAnimated)
+    {
+    }
+
+    QUrl thumbnail;
+    QUrl screenshot;
+    bool isAnimated = false;
+};
+
+using Screenshots = QVector<Screenshot>;
+
 /**
  * \class AbstractResource  AbstractResource.h "AbstractResource.h"
  *
@@ -258,8 +279,7 @@ Q_SIGNALS:
     void versionsChanged();
 
     /// response to the fetchScreenshots method
-    ///@p thumbnails and @p screenshots should have the same number of elements
-    void screenshotsFetched(const QList<QUrl> &thumbnails, const QList<QUrl> &screenshots);
+    void screenshotsFetched(const Screenshots &screenshots);
     void changelogFetched(const QString &changelog);
 
 private:

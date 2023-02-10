@@ -147,12 +147,6 @@ void SteamOSResource::fetchChangelog()
     Q_EMIT changelogFetched(log);
 }
 
-void SteamOSResource::fetchScreenshots()
-{
-    QList<QUrl> empty;
-    Q_EMIT screenshotsFetched(empty, empty);
-}
-
 void SteamOSResource::setState(AbstractResource::State state)
 {
     if (m_state == state)

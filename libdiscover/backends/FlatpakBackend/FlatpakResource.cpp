@@ -503,8 +503,7 @@ void FlatpakResource::fetchChangelog()
 
 void FlatpakResource::fetchScreenshots()
 {
-    const auto sc = AppStreamUtils::fetchScreenshots(m_appdata);
-    Q_EMIT screenshotsFetched(sc.first, sc.second);
+    Q_EMIT screenshotsFetched(AppStreamUtils::fetchScreenshots(m_appdata));
 }
 
 void FlatpakResource::setArch(const QString &arch)

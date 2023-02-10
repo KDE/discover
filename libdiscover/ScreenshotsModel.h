@@ -7,6 +7,7 @@
 #pragma once
 
 #include "discovercommon_export.h"
+#include "resources/AbstractResource.h"
 #include <QModelIndex>
 #include <QUrl>
 
@@ -21,6 +22,7 @@ public:
     enum Roles {
         ThumbnailUrl = Qt::UserRole + 1,
         ScreenshotUrl,
+        IsAnimatedRole,
     };
 
     explicit ScreenshotsModel(QObject *parent = nullptr);
@@ -37,7 +39,7 @@ public:
     Q_INVOKABLE void remove(const QUrl &url);
 
 private Q_SLOTS:
-    void screenshotsFetched(const QList<QUrl> &thumbnails, const QList<QUrl> &screenshots);
+    void screenshotsFetched(const Screenshots &screenshots);
 
 Q_SIGNALS:
     void countChanged();
@@ -45,6 +47,5 @@ Q_SIGNALS:
 
 private:
     AbstractResource *m_resource;
-    QList<QUrl> m_thumbnails;
-    QList<QUrl> m_screenshots;
+    Screenshots m_screenshots;
 };

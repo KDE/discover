@@ -41,7 +41,6 @@ public:
     bool canExecute() const override;
     void invokeApplication() const override{};
     void fetchChangelog() override;
-    void fetchScreenshots() override;
     QUrl url() const override;
     QString author() const override;
     void setState(State state);

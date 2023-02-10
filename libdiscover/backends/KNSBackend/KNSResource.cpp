@@ -15,6 +15,7 @@
 #include "ReviewsBackend/Rating.h"
 #include <appstream/AppStreamUtils.h>
 #include <attica/provider.h>
+#include <utils.h>
 
 KNSResource::KNSResource(const KNSCore::EntryInternal &entry, QStringList categories, KNSBackend *parent)
     : AbstractResource(parent)
@@ -176,29 +177,29 @@ QString KNSResource::section()
     return m_entry.category();
 }
 
-static void appendIfValid(QList<QUrl> &list, const QUrl &value, const QUrl &fallback = {})
+static bool isAnimated(const QString &path)
 {
-    if (!list.contains(value)) {
-        if (value.isValid() && !value.isEmpty())
-            list << value;
-        else if (!fallback.isEmpty())
-            appendIfValid(list, fallback);
+    static const QVector<QLatin1String> s_extensions = {QLatin1String(".gif"), QLatin1String(".apng"), QLatin1String(".webp"), QLatin1String(".avif")};
+    return kContains(s_extensions, [path](const QLatin1String &postfix) {
+        return path.endsWith(postfix);
+    });
+}
+
+static void appendIfValid(Screenshots &list, const QUrl &thumbnail, const QUrl &screenshot)
+{
+    if (thumbnail.isEmpty() || screenshot.isEmpty()) {
+        return;
     }
+    list += {thumbnail, screenshot, isAnimated(thumbnail.path())};
 }
 
 void KNSResource::fetchScreenshots()
 {
-    QList<QUrl> preview;
-    appendIfValid(preview, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1)));
-    appendIfValid(preview, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall2)));
-    appendIfValid(preview, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall3)));
-
-    QList<QUrl> screenshots;
-    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig1)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1)));
-    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig2)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall2)));
-    appendIfValid(screenshots, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig3)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall3)));
-
-    Q_EMIT screenshotsFetched(preview, screenshots);
+    Screenshots ret;
+    appendIfValid(ret, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig1)));
+    appendIfValid(ret, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall2)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig2)));
+    appendIfValid(ret, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall3)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig3)));
+    Q_EMIT screenshotsFetched(ret);
 }
 
 void KNSResource::fetchChangelog()
