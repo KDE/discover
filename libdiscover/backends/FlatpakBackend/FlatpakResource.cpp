@@ -633,7 +633,7 @@ QUrl FlatpakResource::url() const
         return m_resourceFile;
     }
 
-    QUrl ret(QStringLiteral("appstream://") + appstreamId());
+    QUrl ret(QStringLiteral("appstream:") + appstreamId());
     const AppStream::Provided::Kind AppStream_Provided_KindId = (AppStream::Provided::Kind)12; // Should be AppStream::Provided::KindId when released
     const auto provided = m_appdata.provided(AppStream_Provided_KindId).items();
     if (!provided.isEmpty()) {
