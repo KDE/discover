@@ -173,9 +173,9 @@ public:
         QList<AppStream::Component> comps = m_pool->componentsByBundleId(AppStream::Bundle::KindFlatpak, ref, false);
 #else
         QList<AppStream::Component> comps = m_pool->components();
-        comps = kFilter<QList<AppStream::Component>>(comps, [&name, &branch](const AppStream::Component &component) {
+        comps = kFilter<QList<AppStream::Component>>(comps, [&ref](const AppStream::Component &component) {
             const QString id = component.bundle(AppStream::Bundle::KindFlatpak).id();
-            return id.section('/', 1, 1) == name && id.section('/', 3, 3) == branch;
+            return id == ref;
         });
 #endif
         if (!comps.isEmpty())
