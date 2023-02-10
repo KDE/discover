@@ -84,7 +84,8 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml)
             xml->readNext();
         } else if (xml->name() == QLatin1String("Icon")) {
             m_iconString = xml->readElementText();
-        } else if (xml->name() == QLatin1String("Include")) {
+        } else if (xml->name() == QLatin1String("Include")
+                   || xml->name() == QLatin1String("Categories")) {
             const QString opening = xml->name().toString();
             while (!xml->atEnd() && !xml->hasError()) {
                 xml->readNext();
@@ -118,8 +119,6 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml)
                 }
                 break;
             }
-        } else if (xml->name() == QLatin1String("Categories")) { // as provided by appstream
-            m_filter = parseIncludes(xml);
         } else if (xml->name() == QLatin1String("Top")) {
             xml->skipCurrentElement();
             m_priority = -5;
