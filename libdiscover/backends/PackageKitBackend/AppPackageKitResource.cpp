@@ -178,8 +178,7 @@ AbstractResource::Type AppPackageKitResource::type() const
 
 void AppPackageKitResource::fetchScreenshots()
 {
-    const auto sc = AppStreamUtils::fetchScreenshots(m_appdata);
-    Q_EMIT screenshotsFetched(sc.first, sc.second);
+    Q_EMIT screenshotsFetched(AppStreamUtils::fetchScreenshots(m_appdata));
 }
 
 QStringList AppPackageKitResource::allPackageNames() const

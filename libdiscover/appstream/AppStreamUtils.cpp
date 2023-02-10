@@ -47,10 +47,11 @@ QString AppStreamUtils::changelogToHtml(const AppStream::Component &appdata)
     return changelog;
 }
 
-QPair<QList<QUrl>, QList<QUrl>> AppStreamUtils::fetchScreenshots(const AppStream::Component &appdata)
+Screenshots AppStreamUtils::fetchScreenshots(const AppStream::Component &appdata)
 {
-    QList<QUrl> screenshots, thumbnails;
     const auto appdataScreenshots = appdata.screenshots();
+    Screenshots ret;
+    ret.reserve(appdataScreenshots.size());
     for (const AppStream::Screenshot &s : appdataScreenshots) {
         const auto images = s.images();
         const QUrl thumbnail = AppStreamUtils::imageOfKind(images, AppStream::Image::KindThumbnail);
@@ -58,10 +59,9 @@ QPair<QList<QUrl>, QList<QUrl>> AppStreamUtils::fetchScreenshots(const AppStream
         if (plain.isEmpty())
             qWarning() << "invalid screenshot for" << appdata.name();
 
-        screenshots << plain;
-        thumbnails << (thumbnail.isEmpty() ? plain : thumbnail);
+        ret.append(Screenshot{plain, thumbnail.isEmpty() ? plain : thumbnail, s.mediaKind() == AppStream::Screenshot::MediaKindVideo});
     }
-    return {thumbnails, screenshots};
+    return ret;
 }
 
 QJsonArray AppStreamUtils::licenses(const AppStream::Component &appdata)

@@ -74,7 +74,7 @@ bool AbstractResource::isInstalled()
 
 void AbstractResource::fetchScreenshots()
 {
-    Q_EMIT screenshotsFetched({}, {});
+    Q_EMIT screenshotsFetched({});
 }
 
 QStringList AbstractResource::mimetypes() const

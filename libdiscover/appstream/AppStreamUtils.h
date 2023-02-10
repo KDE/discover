@@ -20,7 +20,7 @@ Q_DECL_EXPORT QUrl imageOfKind(const QList<AppStream::Image> &images, AppStream:
 
 Q_DECL_EXPORT QString changelogToHtml(const AppStream::Component &appdata);
 
-Q_DECL_EXPORT QPair<QList<QUrl>, QList<QUrl>> fetchScreenshots(const AppStream::Component &appdata);
+Q_DECL_EXPORT Screenshots fetchScreenshots(const AppStream::Component &appdata);
 
 Q_DECL_EXPORT QJsonArray licenses(const AppStream::Component &appdata);
 

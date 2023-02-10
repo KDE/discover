@@ -264,7 +264,7 @@ void SnapResource::fetchChangelog()
 
 void SnapResource::fetchScreenshots()
 {
-    QList<QUrl> screenshots;
+    Screenshots screenshots;
 #ifdef SNAP_MEDIA
     for (int i = 0, c = m_snap->mediaCount(); i < c; ++i) {
         QScopedPointer<QSnapdMedia> media(m_snap->media(i));
@@ -277,7 +277,7 @@ void SnapResource::fetchScreenshots()
         screenshots << QUrl(screenshot->url());
     }
 #endif
-    Q_EMIT screenshotsFetched(screenshots, screenshots);
+    Q_EMIT screenshotsFetched(screenshots);
 }
 
 void SnapResource::invokeApplication() const
