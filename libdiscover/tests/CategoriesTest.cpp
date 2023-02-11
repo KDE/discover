@@ -47,6 +47,15 @@ private Q_SLOTS:
     {
         auto categories = populateCategories();
         QVERIFY(!categories.isEmpty());
+
+        for (Category *c : categories) {
+            if (c->name() != "Dummy Category")
+                continue;
+
+            auto filter = c->filter();
+            QVERIFY(filter.type == CategoryFilter::CategoryNameFilter);
+            QVERIFY(std::get<QString>(filter.value) == "dummy");
+        }
     }
 };
 

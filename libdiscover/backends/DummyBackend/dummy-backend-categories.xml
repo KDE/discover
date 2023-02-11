@@ -3,6 +3,9 @@
   <Menu>
     <Name>Dummy Category</Name>
     <Icon>applications</Icon>
+    <Categories>
+      <Category>dummy</Category>
+    </Categories>
 
     <Menu>
       <Name>dummy</Name>
