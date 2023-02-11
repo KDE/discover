@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-04 03:17+0000\n"
-"PO-Revision-Date: 2023-02-01 10:34+0100\n"
+"PO-Revision-Date: 2023-02-10 11:05+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -433,7 +433,7 @@ msgstr ""
 #: discover/qml/ApplicationPage.qml:758
 #, kde-format
 msgid "Get Involved"
-msgstr "Přidejte se"
+msgstr "Zapojte se"
 
 #: discover/qml/ApplicationPage.qml:791
 #, kde-format
