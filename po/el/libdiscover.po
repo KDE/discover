@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-10 02:53+0000\n"
+"POT-Creation-Date: 2023-02-13 02:41+0000\n"
 "PO-Revision-Date: 2017-09-08 16:13+0200\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -126,50 +126,50 @@ msgctxt "Category"
 msgid "Dummy Category"
 msgstr "Πλασματική κατηγορία"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:8
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
 #, kde-format
 msgctxt "Category"
 msgid "dummy"
 msgstr "πλασματικό"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:15
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
 #, kde-format
 msgctxt "Category"
 msgid "dummy addons"
 msgstr "πλασματικά πρόσθετα"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:23
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
 msgstr "πλασματικό 1"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:30
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
 msgstr "πλασματικό με περιεχόμενο"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:37
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:52
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
 msgstr "πλασματικό 2.1"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:45
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
 msgstr "πλασματικό με αρκετό περιεχόμενο"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:61
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
 msgstr "πλασματικό 3"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:71
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"

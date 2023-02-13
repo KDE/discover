@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-10 02:53+0000\n"
+"POT-Creation-Date: 2023-02-13 02:41+0000\n"
 "PO-Revision-Date: 2023-01-09 12:01+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -112,50 +112,50 @@ msgctxt "Category"
 msgid "Dummy Category"
 msgstr "Categoria ficte"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:8
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
 #, kde-format
 msgctxt "Category"
 msgid "dummy"
 msgstr "ficte"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:15
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
 #, kde-format
 msgctxt "Category"
 msgid "dummy addons"
 msgstr "adjuncte ficte"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:23
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
 msgstr "ficte 1"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:30
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
 msgstr "ficte con cosa"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:37
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:52
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
 msgstr "ficte 2.1"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:45
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
 msgstr "ficte con quasi alcun cosa"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:61
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
 msgstr "ficte 3"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:71
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"

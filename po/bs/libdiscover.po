@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-10 02:53+0000\n"
+"POT-Creation-Date: 2023-02-13 02:41+0000\n"
 "PO-Revision-Date: 2014-01-31 20:46+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -126,13 +126,13 @@ msgctxt "Category"
 msgid "Dummy Category"
 msgstr ""
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:8
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
 #, kde-format
 msgctxt "Category"
 msgid "dummy"
 msgstr "prazno"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:15
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "dummy"
@@ -140,7 +140,7 @@ msgctxt "Category"
 msgid "dummy addons"
 msgstr "prazno"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:23
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "dummy"
@@ -148,14 +148,14 @@ msgctxt "Category"
 msgid "dummy 1"
 msgstr "prazno"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:30
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
 msgstr ""
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:37
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:52
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "dummy"
@@ -163,13 +163,13 @@ msgctxt "Category"
 msgid "dummy 2.1"
 msgstr "prazno"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:45
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
 msgstr ""
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:61
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "dummy"
@@ -177,7 +177,7 @@ msgctxt "Category"
 msgid "dummy 3"
 msgstr "prazno"
 
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:71
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "dummy"
