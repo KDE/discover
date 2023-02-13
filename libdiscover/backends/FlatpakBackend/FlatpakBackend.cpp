@@ -755,7 +755,7 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
                    settings.value(QStringLiteral("Flatpak Ref/GPGKey")).toString().toUtf8());
     if (!flatpak_installation_modify_remote(tempInstallation, tempRemote, cancellable, &localError)) {
         qDebug() << "error adding temporary remote" << localError->message;
-        return {asComponent};
+        return asComponent;
     }
 
     auto cb = [](const char *status, guint progress, gboolean /*estimating*/, gpointer /*user_data*/) {
@@ -765,7 +765,7 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
     gboolean changed;
     if (!flatpak_installation_update_appstream_full_sync(tempInstallation, remoteName.toUtf8(), nullptr, cb, nullptr, &changed, cancellable, &localError)) {
         qDebug() << "error fetching appstream" << localError->message;
-        return {asComponent};
+        return asComponent;
     }
     Q_ASSERT(changed);
     const QString appstreamLocation = path + "/appstream/" + remoteName + '/' + flatpak_get_default_arch() + "/active";
@@ -787,7 +787,7 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
 
     if (!pool.load()) {
         qDebug() << "error loading pool" << pool.lastError();
-        return {asComponent};
+        return asComponent;
     }
 
     // TODO optimise, this lookup should happen in libappstream
