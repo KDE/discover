@@ -238,7 +238,7 @@ static FlatpakResource::Id idForComponent(const AppStream::Component &component)
     };
 }
 
-static FlatpakResource::Id idForInstalledRef(FlatpakInstalledRef *ref, const QString &postfix)
+static FlatpakResource::Id idForInstalledRef(FlatpakInstalledRef *ref, const QString &postfix = QString())
 {
     const QString appId = QLatin1String(flatpak_ref_get_name(FLATPAK_REF(ref))) + postfix;
     const QString arch = QString::fromUtf8(flatpak_ref_get_arch(FLATPAK_REF(ref)));
@@ -530,7 +530,7 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
     if (freshResource)
         *freshResource = true;
 
-    Q_ASSERT(resource->uniqueId() == idForInstalledRef(ref, {}) || resource->uniqueId() == idForInstalledRef(ref, {".desktop"}));
+    Q_ASSERT(resource->uniqueId() == idForInstalledRef(ref) || resource->uniqueId() == idForInstalledRef(ref, QStringLiteral(".desktop")));
     return resource;
 }
 
