@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-14 00:59+0000\n"
+"POT-Creation-Date: 2023-02-15 01:00+0000\n"
 "PO-Revision-Date: 2023-01-08 11:50+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -976,12 +976,18 @@ msgstr "%1 no està instal·lat, però encara té dades presents."
 msgid "Delete settings and user data"
 msgstr "Suprimeix la configuració i les dades d'usuari"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:19
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "Permisos de %1"
+
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:53
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
+#, kde-format
+msgid "Configure permissions…"
+msgstr "Configura els permisos…"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2367,11 +2373,6 @@ msgstr "%1 - %2"
 #, kde-format
 msgid "Switch"
 msgstr "Canvia"
-
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
-#, kde-format
-msgid "Configure permissions…"
-msgstr "Configura els permisos…"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format

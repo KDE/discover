@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-14 00:59+0000\n"
+"POT-Creation-Date: 2023-02-15 01:00+0000\n"
 "PO-Revision-Date: 2023-01-21 09:59+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -974,12 +974,18 @@ msgstr "%1 nie jest wgrany, lecz pozostawił swoje dane."
 msgid "Delete settings and user data"
 msgstr "Usuń ustawienia i dane użytkownika"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:19
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "Uprawnienia dla %1"
+
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:53
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
+#, kde-format
+msgid "Configure permissions…"
+msgstr "Ustawienia uprawnień…"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2362,11 +2368,6 @@ msgstr "%1 - %2"
 #, kde-format
 msgid "Switch"
 msgstr "Przełącz"
-
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
-#, kde-format
-msgid "Configure permissions…"
-msgstr "Ustawienia uprawnień…"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format

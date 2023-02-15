@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-14 00:59+0000\n"
+"POT-Creation-Date: 2023-02-15 01:00+0000\n"
 "PO-Revision-Date: 2023-01-08 23:08+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -973,12 +973,18 @@ msgstr "%1 is niet geïnstalleerd maar er zijn nog steeds gegevens aanwezig."
 msgid "Delete settings and user data"
 msgstr "Instellingen en gebruikersgegevens verwijderen"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:19
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "Toegangsrechten voor %1"
+
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:53
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
+#, kde-format
+msgid "Configure permissions…"
+msgstr "Toegangsrechten configureren…"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2359,11 +2365,6 @@ msgstr "%1 - %2"
 #, kde-format
 msgid "Switch"
 msgstr "Omschakelen"
-
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
-#, kde-format
-msgid "Configure permissions…"
-msgstr "Toegangsrechten configureren…"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
