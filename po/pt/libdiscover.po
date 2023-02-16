@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-14 00:59+0000\n"
+"POT-Creation-Date: 2023-02-15 01:00+0000\n"
 "PO-Revision-Date: 2023-01-09 18:43+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -977,12 +977,18 @@ msgstr "O %1 não está instalado, mas ainda tem dados presentes."
 msgid "Delete settings and user data"
 msgstr "Apagar as configurações e dados do utilizador"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:19
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "Permissões do %1"
+
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:53
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
+#, kde-format
+msgid "Configure permissions…"
+msgstr "Configurar as permissões…"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2371,11 +2377,6 @@ msgstr "%1 - %2"
 #, kde-format
 msgid "Switch"
 msgstr "Mudar"
-
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
-#, kde-format
-msgid "Configure permissions…"
-msgstr "Configurar as permissões…"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
