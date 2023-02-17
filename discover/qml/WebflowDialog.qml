@@ -12,10 +12,12 @@ import QtWebView 1.15
 
 Kirigami.OverlaySheet {
     id: sheet
-    showCloseButton: false
+
     property QtObject transaction
     property bool acted: false
     property alias url: view.url
+
+    showCloseButton: false
 
     readonly property var p0: Connections {
         target: transaction
@@ -47,9 +49,10 @@ Kirigami.OverlaySheet {
         }
     }
 
-    onSheetOpenChanged: if(!sheetOpen) {
+    onSheetOpenChanged: if (!sheetOpen) {
         sheet.destroy(1000)
-        if (!sheet.acted)
+        if (!sheet.acted) {
             transaction.cancel()
+        }
     }
 }

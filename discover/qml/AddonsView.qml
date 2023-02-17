@@ -7,6 +7,7 @@ import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.OverlaySheet {
     id: addonsView
+
     parent: applicationWindow().overlay
 
     property alias application: addonsModel.application
@@ -48,7 +49,7 @@ Kirigami.OverlaySheet {
 
         Button {
             text: i18n("More…")
-            visible: application.appstreamId.length>0 && addonsView.isExtended
+            visible: application.appstreamId.length > 0 && addonsView.isExtended
             onClicked: Navigation.openExtends(application.appstreamId, application.name)
         }
 

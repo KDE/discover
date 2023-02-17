@@ -4,8 +4,7 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-function clearStack()
-{
+function clearStack() {
     window.currentTopLevel = ""
     window.stack.clear();
 }
@@ -21,31 +20,33 @@ function openApplicationMime(mime) {
 
 function openApplicationList(props) {
     var page = window.stack.push("qrc:/qml/ApplicationsListPage.qml", props)
-    if (props.search === "")
+    if (props.search === "") {
         page.clearSearch();
+    }
 }
 
-function openCategory(cat, search) {
+function openCategory(category, search) {
     clearStack()
-    openApplicationList({ category: cat, search: search })
+    openApplicationList({ category, search })
 }
 
-function openApplication(app) {
-    console.assert(app)
-    window.stack.push("qrc:/qml/ApplicationPage.qml", { application: app })
+function openApplication(application) {
+    console.assert(application)
+    window.stack.push("qrc:/qml/ApplicationPage.qml", { application })
 }
 
 function openReviews(model) {
-    window.stack.push("qrc:/qml/ReviewsPage.qml", { model: model })
+    window.stack.push("qrc:/qml/ReviewsPage.qml", { model })
 }
 
-function openExtends(ext, appname) {
-    window.stack.push("qrc:/qml/ApplicationsListPage.qml", { extending: ext, title: i18n("Addons for %1", appname) })
+function openExtends(extending, appname) {
+    window.stack.push("qrc:/qml/ApplicationsListPage.qml", { extending, title: i18n("Addons for %1", appname) })
 }
 
 function openHome() {
-    if (window.globalDrawer.currentSubMenu)
+    if (window.globalDrawer.currentSubMenu) {
         window.globalDrawer.resetMenu();
+    }
     clearStack()
     var page = window.stack.push(topBrowsingComp)
     page.clearSearch()

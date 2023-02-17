@@ -15,6 +15,7 @@ import org.kde.kirigami 2.14 as Kirigami
 
 DiscoverPage {
     id: page
+
     readonly property var model: appsModel
     property alias category: appsModel.filteredCategory
     property alias sortRole: appsModel.sortRole
@@ -48,7 +49,7 @@ DiscoverPage {
     property string name: category ? category.name : ""
     title: {
         const rough = appsModel.roughCount;
-        if (search.length>0) {
+        if (search.length > 0) {
             if (rough.length > 0) {
                 return i18np("Search: %2 - %3 item", "Search: %2 - %3 items", appsModel.count, stripHtml(search), rough)
             } else {
@@ -182,7 +183,7 @@ DiscoverPage {
                     onTriggered: {
                         window.globalDrawer.resetMenu();
                         Navigation.clearStack()
-                        Navigation.openApplicationList( { search: page.search } );
+                        Navigation.openApplicationList({ search: page.search });
                     }
                 }
                 property var searchTheWebAction: Kirigami.Action {
@@ -218,7 +219,7 @@ DiscoverPage {
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
 
             visible: opacity !== 0
-            opacity: apps.count == 0 && page.searchPage && appsModel.search.length == 0 ? 1 : 0
+            opacity: apps.count === 0 && page.searchPage && appsModel.search.length === 0 ? 1 : 0
             Behavior on opacity { NumberAnimation { duration: Kirigami.Units.shortDuration; easing.type: Easing.InOutQuad } }
 
             icon.name: "search"

@@ -6,9 +6,9 @@ import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 import org.kde.kirigami 2.19 as Kirigami
 
-DiscoverPage
-{
+DiscoverPage {
     id: page
+
     title: i18n("Updates")
 
     property string footerLabel: ""
@@ -56,7 +56,7 @@ DiscoverPage
                     Label {
                         id: friendlyMessage
                         Layout.fillWidth: true
-                        Layout.maximumWidth: Math.round(page.width*0.75)
+                        Layout.maximumWidth: Math.round(page.width * 0.75)
                         Layout.bottomMargin: Kirigami.Units.largeSpacing * 2
                         text: i18n("There was an issue installing this update. Please try again later.")
                         wrapMode: Text.WordWrap
@@ -79,7 +79,7 @@ DiscoverPage
                 ColumnLayout {
                     Label {
                         Layout.fillWidth: true
-                        Layout.maximumWidth: Math.round(page.width*0.75)
+                        Layout.maximumWidth: Math.round(page.width * 0.75)
                         text: i18n("If you would like to report the update issue to your distribution's packagers, include this information:")
                         wrapMode: Text.WordWrap
                     }
@@ -131,7 +131,7 @@ DiscoverPage
     readonly property var updateAction: Kirigami.Action
     {
         id: updateAction
-        text: page.unselected>0 ? i18n("Update Selected") : i18n("Update All")
+        text: page.unselected > 0 ? i18n("Update Selected") : i18n("Update All")
         visible: updateModel.toUpdateCount
         iconName: "update-none"
 
@@ -246,8 +246,7 @@ DiscoverPage
         }
     }
 
-    Kirigami.Action
-    {
+    Kirigami.Action {
         id: cancelUpdateAction
         iconName: "dialog-cancel"
         text: i18n("Cancel")
@@ -336,8 +335,8 @@ DiscoverPage
             Keys.onReturnPressed: {
                 itemChecked.clicked()
             }
-            Keys.onPressed: if (event.key===Qt.Key_Alt) model.extended = true
-            Keys.onReleased: if (event.key===Qt.Key_Alt) model.extended = false
+            Keys.onPressed: if (event.key === Qt.Key_Alt) model.extended = true
+            Keys.onReleased: if (event.key === Qt.Key_Alt) model.extended = false
 
             ColumnLayout {
                 id: layout
@@ -353,7 +352,7 @@ DiscoverPage
                         id: itemChecked
                         Layout.alignment: Qt.AlignVCenter
                         checked: model.checked === Qt.Checked
-                        onClicked: model.checked = (model.checked===Qt.Checked ? Qt.Unchecked : Qt.Checked)
+                        onClicked: model.checked = (model.checked === Qt.Checked ? Qt.Unchecked : Qt.Checked)
                         enabled: !resourcesUpdatesModel.isProgressing
                     }
 
@@ -384,15 +383,15 @@ DiscoverPage
                             Layout.fillWidth: true
                             elide: truncated ? Text.ElideLeft : Text.ElideRight
                             text: resource.upgradeText
-                            opacity: listItem.hovered? 0.8 : 0.6
+                            opacity: listItem.hovered ? 0.8 : 0.6
                         }
                     }
 
                     LabelBackground {
                         Layout.minimumWidth: Kirigami.Units.gridUnit * 6
-                        text: resourceState == 2 ? i18n("Installing") : size
+                        text: resourceState === 2 ? i18n("Installing") : size
 
-                        progress: resourceProgress/100
+                        progress: resourceProgress / 100
                     }
                 }
 
@@ -415,8 +414,9 @@ DiscoverPage
 
                     //This saves a binding loop on implictHeight, as the Label
                     //height is updated twice (first time with the wrong value)
-                    Behavior on implicitHeight
-                    { PropertyAnimation { duration: Kirigami.Units.shortDuration } }
+                    Behavior on implicitHeight {
+                        PropertyAnimation { duration: Kirigami.Units.shortDuration }
+                    }
                 }
 
                 RowLayout {
@@ -489,8 +489,8 @@ DiscoverPage
             // On mobile, we want "Update" to be the primary action so it's in
             // the center, but on desktop this feels a bit awkward and it would
             // be better to have "Update" be the right-most action
-            PropertyChanges { target: page.actions; main: applicationWindow().wideScreen ? refreshAction : updateAction}
-            PropertyChanges { target: page.actions; left: applicationWindow().wideScreen ? updateAction : refreshAction}
+            PropertyChanges { target: page.actions; main: applicationWindow().wideScreen ? refreshAction : updateAction }
+            PropertyChanges { target: page.actions; left: applicationWindow().wideScreen ? updateAction : refreshAction }
             PropertyChanges { target: statusLabel; visible: false }
         },
         State {

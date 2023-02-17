@@ -13,9 +13,9 @@ import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.OverlaySheet {
     id: page
-    parent: applicationWindow().overlay
 
     property alias model: reviewsView.model
+
     readonly property QtObject reviewsBackend: resource.backend.reviewsBackend
     readonly property var resource: model.resource
 
@@ -31,6 +31,8 @@ Kirigami.OverlaySheet {
         page.sheetOpen = false
         reviewDialog.open()
     }
+
+    parent: applicationWindow().overlay
 
     header: ColumnLayout {
         width: parent.width
@@ -48,7 +50,7 @@ Kirigami.OverlaySheet {
             Button {
                 id: reviewButton
 
-                visible: page.reviewsBackend != null
+                visible: page.reviewsBackend !== null
                 enabled: page.resource.isInstalled
                 text: i18n("Write a Review…")
                 onClicked: page.openReviewDialog()

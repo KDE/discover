@@ -11,8 +11,7 @@ import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 
-Kirigami.InlineMessage
-{
+Kirigami.InlineMessage {
     // resource is set by the creator of the element in ApplicationPage.
     //required property AbstractResource resource
     Layout.fillWidth: true

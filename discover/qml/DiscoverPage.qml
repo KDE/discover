@@ -7,8 +7,7 @@
 import QtQuick 2.15
 import org.kde.kirigami 2.14 as Kirigami
 
-Kirigami.ScrollablePage
-{
+Kirigami.ScrollablePage {
     id: root
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
@@ -43,14 +42,15 @@ Kirigami.ScrollablePage
         sequences: [ StandardKey.Refresh ]
         enabled: root.isCurrentPage && root.supportsRefreshing
         onActivated: {
-            if (root.supportsRefreshing)
+            if (root.supportsRefreshing) {
                 root.refreshing = true
+            }
         }
     }
 
     readonly property var readableCharacters: /\w+/
     Keys.onPressed: {
-        if(event.text.length > 0 && event.modifiers === Qt.NoModifier && event.text.match(readableCharacters)) {
+        if (event.text.length > 0 && event.modifiers === Qt.NoModifier && event.text.match(readableCharacters)) {
             window.globalDrawer.suggestSearchText(event.text)
         }
     }

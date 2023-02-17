@@ -18,18 +18,20 @@ Kirigami.AbstractListItem {
         }
         ProgressBar {
             Layout.fillWidth: true
-            value: TransactionModel.progress/100
+            value: TransactionModel.progress / 100
         }
     }
     visible: TransactionModel.count > 0
 
     property Kirigami.OverlaySheet sheetObject: null
     onClicked: {
-        if (!sheetObject)
+        if (!sheetObject) {
             sheetObject = sheet.createObject()
+        }
 
-        if (!sheetObject.sheetOpen)
+        if (!sheetObject.sheetOpen) {
             sheetObject.open()
+        }
     }
 
     readonly property var v3: Component {
@@ -77,7 +79,10 @@ Kirigami.AbstractListItem {
                     separatorVisible: false
                     hoverEnabled: false
 
-                    readonly property QtObject listener: listenerComp.createObject(del, (model.transaction.resource ? {resource: model.transaction.resource} : {transaction: model.transaction}))
+                    readonly property QtObject listener: listenerComp.createObject(del,
+                        (model.transaction.resource
+                            ? { resource: model.transaction.resource }
+                            : { transaction: model.transaction }))
 
                     contentItem: ColumnLayout {
 
@@ -94,10 +99,10 @@ Kirigami.AbstractListItem {
                                 Layout.alignment: Qt.AlignVCenter
                                 Layout.fillWidth: true
                                 elide: Text.ElideRight
-                                text: listener.isActive && model.transaction.remainingTime>0 ? i18nc("TransactioName - TransactionStatus: speed, remaining time", "%1 - %2: %3, %4 remaining", model.transaction.name, listener.statusText, model.transaction.downloadSpeedString, model.transaction.remainingTime) :
-                                      listener.isActive && model.transaction.downloadSpeed>0 ? i18nc("TransactioName - TransactionStatus: speed", "%1 - %2: %3", model.transaction.name, listener.statusText, model.transaction.downloadSpeedString) :
-                                                                           listener.isActive ? i18nc("TransactioName - TransactionStatus", "%1 - %2", model.transaction.name, listener.statusText)
-                                                                                             : model.transaction.name
+                                text: listener.isActive && model.transaction.remainingTime > 0 ? i18nc("TransactioName - TransactionStatus: speed, remaining time", "%1 - %2: %3, %4 remaining", model.transaction.name, listener.statusText, model.transaction.downloadSpeedString, model.transaction.remainingTime) :
+                                      listener.isActive && model.transaction.downloadSpeed > 0 ? i18nc("TransactioName - TransactionStatus: speed", "%1 - %2: %3", model.transaction.name, listener.statusText, model.transaction.downloadSpeedString) :
+                                                                             listener.isActive ? i18nc("TransactioName - TransactionStatus", "%1 - %2", model.transaction.name, listener.statusText)
+                                                                                               : model.transaction.name
                             }
                             ToolButton {
                                 icon.name: "dialog-cancel"

@@ -6,8 +6,7 @@
 
 import QtQuick 2.1
 
-QtObject
-{
+QtObject {
     id: root
 
     property Component componentTrue
@@ -15,8 +14,9 @@ QtObject
     property bool condition
 
     onConditionChanged: {
-        if (object)
+        if (object) {
             object.destroy(100)
+        }
 
         var component = (condition ? componentTrue : componentFalse)
         object = component ? component.createObject(root) : null

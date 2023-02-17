@@ -9,8 +9,7 @@ import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.kirigami 2.10 as Kirigami
 
-Kirigami.InlineMessage
-{
+Kirigami.InlineMessage {
     // resource is set by the creator of the element in ApplicationPage.
     //required property AbstractResource resource
     Layout.fillWidth: true

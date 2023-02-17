@@ -5,8 +5,9 @@ import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import QtQml 2.0
 
-UserFeedback.Provider
-{
+UserFeedback.Provider {
+    id: provider
+
     readonly property list<QtObject> actions: [
         Kirigami.Action {
             text: i18n("Submit usage information")
@@ -32,8 +33,6 @@ UserFeedback.Provider
             }
         }
     ]
-
-    id: provider
 
     submissionInterval: 7
     surveyInterval: -1

@@ -12,9 +12,11 @@ import QtGraphicalEffects 1.12
 
 ApplicationsListPage {
     id: searchPage
-    searchPage: true
 
     signal shown()
+
+    searchPage: true
+
     Timer {
         interval: 0
         running: true
@@ -22,18 +24,20 @@ ApplicationsListPage {
             searchPage.shown()
         }
     }
-    
+
+    topPadding: 0
+
     globalToolBarStyle: Kirigami.ApplicationHeaderStyle.ToolBar
-    
+
     titleDelegate: Controls.Control {
         Layout.fillWidth: true
         leftPadding: 0
         rightPadding: 0
         topPadding: 0
         bottomPadding: 0
-        
+
         z: 100
-        
+
         contentItem: SearchField {
             id: searchField
             focus: !window.wideScreen
@@ -54,6 +58,4 @@ ApplicationsListPage {
             }
         }
     }
-
-    topPadding: 0
 }

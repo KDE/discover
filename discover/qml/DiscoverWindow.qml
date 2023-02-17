@@ -8,9 +8,11 @@ import org.kde.kquickcontrolsaddons 2.0
 import org.kde.kirigami 2.19 as Kirigami
 import "navigation.js" as Navigation
 
-Kirigami.ApplicationWindow
-{
+Kirigami.ApplicationWindow {
     id: window
+
+    property string currentTopLevel
+
     readonly property string topBrowsingComp: ("qrc:/qml/BrowsingPage.qml")
     readonly property string topInstalledComp: ("qrc:/qml/InstalledPage.qml")
     readonly property string topSearchComp: ("qrc:/qml/SearchPage.qml")
@@ -18,13 +20,12 @@ Kirigami.ApplicationWindow
     readonly property string topSourcesComp: ("qrc:/qml/SourcesPage.qml")
     readonly property string topAboutComp: ("qrc:/qml/AboutPage.qml")
     readonly property QtObject stack: window.pageStack
-    property string currentTopLevel
 
     objectName: "DiscoverMainWindow"
     title: leftPage ? leftPage.title : ""
 
-    width: app.initialGeometry.width>=10 ? app.initialGeometry.width : Kirigami.Units.gridUnit * 52
-    height: app.initialGeometry.height>=10 ? app.initialGeometry.height : Math.max(Kirigami.Units.gridUnit * 38, window.globalDrawer.contentHeight)
+    width: app.initialGeometry.width >= 10 ? app.initialGeometry.width : Kirigami.Units.gridUnit * 52
+    height: app.initialGeometry.height >= 10 ? app.initialGeometry.height : Math.max(Kirigami.Units.gridUnit * 38, window.globalDrawer.contentHeight)
 
     visible: true
 
@@ -33,10 +34,10 @@ Kirigami.ApplicationWindow
 
     pageStack.defaultColumnWidth: Math.max(Kirigami.Units.gridUnit * 25, pageStack.width / 4)
     pageStack.globalToolBar.style: Kirigami.Settings.isMobile ? Kirigami.ApplicationHeaderStyle.Titles : Kirigami.ApplicationHeaderStyle.Auto
-    pageStack.globalToolBar.showNavigationButtons: pageStack.currentIndex == 0 ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ShowBackButton
+    pageStack.globalToolBar.showNavigationButtons: pageStack.currentIndex === 0 ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ShowBackButton
     pageStack.globalToolBar.canContainHandles: true // mobile handles in header
 
-    readonly property var leftPage: window.stack.depth>0 ? window.stack.get(0) : null
+    readonly property var leftPage: window.stack.depth > 0 ? window.stack.get(0) : null
 
     Component.onCompleted: {
         if (app.isRoot) {
@@ -77,8 +78,15 @@ Kirigami.ApplicationWindow
     }
     TopLevelPageData {
         id: updateAction
-        iconName: ResourcesModel.updatesCount>0 ? ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low" : "update-none"
-        text: ResourcesModel.updatesCount<=0 ? (ResourcesModel.isFetching ? i18n("Fetching &updates…") : i18n("&Up to date") ) : i18nc("Update section name", "&Update (%1)", ResourcesModel.updatesCount)
+
+        iconName: ResourcesModel.updatesCount <= 0
+            ? "update-none"
+            : (ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low")
+
+        text: ResourcesModel.updatesCount <= 0
+            ? (ResourcesModel.isFetching ? i18n("Fetching &updates…") : i18n("&Up to date"))
+            : i18nc("Update section name", "&Update (%1)", ResourcesModel.updatesCount)
+
         component: topUpdateComp
         objectName: "update"
     }
@@ -137,13 +145,13 @@ Kirigami.ApplicationWindow
 
         function onOpenSearch(search) {
             Navigation.clearStack()
-            Navigation.openApplicationList({search: search})
+            Navigation.openApplicationList({ search })
         }
 
         function onOpenErrorPage(errorMessage, errorExplanation, buttonText, buttonIcon, buttonUrl) {
             Navigation.clearStack()
-            console.warn("Error: " + errorMessage + "\n" + errorExplanation + "\n" + "Please visit " + buttonUrl)
-            window.stack.push(errorPageComponent, { title: i18n("Error"), errorMessage: errorMessage, errorExplanation: errorExplanation, buttonText: buttonText, buttonIcon: buttonIcon, buttonUrl: buttonUrl })
+            console.warn(`Error: ${errorMessage}\n${errorExplanation}\nPlease visit ${buttonUrl}`)
+            window.stack.push(errorPageComponent, { title: i18n("Error"), errorMessage, errorExplanation, buttonText, buttonIcon, buttonUrl })
         }
 
         function onUnableToFind(resid) {
@@ -189,8 +197,9 @@ Kirigami.ApplicationWindow
             property string buttonUrl: ""
             readonly property bool isHome: true
             function searchFor(text) {
-                if (text.length === 0)
+                if (text.length === 0) {
                     return;
+                }
                 Navigation.openCategory(null, "")
             }
             Kirigami.PlaceholderMessage {
@@ -306,7 +315,7 @@ Kirigami.ApplicationWindow
                 }
             }
 
-            onSheetOpenChanged: if(!sheetOpen) {
+            onSheetOpenChanged: if (!sheetOpen) {
                 sheet.destroy(1000)
             }
         }
@@ -318,7 +327,7 @@ Kirigami.ApplicationWindow
         property bool copyButtonEnabled: true
 
         function addMessage(message: string) {
-            messages.append({message: message});
+            messages.append({ message });
             app.restore()
         }
 
@@ -419,7 +428,7 @@ Kirigami.ApplicationWindow
             target: model.transaction ? model.transaction : null
 
             function onProceedRequest(title, description) {
-                var dialog = proceedDialog.createObject(window, {transaction: transaction, title: title, description: description})
+                var dialog = proceedDialog.createObject(window, { transaction, title, description })
                 dialog.open()
                 app.restore()
             }
@@ -429,16 +438,16 @@ Kirigami.ApplicationWindow
             }
 
             function onDistroErrorMessage(message, actions) {
-                var dialog = distroErrorMessageDialog.createObject(window, {transaction: transaction, title: i18n("Error"), message: message})
+                var dialog = distroErrorMessageDialog.createObject(window, { title: i18n("Error"), transaction, message })
                 dialog.open()
                 app.restore()
             }
             function onWebflowStarted(url) {
                 var component = Qt.createComponent("WebflowDialog.qml");
-                if (component.status == Component.Error) {
+                if (component.status === Component.Error) {
                     Qt.openUrlExternally(url);
                     console.error("Webflow Error", component.errorString())
-                } else if (component.status == Component.Ready) {
+                } else if (component.status === Component.Ready) {
                     const sheet = component.createObject(window, {transaction: transaction, url: url });
                     sheet.open()
                 }
@@ -460,8 +469,9 @@ Kirigami.ApplicationWindow
 
     onCurrentTopLevelChanged: {
         window.pageStack.clear()
-        if (currentTopLevel)
-            window.pageStack.push(currentTopLevel, {}, window.status!==Component.Ready)
+        if (currentTopLevel) {
+            window.pageStack.push(currentTopLevel, {}, window.status !== Component.Ready)
+        }
         globalDrawer.forceSearchFieldFocus();
     }
 

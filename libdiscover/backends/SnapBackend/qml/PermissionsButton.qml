@@ -8,13 +8,13 @@ import QtQuick 2.1
 import QtQuick.Controls 2.1
 import org.kde.kirigami 2.14 as Kirigami
 
-Button
-{
+Button {
     id: root
+
     text: i18nd("libdiscover", "Configure permissions…")
+    visible: resource.isInstalled && view.count > 0
 
     onClicked: overlay.open()
-    visible: resource.isInstalled && view.count > 0
 
     Kirigami.OverlaySheet {
         id: overlay
@@ -28,7 +28,9 @@ Button
             model: resource.plugs(root)
             Connections {
                 target: view.model
-                function onError(message) { overlay.errorMessage = message }
+                function onError(message) {
+                    overlay.errorMessage = message
+                }
             }
             header: DiscoverInlineMessage {
                 inlineMessage: overlay.errorMessage

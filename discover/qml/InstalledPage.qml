@@ -7,6 +7,7 @@ import org.kde.kirigami 2.14 as Kirigami
 
 ApplicationsListPage {
     id: page
+
     stateFilter: AbstractResource.Installed
     allBackends: true
     sortProperty: "installedPageSorting"

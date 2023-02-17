@@ -31,12 +31,13 @@ Kirigami.GlobalDrawer {
     property string currentSearchText
 
     onCurrentSubMenuChanged: {
-        if (currentSubMenu)
+        if (currentSubMenu) {
             currentSubMenu.trigger()
-        else if (currentSearchText.length > 0)
+        } else if (currentSearchText.length > 0) {
             window.leftPage.category = null
-        else
+        } else {
             Navigation.openHome()
+        }
     }
 
     function suggestSearchText(text) {
@@ -76,15 +77,16 @@ Kirigami.GlobalDrawer {
             onCurrentSearchTextChanged: {
                 var curr = window.leftPage;
 
-                if (pageStack.depth>1)
+                if (pageStack.depth > 1) {
                     pageStack.pop()
+                }
 
                 if (currentSearchText === "" && window.currentTopLevel === "" && !window.leftPage.category) {
                     Navigation.openHome()
                 } else if (!curr.hasOwnProperty("search")) {
                     if (currentSearchText) {
                         Navigation.clearStack()
-                        Navigation.openApplicationList( { search: currentSearchText })
+                        Navigation.openApplicationList({ search: currentSearchText })
                     }
                 } else {
                     curr.search = currentSearchText;
@@ -170,11 +172,12 @@ Kirigami.GlobalDrawer {
                    || (category && category.contains(window.leftPage.subcategories))
                      )
             onTriggered: {
-                if (!window.leftPage.canNavigate)
+                if (!window.leftPage.canNavigate) {
                     Navigation.openCategory(category, currentSearchText)
-                else {
-                    if (pageStack.depth>1)
+                } else {
+                    if (pageStack.depth > 1) {
                         pageStack.pop()
+                    }
                     pageStack.currentIndex = 0
                     window.leftPage.category = category
                 }
@@ -187,12 +190,12 @@ Kirigami.GlobalDrawer {
     }
 
     function createCategoryActions(categories) {
-        return categories.map((cat) => {
-            return categoryActionComponent.createObject(drawer, {
-                category: cat,
-                children: createCategoryActions(cat.subcategories)
-            });
-        });
+        return categories.map(category =>
+            categoryActionComponent.createObject(drawer, {
+                category,
+                children: createCategoryActions(category.subcategories),
+            })
+        );
     }
 
     actions: createCategoryActions(CategoryModel.rootCategories)

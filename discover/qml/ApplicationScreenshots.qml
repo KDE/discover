@@ -14,6 +14,7 @@ import org.kde.kirigami 2.19 as Kirigami
 
 ListView {
     id: root
+
     readonly property alias count: screenshotsModel.count
     property bool showNavigationArrows: true
     property alias resource: screenshotsModel.application
@@ -37,7 +38,8 @@ ListView {
 
     delegate: AbstractButton {
         readonly property url imageSource: large_image_url
-        readonly property real proportion: thumbnail.status === Image.Ready && thumbnail.sourceSize.width>1 ? thumbnail.sourceSize.height/thumbnail.sourceSize.width : 1
+        readonly property real proportion: (thumbnail.status === Image.Ready && thumbnail.sourceSize.width > 1)
+            ? (thumbnail.sourceSize.height / thumbnail.sourceSize.width) : 1
 
         implicitWidth: root.delegateHeight / proportion
         implicitHeight: root.delegateHeight
@@ -83,11 +85,11 @@ ListView {
         modal: true
         clip: false
 
-        x: (parent.width - width)/2
-        y: (parent.height - height)/2
-        readonly property real proportion: overlayImage.sourceSize.width>1 ? overlayImage.sourceSize.height/overlayImage.sourceSize.width : 1
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+        readonly property real proportion: (overlayImage.sourceSize.width > 1) ? (overlayImage.sourceSize.height / overlayImage.sourceSize.width) : 1
         height: overlayImage.status >= Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
-        width: (height - 2 * padding)/proportion
+        width: (height - 2 * padding) / proportion
 
         BusyIndicator {
             id: indicator
@@ -156,7 +158,6 @@ ListView {
             onTriggered: root.currentIndex = (root.currentIndex + 1) % screenshotsModel.count
         }
     }
-
 
     clip: true
 

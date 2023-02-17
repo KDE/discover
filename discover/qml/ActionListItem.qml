@@ -9,10 +9,11 @@ import QtQuick.Controls 2.5 as QQC2
 
 import org.kde.kirigami 2.14 as Kirigami
 
-Kirigami.BasicListItem
-{
+Kirigami.BasicListItem {
     id: item
+
     property QtObject action: null
+
     checked: action.checked
     icon: action.iconName
     separatorVisible: false

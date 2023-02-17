@@ -4,9 +4,9 @@ import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.kirigami 2.14 as Kirigami
 
-ConditionalLoader
-{
+ConditionalLoader {
     id: root
+
     property Component additionalItem: null
     property alias application: listener.resource
 
@@ -31,7 +31,9 @@ ConditionalLoader
         }
         icon {
             name: application.isInstalled ? "edit-delete" : "download"
-            color: !enabled ? Kirigami.Theme.backgroundColor : !listener.isActive ? (application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor) : Kirigami.Theme.backgroundColor
+            color: !listener.isActive && enabled
+                ? (application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor)
+                : Kirigami.Theme.backgroundColor
         }
         visible: !listener.isActive && (!application.isInstalled || application.isRemovable)
         enabled: !listener.isActive && root.isStateAvailable
@@ -52,12 +54,13 @@ ConditionalLoader
 
     function click() {
         if (!isActive) {
-            if(application.isInstalled)
+            if(application.isInstalled) {
                 ResourcesModel.removeApplication(application);
-            else
+            } else {
                 ResourcesModel.installApplication(application);
+            }
         } else {
-            console.warn("trying to un/install but resource still active", application.name)
+            console.warn("trying to un/install but resource still active", application.name);
         }
     }
 
@@ -74,7 +77,7 @@ ConditionalLoader
         LabelBackground {
             Layout.fillWidth: true
             text: listener.statusText
-            progress: listener.progress/100
+            progress: listener.progress / 100
         }
     }
 

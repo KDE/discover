@@ -8,9 +8,9 @@ import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import org.kde.kirigami 2.14 as Kirigami
 
-RowLayout
-{
+RowLayout {
     id: view
+
     property bool editable: false
     property int max: 10
     property int rating: 0
@@ -19,7 +19,7 @@ RowLayout
     clip: true
     spacing: 0
 
-    readonly property var ratingIndex: (theRepeater.count/view.max)*view.rating
+    readonly property var ratingIndex: (theRepeater.count / max) * rating
 
     Repeater {
         id: theRepeater
@@ -33,7 +33,7 @@ RowLayout
             width: height
             source: "rating"
             opacity: (view.editable && mouse.item.containsMouse ? 0.7
-                        : index>=view.ratingIndex ? 0.2
+                        : index >= view.ratingIndex ? 0.2
                         : 1)
 
             ConditionalLoader {
@@ -43,7 +43,7 @@ RowLayout
                 condition: view.editable
                 componentTrue: MouseArea {
                     hoverEnabled: true
-                    onClicked: rating = (max/theRepeater.model*(index+1))
+                    onClicked: rating = (view.max / theRepeater.count * (index + 1))
                 }
                 componentFalse: null
             }

@@ -14,9 +14,9 @@ import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 import org.kde.kirigami 2.19 as Kirigami
 
-DiscoverPage
-{
+DiscoverPage {
     id: page
+
     title: i18n("Discover")
     objectName: "featured"
 
@@ -29,8 +29,9 @@ DiscoverPage
     readonly property bool isHome: true
 
     function searchFor(text) {
-        if (text.length === 0)
+        if (text.length === 0) {
             return;
+        }
         Navigation.openCategory(null, "")
     }
 

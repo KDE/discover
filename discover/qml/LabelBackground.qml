@@ -10,12 +10,14 @@ import QtQuick.Layouts 1.1
 import org.kde.discover.app 1.0
 import org.kde.kirigami 2.14 as Kirigami
 
-Control
-{
+Control {
     id: root
+
     property alias text: theLabel.text
     property real progress: 1.0
+
     readonly property bool inProgress: progress > 0
+
     padding: Kirigami.Units.smallSpacing * 1.5
 
     background: Item {
@@ -32,12 +34,12 @@ Control
             anchors {
                 fill: parent
                 leftMargin: 1
-                rightMargin: ((1-root.progress) * parent.width) + 1
+                rightMargin: 1 + ((1 - root.progress) * parent.width)
                 topMargin: 1
                 bottomMargin: 1
             }
             color: Kirigami.Theme.highlightColor
-            radius: root.padding-2
+            radius: root.padding - 2
         }
     }
 

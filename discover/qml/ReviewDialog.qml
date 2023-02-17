@@ -3,22 +3,23 @@ import QtQuick.Controls 2.15 as QQC2
 import QtQuick.Layouts 1.1
 import org.kde.kirigami 2.20 as Kirigami
 
-Kirigami.PromptDialog
-{
+Kirigami.PromptDialog {
     id: reviewDialog
-    preferredWidth: Kirigami.Units.gridUnit * 30
 
     property QtObject application
+    property QtObject backend
+
     readonly property alias rating: ratingInput.rating
     readonly property alias name: nameInput.text
     readonly property alias summary: titleInput.text
     readonly property alias review: reviewInput.text
-    property QtObject backend: null
+
+    preferredWidth: Kirigami.Units.gridUnit * 30
 
     title: i18n("Reviewing %1", application.name)
 
     standardButtons: Kirigami.Dialog.NoButton
-    
+
     customFooterActions: [
         Kirigami.Action {
             text: i18n("Submit review")
@@ -27,7 +28,7 @@ Kirigami.PromptDialog
             onTriggered: reviewDialog.accept();
         }
     ]
-    
+
     ColumnLayout {
         Kirigami.FormLayout {
             Layout.fillWidth: true
@@ -64,12 +65,24 @@ Kirigami.PromptDialog
             id: instructionalLabel
             Layout.fillWidth: true
             text: {
-                if (rating < 2) return i18n("Enter a rating");
-                if (! titleInput.acceptableInput) return i18n("Write the title");
-                if (reviewInput.length === 0) return i18n("Write the review");
-                if (reviewInput.length < 15) return i18n("Keep writing…");
-                if (reviewInput.length > 3000) return i18n("Too long!");
-                if (nameInput.visible && nameInput.length < 1) return i18nc("@info:usagetip", "Insert a name");
+                if (rating < 2) {
+                    return i18n("Enter a rating");
+                }
+                if (!titleInput.acceptableInput) {
+                    return i18n("Write the title");
+                }
+                if (reviewInput.length === 0) {
+                    return i18n("Write the review");
+                }
+                if (reviewInput.length < 15) {
+                    return i18n("Keep writing…");
+                }
+                if (reviewInput.length > 3000) {
+                    return i18n("Too long!");
+                }
+                if (nameInput.visible && nameInput.length < 1) {
+                    return i18nc("@info:usagetip", "Insert a name");
+                }
                 return "";
             }
             wrapMode: Text.WordWrap

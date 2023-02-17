@@ -13,9 +13,9 @@ import "navigation.js" as Navigation
 import org.kde.discover 2.0
 import org.kde.kirigami 2.14 as Kirigami
 
-Kirigami.AbstractCard
-{
+Kirigami.AbstractCard {
     id: delegateArea
+
     property alias application: installButton.application
     property bool compact: false
     property bool showRating: true
@@ -26,8 +26,9 @@ Kirigami.AbstractCard
 
     function trigger() {
         const view = typeof delegateRecycler !== 'undefined' ? delegateRecycler.ListView.view : ListView.view
-        if (view)
+        if (view) {
             view.currentIndex = index
+        }
         Navigation.openApplication(application)
     }
     highlighted: ListView.isCurrentItem || (typeof delegateRecycler !== 'undefined' && delegateRecycler.ListView.isCurrentItem)

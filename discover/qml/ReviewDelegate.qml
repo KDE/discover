@@ -12,10 +12,13 @@ import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.AbstractCard {
     id: reviewDelegateItem
-    visible: model.shouldShow
+
     property bool compact: false
     property bool separator: true
+
     signal markUseful(bool useful)
+
+    visible: model.shouldShow
 
     // Spacers to indent nested comments/replies
     Layout.leftMargin: depth * Kirigami.Units.largeSpacing

@@ -36,8 +36,9 @@ DiscoverPage {
     readonly property bool isOfflineUpgrade: application.packageName === "discover-offline-upgrade"
 
     function searchFor(text) {
-        if (text.length === 0)
+        if (text.length === 0) {
             return;
+        }
         Navigation.openCategory(null, "")
     }
 
@@ -74,7 +75,7 @@ DiscoverPage {
                 icon.name: sourceIcon
                 checkable: true
                 checked: appInfo.application === model.application
-                onTriggered: if(index>=0) {
+                onTriggered: if (index >= 0) {
                     appInfo.application = model.application
                 }
             }
@@ -562,12 +563,12 @@ DiscoverPage {
                     Layout.maximumWidth: externalResourcesLayout.buttonWidth
                     Layout.minimumHeight: externalResourcesLayout.tallestButtonHeight
 
-                    visible: application.helpURL != ""
+                    visible: application.helpURL.toString() !== ""
 
                     buttonIcon: "documentation"
                     title: i18n("Documentation")
                     subtitle: i18n("Read the project's official documentation")
-                    tooltipText: application.helpURL
+                    tooltipText: application.helpURL.toString()
 
                     onClicked: Qt.openUrlExternally(application.helpURL);
                 }
@@ -579,12 +580,12 @@ DiscoverPage {
                     Layout.maximumWidth: externalResourcesLayout.buttonWidth
                     Layout.minimumHeight: externalResourcesLayout.tallestButtonHeight
 
-                    visible: application.homepage != ""
+                    visible: application.homepage.toString() !== ""
 
                     buttonIcon: "internet-services"
                     title: i18n("Website")
                     subtitle: i18n("Visit the project's website")
-                    tooltipText: application.homepage
+                    tooltipText: application.homepage.toString()
 
                     onClicked: Qt.openUrlExternally(application.homepage);
                 }
@@ -724,7 +725,7 @@ DiscoverPage {
             // Review-related buttons
             Flow {
                 Layout.fillWidth: true
-                Layout.bottomMargin: appInfo.internalSpacings *2
+                Layout.bottomMargin: appInfo.internalSpacings * 2
 
                 spacing: appInfo.internalSpacings
 
@@ -765,8 +766,8 @@ DiscoverPage {
                 id: getInvolvedLayout
 
                 readonly property int visibleButtons: (donateButton.visible ? 1 : 0)
-                                                    + (bugButton.visible ? 1: 0)
-                                                    + (contributeButton.visible ? 1: 0)
+                                                    + (bugButton.visible ? 1 : 0)
+                                                    + (contributeButton.visible ? 1 : 0)
                 readonly property int buttonWidth: Math.round(textualContentLayout.width / visibleButtons)
                 readonly property int tallestButtonHeight: Math.max(donateButton.implicitHeight,
                                                                     bugButton.implicitHeight,
@@ -785,12 +786,12 @@ DiscoverPage {
                     Layout.maximumWidth: getInvolvedLayout.buttonWidth
                     Layout.minimumHeight: getInvolvedLayout.tallestButtonHeight
 
-                    visible: application.donationURL != ""
+                    visible: application.donationURL.toString() !== ""
 
                     buttonIcon: "help-donate"
                     title: i18n("Donate")
                     subtitle: i18n("Support and thank the developers by donating to their project")
-                    tooltipText: application.donationURL
+                    tooltipText: application.donationURL.toString()
 
                     onClicked: Qt.openUrlExternally(application.donationURL);
                 }
@@ -802,12 +803,12 @@ DiscoverPage {
                     Layout.maximumWidth: getInvolvedLayout.buttonWidth
                     Layout.minimumHeight: getInvolvedLayout.tallestButtonHeight
 
-                    visible: application.bugURL != ""
+                    visible: application.bugURL.toString() !== ""
 
                     buttonIcon: "tools-report-bug"
                     title: i18n("Report Bug")
                     subtitle: i18n("Log an issue you found to help get it fixed")
-                    tooltipText: application.bugURL
+                    tooltipText: application.bugURL.toString()
 
                     onClicked: Qt.openUrlExternally(application.bugURL);
                 }
@@ -819,11 +820,13 @@ DiscoverPage {
                     Layout.maximumWidth: getInvolvedLayout.buttonWidth
                     Layout.minimumHeight: getInvolvedLayout.tallestButtonHeight
 
-                    visible: application.contributeURL != ""
+                    visible: application.contributeURL.toString() !== ""
+
+                    buttonIcon: "project-development"
                     title: i18n("Contribute")
                     subtitle: i18n("Help the developers by coding, designing, testing, or translating")
-                    tooltipText: application.contributeURL
-                    buttonIcon: "project-development"
+                    tooltipText: application.contributeURL.toString()
+
                     onClicked: Qt.openUrlExternally(application.contributeURL);
                 }
             }
@@ -868,7 +871,9 @@ DiscoverPage {
                         text: modelData.name
                         url: modelData.url
                         horizontalAlignment: Text.AlignLeft
-                        color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
+                        color: !modelData.hasFreedom
+                            ? Kirigami.Theme.neutralTextColor
+                            : (enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor)
                     }
                 }
             }
@@ -896,9 +901,9 @@ DiscoverPage {
         TextEdit {
             readonly property string proprietarySoftwareExplanationPage: "https://www.gnu.org/proprietary"
 
-            text: homepageButton.visible ?
-                xi18nc("@info", "This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can learn more at <link url='%3'>%3</link>.", application.homepage, author.text, proprietarySoftwareExplanationPage) :
-                xi18nc("@info", "This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (%1).<nl/><nl/>You can learn more at <link url='%2'>%2</link>.", author.text, proprietarySoftwareExplanationPage)
+            text: homepageButton.visible
+                ? xi18nc("@info", "This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can learn more at <link url='%3'>%3</link>.", application.homepage, author.text, proprietarySoftwareExplanationPage)
+                : xi18nc("@info", "This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (%1).<nl/><nl/>You can learn more at <link url='%2'>%2</link>.", author.text, proprietarySoftwareExplanationPage)
             wrapMode: Text.Wrap
             textFormat: TextEdit.RichText
             readOnly: true
@@ -907,7 +912,7 @@ DiscoverPage {
             selectedTextColor: Kirigami.Theme.highlightedTextColor
             selectionColor: Kirigami.Theme.highlightColor
 
-            onLinkActivated: (url) => Qt.openUrlExternally(url)
+            onLinkActivated: url => Qt.openUrlExternally(url)
 
             HoverHandler {
                 acceptedButtons: Qt.NoButton

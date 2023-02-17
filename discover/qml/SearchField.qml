@@ -9,8 +9,7 @@ import QtQuick 2.5
 import QtQuick.Controls 2.1
 import org.kde.kirigami 2.14 as Kirigami
 
-Kirigami.SearchField
-{
+Kirigami.SearchField {
     id: searchField
 
     // Search operations are network-intensive, so we can't have search-as-you-type.
@@ -44,8 +43,9 @@ Kirigami.SearchField
     Connections {
         target: applicationWindow()
         function onCurrentTopLevelChanged() {
-            if (applicationWindow().currentTopLevel.length > 0)
+            if (applicationWindow().currentTopLevel.length > 0) {
                 clearText()
+            }
         }
     }
 }

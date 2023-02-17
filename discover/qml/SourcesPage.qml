@@ -9,10 +9,12 @@ import org.kde.kquickcontrolsaddons 2.0 as KQCA
 
 DiscoverPage {
     id: page
-    clip: true
-    title: i18n("Settings")
+
     property string search: ""
     readonly property string name: title
+
+    clip: true
+    title: i18n("Settings")
 
     Kirigami.Action {
         id: configureUpdatesAction
@@ -39,7 +41,6 @@ DiscoverPage {
                     text: modelData.inlineAction ? modelData.inlineAction.text : ""
                     onTriggered: modelData.inlineAction.trigger()
                 }
-
             }
         }
     }
@@ -67,7 +68,11 @@ DiscoverPage {
                     window.showPassiveNotification(message)
                 }
                 function onProceedRequest(title, description) {
-                    var dialog = sourceProceedDialog.createObject(window, {sourcesBackend: backendItem.backend, title: title, description: description})
+                    var dialog = sourceProceedDialog.createObject(window, {
+                        sourcesBackend: backendItem.backend,
+                        title,
+                        description,
+                    })
                     dialog.open()
                 }
             }
@@ -106,14 +111,16 @@ DiscoverPage {
                             AddSourceDialog {
                                 source: backendItem.backend
 
-                                onVisibleChanged: if(!visible) {
+                                onVisibleChanged: if (!visible) {
                                     destroy(1000)
                                 }
                             }
                         }
 
                         onTriggered: {
-                            var addSourceDialog = dialogComponent.createObject(window, {displayName: backendItem.backend.resourcesBackend.displayName })
+                            var addSourceDialog = dialogComponent.createObject(window, {
+                                displayName: backendItem.backend.resourcesBackend.displayName,
+                            })
                             addSourceDialog.open()
                         }
                     }
@@ -132,11 +139,15 @@ DiscoverPage {
                     }
 
                     function mergeActions(moreActions) {
-                        var actions = [isDefaultbackendLabelAction,
-                                    makeDefaultAction,
-                                    addSourceAction]
-                        for(var i in moreActions) {
-                            actions.push(kirigamiAction.createObject(actionBar, {action: moreActions[i]}))
+                        var actions = [
+                            isDefaultbackendLabelAction,
+                            makeDefaultAction,
+                            addSourceAction
+                        ]
+                        for (var i in moreActions) {
+                            actions.push(kirigamiAction.createObject(actionBar, {
+                                action: moreActions[i]
+                            }))
                         }
                         return actions;
                     }
@@ -186,20 +197,21 @@ DiscoverPage {
                         }
                     }
                 }
-                onSheetOpenChanged: if(!sheetOpen) {
+                onSheetOpenChanged: if (!sheetOpen) {
                     sheet.destroy(1000)
-                    if (!sheet.acted)
+                    if (!sheet.acted) {
                         sourcesBackend.cancel()
+                    }
                 }
             }
         }
 
         delegate: Kirigami.SwipeListItem {
             id: delegate
-            enabled: model.display.length>0 && model.enabled
+            enabled: model.display.length > 0 && model.enabled
             highlighted: ListView.isCurrentItem
             supportsMouseEvents: false
-            visible: model.display.indexOf(page.search)>=0
+            visible: model.display.indexOf(page.search) >= 0
             height: visible ? implicitHeight : 0
 
             Keys.onReturnPressed: enabledBox.clicked()
@@ -212,8 +224,9 @@ DiscoverPage {
                     visible: sourcesBackend.canMoveSources
                     onTriggered: {
                         var ret = sourcesBackend.moveSource(sourceId, -1)
-                        if (!ret)
+                        if (!ret) {
                             window.showPassiveNotification(i18n("Failed to increase '%1' preference", model.display))
+                        }
                     }
                 },
                 Kirigami.Action {
@@ -223,8 +236,9 @@ DiscoverPage {
                     visible: sourcesBackend.canMoveSources
                     onTriggered: {
                         var ret = sourcesBackend.moveSource(sourceId, +1)
-                        if (!ret)
+                        if (!ret) {
                             window.showPassiveNotification(i18n("Failed to decrease '%1' preference", model.display))
+                        }
                     }
                 },
                 Kirigami.Action {
@@ -252,13 +266,13 @@ DiscoverPage {
                 CheckBox {
                     id: enabledBox
 
-                    readonly property variant idx: sourcesView.model.index(index, 0)
-                    readonly property variant modelChecked: model.checkState
+                    readonly property var idx: sourcesView.model.index(index, 0)
+                    readonly property var modelChecked: model.checkState
                     checked: modelChecked !== Qt.Unchecked
                     enabled: sourcesView.model.flags(idx) & Qt.ItemIsUserCheckable
                     onClicked: {
                         sourcesView.model.setData(idx, checkState, Qt.CheckStateRole)
-                        checked = Qt.binding(function() { return modelChecked !== Qt.Unchecked; })
+                        checked = Qt.binding(() => (modelChecked !== Qt.Unchecked))
                     }
                 }
                 Label {
@@ -280,7 +294,7 @@ DiscoverPage {
             Kirigami.Heading {
                 Layout.fillWidth: true
                 text: i18n("Missing Backends")
-                visible: back.count>0
+                visible: back.count > 0
             }
             spacing: 0
             Repeater {

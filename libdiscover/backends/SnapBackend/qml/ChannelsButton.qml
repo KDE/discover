@@ -9,9 +9,9 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
 import org.kde.kirigami 2.14 as Kirigami
 
-Button
-{
+Button {
     id: root
+
     text: i18nd("libdiscover", "Channels…")
 
     onClicked: overlay.open()
@@ -19,6 +19,7 @@ Button
 
     Kirigami.OverlaySheet {
         id: overlay
+
         parent: applicationWindow().overlay
         title: i18nd("libdiscover", "%1 channels", resource.name)
 

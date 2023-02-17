@@ -7,12 +7,13 @@
 import QtQuick 2.15
 import org.kde.kirigami 2.19 as Kirigami
 
-Loader
-{
+Loader {
     id: root
+
     property QtObject inlineMessage
 
-    active: inlineMessage
+    active: inlineMessage !== null
+
     sourceComponent: Kirigami.InlineMessage {
         text: root.inlineMessage.message
         type: root.inlineMessage.type
@@ -25,7 +26,7 @@ Loader
             id: comp
             ConvertDiscoverAction {}
         }
-        actions: root.inlineMessage.actions.map((discoverAction) => comp.createObject(this, {action: discoverAction}) )
+        actions: root.inlineMessage.actions.map(action => comp.createObject(this, { action }))
         visible: true
     }
 }

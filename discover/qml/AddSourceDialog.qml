@@ -9,9 +9,9 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import org.kde.kirigami 2.20 as Kirigami
 
-Kirigami.PromptDialog
-{
+Kirigami.PromptDialog {
     id: newSourceDialog
+
     preferredWidth: Kirigami.Units.gridUnit * 20
 
     property string displayName
@@ -24,7 +24,7 @@ Kirigami.PromptDialog
             repository.forceActiveFocus();
         }
     }
-    
+
     standardButtons: Kirigami.Dialog.NoButton
     
     onAccepted: {
@@ -34,11 +34,11 @@ Kirigami.PromptDialog
             repository.color = Kirigami.Theme.negativeTextColor
         }
     }
-    
+
     onRejected: {
         newSourceDialog.close()
     }
-    
+
     customFooterActions: [
         Kirigami.Action {
             text: i18n("Add")
