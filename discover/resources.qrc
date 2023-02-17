@@ -31,7 +31,6 @@
     <file>qml/ActionListItem.qml</file>
     <file>qml/LoadingPage.qml</file>
     <file>qml/SearchField.qml</file>
-    <file>qml/Shadow.qml</file>
     <file>qml/AboutPage.qml</file>
     <file>qml/Feedback.qml</file>
     <file>qml/ConvertDiscoverAction.qml</file>
