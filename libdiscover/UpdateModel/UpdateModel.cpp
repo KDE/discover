@@ -74,8 +74,9 @@ void UpdateModel::setBackend(ResourcesUpdatesModel *updates)
 void UpdateModel::resourceHasProgressed(AbstractResource *res, qreal progress, AbstractBackendUpdater::State state)
 {
     UpdateItem *item = itemFromResource(res);
-    if (!item)
+    if (!item) {
         return;
+    }
     item->setProgress(progress);
     item->setState(state);
 
@@ -93,8 +94,9 @@ void UpdateModel::activityChanged()
             for (auto item : qAsConst(m_updateItems)) {
                 item->setProgress(0);
             }
-        } else
+        } else {
             setResources(m_updates->toUpdate());
+        }
     }
 }
 
@@ -150,16 +152,18 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
 
 void UpdateModel::checkResources(const QList<AbstractResource *> &resource, bool checked)
 {
-    if (checked)
+    if (checked) {
         m_updates->addResources(resource);
-    else
+    } else {
         m_updates->removeResources(resource);
+    }
 }
 
 Qt::ItemFlags UpdateModel::flags(const QModelIndex &index) const
 {
-    if (!index.isValid())
+    if (!index.isValid()) {
         return Qt::NoItemFlags;
+    }
 
     return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 }
@@ -200,8 +204,9 @@ void UpdateModel::fetchUpdateDetails(int row)
 {
     UpdateItem *item = itemFromIndex(index(row, 0));
     Q_ASSERT(item);
-    if (!item)
+    if (!item) {
         return;
+    }
 
     item->app()->fetchUpdateDetails();
 }
@@ -211,8 +216,9 @@ void UpdateModel::integrateChangelog(const QString &changelog)
     auto app = qobject_cast<AbstractResource *>(sender());
     Q_ASSERT(app);
     auto item = itemFromResource(app);
-    if (!item)
+    if (!item) {
         return;
+    }
 
     item->setChangelog(changelog);
 
@@ -306,8 +312,9 @@ int UpdateModel::totalUpdatesCount() const
 UpdateItem *UpdateModel::itemFromResource(AbstractResource *res)
 {
     for (UpdateItem *item : qAsConst(m_updateItems)) {
-        if (item->app() == res)
+        if (item->app() == res) {
             return item;
+        }
     }
     return nullptr;
 }
@@ -336,13 +343,14 @@ UpdateItem *UpdateModel::itemFromIndex(const QModelIndex &index) const
 void UpdateModel::resourceDataChanged(AbstractResource *res, const QVector<QByteArray> &properties)
 {
     auto item = itemFromResource(res);
-    if (!item)
+    if (!item) {
         return;
+    }
 
     const auto index = indexFromItem(item);
-    if (properties.contains("state"))
+    if (properties.contains("state")) {
         Q_EMIT dataChanged(index, index, {SizeRole, UpgradeTextRole});
-    else if (properties.contains("size")) {
+    } else if (properties.contains("size")) {
         Q_EMIT dataChanged(index, index, {SizeRole});
         m_updateSizeTimer->start();
     }
