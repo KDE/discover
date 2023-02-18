@@ -330,7 +330,7 @@ FlatpakBackend::~FlatpakBackend()
     }
     m_threadPool.clear();
 
-    for (auto inst : qAsConst(m_installations))
+    for (auto inst : std::as_const(m_installations))
         g_object_unref(inst);
     m_installations.clear();
     g_object_unref(m_cancellable);
@@ -968,7 +968,7 @@ void FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *st
 
 void FlatpakBackend::loadAppsFromAppstreamData()
 {
-    for (auto installation : qAsConst(m_installations)) {
+    for (auto installation : std::as_const(m_installations)) {
         // Load applications from appstream metadata
         if (g_cancellable_is_cancelled(m_cancellable))
             break;
@@ -1038,7 +1038,7 @@ void FlatpakBackend::metadataRefreshed(FlatpakRemote *remote)
     const bool removed = m_refreshAppstreamMetadataJobs.remove(remote);
     Q_ASSERT(removed);
     if (m_refreshAppstreamMetadataJobs.isEmpty()) {
-        for (auto installation : qAsConst(m_installations)) {
+        for (auto installation : std::as_const(m_installations)) {
             // Load local updates, comparing current and latest commit
             loadLocalUpdates(installation);
 
@@ -1098,14 +1098,14 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
 {
     Q_ASSERT(m_refreshAppstreamMetadataJobs.contains(remote));
     m_sources->addRemote(remote, flatpakInstallation);
-    for (auto source : qAsConst(m_flatpakSources)) {
+    for (auto source : std::as_const(m_flatpakSources)) {
         if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation
             && source->name() == flatpak_remote_get_name(remote)) {
             createPool(source);
             return source;
         }
     }
-    for (auto source : qAsConst(m_flatpakLoadingSources)) {
+    for (auto source : std::as_const(m_flatpakLoadingSources)) {
         if (source->url() == flatpak_remote_get_url(remote) && source->installation() == flatpakInstallation
             && source->name() == flatpak_remote_get_name(remote)) {
             createPool(source);
@@ -1439,7 +1439,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 QVector<AbstractResource *> resources;
                 for (auto it = refs.constBegin(), itEnd = refs.constEnd(); it != itEnd; ++it) {
                     resources.reserve(resources.size() + it->size());
-                    for (auto ref : qAsConst(it.value())) {
+                    for (auto ref : std::as_const(it.value())) {
                         bool fresh;
                         auto resource = getAppForInstalledRef(it.key(), ref, &fresh);
                         g_object_unref(ref);
@@ -1550,7 +1550,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
     auto f = [this, stream, filter]() {
         QVector<AbstractResource *> prioritary, rest;
-        for (const auto &source : qAsConst(m_flatpakSources)) {
+        for (const auto &source : std::as_const(m_flatpakSources)) {
             QList<FlatpakResource *> resources;
             if (source->m_pool) {
                 const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search)
@@ -1714,7 +1714,7 @@ void FlatpakBackend::checkRepositories(const QMap<QString, QStringList> &names)
     g_autoptr(GError) localError = nullptr;
     for (auto it = names.begin(), itEnd = names.end(); it != itEnd; ++it) {
         FlatpakInstallation *installation = flatpakInstallationByPath(it.key());
-        for (const QString &name : qAsConst(*it)) {
+        for (const QString &name : std::as_const(*it)) {
             auto remote = flatpak_installation_get_remote_by_name(installation, name.toUtf8(), m_cancellable, &localError);
             if (!remote) {
                 qWarning() << "Could not find remote" << name << "in" << it.key();
@@ -1826,7 +1826,7 @@ Transaction *FlatpakBackend::removeApplication(AbstractResource *app)
 
 void FlatpakBackend::checkForUpdates()
 {
-    for (const auto &source : qAsConst(m_flatpakSources)) {
+    for (const auto &source : std::as_const(m_flatpakSources)) {
         if (source->remote()) {
             Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(source->remote()));
             m_refreshAppstreamMetadataJobs.insert(source->remote());

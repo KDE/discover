@@ -264,7 +264,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
                     g_autoptr(GError) localError = nullptr;
                     g_autoptr(GCancellable) cancellable = g_cancellable_new();
                     g_autoptr(FlatpakTransaction) transaction = flatpak_transaction_new_for_installation(installation, cancellable, &localError);
-                    for (const QString &instRef : qAsConst(toRemoveRefs)) {
+                    for (const QString &instRef : std::as_const(toRemoveRefs)) {
                         const QByteArray refString = instRef.toUtf8();
                         flatpak_transaction_add_uninstall(transaction, refString.constData(), &localError);
                         if (localError)

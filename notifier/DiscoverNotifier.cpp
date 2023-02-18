@@ -49,7 +49,7 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
     });
 
     m_backends = BackendNotifierFactory().allBackends();
-    for (BackendNotifierModule *module : qAsConst(m_backends)) {
+    for (BackendNotifierModule *module : std::as_const(m_backends)) {
         connect(module, &BackendNotifierModule::foundUpdates, this, &DiscoverNotifier::updateStatusNotifier);
         connect(module, &BackendNotifierModule::needsRebootChanged, this, [this]() {
             // If we are using offline updates, there is no need to badger the user to
@@ -285,7 +285,7 @@ void DiscoverNotifier::recheckSystemUpdateNeeded()
     }
 #endif
 
-    for (BackendNotifierModule *module : qAsConst(m_backends))
+    for (BackendNotifierModule *module : std::as_const(m_backends))
         module->recheckSystemUpdateNeeded();
 
     refreshUnattended();

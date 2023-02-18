@@ -301,35 +301,35 @@ QString RpmOstreeResource::longDescription()
     QString desc;
     if (!m_requested_packages.isEmpty()) {
         QTextStream(&desc) << i18n("Additional packages: ") << "\n<ul>";
-        for (const QString &package : qAsConst(m_requested_packages)) {
+        for (const QString &package : std::as_const(m_requested_packages)) {
             QTextStream(&desc) << "<li>" << package << "</li>\n";
         }
         QTextStream(&desc) << "</ul>\n";
     }
     if (!m_requested_modules.isEmpty()) {
         QTextStream(&desc) << i18n("Additional modules: ") << "\n<ul>";
-        for (const QString &package : qAsConst(m_requested_modules)) {
+        for (const QString &package : std::as_const(m_requested_modules)) {
             QTextStream(&desc) << "<li>" << package << "</li>\n";
         }
         QTextStream(&desc) << "</ul>\n";
     }
     if (!m_requested_local_packages.isEmpty()) {
         QTextStream(&desc) << i18n("Local packages: ") << "\n<ul>";
-        for (const QString &package : qAsConst(m_requested_local_packages)) {
+        for (const QString &package : std::as_const(m_requested_local_packages)) {
             QTextStream(&desc) << "<li>" << package << "</li>\n";
         }
         QTextStream(&desc) << "</ul>\n";
     }
     if (!m_requested_base_local_replacements.isEmpty()) {
         QTextStream(&desc) << i18n("Replaced packages:") << "\n<ul>";
-        for (const QString &package : qAsConst(m_requested_base_local_replacements)) {
+        for (const QString &package : std::as_const(m_requested_base_local_replacements)) {
             QTextStream(&desc) << "<li>" << package << "</li>\n";
         }
         QTextStream(&desc) << "</ul>\n";
     }
     if (!m_requested_base_removals.isEmpty()) {
         QTextStream(&desc) << i18n("Removed packages:") << "\n<ul>";
-        for (const QString &package : qAsConst(m_requested_base_removals)) {
+        for (const QString &package : std::as_const(m_requested_base_removals)) {
             QTextStream(&desc) << "<li>" << package << "</li>\n";
         }
         QTextStream(&desc) << "</ul>\n";

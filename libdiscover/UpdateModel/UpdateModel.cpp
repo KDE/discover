@@ -90,7 +90,7 @@ void UpdateModel::activityChanged()
             m_updates->prepare();
             setResources(m_updates->toUpdate());
 
-            for (auto item : qAsConst(m_updateItems)) {
+            for (auto item : std::as_const(m_updateItems)) {
                 item->setProgress(0);
             }
         } else {
@@ -282,7 +282,7 @@ int UpdateModel::toUpdateCount() const
 {
     int ret = 0;
     QSet<QString> packages;
-    for (UpdateItem *item : qAsConst(m_updateItems)) {
+    for (UpdateItem *item : std::as_const(m_updateItems)) {
         const auto packageName = item->resource()->packageName();
         if (packages.contains(packageName)) {
             continue;
@@ -297,7 +297,7 @@ int UpdateModel::totalUpdatesCount() const
 {
     int ret = 0;
     QSet<QString> packages;
-    for (UpdateItem *item : qAsConst(m_updateItems)) {
+    for (UpdateItem *item : std::as_const(m_updateItems)) {
         const auto packageName = item->resource()->packageName();
         if (packages.contains(packageName)) {
             continue;
@@ -310,7 +310,7 @@ int UpdateModel::totalUpdatesCount() const
 
 UpdateItem *UpdateModel::itemFromResource(AbstractResource *res)
 {
-    for (UpdateItem *item : qAsConst(m_updateItems)) {
+    for (UpdateItem *item : std::as_const(m_updateItems)) {
         if (item->app() == res) {
             return item;
         }

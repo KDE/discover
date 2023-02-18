@@ -107,7 +107,7 @@ Transaction *TransactionModel::transactionFromResource(AbstractResource *resourc
 {
     Transaction *ret = nullptr;
 
-    for (Transaction *trans : qAsConst(m_transactions)) {
+    for (Transaction *trans : std::as_const(m_transactions)) {
         if (trans->resource() == resource) {
             ret = trans;
             break;
@@ -202,7 +202,7 @@ int TransactionModel::progress() const
 {
     int sum = 0;
     int count = 0;
-    for (Transaction *t : qAsConst(m_transactions)) {
+    for (Transaction *t : std::as_const(m_transactions)) {
         if (t->isActive() && t->isVisible()) {
             sum += t->progress();
             ++count;

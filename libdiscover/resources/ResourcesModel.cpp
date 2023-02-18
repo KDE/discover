@@ -49,7 +49,7 @@ ResourcesModel::ResourcesModel(QObject *parent)
           0,
           [this] {
               int ret = 0;
-              for (AbstractResourcesBackend *backend : qAsConst(m_backends)) {
+              for (AbstractResourcesBackend *backend : std::as_const(m_backends)) {
                   ret += backend->updatesCount();
               }
               return ret;
@@ -64,7 +64,7 @@ ResourcesModel::ResourcesModel(QObject *parent)
                   return 0;
 
               int sum = 0;
-              for (auto backend : qAsConst(m_backends)) {
+              for (auto backend : std::as_const(m_backends)) {
                   sum += backend->fetchingUpdatesProgress();
               }
               return sum / (int)m_backends.count();
@@ -209,7 +209,7 @@ bool ResourcesModel::hasSecurityUpdates() const
 {
     bool ret = false;
 
-    for (AbstractResourcesBackend *backend : qAsConst(m_backends)) {
+    for (AbstractResourcesBackend *backend : std::as_const(m_backends)) {
         ret |= backend->hasSecurityUpdates();
     }
 
@@ -269,7 +269,7 @@ bool ResourcesModel::isInitializing() const
 void ResourcesModel::slotFetching()
 {
     bool newFetching = false;
-    for (AbstractResourcesBackend *b : qAsConst(m_backends)) {
+    for (AbstractResourcesBackend *b : std::as_const(m_backends)) {
         // isFetching should sort of be enough. However, sometimes the backend itself
         // will still be operating on things, which from a model point of view would
         // still mean something going on. So, interpret that as fetching as well, for
@@ -293,7 +293,7 @@ bool ResourcesModel::isBusy() const
 bool ResourcesModel::isExtended(const QString &id)
 {
     bool ret = true;
-    for (AbstractResourcesBackend *backend : qAsConst(m_backends)) {
+    for (AbstractResourcesBackend *backend : std::as_const(m_backends)) {
         ret = backend->extends().contains(id);
         if (ret)
             break;
@@ -377,7 +377,7 @@ AggregatedResultsStream *ResourcesModel::search(const AbstractResourcesBackend::
 
 void ResourcesModel::checkForUpdates()
 {
-    for (auto backend : qAsConst(m_backends))
+    for (auto backend : std::as_const(m_backends))
         backend->checkForUpdates();
 }
 

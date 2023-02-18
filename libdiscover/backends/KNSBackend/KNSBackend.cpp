@@ -153,9 +153,9 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     }
 
     QVector<Category *> topCategories{categories};
-    for (const auto &cat : qAsConst(categories)) {
+    for (const auto &cat : std::as_const(categories)) {
         const QString catName = cat->name().append(QLatin1Char('/'));
-        for (const auto &potentialSubCat : qAsConst(categories)) {
+        for (const auto &potentialSubCat : std::as_const(categories)) {
             if (potentialSubCat->name().startsWith(catName)) {
                 cat->addSubcategory(potentialSubCat);
                 topCategories.removeOne(potentialSubCat);
@@ -175,7 +175,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     });
     connect(m_engine, &KNSCore::Engine::signalCategoriesMetadataLoded, this, [categories](const QList<KNSCore::Provider::CategoryMetadata> &categoryMetadatas) {
         for (const KNSCore::Provider::CategoryMetadata &category : categoryMetadatas) {
-            for (Category *cat : qAsConst(categories)) {
+            for (Category *cat : std::as_const(categories)) {
                 if (cat->matchesCategoryName(category.name)) {
                     cat->setName(category.displayName);
                     break;

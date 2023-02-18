@@ -583,7 +583,7 @@ void ResourcesProxyModel::sortedInsertion(const QVector<AbstractResource *> &_re
         return;
     }
 
-    for (auto resource : qAsConst(resources)) {
+    for (auto resource : std::as_const(resources)) {
         const auto finder = [this](AbstractResource *resource, AbstractResource *res) {
             return lessThan(resource, res);
         };

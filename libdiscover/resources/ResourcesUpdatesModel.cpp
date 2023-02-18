@@ -28,7 +28,7 @@ public:
         , m_allUpdaters(updaters)
     {
         bool cancelable = false;
-        for (auto updater : qAsConst(m_allUpdaters)) {
+        for (auto updater : std::as_const(m_allUpdaters)) {
             connect(updater, &AbstractBackendUpdater::progressingChanged, this, &UpdateTransaction::slotProgressingChanged);
             connect(updater, &AbstractBackendUpdater::downloadSpeedChanged, this, &UpdateTransaction::slotDownloadSpeedChanged);
             connect(updater, &AbstractBackendUpdater::progressChanged, this, &UpdateTransaction::slotUpdateProgress);
@@ -67,7 +67,7 @@ public:
     bool isProgressing() const
     {
         bool progressing = false;
-        for (AbstractBackendUpdater *upd : qAsConst(m_allUpdaters)) {
+        for (AbstractBackendUpdater *upd : std::as_const(m_allUpdaters)) {
             progressing |= upd->isProgressing();
         }
         return progressing;
@@ -85,7 +85,7 @@ public:
     void slotUpdateProgress()
     {
         qreal total = 0;
-        for (AbstractBackendUpdater *updater : qAsConst(m_allUpdaters)) {
+        for (AbstractBackendUpdater *updater : std::as_const(m_allUpdaters)) {
             total += updater->progress();
         }
         setProgress(total / m_allUpdaters.count());
@@ -94,7 +94,7 @@ public:
     void slotDownloadSpeedChanged()
     {
         quint64 total = 0;
-        for (AbstractBackendUpdater *updater : qAsConst(m_allUpdaters)) {
+        for (AbstractBackendUpdater *updater : std::as_const(m_allUpdaters)) {
             total += updater->downloadSpeed();
         }
         setDownloadSpeed(total);
@@ -204,7 +204,7 @@ void ResourcesUpdatesModel::prepare()
         return;
     }
 
-    for (AbstractBackendUpdater *upd : qAsConst(m_updaters)) {
+    for (AbstractBackendUpdater *upd : std::as_const(m_updaters)) {
         upd->setOfflineUpdates(m_offlineUpdates);
         upd->prepare();
     }
@@ -248,7 +248,7 @@ bool ResourcesUpdatesModel::isProgressing() const
 QList<AbstractResource *> ResourcesUpdatesModel::toUpdate() const
 {
     QList<AbstractResource *> ret;
-    for (AbstractBackendUpdater *upd : qAsConst(m_updaters)) {
+    for (AbstractBackendUpdater *upd : std::as_const(m_updaters)) {
         ret += upd->toUpdate();
     }
     return ret;
@@ -281,7 +281,7 @@ void ResourcesUpdatesModel::removeResources(const QList<AbstractResource *> &res
 QDateTime ResourcesUpdatesModel::lastUpdate() const
 {
     QDateTime ret;
-    for (AbstractBackendUpdater *upd : qAsConst(m_updaters)) {
+    for (AbstractBackendUpdater *upd : std::as_const(m_updaters)) {
         QDateTime current = upd->lastUpdate();
         if (!ret.isValid() || (current.isValid() && current > ret)) {
             ret = current;

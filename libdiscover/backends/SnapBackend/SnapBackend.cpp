@@ -266,7 +266,7 @@ void SnapBackend::refreshStates()
 {
     auto ret = new StoredResultsStream({populate(m_client.getSnaps())});
     connect(ret, &StoredResultsStream::finishedResources, this, [this](const QVector<AbstractResource *> &resources) {
-        for (auto res : qAsConst(m_resources)) {
+        for (auto res : std::as_const(m_resources)) {
             if (resources.contains(res))
                 res->setState(AbstractResource::Installed);
             else

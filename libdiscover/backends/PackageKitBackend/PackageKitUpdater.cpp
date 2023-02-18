@@ -119,7 +119,7 @@ public:
     {
         QVector<PackageKitResource *> ret;
         QSet<QString> donePkgs;
-        for (auto res : qAsConst(m_resources)) {
+        for (auto res : std::as_const(m_resources)) {
             PackageKitResource *app = qobject_cast<PackageKitResource *>(res);
             QString pkgname = app->packageName();
             if (!donePkgs.contains(pkgname)) {
@@ -142,7 +142,7 @@ public:
     QJsonArray licenses() override
     {
         QJsonArray ret;
-        for (auto res : qAsConst(m_resources)) {
+        for (auto res : std::as_const(m_resources)) {
             ret += res->licenses();
         }
         kRemoveDuplicates(ret, [](const QJsonValueRef &val) -> QString {
@@ -190,7 +190,7 @@ public:
     }
     void fetchChangelog() override
     {
-        for (auto res : qAsConst(m_resources)) {
+        for (auto res : std::as_const(m_resources)) {
             res->fetchUpdateDetails();
         }
         Q_EMIT changelogFetched({});
@@ -221,7 +221,7 @@ public:
     QSet<QString> allPackageNames() const
     {
         QSet<QString> ret;
-        for (auto res : qAsConst(m_resources)) {
+        for (auto res : std::as_const(m_resources)) {
             ret += kToSet(qobject_cast<PackageKitResource *>(res)->allPackageNames());
         }
         return ret;
@@ -348,7 +348,7 @@ QSet<AbstractResource *> PackageKitUpdater::packagesForPackageId(const QSet<QStr
     });
 
     QSet<AbstractResource *> ret;
-    for (AbstractResource *res : qAsConst(m_allUpgradeable)) {
+    for (AbstractResource *res : std::as_const(m_allUpgradeable)) {
         if (auto upgrade = dynamic_cast<SystemUpgrade *>(res)) {
             if (packages.contains(upgrade->allPackageNames())) {
                 ret += upgrade;
@@ -709,7 +709,7 @@ void PackageKitUpdater::itemProgress(const QString &itemID, PackageKit::Transact
 void PackageKitUpdater::fetchChangelog() const
 {
     QStringList pkgids;
-    for (AbstractResource *res : qAsConst(m_allUpgradeable)) {
+    for (AbstractResource *res : std::as_const(m_allUpgradeable)) {
         if (auto upgrade = dynamic_cast<SystemUpgrade *>(res)) {
             upgrade->fetchChangelog();
         } else {

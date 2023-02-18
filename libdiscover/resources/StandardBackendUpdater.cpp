@@ -60,7 +60,7 @@ void StandardBackendUpdater::start()
     });
 
     const bool couldCancel = m_canCancel;
-    for (AbstractResource *res : qAsConst(upgradeList)) {
+    for (AbstractResource *res : std::as_const(upgradeList)) {
         m_pendingResources += res;
         auto t = m_backend->installApplication(res);
         t->setVisible(false);

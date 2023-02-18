@@ -32,7 +32,7 @@ void PKResolveTransaction::start()
 
     m_transactions = {tArch, tNotArch};
 
-    for (PackageKit::Transaction *t : qAsConst(m_transactions)) {
+    for (PackageKit::Transaction *t : std::as_const(m_transactions)) {
         connect(t, &PackageKit::Transaction::finished, this, &PKResolveTransaction::transactionFinished);
     }
 }

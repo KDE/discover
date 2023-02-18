@@ -364,7 +364,7 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
         r = {pk};
         m_packagesToAdd.insert(pk);
     }
-    for (auto res : qAsConst(r))
+    for (auto res : std::as_const(r))
         static_cast<PackageKitResource *>(res)->addPackageId(info, packageId, arch);
 }
 
@@ -379,10 +379,10 @@ void PackageKitBackend::includePackagesToAdd()
         return;
 
     acquireFetching(true);
-    for (PackageKitResource *res : qAsConst(m_packagesToAdd)) {
+    for (PackageKitResource *res : std::as_const(m_packagesToAdd)) {
         m_packages.packages[makePackageId(res->packageName())] = res;
     }
-    for (PackageKitResource *res : qAsConst(m_packagesToDelete)) {
+    for (PackageKitResource *res : std::as_const(m_packagesToDelete)) {
         const auto pkgs = m_packages.packageToApp.value(res->packageName(), {res->packageName()});
         for (const auto &pkg : pkgs) {
             auto res = m_packages.packages.take(makePackageId(pkg));
@@ -765,7 +765,7 @@ QSet<AbstractResource *> PackageKitBackend::upgradeablePackages() const
 
     QSet<AbstractResource *> ret;
     ret.reserve(m_updatesPackageId.size());
-    for (const QString &pkgid : qAsConst(m_updatesPackageId)) {
+    for (const QString &pkgid : std::as_const(m_updatesPackageId)) {
         const QString pkgname = PackageKit::Daemon::packageName(pkgid);
         const auto pkgs = resourcesByPackageName(pkgname);
         if (pkgs.isEmpty()) {
