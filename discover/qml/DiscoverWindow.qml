@@ -130,14 +130,17 @@ Kirigami.ApplicationWindow {
 
     Connections {
         target: app
+
         function onOpenApplicationInternal(app) {
             Navigation.clearStack()
             Navigation.openApplication(app)
         }
+
         function onListMimeInternal(mime)  {
             currentTopLevel = topBrowsingComp;
             Navigation.openApplicationMime(mime)
         }
+
         function onListCategoryInternal(cat)  {
             currentTopLevel = topBrowsingComp;
             Navigation.openCategory(cat, "")
@@ -276,8 +279,9 @@ Kirigami.ApplicationWindow {
 
             onSheetOpenChanged: if(!sheetOpen) {
                 sheet.destroy(1000)
-                if (!sheet.acted)
+                if (!sheet.acted) {
                     transaction.cancel()
+                }
             }
         }
     }
@@ -442,13 +446,14 @@ Kirigami.ApplicationWindow {
                 dialog.open()
                 app.restore()
             }
+
             function onWebflowStarted(url) {
                 var component = Qt.createComponent("WebflowDialog.qml");
                 if (component.status === Component.Error) {
                     Qt.openUrlExternally(url);
                     console.error("Webflow Error", component.errorString())
                 } else if (component.status === Component.Ready) {
-                    const sheet = component.createObject(window, {transaction: transaction, url: url });
+                    const sheet = component.createObject(window, { transaction, url });
                     sheet.open()
                 }
                 component.destroy();
