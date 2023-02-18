@@ -52,7 +52,6 @@ QHash<int, QByteArray> UpdateModel::roleNames() const
     ret.insert(SizeRole, "size");
     ret.insert(SectionRole, "section");
     ret.insert(ChangelogRole, "changelog");
-    ret.insert(UpgradeTextRole, "upgradeText");
     ret.insert(ExtendedRole, "extended");
     return ret;
 }
@@ -349,7 +348,7 @@ void UpdateModel::resourceDataChanged(AbstractResource *res, const QVector<QByte
 
     const auto index = indexFromItem(item);
     if (properties.contains("state")) {
-        Q_EMIT dataChanged(index, index, {SizeRole, UpgradeTextRole});
+        Q_EMIT dataChanged(index, index, {SizeRole});
     } else if (properties.contains("size")) {
         Q_EMIT dataChanged(index, index, {SizeRole});
         m_updateSizeTimer->start();
