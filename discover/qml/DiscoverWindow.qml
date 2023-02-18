@@ -378,44 +378,40 @@ Kirigami.ApplicationWindow {
                 }
             }
 
-            RowLayout {
-                Layout.fillWidth: true
+            Button {
+                Layout.alignment: Qt.AlignRight
+                text: i18n("Copy to Clipboard")
+                icon.name: "edit-copy"
 
-                Button {
-                    text: i18nc("@action:button", "Show Previous")
-                    icon.name: "go-previous"
-                    visible: messages.count > 1
-                    enabled: visible && messagesSheetView.currentIndex > 0
+                onClicked: {
+                    app.copyTextToClipboard(messages.get(messagesSheetView.currentIndex).message);
+                }
+            }
+        }
 
-                    onClicked: {
-                        if (messagesSheetView.currentIndex > 0) {
-                            messagesSheetView.currentIndex--;
-                        }
+        footer: DialogButtonBox {
+            standardButtons: Dialog.NoButton
+
+            Button {
+                text: i18nc("@action:button", "Show Previous")
+                icon.name: "go-previous"
+                enabled: messagesSheetView.currentIndex > 0
+
+                onClicked: {
+                    if (messagesSheetView.currentIndex > 0) {
+                        messagesSheetView.currentIndex--;
                     }
                 }
+            }
 
-                Button {
-                    text: i18nc("@action:button", "Show Next")
-                    icon.name: "go-next"
-                    visible: messages.count > 1
-                    enabled: visible && messagesSheetView.currentIndex < messages.count - 1
+            Button {
+                text: i18nc("@action:button", "Show Next")
+                icon.name: "go-next"
+                enabled: messagesSheetView.currentIndex < messages.count - 1
 
-                    onClicked: {
-                        if (messagesSheetView.currentIndex < messages.count) {
-                            messagesSheetView.currentIndex++;
-                        }
-                    }
-                }
-
-                Item { Layout.fillWidth: true }
-
-                Button {
-                    Layout.alignment: Qt.AlignRight
-                    text: i18n("Copy to Clipboard")
-                    icon.name: "edit-copy"
-
-                    onClicked: {
-                        app.copyTextToClipboard(messages.get(messagesSheetView.currentIndex).message);
+                onClicked: {
+                    if (messagesSheetView.currentIndex < messages.count) {
+                        messagesSheetView.currentIndex++;
                     }
                 }
             }
