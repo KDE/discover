@@ -342,6 +342,8 @@ Kirigami.ApplicationWindow {
         // But we do need to put the label into a Layout of some sort so we
         // can limit the width of the sheet.
         contentItem: ColumnLayout {
+            spacing: Kirigami.Units.largeSpacing
+
             Item {
                 Layout.fillWidth: true
                 Layout.maximumWidth: Kirigami.Units.gridUnit * 20
