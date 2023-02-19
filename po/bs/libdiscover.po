@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-15 01:00+0000\n"
+"POT-Creation-Date: 2023-02-19 00:59+0000\n"
 "PO-Revision-Date: 2014-01-31 20:46+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -51,8 +51,8 @@ msgstr "Izdavaštvo"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:296
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:359
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:385
-#: libdiscover/UpdateModel/UpdateModel.cpp:117
-#: libdiscover/UpdateModel/UpdateModel.cpp:323
+#: libdiscover/UpdateModel/UpdateModel.cpp:118
+#: libdiscover/UpdateModel/UpdateModel.cpp:329
 #, fuzzy, kde-format
 #| msgctxt "@info license"
 #| msgid "Unknown"
@@ -979,12 +979,12 @@ msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
 #, kde-format
 msgid "Delete settings and user data"
 msgstr ""
@@ -2396,20 +2396,20 @@ msgstr "Nepoznato"
 msgid "Channels…"
 msgstr ""
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:24
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox Filters all changes in the history view"
 #| msgid "All changes"
 msgid "%1 channels"
 msgstr "Sve izmjene"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:32
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
 #, kde-format
 msgid "%1 - %2"
 msgstr ""
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:35
 #, kde-format
 msgid "Switch"
 msgstr ""
@@ -2560,14 +2560,14 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr ""
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:129
+#: libdiscover/UpdateModel/UpdateModel.cpp:130
 #, fuzzy, kde-format
 #| msgid "Applications"
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "Programi"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#: libdiscover/UpdateModel/UpdateModel.cpp:131
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section \"video"
@@ -2577,7 +2577,7 @@ msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Video softver"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#: libdiscover/UpdateModel/UpdateModel.cpp:132
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
