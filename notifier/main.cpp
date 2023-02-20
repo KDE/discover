@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     bool hide = false;
     KDBusService::StartupOptions startup = {};
     {
-        KAboutData about(QStringLiteral("DiscoverNotifier"),
+        KAboutData about(QStringLiteral("discover.notifier"),
                          i18n("Discover Notifier"),
                          version,
                          i18n("System update status notifier"),
