@@ -17,6 +17,7 @@ QQC2.Button {
     required property string title
     required property string subtitle
     property string tooltipText
+    readonly property int implicitTitleTextWidth: metrics.width
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
@@ -27,6 +28,11 @@ QQC2.Button {
     rightPadding: Kirigami.Units.largeSpacing
     topPadding: Kirigami.Units.largeSpacing
     bottomPadding: Kirigami.Units.largeSpacing
+
+    TextMetrics {
+        id: metrics
+        text: root.title
+    }
 
     contentItem: ColumnLayout {
         spacing: 0
