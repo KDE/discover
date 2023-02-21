@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # wantoyo <wantoyo@yahoo.com>, 2014.
 # Wantoyo <wantoyek@gmail.com>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
-# Linerly <linerly@protonmail.com>, 2022.
+# Linerly <linerly@protonmail.com>, 2022, 2023.
 #
 # Translators:
 msgid ""
@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-04 03:17+0000\n"
-"PO-Revision-Date: 2023-01-22 17:05+0700\n"
-"Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
+"PO-Revision-Date: 2023-02-17 17:08+0700\n"
+"Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -37,9 +37,9 @@ msgid ""
 "Backends</interface> section.<nl/><nl/>Also please consider reporting this "
 "as a packaging issue to your distribution."
 msgstr ""
-"Kamu bisa menginstal beberapa pada halaman Pengaturan, di bawah bagian "
+"Anda dapat menginstal beberapa pada halaman Pengaturan, di bawah bagian "
 "<interface>Backend Yang Hilang</interface>.<nl/><nl/>Juga pertimbangkan "
-"untuk melaporkan ini sebagai masalah pemaketan ke distromu."
+"untuk melaporkan ini sebagai masalah pemaketan ke distribusi Anda."
 
 #: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
@@ -57,11 +57,11 @@ msgid ""
 "managing software because the PackageKit backend is not well-integrated on "
 "Arch Linux."
 msgstr ""
-"Kamu bisa menggunakan <command>pacman</command> untuk menginstal dependensi "
-"opsional yang diperlukan untuk memfungsikan backend-backend aplikasi.<nl/"
-"><nl/>Mohon dicatat bahwa para pengembang Arch Linux menganjurkan "
-"menggunakan <command>pacman</command> untuk mengelola perangkat lunak karena "
-"backend PackageKit tidak terintegrasi dengan baik di Arch Linux."
+"Anda dapat menggunakan <command>pacman</command> untuk menginstal dependensi "
+"opsional yang diperlukan untuk memfungsikan backend aplikasi.<nl/><nl/>Mohon "
+"dicatat bahwa para pengembang Arch Linux menganjurkan menggunakan "
+"<command>pacman</command> untuk mengelola perangkat lunak karena backend "
+"PackageKit tidak terintegrasi dengan baik di Arch Linux."
 
 #: discover/DiscoverObject.cpp:181
 #, kde-format
@@ -550,13 +550,11 @@ msgstr ""
 "mempelajari lebih lanjut di <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %2 - %1 item"
-#| msgid_plural "Search: %2 - %1 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Cari: %2 - %1 item"
-msgstr[1] "Cari: %2 - %1 item"
+msgstr[0] "Cari: %2 - %3 item"
+msgstr[1] "Cari: %2 - %3 item"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format

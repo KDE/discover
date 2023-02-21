@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Wantoyo <wantoyek@gmail.com>, 2017, 2018, 2019, 2020, 2021, 2022.
-# Linerly <linerly@protonmail.com>, 2022.
+# Linerly <linerly@protonmail.com>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-14 00:47+0000\n"
-"PO-Revision-Date: 2022-09-20 19:46+0700\n"
+"PO-Revision-Date: 2023-02-17 17:12+0700\n"
 "Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: notifier/DiscoverNotifier.cpp:144
 #, kde-format
@@ -41,27 +41,27 @@ msgstr "Sistem terbarukan"
 #: notifier/DiscoverNotifier.cpp:267
 #, kde-format
 msgid "Computer needs to restart"
-msgstr "Komputer butuh direstart"
+msgstr "Komputer harus dimulai ulang"
 
 #: notifier/DiscoverNotifier.cpp:269
 #, kde-format
 msgid "Offline"
-msgstr "Offline"
+msgstr "Luring"
 
 #: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Applying unattended updates…"
-msgstr "Penerapan pembaruan lalai..."
+msgstr "Menerapkan pembaruan lalai..."
 
 #: notifier/DiscoverNotifier.cpp:305
 #, kde-format
 msgid "Restart is required"
-msgstr "Diperlukan menyalakan-ulang"
+msgstr "Harus dinyalakan ulang"
 
 #: notifier/DiscoverNotifier.cpp:306
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
-msgstr "Sistem perlu dinyalakan-ulang supaya pembaruan berpengaruh."
+msgstr "Sistem perlu dinyalakan ulang supaya pembaruan berpengaruh."
 
 #: notifier/DiscoverNotifier.cpp:312
 #, kde-format
@@ -104,13 +104,13 @@ msgstr "© 2010-2022 Tim Pengembangan Plasma"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Wantoyo"
+msgstr "Wantoyo,Linerly"
 
 #: notifier/main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "wantoyek@gmail.com"
+msgstr "wantoyek@gmail.com,linerly@protonmail.com"
 
 #: notifier/main.cpp:52
 #, kde-format
@@ -155,4 +155,4 @@ msgstr "Nyalakan ulang untuk menerapkan pembaruan yang terinstal"
 #: notifier/NotifierItem.cpp:65
 #, kde-format
 msgid "Click to restart the device"
-msgstr "Klik untuk me-restart peranti"
+msgstr "Klik untuk memulai ulang peranti"
