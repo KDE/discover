@@ -537,22 +537,33 @@ DiscoverPage {
             }
 
             // External resources
-            RowLayout {
+            GridLayout {
                 id: externalResourcesLayout
                 readonly property int visibleButtons: (helpButton.visible ? 1 : 0)
                                                     + (homepageButton.visible ? 1: 0)
                                                     + (addonsButton.visible ? 1 : 0)
                                                     + (shareButton.visible ? 1 : 0)
-                readonly property int buttonWidth: Math.round(textualContentLayout.width / visibleButtons)
+                readonly property int buttonWidth: Math.round(textualContentLayout.width / (columns > 1 ? columns : 1))
                 readonly property int tallestButtonHeight: Math.max(helpButton.implicitHeight,
                                                                     homepageButton.implicitHeight,
                                                                     shareButton.implicitHeight,
                                                                     addonsButton.implicitHeight)
+                readonly property int longestLabelWidth: Math.max(helpButton.visible ? helpButton.implicitTitleTextWidth : 0,
+                                                                  homepageButton.visible ? homepageButton.implicitTitleTextWidth: 0,
+                                                                  addonsButton.visible ? addonsButton.implicitTitleTextWidth : 0,
+                                                                  shareButton.visible ? shareButton.implicitTitleTextWidth : 0)
+                readonly property bool stackedlayout: longestLabelWidth + (Kirigami.Units.largeSpacing * 2)
+                                                      > Math.round(textualContentLayout.width / visibleButtons) - (columnSpacing * visibleButtons)
 
                 Layout.fillWidth: true
                 Layout.bottomMargin: appInfo.internalSpacings * 2
 
-                spacing: Kirigami.Units.smallSpacing
+
+                rows: stackedlayout ? visibleButtons : 1
+                columns: stackedlayout ? 1: visibleButtons
+                rowSpacing: Kirigami.Units.smallSpacing
+                columnSpacing: Kirigami.Units.smallSpacing
+
                 visible: visibleButtons > 0
 
                 ApplicationResourceButton {
@@ -761,21 +772,30 @@ DiscoverPage {
                 wrapMode: Text.Wrap
             }
 
-            RowLayout {
+            GridLayout {
                 id: getInvolvedLayout
 
                 readonly property int visibleButtons: (donateButton.visible ? 1 : 0)
-                                                    + (bugButton.visible ? 1: 0)
-                                                    + (contributeButton.visible ? 1: 0)
-                readonly property int buttonWidth: Math.round(textualContentLayout.width / visibleButtons)
+                                                    + (bugButton.visible ? 1 : 0)
+                                                    + (contributeButton.visible ? 1 : 0)
+                readonly property int buttonWidth: Math.round(textualContentLayout.width / (columns > 1 ? columns : 1))
                 readonly property int tallestButtonHeight: Math.max(donateButton.implicitHeight,
                                                                     bugButton.implicitHeight,
                                                                     contributeButton.implicitHeight)
+                readonly property int longestLabelWidth: Math.max(donateButton.visible ? donateButton.implicitTitleTextWidth : 0,
+                                                                  bugButton.visible ? bugButton.implicitTitleTextWidth: 0,
+                                                                  contributeButton.visible ? contributeButton.implicitTitleTextWidth : 0)
+                readonly property bool stackedlayout: longestLabelWidth + (Kirigami.Units.largeSpacing * 2)
+                                                      > Math.round(textualContentLayout.width / visibleButtons) - (columnSpacing * visibleButtons)
 
                 Layout.fillWidth: true
                 Layout.bottomMargin: appInfo.internalSpacings * 2
 
-                spacing: Kirigami.Units.smallSpacing
+                rows: stackedlayout ? visibleButtons : 1
+                columns: stackedlayout ? 1: visibleButtons
+                rowSpacing: Kirigami.Units.smallSpacing
+                columnSpacing: Kirigami.Units.smallSpacing
+
                 visible: visibleButtons > 0
 
                 ApplicationResourceButton {
