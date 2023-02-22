@@ -19,6 +19,7 @@
 #include <QDebug>
 #include <QJsonArray>
 #include <QProcess>
+#include <appstream/AppStreamIntegration.h>
 #include <utils.h>
 
 #if defined(WITH_MARKDOWN)
@@ -160,8 +161,14 @@ quint64 PackageKitResource::size()
 
 QString PackageKitResource::origin() const
 {
-    auto pkgid = availablePackageId();
-    return PackageKit::Daemon::packageData(pkgid);
+    // PackageKit doesn't give us enough information to be able to distinguish
+    // between 3rd-party repos (which generally have human-readable names) and
+    // 1st-party distro repos (which generally name nonsense jargon names) which
+    // would allow us to substitute the distro name for only the nonsense repos;
+    // see https://github.com/PackageKit/PackageKit/issues/607 and
+    // https://bugs.kde.org/show_bug.cgi?id=465204.
+    // So for now always show the distro name.
+    return AppStreamIntegration::global()->osRelease()->name();
 }
 
 QString PackageKitResource::section()
