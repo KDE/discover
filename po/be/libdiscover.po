@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-19 00:59+0000\n"
+"POT-Creation-Date: 2023-02-22 00:59+0000\n"
 "PO-Revision-Date: 2023-02-06 22:01\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -604,7 +604,7 @@ msgid "%1 on disk"
 msgstr "На дыску - %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:440
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:447
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "Не ўдалося запусціць \"%1\": %2"
@@ -1953,44 +1953,44 @@ msgstr[1] "Паспяхова абноўлена %1 пакункі"
 msgstr[2] "Паспяхова абноўлена %1 пакункаў"
 msgstr[3] "Паспяхова абноўлена %1 пакункі"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:303
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:310
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:305
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:312
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:351
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Састарэлыя:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:359
 #, kde-format
 msgid "Release Notes:"
 msgstr "Нататкі да выпуску:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Update State:"
 msgstr "Стан абнаўлення:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:361
 #, kde-format
 msgid "Restart:"
 msgstr "Перазапуск:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:357
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:364
 #, kde-format
 msgid "Vendor:"
 msgstr "Вытворца:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:377
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"

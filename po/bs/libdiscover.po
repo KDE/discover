@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-19 00:59+0000\n"
+"POT-Creation-Date: 2023-02-22 00:59+0000\n"
 "PO-Revision-Date: 2014-01-31 20:46+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -641,7 +641,7 @@ msgid "%1 on disk"
 msgstr "%1 na disku"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:440
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:447
 #, fuzzy, kde-format
 #| msgid "There are %1 update packages!"
 msgid "Failed to start '%1': %2"
@@ -1998,45 +1998,45 @@ msgstr[0] "%1 ažuriranih paketa!"
 msgstr[1] "%1 ažuriranih paketa!"
 msgstr[2] "%1 ažuriranih paketa!"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:303
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:310
 #, fuzzy, kde-format
 #| msgid "%1 (%2)"
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 ( %2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:305
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:312
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:351
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
 #, kde-format
 msgid "Obsoletes:"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:352
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:359
 #, kde-format
 msgid "Release Notes:"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:353
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Update State:"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:354
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:361
 #, kde-format
 msgid "Restart:"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:357
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:364
 #, kde-format
 msgid "Vendor:"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:377
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
