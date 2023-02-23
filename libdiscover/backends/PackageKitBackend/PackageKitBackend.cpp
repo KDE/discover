@@ -304,10 +304,10 @@ AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Componen
     return res;
 }
 
-void PackageKitBackend::resolvePackages(const QStringList &packageNames)
+PKResolveTransaction *PackageKitBackend::resolvePackages(const QStringList &packageNames)
 {
     if (packageNames.isEmpty()) {
-        return;
+        return nullptr;
     }
 
     if (!m_resolveTransaction) {
@@ -319,6 +319,7 @@ void PackageKitBackend::resolvePackages(const QStringList &packageNames)
     }
 
     m_resolveTransaction->addPackageNames(packageNames);
+    return m_resolveTransaction;
 }
 
 void PackageKitBackend::fetchUpdates()
@@ -513,23 +514,33 @@ public:
         , backend(backend)
     {
         QTimer::singleShot(0, this, [resources, this]() {
-            setResources(resources);
-            finish();
+            sendResources(resources);
         });
     }
 
-    void setResources(const QVector<AbstractResource *> &res)
+    void sendResources(const QVector<AbstractResource *> &res, bool waitForResolved = false)
     {
         if (res.isEmpty())
             return;
 
         Q_ASSERT(res.size() == QSet(res.constBegin(), res.constEnd()).size());
         const auto toResolve = kFilter<QVector<AbstractResource *>>(res, needsResolveFilter);
-        if (!toResolve.isEmpty())
-            backend->resolvePackages(kTransform<QStringList>(toResolve, [](AbstractResource *res) {
+        if (!toResolve.isEmpty()) {
+            auto transaction = backend->resolvePackages(kTransform<QStringList>(toResolve, [](AbstractResource *res) {
                 return res->packageName();
             }));
+            if (waitForResolved) {
+                Q_ASSERT(transaction);
+                connect(transaction, &QObject::destroyed, this, [this, res] {
+                    Q_EMIT resourcesFound(res);
+                    finish();
+                });
+                return;
+            }
+        }
+
         Q_EMIT resourcesFound(res);
+        finish();
     }
 
 private:
@@ -546,8 +557,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
             const auto resources = kTransform<QVector<AbstractResource *>>(m_packages.extendedBy.value(filter.extends), [](AppPackageKitResource *a) {
                 return a;
             });
-            stream->setResources(resources);
-            stream->finish();
+            stream->sendResources(resources, filter.state != AbstractResource::Broken);
         };
         runWhenInitialized(f, stream);
         return stream;
@@ -601,8 +611,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource *>(res)->isCritical()
                     && !qobject_cast<PackageKitResource *>(res)->extendsItself();
             });
-            stream->setResources(resources);
-            stream->finish();
+            stream->sendResources(resources);
         };
         runWhenInitialized(f, stream);
         return stream;
@@ -623,9 +632,10 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 const auto resources = kFilter<QVector<AbstractResource *>>(resourcesByAppNames<QVector<AbstractResource *>>(ids), [](AbstractResource *res) {
                     return !qobject_cast<PackageKitResource *>(res)->extendsItself();
                 });
-                stream->setResources(resources);
+                stream->sendResources(resources, filter.state != AbstractResource::Broken);
+            } else {
+                stream->finish();
             }
-            stream->finish();
         };
         runWhenInitialized(f, stream);
         return stream;
@@ -672,8 +682,7 @@ PKResultsStream *PackageKitBackend::findResourceByPackageName(const QUrl &url)
                         toSend.insert(r);
                     }
                 }
-                stream->setResources(QVector(toSend.constBegin(), toSend.constEnd()));
-                stream->finish();
+                stream->sendResources(QVector(toSend.constBegin(), toSend.constEnd()));
             };
             runWhenInitialized(f, stream);
             return stream;

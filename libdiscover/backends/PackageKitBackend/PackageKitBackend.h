@@ -63,7 +63,7 @@ public:
     QSet<QString> upgradeablePackageId(const PackageKitResource *res) const;
     QVector<AppPackageKitResource *> extendedBy(const QString &id) const;
 
-    void resolvePackages(const QStringList &packageNames);
+    PKResolveTransaction *resolvePackages(const QStringList &packageNames);
     void fetchDetails(const QString &pkgid)
     {
         fetchDetails(QSet<QString>{pkgid});
