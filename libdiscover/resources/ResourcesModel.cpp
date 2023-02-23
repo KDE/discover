@@ -294,7 +294,7 @@ bool ResourcesModel::isExtended(const QString &id)
 {
     bool ret = true;
     for (AbstractResourcesBackend *backend : std::as_const(m_backends)) {
-        ret = backend->extends().contains(id);
+        ret = backend->extends(id);
         if (ret)
             break;
     }

@@ -55,10 +55,7 @@ public:
     {
         return true;
     }
-    QStringList extends() const override
-    {
-        return m_extends;
-    }
+    bool extends(const QString &extends) const override;
 
     void addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *stream);
     void addAppFromFlatpakBundle(const QUrl &url, ResultsStream *stream);
@@ -104,7 +101,6 @@ private:
 
     void metadataRefreshed(FlatpakRemote *remote);
     bool flatpakResourceLessThan(AbstractResource *l, AbstractResource *r) const;
-    void announceRatingsReady();
     FlatpakInstallation *preferredInstallation() const
     {
         return m_installations.constFirst();
@@ -139,7 +135,6 @@ private:
     QSharedPointer<OdrsReviewsBackend> m_reviews;
     uint m_isFetching = 0;
     QSet<FlatpakRemote *> m_refreshAppstreamMetadataJobs;
-    QStringList m_extends;
 
     GCancellable *m_cancellable;
     QVector<FlatpakInstallation *> m_installations;

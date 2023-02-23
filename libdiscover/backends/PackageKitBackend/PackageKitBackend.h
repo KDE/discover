@@ -91,7 +91,7 @@ public:
 
     bool isPackageNameUpgradeable(const PackageKitResource *res) const;
     QSet<QString> upgradeablePackageId(const PackageKitResource *res) const;
-    QVector<AppPackageKitResource *> extendedBy(const QString &id) const;
+    QVector<AbstractResource *> extendedBy(const QString &id) const;
 
     PKResolveTransaction *resolvePackages(const QStringList &packageNames);
     void fetchDetails(const QString &pkgid)
@@ -125,6 +125,8 @@ public:
     {
         return m_updateDetails;
     }
+    template<typename T, typename W>
+    T resourcesByPackageNames(const W &names) const;
 
 public Q_SLOTS:
     void reloadPackageList();
@@ -143,8 +145,6 @@ Q_SIGNALS:
 
 private:
     friend class PackageKitResource;
-    template<typename T, typename W>
-    T resourcesByPackageNames(const W &names) const;
 
     template<typename T, typename W>
     T resourcesByAppNames(const W &names) const;
@@ -176,7 +176,6 @@ private:
     struct {
         QHash<PackageOrAppId, AbstractResource *> packages;
         QHash<QString, QStringList> packageToApp;
-        QHash<QString, QVector<AppPackageKitResource *>> extendedBy;
     } m_packages;
 
     Delay m_details;

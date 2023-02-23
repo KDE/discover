@@ -143,10 +143,6 @@ public:
 
         Q_ASSERT(!m_resources.contains(resource->uniqueId()) || m_resources.value(resource->uniqueId()) == resource);
         m_resources.insert(resource->uniqueId(), resource);
-        if (!resource->extends().isEmpty()) {
-            m_backend->m_extends.append(resource->extends());
-            m_backend->m_extends.removeDuplicates();
-        }
 
         QObject::connect(resource, &FlatpakResource::sizeChanged, m_backend, [this, resource] {
             if (!m_backend->isFetching())
@@ -1453,7 +1449,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         return stream;
     } else if (filter.resourceUrl.scheme() == QLatin1String("appstream")) {
         return findResourceByPackageName(filter.resourceUrl);
-    } else if (!filter.resourceUrl.isEmpty() || (!filter.extends.isEmpty() && !m_extends.contains(filter.extends)))
+    } else if (!filter.resourceUrl.isEmpty())
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
     else if (filter.state == AbstractResource::Upgradeable) {
         auto stream = new ResultsStream(QStringLiteral("FlatpakStream-upgradeable"));
@@ -1908,6 +1904,18 @@ InlineMessage *FlatpakBackend::explainDysfunction() const
         }
     }
     return AbstractResourcesBackend::explainDysfunction();
+}
+
+bool FlatpakBackend::extends(const QString &extends) const
+{
+    for (const auto &source : m_flatpakSources) {
+        if (source->m_pool && !source->m_pool->lastError().isEmpty()) {
+            if (!source->m_pool->componentsByExtends(extends).isEmpty()) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 #include "FlatpakBackend.moc"

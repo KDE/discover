@@ -138,9 +138,9 @@ void AbstractResourcesBackend::Filters::filterJustInCase(QVector<AbstractResourc
     }
 }
 
-QStringList AbstractResourcesBackend::extends() const
+bool AbstractResourcesBackend::extends(const QString & /*id*/) const
 {
-    return {};
+    return false;
 }
 
 int AbstractResourcesBackend::fetchingUpdatesProgress() const

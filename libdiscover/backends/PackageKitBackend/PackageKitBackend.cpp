@@ -240,7 +240,6 @@ void PackageKitBackend::acquireFetching(bool f)
 
 struct DelayedAppStreamLoad {
     QVector<AppStream::Component> components;
-    QHash<QString, AppStream::Component> missingComponents;
     bool correct = true;
 };
 
@@ -260,15 +259,7 @@ static DelayedAppStreamLoad loadAppStream(AppStream::Pool *appdata)
             continue;
 
         const auto pkgNames = component.packageNames();
-        if (pkgNames.isEmpty()) {
-            const auto entries = component.launchable(AppStream::Launchable::KindDesktopId).entries();
-            if (component.kind() == AppStream::Component::KindDesktopApp && !entries.isEmpty()) {
-                const QString file = PackageKitBackend::locateService(entries.first());
-                if (!file.isEmpty()) {
-                    ret.missingComponents[file] = component;
-                }
-            }
-        } else {
+        if (!pkgNames.isEmpty()) {
             ret.components << component;
         }
     }
@@ -355,11 +346,6 @@ AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Componen
     }
     for (const QString &pkg : pkgNames) {
         m_packages.packageToApp[pkg] += component.id();
-    }
-
-    const auto componentExtends = component.extends();
-    for (const QString &pkg : componentExtends) {
-        m_packages.extendedBy[pkg] += res;
     }
     return res;
 }
@@ -448,12 +434,6 @@ void PackageKitBackend::includePackagesToAdd()
         for (const auto &pkg : pkgs) {
             auto res = m_packages.packages.take(makePackageId(pkg));
             if (res) {
-                if (AppPackageKitResource *ares = qobject_cast<AppPackageKitResource *>(res)) {
-                    const auto extends = res->extends();
-                    for (const auto &ext : extends)
-                        m_packages.extendedBy[ext].removeAll(ares);
-                }
-
                 Q_EMIT resourceRemoved(res);
                 res->deleteLater();
             }
@@ -616,9 +596,8 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
     } else if (!filter.extends.isEmpty()) {
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-extends"));
         auto f = [this, filter, stream] {
-            const auto resources = kTransform<QVector<AbstractResource *>>(m_packages.extendedBy.value(filter.extends), [](AppPackageKitResource *a) {
-                return a;
-            });
+            const auto extendingComponents = m_appdata->componentsByExtends(filter.extends);
+            auto resources = resourcesByComponents<QVector<AbstractResource *>>(extendingComponents);
             stream->sendResources(resources, filter.state != AbstractResource::Broken);
         };
         runWhenInitialized(f, stream);
@@ -1042,9 +1021,10 @@ AbstractBackendUpdater *PackageKitBackend::backendUpdater() const
     return m_updater;
 }
 
-QVector<AppPackageKitResource *> PackageKitBackend::extendedBy(const QString &id) const
+QVector<AbstractResource *> PackageKitBackend::extendedBy(const QString &id) const
 {
-    return m_packages.extendedBy[id];
+    const auto components = m_appdata->componentsById(id);
+    return resourcesByComponents<QVector<AbstractResource *>>(components);
 }
 
 AbstractReviewsBackend *PackageKitBackend::reviewsBackend() const

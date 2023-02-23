@@ -179,7 +179,7 @@ public:
     /**
      * @returns the appstream ids that this backend extends
      */
-    virtual QStringList extends() const;
+    virtual bool extends(const QString &id) const;
 
     /** @returns the plugin's name */
     QString name() const;

@@ -50,7 +50,12 @@ public:
 
     bool isValid() const override;
 
-    QStringList extends() const override
+    bool extends(const QString &id) const override
+    {
+        return m_extends.contains(id);
+    }
+
+    QStringList extends() const
     {
         return m_extends;
     }
