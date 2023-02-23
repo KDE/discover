@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-19 00:59+0000\n"
+"POT-Creation-Date: 2023-02-23 00:59+0000\n"
 "PO-Revision-Date: 2023-02-10 11:05+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -249,7 +249,7 @@ msgid "Add"
 msgstr "Přidat"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
-#: discover/qml/InstallApplicationButton.qml:43
+#: discover/qml/InstallApplicationButton.qml:47
 #: discover/qml/ProgressView.qml:109 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:252 discover/qml/WebflowDialog.qml:41
 #, kde-format
@@ -257,7 +257,7 @@ msgid "Cancel"
 msgstr "Zrušit"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:209
+#: discover/qml/ApplicationPage.qml:214
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -266,67 +266,63 @@ msgstr[1] "%1 hodnocení"
 msgstr[2] "%1 hodnocení"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:209
+#: discover/qml/ApplicationPage.qml:214
 #, kde-format
 msgid "No ratings yet"
 msgstr "Zatím žádná hodnocení"
 
-#: discover/qml/ApplicationPage.qml:63
+#: discover/qml/ApplicationPage.qml:65
 #, kde-format
-msgid "Sources"
-msgstr "Zdroje"
+msgctxt ""
+"@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
+"\""
+msgid "From %1"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:74
+#: discover/qml/ApplicationPage.qml:76
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:186
+#: discover/qml/ApplicationPage.qml:194
 #, kde-format
 msgid "Unknown author"
 msgstr "Neznámý autor"
 
-#: discover/qml/ApplicationPage.qml:221
-#, kde-format
-msgid "Could not access the screenshots"
-msgstr "Ke snímkům obrazovky nelze přistupovat"
-
-#: discover/qml/ApplicationPage.qml:280
-#, kde-format
-msgid "Version"
+#: discover/qml/ApplicationPage.qml:238
+#, fuzzy, kde-format
+#| msgid "Version"
+msgid "Version:"
 msgstr "Verze"
 
-#: discover/qml/ApplicationPage.qml:307
-#: discover/qml/ApplicationsListPage.qml:110
-#, kde-format
-msgid "Size"
+#: discover/qml/ApplicationPage.qml:250
+#, fuzzy, kde-format
+#| msgid "Size"
+msgid "Size:"
 msgstr "Velikost"
 
-#: discover/qml/ApplicationPage.qml:334
-#, kde-format
-msgid "Distributed by"
-msgstr ""
-
-#: discover/qml/ApplicationPage.qml:361
-#, kde-format
-msgid "License"
-msgid_plural "Licenses"
+#: discover/qml/ApplicationPage.qml:262
+#, fuzzy, kde-format
+#| msgid "License"
+#| msgid_plural "Licenses"
+msgid "License:"
+msgid_plural "Licenses:"
 msgstr[0] "Licence"
 msgstr[1] "Licence"
 msgstr[2] "Licence"
 
-#: discover/qml/ApplicationPage.qml:370
+#: discover/qml/ApplicationPage.qml:270
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: discover/qml/ApplicationPage.qml:408
+#: discover/qml/ApplicationPage.qml:300
 #, kde-format
 msgid "What does this mean?"
 msgstr "Co to znamená?"
 
-#: discover/qml/ApplicationPage.qml:418
+#: discover/qml/ApplicationPage.qml:309
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
@@ -334,85 +330,91 @@ msgstr[0] "Více…"
 msgstr[1] "Více…"
 msgstr[2] "Více…"
 
-#: discover/qml/ApplicationPage.qml:436 discover/qml/ApplicationPage.qml:885
-#, kde-format
-msgid "Content Rating"
+#: discover/qml/ApplicationPage.qml:320
+#, fuzzy, kde-format
+#| msgid "Content Rating"
+msgid "Content Rating:"
 msgstr "Hodnocení obsahu"
 
-#: discover/qml/ApplicationPage.qml:446
+#: discover/qml/ApplicationPage.qml:329
 #, kde-format
 msgid "Age: %1+"
 msgstr "Věk: %1+"
 
-#: discover/qml/ApplicationPage.qml:470
+#: discover/qml/ApplicationPage.qml:353
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "Podrobnosti…"
 
-#: discover/qml/ApplicationPage.qml:569
+#: discover/qml/ApplicationPage.qml:375
+#, kde-format
+msgid "Could not access the screenshots"
+msgstr "Ke snímkům obrazovky nelze přistupovat"
+
+#: discover/qml/ApplicationPage.qml:475
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: discover/qml/ApplicationPage.qml:570
+#: discover/qml/ApplicationPage.qml:476
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Přečtěte si oficiální dokumentaci projektu"
 
-#: discover/qml/ApplicationPage.qml:586
+#: discover/qml/ApplicationPage.qml:492
 #, kde-format
 msgid "Website"
 msgstr "Webová stránka"
 
-#: discover/qml/ApplicationPage.qml:587
+#: discover/qml/ApplicationPage.qml:493
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Přejít na stránku projektu"
 
-#: discover/qml/ApplicationPage.qml:603
+#: discover/qml/ApplicationPage.qml:509
 #, kde-format
 msgid "Addons"
 msgstr "Doplňky"
 
-#: discover/qml/ApplicationPage.qml:604
+#: discover/qml/ApplicationPage.qml:510
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Instalace nebo odstranění dodatečné funkčnosti"
 
-#: discover/qml/ApplicationPage.qml:623
+#: discover/qml/ApplicationPage.qml:529
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Sdílet"
 
-#: discover/qml/ApplicationPage.qml:624
+#: discover/qml/ApplicationPage.qml:530
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Poslat odkaz pro tuto aplikaci"
 
-#: discover/qml/ApplicationPage.qml:640
+#: discover/qml/ApplicationPage.qml:546
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:660
+#: discover/qml/ApplicationPage.qml:566
 #, kde-format
 msgid "What's New"
 msgstr "Co je nového"
 
-#: discover/qml/ApplicationPage.qml:691
+#: discover/qml/ApplicationPage.qml:597
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Načítají se recenze pro %1"
 
-#: discover/qml/ApplicationPage.qml:697
+#: discover/qml/ApplicationPage.qml:603
 #, kde-format
 msgid "Reviews"
 msgstr "Recenze"
 
-#: discover/qml/ApplicationPage.qml:735
+#: discover/qml/ApplicationPage.qml:641
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
@@ -420,62 +422,67 @@ msgstr[0] "Zobrazit %1 recenzi..."
 msgstr[1] "Zobrazit všechny %1 recenze..."
 msgstr[2] "Zobrazit všech %1 recenzí..."
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:653
 #, kde-format
 msgid "Write a Review"
 msgstr "Napište hodnocení..."
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:653
 #, kde-format
 msgid "Install to Write a Review"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:759
+#: discover/qml/ApplicationPage.qml:665
 #, kde-format
 msgid "Get Involved"
 msgstr "Zapojte se"
 
-#: discover/qml/ApplicationPage.qml:792
+#: discover/qml/ApplicationPage.qml:698
 #, kde-format
 msgid "Donate"
 msgstr "Přispět"
 
-#: discover/qml/ApplicationPage.qml:793
+#: discover/qml/ApplicationPage.qml:699
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:809
+#: discover/qml/ApplicationPage.qml:715
 #, kde-format
 msgid "Report Bug"
 msgstr "Nahlásit chybu"
 
-#: discover/qml/ApplicationPage.qml:810
+#: discover/qml/ApplicationPage.qml:716
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:826
+#: discover/qml/ApplicationPage.qml:732
 #, kde-format
 msgid "Contribute"
 msgstr "Přispět"
 
-#: discover/qml/ApplicationPage.qml:827
+#: discover/qml/ApplicationPage.qml:733
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:852
+#: discover/qml/ApplicationPage.qml:758
 #, kde-format
 msgid "All Licenses"
 msgstr "Všechny licence"
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:791
+#, kde-format
+msgid "Content Rating"
+msgstr "Hodnocení obsahu"
+
+#: discover/qml/ApplicationPage.qml:805
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Rizika proprietárního software"
 
-#: discover/qml/ApplicationPage.qml:905
+#: discover/qml/ApplicationPage.qml:811
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -491,7 +498,7 @@ msgid ""
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:906
+#: discover/qml/ApplicationPage.qml:812
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -556,6 +563,11 @@ msgstr "Název"
 #, kde-format
 msgid "Rating"
 msgstr "Hodnocení"
+
+#: discover/qml/ApplicationsListPage.qml:110
+#, kde-format
+msgid "Size"
+msgstr "Velikost"
 
 #: discover/qml/ApplicationsListPage.qml:119
 #, kde-format
@@ -793,18 +805,27 @@ msgstr ""
 msgid "Participate…"
 msgstr "Přidejte se…"
 
-#: discover/qml/InstallApplicationButton.qml:25
+#: discover/qml/InstallApplicationButton.qml:26
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
 msgstr "Probíhá načítání…"
 
-#: discover/qml/InstallApplicationButton.qml:28
-#, kde-format
+#: discover/qml/InstallApplicationButton.qml:30
+#, fuzzy, kde-format
+#| msgid "Install"
+msgctxt "@action:button %1 is the name of a software repository"
+msgid "Install from %1"
+msgstr "Instalovat"
+
+#: discover/qml/InstallApplicationButton.qml:32
+#, fuzzy, kde-format
+#| msgid "Install"
+msgctxt "@action:button"
 msgid "Install"
 msgstr "Instalovat"
 
-#: discover/qml/InstallApplicationButton.qml:30
+#: discover/qml/InstallApplicationButton.qml:34
 #, kde-format
 msgid "Remove"
 msgstr "Odstranit"
@@ -1171,3 +1192,6 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
+
+#~ msgid "Sources"
+#~ msgstr "Zdroje"

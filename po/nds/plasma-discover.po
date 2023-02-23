@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-19 00:59+0000\n"
+"POT-Creation-Date: 2023-02-23 00:59+0000\n"
 "PO-Revision-Date: 2014-03-16 09:10+0100\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -258,7 +258,7 @@ msgid "Add"
 msgstr "Verwiedern"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
-#: discover/qml/InstallApplicationButton.qml:43
+#: discover/qml/InstallApplicationButton.qml:47
 #: discover/qml/ProgressView.qml:109 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:252 discover/qml/WebflowDialog.qml:41
 #, kde-format
@@ -266,7 +266,7 @@ msgid "Cancel"
 msgstr "Afbreken"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:209
+#: discover/qml/ApplicationPage.qml:214
 #, fuzzy, kde-format
 #| msgid "Rating"
 msgid "%1 rating"
@@ -275,158 +275,154 @@ msgstr[0] "Beweerten"
 msgstr[1] "Beweerten"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:209
+#: discover/qml/ApplicationPage.qml:214
 #, kde-format
 msgid "No ratings yet"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:63
-#, fuzzy, kde-format
-#| msgid "Sources"
-msgid "Sources"
-msgstr "Borns"
+#: discover/qml/ApplicationPage.qml:65
+#, kde-format
+msgctxt ""
+"@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
+"\""
+msgid "From %1"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:74
+#: discover/qml/ApplicationPage.qml:76
 #, kde-format
 msgid "%1 - %2"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:186
+#: discover/qml/ApplicationPage.qml:194
 #, kde-format
 msgid "Unknown author"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:221
-#, kde-format
-msgid "Could not access the screenshots"
-msgstr ""
-
-#: discover/qml/ApplicationPage.qml:280
+#: discover/qml/ApplicationPage.qml:238
 #, fuzzy, kde-format
 #| msgid "Version: "
-msgid "Version"
+msgid "Version:"
 msgstr "Verschoon: "
 
-#: discover/qml/ApplicationPage.qml:307
-#: discover/qml/ApplicationsListPage.qml:110
+#: discover/qml/ApplicationPage.qml:250
 #, fuzzy, kde-format
 #| msgid "Total Size: "
-msgid "Size"
+msgid "Size:"
 msgstr "Heel Grött: "
 
-#: discover/qml/ApplicationPage.qml:334
-#, kde-format
-msgid "Distributed by"
-msgstr ""
-
-#: discover/qml/ApplicationPage.qml:361
+#: discover/qml/ApplicationPage.qml:262
 #, fuzzy, kde-format
 #| msgid "License: "
-msgid "License"
-msgid_plural "Licenses"
+msgid "License:"
+msgid_plural "Licenses:"
 msgstr[0] "Verlööfnis: "
 msgstr[1] "Verlööfnis: "
 
-#: discover/qml/ApplicationPage.qml:370
+#: discover/qml/ApplicationPage.qml:270
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:408
+#: discover/qml/ApplicationPage.qml:300
 #, kde-format
 msgid "What does this mean?"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:418
+#: discover/qml/ApplicationPage.qml:309
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] ""
 msgstr[1] ""
 
-#: discover/qml/ApplicationPage.qml:436 discover/qml/ApplicationPage.qml:885
+#: discover/qml/ApplicationPage.qml:320
 #, fuzzy, kde-format
 #| msgid "Rating"
-msgid "Content Rating"
+msgid "Content Rating:"
 msgstr "Beweerten"
 
-#: discover/qml/ApplicationPage.qml:446
+#: discover/qml/ApplicationPage.qml:329
 #, kde-format
 msgid "Age: %1+"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:470
+#: discover/qml/ApplicationPage.qml:353
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:569
+#: discover/qml/ApplicationPage.qml:375
+#, kde-format
+msgid "Could not access the screenshots"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:475
 #, kde-format
 msgid "Documentation"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:570
+#: discover/qml/ApplicationPage.qml:476
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:586
+#: discover/qml/ApplicationPage.qml:492
 #, kde-format
 msgid "Website"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:587
+#: discover/qml/ApplicationPage.qml:493
 #, kde-format
 msgid "Visit the project's website"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:603
+#: discover/qml/ApplicationPage.qml:509
 #, kde-format
 msgid "Addons"
 msgstr "Verwiedern"
 
-#: discover/qml/ApplicationPage.qml:604
+#: discover/qml/ApplicationPage.qml:510
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:623
+#: discover/qml/ApplicationPage.qml:529
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:624
+#: discover/qml/ApplicationPage.qml:530
 #, kde-format
 msgid "Send a link for this application"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:640
+#: discover/qml/ApplicationPage.qml:546
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:660
+#: discover/qml/ApplicationPage.qml:566
 #, kde-format
 msgid "What's New"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:691
+#: discover/qml/ApplicationPage.qml:597
 #, fuzzy, kde-format
 #| msgid "Rating"
 msgid "Loading reviews for %1"
 msgstr "Beweerten"
 
-#: discover/qml/ApplicationPage.qml:697
+#: discover/qml/ApplicationPage.qml:603
 #, fuzzy, kde-format
 #| msgid "Review"
 msgid "Reviews"
 msgstr "Nakiek"
 
-#: discover/qml/ApplicationPage.qml:735
+#: discover/qml/ApplicationPage.qml:641
 #, fuzzy, kde-format
 #| msgid "More comments (%1)..."
 msgid "Show all %1 Reviews"
@@ -434,65 +430,71 @@ msgid_plural "Show all %1 Reviews"
 msgstr[0] "Mehr Kommentaren (%1)..."
 msgstr[1] "Mehr Kommentaren (%1)..."
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:653
 #, fuzzy, kde-format
 #| msgid "Submit"
 msgid "Write a Review"
 msgstr "Loosstüern"
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:653
 #, fuzzy, kde-format
 #| msgid "Submit"
 msgid "Install to Write a Review"
 msgstr "Loosstüern"
 
-#: discover/qml/ApplicationPage.qml:759
+#: discover/qml/ApplicationPage.qml:665
 #, kde-format
 msgid "Get Involved"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:792
+#: discover/qml/ApplicationPage.qml:698
 #, kde-format
 msgid "Donate"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:793
+#: discover/qml/ApplicationPage.qml:699
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:809
+#: discover/qml/ApplicationPage.qml:715
 #, kde-format
 msgid "Report Bug"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:810
+#: discover/qml/ApplicationPage.qml:716
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:826
+#: discover/qml/ApplicationPage.qml:732
 #, kde-format
 msgid "Contribute"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:827
+#: discover/qml/ApplicationPage.qml:733
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:852
+#: discover/qml/ApplicationPage.qml:758
 #, fuzzy, kde-format
 #| msgid "License: "
 msgid "All Licenses"
 msgstr "Verlööfnis: "
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:791
+#, fuzzy, kde-format
+#| msgid "Rating"
+msgid "Content Rating"
+msgstr "Beweerten"
+
+#: discover/qml/ApplicationPage.qml:805
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:905
+#: discover/qml/ApplicationPage.qml:811
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -508,7 +510,7 @@ msgid ""
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:906
+#: discover/qml/ApplicationPage.qml:812
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -576,6 +578,12 @@ msgstr "Naam"
 #, kde-format
 msgid "Rating"
 msgstr "Beweerten"
+
+#: discover/qml/ApplicationsListPage.qml:110
+#, fuzzy, kde-format
+#| msgid "Total Size: "
+msgid "Size"
+msgstr "Heel Grött: "
 
 #: discover/qml/ApplicationsListPage.qml:119
 #, kde-format
@@ -823,19 +831,28 @@ msgstr ""
 msgid "Participate…"
 msgstr ""
 
-#: discover/qml/InstallApplicationButton.qml:25
+#: discover/qml/InstallApplicationButton.qml:26
 #, fuzzy, kde-format
 #| msgid "Loading..."
 msgctxt "State being fetched"
 msgid "Loading…"
 msgstr "Bi to laden..."
 
-#: discover/qml/InstallApplicationButton.qml:28
-#, kde-format
+#: discover/qml/InstallApplicationButton.qml:30
+#, fuzzy, kde-format
+#| msgid "Install"
+msgctxt "@action:button %1 is the name of a software repository"
+msgid "Install from %1"
+msgstr "Installeren"
+
+#: discover/qml/InstallApplicationButton.qml:32
+#, fuzzy, kde-format
+#| msgid "Install"
+msgctxt "@action:button"
 msgid "Install"
 msgstr "Installeren"
 
-#: discover/qml/InstallApplicationButton.qml:30
+#: discover/qml/InstallApplicationButton.qml:34
 #, kde-format
 msgid "Remove"
 msgstr "Wegmaken"
@@ -1230,14 +1247,14 @@ msgid "Time of last update unknown"
 msgstr ""
 
 #, fuzzy
+#~| msgid "Sources"
+#~ msgid "Sources"
+#~ msgstr "Borns"
+
+#, fuzzy
 #~| msgid "Loading..."
 #~ msgid "Loading…"
 #~ msgstr "Bi to laden..."
-
-#, fuzzy
-#~| msgid "Total Size: "
-#~ msgid "Size:"
-#~ msgstr "Heel Grött: "
 
 #, fuzzy
 #~| msgid "Sources"
@@ -1258,12 +1275,6 @@ msgstr ""
 
 #~ msgid "OK"
 #~ msgstr "OK"
-
-#, fuzzy
-#~| msgid "Install"
-#~ msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
-#~ msgid "Install from %1"
-#~ msgstr "Installeren"
 
 #, fuzzy
 #~| msgid "Loading..."
