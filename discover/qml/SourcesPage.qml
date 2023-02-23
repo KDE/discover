@@ -291,10 +291,13 @@ DiscoverPage {
                 left: parent.left
                 margins: Kirigami.Units.smallSpacing
             }
-            Kirigami.Heading {
-                Layout.fillWidth: true
-                text: i18n("Missing Backends")
-                visible: back.count > 0
+            Kirigami.ListSectionHeader {
+                contentItem: Kirigami.Heading {
+                    Layout.fillWidth: true
+                    text: i18n("Missing Backends")
+                    visible: back.count > 0
+                    level: 3
+                }
             }
             spacing: 0
             Repeater {
@@ -302,12 +305,14 @@ DiscoverPage {
                 model: ResourcesProxyModel {
                     extending: "org.kde.discover.desktop"
                     filterMinimumState: false
+                    stateFilter: AbstractResource.None
                 }
                 delegate: Kirigami.BasicListItem {
                     supportsMouseEvents: false
                     label: name
                     icon: model.icon
-                    InstallApplicationButton {
+                    subtitle: model.comment
+                    trailing: InstallApplicationButton {
                         application: model.application
                     }
                 }
