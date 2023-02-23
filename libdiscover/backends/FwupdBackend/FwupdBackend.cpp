@@ -28,6 +28,9 @@ FwupdBackend::FwupdBackend(QObject *parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_cancellable(g_cancellable_new())
 {
+    g_autoptr(GError) error = nullptr;
+    if (!fwupd_client_connect(client, m_cancellable, &error))
+        handleError(error);
     fwupd_client_set_user_agent_for_package(client, "plasma-discover", "1.0");
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FwupdBackend::updatesCountChanged);
 
@@ -330,13 +333,6 @@ void FwupdBackend::checkForUpdates()
 {
     if (m_fetching)
         return;
-
-    g_autoptr(GError) error = nullptr;
-
-    if (!fwupd_client_connect(client, m_cancellable, &error)) {
-        handleError(error);
-        return;
-    }
 
     m_fetching = true;
     Q_EMIT fetchingChanged();
