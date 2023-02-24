@@ -619,7 +619,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-search"));
         const auto f = [this, stream, filter]() {
             const auto components = !filter.search.isEmpty() ? m_appdata->search(filter.search)
-#if ASQ_MAJOR_VERSION >= 0 && ASQ_MINOR_VERSION >= 15 && ASQ_MICRO_VERSION >= 6
+#if ASQ_CHECK_VERSION(0, 15, 6)
                                   : filter.category          ? AppStreamUtils::componentsByCategories(m_appdata.get(),
                                                                                                       filter.category,
                                                                                                       AppStream::Bundle::KindUnknown)
