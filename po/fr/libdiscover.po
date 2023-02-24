@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-23 00:59+0000\n"
+"POT-Creation-Date: 2023-02-24 01:00+0000\n"
 "PO-Revision-Date: 2023-01-10 18:23+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -549,7 +549,7 @@ msgid "Local bundle"
 msgstr "Paquet local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1645
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:659
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:669
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL « AppStream » malformée « %1 »"
@@ -1151,7 +1151,7 @@ msgstr ""
 "Votre système d'exploitation n'est plus pris en charge depuis %1. Veuillez "
 "prendre en compte une mise à jour vers une version prise en charge."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:754
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:763
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Impossible de supprimer « %1 »"

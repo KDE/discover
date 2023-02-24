@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-23 00:59+0000\n"
+"POT-Creation-Date: 2023-02-24 01:00+0000\n"
 "PO-Revision-Date: 2021-09-19 20:01+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -1065,7 +1065,7 @@ msgstr "ရီပိုစစ်တိုရီကို ဖယ်ရှား�
 msgid "Show contents"
 msgstr "ပါဝင်အကြောင်းအရာများ ပြမည်"
 
-#: discover/qml/SourcesPage.qml:296
+#: discover/qml/SourcesPage.qml:297
 #, kde-format
 msgid "Missing Backends"
 msgstr "အုတ်မြစ်ပရိုဂရမ်များ မရှိပါ"

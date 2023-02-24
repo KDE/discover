@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-23 00:59+0000\n"
-"PO-Revision-Date: 2023-02-22 09:13+0100\n"
+"POT-Creation-Date: 2023-02-24 01:00+0000\n"
+"PO-Revision-Date: 2023-02-23 08:43+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1099,7 +1099,7 @@ msgstr "Odstrani skladišče"
 msgid "Show contents"
 msgstr "Prikaži vsebino"
 
-#: discover/qml/SourcesPage.qml:296
+#: discover/qml/SourcesPage.qml:297
 #, kde-format
 msgid "Missing Backends"
 msgstr "Manjkajo programi v ozadju"

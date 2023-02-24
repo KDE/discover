@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-23 00:59+0000\n"
+"POT-Creation-Date: 2023-02-24 01:00+0000\n"
 "PO-Revision-Date: 2023-02-15 11:04\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1056,7 +1056,7 @@ msgstr "移除软件仓库"
 msgid "Show contents"
 msgstr "显示内容"
 
-#: discover/qml/SourcesPage.qml:296
+#: discover/qml/SourcesPage.qml:297
 #, kde-format
 msgid "Missing Backends"
 msgstr "缺少后端程序"

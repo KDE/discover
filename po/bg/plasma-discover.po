@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-23 00:59+0000\n"
+"POT-Creation-Date: 2023-02-24 01:00+0000\n"
 "PO-Revision-Date: 2023-02-02 16:06+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1092,7 +1092,7 @@ msgstr "Премахване на хранилище"
 msgid "Show contents"
 msgstr "Показване на съдържанието"
 
-#: discover/qml/SourcesPage.qml:296
+#: discover/qml/SourcesPage.qml:297
 #, kde-format
 msgid "Missing Backends"
 msgstr "Липсващ бекенд"

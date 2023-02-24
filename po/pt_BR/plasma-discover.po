@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-23 00:59+0000\n"
+"POT-Creation-Date: 2023-02-24 01:00+0000\n"
 "PO-Revision-Date: 2023-02-07 10:58-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1092,7 +1092,7 @@ msgstr "Remover repositório"
 msgid "Show contents"
 msgstr "Mostrar conteúdos"
 
-#: discover/qml/SourcesPage.qml:296
+#: discover/qml/SourcesPage.qml:297
 #, kde-format
 msgid "Missing Backends"
 msgstr "Infraestruturas faltantes"

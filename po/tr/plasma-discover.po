@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-23 00:59+0000\n"
-"PO-Revision-Date: 2023-02-05 12:30+0300\n"
+"POT-Creation-Date: 2023-02-24 01:00+0000\n"
+"PO-Revision-Date: 2023-02-23 18:23+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -296,7 +296,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "%1 konumundan"
 
 #: discover/qml/ApplicationPage.qml:76
 #, kde-format
@@ -309,25 +309,21 @@ msgid "Unknown author"
 msgstr "Bilinmeyen yazar"
 
 #: discover/qml/ApplicationPage.qml:238
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "Sürüm"
+msgstr "Sürüm:"
 
 #: discover/qml/ApplicationPage.qml:250
-#, fuzzy, kde-format
-#| msgid "Size"
+#, kde-format
 msgid "Size:"
-msgstr "Boyut"
+msgstr "Boyut:"
 
 #: discover/qml/ApplicationPage.qml:262
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Lisanslar"
-msgstr[1] "Lisanslar"
+msgstr[0] "Lisans:"
+msgstr[1] "Lisanslar:"
 
 #: discover/qml/ApplicationPage.qml:270
 #, kde-format
@@ -348,10 +344,9 @@ msgstr[0] "Daha Fazla…"
 msgstr[1] "Daha fazla…"
 
 #: discover/qml/ApplicationPage.qml:320
-#, fuzzy, kde-format
-#| msgid "Content Rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "İçerik Derecelendirmesi"
+msgstr "İçerik Derecelendirmesi:"
 
 #: discover/qml/ApplicationPage.qml:329
 #, kde-format
@@ -857,15 +852,13 @@ msgid "Loading…"
 msgstr "Yükleniyor…"
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
-msgstr "Kur"
+msgstr "%1 Konumundan Kur"
 
 #: discover/qml/InstallApplicationButton.qml:32
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Kur"
@@ -1091,7 +1084,7 @@ msgstr "Depoyu kaldır"
 msgid "Show contents"
 msgstr "İçeriği göster"
 
-#: discover/qml/SourcesPage.qml:296
+#: discover/qml/SourcesPage.qml:297
 #, kde-format
 msgid "Missing Backends"
 msgstr "Eksik Arka Uçlar"

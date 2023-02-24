@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-23 00:59+0000\n"
-"PO-Revision-Date: 2023-02-02 10:25+0100\n"
+"POT-Creation-Date: 2023-02-24 01:00+0000\n"
+"PO-Revision-Date: 2023-02-23 13:26+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: discover/DiscoverObject.cpp:159
@@ -298,7 +298,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "Vanaf %1"
 
 #: discover/qml/ApplicationPage.qml:76
 #, kde-format
@@ -311,10 +311,9 @@ msgid "Unknown author"
 msgstr "Onbekende auteur"
 
 #: discover/qml/ApplicationPage.qml:238
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "Versie"
+msgstr "Versie:"
 
 #: discover/qml/ApplicationPage.qml:250
 #, kde-format
@@ -322,13 +321,11 @@ msgid "Size:"
 msgstr "Grootte:"
 
 #: discover/qml/ApplicationPage.qml:262
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Licentie"
-msgstr[1] "Licentie:"
+msgstr[0] "Licentie:"
+msgstr[1] "Licenties:"
 
 #: discover/qml/ApplicationPage.qml:270
 #, kde-format
@@ -349,10 +346,9 @@ msgstr[0] "Bekijk meer…"
 msgstr[1] "Bekijk meer…"
 
 #: discover/qml/ApplicationPage.qml:320
-#, fuzzy, kde-format
-#| msgid "Content Rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "Waardering van inhoud"
+msgstr "Waardering van inhoud:"
 
 #: discover/qml/ApplicationPage.qml:329
 #, kde-format
@@ -857,16 +853,13 @@ msgid "Loading…"
 msgstr "Bezig met laden…"
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
-#| msgid "Install from %1"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "Installeren uit %1"
 
 #: discover/qml/InstallApplicationButton.qml:32
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Installeren"
@@ -1092,7 +1085,7 @@ msgstr "Opslagruimte verwijderen"
 msgid "Show contents"
 msgstr "Inhoud tonen"
 
-#: discover/qml/SourcesPage.qml:296
+#: discover/qml/SourcesPage.qml:297
 #, kde-format
 msgid "Missing Backends"
 msgstr "Backends ontbreken"
