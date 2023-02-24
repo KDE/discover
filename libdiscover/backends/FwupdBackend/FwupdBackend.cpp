@@ -29,8 +29,11 @@ FwupdBackend::FwupdBackend(QObject *parent)
     , m_cancellable(g_cancellable_new())
 {
     g_autoptr(GError) error = nullptr;
-    if (!fwupd_client_connect(client, m_cancellable, &error))
+    if (!fwupd_client_connect(client, m_cancellable, &error)) {
         handleError(error);
+        m_isValid = false;
+        return;
+    }
     fwupd_client_set_user_agent_for_package(client, "plasma-discover", "1.0");
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FwupdBackend::updatesCountChanged);
 

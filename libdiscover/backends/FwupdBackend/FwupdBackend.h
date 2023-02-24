@@ -55,8 +55,8 @@ public:
     }
     bool isValid() const override
     {
-        return true;
-    } // No external file dependencies that could cause runtime errors
+        return m_isValid;
+    }
 
     Transaction *installApplication(AbstractResource *app) override;
     Transaction *installApplication(AbstractResource *app, const AddonList &addons) override;
@@ -95,4 +95,5 @@ private:
     int m_startElements;
     QList<AbstractResource *> m_toUpdate;
     GCancellable *m_cancellable;
+    bool m_isValid = true;
 };
