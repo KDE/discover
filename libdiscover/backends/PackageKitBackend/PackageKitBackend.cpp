@@ -48,6 +48,17 @@
 
 DISCOVER_BACKEND_PLUGIN(PackageKitBackend)
 
+QDebug operator<<(QDebug dbg, const PackageOrAppId &value)
+{
+    QDebugStateSaver saver(dbg);
+    dbg.nospace();
+    dbg << "PackageOrAppId(";
+    dbg << "id: " << value.id << ',';
+    dbg << "isPkg: " << value.isPackageName;
+    dbg << ')';
+    return dbg;
+}
+
 bool operator==(const PackageOrAppId &a, const PackageOrAppId &b)
 {
     return a.isPackageName == b.isPackageName && a.id == b.id;
@@ -66,6 +77,15 @@ PackageOrAppId makeAppId(const QString &id)
 PackageOrAppId makePackageId(const QString &id)
 {
     return {id, true};
+}
+
+PackageOrAppId makeResourceId(PackageKitResource *res)
+{
+    auto appstreamResource = qobject_cast<AppPackageKitResource *>(res);
+    if (appstreamResource) {
+        return {appstreamResource->appstreamId(), false};
+    }
+    return {res->packageName(), true};
 }
 
 template<typename T, typename W>
@@ -238,32 +258,13 @@ void PackageKitBackend::acquireFetching(bool f)
     Q_ASSERT(m_isFetching >= 0);
 }
 
-struct DelayedAppStreamLoad {
-    QVector<AppStream::Component> components;
-    bool correct = true;
-};
-
-static DelayedAppStreamLoad loadAppStream(AppStream::Pool *appdata)
+static bool loadAppStream(AppStream::Pool *appdata)
 {
-    DelayedAppStreamLoad ret;
-
-    ret.correct = appdata->load();
-    if (!ret.correct) {
+    bool correct = appdata->load();
+    if (!correct) {
         qWarning() << "Could not open the AppStream metadata pool" << appdata->lastError();
     }
-
-    const auto components = appdata->components();
-    ret.components.reserve(components.size());
-    for (const AppStream::Component &component : components) {
-        if (component.kind() == AppStream::Component::KindFirmware)
-            continue;
-
-        const auto pkgNames = component.packageNames();
-        if (!pkgNames.isEmpty()) {
-            ret.components << component;
-        }
-    }
-    return ret;
+    return correct;
 }
 
 void PackageKitBackend::reloadPackageList()
@@ -275,26 +276,24 @@ void PackageKitBackend::reloadPackageList()
 
     m_appdata.reset(new AppStream::Pool);
 
-    auto fw = new QFutureWatcher<DelayedAppStreamLoad>(this);
-    connect(fw, &QFutureWatcher<DelayedAppStreamLoad>::finished, this, [this, fw]() {
-        const auto data = fw->result();
+    auto fw = new QFutureWatcher<bool>(this);
+    connect(fw, &QFutureWatcher<bool>::finished, this, [this, fw]() {
+        const auto correct = fw->result();
         fw->deleteLater();
 
-        if (!data.correct && m_packages.packages.isEmpty()) {
+        if (!correct && m_packages.packages.isEmpty()) {
             QTimer::singleShot(0, this, [this]() {
                 Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
             });
         }
-        for (const auto &component : data.components) {
-            addComponent(component);
-        }
 
-        if (data.components.isEmpty()) {
-            qCDebug(LIBDISCOVER_BACKEND_LOG) << "empty appstream db";
-            if (PackageKit::Daemon::backendName() == QLatin1String("aptcc") || PackageKit::Daemon::backendName().isEmpty()) {
-                checkForUpdates();
-            }
-        }
+        // TODO
+        // if (data.components.isEmpty()) {
+        //     qCDebug(LIBDISCOVER_BACKEND_LOG) << "empty appstream db";
+        //     if (PackageKit::Daemon::backendName() == QLatin1String("aptcc") || PackageKit::Daemon::backendName().isEmpty()) {
+        //         checkForUpdates();
+        //     }
+        // }
         if (!m_appstreamInitialized) {
             m_appstreamInitialized = true;
             Q_EMIT loadedAppStream();
@@ -330,19 +329,21 @@ void PackageKitBackend::reloadPackageList()
     fw->setFuture(QtConcurrent::run(&m_threadPool, &loadAppStream, m_appdata.get()));
 }
 
-AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Component &component)
+AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Component &component) const
 {
-    Q_ASSERT(isFetching());
     const QStringList pkgNames = component.packageNames();
     Q_ASSERT(!pkgNames.isEmpty());
+    Q_ASSERT(component.kind() != AppStream::Component::KindFirmware);
 
-    auto &resPos = m_packages.packages[makeAppId(component.id())];
-    AppPackageKitResource *res = qobject_cast<AppPackageKitResource *>(resPos);
+    auto appId = makeAppId(component.id());
+    AppPackageKitResource *res = qobject_cast<AppPackageKitResource *>(m_packages.packages.value(appId));
     if (!res) {
-        res = new AppPackageKitResource(component, pkgNames.at(0), this);
-        resPos = res;
-    } else {
-        res->clearPackageIds();
+        res = qobject_cast<AppPackageKitResource *>(m_packagesToAdd.value(appId));
+    }
+    if (!res) {
+        res = new AppPackageKitResource(component, pkgNames.at(0), const_cast<PackageKitBackend *>(this));
+        m_packagesToAdd.insert(appId, res);
+
     }
     for (const QString &pkg : pkgNames) {
         m_packages.packageToApp[pkg] += component.id();
@@ -409,7 +410,7 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
     if (r.isEmpty()) {
         auto pk = new PackageKitResource(packageName, summary, this);
         r = {pk};
-        m_packagesToAdd.insert(pk);
+        m_packagesToAdd.insert(makePackageId(packageName), pk);
     }
     for (auto res : std::as_const(r))
         static_cast<PackageKitResource *>(res)->addPackageId(info, packageId, arch);
@@ -426,9 +427,10 @@ void PackageKitBackend::includePackagesToAdd()
         return;
 
     acquireFetching(true);
-    for (PackageKitResource *res : std::as_const(m_packagesToAdd)) {
-        m_packages.packages[makePackageId(res->packageName())] = res;
+    for (auto [id, res] : KeyValueRange(std::as_const(m_packagesToAdd))) {
+        m_packages.packages[id] = res;
     }
+    m_packagesToAdd.clear();
     for (PackageKitResource *res : std::as_const(m_packagesToDelete)) {
         const auto pkgs = m_packages.packageToApp.value(res->packageName(), {res->packageName()});
         for (const auto &pkg : pkgs) {
@@ -439,7 +441,6 @@ void PackageKitBackend::includePackagesToAdd()
             }
         }
     }
-    m_packagesToAdd.clear();
     m_packagesToDelete.clear();
     acquireFetching(false);
 }
@@ -488,15 +489,26 @@ T PackageKitBackend::resourcesByPackageNames(const W &pkgnames) const
     for (const QString &pkg_name : pkgnames) {
         const QStringList app_names = m_packages.packageToApp.value(pkg_name, QStringList());
         if (app_names.isEmpty()) {
-            AbstractResource *res = m_packages.packages.value(makePackageId(pkg_name));
+            auto pkgId = makePackageId(pkg_name);
+            PackageKitResource *res = qobject_cast<PackageKitResource *>(m_packages.packages.value(pkgId));
+            if (!res) {
+                res = m_packagesToAdd.value(pkgId);
+            }
             if (res) {
                 ret += res;
+                m_packagesToAdd.insert(pkgId, res);
             }
         } else {
             for (const QString &app_id : app_names) {
-                AbstractResource *res = m_packages.packages.value(makeAppId(app_id));
+                const auto appId = makeAppId(app_id);
+                AbstractResource *res = m_packages.packages.value(appId);
+                if (!res) {
+                    res = m_packagesToAdd.value(appId);
+                }
                 if (res) {
                     ret += res;
+                } else {
+                    ret += resourcesByComponents<T>(m_appdata->componentsByBundleId(AppStream::Bundle::KindPackage, pkg_name, false));
                 }
             }
         }
@@ -659,18 +671,22 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
     } else {
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-search"));
         const auto f = [this, stream, filter]() {
-            const auto components = !filter.search.isEmpty() ? m_appdata->search(filter.search)
+            auto components = !filter.search.isEmpty() ? m_appdata->search(filter.search)
 #if ASQ_CHECK_VERSION(0, 15, 6)
                                   : filter.category          ? AppStreamUtils::componentsByCategories(m_appdata.get(),
                                                                                                       filter.category,
                                                                                                       AppStream::Bundle::KindUnknown)
 #endif
                                                              : m_appdata->components();
-            const QSet<QString> ids = kTransform<QSet<QString>>(components, [](const AppStream::Component &comp) {
-                return comp.id();
+            QSet<QString> ids;
+            components = kFilter<QList<AppStream::Component>>(components, [&ids](const AppStream::Component &comp) {
+                if (ids.contains(comp.id()))
+                    return false;
+                ids.insert(comp.id());
+                return true;
             });
             if (!ids.isEmpty()) {
-                const auto resources = kFilter<QVector<AbstractResource *>>(resourcesByAppNames<QVector<AbstractResource *>>(ids), [](AbstractResource *res) {
+                const auto resources = kFilter<QVector<AbstractResource *>>(resourcesByComponents<QVector<AbstractResource *>>(components), [](AbstractResource *res) {
                     return !qobject_cast<PackageKitResource *>(res)->extendsItself();
                 });
                 stream->sendResources(resources, filter.state != AbstractResource::Broken);
@@ -743,8 +759,9 @@ T PackageKitBackend::resourcesByComponents(const QList<AppStream::Component> &co
             continue;
         }
         done += comp.id();
-        ret << m_packages.packages.value(makeAppId(comp.id()));
-        Q_ASSERT(ret.constLast());
+        auto r = addComponent(comp);
+        Q_ASSERT(r);
+        ret << r;
     }
     return ret;
 }

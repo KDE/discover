@@ -169,3 +169,26 @@ inline void swap(QJsonValueRef v1, QJsonValueRef v2)
     v1 = QJsonValue(v2);
     v2 = temp;
 }
+
+template<typename T>
+class KeyValueRange
+{
+public:
+    KeyValueRange(T &data)
+        : m_data{data}
+    {
+    }
+
+    auto begin()
+    {
+        return m_data.keyValueBegin();
+    }
+
+    auto end()
+    {
+        return m_data.keyValueEnd();
+    }
+
+private:
+    T &m_data;
+};

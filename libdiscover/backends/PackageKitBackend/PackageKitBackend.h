@@ -158,7 +158,7 @@ private:
     void acquireFetching(bool f);
     void includePackagesToAdd();
     void performDetailsFetch(const QSet<QString> &pkgids);
-    AppPackageKitResource *addComponent(const AppStream::Component &component);
+    AppPackageKitResource *addComponent(const AppStream::Component &component) const;
     void updateProxy();
     void lookForNextMajorVersion();
     void foundNewMajorVersion(const AppStream::Release &release);
@@ -169,11 +169,11 @@ private:
     int m_isFetching;
     QSet<QString> m_updatesPackageId;
     bool m_hasSecurityUpdates = false;
-    QSet<PackageKitResource *> m_packagesToAdd;
+    mutable QHash<PackageOrAppId, PackageKitResource *> m_packagesToAdd;
     QSet<PackageKitResource *> m_packagesToDelete;
     bool m_appstreamInitialized = false;
 
-    struct {
+    mutable struct {
         QHash<PackageOrAppId, AbstractResource *> packages;
         QHash<QString, QStringList> packageToApp;
     } m_packages;
