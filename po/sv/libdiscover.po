@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-22 02:34+0000\n"
+"POT-Creation-Date: 2023-02-24 02:51+0000\n"
 "PO-Revision-Date: 2022-09-25 09:30+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -551,7 +551,7 @@ msgid "Local bundle"
 msgstr "Lokal packe"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1642
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:659
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:669
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Felaktig webbadress för appstream '%1'"
@@ -1137,7 +1137,7 @@ msgstr ""
 "Stöd för operativsystemet slutade %1. Överväg att uppgradera till en version "
 "som stöds."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:754
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:763
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Kan inte ta bort '%1'"

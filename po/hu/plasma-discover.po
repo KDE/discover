@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 03:17+0000\n"
+"POT-Creation-Date: 2023-02-24 02:51+0000\n"
 "PO-Revision-Date: 2022-02-07 10:40+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1088,7 +1088,7 @@ msgstr "Tároló eltávolítása"
 msgid "Show contents"
 msgstr "Tartalom megjelenítése"
 
-#: discover/qml/SourcesPage.qml:282
+#: discover/qml/SourcesPage.qml:283
 #, kde-format
 msgid "Missing Backends"
 msgstr "Hiányzó backendek"

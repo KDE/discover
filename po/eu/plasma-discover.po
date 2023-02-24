@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 03:17+0000\n"
+"POT-Creation-Date: 2023-02-24 02:51+0000\n"
 "PO-Revision-Date: 2023-02-03 20:43+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1073,7 +1073,7 @@ msgstr "Kendu gordetegia"
 msgid "Show contents"
 msgstr "Erakutsi edukia"
 
-#: discover/qml/SourcesPage.qml:282
+#: discover/qml/SourcesPage.qml:283
 #, kde-format
 msgid "Missing Backends"
 msgstr "Falta diren bizkarraldekoak"

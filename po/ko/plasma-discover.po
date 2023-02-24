@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 03:17+0000\n"
+"POT-Creation-Date: 2023-02-24 02:51+0000\n"
 "PO-Revision-Date: 2022-10-04 15:20+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1071,7 +1071,7 @@ msgstr "저장소 삭제"
 msgid "Show contents"
 msgstr "내용 보기"
 
-#: discover/qml/SourcesPage.qml:282
+#: discover/qml/SourcesPage.qml:283
 #, kde-format
 msgid "Missing Backends"
 msgstr "사용할 수 없는 백엔드"

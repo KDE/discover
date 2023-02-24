@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-04 03:17+0000\n"
+"POT-Creation-Date: 2023-02-24 02:51+0000\n"
 "PO-Revision-Date: 2023-02-02 06:58+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1062,7 +1062,7 @@ msgstr "რეპოზიტორიის წაშლა"
 msgid "Show contents"
 msgstr "შემცველობის ჩვენება"
 
-#: discover/qml/SourcesPage.qml:282
+#: discover/qml/SourcesPage.qml:283
 #, kde-format
 msgid "Missing Backends"
 msgstr "უკანაბოლოები ხელმიუწვდომელია"

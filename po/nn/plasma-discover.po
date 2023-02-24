@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-04 03:17+0000\n"
-"PO-Revision-Date: 2023-02-22 21:53+0100\n"
+"PO-Revision-Date: 2023-02-23 18:18+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -26,6 +26,8 @@ msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr ""
+"Discover kan ikkje no brukast til å installera appar eller gjera "
+"system­oppdateringar, då ingen av pakke­motorane er tilgjengelege."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -35,6 +37,9 @@ msgid ""
 "Backends</interface> section.<nl/><nl/>Also please consider reporting this "
 "as a packaging issue to your distribution."
 msgstr ""
+"Du kan installera nokre pakke­motorar i innstillingane, under sida "
+"<interface>Manglande pakke­motorar</interface>.<nl/><nl/>Vurder òg å melda "
+"frå om dette som ein pakkefeil i distribusjonen din."
 
 #: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
@@ -1035,10 +1040,11 @@ msgstr "Fjern pakkebrønn"
 msgid "Show contents"
 msgstr "Vis innhald"
 
+# Sjå tilsvarande feilmeldingar.
 #: discover/qml/SourcesPage.qml:282
 #, kde-format
 msgid "Missing Backends"
-msgstr "Manglar bakgrunnsmotorar"
+msgstr "Manglande pakkemotorar"
 
 #: discover/qml/UpdatesPage.qml:12
 #, kde-format
