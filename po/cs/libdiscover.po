@@ -2430,6 +2430,3 @@ msgstr "Systémový software"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplňky"
-
-#~ msgid "%1, released on %2"
-#~ msgstr "%1, vydáno %2"
