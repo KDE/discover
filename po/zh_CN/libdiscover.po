@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-24 02:51+0000\n"
-"PO-Revision-Date: 2023-02-15 11:08\n"
+"PO-Revision-Date: 2023-02-24 12:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -1820,7 +1820,7 @@ msgstr "正在准备"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:370
 #, kde-format
 msgid "Decompressing"
-msgstr "正在解压缩"
+msgstr "正在解压"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:372
 #, kde-format
@@ -1940,7 +1940,7 @@ msgstr "发行者："
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
-msgstr[0] "%2 (加上 %1 个依赖)"
+msgstr[0] "%2 (外加 %1 款依赖软件包)"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
 #, kde-format

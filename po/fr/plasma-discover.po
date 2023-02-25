@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-24 02:51+0000\n"
+"POT-Creation-Date: 2023-02-25 04:10+0000\n"
 "PO-Revision-Date: 2023-02-01 19:36+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -373,7 +373,7 @@ msgid_plural "See more…"
 msgstr[0] "Voir plus d'informations..."
 msgstr[1] "Voir plus d'informations..."
 
-#: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:880
+#: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:900
 #, kde-format
 msgid "Content Rating"
 msgstr "Notation des contenus"
@@ -389,135 +389,135 @@ msgctxt "@action"
 msgid "See details…"
 msgstr "Voir plus d'informations..."
 
-#: discover/qml/ApplicationPage.qml:568
+#: discover/qml/ApplicationPage.qml:579
 #, kde-format
 msgid "Documentation"
 msgstr "Documentation"
 
-#: discover/qml/ApplicationPage.qml:569
+#: discover/qml/ApplicationPage.qml:580
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Lire la documentation officielle du projet"
 
-#: discover/qml/ApplicationPage.qml:585
+#: discover/qml/ApplicationPage.qml:596
 #, kde-format
 msgid "Website"
 msgstr "Site Internet"
 
-#: discover/qml/ApplicationPage.qml:586
+#: discover/qml/ApplicationPage.qml:597
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Visiter le site Internet du projet"
 
-#: discover/qml/ApplicationPage.qml:602
+#: discover/qml/ApplicationPage.qml:613
 #, kde-format
 msgid "Addons"
 msgstr "Modules complémentaires"
 
-#: discover/qml/ApplicationPage.qml:603
+#: discover/qml/ApplicationPage.qml:614
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Installer ou supprimer une fonctionnalité additionnelle"
 
-#: discover/qml/ApplicationPage.qml:622
+#: discover/qml/ApplicationPage.qml:633
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Partager"
 
-#: discover/qml/ApplicationPage.qml:623
+#: discover/qml/ApplicationPage.qml:634
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Envoyer un lien vers l'application"
 
-#: discover/qml/ApplicationPage.qml:639
+#: discover/qml/ApplicationPage.qml:650
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Découvrez l'application %1 !"
 
-#: discover/qml/ApplicationPage.qml:659
+#: discover/qml/ApplicationPage.qml:670
 #, kde-format
 msgid "What's New"
 msgstr "Changements récents"
 
-#: discover/qml/ApplicationPage.qml:690
+#: discover/qml/ApplicationPage.qml:701
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Chargement des commentaires pour %1"
 
-#: discover/qml/ApplicationPage.qml:696
+#: discover/qml/ApplicationPage.qml:707
 #, kde-format
 msgid "Reviews"
 msgstr "Avis"
 
-#: discover/qml/ApplicationPage.qml:734
+#: discover/qml/ApplicationPage.qml:745
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "Afficher tous les %1 avis..."
 msgstr[1] "Afficher les %1 avis..."
 
-#: discover/qml/ApplicationPage.qml:746
+#: discover/qml/ApplicationPage.qml:757
 #, kde-format
 msgid "Write a Review"
 msgstr "Donnez votre avis"
 
-#: discover/qml/ApplicationPage.qml:746
+#: discover/qml/ApplicationPage.qml:757
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Installez-le pour donner votre avis"
 
-#: discover/qml/ApplicationPage.qml:758
+#: discover/qml/ApplicationPage.qml:769
 #, kde-format
 msgid "Get Involved"
 msgstr "Impliquez-vous"
 
-#: discover/qml/ApplicationPage.qml:791
+#: discover/qml/ApplicationPage.qml:811
 #, kde-format
 msgid "Donate"
 msgstr "Faire un don"
 
-#: discover/qml/ApplicationPage.qml:792
+#: discover/qml/ApplicationPage.qml:812
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 "Soutenir et remercier l'équipe de développement par des donations à leurs "
 "projets"
 
-#: discover/qml/ApplicationPage.qml:808
+#: discover/qml/ApplicationPage.qml:828
 #, kde-format
 msgid "Report Bug"
 msgstr "Signaler un bogue"
 
-#: discover/qml/ApplicationPage.qml:809
+#: discover/qml/ApplicationPage.qml:829
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Signaler un problème que vous avez trouvé pour aider le corriger"
 
-#: discover/qml/ApplicationPage.qml:823
+#: discover/qml/ApplicationPage.qml:843
 #, kde-format
 msgid "Contribute"
 msgstr "Contribuer"
 
-#: discover/qml/ApplicationPage.qml:824
+#: discover/qml/ApplicationPage.qml:844
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Aidez l'équipe de développement pour le codage, la conception, les tests ou "
 "les traductions."
 
-#: discover/qml/ApplicationPage.qml:849
+#: discover/qml/ApplicationPage.qml:869
 #, kde-format
 msgid "All Licenses"
 msgstr "Toutes les licences"
 
-#: discover/qml/ApplicationPage.qml:894
+#: discover/qml/ApplicationPage.qml:914
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Risques des logiciels propriétaires"
 
-#: discover/qml/ApplicationPage.qml:900
+#: discover/qml/ApplicationPage.qml:920
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -545,7 +545,7 @@ msgstr ""
 "faites entièrement confiance à ses auteurs (<link url='%1'>%2</link>). <nl/"
 "><nl/>Vous pouvez en apprendre plus sur la page <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:901
+#: discover/qml/ApplicationPage.qml:921
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
