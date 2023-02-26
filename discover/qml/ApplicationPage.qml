@@ -450,7 +450,7 @@ DiscoverPage {
                                                     + (homepageButton.visible ? 1: 0)
                                                     + (addonsButton.visible ? 1 : 0)
                                                     + (shareButton.visible ? 1 : 0)
-                readonly property int buttonWidth: Math.round(textualContentLayout.width / (columns > 1 ? columns : 1))
+                readonly property int buttonWidth: Math.round(textualContentLayout.width / columns)
                 readonly property int tallestButtonHeight: Math.max(helpButton.implicitHeight,
                                                                     homepageButton.implicitHeight,
                                                                     shareButton.implicitHeight,
@@ -685,7 +685,7 @@ DiscoverPage {
                 readonly property int visibleButtons: (donateButton.visible ? 1 : 0)
                                                     + (bugButton.visible ? 1 : 0)
                                                     + (contributeButton.visible ? 1 : 0)
-                readonly property int buttonWidth: Math.round(textualContentLayout.width / (columns > 1 ? columns : 1))
+                readonly property int buttonWidth: Math.round(textualContentLayout.width / columns)
                 readonly property int tallestButtonHeight: Math.max(donateButton.implicitHeight,
                                                                     bugButton.implicitHeight,
                                                                     contributeButton.implicitHeight)
