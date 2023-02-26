@@ -161,7 +161,12 @@ void FwupdResource::setReleaseDetails(FwupdRelease *release)
     m_description = QString::fromUtf8((fwupd_release_get_description(release)));
     m_homepage = QUrl(QString::fromUtf8(fwupd_release_get_homepage(release)));
     m_license = QString::fromUtf8(fwupd_release_get_license(release));
+#if FWUPD_CHECK_VERSION(1, 5, 6)
+    GPtrArray *locations = fwupd_release_get_locations(release);
+    m_updateURI = locations->len == 0 ? QString::fromUtf8("") : QString::fromUtf8((const gchar *)g_ptr_array_index(locations, 0));
+#else
     m_updateURI = QString::fromUtf8(fwupd_release_get_uri(release));
+#endif
 }
 
 void FwupdResource::setDeviceDetails(FwupdDevice *dev)
