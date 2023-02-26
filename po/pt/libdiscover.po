@@ -20,6 +20,7 @@ msgstr ""
 "X-POFile-SpellExtra: flatpakrepo Flathub Snap FWUPD Discover ostree Smart\n"
 "X-POFile-IgnoreConsistency: Snap\n"
 "X-POFile-SpellExtra: Cards smart card ptrace SteamOS atomupd\n"
+"X-POFile-IgnoreConsistency: Broken\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"

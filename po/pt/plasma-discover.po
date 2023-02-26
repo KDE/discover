@@ -322,10 +322,9 @@ msgid "Unknown author"
 msgstr "Autor desconhecido"
 
 #: discover/qml/ApplicationPage.qml:238
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "Versão"
+msgstr "Versão:"
 
 #: discover/qml/ApplicationPage.qml:250
 #, fuzzy, kde-format
@@ -876,8 +875,7 @@ msgid "Install from %1"
 msgstr "Instalar"
 
 #: discover/qml/InstallApplicationButton.qml:32
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Instalar"
