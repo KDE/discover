@@ -274,7 +274,11 @@ static std::optional<AppStream::Metadata> metadataFromBytes(GBytes *appstreamGz,
     gconstpointer data = g_bytes_get_data(appstream, &len);
 
     AppStream::Metadata metadata;
+#if ASQ_CHECK_VERSION(0, 16, 0)
+    metadata.setFormatStyle(AppStream::Metadata::FormatStyleCatalog);
+#else
     metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
+#endif
     AppStream::Metadata::MetadataError error = metadata.parse(QString::fromUtf8((char *)data, len), AppStream::Metadata::FormatKindXml);
     if (error != AppStream::Metadata::MetadataErrorNoError) {
         qWarning() << "Failed to parse appstream metadata: " << error;
@@ -773,7 +777,11 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
     AppStream::Pool pool;
 #ifdef APPSTREAM_NEW_POOL_API
     pool.setLoadStdDataLocations(false);
+#if ASQ_CHECK_VERSION(0, 16, 0)
+    pool.addExtraDataLocation(appstreamLocation, AppStream::Metadata::FormatStyleCatalog);
+#else
     pool.addExtraDataLocation(appstreamLocation, AppStream::Metadata::FormatStyleCollection);
+#endif
 #else
     pool.clearMetadataLocations();
     pool.addMetadataLocation(appstreamLocation);
@@ -1079,7 +1087,11 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
 
 #ifdef APPSTREAM_NEW_POOL_API
     pool->setLoadStdDataLocations(false);
+#if ASQ_CHECK_VERSION(0, 16, 0)
+    pool->addExtraDataLocation(appstreamDirPath, AppStream::Metadata::FormatStyleCatalog);
+#else
     pool->addExtraDataLocation(appstreamDirPath, AppStream::Metadata::FormatStyleCollection);
+#endif
 #else
     pool->clearMetadataLocations();
     pool->addMetadataLocation(appstreamDirPath);
