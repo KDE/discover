@@ -247,7 +247,7 @@ QDebug operator<<(QDebug debug, const CategoryFilter &filter)
     debug << filter.type << ", ";
 
     if (auto x = std::get_if<QString>(&filter.value)) {
-        debug << std::get<QString>(filter.value);
+        debug << x;
     } else {
         debug << std::get<QVector<CategoryFilter>>(filter.value);
     }
