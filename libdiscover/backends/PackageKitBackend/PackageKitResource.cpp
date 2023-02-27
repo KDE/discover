@@ -161,6 +161,27 @@ quint64 PackageKitResource::size()
 
 QString PackageKitResource::origin() const
 {
+    auto osRelease = AppStreamIntegration::global()->osRelease();
+
+    if (PackageKit::Daemon::backendName() == QStringLiteral("apt")) {
+        // Debian and its derivatives have a defined scheme for repository origins that we can parse, to
+        // guess a better origin name.
+        QString pkgid = availablePackageId();
+        QString dataField = PackageKit::Daemon::packageData(pkgid);
+        // The "data" field of a package-id may contain a modifier such as "auto:" or "manual:", so
+        // we will need to strip that in case it exists to extract the actual origin.
+        // The data field may look like "auto:debian-bookworm-main" or "google_llc-stable-main",
+        // so we can set the OS name if we see it as origin prefix, and otherwise need to fall back
+        // to the origin string.
+        int i = dataField.indexOf(':');
+        QString origin = i > 0? dataField.mid(i + 1) : dataField;
+        if (origin.startsWith(osRelease->id().toLower() + '-')) {
+            return osRelease->name();
+        } else {
+            return origin.isEmpty()? i18n("Unknown Source") : origin;
+        }
+    }
+
     // PackageKit doesn't give us enough information to be able to distinguish
     // between 3rd-party repos (which generally have human-readable names) and
     // 1st-party distro repos (which generally name nonsense jargon names) which
@@ -168,7 +189,7 @@ QString PackageKitResource::origin() const
     // see https://github.com/PackageKit/PackageKit/issues/607 and
     // https://bugs.kde.org/show_bug.cgi?id=465204.
     // So for now always show the distro name.
-    return AppStreamIntegration::global()->osRelease()->name();
+    return osRelease->name();
 }
 
 QString PackageKitResource::section()
