@@ -1,13 +1,13 @@
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
-# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022.
+# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022, 2023.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-25 01:01+0000\n"
-"PO-Revision-Date: 2022-08-20 23:24-0700\n"
-"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
+"PO-Revision-Date: 2023-02-23 18:23+0900\n"
+"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 22.04.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -57,7 +57,7 @@ msgid ""
 msgstr ""
 "<command>pacman</command> を使用して、アプリケーションバックエンドの有効化に"
 "必要な任意の依存パッケージをインストールできます。<nl/><nl/>PackageKit のバッ"
-"クエンドが Arch Linux とよく統合されていないため、Arch Linux の開発者は "
+"クエンドと Arch Linux との統合が不完全なため、Arch Linux の開発者は "
 "<command>pacman</command> を使用したパッケージの管理を推奨していることに注意"
 "してください。"
 
@@ -74,7 +74,7 @@ msgstr "カテゴリ '%1' が見つかりませんでした。"
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "存在しないファイル '%1' を開いています"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -308,16 +308,14 @@ msgid "Unknown author"
 msgstr "作者不明"
 
 #: discover/qml/ApplicationPage.qml:238
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "バージョン"
+msgstr "バージョン:"
 
 #: discover/qml/ApplicationPage.qml:250
-#, fuzzy, kde-format
-#| msgid "Size"
+#, kde-format
 msgid "Size:"
-msgstr "サイズ"
+msgstr "サイズ:"
 
 #: discover/qml/ApplicationPage.qml:262
 #, fuzzy, kde-format
@@ -355,20 +353,18 @@ msgstr "評価を入力してください"
 #: discover/qml/ApplicationPage.qml:329
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "対象年齢: %1歳以上"
 
 #: discover/qml/ApplicationPage.qml:353
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr "さらに見る..."
+msgstr "詳細を見る..."
 
 #: discover/qml/ApplicationPage.qml:375
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "スクリーンショットにアクセスできませんでした"
 
 #: discover/qml/ApplicationPage.qml:486
 #, kde-format
@@ -404,19 +400,18 @@ msgstr "追加の機能をインストールもしくは削除する"
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "共有"
 
 #: discover/qml/ApplicationPage.qml:541
-#, fuzzy, kde-format
-#| msgid "Unable to load applications"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "アプリケーションを読み込めません"
+msgstr "このアプリケーションへのリンクを送信する "
 
 #: discover/qml/ApplicationPage.qml:557
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "%1 を試してみて！"
 
 #: discover/qml/ApplicationPage.qml:577
 #, kde-format
@@ -491,10 +486,9 @@ msgid "All Licenses"
 msgstr "すべてのライセンス"
 
 #: discover/qml/ApplicationPage.qml:811
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "評価を入力してください"
+msgstr "レーティング情報"
 
 #: discover/qml/ApplicationPage.qml:825
 #, kde-format
@@ -564,16 +558,14 @@ msgid "Search: %1"
 msgstr "検索: %1"
 
 #: discover/qml/ApplicationsListPage.qml:60
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - %2 アイテム"
-msgstr[1] "%1 - %2 アイテム"
+msgstr[0] "%2 - %1 アイテム"
+msgstr[1] "%2 - %1 アイテム"
 
 #: discover/qml/ApplicationsListPage.qml:66
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
 msgstr[0] "検索 - %1 アイテム"
@@ -619,12 +611,10 @@ msgstr "何も見つかりませんでした"
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "すべてのカテゴリを検索"
 
 #: discover/qml/ApplicationsListPage.qml:190
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "Search the web for \"%1\""
+#, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "\"%1\" をウェブで検索"
@@ -638,30 +628,21 @@ msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:205
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr "\"%1\" は利用可能なソースの中に見つかりませんでした"
+msgstr "\"%1\" は \"%2\" カテゴリの中に見つかりませんでした"
 
 #: discover/qml/ApplicationsListPage.qml:207
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\" は利用可能なソースの中に見つかりませんでした"
 
 #: discover/qml/ApplicationsListPage.qml:208
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder%1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -686,33 +667,31 @@ msgstr "アプリケーションを読み込めません"
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "人気"
 
 #: discover/qml/BrowsingPage.qml:107
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "エディタのおすすめ"
 
 #: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "高く評価されたゲーム"
 
 #: discover/qml/BrowsingPage.qml:140 discover/qml/BrowsingPage.qml:169
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "さらに見る..."
+msgstr "さらに見る"
 
 #: discover/qml/BrowsingPage.qml:150
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "高く評価された開発ツール"
 
 #: discover/qml/DiscoverWindow.qml:44
 #, kde-format
@@ -784,23 +763,21 @@ msgid "Report this issue"
 msgstr "この問題を報告する"
 
 #: discover/qml/DiscoverWindow.qml:338
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "投票: %2 中 %1"
+msgstr "エラー %1/%2"
 
 #: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "前を表示"
 
 #: discover/qml/DiscoverWindow.qml:396
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "内容を表示"
+msgstr "次を表示"
 
 #: discover/qml/DiscoverWindow.qml:412 discover/qml/UpdatesPage.qml:98
 #, kde-format
@@ -1030,7 +1007,7 @@ msgstr "長すぎます！"
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "名前を挿入してください"
 
 #: discover/qml/ReviewsPage.qml:44
 #, kde-format
@@ -1085,7 +1062,7 @@ msgstr "優先度を上げる"
 #: discover/qml/SourcesPage.qml:228
 #, kde-format
 msgid "Failed to increase '%1' preference"
-msgstr "'%1' 優先度を上げられませんでした。"
+msgstr "'%1' の優先度を上げられませんでした。"
 
 #: discover/qml/SourcesPage.qml:234
 #, kde-format
@@ -1095,7 +1072,7 @@ msgstr "優先度を下げる"
 #: discover/qml/SourcesPage.qml:240
 #, kde-format
 msgid "Failed to decrease '%1' preference"
-msgstr "'%1' 優先度を下げられませんでした。"
+msgstr "'%1' の優先度を下げられませんでした。"
 
 #: discover/qml/SourcesPage.qml:246
 #, kde-format
@@ -1166,7 +1143,7 @@ msgstr "すべて更新"
 #: discover/qml/UpdatesPage.qml:174
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "無視"
 
 #: discover/qml/UpdatesPage.qml:220
 #, kde-format
@@ -1257,9 +1234,3 @@ msgstr "更新の確認が必要です"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "最後の更新時刻は不明です"
-
-#~ msgid "Sources"
-#~ msgstr "ソース"
-
-#~ msgid "Distributed by"
-#~ msgstr "配布元"

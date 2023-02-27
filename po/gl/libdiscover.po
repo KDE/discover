@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-24 01:00+0000\n"
+"POT-Creation-Date: 2023-02-27 01:02+0000\n"
 "PO-Revision-Date: 2019-11-01 11:57+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -542,18 +542,18 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:700
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:704
 #, kde-format
 msgid "Local bundle"
 msgstr "Fardo local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1645
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1655
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:669
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de appstream incorrecto «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1749
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1759
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -566,13 +566,13 @@ msgstr ""
 "Non se puido actualizar %1 paquete.\n"
 "%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1869
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1879
 #, fuzzy, kde-format
 #| msgid "There are %1 update packages!"
 msgid "There are no Flatpak sources."
 msgstr "Hai %1 paquetes actualizados!"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1873
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1883
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
