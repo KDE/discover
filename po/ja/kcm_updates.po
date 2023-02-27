@@ -1,10 +1,10 @@
-# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022.
+# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-07 00:45+0000\n"
-"PO-Revision-Date: 2022-08-27 17:07+0900\n"
+"PO-Revision-Date: 2023-01-30 22:38+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 22.04.1\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #: kcm/package/contents/ui/main.qml:32
 #, kde-format
@@ -47,37 +47,37 @@ msgstr ""
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
-msgstr ""
+msgstr "更新間隔:"
 
 #: kcm/package/contents/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
-msgstr ""
+msgstr "通知の頻度:"
 
 #: kcm/package/contents/ui/main.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
-msgstr ""
+msgstr "毎日"
 
 #: kcm/package/contents/ui/main.qml:65
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
-msgstr ""
+msgstr "毎週"
 
 #: kcm/package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
-msgstr ""
+msgstr "毎月"
 
 #: kcm/package/contents/ui/main.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
-msgstr ""
+msgstr "しない"
 
 #: kcm/package/contents/ui/main.qml:111
 #, kde-format
