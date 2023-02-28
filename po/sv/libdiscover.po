@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-27 03:19+0000\n"
+"POT-Creation-Date: 2023-02-28 03:03+0000\n"
 "PO-Revision-Date: 2022-09-25 09:30+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -608,7 +608,7 @@ msgid "%1 on disk"
 msgstr "%1 på disk"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:447
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "Misslyckades starta '%1': %2"
@@ -1950,44 +1950,51 @@ msgid_plural "Successfully updated %1 packages"
 msgstr[0] "Uppdaterade %1 paket med lyckat resultat"
 msgstr[1] "Uppdaterade %1 paket med lyckat resultat"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:310
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Unknown Error"
+msgid "Unknown Source"
+msgstr "Okänt fel"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:312
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:379
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Föråldrade:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:359
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:380
 #, kde-format
 msgid "Release Notes:"
 msgstr "Versionsfakta:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
 #, kde-format
 msgid "Update State:"
 msgstr "Uppdateringstillstånd:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:361
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
 #, kde-format
 msgid "Restart:"
 msgstr "Starta om:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:364
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:385
 #, kde-format
 msgid "Vendor:"
 msgstr "Tillverkare:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:405
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -3114,10 +3121,6 @@ msgstr "Tillägg"
 #~ msgctxt "@title:window"
 #~ msgid "Unexpected Error"
 #~ msgstr "Oväntat fel"
-
-#~ msgctxt "@title:window"
-#~ msgid "Unknown Error"
-#~ msgstr "Okänt fel"
 
 #~ msgctxt "@label"
 #~ msgid ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-27 03:19+0000\n"
+"POT-Creation-Date: 2023-02-28 03:03+0000\n"
 "PO-Revision-Date: 2022-10-04 15:21+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -608,7 +608,7 @@ msgid "%1 on disk"
 msgstr "설치 크기 %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:447
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "'%1'을(를) 시작할 수 없음: %2"
@@ -1926,44 +1926,51 @@ msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
 msgstr[0] "패키지 %1개를 업데이트함"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:310
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Unknown Error"
+msgid "Unknown Source"
+msgstr "알 수 없는 오류"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1(%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:312
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:379
 #, kde-format
 msgid "Obsoletes:"
 msgstr "오래된 항목:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:359
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:380
 #, kde-format
 msgid "Release Notes:"
 msgstr "릴리스 노트:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
 #, kde-format
 msgid "Update State:"
 msgstr "업데이트 상태:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:361
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
 #, kde-format
 msgid "Restart:"
 msgstr "다시 시작:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:364
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:385
 #, kde-format
 msgid "Vendor:"
 msgstr "제조사:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:405
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -3070,10 +3077,6 @@ msgstr "부가 기능"
 #~ msgctxt "@title:window"
 #~ msgid "Unexpected Error"
 #~ msgstr "예상하지 못한 오류"
-
-#~ msgctxt "@title:window"
-#~ msgid "Unknown Error"
-#~ msgstr "알 수 없는 오류"
 
 #~ msgctxt "@label"
 #~ msgid ""

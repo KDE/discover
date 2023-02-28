@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-27 03:19+0000\n"
+"POT-Creation-Date: 2023-02-28 03:03+0000\n"
 "PO-Revision-Date: 2022-01-01 09:30-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -606,7 +606,7 @@ msgid "%1 on disk"
 msgstr "ਡਿਸਕ ਉੱਤੇੇ  %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:447
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to start '%1': %2"
@@ -1908,44 +1908,51 @@ msgid_plural "Successfully updated %1 packages"
 msgstr[0] "ਕਾਮਯਾਬੀ ਨਾਲ %1 ਪੈਕੇਜ ਅੱਪਡੇਟ ਕੀਤਾ"
 msgstr[1] "ਕਾਮਯਾਬੀ ਨਾਲ %1 ਪੈਕੇਜ ਅੱਪਡੇਟ ਕੀਤੇ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:310
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Unknown Error"
+msgid "Unknown Source"
+msgstr "ਅਣਜਾਣ ਗਲਤੀ"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:312
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:379
 #, kde-format
 msgid "Obsoletes:"
 msgstr "ਬਰਤਰਫ਼:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:359
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:380
 #, kde-format
 msgid "Release Notes:"
 msgstr "ਰੀਲਿਜ਼ ਨੋਟਿਸ:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
 #, kde-format
 msgid "Update State:"
 msgstr "ਅੱਪਡੇਟ ਹਾਲਤ:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:361
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
 #, kde-format
 msgid "Restart:"
 msgstr "ਮੁੜ-ਸ਼ੁਰੂ ਕਰੋ:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:364
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:385
 #, kde-format
 msgid "Vendor:"
 msgstr "ਵੇਂਡਰ:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:405
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2843,10 +2850,6 @@ msgstr "ਐਡ-ਆਨ"
 #~ msgctxt "@title:window"
 #~ msgid "Unexpected Error"
 #~ msgstr "ਅਚਾਨਕ ਗਲਤੀ"
-
-#~ msgctxt "@title:window"
-#~ msgid "Unknown Error"
-#~ msgstr "ਅਣਜਾਣ ਗਲਤੀ"
 
 #~ msgctxt "@label"
 #~ msgid "Could not download packages"
