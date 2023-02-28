@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-25 01:01+0000\n"
-"PO-Revision-Date: 2023-02-02 11:55+0400\n"
+"PO-Revision-Date: 2023-02-27 19:19+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -293,7 +293,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "من %1"
 
 #: discover/qml/ApplicationPage.qml:76
 #, kde-format
@@ -306,10 +306,9 @@ msgid "Unknown author"
 msgstr "مؤلف مجهول"
 
 #: discover/qml/ApplicationPage.qml:238
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "الإصدارة"
+msgstr "الإصدارة:"
 
 #: discover/qml/ApplicationPage.qml:250
 #, kde-format
@@ -317,17 +316,15 @@ msgid "Size:"
 msgstr "الحجم:"
 
 #: discover/qml/ApplicationPage.qml:262
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "الرّخصة"
-msgstr[1] "الرّخصة"
-msgstr[2] "الرّخص"
-msgstr[3] "الرّخص"
-msgstr[4] "الرّخص"
-msgstr[5] "الرّخص"
+msgstr[0] "الرّخصة:"
+msgstr[1] "الرّخصة:"
+msgstr[2] "الرّخصتان:"
+msgstr[3] "الرّخص:"
+msgstr[4] "الرّخص:"
+msgstr[5] "الرّخص:"
 
 #: discover/qml/ApplicationPage.qml:270
 #, kde-format
@@ -352,10 +349,9 @@ msgstr[4] "الكل…"
 msgstr[5] "المزيد…"
 
 #: discover/qml/ApplicationPage.qml:320
-#, fuzzy, kde-format
-#| msgid "Content Rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "تقييم المحتوى"
+msgstr "تقييم المحتوى:"
 
 #: discover/qml/ApplicationPage.qml:329
 #, kde-format
@@ -866,16 +862,13 @@ msgid "Loading…"
 msgstr "يحمّل..."
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
-#| msgid "Install from %1"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
-msgstr "ثبّت من %1"
+msgstr "ثبّت من مستودع %1"
 
 #: discover/qml/InstallApplicationButton.qml:32
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "ثبّت"

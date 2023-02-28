@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-27 01:02+0000\n"
-"PO-Revision-Date: 2023-02-26 09:07+0100\n"
+"POT-Creation-Date: 2023-02-28 01:00+0000\n"
+"PO-Revision-Date: 2023-02-27 07:54+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -597,7 +597,7 @@ msgid "%1 on disk"
 msgstr "%1 na disku"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:447
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "Ni bilo mogoče zagnati '%1': %2"
@@ -1948,44 +1948,50 @@ msgstr[1] "Uspešno posodobljena %1 paketa"
 msgstr[2] "Uspešno posodobljeni %1 paketi"
 msgstr[3] "Uspešno posodobljeno %1 paketov"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:310
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
+#, fuzzy, kde-format
+#| msgid "Unknown Status"
+msgid "Unknown Source"
+msgstr "Neznano stanje"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:312
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:379
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Zastarelo:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:359
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:380
 #, kde-format
 msgid "Release Notes:"
 msgstr "Opombe k izdaji:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
 #, kde-format
 msgid "Update State:"
 msgstr "Stanje posodobitve:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:361
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
 #, kde-format
 msgid "Restart:"
 msgstr "Ponovni zagon:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:364
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:385
 #, kde-format
 msgid "Vendor:"
 msgstr "Proizvajalec:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:405
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"

@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Andrew Coles <andrew_coles@yahoo.co.uk>, 2010, 2011.
-# Steve Allewell <steve.allewell@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Steve Allewell <steve.allewell@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-27 01:02+0000\n"
-"PO-Revision-Date: 2022-12-31 16:10+0000\n"
+"POT-Creation-Date: 2023-02-28 01:00+0000\n"
+"PO-Revision-Date: 2023-02-27 20:12+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
-"Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
+"Language-Team: English <kde-l10n-en_gb@kde.org>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -595,7 +595,7 @@ msgid "%1 on disk"
 msgstr "%1 on disk"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:447
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "Failed to start '%1': %2"
@@ -1940,44 +1940,51 @@ msgid_plural "Successfully updated %1 packages"
 msgstr[0] "Successfully updated %1 package"
 msgstr[1] "Successfully updated %1 packages"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:310
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Unknown Error"
+msgid "Unknown Source"
+msgstr "Unknown Error"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:312
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:379
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Obsoletes:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:359
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:380
 #, kde-format
 msgid "Release Notes:"
 msgstr "Release Notes:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
 #, kde-format
 msgid "Update State:"
 msgstr "Update State:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:361
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
 #, kde-format
 msgid "Restart:"
 msgstr "Restart:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:364
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:385
 #, kde-format
 msgid "Vendor:"
 msgstr "Vendor:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:405
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2316,10 +2323,9 @@ msgid "Updating to the next major version"
 msgstr "Updating to the next major version"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, fuzzy, kde-format
-#| msgid "Transaction in progress (started outside of Discover)"
+#, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "Transaction in progress (started outside of Discover)"
+msgstr "Operation in progress (started outside of Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
@@ -3098,10 +3104,6 @@ msgstr "Addons"
 #~ msgctxt "@title:window"
 #~ msgid "Unexpected Error"
 #~ msgstr "Unexpected Error"
-
-#~ msgctxt "@title:window"
-#~ msgid "Unknown Error"
-#~ msgstr "Unknown Error"
 
 #~ msgctxt "@label"
 #~ msgid ""
