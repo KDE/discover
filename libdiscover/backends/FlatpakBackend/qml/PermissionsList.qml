@@ -13,9 +13,11 @@ import org.kde.kquickcontrolsaddons 2.1 as KQuickControlsAddons
 
 ColumnLayout {
     visible: list.model.rowCount() > 0
+    spacing: 0
 
     Kirigami.Heading {
         Layout.fillWidth: true
+        Layout.bottomMargin: Kirigami.Units.largeSpacing
         text: i18ndc("libdiscover", "%1 is the name of the application", "Permissions for %1", resource.name)
         level: 2
         type: Kirigami.Heading.Type.Primary
@@ -49,6 +51,7 @@ ColumnLayout {
     QQC2.Button {
         Layout.alignment: Qt.AlignHCenter
         Layout.maximumWidth: parent.width
+        Layout.topMargin: Kirigami.Units.largeSpacing
         visible: resource.isInstalled
         text: i18nd("libdiscover", "Configure permissions…")
         icon.name: "configure"
