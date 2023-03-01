@@ -30,6 +30,7 @@ Name[ko]=Discover
 Name[lt]=Discover
 Name[ml]=കണ്ടെത്തുക
 Name[my]=ဒစ်(စ)ကာဗာ
+Name[nb]=Discover
 Name[nl]=Ontdekken
 Name[nn]=Discover
 Name[pa]=ਡਿਸਕਵਰ
