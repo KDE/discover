@@ -46,6 +46,8 @@ public:
 
     void proceed() override;
     void setOfflineUpdates(bool use) override;
+    void setDistroUpgrade(const AppStream::Release &release);
+    bool isDistroUpgrade() const;
 
 public Q_SLOTS:
     /// must be implemented if ever isCancelable is true

@@ -37,7 +37,7 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::transactionListChanged, this, &PackageKitNotifier::transactionListChanged);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::restartScheduled, this, &PackageKitNotifier::nowNeedsReboot);
     connect(PackageKit::Daemon::global()->offline(), &PackageKit::Offline::changed, this, [this] {
-        if (PackageKit::Daemon::global()->offline()->updateTriggered())
+        if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered())
             nowNeedsReboot();
     });
 
@@ -185,7 +185,7 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
         first = false;
     }
 
-    if (PackageKit::Daemon::global()->offline()->updateTriggered())
+    if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered())
         return;
 
     m_recheckTimer->start();
@@ -303,7 +303,7 @@ QProcess *PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
 
 void PackageKitNotifier::transactionListChanged(const QStringList &tids)
 {
-    if (PackageKit::Daemon::global()->offline()->updateTriggered())
+    if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered())
         return;
 
     for (const auto &tid : tids) {

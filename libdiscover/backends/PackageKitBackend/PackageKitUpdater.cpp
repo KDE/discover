@@ -5,18 +5,25 @@
  */
 #include "PackageKitUpdater.h"
 #include "PackageKitMessages.h"
+#include <appstream/AppStreamIntegration.h>
+#include <AppStreamQt/release.h>
 
 #include <PackageKit/Daemon>
 #include <PackageKit/Offline>
 #include <QCryptographicHash>
 #include <QDebug>
 #include <QSet>
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusReply>
 
 #include <KConfigGroup>
 #include <KFormat>
 #include <KIO/FileSystemFreeSpaceJob>
 #include <KLocalizedString>
 #include <KSharedConfig>
+
+#include <optional>
 
 #include "libdiscover_backend_debug.h"
 #include "utils.h"
@@ -81,6 +88,9 @@ public:
     }
     QString name() const override
     {
+        if (isDistroUpgrade()) {
+            return i18nc("distro upgrade: name version", "%1 %2", AppStreamIntegration::global()->osRelease()->name(), m_distroUpgrade->version());
+        }
         return i18n("System upgrade");
     }
     QString comment() override
@@ -133,6 +143,10 @@ public:
     quint64 size() override
     {
         quint64 ret = 0;
+        if (isDistroUpgrade()) {
+            return ret;
+        }
+
         const auto resources = withoutDuplicates();
         for (auto res : resources) {
             ret += res->size();
@@ -186,10 +200,18 @@ public:
             }
         }
         changes.sort();
+
+        if (isDistroUpgrade()) {
+            changes.prepend(m_distroUpgrade->description());
+        }
         return changes.join(QString());
     }
     void fetchChangelog() override
     {
+        if (isDistroUpgrade()) {
+            return;
+        }
+
         for (auto res : std::as_const(m_resources)) {
             res->fetchUpdateDetails();
         }
@@ -249,6 +271,21 @@ public:
         }
     }
 
+    void setDistroUpgrade(const AppStream::Release &release)
+    {
+        m_distroUpgrade = release;
+    }
+
+    bool isDistroUpgrade() const
+    {
+        return m_distroUpgrade.has_value();
+    }
+
+    const AppStream::Release& getDistroUpgrade()
+    {
+        return m_distroUpgrade.value();
+    }
+
 Q_SIGNALS:
     void updateSizeChanged();
 
@@ -256,6 +293,7 @@ private:
     QSet<AbstractResource *> m_resources;
     PackageKitBackend *const m_backend;
     QTimer *m_updateSizeTimer;
+    std::optional<AppStream::Release> m_distroUpgrade;
 };
 
 PackageKitUpdater::PackageKitUpdater(PackageKitBackend *parent)
@@ -277,7 +315,7 @@ PackageKitUpdater::~PackageKitUpdater()
 
 void PackageKitUpdater::prepare()
 {
-    if (PackageKit::Daemon::global()->offline()->updateTriggered()) {
+    if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered()) {
         m_toUpgrade.clear();
         m_allUpgradeable.clear();
         enableNeedsReboot();
@@ -314,9 +352,14 @@ void PackageKitUpdater::checkFreeSpace()
 void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFlags flags)
 {
     m_packagesModified.clear();
-    auto pkgs = involvedPackages(m_toUpgrade).values();
-    pkgs.sort();
-    m_transaction = PackageKit::Daemon::updatePackages(pkgs, flags);
+    if (m_toUpgrade.contains(m_upgrade) && m_upgrade->isDistroUpgrade()) {
+        const QString& upgradeVersion = m_upgrade->getDistroUpgrade().version();
+        m_transaction = PackageKit::Daemon::upgradeSystem(upgradeVersion, PackageKit::Transaction::UpgradeKind::UpgradeKindComplete, flags);
+    } else {
+        auto pkgs = involvedPackages(m_toUpgrade).values();
+        pkgs.sort();
+        m_transaction = PackageKit::Daemon::updatePackages(pkgs, flags);
+    }
     m_isCancelable = m_transaction->allowCancel();
     cancellableChanged();
 
@@ -417,12 +460,22 @@ void PackageKitUpdater::proceed()
 
 bool PackageKitUpdater::useOfflineUpdates() const
 {
-    return m_useOfflineUpdates || qEnvironmentVariableIntValue("PK_OFFLINE_UPDATE");
+    return m_useOfflineUpdates || m_upgrade->isDistroUpgrade() || qEnvironmentVariableIntValue("PK_OFFLINE_UPDATE");
 }
 
 void PackageKitUpdater::setOfflineUpdates(bool use)
 {
     m_useOfflineUpdates = use;
+}
+
+void PackageKitUpdater::setDistroUpgrade(const AppStream::Release &release)
+{
+    m_upgrade->setDistroUpgrade(release);
+}
+
+bool PackageKitUpdater::isDistroUpgrade() const
+{
+    return m_upgrade->isDistroUpgrade();
 }
 
 void PackageKitUpdater::start()
@@ -510,12 +563,29 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
         return;
     }
 
-    setProgressing(false);
-    m_backend->fetchUpdates();
-    fetchLastUpdateTime();
+    // Fetching updates now would clear the prepared-upgrade
+    if (!m_toUpgrade.contains(m_upgrade) || !m_upgrade->isDistroUpgrade()) {
+        setProgressing(false);
+        m_backend->fetchUpdates();
+        fetchLastUpdateTime();
+    }
 
     if (useOfflineUpdates() && exit == PackageKit::Transaction::ExitSuccess) {
-        PackageKit::Daemon::global()->offline()->trigger(PackageKit::Offline::ActionReboot);
+        if (m_upgrade->isDistroUpgrade()) {
+            QDBusPendingReply<void> reply = PackageKit::Daemon::global()->offline()->triggerUpgrade(PackageKit::Offline::ActionReboot);
+            // Call may fail because of authorization
+            reply.waitForFinished();
+            if (reply.isError()) {
+                Q_EMIT resourceProgressed(m_upgrade, 0, None);
+                setProgressing(false);
+                Q_EMIT passiveMessage(reply.error().message());
+                return;
+            }
+            m_backend->clear();
+            setProgressing(false);
+        } else {
+            PackageKit::Daemon::global()->offline()->trigger(PackageKit::Offline::ActionReboot);
+        }
         enableReadyToReboot();
     }
 }

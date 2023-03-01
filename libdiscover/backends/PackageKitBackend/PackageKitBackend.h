@@ -87,6 +87,10 @@ public:
 
     void addPackageArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
     void addPackageNotArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
+    void clear()
+    {
+        m_updatesPackageId.clear();
+    }
 
 public Q_SLOTS:
     void reloadPackageList();
@@ -122,6 +126,8 @@ private:
     void performDetailsFetch();
     AppPackageKitResource *addComponent(const AppStream::Component &component);
     void updateProxy();
+    void lookForNextMajorVersion();
+    void foundNewMajorVersion(const AppStream::Release &release);
 
     QScopedPointer<AppStream::Pool> m_appdata;
     PackageKitUpdater *m_updater;

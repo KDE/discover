@@ -39,6 +39,8 @@
 #include <KLocalizedString>
 #include <KProtocolManager>
 
+#include <optional>
+
 #include "config-paths.h"
 #include "libdiscover_backend_debug.h"
 #include "utils.h"
@@ -125,7 +127,7 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
         [this](uint timeSince) {
             if (timeSince > 3600)
                 checkForUpdates();
-            else
+            else if (!PackageKit::Daemon::global()->offline()->upgradeTriggered())
                 fetchUpdates();
             acquireFetching(false);
         },
@@ -466,7 +468,7 @@ T PackageKitBackend::resourcesByPackageNames(const W &pkgnames) const
 
 void PackageKitBackend::checkForUpdates()
 {
-    if (PackageKit::Daemon::global()->offline()->updateTriggered()) {
+    if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered()) {
         qCDebug(LIBDISCOVER_BACKEND_LOG) << "Won't be checking for updates again, the system needs a reboot to apply the fetched offline updates.";
         return;
     }
@@ -717,7 +719,7 @@ bool PackageKitBackend::hasSecurityUpdates() const
 
 int PackageKitBackend::updatesCount() const
 {
-    if (PackageKit::Daemon::global()->offline()->updateTriggered())
+    if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered())
         return 0;
 
     int ret = 0;
@@ -827,6 +829,101 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
         connect(this, &PackageKitBackend::available, a, &OneTimeAction::trigger);
     } else
         Q_EMIT updatesCountChanged();
+
+    if (!m_updater->isDistroUpgrade() && !PackageKit::Daemon::global()->offline()->upgradeTriggered())
+        lookForNextMajorVersion();
+}
+
+void PackageKitBackend::lookForNextMajorVersion()
+{
+    QString distroId = AppStream::Utils::currentDistroComponentId();
+
+    // Look at releases to see if we have a new major version available.
+    const QList<AppStream::Component> distroComponents = m_appdata->componentsById(distroId);
+    if (distroComponents.isEmpty()) {
+        qWarning() << "No component found for" << distroId;
+        return;
+    }
+
+    QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
+    std::optional<AppStream::Release> nextRelease;
+    for (const AppStream::Component &dc : distroComponents) {
+        const auto releases = dc.releases();
+        for (const auto &r : releases) {
+            // Only look at stable releases
+            if (r.kind() != AppStream::Release::KindStable) {
+                continue;
+            }
+
+            // Let's look at this potentially new verson
+            const QString newVersion = r.version();
+            if (AppStream::Utils::vercmpSimple(newVersion, currentVersion) > 0) {
+                if (!nextRelease) {
+                    // No other newer version found yet so let's pick this one
+                    nextRelease = r;
+                    qInfo() << "Found new major release:" << newVersion;
+                } else if (AppStream::Utils::vercmpSimple(nextRelease->version(), newVersion) > 0) {
+                    // We only offer updating to the very next major release so
+                    // we pick the smallest of all the newest versions
+                    nextRelease = r;
+                    qInfo() << "Found a closer new major release:" << newVersion;
+                }
+            }
+        }
+    }
+
+    if (nextRelease) {
+        foundNewMajorVersion(nextRelease.value());
+    }
+}
+
+void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
+{
+    QString info;
+    // Message to display when:
+    // - A new major version is available
+    // - An update to the current version is available or pending a reboot
+    info = i18n(
+        "<b>A new major version of %1 has been released.</b>\n"
+        "To be able to update to this new version, make sure to apply all updates and reboot your system.",
+        AppStreamIntegration::global()->osRelease()->name());
+    QSharedPointer<InlineMessage> updateBeforeMajorUpgradeMessage =
+        QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info);
+
+    // Message to display when:
+    // - A new major version is available
+    // - No update to the current version are available or pending a reboot
+    DiscoverAction *majorUpgrade = new DiscoverAction(i18n("Upgrade to %1 %2", AppStreamIntegration::global()->osRelease()->name(), release.version()), this);
+    connect(majorUpgrade, &DiscoverAction::triggered, this, [this, release] {
+        if (m_updater->isProgressing())
+            return;
+
+        const QString& upgradeVersion = release.version();
+        m_updatesPackageId.clear();
+        m_updater->setProgressing(true);
+        PackageKit::Transaction *transaction = PackageKit::Daemon::upgradeSystem(upgradeVersion, PackageKit::Transaction::UpgradeKind::UpgradeKindComplete, PackageKit::Transaction::TransactionFlagSimulate);
+        connect(transaction, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
+        connect(transaction, &PackageKit::Transaction::percentageChanged, this, &PackageKitBackend::fetchingUpdatesProgressChanged);
+        connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+        connect(transaction, &PackageKit::Transaction::finished, this, [this, release] (PackageKit::Transaction::Exit e, uint x){
+            m_updater->setDistroUpgrade(release);
+            getUpdatesFinished(e, x);
+        });
+    });
+
+    info = i18n("A new major version has been released");
+    QSharedPointer<InlineMessage> majorUpgradeAvailableMessage =
+        QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info, majorUpgrade);
+
+    // Allow upgrade only if up to date on the current release
+    if (!m_updatesPackageId.isEmpty()) {
+        Q_EMIT inlineMessageChanged(updateBeforeMajorUpgradeMessage);
+        return;
+    }
+
+    // No updates pending or avaiable. We are good to offer the upgrade to the
+    // next major version!
+    Q_EMIT inlineMessageChanged(majorUpgradeAvailableMessage);
 }
 
 bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource *res) const
