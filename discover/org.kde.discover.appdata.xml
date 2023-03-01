@@ -29,6 +29,7 @@
   <name xml:lang="lt">Discover</name>
   <name xml:lang="ml">ഡിസ്കവർ</name>
   <name xml:lang="my">ဒစ်(စ)ကာဗာ</name>
+  <name xml:lang="nb">Discover</name>
   <name xml:lang="nl">Ontdekken</name>
   <name xml:lang="nn">Discover</name>
   <name xml:lang="pa">ਡਿਸਕਵਰ</name>
@@ -76,6 +77,7 @@
   <summary xml:lang="lt">Discover</summary>
   <summary xml:lang="ml">ഡിസ്കവർ</summary>
   <summary xml:lang="my">ဒစ်(စ)ကာဗာ</summary>
+  <summary xml:lang="nb">Discover</summary>
   <summary xml:lang="nl">Ontdekken</summary>
   <summary xml:lang="nn">Discover</summary>
   <summary xml:lang="pa">ਡਿਸਕਵਰ</summary>
@@ -123,6 +125,7 @@
     <p xml:lang="lt">Discover padeda jums rasti ir įdiegti programas, žaidimus bei įrankius. Galite ieškoti ar naršyti pagal kategoriją ir žiūrėti ekrano kopijas bei skaityti apžvalgas, kurios padeda jums išsirinkti tobulą programą.</p>
     <p xml:lang="ml">ആപ്ലിക്കേഷൻ, ഗെയിമുകൾ, ഉപകരണങ്ങൾ എന്നിവ കണ്ടെത്താനും ഇൻസ്റ്റാൾ ചെയ്യാനും ഡിസ്കവർ നിങ്ങളെ സഹായിക്കുന്നു. നിങ്ങൾക്ക് വിഭാഗം അനുസരിച്ച് തിരയാനോ ബ്രൗസുചെയ്യാനോ കഴിയും, കൂടാതെ മികച്ച ആപ്ലിക്കേഷൻ തിരഞ്ഞെടുക്കാൻ സഹായിക്കുന്നതിന് സ്‌ക്രീൻഷോട്ടുകൾ കാണാനും അവലോകനങ്ങൾ വായിക്കാനും കഴിയും.</p>
     <p xml:lang="my">ဒစ်(စ)ကာဗာက သင်ကို အပ္ပလီကေးရှင်း၊ ဂိမ်းနှင့် ကိရိယာများ ရှာဖွေတပ်ဆင်ရန် ကူညီပေးသည်။ သင်အနေဖြင့် ရှာဖွေနိုင်သည် သို့မဟုတ် အမျိုးအစားအလိုက် ရှောက်ကြည့်နိုင်သည်။ ထို့ပြင် စခရင်ရှော့များနှင့် သုံးသပ်ချက်များကို ကြည့်၍ ကြိုက်နှစ်သက်ရာ အပ်များ ရွေးနိုင်သည်။</p>
+    <p xml:lang="nb">Discover hjelper deg å finne og installere programmer, spill og verktøy. Du kan søke etter programmer eller bla gjennom programkategorierer, se skjermbilder og lese brukeromtaler for å finne det perfekte programmet.</p>
     <p xml:lang="nl">Ontdekken helpt om toepassingen, spellen en hulpmiddelen te zoeken en te installeren. U kunt zoeken of bladeren op categorie, kijken naar schermafdrukken en reviews lezen om u te helpen de perfecte toepassing te kiezen.</p>
     <p xml:lang="nn">Discover hjelper deg å finna og installera program, spel og verktøy. Du kan søkja etter program eller bla gjennom program­kategoriar, sjå skjermbilete og lesa brukaromtalar for å finna det perfekte programmet.</p>
     <p xml:lang="pl">Odkrywca pomaga znaleźć i wgrać aplikacje, gry oraz narzędzia. Można wyszukiwać lub przeglądać po kategorii. Można oglądać zrzuty ekranu i czytać oceny, aby wybrać najlepszą aplikację.</p>
@@ -163,6 +166,7 @@
     <p xml:lang="lt">Naudodami Discover, galite tvarkyti programinę įrangą iš daugelio šaltinių, įskaitant jūsų operacinės sistemos programinės įrangos saugyklas, Flatpak saugyklas, Snap parduotuvę ar netgi AppImage paketus iš store.kde.org.</p>
     <p xml:lang="ml">ഡിസ്കവർ ഉപയോഗിച്ച്, നിങ്ങളുടെ പ്രവര്‍ത്തകസംവിധാനത്തിന്റെ സോഫ്റ്റ്വെയർ ശേഖരം, ഫ്ലാറ്റ്പ്പാക്ക് ശേഖരണങ്ങൾ, സ്നാപ്പ് സ്റ്റോർ അല്ലെങ്കിൽ store.kde.org- ൽ നിന്നുള്ള AppImages എന്നിവ ഉൾപ്പെടെ ഒന്നിലധികം ഉറവിടങ്ങളിൽ നിന്നുള്ള സോഫ്റ്റ്വെയർ നിങ്ങൾക്ക് കൈകാര്യം ചെയ്യാൻ കഴിയും.</p>
     <p xml:lang="my">ဒစ်(စ)ကာဗာကို သုံး၍ သင်အနေဖြင့် ဇစ်မြစ်ပေါင်းစုံမှ ဆော့ဖ်ဝဲလ်များကို စီမံနိုင်သည်။ သာဓက။ ။ သင့်စီမံမောင်းနှင်စနစ်၏ဆော့ဖ်ဝဲလ်ရီပိုစစ်တိုရီ၊ ဖလက်ပတ်ခ် ရီပိုများ၊ စနပ်စတိုးနှင် store.kde.orgမှ appimagesများ။</p>
+    <p xml:lang="nb">Med Discover kan du installere programmer fra ulike kilder, blant annet standard pakkebrønner for operativsystemet, Flatpak-depot, Snap-butikken og AppImage fra store.kde.org.</p>
     <p xml:lang="nl">Met Ontdekken kunt u software uit meerdere bronnen beheren, inclusief de opslagruimten van uw besturingssysteem, Flatpak-repo's, de Snap store of zelfs AppImages uit store.kde.org.</p>
     <p xml:lang="nn">Men Discover kan du installera program frå ulike kjelder, blant anna standard pakkebrønnar for operativsystemet, Flatpak-depot, Snap-butikken og AppImages frå store.kde.org.</p>
     <p xml:lang="pl">Dzięki Odkrywcy, można zarządzać oprogramowaniem z wielu źródeł, uwzględniając w tym źródło oprogramowania systemu operacyjnego, repozytoria Flatpak, sklep Snap lub nawet AppImage z store.kde.org.</p>
@@ -204,6 +208,7 @@
     <p xml:lang="lt">Pagaliau, Discover taip pat leidžia jums rasti, įdiegti ir tvarkyti Plasma papildinius ir visas jūsų mėgstamas KDE programas!</p>
     <p xml:lang="ml">അവസാനമായി, പ്ലാസ്മയ്ക്കും നിങ്ങളുടെ പ്രിയപ്പെട്ട എല്ലാ കെ‌ഡി‌ഇ അപ്ലിക്കേഷനുകൾക്കുമായുള്ള ആഡ്-ഓണുകൾ കണ്ടെത്താനും ഇൻസ്റ്റാൾ ചെയ്യാനും നിയന്ത്രിക്കാനും ഡിസ്കവർ നിങ്ങളെ അനുവദിക്കുന്നു!</p>
     <p xml:lang="my">နောက်ဆုံးအားဖြင့် ဒစ်(စ)ကာဗာသည် သင့်အား ပလက်စမာနှင့် ကေဒီအီးအပ်များ၏ အက်အွန်များကို ရှာဖွေ၊ တပ်ဆင်၊ စီမံခြင်း လုပ်ငန်းများကို လုပ်ဆောင်စေနိုင်သည်။</p>
+    <p xml:lang="nb">Discover lar deg også finne, installere og håndtere programtillegg for Plasma og andre KDE-programmer.</p>
     <p xml:lang="nl">Tenslotte biedt Ontdekken ook om add-ons voor Plasma en al uw favoriete KDE toepassingen te vinden, te installeren en te beheren!</p>
     <p xml:lang="nn">Discover lèt deg òg finna, installera og handsama programtillegg for Plasma og andre KDE-program.</p>
     <p xml:lang="pl">Odkrywca umożliwia także znalezienie, wgranie i zrządzanie dodatkami do Plazmy i innych ulubionych aplikacji KDE!</p>
@@ -250,6 +255,7 @@
       <caption xml:lang="lt">Plasma Discover</caption>
       <caption xml:lang="ml">പ്ലാസ്മ ഡിസ്കവർ</caption>
       <caption xml:lang="my">ပလက်စမာ ဒစ်(စ)ကာဗာ</caption>
+      <caption xml:lang="nb">Plasma Discover</caption>
       <caption xml:lang="nl">Plasma Ontdekken</caption>
       <caption xml:lang="nn">Plasma Discover</caption>
       <caption xml:lang="pa">ਪਲਾਜ਼ਮਾ ਡਿਸਕਵਰ</caption>
