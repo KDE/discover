@@ -1,20 +1,21 @@
 # Translation of plasma-discover to Norwegian Bokmål
 #
 # Bjørn Steensrud <bjornst@skogkatt.homelinux.org>, 2012, 2013, 2014, 2015.
+# John Ivar Eriksen <jieriksen@runbox.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-25 01:01+0000\n"
-"PO-Revision-Date: 2015-06-13 21:56+0200\n"
-"Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
+"PO-Revision-Date: 2023-02-24 14:56+0100\n"
+"Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 22.04.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -25,6 +26,8 @@ msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr ""
+"Discover kan for øyeblikket ikke brukes til å installere programmer eller "
+"oppdateringer, fordi ingen av baksystemene for programmer er tilgjengelige."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -34,12 +37,15 @@ msgid ""
 "Backends</interface> section.<nl/><nl/>Also please consider reporting this "
 "as a packaging issue to your distribution."
 msgstr ""
+"Det kan installeres fra Innstillinger-siden, under delen for "
+"<interface>Manglende baksystem</interface>.<nl/><nl/>Rapporter gjerne om "
+"dette pakkeproblemet til distribusjonen din."
 
 #: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
-msgstr ""
+msgstr "Meld fra om feilen"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-kuit-format
@@ -51,21 +57,23 @@ msgid ""
 "managing software because the PackageKit backend is not well-integrated on "
 "Arch Linux."
 msgstr ""
+"Du kan bruke <command>pacman</command> for å installere valgfrie "
+"avhengigheter som er nødvendig for å ta i bruk programmets baksysteme."
 
 #: discover/DiscoverObject.cpp:181
 #, kde-format
 msgid "Learn More"
-msgstr ""
+msgstr "Lær mer"
 
 #: discover/DiscoverObject.cpp:269
 #, kde-format
 msgid "Could not find category '%1'"
-msgstr ""
+msgstr "Fant ikke kategorien «%1»"
 
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "Prøver å åpne den ikke-eksisterende fila «%1»"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -73,16 +81,18 @@ msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
+"Kan ikke bruke Flatpak-ressurser uten Flatpak-baksystemet %1. Installer "
+"denne først."
 
 #: discover/DiscoverObject.cpp:310
 #, kde-format
 msgid "Could not open %1"
-msgstr ""
+msgstr "Kunne ikke åpne %1"
 
 #: discover/DiscoverObject.cpp:372
 #, kde-format
 msgid "Please make sure Snap support is installed"
-msgstr ""
+msgstr "Kontroller at Snap-støtte er installert"
 
 #: discover/DiscoverObject.cpp:374
 #, kde-format
@@ -90,33 +100,35 @@ msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr ""
+"Klarte ikke åpne %1, fordi programmet ikke finnes i noen av pakkebrønnene."
 
 #: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
-msgstr ""
+msgstr "Meld fra om denne feilen til pakkerene av distribusjonen din."
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
 #: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
-msgstr "Oppdag"
+msgstr "Discover"
 
 #: discover/DiscoverObject.cpp:443
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
+"Discover ble lukket før alle oppgavene ble gjennomført. Venter på oppgavene."
 
 #: discover/main.cpp:42
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
-msgstr ""
+msgstr "Åpne det oppgitte programmet direkte med appstream://-adresssen."
 
 #: discover/main.cpp:43
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
-msgstr ""
+msgstr "Åpne søk etter program som kan håndtere den aktuelle MIME-typen."
 
 #: discover/main.cpp:44
 #, kde-format
@@ -127,6 +139,7 @@ msgstr "Vis en liste over oppføringer med en kategori."
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
+"Åpne Discover i valgt modus. Moduser samsvarer med knappene på verktøylinja."
 
 #: discover/main.cpp:46
 #, kde-format
@@ -136,32 +149,32 @@ msgstr "List alle tilgjengelige moduser."
 #: discover/main.cpp:47
 #, kde-format
 msgid "Compact Mode (auto/compact/full)."
-msgstr ""
+msgstr "Kompakt modus (auto/kompakt/full)."
 
 #: discover/main.cpp:48
 #, kde-format
 msgid "Local package file to install"
-msgstr ""
+msgstr "Lokal pakkefil som skal installeres"
 
 #: discover/main.cpp:49
 #, kde-format
 msgid "List all the available backends."
-msgstr "List alle tilgjengelige bakgrunnsmotorer."
+msgstr "List alle tilgjengelige baksystemer."
 
 #: discover/main.cpp:50
 #, kde-format
 msgid "Search string."
-msgstr ""
+msgstr "Søketekst"
 
 #: discover/main.cpp:51
 #, kde-format
 msgid "Lists the available options for user feedback"
-msgstr ""
+msgstr "Vis tilgjengelige valg for tilbakemeldinger"
 
 #: discover/main.cpp:53
 #, kde-format
 msgid "Supports appstream: url scheme"
-msgstr ""
+msgstr "Støtter appstream: URL-format"
 
 #: discover/main.cpp:122
 #, kde-format
@@ -171,7 +184,7 @@ msgstr "En programutforsker"
 #: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr ""
+msgstr "© 2010–2020 Utviklingslaget for Plasma"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -181,39 +194,39 @@ msgstr "Aleix Pol Gonzalez"
 #: discover/main.cpp:126
 #, kde-format
 msgid "Nate Graham"
-msgstr ""
+msgstr "Nate Graham"
 
 #: discover/main.cpp:127
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
-msgstr ""
+msgstr "Kvalitetskontroll, design og brukskvalitet"
 
 #: discover/main.cpp:131
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
-msgstr ""
+msgstr "Dan Leinir Turthra Jensen"
 
 #: discover/main.cpp:132
 #, kde-format
 msgid "KNewStuff"
-msgstr ""
+msgstr "KNewStuff"
 
 #: discover/main.cpp:139
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "John Ivar Eriksen"
 
 #: discover/main.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "jieriksen@runbox.com"
 
 #: discover/main.cpp:152
 #, kde-format
 msgid "Available backends:\n"
-msgstr "Tilgjengelige motorer:\n"
+msgstr "Tilgjengelige baksystem:\n"
 
 #: discover/main.cpp:208
 #, kde-format
@@ -223,12 +236,12 @@ msgstr "Tilgjengelige moduser:\n"
 #: discover/qml/AddonsView.qml:19 discover/qml/navigation.js:43
 #, kde-format
 msgid "Addons for %1"
-msgstr ""
+msgstr "Tillegg til %1"
 
 #: discover/qml/AddonsView.qml:51
 #, kde-format
 msgid "More…"
-msgstr ""
+msgstr "Mer …"
 
 #: discover/qml/AddonsView.qml:60
 #, kde-format
@@ -238,17 +251,17 @@ msgstr "Bruk endringene"
 #: discover/qml/AddonsView.qml:67
 #, kde-format
 msgid "Reset"
-msgstr ""
+msgstr "Tilbakestill"
 
 #: discover/qml/AddSourceDialog.qml:20
 #, kde-format
 msgid "Add New %1 Repository"
-msgstr ""
+msgstr "Legg til nytt %1-depot"
 
 #: discover/qml/AddSourceDialog.qml:44
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Legg til"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
 #: discover/qml/InstallApplicationButton.qml:47
@@ -263,32 +276,32 @@ msgstr "Avbryt"
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 karakter"
+msgstr[1] "%1 karakterer"
 
 #: discover/qml/ApplicationDelegate.qml:141
 #: discover/qml/ApplicationPage.qml:214
 #, kde-format
 msgid "No ratings yet"
-msgstr ""
+msgstr "Ingen karakter ennå"
 
 #: discover/qml/ApplicationPage.qml:65
 #, kde-format
 msgctxt ""
-"@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-"\"Ubuntu\""
+"@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
+"\""
 msgid "From %1"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:76
 #, kde-format
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 – %2"
 
 #: discover/qml/ApplicationPage.qml:194
 #, kde-format
 msgid "Unknown author"
-msgstr ""
+msgstr "Ukjent utvikler"
 
 #: discover/qml/ApplicationPage.qml:238
 #, kde-format
@@ -311,19 +324,19 @@ msgstr[1] ""
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
-msgstr ""
+msgstr "Ukjent"
 
 #: discover/qml/ApplicationPage.qml:300
 #, kde-format
 msgid "What does this mean?"
-msgstr ""
+msgstr "Hva betyr dette?"
 
 #: discover/qml/ApplicationPage.qml:309
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vis flere …"
+msgstr[1] "Vis flere …"
 
 #: discover/qml/ApplicationPage.qml:320
 #, kde-format
@@ -333,38 +346,38 @@ msgstr ""
 #: discover/qml/ApplicationPage.qml:329
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "Alder: %1+"
 
 #: discover/qml/ApplicationPage.qml:353
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr ""
+msgstr "Vis detaljer …"
 
 #: discover/qml/ApplicationPage.qml:375
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "Fikk ikke tilgang til skjermbildet"
 
 #: discover/qml/ApplicationPage.qml:486
 #, kde-format
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentasjon"
 
 #: discover/qml/ApplicationPage.qml:487
 #, kde-format
 msgid "Read the project's official documentation"
-msgstr ""
+msgstr "Les den offisielle dokumentasjonen til prosjektet"
 
 #: discover/qml/ApplicationPage.qml:503
 #, kde-format
 msgid "Website"
-msgstr ""
+msgstr "Hjemmeside"
 
 #: discover/qml/ApplicationPage.qml:504
 #, kde-format
 msgid "Visit the project's website"
-msgstr ""
+msgstr "Besøk hjemmesiden til prosjektet"
 
 #: discover/qml/ApplicationPage.qml:520
 #, kde-format
@@ -374,106 +387,107 @@ msgstr "Tillegg"
 #: discover/qml/ApplicationPage.qml:521
 #, kde-format
 msgid "Install or remove additional functionality"
-msgstr ""
+msgstr "Installer eller fjern tilleggsfunksjonalitet"
 
 #: discover/qml/ApplicationPage.qml:540
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "Del"
 
 #: discover/qml/ApplicationPage.qml:541
 #, kde-format
 msgid "Send a link for this application"
-msgstr ""
+msgstr "Send en link til dette programmet"
 
 #: discover/qml/ApplicationPage.qml:557
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "Sjekk ut appen «%1»!"
 
 #: discover/qml/ApplicationPage.qml:577
 #, kde-format
 msgid "What's New"
-msgstr "Hva er nytt"
+msgstr "Nytt i denne utgaven"
 
 #: discover/qml/ApplicationPage.qml:608
 #, kde-format
 msgid "Loading reviews for %1"
-msgstr ""
+msgstr "Henter vurderinger av %1"
 
 #: discover/qml/ApplicationPage.qml:614
 #, kde-format
 msgid "Reviews"
-msgstr "Gjennomganger"
+msgstr "Tilbakemeldinger"
 
 #: discover/qml/ApplicationPage.qml:652
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vis %1-vurdering"
+msgstr[1] "Vis alle %1-vurderinger"
 
 #: discover/qml/ApplicationPage.qml:664
 #, kde-format
 msgid "Write a Review"
-msgstr ""
+msgstr "Skriv en vurdering"
 
 #: discover/qml/ApplicationPage.qml:664
 #, kde-format
 msgid "Install to Write a Review"
-msgstr ""
+msgstr "Installer for å skrive en vurdering"
 
 #: discover/qml/ApplicationPage.qml:676
 #, kde-format
 msgid "Get Involved"
-msgstr ""
+msgstr "Bli med"
 
 #: discover/qml/ApplicationPage.qml:718
 #, kde-format
 msgid "Donate"
-msgstr ""
+msgstr "Gi pengegave"
 
 #: discover/qml/ApplicationPage.qml:719
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
-msgstr ""
+msgstr "Støtt og takk utviklerene med en pengegave"
 
 #: discover/qml/ApplicationPage.qml:735
 #, kde-format
 msgid "Report Bug"
-msgstr ""
+msgstr "Meld fra om feil"
 
 #: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr ""
+msgstr "Meld fra om en feil for å hjelpe til med at den blir rettet"
 
 #: discover/qml/ApplicationPage.qml:752
 #, kde-format
 msgid "Contribute"
-msgstr ""
+msgstr "Bidra"
 
 #: discover/qml/ApplicationPage.qml:753
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
+"Hjelp utviklerene med programmering, design, testing eller oversetting."
 
 #: discover/qml/ApplicationPage.qml:778
 #, kde-format
 msgid "All Licenses"
-msgstr ""
+msgstr "Alle lisenser"
 
 #: discover/qml/ApplicationPage.qml:811
 #, kde-format
 msgid "Content Rating"
-msgstr ""
+msgstr "Aldersgrense"
 
 #: discover/qml/ApplicationPage.qml:825
 #, kde-format
 msgid "Risks of proprietary software"
-msgstr ""
+msgstr "Risiko ved proprietær programvare"
 
 #: discover/qml/ApplicationPage.qml:831
 #, kde-kuit-format
@@ -490,6 +504,16 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
+"Dette programmets kildekode ar delvis eller fullstendig lukket for offentlig "
+"inspeksjon og forbedringer. Det betyr at tredjepart, og brukere som deg, "
+"verken kan undersøke og bekrefte dens funksjon, sikkerhet og pålitelighet, "
+"eller endre og redistribuere den uten utviklerens eksplisitte samtykke.<nl/> "
+"<nl/> Programmet kan være fullstendig trygt å bruke, eller så kan det "
+"utnytte deg på forskjellige måter, for eksempel ved innhenting av personlig "
+"informasjon, sporing av posisjon eller overføring av innholdet i filene dine "
+"til andre. Det finnes ingen enkel måte å sjekke dette, så du bør bare "
+"installere dette programmet om du stoler på utviklerene (<link url='%1'>%2</"
+"link>).<nl/><nl/> Du kan lese mer på <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:832
 #, kde-kuit-format
@@ -506,6 +530,16 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
+"Dette programmets kildekode ar delvis eller fullstendig lukket for offentlig "
+"inspeksjon og forbedringer. Det betyr at tredjepart, og brukere som deg, "
+"verken kan undersøke og bekrefte dens funksjon, sikkerhet og pålitelighet, "
+"eller endre og redistribuere den uten utviklerens eksplisitte samtykke.<nl/> "
+"<nl/> Programmet kan være fullstendig trygt å bruke, eller så kan det "
+"utnytte deg på forskjellige måter, for eksempel ved innhenting av personlig "
+"informasjon, sporing av posisjon eller overføring av innholdet i filene dine "
+"til andre. Det finnes ingen enkel måte å sjekke dette, så du bør bare "
+"installere dette programmet om du stoler på utviklerene (%1).<nl/> <nl/> Du "
+"kan lese mer på <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
@@ -517,21 +551,21 @@ msgstr[1] ""
 #: discover/qml/ApplicationsListPage.qml:56
 #, kde-format
 msgid "Search: %1"
-msgstr ""
+msgstr "Søk: %1"
 
 #: discover/qml/ApplicationsListPage.qml:60
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 - %1 element"
+msgstr[1] "%2 – %1 elementer"
 
 #: discover/qml/ApplicationsListPage.qml:66
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Søk - %1 element"
+msgstr[1] "Søk - %1 elementer"
 
 #: discover/qml/ApplicationsListPage.qml:68
 #: discover/qml/ApplicationsListPage.qml:226
@@ -542,7 +576,7 @@ msgstr "Søk"
 #: discover/qml/ApplicationsListPage.qml:89
 #, kde-format
 msgid "Sort: %1"
-msgstr ""
+msgstr "Sortering: %1"
 
 #: discover/qml/ApplicationsListPage.qml:92
 #, kde-format
@@ -562,24 +596,24 @@ msgstr "Størrelse"
 #: discover/qml/ApplicationsListPage.qml:119
 #, kde-format
 msgid "Release Date"
-msgstr ""
+msgstr "Utgivelsesdato"
 
 #: discover/qml/ApplicationsListPage.qml:174
 #, kde-format
 msgid "Nothing found"
-msgstr ""
+msgstr "Fant ingenting"
 
 #: discover/qml/ApplicationsListPage.qml:181
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "Søk i alle kategorier"
 
 #: discover/qml/ApplicationsListPage.qml:190
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
-msgstr ""
+msgstr "Søk på nettet etter «%1»"
 
 #: discover/qml/ApplicationsListPage.qml:194
 #, kde-format
@@ -587,7 +621,7 @@ msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
 "language. %1 is the text that will be searched for."
 msgid "https://duckduckgo.com/?q=%1"
-msgstr ""
+msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:205
 #, kde-format
@@ -595,13 +629,13 @@ msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr ""
+msgstr "Fant ikke «%1» i kategorien «%2»"
 
 #: discover/qml/ApplicationsListPage.qml:207
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
-msgstr ""
+msgstr "Fant ikke «%1» i de tilgjengelige kildene"
 
 #: discover/qml/ApplicationsListPage.qml:208
 #, kde-format
@@ -611,103 +645,106 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
+"«%1» er kanskje tilgjengelig på nettet. Distributøren din gransker verken "
+"funksjonaliteten eller stabiliteten til programmer hentet fra nettet. Vær "
+"derfor varsom."
 
 #: discover/qml/ApplicationsListPage.qml:241
 #, kde-format
 msgid "Still looking…"
-msgstr ""
+msgstr "Leter fremdeles …"
 
 #: discover/qml/BrowsingPage.qml:50
 #, kde-format
 msgid "Unable to load applications"
-msgstr ""
+msgstr "Klarte ikke laste inn programoversikt"
 
 #: discover/qml/BrowsingPage.qml:89
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "Mest populære"
 
 #: discover/qml/BrowsingPage.qml:107
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "Spesielt utvalgte"
 
 #: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "Høyest vurderte spill"
 
 #: discover/qml/BrowsingPage.qml:140 discover/qml/BrowsingPage.qml:169
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr ""
+msgstr "Se mer"
 
 #: discover/qml/BrowsingPage.qml:150
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "Høyest vurderte utviklerverktøy"
 
 #: discover/qml/DiscoverWindow.qml:44
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
-msgstr ""
+msgstr "Å kjøre som <em>rotbruker</em> er unødvendig og frarådet."
 
 #: discover/qml/DiscoverWindow.qml:57
 #, kde-format
 msgid "&Home"
-msgstr ""
+msgstr "&Hjem"
 
 #: discover/qml/DiscoverWindow.qml:67
 #, kde-format
 msgid "&Search"
-msgstr ""
+msgstr "&Søk"
 
 #: discover/qml/DiscoverWindow.qml:75
 #, kde-format
 msgid "&Installed"
-msgstr ""
+msgstr "&Installert"
 
 #: discover/qml/DiscoverWindow.qml:87
 #, kde-format
 msgid "Fetching &updates…"
-msgstr ""
+msgstr "Henter &oppdateringer"
 
 #: discover/qml/DiscoverWindow.qml:87
 #, kde-format
 msgid "&Up to date"
-msgstr ""
+msgstr "&Oppdatert"
 
 #: discover/qml/DiscoverWindow.qml:88
 #, kde-format
 msgctxt "Update section name"
 msgid "&Update (%1)"
-msgstr ""
+msgstr "&Oppdater (%1)"
 
 #: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&About"
-msgstr ""
+msgstr "&Om"
 
 #: discover/qml/DiscoverWindow.qml:104
 #, kde-format
 msgid "S&ettings"
-msgstr ""
+msgstr "&Innstillinger"
 
 #: discover/qml/DiscoverWindow.qml:157 discover/qml/DiscoverWindow.qml:338
 #: discover/qml/DiscoverWindow.qml:445
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "Feil"
 
 #: discover/qml/DiscoverWindow.qml:161
 #, kde-format
 msgid "Unable to find resource: %1"
-msgstr ""
+msgstr "Finner ikke ressurs: %1."
 
 #: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
 #, kde-format
@@ -717,34 +754,34 @@ msgstr "Fortsett"
 #: discover/qml/DiscoverWindow.qml:314
 #, kde-format
 msgid "Report this issue"
-msgstr ""
+msgstr "Meld fra om feilen"
 
 #: discover/qml/DiscoverWindow.qml:338
 #, kde-format
 msgid "Error %1 of %2"
-msgstr ""
+msgstr "Feil %1 av %2"
 
 #: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "Vis forrige"
 
 #: discover/qml/DiscoverWindow.qml:396
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr ""
+msgstr "Vis neste"
 
 #: discover/qml/DiscoverWindow.qml:412 discover/qml/UpdatesPage.qml:98
 #, kde-format
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "Kopier til utklippstavla"
 
 #: discover/qml/Feedback.qml:13
 #, kde-format
 msgid "Submit usage information"
-msgstr ""
+msgstr "Send inn bruksinformasjon"
 
 #: discover/qml/Feedback.qml:14
 #, kde-format
@@ -752,26 +789,28 @@ msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
+"Sender anonymisert bruksinformasjon til KDE, slik at vi kan forstå brukerene "
+"våre bedre. For mer informasjon, se https://kde.org/privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:18
 #, kde-format
 msgid "Submitting usage information…"
-msgstr ""
+msgstr "Sender inn bruksinformasjon …"
 
 #: discover/qml/Feedback.qml:18
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "Sett opp"
 
 #: discover/qml/Feedback.qml:22
 #, kde-format
 msgid "Configure feedback…"
-msgstr ""
+msgstr "Sett opp tilbakemeldinger …"
 
 #: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:21
 #, kde-format
 msgid "Configure Updates…"
-msgstr ""
+msgstr "Sett opp oppdateringer …"
 
 #: discover/qml/Feedback.qml:57
 #, kde-format
@@ -779,27 +818,29 @@ msgid ""
 "You can help us improving this application by sharing statistics and "
 "participate in surveys."
 msgstr ""
+"Du kan hjelpe oss med å gjøre programmet bedre ved å dele bruksstatistikk og "
+"delta i spørreundersøkelser."
 
 #: discover/qml/Feedback.qml:57
 #, kde-format
 msgid "Contribute…"
-msgstr ""
+msgstr "Bidra …"
 
 #: discover/qml/Feedback.qml:62
 #, kde-format
 msgid "We are looking for your feedback!"
-msgstr ""
+msgstr "Vi ønsker tilbakemelding fra deg!"
 
 #: discover/qml/Feedback.qml:62
 #, kde-format
 msgid "Participate…"
-msgstr ""
+msgstr "Delta …"
 
 #: discover/qml/InstallApplicationButton.qml:26
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
-msgstr ""
+msgstr "Laster …"
 
 #: discover/qml/InstallApplicationButton.qml:30
 #, kde-format
@@ -831,7 +872,7 @@ msgstr "Ressurser for «%1»"
 #: discover/qml/ProgressView.qml:17
 #, kde-format
 msgid "Tasks (%1%)"
-msgstr ""
+msgstr "Oppgaver (%1%)"
 
 #: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:42
 #, kde-format
@@ -842,76 +883,76 @@ msgstr "Oppgaver"
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
-msgstr ""
+msgstr "%1 - %2: %3, %4 gjenstår"
 
 #: discover/qml/ProgressView.qml:103
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
-msgstr ""
+msgstr "%1 – %2: %3"
 
 #: discover/qml/ProgressView.qml:104
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 – %2"
 
 #: discover/qml/ReviewDelegate.qml:64
 #, kde-format
 msgid "unknown reviewer"
-msgstr ""
+msgstr "ukjent vurderer"
 
 #: discover/qml/ReviewDelegate.qml:65
 #, kde-format
 msgid "<b>%1</b> by %2"
-msgstr ""
+msgstr "<b>%1</b> av %2"
 
 #: discover/qml/ReviewDelegate.qml:65
 #, kde-format
 msgid "Comment by %1"
-msgstr ""
+msgstr "Kommentar fra %1"
 
 #: discover/qml/ReviewDelegate.qml:83
 #, kde-format
 msgid "Version: %1"
-msgstr ""
+msgstr "Versjon: %1"
 
 #: discover/qml/ReviewDelegate.qml:83
 #, kde-format
 msgid "Version: unknown"
-msgstr ""
+msgstr "Versjon: ukjent"
 
 #: discover/qml/ReviewDelegate.qml:98
 #, kde-format
 msgid "Votes: %1 out of %2"
-msgstr ""
+msgstr "Stemmer: %1 av %2"
 
 #: discover/qml/ReviewDelegate.qml:105
 #, kde-format
 msgid "Was this review useful?"
-msgstr ""
+msgstr "Var denne vurderinga nyttig?"
 
 #: discover/qml/ReviewDelegate.qml:117
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: discover/qml/ReviewDelegate.qml:134
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"
-msgstr ""
+msgstr "Nei"
 
 #: discover/qml/ReviewDialog.qml:19
 #, kde-format
 msgid "Reviewing %1"
-msgstr ""
+msgstr "Vurderer %1"
 
 #: discover/qml/ReviewDialog.qml:25
 #, kde-format
 msgid "Submit review"
-msgstr ""
+msgstr "Send inn vurdering"
 
 #: discover/qml/ReviewDialog.qml:38
 #, kde-format
@@ -921,7 +962,7 @@ msgstr "Karakter:"
 #: discover/qml/ReviewDialog.qml:43
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "Navn:"
 
 #: discover/qml/ReviewDialog.qml:51
 #, kde-format
@@ -931,58 +972,58 @@ msgstr "Tittel:"
 #: discover/qml/ReviewDialog.qml:69
 #, kde-format
 msgid "Enter a rating"
-msgstr ""
+msgstr "Skriv inn vurdering"
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-format
 msgid "Write the title"
-msgstr ""
+msgstr "Skriv tittel"
 
 #: discover/qml/ReviewDialog.qml:75
 #, kde-format
 msgid "Write the review"
-msgstr ""
+msgstr "Skriv vurderinger"
 
 #: discover/qml/ReviewDialog.qml:78
 #, kde-format
 msgid "Keep writing…"
-msgstr ""
+msgstr "Skriv videre …"
 
 #: discover/qml/ReviewDialog.qml:81
 #, kde-format
 msgid "Too long!"
-msgstr ""
+msgstr "For lang!"
 
 #: discover/qml/ReviewDialog.qml:84
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "Sett inn navn"
 
 #: discover/qml/ReviewsPage.qml:44
 #, kde-format
 msgid "Reviews for %1"
-msgstr ""
+msgstr "Vurderinger av %1"
 
 #: discover/qml/ReviewsPage.qml:55
 #, kde-format
 msgid "Write a Review…"
-msgstr ""
+msgstr "Skriv en vurdering …"
 
 #: discover/qml/ReviewsPage.qml:60
 #, kde-format
 msgid "Install this app to write a review"
-msgstr ""
+msgstr "Installer programmet for å skrive en vurdering"
 
 #: discover/qml/SearchField.qml:23
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "Søk …"
 
 #: discover/qml/SearchField.qml:23
 #, kde-format
 msgid "Search in '%1'…"
-msgstr ""
+msgstr "Søk i «%1» …"
 
 #: discover/qml/SourcesPage.qml:17
 #, kde-format
@@ -992,12 +1033,12 @@ msgstr "Innstillinger"
 #: discover/qml/SourcesPage.qml:98
 #, kde-format
 msgid "Default source"
-msgstr ""
+msgstr "Standardkilde:"
 
 #: discover/qml/SourcesPage.qml:105
 #, kde-format
 msgid "Add Source…"
-msgstr ""
+msgstr "Legg til kilde …"
 
 #: discover/qml/SourcesPage.qml:131
 #, kde-format
@@ -1007,37 +1048,37 @@ msgstr "Gjør til  standard"
 #: discover/qml/SourcesPage.qml:222
 #, kde-format
 msgid "Increase priority"
-msgstr ""
+msgstr "Høyere prioritet"
 
 #: discover/qml/SourcesPage.qml:228
 #, kde-format
 msgid "Failed to increase '%1' preference"
-msgstr ""
+msgstr "Klarte ikke øke prioriteten til «%1»"
 
 #: discover/qml/SourcesPage.qml:234
 #, kde-format
 msgid "Decrease priority"
-msgstr ""
+msgstr "Lavere prioritet"
 
 #: discover/qml/SourcesPage.qml:240
 #, kde-format
 msgid "Failed to decrease '%1' preference"
-msgstr ""
+msgstr "Klarte ikke senke prioriteten til «%1»"
 
 #: discover/qml/SourcesPage.qml:246
 #, kde-format
 msgid "Remove repository"
-msgstr ""
+msgstr "Fjern pakkebrønn"
 
 #: discover/qml/SourcesPage.qml:257
 #, kde-format
 msgid "Show contents"
-msgstr ""
+msgstr "Vis innhold"
 
 #: discover/qml/SourcesPage.qml:297
 #, kde-format
 msgid "Missing Backends"
-msgstr ""
+msgstr "Manglende baksystemer"
 
 #: discover/qml/UpdatesPage.qml:12
 #, kde-format
@@ -1047,22 +1088,23 @@ msgstr "Oppdateringer"
 #: discover/qml/UpdatesPage.qml:45
 #, kde-format
 msgid "Update Issue"
-msgstr ""
+msgstr "Oppdateringsproblem"
 
 #: discover/qml/UpdatesPage.qml:45
 #, kde-format
 msgid "Technical details"
-msgstr ""
+msgstr "Tekniske detaljer"
 
 #: discover/qml/UpdatesPage.qml:61
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
+"Det oppstod en feil ved installering av oppdateringen. Prøv igjen senere."
 
 #: discover/qml/UpdatesPage.qml:67
 #, kde-format
 msgid "See Technical Details"
-msgstr ""
+msgstr "Vis tekniske detaljer"
 
 #: discover/qml/UpdatesPage.qml:83
 #, kde-format
@@ -1070,16 +1112,18 @@ msgid ""
 "If you would like to report the update issue to your distribution's "
 "packagers, include this information:"
 msgstr ""
+"Hvis du vil melde fra om feilen til dem som har pakket distribusjonen, ta "
+"med denne informasjonen:"
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Error message copied to clipboard"
-msgstr ""
+msgstr "Feilmeldingen ble kopiert til utklippstavla"
 
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgid "Update Selected"
-msgstr ""
+msgstr "Oppdater valgte"
 
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
@@ -1089,47 +1133,47 @@ msgstr "Oppdater alle"
 #: discover/qml/UpdatesPage.qml:174
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorer"
 
 #: discover/qml/UpdatesPage.qml:220
 #, kde-format
 msgid "Select All"
-msgstr ""
+msgstr "Velg alt"
 
 #: discover/qml/UpdatesPage.qml:228
 #, kde-format
 msgid "Select None"
-msgstr ""
+msgstr "Fjern valg"
 
 #: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Restart automatically after update has completed"
-msgstr ""
+msgstr "Start på nytt automatisk etter fullført oppdatering"
 
 #: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Total size: %1"
-msgstr ""
+msgstr "Total størrelse: %1"
 
 #: discover/qml/UpdatesPage.qml:277
 #, kde-format
 msgid "Restart Now"
-msgstr ""
+msgstr "Start på nytt"
 
 #: discover/qml/UpdatesPage.qml:376
 #, kde-format
 msgid "%1"
-msgstr ""
+msgstr "%1"
 
 #: discover/qml/UpdatesPage.qml:392
 #, kde-format
 msgid "Installing"
-msgstr ""
+msgstr "Installerer"
 
 #: discover/qml/UpdatesPage.qml:428
 #, kde-format
 msgid "Update from:"
-msgstr ""
+msgstr "Oppdater fra:"
 
 #: discover/qml/UpdatesPage.qml:440
 #, kde-format
@@ -1137,46 +1181,46 @@ msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
 "address within that backend"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:447
 #, kde-format
 msgid "More Information…"
-msgstr ""
+msgstr "Mer informasjon …"
 
 #: discover/qml/UpdatesPage.qml:475
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr ""
+msgstr "Henter oppdateringer …"
 
 #: discover/qml/UpdatesPage.qml:488
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
-msgstr ""
+msgstr "Oppdateringer"
 
 #: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
-msgstr ""
+msgstr "Starte maskinen på nytt for å fullføre oppdateringsprosessen"
 
 #: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
 #: discover/qml/UpdatesPage.qml:524
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
-msgstr ""
+msgstr "Oppdatert"
 
 #: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
-msgstr ""
+msgstr "Se etter oppdateringer"
 
 #: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
-msgstr ""
+msgstr "Tid for sist oppdatering er ukjent"

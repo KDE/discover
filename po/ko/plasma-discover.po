@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Shinjo Park <kde@peremen.name>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Jung Hee Lee <daemul72@gmail.com>, 2019.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-25 01:01+0000\n"
-"PO-Revision-Date: 2022-10-04 15:20+0200\n"
+"PO-Revision-Date: 2023-03-01 00:50+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -72,7 +72,7 @@ msgstr "분류 '%1'을(를) 찾을 수 없음"
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "존재하지 않는 파일 '%1'을(를) 열려고 함"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -289,7 +289,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "출처: %1"
 
 #: discover/qml/ApplicationPage.qml:76
 #, kde-format
@@ -302,10 +302,9 @@ msgid "Unknown author"
 msgstr "알 수 없는 작성자"
 
 #: discover/qml/ApplicationPage.qml:238
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "버전"
+msgstr "버전:"
 
 #: discover/qml/ApplicationPage.qml:250
 #, kde-format
@@ -313,12 +312,10 @@ msgid "Size:"
 msgstr "크기:"
 
 #: discover/qml/ApplicationPage.qml:262
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "라이선스"
+msgstr[0] "라이선스:"
 
 #: discover/qml/ApplicationPage.qml:270
 #, kde-format
@@ -338,10 +335,9 @@ msgid_plural "See more…"
 msgstr[0] "더 보기…"
 
 #: discover/qml/ApplicationPage.qml:320
-#, fuzzy, kde-format
-#| msgid "Content Rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "내용 등급"
+msgstr "내용 등급:"
 
 #: discover/qml/ApplicationPage.qml:329
 #, kde-format
@@ -357,7 +353,7 @@ msgstr "자세한 정보 보기…"
 #: discover/qml/ApplicationPage.qml:375
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "스크린샷에 접근할 수 없음"
 
 #: discover/qml/ApplicationPage.qml:486
 #, kde-format
@@ -372,7 +368,7 @@ msgstr "프로젝트 공식 문서 읽기"
 #: discover/qml/ApplicationPage.qml:503
 #, kde-format
 msgid "Website"
-msgstr "웹 사이트"
+msgstr "웹사이트"
 
 #: discover/qml/ApplicationPage.qml:504
 #, kde-format
@@ -396,10 +392,9 @@ msgid "Share"
 msgstr "공유"
 
 #: discover/qml/ApplicationPage.qml:541
-#, fuzzy, kde-format
-#| msgid "Send a link to the application"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "앱 링크 보내기"
+msgstr "이 프로그램 링크 보내기"
 
 #: discover/qml/ApplicationPage.qml:557
 #, kde-format
@@ -539,11 +534,10 @@ msgstr ""
 "link> 페이지를 방문하십시오."
 
 #: discover/qml/ApplicationsListPage.qml:54
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "검색: %1 - 항목 %2개"
+msgstr[0] "검색: %2 - 항목 %3개"
 
 #: discover/qml/ApplicationsListPage.qml:56
 #, kde-format
@@ -551,15 +545,13 @@ msgid "Search: %1"
 msgstr "검색: %1"
 
 #: discover/qml/ApplicationsListPage.qml:60
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - 항목 %2개"
+msgstr[0] "%2 - 항목 %1개"
 
 #: discover/qml/ApplicationsListPage.qml:66
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
 msgstr[0] "검색 - 항목 %1개"
@@ -604,12 +596,10 @@ msgstr "찾을 수 없음"
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "모든 분류에서 검색"
 
 #: discover/qml/ApplicationsListPage.qml:190
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "Search the web for \"%1\""
+#, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "웹에서 \"%1\" 검색"
@@ -623,30 +613,21 @@ msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:205
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr "사용 가능한 원본에서 \"%1\"을(를) 찾을 수 없음"
+msgstr "\"%2\" 분류에서 \"%1\"을(를) 찾을 수 없음"
 
 #: discover/qml/ApplicationsListPage.qml:207
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "사용 가능한 원본에서 \"%1\"을(를) 찾을 수 없음"
 
 #: discover/qml/ApplicationsListPage.qml:208
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder%1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -668,37 +649,34 @@ msgid "Unable to load applications"
 msgstr "프로그램을 불러올 수 없음"
 
 #: discover/qml/BrowsingPage.qml:89
-#, fuzzy, kde-format
-#| msgid "Most Popular"
+#, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr "인기 있는 항목"
+msgstr "인기 항목"
 
 #: discover/qml/BrowsingPage.qml:107
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "편집자의 선택"
 
 #: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "별점이 높은 게임"
 
 #: discover/qml/BrowsingPage.qml:140 discover/qml/BrowsingPage.qml:169
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "더 보기…"
+msgstr "더 보기"
 
 #: discover/qml/BrowsingPage.qml:150
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "별점이 높은 개발 도구"
 
 #: discover/qml/DiscoverWindow.qml:44
 #, kde-format
@@ -769,23 +747,21 @@ msgid "Report this issue"
 msgstr "이 문제 보고"
 
 #: discover/qml/DiscoverWindow.qml:338
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "투표: %1/%2"
+msgstr "오류: %1/%2"
 
 #: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "이전 보기"
 
 #: discover/qml/DiscoverWindow.qml:396
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "내용 보기"
+msgstr "다음 보기"
 
 #: discover/qml/DiscoverWindow.qml:412 discover/qml/UpdatesPage.qml:98
 #, kde-format
@@ -857,16 +833,13 @@ msgid "Loading…"
 msgstr "불러오는 중…"
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
-#| msgid "Install from %1"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "%1에서 설치"
 
 #: discover/qml/InstallApplicationButton.qml:32
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "설치"

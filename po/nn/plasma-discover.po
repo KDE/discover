@@ -287,8 +287,8 @@ msgstr "Ingen karakterar enno"
 #: discover/qml/ApplicationPage.qml:65
 #, kde-format
 msgctxt ""
-"@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-"\"Ubuntu\""
+"@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
+"\""
 msgid "From %1"
 msgstr ""
 

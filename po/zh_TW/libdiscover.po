@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-28 01:00+0000\n"
+"POT-Creation-Date: 2023-03-01 23:29+0000\n"
 "PO-Revision-Date: 2023-02-19 06:56+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -939,14 +939,14 @@ msgstr "%1 並非已安裝但仍有它的資料存在。"
 msgid "Delete settings and user data"
 msgstr "正在刪除設定與使用者資料"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:19
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "%1 的權限"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:53
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:56
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"

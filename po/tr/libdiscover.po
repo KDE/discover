@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-28 01:00+0000\n"
-"PO-Revision-Date: 2023-02-08 13:52+0300\n"
+"POT-Creation-Date: 2023-03-01 23:29+0000\n"
+"PO-Revision-Date: 2023-02-28 11:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -964,14 +964,14 @@ msgstr "%1 kurulu değil; ancak hâlâ verisi var."
 msgid "Delete settings and user data"
 msgstr "Ayarları ve kullanıcı verisini sil"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:19
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "%1 İzinleri"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:53
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:56
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
@@ -1941,10 +1941,9 @@ msgstr[0] "%1 paket başarıyla güncellendi!"
 msgstr[1] "%1 paket başarıyla güncellendi!"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Bilinmeyen Durum"
+msgstr "Bilinmeyen Kaynak"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format

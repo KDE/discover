@@ -312,16 +312,14 @@ msgid "Unknown author"
 msgstr "Penulis tak diketahui"
 
 #: discover/qml/ApplicationPage.qml:238
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "Versi"
+msgstr "Versi:"
 
 #: discover/qml/ApplicationPage.qml:250
-#, fuzzy, kde-format
-#| msgid "Size"
+#, kde-format
 msgid "Size:"
-msgstr "Ukuran"
+msgstr "Ukuran:"
 
 #: discover/qml/ApplicationPage.qml:262
 #, fuzzy, kde-format

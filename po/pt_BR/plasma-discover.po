@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-25 01:01+0000\n"
-"PO-Revision-Date: 2023-02-07 10:58-0300\n"
+"PO-Revision-Date: 2023-02-28 10:55-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -301,7 +301,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "De %1"
 
 #: discover/qml/ApplicationPage.qml:76
 #, kde-format
@@ -314,10 +314,9 @@ msgid "Unknown author"
 msgstr "Autor desconhecido"
 
 #: discover/qml/ApplicationPage.qml:238
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "Versão"
+msgstr "Versão:"
 
 #: discover/qml/ApplicationPage.qml:250
 #, kde-format
@@ -325,13 +324,11 @@ msgid "Size:"
 msgstr "Tamanho:"
 
 #: discover/qml/ApplicationPage.qml:262
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Licença"
-msgstr[1] "Licenças"
+msgstr[0] "Licença:"
+msgstr[1] "Licenças:"
 
 #: discover/qml/ApplicationPage.qml:270
 #, kde-format
@@ -352,10 +349,9 @@ msgstr[0] "Veja mais..."
 msgstr[1] "Veja mais..."
 
 #: discover/qml/ApplicationPage.qml:320
-#, fuzzy, kde-format
-#| msgid "Content Rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "Classificação do conteúdo"
+msgstr "Classificação do conteúdo:"
 
 #: discover/qml/ApplicationPage.qml:329
 #, kde-format
@@ -857,16 +853,13 @@ msgid "Loading…"
 msgstr "Carregando..."
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
-#| msgid "Install from %1"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "Instalar de %1"
 
 #: discover/qml/InstallApplicationButton.qml:32
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Instalar"

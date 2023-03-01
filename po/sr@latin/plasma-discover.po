@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-06-06 02:13+0200\n"
+"POT-Creation-Date: 2023-02-25 01:01+0000\n"
 "PO-Revision-Date: 2018-01-06 09:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -19,180 +19,256 @@ msgstr ""
 "X-Environment: kde\n"
 "X-Associated-UI-Catalogs: libdiscover\n"
 
-#: discover/DiscoverObject.cpp:177
+#: discover/DiscoverObject.cpp:159
 #, kde-format
-msgid "No application back-ends found, please report to your distribution."
+msgid ""
+"Discover currently cannot be used to install any apps or perform system "
+"updates because none of its app backends are available."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:260
+#: discover/DiscoverObject.cpp:163
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can install some on the Settings page, under the <interface>Missing "
+"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
+"as a packaging issue to your distribution."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
+#: discover/qml/UpdatesPage.qml:107
+#, kde-format
+msgid "Report This Issue"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:173
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"You can use <command>pacman</command> to install the optional dependencies "
+"that are needed to enable the application backends.<nl/><nl/>Please note "
+"that Arch Linux developers recommend using <command>pacman</command> for "
+"managing software because the PackageKit backend is not well-integrated on "
+"Arch Linux."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:181
+#, kde-format
+msgid "Learn More"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:269
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Ne mogu da nađem kategoriju „%1“"
 
-#: discover/DiscoverObject.cpp:294
+#: discover/DiscoverObject.cpp:284
+#, kde-format
+msgid "Trying to open inexisting file '%1'"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:297 discover/DiscoverObject.cpp:324
-#, kde-format
-msgid "Couldn't open %1"
+#: discover/DiscoverObject.cpp:310
+#, fuzzy, kde-format
+#| msgid "Couldn't open %1"
+msgid "Could not open %1"
 msgstr "Ne mogu da otvorim %1"
 
-#: discover/main.cpp:46
+#: discover/DiscoverObject.cpp:372
 #, kde-format
-msgid "Directly open the specified application by its package name."
+msgid "Please make sure Snap support is installed"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:374
+#, kde-format
+msgid ""
+"Could not open %1 because it was not found in any available software "
+"repositories."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:377
+#, kde-format
+msgid "Please report this issue to the packagers of your distribution."
+msgstr ""
+
+#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
+#: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
+#, kde-format
+msgid "Discover"
+msgstr "Otkrivač"
+
+#: discover/DiscoverObject.cpp:443
+#, kde-format
+msgid ""
+"Discover was closed before certain tasks were done, waiting for it to finish."
+msgstr ""
+
+#: discover/main.cpp:42
+#, fuzzy, kde-format
+#| msgid "Directly open the specified application by its package name."
+msgid "Directly open the specified application by its appstream:// URI."
 msgstr "Neposredno otvori zadati program po imenu paketa"
 
-#: discover/main.cpp:47
-#, kde-format
-msgid "Open with a program that can deal with the given mimetype."
+#: discover/main.cpp:43
+#, fuzzy, kde-format
+#| msgid "Open with a program that can deal with the given mimetype."
+msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr "Otvori programom koji ume da rukuje datim MIME tipom"
 
-#: discover/main.cpp:48
+#: discover/main.cpp:44
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Prikaži spisak unosa sa kategorijom"
 
-#: discover/main.cpp:49
+#: discover/main.cpp:45
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "Otvori Otkrivač u datom režimu. Režimi odgovaraju dugmadima trake alatki."
 
-#: discover/main.cpp:50
+#: discover/main.cpp:46
 #, kde-format
 msgid "List all the available modes."
 msgstr "Nabroji sve dostupne režime."
 
-#: discover/main.cpp:51
+#: discover/main.cpp:47
 #, kde-format
 msgid "Compact Mode (auto/compact/full)."
 msgstr "Sažeti režim (jedno od: auto, compact, full)."
 
-#: discover/main.cpp:52
+#: discover/main.cpp:48
 #, kde-format
 msgid "Local package file to install"
 msgstr "Lokalni paket za instaliranje."
 
-#: discover/main.cpp:53
+#: discover/main.cpp:49
 #, kde-format
 msgid "List all the available backends."
 msgstr "Nabroji sve dostupne pozadine."
 
 # >> %1 is one of categories from libmuon
-#: discover/main.cpp:54
+#: discover/main.cpp:50
 #, fuzzy, kde-format
 #| msgid "Search in '%1'..."
 msgid "Search string."
 msgstr "Traži u „%1“...|/|Traži u „$[lok %1]“..."
 
-#: discover/main.cpp:55
+#: discover/main.cpp:51
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr ""
 
-#: discover/main.cpp:57
+#: discover/main.cpp:53
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Podrška za URL šemu appstream:."
 
-#: discover/main.cpp:104 discover/qml/DiscoverWindow.qml:51
-#, kde-format
-msgid "Discover"
-msgstr "Otkrivač"
-
-#: discover/main.cpp:104
+#: discover/main.cpp:122
 #, kde-format
 msgid "An application explorer"
 msgstr "Istraživač programa"
 
-#: discover/main.cpp:105
+#: discover/main.cpp:124
 #, fuzzy, kde-format
 #| msgid "© 2010-2016 Plasma Development Team"
-msgid "© 2010-2019 Plasma Development Team"
+msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010–2016, razvojni tim Plasme"
 
-#: discover/main.cpp:106
+#: discover/main.cpp:125
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleks Pol Gonzalez"
 
-#: discover/main.cpp:107
+#: discover/main.cpp:126
 #, kde-format
-msgid "Jonathan Thomas"
-msgstr "Džonatan Tomas"
+msgid "Nate Graham"
+msgstr ""
 
-#: discover/main.cpp:112
+#: discover/main.cpp:127
+#, kde-format
+msgid "Quality Assurance, Design and Usability"
+msgstr ""
+
+#: discover/main.cpp:131
+#, kde-format
+msgid "Dan Leinir Turthra Jensen"
+msgstr ""
+
+#: discover/main.cpp:132
+#, kde-format
+msgid "KNewStuff"
+msgstr ""
+
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: discover/main.cpp:113
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: discover/main.cpp:125
+#: discover/main.cpp:152
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Dostupne pozadine:\n"
 
-#: discover/main.cpp:163
+#: discover/main.cpp:208
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Dostupni režimi:\n"
 
-#: discover/qml/AddonsView.qml:16 discover/qml/ApplicationPage.qml:213
-#, kde-format
-msgid "Addons"
+#: discover/qml/AddonsView.qml:19 discover/qml/navigation.js:43
+#, fuzzy, kde-format
+#| msgid "Addons"
+msgid "Addons for %1"
 msgstr "Dodaci"
 
-#: discover/qml/AddonsView.qml:70
+#: discover/qml/AddonsView.qml:51
+#, kde-format
+msgid "More…"
+msgstr ""
+
+#: discover/qml/AddonsView.qml:60
 #, kde-format
 msgid "Apply Changes"
 msgstr "Primeni izmene"
 
-#: discover/qml/AddonsView.qml:77
+#: discover/qml/AddonsView.qml:67
 #, kde-format
-msgid "Discard"
-msgstr "Odbaci"
+msgid "Reset"
+msgstr ""
 
-#: discover/qml/AddonsView.qml:88
-#, kde-format
-msgid "More..."
-msgstr "Više..."
-
-#: discover/qml/AddSourceDialog.qml:33
+#: discover/qml/AddSourceDialog.qml:20
 #, kde-format
 msgid "Add New %1 Repository"
 msgstr ""
 
-#: discover/qml/AddSourceDialog.qml:64
+#: discover/qml/AddSourceDialog.qml:44
 #, fuzzy, kde-format
 #| msgid "Addons"
 msgid "Add"
 msgstr "Dodaci"
 
-#: discover/qml/AddSourceDialog.qml:76 discover/qml/DiscoverWindow.qml:243
-#: discover/qml/InstallApplicationButton.qml:33
-#: discover/qml/SourcesPage.qml:137 discover/qml/UpdatesPage.qml:106
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
+#: discover/qml/InstallApplicationButton.qml:47
+#: discover/qml/ProgressView.qml:109 discover/qml/SourcesPage.qml:190
+#: discover/qml/UpdatesPage.qml:252 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Odustani"
 
-#: discover/qml/ApplicationDelegate.qml:89
-#, kde-format
-msgctxt "Part of a string like this: '<app name> - <category>'"
-msgid "- %1"
-msgstr ""
-
-#: discover/qml/ApplicationDelegate.qml:113
-#: discover/qml/ApplicationPage.qml:146
+#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationPage.qml:214
 #, fuzzy, kde-format
 #| msgid "Rating:"
 msgid "%1 rating"
@@ -202,538 +278,837 @@ msgstr[1] "Ocena:"
 msgstr[2] "Ocena:"
 msgstr[3] "Ocena:"
 
-#: discover/qml/ApplicationDelegate.qml:113
-#: discover/qml/ApplicationPage.qml:146
+#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationPage.qml:214
 #, kde-format
 msgid "No ratings yet"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-format
-#| msgid "Source:"
-msgid "Sources"
-msgstr "Izvor:"
+#: discover/qml/ApplicationPage.qml:65
+#, kde-format
+msgctxt ""
+"@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
+"\""
+msgid "From %1"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:82
+#: discover/qml/ApplicationPage.qml:76
 #, kde-format
 msgid "%1 - %2"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:185
+#: discover/qml/ApplicationPage.qml:194
+#, kde-format
+msgid "Unknown author"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:238
+#, kde-format
+msgid "Version:"
+msgstr "Izdanje:"
+
+#: discover/qml/ApplicationPage.qml:250
+#, kde-format
+msgid "Size:"
+msgstr "Veličina:"
+
+#: discover/qml/ApplicationPage.qml:262
+#, fuzzy, kde-format
+#| msgid "License:"
+msgid "License:"
+msgid_plural "Licenses:"
+msgstr[0] "Licenca:"
+msgstr[1] "Licenca:"
+msgstr[2] "Licenca:"
+msgstr[3] "Licenca:"
+
+#: discover/qml/ApplicationPage.qml:270
+#, kde-format
+msgctxt "The app does not provide any licenses"
+msgid "Unknown"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:300
+#, kde-format
+msgid "What does this mean?"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:309
+#, kde-format
+msgid "See more…"
+msgid_plural "See more…"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: discover/qml/ApplicationPage.qml:320
+#, fuzzy, kde-format
+#| msgid "Rating:"
+msgid "Content Rating:"
+msgstr "Ocena:"
+
+#: discover/qml/ApplicationPage.qml:329
+#, kde-format
+msgid "Age: %1+"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:353
+#, kde-format
+msgctxt "@action"
+msgid "See details…"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:375
+#, kde-format
+msgid "Could not access the screenshots"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:486
+#, kde-format
+msgid "Documentation"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:487
+#, kde-format
+msgid "Read the project's official documentation"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:503
+#, kde-format
+msgid "Website"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:504
+#, kde-format
+msgid "Visit the project's website"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:520
+#, kde-format
+msgid "Addons"
+msgstr "Dodaci"
+
+#: discover/qml/ApplicationPage.qml:521
+#, kde-format
+msgid "Install or remove additional functionality"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:540
+#, kde-format
+msgctxt "Exports the application's URL to an external service"
+msgid "Share"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:541
+#, kde-format
+msgid "Send a link for this application"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:557
+#, kde-format
+msgctxt "The subject line for an email. %1 is the name of an application"
+msgid "Check out the %1 app!"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:577
 #, kde-format
 msgid "What's New"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:225
+#: discover/qml/ApplicationPage.qml:608
+#, fuzzy, kde-format
+#| msgid "Resources for '%1'"
+msgid "Loading reviews for %1"
+msgstr "Resursi za „%1“"
+
+#: discover/qml/ApplicationPage.qml:614
 #, fuzzy, kde-format
 #| msgid "Review"
 msgid "Reviews"
 msgstr "Recenziraj"
 
-#: discover/qml/ApplicationPage.qml:233
+#: discover/qml/ApplicationPage.qml:652
 #, fuzzy, kde-format
 #| msgid "Show reviews (%1)..."
-msgid "Show %1 review..."
-msgid_plural "Show all %1 reviews..."
+msgid "Show all %1 Reviews"
+msgid_plural "Show all %1 Reviews"
 msgstr[0] "Prikaži recenzije (%1)..."
 msgstr[1] "Prikaži recenzije (%1)..."
 msgstr[2] "Prikaži recenzije (%1)..."
 msgstr[3] "Prikaži recenzije (%1)..."
 
-#: discover/qml/ApplicationPage.qml:265
+#: discover/qml/ApplicationPage.qml:664
+#, fuzzy, kde-format
+#| msgid "Review"
+msgid "Write a Review"
+msgstr "Recenziraj"
+
+#: discover/qml/ApplicationPage.qml:664
+#, fuzzy, kde-format
+#| msgid "Review"
+msgid "Install to Write a Review"
+msgstr "Recenziraj"
+
+#: discover/qml/ApplicationPage.qml:676
 #, kde-format
-msgid "Write a review!"
+msgid "Get Involved"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:267
+#: discover/qml/ApplicationPage.qml:718
 #, kde-format
-msgid "Be the first to write a review!"
+msgid "Donate"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:272
+#: discover/qml/ApplicationPage.qml:719
 #, kde-format
-msgid "Install to write a review!"
+msgid "Support and thank the developers by donating to their project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:274
+#: discover/qml/ApplicationPage.qml:735
 #, kde-format
-msgid "Install and be the first to write a review!"
+msgid "Report Bug"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:311
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
-msgid "Category:"
-msgstr "Kategorija:"
-
-#: discover/qml/ApplicationPage.qml:328
-#, kde-format
-msgid "%1, released on %2"
+msgid "Log an issue you found to help get it fixed"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:335
-#, kde-format
-msgid "Version:"
-msgstr "Izdanje:"
+#: discover/qml/ApplicationPage.qml:752
+#, fuzzy, kde-format
+#| msgid "More..."
+msgid "Contribute"
+msgstr "Više..."
 
-#: discover/qml/ApplicationPage.qml:344
+#: discover/qml/ApplicationPage.qml:753
 #, kde-format
-msgid "Author:"
+msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:353
-#, kde-format
-msgid "Size:"
-msgstr "Veličina:"
-
-#: discover/qml/ApplicationPage.qml:362
-#, kde-format
-msgid "Source:"
-msgstr "Izvor:"
-
-#: discover/qml/ApplicationPage.qml:371
-#, kde-format
-msgid "License:"
+#: discover/qml/ApplicationPage.qml:778
+#, fuzzy, kde-format
+#| msgid "License:"
+msgid "All Licenses"
 msgstr "Licenca:"
 
-#: discover/qml/ApplicationPage.qml:378
+#: discover/qml/ApplicationPage.qml:811
+#, fuzzy, kde-format
+#| msgid "Rating:"
+msgid "Content Rating"
+msgstr "Ocena:"
+
+#: discover/qml/ApplicationPage.qml:825
 #, kde-format
-msgid "See full license terms"
+msgid "Risks of proprietary software"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:389
-#, kde-format
-msgid "Documentation:"
+#: discover/qml/ApplicationPage.qml:831
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
+"learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:390
-#, kde-format
-msgid "Read the user guide"
-msgstr ""
-
-#: discover/qml/ApplicationPage.qml:398
-#, kde-format
-msgid "Get involved:"
-msgstr ""
-
-#: discover/qml/ApplicationPage.qml:399
-#, kde-format
-msgid "Visit the app's website"
-msgstr ""
-
-#: discover/qml/ApplicationPage.qml:407
-#, kde-format
-msgid "Make a donation"
-msgstr ""
-
-#: discover/qml/ApplicationPage.qml:415
-#, kde-format
-msgid "Report a problem"
+#: discover/qml/ApplicationPage.qml:832
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"This application's source code is partially or entirely closed to public "
+"inspection and improvement. That means third parties and users like you "
+"cannot verify its operation, security, and trustworthiness, or modify and "
+"redistribute it without the authors' express permission.<nl/><nl/>The "
+"application may be perfectly safe to use, or it may be acting against you in "
+"various ways—such as harvesting your personal information, tracking your "
+"location, or transmitting the contents of your files to someone else. There "
+"is no easy way to be sure, so you should only install this application if "
+"you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
+"url='%2'>%2</link>."
 msgstr ""
 
 # >> @title
-#: discover/qml/ApplicationsListPage.qml:58
+#: discover/qml/ApplicationsListPage.qml:54
+#, fuzzy, kde-format
+#| msgid "Search"
+msgid "Search: %2 - %3 item"
+msgid_plural "Search: %2 - %3 items"
+msgstr[0] "Pretraga"
+msgstr[1] "Pretraga"
+msgstr[2] "Pretraga"
+msgstr[3] "Pretraga"
+
+# >> @title
+#: discover/qml/ApplicationsListPage.qml:56
 #, fuzzy, kde-format
 #| msgid "Search"
 msgid "Search: %1"
 msgstr "Pretraga"
 
-#: discover/qml/ApplicationsListPage.qml:77
+#: discover/qml/ApplicationsListPage.qml:60
+#, kde-format
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+# >> @title
+#: discover/qml/ApplicationsListPage.qml:66
+#, fuzzy, kde-format
+#| msgid "Search"
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "Pretraga"
+msgstr[1] "Pretraga"
+msgstr[2] "Pretraga"
+msgstr[3] "Pretraga"
+
+# >> @title
+#: discover/qml/ApplicationsListPage.qml:68
+#: discover/qml/ApplicationsListPage.qml:226
+#, kde-format
+msgid "Search"
+msgstr "Pretraga"
+
+#: discover/qml/ApplicationsListPage.qml:89
 #, fuzzy, kde-format
 #| msgid "Search: %1"
 msgid "Sort: %1"
 msgstr "Pretraga: %1"
 
-#: discover/qml/ApplicationsListPage.qml:80
+#: discover/qml/ApplicationsListPage.qml:92
 #, kde-format
 msgid "Name"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:89
+#: discover/qml/ApplicationsListPage.qml:101
 #, fuzzy, kde-format
 #| msgid "Rating:"
 msgid "Rating"
 msgstr "Ocena:"
 
-#: discover/qml/ApplicationsListPage.qml:98
+#: discover/qml/ApplicationsListPage.qml:110
 #, fuzzy, kde-format
 #| msgid "Size:"
 msgid "Size"
 msgstr "Veličina:"
 
-#: discover/qml/ApplicationsListPage.qml:107
+#: discover/qml/ApplicationsListPage.qml:119
 #, kde-format
 msgid "Release Date"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:151
+#: discover/qml/ApplicationsListPage.qml:174
 #, fuzzy, kde-format
 #| msgid "Sorry, nothing found..."
-msgid "Sorry, nothing found"
+msgid "Nothing found"
 msgstr "Ništa nije nađeno."
 
-#: discover/qml/ApplicationsListPage.qml:165
+#: discover/qml/ApplicationsListPage.qml:181
 #, kde-format
-msgid "Still looking..."
+msgctxt "@action:button"
+msgid "Search in All Categories"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:190
+#, kde-format
+msgctxt "@action:button %1 is the name of an application"
+msgid "Search the Web for \"%1\""
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:194
+#, kde-format
+msgctxt ""
+"If appropriate, localize this URL to be something more relevant to the "
+"language. %1 is the text that will be searched for."
+msgid "https://duckduckgo.com/?q=%1"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:205
+#, kde-format
+msgctxt ""
+"@info:placeholder %1 is the name of an application; %2 is the name of a "
+"category of apps or add-ons"
+msgid "\"%1\" was not found in the \"%2\" category"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:207
+#, kde-format
+msgctxt "@info:placeholder %1 is the name of an application"
+msgid "\"%1\" was not found in the available sources"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:208
+#, kde-format
+msgctxt "@info:placeholder%1 is the name of an application"
+msgid ""
+"\"%1\" may be available on the web. Software acquired from the web has not "
+"been reviewed by your distributor for functionality or stability. Use with "
+"caution."
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:241
+#, fuzzy, kde-format
+#| msgid "Still looking..."
+msgid "Still looking…"
 msgstr "Još tražim..."
 
-#: discover/qml/BrowsingPage.qml:31
+#: discover/qml/BrowsingPage.qml:50
 #, kde-format
-msgid "Featured"
+msgid "Unable to load applications"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:54 discover/qml/LoadingPage.qml:7
+#: discover/qml/BrowsingPage.qml:89
 #, kde-format
-msgid "Loading..."
-msgstr "Učitavam..."
-
-#: discover/qml/BrowsingPage.qml:71
-#, kde-kuit-format
-msgctxt "@info"
-msgid "Unable to load applications.<nl/>Please verify Internet connectivity."
+msgctxt "@title:group"
+msgid "Most Popular"
 msgstr ""
 
-#: discover/qml/DiscoverDrawer.qml:118
+#: discover/qml/BrowsingPage.qml:107
 #, kde-format
-msgid "Return to the Featured page"
+msgctxt "@title:group"
+msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:40
+#: discover/qml/BrowsingPage.qml:121
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Games"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:140 discover/qml/BrowsingPage.qml:169
+#, kde-format
+msgctxt "@action:button"
+msgid "See More"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:150
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Developer Tools"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:44
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "Izvršavanje pod korenom nije preporučljivo niti potrebno."
 
-# >> @title
-#: discover/qml/DiscoverWindow.qml:60
+#: discover/qml/DiscoverWindow.qml:57
 #, kde-format
-msgid "Search"
+msgid "&Home"
+msgstr ""
+
+# >> @title
+#: discover/qml/DiscoverWindow.qml:67
+#, fuzzy, kde-format
+#| msgid "Search"
+msgid "&Search"
 msgstr "Pretraga"
 
 # >> @title
-#: discover/qml/DiscoverWindow.qml:68 discover/qml/InstalledPage.qml:16
-#, kde-format
-msgid "Installed"
+#: discover/qml/DiscoverWindow.qml:75
+#, fuzzy, kde-format
+#| msgid "Installed"
+msgid "&Installed"
 msgstr "Instalirano"
 
-#: discover/qml/DiscoverWindow.qml:75
+#: discover/qml/DiscoverWindow.qml:87
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Fetching updates"
-msgid "Fetching updates..."
+msgid "Fetching &updates…"
 msgstr "Dobavljam dopune..."
 
-#: discover/qml/DiscoverWindow.qml:75
+#: discover/qml/DiscoverWindow.qml:87
 #, fuzzy, kde-format
 #| msgid "Updates"
-msgid "Up to date"
+msgid "&Up to date"
 msgstr "Dopune"
 
-#: discover/qml/DiscoverWindow.qml:75
-#, kde-format
+#: discover/qml/DiscoverWindow.qml:88
+#, fuzzy, kde-format
+#| msgctxt "Update section name"
+#| msgid "Update (%1)"
 msgctxt "Update section name"
-msgid "Update (%1)"
+msgid "&Update (%1)"
 msgstr "Dopuna (%1)"
 
-#: discover/qml/DiscoverWindow.qml:82
+#: discover/qml/DiscoverWindow.qml:96
 #, kde-format
-msgid "About"
+msgid "&About"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:89 discover/qml/SourcesPage.qml:12
+#: discover/qml/DiscoverWindow.qml:104
 #, kde-format
-msgid "Settings"
+msgid "S&ettings"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:129
+#: discover/qml/DiscoverWindow.qml:157 discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:445
 #, kde-format
-msgid "Sorry..."
+msgid "Error"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:133
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not close the application, there are tasks that need to be done."
-msgid "Could not close Discover, there are tasks that need to be done."
-msgstr "Ne mogu da zatvorim program, ima još nedovršenih zadataka."
-
-#: discover/qml/DiscoverWindow.qml:133
-#, kde-format
-msgid "Quit Anyway"
-msgstr ""
-
-#: discover/qml/DiscoverWindow.qml:136
+#: discover/qml/DiscoverWindow.qml:161
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Ne mogu da nađem resurs: %1"
 
-#: discover/qml/DiscoverWindow.qml:224
-#, kde-format
-msgid "Show all"
-msgstr ""
-
-#: discover/qml/DiscoverWindow.qml:224
-#, kde-format
-msgid "Hide"
-msgstr ""
-
-#: discover/qml/DiscoverWindow.qml:231 discover/qml/SourcesPage.qml:127
+#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Nastavi"
 
-#: discover/qml/Feedback.qml:11
+#: discover/qml/DiscoverWindow.qml:314
+#, kde-format
+msgid "Report this issue"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:338
+#, kde-format
+msgid "Error %1 of %2"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:383
+#, fuzzy, kde-format
+#| msgid "Show reviews (%1)..."
+msgctxt "@action:button"
+msgid "Show Previous"
+msgstr "Prikaži recenzije (%1)..."
+
+#: discover/qml/DiscoverWindow.qml:396
+#, kde-format
+msgctxt "@action:button"
+msgid "Show Next"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:412 discover/qml/UpdatesPage.qml:98
+#, kde-format
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: discover/qml/Feedback.qml:13
 #, kde-format
 msgid "Submit usage information"
 msgstr ""
 
-#: discover/qml/Feedback.qml:12
+#: discover/qml/Feedback.qml:14
 #, kde-format
 msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
 
-#: discover/qml/Feedback.qml:15
+#: discover/qml/Feedback.qml:18
 #, fuzzy, kde-format
 #| msgid "More Information..."
-msgid "Submitting usage information..."
+msgid "Submitting usage information…"
 msgstr "Više podataka..."
 
-#: discover/qml/Feedback.qml:15
+#: discover/qml/Feedback.qml:18
 #, kde-format
 msgid "Configure"
 msgstr ""
 
-#: discover/qml/Feedback.qml:19
+#: discover/qml/Feedback.qml:22
 #, kde-format
-msgid "Configure feedback..."
+msgid "Configure feedback…"
 msgstr ""
 
-#: discover/qml/Feedback.qml:48
+#: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:21
+#, kde-format
+msgid "Configure Updates…"
+msgstr ""
+
+#: discover/qml/Feedback.qml:57
 #, kde-format
 msgid ""
 "You can help us improving this application by sharing statistics and "
 "participate in surveys."
 msgstr ""
 
-#: discover/qml/Feedback.qml:48
+#: discover/qml/Feedback.qml:57
 #, fuzzy, kde-format
 #| msgid "More..."
-msgid "Contribute..."
+msgid "Contribute…"
 msgstr "Više..."
 
-#: discover/qml/Feedback.qml:53
+#: discover/qml/Feedback.qml:62
 #, kde-format
 msgid "We are looking for your feedback!"
 msgstr ""
 
-#: discover/qml/Feedback.qml:53
+#: discover/qml/Feedback.qml:62
 #, kde-format
-msgid "Participate..."
+msgid "Participate…"
 msgstr ""
 
-#: discover/qml/InstallApplicationButton.qml:14
-#, kde-format
+#: discover/qml/InstallApplicationButton.qml:26
+#, fuzzy, kde-format
+#| msgid "Loading..."
+msgctxt "State being fetched"
+msgid "Loading…"
+msgstr "Učitavam..."
+
+#: discover/qml/InstallApplicationButton.qml:30
+#, fuzzy, kde-format
+#| msgid "Install"
+msgctxt "@action:button %1 is the name of a software repository"
+msgid "Install from %1"
+msgstr "Instaliraj"
+
+#: discover/qml/InstallApplicationButton.qml:32
+#, fuzzy, kde-format
+#| msgid "Install"
+msgctxt "@action:button"
 msgid "Install"
 msgstr "Instaliraj"
 
-#: discover/qml/InstallApplicationButton.qml:14
+#: discover/qml/InstallApplicationButton.qml:34
 #, kde-format
 msgid "Remove"
 msgstr "Ukloni"
 
-#: discover/qml/navigation.js:32
+# >> @title
+#: discover/qml/InstalledPage.qml:16
+#, kde-format
+msgid "Installed"
+msgstr "Instalirano"
+
+#: discover/qml/navigation.js:18
 #, kde-format
 msgid "Resources for '%1'"
 msgstr "Resursi za „%1“"
-
-#: discover/qml/navigation.js:56
-#, kde-format
-msgid "Extensions..."
-msgstr "Proširenja..."
 
 #: discover/qml/ProgressView.qml:17
 #, kde-format
 msgid "Tasks (%1%)"
 msgstr "Zadaci (%1%)"
 
-#: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:44
+#: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:42
 #, kde-format
 msgid "Tasks"
 msgstr "Zadaci"
 
-#: discover/qml/ProgressView.qml:85
+#: discover/qml/ProgressView.qml:102
 #, kde-format
-msgctxt "TransactioName - TransactionStatus"
+msgctxt "TransactioName - TransactionStatus: speed, remaining time"
+msgid "%1 - %2: %3, %4 remaining"
+msgstr ""
+
+#: discover/qml/ProgressView.qml:103
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr ""
 
-#: discover/qml/ProgressView.qml:86
+#: discover/qml/ProgressView.qml:104
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr ""
 
-#: discover/qml/ReviewDelegate.qml:77
+#: discover/qml/ReviewDelegate.qml:64
+#, kde-format
+msgid "unknown reviewer"
+msgstr "nepoznat recenzent"
+
+#: discover/qml/ReviewDelegate.qml:65
+#, kde-format
+msgid "<b>%1</b> by %2"
+msgstr "<b>%1</b> — %2"
+
+#: discover/qml/ReviewDelegate.qml:65
+#, kde-format
+msgid "Comment by %1"
+msgstr ""
+
+#: discover/qml/ReviewDelegate.qml:83
 #, fuzzy, kde-format
 #| msgid "Version:"
 msgid "Version: %1"
 msgstr "Izdanje:"
 
-#: discover/qml/ReviewDelegate.qml:100
-#, kde-format
-msgid "unknown reviewer"
-msgstr "nepoznat recenzent"
+#: discover/qml/ReviewDelegate.qml:83
+#, fuzzy, kde-format
+#| msgid "Version:"
+msgid "Version: unknown"
+msgstr "Izdanje:"
 
-#: discover/qml/ReviewDelegate.qml:101
-#, kde-format
-msgid "<b>%1</b> by %2"
-msgstr "<b>%1</b> — %2"
-
-#: discover/qml/ReviewDelegate.qml:101
-#, kde-format
-msgid "Comment by %1"
-msgstr ""
-
-#: discover/qml/ReviewDelegate.qml:150
+#: discover/qml/ReviewDelegate.qml:98
 #, kde-format
 msgid "Votes: %1 out of %2"
 msgstr ""
 
-#: discover/qml/ReviewDelegate.qml:158
+#: discover/qml/ReviewDelegate.qml:105
 #, kde-format
-msgid "Useful?"
+msgid "Was this review useful?"
 msgstr ""
 
-#: discover/qml/ReviewDelegate.qml:170
+#: discover/qml/ReviewDelegate.qml:117
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
 msgstr ""
 
-#: discover/qml/ReviewDelegate.qml:186
+#: discover/qml/ReviewDelegate.qml:134
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:22
+#: discover/qml/ReviewDialog.qml:19
 #, fuzzy, kde-format
 #| msgid "Reviewing '%1'"
 msgid "Reviewing %1"
 msgstr "Recenzija „%1“"
 
-#: discover/qml/ReviewDialog.qml:34
-#, kde-format
-msgid "Rating:"
-msgstr "Ocena:"
-
-#: discover/qml/ReviewDialog.qml:38
-#, kde-format
-msgid "Name:"
-msgstr ""
-
-#: discover/qml/ReviewDialog.qml:46
-#, kde-format
-msgid "Title:"
-msgstr ""
-
-#: discover/qml/ReviewDialog.qml:65
-#, kde-format
-msgid "Enter a rating"
-msgstr ""
-
-#: discover/qml/ReviewDialog.qml:66
-#, kde-format
-msgid "Write the title"
-msgstr ""
-
-#: discover/qml/ReviewDialog.qml:67
-#, kde-format
-msgid "Write the review"
-msgstr ""
-
-#: discover/qml/ReviewDialog.qml:68
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updating..."
-msgid "Keep writing..."
-msgstr "Ažuriram..."
-
-#: discover/qml/ReviewDialog.qml:69
-#, kde-format
-msgid "Too long!"
-msgstr ""
-
-#: discover/qml/ReviewDialog.qml:83
+#: discover/qml/ReviewDialog.qml:25
 #, kde-format
 msgid "Submit review"
 msgstr ""
 
-#: discover/qml/ReviewsPage.qml:55
+#: discover/qml/ReviewDialog.qml:38
+#, kde-format
+msgid "Rating:"
+msgstr "Ocena:"
+
+#: discover/qml/ReviewDialog.qml:43
+#, kde-format
+msgid "Name:"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:51
+#, kde-format
+msgid "Title:"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:69
+#, kde-format
+msgid "Enter a rating"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:72
+#, kde-format
+msgid "Write the title"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:75
+#, kde-format
+msgid "Write the review"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:78
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Updating..."
+msgid "Keep writing…"
+msgstr "Ažuriram..."
+
+#: discover/qml/ReviewDialog.qml:81
+#, kde-format
+msgid "Too long!"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:84
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Insert a name"
+msgstr ""
+
+#: discover/qml/ReviewsPage.qml:44
 #, fuzzy, kde-format
 #| msgid "Resources for '%1'"
 msgid "Reviews for %1"
 msgstr "Resursi za „%1“"
 
-#: discover/qml/ReviewsPage.qml:66
+#: discover/qml/ReviewsPage.qml:55
 #, fuzzy, kde-format
 #| msgid "Review"
-msgid "Write a Review..."
+msgid "Write a Review…"
 msgstr "Recenziraj"
 
-#: discover/qml/ReviewsPage.qml:70
+#: discover/qml/ReviewsPage.qml:60
 #, kde-format
 msgid "Install this app to write a review"
 msgstr ""
 
-#: discover/qml/SearchField.qml:41
-#, kde-format
-msgid "Search..."
-msgstr "Traži..."
+# >> @title
+#: discover/qml/SearchField.qml:23
+#, fuzzy, kde-format
+#| msgid "Search"
+msgid "Search…"
+msgstr "Pretraga"
 
 # >> %1 is one of categories from libmuon
-#: discover/qml/SearchField.qml:41
-#, kde-format
-msgid "Search in '%1'..."
+#: discover/qml/SearchField.qml:23
+#, fuzzy, kde-format
+#| msgid "Search in '%1'..."
+msgid "Search in '%1'…"
 msgstr "Traži u „%1“...|/|Traži u „$[lok %1]“..."
 
-#: discover/qml/SourcesPage.qml:32
+#: discover/qml/SourcesPage.qml:17
 #, kde-format
-msgid "%1 (Default)"
-msgstr "%1 (podrazumevano)"
+msgid "Settings"
+msgstr ""
 
-#: discover/qml/SourcesPage.qml:51
+#: discover/qml/SourcesPage.qml:98
+#, kde-format
+msgid "Default source"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:105
 #, fuzzy, kde-format
 #| msgid "Add Source"
-msgid "Add Source..."
+msgid "Add Source…"
 msgstr "Dodaj izvor"
 
-#: discover/qml/SourcesPage.qml:76
+#: discover/qml/SourcesPage.qml:131
 #, kde-format
 msgid "Make default"
 msgstr "Učini podrazumevanim"
 
-#: discover/qml/SourcesPage.qml:171
+#: discover/qml/SourcesPage.qml:222
+#, kde-format
+msgid "Increase priority"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:228
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:181
+#: discover/qml/SourcesPage.qml:234
+#, kde-format
+msgid "Decrease priority"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:240
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:186
+#: discover/qml/SourcesPage.qml:246
 #, kde-format
-msgid "Delete the origin"
-msgstr "Obriši izvorište"
+msgid "Remove repository"
+msgstr ""
 
-#: discover/qml/SourcesPage.qml:197
+#: discover/qml/SourcesPage.qml:257
 #, kde-format
 msgid "Show contents"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:236
+#: discover/qml/SourcesPage.qml:297
 #, kde-format
 msgid "Missing Backends"
 msgstr ""
@@ -743,113 +1118,216 @@ msgstr ""
 msgid "Updates"
 msgstr "Dopune"
 
-#: discover/qml/UpdatesPage.qml:39
+#: discover/qml/UpdatesPage.qml:45
 #, fuzzy, kde-format
 #| msgid "Updates"
 msgid "Update Issue"
 msgstr "Dopune"
 
-#: discover/qml/UpdatesPage.qml:52
+#: discover/qml/UpdatesPage.qml:45
 #, kde-format
-msgid "OK"
+msgid "Technical details"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:75
+#: discover/qml/UpdatesPage.qml:61
+#, kde-format
+msgid "There was an issue installing this update. Please try again later."
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:67
+#, kde-format
+msgid "See Technical Details"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:83
+#, kde-format
+msgid ""
+"If you would like to report the update issue to your distribution's "
+"packagers, include this information:"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:102
+#, kde-format
+msgid "Error message copied to clipboard"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgid "Update Selected"
 msgstr "Ažuriraj izabrano"
 
-#: discover/qml/UpdatesPage.qml:75
+#: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgid "Update All"
 msgstr "Ažuriraj sve"
 
-#: discover/qml/UpdatesPage.qml:124
-#, fuzzy, kde-format
-#| msgid "updates selected"
-msgid "All updates selected (%1)"
-msgstr "Izabrane dopune"
-
-#: discover/qml/UpdatesPage.qml:124
-#, fuzzy, kde-format
-#| msgid "updates selected"
-msgid "%1/%2 update selected (%3)"
-msgid_plural "%1/%2 updates selected (%3)"
-msgstr[0] "Izabrane dopune"
-msgstr[1] "Izabrane dopune"
-msgstr[2] "Izabrane dopune"
-msgstr[3] "Izabrane dopune"
-
-#: discover/qml/UpdatesPage.qml:180
+#: discover/qml/UpdatesPage.qml:174
 #, kde-format
-msgid "Restart"
+msgid "Ignore"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:260
+#: discover/qml/UpdatesPage.qml:220
+#, kde-format
+msgid "Select All"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:228
+#, kde-format
+msgid "Select None"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:235
+#, kde-format
+msgid "Restart automatically after update has completed"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:242
+#, kde-format
+msgid "Total size: %1"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:277
+#, kde-format
+msgid "Restart Now"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:376
 #, kde-format
 msgid "%1"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:273
-#, kde-format
-msgid "Update to version %1"
-msgstr ""
-
-#: discover/qml/UpdatesPage.qml:283
-#, kde-format
-msgctxt "Do not translate or alter \\x9C"
-msgid "%1 → %2%1 → %2%2"
-msgstr ""
-
-#: discover/qml/UpdatesPage.qml:296
+#: discover/qml/UpdatesPage.qml:392
 #, fuzzy, kde-format
 #| msgid "Install"
 msgid "Installing"
 msgstr "Instaliraj"
 
-#: discover/qml/UpdatesPage.qml:327
+#: discover/qml/UpdatesPage.qml:428
+#, fuzzy, kde-format
+#| msgid "Update All"
+msgid "Update from:"
+msgstr "Ažuriraj sve"
+
+#: discover/qml/UpdatesPage.qml:440
 #, kde-format
-msgid "More Information..."
+msgctxt ""
+"%1 is the backend that provides this app, %2 is the specific repository or "
+"address within that backend"
+msgid "%1 (%2)"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:447
+#, fuzzy, kde-format
+#| msgid "More Information..."
+msgid "More Information…"
 msgstr "Više podataka..."
 
-#: discover/qml/UpdatesPage.qml:355
+#: discover/qml/UpdatesPage.qml:475
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Fetching updates"
 msgctxt "@info"
-msgid "Fetching updates..."
+msgid "Fetching updates…"
 msgstr "Dobavljam dopune..."
 
-#: discover/qml/UpdatesPage.qml:368
+#: discover/qml/UpdatesPage.qml:488
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Dopune"
 
-#: discover/qml/UpdatesPage.qml:374
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The system is up to date"
+#: discover/qml/UpdatesPage.qml:498
+#, kde-format
 msgctxt "@info"
-msgid "The system requires a restart to apply updates"
-msgstr "Sistem je ažuran"
+msgid "Restart the system to complete the update process"
+msgstr ""
 
-#: discover/qml/UpdatesPage.qml:379 discover/qml/UpdatesPage.qml:385
-#: discover/qml/UpdatesPage.qml:391
+#: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
+#: discover/qml/UpdatesPage.qml:524
 #, fuzzy, kde-format
 #| msgid "Updates"
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Dopune"
 
-#: discover/qml/UpdatesPage.qml:397
+#: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Treba proveriti dopune"
 
-#: discover/qml/UpdatesPage.qml:403
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
-msgid "It is unknown when the last check for updates was"
-msgstr "Ne zna se kad je bila poslednja provera dopuna"
+msgid "Time of last update unknown"
+msgstr ""
+
+#~ msgid "Jonathan Thomas"
+#~ msgstr "Džonatan Tomas"
+
+#~ msgid "Discard"
+#~ msgstr "Odbaci"
+
+#~ msgid "More..."
+#~ msgstr "Više..."
+
+#, fuzzy
+#~| msgid "Source:"
+#~ msgid "Sources"
+#~ msgstr "Izvor:"
+
+#~ msgid "Category:"
+#~ msgstr "Kategorija:"
+
+#~ msgid "Source:"
+#~ msgstr "Izvor:"
+
+#, fuzzy
+#~| msgid ""
+#~| "Could not close the application, there are tasks that need to be done."
+#~ msgid "Could not close Discover, there are tasks that need to be done."
+#~ msgstr "Ne mogu da zatvorim program, ima još nedovršenih zadataka."
+
+#~ msgid "Extensions..."
+#~ msgstr "Proširenja..."
+
+#~ msgid "Search..."
+#~ msgstr "Traži..."
+
+#~ msgid "%1 (Default)"
+#~ msgstr "%1 (podrazumevano)"
+
+#~ msgid "Delete the origin"
+#~ msgstr "Obriši izvorište"
+
+#, fuzzy
+#~| msgid "updates selected"
+#~ msgid "All updates selected (%1)"
+#~ msgstr "Izabrane dopune"
+
+#, fuzzy
+#~| msgid "updates selected"
+#~ msgid "%1/%2 update selected (%3)"
+#~ msgid_plural "%1/%2 updates selected (%3)"
+#~ msgstr[0] "Izabrane dopune"
+#~ msgstr[1] "Izabrane dopune"
+#~ msgstr[2] "Izabrane dopune"
+#~ msgstr[3] "Izabrane dopune"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid "Fetching updates"
+#~ msgctxt "@info"
+#~ msgid "Fetching updates..."
+#~ msgstr "Dobavljam dopune..."
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid "The system is up to date"
+#~ msgctxt "@info"
+#~ msgid "The system requires a restart to apply updates"
+#~ msgstr "Sistem je ažuran"
+
+#~ msgctxt "@info"
+#~ msgid "It is unknown when the last check for updates was"
+#~ msgstr "Ne zna se kad je bila poslednja provera dopuna"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-04-15 03:50+0200\n"
+"POT-Creation-Date: 2022-11-14 00:47+0000\n"
 "PO-Revision-Date: 2015-11-14 16:11+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -18,133 +18,143 @@ msgstr ""
 "X-Text-Markup: kde4\n"
 "X-Environment: kde\n"
 
-#: notifier/DiscoverNotifier.cpp:100
+#: notifier/DiscoverNotifier.cpp:144
 #, kde-format
 msgid "View Updates"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:159
+#: notifier/DiscoverNotifier.cpp:261
 #, kde-format
 msgid "Security updates available"
 msgstr "Dostupne su bezbednosne dopune"
 
-#: notifier/DiscoverNotifier.cpp:161
+#: notifier/DiscoverNotifier.cpp:263
 #, kde-format
 msgid "Updates available"
 msgstr "Dostupne su dopune"
 
-#: notifier/DiscoverNotifier.cpp:163
+#: notifier/DiscoverNotifier.cpp:265
 #, kde-format
 msgid "System up to date"
 msgstr "Sistem je ažuran"
 
-#: notifier/DiscoverNotifier.cpp:165
+#: notifier/DiscoverNotifier.cpp:267
 #, kde-format
 msgid "Computer needs to restart"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:167
+#: notifier/DiscoverNotifier.cpp:269
 #, kde-format
 msgid "Offline"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:198
+#: notifier/DiscoverNotifier.cpp:271
+#, kde-format
+msgid "Applying unattended updates…"
+msgstr ""
+
+#: notifier/DiscoverNotifier.cpp:305
+#, kde-format
+msgid "Restart is required"
+msgstr ""
+
+#: notifier/DiscoverNotifier.cpp:306
+#, kde-format
+msgid "The system needs to be restarted for the updates to take effect."
+msgstr ""
+
+#: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:199
-#, kde-format
-msgid "Restart is required"
-msgstr ""
-
-#: notifier/DiscoverNotifier.cpp:200
-#, kde-format
-msgid "The system needs to be restarted for the updates to take effect."
-msgstr ""
-
-#: notifier/DiscoverNotifier.cpp:217
+#: notifier/DiscoverNotifier.cpp:332
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:218
+#: notifier/DiscoverNotifier.cpp:333
 #, fuzzy, kde-format
 #| msgid "Updates available"
 msgid "Upgrade available"
 msgstr "Dostupne su dopune"
 
-#: notifier/DiscoverNotifier.cpp:219
+#: notifier/DiscoverNotifier.cpp:334
 #, kde-format
 msgid "New version: %1"
 msgstr ""
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:39
 #, kde-format
 msgid "Discover Notifier"
 msgstr ""
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:41
 #, fuzzy, kde-format
 #| msgid "System up to date"
 msgid "System update status notifier"
 msgstr "Sistem je ažuran"
 
-#: notifier/main.cpp:52
+#: notifier/main.cpp:43
 #, kde-format
-msgid "© 2010-2019 Plasma Development Team"
+msgid "© 2010-2022 Plasma Development Team"
 msgstr ""
 
-#: notifier/main.cpp:57
+#: notifier/main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: notifier/main.cpp:58
+#: notifier/main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: notifier/main.cpp:64
+#: notifier/main.cpp:52
 #, kde-format
 msgid "Replace an existing instance"
 msgstr ""
 
-#: notifier/main.cpp:66
+#: notifier/main.cpp:54
 #, kde-format
 msgid "Do not show the notifier"
 msgstr ""
 
-#: notifier/main.cpp:66
+#: notifier/main.cpp:54
 #, kde-format
 msgid "hidden"
 msgstr ""
 
-#: notifier/NotifierItem.cpp:50 notifier/NotifierItem.cpp:51
+#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
 #, kde-format
 msgid "Updates"
 msgstr ""
 
-#: notifier/NotifierItem.cpp:61
+#: notifier/NotifierItem.cpp:50
 #, kde-format
-msgid "Open Discover..."
+msgid "Open Discover…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:55
+#, kde-format
+msgid "See Updates…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:60
+#, kde-format
+msgid "Refresh…"
 msgstr ""
 
 #: notifier/NotifierItem.cpp:64
 #, kde-format
-msgid "See Updates..."
+msgid "Restart to apply installed updates"
 msgstr ""
 
-#: notifier/NotifierItem.cpp:67
+#: notifier/NotifierItem.cpp:65
 #, kde-format
-msgid "Refresh..."
-msgstr ""
-
-#: notifier/NotifierItem.cpp:71
-#, kde-format
-msgid "Restart..."
+msgid "Click to restart the device"
 msgstr ""
