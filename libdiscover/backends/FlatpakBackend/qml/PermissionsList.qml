@@ -12,9 +12,11 @@ import org.kde.kirigami 2.14 as Kirigami
 
 ColumnLayout {
     visible: list.model.rowCount() > 0
+    spacing: 0
 
     Kirigami.Heading {
         Layout.fillWidth: true
+        Layout.bottomMargin: Kirigami.Units.largeSpacing
         text: i18ndc("libdiscover", "%1 is the name of the application", "Permissions for %1", resource.name)
         level: 2
         type: Kirigami.Heading.Type.Primary
