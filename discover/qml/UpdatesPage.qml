@@ -131,7 +131,7 @@ DiscoverPage {
     readonly property var updateAction: Kirigami.Action
     {
         id: updateAction
-        text: page.unselected > 0 ? i18n("Update Selected") : i18n("Update All")
+        text: page.unselected > 0 ? i18nc("@action:button as in, 'update the selected items' " "Update Selected") : i18nc("@action:button as in, 'update all items'", "Update All")
         visible: updateModel.toUpdateCount
         iconName: "update-none"
 
