@@ -352,7 +352,7 @@ void PackageKitUpdater::prepare()
 
 void PackageKitUpdater::checkFreeSpace()
 {
-    auto j = KIO::fileSystemFreeSpace(QUrl::fromLocalFile("/usr"));
+    auto j = KIO::fileSystemFreeSpace(QUrl::fromLocalFile(QStringLiteral("/usr")));
     connect(j, &KIO::FileSystemFreeSpaceJob::result, this, [this](KIO::Job * /*job*/, KIO::filesize_t /*size*/, KIO::filesize_t available) {
         if (available < updateSize()) {
             setErrorMessage(i18nc("@info:status %1 is a formatted disk space string e.g. '240 MiB'",
@@ -534,10 +534,10 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
             }
         };
 
-        if (PackageKit::Daemon::backendName() == "dnf") {
+        if (PackageKit::Daemon::backendName() == QLatin1String("dnf")) {
             // Fedora has some packages that it uninstalls then eventually creates on its own. No need to
             // notify about these.
-            toremove = kFilter<typeof(toremove)>(toremove, [](const QString &pkgid) {
+            toremove = kFilter<QStringList>(toremove, [](const QString &pkgid) {
                 return !PackageKit::Transaction::packageName(pkgid).startsWith(QLatin1String("kmod"));
             });
         }

@@ -134,7 +134,7 @@ void FwupdSourcesBackend::proceed()
     if (fwupd_client_modify_remote(backend->client, fwupd_remote_get_id(remote), "Enabled", "true", nullptr, &error))
         m_currentItem->setData(Qt::Checked, Qt::CheckStateRole);
     else
-        Q_EMIT passiveMessage(i18n("Could not enable remote %1: %2", id, (error ? error->message : "")));
+        Q_EMIT passiveMessage(i18n("Could not enable remote %1: %2", id, QString::fromUtf8(error ? error->message : "")));
 
     m_currentItem = nullptr;
 }

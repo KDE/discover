@@ -24,6 +24,8 @@
 
 DISCOVER_BACKEND_PLUGIN(DummyBackend)
 
+using namespace Qt::StringLiterals;
+
 DummyBackend::DummyBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
@@ -82,7 +84,7 @@ void DummyBackend::toggleFetching()
     if (!m_fetching)
         m_reviews->initialize();
 
-    DiscoverAction *celebrate = new DiscoverAction("wine", QStringLiteral("To who?"), this);
+    DiscoverAction *celebrate = new DiscoverAction(u"wine"_s, QStringLiteral("To who?"), this);
     connect(celebrate, &DiscoverAction::triggered, this, [this] {
         Q_EMIT passiveMessage(QStringLiteral("To you!"));
     });
@@ -170,7 +172,7 @@ void DummyBackend::checkForUpdates()
     QTimer::singleShot(500, this, &DummyBackend::toggleFetching);
     qDebug() << "DummyBackend::checkForUpdates";
 
-    Q_EMIT passiveMessage("Dummy: Checking for updates");
+    Q_EMIT passiveMessage(u"Dummy: Checking for updates"_s);
 }
 
 QString DummyBackend::displayName() const

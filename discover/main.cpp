@@ -171,7 +171,7 @@ int main(int argc, char **argv)
             if (!options.isEmpty() || !parser->positionalArguments().isEmpty())
                 initialProperties = {{QStringLiteral("currentTopLevel"), QStringLiteral("qrc:/qml/LoadingPage.qml")}};
             if (feedback) {
-                initialProperties.insert("visible", false);
+                initialProperties.insert(QStringLiteral("visible"), false);
             }
             mainWindow = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full), initialProperties);
         }

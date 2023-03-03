@@ -71,7 +71,7 @@ QJsonArray AppStreamUtils::licenses(const AppStream::Component &appdata)
 
 QJsonArray AppStreamUtils::licenses(const QString &spdx)
 {
-    static const QSet<QChar> tokens = {'&', '+', '|', '^', '(', ')'};
+    static const QSet<QChar> tokens = {QLatin1Char('&'), QLatin1Char('+'), QLatin1Char('|'), QLatin1Char('^'), QLatin1Char('('), QLatin1Char(')')};
 
     QJsonArray ret;
     const auto licenses = AppStream::SPDX::tokenizeLicense(spdx);

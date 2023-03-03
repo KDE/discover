@@ -28,6 +28,8 @@ extern "C" {
 }
 #endif
 
+using namespace Qt::StringLiterals;
+
 const QStringList PackageKitResource::m_objects({QStringLiteral("qrc:/qml/DependenciesButton.qml"), QStringLiteral("qrc:/qml/PackageKitPermissions.qml")});
 
 PackageKitResource::PackageKitResource(QString packageName, QString summary, PackageKitBackend *parent)
@@ -95,25 +97,25 @@ QVariant PackageKitResource::icon() const
 }
 
 static QMap<QString, QString> s_translation = {
-    {"AGPL", "AGPL-3.0"},
-    {"AGPL3", "AGPL-3.0"},
-    {"Artistic2.0", "Artistic-2.0"},
-    {"Apache", "Apache-2.0"},
-    {"APACHE", "Apache-2.0"},
-    {"CCPL", "CC0-1.0"},
-    {"GPL2", "GPL-2.0"},
-    {"GPL3", "GPL-3.0"},
-    {"FDL1.2", "GFDL-1.2-only"},
-    {"FDL1.3", "GFDL-1.3-only"},
-    {"LGPL", "LGPL-2.1"},
-    {"LGPL3", "LGPL-3.0"},
-    {"MPL", "MPL-1.1"},
-    {"MPL2", "MPL-2.0"},
-    {"PerlArtistic", "Artistic-1.0-Perl"},
-    {"PHP", "PHP-3.01"},
-    {"PSF", "Python-2.0"},
-    {"RUBY", "Ruby"},
-    {"ZPL", "ZPL-2.1"},
+    {u"AGPL"_s, u"AGPL-3.0"_s},
+    {u"AGPL3"_s, u"AGPL-3.0"_s},
+    {u"Artistic2.0"_s, u"Artistic-2.0"_s},
+    {u"Apache"_s, u"Apache-2.0"_s},
+    {u"APACHE"_s, u"Apache-2.0"_s},
+    {u"CCPL"_s, u"CC0-1.0"_s},
+    {u"GPL2"_s, u"GPL-2.0"_s},
+    {u"GPL3"_s, u"GPL-3.0"_s},
+    {u"FDL1.2"_s, u"GFDL-1.2-only"_s},
+    {u"FDL1.3"_s, u"GFDL-1.3-only"_s},
+    {u"LGPL"_s, u"LGPL-2.1"_s},
+    {u"LGPL3"_s, u"LGPL-3.0"_s},
+    {u"MPL"_s, u"MPL-1.1"_s},
+    {u"MPL2"_s, u"MPL-2.0"_s},
+    {u"PerlArtistic"_s, u"Artistic-1.0-Perl"_s},
+    {u"PHP"_s, u"PHP-3.01"_s},
+    {u"PSF"_s, u"Python-2.0"_s},
+    {u"RUBY"_s, u"Ruby"_s},
+    {u"ZPL"_s, u"ZPL-2.1"_s},
 };
 
 QJsonArray PackageKitResource::licenses()
@@ -173,9 +175,9 @@ QString PackageKitResource::origin() const
         // The data field may look like "auto:debian-bookworm-main" or "google_llc-stable-main",
         // so we can set the OS name if we see it as origin prefix, and otherwise need to fall back
         // to the origin string.
-        int i = dataField.indexOf(':');
+        int i = dataField.indexOf(QLatin1Char(':'));
         QString origin = i > 0? dataField.mid(i + 1) : dataField;
-        if (origin.startsWith(osRelease->id().toLower() + '-')) {
+        if (origin.startsWith(osRelease->id().toLower() + QLatin1Char('-'))) {
             return osRelease->name();
         } else {
             return origin.isEmpty()? i18n("Unknown Source") : origin;

@@ -100,7 +100,7 @@ void PackageKitNotifier::checkOfflineUpdates()
 
     const bool success = group.readEntry("Success", false);
     const QString packagesJoined = group.readEntry("Packages");
-    const auto packages = packagesJoined.splitRef(QLatin1Char(','));
+    const auto packages = QStringView(packagesJoined).split(QLatin1Char(','));
     const bool isMobile = QByteArrayList{"1", "true"}.contains(qgetenv("QT_QUICK_CONTROLS_MOBILE"));
     const QString errorCode = group.readEntry("ErrorCode");
     static QSet<QString> allowedAlreadyInstalled = {

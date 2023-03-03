@@ -20,7 +20,6 @@ public:
     PackageState(QString packageName, QString name, QString description, bool installed);
     PackageState(const QString &name, const QString &description, bool installed);
     PackageState(const PackageState &ps);
-    PackageState &operator=(const PackageState &other);
 
     QString packageName() const;
     QString name() const;
@@ -29,9 +28,9 @@ public:
     void setInstalled(bool installed);
 
 private:
-    const QString m_packageName;
-    const QString m_name;
-    const QString m_description;
+    QString m_packageName;
+    QString m_name;
+    QString m_description;
     bool m_installed;
 };
 

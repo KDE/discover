@@ -40,7 +40,7 @@ FeaturedModel::FeaturedModel()
     QDir().mkpath(dir);
 
     static const QString fileName = featuredFileName();
-    *featuredCache = dir + '/' + fileName;
+    *featuredCache = dir + QLatin1Char('/') + fileName;
     const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover/") + fileName);
     auto *fetchJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
     acquireFetching(true);

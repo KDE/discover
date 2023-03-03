@@ -9,6 +9,8 @@
 #include <ReviewsBackend/Rating.h>
 #include <utils.h>
 
+using namespace Qt::StringLiterals;
+
 OdrsAppsModel::OdrsAppsModel()
 {
     auto x = AppStreamIntegration::global()->reviews();
@@ -22,6 +24,6 @@ void OdrsAppsModel::refresh()
 {
     const auto top = AppStreamIntegration::global()->reviews()->top();
     setUris(kTransform<QVector<QUrl>>(top, [](auto r) {
-        return QUrl("appstream://" + r->packageName());
+        return QUrl("appstream://"_L1 + r->packageName());
     }));
 }

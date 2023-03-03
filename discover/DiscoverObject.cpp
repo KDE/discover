@@ -438,9 +438,11 @@ bool DiscoverObject::quitWhenIdle()
 
         m_sni = new KStatusNotifierItem(this);
         m_sni->setStatus(KStatusNotifierItem::Active);
-        m_sni->setIconByName("plasmadiscover");
+        m_sni->setIconByName(QStringLiteral("plasmadiscover"));
         m_sni->setTitle(i18n("Discover"));
-        m_sni->setToolTip("process-working-symbolic", i18n("Discover"), i18n("Discover was closed before certain tasks were done, waiting for it to finish."));
+        m_sni->setToolTip(QStringLiteral("process-working-symbolic"),
+                          i18n("Discover"),
+                          i18n("Discover was closed before certain tasks were done, waiting for it to finish."));
         m_sni->setStandardActionsEnabled(false);
 
         connect(TransactionModel::global(), &TransactionModel::countChanged, this, &DiscoverObject::reconsiderQuit);

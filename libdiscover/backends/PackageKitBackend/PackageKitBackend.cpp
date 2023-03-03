@@ -744,7 +744,7 @@ PKResultsStream *PackageKitBackend::findResourceByPackageName(const QUrl &url)
                         toSend.insert(r);
                     }
                 }
-                stream->sendResources(QVector(toSend.constBegin(), toSend.constEnd()));
+                stream->sendResources(QList(toSend.constBegin(), toSend.constEnd()));
             };
             runWhenInitialized(f, stream);
             return stream;

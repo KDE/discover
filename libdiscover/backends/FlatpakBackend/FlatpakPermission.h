@@ -20,9 +20,9 @@ public:
     QString description() const;
 
 private:
-    const QString m_brief;
-    const QString m_description;
-    const QString m_icon;
+    QString m_brief;
+    QString m_description;
+    QString m_icon;
 };
 
 class FlatpakPermissionsModel : public QAbstractListModel

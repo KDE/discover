@@ -74,6 +74,7 @@ QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist, bool allowD
 
     QStringList pluginNames;
     const auto libraryPaths = QCoreApplication::libraryPaths();
+    qDebug() << "libs" << libraryPaths;
     for (const QString &dir : libraryPaths) {
         QDirIterator it(dir + QStringLiteral("/discover"), QDir::Files);
         while (it.hasNext()) {

@@ -21,6 +21,8 @@
 #include <resources/DiscoverAction.h>
 #include <resources/StoredResultsStream.h>
 
+using namespace Qt::StringLiterals;
+
 class FlatpakSourceItem : public QStandardItem
 {
 public:
@@ -85,8 +87,8 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
     : AbstractSourcesBackend(parent)
     , m_preferredInstallation(installations.constFirst())
     , m_sources(new QStandardItemModel(this))
-    , m_flathubAction(new DiscoverAction("flatpak-discover", i18n("Add Flathub"), this))
-    , m_saveAction(new DiscoverAction("dialog-ok-apply", i18n("Apply Changes"), this))
+    , m_flathubAction(new DiscoverAction(u"flatpak-discover"_s, i18n("Add Flathub"), this))
+    , m_saveAction(new DiscoverAction(u"dialog-ok-apply"_s, i18n("Apply Changes"), this))
     , m_noSourcesItem(new QStandardItem(QStringLiteral("-")))
 {
     m_saveAction->setVisible(false);

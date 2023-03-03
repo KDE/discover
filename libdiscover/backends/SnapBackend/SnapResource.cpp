@@ -20,6 +20,8 @@
 #include <appstream/AppStreamUtils.h>
 #include <utils.h>
 
+using namespace Qt::StringLiterals;
+
 QDebug operator<<(QDebug debug, const QSnapdPlug &plug)
 {
     QDebugStateSaver saver(debug);
@@ -287,7 +289,7 @@ void SnapResource::invokeApplication() const
 
 AbstractResource::Type SnapResource::type() const
 {
-    return m_snap->snapType() != QLatin1String("app") ? Application : Technical;
+    return m_snap->snapType() != QSnapdEnums::SnapTypeApp ? Application : Technical;
 }
 
 void SnapResource::setSnap(const QSharedPointer<QSnapdSnap> &snap)
@@ -392,7 +394,7 @@ private:
         req->runSync();
         if (req->error()) {
             qWarning() << "snapd error" << req->errorString();
-            Q_EMIT error(new InlineMessage(InlineMessage::Error, "error", req->errorString()));
+            Q_EMIT error(new InlineMessage(InlineMessage::Error, u"error"_s, req->errorString()));
         }
         return req->error() == QSnapdRequest::NoError;
     }

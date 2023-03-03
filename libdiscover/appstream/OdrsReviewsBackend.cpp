@@ -31,8 +31,10 @@
 #include <QStandardPaths>
 
 #include <QFutureWatcher>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QNetworkConfiguration>
 #include <QNetworkConfigurationManager>
+#endif
 #include <QtConcurrentRun>
 
 // #define APIURL "http://127.0.0.1:5000/1.0/reviews/api"

@@ -157,7 +157,7 @@ void ResourcesUpdatesModel::init()
     KConfigWatcher::Ptr watcher = KConfigWatcher::create(sharedConfig);
     connect(watcher.data(), &KConfigWatcher::configChanged, this, [this](const KConfigGroup &group, const QByteArrayList &names) {
         // Ensure it is for the right file
-        if (!names.contains("UseOfflineUpdates") || group.name() != "Software") {
+        if (!names.contains("UseOfflineUpdates") || group.name() != QLatin1String("Software")) {
             return;
         }
 

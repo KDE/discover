@@ -21,6 +21,8 @@
 #include <QUrlQuery>
 #include <appstream/AppStreamUtils.h>
 
+using namespace Qt::StringLiterals;
+
 AppPackageKitResource::AppPackageKitResource(const AppStream::Component &data, const QString &packageName, PackageKitBackend *parent)
     : PackageKitResource(packageName, QString(), parent)
     , m_appdata(data)
@@ -138,7 +140,7 @@ QUrl AppPackageKitResource::url() const
     provided.removeAll(appstreamId()); // Just in case, it has happened before
     if (!provided.isEmpty()) {
         QUrlQuery qq;
-        qq.addQueryItem("alt", provided.join(QLatin1Char(',')));
+        qq.addQueryItem(u"alt"_s, provided.join(QLatin1Char(',')));
         ret.setQuery(qq);
     }
     return ret;

@@ -49,12 +49,12 @@ private Q_SLOTS:
         QVERIFY(!categories.isEmpty());
 
         for (Category *c : categories) {
-            if (c->name() != "Dummy Category")
+            if (c->name() != QLatin1String("Dummy Category"))
                 continue;
 
             auto filter = c->filter();
             QVERIFY(filter.type == CategoryFilter::CategoryNameFilter);
-            QVERIFY(std::get<QString>(filter.value) == "dummy");
+            QVERIFY(std::get<QString>(filter.value) == QLatin1String("dummy"));
         }
     }
 };
