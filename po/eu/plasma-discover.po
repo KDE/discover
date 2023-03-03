@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 01:01+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2023-02-23 21:21+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1133,12 +1133,9 @@ msgid "Error message copied to clipboard"
 msgstr "Errore mezua arbelera kopiatu da"
 
 #: discover/qml/UpdatesPage.qml:134
-#, kde-format
-msgid "Update Selected"
-msgstr "Eguneratu hautatutakoak"
-
-#: discover/qml/UpdatesPage.qml:134
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Update All"
+msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Eguneratu denak"
 
@@ -1236,6 +1233,9 @@ msgstr "Eguneratzeak dauden egiaztatu beharko litzateke"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Azken eguneratze ordua ezezaguna"
+
+#~ msgid "Update Selected"
+#~ msgstr "Eguneratu hautatutakoak"
 
 #~ msgid "Sources"
 #~ msgstr "Iturburuak"

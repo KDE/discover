@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 01:01+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2018-01-06 09:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -1152,12 +1152,9 @@ msgid "Error message copied to clipboard"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:134
-#, kde-format
-msgid "Update Selected"
-msgstr "Ажурирај изабрано"
-
-#: discover/qml/UpdatesPage.qml:134
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Update All"
+msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Ажурирај све"
 
@@ -1261,6 +1258,9 @@ msgstr "Треба проверити допуне"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
+
+#~ msgid "Update Selected"
+#~ msgstr "Ажурирај изабрано"
 
 #~ msgid "Jonathan Thomas"
 #~ msgstr "Џонатан Томас"

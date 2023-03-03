@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 01:01+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2017-06-12 16:28+0200\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1145,12 +1145,9 @@ msgid "Error message copied to clipboard"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:134
-#, kde-format
-msgid "Update Selected"
-msgstr "Ενημέρωση επιλεγμένων"
-
-#: discover/qml/UpdatesPage.qml:134
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Update All"
+msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Ενημέρωση όλων"
 
@@ -1256,6 +1253,9 @@ msgstr "Πρέπει να γίνει έλεγχος ενημερώσεων"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
+
+#~ msgid "Update Selected"
+#~ msgstr "Ενημέρωση επιλεγμένων"
 
 #, fuzzy
 #~| msgid "Sources"

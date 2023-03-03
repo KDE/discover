@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 01:01+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2021-10-29 12:52+0200\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -1099,12 +1099,9 @@ msgid "Error message copied to clipboard"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:134
-#, kde-format
-msgid "Update Selected"
-msgstr "Wubrane aktualizować"
-
-#: discover/qml/UpdatesPage.qml:134
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Update All"
+msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Wšitko wubrać"
 
@@ -1203,6 +1200,9 @@ msgstr "Měło so za aktualizowanjemi pytać"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Čas poslednjeho aktualizowanja njeznaty"
+
+#~ msgid "Update Selected"
+#~ msgstr "Wubrane aktualizować"
 
 #~ msgid "Updates are available"
 #~ msgstr "Aktualizowanja steja k dispoziciji"

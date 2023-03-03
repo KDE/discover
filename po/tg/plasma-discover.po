@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 01:01+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2020-08-27 11:51+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -1129,12 +1129,9 @@ msgid "Error message copied to clipboard"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:134
-#, kde-format
-msgid "Update Selected"
-msgstr "Навсозӣ инихоб шуд"
-
-#: discover/qml/UpdatesPage.qml:134
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Update All"
+msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Ҳамаро навсозӣ кардан"
 
@@ -1237,6 +1234,9 @@ msgstr "Омодагии навсозиҳо бояд тафтиш карда ш�
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
+
+#~ msgid "Update Selected"
+#~ msgstr "Навсозӣ инихоб шуд"
 
 #~ msgid "Sources"
 #~ msgstr "Манбаъҳо"

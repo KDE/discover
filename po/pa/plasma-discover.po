@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 01:01+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2022-01-01 09:32-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -1111,12 +1111,9 @@ msgid "Error message copied to clipboard"
 msgstr "ਗ਼ਲਤੀ ਸੁਨੇਹਾ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ"
 
 #: discover/qml/UpdatesPage.qml:134
-#, kde-format
-msgid "Update Selected"
-msgstr "ਚੁਣੇ ਅੱਪਡੇਟ ਕਰੋ"
-
-#: discover/qml/UpdatesPage.qml:134
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Update All"
+msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "ਸਭ ਅੱਪਡੇਟ ਕਰੋ"
 
@@ -1215,6 +1212,9 @@ msgstr "ਅੱਪਡੇਟ ਲਈ ਜਾਂਚ ਕਰਨੀ ਚਾਹੀਦੀ �
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "ਆਖਰੀ ਅੱਪਡੇਟ ਦਾ ਸਮਾਂ ਪਤਾ ਨਹੀ ਹੈ"
+
+#~ msgid "Update Selected"
+#~ msgstr "ਚੁਣੇ ਅੱਪਡੇਟ ਕਰੋ"
 
 #~ msgid "Sources"
 #~ msgstr "ਸਰੋਤ"

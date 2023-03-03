@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 01:01+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2023-02-27 20:15+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: English <kde-l10n-en_gb@kde.org>\n"
@@ -1119,12 +1119,9 @@ msgid "Error message copied to clipboard"
 msgstr "Error message copied to clipboard"
 
 #: discover/qml/UpdatesPage.qml:134
-#, kde-format
-msgid "Update Selected"
-msgstr "Update Selected"
-
-#: discover/qml/UpdatesPage.qml:134
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Update All"
+msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Update All"
 
@@ -1222,6 +1219,9 @@ msgstr "Should check for updates"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Time of last update unknown"
+
+#~ msgid "Update Selected"
+#~ msgstr "Update Selected"
 
 #~ msgid "Sources"
 #~ msgstr "Sources"

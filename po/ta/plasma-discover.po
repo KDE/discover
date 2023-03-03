@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 01:01+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2023-02-02 19:34+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1125,12 +1125,9 @@ msgid "Error message copied to clipboard"
 msgstr "சிக்கலை பற்றிய தகவல் பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டது"
 
 #: discover/qml/UpdatesPage.qml:134
-#, kde-format
-msgid "Update Selected"
-msgstr "தேர்ந்தெடுத்தவற்றை புதுப்பி"
-
-#: discover/qml/UpdatesPage.qml:134
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Update All"
+msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "அனைத்தையும் புதுப்பி"
 
@@ -1228,6 +1225,9 @@ msgstr "புதுப்பிப்புகள் உள்ளனவா எ�
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "கடைசியாக புதுப்பித்த நேரம் தெரியாத‍து"
+
+#~ msgid "Update Selected"
+#~ msgstr "தேர்ந்தெடுத்தவற்றை புதுப்பி"
 
 #~ msgid "Sources"
 #~ msgstr "மூலங்கள்"

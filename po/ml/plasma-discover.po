@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 01:01+0000\n"
+"POT-Creation-Date: 2023-03-03 02:17+0000\n"
 "PO-Revision-Date: 2019-12-29 20:50+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -1107,11 +1107,7 @@ msgstr ""
 
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
-msgid "Update Selected"
-msgstr ""
-
-#: discover/qml/UpdatesPage.qml:134
-#, kde-format
+msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr ""
 
