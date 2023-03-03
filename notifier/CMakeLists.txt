@@ -13,13 +13,13 @@ add_executable(DiscoverNotifier
 )
 
 target_link_libraries(DiscoverNotifier
-    KF5::Notifications
-    KF5::I18n
-    KF5::KIOGui
-    KF5::Crash
-    KF5::DBusAddons
-    KF5::ConfigGui
-    KF5::IdleTime
+    KF6::Notifications
+    KF6::I18n
+    KF6::KIOGui
+    KF6::Crash
+    KF6::DBusAddons
+    KF6::ConfigGui
+    KF6::IdleTime
 
     Discover::Notifiers
 )

@@ -8,11 +8,11 @@ function(add_unit_test name)
         Qt::Test Qt::Core ${EXTRA_LIBS})
 endfunction()
 
-if(KF5Attica_FOUND AND KF5NewStuff_FOUND AND AppStreamQt_FOUND)
+if(KF6Attica_FOUND AND KF6NewStuff_FOUND AND AppStreamQt_FOUND)
    add_subdirectory(KNSBackend)
 endif()
 
-if(packagekitqt5_FOUND AND AppStreamQt_FOUND)
+if(packagekitqt6_FOUND AND AppStreamQt_FOUND)
     add_subdirectory(PackageKitBackend)
 endif()
 

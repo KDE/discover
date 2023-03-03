@@ -24,9 +24,9 @@ add_library(kcm_updates MODULE updates.cpp updates.h ${kcm_updates_PART_SRCS})
 
 kcmutils_generate_desktop_file(kcm_updates)
 target_link_libraries(kcm_updates
-    KF5::I18n
-    KF5::KCMUtils
-    KF5::QuickAddons
+    KF6::I18n
+    KF6::KCMUtils
+    KF6::QuickAddons
 )
 
 install(TARGETS kcm_updates DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)

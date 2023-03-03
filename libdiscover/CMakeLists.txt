@@ -56,11 +56,11 @@ PUBLIC
     Qt::Core
     Qt::Qml
     Qt::Gui
-    KF5::I18n
+    KF6::I18n
 PRIVATE
-    KF5::CoreAddons
-    KF5::ConfigCore
-    KF5::KIOCore
+    KF6::CoreAddons
+    KF6::ConfigCore
+    KF6::KIOCore
 )
 add_library(Discover::Common ALIAS DiscoverCommon)
 

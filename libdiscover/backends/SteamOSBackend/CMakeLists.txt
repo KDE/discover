@@ -18,6 +18,6 @@ qt_add_dbus_interface(steamos-backend_SRCS ${atomupd1_xml} atomupd1)
 qt_add_dbus_interface(steamos-backend_SRCS org.freedesktop.DBus.Properties.xml dbusproperties_interface)
 
 add_library(steamos-backend MODULE ${steamos-backend_SRCS})
-target_link_libraries(steamos-backend Qt::Core Qt::Widgets Qt::DBus KF5::CoreAddons KF5::ConfigCore Discover::Common)
+target_link_libraries(steamos-backend Qt::Core Qt::Widgets Qt::DBus KF6::CoreAddons KF6::ConfigCore Discover::Common)
 
 install(TARGETS steamos-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)

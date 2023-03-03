@@ -40,14 +40,14 @@ add_executable(Plasma::Discover ALIAS plasma-discover)
 set_target_properties(plasma-discover PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 target_link_libraries(plasma-discover PUBLIC
-                                     KF5::Crash
-                                     KF5::DBusAddons
-                                     KF5::I18n
-                                     KF5::ConfigGui
-                                     KF5::KIOCore
-                                     KF5::WindowSystem
-                                     KF5::Notifications
-                                     KF5::JobWidgets
+                                     KF6::Crash
+                                     KF6::DBusAddons
+                                     KF6::I18n
+                                     KF6::ConfigGui
+                                     KF6::KIOCore
+                                     KF6::WindowSystem
+                                     KF6::Notifications
+                                     KF6::JobWidgets
                                      Qt::Widgets
                                      Qt::Quick
                                      Discover::Common

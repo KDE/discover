@@ -4,11 +4,11 @@ set(PROJECT_VERSION_MAJOR 5)
 
 cmake_minimum_required(VERSION 3.16)
 
-set(QT_MIN_VERSION "5.15.2")
-set(KF5_MIN_VERSION "5.102.0")
-set(KDE_COMPILERSETTINGS_LEVEL "5.82")
+set(QT_MIN_VERSION "6.4.0")
+set(KF6_MIN_VERSION "5.240.0")
+set(KDE_COMPILERSETTINGS_LEVEL "5.85")
 
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH}  "${CMAKE_SOURCE_DIR}/cmake")
 
@@ -27,13 +27,13 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG OPTIONAL_COMPONENTS 
 
 find_package(PkgConfig REQUIRED)
 
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui KIO Declarative KCMUtils IdleTime Notifications Purpose)
-find_package(KF5Kirigami2 2.7.0)
+find_package(KF6 ${KF6_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui KIO Declarative KCMUtils IdleTime Notifications Purpose)
+find_package(KF6Kirigami2 2.7.0)
 
-find_package(packagekitqt5 1.0.1 CONFIG)
-find_package(AppStreamQt 0.15.3 CONFIG REQUIRED)
-find_package(KF5Attica 5.23 CONFIG)
-find_package(KF5NewStuff 5.53 CONFIG)
+find_package(packagekitqt6 1.0.1 CONFIG)
+find_package(AppStreamQt 1.0 CONFIG REQUIRED)
+find_package(KF6Attica 5.23 CONFIG)
+find_package(KF6NewStuff 5.53 CONFIG)
 
 pkg_check_modules(Flatpak IMPORTED_TARGET flatpak>=0.11.8)
 pkg_check_modules(Fwupd IMPORTED_TARGET fwupd>=1.5.0)
@@ -60,7 +60,7 @@ add_subdirectory(update)
 
 option(WITH_KCM "Build and install the updates KCM" ON)
 if(WITH_KCM)
-    add_subdirectory(kcm)
+    # add_subdirectory(kcm)
 endif()
 
 option(WITH_NOTIFIER "Build and install the notifier plasmoid" ON)
@@ -68,20 +68,20 @@ if(WITH_NOTIFIER)
     add_subdirectory(notifier)
 endif()
 
-set_package_properties(KF5Attica PROPERTIES
+set_package_properties(KF6Attica PROPERTIES
     DESCRIPTION "KDE Framework that implements the Open Collaboration Services API"
     PURPOSE "Required to build the KNewStuff3 backend"
     TYPE OPTIONAL)
-set_package_properties(KF5Kirigami2 PROPERTIES
+set_package_properties(KF6Kirigami2 PROPERTIES
     DESCRIPTION "KDE's lightweight user interface framework for mobile and convergent applications"
     URL "https://techbase.kde.org/Kirigami"
     PURPOSE "Required by discover qml components"
     TYPE RUNTIME)
-set_package_properties(KF5NewStuff PROPERTIES
+set_package_properties(KF6NewStuff PROPERTIES
     DESCRIPTION "Qt library that allows to interact with KNewStuff implementations"
     PURPOSE "Required to build the KNS backend"
     TYPE OPTIONAL)
-set_package_properties(packagekitqt5 PROPERTIES
+set_package_properties(packagekitqt6 PROPERTIES
     DESCRIPTION "Library that exposes PackageKit resources"
     URL "https://www.freedesktop.org/software/PackageKit/"
     PURPOSE "Required to build the PackageKit backend"

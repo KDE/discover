@@ -1,4 +1,4 @@
-find_package(KF5 REQUIRED Notifications)
+find_package(KF6 REQUIRED Notifications)
 
 #packagekit-backend
 set (packagekit-backend_SRCS
@@ -17,7 +17,7 @@ ecm_qt_declare_logging_category(packagekit-backend_SRCS HEADER libdiscover_backe
 
 add_library(packagekit-backend MODULE ${packagekit-backend_SRCS})
 
-target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt::Core Qt::Concurrent PK::packagekitqt5 KF5::ConfigGui KF5::KIOCore KF5::KIOGui KF5::Archive AppStreamQt)
+target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt::Core Qt::Concurrent PK::packagekitqt6 KF6::ConfigGui KF6::KIOCore KF6::KIOGui KF6::Archive AppStreamQt)
 install(TARGETS packagekit-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 
 if(TARGET PkgConfig::Markdown)
@@ -33,7 +33,7 @@ ecm_qt_declare_logging_category(DiscoverPackageKitNotifier_SRCS HEADER libdiscov
 
 add_library(DiscoverPackageKitNotifier MODULE ${DiscoverPackageKitNotifier_SRCS})
 
-target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt5 Discover::Notifiers KF5::I18n KF5::Notifications KF5::ConfigCore)
+target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt6 Discover::Notifiers KF6::I18n KF6::Notifications KF6::ConfigCore)
 set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 install(TARGETS DiscoverPackageKitNotifier DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover-notifier)
