@@ -520,8 +520,10 @@ public:
 
     void sendResources(const QVector<AbstractResource *> &res, bool waitForResolved = false)
     {
-        if (res.isEmpty())
+        if (res.isEmpty()) {
+            finish();
             return;
+        }
 
         Q_ASSERT(res.size() == QSet(res.constBegin(), res.constEnd()).size());
         const auto toResolve = kFilter<QVector<AbstractResource *>>(res, needsResolveFilter);
