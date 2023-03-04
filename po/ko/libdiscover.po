@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-02 03:42+0000\n"
+"POT-Creation-Date: 2023-03-04 02:46+0000\n"
 "PO-Revision-Date: 2023-03-01 00:58+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -543,7 +543,7 @@ msgid "Local bundle"
 msgstr "로컬 번들"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1640
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:669
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:671
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "잘못된 AppStream URL '%1'"
@@ -1109,7 +1109,7 @@ msgstr ""
 "운영 체제의 지원이 %1에 끝났습니다. 지원 중인 버전으로 업그레이드하기를 추천"
 "합니다."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:763
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:765
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1'을(를) 삭제할 수 없음"

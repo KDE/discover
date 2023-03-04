@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-02 03:42+0000\n"
+"POT-Creation-Date: 2023-03-04 02:46+0000\n"
 "PO-Revision-Date: 2022-01-01 09:30-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -551,7 +551,7 @@ msgid "Local bundle"
 msgstr "ਲੋਕਲ ਬੰਡਲ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1640
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:669
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:671
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
@@ -1098,7 +1098,7 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:763
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:765
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' ਨੂੰ ਹਟਾ ਨਹੀਂ ਸਕਦੇ"

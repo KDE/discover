@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-02 03:42+0000\n"
-"PO-Revision-Date: 2023-01-09 09:35+0100\n"
+"POT-Creation-Date: 2023-03-04 02:46+0000\n"
+"PO-Revision-Date: 2023-03-01 01:30+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -545,7 +545,7 @@ msgid "Local bundle"
 msgstr "Pacchetto locale"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1640
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:669
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:671
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL di appstream «%1» non corretto"
@@ -553,7 +553,7 @@ msgstr "URL di appstream «%1» non corretto"
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1744
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "Aggiunta della fonte  «%1» non riuscita: %2"
+msgstr "Aggiunta della fonte «%1» non riuscita: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
 #, kde-format
@@ -1131,7 +1131,7 @@ msgstr ""
 "Il tuo sistema operativo ha terminato il supporto il %1. Considera "
 "l'aggiornamento a una versione supportata."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:763
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:765
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Impossibile rimuovere «%1»"
@@ -1943,11 +1943,9 @@ msgstr[0] "%1 pacchetto aggiornato correttamente"
 msgstr[1] "%1 pacchetti aggiornati correttamente"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unknown Error"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Errore sconosciuto"
+msgstr "Fonte sconosciuta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format

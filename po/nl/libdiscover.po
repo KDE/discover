@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-02 03:42+0000\n"
+"POT-Creation-Date: 2023-03-04 02:46+0000\n"
 "PO-Revision-Date: 2023-02-28 09:26+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
@@ -544,7 +544,7 @@ msgid "Local bundle"
 msgstr "Lokale bundel"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1640
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:669
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:671
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Misvormde appstream-URL '%1'"
@@ -1132,7 +1132,7 @@ msgstr ""
 "Uw besturingssysteem heeft ondersteuning op %1 beëindigd. Overweeg "
 "opwaardering naar een ondersteunde versie."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:763
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:765
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Kan '%1' niet verwijderen"
