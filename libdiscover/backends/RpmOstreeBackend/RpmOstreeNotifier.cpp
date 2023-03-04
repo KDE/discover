@@ -6,8 +6,8 @@
 
 #include "RpmOstreeNotifier.h"
 
+#include <QDirIterator>
 #include <QFile>
-#include <QFileSystemWatcher>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -26,6 +26,30 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
         qWarning() << "rpm-ostree-notifier: Not starting on a system not managed by rpm-ostree";
         return;
     }
+
+    // Setup a  watcher to trigger a check for reboot when the deployments are changed
+    // and there is thus likely an new deployment installed following an update.
+    m_watcher = new QFileSystemWatcher(this);
+
+    // We also setup a timer to avoid triggering a check immediately when a new
+    // deployment is made available and instead wait a bit to let things settle down.
+    m_timer = new QTimer(this);
+    m_timer->setSingleShot(true);
+    // Wait 10 seconds for all rpm-ostree operations to complete
+    m_timer->setInterval(10000);
+    connect(m_timer, &QTimer::timeout, this, &RpmOstreeNotifier::checkForPendingDeployment);
+
+    // Find all ostree managed system installations available. There is usualy only one but
+    // doing that dynamically here avoids hardcoding a specific value or doing a DBus call.
+    QDirIterator it(QStringLiteral("/ostree/deploy/"), QDir::AllDirs | QDir::NoDotAndDotDot);
+    while (it.hasNext()) {
+        QString path = QStringLiteral("%1/deploy/").arg(it.next());
+        m_watcher->addPath(path);
+        qInfo() << "rpm-ostree-notifier: Looking for new deployments in" << path;
+    }
+    connect(m_watcher, &QFileSystemWatcher::directoryChanged, [this]() {
+        m_timer->start();
+    });
 
     qInfo() << "rpm-ostree-notifier: Looking for ostree format";
     m_process = new QProcess(this);

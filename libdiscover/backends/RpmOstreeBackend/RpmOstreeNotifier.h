@@ -11,7 +11,9 @@
 #include <BackendNotifierModule.h>
 
 #include <QDebug>
+#include <QFileSystemWatcher>
 #include <QProcess>
+#include <QTimer>
 
 /* Look for new system updates with rpm-ostree.
  * Uses only the rpm-ostree command line to simplify logic for now.
@@ -68,4 +70,10 @@ private:
 
     /* Do we need to reboot to apply updates? */
     bool m_needsReboot;
+
+    /* Watcher to trigger a reboot check when deployments are modified */
+    QFileSystemWatcher *m_watcher;
+
+    /* Timer triggerred by the above watcher to wait for things to settle down before re-doing a deployment check */
+    QTimer *m_timer;
 };
