@@ -329,14 +329,15 @@ void RpmOstreeNotifier::checkForPendingDeployment()
             if (version == m_updateVersion) {
                 qInfo() << "rpm-ostree-notifier: Found an existing deployment for the update available";
                 if (!m_needsReboot) {
+                    qInfo() << "rpm-ostree-notifier: Notifying that a reboot is needed";
                     m_needsReboot = true;
                     Q_EMIT needsRebootChanged();
-                    return;
                 }
+                return;
             }
         }
 
-        // No deployment found for the new version. Let's notify the user.
+        // Reaching here means that no deployment has been found for the new version.
         qInfo() << "rpm-ostree-notifier: Notifying that a new update is available";
         m_hasUpdates = true;
         Q_EMIT foundUpdates();
