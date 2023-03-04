@@ -8,6 +8,7 @@
 #include "PackageKitBackend.h"
 #include "config-paths.h"
 #include <KDesktopFile>
+#include <KIO/ApplicationLauncherJob>
 #include <KLocalizedString>
 #include <PackageKit/Daemon>
 #include <QDebug>
@@ -48,17 +49,26 @@ private:
     PackageKitSourcesBackend *m_backend;
 };
 
-static DiscoverAction *createActionForService(const QString &servicePath, QObject *parent)
+static DiscoverAction *createActionForService(const QString &servicePath, PackageKitSourcesBackend *backend)
 {
-    DiscoverAction *action = new DiscoverAction(parent);
+    DiscoverAction *action = new DiscoverAction(backend);
     KDesktopFile parser(servicePath);
     action->setIconName(parser.readIcon());
     action->setText(parser.readName());
     action->setToolTip(parser.readComment());
-    QObject::connect(action, &DiscoverAction::triggered, action, [servicePath]() {
-        bool b = QProcess::startDetached(QStringLiteral(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/discover/runservice"), {servicePath});
-        if (!b)
-            qWarning() << "Could not start" << servicePath;
+    QObject::connect(action, &DiscoverAction::triggered, action, [backend, servicePath]() {
+        KService::Ptr service = KService::serviceByStorageId(servicePath);
+        if (!service) {
+            qWarning() << "Failed to find service" << servicePath;
+            return;
+        }
+
+        auto *job = new KIO::ApplicationLauncherJob(service);
+        QObject::connect(job, &KJob::finished, backend, [backend, service](KJob *job) {
+            if (job->error()) {
+                Q_EMIT backend->passiveMessage(i18n("Failed to start '%1': %2", service->name(), job->errorString()));
+            }
+        });
     });
     return action;
 }
