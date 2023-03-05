@@ -11,6 +11,7 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import org.kde.discover 2.0
 import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigamiaddons.labs.components 1.0 as Components
 
 ListView {
     id: root
@@ -38,7 +39,7 @@ ListView {
 
     delegate: AbstractButton {
         readonly property bool animated: isAnimated
-        readonly property url imageSource: large_image_url
+        readonly property url imageSource: source
         readonly property real proportion: (thumbnail.status === Image.Ready && thumbnail.sourceSize.width > 1)
             ? (thumbnail.sourceSize.height / thumbnail.sourceSize.width) : 1
 
@@ -77,12 +78,12 @@ ListView {
 
                 componentFalse: Component {
                     Image {
-                        source: small_image_url
+                        source: tempSource
                     }
                 }
                 componentTrue: Component {
                     AnimatedImage {
-                        source: small_image_url
+                        source: tempSource
                     }
                 }
 
@@ -95,141 +96,57 @@ ListView {
         }
     }
 
-    Popup {
+    Components.MaximizeComponent {
         id: overlay
-        parent: applicationWindow().overlay
-        z: applicationWindow().globalDrawer.z + 10
-        modal: true
-        clip: false
+        itemModel: screenshotsModel
+        initialIndex: root.currentIndex
 
-        x: (parent.width - width) / 2
-        y: (parent.height - height) / 2
-        readonly property real proportion: (overlayImage.sourceSize.width > 1) ? (overlayImage.sourceSize.height / overlayImage.sourceSize.width) : 1
-        height: overlayImage.status >= Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
-        width: (height - 2 * padding) / proportion
-
-        BusyIndicator {
-            id: indicator
-            visible: running
-            running: overlayImage.status === Image.Loading
-            anchors.centerIn: parent
-        }
-
-        Kirigami.Icon {
-            anchors.fill: parent
-            visible: overlayImage.status === Image.Error
-            source: "emblem-error"
-        }
-
-        ConditionalLoader {
-            id: overlayImage
-            anchors.fill: parent
-            readonly property var status: item.status
-            readonly property var sourceSize: item.sourceSize
-            condition: root.currentItem.animated
-
-            componentFalse: Component {
-                Image {
-                    source: root.currentItem ? root.currentItem.imageSource : ""
-                    fillMode: Image.PreserveAspectFit
-                    smooth: true
-                }
-            }
-            componentTrue: Component {
-                AnimatedImage {
-                    source: root.currentItem ? root.currentItem.imageSource : ""
-                    fillMode: Image.PreserveAspectFit
-                    smooth: true
-                }
-            }
-
-            onStatusChanged: {
-                if (status === Image.Error) {
-                    root.failedCount += 1;
-                }
-            }
-        }
-
-        Button {
-            anchors {
-                left: parent.right
-                bottom: parent.top
-            }
-            icon.name: "window-close"
-            onClicked: overlay.close()
-        }
-
-
-        RoundButton {
-            anchors {
-                right: parent.left
-                verticalCenter: parent.verticalCenter
-            }
-            visible: leftAction.visible
-            icon.name: leftAction.iconName
-            onClicked: leftAction.triggered(null)
-        }
-
-        RoundButton {
-            anchors {
-                left: parent.right
-                verticalCenter: parent.verticalCenter
-            }
-            visible: rightAction.visible
-            icon.name: rightAction.iconName
-            onClicked: rightAction.triggered(null)
-        }
-
-        Kirigami.Action {
-            id: leftAction
-            icon.name: root.LayoutMirroring.enabled ? "arrow-right" : "arrow-left"
-            enabled: overlay.visible && visible
-            visible: root.currentIndex >= 1 && !indicator.running
-            onTriggered: root.currentIndex = (root.currentIndex - 1) % screenshotsModel.count
-        }
-
-        Kirigami.Action {
-            id: rightAction
-            icon.name: root.LayoutMirroring.enabled ? "arrow-left" : "arrow-right"
-            enabled: overlay.visible && visible
-            visible: root.currentIndex < (root.count - 1) && !indicator.running
-            onTriggered: root.currentIndex = (root.currentIndex + 1) % screenshotsModel.count
-        }
-    }
-
-    clip: true
-
-    RoundButton {
-        anchors {
-            left: parent.left
-            leftMargin: Kirigami.Units.largeSpacing
-            verticalCenter: parent.verticalCenter
-        }
-        width: Kirigami.Units.gridUnit * 2
-        height: width
-        icon.name: root.LayoutMirroring.enabled ? "arrow-right" : "arrow-left"
-        visible: !Kirigami.Settings.isMobile
-                 && root.count > 1
-                 && root.currentIndex > 0
-                 && root.showNavigationArrows
-        Keys.forwardTo: [root]
-        onClicked: root.currentIndex -= 1
-    }
-
-    RoundButton {
-        anchors {
-            right: parent.right
-            rightMargin: Kirigami.Units.largeSpacing
-            verticalCenter: parent.verticalCenter
-        }
-        width: Kirigami.Units.gridUnit * 2
-        height: width
-        icon.name: root.LayoutMirroring.enabled ? "arrow-left" : "arrow-right"
-        visible: !Kirigami.Settings.isMobile
-                 && root.count > 1
-                 && root.currentIndex < root.count - 1
-                 && root.showNavigationArrows
-        Keys.forwardTo: [root]
-        onClicked: root.currentIndex += 1
+        // leader: RowLayout {
+        //     Kirigami.Avatar {
+        //         id: userAvatar
+        //         implicitWidth: Kirigami.Units.iconSizes.medium
+        //         implicitHeight: Kirigami.Units.iconSizes.medium
+        //
+        //         name: model.author.name ?? model.author.displayName
+        //         source: model.author.avatarMediaId ? ("image://mxc/" + model.author.avatarMediaId) : ""
+        //         color: model.author.color
+        //     }
+        //     ColumnLayout {
+        //         spacing: 0
+        //         QQC2.Label {
+        //             id: userLabel
+        //             text: model.author.name ?? model.author.displayName
+        //             color: model.author.color
+        //             font.weight: Font.Bold
+        //             elide: Text.ElideRight
+        //         }
+        //         QQC2.Label {
+        //             id: dateTimeLabel
+        //             text: model.time.toLocaleString(Qt.locale(), Locale.ShortFormat)
+        //             color: Kirigami.Theme.disabledTextColor
+        //             elide: Text.ElideRight
+        //         }
+        //     }
+        // }
+        //
+        // onItemRightClicked: {
+        //     const contextMenu = fileDelegateContextMenu.createObject(parent, {
+        //         author: model.author,
+        //         message: model.message,
+        //         eventId: model.eventId,
+        //         source: model.source,
+        //         file: parent,
+        //         mimeType: model.mimeType,
+        //         progressInfo: model.progressInfo,
+        //         plainMessage: model.message,
+        //     });
+        //     contextMenu.closeFullscreen.connect(root.close)
+        //     contextMenu.open();
+        // }
+        // onSaveItem: {
+        //     var dialog = saveAsDialog.createObject(QQC2.ApplicationWindow.overlay)
+        //     dialog.open()
+        //     dialog.currentFile = dialog.folder + "/" + currentRoom.fileNameToDownload(model.eventId)
+        // }
     }
 }

@@ -19,9 +19,10 @@ ScreenshotsModel::ScreenshotsModel(QObject *parent)
 QHash<int, QByteArray> ScreenshotsModel::roleNames() const
 {
     QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
-    roles.insert(ThumbnailUrl, "small_image_url");
-    roles.insert(ScreenshotUrl, "large_image_url");
+    roles.insert(ThumbnailUrl, "tempSource");
+    roles.insert(ScreenshotUrl, "source");
     roles.insert(IsAnimatedRole, "isAnimated");
+    roles.insert(TypeRole, "type");
     return roles;
 }
 
@@ -75,6 +76,10 @@ QVariant ScreenshotsModel::data(const QModelIndex &index, int role) const
         return m_screenshots[index.row()].screenshot;
     case IsAnimatedRole:
         return m_screenshots[index.row()].isAnimated;
+    case TypeRole:
+        // 0 is image from MaximizeModelItem.Type
+        // TODO: make enum available in c++ as well
+        return 0;
     }
 
     return QVariant();

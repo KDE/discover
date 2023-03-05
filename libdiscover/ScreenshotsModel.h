@@ -23,6 +23,7 @@ public:
         ThumbnailUrl = Qt::UserRole + 1,
         ScreenshotUrl,
         IsAnimatedRole,
+        TypeRole,
     };
 
     explicit ScreenshotsModel(QObject *parent = nullptr);
