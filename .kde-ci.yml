@@ -27,5 +27,6 @@ Dependencies:
     'frameworks/kxmlgui': '@latest'
     'frameworks/purpose': '@latest'
     'libraries/kuserfeedback': '@stable'
+    'third-party/packagekit-qt': '@latest'
 Options:
   require-passing-tests-on: [ 'Linux', 'FreeBSD']
