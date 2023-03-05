@@ -101,52 +101,10 @@ ListView {
         itemModel: screenshotsModel
         initialIndex: root.currentIndex
 
-        // leader: RowLayout {
-        //     Kirigami.Avatar {
-        //         id: userAvatar
-        //         implicitWidth: Kirigami.Units.iconSizes.medium
-        //         implicitHeight: Kirigami.Units.iconSizes.medium
-        //
-        //         name: model.author.name ?? model.author.displayName
-        //         source: model.author.avatarMediaId ? ("image://mxc/" + model.author.avatarMediaId) : ""
-        //         color: model.author.color
-        //     }
-        //     ColumnLayout {
-        //         spacing: 0
-        //         QQC2.Label {
-        //             id: userLabel
-        //             text: model.author.name ?? model.author.displayName
-        //             color: model.author.color
-        //             font.weight: Font.Bold
-        //             elide: Text.ElideRight
-        //         }
-        //         QQC2.Label {
-        //             id: dateTimeLabel
-        //             text: model.time.toLocaleString(Qt.locale(), Locale.ShortFormat)
-        //             color: Kirigami.Theme.disabledTextColor
-        //             elide: Text.ElideRight
-        //         }
-        //     }
-        // }
-        //
-        // onItemRightClicked: {
-        //     const contextMenu = fileDelegateContextMenu.createObject(parent, {
-        //         author: model.author,
-        //         message: model.message,
-        //         eventId: model.eventId,
-        //         source: model.source,
-        //         file: parent,
-        //         mimeType: model.mimeType,
-        //         progressInfo: model.progressInfo,
-        //         plainMessage: model.message,
-        //     });
-        //     contextMenu.closeFullscreen.connect(root.close)
-        //     contextMenu.open();
-        // }
-        // onSaveItem: {
-        //     var dialog = saveAsDialog.createObject(QQC2.ApplicationWindow.overlay)
-        //     dialog.open()
-        //     dialog.currentFile = dialog.folder + "/" + currentRoom.fileNameToDownload(model.eventId)
-        // }
+        title: root.resource.name
+        leader: Kirigami.Icon {
+            source: root.resource.icon
+        }
+        actions: []
     }
 }
