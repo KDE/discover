@@ -1073,7 +1073,7 @@ msgstr "معرّف «أشياء جديدة» خطأ: %1"
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
-msgstr "متجر كدي"
+msgstr "متجر كِيدِي"
 
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
 #, kde-format
@@ -3406,7 +3406,7 @@ msgstr "الإضافات"
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"kde\""
 #~ msgid "KDE Software Compilation"
-#~ msgstr "تصريف برمجيّات كدي"
+#~ msgstr "تصريف برمجيّات كِيدِي"
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section "
