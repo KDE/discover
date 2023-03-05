@@ -808,7 +808,7 @@ msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
-"يرسل معلومات استخدام مجهولة المصدر إلى كدي حتى نتمكن من فهم مستخدمينا بشكل "
+"يرسل معلومات استخدام مجهولة المصدر إلى كِيدِي حتى نتمكن من فهم مستخدمينا بشكل "
 "أفضل. لمزيد من المعلومات ، راجع https://kde.org/privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:18
