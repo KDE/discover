@@ -49,7 +49,7 @@ Kirigami.OverlaySheet {
         }
     }
 
-    onSheetOpenChanged: if (!sheetOpen) {
+    onVisibleChanged: if(!visible) {
         sheet.destroy(1000)
         if (!sheet.acted) {
             transaction.cancel()

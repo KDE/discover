@@ -29,7 +29,7 @@ Kirigami.AbstractListItem {
             sheetObject = sheet.createObject()
         }
 
-        if (!sheetObject.sheetOpen) {
+        if (!sheetObject.visible) {
             sheetObject.open()
         }
     }
@@ -41,10 +41,8 @@ Kirigami.AbstractListItem {
 
             title: i18n("Tasks")
 
-            onSheetOpenChanged: {
-                if (!sheetOpen) {
-                    sheetObject.destroy(100)
-                }
+            onVisibleChanged: if(!visible) {
+                sheetObject.destroy(100)
             }
 
             contentItem: ListView {

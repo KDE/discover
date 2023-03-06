@@ -49,7 +49,7 @@ Kirigami.ScrollablePage {
     }
 
     readonly property var readableCharacters: /\w+/
-    Keys.onPressed: {
+    Keys.onPressed: event => {
         if (event.text.length > 0 && event.modifiers === Qt.NoModifier && event.text.match(readableCharacters)) {
             window.globalDrawer.suggestSearchText(event.text)
         }

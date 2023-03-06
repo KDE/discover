@@ -18,7 +18,6 @@ ListView {
     readonly property alias count: screenshotsModel.count
     property bool showNavigationArrows: true
     property alias resource: screenshotsModel.application
-    property var resource
     property int failedCount: 0
     readonly property bool hasFailed: count !== 0 && failedCount === count
 

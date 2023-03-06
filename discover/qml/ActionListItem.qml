@@ -12,14 +12,9 @@ import org.kde.kirigami 2.14 as Kirigami
 Kirigami.BasicListItem {
     id: item
 
-    property QtObject action: null
-
-    checked: action.checked
-    icon: action.iconName
     separatorVisible: false
     visible: action.enabled
 
-    onClicked: trigger()
     Keys.onEnterPressed: trigger()
     Keys.onReturnPressed: trigger()
 

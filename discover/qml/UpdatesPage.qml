@@ -20,7 +20,7 @@ DiscoverPage {
         id: resourcesUpdatesModel
         onPassiveMessage: {
             sheet.errorMessage = message;
-            sheet.sheetOpen = true;
+            sheet.visible = true;
         }
         onIsProgressingChanged: {
             if (!isProgressing) {
@@ -108,7 +108,7 @@ DiscoverPage {
                             icon.name: "tools-report-bug"
                             onClicked: {
                                 Qt.openUrlExternally(ResourcesModel.distroBugReportUrl())
-                                sheet.sheetOpen = false
+                                sheet.visible = false
                             }
                         }
                     }
@@ -118,7 +118,7 @@ DiscoverPage {
 
         // Ensure that friendly message is shown if the user closes the sheet and
         // then opens it again
-        onSheetOpenChanged: if (sheetOpen) {
+        onVisibleChanged: if(visible) {
             contentLoader.sourceComponent = friendlyMessageComponent;
         }
     }
@@ -481,7 +481,7 @@ DiscoverPage {
         State {
             name: "progressing"
             PropertyChanges { target: page; supportsRefreshing: false }
-            PropertyChanges { target: page.actions; main: cancelUpdateAction }
+            PropertyChanges { target: page; actions: [cancelUpdateAction] }
             PropertyChanges { target: statusLabel; visible: false }
         },
         State {
@@ -490,8 +490,7 @@ DiscoverPage {
             // On mobile, we want "Update" to be the primary action so it's in
             // the center, but on desktop this feels a bit awkward and it would
             // be better to have "Update" be the right-most action
-            PropertyChanges { target: page.actions; main: applicationWindow().wideScreen ? refreshAction : updateAction }
-            PropertyChanges { target: page.actions; left: applicationWindow().wideScreen ? updateAction : refreshAction }
+            PropertyChanges { target: page; actions: [ updateAction, refreshAction ] }
             PropertyChanges { target: statusLabel; visible: false }
         },
         State {
@@ -509,35 +508,35 @@ DiscoverPage {
         State {
             name: "now-uptodate"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
-            PropertyChanges { target: page.actions; main: refreshAction }
+            PropertyChanges { target: page; actions: [refreshAction] }
             PropertyChanges { target: statusLabel; explanation: "" }
             PropertyChanges { target: statusLabel.progressBar; visible: false }
         },
         State {
             name: "uptodate"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
-            PropertyChanges { target: page.actions; main: refreshAction }
+            PropertyChanges { target: page; actions: [refreshAction] }
             PropertyChanges { target: statusLabel; explanation: "" }
             PropertyChanges { target: statusLabel.progressBar; visible: false }
         },
         State {
             name: "medium"
             PropertyChanges { target: page; title: i18nc("@info", "Up to date") }
-            PropertyChanges { target: page.actions; main: refreshAction }
+            PropertyChanges { target: page; actions: [refreshAction] }
             PropertyChanges { target: statusLabel; explanation: "" }
             PropertyChanges { target: statusLabel.progressBar; visible: false }
         },
         State {
             name: "low"
             PropertyChanges { target: page; title: i18nc("@info", "Should check for updates") }
-            PropertyChanges { target: page.actions; main: refreshAction }
+            PropertyChanges { target: page; actions: [refreshAction] }
             PropertyChanges { target: statusLabel; explanation: "" }
             PropertyChanges { target: statusLabel.progressBar; visible: false }
         },
         State {
             name: "unknown"
             PropertyChanges { target: page; title: i18nc("@info", "Time of last update unknown") }
-            PropertyChanges { target: page.actions; main: refreshAction }
+            PropertyChanges { target: page; actions: [refreshAction] }
             PropertyChanges { target: statusLabel; explanation: "" }
             PropertyChanges { target: statusLabel.progressBar; visible: false }
         }

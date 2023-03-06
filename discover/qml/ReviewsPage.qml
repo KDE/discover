@@ -28,7 +28,7 @@ Kirigami.OverlaySheet {
     }
 
     function openReviewDialog() {
-        page.sheetOpen = false
+        page.visible = false
         reviewDialog.open()
     }
 

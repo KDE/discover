@@ -20,7 +20,7 @@ DiscoverPage {
     title: i18n("Discover")
     objectName: "featured"
 
-    actions.main: window.wideScreen ? searchAction : null
+    actions: window.wideScreen ? [ searchAction ] : []
 
     header: DiscoverInlineMessage {
         inlineMessage: ResourcesModel.inlineMessage

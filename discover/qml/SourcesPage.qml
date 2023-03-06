@@ -25,7 +25,7 @@ DiscoverPage {
         }
     }
 
-    contextualActions: feedbackLoader.item ? feedbackLoader.item.actions : [configureUpdatesAction]
+    actions: feedbackLoader.item ? feedbackLoader.item.actions : [configureUpdatesAction]
 
     header: ColumnLayout {
         Repeater {
@@ -197,7 +197,7 @@ DiscoverPage {
                         }
                     }
                 }
-                onSheetOpenChanged: if (!sheetOpen) {
+                onVisibleChanged: if(!visible) {
                     sheet.destroy(1000)
                     if (!sheet.acted) {
                         sourcesBackend.cancel()

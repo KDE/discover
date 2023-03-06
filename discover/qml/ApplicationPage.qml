@@ -51,7 +51,11 @@ DiscoverPage {
         }
     }
 
-    contextualActions: [originsMenuAction]
+    actions: [
+        appbutton.isActive ? appbutton.cancelAction : appbutton.action,
+        invokeAction,
+        originsMenuAction
+    ]
 
     ActionGroup {
         id: sourcesGroup
@@ -90,11 +94,6 @@ DiscoverPage {
         text: application.executeLabel
         icon.name: "media-playback-start"
         onTriggered: application.invokeApplication()
-    }
-
-    actions {
-        main: appbutton.isActive ? appbutton.cancelAction : appbutton.action
-        right: invokeAction
     }
 
     InstallApplicationButton {
@@ -519,7 +518,7 @@ DiscoverPage {
                         if (addonsView.addonsCount === 0) {
                             Navigation.openExtends(application.appstreamId, appInfo.application.name)
                         } else {
-                            addonsView.sheetOpen = true
+                            addonsView.visible = true
                         }
                     }
                 }

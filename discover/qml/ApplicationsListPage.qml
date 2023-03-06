@@ -83,7 +83,7 @@ DiscoverPage {
         exclusive: true
     }
 
-    contextualActions: [
+    actions: [
         Kirigami.Action {
             visible: !appsModel.sortByRelevancy
             text: i18n("Sort: %1", sortGroup.checkedAction.text)
@@ -146,8 +146,10 @@ DiscoverPage {
             sortRole: DiscoverSettings.appsListPageSorting
             sortOrder: sortRole === ResourcesProxyModel.NameRole ? Qt.AscendingOrder : Qt.DescendingOrder
 
-            onBusyChanged: if (isBusy) {
-                apps.currentIndex = -1
+            onBusyChanged: isBusy => {
+                if (isBusy) {
+                    apps.currentIndex = -1
+                }
             }
         }
         delegate: ApplicationDelegate {

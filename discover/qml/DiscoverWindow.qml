@@ -277,7 +277,7 @@ Kirigami.ApplicationWindow {
                 }
             }
 
-            onSheetOpenChanged: if(!sheetOpen) {
+            onVisibleChanged: if(!visible) {
                 sheet.destroy(1000)
                 if (!sheet.acted) {
                     transaction.cancel()
@@ -319,7 +319,7 @@ Kirigami.ApplicationWindow {
                 }
             }
 
-            onSheetOpenChanged: if (!sheetOpen) {
+            onVisibleChanged: if(!visible) {
                 sheet.destroy(1000)
             }
         }
@@ -358,7 +358,7 @@ Kirigami.ApplicationWindow {
                         id: messages
 
                         onCountChanged: {
-                            messagesSheet.sheetOpen = (count > 0);
+                            messagesSheet.visible = (count > 0);
 
                             if (count > 0 && messagesSheetView.currentIndex === -1) {
                                 messagesSheetView.currentIndex = 0;
@@ -419,7 +419,7 @@ Kirigami.ApplicationWindow {
             }
         }
 
-        onSheetOpenChanged: if (!sheetOpen) {
+        onVisibleChanged: if(!visible) {
             messagesSheetView.currentIndex = -1;
             messages.clear();
         }
