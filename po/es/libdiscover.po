@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 02:46+0000\n"
+"POT-Creation-Date: 2023-03-06 02:50+0000\n"
 "PO-Revision-Date: 2023-02-28 04:37+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -604,6 +604,7 @@ msgstr "%1 en disco"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "No se ha podido iniciar «%1»: %2"
@@ -2002,7 +2003,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (más %1 dependencia)"
 msgstr[1] "%2 (más %1 dependencias)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr "URL del repositorio:"

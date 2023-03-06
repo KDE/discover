@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 02:46+0000\n"
-"PO-Revision-Date: 2023-01-08 11:50+0100\n"
+"POT-Creation-Date: 2023-03-06 02:50+0000\n"
+"PO-Revision-Date: 2023-02-28 09:44+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -606,6 +606,7 @@ msgstr "%1 en el disc"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "No s'ha pogut iniciar «%1»: %2"
@@ -1953,10 +1954,9 @@ msgstr[0] "S'ha actualitzat amb èxit %1 paquet"
 msgstr[1] "S'han actualitzat amb èxit %1 paquets"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Estat desconegut"
+msgstr "Font desconeguda"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
@@ -2002,7 +2002,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (més %1 dependència)"
 msgstr[1] "%2 (més %1 dependències)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr "URL del repositori:"
@@ -2050,7 +2050,7 @@ msgstr "Futur"
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
-"No hi ha prou espai per portar a terme l'actualització. Només queden %1 "
+"No hi ha prou espai per a portar a terme l'actualització. Només queden %1 "
 "d'espai disponible."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:495

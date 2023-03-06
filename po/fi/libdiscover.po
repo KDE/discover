@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 02:46+0000\n"
+"POT-Creation-Date: 2023-03-06 02:50+0000\n"
 "PO-Revision-Date: 2022-08-11 22:55+0300\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -615,6 +615,7 @@ msgstr "%1 levyllä"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to start '%1': %2"
@@ -1998,7 +1999,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (sekä %1 riippuvuus)"
 msgstr[1] "%2 (sekä %1 riippuvuutta)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr "Ohjelmalähteen osoite:"

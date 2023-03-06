@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 02:46+0000\n"
+"POT-Creation-Date: 2023-03-06 02:50+0000\n"
 "PO-Revision-Date: 2020-10-21 13:36+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -624,6 +624,7 @@ msgstr "%1 על דיסק"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -2011,7 +2012,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (ועוד תלות %1)"
 msgstr[1] "%2 (ועוד %1 תלויות)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr ""

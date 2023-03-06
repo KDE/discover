@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 02:46+0000\n"
+"POT-Creation-Date: 2023-03-06 02:50+0000\n"
 "PO-Revision-Date: 2023-02-19 06:56+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -607,6 +607,7 @@ msgstr "在磁碟中佔 %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "無法啟動「%1」：%2"
@@ -1948,7 +1949,7 @@ msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 （加上 %1 個依賴庫）"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr "軟體庫 URL："

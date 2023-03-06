@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 02:46+0000\n"
+"POT-Creation-Date: 2023-03-06 02:50+0000\n"
 "PO-Revision-Date: 2023-03-01 05:48+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -602,6 +602,7 @@ msgstr "%1 დისკზე"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "\"%1\"-ის გაშვების შეცდომა: %2"
@@ -1981,7 +1982,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (და %1 დამოკიდებულება)"
 msgstr[1] "%2 (და %1 დამოკიდებულება)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr "რეპოზიტორიის URL:"
