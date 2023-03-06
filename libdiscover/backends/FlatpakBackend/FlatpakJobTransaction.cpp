@@ -41,7 +41,7 @@ void FlatpakJobTransaction::cancel()
 
 void FlatpakJobTransaction::start()
 {
-    setStatus(CommittingStatus);
+    setStatus(DownloadingStatus);
 
     // App job will be added every time
     m_appJob = new FlatpakTransactionThread(m_app, role());
