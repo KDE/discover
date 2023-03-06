@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 02:12+0000\n"
+"POT-Creation-Date: 2023-03-06 02:13+0000\n"
 "PO-Revision-Date: 2023-02-25 15:02-0800\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -593,6 +593,7 @@ msgstr "インストールで %1 のディスク容量を使用"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "'%1' を開始できませんでした: %2"
@@ -1945,7 +1946,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (さらに %1 個の依存関係)"
 msgstr[1] "%2 (さらに %1 個の依存関係)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr "リポジトリ URL:"

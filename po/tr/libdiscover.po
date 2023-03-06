@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 02:12+0000\n"
+"POT-Creation-Date: 2023-03-06 02:13+0000\n"
 "PO-Revision-Date: 2023-02-28 11:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -598,6 +598,7 @@ msgstr "diskte kapladığı alan %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "'%1' başlatılamadı: %2"
@@ -1989,7 +1990,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (ve %1 bağımlılık)"
 msgstr[1] "%2 (ve %1 bağımlılık)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr "Depo URL'si:"

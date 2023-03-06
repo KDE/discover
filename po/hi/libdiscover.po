@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 02:12+0000\n"
+"POT-Creation-Date: 2023-03-06 02:13+0000\n"
 "PO-Revision-Date: 2022-02-26 11:47+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: Hindi <kde-l10n-hi@kde.org>\n"
@@ -601,6 +601,7 @@ msgstr "%1 डिस्क पर"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr ""
@@ -1941,7 +1942,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr ""

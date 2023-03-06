@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 02:12+0000\n"
+"POT-Creation-Date: 2023-03-06 02:13+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -623,6 +623,7 @@ msgstr "%1 на диску"
 # >! Plurals.
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 packages\n"
@@ -2094,7 +2095,7 @@ msgstr[1] "%2 (плус %1 зависности)"
 msgstr[2] "%2 (плус %1 зависности)"
 msgstr[3] "%2 (плус %1 зависност)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr "УРЛ ризнице:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 02:12+0000\n"
+"POT-Creation-Date: 2023-03-06 02:13+0000\n"
 "PO-Revision-Date: 2023-02-28 10:37+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -596,6 +596,7 @@ msgstr "%1 op schijf"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "Starten is mislukt '%1': %2"
@@ -1992,7 +1993,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (plus %1 afhankelijkheid)"
 msgstr[1] "%2 (plus %1 afhankelijkheden)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr "Installatiebron-URL:"
