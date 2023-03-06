@@ -125,7 +125,8 @@ void DummyTest::testProxySorting()
         const QModelIndex mi = pm.index(i, 0);
 
         const auto value = mi.data(pm.sortRole());
-        QVERIFY(i == 0 || value <= lastRatingCount);
+        QVERIFY(i == 0 || QVariant::compare(value, lastRatingCount) == QPartialOrdering::Less
+                || QVariant::compare(value, lastRatingCount) == QPartialOrdering::Equivalent);
         lastRatingCount = value;
     }
 }

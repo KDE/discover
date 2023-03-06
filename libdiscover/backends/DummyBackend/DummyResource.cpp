@@ -20,13 +20,13 @@ DummyResource::DummyResource(QString name, AbstractResource::Type type, Abstract
     : AbstractResource(parent)
     , m_name(std::move(name))
     , m_state(State::Broken)
-    , m_iconName((*s_icons)[KRandom::random() % s_icons->size()])
+    , m_iconName((*s_icons)[QRandomGenerator::global()->bounded(s_icons->size())])
     , m_addons({PackageState(QStringLiteral("a"), QStringLiteral("aaaaaa"), false),
                 PackageState(QStringLiteral("b"), QStringLiteral("aaaaaa"), false),
                 PackageState(QStringLiteral("c"), QStringLiteral("aaaaaa"), false)})
     , m_type(type)
 {
-    const int nofScreenshots = KRandom::random() % 5;
+    const int nofScreenshots = QRandomGenerator::global()->bounded(5);
     m_screenshots =
         Screenshots{
             QUrl(QStringLiteral("https://screenshots.debian.net/screenshots/000/014/863/large.png")),
