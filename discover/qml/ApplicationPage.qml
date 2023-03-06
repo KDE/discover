@@ -436,6 +436,7 @@ DiscoverPage {
 
             // Long app description
             Kirigami.SelectableLabel {
+                objectName: "applicationDescription" // for appium tests
                 Layout.fillWidth: true
                 wrapMode: Text.WordWrap
                 text: appInfo.application.longDescription

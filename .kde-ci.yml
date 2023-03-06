@@ -28,5 +28,9 @@ Dependencies:
     'frameworks/purpose': '@latest'
     'libraries/kuserfeedback': '@stable'
     'third-party/packagekit-qt': '@latest'
+RuntimeDependencies:
+- 'on': ['Linux']
+  'require':
+    'sdk/selenium-webdriver-at-spi': '@latest'
 Options:
   require-passing-tests-on: [ 'Linux', 'FreeBSD']

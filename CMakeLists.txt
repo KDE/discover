@@ -49,6 +49,7 @@ add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS -DQT_NO_URL_CAST_FROM_STRING)
 
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)
 
+add_subdirectory(appiumtests)
 add_subdirectory(libdiscover)
 add_subdirectory(discover)
 add_subdirectory(exporter)

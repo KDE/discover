@@ -167,4 +167,7 @@ Kirigami.AbstractCard {
             }
         }
     }
+
+    Accessible.name: head.text
+    Accessible.onPressAction: trigger()
 }

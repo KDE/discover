@@ -11,6 +11,7 @@ import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.SearchField {
     id: searchField
+    objectName: "searchField" // for appium tests
 
     // Search operations are network-intensive, so we can't have search-as-you-type.
     // This means we should turn off auto-accept entirely, rather than having it on
