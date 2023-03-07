@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-06 02:50+0000\n"
-"PO-Revision-Date: 2023-02-28 09:44+0100\n"
+"PO-Revision-Date: 2023-03-06 16:39+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1608,12 +1608,12 @@ msgstr "S'estan comprovant les signatures…"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
 #, kde-format
 msgid "Test committing…"
-msgstr "S'està provant la publicació…"
+msgstr "S'està provant la comissió…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
 #, kde-format
 msgid "Committing…"
-msgstr "S'està publicant…"
+msgstr "S'està cometent…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
@@ -1705,13 +1705,12 @@ msgstr "Actualment la transacció està comprovant les signatures dels paquets�
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
 msgstr ""
-"Actualment la transacció està provant la publicació d'este conjunt de "
-"paquets…"
+"Actualment la transacció està provant la comissió d'este conjunt de paquets…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
-msgstr "Actualment la transacció està publicant el seu conjunt de paquets…"
+msgstr "Actualment la transacció està cometent el seu conjunt de paquets…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
