@@ -548,11 +548,11 @@ DiscoverPage {
                                                                     homepageButton.implicitHeight,
                                                                     shareButton.implicitHeight,
                                                                     addonsButton.implicitHeight)
-                readonly property int longestLabelWidth: Math.max(helpButton.visible ? helpButton.implicitTitleTextWidth : 0,
-                                                                  homepageButton.visible ? homepageButton.implicitTitleTextWidth: 0,
-                                                                  addonsButton.visible ? addonsButton.implicitTitleTextWidth : 0,
-                                                                  shareButton.visible ? shareButton.implicitTitleTextWidth : 0)
-                readonly property bool stackedlayout: longestLabelWidth + (Kirigami.Units.largeSpacing * 2)
+                readonly property int minWidth: Math.max(helpButton.visible ? helpButton.implicitMinWidth : 0,
+                                                                  homepageButton.visible ? homepageButton.implicitMinWidth: 0,
+                                                                  addonsButton.visible ? addonsButton.implicitMinWidth : 0,
+                                                                  shareButton.visible ? shareButton.implicitMinWidth : 0)
+                readonly property bool stackedlayout: minWidth
                                                       > Math.round(textualContentLayout.width / visibleButtons) - (columnSpacing * visibleButtons)
 
                 Layout.fillWidth: true
@@ -782,10 +782,10 @@ DiscoverPage {
                 readonly property int tallestButtonHeight: Math.max(donateButton.implicitHeight,
                                                                     bugButton.implicitHeight,
                                                                     contributeButton.implicitHeight)
-                readonly property int longestLabelWidth: Math.max(donateButton.visible ? donateButton.implicitTitleTextWidth : 0,
-                                                                  bugButton.visible ? bugButton.implicitTitleTextWidth: 0,
-                                                                  contributeButton.visible ? contributeButton.implicitTitleTextWidth : 0)
-                readonly property bool stackedlayout: longestLabelWidth + (Kirigami.Units.largeSpacing * 2)
+                readonly property int minWidth: Math.max(donateButton.visible ? donateButton.implicitMinWidth : 0,
+                                                          bugButton.visible ? bugButton.implicitMinWidth: 0,
+                                                          contributeButton.visible ? contributeButton.implicitMinWidth : 0)
+                readonly property bool stackedlayout: minWidth
                                                       > Math.round(textualContentLayout.width / visibleButtons) - (columnSpacing * visibleButtons)
 
                 Layout.fillWidth: true

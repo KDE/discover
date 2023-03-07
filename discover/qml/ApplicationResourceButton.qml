@@ -17,7 +17,9 @@ QQC2.Button {
     required property string title
     required property string subtitle
     property string tooltipText
-    readonly property int implicitTitleTextWidth: metrics.width
+    readonly property int implicitMinWidth: leftPadding +
+                                            metrics.width +
+                                            rightPadding
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
