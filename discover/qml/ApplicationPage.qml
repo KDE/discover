@@ -459,8 +459,8 @@ DiscoverPage {
                                                                   homepageButton.visible ? homepageButton.implicitMinWidth: 0,
                                                                   addonsButton.visible ? addonsButton.implicitMinWidth : 0,
                                                                   shareButton.visible ? shareButton.implicitMinWidth : 0)
-                readonly property bool stackedlayout: minWidth
-                                                      > Math.round(textualContentLayout.width / visibleButtons) - (columnSpacing * visibleButtons)
+                readonly property bool stackedlayout: minWidth > Math.round(textualContentLayout.width / visibleButtons) -
+                                                        (columnSpacing * (visibleButtons + 1))
 
                 Layout.fillWidth: true
                 Layout.bottomMargin: appInfo.internalSpacings * 2
@@ -692,8 +692,8 @@ DiscoverPage {
                 readonly property int minWidth: Math.max(donateButton.visible ? donateButton.implicitMinWidth : 0,
                                                           bugButton.visible ? bugButton.implicitMinWidth: 0,
                                                           contributeButton.visible ? contributeButton.implicitMinWidth : 0)
-                readonly property bool stackedlayout: minWidth
-                                                      > Math.round(textualContentLayout.width / visibleButtons) - (columnSpacing * visibleButtons)
+                readonly property bool stackedlayout: minWidth > Math.round(textualContentLayout.width / visibleButtons) -
+                                                        (columnSpacing * (visibleButtons + 1))
 
                 Layout.fillWidth: true
                 Layout.bottomMargin: appInfo.internalSpacings * 2
