@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-03 02:17+0000\n"
-"PO-Revision-Date: 2023-03-05 16:45+0100\n"
+"PO-Revision-Date: 2023-03-07 21:43+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -57,6 +57,10 @@ msgid ""
 "managing software because the PackageKit backend is not well-integrated on "
 "Arch Linux."
 msgstr ""
+"Du kan bruka <command>pacman</command> for å installera valfrie avhengnadar "
+"som er nødvendig for å ta i bruk pakke­motorane.<nl/><nl/>Merk at utviklarane "
+"av Arch Linux tilrår å bruka <command>pacman</command> for pakke­handsaming, "
+"då PackageKit-motoren ikkje er godt integrert på denne distroen."
 
 #: discover/DiscoverObject.cpp:181
 #, kde-format
@@ -68,6 +72,7 @@ msgstr "Lær meir"
 msgid "Could not find category '%1'"
 msgstr "Fann ikkje kategorien «%1»"
 
+# skip-rule: eksistera
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
@@ -138,7 +143,7 @@ msgstr "Vis ei liste over oppføringar med ein kategori."
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
-"Opna Discover i vald modus. Modusar samsvarer med knappane på verktøylinja."
+"Opna Discover i vald modus. Modusar samsvarar med knappane på verktøylinja."
 
 #: discover/main.cpp:46
 #, kde-format
@@ -158,7 +163,7 @@ msgstr "Lokal pakkefil som skal installerast"
 #: discover/main.cpp:49
 #, kde-format
 msgid "List all the available backends."
-msgstr "Vis alle tilgjengelege bakgrunnsmotorar."
+msgstr "Vis alle tilgjengelege pakkemotorar."
 
 #: discover/main.cpp:50
 #, kde-format
@@ -170,6 +175,7 @@ msgstr "Søkjetekst."
 msgid "Lists the available options for user feedback"
 msgstr "Vis tilgjengelege val for tilbakemeldingar"
 
+# skip-rule: url
 #: discover/main.cpp:53
 #, kde-format
 msgid "Supports appstream: url scheme"
@@ -225,7 +231,7 @@ msgstr "karl@huftis.org,oysteins.omsetting@protonmail.com"
 #: discover/main.cpp:152
 #, kde-format
 msgid "Available backends:\n"
-msgstr "Tilgjengelege motorar:\n"
+msgstr "Tilgjengelege pakkemotorar:\n"
 
 #: discover/main.cpp:208
 #, kde-format
@@ -341,7 +347,7 @@ msgstr[1] "Vis fleire …"
 #: discover/qml/ApplicationPage.qml:320
 #, kde-format
 msgid "Content Rating:"
-msgstr "Aldergrense:"
+msgstr "Aldersgrense:"
 
 #: discover/qml/ApplicationPage.qml:329
 #, kde-format
@@ -482,7 +488,7 @@ msgstr "Alle lisensane"
 #: discover/qml/ApplicationPage.qml:811
 #, kde-format
 msgid "Content Rating"
-msgstr "Aldergrense"
+msgstr "Aldersgrense"
 
 #: discover/qml/ApplicationPage.qml:825
 #, kde-format
@@ -504,6 +510,17 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
+"Kjeldekoden til programmet er heilt eller delvis lukka for innsyn og "
+"forbetring. Dette medfører at tredje­partar og brukarar som deg ikkje kan "
+"stadfesta at programmet er trygt å bruka og fungerer slik det det skal. De "
+"kan heller gjera endringar i programmet eller vidare­formidla det til andre "
+"utan eksplisitt samtykke frå opphavspersonane.<nl/><nl/>Det kan vera at "
+"programmet er heilt trygt å bruka, men det kan òg vera at det arbeider mot "
+"deg – for eksempel ved å samla inn persondata, spora kor du oppheld deg "
+"eller senda filene dine til andre. Det finst heller ikkje nokon enkel måte å "
+"finna ut av dette på, så du bør berre installera programmet dersom du stolar "
+"fullt og heilt på utviklarane bak (<link url='%1'>%2</link>).<nl/><nl/>Du "
+"finn meir informasjon på <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:832
 #, kde-kuit-format
@@ -520,6 +537,17 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
+"Kjeldekoden til programmet er heilt eller delvis lukka for innsyn og "
+"forbetring. Dette medfører at tredje­partar og brukarar som deg ikkje kan "
+"stadfesta at programmet er trygt å bruka og fungerer slik det det skal. De "
+"kan heller gjera endringar i programmet eller vidare­formidla det til andre "
+"utan eksplisitt samtykke frå opphavspersonane.<nl/><nl/>Det kan vera at "
+"programmet er heilt trygt å bruka, men det kan òg vera at det arbeider mot "
+"deg – for eksempel ved å samla inn persondata, spora kor du oppheld deg "
+"eller senda filene dine til andre. Det finst heller ikkje nokon enkel måte å "
+"finna ut av dette på, så du bør berre installera programmet dersom du stolar "
+"fullt og heilt på utviklarane bak (%1).<nl/><nl/>Du finn meir informasjon på "
+"<link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
@@ -852,7 +880,7 @@ msgstr "Ressursar for «%1»"
 #: discover/qml/ProgressView.qml:17
 #, kde-format
 msgid "Tasks (%1%)"
-msgstr "Oppgåver (%1 %)"
+msgstr "Oppgåver (%1 %)"
 
 #: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:42
 #, kde-format
@@ -998,7 +1026,7 @@ msgstr "Installer programmet for å skriva ei vurdering"
 #: discover/qml/SearchField.qml:23
 #, kde-format
 msgid "Search…"
-msgstr "Søk …"
+msgstr "Søk …"
 
 #: discover/qml/SearchField.qml:23
 #, kde-format
@@ -1087,6 +1115,7 @@ msgstr ""
 msgid "See Technical Details"
 msgstr "Vis tekniske detaljar"
 
+# skip-rule: pakke-kjonn
 #: discover/qml/UpdatesPage.qml:83
 #, kde-format
 msgid ""
