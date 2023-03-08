@@ -753,6 +753,15 @@ QString FlatpakResource::eolReason()
     return m_eolReason.value_or(QString());
 }
 
+QString createHtmlList(const QStringList &itemList)
+{
+    QString str = QStringLiteral("<ul>");
+    for (const QString &itemText : std::as_const(itemList))
+      str += QStringLiteral("<li>%1</li>").arg(itemText.toHtmlEscaped());
+    str += QStringLiteral("</ul>");
+    return str;
+}
+
 void FlatpakResource::loadPermissions()
 {
     QByteArray metaDataBytes = FlatpakRunnables::fetchMetadata(this, NULL);
@@ -888,7 +897,7 @@ void FlatpakResource::loadPermissions()
         }
     }
 
-    QString appendText = "\n- " + homeList.join("\n- ");
+    QString appendText = createHtmlList(homeList);
     if (homeAccess) {
         brief = i18n("Home Folder Access");
         if (home_rw && home_ro && home_cr) {
@@ -903,7 +912,7 @@ void FlatpakResource::loadPermissions()
         }
         m_permissions.append(FlatpakPermission(brief, description, "inode-directory"));
     }
-    appendText = "\n- " + systemList.join("\n- ");
+    appendText = createHtmlList(systemList);
     if (systemAccess) {
         brief = i18n("System Folder Access");
         if (system_rw && system_ro && system_cr) {
@@ -924,7 +933,7 @@ void FlatpakResource::loadPermissions()
             const QStringList busList = sessionBusGroup.keyList();
             brief = i18n("Session Bus Access");
             description = i18n("Can communicate with other applications and processes in the same desktop session using the following communication protocols: %1",
-                           "\n- " + busList.join("\n- "));
+                           createHtmlList(busList));
             m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
         }
     }
@@ -935,7 +944,7 @@ void FlatpakResource::loadPermissions()
             const QStringList busList = systemBusGroup.keyList();
             brief = i18n("System Bus Access");
             description =
-                i18n("Can communicate with all applications and system services using the following communication protocols: %1", "\n- " + busList.join("\n- "));
+                i18n("Can communicate with all applications and system services using the following communication protocols: %1", createHtmlList(busList));
             m_permissions.append(FlatpakPermission(brief, description, "system-save-session"));
         }
     }
