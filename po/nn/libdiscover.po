@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-06 02:50+0000\n"
-"PO-Revision-Date: 2023-01-15 11:35+0100\n"
+"PO-Revision-Date: 2023-03-07 21:39+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -574,6 +574,9 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
+"<para>Dette programmet kjem frå «%1» (tilgjengeleg frå <link>%2</link>). "
+"Andre program i denne pakke­brønnen vert òg tilgjengelege i Discover når "
+"programmet vert installert.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:426
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:434
@@ -772,6 +775,8 @@ msgid ""
 "Can read, write, and create files in the following locations in your home "
 "folder without asking permission first: %1"
 msgstr ""
+"Kan lesa, skriva og oppretta filer i desse mappene i heimemappa di utan "
+"først å be om løve: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
 #, kde-format
@@ -779,6 +784,8 @@ msgid ""
 "Can read and write files in the following locations in your home folder "
 "without asking permission first: %1"
 msgstr ""
+"Kan lesa og skriva filer i desse mappene i heimemappa di utan først å be om "
+"løve: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
 #, kde-format
@@ -786,6 +793,7 @@ msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
 msgstr ""
+"Kan lesa filer i desse mappene i heimemappa di utan først å be om løve: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:900
 #, kde-format
@@ -793,6 +801,8 @@ msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
 msgstr ""
+"Får tilgang til filer i desse mappene i heimemappa di utan først å be om "
+"løve: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:906
 #, kde-format
@@ -805,6 +815,8 @@ msgid ""
 "Can read, write, and create system files in the following locations without "
 "asking permission first: %1"
 msgstr ""
+"Kan lesa, skriva og oppretta systemfiler i desse mappene utan først å be om "
+"løve: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
@@ -812,13 +824,14 @@ msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr ""
+"Kan lesa og skriva systemfiler i desse mappene utan først å be om løve: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:912
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
-msgstr ""
+msgstr "Kan lesa systemfiler i desse mappene utan først å be om løve: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
 #, kde-format
@@ -826,6 +839,7 @@ msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr ""
+"Får tilgang til systemfiler i desse mappene utan først å be om løve: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:924
 #, kde-format
@@ -833,6 +847,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
+"Kan kommunisera med andre program og prosessar i same skrivebords­økt via "
+"desse kommunikasjons­protokollane: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:936
 #, kde-format
@@ -840,6 +856,8 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr ""
+"Kan kommunisera med alle program og system­tenester via desse "
+"kommunikasjons­protokollane: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:88
 #, kde-format
@@ -857,6 +875,8 @@ msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
 msgstr ""
+"Endringar i prioriteringa av Flatpak-kjelder må setjast i bruk for at dei "
+"skal ha nokon verknad."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
@@ -865,7 +885,7 @@ msgid ""
 "flathub.org"
 msgstr ""
 "Gjer det mogleg å enkelt installera programma som finst på https://flathub."
-"org"
+"org/"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:163
 #, kde-format
@@ -914,7 +934,7 @@ msgstr "Legg til fjernkjelde «%1» i %2 frå %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "Fann ikkje «%1» i «%2». Sjå til at det er tilgjengeleg."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
@@ -972,7 +992,7 @@ msgstr "Les EULA-avtale"
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
 #, kde-format
 msgid "Could not enable remote %1: %2"
-msgstr ""
+msgstr "Klarte ikkje ta i bruk fjernkjelda %1: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
@@ -1103,6 +1123,8 @@ msgid ""
 "Your operating system ended support on %1. Consider upgrading to a supported "
 "version."
 msgstr ""
+"Støtta for operativsystemet ditt gjekk ut %1. Du bør vurdera å oppgradera "
+"til ein nyare versjon."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:765
 #, kde-format
@@ -1174,6 +1196,7 @@ msgstr "Fann ikkje pakkegruppa"
 msgid "Package group list invalid"
 msgstr "Pakkegruppelista er ugyldig"
 
+# skip-rule: passiv
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
 #, kde-format
 msgid "Dependency resolution failed"
@@ -1883,7 +1906,7 @@ msgstr "Reparer systemet"
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
 msgid "Repairing failed offline update"
-msgstr ""
+msgstr "Reparerer mislukka avlogga systemoppdatering"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
 #, kde-format
@@ -1899,7 +1922,7 @@ msgstr "%1<nl/>Meld frå om denne feilen til distribusjonen din."
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
 #, kde-format
 msgid "Repaired Successfully"
-msgstr ""
+msgstr "Repareringa er ferdig"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
 #, kde-format
@@ -1916,7 +1939,7 @@ msgstr[1] "%1 pakkar vart oppdaterte"
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
 #, kde-format
 msgid "Unknown Source"
-msgstr ""
+msgstr "Ukjend kjelde"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
@@ -2009,7 +2032,7 @@ msgstr "Framtid"
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
-msgstr ""
+msgstr "Manglar nok ledig diskplass til å oppdatera. Har berre %1 ledig plass."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:495
 #, kde-format
@@ -2019,6 +2042,9 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"Kan ikkje fullføra oppdateringa, då det ville medføra fjerning av desse "
+"system­kritiske programma:<nl/><ul><li>%1</li></ul><nl/>Om du meiner dette "
+"er ein feil, send inn ein feilrapport til distribusjonen din."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:502
 #, kde-format
@@ -2100,6 +2126,9 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"Kan ikkje fullføra handlinga, då det ville medføra fjerning av desse "
+"system­kritiske programma:<nl/><ul><li>%1</li></ul><nl/>Om du meiner dette "
+"er ein feil, send inn ein feilrapport til distribusjonen din."
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
 #, kde-format
@@ -2151,11 +2180,12 @@ msgstr "Operativsystem"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree: Fann fleire starta deployment-ar. Meld dette inn som ein feil."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree: Fann ingen starta deployment. Meld dette inn som ein feil."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
 #, kde-format
@@ -2164,6 +2194,9 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>Ein ny versjon av %1 er ute!</b>\n"
+"For å kunna oppgradera til denne versjonen må du først installera alle "
+"gjenståande oppdateringane og så starta maskina på nytt."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, kde-format
@@ -2173,7 +2206,7 @@ msgstr "Oppgrader til %1 %2"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr "<b>Ein ny hovudversjon er no tilgjengeleg!</b>"
+msgstr "<b>Ein ny hovudversjon er ute!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:474
 #, kde-format
@@ -2186,11 +2219,15 @@ msgstr ""
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Installer dei nyaste oppdateringane før du går over til den siste "
+"hovudversjonen"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:485
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Manglar fjernreferanse for rebaserings­operasjon. Meld dette inn som ein "
+"feil."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
 #, kde-format
@@ -2200,22 +2237,22 @@ msgstr "GPL og andre lisensar"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
 msgid "Additional packages: "
-msgstr ":"
+msgstr "Tilleggspakkar: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
 #, kde-format
 msgid "Additional modules: "
-msgstr ""
+msgstr "Tilleggsmodular: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
 #, kde-format
 msgid "Local packages: "
-msgstr "Lokale pakkar:"
+msgstr "Lokale pakkar: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
 #, kde-format
 msgid "Replaced packages:"
-msgstr ""
+msgstr "Utbytte pakkar:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
 #, kde-format
@@ -2225,44 +2262,44 @@ msgstr "Fjerna pakkar:"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr ""
+msgstr "Starta versjon (festa)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
 #, kde-format
 msgid "Currently booted version"
-msgstr ""
+msgstr "Starta versjon"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Versjon brukt etter omstart"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "Reserveversjon (festa)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "Reserveversjon"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
 msgid "ostree remotes"
-msgstr ""
+msgstr "OSTree-fjernkjelder"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr ""
+msgstr "Feil ved rpm-ostree-transaksjon:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
-msgstr ""
+msgstr "Avbryt rpm-ostree-transaksjon. Dette kan ta ei stund."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
 #, kde-format
@@ -2336,11 +2373,13 @@ msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this computer. Install it anyway?"
 msgstr ""
+"Snap-programmet er ikkje kompatibelt med sandkasse-tryggleik, og det får "
+"derfor full tilgang til datamaskina. Vil du likevel installera det?"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "SteamOS: Klarte ikkje spørja atomupd om SteamOS-oppdateringar …"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
