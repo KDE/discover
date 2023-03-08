@@ -507,7 +507,7 @@ DiscoverPage {
             id: textualContentLayout
 
             Layout.fillWidth: true
-            Layout.maximumWidth: Kirigami.Units.gridUnit * 35
+            Layout.maximumWidth: Math.max(Math.round(appInfo.width * 0.75), Kirigami.Units.gridUnit * 35)
             Layout.margins: appInfo.pageContentMargins
             Layout.alignment: Qt.AlignHCenter
 
