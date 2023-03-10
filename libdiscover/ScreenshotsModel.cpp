@@ -77,7 +77,7 @@ QVariant ScreenshotsModel::data(const QModelIndex &index, int role) const
     case IsAnimatedRole:
         return m_screenshots[index.row()].isAnimated;
     case TypeRole:
-        // 0 is image from MaximizeModelItem.Type
+        // 0 is image from AlbumModelItem.Type
         // TODO: make enum available in c++ as well
         return 0;
     }
