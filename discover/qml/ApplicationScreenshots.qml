@@ -96,13 +96,13 @@ ListView {
         }
     }
 
-    Components.MaximizeComponent {
+    Components.AlbumMaximizeComponent {
         id: overlay
         itemModel: screenshotsModel
         initialIndex: root.currentIndex
 
         title: root.resource.name
-        leader: Kirigami.Icon {
+        leading: Kirigami.Icon {
             source: root.resource.icon
         }
         actions: []
