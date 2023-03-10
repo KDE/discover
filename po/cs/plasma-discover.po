@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-03 02:17+0000\n"
-"PO-Revision-Date: 2023-02-24 10:57+0100\n"
+"PO-Revision-Date: 2023-03-03 11:24+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -1082,8 +1082,7 @@ msgid "Error message copied to clipboard"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:134
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Aktualizovat vše"
@@ -1182,6 +1181,3 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#~ msgid "Update Selected"
-#~ msgstr "Aktualizovat vybrané"

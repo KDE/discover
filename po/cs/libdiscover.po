@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-06 02:13+0000\n"
-"PO-Revision-Date: 2023-01-30 22:11+0100\n"
+"PO-Revision-Date: 2023-03-01 16:26+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1888,10 +1888,9 @@ msgstr[1] "%1 balíčky byly úspěšně aktualizovány"
 msgstr[2] "%1 balíčků bylo úspěšně aktualizováno"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Neznámý stav"
+msgstr "Neznámý zdroj"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
