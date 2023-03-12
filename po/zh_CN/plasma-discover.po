@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-25 04:10+0000\n"
-"PO-Revision-Date: 2023-02-24 12:58\n"
+"PO-Revision-Date: 2023-03-11 04:55\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -605,7 +605,7 @@ msgstr "在“%2”分类中没有找到“%1”"
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
-msgstr "“%1”无法在可用来源中找到"
+msgstr "无法在可用来源中找到“%1”"
 
 #: discover/qml/ApplicationsListPage.qml:207
 #, kde-format
@@ -615,8 +615,8 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
-"“%1”可能可以通过互联网获取。从互联网上获取的软件并未经过您所安装的发行版的审"
-"查，无法确保功能正常或稳定性。请谨慎使用。"
+"您或许可以通过互联网下载“%1”。请注意：从互联网获取的软件没有经过本机系统分发"
+"组织的审核，无法保证在本机系统中运行时的功能和稳定性。请谨慎操作。"
 
 #: discover/qml/ApplicationsListPage.qml:240
 #, kde-format
