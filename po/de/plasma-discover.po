@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-03 02:17+0000\n"
-"PO-Revision-Date: 2023-02-07 21:55+0100\n"
+"PO-Revision-Date: 2023-02-25 23:55+0100\n"
 "Last-Translator: Jannick Kuhr <opensource@kuhr.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -298,7 +298,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "Von %1"
 
 #: discover/qml/ApplicationPage.qml:76
 #, kde-format
@@ -321,13 +321,11 @@ msgid "Size:"
 msgstr "Größe:"
 
 #: discover/qml/ApplicationPage.qml:262
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Lizenz"
-msgstr[1] "Lizenz:"
+msgstr[0] "Lizenz:"
+msgstr[1] "Lizenzen:"
 
 #: discover/qml/ApplicationPage.qml:270
 #, kde-format
@@ -348,10 +346,9 @@ msgstr[0] "Mehr ..."
 msgstr[1] "Mehr …"
 
 #: discover/qml/ApplicationPage.qml:320
-#, fuzzy, kde-format
-#| msgid "Content Rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "Inhaltsbewertungen"
+msgstr "Inhaltsbewertungen:"
 
 #: discover/qml/ApplicationPage.qml:329
 #, kde-format
@@ -865,16 +862,13 @@ msgid "Loading…"
 msgstr "Wird geladen ..."
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
-#| msgid "Install from %1"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "Von %1 installieren"
 
 #: discover/qml/InstallApplicationButton.qml:32
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Installieren"
