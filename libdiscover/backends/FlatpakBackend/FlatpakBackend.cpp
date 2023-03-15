@@ -849,7 +849,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
             const QString ref = composeRef(isRuntime, name, branch);
             auto searchComponent = [this, stream, source, ref] {
                 auto comps = source->componentsByFlatpakId(ref);
-                auto resources = kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
+                auto resources = kTransform<QVector<StreamResult>>(comps, [this, source](const auto &comp) {
                     return resourceForComponent(comp, source);
                 });
                 Q_EMIT stream->resourcesFound(resources);
@@ -903,17 +903,14 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
                 auto runtime = getRuntimeForApp(resource);
                 if (!runtime || (runtime && !runtime->isInstalled())) {
                     auto repoStream = new ResultsStream(QLatin1String("FlatpakStream-searchrepo-") + runtimeUrl.toString());
-                    connect(repoStream,
-                            &ResultsStream::resourcesFound,
-                            this,
-                            [this, resource, stream, refSource](const QVector<AbstractResource *> &resources) {
-                                for (auto res : resources) {
-                                    installApplication(res);
-                                }
-                                refSource->addResource(resource);
-                                Q_EMIT stream->resourcesFound({resource});
-                                stream->finish();
-                            });
+                    connect(repoStream, &ResultsStream::resourcesFound, this, [this, resource, stream, refSource](const QVector<StreamResult> &resources) {
+                        for (auto res : resources) {
+                            installApplication(res.resource);
+                        }
+                        refSource->addResource(resource);
+                        Q_EMIT stream->resourcesFound({resource});
+                        stream->finish();
+                    });
 
                     auto fetchRemoteResource = new FlatpakFetchRemoteResourceJob(runtimeUrl, repoStream, this);
                     fetchRemoteResource->start();
@@ -1429,6 +1426,14 @@ int FlatpakBackend::updatesCount() const
     return m_updater->updatesCount();
 }
 
+bool FlatpakBackend::flatpakResourceLessThan(const StreamResult &l, const StreamResult &r) const
+{
+    if (l.sortScore == r.sortScore) {
+        return flatpakResourceLessThan(l.resource, r.resource);
+    }
+    return l.sortScore < r.sortScore;
+}
+
 bool FlatpakBackend::flatpakResourceLessThan(AbstractResource *l, AbstractResource *r) const
 {
     // clang-format off
@@ -1463,7 +1468,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 }
 
                 const auto refs = fw->result();
-                QVector<AbstractResource *> resources;
+                QVector<StreamResult> resources;
                 for (auto it = refs.constBegin(), itEnd = refs.constEnd(); it != itEnd; ++it) {
                     resources.reserve(resources.size() + it->size());
                     for (auto ref : std::as_const(it.value())) {
@@ -1535,7 +1540,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     } else if (filter.state == AbstractResource::Installed) {
         auto stream = new ResultsStream(QStringLiteral("FlatpakStream-installed"));
         auto f = [this, stream, filter] {
-            QVector<AbstractResource *> resources;
+            QVector<StreamResult> resources;
             for (auto installation : std::as_const(m_installations)) {
                 g_autoptr(GError) localError = nullptr;
                 g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(installation, m_cancellable, &localError);
@@ -1581,7 +1586,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
 
     auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
     auto f = [this, stream, filter]() {
-        QVector<AbstractResource *> prioritary, rest;
+        QVector<StreamResult> prioritary, rest;
         for (const auto &source : std::as_const(m_flatpakSources)) {
             QList<FlatpakResource *> resources;
             if (source->m_pool) {
@@ -1620,7 +1625,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 }
             }
         }
-        auto f = [this](AbstractResource *l, AbstractResource *r) {
+        auto f = [this](auto l, auto r) {
             return flatpakResourceLessThan(l, r);
         };
         std::sort(rest.begin(), rest.end(), f);
@@ -1649,18 +1654,18 @@ bool FlatpakBackend::isTracked(FlatpakResource *resource) const
     return false;
 }
 
-QVector<AbstractResource *> FlatpakBackend::resourcesByAppstreamName(const QString &name) const
+QVector<StreamResult> FlatpakBackend::resultsByAppstreamName(const QString &name) const
 {
-    QVector<AbstractResource *> resources;
+    QVector<StreamResult> resources;
     for (const auto &source : m_flatpakSources) {
         if (source->m_pool) {
             auto comps = source->componentsByName(name);
-            resources << kTransform<QVector<AbstractResource *>>(comps, [this, source](const auto &comp) {
-                return resourceForComponent(comp, source);
+            resources << kTransform<QVector<StreamResult>>(comps, [this, source](const AppStream::Component &comp) -> StreamResult {
+                return {resourceForComponent(comp, source), comp.sortScore()};
             });
         }
     }
-    auto f = [this](AbstractResource *l, AbstractResource *r) {
+    auto f = [this](auto l, auto r) {
         return flatpakResourceLessThan(l, r);
     };
     std::sort(resources.begin(), resources.end(), f);
@@ -1677,11 +1682,11 @@ ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
             auto stream = new ResultsStream(QStringLiteral("FlatpakStream-AppStreamUrl"));
             auto f = [this, stream, appstreamIds] {
                 std::set<AbstractResource *> resources;
-                QVector<AbstractResource *> resourcesVector;
+                QVector<StreamResult> resourcesVector;
                 for (const auto &appstreamId : appstreamIds) {
-                    const auto resourcesFound = resourcesByAppstreamName(appstreamId);
+                    const auto resourcesFound = resultsByAppstreamName(appstreamId);
                     for (auto res : resourcesFound) {
-                        auto [x, inserted] = resources.insert(res);
+                        auto [x, inserted] = resources.insert(res.resource);
                         if (inserted) {
                             resourcesVector.append(res);
                         }

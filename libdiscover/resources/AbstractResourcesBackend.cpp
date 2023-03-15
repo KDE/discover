@@ -7,6 +7,7 @@
 #include "AbstractResourcesBackend.h"
 #include "Category/Category.h"
 #include "libdiscover_debug.h"
+#include "utils.h"
 #include <KLocalizedString>
 #include <QHash>
 #include <QMetaObject>
@@ -36,10 +37,12 @@ QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters &filters
     return debug;
 }
 
-ResultsStream::ResultsStream(const QString &objectName, const QVector<AbstractResource *> &resources)
+ResultsStream::ResultsStream(const QString &objectName, const QVector<StreamResult> &resources)
     : ResultsStream(objectName)
 {
-    Q_ASSERT(!resources.contains(nullptr));
+    Q_ASSERT(!kContains(resources, [](const StreamResult &res) {
+        return res.resource == nullptr;
+    }));
     QTimer::singleShot(0, this, [resources, this]() {
         if (!resources.isEmpty())
             Q_EMIT resourcesFound(resources);
@@ -132,6 +135,16 @@ void AbstractResourcesBackend::Filters::filterJustInCase(QVector<AbstractResourc
 {
     for (auto it = input.begin(); it != input.end();) {
         if (shouldFilter(*it))
+            ++it;
+        else
+            it = input.erase(it);
+    }
+}
+
+void AbstractResourcesBackend::Filters::filterJustInCase(QVector<StreamResult> &input) const
+{
+    for (auto it = input.begin(); it != input.end();) {
+        if (shouldFilter(it->resource))
             ++it;
         else
             it = input.erase(it);

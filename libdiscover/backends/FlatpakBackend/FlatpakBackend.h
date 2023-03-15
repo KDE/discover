@@ -100,6 +100,7 @@ private:
     friend class FlatpakSource;
 
     void metadataRefreshed(FlatpakRemote *remote);
+    bool flatpakResourceLessThan(const StreamResult &l, const StreamResult &r) const;
     bool flatpakResourceLessThan(AbstractResource *l, AbstractResource *r) const;
     FlatpakInstallation *preferredInstallation() const
     {
@@ -124,7 +125,7 @@ private:
     void updateAppState(FlatpakResource *resource);
     QSharedPointer<FlatpakSource> findSource(FlatpakInstallation *installation, const QString &origin) const;
 
-    QVector<AbstractResource *> resourcesByAppstreamName(const QString &name) const;
+    QVector<StreamResult> resultsByAppstreamName(const QString &name) const;
     void acquireFetching(bool f);
     void checkForRemoteUpdates(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     void createPool(QSharedPointer<FlatpakSource> source);

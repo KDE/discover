@@ -165,8 +165,10 @@ private:
         Q_ASSERT(stream);
         QSignalSpy spyResources(stream, &ResultsStream::destroyed);
         QVector<AbstractResource *> resources;
-        connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QVector<AbstractResource *> &res) {
-            resources += res;
+        connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QVector<StreamResult> &res) {
+            for (auto result : res) {
+                resources += result.resource;
+            }
         });
         Q_ASSERT(spyResources.wait(100000));
         Q_ASSERT(!resources.isEmpty() || canBeEmpty);

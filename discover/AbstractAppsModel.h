@@ -18,7 +18,7 @@ class AbstractAppsModel : public QAbstractListModel
 public:
     AbstractAppsModel();
 
-    void setResources(const QVector<AbstractResource *> &resources);
+    void setResources(const QVector<StreamResult> &resources);
     QVariant data(const QModelIndex &index, int role) const override;
     int rowCount(const QModelIndex &parent) const override;
     QHash<int, QByteArray> roleNames() const override;
@@ -51,7 +51,7 @@ protected:
     void acquireFetching(bool f);
 
 private:
-    QVector<AbstractResource *> m_resources;
+    QVector<StreamResult> m_resources;
     int m_isFetching = 0;
     AbstractResourcesBackend *m_backend = nullptr;
     QVector<QUrl> m_uris;

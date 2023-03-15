@@ -548,8 +548,8 @@ QList<AppStream::Component> PackageKitBackend::componentsById(const QString &id)
     return comps;
 }
 
-static const auto needsResolveFilter = [](AbstractResource *res) {
-    return res->state() == AbstractResource::Broken;
+static const auto needsResolveFilter = [](const StreamResult &res) {
+    return res.resource->state() == AbstractResource::Broken;
 };
 
 class PKResultsStream : public ResultsStream
@@ -561,7 +561,7 @@ public:
     {
     }
 
-    PKResultsStream(PackageKitBackend *backend, const QString &name, const QVector<AbstractResource *> &resources)
+    PKResultsStream(PackageKitBackend *backend, const QString &name, const QVector<StreamResult> &resources)
         : ResultsStream(name)
         , backend(backend)
     {
@@ -570,7 +570,7 @@ public:
         });
     }
 
-    void sendResources(const QVector<AbstractResource *> &res, bool waitForResolved = false)
+    void sendResources(const QVector<StreamResult> &res, bool waitForResolved = false)
     {
         if (res.isEmpty()) {
             finish();
@@ -578,10 +578,10 @@ public:
         }
 
         Q_ASSERT(res.size() == QSet(res.constBegin(), res.constEnd()).size());
-        const auto toResolve = kFilter<QVector<AbstractResource *>>(res, needsResolveFilter);
+        const auto toResolve = kFilter<QVector<StreamResult>>(res, needsResolveFilter);
         if (!toResolve.isEmpty()) {
-            auto transaction = backend->resolvePackages(kTransform<QStringList>(toResolve, [](AbstractResource *res) {
-                return res->packageName();
+            auto transaction = backend->resolvePackages(kTransform<QStringList>(toResolve, [](const StreamResult &res) {
+                return res.resource->packageName();
             }));
             if (waitForResolved) {
                 Q_ASSERT(transaction);
@@ -609,14 +609,14 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-extends"));
         auto f = [this, filter, stream] {
             const auto extendingComponents = m_appdata->componentsByExtends(filter.extends);
-            auto resources = resourcesByComponents<QVector<AbstractResource *>>(extendingComponents);
+            auto resources = resultsByComponents(extendingComponents);
             stream->sendResources(resources, filter.state != AbstractResource::Broken);
         };
         runWhenInitialized(f, stream);
         return stream;
     } else if (filter.state == AbstractResource::Upgradeable) {
         return new ResultsStream(QStringLiteral("PackageKitStream-upgradeable"),
-                                 kTransform<QVector<AbstractResource *>>(upgradeablePackages())); // No need for it to be a PKResultsStream
+                                 kTransform<QVector<StreamResult>>(upgradeablePackages())); // No need for it to be a PKResultsStream
     } else if (filter.state == AbstractResource::Installed) {
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-installed"));
         auto f = [this, stream, filter] {
@@ -634,7 +634,9 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 connect(m_resolveTransaction, &PKResolveTransaction::allFinished, this, [stream, toResolve, installedAndNameFilter] {
                     const auto resolved = kFilter<QVector<AbstractResource *>>(toResolve, installedAndNameFilter);
                     if (!resolved.isEmpty())
-                        Q_EMIT stream->resourcesFound(resolved);
+                        Q_EMIT stream->resourcesFound(kTransform<QVector<StreamResult>>(resolved, [](auto resource) {
+                            return StreamResult{resource, 0};
+                        }));
                     stream->finish();
                 });
                 furtherSearch = true;
@@ -644,7 +646,9 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
             if (!resolved.isEmpty()) {
                 QTimer::singleShot(0, this, [resolved, toResolve, stream]() {
                     if (!resolved.isEmpty())
-                        Q_EMIT stream->resourcesFound(resolved);
+                        Q_EMIT stream->resourcesFound(kTransform<QVector<StreamResult>>(resolved, [](auto resource) {
+                            return StreamResult{resource, 0};
+                        }));
 
                     if (toResolve.isEmpty())
                         stream->finish();
@@ -664,7 +668,9 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource *>(res)->isCritical()
                     && !qobject_cast<PackageKitResource *>(res)->extendsItself();
             });
-            stream->sendResources(resources);
+            stream->sendResources(kTransform<QVector<StreamResult>>(resources, [](auto resource) {
+                return StreamResult{resource, 0};
+            }));
         };
         runWhenInitialized(f, stream);
         return stream;
@@ -686,8 +692,8 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 return true;
             });
             if (!ids.isEmpty()) {
-                const auto resources = kFilter<QVector<AbstractResource *>>(resourcesByComponents<QVector<AbstractResource *>>(components), [](AbstractResource *res) {
-                    return !qobject_cast<PackageKitResource *>(res)->extendsItself();
+                const auto resources = kFilter<QVector<StreamResult>>(resultsByComponents(components), [](const StreamResult &res) {
+                    return !qobject_cast<PackageKitResource *>(res.resource)->extendsItself();
                 });
                 stream->sendResources(resources, filter.state != AbstractResource::Broken);
             } else {
@@ -727,14 +733,14 @@ PKResultsStream *PackageKitBackend::findResourceByPackageName(const QUrl &url)
         else {
             auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-appstream-url"));
             const auto f = [this, appstreamIds, stream]() {
-                auto toSend = QSet<AbstractResource *>();
+                auto toSend = QSet<StreamResult>();
                 toSend.reserve(appstreamIds.size());
                 for (const auto &appstreamId : appstreamIds) {
                     const auto comps = componentsById(appstreamId);
                     if (comps.isEmpty()) {
                         continue;
                     }
-                    auto resources = resourcesByComponents<QVector<AbstractResource *>>(comps);
+                    const auto resources = resultsByComponents(comps);
                     for (const auto &r : resources) {
                         toSend.insert(r);
                     }
@@ -762,6 +768,23 @@ T PackageKitBackend::resourcesByComponents(const QList<AppStream::Component> &co
         auto r = addComponent(comp);
         Q_ASSERT(r);
         ret << r;
+    }
+    return ret;
+}
+
+QVector<StreamResult> PackageKitBackend::resultsByComponents(const QList<AppStream::Component> &comps) const
+{
+    QVector<StreamResult> ret;
+    ret.reserve(comps.size());
+    QSet<QString> done;
+    for (const auto &comp : comps) {
+        if (comp.packageNames().isEmpty() || done.contains(comp.id())) {
+            continue;
+        }
+        done += comp.id();
+        auto r = addComponent(comp);
+        Q_ASSERT(r);
+        ret << StreamResult{r, comp.sortScore()};
     }
     return ret;
 }

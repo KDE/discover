@@ -152,6 +152,8 @@ private:
     template<typename T>
     T resourcesByComponents(const QList<AppStream::Component> &names) const;
 
+    QVector<StreamResult> resultsByComponents(const QList<AppStream::Component> &names) const;
+
     void runWhenInitialized(const std::function<void()> &f, QObject *stream);
 
     void checkDaemonRunning();

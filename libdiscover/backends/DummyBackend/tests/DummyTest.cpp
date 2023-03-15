@@ -54,10 +54,10 @@ void DummyTest::initTestCase()
     }
 }
 
-QVector<AbstractResource *> fetchResources(ResultsStream *stream)
+QVector<StreamResult> fetchResources(ResultsStream *stream)
 {
-    QVector<AbstractResource *> ret;
-    QObject::connect(stream, &ResultsStream::resourcesFound, stream, [&ret](const QVector<AbstractResource *> &res) {
+    QVector<StreamResult> ret;
+    QObject::connect(stream, &ResultsStream::resourcesFound, stream, [&ret](const QVector<StreamResult> &res) {
         ret += res;
     });
     QSignalSpy spy(stream, &ResultsStream::destroyed);
@@ -71,8 +71,8 @@ void DummyTest::testReadData()
 
     QCOMPARE(m_appBackend->property("startElements").toInt() * 2, resources.size());
     QBENCHMARK {
-        for (AbstractResource *res : resources) {
-            QVERIFY(!res->name().isEmpty());
+        for (StreamResult res : resources) {
+            QVERIFY(!res.resource->name().isEmpty());
         }
     }
 }
@@ -181,7 +181,7 @@ void DummyTest::testInstallAddons()
 
     const auto resources = fetchResources(m_appBackend->search(filter));
     QCOMPARE(resources.count(), 1);
-    AbstractResource *res = resources.first();
+    AbstractResource *res = resources.first().resource;
     QVERIFY(res);
 
     ApplicationAddonsModel m;
@@ -221,7 +221,7 @@ void DummyTest::testReviewsModel()
 
     const auto resources = fetchResources(m_appBackend->search(filter));
     QCOMPARE(resources.count(), 1);
-    AbstractResource *res = resources.first();
+    AbstractResource *res = resources.first().resource;
     QVERIFY(res);
 
     ReviewsModel m;
@@ -239,7 +239,7 @@ void DummyTest::testReviewsModel()
 
     const auto resources2 = fetchResources(m_appBackend->search(filter));
     QCOMPARE(resources2.count(), 1);
-    res = resources2.first();
+    res = resources2.first().resource;
     m.setResource(res);
     m.fetchMore();
 
@@ -271,7 +271,7 @@ void DummyTest::testScreenshotsModel()
 
     const auto resources = fetchResources(m_appBackend->search(filter));
     QCOMPARE(resources.count(), 1);
-    AbstractResource *res = resources.first();
+    AbstractResource *res = resources.first().resource;
     QVERIFY(res);
     m.setResource(res);
     QCOMPARE(res, m.resource());

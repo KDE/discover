@@ -31,14 +31,14 @@ Q_SIGNALS:
     void finished();
 
 private:
-    void addResults(const QVector<AbstractResource *> &res);
+    void addResults(const QVector<StreamResult> &res);
     void emitResults();
     void streamDestruction(QObject *obj);
     void resourceDestruction(QObject *obj);
     void clear();
 
     QSet<QObject *> m_streams;
-    QVector<AbstractResource *> m_results;
+    QVector<StreamResult> m_results;
     QTimer m_delayedEmission;
 };
 

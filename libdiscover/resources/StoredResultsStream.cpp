@@ -9,20 +9,25 @@
 StoredResultsStream::StoredResultsStream(const QSet<ResultsStream *> &streams)
     : AggregatedResultsStream(streams)
 {
-    connect(this, &ResultsStream::resourcesFound, this, [this](const QVector<AbstractResource *> &resources) {
+    connect(this, &ResultsStream::resourcesFound, this, [this](const QVector<StreamResult> &resources) {
         for (auto r : resources)
-            connect(r, &QObject::destroyed, this, [this, r]() {
-                m_resources.removeAll(r);
+            connect(r.resource, &QObject::destroyed, this, [this, r]() {
+                for (auto it = m_results.begin(); it != m_results.end(); ++it) {
+                    if (r.resource == it->resource)
+                        it = m_results.erase(it);
+                    else
+                        ++it;
+                }
             });
-        m_resources += resources;
+        m_results += resources;
     });
 
     connect(this, &AggregatedResultsStream::finished, this, [this]() {
-        Q_EMIT finishedResources(m_resources);
+        Q_EMIT finishedResources(m_results);
     });
 }
 
-QVector<AbstractResource *> StoredResultsStream::resources() const
+QVector<StreamResult> StoredResultsStream::resources() const
 {
-    return m_resources;
+    return m_results;
 }

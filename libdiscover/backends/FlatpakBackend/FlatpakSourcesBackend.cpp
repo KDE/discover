@@ -158,9 +158,9 @@ bool FlatpakSourcesBackend::addSource(const QString &id)
     if (id.isEmpty() || !flatpakrepoUrl.isValid())
         return false;
 
-    auto addSource = [=](AbstractResource *res) {
-        if (res)
-            backend->installApplication(res);
+    auto addSource = [=](const StreamResult &res) {
+        if (res.resource)
+            backend->installApplication(res.resource);
         else
             Q_EMIT backend->passiveMessage(i18n("Could not add the source %1", flatpakrepoUrl.toDisplayString()));
     };
@@ -168,7 +168,7 @@ bool FlatpakSourcesBackend::addSource(const QString &id)
     if (flatpakrepoUrl.isLocalFile()) {
         auto stream = new ResultsStream(QStringLiteral("FlatpakSource-") + flatpakrepoUrl.toDisplayString());
         backend->addSourceFromFlatpakRepo(flatpakrepoUrl, stream);
-        connect(stream, &ResultsStream::resourcesFound, this, [addSource](const QVector<AbstractResource *> &res) {
+        connect(stream, &ResultsStream::resourcesFound, this, [addSource](const QVector<StreamResult> &res) {
             addSource(res.constFirst());
         });
     } else {

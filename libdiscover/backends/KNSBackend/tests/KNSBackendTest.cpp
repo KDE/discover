@@ -53,8 +53,10 @@ QVector<AbstractResource *> KNSBackendTest::getResources(ResultsStream *stream, 
     Q_ASSERT(stream->objectName() != QLatin1String("KNS-void"));
     QSignalSpy spyResources(stream, &ResultsStream::destroyed);
     QVector<AbstractResource *> resources;
-    connect(stream, &ResultsStream::resourcesFound, this, [&resources, stream](const QVector<AbstractResource *> &res) {
-        resources += res;
+    connect(stream, &ResultsStream::resourcesFound, this, [&resources, stream](const QVector<StreamResult> &res) {
+        resources += kTransform<QVector<AbstractResource *>>(res, [](auto result) {
+            return result.resource;
+        });
         Q_EMIT stream->fetchMore();
     });
     bool waited = spyResources.wait(10000);

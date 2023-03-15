@@ -393,7 +393,7 @@ void KNSBackend::receivedEntries(const KNSCore::Entry::List &entries)
     const auto filtered = kFilter<KNSCore::Entry::List>(entries, [](const KNSCore::Entry &entry) {
         return entry.isValid();
     });
-    const auto resources = kTransform<QVector<AbstractResource *>>(filtered, [this](const KNSCore::Entry &entry) {
+    const auto resources = kTransform<QVector<StreamResult>>(filtered, [this](const KNSCore::Entry &entry) {
         return resourceForEntry(entry);
     });
 
@@ -567,7 +567,9 @@ ResultsStream *KNSBackend::search(const AbstractResourcesBackend::Filters &filte
                 const auto ret = kFilter<QVector<AbstractResource *>>(m_resourcesByName, filterFunction);
 
                 if (!ret.isEmpty())
-                    Q_EMIT stream->resourcesFound(ret);
+                    Q_EMIT stream->resourcesFound(kTransform<QVector<StreamResult>>(ret, [](auto resource) {
+                        return StreamResult{resource, 0};
+                    }));
             }
             stream->finish();
         };

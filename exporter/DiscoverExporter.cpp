@@ -64,11 +64,11 @@ void DiscoverExporter::fetchResources()
     QTimer::singleShot(15s, stream, &AggregatedResultsStream::finished);
 }
 
-void DiscoverExporter::exportResources(const QVector<AbstractResource *> &resources)
+void DiscoverExporter::exportResources(const QVector<StreamResult> &resources)
 {
     QJsonArray data;
     for (auto res : resources) {
-        data += itemDataToMap(res, m_exculdedProperties);
+        data += itemDataToMap(res.resource, m_exculdedProperties);
     }
 
     QJsonDocument doc = QJsonDocument(data);

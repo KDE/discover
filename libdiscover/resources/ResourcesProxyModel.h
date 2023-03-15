@@ -123,6 +123,7 @@ public:
         return m_currentStream != nullptr;
     }
 
+    bool lessThan(const StreamResult &left, const StreamResult &right) const;
     bool lessThan(AbstractResource *rl, AbstractResource *rr) const;
     Q_SCRIPTABLE void invalidateFilter();
     void invalidateSorting();
@@ -144,14 +145,18 @@ private Q_SLOTS:
     void removeResource(AbstractResource *resource);
 
 private:
-    void sortedInsertion(const QVector<AbstractResource *> &res);
+    void sortedInsertion(const QVector<StreamResult> &res);
+    QVariant roleToValue(const StreamResult &result, int role) const
+    {
+        return roleToValue(result.resource, role);
+    }
     QVariant roleToValue(AbstractResource *res, int role) const;
 
     QVector<int> propertiesToRoles(const QVector<QByteArray> &properties) const;
-    void addResources(const QVector<AbstractResource *> &res);
+    void addResources(const QVector<StreamResult> &res);
     void fetchSubcategories();
-    void removeDuplicates(QVector<AbstractResource *> &newResources);
-    bool isSorted(const QVector<AbstractResource *> &resources);
+    void removeDuplicates(QVector<StreamResult> &newResources);
+    bool isSorted(const QVector<StreamResult> &resources);
 
     Roles m_sortRole;
     Qt::SortOrder m_sortOrder;
@@ -163,7 +168,7 @@ private:
     AbstractResourcesBackend::Filters m_filters;
     QVariantList m_subcategories;
 
-    QVector<AbstractResource *> m_displayedResources;
+    QVector<StreamResult> m_displayedResources;
     static const QHash<int, QByteArray> s_roles;
     ResultsStream *m_currentStream;
 

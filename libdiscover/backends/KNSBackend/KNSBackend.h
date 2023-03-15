@@ -75,7 +75,7 @@ public:
     QString displayName() const override;
 
 Q_SIGNALS:
-    void receivedResources(const QVector<AbstractResource *> &resources);
+    void receivedResources(const QVector<StreamResult> &resources);
     void searchFinished();
     void startingSearch();
     void availableForQueries();

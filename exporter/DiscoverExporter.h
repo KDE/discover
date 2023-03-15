@@ -10,7 +10,7 @@
 #include <QTimer>
 #include <QUrl>
 
-class AbstractResource;
+class StreamResult;
 
 class DiscoverExporter : public QObject
 {
@@ -23,7 +23,7 @@ public:
 
 public Q_SLOTS:
     void fetchResources();
-    void exportResources(const QVector<AbstractResource *> &resources);
+    void exportResources(const QVector<StreamResult> &resources);
 
 Q_SIGNALS:
     void exportDone();

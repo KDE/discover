@@ -323,10 +323,10 @@ AggregatedResultsStream::AggregatedResultsStream(const QSet<ResultsStream *> &st
 
 AggregatedResultsStream::~AggregatedResultsStream() = default;
 
-void AggregatedResultsStream::addResults(const QVector<AbstractResource *> &res)
+void AggregatedResultsStream::addResults(const QVector<StreamResult> &res)
 {
     for (auto r : res)
-        connect(r, &QObject::destroyed, this, &AggregatedResultsStream::resourceDestruction);
+        connect(r.resource, &QObject::destroyed, this, &AggregatedResultsStream::resourceDestruction);
 
     m_results += res;
 
@@ -345,7 +345,12 @@ void AggregatedResultsStream::emitResults()
 
 void AggregatedResultsStream::resourceDestruction(QObject *obj)
 {
-    m_results.removeAll(qobject_cast<AbstractResource *>(obj));
+    for (auto it = m_results.begin(); it != m_results.end(); ++it) {
+        if (obj == it->resource)
+            it = m_results.erase(it);
+        else
+            ++it;
+    }
 }
 
 void AggregatedResultsStream::streamDestruction(QObject *obj)

@@ -102,7 +102,7 @@ int DummyBackend::updatesCount() const
 
 ResultsStream *DummyBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
-    QVector<AbstractResource *> ret;
+    QVector<StreamResult> ret;
     if (!filter.resourceUrl.isEmpty())
         return findResourceByPackageName(filter.resourceUrl);
     else

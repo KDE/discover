@@ -291,9 +291,9 @@ void DiscoverObject::openLocalPackage(const QUrl &localfile)
             AbstractResourcesBackend::Filters f;
             f.resourceUrl = localfile;
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
-            connect(stream, &StoredResultsStream::finishedResources, this, [this, localfile](const QVector<AbstractResource *> &res) {
+            connect(stream, &StoredResultsStream::finishedResources, this, [this, localfile](const QVector<StreamResult> &res) {
                 if (res.count() == 1) {
-                    Q_EMIT openApplicationInternal(res.first());
+                    Q_EMIT openApplicationInternal(res.first().resource);
                 } else {
                     QMimeDatabase db;
                     auto mime = db.mimeTypeForUrl(localfile);
@@ -330,7 +330,7 @@ void DiscoverObject::openApplication(const QUrl &url)
             AbstractResourcesBackend::Filters f;
             f.resourceUrl = url;
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
-            connect(stream, &StoredResultsStream::finishedResources, this, [this, url](const QVector<AbstractResource *> &res) {
+            connect(stream, &StoredResultsStream::finishedResources, this, [this, url](const QVector<StreamResult> &res) {
                 if (res.count() >= 1) {
                     QPointer<QTimer> timeout = new QTimer(this);
                     timeout->setSingleShot(true);
@@ -339,11 +339,11 @@ void DiscoverObject::openApplication(const QUrl &url)
 
                     auto openResourceOrWait = [this, res, timeout] {
                         auto idx = kIndexOf(res, [](auto res) {
-                            return res->isInstalled();
+                            return res.resource->isInstalled();
                         });
                         if (idx < 0) {
                             bool oneBroken = kContains(res, [](auto res) {
-                                return res->state() == AbstractResource::Broken;
+                                return res.resource->state() == AbstractResource::Broken;
                             });
                             if (oneBroken && timeout) {
                                 return false;
@@ -351,15 +351,15 @@ void DiscoverObject::openApplication(const QUrl &url)
 
                             idx = 0;
                         }
-                        Q_EMIT openApplicationInternal(res[idx]);
+                        Q_EMIT openApplicationInternal(res[idx].resource);
                         return true;
                     };
 
                     if (!openResourceOrWait()) {
                         auto f = new OneTimeAction(0, openResourceOrWait, this);
                         for (auto r : res) {
-                            if (r->state() == AbstractResource::Broken) {
-                                connect(r, &AbstractResource::stateChanged, f, &OneTimeAction::trigger);
+                            if (r.resource->state() == AbstractResource::Broken) {
+                                connect(r.resource, &AbstractResource::stateChanged, f, &OneTimeAction::trigger);
                             }
                         }
                         timeout->start();

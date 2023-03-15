@@ -22,6 +22,27 @@ class Category;
 class AbstractReviewsBackend;
 class AbstractBackendUpdater;
 
+struct StreamResult {
+    StreamResult(AbstractResource *resource = nullptr, uint sortScore = 0)
+        : resource(resource)
+        , sortScore(sortScore)
+    {
+    }
+
+    AbstractResource *resource = nullptr;
+    uint sortScore = 0;
+
+    bool operator==(const StreamResult &other) const
+    {
+        return resource == other.resource;
+    }
+};
+
+inline size_t qHash(const StreamResult &key, size_t seed = 0)
+{
+    return qHash(quintptr(key.resource), seed);
+}
+
 class DISCOVERCOMMON_EXPORT ResultsStream : public QObject
 {
     Q_OBJECT
@@ -29,13 +50,13 @@ public:
     ResultsStream(const QString &objectName);
 
     /// assumes all the information is in @p resources
-    ResultsStream(const QString &objectName, const QVector<AbstractResource *> &resources);
+    ResultsStream(const QString &objectName, const QVector<StreamResult> &resources);
     ~ResultsStream() override;
 
     void finish();
 
 Q_SIGNALS:
-    void resourcesFound(const QVector<AbstractResource *> &resources);
+    void resourcesFound(const QVector<StreamResult> &resources);
     void fetchMore();
 };
 
@@ -139,6 +160,7 @@ public:
 
         bool shouldFilter(AbstractResource *res) const;
         void filterJustInCase(QVector<AbstractResource *> &input) const;
+        void filterJustInCase(QVector<StreamResult> &input) const;
     };
 
     /**

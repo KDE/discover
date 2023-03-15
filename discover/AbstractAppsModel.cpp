@@ -37,7 +37,7 @@ public:
 
         for (auto stream : streams) {
             m_streams.insert(stream);
-            connect(stream, &ResultsStream::resourcesFound, this, [this](const QVector<AbstractResource *> &resources) {
+            connect(stream, &ResultsStream::resourcesFound, this, [this](const QVector<StreamResult> &resources) {
                 m_resources.append(resources.constFirst());
             });
             connect(stream, &QObject::destroyed, this, &BestInResultsStream::streamDestruction);
@@ -58,10 +58,10 @@ public:
     }
 
 Q_SIGNALS:
-    void finished(QVector<AbstractResource *> resources);
+    void finished(QVector<StreamResult> resources);
 
 private:
-    QVector<AbstractResource *> m_resources;
+    QVector<StreamResult> m_resources;
     QSet<QObject *> m_streams;
 };
 
@@ -115,11 +115,11 @@ void AbstractAppsModel::setUris(const QVector<QUrl> &uris)
     }
 }
 
-static void filterDupes(QVector<AbstractResource *> &resources)
+static void filterDupes(QVector<StreamResult> &resources)
 {
     QSet<QString> found;
     for (auto it = resources.begin(); it != resources.end();) {
-        auto id = (*it)->appstreamId();
+        auto id = it->resource->appstreamId();
         if (found.contains(id)) {
             it = resources.erase(it);
         } else {
@@ -142,7 +142,7 @@ void AbstractAppsModel::acquireFetching(bool f)
     Q_ASSERT(m_isFetching >= 0);
 }
 
-void AbstractAppsModel::setResources(const QVector<AbstractResource *> &_resources)
+void AbstractAppsModel::setResources(const QVector<StreamResult> &_resources)
 {
     auto resources = _resources;
     filterDupes(resources);
@@ -174,7 +174,7 @@ QVariant AbstractAppsModel::data(const QModelIndex &index, int role) const
     if (!index.isValid() || role != Qt::UserRole)
         return {};
 
-    auto res = m_resources.value(index.row());
+    auto res = m_resources.value(index.row()).resource;
     if (!res)
         return {};
 
