@@ -2,7 +2,7 @@
 <component type="addon">
   <id>org.kde.discover.snap</id>
   <name>Snap backend</name>
-  <name xml:lang="ar">سَند سناپ</name>
+  <name xml:lang="ar">سَند سناب</name>
   <name xml:lang="az">Snap modulları</name>
   <name xml:lang="be">Рухавік Snap</name>
   <name xml:lang="bg">Бекенд на Snap</name>
@@ -48,7 +48,7 @@
   <name xml:lang="zh-CN">Snap 后端程序</name>
   <name xml:lang="zh-TW">Snap 後端</name>
   <summary>Integrates Snap applications into Discover</summary>
-  <summary xml:lang="ar">يُكامل تطبيقات ”سناپ“ في «استكشف»</summary>
+  <summary xml:lang="ar">يُكامل تطبيقات ”سناب“ في «استكشف»</summary>
   <summary xml:lang="az">Snap tətbiqlərini Discover-ə inteqrasiya edir</summary>
   <summary xml:lang="be">Інтэграванне праграм Snap у Discover</summary>
   <summary xml:lang="bg">Интегрира Snap приложения в Discover</summary>
