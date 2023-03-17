@@ -17,7 +17,7 @@
 #include <attica/provider.h>
 #include <utils.h>
 
-KNSResource::KNSResource(const KNSCore::EntryInternal &entry, QStringList categories, KNSBackend *parent)
+KNSResource::KNSResource(const KNSCore::Entry &entry, QStringList categories, KNSBackend *parent)
     : AbstractResource(parent)
     , m_categories(std::move(categories))
     , m_entry(entry)
@@ -31,17 +31,17 @@ KNSResource::~KNSResource() = default;
 AbstractResource::State KNSResource::state()
 {
     switch (m_entry.status()) {
-    case KNS3::Entry::Invalid:
+    case KNSCore::Entry::Invalid:
         return Broken;
-    case KNS3::Entry::Downloadable:
+    case KNSCore::Entry::Downloadable:
         return None;
-    case KNS3::Entry::Installed:
+    case KNSCore::Entry::Installed:
         return Installed;
-    case KNS3::Entry::Updateable:
+    case KNSCore::Entry::Updateable:
         return Upgradeable;
-    case KNS3::Entry::Deleted:
-    case KNS3::Entry::Installing:
-    case KNS3::Entry::Updating:
+    case KNSCore::Entry::Deleted:
+    case KNSCore::Entry::Installing:
+    case KNSCore::Entry::Updating:
         return None;
     }
     return None;
@@ -54,8 +54,8 @@ KNSBackend *KNSResource::knsBackend() const
 
 QVariant KNSResource::icon() const
 {
-    const QString thumbnail = m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1);
-    return thumbnail.isEmpty() ? knsBackend()->iconName() : m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1);
+    const QString thumbnail = m_entry.previewUrl(KNSCore::Entry::PreviewSmall1);
+    return thumbnail.isEmpty() ? knsBackend()->iconName() : m_entry.previewUrl(KNSCore::Entry::PreviewSmall1);
 }
 
 QString KNSResource::comment()
@@ -116,7 +116,7 @@ QUrl KNSResource::homepage()
     return m_entry.homepage();
 }
 
-void KNSResource::setEntry(const KNSCore::EntryInternal &entry)
+void KNSResource::setEntry(const KNSCore::Entry &entry)
 {
     const bool diff = entry.status() != m_lastStatus;
     m_entry = entry;
@@ -126,7 +126,7 @@ void KNSResource::setEntry(const KNSCore::EntryInternal &entry)
     }
 }
 
-KNSCore::EntryInternal KNSResource::entry() const
+KNSCore::Entry KNSResource::entry() const
 {
     return m_entry;
 }
@@ -196,9 +196,9 @@ static void appendIfValid(Screenshots &list, const QUrl &thumbnail, const QUrl &
 void KNSResource::fetchScreenshots()
 {
     Screenshots ret;
-    appendIfValid(ret, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall1)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig1)));
-    appendIfValid(ret, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall2)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig2)));
-    appendIfValid(ret, QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewSmall3)), QUrl(m_entry.previewUrl(KNSCore::EntryInternal::PreviewBig3)));
+    appendIfValid(ret, QUrl(m_entry.previewUrl(KNSCore::Entry::PreviewSmall1)), QUrl(m_entry.previewUrl(KNSCore::Entry::PreviewBig1)));
+    appendIfValid(ret, QUrl(m_entry.previewUrl(KNSCore::Entry::PreviewSmall2)), QUrl(m_entry.previewUrl(KNSCore::Entry::PreviewBig2)));
+    appendIfValid(ret, QUrl(m_entry.previewUrl(KNSCore::Entry::PreviewSmall3)), QUrl(m_entry.previewUrl(KNSCore::Entry::PreviewBig3)));
     Q_EMIT screenshotsFetched(ret);
 }
 

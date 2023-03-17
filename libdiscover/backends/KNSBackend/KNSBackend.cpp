@@ -21,8 +21,8 @@
 #include <KConfigGroup>
 #include <KLocalizedString>
 #include <KNSCore/Engine>
+#include <KNSCore/Question>
 #include <KNSCore/QuestionManager>
-#include <knewstuffcore_version.h>
 
 // DiscoverCommon includes
 #include "Category/Category.h"
@@ -90,7 +90,7 @@ public:
 };
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-Q_DECLARE_METATYPE(KNSCore::EntryInternal)
+Q_DECLARE_METATYPE(KNSCore::Entry)
 #endif
 
 KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &knsrc)
@@ -108,7 +108,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
 
     const KConfig conf(m_name, KConfig::SimpleConfig);
     if (!conf.hasGroup("KNewStuff3")) {
-        markInvalid(QStringLiteral("Config group not found! Check your KNS3 installation."));
+        markInvalid(QStringLiteral("Config group not found! Check your KNSCore installation."));
         return;
     }
 
@@ -362,7 +362,7 @@ bool KNSBackend::isValid() const
     return m_isValid;
 }
 
-KNSResource *KNSBackend::resourceForEntry(const KNSCore::EntryInternal &entry)
+KNSResource *KNSBackend::resourceForEntry(const KNSCore::Entry &entry)
 {
     KNSResource *r = static_cast<KNSResource *>(m_resourcesByName.value(entry.uniqueId()));
     if (!r) {
@@ -385,15 +385,15 @@ KNSResource *KNSBackend::resourceForEntry(const KNSCore::EntryInternal &entry)
     return r;
 }
 
-void KNSBackend::receivedEntries(const KNSCore::EntryInternal::List &entries)
+void KNSBackend::receivedEntries(const KNSCore::Entry::List &entries)
 {
     if (!m_isValid)
         return;
 
-    const auto filtered = kFilter<KNSCore::EntryInternal::List>(entries, [](const KNSCore::EntryInternal &entry) {
+    const auto filtered = kFilter<KNSCore::Entry::List>(entries, [](const KNSCore::Entry &entry) {
         return entry.isValid();
     });
-    const auto resources = kTransform<QVector<AbstractResource *>>(filtered, [this](const KNSCore::EntryInternal &entry) {
+    const auto resources = kTransform<QVector<AbstractResource *>>(filtered, [this](const KNSCore::Entry &entry) {
         return resourceForEntry(entry);
     });
 
@@ -419,7 +419,7 @@ void KNSBackend::fetchMore()
     m_engine->requestMoreData();
 }
 
-void KNSBackend::statusChanged(const KNSCore::EntryInternal &entry)
+void KNSBackend::statusChanged(const KNSCore::Entry &entry)
 {
     resourceForEntry(entry);
 }
@@ -473,7 +473,7 @@ void KNSBackend::slotErrorCode(const KNSCore::ErrorCode &errorCode, const QStrin
             // query to the user) but we can give them an idea of how to deal with the
             // situation some other way.
             // TODO: Once Discover has a way to forward queries to the user from transactions, this likely will no longer be needed
-            if (r->entry().status() == KNS3::Entry::Updateable) {
+            if (r->entry().status() == KNSCore::Entry::Updateable) {
                 error = i18n(
                     "Unable to complete the update of %1. You can try and perform this action through the Get Hot New Stuff dialog, which grants tighter "
                     "control. The reported error was:\n%2",
@@ -500,17 +500,17 @@ void KNSBackend::slotErrorCode(const KNSCore::ErrorCode &errorCode, const QStrin
         Q_EMIT passiveMessage(i18n("%1: %2", name(), error));
 }
 
-void KNSBackend::slotEntryEvent(const KNSCore::EntryInternal &entry, KNSCore::EntryInternal::EntryEvent event)
+void KNSBackend::slotEntryEvent(const KNSCore::Entry &entry, KNSCore::Entry::EntryEvent event)
 {
     switch (event) {
-    case KNSCore::EntryInternal::StatusChangedEvent:
+    case KNSCore::Entry::StatusChangedEvent:
         statusChanged(entry);
         break;
-    case KNSCore::EntryInternal::DetailsLoadedEvent:
+    case KNSCore::Entry::DetailsLoadedEvent:
         detailsLoaded(entry);
         break;
-    case KNSCore::EntryInternal::AdoptedEvent:
-    case KNSCore::EntryInternal::UnknownEvent:
+    case KNSCore::Entry::AdoptedEvent:
+    case KNSCore::Entry::UnknownEvent:
     default:
         break;
     }
@@ -655,9 +655,9 @@ ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)
         connect(m_engine,
                 &KNSCore::Engine::signalEntryEvent,
                 stream,
-                [this, stream, entryid, providerid](const KNSCore::EntryInternal &entry, KNSCore::EntryInternal::EntryEvent event) {
+                [this, stream, entryid, providerid](const KNSCore::Entry &entry, KNSCore::Entry::EntryEvent event) {
                     switch (event) {
-                    case KNSCore::EntryInternal::StatusChangedEvent:
+                    case KNSCore::Entry::StatusChangedEvent:
                         if (entry.uniqueId() == entryid && providerid == QUrl(entry.providerId()).host()) {
                             Q_EMIT stream->resourcesFound({resourceForEntry(entry)});
                         } else
@@ -667,9 +667,9 @@ ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)
                         });
                         stream->finish();
                         break;
-                    case KNSCore::EntryInternal::DetailsLoadedEvent:
-                    case KNSCore::EntryInternal::AdoptedEvent:
-                    case KNSCore::EntryInternal::UnknownEvent:
+                    case KNSCore::Entry::DetailsLoadedEvent:
+                    case KNSCore::Entry::AdoptedEvent:
+                    case KNSCore::Entry::UnknownEvent:
                     default:
                         break;
                     }
@@ -698,7 +698,7 @@ QString KNSBackend::displayName() const
     return QStringLiteral("KNewStuff");
 }
 
-void KNSBackend::detailsLoaded(const KNSCore::EntryInternal &entry)
+void KNSBackend::detailsLoaded(const KNSCore::Entry &entry)
 {
     auto res = resourceForEntry(entry);
     Q_EMIT res->longDescriptionChanged();

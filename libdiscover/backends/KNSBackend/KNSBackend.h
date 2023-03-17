@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <KNSCore/EntryInternal>
+#include <KNSCore/Entry>
 #include <KNSCore/ErrorCode>
 
 #include "Transaction/AddonList.h"
@@ -77,15 +77,15 @@ Q_SIGNALS:
     void initialized();
 
 public Q_SLOTS:
-    void receivedEntries(const KNSCore::EntryInternal::List &entries);
-    void statusChanged(const KNSCore::EntryInternal &entry);
-    void detailsLoaded(const KNSCore::EntryInternal &entry);
+    void receivedEntries(const KNSCore::Entry::List &entries);
+    void statusChanged(const KNSCore::Entry &entry);
+    void detailsLoaded(const KNSCore::Entry &entry);
     void slotErrorCode(const KNSCore::ErrorCode &errorCode, const QString &message, const QVariant &metadata);
-    void slotEntryEvent(const KNSCore::EntryInternal &entry, KNSCore::EntryInternal::EntryEvent event);
+    void slotEntryEvent(const KNSCore::Entry &entry, KNSCore::Entry::EntryEvent event);
 
 private:
     void fetchInstalled();
-    KNSResource *resourceForEntry(const KNSCore::EntryInternal &entry);
+    KNSResource *resourceForEntry(const KNSCore::Entry &entry);
     void setFetching(bool f);
     void markInvalid(const QString &message);
     void searchStream(ResultsStream *stream, const QString &searchText);

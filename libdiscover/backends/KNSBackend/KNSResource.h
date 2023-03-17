@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <KNSCore/EntryInternal>
+#include <KNSCore/Entry>
 #include <QPointer>
 #include <attica/content.h>
 #include <resources/AbstractResource.h>
@@ -18,7 +18,7 @@ class DISCOVERCOMMON_EXPORT KNSResource : public AbstractResource
 {
     Q_OBJECT
 public:
-    explicit KNSResource(const KNSCore::EntryInternal &c, QStringList categories, KNSBackend *parent);
+    explicit KNSResource(const KNSCore::Entry &c, QStringList categories, KNSBackend *parent);
     ~KNSResource() override;
 
     AbstractResource::State state() override;
@@ -51,8 +51,8 @@ public:
 
     KNSBackend *knsBackend() const;
 
-    void setEntry(const KNSCore::EntryInternal &entry);
-    KNSCore::EntryInternal entry() const;
+    void setEntry(const KNSCore::Entry &entry);
+    KNSCore::Entry entry() const;
 
     bool canExecute() const override;
     void invokeApplication() const override;
@@ -71,7 +71,7 @@ public:
 
 private:
     const QStringList m_categories;
-    KNSCore::EntryInternal m_entry;
-    KNS3::Entry::Status m_lastStatus;
+    KNSCore::Entry m_entry;
+    KNSCore::Entry::Status m_lastStatus;
     QScopedPointer<Rating> m_rating;
 };

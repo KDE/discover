@@ -17,7 +17,7 @@ class KNSTransaction : public Transaction
 public:
     KNSTransaction(QObject *parent, KNSResource *res, Transaction::Role role);
 
-    void anEntryChanged(const KNSCore::EntryInternal &entry);
+    void anEntryChanged(const KNSCore::Entry &entry);
 
     void addQuestion(KNSCore::Question *question);
     void cancel() override;

@@ -21,14 +21,14 @@ KNSTransaction::KNSTransaction(QObject *parent, KNSResource *res, Role role)
     setCancellable(false);
 
     auto manager = res->knsBackend()->engine();
-    connect(manager, &KNSCore::Engine::signalEntryEvent, this, [this](const KNSCore::EntryInternal &entry, KNSCore::EntryInternal::EntryEvent event) {
+    connect(manager, &KNSCore::Engine::signalEntryEvent, this, [this](const KNSCore::Entry &entry, KNSCore::Entry::EntryEvent event) {
         switch (event) {
-        case KNSCore::EntryInternal::StatusChangedEvent:
+        case KNSCore::Entry::StatusChangedEvent:
             anEntryChanged(entry);
             break;
-        case KNSCore::EntryInternal::DetailsLoadedEvent:
-        case KNSCore::EntryInternal::AdoptedEvent:
-        case KNSCore::EntryInternal::UnknownEvent:
+        case KNSCore::Entry::DetailsLoadedEvent:
+        case KNSCore::Entry::AdoptedEvent:
+        case KNSCore::Entry::UnknownEvent:
         default:
             break;
         }
@@ -41,7 +41,7 @@ KNSTransaction::KNSTransaction(QObject *parent, KNSResource *res, Role role)
         actionFunction = [res, engine]() {
             engine->uninstall(res->entry());
         };
-    else if (res->entry().status() == KNS3::Entry::Updateable)
+    else if (res->entry().status() == KNSCore::Entry::Updateable)
         actionFunction = [res, engine]() {
             engine->install(res->entry(), -1);
         };
@@ -67,21 +67,21 @@ void KNSTransaction::addQuestion(KNSCore::Question *question)
     Q_EMIT proceedRequest(question->title(), question->question());
 }
 
-void KNSTransaction::anEntryChanged(const KNSCore::EntryInternal &entry)
+void KNSTransaction::anEntryChanged(const KNSCore::Entry &entry)
 {
     if (entry.uniqueId() == m_id) {
         switch (entry.status()) {
-        case KNS3::Entry::Invalid:
+        case KNSCore::Entry::Invalid:
             qWarning() << "invalid status for" << entry.uniqueId() << entry.status();
             break;
-        case KNS3::Entry::Installing:
-        case KNS3::Entry::Updating:
+        case KNSCore::Entry::Installing:
+        case KNSCore::Entry::Updating:
             setStatus(CommittingStatus);
             break;
-        case KNS3::Entry::Downloadable:
-        case KNS3::Entry::Installed:
-        case KNS3::Entry::Deleted:
-        case KNS3::Entry::Updateable:
+        case KNSCore::Entry::Downloadable:
+        case KNSCore::Entry::Installed:
+        case KNSCore::Entry::Deleted:
+        case KNSCore::Entry::Updateable:
             if (status() != DoneStatus) {
                 setStatus(DoneStatus);
             }

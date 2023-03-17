@@ -8,7 +8,6 @@
 
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <attica/provider.h>
-#include <knewstuffcore_version.h>
 
 class KNSBackend;
 class QUrl;
