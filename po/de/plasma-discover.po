@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-03 02:17+0000\n"
-"PO-Revision-Date: 2023-02-25 23:55+0100\n"
-"Last-Translator: Jannick Kuhr <opensource@kuhr.org>\n"
+"POT-Creation-Date: 2023-03-17 02:32+0000\n"
+"PO-Revision-Date: 2023-03-12 19:51+0100\n"
+"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -366,140 +366,140 @@ msgstr "Details ansehen ..."
 msgid "Could not access the screenshots"
 msgstr "Zugriff auf Bildschirmfotos nicht möglich"
 
-#: discover/qml/ApplicationPage.qml:486
+#: discover/qml/ApplicationPage.qml:487
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: discover/qml/ApplicationPage.qml:487
+#: discover/qml/ApplicationPage.qml:488
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Offizielle Projektdokumentation lesen"
 
-#: discover/qml/ApplicationPage.qml:503
+#: discover/qml/ApplicationPage.qml:504
 #, kde-format
 msgid "Website"
 msgstr "Webseite"
 
-#: discover/qml/ApplicationPage.qml:504
+#: discover/qml/ApplicationPage.qml:505
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Die Webseite des Projekts besuchen"
 
-#: discover/qml/ApplicationPage.qml:520
+#: discover/qml/ApplicationPage.qml:521
 #, kde-format
 msgid "Addons"
 msgstr "Erweiterungen"
 
-#: discover/qml/ApplicationPage.qml:521
+#: discover/qml/ApplicationPage.qml:522
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Zusätzliche Funktionalität installieren und entfernen"
 
-#: discover/qml/ApplicationPage.qml:540
+#: discover/qml/ApplicationPage.qml:541
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Teilen"
 
-#: discover/qml/ApplicationPage.qml:541
+#: discover/qml/ApplicationPage.qml:542
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Eine Verknüpfung für diese Anwendungen senden"
 
-#: discover/qml/ApplicationPage.qml:557
+#: discover/qml/ApplicationPage.qml:558
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Probieren Sie die Anwendung %1 aus!"
 
-#: discover/qml/ApplicationPage.qml:577
+#: discover/qml/ApplicationPage.qml:578
 #, kde-format
 msgid "What's New"
 msgstr "Was ist neu?"
 
-#: discover/qml/ApplicationPage.qml:608
+#: discover/qml/ApplicationPage.qml:609
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Bewertungen für %1 laden"
 
-#: discover/qml/ApplicationPage.qml:614
+#: discover/qml/ApplicationPage.qml:615
 #, kde-format
 msgid "Reviews"
 msgstr "Bewertungen"
 
-#: discover/qml/ApplicationPage.qml:652
+#: discover/qml/ApplicationPage.qml:653
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "Alle %1 Bewertungen anzeigen ..."
 msgstr[1] "Alle %1 Bewertungen anzeigen ..."
 
-#: discover/qml/ApplicationPage.qml:664
+#: discover/qml/ApplicationPage.qml:665
 #, kde-format
 msgid "Write a Review"
 msgstr "Schreiben Sie eine Bewertung"
 
-#: discover/qml/ApplicationPage.qml:664
+#: discover/qml/ApplicationPage.qml:665
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Installieren, um eine Bewertung zu schreiben"
 
-#: discover/qml/ApplicationPage.qml:676
+#: discover/qml/ApplicationPage.qml:677
 #, kde-format
 msgid "Get Involved"
 msgstr "Machen Sie mit"
 
-#: discover/qml/ApplicationPage.qml:718
+#: discover/qml/ApplicationPage.qml:719
 #, kde-format
 msgid "Donate"
 msgstr "Spenden"
 
-#: discover/qml/ApplicationPage.qml:719
+#: discover/qml/ApplicationPage.qml:720
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 "Danken Sie den Entwicklern und unterstützen Sie diese, indem Sie für ihre "
 "Projekte spenden"
 
-#: discover/qml/ApplicationPage.qml:735
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Report Bug"
 msgstr "Probleme oder Wünsche berichten"
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:737
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Melden Sie ein Problem, um bei der Lösung zu helfen"
 
-#: discover/qml/ApplicationPage.qml:752
+#: discover/qml/ApplicationPage.qml:753
 #, kde-format
 msgid "Contribute"
 msgstr "Mitmachen"
 
-#: discover/qml/ApplicationPage.qml:753
+#: discover/qml/ApplicationPage.qml:754
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Unterstützen Sie die Entwickler beim Programmieren, Design, Testen oder "
 "Übersetzen"
 
-#: discover/qml/ApplicationPage.qml:778
+#: discover/qml/ApplicationPage.qml:779
 #, kde-format
 msgid "All Licenses"
 msgstr "Alle Lizenzen"
 
-#: discover/qml/ApplicationPage.qml:811
+#: discover/qml/ApplicationPage.qml:812
 #, kde-format
 msgid "Content Rating"
 msgstr "Inhaltsbewertungen"
 
-#: discover/qml/ApplicationPage.qml:825
+#: discover/qml/ApplicationPage.qml:826
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Risiken proprietärer Software"
 
-#: discover/qml/ApplicationPage.qml:831
+#: discover/qml/ApplicationPage.qml:832
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -528,7 +528,7 @@ msgstr ""
 "link>) vollständig vertrauen.<nl/><nl/>Sie können mehr über das Thema unter "
 "<link url='%3'>%3</link> erfahren."
 
-#: discover/qml/ApplicationPage.qml:832
+#: discover/qml/ApplicationPage.qml:833
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1034,12 +1034,12 @@ msgstr "Schreiben Sie eine Bewertung ..."
 msgid "Install this app to write a review"
 msgstr "Installieren Sie diese Anwendung, um eine Bewertung zu schreiben"
 
-#: discover/qml/SearchField.qml:23
+#: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search…"
 msgstr "Suchen ..."
 
-#: discover/qml/SearchField.qml:23
+#: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search in '%1'…"
 msgstr "Suchen in „%1“ ..."
@@ -1141,8 +1141,7 @@ msgid "Error message copied to clipboard"
 msgstr "Fehlermeldung wurde in die Zwischenablage kopiert"
 
 #: discover/qml/UpdatesPage.qml:134
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Alle aktualisieren"

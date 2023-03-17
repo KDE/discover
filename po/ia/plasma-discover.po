@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-03 02:17+0000\n"
-"PO-Revision-Date: 2023-02-24 22:49+0100\n"
+"POT-Creation-Date: 2023-03-17 02:32+0000\n"
+"PO-Revision-Date: 2023-03-16 10:42+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 21.12.1\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -367,137 +367,137 @@ msgstr "Vide detalios…"
 msgid "Could not access the screenshots"
 msgstr "Non pote acceder al capturas de schermo"
 
-#: discover/qml/ApplicationPage.qml:486
+#: discover/qml/ApplicationPage.qml:487
 #, kde-format
 msgid "Documentation"
 msgstr "Documentation"
 
-#: discover/qml/ApplicationPage.qml:487
+#: discover/qml/ApplicationPage.qml:488
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Lege le documentation official de projecto"
 
-#: discover/qml/ApplicationPage.qml:503
+#: discover/qml/ApplicationPage.qml:504
 #, kde-format
 msgid "Website"
 msgstr "Sito Web"
 
-#: discover/qml/ApplicationPage.qml:504
+#: discover/qml/ApplicationPage.qml:505
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Visita le sito web del projecto"
 
-#: discover/qml/ApplicationPage.qml:520
+#: discover/qml/ApplicationPage.qml:521
 #, kde-format
 msgid "Addons"
 msgstr "Addons(Elementos adjunte)"
 
-#: discover/qml/ApplicationPage.qml:521
+#: discover/qml/ApplicationPage.qml:522
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Install o remove functionalitate additional"
 
-#: discover/qml/ApplicationPage.qml:540
+#: discover/qml/ApplicationPage.qml:541
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Comparti"
 
-#: discover/qml/ApplicationPage.qml:541
+#: discover/qml/ApplicationPage.qml:542
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Invia un ligamine per iste application"
 
-#: discover/qml/ApplicationPage.qml:557
+#: discover/qml/ApplicationPage.qml:558
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Controla le app %1 !"
 
-#: discover/qml/ApplicationPage.qml:577
+#: discover/qml/ApplicationPage.qml:578
 #, kde-format
 msgid "What's New"
 msgstr "Que es de novo"
 
-#: discover/qml/ApplicationPage.qml:608
+#: discover/qml/ApplicationPage.qml:609
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Cargante revisiones per %1"
 
-#: discover/qml/ApplicationPage.qml:614
+#: discover/qml/ApplicationPage.qml:615
 #, kde-format
 msgid "Reviews"
 msgstr "Revisiones"
 
-#: discover/qml/ApplicationPage.qml:652
+#: discover/qml/ApplicationPage.qml:653
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "Monstra omne %1 revisiones"
 msgstr[1] "Monstra omne %1 revisiones"
 
-#: discover/qml/ApplicationPage.qml:664
+#: discover/qml/ApplicationPage.qml:665
 #, kde-format
 msgid "Write a Review"
 msgstr "Scribe un Revision"
 
-#: discover/qml/ApplicationPage.qml:664
+#: discover/qml/ApplicationPage.qml:665
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Installa per scriber un revision"
 
-#: discover/qml/ApplicationPage.qml:676
+#: discover/qml/ApplicationPage.qml:677
 #, kde-format
 msgid "Get Involved"
 msgstr "Sea involvite"
 
-#: discover/qml/ApplicationPage.qml:718
+#: discover/qml/ApplicationPage.qml:719
 #, kde-format
 msgid "Donate"
 msgstr "Dona"
 
-#: discover/qml/ApplicationPage.qml:719
+#: discover/qml/ApplicationPage.qml:720
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Supporta e regratia le disveloppatores per donar a iste projecto"
 
-#: discover/qml/ApplicationPage.qml:735
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Report Bug"
 msgstr "Reporta Bug"
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:737
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr ""
 "Registra un problemaque tu trovava pro adjutar a que pote esser correcte"
 
-#: discover/qml/ApplicationPage.qml:752
+#: discover/qml/ApplicationPage.qml:753
 #, kde-format
 msgid "Contribute"
 msgstr "Contribue"
 
-#: discover/qml/ApplicationPage.qml:753
+#: discover/qml/ApplicationPage.qml:754
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "Adjuta le disveloppatores per codificar, designar, testar e traducer"
 
-#: discover/qml/ApplicationPage.qml:778
+#: discover/qml/ApplicationPage.qml:779
 #, kde-format
 msgid "All Licenses"
 msgstr "Omne Licentias"
 
-#: discover/qml/ApplicationPage.qml:811
+#: discover/qml/ApplicationPage.qml:812
 #, kde-format
 msgid "Content Rating"
 msgstr "Evalutation de contento"
 
-#: discover/qml/ApplicationPage.qml:825
+#: discover/qml/ApplicationPage.qml:826
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Riscos de sftware proprietari"
 
-#: discover/qml/ApplicationPage.qml:831
+#: discover/qml/ApplicationPage.qml:832
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -524,7 +524,7 @@ msgstr ""
 "url='%1'>%2</link>).<nl/><nl/>Tu poteapprender plus a <link url='%3'>%3</"
 "link>."
 
-#: discover/qml/ApplicationPage.qml:832
+#: discover/qml/ApplicationPage.qml:833
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1025,12 +1025,12 @@ msgstr "Scribe un Revision..."
 msgid "Install this app to write a review"
 msgstr "Installa iste app per scriber un revision"
 
-#: discover/qml/SearchField.qml:23
+#: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search…"
 msgstr "Cerca…"
 
-#: discover/qml/SearchField.qml:23
+#: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search in '%1'…"
 msgstr "Cerca  in '%1'..."
@@ -1132,8 +1132,7 @@ msgid "Error message copied to clipboard"
 msgstr "Message de error copiate a area de transferentia"
 
 #: discover/qml/UpdatesPage.qml:134
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Actualisa omne"

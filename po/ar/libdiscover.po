@@ -912,7 +912,7 @@ msgstr "‏%1 (المستخدم)"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:394
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
-msgstr "أدخل عنوان مستودع فلاتپاك (*.flatpakrepo)"
+msgstr "أدخل عنوان مستودع فلاتباك (*.flatpakrepo)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
 #, kde-format
@@ -3631,7 +3631,7 @@ msgstr "الإضافات"
 
 #~ msgctxt "@item:inlistbox PU architecture"
 #~ msgid "Power PC"
-#~ msgstr "پاور ‌پي‌سي"
+#~ msgstr "باور ‌بي‌سي"
 
 #~ msgctxt "@label Easter Egg"
 #~ msgid "This Muon has super cow powers"

@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-06 02:13+0000\n"
-"PO-Revision-Date: 2023-02-07 21:56+0100\n"
-"Last-Translator: Jannick Kuhr <opensource@kuhr.org>\n"
+"PO-Revision-Date: 2023-03-12 19:51+0100\n"
+"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1955,11 +1955,9 @@ msgstr[0] "%1 Paket erfolgreich aktualisiert"
 msgstr[1] "%1 Pakete erfolgreich aktualisiert"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unknown Error"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Unbekannter Fehler"
+msgstr "Unbekannte Quelle"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format

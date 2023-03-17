@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-03 02:17+0000\n"
+"POT-Creation-Date: 2023-03-17 02:32+0000\n"
 "PO-Revision-Date: 2023-03-05 16:01+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -364,137 +364,137 @@ msgstr "Näytä tiedot…"
 msgid "Could not access the screenshots"
 msgstr "Ruutukaappauksiin ei pääse"
 
-#: discover/qml/ApplicationPage.qml:486
+#: discover/qml/ApplicationPage.qml:487
 #, kde-format
 msgid "Documentation"
 msgstr "Ohjeistus"
 
-#: discover/qml/ApplicationPage.qml:487
+#: discover/qml/ApplicationPage.qml:488
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Lue projektin virallinen ohjeistus"
 
-#: discover/qml/ApplicationPage.qml:503
+#: discover/qml/ApplicationPage.qml:504
 #, kde-format
 msgid "Website"
 msgstr "Sivusto"
 
-#: discover/qml/ApplicationPage.qml:504
+#: discover/qml/ApplicationPage.qml:505
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Käy sovelluksen verkkosivulla"
 
-#: discover/qml/ApplicationPage.qml:520
+#: discover/qml/ApplicationPage.qml:521
 #, kde-format
 msgid "Addons"
 msgstr "Lisäosat"
 
-#: discover/qml/ApplicationPage.qml:521
+#: discover/qml/ApplicationPage.qml:522
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Asenna tai poista lisäosia"
 
-#: discover/qml/ApplicationPage.qml:540
+#: discover/qml/ApplicationPage.qml:541
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Jaa"
 
-#: discover/qml/ApplicationPage.qml:541
+#: discover/qml/ApplicationPage.qml:542
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Lähetä linkki tähän sovellukseen"
 
-#: discover/qml/ApplicationPage.qml:557
+#: discover/qml/ApplicationPage.qml:558
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Kokeile sovellusta %1!"
 
-#: discover/qml/ApplicationPage.qml:577
+#: discover/qml/ApplicationPage.qml:578
 #, kde-format
 msgid "What's New"
 msgstr "Mikä on uutta"
 
-#: discover/qml/ApplicationPage.qml:608
+#: discover/qml/ApplicationPage.qml:609
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Ladataan arvosteluja: %1"
 
-#: discover/qml/ApplicationPage.qml:614
+#: discover/qml/ApplicationPage.qml:615
 #, kde-format
 msgid "Reviews"
 msgstr "Arvostelut"
 
-#: discover/qml/ApplicationPage.qml:652
+#: discover/qml/ApplicationPage.qml:653
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "Näytä %1 arvostelu"
 msgstr[1] "Näytä kaikki %1 arvostelua"
 
-#: discover/qml/ApplicationPage.qml:664
+#: discover/qml/ApplicationPage.qml:665
 #, kde-format
 msgid "Write a Review"
 msgstr "Kirjoita arvostelu"
 
-#: discover/qml/ApplicationPage.qml:664
+#: discover/qml/ApplicationPage.qml:665
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Asenna arvostellaksesi"
 
-#: discover/qml/ApplicationPage.qml:676
+#: discover/qml/ApplicationPage.qml:677
 #, kde-format
 msgid "Get Involved"
 msgstr "Osallistu toimintaan"
 
-#: discover/qml/ApplicationPage.qml:718
+#: discover/qml/ApplicationPage.qml:719
 #, kde-format
 msgid "Donate"
 msgstr "Lahjoita"
 
-#: discover/qml/ApplicationPage.qml:719
+#: discover/qml/ApplicationPage.qml:720
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Tue ja kiitä kehittäjiä lahjoittamalla projektiin"
 
-#: discover/qml/ApplicationPage.qml:735
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Report Bug"
 msgstr "Ilmoita viasta"
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:737
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Ilmoita havaitsemastasi ongelmasta, jotta se korjattaisiin"
 
-#: discover/qml/ApplicationPage.qml:752
+#: discover/qml/ApplicationPage.qml:753
 #, kde-format
 msgid "Contribute"
 msgstr "Osallistu"
 
-#: discover/qml/ApplicationPage.qml:753
+#: discover/qml/ApplicationPage.qml:754
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Auta kehittäjiä koodaamalla, suunnittelemalla, testaamalla tai kääntämällä"
 
-#: discover/qml/ApplicationPage.qml:778
+#: discover/qml/ApplicationPage.qml:779
 #, kde-format
 msgid "All Licenses"
 msgstr "Kaikki lisenssit"
 
-#: discover/qml/ApplicationPage.qml:811
+#: discover/qml/ApplicationPage.qml:812
 #, kde-format
 msgid "Content Rating"
 msgstr "Sisältöarvio"
 
-#: discover/qml/ApplicationPage.qml:825
+#: discover/qml/ApplicationPage.qml:826
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Suljetun lähdekoodin vaarat"
 
-#: discover/qml/ApplicationPage.qml:831
+#: discover/qml/ApplicationPage.qml:832
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -519,7 +519,7 @@ msgstr ""
 "joten sovellus tulisi asentaa vain, jos luotat täysin sen tekijöihin (<link "
 "url='%1'>%2</link>).<nl/><nl/>Lisätietoa: <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:832
+#: discover/qml/ApplicationPage.qml:833
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1025,12 +1025,12 @@ msgstr "Kirjoita arvostelu…"
 msgid "Install this app to write a review"
 msgstr "Asenna sovellus arvostellaksesi sen"
 
-#: discover/qml/SearchField.qml:23
+#: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search…"
 msgstr "Etsi…"
 
-#: discover/qml/SearchField.qml:23
+#: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search in '%1'…"
 msgstr "Etsi luokasta ”%1”…"

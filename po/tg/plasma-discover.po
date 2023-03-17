@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-03 02:17+0000\n"
+"POT-Creation-Date: 2023-03-17 02:32+0000\n"
 "PO-Revision-Date: 2020-08-27 11:51+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -352,71 +352,71 @@ msgstr ""
 msgid "Could not access the screenshots"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:486
+#: discover/qml/ApplicationPage.qml:487
 #, fuzzy, kde-format
 #| msgid "Documentation:"
 msgid "Documentation"
 msgstr "Ҳуҷҷатнигорӣ:"
 
-#: discover/qml/ApplicationPage.qml:487
+#: discover/qml/ApplicationPage.qml:488
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:503
+#: discover/qml/ApplicationPage.qml:504
 #, kde-format
 msgid "Website"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:504
+#: discover/qml/ApplicationPage.qml:505
 #, kde-format
 msgid "Visit the project's website"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:520
+#: discover/qml/ApplicationPage.qml:521
 #, kde-format
 msgid "Addons"
 msgstr "Барномаи иловагӣ"
 
-#: discover/qml/ApplicationPage.qml:521
+#: discover/qml/ApplicationPage.qml:522
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:540
+#: discover/qml/ApplicationPage.qml:541
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:541
+#: discover/qml/ApplicationPage.qml:542
 #, kde-format
 msgid "Send a link for this application"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:557
+#: discover/qml/ApplicationPage.qml:558
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:577
+#: discover/qml/ApplicationPage.qml:578
 #, kde-format
 msgid "What's New"
 msgstr "Навигариҳо"
 
-#: discover/qml/ApplicationPage.qml:608
+#: discover/qml/ApplicationPage.qml:609
 #, fuzzy, kde-format
 #| msgid "Reviews"
 msgid "Loading reviews for %1"
 msgstr "Тақризҳо"
 
-#: discover/qml/ApplicationPage.qml:614
+#: discover/qml/ApplicationPage.qml:615
 #, kde-format
 msgid "Reviews"
 msgstr "Тақризҳо"
 
-#: discover/qml/ApplicationPage.qml:652
+#: discover/qml/ApplicationPage.qml:653
 #, fuzzy, kde-format
 #| msgid "Review..."
 msgid "Show all %1 Reviews"
@@ -424,74 +424,74 @@ msgid_plural "Show all %1 Reviews"
 msgstr[0] "Тақриз..."
 msgstr[1] "Тақриз..."
 
-#: discover/qml/ApplicationPage.qml:664
+#: discover/qml/ApplicationPage.qml:665
 #, fuzzy, kde-format
 #| msgid "Write a review!"
 msgid "Write a Review"
 msgstr "Тақризеро нависед!"
 
-#: discover/qml/ApplicationPage.qml:664
+#: discover/qml/ApplicationPage.qml:665
 #, fuzzy, kde-format
 #| msgid "Write a review!"
 msgid "Install to Write a Review"
 msgstr "Тақризеро нависед!"
 
-#: discover/qml/ApplicationPage.qml:676
+#: discover/qml/ApplicationPage.qml:677
 #, fuzzy, kde-format
 #| msgid "Get involved:"
 msgid "Get Involved"
 msgstr "Ҷалб шавед:"
 
-#: discover/qml/ApplicationPage.qml:718
+#: discover/qml/ApplicationPage.qml:719
 #, fuzzy, kde-format
 #| msgid "Donate:"
 msgid "Donate"
 msgstr "Кумакпулӣ:"
 
-#: discover/qml/ApplicationPage.qml:719
+#: discover/qml/ApplicationPage.qml:720
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:735
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Report Bug"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:737
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:752
+#: discover/qml/ApplicationPage.qml:753
 #, fuzzy, kde-format
 #| msgid "More..."
 msgid "Contribute"
 msgstr "Бештар..."
 
-#: discover/qml/ApplicationPage.qml:753
+#: discover/qml/ApplicationPage.qml:754
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:778
+#: discover/qml/ApplicationPage.qml:779
 #, fuzzy, kde-format
 #| msgid "License:"
 msgid "All Licenses"
 msgstr "Иҷозатнома:"
 
-#: discover/qml/ApplicationPage.qml:811
+#: discover/qml/ApplicationPage.qml:812
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
 msgstr "Баҳо диҳед"
 
-#: discover/qml/ApplicationPage.qml:825
+#: discover/qml/ApplicationPage.qml:826
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:831
+#: discover/qml/ApplicationPage.qml:832
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -507,7 +507,7 @@ msgid ""
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:832
+#: discover/qml/ApplicationPage.qml:833
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1023,13 +1023,13 @@ msgstr "Тақризеро нависед!"
 msgid "Install this app to write a review"
 msgstr "Барои навиштани тақриз ин барномаро насб намоед"
 
-#: discover/qml/SearchField.qml:23
+#: discover/qml/SearchField.qml:24
 #, fuzzy, kde-format
 #| msgid "Search"
 msgid "Search…"
 msgstr "Ҷустуҷӯ"
 
-#: discover/qml/SearchField.qml:23
+#: discover/qml/SearchField.qml:24
 #, fuzzy, kde-format
 #| msgid "Search in '%1'..."
 msgid "Search in '%1'…"
