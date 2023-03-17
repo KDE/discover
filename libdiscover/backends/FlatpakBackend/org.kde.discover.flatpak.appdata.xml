@@ -2,7 +2,7 @@
 <component type="addon">
   <id>org.kde.discover.flatpak</id>
   <name>Flatpak backend</name>
-  <name xml:lang="ar">سَند فلاتپاك</name>
+  <name xml:lang="ar">سَند فلاتباك</name>
   <name xml:lang="az">Flatpak geri izləri</name>
   <name xml:lang="bg">Бекенд на Flatpak</name>
   <name xml:lang="ca">Dorsal del Flatpak</name>
@@ -48,7 +48,7 @@
   <name xml:lang="zh-CN">Flatpak 后端程序</name>
   <name xml:lang="zh-TW">Flatpak 後端</name>
   <summary>Integrates Flatpak applications into Discover</summary>
-  <summary xml:lang="ar">يُكامل تطبيقات ”فلاتپاك“ في «استكشف»</summary>
+  <summary xml:lang="ar">يُكامل تطبيقات ”فلاتباك“ في «استكشف»</summary>
   <summary xml:lang="az">Flatpak tətbiqlərini Discoveriyə daxil edir</summary>
   <summary xml:lang="bg">Интегрира приложения на Flatpak в Discover</summary>
   <summary xml:lang="ca">Integra les aplicacions del Flatpak al Discover</summary>
