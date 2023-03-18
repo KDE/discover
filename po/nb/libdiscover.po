@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-28 03:03+0000\n"
+"POT-Creation-Date: 2023-03-06 02:50+0000\n"
 "PO-Revision-Date: 2023-02-17 08:42+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -546,7 +546,7 @@ msgid "Local bundle"
 msgstr "Lokal samling"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1640
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:669
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:671
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Ugyldig appstream-adresse «%1»"
@@ -604,6 +604,7 @@ msgstr "%1 på disk"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "Klarte ikke starte «%1»: %2"
@@ -913,8 +914,8 @@ msgid ""
 "To remove this repository, the following applications must be uninstalled:"
 "<ul><li>%1</li></ul>"
 msgstr ""
-"Følgende programmer må avinstalleres før du kan fjerne pakkebrønnen: <ul><li>"
-"%1</li></ul>"
+"Følgende programmer må avinstalleres før du kan fjerne pakkebrønnen: "
+"<ul><li>%1</li></ul>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
@@ -978,7 +979,7 @@ msgstr "%1 er ikke installert, men har likevel data lagret."
 msgid "Delete settings and user data"
 msgstr "Slett innstillinger og brukerdata"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:18
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:20
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
@@ -1133,7 +1134,7 @@ msgstr ""
 "Operativsystemet ditt avsluttet støtte på %1. Vurder å oppgradere til et "
 "støttet versjon."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:763
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:765
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Kan ikke fjerne «%1»"
@@ -1991,7 +1992,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (pluss %1 avhengighet)"
 msgstr[1] "%2 (pluss %1 avhengigheter)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
 msgstr "Adresse til pakkebrønn:"

@@ -444,7 +444,7 @@ msgstr "Installer for å skrive en vurdering"
 #: discover/qml/ApplicationPage.qml:769
 #, kde-format
 msgid "Get Involved"
-msgstr "Bli med"
+msgstr "Bidra selv"
 
 #: discover/qml/ApplicationPage.qml:811
 #, kde-format
