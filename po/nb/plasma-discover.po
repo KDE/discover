@@ -441,7 +441,7 @@ msgstr "Installer for å skrive en vurdering"
 #: discover/qml/ApplicationPage.qml:677
 #, kde-format
 msgid "Get Involved"
-msgstr "Bli med"
+msgstr "Bidra selv"
 
 #: discover/qml/ApplicationPage.qml:719
 #, kde-format
@@ -1221,6 +1221,3 @@ msgstr "Se etter oppdateringer"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for sist oppdatering er ukjent"
-
-#~ msgid "Update Selected"
-#~ msgstr "Oppdater valgte"
