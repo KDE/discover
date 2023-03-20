@@ -159,6 +159,3 @@ msgstr "Reinicieu per a aplicar les actualitzacions instal·lades"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Feu clic per a reiniciar el dispositiu"
-
-#~ msgid "Restart..."
-#~ msgstr "Reinicia..."
