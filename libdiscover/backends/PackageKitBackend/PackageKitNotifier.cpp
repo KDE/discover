@@ -261,6 +261,11 @@ void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade 
 
 void PackageKitNotifier::refreshDatabase()
 {
+    if (auto offline = PackageKit::Daemon::global()->offline();
+            offline->updatePrepared() || offline->upgradePrepared() || offline->updateTriggered() || offline->upgradeTriggered()) {
+        return;
+    }
+
     if (!m_refresher) {
         m_refresher = PackageKit::Daemon::refreshCache(false);
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
