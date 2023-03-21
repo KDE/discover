@@ -2,6 +2,8 @@ add_definitions(-DTRANSLATION_DOMAIN=\"plasma-discover-notifier\")
 
 kconfig_add_kcfg_files(notifier_SRCS ../kcm/updatessettings.kcfgc GENERATE_MOC)
 
+qt_add_dbus_interface(notifier_SRCS org.freedesktop.login1.Manager.xml Login1ManagerInterface)
+
 add_executable(DiscoverNotifier
     BackendNotifierFactory.cpp
     DiscoverNotifier.cpp
