@@ -25,6 +25,7 @@
 #include <KIO/CommandLauncherJob>
 
 #include "../libdiscover/utils.h"
+#include "Login1ManagerInterface.h"
 #include "updatessettings.h"
 #include <chrono>
 
@@ -70,7 +71,18 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
     updateStatusNotifier();
 
     // Only fetch updates after the system is comfortably booted
-    QTimer::singleShot(0s, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
+    QTimer::singleShot(20s, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
+
+    auto login1 = new OrgFreedesktopLogin1ManagerInterface(QStringLiteral("org.freedesktop.login1"),
+                                                           QStringLiteral("/org/freedesktop/login1"),
+                                                           QDBusConnection::systemBus(),
+                                                           this);
+    connect(login1, &OrgFreedesktopLogin1ManagerInterface::PrepareForSleep, this, [this](bool sleeping) {
+        // if we just woke up and have not checked in at least 3h, refresh
+        if (!sleeping && m_lastUpdate.secsTo(QDateTime::currentDateTimeUtc()) > 60 * 60 * 3) {
+            QTimer::singleShot(20s, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
+        }
+    });
 }
 
 DiscoverNotifier::~DiscoverNotifier() = default;
@@ -285,6 +297,7 @@ QString DiscoverNotifier::message() const
 
 void DiscoverNotifier::recheckSystemUpdateNeeded()
 {
+    m_lastUpdate = QDateTime::currentDateTimeUtc();
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     if (!m_manager) {
         m_manager = new QNetworkConfigurationManager(this);

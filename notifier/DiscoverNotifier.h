@@ -105,5 +105,6 @@ private:
     QPointer<KNotification> m_updatesAvailableNotification;
     UnattendedUpdates *m_unattended = nullptr;
     KConfigWatcher::Ptr m_settingsWatcher;
+    QDateTime m_lastUpdate;
     UpdatesSettings *m_settings;
 };
