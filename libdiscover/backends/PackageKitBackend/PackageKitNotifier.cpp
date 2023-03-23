@@ -193,7 +193,7 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
 
 void PackageKitNotifier::recheckSystemUpdate()
 {
-    if (PackageKit::Daemon::global()->isRunning()) {
+    if (PackageKit::Daemon::global()->isRunning() && !PackageKit::Daemon::global()->offline()->upgradeTriggered()) {
         PackageKit::Daemon::getUpdates();
     }
 }
