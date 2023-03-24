@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-23 02:35+0000\n"
+"POT-Creation-Date: 2023-03-24 02:08+0000\n"
 "PO-Revision-Date: 2023-03-01 06:55+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -549,7 +549,7 @@ msgid "Local bundle"
 msgstr "Paquet local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1655
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:671
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:673
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL « AppStream » malformée « %1 »"
@@ -1136,13 +1136,13 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Polices"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:234
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:236
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 "Veuillez vérifier que Appstream est correctement configuré sur votre système"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:272
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:274
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1152,10 +1152,37 @@ msgstr ""
 "Votre système d'exploitation n'est plus pris en charge depuis %1. Veuillez "
 "prendre en compte une mise à jour vers une version prise en charge."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:765
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:767
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Impossible de supprimer « %1 »"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>A new major version of %1 has been released!</b>\n"
+#| "To be able to update to this new version, make sure to apply all pending "
+#| "updates and reboot your system."
+msgid ""
+"<b>A new major version of %1 has been released.</b>\n"
+"To be able to update to this new version, make sure to apply all updates and "
+"reboot your system."
+msgstr ""
+"<b>Une nouvelle version majeure de %1 a été publiée ! </b> Pour effectuer "
+"une mise à jour vers cette nouvelle version, veuillez vous assurer d'avoir "
+"appliqué toutes les mises à jour en attente puis re-démarrer votre système."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
+#, kde-format
+msgid "Upgrade to %1 %2"
+msgstr "Mettre à niveau vers %1 %2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
+#, fuzzy, kde-format
+#| msgid "<b>A new major version has been released!</b>"
+msgid "A new major version has been released"
+msgstr "<b>Une nouvelle version majeure a été publiée ! </b>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2023,26 +2050,34 @@ msgstr[1] "%2 (plus les dépendances %1)"
 msgid "Repository URL:"
 msgstr "URL du dépôt :"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:84
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:92
+#, fuzzy, kde-format
+#| msgctxt "@item example: muon installed at 16:00"
+#| msgid "%1 %2 at %3"
+msgctxt "distro upgrade: name version"
+msgid "%1 %2"
+msgstr "%1 %2 à %3"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
 #, kde-format
 msgid "System upgrade"
 msgstr "Mise à jour du système"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:185
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
 msgstr[0] "Un paquet sera mis à jour"
 msgstr[1] "%1 paquets seront mis à jour"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:194
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 "<h3>%1</h3>Mettre à jour vers la nouvelle version %2<br/>Aucune note de "
 "publication n'est fournie."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:196
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2051,17 +2086,17 @@ msgstr ""
 "<h3>%1</h3>Mettre à jour vers la nouvelle version %2<br/>Note de "
 "publication : <blockquote>%3</blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:223
 #, kde-format
 msgid "Present"
 msgstr "Présent"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:227
 #, kde-format
 msgid "Future"
 msgstr "Futur"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:308
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:346
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
@@ -2069,7 +2104,7 @@ msgstr ""
 "Espace insuffisant pour réaliser la mise à jour. Il ne reste que %1 d'espace "
 "disponible."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:495
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:548
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2083,12 +2118,12 @@ msgstr ""
 "erreur, veuillez le signaler comme un bogue vers les personnes en charge de "
 "la production des paquets de votre distribution."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:502
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:555
 #, kde-format
 msgid "Packages to remove"
 msgstr "Paquets à supprimer"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:503
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:556
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2098,13 +2133,13 @@ msgstr ""
 "ul><br/>afin d'installer :\n"
 "<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:601
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:671
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:609
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:679
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2114,13 +2149,13 @@ msgstr ""
 "Un changement de média de type « %1 » est nécessaire.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:642
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:712
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Accepter l'accord de licence"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:643
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:713
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2131,13 +2166,13 @@ msgstr ""
 "licence:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:760
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:830
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Signature manquante pour %1 dans %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:761
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:831
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
@@ -2241,11 +2276,6 @@ msgstr ""
 "<b>Une nouvelle version majeure de %1 a été publiée ! </b> Pour effectuer "
 "une mise à jour vers cette nouvelle version, veuillez vous assurer d'avoir "
 "appliqué toutes les mises à jour en attente puis re-démarrer votre système."
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
-#, kde-format
-msgid "Upgrade to %1 %2"
-msgstr "Mettre à niveau vers %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format
@@ -3022,10 +3052,6 @@ msgstr "Modules complémentaires"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Purgé"
-
-#~ msgctxt "@item example: muon installed at 16:00"
-#~ msgid "%1 %2 at %3"
-#~ msgstr "%1 %2 à %3"
 
 #~ msgctxt "@info:status Package state"
 #~ msgid "No Change"

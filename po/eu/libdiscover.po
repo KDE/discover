@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-23 02:35+0000\n"
+"POT-Creation-Date: 2023-03-24 02:08+0000\n"
 "PO-Revision-Date: 2023-02-28 23:17+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "Bertako sorta"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1655
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:671
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:673
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Gaizki eratutako 'appstream' url '%1'"
@@ -1123,12 +1123,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Letra-tipoak"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:234
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:236
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Ziurtatu 'Appstream' dagokion gisan ezarrita dagoela zure sisteman"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:272
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:274
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1138,10 +1138,37 @@ msgstr ""
 "Zure sistema eragileak %1(a)ren gaineko euskarria bukatu du. Kontuan izan "
 "euskarria duen bertsio batera bertsio-berritzeko aukera."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:765
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:767
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ezin da kendu «%1»"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>A new major version of %1 has been released!</b>\n"
+#| "To be able to update to this new version, make sure to apply all pending "
+#| "updates and reboot your system."
+msgid ""
+"<b>A new major version of %1 has been released.</b>\n"
+"To be able to update to this new version, make sure to apply all updates and "
+"reboot your system."
+msgstr ""
+"<b>%1(e)n bertsio nagusi berri bat argitaratu da!</b>\n"
+"Bertsio berri horretara eguneratu ahal izateko, ezar itzazu egiteko dauden "
+"eguneratze guztiak eta berrabiatu zure sistema."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
+#, kde-format
+msgid "Upgrade to %1 %2"
+msgstr "Bertsio-berritu %1 %2(e)ra"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
+#, fuzzy, kde-format
+#| msgid "<b>A new major version has been released!</b>"
+msgid "A new major version has been released"
+msgstr "<b>Bertsio nagusi berri bat argitaratu da!</b>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2004,26 +2031,32 @@ msgstr[1] "%2 (gehi %1 mendekotasunak)"
 msgid "Repository URL:"
 msgstr "Gordetegi URL:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:84
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:92
+#, kde-format
+msgctxt "distro upgrade: name version"
+msgid "%1 %2"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
 #, kde-format
 msgid "System upgrade"
 msgstr "Sistema bertsio-berritzea"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:185
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
 msgstr[0] "Pakete bat bertsio-berrituko da"
 msgstr[1] "%1 pakete bertsio-berrituko dira"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:194
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 "<h3>%1</h3>Bertsio-berritu %2 bertsio berrira<br/>Ez da kaleratze-oharrik "
 "ematen"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:196
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2032,24 +2065,24 @@ msgstr ""
 "<h3>%1</h3>Bertsio-berritu %2 bertsio berrira<br/>Kaleratze oharrak:"
 "<blockquote>%3</blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:223
 #, kde-format
 msgid "Present"
 msgstr "Oraina"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:227
 #, kde-format
 msgid "Future"
 msgstr "Geroa"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:308
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:346
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 "Ez dago eguneratzea burutzeko behar adina leku; %1 bakarrik dago erabilgarri."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:495
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:548
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2062,12 +2095,12 @@ msgstr ""
 "dela uste baduzu, mesedez, eman iezaiezu horren berri, akats gisa, zure "
 "banaketako paketatzaileei."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:502
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:555
 #, kde-format
 msgid "Packages to remove"
 msgstr "Kendu beharreko paketeak"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:503
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:556
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2076,13 +2109,13 @@ msgstr ""
 "Eguneratzean ondoko paketeak kenduko dira:<ul><li>%1</li></ul><br/>beste "
 "hauek instalatu ahal izateko:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:601
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:671
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:609
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:679
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2092,13 +2125,13 @@ msgstr ""
 "'%1' motako euskarri aldaketa bat eskatzen da.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:642
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:712
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Onartu AELK (Azken Erabiltzailearen Lizentzia-Kontratua)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:643
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:713
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2109,13 +2142,13 @@ msgstr ""
 "onartzea:\n"
 "%3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:760
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:830
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Sinadura falta da %1-rentzako %2-n"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:761
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:831
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
@@ -2218,11 +2251,6 @@ msgstr ""
 "<b>%1(e)n bertsio nagusi berri bat argitaratu da!</b>\n"
 "Bertsio berri horretara eguneratu ahal izateko, ezar itzazu egiteko dauden "
 "eguneratze guztiak eta berrabiatu zure sistema."
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
-#, kde-format
-msgid "Upgrade to %1 %2"
-msgstr "Bertsio-berritu %1 %2(e)ra"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format

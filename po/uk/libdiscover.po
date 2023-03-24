@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-23 02:35+0000\n"
+"POT-Creation-Date: 2023-03-24 02:08+0000\n"
 "PO-Revision-Date: 2023-02-28 08:44+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "Локальний пакунок"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1655
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:671
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:673
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Помилкове форматування адреси appstream «%1»"
@@ -1124,14 +1124,14 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Шрифти"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:234
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:236
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 "Будь ласка, переконайтеся, що у вашій системі належним чином налаштовано "
 "Appstream"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:272
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:274
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1141,10 +1141,37 @@ msgstr ""
 "Супровід вашої операційної системи припинено %1. Вам варто оновити систему "
 "до супроводжуваної версії."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:765
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:767
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Не вдалося вилучити «%1»"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>A new major version of %1 has been released!</b>\n"
+#| "To be able to update to this new version, make sure to apply all pending "
+#| "updates and reboot your system."
+msgid ""
+"<b>A new major version of %1 has been released.</b>\n"
+"To be able to update to this new version, make sure to apply all updates and "
+"reboot your system."
+msgstr ""
+"<b>Випущено нову основну версію %1!</b>\n"
+"Щоб мати змогу оновитися до цієї нової версії, переконайтеся, що застосовано "
+"усі оновлення з черги оновлень і перезавантажте вашу систему."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
+#, kde-format
+msgid "Upgrade to %1 %2"
+msgstr "Оновлення до %1 %2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
+#, fuzzy, kde-format
+#| msgid "<b>A new major version has been released!</b>"
+msgid "A new major version has been released"
+msgstr "<b>Випущено нову основну версію!</b>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2017,12 +2044,20 @@ msgstr[3] "%2 (і %1 залежність)"
 msgid "Repository URL:"
 msgstr "Адреса сховища:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:84
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:92
+#, fuzzy, kde-format
+#| msgctxt "@item example: muon installed at 16:00"
+#| msgid "%1 %2 at %3"
+msgctxt "distro upgrade: name version"
+msgid "%1 %2"
+msgstr "%2 %1 о %3"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
 #, kde-format
 msgid "System upgrade"
 msgstr "Оновлення системи"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:171
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:185
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
@@ -2031,13 +2066,13 @@ msgstr[1] "Буде оновлено %1 пакунки"
 msgstr[2] "Буде оновлено %1 пакунків"
 msgstr[3] "Буде оновлено %1 пакунок"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:180
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:194
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 "<h3>%1</h3>Оновлення до нової версії %2<br/>Нотаток щодо випуску не надано"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:182
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:196
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2046,23 +2081,23 @@ msgstr ""
 "<h3>%1</h3>Оновлення до нової версії %2<br/>Нотатки щодо випуску:<blockquote>"
 "%3</blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:223
 #, kde-format
 msgid "Present"
 msgstr "Поточна"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:227
 #, kde-format
 msgid "Future"
 msgstr "Майбутня"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:308
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:346
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "Недостатньо вільного місця для виконання оновлення. Доступно лише %1."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:495
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:548
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2075,12 +2110,12 @@ msgstr ""
 "%1</li></ul><nl/>Якщо ви вважаєте це помилкою, будь ласка, повідомте про "
 "неї, як про ваду, пакувальникам вашого дистрибутива."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:502
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:555
 #, kde-format
 msgid "Packages to remove"
 msgstr "Пакунки на вилучення"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:503
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:556
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2089,13 +2124,13 @@ msgstr ""
 "Під час оновлення буде вилучено такі пакунки:<ul><li>%1</li></ul><br/>для "
 "встановлення:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:601
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:671
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:609
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:679
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2105,13 +2140,13 @@ msgstr ""
 "Надіслано запит щодо зміни носія типу «%1».\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:642
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:712
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Погодитися з EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:643
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:713
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2122,13 +2157,13 @@ msgstr ""
 "підтвердження ліцензійної угоди:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:760
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:830
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Немає підпису %1 у %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:761
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:831
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
@@ -2237,11 +2272,6 @@ msgstr ""
 "<b>Випущено нову основну версію %1!</b>\n"
 "Щоб мати змогу оновитися до цієї нової версії, переконайтеся, що застосовано "
 "усі оновлення з черги оновлень і перезавантажте вашу систему."
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
-#, kde-format
-msgid "Upgrade to %1 %2"
-msgstr "Оновлення до %1 %2"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format
@@ -3049,10 +3079,6 @@ msgstr "Додатки"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Повністю вилучено"
-
-#~ msgctxt "@item example: muon installed at 16:00"
-#~ msgid "%1 %2 at %3"
-#~ msgstr "%2 %1 о %3"
 
 #~ msgctxt "@info:status Package state"
 #~ msgid "No Change"
