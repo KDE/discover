@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-24 02:08+0000\n"
-"PO-Revision-Date: 2023-02-28 07:01+0100\n"
+"PO-Revision-Date: 2023-03-25 02:32+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1133,17 +1133,13 @@ msgid "Cannot remove '%1'"
 msgstr "%1-ის წაშლის შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to update to this new version, make sure to apply all updates and "
 "reboot your system."
 msgstr ""
-"<b>ხელმისაწვდომია %1-ის ახალი ძირითადი ვერსია!</b>\n"
+"<b>ხელმისაწვდომია %1-ის ახალი ვერსია!</b>\n"
 "ამ ვერსიამდე განახლებისთვის დარწმუნდით, რომ ყველა დარჩენილი განახლება "
 "დააყენეთ და გადატვირთეთ სისტემა."
 
@@ -1154,10 +1150,9 @@ msgid "Upgrade to %1 %2"
 msgstr "განახლება ვერსიამდე %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>გამოვიდა ახალი ვერსია!</b>"
+msgstr "გამოვიდა ახალი ვერსია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2018,7 +2013,7 @@ msgstr "რეპოზიტორიის URL:"
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
 #, kde-format
@@ -2224,7 +2219,7 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
-"<b>ხელმისაწვდომია %1-ის ახალი ძირითადი ვერსია!</b>\n"
+"<b>ხელმისაწვდომია %1-ის ახალი ვერსია!</b>\n"
 "ამ ვერსიამდე განახლებისთვის დარწმუნდით, რომ ყველა დარჩენილი განახლება "
 "დააყენეთ და გადატვირთეთ სისტემა."
 

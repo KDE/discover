@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-24 02:08+0000\n"
-"PO-Revision-Date: 2023-03-07 19:04+0300\n"
+"PO-Revision-Date: 2023-03-24 13:52+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1136,17 +1136,13 @@ msgid "Cannot remove '%1'"
 msgstr "'%1' kaldırılamıyor"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to update to this new version, make sure to apply all updates and "
 "reboot your system."
 msgstr ""
-"<b>%1 uygulamasının yeni majör bir sürümü yayımlandı!</b>\n"
+"<b>Yeni bir %1 majör sürümü yayımlandı.</b>\n"
 "Bu yeni sürümü kullanmaya başlamak için, lütfen bekleyen tüm güncellemeleri "
 "uygulayın ve sisteminizi yeniden başlatın."
 
@@ -1157,10 +1153,9 @@ msgid "Upgrade to %1 %2"
 msgstr "Güncellenecek sürüm: %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>Yeni bir majör sürüm yayımlandı!</b>"
+msgstr "Yeni bir majör sürüm yayımlandı"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2026,7 +2021,7 @@ msgstr "Depo URL'si:"
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
 #, kde-format

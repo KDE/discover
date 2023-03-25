@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-24 02:08+0000\n"
-"PO-Revision-Date: 2023-02-28 16:10+0100\n"
+"PO-Revision-Date: 2023-03-24 10:49+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1143,18 +1143,14 @@ msgid "Cannot remove '%1'"
 msgstr "Non pote remover '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to update to this new version, make sure to apply all updates and "
 "reboot your system."
 msgstr ""
 "<b>Un nove major version de %1 ha essite liberate!</b>\n"
-"Per poter te actualisar a iste noveversion, assecura te de applicar omne "
+"Per poter te actualisar a iste nove version, assecura te a applicar omne "
 "actualisationes pendente e restarta tu systema."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
@@ -1164,10 +1160,9 @@ msgid "Upgrade to %1 %2"
 msgstr "Actualisa a %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>Un nove version major ha essite liberate!</b>"
+msgstr "Un nove version major ha essite liberate!"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2038,7 +2033,7 @@ msgstr "URL de repositorio:"
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
 #, kde-format

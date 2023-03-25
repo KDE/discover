@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-24 02:08+0000\n"
-"PO-Revision-Date: 2023-02-28 08:44+0200\n"
+"PO-Revision-Date: 2023-03-24 08:49+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -1147,11 +1147,7 @@ msgid "Cannot remove '%1'"
 msgstr "Не вдалося вилучити «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to update to this new version, make sure to apply all updates and "
@@ -1159,7 +1155,7 @@ msgid ""
 msgstr ""
 "<b>Випущено нову основну версію %1!</b>\n"
 "Щоб мати змогу оновитися до цієї нової версії, переконайтеся, що застосовано "
-"усі оновлення з черги оновлень і перезавантажте вашу систему."
+"усі оновлення і перезавантажте вашу систему."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
@@ -1168,10 +1164,9 @@ msgid "Upgrade to %1 %2"
 msgstr "Оновлення до %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>Випущено нову основну версію!</b>"
+msgstr "Випущено нову основну версію"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2045,12 +2040,10 @@ msgid "Repository URL:"
 msgstr "Адреса сховища:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:92
-#, fuzzy, kde-format
-#| msgctxt "@item example: muon installed at 16:00"
-#| msgid "%1 %2 at %3"
+#, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr "%2 %1 о %3"
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
 #, kde-format
