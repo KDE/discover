@@ -885,7 +885,7 @@ void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
     // - An update to the current version is available or pending a reboot
     info = i18n(
         "<b>A new major version of %1 has been released.</b>\n"
-        "To be able to update to this new version, make sure to apply all updates and reboot your system.",
+        "To be able to upgrade to this new version, make sure to apply all available updates and then restart the system.",
         AppStreamIntegration::global()->osRelease()->name());
     QSharedPointer<InlineMessage> updateBeforeMajorUpgradeMessage =
         QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info);
