@@ -303,8 +303,7 @@ msgid "Unknown author"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:238
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgid "Version:"
 msgstr "Versión:"
 

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-24 02:08+0000\n"
-"PO-Revision-Date: 2023-03-06 11:52+0100\n"
+"POT-Creation-Date: 2023-03-26 02:13+0000\n"
+"PO-Revision-Date: 2023-03-24 12:15+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1148,17 +1148,17 @@ msgstr "No s'ha pogut eliminar «%1»"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
 #, fuzzy, kde-format
 #| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#| "<b>A new major version of %1 has been released.</b>\n"
+#| "To be able to update to this new version, make sure to apply all updates "
+#| "and reboot your system."
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
-"To be able to update to this new version, make sure to apply all updates and "
-"reboot your system."
+"To be able to upgrade to this new version, make sure to apply all available "
+"updates and then restart the system."
 msgstr ""
-"<b>S'ha publicat una versió major nova de %1!</b>\n"
+"<b>S'ha publicat una versió major nova de %1.</b>\n"
 "Per a poder actualitzar a esta versió nova, assegureu-vos d'aplicar totes "
-"les actualitzacions pendents i reinicieu el sistema."
+"les actualitzacions i reinicieu el sistema."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
@@ -1167,10 +1167,9 @@ msgid "Upgrade to %1 %2"
 msgstr "Actualitza a %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>S'ha publicat una versió major nova!</b>"
+msgstr "S'ha publicat una versió major nova"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2037,7 +2036,7 @@ msgstr "URL del repositori:"
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
 #, kde-format
