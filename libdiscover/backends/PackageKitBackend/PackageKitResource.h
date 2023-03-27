@@ -87,6 +87,7 @@ public:
     bool extendsItself() const;
 
     void runService(KService::Ptr service) const;
+    bool containsPackageId(const QString &pkgid) const;
 
 Q_SIGNALS:
     void dependenciesFound(const QJsonArray &dependencies);
