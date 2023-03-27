@@ -305,12 +305,7 @@ void PackageKitResource::fetchUpdateDetails()
         connect(this, &PackageKitResource::stateChanged, a, &OneTimeAction::trigger);
         return;
     }
-    PackageKit::Transaction *t = PackageKit::Daemon::getUpdateDetail(availablePackageId());
-    connect(t, &PackageKit::Transaction::updateDetail, this, &PackageKitResource::updateDetail);
-    connect(t, &PackageKit::Transaction::errorCode, this, [this](PackageKit::Transaction::Error err, const QString &error) {
-        qWarning() << "error fetching updates:" << err << error;
-        Q_EMIT changelogFetched(QString());
-    });
+    backend()->updateDetails().add(pkgid);
 }
 
 static void addIfNotEmpty(const QString &title, const QString &content, QString &where)
@@ -340,6 +335,13 @@ static QStringList urlToLinks(const QStringList &urls)
     for (const QString &in : urls)
         ret += QStringLiteral("<a href='%1'>%1</a>").arg(in);
     return ret;
+}
+
+bool PackageKitResource::containsPackageId(const QString &pkgid) const
+{
+    return kContains(m_packages, [pkgid](const auto &x) {
+        return x.archPkgIds.contains(pkgid) || x.nonarchPkgIds.contains(pkgid);
+    });
 }
 
 void PackageKitResource::updateDetail(const QString &packageID,

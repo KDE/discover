@@ -84,6 +84,17 @@ QString PackageKitBackend::locateService(const QString &filename)
     return QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("applications/") + filename);
 }
 
+Delay::Delay()
+{
+    m_delay.setSingleShot(true);
+    m_delay.setInterval(100);
+
+    connect(&m_delay, &QTimer::timeout, this, [this] {
+        Q_EMIT perform(m_pkgids);
+        m_pkgids.clear();
+    });
+}
+
 PackageKitBackend::PackageKitBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
     , m_appdata(new AppStream::Pool)
@@ -98,9 +109,56 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
     t->setSingleShot(false);
     t->start();
 
-    m_delayedDetailsFetch.setSingleShot(true);
-    m_delayedDetailsFetch.setInterval(100);
-    connect(&m_delayedDetailsFetch, &QTimer::timeout, this, &PackageKitBackend::performDetailsFetch);
+    connect(&m_details, &Delay::perform, this, &PackageKitBackend::performDetailsFetch);
+    connect(&m_details, &Delay::perform, this, [this](const QSet<QString> &pkgids) {
+        PackageKit::Transaction *t = PackageKit::Daemon::getUpdatesDetails(kSetToList(pkgids));
+        connect(t,
+                &PackageKit::Transaction::updateDetail,
+                this,
+                [this](const QString &packageID,
+                       const QStringList &updates,
+                       const QStringList &obsoletes,
+                       const QStringList &vendorUrls,
+                       const QStringList &bugzillaUrls,
+                       const QStringList &cveUrls,
+                       PackageKit::Transaction::Restart restart,
+                       const QString &updateText,
+                       const QString &changelog,
+                       PackageKit::Transaction::UpdateState state,
+                       const QDateTime &issued,
+                       const QDateTime &updated) {
+                    const QSet<AbstractResource *> resources = resourcesByPackageName(PackageKit::Daemon::packageName(packageID));
+                    for (auto r : resources) {
+                        PackageKitResource *resource = qobject_cast<PackageKitResource *>(r);
+                        if (resource->containsPackageId(packageID)) {
+                            resource->updateDetail(packageID,
+                                                   updates,
+                                                   obsoletes,
+                                                   vendorUrls,
+                                                   bugzillaUrls,
+                                                   cveUrls,
+                                                   restart,
+                                                   updateText,
+                                                   changelog,
+                                                   state,
+                                                   issued,
+                                                   updated);
+                        }
+                    }
+                });
+        connect(t, &PackageKit::Transaction::errorCode, this, [this, pkgids](PackageKit::Transaction::Error err, const QString &error) {
+            qWarning() << "error fetching updates:" << err << error;
+            for (const QString &pkgid : pkgids) {
+                const QSet<AbstractResource *> resources = resourcesByPackageName(PackageKit::Daemon::packageName(pkgid));
+                for (auto r : resources) {
+                    PackageKitResource *resource = qobject_cast<PackageKitResource *>(r);
+                    if (resource->containsPackageId(pkgid)) {
+                        Q_EMIT resource->changelogFetched(QString());
+                    }
+                }
+            }
+        });
+    });
 
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::restartScheduled, m_updater, &PackageKitUpdater::enableNeedsReboot);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
@@ -953,22 +1011,17 @@ QSet<QString> PackageKitBackend::upgradeablePackageId(const PackageKitResource *
 
 void PackageKitBackend::fetchDetails(const QSet<QString> &pkgid)
 {
-    if (!m_delayedDetailsFetch.isActive()) {
-        m_delayedDetailsFetch.start();
-    }
-
-    m_packageNamesToFetchDetails += pkgid;
+    m_details.add(pkgid);
 }
 
-void PackageKitBackend::performDetailsFetch()
+void PackageKitBackend::performDetailsFetch(const QSet<QString> &pkgids)
 {
-    Q_ASSERT(!m_packageNamesToFetchDetails.isEmpty());
-    const auto ids = m_packageNamesToFetchDetails.values();
+    Q_ASSERT(!pkgids.isEmpty());
+    const auto ids = pkgids.values();
 
     PackageKit::Transaction *transaction = PackageKit::Daemon::getDetails(ids);
     connect(transaction, &PackageKit::Transaction::details, this, &PackageKitBackend::packageDetails);
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
-    m_packageNamesToFetchDetails.clear();
 }
 
 void PackageKitBackend::checkDaemonRunning()

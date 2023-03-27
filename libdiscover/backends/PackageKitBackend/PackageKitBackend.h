@@ -33,6 +33,36 @@ struct PackageOrAppId {
 PackageOrAppId makePackageId(const QString &id);
 PackageOrAppId makeAppId(const QString &id);
 
+class Delay : public QObject
+{
+    Q_OBJECT
+public:
+    Delay();
+    void add(const QString &pkgid)
+    {
+        if (!m_delay.isActive()) {
+            m_delay.start();
+        }
+
+        m_pkgids << pkgid;
+    }
+    void add(const QSet<QString> &pkgids)
+    {
+        if (!m_delay.isActive()) {
+            m_delay.start();
+        }
+
+        m_pkgids += pkgids;
+    }
+
+Q_SIGNALS:
+    void perform(const QSet<QString> &pkgids);
+
+private:
+    QTimer m_delay;
+    QSet<QString> m_pkgids;
+};
+
 class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
@@ -66,7 +96,7 @@ public:
     PKResolveTransaction *resolvePackages(const QStringList &packageNames);
     void fetchDetails(const QString &pkgid)
     {
-        fetchDetails(QSet<QString>{pkgid});
+        m_details.add(pkgid);
     }
     void fetchDetails(const QSet<QString> &pkgid);
 
@@ -90,6 +120,10 @@ public:
     void clear()
     {
         m_updatesPackageId.clear();
+    }
+    Delay &updateDetails()
+    {
+        return m_updateDetails;
     }
 
 public Q_SLOTS:
@@ -123,7 +157,7 @@ private:
     void checkDaemonRunning();
     void acquireFetching(bool f);
     void includePackagesToAdd();
-    void performDetailsFetch();
+    void performDetailsFetch(const QSet<QString> &pkgids);
     AppPackageKitResource *addComponent(const AppStream::Component &component);
     void updateProxy();
     void lookForNextMajorVersion();
@@ -145,8 +179,8 @@ private:
         QHash<QString, QVector<AppPackageKitResource *>> extendedBy;
     } m_packages;
 
-    QTimer m_delayedDetailsFetch;
-    QSet<QString> m_packageNamesToFetchDetails;
+    Delay m_details;
+    Delay m_updateDetails;
     QSharedPointer<OdrsReviewsBackend> m_reviews;
     QPointer<PackageKit::Transaction> m_getUpdatesTransaction;
     QThreadPool m_threadPool;
