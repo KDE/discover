@@ -36,7 +36,7 @@ msgid ""
 "updates because none of its app backends are available."
 msgstr ""
 "Discover ne peut pas actuellement être utilisé pour l'installation de "
-"n'importe quelle application  ou de mises à jour du système. En effet, aucun "
+"n'importe quelle application ou de mises à jour du système. En effet, aucun "
 "moteur d'applications n'est disponible."
 
 #: discover/DiscoverObject.cpp:163
