@@ -79,7 +79,7 @@ public:
 
         m_updateSizeTimer->setInterval(100);
         m_updateSizeTimer->setSingleShot(true);
-        connect(m_updateSizeTimer, &QTimer::timeout, this, &SystemUpgrade::updateSizeChanged);
+        connect(m_updateSizeTimer, &QTimer::timeout, this, &SystemUpgrade::refreshResource);
     }
 
     QString packageName() const override
@@ -252,22 +252,29 @@ public:
     void refreshResource()
     {
         Q_EMIT m_backend->resourcesChanged(this, {"size", "license"});
-        m_updateSizeTimer->start();
+        Q_EMIT updateSizeChanged();
     }
 
     void setCandidates(const QSet<AbstractResource *> &candidates)
     {
         const auto toDisconnect = (m_resources - candidates);
         for (auto res : toDisconnect) {
-            disconnect(res, &AbstractResource::sizeChanged, this, &SystemUpgrade::refreshResource);
-            disconnect(res, &AbstractResource::changelogFetched, this, &SystemUpgrade::longDescriptionChanged);
+            disconnect(res, &AbstractResource::sizeChanged, this, &SystemUpgrade::startIfStopped);
+            disconnect(res, &AbstractResource::changelogFetched, this, &SystemUpgrade::startIfStopped);
         }
 
         const auto newCandidates = (candidates - m_resources);
         m_resources = candidates;
         for (auto res : newCandidates) {
-            connect(res, &AbstractResource::sizeChanged, this, &SystemUpgrade::refreshResource);
-            connect(res, &AbstractResource::changelogFetched, this, &SystemUpgrade::longDescriptionChanged);
+            connect(res, &AbstractResource::sizeChanged, this, &SystemUpgrade::startIfStopped);
+            connect(res, &AbstractResource::changelogFetched, this, &SystemUpgrade::startIfStopped);
+        }
+    }
+
+    void startIfStopped()
+    {
+        if (!m_updateSizeTimer->isActive()) {
+            m_updateSizeTimer->start();
         }
     }
 
