@@ -984,11 +984,6 @@ void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
     Q_EMIT inlineMessageChanged(majorUpgradeAvailableMessage);
 }
 
-bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource *res) const
-{
-    return !upgradeablePackageId(res).isEmpty();
-}
-
 // Copy of Transaction::packageName that doesn't create a copy but just pass a reference
 // It's an optimisation as there's a bunch of allocations that happen from packageName
 // Having packageName return a QStringRef or a QStringView would fix this issue.
@@ -996,6 +991,16 @@ bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource *res) 
 static QStringView TransactionpackageName(const QString &packageID)
 {
     return QStringView(packageID).left(packageID.indexOf(QLatin1Char(';')));
+}
+
+bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource *res) const
+{
+    const QString name = res->packageName();
+    for (const QString &pkgid : m_updatesPackageId) {
+        if (TransactionpackageName(pkgid) == name)
+            return true;
+    }
+    return false;
 }
 
 QSet<QString> PackageKitBackend::upgradeablePackageId(const PackageKitResource *res) const
