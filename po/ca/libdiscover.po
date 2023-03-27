@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-26 02:13+0000\n"
-"PO-Revision-Date: 2023-03-24 12:15+0100\n"
+"PO-Revision-Date: 2023-03-26 11:43+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1143,11 +1143,7 @@ msgid "Cannot remove '%1'"
 msgstr "No s'ha pogut eliminar «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released.</b>\n"
-#| "To be able to update to this new version, make sure to apply all updates "
-#| "and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
@@ -1155,7 +1151,7 @@ msgid ""
 msgstr ""
 "<b>S'ha publicat una versió major nova de %1.</b>\n"
 "Per a poder actualitzar a aquesta versió nova, assegureu-vos d'aplicar totes "
-"les actualitzacions i reinicieu el sistema."
+"les actualitzacions i després reinicieu el sistema."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352

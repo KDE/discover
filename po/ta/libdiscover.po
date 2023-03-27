@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-26 02:13+0000\n"
-"PO-Revision-Date: 2023-01-03 21:41+0530\n"
+"PO-Revision-Date: 2023-03-26 12:38+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 23.03.80\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1123,17 +1123,13 @@ msgid "Cannot remove '%1'"
 msgstr "'%1' என்பதை நீக்க முடியாது"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
-"<b>%1 என்பதன் புதிய பதிப்பு வெளியிடப்பட்டுள்ளது!</b>\n"
+"<b>%1 என்பதன் புதிய பெரும்பதிப்பு வெளியிடப்பட்டுள்ளது.</b>\n"
 "மீதமுள்ள நிரல் புதுப்பிப்புகளை நிறுவி உங்கள் கணினியை மீள்துவக்கியபின் நீங்கள் விரும்பினால் "
 "அப்புதிய பதிப்பை நிறுவலாம்."
 
@@ -1146,7 +1142,7 @@ msgstr "%1 %2 தனை நிறுவு"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
 #, kde-format
 msgid "A new major version has been released"
-msgstr ""
+msgstr "ஓர் புதிய பெரும்பதிப்பு வெளியிடப்பட்டுள்ளது"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1728,7 +1724,7 @@ msgstr "செயல், பூட்டுக்காக காத்துக
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
 #, kde-format
 msgid "Waiting for the user to authorize the transaction…"
-msgstr ""
+msgstr "பயனர் உரிமைவழங்க காத்திருக்கிறது…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
 #, kde-format
@@ -1951,10 +1947,9 @@ msgstr[0] "%1 நிரல் வெற்றிகரமாக புதுப�
 msgstr[1] "%1 நிரல்கள் வெற்றிகரமாக புதுப்பிக்கப்பட்டுள்ளன"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "தெரியாத நிலை"
+msgstr "தெரியாத மூலம்"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
@@ -2009,7 +2004,7 @@ msgstr "களஞ்சிய முகவரி:"
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
 #, kde-format
@@ -2092,6 +2087,8 @@ msgid ""
 "Media Change of type '%1' is requested.\n"
 "%2"
 msgstr ""
+"'%1' வகையான ஊடகமாற்றம் கோரப்பட்டுள்ளது.\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:712
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
@@ -2106,6 +2103,9 @@ msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
 " %3"
 msgstr ""
+"%1 எனும் நிரலை வெளியிடும் %2, பின்வரும் உரிமத்தை நீங்கள் ஏற்குமாறு "
+"கட்டாயப்படுத்துகின்றனர்:\n"
+" %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:830
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
@@ -2208,19 +2208,19 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
-"<b>%1 என்பதன் புதிய பதிப்பு வெளியிடப்பட்டுள்ளது!</b>\n"
+"<b>%1 என்பதன் புதிய பெரும்பதிப்பு வெளியிடப்பட்டுள்ளது!</b>\n"
 "மீதமுள்ள நிரல் புதுப்பிப்புகளை நிறுவி உங்கள் கணினியை மீள்துவக்கியபின் நீங்கள் விரும்பினால் "
 "அப்புதிய பதிப்பை நிறுவலாம்."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>ஓர் புதிய பெரும்பதிப்பு வெளியிடப்பட்டுள்ளது!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:474
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr ""
+msgstr "தற்போதைய பதிப்பிற்கே புதுப்பிப்புகள் மீதம் உள்ளன. இருந்தாலும் தொடர்கிறது."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:477
 #, kde-format
@@ -2323,12 +2323,12 @@ msgstr "இயக்குதளம் புதுப்பிக்கப்�
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "அடுத்த பெரும்பதிப்பிற்கு இயக்குதளம் புதுப்பிக்கப்படுகிறது"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr ""
+msgstr "செயல் நிலுவையிலுள்ளது (டிஸ்கவருக்கு வெளியே துவக்கப்பட்டது)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
@@ -2434,10 +2434,9 @@ msgid "%1+"
 msgstr "%1+"
 
 #: libdiscover/resources/ResourcesUpdatesModel.cpp:109
-#, fuzzy, kde-format
-#| msgid "Updating"
+#, kde-format
 msgid "Updates"
-msgstr "புதுப்பிக்கப்படுகிறது"
+msgstr "புதுப்பிப்புகள்"
 
 #: libdiscover/Transaction/Transaction.cpp:133
 #, kde-format
