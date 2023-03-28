@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-26 02:13+0000\n"
-"PO-Revision-Date: 2023-03-25 02:32+0100\n"
+"PO-Revision-Date: 2023-03-27 06:27+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1133,17 +1133,13 @@ msgid "Cannot remove '%1'"
 msgstr "%1-ის წაშლის შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released.</b>\n"
-#| "To be able to update to this new version, make sure to apply all updates "
-#| "and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
-"<b>ხელმისაწვდომია %1-ის ახალი ვერსია!</b>\n"
+"<b>ხელმისაწვდომია %1-ის ახალი ვერსია.</b>\n"
 "ამ ვერსიამდე განახლებისთვის დარწმუნდით, რომ ყველა დარჩენილი განახლება "
 "დააყენეთ და გადატვირთეთ სისტემა."
 
