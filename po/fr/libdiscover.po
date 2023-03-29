@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-26 02:13+0000\n"
-"PO-Revision-Date: 2023-03-25 09:18+0100\n"
+"PO-Revision-Date: 2023-03-28 15:16+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -1158,19 +1158,16 @@ msgid "Cannot remove '%1'"
 msgstr "Impossible de supprimer « %1 »"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
-"<b>Une nouvelle version majeure de %1 a été publiée ! </b> Pour effectuer "
-"une mise à jour vers cette nouvelle version, veuillez vous assurer d'avoir "
-"appliqué toutes les mises à jour en attente puis re-démarrer votre système."
+"<b>Une nouvelle version majeure de %1 a été publiée.</b> \n"
+"Pour effectuer une mise à jour vers cette nouvelle version, veuillez vous "
+"assurer d'avoir appliqué toutes les mises à jour et d'avoir re-démarré votre "
+"système."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352

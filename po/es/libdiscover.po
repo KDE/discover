@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-26 02:13+0000\n"
-"PO-Revision-Date: 2023-03-24 17:38+0100\n"
+"PO-Revision-Date: 2023-03-26 21:45+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1144,11 +1144,7 @@ msgid "Cannot remove '%1'"
 msgstr "No se puede eliminar «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released.</b>\n"
-#| "To be able to update to this new version, make sure to apply all updates "
-#| "and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
@@ -1156,7 +1152,7 @@ msgid ""
 msgstr ""
 "<b>Se ha publicado una nueva versión mayor de %1</b>\n"
 "Para poder actualizar a esta versión, asegúrese de aplicar todas las "
-"actualizaciones y reinicie el sistema."
+"actualizaciones disponibles y reinicie el sistema."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
