@@ -335,10 +335,7 @@ DiscoverPage {
                         }
 
                         Label {
-                            Layout.fillWidth: true
                             text: appInfo.application.contentRatingText
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignTop
                             wrapMode: Text.Wrap
                             maximumLineCount: 3
                             elide: Text.ElideRight
@@ -348,11 +345,8 @@ DiscoverPage {
                         }
 
                         Kirigami.LinkButton {
-                            Layout.fillWidth: true
                             visible: appInfo.application.contentRatingDescription.length > 0
                             text: i18nc("@action", "See details…")
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignTop
                             elide: Text.ElideRight
                             onClicked: contentRatingDialog.open();
                         }
