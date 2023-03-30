@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-17 02:32+0000\n"
+"POT-Creation-Date: 2023-03-30 02:09+0000\n"
 "PO-Revision-Date: 2023-02-17 17:08+0700\n"
 "Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -359,150 +359,150 @@ msgstr "Peringkat Konten"
 msgid "Age: %1+"
 msgstr "Umur: %1+"
 
-#: discover/qml/ApplicationPage.qml:353
+#: discover/qml/ApplicationPage.qml:349
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "Lihat detail..."
 
-#: discover/qml/ApplicationPage.qml:375
+#: discover/qml/ApplicationPage.qml:369
 #, kde-format
 msgid "Could not access the screenshots"
 msgstr "Tidak bisa mengakses skrinsut"
 
-#: discover/qml/ApplicationPage.qml:487
+#: discover/qml/ApplicationPage.qml:481
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentasi"
 
-#: discover/qml/ApplicationPage.qml:488
+#: discover/qml/ApplicationPage.qml:482
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Baca dokumentasi resmi proyek"
 
-#: discover/qml/ApplicationPage.qml:504
+#: discover/qml/ApplicationPage.qml:498
 #, kde-format
 msgid "Website"
 msgstr "Situs"
 
-#: discover/qml/ApplicationPage.qml:505
+#: discover/qml/ApplicationPage.qml:499
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Kunjungi situs proyek"
 
-#: discover/qml/ApplicationPage.qml:521
+#: discover/qml/ApplicationPage.qml:515
 #, kde-format
 msgid "Addons"
 msgstr "Addon"
 
-#: discover/qml/ApplicationPage.qml:522
+#: discover/qml/ApplicationPage.qml:516
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Instal atau hapus fungsionalitas tambahan"
 
-#: discover/qml/ApplicationPage.qml:541
+#: discover/qml/ApplicationPage.qml:535
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Bagikan"
 
-#: discover/qml/ApplicationPage.qml:542
+#: discover/qml/ApplicationPage.qml:536
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Kirim sebuah tautan untuk aplikasi ini"
 
-#: discover/qml/ApplicationPage.qml:558
+#: discover/qml/ApplicationPage.qml:552
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Periksalah apl %1!"
 
-#: discover/qml/ApplicationPage.qml:578
+#: discover/qml/ApplicationPage.qml:572
 #, kde-format
 msgid "What's New"
 msgstr "Apa Yang Baru"
 
-#: discover/qml/ApplicationPage.qml:609
+#: discover/qml/ApplicationPage.qml:603
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Memuat ulasan %1"
 
-#: discover/qml/ApplicationPage.qml:615
+#: discover/qml/ApplicationPage.qml:609
 #, kde-format
 msgid "Reviews"
 msgstr "Ulasan"
 
-#: discover/qml/ApplicationPage.qml:653
+#: discover/qml/ApplicationPage.qml:647
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "Tampilkan semua %1 Ulasan"
 msgstr[1] "Tampilkan semua %1 Ulasan"
 
-#: discover/qml/ApplicationPage.qml:665
+#: discover/qml/ApplicationPage.qml:659
 #, kde-format
 msgid "Write a Review"
 msgstr "Tulislah sebuah Ulasan"
 
-#: discover/qml/ApplicationPage.qml:665
+#: discover/qml/ApplicationPage.qml:659
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Installah untuk Menulis sebuah Ulasan"
 
-#: discover/qml/ApplicationPage.qml:677
+#: discover/qml/ApplicationPage.qml:671
 #, kde-format
 msgid "Get Involved"
 msgstr "Ikut Terlibat"
 
-#: discover/qml/ApplicationPage.qml:719
+#: discover/qml/ApplicationPage.qml:713
 #, kde-format
 msgid "Donate"
 msgstr "Donasi"
 
-#: discover/qml/ApplicationPage.qml:720
+#: discover/qml/ApplicationPage.qml:714
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 "Dukung dan berterimakasihlah kepada para pengembang dengan berdonasi ke "
 "proyek mereka"
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:730
 #, kde-format
 msgid "Report Bug"
 msgstr "Laporkan Bug"
 
-#: discover/qml/ApplicationPage.qml:737
+#: discover/qml/ApplicationPage.qml:731
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Catatlah masalah yang ditemukan untuk membantu memperbaikinya"
 
-#: discover/qml/ApplicationPage.qml:753
+#: discover/qml/ApplicationPage.qml:747
 #, kde-format
 msgid "Contribute"
 msgstr "Kontribusi"
 
-#: discover/qml/ApplicationPage.qml:754
+#: discover/qml/ApplicationPage.qml:748
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Bantu pengembang dengan pengkodean, pendesainan, pengujian, atau penerjemahan"
 
-#: discover/qml/ApplicationPage.qml:779
+#: discover/qml/ApplicationPage.qml:773
 #, kde-format
 msgid "All Licenses"
 msgstr "Semua Lisensi"
 
-#: discover/qml/ApplicationPage.qml:812
+#: discover/qml/ApplicationPage.qml:806
 #, kde-format
 msgid "Content Rating"
 msgstr "Peringkat Konten"
 
-#: discover/qml/ApplicationPage.qml:826
+#: discover/qml/ApplicationPage.qml:820
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Risiko Perangkat Lunak Proprietary"
 
-#: discover/qml/ApplicationPage.qml:832
+#: discover/qml/ApplicationPage.qml:826
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -528,7 +528,7 @@ msgstr ""
 "jika Anda sepenuhnya mempercayai penulisnya (<link url='%1'>%2</link>).<nl/"
 "><nl/>Anda dapat mempelajari lebih lanjut di <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:833
+#: discover/qml/ApplicationPage.qml:827
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

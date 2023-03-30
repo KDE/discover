@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-26 02:13+0000\n"
+"POT-Creation-Date: 2023-03-30 02:09+0000\n"
 "PO-Revision-Date: 2023-02-25 15:02-0800\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -538,7 +538,7 @@ msgid "Local bundle"
 msgstr "ローカルパッケージ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1655
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:673
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:731
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正な AppStream の URL '%1'"
@@ -592,7 +592,7 @@ msgid "%1 on disk"
 msgstr "インストールで %1 のディスク容量を使用"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:470
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
@@ -1071,12 +1071,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "フォント"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:236
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:294
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "AppStream がシステムに正しく設定されているか確認してください。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:274
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:332
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1086,12 +1086,12 @@ msgstr ""
 "あなたのオペレーティングシステムのサポートは %1 に終了しました。サポートされ"
 "ているバージョンへの更新を検討してください。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:767
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:825
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1'を削除できません。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
 #, fuzzy, kde-format
 #| msgid ""
 #| "<b>A new major version of %1 has been released!</b>\n"
@@ -1106,13 +1106,13 @@ msgstr ""
 "新しいメジャーバージョンに更新する前に、すべての更新待ちパッケージを更新して"
 "システムを再起動する必要があります。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "%1 %2 に更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
 #, fuzzy, kde-format
 #| msgid "<b>A new major version has been released!</b>"
 msgid "A new major version has been released"
@@ -1929,44 +1929,44 @@ msgstr[1] "%1 パッケージの更新に成功しました。"
 msgid "Unknown Source"
 msgstr "不明なステータス"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:326
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr "，"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:379
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
 #, kde-format
 msgid "Obsoletes:"
 msgstr "廃止予定:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:380
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
 #, kde-format
 msgid "Release Notes:"
 msgstr "リリースノート:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:383
 #, kde-format
 msgid "Update State:"
 msgstr "更新のステータス:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
 #, kde-format
 msgid "Restart:"
 msgstr "再起動:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:385
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:387
 #, kde-format
 msgid "Vendor:"
 msgstr "ベンダー:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:405
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:407
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2020,13 +2020,13 @@ msgstr "現在"
 msgid "Future"
 msgstr "将来"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:346
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:353
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "十分な空き容量がないため更新できません。現在 %1 のみ利用可能です。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:548
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:555
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2035,12 +2035,12 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:555
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:562
 #, kde-format
 msgid "Packages to remove"
 msgstr "削除するパッケージ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:556
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:563
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2049,13 +2049,13 @@ msgstr ""
 "<ul><li>%2</li></ul>をインストールするために次のパッケージが削除されます:<br/"
 "><ul><li>%1</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:671
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:678
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:679
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:686
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2065,13 +2065,13 @@ msgstr ""
 "タイプ '%1' のメディアを変更する必要があります。\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:712
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:719
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "EULA (ソフトウェア使用許諾契約) に同意します。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:713
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:720
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2081,13 +2081,13 @@ msgstr ""
 "パッケージ %1 とそのベンダー %2 の使用許諾契約に同意する必要があります。:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:830
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:837
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2 に %1 の署名がありません。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:831
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:838
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-26 02:13+0000\n"
+"POT-Creation-Date: 2023-03-30 02:09+0000\n"
 "PO-Revision-Date: 2020-10-11 01:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -548,7 +548,7 @@ msgid "Local bundle"
 msgstr "Kohalik kimp"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1655
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:673
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:731
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Vigane appstream'i URL '%1'"
@@ -618,7 +618,7 @@ msgid "%1 on disk"
 msgstr "%1 kettal"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:470
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, fuzzy, kde-format
 #| msgid ""
@@ -1124,14 +1124,14 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Fondid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:236
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:294
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 "Palun kontrolli, kas Appstream on ikka sinu süsteemis korrektselt "
 "häälestatud."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:274
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:332
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1139,13 +1139,13 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:767
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:825
 #, fuzzy, kde-format
 #| msgid "Cannot remove system package"
 msgid "Cannot remove '%1'"
 msgstr "Süsteemset paketti ei saa eemaldada"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1153,14 +1153,14 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, fuzzy, kde-format
 #| msgid "Upgrade"
 msgid "Upgrade to %1 %2"
 msgstr "Uuenda"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""
@@ -2041,44 +2041,44 @@ msgstr[1] "%1 paketti uuendati edukalt"
 msgid "Unknown Source"
 msgstr "Tundmatu tõrge"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:326
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:379
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Igandab:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:380
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
 #, kde-format
 msgid "Release Notes:"
 msgstr "Väljalaskemärkmed:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:383
 #, kde-format
 msgid "Update State:"
 msgstr "Uuendamisolek:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
 #, kde-format
 msgid "Restart:"
 msgstr "Taaskäivitus:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:385
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:387
 #, kde-format
 msgid "Vendor:"
 msgstr "Pakkuja:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:405
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:407
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2135,13 +2135,13 @@ msgstr ""
 msgid "Future"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:346
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:353
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:548
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:555
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2150,12 +2150,12 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:555
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:562
 #, kde-format
 msgid "Packages to remove"
 msgstr "Eemaldatavad paketid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:556
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:563
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2164,13 +2164,13 @@ msgstr ""
 "Uuendamisel eemaldatakse järgmised paketid:<ul><li>%1</li></ul><br/>et "
 "paigaldada:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:671
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:678
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:679
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:686
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2180,13 +2180,13 @@ msgstr ""
 "Nõutav on andmekandja tüübiga '%1'.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:712
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:719
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "EULA-ga nõustumine"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:713
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:720
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2196,13 +2196,13 @@ msgstr ""
 "Pakett %1 ja selle tootja %2 nõuavad oma litsentsiga nõustumist:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:830
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:837
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%1 allkiri asukohas %2 puudub"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:831
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:838
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""

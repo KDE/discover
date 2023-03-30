@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-26 02:13+0000\n"
+"POT-Creation-Date: 2023-03-30 02:09+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -546,7 +546,7 @@ msgid "Local bundle"
 msgstr "စက်တွင်းအထုပ်"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1655
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:673
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:731
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "ပုံပျက်-အပ်စထရင်း-ယူအာအယ်လ် '%1'"
@@ -602,7 +602,7 @@ msgid "%1 on disk"
 msgstr "%1 ဒစ်စ်တွင်ရှိပြီး"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:499
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:470
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
@@ -1087,12 +1087,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "ဖောင့်များ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:236
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:294
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "ကျေးဇူးပြု၍ သင်၏စစ်စတမ်တွင် အပ်စထရင်းအား မှန်ကန်စွာပြင်ဆင်ပါ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:274
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:332
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1100,12 +1100,12 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:767
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:825
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' ကိုမဖယ်ရှားနိုင်ပါ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:887
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1113,13 +1113,13 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:896
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:914
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""
@@ -1929,44 +1929,44 @@ msgstr[0] "ပတ်ကေ့ချ် %1ခု ကိုအောင်မြ�
 msgid "Unknown Source"
 msgstr "အခြေအနေဘာမှန်းမသိ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:326
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr "၊ "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:379
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
 #, kde-format
 msgid "Obsoletes:"
 msgstr "အသုံးမလို -"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:380
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
 #, kde-format
 msgid "Release Notes:"
 msgstr "ထုတ်လွှင့်မှုဆိုင်ရာမှတ်စုများ -"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:383
 #, kde-format
 msgid "Update State:"
 msgstr "အပ်ဒိတ်အခြေအနေ -"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
 #, kde-format
 msgid "Restart:"
 msgstr "ပြန်စတင်မှု -"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:385
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:387
 #, kde-format
 msgid "Vendor:"
 msgstr "ရောင်းချသူ -"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:405
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:407
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2018,13 +2018,13 @@ msgstr "လက်ရှိ"
 msgid "Future"
 msgstr "အနာဂတ်"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:346
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:353
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:548
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:555
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2033,12 +2033,12 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:555
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:562
 #, kde-format
 msgid "Packages to remove"
 msgstr "ဖယ်ရှားမည့် ပတ်ကေ့ချ်များ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:556
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:563
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2047,13 +2047,13 @@ msgstr ""
 "အောက်ပါပတ်ကေ့ချ်များကို အပ်ဒိတ် <ul><li>%2</li></ul> တင်ရန် ဖယ်ရှားမည်-<ul><li>%1</li></"
 "ul><br/>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:671
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:678
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:679
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:686
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2063,13 +2063,13 @@ msgstr ""
 "မီဒီယာပြောင်းလဲမှုအမျိုးအစား '%1' ကိုတောင်းဆိုထားသည်။\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:712
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:719
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "အီးယူအယ်အေ လက်ခံမည်"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:713
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:720
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2079,13 +2079,13 @@ msgstr ""
 "ပတ်ကေ့ချ် %1 နှင့် ၎င်း၏ရောင်းချသူ %2 က သင်ကိုလိုင်စင်အားလက်ခံရန် လိုအပ်သည်။\n"
 "%3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:830
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:837
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2 တွင် %1 အတွက် လက်မှတ်ပျောက်နေသည်"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:831
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:838
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
