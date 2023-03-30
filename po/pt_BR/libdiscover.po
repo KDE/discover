@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 02:50+0000\n"
+"POT-Creation-Date: 2023-03-30 02:44+0000\n"
 "PO-Revision-Date: 2023-01-16 23:12-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -547,7 +547,7 @@ msgid "Local bundle"
 msgstr "Pacote local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1640
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:671
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:729
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL do Appstream mal formada '%1'"
@@ -604,7 +604,7 @@ msgid "%1 on disk"
 msgstr "%1 no disco"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:468
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:470
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
@@ -1117,12 +1117,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Fontes"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:234
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:292
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Verifique se o Appstream está corretamente configurado no seu sistema"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:272
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:330
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1132,7 +1132,7 @@ msgstr ""
 "O suporte do seu sistema operacional encerrou em %1. Considere atualizar "
 "para uma versão suportada."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:765
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Não foi possível remover '%1'"
@@ -1949,44 +1949,44 @@ msgstr[1] "%1 pacotes atualizados com sucesso"
 msgid "Unknown Source"
 msgstr "Status desconhecido"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:326
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:379
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Torna obsoleto:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:380
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
 #, kde-format
 msgid "Release Notes:"
 msgstr "Notas de lançamento:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:383
 #, kde-format
 msgid "Update State:"
 msgstr "Estado da atualização:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
 #, kde-format
 msgid "Restart:"
 msgstr "Reiniciar:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:385
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:387
 #, kde-format
 msgid "Vendor:"
 msgstr "Fabricante:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:405
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:407
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2034,7 +2034,7 @@ msgstr "Presente"
 msgid "Future"
 msgstr "Futuro"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:308
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:315
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
@@ -2042,7 +2042,7 @@ msgstr ""
 "Sem espaço suficiente para fazer a atualização; apenas %1 do espaço está "
 "disponível."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:495
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:502
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2055,12 +2055,12 @@ msgstr ""
 "ul><nl/>Se você acredita que isto é um erro, relate este erro aos "
 "empacotadores de sua distribuição."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:502
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:509
 #, kde-format
 msgid "Packages to remove"
 msgstr "Pacotes a remover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:503
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:510
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2069,13 +2069,13 @@ msgstr ""
 "Os seguintes pacotes serão removidos pela atualização:<ul><li>%1</li></"
 "ul><br/>para poder instalar:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:601
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:608
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:609
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:616
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2085,13 +2085,13 @@ msgstr ""
 "É necessário mudar o tipo da mídia '%1'.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:642
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:649
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Aceitar a EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:643
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:650
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2101,13 +2101,13 @@ msgstr ""
 "O pacote %1 e seu fabricante %2 precisam que você aceite a licença:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:760
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:767
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Assinatura faltando para %1 em %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:761
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:768
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
