@@ -26,6 +26,7 @@
 #include <optional>
 
 #include "libdiscover_backend_debug.h"
+#include "pk-offline-private.h"
 #include "utils.h"
 
 int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage)
@@ -327,6 +328,11 @@ void PackageKitUpdater::prepare()
         m_allUpgradeable.clear();
         enableNeedsReboot();
         return;
+    }
+
+    if (QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
+        qDebug() << "Removed offline results file";
+        PackageKit::Daemon::global()->offline()->clearResults();
     }
 
     Q_ASSERT(!m_transaction);
