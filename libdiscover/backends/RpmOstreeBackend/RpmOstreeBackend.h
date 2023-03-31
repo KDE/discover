@@ -73,6 +73,9 @@ private:
      * we are running and then initialize the rest of the backend. */
     void initializeBackend();
 
+    /* Check if a transaction has been started outside of Discover */
+    bool hasExternalTransaction();
+
     /* Helper to setup a Transaction and connect all signals/slots */
     void setupTransaction(RpmOstreeTransaction::Operation op, QString arg = {});
 
