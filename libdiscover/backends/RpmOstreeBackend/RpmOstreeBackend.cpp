@@ -143,13 +143,8 @@ void RpmOstreeBackend::initializeBackend()
 
     // Look for a potentially already in-progress rpm-ostree transaction that
     // was started outside of Discover
-    const QString transaction = m_interface->activeTransactionPath();
-    if (!transaction.isEmpty()) {
-        qInfo() << "rpm-ostree-backend: A transaction is already in progress";
-        // We don't check that m_currentlyBootedDeployment is != nullptr here as we've
-        // initialized it right above in refreshDeployments.
-        m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, RpmOstreeTransaction::Unknown);
-        TransactionModel::global()->addTransaction(m_transaction);
+    if (hasExternalTransaction()) {
+        setFetching(false);
         return;
     }
 
@@ -231,10 +226,38 @@ void RpmOstreeBackend::setupTransaction(RpmOstreeTransaction::Operation op, QStr
     connect(m_transaction, &RpmOstreeTransaction::lookForNextMajorVersion, this, &RpmOstreeBackend::lookForNextMajorVersion);
 }
 
+bool RpmOstreeBackend::hasExternalTransaction()
+{
+    // Do we already know that we have a transaction in progress?
+    if (m_transaction) {
+        qInfo() << "rpm-ostree-backend: A transaction is already in progress";
+        return true;
+    }
+
+    // Is there actualy a transaction in progress we don't know about yet?
+    const QString transaction = m_interface->activeTransactionPath();
+    if (!transaction.isEmpty()) {
+        qInfo() << "rpm-ostree-backend: Found a transaction in progress";
+        // We don't check that m_currentlyBootedDeployment is != nullptr here as we expect
+        // that the backend is initialized when we're called.
+        setupTransaction(RpmOstreeTransaction::Unknown);
+        TransactionModel::global()->addTransaction(m_transaction);
+        return true;
+    }
+
+    return false;
+}
+
 void RpmOstreeBackend::checkForUpdates()
 {
     if (!m_currentlyBootedDeployment) {
         qInfo() << "rpm-ostree-backend: Called checkForUpdates before the backend is done getting deployments";
+        return;
+    }
+
+    // Do not start a transaction if there is already one in-progress (likely externaly started)
+    if (hasExternalTransaction()) {
+        qInfo() << "rpm-ostree-backend: Not checking for updates while a transaction is in progress";
         return;
     }
 
