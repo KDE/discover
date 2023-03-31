@@ -64,6 +64,9 @@ public Q_SLOTS:
     /* Rebase to the next major version */
     void rebaseToNewVersion();
 
+    /* Called when the Transaction changes state. Mostly to cleanup once it's done  */
+    void transactionStatusChanged(Transaction::Status status);
+
 private:
     /* Once rpm-ostree has effectively stated, registrer ourselves as update
      * driver to the rpm-ostreed daemon to make sure that it does not exit while
