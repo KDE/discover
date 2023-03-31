@@ -27,6 +27,7 @@ static const QString DevelopmentVersionName = QStringLiteral("Rawhide");
 RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
     , m_currentlyBootedDeployment(nullptr)
+    , m_transaction(nullptr)
     , m_watcher(new QDBusServiceWatcher(this))
     , m_interface(nullptr)
     , m_updater(new StandardBackendUpdater(this))
@@ -202,6 +203,13 @@ void RpmOstreeBackend::refreshDeployments()
     setFetching(false);
 }
 
+void RpmOstreeBackend::setupTransaction(RpmOstreeTransaction::Operation op, QString arg)
+{
+    m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, op, arg);
+    connect(m_transaction, &RpmOstreeTransaction::deploymentsUpdated, this, &RpmOstreeBackend::refreshDeployments);
+    connect(m_transaction, &RpmOstreeTransaction::lookForNextMajorVersion, this, &RpmOstreeBackend::lookForNextMajorVersion);
+}
+
 void RpmOstreeBackend::checkForUpdates()
 {
     if (!m_currentlyBootedDeployment) {
@@ -209,7 +217,7 @@ void RpmOstreeBackend::checkForUpdates()
         return;
     }
 
-    m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, RpmOstreeTransaction::CheckForUpdate);
+    setupTransaction(RpmOstreeTransaction::CheckForUpdate);
     connect(m_transaction, &RpmOstreeTransaction::newVersionFound, [this](QString newVersion) {
         // Mark that there is a newer version for the current deployment
         m_currentlyBootedDeployment->setNewVersion(newVersion);
@@ -239,7 +247,6 @@ void RpmOstreeBackend::checkForUpdates()
             Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
         }
     });
-    connect(m_transaction, &RpmOstreeTransaction::lookForNextMajorVersion, this, &RpmOstreeBackend::lookForNextMajorVersion);
     m_transaction->start();
     TransactionModel::global()->addTransaction(m_transaction);
 }
@@ -448,8 +455,7 @@ Transaction *RpmOstreeBackend::installApplication(AbstractResource *app)
         return nullptr;
     }
 
-    m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, RpmOstreeTransaction::Update);
-    connect(m_transaction, &RpmOstreeTransaction::deploymentsUpdated, this, &RpmOstreeBackend::refreshDeployments);
+    setupTransaction(RpmOstreeTransaction::Update);
     m_transaction->start();
     return m_transaction;
 }
@@ -488,9 +494,7 @@ void RpmOstreeBackend::rebaseToNewVersion()
 
     // Only start one rebase operation at a time
     Q_EMIT inlineMessageChanged(nullptr);
-    m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, RpmOstreeTransaction::Rebase, ref);
-    connect(m_transaction, &RpmOstreeTransaction::deploymentsUpdated, this, &RpmOstreeBackend::refreshDeployments);
-    connect(m_transaction, &RpmOstreeTransaction::lookForNextMajorVersion, this, &RpmOstreeBackend::lookForNextMajorVersion);
+    setupTransaction(RpmOstreeTransaction::Rebase, ref);
     m_transaction->start();
     TransactionModel::global()->addTransaction(m_transaction);
 }
