@@ -160,6 +160,8 @@ void RpmOstreeBackend::initializeBackend()
 
 void RpmOstreeBackend::refreshDeployments()
 {
+    // Set fetching in all cases but record the state to decide if we should undo it at the end
+    bool wasFetching = isFetching();
     setFetching(true);
 
     // Get the path for the curently booted OS DBus interface.
@@ -200,12 +202,31 @@ void RpmOstreeBackend::refreshDeployments()
     // The number of updates might have changed if we're called after an update
     Q_EMIT updatesCountChanged();
 
-    setFetching(false);
+    // Only undo the fetching state if we set it up in this function
+    if (!wasFetching) {
+        setFetching(false);
+    }
+}
+
+void RpmOstreeBackend::transactionStatusChanged(Transaction::Status status)
+{
+    switch (status) {
+    case Transaction::Status::DoneStatus:
+    case Transaction::Status::DoneWithErrorStatus:
+    case Transaction::Status::CancelledStatus:
+        m_transaction = nullptr;
+        setFetching(false);
+        break;
+    default:
+        // Ignore all other status changes
+        ;
+    }
 }
 
 void RpmOstreeBackend::setupTransaction(RpmOstreeTransaction::Operation op, QString arg)
 {
     m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, op, arg);
+    connect(m_transaction, &RpmOstreeTransaction::statusChanged, this, &RpmOstreeBackend::transactionStatusChanged);
     connect(m_transaction, &RpmOstreeTransaction::deploymentsUpdated, this, &RpmOstreeBackend::refreshDeployments);
     connect(m_transaction, &RpmOstreeTransaction::lookForNextMajorVersion, this, &RpmOstreeBackend::lookForNextMajorVersion);
 }
@@ -216,6 +237,9 @@ void RpmOstreeBackend::checkForUpdates()
         qInfo() << "rpm-ostree-backend: Called checkForUpdates before the backend is done getting deployments";
         return;
     }
+
+    // We're fetching updates
+    setFetching(true);
 
     setupTransaction(RpmOstreeTransaction::CheckForUpdate);
     connect(m_transaction, &RpmOstreeTransaction::newVersionFound, [this](QString newVersion) {
