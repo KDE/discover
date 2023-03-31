@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-30 02:09+0000\n"
-"PO-Revision-Date: 2023-02-28 21:04+0400\n"
+"PO-Revision-Date: 2023-03-30 08:48+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1123,19 +1123,15 @@ msgid "Cannot remove '%1'"
 msgstr "لا يمكن إزالة '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
-"<b>صدرت إصدارة رئيسة لـ %1!</b>\n"
-"لتكون قادرًا على التحديث إلى هذا الإصدار الجديد، تأكد من تطبيق جميع التحديثات "
-"المعلقة وإعادة تشغيل نظامك."
+"<b>صدر إصدار رئيسي لـ %1!</b>\n"
+"لتكون قادرًا على للترقية إلى هذا الإصدار الجديد، تأكد من تطبيق جميع التحديثات "
+"المتوفرة وإعادة تشغيل نظامك."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
@@ -1144,10 +1140,9 @@ msgid "Upgrade to %1 %2"
 msgstr "رقِّ إلى %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>صدر إصدار رئيسي جديد!</b>"
+msgstr "صدر إصدار رئيسي جديد!"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2024,12 +2019,10 @@ msgid "Repository URL:"
 msgstr "مسار المستودع:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:92
-#, fuzzy, kde-format
-#| msgctxt "@item example: muon installed at 16:00"
-#| msgid "%1 %2 at %3"
+#, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr "%2 %1 عند %3"
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
 #, kde-format

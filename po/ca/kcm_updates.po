@@ -4,13 +4,13 @@
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2020, 2021.
-# Josep M. Ferrer <txemaq@gmail.com>, 2021, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-07 00:45+0000\n"
-"PO-Revision-Date: 2022-08-25 12:50+0200\n"
+"PO-Revision-Date: 2023-03-30 19:46+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: kcm/package/contents/ui/main.qml:32
 #, kde-format
@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 "Les actualitzacions sense connexió maximitzen l'estabilitat del sistema "
 "mitjançant l'aplicació dels canvis mentre es reinicia el sistema. Es "
-"recomana encaridament emprar aquest mode d'actualització."
+"recomana fermament emprar aquest mode d'actualització."
 
 #: kcm/updates.cpp:31
 #, kde-format
