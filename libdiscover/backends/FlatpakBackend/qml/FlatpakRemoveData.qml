@@ -10,6 +10,7 @@ import org.kde.discover 2.0
 import org.kde.kirigami 2.10 as Kirigami
 
 Kirigami.InlineMessage {
+    id: root
     // resource is set by the creator of the element in ApplicationPage.
     //required property AbstractResource resource
     Layout.fillWidth: true
@@ -29,6 +30,8 @@ Kirigami.InlineMessage {
             icon.name: "delete"
             text: i18nd("libdiscover", "Delete settings and user data")
             onTriggered: {
+                enabled = false
+                root.text = i18nd("libdiscover", "Clearing settings and user data…")
                 resource.clearUserData()
             }
         }
