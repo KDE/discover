@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-01 02:10+0000\n"
 "PO-Revision-Date: 2014-01-31 20:46+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -974,14 +974,19 @@ msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
 msgid "Delete settings and user data"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
+#, kde-format
+msgid "Clearing settings and user data…"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
@@ -2072,7 +2077,7 @@ msgstr[2] ""
 msgid "Repository URL:"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
 #, fuzzy, kde-format
 #| msgctxt "@item example: muon installed at 16:00"
 #| msgid "%1 %2 at %3"
@@ -2080,14 +2085,14 @@ msgctxt "distro upgrade: name version"
 msgid "%1 %2"
 msgstr "%1 %2 na %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox Filters updates in the history view"
 #| msgid "Updates"
 msgid "System upgrade"
 msgstr "Nadogradnje"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:185
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
 #, fuzzy, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
@@ -2095,35 +2100,35 @@ msgstr[0] "Paketi se ne mogu naći"
 msgstr[1] "Paketi se ne mogu naći"
 msgstr[2] "Paketi se ne mogu naći"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:194
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:196
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:223
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:224
 #, kde-format
 msgid "Present"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:227
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
 msgid "Future"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:353
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:555
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:561
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2132,25 +2137,25 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:562
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, fuzzy, kde-format
 msgid "Packages to remove"
 msgstr "Paketi se ne mogu naći"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:563
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
 ">in order to install:<ul><li>%2</li></ul>"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:678
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:684
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:686
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:692
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2158,13 +2163,13 @@ msgid ""
 "%2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:719
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:720
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:726
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2172,13 +2177,13 @@ msgid ""
 " %3"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:837
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:843
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:838
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:844
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
-"PO-Revision-Date: 2023-03-08 19:57+0100\n"
+"POT-Creation-Date: 2023-04-01 02:10+0000\n"
+"PO-Revision-Date: 2023-03-31 21:14+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -953,14 +953,20 @@ msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "Vis stabil versjon på %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 er ikkje installert, men har likevel data lagra."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
 msgid "Delete settings and user data"
+msgstr "Slett innstillingar og brukardata"
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
+#, fuzzy, kde-format
+#| msgid "Delete settings and user data"
+msgid "Clearing settings and user data…"
 msgstr "Slett innstillingar og brukardata"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
@@ -1133,19 +1139,15 @@ msgid "Cannot remove '%1'"
 msgstr "Kan ikkje fjerna «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
-"<b>Ein ny versjon av %1 er ute!</b>\n"
+"<b>Ein ny versjon av %1 er ute.</b>\n"
 "For å kunna oppgradera til denne versjonen må du først installera alle "
-"gjenståande oppdateringane og så starta maskina på nytt."
+"tilgjengelege oppdateringar og så starta maskina på nytt."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
@@ -1154,10 +1156,9 @@ msgid "Upgrade to %1 %2"
 msgstr "Oppgrader til %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>Ein ny hovudversjon er ute!</b>"
+msgstr "Ein ny hovudversjon er ute"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2018,32 +2019,32 @@ msgstr[1] "%2 (pluss %1 avhengnadar)"
 msgid "Repository URL:"
 msgstr "Adresse til pakkebrønn:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:92
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:94
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
 msgid "System upgrade"
 msgstr "System­oppgradering"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:185
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
 msgstr[0] "1 pakke vert oppgradert"
 msgstr[1] "%1 pakkar vert oppgraderte"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:194
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 "<h3>%1</h3>Oppgrader til ny versjon %2<br/>Ingen versjonsmerknadar er "
 "tilgjengelege"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:196
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2052,23 +2053,23 @@ msgstr ""
 "<h3>%1</h3>Oppgrader til ny versjon %2<br/>Versjonsmerknadar:<blockquote>%3</"
 "blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:223
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:224
 #, kde-format
 msgid "Present"
 msgstr "Notid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:227
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
 msgid "Future"
 msgstr "Framtid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:353
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "Manglar nok ledig diskplass til å oppdatera. Har berre %1 ledig plass."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:555
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:561
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2080,12 +2081,12 @@ msgstr ""
 "system­kritiske programma:<nl/><ul><li>%1</li></ul><nl/>Om du meiner dette er "
 "ein feil, send inn ein feilrapport til distribusjonen din."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:562
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
 msgid "Packages to remove"
 msgstr "Pakkar å fjerna"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:563
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2094,13 +2095,13 @@ msgstr ""
 "Desse pakkane vert fjerna av oppdateringa:<ul><li>%1</li></ul><br/>Dette er "
 "for å kunna installera:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:678
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:684
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:686
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:692
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2110,13 +2111,13 @@ msgstr ""
 "Må byta medium type «%1».\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:719
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Godta EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:720
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:726
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2126,13 +2127,13 @@ msgstr ""
 "Pakken %1 og pakkeleverandøren %2 krev at du godtek lisensavtala:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:837
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:843
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Manglar signatur for %1 i %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:838
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:844
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
