@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-14 00:47+0000\n"
+"POT-Creation-Date: 2023-04-01 02:43+0000\n"
 "PO-Revision-Date: 2022-07-08 15:50+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -21,69 +21,69 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Generator: Lokalize 20.12.0\n"
 
-#: notifier/DiscoverNotifier.cpp:144
+#: notifier/DiscoverNotifier.cpp:154
 #, kde-format
 msgid "View Updates"
 msgstr "Visualització de les actualitzacions"
 
-#: notifier/DiscoverNotifier.cpp:261
+#: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Security updates available"
 msgstr "Actualitzacions de seguretat disponibles"
 
-#: notifier/DiscoverNotifier.cpp:263
+#: notifier/DiscoverNotifier.cpp:273
 #, kde-format
 msgid "Updates available"
 msgstr "Actualitzacions disponibles"
 
-#: notifier/DiscoverNotifier.cpp:265
+#: notifier/DiscoverNotifier.cpp:275
 #, kde-format
 msgid "System up to date"
 msgstr "El sistema està actualitzat"
 
-#: notifier/DiscoverNotifier.cpp:267
+#: notifier/DiscoverNotifier.cpp:277
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Cal reiniciar l'ordinador"
 
-#: notifier/DiscoverNotifier.cpp:269
+#: notifier/DiscoverNotifier.cpp:279
 #, kde-format
 msgid "Offline"
 msgstr "Desconnectat"
 
-#: notifier/DiscoverNotifier.cpp:271
+#: notifier/DiscoverNotifier.cpp:281
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "S'estan aplicant les actualitzacions desateses…"
 
-#: notifier/DiscoverNotifier.cpp:305
+#: notifier/DiscoverNotifier.cpp:315
 #, kde-format
 msgid "Restart is required"
 msgstr "Cal reiniciar"
 
-#: notifier/DiscoverNotifier.cpp:306
+#: notifier/DiscoverNotifier.cpp:316
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Cal reiniciar el sistema perquè les actualitzacions tinguin efecte."
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:322
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Reinicia"
 
-#: notifier/DiscoverNotifier.cpp:332
+#: notifier/DiscoverNotifier.cpp:342
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Actualitza"
 
-#: notifier/DiscoverNotifier.cpp:333
+#: notifier/DiscoverNotifier.cpp:343
 #, kde-format
 msgid "Upgrade available"
 msgstr "Hi ha una actualització disponible"
 
-#: notifier/DiscoverNotifier.cpp:334
+#: notifier/DiscoverNotifier.cpp:344
 #, kde-format
 msgid "New version: %1"
 msgstr "Versió nova: %1"
