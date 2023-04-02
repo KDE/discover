@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 02:10+0000\n"
-"PO-Revision-Date: 2023-03-26 11:43+0200\n"
+"PO-Revision-Date: 2023-04-01 11:09+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -973,10 +973,9 @@ msgid "Delete settings and user data"
 msgstr "Suprimix la configuració i les dades d'usuari"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Suprimix la configuració i les dades d'usuari"
+msgstr "Neteja la configuració i les dades d'usuari…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16

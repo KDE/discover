@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 02:10+0000\n"
-"PO-Revision-Date: 2023-03-26 21:45+0200\n"
+"PO-Revision-Date: 2023-04-01 19:34+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -971,10 +971,9 @@ msgid "Delete settings and user data"
 msgstr "Borrar preferencias y datos del usuario"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Borrar preferencias y datos del usuario"
+msgstr "Borrando preferencias y datos del usuario..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16

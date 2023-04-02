@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 02:10+0000\n"
-"PO-Revision-Date: 2023-03-26 14:26+0100\n"
+"PO-Revision-Date: 2023-04-01 17:46+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -966,10 +966,9 @@ msgid "Delete settings and user data"
 msgstr "Delete settings and user data"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Delete settings and user data"
+msgstr "Clearing settings and user data…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
