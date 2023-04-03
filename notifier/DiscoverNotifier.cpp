@@ -11,6 +11,7 @@
 #include <KNotificationJobUiDelegate>
 #include <KPluginFactory>
 #include <QDBusConnection>
+#include <QDBusConnectionInterface>
 #include <QDBusMessage>
 #include <QDBusPendingCall>
 #include <QDebug>
@@ -115,13 +116,7 @@ bool DiscoverNotifier::notifyAboutUpdates() const
     m_settings->setLastNotificationTime(QDateTime::currentDateTimeUtc());
     m_settings->save();
 
-    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.discover"),
-                                                 QStringLiteral("/"),
-                                                 QStringLiteral("org.freedesktop.DBus.Peer"),
-                                                 QStringLiteral("Ping"));
-    auto call = QDBusConnection::sessionBus().asyncCall(method);
-    call.waitForFinished();
-    if (call.isValid()) {
+    if (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.discover"))) {
         return false;
     }
     return true;
