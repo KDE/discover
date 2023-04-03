@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-14 00:47+0000\n"
+"POT-Creation-Date: 2023-04-03 02:09+0000\n"
 "PO-Revision-Date: 2023-02-24 12:43\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -17,69 +17,69 @@ msgstr ""
 "X-Crowdin-File: /kf5-trunk/messages/discover/plasma-discover-notifier.pot\n"
 "X-Crowdin-File-ID: 4482\n"
 
-#: notifier/DiscoverNotifier.cpp:144
+#: notifier/DiscoverNotifier.cpp:154
 #, kde-format
 msgid "View Updates"
 msgstr "查看更新"
 
-#: notifier/DiscoverNotifier.cpp:261
+#: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Security updates available"
 msgstr "安全更新可用"
 
-#: notifier/DiscoverNotifier.cpp:263
+#: notifier/DiscoverNotifier.cpp:273
 #, kde-format
 msgid "Updates available"
 msgstr "更新可用"
 
-#: notifier/DiscoverNotifier.cpp:265
+#: notifier/DiscoverNotifier.cpp:275
 #, kde-format
 msgid "System up to date"
 msgstr "系统已为最新"
 
-#: notifier/DiscoverNotifier.cpp:267
+#: notifier/DiscoverNotifier.cpp:277
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "计算机需要重新启动"
 
-#: notifier/DiscoverNotifier.cpp:269
+#: notifier/DiscoverNotifier.cpp:279
 #, kde-format
 msgid "Offline"
 msgstr "离线"
 
-#: notifier/DiscoverNotifier.cpp:271
+#: notifier/DiscoverNotifier.cpp:281
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "正在应用无人职守更新…"
 
-#: notifier/DiscoverNotifier.cpp:305
+#: notifier/DiscoverNotifier.cpp:315
 #, kde-format
 msgid "Restart is required"
 msgstr "需要重新启动"
 
-#: notifier/DiscoverNotifier.cpp:306
+#: notifier/DiscoverNotifier.cpp:316
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "系统需要重新启动才能使更新生效。"
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:322
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "重新启动"
 
-#: notifier/DiscoverNotifier.cpp:332
+#: notifier/DiscoverNotifier.cpp:342
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "升级"
 
-#: notifier/DiscoverNotifier.cpp:333
+#: notifier/DiscoverNotifier.cpp:343
 #, kde-format
 msgid "Upgrade available"
 msgstr "有可用升级"
 
-#: notifier/DiscoverNotifier.cpp:334
+#: notifier/DiscoverNotifier.cpp:344
 #, kde-format
 msgid "New version: %1"
 msgstr "新版本：%1"

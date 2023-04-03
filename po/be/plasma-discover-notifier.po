@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-14 00:47+0000\n"
+"POT-Creation-Date: 2023-04-03 02:09+0000\n"
 "PO-Revision-Date: 2023-02-06 14:02\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -21,69 +21,69 @@ msgstr ""
 "X-Crowdin-File: /main/be/discover/plasma-discover-notifier.po\n"
 "X-Crowdin-File-ID: 9164\n"
 
-#: notifier/DiscoverNotifier.cpp:144
+#: notifier/DiscoverNotifier.cpp:154
 #, kde-format
 msgid "View Updates"
 msgstr "Паглядзець абнаўленні"
 
-#: notifier/DiscoverNotifier.cpp:261
+#: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Security updates available"
 msgstr "Даступны абнаўленні бяспекі"
 
-#: notifier/DiscoverNotifier.cpp:263
+#: notifier/DiscoverNotifier.cpp:273
 #, kde-format
 msgid "Updates available"
 msgstr "Даступныя абнаўленні"
 
-#: notifier/DiscoverNotifier.cpp:265
+#: notifier/DiscoverNotifier.cpp:275
 #, kde-format
 msgid "System up to date"
 msgstr "Сістэма абноўленая"
 
-#: notifier/DiscoverNotifier.cpp:267
+#: notifier/DiscoverNotifier.cpp:277
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Трэба перазапусціць камп'ютар"
 
-#: notifier/DiscoverNotifier.cpp:269
+#: notifier/DiscoverNotifier.cpp:279
 #, kde-format
 msgid "Offline"
 msgstr "Па-за сецівам"
 
-#: notifier/DiscoverNotifier.cpp:271
+#: notifier/DiscoverNotifier.cpp:281
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Ужыванне аўтаматычных абнаўленняў…"
 
-#: notifier/DiscoverNotifier.cpp:305
+#: notifier/DiscoverNotifier.cpp:315
 #, kde-format
 msgid "Restart is required"
 msgstr "Патрабуецца перазапуск"
 
-#: notifier/DiscoverNotifier.cpp:306
+#: notifier/DiscoverNotifier.cpp:316
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Каб абнаўленні былі ўжытыя, трэба перазапусціць сістэму."
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:322
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Перазапусціць"
 
-#: notifier/DiscoverNotifier.cpp:332
+#: notifier/DiscoverNotifier.cpp:342
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Абнавіць"
 
-#: notifier/DiscoverNotifier.cpp:333
+#: notifier/DiscoverNotifier.cpp:343
 #, kde-format
 msgid "Upgrade available"
 msgstr "Даступна абнаўленне"
 
-#: notifier/DiscoverNotifier.cpp:334
+#: notifier/DiscoverNotifier.cpp:344
 #, kde-format
 msgid "New version: %1"
 msgstr "Новая версія: %1"

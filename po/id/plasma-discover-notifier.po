@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-14 00:47+0000\n"
+"POT-Creation-Date: 2023-04-03 02:09+0000\n"
 "PO-Revision-Date: 2023-02-17 17:12+0700\n"
 "Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -18,69 +18,69 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.12.2\n"
 
-#: notifier/DiscoverNotifier.cpp:144
+#: notifier/DiscoverNotifier.cpp:154
 #, kde-format
 msgid "View Updates"
 msgstr "Tampilkan Pembaruan"
 
-#: notifier/DiscoverNotifier.cpp:261
+#: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Security updates available"
 msgstr "Tersedia pembaruan keamanan"
 
-#: notifier/DiscoverNotifier.cpp:263
+#: notifier/DiscoverNotifier.cpp:273
 #, kde-format
 msgid "Updates available"
 msgstr "Tersedia pembaruan"
 
-#: notifier/DiscoverNotifier.cpp:265
+#: notifier/DiscoverNotifier.cpp:275
 #, kde-format
 msgid "System up to date"
 msgstr "Sistem terbarukan"
 
-#: notifier/DiscoverNotifier.cpp:267
+#: notifier/DiscoverNotifier.cpp:277
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Komputer harus dimulai ulang"
 
-#: notifier/DiscoverNotifier.cpp:269
+#: notifier/DiscoverNotifier.cpp:279
 #, kde-format
 msgid "Offline"
 msgstr "Luring"
 
-#: notifier/DiscoverNotifier.cpp:271
+#: notifier/DiscoverNotifier.cpp:281
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Menerapkan pembaruan lalai..."
 
-#: notifier/DiscoverNotifier.cpp:305
+#: notifier/DiscoverNotifier.cpp:315
 #, kde-format
 msgid "Restart is required"
 msgstr "Harus dinyalakan ulang"
 
-#: notifier/DiscoverNotifier.cpp:306
+#: notifier/DiscoverNotifier.cpp:316
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Sistem perlu dinyalakan ulang supaya pembaruan berpengaruh."
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:322
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Nyalakan Ulang"
 
-#: notifier/DiscoverNotifier.cpp:332
+#: notifier/DiscoverNotifier.cpp:342
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Tingkatkan"
 
-#: notifier/DiscoverNotifier.cpp:333
+#: notifier/DiscoverNotifier.cpp:343
 #, kde-format
 msgid "Upgrade available"
 msgstr "Tersedia peningkatan"
 
-#: notifier/DiscoverNotifier.cpp:334
+#: notifier/DiscoverNotifier.cpp:344
 #, kde-format
 msgid "New version: %1"
 msgstr "Versi baru: %1"
