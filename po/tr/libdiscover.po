@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-01 02:10+0000\n"
+"POT-Creation-Date: 2023-04-04 02:22+0000\n"
 "PO-Revision-Date: 2023-04-01 12:09+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1152,7 +1152,7 @@ msgstr ""
 "uygulayın ve sisteminizi yeniden başlatın."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Güncellenecek sürüm: %1 %2"
@@ -2215,19 +2215,19 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "İşletim Sistemi"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:181
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: Birden çok önyüklenmiş dağıtım bulundu. Lütfen bir hata bildirin."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:193
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: Bir önyüklenmiş dağıtım bulunamadı. Lütfen bir hata bildirin."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:398
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
@@ -2238,24 +2238,24 @@ msgstr ""
 "Bu yeni sürümü kullanmaya başlamak için lütfen bekleyen tüm güncellemeleri "
 "uygulayın ve sisteminizi yeniden başlatın."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:408
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Yeni bir majör sürüm yayımlandı!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:474
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Geçerli sürüm için bekleyen güncellemeler var. İşlem sürdürülüyor."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:477
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:530
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Majör bir sürüme yeniden temellendirmeden önce lütfen en son sürüme "
 "güncelleyin"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:485
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:538
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""

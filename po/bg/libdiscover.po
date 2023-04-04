@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-01 02:10+0000\n"
+"POT-Creation-Date: 2023-04-04 02:22+0000\n"
 "PO-Revision-Date: 2023-03-26 17:10+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1153,7 +1153,7 @@ msgstr ""
 "приложили всички налични актуализации и рестартирайте системата."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:352
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Актуализиране до %1 %2"
@@ -2219,21 +2219,21 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Операционна система"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:181
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: Открити са няколко стартирани варианти. Моля, подайте сигнал за "
 "грешка."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:193
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: Не са открити стартирани варианти. Моля, подайте сигнал за "
 "грешка."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:344
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:398
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
@@ -2244,24 +2244,24 @@ msgstr ""
 "За да можете да актуализирате до тази нова версия, уверете се, че сте "
 "приложили всички чакащи актуализации и рестартирайте системата си."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:354
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:408
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Издадена е нова основна версия!/b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:474
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Имате чакащи актуализации за текущата версия. Продължаваме все пак."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:477
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:530
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Моля, актуализирайте до най-новата версия, преди да преминете към основна "
 "версия."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:485
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:538
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
