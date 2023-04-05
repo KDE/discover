@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2023-03-16 10:42+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -1132,6 +1132,13 @@ msgid "Error message copied to clipboard"
 msgstr "Message de error copiate a area de transferentia"
 
 #: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Actualisa selectionate"
+
+#: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1231,9 +1238,6 @@ msgstr "Deberea verificar actualisationes"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tempore del ultime actualisation incognite"
-
-#~ msgid "Update Selected"
-#~ msgstr "Actualisa selectionate"
 
 #~ msgid "Sources"
 #~ msgstr "Fontes"

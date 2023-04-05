@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2023-03-31 21:24+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1129,6 +1129,13 @@ msgid "Error message copied to clipboard"
 msgstr "Hata iletisi panoya kopyalandı"
 
 #: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Seçiliyi Güncelle"
+
+#: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1228,9 +1235,6 @@ msgstr "Güncellemeler denetlenmeli"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Son güncelleme zamanı bilinmiyor"
-
-#~ msgid "Update Selected"
-#~ msgstr "Seçiliyi Güncelle"
 
 #~ msgid "Sources"
 #~ msgstr "Kaynaklar"

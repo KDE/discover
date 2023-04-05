@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-04 02:22+0000\n"
-"PO-Revision-Date: 2023-03-29 16:09+0200\n"
+"PO-Revision-Date: 2023-04-04 14:11+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -935,7 +935,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr ""
+msgstr "Vymazání nastavení a uživatelských dat..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16

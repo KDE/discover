@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2021-09-19 20:01+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -1109,6 +1109,13 @@ msgstr ""
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "ရွေးထားသည်များသာ အပ်ဒိတ်တင်မည်"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1209,9 +1216,6 @@ msgstr "အပ်ဒိတ်ရှိ၊မရှိ စစ်ဆေးသင�
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "နောက်ဆုံးအကြိမ်အပ်ဒိတ်တင်ခဲ့သောအချိန်မသိ"
-
-#~ msgid "Update Selected"
-#~ msgstr "ရွေးထားသည်များသာ အပ်ဒိတ်တင်မည်"
 
 #~ msgid "Sources"
 #~ msgstr "ပရိုဂရမ်ဇစ်မြစ်များ"

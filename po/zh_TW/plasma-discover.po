@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2022-07-02 20:23+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -1127,6 +1127,13 @@ msgstr "錯誤訊息已複製到剪貼簿"
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "更新選取的"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1226,9 +1233,6 @@ msgstr "應該檢查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "無法得知最近的一次更新時間"
-
-#~ msgid "Update Selected"
-#~ msgstr "更新選取的"
 
 #~ msgid "Sources"
 #~ msgstr "來源"

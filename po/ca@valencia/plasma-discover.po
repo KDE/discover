@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2023-03-05 12:44+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1131,6 +1131,14 @@ msgstr ""
 #, kde-format
 msgid "Error message copied to clipboard"
 msgstr "S'ha copiat el missatge d'error al porta-retalls"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgctxt "@action:button as in, 'update all items'"
+#| msgid "Update All"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Actualitza-ho tot"
 
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format

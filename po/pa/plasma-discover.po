@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2022-01-01 09:32-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -1112,6 +1112,13 @@ msgstr "ਗ਼ਲਤੀ ਸੁਨੇਹਾ ਕਲਿੱਪਬੋਰਡ ਵਿੱ
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "ਚੁਣੇ ਅੱਪਡੇਟ ਕਰੋ"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1212,9 +1219,6 @@ msgstr "ਅੱਪਡੇਟ ਲਈ ਜਾਂਚ ਕਰਨੀ ਚਾਹੀਦੀ �
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "ਆਖਰੀ ਅੱਪਡੇਟ ਦਾ ਸਮਾਂ ਪਤਾ ਨਹੀ ਹੈ"
-
-#~ msgid "Update Selected"
-#~ msgstr "ਚੁਣੇ ਅੱਪਡੇਟ ਕਰੋ"
 
 #~ msgid "Sources"
 #~ msgstr "ਸਰੋਤ"

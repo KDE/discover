@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2023-02-07 10:31\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -1155,6 +1155,13 @@ msgstr "Паведамленне памылкі скапіявана ў буфе
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Абнавіць абранае"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1254,9 +1261,6 @@ msgstr "Варта праверыць на наяўнасць абнаўленн
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Час апошняга абнаўлення невядомы"
-
-#~ msgid "Update Selected"
-#~ msgstr "Абнавіць абранае"
 
 #~ msgid "Sources"
 #~ msgstr "Крыніцы"

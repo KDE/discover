@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2012-05-14 16:25-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -1131,6 +1131,13 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
 #| msgid "Update All"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Nuashonraigh Uile"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Nuashonraigh Uile"
@@ -1234,11 +1241,6 @@ msgstr ""
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Update All"
-#~ msgid "Update Selected"
-#~ msgstr "Nuashonraigh Uile"
 
 #, fuzzy
 #~| msgid "Sources"

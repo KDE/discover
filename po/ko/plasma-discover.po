@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2023-03-01 00:50+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1111,6 +1111,13 @@ msgstr "클립보드에 오류 메시지 복사됨"
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "업데이트 선택됨"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1210,9 +1217,6 @@ msgstr "업데이트 확인 여부"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "마지막 업데이트 시간 알 수 없음"
-
-#~ msgid "Update Selected"
-#~ msgstr "업데이트 선택됨"
 
 #~ msgid "Sources"
 #~ msgstr "원본"

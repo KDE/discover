@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2022-02-07 10:40+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1156,6 +1156,13 @@ msgstr "Hibaüzenet másolva a vágólapra"
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Kijelöltek frissítése"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1255,9 +1262,6 @@ msgstr "Frissítések keresése szükséges"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Az utolsó frissítés időpontja ismeretlen"
-
-#~ msgid "Update Selected"
-#~ msgstr "Kijelöltek frissítése"
 
 #~ msgid "Sources"
 #~ msgstr "Források"

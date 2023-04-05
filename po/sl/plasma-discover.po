@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2023-03-17 21:52+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1138,6 +1138,13 @@ msgid "Error message copied to clipboard"
 msgstr "Sporočilo o napaki prekopirano na odložišče"
 
 #: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Posodobi izbrano"
+
+#: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1237,9 +1244,6 @@ msgstr "Preveriti bi morali za posodobitvami"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Čas zadnje posodobitve je neznan"
-
-#~ msgid "Update Selected"
-#~ msgstr "Posodobi izbrano"
 
 #~ msgid "Sources"
 #~ msgstr "Viri"

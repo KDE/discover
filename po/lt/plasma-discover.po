@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2021-08-31 18:57+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -1146,6 +1146,13 @@ msgstr ""
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Atnaujinti pažymėtus"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1247,9 +1254,6 @@ msgstr "Turėtų būti tikrinama ar yra atnaujinimų"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Paskutinio atnaujinimo laikas nežinomas"
-
-#~ msgid "Update Selected"
-#~ msgstr "Atnaujinti pažymėtus"
 
 #~ msgid "Sources"
 #~ msgstr "Šaltiniai"

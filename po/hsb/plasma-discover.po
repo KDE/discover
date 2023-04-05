@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2021-10-29 12:52+0200\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -1100,6 +1100,13 @@ msgstr ""
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Wubrane aktualizować"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1200,9 +1207,6 @@ msgstr "Měło so za aktualizowanjemi pytać"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Čas poslednjeho aktualizowanja njeznaty"
-
-#~ msgid "Update Selected"
-#~ msgstr "Wubrane aktualizować"
 
 #~ msgid "Updates are available"
 #~ msgstr "Aktualizowanja steja k dispoziciji"

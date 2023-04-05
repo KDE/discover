@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2013-10-03 05:07+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -1128,6 +1128,13 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
 #| msgid "Update All"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Бүкілін жаңарту"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Бүкілін жаңарту"
@@ -1231,11 +1238,6 @@ msgstr ""
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Update All"
-#~ msgid "Update Selected"
-#~ msgstr "Бүкілін жаңарту"
 
 #, fuzzy
 #~| msgid "Sources"

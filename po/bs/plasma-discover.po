@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -1140,6 +1140,13 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
 #| msgid "Update All"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Ažuriraj sve"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Ažuriraj sve"
@@ -1243,11 +1250,6 @@ msgstr ""
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Update All"
-#~ msgid "Update Selected"
-#~ msgstr "Ažuriraj sve"
 
 #, fuzzy
 #~| msgid "Sources"

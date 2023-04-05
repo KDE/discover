@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2023-02-17 17:08+0700\n"
 "Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -1137,6 +1137,13 @@ msgstr "Pesan galat yang disalin ke clipboard"
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Perbarui Terpilih"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1236,9 +1243,6 @@ msgstr "Seharusnya periksa pembaruan"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Waktu pembaruan yang terakhir tidak diketahui"
-
-#~ msgid "Update Selected"
-#~ msgstr "Perbarui Terpilih"
 
 #~ msgid "Sources"
 #~ msgstr "Sumber"

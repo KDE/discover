@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2013-04-01 10:16+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1136,6 +1136,13 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
 #| msgid "Update All"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "सर्व अद्ययावत करा"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "सर्व अद्ययावत करा"
@@ -1239,11 +1246,6 @@ msgstr ""
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Update All"
-#~ msgid "Update Selected"
-#~ msgstr "सर्व अद्ययावत करा"
 
 #, fuzzy
 #~| msgid "Sources"

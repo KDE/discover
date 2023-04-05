@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2023-03-03 07:29+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -1151,6 +1151,13 @@ msgid "Error message copied to clipboard"
 msgstr "Повідомлення про помилку скопійовано до буфера обміну даними"
 
 #: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Оновити позначені"
+
+#: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1250,9 +1257,6 @@ msgstr "Слід перевірити на оновлення"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Момент останнього оновлення є невідомим"
-
-#~ msgid "Update Selected"
-#~ msgstr "Оновити позначені"
 
 #~ msgid "Sources"
 #~ msgstr "Джерела"

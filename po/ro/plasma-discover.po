@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2022-12-28 20:33+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -1172,6 +1172,13 @@ msgstr "Mesaj de eroare copiat în clipboard"
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Actualizează selecția"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1271,9 +1278,6 @@ msgstr "Ar trebui căutate actualizări"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Momentul ultimei actualizări e necunoscut"
-
-#~ msgid "Update Selected"
-#~ msgstr "Actualizează selecția"
 
 #~ msgid "Sources"
 #~ msgstr "Surse"

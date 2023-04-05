@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2022-09-25 09:29+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1154,6 +1154,13 @@ msgstr "Felmeddelande kopierat till klippbordet"
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Uppdatera markerade"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1253,9 +1260,6 @@ msgstr "Bör kontrollera uppdateringar"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid för senaste uppdatering okänd"
-
-#~ msgid "Update Selected"
-#~ msgstr "Uppdatera markerade"
 
 #~ msgid "Sources"
 #~ msgstr "Källor"

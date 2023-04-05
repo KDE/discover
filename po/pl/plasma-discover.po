@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2023-02-04 09:21+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -1144,6 +1144,13 @@ msgstr "Skopiowano wiadomość błędu do schowka"
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Uaktualnij zaznaczone"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1243,9 +1250,6 @@ msgstr "Należy wyszukać uaktualnień"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Czas ostatniego uaktualnienia jest nieznany"
-
-#~ msgid "Update Selected"
-#~ msgstr "Uaktualnij zaznaczone"
 
 #~ msgid "Sources"
 #~ msgstr "Źródło programu"

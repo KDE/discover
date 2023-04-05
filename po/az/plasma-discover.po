@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2022-08-16 17:05+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -1159,6 +1159,13 @@ msgstr "Xəta ismarıcı mübadilə yaddaşına kopyalandı"
 
 #: discover/qml/UpdatesPage.qml:134
 #, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Seçilmişi yeniləmək"
+
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
@@ -1258,9 +1265,6 @@ msgstr "Yenilənmə olub olmadığını yoxlamaq lazımdır"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Sonuncu yenilənmə vaxtı naməlumdur"
-
-#~ msgid "Update Selected"
-#~ msgstr "Seçilmişi yeniləmək"
 
 #~ msgid "Sources"
 #~ msgstr "Mənbə kodu"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-30 02:09+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2023-03-12 19:51+0100\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1140,6 +1140,14 @@ msgstr ""
 msgid "Error message copied to clipboard"
 msgstr "Fehlermeldung wurde in die Zwischenablage kopiert"
 
+# Würde besser zum folgenden "Update all" passen
+#: discover/qml/UpdatesPage.qml:134
+#, fuzzy, kde-format
+#| msgid "Update Selected"
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "Aktualisierung ausgewählt"
+
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
@@ -1240,10 +1248,6 @@ msgstr "Soll auf Aktualisierungen prüfen"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Zeit der letzten Aktualisierung unbekannt"
-
-# Würde besser zum folgenden "Update all" passen
-#~ msgid "Update Selected"
-#~ msgstr "Aktualisierung ausgewählt"
 
 #~ msgid "Sources"
 #~ msgstr "Paketquellen"
