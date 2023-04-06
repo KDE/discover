@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-05 02:19+0000\n"
-"PO-Revision-Date: 2023-03-05 14:25+0100\n"
+"PO-Revision-Date: 2023-04-05 10:07+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1132,11 +1132,10 @@ msgid "Error message copied to clipboard"
 msgstr "Foutbericht gekopieerd naar klembord"
 
 #: discover/qml/UpdatesPage.qml:134
-#, fuzzy, kde-format
-#| msgid "Update Selected"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
-msgstr "Selectie Bijwerken"
+msgstr "Selectie bijwerken"
 
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
