@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-04 02:22+0000\n"
-"PO-Revision-Date: 2023-03-26 17:10+0200\n"
+"PO-Revision-Date: 2023-04-06 18:33+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -967,10 +967,9 @@ msgid "Delete settings and user data"
 msgstr "Изтриване на настройките и потребителските данни"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Изтриване на настройките и потребителските данни"
+msgstr "Изтриване на настройките и потребителските данни..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
@@ -2557,6 +2556,3 @@ msgstr "Системен софтуер"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Добавки"
-
-#~ msgid "%1, released on %2"
-#~ msgstr "%1, пуснато на %2"

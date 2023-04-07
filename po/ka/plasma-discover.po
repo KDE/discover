@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-05 02:19+0000\n"
-"PO-Revision-Date: 2023-03-04 13:28+0100\n"
+"PO-Revision-Date: 2023-04-06 05:51+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1121,8 +1121,7 @@ msgid "Error message copied to clipboard"
 msgstr "შეცდომის შეტყობინება გაცვლის ბუფერში დაკოპირდა"
 
 #: discover/qml/UpdatesPage.qml:134
-#, fuzzy, kde-format
-#| msgid "Update Selected"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "მონიშნულის განახლება"
