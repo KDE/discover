@@ -273,6 +273,13 @@ void PackageKitNotifier::refreshDatabase()
         return;
     }
 
+    for (const auto &t : m_transactions) {
+        auto role = t->role();
+        if (role == PackageKit::Transaction::RoleUpdatePackages || role == PackageKit::Transaction::RoleUpgradeSystem) {
+            return;
+        }
+    }
+
     if (!m_refresher) {
         m_refresher = PackageKit::Daemon::refreshCache(false);
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
