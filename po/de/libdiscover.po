@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-04 02:22+0000\n"
-"PO-Revision-Date: 2023-03-12 19:51+0100\n"
+"PO-Revision-Date: 2023-04-03 16:17+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -971,10 +971,9 @@ msgid "Delete settings and user data"
 msgstr "Einstellungen und Benutzerdaten löschen"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Einstellungen und Benutzerdaten löschen"
+msgstr "Einstellungen und Benutzerdaten werden gelöscht ..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
@@ -1149,11 +1148,7 @@ msgid "Cannot remove '%1'"
 msgstr "„%1“ kann nicht entfernt werden"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
@@ -1170,10 +1165,9 @@ msgid "Upgrade to %1 %2"
 msgstr "Aktualisierung auf %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>Eine neue Hauptversion wurde veröffentlicht.</b>"
+msgstr "Eine neue Hauptversion wurde veröffentlicht."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2043,12 +2037,10 @@ msgid "Repository URL:"
 msgstr "Archiv-Adresse:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
-#, fuzzy, kde-format
-#| msgctxt "@item example: muon installed at 16:00"
-#| msgid "%1 %2 at %3"
+#, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr "%1 ist um %3 %2 worden"
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
