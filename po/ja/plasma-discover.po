@@ -1,13 +1,13 @@
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
 # Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022, 2023.
-# Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022.
+# Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-25 04:10+0000\n"
-"PO-Revision-Date: 2023-02-23 18:23+0900\n"
-"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
+"PO-Revision-Date: 2023-04-07 23:45-0700\n"
+"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -540,12 +540,11 @@ msgstr ""
 "ます。<nl/><nl/><link url='%2'>%</link> でさらなる情報を得ることができます。"
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "検索: %1 - %2 アイテム"
-msgstr[1] "検索: %1 - %2 アイテム"
+msgstr[0] "検索: %2 - %3 アイテム"
+msgstr[1] "検索: %2 - %3 アイテム"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -895,7 +894,7 @@ msgstr "不明なレビューア"
 #: discover/qml/ReviewDelegate.qml:62
 #, kde-format
 msgid "<b>%1</b> by %2"
-msgstr "<b>%1</b> の %2"
+msgstr "<b>%1</b> 投稿者: %2"
 
 #: discover/qml/ReviewDelegate.qml:62
 #, kde-format
