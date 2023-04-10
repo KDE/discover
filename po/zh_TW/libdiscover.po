@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-04 02:56+0000\n"
+"POT-Creation-Date: 2023-04-10 02:35+0000\n"
 "PO-Revision-Date: 2023-02-19 06:56+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -570,7 +570,7 @@ msgstr "沒有 Flatpak 來源。"
 msgid "Failed to load \"%1\" source"
 msgstr "載入來源「%1」失敗"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:343
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:349
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -581,125 +581,125 @@ msgstr ""
 "<para>本應用程式來自「%1」（連結：<link>%2</link>）。在本應用程式安裝完畢之"
 "後 ，這個軟體庫中的其他軟體也會出現在 Discover 中。</para>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:426
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:434
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:432
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:440
 #, kde-format
 msgid "Retrieving size information"
 msgstr "正在取得大小資訊"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:428
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:436
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:434
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:442
 #, kde-format
 msgid "Unknown size"
 msgstr "未知的大小"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:430
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:436
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 to download, %2 on disk"
 msgstr "要下載 %1，在磁碟中佔 %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:438
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:444
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 on disk"
 msgstr "在磁碟中佔 %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:492
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:498
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:470
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "無法啟動「%1」：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:721
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:727
 #, kde-format
 msgid "All Files"
 msgstr "所有檔案"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:723
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:729
 #, kde-format
 msgid "Home"
 msgstr "家目錄"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:725
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:731
 #, kde-format
 msgid "Downloads"
 msgstr "下載"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:727
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:733
 #, kde-format
 msgid "Music"
 msgstr "音樂"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:775
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:781
 #, kde-format
 msgid "Network Access"
 msgstr "網路存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:776
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:782
 #, kde-format
 msgid "Can access the internet"
 msgstr "能夠存取網際網路"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:782
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:923
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:788
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
 #, kde-format
 msgid "Session Bus Access"
 msgstr "工作階段匯流排 (Session Bus) 存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:783
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:789
 #, kde-format
 msgid "Access is granted to the entire Session Bus"
 msgstr "能夠存取整個工作階段匯流排"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:788
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:794
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:940
 #, kde-format
 msgid "System Bus Access"
 msgstr "系統匯流排 (System Bus) 存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:789
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
 #, kde-format
 msgid "Access is granted to the entire System Bus"
 msgstr "能夠存取整個系統匯流排"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:794
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:800
 #, kde-format
 msgid "Remote Login Access"
 msgstr "遠端登入存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:801
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "能夠利用 SSH 協議請求遠端登入"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:799
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
 #, kde-format
 msgid "Smart Card Access"
 msgstr "智慧卡存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:800
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "能夠與智慧卡進行溝通與整合"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:804
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
 #, kde-format
 msgid "Printer Access"
 msgstr "印表機存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "能夠與印表機進行溝通與整合"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:809
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:815
 #, kde-format
 msgid "GPG Agent"
 msgstr "GPG Agent"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -707,138 +707,138 @@ msgid ""
 msgstr ""
 "能夠存取 GPG 加密服務，這一般是做文件的數位簽章或是閱讀有數位簽章的文件用的"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "藍牙存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "能夠與藍牙裝置進行溝通與整合"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:821
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:827
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "底層系統存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "能夠進行底層系統呼叫（例如 ptrace）"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Device Access"
 msgstr "裝置存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr "能夠與內建或已連結的硬體裝置進行溝通或控制"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "KVM（基於核心的虛擬機器）存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr "能夠在虛擬機內執行其他作業系統"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:876
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1（唯讀）"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:861
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:873
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:879
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1（可以建立檔案）"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:882
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:888
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1（讀寫）"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:891
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
 #, kde-format
 msgid "Home Folder Access"
 msgstr "家目錄存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:894
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:900
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
 "folder without asking permission first: %1"
 msgstr "可以不用先要求權限就讀取、寫入或建立在家目錄中以下位置的檔案：%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:902
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
 "without asking permission first: %1"
 msgstr "可以不用先要求權限就讀取或寫入在家目錄中以下位置的檔案：%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
 msgstr "可以不用先要求權限就讀取在家目錄中以下位置的檔案：%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:900
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:906
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
 msgstr "可以不用先要求權限就存取在家目錄中以下位置的檔案：%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:906
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:912
 #, kde-format
 msgid "System Folder Access"
 msgstr "系統資料夾存取權"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:908
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
 "asking permission first: %1"
 msgstr "可以不用先要求權限就讀取、寫入或建立在以下位置的系統檔案：%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:916
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr "可以不用先要求權限就讀取或寫入在以下位置的系統檔案：%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:912
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:918
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr "可以不用先要求權限就讀取在以下位置的系統檔案：%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:920
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr "可以不用先要求權限就存取在以下位置的系統檔案：%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:924
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:930
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr "能夠使用以下通訊協定與同一桌面工作環境下的其他應用程式和行程溝通：%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:936
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:942
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
