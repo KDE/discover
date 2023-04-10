@@ -898,11 +898,13 @@ DiscoverPage {
     Kirigami.PromptDialog {
         id: contentRatingDialog
         title: i18n("Content Rating")
+        preferredWidth: Kirigami.Units.gridUnit * 25
         standardButtons: Kirigami.Dialog.NoButton
 
         Label {
             text: appInfo.application.contentRatingDescription
             textFormat: Text.MarkdownText
+            wrapMode: Text.Wrap
         }
     }
 
