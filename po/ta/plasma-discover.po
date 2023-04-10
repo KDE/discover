@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-05 02:19+0000\n"
-"PO-Revision-Date: 2023-02-02 19:34+0530\n"
+"PO-Revision-Date: 2023-04-09 13:50+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 23.03.90\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -289,7 +289,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "வழங்குபவர் %1"
 
 #: discover/qml/ApplicationPage.qml:76
 #, kde-format
@@ -302,10 +302,9 @@ msgid "Unknown author"
 msgstr "தெரியாத நிரலாளர்"
 
 #: discover/qml/ApplicationPage.qml:238
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "பதிப்பு"
+msgstr "பதிப்பு:"
 
 #: discover/qml/ApplicationPage.qml:250
 #, kde-format
@@ -313,13 +312,11 @@ msgid "Size:"
 msgstr "அளவு:"
 
 #: discover/qml/ApplicationPage.qml:262
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "உரிமம்"
-msgstr[1] "உரிமங்கள்"
+msgstr[0] "உரிமம்:"
+msgstr[1] "உரிமங்கள்:"
 
 #: discover/qml/ApplicationPage.qml:270
 #, kde-format
@@ -340,10 +337,9 @@ msgstr[0] "மேலும் காட்டு…"
 msgstr[1] "மேலும் காட்டு…"
 
 #: discover/qml/ApplicationPage.qml:320
-#, fuzzy, kde-format
-#| msgid "Content Rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "வயதுவரம்பு"
+msgstr "உள்ளடக்க மதிப்பீட்டு:"
 
 #: discover/qml/ApplicationPage.qml:329
 #, kde-format
@@ -843,16 +839,13 @@ msgid "Loading…"
 msgstr "ஏற்றப்படுகிறது…"
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
-#| msgid "Install from %1"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "%1 தனிலிருந்து நிறுவு"
 
 #: discover/qml/InstallApplicationButton.qml:32
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "நிறுவு"
@@ -1125,15 +1118,13 @@ msgid "Error message copied to clipboard"
 msgstr "சிக்கலை பற்றிய தகவல் பிடிப்புப்பலகைக்கு நகலெடுக்கப்பட்டது"
 
 #: discover/qml/UpdatesPage.qml:134
-#, fuzzy, kde-format
-#| msgid "Update Selected"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
-msgstr "தேர்ந்தெடுத்தவற்றை புதுப்பி"
+msgstr "தேர்ந்தெடுத்துள்ளவற்றைப் புதுப்பி"
 
 #: discover/qml/UpdatesPage.qml:134
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "அனைத்தையும் புதுப்பி"

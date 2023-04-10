@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-09 02:10+0000\n"
-"PO-Revision-Date: 2023-02-28 23:17+0100\n"
+"PO-Revision-Date: 2023-04-09 21:28+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -972,10 +972,9 @@ msgid "Delete settings and user data"
 msgstr "Ezabatu ezarpenak eta erabiltzaile-datuak"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Ezabatu ezarpenak eta erabiltzaile-datuak"
+msgstr "Ezarpenak eta erabiltzaile-datuak garbitzen..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
@@ -1150,19 +1149,15 @@ msgid "Cannot remove '%1'"
 msgstr "Ezin da kendu «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
-"<b>%1(e)n bertsio nagusi berri bat argitaratu da!</b>\n"
-"Bertsio berri horretara eguneratu ahal izateko, ezar itzazu egiteko dauden "
-"eguneratze guztiak eta berrabiatu zure sistema."
+"<b>%1(r)(e)n bertsio nagusi berri bat kaleratu da.</b>\n"
+"Bertsio berri horretara bertsio-berritu ahal izateko, ezar itzazu eguneratze "
+"erabilgarri guztiak eta ondoren sistema berrabiarazi."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
@@ -1171,10 +1166,9 @@ msgid "Upgrade to %1 %2"
 msgstr "Bertsio-berritu %1 %2(e)ra"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>Bertsio nagusi berri bat argitaratu da!</b>"
+msgstr "Bertsio nagusi berri bat kaleratu da"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2041,7 +2035,7 @@ msgstr "Gordetegi URL:"
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
