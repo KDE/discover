@@ -361,7 +361,15 @@ void PackageKitResource::updateDetail(const QString &packageID,
     const QByteArray xx = _updateText.toUtf8();
     MMIOT *markdownHandle = mkd_string(xx.constData(), _updateText.size(), 0);
 
+#ifdef MARKDOWN3
+    mkd_flag_t *flags = mkd_flags();
+    mkd_set_flag_num(flags, MKD_FENCEDCODE);
+    mkd_set_flag_num(flags, MKD_GITHUBTAGS);
+    mkd_set_flag_num(flags, MKD_AUTOLINK);
+    if (!mkd_compile(markdownHandle, flags)) {
+#else
     if (!mkd_compile(markdownHandle, MKD_FENCEDCODE | MKD_GITHUBTAGS | MKD_AUTOLINK)) {
+#endif
         m_changelog = _updateText;
     } else {
         char *htmlDocument;
@@ -370,6 +378,9 @@ void PackageKitResource::updateDetail(const QString &packageID,
         m_changelog = QString::fromUtf8(htmlDocument, size);
     }
     mkd_cleanup(markdownHandle);
+#ifdef MARKDOWN3
+    mkd_free_flags(flags);
+#endif
 
 #else
     m_changelog = _updateText;
