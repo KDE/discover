@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-09 02:10+0000\n"
-"PO-Revision-Date: 2023-01-21 09:59+0100\n"
+"PO-Revision-Date: 2023-04-10 11:21+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -970,10 +970,9 @@ msgid "Delete settings and user data"
 msgstr "Usuń ustawienia i dane użytkownika"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Usuń ustawienia i dane użytkownika"
+msgstr "Czyszczenie danych ustawień i użytkownika…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
@@ -1145,17 +1144,13 @@ msgid "Cannot remove '%1'"
 msgstr "Nie usunąć '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
-"<b>Wydano nową główną wersję %1!</b>\n"
+"<b>Wydano nową główną wersję %1.</b>\n"
 "Aby móc do niej uaktualnić, upewnij się, że twój system ma wgrane wszystkie "
 "uaktualnienia, a następnie uruchom ponownie komputer."
 
@@ -1166,15 +1161,14 @@ msgid "Upgrade to %1 %2"
 msgstr "Uaktualnij do %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>Wydano nową główną wersję!</b>"
+msgstr "Wydano nową główną wersję"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
 msgid "Out of memory"
-msgstr "Brak pamięci"
+msgstr "Wyczerpano pamięć"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
 #, kde-format
@@ -1980,11 +1974,9 @@ msgstr[1] "Pomyślnie uaktualniono %1 pakiety"
 msgstr[2] "Pomyślnie uaktualniono %1 pakiety"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unknown Error"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Nieznany błąd"
+msgstr "Nieznane źródło"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:326
 #, kde-format
@@ -2037,12 +2029,10 @@ msgid "Repository URL:"
 msgstr "Adres URL repozytorium:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
-#, fuzzy, kde-format
-#| msgctxt "@item example: muon installed at 16:00"
-#| msgid "%1 %2 at %3"
+#, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr "%1 %2 o %3"
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
