@@ -6,6 +6,7 @@
  */
 
 #include "FwupdTransaction.h"
+#include "../DiscoverVersion.h"
 
 #include <QTimer>
 #include <resources/AbstractBackendUpdater.h>
@@ -44,7 +45,10 @@ void FwupdTransaction::install()
         const QUrl uri(m_app->updateURI());
         setStatus(DownloadingStatus);
         QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-        auto reply = manager->get(QNetworkRequest(uri));
+        auto req = QNetworkRequest(uri);
+        req.setHeader(QNetworkRequest::UserAgentHeader, QStringLiteral("plasma-discover/%1").arg(version));
+        req.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
+        auto reply = manager->get(req);
         QFile *file = new QFile(fileName);
         if (!file->open(QFile::WriteOnly)) {
             qWarning() << "Fwupd Error: Could not open to write" << fileName << uri;
