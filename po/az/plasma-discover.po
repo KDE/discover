@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-05 02:19+0000\n"
+"POT-Creation-Date: 2023-04-12 02:13+0000\n"
 "PO-Revision-Date: 2022-08-16 17:05+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -496,12 +496,12 @@ msgstr "Bütün lisenziyalar"
 msgid "Content Rating"
 msgstr "Reytinq daxil edin"
 
-#: discover/qml/ApplicationPage.qml:820
+#: discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Özəl proqram təminatının təhlükələri"
 
-#: discover/qml/ApplicationPage.qml:826
+#: discover/qml/ApplicationPage.qml:828
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -527,7 +527,7 @@ msgstr ""
 "müəlliflərin tətbiqlərini quraşdırın (<link url='%1'>%2</link>).<nl/><nl/"
 ">Daha çox məlumatı buradan əldə edə bilərsiniz: <link url='%3'>\"%3\"</link>."
 
-#: discover/qml/ApplicationPage.qml:827
+#: discover/qml/ApplicationPage.qml:829
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

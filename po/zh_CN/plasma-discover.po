@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-05 02:19+0000\n"
+"POT-Creation-Date: 2023-04-12 02:13+0000\n"
 "PO-Revision-Date: 2023-02-24 12:43\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -472,12 +472,12 @@ msgstr "所有许可证"
 msgid "Content Rating"
 msgstr "内容分级"
 
-#: discover/qml/ApplicationPage.qml:820
+#: discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "专有软件的风险"
 
-#: discover/qml/ApplicationPage.qml:826
+#: discover/qml/ApplicationPage.qml:828
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -499,7 +499,7 @@ msgstr ""
 "确认上述假设，因此请在安装前确保您可以信任它的作者 (<link url='%1'>%2</"
 "link>)。<nl/><nl/>更多详情请见<link url='%3'>%3</link>。"
 
-#: discover/qml/ApplicationPage.qml:827
+#: discover/qml/ApplicationPage.qml:829
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
