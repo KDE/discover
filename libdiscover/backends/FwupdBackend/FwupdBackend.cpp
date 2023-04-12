@@ -6,6 +6,7 @@
  */
 
 #include "FwupdBackend.h"
+#include "../DiscoverVersion.h"
 #include "FwupdResource.h"
 #include "FwupdSourcesBackend.h"
 #include "FwupdTransaction.h"
@@ -34,7 +35,7 @@ FwupdBackend::FwupdBackend(QObject *parent)
         m_isValid = false;
         return;
     }
-    fwupd_client_set_user_agent_for_package(client, "plasma-discover", "1.0");
+    fwupd_client_set_user_agent_for_package(client, "plasma-discover", version.data());
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FwupdBackend::updatesCountChanged);
 
     SourcesModel::global()->addSourcesBackend(new FwupdSourcesBackend(this));
