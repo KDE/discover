@@ -28,6 +28,7 @@ Dependencies:
     'frameworks/purpose': '@latest'
     'libraries/kuserfeedback': '@stable'
     'third-party/packagekit-qt': '@latest'
+    'third-party/appstream': '@latest'
 RuntimeDependencies:
 - 'on': ['Linux']
   'require':
