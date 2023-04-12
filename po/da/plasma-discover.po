@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 04:10+0000\n"
+"POT-Creation-Date: 2023-04-12 02:48+0000\n"
 "PO-Revision-Date: 2020-10-04 16:59+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -486,12 +486,12 @@ msgstr ""
 msgid "All Licenses"
 msgstr "Licens:"
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:916
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:920
+#: discover/qml/ApplicationPage.qml:922
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -507,7 +507,7 @@ msgid ""
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:921
+#: discover/qml/ApplicationPage.qml:923
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

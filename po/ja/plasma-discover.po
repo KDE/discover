@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 04:10+0000\n"
+"POT-Creation-Date: 2023-04-12 02:48+0000\n"
 "PO-Revision-Date: 2023-04-07 23:45-0700\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -485,12 +485,12 @@ msgstr "プログラミング、デザイン、テストもしくは翻訳をし
 msgid "All Licenses"
 msgstr "すべてのライセンス"
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:916
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "プロプライエタリソフトウェアのリスク"
 
-#: discover/qml/ApplicationPage.qml:920
+#: discover/qml/ApplicationPage.qml:922
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -515,7 +515,7 @@ msgstr ""
 "トールすることが推奨されます。<link url='%3'>%3</link> でさらなる情報を得るこ"
 "とができます。"
 
-#: discover/qml/ApplicationPage.qml:921
+#: discover/qml/ApplicationPage.qml:923
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 04:10+0000\n"
+"POT-Creation-Date: 2023-04-12 02:48+0000\n"
 "PO-Revision-Date: 2023-03-31 21:24+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -489,12 +489,12 @@ msgstr ""
 msgid "All Licenses"
 msgstr "Tüm Lisanslar"
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:916
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Tescilli yazılımın riskleri"
 
-#: discover/qml/ApplicationPage.qml:920
+#: discover/qml/ApplicationPage.qml:922
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -521,7 +521,7 @@ msgstr ""
 "url='%1'>%2</link>).<nl/><nl/>Daha fazla bilgiyi <link url='%3'>%3</link> "
 "adresinden alabilirsiniz."
 
-#: discover/qml/ApplicationPage.qml:921
+#: discover/qml/ApplicationPage.qml:923
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

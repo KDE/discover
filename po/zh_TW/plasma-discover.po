@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 04:10+0000\n"
+"POT-Creation-Date: 2023-04-12 02:48+0000\n"
 "PO-Revision-Date: 2022-07-02 20:23+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -478,12 +478,12 @@ msgstr ""
 msgid "All Licenses"
 msgstr "所有授權"
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:916
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "私有軟體的風險"
 
-#: discover/qml/ApplicationPage.qml:920
+#: discover/qml/ApplicationPage.qml:922
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -506,7 +506,7 @@ msgstr ""
 "link> —— 時才安裝本應用程式。<nl/><nl/>您可以至 <link url='%3'>%3</link> 了解"
 "更多。"
 
-#: discover/qml/ApplicationPage.qml:921
+#: discover/qml/ApplicationPage.qml:923
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

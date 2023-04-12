@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 04:10+0000\n"
+"POT-Creation-Date: 2023-04-12 02:48+0000\n"
 "PO-Revision-Date: 2023-02-01 12:25+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -490,12 +490,12 @@ msgstr ""
 msgid "All Licenses"
 msgstr "Todas las licencias"
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:916
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Riesgos del software propietario"
 
-#: discover/qml/ApplicationPage.qml:920
+#: discover/qml/ApplicationPage.qml:922
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -522,7 +522,7 @@ msgstr ""
 "si confía plenamente en sus autores (<link url='%1'>%2</link>).<nl/><nl/"
 ">Dispone de más información en <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:921
+#: discover/qml/ApplicationPage.qml:923
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

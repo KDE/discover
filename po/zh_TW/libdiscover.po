@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 02:35+0000\n"
+"POT-Creation-Date: 2023-04-12 02:48+0000\n"
 "PO-Revision-Date: 2023-02-19 06:56+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -606,7 +606,7 @@ msgid "%1 on disk"
 msgstr "在磁碟中佔 %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:498
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:470
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:481
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
@@ -1856,7 +1856,7 @@ msgstr[0] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:172
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
@@ -1889,12 +1889,12 @@ msgstr "%1<nl/>請回報本錯誤給您的發行版。"
 msgid "Repaired Successfully"
 msgstr "修復成功"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:170
 #, kde-format
 msgid "Offline Updates"
 msgstr "離線更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:171
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -1918,32 +1918,32 @@ msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:392
 #, kde-format
 msgid "Obsoletes:"
 msgstr "廢棄："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:393
 #, kde-format
 msgid "Release Notes:"
 msgstr "發行註記："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:383
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
 #, kde-format
 msgid "Update State:"
 msgstr "更新狀態："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
 #, kde-format
 msgid "Restart:"
 msgstr "重新啟動："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:387
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:398
 #, kde-format
 msgid "Vendor:"
 msgstr "廠商："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:407
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:418
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"

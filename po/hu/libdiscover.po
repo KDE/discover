@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-10 02:35+0000\n"
+"POT-Creation-Date: 2023-04-12 02:48+0000\n"
 "PO-Revision-Date: 2022-08-29 11:34+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -614,7 +614,7 @@ msgid "%1 on disk"
 msgstr "%1 a lemezen"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:498
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:470
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:481
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
@@ -1894,7 +1894,7 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:172
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
@@ -1928,12 +1928,12 @@ msgstr "%1<nl/>Kérjük, jelentse ezt a hibát a disztribúciójának."
 msgid "Repaired Successfully"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:170
 #, kde-format
 msgid "Offline Updates"
 msgstr "Offline frissítések"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:171
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -1959,32 +1959,32 @@ msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:381
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:392
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Elavult:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:382
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:393
 #, kde-format
 msgid "Release Notes:"
 msgstr "Kiadási megjegyzések:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:383
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
 #, kde-format
 msgid "Update State:"
 msgstr "Frissítés állapota:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:384
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
 #, kde-format
 msgid "Restart:"
 msgstr "Újraindítás:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:387
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:398
 #, kde-format
 msgid "Vendor:"
 msgstr "Gyártó:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:407
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:418
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
