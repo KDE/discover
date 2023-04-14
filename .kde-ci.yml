@@ -26,6 +26,7 @@ Dependencies:
     'frameworks/kwindowsystem': '@latest'
     'frameworks/kxmlgui': '@latest'
     'frameworks/purpose': '@latest'
+    'libraries/kirigami-addons': '@latest'
     'libraries/kuserfeedback': '@stable'
     'third-party/packagekit-qt': '@latest'
     'third-party/appstream': '@latest'
