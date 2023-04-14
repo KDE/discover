@@ -23,6 +23,7 @@ QHash<int, QByteArray> ScreenshotsModel::roleNames() const
     roles.insert(ScreenshotUrl, "source");
     roles.insert(IsAnimatedRole, "isAnimated");
     roles.insert(TypeRole, "type");
+    roles.insert(CaptionRole, "caption");
     return roles;
 }
 
@@ -78,8 +79,9 @@ QVariant ScreenshotsModel::data(const QModelIndex &index, int role) const
         return m_screenshots[index.row()].isAnimated;
     case TypeRole:
         // 0 is image from AlbumModelItem.Type
-        // TODO: make enum available in c++ as well
         return 0;
+    case CaptionRole:
+        return m_screenshots[index.row()].screenshot.fileName();
     }
 
     return QVariant();

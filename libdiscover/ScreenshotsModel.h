@@ -24,7 +24,9 @@ public:
         ScreenshotUrl,
         IsAnimatedRole,
         TypeRole,
+        CaptionRole,
     };
+    Q_ENUM(Roles);
 
     explicit ScreenshotsModel(QObject *parent = nullptr);
     QHash<int, QByteArray> roleNames() const override;

@@ -98,8 +98,9 @@ ListView {
 
     Components.AlbumMaximizeComponent {
         id: overlay
-        itemModel: screenshotsModel
+        model: screenshotsModel
         initialIndex: root.currentIndex
+        showCaption: false
 
         title: root.resource.name
         leading: Kirigami.Icon {
