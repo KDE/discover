@@ -526,6 +526,10 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
         }
     }
 
+    if (!source) {
+        return nullptr;
+    }
+
     FlatpakResource *resource = new FlatpakResource(cid, source->installation(), const_cast<FlatpakBackend *>(this));
     resource->setOrigin(source->name());
     resource->setDisplayOrigin(source->title());
@@ -668,7 +672,10 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
         FlatpakRef *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
         FlatpakInstalledRef *iref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
         if (qstrcmp(flatpak_ref_get_commit(ref), flatpak_ref_get_commit(FLATPAK_REF(bundleRef))) == 0) {
-            Q_EMIT stream->resourcesFound({getAppForInstalledRef(preferredInstallation(), iref, nullptr)});
+            auto res = getAppForInstalledRef(preferredInstallation(), iref, nullptr);
+            if (res) {
+                Q_EMIT stream->resourcesFound({res});
+            }
             return;
         }
     }
@@ -1455,12 +1462,14 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                         bool fresh;
                         auto resource = getAppForInstalledRef(it.key(), ref, &fresh);
                         g_object_unref(ref);
-                        resource->setState(AbstractResource::Upgradeable, !fresh);
-                        updateAppSize(resource);
-                        if (resource->resourceType() == FlatpakResource::Runtime) {
-                            resources.prepend(resource);
-                        } else {
-                            resources.append(resource);
+                        if (resource) {
+                            resource->setState(AbstractResource::Upgradeable, !fresh);
+                            updateAppSize(resource);
+                            if (resource->resourceType() == FlatpakResource::Runtime) {
+                                resources.prepend(resource);
+                            } else {
+                                resources.append(resource);
+                            }
                         }
                     }
                 }
@@ -1536,6 +1545,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                         continue;
 
                     auto resource = getAppForInstalledRef(installation, ref);
+                    if (!resource) {
+                        continue;
+                    }
                     if (!filter.search.isEmpty() && !resource->name().contains(filter.search, Qt::CaseInsensitive))
                         continue;
 
