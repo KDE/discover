@@ -214,16 +214,16 @@ DiscoverPage {
 
             contentItem: RowLayout {
                 ToolButton {
-                    enabled: page.unselected > 0 && updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
-                    visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.needsReboot
+                    enabled: page.unselected > 0 && updateAction.enabled && !ResourcesModel.isFetching
+                    visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.isProgressing
                     icon.name: "edit-select-all"
                     text: i18n("Select All")
                     onClicked: { updateModel.checkAll(); }
                 }
 
                 ToolButton {
-                    enabled: page.unselected !== updateModel.totalUpdatesCount && updateAction.enabled && !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching
-                    visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.needsReboot
+                    enabled: page.unselected !== updateModel.totalUpdatesCount && updateAction.enabled && !ResourcesModel.isFetching
+                    visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.isProgressing
                     icon.name: "edit-select-none"
                     text: i18n("Select None")
                     onClicked: { updateModel.uncheckAll(); }
@@ -231,7 +231,7 @@ DiscoverPage {
 
                 CheckBox {
                     id: rebootAtEnd
-                    visible: resourcesUpdatesModel.needsReboot
+                    visible: resourcesUpdatesModel.needsReboot && resourcesUpdatesModel.isProgressing
                     text: i18n("Restart automatically after update has completed");
                 }
 
