@@ -474,6 +474,10 @@ bool RpmOstreeBackend::isValid() const
 
 ResultsStream *RpmOstreeBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
+    if (!filter.resourceUrl.isEmpty() || (filter.category && filter.category.untranslatedName() != QLatin1String("Operating System"))) {
+        return new ResultsStream(QStringLiteral("RpmOstreeStream-empty"), {});
+    }
+
     QVector<AbstractResource *> res;
     for (RpmOstreeResource *r : m_resources) {
         if (r->state() >= filter.state) {
