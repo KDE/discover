@@ -11,16 +11,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-12 02:13+0000\n"
-"PO-Revision-Date: 2023-02-19 06:56+0900\n"
+"POT-Creation-Date: 2023-04-15 02:18+0000\n"
+"PO-Revision-Date: 2023-04-14 21:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
-"Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
+"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -538,28 +538,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (使用者)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:704
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:711
 #, kde-format
 msgid "Local bundle"
 msgstr "本機 Bundle"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1655
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1667
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:731
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正確的 appstream 網址 '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1759
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1771
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "新增來源「%1」失敗：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1879
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1891
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "沒有 Flatpak 來源。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1883
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1895
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "載入來源「%1」失敗"
@@ -941,10 +941,9 @@ msgid "Delete settings and user data"
 msgstr "正在刪除設定與使用者資料"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "正在刪除設定與使用者資料"
+msgstr "正在清除設定與使用者資料…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
@@ -1117,6 +1116,8 @@ msgid ""
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
+"<b>%1 有新的大版本更新。</b>\n"
+"要能更新到這個新版本，請先確保現有的待處理更新皆已套用並重新啟動過。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
@@ -1127,7 +1128,7 @@ msgstr "更新到 %1 %2"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
 #, kde-format
 msgid "A new major version has been released"
-msgstr ""
+msgstr "有新的大版本更新"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1926,10 +1927,9 @@ msgid_plural "Successfully updated %1 packages"
 msgstr[0] "順利更新 %1 個軟體包"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "未知的狀態"
+msgstr "未知的來源"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:326
 #, kde-format
@@ -1983,7 +1983,7 @@ msgstr "軟體庫 URL："
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
@@ -2178,16 +2178,18 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>有新的大版本更新！</b>\n"
+"要能更新到這個新版本，請先確保現有的待處理更新皆已套用並重新啟動過。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:408
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>有新的大版本更新！</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr ""
+msgstr "您在目前版本尚有待處理的更新。處理仍將繼續。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:530
 #, kde-format
@@ -2261,16 +2263,15 @@ msgstr "ostree 遠端"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "目前進行中的 rpm-ostree 工作階段："
+msgstr "rpm-ostree 工作階段失敗："
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
-msgstr ""
+msgstr "正在取消 rpm-ostree 工作階段。這可能會花一些時間。請稍候。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
 #, kde-format
@@ -2374,12 +2375,11 @@ msgid "Launch"
 msgstr "執行"
 
 #: libdiscover/resources/AbstractResource.cpp:251
-#, fuzzy, kde-format
-#| msgid "Update to version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "更新至版本 %1"
+msgstr "版本 %1 的修訂版"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
