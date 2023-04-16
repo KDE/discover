@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-12 02:13+0000\n"
-"PO-Revision-Date: 2023-03-03 14:03+0100\n"
+"PO-Revision-Date: 2023-04-06 09:46+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1133,11 +1133,10 @@ msgid "Error message copied to clipboard"
 msgstr "Messaggio di errore copiato negli appunti"
 
 #: discover/qml/UpdatesPage.qml:134
-#, fuzzy, kde-format
-#| msgid "Update Selected"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
-msgstr "Aggiorna selezionati"
+msgstr "Aggiorna i selezionati"
 
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
