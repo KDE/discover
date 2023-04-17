@@ -301,6 +301,7 @@ DiscoverPage {
         id: updatesView
         currentIndex: -1
         reuseItems: true
+        clip: true
 
         displaced: Transition {
             YAnimator {
