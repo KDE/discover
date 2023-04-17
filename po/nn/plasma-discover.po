@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-25 04:10+0000\n"
+"POT-Creation-Date: 2023-04-12 02:48+0000\n"
 "PO-Revision-Date: 2023-03-07 21:43+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -58,10 +58,9 @@ msgid ""
 "Arch Linux."
 msgstr ""
 "Du kan bruka <command>pacman</command> for å installera valfrie avhengnadar "
-"som er nødvendig for å ta i bruk pakke­motorane.<nl/><nl/>Merk at "
-"utviklarane av Arch Linux tilrår å bruka <command>pacman</command> for "
-"pakke­handsaming, då PackageKit-motoren ikkje er godt integrert på denne "
-"distroen."
+"som er nødvendig for å ta i bruk pakke­motorane.<nl/><nl/>Merk at utviklarane "
+"av Arch Linux tilrår å bruka <command>pacman</command> for pakke­handsaming, "
+"då PackageKit-motoren ikkje er godt integrert på denne distroen."
 
 #: discover/DiscoverObject.cpp:181
 #, kde-format
@@ -488,12 +487,12 @@ msgstr "Hjelp utviklarane med programmering, design, testing eller omsetjing"
 msgid "All Licenses"
 msgstr "Alle lisensane"
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:916
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Risiko ved proprietær programvare"
 
-#: discover/qml/ApplicationPage.qml:920
+#: discover/qml/ApplicationPage.qml:922
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -520,7 +519,7 @@ msgstr ""
 "fullt og heilt på utviklarane bak (<link url='%1'>%2</link>).<nl/><nl/>Du "
 "finn meir informasjon på <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:921
+#: discover/qml/ApplicationPage.qml:923
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
