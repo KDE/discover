@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-12 02:48+0000\n"
+"POT-Creation-Date: 2023-04-18 02:47+0000\n"
 "PO-Revision-Date: 2023-02-01 11:03+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
@@ -1157,22 +1157,22 @@ msgstr "Totale grootte: %1"
 msgid "Restart Now"
 msgstr "Nu herstarten"
 
-#: discover/qml/UpdatesPage.qml:377
+#: discover/qml/UpdatesPage.qml:378
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:393
+#: discover/qml/UpdatesPage.qml:394
 #, kde-format
 msgid "Installing"
 msgstr "Bezig met installeren"
 
-#: discover/qml/UpdatesPage.qml:428
+#: discover/qml/UpdatesPage.qml:429
 #, kde-format
 msgid "Update from:"
 msgstr "Bijgewerkt uit:"
 
-#: discover/qml/UpdatesPage.qml:440
+#: discover/qml/UpdatesPage.qml:441
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1180,43 +1180,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:447
+#: discover/qml/UpdatesPage.qml:448
 #, kde-format
 msgid "More Information…"
 msgstr "Meer informatie…"
 
-#: discover/qml/UpdatesPage.qml:475
+#: discover/qml/UpdatesPage.qml:476
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Ophalen…"
 
-#: discover/qml/UpdatesPage.qml:488
+#: discover/qml/UpdatesPage.qml:489
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Bijwerkitems"
 
-#: discover/qml/UpdatesPage.qml:498
+#: discover/qml/UpdatesPage.qml:499
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Het systeem opnieuw opstarten om het proces van bijwerken te voltooien"
 
-#: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
-#: discover/qml/UpdatesPage.qml:524
+#: discover/qml/UpdatesPage.qml:511 discover/qml/UpdatesPage.qml:518
+#: discover/qml/UpdatesPage.qml:525
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Actueel"
 
-#: discover/qml/UpdatesPage.qml:531
+#: discover/qml/UpdatesPage.qml:532
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Zou moeten controleren op bijwerken"
 
-#: discover/qml/UpdatesPage.qml:538
+#: discover/qml/UpdatesPage.qml:539
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

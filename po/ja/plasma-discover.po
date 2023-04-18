@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-12 02:48+0000\n"
+"POT-Creation-Date: 2023-04-18 02:47+0000\n"
 "PO-Revision-Date: 2023-04-07 23:45-0700\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1150,22 +1150,22 @@ msgstr "サイズの合計: %1"
 msgid "Restart Now"
 msgstr "今すぐ再起動"
 
-#: discover/qml/UpdatesPage.qml:377
+#: discover/qml/UpdatesPage.qml:378
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:393
+#: discover/qml/UpdatesPage.qml:394
 #, kde-format
 msgid "Installing"
 msgstr "インストール中"
 
-#: discover/qml/UpdatesPage.qml:428
+#: discover/qml/UpdatesPage.qml:429
 #, kde-format
 msgid "Update from:"
 msgstr "更新の配信元:"
 
-#: discover/qml/UpdatesPage.qml:440
+#: discover/qml/UpdatesPage.qml:441
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1173,43 +1173,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:447
+#: discover/qml/UpdatesPage.qml:448
 #, kde-format
 msgid "More Information…"
 msgstr "詳細情報..."
 
-#: discover/qml/UpdatesPage.qml:475
+#: discover/qml/UpdatesPage.qml:476
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "更新を取得中..."
 
-#: discover/qml/UpdatesPage.qml:488
+#: discover/qml/UpdatesPage.qml:489
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "更新"
 
-#: discover/qml/UpdatesPage.qml:498
+#: discover/qml/UpdatesPage.qml:499
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "更新を完了するには再起動が必要です"
 
-#: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
-#: discover/qml/UpdatesPage.qml:524
+#: discover/qml/UpdatesPage.qml:511 discover/qml/UpdatesPage.qml:518
+#: discover/qml/UpdatesPage.qml:525
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "最新です"
 
-#: discover/qml/UpdatesPage.qml:531
+#: discover/qml/UpdatesPage.qml:532
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "更新の確認が必要です"
 
-#: discover/qml/UpdatesPage.qml:538
+#: discover/qml/UpdatesPage.qml:539
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
