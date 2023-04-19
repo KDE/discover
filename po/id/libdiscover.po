@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-15 02:18+0000\n"
+"POT-Creation-Date: 2023-04-19 02:23+0000\n"
 "PO-Revision-Date: 2023-02-17 17:09+0700\n"
 "Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -2256,20 +2256,20 @@ msgstr ""
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Sebuah versi pokok baru telah dirilis!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:535
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Anda memiliki pembaruan yang tertunda untuk versi saat ini. Tetap "
 "memprosesnya meski demikian."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:530
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:538
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Harap perbarui ke versi terbaru sebelum melakukan rebase ke versi pokok"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:538
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:546
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "Ref jarak jauh tidak ada untuk operasi rebase. Harap laporkan bug."

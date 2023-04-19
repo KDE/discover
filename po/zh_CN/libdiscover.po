@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-15 02:18+0000\n"
+"POT-Creation-Date: 2023-04-19 02:23+0000\n"
 "PO-Revision-Date: 2023-02-24 12:43\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2194,17 +2194,17 @@ msgstr ""
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>新的主要版本已经发布！</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:535
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "当前版本有待处理的更新。将无视它们继续进行操作。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:530
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:538
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "在重新定位到一个主要版本之前，请更新到最新版本"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:538
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:546
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "缺少重新定位操作所需的远程参考源。请提交一个程序缺陷报告。"
