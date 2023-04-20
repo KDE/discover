@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-15 02:54+0000\n"
+"POT-Creation-Date: 2023-04-20 03:00+0000\n"
 "PO-Revision-Date: 2023-04-02 16:08+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2184,18 +2184,18 @@ msgid "Operating System"
 msgstr "Käyttöjärjestelmä"
 
 # ”Deployment” on hankala. Google Translate ehdottaa ”käyttöönottoa”, mutta ostreen oma kuvaus käsitteestä (https://ostreedev.github.io/ostree/deployment/) antaa ymmärtää, että kyse on pikemmin jostakin tilasta.
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:181
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: Löytyi useampia käynnistettyjä tiloja. Ilmoita ohjelmavirheestä."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:193
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree: Käynnistettyä tilaa ei löytynyt. Ilmoita ohjelmavirheestä."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:399
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
@@ -2206,28 +2206,28 @@ msgstr ""
 "Voidaksesi päivittää uuteen versioon asenna kaikki odottavat päivitykset ja "
 "käynnistä järjestelmä uudelleen."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Päivitä versioon %1 %2"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:408
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:409
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Uusi pääversio on julkaistu!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Nykyiseen versioon on päivityksiä odottamassa. Jatketaan silti."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:530
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:539
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Päivitä viimeisimpään versioon ennen siirtymistä seuraavaan pääversioon"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:538
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:547
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
