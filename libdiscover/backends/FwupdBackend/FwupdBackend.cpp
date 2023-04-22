@@ -174,7 +174,7 @@ QByteArray FwupdBackend::getChecksum(const QString &filename, QCryptographicHash
 FwupdResource *FwupdBackend::createApp(FwupdDevice *device)
 {
     FwupdRelease *release = fwupd_device_get_release_default(device);
-    QScopedPointer<FwupdResource> app(createRelease(device));
+    std::unique_ptr<FwupdResource> app(createRelease(device));
 
     if (!app->isLiveUpdatable()) {
         qWarning() << "Fwupd Error: " << app->name() << "[" << app->id() << "]"
@@ -221,7 +221,7 @@ FwupdResource *FwupdBackend::createApp(FwupdDevice *device)
     }
 
     app->setState(AbstractResource::Upgradeable);
-    return app.take();
+    return app.release();
 }
 
 void FwupdBackend::handleError(GError *perror)
