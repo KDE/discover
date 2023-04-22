@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-19 02:23+0000\n"
-"PO-Revision-Date: 2023-03-01 00:58+0100\n"
+"PO-Revision-Date: 2023-04-21 23:32+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -947,10 +947,9 @@ msgid "Delete settings and user data"
 msgstr "설정과 사용자 데이터 삭제"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "설정과 사용자 데이터 삭제"
+msgstr "설정과 사용자 데이터 삭제 중…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
@@ -1122,17 +1121,13 @@ msgid "Cannot remove '%1'"
 msgstr "'%1'을(를) 삭제할 수 없음"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
-"<b>%1의 새로운 버전이 출시되었습니다!</b>\n"
+"<b>%1의 새 주 버전이 출시되었습니다.</b>\n"
 "새로운 버전으로 업데이트하려면 모든 대기 중인 업데이트를 적용한 다음 시스템"
 "을 다시 시작하십시오."
 
@@ -1143,10 +1138,9 @@ msgid "Upgrade to %1 %2"
 msgstr "%1 %2(으)로 업그레이드"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>새 버전이 출시되었습니다!</b>"
+msgstr "새 주 버전이 출시되었습니다"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1949,11 +1943,9 @@ msgid_plural "Successfully updated %1 packages"
 msgstr[0] "패키지 %1개를 업데이트함"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unknown Error"
+#, kde-format
 msgid "Unknown Source"
-msgstr "알 수 없는 오류"
+msgstr "알 수 없는 원본"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:326
 #, kde-format
@@ -2004,12 +1996,10 @@ msgid "Repository URL:"
 msgstr "저장소 URL:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
-#, fuzzy, kde-format
-#| msgctxt "@item example: muon installed at 16:00"
-#| msgid "%1 %2 at %3"
+#, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr "%3에 %1 %2"
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
