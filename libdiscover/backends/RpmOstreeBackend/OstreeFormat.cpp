@@ -16,7 +16,7 @@ OstreeFormat::OstreeFormat(Format format, const QString &source)
     // Using classic ostree image format
     case Format::Classic: {
         // Get remote and ref from the ostree source
-        auto split_ref = source.split(':');
+        auto split_ref = source.split(QLatin1Char(':'));
         if (split_ref.length() != 2) {
             // Unknown or invalid format
             return;
@@ -30,7 +30,7 @@ OstreeFormat::OstreeFormat(Format format, const QString &source)
 
     // Using new OCI container format
     case Format::OCI: {
-        auto split_ref = source.split(':');
+        auto split_ref = source.split(QLatin1Char(':'));
         if ((split_ref.length() < 2) || (split_ref.length() > 3)) {
             // Unknown or invalid format
             return;

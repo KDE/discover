@@ -43,7 +43,7 @@ if(Markdown_FOUND AND Markdown_VERSION VERSION_GREATER_EQUAL 3)
 endif()
 pkg_check_modules(Ostree IMPORTED_TARGET ostree-1)
 pkg_check_modules(RpmOstree IMPORTED_TARGET rpm-ostree-1)
-find_package(KUserFeedback)
+find_package(KUserFeedbackQt6)
 
 list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
 

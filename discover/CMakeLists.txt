@@ -8,7 +8,7 @@ include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
 ecm_qt_declare_logging_category(plasma_discover_SRCS HEADER discover_debug.h IDENTIFIER DISCOVER_LOG CATEGORY_NAME org.kde.plasma.discover DESCRIPTION "discover" EXPORT DISCOVER)
 kconfig_add_kcfg_files(plasma_discover_SRCS discoversettings.kcfgc GENERATE_MOC)
 
-if (TARGET KUserFeedbackCore)
+if (TARGET KUserFeedbackCoreQt6)
     kconfig_add_kcfg_files(plasma_discover_SRCS plasmauserfeedback.kcfgc GENERATE_MOC)
 endif()
 
@@ -60,8 +60,8 @@ else()
     target_compile_definitions(plasma-discover PUBLIC -DWITH_QTWEBVIEW=0)
 endif()
 
-if (TARGET KUserFeedbackCore)
-    target_link_libraries(plasma-discover PRIVATE KUserFeedbackCore)
+if (TARGET KUserFeedbackCoreQt6)
+    target_link_libraries(plasma-discover PRIVATE KUserFeedbackCoreQt6)
     target_compile_definitions(plasma-discover PRIVATE WITH_FEEDBACK=1)
 endif()
 

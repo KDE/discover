@@ -2,4 +2,4 @@ File=plasmauserfeedback.kcfg
 ClassName=PlasmaUserFeedback
 GenerateProperties=true
 Mutators=true
-IncludeFiles=KUserFeedback/Provider
+IncludeFiles=KUserFeedbackQt6/Provider
