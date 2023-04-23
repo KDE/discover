@@ -374,7 +374,7 @@ DiscoverPage {
                         // App name
                         Kirigami.Heading {
                             Layout.fillWidth: true
-                            text: i18n("%1", display)
+                            text: i18n("%1", model.display)
                             level: 3
                             elide: Text.ElideRight
                         }
