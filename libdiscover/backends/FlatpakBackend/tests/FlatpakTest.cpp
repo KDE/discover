@@ -149,8 +149,11 @@ private:
                 ret = trans->status();
             }
         });
+        connect(t, &Transaction::statusChanged, t, [t] {
+            qDebug() << "status" << t->status();
+        });
         while (t && spyInstalled.count() == 0) {
-            qDebug() << "waiting, currently" << ret << spyInstalled.count() << destructionSpy.count();
+            qDebug() << "waiting, currently" << ret << t->progress() << spyInstalled.count() << destructionSpy.count();
             spyInstalled.wait(1000);
         }
         Q_ASSERT(destructionSpy.count() || destructionSpy.wait());
