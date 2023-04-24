@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-18 02:16+0000\n"
+"POT-Creation-Date: 2023-04-24 02:40+0000\n"
 "PO-Revision-Date: 2023-04-06 18:34+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -109,13 +109,13 @@ msgstr ""
 msgid "Please report this issue to the packagers of your distribution."
 msgstr " Моля, докладвайте този проблем на вашата дистрибуция."
 
-#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
+#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
 #: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:443
+#: discover/DiscoverObject.cpp:445
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -271,14 +271,14 @@ msgstr "Добавяне"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
 #: discover/qml/InstallApplicationButton.qml:47
-#: discover/qml/ProgressView.qml:109 discover/qml/SourcesPage.qml:190
+#: discover/qml/ProgressView.qml:107 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:252 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Отказ"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:214
+#: discover/qml/ApplicationPage.qml:213
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -286,12 +286,12 @@ msgstr[0] "%1 рейтинг"
 msgstr[1] "%1 оценки"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:214
+#: discover/qml/ApplicationPage.qml:213
 #, kde-format
 msgid "No ratings yet"
 msgstr "Все още няма оценки"
 
-#: discover/qml/ApplicationPage.qml:65
+#: discover/qml/ApplicationPage.qml:69
 #, kde-format
 msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
@@ -299,205 +299,205 @@ msgctxt ""
 msgid "From %1"
 msgstr "От %1"
 
-#: discover/qml/ApplicationPage.qml:76
+#: discover/qml/ApplicationPage.qml:80
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:194
+#: discover/qml/ApplicationPage.qml:193
 #, kde-format
 msgid "Unknown author"
 msgstr "Неизвестен автори"
 
-#: discover/qml/ApplicationPage.qml:238
+#: discover/qml/ApplicationPage.qml:237
 #, kde-format
 msgid "Version:"
 msgstr "Версия:"
 
-#: discover/qml/ApplicationPage.qml:250
+#: discover/qml/ApplicationPage.qml:249
 #, kde-format
 msgid "Size:"
 msgstr "Размер:"
 
-#: discover/qml/ApplicationPage.qml:262
+#: discover/qml/ApplicationPage.qml:261
 #, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] "Лиценз:"
 msgstr[1] "Лицензи"
 
-#: discover/qml/ApplicationPage.qml:270
+#: discover/qml/ApplicationPage.qml:269
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: discover/qml/ApplicationPage.qml:300
+#: discover/qml/ApplicationPage.qml:299
 #, kde-format
 msgid "What does this mean?"
 msgstr "Какво е това?"
 
-#: discover/qml/ApplicationPage.qml:309
+#: discover/qml/ApplicationPage.qml:308
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "Още…"
 msgstr[1] "Още…"
 
-#: discover/qml/ApplicationPage.qml:320
+#: discover/qml/ApplicationPage.qml:319
 #, kde-format
 msgid "Content Rating:"
 msgstr "Рейтинг на съдържанието:"
 
-#: discover/qml/ApplicationPage.qml:329
+#: discover/qml/ApplicationPage.qml:328
 #, kde-format
 msgid "Age: %1+"
 msgstr "Възраст: %1+"
 
-#: discover/qml/ApplicationPage.qml:349
+#: discover/qml/ApplicationPage.qml:348
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "Подробности…"
 
-#: discover/qml/ApplicationPage.qml:369
+#: discover/qml/ApplicationPage.qml:368
 #, kde-format
 msgid "Could not access the screenshots"
 msgstr "Не можа да се получи достъп до снимките на екрана"
 
-#: discover/qml/ApplicationPage.qml:481
+#: discover/qml/ApplicationPage.qml:480
 #, kde-format
 msgid "Documentation"
 msgstr "Документация"
 
-#: discover/qml/ApplicationPage.qml:482
+#: discover/qml/ApplicationPage.qml:481
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Прочетете официалната документация на проекта"
 
-#: discover/qml/ApplicationPage.qml:498
+#: discover/qml/ApplicationPage.qml:497
 #, kde-format
 msgid "Website"
 msgstr "Уебсайт"
 
-#: discover/qml/ApplicationPage.qml:499
+#: discover/qml/ApplicationPage.qml:498
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Посетете уебсайта на проекта"
 
-#: discover/qml/ApplicationPage.qml:515
+#: discover/qml/ApplicationPage.qml:514
 #, kde-format
 msgid "Addons"
 msgstr "Добавки"
 
-#: discover/qml/ApplicationPage.qml:516
+#: discover/qml/ApplicationPage.qml:515
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Инсталиране или премахване на допълнителни възможности"
 
-#: discover/qml/ApplicationPage.qml:535
+#: discover/qml/ApplicationPage.qml:534
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Споделяне"
 
-#: discover/qml/ApplicationPage.qml:536
+#: discover/qml/ApplicationPage.qml:535
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Изпращане на връзка към програмата"
 
-#: discover/qml/ApplicationPage.qml:552
+#: discover/qml/ApplicationPage.qml:551
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Проверка на приложение %1!"
 
-#: discover/qml/ApplicationPage.qml:572
+#: discover/qml/ApplicationPage.qml:571
 #, kde-format
 msgid "What's New"
 msgstr "Какво ново"
 
-#: discover/qml/ApplicationPage.qml:603
+#: discover/qml/ApplicationPage.qml:602
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Зареждане на отзиви за %1"
 
-#: discover/qml/ApplicationPage.qml:609
+#: discover/qml/ApplicationPage.qml:608
 #, kde-format
 msgid "Reviews"
 msgstr "Отзиви"
 
-#: discover/qml/ApplicationPage.qml:647
+#: discover/qml/ApplicationPage.qml:646
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "Показване на всички %1 отзива"
 msgstr[1] "Показване на всички %1 отзива"
 
-#: discover/qml/ApplicationPage.qml:659
+#: discover/qml/ApplicationPage.qml:658
 #, kde-format
 msgid "Write a Review"
 msgstr "Напишете коментар"
 
-#: discover/qml/ApplicationPage.qml:659
+#: discover/qml/ApplicationPage.qml:658
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Инсталирайте, за да напишете отзив"
 
-#: discover/qml/ApplicationPage.qml:671
+#: discover/qml/ApplicationPage.qml:670
 #, kde-format
 msgid "Get Involved"
 msgstr "Включете се"
 
-#: discover/qml/ApplicationPage.qml:713
+#: discover/qml/ApplicationPage.qml:712
 #, kde-format
 msgid "Donate"
 msgstr "Дарение"
 
-#: discover/qml/ApplicationPage.qml:714
+#: discover/qml/ApplicationPage.qml:713
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 "Помогнете и благодарете на разработчиците като направите дарение за проекта"
 
-#: discover/qml/ApplicationPage.qml:730
+#: discover/qml/ApplicationPage.qml:729
 #, kde-format
 msgid "Report Bug"
 msgstr "Подаване на сигнал за грешка"
 
-#: discover/qml/ApplicationPage.qml:731
+#: discover/qml/ApplicationPage.qml:730
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Регистрирайте открит проблем, за да помогнете за отстраняването му"
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Contribute"
 msgstr "Дайте вашия принос…"
 
-#: discover/qml/ApplicationPage.qml:748
+#: discover/qml/ApplicationPage.qml:747
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Помагайте на разработчиците, като кодирате, проектирате, тествате или "
 "превеждате."
 
-#: discover/qml/ApplicationPage.qml:773
+#: discover/qml/ApplicationPage.qml:772
 #, kde-format
 msgid "All Licenses"
 msgstr "Всички лицензи"
 
-#: discover/qml/ApplicationPage.qml:806
+#: discover/qml/ApplicationPage.qml:805
 #, kde-format
 msgid "Content Rating"
 msgstr "Рейтинг на съдържанието"
 
-#: discover/qml/ApplicationPage.qml:822
+#: discover/qml/ApplicationPage.qml:821
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Рискове на патентован софтуер"
 
-#: discover/qml/ApplicationPage.qml:828
+#: discover/qml/ApplicationPage.qml:827
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -524,7 +524,7 @@ msgstr ""
 "(<link url='%1'>%2</link>).<nl/><nl/>Можете да да научите повече на адрес "
 "<link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:829
+#: discover/qml/ApplicationPage.qml:828
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -577,7 +577,7 @@ msgstr[0] "Търсене - %1 елемент"
 msgstr[1] "Търсене - %1 елемента"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:226
+#: discover/qml/ApplicationsListPage.qml:228
 #, kde-format
 msgid "Search"
 msgstr "Търсене"
@@ -607,24 +607,24 @@ msgstr "Големина"
 msgid "Release Date"
 msgstr "Дата на излизане"
 
-#: discover/qml/ApplicationsListPage.qml:174
+#: discover/qml/ApplicationsListPage.qml:176
 #, kde-format
 msgid "Nothing found"
 msgstr "Нищо не е намерено"
 
-#: discover/qml/ApplicationsListPage.qml:181
+#: discover/qml/ApplicationsListPage.qml:183
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Търсене във всички категории"
 
-#: discover/qml/ApplicationsListPage.qml:190
+#: discover/qml/ApplicationsListPage.qml:192
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Търсене в интернет за \"%1\""
 
-#: discover/qml/ApplicationsListPage.qml:194
+#: discover/qml/ApplicationsListPage.qml:196
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -632,7 +632,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:205
+#: discover/qml/ApplicationsListPage.qml:207
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -640,13 +640,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "\"%1\" не е намерен в категория \"%2\""
 
-#: discover/qml/ApplicationsListPage.qml:207
+#: discover/qml/ApplicationsListPage.qml:209
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\" не е намерен в наличните източници"
 
-#: discover/qml/ApplicationsListPage.qml:208
+#: discover/qml/ApplicationsListPage.qml:210
 #, kde-format
 msgctxt "@info:placeholder%1 is the name of an application"
 msgid ""
@@ -658,7 +658,7 @@ msgstr ""
 "не е прегледан от вашия дистрибутор за функционалност или стабилност. "
 "Използвайте с повишено внимание."
 
-#: discover/qml/ApplicationsListPage.qml:241
+#: discover/qml/ApplicationsListPage.qml:243
 #, kde-format
 msgid "Still looking…"
 msgstr "Все още се търси…"
@@ -889,19 +889,19 @@ msgstr "Задачи (%1%)"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: discover/qml/ProgressView.qml:102
+#: discover/qml/ProgressView.qml:100
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, %4 остават"
 
-#: discover/qml/ProgressView.qml:103
+#: discover/qml/ProgressView.qml:101
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:104
+#: discover/qml/ProgressView.qml:102
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
@@ -1212,26 +1212,26 @@ msgctxt "@info"
 msgid "Updates"
 msgstr "Актуализации"
 
-#: discover/qml/UpdatesPage.qml:499
+#: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Рестартирайте системата, за да завършите процеса на актуализация"
 
-#: discover/qml/UpdatesPage.qml:511 discover/qml/UpdatesPage.qml:518
-#: discover/qml/UpdatesPage.qml:525
+#: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
+#: discover/qml/UpdatesPage.qml:524
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Актуално"
 
-#: discover/qml/UpdatesPage.qml:532
+#: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Трябва да проверите за актуализации"
 
-#: discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

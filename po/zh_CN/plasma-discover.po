@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-18 02:16+0000\n"
+"POT-Creation-Date: 2023-04-24 02:40+0000\n"
 "PO-Revision-Date: 2023-02-24 12:43\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -99,13 +99,13 @@ msgstr "无法打开 %1，在所有可用的软件仓库中均未发现该软件
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "请将此问题报告给您使用的发行版的软件打包人员。"
 
-#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
+#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
 #: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:443
+#: discover/DiscoverObject.cpp:445
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -258,26 +258,26 @@ msgstr "添加"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
 #: discover/qml/InstallApplicationButton.qml:47
-#: discover/qml/ProgressView.qml:109 discover/qml/SourcesPage.qml:190
+#: discover/qml/ProgressView.qml:107 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:252 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "取消"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:214
+#: discover/qml/ApplicationPage.qml:213
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "%1 个评分"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:214
+#: discover/qml/ApplicationPage.qml:213
 #, kde-format
 msgid "No ratings yet"
 msgstr "尚无评分"
 
-#: discover/qml/ApplicationPage.qml:65
+#: discover/qml/ApplicationPage.qml:69
 #, kde-format
 msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
@@ -285,199 +285,199 @@ msgctxt ""
 msgid "From %1"
 msgstr "来自 %1"
 
-#: discover/qml/ApplicationPage.qml:76
+#: discover/qml/ApplicationPage.qml:80
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:194
+#: discover/qml/ApplicationPage.qml:193
 #, kde-format
 msgid "Unknown author"
 msgstr "未知作者"
 
-#: discover/qml/ApplicationPage.qml:238
+#: discover/qml/ApplicationPage.qml:237
 #, kde-format
 msgid "Version:"
 msgstr "版本："
 
-#: discover/qml/ApplicationPage.qml:250
+#: discover/qml/ApplicationPage.qml:249
 #, kde-format
 msgid "Size:"
 msgstr "体积："
 
-#: discover/qml/ApplicationPage.qml:262
+#: discover/qml/ApplicationPage.qml:261
 #, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] "许可证："
 
-#: discover/qml/ApplicationPage.qml:270
+#: discover/qml/ApplicationPage.qml:269
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "未知"
 
-#: discover/qml/ApplicationPage.qml:300
+#: discover/qml/ApplicationPage.qml:299
 #, kde-format
 msgid "What does this mean?"
 msgstr "这是什么意思？"
 
-#: discover/qml/ApplicationPage.qml:309
+#: discover/qml/ApplicationPage.qml:308
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "查看更多…"
 
-#: discover/qml/ApplicationPage.qml:320
+#: discover/qml/ApplicationPage.qml:319
 #, kde-format
 msgid "Content Rating:"
 msgstr "内容分级："
 
-#: discover/qml/ApplicationPage.qml:329
+#: discover/qml/ApplicationPage.qml:328
 #, kde-format
 msgid "Age: %1+"
 msgstr "年龄：%1+"
 
-#: discover/qml/ApplicationPage.qml:349
+#: discover/qml/ApplicationPage.qml:348
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "查看详情…"
 
-#: discover/qml/ApplicationPage.qml:369
+#: discover/qml/ApplicationPage.qml:368
 #, kde-format
 msgid "Could not access the screenshots"
 msgstr "无法访问屏幕截图"
 
-#: discover/qml/ApplicationPage.qml:481
+#: discover/qml/ApplicationPage.qml:480
 #, kde-format
 msgid "Documentation"
 msgstr "文档"
 
-#: discover/qml/ApplicationPage.qml:482
+#: discover/qml/ApplicationPage.qml:481
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "阅读项目官方文档"
 
-#: discover/qml/ApplicationPage.qml:498
+#: discover/qml/ApplicationPage.qml:497
 #, kde-format
 msgid "Website"
 msgstr "网站"
 
-#: discover/qml/ApplicationPage.qml:499
+#: discover/qml/ApplicationPage.qml:498
 #, kde-format
 msgid "Visit the project's website"
 msgstr "访问项目网站"
 
-#: discover/qml/ApplicationPage.qml:515
+#: discover/qml/ApplicationPage.qml:514
 #, kde-format
 msgid "Addons"
 msgstr "附加组件"
 
-#: discover/qml/ApplicationPage.qml:516
+#: discover/qml/ApplicationPage.qml:515
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "安装或移除附加功能"
 
-#: discover/qml/ApplicationPage.qml:535
+#: discover/qml/ApplicationPage.qml:534
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "分享"
 
-#: discover/qml/ApplicationPage.qml:536
+#: discover/qml/ApplicationPage.qml:535
 #, kde-format
 msgid "Send a link for this application"
 msgstr "发送链接到应用程序"
 
-#: discover/qml/ApplicationPage.qml:552
+#: discover/qml/ApplicationPage.qml:551
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "查看 %1 应用程序！"
 
-#: discover/qml/ApplicationPage.qml:572
+#: discover/qml/ApplicationPage.qml:571
 #, kde-format
 msgid "What's New"
 msgstr "更新亮点"
 
-#: discover/qml/ApplicationPage.qml:603
+#: discover/qml/ApplicationPage.qml:602
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "正在加载 %1 的评论"
 
-#: discover/qml/ApplicationPage.qml:609
+#: discover/qml/ApplicationPage.qml:608
 #, kde-format
 msgid "Reviews"
 msgstr "评价"
 
-#: discover/qml/ApplicationPage.qml:647
+#: discover/qml/ApplicationPage.qml:646
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "显示所有 %1 条评价"
 
-#: discover/qml/ApplicationPage.qml:659
+#: discover/qml/ApplicationPage.qml:658
 #, kde-format
 msgid "Write a Review"
 msgstr "撰写评价"
 
-#: discover/qml/ApplicationPage.qml:659
+#: discover/qml/ApplicationPage.qml:658
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "安装程序后才能发表评价"
 
-#: discover/qml/ApplicationPage.qml:671
+#: discover/qml/ApplicationPage.qml:670
 #, kde-format
 msgid "Get Involved"
 msgstr "参与贡献"
 
-#: discover/qml/ApplicationPage.qml:713
+#: discover/qml/ApplicationPage.qml:712
 #, kde-format
 msgid "Donate"
 msgstr "捐款"
 
-#: discover/qml/ApplicationPage.qml:714
+#: discover/qml/ApplicationPage.qml:713
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "捐款支持项目存续，以实际行动表达对开发者的感谢之情"
 
-#: discover/qml/ApplicationPage.qml:730
+#: discover/qml/ApplicationPage.qml:729
 #, kde-format
 msgid "Report Bug"
 msgstr "报告程序缺陷"
 
-#: discover/qml/ApplicationPage.qml:731
+#: discover/qml/ApplicationPage.qml:730
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "记录您遇到的问题，以帮助项目修复程序缺陷"
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Contribute"
 msgstr "参与贡献"
 
-#: discover/qml/ApplicationPage.qml:748
+#: discover/qml/ApplicationPage.qml:747
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "帮助开发团队进行编程、设计、测试、翻译等工作"
 
-#: discover/qml/ApplicationPage.qml:773
+#: discover/qml/ApplicationPage.qml:772
 #, kde-format
 msgid "All Licenses"
 msgstr "所有许可证"
 
-#: discover/qml/ApplicationPage.qml:806
+#: discover/qml/ApplicationPage.qml:805
 #, kde-format
 msgid "Content Rating"
 msgstr "内容分级"
 
-#: discover/qml/ApplicationPage.qml:822
+#: discover/qml/ApplicationPage.qml:821
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "专有软件的风险"
 
-#: discover/qml/ApplicationPage.qml:828
+#: discover/qml/ApplicationPage.qml:827
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -499,7 +499,7 @@ msgstr ""
 "确认上述假设，因此请在安装前确保您可以信任它的作者 (<link url='%1'>%2</"
 "link>)。<nl/><nl/>更多详情请见<link url='%3'>%3</link>。"
 
-#: discover/qml/ApplicationPage.qml:829
+#: discover/qml/ApplicationPage.qml:828
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -545,7 +545,7 @@ msgid_plural "Search - %1 items"
 msgstr[0] "搜索 - %1 个项目"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:226
+#: discover/qml/ApplicationsListPage.qml:228
 #, kde-format
 msgid "Search"
 msgstr "搜索"
@@ -575,24 +575,24 @@ msgstr "体积"
 msgid "Release Date"
 msgstr "发布日期"
 
-#: discover/qml/ApplicationsListPage.qml:174
+#: discover/qml/ApplicationsListPage.qml:176
 #, kde-format
 msgid "Nothing found"
 msgstr "未找到任何内容"
 
-#: discover/qml/ApplicationsListPage.qml:181
+#: discover/qml/ApplicationsListPage.qml:183
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "在所有分类中搜索"
 
-#: discover/qml/ApplicationsListPage.qml:190
+#: discover/qml/ApplicationsListPage.qml:192
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "在互联网上搜索“%1”"
 
-#: discover/qml/ApplicationsListPage.qml:194
+#: discover/qml/ApplicationsListPage.qml:196
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -600,7 +600,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://cn.bing.com/search?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:205
+#: discover/qml/ApplicationsListPage.qml:207
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -608,13 +608,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "在“%2”分类中没有找到“%1”"
 
-#: discover/qml/ApplicationsListPage.qml:207
+#: discover/qml/ApplicationsListPage.qml:209
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "“%1”无法在可用来源中找到"
 
-#: discover/qml/ApplicationsListPage.qml:208
+#: discover/qml/ApplicationsListPage.qml:210
 #, kde-format
 msgctxt "@info:placeholder%1 is the name of an application"
 msgid ""
@@ -625,7 +625,7 @@ msgstr ""
 "“%1”可能可以通过互联网获取。从互联网上获取的软件并未经过您所安装的发行版的审"
 "查，无法确保功能正常或稳定性。请谨慎使用。"
 
-#: discover/qml/ApplicationsListPage.qml:241
+#: discover/qml/ApplicationsListPage.qml:243
 #, kde-format
 msgid "Still looking…"
 msgstr "仍在查找…"
@@ -853,19 +853,19 @@ msgstr "任务 (%1%)"
 msgid "Tasks"
 msgstr "任务"
 
-#: discover/qml/ProgressView.qml:102
+#: discover/qml/ProgressView.qml:100
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, 剩余 %4"
 
-#: discover/qml/ProgressView.qml:103
+#: discover/qml/ProgressView.qml:101
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:104
+#: discover/qml/ProgressView.qml:102
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
@@ -1175,26 +1175,26 @@ msgctxt "@info"
 msgid "Updates"
 msgstr "更新"
 
-#: discover/qml/UpdatesPage.qml:499
+#: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "重新启动系统以完成更新进程"
 
-#: discover/qml/UpdatesPage.qml:511 discover/qml/UpdatesPage.qml:518
-#: discover/qml/UpdatesPage.qml:525
+#: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
+#: discover/qml/UpdatesPage.qml:524
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "已是最新"
 
-#: discover/qml/UpdatesPage.qml:532
+#: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "建议检查更新"
 
-#: discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

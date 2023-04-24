@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-18 02:16+0000\n"
+"POT-Creation-Date: 2023-04-24 02:40+0000\n"
 "PO-Revision-Date: 2022-08-16 17:05+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -107,13 +107,13 @@ msgstr "%1 tapılmadı, çünki o, heç bir proram təminatı anbarlarında tap�
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Lütfən bu problemi distributorunuzun paketləyicisinə bildirin."
 
-#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
+#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
 #: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:443
+#: discover/DiscoverObject.cpp:445
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -267,14 +267,14 @@ msgstr "Əlavə etmək"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
 #: discover/qml/InstallApplicationButton.qml:47
-#: discover/qml/ProgressView.qml:109 discover/qml/SourcesPage.qml:190
+#: discover/qml/ProgressView.qml:107 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:252 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "İmtina"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:214
+#: discover/qml/ApplicationPage.qml:213
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -282,12 +282,12 @@ msgstr[0] "%1 reyting"
 msgstr[1] "%1 reyting"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:214
+#: discover/qml/ApplicationPage.qml:213
 #, kde-format
 msgid "No ratings yet"
 msgstr "Hələlik reytinq yoxdur"
 
-#: discover/qml/ApplicationPage.qml:65
+#: discover/qml/ApplicationPage.qml:69
 #, kde-format
 msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
@@ -295,28 +295,28 @@ msgctxt ""
 msgid "From %1"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:76
+#: discover/qml/ApplicationPage.qml:80
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:194
+#: discover/qml/ApplicationPage.qml:193
 #, kde-format
 msgid "Unknown author"
 msgstr "Naməlum müəllif"
 
-#: discover/qml/ApplicationPage.qml:238
+#: discover/qml/ApplicationPage.qml:237
 #, fuzzy, kde-format
 #| msgid "Version"
 msgid "Version:"
 msgstr "Versiya"
 
-#: discover/qml/ApplicationPage.qml:250
+#: discover/qml/ApplicationPage.qml:249
 #, kde-format
 msgid "Size:"
 msgstr "Ölçüsü:"
 
-#: discover/qml/ApplicationPage.qml:262
+#: discover/qml/ApplicationPage.qml:261
 #, fuzzy, kde-format
 #| msgid "License"
 #| msgid_plural "Licenses"
@@ -325,36 +325,36 @@ msgid_plural "Licenses:"
 msgstr[0] "Lisenziya"
 msgstr[1] "Lisenziya:"
 
-#: discover/qml/ApplicationPage.qml:270
+#: discover/qml/ApplicationPage.qml:269
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Naməlum"
 
-#: discover/qml/ApplicationPage.qml:300
+#: discover/qml/ApplicationPage.qml:299
 #, kde-format
 msgid "What does this mean?"
 msgstr "Bu nə deməkdir?"
 
-#: discover/qml/ApplicationPage.qml:309
+#: discover/qml/ApplicationPage.qml:308
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "Daha çox…"
 msgstr[1] "Daha çox…"
 
-#: discover/qml/ApplicationPage.qml:320
+#: discover/qml/ApplicationPage.qml:319
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating:"
 msgstr "Reytinq daxil edin"
 
-#: discover/qml/ApplicationPage.qml:329
+#: discover/qml/ApplicationPage.qml:328
 #, kde-format
 msgid "Age: %1+"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:349
+#: discover/qml/ApplicationPage.qml:348
 #, fuzzy, kde-format
 #| msgid "See more…"
 #| msgid_plural "See more…"
@@ -362,146 +362,146 @@ msgctxt "@action"
 msgid "See details…"
 msgstr "Daha çox…"
 
-#: discover/qml/ApplicationPage.qml:369
+#: discover/qml/ApplicationPage.qml:368
 #, kde-format
 msgid "Could not access the screenshots"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:481
+#: discover/qml/ApplicationPage.qml:480
 #, kde-format
 msgid "Documentation"
 msgstr "Sənədləşmə"
 
-#: discover/qml/ApplicationPage.qml:482
+#: discover/qml/ApplicationPage.qml:481
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Layihənin rəsmi sənədləşməsini oxuyun"
 
-#: discover/qml/ApplicationPage.qml:498
+#: discover/qml/ApplicationPage.qml:497
 #, kde-format
 msgid "Website"
 msgstr "Veb səhifə"
 
-#: discover/qml/ApplicationPage.qml:499
+#: discover/qml/ApplicationPage.qml:498
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Layihənin verb-səhifəsinə baxın"
 
-#: discover/qml/ApplicationPage.qml:515
+#: discover/qml/ApplicationPage.qml:514
 #, kde-format
 msgid "Addons"
 msgstr "Əlavələr"
 
-#: discover/qml/ApplicationPage.qml:516
+#: discover/qml/ApplicationPage.qml:515
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Əlavə funksiyalar quraşdırın və ya ləğv edin"
 
-#: discover/qml/ApplicationPage.qml:535
+#: discover/qml/ApplicationPage.qml:534
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:536
+#: discover/qml/ApplicationPage.qml:535
 #, fuzzy, kde-format
 #| msgid "Unable to load applications"
 msgid "Send a link for this application"
 msgstr "Tətbiqləri yükləmək alınmadı"
 
-#: discover/qml/ApplicationPage.qml:552
+#: discover/qml/ApplicationPage.qml:551
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:572
+#: discover/qml/ApplicationPage.qml:571
 #, kde-format
 msgid "What's New"
 msgstr "Yeniliklər"
 
-#: discover/qml/ApplicationPage.qml:603
+#: discover/qml/ApplicationPage.qml:602
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "%1 üçün miniatürlər yüklənir"
 
-#: discover/qml/ApplicationPage.qml:609
+#: discover/qml/ApplicationPage.qml:608
 #, kde-format
 msgid "Reviews"
 msgstr "Rəylər"
 
-#: discover/qml/ApplicationPage.qml:647
+#: discover/qml/ApplicationPage.qml:646
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "Bütün %1 rəyi göstərmək"
 msgstr[1] "Bütün %1 rəyi göstərmək"
 
-#: discover/qml/ApplicationPage.qml:659
+#: discover/qml/ApplicationPage.qml:658
 #, kde-format
 msgid "Write a Review"
 msgstr "Rəy Yazmaq"
 
-#: discover/qml/ApplicationPage.qml:659
+#: discover/qml/ApplicationPage.qml:658
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Rəy yazmaq üçün quraşdırın"
 
-#: discover/qml/ApplicationPage.qml:671
+#: discover/qml/ApplicationPage.qml:670
 #, kde-format
 msgid "Get Involved"
 msgstr "Iştirak edin"
 
-#: discover/qml/ApplicationPage.qml:713
+#: discover/qml/ApplicationPage.qml:712
 #, kde-format
 msgid "Donate"
 msgstr "Maddi Dəstək"
 
-#: discover/qml/ApplicationPage.qml:714
+#: discover/qml/ApplicationPage.qml:713
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 "Tərtibatçılara layihələrinə maddi dəstək verin və minnətdarlığınızı bildirin"
 
-#: discover/qml/ApplicationPage.qml:730
+#: discover/qml/ApplicationPage.qml:729
 #, kde-format
 msgid "Report Bug"
 msgstr "Xətanı bildir"
 
-#: discover/qml/ApplicationPage.qml:731
+#: discover/qml/ApplicationPage.qml:730
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Tapdığınız problemin həll edilməsi üçün onun qeydiyyatını aparın"
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Contribute"
 msgstr "Siz də iştirak edin..."
 
-#: discover/qml/ApplicationPage.qml:748
+#: discover/qml/ApplicationPage.qml:747
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Kod yazılmasında, interfeysin hazırlanmasında, sınaqdan keçirməkdə və ya "
 "tərcümədə tərtibatçılara kömək edin."
 
-#: discover/qml/ApplicationPage.qml:773
+#: discover/qml/ApplicationPage.qml:772
 #, kde-format
 msgid "All Licenses"
 msgstr "Bütün lisenziyalar"
 
-#: discover/qml/ApplicationPage.qml:806
+#: discover/qml/ApplicationPage.qml:805
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
 msgstr "Reytinq daxil edin"
 
-#: discover/qml/ApplicationPage.qml:822
+#: discover/qml/ApplicationPage.qml:821
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Özəl proqram təminatının təhlükələri"
 
-#: discover/qml/ApplicationPage.qml:828
+#: discover/qml/ApplicationPage.qml:827
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -527,7 +527,7 @@ msgstr ""
 "müəlliflərin tətbiqlərini quraşdırın (<link url='%1'>%2</link>).<nl/><nl/"
 ">Daha çox məlumatı buradan əldə edə bilərsiniz: <link url='%3'>\"%3\"</link>."
 
-#: discover/qml/ApplicationPage.qml:829
+#: discover/qml/ApplicationPage.qml:828
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -583,7 +583,7 @@ msgstr[0] "Axtarış: %1 element"
 msgstr[1] "Axtarış: %1 element"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:226
+#: discover/qml/ApplicationsListPage.qml:228
 #, kde-format
 msgid "Search"
 msgstr "Axtarış"
@@ -613,18 +613,18 @@ msgstr "Ölçü"
 msgid "Release Date"
 msgstr "Buraxılış Tarixi"
 
-#: discover/qml/ApplicationsListPage.qml:174
+#: discover/qml/ApplicationsListPage.qml:176
 #, kde-format
 msgid "Nothing found"
 msgstr "Heç nə tapılmadı"
 
-#: discover/qml/ApplicationsListPage.qml:181
+#: discover/qml/ApplicationsListPage.qml:183
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:190
+#: discover/qml/ApplicationsListPage.qml:192
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "Search the web for \"%1\""
@@ -632,7 +632,7 @@ msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "İnternetdə \"%1\" axtarışı"
 
-#: discover/qml/ApplicationsListPage.qml:194
+#: discover/qml/ApplicationsListPage.qml:196
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -640,7 +640,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:205
+#: discover/qml/ApplicationsListPage.qml:207
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "\"%1\" was not found in the available sources"
@@ -650,7 +650,7 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "\"%1\", əlçatan mənbələrdə tapılmadı"
 
-#: discover/qml/ApplicationsListPage.qml:207
+#: discover/qml/ApplicationsListPage.qml:209
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "\"%1\" was not found in the available sources"
@@ -658,7 +658,7 @@ msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\", əlçatan mənbələrdə tapılmadı"
 
-#: discover/qml/ApplicationsListPage.qml:208
+#: discover/qml/ApplicationsListPage.qml:210
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid ""
@@ -676,7 +676,7 @@ msgstr ""
 "yoxlanılmaya bilər. Belə proqram təminatından istifadə edərkən ehtiyyatlı "
 "olun."
 
-#: discover/qml/ApplicationsListPage.qml:241
+#: discover/qml/ApplicationsListPage.qml:243
 #, kde-format
 msgid "Still looking…"
 msgstr "Hələ də axtarılır..."
@@ -915,19 +915,19 @@ msgstr "Tapşırıqlar (%1%)"
 msgid "Tasks"
 msgstr "Tapşırıqlar"
 
-#: discover/qml/ProgressView.qml:102
+#: discover/qml/ProgressView.qml:100
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, %4 qalır"
 
-#: discover/qml/ProgressView.qml:103
+#: discover/qml/ProgressView.qml:101
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:104
+#: discover/qml/ProgressView.qml:102
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
@@ -1241,26 +1241,26 @@ msgctxt "@info"
 msgid "Updates"
 msgstr "Yeniləmələr"
 
-#: discover/qml/UpdatesPage.qml:499
+#: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Yenilənmə əməliyyatının başa çatması üçün sistemi yenidən başladın"
 
-#: discover/qml/UpdatesPage.qml:511 discover/qml/UpdatesPage.qml:518
-#: discover/qml/UpdatesPage.qml:525
+#: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
+#: discover/qml/UpdatesPage.qml:524
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Yenilənib"
 
-#: discover/qml/UpdatesPage.qml:532
+#: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Yenilənmə olub olmadığını yoxlamaq lazımdır"
 
-#: discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
