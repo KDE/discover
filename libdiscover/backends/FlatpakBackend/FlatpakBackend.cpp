@@ -1026,12 +1026,11 @@ void FlatpakBackend::loadRemote(FlatpakInstallation *installation, FlatpakRemote
     QFileInfo fileInfo(QFile::decodeName(path_str));
     if (!fileInfo.exists()) {
         checkForRemoteUpdates(installation, remote);
-
+    } else {
         // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
         if (fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
             connect(this, &FlatpakBackend::initialized, m_checkForUpdatesTimer, qOverload<>(&QTimer::start));
         }
-    } else {
         auto source = integrateRemote(installation, remote);
         Q_ASSERT(findSource(installation, QString::fromUtf8(flatpak_remote_get_name(remote))) == source);
     }
@@ -1861,6 +1860,7 @@ Transaction *FlatpakBackend::removeApplication(AbstractResource *app)
 
 void FlatpakBackend::checkForUpdates()
 {
+    disconnect(this, &FlatpakBackend::initialized, m_checkForUpdatesTimer, qOverload<>(&QTimer::start));
     for (const auto &source : std::as_const(m_flatpakSources)) {
         if (source->remote()) {
             Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(source->remote()));
