@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-24 02:40+0000\n"
+"POT-Creation-Date: 2023-04-25 02:28+0000\n"
 "PO-Revision-Date: 2023-04-14 21:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -538,28 +538,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (使用者)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:713
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:709
 #, kde-format
 msgid "Local bundle"
 msgstr "本機 Bundle"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1679
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:731
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1680
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:732
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正確的 appstream 網址 '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1783
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1784
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "新增來源「%1」失敗：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1903
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "沒有 Flatpak 來源。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1907
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1908
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "載入來源「%1」失敗"
@@ -1052,7 +1052,7 @@ msgstr "%1 後端發生無法處理的錯誤。請聯絡發行者。"
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:640
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "錯誤的 KNewStuff URI：%1"
@@ -1068,7 +1068,7 @@ msgstr "KDE Store"
 msgid "Log in information for %1"
 msgstr "%1 的登入資訊"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:227
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "無法啟動 %1"
@@ -1091,12 +1091,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "字型"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:294
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:286
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "請確認 Appstream 已經在您的系統上設定好了"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:332
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:322
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1104,12 +1104,12 @@ msgid ""
 "version."
 msgstr "您的作業系統自 %1 起已不再受支援。請考慮更新到受支援的版本。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:825
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:844
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "無法移除 %1"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1119,13 +1119,13 @@ msgstr ""
 "<b>%1 有新的大版本更新。</b>\n"
 "要能更新到這個新版本，請先確保現有的待處理更新皆已套用並重新啟動過。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:973
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "更新到 %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:991
 #, kde-format
 msgid "A new major version has been released"
 msgstr "有新的大版本更新"
@@ -2387,7 +2387,7 @@ msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
 msgstr "%1 → %2%1 → %2%2"
 
-#: libdiscover/resources/AbstractResourcesBackend.cpp:153
+#: libdiscover/resources/AbstractResourcesBackend.cpp:166
 #, kde-format
 msgid "Please verify Internet connectivity"
 msgstr "請檢查網際網路連線"
@@ -2397,7 +2397,7 @@ msgstr "請檢查網際網路連線"
 msgid "Refresh"
 msgstr "重新整理"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:714
+#: libdiscover/resources/ResourcesProxyModel.cpp:724
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-24 02:40+0000\n"
+"POT-Creation-Date: 2023-04-25 02:28+0000\n"
 "PO-Revision-Date: 2023-04-01 09:11+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -534,28 +534,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (користувач)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:713
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:709
 #, kde-format
 msgid "Local bundle"
 msgstr "Локальний пакунок"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1679
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:731
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1680
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:732
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Помилкове форматування адреси appstream «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1783
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1784
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Не вдалося додати джерело «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1903
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Немає джерел Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1907
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1908
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Не вдалося завантажити дані джерела «%1»"
@@ -1090,7 +1090,7 @@ msgstr ""
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:640
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Помилкова адреса KNewStuff: %1"
@@ -1106,7 +1106,7 @@ msgstr "Крамниця KDE"
 msgid "Log in information for %1"
 msgstr "Дані щодо входу для %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:227
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Не вдалося запустити %1"
@@ -1129,14 +1129,14 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Шрифти"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:294
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:286
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 "Будь ласка, переконайтеся, що у вашій системі належним чином налаштовано "
 "Appstream"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:332
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:322
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1146,12 +1146,12 @@ msgstr ""
 "Супровід вашої операційної системи припинено %1. Вам варто оновити систему "
 "до супроводжуваної версії."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:825
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:844
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Не вдалося вилучити «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1162,13 +1162,13 @@ msgstr ""
 "Щоб мати змогу оновитися до цієї нової версії, переконайтеся, що застосовано "
 "усі оновлення і перезавантажте вашу систему."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:973
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Оновлення до %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:991
 #, kde-format
 msgid "A new major version has been released"
 msgstr "Випущено нову основну версію"
@@ -2483,7 +2483,7 @@ msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
 msgstr "%1 → %2%1 → %2%2"
 
-#: libdiscover/resources/AbstractResourcesBackend.cpp:153
+#: libdiscover/resources/AbstractResourcesBackend.cpp:166
 #, kde-format
 msgid "Please verify Internet connectivity"
 msgstr "Будь ласка, перевірте працездатність інтернет-з'єднання"
@@ -2493,7 +2493,7 @@ msgstr "Будь ласка, перевірте працездатність і�
 msgid "Refresh"
 msgstr "Оновити"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:714
+#: libdiscover/resources/ResourcesProxyModel.cpp:724
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

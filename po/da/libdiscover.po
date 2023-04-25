@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-24 02:40+0000\n"
+"POT-Creation-Date: 2023-04-25 02:28+0000\n"
 "PO-Revision-Date: 2020-10-04 16:58+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -541,18 +541,18 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:713
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:709
 #, kde-format
 msgid "Local bundle"
 msgstr "Lokalt bundt"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1679
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:731
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1680
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:732
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Defekt appstream-URL \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1783
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1784
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -565,13 +565,13 @@ msgstr ""
 "Kunne ikke opdatere %1 pakke\n"
 "%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1903
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, fuzzy, kde-format
 #| msgid "There are %1 updated packages!"
 msgid "There are no Flatpak sources."
 msgstr "Der er %1 opdaterede pakker!"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1907
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1908
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -1087,7 +1087,7 @@ msgstr "Ukendt fejl i motoren %1. Kontakt din distribution."
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:640
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Forkert KNewStuff-URI: %1"
@@ -1103,7 +1103,7 @@ msgstr ""
 msgid "Log in information for %1"
 msgstr "Login-information for %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:227
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Kan ikke starte %1"
@@ -1126,12 +1126,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Skrifttyper"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:294
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:286
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Sørg venligst for at Appstream er sat korrekt op på dit system"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:332
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:322
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1139,13 +1139,13 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:825
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:844
 #, fuzzy, kde-format
 #| msgid "Cannot remove system package"
 msgid "Cannot remove '%1'"
 msgstr "Kan ikke fjerne systempakke"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1153,14 +1153,14 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:973
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
 #, fuzzy, kde-format
 #| msgid "Upgrade"
 msgid "Upgrade to %1 %2"
 msgstr "Opgradér"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:972
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:991
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""
@@ -2531,7 +2531,7 @@ msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
 msgstr ""
 
-#: libdiscover/resources/AbstractResourcesBackend.cpp:153
+#: libdiscover/resources/AbstractResourcesBackend.cpp:166
 #, kde-format
 msgid "Please verify Internet connectivity"
 msgstr ""
@@ -2541,7 +2541,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:714
+#: libdiscover/resources/ResourcesProxyModel.cpp:724
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
