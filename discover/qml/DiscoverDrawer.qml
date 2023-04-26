@@ -163,7 +163,7 @@ Kirigami.GlobalDrawer {
             property QtObject category
             readonly property bool itsMe: window.leftPage && window.leftPage.hasOwnProperty("category") && (window.leftPage.category === category)
             text: category ? category.name : ""
-            iconName: category ? category.icon : ""
+            icon.name: category ? category.icon : ""
             checked: itsMe
             visible: (!window.leftPage
                    || !window.leftPage.subcategories

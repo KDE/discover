@@ -133,7 +133,7 @@ DiscoverPage {
         id: updateAction
         text: page.unselected > 0 ? i18nc("@action:button as in, 'update the selected items' ", "Update Selected") : i18nc("@action:button as in, 'update all items'", "Update All")
         visible: updateModel.toUpdateCount
-        iconName: "update-none"
+        icon.name: "update-none"
 
         function anyVisible(items) {
             for (const itemPos in items) {
@@ -249,7 +249,7 @@ DiscoverPage {
 
     Kirigami.Action {
         id: cancelUpdateAction
-        iconName: "dialog-cancel"
+        icon.name: "dialog-cancel"
         text: i18n("Cancel")
         enabled: resourcesUpdatesModel.transaction && resourcesUpdatesModel.transaction.isCancellable
         onTriggered: resourcesUpdatesModel.transaction.cancel()

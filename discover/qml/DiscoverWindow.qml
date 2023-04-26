@@ -53,7 +53,7 @@ Kirigami.ApplicationWindow {
 
     TopLevelPageData {
         id: featuredAction
-        iconName: "go-home"
+        icon.name: "go-home"
         text: i18n("&Home")
         component: topBrowsingComp
         objectName: "discover"
@@ -63,7 +63,7 @@ Kirigami.ApplicationWindow {
         id: searchAction
         visible: enabled
         enabled: !window.wideScreen
-        iconName: "search"
+        icon.name: "search"
         text: i18n("&Search")
         component: topSearchComp
         objectName: "search"
@@ -71,7 +71,7 @@ Kirigami.ApplicationWindow {
     }
     TopLevelPageData {
         id: installedAction
-        iconName: "view-list-details"
+        icon.name: "view-list-details"
         text: i18n("&Installed")
         component: topInstalledComp
         objectName: "installed"
@@ -79,7 +79,7 @@ Kirigami.ApplicationWindow {
     TopLevelPageData {
         id: updateAction
 
-        iconName: ResourcesModel.updatesCount <= 0
+        icon.name: ResourcesModel.updatesCount <= 0
             ? "update-none"
             : (ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low")
 
@@ -92,7 +92,7 @@ Kirigami.ApplicationWindow {
     }
     TopLevelPageData {
         id: aboutAction
-        iconName: "help-feedback"
+        icon.name: "help-feedback"
         text: i18n("&About")
         component: topAboutComp
         objectName: "about"
@@ -100,7 +100,7 @@ Kirigami.ApplicationWindow {
     }
     TopLevelPageData {
         id: sourcesAction
-        iconName: "configure"
+        icon.name: "configure"
         text: i18n("S&ettings")
         component: topSourcesComp
         objectName: "sources"

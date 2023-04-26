@@ -218,7 +218,7 @@ DiscoverPage {
             Keys.onSpacePressed: enabledBox.clicked()
             actions: [
                 Kirigami.Action {
-                    iconName: "go-up"
+                    icon.name: "go-up"
                     tooltip: i18n("Increase priority")
                     enabled: sourcesBackend.firstSourceId !== sourceId
                     visible: sourcesBackend.canMoveSources
@@ -230,7 +230,7 @@ DiscoverPage {
                     }
                 },
                 Kirigami.Action {
-                    iconName: "go-down"
+                    icon.name: "go-down"
                     tooltip: i18n("Decrease priority")
                     enabled: sourcesBackend.lastSourceId !== sourceId
                     visible: sourcesBackend.canMoveSources
@@ -242,7 +242,7 @@ DiscoverPage {
                     }
                 },
                 Kirigami.Action {
-                    iconName: "edit-delete"
+                    icon.name: "edit-delete"
                     tooltip: i18n("Remove repository")
                     visible: sourcesBackend.supportsAdding
                     onTriggered: {
@@ -253,7 +253,7 @@ DiscoverPage {
                     }
                 },
                 Kirigami.Action {
-                    iconName: delegate.LayoutMirroring.enabled ? "go-next-symbolic-rtl" : "go-next-symbolic"
+                    icon.name: delegate.LayoutMirroring.enabled ? "go-next-symbolic-rtl" : "go-next-symbolic"
                     tooltip: i18n("Show contents")
                     visible: sourcesBackend.canFilterSources
                     onTriggered: {
