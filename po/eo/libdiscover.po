@@ -1,0 +1,2539 @@
+# translation of libdiscover.pot to Esperanto
+# Copyright (C) 2015 Free Software Foundation, Inc.
+# This file is distributed under the same license as the discover package.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2023-04-25 02:28+0000\n"
+"PO-Revision-Date: 2023-04-28 07:03+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Oliver Kellogg"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "okellogg@users.sourceforge.net"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:91
+#, kde-format
+msgid "Proprietary"
+msgstr "Proprieta"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:93
+#, kde-format
+msgid "Public Domain"
+msgstr "Publika Domeno"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:99
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:296
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:359
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:385
+#: libdiscover/UpdateModel/UpdateModel.cpp:118
+#: libdiscover/UpdateModel/UpdateModel.cpp:329
+#, kde-format
+msgid "Unknown"
+msgstr "Nekonata"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:173
+#, kde-format
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content suitable for everyone"
+msgid "All Audiences"
+msgstr "Ĉiuj Spektantaroj"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:176
+#, kde-format
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content with relatively benign themes only unsuitable for very young "
+"children, such as minor cartoon violence or mild profanity"
+msgid "Mild Content"
+msgstr "Milda Enhavo"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:179
+#, kde-format
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"content with some intense themes, such as somewhat realistic violence, "
+"references to sexuality, or adult profanity"
+msgid "Moderate Content"
+msgstr "Modera Enhavo"
+
+#: libdiscover/appstream/AppStreamUtils.cpp:182
+#, kde-format
+msgctxt ""
+"Open Age Ratings Service (https://hughsie.github.io/oars) description of "
+"mature content that could be quite objectionable or unsuitable for young "
+"audiences, such as realistic graphic violence, extreme profanity or nudity, "
+"or glorification of drug use"
+msgid "Intense Content"
+msgstr "Intensa Enhavo"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:176
+#, kde-format
+msgid "Error while fetching reviews: %1"
+msgstr "Eraro dum venigado de recenzoj: %1"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:228
+#, kde-format
+msgid "Error while submitting usefulness: %1"
+msgstr "Eraro dum sendado de utileco: %1"
+
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
+#, kde-format
+msgid "Error while submitting review: %1"
+msgstr "Eraro dum sendado de recenzo: %1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Dummy Category"
+msgstr "Dummy Kategorio"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
+#, kde-format
+msgctxt "Category"
+msgid "dummy"
+msgstr "dummy"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#, kde-format
+msgctxt "Category"
+msgid "dummy addons"
+msgstr "imitaj aldonaĵoj"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
+#, kde-format
+msgctxt "Category"
+msgid "dummy 1"
+msgstr "maniko 1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
+#, kde-format
+msgctxt "Category"
+msgid "dummy with stuff"
+msgstr "manito kun aĵoj"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
+#, kde-format
+msgctxt "Category"
+msgid "dummy 2.1"
+msgstr "imitaĵo 2.1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
+#, kde-format
+msgctxt "Category"
+msgid "dummy with quite some stuff"
+msgstr "manito kun sufiĉe da aĵoj"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
+#, kde-format
+msgctxt "Category"
+msgid "dummy 3"
+msgstr "maniko 3"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
+#, kde-format
+msgctxt "Category"
+msgid "dummy 4"
+msgstr "maniko 4"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
+#, kde-format
+msgctxt "Category"
+msgid "All Applications"
+msgstr "Ĉiuj Aplikoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
+#, kde-format
+msgctxt "Category"
+msgid "Accessories"
+msgstr "Akcesoraĵoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
+#, kde-format
+msgctxt "Category"
+msgid "Accessibility"
+msgstr "Alirebleco"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
+#, kde-format
+msgctxt "Category"
+msgid "Developer Tools"
+msgstr "Iloj por programistoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
+#, kde-format
+msgctxt "Category"
+msgid "Debugging"
+msgstr "Sencimigado"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
+#, kde-format
+msgctxt "Category"
+msgid "Graphic Interface Design"
+msgstr "Dezajno de Grafika Interfaco"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
+#, kde-format
+msgctxt "Category"
+msgid "IDEs"
+msgstr "IDEoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
+#, kde-format
+msgctxt "Category"
+msgid "Localization"
+msgstr "Lokigo"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
+#, kde-format
+msgctxt "Category"
+msgid "Profiling"
+msgstr "Profilado"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
+#, kde-format
+msgctxt "Category"
+msgid "Web Development"
+msgstr "Reta Disvolviĝo"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
+#, kde-format
+msgctxt "Category"
+msgid "Education"
+msgstr "Edukado"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
+#, kde-format
+msgctxt "Category"
+msgid "Science and Engineering"
+msgstr "Scienco kaj Inĝenieristiko"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
+#, kde-format
+msgctxt "Category"
+msgid "Astronomy"
+msgstr "Astronomio"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
+#, kde-format
+msgctxt "Category"
+msgid "Biology"
+msgstr "Biologio"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
+#, kde-format
+msgctxt "Category"
+msgid "Chemistry"
+msgstr "Kemio"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
+#, kde-format
+msgctxt "Category"
+msgid "Computer Science and Robotics"
+msgstr "Komputado kaj Robotiko"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
+#, kde-format
+msgctxt "Category"
+msgid "Electronics"
+msgstr "Elektroniko"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
+#, kde-format
+msgctxt "Category"
+msgid "Engineering"
+msgstr "Inĝenieristiko"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
+#, kde-format
+msgctxt "Category"
+msgid "Geography"
+msgstr "Geografio"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
+#, kde-format
+msgctxt "Category"
+msgid "Geology"
+msgstr "Geologio"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
+#, kde-format
+msgctxt "Category"
+msgid "Mathematics"
+msgstr "Matematiko"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
+#, kde-format
+msgctxt "Category"
+msgid "Physics"
+msgstr "Fiziko"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
+#, kde-format
+msgctxt "Category"
+msgid "Games"
+msgstr "Ludoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
+#, kde-format
+msgctxt "Category"
+msgid "Arcade"
+msgstr "Arkado"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
+#, kde-format
+msgctxt "Category"
+msgid "Board Games"
+msgstr "Tabulludoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
+#, kde-format
+msgctxt "Category"
+msgid "Card Games"
+msgstr "Kartludoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
+#, kde-format
+msgctxt "Category"
+msgid "Puzzles"
+msgstr "Enigmoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
+#, kde-format
+msgctxt "Category"
+msgid "Role Playing"
+msgstr "Rolludado"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
+#, kde-format
+msgctxt "Category"
+msgid "Simulation"
+msgstr "Simulado"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
+#, kde-format
+msgctxt "Category"
+msgid "Strategy"
+msgstr "Strategio"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
+#, kde-format
+msgctxt "Category"
+msgid "Sports"
+msgstr "Sportoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
+#, kde-format
+msgctxt "Category"
+msgid "Action"
+msgstr "Ago"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
+#, kde-format
+msgctxt "Category"
+msgid "Emulators"
+msgstr "Emuliloj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
+#, kde-format
+msgctxt "Category"
+msgid "Graphics"
+msgstr "Grafikoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
+#, kde-format
+msgctxt "Category"
+msgid "3D"
+msgstr "3D"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
+#, kde-format
+msgctxt "Category"
+msgid "Drawing"
+msgstr "Desegno"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
+#, kde-format
+msgctxt "Category"
+msgid "Painting and Editing"
+msgstr "Pentrado kaj Redaktado"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
+#, kde-format
+msgctxt "Category"
+msgid "Photography"
+msgstr "Fotografio"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
+#, kde-format
+msgctxt "Category"
+msgid "Publishing"
+msgstr "Eldonado"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
+#, kde-format
+msgctxt "Category"
+msgid "Scanning and OCR"
+msgstr "Skanado kaj OCR"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
+#, kde-format
+msgctxt "Category"
+msgid "Viewers"
+msgstr "Spektantoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
+#, kde-format
+msgctxt "Category"
+msgid "Internet"
+msgstr "Interreto"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
+#, kde-format
+msgctxt "Category"
+msgid "Chat"
+msgstr "Babilado"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
+#, kde-format
+msgctxt "Category"
+msgid "File Sharing"
+msgstr "Dosiera Kunhavigo"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
+#, kde-format
+msgctxt "Category"
+msgid "Mail"
+msgstr "Poŝto"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
+#, kde-format
+msgctxt "Category"
+msgid "Web Browsers"
+msgstr "Retumiloj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
+#, kde-format
+msgctxt "Category"
+msgid "Multimedia"
+msgstr "Plurmedia"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
+#, kde-format
+msgctxt "Category"
+msgid "Audio and Video Editors"
+msgstr "Aŭdio kaj Video Redaktoroj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
+#, kde-format
+msgctxt "Category"
+msgid "Audio Players"
+msgstr "Audio-Ludiloj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
+#, kde-format
+msgctxt "Category"
+msgid "Video Players"
+msgstr "Videoludiloj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
+#, kde-format
+msgctxt "Category"
+msgid "CD and DVD"
+msgstr "KD kaj DVD"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
+#, kde-format
+msgctxt "Category"
+msgid "Office"
+msgstr "Oficejo"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
+#, kde-format
+msgctxt "Category"
+msgid "System Settings"
+msgstr "Sistemaj Agordoj"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:125
+#, kde-format
+msgctxt "user denotes this as user-scoped flatpak repo"
+msgid "%1 (user)"
+msgstr "%1 (uzanto)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:709
+#, kde-format
+msgid "Local bundle"
+msgstr "Loka pakaĵo"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1680
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:732
+#, kde-format
+msgid "Malformed appstream url '%1'"
+msgstr "Misformita appstream URL '%1'"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1784
+#, kde-format
+msgid "Failed to add source '%1': %2"
+msgstr "Malsukcesis aldoni fonton '%1': %2"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
+#, kde-format
+msgid "There are no Flatpak sources."
+msgstr "Ne ekzistas Flatpak-fontoj."
+
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1908
+#, kde-format
+msgid "Failed to load \"%1\" source"
+msgstr "Malsukcesis ŝargi la fonton \"%1\"."
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:347
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"<para>This application comes from \"%1\" (hosted at <link>%2</link>). Other "
+"software in this repository will also be made be available in Discover when "
+"the application is installed.</para>"
+msgstr ""
+"<para>Ĉi tiu aplikaĵo venas de \"%1\" (gastigita ĉe <link>%2</link>). Alia "
+"programaro en ĉi tiu deponejo ankaŭ estos disponeblaj en Discover kiam la "
+"aplikaĵo estas instalita.</para>"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:442
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:450
+#, kde-format
+msgid "Retrieving size information"
+msgstr "Prenante grandecon informojn"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:444
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:452
+#, kde-format
+msgid "Unknown size"
+msgstr "Nekonata grandeco"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:446
+#, kde-format
+msgctxt "@info app size"
+msgid "%1 to download, %2 on disk"
+msgstr "%1 por elŝuti, %2 sur disko"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:454
+#, kde-format
+msgctxt "@info app size"
+msgid "%1 on disk"
+msgstr "%1 sur disko"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:508
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
+#, kde-format
+msgid "Failed to start '%1': %2"
+msgstr "Malsukcesis komenci '%1': %2"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:732
+#, kde-format
+msgid "All Files"
+msgstr "Ĉiuj dosieroj"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:734
+#, kde-format
+msgid "Home"
+msgstr "Hejmo"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:736
+#, kde-format
+msgid "Downloads"
+msgstr "Elŝutoj"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:738
+#, kde-format
+msgid "Music"
+msgstr "Muziko"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
+#, kde-format
+msgid "Network Access"
+msgstr "Reta Aliro"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:796
+#, kde-format
+msgid "Can access the internet"
+msgstr "Povas aliri la interreton"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
+#, kde-format
+msgid "Session Bus Access"
+msgstr "Sesia Busa Aliro"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:803
+#, kde-format
+msgid "Access is granted to the entire Session Bus"
+msgstr "Aliro estas donita al la tuta Sesiobuso"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:808
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
+#, kde-format
+msgid "System Bus Access"
+msgstr "Sistema Busa Aliro"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:809
+#, kde-format
+msgid "Access is granted to the entire System Bus"
+msgstr "Aliro estas donita al la tuta Sistembuso"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:814
+#, kde-format
+msgid "Remote Login Access"
+msgstr "Fora Ensaluta Aliro"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:815
+#, kde-format
+msgid "Can initiate remote login requests using the SSH protocol"
+msgstr "Povas iniciati forajn ensalutpetojn per la SSH-protokolo"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
+#, kde-format
+msgid "Smart Card Access"
+msgstr "Aliro al Smart Card"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
+#, kde-format
+msgid "Can integrate and communicate with smart cards"
+msgstr "Kapablas integri kaj komuniki per inteligentaj kartoj"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:824
+#, kde-format
+msgid "Printer Access"
+msgstr "Presilo-Aliro"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
+#, kde-format
+msgid "Can integrate and communicate with printers"
+msgstr "Kapablas integri kaj komuniki kun presiloj"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
+#, kde-format
+msgid "GPG Agent"
+msgstr "GPG-agento"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
+#, kde-format
+msgid ""
+"Allows access to the GPG cryptography service, generally used for signing "
+"and reading signed documents"
+msgstr ""
+"Permesas aliron al la GPG-kriptografia servo, ĝenerale uzata por subskribi "
+"kaj legi subskribitajn dokumentojn"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
+#, kde-format
+msgid "Bluetooth Access"
+msgstr "Bluetooth-Aliro"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:837
+#, kde-format
+msgid "Can integrate and communicate with Bluetooth devices"
+msgstr "Povas integri kaj komuniki kun Bluetooth-aparatoj"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
+#, kde-format
+msgid "Low-Level System Access"
+msgstr "Malaltnivela Sistema Aliro"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:842
+#, kde-format
+msgid "Can make low-level system calls (e.g. ptrace)"
+msgstr "Povas fari malaltnivelajn sistemajn vokojn (ekz. ptrace)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#, kde-format
+msgid "Device Access"
+msgstr "Aparato Aliro"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:849
+#, kde-format
+msgid "Can communicate with and control built-in or connected hardware devices"
+msgstr ""
+"Kapablas komuniki kun kaj kontroli enkonstruitajn aŭ konektitajn aparataĵojn"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
+#, kde-format
+msgid "Kernel-based Virtual Machine Access"
+msgstr "Kernel-bazita Virtuala Maŝina Aliro"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:854
+#, kde-format
+msgid "Allows running other operating systems as guests in virtual machines"
+msgstr "Permesas funkcii aliajn operaciumojn kiel gastoj en virtualaj maŝinoj"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:878
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:890
+#, kde-format
+msgid "%1 (read-only)"
+msgstr "%1 (nurlegebla)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:881
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:893
+#, kde-format
+msgid "%1 (can create files)"
+msgstr "%1 (povas krei dosierojn)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:902
+#, kde-format
+msgid "%1 (read & write) "
+msgstr "%1 (legi kaj skribi)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:911
+#, kde-format
+msgid "Home Folder Access"
+msgstr "Hejma Dosierujo Aliro"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
+#, kde-format
+msgid ""
+"Can read, write, and create files in the following locations in your home "
+"folder without asking permission first: %1"
+msgstr ""
+"Povas legi, skribi kaj krei dosierojn en la sekvaj lokoj en via hejma "
+"dosierujo sen peti permeson unue: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:916
+#, kde-format
+msgid ""
+"Can read and write files in the following locations in your home folder "
+"without asking permission first: %1"
+msgstr ""
+"Povas legi kaj skribi dosierojn en la sekvaj lokoj en via hejma dosierujo "
+"sen peti permeson unue: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:918
+#, kde-format
+msgid ""
+"Can read files in the following locations in your home folder without asking "
+"permission first: %1"
+msgstr ""
+"Povas legi dosierojn en la sekvaj lokoj en via hejma dosierujo sen peti "
+"permeson unue: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:920
+#, kde-format
+msgid ""
+"Can access files in the following locations in your home folder without "
+"asking permission first: %1"
+msgstr ""
+"Povas aliri dosierojn en la sekvaj lokoj en via hejma dosierujo sen peti "
+"permeson unue: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
+#, kde-format
+msgid "System Folder Access"
+msgstr "Sistema Dosierujo-Aliro"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
+#, kde-format
+msgid ""
+"Can read, write, and create system files in the following locations without "
+"asking permission first: %1"
+msgstr ""
+"Povas legi, skribi kaj krei sistemajn dosierojn en la sekvaj lokoj sen peti "
+"permeson unue: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:930
+#, kde-format
+msgid ""
+"Can read and write system files in the following locations without asking "
+"permission first: %1"
+msgstr ""
+"Povas legi kaj skribi sistemajn dosierojn en la sekvaj lokoj sen unue peti "
+"permeson: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:932
+#, kde-format
+msgid ""
+"Can read system files in the following locations without asking permission "
+"first: %1"
+msgstr ""
+"Povas legi sistemajn dosierojn en la sekvaj lokoj sen peti permeson unue: % 1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
+#, kde-format
+msgid ""
+"Can access system files in the following locations without asking permission "
+"first: %1"
+msgstr ""
+"Povas aliri sistemajn dosierojn en la sekvaj lokoj sen peti permeson unue: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:944
+#, kde-format
+msgid ""
+"Can communicate with other applications and processes in the same desktop "
+"session using the following communication protocols: %1"
+msgstr ""
+"Povas komuniki kun aliaj aplikaĵoj kaj procezoj en la sama labortabla sesio "
+"uzante la jenajn komunikajn protokolojn: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:956
+#, kde-format
+msgid ""
+"Can communicate with all applications and system services using the "
+"following communication protocols: %1"
+msgstr ""
+"Povas komuniki kun ĉiuj aplikaĵoj kaj sistemaj servoj uzante la jenajn "
+"komunikajn protokolojn: %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
+#, kde-format
+msgid "Add Flathub"
+msgstr "Aldoni Flathub"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
+#, kde-format
+msgid "Apply Changes"
+msgstr "Apliki Ŝanĝojn"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:95
+#, kde-format
+msgid ""
+"Changes to the priority of Flatpak sources must be applied before they will "
+"take effect."
+msgstr ""
+"Ŝanĝoj al la prioritato de Flatpak-fontoj devas esti aplikataj antaŭ ol ili "
+"efektiviĝos."
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:99
+#, kde-format
+msgid ""
+"Makes it possible to easily install the applications listed in https://"
+"flathub.org"
+msgstr ""
+"Ebligas facile instali la aplikaĵojn listigitajn en https://flathub.org"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:165
+#, kde-format
+msgid "Could not add the source %1"
+msgstr "Ne eblis aldoni la fonton %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:281
+#, kde-format
+msgid "Removing '%1'"
+msgstr "Forigante '%1'"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:282
+#, kde-format
+msgid ""
+"To remove this repository, the following applications must be uninstalled:"
+"<ul><li>%1</li></ul>"
+msgstr ""
+"Por forigi ĉi tiun deponejon, la sekvaj aplikaĵoj devas esti malinstalitaj:"
+"<ul><li>%1</li></ul>"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:299
+#, kde-format
+msgid "Failed to remove %1 remote repository: %2"
+msgstr "Malsukcesis forigi %1 fora deponejo: %2"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:303
+#, kde-format
+msgid "Could not find %1"
+msgstr "Ne eblis trovi %1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:335
+#, kde-format
+msgid "%1 (user)"
+msgstr "%1 (uzanto)"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:396
+#, kde-format
+msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
+msgstr "Enigu Flatpak-deponejon URI (*.flatpakrepo):"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
+#, kde-format
+msgid "Adding remote '%1' in %2 from %3"
+msgstr "Aldonante fora '%1' en %2 de %3"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
+#, kde-format
+msgid "Could not find '%1' in '%2'; please make sure it's available."
+msgstr "Ne eblis trovi '%1' en '%2'; bonvolu certigi, ke ĝi estas disponebla."
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#, kde-format
+msgctxt "@label %1 is the name of an application"
+msgid ""
+"This development version of %1 is outdated. Using the stable version is "
+"highly recommended."
+msgstr ""
+"Ĉi tiu evoluversio de %1 estas malaktuala. Uzi la stabilan version estas tre "
+"rekomendinda."
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#, kde-format
+msgctxt "@label %1 is the name of an application"
+msgid "A more stable version of %1 is available."
+msgstr "Pli stabila versio de %1 disponeblas."
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
+#, kde-format
+msgctxt "@action: button %1 is the name of a Flatpak repo"
+msgid "View Stable Version on %1"
+msgstr "Rigardi stabilan version sur %1"
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
+#, kde-format
+msgid "%1 is not installed but it still has data present."
+msgstr "%1 ne estas instalita sed ĝi ankoraŭ havas datumojn."
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
+#, kde-format
+msgid "Delete settings and user data"
+msgstr "Forigi agordojn kaj uzantajn datumojn"
+
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
+#, kde-format
+msgid "Clearing settings and user data…"
+msgstr "Forigante agordojn kaj uzantdatenojn..."
+
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
+#, kde-format
+msgctxt "%1 is the name of the application"
+msgid "Permissions for %1"
+msgstr "Permesoj por %1"
+
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:56
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
+#, kde-format
+msgid "Configure permissions…"
+msgstr "Agordi permesojn..."
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
+#, kde-format
+msgid ""
+"The remote %1 require that you accept their license:\n"
+" %2"
+msgstr ""
+"La fora %1 postulas ke vi akceptu ilian permesilon:\n"
+" %2"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
+#, kde-format
+msgid "Review EULA"
+msgstr "Rigardi EULA"
+
+#: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
+#, kde-format
+msgid "Could not enable remote %1: %2"
+msgstr "Ne eblis aktivigi fora %1: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#, kde-format
+msgid ""
+"Unsupported question:\n"
+"%1"
+msgstr ""
+"Nesubtenata demando:\n"
+"%1"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
+#, kde-format
+msgid "Backend %1 took too long to initialize"
+msgstr "Backend %1 daŭris tro longe por pravalorigi"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
+#, kde-format
+msgid "Applications"
+msgstr "Aplikoj"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#, kde-format
+msgid "Plasma Addons"
+msgstr "Plasmaj Aldonaĵoj"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#, kde-format
+msgid "Application Addons"
+msgstr "Aplikaj Aldonaĵoj"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
+#, kde-format
+msgid "Network error in backend %1: %2"
+msgstr "Reta eraro en backend %1: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
+#, kde-format
+msgid ""
+"Too many requests sent to the server for backend %1. Please try again in a "
+"few minutes."
+msgstr ""
+"Tro da petoj senditaj al la servilo por backend %1. Bonvolu provi denove "
+"post kelkaj minutoj."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
+#, kde-format
+msgid "Invalid %1 backend, contact your distributor."
+msgstr "Nevalida %1 backend, kontaktu vian distribuiston."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
+#, kde-format
+msgid ""
+"Unable to complete the update of %1. You can try and perform this action "
+"through the Get Hot New Stuff dialog, which grants tighter control. The "
+"reported error was:\n"
+"%2"
+msgstr ""
+"Ne eblas kompletigi la ĝisdatigon de %1. Vi povas provi fari ĉi tiun agon "
+"per la dialogo Akiri Varmajn Novaĵojn, kiu donas pli striktan kontrolon. La "
+"raportita eraro estis:\n"
+"%2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
+#, kde-format
+msgid "Could not fetch screenshot for the entry %1 in backend %2"
+msgstr "Ne eblis preni ekrankopio por la eniro %1 en la backend %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#, kde-format
+msgid "Unhandled error in %1 backend. Contact your distributor."
+msgstr "Netraktita eraro en %1 backend. Kontaktu vian distribuiston."
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
+#, kde-format
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:640
+#, kde-format
+msgid "Wrong KNewStuff URI: %1"
+msgstr "Malĝusta KNewStuff URI: %1"
+
+#: libdiscover/backends/KNSBackend/KNSResource.cpp:168
+#, kde-format
+msgctxt "The name of the KDE Store"
+msgid "KDE Store"
+msgstr "KDE-vendejo"
+
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
+#, kde-format
+msgid "Log in information for %1"
+msgstr "Ensaluta informo por %1"
+
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
+#, kde-format
+msgid "Cannot launch %1"
+msgstr "Ne povas lanĉi %1"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Addons"
+msgstr "Plasmaj Aldonaĵoj"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Widgets"
+msgstr "Plasmaj Fenestaĵoj"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
+#, kde-format
+msgctxt "Category"
+msgid "Fonts"
+msgstr "Tiparoj"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:286
+#, kde-format
+msgid "Please make sure that Appstream is properly set up on your system"
+msgstr "Bonvolu certigi, ke Appstream estas ĝuste agordita en via sistemo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:322
+#, kde-format
+msgctxt "%1 is the date as formatted by the locale"
+msgid ""
+"Your operating system ended support on %1. Consider upgrading to a supported "
+"version."
+msgstr ""
+"Via operaciumo ĉesis subtenon je %1. Konsideru ĝisdatigi al subtenata versio."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:844
+#, kde-format
+msgid "Cannot remove '%1'"
+msgstr "Ne povas forigi '%1'"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
+#, kde-format
+msgid ""
+"<b>A new major version of %1 has been released.</b>\n"
+"To be able to upgrade to this new version, make sure to apply all available "
+"updates and then restart the system."
+msgstr ""
+"<b>Nova ĉefa versio de %1 estis publikigita.</b>\n"
+"Por povi ĝisdatigi al ĉi tiu nova versio, nepre apliki ĉiujn disponeblajn "
+"ĝisdatigojn kaj poste rekomenci la sistemon."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:973
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
+#, kde-format
+msgid "Upgrade to %1 %2"
+msgstr "Ĝisdatigi al %1 %2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:991
+#, kde-format
+msgid "A new major version has been released"
+msgstr "Nova grava versio estis publikigita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
+#, kde-format
+msgid "Out of memory"
+msgstr "Sen memoro"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
+#, kde-format
+msgid "No network connection available"
+msgstr "Neniu retkonekto disponebla"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
+#, kde-format
+msgid "Operation not supported"
+msgstr "Operacio ne subtenata"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:25
+#, kde-format
+msgid "Internal error"
+msgstr "Interna eraro"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
+#, kde-format
+msgid "Internal error: %1"
+msgstr "Interna eraro: %1"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
+#, kde-format
+msgid "GPG failure"
+msgstr "GPG-malsukceso"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
+#, kde-format
+msgid "PackageID invalid"
+msgstr "PackageID nevalida"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
+#, kde-format
+msgid "Package not installed"
+msgstr "Pako ne instalita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:37
+#, kde-format
+msgid "Package not found"
+msgstr "Pako ne trovita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
+#, kde-format
+msgid "Package is already installed"
+msgstr "Pako jam estas instalita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
+#, kde-format
+msgid "Package download failed"
+msgstr "Elŝuto de pakaĵo malsukcesis"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:43
+#, kde-format
+msgid "Package group not found"
+msgstr "Pakaĵgrupo ne trovita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
+#, kde-format
+msgid "Package group list invalid"
+msgstr "Listo de pakaĵoj nevalidaj"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
+#, kde-format
+msgid "Dependency resolution failed"
+msgstr "Dependeca rezolucio malsukcesis"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
+#, kde-format
+msgid "Filter invalid"
+msgstr "Filtrilo nevalida"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
+#, kde-format
+msgid "Failed while creating a thread"
+msgstr "Malsukcesis dum kreado de fadeno"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
+#, kde-format
+msgid "Transaction failure"
+msgstr "Transakcia fiasko"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:55
+#, kde-format
+msgid "Transaction canceled"
+msgstr "Transakcio nuligita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
+#, kde-format
+msgid "No Cache available"
+msgstr "Neniu kaŝmemoro havebla"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
+#, kde-format
+msgid "Cannot find repository"
+msgstr "Ne povas trovi deponejon"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
+#, kde-format
+msgid "Cannot remove system package"
+msgstr "Ne povas forigi sistempakaĵon"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:63
+#, kde-format
+msgid "The PackageKit daemon has crashed"
+msgstr "La PackageKit-demono paneis"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:65
+#, kde-format
+msgid "Initialization failure"
+msgstr "Malsukceso de inicialigo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:67
+#, kde-format
+msgid "Failed to finalize transaction"
+msgstr "Malsukcesis fini transakcion"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
+#, kde-format
+msgid "Config parsing failed"
+msgstr "Agorda analizo malsukcesis"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
+#, kde-format
+msgid "Cannot cancel transaction"
+msgstr "Ne povas nuligi transakcion"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
+#, kde-format
+msgid "Cannot obtain lock"
+msgstr "Ne povas akiri seruron"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
+#, kde-format
+msgid "No packages to update"
+msgstr "Neniuj pakaĵoj por ĝisdatigi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
+#, kde-format
+msgid "Cannot write repo config"
+msgstr "Ne povas skribi repo-agordon"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:79
+#, kde-format
+msgid "Local install failed"
+msgstr "Loka instalado malsukcesis"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:81
+#, kde-format
+msgid "Bad GPG signature found"
+msgstr "Malbona GPG-signaturo trovita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:83
+#, kde-format
+msgid "No GPG signature found"
+msgstr "Neniu GPG subskribo trovita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:85
+#, kde-format
+msgid "Cannot install source package"
+msgstr "Ne povas instali fontan pakon"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
+#, kde-format
+msgid "Repo configuration error"
+msgstr "Eraro pri agorda depo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:89
+#, kde-format
+msgid "No license agreement"
+msgstr "Neniu licenca interkonsento"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:91
+#, kde-format
+msgid "File conflicts found"
+msgstr "Dosieraj konfliktoj trovitaj"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:93
+#, kde-format
+msgid "Package conflict found"
+msgstr "Paka konflikto trovita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:95
+#, kde-format
+msgid "Repo not available"
+msgstr "Repo ne havebla"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:97
+#, kde-format
+msgid "Invalid package file"
+msgstr "Nevalida pakaĵdosiero"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
+#, kde-format
+msgid "Package install blocked"
+msgstr "Paka instalo blokita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
+#, kde-format
+msgid "Corrupt package found"
+msgstr "Trovita korupta pako"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
+#, kde-format
+msgid "All packages already installed"
+msgstr "Ĉiuj pakoj jam instalitaj"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
+#, kde-format
+msgid "File not found"
+msgstr "Dosiero ne trovita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
+#, kde-format
+msgid "No more mirrors available"
+msgstr "Ne plu disponeblaj speguloj"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
+#, kde-format
+msgid "No distro upgrade data"
+msgstr "Neniuj distribuaj ĝisdatigaj datumoj"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
+#, kde-format
+msgid "Incompatible architecture"
+msgstr "Nekongrua arkitekturo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
+#, kde-format
+msgid "No space on device left"
+msgstr "Ne restas spaco sur la aparato"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:115
+#, kde-format
+msgid "A media change is required"
+msgstr "Necesas datumportila ŝanĝo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:117
+#, kde-format
+msgid "You have no authorization to execute this operation"
+msgstr "Vi ne havas rajtigon por efektivigi ĉi tiun operacion"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:119
+#, kde-format
+msgid "Update not found"
+msgstr "Ĝisdatigo ne trovita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
+#, kde-format
+msgid "Cannot install from unsigned repo"
+msgstr "Ne povas instali de nesubskribita deponejo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
+#, kde-format
+msgid "Cannot update from unsigned repo"
+msgstr "Ne povas ĝisdatigi de nesubskribita deponejo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
+#, kde-format
+msgid "Cannot get file list"
+msgstr "Ne povas ricevi dosierliston"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:127
+#, kde-format
+msgid "Cannot get requires"
+msgstr "Ne povas ricevi postulojn"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:129
+#, kde-format
+msgid "Cannot disable repository"
+msgstr "Ne povas malŝalti deponejon"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
+#, kde-format
+msgid "Restricted download detected"
+msgstr "Restriktita elŝuto detektita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
+#, kde-format
+msgid "Package failed to configure"
+msgstr "Pako malsukcesis agordi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:135
+#, kde-format
+msgid "Package failed to build"
+msgstr "Pako malsukcesis konstrui"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:137
+#, kde-format
+msgid "Package failed to install"
+msgstr "Pako malsukcesis instali"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:139
+#, kde-format
+msgid "Package failed to remove"
+msgstr "Pako malsukcesis forigi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:141
+#, kde-format
+msgid "Update failed due to running process"
+msgstr "Ĝisdatigo malsukcesis pro funkcianta procezo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
+#, kde-format
+msgid "The package database changed"
+msgstr "La paka datumbazo ŝanĝiĝis"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
+#, kde-format
+msgid "The provided type is not supported"
+msgstr "La provizita tipo ne estas subtenata"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
+#, kde-format
+msgid "Install root is invalid"
+msgstr "Instali radikon ne validas"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:149
+#, kde-format
+msgctxt ""
+"Failed to sync your Linux distro repositories or other sources of packages"
+msgid "Cannot fetch sources"
+msgstr "Ne povas preni fontojn"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:151
+#, kde-format
+msgid "Canceled priority"
+msgstr "Nuligita prioritato"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
+#, kde-format
+msgid "Unfinished transaction"
+msgstr "Nefinita transakcio"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
+#, kde-format
+msgid "Lock required"
+msgstr "Seruro bezonata"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
+#, kde-format
+msgid "Unknown error %1."
+msgstr "Nekonata eraro %1."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
+#, kde-format
+msgid "'%1' was changed and suggests to be restarted."
+msgstr "'%1' estis ŝanĝita kaj sugestas esti rekomencita."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
+#, kde-format
+msgid "A change by '%1' suggests your session to be restarted."
+msgstr "Ŝanĝo de '%1' sugestas ke via sesio estu rekomencita."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
+#, kde-format
+msgid ""
+"'%1' was updated for security reasons, a restart of the session is "
+"recommended."
+msgstr ""
+"'%1' estis ĝisdatigita pro sekurecaj kialoj, rekomenco de la sesio estas "
+"rekomendita."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
+#, kde-format
+msgid ""
+"'%1' was updated for security reasons, a restart of the system is "
+"recommended."
+msgstr ""
+"'%1' estis ĝisdatigita pro sekurecaj kialoj, oni rekomendas rekomencon de la "
+"sistemo."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
+#, kde-format
+msgid "A change by '%1' suggests your system to be restarted."
+msgstr "Ŝanĝo de '%1' sugestas ke via sistemo estu rekomencita."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
+#, kde-format
+msgid "The application will have to be restarted."
+msgstr "La aplikaĵo devos esti rekomencita."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
+#, kde-format
+msgid "The session will have to be restarted"
+msgstr "La sesio devos esti rekomencita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:192
+#, kde-format
+msgid "The system will have to be restarted."
+msgstr "La sistemo devos esti rekomencita."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:194
+#, kde-format
+msgid "For security, the session will have to be restarted."
+msgstr "Por sekureco, la sesio devos esti rekomencita."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:196
+#, kde-format
+msgid "For security, the system will have to be restarted."
+msgstr "Por sekureco, la sistemo devos esti rekomencita."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
+#, kde-format
+msgid "Waiting…"
+msgstr "Atendante…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
+#, kde-format
+msgid "Refreshing Cache…"
+msgstr "Refreŝigante kaŝmemoron…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
+#, kde-format
+msgid "Setup…"
+msgstr "Agordi…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
+#, kde-format
+msgid "Processing…"
+msgstr "Prilaborado..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
+#, kde-format
+msgid "Remove…"
+msgstr "Forigi…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
+#, kde-format
+msgid "Downloading…"
+msgstr "Elŝutante…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
+#, kde-format
+msgid "Installing…"
+msgstr "Instalante…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
+#, kde-format
+msgid "Updating…"
+msgstr "Ĝisdatigante…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
+#, kde-format
+msgid "Cleaning up…"
+msgstr "Purigado…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
+#, kde-format
+msgid "Resolving dependencies…"
+msgstr "Solvante dependecojn..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
+#, kde-format
+msgid "Checking signatures…"
+msgstr "Kontrolante subskribojn..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
+#, kde-format
+msgid "Test committing…"
+msgstr "Testo farante..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
+#, kde-format
+msgid "Committing…"
+msgstr "Farante…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
+#, kde-format
+msgid "Finished"
+msgstr "Finita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:238
+#, kde-format
+msgid "Canceled"
+msgstr "Nuligite"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
+#, kde-format
+msgid "Waiting for lock…"
+msgstr "Atendante ŝlosilon..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
+#, kde-format
+msgid "Waiting for authorization…"
+msgstr "Atendante rajtigon..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
+#, kde-format
+msgid "Copying files…"
+msgstr "Kopiante dosierojn..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
+#, kde-format
+msgid "Unknown Status"
+msgstr "Nekonata Statuso"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:258
+#, kde-format
+msgid "We are waiting for something."
+msgstr "Ni atendas ion."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
+#, kde-format
+msgid "Setting up transaction…"
+msgstr "Agordante transakcion..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
+#, kde-format
+msgid "The transaction is currently working…"
+msgstr "La transakcio nuntempe funkcias..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
+#, kde-format
+msgid "The transaction is currently removing packages…"
+msgstr "La transakcio nuntempe forigas pakaĵojn..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
+#, kde-format
+msgid "The transaction is currently downloading packages…"
+msgstr "La transakcio nuntempe elŝutas pakaĵojn..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
+#, kde-format
+msgid "The transactions is currently installing packages…"
+msgstr "La transakcioj nuntempe instalas pakaĵojn..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
+#, kde-format
+msgid "The transaction is currently updating packages…"
+msgstr "La transakcio nuntempe ĝisdatigas pakaĵojn..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
+#, kde-format
+msgid "The transaction is currently cleaning up…"
+msgstr "La transakcio nuntempe puriĝas..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
+#, kde-format
+msgid ""
+"The transaction is currently resolving the dependencies of the packages it "
+"will install…"
+msgstr ""
+"La transakcio nuntempe solvas la dependecojn de la pakaĵoj, kiujn ĝi "
+"instalos..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
+#, kde-format
+msgid "The transaction is currently checking the signatures of the packages…"
+msgstr "La transakcio nuntempe kontrolas la subskribojn de la pakaĵoj..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
+#, kde-format
+msgid ""
+"The transaction is currently testing the commit of this set of packages…"
+msgstr ""
+"La transakcio nuntempe testas la kompromiton de ĉi tiu aro da pakaĵoj..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
+#, kde-format
+msgid "The transaction is currently committing its set of packages…"
+msgstr "La transakcio nuntempe faras sian aron da pakaĵoj..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
+#, kde-format
+msgid "The transaction has finished!"
+msgstr "La transakcio finiĝis!"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
+#, kde-format
+msgid "The transaction was canceled"
+msgstr "La transakcio estis nuligita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
+#, kde-format
+msgid "The transaction is currently waiting for the lock…"
+msgstr "La transakcio nuntempe atendas la seruro..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
+#, kde-format
+msgid "Waiting for the user to authorize the transaction…"
+msgstr "Atendante ke la uzanto rajtigos la transakcion..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
+#, kde-format
+msgid "The transaction is currently copying files…"
+msgstr "La transakcio nuntempe kopias dosierojn..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
+#, kde-format
+msgid "Currently refreshing the repository cache…"
+msgstr "Nuntempe refreŝigante la deponejan kaŝmemoron..."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
+#, kde-format
+msgid "Unknown status %1."
+msgstr "Nekonata stato %1."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:313
+#, kde-format
+msgctxt "update state"
+msgid "Stable"
+msgstr "Stalo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:315
+#, kde-format
+msgctxt "update state"
+msgid "Unstable"
+msgstr "Malstabila"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:317
+#, kde-format
+msgctxt "update state"
+msgid "Testing"
+msgstr "Testado"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
+#: libdiscover/resources/AbstractResource.cpp:103
+#, kde-format
+msgid "Installed"
+msgstr "Instalita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
+#, kde-format
+msgid "Not Installed"
+msgstr "Ne Instalita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
+#, kde-format
+msgid "Low"
+msgstr "Malalta"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:334
+#, kde-format
+msgid "Enhancement"
+msgstr "Plibonigo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:336
+#, kde-format
+msgid "Normal"
+msgstr "Normala"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:338
+#, kde-format
+msgid "Bugfix"
+msgstr "Eraro korekto"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:340
+#, kde-format
+msgid "Important"
+msgstr "Grava"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:342
+#, kde-format
+msgid "Security"
+msgstr "Sekureco"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:344
+#, kde-format
+msgid "Blocked"
+msgstr "Blokita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:346
+#, kde-format
+msgid "Downloading"
+msgstr "Elŝutante"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
+#, kde-format
+msgid "Updating"
+msgstr "Ĝisdatigo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:350
+#, kde-format
+msgid "Installing"
+msgstr "Instalado"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:352
+#, kde-format
+msgid "Removing"
+msgstr "Forigante"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:354
+#, kde-format
+msgid "Cleanup"
+msgstr "Purigado"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:356
+#, kde-format
+msgid "Obsoleting"
+msgstr "Malnoviĝinta"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:358
+#, kde-format
+msgid "Collection Installed"
+msgstr "Kolekto Instalita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:360
+#, kde-format
+msgid "Collection Available"
+msgstr "Kolekto Havebla"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:364
+#, kde-format
+msgid "Reinstalling"
+msgstr "Reinstalante"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:366
+#, kde-format
+msgid "Downgrading"
+msgstr "Malaltiĝo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:368
+#, kde-format
+msgid "Preparing"
+msgstr "Preparante"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:370
+#, kde-format
+msgid "Decompressing"
+msgstr "Malkunpremante"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:372
+#, kde-format
+msgid "Untrusted"
+msgstr "Nefidinda"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:374
+#, kde-format
+msgid "Trusted"
+msgstr "Fidinda"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:376
+#, kde-format
+msgid "Unavailable"
+msgstr "Nedisponebla"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
+#, kde-format
+msgid "Failed Offline Update"
+msgstr "Malsukcesa Eksterreta Ĝisdatigo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
+#, kde-format
+msgid ""
+"Failed to update %1 package\n"
+"%2"
+msgid_plural ""
+"Failed to update %1 packages\n"
+"%2"
+msgstr[0] ""
+msgstr[1] ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:172
+#, kde-format
+msgctxt "@action:button"
+msgid "Open Discover"
+msgstr "Malfermi Discover"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#, kde-format
+msgctxt "@action:button"
+msgid "Repair System"
+msgstr "Ripara Sistemo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#, kde-format
+msgid "Repairing failed offline update"
+msgstr "Ripari malsukcesan ĝisdatigon eksterrete"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#, kde-format
+msgid "Repair Failed"
+msgstr "Riparo Malsukcesis"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
+#, kde-kuit-format
+msgctxt "@info"
+msgid "%1<nl/>Please report this error to your distribution."
+msgstr "%1<nl/>Bonvolu raporti ĉi tiun eraron al via distribuo."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
+#, kde-format
+msgid "Repaired Successfully"
+msgstr "Riparita Sukcese"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:170
+#, kde-format
+msgid "Offline Updates"
+msgstr "Senkonektaj Ĝisdatigoj"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:171
+#, kde-format
+msgid "Successfully updated %1 package"
+msgid_plural "Successfully updated %1 packages"
+msgstr[0] ""
+msgstr[1] ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
+#, kde-format
+msgid "Unknown Source"
+msgstr "Nekonata Fonto"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
+#, kde-format
+msgctxt "package-name (version)"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:330
+#, kde-format
+msgctxt "comma separating package names"
+msgid ", "
+msgstr ","
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
+#, kde-format
+msgid "Obsoletes:"
+msgstr "Malnoviĝintaj:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
+#, kde-format
+msgid "Release Notes:"
+msgstr "Eldonaj Notoj:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:396
+#, kde-format
+msgid "Update State:"
+msgstr "Ĝisdatigi Ŝtaton:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
+#, kde-format
+msgid "Restart:"
+msgstr "Rekomenci:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
+#, kde-format
+msgid "Vendor:"
+msgstr "Vendisto:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:420
+#, kde-format
+msgid "%2 (plus %1 dependency)"
+msgid_plural "%2 (plus %1 dependencies)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
+#, kde-format
+msgid "Repository URL:"
+msgstr "Deponejo URL:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
+#, kde-format
+msgctxt "distro upgrade: name version"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
+#, kde-format
+msgid "System upgrade"
+msgstr "Sistema ĝisdatigo"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#, kde-format
+msgid "1 package will be upgraded"
+msgid_plural "%1 packages will be upgraded"
+msgstr[0] ""
+msgstr[1] ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
+#, kde-format
+msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+msgstr ""
+"<h3>%1</h3>Ĝisdatigi al nova versio %2<br/>Neniaj eldonnotoj provizitaj"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
+#, kde-format
+msgid ""
+"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+"blockquote>"
+msgstr ""
+"<h3>%1</h3>Ĝisdatigi al nova versio %2<br/>Eldonaj notoj:<blockquote>%3</"
+"blockquote>"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:224
+#, kde-format
+msgid "Present"
+msgstr "Prezenti"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
+#, kde-format
+msgid "Future"
+msgstr "Estonteco"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:359
+#, kde-format
+msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
+msgid "Not enough space to perform the update; only %1 of space are available."
+msgstr ""
+"Ne sufiĉa spaco por plenumi la ĝisdatigon; nur %1 de spaco estas disponebla."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:561
+#, kde-format
+msgid ""
+"This update cannot be completed as it would remove the following software "
+"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"you believe this is an error, please report it as a bug to the packagers of "
+"your distribution."
+msgstr ""
+"Ĉi tiu ĝisdatigo ne povas esti kompletigita ĉar ĝi forigus la jenan "
+"programaron, kiu estas kritika por la funkciado de la sistemo:<nl/><ul><li>"
+"%1</li></ul><nl/>Se vi kredas, ke tio estas eraro, bonvolu raporti ĝin kiel "
+"cimon al la pakistoj de via distribuo."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
+#, kde-format
+msgid "Packages to remove"
+msgstr "Pakoj por forigi"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
+#, kde-format
+msgid ""
+"The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
+">in order to install:<ul><li>%2</li></ul>"
+msgstr ""
+"La jenaj pakaĵoj estos forigitaj per la ĝisdatigo:<ul><li>%1</li></ul><br/"
+">por instali:<ul><li>%2</li></ul><ul><li> >"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:684
+#, kde-kuit-format
+msgctxt "@info"
+msgid "%1:<nl/><nl/>%2"
+msgstr "%1:<nl/><nl/>%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:692
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
+#, kde-format
+msgid ""
+"Media Change of type '%1' is requested.\n"
+"%2"
+msgstr ""
+"Media Ŝanĝo de tipo '%1' estas petita.\n"
+"%2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
+#, kde-format
+msgid "Accept EULA"
+msgstr "Akcepti EULA"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:726
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
+#, kde-format
+msgid ""
+"The package %1 and its vendor %2 require that you accept their license:\n"
+" %3"
+msgstr ""
+"La pako %1 kaj ĝia vendisto %2 postulas ke vi akceptu ilian permesilon:\n"
+" %3"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:843
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
+#, kde-format
+msgid "Missing signature for %1 in %2"
+msgstr "Mankas subskribo por %1 en %2"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:844
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
+#, kde-format
+msgid ""
+"Do you trust the following key?\n"
+"\n"
+"Url: %1\n"
+"User: %2\n"
+"Key: %3\n"
+"Fingerprint: %4\n"
+"Timestamp: %4\n"
+msgstr ""
+"Ĉu vi fidas la jenan ŝlosilon?\n"
+"\n"
+"Url: %1\n"
+"Uzanto: %2\n"
+"Ŝlosilo: %3\n"
+"Fingrospuro: %4\n"
+"Tempindiko: %4\n"
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:190
+#, kde-format
+msgid ""
+"This action cannot be completed as it would remove the following software "
+"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"you believe this is an error, please report it as a bug to the packagers of "
+"your distribution."
+msgstr ""
+"Ĉi tiu ago ne povas esti plenumita ĉar ĝi forigus la jenan programaron, kiu "
+"estas kritika por la funkciado de la sistemo:<nl/><ul><li>%1</li></ul><nl/"
+">Se vi kredas, ke tio estas eraro, bonvolu raporti ĝin kiel cimon al la "
+"pakistoj de via distribuo."
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
+#, kde-format
+msgid "Confirm package removal"
+msgstr "Konfirmi forigon de pakaĵo"
+
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:204
+#, kde-format
+msgid ""
+"This action will also remove the following package:\n"
+"%2"
+msgid_plural ""
+"This action will also remove the following packages:\n"
+"%2"
+msgstr[0] ""
+msgstr[1] ""
+
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
+#, kde-format
+msgid "Show Dependencies…"
+msgstr "Montri Dependecojn..."
+
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#, kde-format
+msgid "Dependencies for package: %1"
+msgstr "Dependecoj por pako: %1"
+
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
+#, kde-format
+msgid "Full Access"
+msgstr "Plena Aliro"
+
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#, kde-format
+msgid "Can access everything on the system"
+msgstr "Povas aliri ĉion en la sistemo"
+
+#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Operating System"
+msgstr "Operaciumo"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:181
+#, kde-format
+msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+msgstr ""
+"rpm-ostree: Multoblaj ekfunkciigitaj deplojoj trovitaj. Bonvolu registri "
+"cimon."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:193
+#, kde-format
+msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgstr "rpm-ostree: Neniu startita deplojo trovita. Bonvolu registri cimon."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:398
+#, kde-format
+msgid ""
+"<b>A new major version of %1 has been released!</b>\n"
+"To be able to update to this new version, make sure to apply all pending "
+"updates and reboot your system."
+msgstr ""
+"<b>Nova ĉefa versio de %1 estis publikigita!</b>\n"
+"Por povi ĝisdatigi al ĉi tiu nova versio, nepre apliki ĉiujn atendatajn "
+"ĝisdatigojn kaj rekomencu vian sistemon."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:408
+#, kde-format
+msgid "<b>A new major version has been released!</b>"
+msgstr "<b>Nova grava versio estis publikigita!</b>"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:535
+#, kde-format
+msgid "You have pending updates for the current version. Proceeding anyway."
+msgstr ""
+"Vi havas pritraktatajn ĝisdatigojn por la nuna versio. Procedante ĉiuokaze."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:538
+#, kde-format
+msgid "Please update to the latest version before rebasing to a major version"
+msgstr ""
+"Bonvolu ĝisdatigi al la plej nova versio antaŭ ol rebazi al grava versio"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:546
+#, kde-format
+msgid "Missing remote ref for rebase operation. Please file a bug."
+msgstr "Mankas fora ref por rebaza operacio. Bonvolu registri cimon."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
+#, kde-format
+msgid "GPL and other licenses"
+msgstr "GPL kaj aliaj permesiloj"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
+#, kde-format
+msgid "Additional packages: "
+msgstr "Pliaj pakoj:"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
+#, kde-format
+msgid "Additional modules: "
+msgstr "Kromaj moduloj:"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
+#, kde-format
+msgid "Local packages: "
+msgstr "Lokaj pakoj:"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
+#, kde-format
+msgid "Replaced packages:"
+msgstr "Anstataŭigitaj pakaĵoj:"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
+#, kde-format
+msgid "Removed packages:"
+msgstr "Forigitaj pakoj:"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
+#, kde-format
+msgid "Currently booted version (pinned)"
+msgstr "Nuntempe startita versio (alpinglita)"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
+#, kde-format
+msgid "Currently booted version"
+msgstr "Nuntempe startita versio"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
+#, kde-format
+msgid "Version that will be used after reboot"
+msgstr "Versio, kiu estos uzata post rekomenco"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
+#, kde-format
+msgid "Fallback version (pinned)"
+msgstr "Rezerva versio (alpinglita)"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
+#, kde-format
+msgid "Fallback version"
+msgstr "Rezerva versio"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
+#, kde-format
+msgid "ostree remotes"
+msgstr "ostree remotes"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
+#, kde-format
+msgid "rpm-ostree transaction failed with:"
+msgstr "rpm-ostree-transakcio malsukcesis kun:"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
+#, kde-format
+msgid ""
+"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgstr ""
+"Nuligi rpm-ostree-transakcion. Ĉi tio povas preni iom da tempo. Bonvolu "
+"atendi."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
+#, kde-format
+msgid "Checking for a system update"
+msgstr "Kontrolante sisteman ĝisdatigon"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:385
+#, kde-format
+msgid "Downloading system update"
+msgstr "Elŝutante sisteman ĝisdatigon"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:388
+#, kde-format
+msgid "Updating the system"
+msgstr "Ĝisdatigante la sistemon"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
+#, kde-format
+msgid "Updating to the next major version"
+msgstr "Ĝisdatigo al la sekva grava versio"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
+#, kde-format
+msgid "Operation in progress (started outside of Discover)"
+msgstr "Operacio en progreso (komencita ekster Discover)"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
+#, kde-format
+msgid "Unknown transaction type"
+msgstr "Nekonata transakcia tipo"
+
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
+#, kde-format
+msgid "Channels…"
+msgstr "Kanaloj…"
+
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:24
+#, kde-format
+msgid "%1 channels"
+msgstr "%1 kanaloj"
+
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:32
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:356
+#, kde-format
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:35
+#, kde-format
+msgid "Switch"
+msgstr "Ŝalti"
+
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
+#, kde-format
+msgid "Permissions for %1"
+msgstr "Permesoj por %1"
+
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#, kde-format
+msgid "Snap"
+msgstr "Klaki"
+
+#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
+#, kde-format
+msgid ""
+"This Snap application is not compatible with security sandboxing and will "
+"have full access to this computer. Install it anyway?"
+msgstr ""
+"Ĉi tiu Snap-aplikaĵo ne kongruas kun sekureca sandboxing kaj havos plenan "
+"aliron al ĉi tiu komputilo. Ĉu instali ĝin ĉiukaze?"
+
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
+#, kde-format
+msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+msgstr "SteamOS: Ne eblas pridemandi atomupd por SteamOS-Ĝisdatigoj..."
+
+#: libdiscover/DiscoverBackendsFactory.cpp:113
+#, kde-format
+msgid ""
+"List all the backends we'll want to have loaded, separated by comma ','."
+msgstr ""
+"Listigu ĉiujn backends kiujn ni volos esti ŝargitaj, apartigitaj per komo "
+"','."
+
+#: libdiscover/resources/AbstractResource.cpp:99
+#, kde-format
+msgid "Broken"
+msgstr "Rompita"
+
+#: libdiscover/resources/AbstractResource.cpp:101
+#, kde-format
+msgid "Available"
+msgstr "Disponebla"
+
+#: libdiscover/resources/AbstractResource.cpp:105
+#, kde-format
+msgid "Upgradeable"
+msgstr "Ĝisdatigebla"
+
+#: libdiscover/resources/AbstractResource.cpp:242
+#, kde-format
+msgid "Launch"
+msgstr "Lanĉo"
+
+#: libdiscover/resources/AbstractResource.cpp:251
+#, kde-format
+msgctxt ""
+"@info 'Refresh' is used as a noun here, and %1 is an app's version number"
+msgid "Refresh of version %1"
+msgstr "Refreŝigo de versio %1"
+
+#: libdiscover/resources/AbstractResource.cpp:261
+#, kde-format
+msgctxt "Do not translate or alter \\u009C"
+msgid "%1 → %2%1 → %2%2"
+msgstr "%1 → %2%1 → %2%2"
+
+#: libdiscover/resources/AbstractResourcesBackend.cpp:166
+#, kde-format
+msgid "Please verify Internet connectivity"
+msgstr "Bonvolu kontroli interretan konekteblecon"
+
+#: libdiscover/resources/ResourcesModel.cpp:99
+#, kde-format
+msgid "Refresh"
+msgstr "Refreŝigi"
+
+#: libdiscover/resources/ResourcesProxyModel.cpp:724
+#, kde-format
+msgctxt "an approximation number, like 3000+"
+msgid "%1+"
+msgstr "%1+"
+
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#, kde-format
+msgid "Updates"
+msgstr "Ĝisdatigoj"
+
+#: libdiscover/Transaction/Transaction.cpp:133
+#, kde-format
+msgctxt "@label Download rate"
+msgid "%1/s"
+msgstr "%1/s"
+
+#: libdiscover/Transaction/TransactionModel.cpp:74
+#, kde-format
+msgctxt "@info:status"
+msgid "Starting"
+msgstr "Komencante"
+
+#: libdiscover/Transaction/TransactionModel.cpp:76
+#, kde-format
+msgctxt "@info:status"
+msgid "Waiting"
+msgstr "Atendante"
+
+#: libdiscover/Transaction/TransactionModel.cpp:78
+#, kde-format
+msgctxt "@info:status"
+msgid "Downloading"
+msgstr "Elŝutante"
+
+#: libdiscover/Transaction/TransactionModel.cpp:82
+#, kde-format
+msgctxt "@info:status"
+msgid "Installing"
+msgstr "Instalado"
+
+#: libdiscover/Transaction/TransactionModel.cpp:84
+#, kde-format
+msgctxt "@info:status"
+msgid "Removing"
+msgstr "Forigante"
+
+#: libdiscover/Transaction/TransactionModel.cpp:86
+#, kde-format
+msgctxt "@info:status"
+msgid "Changing Addons"
+msgstr "Ŝanĝante Aldonaĵojn"
+
+#: libdiscover/Transaction/TransactionModel.cpp:90
+#, kde-format
+msgctxt "@info:status"
+msgid "Done"
+msgstr "Farita"
+
+#: libdiscover/Transaction/TransactionModel.cpp:92
+#, kde-format
+msgctxt "@info:status"
+msgid "Failed"
+msgstr "Malsukcesis"
+
+#: libdiscover/Transaction/TransactionModel.cpp:94
+#, kde-format
+msgctxt "@info:status"
+msgid "Cancelled"
+msgstr "Nuligite"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Applications"
+msgstr "Aplikoj"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "System Software"
+msgstr "Sistema Programaro"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:132
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Addons"
+msgstr "Aldonaĵoj"
