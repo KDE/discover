@@ -11,6 +11,7 @@ Name[da]=Discover
 Name[de]=Discover
 Name[el]=Discover
 Name[en_GB]=Discover
+Name[eo]=Discover
 Name[es]=Discover
 Name[et]=Discover
 Name[eu]=Discover
