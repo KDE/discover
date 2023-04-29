@@ -22,8 +22,21 @@ DiscoverPage {
 
     actions: window.wideScreen ? [ searchAction ] : []
 
-    header: DiscoverInlineMessage {
-        inlineMessage: ResourcesModel.inlineMessage
+    header: Item {
+        height: message.height + message.anchors.margins
+
+        DiscoverInlineMessage {
+            id: message
+
+            anchors {
+                top: parent.top
+                left: parent.left
+                right: parent.right
+                margins: Kirigami.Units.smallSpacing
+            }
+
+            inlineMessage: ResourcesModel.inlineMessage
+        }
     }
 
     readonly property bool isHome: true
