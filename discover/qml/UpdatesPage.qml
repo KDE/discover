@@ -154,6 +154,7 @@ DiscoverPage
 
         DiscoverInlineMessage {
             Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.smallSpacing
             inlineMessage: ResourcesModel.inlineMessage
         }
 
