@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-24 02:40+0000\n"
+"POT-Creation-Date: 2023-04-30 03:36+0000\n"
 "PO-Revision-Date: 2021-08-31 18:57+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -269,7 +269,7 @@ msgstr "Pridėti"
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
 #: discover/qml/InstallApplicationButton.qml:47
 #: discover/qml/ProgressView.qml:107 discover/qml/SourcesPage.qml:190
-#: discover/qml/UpdatesPage.qml:252 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Atsisakyti"
@@ -668,38 +668,38 @@ msgstr ""
 msgid "Still looking…"
 msgstr "Vis dar ieškoma…"
 
-#: discover/qml/BrowsingPage.qml:50
+#: discover/qml/BrowsingPage.qml:63
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Nepavyko įkelti programų"
 
-#: discover/qml/BrowsingPage.qml:89
+#: discover/qml/BrowsingPage.qml:102
 #, fuzzy, kde-format
 #| msgid "Popularity"
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Populiarumas"
 
-#: discover/qml/BrowsingPage.qml:107
+#: discover/qml/BrowsingPage.qml:120
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:121
+#: discover/qml/BrowsingPage.qml:134
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:140 discover/qml/BrowsingPage.qml:169
+#: discover/qml/BrowsingPage.qml:153 discover/qml/BrowsingPage.qml:182
 #, fuzzy, kde-format
 #| msgid "More…"
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Daugiau…"
 
-#: discover/qml/BrowsingPage.qml:150
+#: discover/qml/BrowsingPage.qml:163
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
@@ -1158,53 +1158,53 @@ msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Atnaujinti visus"
 
-#: discover/qml/UpdatesPage.qml:174
+#: discover/qml/UpdatesPage.qml:175
 #, kde-format
 msgid "Ignore"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:220
+#: discover/qml/UpdatesPage.qml:221
 #, kde-format
 msgid "Select All"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:228
+#: discover/qml/UpdatesPage.qml:229
 #, kde-format
 msgid "Select None"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:235
+#: discover/qml/UpdatesPage.qml:236
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:242
+#: discover/qml/UpdatesPage.qml:243
 #, kde-format
 msgid "Total size: %1"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:277
+#: discover/qml/UpdatesPage.qml:278
 #, kde-format
 msgid "Restart Now"
 msgstr "Paleisti iš naujo dabar"
 
-#: discover/qml/UpdatesPage.qml:377
+#: discover/qml/UpdatesPage.qml:378
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:393
+#: discover/qml/UpdatesPage.qml:394
 #, kde-format
 msgid "Installing"
 msgstr "Įdiegiama"
 
-#: discover/qml/UpdatesPage.qml:429
+#: discover/qml/UpdatesPage.qml:430
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgid "Update from:"
 msgstr "Atnaujinti visus"
 
-#: discover/qml/UpdatesPage.qml:441
+#: discover/qml/UpdatesPage.qml:442
 #, fuzzy, kde-format
 #| msgid "%1 (%2%)\n"
 msgctxt ""
@@ -1213,43 +1213,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2%)\n"
 
-#: discover/qml/UpdatesPage.qml:448
+#: discover/qml/UpdatesPage.qml:449
 #, kde-format
 msgid "More Information…"
 msgstr "Daugiau informacijos…"
 
-#: discover/qml/UpdatesPage.qml:476
+#: discover/qml/UpdatesPage.qml:477
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Gaunami atnaujinimai…"
 
-#: discover/qml/UpdatesPage.qml:489
+#: discover/qml/UpdatesPage.qml:490
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Atnaujinimai"
 
-#: discover/qml/UpdatesPage.qml:498
+#: discover/qml/UpdatesPage.qml:499
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:510 discover/qml/UpdatesPage.qml:517
-#: discover/qml/UpdatesPage.qml:524
+#: discover/qml/UpdatesPage.qml:511 discover/qml/UpdatesPage.qml:518
+#: discover/qml/UpdatesPage.qml:525
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Atnaujinta"
 
-#: discover/qml/UpdatesPage.qml:531
+#: discover/qml/UpdatesPage.qml:532
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Turėtų būti tikrinama ar yra atnaujinimų"
 
-#: discover/qml/UpdatesPage.qml:538
+#: discover/qml/UpdatesPage.qml:539
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
