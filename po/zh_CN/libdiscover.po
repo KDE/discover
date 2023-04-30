@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-20 03:00+0000\n"
-"PO-Revision-Date: 2023-04-16 12:34\n"
+"PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -950,7 +950,7 @@ msgstr "删除设置和用户数据"
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr "%1 的的权限"
+msgstr "%1 的权限"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2306,7 +2306,7 @@ msgstr "配置权限…"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
 msgid "Permissions for %1"
-msgstr "%1 的的权限"
+msgstr "%1 的权限"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format

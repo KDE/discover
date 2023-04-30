@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-18 02:47+0000\n"
+"POT-Creation-Date: 2023-04-30 04:15+0000\n"
 "PO-Revision-Date: 2023-02-01 10:11+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -276,7 +276,7 @@ msgstr "Afegeix"
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:257
 #: discover/qml/InstallApplicationButton.qml:41
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:179
-#: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:39
+#: discover/qml/UpdatesPage.qml:254 discover/qml/WebflowDialog.qml:39
 #, kde-format
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -658,36 +658,36 @@ msgstr ""
 msgid "Still looking…"
 msgstr "Encara s'està cercant…"
 
-#: discover/qml/BrowsingPage.qml:49
+#: discover/qml/BrowsingPage.qml:62
 #, kde-format
 msgid "Unable to load applications"
 msgstr "No es poden carregar les aplicacions"
 
-#: discover/qml/BrowsingPage.qml:88
+#: discover/qml/BrowsingPage.qml:101
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Més popular"
 
-#: discover/qml/BrowsingPage.qml:106
+#: discover/qml/BrowsingPage.qml:119
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Selecció de l'editor"
 
-#: discover/qml/BrowsingPage.qml:120
+#: discover/qml/BrowsingPage.qml:133
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Jocs amb la puntuació més alta"
 
-#: discover/qml/BrowsingPage.qml:139 discover/qml/BrowsingPage.qml:168
+#: discover/qml/BrowsingPage.qml:152 discover/qml/BrowsingPage.qml:181
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Vegeu-ne més"
 
-#: discover/qml/BrowsingPage.qml:149
+#: discover/qml/BrowsingPage.qml:162
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
@@ -1128,52 +1128,52 @@ msgstr "Actualitza els seleccionats"
 msgid "Update All"
 msgstr "Actualitza-ho tot"
 
-#: discover/qml/UpdatesPage.qml:174
+#: discover/qml/UpdatesPage.qml:175
 #, kde-format
 msgid "Ignore"
 msgstr "Ignora"
 
-#: discover/qml/UpdatesPage.qml:220
+#: discover/qml/UpdatesPage.qml:221
 #, kde-format
 msgid "Select All"
 msgstr "Selecciona-ho tot"
 
-#: discover/qml/UpdatesPage.qml:228
+#: discover/qml/UpdatesPage.qml:229
 #, kde-format
 msgid "Select None"
 msgstr "No seleccionis res"
 
-#: discover/qml/UpdatesPage.qml:235
+#: discover/qml/UpdatesPage.qml:236
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "Reinicia automàticament després de completar l'actualització"
 
-#: discover/qml/UpdatesPage.qml:242
+#: discover/qml/UpdatesPage.qml:243
 #, kde-format
 msgid "Total size: %1"
 msgstr "Mida total: %1"
 
-#: discover/qml/UpdatesPage.qml:278
+#: discover/qml/UpdatesPage.qml:279
 #, kde-format
 msgid "Restart Now"
 msgstr "Reinicia ara"
 
-#: discover/qml/UpdatesPage.qml:378
+#: discover/qml/UpdatesPage.qml:379
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:394
+#: discover/qml/UpdatesPage.qml:395
 #, kde-format
 msgid "Installing"
 msgstr "S'està instal·lant"
 
-#: discover/qml/UpdatesPage.qml:429
+#: discover/qml/UpdatesPage.qml:430
 #, kde-format
 msgid "Update from:"
 msgstr "Actualitza des de:"
 
-#: discover/qml/UpdatesPage.qml:441
+#: discover/qml/UpdatesPage.qml:442
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1181,43 +1181,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:448
+#: discover/qml/UpdatesPage.qml:449
 #, kde-format
 msgid "More Information…"
 msgstr "Més informació…"
 
-#: discover/qml/UpdatesPage.qml:476
+#: discover/qml/UpdatesPage.qml:477
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "S'estan recuperant les actualitzacions…"
 
-#: discover/qml/UpdatesPage.qml:489
+#: discover/qml/UpdatesPage.qml:490
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Actualitzacions"
 
-#: discover/qml/UpdatesPage.qml:499
+#: discover/qml/UpdatesPage.qml:500
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Cal reiniciar el sistema per a completar el procés d'actualització"
 
-#: discover/qml/UpdatesPage.qml:511 discover/qml/UpdatesPage.qml:518
-#: discover/qml/UpdatesPage.qml:525
+#: discover/qml/UpdatesPage.qml:512 discover/qml/UpdatesPage.qml:519
+#: discover/qml/UpdatesPage.qml:526
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Última versió"
 
-#: discover/qml/UpdatesPage.qml:532
+#: discover/qml/UpdatesPage.qml:533
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Cal comprovar si hi ha actualitzacions"
 
-#: discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:540
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
