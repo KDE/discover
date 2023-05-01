@@ -35,7 +35,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
     // able to cancel a running transaction.
     if (interface == nullptr) {
         qWarning() << "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug.";
-        passiveMessage("rpm-ostree-backend: Error: No DBus interface provided. Please file a bug.");
+        passiveMessage(i18n("rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."));
         setStatus(Status::CancelledStatus);
         return;
     }
@@ -53,7 +53,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
         } else {
             // Should never happen
             qWarning() << "rpm-ostree-backend: Error: Can not start a transaction for resource with an invalid format. Please file a bug.";
-            passiveMessage("rpm-ostree-backend: Error: Can not start a transaction for resource with an invalid format. Please file a bug.");
+            passiveMessage(i18n("rpm-ostree-backend: Error: Can not start a transaction for resource with an invalid format. Please file a bug."));
             setStatus(Status::CancelledStatus);
             return;
         }
@@ -73,7 +73,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
         // This should never happen
         if (arg.isEmpty()) {
             qWarning() << "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug.";
-            passiveMessage("rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug.");
+            passiveMessage(i18n("rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."));
             setStatus(Status::CancelledStatus);
             return;
         }
@@ -91,7 +91,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
     default:
         // This should never happen
         qWarning() << "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.";
-        passiveMessage("rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.");
+        passiveMessage(i18n("rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."));
         setStatus(Status::CancelledStatus);
         return;
     }
@@ -104,14 +104,14 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
     // Store stderr output for later
     connect(m_process, &QProcess::readyReadStandardError, [this]() {
         QByteArray message = m_process->readAllStandardError();
-        qWarning() << (m_prog + " (error):") << message;
+        qWarning() << m_prog << QLatin1String("(error):") << message;
         m_stderr += message;
     });
 
     // Store stdout output for later and process it to fake progress
     connect(m_process, &QProcess::readyReadStandardOutput, [this]() {
         QByteArray message = m_process->readAllStandardOutput();
-        qInfo() << (m_prog + ":") << message;
+        qInfo() << (m_prog + QStringLiteral(":")) << message;
         m_stdout += message;
         fakeProgress(message);
     });
@@ -188,7 +188,7 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
         if (m_resource->isClassic()) {
             // Look for new version in rpm-ostree stdout
             QString newVersion, line;
-            QString output = QString(m_stdout);
+            QString output = QString::fromUtf8(m_stdout);
             QTextStream stream(&output);
             while (stream.readLineInto(&line)) {
                 if (line.contains(QLatin1String("Version: "))) {
@@ -213,7 +213,7 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
             }
 
             // Get the version stored in .Labels.version
-            const QString newVersion = jsonDocument.object().value("Labels").toObject().value("version").toString();
+            const QString newVersion = jsonDocument.object().value(QLatin1String("Labels")).toObject().value(QLatin1String("version")).toString();
             if (newVersion.isEmpty()) {
                 qInfo() << "rpm-ostree-backend: Could not get the version from the container labels";
                 return;
@@ -230,7 +230,7 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
         } else {
             // Should never happen
             qWarning() << "rpm-ostree-backend: Error: Unknown resource format. Please file a bug.";
-            passiveMessage("rpm-ostree-backend: Error: Unknown resource format. Please file a bug.");
+            passiveMessage(i18n("rpm-ostree-backend: Error: Unknown resource format. Please file a bug."));
         }
 
         // Always tell the backend to look for a new major version
@@ -256,7 +256,7 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
     default:
         // This should never happen
         qWarning() << "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.";
-        passiveMessage("rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.");
+        passiveMessage(i18n("rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."));
     }
     setStatus(Status::DoneStatus);
 }
@@ -302,43 +302,43 @@ void RpmOstreeTransaction::setupExternalTransaction()
 
 void RpmOstreeTransaction::fakeProgress(const QByteArray &msg)
 {
-    QString message = QString(msg);
+    QString message = QString::fromUtf8(msg);
     int progress = this->progress();
     if (message.contains("Receiving metadata objects")) {
         progress += 10;
-    } else if (message.contains("Checking out tree")) {
+    } else if (message.contains(QLatin1String("Checking out tree"))) {
         progress += 5;
-    } else if (message.contains("Enabled rpm-md repositories:")) {
+    } else if (message.contains(QLatin1String("Enabled rpm-md repositories:"))) {
         progress += 1;
-    } else if (message.contains("Updating metadata for")) {
+    } else if (message.contains(QLatin1String("Updating metadata for"))) {
         progress += 1;
-    } else if (message.contains("rpm-md repo")) {
+    } else if (message.contains(QLatin1String("rpm-md repo"))) {
         progress += 1;
-    } else if (message.contains("Resolving dependencies")) {
+    } else if (message.contains(QLatin1String("Resolving dependencies"))) {
         progress += 5;
-    } else if (message.contains("Applying") && (message.contains("overrides") || message.contains("overlays"))) {
+    } else if (message.contains(QLatin1String("Applying")) && (message.contains(QLatin1String("overrides")) || message.contains(QLatin1String("overlays")))) {
         progress += 5;
         setStatus(Status::CommittingStatus);
-    } else if (message.contains("Processing packages")) {
+    } else if (message.contains(QLatin1String("Processing packages"))) {
         progress += 5;
-    } else if (message.contains("Running pre scripts")) {
+    } else if (message.contains(QLatin1String("Running pre scripts"))) {
         progress += 5;
-    } else if (message.contains("Running post scripts")) {
+    } else if (message.contains(QLatin1String("Running post scripts"))) {
         progress += 5;
-    } else if (message.contains("Running posttrans scripts")) {
+    } else if (message.contains(QLatin1String("Running posttrans scripts"))) {
         progress += 5;
-    } else if (message.contains("Writing rpmdb")) {
+    } else if (message.contains(QLatin1String("Writing rpmdb"))) {
         progress += 5;
-    } else if (message.contains("Generating initramfs")) {
+    } else if (message.contains(QLatin1String("Generating initramfs"))) {
         progress += 10;
-    } else if (message.contains("Writing OSTree commit")) {
+    } else if (message.contains(QLatin1String("Writing OSTree commit"))) {
         progress += 10;
         setCancellable(false);
-    } else if (message.contains("Staging deployment")) {
+    } else if (message.contains(QLatin1String("Staging deployment"))) {
         progress += 5;
-    } else if (message.contains("Freed")) {
+    } else if (message.contains(QLatin1String("Freed"))) {
         progress += 1;
-    } else if (message.contains("Upgraded")) {
+    } else if (message.contains(QLatin1String("Upgraded"))) {
         progress = 99;
     } else {
         progress += 1;

@@ -31,27 +31,27 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
 #endif
 
     // Get as much as possible from rpm-ostree
-    m_osname = map.value(QStringLiteral("osname")).toString();
+    m_osname = map.value(QLatin1String("osname")).toString();
 
     // Look for the base-checksum first. This is the case where we have changes layered
-    m_checksum = map.value(QStringLiteral("base-checksum")).toString();
+    m_checksum = map.value(QLatin1String("base-checksum")).toString();
     if (m_checksum.isEmpty()) {
         // If empty, look for the regular checksum (no layered changes)
-        m_checksum = map.value(QStringLiteral("checksum")).toString();
+        m_checksum = map.value(QLatin1String("checksum")).toString();
     }
 
     // Look for the base-version first. This is the case where we have changes layered
-    m_version = map.value(QStringLiteral("base-version")).toString();
+    m_version = map.value(QLatin1String("base-version")).toString();
     if (m_version.isEmpty()) {
         // If empty, look for the regular version (no layered changes)
-        m_version = map.value(QStringLiteral("version")).toString();
+        m_version = map.value(QLatin1String("version")).toString();
     }
 
     // Look for the base-timestamp first. This is the case where we have changes layered
-    auto timestamp = map.value(QStringLiteral("base-timestamp")).toULongLong();
+    auto timestamp = map.value(QLatin1String("base-timestamp")).toULongLong();
     if (timestamp == 0) {
         // If "empty", look for the regular timestamp (no layered changes)
-        timestamp = map.value(QStringLiteral("timestamp")).toULongLong();
+        timestamp = map.value(QLatin1String("timestamp")).toULongLong();
     }
     if (timestamp == 0) {
         // If it's still empty, set an "empty" date
@@ -61,9 +61,9 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
         m_timestamp = QDateTime::fromSecsSinceEpoch(timestamp).date();
     }
 
-    m_pinned = map.value(QStringLiteral("pinned")).toBool();
-    m_pending = map.value(QStringLiteral("staged")).toBool();
-    m_booted = map.value(QStringLiteral("booted")).toBool();
+    m_pinned = map.value(QLatin1String("pinned")).toBool();
+    m_pending = map.value(QLatin1String("staged")).toBool();
+    m_booted = map.value(QLatin1String("booted")).toBool();
 
     if (m_booted) {
         // We can directly read the pretty name & variant from os-release
@@ -78,7 +78,7 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     }
 
     // Look for "classic" ostree origin format first
-    QString origin = map.value(QStringLiteral("origin")).toString();
+    QString origin = map.value(QLatin1String("origin")).toString();
     if (!origin.isEmpty()) {
         m_ostreeFormat.reset(new OstreeFormat(OstreeFormat::Format::Classic, origin));
         if (!m_ostreeFormat->isValid()) {
@@ -87,7 +87,7 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
         }
     } else {
         // Then look for OCI container format
-        origin = map.value(QStringLiteral("container-image-reference")).toString();
+        origin = map.value(QLatin1String("container-image-reference")).toString();
         if (!origin.isEmpty()) {
             m_ostreeFormat.reset(new OstreeFormat(OstreeFormat::Format::OCI, origin));
             if (!m_ostreeFormat->isValid()) {
@@ -107,23 +107,23 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     // Example: ostree.quay.io-fedora-ostree-desktops-kinoite.abcd1234567890
     // https://freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-id-generic
     if (m_ostreeFormat->isClassic()) {
-        m_appstreamid = m_ostreeFormat->remote() + "." + m_ostreeFormat->ref();
+        m_appstreamid = m_ostreeFormat->remote() + QLatin1String(".") + m_ostreeFormat->ref();
     } else if (m_ostreeFormat->isOCI()) {
-        m_appstreamid = m_ostreeFormat->repo() + "." + m_ostreeFormat->tag();
+        m_appstreamid = m_ostreeFormat->repo() + QLatin1String(".") + m_ostreeFormat->tag();
     } else {
-        m_appstreamid = QStringLiteral("");
+        m_appstreamid = QString();
     }
-    m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-') + '.' + m_checksum;
+    m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-') + QLatin1String(".") + m_checksum;
 #ifdef QT_DEBUG
     qInfo() << "rpm-ostree-backend: Found deployment:" << m_appstreamid;
 #endif
 
     // Replaced & added packages
-    m_requested_base_local_replacements = map.value(QStringLiteral("requested-base-local-replacements")).toStringList();
-    m_requested_base_removals = map.value(QStringLiteral("requested-base-removals")).toStringList();
-    m_requested_local_packages = map.value(QStringLiteral("requested-local-packages")).toStringList();
-    m_requested_modules = map.value(QStringLiteral("requested-modules")).toStringList();
-    m_requested_packages = map.value(QStringLiteral("requested-packages")).toStringList();
+    m_requested_base_local_replacements = map.value(QLatin1String("requested-base-local-replacements")).toStringList();
+    m_requested_base_removals = map.value(QLatin1String("requested-base-removals")).toStringList();
+    m_requested_local_packages = map.value(QLatin1String("requested-local-packages")).toStringList();
+    m_requested_modules = map.value(QLatin1String("requested-modules")).toStringList();
+    m_requested_packages = map.value(QLatin1String("requested-packages")).toStringList();
     m_requested_base_local_replacements.sort();
     m_requested_base_removals.sort();
     m_requested_local_packages.sort();
@@ -146,7 +146,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
         // If we are using the latest tag then it means that we are not following a specific
         // major release and thus we don't need to rebase: it will automatically happen once
         // the latest tag points to a version build with the new major release.
-        if (m_ostreeFormat->tag() == QStringLiteral("latest")) {
+        if (m_ostreeFormat->tag() == QLatin1String("latest")) {
             return false;
         }
 
@@ -289,7 +289,7 @@ QUrl RpmOstreeResource::bugURL()
 
 QJsonArray RpmOstreeResource::licenses()
 {
-    if (m_osname == QStringLiteral("fedora")) {
+    if (m_osname == QLatin1String("fedora")) {
         return {QJsonObject{{QStringLiteral("name"), i18n("GPL and other licenses")},
                             {QStringLiteral("url"), QStringLiteral("https://fedoraproject.org/wiki/Legal:Licenses")}}};
     }
@@ -335,7 +335,7 @@ QString RpmOstreeResource::longDescription()
         QTextStream(&desc) << "</ul>\n";
     }
     if (m_pinned) {
-        desc += "<br/>This version is pinned and won't be automatically removed on updates.";
+        desc += QStringLiteral("<br/>This version is pinned and won't be automatically removed on updates.");
     }
     return desc;
 }
@@ -348,7 +348,7 @@ QString RpmOstreeResource::name() const
 QString RpmOstreeResource::origin() const
 {
     if (m_ostreeFormat->isClassic()) {
-        if (m_ostreeFormat->remote() == QStringLiteral("fedora")) {
+        if (m_ostreeFormat->remote() == QLatin1String("fedora")) {
             return QStringLiteral("Fedora Project");
         } else {
             return m_ostreeFormat->remote();
@@ -361,7 +361,7 @@ QString RpmOstreeResource::origin() const
 
 QString RpmOstreeResource::packageName() const
 {
-    if (m_osname == QStringLiteral("fedora")) {
+    if (m_osname == QLatin1String("fedora")) {
         return QStringLiteral("Fedora Kinoite");
     }
     return m_osname;
@@ -379,7 +379,7 @@ AbstractResource::State RpmOstreeResource::state()
 
 QString RpmOstreeResource::author() const
 {
-    if (m_osname == QStringLiteral("fedora")) {
+    if (m_osname == QLatin1String("fedora")) {
         return QStringLiteral("Fedora Project");
     }
     return i18n("Unknown");
@@ -478,7 +478,7 @@ bool RpmOstreeResource::isOCI()
 QString RpmOstreeResource::OCIUrl()
 {
     if (m_ostreeFormat->isValid() && m_ostreeFormat->isOCI()) {
-        return QLatin1String("docker://") + m_ostreeFormat->repo() + ':' + m_ostreeFormat->tag();
+        return QLatin1String("docker://") + m_ostreeFormat->repo() + QLatin1String(":") + m_ostreeFormat->tag();
         ;
     }
     // Should never happen

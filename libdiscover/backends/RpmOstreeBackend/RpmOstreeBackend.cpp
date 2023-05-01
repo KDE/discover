@@ -118,7 +118,7 @@ void RpmOstreeBackend::initializeBackend()
     // Register ourselves as update driver
     if (!m_registrered) {
         QVariantMap options;
-        options["id"] = QVariant{QStringLiteral("discover")};
+        options[QLatin1String("id")] = QVariant{QStringLiteral("discover")};
         auto reply = m_interface->RegisterClient(options);
         QDBusPendingCallWatcher *callWatcher = new QDBusPendingCallWatcher(reply, this);
         connect(callWatcher, &QDBusPendingCallWatcher::finished, [this, callWatcher]() {
@@ -310,8 +310,8 @@ void RpmOstreeBackend::lookForNextMajorVersion()
     // Get the DistroComponentId. For Fedora Kinoite, we follow Fedora's
     // release schedule so we don't have our own ID.
     QString distroId = AppStream::Utils::currentDistroComponentId();
-    if (distroId == "org.fedoraproject.kinoite.fedora") {
-        distroId = "org.fedoraproject.fedora";
+    if (distroId == QLatin1String("org.fedoraproject.kinoite.fedora")) {
+        distroId = QStringLiteral("org.fedoraproject.fedora");
     }
 
     // Look at releases to see if we have a new major version available.

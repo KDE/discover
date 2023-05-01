@@ -17,7 +17,7 @@
 
 RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
     : BackendNotifierModule(parent)
-    , m_version("")
+    , m_version(QString())
     , m_hasUpdates(false)
     , m_needsReboot(false)
 {
@@ -86,19 +86,19 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
             qWarning() << "rpm-ostree-notifier: Could not parse 'rpm-ostree status' output as JSON";
             return;
         }
-        const QJsonArray deployments = jsonDocument.object().value("deployments").toArray();
+        const QJsonArray deployments = jsonDocument.object().value(QLatin1String("deployments")).toArray();
         if (deployments.isEmpty()) {
             qWarning() << "rpm-ostree-notifier: Could not find the deployments in 'rpm-ostree status' JSON output";
             return;
         }
         bool booted;
         for (const QJsonValue &deployment : deployments) {
-            booted = deployment.toObject()["booted"].toBool();
+            booted = deployment.toObject()[QLatin1String("booted")].toBool();
             if (!booted) {
                 continue;
             }
             // Look for "classic" ostree origin format first
-            QString origin = deployment.toObject()["origin"].toString();
+            QString origin = deployment.toObject()[QLatin1String("origin")].toString();
             if (!origin.isEmpty()) {
                 m_ostreeFormat.reset(new ::OstreeFormat(::OstreeFormat::Format::Classic, origin));
                 if (!m_ostreeFormat->isValid()) {
@@ -107,7 +107,7 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
                 }
             } else {
                 // Then look for OCI container format
-                origin = deployment.toObject()["container-image-reference"].toString();
+                origin = deployment.toObject()[QLatin1String("container-image-reference")].toString();
                 if (!origin.isEmpty()) {
                     m_ostreeFormat.reset(new ::OstreeFormat(::OstreeFormat::Format::OCI, origin));
                     if (!m_ostreeFormat->isValid()) {
@@ -121,10 +121,10 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
                 }
             }
             // Look for the base-version first. This is the case where we have changes layered
-            m_version = deployment.toObject()["base-version"].toString();
+            m_version = deployment.toObject()[QLatin1String("base-version")].toString();
             if (m_version.isEmpty()) {
                 // If empty, look for the regular version (no layered changes)
-                m_version = deployment.toObject()["version"].toString();
+                m_version = deployment.toObject()[QLatin1String("version")].toString();
             }
         }
     });
@@ -269,7 +269,7 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
         }
 
         // Get the version stored in .Labels.version
-        const QString newVersion = jsonDocument.object().value("Labels").toObject().value("version").toString();
+        const QString newVersion = jsonDocument.object().value(QLatin1String("Labels")).toObject().value(QLatin1String("version")).toString();
         if (newVersion.isEmpty()) {
             qInfo() << "rpm-ostree-notifier: Could not get the version from the container labels";
             return;
@@ -293,7 +293,8 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
         checkForPendingDeployment();
     });
 
-    m_process->start(QStringLiteral("skopeo"), {QStringLiteral("inspect"), "docker://" + m_ostreeFormat->repo() + ":" + m_ostreeFormat->tag()});
+    m_process->start(QStringLiteral("skopeo"),
+                     {QStringLiteral("inspect"), QStringLiteral("docker://") + m_ostreeFormat->repo() + QStringLiteral(":") + m_ostreeFormat->tag()});
 }
 
 void RpmOstreeNotifier::checkForPendingDeployment()
@@ -335,16 +336,16 @@ void RpmOstreeNotifier::checkForPendingDeployment()
             qWarning() << "rpm-ostree-notifier: Could not parse 'rpm-ostree status' output as JSON";
             return;
         }
-        const QJsonArray deployments = jsonDocument.object().value("deployments").toArray();
+        const QJsonArray deployments = jsonDocument.object().value(QLatin1String("deployments")).toArray();
         if (deployments.isEmpty()) {
             qWarning() << "rpm-ostree-notifier: Could not find the deployments in 'rpm-ostree status' JSON output";
             return;
         }
         QString version;
         for (const QJsonValue &deployment : deployments) {
-            version = deployment.toObject()["base-version"].toString();
+            version = deployment.toObject()[QLatin1String("base-version")].toString();
             if (version.isEmpty()) {
-                version = deployment.toObject()["version"].toString();
+                version = deployment.toObject()[QLatin1String("version")].toString();
             }
             if (version.isEmpty()) {
                 qInfo() << "rpm-ostree-notifier: Could not read version for deployment:" << deployment;

@@ -35,7 +35,7 @@ OstreeFormat::OstreeFormat(Format format, const QString &source)
             // Unknown or invalid format
             return;
         }
-        if (split_ref[0] != QStringLiteral("ostree-unverified-registry")) {
+        if (split_ref[0] != QLatin1String("ostree-unverified-registry")) {
             // Unknown or invalid format
             return;
         }
