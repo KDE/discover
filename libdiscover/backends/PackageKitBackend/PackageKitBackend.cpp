@@ -986,6 +986,7 @@ void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
             m_updater->setDistroUpgrade(release);
             getUpdatesFinished(e, x);
         });
+        Q_EMIT inlineMessageChanged({});
     });
 
     info = i18n("A new major version has been released");
