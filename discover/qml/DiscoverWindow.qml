@@ -166,6 +166,9 @@ Kirigami.ApplicationWindow {
     Connections {
         target: ResourcesModel
 
+        function onSwitchToUpdates() {
+            window.currentTopLevel = topUpdateComp
+        }
         function onPassiveMessage(message) {
             messagesSheet.addMessage(message);
         }

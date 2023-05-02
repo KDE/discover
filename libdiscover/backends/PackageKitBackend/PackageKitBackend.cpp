@@ -45,6 +45,7 @@
 #include "libdiscover_backend_debug.h"
 #include "utils.h"
 #include <Category/Category.h>
+#include <resources/ResourcesModel.h>
 
 DISCOVER_BACKEND_PLUGIN(PackageKitBackend)
 
@@ -987,6 +988,7 @@ void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
             getUpdatesFinished(e, x);
         });
         Q_EMIT inlineMessageChanged({});
+        ResourcesModel::global()->switchToUpdates();
     });
 
     info = i18n("A new major version has been released");

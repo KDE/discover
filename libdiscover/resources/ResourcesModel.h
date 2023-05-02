@@ -143,6 +143,7 @@ Q_SIGNALS:
     void currentApplicationBackendChanged(AbstractResourcesBackend *currentApplicationBackend);
     void fetchingUpdatesProgressChanged(int fetchingUpdatesProgress);
     void inlineMessageChanged(const QSharedPointer<InlineMessage> &inlineMessage);
+    void switchToUpdates();
 
 private Q_SLOTS:
     void callerFetchingChanged();
