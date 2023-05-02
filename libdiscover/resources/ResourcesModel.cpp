@@ -430,6 +430,11 @@ QString ResourcesModel::applicationSourceName() const
     return settings.readEntry<QString>("currentApplicationBackend", QStringLiteral("packagekit-backend"));
 }
 
+QString ResourcesModel::distroName() const
+{
+    return KOSRelease().name();
+}
+
 QUrl ResourcesModel::distroBugReportUrl()
 {
     return QUrl(KOSRelease().bugReportUrl());

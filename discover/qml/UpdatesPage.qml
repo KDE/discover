@@ -77,12 +77,7 @@ DiscoverPage {
                 id: nerdyDetailsComponent
 
                 ColumnLayout {
-                    Label {
-                        Layout.fillWidth: true
-                        Layout.maximumWidth: Math.round(page.width * 0.75)
-                        text: i18n("If you would like to report the update issue to your distribution's packagers, include this information:")
-                        wrapMode: Text.WordWrap
-                    }
+                    spacing: Kirigami.Units.smallSpacing
 
                     TextArea {
                         Layout.fillWidth: true
@@ -91,20 +86,31 @@ DiscoverPage {
                         wrapMode: Text.WordWrap
                     }
 
+                    Label {
+                        Layout.fillWidth: true
+                        Layout.maximumWidth: Math.round(page.width*0.75)
+                        Layout.topMargin: Kirigami.Units.largeSpacing
+                        Layout.bottomMargin: Kirigami.Units.largeSpacing
+                        text: i18nc("@info %1 is the name of the user's distro/OS", "If the error indicated above looks like a real issue and not a temporary network error, please report it to %1, not KDE.", ResourcesModel.distroName)
+                        wrapMode: Text.WordWrap
+                    }
+
                     RowLayout {
-                        Layout.alignment: Qt.AlignRight
+                        Layout.fillWidth: true
 
                         Button {
-                            text: i18n("Copy to Clipboard")
+                            text: i18n("Copy Text")
                             icon.name: "edit-copy"
                             onClicked: {
                                 app.copyTextToClipboard(sheet.errorMessage);
-                                window.showPassiveNotification(i18n("Error message copied to clipboard"));
+                                window.showPassiveNotification(i18nc("@info %1 is the name of the user's distro/OS", "Error message copied. Remember to report it to %1, not KDE!", ResourcesModel.distroName));
                             }
                         }
 
+                        Item { Layout.fillWidth: true}
+
                         Button {
-                            text: i18n("Report This Issue")
+                            text: i18nc("@action:button %1 is the name of the user's distro/OS", "Report Issue to %1", ResourcesModel.distroName)
                             icon.name: "tools-report-bug"
                             onClicked: {
                                 Qt.openUrlExternally(ResourcesModel.distroBugReportUrl())

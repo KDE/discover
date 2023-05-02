@@ -80,6 +80,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_PROPERTY(int fetchingUpdatesProgress READ fetchingUpdatesProgress NOTIFY fetchingUpdatesProgressChanged)
     Q_PROPERTY(QString applicationSourceName READ applicationSourceName NOTIFY currentApplicationBackendChanged)
     Q_PROPERTY(InlineMessage *inlineMessage READ inlineMessage NOTIFY inlineMessageChanged)
+    Q_PROPERTY(QString distroName READ distroName CONSTANT)
 public:
     /** This constructor should be only used by unit tests.
      *  @p backendName defines what backend will be loaded when the backend is constructed.
@@ -118,6 +119,7 @@ public:
         return m_fetchingUpdatesProgress.m_value;
     }
 
+    QString distroName() const;
     Q_INVOKABLE QUrl distroBugReportUrl();
 
     void setInlineMessage(const QSharedPointer<InlineMessage> &inlineMessage);
