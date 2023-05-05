@@ -65,6 +65,7 @@ Actions=Updates;
 SingleMainWindow=true
 GenericName=Software Center
 GenericName[ar]=مركز البرمجيّات
+GenericName[ast]=Centru de software
 GenericName[az]=Proqram Təminatı Mərkəzi
 GenericName[be]=Цэнтр праграмнага забеспячэння
 GenericName[bg]=Софтуерен център
