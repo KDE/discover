@@ -565,7 +565,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
                 Q_EMIT distroErrorMessage(msg);
             } else {
                 Q_EMIT proceedRequest(
-                    i18n("Packages to remove"),
+                    i18n("Confirm Changes"),
                     i18n("The following packages will be removed by the update:<ul><li>%1</li></ul><br/>in order to install:<ul><li>%2</li></ul>",
                          PackageKitResource::joinPackages(toremove, QStringLiteral("</li><li>"), {}),
                          PackageKitResource::joinPackages(toinstall, QStringLiteral("</li><li>"), {})));
