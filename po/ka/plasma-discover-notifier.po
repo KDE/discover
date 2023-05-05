@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 02:43+0000\n"
-"PO-Revision-Date: 2022-08-27 04:10+0200\n"
+"PO-Revision-Date: 2023-05-04 06:05+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: notifier/DiscoverNotifier.cpp:154
 #, kde-format
@@ -26,7 +26,7 @@ msgstr "განახლებების ნახვა"
 #: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Security updates available"
-msgstr "ხელმისაწვდომია უსაფრთოხების განახლებები"
+msgstr "ხელმისაწვდომია უსაფრთხოების განახლებები"
 
 #: notifier/DiscoverNotifier.cpp:273
 #, kde-format
