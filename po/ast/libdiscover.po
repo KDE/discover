@@ -1,45 +1,41 @@
-# translation of libmuon.po to Slovak
-# Richard Fric <Richard.Fric@kdemail.net>, 2010.
-# Milan Basa <minkob@mail.t-com.sk>, 2011.
-# Roman Paholík <wizzardsk@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2019, 2021.
-# Mthw <jari_45@hotmail.com>, 2018, 2019.
-# Matej Mrenica <matejm98mthw@gmail.com>, 2019, 2020, 2021, 2022.
-# Dusan Kazik <prescott66@gmail.com>, 2020.
-# Ferdinand Galko <galko.ferdinand@gmail.com>, 2023.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the discover package.
+#
+# Enol P. <enolp@softastur.org>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: libmuon\n"
+"Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-05 02:14+0000\n"
-"PO-Revision-Date: 2023-03-15 19:07+0100\n"
-"Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
-"Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
-"Language: sk\n"
+"PO-Revision-Date: 2023-05-03 23:24+0200\n"
+"Last-Translator: Enol P. <enolp@softastur.org>\n"
+"Language-Team: \n"
+"Language: ast_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Matej Mrenica,Dušan Kazik"
+msgstr "Softastur"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "matejm98mthw@gmail.com,prescott66@gmail.com"
+msgstr "alministradores@softastur.org"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:91
 #, kde-format
 msgid "Proprietary"
-msgstr "Uzavreté"
+msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:93
 #, kde-format
 msgid "Public Domain"
-msgstr "Voľne šíriteľné dielo"
+msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
@@ -50,7 +46,7 @@ msgstr "Voľne šíriteľné dielo"
 #: libdiscover/UpdateModel/UpdateModel.cpp:329
 #, kde-format
 msgid "Unknown"
-msgstr "Neznáme"
+msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:173
 #, kde-format
@@ -58,7 +54,7 @@ msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr "Všetky vekové kategórie"
+msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:176
 #, kde-format
@@ -67,7 +63,7 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr "Mierne nevhodný obsah"
+msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:179
 #, kde-format
@@ -76,7 +72,7 @@ msgctxt ""
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "Stredne nevhodný obsah"
+msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
 #, kde-format
@@ -86,480 +82,480 @@ msgctxt ""
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "Vysoko nevhodný obsah"
+msgstr ""
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:176
 #, kde-format
 msgid "Error while fetching reviews: %1"
-msgstr "Chyba počas získavania recenzií: %1"
+msgstr ""
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:228
 #, kde-format
 msgid "Error while submitting usefulness: %1"
-msgstr "Chyba počas odosielania užitočnosti: %1"
+msgstr ""
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:285
 #, kde-format
 msgid "Error while submitting review: %1"
-msgstr "Chyba počas odosielania recenzie: %1"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
 msgctxt "Category"
 msgid "Dummy Category"
-msgstr "Prázdna kategória"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
 #, kde-format
 msgctxt "Category"
 msgid "dummy"
-msgstr "dummy"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
 #, kde-format
 msgctxt "Category"
 msgid "dummy addons"
-msgstr "prázdne doplnky"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
-msgstr "dummy 1"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
-msgstr "dummy s niečím"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
-msgstr "dummy 2.1"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
-msgstr "dummy s ešte niečím"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
-msgstr "dummy 3"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"
-msgstr "dummy 4"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
 #, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Všetky aplikácie"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
 msgid "Accessories"
-msgstr "Príslušenstvo"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
 #, kde-format
 msgctxt "Category"
 msgid "Accessibility"
-msgstr "Prístupnosť"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
 #, kde-format
 msgctxt "Category"
 msgid "Developer Tools"
-msgstr "Nástroje pre vývojárov"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
 #, kde-format
 msgctxt "Category"
 msgid "Debugging"
-msgstr "Ladenie"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
 #, kde-format
 msgctxt "Category"
 msgid "Graphic Interface Design"
-msgstr "Návrh grafického rozhrania"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
 #, kde-format
 msgctxt "Category"
 msgid "IDEs"
-msgstr "Integrované vývojové prostredia"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
 #, kde-format
 msgctxt "Category"
 msgid "Localization"
-msgstr "Lokalizácia"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
 #, kde-format
 msgctxt "Category"
 msgid "Profiling"
-msgstr "Profilovanie"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
 #, kde-format
 msgctxt "Category"
 msgid "Web Development"
-msgstr "Vývoj webu"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
 #, kde-format
 msgctxt "Category"
 msgid "Education"
-msgstr "Vzdelávanie"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
 #, kde-format
 msgctxt "Category"
 msgid "Science and Engineering"
-msgstr "Veda a strojárstvo"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
 #, kde-format
 msgctxt "Category"
 msgid "Astronomy"
-msgstr "Astronómia"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
 #, kde-format
 msgctxt "Category"
 msgid "Biology"
-msgstr "Biológia"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
 #, kde-format
 msgctxt "Category"
 msgid "Chemistry"
-msgstr "Chémia"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
 #, kde-format
 msgctxt "Category"
 msgid "Computer Science and Robotics"
-msgstr "Počítačová veda a robotika"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
 #, kde-format
 msgctxt "Category"
 msgid "Electronics"
-msgstr "Elektronika"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
 #, kde-format
 msgctxt "Category"
 msgid "Engineering"
-msgstr "Strojárstvo"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
 #, kde-format
 msgctxt "Category"
 msgid "Geography"
-msgstr "Geografia"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
 #, kde-format
 msgctxt "Category"
 msgid "Geology"
-msgstr "Geológia"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
 #, kde-format
 msgctxt "Category"
 msgid "Mathematics"
-msgstr "Matematika"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
 #, kde-format
 msgctxt "Category"
 msgid "Physics"
-msgstr "Fyzika"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
 #, kde-format
 msgctxt "Category"
 msgid "Games"
-msgstr "Hry"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
 #, kde-format
 msgctxt "Category"
 msgid "Arcade"
-msgstr "Arkády"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
 #, kde-format
 msgctxt "Category"
 msgid "Board Games"
-msgstr "Stolové hry"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
 #, kde-format
 msgctxt "Category"
 msgid "Card Games"
-msgstr "Kartové hry"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
 #, kde-format
 msgctxt "Category"
 msgid "Puzzles"
-msgstr "Hlavolamy"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
 #, kde-format
 msgctxt "Category"
 msgid "Role Playing"
-msgstr "RPG"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
 #, kde-format
 msgctxt "Category"
 msgid "Simulation"
-msgstr "Simulátory"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
 #, kde-format
 msgctxt "Category"
 msgid "Strategy"
-msgstr "Stratégie"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
 #, kde-format
 msgctxt "Category"
 msgid "Sports"
-msgstr "Športovanie"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
 #, kde-format
 msgctxt "Category"
 msgid "Action"
-msgstr "Akcia"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
 #, kde-format
 msgctxt "Category"
 msgid "Emulators"
-msgstr "Emulátory"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
 #, kde-format
 msgctxt "Category"
 msgid "Graphics"
-msgstr "Grafika"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
 #, kde-format
 msgctxt "Category"
 msgid "3D"
-msgstr "3D"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
 #, kde-format
 msgctxt "Category"
 msgid "Drawing"
-msgstr "Kreslenie"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
 #, kde-format
 msgctxt "Category"
 msgid "Painting and Editing"
-msgstr "Maľovanie a úprava"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
 #, kde-format
 msgctxt "Category"
 msgid "Photography"
-msgstr "Fotografovanie"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
 #, kde-format
 msgctxt "Category"
 msgid "Publishing"
-msgstr "Publikovanie"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
 #, kde-format
 msgctxt "Category"
 msgid "Scanning and OCR"
-msgstr "Skenovanie a OCR"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
 #, kde-format
 msgctxt "Category"
 msgid "Viewers"
-msgstr "Prehliadače"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
 #, kde-format
 msgctxt "Category"
 msgid "Internet"
-msgstr "Internet"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
 #, kde-format
 msgctxt "Category"
 msgid "Chat"
-msgstr "Rozhovor"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
 #, kde-format
 msgctxt "Category"
 msgid "File Sharing"
-msgstr "Zdieľanie súborov"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
 #, kde-format
 msgctxt "Category"
 msgid "Mail"
-msgstr "Pošta"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
 #, kde-format
 msgctxt "Category"
 msgid "Web Browsers"
-msgstr "Webové prehliadače"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
 #, kde-format
 msgctxt "Category"
 msgid "Multimedia"
-msgstr "Multimédiá"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
 #, kde-format
 msgctxt "Category"
 msgid "Audio and Video Editors"
-msgstr "Editory zvuku a videa"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
 #, kde-format
 msgctxt "Category"
 msgid "Audio Players"
-msgstr "Hudobné prehrávače"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
 #, kde-format
 msgctxt "Category"
 msgid "Video Players"
-msgstr "Video prehrávače"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
 #, kde-format
 msgctxt "Category"
 msgid "CD and DVD"
-msgstr "CD a DVD"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
 #, kde-format
 msgctxt "Category"
 msgid "Office"
-msgstr "Kancelária"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
 msgid "System Settings"
-msgstr "Systémové nastavenia"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:125
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
-msgstr "%1 (používateľ)"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:709
 #, kde-format
 msgid "Local bundle"
-msgstr "Miestny balík"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1680
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
-msgstr "Neplatné appstream url '%1'"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1784
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "Nepodarilo sa pridať zdroj '%1': %2"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, kde-format
 msgid "There are no Flatpak sources."
-msgstr "Neexistujú žiadne zdroje Flatpak."
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1908
 #, kde-format
 msgid "Failed to load \"%1\" source"
-msgstr "Nepodarilo sa načítať zdroj '%1'"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:347
 #, kde-kuit-format
@@ -569,128 +565,124 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
-"<para>Táto aplikácia pochádza z \"%1\" (hostiteľom je <link>%2</link>). "
-"Ďalší softvér v tomto úložisku bude tiež sprístupnený v Discover, keď bude "
-"aplikácia nainštalovaná.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:442
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:450
 #, kde-format
 msgid "Retrieving size information"
-msgstr "Získavajú sa informácie o veľkosti"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:444
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:452
 #, kde-format
 msgid "Unknown size"
-msgstr "Neznáma veľkosť"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:446
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 to download, %2 on disk"
-msgstr "%1 na prevzatie, %2 na disku"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:454
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 on disk"
-msgstr "%1 na disku"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:508
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "Nepodarilo sa spustiť '%1': %2"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:732
 #, kde-format
 msgid "All Files"
-msgstr "Všetky súbory"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:734
 #, kde-format
 msgid "Home"
-msgstr "Domov"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:736
 #, kde-format
 msgid "Downloads"
-msgstr "Stiahnutia"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:738
 #, kde-format
 msgid "Music"
-msgstr "Hudba"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
 #, kde-format
 msgid "Network Access"
-msgstr "Prístup k sieti"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:796
 #, kde-format
 msgid "Can access the internet"
-msgstr "Má prístup na internet"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
 #, kde-format
 msgid "Session Bus Access"
-msgstr "Prístup k zbernici sedení"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:803
 #, kde-format
 msgid "Access is granted to the entire Session Bus"
-msgstr "Prístup je udelený k celej zbernici sedení"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:808
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
 #, kde-format
 msgid "System Bus Access"
-msgstr "Prístup k systémovej zbernici"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:809
 #, kde-format
 msgid "Access is granted to the entire System Bus"
-msgstr "Prístup je udelený k celej systémovej zbernici"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:814
 #, kde-format
 msgid "Remote Login Access"
-msgstr "Prístup k vzdialenému prihláseniu"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:815
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr ""
-"Môže iniciovať požiadavky na vzdialené prihlásenie pomocou protokolu SSH"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
 #, kde-format
 msgid "Smart Card Access"
-msgstr "Prístup k čipovým kartám"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr "Môže sa pripojiť a komunikovať s čipovými kartami"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:824
 #, kde-format
 msgid "Printer Access"
-msgstr "Prístup k tlačiarňam"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Môže sa pripojiť a komunikovať s tlačiarňami"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "GPG Agent"
-msgstr "Agent GPG"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
 #, kde-format
@@ -698,74 +690,69 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
-"Umožňuje prístup ku kryptografickej službe GPG, ktorá sa všeobecne používa "
-"na podpisovanie a čítanie podpísaných dokumentov."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
 #, kde-format
 msgid "Bluetooth Access"
-msgstr "Prístup k Bluetooth"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:837
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Môže sa pripojiť a komunikovať so zariadeniami Bluetooth"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
 #, kde-format
 msgid "Low-Level System Access"
-msgstr "Prístup k nízkoúrovňovému systému"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:842
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr "Môže vykonávať nízkoúrovňové systémové volania (napr. ptrace)"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
 #, kde-format
 msgid "Device Access"
-msgstr "Prístup k zariadeniam"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:849
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
-"Môže komunikovať so zabudovanými alebo pripojenými hardvérovými zariadeniami "
-"a ovládať ich"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr "Prístup k virtuálnemu stroju založenému na jadre"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:854
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
-"Umožňuje spúšťať iné operačné systémy ako hostí vo virtuálnych strojoch"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:878
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:890
 #, kde-format
 msgid "%1 (read-only)"
-msgstr "%1 (iba na čítanie)"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:881
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:893
 #, kde-format
 msgid "%1 (can create files)"
-msgstr "%1 (môže vytvárať súbory)"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:902
 #, kde-format
 msgid "%1 (read & write) "
-msgstr "%1 (čítať a zapisovať) "
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:911
 #, kde-format
 msgid "Home Folder Access"
-msgstr "Prístup k domovskému priečinku"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
 #, kde-format
@@ -773,8 +760,6 @@ msgid ""
 "Can read, write, and create files in the following locations in your home "
 "folder without asking permission first: %1"
 msgstr ""
-"Môže čítať, zapisovať a vytvárať súbory v nasledujúcich miestach vo vašom "
-"domovskom priečinku bez predchádzajúceho požiadania o povolenie: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:916
 #, kde-format
@@ -782,8 +767,6 @@ msgid ""
 "Can read and write files in the following locations in your home folder "
 "without asking permission first: %1"
 msgstr ""
-"Môže čítať a zapisovať súbory v nasledujúcich miestach vo vašom domovskom "
-"priečinku bez predchádzajúceho požiadania o povolenie: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:918
 #, kde-format
@@ -791,8 +774,6 @@ msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
 msgstr ""
-"Môže čítať súbory v nasledujúcich miestach vo vašom domovskom priečinku bez "
-"predchádzajúceho požiadania o povolenie: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:920
 #, kde-format
@@ -800,13 +781,11 @@ msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
 msgstr ""
-"Môže pristupovať k súborom v nasledujúcich miestach vo vašom domovskom "
-"priečinku bez predchádzajúceho požiadania o povolenie: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
 #, kde-format
 msgid "System Folder Access"
-msgstr "Prístup k systémovému priečinku"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
 #, kde-format
@@ -814,8 +793,6 @@ msgid ""
 "Can read, write, and create system files in the following locations without "
 "asking permission first: %1"
 msgstr ""
-"Môže čítať, zapisovať a vytvárať systémové súbory v nasledujúcich miestach "
-"bez predchádzajúceho požiadania o povolenie: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:930
 #, kde-format
@@ -823,8 +800,6 @@ msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr ""
-"Môže čítať a zapisovať systémové súbory v nasledujúcich miestach bez "
-"predchádzajúceho požiadania o povolenie: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:932
 #, kde-format
@@ -832,8 +807,6 @@ msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr ""
-"Môže čítať systémové súbory v nasledujúcich miestach bez predchádzajúceho "
-"požiadania o povolenie: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
 #, kde-format
@@ -841,8 +814,6 @@ msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr ""
-"Môže pristupovať k systémovým súborom v nasledujúcich miestach bez "
-"predchádzajúceho požiadania o povolenie: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:944
 #, kde-format
@@ -850,8 +821,6 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
-"Môže komunikovať s inými aplikáciami a procesmi v rovnakom sedení plochy "
-"pomocou nasledujúcich komunikačných protokolov: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:956
 #, kde-format
@@ -859,18 +828,16 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr ""
-"Môže komunikovať so všetkými aplikáciami a systémovými službami pomocou "
-"týchto komunikačných protokolov: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
 #, kde-format
 msgid "Add Flathub"
-msgstr "Pridať Flathub"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
 #, kde-format
 msgid "Apply Changes"
-msgstr "Použiť zmeny"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:95
 #, kde-format
@@ -878,8 +845,6 @@ msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
 msgstr ""
-"Zmeny priority zdrojov Flatpak sa musia aplikovať skôr, ako nadobudnú "
-"účinnosť."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:99
 #, kde-format
@@ -887,17 +852,16 @@ msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr ""
-"Umožňuje jednoduchú inštaláciu aplikácií uvedených na https:// flathub.org"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:165
 #, kde-format
 msgid "Could not add the source %1"
-msgstr "Nepodarilo sa pridať zdroj %1"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:281
 #, kde-format
 msgid "Removing '%1'"
-msgstr "Odstraňuje sa \"%1\""
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:282
 #, kde-format
@@ -905,39 +869,36 @@ msgid ""
 "To remove this repository, the following applications must be uninstalled:"
 "<ul><li>%1</li></ul>"
 msgstr ""
-"Na odstránenie tohto repozitára musia byť odinštalované nasledovné "
-"aplikácie: <ul><li>%1</li></ul>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:299
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
-msgstr "Zlyhalo odstránenie vzdialeného repozitára %1: %2"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:303
 #, kde-format
 msgid "Could not find %1"
-msgstr "Nepodarilo sa nájsť %1"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:335
 #, kde-format
 msgid "%1 (user)"
-msgstr "%1 (používateľ)"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:396
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
-msgstr "Zadať URI Flatpak úložiska (* .flatpakrepo):"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
-msgstr "Pridáva sa vzdialený zdroj \"%1\" do %2 z %3"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
-"Nepodarilo sa nájsť '%1' v '%2'; prosím, uistite sa, že je k dispozícii."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
@@ -946,49 +907,46 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
-"Táto vývojová verzia %1 je zastaraná. Dôrazne sa odporúča použitie stabilnej "
-"verzie."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr "K dispozícii je stabilnejšia verzia %1."
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr "Zobraziť stabilnú verziu na %1"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr "%1 nie je nainštalované, ale stále obsahuje dáta."
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
 msgid "Delete settings and user data"
-msgstr "Vymazať nastavenia a používateľské údaje"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Vymazať nastavenia a používateľské údaje"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr "Oprávnenia pre %1"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:56
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr "Konfigurovať oprávnenia..."
+msgstr ""
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -996,18 +954,16 @@ msgid ""
 "The remote %1 require that you accept their license:\n"
 " %2"
 msgstr ""
-"Vzdialený zdroj %1 vyžaduje, aby ste prijali jeho licenciu:\n"
-" %2"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
 #, kde-format
 msgid "Review EULA"
-msgstr "Skontrolovať EULA"
+msgstr ""
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
 #, kde-format
 msgid "Could not enable remote %1: %2"
-msgstr "Nepodarilo sa povoliť vzdialené %1: %2"
+msgstr ""
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
@@ -1015,33 +971,31 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
-"Nepodporovaná otázka:\n"
-"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
 msgid "Backend %1 took too long to initialize"
-msgstr "Podpornému programu %1 trvala inicializácia príliš dlho"
+msgstr ""
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
 #, kde-format
 msgid "Applications"
-msgstr "Aplikácie"
+msgstr ""
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Plasma Addons"
-msgstr "Doplnky Plasmy"
+msgstr ""
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Application Addons"
-msgstr "Doplnky aplikácií"
+msgstr ""
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
 #, kde-format
 msgid "Network error in backend %1: %2"
-msgstr "Sieťová chyba v podpornom programe %1: %2"
+msgstr ""
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
 #, kde-format
@@ -1049,15 +1003,13 @@ msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr ""
-"Bolo odoslaných príliš veľa požiadaviek serveru podporného programu %1. "
-"Prosím, skúste to znovu o pár minút."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
-msgstr "Neplatný podporný program %1. Kontaktujte svojho distribútora."
+msgstr ""
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
 #, kde-format
@@ -1067,72 +1019,65 @@ msgid ""
 "reported error was:\n"
 "%2"
 msgstr ""
-"Aktualizáciu %1 sa nepodarilo dokončiť. Túto akciu môžete vyskúšať a vykonať "
-"prostredníctvom dialógu Získať nové veci, ktoré poskytuje prísnejšiu "
-"kontrolu. Nahlásená chyba bola:\n"
-"%2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
-"Nepodarilo sa získať snímku obrazovky pre položku %1 v podpornom programe %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
-"Nespracovateľná chyba v podpornom programe %1. Kontaktujte svojho "
-"distribútora."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
 #, kde-format
 msgid "%1: %2"
-msgstr "%1: %2"
+msgstr ""
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:640
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
-msgstr "Nesprávna URI KNewStuff: %1"
+msgstr ""
 
 #: libdiscover/backends/KNSBackend/KNSResource.cpp:168
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
-msgstr "KDE Store"
+msgstr ""
 
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
 #, kde-format
 msgid "Log in information for %1"
-msgstr "Prihlasovacie informácie pre %1"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
 #, kde-format
 msgid "Cannot launch %1"
-msgstr "Nedá sa spustiť %1"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
-msgstr "Doplnky Plasmy"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
-msgstr "Miniaplikácie pre Plasmu"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
-msgstr "Písma"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
-msgstr "Prosím, uistite sa, že Appstream je správne nastavený vo vašom systéme"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:323
 #, kde-format
@@ -1141,397 +1086,387 @@ msgid ""
 "Your operating system ended support on %1. Consider upgrading to a supported "
 "version."
 msgstr ""
-"Váš operačný systém ukončil podporu %1. Zvážte prechod na podporovanú verziu."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:845
 #, kde-format
 msgid "Cannot remove '%1'"
-msgstr "Nedá sa odstrániť '%1'"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:965
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
-"<b>Bola vydaná nová hlavná verzia %1!</b>\n"
-"Ak chcete aktualizovať na túto novú verziu, uistite sa, že ste vykonali "
-"všetky čakajúce aktualizácie a reštartovali systém."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:974
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr "Zvýšiť verziu na %1 %2"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>Bola vydaná nová hlavná verzia!</b>"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
 msgid "Out of memory"
-msgstr "Nedostatok pamäte"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
 #, kde-format
 msgid "No network connection available"
-msgstr "Nie je dostupné žiadne sieťové pripojenie"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
 #, kde-format
 msgid "Operation not supported"
-msgstr "Operácia nie je podporovaná"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:25
 #, kde-format
 msgid "Internal error"
-msgstr "Interná chyba"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
 #, kde-format
 msgid "Internal error: %1"
-msgstr "Interná chyba: %1"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
 #, kde-format
 msgid "GPG failure"
-msgstr "Zlyhanie GPG"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
 #, kde-format
 msgid "PackageID invalid"
-msgstr "Neplatný identifikátor PackageID"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
 #, kde-format
 msgid "Package not installed"
-msgstr "Balík nie je nainštalovaný"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:37
 #, kde-format
 msgid "Package not found"
-msgstr "Balík sa nenašiel"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
 #, kde-format
 msgid "Package is already installed"
-msgstr "Balík je už nainštalovaný"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
 #, kde-format
 msgid "Package download failed"
-msgstr "Zlyhalo preberanie balíka"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:43
 #, kde-format
 msgid "Package group not found"
-msgstr "Skupina balíkov sa nenašla"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
 #, kde-format
 msgid "Package group list invalid"
-msgstr "Zoznam skupín balíkov nie je platný"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
 #, kde-format
 msgid "Dependency resolution failed"
-msgstr "Zlyhalo vyriešenie závislostí"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
 #, kde-format
 msgid "Filter invalid"
-msgstr "Neplatný filter"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
 #, kde-format
 msgid "Failed while creating a thread"
-msgstr "Zlyhanie počas vytvárania vlákna"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
 #, kde-format
 msgid "Transaction failure"
-msgstr "Zlyhanie transakcie"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:55
 #, kde-format
 msgid "Transaction canceled"
-msgstr "Transakcia bola zrušená"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
 #, kde-format
 msgid "No Cache available"
-msgstr "Nie je dostupná žiadna vyrovnávacia pamäť."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
 #, kde-format
 msgid "Cannot find repository"
-msgstr "Nedá sa nájsť repozitár"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
 #, kde-format
 msgid "Cannot remove system package"
-msgstr "Nedá sa odstrániť systémový balík"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:63
 #, kde-format
 msgid "The PackageKit daemon has crashed"
-msgstr "Démon PackageKit neočakávane skončil"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:65
 #, kde-format
 msgid "Initialization failure"
-msgstr "Zlyhanie inicializácie"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:67
 #, kde-format
 msgid "Failed to finalize transaction"
-msgstr "Zlyhalo dokončenie transakcie"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
 #, kde-format
 msgid "Config parsing failed"
-msgstr "Zlyhalo spracovanie nastavenia"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
 #, kde-format
 msgid "Cannot cancel transaction"
-msgstr "Nedá sa zrušiť transakcia"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
 #, kde-format
 msgid "Cannot obtain lock"
-msgstr "Nedá sa získať zámok"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
 #, kde-format
 msgid "No packages to update"
-msgstr "Žiadne balíky na aktualizáciu"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
 #, kde-format
 msgid "Cannot write repo config"
-msgstr "Nedá sa zapísať nastavenie repozitára"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:79
 #, kde-format
 msgid "Local install failed"
-msgstr "Zlyhala miestna inštalácia"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:81
 #, kde-format
 msgid "Bad GPG signature found"
-msgstr "Našiel sa neplatný podpis GPG"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:83
 #, kde-format
 msgid "No GPG signature found"
-msgstr "Nenašiel sa žiadny podpis GPG"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:85
 #, kde-format
 msgid "Cannot install source package"
-msgstr "Nedá sa nainštalovať zdrojový balík"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
 #, kde-format
 msgid "Repo configuration error"
-msgstr "Chyba nastavenia repozitára"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:89
 #, kde-format
 msgid "No license agreement"
-msgstr "Žiadne licenčné podmienky"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:91
 #, kde-format
 msgid "File conflicts found"
-msgstr "Našli sa konflikty súborov"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:93
 #, kde-format
 msgid "Package conflict found"
-msgstr "Našiel sa konflikt balíkov"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:95
 #, kde-format
 msgid "Repo not available"
-msgstr "Repozitár nie je dostupný"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:97
 #, kde-format
 msgid "Invalid package file"
-msgstr "Neplatný súbor balíka"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
 #, kde-format
 msgid "Package install blocked"
-msgstr "Inštalácia balíka zablokovaná"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
 #, kde-format
 msgid "Corrupt package found"
-msgstr "Našiel sa poškodený balík"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
 #, kde-format
 msgid "All packages already installed"
-msgstr "Všetky balíky sú už nainštalované"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
 #, kde-format
 msgid "File not found"
-msgstr "Súbor sa nenašiel"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
 #, kde-format
 msgid "No more mirrors available"
-msgstr "Nie je dostupných viac zrkadiel"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
 #, kde-format
 msgid "No distro upgrade data"
-msgstr "Žiadne údaje o inovácií distribúcie"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
 #, kde-format
 msgid "Incompatible architecture"
-msgstr "Nekompatibilná architektúra"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
 #, kde-format
 msgid "No space on device left"
-msgstr "Na zariadení už nezostáva žiadne miesto"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:115
 #, kde-format
 msgid "A media change is required"
-msgstr "Vyžaduje sa zmena média"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:117
 #, kde-format
 msgid "You have no authorization to execute this operation"
-msgstr "Nemáte oprávnenie na vykonanie tejto operácie"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:119
 #, kde-format
 msgid "Update not found"
-msgstr "Aktualizácia sa nenašla"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
 #, kde-format
 msgid "Cannot install from unsigned repo"
-msgstr "Nedá sa vykonať inštalácia z nepodpísaného repozitára"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
 #, kde-format
 msgid "Cannot update from unsigned repo"
-msgstr "Nedá sa vykonať aktualizácia z nepodpísaného repozitára"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
 #, kde-format
 msgid "Cannot get file list"
-msgstr "Nedá sa získať zoznam súborov"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:127
 #, kde-format
 msgid "Cannot get requires"
-msgstr "Nedajú sa získať požiadavky"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:129
 #, kde-format
 msgid "Cannot disable repository"
-msgstr "Nedá sa zakázať repozitár"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
 #, kde-format
 msgid "Restricted download detected"
-msgstr "Bolo zistené obmedzené preberanie"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
 #, kde-format
 msgid "Package failed to configure"
-msgstr "Zlyhalo nastavenie balíka"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:135
 #, kde-format
 msgid "Package failed to build"
-msgstr "Zlyhalo zostavenie balíka"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:137
 #, kde-format
 msgid "Package failed to install"
-msgstr "Zlyhala inštalácia balíka"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:139
 #, kde-format
 msgid "Package failed to remove"
-msgstr "Zlyhalo odstránenie balíka"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:141
 #, kde-format
 msgid "Update failed due to running process"
-msgstr "Aktualizácia zlyhala kvôli bežiacemu procesu"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
 #, kde-format
 msgid "The package database changed"
-msgstr "Zmenila sa databáza balíkov"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
 #, kde-format
 msgid "The provided type is not supported"
-msgstr "Zadaný typ nie je podporovaný"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
 #, kde-format
 msgid "Install root is invalid"
-msgstr "Koreňový priečinok inštalácie nie je platný"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:149
 #, kde-format
 msgctxt ""
 "Failed to sync your Linux distro repositories or other sources of packages"
 msgid "Cannot fetch sources"
-msgstr "Nedajú sa získať zdroje"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:151
 #, kde-format
 msgid "Canceled priority"
-msgstr "Priorita bola zrušená"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
 #, kde-format
 msgid "Unfinished transaction"
-msgstr "Nedokončená transakcia"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
 #, kde-format
 msgid "Lock required"
-msgstr "Vyžaduje sa zámok"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
 #, kde-format
 msgid "Unknown error %1."
-msgstr "Neznáma chyba %1."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
 msgid "'%1' was changed and suggests to be restarted."
-msgstr "Balík \"%1\" bol zmenený a odporúča sa reštart."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
 #, kde-format
 msgid "A change by '%1' suggests your session to be restarted."
 msgstr ""
-"Odporúča sa reštartovať vaše sedenie, kvôli zmene vykonanej balíkom \"%1\"."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
 #, kde-format
@@ -1539,8 +1474,6 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"Balík \"%1\" bol aktualizovaný z bezpečnostných dôvodov a je odporúčané "
-"reštartovať sedenie."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
 #, kde-format
@@ -1548,377 +1481,374 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
-"Balík \"%1\" bol aktualizovaný z bezpečnostných dôvodov a je odporúčané "
-"reštartovať systém."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
 #, kde-format
 msgid "A change by '%1' suggests your system to be restarted."
 msgstr ""
-"Odporúča sa reštartovať váš systém, kvôli zmene vykonanej balíkom \"%1\"."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
 msgid "The application will have to be restarted."
-msgstr "Aplikácia bude musieť byť reštartovaná."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
 #, kde-format
 msgid "The session will have to be restarted"
-msgstr "Sedenie bude musieť byť reštartované"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:192
 #, kde-format
 msgid "The system will have to be restarted."
-msgstr "Systém bude musieť byť reštartovaný."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:194
 #, kde-format
 msgid "For security, the session will have to be restarted."
-msgstr "Sedenie musí byť kvôli bezpečnosti reštartované."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:196
 #, kde-format
 msgid "For security, the system will have to be restarted."
-msgstr "Kvôli bezpečnosti bude musieť byť systém reštartovaný."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
 #, kde-format
 msgid "Waiting…"
-msgstr "Čaká sa..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
 #, kde-format
 msgid "Refreshing Cache…"
-msgstr "Obnovuje sa vyrovnávacia pamäť..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
 #, kde-format
 msgid "Setup…"
-msgstr "Nastavuje sa..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
 #, kde-format
 msgid "Processing…"
-msgstr "Spracováva sa..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
 #, kde-format
 msgid "Remove…"
-msgstr "Odstrániť…"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
 #, kde-format
 msgid "Downloading…"
-msgstr "Preberá sa..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
 #, kde-format
 msgid "Installing…"
-msgstr "Inštaluje sa..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
 #, kde-format
 msgid "Updating…"
-msgstr "Aktualizuje sa..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
 #, kde-format
 msgid "Cleaning up…"
-msgstr "Čistí sa..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
 #, kde-format
 msgid "Resolving dependencies…"
-msgstr "Riešia sa závislosti..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
 #, kde-format
 msgid "Checking signatures…"
-msgstr "Kontrolujú sa podpisy..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
 #, kde-format
 msgid "Test committing…"
-msgstr "Skúša sa potvrdenie..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
 #, kde-format
 msgid "Committing…"
-msgstr "Potvrdzuje sa..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
 #, kde-format
 msgid "Finished"
-msgstr "Dokončené"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:238
 #, kde-format
 msgid "Canceled"
-msgstr "Zrušené"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
 #, kde-format
 msgid "Waiting for lock…"
-msgstr "Čaká sa na zámok..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
 #, kde-format
 msgid "Waiting for authorization…"
-msgstr "Čaká sa na overenie totožnosti..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
 #, kde-format
 msgid "Copying files…"
-msgstr "Kopírujú sa súbory..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
 #, kde-format
 msgid "Unknown Status"
-msgstr "Neznámy stav"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:258
 #, kde-format
 msgid "We are waiting for something."
-msgstr "Čaká sa na niečo."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
 #, kde-format
 msgid "Setting up transaction…"
-msgstr "Nastavuje sa transakcia..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
 #, kde-format
 msgid "The transaction is currently working…"
-msgstr "Transakcia práve pracuje..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
 #, kde-format
 msgid "The transaction is currently removing packages…"
-msgstr "Transakcia práve odstraňuje balíky..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
 #, kde-format
 msgid "The transaction is currently downloading packages…"
-msgstr "Transakcia práve preberá balíky..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
 #, kde-format
 msgid "The transactions is currently installing packages…"
-msgstr "Transakcia práve inštaluje balíky..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
 #, kde-format
 msgid "The transaction is currently updating packages…"
-msgstr "Transakcia práve aktualizuje balíky..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
 #, kde-format
 msgid "The transaction is currently cleaning up…"
-msgstr "Transakcia práve vykonáva čistenie..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
 #, kde-format
 msgid ""
 "The transaction is currently resolving the dependencies of the packages it "
 "will install…"
-msgstr "Transakcia práve rieši závislosti balíkov, ktoré budú nainštalované..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
 #, kde-format
 msgid "The transaction is currently checking the signatures of the packages…"
-msgstr "Transakcia práve kontroluje podpisy balíkov..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
 #, kde-format
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
-msgstr "Transakcia práve testuje potvrdenie tejto sady balíkov..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
-msgstr "Transakcia práve potvrdzuje svoju sadu balíkov..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
 msgid "The transaction has finished!"
-msgstr "Transakcia bola dokončená!"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
 #, kde-format
 msgid "The transaction was canceled"
-msgstr "Transakcia bola zrušená"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
 #, kde-format
 msgid "The transaction is currently waiting for the lock…"
-msgstr "Transakcia práve čaká na zámok..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
 #, kde-format
 msgid "Waiting for the user to authorize the transaction…"
-msgstr "Čaká sa na overenie totožnosti transakcie používateľom..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
 #, kde-format
 msgid "The transaction is currently copying files…"
-msgstr "Transakcia práve kopíruje súbory..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
 #, kde-format
 msgid "Currently refreshing the repository cache…"
-msgstr "Práve sa obnovuje vyrovnávacia pamäť repozitára..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
 #, kde-format
 msgid "Unknown status %1."
-msgstr "Neznámy stav %1."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:313
 #, kde-format
 msgctxt "update state"
 msgid "Stable"
-msgstr "Stabilný"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:315
 #, kde-format
 msgctxt "update state"
 msgid "Unstable"
-msgstr "Nestabilný"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:317
 #, kde-format
 msgctxt "update state"
 msgid "Testing"
-msgstr "Skúšobný"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
 #: libdiscover/resources/AbstractResource.cpp:103
 #, kde-format
 msgid "Installed"
-msgstr "Nainštalované"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
 #, kde-format
 msgid "Not Installed"
-msgstr "Nenainštalované"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
 #, kde-format
 msgid "Low"
-msgstr "Nízka"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:334
 #, kde-format
 msgid "Enhancement"
-msgstr "Vylepšenie"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:336
 #, kde-format
 msgid "Normal"
-msgstr "Normálna"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:338
 #, kde-format
 msgid "Bugfix"
-msgstr "Oprava"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:340
 #, kde-format
 msgid "Important"
-msgstr "Dôležitá"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:342
 #, kde-format
 msgid "Security"
-msgstr "Bezpečnostná"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:344
 #, kde-format
 msgid "Blocked"
-msgstr "Blokované"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:346
 #, kde-format
 msgid "Downloading"
-msgstr "Preberá sa"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
 #, kde-format
 msgid "Updating"
-msgstr "Aktualizuje sa"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:350
 #, kde-format
 msgid "Installing"
-msgstr "Inštaluje sa"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:352
 #, kde-format
 msgid "Removing"
-msgstr "Odstraňuje sa"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:354
 #, kde-format
 msgid "Cleanup"
-msgstr "Čistí sa"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:356
 #, kde-format
 msgid "Obsoleting"
-msgstr "Zastaráva sa"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:358
 #, kde-format
 msgid "Collection Installed"
-msgstr "Zbierka nainštalovaná"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:360
 #, kde-format
 msgid "Collection Available"
-msgstr "Zbierka nainštalovaná"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:364
 #, kde-format
 msgid "Reinstalling"
-msgstr "Preinštalováva sa"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:366
 #, kde-format
 msgid "Downgrading"
-msgstr "Znižuje sa verzia"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:368
 #, kde-format
 msgid "Preparing"
-msgstr "Pripravuje sa"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:370
 #, kde-format
 msgid "Decompressing"
-msgstr "Rozbaľuje sa"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:372
 #, kde-format
 msgid "Untrusted"
-msgstr "Nedôveryhodné"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:374
 #, kde-format
 msgid "Trusted"
-msgstr "Dôveryhodné"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:376
 #, kde-format
 msgid "Unavailable"
-msgstr "Nedostupné"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
 #, kde-format
 msgid "Failed Offline Update"
-msgstr "Offline aktualizácia zlyhala"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
 #, kde-format
@@ -1929,144 +1859,130 @@ msgid_plural ""
 "Failed to update %1 packages\n"
 "%2"
 msgstr[0] ""
-"Zlyhala aktualizácia %1 balíka\n"
-"%2"
 msgstr[1] ""
-"Zlyhala aktualizácia %1 balíkov\n"
-"%2"
-msgstr[2] ""
-"Zlyhala aktualizácia %1 balíkov\n"
-"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:172
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
-msgstr "Otvoriť aplikáciu Discover"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
-msgstr "Opraviť systém"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
 msgid "Repairing failed offline update"
-msgstr "Oprava neúspešnej offline aktualizácie"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
 #, kde-format
 msgid "Repair Failed"
-msgstr "Oprava zlyhala"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
-msgstr "%1<nl/>Prosím, nahláste túto chybu vašej distribúcii."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
 #, kde-format
 msgid "Repaired Successfully"
-msgstr "Úspešne opravené"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:170
 #, kde-format
 msgid "Offline Updates"
-msgstr "Aktualizácie bez pripojenia"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:171
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
-msgstr[0] "Úspešne aktualizovaný %1 balík"
-msgstr[1] "Úspešne aktualizované %1 balíky"
-msgstr[2] "Úspešne aktualizovaných %1 balíkov"
+msgstr[0] ""
+msgstr[1] ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
 #, kde-format
 msgid "Unknown Source"
-msgstr "Neznámy zdroj"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:330
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
-msgstr ", "
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
 #, kde-format
 msgid "Obsoletes:"
-msgstr "Zastarané:"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
 #, kde-format
 msgid "Release Notes:"
-msgstr "Poznámky k vydaniu:"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:396
 #, kde-format
 msgid "Update State:"
-msgstr "Stav aktualizácie:"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
 #, kde-format
 msgid "Restart:"
-msgstr "Reštart:"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
 #, kde-format
 msgid "Vendor:"
-msgstr "Dodávateľ:"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:420
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
-msgstr[0] "%2 (plus %1 závislosť)"
-msgstr[1] "%2 (plus %1 závislosti)"
-msgstr[2] "%2 (plus %1 závislostí)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
 msgid "Repository URL:"
-msgstr "URL repozitára:"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
-#, fuzzy, kde-format
-#| msgctxt "@item example: muon installed at 16:00"
-#| msgid "%1 %2 at %3"
+#, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr "%1 %2 na %3"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
 msgid "System upgrade"
-msgstr "Systémová inovácia"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 balíku sa zvýši verzia"
-msgstr[1] "%1 balíkom sa zvýši verzia"
-msgstr[2] "%1 balíkom sa zvýši verzia"
+msgstr[0] ""
+msgstr[1] ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
-"<h3>%1</h3>Prechod na novú verziu %2<br/>Nie sú k dispozícii žiadne poznámky "
-"k vydaniu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
@@ -2074,26 +1990,22 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
-"<h3>%1</h3>Prechod na novú verziu %2<br/>Poznámky k vydaniu:<blockquote>%3</"
-"blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:224
 #, kde-format
 msgid "Present"
-msgstr "Súčasnosť"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
 msgid "Future"
-msgstr "Budúcnosť"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
-"Nie je dostatok miesta na vykonanie aktualizácie; k dispozícii je len %1 "
-"miesta."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:561
 #, kde-format
@@ -2103,15 +2015,11 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
-"Túto aktualizáciu nie je možné dokončiť, pretože by sa odstránil nasledujúci "
-"softvér, ktorý je kritický pre fungovanie systému:<nl/><ul><li>%1</li></"
-"ul><nl/>Ak si myslíte, že ide o chybu, nahláste to prosím ako chybu baličom "
-"vašej distribúcie."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
 msgid "Packages to remove"
-msgstr "Balíky na odstránenie"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2119,14 +2027,12 @@ msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
 ">in order to install:<ul><li>%2</li></ul>"
 msgstr ""
-"Nasledovné balíky budú odstránené pri aktualizácii:<ul><li>%1</li></ul>na "
-"nainštalovanie:<ul><li>%2</li></ul>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:684
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
-msgstr "%1:<nl/><nl/>%2"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:692
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
@@ -2135,14 +2041,12 @@ msgid ""
 "Media Change of type '%1' is requested.\n"
 "%2"
 msgstr ""
-"Vyžaduje sa zmena média na typ \"%1\".\n"
-"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
-msgstr "Prijať EULA"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:726
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
@@ -2151,14 +2055,12 @@ msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
 " %3"
 msgstr ""
-"Balík %1 a jeho dodávateľ %2 vyžadujú, aby ste prijali ich licenciu:\n"
-" %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:843
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
-msgstr "Chýba podpis balíka %1 v repozitári %2"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:844
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
@@ -2172,13 +2074,6 @@ msgid ""
 "Fingerprint: %4\n"
 "Timestamp: %4\n"
 msgstr ""
-"Dôverujete nasledovnému kľúču?\n"
-"\n"
-"Url: %1\n"
-"Používateľ: %2\n"
-"Kľúč: %3\n"
-"Otlačok: %4\n"
-"Časová značka: %4\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:190
 #, kde-format
@@ -2188,15 +2083,11 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
-"Túto akciu nemožno dokončiť, pretože by sa odstránil nasledujúci softvér, "
-"ktorý je kritický pre fungovanie systému:<nl/><ul><li>%1</li></ul><nl/>Ak si "
-"myslíte, že ide o chybu, nahláste to prosím ako chybu baličom vašej "
-"distribúcie."
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
 #, kde-format
 msgid "Confirm package removal"
-msgstr "Potvrdenie odstránenia balíka"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:204
 #, kde-format
@@ -2207,52 +2098,43 @@ msgid_plural ""
 "This action will also remove the following packages:\n"
 "%2"
 msgstr[0] ""
-"Touto akciou sa tiež odstráni nasledovný balík:\n"
-"%2"
 msgstr[1] ""
-"Touto akciou sa tiež odstránia nasledovné balíky:\n"
-"%2"
-msgstr[2] ""
-"Touto akciou sa tiež odstránia nasledovné balíky:\n"
-"%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
 #, kde-format
 msgid "Show Dependencies…"
-msgstr "Zobraziť závislosti..."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr "Závislosti pre balík: %1"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
 #, kde-format
 msgid "Full Access"
-msgstr "Plný prístup"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Can access everything on the system"
-msgstr "Má prístup ku všetkému v systéme"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
 msgctxt "Category"
 msgid "Operating System"
-msgstr "Operačný systém"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:181
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Nájdených viacero spustených nasadení. Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:193
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree: Nenašlo sa žiadne spustené nasadenie. Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:398
 #, kde-format
@@ -2261,164 +2143,159 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
-"<b>Bola vydaná nová hlavná verzia %1!</b>\n"
-"Ak chcete aktualizovať na túto novú verziu, uistite sa, že ste vykonali "
-"všetky čakajúce aktualizácie a reštartovali systém."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:408
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr "<b>Bola vydaná nová hlavná verzia!</b>"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:535
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
-"Máte čakajúce aktualizácie pre aktuálnu verziu. Pokračovanie napriek tomu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:538
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr "Pred prechodom na hlavnú verziu aktualizujte na najnovšiu verziu"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:546
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
-msgstr "Chýba vzdialený odkaz pre operáciu rebase. Prosím, nahláste chybu."
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
 #, kde-format
 msgid "GPL and other licenses"
-msgstr "GPL a ostatné licencie"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
 msgid "Additional packages: "
-msgstr "Dodatočné balíky: "
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
 #, kde-format
 msgid "Additional modules: "
-msgstr "Dodatočné moduly: "
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
 #, kde-format
 msgid "Local packages: "
-msgstr "Lokálne balíky: "
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
 #, kde-format
 msgid "Replaced packages:"
-msgstr "Nahradené balíky:"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
 #, kde-format
 msgid "Removed packages:"
-msgstr "Odstránené balíky:"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "Aktuálne spustená verzia (pripnutá)"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
 #, kde-format
 msgid "Currently booted version"
-msgstr "Aktuálne spustená verzia"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr "Verzia, ktorá sa použije po reštarte"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr "Núdzová verzia (pripnutá)"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, kde-format
 msgid "Fallback version"
-msgstr "Núdzová verzia"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
 msgid "ostree remotes"
-msgstr "ostree vzdialené"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "Transakcia rpm-ostree zlyhala s:"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
-"Rušenie transakcie rpm-ostree. Môže to trvať určitý čas. Počkajte, prosím."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
 #, kde-format
 msgid "Checking for a system update"
-msgstr "Kontrolovanie aktualizácie systému"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:385
 #, kde-format
 msgid "Downloading system update"
-msgstr "Stiahnutie aktualizácie systému"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:388
 #, kde-format
 msgid "Updating the system"
-msgstr "Aktualizovanie systému"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Updating to the next major version"
-msgstr "Aktualizácia na nasledujúcu hlavnú verziu"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "Prebiehajúca operácia (spustená mimo Discover)"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
 msgid "Unknown transaction type"
-msgstr "Neznámy typ transakcie"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
 msgid "Channels…"
-msgstr "Kanály…"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:24
 #, kde-format
 msgid "%1 channels"
-msgstr "%1 kanálov"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:32
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:35
 #, kde-format
 msgid "Switch"
-msgstr "Prepnúť"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
 msgid "Permissions for %1"
-msgstr "Oprávnenia pre %1"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
 msgid "Snap"
-msgstr "Snap"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
 #, kde-format
@@ -2426,1435 +2303,146 @@ msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this computer. Install it anyway?"
 msgstr ""
-"Táto aplikácia Snap nie je kompatibilná so sandbox zabezpečením a bude mať "
-"úplný prístup k tomuto počítaču. Nainštalovať ju napriek tomu?"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr "SteamOS: Nemožno sa spýtať atomupd na aktualizácie SteamOS..."
+msgstr ""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr ""
-"Zoznam všetkých podporných programov, ktoré sa majú načítať, oddelené "
-"čiarkou \",\"."
 
 #: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Broken"
-msgstr "Poškodené"
+msgstr ""
 
 #: libdiscover/resources/AbstractResource.cpp:101
 #, kde-format
 msgid "Available"
-msgstr "Dostupné"
+msgstr ""
 
 #: libdiscover/resources/AbstractResource.cpp:105
 #, kde-format
 msgid "Upgradeable"
-msgstr "Inovavateľné"
+msgstr ""
 
 #: libdiscover/resources/AbstractResource.cpp:242
 #, kde-format
 msgid "Launch"
-msgstr "Spustiť"
+msgstr ""
 
 #: libdiscover/resources/AbstractResource.cpp:251
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "Obnovenie verzie %1"
+msgstr ""
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
-msgstr "%1 → %2%1 → %2%2"
+msgstr ""
 
 #: libdiscover/resources/AbstractResourcesBackend.cpp:166
 #, kde-format
 msgid "Please verify Internet connectivity"
-msgstr "Prosím overte internetové pripojenie"
+msgstr ""
 
 #: libdiscover/resources/ResourcesModel.cpp:99
 #, kde-format
 msgid "Refresh"
-msgstr "Obnoviť"
+msgstr ""
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:724
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
-msgstr "%1+"
+msgstr ""
 
 #: libdiscover/resources/ResourcesUpdatesModel.cpp:109
 #, kde-format
 msgid "Updates"
-msgstr "Aktualizácie"
+msgstr ""
 
 #: libdiscover/Transaction/Transaction.cpp:133
 #, kde-format
 msgctxt "@label Download rate"
 msgid "%1/s"
-msgstr "%1/s"
+msgstr ""
 
 #: libdiscover/Transaction/TransactionModel.cpp:74
 #, kde-format
 msgctxt "@info:status"
 msgid "Starting"
-msgstr "Spúšťa sa"
+msgstr ""
 
 #: libdiscover/Transaction/TransactionModel.cpp:76
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
-msgstr "Čaká sa"
+msgstr ""
 
 #: libdiscover/Transaction/TransactionModel.cpp:78
 #, kde-format
 msgctxt "@info:status"
 msgid "Downloading"
-msgstr "Preberá sa"
+msgstr ""
 
 #: libdiscover/Transaction/TransactionModel.cpp:82
 #, kde-format
 msgctxt "@info:status"
 msgid "Installing"
-msgstr "Inštaluje sa"
+msgstr ""
 
 #: libdiscover/Transaction/TransactionModel.cpp:84
 #, kde-format
 msgctxt "@info:status"
 msgid "Removing"
-msgstr "Odstraňuje sa"
+msgstr ""
 
 #: libdiscover/Transaction/TransactionModel.cpp:86
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
-msgstr "Menia sa doplnky"
+msgstr ""
 
 #: libdiscover/Transaction/TransactionModel.cpp:90
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
-msgstr "Hotovo"
+msgstr ""
 
 #: libdiscover/Transaction/TransactionModel.cpp:92
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
-msgstr "Zlyhalo"
+msgstr ""
 
 #: libdiscover/Transaction/TransactionModel.cpp:94
 #, kde-format
 msgctxt "@info:status"
 msgid "Cancelled"
-msgstr "Zrušené"
+msgstr ""
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:130
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
-msgstr "Aplikácie"
+msgstr ""
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:131
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
-msgstr "Systémový softvér"
+msgstr ""
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:132
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
-msgstr "Doplnky"
-
-#~ msgid "%1, released on %2"
-#~ msgstr "%1, vydané na %2"
-
-#~ msgid "Remote: "
-#~ msgstr "Vzdialené:"
-
-#~ msgid "The currently running version of %1."
-#~ msgstr "Aktuálne spustená verzia %1."
-
-#~ msgid "Installed but not currently running version of %1."
-#~ msgstr "Nainštalovaná, ale momentálne nie je spustená verzia %1."
-
-#~ msgctxt "version (branch)"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#~ msgctxt "Category"
-#~ msgid "Applications"
-#~ msgstr "Aplikácie"
-
-#~ msgctxt "origin (backend name)"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Application Updates"
-#~ msgstr "Aktualizácie aplikácií"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "System Updates"
-#~ msgstr "Systémové aktualizácie"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "%1:<nl/><nl/>%2<nl/><nl/>Please report this issue to the packagers of "
-#~ "your distribution."
-#~ msgstr ""
-#~ "%1:<nl/><nl/>%2<nl/><nl/>Prosím, nahláste túto chybu správcom balíčkov "
-#~ "vašej distribúcie."
-
-#~ msgid "Version: "
-#~ msgstr "Verzia:"
-
-#~ msgid "BaseCommit: "
-#~ msgstr "BaseCommit: "
-
-#~ msgid "GPGSignature: Valid signature by "
-#~ msgstr "GPGSignature: Platný podpis od"
-
-#~ msgid "Origin: "
-#~ msgstr "Pôvod:"
-
-#~ msgid "The currently active deployment."
-#~ msgstr "Aktuálne aktívny vývoj."
-
-#~ msgid "Waiting..."
-#~ msgstr "Čaká sa..."
-
-#~ msgid "Remove..."
-#~ msgstr "Odstraňuje sa..."
-
-#~ msgid "Downloading..."
-#~ msgstr "Preberá sa..."
-
-#~ msgid "Installing..."
-#~ msgstr "Inštaluje sa..."
-
-#~ msgid "Updating..."
-#~ msgstr "Aktualizuje sa..."
-
-#~ msgid "This snap application needs security confinement measures disabled."
-#~ msgstr "Táto aplikácia vyžaduje zakázané bezpečnostné obmedzenia."
-
-#~ msgid "View Updates"
-#~ msgstr "Zobraziť aktualizácie"
-
-#, fuzzy
-#~| msgid "Please restart the computer to finish the update"
-#~ msgid "Please restart the device to finish the update"
-#~ msgstr "Prosím, reštartujte počítač na dokončenie aktualizácie"
-
-#~ msgid "Use"
-#~ msgstr "Použiť"
-
-#~ msgid "Update"
-#~ msgstr "Aktualizovať"
-
-#~ msgid "Not Invokable"
-#~ msgstr "Nepoužiteľné"
-
-#~ msgid "Upgrade available"
-#~ msgstr "Aktualizácia dostupná"
-
-#~ msgid "FWUPD ERROR ALREADY PENDING!"
-#~ msgstr "CHYBA FWUPD: Už prebieha!"
-
-#~ msgid "FWUPD ERROR INVALID FILE"
-#~ msgstr "CHYBA FWUPD: Neplatný súbor"
-
-#~ msgid "FWUPD ERROR NOT SUPPORTED"
-#~ msgstr "CHYBA FWUPD: Nie je podporované"
-
-#~ msgid "FWUPD ERROR AUTH FAILED"
-#~ msgstr "CHYBA FWUPD: Autentifikácia zlyhala"
-
-#~ msgid "FWUPD ERROR SIGNATURE INVALID"
-#~ msgstr "CHYBA FWUPD: Neplatný podpis"
-
-#~ msgid "FWUPD ERROR AC POWER REQUIRED"
-#~ msgstr "CHYBA FWUPD: Vyžadované napájanie zo siete"
-
-#, fuzzy
-#~| msgid "PackageKit restart required"
-#~ msgid "Restart is required"
-#~ msgstr "Vyžaduje sa reštart PackageKit"
-
-#, fuzzy
-#~| msgid "PackageKit restart required"
-#~ msgid "Session restart is required"
-#~ msgstr "Vyžaduje sa reštart PackageKit"
-
-#~ msgid "Reason:"
-#~ msgstr "Dôvod:"
-
-#~ msgid "Updates:"
-#~ msgstr "Aktualizuje:"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Important Security Updates"
-#~ msgstr "Dôležité bezpečnostné aktualizácie"
-
-#~ msgid "Confirm..."
-#~ msgstr "Potvrdiť..."
-
-#~ msgctxt "description (url)"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#~ msgid "Change Log:"
-#~ msgstr "Zoznam zmien:"
-
-#~ msgid "Software Management"
-#~ msgstr "Správa softvéru"
-
-#~ msgctxt "Category"
-#~ msgid "Science & Engineering"
-#~ msgstr "Veda a strojárstvo"
-
-#~ msgctxt "Category"
-#~ msgid "Computer Science & Robotics"
-#~ msgstr "Počítačová veda & Robotika"
-
-#~ msgctxt "Category"
-#~ msgid "Painting & Editing"
-#~ msgstr "Maľovanie & Editovanie"
-
-#~ msgctxt "Category"
-#~ msgid "Scanning & OCR"
-#~ msgstr "Skenovanie & OCR"
-
-#~ msgctxt "Category"
-#~ msgid "System & Settings"
-#~ msgstr "Systém & Nastavenia"
-
-#~ msgctxt "Category"
-#~ msgid "Science Engineering"
-#~ msgstr "Veda Strojárstvo"
-
-#~ msgctxt "Category"
-#~ msgid "Computer Science Robotics"
-#~ msgstr "Počítačová veda Robotika"
-
-#~ msgctxt "Category"
-#~ msgid "Painting Editing"
-#~ msgstr "Maľovanie Editovanie"
-
-#~ msgctxt "Category"
-#~ msgid "Scanning OCR"
-#~ msgstr "Skenovanie OCR"
-
-#~ msgctxt "@item:intext Unknown remaining time"
-#~ msgid "Updating..."
-#~ msgstr "Aktualizuje sa..."
-
-#~ msgctxt "@item:intext Remaining time"
-#~ msgid "%1 remaining"
-#~ msgstr "%1 zostáva"
-
-#~ msgid "%1 has been updated"
-#~ msgstr "%1 bol aktualizovaný"
-
-#~ msgid "Setting up for install..."
-#~ msgstr "Nastavujem na inštaláciu..."
-
-#~ msgid "List all the available backends."
-#~ msgstr "Vypísať všetky dostupné backendy."
-
-#~ msgid "Available backends:\n"
-#~ msgstr "Dostupné backendy:\n"
-
-#~ msgid ""
-#~ "Would you like to add remote '%1'?\n"
-#~ "\n"
-#~ "From: %2\n"
-#~ "With GPG key=%3..."
-#~ msgstr ""
-#~ "Chcete pridať vzdialený '%1'?\n"
-#~ "\n"
-#~ "Od: %2\n"
-#~ "S GPG kľúčom=%3..."
-
-#~ msgctxt "Category"
-#~ msgid "Application Addons"
-#~ msgstr "Addony aplikácií"
-
-#~ msgctxt "Category"
-#~ msgid "Kate Snippets"
-#~ msgstr "Úryvky Kate"
-
-#~ msgctxt "Category"
-#~ msgid "Comics"
-#~ msgstr "Komikx"
-
-#~ msgid "Got it"
-#~ msgstr "Mám to"
-
-#~ msgid "%1 requires user to accept its license"
-#~ msgstr "%1 vyžaduje, aby používateľ prijal ich licenciu"
-
-#~ msgctxt "Category"
-#~ msgid "Haskell"
-#~ msgstr "Haskell"
-
-#~ msgctxt "Category"
-#~ msgid "Java"
-#~ msgstr "Java"
-
-#~ msgctxt "Category"
-#~ msgid "Perl"
-#~ msgstr "Perl"
-
-#~ msgctxt "Category"
-#~ msgid "Python"
-#~ msgstr "Python"
-
-#~ msgctxt "Category"
-#~ msgid "Version Control"
-#~ msgstr "Správa verzií"
-
-#~ msgctxt "@info license"
-#~ msgid "Open Source"
-#~ msgstr "Open Source"
-
-#~ msgctxt "@info license"
-#~ msgid "Unknown"
-#~ msgstr "Neznáme"
-
-#~ msgctxt "@info/rich"
-#~ msgid ""
-#~ "The list of changes is not yet available. Please use <link "
-#~ "url='%1'>Launchpad</link> instead."
-#~ msgstr ""
-#~ "Zoznam zmien ešte nie je dostupný. Prosím použite <link "
-#~ "url='%1'>Launchpad</link> namiesto toho."
-
-#~ msgctxt "@info"
-#~ msgid "The list of changes is not yet available."
-#~ msgstr "Zoznam zmien ešte nie je dostupný."
-
-#~ msgctxt "@info:label"
-#~ msgid "This update was issued on %1"
-#~ msgstr "Táto aktualizácia bola vytvorená %1"
-
-#~ msgid "System update available!"
-#~ msgstr "Je dostupná aktualizácia systému!"
-
-#~ msgctxt "Notification when a new version of Kubuntu is available"
-#~ msgid "A new version of Kubuntu is available"
-#~ msgstr "Dostupná je nová verzia Kubuntu"
-
-#~ msgctxt "@title:window"
-#~ msgid "Media Change Required"
-#~ msgstr "Vyžadovaná je zmena média"
-
-#~ msgctxt "@label"
-#~ msgid "Please insert %1 into <filename>%2</filename>"
-#~ msgstr "Prosím vložte %1 do <filename>%2</filename>"
-
-#~ msgctxt "@title:window"
-#~ msgid "Warning - Unverified Software"
-#~ msgstr "Upozornenie - Neoverený softvér"
-
-#~ msgctxt "@label"
-#~ msgid ""
-#~ "The following piece of software cannot be verified. <warning>Installing "
-#~ "unverified software represents a security risk, as the presence of "
-#~ "unverifiable software can be a sign of tampering.</warning> Do you wish "
-#~ "to continue?"
-#~ msgid_plural ""
-#~ "The following pieces of software cannot be verified. <warning>Installing "
-#~ "unverified software represents a security risk, as the presence of "
-#~ "unverifiable software can be a sign of tampering.</warning> Do you wish "
-#~ "to continue?"
-#~ msgstr[0] ""
-#~ "Nasledujúci softvér sa nedá skontrolovať. <warning>Inštalovanie "
-#~ "neovereného softvéru je bezpečnostné riziko a môže byť príznakom "
-#~ "falšovania.</warning>Chcete pokračovať?"
-#~ msgstr[1] ""
-#~ "Nasledujúce softvéry sa nedajú skontrolovať. <warning>Inštalovanie "
-#~ "neovereného softvéru znamená bezpečnostné riziko, keďže prítomnosť "
-#~ "neovereného softvéru môže byť znakom manipulácie.</warning>Chcete "
-#~ "pokračovať?"
-#~ msgstr[2] ""
-#~ "Nasledujúce softvéry sa nedajú overiť. <warning>Inštalovanie neovereného "
-#~ "softvéru znamená bezpečnostné riziko, keďže prítomnosť neovereného "
-#~ "softvéru môže byť znakom manipulácie.</warning>Chcete pokračovať?"
-
-#~ msgctxt "@title:window"
-#~ msgid "Configuration File Changed"
-#~ msgstr "Konfiguračný súbor sa zmenil"
-
-#~ msgctxt "@label Notifies a config file change"
-#~ msgid ""
-#~ "A new version of the configuration file <filename>%1</filename> is "
-#~ "available, but your version has been modified. Would you like to keep "
-#~ "your current version or install the new version?"
-#~ msgstr ""
-#~ "Nová verzia konfiguračného súboru <filename>%1</filename> je k "
-#~ "dispozícii, ale vaša verzia bola zmenená. Chcete ponechať vašu aktuálnu "
-#~ "verziu alebo nainštalovať novú verziu?"
-
-#~ msgctxt "@action Use the new config file"
-#~ msgid "Use New Version"
-#~ msgstr "Použiť novú verziu"
-
-#~ msgctxt "@action Keep the old config file"
-#~ msgid "Keep Old Version"
-#~ msgstr "Ponechať starú verziu"
-
-#~ msgctxt "@info Status info, widget title"
-#~ msgid "Starting"
-#~ msgstr "Spúšťam"
-
-#~ msgctxt "@info Status info, widget title"
-#~ msgid "Waiting for Authentication"
-#~ msgstr "Čaká sa na overenie"
-
-#~ msgctxt "@info Status information, widget title"
-#~ msgid "Waiting"
-#~ msgstr "Čakám"
-
-#~ msgctxt "@info Status info"
-#~ msgid "Waiting for other transactions to finish"
-#~ msgstr "Čakanie na ukončenie iných transakcií"
-
-#~ msgctxt "@info Status info"
-#~ msgid "Waiting for other software managers to quit"
-#~ msgstr "Čakanie na ukončenie iných správcov softvéru"
-
-#~ msgctxt "@info Status info"
-#~ msgid "Waiting for required medium"
-#~ msgstr "Čakanie na potrebné médium"
-
-#~ msgctxt "@info Status info"
-#~ msgid "Waiting for configuration file"
-#~ msgstr "Čakanie na konfiguračný súbor"
-
-#~ msgctxt "@info Status info"
-#~ msgid "Loading Software List"
-#~ msgstr "Načítavanie zoznamu softvéru"
-
-#~ msgctxt "@info Status information, widget title"
-#~ msgid "Updating software sources"
-#~ msgstr "Aktualizácia softvérových zdrojov"
-
-#~ msgctxt "@info Status information, widget title"
-#~ msgid "Finished"
-#~ msgstr "Dokončené"
-
-#~ msgid "Adding Origins..."
-#~ msgstr "Pridávania pôvodov..."
-
-#~ msgid "Removing Origins..."
-#~ msgstr "Odstraňovanie pôvodov..."
-
-#~ msgid "%1 (Binary)"
-#~ msgstr "%1 (binárne)"
-
-#~ msgid ""
-#~ "<sourceline> - The apt repository source line to add. This is one of:\n"
-#~ "  a complete apt line, \n"
-#~ "  a repo url and areas (areas defaults to 'main')\n"
-#~ "  a PPA shortcut.\n"
-#~ "\n"
-#~ "  Examples:\n"
-#~ "    deb http://myserver/path/to/repo stable myrepo\n"
-#~ "    http://myserver/path/to/repo myrepo\n"
-#~ "    https://packages.medibuntu.org free non-free\n"
-#~ "    http://extras.ubuntu.com/ubuntu\n"
-#~ "    ppa:user/repository"
-#~ msgstr ""
-#~ "<sourceline> - Zdroj apt repozitára na pridanie. Môže to byť:\n"
-#~ "  úplný apt riadok, \n"
-#~ "  url repozitára a oblasti (oblasti sú predvolene 'main')\n"
-#~ "  PPA skratka.\n"
-#~ "\n"
-#~ "  Príklady:\n"
-#~ "    deb http://myserver/path/to/repo stable myrepo\n"
-#~ "    http://myserver/path/to/repo myrepo\n"
-#~ "    https://packages.medibuntu.org free non-free\n"
-#~ "    http://extras.ubuntu.com/ubuntu\n"
-#~ "    ppa:user/repository"
-
-#~ msgctxt "@info"
-#~ msgid "<h2>Mark additional changes?</h2>"
-#~ msgstr "<h2>Označiť ďalšie zmeny?</h2>"
-
-#~ msgid "This action requires a change to another package:"
-#~ msgid_plural "This action requires changes to other packages:"
-#~ msgstr[0] "Táto akcia vyžaduje zmenu ďalšieho balíka:"
-#~ msgstr[1] "Táto akcia vyžaduje zmeny ďalších balíkov:"
-#~ msgstr[2] "Táto akcia vyžaduje zmeny ďalších balíkov:"
-
-#~ msgctxt "@info"
-#~ msgid "<title>History</title>"
-#~ msgstr "<title>História</title>"
-
-#~ msgctxt "@label Line edit click message"
-#~ msgid "Search"
-#~ msgstr "Hľadať"
-
-#~ msgctxt "@item:inlistbox Filters installations in the history view"
-#~ msgid "Installations"
-#~ msgstr "Inštalácie"
-
-#~ msgctxt "@item:inlistbox Filters removals in the history view"
-#~ msgid "Removals"
-#~ msgstr "Odstránené"
-
-#~ msgctxt "@title:column"
-#~ msgid "Date"
-#~ msgstr "Dátum"
-
-#~ msgctxt "@info:status describes a past-tense action"
-#~ msgid "Installed"
-#~ msgstr "Nainštalované"
-
-#~ msgctxt "@info:status describes a past-tense action"
-#~ msgid "Upgraded"
-#~ msgstr "Upgradované"
-
-#~ msgctxt "@status describes a past-tense action"
-#~ msgid "Downgraded"
-#~ msgstr "Downgradované"
-
-#~ msgctxt "@status describes a past-tense action"
-#~ msgid "Purged"
-#~ msgstr "Uvoľnené"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Bez zmeny"
-
-#~ msgctxt "@info:status Requested action"
-#~ msgid "Install"
-#~ msgstr "Nainštalovať"
-
-#~ msgctxt "@info:status Requested action"
-#~ msgid "Upgrade"
-#~ msgstr "Aktualizovať"
-
-#~ msgctxt "@info:status Requested action"
-#~ msgid "Downgrade"
-#~ msgstr "Downgradovať"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Held"
-#~ msgstr "Podržané"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Installed"
-#~ msgstr "Nainštalované"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Upgradeable"
-#~ msgstr "Aktualizovateľné"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Broken"
-#~ msgstr "Chybné"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Install Broken"
-#~ msgstr "Inštalácia narušená"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Orphaned"
-#~ msgstr "Opustené"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "New in repository"
-#~ msgstr "Nové v repozitári"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Residual Configuration"
-#~ msgstr "Trvalá konfigurácia"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Not Downloadable"
-#~ msgstr "Nestiahnuteľné"
-
-#~ msgctxt "@info:status Requested action"
-#~ msgid "Purge"
-#~ msgstr "Vyčistiť"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Important for base install"
-#~ msgstr "Dôležité pre základnú inštaláciu"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Version overridden"
-#~ msgstr "Verzia prepísaná"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Installed (auto-removable)"
-#~ msgstr "Inštalované (auto-odstrániteľné)"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Policy Broken"
-#~ msgstr "Politika narušená"
-
-#~ msgctxt "@info:status Package locked at a certain version"
-#~ msgid "Locked"
-#~ msgstr "Zamknuté"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Manually held back"
-#~ msgstr "Ručne podržané späť"
-
-#~ msgctxt "@title:window"
-#~ msgid "Initialization Error"
-#~ msgstr "Chyba inicializácie"
-
-#~ msgctxt "@title:window"
-#~ msgid "Unable to Obtain Package System Lock"
-#~ msgstr "Nie je možné získať systémový kľúč ku balíčkom"
-
-#~ msgctxt "@title:window"
-#~ msgid "Low Disk Space"
-#~ msgstr "Nedostatok miesta na disku"
-
-#~ msgctxt "@title:window"
-#~ msgid "Failed to Apply Changes"
-#~ msgstr "Zlyhalo použitie zmien"
-
-#~ msgctxt "@title:window"
-#~ msgid "Authentication error"
-#~ msgstr "Chyba overenia"
-
-#~ msgctxt "@title:window"
-#~ msgid "Unexpected Error"
-#~ msgstr "Neočakávaná chyba"
-
-#~ msgctxt "@label"
-#~ msgid ""
-#~ "The package system could not be initialized, your configuration may be "
-#~ "broken."
-#~ msgstr ""
-#~ "Balíčkovací systém nie je možné inicializovať, asi máte narušenú "
-#~ "konfiguráciu."
-
-#~ msgctxt "@label"
-#~ msgid ""
-#~ "Another application seems to be using the package system at this time. "
-#~ "You must close all other package managers before you will be able to "
-#~ "install or remove any packages."
-#~ msgstr ""
-#~ "Iná aplikácia práve používa balíčkovací systém. Musíte zavrieť všetkých "
-#~ "ostatných správcov balíčkov predtým ako budete inštalovať alebo "
-#~ "odstraňovať balíčky."
-
-#~ msgctxt "@label"
-#~ msgid ""
-#~ "You do not have enough disk space in the directory at %1 to continue with "
-#~ "this operation."
-#~ msgstr ""
-#~ "Nemáte dosť diskového priestoru v adresári na %1 aby sa mohlo pokračovať "
-#~ "v tejto operácii."
-
-#~ msgctxt "@label"
-#~ msgid "Could not download packages"
-#~ msgstr "Nie je možné stiahnuť balíčky"
-
-#~ msgctxt "@label"
-#~ msgid "An error occurred while applying changes:"
-#~ msgstr "Vyskytla sa chyba pri zavádzaní zmien:"
-
-#~ msgctxt "@label"
-#~ msgid ""
-#~ "This operation cannot continue since proper authorization was not provided"
-#~ msgstr "Táto operácia nemôže pokračovať pretože nebolo vykonané overenie"
-
-#~ msgctxt "@label"
-#~ msgid ""
-#~ "It appears that the QApt worker has either crashed or disappeared. Please "
-#~ "report a bug to the QApt maintainers"
-#~ msgstr ""
-#~ "Zdá sa že QApt worker sa zrútil alebo zmizol. Pošlite prosím hlásenie o "
-#~ "chybe správcom programu QApt"
-
-#~ msgctxt "@label"
-#~ msgid ""
-#~ "The following package has not been verified by its author. Downloading "
-#~ "untrusted packages has been disallowed by your current configuration."
-#~ msgid_plural ""
-#~ "The following packages have not been verified by their authors. "
-#~ "Downloading untrusted packages has been disallowed by your current "
-#~ "configuration."
-#~ msgstr[0] ""
-#~ "Nasledujúci balíček nebol verifikovaný autorom. Sťahovanie neoverených "
-#~ "balíčkov nie je povolené vašou aktuálnou konfiguráciou."
-#~ msgstr[1] ""
-#~ "Nasledujúce balíčky neboli verifikované autorom. Sťahovanie neoverených "
-#~ "balíčkov nie je povolené vašou aktuálnou konfiguráciou."
-#~ msgstr[2] ""
-#~ "Nasledujúce balíčky neboli verifikované autorom. Sťahovanie neoverených "
-#~ "balíčkov nie je povolené vašou aktuálnou konfiguráciou."
-
-#~ msgctxt "@action Reverts all potential changes to the cache"
-#~ msgid "Unmark All"
-#~ msgstr "Odznačiť všetko"
-
-#~ msgctxt "@action Opens the software sources configuration dialog"
-#~ msgid "Configure Software Sources"
-#~ msgstr "Konfigurácia zdrojov softwaru"
-
-#~ msgctxt "@action"
-#~ msgid "Read Markings..."
-#~ msgstr "Načítať označenia..."
-
-#~ msgctxt "@action"
-#~ msgid "Save Markings As..."
-#~ msgstr "Uložiť označenia ako..."
-
-#~ msgctxt "@action"
-#~ msgid "Save Package Download List..."
-#~ msgstr "Uložiť zoznam balíčkov na stiahnutie..."
-
-#~ msgctxt "@action"
-#~ msgid "Download Packages From List..."
-#~ msgstr "Stiahnuť balíčky zo zoznamu..."
-
-#~ msgctxt "@action"
-#~ msgid "Add Downloaded Packages"
-#~ msgstr "Pridať stiahnuté balíčky"
-
-#~ msgctxt "@action"
-#~ msgid "Save Installed Packages List..."
-#~ msgstr "Ulož zoznam inštalovaných balíčkov..."
-
-#~ msgctxt "@action::inmenu"
-#~ msgid "History..."
-#~ msgstr "História..."
-
-#~ msgctxt "@action"
-#~ msgid "Upgrade"
-#~ msgstr "Aktualizovať"
-
-#~ msgctxt "@title:window"
-#~ msgid "Save Markings As"
-#~ msgstr "Uložiť označenia ako"
-
-#~ msgctxt "@label"
-#~ msgid ""
-#~ "The document could not be saved, as it was not possible to write to "
-#~ "<filename>%1</filename>\n"
-#~ "\n"
-#~ "Check that you have write access to this file or that enough disk space "
-#~ "is available."
-#~ msgstr ""
-#~ "Dokument nemohol byť uložený, pretož nebolo umožnené zapisovať do "
-#~ "<filename>%1</filename>\n"
-#~ "\n"
-#~ "Skontrolujte či máte právo zápisu do súboru alebo či máte na disku dosť "
-#~ "miesta."
-
-#~ msgctxt "@title:window"
-#~ msgid "Save Installed Packages List As"
-#~ msgstr "Uložiť zoznam inštalovaných balíčkov ako"
-
-#~ msgctxt "@title:window"
-#~ msgid "Save Download List As"
-#~ msgstr "Uložiť zoznam sťahovaní ako"
-
-#~ msgctxt "@label"
-#~ msgid ""
-#~ "Could not mark changes. Please make sure that the file is a markings file "
-#~ "created by either the Muon Package Manager or the Synaptic Package "
-#~ "Manager."
-#~ msgstr ""
-#~ "Nie je možné označiť zmeny. Presvedčte sa daný súbor je značkovacím "
-#~ "súborom balíčkovacieho menežéra Muon alebo Synaptic."
-
-#~ msgctxt "@title:window"
-#~ msgid "Choose a Directory"
-#~ msgstr "Vyberte adresár"
-
-#~ msgctxt "@label"
-#~ msgid "%1 package was successfully added to the cache"
-#~ msgid_plural "%1 packages were successfully added to the cache"
-#~ msgstr[0] "%1 balíček bol úspešne pridaný do cache"
-#~ msgstr[1] "%1 balíčky boli úspešne pridané do cache"
-#~ msgstr[2] "%1 balíčkov bolo úspešne pridaných do cache"
-
-#~ msgctxt "@label"
-#~ msgid ""
-#~ "No valid packages could be found in this directory. Please make sure the "
-#~ "packages are compatible with your computer and are at the latest version."
-#~ msgstr ""
-#~ "V tomto adresári sa nenašli platné balíčky. Presvedčte sa že balíčky sú "
-#~ "kompatibilné s vaším počítačom a že je to ich posledná verzia."
-
-#~ msgctxt "@title:window"
-#~ msgid "Packages Could Not be Found"
-#~ msgstr "Balíčky neboli nájdené"
-
-#~ msgctxt "@title:window"
-#~ msgid "Package History"
-#~ msgstr "História balíčkov"
-
-#~ msgid "No reviews available for Debian."
-#~ msgstr "Pre Debian nie sú dostupné žiadne revízie."
-
-#~ msgid "Log in to the Ubuntu SSO service"
-#~ msgstr "Prihlásiť sa do služby Ubuntu SSO"
-
-#~ msgid "PackageKit error found"
-#~ msgstr "Našla sa chyba PackageKit"
-
-#~ msgid "PackageKit media change"
-#~ msgstr "Zmena média PackageKit"
-
-#~ msgid "PackageKit Error"
-#~ msgstr "Chyba PackageKit"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 5"
-#~ msgstr "dummy 5"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 6"
-#~ msgstr "dummy 6"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 7"
-#~ msgstr "dummy 7"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 8"
-#~ msgstr "dummy 8"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 9"
-#~ msgstr "dummy 9"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 10"
-#~ msgstr "dummy 10"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 11"
-#~ msgstr "dummy 11"
-
-#~ msgctxt "@label The label used for viewing all members of this category"
-#~ msgid "All"
-#~ msgstr "Všetko"
-
-#~ msgctxt "Category"
-#~ msgid "Unknown"
-#~ msgstr "Neznáme"
-
-#~ msgid "Something went wrong!"
-#~ msgstr "Niečo je zle!"
-
-#~ msgid "Error"
-#~ msgstr "Chyba"
-
-#~ msgid "There are a couple of transaction messages:"
-#~ msgstr "Je niekoľko správ transakcií:"
-
-#~ msgid "Transaction messages"
-#~ msgstr "Správy transakcie"
-
-#~ msgid "Another transaction is still running!"
-#~ msgstr "Už beží iná transakcia!"
-
-#~ msgid "Started downloading packages..."
-#~ msgstr "Spustené sťahovanie balíkov..."
-
-#~ msgid "Started processing packages..."
-#~ msgstr "Spustené spracovanie balíkov..."
-
-#~ msgid "Started downloading %1..."
-#~ msgstr "Spúšťam sťahovanie %1..."
-
-#~ msgid "Started processing %1..."
-#~ msgstr "Spustené spracovanie %1..."
-
-#~ msgctxt "Category"
-#~ msgid "Wallpapers"
-#~ msgstr "Tapety"
-
-#~ msgid "Enter %1 credentials for MakePlayLive (http://makeplaylive.com)"
-#~ msgstr ""
-#~ "Zadajte prihlasovanie údaje %1 pre MakePlayLive (http://makeplaylive.com)"
-
-#~ msgctxt "@label Column label"
-#~ msgid "Download Size"
-#~ msgstr "Veľkosť inštalačného balíka"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"admin"
-#~ "\""
-#~ msgid "System Administration"
-#~ msgstr "Správa systému"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"cli-"
-#~ "mono\""
-#~ msgid "Mono/CLI Infrastructure"
-#~ msgstr "Mono/CLI Infraštruktúra"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"comm"
-#~ "\""
-#~ msgid "Communication"
-#~ msgstr "Komunikácia"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"database\""
-#~ msgid "Databases"
-#~ msgstr "Databázy"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#~ "\""
-#~ msgid "Development"
-#~ msgstr "Vývoj"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"doc\""
-#~ msgid "Documentation"
-#~ msgstr "Dokumentácia"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"debug"
-#~ "\""
-#~ msgid "Debug"
-#~ msgstr "Ladenie"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"editors\""
-#~ msgid "Editors"
-#~ msgstr "Editory"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"electronics\""
-#~ msgid "Electronics"
-#~ msgstr "Elektronika"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"embedded\""
-#~ msgid "Embedded Devices"
-#~ msgstr "Zariadenia"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"fonts"
-#~ "\""
-#~ msgid "Fonts"
-#~ msgstr "Písma"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"games"
-#~ "\""
-#~ msgid "Games and Amusement"
-#~ msgstr "Hry a zábava"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"gnome"
-#~ "\""
-#~ msgid "GNOME Desktop Environment"
-#~ msgstr "GNOME prostredie plochy"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"graphics\""
-#~ msgid "Graphics"
-#~ msgstr "Grafika"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"gnu-r"
-#~ "\""
-#~ msgid "GNU R Statistical System"
-#~ msgstr "GNU R štatistický systém"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"gnustep\""
-#~ msgid "Gnustep Desktop Environment"
-#~ msgstr "Gnustep prostredie plochy"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"hamradio\""
-#~ msgid "Amateur Radio"
-#~ msgstr "Amatérske rádio"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"haskell\""
-#~ msgid "Haskell Programming Language"
-#~ msgstr "Haskell programovací jazyk"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"httpd"
-#~ "\""
-#~ msgid "Web Servers"
-#~ msgstr "Webové servery"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"interpreters\""
-#~ msgid "Interpreted Computer Languages"
-#~ msgstr "Interpretované počítačové jazyky"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"java"
-#~ "\""
-#~ msgid "Java Programming Language"
-#~ msgstr "Java programovací jazyk"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"kde\""
-#~ msgid "KDE Software Compilation"
-#~ msgstr "KDE softwareová kompilácia"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"kernel\""
-#~ msgid "Kernel and Modules"
-#~ msgstr "Kernel a moduly"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"libdevel\""
-#~ msgid "Libraries - Development"
-#~ msgstr "Knižnice - vývoj"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"libs"
-#~ "\""
-#~ msgid "Libraries"
-#~ msgstr "Knižnice"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"lisp"
-#~ "\""
-#~ msgid "Lisp Programming Language"
-#~ msgstr "Lisp programovací jazyk"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"localization\""
-#~ msgid "Localization"
-#~ msgstr "Lokalizácia"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"mail"
-#~ "\""
-#~ msgid "Email"
-#~ msgstr "E-mail"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"math"
-#~ "\""
-#~ msgid "Mathematics"
-#~ msgstr "Matematika"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"misc"
-#~ "\""
-#~ msgid "Miscellaneous - Text-based"
-#~ msgstr "Rôzne - Textovo založené"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"net\""
-#~ msgid "Networking"
-#~ msgstr "Siete"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"news"
-#~ "\""
-#~ msgid "Newsgroups"
-#~ msgstr "Diskusné skupiny"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"ocaml"
-#~ "\""
-#~ msgid "OCaml Programming Language"
-#~ msgstr "OCaml programovací jazyk"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"oldlibs\""
-#~ msgid "Libraries - Old"
-#~ msgstr "Knižnice - staré"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"otherosfs\""
-#~ msgid "Cross Platform"
-#~ msgstr "Cross Platform"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"perl"
-#~ "\""
-#~ msgid "Perl Programming Language"
-#~ msgstr "Perl programovací jazyk"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"php\""
-#~ msgid "PHP Programming Language"
-#~ msgstr "PHP programovací jazyk"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"python\""
-#~ msgid "Python Programming Language"
-#~ msgstr "Python programovací jazyk"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"ruby"
-#~ "\""
-#~ msgid "Ruby Programming Language"
-#~ msgstr "Ruby programovací jazyk"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"science\""
-#~ msgid "Science"
-#~ msgstr "Veda"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"shells\""
-#~ msgid "Shells"
-#~ msgstr "Shelly"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"sound"
-#~ "\""
-#~ msgid "Multimedia"
-#~ msgstr "Multimédiá"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"tex\""
-#~ msgid "TeX Authoring"
-#~ msgstr "TeX autorizácia"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"text"
-#~ "\""
-#~ msgid "Word Processing"
-#~ msgstr "Textové procesory"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#~ "\""
-#~ msgid "Utilities"
-#~ msgstr "Nástroje"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"vcs\""
-#~ msgid "Version Control Systems"
-#~ msgstr "Systémy kontroly verzií"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"web\""
-#~ msgid "Internet"
-#~ msgstr "Internet"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"x11\""
-#~ msgid "Miscellaneous - Graphical"
-#~ msgstr "Rôzne - Grafika"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"xfce"
-#~ "\""
-#~ msgid "Xfce Desktop Environment"
-#~ msgstr "Xfce prostredie plochy"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"zope"
-#~ "\""
-#~ msgid "Zope/Plone Environment"
-#~ msgstr "Zope/Plone prostredie"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"unknown\""
-#~ msgid "Unknown"
-#~ msgstr "Neznáme"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"alien"
-#~ "\""
-#~ msgid "Converted from RPM by Alien"
-#~ msgstr "Konvertované Alienom z RPM"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"translations\""
-#~ msgid "Internationalization and Localization"
-#~ msgstr "Internacionalizácia a lokalizácia"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Debian package section \"non-US\", for packages that "
-#~ "cannot be shipped in the US"
-#~ msgid "Restricted On Export"
-#~ msgstr "Vyhradené na export"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"non-"
-#~ "free\""
-#~ msgid "Non-free"
-#~ msgstr "Non-free"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"contrib\""
-#~ msgid "Contrib"
-#~ msgstr "Contrib"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"education\""
-#~ msgid "Education"
-#~ msgstr "Vzdelávanie"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"introspection\""
-#~ msgid "GObject Introspection Data"
-#~ msgstr "Introspekčné dáta GObject"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Common"
-#~ msgstr "Spoločné"
-
-#~ msgctxt "@item:inlistbox CPU architecture"
-#~ msgid "32-bit"
-#~ msgstr "32-bitové"
-
-#~ msgctxt "@item:inlistbox CPU architecture"
-#~ msgid "64-bit"
-#~ msgstr "64-bitové"
-
-#~ msgctxt "@item:inlistbox PU architecture"
-#~ msgid "Power PC"
-#~ msgstr "Power PC"
-
-#~ msgctxt "@label Easter Egg"
-#~ msgid "This Muon has super cow powers"
-#~ msgstr "Muon má super možnosti"
-
-#~ msgid "Show notifications for available updates"
-#~ msgstr "Zobraziť oznámenia pre dostupné aktualizácie"
-
-#~ msgid "Show the number of available updates"
-#~ msgstr "Zobraziť počet dostupných aktualizácií"
-
-#~ msgid "Bugs found"
-#~ msgstr "Nájdené chyby"
-
-#~ msgid "Checking for bugs..."
-#~ msgstr "Kontrolujú sa chyby..."
-
-#~ msgid "Cannot kill process"
-#~ msgstr "Nemôžem zabiť proces"
-
-#~ msgid ""
-#~ "PackageKit does not tell us a useful status right now! Its status is %1."
-#~ msgstr "PackageKit nám nepovedal použiteľný stav! Jeho stav je %1."
-
-#~ msgid "Muon Notification Daemon"
-#~ msgstr "Démon hlásení pre Muon"
-
-#~ msgid "A Notification Daemon for Muon"
-#~ msgstr "Démon hlásení pre Muon"
-
-#~ msgid ""
-#~ "(C) 2013 Lukas Appelhans, (C) 2009-2012 Jonathan Thomas, (C) 2009 Harald "
-#~ "Sitter"
-#~ msgstr ""
-#~ "(C) 2013 Lukas Appelhans, (C) 2009-2012 Jonathan Thomas, (C) 2009 Harald "
-#~ "Sitter"
-
-#~ msgid "%1 update notifier"
-#~ msgstr "oznamovač aktualizácií %1"
-
-#~ msgid "Muon %1 update notifier"
-#~ msgstr "Oznamovač aktualizácií Muon %1"
-
-#~ msgid "Open Muon..."
-#~ msgstr "Otvoriť Muon..."
-
-#~ msgid "Quit notifier..."
-#~ msgstr "Ukončiť oznamovač..."
-
-#~ msgid "A security update is available for your system."
-#~ msgstr "Pre váš systém je dostupná bezpečnostná aktualizácia."
-
-#~ msgid "An update is available for your system!"
-#~ msgstr "Pre váš systém je dostupná aktualizácia!"
-
-#~ msgid ""
-#~ "There are %1 updated packages, of which %2 were updated for security "
-#~ "reasons!"
-#~ msgstr ""
-#~ "Je %1 aktualizovaných balíkov, z ktorých %2 bolo aktualizovaných z "
-#~ "bezpečnostných dôvodov!"
-
-#~ msgid "%1 packages were updated for security reasons"
-#~ msgstr "%1 balíkov bolo aktualizovaných z bezpečnostných dôvodov"
-
-#~ msgid "A system update is recommended"
-#~ msgstr "Odporúča sa aktualizácia systému"
-
-#~ msgid "System update available"
-#~ msgstr "Je dostupná aktualizácia systému"
-
-#~ msgid "Your system is up-to-date!"
-#~ msgstr "Váš systém je aktuálny!"
-
-#~ msgid "No system update available"
-#~ msgstr "Nie je dostupná aktualizácia systému"
-
-#~ msgid "Chakra-Applications in your system"
-#~ msgstr "Chakra aplikácie vo vašom systéme"
-
-#~ msgid "Applications Backend"
-#~ msgstr "Backend aplikácií"
-
-#~ msgid "Applications in your system"
-#~ msgstr "Aplikácie vo vašom systéme"
-
-#~ msgid "Bodega Backend"
-#~ msgstr "Bodega Backend"
-
-#~ msgid "Install Bodega data in your system"
-#~ msgstr "Nainštalovať údaje Bodega na váš systém"
-
-#~ msgid "Dummy Backend"
-#~ msgstr "Prázdny backend"
-
-#~ msgid "Dummy backend to test muon frontends"
-#~ msgstr "Prázdny backend na test frontendov muon"
-
-#~ msgid "KNewStuff Backend"
-#~ msgstr "KNewStuff Backend"
-
-#~ msgid "Install KNewStuff data in your system"
-#~ msgstr "Nainštalovať KNewStuff dáta na váš systém"
-
-#~ msgid "Install PackageKit data in your system"
-#~ msgstr "Nainštalovať údaje PackageKit na váš systém"
-
-#~ msgid "Finished."
-#~ msgstr "Hotovo."
+msgstr ""

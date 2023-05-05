@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-30 03:36+0000\n"
+"POT-Creation-Date: 2023-05-05 02:14+0000\n"
 "PO-Revision-Date: 2020-10-11 01:25+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -256,7 +256,7 @@ msgstr "Uue %1 hoidla lisamine"
 msgid "Add"
 msgstr "Lisa"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:47
 #: discover/qml/ProgressView.qml:107 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:41
@@ -736,8 +736,8 @@ msgstr "Teave"
 msgid "S&ettings"
 msgstr "Seadistused"
 
-#: discover/qml/DiscoverWindow.qml:157 discover/qml/DiscoverWindow.qml:338
-#: discover/qml/DiscoverWindow.qml:445
+#: discover/qml/DiscoverWindow.qml:157 discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:448
 #, kde-format
 msgid "Error"
 msgstr ""
@@ -747,36 +747,36 @@ msgstr ""
 msgid "Unable to find resource: %1"
 msgstr "Ressurssi ei leitud: %1"
 
-#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Edasi"
 
-#: discover/qml/DiscoverWindow.qml:314
+#: discover/qml/DiscoverWindow.qml:317
 #, kde-format
 msgid "Report this issue"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:341
 #, fuzzy, kde-format
 #| msgid "Votes: %1 out of %2"
 msgid "Error %1 of %2"
 msgstr "Hääli: %1 / %2"
 
-#: discover/qml/DiscoverWindow.qml:383
+#: discover/qml/DiscoverWindow.qml:386
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:396
+#: discover/qml/DiscoverWindow.qml:399
 #, fuzzy, kde-format
 #| msgid "Show contents"
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Sisu näitamine"
 
-#: discover/qml/DiscoverWindow.qml:412 discover/qml/UpdatesPage.qml:98
+#: discover/qml/DiscoverWindow.qml:415 discover/qml/UpdatesPage.qml:98
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr ""

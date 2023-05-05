@@ -1,158 +1,157 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the discover package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Enol P. <enolp@softastur.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-03 02:09+0000\n"
-"PO-Revision-Date: 2023-05-04 05:27+0200\n"
-"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
-"Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
-"Language: ka\n"
+"PO-Revision-Date: 2023-05-03 23:48+0200\n"
+"Last-Translator: Enol P. <enolp@softastur.org>\n"
+"Language-Team: \n"
+"Language: ast_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #: notifier/DiscoverNotifier.cpp:154
 #, kde-format
 msgid "View Updates"
-msgstr "განახლებების ნახვა"
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Security updates available"
-msgstr "ხელმისაწვდომია უსაფრთხოების განახლებები"
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:273
 #, kde-format
 msgid "Updates available"
-msgstr "ხელმისაწვდომია განახლება"
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:275
 #, kde-format
 msgid "System up to date"
-msgstr "სისტემა განახლებულია"
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:277
 #, kde-format
 msgid "Computer needs to restart"
-msgstr "საჭიროა კომპიუტერის რესტარტი"
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:279
 #, kde-format
 msgid "Offline"
-msgstr "გათიშული"
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:281
 #, kde-format
 msgid "Applying unattended updates…"
-msgstr "განახლებების გადატარება…"
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:315
 #, kde-format
 msgid "Restart is required"
-msgstr "საჭიროა რესტარტი"
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:316
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
-msgstr "განახლებების ძალაში შესასვლელად საჭიროა მოწყობილობის გადატვირთვა."
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:322
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
-msgstr "რესტარტი"
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:342
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
-msgstr "განახლება"
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:343
 #, kde-format
 msgid "Upgrade available"
-msgstr "განახლება ხელმისაწვდომია"
+msgstr ""
 
 #: notifier/DiscoverNotifier.cpp:344
 #, kde-format
 msgid "New version: %1"
-msgstr "ახალი ვერსია: %1"
+msgstr ""
 
 #: notifier/main.cpp:39
 #, kde-format
 msgid "Discover Notifier"
-msgstr "Discover-ის გამფრთხილებელი"
+msgstr ""
 
 #: notifier/main.cpp:41
 #, kde-format
 msgid "System update status notifier"
-msgstr "სისტემის განახლების მდგომარეობის გამფრთხილებელი"
+msgstr ""
 
 #: notifier/main.cpp:43
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "© 2010-2022 Plasma -ის პროგრამისტების გუნდი"
+msgstr ""
 
 #: notifier/main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Temuri Doghonadze"
+msgstr "Softastur"
 
 #: notifier/main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Temuri.doghonadze@gmail.com"
+msgstr "alministradores@softastur.org"
 
 #: notifier/main.cpp:52
 #, kde-format
 msgid "Replace an existing instance"
-msgstr "გაშვებული ასლის ჩანაცვლება"
+msgstr ""
 
 #: notifier/main.cpp:54
 #, kde-format
 msgid "Do not show the notifier"
-msgstr "გამფრთხილებელი აღარ მაჩვენო"
+msgstr ""
 
 #: notifier/main.cpp:54
 #, kde-format
 msgid "hidden"
-msgstr "დამალული"
+msgstr ""
 
 #: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
 #, kde-format
 msgid "Updates"
-msgstr "განახლებები"
+msgstr ""
 
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Open Discover…"
-msgstr "Discover-ის …"
+msgstr ""
 
 #: notifier/NotifierItem.cpp:55
 #, kde-format
 msgid "See Updates…"
-msgstr "განახლებების ნახვა…"
+msgstr ""
 
 #: notifier/NotifierItem.cpp:60
 #, kde-format
 msgid "Refresh…"
-msgstr "განახლება…"
+msgstr ""
 
 #: notifier/NotifierItem.cpp:64
 #, kde-format
 msgid "Restart to apply installed updates"
-msgstr "განახლებების გადასატარებლად გადატვირთეთ კომპიუტერი"
+msgstr ""
 
 #: notifier/NotifierItem.cpp:65
 #, kde-format
 msgid "Click to restart the device"
-msgstr "მოწყობილობის გადასატვირთად დააწკაპუნეთ"
+msgstr ""

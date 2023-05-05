@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-25 02:28+0000\n"
+"POT-Creation-Date: 2023-05-05 02:14+0000\n"
 "PO-Revision-Date: 2022-08-29 11:34+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -550,7 +550,7 @@ msgid "Local bundle"
 msgstr "Helyi csomag"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1680
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:732
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Hibás appstream URL: „%1”"
@@ -1117,13 +1117,13 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Betűkészletek"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:286
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 "Ellenőrizze, hogy az Appstream megfelelően van-e telepítve a rendszeren"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:322
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:323
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1131,12 +1131,12 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:844
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:845
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nem lehet eltávolítani ezt: „%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:965
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1144,14 +1144,14 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:973
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:974
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
 #, fuzzy, kde-format
 #| msgid "Upgrade"
 msgid "Upgrade to %1 %2"
 msgstr "Frissítés"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:991
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""

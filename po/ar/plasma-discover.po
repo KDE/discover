@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-30 03:36+0000\n"
+"POT-Creation-Date: 2023-05-05 02:14+0000\n"
 "PO-Revision-Date: 2023-04-06 12:20+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -261,7 +261,7 @@ msgstr "أضف مستودع %1 جديد"
 msgid "Add"
 msgstr "أضف"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:47
 #: discover/qml/ProgressView.qml:107 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:41
@@ -754,8 +754,8 @@ msgstr "&عن"
 msgid "S&ettings"
 msgstr "إ&عدادات"
 
-#: discover/qml/DiscoverWindow.qml:157 discover/qml/DiscoverWindow.qml:338
-#: discover/qml/DiscoverWindow.qml:445
+#: discover/qml/DiscoverWindow.qml:157 discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:448
 #, kde-format
 msgid "Error"
 msgstr "خطأ"
@@ -765,34 +765,34 @@ msgstr "خطأ"
 msgid "Unable to find resource: %1"
 msgstr "تعذّر العثور على المورد:‏ %1"
 
-#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "تابِع"
 
-#: discover/qml/DiscoverWindow.qml:314
+#: discover/qml/DiscoverWindow.qml:317
 #, kde-format
 msgid "Report this issue"
 msgstr "أبلغ عن هذه المشكلة"
 
-#: discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:341
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "الخطأ %1 من %2"
 
-#: discover/qml/DiscoverWindow.qml:383
+#: discover/qml/DiscoverWindow.qml:386
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "اعرض السابق"
 
-#: discover/qml/DiscoverWindow.qml:396
+#: discover/qml/DiscoverWindow.qml:399
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "اعرض التالي"
 
-#: discover/qml/DiscoverWindow.qml:412 discover/qml/UpdatesPage.qml:98
+#: discover/qml/DiscoverWindow.qml:415 discover/qml/UpdatesPage.qml:98
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "انسخ إلى الحافظة"

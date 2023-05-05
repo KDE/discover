@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-30 03:36+0000\n"
+"POT-Creation-Date: 2023-05-05 02:14+0000\n"
 "PO-Revision-Date: 2023-02-07 10:31\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -271,7 +271,7 @@ msgstr "Дадаць новы рэпазіторый \"%1\""
 msgid "Add"
 msgstr "Дадаць"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:47
 #: discover/qml/ProgressView.qml:107 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:41
@@ -764,8 +764,8 @@ msgstr "&Пра праграму"
 msgid "S&ettings"
 msgstr "&Налады"
 
-#: discover/qml/DiscoverWindow.qml:157 discover/qml/DiscoverWindow.qml:338
-#: discover/qml/DiscoverWindow.qml:445
+#: discover/qml/DiscoverWindow.qml:157 discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:448
 #, kde-format
 msgid "Error"
 msgstr "Памылка"
@@ -775,34 +775,34 @@ msgstr "Памылка"
 msgid "Unable to find resource: %1"
 msgstr "Не ўдалося знайсці рэсурс: %1"
 
-#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Працягнуць"
 
-#: discover/qml/DiscoverWindow.qml:314
+#: discover/qml/DiscoverWindow.qml:317
 #, kde-format
 msgid "Report this issue"
 msgstr "Паведаміць пра гэтую праблему"
 
-#: discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:341
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Памылка %1 з %2"
 
-#: discover/qml/DiscoverWindow.qml:383
+#: discover/qml/DiscoverWindow.qml:386
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Паказаць папярэдняе"
 
-#: discover/qml/DiscoverWindow.qml:396
+#: discover/qml/DiscoverWindow.qml:399
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Паказаць наступнае"
 
-#: discover/qml/DiscoverWindow.qml:412 discover/qml/UpdatesPage.qml:98
+#: discover/qml/DiscoverWindow.qml:415 discover/qml/UpdatesPage.qml:98
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Скапіяваць у буфер абмену"
