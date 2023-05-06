@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2023-04-02 05:13+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -2079,8 +2079,8 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
-msgid "Packages to remove"
-msgstr "წასაშლელი პაკეტი"
+msgid "Confirm Changes"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2534,6 +2534,9 @@ msgstr "სისტემური პროგრამები"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "დამატებები"
+
+#~ msgid "Packages to remove"
+#~ msgstr "წასაშლელი პაკეტი"
 
 #~ msgid "%1, released on %2"
 #~ msgstr "%1. რელიზის თარიღი: %2"

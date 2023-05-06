@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -2040,8 +2040,8 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
-msgid "Packages to remove"
-msgstr "ဖယ်ရှားမည့် ပတ်ကေ့ချ်များ"
+msgid "Confirm Changes"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2496,6 +2496,9 @@ msgstr "စစ်စတမ် အပ်ဂရိတ်"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "အက်အွန်များ"
+
+#~ msgid "Packages to remove"
+#~ msgstr "ဖယ်ရှားမည့် ပတ်ကေ့ချ်များ"
 
 #~ msgid "%1, released on %2"
 #~ msgstr "%2 တွင်ထုတ်လွှင့်ခဲ့သော %1"

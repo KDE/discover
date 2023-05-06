@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
-"PO-Revision-Date: 2023-04-28 07:03+0100\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
+"PO-Revision-Date: 2023-05-05 22:50+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
 "Language: eo\n"
@@ -1912,7 +1912,11 @@ msgid_plural ""
 "Failed to update %1 packages\n"
 "%2"
 msgstr[0] ""
+"Malsukcesis ĝisdatigi %1 pakon\n"
+"%2"
 msgstr[1] ""
+"Malsukcesis ĝisdatigi %1 pakojn\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:172
@@ -1957,8 +1961,8 @@ msgstr "Senkonektaj Ĝisdatigoj"
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Sukcesis ĝisdatigi %1 pakon"
+msgstr[1] "Sukcesis ĝisdatigi %1 pakojn"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
 #, kde-format
@@ -2006,8 +2010,8 @@ msgstr "Vendisto:"
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 (plus %1 dependeco)"
+msgstr[1] "%2 (plus %1 dependecoj)"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
 #, kde-format
@@ -2029,8 +2033,8 @@ msgstr "Sistema ĝisdatigo"
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 pako estos ĝisdatigata"
+msgstr[1] "%1 pakoj estos ĝisdatigataj"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
 #, kde-format
@@ -2079,8 +2083,8 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
-msgid "Packages to remove"
-msgstr "Pakoj por forigi"
+msgid "Confirm Changes"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2176,7 +2180,11 @@ msgid_plural ""
 "This action will also remove the following packages:\n"
 "%2"
 msgstr[0] ""
+"Tiu ago forigos ankaŭ jenan pakon:\n"
+"%2"
 msgstr[1] ""
+"Tiu ago forigos ankaŭ jenajn pakojn:\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
 #, kde-format
@@ -2537,3 +2545,6 @@ msgstr "Sistema Programaro"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Aldonaĵoj"
+
+#~ msgid "Packages to remove"
+#~ msgstr "Pakoj por forigi"

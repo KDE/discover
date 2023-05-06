@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2023-02-17 17:09+0700\n"
 "Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -2101,8 +2101,8 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
-msgid "Packages to remove"
-msgstr "Paket untuk dihapus"
+msgid "Confirm Changes"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2561,6 +2561,9 @@ msgstr "Perangkat Lunak Sistem"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Pernik"
+
+#~ msgid "Packages to remove"
+#~ msgstr "Paket untuk dihapus"
 
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, dirilis pada %2"

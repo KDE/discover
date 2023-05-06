@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2023-04-10 11:21+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -2095,9 +2095,11 @@ msgstr ""
 "zajmujących się pakietami w twojej dystrybucji."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, kde-format
-msgid "Packages to remove"
-msgstr "Pakiety do usunięcia"
+#, fuzzy, kde-format
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "Bez zmian"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2561,6 +2563,9 @@ msgstr "Oprogramowanie systemowe"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Dodatki"
+
+#~ msgid "Packages to remove"
+#~ msgstr "Pakiety do usunięcia"
 
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, wydany w dniu %2"
@@ -3049,10 +3054,6 @@ msgstr "Dodatki"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Wyczyszczony"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Bez zmian"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

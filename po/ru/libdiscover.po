@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2022-11-11 15:41+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2124,9 +2124,11 @@ msgstr ""
 "поведение является ошибочным, сообщите об этом разработчикам дистрибутива."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, kde-format
-msgid "Packages to remove"
-msgstr "Удаление пакетов"
+#, fuzzy, kde-format
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "Без изменений"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2617,6 +2619,9 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Дополнения"
 
+#~ msgid "Packages to remove"
+#~ msgstr "Удаление пакетов"
+
 #~ msgid "%1, released on %2"
 #~ msgstr "%1 от %2"
 
@@ -3077,10 +3082,6 @@ msgstr "Дополнения"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "полностью удалён"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Без изменений"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2020-10-21 13:36+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -2101,8 +2101,8 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
-msgid "Packages to remove"
-msgstr "חבילות להסרה"
+msgid "Confirm Changes"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2545,6 +2545,9 @@ msgstr "עדכוני מערכת"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "תוספים"
+
+#~ msgid "Packages to remove"
+#~ msgstr "חבילות להסרה"
 
 #, fuzzy
 #~| msgid "%1 (%2)"

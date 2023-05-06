@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2023-04-21 23:32+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2055,9 +2055,11 @@ msgstr ""
 "된 것 같으면 배포판 패키지 관리자에게 버그를 보그하십시오."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, kde-format
-msgid "Packages to remove"
-msgstr "삭제할 패키지"
+#, fuzzy, kde-format
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "변경 없음"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2507,6 +2509,9 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "부가 기능"
 
+#~ msgid "Packages to remove"
+#~ msgstr "삭제할 패키지"
+
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, %2에 출시됨"
 
@@ -2955,10 +2960,6 @@ msgstr "부가 기능"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "깨끗이 삭제됨"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "변경 없음"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

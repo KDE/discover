@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2017-09-08 16:13+0200\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2208,9 +2208,11 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, kde-format
-msgid "Packages to remove"
-msgstr "Πακέτα προς αφαίρεση"
+#, fuzzy, kde-format
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "Χωρίς αλλαγή"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, fuzzy, kde-format
@@ -2702,6 +2704,9 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Πρόσθετα Plasma"
 
+#~ msgid "Packages to remove"
+#~ msgstr "Πακέτα προς αφαίρεση"
+
 #, fuzzy
 #~| msgid "Add Remote"
 #~ msgid "Remote: "
@@ -3146,10 +3151,6 @@ msgstr "Πρόσθετα Plasma"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Διαγράφηκε"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Χωρίς αλλαγή"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

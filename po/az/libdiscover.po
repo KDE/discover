@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2022-08-16 17:03+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -2089,8 +2089,8 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
-msgid "Packages to remove"
-msgstr "Paketlərin silinməsi"
+msgid "Confirm Changes"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2555,6 +2555,9 @@ msgstr "Sistem Proqram Təminatı"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Əlavələr"
+
+#~ msgid "Packages to remove"
+#~ msgstr "Paketlərin silinməsi"
 
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, %2 buraxılışı"

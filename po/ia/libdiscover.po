@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2023-04-01 23:55+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -2100,8 +2100,8 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
-msgid "Packages to remove"
-msgstr "Pcchettos de remover"
+msgid "Confirm Changes"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2564,6 +2564,9 @@ msgstr "Software de Systema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Addons(Elementos adjunte)"
+
+#~ msgid "Packages to remove"
+#~ msgstr "Pcchettos de remover"
 
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, relaxate sur %2"

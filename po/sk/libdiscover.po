@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2023-03-15 19:07+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -2109,9 +2109,11 @@ msgstr ""
 "vašej distribúcie."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, kde-format
-msgid "Packages to remove"
-msgstr "Balíky na odstránenie"
+#, fuzzy, kde-format
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "Bez zmeny"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2574,6 +2576,9 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplnky"
 
+#~ msgid "Packages to remove"
+#~ msgstr "Balíky na odstránenie"
+
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, vydané na %2"
 
@@ -3032,10 +3037,6 @@ msgstr "Doplnky"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Uvoľnené"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Bez zmeny"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

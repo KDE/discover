@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2013-10-03 04:53+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -2235,10 +2235,10 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Packages Could Not be Found"
-msgid "Packages to remove"
-msgstr "Дестелер табылған жоқ"
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "Өзгеріс жоқ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2709,6 +2709,12 @@ msgid "Addons"
 msgstr ""
 
 #, fuzzy
+#~| msgctxt "@title:window"
+#~| msgid "Packages Could Not be Found"
+#~ msgid "Packages to remove"
+#~ msgstr "Дестелер табылған жоқ"
+
+#, fuzzy
 #~| msgctxt "@info:status Requested action"
 #~| msgid "Remove"
 #~ msgid "Remote: "
@@ -3078,10 +3084,6 @@ msgstr ""
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Тазаланған"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Өзгеріс жоқ"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

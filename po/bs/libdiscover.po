@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2014-01-31 20:46+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -2139,8 +2139,10 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, fuzzy, kde-format
-msgid "Packages to remove"
-msgstr "Paketi se ne mogu naći"
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "Bez izmjene"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2613,6 +2615,10 @@ msgid "Addons"
 msgstr ""
 
 #, fuzzy
+#~ msgid "Packages to remove"
+#~ msgstr "Paketi se ne mogu naći"
+
+#, fuzzy
 #~| msgctxt "@info:status Requested action"
 #~| msgid "Remove"
 #~ msgid "Remote: "
@@ -2976,10 +2982,6 @@ msgstr ""
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Očišćeno"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Bez izmjene"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2023-04-01 09:11+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2109,9 +2109,11 @@ msgstr ""
 "неї, як про ваду, пакувальникам вашого дистрибутива."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, kde-format
-msgid "Packages to remove"
-msgstr "Пакунки на вилучення"
+#, fuzzy, kde-format
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "Без змін"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2581,6 +2583,9 @@ msgstr "Програмне забезпечення системи"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Додатки"
+
+#~ msgid "Packages to remove"
+#~ msgstr "Пакунки на вилучення"
 
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, випущено %2"
@@ -3077,10 +3082,6 @@ msgstr "Додатки"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Повністю вилучено"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Без змін"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

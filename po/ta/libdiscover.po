@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2023-04-02 16:47+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -2067,8 +2067,8 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
-msgid "Packages to remove"
-msgstr "நீக்கவேண்டியவை"
+msgid "Confirm Changes"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2520,6 +2520,9 @@ msgstr "இயங்குதள நிரல்கள்"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "துணை நிரல்கள்"
+
+#~ msgid "Packages to remove"
+#~ msgstr "நீக்கவேண்டியவை"
 
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, %2 அன்று வெளியிடப்பட்டது"

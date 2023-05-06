@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2023-04-01 14:15+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -2118,9 +2118,11 @@ msgstr ""
 "la production des paquets de votre distribution."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, kde-format
-msgid "Packages to remove"
-msgstr "Paquets à supprimer"
+#, fuzzy, kde-format
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "Pas de changement"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2596,6 +2598,9 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Modules complémentaires"
 
+#~ msgid "Packages to remove"
+#~ msgstr "Paquets à supprimer"
+
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, publié le %2"
 
@@ -3051,10 +3056,6 @@ msgstr "Modules complémentaires"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Purgé"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Pas de changement"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

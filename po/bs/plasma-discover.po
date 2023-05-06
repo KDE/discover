@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -37,7 +37,6 @@ msgid ""
 msgstr ""
 
 #: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
-#: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr ""
@@ -263,7 +262,7 @@ msgstr "Dodaci"
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:47
 #: discover/qml/ProgressView.qml:107 discover/qml/SourcesPage.qml:190
-#: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Otkaži"
@@ -776,7 +775,7 @@ msgctxt "@action:button"
 msgid "Show Next"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:415 discover/qml/UpdatesPage.qml:98
+#: discover/qml/DiscoverWindow.qml:415
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr ""
@@ -1125,80 +1124,93 @@ msgstr ""
 msgid "See Technical Details"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:83
+#: discover/qml/UpdatesPage.qml:94
 #, kde-format
+msgctxt "@info %1 is the name of the user's distro/OS"
 msgid ""
-"If you would like to report the update issue to your distribution's "
-"packagers, include this information:"
+"If the error indicated above looks like a real issue and not a temporary "
+"network error, please report it to %1, not KDE."
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
-msgid "Error message copied to clipboard"
+msgid "Copy Text"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:134
+#: discover/qml/UpdatesPage.qml:106
+#, kde-format
+msgctxt "@info %1 is the name of the user's distro/OS"
+msgid "Error message copied. Remember to report it to %1, not KDE!"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:113
+#, kde-format
+msgctxt "@action:button %1 is the name of the user's distro/OS"
+msgid "Report Issue to %1"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:140
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Ažuriraj sve"
 
-#: discover/qml/UpdatesPage.qml:134
+#: discover/qml/UpdatesPage.qml:140
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Ažuriraj sve"
 
-#: discover/qml/UpdatesPage.qml:175
+#: discover/qml/UpdatesPage.qml:181
 #, kde-format
 msgid "Ignore"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:221
+#: discover/qml/UpdatesPage.qml:227
 #, kde-format
 msgid "Select All"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:229
+#: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Select None"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:236
+#: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:243
+#: discover/qml/UpdatesPage.qml:249
 #, kde-format
 msgid "Total size: %1"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:278
+#: discover/qml/UpdatesPage.qml:284
 #, kde-format
 msgid "Restart Now"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:378
+#: discover/qml/UpdatesPage.qml:384
 #, kde-format
 msgid "%1"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:394
+#: discover/qml/UpdatesPage.qml:400
 #, fuzzy, kde-format
 #| msgid "Install"
 msgid "Installing"
 msgstr "Instaliraj"
 
-#: discover/qml/UpdatesPage.qml:430
+#: discover/qml/UpdatesPage.qml:436
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgid "Update from:"
 msgstr "Ažuriraj sve"
 
-#: discover/qml/UpdatesPage.qml:442
+#: discover/qml/UpdatesPage.qml:448
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1206,46 +1218,46 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:449
+#: discover/qml/UpdatesPage.qml:455
 #, kde-format
 msgid "More Information…"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:477
+#: discover/qml/UpdatesPage.qml:483
 #, fuzzy, kde-format
 #| msgid "Update"
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Ažuriraj"
 
-#: discover/qml/UpdatesPage.qml:490
+#: discover/qml/UpdatesPage.qml:496
 #, fuzzy, kde-format
 #| msgid "Update"
 msgctxt "@info"
 msgid "Updates"
 msgstr "Ažuriraj"
 
-#: discover/qml/UpdatesPage.qml:499
+#: discover/qml/UpdatesPage.qml:505
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:511 discover/qml/UpdatesPage.qml:518
-#: discover/qml/UpdatesPage.qml:525
+#: discover/qml/UpdatesPage.qml:517 discover/qml/UpdatesPage.qml:524
+#: discover/qml/UpdatesPage.qml:531
 #, fuzzy, kde-format
 #| msgid "Update"
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Ažuriraj"
 
-#: discover/qml/UpdatesPage.qml:532
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:545
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

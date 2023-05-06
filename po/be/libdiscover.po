@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2023-02-06 22:01\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -2103,8 +2103,8 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
-msgid "Packages to remove"
-msgstr "Пакункі да выдалення"
+msgid "Confirm Changes"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2571,6 +2571,9 @@ msgstr "Сістэмнае праграмнае забеспячэнне"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Дапаўненні"
+
+#~ msgid "Packages to remove"
+#~ msgstr "Пакункі да выдалення"
 
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, выпушчана %2"

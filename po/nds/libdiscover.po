@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2014-07-06 22:08+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -2308,10 +2308,10 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Packages Could Not be Found"
-msgid "Packages to remove"
-msgstr "Paketen laat sik nich finnen."
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "Keen Ännern"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2803,6 +2803,12 @@ msgid "Addons"
 msgstr ""
 
 #, fuzzy
+#~| msgctxt "@title:window"
+#~| msgid "Packages Could Not be Found"
+#~ msgid "Packages to remove"
+#~ msgstr "Paketen laat sik nich finnen."
+
+#, fuzzy
 #~| msgctxt "@info:status Requested action"
 #~| msgid "Remove"
 #~ msgid "Remote: "
@@ -3055,10 +3061,6 @@ msgstr ""
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Oprüümt"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Keen Ännern"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

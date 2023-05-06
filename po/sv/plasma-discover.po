@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2022-09-25 09:29+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -40,7 +40,6 @@ msgstr ""
 "rapportera detta som ett paketeringsproblem till din distribution."
 
 #: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
-#: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgid "Report This Issue"
 msgstr "Rapportera problemet"
@@ -270,7 +269,7 @@ msgstr "Lägg till"
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:47
 #: discover/qml/ProgressView.qml:107 discover/qml/SourcesPage.qml:190
-#: discover/qml/UpdatesPage.qml:253 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Avbryt"
@@ -801,7 +800,7 @@ msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Visa innehåll"
 
-#: discover/qml/DiscoverWindow.qml:415 discover/qml/UpdatesPage.qml:98
+#: discover/qml/DiscoverWindow.qml:415
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Kopiera till klippbordet"
@@ -1138,80 +1137,92 @@ msgstr ""
 msgid "See Technical Details"
 msgstr "Visa teknisk detaljinformation"
 
-#: discover/qml/UpdatesPage.qml:83
+#: discover/qml/UpdatesPage.qml:94
 #, kde-format
+msgctxt "@info %1 is the name of the user's distro/OS"
 msgid ""
-"If you would like to report the update issue to your distribution's "
-"packagers, include this information:"
+"If the error indicated above looks like a real issue and not a temporary "
+"network error, please report it to %1, not KDE."
 msgstr ""
-"Om du vill rapportera uppdateringsproblemet till distributionens paketerare, "
-"inkludera då den här informationen:"
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
-msgid "Error message copied to clipboard"
-msgstr "Felmeddelande kopierat till klippbordet"
+msgid "Copy Text"
+msgstr ""
 
-#: discover/qml/UpdatesPage.qml:134
+#: discover/qml/UpdatesPage.qml:106
+#, kde-format
+msgctxt "@info %1 is the name of the user's distro/OS"
+msgid "Error message copied. Remember to report it to %1, not KDE!"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:113
+#, fuzzy, kde-format
+#| msgid "Report This Issue"
+msgctxt "@action:button %1 is the name of the user's distro/OS"
+msgid "Report Issue to %1"
+msgstr "Rapportera problemet"
+
+#: discover/qml/UpdatesPage.qml:140
 #, fuzzy, kde-format
 #| msgid "Update Selected"
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Uppdatera markerade"
 
-#: discover/qml/UpdatesPage.qml:134
+#: discover/qml/UpdatesPage.qml:140
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Uppdatera alla"
 
-#: discover/qml/UpdatesPage.qml:175
+#: discover/qml/UpdatesPage.qml:181
 #, kde-format
 msgid "Ignore"
 msgstr "Ignorera"
 
-#: discover/qml/UpdatesPage.qml:221
+#: discover/qml/UpdatesPage.qml:227
 #, kde-format
 msgid "Select All"
 msgstr "Markera alla"
 
-#: discover/qml/UpdatesPage.qml:229
+#: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Select None"
 msgstr "Avmarkera alla"
 
-#: discover/qml/UpdatesPage.qml:236
+#: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "Starta om automatiskt efter uppdateringen är färdig"
 
-#: discover/qml/UpdatesPage.qml:243
+#: discover/qml/UpdatesPage.qml:249
 #, kde-format
 msgid "Total size: %1"
 msgstr "Total storlek: %1"
 
-#: discover/qml/UpdatesPage.qml:278
+#: discover/qml/UpdatesPage.qml:284
 #, kde-format
 msgid "Restart Now"
 msgstr "Starta om nu"
 
-#: discover/qml/UpdatesPage.qml:378
+#: discover/qml/UpdatesPage.qml:384
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:394
+#: discover/qml/UpdatesPage.qml:400
 #, kde-format
 msgid "Installing"
 msgstr "Installerar"
 
-#: discover/qml/UpdatesPage.qml:430
+#: discover/qml/UpdatesPage.qml:436
 #, kde-format
 msgid "Update from:"
 msgstr "Uppdatera från:"
 
-#: discover/qml/UpdatesPage.qml:442
+#: discover/qml/UpdatesPage.qml:448
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1219,47 +1230,57 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:449
+#: discover/qml/UpdatesPage.qml:455
 #, kde-format
 msgid "More Information…"
 msgstr "Mer information…"
 
-#: discover/qml/UpdatesPage.qml:477
+#: discover/qml/UpdatesPage.qml:483
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Hämtar uppdateringar…"
 
-#: discover/qml/UpdatesPage.qml:490
+#: discover/qml/UpdatesPage.qml:496
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Uppdateringar"
 
-#: discover/qml/UpdatesPage.qml:499
+#: discover/qml/UpdatesPage.qml:505
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Starta om systemet för att färdigställa uppdateringsprocessen"
 
-#: discover/qml/UpdatesPage.qml:511 discover/qml/UpdatesPage.qml:518
-#: discover/qml/UpdatesPage.qml:525
+#: discover/qml/UpdatesPage.qml:517 discover/qml/UpdatesPage.qml:524
+#: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Uppdaterad"
 
-#: discover/qml/UpdatesPage.qml:532
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Bör kontrollera uppdateringar"
 
-#: discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:545
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid för senaste uppdatering okänd"
+
+#~ msgid ""
+#~ "If you would like to report the update issue to your distribution's "
+#~ "packagers, include this information:"
+#~ msgstr ""
+#~ "Om du vill rapportera uppdateringsproblemet till distributionens "
+#~ "paketerare, inkludera då den här informationen:"
+
+#~ msgid "Error message copied to clipboard"
+#~ msgstr "Felmeddelande kopierat till klippbordet"
 
 #~ msgid "Sources"
 #~ msgstr "Källor"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2012-06-13 11:10+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -2201,11 +2201,9 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Packages Could Not be Found"
-msgid "Packages to remove"
-msgstr "Không thể tìm thấy gói"
+#, kde-format
+msgid "Confirm Changes"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2664,6 +2662,12 @@ msgstr "Bản cập nhật"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "@title:window"
+#~| msgid "Packages Could Not be Found"
+#~ msgid "Packages to remove"
+#~ msgstr "Không thể tìm thấy gói"
 
 #, fuzzy
 #~| msgid "Applications"

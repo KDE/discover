@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2020-10-11 01:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -2156,9 +2156,11 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, kde-format
-msgid "Packages to remove"
-msgstr "Eemaldatavad paketid"
+#, fuzzy, kde-format
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "Muutusi pole"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2647,6 +2649,9 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Lisad"
 
+#~ msgid "Packages to remove"
+#~ msgstr "Eemaldatavad paketid"
+
 #, fuzzy
 #~| msgctxt "@info:status Requested action"
 #~| msgid "Remove"
@@ -3088,10 +3093,6 @@ msgstr "Lisad"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Kustutatud"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Muutusi pole"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

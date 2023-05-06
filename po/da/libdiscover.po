@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2020-10-04 16:58+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -2151,9 +2151,11 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, kde-format
-msgid "Packages to remove"
-msgstr "Pakker der skal fjernes"
+#, fuzzy, kde-format
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "Ingen ændring"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2637,6 +2639,9 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tilføjelser"
 
+#~ msgid "Packages to remove"
+#~ msgstr "Pakker der skal fjernes"
+
 #, fuzzy
 #~| msgctxt "@info:status Requested action"
 #~| msgid "Remove"
@@ -3087,10 +3092,6 @@ msgstr "Tilføjelser"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "Udrenset"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "Ingen ændring"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

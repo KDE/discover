@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2021-09-09 13:59+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/"
@@ -2038,8 +2038,8 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
-msgid "Packages to remove"
-msgstr "നീക്കം ചെയ്യാനുള്ള പാക്കേജുകൾ"
+msgid "Confirm Changes"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2475,6 +2475,9 @@ msgstr "സിസ്റ്റം അപ്ഗ്രേഡ്"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "ആഡ്ഓണുകൾ"
+
+#~ msgid "Packages to remove"
+#~ msgstr "നീക്കം ചെയ്യാനുള്ള പാക്കേജുകൾ"
 
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, %2 ൽ പുറത്തിറങ്ങിയത്"

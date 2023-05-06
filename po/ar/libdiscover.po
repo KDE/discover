@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2023-04-06 12:19+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -2088,9 +2088,11 @@ msgstr ""
 "هذا خطأ ، فالرجاء الإبلاغ عنه على أنه خطأ إلى محزمي التطبيقات  في توزيعتك."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, kde-format
-msgid "Packages to remove"
-msgstr "الحزم لإزالتها"
+#, fuzzy, kde-format
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "لا تغييرات"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2555,6 +2557,9 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "الإضافات"
 
+#~ msgid "Packages to remove"
+#~ msgstr "الحزم لإزالتها"
+
 #~ msgid "%1, released on %2"
 #~ msgstr "‏‏%1، صدر في %2"
 
@@ -2980,10 +2985,6 @@ msgstr "الإضافات"
 #~ msgctxt "@status describes a past-tense action"
 #~ msgid "Purged"
 #~ msgstr "نُقّيت"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "لا تغييرات"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

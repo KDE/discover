@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -2194,10 +2194,10 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, fuzzy, kde-format
-#| msgctxt "@title:column"
-#| msgid "Package"
-msgid "Packages to remove"
-msgstr "بوغچا"
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "ئۆزگىرىش يوق"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2662,6 +2662,12 @@ msgid "Addons"
 msgstr ""
 
 #, fuzzy
+#~| msgctxt "@title:column"
+#~| msgid "Package"
+#~ msgid "Packages to remove"
+#~ msgstr "بوغچا"
+
+#, fuzzy
 #~| msgctxt "@info:status Requested action"
 #~| msgid "Remove"
 #~ msgid "Remote: "
@@ -2880,10 +2886,6 @@ msgstr ""
 #~ msgctxt "@info:status describes a past-tense action"
 #~ msgid "Upgraded"
 #~ msgstr "يۈكسەلدۈرۈلگەن"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "ئۆزگىرىش يوق"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"

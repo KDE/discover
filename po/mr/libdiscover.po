@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-05 02:14+0000\n"
+"POT-Creation-Date: 2023-05-06 02:09+0000\n"
 "PO-Revision-Date: 2013-03-28 16:07+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -2145,9 +2145,10 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, fuzzy, kde-format
-#| msgid "Installed"
-msgid "Packages to remove"
-msgstr "प्रतिष्ठापीत केलेले"
+#| msgctxt "@info:status Package state"
+#| msgid "No Change"
+msgid "Confirm Changes"
+msgstr "बदल नाही"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2602,6 +2603,11 @@ msgid "Addons"
 msgstr ""
 
 #, fuzzy
+#~| msgid "Installed"
+#~ msgid "Packages to remove"
+#~ msgstr "प्रतिष्ठापीत केलेले"
+
+#, fuzzy
 #~| msgctxt "@info:status Requested action"
 #~| msgid "Remove"
 #~ msgid "Remote: "
@@ -2868,10 +2874,6 @@ msgstr ""
 #~ msgctxt "@info:status describes a past-tense action"
 #~ msgid "Upgraded"
 #~ msgstr "अद्ययावत करण्यायोग्य"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "No Change"
-#~ msgstr "बदल नाही"
 
 #, fuzzy
 #~| msgid "Installed"
