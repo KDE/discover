@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 02:09+0000\n"
-"PO-Revision-Date: 2023-04-05 10:40+0100\n"
+"PO-Revision-Date: 2023-05-06 11:07+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1124,24 +1124,25 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"Si l'error indicat anteriorment pareix un problema real i no un error "
+"temporal de la xarxa, informeu-ne a %1, no a KDE."
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "Copia el text"
 
 #: discover/qml/UpdatesPage.qml:106
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
-msgstr ""
+msgstr "S'ha copiat el missatge d'error. Recordeu informar-ne a %1, no a KDE!"
 
 #: discover/qml/UpdatesPage.qml:113
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "Informa d'este problema"
+msgstr "Informa del problema a %1"
 
 #: discover/qml/UpdatesPage.qml:140
 #, kde-format
@@ -1249,13 +1250,3 @@ msgstr "Cal comprovar si hi ha actualitzacions"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Es desconeix l'hora de l'última actualització"
-
-#~ msgid ""
-#~ "If you would like to report the update issue to your distribution's "
-#~ "packagers, include this information:"
-#~ msgstr ""
-#~ "Si voleu informar del problema d'actualització als empaquetadors de la "
-#~ "vostra distribució, incloeu esta informació:"
-
-#~ msgid "Error message copied to clipboard"
-#~ msgstr "S'ha copiat el missatge d'error al porta-retalls"

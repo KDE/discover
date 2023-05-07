@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 02:09+0000\n"
-"PO-Revision-Date: 2023-04-08 11:00+0100\n"
+"PO-Revision-Date: 2023-05-06 15:42+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -1110,24 +1110,25 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"If the error indicated above looks like a real issue and not a temporary "
+"network error, please report it to %1, not KDE."
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "Copy Text"
 
 #: discover/qml/UpdatesPage.qml:106
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
-msgstr ""
+msgstr "Error message copied. Remember to report it to %1, not KDE!"
 
 #: discover/qml/UpdatesPage.qml:113
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "Report This Issue"
+msgstr "Report Issue to %1"
 
 #: discover/qml/UpdatesPage.qml:140
 #, kde-format

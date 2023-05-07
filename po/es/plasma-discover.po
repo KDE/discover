@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 02:09+0000\n"
-"PO-Revision-Date: 2023-04-05 04:58+0200\n"
+"PO-Revision-Date: 2023-05-06 21:03+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.03.80\n"
+"X-Generator: Lokalize 23.04.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: discover/DiscoverObject.cpp:159
@@ -1124,24 +1124,25 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"Si el error que se indica parece ser un problema real y no un error de red "
+"temporal, informe del mismo a %1, no a KDE."
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "Copiar texto"
 
 #: discover/qml/UpdatesPage.qml:106
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
-msgstr ""
+msgstr "Mensaje de error copiado. Recuerde informar del mismo a %1, no a KDE."
 
 #: discover/qml/UpdatesPage.qml:113
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "Notificar este problema"
+msgstr "Notificar este problema a %1"
 
 #: discover/qml/UpdatesPage.qml:140
 #, kde-format

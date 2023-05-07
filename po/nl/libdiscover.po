@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 02:09+0000\n"
-"PO-Revision-Date: 2023-04-01 10:38+0200\n"
+"PO-Revision-Date: 2023-05-06 12:29+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2091,11 +2091,9 @@ msgstr ""
 "de makers van uw distributie."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "No Change"
+#, kde-format
 msgid "Confirm Changes"
-msgstr "Geen wijziging"
+msgstr "Wijzigingen bevestigen"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format

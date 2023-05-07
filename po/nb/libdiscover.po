@@ -2561,6 +2561,3 @@ msgstr "Systemprogram"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
-
-#~ msgid "Packages to remove"
-#~ msgstr "Pakker som skal fjernes"

@@ -1239,13 +1239,3 @@ msgstr "Se etter oppdateringer"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for sist oppdatering er ukjent"
-
-#~ msgid ""
-#~ "If you would like to report the update issue to your distribution's "
-#~ "packagers, include this information:"
-#~ msgstr ""
-#~ "Hvis du vil melde fra om feilen til dem som har pakket distribusjonen, ta "
-#~ "med denne informasjonen:"
-
-#~ msgid "Error message copied to clipboard"
-#~ msgstr "Feilmeldingen ble kopiert til utklippstavla"
