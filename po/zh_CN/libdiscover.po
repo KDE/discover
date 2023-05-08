@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-06 02:09+0000\n"
+"POT-Creation-Date: 2023-05-08 02:08+0000\n"
 "PO-Revision-Date: 2023-02-24 12:43\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2269,11 +2269,46 @@ msgstr "备用版本"
 msgid "ostree remotes"
 msgstr "ostree 远程服务器"
 
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
+#, kde-format
+msgid ""
+"rpm-ostree-backend: Error: Can not start a transaction for resource with an "
+"invalid format. Please file a bug."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
+msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
+
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
 msgstr "rpm-ostree 安装进程失败："
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format

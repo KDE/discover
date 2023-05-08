@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-06 02:09+0000\n"
-"PO-Revision-Date: 2023-04-06 12:19+0400\n"
+"POT-Creation-Date: 2023-05-08 02:08+0000\n"
+"PO-Revision-Date: 2023-05-07 20:01+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -2088,11 +2088,9 @@ msgstr ""
 "هذا خطأ ، فالرجاء الإبلاغ عنه على أنه خطأ إلى محزمي التطبيقات  في توزيعتك."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "No Change"
+#, kde-format
 msgid "Confirm Changes"
-msgstr "لا تغييرات"
+msgstr "أكد التغييرات"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2332,11 +2330,46 @@ msgstr "الإصدارة الاحتياطيّة"
 msgid "ostree remotes"
 msgstr "‏ostree البعيدة"
 
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+msgstr "rpm-ostree: لم يعثر على عملية نشر قابلة للإقلاع. الرجاء أبلغ عنها."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
+#, kde-format
+msgid ""
+"rpm-ostree-backend: Error: Can not start a transaction for resource with an "
+"invalid format. Please file a bug."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
+msgstr "rpm-ostree: لم يعثر على عملية نشر قابلة للإقلاع. الرجاء أبلغ عنها."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+msgstr "rpm-ostree: لم يعثر على عملية نشر قابلة للإقلاع. الرجاء أبلغ عنها."
+
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
 msgstr "فشلت عملية rpm-ostree بالخرج التالي:"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+msgstr "rpm-ostree: لم يعثر على عملية نشر قابلة للإقلاع. الرجاء أبلغ عنها."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format

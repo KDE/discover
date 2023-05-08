@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-06 02:09+0000\n"
+"POT-Creation-Date: 2023-05-08 02:08+0000\n"
 "PO-Revision-Date: 2023-05-05 22:50+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
@@ -2317,11 +2317,46 @@ msgstr "Rezerva versio"
 msgid "ostree remotes"
 msgstr "ostree remotes"
 
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+msgstr "rpm-ostree: Neniu startita deplojo trovita. Bonvolu registri cimon."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
+#, kde-format
+msgid ""
+"rpm-ostree-backend: Error: Can not start a transaction for resource with an "
+"invalid format. Please file a bug."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
+msgstr "rpm-ostree: Neniu startita deplojo trovita. Bonvolu registri cimon."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+msgstr "rpm-ostree: Neniu startita deplojo trovita. Bonvolu registri cimon."
+
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
 msgstr "rpm-ostree-transakcio malsukcesis kun:"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+msgstr "rpm-ostree: Neniu startita deplojo trovita. Bonvolu registri cimon."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format

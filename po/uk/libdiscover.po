@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-06 02:09+0000\n"
+"POT-Creation-Date: 2023-05-08 02:08+0000\n"
 "PO-Revision-Date: 2023-05-06 09:27+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2355,11 +2355,54 @@ msgstr "Резервна версія"
 msgid "ostree remotes"
 msgstr "Сховища ostree"
 
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+msgstr ""
+"rpm-ostree: не знайдено придатних до завантаження розгорнутих систем. Будь "
+"ласка, повідомте розробникам про цю ваду."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
+#, kde-format
+msgid ""
+"rpm-ostree-backend: Error: Can not start a transaction for resource with an "
+"invalid format. Please file a bug."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
+msgstr ""
+"rpm-ostree: не знайдено придатних до завантаження розгорнутих систем. Будь "
+"ласка, повідомте розробникам про цю ваду."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid ""
+"rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+msgstr ""
+"rpm-ostree: не знайдено придатних до завантаження розгорнутих систем. Будь "
+"ласка, повідомте розробникам про цю ваду."
+
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
 msgstr "Операція rpm-ostree зазнала невдачі:"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
+#, fuzzy, kde-format
+#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+msgstr ""
+"rpm-ostree: не знайдено придатних до завантаження розгорнутих систем. Будь "
+"ласка, повідомте розробникам про цю ваду."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format

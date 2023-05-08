@@ -1248,14 +1248,3 @@ msgstr "Skal sjå etter oppdateringar"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for siste oppdatering er ukjend"
-
-# skip-rule: pakke-kjonn
-#~ msgid ""
-#~ "If you would like to report the update issue to your distribution's "
-#~ "packagers, include this information:"
-#~ msgstr ""
-#~ "Ta med denne informasjonen viss du vil melda frå om feilen til dei som "
-#~ "har pakka distribusjonen:"
-
-#~ msgid "Error message copied to clipboard"
-#~ msgstr "Feilmeldinga vart kopiert til utklippstavla"

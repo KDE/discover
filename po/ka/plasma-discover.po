@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 02:09+0000\n"
-"PO-Revision-Date: 2023-04-06 05:51+0200\n"
+"PO-Revision-Date: 2023-05-07 06:08+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1112,24 +1112,26 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"თუ ზემოთ მოხსენიებული შეცდომა რეალურ პრობლემას წააგავს და არა ქსელის დროებით "
+"შეცდომას, მის აღმოსაფხვრელად დაუკავშირდით %1-ს და არა KDE-ს."
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "ტექსტის კოპირება"
 
 #: discover/qml/UpdatesPage.qml:106
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
+"შეცდომის შეტყობინების ტექსტი კოპირებულია. გადაუგზავნეთ ის %1-ს და არა KDE-ს!"
 
 #: discover/qml/UpdatesPage.qml:113
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "ამ პრობლემის რეპორტი"
+msgstr "პრობლემის გადაგზავნა %1-სთვის"
 
 #: discover/qml/UpdatesPage.qml:140
 #, kde-format
