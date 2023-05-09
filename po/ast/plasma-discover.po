@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 02:09+0000\n"
-"PO-Revision-Date: 2023-05-03 23:47+0200\n"
+"PO-Revision-Date: 2023-05-04 15:24+0200\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
 "Language: ast\n"
@@ -173,7 +173,7 @@ msgstr ""
 #: discover/main.cpp:125
 #, kde-format
 msgid "Aleix Pol Gonzalez"
-msgstr ""
+msgstr "Aleix Pol i Gonzàlez"
 
 #: discover/main.cpp:126
 #, kde-format
@@ -796,7 +796,7 @@ msgstr ""
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
-msgstr ""
+msgstr "Cargando…"
 
 #: discover/qml/InstallApplicationButton.qml:30
 #, kde-format
@@ -1149,7 +1149,7 @@ msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
 "address within that backend"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:455
 #, kde-format
