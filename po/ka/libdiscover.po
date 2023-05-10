@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-08 02:08+0000\n"
-"PO-Revision-Date: 2023-05-07 06:06+0200\n"
+"PO-Revision-Date: 2023-05-09 10:00+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2311,11 +2311,12 @@ msgid "ostree remotes"
 msgstr "ostree -ის დაშორებულები"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
-msgstr "rpm-ostree: ჩატვირთული გაშლა ნაპოვნი არაა. შეავსეთ შეცდომის ანგარიში."
+msgstr ""
+"rpm-ostree-backend: შეცდომა: DBus-ის ინტერფეისი მოწოდებული არაა. შეავსეთ "
+"შეცდომის ანგარიში."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
@@ -2323,21 +2324,25 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: შეცდომა: არასწორი ფორმატის მქონე რესურსისთვის "
+"ტრანზაქციის დაწყება შეუძლებელია. შეავსეთ შეცდომის ანგარიში."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
-msgstr "rpm-ostree: ჩატვირთული გაშლა ნაპოვნი არაა. შეავსეთ შეცდომის ანგარიში."
+msgstr ""
+"rpm-ostree-backend: შეცდომა: ცარიელი მიმართვის ბაზის შეცვლა შეუძლებელია. "
+"შეავსეთ შეცდომის ანგარიში."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
-msgstr "rpm-ostree: ჩატვირთული გაშლა ნაპოვნი არაა. შეავსეთ შეცდომის ანგარიში."
+msgstr ""
+"rpm-ostree-backend: შეცდომა: მოთხოვნილია უცნობი ოპერაცია. შეავსეთ შეცდომის "
+"ანგარიში."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
@@ -2346,10 +2351,11 @@ msgid "rpm-ostree transaction failed with:"
 msgstr "rpm-ostree ტრანზაქცია შეცდომით დასრულდა:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
-msgstr "rpm-ostree: ჩატვირთული გაშლა ნაპოვნი არაა. შეავსეთ შეცდომის ანგარიში."
+msgstr ""
+"rpm-ostree-backend: შეცდომა: რესურსის ფორმატი უცნობია. შეავსეთ შეცდომის "
+"ანგარიში."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format

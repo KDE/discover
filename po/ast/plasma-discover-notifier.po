@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-03 02:09+0000\n"
-"PO-Revision-Date: 2023-05-03 23:48+0200\n"
+"PO-Revision-Date: 2023-05-09 21:39+0200\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
 "Language: ast\n"
@@ -35,7 +35,7 @@ msgstr ""
 #: notifier/DiscoverNotifier.cpp:275
 #, kde-format
 msgid "System up to date"
-msgstr ""
+msgstr "El sistema ta anováu"
 
 #: notifier/DiscoverNotifier.cpp:277
 #, kde-format
@@ -154,4 +154,4 @@ msgstr ""
 #: notifier/NotifierItem.cpp:65
 #, kde-format
 msgid "Click to restart the device"
-msgstr ""
+msgstr "Calca pa reaniciar el preséu"
