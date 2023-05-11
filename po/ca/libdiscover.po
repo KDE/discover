@@ -2337,6 +2337,7 @@ msgstr "Versió alternativa de reserva"
 msgid "ostree remotes"
 msgstr "Remots d'«ostree»"
 
+# skip-rule: kct-backend
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
 #, kde-format
 msgid ""
@@ -2345,6 +2346,7 @@ msgstr ""
 "«rpm-ostree-backend»: Error: No s'ha proporcionat cap interfície del DBus. "
 "Informeu de l'error."
 
+# skip-rule: kct-backend
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
 msgid ""
@@ -2354,6 +2356,7 @@ msgstr ""
 "«rpm-ostree-backend»: Error: No s'ha pogut iniciar una transacció per a un "
 "recurs amb format no vàlid. Informeu de l'error."
 
+# skip-rule: kct-backend
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
 #, kde-format
 msgid ""
@@ -2362,6 +2365,7 @@ msgstr ""
 "«rpm-ostree-backend»: Error: No s'ha pogut fer «rebase» a una «ref» no "
 "vàlida. Informeu de l'error."
 
+# skip-rule: kct-backend
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
 #, kde-format
@@ -2377,6 +2381,7 @@ msgstr ""
 msgid "rpm-ostree transaction failed with:"
 msgstr "La transacció «rpm-ostree» ha fallat per:"
 
+# skip-rule: kct-backend
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
