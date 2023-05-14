@@ -101,6 +101,10 @@ int main(int argc, char **argv)
     // needs to be set before we create the QGuiApplication
     QCoreApplication::setAttribute(Qt::AA_DisableSessionManager, true);
 #if WITH_QTWEBVIEW
+    { // as required by a QtWebEngine warning
+        QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts, true);
+        QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGLRhi);
+    }
     QtWebView::initialize();
 #endif
 
