@@ -331,8 +331,10 @@ void FwupdBackend::setRemotes(GPtrArray *remotes)
         if (!fwupd_remote_get_enabled(remote))
             continue;
 
-        if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL)
+        if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL
+            || fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_DIRECTORY) {
             continue;
+        }
 
         fwupd_client_refresh_remote_async(client, remote, m_cancellable, fwupd_client_refresh_remote_cb, this);
     }
