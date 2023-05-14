@@ -69,6 +69,7 @@ static DiscoverAction *createActionForService(const QString &servicePath, Packag
                 Q_EMIT backend->passiveMessage(i18n("Failed to start '%1': %2", service->name(), job->errorString()));
             }
         });
+        job->start();
     });
     return action;
 }
