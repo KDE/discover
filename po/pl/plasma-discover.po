@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 02:09+0000\n"
-"PO-Revision-Date: 2023-04-10 11:22+0200\n"
+"PO-Revision-Date: 2023-05-13 08:04+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -1127,24 +1127,25 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"Jeśli wyżej wspomniany błąd wygląda jak prawdziwy błąd, a nie tymczasowa "
+"przerwa sieciowa, to zalecam zgłoszenie go na %1, a nie do KDE."
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "Skopiuj tekst"
 
 #: discover/qml/UpdatesPage.qml:106
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
-msgstr ""
+msgstr "Skopiowano opis błędu. Pamiętaj, aby zgłosić go do %1, a nie KDE!"
 
 #: discover/qml/UpdatesPage.qml:113
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "Zgłoś ten błąd"
+msgstr "Zgłoś ten błąd do %1"
 
 #: discover/qml/UpdatesPage.qml:140
 #, kde-format

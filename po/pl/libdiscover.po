@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-08 02:08+0000\n"
-"PO-Revision-Date: 2023-04-10 11:21+0200\n"
+"PO-Revision-Date: 2023-05-13 08:07+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -2095,11 +2095,9 @@ msgstr ""
 "zajmujących się pakietami w twojej dystrybucji."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "No Change"
+#, kde-format
 msgid "Confirm Changes"
-msgstr "Bez zmian"
+msgstr "Potwierdź zmiany"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2336,12 +2334,12 @@ msgid "ostree remotes"
 msgstr "serwery zdalne ostree"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree: Nie znaleziono uruchomień. Zalecamy zgłoszenie tego jako błędu."
+"rpm-ostree-backend: Błąd: Nie podano interfejsu DBus. Zalecamy zgłoszenie "
+"tego jako błędu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
@@ -2349,23 +2347,25 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Błąd: Nie można rozpocząć transakcji dla zasobu o "
+"nieprawidłowym formacie. Zalecamy zgłoszenie tego jako błędu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree: Nie znaleziono uruchomień. Zalecamy zgłoszenie tego jako błędu."
+"rpm-ostree-backend: Błąd: Nie można zmienić podstawy na pustym ref. Zalecamy "
+"zgłoszenie tego jako błędu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree: Nie znaleziono uruchomień. Zalecamy zgłoszenie tego jako błędu."
+"rpm-ostree-backend: Błąd: Zażądano nieznanego działania. Zalecamy zgłoszenie "
+"tego jako błędu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
@@ -2374,11 +2374,11 @@ msgid "rpm-ostree transaction failed with:"
 msgstr "Transakcja rpm-ostree nie udała się z powodu:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree: Nie znaleziono uruchomień. Zalecamy zgłoszenie tego jako błędu."
+"rpm-ostree-backend: Błąd: Nieznany format zasobu. Zalecamy zgłoszenie tego "
+"jako błędu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
