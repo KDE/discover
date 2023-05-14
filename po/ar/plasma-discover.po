@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Safa Alfulaij <safaalfulaij@hotmail.com>, 2013, ٢٠١٥, 2018.
+# Safa Alfulaij <safaalfulaij@hotmail.com>, 2013, 2015, 2018.
 # Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
@@ -567,7 +567,7 @@ msgstr "‏ابحث عن ‏%1"
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%2 -  ٠ عنصر"
+msgstr[0] "%2 -  0 عنصر"
 msgstr[1] "%2 - عنصر واحد"
 msgstr[2] "%2 - عنصرين"
 msgstr[3] "%2 - %1 عناصر"
@@ -578,7 +578,7 @@ msgstr[5] "%2 - %1 عنصر"
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "‏ابحث عن - ‏٠"
+msgstr[0] "‏ابحث عن - ‏0"
 msgstr[1] "‏ابحث عن - ‏عنصر واحد"
 msgstr[2] "‏ابحث عن - ‏عنصرين"
 msgstr[3] "‏ابحث عن - ‏%1 عناصر"

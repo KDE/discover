@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Safa Alfulaij <safaalfulaij@hotmail.com>, 2013, 2015, ٢٠١٥, 2018.
+# Safa Alfulaij <safaalfulaij@hotmail.com>, 2013, 2015, 2015, 2018.
 # Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
@@ -129,7 +129,7 @@ msgstr "إضافات دمية"
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
-msgstr "دمية ١"
+msgstr "دمية 1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
 #, kde-format
@@ -142,7 +142,7 @@ msgstr "دمية بها أشياء"
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
-msgstr "دمية ٢٫١"
+msgstr "دمية 2٫1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
 #, kde-format
@@ -154,13 +154,13 @@ msgstr "دمية ببعض الأشياء"
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
-msgstr "دمية ٣"
+msgstr "دمية 3"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"
-msgstr "دمية ٤"
+msgstr "دمية 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5

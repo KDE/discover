@@ -1208,7 +1208,7 @@ msgstr "Het systeem opnieuw opstarten om het proces van bijwerken te voltooien"
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
-msgstr "Actueel"
+msgstr "Bijgewerkt"
 
 #: discover/qml/UpdatesPage.qml:533
 #, kde-format
