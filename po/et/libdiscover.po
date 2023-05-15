@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-20 03:00+0000\n"
+"POT-Creation-Date: 2023-05-15 02:33+0000\n"
 "PO-Revision-Date: 2020-10-11 01:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -553,13 +553,13 @@ msgstr "%1 (%2)"
 msgid "Local bundle"
 msgstr "Kohalik kimp"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1652
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1651
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:729
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Vigane appstream'i URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1756
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1755
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -2065,7 +2065,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (pluss %1 sõltuvus)"
 msgstr[1] "%2 (pluss %1 sõltuvust)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
 msgstr "Hoidla URL:"

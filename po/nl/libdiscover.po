@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-20 03:00+0000\n"
+"POT-Creation-Date: 2023-05-15 02:33+0000\n"
 "PO-Revision-Date: 2023-02-28 09:26+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
@@ -543,13 +543,13 @@ msgstr "%1 (gebruiker)"
 msgid "Local bundle"
 msgstr "Lokale bundel"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1652
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1651
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:729
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Misvormde appstream-URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1756
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1755
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Bron '%1' toevoegen is mislukt: %2"
@@ -1993,7 +1993,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (plus %1 afhankelijkheid)"
 msgstr[1] "%2 (plus %1 afhankelijkheden)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
 msgstr "Installatiebron-URL:"

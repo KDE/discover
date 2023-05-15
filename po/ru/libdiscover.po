@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-20 03:00+0000\n"
+"POT-Creation-Date: 2023-05-15 02:33+0000\n"
 "PO-Revision-Date: 2023-04-15 13:46+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -554,13 +554,13 @@ msgstr "%1 (пользователь)"
 msgid "Local bundle"
 msgstr "Локальный пакет"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1652
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1651
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:729
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Некорректная ссылка AppStream «%1»."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1756
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1755
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Не удалось добавить источник «%1»: %2"
@@ -2018,7 +2018,7 @@ msgstr[1] "%2 (и %1 зависимости)"
 msgstr[2] "%2 (и %1 зависимостей)"
 msgstr[3] "%2 (и %1 зависимость)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
 msgstr "Адрес репозитория:"

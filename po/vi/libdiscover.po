@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-20 03:00+0000\n"
+"POT-Creation-Date: 2023-05-15 02:33+0000\n"
 "PO-Revision-Date: 2012-06-13 11:10+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -568,13 +568,13 @@ msgstr ""
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1652
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1651
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:729
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1756
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1755
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -2113,7 +2113,7 @@ msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
 msgstr ""
