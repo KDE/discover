@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-08 02:08+0000\n"
+"POT-Creation-Date: 2023-05-15 02:02+0000\n"
 "PO-Revision-Date: 2023-05-08 04:33+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -537,13 +537,13 @@ msgstr "%1 (uzanto)"
 msgid "Local bundle"
 msgstr "Loka pakaĵo"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1680
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1679
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Misformita appstream URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1784
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1783
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Malsukcesis aldoni fonton '%1': %2"
@@ -2013,7 +2013,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (plus %1 dependeco)"
 msgstr[1] "%2 (plus %1 dependecoj)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
 msgstr "Deponejo URL:"

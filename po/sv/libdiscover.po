@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-08 02:08+0000\n"
+"POT-Creation-Date: 2023-05-15 02:02+0000\n"
 "PO-Revision-Date: 2022-09-25 09:30+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -544,13 +544,13 @@ msgstr "%1 (användare)"
 msgid "Local bundle"
 msgstr "Lokal packe"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1680
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1679
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Felaktig webbadress för appstream '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1784
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1783
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Misslyckades lägga till källan '%1': %2"
@@ -2027,7 +2027,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (plus %1 beroende)"
 msgstr[1] "%2 (plus %1 beroenden)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
 msgstr "Arkivets webbadress:"

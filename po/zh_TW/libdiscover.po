@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-08 02:08+0000\n"
+"POT-Creation-Date: 2023-05-15 02:02+0000\n"
 "PO-Revision-Date: 2023-04-14 21:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -543,13 +543,13 @@ msgstr "%1 (使用者)"
 msgid "Local bundle"
 msgstr "本機 Bundle"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1680
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1679
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正確的 appstream 網址 '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1784
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1783
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "新增來源「%1」失敗：%2"
@@ -1974,7 +1974,7 @@ msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 （加上 %1 個依賴庫）"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
 msgstr "軟體庫 URL："

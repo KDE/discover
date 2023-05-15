@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-08 02:08+0000\n"
-"PO-Revision-Date: 2023-04-02 16:47+0530\n"
+"POT-Creation-Date: 2023-05-15 02:02+0000\n"
+"PO-Revision-Date: 2023-05-14 15:17+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.03.90\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -538,13 +538,13 @@ msgstr "%1 (பயனர்)"
 msgid "Local bundle"
 msgstr "உள்ளமை தொகுப்பு"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1680
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1679
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "முறையற்ற appstream முகவரி '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1784
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1783
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' என்ற மூலத்தை சேர்ப்பதில் சிக்கல்: %2"
@@ -1734,7 +1734,7 @@ msgstr "பயனர் உரிமைவழங்க காத்திரு�
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
 #, kde-format
 msgid "The transaction is currently copying files…"
-msgstr ""
+msgstr "செயல், கோப்புகளை நகலெடுக்கிறது…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
 #, kde-format
@@ -2000,7 +2000,7 @@ msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (மேலும் தேவையான %1)"
 msgstr[1] "%2 (மேலும் தேவையான %1)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:102
+#: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
 msgstr "களஞ்சிய முகவரி:"
@@ -2068,7 +2068,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
 msgid "Confirm Changes"
-msgstr ""
+msgstr "மாற்றங்களை உறுதிசெய்"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
