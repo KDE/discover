@@ -304,7 +304,7 @@ void RpmOstreeTransaction::fakeProgress(const QByteArray &msg)
 {
     QString message = QString::fromUtf8(msg);
     int progress = this->progress();
-    if (message.contains("Receiving metadata objects")) {
+    if (message.contains(QLatin1String("Receiving metadata objects"))) {
         progress += 10;
     } else if (message.contains(QLatin1String("Checking out tree"))) {
         progress += 5;

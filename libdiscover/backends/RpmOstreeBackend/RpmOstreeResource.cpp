@@ -113,7 +113,8 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     } else {
         m_appstreamid = QString();
     }
-    m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace('/', '-').replace('_', '-') + QLatin1String(".") + m_checksum;
+    m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace(QLatin1Char('/'), QLatin1Char('-')).replace(QLatin1Char('_'), QLatin1Char('-'))
+        + QLatin1String(".") + m_checksum;
 #ifdef QT_DEBUG
     qInfo() << "rpm-ostree-backend: Found deployment:" << m_appstreamid;
 #endif
@@ -198,7 +199,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
     gpointer key, value;
     g_hash_table_iter_init(&iter, refs);
     while (g_hash_table_iter_next(&iter, &key, &value)) {
-        auto ref = QString((char *)key);
+        auto ref = QString::fromUtf8((char *)key);
         if (ref == newVersionBranch) {
             m_nextMajorVersion = newMajorVersion;
             m_nextMajorVersionRef = newVersionBranch;

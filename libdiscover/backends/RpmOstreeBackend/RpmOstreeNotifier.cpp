@@ -195,7 +195,7 @@ void RpmOstreeNotifier::checkSystemUpdateClassic()
         // deployment for the new version. First, look for the new version
         // string in rpm-ostree stdout
         QString newVersion, line;
-        QString output = QString(m_stdout);
+        QString output = QString::fromUtf8(m_stdout);
         QTextStream stream(&output);
         while (stream.readLineInto(&line)) {
             if (line.contains(QLatin1String("Version: "))) {

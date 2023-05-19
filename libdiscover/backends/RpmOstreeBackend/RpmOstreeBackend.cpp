@@ -413,7 +413,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
     while (iterator.hasNext()) {
         RpmOstreeResource *deployment = iterator.next();
         QString deploymentVersion = deployment->version();
-        QStringList deploymentVersionSplit = deploymentVersion.split('.');
+        QStringList deploymentVersionSplit = deploymentVersion.split(QLatin1Char('.'));
         if (!deploymentVersionSplit.empty()) {
             deploymentVersion = deploymentVersionSplit.at(0);
         }
