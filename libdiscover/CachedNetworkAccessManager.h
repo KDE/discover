@@ -10,7 +10,9 @@
 #include <QNetworkAccessManager>
 #include <QQmlNetworkAccessManagerFactory>
 
-class Q_DECL_EXPORT CachedNetworkAccessManager : public QNetworkAccessManager
+#include "discovercommon_export.h"
+
+class DISCOVERCOMMON_EXPORT CachedNetworkAccessManager : public QNetworkAccessManager
 {
     Q_OBJECT
 public:

@@ -128,6 +128,8 @@ QStringList AppStreamUtils::appstreamIds(const QUrl &appstreamUrl)
 
 QString AppStreamUtils::versionString(const QString &version, const AppStream::Component &appdata)
 {
+    Q_UNUSED(appdata);
+
     if (version.isEmpty()) {
         return {};
     }

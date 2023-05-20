@@ -14,29 +14,31 @@
 #include <QUrl>
 #include <resources/AbstractResource.h>
 
+#include "discovercommon_export.h"
+
 namespace AppStreamUtils
 {
-Q_DECL_EXPORT QUrl imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind);
+DISCOVERCOMMON_EXPORT QUrl imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind);
 
-Q_DECL_EXPORT QString changelogToHtml(const AppStream::Component &appdata);
+DISCOVERCOMMON_EXPORT QString changelogToHtml(const AppStream::Component &appdata);
 
-Q_DECL_EXPORT Screenshots fetchScreenshots(const AppStream::Component &appdata);
+DISCOVERCOMMON_EXPORT Screenshots fetchScreenshots(const AppStream::Component &appdata);
 
-Q_DECL_EXPORT QJsonArray licenses(const AppStream::Component &appdata);
+DISCOVERCOMMON_EXPORT QJsonArray licenses(const AppStream::Component &appdata);
 
-Q_DECL_EXPORT QJsonArray licenses(const QString &spdxExpression);
+DISCOVERCOMMON_EXPORT QJsonArray licenses(const QString &spdxExpression);
 
-Q_DECL_EXPORT QJsonObject license(const QString &spdxId);
+DISCOVERCOMMON_EXPORT QJsonObject license(const QString &spdxId);
 
-Q_DECL_EXPORT QStringList appstreamIds(const QUrl &appstreamUrl);
+DISCOVERCOMMON_EXPORT QStringList appstreamIds(const QUrl &appstreamUrl);
 
 /// Helps implement AbstractResource::versionString
-Q_DECL_EXPORT QString versionString(const QString &version, const AppStream::Component &appdata);
+DISCOVERCOMMON_EXPORT QString versionString(const QString &version, const AppStream::Component &appdata);
 
-Q_DECL_EXPORT QString contentRatingText(const AppStream::Component &appdata);
-Q_DECL_EXPORT QString contentRatingDescription(const AppStream::Component &appdata);
-Q_DECL_EXPORT AbstractResource::ContentIntensity contentRatingIntensity(const AppStream::Component &appdata);
-Q_DECL_EXPORT uint contentRatingMinimumAge(const AppStream::Component &appdata);
+DISCOVERCOMMON_EXPORT QString contentRatingText(const AppStream::Component &appdata);
+DISCOVERCOMMON_EXPORT QString contentRatingDescription(const AppStream::Component &appdata);
+DISCOVERCOMMON_EXPORT AbstractResource::ContentIntensity contentRatingIntensity(const AppStream::Component &appdata);
+DISCOVERCOMMON_EXPORT uint contentRatingMinimumAge(const AppStream::Component &appdata);
 
-Q_DECL_EXPORT QList<AppStream::Component> componentsByCategories(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind);
+DISCOVERCOMMON_EXPORT QList<AppStream::Component> componentsByCategories(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind);
 }
