@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-30 04:15+0000\n"
-"PO-Revision-Date: 2023-04-29 08:36\n"
+"PO-Revision-Date: 2023-05-22 14:04\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -391,7 +391,7 @@ msgstr "分享"
 #: discover/qml/ApplicationPage.qml:634
 #, kde-format
 msgid "Send a link for this application"
-msgstr "发送链接到应用程序"
+msgstr "发送此应用程序的链接"
 
 #: discover/qml/ApplicationPage.qml:650
 #, kde-format
