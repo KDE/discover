@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-15 02:02+0000\n"
-"PO-Revision-Date: 2023-02-24 12:43\n"
+"PO-Revision-Date: 2023-05-22 13:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/discover/libdiscover.pot\n"
-"X-Crowdin-File-ID: 4109\n"
+"X-Crowdin-File: /kf6-trunk/messages/discover/libdiscover.pot\n"
+"X-Crowdin-File-ID: 42673\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -940,17 +940,16 @@ msgid "Delete settings and user data"
 msgstr "删除设置和用户数据"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "删除设置和用户数据"
+msgstr "清除设置和用户数据…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr "%1 的的权限"
+msgstr "%1 的权限"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:56
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
@@ -1111,18 +1110,14 @@ msgid "Cannot remove '%1'"
 msgstr "无法移除“%1”"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:965
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
 "<b>%1 的新主要版本已经发布！</b>\n"
-"如需更新到此版本，请确保应用所有待处理的更新，并重启您的系统。"
+"如需升级到此版本，请确保安装所有可用更新，并重启您的系统。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:974
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:406
@@ -1131,10 +1126,9 @@ msgid "Upgrade to %1 %2"
 msgstr "升级到 %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
-#, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
+#, kde-format
 msgid "A new major version has been released"
-msgstr "<b>新的主要版本已经发布！</b>"
+msgstr "新的主要版本已经发布"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1933,10 +1927,9 @@ msgid_plural "Successfully updated %1 packages"
 msgstr[0] "成功更新了 %1 个软件包"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "未知状态"
+msgstr "未知来源"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
@@ -1990,7 +1983,7 @@ msgstr "仓库 URL："
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
@@ -2046,7 +2039,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
 #, kde-format
 msgid "Confirm Changes"
-msgstr ""
+msgstr "确认更改"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2270,11 +2263,11 @@ msgid "ostree remotes"
 msgstr "ostree 远程服务器"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
-msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
+msgstr ""
+"rpm-ostree-backend：错误：没有提供 DBus 接口。请为此提交一个程序缺陷报告。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
@@ -2282,21 +2275,24 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend：错误：无法已无效格式启动资源的安装进程。请为此提交一个程"
+"序缺陷报告。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
-msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
+msgstr ""
+"rpm-ostree-backend：错误：无法重置到一个空的参照点。请为此提交一个程序缺陷报"
+"告。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
-msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
+msgstr ""
+"rpm-ostree-backend：错误：请求了未知的操作。请为此提交一个程序缺陷报告。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
@@ -2305,10 +2301,9 @@ msgid "rpm-ostree transaction failed with:"
 msgstr "rpm-ostree 安装进程失败："
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
-msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
+msgstr "rpm-ostree-backend：错误：未知的资源格式。请为此提交一个程序缺陷报告。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
@@ -2370,7 +2365,7 @@ msgstr "切换"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
 msgid "Permissions for %1"
-msgstr "%1 的的权限"
+msgstr "%1 的权限"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2527,6 +2522,3 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
-
-#~ msgid "Packages to remove"
-#~ msgstr "要移除的软件包"
