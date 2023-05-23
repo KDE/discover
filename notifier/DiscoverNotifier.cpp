@@ -36,7 +36,7 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
     m_settings = new UpdatesSettings(this);
     m_settingsWatcher = KConfigWatcher::create(m_settings->sharedConfig());
 #if QT_VERSION >= QT_VERSION_CHECK(6, 3, 0)
-    QNetworkInformation::instance()->load(QNetworkInformation::Feature::Reachability | QNetworkInformation::Feature::TransportMedium);
+    QNetworkInformation::instance()->loadBackendByFeatures(QNetworkInformation::Feature::Reachability | QNetworkInformation::Feature::TransportMedium);
     connect(QNetworkInformation::instance(), &QNetworkInformation::reachabilityChanged, this, &DiscoverNotifier::stateChanged);
     connect(QNetworkInformation::instance(), &QNetworkInformation::transportMediumChanged, this, &DiscoverNotifier::stateChanged);
 #endif

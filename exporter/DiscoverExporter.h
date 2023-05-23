@@ -30,5 +30,5 @@ Q_SIGNALS:
 
 private:
     QUrl m_path;
-    const QSet<QByteArray> m_exculdedProperties;
+    const QSet<QByteArray> m_excludedProperties;
 };

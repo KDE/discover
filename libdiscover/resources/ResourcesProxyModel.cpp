@@ -101,7 +101,7 @@ void ResourcesProxyModel::setSortOrder(Qt::SortOrder sortOrder)
 void ResourcesProxyModel::setSearch(const QString &_searchText)
 {
     // 1-character searches are painfully slow. >= 2 chars are fine, though
-    const QString searchText = _searchText.count() <= 1 ? QString() : _searchText;
+    const QString searchText = _searchText.size() <= 1 ? QString() : _searchText;
 
     const bool diff = searchText != m_filters.search;
 
@@ -528,7 +528,7 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource *resource, int role) 
             return prop.readOnGadget(rating);
         } else {
             QVariant val(0);
-            val.convert(prop.type());
+            val.convert(prop.metaType());
             return val;
         }
     }

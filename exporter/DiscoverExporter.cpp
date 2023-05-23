@@ -21,7 +21,7 @@ using namespace std::chrono_literals;
 
 DiscoverExporter::DiscoverExporter()
     : QObject(nullptr)
-    , m_exculdedProperties({"executables", "canExecute"})
+    , m_excludedProperties({"executables", "canExecute"})
 {
     connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &DiscoverExporter::fetchResources);
 }
@@ -68,7 +68,7 @@ void DiscoverExporter::exportResources(const QVector<StreamResult> &resources)
 {
     QJsonArray data;
     for (auto res : resources) {
-        data += itemDataToMap(res.resource, m_exculdedProperties);
+        data += itemDataToMap(res.resource, m_excludedProperties);
     }
 
     QJsonDocument doc = QJsonDocument(data);
