@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-15 02:02+0000\n"
+"POT-Creation-Date: 2023-05-26 01:59+0000\n"
 "PO-Revision-Date: 2013-10-03 04:53+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -56,7 +56,7 @@ msgstr "Басып шығару"
 msgid "Unknown"
 msgstr "Беймәлім"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:173
+#: libdiscover/appstream/AppStreamUtils.cpp:175
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -64,7 +64,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:176
+#: libdiscover/appstream/AppStreamUtils.cpp:178
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -73,7 +73,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"
@@ -84,7 +84,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "Интернет"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:182
+#: libdiscover/appstream/AppStreamUtils.cpp:184
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"

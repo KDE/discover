@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-15 02:02+0000\n"
+"POT-Creation-Date: 2023-05-26 01:59+0000\n"
 "PO-Revision-Date: 2023-04-21 23:32+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -48,7 +48,7 @@ msgstr "공개 도메인"
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:173
+#: libdiscover/appstream/AppStreamUtils.cpp:175
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -56,7 +56,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "모두를 대상으로 함"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:176
+#: libdiscover/appstream/AppStreamUtils.cpp:178
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -65,7 +65,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr "부드러운 콘텐츠"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -74,7 +74,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "보통 콘텐츠"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:182
+#: libdiscover/appstream/AppStreamUtils.cpp:184
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "

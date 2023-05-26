@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-15 02:02+0000\n"
+"POT-Creation-Date: 2023-05-26 01:59+0000\n"
 "PO-Revision-Date: 2023-01-16 23:12-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -52,7 +52,7 @@ msgstr "Domínio público"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:173
+#: libdiscover/appstream/AppStreamUtils.cpp:175
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -60,7 +60,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "Todas as audiências"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:176
+#: libdiscover/appstream/AppStreamUtils.cpp:178
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -69,7 +69,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr "Conteúdo leve"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -78,7 +78,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "Conteúdo moderado"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:182
+#: libdiscover/appstream/AppStreamUtils.cpp:184
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "

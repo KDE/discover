@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-15 02:02+0000\n"
+"POT-Creation-Date: 2023-05-26 01:59+0000\n"
 "PO-Revision-Date: 2023-05-08 17:32+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -51,7 +51,7 @@ msgstr "Суспільне надбання"
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:173
+#: libdiscover/appstream/AppStreamUtils.cpp:175
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -59,7 +59,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "Усі аудиторії"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:176
+#: libdiscover/appstream/AppStreamUtils.cpp:178
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -68,7 +68,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr "Образливий вміст"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -77,7 +77,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "Помірний вміст"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:182
+#: libdiscover/appstream/AppStreamUtils.cpp:184
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-15 02:02+0000\n"
+"POT-Creation-Date: 2023-05-26 01:59+0000\n"
 "PO-Revision-Date: 2022-12-28 20:25+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -49,7 +49,7 @@ msgstr "Domeniu public"
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:173
+#: libdiscover/appstream/AppStreamUtils.cpp:175
 #, fuzzy, kde-format
 #| msgctxt "@title:tab"
 #| msgid "Installed Files"
@@ -59,7 +59,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "Fișiere instalate"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:176
+#: libdiscover/appstream/AppStreamUtils.cpp:178
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -68,7 +68,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"
@@ -79,7 +79,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "Internet"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:182
+#: libdiscover/appstream/AppStreamUtils.cpp:184
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"

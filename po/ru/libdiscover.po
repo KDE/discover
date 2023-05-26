@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-15 02:02+0000\n"
+"POT-Creation-Date: 2023-05-26 01:59+0000\n"
 "PO-Revision-Date: 2022-11-11 15:41+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -60,7 +60,7 @@ msgstr "Общественное достояние"
 msgid "Unknown"
 msgstr "неизвестная"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:173
+#: libdiscover/appstream/AppStreamUtils.cpp:175
 #, fuzzy, kde-format
 #| msgid "All Audiences"
 msgctxt ""
@@ -69,7 +69,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "Все аудитории"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:176
+#: libdiscover/appstream/AppStreamUtils.cpp:178
 #, fuzzy, kde-format
 #| msgctxt "As specified in OARS, intensity of contents"
 #| msgid "Mild Content"
@@ -80,7 +80,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr "С некоторыми ограничениями"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, fuzzy, kde-format
 #| msgctxt "As specified in OARS, intensity of contents"
 #| msgid "Moderate Content"
@@ -91,7 +91,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "Со значительными ограничениями"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:182
+#: libdiscover/appstream/AppStreamUtils.cpp:184
 #, fuzzy, kde-format
 #| msgctxt "As specified in OARS, intensity of contents"
 #| msgid "Intense Content"

@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 02:09+0000\n"
-"PO-Revision-Date: 2023-02-17 17:08+0700\n"
-"Last-Translator: Linerly <linerly@protonmail.com>\n"
+"PO-Revision-Date: 2023-05-26 07:49+0700\n"
+"Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -298,7 +298,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "Dari %1"
 
 #: discover/qml/ApplicationPage.qml:80
 #, kde-format
@@ -321,13 +321,11 @@ msgid "Size:"
 msgstr "Ukuran:"
 
 #: discover/qml/ApplicationPage.qml:261
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Lisensi"
-msgstr[1] "Lisensi"
+msgstr[0] "Lisensi:"
+msgstr[1] "Lisensi:"
 
 #: discover/qml/ApplicationPage.qml:269
 #, kde-format
@@ -348,10 +346,9 @@ msgstr[0] "Lihat selebihnya..."
 msgstr[1] "Lihat lagi..."
 
 #: discover/qml/ApplicationPage.qml:319
-#, fuzzy, kde-format
-#| msgid "Content Rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "Peringkat Konten"
+msgstr "Peringkat Konten:"
 
 #: discover/qml/ApplicationPage.qml:328
 #, kde-format
@@ -856,15 +853,13 @@ msgid "Loading…"
 msgstr "Memuat..."
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
-msgstr "Instal"
+msgstr "Instal dari %1"
 
 #: discover/qml/InstallApplicationButton.qml:32
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Instal"
@@ -1127,35 +1122,35 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"Jika terindikasi galat seperti di atas terlihat seperti masalah yang nyata "
+"dan bukan sebuah galat jaringan yang secara sementara, silakan laporkan ke "
+"%1, bukan KDE."
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "Salin Teks"
 
 #: discover/qml/UpdatesPage.qml:106
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
-msgstr ""
+msgstr "Pesan galat disalin. Ingat untuk melaporkannya ke %1, bukan KDE!"
 
 #: discover/qml/UpdatesPage.qml:113
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "Laporkan Masalah Ini"
+msgstr "Laporkan Masalah ke %1"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Update Selected"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
-msgstr "Perbarui Terpilih"
+msgstr "Perbarui Yang Dipilih"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Perbarui Semua"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-15 02:02+0000\n"
+"POT-Creation-Date: 2023-05-26 01:59+0000\n"
 "PO-Revision-Date: 2022-09-25 09:30+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -48,7 +48,7 @@ msgstr "Allmänt tillgänglig"
 msgid "Unknown"
 msgstr "Okänd"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:173
+#: libdiscover/appstream/AppStreamUtils.cpp:175
 #, fuzzy, kde-format
 #| msgid "All Audiences"
 msgctxt ""
@@ -57,7 +57,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "All publik"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:176
+#: libdiscover/appstream/AppStreamUtils.cpp:178
 #, fuzzy, kde-format
 #| msgctxt "As specified in OARS, intensity of contents"
 #| msgid "Mild Content"
@@ -68,7 +68,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr "Milt innehåll"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:179
+#: libdiscover/appstream/AppStreamUtils.cpp:181
 #, fuzzy, kde-format
 #| msgctxt "As specified in OARS, intensity of contents"
 #| msgid "Moderate Content"
@@ -79,7 +79,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "Måttligt innehåll"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:182
+#: libdiscover/appstream/AppStreamUtils.cpp:184
 #, fuzzy, kde-format
 #| msgctxt "As specified in OARS, intensity of contents"
 #| msgid "Intense Content"
