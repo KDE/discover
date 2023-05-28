@@ -414,17 +414,24 @@ DiscoverPage {
             spacing: appInfo.internalSpacings
 
             // Short description
-            Kirigami.Heading {
+            // Not using Kirigami.Heading here because that component doesn't
+            // support selectable text, and we want this to be selectable because
+            // it's also used to show the path for local packages, and that makes
+            // sense to be selectable
+            Kirigami.SelectableLabel {
                 Layout.fillWidth: true
                 // Not relevant to the offline upgrade use case because we
                 // display the info in the header instead
                 visible: !appInfo.isOfflineUpgrade
                 text: appInfo.application.comment
-                type: Kirigami.Heading.Type.Primary
-                level: 2
                 wrapMode: Text.Wrap
-                maximumLineCount: 5
-                elide: Text.ElideRight
+
+                // Match `level: 2` in Kirigami.Heading
+                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.2
+                // Match `type: Kirigami.Heading.Type.Primary` in Kirigami.Heading
+                font.weight: Font.DemiBold
+
+                Accessible.role: Accessible.Heading
             }
 
             // Long app description
