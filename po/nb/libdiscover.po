@@ -975,7 +975,6 @@ msgstr "Slett innstillinger og brukerdata"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
 #, fuzzy, kde-format
-#| msgid "Delete settings and user data"
 msgid "Clearing settings and user data…"
 msgstr "Slett innstillinger og brukerdata"
 
@@ -1147,10 +1146,6 @@ msgstr "Kan ikke fjerne «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:965
 #, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
 "To be able to upgrade to this new version, make sure to apply all available "
@@ -1168,7 +1163,6 @@ msgstr "Oppgrader til %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
 #, fuzzy, kde-format
-#| msgid "<b>A new major version has been released!</b>"
 msgid "A new major version has been released"
 msgstr "<b>En ny hovedversjon er nå tilgjengelig!</b>>"
 
@@ -2335,7 +2329,6 @@ msgstr "Eksterne ostree"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
 #, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
@@ -2350,7 +2343,6 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
 #, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
@@ -2359,7 +2351,6 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
 #, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
@@ -2373,7 +2364,6 @@ msgstr "rpm-ostree-transaksjonen feilet med:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
 #, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
 "rpm-ostree: Ingen oppstartede distribusjoner funnet. Send inn en feilrapport."

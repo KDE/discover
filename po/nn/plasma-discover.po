@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 02:09+0000\n"
-"PO-Revision-Date: 2023-05-17 18:33+0200\n"
+"PO-Revision-Date: 2023-05-27 14:52+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -1121,32 +1121,33 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"Viss feilen ovanfor verkar å vera eit verkeleg problem, ikkje ein mellombels "
+"nettverksfeil, meld frå om han til %1, ikkje til KDE."
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "Kopier tekst"
 
 #: discover/qml/UpdatesPage.qml:106
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
+"Feilmeldinga vart kopiert til utklippstavla. Hugs å melda frå om feilen til "
+"%1, ikkje til KDE."
 
 #: discover/qml/UpdatesPage.qml:113
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "Meld frå om feilen"
+msgstr "Meld frå om feilen til %1"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgctxt "@action:button as in, 'update all items'"
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
-msgstr "Oppdater alle"
+msgstr "Oppdater valde"
 
 #: discover/qml/UpdatesPage.qml:140
 #, kde-format
