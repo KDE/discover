@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-15 02:33+0000\n"
-"PO-Revision-Date: 2023-05-24 01:32+0300\n"
+"PO-Revision-Date: 2023-05-28 11:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -252,7 +252,7 @@ msgstr "Bilim ve Mühendislik"
 #, kde-format
 msgctxt "Category"
 msgid "Astronomy"
-msgstr "Astronomi"
+msgstr "Gökbilim"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
