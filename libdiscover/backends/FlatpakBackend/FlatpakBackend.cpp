@@ -1024,13 +1024,10 @@ void FlatpakBackend::loadRemote(FlatpakInstallation *installation, FlatpakRemote
 
     g_autofree char *path_str = g_file_get_path(fileTimestamp);
     QFileInfo fileInfo(QFile::decodeName(path_str));
-    if (!fileInfo.exists()) {
+    if (!fileInfo.exists() || fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
+        // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
         checkForRemoteUpdates(installation, remote);
     } else {
-        // Refresh appstream metadata in case they have never been refreshed or the cache is older than 6 hours
-        if (fileInfo.lastModified().toUTC().secsTo(QDateTime::currentDateTimeUtc()) > 21600) {
-            connect(this, &FlatpakBackend::initialized, m_checkForUpdatesTimer, qOverload<>(&QTimer::start));
-        }
         auto source = integrateRemote(installation, remote);
         Q_ASSERT(findSource(installation, QString::fromUtf8(flatpak_remote_get_name(remote))) == source);
     }
