@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-06 02:09+0000\n"
+"POT-Creation-Date: 2023-05-30 02:42+0000\n"
 "PO-Revision-Date: 2023-05-06 21:54+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -369,69 +369,69 @@ msgstr "Poglejte podrobnosti…"
 msgid "Could not access the screenshots"
 msgstr "Ni bil mogoč dostop do posnetkov zaslona"
 
-#: discover/qml/ApplicationPage.qml:480
+#: discover/qml/ApplicationPage.qml:487
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentacija"
 
-#: discover/qml/ApplicationPage.qml:481
+#: discover/qml/ApplicationPage.qml:488
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Preberi uradno dokumentacijo projekta"
 
-#: discover/qml/ApplicationPage.qml:497
+#: discover/qml/ApplicationPage.qml:504
 #, kde-format
 msgid "Website"
 msgstr "Spletišče"
 
-#: discover/qml/ApplicationPage.qml:498
+#: discover/qml/ApplicationPage.qml:505
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Obišči spletno stran projekta"
 
-#: discover/qml/ApplicationPage.qml:514
+#: discover/qml/ApplicationPage.qml:521
 #, kde-format
 msgid "Addons"
 msgstr "Dodatki"
 
-#: discover/qml/ApplicationPage.qml:515
+#: discover/qml/ApplicationPage.qml:522
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Namesti ali odstrani dodatne funkcionalnosti"
 
-#: discover/qml/ApplicationPage.qml:534
+#: discover/qml/ApplicationPage.qml:541
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Deli"
 
-#: discover/qml/ApplicationPage.qml:535
+#: discover/qml/ApplicationPage.qml:542
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Pošlji povezavo za to aplikacijo"
 
-#: discover/qml/ApplicationPage.qml:551
+#: discover/qml/ApplicationPage.qml:558
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Preveri %1 app!"
 
-#: discover/qml/ApplicationPage.qml:571
+#: discover/qml/ApplicationPage.qml:578
 #, kde-format
 msgid "What's New"
 msgstr "Kaj je novega"
 
-#: discover/qml/ApplicationPage.qml:602
+#: discover/qml/ApplicationPage.qml:609
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Nalaganje ocen za %1"
 
-#: discover/qml/ApplicationPage.qml:608
+#: discover/qml/ApplicationPage.qml:615
 #, kde-format
 msgid "Reviews"
 msgstr "Mnenja"
 
-#: discover/qml/ApplicationPage.qml:646
+#: discover/qml/ApplicationPage.qml:653
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
@@ -440,68 +440,68 @@ msgstr[1] "Pokaži obe %1 mnenji"
 msgstr[2] "Pokaži vsa %1 mnenja"
 msgstr[3] "Pokaži vsa %1 mnenja"
 
-#: discover/qml/ApplicationPage.qml:658
+#: discover/qml/ApplicationPage.qml:665
 #, kde-format
 msgid "Write a Review"
 msgstr "Napiši mnenje"
 
-#: discover/qml/ApplicationPage.qml:658
+#: discover/qml/ApplicationPage.qml:665
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Namestite ta program, zato da napišete mnenje"
 
-#: discover/qml/ApplicationPage.qml:670
+#: discover/qml/ApplicationPage.qml:677
 #, kde-format
 msgid "Get Involved"
 msgstr "Bodite vpleteni"
 
-#: discover/qml/ApplicationPage.qml:712
+#: discover/qml/ApplicationPage.qml:719
 #, kde-format
 msgid "Donate"
 msgstr "Donirajte"
 
-#: discover/qml/ApplicationPage.qml:713
+#: discover/qml/ApplicationPage.qml:720
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Podprite in zahvalite se razvijalcem z donacijo za projekt"
 
-#: discover/qml/ApplicationPage.qml:729
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Report Bug"
 msgstr "Poročajte o napaki"
 
-#: discover/qml/ApplicationPage.qml:730
+#: discover/qml/ApplicationPage.qml:737
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Zabeleži opažanje, ki ste ga ugotovili, da bi ga pomagali popraviti"
 
-#: discover/qml/ApplicationPage.qml:746
+#: discover/qml/ApplicationPage.qml:753
 #, kde-format
 msgid "Contribute"
 msgstr "Prispevaj"
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:754
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Pomagajte razvijalcem s kodiranjem, oblikovanjem, testiranjem ali prevajanjem"
 
-#: discover/qml/ApplicationPage.qml:772
+#: discover/qml/ApplicationPage.qml:779
 #, kde-format
 msgid "All Licenses"
 msgstr "Vse licence"
 
-#: discover/qml/ApplicationPage.qml:805
+#: discover/qml/ApplicationPage.qml:812
 #, kde-format
 msgid "Content Rating"
 msgstr "Ocena vsebine"
 
-#: discover/qml/ApplicationPage.qml:821
+#: discover/qml/ApplicationPage.qml:828
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Tveganja lastniškega programja"
 
-#: discover/qml/ApplicationPage.qml:827
+#: discover/qml/ApplicationPage.qml:834
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -527,7 +527,7 @@ msgstr ""
 "(<link url='%1'>%2</link>).<nl/><nl/>Več o tem se lahko poučite na <link "
 "url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:828
+#: discover/qml/ApplicationPage.qml:835
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

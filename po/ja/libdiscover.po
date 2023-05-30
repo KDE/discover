@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 "X-Generator: Lokalize 22.12.2\n"
@@ -1879,9 +1879,6 @@ msgid_plural ""
 msgstr[0] ""
 "%1 個のパッケージの更新に失敗しました。\n"
 "%2"
-msgstr[1] ""
-"%1 個のパッケージの更新に失敗しました。\n"
-"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:172
@@ -1927,7 +1924,6 @@ msgstr "オフライン更新"
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
 msgstr[0] "%1 パッケージの更新に成功しました。"
-msgstr[1] "%1 パッケージの更新に成功しました。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
 #, fuzzy, kde-format
@@ -1977,7 +1973,6 @@ msgstr "ベンダー:"
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
 msgstr[0] "%2 (さらに %1 個の依存関係)"
-msgstr[1] "%2 (さらに %1 個の依存関係)"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
@@ -1999,8 +1994,7 @@ msgstr "システムの更新"
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 個のパッケージが更新されます"
-msgstr[1] "%1 個のパッケージが更新されます"
+msgstr[0] "%1 個のパッケージが更新されます"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
 #, kde-format
@@ -2136,9 +2130,6 @@ msgid_plural ""
 "This action will also remove the following packages:\n"
 "%2"
 msgstr[0] ""
-"この操作により、次のパッケージも削除されます。:\n"
-"%2"
-msgstr[1] ""
 "この操作により、次のパッケージも削除されます。:\n"
 "%2"
 
