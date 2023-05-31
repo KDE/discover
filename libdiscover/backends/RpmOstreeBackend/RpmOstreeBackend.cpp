@@ -8,6 +8,7 @@
 #include "RpmOstreeBackend.h"
 #include "RpmOstreeSourcesBackend.h"
 
+#include "Category/Category.h"
 #include "Transaction/TransactionModel.h"
 
 #include <AppStreamQt/release.h>
