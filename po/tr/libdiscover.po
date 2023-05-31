@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-26 01:59+0000\n"
+"POT-Creation-Date: 2023-05-31 03:09+0000\n"
 "PO-Revision-Date: 2023-05-28 11:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -42,9 +42,9 @@ msgstr "Kamu Malı"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:99
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:296
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:359
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:385
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
 #: libdiscover/UpdateModel/UpdateModel.cpp:118
 #: libdiscover/UpdateModel/UpdateModel.cpp:329
 #, kde-format
@@ -2262,57 +2262,57 @@ msgstr ""
 "Yeniden temellendirme işlemi için uzak başvuru eksik. Lütfen bunu bir hata "
 "olarak bildirin."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL ve diğer lisanslar"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
 #, kde-format
 msgid "Additional packages: "
 msgstr "Ek paketler: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
 #, kde-format
 msgid "Additional modules: "
 msgstr "Ek modüller: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
 #, kde-format
 msgid "Local packages: "
 msgstr "Yerel paketler: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Değiştirilen paketler:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
 msgid "Removed packages:"
 msgstr "Kaldırılan paketler:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Geçerli önyüklenmiş sürüm (sabitlenmiş)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
 #, kde-format
 msgid "Currently booted version"
 msgstr "Geçerli önyüklenmiş sürüm"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "Yeniden başlatma sonrası kullanılacak sürüm"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Yedek sürüm (sabitlenmiş)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Fallback version"
 msgstr "Yedek sürüm"

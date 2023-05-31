@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-30 02:42+0000\n"
-"PO-Revision-Date: 2023-05-08 23:47+0200\n"
+"PO-Revision-Date: 2023-05-30 18:47+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.07.70\n"
+"X-Generator: Lokalize 23.07.70\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -1145,11 +1145,10 @@ msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:113
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "Dieses Problem berichten"
+msgstr "Problem an %1 berichten"
 
 # Würde besser zum folgenden "Update all" passen
 #: discover/qml/UpdatesPage.qml:140
