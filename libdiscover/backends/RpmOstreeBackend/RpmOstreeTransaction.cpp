@@ -153,7 +153,7 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
             // The transaction was cancelled unexpectedly so let's display the
             // error to the user
             qWarning() << "rpm-ostree-backend: Error while calling: rpm-ostree " << m_args;
-            passiveMessage(i18n("rpm-ostree transaction failed with:") + "\n" + m_stderr);
+            passiveMessage(i18n("rpm-ostree transaction failed with:\n%1", QString::fromUtf8(m_stderr)));
         }
         setStatus(Status::CancelledStatus);
         return;
@@ -176,7 +176,7 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
             // The transaction failed unexpectedly so let's display the error to
             // the user
             qWarning() << "rpm-ostree-backend: rpm-ostree" << m_args << "returned with an error code:" << exitCode;
-            passiveMessage(i18n("rpm-ostree transaction failed with:") + "\n" + m_stderr);
+            passiveMessage(i18n("rpm-ostree transaction failed with:\n%1", QString::fromUtf8(m_stderr)));
             setStatus(Status::DoneWithErrorStatus);
             return;
         }
