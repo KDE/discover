@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # SPDX-FileCopyrightText: 2022 Harald Sitter <sitter@kde.org>
 
-if("${QT_MAJOR_VERSION}" STREQUAL "6" AND NOT Qt${QT_MAJOR_VERSION}_VERSION VERSION_GREATER_EQUAL "6.5.0")
+if("${QT_MAJOR_VERSION}" STREQUAL "6" AND NOT Qt6_VERSION VERSION_GREATER_EQUAL "6.5.0")
     # Before Qt 6.5 the AbstractButtons didn't trigger properly at all.
     return()
 endif()
