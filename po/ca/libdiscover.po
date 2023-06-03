@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-02 02:04+0000\n"
-"PO-Revision-Date: 2023-05-08 11:07+0200\n"
+"PO-Revision-Date: 2023-06-02 09:07+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 23.04.0\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2377,12 +2377,13 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
-#, fuzzy, kde-format
-#| msgid "rpm-ostree transaction failed with:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "La transacció «rpm-ostree» ha fallat per:"
+msgstr ""
+"La transacció «rpm-ostree» ha fallat per:\n"
+"%1"
 
 # skip-rule: kct-backend
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-02 02:04+0000\n"
-"PO-Revision-Date: 2023-05-08 04:33+0100\n"
+"PO-Revision-Date: 2023-06-02 20:18+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -2353,12 +2353,13 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
-#, fuzzy, kde-format
-#| msgid "rpm-ostree transaction failed with:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "rpm-ostree-transakcio malsukcesis kun:"
+msgstr ""
+"rpm-ostree-transakcio malsukcesis kun:\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
 #, kde-format
