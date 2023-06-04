@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-02 02:04+0000\n"
-"PO-Revision-Date: 2023-05-09 13:41+0200\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
+"PO-Revision-Date: 2023-06-03 17:51+0200\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -707,7 +707,7 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
-"Permet d’accéder au service de cryptographie « GPG », généralement utilisé "
+"Permet d'accéder au service de cryptographie « GPG », généralement utilisé "
 "pour la signature et la lecture de documents signés"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
@@ -2299,7 +2299,7 @@ msgstr ""
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
-"Référence distante manquante pour l’opération de re-localisation. Veuillez "
+"Référence distante manquante pour l'opération de re-localisation. Veuillez "
 "signaler un bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
@@ -2399,12 +2399,13 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
-#, fuzzy, kde-format
-#| msgid "rpm-ostree transaction failed with:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "Échec de la transaction « rpm-ostree » avec :"
+msgstr ""
+"Échec de la transaction « rpm-ostree » avec :\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
 #, kde-format
