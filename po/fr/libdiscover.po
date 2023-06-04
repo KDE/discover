@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-15 02:33+0000\n"
-"PO-Revision-Date: 2023-03-01 06:55+0100\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
+"PO-Revision-Date: 2023-05-09 13:41+0200\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -713,7 +713,7 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
-"Permet d’accéder au service de cryptographie « GPG », généralement utilisé "
+"Permet d'accéder au service de cryptographie « GPG », généralement utilisé "
 "pour la signature et la lecture de documents signés"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
@@ -2270,7 +2270,7 @@ msgstr ""
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
-"Référence distante manquante pour l’opération de re-localisation. Veuillez "
+"Référence distante manquante pour l'opération de re-localisation. Veuillez "
 "signaler un bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
