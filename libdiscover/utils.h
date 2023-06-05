@@ -130,13 +130,6 @@ static QList<T> kSetToList(const QSet<T> &set)
         ret.append(x);
     return ret;
 }
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-template<typename T>
-static QSet<T> kToSet(const QVector<T> &set)
-{
-    return QSet<T>(set.begin(), set.end());
-}
-#endif
 template<typename T>
 static QSet<T> kToSet(const QList<T> &set)
 {

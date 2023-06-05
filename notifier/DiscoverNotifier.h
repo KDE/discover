@@ -15,9 +15,6 @@
 #include <KNotification>
 
 class KNotification;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-class QNetworkConfigurationManager;
-#endif
 class UnattendedUpdates;
 class UpdatesSettings;
 
@@ -99,9 +96,6 @@ private:
     bool m_hasUpdates = false;
     bool m_needsReboot = false;
     bool m_isBusy = false;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QNetworkConfigurationManager *m_manager = nullptr;
-#endif
     QPointer<KNotification> m_updatesAvailableNotification;
     UnattendedUpdates *m_unattended = nullptr;
     KConfigWatcher::Ptr m_settingsWatcher;

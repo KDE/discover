@@ -31,10 +31,6 @@
 #include <QStandardPaths>
 
 #include <QFutureWatcher>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <QNetworkConfiguration>
-#include <QNetworkConfigurationManager>
-#endif
 #include <QtConcurrentRun>
 
 // #define APIURL "http://127.0.0.1:5000/1.0/reviews/api"
@@ -44,17 +40,6 @@ OdrsReviewsBackend::OdrsReviewsBackend()
     : AbstractReviewsBackend(nullptr)
 {
     fetchRatings();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QNetworkConfigurationManager *manager = new QNetworkConfigurationManager(this);
-
-    connect(manager, &QNetworkConfigurationManager::onlineStateChanged, this, [this](bool online) {
-        if (online && !m_errorMessage.isEmpty()) {
-            m_errorMessage.clear();
-            Q_EMIT errorMessageChanged();
-            fetchRatings();
-        }
-    });
-#endif
 }
 
 OdrsReviewsBackend::~OdrsReviewsBackend() noexcept
