@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-03 02:09+0000\n"
+"POT-Creation-Date: 2023-06-06 02:08+0000\n"
 "PO-Revision-Date: 2023-02-17 17:12+0700\n"
 "Last-Translator: Linerly <linerly@protonmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -18,111 +18,111 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.12.2\n"
 
-#: notifier/DiscoverNotifier.cpp:154
+#: notifier/DiscoverNotifier.cpp:148
 #, kde-format
 msgid "View Updates"
 msgstr "Tampilkan Pembaruan"
 
-#: notifier/DiscoverNotifier.cpp:271
+#: notifier/DiscoverNotifier.cpp:250
 #, kde-format
 msgid "Security updates available"
 msgstr "Tersedia pembaruan keamanan"
 
-#: notifier/DiscoverNotifier.cpp:273
+#: notifier/DiscoverNotifier.cpp:252
 #, kde-format
 msgid "Updates available"
 msgstr "Tersedia pembaruan"
 
-#: notifier/DiscoverNotifier.cpp:275
+#: notifier/DiscoverNotifier.cpp:254
 #, kde-format
 msgid "System up to date"
 msgstr "Sistem terbarukan"
 
-#: notifier/DiscoverNotifier.cpp:277
+#: notifier/DiscoverNotifier.cpp:256
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Komputer harus dimulai ulang"
 
-#: notifier/DiscoverNotifier.cpp:279
+#: notifier/DiscoverNotifier.cpp:258
 #, kde-format
 msgid "Offline"
 msgstr "Luring"
 
-#: notifier/DiscoverNotifier.cpp:281
+#: notifier/DiscoverNotifier.cpp:260
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Menerapkan pembaruan lalai..."
 
-#: notifier/DiscoverNotifier.cpp:315
+#: notifier/DiscoverNotifier.cpp:284
 #, kde-format
 msgid "Restart is required"
 msgstr "Harus dinyalakan ulang"
 
-#: notifier/DiscoverNotifier.cpp:316
+#: notifier/DiscoverNotifier.cpp:285
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Sistem perlu dinyalakan ulang supaya pembaruan berpengaruh."
 
-#: notifier/DiscoverNotifier.cpp:322
+#: notifier/DiscoverNotifier.cpp:291
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Nyalakan Ulang"
 
-#: notifier/DiscoverNotifier.cpp:342
+#: notifier/DiscoverNotifier.cpp:311
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Tingkatkan"
 
-#: notifier/DiscoverNotifier.cpp:343
+#: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgid "Upgrade available"
 msgstr "Tersedia peningkatan"
 
-#: notifier/DiscoverNotifier.cpp:344
+#: notifier/DiscoverNotifier.cpp:313
 #, kde-format
 msgid "New version: %1"
 msgstr "Versi baru: %1"
 
-#: notifier/main.cpp:39
+#: notifier/main.cpp:36
 #, kde-format
 msgid "Discover Notifier"
 msgstr "Penotifikasi Discover"
 
-#: notifier/main.cpp:41
+#: notifier/main.cpp:38
 #, kde-format
 msgid "System update status notifier"
 msgstr "Penotifikasi status pembaruan sistem"
 
-#: notifier/main.cpp:43
+#: notifier/main.cpp:40
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2022 Tim Pengembangan Plasma"
 
-#: notifier/main.cpp:47
+#: notifier/main.cpp:44
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Wantoyo,Linerly"
 
-#: notifier/main.cpp:47
+#: notifier/main.cpp:44
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wantoyek@gmail.com,linerly@protonmail.com"
 
-#: notifier/main.cpp:52
+#: notifier/main.cpp:49
 #, kde-format
 msgid "Replace an existing instance"
 msgstr "Ganti sebuah instansi yang ada"
 
-#: notifier/main.cpp:54
+#: notifier/main.cpp:51
 #, kde-format
 msgid "Do not show the notifier"
 msgstr "Jangan tampilkan penotifikasi"
 
-#: notifier/main.cpp:54
+#: notifier/main.cpp:51
 #, kde-format
 msgid "hidden"
 msgstr "tersembunyi"

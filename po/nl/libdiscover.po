@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-02 02:04+0000\n"
+"POT-Creation-Date: 2023-06-06 02:08+0000\n"
 "PO-Revision-Date: 2023-06-02 13:08+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -85,17 +85,17 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "Intense inhoud"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:176
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:161
 #, kde-format
 msgid "Error while fetching reviews: %1"
 msgstr "Fout bij ophalen van reviews: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:228
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:213
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "Fout bij indienen van bruikbaarheid: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:270
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Fout bij indienen van review: %1"
@@ -1014,32 +1014,32 @@ msgstr ""
 "Niet ondersteunde vraag:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:125
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Initialisatie van backend %1 duurde te lang"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:187
 #, kde-format
 msgid "Applications"
 msgstr "Toepassingen"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma Extra's"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
 #, kde-format
 msgid "Application Addons"
 msgstr "Toepassingen Extra's"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:434
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Netwerkfout in backend %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:441
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1048,14 +1048,14 @@ msgstr ""
 "Teveel verzonden verzoeken naar de server voor backend %1. Probeer opnieuw "
 "over een paar minuten."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:444
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:450
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Ongeldig %1 backend, neem contact op met uw leverancier."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:474
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1068,23 +1068,23 @@ msgstr ""
 "toekent. De gerapporteerde fout was:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Kon schermafdruk niet ophalen voor het item %1 in backend %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Niet behandelde fout in %1 backend. Neem contact op met uw distributeur."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:640
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:636
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Foute KNewStuff URI: %1"
@@ -2513,7 +2513,7 @@ msgstr "Controleer uw internetverbinding"
 msgid "Refresh"
 msgstr "Vernieuwen"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:724
+#: libdiscover/resources/ResourcesProxyModel.cpp:720
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

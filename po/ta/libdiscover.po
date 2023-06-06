@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-02 02:04+0000\n"
+"POT-Creation-Date: 2023-06-06 02:08+0000\n"
 "PO-Revision-Date: 2023-05-14 15:17+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -86,17 +86,17 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "இணையம்"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:176
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:161
 #, kde-format
 msgid "Error while fetching reviews: %1"
 msgstr "விமர்சனங்களை பெறுவதில் சிக்கல்: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:228
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:213
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "பயனுள்ளமையை சமர்ப்பிப்பதில் சிக்கல்: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:270
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "விமர்சனத்தை சமர்ப்பிப்பதில் சிக்கல்: %1"
@@ -1000,32 +1000,32 @@ msgstr ""
 "ஆதரிக்கப்படாதக் கேள்வி:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:125
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "%1 என்ற பின்நிலையை துவக்குவதற்கு நிறைய நேரம் ஆனது"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:187
 #, kde-format
 msgid "Applications"
 msgstr "செயலிகள்"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
 #, kde-format
 msgid "Plasma Addons"
 msgstr "பிளாஸ்மா துணை நிரல்கள்"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
 #, kde-format
 msgid "Application Addons"
 msgstr "செயலி துணை நிரல்கள்"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:434
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 பின்நிலையில் சிக்கல்: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:441
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1034,14 +1034,14 @@ msgstr ""
 "%1 பின்நிலைக்கான சேவையகத்திற்கு அனுப்ப‍ப்பட்டுள்ள கோரிக்கைகளின் எண்ணிக்கை மிக அதிகமாக "
 "உள்ளது. சில நிமிடங்கள் கழித்து மீண்டும் முயற்சியுங்கள்."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:444
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:450
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "செல்லுபடியாகாத %1 பின்நிலை. உங்கள் இயங்குதள நிறுவனத்தை தொடர்புகொள்ளுங்கள்."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:474
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1053,23 +1053,23 @@ msgstr ""
 "இச்செயல்பாட்டை நீங்கள் முயற்சித்து பார்க்கலாம். தெரிவிக்கப்பட்ட சிக்கல்:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "%2 பின்நிலையை பயன்படுத்தும் %1 என்பதற்கான திரைப்பிடிப்பை பதிவிறக்க முடியவில்லை"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "%1 பின்னிலையால் கையாளப்படாத சிக்கல். உங்கள் இயங்குதள பராமரிப்பாளர்களைத் தொடர்பு கொள்ளுங்கள்."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:640
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:636
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "தவறான KNewStuff முகவரி: %1"
@@ -2465,7 +2465,7 @@ msgstr "இணைய இணைப்பை சரிபார்க்கவு�
 msgid "Refresh"
 msgstr "புதுப்பி"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:724
+#: libdiscover/resources/ResourcesProxyModel.cpp:720
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

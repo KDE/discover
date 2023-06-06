@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-03 02:09+0000\n"
+"POT-Creation-Date: 2023-06-06 02:08+0000\n"
 "PO-Revision-Date: 2022-01-24 13:00+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -17,112 +17,112 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 20.04.2\n"
 
-#: notifier/DiscoverNotifier.cpp:154
+#: notifier/DiscoverNotifier.cpp:148
 #, kde-format
 msgid "View Updates"
 msgstr "Actualisationes de vista"
 
-#: notifier/DiscoverNotifier.cpp:271
+#: notifier/DiscoverNotifier.cpp:250
 #, kde-format
 msgid "Security updates available"
 msgstr "Actualisationes de securitate disponibile"
 
-#: notifier/DiscoverNotifier.cpp:273
+#: notifier/DiscoverNotifier.cpp:252
 #, kde-format
 msgid "Updates available"
 msgstr "Actualisationes disponibile"
 
-#: notifier/DiscoverNotifier.cpp:275
+#: notifier/DiscoverNotifier.cpp:254
 #, kde-format
 msgid "System up to date"
 msgstr "Systema actualisate"
 
-#: notifier/DiscoverNotifier.cpp:277
+#: notifier/DiscoverNotifier.cpp:256
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Computator necessita restartar"
 
-#: notifier/DiscoverNotifier.cpp:279
+#: notifier/DiscoverNotifier.cpp:258
 #, kde-format
 msgid "Offline"
 msgstr "Foras de linea"
 
-#: notifier/DiscoverNotifier.cpp:281
+#: notifier/DiscoverNotifier.cpp:260
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Applicante actualisationes non assistite..."
 
-#: notifier/DiscoverNotifier.cpp:315
+#: notifier/DiscoverNotifier.cpp:284
 #, kde-format
 msgid "Restart is required"
 msgstr "Restartar es requirite"
 
-#: notifier/DiscoverNotifier.cpp:316
+#: notifier/DiscoverNotifier.cpp:285
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Le systema necessita esser restartate ut actualisatione ha effecto."
 
-#: notifier/DiscoverNotifier.cpp:322
+#: notifier/DiscoverNotifier.cpp:291
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Re-Initia"
 
-#: notifier/DiscoverNotifier.cpp:342
+#: notifier/DiscoverNotifier.cpp:311
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Actualisa"
 
-#: notifier/DiscoverNotifier.cpp:343
+#: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgid "Upgrade available"
 msgstr "Actualisation disponibile"
 
-#: notifier/DiscoverNotifier.cpp:344
+#: notifier/DiscoverNotifier.cpp:313
 #, kde-format
 msgid "New version: %1"
 msgstr "Nove version: %1"
 
-#: notifier/main.cpp:39
+#: notifier/main.cpp:36
 #, kde-format
 msgid "Discover Notifier"
 msgstr "Notificator de Discoperi (Discover)"
 
-#: notifier/main.cpp:41
+#: notifier/main.cpp:38
 #, kde-format
 msgid "System update status notifier"
 msgstr "Gerente de notificator de stato de actuaisation de systema"
 
-#: notifier/main.cpp:43
+#: notifier/main.cpp:40
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr ""
 "© 2010-2022 Plasma Development Team -Equipa de disveloppamento de Plasma"
 
-#: notifier/main.cpp:47
+#: notifier/main.cpp:44
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Giovanni Sora"
 
-#: notifier/main.cpp:47
+#: notifier/main.cpp:44
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "g.sora@tiscali.it"
 
-#: notifier/main.cpp:52
+#: notifier/main.cpp:49
 #, kde-format
 msgid "Replace an existing instance"
 msgstr "Reimplacia un instantia existente"
 
-#: notifier/main.cpp:54
+#: notifier/main.cpp:51
 #, kde-format
 msgid "Do not show the notifier"
 msgstr "Non monstrar le notificator"
 
-#: notifier/main.cpp:54
+#: notifier/main.cpp:51
 #, kde-format
 msgid "hidden"
 msgstr "celate"

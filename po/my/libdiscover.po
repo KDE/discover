@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-02 02:04+0000\n"
+"POT-Creation-Date: 2023-06-06 02:08+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -91,17 +91,17 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "အင်တာနက်"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:176
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:161
 #, kde-format
 msgid "Error while fetching reviews: %1"
 msgstr "သုံးသပ်ချက်များရယူရာတွင်အခက်အခဲဖြစ်ပေါ်ခဲ့သည်- %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:228
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:213
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "အသုံးဝင်မှုတင်ပြရာတွင်အခက်အခဲဖြစ်ပေါ်ခဲ့သည်- %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:270
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "သုံးသပ်ချက်တင်ပြရာတွင်အခက်အခဲဖြစ်ပေါ်ခဲ့သည်- %1"
@@ -988,32 +988,32 @@ msgid ""
 "%1"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:125
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "အုတ်မြစ်ပရိုဂရမ် %1 သည် စတင်ရန် အချိန်အရမ်းကြာနေသည်။"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:187
 #, kde-format
 msgid "Applications"
 msgstr "အပ္ပလီကေးရှင်းများ"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
 #, kde-format
 msgid "Plasma Addons"
 msgstr "ပလက်စမာ အက်အွန်များ"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
 #, kde-format
 msgid "Application Addons"
 msgstr "အပ္ပလီကေးရှင်း အက်အွန်များ"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:434
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 အုတ်မြစ်ပရိုဂရမ်တွင် ဆ.သ.ရ-ကွန်ရက်ဆိုင်ရာအမှား %2 ဖြစ်ပေါ်ခဲ့သည်"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:441
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1022,14 +1022,14 @@ msgstr ""
 "အုတ်မြစ်ပရိုဂရမ် %1 အတွက် ဆာဗာသို့ တောင်းခံမှု အများအပြားပို့ခဲ့ပြီးဖြစ်သည်။ ကျေးဇူးပြု၍ "
 "ခေတ္တခဏစောင့်ဆိုင်းပြီးမှ ပြန်ကြိုးစားပါ။"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:444
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:450
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "မမှန်ကန်သော %1 အုတ်မြစ်ပရိုဂရမ်ဖြစ်သည်။ ဖြန့်ဝေသူထံ ဆက်သွယ်ပါ။"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:474
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1038,22 +1038,22 @@ msgid ""
 "%2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 အုတ်မြစ်ပရိုဂရမ်တွင် မကိုင်တွယ်ခဲ့သော အမှားဖြစ်ပေါ်ခဲ့သည်။ ဖြန့်ဝေသူထံ ဆက်သွယ်ပါ။"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:640
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:636
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "မှားနေသော ကေနယူးစတပ်ဖ် ယူအာအိုင်- %1"
@@ -2439,7 +2439,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:724
+#: libdiscover/resources/ResourcesProxyModel.cpp:720
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

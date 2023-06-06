@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-30 02:42+0000\n"
+"POT-Creation-Date: 2023-06-06 02:08+0000\n"
 "PO-Revision-Date: 2023-05-27 14:52+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -111,7 +111,7 @@ msgstr "Meld frå om denne feilen til pakkarane av distribusjonen din."
 
 # Namnet på programmet, som eg til slutt har funne ut at ikkje bør omsetjast. – KOH
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
-#: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
+#: discover/main.cpp:117 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -180,59 +180,59 @@ msgstr "Vis tilgjengelege val for tilbakemeldingar"
 msgid "Supports appstream: url scheme"
 msgstr "Støttar appstream: URL-format"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:119
 #, kde-format
 msgid "An application explorer"
 msgstr "Ein programutforskar"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:121
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010–2022 Utviklingslaget for Plasma"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:122
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:126
+#: discover/main.cpp:123
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:124
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Kvalitetskontroll, design og brukskvalitet"
 
-#: discover/main.cpp:131
+#: discover/main.cpp:128
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:132
+#: discover/main.cpp:129
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:139
+#: discover/main.cpp:136
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Karl Ove Hufthammer,Øystein Steffensen-Alværvik"
 
-#: discover/main.cpp:139
+#: discover/main.cpp:136
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "karl@huftis.org,oysteins.omsetting@protonmail.com"
 
-#: discover/main.cpp:152
+#: discover/main.cpp:149
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Tilgjengelege pakkemotorar:\n"
 
-#: discover/main.cpp:208
+#: discover/main.cpp:205
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Tilgjengelege modusar:\n"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-03 02:09+0000\n"
+"POT-Creation-Date: 2023-06-06 02:08+0000\n"
 "PO-Revision-Date: 2022-02-20 21:49+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -17,111 +17,111 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 21.08.1\n"
 
-#: notifier/DiscoverNotifier.cpp:154
+#: notifier/DiscoverNotifier.cpp:148
 #, kde-format
 msgid "View Updates"
 msgstr "업데이트 보기"
 
-#: notifier/DiscoverNotifier.cpp:271
+#: notifier/DiscoverNotifier.cpp:250
 #, kde-format
 msgid "Security updates available"
 msgstr "보안 업데이트 사용 가능"
 
-#: notifier/DiscoverNotifier.cpp:273
+#: notifier/DiscoverNotifier.cpp:252
 #, kde-format
 msgid "Updates available"
 msgstr "업데이트 사용 가능"
 
-#: notifier/DiscoverNotifier.cpp:275
+#: notifier/DiscoverNotifier.cpp:254
 #, kde-format
 msgid "System up to date"
 msgstr "시스템이 최신 상태임"
 
-#: notifier/DiscoverNotifier.cpp:277
+#: notifier/DiscoverNotifier.cpp:256
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "컴퓨터를 다시 시작해야 함"
 
-#: notifier/DiscoverNotifier.cpp:279
+#: notifier/DiscoverNotifier.cpp:258
 #, kde-format
 msgid "Offline"
 msgstr "오프라인"
 
-#: notifier/DiscoverNotifier.cpp:281
+#: notifier/DiscoverNotifier.cpp:260
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "무인 업데이트 적용 중…"
 
-#: notifier/DiscoverNotifier.cpp:315
+#: notifier/DiscoverNotifier.cpp:284
 #, kde-format
 msgid "Restart is required"
 msgstr "다시 시작 필요"
 
-#: notifier/DiscoverNotifier.cpp:316
+#: notifier/DiscoverNotifier.cpp:285
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "업데이트를 적용하려면 시스템을 다시 시작해야 합니다."
 
-#: notifier/DiscoverNotifier.cpp:322
+#: notifier/DiscoverNotifier.cpp:291
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "다시 시작"
 
-#: notifier/DiscoverNotifier.cpp:342
+#: notifier/DiscoverNotifier.cpp:311
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "업그레이드"
 
-#: notifier/DiscoverNotifier.cpp:343
+#: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgid "Upgrade available"
 msgstr "업그레이드 사용 가능"
 
-#: notifier/DiscoverNotifier.cpp:344
+#: notifier/DiscoverNotifier.cpp:313
 #, kde-format
 msgid "New version: %1"
 msgstr "새 버전: %1"
 
-#: notifier/main.cpp:39
+#: notifier/main.cpp:36
 #, kde-format
 msgid "Discover Notifier"
 msgstr "Discover 알림이"
 
-#: notifier/main.cpp:41
+#: notifier/main.cpp:38
 #, kde-format
 msgid "System update status notifier"
 msgstr "시스템 업데이트 상태 알림이"
 
-#: notifier/main.cpp:43
+#: notifier/main.cpp:40
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2022 Plasma Development Team"
 
-#: notifier/main.cpp:47
+#: notifier/main.cpp:44
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "박신조"
 
-#: notifier/main.cpp:47
+#: notifier/main.cpp:44
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: notifier/main.cpp:52
+#: notifier/main.cpp:49
 #, kde-format
 msgid "Replace an existing instance"
 msgstr "실행 중인 인스턴스 대체"
 
-#: notifier/main.cpp:54
+#: notifier/main.cpp:51
 #, kde-format
 msgid "Do not show the notifier"
 msgstr "알림이 표시하지 않기"
 
-#: notifier/main.cpp:54
+#: notifier/main.cpp:51
 #, kde-format
 msgid "hidden"
 msgstr "숨김"

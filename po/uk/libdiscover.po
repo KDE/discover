@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-02 02:04+0000\n"
+"POT-Creation-Date: 2023-06-06 02:08+0000\n"
 "PO-Revision-Date: 2023-06-02 20:05+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -87,17 +87,17 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "Ексцентричний вміст"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:176
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:161
 #, kde-format
 msgid "Error while fetching reviews: %1"
 msgstr "Помилка під час спроби отримати рецензії: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:228
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:213
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "Помилка під час спроби надсилання даних щодо корисності: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:270
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Помилка під час надсилання даних рецензії: %1"
@@ -1018,32 +1018,32 @@ msgstr ""
 "Непідтримуване питання:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:125
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Ініціалізація модуля %1 триває надто довго"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:191
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:187
 #, kde-format
 msgid "Applications"
 msgstr "Програми"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Додатки Плазми"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
 #, kde-format
 msgid "Application Addons"
 msgstr "Додатки програм"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:434
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Помилка у роботі з мережею у модулі %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:445
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:441
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1052,15 +1052,15 @@ msgstr ""
 "До сервера надіслано надто багато запитів для модуля %1. Будь ласка, "
 "повторіть спробу за декілька хвилин."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:459
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:444
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:450
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr ""
 "Некоректний модуль %1, повідомте про це розробникам вашого дистрибутива."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:478
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:474
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1073,24 +1073,24 @@ msgstr ""
 "засоби керування. Повідомлення про помилку:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Не вдалося отримати знімок вікна для запису %1 у модулі %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Непридатна до обробки помилка у модулі %1. Повідомте про це розробникам "
 "вашого дистрибутива."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:500
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:640
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:636
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Помилкова адреса KNewStuff: %1"
@@ -2538,7 +2538,7 @@ msgstr "Будь ласка, перевірте працездатність і�
 msgid "Refresh"
 msgstr "Оновити"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:724
+#: libdiscover/resources/ResourcesProxyModel.cpp:720
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
