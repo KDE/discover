@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include <KNSCore/EngineBase>
 #include <KNSCore/Entry>
 #include <KNSCore/ErrorCode>
 
@@ -15,12 +16,8 @@
 
 class KNSReviews;
 class KNSResource;
+class KNSResultsStream;
 class StandardBackendUpdater;
-
-namespace KNSCore
-{
-class Engine;
-}
 
 class DISCOVERCOMMON_EXPORT KNSBackend : public AbstractResourcesBackend
 {
@@ -65,7 +62,7 @@ public:
         return m_iconName;
     }
 
-    KNSCore::Engine *engine() const
+    KNSCore::EngineBase *engine() const
     {
         return m_engine;
     }
@@ -73,16 +70,12 @@ public:
     void checkForUpdates() override;
 
     QString displayName() const override;
+    KNSResource *resourceForEntry(const KNSCore::Entry &entry);
 
 Q_SIGNALS:
-    void receivedResources(const QVector<StreamResult> &resources);
-    void searchFinished();
-    void startingSearch();
-    void availableForQueries();
     void initialized();
 
 public Q_SLOTS:
-    void receivedEntries(const KNSCore::Entry::List &entries);
     void statusChanged(const KNSCore::Entry &entry);
     void detailsLoaded(const KNSCore::Entry &entry);
     void slotErrorCode(const KNSCore::ErrorCode &errorCode, const QString &message, const QVariant &metadata);
@@ -90,19 +83,13 @@ public Q_SLOTS:
 
 private:
     void fetchInstalled();
-    KNSResource *resourceForEntry(const KNSCore::Entry &entry);
     void setFetching(bool f);
     void markInvalid(const QString &message);
-    void searchStream(ResultsStream *stream, const QString &searchText);
-    void fetchMore();
-    void setResponsePending(bool pending);
+    KNSResultsStream *searchStream(const QString &searchText);
 
-    bool m_onePage = false;
-    bool m_responsePending = false;
-    QString m_pendingSearchQuery;
     bool m_fetching;
     bool m_isValid;
-    KNSCore::Engine *m_engine;
+    KNSCore::EngineBase *m_engine;
     QHash<QString, AbstractResource *> m_resourcesByName;
     KNSReviews *const m_reviews;
     QString m_name;

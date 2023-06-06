@@ -8,6 +8,7 @@
 #include "KNSBackend.h"
 #include <KLocalizedString>
 #include <KNSCore/Engine>
+#include <KNSCore/Transaction>
 #include <KShell>
 #include <QProcess>
 #include <QRegularExpression>
@@ -224,7 +225,7 @@ bool KNSResource::canExecute() const
 
 void KNSResource::invokeApplication() const
 {
-    knsBackend()->engine()->adoptEntry(m_entry);
+    KNSCore::Transaction::adopt(knsBackend()->engine(), m_entry);
 }
 
 QString KNSResource::executeLabel() const

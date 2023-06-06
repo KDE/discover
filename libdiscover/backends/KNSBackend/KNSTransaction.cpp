@@ -7,8 +7,9 @@
 #include "KNSTransaction.h"
 #include "KNSBackend.h"
 #include <KLocalizedString>
-#include <KNSCore/Engine>
+#include <KNSCore/EngineBase>
 #include <KNSCore/Question>
+#include <KNSCore/Transaction>
 
 #include <QTimer>
 #include <Transaction/TransactionModel.h>
@@ -19,44 +20,49 @@ KNSTransaction::KNSTransaction(QObject *parent, KNSResource *res, Role role)
     , m_id(res->entry().uniqueId())
 {
     setCancellable(false);
-
-    auto manager = res->knsBackend()->engine();
-    connect(manager, &KNSCore::Engine::signalEntryEvent, this, [this](const KNSCore::Entry &entry, KNSCore::Entry::EntryEvent event) {
-        switch (event) {
-        case KNSCore::Entry::StatusChangedEvent:
-            anEntryChanged(entry);
-            break;
-        case KNSCore::Entry::DetailsLoadedEvent:
-        case KNSCore::Entry::AdoptedEvent:
-        case KNSCore::Entry::UnknownEvent:
-        default:
-            break;
-        }
-    });
     TransactionModel::global()->addTransaction(this);
 
-    std::function<void()> actionFunction;
-    auto engine = res->knsBackend()->engine();
-    if (role == RemoveRole)
-        actionFunction = [res, engine]() {
-            engine->uninstall(res->entry());
-        };
-    else if (res->entry().status() == KNSCore::Entry::Updateable)
-        actionFunction = [res, engine]() {
-            engine->install(res->entry(), -1);
-        };
-    else if (res->linkIds().isEmpty())
-        actionFunction = [res]() {
+    QTimer::singleShot(0, res, [this, res, role] {
+        auto engine = res->knsBackend()->engine();
+        KNSCore::Transaction *knsTransaction = nullptr;
+
+        if (role == RemoveRole) {
+            knsTransaction = KNSCore::Transaction::uninstall(engine, res->entry());
+        } else if (res->entry().status() == KNSCore::Entry::Updateable) {
+            knsTransaction = KNSCore::Transaction::install(engine, res->entry(), -1);
+        } else if (res->linkIds().isEmpty()) {
             qWarning() << "No installable candidates in the KNewStuff entry" << res->entry().name() << "with id" << res->entry().uniqueId() << "on the backend"
                        << res->backend()->name()
                        << "There should always be at least one downloadable item in an OCS entry, and if there isn't, we should consider it broken. OCS "
                           "can technically show them, but if there is nothing to install, it cannot be installed.";
-        };
-    else
-        actionFunction = [res, engine]() {
-            engine->install(res->entry());
-        };
-    QTimer::singleShot(0, res, actionFunction);
+            setStatus(DoneStatus);
+            return;
+        } else {
+            knsTransaction = KNSCore::Transaction::install(engine, res->entry());
+        }
+
+        connect(knsTransaction, &KNSCore::Transaction::signalEntryEvent, this, [this, res](const KNSCore::Entry &entry, KNSCore::Entry::EntryEvent event) {
+            switch (event) {
+            case KNSCore::Entry::StatusChangedEvent:
+                anEntryChanged(entry);
+                break;
+            case KNSCore::Entry::DetailsLoadedEvent:
+            case KNSCore::Entry::AdoptedEvent:
+            case KNSCore::Entry::UnknownEvent:
+            default:
+                break;
+            }
+            res->knsBackend()->slotEntryEvent(entry, event);
+        });
+        connect(knsTransaction, &KNSCore::Transaction::finished, this, [this] {
+            if (status() != DoneStatus) {
+                setStatus(DoneStatus);
+            }
+        });
+        connect(knsTransaction, &KNSCore::Transaction::signalErrorCode, this, [this](KNSCore::ErrorCode /*errorCode*/, const QString &message) {
+            Q_EMIT passiveMessage(message);
+        });
+    });
 }
 
 void KNSTransaction::addQuestion(KNSCore::Question *question)
@@ -82,9 +88,6 @@ void KNSTransaction::anEntryChanged(const KNSCore::Entry &entry)
         case KNSCore::Entry::Installed:
         case KNSCore::Entry::Deleted:
         case KNSCore::Entry::Updateable:
-            if (status() != DoneStatus) {
-                setStatus(DoneStatus);
-            }
             break;
         }
     }

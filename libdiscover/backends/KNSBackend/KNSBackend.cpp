@@ -16,9 +16,10 @@
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
-#include <KNSCore/Engine>
+#include <KNSCore/Provider>
 #include <KNSCore/Question>
 #include <KNSCore/QuestionManager>
+#include <KNSCore/ResultsStream>
 
 // DiscoverCommon includes
 #include "Category/Category.h"
@@ -65,7 +66,7 @@ public:
                     return;
                 }
             }
-            qWarning() << "Question for unknown resource" << question->question() << question->questionType();
+            qWarning() << "Question for unknown transaction" << question->question() << question->questionType();
             question->setResponse(KNSCore::Question::InvalidResponse);
         });
     }
@@ -73,7 +74,7 @@ public:
     QVector<AbstractResourcesBackend *> newInstance(QObject *parent, const QString & /*name*/) const override
     {
         QVector<AbstractResourcesBackend *> ret;
-        const QStringList availableConfigFiles = KNSCore::Engine::availableConfigFiles();
+        const QStringList availableConfigFiles = KNSCore::EngineBase::availableConfigFiles();
         for (const QString &configFile : availableConfigFiles) {
             auto bk = new KNSBackend(parent, QStringLiteral("plasma"), configFile);
             if (bk->isValid())
@@ -83,6 +84,37 @@ public:
         }
         return ret;
     }
+};
+
+class KNSResultsStream : public ResultsStream
+{
+    Q_OBJECT
+public:
+    KNSResultsStream(KNSBackend *backend, const QString &objectName)
+        : ResultsStream(objectName)
+        , m_backend(backend)
+    {
+    }
+
+    void setRequest(const KNSCore::Provider::SearchRequest &request)
+    {
+        KNSCore::ResultsStream *job = m_backend->engine()->search(request);
+        connect(job, &KNSCore::ResultsStream::entriesFound, this, &KNSResultsStream::addEntries);
+        connect(job, &KNSCore::ResultsStream::finished, this, &KNSResultsStream::finish);
+        connect(this, &ResultsStream::fetchMore, job, &KNSCore::ResultsStream::fetchMore);
+        job->fetch();
+    }
+
+    void addEntries(const KNSCore::Entry::List &entries)
+    {
+        const auto res = kTransform<QList<StreamResult>>(entries, [this](const auto &entry) {
+            return StreamResult{m_backend->resourceForEntry(entry), 0};
+        });
+        Q_EMIT resourcesFound(res);
+    }
+
+private:
+    KNSBackend *const m_backend;
 };
 
 KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &knsrc)
@@ -119,7 +151,6 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     QTimer::singleShot(60000, this, [this]() {
         if (!m_initialized) {
             markInvalid(i18n("Backend %1 took too long to initialize", m_displayName));
-            setResponsePending(false);
         }
     });
 
@@ -155,27 +186,25 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
         }
     }
 
-    m_engine = new KNSCore::Engine(this);
-    connect(m_engine, &KNSCore::Engine::signalErrorCode, this, &KNSBackend::slotErrorCode);
-    connect(m_engine, &KNSCore::Engine::signalEntryEvent, this, &KNSBackend::slotEntryEvent);
-    connect(m_engine, &KNSCore::Engine::signalEntriesLoaded, this, &KNSBackend::receivedEntries, Qt::QueuedConnection);
-    connect(m_engine, &KNSCore::Engine::signalProvidersLoaded, this, &KNSBackend::fetchInstalled);
-    connect(m_engine, &KNSCore::Engine::signalUpdateableEntriesLoaded, this, [this] {
-        if (m_responsePending) {
-            setResponsePending(false);
-        }
+    m_engine = new KNSCore::EngineBase(this);
+    connect(m_engine, &KNSCore::EngineBase::signalErrorCode, this, &KNSBackend::slotErrorCode);
+    connect(m_engine, &KNSCore::EngineBase::providersChanged, this, [this] {
+        setFetching(false);
     });
-    connect(m_engine, &KNSCore::Engine::signalCategoriesMetadataLoded, this, [categories](const QList<KNSCore::Provider::CategoryMetadata> &categoryMetadatas) {
-        for (const KNSCore::Provider::CategoryMetadata &category : categoryMetadatas) {
-            for (Category *cat : std::as_const(categories)) {
-                if (cat->matchesCategoryName(category.name)) {
-                    cat->setName(category.displayName);
-                    break;
+
+    connect(m_engine,
+            &KNSCore::EngineBase::signalCategoriesMetadataLoded,
+            this,
+            [categories](const QList<KNSCore::Provider::CategoryMetadata> &categoryMetadatas) {
+                for (const KNSCore::Provider::CategoryMetadata &category : categoryMetadatas) {
+                    for (Category *cat : std::as_const(categories)) {
+                        if (cat->matchesCategoryName(category.name)) {
+                            cat->setName(category.displayName);
+                            break;
+                        }
+                    }
                 }
-            }
-        }
-    });
-    m_engine->setPageSize(ENGINE_PAGE_SIZE);
+            });
     m_engine->init(m_name);
 
     if (m_hasApplications) {
@@ -248,93 +277,11 @@ void KNSBackend::markInvalid(const QString &message)
     Q_EMIT initialized();
 }
 
-void KNSBackend::setResponsePending(bool pending)
-{
-    Q_ASSERT(m_responsePending != pending);
-    m_responsePending = pending;
-    if (pending) {
-        Q_EMIT startingSearch();
-    } else {
-        Q_EMIT availableForQueries();
-        setFetching(false);
-        m_onePage = false;
-    }
-}
-
-void KNSBackend::fetchInstalled()
-{
-    auto search = new OneTimeAction(
-        666,
-        [this]() {
-            // First we ensure we've got data loaded on what we've got installed already
-            if (m_responsePending) {
-                // Slot already taken, will need to wait again
-                return false;
-            }
-            m_onePage = true;
-            setResponsePending(true);
-            m_engine->checkForInstalled();
-            // And then we check for updates - we could do only one, if all we cared about was updates,
-            // but to have both a useful initial list, /and/ information on updates, we want to get both.
-            // The reason we are not doing a checkUpdates() overload for this is that the caching for this
-            // information is done by KNSEngine, and we want to actually load it every time we initialize.
-            auto updateChecker = new OneTimeAction(
-                666,
-                [this] {
-                    // No need to check for updates if there's no resources
-                    if (m_resourcesByName.isEmpty()) {
-                        return true;
-                    }
-
-                    if (m_responsePending) {
-                        // Slot already taken, will need to wait again
-                        return false;
-                    }
-
-                    m_onePage = true;
-                    setResponsePending(true);
-                    m_engine->checkForUpdates();
-                    return true;
-                },
-                this);
-            connect(this, &KNSBackend::availableForQueries, updateChecker, &OneTimeAction::trigger, Qt::QueuedConnection);
-            return true;
-        },
-        this);
-
-    if (m_responsePending) {
-        connect(this, &KNSBackend::availableForQueries, search, &OneTimeAction::trigger, Qt::QueuedConnection);
-    } else {
-        search->trigger();
-    }
-}
-
 void KNSBackend::checkForUpdates()
 {
-    // Since we load the updates during initialization already, don't overburden
-    // the machine with multiple of these, because that would just be silly.
-    if (m_initialized) {
-        auto updateChecker = new OneTimeAction(
-            666,
-            [this] {
-                if (m_responsePending) {
-                    // Slot already taken, will need to wait again
-                    return false;
-                }
-
-                m_onePage = true;
-                setResponsePending(true);
-                m_engine->checkForUpdates();
-                return true;
-            },
-            this);
-
-        if (m_responsePending) {
-            connect(this, &KNSBackend::availableForQueries, updateChecker, &OneTimeAction::trigger, Qt::QueuedConnection);
-        } else {
-            updateChecker->trigger();
-        }
-    }
+    AbstractResourcesBackend::Filters filter;
+    filter.state = AbstractResource::Upgradeable;
+    search(filter);
 }
 
 void KNSBackend::setFetching(bool f)
@@ -358,7 +305,10 @@ KNSResource *KNSBackend::resourceForEntry(const KNSCore::Entry &entry)
 {
     KNSResource *r = static_cast<KNSResource *>(m_resourcesByName.value(entry.uniqueId()));
     if (!r) {
-        QStringList categories{name(), m_rootCategories.first()->name()};
+        QStringList categories{name()};
+        if (!m_rootCategories.isEmpty()) {
+            categories << m_rootCategories.first()->name();
+        }
         const auto cats = m_engine->categoriesMetadata();
         const int catIndex = kIndexOf(cats, [&entry](const KNSCore::Provider::CategoryMetadata &cat) {
             return entry.category() == cat.id;
@@ -375,40 +325,6 @@ KNSResource *KNSBackend::resourceForEntry(const KNSCore::Entry &entry)
         r->setEntry(entry);
     }
     return r;
-}
-
-void KNSBackend::receivedEntries(const KNSCore::Entry::List &entries)
-{
-    if (!m_isValid)
-        return;
-
-    const auto filtered = kFilter<KNSCore::Entry::List>(entries, [](const KNSCore::Entry &entry) {
-        return entry.isValid();
-    });
-    const auto resources = kTransform<QVector<StreamResult>>(filtered, [this](const KNSCore::Entry &entry) {
-        return resourceForEntry(entry);
-    });
-
-    if (!resources.isEmpty()) {
-        Q_EMIT receivedResources(resources);
-    }
-
-    setResponsePending(false);
-    if (m_onePage || resources.count() < ENGINE_PAGE_SIZE) {
-        Q_EMIT searchFinished();
-    }
-}
-
-void KNSBackend::fetchMore()
-{
-    if (m_responsePending)
-        return;
-
-    // We _have_ to set this first. If we do not, we may run into a situation where the
-    // data request will conclude immediately, causing m_responsePending to remain true
-    // for perpetuity as the slots will be called before the function returns.
-    setResponsePending(true);
-    m_engine->requestMoreData();
 }
 
 void KNSBackend::statusChanged(const KNSCore::Entry &entry)
@@ -484,9 +400,6 @@ void KNSBackend::slotErrorCode(const KNSCore::ErrorCode &errorCode, const QStrin
         error = i18n("Unhandled error in %1 backend. Contact your distributor.", m_displayName);
         break;
     }
-    if (m_responsePending) {
-        setResponsePending(false);
-    }
     qWarning() << "kns error" << objectName() << error;
     if (!invalidFile)
         Q_EMIT passiveMessage(i18n("%1: %2", name(), error));
@@ -548,20 +461,11 @@ ResultsStream *KNSBackend::search(const AbstractResourcesBackend::Filters &filte
     if (filter.resourceUrl.scheme() == QLatin1String("kns")) {
         return findResourceByPackageName(filter.resourceUrl);
     } else if (filter.state >= AbstractResource::Installed) {
-        auto stream = new ResultsStream(QStringLiteral("KNS-installed"));
-
+        auto stream = new KNSResultsStream(this, QStringLiteral("KNS-installed"));
         const auto start = [this, stream, filter]() {
             if (m_isValid) {
-                auto filterFunction = [&filter](AbstractResource *r) {
-                    return r->state() >= filter.state
-                        && (r->name().contains(filter.search, Qt::CaseInsensitive) || r->comment().contains(filter.search, Qt::CaseInsensitive));
-                };
-                const auto ret = kFilter<QVector<AbstractResource *>>(m_resourcesByName, filterFunction);
-
-                if (!ret.isEmpty())
-                    Q_EMIT stream->resourcesFound(kTransform<QVector<StreamResult>>(ret, [](auto resource) {
-                        return StreamResult{resource, 0};
-                    }));
+                const auto knsFilter = filter.state == AbstractResource::Installed ? KNSCore::Provider::Installed : KNSCore::Provider::Updates;
+                stream->setRequest(KNSCore::Provider::SearchRequest(KNSCore::Provider::Newest, knsFilter, {}, {}, -1, ENGINE_PAGE_SIZE));
             }
             stream->finish();
         };
@@ -577,18 +481,14 @@ ResultsStream *KNSBackend::search(const AbstractResourcesBackend::Filters &filte
                || (filter.category && kContains(m_categories, [&filter](const QString &cat) {
                        return filter.category->matchesCategoryName(cat);
                    }))) {
-        auto r = new ResultsStream(QLatin1String("KNS-search-") + name());
-        searchStream(r, filter.search);
-        return r;
+        return searchStream(filter.search);
     }
     return voidStream();
 }
 
-void KNSBackend::searchStream(ResultsStream *stream, const QString &searchText)
+KNSResultsStream *KNSBackend::searchStream(const QString &searchText)
 {
-    Q_EMIT startingSearch();
-
-    stream->setProperty("alreadyStarted", false);
+    auto stream = new KNSResultsStream(this, QLatin1String("KNS-search-") + name());
     auto start = [this, stream, searchText]() {
         Q_ASSERT(!isFetching());
         if (!m_isValid) {
@@ -596,30 +496,16 @@ void KNSBackend::searchStream(ResultsStream *stream, const QString &searchText)
             stream->finish();
             return;
         }
-
-        if (m_responsePending || stream->property("alreadyStarted").toBool()) {
-            return;
-        }
-        stream->setProperty("alreadyStarted", true);
-        setResponsePending(true);
-
-        // No need to explicitly launch a search, setting the search term already does that for us
-        m_engine->setSearchTerm(searchText);
-        m_onePage = false;
-
-        connect(stream, &ResultsStream::fetchMore, this, &KNSBackend::fetchMore);
-        connect(this, &KNSBackend::receivedResources, stream, &ResultsStream::resourcesFound);
-        connect(this, &KNSBackend::searchFinished, stream, &ResultsStream::finish);
-        connect(this, &KNSBackend::startingSearch, stream, &ResultsStream::finish);
+        KNSCore::Provider::SearchRequest p(KNSCore::Provider::Newest, KNSCore::Provider::None, searchText, {}, 0, ENGINE_PAGE_SIZE);
+        stream->setRequest(p);
     };
-    if (m_responsePending) {
-        connect(this, &KNSBackend::availableForQueries, stream, start, Qt::QueuedConnection);
-    } else if (isFetching()) {
+    if (isFetching()) {
         connect(this, &KNSBackend::initialized, stream, start, Qt::QueuedConnection);
-        connect(this, &KNSBackend::availableForQueries, stream, start, Qt::QueuedConnection);
+        connect(this, &KNSBackend::fetchingChanged, stream, start, Qt::QueuedConnection);
     } else {
         QTimer::singleShot(0, stream, start);
     }
+    return stream;
 }
 
 ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)
@@ -635,44 +521,16 @@ ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)
     const auto providerid = pathParts.at(0);
     const auto entryid = pathParts.at(1);
 
-    auto stream = new ResultsStream(QLatin1String("KNS-byname-") + entryid);
-    auto start = [this, entryid, stream, providerid]() {
-        if (m_responsePending) {
-            // Slot already taken, will need to wait again
-            return;
-        }
-        setResponsePending(true);
-        m_engine->fetchEntryById(entryid);
-        m_onePage = true;
-
-        connect(m_engine, &KNSCore::Engine::signalErrorCode, stream, &ResultsStream::finish);
-        connect(m_engine,
-                &KNSCore::Engine::signalEntryEvent,
-                stream,
-                [this, stream, entryid, providerid](const KNSCore::Entry &entry, KNSCore::Entry::EntryEvent event) {
-                    switch (event) {
-                    case KNSCore::Entry::StatusChangedEvent:
-                        if (entry.uniqueId() == entryid && providerid == QUrl(entry.providerId()).host()) {
-                            Q_EMIT stream->resourcesFound({resourceForEntry(entry)});
-                        } else
-                            qWarning() << "found invalid" << entryid << entry.uniqueId() << providerid << QUrl(entry.providerId()).host();
-                        QTimer::singleShot(0, this, [this] {
-                            setResponsePending(false);
-                        });
-                        stream->finish();
-                        break;
-                    case KNSCore::Entry::DetailsLoadedEvent:
-                    case KNSCore::Entry::AdoptedEvent:
-                    case KNSCore::Entry::UnknownEvent:
-                    default:
-                        break;
-                    }
-                });
+    auto stream = new KNSResultsStream(this, QLatin1String("KNS-byname-") + entryid);
+    auto start = [entryid, stream, providerid]() {
+        KNSCore::Provider::SearchRequest query(KNSCore::Provider::Newest, KNSCore::Provider::ExactEntryId, entryid, {}, 0, ENGINE_PAGE_SIZE);
+        stream->setRequest(query);
     };
-    if (m_responsePending) {
-        connect(this, &KNSBackend::availableForQueries, stream, start);
+    if (isFetching()) {
+        connect(this, &KNSBackend::initialized, stream, start, Qt::QueuedConnection);
+        connect(this, &KNSBackend::fetchingChanged, stream, start, Qt::QueuedConnection);
     } else {
-        start();
+        QTimer::singleShot(0, stream, start);
     }
     return stream;
 }
