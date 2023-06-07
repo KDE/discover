@@ -17,24 +17,14 @@
 
 K_PLUGIN_FACTORY_WITH_JSON(UpdatesFactory, "kcm_updates.json", registerPlugin<Updates>(); registerPlugin<UpdatesData>();)
 
-Updates::Updates(QObject *parent, const QVariantList &args)
-    : KQuickAddons::ManagedConfigModule(parent)
+Updates::Updates(QObject *parent, const KPluginMetaData &data)
+    : KQuickManagedConfigModule(parent, data)
     , m_data(new UpdatesData(this))
     , m_discoverData(new DiscoverData(this))
 {
-    Q_UNUSED(args)
-
     qmlRegisterAnonymousType<UpdatesSettings>("org.kde.discover.updates", 1);
     qmlRegisterAnonymousType<DiscoverSettings>("org.kde.discover.updates", 1);
-
-    setAboutData(new KAboutData(QStringLiteral("kcm_updates"),
-                                i18n("Software Update"),
-                                QStringLiteral("1.0"),
-                                i18n("Configure software update settings"),
-                                KAboutLicense::LGPL));
 }
-
-Updates::~Updates() = default;
 
 UpdatesSettings *Updates::updatesSettings() const
 {

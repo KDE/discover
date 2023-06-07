@@ -6,15 +6,16 @@
 
 #pragma once
 
-#include <KQuickAddons/ManagedConfigModule>
+#include <KQuickManagedConfigModule>
 
 #include <KSharedConfig>
 #include <discoversettings.h>
 #include <updatessettings.h>
+
 class UpdatesData;
 class DiscoverData;
 
-class Updates : public KQuickAddons::ManagedConfigModule
+class Updates : public KQuickManagedConfigModule
 {
     Q_OBJECT
     Q_PROPERTY(UpdatesSettings *updatesSettings READ updatesSettings CONSTANT)
@@ -22,8 +23,7 @@ class Updates : public KQuickAddons::ManagedConfigModule
     Q_PROPERTY(bool isRpmOstree READ isRpmOstree CONSTANT)
 
 public:
-    explicit Updates(QObject *parent = nullptr, const QVariantList &list = QVariantList());
-    ~Updates() override;
+    explicit Updates(QObject *parent, const KPluginMetaData &data);
 
     UpdatesSettings *updatesSettings() const;
     DiscoverSettings *discoverSettings() const;

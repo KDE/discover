@@ -60,7 +60,7 @@ add_subdirectory(update)
 
 option(WITH_KCM "Build and install the updates KCM" ON)
 if(WITH_KCM)
-    # add_subdirectory(kcm)
+    add_subdirectory(kcm)
 endif()
 
 option(WITH_NOTIFIER "Build and install the notifier plasmoid" ON)

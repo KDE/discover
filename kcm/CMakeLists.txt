@@ -3,31 +3,25 @@
 
 add_definitions(-DTRANSLATION_DOMAIN=\"kcm_updates\")
 
-kcmutils_generate_module_data(
-    kcm_updates_PART_SRCS
+kcmutils_add_qml_kcm(kcm_updates SOURCES updates.cpp updates.h)
+kcmutils_generate_module_data(kcm_updates
     MODULE_DATA_HEADER discoverdata.h
     MODULE_DATA_CLASS_NAME DiscoverData
     SETTINGS_HEADERS discoversettings.h
     SETTINGS_CLASSES DiscoverSettings
 )
-kcmutils_generate_module_data(
-    kcm_updates_PART_SRCS
+kcmutils_generate_module_data(kcm_updates
     MODULE_DATA_HEADER updatesdata.h
     MODULE_DATA_CLASS_NAME UpdatesData
     SETTINGS_HEADERS updatessettings.h
     SETTINGS_CLASSES UpdatesSettings
 )
 
-kconfig_add_kcfg_files(kcm_updates_PART_SRCS updatessettings.kcfgc GENERATE_MOC)
-kconfig_add_kcfg_files(kcm_updates_PART_SRCS discoversettings.kcfgc GENERATE_MOC)
-add_library(kcm_updates MODULE updates.cpp updates.h ${kcm_updates_PART_SRCS})
+kconfig_add_kcfg_files(kcm_updates updatessettings.kcfgc GENERATE_MOC)
+kconfig_add_kcfg_files(kcm_updates discoversettings.kcfgc GENERATE_MOC)
 
-kcmutils_generate_desktop_file(kcm_updates)
 target_link_libraries(kcm_updates
     KF6::I18n
-    KF6::KCMUtils
-    KF6::QuickAddons
+    KF6::ConfigGui
+    KF6::KCMUtilsQuick
 )
-
-install(TARGETS kcm_updates DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
-kpackage_install_package(package kcm_updates kcms)
