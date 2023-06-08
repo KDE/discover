@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:45+0000\n"
+"POT-Creation-Date: 2023-06-08 02:13+0000\n"
 "PO-Revision-Date: 2023-02-01 10:16\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -21,22 +21,22 @@ msgstr ""
 "X-Crowdin-File: /main/be/discover/kcm_updates.po\n"
 "X-Crowdin-File-ID: 9152\n"
 
-#: kcm/package/contents/ui/main.qml:32
+#: kcm/ui/main.qml:32
 #, kde-format
 msgid "Update software:"
 msgstr "Аднаўленне праграмнага забеспячэння:"
 
-#: kcm/package/contents/ui/main.qml:33
+#: kcm/ui/main.qml:33
 #, kde-format
 msgid "Manually"
 msgstr "Уласнаручна"
 
-#: kcm/package/contents/ui/main.qml:43
+#: kcm/ui/main.qml:43
 #, kde-format
 msgid "Automatically"
 msgstr "Аўтаматычна"
 
-#: kcm/package/contents/ui/main.qml:50
+#: kcm/ui/main.qml:50
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -48,48 +48,48 @@ msgstr ""
 "спампоўвацца аўтаматычна. Абнаўленні праграм будуць усталёўвацца адразу, а "
 "сістэмныя - пры наступным перазапуску камп'ютара."
 
-#: kcm/package/contents/ui/main.qml:61
+#: kcm/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
 msgstr "Частата абнаўлення:"
 
-#: kcm/package/contents/ui/main.qml:61
+#: kcm/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
 msgstr "Частата апавяшчэння:"
 
-#: kcm/package/contents/ui/main.qml:64
+#: kcm/ui/main.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
 msgstr "Штодзень"
 
-#: kcm/package/contents/ui/main.qml:65
+#: kcm/ui/main.qml:65
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
 msgstr "Штотыдзень"
 
-#: kcm/package/contents/ui/main.qml:66
+#: kcm/ui/main.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
 msgstr "Штомесяц"
 
-#: kcm/package/contents/ui/main.qml:67
+#: kcm/ui/main.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
 msgstr "Ніколі"
 
-#: kcm/package/contents/ui/main.qml:111
+#: kcm/ui/main.qml:111
 #, kde-format
 msgid "Use offline updates:"
 msgstr "Пазасеціўнае абнаўленне:"
 
-#: kcm/package/contents/ui/main.qml:124
+#: kcm/ui/main.qml:124
 #, kde-format
 msgid ""
 "Offline updates maximize system stability by applying changes while "
@@ -99,12 +99,8 @@ msgstr ""
 "ўжываюцца падчас перазапуску сістэмы. Настойліва рэкамендуецца "
 "выкарыстоўваць гэты рэжым абнаўлення."
 
-#: kcm/updates.cpp:31
-#, kde-format
-msgid "Software Update"
-msgstr "Абнаўленне праграмнага забеспячэння"
+#~ msgid "Software Update"
+#~ msgstr "Абнаўленне праграмнага забеспячэння"
 
-#: kcm/updates.cpp:33
-#, kde-format
-msgid "Configure software update settings"
-msgstr "Наладжванне абнаўлення праграмнага забеспячэння"
+#~ msgid "Configure software update settings"
+#~ msgstr "Наладжванне абнаўлення праграмнага забеспячэння"

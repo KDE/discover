@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:45+0000\n"
+"POT-Creation-Date: 2023-06-08 02:13+0000\n"
 "PO-Revision-Date: 2022-12-21 05:37+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -19,22 +19,22 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 22.12.0\n"
 
-#: kcm/package/contents/ui/main.qml:32
+#: kcm/ui/main.qml:32
 #, kde-format
 msgid "Update software:"
 msgstr "軟體更新方式："
 
-#: kcm/package/contents/ui/main.qml:33
+#: kcm/ui/main.qml:33
 #, kde-format
 msgid "Manually"
 msgstr "手動"
 
-#: kcm/package/contents/ui/main.qml:43
+#: kcm/ui/main.qml:43
 #, kde-format
 msgid "Automatically"
 msgstr "自動"
 
-#: kcm/package/contents/ui/main.qml:50
+#: kcm/ui/main.qml:50
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -45,60 +45,56 @@ msgstr ""
 "有軟體更新時將會自動下載。應用程式更新會馬上安裝；系統更新會在下次重新開機時"
 "安裝。"
 
-#: kcm/package/contents/ui/main.qml:61
+#: kcm/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
 msgstr "更新頻率："
 
-#: kcm/package/contents/ui/main.qml:61
+#: kcm/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
 msgstr "通知頻率："
 
-#: kcm/package/contents/ui/main.qml:64
+#: kcm/ui/main.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
 msgstr "每天"
 
-#: kcm/package/contents/ui/main.qml:65
+#: kcm/ui/main.qml:65
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
 msgstr "每週"
 
-#: kcm/package/contents/ui/main.qml:66
+#: kcm/ui/main.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
 msgstr "每月"
 
-#: kcm/package/contents/ui/main.qml:67
+#: kcm/ui/main.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
 msgstr "永不"
 
-#: kcm/package/contents/ui/main.qml:111
+#: kcm/ui/main.qml:111
 #, kde-format
 msgid "Use offline updates:"
 msgstr "使用離線更新："
 
-#: kcm/package/contents/ui/main.qml:124
+#: kcm/ui/main.qml:124
 #, kde-format
 msgid ""
 "Offline updates maximize system stability by applying changes while "
 "restarting the system. Using this update mode is strongly recommended."
 msgstr "離線更新模式於重啟時套用更新來改善系統穩定性。強烈建議使用本更新模式。"
 
-#: kcm/updates.cpp:31
-#, kde-format
-msgid "Software Update"
-msgstr "軟體更新"
+#~ msgid "Software Update"
+#~ msgstr "軟體更新"
 
-#: kcm/updates.cpp:33
-#, kde-format
-msgid "Configure software update settings"
-msgstr "軟體更新相關設定"
+#~ msgid "Configure software update settings"
+#~ msgstr "軟體更新相關設定"

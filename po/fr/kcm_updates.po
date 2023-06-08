@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:45+0000\n"
+"POT-Creation-Date: 2023-06-08 02:13+0000\n"
 "PO-Revision-Date: 2022-08-25 19:03+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -14,22 +14,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 22.08.0\n"
 
-#: kcm/package/contents/ui/main.qml:32
+#: kcm/ui/main.qml:32
 #, kde-format
 msgid "Update software:"
 msgstr "Mettre à jour les logiciels :"
 
-#: kcm/package/contents/ui/main.qml:33
+#: kcm/ui/main.qml:33
 #, kde-format
 msgid "Manually"
 msgstr "Manuellement"
 
-#: kcm/package/contents/ui/main.qml:43
+#: kcm/ui/main.qml:43
 #, kde-format
 msgid "Automatically"
 msgstr "Ajouter automatiquement"
 
-#: kcm/package/contents/ui/main.qml:50
+#: kcm/ui/main.qml:50
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -42,48 +42,48 @@ msgstr ""
 "immédiatement alors que les mises à jour du système seront installées après "
 "un redémarrage de l'ordinateur."
 
-#: kcm/package/contents/ui/main.qml:61
+#: kcm/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
 msgstr "Fréquence de mise à jour :"
 
-#: kcm/package/contents/ui/main.qml:61
+#: kcm/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
 msgstr "Fréquence des notifications :"
 
-#: kcm/package/contents/ui/main.qml:64
+#: kcm/ui/main.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
 msgstr "Quotidiennement"
 
-#: kcm/package/contents/ui/main.qml:65
+#: kcm/ui/main.qml:65
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
 msgstr "Hebdomadaire"
 
-#: kcm/package/contents/ui/main.qml:66
+#: kcm/ui/main.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
 msgstr "Mensuellement"
 
-#: kcm/package/contents/ui/main.qml:67
+#: kcm/ui/main.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
 msgstr "Jamais"
 
-#: kcm/package/contents/ui/main.qml:111
+#: kcm/ui/main.qml:111
 #, kde-format
 msgid "Use offline updates:"
 msgstr "Utiliser les mises à jour hors ligne :"
 
-#: kcm/package/contents/ui/main.qml:124
+#: kcm/ui/main.qml:124
 #, kde-format
 msgid ""
 "Offline updates maximize system stability by applying changes while "
@@ -93,12 +93,8 @@ msgstr ""
 "application des modifications, pendant le re-démarrage du système. "
 "L'utilisation de cette mise à jour est fortement recommandée."
 
-#: kcm/updates.cpp:31
-#, kde-format
-msgid "Software Update"
-msgstr "Mise à jour des logiciels "
+#~ msgid "Software Update"
+#~ msgstr "Mise à jour des logiciels "
 
-#: kcm/updates.cpp:33
-#, kde-format
-msgid "Configure software update settings"
-msgstr "Configurer les paramètres pour les mises à jour de logiciels"
+#~ msgid "Configure software update settings"
+#~ msgstr "Configurer les paramètres pour les mises à jour de logiciels"

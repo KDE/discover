@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:45+0000\n"
+"POT-Creation-Date: 2023-06-08 02:13+0000\n"
 "PO-Revision-Date: 2023-05-22 13:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -17,22 +17,22 @@ msgstr ""
 "X-Crowdin-File: /kf6-trunk/messages/discover/kcm_updates.pot\n"
 "X-Crowdin-File-ID: 42799\n"
 
-#: kcm/package/contents/ui/main.qml:32
+#: kcm/ui/main.qml:32
 #, kde-format
 msgid "Update software:"
 msgstr "软件更新方式："
 
-#: kcm/package/contents/ui/main.qml:33
+#: kcm/ui/main.qml:33
 #, kde-format
 msgid "Manually"
 msgstr "手动"
 
-#: kcm/package/contents/ui/main.qml:43
+#: kcm/ui/main.qml:43
 #, kde-format
 msgid "Automatically"
 msgstr "自动"
 
-#: kcm/package/contents/ui/main.qml:50
+#: kcm/ui/main.qml:50
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -43,48 +43,48 @@ msgstr ""
 "软件更新将在可用时自动下载。应用程序的更新将被立即安装，系统软件更新则会在下"
 "次重启计算机时进行安装。"
 
-#: kcm/package/contents/ui/main.qml:61
+#: kcm/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
 msgstr "更新频率："
 
-#: kcm/package/contents/ui/main.qml:61
+#: kcm/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
 msgstr "通知频率："
 
-#: kcm/package/contents/ui/main.qml:64
+#: kcm/ui/main.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
 msgstr "每天"
 
-#: kcm/package/contents/ui/main.qml:65
+#: kcm/ui/main.qml:65
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
 msgstr "每周"
 
-#: kcm/package/contents/ui/main.qml:66
+#: kcm/ui/main.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
 msgstr "每月"
 
-#: kcm/package/contents/ui/main.qml:67
+#: kcm/ui/main.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
 msgstr "不通知"
 
-#: kcm/package/contents/ui/main.qml:111
+#: kcm/ui/main.qml:111
 #, kde-format
 msgid "Use offline updates:"
 msgstr "使用离线更新："
 
-#: kcm/package/contents/ui/main.qml:124
+#: kcm/ui/main.qml:124
 #, kde-format
 msgid ""
 "Offline updates maximize system stability by applying changes while "
@@ -93,12 +93,8 @@ msgstr ""
 "离线更新会留待重启系统时应用更改，这能够在最大程度上保证系统的稳定性。强烈建"
 "议使用此更新模式。"
 
-#: kcm/updates.cpp:31
-#, kde-format
-msgid "Software Update"
-msgstr "软件更新"
+#~ msgid "Software Update"
+#~ msgstr "软件更新"
 
-#: kcm/updates.cpp:33
-#, kde-format
-msgid "Configure software update settings"
-msgstr "配置软件更新设置"
+#~ msgid "Configure software update settings"
+#~ msgstr "配置软件更新设置"

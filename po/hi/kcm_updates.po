@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:45+0000\n"
+"POT-Creation-Date: 2023-06-08 02:13+0000\n"
 "PO-Revision-Date: 2021-06-27 20:38+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Generator: Lokalize 21.04.2\n"
 
-#: kcm/package/contents/ui/main.qml:32
+#: kcm/ui/main.qml:32
 #, kde-format
 msgid "Update software:"
 msgstr "सॉफ्टवेयर अद्यतन :"
 
-#: kcm/package/contents/ui/main.qml:33
+#: kcm/ui/main.qml:33
 #, kde-format
 msgid "Manually"
 msgstr "हस्तचालित"
 
-#: kcm/package/contents/ui/main.qml:43
+#: kcm/ui/main.qml:43
 #, kde-format
 msgid "Automatically"
 msgstr "स्वचालित"
 
-#: kcm/package/contents/ui/main.qml:50
+#: kcm/ui/main.qml:50
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -44,49 +44,49 @@ msgstr ""
 "अद्यतन तुरंत संस्थापित किए जाएंगे, जबकि अगली बार कंप्यूटर के पुनरारंभ होने पर तंत्र अपडेट "
 "संस्थापित हो जाएंगे।"
 
-#: kcm/package/contents/ui/main.qml:61
+#: kcm/ui/main.qml:61
 #, fuzzy, kde-format
 #| msgid "Update software:"
 msgctxt "@title:group"
 msgid "Update frequency:"
 msgstr "सॉफ्टवेयर अद्यतन :"
 
-#: kcm/package/contents/ui/main.qml:61
+#: kcm/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
 msgstr ""
 
-#: kcm/package/contents/ui/main.qml:64
+#: kcm/ui/main.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
 msgstr ""
 
-#: kcm/package/contents/ui/main.qml:65
+#: kcm/ui/main.qml:65
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
 msgstr ""
 
-#: kcm/package/contents/ui/main.qml:66
+#: kcm/ui/main.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
 msgstr ""
 
-#: kcm/package/contents/ui/main.qml:67
+#: kcm/ui/main.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
 msgstr ""
 
-#: kcm/package/contents/ui/main.qml:111
+#: kcm/ui/main.qml:111
 #, kde-format
 msgid "Use offline updates:"
 msgstr "ऑफ़लाइन अद्यतन का उपयोग करें :"
 
-#: kcm/package/contents/ui/main.qml:124
+#: kcm/ui/main.qml:124
 #, kde-format
 msgid ""
 "Offline updates maximize system stability by applying changes while "
@@ -95,12 +95,8 @@ msgstr ""
 "ऑफ़लाइन अद्यतन तंत्र को पुनरारंभ करते समय परिवर्तन लागू करके तंत्र स्थिरता को अधिकतम करते "
 "हैं। इस अद्यतन मोड का उपयोग करने की दृढ़ता से अनुशंसा की जाती है।"
 
-#: kcm/updates.cpp:31
-#, kde-format
-msgid "Software Update"
-msgstr "सॉफ्टवेयर अद्यतन"
+#~ msgid "Software Update"
+#~ msgstr "सॉफ्टवेयर अद्यतन"
 
-#: kcm/updates.cpp:33
-#, kde-format
-msgid "Configure software update settings"
-msgstr "सॉफ्टवेयर अद्यतन सेट्टिंग विन्यस्त करें"
+#~ msgid "Configure software update settings"
+#~ msgstr "सॉफ्टवेयर अद्यतन सेट्टिंग विन्यस्त करें"
