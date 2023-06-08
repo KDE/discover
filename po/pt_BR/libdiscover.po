@@ -11,9 +11,9 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-15 02:33+0000\n"
-"PO-Revision-Date: 2023-01-16 23:12-0300\n"
+"PO-Revision-Date: 2023-06-07 09:57-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
-"Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
+"Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1944,10 +1944,9 @@ msgstr[0] "%1 pacote atualizado com sucesso"
 msgstr[1] "%1 pacotes atualizados com sucesso"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Status desconhecido"
+msgstr "Fonte desconhecida"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:326
 #, kde-format
@@ -2004,18 +2003,18 @@ msgid "System upgrade"
 msgstr "Atualização do sistema"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:172
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 pacote a atualizar"
-msgstr[1] "%1 pacotes a atualizar"
+msgstr[0] "1 pacote será atualizado"
+msgstr[1] "%1 pacotes serão atualizados"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:181
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Atualize para a nova versão %2<br/>Nenhuma nota de lançamento "
+"fornecida"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:183
 #, kde-format
@@ -2023,6 +2022,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Atualize para a nova versão %2<br/>Nota de lançamento:<blockquote>"
+"%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:202
 #, kde-format
@@ -2218,6 +2219,8 @@ msgstr ""
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
+"Você tem atualizações pendentes para a versão atual. Continuando de qualquer "
+"maneira."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:539
 #, kde-format
@@ -2272,7 +2275,7 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Versão que será usada após o reinício"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
@@ -2382,6 +2385,7 @@ msgstr ""
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""
+"SteamOS: Não foi possível consultar o atomupd por atualizações do SteamOS..."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
