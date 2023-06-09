@@ -32,7 +32,7 @@ ColumnLayout {
             Layout.fillWidth: true
             text: model.brief
             subtitle: model.description
-            icon: model.icon
+            icon.name: model.icon
             subtitleItem.wrapMode: Text.WordWrap
 
             // so that it gets neither hover nor pressed appearance when it's not interactive
