@@ -53,11 +53,11 @@ Kirigami.InlineMessage {
             }
         }
 
-        onObjectAdded: {
+        onObjectAdded: (index, object) => {
             oldBetaItem.actionsArray.splice(index, 0, object)
             oldBetaItem.actions = oldBetaItem.actionsArray = oldBetaItem.actionsArray
         }
-        onObjectRemoved: {
+        onObjectRemoved: (index, object) => {
             oldBetaItem.actionsArray.splice(index, 1)
             oldBetaItem.actions = oldBetaItem.actionsArray = oldBetaItem.actionsArray
         }
