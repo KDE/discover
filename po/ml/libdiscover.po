@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-15 02:33+0000\n"
+"POT-Creation-Date: 2023-06-10 02:41+0000\n"
 "PO-Revision-Date: 2021-09-09 13:59+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/"
@@ -552,24 +552,24 @@ msgstr "%1 (ഉപയോക്താവ്)"
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1651
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1648
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:729
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1755
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1752
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' ആരംഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1876
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1873
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1880
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1877
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to load \"%1\" source"

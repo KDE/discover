@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-15 02:33+0000\n"
+"POT-Creation-Date: 2023-06-10 02:41+0000\n"
 "PO-Revision-Date: 2023-02-28 09:26+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
@@ -543,23 +543,23 @@ msgstr "%1 (gebruiker)"
 msgid "Local bundle"
 msgstr "Lokale bundel"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1651
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1648
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:729
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Misvormde appstream-URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1755
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1752
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Bron '%1' toevoegen is mislukt: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1876
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1873
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Er zijn geen Flatpak bronnen."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1880
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1877
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Laden van bron \"%1\" is mislukt"

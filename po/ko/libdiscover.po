@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-15 02:33+0000\n"
+"POT-Creation-Date: 2023-06-10 02:41+0000\n"
 "PO-Revision-Date: 2023-04-21 23:32+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -542,23 +542,23 @@ msgstr "%1(사용자)"
 msgid "Local bundle"
 msgstr "로컬 번들"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1651
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1648
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:729
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "잘못된 AppStream URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1755
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1752
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' 원본을 추가할 수 없음: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1876
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1873
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Flatpak 원본이 없습니다."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1880
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1877
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" 원본을 불러올 수 없음"
