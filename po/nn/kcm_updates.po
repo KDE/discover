@@ -97,9 +97,3 @@ msgstr ""
 "Med fråkopla oppdateringar vert endringar tekne i bruk når systemet startar "
 "på nytt. Dette aukar stabiliteten til systemet, og det er sterkt tilrådd å "
 "slå på denne funksjonen."
-
-#~ msgid "Software Update"
-#~ msgstr "Programoppdatering"
-
-#~ msgid "Configure software update settings"
-#~ msgstr "Set opp oppdatering av programvare"

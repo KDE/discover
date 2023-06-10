@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-06 02:08+0000\n"
+"POT-Creation-Date: 2023-06-10 02:09+0000\n"
 "PO-Revision-Date: 2017-09-08 16:13+0200\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -559,13 +559,13 @@ msgstr "%1 (%2)"
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1679
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1676
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Κακοδιατυπωμένο appstream url '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1783
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1780
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -578,13 +578,13 @@ msgstr ""
 "%2\n"
 "\n"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1901
 #, fuzzy, kde-format
 #| msgid "There are %1 updated packages!"
 msgid "There are no Flatpak sources."
 msgstr "Ενημερώθηκαν %1 πακέτα!"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1908
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1905
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
