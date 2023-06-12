@@ -98,9 +98,3 @@ msgstr ""
 "Les actualitzacions sense connexió maximitzen l'estabilitat del sistema "
 "mitjançant l'aplicació dels canvis mentre es reinicia el sistema. Es "
 "recomana fermament emprar este mode d'actualització."
-
-#~ msgid "Software Update"
-#~ msgstr "Actualització de programari"
-
-#~ msgid "Configure software update settings"
-#~ msgstr "Configura les opcions d'actualització de programari"
