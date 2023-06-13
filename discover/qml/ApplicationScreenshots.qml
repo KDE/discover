@@ -165,7 +165,7 @@ ListView {
                 verticalCenter: parent.verticalCenter
             }
             visible: leftAction.visible
-            icon.name: leftAction.iconName
+            icon.name: leftAction.icon.name
             onClicked: leftAction.triggered(null)
         }
 
@@ -175,7 +175,7 @@ ListView {
                 verticalCenter: parent.verticalCenter
             }
             visible: rightAction.visible
-            icon.name: rightAction.iconName
+            icon.name: rightAction.icon.name
             onClicked: rightAction.triggered(null)
         }
 
