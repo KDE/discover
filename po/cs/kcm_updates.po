@@ -90,9 +90,3 @@ msgid ""
 msgstr ""
 "Aktualizace offline zvyšují stabilitu systému tím, že provedou změny při "
 "restartu systému. Použití tohoto způsobu aktualizace je silně doporučeno."
-
-#~ msgid "Software Update"
-#~ msgstr "Aktualizace softwaru"
-
-#~ msgid "Configure software update settings"
-#~ msgstr "Nastavte možnosti aktualizace softwaru"
