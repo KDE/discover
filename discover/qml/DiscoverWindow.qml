@@ -239,7 +239,7 @@ Kirigami.ApplicationWindow {
             // one automatically.
             // But we do need to put the label into a Layout of some sort so we
             // can limit the width of the sheet.
-            contentItem: ColumnLayout {
+            ColumnLayout {
                 Label {
                     id: desc
 
@@ -299,7 +299,7 @@ Kirigami.ApplicationWindow {
             // one automatically.
             // But we do need to put the label into a Layout of some sort so we
             // can limit the width of the sheet.
-            contentItem: ColumnLayout {
+            ColumnLayout {
                 Label {
                     id: desc
 
@@ -344,7 +344,7 @@ Kirigami.ApplicationWindow {
         // one automatically.
         // But we do need to put the label into a Layout of some sort so we
         // can limit the width of the sheet.
-        contentItem: ColumnLayout {
+        ColumnLayout {
             Item {
                 Layout.fillWidth: true
                 Layout.maximumWidth: Kirigami.Units.gridUnit * 20

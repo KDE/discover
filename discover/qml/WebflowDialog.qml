@@ -27,7 +27,7 @@ Kirigami.OverlaySheet {
         }
     }
 
-    contentItem: WebView {
+    WebView {
         id: view
         Layout.preferredWidth: Math.round(window.width * 0.75)
         height: Math.round(window.height * 0.75)

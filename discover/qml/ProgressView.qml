@@ -45,7 +45,7 @@ Kirigami.AbstractListItem {
                 sheetObject.destroy(100)
             }
 
-            contentItem: ListView {
+            ListView {
                 id: tasksView
                 spacing: 0
                 implicitWidth: Kirigami.Units.gridUnit * 30
