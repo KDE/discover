@@ -1,6 +1,6 @@
 import org.kde.kirigami 2.14 as Kirigami
 import org.kde.userfeedback 1.0 as UserFeedback
-import org.kde.kquickcontrolsaddons 2.0 as KQCA
+import org.kde.kcmutils // KCMLauncher
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
 import QtQml 2.0
@@ -29,7 +29,7 @@ UserFeedback.Provider {
             text: i18n("Configure Updates…")
             displayHint: Kirigami.DisplayHint.AlwaysHide
             onTriggered: {
-                KQCA.KCMShell.openSystemSettings("kcm_updates");
+                KCMLauncher.openSystemSettings("kcm_updates");
             }
         }
     ]
@@ -43,7 +43,7 @@ UserFeedback.Provider {
     telemetryMode: UserFeedbackSettings.feedbackLevel
 
     function encouraged() {
-        KQCA.KCMShell.openSystemSettings("kcm_feedback");
+        KCMLauncher.openSystemSettings("kcm_feedback");
     }
 
     property var lastSurvey: null
