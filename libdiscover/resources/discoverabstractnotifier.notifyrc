@@ -109,7 +109,7 @@ Name[tg]=Навсозиҳо дастрасанд
 Name[tr]=Kullanılabilir Güncellemeler Var
 Name[uk]=Доступні оновлення
 Name[x-test]=xxUpdates Are Availablexx
-Name[zh_CN]=有可用更新
+Name[zh_CN]=系统有可以安装的更新
 Name[zh_TW]=有可用的更新
 Comment=Updates Available
 Comment[ar]=تتوفّر تحديثات
@@ -163,7 +163,7 @@ Comment[tg]=Навсозиҳо дастрасанд
 Comment[tr]=Güncellemeler Kullanılabilir
 Comment[uk]=Доступні оновлення
 Comment[x-test]=xxUpdates Availablexx
-Comment[zh_CN]=可用更新
+Comment[zh_CN]=系统有可以安装的更新
 Comment[zh_TW]=有可用的更新
 Action=Popup
 
