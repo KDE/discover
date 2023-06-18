@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-10 02:09+0000\n"
-"PO-Revision-Date: 2023-05-22 13:58\n"
+"PO-Revision-Date: 2023-06-17 04:09\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -1878,7 +1878,7 @@ msgid_plural ""
 "Failed to update %1 packages\n"
 "%2"
 msgstr[0] ""
-"更新 %1 个软件包失败\n"
+"%1 个软件包更新失败\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
@@ -1886,7 +1886,7 @@ msgstr[0] ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
-msgstr "打开发现者"
+msgstr "打开 Discover"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
 #, kde-format
@@ -2296,12 +2296,13 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
-#, fuzzy, kde-format
-#| msgid "rpm-ostree transaction failed with:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "rpm-ostree 安装进程失败："
+msgstr ""
+"rpm-ostree 安装进程失败：\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
 #, kde-format

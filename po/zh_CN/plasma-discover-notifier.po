@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-06 02:08+0000\n"
-"PO-Revision-Date: 2023-05-22 13:58\n"
+"PO-Revision-Date: 2023-06-17 04:09\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -25,12 +25,12 @@ msgstr "查看更新"
 #: notifier/DiscoverNotifier.cpp:250
 #, kde-format
 msgid "Security updates available"
-msgstr "安全更新可用"
+msgstr "系统有可以安装的安全更新"
 
 #: notifier/DiscoverNotifier.cpp:252
 #, kde-format
 msgid "Updates available"
-msgstr "更新可用"
+msgstr "系统有可以安装的更新"
 
 #: notifier/DiscoverNotifier.cpp:254
 #, kde-format
