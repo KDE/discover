@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-30 03:25+0000\n"
-"PO-Revision-Date: 2023-05-22 14:04\n"
+"PO-Revision-Date: 2023-06-17 04:13\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -129,7 +129,7 @@ msgstr "显示某个分类的项目列表。"
 #: discover/main.cpp:45
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
-msgstr "在指定模式下打开Discover。模式与工具栏按钮对应。"
+msgstr "在指定模式下打开 Discover。模式与工具栏按钮对应。"
 
 #: discover/main.cpp:46
 #, kde-format
@@ -621,7 +621,7 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:240
 #, kde-format
 msgid "Still looking…"
-msgstr "仍在查找…"
+msgstr "正在查找…"
 
 #: discover/qml/BrowsingPage.qml:62
 #, kde-format
@@ -676,17 +676,17 @@ msgstr "搜索(&S)"
 #: discover/qml/DiscoverWindow.qml:74
 #, kde-format
 msgid "&Installed"
-msgstr "已安装(&I)"
+msgstr "已安装的软件包(&I)"
 
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgid "Fetching &updates…"
-msgstr "获取更新(&U)…"
+msgstr "正在获取更新(&U)…"
 
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgid "&Up to date"
-msgstr "已是最新(&U)"
+msgstr "系统已更新到最新状态(&U)"
 
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
@@ -822,7 +822,7 @@ msgstr "移除"
 #: discover/qml/InstalledPage.qml:15
 #, kde-format
 msgid "Installed"
-msgstr "已安装"
+msgstr "已安装的软件包"
 
 #: discover/qml/navigation.js:19
 #, kde-format
@@ -843,7 +843,7 @@ msgstr "任务"
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
-msgstr "%1 - %2: %3, 剩余 %4"
+msgstr "%1 - %2：%3，剩余 %4"
 
 #: discover/qml/ProgressView.qml:98
 #, kde-format
@@ -947,7 +947,7 @@ msgstr "请撰写评价"
 #: discover/qml/ReviewDialog.qml:70
 #, kde-format
 msgid "Keep writing…"
-msgstr "请继续输入内容…"
+msgstr "请输入更多内容…"
 
 #: discover/qml/ReviewDialog.qml:71
 #, kde-format
@@ -1085,7 +1085,7 @@ msgstr "更新选中项目"
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgid "Update All"
-msgstr "更新全部"
+msgstr "全部更新"
 
 #: discover/qml/UpdatesPage.qml:175
 #, kde-format
@@ -1149,7 +1149,7 @@ msgstr "更多信息…"
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "获取更新…"
+msgstr "正在获取更新…"
 
 #: discover/qml/UpdatesPage.qml:490
 #, kde-format
@@ -1168,7 +1168,7 @@ msgstr "重新启动系统以完成更新进程"
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
-msgstr "已是最新"
+msgstr "系统已更新到最新状态"
 
 #: discover/qml/UpdatesPage.qml:533
 #, kde-format
