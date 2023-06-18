@@ -476,10 +476,7 @@ bool RpmOstreeBackend::isValid() const
 ResultsStream *RpmOstreeBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     // Only return results when we're explicitely looking in the "Operating System" category
-    if (!filter.category) {
-        return new ResultsStream(QStringLiteral("rpm-ostree-empty"), {});
-    }
-    if (filter.category->untranslatedName() != QLatin1String("Operating System")) {
+    if (filter.category && filter.category->untranslatedName() != QLatin1String("Operating System")) {
         return new ResultsStream(QStringLiteral("rpm-ostree-empty"), {});
     }
 
