@@ -475,16 +475,28 @@ bool RpmOstreeBackend::isValid() const
 
 ResultsStream *RpmOstreeBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
-    // Only return results when we're explicitely looking in the "Operating System" category
+    // Skip the search if we're looking into a Category, but not the "Operating System" category
     if (filter.category && filter.category->untranslatedName() != QLatin1String("Operating System")) {
         return new ResultsStream(QStringLiteral("rpm-ostree-empty"), {});
     }
 
+    // Trim whitespace from beginning and end of the string entered in the search field.
+    QString keyword = filter.search.trimmed();
+
     QVector<AbstractResource *> res;
     for (RpmOstreeResource *r : m_resources) {
-        if (r->state() >= filter.state) {
-            res << r;
+        // Skip if the state does not match the filter
+        if (r->state() < filter.state) {
+            continue;
         }
+        // Skip if the search field is not empty and neither the name, description or version matches
+        if (!keyword.isEmpty()) {
+            if (!r->name().contains(keyword) && !r->longDescription().contains(keyword) && !r->installedVersion().contains(keyword)) {
+                continue;
+            }
+        }
+        // Add the ressources to the search filter
+        res << r;
     }
     return new ResultsStream(QStringLiteral("rpm-ostree"), res);
 }
